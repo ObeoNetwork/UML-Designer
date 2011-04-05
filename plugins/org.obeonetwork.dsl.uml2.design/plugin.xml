@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<!--
+Copyright (c) 2009, 2011 Obeo.
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+
+Contributors:
+    Obeo - initial API and implementation
+-->
+<plugin>
+		<extension
+				point="fr.obeo.dsl.viewpoint.componentization">
+		<component
+				class="org.obeonetwork.dsl.uml2.design.Activator" id="org.obeonetwork.dsl.uml2.design" name="uml2">
+		</component>
+		</extension>
+  <extension
+        point="org.eclipse.ui.newWizards">
+     <wizard
+           category="fr.obeo.dsl.viewpoint.category/fr.obeo.dsl.viewpoint.modelers.category"
+           class="org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel.UmlModelWizard"
+           icon="icons/NewUmlModel.gif"
+           id="org.obeonetwork.dsl.uml2.wizard.newUmlModel"
+           name="UML Model"
+           project="false">
+     </wizard>
+     <category
+           id="fr.obeo.dsl.viewpoint.modelers.category"
+           name="%_UI_Wizard_category"
+           parentCategory="fr.obeo.dsl.viewpoint.category">
+     </category>
+  </extension>
+</plugin>
