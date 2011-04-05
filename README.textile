@@ -1,19 +1,11 @@
-#################################################################################
-# Copyright (c) 2009, 2011 Obeo.
-# All rights reserved. This program and the accompanying materials
-# are made available under the terms of the Eclipse Public License v1.0
-# which accompanies this distribution, and is available at
-# http://www.eclipse.org/legal/epl-v10.html
-# 
-# Contributors:
-#     Obeo - initial API and implementation
-#################################################################################
-
 h1. Welcome to UML Modeling by Obeo Network
 
 This modeler provides a set of common diagrams to work with UML 2.1 models. The intent is to provide an easy way to make the transition from UML to domain specific modeling. This way users can continue to manipulate legacy UML models and start working with DSL. Users can even re-use the provided representations and work in a total transparence on both UML and DSL models at the same time.
 
-More details here:
+These plugins are released under the EPL Open-Souce License.
+
+More details about features, screenshots, release notes, dependencies here:
+
  * http://marketplace.obeonetwork.com/module/uml
  * http://docs.obeonetwork.com/uml
  * http://www.obeodesigner.com
