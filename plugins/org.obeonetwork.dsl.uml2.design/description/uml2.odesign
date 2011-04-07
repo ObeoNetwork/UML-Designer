@@ -878,7 +878,7 @@
       </filters>
       <defaultLayer name="Object Diagram">
         <edgeMappings name="OD_InstanceSlot" semanticCandidatesExpression="&lt;%packagedElement.filter(&quot;InstanceSpecification&quot;).slot[value.filter(&quot;InstanceValue&quot;)]%>" semanticElements="&lt;%current + definingFeature%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_Element']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_Element']" targetFinderExpression="&lt;%value.filter(&quot;InstanceValue&quot;).instance%>" sourceFinderExpression="&lt;%owningInstance%>" domainClass="uml.Slot" useDomainElement="true">
-          <style labelExpression="&lt;%definingFeature.name%>" targetArrow="NoDecoration" sizeComputationExpression="&lt;%1%>" routingStyle="manhattan">
+          <style labelExpression="&lt;%definingFeature.name%>" targetArrow="NoDecoration" sizeComputationExpression="1" routingStyle="manhattan">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
           </style>
@@ -974,25 +974,25 @@
           </style>
         </nodeMappings>
         <edgeMappings name="OD_ClassType" semanticCandidatesExpression="&lt;%current.eAllContents%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_Element']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@optionalLayers[name='Type']/@containerMappings[name='OD_Class']" targetFinderExpression="&lt;%classifier%>">
-          <style lineStyle="dash" sizeComputationExpression="" routingStyle="manhattan">
+          <style lineStyle="dash" sizeComputationExpression="1" routingStyle="manhattan">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </edgeMappings>
         <edgeMappings name="OD_EnumerationType" semanticCandidatesExpression="&lt;%current.eAllContents%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_Element']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@optionalLayers[name='Type']/@containerMappings[name='OD_Enumeration']" targetFinderExpression="&lt;%classifier%>">
-          <style lineStyle="dash" sizeComputationExpression="" routingStyle="manhattan">
+          <style lineStyle="dash" sizeComputationExpression="1" routingStyle="manhattan">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </edgeMappings>
         <edgeMappings name="OD_PrimitiveTypeType" semanticCandidatesExpression="&lt;%current.eAllContents%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_Element']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@optionalLayers[name='Type']/@nodeMappings[name='OD_PrimitiveType']" targetFinderExpression="&lt;%classifier%>">
-          <style lineStyle="dash" sizeComputationExpression="" routingStyle="manhattan">
+          <style lineStyle="dash" sizeComputationExpression="1" routingStyle="manhattan">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </edgeMappings>
         <edgeMappings name="OD_InterfaceType" semanticCandidatesExpression="&lt;%current.eAllContents%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_Element']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@optionalLayers[name='Type']/@containerMappings[name='OD_Interface']" targetFinderExpression="&lt;%classifier%>">
-          <style lineStyle="dash" sizeComputationExpression="" routingStyle="manhattan">
+          <style lineStyle="dash" sizeComputationExpression="1" routingStyle="manhattan">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
@@ -1061,25 +1061,25 @@
       </filters>
       <defaultLayer name="Class">
         <edgeMappings name="COD_Connector" semanticCandidatesExpression="&lt;%current.eAllContents%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@subContainerMappings[name='COD_Attribute']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@subContainerMappings[name='COD_Attribute']" targetFinderExpression="&lt;%end.nLast().role()%>" sourceFinderExpression="&lt;%end.nFirst().role%>" domainClass="uml.Connector" useDomainElement="true">
-          <style targetArrow="NoDecoration" sizeComputationExpression="" routingStyle="manhattan">
+          <style targetArrow="NoDecoration" sizeComputationExpression="1" routingStyle="manhattan">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_orange']"/>
           </style>
         </edgeMappings>
         <edgeMappings name="COD_ConnectorToPort" semanticCandidatesExpression="&lt;%current.eAllContents%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@subContainerMappings[name='COD_Attribute']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@subContainerMappings[name='COD_Attribute']/@borderedNodeMappings[name='Port']" targetFinderExpression="&lt;%end.nLast().role()%>" sourceFinderExpression="&lt;%end.nFirst().role%>" domainClass="uml.Connector" useDomainElement="true">
-          <style targetArrow="NoDecoration" sizeComputationExpression="" routingStyle="manhattan">
+          <style targetArrow="NoDecoration" sizeComputationExpression="1" routingStyle="manhattan">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_orange']"/>
           </style>
         </edgeMappings>
         <edgeMappings name="COD_PortToConnector" semanticCandidatesExpression="&lt;%current.eAllContents%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@subContainerMappings[name='COD_Attribute']/@borderedNodeMappings[name='Port']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@subContainerMappings[name='COD_Attribute']" targetFinderExpression="&lt;%end.nLast().role()%>" sourceFinderExpression="&lt;%end.nFirst().role%>" domainClass="uml.Connector" useDomainElement="true">
-          <style targetArrow="NoDecoration" sizeComputationExpression="" routingStyle="manhattan">
+          <style targetArrow="NoDecoration" sizeComputationExpression="1" routingStyle="manhattan">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_orange']"/>
           </style>
         </edgeMappings>
         <edgeMappings name="COD_PortToPort" semanticCandidatesExpression="&lt;%current.eAllContents%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@subContainerMappings[name='COD_Attribute']/@borderedNodeMappings[name='Port']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@subContainerMappings[name='COD_Attribute']/@borderedNodeMappings[name='Port']" targetFinderExpression="&lt;%end.nLast().role()%>" sourceFinderExpression="&lt;%end.nFirst().role%>" domainClass="uml.Connector" useDomainElement="true">
-          <style targetArrow="NoDecoration" sizeComputationExpression="" routingStyle="manhattan">
+          <style targetArrow="NoDecoration" sizeComputationExpression="1" routingStyle="manhattan">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_orange']"/>
           </style>
@@ -1268,7 +1268,7 @@
           </style>
         </nodeMappings>
         <edgeMappings name="stereotypeLink" semanticCandidatesExpression="&lt;%current.eAllContents%>" sourceMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_Region']/@subContainerMappings[name='SM_State']" targetMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@optionalLayers[name='Stereotype']/@nodeMappings[name='TypeStereotypeDescription']" targetFinderExpression="&lt;%current()%>">
-          <style showIcon="false" lineStyle="dash" targetArrow="NoDecoration" sizeComputationExpression="0" foldingStyle="SOURCE">
+          <style showIcon="false" lineStyle="dash" targetArrow="NoDecoration" sizeComputationExpression="1" foldingStyle="SOURCE">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
@@ -1279,19 +1279,19 @@
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
       <defaultLayer name="Activity">
         <edgeMappings name="AD_ControlFlow" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%edge%>" semanticElements="&lt;%self + guard%>" documentation="Edge specified with source mapping as the target semantic (&amp; vice versa) to work around top to bottom layout (see VP-930)" sourceMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_ControlNode']" targetMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_ControlNode'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']" targetFinderExpression="&lt;%source%>" sourceFinderExpression="&lt;%target%>" domainClass="uml.ControlFlow" useDomainElement="true">
-          <style showIcon="false" labelExpression="&lt;%computeUmlLabel()%>" sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="" routingStyle="manhattan">
+          <style showIcon="false" labelExpression="&lt;%computeUmlLabel()%>" sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="1" routingStyle="manhattan">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </edgeMappings>
         <edgeMappings name="AD_ObjectFlow" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%edge%>" semanticElements="&lt;%self + guard%>" documentation="Edge specified with source mapping as the target semantic (&amp; vice versa) to work around top to bottom layout (see VP-930)" sourceMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']/@borderedNodeMappings[name='AD_Pin'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_DataStore'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@borderedNodeMappings[name='AD_Parameter']" targetMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']/@borderedNodeMappings[name='AD_Pin'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_DataStore'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@borderedNodeMappings[name='AD_Parameter']" targetFinderExpression="&lt;%source%>" sourceFinderExpression="&lt;%target%>" domainClass="uml.ObjectFlow" useDomainElement="true">
-          <style showIcon="false" labelExpression="&lt;%computeUmlLabel()%>" lineStyle="dash" sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="" routingStyle="manhattan">
+          <style showIcon="false" labelExpression="&lt;%computeUmlLabel()%>" lineStyle="dash" sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="1" routingStyle="manhattan">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </edgeMappings>
         <edgeMappings name="CommentLink" sourceMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='Comment']" targetMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_ControlNode'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']" targetFinderExpression="&lt;%eContainer()%>">
-          <style lineStyle="dash" targetArrow="NoDecoration" sizeComputationExpression="0">
+          <style lineStyle="dash" targetArrow="NoDecoration" sizeComputationExpression="1">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
           </style>
@@ -1673,13 +1673,13 @@
           </style>
         </edgeMappings>
         <edgeMappings name="UCD_Extend" deletionDescription="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='delete']/@ownedTools[name='Extends']" semanticCandidatesExpression="&lt;%getRootContainer().eAllContents(&quot;Extend&quot;)%>" semanticElements="&lt;%current + extension + extendedCase%>" documentation="Mapping to create Extends" sourceMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']/@subNodeMappings[name='UCD_UseCase']" targetMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']/@subNodeMappings[name='UCD_UseCase']" targetFinderExpression="&lt;%extendedCase%>" sourceFinderExpression="&lt;%extension%>" targetExpression="&lt;%current%>" domainClass="uml.Extend" useDomainElement="true" pathExpression="">
-          <style labelSize="10" showIcon="false" labelExpression="&lt;%&quot;&#xab; extend &#xbb;&quot;%>" lineStyle="dash" sizeComputationExpression="&lt;%1%>">
+          <style labelSize="10" showIcon="false" labelExpression="&lt;%&quot;&#xab; extend &#xbb;&quot;%>" lineStyle="dash" sizeComputationExpression="1">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </edgeMappings>
         <edgeMappings name="UCD_Include" deletionDescription="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='delete']/@ownedTools[name='Include']" semanticCandidatesExpression="&lt;%getRootContainer().eAllContents(&quot;Include&quot;)%>" semanticElements="&lt;%current + includingCase + addition%>" documentation="Mapping to create includes" sourceMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']/@subNodeMappings[name='UCD_UseCase']" targetMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']/@subNodeMappings[name='UCD_UseCase']" targetFinderExpression="&lt;%addition%>" sourceFinderExpression="&lt;%includingCase%>" targetExpression="&lt;%current%>" domainClass="uml.Include" useDomainElement="true">
-          <style labelSize="10" showIcon="false" labelExpression="&lt;%&quot;&#xab; include &#xbb;&quot;%>" lineStyle="dash" sizeComputationExpression="&lt;%1%>">
+          <style labelSize="10" showIcon="false" labelExpression="&lt;%&quot;&#xab; include &#xbb;&quot;%>" lineStyle="dash" sizeComputationExpression="1">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
@@ -1876,7 +1876,7 @@
           </style>
         </nodeMappings>
         <edgeMappings xsi:type="_1:BasicMessageMapping" name="SD_Message" semanticCandidatesExpression="&lt;%message%>" semanticElements="&lt;%self + sendEvent + receiveEvent%>" documentation="@generated" sourceMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedTemplates[name='Sequence%20Diagram']/@ownedRepresentations.0/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedTemplates[name='Sequence%20Diagram']/@ownedRepresentations.0/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']/@borderedNodeMappings[name='SD_Execution']" targetMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedTemplates[name='Sequence%20Diagram']/@ownedRepresentations.0/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedTemplates[name='Sequence%20Diagram']/@ownedRepresentations.0/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']/@borderedNodeMappings[name='SD_Execution']" targetFinderExpression="&lt;%receiveEvent.findOccurrenceSpecificationContext()%>" sourceFinderExpression="&lt;%sendEvent.findOccurrenceSpecificationContext()%>" domainClass="uml.Message" useDomainElement="true" sendingEndFinderExpression="&lt;%sendEvent%>" receivingEndFinderExpression="&lt;%receiveEvent%>">
-          <style labelExpression="&lt;%name%>" sizeComputationExpression="&lt;%2%>">
+          <style labelExpression="&lt;%name%>" sizeComputationExpression="2">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
