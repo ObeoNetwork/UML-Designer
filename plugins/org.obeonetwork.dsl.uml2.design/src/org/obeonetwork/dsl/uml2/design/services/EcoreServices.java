@@ -22,7 +22,7 @@ import org.eclipse.uml2.uml.Type;
 /**
  * Utility services to manage Ecore UML ressources
  * 
- * @author St�phane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
+ * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
  */
 public class EcoreServices {
     
