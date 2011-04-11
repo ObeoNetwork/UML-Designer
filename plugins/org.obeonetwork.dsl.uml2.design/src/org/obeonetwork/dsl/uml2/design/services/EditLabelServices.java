@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.services;
 
+import java.util.Iterator;
+
 import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.DataStoreNode;
@@ -19,12 +21,19 @@ import org.eclipse.uml2.uml.OpaqueExpression;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Region;
+import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.TypedElement;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.util.UMLSwitch;
 
 public class EditLabelServices extends UMLSwitch<Element> {
+	public final static String NL = System.getProperty("line.separator");
+
+	public final static String OPEN_QUOTE_MARK = "\u00AB";
+
+	public final static String CLOSE_QUOTE_MARK = "\u00BB";
+	
 	private String editedLabelContent;
 	
 	public Element editUmlLabel(Element context, String editedLabelContent) {
@@ -98,11 +107,35 @@ public class EditLabelServices extends UMLSwitch<Element> {
 
 	@Override
 	public Element caseNamedElement(NamedElement object) {
-		// TODO Remove possible stereotypes
-		object.setName(editedLabelContent);
-		
+		object.setName(editedLabelContent.replace(computeStereotypes(object), ""));
 		return object;
 	}
+
+	private String computeStereotypes(Element element) {
+		Iterator<Stereotype> it = element.getAppliedStereotypes().iterator();
+
+		if (!it.hasNext()) {
+			return "";
+		}
+
+		StringBuffer stereotypeLabel = new StringBuffer();
+		stereotypeLabel.append(OPEN_QUOTE_MARK);
+		for (;;) {
+			Stereotype appliedStereotype = it.next();
+
+			stereotypeLabel.append(appliedStereotype.getName());
+			if (it.hasNext()) {
+				stereotypeLabel.append(", ");
+			} else {
+				break;
+			}
+		}
+		stereotypeLabel.append(CLOSE_QUOTE_MARK);
+		stereotypeLabel.append(NL);
+
+		return stereotypeLabel.toString();
+	}
+
 	
 	@Override
 	public Element caseTypedElement(TypedElement object) {

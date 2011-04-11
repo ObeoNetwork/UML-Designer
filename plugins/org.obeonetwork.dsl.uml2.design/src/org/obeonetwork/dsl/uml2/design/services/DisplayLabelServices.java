@@ -37,7 +37,7 @@ import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.util.UMLSwitch;
 
 public class DisplayLabelServices extends UMLSwitch<String> {
-	public final static String NL = "\n";
+	public final static String NL = System.getProperty("line.separator");
 	
 	public final static String OPEN_QUOTE_MARK = "\u00AB";
 	
