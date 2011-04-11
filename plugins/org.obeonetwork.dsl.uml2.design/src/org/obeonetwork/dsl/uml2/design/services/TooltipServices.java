@@ -13,42 +13,12 @@ package org.obeonetwork.dsl.uml2.design.services;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.InstanceValue;
 import org.eclipse.uml2.uml.Property;
+import org.obeonetwork.dsl.uml2.design.services.internal.TooltipLabelSwitch;
 
-public class TooltipServices extends DisplayLabelServices {
+public class TooltipServices {
 	
 	public String computeUmlTooltip(Element element) {
-		return doSwitch(element);
-	}
-
-	@Override
-	public String caseProperty(Property object) {
-		String tooltip = caseStructuralFeature(object);
-		if (object.getDefault() != null && !"".equals(object.getDefault().trim())) {
-			// is the label on multiple lines ?
-			if (object.getDefault().contains(NL)) {
-				tooltip += " = {";
-				String[] defaultValue = object.getDefault().split(NL);
-				// We use only the 5 first lines
-				for (int i = 0; i < defaultValue.length; i++) {
-					if (i >= 4) {
-						tooltip += NL + "...";
-						break;
-					} else {
-						tooltip += NL + defaultValue[i];
-					}
-				}
-				tooltip += NL + "}";
-			} else {
-				tooltip += " = " + object.getDefault();
-			}
-		} else if (object.getDefaultValue() != null && object.getDefaultValue() instanceof InstanceValue) {
-			tooltip += " = " + ((InstanceValue)object.getDefaultValue()).getName();
-		}
-		return tooltip;
-	}
-
-	@Override
-	public String caseElement(Element object) {
-		return computeUmlLabel(object);
+		final TooltipLabelSwitch tooltipLabel = new TooltipLabelSwitch();
+		return tooltipLabel.doSwitch(element);
 	}
 }

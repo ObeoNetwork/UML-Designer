@@ -1,0 +1,33 @@
+package org.obeonetwork.dsl.uml2.design.services.internal;
+
+import org.eclipse.uml2.uml.InstanceValue;
+import org.eclipse.uml2.uml.Property;
+
+public class TooltipLabelSwitch extends DisplayLabelSwitch {
+	@Override
+	public String caseProperty(Property object) {
+		String tooltip = caseStructuralFeature(object);
+		if (object.getDefault() != null && !"".equals(object.getDefault().trim())) {
+			// is the label on multiple lines ?
+			if (object.getDefault().contains(NL)) {
+				tooltip += " = {";
+				String[] defaultValue = object.getDefault().split(NL);
+				// We use only the 5 first lines
+				for (int i = 0; i < defaultValue.length; i++) {
+					if (i >= 4) {
+						tooltip += NL + "...";
+						break;
+					} else {
+						tooltip += NL + defaultValue[i];
+					}
+				}
+				tooltip += NL + "}";
+			} else {
+				tooltip += " = " + object.getDefault();
+			}
+		} else if (object.getDefaultValue() != null && object.getDefaultValue() instanceof InstanceValue) {
+			tooltip += " = " + ((InstanceValue)object.getDefaultValue()).getName();
+		}
+		return tooltip;
+	}
+}
