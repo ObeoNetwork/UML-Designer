@@ -13,6 +13,7 @@ package org.obeonetwork.dsl.uml2.design.services.internal;
 import java.util.Iterator;
 
 import org.eclipse.uml2.uml.ActivityEdge;
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.DataStoreNode;
 import org.eclipse.uml2.uml.Element;
@@ -37,6 +38,12 @@ public class EditLabelSwitch  extends UMLSwitch<Element> implements ILabelConsta
 		this.editedLabelContent = editedLabelContent;
 	}
 	
+	@Override
+	public Element caseComment(Comment comment) {
+		comment.setBody(editedLabelContent);
+		return comment;
+	}
+
 	@Override
 	public Element caseProperty(Property object) {
 		PropertyServices.parseInputLabel(object, editedLabelContent);
