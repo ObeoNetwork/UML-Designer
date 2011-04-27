@@ -28,6 +28,7 @@ public class ReconnectSwitch extends UMLSwitch<Element> {
 	public static final int RECONNECT_TARGET = 1;
 	
 	private int reconnectKind;
+	@SuppressWarnings("unused")
 	private Element oldPointedElement;
 	private Element newPointedElement;
 	
