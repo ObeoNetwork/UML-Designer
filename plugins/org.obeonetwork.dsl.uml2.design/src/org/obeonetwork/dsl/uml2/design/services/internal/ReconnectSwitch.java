@@ -13,6 +13,8 @@ package org.obeonetwork.dsl.uml2.design.services.internal;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.ConnectableElement;
+import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Generalization;
@@ -97,5 +99,19 @@ public class ReconnectSwitch extends UMLSwitch<Element> {
 			}
 		}
 		return association;
+	}
+	
+	
+	public Element caseConnector(Connector connector) {
+		if (RECONNECT_SOURCE == reconnectKind) {
+			if (newPointedElement instanceof ConnectableElement) {
+				connector.getEnds().get(0).setRole((ConnectableElement) newPointedElement);
+			}
+		} else {
+			if (newPointedElement instanceof ConnectableElement) {
+				connector.getEnds().get(1).setRole((ConnectableElement) newPointedElement);
+			}
+		}
+		return connector;
 	}
 }
