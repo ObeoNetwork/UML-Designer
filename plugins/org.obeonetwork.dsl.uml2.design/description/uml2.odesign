@@ -1720,14 +1720,14 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description:DiagramDescription" documentation="Diagram for Use Cases" name="Use Case Diagram" titleExpression="&lt;%name%> Use Case Diagram" domainClass="uml.Package">
+    <ownedRepresentations xsi:type="description:DiagramDescription" documentation="Diagram for Use Cases" name="Use Case Diagram" titleExpression="&lt;%name%> Use Case Diagram" domainClass="uml.Package" enablePopupBars="true">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
       <layout xsi:type="description:CompositeLayout" direction="LeftToRight"/>
       <defaultLayer name="Use Case">
         <nodeMappings name="UCD_Actor" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%current.eAllContents%>" createElements="false" documentation="Mapping to create actors" domainClass="uml.Actor">
           <style xsi:type="style:WorkspaceImageDescription" labelSize="10" showIcon="false" resizeKind="NSEW" workspacePath="/org.obeonetwork.dsl.uml2.design/images/Actor.png"/>
         </nodeMappings>
-        <edgeMappings name="UCD_Association" semanticCandidatesExpression="&lt;%getRootContainer().eAllContents(&quot;Association&quot;)%>" semanticElements="&lt;%memberEnd + current%>" documentation="Mapping to create associations between actors and use cases" sourceMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_Actor'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']/@subNodeMappings[name='UCD_UseCase']" targetMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']/@subNodeMappings[name='UCD_UseCase'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_Actor']" targetFinderExpression="&lt;%memberEnd.nGet(0).type%>" sourceFinderExpression="&lt;%memberEnd.nGet(1).type%>" targetExpression="&lt;%current%>" domainClass="uml.Association" useDomainElement="true">
+        <edgeMappings name="UCD_Association" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%getRootContainer().eAllContents(&quot;Association&quot;)%>" semanticElements="&lt;%memberEnd + current%>" documentation="Mapping to create associations between actors and use cases" sourceMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_Actor'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']/@subNodeMappings[name='UCD_UseCase']" targetMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']/@subNodeMappings[name='UCD_UseCase'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_Actor']" targetFinderExpression="&lt;%memberEnd.nGet(0).type%>" sourceFinderExpression="&lt;%memberEnd.nGet(1).type%>" targetExpression="&lt;%current%>" domainClass="uml.Association" useDomainElement="true">
           <style showIcon="false" labelExpression="&lt;%&quot;&quot;%>" targetArrow="NoDecoration" sizeComputationExpression="1">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
@@ -1899,6 +1899,50 @@
           </subSections>
         </toolSections>
       </defaultLayer>
+      <optionalLayers name="Imported packages">
+        <containerMappings name="UCD_ImportedPackage" deletionDescription="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@optionalLayers[name='Imported%20packages']/@toolSections.1/@ownedTools[name='Delete%20ImportPackage']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%packageImport.importedPackage%>" domainClass="uml.Package" dropDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='edit']/@ownedTools[name='Drop%20Interface%20or%20Component%20on%20canvas']" reusedNodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_Actor']" reusedContainerMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']">
+          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" labelExpression="&lt;%computeUmlLabel()%>" labelAlignment="LEFT" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Imported packages">
+          <ownedTools xsi:type="tool:SelectionWizardDescription" documentation="Imports one or many packages." name="Import Package" forceRefresh="true" candidatesExpression="&lt;%allAvailableRootPackages + allAvailableRootPackages.eAllContents(&quot;Package&quot;) - self - packageImport.importedPackage%>" multiple="true" tree="true" rootExpression="&lt;%allAvailableRootPackages%>" childrenExpression="&lt;%nestedPackage%>" message="Select the package to import" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/PackageImport.gif" windowTitle="New package import">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
+                <subModelOperations xsi:type="tool:For" expression="&lt;%$element%>" iteratorName="selectedPackage">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$diagram.target%>">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.PackageImport" referenceName="packageImport">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="importedPackage" valueExpression="&lt;%$selectedPackage%>"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <element name="element"/>
+            <containerView name="containerView"/>
+            <container name="container"/>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="delete">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete ImportPackage">
+            <element name="element"/>
+            <elementView name="view"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$containerView.target.packageImport[importedPackage==$element]%>">
+                <subModelOperations xsi:type="tool:RemoveElement"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <decorationDescriptionsSet>
+          <decorationDescriptions xsi:type="description:MappingBasedDecoration" name="Package Import" position="NORTH_EAST" decoratorPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/PackageImport.gif" mappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@optionalLayers[name='Imported%20packages']/@containerMappings[name='UCD_ImportedPackage']"/>
+        </decorationDescriptionsSet>
+      </optionalLayers>
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.UMLServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.UMLProfileServices"/>
