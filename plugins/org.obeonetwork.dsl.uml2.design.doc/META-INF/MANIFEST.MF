@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: UML Viewpoint Documentation
+Bundle-SymbolicName: org.obeonetwork.dsl.uml2.design.doc
+Bundle-Version: 0.9.0.qualifier
+Bundle-Vendor: Obeo.fr
