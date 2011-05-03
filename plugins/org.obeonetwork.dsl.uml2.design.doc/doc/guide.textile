@@ -1,0 +1,47 @@
+
+h1. Features
+
+
+h2. Component Diagram
+
+
+h3. Connector
+
+You can link two ports using assembly or delegation connectors.
+
+Assembly Connector :
+
+!features/component_pics/assembly connector.JPG!
+
+Delegation Connector :
+
+!features/component_pics/delegation connector.JPG!
+
+h3. Composite Components
+
+!features/component_pics/composite components.JPG!
+
+h3. Using Class
+
+As a component :
+
+!features/component_pics/class as component.JPG!
+
+In a component :
+
+!features/component_pics/implementation classes in component.JPG!
+
+
+h3. Required and Provided Interfaces
+
+Using ports :
+
+!features/component_pics/exchange through ports.JPG!
+
+Or directy on the components :
+
+!features/component_pics/exchange through component.JPG!
+
+h3. Package imports
+
+!features/component_pics/package imports.JPG!
