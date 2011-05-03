@@ -55,19 +55,37 @@ public class DisplayLabelSwitch  extends UMLSwitch<String> implements ILabelCons
 
 	@Override
 	public String caseTransition(Transition object) {
+		String result = object.getName();
+		if (result !=null) {
+			result += " ";
+		} else
+		{
+			result = "";
+		}
+			
 		Constraint constraint = object.getGuard();
 		if (constraint != null) {
 			ValueSpecification value = constraint.getSpecification();
 			
-			if(value instanceof OpaqueExpression) {
-				String expr = ((OpaqueExpression)value).getBodies().get(0);
-				if(expr != null && !"".equalsIgnoreCase(expr) && !"true".equalsIgnoreCase(expr) && !"1".equalsIgnoreCase(expr)) {
-					return "[" + expr + "]";
+			if(value instanceof OpaqueExpression && ((OpaqueExpression) value).getBodies().size() > 0) {
+				result += "[" ;
+				Iterator<String> it = ((OpaqueExpression) value).getBodies().iterator();
+				while (it.hasNext()){
+					String expr = it.next();
+					if(expr != null && !"".equalsIgnoreCase(expr) && !"true".equalsIgnoreCase(expr) && !"1".equalsIgnoreCase(expr)) {
+						result += expr;
+					}
+					if (it.hasNext())
+					{
+						result += ",";
+					}
+					
 				}
+				result += "]";
 			}
 		}
 		
-		return "";
+		return result;
 	}
 
 	public String computeStereotypes(Element element) {
