@@ -687,20 +687,20 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="CO_Usage" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%current.eAllContents%>" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_Interface']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="&lt;%eContainer()%>" domainClass="uml.Usage" useDomainElement="true">
-          <style lineStyle="dot" sizeComputationExpression="2" routingStyle="manhattan">
+        <edgeMappings name="CO_Usage" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_Interface']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="&lt;%eContainer()%>" domainClass="uml.Usage" useDomainElement="true">
+          <style lineStyle="dot" sourceArrow="OutputArrow" targetArrow="NoDecoration" sizeComputationExpression="2" routingStyle="manhattan">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
           </style>
         </edgeMappings>
         <edgeMappings name="CO_Usage_From_Port" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%current.eAllContents%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']/@borderedNodeMappings[name='CO_Port']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_Interface']" targetFinderExpression="&lt;%type%>" sourceFinderExpression="&lt;%eContainer()%>" domainClass="uml.Usage">
-          <style lineStyle="dot" sizeComputationExpression="2" routingStyle="manhattan">
+          <style lineStyle="dot" targetArrow="OutputArrow" sizeComputationExpression="2" routingStyle="manhattan">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
           </style>
         </edgeMappings>
-        <edgeMappings name="CO_Realization" semanticCandidatesExpression="&lt;%current.eAllContents%>" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']/@borderedNodeMappings[name='CO_Port']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_Interface']" targetFinderExpression="&lt;%contract%>" sourceFinderExpression="&lt;%supplier%>" domainClass="uml.InterfaceRealization" useDomainElement="true">
-          <style showIcon="false" sizeComputationExpression="2">
+        <edgeMappings name="CO_Realization" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']/@borderedNodeMappings[name='CO_Port']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_Interface']" targetFinderExpression="&lt;%contract%>" sourceFinderExpression="&lt;%supplier%>" domainClass="uml.InterfaceRealization" useDomainElement="true">
+          <style showIcon="false" targetArrow="NoDecoration" sizeComputationExpression="2">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
           </style>
@@ -725,7 +725,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
             </style>
             <conditionnalStyles predicateExpression="&lt;%redefinedPort.nSize > 0%>">
-              <style xsi:type="style:BundledImageDescription" labelFormat="italic">
+              <style xsi:type="style:BundledImageDescription" labelFormat="italic" sizeComputationExpression="2">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -738,7 +738,7 @@
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
           <conditionnalStyles predicateExpression="&lt;%eClass.name == &quot;Class&quot;%>">
-            <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" backgroundStyle="GradientTopToBottom">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -754,10 +754,10 @@
             <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
           </style>
         </containerMappings>
-        <toolSections name="Component">
+        <toolSections name="Node">
           <subSections name="create">
             <ownedTools xsi:type="tool:ToolGroup" name="Component">
-              <tools xsi:type="tool:ContainerCreationDescription" name="Component" precondition="&lt;%self.filter(&quot;Component&quot;)%>" containerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']">
+              <tools xsi:type="tool:ContainerCreationDescription" name="Component" containerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']">
                 <variable name="container"/>
                 <viewVariable name="containerView"/>
                 <initialOperation>
@@ -794,68 +794,6 @@
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
-            <ownedTools xsi:type="tool:EdgeCreationDescription" name="Usage" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_Usage'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_Usage_From_Port']">
-              <sourceVariable name="source"/>
-              <targetVariable name="target"/>
-              <sourceViewVariable name="sourceView"/>
-              <targetViewVariable name="targetView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source%>">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;Port&quot;)%>">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$target%>"/>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="if &lt;%self.filter(&quot;Component&quot;)%>">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Usage" referenceName="packagedElement">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="&lt;%$target%>"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </ownedTools>
-            <ownedTools xsi:type="tool:EdgeCreationDescription" name="Realization" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_Realization']">
-              <sourceVariable name="source"/>
-              <targetVariable name="target"/>
-              <sourceViewVariable name="sourceView"/>
-              <targetViewVariable name="targetView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;BehavioredClassifier&quot;)%>">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.InterfaceRealization" referenceName="interfaceRealization">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="contract" valueExpression="&lt;%$target%>"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="&lt;%$source%>"/>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </ownedTools>
-            <ownedTools xsi:type="tool:EdgeCreationDescription" name="Redefined" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_Redefined']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Association.gif">
-              <sourceVariable name="source"/>
-              <targetVariable name="target"/>
-              <sourceViewVariable name="sourceView"/>
-              <targetViewVariable name="targetView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source%>">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="redefinedPort" valueExpression="&lt;%$target%>"/>
-                </firstModelOperations>
-              </initialOperation>
-            </ownedTools>
-            <ownedTools xsi:type="tool:EdgeCreationDescription" name="Connector" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_Connector']">
-              <sourceVariable name="source"/>
-              <targetVariable name="target"/>
-              <sourceViewVariable name="sourceView"/>
-              <targetViewVariable name="targetView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;StructuredClassifier&quot;)%>">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Connector" referenceName="ownedConnector">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="connect_&lt;%$source.name%>To&lt;%$target.name%>"/>
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ConnectorEnd" referenceName="end">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="role" valueExpression="&lt;%$source%>"/>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ConnectorEnd" referenceName="end">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="role" valueExpression="&lt;%$target%>"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </ownedTools>
           </subSections>
           <subSections name="edit">
             <ownedTools xsi:type="tool:ContainerDropDescription" name="Drop Interface or Component on canvas" precondition="&lt;%(filter(&quot;Interface&quot;) != null || filter(&quot;Class&quot;) != null)%>" forceRefresh="true" mappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_Interface'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']">
@@ -885,6 +823,70 @@
               </initialOperation>
             </ownedTools>
           </subSections>
+        </toolSections>
+        <toolSections name="Edge">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Usage" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_Usage'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_Usage_From_Port']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source%>">
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;Port&quot;)%>">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$target%>"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;Component&quot;)%>">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Usage" referenceName="packagedElement">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="&lt;%$target%>"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Realization" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_Realization']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;BehavioredClassifier&quot;)%>">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.InterfaceRealization" referenceName="interfaceRealization">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="contract" valueExpression="&lt;%$target%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="&lt;%$source%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Redefined" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_Redefined']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Association.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source%>">
+                <subModelOperations xsi:type="tool:SetValue" featureName="redefinedPort" valueExpression="&lt;%$target%>"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Connector" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_Connector']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;StructuredClassifier&quot;)%>">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Connector" referenceName="ownedConnector">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="connect_&lt;%$source.name%>To&lt;%$target.name%>"/>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ConnectorEnd" referenceName="end">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="role" valueExpression="&lt;%$source%>"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ConnectorEnd" referenceName="end">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="role" valueExpression="&lt;%$target%>"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
         </toolSections>
       </defaultLayer>
       <optionalLayers name="Imported packages">
@@ -1249,7 +1251,7 @@
           </subContainerMappings>
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="25" arcHeight="25" borderSizeComputationExpression="1" labelSize="10" labelExpression="&lt;%owner.name+&quot; : &quot;+name%>" roundedCorner="true" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_chocolate']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_chocolate']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_chocolate']"/>
           </style>
