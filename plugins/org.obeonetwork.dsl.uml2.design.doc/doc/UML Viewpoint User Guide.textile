@@ -8,6 +8,18 @@ h1. Getting Started
 h1. Features
 
 
+h2. Class Diagram
+
+h3. Support for Broken Associations
+
+
+It might happen that for some reason you have an *Association* instance in your package which doesn't have the proper *ends*. In that case
+the class diagram will show the broken associations as nodes :
+
+!features/class_pics/broken association.JPG!
+
+You can use the *Association* tools in the palette __(Association, Composition and Aggregation)__ to re-attach the Association to a classifier.
+
 h2. Component Diagram
 
 

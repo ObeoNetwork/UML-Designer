@@ -1,17 +1,10 @@
 <?xml version='1.0' encoding='utf-8' ?>
-<!--
-Copyright (c) 2009, 2011 Obeo.
-All rights reserved. This program and the accompanying materials
-are made available under the terms of the Eclipse Public License v1.0
-which accompanies this distribution, and is available at
-http://www.eclipse.org/legal/epl-v10.html
-
-Contributors:
-    Obeo - initial API and implementation
--->
 <toc topic="doc/UML Viewpoint User Guide.html" label="UML Viewpoint User Guide">
 	<topic href="doc/UML Viewpoint User Guide.html" label="Getting Started"></topic>
 	<topic href="doc/UML Viewpoint User Guide.html#Features" label="Features">
+		<topic href="doc/UML Viewpoint User Guide.html#ClassDiagram" label="Class Diagram">
+			<topic href="doc/UML Viewpoint User Guide.html#SupportforBrokenAssociations" label="Support for Broken Associations"></topic>
+		</topic>
 		<topic href="doc/UML Viewpoint User Guide.html#ComponentDiagram" label="Component Diagram">
 			<topic href="doc/UML Viewpoint User Guide.html#Connector" label="Connector"></topic>
 			<topic href="doc/UML Viewpoint User Guide.html#CompositeComponents" label="Composite Components"></topic>
