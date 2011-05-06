@@ -138,6 +138,13 @@
     <ownedRepresentations xsi:type="description:DiagramDescription" documentation="Representation to edit class diagrams" name="Class Diagram" titleExpression="&lt;%name%> Class Diagram" domainClass="uml.Package" preconditionExpression="" enablePopupBars="true">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
       <defaultLayer name="Class">
+        <nodeMappings name="CD_BrokenAssociation" semanticCandidatesExpression="&lt;%self.eContents().filter(&quot;Association&quot;)[memberEnd.nSize&lt;2]%>" semanticElements="&lt;%self + self.memberEnd%>" domainClass="Association">
+          <style xsi:type="style:BundledImageDescription" labelExpression="&lt;%name%> : (Association with missing ends)" shape="dot">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </nodeMappings>
         <edgeMappings name="CD_Generalization" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_DataType'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Interface'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_PrimitiveType']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_DataType'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Interface'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_PrimitiveType']" targetFinderExpression="&lt;%general%>" sourceFinderExpression="&lt;%owner%>" targetExpression="&lt;%self%>" domainClass="uml.Generalization" useDomainElement="true" reconnections="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']">
           <style showIcon="false" targetArrow="InputClosedArrow" sizeComputationExpression="1">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -230,6 +237,12 @@
         </edgeMappings>
         <edgeMappings name="CD_InterfaceRealization" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Interface']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="&lt;%client%>" targetExpression="&lt;%self%>" domainClass="uml.InterfaceRealization" useDomainElement="true" reconnections="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']">
           <style showIcon="false" lineStyle="dash" targetArrow="InputClosedArrow" sizeComputationExpression="1">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="CD_BrokenAssociationToClasses" semanticCandidatesExpression="&lt;%self.eContents().filter(&quot;Association&quot;)[memberEnd.nSize &lt; 2].memberEnd%>" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@nodeMappings[name='CD_BrokenAssociation']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Interface'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_DataType'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_PrimitiveType']" targetFinderExpression="&lt;%type%>" sourceFinderExpression="&lt;%eContainer()%>" domainClass="Property" useDomainElement="true">
+          <style showIcon="false" labelExpression="&lt;%computeUmlLabel()%>" targetArrow="NoDecoration" sizeComputationExpression="1">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
@@ -483,82 +496,131 @@
         </toolSections>
         <toolSections name="Relationships">
           <ownedTools xsi:type="tool:ToolGroup" name="Associations">
-            <tools xsi:type="tool:EdgeCreationDescription" documentation="Create a new Association" name="Association" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']">
+            <tools xsi:type="tool:EdgeCreationDescription" documentation="Create a new Association" name="Association" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']" extraSourceMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@nodeMappings[name='CD_BrokenAssociation']">
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
               <sourceViewVariable name="sourceView"/>
               <targetViewVariable name="targetView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;Package&quot;)%>">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Association" referenceName="packagedElement">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedEnd">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$source.name.toL1Case%>s"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$source%>"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="-1"/>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$source.filter(&quot;Association&quot;)%>">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source%>">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedEnd" variableName="addedProperty">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$target.name.toL1Case%>s"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$target%>"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="-1"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source%>">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="navigableOwnedEnd" valueExpression="&lt;%addedProperty%>"/>
+                        </subModelOperations>
+                      </subModelOperations>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedEnd">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$target.name.toL1Case%>s"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$target%>"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="-1"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$source.filter(&quot;Association&quot;).nSize == 0%>">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;Package&quot;)%>">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Association" referenceName="packagedElement">
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedEnd">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$source.name.toL1Case%>s"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$source%>"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="-1"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedEnd">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$target.name.toL1Case%>s"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$target%>"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="-1"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="navigableOwnedEnd" valueExpression="&lt;%memberEnd.nGet(0) + memberEnd.nGet(1)%>"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%ownedEnd.nGet(0).name%>To&lt;%ownedEnd.nGet(1).name.toU1Case()%>"/>
+                      </subModelOperations>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="navigableOwnedEnd" valueExpression="&lt;%memberEnd.nGet(0) + memberEnd.nGet(1)%>"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%ownedEnd.nGet(0).name%>To&lt;%ownedEnd.nGet(1).name.toU1Case()%>"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:EdgeCreationDescription" documentation="Create a new Association" name="Composition" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Association_composite.gif">
+            <tools xsi:type="tool:EdgeCreationDescription" documentation="Create a new Association" name="Composition" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Association_composite.gif" extraSourceMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@nodeMappings[name='CD_BrokenAssociation']">
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
               <sourceViewVariable name="sourceView"/>
               <targetViewVariable name="targetView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;Package&quot;)%>">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Association" referenceName="packagedElement">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedEnd">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$source.name.toL1Case%>s"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$source%>"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="-1"/>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$source.filter(&quot;Association&quot;)%>">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source%>">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedEnd">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$target.name.toL1Case%>s"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$target%>"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="-1"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source%>">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="navigableOwnedEnd" valueExpression="&lt;%addedProperty%>"/>
+                        </subModelOperations>
+                      </subModelOperations>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedEnd">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$target.name.toL1Case%>s"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$target%>"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="-1"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$source.filter(&quot;Association&quot;).nSize == 0%>">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Association" referenceName="packagedElement">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedEnd">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$source.name.toL1Case%>s"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$source%>"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="-1"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedEnd">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$target.name.toL1Case%>s"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$target%>"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="-1"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="navigableOwnedEnd" valueExpression="&lt;%memberEnd.nGet(0) + memberEnd.nGet(1)%>"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%ownedEnd.nGet(0).name%>To&lt;%ownedEnd.nGet(1).name.toU1Case()%>"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="navigableOwnedEnd" valueExpression="&lt;%memberEnd.nGet(0) + memberEnd.nGet(1)%>"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%ownedEnd.nGet(0).name%>To&lt;%ownedEnd.nGet(1).name.toU1Case()%>"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:EdgeCreationDescription" documentation="Create a new Association" name="Aggregation" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Association_shared.gif">
+            <tools xsi:type="tool:EdgeCreationDescription" documentation="Create a new Association" name="Aggregation" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Association_shared.gif" extraSourceMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@nodeMappings[name='CD_BrokenAssociation']">
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
               <sourceViewVariable name="sourceView"/>
               <targetViewVariable name="targetView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;Package&quot;)%>">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Association" referenceName="packagedElement">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedEnd">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$source.name.toL1Case%>s"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$source%>"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="-1"/>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$source.filter(&quot;Association&quot;)%>">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source%>">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedEnd">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$target.name.toL1Case%>s"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$target%>"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="shared"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="-1"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source%>">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="navigableOwnedEnd" valueExpression="&lt;%addedProperty%>"/>
+                        </subModelOperations>
+                      </subModelOperations>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedEnd">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$target.name.toL1Case%>s"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$target%>"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="shared"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="-1"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$source.filter(&quot;Association&quot;).nSize == 0%>">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Association" referenceName="packagedElement">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedEnd">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$source.name.toL1Case%>s"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$source%>"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="-1"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedEnd">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$target.name.toL1Case%>s"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$target%>"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="shared"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="-1"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="navigableOwnedEnd" valueExpression="&lt;%memberEnd.nGet(0) + memberEnd.nGet(1)%>"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%ownedEnd.nGet(0).name%>To&lt;%ownedEnd.nGet(1).name.toU1Case()%>"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="navigableOwnedEnd" valueExpression="&lt;%memberEnd.nGet(0) + memberEnd.nGet(1)%>"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%ownedEnd.nGet(0).name%>To&lt;%ownedEnd.nGet(1).name.toU1Case()%>"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
