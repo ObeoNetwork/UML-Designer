@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_l-b_kRHGEeC7if4C5w3Tgg" name="test">
+  <packagedElement xmi:type="uml:Package" xmi:id="_uyJ8kHVeEeCIlLXZcpYEvw" name="features">
+    <packageImport xmi:id="_biosUHVhEeCIlLXZcpYEvw" importedPackage="_9Pon4HVgEeCIlLXZcpYEvw"/>
+    <packagedElement xmi:type="uml:Component" xmi:id="_BIA5kHVfEeCIlLXZcpYEvw" name="LoanManagement">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_mzzJcHVfEeCIlLXZcpYEvw" name="bank" type="_c8hiUHVfEeCIlLXZcpYEvw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_B3OwAHVfEeCIlLXZcpYEvw" name="CustomerCatalog">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_44QNYHVfEeCIlLXZcpYEvw" name="order query" redefinedPort="_5SqRcHVfEeCIlLXZcpYEvw"/>
+      <packagedElement xmi:type="uml:Component" xmi:id="_Xq0_MHVfEeCIlLXZcpYEvw" name="OrdersManagement">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_5SqRcHVfEeCIlLXZcpYEvw" name="order query"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:Component" xmi:id="_Rq3A0HVfEeCIlLXZcpYEvw" name="Accounts"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_LGvMgHVfEeCIlLXZcpYEvw" name="BankAccess" clientDependency="_ex_2MHVfEeCIlLXZcpYEvw">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_OoYHQHVfEeCIlLXZcpYEvw" name="iATM"/>
+      <interfaceRealization xmi:id="_ex_2MHVfEeCIlLXZcpYEvw" supplier="_c8hiUHVfEeCIlLXZcpYEvw _OoYHQHVfEeCIlLXZcpYEvw" client="_LGvMgHVfEeCIlLXZcpYEvw" contract="_c8hiUHVfEeCIlLXZcpYEvw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_c8hiUHVfEeCIlLXZcpYEvw" name="BankProtocol"/>
+    <packagedElement xmi:type="uml:Component" xmi:id="_X7NvIHVgEeCIlLXZcpYEvw" name="Component4">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_etVjMHVgEeCIlLXZcpYEvw" name="com"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_ZObqgHVgEeCIlLXZcpYEvw" name="Component5">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_eBtzUHVgEeCIlLXZcpYEvw" name="com"/>
+      <ownedConnector xmi:id="_fzbBgHVgEeCIlLXZcpYEvw" name="assembly connector">
+        <end xmi:id="_fzc2sHVgEeCIlLXZcpYEvw" role="_eBtzUHVgEeCIlLXZcpYEvw"/>
+        <end xmi:id="_fzer4HVgEeCIlLXZcpYEvw" role="_etVjMHVgEeCIlLXZcpYEvw"/>
+      </ownedConnector>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_g7EmEHVgEeCIlLXZcpYEvw" name="Component6">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_lQaOoHVgEeCIlLXZcpYEvw" name="com"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_huCUEHVgEeCIlLXZcpYEvw" name="Component7">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_k5aq8HVgEeCIlLXZcpYEvw" name="com"/>
+      <ownedConnector xmi:id="_mstNgHVgEeCIlLXZcpYEvw" name="delegation connector" kind="delegation">
+        <end xmi:id="_msuboHVgEeCIlLXZcpYEvw" role="_k5aq8HVgEeCIlLXZcpYEvw"/>
+        <end xmi:id="_msw34HVgEeCIlLXZcpYEvw" role="_lQaOoHVgEeCIlLXZcpYEvw"/>
+      </ownedConnector>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_ruOmoHVgEeCIlLXZcpYEvw" name="Component8">
+      <packagedElement xmi:type="uml:Class" xmi:id="_tgaV8HVgEeCIlLXZcpYEvw" name="ImplementationClass"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Class" xmi:id="_vxhc8HVgEeCIlLXZcpYEvw" name="AccountsManager" clientDependency="_2qGeUHVgEeCIlLXZcpYEvw">
+      <interfaceRealization xmi:id="_2qGeUHVgEeCIlLXZcpYEvw" supplier="_1EE7sHVgEeCIlLXZcpYEvw _vxhc8HVgEeCIlLXZcpYEvw" client="_vxhc8HVgEeCIlLXZcpYEvw" contract="_1EE7sHVgEeCIlLXZcpYEvw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_1EE7sHVgEeCIlLXZcpYEvw" name="AccountsQuery"/>
+    <packagedElement xmi:type="uml:Component" xmi:id="_qCbWsHVhEeCIlLXZcpYEvw" name="AComponent">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_v8ux8HVhEeCIlLXZcpYEvw" name="Port1" type="_C0rk0HVhEeCIlLXZcpYEvw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_-MFzoHVhEeCIlLXZcpYEvw" name="LoanManagement">
+      <packagedElement xmi:type="uml:Usage" xmi:id="_bjX2sHViEeCIlLXZcpYEvw" supplier="_BpwNUHViEeCIlLXZcpYEvw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="__LmI0HVhEeCIlLXZcpYEvw" name="BankAccess" clientDependency="_Gryj0HViEeCIlLXZcpYEvw">
+      <interfaceRealization xmi:id="_Gryj0HViEeCIlLXZcpYEvw" supplier="_BpwNUHViEeCIlLXZcpYEvw __LmI0HVhEeCIlLXZcpYEvw" client="__LmI0HVhEeCIlLXZcpYEvw" contract="_BpwNUHViEeCIlLXZcpYEvw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_BpwNUHViEeCIlLXZcpYEvw" name="BankProtocol"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_pfgaYHViEeCIlLXZcpYEvw" name="ClassWithPort">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_p8DMcHViEeCIlLXZcpYEvw" name="Port1"/>
+    </packagedElement>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_9Pon4HVgEeCIlLXZcpYEvw" name="other components">
+    <packagedElement xmi:type="uml:Component" xmi:id="_AWcn0HVhEeCIlLXZcpYEvw" name="Billing" clientDependency="_l4VU0HVhEeCIlLXZcpYEvw _mUfFUHVhEeCIlLXZcpYEvw">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_lAOoIHVhEeCIlLXZcpYEvw" name="Port1"/>
+      <interfaceRealization xmi:id="_l4VU0HVhEeCIlLXZcpYEvw" supplier="_C0rk0HVhEeCIlLXZcpYEvw _lAOoIHVhEeCIlLXZcpYEvw" client="_AWcn0HVhEeCIlLXZcpYEvw" contract="_C0rk0HVhEeCIlLXZcpYEvw"/>
+      <interfaceRealization xmi:id="_mUfFUHVhEeCIlLXZcpYEvw" supplier="_Dx1JkHVhEeCIlLXZcpYEvw _lAOoIHVhEeCIlLXZcpYEvw" client="_AWcn0HVhEeCIlLXZcpYEvw" contract="_Dx1JkHVhEeCIlLXZcpYEvw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_C0rk0HVhEeCIlLXZcpYEvw" name="BillingQuery"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_Dx1JkHVhEeCIlLXZcpYEvw" name="BillingOperation"/>
+  </packagedElement>
+</uml:Model>
