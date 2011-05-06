@@ -11,10 +11,7 @@
 package org.obeonetwork.dsl.uml2.design.services.internal;
 
 import java.util.Iterator;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-import org.eclipse.emf.ecore.xmi.impl.StringSegment;
 import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.DataStoreNode;
@@ -33,8 +30,6 @@ import org.obeonetwork.dsl.uml2.design.services.OperationServices;
 import org.obeonetwork.dsl.uml2.design.services.PropertyServices;
 
 public class EditLabelSwitch  extends UMLSwitch<Element> implements ILabelConstants {
-	
-	private Pattern insideBrackets = Pattern.compile("\\[(.*)\\]");
 	
 	private String editedLabelContent;
 	
@@ -77,15 +72,6 @@ public class EditLabelSwitch  extends UMLSwitch<Element> implements ILabelConsta
 	@Override
 	public Element caseTransition(Transition object) {
 		OpaqueExpression expr;
-		String transitionName = object.getName();
-		if (editedLabelContent.indexOf("[") != -1) {
-			transitionName = editedLabelContent.substring(0,
-					editedLabelContent.indexOf("["));
-		} else  if (editedLabelContent.trim().length() > 0){
-			transitionName = editedLabelContent;
-		}
-		object.setName(transitionName);
-		
 		Constraint constraint = object.getGuard();
 		if (constraint != null) {
 			expr = (OpaqueExpression)constraint.getSpecification();
@@ -103,18 +89,14 @@ public class EditLabelSwitch  extends UMLSwitch<Element> implements ILabelConsta
 			object.setGuard(constraint);
 		}
 		
-		
-		Matcher m = insideBrackets.matcher(editedLabelContent);
-		if (m.find()) {			
-		  expr.getBodies().clear();
-		  String listOfBodies = m.group(1);
-		  if (listOfBodies!=null) {
-		  String[] bodies = listOfBodies.split(",");
-			  for (String body : bodies) {
-				  expr.getBodies().add(body);
-			  }
-		  }
+		if (editedLabelContent.matches("\\[.*\\]")){
+			// Remove the first & last bracket character.
+			editedLabelContent = editedLabelContent.substring(1, editedLabelContent.length()-1);
 		}
+		
+		expr.getBodies().clear();
+		expr.getBodies().add(editedLabelContent);
+		
 		return object;
 	}
 
