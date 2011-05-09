@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_aXnO-GwyEeCS7MkD_uGtqA" name="class4s">
+  <packageImport xmi:id="_aXnO-WwyEeCS7MkD_uGtqA">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_aXnPCGwyEeCS7MkD_uGtqA" name="Class1">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_aXnPCWwyEeCS7MkD_uGtqA" name="port" aggregation="composite"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_aXnPCmwyEeCS7MkD_uGtqA" name="component1" aggregation="composite"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_BL1CwHf1EeCTa9SAStx3rw" name="Class4"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_xlGWwHf6EeCTa9SAStx3rw" name="No Ends"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_zNjiUHf6EeCTa9SAStx3rw" name="Only One End" memberEnd="_Eao5YHf7EeCTa9SAStx3rw">
+    <ownedEnd xmi:id="_Eao5YHf7EeCTa9SAStx3rw" name="class4s" type="_BL1CwHf1EeCTa9SAStx3rw" association="_zNjiUHf6EeCTa9SAStx3rw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_EatK0Hf7EeCTa9SAStx3rw" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_EasjwHf7EeCTa9SAStx3rw"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_HEScMHf7EeCTa9SAStx3rw" name="class1sToClass4s" memberEnd="_HEURYHf7EeCTa9SAStx3rw _HEZw8Hf7EeCTa9SAStx3rw" navigableOwnedEnd="_HEURYHf7EeCTa9SAStx3rw _HEZw8Hf7EeCTa9SAStx3rw">
+    <ownedEnd xmi:id="_HEURYHf7EeCTa9SAStx3rw" name="class1s" type="_aXnPCGwyEeCS7MkD_uGtqA" association="_HEScMHf7EeCTa9SAStx3rw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_HEX7wHf7EeCTa9SAStx3rw" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_HEXUsHf7EeCTa9SAStx3rw"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_HEZw8Hf7EeCTa9SAStx3rw" name="class4s" type="_BL1CwHf1EeCTa9SAStx3rw" aggregation="composite" association="_HEScMHf7EeCTa9SAStx3rw">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_HEepcHf7EeCTa9SAStx3rw" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_HEeCYHf7EeCTa9SAStx3rw"/>
+    </ownedEnd>
+  </packagedElement>
+  <profileApplication xmi:id="_aXnPDGwyEeCS7MkD_uGtqA">
+    <eAnnotations xmi:id="_aXnPDWwyEeCS7MkD_uGtqA" source="http://www.eclipse.org/uml2/2.0.0/UML">
+      <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
+    </eAnnotations>
+    <appliedProfile href="pathmap://UML_PROFILES/Standard.profile.uml#_0"/>
+  </profileApplication>
+</uml:Model>
