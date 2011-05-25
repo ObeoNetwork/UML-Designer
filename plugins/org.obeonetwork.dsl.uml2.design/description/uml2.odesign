@@ -137,6 +137,11 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description:DiagramDescription" documentation="Representation to edit class diagrams" name="Class Diagram" titleExpression="&lt;%name%> Class Diagram" domainClass="uml.Package" preconditionExpression="" enablePopupBars="true">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
+      <filters xsi:type="filter:CompositeFilterDescription" documentation="Hides elements (Classes, Interfaces, Associations, ...) not related to the selected (context) Class/Interface." name="Related filter">
+        <filters xsi:type="filter:VariableFilter" semanticConditionExpression="&lt;%current.isRelated($context)%>">
+          <ownedVariables candidatesExpression="&lt;%$diagram.ownedDiagramElements.target[eClass.name == &quot;Class&quot; || eClass.name == &quot;Interface&quot;]%>" message="Select the context" name="context"/>
+        </filters>
+      </filters>
       <defaultLayer name="Class">
         <nodeMappings name="CD_BrokenAssociation" semanticCandidatesExpression="&lt;%self.eContents().filter(&quot;Association&quot;)[memberEnd.nSize&lt;2]%>" semanticElements="&lt;%self + self.memberEnd%>" domainClass="Association">
           <style xsi:type="style:BundledImageDescription" labelExpression="&lt;%name%> : (Association with missing ends)" shape="dot">
@@ -263,7 +268,7 @@
             </style>
           </subNodeMappings>
         </containerMappings>
-        <containerMappings name="CD_Class" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%ownedType[eClass.name == &quot;Class&quot;]%>" domainClass="uml.Class" reusedNodeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Operation']" listContainer="true">
+        <containerMappings name="CD_Class" detailDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='related%20class%20diag']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%current.ownedType[eClass.name == &quot;Class&quot;]%>" domainClass="uml.Class" reusedNodeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Operation']" listContainer="true">
           <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" labelExpression="&lt;%computeUmlLabel()%>" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_orange']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -342,7 +347,7 @@
             </style>
           </conditionnalStyles>
         </containerMappings>
-        <containerMappings name="CD_NestedPackage" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%nestedPackage%>" domainClass="uml.Package" reusedContainerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_DataType'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Interface'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_PrimitiveType']">
+        <containerMappings name="CD_NestedPackage" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%nestedPackage%>" domainClass="uml.Package" reusedContainerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_DataType'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Interface'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_PrimitiveType'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_NestedPackage']">
           <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" labelExpression="&lt;%computeUmlLabel()%>" labelAlignment="LEFT" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -419,6 +424,10 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="related class diag" diagramDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']">
+            <containerViewVariable name="containerView"/>
+            <representationNameVariable name="diagramName"/>
           </ownedTools>
         </toolSections>
         <toolSections name="Features">
@@ -1272,6 +1281,224 @@
         </containerMappings>
       </defaultLayer>
     </ownedRepresentations>
+    <ownedRepresentations xsi:type="description:DiagramDescription" documentation="Representation to view related classes" name="Related Classes Diagram" titleExpression="&lt;%name%> Related Classes Diagram" domainClass="uml.Classifier" preconditionExpression="&lt;%eClass.name == &quot;Class&quot; || eClass.name == &quot;Interface&quot;%>" rootExpression="&lt;%eContainer(&quot;Model&quot;)%>" enablePopupBars="true">
+      <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
+      <defaultLayer name="Related Classes Diagram">
+        <nodeMappings name="CD_BrokenAssociation" semanticCandidatesExpression="&lt;%getAssociations()[memberEnd.nSize&lt;2]%>" semanticElements="&lt;%self + self.memberEnd%>" domainClass="Association">
+          <style xsi:type="style:BundledImageDescription" labelExpression="&lt;%name%> : (Association with missing ends)" shape="dot">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="CD_Generalization" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_DataType'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_Interface'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_PrimitiveType']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_DataType'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_Interface'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_PrimitiveType']" targetFinderExpression="&lt;%general%>" sourceFinderExpression="&lt;%owner%>" targetExpression="&lt;%self%>" domainClass="uml.Generalization" useDomainElement="true" reconnections="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']">
+          <style showIcon="false" targetArrow="InputClosedArrow" sizeComputationExpression="1">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="CD_Association" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%getAssociations()%>" semanticElements="&lt;%self + getSource + getTarget%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_Interface'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_DataType'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_PrimitiveType']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_Interface'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_DataType'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_PrimitiveType']" targetFinderExpression="&lt;%getTarget.type%>" sourceFinderExpression="&lt;%getSource.type%>" targetExpression="&lt;%self + getSource + getTarget%>" domainClass="uml.Association" useDomainElement="true" reconnections="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']">
+          <style showIcon="false" labelExpression="&lt;%computeUmlLabel()%>" targetArrow="NoDecoration" sizeComputationExpression="1">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+          <conditionnalStyles predicateExpression="&lt;%getTarget.isNavigable() &amp;&amp; getTarget.isShared()%>">
+            <style showIcon="false" labelExpression="&lt;%computeUmlLabel()%>" sourceArrow="Diamond" sizeComputationExpression="1">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%getTarget.isNavigable() &amp;&amp; getTarget.isComposite()%>">
+            <style showIcon="false" labelExpression="&lt;%computeUmlLabel()%>" sourceArrow="FillDiamond" sizeComputationExpression="1">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%!getTarget.isNavigable() &amp;&amp; getTarget.isShared()%>">
+            <style showIcon="false" labelExpression="&lt;%computeUmlLabel()%>" sourceArrow="Diamond" targetArrow="NoDecoration" sizeComputationExpression="1">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%!getTarget.isNavigable() &amp;&amp; getTarget.isComposite()%>">
+            <style showIcon="false" labelExpression="&lt;%computeUmlLabel()%>" sourceArrow="FillDiamond" targetArrow="NoDecoration" sizeComputationExpression="1">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%getSource.isNavigable() &amp;&amp; getSource.isShared()%>">
+            <style showIcon="false" labelExpression="&lt;%computeUmlLabel()%>" sourceArrow="InputArrow" targetArrow="Diamond" sizeComputationExpression="1">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%getSource.isNavigable() &amp;&amp; getSource.isComposite()%>">
+            <style showIcon="false" labelExpression="&lt;%computeUmlLabel()%>" sourceArrow="InputArrow" targetArrow="FillDiamond" sizeComputationExpression="1">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%!getSource.isNavigable() &amp;&amp; getSource.isShared()%>">
+            <style showIcon="false" labelExpression="&lt;%computeUmlLabel()%>" targetArrow="Diamond" sizeComputationExpression="1">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%!getSource.isNavigable() &amp;&amp; getSource.isComposite()%>">
+            <style showIcon="false" labelExpression="&lt;%computeUmlLabel()%>" targetArrow="FillDiamond" sizeComputationExpression="1">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%getSource.isNavigable() &amp;&amp; getTarget.isNavigable()%>">
+            <style showIcon="false" labelExpression="&lt;%computeUmlLabel()%>" sourceArrow="InputArrow" sizeComputationExpression="1">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%getSource.isNavigable() &amp;&amp; !getTarget.isNavigable()%>">
+            <style showIcon="false" labelExpression="&lt;%computeUmlLabel()%>" sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="1">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="&lt;%!getSource.isNavigable() &amp;&amp; getTarget.isNavigable()%>">
+            <style showIcon="false" labelExpression="&lt;%computeUmlLabel()%>" sizeComputationExpression="1">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </conditionnalStyles>
+        </edgeMappings>
+        <edgeMappings name="CD_Dependency" preconditionExpression="&lt;%!filter(&quot;InterfaceRealization&quot;)%>" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_DataType'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_Interface'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_PrimitiveType']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_DataType'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_Interface'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_PrimitiveType']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="&lt;%client%>" targetExpression="&lt;%self%>" domainClass="uml.Dependency" useDomainElement="true" reconnections="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']">
+          <style showIcon="false" lineStyle="dash" sizeComputationExpression="1">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+          <conditionnalStyles predicateExpression="&lt;%filter(&quot;Usage&quot;)%>">
+            <style showIcon="false" labelExpression="&lt;&lt;use>>" lineStyle="dash" sizeComputationExpression="1">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </conditionnalStyles>
+        </edgeMappings>
+        <edgeMappings name="CD_InterfaceRealization" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_Interface']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="&lt;%client%>" targetExpression="&lt;%self%>" domainClass="uml.InterfaceRealization" useDomainElement="true" reconnections="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect']">
+          <style showIcon="false" lineStyle="dash" targetArrow="InputClosedArrow" sizeComputationExpression="1">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="CD_BrokenAssociationToClasses" semanticCandidatesExpression="&lt;%getAssociations()[memberEnd.nSize &lt; 2].memberEnd%>" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@nodeMappings[name='CD_BrokenAssociation']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_Interface'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_DataType'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_PrimitiveType']" targetFinderExpression="&lt;%type%>" sourceFinderExpression="&lt;%eContainer()%>" domainClass="Property" useDomainElement="true">
+          <style showIcon="false" labelExpression="&lt;%computeUmlLabel()%>" targetArrow="NoDecoration" sizeComputationExpression="1">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <containerMappings name="CD_ReusedMappingForFeatures" semanticCandidatesExpression="null" domainClass="uml.Classifier">
+          <subNodeMappings name="CD_Operation" detailDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.1/@subSections[name='navigation']/@ownedTools[name='Activity%20diagram']" navigationDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.1/@subSections[name='navigation']/@ownedTools[name='Nav%20to%20Activity%20diag']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%ownedOperation%>" semanticElements="&lt;%self + ownedParameter%>" domainClass="uml.Operation">
+            <style xsi:type="style:SquareDescription" labelExpression="&lt;%computeUmlLabel()%>" sizeComputationExpression="1">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <subNodeMappings name="CD_Property" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%ownedAttribute%>" semanticElements="&lt;%self + defaultValue%>" domainClass="uml.Property">
+            <style xsi:type="style:SquareDescription" labelExpression="&lt;%computeUmlLabel()%>" tooltipExpression="&lt;%computeUmlTooltip()%>" sizeComputationExpression="1">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+        </containerMappings>
+        <containerMappings name="CD_Class" detailDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='related%20class%20diag']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%current.ownedType[eClass.name == &quot;Class&quot; &amp;&amp; isRelated($diagram.target)]%>" domainClass="uml.Class" reusedNodeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Operation']" listContainer="true">
+          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" labelExpression="&lt;%computeUmlLabel()%>" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_orange']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+          </style>
+          <conditionnalStyles predicateExpression="&lt;%isAbstract%>">
+            <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" labelFormat="italic" labelExpression="&lt;%computeUmlLabel()%>" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_orange']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+            </style>
+          </conditionnalStyles>
+        </containerMappings>
+        <containerMappings name="CD_Interface" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%ownedType[isRelated($diagram.target)]%>" domainClass="uml.Interface" reusedNodeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Operation']" listContainer="true">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelExpression="&lt;%computeUmlLabel()%>">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="CD_DataType" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%ownedType[eClass.name == &quot;DataType&quot; &amp;&amp; isRelated($diagram.target)]%>" domainClass="uml.DataType" reusedNodeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Operation']" listContainer="true">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelExpression="&lt;%computeUmlLabel()%>">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+          <conditionnalStyles predicateExpression="&lt;%isAbstract%>">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelFormat="italic" labelExpression="&lt;%computeUmlLabel()%>">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+            </style>
+          </conditionnalStyles>
+        </containerMappings>
+        <containerMappings name="CD_PrimitiveType" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%ownedType[isRelated($diagram.target)]%>" domainClass="uml.PrimitiveType" reusedNodeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Operation']" listContainer="true">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelExpression="&lt;%computeUmlLabel()%>">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+          <conditionnalStyles predicateExpression="&lt;%isAbstract%>">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelFormat="italic" labelExpression="&lt;%computeUmlLabel()%>">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            </style>
+          </conditionnalStyles>
+        </containerMappings>
+        <containerMappings name="CD_Enumeration" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%ownedType[isRelated($diagram.target)]%>" domainClass="uml.Enumeration" reusedNodeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Operation']" listContainer="true">
+          <subNodeMappings name="CD_EnumerationLiteral" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%ownedLiteral%>" domainClass="uml.EnumerationLiteral">
+            <style xsi:type="style:SquareDescription" labelExpression="&lt;%computeUmlLabel()%>" sizeComputationExpression="1">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='chocolate']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_chocolate']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelExpression="&lt;%computeUmlLabel()%>">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+          <conditionnalStyles predicateExpression="&lt;%isAbstract%>">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelFormat="italic" labelExpression="&lt;%computeUmlLabel()%>">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+        </containerMappings>
+        <containerMappings name="CD_NestedPackage" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%nestedPackage[isRelated($diagram.target)]%>" domainClass="uml.Package" reusedContainerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_DataType'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_Interface'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_PrimitiveType'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Related%20Classes%20Diagram']/@defaultLayer/@containerMappings[name='CD_NestedPackage']">
+          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" labelExpression="&lt;%computeUmlLabel()%>" labelAlignment="LEFT" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.UMLServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.UMLProfileServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.EditLabelServices"/>
@@ -1280,6 +1507,7 @@
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.EcoreServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.templates.uml_utils"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.ReconnectServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.FilterServices"/>
   </ownedViewpoints>
   <ownedViewpoints name="UML Behavioral Modeling" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description:DiagramDescription" name="State Machine Diagram" titleExpression="&lt;%name%> State Machine Diagram" domainClass="uml.StateMachine">

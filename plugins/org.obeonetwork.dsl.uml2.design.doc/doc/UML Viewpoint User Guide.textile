@@ -20,6 +20,30 @@ the class diagram will show the broken associations as nodes :
 
 You can use the *Association* tools in the palette __(Association, Composition and Aggregation)__ to re-attach the Association to a classifier.
 
+h3. Related Classes/Interface filtering and highlighting
+
+You have two ways to highlight classes related to one given class. The first one is to activate the *Related filter* on the *Class Diagram*. It will hide elements (*Class*, *interface*, *Association*, ...) that are not related to the class you selected (context). The second way can be achive by using the *Related Classes Diagram*. This diagram will show all elements related to the selected class.
+
+Lets use an instance to visualize the result of each methods. Consider the following model :
+
+!features/class_pics/related classes/Related_classes_package.JPG!
+
+By opening the *Class Diagram* on package1 you get the following diagram :
+
+!features/class_pics/related classes/package_1_not_filtered.JPG!
+
+You can then apply the filter on ContextClass :
+
+!features/class_pics/related classes/activate_filter_on_ContextClass.JPG!
+
+The resulting diagram will be as follow :
+
+!features/class_pics/related classes/package_1_filtered_on_ContextClass.JPG!
+
+Notice that only classes present in the initial diagram are present. If you want all classes related to ContextClass you should open the *Related Classes Diagram* on the ContextClass :
+
+!features/class_pics/related classes/ContextClass_related_classes.JPG!
+
 h2. Component Diagram
 
 
