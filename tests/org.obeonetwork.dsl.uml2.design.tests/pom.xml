@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-   Copyright (C) 2011, Cedric Brun <cedric.brun@obeo.fr>
+   Copyright (C) 2011 Obeo
+  
+   Cedric Brun <cedric.brun@obeo.fr>
    
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
