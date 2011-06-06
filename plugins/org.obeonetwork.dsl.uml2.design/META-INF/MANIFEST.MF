@@ -18,7 +18,7 @@ Require-Bundle: fr.obeo.acceleo.gen,
  org.eclipse.gmf.runtime.diagram.ui.render,
  fr.obeo.mda.ecore.extender,
  org.eclipse.ui.ide,
- fr.obeo.dsl.viewpoint.ui;bundle-version="2.4.0",
+ fr.obeo.dsl.viewpoint.ui,
  fr.obeo.dsl.viewpoint.diagram.sequence
 Eclipse-LazyStart: true
 Export-Package: org.obeonetwork.dsl.uml2.design,
@@ -29,4 +29,3 @@ Export-Package: org.obeonetwork.dsl.uml2.design,
  org.obeonetwork.dsl.uml2.design.ui.extension.providers,
  org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Bundle-Vendor: Obeo.fr

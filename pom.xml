@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+   Copyright (C) 2011, Cedric Brun <cedric.brun@obeo.fr>
+   
+-->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <prerequisites>
+    <maven>3.0</maven>
+  </prerequisites>
+
+ <groupId>org.obeonetwork.dsl.uml</groupId>
+ <artifactId>uml-parent</artifactId>
+ <version>0.9.0-SNAPSHOT</version>
+ <packaging>pom</packaging>
+  
+ <name>Viewpoint UML2 Parent</name>
+
+ <licenses>
+    <license>
+      <name>Eclipse Public License v1.0</name>
+      <comments>
+       All rights reserved.
+
+       This program and the accompanying materials are made
+       available under the terms of the Eclipse Public License v1.0
+       which accompanies this distribution, and is available at
+       http://www.eclipse.org/legal/epl-v10.htm
+      </comments>
+    </license>
+  </licenses>
+  
+  <properties>
+    <tycho-version>0.11.0</tycho-version>
+    <platform-version-name>helios</platform-version-name>
+    <!--<eclipse-site>http://mirror.update.eclipse.obeo.fr/release-${platform-version-name}-3.6</eclipse-site>-->
+    <od-site>http://www.obeo.fr/download/release/designer/5.0.1/update/3.6</od-site>
+    <eclipse-site>http://download.eclipse.org/releases/${platform-version-name}</eclipse-site>
+    <!--<acceleo2-site>http://update.obeo.fr/release/acceleo/release/fr.obeo.acceleo.update/</acceleo2-site>-->
+    <!--<acceleo2-site>http://www.acceleo.org/update</acceleo2-site>-->
+    <wikitext-site>http://download.eclipse.org/tools/mylyn/update/weekly</wikitext-site>
+    <swtbot-site>http://mirror.update.eclipse.obeo.fr/swtbot-dev/</swtbot-site>
+    <orbit-site>http://download.eclipse.org/tools/orbit/downloads/drops/S20110124210048/repository</orbit-site>
+  </properties>
+
+
+  <modules>    
+
+    <module>features/org.obeonetwork.dsl.feature.uml2</module>  
+    <module>features/org.obeonetwork.dsl.uml2.update</module>  
+    <module>plugins/org.obeonetwork.dsl.uml2.design</module>  
+    <module>plugins/org.obeonetwork.dsl.uml2.design.doc</module>  
+    <module>tests/org.obeonetwork.dsl.uml2.design.tests</module>  
+   </modules>
+
+  <repositories>
+    
+    <repository>
+      <id>helios</id>
+      <layout>p2</layout>
+      <url>${eclipse-site}</url>
+    </repository><!--
+   <repository>
+      <id>swtbot</id>
+      <layout>p2</layout>
+      <url>${swtbot-site}</url>
+    </repository>
+    -->
+    <!--<repository>
+      <id>wikitext</id>
+      <layout>p2</layout>
+      <url>${wikitext-site}</url>
+    </repository>
+    -->
+    <repository>
+      <id>obeodesigner</id>
+      <layout>p2</layout>
+      <url>${od-site}</url>
+    </repository>
+    <!--
+    <repository>
+      <id>orbit</id>
+      <layout>p2</layout>
+      <url>${orbit-site}</url>
+    </repository>
+    -->
+  </repositories>
+  
+  <pluginRepositories>
+    <pluginRepository>
+      <!-- need maven-findbugs-2.3.2-SNAPSHOT, see
+           http://jira.codehaus.org/browse/MFINDBUGS-122
+           remove this when this version is released -->
+      <id>codehaus.snapshots</id>
+      <url>http://snapshots.repository.codehaus.org/</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+  <build>
+  	<sourceDirectory>src</sourceDirectory>
+    <plugins>
+      <plugin>
+        <groupId>org.sonatype.tycho</groupId>
+        <artifactId>tycho-maven-plugin</artifactId>
+        <version>${tycho-version}</version>
+        <extensions>true</extensions>
+      </plugin>
+      <plugin>
+        <groupId>org.sonatype.tycho</groupId>
+        <artifactId>target-platform-configuration</artifactId>
+        <version>${tycho-version}</version>
+        <configuration>
+          <resolver>p2</resolver>
+        </configuration>
+      </plugin>
+    </plugins>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.sonatype.tycho</groupId>
+          <artifactId>maven-osgi-compiler-plugin</artifactId>
+          <version>${tycho-version}</version>
+          <configuration>
+            <encoding>UTF-8</encoding>
+          </configuration>
+        </plugin>
+        <plugin>
+          <!-- TODO remove workaround when
+             https://issues.sonatype.org/browse/TYCHO-473
+             is fixed -->
+          <groupId>org.sonatype.tycho</groupId>
+          <artifactId>maven-osgi-source-plugin</artifactId>
+          <version>${tycho-version}</version>
+          <executions>
+            <execution>
+              <id>attach-source</id>
+              <phase>process-classes</phase>
+              <goals>
+                <goal>plugin-source</goal>
+              </goals>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>2.4.1</version>
+          <configuration>
+            <encoding>ISO-8859-1</encoding>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-antrun-plugin</artifactId>
+          <version>1.3</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>findbugs-maven-plugin</artifactId>
+          <version>2.3.2-SNAPSHOT</version>
+          <configuration>
+            <findbugsXmlOutput>true</findbugsXmlOutput>
+            <failOnError>false</failOnError>
+          </configuration>
+          <executions>
+            <execution>
+	      <!--
+              <goals>
+                <goal>check</goal>
+              </goals>
+	      -->
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-pmd-plugin</artifactId>
+          <version>2.5</version>
+          <configuration>
+            <sourceEncoding>utf-8</sourceEncoding>
+            <minimumTokens>100</minimumTokens>
+            <targetJdk>1.5</targetJdk>
+            <format>xml</format>
+            <failOnViolation>false</failOnViolation>
+          </configuration>
+          <executions>
+            <execution>
+	      <!--
+              <goals>
+                <goal>cpd-check</goal>
+              </goals>
+	      -->
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+  
+  <profiles>
+ 
+   <profile>
+      <id>checkstyle</id>
+	  <activation>
+		  <activeByDefault>false</activeByDefault>
+	  </activation>
+	  <build>
+		  <plugins>
+			  <plugin>
+				  <groupId>org.apache.maven.plugins</groupId>
+				  <artifactId>maven-checkstyle-plugin</artifactId>
+				  <version>2.6</version>
+				  <executions>
+					  <execution>
+						  <id>check my sources</id>
+						  <goals>
+							  <goal>checkstyle</goal>
+						  </goals>
+						  <phase>verify</phase>
+						  <configuration>
+							  <failOnErrors>false</failOnErrors>
+							  <consoleOutput>true</consoleOutput>
+						  </configuration>
+					  </execution>
+				  </executions>
+			  </plugin>
+		  </plugins>
+	  </build>
+  </profile>
+
+    <profile>
+      <id>coverage</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <modules>
+          <module>org.eclemma.runtime.equinox</module>
+      </modules>
+    </profile>
+  </profiles>
+  
+</project>
