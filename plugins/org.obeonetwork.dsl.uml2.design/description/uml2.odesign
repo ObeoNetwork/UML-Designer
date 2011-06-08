@@ -56,7 +56,7 @@
         </subSections>
       </toolSection>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description:DiagramDescription" name="Package Hierarchy" titleExpression="&lt;%name%> Package Hierarchy" initialisation="true" showOnStartup="true" domainClass="uml.Package" preconditionExpression="&lt;%eContainer() == null%>">
+    <ownedRepresentations xsi:type="description:DiagramDescription" name="Package Hierarchy" titleExpression="&lt;%name%> Package Hierarchy" initialisation="true" showOnStartup="true" domainClass="uml.Package" preconditionExpression="&lt;%eContainer() == null%>" enablePopupBars="true">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide containment">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Containment']"/>
@@ -1510,7 +1510,7 @@
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.FilterServices"/>
   </ownedViewpoints>
   <ownedViewpoints name="UML Behavioral Modeling" modelFileExtension="uml">
-    <ownedRepresentations xsi:type="description:DiagramDescription" name="State Machine Diagram" titleExpression="&lt;%name%> State Machine Diagram" domainClass="uml.StateMachine">
+    <ownedRepresentations xsi:type="description:DiagramDescription" name="State Machine Diagram" titleExpression="&lt;%name%> State Machine Diagram" domainClass="uml.StateMachine" enablePopupBars="true">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
       <diagramInitialisation>
         <firstModelOperations xsi:type="tool:If" conditionExpression="&lt;%region.nSize == 0%>">
