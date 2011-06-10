@@ -39,7 +39,7 @@
     <tycho-version>0.11.0</tycho-version>
     <platform-version-name>helios</platform-version-name>
     <!--<eclipse-site>http://mirror.update.eclipse.obeo.fr/release-${platform-version-name}-3.6</eclipse-site>-->
-    <od-site>http://www.obeo.fr/download/release/designer/5.0.1/update/3.6</od-site>
+    <od-site>http://www.obeo.fr/download/release/designer/5.0.2/update/3.6</od-site>
     <eclipse-site>http://download.eclipse.org/releases/${platform-version-name}</eclipse-site>
     <!--<acceleo2-site>http://update.obeo.fr/release/acceleo/release/fr.obeo.acceleo.update/</acceleo2-site>-->
     <!--<acceleo2-site>http://www.acceleo.org/update</acceleo2-site>-->
