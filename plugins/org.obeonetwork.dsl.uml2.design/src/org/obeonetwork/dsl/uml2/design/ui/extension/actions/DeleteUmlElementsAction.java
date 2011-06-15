@@ -20,7 +20,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.uml2.uml.Element;
-import org.obeonetwork.dsl.uml2.design.Activator;
+import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
 
 import fr.obeo.dsl.common.ui.tools.api.editing.EditingDomainService;
 import fr.obeo.dsl.viewpoint.DRepresentation;
@@ -32,7 +32,7 @@ import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
 public class DeleteUmlElementsAction extends Action {
 	private static ImageDescriptor image;
 	static {
-		URL url = Activator.getDefault().getBundle().getEntry("icons/deleteModel.gif");
+		URL url = UMLDesignerPlugin.getDefault().getBundle().getEntry("icons/deleteModel.gif");
 		image = ImageDescriptor.createFromURL(url);
 	}
 	

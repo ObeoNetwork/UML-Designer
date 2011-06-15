@@ -24,20 +24,20 @@ import fr.obeo.dsl.viewpoint.description.Viewpoint;
 /**
  * The activator class controls the plug-in life cycle
  */
-public class Activator extends AbstractUIPlugin {
+public class UMLDesignerPlugin extends AbstractUIPlugin {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "org.obeonetwork.dsl.uml2.design";
 
 	// The shared instance
-	private static Activator plugin;
+	private static UMLDesignerPlugin plugin;
 
 	private static Set<Viewpoint> viewpoints; 
 
 	/**
 	 * The constructor
 	 */
-	public Activator() {
+	public UMLDesignerPlugin() {
 	}
 
 	/*
@@ -75,7 +75,7 @@ public class Activator extends AbstractUIPlugin {
 	 *
 	 * @return the shared instance
 	 */
-	public static Activator getDefault() {
+	public static UMLDesignerPlugin getDefault() {
 		return plugin;
 	}
 

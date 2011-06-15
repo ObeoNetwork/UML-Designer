@@ -14,7 +14,7 @@ Contributors:
 		<extension
 				point="fr.obeo.dsl.viewpoint.componentization">
 		<component
-				class="org.obeonetwork.dsl.uml2.design.Activator" id="org.obeonetwork.dsl.uml2.design" name="uml2">
+				class="org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin" id="org.obeonetwork.dsl.uml2.design" name="uml2">
 		</component>
 		</extension>
   <extension

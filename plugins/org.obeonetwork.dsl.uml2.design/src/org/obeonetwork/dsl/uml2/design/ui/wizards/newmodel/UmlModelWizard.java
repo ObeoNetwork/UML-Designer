@@ -23,7 +23,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
-import org.obeonetwork.dsl.uml2.design.Activator;
+import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
 import org.obeonetwork.dsl.uml2.design.SessionCreationOperation;
 
 
@@ -61,7 +61,7 @@ public class UmlModelWizard extends Wizard implements INewWizard {
         } catch (final InterruptedException e) {
             // Ignore.
         } catch (final InvocationTargetException e) {
-        	Activator.log(IStatus.ERROR, Messages.UmlModelWizard_UI_Error_CreatingUmlModel, e);
+        	UMLDesignerPlugin.log(IStatus.ERROR, Messages.UmlModelWizard_UI_Error_CreatingUmlModel, e);
         }
         return false;
 	}

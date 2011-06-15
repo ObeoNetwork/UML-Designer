@@ -88,9 +88,9 @@ public class SessionCreationOperation extends WorkspaceModifyOperation {
         	createdSession = SessionHelper.createLocalSessionFromModels(semantics, airdResource);
         	createdSession.save();
         } catch (final IOException e) {
-        	Activator.log(IStatus.ERROR, Messages.UmlModelWizard_UI_Error_CreatingUmlModelSession, e);
+        	UMLDesignerPlugin.log(IStatus.ERROR, Messages.UmlModelWizard_UI_Error_CreatingUmlModelSession, e);
         } catch (final InvocationTargetException e) {
-        	Activator.log(IStatus.ERROR, "Error while creating the UML model session", e); //$NON-NLS-1$
+        	UMLDesignerPlugin.log(IStatus.ERROR, "Error while creating the UML model session", e); //$NON-NLS-1$
         }
     }
 

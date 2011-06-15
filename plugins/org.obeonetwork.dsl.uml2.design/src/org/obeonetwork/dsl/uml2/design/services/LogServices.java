@@ -12,7 +12,7 @@ package org.obeonetwork.dsl.uml2.design.services;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.obeonetwork.dsl.uml2.design.Activator;
+import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
 
 import fr.obeo.acceleo.tools.AcceleoToolsPlugin;
 
@@ -33,7 +33,7 @@ public class LogServices {
 	 *            the stack trace.
 	 */
 	public static void error(String s, Throwable t) {
-		IStatus status = new Status(IStatus.ERROR, Activator.PLUGIN_ID, s, t);
+		IStatus status = new Status(IStatus.ERROR, UMLDesignerPlugin.PLUGIN_ID, s, t);
 		AcceleoToolsPlugin.getDefault().log(status);
 	}
 
@@ -46,7 +46,7 @@ public class LogServices {
 	 *            the stack trace.
 	 */
 	public static void warning(String s, Throwable t) {
-		IStatus status = new Status(IStatus.WARNING, Activator.PLUGIN_ID, s, t);
+		IStatus status = new Status(IStatus.WARNING, UMLDesignerPlugin.PLUGIN_ID, s, t);
 		AcceleoToolsPlugin.getDefault().log(status);
 	}
 
@@ -57,7 +57,7 @@ public class LogServices {
 	 *            the message.
 	 */
 	public static void info(String s) {
-		IStatus status = new Status(IStatus.INFO, Activator.PLUGIN_ID, s);
+		IStatus status = new Status(IStatus.INFO, UMLDesignerPlugin.PLUGIN_ID, s);
 		AcceleoToolsPlugin.getDefault().log(status);
 	}
 
