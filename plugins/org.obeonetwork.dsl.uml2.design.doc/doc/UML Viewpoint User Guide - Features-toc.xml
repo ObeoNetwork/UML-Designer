@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<toc topic="doc/UML Viewpoint User Guide - Features.html" label="UML Viewpoint User Guide - Features">
+	<topic href="doc/UML Viewpoint User Guide - Features.html" label="Features">
+		<topic href="doc/UML Viewpoint User Guide - Features.html#ClassDiagram" label="Class Diagram">
+			<topic href="doc/UML Viewpoint User Guide - Features.html#SupportforBrokenAssociations" label="Support for Broken Associations"></topic>
+			<topic href="doc/UML Viewpoint User Guide - Features.html#RelatedClassesInterfacefilteringandhighlighting" label="Related Classes/Interface filtering and highlighting"></topic>
+		</topic>
+		<topic href="doc/UML Viewpoint User Guide - Features.html#ComponentDiagram" label="Component Diagram">
+			<topic href="doc/UML Viewpoint User Guide - Features.html#Connector" label="Connector"></topic>
+			<topic href="doc/UML Viewpoint User Guide - Features.html#CompositeComponents" label="Composite Components"></topic>
+			<topic href="doc/UML Viewpoint User Guide - Features.html#UsingClass" label="Using Class"></topic>
+			<topic href="doc/UML Viewpoint User Guide - Features.html#RequiredandProvidedInterfaces" label="Required and Provided Interfaces"></topic>
+			<topic href="doc/UML Viewpoint User Guide - Features.html#Packageimports" label="Package imports"></topic>
+		</topic>
+	</topic>
+</toc>
