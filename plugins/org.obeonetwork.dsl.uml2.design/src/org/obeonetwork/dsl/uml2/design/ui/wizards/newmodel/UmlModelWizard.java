@@ -10,46 +10,27 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel;
 
-import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.Collection;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.transaction.RecordingCommand;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
-import org.eclipse.ui.actions.WorkspaceModifyOperation;
-import org.eclipse.uml2.uml.Package;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.obeonetwork.dsl.uml2.design.Activator;
-
-import fr.obeo.dsl.common.ui.tools.api.editing.EditingDomainService;
-import fr.obeo.dsl.viewpoint.ui.business.api.session.SessionHelper;
+import org.obeonetwork.dsl.uml2.design.SessionCreationOperation;
 
 
 public class UmlModelWizard extends Wizard implements INewWizard {
 	
 	public static final String MODEL_FILE_EXTENSION = "uml"; //$NON-NLS-1$
 	public static final String SESSION_FILE_EXTENSION = "aird"; //$NON-NLS-1$
-	public static final String MODEL_OBJECT = "Model"; //$NON-NLS-1$
-	public static final String PACKAGE_OBJECT = "Package"; //$NON-NLS-1$
 	
 	private UmlModelWizardNewModelFilePage newModelFilePage;
 	private UmlModelWizardInitModelPage initModelPage;
@@ -73,7 +54,7 @@ public class UmlModelWizard extends Wizard implements INewWizard {
 	
 	@Override
 	public boolean performFinish() {
-        final IRunnableWithProgress op = new SessionCreationOperation(getModelFile(), getSessionModelFile());
+        final IRunnableWithProgress op = new SessionCreationOperation(getModelFile(), getSessionModelFile(), initModelPage.getInitialObjectName());
         try {
             getContainer().run(false, true, op);
             return true;
@@ -148,19 +129,6 @@ public class UmlModelWizard extends Wizard implements INewWizard {
 		}
 	}
 	
-	private EObject createInitialModel() {
-		Package root = null;
-		String rootObjectName = initModelPage.getInitialObjectName();
-		if (MODEL_OBJECT.equals(rootObjectName)) {
-			root = UMLFactory.eINSTANCE.createModel();
-			root.setName(Messages.UmlModelWizard_DefaultModelName);
-		} else if (PACKAGE_OBJECT.equals(rootObjectName)) {
-			root = UMLFactory.eINSTANCE.createPackage();
-			root.setName(Messages.UmlModelWizard_DefaultPackageName);
-		}
-		return root;
-	}
-	
 	public IFile getModelFile() {
 		return newModelFilePage.getModelFile();
 	}
@@ -168,74 +136,4 @@ public class UmlModelWizard extends Wizard implements INewWizard {
 	private IFile getSessionModelFile() {
 		return newSessionFilePage.getModelFile();
 	}
-	
-    private class SessionCreationOperation extends WorkspaceModifyOperation {
-
-        private IFile modelFile;
-
-        private IFile airdFile;
-
-        public SessionCreationOperation(IFile modelFile, IFile airdFile) {
-            super(null);
-            this.modelFile = modelFile;
-            this.airdFile = airdFile;
-        }
-
-        @Override
-        protected void execute(final IProgressMonitor monitor) throws CoreException, InterruptedException {
-            // Create a resource set
-            final TransactionalEditingDomain domain = EditingDomainService.getInstance().getEditingDomainProvider().getEditingDomain();
-            final ResourceSet resourceSet = domain.getResourceSet();
-            resourceSet.getURIConverter().getURIMap().putAll(EcorePlugin.computePlatformURIMap());
-
-            // Get the URI of the model file.
-            URI fileURI = URI.createPlatformResourceURI(modelFile.getFullPath().toString(), true);
-
-            // Create a resource for this file. Don't specify a
-            // content type, as it could be Ecore or EMOF.
-            final Resource resource = resourceSet.createResource(fileURI);
-
-            // Add the initial model object to the contents.
-            final EObject rootObject = createInitialModel();
-            if (rootObject != null) {
-                domain.getCommandStack().execute(new AddEObjectAsRootCommand(domain, resource, rootObject));
-            }
-
-            URI airdURI = URI.createPlatformResourceURI(airdFile.getFullPath().toString(), true);
-            final Resource airdResource = resourceSet.createResource(airdURI);
-            final Collection<Resource> semantics = new ArrayList<Resource>();
-            semantics.add(resource);
-
-            try {
-                SessionHelper.createLocalSessionFromModels(semantics, airdResource).save();
-            } catch (final IOException e) {
-            	Activator.log(IStatus.ERROR, Messages.UmlModelWizard_UI_Error_CreatingUmlModelSession, e);
-            } catch (final InvocationTargetException e) {
-            	Activator.log(IStatus.ERROR, "Error while creating the UML model session", e); //$NON-NLS-1$
-            }
-        }
-
-    }
-
-    private class AddEObjectAsRootCommand extends RecordingCommand {
-
-        private EObject root;
-
-        private Resource resource;
-
-        public AddEObjectAsRootCommand(TransactionalEditingDomain domain, Resource resource, EObject root) {
-            super(domain, "Add the given EObject as root of the given Resource"); //$NON-NLS-1$
-            this.resource = resource;
-            this.root = root;
-        }
-
-        @Override
-        protected void doExecute() {
-            if (resource != null && root != null) {
-                resource.getContents().add(root);
-            }
-        }
-    }
 }
-
-

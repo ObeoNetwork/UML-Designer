@@ -24,6 +24,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
+import org.obeonetwork.dsl.uml2.design.SessionCreationOperation;
 
 public class UmlModelWizardInitModelPage extends WizardPage {
 
@@ -132,8 +133,8 @@ public class UmlModelWizardInitModelPage extends WizardPage {
 
 	private List<String> getInitialObjectNames() {
 		List<String> names = new ArrayList<String>();
-		names.add(UmlModelWizard.MODEL_OBJECT);
-		names.add(UmlModelWizard.PACKAGE_OBJECT);
+		names.add(SessionCreationOperation.MODEL_OBJECT);
+		names.add(SessionCreationOperation.PACKAGE_OBJECT);
 		return names;
 	}
 
