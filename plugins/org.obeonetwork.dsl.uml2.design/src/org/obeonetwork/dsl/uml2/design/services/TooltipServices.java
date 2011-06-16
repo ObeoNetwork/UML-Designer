@@ -11,8 +11,6 @@
 package org.obeonetwork.dsl.uml2.design.services;
 
 import org.eclipse.uml2.uml.Element;
-import org.eclipse.uml2.uml.InstanceValue;
-import org.eclipse.uml2.uml.Property;
 import org.obeonetwork.dsl.uml2.design.services.internal.TooltipLabelSwitch;
 
 public class TooltipServices {
