@@ -35,85 +35,146 @@ import fr.obeo.dsl.common.ui.tools.api.editing.EditingDomainService;
 import fr.obeo.dsl.viewpoint.business.api.session.Session;
 import fr.obeo.dsl.viewpoint.ui.business.api.session.SessionHelper;
 
+/**
+ * An operation to create and initialize a new session with empty semantic UML model.
+ *
+ * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
+ */
 public class SessionCreationOperation extends WorkspaceModifyOperation {
-	
+
+	/**
+	 * The type name of an uml.Model element.
+	 */
 	public static final String MODEL_OBJECT = "Model"; //$NON-NLS-1$
+
+	/**
+	 * The type name of an uml.Package element.
+	 */
 	public static final String PACKAGE_OBJECT = "Package"; //$NON-NLS-1$
 
-    private IFile modelFile;
+	/**
+	 * An {@link IFile} handle representing the semantic model to create.
+	 */
+	private IFile modelFile;
 
-    private IFile airdFile;
-    
-    private String rootObjectName;
-    
-    private Session createdSession;
+	/**
+	 * An {@link IFile} handle representing the session file to create.
+	 */
+	private IFile airdFile;
 
-    public SessionCreationOperation(IFile modelFile, IFile airdFile, String rootObjectName) {
-        super(null);
-        this.modelFile = modelFile;
-        this.airdFile = airdFile;
-        this.rootObjectName = rootObjectName;
-    }
-    
-    public Session getCreatedSession() {
-    	return createdSession;
-    }
+	/**
+	 * The name of the semantic root element.
+	 */
+	private String rootObjectName;
 
-    @Override
-    protected void execute(final IProgressMonitor monitor) throws CoreException, InterruptedException {
-        // Create a resource set
-        final TransactionalEditingDomain domain = EditingDomainService.getInstance().getEditingDomainProvider().getEditingDomain();
-        final ResourceSet resourceSet = domain.getResourceSet();
-        resourceSet.getURIConverter().getURIMap().putAll(EcorePlugin.computePlatformURIMap());
+	/**
+	 * The session created after the execution of the operation.
+	 */
+	private Session createdSession;
 
-        // Get the URI of the model file.
-        URI fileURI = URI.createPlatformResourceURI(modelFile.getFullPath().toString(), true);
+	/**
+	 * Constructor.
+	 *
+	 * @param modelFile An {@link IFile} handle representing the semantic model to create.
+	 * @param airdFile An {@link IFile} handle representing the session file to create.
+	 * @param rootObjectName The name of the semantic root element.
+	 */
+	public SessionCreationOperation(IFile modelFile, IFile airdFile, String rootObjectName) {
+		super(null);
+		this.modelFile = modelFile;
+		this.airdFile = airdFile;
+		this.rootObjectName = rootObjectName;
+	}
 
-        // Create a resource for this file. Don't specify a
-        // content type, as it could be Ecore or EMOF.
-        final Resource resource = resourceSet.createResource(fileURI);
+	public Session getCreatedSession() {
+		return createdSession;
+	}
 
-        // Add the initial model object to the contents.
-        final EObject rootObject = createInitialModel();
-        if (rootObject != null) {
-            domain.getCommandStack().execute(new AddEObjectAsRootCommand(domain, resource, rootObject));
-        }
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void execute(final IProgressMonitor monitor) throws CoreException, InterruptedException {
+		// Create a resource set
+		final TransactionalEditingDomain domain = EditingDomainService.getInstance()
+				.getEditingDomainProvider().getEditingDomain();
+		final ResourceSet resourceSet = domain.getResourceSet();
+		resourceSet.getURIConverter().getURIMap().putAll(EcorePlugin.computePlatformURIMap());
 
-        URI airdURI = URI.createPlatformResourceURI(airdFile.getFullPath().toString(), true);
-        final Resource airdResource = resourceSet.createResource(airdURI);
-        final Collection<Resource> semantics = new ArrayList<Resource>();
-        semantics.add(resource);
+		// Get the URI of the model file.
+		final URI fileURI = URI.createPlatformResourceURI(modelFile.getFullPath().toString(), true);
 
-        try {
-        	createdSession = SessionHelper.createLocalSessionFromModels(semantics, airdResource);
-        	createdSession.save();
-        } catch (final IOException e) {
-        	UMLDesignerPlugin.log(IStatus.ERROR, Messages.UmlModelWizard_UI_Error_CreatingUmlModelSession, e);
-        } catch (final InvocationTargetException e) {
-        	UMLDesignerPlugin.log(IStatus.ERROR, "Error while creating the UML model session", e); //$NON-NLS-1$
-        }
-    }
+		// Create a resource for this file. Don't specify a
+		// content type, as it could be Ecore or EMOF.
+		final Resource resource = resourceSet.createResource(fileURI);
 
-    private class AddEObjectAsRootCommand extends RecordingCommand {
+		// Add the initial model object to the contents.
+		final EObject rootObject = createInitialModel();
+		if (rootObject != null) {
+			domain.getCommandStack().execute(new AddEObjectAsRootCommand(domain, resource, rootObject));
+		}
 
-        private EObject root;
+		final URI airdURI = URI.createPlatformResourceURI(airdFile.getFullPath().toString(), true);
+		final Resource airdResource = resourceSet.createResource(airdURI);
+		final Collection<Resource> semantics = new ArrayList<Resource>();
+		semantics.add(resource);
 
-        private Resource resource;
+		try {
+			createdSession = SessionHelper.createLocalSessionFromModels(semantics, airdResource);
+			createdSession.save();
+		} catch (final IOException e) {
+			UMLDesignerPlugin.log(IStatus.ERROR, Messages.UmlModelWizard_UI_Error_CreatingUmlModelSession, e);
+		} catch (final InvocationTargetException e) {
+			UMLDesignerPlugin.log(IStatus.ERROR, "Error while creating the UML model session", e); //$NON-NLS-1$
+		}
+	}
 
-        public AddEObjectAsRootCommand(TransactionalEditingDomain domain, Resource resource, EObject root) {
-            super(domain, "Add the given EObject as root of the given Resource"); //$NON-NLS-1$
-            this.resource = resource;
-            this.root = root;
-        }
+	/**
+	 * Command to add the root element to the semantic model within the {@link TransactionalEditingDomain}.
+	 *
+	 * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
+	 */
+	private class AddEObjectAsRootCommand extends RecordingCommand {
 
-        @Override
-        protected void doExecute() {
-            if (resource != null && root != null) {
-                resource.getContents().add(root);
-            }
-        }
-    }
-    
+		/**
+		 * The semantic model root {@link EObject}.
+		 */
+		private EObject root;
+
+		/**
+		 * The semantic {@link Resource}.
+		 */
+		private Resource resource;
+
+		/**
+		 * Constructor.
+		 *
+		 * @param domain the {@link TransactionalEditingDomain} on which to execute this command.
+		 * @param resource the semantic resource to update.
+		 * @param root the semantic root {@link EObject}.
+		 */
+		public AddEObjectAsRootCommand(TransactionalEditingDomain domain, Resource resource, EObject root) {
+			super(domain, "Add the given EObject as root of the given Resource"); //$NON-NLS-1$
+			this.resource = resource;
+			this.root = root;
+		}
+
+		/**
+		 * {@inheritDoc}
+		 */
+		@Override
+		protected void doExecute() {
+			if (resource != null && root != null) {
+				resource.getContents().add(root);
+			}
+		}
+	}
+
+	/**
+	 * Creates the semantic root element from the given operation arguments.
+	 * 
+	 * @return the semantic root {@link EObject}
+	 */
 	private EObject createInitialModel() {
 		Package root = null;
 		if (MODEL_OBJECT.equals(rootObjectName)) {

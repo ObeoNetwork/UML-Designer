@@ -19,11 +19,18 @@ import org.obeonetwork.dsl.uml2.design.services.internal.EditLabelSwitch;
  * @author Gonzague Reydet <a href="mailto:gonzague.reydet@obeo.fr">gonzague.reydet@obeo.fr</a>
  */
 public class EditLabelServices {
-	
+
+	/**
+	 * Parse the edited label string and update the underlying context {@link Element}.
+	 * 
+	 * @param context the context object on which to execute this service.
+	 * @param editedLabelContent the content entered by the user.
+	 * @return the context {@link Element}
+	 */
 	public Element editUmlLabel(Element context, String editedLabelContent) {
 		final EditLabelSwitch editLabel = new EditLabelSwitch();
 		editLabel.setEditedLabelContent(editedLabelContent);
 		return editLabel.doSwitch(context);
 	}
-	
+
 }

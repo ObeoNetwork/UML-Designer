@@ -36,6 +36,15 @@ public class SequenceServiceTests extends TestCase {
 	
 	private static final String RESOURCE_URI = Activator.PLUGIN_ID + "/resources/Test.uml";
 	
+	private SequenceServices sequenceServices;
+	
+	@Override
+	protected void setUp() throws Exception {
+		super.setUp();
+		
+		sequenceServices = new SequenceServices();
+	}
+	
 	public SequenceServiceTests() {
 		ResourceSet rset = new ResourceSetImpl();
 		Resource resource = rset.getResource(URI.createPlatformPluginURI(RESOURCE_URI, true), true);
@@ -45,7 +54,7 @@ public class SequenceServiceTests extends TestCase {
 
 	public void testExecutionSemanticCandidatesLifeline() {
 		Lifeline linLifeline = rootInteraction.getLifeline("Lifeline_3");
-		List<ExecutionSpecification> executions = SequenceServices.executionSemanticCandidates(linLifeline);
+		List<ExecutionSpecification> executions = sequenceServices.executionSemanticCandidates(linLifeline);
 		
 		assertEquals(2, executions.size());
 		assertEquals("ActionExecution_1", executions.get(0).getName());
@@ -54,7 +63,7 @@ public class SequenceServiceTests extends TestCase {
 
 	public void testExecutionSemanticCandidatesExecutionSpecification() {
 		ExecutionSpecification execution = (ExecutionSpecification) rootInteraction.getFragment("ActionExecution_3");
-		List<ExecutionSpecification> executions = SequenceServices.executionSemanticCandidates(execution);
+		List<ExecutionSpecification> executions = sequenceServices.executionSemanticCandidates(execution);
 		
 		assertEquals(2, executions.size());
 		assertEquals("ActionExecution_4", executions.get(0).getName());
@@ -65,21 +74,21 @@ public class SequenceServiceTests extends TestCase {
 		OccurrenceSpecification executionOccurrence;
 		
 		executionOccurrence = (OccurrenceSpecification) rootInteraction.getFragment("Message_1_sender");
-		assertEquals("Lifeline_1", SequenceServices.findOccurrenceSpecificationContext(executionOccurrence).getName());
+		assertEquals("Lifeline_1", sequenceServices.findOccurrenceSpecificationContext(executionOccurrence).getName());
 		executionOccurrence = (OccurrenceSpecification) rootInteraction.getFragment("Message_1_receiver");
-		assertEquals("Lifeline_2", SequenceServices.findOccurrenceSpecificationContext(executionOccurrence).getName());
+		assertEquals("Lifeline_2", sequenceServices.findOccurrenceSpecificationContext(executionOccurrence).getName());
 		
 		executionOccurrence = (OccurrenceSpecification) rootInteraction.getFragment("ActionExecution_2_start");
-		assertEquals("Lifeline_2", SequenceServices.findOccurrenceSpecificationContext(executionOccurrence).getName());
+		assertEquals("Lifeline_2", sequenceServices.findOccurrenceSpecificationContext(executionOccurrence).getName());
 		
 		executionOccurrence = (OccurrenceSpecification) rootInteraction.getFragment("ActionExecution_4_start");
-		assertEquals("ActionExecution_3", SequenceServices.findOccurrenceSpecificationContext(executionOccurrence).getName());
+		assertEquals("ActionExecution_3", sequenceServices.findOccurrenceSpecificationContext(executionOccurrence).getName());
 		
 		executionOccurrence = (OccurrenceSpecification) rootInteraction.getFragment("Message_3_receiver");
-		assertEquals("ActionExecution_3", SequenceServices.findOccurrenceSpecificationContext(executionOccurrence).getName());
+		assertEquals("ActionExecution_3", sequenceServices.findOccurrenceSpecificationContext(executionOccurrence).getName());
 		
 		executionOccurrence = (OccurrenceSpecification) rootInteraction.getFragment("Message_4_sender");
-		assertEquals("ActionExecution_5", SequenceServices.findOccurrenceSpecificationContext(executionOccurrence).getName());
+		assertEquals("ActionExecution_5", sequenceServices.findOccurrenceSpecificationContext(executionOccurrence).getName());
 	}
 
 }

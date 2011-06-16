@@ -33,127 +33,163 @@ import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
 /**
  * Services for UML.
  * 
- * @author cbrun
+ * @author Cedric Brun <a href="mailto:cedric.brun@obeo.fr">cedric.brun@obeo.fr</a>
  * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
  */
 public class UMLServices {
-	
+
 	/**
 	 * Returns a human readable string for the specified visibility.
 	 * 
-	 * @param visibilityString the visibility.
+	 * @param visibilityString
+	 *            the visibility.
 	 * @return a human readable string for the specified visibility.
 	 */
 	public String visibilityToString(String visibilityString) {
-		VisibilityKind visibilityKind = VisibilityKind
-				.getByName(visibilityString);
+		final VisibilityKind visibilityKind = VisibilityKind.getByName(visibilityString);
+		String str = "";
 		switch (visibilityKind.getValue()) {
-		case VisibilityKind.PACKAGE:
-			return "";
-		case VisibilityKind.PRIVATE:
-			return "-";
-		case VisibilityKind.PUBLIC:
-			return "+";
-		case VisibilityKind.PROTECTED:
-			return "#";
+			case VisibilityKind.PRIVATE:
+				str = "-";
+				break;
+			case VisibilityKind.PUBLIC:
+				str = "+";
+				break;
+			case VisibilityKind.PROTECTED:
+				str = "#";
+				break;
+			case VisibilityKind.PACKAGE:
+			default:
+				break;
 		}
-		return "";
+		return str;
 	}
-	
+
 	/**
-	 * Import the package containing default UML primitive types
-	 * @param namespace Namespace into which importing the types
+	 * Import the package containing default UML primitive types.
+	 * 
+	 * @param namespace
+	 *            Namespace into which importing the types
 	 */
 	public void importUmlPrimitiveTypes(Namespace namespace) {
 		importPrimitiveTypes(namespace, UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI);
 	}
-	
+
 	/**
-	 * Check if the default UML primitive types are already imported
-	 * @param namespace Namespace to be checked
+	 * Check if the default UML primitive types are already imported.
+	 * 
+	 * @param namespace
+	 *            Namespace to be checked
 	 * @return true if the types are already imported, else false
 	 */
 	public boolean areUmlPrimitiveTypesImported(Namespace namespace) {
 		return arePrimitiveTypesImported(namespace, UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI);
 	}
-	
+
 	/**
-	 * Import the package containing default Java primitive types
-	 * @param namespace Namespace into which importing the types
+	 * Import the package containing default Java primitive types.
+	 * 
+	 * @param namespace
+	 *            Namespace into which importing the types
 	 */
 	public void importJavaPrimitiveTypes(Namespace namespace) {
 		importPrimitiveTypes(namespace, UMLResource.JAVA_PRIMITIVE_TYPES_LIBRARY_URI);
 	}
-	
+
 	/**
-	 * Check if the default Java primitive types are already imported
-	 * @param namespace Namespace to be checked
+	 * Check if the default Java primitive types are already imported.
+	 * 
+	 * @param namespace
+	 *            Namespace to be checked
 	 * @return true if the types are already imported, else false
 	 */
 	public boolean areJavaPrimitiveTypesImported(Namespace namespace) {
 		return arePrimitiveTypesImported(namespace, UMLResource.JAVA_PRIMITIVE_TYPES_LIBRARY_URI);
 	}
-	
+
 	/**
-	 * Import the package containing default Ecore prumitive types
-	 * @param namespace Namespace into which importing the types
+	 * Import the package containing default Ecore primitive types.
+	 * 
+	 * @param namespace
+	 *            Namespace into which importing the types
 	 */
 	public void importEcorePrimitiveTypes(Namespace namespace) {
 		importPrimitiveTypes(namespace, UMLResource.ECORE_PRIMITIVE_TYPES_LIBRARY_URI);
 	}
-	
+
 	/**
-	 * Check if the default Ecore primitive types are already imported
-	 * @param namespace Namespace to be checked
+	 * Check if the default Ecore primitive types are already imported.
+	 * 
+	 * @param namespace
+	 *            Namespace to be checked
 	 * @return true if the types are already imported, else false
 	 */
 	public boolean areEcorePrimitiveTypesImported(Namespace namespace) {
 		return arePrimitiveTypesImported(namespace, UMLResource.ECORE_PRIMITIVE_TYPES_LIBRARY_URI);
 	}
-	
+
 	/**
-	 * Import the package containing default XML primitive types
-	 * @param namespace Namespace into which importing the types
+	 * Import the package containing default XML primitive types.
+	 * 
+	 * @param namespace
+	 *            Namespace into which importing the types
 	 */
 	public void importXmlPrimitiveTypes(Namespace namespace) {
 		importPrimitiveTypes(namespace, UMLResource.XML_PRIMITIVE_TYPES_LIBRARY_URI);
 	}
-	
+
 	/**
-	 * Check if the default XML primitive types are already imported
-	 * @param namespace Namespace to be checked
+	 * Check if the default XML primitive types are already imported.
+	 * 
+	 * @param namespace
+	 *            Namespace to be checked
 	 * @return true if the types are already imported, else false
 	 */
 	public boolean areXmlPrimitiveTypesImported(Namespace namespace) {
 		return arePrimitiveTypesImported(namespace, UMLResource.XML_PRIMITIVE_TYPES_LIBRARY_URI);
 	}
-	
+
+	/**
+	 * Loads & import library into the {@link Namespace}.
+	 * @param namespace the {@link Namespace} context
+	 * @param libraryUri the URI of the library to load.
+	 */
 	private void importPrimitiveTypes(Namespace namespace, String libraryUri) {
-		ResourceSet resourceSet = namespace.eResource().getResourceSet();
-		Resource resource = resourceSet.getResource(URI.createURI(libraryUri), true);
+		final ResourceSet resourceSet = namespace.eResource().getResourceSet();
+		final Resource resource = resourceSet.getResource(URI.createURI(libraryUri), true);
 		// Add the resource to the session's semantic resources
-		Session session = SessionManager.INSTANCE.getSession(namespace);
+		final Session session = SessionManager.INSTANCE.getSession(namespace);
 		if (session != null) {
 			session.addSemanticResource(resource, false);
 		}
-		Package root = (Package)EcoreUtil.getObjectByType(resource.getContents(), UMLPackage.Literals.PACKAGE);
+		final Package root = (Package)EcoreUtil
+				.getObjectByType(resource.getContents(), UMLPackage.Literals.PACKAGE);
 		// We check if a package import already exists
 		if (!namespace.getImportedPackages().contains(root)) {
 			namespace.createPackageImport(root);
 		}
 	}
-	
+
+	/**
+	 * Check if the given library is already imported in the given {@link Namespace}.
+	 * 
+	 * @param namespace the {@link Namespace} context to inspect
+	 * @param libraryUri URI of the library.
+	 * @return <code>true</code> if the library is imported, <code>false</code> otherwise
+	 */
 	private boolean arePrimitiveTypesImported(Namespace namespace, String libraryUri) {
-		ResourceSet resourceSet = namespace.eResource().getResourceSet();
-		Resource resource = resourceSet.getResource(URI.createURI(libraryUri), true);
-		Package root = (Package)EcoreUtil.getObjectByType(resource.getContents(), UMLPackage.Literals.PACKAGE);
+		final ResourceSet resourceSet = namespace.eResource().getResourceSet();
+		final Resource resource = resourceSet.getResource(URI.createURI(libraryUri), true);
+		final Package root = (Package)EcoreUtil
+				.getObjectByType(resource.getContents(), UMLPackage.Literals.PACKAGE);
 		// We check if a package import already exists
 		return namespace.getImportedPackages().contains(root);
 	}
-	
+
 	/**
-	 * Return the source of an association
-	 * @param association
+	 * Return the source of an association.
+	 * 
+	 * @param association the {@link Association} context
 	 * @return first end of the association
 	 */
 	public static Property getSource(Association association) {
@@ -162,10 +198,11 @@ public class UMLServices {
 		}
 		return null;
 	}
-	
+
 	/**
-	 * Return the target of an association
-	 * @param association
+	 * Return the target of an association.
+	 * 
+	 * @param association the {@link Association} context
 	 * @return second end of the association
 	 */
 	public static Property getTarget(Association association) {
@@ -174,29 +211,35 @@ public class UMLServices {
 		}
 		return null;
 	}
-	
+
 	/**
-	 * Indicates if a property has "shared" as its aggregation kind 
-	 * @param p property to test
+	 * Indicates if a property has "shared" as its aggregation kind.
+	 * 
+	 * @param p
+	 *            property to test
 	 * @return boolean
 	 */
 	public boolean isShared(Property p) {
 		return AggregationKind.SHARED_LITERAL.equals(p.getAggregation());
 	}
-	
+
 	/**
-	 * Indicates if a property has "composite" as its aggregation kind 
-	 * @param p property to test
+	 * Indicates if a property has "composite" as its aggregation kind.
+	 * 
+	 * @param p
+	 *            property to test
 	 * @return boolean
 	 */
 	public boolean isComposite(Property p) {
 		return AggregationKind.COMPOSITE_LITERAL.equals(p.getAggregation());
 	}
-	
+
 	/**
-	 * Initializes an activity for an operation to be able to create an activity diagram on it
-	 * Does nothing if an activity already exists
-	 * @param op Operation to be associated with the activity
+	 * Initializes an activity for an operation to be able to create an activity diagram on it Does nothing if
+	 * an activity already exists.
+	 * 
+	 * @param op
+	 *            Operation to be associated with the activity
 	 * @return the modified operation
 	 */
 	public Operation initActivityForOperation(Operation op) {
@@ -210,16 +253,16 @@ public class UMLServices {
 				}
 			}
 		}
-		
+
 		// We have to create a new activity
-		Activity activity = UMLFactory.eINSTANCE.createActivity();
-		String activityLabel = op.getName() + " activity";
+		final Activity activity = UMLFactory.eINSTANCE.createActivity();
+		final String activityLabel = op.getName() + " activity";
 		activity.setName(activityLabel);
 		op.getClass_().getOwnedBehaviors().add(activity);
 
 		// Associate the activity to the operation
 		op.getMethods().add(activity);
-		
+
 		return op;
 	}
 }

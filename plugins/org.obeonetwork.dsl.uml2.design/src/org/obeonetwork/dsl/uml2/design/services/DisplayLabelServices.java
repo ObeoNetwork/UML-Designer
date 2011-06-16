@@ -20,9 +20,15 @@ import org.obeonetwork.dsl.uml2.design.services.internal.DisplayLabelSwitch;
  */
 public class DisplayLabelServices {
 
+	/**
+	 * Compute the label of the given element.
+	 * 
+	 * @param element the {@link Element} for which to retrieve a label.
+	 * @return the computed label.
+	 */
 	public String computeUmlLabel(Element element) {
 		final DisplayLabelSwitch displayLabel = new DisplayLabelSwitch();
-		
+
 		return displayLabel.doSwitch(element);
 	}
 }

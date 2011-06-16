@@ -22,63 +22,78 @@ import fr.obeo.dsl.viewpoint.business.api.componentization.ViewpointRegistry;
 import fr.obeo.dsl.viewpoint.description.Viewpoint;
 
 /**
- * The activator class controls the plug-in life cycle
+ * The activator class controls the plug-in life cycle.
+ * 
+ * @author Gonzague Reydet <a href="mailto:gonzague.reydet@obeo.fr">gonzague.reydet@obeo.fr</a>
  */
 public class UMLDesignerPlugin extends AbstractUIPlugin {
 
-	// The plug-in ID
+	/**
+	 * The plug-in ID.
+	 */
 	public static final String PLUGIN_ID = "org.obeonetwork.dsl.uml2.design";
 
-	// The shared instance
+	/**
+	 * The shared instance.
+	 */
 	private static UMLDesignerPlugin plugin;
 
-	private static Set<Viewpoint> viewpoints; 
+	/**
+	 * The {@link Viewpoint}s registered in this plug-in.
+	 */
+	private static Set<Viewpoint> viewpoints;
 
 	/**
-	 * The constructor
+	 * The constructor.
 	 */
 	public UMLDesignerPlugin() {
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#start(org.osgi.framework.BundleContext)
+	/**
+	 * {@inheritDoc}
 	 */
 	public void start(BundleContext context) throws Exception {
 		super.start(context);
 		plugin = this;
 		viewpoints = new HashSet<Viewpoint>();
-		viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin(PLUGIN_ID + "/description/uml2.odesign"));
-		
+		viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin(
+				PLUGIN_ID + "/description/uml2.odesign"));
+
 		// Add extensions to Model Content view
 		UmlSessionExtension.addExtension();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * @see org.eclipse.ui.plugin.AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
+	/**
+	 * {@inheritDoc}
 	 */
 	public void stop(BundleContext context) throws Exception {
 		plugin = null;
 		if (viewpoints != null) {
-			for (final Viewpoint viewpoint: viewpoints) {
+			for (final Viewpoint viewpoint : viewpoints) {
 				ViewpointRegistry.getInstance().disposeFromPlugin(viewpoint);
 			}
 			viewpoints.clear();
-			viewpoints = null; 
+			viewpoints = null;
 		}
 		super.stop(context);
 	}
 
 	/**
-	 * Returns the shared instance
-	 *
+	 * Returns the shared instance.
+	 * 
 	 * @return the shared instance
 	 */
 	public static UMLDesignerPlugin getDefault() {
 		return plugin;
 	}
 
+	/**
+	 * A helper to log plugin errors.
+	 * 
+	 * @param severity the error severity.
+	 * @param message the error message.
+	 * @param exception the error exception.
+	 */
 	public static void log(int severity, String message, Throwable exception) {
 		getDefault().getLog().log(new Status(severity, PLUGIN_ID, message, exception));
 	}

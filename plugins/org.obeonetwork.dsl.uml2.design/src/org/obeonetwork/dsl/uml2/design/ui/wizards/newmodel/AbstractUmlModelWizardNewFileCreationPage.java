@@ -16,8 +16,19 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
 
+/**
+ * An extension to provide UML designer custom provider in model content view.
+ *
+ * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
+ */
 public abstract class AbstractUmlModelWizardNewFileCreationPage extends WizardNewFileCreationPage {
 
+	/**
+	 * Constructor.
+	 *
+	 * @param pageName the page name
+	 * @param selection the selection
+	 */
 	public AbstractUmlModelWizardNewFileCreationPage(String pageName, IStructuredSelection selection) {
 		super(pageName, selection);
 	}
@@ -25,24 +36,31 @@ public abstract class AbstractUmlModelWizardNewFileCreationPage extends WizardNe
 	public IFile getModelFile() {
 		return ResourcesPlugin.getWorkspace().getRoot().getFile(getContainerFullPath().append(getFileName()));
 	}
-	
+
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	protected boolean validatePage() {
 		if (super.validatePage()) {
-			String requiredExt = getRequiredExtension();
-			String enteredExt = new Path(getFileName()).getFileExtension();
+			final String requiredExt = getRequiredExtension();
+			final String enteredExt = new Path(getFileName()).getFileExtension();
 			if (enteredExt == null || !enteredExt.equals(requiredExt)) {
-				setErrorMessage(Messages.bind(Messages.UmlModelWizard_UI_ErrorMsg_BadFileExtension, requiredExt));
+				setErrorMessage(Messages.bind(Messages.UmlModelWizard_UI_ErrorMsg_BadFileExtension,
+						requiredExt));
 				return false;
-			}
-			else {
+			} else {
 				return true;
 			}
-		}
-		else {
+		} else {
 			return false;
 		}
 	}
-	
-	abstract protected String getRequiredExtension();
+
+	/**
+	 * This method should return the extension of the file to create.
+	 * 
+	 * @return the file extension to create.
+	 */
+	protected abstract String getRequiredExtension();
 }

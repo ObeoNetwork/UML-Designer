@@ -11,14 +11,23 @@
 package org.obeonetwork.dsl.uml2.design.services;
 
 import org.eclipse.uml2.uml.Element;
-import org.eclipse.uml2.uml.InstanceValue;
-import org.eclipse.uml2.uml.Property;
 import org.obeonetwork.dsl.uml2.design.services.internal.TooltipLabelSwitch;
 
+/**
+ * Service class to handle the tooltip generation.
+ *
+ * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
+ */
 public class TooltipServices {
-	
-	public String computeUmlTooltip(Element element) {
+
+	/**
+	 * Compute the tooltip for the given element.
+	 * 
+	 * @param context the context object on which to execute this service.
+	 * @return the computed tooltip String to display
+	 */
+	public String computeUmlTooltip(Element context) {
 		final TooltipLabelSwitch tooltipLabel = new TooltipLabelSwitch();
-		return tooltipLabel.doSwitch(element);
+		return tooltipLabel.doSwitch(context);
 	}
 }

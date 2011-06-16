@@ -8,27 +8,41 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.obeonetwork.dsl.uml2.design.services;
+package org.obeonetwork.dsl.uml2.design.services.internal;
 
 import org.eclipse.uml2.uml.Type;
 
 /**
- * Utility class used to handle information about a name and a type
+ * Utility class used to handle information about a name and a type.
  * 
- * @author St�phane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
+ * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
  */
 public class NameAndType {
+	/**
+	 * The name.
+	 */
 	private String name;
+
+	/**
+	 * The type.
+	 */
 	private Type type;
-		
+
+	/**
+	 * Constructor.
+	 *
+	 * @param name the name.
+	 * @param type the type.
+	 */
 	public NameAndType(String name, Type type) {
 		this.name = name;
 		this.type = type;
 	}
-		
+
 	public String getName() {
 		return name;
 	}
+
 	public Type getType() {
 		return type;
 	}

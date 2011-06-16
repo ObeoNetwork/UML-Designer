@@ -37,53 +37,85 @@ import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.util.UMLSwitch;
 import org.obeonetwork.dsl.uml2.design.services.UMLServices;
 
-public class DisplayLabelSwitch  extends UMLSwitch<String> implements ILabelConstants {
-	
+/**
+ * A switch that handle the label computation for each UML types.
+ *
+ * @author Gonzague Reydet <a href="mailto:gonzague.reydet@obeo.fr">gonzague.reydet@obeo.fr</a>
+ */
+public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConstants {
+
+	/**
+	 * Spaced column constant.
+	 */
+	private static final String SPACED_COLUMN = " : ";
+	/**
+	 * Closing brace constant.
+	 */
+	private static final String CLOSING_BRACE = "]";
+	/**
+	 * Opening brace constant.
+	 */
+	private static final String OPENING_BRACE = "[";
+
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String caseActivityEdge(ActivityEdge object) {
-		ValueSpecification value = object.getGuard();
-		
-		if(value instanceof OpaqueExpression) {
-			String expr = ((OpaqueExpression)value).getBodies().get(0);
-			if(expr != null && !"".equalsIgnoreCase(expr) && !"true".equalsIgnoreCase(expr) && !"1".equalsIgnoreCase(expr)) {
-				return "[" + expr + "]";
+		final ValueSpecification value = object.getGuard();
+
+		if (value instanceof OpaqueExpression) {
+			final String expr = ((OpaqueExpression)value).getBodies().get(0);
+			if (expr != null && !"".equalsIgnoreCase(expr) && !"true".equalsIgnoreCase(expr)
+					&& !"1".equalsIgnoreCase(expr)) {
+				return OPENING_BRACE + expr + CLOSING_BRACE;
 			}
 		}
-		
+
 		return "";
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String caseTransition(Transition object) {
-		Constraint constraint = object.getGuard();
+		final Constraint constraint = object.getGuard();
 		if (constraint != null) {
-			ValueSpecification value = constraint.getSpecification();
-			
-			if(value instanceof OpaqueExpression) {
-				String expr = ((OpaqueExpression)value).getBodies().get(0);
-				if(expr != null && !"".equalsIgnoreCase(expr) && !"true".equalsIgnoreCase(expr) && !"1".equalsIgnoreCase(expr)) {
-					return "[" + expr + "]";
+			final ValueSpecification value = constraint.getSpecification();
+
+			if (value instanceof OpaqueExpression) {
+				final String expr = ((OpaqueExpression)value).getBodies().get(0);
+				if (expr != null && !"".equalsIgnoreCase(expr) && !"true".equalsIgnoreCase(expr)
+						&& !"1".equalsIgnoreCase(expr)) {
+					return OPENING_BRACE + expr + CLOSING_BRACE;
 				}
 			}
 		}
-		
+
 		return "";
 	}
 
-	public String computeStereotypes(Element element) {
-		Iterator<Stereotype> it = element.getAppliedStereotypes().iterator();
-		
+	/**
+	 * Compute the {@link Stereotype} label part for the given {@link Element}.
+	 * 
+	 * @param element the context element.
+	 * @return the {@link Stereotype} label.
+	 */
+	public static String computeStereotypes(Element element) {
+		final Iterator<Stereotype> it = element.getAppliedStereotypes().iterator();
+
 		if (!it.hasNext()) {
 			return "";
 		}
-		
-		StringBuffer stereotypeLabel = new StringBuffer();
+
+		final StringBuffer stereotypeLabel = new StringBuffer();
 		stereotypeLabel.append(OPEN_QUOTE_MARK);
-		for (;;) {
-			Stereotype appliedStereotype = it.next();
+		for ( ;; ) {
+			final Stereotype appliedStereotype = it.next();
 
 			stereotypeLabel.append(appliedStereotype.getName());
-			if(it.hasNext()) {
+			if (it.hasNext()) {
 				stereotypeLabel.append(", ");
 			} else {
 				break;
@@ -91,15 +123,18 @@ public class DisplayLabelSwitch  extends UMLSwitch<String> implements ILabelCons
 		}
 		stereotypeLabel.append(CLOSE_QUOTE_MARK);
 		stereotypeLabel.append(NL);
-		
+
 		return stereotypeLabel.toString();
 	}
-	
+
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String caseProperty(Property object) {
 		String label = "";
 		if (object.isDerived()) {
-			label += "/";			
+			label += "/";
 		}
 		label += caseStructuralFeature(object);
 		if (object.getDefault() != null && !"".equals(object.getDefault().trim())) {
@@ -109,21 +144,24 @@ public class DisplayLabelSwitch  extends UMLSwitch<String> implements ILabelCons
 			} else {
 				label += " = " + object.getDefault();
 			}
-		} else if (object.getDefaultValue() != null && object.getDefaultValue() instanceof InstanceValue) {
+		} else if (object.getDefaultValue() instanceof InstanceValue) {
 			label += " = " + ((InstanceValue)object.getDefaultValue()).getName();
 		}
 		return label;
 	}
-	
+
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String caseOperation(Operation object) {
-		StringBuilder label = new StringBuilder(caseNamedElement(object));
+		final StringBuilder label = new StringBuilder(caseNamedElement(object));
 		label.append("(");
-		
+
 		boolean first = true;
 		for (Parameter parameter : object.getOwnedParameters()) {
 			if (!ParameterDirectionKind.RETURN_LITERAL.equals(parameter.getDirection())) {
-				if (first == false) {
+				if (!first) {
 					label.append(", ");
 				} else {
 					first = false;
@@ -133,17 +171,23 @@ public class DisplayLabelSwitch  extends UMLSwitch<String> implements ILabelCons
 		}
 		label.append(")");
 		if (object.getType() != null) {
-			label.append(" : ");
+			label.append(SPACED_COLUMN);
 			label.append(object.getType().getName());
 		}
 		return label.toString();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String caseStructuralFeature(StructuralFeature object) {
 		return caseTypedElement(object) + caseMultiplicityElement(object);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String caseMultiplicityElement(MultiplicityElement object) {
 		if (object.getLower() == 1 && object.getUpper() == 1) {
@@ -153,45 +197,57 @@ public class DisplayLabelSwitch  extends UMLSwitch<String> implements ILabelCons
 			// [0..*]
 			return "[*]";
 		} else {
-			String label = "[" + object.getLower() + "..";
+			String label = OPENING_BRACE + object.getLower() + "..";
 			if (object.getUpper() == -1) {
 				label += "*]";
 			} else {
-				label += object.getUpper() + "]";
+				label += object.getUpper() + CLOSING_BRACE;
 			}
 			return label;
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String caseTypedElement(TypedElement object) {
 		if (object.getType() != null) {
-			return caseNamedElement(object) + " : " + object.getType().getName();
+			return caseNamedElement(object) + SPACED_COLUMN + object.getType().getName();
 		} else {
-			return caseNamedElement(object) + " : ";
+			return caseNamedElement(object) + SPACED_COLUMN;
 		}
 	}
-	
+
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String caseActivityPartition(ActivityPartition object) {
-		if(object.getRepresents() instanceof NamedElement) {
-			return caseNamedElement(object)  + " : " + ((NamedElement)object.getRepresents()).getName();
+		if (object.getRepresents() instanceof NamedElement) {
+			return caseNamedElement(object) + SPACED_COLUMN + ((NamedElement)object.getRepresents()).getName();
 		}
-		
+
 		return null;
 	}
-	
+
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String casePin(Pin object) {
-		StringBuffer buffer = new StringBuffer();
+		final StringBuffer buffer = new StringBuffer();
 		buffer.append(caseTypedElement(object));
 		buffer.append(caseMultiplicityElement(object));
 		return buffer.toString();
 	}
-	
+
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String caseDataStoreNode(DataStoreNode object) {
-		StringBuffer buffer = new StringBuffer();
+		final StringBuffer buffer = new StringBuffer();
 		buffer.append(OPEN_QUOTE_MARK);
 		buffer.append("Datastore");
 		buffer.append(CLOSE_QUOTE_MARK);
@@ -200,46 +256,58 @@ public class DisplayLabelSwitch  extends UMLSwitch<String> implements ILabelCons
 		return buffer.toString();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String caseCallOperationAction(CallOperationAction object) {
-		if(object.getOperation() != null) {
-			return caseNamedElement(object) + " : " + object.getOperation().getName();
+		if (object.getOperation() != null) {
+			return caseNamedElement(object) + SPACED_COLUMN + object.getOperation().getName();
 		}
-		
+
 		return null;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String caseOpaqueAction(OpaqueAction object) {
-		Iterator<String> it = object.getBodies().iterator();
-		
-		if(it.hasNext()) {
-			StringBuffer buffer = new StringBuffer();
+		final Iterator<String> it = object.getBodies().iterator();
+
+		if (it.hasNext()) {
+			final StringBuffer buffer = new StringBuffer();
 			buffer.append(caseNamedElement(object));
 			buffer.append(NL);
-			
+
 			while (it.hasNext()) {
 				buffer.append(NL);
 				buffer.append(it.next());
 			}
-			
+
 			return buffer.toString();
 		}
-		
+
 		return null;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String caseNamedElement(NamedElement object) {
-		return computeStereotypes(object) + object.getName();  
+		return computeStereotypes(object) + object.getName();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String caseAssociation(Association object) {
-		Property source = UMLServices.getSource(object);
-		Property target = UMLServices.getTarget(object);
+		final Property source = UMLServices.getSource(object);
+		final Property target = UMLServices.getTarget(object);
 		if (source.isNavigable() && target.isNavigable()) {
-			return getAssociationEndLabel(target) + " - " + getAssociationEndLabel(source); 
+			return getAssociationEndLabel(target) + " - " + getAssociationEndLabel(source);
 		} else if (source.isNavigable()) {
 			return getAssociationEndLabel(source);
 		} else if (target.isNavigable()) {
@@ -248,9 +316,15 @@ public class DisplayLabelSwitch  extends UMLSwitch<String> implements ILabelCons
 			return object.getName();
 		}
 	}
-	
+
+	/**
+	 * Compute label for association end.
+	 * 
+	 * @param p the {@link Association}'s {@link Property} end.
+	 * @return the label of the association end.
+	 */
 	private String getAssociationEndLabel(Property p) {
-		StringBuilder sb = new StringBuilder("");
+		final StringBuilder sb = new StringBuilder("");
 		if (p.isDerived()) {
 			sb.append("/");
 		}

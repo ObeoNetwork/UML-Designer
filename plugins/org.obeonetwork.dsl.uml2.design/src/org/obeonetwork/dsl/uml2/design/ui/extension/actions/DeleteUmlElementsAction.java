@@ -29,18 +29,35 @@ import fr.obeo.dsl.viewpoint.business.api.dialect.DialectManager;
 import fr.obeo.dsl.viewpoint.business.api.session.Session;
 import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
 
+/**
+ * An action to delete the selected UML elements.
+ *
+ * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
+ */
 public class DeleteUmlElementsAction extends Action {
+	/**
+	 * The delete icon.
+	 */
 	private static ImageDescriptor image;
+	
 	static {
-		URL url = UMLDesignerPlugin.getDefault().getBundle().getEntry("icons/deleteModel.gif");
+		final URL url = UMLDesignerPlugin.getDefault().getBundle().getEntry("icons/deleteModel.gif");
 		image = ImageDescriptor.createFromURL(url);
 	}
-	
+
+	/**
+	 * The list of elements to delete.
+	 */
 	private List<Element> elements;
-	
+
+	/**
+	 * Constructor.
+	 *
+	 * @param elements the elements to delete.
+	 */
 	public DeleteUmlElementsAction(List<Element> elements) {
 		this.elements = elements;
-	}	
+	}
 
 	@Override
 	public String getId() {
@@ -57,10 +74,14 @@ public class DeleteUmlElementsAction extends Action {
 		return image;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void run() {
-		TransactionalEditingDomain editingDomain = EditingDomainService.getInstance().getEditingDomainProvider().getEditingDomain();
-		RecordingCommand cmd = new RecordingCommand(editingDomain, "Delete from model") {
+		final TransactionalEditingDomain editingDomain = EditingDomainService.getInstance()
+				.getEditingDomainProvider().getEditingDomain();
+		final RecordingCommand cmd = new RecordingCommand(editingDomain, "Delete from model") {
 			protected void doExecute() {
 				// Get Session
 				Session session = null;
@@ -72,13 +93,13 @@ public class DeleteUmlElementsAction extends Action {
 				}
 				// Refresh all diagrams
 				if (session != null) {
-					Collection<DRepresentation> representations = DialectManager.INSTANCE.getAllRepresentations(session);
+					final Collection<DRepresentation> representations = DialectManager.INSTANCE.getAllRepresentations(session);
 					for (DRepresentation representation : representations) {
 						// We test if the root element still exists
 						if (representation instanceof DSemanticDiagram) {
-							DSemanticDiagram diagram = (DSemanticDiagram)representation;
+							final DSemanticDiagram diagram = (DSemanticDiagram)representation;
 							if ((diagram.getTarget() != null) && (DialectManager.INSTANCE.canRefresh(representation))) {
-									DialectManager.INSTANCE.refresh(representation, new NullProgressMonitor());
+								DialectManager.INSTANCE.refresh(representation, new NullProgressMonitor());
 							}
 						}
 					}

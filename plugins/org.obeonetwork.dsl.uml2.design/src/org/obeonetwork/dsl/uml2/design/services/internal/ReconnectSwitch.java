@@ -25,37 +25,66 @@ import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.util.UMLSwitch;
 import org.obeonetwork.dsl.uml2.design.services.UMLServices;
 
+/**
+ * A switch that handle the edge reconnections for each UML types.
+ *
+ * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
+ */
 public class ReconnectSwitch extends UMLSwitch<Element> {
+	/**
+	 * Source reconnection kind constant.
+	 */
 	public static final int RECONNECT_SOURCE = 0;
+
+	/**
+	 * Target reconnection kind constant.
+	 */
 	public static final int RECONNECT_TARGET = 1;
-	
+
+	/**
+	 * The current reconnection kind.
+	 */
 	private int reconnectKind;
+
+	/**
+	 * The old pointed element.
+	 */
 	private Element oldPointedElement;
+
+	/**
+	 * The new pointed element.
+	 */
 	private Element newPointedElement;
-	
+
 	public void setReconnectKind(int reconnectKind) {
 		this.reconnectKind = reconnectKind;
 	}
-	
+
 	public void setOldPointedElement(Element oldPointedElement) {
 		this.oldPointedElement = oldPointedElement;
 	}
-	
+
 	public void setNewPointedElement(Element newPointedElement) {
 		this.newPointedElement = newPointedElement;
 	}
-	
+
+	/**
+	 * {@inheritDoc}
+	 */
 	public Element caseGeneralization(Generalization generalization) {
 		if (newPointedElement instanceof Classifier) {
 			if (RECONNECT_SOURCE == reconnectKind) {
-				generalization.setSpecific((Classifier) newPointedElement);
+				generalization.setSpecific((Classifier)newPointedElement);
 			} else {
-				generalization.setGeneral((Classifier) newPointedElement);
+				generalization.setGeneral((Classifier)newPointedElement);
 			}
 		}
 		return generalization;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public Element caseInterfaceRealization(InterfaceRealization interfaceRealization) {
 		if (RECONNECT_SOURCE == reconnectKind) {
 			if (newPointedElement instanceof Class) {
@@ -65,12 +94,15 @@ public class ReconnectSwitch extends UMLSwitch<Element> {
 		} else {
 			if (newPointedElement instanceof Interface) {
 				interfaceRealization.getSuppliers().clear();
-				interfaceRealization.getSuppliers().add((Interface) newPointedElement);
+				interfaceRealization.getSuppliers().add((Interface)newPointedElement);
 			}
 		}
 		return interfaceRealization;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public Element caseDependency(Dependency dependency) {
 		if (RECONNECT_SOURCE == reconnectKind) {
 			if (newPointedElement instanceof Classifier) {
@@ -80,36 +112,41 @@ public class ReconnectSwitch extends UMLSwitch<Element> {
 		} else {
 			if (newPointedElement instanceof Classifier) {
 				dependency.getSuppliers().clear();
-				dependency.getSuppliers().add((Classifier) newPointedElement);
-			}	
+				dependency.getSuppliers().add((Classifier)newPointedElement);
+			}
 		}
 		return dependency;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public Element caseAssociation(Association association) {
 		if (RECONNECT_SOURCE == reconnectKind) {
 			if (newPointedElement instanceof Type) {
-				Property source = UMLServices.getSource(association);
-				source.setType((Type) newPointedElement);
+				final Property source = UMLServices.getSource(association);
+				source.setType((Type)newPointedElement);
 			}
 		} else {
 			if (newPointedElement instanceof Type) {
-				Property target = UMLServices.getTarget(association);
-				target.setType((Type) newPointedElement);
+				final Property target = UMLServices.getTarget(association);
+				target.setType((Type)newPointedElement);
 			}
 		}
 		return association;
 	}
-	
-	
+
+	/**
+	 * {@inheritDoc}
+	 */
 	public Element caseConnector(Connector connector) {
 		if (RECONNECT_SOURCE == reconnectKind) {
 			if (newPointedElement instanceof ConnectableElement) {
-				connector.getEnds().get(0).setRole((ConnectableElement) newPointedElement);
+				connector.getEnds().get(0).setRole((ConnectableElement)newPointedElement);
 			}
 		} else {
 			if (newPointedElement instanceof ConnectableElement) {
-				connector.getEnds().get(1).setRole((ConnectableElement) newPointedElement);
+				connector.getEnds().get(1).setRole((ConnectableElement)newPointedElement);
 			}
 		}
 		return connector;

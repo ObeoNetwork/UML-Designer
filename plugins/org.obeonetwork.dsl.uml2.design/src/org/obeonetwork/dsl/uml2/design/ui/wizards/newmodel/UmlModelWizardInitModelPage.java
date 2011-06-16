@@ -26,34 +26,36 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.obeonetwork.dsl.uml2.design.SessionCreationOperation;
 
+/**
+ * The model initialization wizard page.
+ *
+ * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
+ */
+// CHECKSTYLE:OFF
 public class UmlModelWizardInitModelPage extends WizardPage {
 
-	
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected Combo initialObjectField;
 
 	/**
-	 * @generated
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * @generated <!-- begin-user-doc --> <!-- end-user-doc -->
 	 */
 	protected List<String> encodings;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected Combo encodingField;
 
 	/**
-	 * Pass in the selection.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Pass in the selection. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public UmlModelWizardInitModelPage(String pageId) {
@@ -61,8 +63,8 @@ public class UmlModelWizardInitModelPage extends WizardPage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void createControl(Composite parent) {
@@ -139,20 +141,19 @@ public class UmlModelWizardInitModelPage extends WizardPage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	protected ModifyListener validator =
-		new ModifyListener() {
-			public void modifyText(ModifyEvent e) {
-				setPageComplete(validatePage());
-			}
-		};
+	protected ModifyListener validator = new ModifyListener() {
+		public void modifyText(ModifyEvent e) {
+			setPageComplete(validatePage());
+		}
+	};
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected boolean validatePage() {
@@ -160,8 +161,8 @@ public class UmlModelWizardInitModelPage extends WizardPage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -171,8 +172,7 @@ public class UmlModelWizardInitModelPage extends WizardPage {
 			if (initialObjectField.getItemCount() == 1) {
 				initialObjectField.clearSelection();
 				encodingField.setFocus();
-			}
-			else {
+			} else {
 				encodingField.clearSelection();
 				initialObjectField.setFocus();
 			}
@@ -180,28 +180,28 @@ public class UmlModelWizardInitModelPage extends WizardPage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getEncoding() {
 		return encodingField.getText();
 	}
-	
+
 	public String getInitialObjectName() {
 		return initialObjectField.getText();
 	}
 
-
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected Collection<String> getEncodings() {
 		if (encodings == null) {
 			encodings = new ArrayList<String>();
-			for (StringTokenizer stringTokenizer = new StringTokenizer(Messages.UmlModelWizardInitModelPage_XmlEncodings); stringTokenizer.hasMoreTokens(); ) {
+			for (StringTokenizer stringTokenizer = new StringTokenizer(
+					Messages.UmlModelWizardInitModelPage_XmlEncodings); stringTokenizer.hasMoreTokens();) {
 				encodings.add(stringTokenizer.nextToken());
 			}
 		}

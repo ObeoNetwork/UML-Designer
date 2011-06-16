@@ -12,12 +12,23 @@ package org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel;
 
 import org.eclipse.jface.viewers.IStructuredSelection;
 
+/**
+ * The session model file creation page.
+ *
+ * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
+ */
 public class UmlModelWizardNewSessionFilePage extends AbstractUmlModelWizardNewFileCreationPage {
 
+	/**
+	 * Constructor.
+	 *
+	 * @param pageName the page name
+	 * @param selection the selection
+	 */
 	public UmlModelWizardNewSessionFilePage(String pageName, IStructuredSelection selection) {
 		super(pageName, selection);
 	}
-	
+
 	protected String getRequiredExtension() {
 		return UmlModelWizard.SESSION_FILE_EXTENSION;
 	}

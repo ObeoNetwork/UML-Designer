@@ -36,27 +36,34 @@ import fr.obeo.dsl.viewpoint.DNode;
  */
 public class SequenceServices {
 	/**
-	 * Retrieves the context element ({@link Lifeline} or {@link ExecutionSpecification}) of the given {@link OccurrenceSpecification}.
+	 * Retrieves the context element ({@link Lifeline} or {@link ExecutionSpecification}) of the given
+	 * {@link OccurrenceSpecification}.
 	 * 
-	 * @param occurrenceSpecification the {@link OccurrenceSpecification} for which to find the context
-	 * @return the {@link ExecutionSpecification} on which the given {@link OccurrenceSpecification} is attached or otherwise, the {@link Lifeline}otherwise it is attached to.
+	 * @param occurrenceSpecification
+	 *            the {@link OccurrenceSpecification} for which to find the context
+	 * @return the {@link ExecutionSpecification} on which the given {@link OccurrenceSpecification} is
+	 *         attached or otherwise, the {@link Lifeline}otherwise it is attached to.
 	 */
-	public static NamedElement findOccurrenceSpecificationContext(OccurrenceSpecification occurrenceSpecification) {
-		// Construct a list of the previous fragments of the given occurrence specification 
-		List<InteractionFragment> fragments = occurrenceSpecification.getEnclosingInteraction().getFragments();
-		fragments = new ArrayList<InteractionFragment>(fragments.subList(0, fragments.indexOf(occurrenceSpecification)));
+	public NamedElement findOccurrenceSpecificationContext(
+			OccurrenceSpecification occurrenceSpecification) {
+		// Construct a list of the previous fragments of the given occurrence specification
+		List<InteractionFragment> fragments = occurrenceSpecification.getEnclosingInteraction()
+				.getFragments();
+		fragments = new ArrayList<InteractionFragment>(fragments.subList(0,
+				fragments.indexOf(occurrenceSpecification)));
 		Collections.reverse(fragments);
-		
-		// The context of the given occurrence specification will be the first ExecutionOccurrenceSpecification on the list
+
+		// The context of the given occurrence specification will be the first
+		// ExecutionOccurrenceSpecification on the list
 		// which is attached to the same lifeline and which is not a sub execution.
-		Lifeline lifeline = occurrenceSpecification.getCovereds().get(0);
-		List<ExecutionSpecification> subExecution = new ArrayList<ExecutionSpecification>();
+		final Lifeline lifeline = occurrenceSpecification.getCovereds().get(0);
+		final List<ExecutionSpecification> subExecution = new ArrayList<ExecutionSpecification>();
 		for (InteractionFragment interactionFragment : fragments) {
 			if (interactionFragment instanceof ExecutionOccurrenceSpecification
 					&& interactionFragment.getCovered(lifeline.getName()) != null) {
-				ExecutionOccurrenceSpecification occurence = (ExecutionOccurrenceSpecification)interactionFragment;
-				ExecutionSpecification execution = occurence.getExecution();
-				
+				final ExecutionOccurrenceSpecification occurence = (ExecutionOccurrenceSpecification)interactionFragment;
+				final ExecutionSpecification execution = occurence.getExecution();
+
 				if (execution.getFinish() == occurence) {
 					// Occurrence is a termination of a sub execution
 					subExecution.add(execution);
@@ -66,119 +73,134 @@ public class SequenceServices {
 					subExecution.remove(execution);
 					continue;
 				}
-				
+
 				// Occurrence is the start end of the current execution context
 				return ((ExecutionOccurrenceSpecification)interactionFragment).getExecution();
 			}
 		}
-		
+
 		// If we did not find an execution for the context of the given occurrenceSpecification,
 		// then the context is the lifeline on which it is attached
 		return lifeline;
 	}
-	
+
 	/**
 	 * Finds the first level of {@link ExecutionSpecification} in the context of the given {@link Lifeline}.
 	 * 
-	 * @param lifeline the context.
+	 * @param lifeline
+	 *            the context.
 	 * @return the {@link ExecutionSpecification} semantic candidates.
 	 */
-	public static List<ExecutionSpecification> executionSemanticCandidates(Lifeline lifeline) {
+	public List<ExecutionSpecification> executionSemanticCandidates(Lifeline lifeline) {
 		return getFirstLevelExecutions(lifeline, lifeline.getInteraction().getFragments());
 	}
-	
+
 	/**
-	 * Finds the first level of {@link ExecutionSpecification} in the context of the given {@link ExecutionSpecification}.
+	 * Finds the first level of {@link ExecutionSpecification} in the context of the given
+	 * {@link ExecutionSpecification}.
 	 * 
-	 * @param execution the context.
+	 * @param execution
+	 *            the context.
 	 * @return the {@link ExecutionSpecification} semantic candidates.
 	 */
-	public static List<ExecutionSpecification> executionSemanticCandidates(ExecutionSpecification execution) {
-		List<InteractionFragment> fragments = execution.getEnclosingInteraction().getFragments();
-		
-		int startIndex = fragments.indexOf(execution.getStart());
-		int finishIndex = fragments.indexOf(execution.getFinish());
-		List<InteractionFragment> candidateFragments = new ArrayList<InteractionFragment>(fragments.subList(startIndex + 1, finishIndex));
-		
+	public List<ExecutionSpecification> executionSemanticCandidates(ExecutionSpecification execution) {
+		final List<InteractionFragment> fragments = execution.getEnclosingInteraction().getFragments();
+
+		final int startIndex = fragments.indexOf(execution.getStart());
+		final int finishIndex = fragments.indexOf(execution.getFinish());
+		final List<InteractionFragment> candidateFragments = new ArrayList<InteractionFragment>(fragments.subList(
+				startIndex + 1, finishIndex));
+
 		return getFirstLevelExecutions(execution.getCovereds().get(0), candidateFragments);
 	}
-	
+
 	/**
 	 * Find the first level of {@link ExecutionSpecification} in the given {@link InteractionFragment} list.
 	 * 
-	 * @param lifeline the {@link Lifeline} which is covered by the searched {@link ExecutionSpecification}
-	 * @param subFragments a sub-list of {@link InteractionFragment} to inspect for the first {@link ExecutionSpecification} level.
-	 * @return {@link List} of the {@link ExecutionSpecification} or <code>null</code> if the model is inconsistent
+	 * @param lifeline
+	 *            the {@link Lifeline} which is covered by the searched {@link ExecutionSpecification}
+	 * @param subFragments
+	 *            a sub-list of {@link InteractionFragment} to inspect for the first
+	 *            {@link ExecutionSpecification} level.
+	 * @return {@link List} of the {@link ExecutionSpecification} or <code>null</code> if the model is
+	 *         inconsistent
 	 */
-	private static List<ExecutionSpecification> getFirstLevelExecutions(Lifeline lifeline, List<InteractionFragment> subFragments) {
-		List<ExecutionSpecification> executions = new ArrayList<ExecutionSpecification>();
-		
+	private static List<ExecutionSpecification> getFirstLevelExecutions(Lifeline lifeline,
+			List<InteractionFragment> subFragments) {
+		final List<ExecutionSpecification> executions = new ArrayList<ExecutionSpecification>();
+
 		for (int i = 0; i < subFragments.size(); i++) {
-			InteractionFragment fragment = subFragments.get(i);
-			
+			final InteractionFragment fragment = subFragments.get(i);
+
 			if (fragment instanceof ExecutionOccurrenceSpecification
 					&& fragment.getCovereds().contains(lifeline)) {
 				// We found a good execution candidate.
-				ExecutionSpecification execution = ((ExecutionOccurrenceSpecification)fragment).getExecution();
-				
+				final ExecutionSpecification execution = ((ExecutionOccurrenceSpecification)fragment)
+						.getExecution();
+
 				if (execution.getStart() == fragment) {
 					executions.add(execution);
-					
+
 					// The next execution candidate will be after the termination of the current one.
+
+					// CHECKSTYLE:OFF
 					i = subFragments.indexOf(execution.getFinish());
-					if (i == -1) { return null; }
+					// CHECKSTYLE:ON
+					if (i == -1) {
+						return null;
+					}
 				} else {
 					return null;
 				}
 			}
 		}
-		
+
 		return executions;
 	}
-	
+
 	/**
-	 * Delete the all the semantic elements attached to the given node.
-	 * This will find the semantic elements of the current node and those coming recursively from
-	 * sub-bordered nodes and linked edges.
-	 *  
-	 * @param node the root node to delete.
+	 * Delete the all the semantic elements attached to the given node. This will find the semantic elements
+	 * of the current node and those coming recursively from sub-bordered nodes and linked edges.
+	 * 
+	 * @param node
+	 *            the root node to delete.
 	 * @return the parent diagram.
 	 */
-	public static DDiagram fullDelete(DNode node) {
-		Collection<EObject> elementsToDelete = getSemanticElementsToDelete(node);
-		
+	public DDiagram fullDelete(DNode node) {
+		final Collection<EObject> elementsToDelete = getSemanticElementsToDelete(node);
+
 		for (EObject eObject : elementsToDelete) {
 			EcoreUtil.remove(eObject);
 		}
-		
+
 		return node.getParentDiagram();
 	}
-	
-	
+
 	/**
-	 * Retreives all the semantic elements of the current node, those of the incoming
-	 * and outgoing edges and recursively along the sub-bordered node tree.
+	 * Retreives all the semantic elements of the current node, those of the incoming and outgoing edges and
+	 * recursively along the sub-bordered node tree.
 	 * 
-	 * @param node the root {@link DNode}
+	 * @param node
+	 *            the root {@link DNode}
 	 * @return the list of attached semantic elements
 	 */
 	private static Collection<EObject> getSemanticElementsToDelete(DNode node) {
-		Collection<EObject> elementsToDelete = new LinkedHashSet<EObject>();
-		
+		final Collection<EObject> elementsToDelete = new LinkedHashSet<EObject>();
+
 		elementsToDelete.addAll(node.getSemanticElements());
-		
-		for(DEdge incomingEdge : node.getIncomingEdges()) {
+
+		for (DEdge incomingEdge : node.getIncomingEdges()) {
 			elementsToDelete.addAll(incomingEdge.getSemanticElements());
 		}
-		
-		for(DEdge outgoingEdges : node.getOutgoingEdges()) {
+
+		for (DEdge outgoingEdges : node.getOutgoingEdges()) {
 			elementsToDelete.addAll(outgoingEdges.getSemanticElements());
 		}
-		
-		for(DNode borderedNode : node.getOwnedBorderedNodes()) {
+
+		for (DNode borderedNode : node.getOwnedBorderedNodes()) {
 			elementsToDelete.addAll(getSemanticElementsToDelete(borderedNode));
 		}
-		
+
 		return elementsToDelete;
 	}
 }

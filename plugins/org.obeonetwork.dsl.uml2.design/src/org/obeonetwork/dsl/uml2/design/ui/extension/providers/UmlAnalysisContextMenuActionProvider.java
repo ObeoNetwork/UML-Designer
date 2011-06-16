@@ -21,14 +21,22 @@ import org.obeonetwork.dsl.uml2.design.ui.extension.actions.DeleteUmlElementsAct
 
 import fr.obeo.oo1932oo.viewpoint.oo221oo.oo19oo.oo5606oo.oo1376oo.oo13598oo.oo1102oo.Oo20979oo;
 
+/**
+ * UML Designer model content view context menu action provider.
+ *
+ * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
+ */
 @SuppressWarnings("restriction")
 public class UmlAnalysisContextMenuActionProvider implements Oo20979oo {
 
+	/**
+	 * {@inheritDoc}
+	 */
 	public Iterable<IAction> getContextMenuActions(ISelection selection) {
-		List<IAction> actions = new ArrayList<IAction>();
-		List<Element> elements = new ArrayList<Element>();
+		final List<IAction> actions = new ArrayList<IAction>();
+		final List<Element> elements = new ArrayList<Element>();
 		if (selection instanceof IStructuredSelection) {
-			for (Object selectedObject : ((IStructuredSelection) selection).toList()) {
+			for (Object selectedObject : ((IStructuredSelection)selection).toList()) {
 				if (selectedObject instanceof Element) {
 					elements.add((Element)selectedObject);
 				}

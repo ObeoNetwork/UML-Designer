@@ -27,142 +27,170 @@ import org.eclipse.uml2.uml.OpaqueAction;
 import org.eclipse.uml2.uml.OutputPin;
 import org.eclipse.uml2.uml.UMLFactory;
 
+/**
+ * A set of services to handle the UML Activity diagram.
+ *
+ * @author Gonzague Reydet <a href="mailto:gonzague.reydet@obeo.fr">gonzague.reydet@obeo.fr</a>
+ */
 public class ActivityServices {
-	
+
 	/**
-	 * Retrieves the child {@link ActivityPartition} from either {@link Activity} or {@link ActivityPartition} context object.
-	 * This is used has the semantic candidates expression of AD_ActivityPartition container mapping.
+	 * Retrieves the child {@link ActivityPartition} from either {@link Activity} or {@link ActivityPartition}
+	 * context object. This is used has the semantic candidates expression of AD_ActivityPartition container
+	 * mapping.
 	 * 
-	 * @param context
-	 * @return
+	 * @param context the context object on which to execute this service.
+	 * @return a list of {@link ActivityPartition}
 	 */
 	public EList<ActivityPartition> getActivityPartitions(Element context) {
-		if(context instanceof Activity) {
+		if (context instanceof Activity) {
 			return ((Activity)context).getPartitions();
-		} else if(context instanceof ActivityPartition) {
+		} else if (context instanceof ActivityPartition) {
 			return ((ActivityPartition)context).getSubpartitions();
 		}
-		
+
 		return null;
 	}
-	
+
 	/**
 	 * Return the given context object if it's an {@link Activity} or find it into the parent elements.<br>
-	 * This is used to compute the context of Activity diagram creation tools. Activity Nodes & Actions
-	 * can be created within either an {@link Activity} or an {@link ActivityPartition}, but they are always contained by
-	 * the parent {@link Activity}.
+	 * This is used to compute the context of Activity diagram creation tools. Activity Nodes & Actions can be
+	 * created within either an {@link Activity} or an {@link ActivityPartition}, but they are always
+	 * contained by the parent {@link Activity}.
 	 * 
-	 * @param context
-	 * @return
+	 * @param context the context object on which to execute this service.
+	 * @return the parent activity of the context object
 	 */
 	public Activity findParentActivity(Element context) {
-		if(context instanceof Activity) {
-			return (Activity) context;
+		if (context instanceof Activity) {
+			return (Activity)context;
 		}
-		
-		if(context.eContainer() != null) {
-			return findParentActivity((Element) context.eContainer());
+
+		if (context.eContainer() != null) {
+			return findParentActivity((Element)context.eContainer());
 		}
-		
+
 		return null;
 	}
-	
+
 	/**
-	 * Get the child {@link ActivityNode} elements for the given context.
-	 * This is used to retrieve the semantic candidates of {@link ActivityNode} mappings
-	 * from the context semantic object which can be either the {@link Activity} or an {@link ActivityPartition}.
+	 * Get the child {@link ActivityNode} elements for the given context. This is used to retrieve the
+	 * semantic candidates of {@link ActivityNode} mappings from the context semantic object which can be
+	 * either the {@link Activity} or an {@link ActivityPartition}.
 	 * 
-	 * @param context
-	 * @return
+	 * @param context the context object on which to execute this service.
+	 * @return the {@link Collection} of {@link ActivityNode}
 	 */
 	public Collection<ActivityNode> getActivityNodes(Element context) {
 		Collection<ActivityNode> childNodes = Collections.emptyList();
-		
-		if (context instanceof Activity){
-			EList<ActivityNode> allActivityNodes = ((Activity)context).getNodes();
+
+		if (context instanceof Activity) {
+			final EList<ActivityNode> allActivityNodes = ((Activity)context).getNodes();
 			childNodes = new ArrayList<ActivityNode>(allActivityNodes);
-			
+
 			for (ActivityNode activityNode : allActivityNodes) {
-				if(activityNode.getInPartitions().size() > 0)
+				if (activityNode.getInPartitions().size() > 0)
 					childNodes.remove(activityNode);
 			}
-		} else if (context instanceof ActivityPartition){
+		} else if (context instanceof ActivityPartition) {
 			childNodes = ((ActivityPartition)context).getNodes();
 		}
-		
+
 		return childNodes;
 	}
 
+	/**
+	 * Creates a new {@link InputPin} element in the given context.
+	 * 
+	 * @param context the context object on which to execute this service.
+	 * @return the new {@link InputPin}
+	 */
 	public InputPin createInputPin(Action context) {
-		InputPin pin = UMLFactory.eINSTANCE.createInputPin();
+		final InputPin pin = UMLFactory.eINSTANCE.createInputPin();
 		pin.setName("Input_" + context.getInputs().size());
-		
-		if(context instanceof InvocationAction) {
+
+		if (context instanceof InvocationAction) {
 			((InvocationAction)context).getArguments().add(pin);
 		} else if (context instanceof OpaqueAction) {
 			((OpaqueAction)context).getInputValues().add(pin);
 		} else {
-			throw new UnsupportedOperationException("Can't create InputPin for context of type: " + context.eClass().getName());
+			throw new UnsupportedOperationException("Can't create InputPin for context of type: "
+					+ context.eClass().getName());
 		}
-		
+
 		return pin;
 	}
 	
+	/**
+	 * Creates a new {@link OutputPin} element in the given context.
+	 * 
+	 * @param context the context object on which to execute this service.
+	 * @return the new {@link OutputPin}
+	 */
 	public OutputPin createOutputPin(Action context) {
-		OutputPin pin = UMLFactory.eINSTANCE.createOutputPin();
+		final OutputPin pin = UMLFactory.eINSTANCE.createOutputPin();
 		pin.setName("Output_" + context.getOutputs().size());
-		
+
 		if (context instanceof CallAction) {
 			((CallAction)context).getResults().add(pin);
 		} else if (context instanceof OpaqueAction) {
 			((OpaqueAction)context).getOutputValues().add(pin);
 		} else {
-			throw new UnsupportedOperationException("Can't create InputPin for context of type: " + context.eClass().getName());
+			throw new UnsupportedOperationException("Can't create InputPin for context of type: "
+					+ context.eClass().getName());
 		}
-		
+
 		return pin;
 	}
-	
+
 	/**
-	 * Manages dispatch to corresponding services.
-	 * This is done to workaround polymorphism issue with Java service from a deployed VP.
+	 * Manages dispatch to corresponding drag&drop services.<br>
+	 * This is needed to workaround polymorphism issue with Java service from a deployed VP.
+	 * 
+	 * @param context the object on which to drop the node.
+	 * @param node the dropped node
+	 * @return the given node or <code>null</code> if the given node is not of a correct type.
 	 */
 	public Element dropNode(Element context, Element node) {
-		if(node instanceof ActivityNode) {
+		if (node instanceof ActivityNode) {
 			return dropNode(context, (ActivityNode)node);
 		} else if (node instanceof ActivityPartition) {
 			return dropNode(context, (ActivityPartition)node);
 		}
-		
+
 		return null;
 	}
-	
+
 	/**
 	 * Manages the drag & drop of {@link ActivityNode}.
 	 * 
-	 * @param context object ({@link Activity} or {@link ActivityPartition}) on which to drop the node
-	 * @param node the node to drop
+	 * @param context
+	 *            object ({@link Activity} or {@link ActivityPartition}) on which to drop the node
+	 * @param node
+	 *            the node to drop
 	 * @return the given node object
 	 */
 	private ActivityNode dropNode(Element context, ActivityNode node) {
 		node.getInPartitions().clear();
-		
+
 		if (context instanceof ActivityPartition) {
-			node.getInPartitions().add((ActivityPartition) context);
+			node.getInPartitions().add((ActivityPartition)context);
 		}
-		
+
 		return node;
 	}
-	
+
 	/**
 	 * Manages the drag & drop of {@link ActivityPartition}.
 	 * 
-	 * @param context object ({@link Activity} or {@link ActivityPartition}) on which to drop the node
-	 * @param partition the partition to drop
+	 * @param context
+	 *            object ({@link Activity} or {@link ActivityPartition}) on which to drop the node
+	 * @param partition
+	 *            the partition to drop
 	 * @return the given partition object
 	 */
 	private ActivityPartition dropNode(Element context, ActivityPartition partition) {
-		if(context instanceof Activity) {
+		if (context instanceof Activity) {
 			((Activity)context).getPartitions().add(partition);
 		} else if (context instanceof ActivityPartition) {
 			((ActivityPartition)context).getSubpartitions().add(partition);

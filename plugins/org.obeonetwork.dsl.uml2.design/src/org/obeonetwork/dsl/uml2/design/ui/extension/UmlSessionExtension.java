@@ -19,8 +19,13 @@ import fr.obeo.oo1932oo.viewpoint.oo221oo.oo19oo.oo5606oo.oo1376oo.Oo13727oo;
 import fr.obeo.oo1932oo.viewpoint.oo221oo.oo19oo.oo5606oo.oo1376oo.oo13598oo.oo1102oo.Oo19414oo;
 import fr.obeo.oo1932oo.viewpoint.oo221oo.oo19oo.oo5606oo.oo1376oo.oo13598oo.oo1102oo.Oo20979oo;
 
+/**
+ * An extension to provide UML designer custom provider in model content view.
+ *
+ * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
+ */
 @SuppressWarnings("restriction")
-public class UmlSessionExtension {
+public final class UmlSessionExtension {
 	/**
 	 * The private constructor.
 	 */
@@ -31,7 +36,7 @@ public class UmlSessionExtension {
 	 * Used to add an extension to the model content view.
 	 */
 	public static void addExtension() {
-		
+
 		// Oo19414oo = ISessionViewExtension
 		final Oo19414oo extension = new Oo19414oo() {
 			public ITreeContentProvider getContentProvider() {

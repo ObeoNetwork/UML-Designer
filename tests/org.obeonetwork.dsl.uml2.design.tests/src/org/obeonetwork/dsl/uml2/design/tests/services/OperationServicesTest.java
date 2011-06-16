@@ -30,7 +30,7 @@ import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.resource.UMLResource;
-import org.obeonetwork.dsl.uml2.design.services.OperationServices;
+import org.obeonetwork.dsl.uml2.design.services.internal.OperationServices;
 
 /**
  * Utility services on operations services

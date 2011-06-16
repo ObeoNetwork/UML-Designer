@@ -17,10 +17,9 @@ import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
 import fr.obeo.acceleo.tools.AcceleoToolsPlugin;
 
 /**
- * This service provides methods to log info, warning and errors in the error
- * log view.
+ * This service provides methods to log info, warning and errors in the error log view.
  * 
- * @author ymortier
+ * @author Yann Mortier <a href="mailto:yann.mortier@obeo.fr">yann.mortier@obeo.fr</a>
  */
 public class LogServices {
 
@@ -32,8 +31,8 @@ public class LogServices {
 	 * @param t
 	 *            the stack trace.
 	 */
-	public static void error(String s, Throwable t) {
-		IStatus status = new Status(IStatus.ERROR, UMLDesignerPlugin.PLUGIN_ID, s, t);
+	public void error(String s, Throwable t) {
+		final IStatus status = new Status(IStatus.ERROR, UMLDesignerPlugin.PLUGIN_ID, s, t);
 		AcceleoToolsPlugin.getDefault().log(status);
 	}
 
@@ -45,8 +44,8 @@ public class LogServices {
 	 * @param t
 	 *            the stack trace.
 	 */
-	public static void warning(String s, Throwable t) {
-		IStatus status = new Status(IStatus.WARNING, UMLDesignerPlugin.PLUGIN_ID, s, t);
+	public void warning(String s, Throwable t) {
+		final IStatus status = new Status(IStatus.WARNING, UMLDesignerPlugin.PLUGIN_ID, s, t);
 		AcceleoToolsPlugin.getDefault().log(status);
 	}
 
@@ -56,8 +55,8 @@ public class LogServices {
 	 * @param s
 	 *            the message.
 	 */
-	public static void info(String s) {
-		IStatus status = new Status(IStatus.INFO, UMLDesignerPlugin.PLUGIN_ID, s);
+	public void info(String s) {
+		final IStatus status = new Status(IStatus.INFO, UMLDesignerPlugin.PLUGIN_ID, s);
 		AcceleoToolsPlugin.getDefault().log(status);
 	}
 

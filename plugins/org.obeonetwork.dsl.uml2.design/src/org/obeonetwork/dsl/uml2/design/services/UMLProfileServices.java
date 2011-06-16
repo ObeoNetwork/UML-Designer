@@ -48,8 +48,8 @@ public class UMLProfileServices {
 	public static String getStereotypesDescription(Element elt, String attributesToDisplay) {
 		String description = "";
 
-		final ArrayList<String> displayedAttributeList = new ArrayList<String>(Arrays
-				.asList(attributesToDisplay.split(SEPARATOR)));
+		final ArrayList<String> displayedAttributeList = new ArrayList<String>(
+				Arrays.asList(attributesToDisplay.split(SEPARATOR)));
 
 		for (final Iterator<Stereotype> stereotypesIterator = elt.getAppliedStereotypes().iterator(); stereotypesIterator
 				.hasNext(); ) {
@@ -122,7 +122,7 @@ public class UMLProfileServices {
 			return false;
 		}
 	}
-	
+
 	/**
 	 * Checks if the element is referenced as a tagged value.
 	 * 
@@ -136,7 +136,8 @@ public class UMLProfileServices {
 	 *            the tag name which may reference the element
 	 * @return Returns true is the given element is referenced by the tag, false otherwise.
 	 */
-	public Boolean isReferencedBy(Element elt, Element stereotypedElement, String stereotypeName, String tagName) {
+	public Boolean isReferencedBy(Element elt, Element stereotypedElement, String stereotypeName,
+			String tagName) {
 		Stereotype stereotype = null;
 		// Get the stereotypes
 		final EList<Stereotype> stereotypes = stereotypedElement.getAppliedStereotypes();
@@ -146,8 +147,9 @@ public class UMLProfileServices {
 				stereotype = localStereotype;
 			}
 		}
-		
-		if (stereotype!= null && stereotypedElement != null && stereotypedElement.isStereotypeApplied(stereotype)) {
+
+		if (stereotype != null && stereotypedElement != null
+				&& stereotypedElement.isStereotypeApplied(stereotype)) {
 			final BasicEList<Element> values = new BasicEList<Element>();
 			final Object value = stereotypedElement.getValue(stereotype, tagName);
 			// The value of a tag can be a list
@@ -187,8 +189,8 @@ public class UMLProfileServices {
 		}
 		// Check for each tag if the elt is referenced
 		if (stereotype != null) {
-			for (final Iterator<Property> iterator = stereotype.getOwnedAttributes().iterator(); iterator.hasNext()
-					&& !isReferenced; ) {
+			for (final Iterator<Property> iterator = stereotype.getOwnedAttributes().iterator(); iterator
+					.hasNext() && !isReferenced; ) {
 				final Property tag = (Property)iterator.next();
 				// if the type of the tag is a property or an operation of the UML metamodel then check the
 				// reference
@@ -201,7 +203,5 @@ public class UMLProfileServices {
 		// Otherwise return false -> the stereotype is not applied or the elt is not referenced
 		return isReferenced;
 	}
-	
-	
-	
+
 }
