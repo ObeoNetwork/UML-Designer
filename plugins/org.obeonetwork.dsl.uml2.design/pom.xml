@@ -45,6 +45,14 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
       </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <version>2.2</version>
+        <configuration>
+        	<configLocation>./features/org.obeonetwork.dsl.feature.uml2/codestyle/checkstyle.xml</configLocation>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 
