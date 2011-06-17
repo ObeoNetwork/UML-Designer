@@ -29,36 +29,47 @@ import org.obeonetwork.dsl.uml2.design.tests.Activator;
  */
 public class FilterServicesTests extends TestCase {
 	/**
+	 * Upper package name.
+	 */
+	private static final String UPPER_PACKAGE_OPOSITE_GENERALIZATION_RELATED_CLASS = "UpperPackageOpositeGeneralizationRelatedClass";
+
+	/**
+	 * The test resource URI.
+	 */
+	private static final String RESOURCE_URI = Activator.PLUGIN_ID + "/resources/Test.uml";
+	
+	/**
 	 * Instance of the services class used during tests.
 	 */
 	private final FilterServices services = new FilterServices();
 
+	/**
+	 * The root package of the semantic resource.
+	 */
 	private Package rootPackage;
 
-	private static final String RESOURCE_URI = Activator.PLUGIN_ID
-			+ "/resources/Test.uml";
-
+	/**
+	 * Constructor.
+	 */
 	public FilterServicesTests() {
-		ResourceSet rset = new ResourceSetImpl();
-		Resource resource = rset.getResource(URI.createPlatformPluginURI(
-				RESOURCE_URI, true), true);
+		final ResourceSet rset = new ResourceSetImpl();
+		final Resource resource = rset.getResource(URI.createPlatformPluginURI(RESOURCE_URI, true), true);
 
-		rootPackage = (Package) ((Model) resource.getContents().get(0))
-				.getOwnedMember("root");
+		rootPackage = (Package)((Model)resource.getContents().get(0)).getOwnedMember("root");
 	}
 
+	/**
+	 * Test isRelated() service.
+	 */
 	public void testIsRelated() {
-		Package subPackage1 = (Package) rootPackage
-		.getOwnedMember("sub_package1");
-		Package subPackage2 = (Package) subPackage1
-		.getOwnedMember("sub_package2");
-		Class contextCls = (Class) subPackage1.getOwnedMember("ContextClass");
+		final Package subPackage1 = (Package)rootPackage.getOwnedMember("sub_package1");
+		final Package subPackage2 = (Package)subPackage1.getOwnedMember("sub_package2");
+		final Class contextCls = (Class)subPackage1.getOwnedMember("ContextClass");
 
 		try {
 			assertFalse(services.isRelated(null, null));
 		} catch (Exception e) {
-			fail("isRelated(null, null) should not raises an exception : "
-					+ e.getMessage());
+			fail("isRelated(null, null) should not raises an exception : " + e.getMessage());
 		}
 
 		try {
@@ -71,37 +82,47 @@ public class FilterServicesTests extends TestCase {
 		try {
 			assertFalse(services.isRelated(null, contextCls));
 		} catch (Exception e) {
-			fail("isRelated(null, contextCls) should not raises an exception : "
-					+ e.getMessage());
+			fail("isRelated(null, contextCls) should not raises an exception : " + e.getMessage());
 		}
-		assertTrue(services.isRelated(rootPackage.getOwnedMember("UpperPackageOpositeGeneralizationRelatedClass"), contextCls));
+		assertTrue(services.isRelated(
+				rootPackage.getOwnedMember(UPPER_PACKAGE_OPOSITE_GENERALIZATION_RELATED_CLASS), contextCls));
 
 		// root package
 		assertTrue(services.isRelated(rootPackage, contextCls));
-		assertTrue(services.isRelated(rootPackage.getOwnedMember("UpperPackageOpositeGeneralizationRelatedClass"), contextCls));
-		assertTrue(services.isRelated(rootPackage.getOwnedMember("UpperPackageOpositeGeneralizationRelatedClass"), contextCls));
-		assertTrue(services.isRelated(rootPackage.getOwnedMember("UpperPackageGeneralizationRelatedClass"), contextCls));
-		assertTrue(services.isRelated(rootPackage.getOwnedMember("UpperPackageAssociationRelatedClass"), contextCls));
-		assertTrue(services.isRelated(rootPackage.getOwnedMember("UpperPackageRealizationRelatedInterface"), contextCls));
+		assertTrue(services.isRelated(
+				rootPackage.getOwnedMember(UPPER_PACKAGE_OPOSITE_GENERALIZATION_RELATED_CLASS), contextCls));
+		assertTrue(services.isRelated(
+				rootPackage.getOwnedMember(UPPER_PACKAGE_OPOSITE_GENERALIZATION_RELATED_CLASS), contextCls));
+		assertTrue(services.isRelated(rootPackage.getOwnedMember("UpperPackageGeneralizationRelatedClass"),
+				contextCls));
+		assertTrue(services.isRelated(rootPackage.getOwnedMember("UpperPackageAssociationRelatedClass"),
+				contextCls));
+		assertTrue(services.isRelated(rootPackage.getOwnedMember("UpperPackageRealizationRelatedInterface"),
+				contextCls));
 		assertTrue(services.isRelated(rootPackage.getOwnedMember("upperPackageClassAssociation"), contextCls));
 		assertFalse(services.isRelated(rootPackage.getOwnedMember("not_related_package"), contextCls));
-		
+
 		// sub_package1 package
 		assertTrue(services.isRelated(subPackage1, contextCls));
 		assertTrue(services.isRelated(contextCls, contextCls));
 		assertFalse(services.isRelated(subPackage1.getOwnedMember("NotRelatedClass"), contextCls));
 		assertTrue(services.isRelated(subPackage1.getOwnedMember("AssociationRelatedClass"), contextCls));
 		assertTrue(services.isRelated(subPackage1.getOwnedMember("GeneralizationRelatedClass"), contextCls));
-		assertTrue(services.isRelated(subPackage1.getOwnedMember("OpositeGeneralizationRelatedClass"), contextCls));
+		assertTrue(services.isRelated(subPackage1.getOwnedMember("OpositeGeneralizationRelatedClass"),
+				contextCls));
 		assertTrue(services.isRelated(subPackage1.getOwnedMember("RealizationRelatedInterface"), contextCls));
 		assertTrue(services.isRelated(subPackage1.getOwnedMember("classAssocitation"), contextCls));
-		
+
 		// sub_package2 package
 		assertTrue(services.isRelated(subPackage2, contextCls));
-		assertTrue(services.isRelated(subPackage2.getOwnedMember("SubPackageOpositeGeneralizationRelatedClass"), contextCls));
-		assertTrue(services.isRelated(subPackage2.getOwnedMember("SubPackageGeneralizationRelatedClass"), contextCls));
-		assertTrue(services.isRelated(subPackage2.getOwnedMember("SubPackageAssociationRelatedClass"), contextCls));
-		assertTrue(services.isRelated(subPackage2.getOwnedMember("SubPackageRealizationRelatedInterface"), contextCls));
+		assertTrue(services.isRelated(
+				subPackage2.getOwnedMember("SubPackageOpositeGeneralizationRelatedClass"), contextCls));
+		assertTrue(services.isRelated(subPackage2.getOwnedMember("SubPackageGeneralizationRelatedClass"),
+				contextCls));
+		assertTrue(services.isRelated(subPackage2.getOwnedMember("SubPackageAssociationRelatedClass"),
+				contextCls));
+		assertTrue(services.isRelated(subPackage2.getOwnedMember("SubPackageRealizationRelatedInterface"),
+				contextCls));
 		assertTrue(services.isRelated(subPackage2.getOwnedMember("subPackageClassAssociation"), contextCls));
 	}
 

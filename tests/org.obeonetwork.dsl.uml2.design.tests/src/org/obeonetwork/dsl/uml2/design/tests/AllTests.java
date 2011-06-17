@@ -21,11 +21,15 @@ import junit.textui.TestRunner;
 /**
  * Test Suite including all the enabled tests.
  * 
- * @author Cedric Brun <a
- *         href="mailto:cedric.brun@obeo.fr">cedric.brun@obeo.fr</a>
- * 
+ * @author Cedric Brun <a href="mailto:cedric.brun@obeo.fr">cedric.brun@obeo.fr</a>
  */
-public class AllTests {
+public final class AllTests {
+	
+	/**
+	 * Hidden constructor.
+	 */
+	private AllTests() {
+	}
 
 	/**
 	 * Launches the test with the given arguments.

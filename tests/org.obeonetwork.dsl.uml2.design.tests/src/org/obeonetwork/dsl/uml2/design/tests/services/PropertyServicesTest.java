@@ -27,270 +27,366 @@ import org.eclipse.uml2.uml.resource.UMLResource;
 import org.obeonetwork.dsl.uml2.design.services.internal.PropertyServices;
 
 /**
- * Unit tests on properties services
+ * Unit tests on properties services.
  * 
  * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
  */
 public class PropertyServicesTest extends TestCase {
 
+	/**
+	 * Toto.
+	 */
+	private static final String TOTO = "toto";
+
+	/**
+	 * String primitive type name.
+	 */
 	private static final String PRIMITIVE_TYPE_STRING = "String";
+
+	/**
+	 * Integer primitive type name.
+	 */
 	private static final String PRIMITIVE_TYPE_INTEGER = "Integer";
 
+	/**
+	 * Old name constant.
+	 */
 	private static final String OLD_NAME = "oldName";
 
-	private boolean initialized = false;
-	
+	/**
+	 * The test resource set.
+	 */
 	private ResourceSet resourceSet;
+
+	/**
+	 * The string primitive type.
+	 */
+	private PrimitiveType stringPrimitiveType;
+
+	/**
+	 * The integer primitive type.
+	 */
+	private PrimitiveType integerPrimitiveType;
 	
-	private PrimitiveType TYPE_STRING;
-	private PrimitiveType TYPE_INTEGER;
-	
-	
-	@Override
-	protected void setUp() throws Exception {
-		if (!initialized) {
-			if (!EMFPlugin.IS_ECLIPSE_RUNNING) {
-				@SuppressWarnings("unused")
-				EPackage pkg = UMLPackage.eINSTANCE;
-				Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(UMLResource.FILE_EXTENSION, UMLResource.Factory.INSTANCE);
-			}
-			
-			resourceSet = new ResourceSetImpl();
-			Resource resource = new ResourceImpl();
-			resourceSet.getResources().add(resource);
-			
-			
-			TYPE_STRING = UMLFactory.eINSTANCE.createPrimitiveType();
-			TYPE_STRING.setName(PRIMITIVE_TYPE_STRING);
-			resource.getContents().add(TYPE_STRING);
-			
-			TYPE_INTEGER = UMLFactory.eINSTANCE.createPrimitiveType();
-			TYPE_INTEGER.setName(PRIMITIVE_TYPE_INTEGER);
-			resource.getContents().add(TYPE_INTEGER);
-			
-			initialized = true;
+	/**
+	 * Constructor.
+	 */
+	public PropertyServicesTest() {
+		if (!EMFPlugin.IS_ECLIPSE_RUNNING) {
+			@SuppressWarnings("unused")
+			final EPackage pkg = UMLPackage.eINSTANCE;
+			Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(UMLResource.FILE_EXTENSION,
+					UMLResource.Factory.INSTANCE);
 		}
+
+		resourceSet = new ResourceSetImpl();
+		final Resource resource = new ResourceImpl();
+		resourceSet.getResources().add(resource);
+
+		stringPrimitiveType = UMLFactory.eINSTANCE.createPrimitiveType();
+		stringPrimitiveType.setName(PRIMITIVE_TYPE_STRING);
+		resource.getContents().add(stringPrimitiveType);
+
+		integerPrimitiveType = UMLFactory.eINSTANCE.createPrimitiveType();
+		integerPrimitiveType.setName(PRIMITIVE_TYPE_INTEGER);
+		resource.getContents().add(integerPrimitiveType);
 	}
-	
+
+	/**
+	 * Creates a new {@link Property} and attach it to the first {@link Resource}.
+	 * 
+	 * @param name the property name.
+	 * @param type the property {@link Type}.
+	 * @param lower the property lower bound
+	 * @param upper the property upper bound
+	 * @param derived the property derived flag
+	 * @return the new property
+	 */
 	private Property createProperty(String name, Type type, int lower, int upper, boolean derived) {
-		Property property = UMLFactory.eINSTANCE.createProperty();
+		final Property property = UMLFactory.eINSTANCE.createProperty();
 		property.setName(name);
 		property.setType(type);
 		property.setLower(lower);
 		property.setUpper(upper);
 		property.setIsDerived(derived);
-		
+
 		resourceSet.getResources().get(0).getContents().add(property);
-		
+
 		return property;
 	}
-	
+
+	/**
+	 * Creates a String property [0..*].
+	 * 
+	 * @return the new property
+	 */
 	private Property createPropertyStringMultiple() {
-		return createProperty(OLD_NAME, TYPE_STRING, 0, -1, false);
+		return createProperty(OLD_NAME, stringPrimitiveType, 0, -1, false);
 	}
-	
+
+	/**
+	 * Test the property name update.
+	 */
 	public void testNameOnly() {
-		Property property = createPropertyStringMultiple();
-		PropertyServices.parseInputLabel(property, "toto");
-		assertEquals("toto", property.getName());
-		assertEquals(TYPE_STRING, property.getType());
+		final Property property = createPropertyStringMultiple();
+		PropertyServices.parseInputLabel(property, TOTO);
+		assertEquals(TOTO, property.getName());
+		assertEquals(stringPrimitiveType, property.getType());
 		assertEquals(0, property.getLower());
 		assertEquals(-1, property.getUpper());
 		assertEquals(false, property.isDerived());
 	}
-	
+
+	/**
+	 * The the property name update with whitespaces.
+	 */
 	public void testNameOnlyWithWhitespaces() {
-		Property property = createPropertyStringMultiple();
+		final Property property = createPropertyStringMultiple();
 		PropertyServices.parseInputLabel(property, "   	toto  	");
-		assertEquals("toto", property.getName());
-		assertEquals(TYPE_STRING, property.getType());
+		assertEquals(TOTO, property.getName());
+		assertEquals(stringPrimitiveType, property.getType());
 		assertEquals(0, property.getLower());
 		assertEquals(-1, property.getUpper());
 		assertEquals(false, property.isDerived());
 	}
-	
+
+	/**
+	 * Test the property name and type update.
+	 */
 	public void testNameAndType() {
-		Property property = createPropertyStringMultiple();
+		final Property property = createPropertyStringMultiple();
 		PropertyServices.parseInputLabel(property, "toto : Integer");
-		assertEquals("toto", property.getName());
-		assertEquals(TYPE_INTEGER, property.getType());
+		assertEquals(TOTO, property.getName());
+		assertEquals(integerPrimitiveType, property.getType());
 		assertEquals(0, property.getLower());
 		assertEquals(-1, property.getUpper());
 		assertEquals(false, property.isDerived());
 	}
-	
+
+	/**
+	 * Test the property name & type update with an inexistent type.
+	 */
 	public void testNameAndNotExistingType() {
-		Property property = createPropertyStringMultiple();
+		final Property property = createPropertyStringMultiple();
 		PropertyServices.parseInputLabel(property, "toto : NonExistingType");
-		assertEquals("toto", property.getName());
-		assertEquals(TYPE_STRING, property.getType());
+		assertEquals(TOTO, property.getName());
+		assertEquals(stringPrimitiveType, property.getType());
 		assertEquals(0, property.getLower());
 		assertEquals(-1, property.getUpper());
 		assertEquals(false, property.isDerived());
 	}
-	
+
+	/**
+	 * Test the type only update.
+	 */
 	public void testTypeOnly() {
-		Property property = createPropertyStringMultiple();
+		final Property property = createPropertyStringMultiple();
 		PropertyServices.parseInputLabel(property, " : Integer");
 		assertEquals("", property.getName());
-		assertEquals(TYPE_INTEGER, property.getType());
+		assertEquals(integerPrimitiveType, property.getType());
 		assertEquals(0, property.getLower());
 		assertEquals(-1, property.getUpper());
 		assertEquals(false, property.isDerived());
 	}
-	
+
+	/**
+	 * Test derived with name update.
+	 */
 	public void testIsDerivedAndName() {
-		Property property = createPropertyStringMultiple();
+		final Property property = createPropertyStringMultiple();
 		PropertyServices.parseInputLabel(property, "/toto");
-		assertEquals("toto", property.getName());
-		assertEquals(TYPE_STRING, property.getType());
+		assertEquals(TOTO, property.getName());
+		assertEquals(stringPrimitiveType, property.getType());
 		assertEquals(0, property.getLower());
 		assertEquals(-1, property.getUpper());
 		assertEquals(true, property.isDerived());
 	}
-	
+
+	/**
+	 * Test derived only update.
+	 */
 	public void testIsDerivedWithoutName() {
-		Property property = createPropertyStringMultiple();
+		final Property property = createPropertyStringMultiple();
 		PropertyServices.parseInputLabel(property, "/");
 		assertEquals("", property.getName());
-		assertEquals(TYPE_STRING, property.getType());
+		assertEquals(stringPrimitiveType, property.getType());
 		assertEquals(0, property.getLower());
 		assertEquals(-1, property.getUpper());
 		assertEquals(true, property.isDerived());
 	}
-	
+
+	/**
+	 * Test derived with name and type.
+	 */
 	public void testIsDerivedNameAndType() {
-		Property property = createPropertyStringMultiple();
+		final Property property = createPropertyStringMultiple();
 		PropertyServices.parseInputLabel(property, "/toto : Integer");
-		assertEquals("toto", property.getName());
-		assertEquals(TYPE_INTEGER, property.getType());
+		assertEquals(TOTO, property.getName());
+		assertEquals(integerPrimitiveType, property.getType());
 		assertEquals(0, property.getLower());
 		assertEquals(-1, property.getUpper());
 		assertEquals(true, property.isDerived());
 	}
-	
+
+	/**
+	 * Test derived with name and inexistent type.
+	 */
 	public void testIsDerivedNameAndNonExistingType() {
-		Property property = createPropertyStringMultiple();
+		final Property property = createPropertyStringMultiple();
 		PropertyServices.parseInputLabel(property, "/toto : NonExistingType");
-		assertEquals("toto", property.getName());
-		assertEquals(TYPE_STRING, property.getType());
+		assertEquals(TOTO, property.getName());
+		assertEquals(stringPrimitiveType, property.getType());
 		assertEquals(0, property.getLower());
 		assertEquals(-1, property.getUpper());
 		assertEquals(true, property.isDerived());
 	}
-	
+
+	/**
+	 * Test not derived with name.
+	 */
 	public void testNotIsDerivedAndName() {
-		Property property = createPropertyStringMultiple();
+		final Property property = createPropertyStringMultiple();
 		property.setIsDerived(true);
 		PropertyServices.parseInputLabel(property, "toto  ");
-		assertEquals("toto", property.getName());
-		assertEquals(TYPE_STRING, property.getType());
+		assertEquals(TOTO, property.getName());
+		assertEquals(stringPrimitiveType, property.getType());
 		assertEquals(0, property.getLower());
 		assertEquals(-1, property.getUpper());
 		assertEquals(false, property.isDerived());
 	}
-	
+
+	/**
+	 * Test name with type and multiplicity [1] update.
+	 */
 	public void testNameTypeAndMultiplicityUsingOneBound() {
-		Property property = createPropertyStringMultiple();
+		final Property property = createPropertyStringMultiple();
 		PropertyServices.parseInputLabel(property, "toto : Integer [1] ");
-		assertEquals("toto", property.getName());
-		assertEquals(TYPE_INTEGER, property.getType());
+		assertEquals(TOTO, property.getName());
+		assertEquals(integerPrimitiveType, property.getType());
 		assertEquals(1, property.getLower());
 		assertEquals(1, property.getUpper());
 		assertEquals(false, property.isDerived());
 	}
-	
+
+	/**
+	 * Test name with type and multiplicity [*] update.
+	 */
 	public void testNameTypeAndMultiplicityUsingOneBoundStar() {
-		Property property = createPropertyStringMultiple();
+		final Property property = createPropertyStringMultiple();
 		PropertyServices.parseInputLabel(property, "toto : Integer [*] ");
-		assertEquals("toto", property.getName());
-		assertEquals(TYPE_INTEGER, property.getType());
+		assertEquals(TOTO, property.getName());
+		assertEquals(integerPrimitiveType, property.getType());
 		assertEquals(0, property.getLower());
 		assertEquals(-1, property.getUpper());
 		assertEquals(false, property.isDerived());
 	}
-	
+
+	/**
+	 * Test name with type and multiplicity [-1].
+	 */
 	public void testNameTypeAndMultiplicityUsingOneBoundMinusOne() {
-		Property property = createPropertyStringMultiple();
+		final Property property = createPropertyStringMultiple();
 		PropertyServices.parseInputLabel(property, "toto : Integer [-1] ");
-		assertEquals("toto", property.getName());
-		assertEquals(TYPE_INTEGER, property.getType());
+		assertEquals(TOTO, property.getName());
+		assertEquals(integerPrimitiveType, property.getType());
 		assertEquals(0, property.getLower());
 		assertEquals(-1, property.getUpper());
 		assertEquals(false, property.isDerived());
 	}
-	
+
+	/**
+	 * Test name with type and bounded multiplicity update. 
+	 */
 	public void testNameTypeAndMultiplicityWithDifferentBounds() {
-		Property property = createPropertyStringMultiple();
+		final Property property = createPropertyStringMultiple();
 		PropertyServices.parseInputLabel(property, "toto : Integer [1..5] ");
-		assertEquals("toto", property.getName());
-		assertEquals(TYPE_INTEGER, property.getType());
+		assertEquals(TOTO, property.getName());
+		assertEquals(integerPrimitiveType, property.getType());
 		assertEquals(1, property.getLower());
 		assertEquals(5, property.getUpper());
 		assertEquals(false, property.isDerived());
 	}
-	
+
+	/**
+	 * Test name with type and multiplicity [1..*] update.
+	 */
 	public void testNameTypeAndMultiplicityWithDifferentBoundsUsingStar() {
-		Property property = createPropertyStringMultiple();
+		final Property property = createPropertyStringMultiple();
 		PropertyServices.parseInputLabel(property, "toto : Integer [1..*] ");
-		assertEquals("toto", property.getName());
-		assertEquals(TYPE_INTEGER, property.getType());
+		assertEquals(TOTO, property.getName());
+		assertEquals(integerPrimitiveType, property.getType());
 		assertEquals(1, property.getLower());
 		assertEquals(-1, property.getUpper());
 		assertEquals(false, property.isDerived());
 	}
-	
+
+	/**
+	 * Test name with type and multiplicity bounded and infinite.
+	 */
 	public void testNameTypeAndMultiplicityWithDifferentBoundsUsingMinusOne() {
-		Property property = createPropertyStringMultiple();
+		final Property property = createPropertyStringMultiple();
 		PropertyServices.parseInputLabel(property, "  toto : Integer [5..-1] ");
-		assertEquals("toto", property.getName());
-		assertEquals(TYPE_INTEGER, property.getType());
+		assertEquals(TOTO, property.getName());
+		assertEquals(integerPrimitiveType, property.getType());
 		assertEquals(5, property.getLower());
 		assertEquals(-1, property.getUpper());
 		assertEquals(false, property.isDerived());
 	}
-	
+
+	/**
+	 * Full test update with whitespaces.
+	 */
 	public void testFullwithLotsOfSpaces() {
-		Property property = createPropertyStringMultiple();
-		PropertyServices.parseInputLabel(property, "  /   to   to    :    Integer     [    5    ..   -1   ]    ");
+		final Property property = createPropertyStringMultiple();
+		PropertyServices.parseInputLabel(property,
+				"  /   to   to    :    Integer     [    5    ..   -1   ]    ");
 		assertEquals("to   to", property.getName());
-		assertEquals(TYPE_INTEGER, property.getType());
+		assertEquals(integerPrimitiveType, property.getType());
 		assertEquals(5, property.getLower());
 		assertEquals(-1, property.getUpper());
 		assertEquals(true, property.isDerived());
 	}
-	
+
+	/**
+	 * Test incorrect bounds.
+	 */
 	public void testNameTypeAndMultiplicityWithIncorrectBounds() {
-		Property property = createPropertyStringMultiple();
+		final Property property = createPropertyStringMultiple();
 		property.setLower(2);
 		property.setUpper(4);
 		PropertyServices.parseInputLabel(property, "  toto : Integer [*..*] ");
-		assertEquals("toto", property.getName());
-		assertEquals(TYPE_INTEGER, property.getType());
+		assertEquals(TOTO, property.getName());
+		assertEquals(integerPrimitiveType, property.getType());
 		assertEquals(2, property.getLower());
 		assertEquals(4, property.getUpper());
 		assertEquals(false, property.isDerived());
 	}
-	
+
+	/**
+	 * Test incorrect bounds 2.
+	 */
 	public void testNameTypeAndMultiplicityWithIncorrectBounds2() {
-		Property property = createPropertyStringMultiple();
+		final Property property = createPropertyStringMultiple();
 		property.setLower(2);
 		property.setUpper(4);
 		PropertyServices.parseInputLabel(property, "  toto : Integer [-1..2] ");
-		assertEquals("toto", property.getName());
-		assertEquals(TYPE_INTEGER, property.getType());
+		assertEquals(TOTO, property.getName());
+		assertEquals(integerPrimitiveType, property.getType());
 		assertEquals(2, property.getLower());
 		assertEquals(4, property.getUpper());
 		assertEquals(false, property.isDerived());
 	}
-	
+
+	/**
+	 * Test incorrect bounds 3.
+	 */
 	public void testNameTypeAndMultiplicityWithIncorrectBounds3() {
-		Property property = createPropertyStringMultiple();
+		final Property property = createPropertyStringMultiple();
 		property.setLower(2);
 		property.setUpper(4);
 		PropertyServices.parseInputLabel(property, "  toto : Integer [5..3] ");
-		assertEquals("toto", property.getName());
-		assertEquals(TYPE_INTEGER, property.getType());
+		assertEquals(TOTO, property.getName());
+		assertEquals(integerPrimitiveType, property.getType());
 		assertEquals(2, property.getLower());
 		assertEquals(4, property.getUpper());
 		assertEquals(false, property.isDerived());

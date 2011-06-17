@@ -33,250 +33,364 @@ import org.eclipse.uml2.uml.resource.UMLResource;
 import org.obeonetwork.dsl.uml2.design.services.internal.OperationServices;
 
 /**
- * Utility services on operations services
+ * Utility services on operations services.
  * 
  * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
  */
 public class OperationServicesTest extends TestCase {
+	/**
+	 * New param.
+	 */
+	private static final String NEW_PARAM = "new param";
+
+	/**
+	 * toString.
+	 */
+	private static final String TO_STRING = "toString";
+
+	/**
+	 * Param3.
+	 */
+	private static final String PARAM3 = "param3";
+
+	/**
+	 * Param2.
+	 */
+	private static final String PARAM2 = "param2";
+
+	/**
+	 * Param1.
+	 */
+	private static final String PARAM1 = "param1";
+
+	/**
+	 * Toto.
+	 */
+	private static final String TOTO = "toto";
+
+	/**
+	 * Existing constant.
+	 */
 	private static final String EXISTING = "Existing";
 
-	private boolean initialized = false;
-	
+	/**
+	 * String primitive type name.
+	 */
 	private static final String PRIMITIVE_TYPE_STRING = "String";
+
+	/**
+	 * Integer primitive type name.
+	 */
 	private static final String PRIMITIVE_TYPE_INTEGER = "Integer";
-	
+
+	/**
+	 * Old name constant.
+	 */
 	private static final String OLD_NAME = "oldName";
-	
+
+	/**
+	 * The test resource set.
+	 */
 	private ResourceSet resourceSet;
-	
-	private PrimitiveType TYPE_STRING;
-	private PrimitiveType TYPE_INTEGER;
-	private Class CLASS_EXISTING;
-	
-	@Override
-	protected void setUp() throws Exception {
-		if (!initialized) {
-			if (!EMFPlugin.IS_ECLIPSE_RUNNING) {
-				@SuppressWarnings("unused")
-				EPackage pkg = UMLPackage.eINSTANCE;
-				Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(UMLResource.FILE_EXTENSION, UMLResource.Factory.INSTANCE);
-			}
-			
-			resourceSet = new ResourceSetImpl();
-			Resource resource = new ResourceImpl();
-			resourceSet.getResources().add(resource);
-			
-			
-			TYPE_STRING = UMLFactory.eINSTANCE.createPrimitiveType();
-			TYPE_STRING.setName(PRIMITIVE_TYPE_STRING);
-			resource.getContents().add(TYPE_STRING);
-			
-			TYPE_INTEGER = UMLFactory.eINSTANCE.createPrimitiveType();
-			TYPE_INTEGER.setName(PRIMITIVE_TYPE_INTEGER);
-			resource.getContents().add(TYPE_INTEGER);
-	
-			CLASS_EXISTING = UMLFactory.eINSTANCE.createClass();
-			CLASS_EXISTING.setName(EXISTING);
-			resource.getContents().add(CLASS_EXISTING);
-			
-			initialized = true;
+
+	/**
+	 * The String primitive type.
+	 */
+	private PrimitiveType stringPrimitiveType;
+
+	/**
+	 * The Integer primitive type.
+	 */
+	private PrimitiveType integerPrimitiveType;
+
+	/**
+	 * The existing test class.
+	 */
+	private Class existingClass;
+
+	/**
+	 * Constructor.
+	 */
+	public OperationServicesTest() {
+		if (!EMFPlugin.IS_ECLIPSE_RUNNING) {
+			@SuppressWarnings("unused")
+			final EPackage pkg = UMLPackage.eINSTANCE;
+			Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(UMLResource.FILE_EXTENSION,
+					UMLResource.Factory.INSTANCE);
 		}
+
+		resourceSet = new ResourceSetImpl();
+		final Resource resource = new ResourceImpl();
+		resourceSet.getResources().add(resource);
+
+		stringPrimitiveType = UMLFactory.eINSTANCE.createPrimitiveType();
+		stringPrimitiveType.setName(PRIMITIVE_TYPE_STRING);
+		resource.getContents().add(stringPrimitiveType);
+
+		integerPrimitiveType = UMLFactory.eINSTANCE.createPrimitiveType();
+		integerPrimitiveType.setName(PRIMITIVE_TYPE_INTEGER);
+		resource.getContents().add(integerPrimitiveType);
+
+		existingClass = UMLFactory.eINSTANCE.createClass();
+		existingClass.setName(EXISTING);
+		resource.getContents().add(existingClass);
 	}
-	
+
+	/**
+	 * Create a new {@link Operation} with the given parameters and store it in the first {@link Resource}.
+	 * 
+	 * @param name the operation name.
+	 * @param returnType the operation return {@link Type}.
+	 * @return the new {@link Operation}
+	 */
 	private Operation createOperation(String name, Type returnType) {
-		Operation operation = UMLFactory.eINSTANCE.createOperation();
+		final Operation operation = UMLFactory.eINSTANCE.createOperation();
 		operation.setName(name);
 		operation.setType(returnType);
-		
+
 		resourceSet.getResources().get(0).getContents().add(operation);
-		
+
 		return operation;
 	}
-	
+
+	/**
+	 * Add a {@link Parameter} to the given {@link Operation}.
+	 * 
+	 * @param operation the {@link Operation} on which to add the input parameter
+	 * @param paramName the parameter name
+	 * @param paramType the parameter {@link Type}
+	 * @return the new Parameter
+	 */
 	private Parameter createInputParameter(Operation operation, String paramName, Type paramType) {
-		Parameter param = UMLFactory.eINSTANCE.createParameter();
+		final Parameter param = UMLFactory.eINSTANCE.createParameter();
 		param.setName(paramName);
 		param.setType(paramType);
 		param.setDirection(ParameterDirectionKind.IN_LITERAL);
 		operation.getOwnedParameters().add(param);
 		return param;
 	}
-	
+
+	/**
+	 * Test the operation name only update.
+	 */
 	public void testNameOnly() {
-		Operation op = createOperation(OLD_NAME, TYPE_STRING);
-		
+		final Operation op = createOperation(OLD_NAME, stringPrimitiveType);
+
 		OperationServices.parseInputLabel(op, " toto ");
-		assertEquals("toto", op.getName());
-		assertEquals(TYPE_STRING, op.getType());
-		assertEquals(TYPE_STRING, op.getReturnResult().getType());
+		assertEquals(TOTO, op.getName());
+		assertEquals(stringPrimitiveType, op.getType());
+		assertEquals(stringPrimitiveType, op.getReturnResult().getType());
 	}
-	
+
+	/**
+	 * Test the operation name and return type update.
+	 */
 	public void testNameAndReturnType() {
-		Operation op = createOperation(OLD_NAME, TYPE_STRING);
-		
+		final Operation op = createOperation(OLD_NAME, stringPrimitiveType);
+
 		OperationServices.parseInputLabel(op, " toto : Integer ");
-		assertEquals("toto", op.getName());
-		assertEquals(TYPE_INTEGER, op.getType());
-		assertEquals(TYPE_INTEGER, op.getReturnResult().getType());
+		assertEquals(TOTO, op.getName());
+		assertEquals(integerPrimitiveType, op.getType());
+		assertEquals(integerPrimitiveType, op.getReturnResult().getType());
 	}
-	
+
+	/**
+	 * Test the operation name with null return type update.
+	 */
 	public void testNameAndReturnTypeNull() {
-		Operation op = createOperation(OLD_NAME, TYPE_STRING);
-		
+		final Operation op = createOperation(OLD_NAME, stringPrimitiveType);
+
 		OperationServices.parseInputLabel(op, " toto :  ");
-		assertEquals("toto", op.getName());
+		assertEquals(TOTO, op.getName());
 		assertEquals(null, op.getType());
 		assertEquals(null, op.getReturnResult().getType());
 	}
-		
+
+	/**
+	 * Test the operation update with whitespace in user input.
+	 */
 	public void testWithSpaces() {
-		Operation op = createOperation(OLD_NAME, TYPE_STRING);
-		createInputParameter(op, "param1", TYPE_STRING);
-		
+		final Operation op = createOperation(OLD_NAME, stringPrimitiveType);
+		createInputParameter(op, PARAM1, stringPrimitiveType);
+
 		OperationServices.parseInputLabel(op, " an operation (a param : String) : Integer ");
 		assertEquals("an operation", op.getName());
-		assertEquals(TYPE_INTEGER, op.getType());
-		assertEquals(TYPE_INTEGER, op.getReturnResult().getType());
-		
-		checkInputParameter(op, 0, "a param", TYPE_STRING);
+		assertEquals(integerPrimitiveType, op.getType());
+		assertEquals(integerPrimitiveType, op.getReturnResult().getType());
+
+		checkInputParameter(op, 0, "a param", stringPrimitiveType);
 	}
-	
+
+	/**
+	 * Test the operation update with name, parameters & return type.
+	 */
 	public void testNameParamsAndReturnType() {
-		Operation op = createOperation(OLD_NAME, TYPE_STRING);
-		createInputParameter(op, "param1", TYPE_STRING);
-		createInputParameter(op, "param2", TYPE_INTEGER);
-		createInputParameter(op, "param3", TYPE_STRING);
-		
-		OperationServices.parseInputLabel(op, " toto ( hello : Integer, hi : Integer, param3 : String ) : Integer ");
-		assertEquals("toto", op.getName());
-		assertEquals(TYPE_INTEGER, op.getType());
-		assertEquals(TYPE_INTEGER, op.getReturnResult().getType());
-		
-		checkInputParameter(op, 0, "hello", TYPE_INTEGER);
-		checkInputParameter(op, 1, "hi", TYPE_INTEGER);
-		checkInputParameter(op, 2, "param3", TYPE_STRING);
+		final Operation op = createOperation(OLD_NAME, stringPrimitiveType);
+		createInputParameter(op, PARAM1, stringPrimitiveType);
+		createInputParameter(op, PARAM2, integerPrimitiveType);
+		createInputParameter(op, PARAM3, stringPrimitiveType);
+
+		OperationServices.parseInputLabel(op,
+				" toto ( hello : Integer, hi : Integer, param3 : String ) : Integer ");
+		assertEquals(TOTO, op.getName());
+		assertEquals(integerPrimitiveType, op.getType());
+		assertEquals(integerPrimitiveType, op.getReturnResult().getType());
+
+		checkInputParameter(op, 0, "hello", integerPrimitiveType);
+		checkInputParameter(op, 1, "hi", integerPrimitiveType);
+		checkInputParameter(op, 2, PARAM3, stringPrimitiveType);
 	}
-	
+
+	/**
+	 * Test the operation update without return type.
+	 */
 	public void testNameParamsAndNoReturnType() {
-		Operation op = createOperation(OLD_NAME, TYPE_STRING);
-		createInputParameter(op, "param1", TYPE_STRING);
-		createInputParameter(op, "param2", TYPE_INTEGER);
-		createInputParameter(op, "param3", TYPE_STRING);
-		
+		final Operation op = createOperation(OLD_NAME, stringPrimitiveType);
+		createInputParameter(op, PARAM1, stringPrimitiveType);
+		createInputParameter(op, PARAM2, integerPrimitiveType);
+		createInputParameter(op, PARAM3, stringPrimitiveType);
+
 		OperationServices.parseInputLabel(op, " toto ( hello : Integer, hi : Integer, param3 : String )");
-		assertEquals("toto", op.getName());
-		assertEquals(TYPE_STRING, op.getType());
-		assertEquals(TYPE_STRING, op.getReturnResult().getType());
-		
-		checkInputParameter(op, 0, "hello", TYPE_INTEGER);
-		checkInputParameter(op, 1, "hi", TYPE_INTEGER);
-		checkInputParameter(op, 2, "param3", TYPE_STRING);
+		assertEquals(TOTO, op.getName());
+		assertEquals(stringPrimitiveType, op.getType());
+		assertEquals(stringPrimitiveType, op.getReturnResult().getType());
+
+		checkInputParameter(op, 0, "hello", integerPrimitiveType);
+		checkInputParameter(op, 1, "hi", integerPrimitiveType);
+		checkInputParameter(op, 2, PARAM3, stringPrimitiveType);
 	}
-	
+
+	/**
+	 * Test toString operation update.
+	 */
 	public void testToString() {
-		Operation op = createOperation(OLD_NAME, TYPE_STRING);
-		createInputParameter(op, "param1", TYPE_STRING);
-		createInputParameter(op, "param2", TYPE_INTEGER);
-		createInputParameter(op, "param3", TYPE_STRING);
-		
+		final Operation op = createOperation(OLD_NAME, stringPrimitiveType);
+		createInputParameter(op, PARAM1, stringPrimitiveType);
+		createInputParameter(op, PARAM2, integerPrimitiveType);
+		createInputParameter(op, PARAM3, stringPrimitiveType);
+
 		OperationServices.parseInputLabel(op, "toString() : Integer");
-		assertEquals("toString", op.getName());
-		assertEquals(TYPE_INTEGER, op.getType());
-		assertEquals(TYPE_INTEGER, op.getReturnResult().getType());
-		
+		assertEquals(TO_STRING, op.getName());
+		assertEquals(integerPrimitiveType, op.getType());
+		assertEquals(integerPrimitiveType, op.getReturnResult().getType());
+
 		assertParametersSize(op, 0, ParameterDirectionKind.IN_LITERAL);
 	}
-	
+
+	/**
+	 * Test the parameter addition.
+	 */
 	public void testToStringAddingAParameterAndChangingType() {
-		Operation op = createOperation("toString", TYPE_STRING);
-		
+		final Operation op = createOperation(TO_STRING, stringPrimitiveType);
+
 		OperationServices.parseInputLabel(op, "toString(a : Existing) : Integer");
-		assertEquals("toString", op.getName());
-		assertEquals(TYPE_INTEGER, op.getType());
-		assertEquals(TYPE_INTEGER, op.getReturnResult().getType());
-		
+		assertEquals(TO_STRING, op.getName());
+		assertEquals(integerPrimitiveType, op.getType());
+		assertEquals(integerPrimitiveType, op.getReturnResult().getType());
+
 		assertParametersSize(op, 1, ParameterDirectionKind.IN_LITERAL);
-		checkInputParameter(op, 0, "a", CLASS_EXISTING);
+		checkInputParameter(op, 0, "a", existingClass);
 	}
-	
+
+	/**
+	 * Test parameter removal.
+	 */
 	public void testNameNoParamAndReturnType() {
-		Operation op = createOperation(OLD_NAME, TYPE_STRING);
-		createInputParameter(op, "param1", TYPE_STRING);
-		createInputParameter(op, "param2", TYPE_INTEGER);
-		createInputParameter(op, "param3", TYPE_STRING);
-		
+		final Operation op = createOperation(OLD_NAME, stringPrimitiveType);
+		createInputParameter(op, PARAM1, stringPrimitiveType);
+		createInputParameter(op, PARAM2, integerPrimitiveType);
+		createInputParameter(op, PARAM3, stringPrimitiveType);
+
 		OperationServices.parseInputLabel(op, " toto (  ) : Integer ");
-		assertEquals("toto", op.getName());
-		assertEquals(TYPE_INTEGER, op.getType());
-		assertEquals(TYPE_INTEGER, op.getReturnResult().getType());
-		
+		assertEquals(TOTO, op.getName());
+		assertEquals(integerPrimitiveType, op.getType());
+		assertEquals(integerPrimitiveType, op.getReturnResult().getType());
+
 		assertParametersSize(op, 0, ParameterDirectionKind.IN_LITERAL);
 	}
-	
+
+	/**
+	 * Test parameter removal without brace.
+	 */
 	public void testNameNoParamAndReturnType2() {
-		Operation op = createOperation(OLD_NAME, TYPE_STRING);
-		createInputParameter(op, "param1", TYPE_STRING);
-		createInputParameter(op, "param2", TYPE_INTEGER);
-		createInputParameter(op, "param3", TYPE_STRING);
-		
+		final Operation op = createOperation(OLD_NAME, stringPrimitiveType);
+		createInputParameter(op, PARAM1, stringPrimitiveType);
+		createInputParameter(op, PARAM2, integerPrimitiveType);
+		createInputParameter(op, PARAM3, stringPrimitiveType);
+
 		OperationServices.parseInputLabel(op, " oldName  : Integer ");
-		assertEquals("oldName", op.getName());
-		assertEquals(TYPE_INTEGER, op.getType());
-		assertEquals(TYPE_INTEGER, op.getReturnResult().getType());
-		
+		assertEquals(OLD_NAME, op.getName());
+		assertEquals(integerPrimitiveType, op.getType());
+		assertEquals(integerPrimitiveType, op.getReturnResult().getType());
+
 		assertParametersSize(op, 0, ParameterDirectionKind.IN_LITERAL);
 	}
-	
+
+	/**
+	 * Test parameter update & move.
+	 */
 	public void testExistingParamChangeTheirTypeAndPlace() {
-		Operation op = createOperation(OLD_NAME, TYPE_STRING);
-		createInputParameter(op, "param1", TYPE_STRING);
-		createInputParameter(op, "param1bis", TYPE_INTEGER);
-		createInputParameter(op, "param2", TYPE_INTEGER);
-		createInputParameter(op, "param3", TYPE_STRING);
-		
-		OperationServices.parseInputLabel(op, " oldName (param1 : Integer , newParam:String, param3 : String, param2:String) : Integer ");
-		assertEquals("oldName", op.getName());
-		assertEquals(TYPE_INTEGER, op.getType());
-		assertEquals(TYPE_INTEGER, op.getReturnResult().getType());
-		
+		final Operation op = createOperation(OLD_NAME, stringPrimitiveType);
+		createInputParameter(op, PARAM1, stringPrimitiveType);
+		createInputParameter(op, "param1bis", integerPrimitiveType);
+		createInputParameter(op, PARAM2, integerPrimitiveType);
+		createInputParameter(op, PARAM3, stringPrimitiveType);
+
+		OperationServices.parseInputLabel(op,
+				" oldName (param1 : Integer , newParam:String, param3 : String, param2:String) : Integer ");
+		assertEquals(OLD_NAME, op.getName());
+		assertEquals(integerPrimitiveType, op.getType());
+		assertEquals(integerPrimitiveType, op.getReturnResult().getType());
+
 		assertParametersSize(op, 4, ParameterDirectionKind.IN_LITERAL);
-		checkInputParameter(op, 0, "param1", TYPE_INTEGER);
-		checkInputParameter(op, 1, "newParam", TYPE_STRING);
-		checkInputParameter(op, 2, "param3", TYPE_STRING);
-		checkInputParameter(op, 3, "param2", TYPE_STRING);
-		
+		checkInputParameter(op, 0, PARAM1, integerPrimitiveType);
+		checkInputParameter(op, 1, "newParam", stringPrimitiveType);
+		checkInputParameter(op, 2, PARAM3, stringPrimitiveType);
+		checkInputParameter(op, 3, PARAM2, stringPrimitiveType);
+
 	}
-	
+
+	/**
+	 * Test parameter multiplicity update.
+	 */
 	public void testMultiplicityNotChangedOnExistingParams() {
-		Operation op = createOperation(OLD_NAME, TYPE_STRING);
+		final Operation op = createOperation(OLD_NAME, stringPrimitiveType);
 		op.getReturnResult().setLower(0);
 		op.getReturnResult().setUpper(-1);
-		Parameter param1 = createInputParameter(op, "param1", TYPE_STRING);
+		final Parameter param1 = createInputParameter(op, PARAM1, stringPrimitiveType);
 		param1.setLower(0);
 		param1.setUpper(-1);
-		createInputParameter(op, "param2", TYPE_INTEGER);
-		createInputParameter(op, "param3", TYPE_STRING);
-		
-		OperationServices.parseInputLabel(op, " oldName (param1 : String , param2:integer, param3 : String, new param:string) : String ");
-		assertEquals("oldName", op.getName());
-		assertEquals(TYPE_STRING, op.getType());
-		assertEquals(TYPE_STRING, op.getReturnResult().getType());
+		createInputParameter(op, PARAM2, integerPrimitiveType);
+		createInputParameter(op, PARAM3, stringPrimitiveType);
+
+		OperationServices.parseInputLabel(op,
+				" oldName (param1 : String , param2:integer, param3 : String, new param:string) : String ");
+		assertEquals(OLD_NAME, op.getName());
+		assertEquals(stringPrimitiveType, op.getType());
+		assertEquals(stringPrimitiveType, op.getReturnResult().getType());
 		assertEquals(0, op.getReturnResult().getLower());
 		assertEquals(-1, op.getReturnResult().getUpper());
-		
+
 		assertParametersSize(op, 4, ParameterDirectionKind.IN_LITERAL);
-		checkInputParameter(op, 0, "param1", TYPE_STRING);
-		checkInputParameter(op, 1, "param2", TYPE_INTEGER);
-		checkInputParameter(op, 2, "param3", TYPE_STRING);
-		checkInputParameter(op, 3, "new param", TYPE_STRING);
-		
-		assertEquals(0, op.getOwnedParameter("param1", TYPE_STRING).getLower());
-		assertEquals(-1, op.getOwnedParameter("param1", TYPE_STRING).getUpper());
-		
-		assertEquals(1, op.getOwnedParameter("new param", TYPE_STRING).getLower());
-		assertEquals(1, op.getOwnedParameter("new param", TYPE_STRING).getUpper());
+		checkInputParameter(op, 0, PARAM1, stringPrimitiveType);
+		checkInputParameter(op, 1, PARAM2, integerPrimitiveType);
+		checkInputParameter(op, 2, PARAM3, stringPrimitiveType);
+		checkInputParameter(op, 3, NEW_PARAM, stringPrimitiveType);
+
+		assertEquals(0, op.getOwnedParameter(PARAM1, stringPrimitiveType).getLower());
+		assertEquals(-1, op.getOwnedParameter(PARAM1, stringPrimitiveType).getUpper());
+
+		assertEquals(1, op.getOwnedParameter(NEW_PARAM, stringPrimitiveType).getLower());
+		assertEquals(1, op.getOwnedParameter(NEW_PARAM, stringPrimitiveType).getUpper());
 	}
-	
+
+	/**
+	 * Assert parameter the parameter size of the given {@link Operation}.
+	 * 
+	 * @param operation the operation to test.
+	 * @param nbParams the expected parameter count.
+	 * @param direction the attended parameter direction.
+	 */
 	private void assertParametersSize(Operation operation, int nbParams, ParameterDirectionKind direction) {
 		int count = 0;
 		for (Parameter param : operation.getOwnedParameters()) {
@@ -286,17 +400,26 @@ public class OperationServicesTest extends TestCase {
 		}
 		assertEquals(nbParams, count);
 	}
-	
+
+	/**
+	 * Check the input parameter of the given {@link Operation}.
+	 * 
+	 * @param operation the operation to check
+	 * @param index the index of input parameter to check
+	 * @param name the name of the input parameter
+	 * @param type the type of the input parameter.
+	 */
 	private void checkInputParameter(Operation operation, int index, String name, Type type) {
-		List<Parameter> inputParams = new ArrayList<Parameter>();
-		for (Parameter	param : operation.getOwnedParameters()) {
+		final List<Parameter> inputParams = new ArrayList<Parameter>();
+		for (Parameter param : operation.getOwnedParameters()) {
 			if (!ParameterDirectionKind.RETURN_LITERAL.equals(param.getDirection())) {
 				inputParams.add(param);
 			}
 		}
-		assertTrue("Not enough parameters in list (index = " + index + ", size = " + inputParams.size() + ")",
+		assertTrue(
+				"Not enough parameters in list (index = " + index + ", size = " + inputParams.size() + ")",
 				index < inputParams.size());
-		Parameter param = inputParams.get(index);
+		final Parameter param = inputParams.get(index);
 		assertEquals(name, param.getName());
 		assertEquals(type, param.getType());
 	}
