@@ -50,8 +50,8 @@ import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UnmarshallAction;
 import org.eclipse.uml2.uml.VisibilityKind;
-import org.eclipse.uml2.uml.parts.UmlViewsRepository;
-import org.eclipse.uml2.uml.parts.UnmarshallActionPropertiesEditionPart;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.UnmarshallActionPropertiesEditionPart;
 
 
 // End of user code

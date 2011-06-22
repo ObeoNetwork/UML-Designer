@@ -35,8 +35,8 @@ import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
-import org.eclipse.uml2.uml.parts.ConnectableElementTemplateParameterPropertiesEditionPart;
-import org.eclipse.uml2.uml.parts.UmlViewsRepository;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectableElementTemplateParameterPropertiesEditionPart;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 
 
 // End of user code
