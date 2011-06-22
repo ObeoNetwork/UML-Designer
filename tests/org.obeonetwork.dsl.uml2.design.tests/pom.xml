@@ -23,6 +23,14 @@
 	<name>Viewpoint Based Modeler for UML2  Test Plug-in</name>
 
 	<build>
+		<resources>
+			<resource>
+				<directory>src</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
