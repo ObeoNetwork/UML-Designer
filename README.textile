@@ -11,4 +11,4 @@ More details about features, screenshots, release notes, dependencies here:
  * http://www.obeodesigner.com
 
 
-To build the module you'll need Maven3 and type @mvn clean install@
+To build the module you'll need Maven3 and type @mvn clean verify checkstyle:checkstyle@

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Obeo Designer Viewpoint Project
 Bundle-SymbolicName: org.obeonetwork.dsl.uml2.design;singleton:=true
-Bundle-Version: 0.9.0.qualifier
+Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin
 Require-Bundle: fr.obeo.acceleo.gen,
  org.eclipse.ui,
