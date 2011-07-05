@@ -48,8 +48,8 @@ import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UseCase;
 import org.eclipse.uml2.uml.VisibilityKind;
-import org.eclipse.uml2.uml.parts.UmlViewsRepository;
-import org.eclipse.uml2.uml.parts.UseCasePropertiesEditionPart;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.UseCasePropertiesEditionPart;
 
 
 // End of user code

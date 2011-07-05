@@ -38,8 +38,8 @@ import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.GeneralizationSet;
 import org.eclipse.uml2.uml.UMLPackage;
-import org.eclipse.uml2.uml.parts.GeneralizationPropertiesEditionPart;
-import org.eclipse.uml2.uml.parts.UmlViewsRepository;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralizationPropertiesEditionPart;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 
 
 // End of user code

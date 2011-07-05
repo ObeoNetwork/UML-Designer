@@ -47,8 +47,8 @@ import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecificationAction;
 import org.eclipse.uml2.uml.VisibilityKind;
-import org.eclipse.uml2.uml.parts.UmlViewsRepository;
-import org.eclipse.uml2.uml.parts.ValueSpecificationActionPropertiesEditionPart;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.ValueSpecificationActionPropertiesEditionPart;
 
 
 // End of user code

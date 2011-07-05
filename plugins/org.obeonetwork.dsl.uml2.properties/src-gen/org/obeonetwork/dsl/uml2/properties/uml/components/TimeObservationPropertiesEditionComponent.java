@@ -45,8 +45,8 @@ import org.eclipse.uml2.uml.TimeObservation;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
-import org.eclipse.uml2.uml.parts.TimeObservationPropertiesEditionPart;
-import org.eclipse.uml2.uml.parts.UmlViewsRepository;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.TimeObservationPropertiesEditionPart;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 
 
 // End of user code

@@ -43,8 +43,8 @@ import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
-import org.eclipse.uml2.uml.parts.SignalEventPropertiesEditionPart;
-import org.eclipse.uml2.uml.parts.UmlViewsRepository;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.SignalEventPropertiesEditionPart;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 
 
 // End of user code

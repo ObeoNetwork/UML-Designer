@@ -36,8 +36,8 @@ import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.TemplateableElement;
 import org.eclipse.uml2.uml.UMLPackage;
-import org.eclipse.uml2.uml.parts.TemplateSignaturePropertiesEditionPart;
-import org.eclipse.uml2.uml.parts.UmlViewsRepository;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.TemplateSignaturePropertiesEditionPart;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 
 
 // End of user code

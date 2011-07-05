@@ -25,8 +25,8 @@ import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingCo
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.uml2.uml.Image;
 import org.eclipse.uml2.uml.UMLPackage;
-import org.eclipse.uml2.uml.parts.ImagePropertiesEditionPart;
-import org.eclipse.uml2.uml.parts.UmlViewsRepository;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.ImagePropertiesEditionPart;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 
 
 // End of user code

@@ -13,7 +13,7 @@
    <extension
          point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
       <PropertiesEditionPartProvider
-            providerClass="org.eclipse.uml2.uml.providers.UmlPropertiesEditionPartProvider">
+            providerClass="org.obeonetwork.dsl.uml2.properties.uml.providers.UmlPropertiesEditionPartProvider">
       </PropertiesEditionPartProvider>
    </extension>
 

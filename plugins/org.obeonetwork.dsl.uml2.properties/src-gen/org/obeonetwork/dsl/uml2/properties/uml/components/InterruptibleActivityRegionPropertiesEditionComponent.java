@@ -37,8 +37,8 @@ import org.eclipse.uml2.uml.ActivityNode;
 import org.eclipse.uml2.uml.InterruptibleActivityRegion;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
-import org.eclipse.uml2.uml.parts.InterruptibleActivityRegionPropertiesEditionPart;
-import org.eclipse.uml2.uml.parts.UmlViewsRepository;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.InterruptibleActivityRegionPropertiesEditionPart;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 
 
 // End of user code
