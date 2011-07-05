@@ -1198,7 +1198,7 @@
         </edgeMappings>
       </optionalLayers>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description:DiagramDescription" documentation="Description to edit class diagrams" name="Composite Diagram" titleExpression="&lt;%name%> Composite Diagram" domainClass="uml.Class" preconditionExpression="">
+    <ownedRepresentations xsi:type="description:DiagramDescription" documentation="Description to edit class diagrams" name="Composite Diagram" titleExpression="&lt;%name%> Composite Diagram" domainClass="uml.Class" preconditionExpression="&lt;%eClass.name.equalsIgnoreCase(&quot;Class&quot;)%>">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="Atrributs">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@subContainerMappings[name='COD_Attribute']/@subNodeMappings[name='COD_AttributeDefaultValue']"/>
