@@ -11,8 +11,8 @@
 package org.obeonetwork.dsl.uml2.design.services;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.uml2.uml.Action;
@@ -79,10 +79,10 @@ public class ActivityServices {
 	 * either the {@link Activity} or an {@link ActivityPartition}.
 	 * 
 	 * @param context the context object on which to execute this service.
-	 * @return the {@link Collection} of {@link ActivityNode}
+	 * @return the {@link List} of {@link ActivityNode}
 	 */
-	public Collection<ActivityNode> getActivityNodes(Element context) {
-		Collection<ActivityNode> childNodes = Collections.emptyList();
+	public List<ActivityNode> getActivityNodes(Element context) {
+		List<ActivityNode> childNodes;
 
 		if (context instanceof Activity) {
 			final EList<ActivityNode> allActivityNodes = ((Activity)context).getNodes();
@@ -94,6 +94,8 @@ public class ActivityServices {
 			}
 		} else if (context instanceof ActivityPartition) {
 			childNodes = ((ActivityPartition)context).getNodes();
+		} else {
+			childNodes = Collections.emptyList();
 		}
 
 		return childNodes;
