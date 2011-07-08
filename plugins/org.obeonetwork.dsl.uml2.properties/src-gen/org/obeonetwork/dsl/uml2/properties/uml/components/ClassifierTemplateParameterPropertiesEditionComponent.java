@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -143,7 +144,6 @@ public class ClassifierTemplateParameterPropertiesEditionComponent extends Singl
 			
 			});
 			// Start of user code for additional businessfilters for signature
-			
 			// End of user code
 			
 			basePart.addFilterToParameteredElement(new ViewerFilter() {
@@ -159,7 +159,6 @@ public class ClassifierTemplateParameterPropertiesEditionComponent extends Singl
 			
 			});
 			// Start of user code for additional businessfilters for parameteredElement
-			
 			// End of user code
 			
 			basePart.addFilterToDefault_(new ViewerFilter() {
@@ -175,7 +174,6 @@ public class ClassifierTemplateParameterPropertiesEditionComponent extends Singl
 			
 			});
 			// Start of user code for additional businessfilters for default
-			
 			// End of user code
 			
 			
@@ -195,7 +193,6 @@ public class ClassifierTemplateParameterPropertiesEditionComponent extends Singl
 			});
 			basePart.addFilterToConstrainingClassifier(new EObjectFilter(UMLPackage.eINSTANCE.getClassifier()));
 			// Start of user code for additional businessfilters for constrainingClassifier
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -215,15 +212,38 @@ public class ClassifierTemplateParameterPropertiesEditionComponent extends Singl
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.ClassifierTemplateParameter.Properties.signature) {
+			return UMLPackage.eINSTANCE.getTemplateParameter_Signature();
+		}
+		if (editorKey == UmlViewsRepository.ClassifierTemplateParameter.Properties.parameteredElement) {
+			return UMLPackage.eINSTANCE.getTemplateParameter_ParameteredElement();
+		}
+		if (editorKey == UmlViewsRepository.ClassifierTemplateParameter.Properties.default_) {
+			return UMLPackage.eINSTANCE.getTemplateParameter_Default();
+		}
+		if (editorKey == UmlViewsRepository.ClassifierTemplateParameter.Properties.allowSubstitutable) {
+			return UMLPackage.eINSTANCE.getClassifierTemplateParameter_AllowSubstitutable();
+		}
+		if (editorKey == UmlViewsRepository.ClassifierTemplateParameter.Properties.constrainingClassifier) {
+			return UMLPackage.eINSTANCE.getClassifierTemplateParameter_ConstrainingClassifier();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		ClassifierTemplateParameter classifierTemplateParameter = (ClassifierTemplateParameter)semanticObject;
 		if (UmlViewsRepository.ClassifierTemplateParameter.Properties.signature == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				signatureSettings.setToReference((TemplateSignature)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				TemplateSignature eObject = UMLFactory.eINSTANCE.createTemplateSignature();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -237,9 +257,9 @@ public class ClassifierTemplateParameterPropertiesEditionComponent extends Singl
 			}
 		}
 		if (UmlViewsRepository.ClassifierTemplateParameter.Properties.parameteredElement == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				parameteredElementSettings.setToReference((ParameterableElement)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, parameteredElementSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
@@ -251,9 +271,9 @@ public class ClassifierTemplateParameterPropertiesEditionComponent extends Singl
 			}
 		}
 		if (UmlViewsRepository.ClassifierTemplateParameter.Properties.default_ == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				default_Settings.setToReference((ParameterableElement)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, default_Settings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
@@ -268,7 +288,7 @@ public class ClassifierTemplateParameterPropertiesEditionComponent extends Singl
 			classifierTemplateParameter.setAllowSubstitutable((Boolean)event.getNewValue());
 		}
 		if (UmlViewsRepository.ClassifierTemplateParameter.Properties.constrainingClassifier == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Classifier) {
 					constrainingClassifierSettings.addToReference((EObject) event.getNewValue());
 				}

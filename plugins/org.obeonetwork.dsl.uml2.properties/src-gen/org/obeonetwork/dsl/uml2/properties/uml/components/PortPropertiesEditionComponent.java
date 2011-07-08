@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -282,7 +283,6 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			});
 			basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.eINSTANCE.getDependency()));
 			// Start of user code for additional businessfilters for clientDependency
-			
 			// End of user code
 			
 			
@@ -300,7 +300,6 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			
 			});
 			// Start of user code for additional businessfilters for type
-			
 			// End of user code
 			
 			
@@ -319,7 +318,6 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			
 			});
 			// Start of user code for additional businessfilters for owningTemplateParameter
-			
 			// End of user code
 			
 			basePart.addFilterToTemplateParameter(new ViewerFilter() {
@@ -335,7 +333,6 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			
 			});
 			// Start of user code for additional businessfilters for templateParameter
-			
 			// End of user code
 			
 			basePart.addFilterToClass_(new ViewerFilter() {
@@ -351,7 +348,6 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			
 			});
 			// Start of user code for additional businessfilters for class
-			
 			// End of user code
 			
 			basePart.addFilterToDatatype(new ViewerFilter() {
@@ -367,7 +363,6 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			
 			});
 			// Start of user code for additional businessfilters for datatype
-			
 			// End of user code
 			
 			
@@ -389,7 +384,6 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			});
 			basePart.addFilterToRedefinedProperty(new EObjectFilter(UMLPackage.eINSTANCE.getProperty()));
 			// Start of user code for additional businessfilters for redefinedProperty
-			
 			// End of user code
 			
 			basePart.addFilterToOwningAssociation(new ViewerFilter() {
@@ -405,7 +399,6 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			
 			});
 			// Start of user code for additional businessfilters for owningAssociation
-			
 			// End of user code
 			
 			basePart.addFilterToSubsettedProperty(new ViewerFilter() {
@@ -424,7 +417,6 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			});
 			basePart.addFilterToSubsettedProperty(new EObjectFilter(UMLPackage.eINSTANCE.getProperty()));
 			// Start of user code for additional businessfilters for subsettedProperty
-			
 			// End of user code
 			
 			basePart.addFilterToAssociation(new ViewerFilter() {
@@ -440,7 +432,6 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			
 			});
 			// Start of user code for additional businessfilters for association
-			
 			// End of user code
 			
 			basePart.addFilterToAssociationEnd(new ViewerFilter() {
@@ -456,7 +447,6 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			
 			});
 			// Start of user code for additional businessfilters for associationEnd
-			
 			// End of user code
 			
 			
@@ -477,7 +467,6 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			});
 			basePart.addFilterToRedefinedPort(new EObjectFilter(UMLPackage.eINSTANCE.getPort()));
 			// Start of user code for additional businessfilters for redefinedPort
-			
 			// End of user code
 			
 			basePart.addFilterToProtocol(new ViewerFilter() {
@@ -493,7 +482,6 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			
 			});
 			// Start of user code for additional businessfilters for protocol
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -533,6 +521,89 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.Port.Properties.name) {
+			return UMLPackage.eINSTANCE.getNamedElement_Name();
+		}
+		if (editorKey == UmlViewsRepository.Port.Properties.visibility) {
+			return UMLPackage.eINSTANCE.getNamedElement_Visibility();
+		}
+		if (editorKey == UmlViewsRepository.Port.Properties.clientDependency) {
+			return UMLPackage.eINSTANCE.getNamedElement_ClientDependency();
+		}
+		if (editorKey == UmlViewsRepository.Port.Properties.isLeaf) {
+			return UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf();
+		}
+		if (editorKey == UmlViewsRepository.Port.Properties.isStatic) {
+			return UMLPackage.eINSTANCE.getFeature_IsStatic();
+		}
+		if (editorKey == UmlViewsRepository.Port.Properties.type) {
+			return UMLPackage.eINSTANCE.getTypedElement_Type();
+		}
+		if (editorKey == UmlViewsRepository.Port.Properties.isOrdered) {
+			return UMLPackage.eINSTANCE.getMultiplicityElement_IsOrdered();
+		}
+		if (editorKey == UmlViewsRepository.Port.Properties.isUnique) {
+			return UMLPackage.eINSTANCE.getMultiplicityElement_IsUnique();
+		}
+		if (editorKey == UmlViewsRepository.Port.Properties.isReadOnly) {
+			return UMLPackage.eINSTANCE.getStructuralFeature_IsReadOnly();
+		}
+		if (editorKey == UmlViewsRepository.Port.Properties.owningTemplateParameter) {
+			return UMLPackage.eINSTANCE.getParameterableElement_OwningTemplateParameter();
+		}
+		if (editorKey == UmlViewsRepository.Port.Properties.templateParameter) {
+			return UMLPackage.eINSTANCE.getParameterableElement_TemplateParameter();
+		}
+		if (editorKey == UmlViewsRepository.Port.Properties.class_) {
+			return UMLPackage.eINSTANCE.getProperty_Class();
+		}
+		if (editorKey == UmlViewsRepository.Port.Properties.datatype) {
+			return UMLPackage.eINSTANCE.getProperty_Datatype();
+		}
+		if (editorKey == UmlViewsRepository.Port.Properties.isDerived) {
+			return UMLPackage.eINSTANCE.getProperty_IsDerived();
+		}
+		if (editorKey == UmlViewsRepository.Port.Properties.isDerivedUnion) {
+			return UMLPackage.eINSTANCE.getProperty_IsDerivedUnion();
+		}
+		if (editorKey == UmlViewsRepository.Port.Properties.aggregation) {
+			return UMLPackage.eINSTANCE.getProperty_Aggregation();
+		}
+		if (editorKey == UmlViewsRepository.Port.Properties.redefinedProperty) {
+			return UMLPackage.eINSTANCE.getProperty_RedefinedProperty();
+		}
+		if (editorKey == UmlViewsRepository.Port.Properties.owningAssociation) {
+			return UMLPackage.eINSTANCE.getProperty_OwningAssociation();
+		}
+		if (editorKey == UmlViewsRepository.Port.Properties.subsettedProperty) {
+			return UMLPackage.eINSTANCE.getProperty_SubsettedProperty();
+		}
+		if (editorKey == UmlViewsRepository.Port.Properties.association) {
+			return UMLPackage.eINSTANCE.getProperty_Association();
+		}
+		if (editorKey == UmlViewsRepository.Port.Properties.associationEnd) {
+			return UMLPackage.eINSTANCE.getProperty_AssociationEnd();
+		}
+		if (editorKey == UmlViewsRepository.Port.Properties.isBehavior) {
+			return UMLPackage.eINSTANCE.getPort_IsBehavior();
+		}
+		if (editorKey == UmlViewsRepository.Port.Properties.isService) {
+			return UMLPackage.eINSTANCE.getPort_IsService();
+		}
+		if (editorKey == UmlViewsRepository.Port.Properties.redefinedPort) {
+			return UMLPackage.eINSTANCE.getPort_RedefinedPort();
+		}
+		if (editorKey == UmlViewsRepository.Port.Properties.protocol) {
+			return UMLPackage.eINSTANCE.getPort_Protocol();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -545,7 +616,7 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			port.setVisibility((VisibilityKind)event.getNewValue());
 		}
 		if (UmlViewsRepository.Port.Properties.clientDependency == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Dependency) {
 					clientDependencySettings.addToReference((EObject) event.getNewValue());
 				}
@@ -560,9 +631,9 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			port.setIsStatic((Boolean)event.getNewValue());
 		}
 		if (UmlViewsRepository.Port.Properties.type == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				typeSettings.setToReference((Type)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, typeSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
@@ -583,9 +654,9 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			port.setIsReadOnly((Boolean)event.getNewValue());
 		}
 		if (UmlViewsRepository.Port.Properties.owningTemplateParameter == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				owningTemplateParameterSettings.setToReference((TemplateParameter)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				TemplateParameter eObject = UMLFactory.eINSTANCE.createTemplateParameter();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -599,9 +670,9 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			}
 		}
 		if (UmlViewsRepository.Port.Properties.templateParameter == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				templateParameterSettings.setToReference((TemplateParameter)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				TemplateParameter eObject = UMLFactory.eINSTANCE.createTemplateParameter();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -615,9 +686,9 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			}
 		}
 		if (UmlViewsRepository.Port.Properties.datatype == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				datatypeSettings.setToReference((DataType)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				DataType eObject = UMLFactory.eINSTANCE.createDataType();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -640,7 +711,7 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			port.setAggregation((AggregationKind)event.getNewValue());
 		}
 		if (UmlViewsRepository.Port.Properties.redefinedProperty == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Property) {
 					redefinedPropertySettings.addToReference((EObject) event.getNewValue());
 				}
@@ -649,9 +720,9 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			}
 		}
 		if (UmlViewsRepository.Port.Properties.owningAssociation == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				owningAssociationSettings.setToReference((Association)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				Association eObject = UMLFactory.eINSTANCE.createAssociation();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -665,7 +736,7 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			}
 		}
 		if (UmlViewsRepository.Port.Properties.subsettedProperty == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Property) {
 					subsettedPropertySettings.addToReference((EObject) event.getNewValue());
 				}
@@ -674,9 +745,9 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			}
 		}
 		if (UmlViewsRepository.Port.Properties.association == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				associationSettings.setToReference((Association)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				Association eObject = UMLFactory.eINSTANCE.createAssociation();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -690,9 +761,9 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			}
 		}
 		if (UmlViewsRepository.Port.Properties.associationEnd == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				associationEndSettings.setToReference((Property)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				Property eObject = UMLFactory.eINSTANCE.createProperty();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -712,7 +783,7 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			port.setIsService((Boolean)event.getNewValue());
 		}
 		if (UmlViewsRepository.Port.Properties.redefinedPort == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Port) {
 					redefinedPortSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -721,9 +792,9 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			}
 		}
 		if (UmlViewsRepository.Port.Properties.protocol == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				protocolSettings.setToReference((ProtocolStateMachine)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				ProtocolStateMachine eObject = UMLFactory.eINSTANCE.createProtocolStateMachine();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);

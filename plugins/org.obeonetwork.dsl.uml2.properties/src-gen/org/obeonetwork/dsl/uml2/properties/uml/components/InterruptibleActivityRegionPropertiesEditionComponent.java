@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
@@ -122,7 +123,6 @@ public class InterruptibleActivityRegionPropertiesEditionComponent extends Singl
 			
 			});
 			// Start of user code for additional businessfilters for inActivity
-			
 			// End of user code
 			
 			basePart.addFilterToNode(new ViewerFilter() {
@@ -141,7 +141,6 @@ public class InterruptibleActivityRegionPropertiesEditionComponent extends Singl
 			});
 			basePart.addFilterToNode(new EObjectFilter(UMLPackage.eINSTANCE.getActivityNode()));
 			// Start of user code for additional businessfilters for node
-			
 			// End of user code
 			
 			basePart.addFilterToInterruptingEdge(new ViewerFilter() {
@@ -160,7 +159,6 @@ public class InterruptibleActivityRegionPropertiesEditionComponent extends Singl
 			});
 			basePart.addFilterToInterruptingEdge(new EObjectFilter(UMLPackage.eINSTANCE.getActivityEdge()));
 			// Start of user code for additional businessfilters for interruptingEdge
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -178,15 +176,32 @@ public class InterruptibleActivityRegionPropertiesEditionComponent extends Singl
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.InterruptibleActivityRegion.Properties.inActivity) {
+			return UMLPackage.eINSTANCE.getActivityGroup_InActivity();
+		}
+		if (editorKey == UmlViewsRepository.InterruptibleActivityRegion.Properties.node) {
+			return UMLPackage.eINSTANCE.getInterruptibleActivityRegion_Node();
+		}
+		if (editorKey == UmlViewsRepository.InterruptibleActivityRegion.Properties.interruptingEdge) {
+			return UMLPackage.eINSTANCE.getInterruptibleActivityRegion_InterruptingEdge();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		InterruptibleActivityRegion interruptibleActivityRegion = (InterruptibleActivityRegion)semanticObject;
 		if (UmlViewsRepository.InterruptibleActivityRegion.Properties.inActivity == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				inActivitySettings.setToReference((Activity)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				Activity eObject = UMLFactory.eINSTANCE.createActivity();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -200,7 +215,7 @@ public class InterruptibleActivityRegionPropertiesEditionComponent extends Singl
 			}
 		}
 		if (UmlViewsRepository.InterruptibleActivityRegion.Properties.node == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof ActivityNode) {
 					nodeSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -209,7 +224,7 @@ public class InterruptibleActivityRegionPropertiesEditionComponent extends Singl
 			}
 		}
 		if (UmlViewsRepository.InterruptibleActivityRegion.Properties.interruptingEdge == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof ActivityEdge) {
 					interruptingEdgeSettings.addToReference((EObject) event.getNewValue());
 				}

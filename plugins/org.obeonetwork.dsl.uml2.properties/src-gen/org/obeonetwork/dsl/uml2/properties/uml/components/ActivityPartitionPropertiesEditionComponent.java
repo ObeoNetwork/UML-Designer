@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -180,7 +181,6 @@ public class ActivityPartitionPropertiesEditionComponent extends SinglePartPrope
 			});
 			basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.eINSTANCE.getDependency()));
 			// Start of user code for additional businessfilters for clientDependency
-			
 			// End of user code
 			
 			basePart.addFilterToInActivity(new ViewerFilter() {
@@ -196,7 +196,6 @@ public class ActivityPartitionPropertiesEditionComponent extends SinglePartPrope
 			
 			});
 			// Start of user code for additional businessfilters for inActivity
-			
 			// End of user code
 			
 			
@@ -217,7 +216,6 @@ public class ActivityPartitionPropertiesEditionComponent extends SinglePartPrope
 			});
 			basePart.addFilterToNode(new EObjectFilter(UMLPackage.eINSTANCE.getActivityNode()));
 			// Start of user code for additional businessfilters for node
-			
 			// End of user code
 			
 			basePart.addFilterToSuperPartition(new ViewerFilter() {
@@ -233,7 +231,6 @@ public class ActivityPartitionPropertiesEditionComponent extends SinglePartPrope
 			
 			});
 			// Start of user code for additional businessfilters for superPartition
-			
 			// End of user code
 			
 			basePart.addFilterToRepresents(new ViewerFilter() {
@@ -249,7 +246,6 @@ public class ActivityPartitionPropertiesEditionComponent extends SinglePartPrope
 			
 			});
 			// Start of user code for additional businessfilters for represents
-			
 			// End of user code
 			
 			basePart.addFilterToEdge(new ViewerFilter() {
@@ -268,7 +264,6 @@ public class ActivityPartitionPropertiesEditionComponent extends SinglePartPrope
 			});
 			basePart.addFilterToEdge(new EObjectFilter(UMLPackage.eINSTANCE.getActivityEdge()));
 			// Start of user code for additional businessfilters for edge
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -293,6 +288,44 @@ public class ActivityPartitionPropertiesEditionComponent extends SinglePartPrope
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.ActivityPartition.Properties.name) {
+			return UMLPackage.eINSTANCE.getNamedElement_Name();
+		}
+		if (editorKey == UmlViewsRepository.ActivityPartition.Properties.visibility) {
+			return UMLPackage.eINSTANCE.getNamedElement_Visibility();
+		}
+		if (editorKey == UmlViewsRepository.ActivityPartition.Properties.clientDependency) {
+			return UMLPackage.eINSTANCE.getNamedElement_ClientDependency();
+		}
+		if (editorKey == UmlViewsRepository.ActivityPartition.Properties.inActivity) {
+			return UMLPackage.eINSTANCE.getActivityGroup_InActivity();
+		}
+		if (editorKey == UmlViewsRepository.ActivityPartition.Properties.isDimension) {
+			return UMLPackage.eINSTANCE.getActivityPartition_IsDimension();
+		}
+		if (editorKey == UmlViewsRepository.ActivityPartition.Properties.isExternal) {
+			return UMLPackage.eINSTANCE.getActivityPartition_IsExternal();
+		}
+		if (editorKey == UmlViewsRepository.ActivityPartition.Properties.node) {
+			return UMLPackage.eINSTANCE.getActivityPartition_Node();
+		}
+		if (editorKey == UmlViewsRepository.ActivityPartition.Properties.superPartition) {
+			return UMLPackage.eINSTANCE.getActivityPartition_SuperPartition();
+		}
+		if (editorKey == UmlViewsRepository.ActivityPartition.Properties.represents) {
+			return UMLPackage.eINSTANCE.getActivityPartition_Represents();
+		}
+		if (editorKey == UmlViewsRepository.ActivityPartition.Properties.edge) {
+			return UMLPackage.eINSTANCE.getActivityPartition_Edge();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -305,7 +338,7 @@ public class ActivityPartitionPropertiesEditionComponent extends SinglePartPrope
 			activityPartition.setVisibility((VisibilityKind)event.getNewValue());
 		}
 		if (UmlViewsRepository.ActivityPartition.Properties.clientDependency == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Dependency) {
 					clientDependencySettings.addToReference((EObject) event.getNewValue());
 				}
@@ -314,9 +347,9 @@ public class ActivityPartitionPropertiesEditionComponent extends SinglePartPrope
 			}
 		}
 		if (UmlViewsRepository.ActivityPartition.Properties.inActivity == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				inActivitySettings.setToReference((Activity)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				Activity eObject = UMLFactory.eINSTANCE.createActivity();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -336,7 +369,7 @@ public class ActivityPartitionPropertiesEditionComponent extends SinglePartPrope
 			activityPartition.setIsExternal((Boolean)event.getNewValue());
 		}
 		if (UmlViewsRepository.ActivityPartition.Properties.node == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof ActivityNode) {
 					nodeSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -345,9 +378,9 @@ public class ActivityPartitionPropertiesEditionComponent extends SinglePartPrope
 			}
 		}
 		if (UmlViewsRepository.ActivityPartition.Properties.superPartition == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				superPartitionSettings.setToReference((ActivityPartition)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				ActivityPartition eObject = UMLFactory.eINSTANCE.createActivityPartition();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -361,9 +394,9 @@ public class ActivityPartitionPropertiesEditionComponent extends SinglePartPrope
 			}
 		}
 		if (UmlViewsRepository.ActivityPartition.Properties.represents == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				representsSettings.setToReference((Element)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, representsSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
@@ -375,7 +408,7 @@ public class ActivityPartitionPropertiesEditionComponent extends SinglePartPrope
 			}
 		}
 		if (UmlViewsRepository.ActivityPartition.Properties.edge == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof ActivityEdge) {
 					edgeSettings.addToReference((EObject) event.getNewValue());
 				}

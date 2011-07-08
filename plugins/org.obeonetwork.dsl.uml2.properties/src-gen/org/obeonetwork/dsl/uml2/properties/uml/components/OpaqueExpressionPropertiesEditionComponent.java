@@ -21,6 +21,7 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -178,7 +179,6 @@ public class OpaqueExpressionPropertiesEditionComponent extends SinglePartProper
 			});
 			basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.eINSTANCE.getDependency()));
 			// Start of user code for additional businessfilters for clientDependency
-			
 			// End of user code
 			
 			basePart.addFilterToOwningTemplateParameter(new ViewerFilter() {
@@ -194,7 +194,6 @@ public class OpaqueExpressionPropertiesEditionComponent extends SinglePartProper
 			
 			});
 			// Start of user code for additional businessfilters for owningTemplateParameter
-			
 			// End of user code
 			
 			basePart.addFilterToTemplateParameter(new ViewerFilter() {
@@ -210,7 +209,6 @@ public class OpaqueExpressionPropertiesEditionComponent extends SinglePartProper
 			
 			});
 			// Start of user code for additional businessfilters for templateParameter
-			
 			// End of user code
 			
 			basePart.addFilterToType(new ViewerFilter() {
@@ -226,7 +224,6 @@ public class OpaqueExpressionPropertiesEditionComponent extends SinglePartProper
 			
 			});
 			// Start of user code for additional businessfilters for type
-			
 			// End of user code
 			
 			
@@ -244,7 +241,6 @@ public class OpaqueExpressionPropertiesEditionComponent extends SinglePartProper
 			
 			});
 			// Start of user code for additional businessfilters for behavior
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -268,6 +264,41 @@ public class OpaqueExpressionPropertiesEditionComponent extends SinglePartProper
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.OpaqueExpression.Properties.name) {
+			return UMLPackage.eINSTANCE.getNamedElement_Name();
+		}
+		if (editorKey == UmlViewsRepository.OpaqueExpression.Properties.visibility) {
+			return UMLPackage.eINSTANCE.getNamedElement_Visibility();
+		}
+		if (editorKey == UmlViewsRepository.OpaqueExpression.Properties.clientDependency) {
+			return UMLPackage.eINSTANCE.getNamedElement_ClientDependency();
+		}
+		if (editorKey == UmlViewsRepository.OpaqueExpression.Properties.owningTemplateParameter) {
+			return UMLPackage.eINSTANCE.getParameterableElement_OwningTemplateParameter();
+		}
+		if (editorKey == UmlViewsRepository.OpaqueExpression.Properties.templateParameter) {
+			return UMLPackage.eINSTANCE.getParameterableElement_TemplateParameter();
+		}
+		if (editorKey == UmlViewsRepository.OpaqueExpression.Properties.type) {
+			return UMLPackage.eINSTANCE.getTypedElement_Type();
+		}
+		if (editorKey == UmlViewsRepository.OpaqueExpression.Properties.body) {
+			return UMLPackage.eINSTANCE.getOpaqueExpression_Body();
+		}
+		if (editorKey == UmlViewsRepository.OpaqueExpression.Properties.language) {
+			return UMLPackage.eINSTANCE.getOpaqueExpression_Language();
+		}
+		if (editorKey == UmlViewsRepository.OpaqueExpression.Properties.behavior) {
+			return UMLPackage.eINSTANCE.getOpaqueExpression_Behavior();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -280,7 +311,7 @@ public class OpaqueExpressionPropertiesEditionComponent extends SinglePartProper
 			opaqueExpression.setVisibility((VisibilityKind)event.getNewValue());
 		}
 		if (UmlViewsRepository.OpaqueExpression.Properties.clientDependency == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Dependency) {
 					clientDependencySettings.addToReference((EObject) event.getNewValue());
 				}
@@ -289,9 +320,9 @@ public class OpaqueExpressionPropertiesEditionComponent extends SinglePartProper
 			}
 		}
 		if (UmlViewsRepository.OpaqueExpression.Properties.owningTemplateParameter == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				owningTemplateParameterSettings.setToReference((TemplateParameter)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				TemplateParameter eObject = UMLFactory.eINSTANCE.createTemplateParameter();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -305,9 +336,9 @@ public class OpaqueExpressionPropertiesEditionComponent extends SinglePartProper
 			}
 		}
 		if (UmlViewsRepository.OpaqueExpression.Properties.templateParameter == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				templateParameterSettings.setToReference((TemplateParameter)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				TemplateParameter eObject = UMLFactory.eINSTANCE.createTemplateParameter();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -321,9 +352,9 @@ public class OpaqueExpressionPropertiesEditionComponent extends SinglePartProper
 			}
 		}
 		if (UmlViewsRepository.OpaqueExpression.Properties.type == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				typeSettings.setToReference((Type)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, typeSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
@@ -347,9 +378,9 @@ public class OpaqueExpressionPropertiesEditionComponent extends SinglePartProper
 			}
 		}
 		if (UmlViewsRepository.OpaqueExpression.Properties.behavior == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				behaviorSettings.setToReference((Behavior)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, behaviorSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {

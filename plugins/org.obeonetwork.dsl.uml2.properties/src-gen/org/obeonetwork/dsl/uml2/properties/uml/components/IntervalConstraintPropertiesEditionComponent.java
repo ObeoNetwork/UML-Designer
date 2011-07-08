@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -166,7 +167,6 @@ public class IntervalConstraintPropertiesEditionComponent extends SinglePartProp
 			});
 			basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.eINSTANCE.getDependency()));
 			// Start of user code for additional businessfilters for clientDependency
-			
 			// End of user code
 			
 			basePart.addFilterToOwningTemplateParameter(new ViewerFilter() {
@@ -182,7 +182,6 @@ public class IntervalConstraintPropertiesEditionComponent extends SinglePartProp
 			
 			});
 			// Start of user code for additional businessfilters for owningTemplateParameter
-			
 			// End of user code
 			
 			basePart.addFilterToTemplateParameter(new ViewerFilter() {
@@ -198,7 +197,6 @@ public class IntervalConstraintPropertiesEditionComponent extends SinglePartProp
 			
 			});
 			// Start of user code for additional businessfilters for templateParameter
-			
 			// End of user code
 			
 			basePart.addFilterToConstrainedElement(new ViewerFilter() {
@@ -217,7 +215,6 @@ public class IntervalConstraintPropertiesEditionComponent extends SinglePartProp
 			});
 			basePart.addFilterToConstrainedElement(new EObjectFilter(UMLPackage.eINSTANCE.getElement()));
 			// Start of user code for additional businessfilters for constrainedElement
-			
 			// End of user code
 			
 			basePart.addFilterToContext(new ViewerFilter() {
@@ -233,7 +230,6 @@ public class IntervalConstraintPropertiesEditionComponent extends SinglePartProp
 			
 			});
 			// Start of user code for additional businessfilters for context
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -255,6 +251,35 @@ public class IntervalConstraintPropertiesEditionComponent extends SinglePartProp
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.IntervalConstraint.Properties.name) {
+			return UMLPackage.eINSTANCE.getNamedElement_Name();
+		}
+		if (editorKey == UmlViewsRepository.IntervalConstraint.Properties.visibility) {
+			return UMLPackage.eINSTANCE.getNamedElement_Visibility();
+		}
+		if (editorKey == UmlViewsRepository.IntervalConstraint.Properties.clientDependency) {
+			return UMLPackage.eINSTANCE.getNamedElement_ClientDependency();
+		}
+		if (editorKey == UmlViewsRepository.IntervalConstraint.Properties.owningTemplateParameter) {
+			return UMLPackage.eINSTANCE.getParameterableElement_OwningTemplateParameter();
+		}
+		if (editorKey == UmlViewsRepository.IntervalConstraint.Properties.templateParameter) {
+			return UMLPackage.eINSTANCE.getParameterableElement_TemplateParameter();
+		}
+		if (editorKey == UmlViewsRepository.IntervalConstraint.Properties.constrainedElement) {
+			return UMLPackage.eINSTANCE.getConstraint_ConstrainedElement();
+		}
+		if (editorKey == UmlViewsRepository.IntervalConstraint.Properties.context) {
+			return UMLPackage.eINSTANCE.getConstraint_Context();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -267,7 +292,7 @@ public class IntervalConstraintPropertiesEditionComponent extends SinglePartProp
 			intervalConstraint.setVisibility((VisibilityKind)event.getNewValue());
 		}
 		if (UmlViewsRepository.IntervalConstraint.Properties.clientDependency == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Dependency) {
 					clientDependencySettings.addToReference((EObject) event.getNewValue());
 				}
@@ -276,9 +301,9 @@ public class IntervalConstraintPropertiesEditionComponent extends SinglePartProp
 			}
 		}
 		if (UmlViewsRepository.IntervalConstraint.Properties.owningTemplateParameter == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				owningTemplateParameterSettings.setToReference((TemplateParameter)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				TemplateParameter eObject = UMLFactory.eINSTANCE.createTemplateParameter();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -292,9 +317,9 @@ public class IntervalConstraintPropertiesEditionComponent extends SinglePartProp
 			}
 		}
 		if (UmlViewsRepository.IntervalConstraint.Properties.templateParameter == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				templateParameterSettings.setToReference((TemplateParameter)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				TemplateParameter eObject = UMLFactory.eINSTANCE.createTemplateParameter();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -308,7 +333,7 @@ public class IntervalConstraintPropertiesEditionComponent extends SinglePartProp
 			}
 		}
 		if (UmlViewsRepository.IntervalConstraint.Properties.constrainedElement == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Element) {
 					constrainedElementSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -317,9 +342,9 @@ public class IntervalConstraintPropertiesEditionComponent extends SinglePartProp
 			}
 		}
 		if (UmlViewsRepository.IntervalConstraint.Properties.context == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				contextSettings.setToReference((Namespace)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, contextSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {

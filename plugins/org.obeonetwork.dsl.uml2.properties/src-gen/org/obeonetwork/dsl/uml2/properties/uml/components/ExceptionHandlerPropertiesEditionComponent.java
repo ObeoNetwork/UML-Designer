@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
@@ -137,7 +138,6 @@ public class ExceptionHandlerPropertiesEditionComponent extends SinglePartProper
 			
 			});
 			// Start of user code for additional businessfilters for handlerBody
-			
 			// End of user code
 			
 			basePart.addFilterToExceptionInput(new ViewerFilter() {
@@ -153,7 +153,6 @@ public class ExceptionHandlerPropertiesEditionComponent extends SinglePartProper
 			
 			});
 			// Start of user code for additional businessfilters for exceptionInput
-			
 			// End of user code
 			
 			basePart.addFilterToExceptionType(new ViewerFilter() {
@@ -172,7 +171,6 @@ public class ExceptionHandlerPropertiesEditionComponent extends SinglePartProper
 			});
 			basePart.addFilterToExceptionType(new EObjectFilter(UMLPackage.eINSTANCE.getClassifier()));
 			// Start of user code for additional businessfilters for exceptionType
-			
 			// End of user code
 			
 			basePart.addFilterToProtectedNode(new ViewerFilter() {
@@ -188,7 +186,6 @@ public class ExceptionHandlerPropertiesEditionComponent extends SinglePartProper
 			
 			});
 			// Start of user code for additional businessfilters for protectedNode
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -207,15 +204,35 @@ public class ExceptionHandlerPropertiesEditionComponent extends SinglePartProper
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.ExceptionHandler.Properties.handlerBody) {
+			return UMLPackage.eINSTANCE.getExceptionHandler_HandlerBody();
+		}
+		if (editorKey == UmlViewsRepository.ExceptionHandler.Properties.exceptionInput) {
+			return UMLPackage.eINSTANCE.getExceptionHandler_ExceptionInput();
+		}
+		if (editorKey == UmlViewsRepository.ExceptionHandler.Properties.exceptionType) {
+			return UMLPackage.eINSTANCE.getExceptionHandler_ExceptionType();
+		}
+		if (editorKey == UmlViewsRepository.ExceptionHandler.Properties.protectedNode) {
+			return UMLPackage.eINSTANCE.getExceptionHandler_ProtectedNode();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		ExceptionHandler exceptionHandler = (ExceptionHandler)semanticObject;
 		if (UmlViewsRepository.ExceptionHandler.Properties.handlerBody == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				handlerBodySettings.setToReference((ExecutableNode)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, handlerBodySettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
@@ -227,9 +244,9 @@ public class ExceptionHandlerPropertiesEditionComponent extends SinglePartProper
 			}
 		}
 		if (UmlViewsRepository.ExceptionHandler.Properties.exceptionInput == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				exceptionInputSettings.setToReference((ObjectNode)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, exceptionInputSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
@@ -241,7 +258,7 @@ public class ExceptionHandlerPropertiesEditionComponent extends SinglePartProper
 			}
 		}
 		if (UmlViewsRepository.ExceptionHandler.Properties.exceptionType == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Classifier) {
 					exceptionTypeSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -250,9 +267,9 @@ public class ExceptionHandlerPropertiesEditionComponent extends SinglePartProper
 			}
 		}
 		if (UmlViewsRepository.ExceptionHandler.Properties.protectedNode == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				protectedNodeSettings.setToReference((ExecutableNode)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, protectedNodeSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {

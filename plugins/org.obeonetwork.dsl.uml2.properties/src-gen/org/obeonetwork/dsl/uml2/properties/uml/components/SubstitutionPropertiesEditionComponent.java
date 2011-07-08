@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -187,7 +188,6 @@ public class SubstitutionPropertiesEditionComponent extends SinglePartProperties
 			});
 			basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.eINSTANCE.getDependency()));
 			// Start of user code for additional businessfilters for clientDependency
-			
 			// End of user code
 			
 			basePart.addFilterToOwningTemplateParameter(new ViewerFilter() {
@@ -203,7 +203,6 @@ public class SubstitutionPropertiesEditionComponent extends SinglePartProperties
 			
 			});
 			// Start of user code for additional businessfilters for owningTemplateParameter
-			
 			// End of user code
 			
 			basePart.addFilterToTemplateParameter(new ViewerFilter() {
@@ -219,7 +218,6 @@ public class SubstitutionPropertiesEditionComponent extends SinglePartProperties
 			
 			});
 			// Start of user code for additional businessfilters for templateParameter
-			
 			// End of user code
 			
 			basePart.addFilterToSupplier(new ViewerFilter() {
@@ -238,7 +236,6 @@ public class SubstitutionPropertiesEditionComponent extends SinglePartProperties
 			});
 			basePart.addFilterToSupplier(new EObjectFilter(UMLPackage.eINSTANCE.getNamedElement()));
 			// Start of user code for additional businessfilters for supplier
-			
 			// End of user code
 			
 			basePart.addFilterToClient(new ViewerFilter() {
@@ -257,7 +254,6 @@ public class SubstitutionPropertiesEditionComponent extends SinglePartProperties
 			});
 			basePart.addFilterToClient(new EObjectFilter(UMLPackage.eINSTANCE.getNamedElement()));
 			// Start of user code for additional businessfilters for client
-			
 			// End of user code
 			
 			basePart.addFilterToContract(new ViewerFilter() {
@@ -273,7 +269,6 @@ public class SubstitutionPropertiesEditionComponent extends SinglePartProperties
 			
 			});
 			// Start of user code for additional businessfilters for contract
-			
 			// End of user code
 			
 			basePart.addFilterToSubstitutingClassifier(new ViewerFilter() {
@@ -289,7 +284,6 @@ public class SubstitutionPropertiesEditionComponent extends SinglePartProperties
 			
 			});
 			// Start of user code for additional businessfilters for substitutingClassifier
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -313,6 +307,41 @@ public class SubstitutionPropertiesEditionComponent extends SinglePartProperties
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.Substitution.Properties.name) {
+			return UMLPackage.eINSTANCE.getNamedElement_Name();
+		}
+		if (editorKey == UmlViewsRepository.Substitution.Properties.visibility) {
+			return UMLPackage.eINSTANCE.getNamedElement_Visibility();
+		}
+		if (editorKey == UmlViewsRepository.Substitution.Properties.clientDependency) {
+			return UMLPackage.eINSTANCE.getNamedElement_ClientDependency();
+		}
+		if (editorKey == UmlViewsRepository.Substitution.Properties.owningTemplateParameter) {
+			return UMLPackage.eINSTANCE.getParameterableElement_OwningTemplateParameter();
+		}
+		if (editorKey == UmlViewsRepository.Substitution.Properties.templateParameter) {
+			return UMLPackage.eINSTANCE.getParameterableElement_TemplateParameter();
+		}
+		if (editorKey == UmlViewsRepository.Substitution.Properties.supplier) {
+			return UMLPackage.eINSTANCE.getDependency_Supplier();
+		}
+		if (editorKey == UmlViewsRepository.Substitution.Properties.client) {
+			return UMLPackage.eINSTANCE.getDependency_Client();
+		}
+		if (editorKey == UmlViewsRepository.Substitution.Properties.contract) {
+			return UMLPackage.eINSTANCE.getSubstitution_Contract();
+		}
+		if (editorKey == UmlViewsRepository.Substitution.Properties.substitutingClassifier) {
+			return UMLPackage.eINSTANCE.getSubstitution_SubstitutingClassifier();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -325,7 +354,7 @@ public class SubstitutionPropertiesEditionComponent extends SinglePartProperties
 			substitution.setVisibility((VisibilityKind)event.getNewValue());
 		}
 		if (UmlViewsRepository.Substitution.Properties.clientDependency == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Dependency) {
 					clientDependencySettings.addToReference((EObject) event.getNewValue());
 				}
@@ -334,9 +363,9 @@ public class SubstitutionPropertiesEditionComponent extends SinglePartProperties
 			}
 		}
 		if (UmlViewsRepository.Substitution.Properties.owningTemplateParameter == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				owningTemplateParameterSettings.setToReference((TemplateParameter)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				TemplateParameter eObject = UMLFactory.eINSTANCE.createTemplateParameter();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -350,9 +379,9 @@ public class SubstitutionPropertiesEditionComponent extends SinglePartProperties
 			}
 		}
 		if (UmlViewsRepository.Substitution.Properties.templateParameter == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				templateParameterSettings.setToReference((TemplateParameter)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				TemplateParameter eObject = UMLFactory.eINSTANCE.createTemplateParameter();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -366,7 +395,7 @@ public class SubstitutionPropertiesEditionComponent extends SinglePartProperties
 			}
 		}
 		if (UmlViewsRepository.Substitution.Properties.supplier == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof NamedElement) {
 					supplierSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -375,7 +404,7 @@ public class SubstitutionPropertiesEditionComponent extends SinglePartProperties
 			}
 		}
 		if (UmlViewsRepository.Substitution.Properties.client == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof NamedElement) {
 					clientSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -384,9 +413,9 @@ public class SubstitutionPropertiesEditionComponent extends SinglePartProperties
 			}
 		}
 		if (UmlViewsRepository.Substitution.Properties.contract == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				contractSettings.setToReference((Classifier)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, contractSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
@@ -398,9 +427,9 @@ public class SubstitutionPropertiesEditionComponent extends SinglePartProperties
 			}
 		}
 		if (UmlViewsRepository.Substitution.Properties.substitutingClassifier == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				substitutingClassifierSettings.setToReference((Classifier)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, substitutingClassifierSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {

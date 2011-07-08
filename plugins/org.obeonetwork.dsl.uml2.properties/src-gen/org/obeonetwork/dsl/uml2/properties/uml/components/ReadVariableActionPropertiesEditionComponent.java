@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -206,7 +207,6 @@ public class ReadVariableActionPropertiesEditionComponent extends SinglePartProp
 			});
 			basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.eINSTANCE.getDependency()));
 			// Start of user code for additional businessfilters for clientDependency
-			
 			// End of user code
 			
 			
@@ -223,7 +223,6 @@ public class ReadVariableActionPropertiesEditionComponent extends SinglePartProp
 			
 			});
 			// Start of user code for additional businessfilters for inStructuredNode
-			
 			// End of user code
 			
 			basePart.addFilterToActivity(new ViewerFilter() {
@@ -239,7 +238,6 @@ public class ReadVariableActionPropertiesEditionComponent extends SinglePartProp
 			
 			});
 			// Start of user code for additional businessfilters for activity
-			
 			// End of user code
 			
 			basePart.addFilterToOutgoing(new ViewerFilter() {
@@ -258,7 +256,6 @@ public class ReadVariableActionPropertiesEditionComponent extends SinglePartProp
 			});
 			basePart.addFilterToOutgoing(new EObjectFilter(UMLPackage.eINSTANCE.getActivityEdge()));
 			// Start of user code for additional businessfilters for outgoing
-			
 			// End of user code
 			
 			basePart.addFilterToIncoming(new ViewerFilter() {
@@ -277,7 +274,6 @@ public class ReadVariableActionPropertiesEditionComponent extends SinglePartProp
 			});
 			basePart.addFilterToIncoming(new EObjectFilter(UMLPackage.eINSTANCE.getActivityEdge()));
 			// Start of user code for additional businessfilters for incoming
-			
 			// End of user code
 			
 			basePart.addFilterToInPartition(new ViewerFilter() {
@@ -296,7 +292,6 @@ public class ReadVariableActionPropertiesEditionComponent extends SinglePartProp
 			});
 			basePart.addFilterToInPartition(new EObjectFilter(UMLPackage.eINSTANCE.getActivityPartition()));
 			// Start of user code for additional businessfilters for inPartition
-			
 			// End of user code
 			
 			basePart.addFilterToInInterruptibleRegion(new ViewerFilter() {
@@ -315,7 +310,6 @@ public class ReadVariableActionPropertiesEditionComponent extends SinglePartProp
 			});
 			basePart.addFilterToInInterruptibleRegion(new EObjectFilter(UMLPackage.eINSTANCE.getInterruptibleActivityRegion()));
 			// Start of user code for additional businessfilters for inInterruptibleRegion
-			
 			// End of user code
 			
 			basePart.addFilterToRedefinedNode(new ViewerFilter() {
@@ -334,7 +328,6 @@ public class ReadVariableActionPropertiesEditionComponent extends SinglePartProp
 			});
 			basePart.addFilterToRedefinedNode(new EObjectFilter(UMLPackage.eINSTANCE.getActivityNode()));
 			// Start of user code for additional businessfilters for redefinedNode
-			
 			// End of user code
 			
 			basePart.addFilterToVariable(new ViewerFilter() {
@@ -350,7 +343,6 @@ public class ReadVariableActionPropertiesEditionComponent extends SinglePartProp
 			
 			});
 			// Start of user code for additional businessfilters for variable
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -377,6 +369,50 @@ public class ReadVariableActionPropertiesEditionComponent extends SinglePartProp
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.ReadVariableAction.Properties.name) {
+			return UMLPackage.eINSTANCE.getNamedElement_Name();
+		}
+		if (editorKey == UmlViewsRepository.ReadVariableAction.Properties.visibility) {
+			return UMLPackage.eINSTANCE.getNamedElement_Visibility();
+		}
+		if (editorKey == UmlViewsRepository.ReadVariableAction.Properties.clientDependency) {
+			return UMLPackage.eINSTANCE.getNamedElement_ClientDependency();
+		}
+		if (editorKey == UmlViewsRepository.ReadVariableAction.Properties.isLeaf) {
+			return UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf();
+		}
+		if (editorKey == UmlViewsRepository.ReadVariableAction.Properties.inStructuredNode) {
+			return UMLPackage.eINSTANCE.getActivityNode_InStructuredNode();
+		}
+		if (editorKey == UmlViewsRepository.ReadVariableAction.Properties.activity) {
+			return UMLPackage.eINSTANCE.getActivityNode_Activity();
+		}
+		if (editorKey == UmlViewsRepository.ReadVariableAction.Properties.outgoing) {
+			return UMLPackage.eINSTANCE.getActivityNode_Outgoing();
+		}
+		if (editorKey == UmlViewsRepository.ReadVariableAction.Properties.incoming) {
+			return UMLPackage.eINSTANCE.getActivityNode_Incoming();
+		}
+		if (editorKey == UmlViewsRepository.ReadVariableAction.Properties.inPartition) {
+			return UMLPackage.eINSTANCE.getActivityNode_InPartition();
+		}
+		if (editorKey == UmlViewsRepository.ReadVariableAction.Properties.inInterruptibleRegion) {
+			return UMLPackage.eINSTANCE.getActivityNode_InInterruptibleRegion();
+		}
+		if (editorKey == UmlViewsRepository.ReadVariableAction.Properties.redefinedNode) {
+			return UMLPackage.eINSTANCE.getActivityNode_RedefinedNode();
+		}
+		if (editorKey == UmlViewsRepository.ReadVariableAction.Properties.variable) {
+			return UMLPackage.eINSTANCE.getVariableAction_Variable();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -389,7 +425,7 @@ public class ReadVariableActionPropertiesEditionComponent extends SinglePartProp
 			readVariableAction.setVisibility((VisibilityKind)event.getNewValue());
 		}
 		if (UmlViewsRepository.ReadVariableAction.Properties.clientDependency == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Dependency) {
 					clientDependencySettings.addToReference((EObject) event.getNewValue());
 				}
@@ -401,9 +437,9 @@ public class ReadVariableActionPropertiesEditionComponent extends SinglePartProp
 			readVariableAction.setIsLeaf((Boolean)event.getNewValue());
 		}
 		if (UmlViewsRepository.ReadVariableAction.Properties.inStructuredNode == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				inStructuredNodeSettings.setToReference((StructuredActivityNode)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				StructuredActivityNode eObject = UMLFactory.eINSTANCE.createStructuredActivityNode();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -417,9 +453,9 @@ public class ReadVariableActionPropertiesEditionComponent extends SinglePartProp
 			}
 		}
 		if (UmlViewsRepository.ReadVariableAction.Properties.activity == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				activitySettings.setToReference((Activity)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				Activity eObject = UMLFactory.eINSTANCE.createActivity();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -433,7 +469,7 @@ public class ReadVariableActionPropertiesEditionComponent extends SinglePartProp
 			}
 		}
 		if (UmlViewsRepository.ReadVariableAction.Properties.outgoing == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof ActivityEdge) {
 					outgoingSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -442,7 +478,7 @@ public class ReadVariableActionPropertiesEditionComponent extends SinglePartProp
 			}
 		}
 		if (UmlViewsRepository.ReadVariableAction.Properties.incoming == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof ActivityEdge) {
 					incomingSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -451,7 +487,7 @@ public class ReadVariableActionPropertiesEditionComponent extends SinglePartProp
 			}
 		}
 		if (UmlViewsRepository.ReadVariableAction.Properties.inPartition == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof ActivityPartition) {
 					inPartitionSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -460,7 +496,7 @@ public class ReadVariableActionPropertiesEditionComponent extends SinglePartProp
 			}
 		}
 		if (UmlViewsRepository.ReadVariableAction.Properties.inInterruptibleRegion == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof InterruptibleActivityRegion) {
 					inInterruptibleRegionSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -469,7 +505,7 @@ public class ReadVariableActionPropertiesEditionComponent extends SinglePartProp
 			}
 		}
 		if (UmlViewsRepository.ReadVariableAction.Properties.redefinedNode == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof ActivityNode) {
 					redefinedNodeSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -478,9 +514,9 @@ public class ReadVariableActionPropertiesEditionComponent extends SinglePartProp
 			}
 		}
 		if (UmlViewsRepository.ReadVariableAction.Properties.variable == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				variableSettings.setToReference((Variable)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				Variable eObject = UMLFactory.eINSTANCE.createVariable();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);

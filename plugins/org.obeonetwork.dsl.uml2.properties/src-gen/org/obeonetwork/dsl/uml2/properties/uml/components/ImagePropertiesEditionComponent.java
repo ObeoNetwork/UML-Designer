@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -91,6 +92,23 @@ public class ImagePropertiesEditionComponent extends SinglePartPropertiesEditing
 
 
 
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.Image.Properties.content) {
+			return UMLPackage.eINSTANCE.getImage_Content();
+		}
+		if (editorKey == UmlViewsRepository.Image.Properties.location) {
+			return UMLPackage.eINSTANCE.getImage_Location();
+		}
+		if (editorKey == UmlViewsRepository.Image.Properties.format) {
+			return UMLPackage.eINSTANCE.getImage_Format();
+		}
+		return super.associatedFeature(editorKey);
+	}
 
 	/**
 	 * {@inheritDoc}

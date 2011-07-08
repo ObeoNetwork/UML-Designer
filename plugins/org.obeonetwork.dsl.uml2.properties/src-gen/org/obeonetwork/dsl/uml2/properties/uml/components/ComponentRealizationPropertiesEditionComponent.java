@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -183,7 +184,6 @@ public class ComponentRealizationPropertiesEditionComponent extends SinglePartPr
 			});
 			basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.eINSTANCE.getDependency()));
 			// Start of user code for additional businessfilters for clientDependency
-			
 			// End of user code
 			
 			basePart.addFilterToOwningTemplateParameter(new ViewerFilter() {
@@ -199,7 +199,6 @@ public class ComponentRealizationPropertiesEditionComponent extends SinglePartPr
 			
 			});
 			// Start of user code for additional businessfilters for owningTemplateParameter
-			
 			// End of user code
 			
 			basePart.addFilterToTemplateParameter(new ViewerFilter() {
@@ -215,7 +214,6 @@ public class ComponentRealizationPropertiesEditionComponent extends SinglePartPr
 			
 			});
 			// Start of user code for additional businessfilters for templateParameter
-			
 			// End of user code
 			
 			basePart.addFilterToSupplier(new ViewerFilter() {
@@ -234,7 +232,6 @@ public class ComponentRealizationPropertiesEditionComponent extends SinglePartPr
 			});
 			basePart.addFilterToSupplier(new EObjectFilter(UMLPackage.eINSTANCE.getNamedElement()));
 			// Start of user code for additional businessfilters for supplier
-			
 			// End of user code
 			
 			basePart.addFilterToClient(new ViewerFilter() {
@@ -253,7 +250,6 @@ public class ComponentRealizationPropertiesEditionComponent extends SinglePartPr
 			});
 			basePart.addFilterToClient(new EObjectFilter(UMLPackage.eINSTANCE.getNamedElement()));
 			// Start of user code for additional businessfilters for client
-			
 			// End of user code
 			
 			basePart.addFilterToAbstraction(new ViewerFilter() {
@@ -269,7 +265,6 @@ public class ComponentRealizationPropertiesEditionComponent extends SinglePartPr
 			
 			});
 			// Start of user code for additional businessfilters for abstraction
-			
 			// End of user code
 			
 			basePart.addFilterToRealizingClassifier(new ViewerFilter() {
@@ -288,7 +283,6 @@ public class ComponentRealizationPropertiesEditionComponent extends SinglePartPr
 			});
 			basePart.addFilterToRealizingClassifier(new EObjectFilter(UMLPackage.eINSTANCE.getClassifier()));
 			// Start of user code for additional businessfilters for realizingClassifier
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -312,6 +306,41 @@ public class ComponentRealizationPropertiesEditionComponent extends SinglePartPr
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.ComponentRealization.Properties.name) {
+			return UMLPackage.eINSTANCE.getNamedElement_Name();
+		}
+		if (editorKey == UmlViewsRepository.ComponentRealization.Properties.visibility) {
+			return UMLPackage.eINSTANCE.getNamedElement_Visibility();
+		}
+		if (editorKey == UmlViewsRepository.ComponentRealization.Properties.clientDependency) {
+			return UMLPackage.eINSTANCE.getNamedElement_ClientDependency();
+		}
+		if (editorKey == UmlViewsRepository.ComponentRealization.Properties.owningTemplateParameter) {
+			return UMLPackage.eINSTANCE.getParameterableElement_OwningTemplateParameter();
+		}
+		if (editorKey == UmlViewsRepository.ComponentRealization.Properties.templateParameter) {
+			return UMLPackage.eINSTANCE.getParameterableElement_TemplateParameter();
+		}
+		if (editorKey == UmlViewsRepository.ComponentRealization.Properties.supplier) {
+			return UMLPackage.eINSTANCE.getDependency_Supplier();
+		}
+		if (editorKey == UmlViewsRepository.ComponentRealization.Properties.client) {
+			return UMLPackage.eINSTANCE.getDependency_Client();
+		}
+		if (editorKey == UmlViewsRepository.ComponentRealization.Properties.abstraction) {
+			return UMLPackage.eINSTANCE.getComponentRealization_Abstraction();
+		}
+		if (editorKey == UmlViewsRepository.ComponentRealization.Properties.realizingClassifier) {
+			return UMLPackage.eINSTANCE.getComponentRealization_RealizingClassifier();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -324,7 +353,7 @@ public class ComponentRealizationPropertiesEditionComponent extends SinglePartPr
 			componentRealization.setVisibility((VisibilityKind)event.getNewValue());
 		}
 		if (UmlViewsRepository.ComponentRealization.Properties.clientDependency == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Dependency) {
 					clientDependencySettings.addToReference((EObject) event.getNewValue());
 				}
@@ -333,9 +362,9 @@ public class ComponentRealizationPropertiesEditionComponent extends SinglePartPr
 			}
 		}
 		if (UmlViewsRepository.ComponentRealization.Properties.owningTemplateParameter == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				owningTemplateParameterSettings.setToReference((TemplateParameter)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				TemplateParameter eObject = UMLFactory.eINSTANCE.createTemplateParameter();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -349,9 +378,9 @@ public class ComponentRealizationPropertiesEditionComponent extends SinglePartPr
 			}
 		}
 		if (UmlViewsRepository.ComponentRealization.Properties.templateParameter == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				templateParameterSettings.setToReference((TemplateParameter)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				TemplateParameter eObject = UMLFactory.eINSTANCE.createTemplateParameter();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -365,7 +394,7 @@ public class ComponentRealizationPropertiesEditionComponent extends SinglePartPr
 			}
 		}
 		if (UmlViewsRepository.ComponentRealization.Properties.supplier == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof NamedElement) {
 					supplierSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -374,7 +403,7 @@ public class ComponentRealizationPropertiesEditionComponent extends SinglePartPr
 			}
 		}
 		if (UmlViewsRepository.ComponentRealization.Properties.client == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof NamedElement) {
 					clientSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -383,9 +412,9 @@ public class ComponentRealizationPropertiesEditionComponent extends SinglePartPr
 			}
 		}
 		if (UmlViewsRepository.ComponentRealization.Properties.abstraction == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				abstractionSettings.setToReference((Component)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				Component eObject = UMLFactory.eINSTANCE.createComponent();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -399,7 +428,7 @@ public class ComponentRealizationPropertiesEditionComponent extends SinglePartPr
 			}
 		}
 		if (UmlViewsRepository.ComponentRealization.Properties.realizingClassifier == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Classifier) {
 					realizingClassifierSettings.addToReference((EObject) event.getNewValue());
 				}

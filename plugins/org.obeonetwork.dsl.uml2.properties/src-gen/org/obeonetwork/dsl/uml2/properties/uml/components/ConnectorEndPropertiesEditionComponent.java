@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -122,7 +123,6 @@ public class ConnectorEndPropertiesEditionComponent extends SinglePartProperties
 			
 			});
 			// Start of user code for additional businessfilters for role
-			
 			// End of user code
 			
 			basePart.addFilterToPartWithPort(new ViewerFilter() {
@@ -138,7 +138,6 @@ public class ConnectorEndPropertiesEditionComponent extends SinglePartProperties
 			
 			});
 			// Start of user code for additional businessfilters for partWithPort
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -157,6 +156,26 @@ public class ConnectorEndPropertiesEditionComponent extends SinglePartProperties
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.ConnectorEnd.Properties.isOrdered) {
+			return UMLPackage.eINSTANCE.getMultiplicityElement_IsOrdered();
+		}
+		if (editorKey == UmlViewsRepository.ConnectorEnd.Properties.isUnique) {
+			return UMLPackage.eINSTANCE.getMultiplicityElement_IsUnique();
+		}
+		if (editorKey == UmlViewsRepository.ConnectorEnd.Properties.role) {
+			return UMLPackage.eINSTANCE.getConnectorEnd_Role();
+		}
+		if (editorKey == UmlViewsRepository.ConnectorEnd.Properties.partWithPort) {
+			return UMLPackage.eINSTANCE.getConnectorEnd_PartWithPort();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -169,9 +188,9 @@ public class ConnectorEndPropertiesEditionComponent extends SinglePartProperties
 			connectorEnd.setIsUnique((Boolean)event.getNewValue());
 		}
 		if (UmlViewsRepository.ConnectorEnd.Properties.role == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				roleSettings.setToReference((ConnectableElement)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, roleSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
@@ -183,9 +202,9 @@ public class ConnectorEndPropertiesEditionComponent extends SinglePartProperties
 			}
 		}
 		if (UmlViewsRepository.ConnectorEnd.Properties.partWithPort == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				partWithPortSettings.setToReference((Property)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				Property eObject = UMLFactory.eINSTANCE.createProperty();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);

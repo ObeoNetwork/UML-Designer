@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -129,7 +130,6 @@ public class GeneralizationPropertiesEditionComponent extends SinglePartProperti
 			
 			});
 			// Start of user code for additional businessfilters for general
-			
 			// End of user code
 			
 			basePart.addFilterToGeneralizationSet(new ViewerFilter() {
@@ -148,7 +148,6 @@ public class GeneralizationPropertiesEditionComponent extends SinglePartProperti
 			});
 			basePart.addFilterToGeneralizationSet(new EObjectFilter(UMLPackage.eINSTANCE.getGeneralizationSet()));
 			// Start of user code for additional businessfilters for generalizationSet
-			
 			// End of user code
 			
 			basePart.addFilterToSpecific(new ViewerFilter() {
@@ -164,7 +163,6 @@ public class GeneralizationPropertiesEditionComponent extends SinglePartProperti
 			
 			});
 			// Start of user code for additional businessfilters for specific
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -183,6 +181,26 @@ public class GeneralizationPropertiesEditionComponent extends SinglePartProperti
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.Generalization.Properties.isSubstitutable) {
+			return UMLPackage.eINSTANCE.getGeneralization_IsSubstitutable();
+		}
+		if (editorKey == UmlViewsRepository.Generalization.Properties.general) {
+			return UMLPackage.eINSTANCE.getGeneralization_General();
+		}
+		if (editorKey == UmlViewsRepository.Generalization.Properties.generalizationSet) {
+			return UMLPackage.eINSTANCE.getGeneralization_GeneralizationSet();
+		}
+		if (editorKey == UmlViewsRepository.Generalization.Properties.specific) {
+			return UMLPackage.eINSTANCE.getGeneralization_Specific();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -192,9 +210,9 @@ public class GeneralizationPropertiesEditionComponent extends SinglePartProperti
 			generalization.setIsSubstitutable((Boolean)event.getNewValue());
 		}
 		if (UmlViewsRepository.Generalization.Properties.general == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				generalSettings.setToReference((Classifier)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, generalSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
@@ -206,7 +224,7 @@ public class GeneralizationPropertiesEditionComponent extends SinglePartProperti
 			}
 		}
 		if (UmlViewsRepository.Generalization.Properties.generalizationSet == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof GeneralizationSet) {
 					generalizationSetSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -215,9 +233,9 @@ public class GeneralizationPropertiesEditionComponent extends SinglePartProperti
 			}
 		}
 		if (UmlViewsRepository.Generalization.Properties.specific == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				specificSettings.setToReference((Classifier)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, specificSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {

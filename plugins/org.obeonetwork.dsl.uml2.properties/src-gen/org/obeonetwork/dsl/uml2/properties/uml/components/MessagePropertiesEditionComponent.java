@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -173,7 +174,6 @@ public class MessagePropertiesEditionComponent extends SinglePartPropertiesEditi
 			});
 			basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.eINSTANCE.getDependency()));
 			// Start of user code for additional businessfilters for clientDependency
-			
 			// End of user code
 			
 			
@@ -190,7 +190,6 @@ public class MessagePropertiesEditionComponent extends SinglePartPropertiesEditi
 			
 			});
 			// Start of user code for additional businessfilters for receiveEvent
-			
 			// End of user code
 			
 			basePart.addFilterToSendEvent(new ViewerFilter() {
@@ -206,7 +205,6 @@ public class MessagePropertiesEditionComponent extends SinglePartPropertiesEditi
 			
 			});
 			// Start of user code for additional businessfilters for sendEvent
-			
 			// End of user code
 			
 			basePart.addFilterToConnector(new ViewerFilter() {
@@ -222,7 +220,6 @@ public class MessagePropertiesEditionComponent extends SinglePartPropertiesEditi
 			
 			});
 			// Start of user code for additional businessfilters for connector
-			
 			// End of user code
 			
 			basePart.addFilterToInteraction(new ViewerFilter() {
@@ -238,7 +235,6 @@ public class MessagePropertiesEditionComponent extends SinglePartPropertiesEditi
 			
 			});
 			// Start of user code for additional businessfilters for interaction
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -261,6 +257,38 @@ public class MessagePropertiesEditionComponent extends SinglePartPropertiesEditi
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.Message.Properties.name) {
+			return UMLPackage.eINSTANCE.getNamedElement_Name();
+		}
+		if (editorKey == UmlViewsRepository.Message.Properties.visibility) {
+			return UMLPackage.eINSTANCE.getNamedElement_Visibility();
+		}
+		if (editorKey == UmlViewsRepository.Message.Properties.clientDependency) {
+			return UMLPackage.eINSTANCE.getNamedElement_ClientDependency();
+		}
+		if (editorKey == UmlViewsRepository.Message.Properties.messageSort) {
+			return UMLPackage.eINSTANCE.getMessage_MessageSort();
+		}
+		if (editorKey == UmlViewsRepository.Message.Properties.receiveEvent) {
+			return UMLPackage.eINSTANCE.getMessage_ReceiveEvent();
+		}
+		if (editorKey == UmlViewsRepository.Message.Properties.sendEvent) {
+			return UMLPackage.eINSTANCE.getMessage_SendEvent();
+		}
+		if (editorKey == UmlViewsRepository.Message.Properties.connector) {
+			return UMLPackage.eINSTANCE.getMessage_Connector();
+		}
+		if (editorKey == UmlViewsRepository.Message.Properties.interaction) {
+			return UMLPackage.eINSTANCE.getMessage_Interaction();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -273,7 +301,7 @@ public class MessagePropertiesEditionComponent extends SinglePartPropertiesEditi
 			message.setVisibility((VisibilityKind)event.getNewValue());
 		}
 		if (UmlViewsRepository.Message.Properties.clientDependency == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Dependency) {
 					clientDependencySettings.addToReference((EObject) event.getNewValue());
 				}
@@ -285,9 +313,9 @@ public class MessagePropertiesEditionComponent extends SinglePartPropertiesEditi
 			message.setMessageSort((MessageSort)event.getNewValue());
 		}
 		if (UmlViewsRepository.Message.Properties.receiveEvent == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				receiveEventSettings.setToReference((MessageEnd)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, receiveEventSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
@@ -299,9 +327,9 @@ public class MessagePropertiesEditionComponent extends SinglePartPropertiesEditi
 			}
 		}
 		if (UmlViewsRepository.Message.Properties.sendEvent == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				sendEventSettings.setToReference((MessageEnd)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, sendEventSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
@@ -313,9 +341,9 @@ public class MessagePropertiesEditionComponent extends SinglePartPropertiesEditi
 			}
 		}
 		if (UmlViewsRepository.Message.Properties.connector == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				connectorSettings.setToReference((Connector)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				Connector eObject = UMLFactory.eINSTANCE.createConnector();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -329,9 +357,9 @@ public class MessagePropertiesEditionComponent extends SinglePartPropertiesEditi
 			}
 		}
 		if (UmlViewsRepository.Message.Properties.interaction == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				interactionSettings.setToReference((Interaction)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				Interaction eObject = UMLFactory.eINSTANCE.createInteraction();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);

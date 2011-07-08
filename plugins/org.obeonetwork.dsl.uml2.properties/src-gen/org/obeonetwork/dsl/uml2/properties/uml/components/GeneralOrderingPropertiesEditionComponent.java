@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -141,7 +142,6 @@ public class GeneralOrderingPropertiesEditionComponent extends SinglePartPropert
 			});
 			basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.eINSTANCE.getDependency()));
 			// Start of user code for additional businessfilters for clientDependency
-			
 			// End of user code
 			
 			basePart.addFilterToBefore(new ViewerFilter() {
@@ -157,7 +157,6 @@ public class GeneralOrderingPropertiesEditionComponent extends SinglePartPropert
 			
 			});
 			// Start of user code for additional businessfilters for before
-			
 			// End of user code
 			
 			basePart.addFilterToAfter(new ViewerFilter() {
@@ -173,7 +172,6 @@ public class GeneralOrderingPropertiesEditionComponent extends SinglePartPropert
 			
 			});
 			// Start of user code for additional businessfilters for after
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -193,6 +191,29 @@ public class GeneralOrderingPropertiesEditionComponent extends SinglePartPropert
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.GeneralOrdering.Properties.name) {
+			return UMLPackage.eINSTANCE.getNamedElement_Name();
+		}
+		if (editorKey == UmlViewsRepository.GeneralOrdering.Properties.visibility) {
+			return UMLPackage.eINSTANCE.getNamedElement_Visibility();
+		}
+		if (editorKey == UmlViewsRepository.GeneralOrdering.Properties.clientDependency) {
+			return UMLPackage.eINSTANCE.getNamedElement_ClientDependency();
+		}
+		if (editorKey == UmlViewsRepository.GeneralOrdering.Properties.before) {
+			return UMLPackage.eINSTANCE.getGeneralOrdering_Before();
+		}
+		if (editorKey == UmlViewsRepository.GeneralOrdering.Properties.after) {
+			return UMLPackage.eINSTANCE.getGeneralOrdering_After();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -205,7 +226,7 @@ public class GeneralOrderingPropertiesEditionComponent extends SinglePartPropert
 			generalOrdering.setVisibility((VisibilityKind)event.getNewValue());
 		}
 		if (UmlViewsRepository.GeneralOrdering.Properties.clientDependency == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Dependency) {
 					clientDependencySettings.addToReference((EObject) event.getNewValue());
 				}
@@ -214,9 +235,9 @@ public class GeneralOrderingPropertiesEditionComponent extends SinglePartPropert
 			}
 		}
 		if (UmlViewsRepository.GeneralOrdering.Properties.before == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				beforeSettings.setToReference((OccurrenceSpecification)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				OccurrenceSpecification eObject = UMLFactory.eINSTANCE.createOccurrenceSpecification();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -230,9 +251,9 @@ public class GeneralOrderingPropertiesEditionComponent extends SinglePartPropert
 			}
 		}
 		if (UmlViewsRepository.GeneralOrdering.Properties.after == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				afterSettings.setToReference((OccurrenceSpecification)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				OccurrenceSpecification eObject = UMLFactory.eINSTANCE.createOccurrenceSpecification();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);

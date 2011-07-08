@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
@@ -151,7 +152,6 @@ public class ClausePropertiesEditionComponent extends SinglePartPropertiesEditin
 			});
 			basePart.addFilterToTest(new EObjectFilter(UMLPackage.eINSTANCE.getExecutableNode()));
 			// Start of user code for additional businessfilters for test
-			
 			// End of user code
 			
 			basePart.addFilterToBody(new ViewerFilter() {
@@ -170,7 +170,6 @@ public class ClausePropertiesEditionComponent extends SinglePartPropertiesEditin
 			});
 			basePart.addFilterToBody(new EObjectFilter(UMLPackage.eINSTANCE.getExecutableNode()));
 			// Start of user code for additional businessfilters for body
-			
 			// End of user code
 			
 			basePart.addFilterToPredecessorClause(new ViewerFilter() {
@@ -189,7 +188,6 @@ public class ClausePropertiesEditionComponent extends SinglePartPropertiesEditin
 			});
 			basePart.addFilterToPredecessorClause(new EObjectFilter(UMLPackage.eINSTANCE.getClause()));
 			// Start of user code for additional businessfilters for predecessorClause
-			
 			// End of user code
 			
 			basePart.addFilterToSuccessorClause(new ViewerFilter() {
@@ -208,7 +206,6 @@ public class ClausePropertiesEditionComponent extends SinglePartPropertiesEditin
 			});
 			basePart.addFilterToSuccessorClause(new EObjectFilter(UMLPackage.eINSTANCE.getClause()));
 			// Start of user code for additional businessfilters for successorClause
-			
 			// End of user code
 			
 			basePart.addFilterToDecider(new ViewerFilter() {
@@ -224,7 +221,6 @@ public class ClausePropertiesEditionComponent extends SinglePartPropertiesEditin
 			
 			});
 			// Start of user code for additional businessfilters for decider
-			
 			// End of user code
 			
 			basePart.addFilterToBodyOutput(new ViewerFilter() {
@@ -243,7 +239,6 @@ public class ClausePropertiesEditionComponent extends SinglePartPropertiesEditin
 			});
 			basePart.addFilterToBodyOutput(new EObjectFilter(UMLPackage.eINSTANCE.getOutputPin()));
 			// Start of user code for additional businessfilters for bodyOutput
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -264,13 +259,39 @@ public class ClausePropertiesEditionComponent extends SinglePartPropertiesEditin
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.Clause.Properties.test) {
+			return UMLPackage.eINSTANCE.getClause_Test();
+		}
+		if (editorKey == UmlViewsRepository.Clause.Properties.body) {
+			return UMLPackage.eINSTANCE.getClause_Body();
+		}
+		if (editorKey == UmlViewsRepository.Clause.Properties.predecessorClause) {
+			return UMLPackage.eINSTANCE.getClause_PredecessorClause();
+		}
+		if (editorKey == UmlViewsRepository.Clause.Properties.successorClause) {
+			return UMLPackage.eINSTANCE.getClause_SuccessorClause();
+		}
+		if (editorKey == UmlViewsRepository.Clause.Properties.decider) {
+			return UMLPackage.eINSTANCE.getClause_Decider();
+		}
+		if (editorKey == UmlViewsRepository.Clause.Properties.bodyOutput) {
+			return UMLPackage.eINSTANCE.getClause_BodyOutput();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Clause clause = (Clause)semanticObject;
 		if (UmlViewsRepository.Clause.Properties.test == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof ExecutableNode) {
 					testSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -279,7 +300,7 @@ public class ClausePropertiesEditionComponent extends SinglePartPropertiesEditin
 			}
 		}
 		if (UmlViewsRepository.Clause.Properties.body == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof ExecutableNode) {
 					bodySettings.addToReference((EObject) event.getNewValue());
 				}
@@ -288,7 +309,7 @@ public class ClausePropertiesEditionComponent extends SinglePartPropertiesEditin
 			}
 		}
 		if (UmlViewsRepository.Clause.Properties.predecessorClause == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Clause) {
 					predecessorClauseSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -297,7 +318,7 @@ public class ClausePropertiesEditionComponent extends SinglePartPropertiesEditin
 			}
 		}
 		if (UmlViewsRepository.Clause.Properties.successorClause == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Clause) {
 					successorClauseSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -306,9 +327,9 @@ public class ClausePropertiesEditionComponent extends SinglePartPropertiesEditin
 			}
 		}
 		if (UmlViewsRepository.Clause.Properties.decider == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				deciderSettings.setToReference((OutputPin)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				OutputPin eObject = UMLFactory.eINSTANCE.createOutputPin();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -322,7 +343,7 @@ public class ClausePropertiesEditionComponent extends SinglePartPropertiesEditin
 			}
 		}
 		if (UmlViewsRepository.Clause.Properties.bodyOutput == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof OutputPin) {
 					bodyOutputSettings.addToReference((EObject) event.getNewValue());
 				}

@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -103,7 +104,6 @@ public class CommentPropertiesEditionComponent extends SinglePartPropertiesEditi
 			});
 			basePart.addFilterToAnnotatedElement(new EObjectFilter(UMLPackage.eINSTANCE.getElement()));
 			// Start of user code for additional businessfilters for annotatedElement
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -120,6 +120,20 @@ public class CommentPropertiesEditionComponent extends SinglePartPropertiesEditi
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.Comment.Properties.body) {
+			return UMLPackage.eINSTANCE.getComment_Body();
+		}
+		if (editorKey == UmlViewsRepository.Comment.Properties.annotatedElement) {
+			return UMLPackage.eINSTANCE.getComment_AnnotatedElement();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -129,7 +143,7 @@ public class CommentPropertiesEditionComponent extends SinglePartPropertiesEditi
 			comment.setBody((java.lang.String)EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getString(), (String)event.getNewValue()));
 		}
 		if (UmlViewsRepository.Comment.Properties.annotatedElement == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Element) {
 					annotatedElementSettings.addToReference((EObject) event.getNewValue());
 				}

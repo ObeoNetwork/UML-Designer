@@ -885,8 +885,8 @@ public class AcceptCallActionPropertiesEditionPartImpl extends CompositeProperti
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 		// Start of user code for tab synchronization
-		
-		// End of user code
+
+// End of user code
 	}
 
 	/**

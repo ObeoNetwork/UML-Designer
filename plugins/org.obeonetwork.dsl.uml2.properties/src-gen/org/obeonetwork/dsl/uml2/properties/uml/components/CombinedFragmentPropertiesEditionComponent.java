@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -156,7 +157,6 @@ public class CombinedFragmentPropertiesEditionComponent extends SinglePartProper
 			});
 			basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.eINSTANCE.getDependency()));
 			// Start of user code for additional businessfilters for clientDependency
-			
 			// End of user code
 			
 			basePart.addFilterToCovered(new ViewerFilter() {
@@ -175,7 +175,6 @@ public class CombinedFragmentPropertiesEditionComponent extends SinglePartProper
 			});
 			basePart.addFilterToCovered(new EObjectFilter(UMLPackage.eINSTANCE.getLifeline()));
 			// Start of user code for additional businessfilters for covered
-			
 			// End of user code
 			
 			basePart.addFilterToEnclosingInteraction(new ViewerFilter() {
@@ -191,7 +190,6 @@ public class CombinedFragmentPropertiesEditionComponent extends SinglePartProper
 			
 			});
 			// Start of user code for additional businessfilters for enclosingInteraction
-			
 			// End of user code
 			
 			basePart.addFilterToEnclosingOperand(new ViewerFilter() {
@@ -207,7 +205,6 @@ public class CombinedFragmentPropertiesEditionComponent extends SinglePartProper
 			
 			});
 			// Start of user code for additional businessfilters for enclosingOperand
-			
 			// End of user code
 			
 			
@@ -230,6 +227,35 @@ public class CombinedFragmentPropertiesEditionComponent extends SinglePartProper
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.CombinedFragment.Properties.name) {
+			return UMLPackage.eINSTANCE.getNamedElement_Name();
+		}
+		if (editorKey == UmlViewsRepository.CombinedFragment.Properties.visibility) {
+			return UMLPackage.eINSTANCE.getNamedElement_Visibility();
+		}
+		if (editorKey == UmlViewsRepository.CombinedFragment.Properties.clientDependency) {
+			return UMLPackage.eINSTANCE.getNamedElement_ClientDependency();
+		}
+		if (editorKey == UmlViewsRepository.CombinedFragment.Properties.covered) {
+			return UMLPackage.eINSTANCE.getInteractionFragment_Covered();
+		}
+		if (editorKey == UmlViewsRepository.CombinedFragment.Properties.enclosingInteraction) {
+			return UMLPackage.eINSTANCE.getInteractionFragment_EnclosingInteraction();
+		}
+		if (editorKey == UmlViewsRepository.CombinedFragment.Properties.enclosingOperand) {
+			return UMLPackage.eINSTANCE.getInteractionFragment_EnclosingOperand();
+		}
+		if (editorKey == UmlViewsRepository.CombinedFragment.Properties.interactionOperator) {
+			return UMLPackage.eINSTANCE.getCombinedFragment_InteractionOperator();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -242,7 +268,7 @@ public class CombinedFragmentPropertiesEditionComponent extends SinglePartProper
 			combinedFragment.setVisibility((VisibilityKind)event.getNewValue());
 		}
 		if (UmlViewsRepository.CombinedFragment.Properties.clientDependency == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Dependency) {
 					clientDependencySettings.addToReference((EObject) event.getNewValue());
 				}
@@ -251,7 +277,7 @@ public class CombinedFragmentPropertiesEditionComponent extends SinglePartProper
 			}
 		}
 		if (UmlViewsRepository.CombinedFragment.Properties.covered == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Lifeline) {
 					coveredSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -260,9 +286,9 @@ public class CombinedFragmentPropertiesEditionComponent extends SinglePartProper
 			}
 		}
 		if (UmlViewsRepository.CombinedFragment.Properties.enclosingInteraction == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				enclosingInteractionSettings.setToReference((Interaction)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				Interaction eObject = UMLFactory.eINSTANCE.createInteraction();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -276,9 +302,9 @@ public class CombinedFragmentPropertiesEditionComponent extends SinglePartProper
 			}
 		}
 		if (UmlViewsRepository.CombinedFragment.Properties.enclosingOperand == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				enclosingOperandSettings.setToReference((InteractionOperand)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				InteractionOperand eObject = UMLFactory.eINSTANCE.createInteractionOperand();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);

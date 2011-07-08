@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
@@ -111,7 +112,6 @@ public class ProtocolConformancePropertiesEditionComponent extends SinglePartPro
 			
 			});
 			// Start of user code for additional businessfilters for generalMachine
-			
 			// End of user code
 			
 			basePart.addFilterToSpecificMachine(new ViewerFilter() {
@@ -127,7 +127,6 @@ public class ProtocolConformancePropertiesEditionComponent extends SinglePartPro
 			
 			});
 			// Start of user code for additional businessfilters for specificMachine
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -144,15 +143,29 @@ public class ProtocolConformancePropertiesEditionComponent extends SinglePartPro
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.ProtocolConformance.Properties.generalMachine) {
+			return UMLPackage.eINSTANCE.getProtocolConformance_GeneralMachine();
+		}
+		if (editorKey == UmlViewsRepository.ProtocolConformance.Properties.specificMachine) {
+			return UMLPackage.eINSTANCE.getProtocolConformance_SpecificMachine();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		ProtocolConformance protocolConformance = (ProtocolConformance)semanticObject;
 		if (UmlViewsRepository.ProtocolConformance.Properties.generalMachine == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				generalMachineSettings.setToReference((ProtocolStateMachine)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				ProtocolStateMachine eObject = UMLFactory.eINSTANCE.createProtocolStateMachine();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -166,9 +179,9 @@ public class ProtocolConformancePropertiesEditionComponent extends SinglePartPro
 			}
 		}
 		if (UmlViewsRepository.ProtocolConformance.Properties.specificMachine == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				specificMachineSettings.setToReference((ProtocolStateMachine)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				ProtocolStateMachine eObject = UMLFactory.eINSTANCE.createProtocolStateMachine();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);

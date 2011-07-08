@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -159,7 +160,6 @@ public class ReceptionPropertiesEditionComponent extends SinglePartPropertiesEdi
 			});
 			basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.eINSTANCE.getDependency()));
 			// Start of user code for additional businessfilters for clientDependency
-			
 			// End of user code
 			
 			
@@ -181,7 +181,6 @@ public class ReceptionPropertiesEditionComponent extends SinglePartPropertiesEdi
 			});
 			basePart.addFilterToMethod(new EObjectFilter(UMLPackage.eINSTANCE.getBehavior()));
 			// Start of user code for additional businessfilters for method
-			
 			// End of user code
 			
 			
@@ -201,7 +200,6 @@ public class ReceptionPropertiesEditionComponent extends SinglePartPropertiesEdi
 			});
 			basePart.addFilterToRaisedException(new EObjectFilter(UMLPackage.eINSTANCE.getType()));
 			// Start of user code for additional businessfilters for raisedException
-			
 			// End of user code
 			
 			basePart.addFilterToSignal(new ViewerFilter() {
@@ -217,7 +215,6 @@ public class ReceptionPropertiesEditionComponent extends SinglePartPropertiesEdi
 			
 			});
 			// Start of user code for additional businessfilters for signal
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -242,6 +239,44 @@ public class ReceptionPropertiesEditionComponent extends SinglePartPropertiesEdi
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.Reception.Properties.name) {
+			return UMLPackage.eINSTANCE.getNamedElement_Name();
+		}
+		if (editorKey == UmlViewsRepository.Reception.Properties.visibility) {
+			return UMLPackage.eINSTANCE.getNamedElement_Visibility();
+		}
+		if (editorKey == UmlViewsRepository.Reception.Properties.clientDependency) {
+			return UMLPackage.eINSTANCE.getNamedElement_ClientDependency();
+		}
+		if (editorKey == UmlViewsRepository.Reception.Properties.isLeaf) {
+			return UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf();
+		}
+		if (editorKey == UmlViewsRepository.Reception.Properties.isStatic) {
+			return UMLPackage.eINSTANCE.getFeature_IsStatic();
+		}
+		if (editorKey == UmlViewsRepository.Reception.Properties.isAbstract) {
+			return UMLPackage.eINSTANCE.getBehavioralFeature_IsAbstract();
+		}
+		if (editorKey == UmlViewsRepository.Reception.Properties.method) {
+			return UMLPackage.eINSTANCE.getBehavioralFeature_Method();
+		}
+		if (editorKey == UmlViewsRepository.Reception.Properties.concurrency) {
+			return UMLPackage.eINSTANCE.getBehavioralFeature_Concurrency();
+		}
+		if (editorKey == UmlViewsRepository.Reception.Properties.raisedException) {
+			return UMLPackage.eINSTANCE.getBehavioralFeature_RaisedException();
+		}
+		if (editorKey == UmlViewsRepository.Reception.Properties.signal) {
+			return UMLPackage.eINSTANCE.getReception_Signal();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -254,7 +289,7 @@ public class ReceptionPropertiesEditionComponent extends SinglePartPropertiesEdi
 			reception.setVisibility((VisibilityKind)event.getNewValue());
 		}
 		if (UmlViewsRepository.Reception.Properties.clientDependency == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Dependency) {
 					clientDependencySettings.addToReference((EObject) event.getNewValue());
 				}
@@ -272,7 +307,7 @@ public class ReceptionPropertiesEditionComponent extends SinglePartPropertiesEdi
 			reception.setIsAbstract((Boolean)event.getNewValue());
 		}
 		if (UmlViewsRepository.Reception.Properties.method == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Behavior) {
 					methodSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -284,7 +319,7 @@ public class ReceptionPropertiesEditionComponent extends SinglePartPropertiesEdi
 			reception.setConcurrency((CallConcurrencyKind)event.getNewValue());
 		}
 		if (UmlViewsRepository.Reception.Properties.raisedException == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Type) {
 					raisedExceptionSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -293,9 +328,9 @@ public class ReceptionPropertiesEditionComponent extends SinglePartPropertiesEdi
 			}
 		}
 		if (UmlViewsRepository.Reception.Properties.signal == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				signalSettings.setToReference((Signal)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				Signal eObject = UMLFactory.eINSTANCE.createSignal();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);

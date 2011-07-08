@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -170,7 +171,6 @@ public class GeneralizationSetPropertiesEditionComponent extends SinglePartPrope
 			});
 			basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.eINSTANCE.getDependency()));
 			// Start of user code for additional businessfilters for clientDependency
-			
 			// End of user code
 			
 			basePart.addFilterToOwningTemplateParameter(new ViewerFilter() {
@@ -186,7 +186,6 @@ public class GeneralizationSetPropertiesEditionComponent extends SinglePartPrope
 			
 			});
 			// Start of user code for additional businessfilters for owningTemplateParameter
-			
 			// End of user code
 			
 			basePart.addFilterToTemplateParameter(new ViewerFilter() {
@@ -202,7 +201,6 @@ public class GeneralizationSetPropertiesEditionComponent extends SinglePartPrope
 			
 			});
 			// Start of user code for additional businessfilters for templateParameter
-			
 			// End of user code
 			
 			
@@ -220,7 +218,6 @@ public class GeneralizationSetPropertiesEditionComponent extends SinglePartPrope
 			
 			});
 			// Start of user code for additional businessfilters for powertype
-			
 			// End of user code
 			
 			basePart.addFilterToGeneralization(new ViewerFilter() {
@@ -239,7 +236,6 @@ public class GeneralizationSetPropertiesEditionComponent extends SinglePartPrope
 			});
 			basePart.addFilterToGeneralization(new EObjectFilter(UMLPackage.eINSTANCE.getGeneralization()));
 			// Start of user code for additional businessfilters for generalization
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -263,6 +259,41 @@ public class GeneralizationSetPropertiesEditionComponent extends SinglePartPrope
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.GeneralizationSet.Properties.name) {
+			return UMLPackage.eINSTANCE.getNamedElement_Name();
+		}
+		if (editorKey == UmlViewsRepository.GeneralizationSet.Properties.visibility) {
+			return UMLPackage.eINSTANCE.getNamedElement_Visibility();
+		}
+		if (editorKey == UmlViewsRepository.GeneralizationSet.Properties.clientDependency) {
+			return UMLPackage.eINSTANCE.getNamedElement_ClientDependency();
+		}
+		if (editorKey == UmlViewsRepository.GeneralizationSet.Properties.owningTemplateParameter) {
+			return UMLPackage.eINSTANCE.getParameterableElement_OwningTemplateParameter();
+		}
+		if (editorKey == UmlViewsRepository.GeneralizationSet.Properties.templateParameter) {
+			return UMLPackage.eINSTANCE.getParameterableElement_TemplateParameter();
+		}
+		if (editorKey == UmlViewsRepository.GeneralizationSet.Properties.isCovering) {
+			return UMLPackage.eINSTANCE.getGeneralizationSet_IsCovering();
+		}
+		if (editorKey == UmlViewsRepository.GeneralizationSet.Properties.isDisjoint) {
+			return UMLPackage.eINSTANCE.getGeneralizationSet_IsDisjoint();
+		}
+		if (editorKey == UmlViewsRepository.GeneralizationSet.Properties.powertype) {
+			return UMLPackage.eINSTANCE.getGeneralizationSet_Powertype();
+		}
+		if (editorKey == UmlViewsRepository.GeneralizationSet.Properties.generalization) {
+			return UMLPackage.eINSTANCE.getGeneralizationSet_Generalization();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -275,7 +306,7 @@ public class GeneralizationSetPropertiesEditionComponent extends SinglePartPrope
 			generalizationSet.setVisibility((VisibilityKind)event.getNewValue());
 		}
 		if (UmlViewsRepository.GeneralizationSet.Properties.clientDependency == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Dependency) {
 					clientDependencySettings.addToReference((EObject) event.getNewValue());
 				}
@@ -284,9 +315,9 @@ public class GeneralizationSetPropertiesEditionComponent extends SinglePartPrope
 			}
 		}
 		if (UmlViewsRepository.GeneralizationSet.Properties.owningTemplateParameter == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				owningTemplateParameterSettings.setToReference((TemplateParameter)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				TemplateParameter eObject = UMLFactory.eINSTANCE.createTemplateParameter();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -300,9 +331,9 @@ public class GeneralizationSetPropertiesEditionComponent extends SinglePartPrope
 			}
 		}
 		if (UmlViewsRepository.GeneralizationSet.Properties.templateParameter == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				templateParameterSettings.setToReference((TemplateParameter)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				TemplateParameter eObject = UMLFactory.eINSTANCE.createTemplateParameter();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -322,9 +353,9 @@ public class GeneralizationSetPropertiesEditionComponent extends SinglePartPrope
 			generalizationSet.setIsDisjoint((Boolean)event.getNewValue());
 		}
 		if (UmlViewsRepository.GeneralizationSet.Properties.powertype == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				powertypeSettings.setToReference((Classifier)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, powertypeSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
@@ -336,7 +367,7 @@ public class GeneralizationSetPropertiesEditionComponent extends SinglePartPrope
 			}
 		}
 		if (UmlViewsRepository.GeneralizationSet.Properties.generalization == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Generalization) {
 					generalizationSettings.addToReference((EObject) event.getNewValue());
 				}

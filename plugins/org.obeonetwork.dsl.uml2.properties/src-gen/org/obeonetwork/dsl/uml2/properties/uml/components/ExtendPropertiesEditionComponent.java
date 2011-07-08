@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -151,7 +152,6 @@ public class ExtendPropertiesEditionComponent extends SinglePartPropertiesEditin
 			});
 			basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.eINSTANCE.getDependency()));
 			// Start of user code for additional businessfilters for clientDependency
-			
 			// End of user code
 			
 			basePart.addFilterToExtendedCase(new ViewerFilter() {
@@ -167,7 +167,6 @@ public class ExtendPropertiesEditionComponent extends SinglePartPropertiesEditin
 			
 			});
 			// Start of user code for additional businessfilters for extendedCase
-			
 			// End of user code
 			
 			basePart.addFilterToExtensionLocation(new ViewerFilter() {
@@ -186,7 +185,6 @@ public class ExtendPropertiesEditionComponent extends SinglePartPropertiesEditin
 			});
 			basePart.addFilterToExtensionLocation(new EObjectFilter(UMLPackage.eINSTANCE.getExtensionPoint()));
 			// Start of user code for additional businessfilters for extensionLocation
-			
 			// End of user code
 			
 			basePart.addFilterToExtension(new ViewerFilter() {
@@ -202,7 +200,6 @@ public class ExtendPropertiesEditionComponent extends SinglePartPropertiesEditin
 			
 			});
 			// Start of user code for additional businessfilters for extension
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -223,6 +220,32 @@ public class ExtendPropertiesEditionComponent extends SinglePartPropertiesEditin
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.Extend.Properties.name) {
+			return UMLPackage.eINSTANCE.getNamedElement_Name();
+		}
+		if (editorKey == UmlViewsRepository.Extend.Properties.visibility) {
+			return UMLPackage.eINSTANCE.getNamedElement_Visibility();
+		}
+		if (editorKey == UmlViewsRepository.Extend.Properties.clientDependency) {
+			return UMLPackage.eINSTANCE.getNamedElement_ClientDependency();
+		}
+		if (editorKey == UmlViewsRepository.Extend.Properties.extendedCase) {
+			return UMLPackage.eINSTANCE.getExtend_ExtendedCase();
+		}
+		if (editorKey == UmlViewsRepository.Extend.Properties.extensionLocation) {
+			return UMLPackage.eINSTANCE.getExtend_ExtensionLocation();
+		}
+		if (editorKey == UmlViewsRepository.Extend.Properties.extension) {
+			return UMLPackage.eINSTANCE.getExtend_Extension();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -235,7 +258,7 @@ public class ExtendPropertiesEditionComponent extends SinglePartPropertiesEditin
 			extend.setVisibility((VisibilityKind)event.getNewValue());
 		}
 		if (UmlViewsRepository.Extend.Properties.clientDependency == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Dependency) {
 					clientDependencySettings.addToReference((EObject) event.getNewValue());
 				}
@@ -244,9 +267,9 @@ public class ExtendPropertiesEditionComponent extends SinglePartPropertiesEditin
 			}
 		}
 		if (UmlViewsRepository.Extend.Properties.extendedCase == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				extendedCaseSettings.setToReference((UseCase)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				UseCase eObject = UMLFactory.eINSTANCE.createUseCase();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -260,7 +283,7 @@ public class ExtendPropertiesEditionComponent extends SinglePartPropertiesEditin
 			}
 		}
 		if (UmlViewsRepository.Extend.Properties.extensionLocation == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof ExtensionPoint) {
 					extensionLocationSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -269,9 +292,9 @@ public class ExtendPropertiesEditionComponent extends SinglePartPropertiesEditin
 			}
 		}
 		if (UmlViewsRepository.Extend.Properties.extension == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				extensionSettings.setToReference((UseCase)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				UseCase eObject = UMLFactory.eINSTANCE.createUseCase();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);

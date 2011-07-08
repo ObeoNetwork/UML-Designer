@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -192,7 +193,6 @@ public class ActionExecutionSpecificationPropertiesEditionComponent extends Sing
 			});
 			basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.eINSTANCE.getDependency()));
 			// Start of user code for additional businessfilters for clientDependency
-			
 			// End of user code
 			
 			basePart.addFilterToCovered(new ViewerFilter() {
@@ -211,7 +211,6 @@ public class ActionExecutionSpecificationPropertiesEditionComponent extends Sing
 			});
 			basePart.addFilterToCovered(new EObjectFilter(UMLPackage.eINSTANCE.getLifeline()));
 			// Start of user code for additional businessfilters for covered
-			
 			// End of user code
 			
 			basePart.addFilterToEnclosingInteraction(new ViewerFilter() {
@@ -227,7 +226,6 @@ public class ActionExecutionSpecificationPropertiesEditionComponent extends Sing
 			
 			});
 			// Start of user code for additional businessfilters for enclosingInteraction
-			
 			// End of user code
 			
 			basePart.addFilterToEnclosingOperand(new ViewerFilter() {
@@ -243,7 +241,6 @@ public class ActionExecutionSpecificationPropertiesEditionComponent extends Sing
 			
 			});
 			// Start of user code for additional businessfilters for enclosingOperand
-			
 			// End of user code
 			
 			basePart.addFilterToStart(new ViewerFilter() {
@@ -259,7 +256,6 @@ public class ActionExecutionSpecificationPropertiesEditionComponent extends Sing
 			
 			});
 			// Start of user code for additional businessfilters for start
-			
 			// End of user code
 			
 			basePart.addFilterToFinish(new ViewerFilter() {
@@ -275,7 +271,6 @@ public class ActionExecutionSpecificationPropertiesEditionComponent extends Sing
 			
 			});
 			// Start of user code for additional businessfilters for finish
-			
 			// End of user code
 			
 			basePart.addFilterToAction(new ViewerFilter() {
@@ -291,7 +286,6 @@ public class ActionExecutionSpecificationPropertiesEditionComponent extends Sing
 			
 			});
 			// Start of user code for additional businessfilters for action
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -315,6 +309,41 @@ public class ActionExecutionSpecificationPropertiesEditionComponent extends Sing
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.ActionExecutionSpecification.Properties.name) {
+			return UMLPackage.eINSTANCE.getNamedElement_Name();
+		}
+		if (editorKey == UmlViewsRepository.ActionExecutionSpecification.Properties.visibility) {
+			return UMLPackage.eINSTANCE.getNamedElement_Visibility();
+		}
+		if (editorKey == UmlViewsRepository.ActionExecutionSpecification.Properties.clientDependency) {
+			return UMLPackage.eINSTANCE.getNamedElement_ClientDependency();
+		}
+		if (editorKey == UmlViewsRepository.ActionExecutionSpecification.Properties.covered) {
+			return UMLPackage.eINSTANCE.getInteractionFragment_Covered();
+		}
+		if (editorKey == UmlViewsRepository.ActionExecutionSpecification.Properties.enclosingInteraction) {
+			return UMLPackage.eINSTANCE.getInteractionFragment_EnclosingInteraction();
+		}
+		if (editorKey == UmlViewsRepository.ActionExecutionSpecification.Properties.enclosingOperand) {
+			return UMLPackage.eINSTANCE.getInteractionFragment_EnclosingOperand();
+		}
+		if (editorKey == UmlViewsRepository.ActionExecutionSpecification.Properties.start) {
+			return UMLPackage.eINSTANCE.getExecutionSpecification_Start();
+		}
+		if (editorKey == UmlViewsRepository.ActionExecutionSpecification.Properties.finish) {
+			return UMLPackage.eINSTANCE.getExecutionSpecification_Finish();
+		}
+		if (editorKey == UmlViewsRepository.ActionExecutionSpecification.Properties.action) {
+			return UMLPackage.eINSTANCE.getActionExecutionSpecification_Action();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -327,7 +356,7 @@ public class ActionExecutionSpecificationPropertiesEditionComponent extends Sing
 			actionExecutionSpecification.setVisibility((VisibilityKind)event.getNewValue());
 		}
 		if (UmlViewsRepository.ActionExecutionSpecification.Properties.clientDependency == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Dependency) {
 					clientDependencySettings.addToReference((EObject) event.getNewValue());
 				}
@@ -336,7 +365,7 @@ public class ActionExecutionSpecificationPropertiesEditionComponent extends Sing
 			}
 		}
 		if (UmlViewsRepository.ActionExecutionSpecification.Properties.covered == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Lifeline) {
 					coveredSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -345,9 +374,9 @@ public class ActionExecutionSpecificationPropertiesEditionComponent extends Sing
 			}
 		}
 		if (UmlViewsRepository.ActionExecutionSpecification.Properties.enclosingInteraction == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				enclosingInteractionSettings.setToReference((Interaction)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				Interaction eObject = UMLFactory.eINSTANCE.createInteraction();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -361,9 +390,9 @@ public class ActionExecutionSpecificationPropertiesEditionComponent extends Sing
 			}
 		}
 		if (UmlViewsRepository.ActionExecutionSpecification.Properties.enclosingOperand == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				enclosingOperandSettings.setToReference((InteractionOperand)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				InteractionOperand eObject = UMLFactory.eINSTANCE.createInteractionOperand();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -377,9 +406,9 @@ public class ActionExecutionSpecificationPropertiesEditionComponent extends Sing
 			}
 		}
 		if (UmlViewsRepository.ActionExecutionSpecification.Properties.start == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				startSettings.setToReference((OccurrenceSpecification)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				OccurrenceSpecification eObject = UMLFactory.eINSTANCE.createOccurrenceSpecification();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -393,9 +422,9 @@ public class ActionExecutionSpecificationPropertiesEditionComponent extends Sing
 			}
 		}
 		if (UmlViewsRepository.ActionExecutionSpecification.Properties.finish == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				finishSettings.setToReference((OccurrenceSpecification)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				OccurrenceSpecification eObject = UMLFactory.eINSTANCE.createOccurrenceSpecification();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -409,9 +438,9 @@ public class ActionExecutionSpecificationPropertiesEditionComponent extends Sing
 			}
 		}
 		if (UmlViewsRepository.ActionExecutionSpecification.Properties.action == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				actionSettings.setToReference((Action)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, actionSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {

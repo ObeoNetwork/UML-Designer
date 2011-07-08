@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
@@ -127,7 +128,6 @@ public class TemplateParameterSubstitutionPropertiesEditionComponent extends Sin
 			
 			});
 			// Start of user code for additional businessfilters for formal
-			
 			// End of user code
 			
 			basePart.addFilterToActual(new ViewerFilter() {
@@ -143,7 +143,6 @@ public class TemplateParameterSubstitutionPropertiesEditionComponent extends Sin
 			
 			});
 			// Start of user code for additional businessfilters for actual
-			
 			// End of user code
 			
 			basePart.addFilterToTemplateBinding(new ViewerFilter() {
@@ -159,7 +158,6 @@ public class TemplateParameterSubstitutionPropertiesEditionComponent extends Sin
 			
 			});
 			// Start of user code for additional businessfilters for templateBinding
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -177,15 +175,32 @@ public class TemplateParameterSubstitutionPropertiesEditionComponent extends Sin
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.TemplateParameterSubstitution.Properties.formal) {
+			return UMLPackage.eINSTANCE.getTemplateParameterSubstitution_Formal();
+		}
+		if (editorKey == UmlViewsRepository.TemplateParameterSubstitution.Properties.actual) {
+			return UMLPackage.eINSTANCE.getTemplateParameterSubstitution_Actual();
+		}
+		if (editorKey == UmlViewsRepository.TemplateParameterSubstitution.Properties.templateBinding) {
+			return UMLPackage.eINSTANCE.getTemplateParameterSubstitution_TemplateBinding();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		TemplateParameterSubstitution templateParameterSubstitution = (TemplateParameterSubstitution)semanticObject;
 		if (UmlViewsRepository.TemplateParameterSubstitution.Properties.formal == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				formalSettings.setToReference((TemplateParameter)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				TemplateParameter eObject = UMLFactory.eINSTANCE.createTemplateParameter();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -199,9 +214,9 @@ public class TemplateParameterSubstitutionPropertiesEditionComponent extends Sin
 			}
 		}
 		if (UmlViewsRepository.TemplateParameterSubstitution.Properties.actual == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				actualSettings.setToReference((ParameterableElement)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, actualSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
@@ -213,9 +228,9 @@ public class TemplateParameterSubstitutionPropertiesEditionComponent extends Sin
 			}
 		}
 		if (UmlViewsRepository.TemplateParameterSubstitution.Properties.templateBinding == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				templateBindingSettings.setToReference((TemplateBinding)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				TemplateBinding eObject = UMLFactory.eINSTANCE.createTemplateBinding();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);

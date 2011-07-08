@@ -464,7 +464,7 @@ public interface DestroyObjectActionPropertiesEditionPart {
 	public String getTitle();
 
 	// Start of user code for additional methods
-	
-	// End of user code
+
+// End of user code
 
 }

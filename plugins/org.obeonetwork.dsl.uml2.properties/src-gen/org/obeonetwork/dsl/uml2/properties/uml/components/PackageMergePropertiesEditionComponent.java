@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
@@ -111,7 +112,6 @@ public class PackageMergePropertiesEditionComponent extends SinglePartProperties
 			
 			});
 			// Start of user code for additional businessfilters for mergedPackage
-			
 			// End of user code
 			
 			basePart.addFilterToReceivingPackage(new ViewerFilter() {
@@ -127,7 +127,6 @@ public class PackageMergePropertiesEditionComponent extends SinglePartProperties
 			
 			});
 			// Start of user code for additional businessfilters for receivingPackage
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -144,15 +143,29 @@ public class PackageMergePropertiesEditionComponent extends SinglePartProperties
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.PackageMerge.Properties.mergedPackage) {
+			return UMLPackage.eINSTANCE.getPackageMerge_MergedPackage();
+		}
+		if (editorKey == UmlViewsRepository.PackageMerge.Properties.receivingPackage) {
+			return UMLPackage.eINSTANCE.getPackageMerge_ReceivingPackage();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		PackageMerge packageMerge = (PackageMerge)semanticObject;
 		if (UmlViewsRepository.PackageMerge.Properties.mergedPackage == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				mergedPackageSettings.setToReference((Package)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				Package eObject = UMLFactory.eINSTANCE.createPackage();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -166,9 +179,9 @@ public class PackageMergePropertiesEditionComponent extends SinglePartProperties
 			}
 		}
 		if (UmlViewsRepository.PackageMerge.Properties.receivingPackage == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				receivingPackageSettings.setToReference((Package)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				Package eObject = UMLFactory.eINSTANCE.createPackage();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);

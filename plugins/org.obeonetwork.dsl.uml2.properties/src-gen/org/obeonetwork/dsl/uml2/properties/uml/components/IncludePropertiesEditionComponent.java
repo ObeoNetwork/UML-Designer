@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -141,7 +142,6 @@ public class IncludePropertiesEditionComponent extends SinglePartPropertiesEditi
 			});
 			basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.eINSTANCE.getDependency()));
 			// Start of user code for additional businessfilters for clientDependency
-			
 			// End of user code
 			
 			basePart.addFilterToAddition(new ViewerFilter() {
@@ -157,7 +157,6 @@ public class IncludePropertiesEditionComponent extends SinglePartPropertiesEditi
 			
 			});
 			// Start of user code for additional businessfilters for addition
-			
 			// End of user code
 			
 			basePart.addFilterToIncludingCase(new ViewerFilter() {
@@ -173,7 +172,6 @@ public class IncludePropertiesEditionComponent extends SinglePartPropertiesEditi
 			
 			});
 			// Start of user code for additional businessfilters for includingCase
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -193,6 +191,29 @@ public class IncludePropertiesEditionComponent extends SinglePartPropertiesEditi
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.Include.Properties.name) {
+			return UMLPackage.eINSTANCE.getNamedElement_Name();
+		}
+		if (editorKey == UmlViewsRepository.Include.Properties.visibility) {
+			return UMLPackage.eINSTANCE.getNamedElement_Visibility();
+		}
+		if (editorKey == UmlViewsRepository.Include.Properties.clientDependency) {
+			return UMLPackage.eINSTANCE.getNamedElement_ClientDependency();
+		}
+		if (editorKey == UmlViewsRepository.Include.Properties.addition) {
+			return UMLPackage.eINSTANCE.getInclude_Addition();
+		}
+		if (editorKey == UmlViewsRepository.Include.Properties.includingCase) {
+			return UMLPackage.eINSTANCE.getInclude_IncludingCase();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -205,7 +226,7 @@ public class IncludePropertiesEditionComponent extends SinglePartPropertiesEditi
 			include.setVisibility((VisibilityKind)event.getNewValue());
 		}
 		if (UmlViewsRepository.Include.Properties.clientDependency == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Dependency) {
 					clientDependencySettings.addToReference((EObject) event.getNewValue());
 				}
@@ -214,9 +235,9 @@ public class IncludePropertiesEditionComponent extends SinglePartPropertiesEditi
 			}
 		}
 		if (UmlViewsRepository.Include.Properties.addition == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				additionSettings.setToReference((UseCase)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				UseCase eObject = UMLFactory.eINSTANCE.createUseCase();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -230,9 +251,9 @@ public class IncludePropertiesEditionComponent extends SinglePartPropertiesEditi
 			}
 		}
 		if (UmlViewsRepository.Include.Properties.includingCase == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				includingCaseSettings.setToReference((UseCase)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				UseCase eObject = UMLFactory.eINSTANCE.createUseCase();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);

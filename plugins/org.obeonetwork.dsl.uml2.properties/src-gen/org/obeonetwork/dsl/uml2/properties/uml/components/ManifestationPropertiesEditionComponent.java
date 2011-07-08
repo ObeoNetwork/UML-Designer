@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -175,7 +176,6 @@ public class ManifestationPropertiesEditionComponent extends SinglePartPropertie
 			});
 			basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.eINSTANCE.getDependency()));
 			// Start of user code for additional businessfilters for clientDependency
-			
 			// End of user code
 			
 			basePart.addFilterToOwningTemplateParameter(new ViewerFilter() {
@@ -191,7 +191,6 @@ public class ManifestationPropertiesEditionComponent extends SinglePartPropertie
 			
 			});
 			// Start of user code for additional businessfilters for owningTemplateParameter
-			
 			// End of user code
 			
 			basePart.addFilterToTemplateParameter(new ViewerFilter() {
@@ -207,7 +206,6 @@ public class ManifestationPropertiesEditionComponent extends SinglePartPropertie
 			
 			});
 			// Start of user code for additional businessfilters for templateParameter
-			
 			// End of user code
 			
 			basePart.addFilterToSupplier(new ViewerFilter() {
@@ -226,7 +224,6 @@ public class ManifestationPropertiesEditionComponent extends SinglePartPropertie
 			});
 			basePart.addFilterToSupplier(new EObjectFilter(UMLPackage.eINSTANCE.getNamedElement()));
 			// Start of user code for additional businessfilters for supplier
-			
 			// End of user code
 			
 			basePart.addFilterToClient(new ViewerFilter() {
@@ -245,7 +242,6 @@ public class ManifestationPropertiesEditionComponent extends SinglePartPropertie
 			});
 			basePart.addFilterToClient(new EObjectFilter(UMLPackage.eINSTANCE.getNamedElement()));
 			// Start of user code for additional businessfilters for client
-			
 			// End of user code
 			
 			basePart.addFilterToUtilizedElement(new ViewerFilter() {
@@ -261,7 +257,6 @@ public class ManifestationPropertiesEditionComponent extends SinglePartPropertie
 			
 			});
 			// Start of user code for additional businessfilters for utilizedElement
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -284,6 +279,38 @@ public class ManifestationPropertiesEditionComponent extends SinglePartPropertie
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.Manifestation.Properties.name) {
+			return UMLPackage.eINSTANCE.getNamedElement_Name();
+		}
+		if (editorKey == UmlViewsRepository.Manifestation.Properties.visibility) {
+			return UMLPackage.eINSTANCE.getNamedElement_Visibility();
+		}
+		if (editorKey == UmlViewsRepository.Manifestation.Properties.clientDependency) {
+			return UMLPackage.eINSTANCE.getNamedElement_ClientDependency();
+		}
+		if (editorKey == UmlViewsRepository.Manifestation.Properties.owningTemplateParameter) {
+			return UMLPackage.eINSTANCE.getParameterableElement_OwningTemplateParameter();
+		}
+		if (editorKey == UmlViewsRepository.Manifestation.Properties.templateParameter) {
+			return UMLPackage.eINSTANCE.getParameterableElement_TemplateParameter();
+		}
+		if (editorKey == UmlViewsRepository.Manifestation.Properties.supplier) {
+			return UMLPackage.eINSTANCE.getDependency_Supplier();
+		}
+		if (editorKey == UmlViewsRepository.Manifestation.Properties.client) {
+			return UMLPackage.eINSTANCE.getDependency_Client();
+		}
+		if (editorKey == UmlViewsRepository.Manifestation.Properties.utilizedElement) {
+			return UMLPackage.eINSTANCE.getManifestation_UtilizedElement();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -296,7 +323,7 @@ public class ManifestationPropertiesEditionComponent extends SinglePartPropertie
 			manifestation.setVisibility((VisibilityKind)event.getNewValue());
 		}
 		if (UmlViewsRepository.Manifestation.Properties.clientDependency == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Dependency) {
 					clientDependencySettings.addToReference((EObject) event.getNewValue());
 				}
@@ -305,9 +332,9 @@ public class ManifestationPropertiesEditionComponent extends SinglePartPropertie
 			}
 		}
 		if (UmlViewsRepository.Manifestation.Properties.owningTemplateParameter == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				owningTemplateParameterSettings.setToReference((TemplateParameter)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				TemplateParameter eObject = UMLFactory.eINSTANCE.createTemplateParameter();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -321,9 +348,9 @@ public class ManifestationPropertiesEditionComponent extends SinglePartPropertie
 			}
 		}
 		if (UmlViewsRepository.Manifestation.Properties.templateParameter == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				templateParameterSettings.setToReference((TemplateParameter)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				TemplateParameter eObject = UMLFactory.eINSTANCE.createTemplateParameter();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -337,7 +364,7 @@ public class ManifestationPropertiesEditionComponent extends SinglePartPropertie
 			}
 		}
 		if (UmlViewsRepository.Manifestation.Properties.supplier == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof NamedElement) {
 					supplierSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -346,7 +373,7 @@ public class ManifestationPropertiesEditionComponent extends SinglePartPropertie
 			}
 		}
 		if (UmlViewsRepository.Manifestation.Properties.client == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof NamedElement) {
 					clientSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -355,9 +382,9 @@ public class ManifestationPropertiesEditionComponent extends SinglePartPropertie
 			}
 		}
 		if (UmlViewsRepository.Manifestation.Properties.utilizedElement == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				utilizedElementSettings.setToReference((PackageableElement)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, utilizedElementSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {

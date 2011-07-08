@@ -109,7 +109,6 @@ public class ClearAssociationActionPropertiesEditionProvider extends PropertiesE
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String, java.lang.Class)
 	 */
-	@SuppressWarnings("unchecked")
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
 		if (editingContext.getEObject() instanceof ClearAssociationAction) {
 			if (ClearAssociationActionPropertiesEditionComponent.BASE_PART.equals(part)

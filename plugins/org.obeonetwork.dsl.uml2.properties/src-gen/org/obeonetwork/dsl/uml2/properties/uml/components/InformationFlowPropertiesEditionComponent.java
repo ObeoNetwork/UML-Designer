@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -210,7 +211,6 @@ public class InformationFlowPropertiesEditionComponent extends SinglePartPropert
 			});
 			basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.eINSTANCE.getDependency()));
 			// Start of user code for additional businessfilters for clientDependency
-			
 			// End of user code
 			
 			basePart.addFilterToOwningTemplateParameter(new ViewerFilter() {
@@ -226,7 +226,6 @@ public class InformationFlowPropertiesEditionComponent extends SinglePartPropert
 			
 			});
 			// Start of user code for additional businessfilters for owningTemplateParameter
-			
 			// End of user code
 			
 			basePart.addFilterToTemplateParameter(new ViewerFilter() {
@@ -242,7 +241,6 @@ public class InformationFlowPropertiesEditionComponent extends SinglePartPropert
 			
 			});
 			// Start of user code for additional businessfilters for templateParameter
-			
 			// End of user code
 			
 			basePart.addFilterToRealization(new ViewerFilter() {
@@ -261,7 +259,6 @@ public class InformationFlowPropertiesEditionComponent extends SinglePartPropert
 			});
 			basePart.addFilterToRealization(new EObjectFilter(UMLPackage.eINSTANCE.getRelationship()));
 			// Start of user code for additional businessfilters for realization
-			
 			// End of user code
 			
 			basePart.addFilterToConveyed(new ViewerFilter() {
@@ -280,7 +277,6 @@ public class InformationFlowPropertiesEditionComponent extends SinglePartPropert
 			});
 			basePart.addFilterToConveyed(new EObjectFilter(UMLPackage.eINSTANCE.getClassifier()));
 			// Start of user code for additional businessfilters for conveyed
-			
 			// End of user code
 			
 			basePart.addFilterToInformationSource(new ViewerFilter() {
@@ -299,7 +295,6 @@ public class InformationFlowPropertiesEditionComponent extends SinglePartPropert
 			});
 			basePart.addFilterToInformationSource(new EObjectFilter(UMLPackage.eINSTANCE.getNamedElement()));
 			// Start of user code for additional businessfilters for informationSource
-			
 			// End of user code
 			
 			basePart.addFilterToInformationTarget(new ViewerFilter() {
@@ -318,7 +313,6 @@ public class InformationFlowPropertiesEditionComponent extends SinglePartPropert
 			});
 			basePart.addFilterToInformationTarget(new EObjectFilter(UMLPackage.eINSTANCE.getNamedElement()));
 			// Start of user code for additional businessfilters for informationTarget
-			
 			// End of user code
 			
 			basePart.addFilterToRealizingActivityEdge(new ViewerFilter() {
@@ -337,7 +331,6 @@ public class InformationFlowPropertiesEditionComponent extends SinglePartPropert
 			});
 			basePart.addFilterToRealizingActivityEdge(new EObjectFilter(UMLPackage.eINSTANCE.getActivityEdge()));
 			// Start of user code for additional businessfilters for realizingActivityEdge
-			
 			// End of user code
 			
 			basePart.addFilterToRealizingConnector(new ViewerFilter() {
@@ -356,7 +349,6 @@ public class InformationFlowPropertiesEditionComponent extends SinglePartPropert
 			});
 			basePart.addFilterToRealizingConnector(new EObjectFilter(UMLPackage.eINSTANCE.getConnector()));
 			// Start of user code for additional businessfilters for realizingConnector
-			
 			// End of user code
 			
 			basePart.addFilterToRealizingMessage(new ViewerFilter() {
@@ -375,7 +367,6 @@ public class InformationFlowPropertiesEditionComponent extends SinglePartPropert
 			});
 			basePart.addFilterToRealizingMessage(new EObjectFilter(UMLPackage.eINSTANCE.getMessage()));
 			// Start of user code for additional businessfilters for realizingMessage
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -402,6 +393,50 @@ public class InformationFlowPropertiesEditionComponent extends SinglePartPropert
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.InformationFlow.Properties.name) {
+			return UMLPackage.eINSTANCE.getNamedElement_Name();
+		}
+		if (editorKey == UmlViewsRepository.InformationFlow.Properties.visibility) {
+			return UMLPackage.eINSTANCE.getNamedElement_Visibility();
+		}
+		if (editorKey == UmlViewsRepository.InformationFlow.Properties.clientDependency) {
+			return UMLPackage.eINSTANCE.getNamedElement_ClientDependency();
+		}
+		if (editorKey == UmlViewsRepository.InformationFlow.Properties.owningTemplateParameter) {
+			return UMLPackage.eINSTANCE.getParameterableElement_OwningTemplateParameter();
+		}
+		if (editorKey == UmlViewsRepository.InformationFlow.Properties.templateParameter) {
+			return UMLPackage.eINSTANCE.getParameterableElement_TemplateParameter();
+		}
+		if (editorKey == UmlViewsRepository.InformationFlow.Properties.realization) {
+			return UMLPackage.eINSTANCE.getInformationFlow_Realization();
+		}
+		if (editorKey == UmlViewsRepository.InformationFlow.Properties.conveyed) {
+			return UMLPackage.eINSTANCE.getInformationFlow_Conveyed();
+		}
+		if (editorKey == UmlViewsRepository.InformationFlow.Properties.informationSource) {
+			return UMLPackage.eINSTANCE.getInformationFlow_InformationSource();
+		}
+		if (editorKey == UmlViewsRepository.InformationFlow.Properties.informationTarget) {
+			return UMLPackage.eINSTANCE.getInformationFlow_InformationTarget();
+		}
+		if (editorKey == UmlViewsRepository.InformationFlow.Properties.realizingActivityEdge) {
+			return UMLPackage.eINSTANCE.getInformationFlow_RealizingActivityEdge();
+		}
+		if (editorKey == UmlViewsRepository.InformationFlow.Properties.realizingConnector) {
+			return UMLPackage.eINSTANCE.getInformationFlow_RealizingConnector();
+		}
+		if (editorKey == UmlViewsRepository.InformationFlow.Properties.realizingMessage) {
+			return UMLPackage.eINSTANCE.getInformationFlow_RealizingMessage();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -414,7 +449,7 @@ public class InformationFlowPropertiesEditionComponent extends SinglePartPropert
 			informationFlow.setVisibility((VisibilityKind)event.getNewValue());
 		}
 		if (UmlViewsRepository.InformationFlow.Properties.clientDependency == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Dependency) {
 					clientDependencySettings.addToReference((EObject) event.getNewValue());
 				}
@@ -423,9 +458,9 @@ public class InformationFlowPropertiesEditionComponent extends SinglePartPropert
 			}
 		}
 		if (UmlViewsRepository.InformationFlow.Properties.owningTemplateParameter == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				owningTemplateParameterSettings.setToReference((TemplateParameter)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				TemplateParameter eObject = UMLFactory.eINSTANCE.createTemplateParameter();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -439,9 +474,9 @@ public class InformationFlowPropertiesEditionComponent extends SinglePartPropert
 			}
 		}
 		if (UmlViewsRepository.InformationFlow.Properties.templateParameter == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				templateParameterSettings.setToReference((TemplateParameter)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				TemplateParameter eObject = UMLFactory.eINSTANCE.createTemplateParameter();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -455,7 +490,7 @@ public class InformationFlowPropertiesEditionComponent extends SinglePartPropert
 			}
 		}
 		if (UmlViewsRepository.InformationFlow.Properties.realization == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Relationship) {
 					realizationSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -464,7 +499,7 @@ public class InformationFlowPropertiesEditionComponent extends SinglePartPropert
 			}
 		}
 		if (UmlViewsRepository.InformationFlow.Properties.conveyed == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Classifier) {
 					conveyedSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -473,7 +508,7 @@ public class InformationFlowPropertiesEditionComponent extends SinglePartPropert
 			}
 		}
 		if (UmlViewsRepository.InformationFlow.Properties.informationSource == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof NamedElement) {
 					informationSourceSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -482,7 +517,7 @@ public class InformationFlowPropertiesEditionComponent extends SinglePartPropert
 			}
 		}
 		if (UmlViewsRepository.InformationFlow.Properties.informationTarget == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof NamedElement) {
 					informationTargetSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -491,7 +526,7 @@ public class InformationFlowPropertiesEditionComponent extends SinglePartPropert
 			}
 		}
 		if (UmlViewsRepository.InformationFlow.Properties.realizingActivityEdge == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof ActivityEdge) {
 					realizingActivityEdgeSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -500,7 +535,7 @@ public class InformationFlowPropertiesEditionComponent extends SinglePartPropert
 			}
 		}
 		if (UmlViewsRepository.InformationFlow.Properties.realizingConnector == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Connector) {
 					realizingConnectorSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -509,7 +544,7 @@ public class InformationFlowPropertiesEditionComponent extends SinglePartPropert
 			}
 		}
 		if (UmlViewsRepository.InformationFlow.Properties.realizingMessage == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Message) {
 					realizingMessageSettings.addToReference((EObject) event.getNewValue());
 				}

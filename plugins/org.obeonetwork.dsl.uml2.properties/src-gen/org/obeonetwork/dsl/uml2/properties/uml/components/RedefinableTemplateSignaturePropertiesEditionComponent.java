@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -163,7 +164,6 @@ public class RedefinableTemplateSignaturePropertiesEditionComponent extends Sing
 			});
 			basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.eINSTANCE.getDependency()));
 			// Start of user code for additional businessfilters for clientDependency
-			
 			// End of user code
 			
 			
@@ -183,7 +183,6 @@ public class RedefinableTemplateSignaturePropertiesEditionComponent extends Sing
 			});
 			basePart.addFilterToParameter(new EObjectFilter(UMLPackage.eINSTANCE.getTemplateParameter()));
 			// Start of user code for additional businessfilters for parameter
-			
 			// End of user code
 			
 			basePart.addFilterToTemplate(new ViewerFilter() {
@@ -199,7 +198,6 @@ public class RedefinableTemplateSignaturePropertiesEditionComponent extends Sing
 			
 			});
 			// Start of user code for additional businessfilters for template
-			
 			// End of user code
 			
 			basePart.addFilterToExtendedSignature(new ViewerFilter() {
@@ -218,7 +216,6 @@ public class RedefinableTemplateSignaturePropertiesEditionComponent extends Sing
 			});
 			basePart.addFilterToExtendedSignature(new EObjectFilter(UMLPackage.eINSTANCE.getRedefinableTemplateSignature()));
 			// Start of user code for additional businessfilters for extendedSignature
-			
 			// End of user code
 			
 			basePart.addFilterToClassifier(new ViewerFilter() {
@@ -234,7 +231,6 @@ public class RedefinableTemplateSignaturePropertiesEditionComponent extends Sing
 			
 			});
 			// Start of user code for additional businessfilters for classifier
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -257,6 +253,38 @@ public class RedefinableTemplateSignaturePropertiesEditionComponent extends Sing
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.RedefinableTemplateSignature.Properties.name) {
+			return UMLPackage.eINSTANCE.getNamedElement_Name();
+		}
+		if (editorKey == UmlViewsRepository.RedefinableTemplateSignature.Properties.visibility) {
+			return UMLPackage.eINSTANCE.getNamedElement_Visibility();
+		}
+		if (editorKey == UmlViewsRepository.RedefinableTemplateSignature.Properties.clientDependency) {
+			return UMLPackage.eINSTANCE.getNamedElement_ClientDependency();
+		}
+		if (editorKey == UmlViewsRepository.RedefinableTemplateSignature.Properties.isLeaf) {
+			return UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf();
+		}
+		if (editorKey == UmlViewsRepository.RedefinableTemplateSignature.Properties.parameter) {
+			return UMLPackage.eINSTANCE.getTemplateSignature_Parameter();
+		}
+		if (editorKey == UmlViewsRepository.RedefinableTemplateSignature.Properties.template) {
+			return UMLPackage.eINSTANCE.getTemplateSignature_Template();
+		}
+		if (editorKey == UmlViewsRepository.RedefinableTemplateSignature.Properties.extendedSignature) {
+			return UMLPackage.eINSTANCE.getRedefinableTemplateSignature_ExtendedSignature();
+		}
+		if (editorKey == UmlViewsRepository.RedefinableTemplateSignature.Properties.classifier) {
+			return UMLPackage.eINSTANCE.getRedefinableTemplateSignature_Classifier();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -269,7 +297,7 @@ public class RedefinableTemplateSignaturePropertiesEditionComponent extends Sing
 			redefinableTemplateSignature.setVisibility((VisibilityKind)event.getNewValue());
 		}
 		if (UmlViewsRepository.RedefinableTemplateSignature.Properties.clientDependency == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Dependency) {
 					clientDependencySettings.addToReference((EObject) event.getNewValue());
 				}
@@ -281,7 +309,7 @@ public class RedefinableTemplateSignaturePropertiesEditionComponent extends Sing
 			redefinableTemplateSignature.setIsLeaf((Boolean)event.getNewValue());
 		}
 		if (UmlViewsRepository.RedefinableTemplateSignature.Properties.parameter == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof TemplateParameter) {
 					parameterSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -290,9 +318,9 @@ public class RedefinableTemplateSignaturePropertiesEditionComponent extends Sing
 			}
 		}
 		if (UmlViewsRepository.RedefinableTemplateSignature.Properties.template == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				templateSettings.setToReference((TemplateableElement)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, templateSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
@@ -304,7 +332,7 @@ public class RedefinableTemplateSignaturePropertiesEditionComponent extends Sing
 			}
 		}
 		if (UmlViewsRepository.RedefinableTemplateSignature.Properties.extendedSignature == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof RedefinableTemplateSignature) {
 					extendedSignatureSettings.addToReference((EObject) event.getNewValue());
 				}

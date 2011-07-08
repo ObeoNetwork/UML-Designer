@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -159,7 +160,6 @@ public class PseudostatePropertiesEditionComponent extends SinglePartPropertiesE
 			});
 			basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.eINSTANCE.getDependency()));
 			// Start of user code for additional businessfilters for clientDependency
-			
 			// End of user code
 			
 			basePart.addFilterToContainer(new ViewerFilter() {
@@ -175,7 +175,6 @@ public class PseudostatePropertiesEditionComponent extends SinglePartPropertiesE
 			
 			});
 			// Start of user code for additional businessfilters for container
-			
 			// End of user code
 			
 			
@@ -192,7 +191,6 @@ public class PseudostatePropertiesEditionComponent extends SinglePartPropertiesE
 			
 			});
 			// Start of user code for additional businessfilters for stateMachine
-			
 			// End of user code
 			
 			basePart.addFilterToState(new ViewerFilter() {
@@ -208,7 +206,6 @@ public class PseudostatePropertiesEditionComponent extends SinglePartPropertiesE
 			
 			});
 			// Start of user code for additional businessfilters for state
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -230,6 +227,35 @@ public class PseudostatePropertiesEditionComponent extends SinglePartPropertiesE
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.Pseudostate.Properties.name) {
+			return UMLPackage.eINSTANCE.getNamedElement_Name();
+		}
+		if (editorKey == UmlViewsRepository.Pseudostate.Properties.visibility) {
+			return UMLPackage.eINSTANCE.getNamedElement_Visibility();
+		}
+		if (editorKey == UmlViewsRepository.Pseudostate.Properties.clientDependency) {
+			return UMLPackage.eINSTANCE.getNamedElement_ClientDependency();
+		}
+		if (editorKey == UmlViewsRepository.Pseudostate.Properties.container) {
+			return UMLPackage.eINSTANCE.getVertex_Container();
+		}
+		if (editorKey == UmlViewsRepository.Pseudostate.Properties.kind) {
+			return UMLPackage.eINSTANCE.getPseudostate_Kind();
+		}
+		if (editorKey == UmlViewsRepository.Pseudostate.Properties.stateMachine) {
+			return UMLPackage.eINSTANCE.getPseudostate_StateMachine();
+		}
+		if (editorKey == UmlViewsRepository.Pseudostate.Properties.state) {
+			return UMLPackage.eINSTANCE.getPseudostate_State();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -242,7 +268,7 @@ public class PseudostatePropertiesEditionComponent extends SinglePartPropertiesE
 			pseudostate.setVisibility((VisibilityKind)event.getNewValue());
 		}
 		if (UmlViewsRepository.Pseudostate.Properties.clientDependency == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Dependency) {
 					clientDependencySettings.addToReference((EObject) event.getNewValue());
 				}
@@ -251,9 +277,9 @@ public class PseudostatePropertiesEditionComponent extends SinglePartPropertiesE
 			}
 		}
 		if (UmlViewsRepository.Pseudostate.Properties.container == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				containerSettings.setToReference((Region)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				Region eObject = UMLFactory.eINSTANCE.createRegion();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -270,9 +296,9 @@ public class PseudostatePropertiesEditionComponent extends SinglePartPropertiesE
 			pseudostate.setKind((PseudostateKind)event.getNewValue());
 		}
 		if (UmlViewsRepository.Pseudostate.Properties.stateMachine == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				stateMachineSettings.setToReference((StateMachine)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				StateMachine eObject = UMLFactory.eINSTANCE.createStateMachine();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -286,9 +312,9 @@ public class PseudostatePropertiesEditionComponent extends SinglePartPropertiesE
 			}
 		}
 		if (UmlViewsRepository.Pseudostate.Properties.state == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				stateSettings.setToReference((State)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				State eObject = UMLFactory.eINSTANCE.createState();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);

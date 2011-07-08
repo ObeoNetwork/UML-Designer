@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
@@ -112,7 +113,6 @@ public class QualifierValuePropertiesEditionComponent extends SinglePartProperti
 			
 			});
 			// Start of user code for additional businessfilters for qualifier
-			
 			// End of user code
 			
 			basePart.addFilterToValue(new ViewerFilter() {
@@ -128,7 +128,6 @@ public class QualifierValuePropertiesEditionComponent extends SinglePartProperti
 			
 			});
 			// Start of user code for additional businessfilters for value
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -145,15 +144,29 @@ public class QualifierValuePropertiesEditionComponent extends SinglePartProperti
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.QualifierValue.Properties.qualifier) {
+			return UMLPackage.eINSTANCE.getQualifierValue_Qualifier();
+		}
+		if (editorKey == UmlViewsRepository.QualifierValue.Properties.value) {
+			return UMLPackage.eINSTANCE.getQualifierValue_Value();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		QualifierValue qualifierValue = (QualifierValue)semanticObject;
 		if (UmlViewsRepository.QualifierValue.Properties.qualifier == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				qualifierSettings.setToReference((Property)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				Property eObject = UMLFactory.eINSTANCE.createProperty();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -167,9 +180,9 @@ public class QualifierValuePropertiesEditionComponent extends SinglePartProperti
 			}
 		}
 		if (UmlViewsRepository.QualifierValue.Properties.value == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				valueSettings.setToReference((InputPin)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				InputPin eObject = UMLFactory.eINSTANCE.createInputPin();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);

@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -120,7 +121,6 @@ public class ParameterSetPropertiesEditionComponent extends SinglePartProperties
 			});
 			basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.eINSTANCE.getDependency()));
 			// Start of user code for additional businessfilters for clientDependency
-			
 			// End of user code
 			
 			basePart.addFilterToParameter(new ViewerFilter() {
@@ -139,7 +139,6 @@ public class ParameterSetPropertiesEditionComponent extends SinglePartProperties
 			});
 			basePart.addFilterToParameter(new EObjectFilter(UMLPackage.eINSTANCE.getParameter()));
 			// Start of user code for additional businessfilters for parameter
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -158,6 +157,26 @@ public class ParameterSetPropertiesEditionComponent extends SinglePartProperties
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.ParameterSet.Properties.name) {
+			return UMLPackage.eINSTANCE.getNamedElement_Name();
+		}
+		if (editorKey == UmlViewsRepository.ParameterSet.Properties.visibility) {
+			return UMLPackage.eINSTANCE.getNamedElement_Visibility();
+		}
+		if (editorKey == UmlViewsRepository.ParameterSet.Properties.clientDependency) {
+			return UMLPackage.eINSTANCE.getNamedElement_ClientDependency();
+		}
+		if (editorKey == UmlViewsRepository.ParameterSet.Properties.parameter) {
+			return UMLPackage.eINSTANCE.getParameterSet_Parameter();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -170,7 +189,7 @@ public class ParameterSetPropertiesEditionComponent extends SinglePartProperties
 			parameterSet.setVisibility((VisibilityKind)event.getNewValue());
 		}
 		if (UmlViewsRepository.ParameterSet.Properties.clientDependency == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Dependency) {
 					clientDependencySettings.addToReference((EObject) event.getNewValue());
 				}
@@ -179,7 +198,7 @@ public class ParameterSetPropertiesEditionComponent extends SinglePartProperties
 			}
 		}
 		if (UmlViewsRepository.ParameterSet.Properties.parameter == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Parameter) {
 					parameterSettings.addToReference((EObject) event.getNewValue());
 				}

@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -161,7 +162,6 @@ public class ProfilePropertiesEditionComponent extends SinglePartPropertiesEditi
 			});
 			basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.eINSTANCE.getDependency()));
 			// Start of user code for additional businessfilters for clientDependency
-			
 			// End of user code
 			
 			basePart.addFilterToOwningTemplateParameter(new ViewerFilter() {
@@ -177,7 +177,6 @@ public class ProfilePropertiesEditionComponent extends SinglePartPropertiesEditi
 			
 			});
 			// Start of user code for additional businessfilters for owningTemplateParameter
-			
 			// End of user code
 			
 			basePart.addFilterToTemplateParameter(new ViewerFilter() {
@@ -193,7 +192,6 @@ public class ProfilePropertiesEditionComponent extends SinglePartPropertiesEditi
 			
 			});
 			// Start of user code for additional businessfilters for templateParameter
-			
 			// End of user code
 			
 			basePart.addFilterToMetaclassReference(new ViewerFilter() {
@@ -212,7 +210,6 @@ public class ProfilePropertiesEditionComponent extends SinglePartPropertiesEditi
 			});
 			basePart.addFilterToMetaclassReference(new EObjectFilter(UMLPackage.eINSTANCE.getElementImport()));
 			// Start of user code for additional businessfilters for metaclassReference
-			
 			// End of user code
 			
 			basePart.addFilterToMetamodelReference(new ViewerFilter() {
@@ -231,7 +228,6 @@ public class ProfilePropertiesEditionComponent extends SinglePartPropertiesEditi
 			});
 			basePart.addFilterToMetamodelReference(new EObjectFilter(UMLPackage.eINSTANCE.getPackageImport()));
 			// Start of user code for additional businessfilters for metamodelReference
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -253,6 +249,35 @@ public class ProfilePropertiesEditionComponent extends SinglePartPropertiesEditi
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.Profile.Properties.name) {
+			return UMLPackage.eINSTANCE.getNamedElement_Name();
+		}
+		if (editorKey == UmlViewsRepository.Profile.Properties.visibility) {
+			return UMLPackage.eINSTANCE.getNamedElement_Visibility();
+		}
+		if (editorKey == UmlViewsRepository.Profile.Properties.clientDependency) {
+			return UMLPackage.eINSTANCE.getNamedElement_ClientDependency();
+		}
+		if (editorKey == UmlViewsRepository.Profile.Properties.owningTemplateParameter) {
+			return UMLPackage.eINSTANCE.getParameterableElement_OwningTemplateParameter();
+		}
+		if (editorKey == UmlViewsRepository.Profile.Properties.templateParameter) {
+			return UMLPackage.eINSTANCE.getParameterableElement_TemplateParameter();
+		}
+		if (editorKey == UmlViewsRepository.Profile.Properties.metaclassReference) {
+			return UMLPackage.eINSTANCE.getProfile_MetaclassReference();
+		}
+		if (editorKey == UmlViewsRepository.Profile.Properties.metamodelReference) {
+			return UMLPackage.eINSTANCE.getProfile_MetamodelReference();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -265,7 +290,7 @@ public class ProfilePropertiesEditionComponent extends SinglePartPropertiesEditi
 			profile.setVisibility((VisibilityKind)event.getNewValue());
 		}
 		if (UmlViewsRepository.Profile.Properties.clientDependency == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Dependency) {
 					clientDependencySettings.addToReference((EObject) event.getNewValue());
 				}
@@ -274,9 +299,9 @@ public class ProfilePropertiesEditionComponent extends SinglePartPropertiesEditi
 			}
 		}
 		if (UmlViewsRepository.Profile.Properties.owningTemplateParameter == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				owningTemplateParameterSettings.setToReference((TemplateParameter)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				TemplateParameter eObject = UMLFactory.eINSTANCE.createTemplateParameter();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -290,9 +315,9 @@ public class ProfilePropertiesEditionComponent extends SinglePartPropertiesEditi
 			}
 		}
 		if (UmlViewsRepository.Profile.Properties.templateParameter == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				templateParameterSettings.setToReference((TemplateParameter)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				TemplateParameter eObject = UMLFactory.eINSTANCE.createTemplateParameter();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -306,7 +331,7 @@ public class ProfilePropertiesEditionComponent extends SinglePartPropertiesEditi
 			}
 		}
 		if (UmlViewsRepository.Profile.Properties.metaclassReference == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof ElementImport) {
 					metaclassReferenceSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -315,7 +340,7 @@ public class ProfilePropertiesEditionComponent extends SinglePartPropertiesEditi
 			}
 		}
 		if (UmlViewsRepository.Profile.Properties.metamodelReference == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof PackageImport) {
 					metamodelReferenceSettings.addToReference((EObject) event.getNewValue());
 				}

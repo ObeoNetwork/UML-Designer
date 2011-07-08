@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -161,7 +162,6 @@ public class ConnectionPointReferencePropertiesEditionComponent extends SinglePa
 			});
 			basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.eINSTANCE.getDependency()));
 			// Start of user code for additional businessfilters for clientDependency
-			
 			// End of user code
 			
 			basePart.addFilterToContainer(new ViewerFilter() {
@@ -177,7 +177,6 @@ public class ConnectionPointReferencePropertiesEditionComponent extends SinglePa
 			
 			});
 			// Start of user code for additional businessfilters for container
-			
 			// End of user code
 			
 			basePart.addFilterToEntry(new ViewerFilter() {
@@ -196,7 +195,6 @@ public class ConnectionPointReferencePropertiesEditionComponent extends SinglePa
 			});
 			basePart.addFilterToEntry(new EObjectFilter(UMLPackage.eINSTANCE.getPseudostate()));
 			// Start of user code for additional businessfilters for entry
-			
 			// End of user code
 			
 			basePart.addFilterToExit(new ViewerFilter() {
@@ -215,7 +213,6 @@ public class ConnectionPointReferencePropertiesEditionComponent extends SinglePa
 			});
 			basePart.addFilterToExit(new EObjectFilter(UMLPackage.eINSTANCE.getPseudostate()));
 			// Start of user code for additional businessfilters for exit
-			
 			// End of user code
 			
 			basePart.addFilterToState(new ViewerFilter() {
@@ -231,7 +228,6 @@ public class ConnectionPointReferencePropertiesEditionComponent extends SinglePa
 			
 			});
 			// Start of user code for additional businessfilters for state
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -253,6 +249,35 @@ public class ConnectionPointReferencePropertiesEditionComponent extends SinglePa
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.ConnectionPointReference.Properties.name) {
+			return UMLPackage.eINSTANCE.getNamedElement_Name();
+		}
+		if (editorKey == UmlViewsRepository.ConnectionPointReference.Properties.visibility) {
+			return UMLPackage.eINSTANCE.getNamedElement_Visibility();
+		}
+		if (editorKey == UmlViewsRepository.ConnectionPointReference.Properties.clientDependency) {
+			return UMLPackage.eINSTANCE.getNamedElement_ClientDependency();
+		}
+		if (editorKey == UmlViewsRepository.ConnectionPointReference.Properties.container) {
+			return UMLPackage.eINSTANCE.getVertex_Container();
+		}
+		if (editorKey == UmlViewsRepository.ConnectionPointReference.Properties.entry) {
+			return UMLPackage.eINSTANCE.getConnectionPointReference_Entry();
+		}
+		if (editorKey == UmlViewsRepository.ConnectionPointReference.Properties.exit) {
+			return UMLPackage.eINSTANCE.getConnectionPointReference_Exit();
+		}
+		if (editorKey == UmlViewsRepository.ConnectionPointReference.Properties.state) {
+			return UMLPackage.eINSTANCE.getConnectionPointReference_State();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -265,7 +290,7 @@ public class ConnectionPointReferencePropertiesEditionComponent extends SinglePa
 			connectionPointReference.setVisibility((VisibilityKind)event.getNewValue());
 		}
 		if (UmlViewsRepository.ConnectionPointReference.Properties.clientDependency == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Dependency) {
 					clientDependencySettings.addToReference((EObject) event.getNewValue());
 				}
@@ -274,9 +299,9 @@ public class ConnectionPointReferencePropertiesEditionComponent extends SinglePa
 			}
 		}
 		if (UmlViewsRepository.ConnectionPointReference.Properties.container == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				containerSettings.setToReference((Region)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				Region eObject = UMLFactory.eINSTANCE.createRegion();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -290,7 +315,7 @@ public class ConnectionPointReferencePropertiesEditionComponent extends SinglePa
 			}
 		}
 		if (UmlViewsRepository.ConnectionPointReference.Properties.entry == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Pseudostate) {
 					entrySettings.addToReference((EObject) event.getNewValue());
 				}
@@ -299,7 +324,7 @@ public class ConnectionPointReferencePropertiesEditionComponent extends SinglePa
 			}
 		}
 		if (UmlViewsRepository.ConnectionPointReference.Properties.exit == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Pseudostate) {
 					exitSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -308,9 +333,9 @@ public class ConnectionPointReferencePropertiesEditionComponent extends SinglePa
 			}
 		}
 		if (UmlViewsRepository.ConnectionPointReference.Properties.state == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				stateSettings.setToReference((State)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				State eObject = UMLFactory.eINSTANCE.createState();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);

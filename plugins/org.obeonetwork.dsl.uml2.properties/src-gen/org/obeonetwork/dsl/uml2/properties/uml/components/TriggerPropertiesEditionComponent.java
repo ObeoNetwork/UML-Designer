@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -139,7 +140,6 @@ public class TriggerPropertiesEditionComponent extends SinglePartPropertiesEditi
 			});
 			basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.eINSTANCE.getDependency()));
 			// Start of user code for additional businessfilters for clientDependency
-			
 			// End of user code
 			
 			basePart.addFilterToEvent(new ViewerFilter() {
@@ -155,7 +155,6 @@ public class TriggerPropertiesEditionComponent extends SinglePartPropertiesEditi
 			
 			});
 			// Start of user code for additional businessfilters for event
-			
 			// End of user code
 			
 			basePart.addFilterToPort(new ViewerFilter() {
@@ -174,7 +173,6 @@ public class TriggerPropertiesEditionComponent extends SinglePartPropertiesEditi
 			});
 			basePart.addFilterToPort(new EObjectFilter(UMLPackage.eINSTANCE.getPort()));
 			// Start of user code for additional businessfilters for port
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -194,6 +192,29 @@ public class TriggerPropertiesEditionComponent extends SinglePartPropertiesEditi
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.Trigger.Properties.name) {
+			return UMLPackage.eINSTANCE.getNamedElement_Name();
+		}
+		if (editorKey == UmlViewsRepository.Trigger.Properties.visibility) {
+			return UMLPackage.eINSTANCE.getNamedElement_Visibility();
+		}
+		if (editorKey == UmlViewsRepository.Trigger.Properties.clientDependency) {
+			return UMLPackage.eINSTANCE.getNamedElement_ClientDependency();
+		}
+		if (editorKey == UmlViewsRepository.Trigger.Properties.event) {
+			return UMLPackage.eINSTANCE.getTrigger_Event();
+		}
+		if (editorKey == UmlViewsRepository.Trigger.Properties.port) {
+			return UMLPackage.eINSTANCE.getTrigger_Port();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -206,7 +227,7 @@ public class TriggerPropertiesEditionComponent extends SinglePartPropertiesEditi
 			trigger.setVisibility((VisibilityKind)event.getNewValue());
 		}
 		if (UmlViewsRepository.Trigger.Properties.clientDependency == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Dependency) {
 					clientDependencySettings.addToReference((EObject) event.getNewValue());
 				}
@@ -215,9 +236,9 @@ public class TriggerPropertiesEditionComponent extends SinglePartPropertiesEditi
 			}
 		}
 		if (UmlViewsRepository.Trigger.Properties.event == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				eventSettings.setToReference((Event)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, eventSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
@@ -229,7 +250,7 @@ public class TriggerPropertiesEditionComponent extends SinglePartPropertiesEditi
 			}
 		}
 		if (UmlViewsRepository.Trigger.Properties.port == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Port) {
 					portSettings.addToReference((EObject) event.getNewValue());
 				}

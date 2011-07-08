@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -167,7 +168,6 @@ public class LifelinePropertiesEditionComponent extends SinglePartPropertiesEdit
 			});
 			basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.eINSTANCE.getDependency()));
 			// Start of user code for additional businessfilters for clientDependency
-			
 			// End of user code
 			
 			basePart.addFilterToRepresents(new ViewerFilter() {
@@ -183,7 +183,6 @@ public class LifelinePropertiesEditionComponent extends SinglePartPropertiesEdit
 			
 			});
 			// Start of user code for additional businessfilters for represents
-			
 			// End of user code
 			
 			basePart.addFilterToInteraction(new ViewerFilter() {
@@ -199,7 +198,6 @@ public class LifelinePropertiesEditionComponent extends SinglePartPropertiesEdit
 			
 			});
 			// Start of user code for additional businessfilters for interaction
-			
 			// End of user code
 			
 			basePart.addFilterToDecomposedAs(new ViewerFilter() {
@@ -215,7 +213,6 @@ public class LifelinePropertiesEditionComponent extends SinglePartPropertiesEdit
 			
 			});
 			// Start of user code for additional businessfilters for decomposedAs
-			
 			// End of user code
 			
 			basePart.addFilterToCoveredBy(new ViewerFilter() {
@@ -234,7 +231,6 @@ public class LifelinePropertiesEditionComponent extends SinglePartPropertiesEdit
 			});
 			basePart.addFilterToCoveredBy(new EObjectFilter(UMLPackage.eINSTANCE.getInteractionFragment()));
 			// Start of user code for additional businessfilters for coveredBy
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -256,6 +252,35 @@ public class LifelinePropertiesEditionComponent extends SinglePartPropertiesEdit
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.Lifeline.Properties.name) {
+			return UMLPackage.eINSTANCE.getNamedElement_Name();
+		}
+		if (editorKey == UmlViewsRepository.Lifeline.Properties.visibility) {
+			return UMLPackage.eINSTANCE.getNamedElement_Visibility();
+		}
+		if (editorKey == UmlViewsRepository.Lifeline.Properties.clientDependency) {
+			return UMLPackage.eINSTANCE.getNamedElement_ClientDependency();
+		}
+		if (editorKey == UmlViewsRepository.Lifeline.Properties.represents) {
+			return UMLPackage.eINSTANCE.getLifeline_Represents();
+		}
+		if (editorKey == UmlViewsRepository.Lifeline.Properties.interaction) {
+			return UMLPackage.eINSTANCE.getLifeline_Interaction();
+		}
+		if (editorKey == UmlViewsRepository.Lifeline.Properties.decomposedAs) {
+			return UMLPackage.eINSTANCE.getLifeline_DecomposedAs();
+		}
+		if (editorKey == UmlViewsRepository.Lifeline.Properties.coveredBy) {
+			return UMLPackage.eINSTANCE.getLifeline_CoveredBy();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -268,7 +293,7 @@ public class LifelinePropertiesEditionComponent extends SinglePartPropertiesEdit
 			lifeline.setVisibility((VisibilityKind)event.getNewValue());
 		}
 		if (UmlViewsRepository.Lifeline.Properties.clientDependency == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Dependency) {
 					clientDependencySettings.addToReference((EObject) event.getNewValue());
 				}
@@ -277,9 +302,9 @@ public class LifelinePropertiesEditionComponent extends SinglePartPropertiesEdit
 			}
 		}
 		if (UmlViewsRepository.Lifeline.Properties.represents == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				representsSettings.setToReference((ConnectableElement)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, representsSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
@@ -291,9 +316,9 @@ public class LifelinePropertiesEditionComponent extends SinglePartPropertiesEdit
 			}
 		}
 		if (UmlViewsRepository.Lifeline.Properties.interaction == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				interactionSettings.setToReference((Interaction)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				Interaction eObject = UMLFactory.eINSTANCE.createInteraction();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -307,9 +332,9 @@ public class LifelinePropertiesEditionComponent extends SinglePartPropertiesEdit
 			}
 		}
 		if (UmlViewsRepository.Lifeline.Properties.decomposedAs == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				decomposedAsSettings.setToReference((PartDecomposition)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				PartDecomposition eObject = UMLFactory.eINSTANCE.createPartDecomposition();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -323,7 +348,7 @@ public class LifelinePropertiesEditionComponent extends SinglePartPropertiesEdit
 			}
 		}
 		if (UmlViewsRepository.Lifeline.Properties.coveredBy == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof InteractionFragment) {
 					coveredBySettings.addToReference((EObject) event.getNewValue());
 				}

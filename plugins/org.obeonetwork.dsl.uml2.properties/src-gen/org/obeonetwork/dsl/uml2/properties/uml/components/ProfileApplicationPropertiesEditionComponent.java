@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -116,7 +117,6 @@ public class ProfileApplicationPropertiesEditionComponent extends SinglePartProp
 			
 			});
 			// Start of user code for additional businessfilters for appliedProfile
-			
 			// End of user code
 			
 			
@@ -133,7 +133,6 @@ public class ProfileApplicationPropertiesEditionComponent extends SinglePartProp
 			
 			});
 			// Start of user code for additional businessfilters for applyingPackage
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -151,15 +150,32 @@ public class ProfileApplicationPropertiesEditionComponent extends SinglePartProp
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.ProfileApplication.Properties.appliedProfile) {
+			return UMLPackage.eINSTANCE.getProfileApplication_AppliedProfile();
+		}
+		if (editorKey == UmlViewsRepository.ProfileApplication.Properties.isStrict) {
+			return UMLPackage.eINSTANCE.getProfileApplication_IsStrict();
+		}
+		if (editorKey == UmlViewsRepository.ProfileApplication.Properties.applyingPackage) {
+			return UMLPackage.eINSTANCE.getProfileApplication_ApplyingPackage();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		ProfileApplication profileApplication = (ProfileApplication)semanticObject;
 		if (UmlViewsRepository.ProfileApplication.Properties.appliedProfile == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				appliedProfileSettings.setToReference((Profile)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				Profile eObject = UMLFactory.eINSTANCE.createProfile();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -176,9 +192,9 @@ public class ProfileApplicationPropertiesEditionComponent extends SinglePartProp
 			profileApplication.setIsStrict((Boolean)event.getNewValue());
 		}
 		if (UmlViewsRepository.ProfileApplication.Properties.applyingPackage == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				applyingPackageSettings.setToReference((Package)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				Package eObject = UMLFactory.eINSTANCE.createPackage();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);

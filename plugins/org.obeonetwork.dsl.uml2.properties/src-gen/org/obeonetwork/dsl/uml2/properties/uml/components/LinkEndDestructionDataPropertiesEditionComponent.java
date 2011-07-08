@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -128,7 +129,6 @@ public class LinkEndDestructionDataPropertiesEditionComponent extends SinglePart
 			
 			});
 			// Start of user code for additional businessfilters for value
-			
 			// End of user code
 			
 			basePart.addFilterToEnd(new ViewerFilter() {
@@ -144,7 +144,6 @@ public class LinkEndDestructionDataPropertiesEditionComponent extends SinglePart
 			
 			});
 			// Start of user code for additional businessfilters for end
-			
 			// End of user code
 			
 			
@@ -161,7 +160,6 @@ public class LinkEndDestructionDataPropertiesEditionComponent extends SinglePart
 			
 			});
 			// Start of user code for additional businessfilters for destroyAt
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -180,15 +178,35 @@ public class LinkEndDestructionDataPropertiesEditionComponent extends SinglePart
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.LinkEndDestructionData.Properties.value) {
+			return UMLPackage.eINSTANCE.getLinkEndData_Value();
+		}
+		if (editorKey == UmlViewsRepository.LinkEndDestructionData.Properties.end) {
+			return UMLPackage.eINSTANCE.getLinkEndData_End();
+		}
+		if (editorKey == UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates) {
+			return UMLPackage.eINSTANCE.getLinkEndDestructionData_IsDestroyDuplicates();
+		}
+		if (editorKey == UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt) {
+			return UMLPackage.eINSTANCE.getLinkEndDestructionData_DestroyAt();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		LinkEndDestructionData linkEndDestructionData = (LinkEndDestructionData)semanticObject;
 		if (UmlViewsRepository.LinkEndDestructionData.Properties.value == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				valueSettings.setToReference((InputPin)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				InputPin eObject = UMLFactory.eINSTANCE.createInputPin();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -202,9 +220,9 @@ public class LinkEndDestructionDataPropertiesEditionComponent extends SinglePart
 			}
 		}
 		if (UmlViewsRepository.LinkEndDestructionData.Properties.end == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				endSettings.setToReference((Property)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				Property eObject = UMLFactory.eINSTANCE.createProperty();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -221,9 +239,9 @@ public class LinkEndDestructionDataPropertiesEditionComponent extends SinglePart
 			linkEndDestructionData.setIsDestroyDuplicates((Boolean)event.getNewValue());
 		}
 		if (UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				destroyAtSettings.setToReference((InputPin)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				InputPin eObject = UMLFactory.eINSTANCE.createInputPin();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);

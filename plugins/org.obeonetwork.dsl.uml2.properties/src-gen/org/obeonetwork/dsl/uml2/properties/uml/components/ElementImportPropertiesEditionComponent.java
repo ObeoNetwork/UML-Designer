@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -126,7 +127,6 @@ public class ElementImportPropertiesEditionComponent extends SinglePartPropertie
 			
 			});
 			// Start of user code for additional businessfilters for importedElement
-			
 			// End of user code
 			
 			basePart.addFilterToImportingNamespace(new ViewerFilter() {
@@ -142,7 +142,6 @@ public class ElementImportPropertiesEditionComponent extends SinglePartPropertie
 			
 			});
 			// Start of user code for additional businessfilters for importingNamespace
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -161,6 +160,26 @@ public class ElementImportPropertiesEditionComponent extends SinglePartPropertie
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.ElementImport.Properties.visibility) {
+			return UMLPackage.eINSTANCE.getElementImport_Visibility();
+		}
+		if (editorKey == UmlViewsRepository.ElementImport.Properties.alias) {
+			return UMLPackage.eINSTANCE.getElementImport_Alias();
+		}
+		if (editorKey == UmlViewsRepository.ElementImport.Properties.importedElement) {
+			return UMLPackage.eINSTANCE.getElementImport_ImportedElement();
+		}
+		if (editorKey == UmlViewsRepository.ElementImport.Properties.importingNamespace) {
+			return UMLPackage.eINSTANCE.getElementImport_ImportingNamespace();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -173,9 +192,9 @@ public class ElementImportPropertiesEditionComponent extends SinglePartPropertie
 			elementImport.setAlias((java.lang.String)EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getString(), (String)event.getNewValue()));
 		}
 		if (UmlViewsRepository.ElementImport.Properties.importedElement == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				importedElementSettings.setToReference((PackageableElement)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, importedElementSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
@@ -187,9 +206,9 @@ public class ElementImportPropertiesEditionComponent extends SinglePartPropertie
 			}
 		}
 		if (UmlViewsRepository.ElementImport.Properties.importingNamespace == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				importingNamespaceSettings.setToReference((Namespace)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, importingNamespaceSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {

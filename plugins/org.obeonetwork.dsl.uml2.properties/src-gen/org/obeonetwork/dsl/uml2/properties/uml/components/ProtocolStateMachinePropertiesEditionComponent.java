@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -268,7 +269,6 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 			});
 			basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.eINSTANCE.getDependency()));
 			// Start of user code for additional businessfilters for clientDependency
-			
 			// End of user code
 			
 			
@@ -285,7 +285,6 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 			
 			});
 			// Start of user code for additional businessfilters for owningTemplateParameter
-			
 			// End of user code
 			
 			basePart.addFilterToTemplateParameter(new ViewerFilter() {
@@ -301,7 +300,6 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 			
 			});
 			// Start of user code for additional businessfilters for templateParameter
-			
 			// End of user code
 			
 			
@@ -321,7 +319,6 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 			});
 			basePart.addFilterToPowertypeExtent(new EObjectFilter(UMLPackage.eINSTANCE.getGeneralizationSet()));
 			// Start of user code for additional businessfilters for powertypeExtent
-			
 			// End of user code
 			
 			basePart.addFilterToRedefinedClassifier(new ViewerFilter() {
@@ -340,7 +337,6 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 			});
 			basePart.addFilterToRedefinedClassifier(new EObjectFilter(UMLPackage.eINSTANCE.getClassifier()));
 			// Start of user code for additional businessfilters for redefinedClassifier
-			
 			// End of user code
 			
 			basePart.addFilterToRepresentation(new ViewerFilter() {
@@ -356,7 +352,6 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 			
 			});
 			// Start of user code for additional businessfilters for representation
-			
 			// End of user code
 			
 			basePart.addFilterToUseCase(new ViewerFilter() {
@@ -375,7 +370,6 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 			});
 			basePart.addFilterToUseCase(new EObjectFilter(UMLPackage.eINSTANCE.getUseCase()));
 			// Start of user code for additional businessfilters for useCase
-			
 			// End of user code
 			
 			basePart.addFilterToClassifierBehavior(new ViewerFilter() {
@@ -391,7 +385,6 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 			
 			});
 			// Start of user code for additional businessfilters for classifierBehavior
-			
 			// End of user code
 			
 			
@@ -412,7 +405,6 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 			});
 			basePart.addFilterToRedefinedBehavior(new EObjectFilter(UMLPackage.eINSTANCE.getBehavior()));
 			// Start of user code for additional businessfilters for redefinedBehavior
-			
 			// End of user code
 			
 			basePart.addFilterToPrecondition(new ViewerFilter() {
@@ -431,7 +423,6 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 			});
 			basePart.addFilterToPrecondition(new EObjectFilter(UMLPackage.eINSTANCE.getConstraint()));
 			// Start of user code for additional businessfilters for precondition
-			
 			// End of user code
 			
 			basePart.addFilterToPostcondition(new ViewerFilter() {
@@ -450,7 +441,6 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 			});
 			basePart.addFilterToPostcondition(new EObjectFilter(UMLPackage.eINSTANCE.getConstraint()));
 			// Start of user code for additional businessfilters for postcondition
-			
 			// End of user code
 			
 			basePart.addFilterToSpecification(new ViewerFilter() {
@@ -466,7 +456,6 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 			
 			});
 			// Start of user code for additional businessfilters for specification
-			
 			// End of user code
 			
 			basePart.addFilterToSubmachineState(new ViewerFilter() {
@@ -485,7 +474,6 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 			});
 			basePart.addFilterToSubmachineState(new EObjectFilter(UMLPackage.eINSTANCE.getState()));
 			// Start of user code for additional businessfilters for submachineState
-			
 			// End of user code
 			
 			basePart.addFilterToExtendedStateMachine(new ViewerFilter() {
@@ -504,7 +492,6 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 			});
 			basePart.addFilterToExtendedStateMachine(new EObjectFilter(UMLPackage.eINSTANCE.getStateMachine()));
 			// Start of user code for additional businessfilters for extendedStateMachine
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -539,6 +526,74 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.ProtocolStateMachine.Properties.name) {
+			return UMLPackage.eINSTANCE.getNamedElement_Name();
+		}
+		if (editorKey == UmlViewsRepository.ProtocolStateMachine.Properties.visibility) {
+			return UMLPackage.eINSTANCE.getNamedElement_Visibility();
+		}
+		if (editorKey == UmlViewsRepository.ProtocolStateMachine.Properties.clientDependency) {
+			return UMLPackage.eINSTANCE.getNamedElement_ClientDependency();
+		}
+		if (editorKey == UmlViewsRepository.ProtocolStateMachine.Properties.isLeaf) {
+			return UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf();
+		}
+		if (editorKey == UmlViewsRepository.ProtocolStateMachine.Properties.owningTemplateParameter) {
+			return UMLPackage.eINSTANCE.getParameterableElement_OwningTemplateParameter();
+		}
+		if (editorKey == UmlViewsRepository.ProtocolStateMachine.Properties.templateParameter) {
+			return UMLPackage.eINSTANCE.getParameterableElement_TemplateParameter();
+		}
+		if (editorKey == UmlViewsRepository.ProtocolStateMachine.Properties.isAbstract) {
+			return UMLPackage.eINSTANCE.getClassifier_IsAbstract();
+		}
+		if (editorKey == UmlViewsRepository.ProtocolStateMachine.Properties.powertypeExtent) {
+			return UMLPackage.eINSTANCE.getClassifier_PowertypeExtent();
+		}
+		if (editorKey == UmlViewsRepository.ProtocolStateMachine.Properties.redefinedClassifier) {
+			return UMLPackage.eINSTANCE.getClassifier_RedefinedClassifier();
+		}
+		if (editorKey == UmlViewsRepository.ProtocolStateMachine.Properties.representation) {
+			return UMLPackage.eINSTANCE.getClassifier_Representation();
+		}
+		if (editorKey == UmlViewsRepository.ProtocolStateMachine.Properties.useCase) {
+			return UMLPackage.eINSTANCE.getClassifier_UseCase();
+		}
+		if (editorKey == UmlViewsRepository.ProtocolStateMachine.Properties.classifierBehavior) {
+			return UMLPackage.eINSTANCE.getBehavioredClassifier_ClassifierBehavior();
+		}
+		if (editorKey == UmlViewsRepository.ProtocolStateMachine.Properties.isActive) {
+			return UMLPackage.eINSTANCE.getClass_IsActive();
+		}
+		if (editorKey == UmlViewsRepository.ProtocolStateMachine.Properties.isReentrant) {
+			return UMLPackage.eINSTANCE.getBehavior_IsReentrant();
+		}
+		if (editorKey == UmlViewsRepository.ProtocolStateMachine.Properties.redefinedBehavior) {
+			return UMLPackage.eINSTANCE.getBehavior_RedefinedBehavior();
+		}
+		if (editorKey == UmlViewsRepository.ProtocolStateMachine.Properties.precondition) {
+			return UMLPackage.eINSTANCE.getBehavior_Precondition();
+		}
+		if (editorKey == UmlViewsRepository.ProtocolStateMachine.Properties.postcondition) {
+			return UMLPackage.eINSTANCE.getBehavior_Postcondition();
+		}
+		if (editorKey == UmlViewsRepository.ProtocolStateMachine.Properties.specification) {
+			return UMLPackage.eINSTANCE.getBehavior_Specification();
+		}
+		if (editorKey == UmlViewsRepository.ProtocolStateMachine.Properties.submachineState) {
+			return UMLPackage.eINSTANCE.getStateMachine_SubmachineState();
+		}
+		if (editorKey == UmlViewsRepository.ProtocolStateMachine.Properties.extendedStateMachine) {
+			return UMLPackage.eINSTANCE.getStateMachine_ExtendedStateMachine();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -551,7 +606,7 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 			protocolStateMachine.setVisibility((VisibilityKind)event.getNewValue());
 		}
 		if (UmlViewsRepository.ProtocolStateMachine.Properties.clientDependency == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Dependency) {
 					clientDependencySettings.addToReference((EObject) event.getNewValue());
 				}
@@ -563,9 +618,9 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 			protocolStateMachine.setIsLeaf((Boolean)event.getNewValue());
 		}
 		if (UmlViewsRepository.ProtocolStateMachine.Properties.owningTemplateParameter == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				owningTemplateParameterSettings.setToReference((TemplateParameter)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				TemplateParameter eObject = UMLFactory.eINSTANCE.createTemplateParameter();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -579,9 +634,9 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 			}
 		}
 		if (UmlViewsRepository.ProtocolStateMachine.Properties.templateParameter == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				templateParameterSettings.setToReference((TemplateParameter)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				TemplateParameter eObject = UMLFactory.eINSTANCE.createTemplateParameter();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -598,7 +653,7 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 			protocolStateMachine.setIsAbstract((Boolean)event.getNewValue());
 		}
 		if (UmlViewsRepository.ProtocolStateMachine.Properties.powertypeExtent == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof GeneralizationSet) {
 					powertypeExtentSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -607,7 +662,7 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 			}
 		}
 		if (UmlViewsRepository.ProtocolStateMachine.Properties.redefinedClassifier == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Classifier) {
 					redefinedClassifierSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -616,9 +671,9 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 			}
 		}
 		if (UmlViewsRepository.ProtocolStateMachine.Properties.representation == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				representationSettings.setToReference((CollaborationUse)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				CollaborationUse eObject = UMLFactory.eINSTANCE.createCollaborationUse();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -632,7 +687,7 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 			}
 		}
 		if (UmlViewsRepository.ProtocolStateMachine.Properties.useCase == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof UseCase) {
 					useCaseSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -641,9 +696,9 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 			}
 		}
 		if (UmlViewsRepository.ProtocolStateMachine.Properties.classifierBehavior == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				classifierBehaviorSettings.setToReference((Behavior)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, classifierBehaviorSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
@@ -661,7 +716,7 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 			protocolStateMachine.setIsReentrant((Boolean)event.getNewValue());
 		}
 		if (UmlViewsRepository.ProtocolStateMachine.Properties.redefinedBehavior == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Behavior) {
 					redefinedBehaviorSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -670,7 +725,7 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 			}
 		}
 		if (UmlViewsRepository.ProtocolStateMachine.Properties.precondition == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Constraint) {
 					preconditionSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -679,7 +734,7 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 			}
 		}
 		if (UmlViewsRepository.ProtocolStateMachine.Properties.postcondition == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof Constraint) {
 					postconditionSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -688,9 +743,9 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 			}
 		}
 		if (UmlViewsRepository.ProtocolStateMachine.Properties.specification == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				specificationSettings.setToReference((BehavioralFeature)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, specificationSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
@@ -702,7 +757,7 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 			}
 		}
 		if (UmlViewsRepository.ProtocolStateMachine.Properties.submachineState == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof State) {
 					submachineStateSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -711,7 +766,7 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 			}
 		}
 		if (UmlViewsRepository.ProtocolStateMachine.Properties.extendedStateMachine == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof StateMachine) {
 					extendedStateMachineSettings.addToReference((EObject) event.getNewValue());
 				}

@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
@@ -115,7 +116,6 @@ public class TemplateSignaturePropertiesEditionComponent extends SinglePartPrope
 			});
 			basePart.addFilterToParameter(new EObjectFilter(UMLPackage.eINSTANCE.getTemplateParameter()));
 			// Start of user code for additional businessfilters for parameter
-			
 			// End of user code
 			
 			basePart.addFilterToTemplate(new ViewerFilter() {
@@ -131,7 +131,6 @@ public class TemplateSignaturePropertiesEditionComponent extends SinglePartPrope
 			
 			});
 			// Start of user code for additional businessfilters for template
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -148,13 +147,27 @@ public class TemplateSignaturePropertiesEditionComponent extends SinglePartPrope
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.TemplateSignature.Properties.parameter) {
+			return UMLPackage.eINSTANCE.getTemplateSignature_Parameter();
+		}
+		if (editorKey == UmlViewsRepository.TemplateSignature.Properties.template) {
+			return UMLPackage.eINSTANCE.getTemplateSignature_Template();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		TemplateSignature templateSignature = (TemplateSignature)semanticObject;
 		if (UmlViewsRepository.TemplateSignature.Properties.parameter == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				if (event.getNewValue() instanceof TemplateParameter) {
 					parameterSettings.addToReference((EObject) event.getNewValue());
 				}
@@ -163,9 +176,9 @@ public class TemplateSignaturePropertiesEditionComponent extends SinglePartPrope
 			}
 		}
 		if (UmlViewsRepository.TemplateSignature.Properties.template == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				templateSettings.setToReference((TemplateableElement)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, templateSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {

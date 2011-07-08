@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -123,7 +124,6 @@ public class PackageImportPropertiesEditionComponent extends SinglePartPropertie
 			
 			});
 			// Start of user code for additional businessfilters for importedPackage
-			
 			// End of user code
 			
 			basePart.addFilterToImportingNamespace(new ViewerFilter() {
@@ -139,7 +139,6 @@ public class PackageImportPropertiesEditionComponent extends SinglePartPropertie
 			
 			});
 			// Start of user code for additional businessfilters for importingNamespace
-			
 			// End of user code
 			
 			// init values for referenced views
@@ -157,6 +156,23 @@ public class PackageImportPropertiesEditionComponent extends SinglePartPropertie
 
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	protected EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.PackageImport.Properties.visibility) {
+			return UMLPackage.eINSTANCE.getPackageImport_Visibility();
+		}
+		if (editorKey == UmlViewsRepository.PackageImport.Properties.importedPackage) {
+			return UMLPackage.eINSTANCE.getPackageImport_ImportedPackage();
+		}
+		if (editorKey == UmlViewsRepository.PackageImport.Properties.importingNamespace) {
+			return UMLPackage.eINSTANCE.getPackageImport_ImportingNamespace();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 * 
 	 */
@@ -166,9 +182,9 @@ public class PackageImportPropertiesEditionComponent extends SinglePartPropertie
 			packageImport.setVisibility((VisibilityKind)event.getNewValue());
 		}
 		if (UmlViewsRepository.PackageImport.Properties.importedPackage == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				importedPackageSettings.setToReference((Package)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				Package eObject = UMLFactory.eINSTANCE.createPackage();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
@@ -182,9 +198,9 @@ public class PackageImportPropertiesEditionComponent extends SinglePartPropertie
 			}
 		}
 		if (UmlViewsRepository.PackageImport.Properties.importingNamespace == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)  {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
 				importingNamespaceSettings.setToReference((Namespace)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD)  {
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, importingNamespaceSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
