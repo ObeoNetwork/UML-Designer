@@ -13,13 +13,18 @@ package org.eclipse.uml2.uml.tests.junit.properties;
 import java.io.IOException;
 import java.util.Collections;
 
+import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
+import org.eclipse.uml2.uml.TemplateBinding;
+import org.eclipse.uml2.uml.UMLPackage;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
-import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository.TemplateBinding;
 /**
  * TestCase for TemplateBinding
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>

@@ -14,13 +14,20 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.RemoveCommand;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
+import org.eclipse.uml2.uml.LoopNode;
+import org.eclipse.uml2.uml.UMLPackage;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
-import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository.LoopNode;
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 /**
  * TestCase for LoopNode
@@ -43,34 +50,9 @@ public class LoopNodePropertiesTestCase extends SWTBotEEFTestCase {
 	 */
 	private Object enumValueForVisibility;
 	/**
-	 * The reference value for the reference class inStructuredNode
+	 * The reference value for the reference class redefinedNode
 	 */
-	private Object referenceValueForInStructuredNode;
-
-	/**
-	 * The reference value for the reference class inInterruptibleRegion
-	 */
-	private Object referenceValueForInInterruptibleRegion;
-
-	/**
-	 * The reference value for the reference class loopVariable
-	 */
-	private Object referenceValueForLoopVariable;
-
-	/**
-	 * The reference value for the reference class bodyPart
-	 */
-	private Object referenceValueForBodyPart;
-
-	/**
-	 * The reference value for the reference class bodyOutput
-	 */
-	private Object referenceValueForBodyOutput;
-
-	/**
-	 * The reference value for the reference class inActivity
-	 */
-	private Object referenceValueForInActivity;
+	private Object referenceValueForRedefinedNode;
 
 	/**
 	 * The reference value for the reference class incoming
@@ -78,24 +60,14 @@ public class LoopNodePropertiesTestCase extends SWTBotEEFTestCase {
 	private Object referenceValueForIncoming;
 
 	/**
-	 * The reference value for the reference class setupPart
+	 * The reference value for the reference class inStructuredNode
 	 */
-	private Object referenceValueForSetupPart;
+	private Object referenceValueForInStructuredNode;
 
 	/**
-	 * The reference value for the reference class test
+	 * The reference value for the reference class inActivity
 	 */
-	private Object referenceValueForTest;
-
-	/**
-	 * The reference value for the reference class inPartition
-	 */
-	private Object referenceValueForInPartition;
-
-	/**
-	 * The reference value for the reference class activity
-	 */
-	private Object referenceValueForActivity;
+	private Object referenceValueForInActivity;
 
 	/**
 	 * The reference value for the reference class clientDependency
@@ -103,19 +75,54 @@ public class LoopNodePropertiesTestCase extends SWTBotEEFTestCase {
 	private Object referenceValueForClientDependency;
 
 	/**
-	 * The reference value for the reference class decider
+	 * The reference value for the reference class inPartition
 	 */
-	private Object referenceValueForDecider;
+	private Object referenceValueForInPartition;
 
 	/**
-	 * The reference value for the reference class redefinedNode
+	 * The reference value for the reference class inInterruptibleRegion
 	 */
-	private Object referenceValueForRedefinedNode;
+	private Object referenceValueForInInterruptibleRegion;
 
 	/**
 	 * The reference value for the reference class outgoing
 	 */
 	private Object referenceValueForOutgoing;
+
+	/**
+	 * The reference value for the reference class bodyPart
+	 */
+	private Object referenceValueForBodyPart;
+
+	/**
+	 * The reference value for the reference class loopVariable
+	 */
+	private Object referenceValueForLoopVariable;
+
+	/**
+	 * The reference value for the reference class test
+	 */
+	private Object referenceValueForTest;
+
+	/**
+	 * The reference value for the reference class decider
+	 */
+	private Object referenceValueForDecider;
+
+	/**
+	 * The reference value for the reference class activity
+	 */
+	private Object referenceValueForActivity;
+
+	/**
+	 * The reference value for the reference class bodyOutput
+	 */
+	private Object referenceValueForBodyOutput;
+
+	/**
+	 * The reference value for the reference class setupPart
+	 */
+	private Object referenceValueForSetupPart;
 	/**
 	 * The EClass of the reference to edit
 	 */

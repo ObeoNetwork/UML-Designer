@@ -12,7 +12,10 @@ package org.eclipse.uml2.uml.tests.junit.properties;
 
 import java.util.List;
 
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
+import org.eclipse.uml2.uml.UMLPackage;
 /**
  * TestCase for ExceptionHandler
  * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
@@ -30,16 +33,6 @@ public class ExceptionHandlerPropertiesTestCase extends SWTBotEEFTestCase {
 	private EObject exceptionHandler;
 
 	/**
-	 * The reference value for the reference class exceptionInput
-	 */
-	private Object referenceValueForExceptionInput;
-
-	/**
-	 * The reference value for the reference class handlerBody
-	 */
-	private Object referenceValueForHandlerBody;
-
-	/**
 	 * The reference value for the reference class protectedNode
 	 */
 	private Object referenceValueForProtectedNode;
@@ -48,6 +41,16 @@ public class ExceptionHandlerPropertiesTestCase extends SWTBotEEFTestCase {
 	 * The reference value for the reference class exceptionType
 	 */
 	private Object referenceValueForExceptionType;
+
+	/**
+	 * The reference value for the reference class exceptionInput
+	 */
+	private Object referenceValueForExceptionInput;
+
+	/**
+	 * The reference value for the reference class handlerBody
+	 */
+	private Object referenceValueForHandlerBody;
 	/**
 	 * The EClass of the reference to edit
 	 */

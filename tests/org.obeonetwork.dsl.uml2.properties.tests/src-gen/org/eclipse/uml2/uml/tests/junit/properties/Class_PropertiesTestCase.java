@@ -73,24 +73,19 @@ public class Class_PropertiesTestCase extends SWTBotEEFTestCase {
 	 */
 	private Object enumValueForVisibility;
 	/**
-	 * The reference value for the reference class powertypeExtent
-	 */
-	private Object referenceValueForPowertypeExtent;
-
-	/**
-	 * The reference value for the reference class clientDependency
-	 */
-	private Object referenceValueForClientDependency;
-
-	/**
 	 * The reference value for the reference class templateParameter
 	 */
 	private Object referenceValueForTemplateParameter;
 
 	/**
-	 * The reference value for the reference class representation
+	 * The reference value for the reference class powertypeExtent
 	 */
-	private Object referenceValueForRepresentation;
+	private Object referenceValueForPowertypeExtent;
+
+	/**
+	 * The reference value for the reference class useCase
+	 */
+	private Object referenceValueForUseCase;
 
 	/**
 	 * The reference value for the reference class classifierBehavior
@@ -98,14 +93,19 @@ public class Class_PropertiesTestCase extends SWTBotEEFTestCase {
 	private Object referenceValueForClassifierBehavior;
 
 	/**
+	 * The reference value for the reference class representation
+	 */
+	private Object referenceValueForRepresentation;
+
+	/**
 	 * The reference value for the reference class redefinedClassifier
 	 */
 	private Object referenceValueForRedefinedClassifier;
 
 	/**
-	 * The reference value for the reference class useCase
+	 * The reference value for the reference class clientDependency
 	 */
-	private Object referenceValueForUseCase;
+	private Object referenceValueForClientDependency;
 
 	/**
 	 * The reference value for the reference class owningTemplateParameter

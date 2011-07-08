@@ -14,13 +14,20 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.RemoveCommand;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
+import org.eclipse.uml2.uml.PartDecomposition;
+import org.eclipse.uml2.uml.UMLPackage;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
-import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository.PartDecomposition;
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 /**
  * TestCase for PartDecomposition
@@ -43,24 +50,24 @@ public class PartDecompositionTestCase extends SWTBotEEFTestCase {
 	 */
 	private Object enumValueForVisibility;
 	/**
-	 * The reference value for the reference class enclosingInteraction
-	 */
-	private Object referenceValueForEnclosingInteraction;
-
-	/**
-	 * The reference value for the reference class refersTo
-	 */
-	private Object referenceValueForRefersTo;
-
-	/**
 	 * The reference value for the reference class enclosingOperand
 	 */
 	private Object referenceValueForEnclosingOperand;
 
 	/**
+	 * The reference value for the reference class enclosingInteraction
+	 */
+	private Object referenceValueForEnclosingInteraction;
+
+	/**
 	 * The reference value for the reference class covered
 	 */
 	private Object referenceValueForCovered;
+
+	/**
+	 * The reference value for the reference class refersTo
+	 */
+	private Object referenceValueForRefersTo;
 
 	/**
 	 * The reference value for the reference class clientDependency

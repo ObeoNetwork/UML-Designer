@@ -14,13 +14,20 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.RemoveCommand;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
+import org.eclipse.uml2.uml.FunctionBehavior;
+import org.eclipse.uml2.uml.UMLPackage;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
-import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository.FunctionBehavior;
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 /**
  * TestCase for FunctionBehavior
@@ -48,29 +55,9 @@ public class FunctionBehaviorTestCase extends SWTBotEEFTestCase {
 	private Object referenceValueForTemplateParameter;
 
 	/**
-	 * The reference value for the reference class powertypeExtent
+	 * The reference value for the reference class owningTemplateParameter
 	 */
-	private Object referenceValueForPowertypeExtent;
-
-	/**
-	 * The reference value for the reference class representation
-	 */
-	private Object referenceValueForRepresentation;
-
-	/**
-	 * The reference value for the reference class classifierBehavior
-	 */
-	private Object referenceValueForClassifierBehavior;
-
-	/**
-	 * The reference value for the reference class precondition
-	 */
-	private Object referenceValueForPrecondition;
-
-	/**
-	 * The reference value for the reference class redefinedBehavior
-	 */
-	private Object referenceValueForRedefinedBehavior;
+	private Object referenceValueForOwningTemplateParameter;
 
 	/**
 	 * The reference value for the reference class clientDependency
@@ -78,19 +65,24 @@ public class FunctionBehaviorTestCase extends SWTBotEEFTestCase {
 	private Object referenceValueForClientDependency;
 
 	/**
-	 * The reference value for the reference class specification
-	 */
-	private Object referenceValueForSpecification;
-
-	/**
-	 * The reference value for the reference class useCase
-	 */
-	private Object referenceValueForUseCase;
-
-	/**
 	 * The reference value for the reference class redefinedClassifier
 	 */
 	private Object referenceValueForRedefinedClassifier;
+
+	/**
+	 * The reference value for the reference class representation
+	 */
+	private Object referenceValueForRepresentation;
+
+	/**
+	 * The reference value for the reference class precondition
+	 */
+	private Object referenceValueForPrecondition;
+
+	/**
+	 * The reference value for the reference class powertypeExtent
+	 */
+	private Object referenceValueForPowertypeExtent;
 
 	/**
 	 * The reference value for the reference class postcondition
@@ -98,9 +90,24 @@ public class FunctionBehaviorTestCase extends SWTBotEEFTestCase {
 	private Object referenceValueForPostcondition;
 
 	/**
-	 * The reference value for the reference class owningTemplateParameter
+	 * The reference value for the reference class useCase
 	 */
-	private Object referenceValueForOwningTemplateParameter;
+	private Object referenceValueForUseCase;
+
+	/**
+	 * The reference value for the reference class classifierBehavior
+	 */
+	private Object referenceValueForClassifierBehavior;
+
+	/**
+	 * The reference value for the reference class redefinedBehavior
+	 */
+	private Object referenceValueForRedefinedBehavior;
+
+	/**
+	 * The reference value for the reference class specification
+	 */
+	private Object referenceValueForSpecification;
 	/**
 	 * The EClass of the reference to edit
 	 */

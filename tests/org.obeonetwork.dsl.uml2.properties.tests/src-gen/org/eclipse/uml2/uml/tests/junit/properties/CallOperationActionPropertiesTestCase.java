@@ -14,13 +14,20 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.RemoveCommand;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
+import org.eclipse.uml2.uml.CallOperationAction;
+import org.eclipse.uml2.uml.UMLPackage;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
-import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository.CallOperationAction;
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 /**
  * TestCase for CallOperationAction
@@ -43,9 +50,14 @@ public class CallOperationActionPropertiesTestCase extends SWTBotEEFTestCase {
 	 */
 	private Object enumValueForVisibility;
 	/**
-	 * The reference value for the reference class operation
+	 * The reference value for the reference class clientDependency
 	 */
-	private Object referenceValueForOperation;
+	private Object referenceValueForClientDependency;
+
+	/**
+	 * The reference value for the reference class redefinedNode
+	 */
+	private Object referenceValueForRedefinedNode;
 
 	/**
 	 * The reference value for the reference class outgoing
@@ -53,9 +65,14 @@ public class CallOperationActionPropertiesTestCase extends SWTBotEEFTestCase {
 	private Object referenceValueForOutgoing;
 
 	/**
-	 * The reference value for the reference class inInterruptibleRegion
+	 * The reference value for the reference class operation
 	 */
-	private Object referenceValueForInInterruptibleRegion;
+	private Object referenceValueForOperation;
+
+	/**
+	 * The reference value for the reference class onPort
+	 */
+	private Object referenceValueForOnPort;
 
 	/**
 	 * The reference value for the reference class activity
@@ -68,24 +85,14 @@ public class CallOperationActionPropertiesTestCase extends SWTBotEEFTestCase {
 	private Object referenceValueForInPartition;
 
 	/**
-	 * The reference value for the reference class redefinedNode
+	 * The reference value for the reference class inInterruptibleRegion
 	 */
-	private Object referenceValueForRedefinedNode;
+	private Object referenceValueForInInterruptibleRegion;
 
 	/**
 	 * The reference value for the reference class inStructuredNode
 	 */
 	private Object referenceValueForInStructuredNode;
-
-	/**
-	 * The reference value for the reference class clientDependency
-	 */
-	private Object referenceValueForClientDependency;
-
-	/**
-	 * The reference value for the reference class onPort
-	 */
-	private Object referenceValueForOnPort;
 
 	/**
 	 * The reference value for the reference class incoming

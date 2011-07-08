@@ -14,13 +14,20 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.RemoveCommand;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
+import org.eclipse.uml2.uml.ReadVariableAction;
+import org.eclipse.uml2.uml.UMLPackage;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
-import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository.ReadVariableAction;
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 /**
  * TestCase for ReadVariableAction
@@ -43,31 +50,6 @@ public class ReadVariableActionPropertiesTestCase extends SWTBotEEFTestCase {
 	 */
 	private Object enumValueForVisibility;
 	/**
-	 * The reference value for the reference class outgoing
-	 */
-	private Object referenceValueForOutgoing;
-
-	/**
-	 * The reference value for the reference class variable
-	 */
-	private Object referenceValueForVariable;
-
-	/**
-	 * The reference value for the reference class redefinedNode
-	 */
-	private Object referenceValueForRedefinedNode;
-
-	/**
-	 * The reference value for the reference class inInterruptibleRegion
-	 */
-	private Object referenceValueForInInterruptibleRegion;
-
-	/**
-	 * The reference value for the reference class activity
-	 */
-	private Object referenceValueForActivity;
-
-	/**
 	 * The reference value for the reference class inStructuredNode
 	 */
 	private Object referenceValueForInStructuredNode;
@@ -78,6 +60,26 @@ public class ReadVariableActionPropertiesTestCase extends SWTBotEEFTestCase {
 	private Object referenceValueForClientDependency;
 
 	/**
+	 * The reference value for the reference class variable
+	 */
+	private Object referenceValueForVariable;
+
+	/**
+	 * The reference value for the reference class inInterruptibleRegion
+	 */
+	private Object referenceValueForInInterruptibleRegion;
+
+	/**
+	 * The reference value for the reference class redefinedNode
+	 */
+	private Object referenceValueForRedefinedNode;
+
+	/**
+	 * The reference value for the reference class activity
+	 */
+	private Object referenceValueForActivity;
+
+	/**
 	 * The reference value for the reference class inPartition
 	 */
 	private Object referenceValueForInPartition;
@@ -86,6 +88,11 @@ public class ReadVariableActionPropertiesTestCase extends SWTBotEEFTestCase {
 	 * The reference value for the reference class incoming
 	 */
 	private Object referenceValueForIncoming;
+
+	/**
+	 * The reference value for the reference class outgoing
+	 */
+	private Object referenceValueForOutgoing;
 	/**
 	 * The EClass of the reference to edit
 	 */

@@ -14,13 +14,20 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.RemoveCommand;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
+import org.eclipse.uml2.uml.TestIdentityAction;
+import org.eclipse.uml2.uml.UMLPackage;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
-import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository.TestIdentityAction;
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 /**
  * TestCase for TestIdentityAction
@@ -48,9 +55,9 @@ public class TestIdentityActionPropertiesTestCase extends SWTBotEEFTestCase {
 	private Object referenceValueForRedefinedNode;
 
 	/**
-	 * The reference value for the reference class incoming
+	 * The reference value for the reference class inPartition
 	 */
-	private Object referenceValueForIncoming;
+	private Object referenceValueForInPartition;
 
 	/**
 	 * The reference value for the reference class inInterruptibleRegion
@@ -58,9 +65,9 @@ public class TestIdentityActionPropertiesTestCase extends SWTBotEEFTestCase {
 	private Object referenceValueForInInterruptibleRegion;
 
 	/**
-	 * The reference value for the reference class outgoing
+	 * The reference value for the reference class incoming
 	 */
-	private Object referenceValueForOutgoing;
+	private Object referenceValueForIncoming;
 
 	/**
 	 * The reference value for the reference class inStructuredNode
@@ -68,14 +75,14 @@ public class TestIdentityActionPropertiesTestCase extends SWTBotEEFTestCase {
 	private Object referenceValueForInStructuredNode;
 
 	/**
+	 * The reference value for the reference class outgoing
+	 */
+	private Object referenceValueForOutgoing;
+
+	/**
 	 * The reference value for the reference class clientDependency
 	 */
 	private Object referenceValueForClientDependency;
-
-	/**
-	 * The reference value for the reference class inPartition
-	 */
-	private Object referenceValueForInPartition;
 
 	/**
 	 * The reference value for the reference class activity

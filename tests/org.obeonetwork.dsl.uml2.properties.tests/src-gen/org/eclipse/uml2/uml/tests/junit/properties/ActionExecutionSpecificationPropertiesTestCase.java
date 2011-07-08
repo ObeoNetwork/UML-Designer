@@ -14,13 +14,20 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.RemoveCommand;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
+import org.eclipse.uml2.uml.ActionExecutionSpecification;
+import org.eclipse.uml2.uml.UMLPackage;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
-import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository.ActionExecutionSpecification;
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 /**
  * TestCase for ActionExecutionSpecification
@@ -43,19 +50,14 @@ public class ActionExecutionSpecificationPropertiesTestCase extends SWTBotEEFTes
 	 */
 	private Object enumValueForVisibility;
 	/**
-	 * The reference value for the reference class clientDependency
-	 */
-	private Object referenceValueForClientDependency;
-
-	/**
 	 * The reference value for the reference class finish
 	 */
 	private Object referenceValueForFinish;
 
 	/**
-	 * The reference value for the reference class start
+	 * The reference value for the reference class covered
 	 */
-	private Object referenceValueForStart;
+	private Object referenceValueForCovered;
 
 	/**
 	 * The reference value for the reference class enclosingInteraction
@@ -63,9 +65,9 @@ public class ActionExecutionSpecificationPropertiesTestCase extends SWTBotEEFTes
 	private Object referenceValueForEnclosingInteraction;
 
 	/**
-	 * The reference value for the reference class action
+	 * The reference value for the reference class clientDependency
 	 */
-	private Object referenceValueForAction;
+	private Object referenceValueForClientDependency;
 
 	/**
 	 * The reference value for the reference class enclosingOperand
@@ -73,9 +75,14 @@ public class ActionExecutionSpecificationPropertiesTestCase extends SWTBotEEFTes
 	private Object referenceValueForEnclosingOperand;
 
 	/**
-	 * The reference value for the reference class covered
+	 * The reference value for the reference class start
 	 */
-	private Object referenceValueForCovered;
+	private Object referenceValueForStart;
+
+	/**
+	 * The reference value for the reference class action
+	 */
+	private Object referenceValueForAction;
 	/**
 	 * The EClass of the reference to edit
 	 */

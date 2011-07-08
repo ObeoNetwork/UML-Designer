@@ -14,13 +14,20 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.RemoveCommand;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
+import org.eclipse.uml2.uml.Transition;
+import org.eclipse.uml2.uml.UMLPackage;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
-import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository.Transition;
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 /**
  * TestCase for Transition
@@ -48,14 +55,9 @@ public class TransitionTestCase extends SWTBotEEFTestCase {
 	 */
 	private Object enumValueForKind;
 	/**
-	 * The reference value for the reference class redefinedTransition
+	 * The reference value for the reference class clientDependency
 	 */
-	private Object referenceValueForRedefinedTransition;
-
-	/**
-	 * The reference value for the reference class guard
-	 */
-	private Object referenceValueForGuard;
+	private Object referenceValueForClientDependency;
 
 	/**
 	 * The reference value for the reference class container
@@ -68,9 +70,14 @@ public class TransitionTestCase extends SWTBotEEFTestCase {
 	private Object referenceValueForTarget;
 
 	/**
-	 * The reference value for the reference class clientDependency
+	 * The reference value for the reference class redefinedTransition
 	 */
-	private Object referenceValueForClientDependency;
+	private Object referenceValueForRedefinedTransition;
+
+	/**
+	 * The reference value for the reference class guard
+	 */
+	private Object referenceValueForGuard;
 
 	/**
 	 * The reference value for the reference class source

@@ -73,29 +73,14 @@ public class Interface_PropertiesTestCase extends SWTBotEEFTestCase {
 	 */
 	private Object enumValueForVisibility;
 	/**
-	 * The reference value for the reference class clientDependency
-	 */
-	private Object referenceValueForClientDependency;
-
-	/**
-	 * The reference value for the reference class powertypeExtent
-	 */
-	private Object referenceValueForPowertypeExtent;
-
-	/**
-	 * The reference value for the reference class templateParameter
-	 */
-	private Object referenceValueForTemplateParameter;
-
-	/**
 	 * The reference value for the reference class redefinedClassifier
 	 */
 	private Object referenceValueForRedefinedClassifier;
 
 	/**
-	 * The reference value for the reference class redefinedInterface
+	 * The reference value for the reference class clientDependency
 	 */
-	private Object referenceValueForRedefinedInterface;
+	private Object referenceValueForClientDependency;
 
 	/**
 	 * The reference value for the reference class useCase
@@ -103,14 +88,29 @@ public class Interface_PropertiesTestCase extends SWTBotEEFTestCase {
 	private Object referenceValueForUseCase;
 
 	/**
-	 * The reference value for the reference class representation
+	 * The reference value for the reference class powertypeExtent
 	 */
-	private Object referenceValueForRepresentation;
+	private Object referenceValueForPowertypeExtent;
+
+	/**
+	 * The reference value for the reference class redefinedInterface
+	 */
+	private Object referenceValueForRedefinedInterface;
+
+	/**
+	 * The reference value for the reference class templateParameter
+	 */
+	private Object referenceValueForTemplateParameter;
 
 	/**
 	 * The reference value for the reference class owningTemplateParameter
 	 */
 	private Object referenceValueForOwningTemplateParameter;
+
+	/**
+	 * The reference value for the reference class representation
+	 */
+	private Object referenceValueForRepresentation;
 	/**
 	 * The EClass of the reference to edit
 	 */

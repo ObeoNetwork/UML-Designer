@@ -14,13 +14,20 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.RemoveCommand;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
+import org.eclipse.uml2.uml.Extend;
+import org.eclipse.uml2.uml.UMLPackage;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
-import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository.Extend;
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 /**
  * TestCase for Extend
@@ -43,14 +50,14 @@ public class ExtendTestCase extends SWTBotEEFTestCase {
 	 */
 	private Object enumValueForVisibility;
 	/**
+	 * The reference value for the reference class clientDependency
+	 */
+	private Object referenceValueForClientDependency;
+
+	/**
 	 * The reference value for the reference class extendedCase
 	 */
 	private Object referenceValueForExtendedCase;
-
-	/**
-	 * The reference value for the reference class extensionLocation
-	 */
-	private Object referenceValueForExtensionLocation;
 
 	/**
 	 * The reference value for the reference class extension
@@ -58,9 +65,9 @@ public class ExtendTestCase extends SWTBotEEFTestCase {
 	private Object referenceValueForExtension;
 
 	/**
-	 * The reference value for the reference class clientDependency
+	 * The reference value for the reference class extensionLocation
 	 */
-	private Object referenceValueForClientDependency;
+	private Object referenceValueForExtensionLocation;
 	/**
 	 * The EClass of the reference to edit
 	 */

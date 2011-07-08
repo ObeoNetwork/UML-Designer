@@ -14,11 +14,19 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.RemoveCommand;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
+import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.UMLPackage;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 /**
@@ -47,19 +55,9 @@ public class PropertyTestCase extends SWTBotEEFTestCase {
 	 */
 	private Object enumValueForAggregation;
 	/**
-	 * The reference value for the reference class templateParameter
+	 * The reference value for the reference class clientDependency
 	 */
-	private Object referenceValueForTemplateParameter;
-
-	/**
-	 * The reference value for the reference class owningTemplateParameter
-	 */
-	private Object referenceValueForOwningTemplateParameter;
-
-	/**
-	 * The reference value for the reference class class
-	 */
-	private Object referenceValueForClass;
+	private Object referenceValueForClientDependency;
 
 	/**
 	 * The reference value for the reference class type
@@ -67,29 +65,9 @@ public class PropertyTestCase extends SWTBotEEFTestCase {
 	private Object referenceValueForType;
 
 	/**
-	 * The reference value for the reference class subsettedProperty
-	 */
-	private Object referenceValueForSubsettedProperty;
-
-	/**
 	 * The reference value for the reference class datatype
 	 */
 	private Object referenceValueForDatatype;
-
-	/**
-	 * The reference value for the reference class associationEnd
-	 */
-	private Object referenceValueForAssociationEnd;
-
-	/**
-	 * The reference value for the reference class clientDependency
-	 */
-	private Object referenceValueForClientDependency;
-
-	/**
-	 * The reference value for the reference class owningAssociation
-	 */
-	private Object referenceValueForOwningAssociation;
 
 	/**
 	 * The reference value for the reference class association
@@ -100,6 +78,36 @@ public class PropertyTestCase extends SWTBotEEFTestCase {
 	 * The reference value for the reference class redefinedProperty
 	 */
 	private Object referenceValueForRedefinedProperty;
+
+	/**
+	 * The reference value for the reference class associationEnd
+	 */
+	private Object referenceValueForAssociationEnd;
+
+	/**
+	 * The reference value for the reference class templateParameter
+	 */
+	private Object referenceValueForTemplateParameter;
+
+	/**
+	 * The reference value for the reference class subsettedProperty
+	 */
+	private Object referenceValueForSubsettedProperty;
+
+	/**
+	 * The reference value for the reference class owningTemplateParameter
+	 */
+	private Object referenceValueForOwningTemplateParameter;
+
+	/**
+	 * The reference value for the reference class owningAssociation
+	 */
+	private Object referenceValueForOwningAssociation;
+
+	/**
+	 * The reference value for the reference class class
+	 */
+	private Object referenceValueForClass;
 	/**
 	 * The EClass of the reference to edit
 	 */

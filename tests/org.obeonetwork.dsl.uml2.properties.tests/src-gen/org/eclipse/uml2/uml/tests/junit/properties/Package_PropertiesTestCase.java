@@ -68,9 +68,9 @@ public class Package_PropertiesTestCase extends SWTBotEEFTestCase {
 	 */
 	private Object enumValueForVisibility;
 	/**
-	 * The reference value for the reference class templateParameter
+	 * The reference value for the reference class owningTemplateParameter
 	 */
-	private Object referenceValueForTemplateParameter;
+	private Object referenceValueForOwningTemplateParameter;
 
 	/**
 	 * The reference value for the reference class clientDependency
@@ -78,9 +78,9 @@ public class Package_PropertiesTestCase extends SWTBotEEFTestCase {
 	private Object referenceValueForClientDependency;
 
 	/**
-	 * The reference value for the reference class owningTemplateParameter
+	 * The reference value for the reference class templateParameter
 	 */
-	private Object referenceValueForOwningTemplateParameter;
+	private Object referenceValueForTemplateParameter;
 	/**
 	 * The EClass of the reference to edit
 	 */

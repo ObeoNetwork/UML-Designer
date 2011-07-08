@@ -14,13 +14,20 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
+import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.RemoveCommand;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.eef.runtime.tests.SWTBotEEFTestCase;
 import org.eclipse.emf.eef.runtime.tests.exceptions.InputModelInvalidException;
 import org.eclipse.emf.eef.runtime.tests.utils.EEFTestsModelsUtils;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
+import org.eclipse.uml2.uml.ProtocolStateMachine;
+import org.eclipse.uml2.uml.UMLPackage;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
-import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository.ProtocolStateMachine;
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 /**
  * TestCase for ProtocolStateMachine
@@ -43,34 +50,9 @@ public class ProtocolStateMachinePropertiesTestCase extends SWTBotEEFTestCase {
 	 */
 	private Object enumValueForVisibility;
 	/**
-	 * The reference value for the reference class redefinedBehavior
-	 */
-	private Object referenceValueForRedefinedBehavior;
-
-	/**
-	 * The reference value for the reference class useCase
-	 */
-	private Object referenceValueForUseCase;
-
-	/**
-	 * The reference value for the reference class clientDependency
-	 */
-	private Object referenceValueForClientDependency;
-
-	/**
 	 * The reference value for the reference class owningTemplateParameter
 	 */
 	private Object referenceValueForOwningTemplateParameter;
-
-	/**
-	 * The reference value for the reference class redefinedClassifier
-	 */
-	private Object referenceValueForRedefinedClassifier;
-
-	/**
-	 * The reference value for the reference class extendedStateMachine
-	 */
-	private Object referenceValueForExtendedStateMachine;
 
 	/**
 	 * The reference value for the reference class postcondition
@@ -78,14 +60,9 @@ public class ProtocolStateMachinePropertiesTestCase extends SWTBotEEFTestCase {
 	private Object referenceValueForPostcondition;
 
 	/**
-	 * The reference value for the reference class templateParameter
+	 * The reference value for the reference class representation
 	 */
-	private Object referenceValueForTemplateParameter;
-
-	/**
-	 * The reference value for the reference class submachineState
-	 */
-	private Object referenceValueForSubmachineState;
+	private Object referenceValueForRepresentation;
 
 	/**
 	 * The reference value for the reference class specification
@@ -93,14 +70,39 @@ public class ProtocolStateMachinePropertiesTestCase extends SWTBotEEFTestCase {
 	private Object referenceValueForSpecification;
 
 	/**
+	 * The reference value for the reference class redefinedClassifier
+	 */
+	private Object referenceValueForRedefinedClassifier;
+
+	/**
+	 * The reference value for the reference class clientDependency
+	 */
+	private Object referenceValueForClientDependency;
+
+	/**
+	 * The reference value for the reference class useCase
+	 */
+	private Object referenceValueForUseCase;
+
+	/**
+	 * The reference value for the reference class submachineState
+	 */
+	private Object referenceValueForSubmachineState;
+
+	/**
 	 * The reference value for the reference class powertypeExtent
 	 */
 	private Object referenceValueForPowertypeExtent;
 
 	/**
-	 * The reference value for the reference class representation
+	 * The reference value for the reference class precondition
 	 */
-	private Object referenceValueForRepresentation;
+	private Object referenceValueForPrecondition;
+
+	/**
+	 * The reference value for the reference class redefinedBehavior
+	 */
+	private Object referenceValueForRedefinedBehavior;
 
 	/**
 	 * The reference value for the reference class classifierBehavior
@@ -108,9 +110,14 @@ public class ProtocolStateMachinePropertiesTestCase extends SWTBotEEFTestCase {
 	private Object referenceValueForClassifierBehavior;
 
 	/**
-	 * The reference value for the reference class precondition
+	 * The reference value for the reference class templateParameter
 	 */
-	private Object referenceValueForPrecondition;
+	private Object referenceValueForTemplateParameter;
+
+	/**
+	 * The reference value for the reference class extendedStateMachine
+	 */
+	private Object referenceValueForExtendedStateMachine;
 	/**
 	 * The EClass of the reference to edit
 	 */
