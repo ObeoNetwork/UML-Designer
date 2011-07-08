@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Tests for UML properties views
+Bundle-SymbolicName: org.obeonetwork.dsl.uml2.properties.tests
+Bundle-Version: 1.0.0.qualifier
+Bundle-Vendor: Obeo.fr
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Require-Bundle: org.eclipse.emf.eef.runtime.tests;bundle-version="0.9.0",
+ org.junit4;bundle-version="4.8.1",
+ org.obeonetwork.dsl.uml2.properties;bundle-version="1.0.0"

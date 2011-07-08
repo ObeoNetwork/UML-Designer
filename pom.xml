@@ -43,11 +43,13 @@ Contributors:
 		<platform-version-name>helios</platform-version-name>
 		<!--<eclipse-site>http://mirror.update.eclipse.obeo.fr/release-${platform-version-name}-3.6</eclipse-site> -->
 		<od-site>http://www.obeo.fr/download/release/designer/5.0.2/update/3.6</od-site>
+		<od-ext-site>http://update.obeo.fr/stable/od-extensions/stable-2.1.1/fr.obeo.dsl.viewpoint.eef.update/</od-ext-site>
 		<eclipse-site>http://download.eclipse.org/releases/${platform-version-name}</eclipse-site>
 		<!--<acceleo2-site>http://update.obeo.fr/release/acceleo/release/fr.obeo.acceleo.update/</acceleo2-site> -->
 		<!--<acceleo2-site>http://www.acceleo.org/update</acceleo2-site> -->
 		<wikitext-site>http://download.eclipse.org/tools/mylyn/update/weekly</wikitext-site>
 		<swtbot-site>http://mirror.update.eclipse.obeo.fr/swtbot-dev/</swtbot-site>
+		<eef-site>http://download.eclipse.org/modeling/emft/eef/updates/nightly/0.9</eef-site>
 		<orbit-site>http://download.eclipse.org/tools/orbit/downloads/drops/S20110124210048/repository</orbit-site>
 	</properties>
 
@@ -60,6 +62,7 @@ Contributors:
 		<module>plugins/org.obeonetwork.dsl.uml2.design.doc</module>
 		<module>plugins/org.obeonetwork.dsl.uml2.properties</module>
 		<module>tests/org.obeonetwork.dsl.uml2.design.tests</module>
+		<!-- <module>tests/org.obeonetwork.dsl.uml2.properties.tests</module> -->
 	</modules>
 
 	<repositories>
@@ -67,17 +70,33 @@ Contributors:
 			<id>helios</id>
 			<layout>p2</layout>
 			<url>${eclipse-site}</url>
-		</repository><!-- <repository> <id>swtbot</id> <layout>p2</layout> <url>${swtbot-site}</url> 
-			</repository> -->
-		<!--<repository> <id>wikitext</id> <layout>p2</layout> <url>${wikitext-site}</url> 
-			</repository> -->
+		</repository>
+		<repository>
+			<id>swtbot</id>
+			<layout>p2</layout>
+			<url>${swtbot-site}</url> 
+		</repository>
 		<repository>
 			<id>obeodesigner</id>
 			<layout>p2</layout>
 			<url>${od-site}</url>
 		</repository>
+		<repository>
+			<id>obeodesignerextension</id>
+			<layout>p2</layout>
+			<url>${od-ext-site}</url>
+		</repository>
+		<repository>
+			<id>eef</id>
+			<layout>p2</layout>
+			<url>${eef-site}</url> 
+		</repository>
+
 		<!-- <repository> <id>orbit</id> <layout>p2</layout> <url>${orbit-site}</url> 
 			</repository> -->
+		<!-- <repository> <id>wikitext</id> <layout>p2</layout> <url>${wikitext-site}</url> 
+			</repository> -->
+
 	</repositories>
 
 	<build>
@@ -109,15 +128,12 @@ Contributors:
 					</configuration>
 				</plugin>
 				<plugin>
-					<!-- TODO remove workaround when https://issues.sonatype.org/browse/TYCHO-473 
-						is fixed -->
 					<groupId>org.eclipse.tycho</groupId>
 					<artifactId>tycho-source-plugin</artifactId>
 					<version>${tycho-version}</version>
 					<executions>
 						<execution>
-							<id>attach-source</id>
-							<phase>process-classes</phase>
+							<id>plugin-source</id>
 							<goals>
 								<goal>plugin-source</goal>
 							</goals>
