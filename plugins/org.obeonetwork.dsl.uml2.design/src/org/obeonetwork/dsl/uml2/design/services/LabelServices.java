@@ -12,13 +12,15 @@ package org.obeonetwork.dsl.uml2.design.services;
 
 import org.eclipse.uml2.uml.Element;
 import org.obeonetwork.dsl.uml2.design.services.internal.DisplayLabelSwitch;
+import org.obeonetwork.dsl.uml2.design.services.internal.EditLabelSwitch;
+import org.obeonetwork.dsl.uml2.design.services.internal.TooltipLabelSwitch;
 
 /**
- * Handle the diagram elements' label display.
+ * Manage the diagram elements' labels.
  * 
  * @author Gonzague Reydet <a href="mailto:gonzague.reydet@obeo.fr">gonzague.reydet@obeo.fr</a>
  */
-public class DisplayLabelServices {
+public class LabelServices {
 
 	/**
 	 * Compute the label of the given element.
@@ -31,4 +33,29 @@ public class DisplayLabelServices {
 
 		return displayLabel.doSwitch(element);
 	}
+
+	/**
+	 * Parse the edited label string and update the underlying context {@link Element}.
+	 * 
+	 * @param context the context object on which to execute this service.
+	 * @param editedLabelContent the content entered by the user.
+	 * @return the context {@link Element}
+	 */
+	public Element editUmlLabel(Element context, String editedLabelContent) {
+		final EditLabelSwitch editLabel = new EditLabelSwitch();
+		editLabel.setEditedLabelContent(editedLabelContent);
+		return editLabel.doSwitch(context);
+	}
+	
+	/**
+	 * Compute the tooltip for the given element.
+	 * 
+	 * @param context the context object on which to execute this service.
+	 * @return the computed tooltip String to display
+	 */
+	public String computeUmlTooltip(Element context) {
+		final TooltipLabelSwitch tooltipLabel = new TooltipLabelSwitch();
+		return tooltipLabel.doSwitch(context);
+	}
+
 }

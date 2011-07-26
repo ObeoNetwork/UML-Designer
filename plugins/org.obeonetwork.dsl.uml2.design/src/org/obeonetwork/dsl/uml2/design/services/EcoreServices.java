@@ -21,7 +21,7 @@ import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Type;
 
 /**
- * Utility services to manage Ecore UML ressources.
+ * Utility services to manage Ecore UML resources.
  * 
  * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
  */

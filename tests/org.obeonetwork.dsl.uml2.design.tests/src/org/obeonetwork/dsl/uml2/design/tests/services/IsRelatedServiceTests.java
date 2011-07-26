@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Package;
-import org.obeonetwork.dsl.uml2.design.services.FilterServices;
+import org.obeonetwork.dsl.uml2.design.services.UMLServices;
 import org.obeonetwork.dsl.uml2.design.tests.Activator;
 
 /**
@@ -27,7 +27,7 @@ import org.obeonetwork.dsl.uml2.design.tests.Activator;
  * 
  * @author <a href="mailto:yvan.lussaud@obeo.fr">Yvan Lussaud</a>
  */
-public class FilterServicesTests extends TestCase {
+public class IsRelatedServiceTests extends TestCase {
 	/**
 	 * Upper package name.
 	 */
@@ -41,7 +41,7 @@ public class FilterServicesTests extends TestCase {
 	/**
 	 * Instance of the services class used during tests.
 	 */
-	private final FilterServices services = new FilterServices();
+	private final UMLServices services = new UMLServices();
 
 	/**
 	 * The root package of the semantic resource.
@@ -51,7 +51,7 @@ public class FilterServicesTests extends TestCase {
 	/**
 	 * Constructor.
 	 */
-	public FilterServicesTests() {
+	public IsRelatedServiceTests() {
 		final ResourceSet rset = new ResourceSetImpl();
 		final Resource resource = rset.getResource(URI.createPlatformPluginURI(RESOURCE_URI, true), true);
 
