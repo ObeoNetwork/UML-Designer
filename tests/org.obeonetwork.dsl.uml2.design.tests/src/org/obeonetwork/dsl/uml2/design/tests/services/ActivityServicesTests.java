@@ -20,7 +20,9 @@ import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.ActivityNode;
 import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.CallOperationAction;
+import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.OpaqueAction;
+import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.junit.Before;
 import org.junit.Test;
@@ -101,6 +103,23 @@ public class ActivityServicesTests extends TestCase {
 		return activity;
 	}
 
+	/**
+	 * Test method for {@link org.obeonetwork.dsl.uml2.design.services.ActivityServices#initActivityForOperation(org.eclipse.uml2.uml.Operation)}.
+	 */
+	@Test
+	public void testInitActivityForOperation() {
+		final Class aClass = UMLFactory.eINSTANCE.createClass();
+		final Operation op = UMLFactory.eINSTANCE.createOperation();
+		op.setName("op");
+		aClass.getOwnedOperations().add(op);
+		
+		final Activity activity = services.initActivityForOperation(op);
+		assertNotNull(activity);
+		assertEquals(activity, op.getMethods().get(0));
+		
+		assertEquals(activity, services.initActivityForOperation(op));
+	}
+	
 	/**
 	 * Test method for {@link org.obeonetwork.dsl.uml2.design.services.ActivityServices#getActivityPartitions(org.eclipse.uml2.uml.Element)}.
 	 */

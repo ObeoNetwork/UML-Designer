@@ -19,11 +19,13 @@ import org.eclipse.uml2.uml.Action;
 import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.ActivityNode;
 import org.eclipse.uml2.uml.ActivityPartition;
+import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.CallAction;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.InvocationAction;
 import org.eclipse.uml2.uml.OpaqueAction;
+import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.OutputPin;
 import org.eclipse.uml2.uml.UMLFactory;
 
@@ -33,6 +35,38 @@ import org.eclipse.uml2.uml.UMLFactory;
  * @author Gonzague Reydet <a href="mailto:gonzague.reydet@obeo.fr">gonzague.reydet@obeo.fr</a>
  */
 public class ActivityServices {
+
+	/**
+	 * Initializes an activity for an operation to be able to create an activity diagram on it.
+	 * Does nothing if an activity already exists.
+	 * 
+	 * @param op
+	 *            Operation to be associated with the activity
+	 * @return the found or created {@link Activity}
+	 */
+	public Activity initActivityForOperation(Operation op) {
+		// Check if an activity already exists
+		if (op.getMethods() != null && op.getMethods().size() > 0) {
+			for (Behavior behavior : op.getMethods()) {
+				if (behavior instanceof Activity) {
+					// There's already an activity
+					// Do nothing
+					return (Activity)behavior;
+				}
+			}
+		}
+
+		// We have to create a new activity
+		final Activity activity = UMLFactory.eINSTANCE.createActivity();
+		final String activityLabel = op.getName() + " activity";
+		activity.setName(activityLabel);
+		op.getClass_().getOwnedBehaviors().add(activity);
+
+		// Associate the activity to the operation
+		op.getMethods().add(activity);
+
+		return activity;
+	}
 
 	/**
 	 * Retrieves the child {@link ActivityPartition} from either {@link Activity} or {@link ActivityPartition}

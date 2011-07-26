@@ -14,15 +14,11 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
-import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Namespace;
-import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Property;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 import org.eclipse.uml2.uml.resource.UMLResource;
@@ -232,37 +228,5 @@ public class UMLServices {
 	 */
 	public boolean isComposite(Property p) {
 		return AggregationKind.COMPOSITE_LITERAL.equals(p.getAggregation());
-	}
-
-	/**
-	 * Initializes an activity for an operation to be able to create an activity diagram on it Does nothing if
-	 * an activity already exists.
-	 * 
-	 * @param op
-	 *            Operation to be associated with the activity
-	 * @return the modified operation
-	 */
-	public Operation initActivityForOperation(Operation op) {
-		// Check if an activity already exists
-		if (op.getMethods() != null && op.getMethods().size() > 0) {
-			for (Behavior behavior : op.getMethods()) {
-				if (behavior instanceof Activity) {
-					// There's already an activity
-					// Do nothing
-					return op;
-				}
-			}
-		}
-
-		// We have to create a new activity
-		final Activity activity = UMLFactory.eINSTANCE.createActivity();
-		final String activityLabel = op.getName() + " activity";
-		activity.setName(activityLabel);
-		op.getClass_().getOwnedBehaviors().add(activity);
-
-		// Associate the activity to the operation
-		op.getMethods().add(activity);
-
-		return op;
 	}
 }
