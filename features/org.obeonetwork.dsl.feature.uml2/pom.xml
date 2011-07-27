@@ -20,6 +20,6 @@
   <artifactId>org.obeonetwork.dsl.feature.uml2</artifactId>
   <packaging>eclipse-feature</packaging>
 
-  <name>Viewpoint Based Modeler for UML2 </name>
+  <name>Viewpoint Based Modeler for UML2 Feature</name>
 
 </project>
