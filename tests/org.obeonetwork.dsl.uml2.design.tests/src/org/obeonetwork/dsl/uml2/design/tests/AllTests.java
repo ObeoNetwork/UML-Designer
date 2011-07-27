@@ -10,13 +10,14 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.tests;
 
-import org.obeonetwork.dsl.uml2.design.tests.services.OperationServicesTest;
-import org.obeonetwork.dsl.uml2.design.tests.services.PropertyServicesTest;
-import org.obeonetwork.dsl.uml2.design.tests.services.SequenceServiceTests;
-
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
+
+import org.obeonetwork.dsl.uml2.design.tests.services.ActivityServicesTests;
+import org.obeonetwork.dsl.uml2.design.tests.services.OperationServicesTest;
+import org.obeonetwork.dsl.uml2.design.tests.services.PropertyServicesTest;
+import org.obeonetwork.dsl.uml2.design.tests.services.SequenceServiceTests;
 
 /**
  * Test Suite including all the enabled tests.
@@ -48,6 +49,7 @@ public final class AllTests {
 	 */
 	public static Test suite() {
 		final TestSuite suite = new TestSuite("UML Viewpoint tests");
+		suite.addTestSuite(ActivityServicesTests.class);
 		suite.addTestSuite(OperationServicesTest.class);
 		suite.addTestSuite(PropertyServicesTest.class);
 		suite.addTestSuite(SequenceServiceTests.class);

@@ -1510,13 +1510,9 @@
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.UMLServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.UMLProfileServices"/>
-    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.EditLabelServices"/>
-    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.DisplayLabelServices"/>
-    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.TooltipServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.LabelServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.EcoreServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.templates.uml_utils"/>
-    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.ReconnectServices"/>
-    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.FilterServices"/>
   </ownedViewpoints>
   <ownedViewpoints name="UML Behavioral Modeling" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description:DiagramDescription" name="State Machine Diagram" titleExpression="&lt;%name%> State Machine Diagram" domainClass="uml.StateMachine" enablePopupBars="true">
@@ -2449,8 +2445,7 @@
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.UMLServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.UMLProfileServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.ActivityServices"/>
-    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.DisplayLabelServices"/>
-    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.EditLabelServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.LabelServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.SequenceServices"/>
   </ownedViewpoints>
   <userColorsPalettes name="UMLPalette">

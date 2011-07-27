@@ -10,23 +10,32 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.services;
 
+import java.util.List;
+
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
-import org.eclipse.uml2.uml.Behavior;
+import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Feature;
+import org.eclipse.uml2.uml.Generalization;
+import org.eclipse.uml2.uml.Interface;
+import org.eclipse.uml2.uml.InterfaceRealization;
 import org.eclipse.uml2.uml.Namespace;
-import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Property;
-import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 import org.eclipse.uml2.uml.resource.UMLResource;
+import org.obeonetwork.dsl.uml2.design.services.internal.ReconnectSwitch;
 
+import fr.obeo.dsl.viewpoint.DEdge;
+import fr.obeo.dsl.viewpoint.EdgeTarget;
 import fr.obeo.dsl.viewpoint.business.api.session.Session;
 import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
 
@@ -233,36 +242,111 @@ public class UMLServices {
 	public boolean isComposite(Property p) {
 		return AggregationKind.COMPOSITE_LITERAL.equals(p.getAggregation());
 	}
-
+	
 	/**
-	 * Initializes an activity for an operation to be able to create an activity diagram on it Does nothing if
-	 * an activity already exists.
+	 * States if the given object is related to the context {@link Classifier}.
 	 * 
-	 * @param op
-	 *            Operation to be associated with the activity
-	 * @return the modified operation
+	 * @param toFilter the candidate to check for relation
+	 * @param context the classifier context object.
+	 * @return <code>true</code> if the given object is related to the context {@link Classifier}, <code>false</code> otherwise.
 	 */
-	public Operation initActivityForOperation(Operation op) {
-		// Check if an activity already exists
-		if (op.getMethods() != null && op.getMethods().size() > 0) {
-			for (Behavior behavior : op.getMethods()) {
-				if (behavior instanceof Activity) {
-					// There's already an activity
-					// Do nothing
-					return op;
+	public boolean isRelated(EObject toFilter, Classifier context) {
+		boolean res = false;
+		if (toFilter instanceof Generalization) {
+			res = context.getGeneralizations().contains(toFilter)
+					|| ((Generalization)toFilter).getGeneral() == context;
+		} else if (toFilter instanceof InterfaceRealization && context instanceof Class) {
+			res = ((Class)context).getInterfaceRealizations().contains(toFilter)
+					|| ((InterfaceRealization)toFilter).getContract() == context;
+		} else if (toFilter instanceof Association) {
+			res = context.getAssociations().contains(toFilter);
+		} else if (toFilter instanceof Feature) {
+			res = isRelated(toFilter.eContainer(), context);
+		} else if (toFilter instanceof Classifier) {
+			res = context == toFilter;
+			// is it a generalization end
+			if (!res) {
+				for (Generalization generalization : context.getGeneralizations()) {
+					if (generalization.getGeneral() == toFilter) {
+						res = true;
+						break;
+					}
+				}
+			}
+			// is it a generalization opposite end
+			if (!res) {
+				for (Generalization generalization : ((Classifier)toFilter).getGeneralizations()) {
+					if (generalization.getGeneral() == context) {
+						res = true;
+						break;
+					}
+				}
+			}
+			if (toFilter instanceof Interface && context instanceof Class) {
+				// is it a realization end
+				if (!res) {
+					for (InterfaceRealization realization : ((Class)context).getInterfaceRealizations()) {
+						if (realization.getContract() == toFilter) {
+							res = true;
+							break;
+						}
+					}
+				}
+			}
+			// is it an association end
+			if (!res) {
+				final List<Association> toFilterAsso = ((Classifier)toFilter).getAssociations();
+				final List<Association> contextAsso = context.getAssociations();
+				for (Association association : toFilterAsso) {
+					if (contextAsso.contains(association)) {
+						res = true;
+						break;
+					}
+				}
+			}
+		} else if (toFilter instanceof Package) {
+			for (EObject content : toFilter.eContents()) {
+				if (isRelated(content, context)) {
+					res = true;
+					break;
 				}
 			}
 		}
+		return res;
+	}
+	
+	/**
+	 * Generic service used to process treatments on a reconnect The processing has to be defined by
+	 * overriding the corresponding caseXXX.
+	 * 
+	 * @param context
+	 *            Element attached to the existing edge
+	 * @param edgeView
+	 *            Represents the graphical new edge
+	 * @param sourceView
+	 *            Represents the graphical element pointed by the edge before reconnecting
+	 * @param targetView
+	 *            Represents the graphical element pointed by the edge after reconnecting
+	 * @param source
+	 *            Represents the semantic element pointed by the edge before reconnecting
+	 * @param target
+	 *            Represents the semantic element pointed by the edge after reconnecting
+	 * @return the Element attached to the edge once it has been modified
+	 */
+	public Element reconnectEdge(Element context, DEdge edgeView, EdgeTarget sourceView,
+			EdgeTarget targetView, Element source, Element target) {
+		final ReconnectSwitch reconnectService = new ReconnectSwitch();
 
-		// We have to create a new activity
-		final Activity activity = UMLFactory.eINSTANCE.createActivity();
-		final String activityLabel = op.getName() + " activity";
-		activity.setName(activityLabel);
-		op.getClass_().getOwnedBehaviors().add(activity);
-
-		// Associate the activity to the operation
-		op.getMethods().add(activity);
-
-		return op;
+		// The edgeview represents the new graphical edge
+		// with testing of its source and target nodes we can
+		// know if the user reconnected the source or the target of the edge
+		if (edgeView.getSourceNode().equals(targetView)) {
+			reconnectService.setReconnectKind(ReconnectSwitch.RECONNECT_SOURCE);
+		} else {
+			reconnectService.setReconnectKind(ReconnectSwitch.RECONNECT_TARGET);
+		}
+		reconnectService.setOldPointedElement(source);
+		reconnectService.setNewPointedElement(target);
+		return reconnectService.doSwitch(context);
 	}
 }
