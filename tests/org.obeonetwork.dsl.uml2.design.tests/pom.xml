@@ -24,31 +24,31 @@
 
 	<build>
 		<resources>
-	      <resource>
-	        <directory>src</directory>
-	        <excludes>
-	          <exclude>**/*.java</exclude>
-	        </excludes>
-	      </resource>
-	    </resources>
+			<resource>
+				<directory>src</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+		</resources>
 		<plugins>
-		    <plugin>
-	            <groupId>org.sonatype.tycho</groupId>
-	            <artifactId>maven-osgi-source-plugin</artifactId>
-            </plugin>      
 			<plugin>
-				<groupId>org.sonatype.tycho</groupId>
-				<artifactId>maven-osgi-test-plugin</artifactId>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-source-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-surefire-plugin</artifactId>
 				<version>${tycho-version}</version>
 				<configuration>
 					<includes>
 						<include>org/obeonetwork/dsl/uml2/design/tests/AllTests.class</include>
-					</includes>	
+					</includes>
 					<useUIHarness>true</useUIHarness>
 					<useUIThread>true</useUIThread>
 					<argLine>-Xmx1024m</argLine>
-					<argLine>-XX:MaxPermSize=256m</argLine>			
-	                <testFailureIgnore>true</testFailureIgnore>							
+					<argLine>-XX:MaxPermSize=256m</argLine>
+					<testFailureIgnore>true</testFailureIgnore>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -60,5 +60,5 @@
 				<artifactId>maven-pmd-plugin</artifactId>
 			</plugin>
 		</plugins>
-	</build>	
+	</build>
 </project>
