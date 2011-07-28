@@ -67,11 +67,6 @@ Contributors:
 			<url>${eclipse-site}</url>
 		</repository>
 		<repository>
-			<id>swtbot</id>
-			<layout>p2</layout>
-			<url>${swtbot-site}</url> 
-		</repository>
-		<repository>
 			<id>obeodesigner</id>
 			<layout>p2</layout>
 			<url>${od-site}</url>
@@ -190,7 +185,7 @@ Contributors:
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-checkstyle-plugin</artifactId>
-						<version>2.6</version>
+						<version>2.2</version>
 						<executions>
 							<execution>
 								<id>check my sources</id>
@@ -199,6 +194,7 @@ Contributors:
 								</goals>
 								<phase>verify</phase>
 								<configuration>
+								        <configLocation>./features/org.obeonetwork.dsl.feature.uml2/codestyle/checkstyle.xml</configLocation>
 									<failOnErrors>false</failOnErrors>
 									<consoleOutput>true</consoleOutput>
 								</configuration>
