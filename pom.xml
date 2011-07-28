@@ -41,26 +41,21 @@ Contributors:
 	<properties>
 		<tycho-version>0.12.0</tycho-version>
 		<platform-version-name>helios</platform-version-name>
-		<!--<eclipse-site>http://mirror.update.eclipse.obeo.fr/release-${platform-version-name}-3.6</eclipse-site> -->
 		<od-site>http://www.obeo.fr/download/release/designer/5.0.2/update/3.6</od-site>
-		<od-ext-site>http://update.obeo.fr/stable/od-extensions/stable-2.1.1/fr.obeo.dsl.viewpoint.eef.update/</od-ext-site>
+		<od-ext-site>http://marketplace.obeonetwork.com/updates/od5/</od-ext-site>
 		<eclipse-site>http://download.eclipse.org/releases/${platform-version-name}</eclipse-site>
-		<!--<acceleo2-site>http://update.obeo.fr/release/acceleo/release/fr.obeo.acceleo.update/</acceleo2-site> -->
-		<!--<acceleo2-site>http://www.acceleo.org/update</acceleo2-site> -->
-		<wikitext-site>http://download.eclipse.org/tools/mylyn/update/weekly</wikitext-site>
-		<swtbot-site>http://mirror.update.eclipse.obeo.fr/swtbot-dev/</swtbot-site>
 		<eef-site>http://download.eclipse.org/modeling/emft/eef/updates/nightly/0.9</eef-site>
-		<orbit-site>http://download.eclipse.org/tools/orbit/downloads/drops/S20110124210048/repository</orbit-site>
 	</properties>
-
 
 	<modules>
 
 		<module>features/org.obeonetwork.dsl.feature.uml2</module>
 		<module>features/org.obeonetwork.dsl.uml2.update</module>
+
 		<module>plugins/org.obeonetwork.dsl.uml2.design</module>
 		<module>plugins/org.obeonetwork.dsl.uml2.design.doc</module>
 		<module>plugins/org.obeonetwork.dsl.uml2.properties</module>
+
 		<module>tests/org.obeonetwork.dsl.uml2.design.tests</module>
 		<!-- <module>tests/org.obeonetwork.dsl.uml2.properties.tests</module> -->
 	</modules>
@@ -91,11 +86,6 @@ Contributors:
 			<layout>p2</layout>
 			<url>${eef-site}</url> 
 		</repository>
-
-		<!-- <repository> <id>orbit</id> <layout>p2</layout> <url>${orbit-site}</url> 
-			</repository> -->
-		<!-- <repository> <id>wikitext</id> <layout>p2</layout> <url>${wikitext-site}</url> 
-			</repository> -->
 
 	</repositories>
 
