@@ -973,6 +973,7 @@
                 <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;Component&quot;)%>">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Usage" referenceName="packagedElement">
                     <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="&lt;%$target%>"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="&lt;%$source%>"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
