@@ -10,13 +10,12 @@ h2. Class Diagram
 
 h3. Support for Broken Associations
 
-
 It might happen that for some reason you have an *Association* instance in your package which doesn't have the proper *ends*. In that case
 the class diagram will show the broken associations as nodes :
 
 !features/class_pics/broken association.JPG!
 
-You can use the *Association* tools in the palette __(Association, Composition and Aggregation)__ to re-attach the Association to a classifier.
+You can use the *Association* tools in the palette __(Association, Reference, Composition and Aggregation)__ to re-attach the Association to a classifier.
 
 h3. Related Classes/Interface filtering and highlighting
 
@@ -41,6 +40,12 @@ The resulting diagram will be as follow :
 Notice that only classes present in the initial diagram are present. If you want all classes related to ContextClass you should open the *Related Classes Diagram* on the ContextClass :
 
 !features/class_pics/related classes/ContextClass_related_classes.JPG!
+
+h3. Classes in SubComponents
+
+A *Class Diagram* created on a Package or a Model will display the contained classes but also the classes which are contained in Components of the selected Package.
+
+Thanks to this one can easily define a *Class Diagram* displaying all the entities abstracting the fact that they might be split across components.
 
 h2. Component Diagram
 

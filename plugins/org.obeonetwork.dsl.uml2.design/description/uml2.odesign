@@ -277,7 +277,7 @@
             </style>
           </subNodeMappings>
         </containerMappings>
-        <containerMappings name="CD_Class" detailDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='related%20class%20diag']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%current.ownedType[eClass.name == &quot;Class&quot;]%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Class" reusedNodeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Operation']" listContainer="true">
+        <containerMappings name="CD_Class" detailDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='related%20class%20diag']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%current.ownedType[eClass.name == &quot;Class&quot;] +  current.eContents().filter(&quot;Component&quot;).eContents[eClass.name == &quot;Class&quot;]%>"  doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']"  domainClass="uml.Class" reusedNodeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Operation']" listContainer="true">
           <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" labelExpression="&lt;%computeUmlLabel()%>" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_orange']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -551,6 +551,49 @@
                         </subModelOperations>
                         <subModelOperations xsi:type="tool:SetValue" featureName="navigableOwnedEnd" valueExpression="&lt;%memberEnd.nGet(0) + memberEnd.nGet(1)%>"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%ownedEnd.nGet(0).name%>To&lt;%ownedEnd.nGet(1).name.toU1Case()%>"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:EdgeCreationDescription" documentation="Create a new Association" name="Reference" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']" extraSourceMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@nodeMappings[name='CD_BrokenAssociation']">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;Package&quot;)%>">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$source.filter(&quot;Association&quot;)%>">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source%>">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedEnd" variableName="addedProperty">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$target.name.toL1Case%>s"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$target%>"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="-1"/>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source%>">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="navigableOwnedEnd" valueExpression="&lt;%addedProperty%>"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$source.filter(&quot;Association&quot;).nSize == 0%>">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;Package&quot;)%>">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Association" referenceName="packagedElement">
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedEnd">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$source.name.toL1Case%>s"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$source%>"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="-1"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedEnd">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$target.name.toL1Case%>s"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$target%>"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="-1"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="navigableOwnedEnd" valueExpression="&lt;%memberEnd.nGet(1)%>"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%ownedEnd.nGet(0).name.toU1Case()%>"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
