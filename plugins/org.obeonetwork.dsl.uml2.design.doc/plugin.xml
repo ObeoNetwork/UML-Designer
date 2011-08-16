@@ -18,5 +18,27 @@ Contributors:
             primary="true">
       </toc>
    </extension>
-
+   
+<extension point="org.eclipse.emf.common.ui.examples">
+   <example wizardID="org.obeonetwork.dsl.uml2.design.doc.TravelAgencyWizard">
+	   <projectDescriptor name="TravelAgency"
+		   contentURI="contents/TravelAgency/" />
+		     </example>
+   </extension>
+			
+<extension point="org.eclipse.ui.newWizards">
+  <category
+          id="fr.obeo.dsl.viewpoint.sample.category"
+          name="%_UI_Wizard_category"
+          parentCategory="org.eclipse.ui.Examples"/>     
+   <wizard
+         category="org.eclipse.ui.Examples/fr.obeo.dsl.viewpoint.sample.category"
+         class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
+         icon="icons/NewUmlModel.gif"
+         id="org.obeonetwork.dsl.uml2.design.doc.TravelAgencyWizard"
+         name="Travel Agency UML"
+         project="true">
+    <description>An UML model for a travel agency business leveraging class, components, use case, activity and states diagrams.</description>
+  </wizard>
+  </extension>
 </plugin>

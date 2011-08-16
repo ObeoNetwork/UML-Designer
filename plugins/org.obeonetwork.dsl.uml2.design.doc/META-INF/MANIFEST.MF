@@ -4,4 +4,5 @@ Bundle-Name: UML Viewpoint Documentation
 Bundle-SymbolicName: org.obeonetwork.dsl.uml2.design.doc;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: Obeo.fr
-Require-Bundle: org.eclipse.help
+Require-Bundle: org.eclipse.help,
+ org.eclipse.emf.common.ui
