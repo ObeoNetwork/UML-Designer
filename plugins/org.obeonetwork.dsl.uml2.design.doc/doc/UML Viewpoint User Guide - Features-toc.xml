@@ -2,15 +2,29 @@
 <toc topic="doc/UML Viewpoint User Guide - Features.html" label="UML Viewpoint User Guide - Features">
 	<topic href="doc/UML Viewpoint User Guide - Features.html" label="Features">
 		<topic href="doc/UML Viewpoint User Guide - Features.html#ClassDiagram" label="Class Diagram">
+			<topic href="doc/UML Viewpoint User Guide - Features.html#Introduction" label="Introduction"></topic>
 			<topic href="doc/UML Viewpoint User Guide - Features.html#SupportforBrokenAssociations" label="Support for Broken Associations"></topic>
 			<topic href="doc/UML Viewpoint User Guide - Features.html#RelatedClassesInterfacefilteringandhighlighting" label="Related Classes/Interface filtering and highlighting"></topic>
+			<topic href="doc/UML Viewpoint User Guide - Features.html#ClassesinSubComponents" label="Classes in SubComponents"></topic>
 		</topic>
 		<topic href="doc/UML Viewpoint User Guide - Features.html#ComponentDiagram" label="Component Diagram">
+			<topic href="doc/UML Viewpoint User Guide - Features.html#Introduction2" label="Introduction"></topic>
 			<topic href="doc/UML Viewpoint User Guide - Features.html#Connector" label="Connector"></topic>
 			<topic href="doc/UML Viewpoint User Guide - Features.html#CompositeComponents" label="Composite Components"></topic>
 			<topic href="doc/UML Viewpoint User Guide - Features.html#UsingClass" label="Using Class"></topic>
 			<topic href="doc/UML Viewpoint User Guide - Features.html#RequiredandProvidedInterfaces" label="Required and Provided Interfaces"></topic>
 			<topic href="doc/UML Viewpoint User Guide - Features.html#Packageimports" label="Package imports"></topic>
 		</topic>
+		<topic href="doc/UML Viewpoint User Guide - Features.html#UseCaseDiagram" label="Use Case Diagram">
+			<topic href="doc/UML Viewpoint User Guide - Features.html#Introduction3" label="Introduction"></topic>
+			<topic href="doc/UML Viewpoint User Guide - Features.html#Usecaseswithorwithoutsubjects" label="Use cases with or without subjects"></topic>
+		</topic>
+		<topic href="doc/UML Viewpoint User Guide - Features.html#ActivityDiagram" label="Activity Diagram">
+			<topic href="doc/UML Viewpoint User Guide - Features.html#Introduction4" label="Introduction"></topic>
+		</topic>
+		<topic href="doc/UML Viewpoint User Guide - Features.html#StateMachineDiagram" label="State Machine Diagram">
+			<topic href="doc/UML Viewpoint User Guide - Features.html#Introduction5" label="Introduction"></topic>
+		</topic>
+		<topic href="doc/UML Viewpoint User Guide - Features.html#SequenceDiagram" label="Sequence Diagram"></topic>
 	</topic>
 </toc>

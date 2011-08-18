@@ -8,12 +8,16 @@ h1. Features
 
 h2. Class Diagram
 
+h3. Introduction
+
+!features/agency_pics/entities.JPG!
+
 h3. Support for Broken Associations
 
 It might happen that for some reason you have an *Association* instance in your package which doesn't have the proper *ends*. In that case
 the class diagram will show the broken associations as nodes :
 
-!features/class_pics/broken association.JPG!
+!features/class_pics/broken associations.JPG!
 
 You can use the *Association* tools in the palette __(Association, Reference, Composition and Aggregation)__ to re-attach the Association to a classifier.
 
@@ -49,6 +53,9 @@ Thanks to this one can easily define a *Class Diagram* displaying all the entiti
 
 h2. Component Diagram
 
+h3. Introduction
+
+!features/agency_pics/system architecture.JPG!
 
 h3. Connector
 
@@ -94,9 +101,29 @@ h3. Package imports
 
 h2. Use Case Diagram
 
+h3. Introduction
+
+!features/agency_pics/system use cases.JPG!
+
 h3. Use cases with or without subjects
 
 The *Use Case Diagram* will display any @UseCase@ not being affected to a subject on the canvas. If a subject is affected, then the use case
 will be displayed directly within this subject.
 
 Dragging a use case from a subject to the canvas (and the other way around) will set or unset the subject accordingly.
+
+
+h2. Activity Diagram
+
+h3. Introduction
+
+!features/agency_pics/to reserve a trip.JPG!
+
+h2. State Machine Diagram
+
+h3. Introduction
+
+!features/agency_pics/reservation states.JPG!
+
+h2. Sequence Diagram
+
