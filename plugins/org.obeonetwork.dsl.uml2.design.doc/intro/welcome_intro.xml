@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<introContent>
+  <!-- Extension to the SDK Overview Page. -->
+  <extensionContent id="org.obeonetwork.dsl.uml2.design" name="UML Viewpoint" alt-style="css/overview.properties" style="css/overview.css" path="overview/@">
+     <group id="content-group" style-id="content-group">
+    	<link style-id="content-link" label="UML Viewpoint" url="http://org.eclipse.ui.intro/showHelpTopic?id=/org.obeonetwork.dsl.uml2.design.doc/doc/UML%20Viewpoint%20User%20Guide%20-%20Getting%20started.html" id="quickstart">
+      		<text>Many modeling components are one-click away from you, click here to install them!</text>
+    	</link>    	    	
+     </group>
+  </extensionContent>
+</introContent>

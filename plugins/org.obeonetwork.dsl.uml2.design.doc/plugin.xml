@@ -41,4 +41,13 @@ Contributors:
     <description>An UML model for a travel agency business leveraging class, components, use case, activity and states diagrams.</description>
   </wizard>
   </extension>
+  
+  <extension
+         point="org.eclipse.ui.intro.configExtension">
+      <configExtension
+            configId="org.eclipse.ui.intro.universalConfig"
+            content="intro/welcome_intro.xml"/>  
+   </extension>
+
+  
 </plugin>

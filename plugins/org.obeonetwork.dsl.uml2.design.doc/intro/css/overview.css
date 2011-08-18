@@ -1,0 +1,2 @@
+a#quickstart img { background-image : url(../images/banner.gif); }
+a#quickstart:hover img { background-image : url(../images/banner.gif); }
