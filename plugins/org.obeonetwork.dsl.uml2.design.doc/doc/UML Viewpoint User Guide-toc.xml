@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<toc topic="doc/UML Viewpoint User Guide.html" label="UML Viewpoint User Guide">
+	<topic href="doc/UML Viewpoint User Guide.html" label="Getting Started">
+		<topic href="doc/UML Viewpoint User Guide.html#StartingfromtheTravelAgencyexample" label="Starting from the Travel Agency example"></topic>
+		<topic href="doc/UML Viewpoint User Guide.html#CreateanewUMLmodelsessionfile" label="Create a new UML model &amp; session file"></topic>
+		<topic href="doc/UML Viewpoint User Guide.html#DisplayeditanexistingUMLmodel" label="Display &amp; edit an existing UML model"></topic>
+		<topic href="doc/UML Viewpoint User Guide.html#vpselection" label="UML designer viewpoints"></topic>
+	</topic>
+	<topic href="doc/UML Viewpoint User Guide.html#Features" label="Features">
+		<topic href="doc/UML Viewpoint User Guide.html#ClassDiagram" label="Class Diagram">
+			<topic href="doc/UML Viewpoint User Guide.html#Introduction" label="Introduction"></topic>
+			<topic href="doc/UML Viewpoint User Guide.html#SupportforBrokenAssociations" label="Support for Broken Associations"></topic>
+			<topic href="doc/UML Viewpoint User Guide.html#RelatedClassesInterfacefilteringandhighlighting" label="Related Classes/Interface filtering and highlighting"></topic>
+			<topic href="doc/UML Viewpoint User Guide.html#ClassesinSubComponents" label="Classes in SubComponents"></topic>
+		</topic>
+		<topic href="doc/UML Viewpoint User Guide.html#ComponentDiagram" label="Component Diagram">
+			<topic href="doc/UML Viewpoint User Guide.html#Introduction2" label="Introduction"></topic>
+			<topic href="doc/UML Viewpoint User Guide.html#Connector" label="Connector"></topic>
+			<topic href="doc/UML Viewpoint User Guide.html#CompositeComponents" label="Composite Components"></topic>
+			<topic href="doc/UML Viewpoint User Guide.html#UsingClass" label="Using Class"></topic>
+			<topic href="doc/UML Viewpoint User Guide.html#RequiredandProvidedInterfaces" label="Required and Provided Interfaces"></topic>
+			<topic href="doc/UML Viewpoint User Guide.html#Packageimports" label="Package imports"></topic>
+		</topic>
+		<topic href="doc/UML Viewpoint User Guide.html#UseCaseDiagram" label="Use Case Diagram">
+			<topic href="doc/UML Viewpoint User Guide.html#Introduction3" label="Introduction"></topic>
+			<topic href="doc/UML Viewpoint User Guide.html#Usecaseswithorwithoutsubjects" label="Use cases with or without subjects"></topic>
+		</topic>
+		<topic href="doc/UML Viewpoint User Guide.html#ActivityDiagram" label="Activity Diagram">
+			<topic href="doc/UML Viewpoint User Guide.html#Introduction4" label="Introduction"></topic>
+		</topic>
+		<topic href="doc/UML Viewpoint User Guide.html#StateMachineDiagram" label="State Machine Diagram">
+			<topic href="doc/UML Viewpoint User Guide.html#Introduction5" label="Introduction"></topic>
+		</topic>
+		<topic href="doc/UML Viewpoint User Guide.html#SequenceDiagram" label="Sequence Diagram"></topic>
+	</topic>
+</toc>

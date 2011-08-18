@@ -14,7 +14,7 @@ Contributors:
    <extension
          point="org.eclipse.help.toc">
       <toc
-            file="doc/toc.xml"
+            file="doc/UML Viewpoint User Guide-toc.xml"
             primary="true">
       </toc>
    </extension>
