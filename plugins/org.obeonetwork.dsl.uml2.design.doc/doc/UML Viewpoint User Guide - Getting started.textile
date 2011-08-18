@@ -8,6 +8,27 @@ h1. Getting Started
 
 This section describes how to start using the UML designer either from existing UML models or by creating a new one.
 
+h2. Starting from the Travel Agency example
+
+Import the TravelAgency project using the menu @File/New/Example...@.
+
+!gettingStarted/example-1-menu.png!
+
+Pick the *Travel Agency UML* wizard and click on @Next@ and then @Finish@.
+
+!gettingStarted/example-2-wizard.png!
+
+Click Finish on the wizard and a *TravelAgency* project appears in your workspace. 
+
+!gettingStarted/example-3-workspace.png!
+
+Double-click on the *agency.aird* file (or right click and @Open Session@), you will be greeted with the main package hierarchy diagram.
+
+!gettingStarted/example-4-maindiag.png!
+
+From here you can navigate to existing diagrams by right clicking on the *Model*.
+
+
 h2. Create a new UML model & session file
 
 To create a new UML model and an associated designer session, open the wizard through the menu __File > New > Other...__ and select the __UML Model__ item through the category __Viewpoint > Modeler__.

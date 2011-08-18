@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='utf-8' ?>
 <toc topic="doc/UML Viewpoint User Guide - Getting started.html" label="UML Viewpoint User Guide - Getting started">
 	<topic href="doc/UML Viewpoint User Guide - Getting started.html" label="Getting Started">
+		<topic href="doc/UML Viewpoint User Guide - Getting started.html#StartingfromtheTravelAgencyexample" label="Starting from the Travel Agency example"></topic>
 		<topic href="doc/UML Viewpoint User Guide - Getting started.html#CreateanewUMLmodelsessionfile" label="Create a new UML model &amp; session file"></topic>
 		<topic href="doc/UML Viewpoint User Guide - Getting started.html#DisplayeditanexistingUMLmodel" label="Display &amp; edit an existing UML model"></topic>
 		<topic href="doc/UML Viewpoint User Guide - Getting started.html#vpselection" label="UML designer viewpoints"></topic>
