@@ -19,6 +19,7 @@ import org.eclipse.uml2.uml.CallOperationAction;
 import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.DataStoreNode;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.InstanceValue;
 import org.eclipse.uml2.uml.MultiplicityElement;
 import org.eclipse.uml2.uml.NamedElement;
@@ -122,7 +123,9 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 			}
 		}
 		stereotypeLabel.append(CLOSE_QUOTE_MARK);
-		stereotypeLabel.append(NL);
+		if (!(element instanceof Feature)) {
+			stereotypeLabel.append(NL);
+		}
 
 		return stereotypeLabel.toString();
 	}
