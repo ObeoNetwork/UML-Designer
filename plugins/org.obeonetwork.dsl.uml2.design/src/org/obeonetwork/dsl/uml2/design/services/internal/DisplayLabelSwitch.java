@@ -187,7 +187,7 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	 */
 	@Override
 	public String caseStructuralFeature(StructuralFeature object) {
-		return caseTypedElement(object) + caseMultiplicityElement(object);
+		return caseTypedElement(object) + " " + caseMultiplicityElement(object);
 	}
 
 	/**
