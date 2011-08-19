@@ -123,7 +123,9 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 			}
 		}
 		stereotypeLabel.append(CLOSE_QUOTE_MARK);
-		if (!(element instanceof Feature)) {
+		if (element instanceof Feature) {
+			stereotypeLabel.append(" ");
+		} else {
 			stereotypeLabel.append(NL);
 		}
 
