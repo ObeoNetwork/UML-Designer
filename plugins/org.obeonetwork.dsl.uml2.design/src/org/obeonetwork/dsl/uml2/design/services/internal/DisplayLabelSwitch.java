@@ -19,6 +19,7 @@ import org.eclipse.uml2.uml.CallOperationAction;
 import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.DataStoreNode;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.InstanceValue;
 import org.eclipse.uml2.uml.MultiplicityElement;
 import org.eclipse.uml2.uml.NamedElement;
@@ -122,7 +123,11 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 			}
 		}
 		stereotypeLabel.append(CLOSE_QUOTE_MARK);
-		stereotypeLabel.append(NL);
+		if (element instanceof Feature) {
+			stereotypeLabel.append(" ");
+		} else {
+			stereotypeLabel.append(NL);
+		}
 
 		return stereotypeLabel.toString();
 	}
@@ -182,7 +187,7 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	 */
 	@Override
 	public String caseStructuralFeature(StructuralFeature object) {
-		return caseTypedElement(object) + caseMultiplicityElement(object);
+		return caseTypedElement(object) + " " + caseMultiplicityElement(object);
 	}
 
 	/**
@@ -190,9 +195,9 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	 */
 	@Override
 	public String caseMultiplicityElement(MultiplicityElement object) {
-		if (object.getLower() == 1 && object.getUpper() == 1) {
+		if (object.getLower() == object.getUpper()) {
 			// [1..1]
-			return "[1]";
+			return "[" + object.getLower() + "]";
 		} else if (object.getLower() == 0 && object.getUpper() == -1) {
 			// [0..*]
 			return "[*]";
