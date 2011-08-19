@@ -190,9 +190,9 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	 */
 	@Override
 	public String caseMultiplicityElement(MultiplicityElement object) {
-		if (object.getLower() == 1 && object.getUpper() == 1) {
+		if (object.getLower() == object.getUpper()) {
 			// [1..1]
-			return " [1]";
+			return "[" + object.getLower() + "]";
 		} else if (object.getLower() == 0 && object.getUpper() == -1) {
 			// [0..*]
 			return "[*]";
