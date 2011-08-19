@@ -192,7 +192,7 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	public String caseMultiplicityElement(MultiplicityElement object) {
 		if (object.getLower() == 1 && object.getUpper() == 1) {
 			// [1..1]
-			return "[1]";
+			return " [1]";
 		} else if (object.getLower() == 0 && object.getUpper() == -1) {
 			// [0..*]
 			return "[*]";
