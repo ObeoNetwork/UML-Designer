@@ -1982,7 +1982,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:SelectionWizardDescription" name="Call Operation Action" precondition="&lt;%$container.filter(&quot;Activity&quot;) != null || $container.filter(&quot;ActivityPartition&quot;) != null%>" forceRefresh="true" candidatesExpression="&lt;%getRootContainer().eAllContents(&quot;Operation&quot;)%>" message="Select the target operation of the call operation action to create" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/CallOperationAction.gif" windowTitle="New Call Operation Action" windowImagePath="">
+            <tools xsi:type="tool:SelectionWizardDescription" name="Call Operation Action" forceRefresh="true" candidatesExpression="&lt;%allAvailableRootPackages.eAllContents(&quot;Operation&quot;) + allAvailableRootPackages.eAllContents(&quot;Operation&quot;).ancestor()%>" tree="true" rootExpression="&lt;%allAvailableRootPackages%>" childrenExpression="&lt;%eContents()%>" message="Select the target operation of the call operation action to create" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/CallOperationAction.gif" windowTitle="New Call Operation Action" windowImagePath="">
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.findParentActivity()%>">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.CallOperationAction" referenceName="node">
