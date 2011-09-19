@@ -637,7 +637,7 @@
                         <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$target%>"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
-                        <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="-1"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="1"/>
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source%>">
                           <subModelOperations xsi:type="tool:SetValue" featureName="navigableOwnedEnd" valueExpression="&lt;%addedProperty%>"/>
                         </subModelOperations>
@@ -650,7 +650,7 @@
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$source.name.toL1Case%>s"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$source%>"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
-                        <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="-1"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="1"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedEnd">
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$target.name.toL1Case%>s"/>
