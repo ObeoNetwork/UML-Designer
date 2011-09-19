@@ -10,7 +10,10 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.services;
 
+import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -160,8 +163,11 @@ public class UMLServices {
 
 	/**
 	 * Loads & import library into the {@link Namespace}.
-	 * @param namespace the {@link Namespace} context
-	 * @param libraryUri the URI of the library to load.
+	 * 
+	 * @param namespace
+	 *            the {@link Namespace} context
+	 * @param libraryUri
+	 *            the URI of the library to load.
 	 */
 	private void importPrimitiveTypes(Namespace namespace, String libraryUri) {
 		final ResourceSet resourceSet = namespace.eResource().getResourceSet();
@@ -171,8 +177,8 @@ public class UMLServices {
 		if (session != null) {
 			session.addSemanticResource(resource, false);
 		}
-		final Package root = (Package)EcoreUtil
-				.getObjectByType(resource.getContents(), UMLPackage.Literals.PACKAGE);
+		final Package root = (Package)EcoreUtil.getObjectByType(resource.getContents(),
+				UMLPackage.Literals.PACKAGE);
 		// We check if a package import already exists
 		if (!namespace.getImportedPackages().contains(root)) {
 			namespace.createPackageImport(root);
@@ -182,15 +188,17 @@ public class UMLServices {
 	/**
 	 * Check if the given library is already imported in the given {@link Namespace}.
 	 * 
-	 * @param namespace the {@link Namespace} context to inspect
-	 * @param libraryUri URI of the library.
+	 * @param namespace
+	 *            the {@link Namespace} context to inspect
+	 * @param libraryUri
+	 *            URI of the library.
 	 * @return <code>true</code> if the library is imported, <code>false</code> otherwise
 	 */
 	private boolean arePrimitiveTypesImported(Namespace namespace, String libraryUri) {
 		final ResourceSet resourceSet = namespace.eResource().getResourceSet();
 		final Resource resource = resourceSet.getResource(URI.createURI(libraryUri), true);
-		final Package root = (Package)EcoreUtil
-				.getObjectByType(resource.getContents(), UMLPackage.Literals.PACKAGE);
+		final Package root = (Package)EcoreUtil.getObjectByType(resource.getContents(),
+				UMLPackage.Literals.PACKAGE);
 		// We check if a package import already exists
 		return namespace.getImportedPackages().contains(root);
 	}
@@ -198,7 +206,8 @@ public class UMLServices {
 	/**
 	 * Return the source of an association.
 	 * 
-	 * @param association the {@link Association} context
+	 * @param association
+	 *            the {@link Association} context
 	 * @return first end of the association
 	 */
 	public static Property getSource(Association association) {
@@ -211,7 +220,8 @@ public class UMLServices {
 	/**
 	 * Return the target of an association.
 	 * 
-	 * @param association the {@link Association} context
+	 * @param association
+	 *            the {@link Association} context
 	 * @return second end of the association
 	 */
 	public static Property getTarget(Association association) {
@@ -242,13 +252,16 @@ public class UMLServices {
 	public boolean isComposite(Property p) {
 		return AggregationKind.COMPOSITE_LITERAL.equals(p.getAggregation());
 	}
-	
+
 	/**
 	 * States if the given object is related to the context {@link Classifier}.
 	 * 
-	 * @param toFilter the candidate to check for relation
-	 * @param context the classifier context object.
-	 * @return <code>true</code> if the given object is related to the context {@link Classifier}, <code>false</code> otherwise.
+	 * @param toFilter
+	 *            the candidate to check for relation
+	 * @param context
+	 *            the classifier context object.
+	 * @return <code>true</code> if the given object is related to the context {@link Classifier},
+	 *         <code>false</code> otherwise.
 	 */
 	public boolean isRelated(EObject toFilter, Classifier context) {
 		boolean res = false;
@@ -314,7 +327,7 @@ public class UMLServices {
 		}
 		return res;
 	}
-	
+
 	/**
 	 * Generic service used to process treatments on a reconnect The processing has to be defined by
 	 * overriding the corresponding caseXXX.
@@ -348,5 +361,27 @@ public class UMLServices {
 		reconnectService.setOldPointedElement(source);
 		reconnectService.setNewPointedElement(target);
 		return reconnectService.doSwitch(context);
+	}
+
+	/**
+	 * Check if a reconnect is possible and is not involving creating a cycle in the model.
+	 * 
+	 * @param host the current element.
+	 * @param source potential source of the edge.
+	 * @param target potential target of the edge
+	 * @param element element represented by the edge.
+	 * @return true if no cycle is detected.
+	 */
+	public Boolean reconnectContainmentPrecondition(EObject host, EObject source, EObject target,
+			EObject element) {
+		if (element == target)
+			return false;
+		Iterator<EObject> it = element.eAllContents();
+		while (it.hasNext()) {
+			EObject child = it.next();
+			if (child == target)
+				return false;
+		}
+		return true;
 	}
 }
