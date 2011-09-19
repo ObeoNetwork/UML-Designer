@@ -30,12 +30,6 @@
   <packagedElement xmi:type="uml:Activity" xmi:id="_gPcLoMTfEeC0wZa75TykZw" name="to Pay a Trip">
     <node xmi:type="uml:InitialNode" xmi:id="_kgct0MTfEeC0wZa75TykZw" name="Initial_1"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Activity" xmi:id="_mynkwMTfEeC0wZa75TykZw" name="to Reserve a Trip">
-    <node xmi:type="uml:InitialNode" xmi:id="_qmbNkMTfEeC0wZa75TykZw" name="Initial_1"/>
-    <node xmi:type="uml:OpaqueAction" xmi:id="_rQ7jIMTfEeC0wZa75TykZw" name="OpaqueAction_1">
-      <body>// TODO body of OpaqueAction_1</body>
-    </node>
-  </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_7yOLMMTfEeC0wZa75TykZw" name="travelsToPartners" memberEnd="_7yOyQMTfEeC0wZa75TykZw _7yQncMTfEeC0wZa75TykZw" navigableOwnedEnd="_7yOyQMTfEeC0wZa75TykZw _7yQncMTfEeC0wZa75TykZw">
     <ownedEnd xmi:id="_7yOyQMTfEeC0wZa75TykZw" name="travels" association="_7yOLMMTfEeC0wZa75TykZw">
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7yQAYMTfEeC0wZa75TykZw" value="*"/>
@@ -153,7 +147,7 @@
       </ownedParameter>
     </ownedOperation>
   </packagedElement>
-  <packagedElement xmi:type="uml:Activity" xmi:id="_iRGQMMfmEeCl6cTHvttAxQ" name="Reservation">
+  <packagedElement xmi:type="uml:Activity" xmi:id="_iRGQMMfmEeCl6cTHvttAxQ" name="To reserve a trip">
     <node xmi:type="uml:InitialNode" xmi:id="_kG7JYMfmEeCl6cTHvttAxQ" name="Initial_1" outgoing="_uM9IwMfnEeCl6cTHvttAxQ"/>
     <node xmi:type="uml:OpaqueAction" xmi:id="_ktn9AMfmEeCl6cTHvttAxQ" name="Check reservation input data" outgoing="_u0S1kMfnEeCl6cTHvttAxQ" incoming="_uM9IwMfnEeCl6cTHvttAxQ" body=""/>
     <node xmi:type="uml:DecisionNode" xmi:id="_p1ICUMfmEeCl6cTHvttAxQ" name="Decision_1" outgoing="_vTNmMMfnEeCl6cTHvttAxQ _wdvfoMfnEeCl6cTHvttAxQ" incoming="_u0S1kMfnEeCl6cTHvttAxQ"/>

@@ -2615,7 +2615,7 @@
           </edges>
         </data>
       </ownedAnnotationEntries>
-      <ownedDiagramElements xmi:type="viewpoint:DNodeContainer" xmi:id="_iRUSoMfmEeCl6cTHvttAxQ" name="Reservation">
+      <ownedDiagramElements xmi:type="viewpoint:DNodeContainer" xmi:id="_iRUSoMfmEeCl6cTHvttAxQ" name="To reserve a trip">
         <target xmi:type="uml:Activity" href="agency.uml#_iRGQMMfmEeCl6cTHvttAxQ"/>
         <semanticElements xmi:type="uml:Activity" href="agency.uml#_iRGQMMfmEeCl6cTHvttAxQ"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
