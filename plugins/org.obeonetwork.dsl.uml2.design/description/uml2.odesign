@@ -82,9 +82,9 @@
           </style>
         </edgeMappings>
         <edgeMappings name="PH_Import" deletionDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20an%20import%20edge']" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@nodeMappings[name='PH_Package']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@nodeMappings[name='PH_Package']" targetFinderExpression="&lt;%importedPackage%>" sourceFinderExpression="&lt;%importingNamespace%>" domainClass="uml.PackageImport" useDomainElement="true">
-          <style labelFormat="bold" showIcon="false" lineStyle="dot" sizeComputationExpression="1">
+          <style showIcon="false" labelExpression="&lt;&lt;import>>" lineStyle="dash" sizeComputationExpression="1">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           </style>
         </edgeMappings>
         <toolSections name="Tools" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Import%20primitive%20types']">
