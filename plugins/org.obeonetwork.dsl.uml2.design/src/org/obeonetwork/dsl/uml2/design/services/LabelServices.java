@@ -25,7 +25,8 @@ public class LabelServices {
 	/**
 	 * Compute the label of the given element.
 	 * 
-	 * @param element the {@link Element} for which to retrieve a label.
+	 * @param element
+	 *            the {@link Element} for which to retrieve a label.
 	 * @return the computed label.
 	 */
 	public String computeUmlLabel(Element element) {
@@ -37,8 +38,10 @@ public class LabelServices {
 	/**
 	 * Parse the edited label string and update the underlying context {@link Element}.
 	 * 
-	 * @param context the context object on which to execute this service.
-	 * @param editedLabelContent the content entered by the user.
+	 * @param context
+	 *            the context object on which to execute this service.
+	 * @param editedLabelContent
+	 *            the content entered by the user.
 	 * @return the context {@link Element}
 	 */
 	public Element editUmlLabel(Element context, String editedLabelContent) {
@@ -46,16 +49,16 @@ public class LabelServices {
 		editLabel.setEditedLabelContent(editedLabelContent);
 		return editLabel.doSwitch(context);
 	}
-	
+
 	/**
 	 * Compute the tooltip for the given element.
 	 * 
-	 * @param context the context object on which to execute this service.
+	 * @param context
+	 *            the context object on which to execute this service.
 	 * @return the computed tooltip String to display
 	 */
 	public String computeUmlTooltip(Element context) {
 		final TooltipLabelSwitch tooltipLabel = new TooltipLabelSwitch();
 		return tooltipLabel.doSwitch(context);
 	}
-
 }

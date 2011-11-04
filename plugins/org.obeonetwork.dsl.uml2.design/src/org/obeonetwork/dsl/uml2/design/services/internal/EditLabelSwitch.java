@@ -11,11 +11,19 @@
 package org.obeonetwork.dsl.uml2.design.services.internal;
 
 import org.eclipse.uml2.uml.ActivityEdge;
+
 import org.eclipse.uml2.uml.Association;
+import org.eclipse.uml2.uml.Behavior;
+import org.eclipse.uml2.uml.BehaviorExecutionSpecification;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.DataStoreNode;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.ExecutionOccurrenceSpecification;
+import org.eclipse.uml2.uml.ExecutionSpecification;
+import org.eclipse.uml2.uml.Lifeline;
+import org.eclipse.uml2.uml.Message;
+import org.eclipse.uml2.uml.MessageOccurrenceSpecification;
 import org.eclipse.uml2.uml.MultiplicityElement;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.OpaqueExpression;
@@ -27,6 +35,7 @@ import org.eclipse.uml2.uml.TypedElement;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.util.UMLSwitch;
 import org.obeonetwork.dsl.uml2.design.services.UMLServices;
+import org.obeonetwork.dsl.uml2.design.services.LabelServices;
 
 /**
  * A switch that handle the label edition for each UML types.
@@ -34,6 +43,16 @@ import org.obeonetwork.dsl.uml2.design.services.UMLServices;
  * @author Gonzague Reydet <a href="mailto:gonzague.reydet@obeo.fr">gonzague.reydet@obeo.fr</a>
  */
 public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstants {
+
+	private static final String RECEIVER_SUFFIX = "_receiver";
+
+	private static final String SENDER_SUFFIX = "_sender";
+
+	private static final String FINISH_SUFFIX = "_finish";
+
+	private static final String START_SUFFIX = "_start";
+
+	private final LabelServices service = new LabelServices();
 
 	/**
 	 * The guard suffix constant.
@@ -274,4 +293,75 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 		return region;
 	}
 
+	@Override
+	public Element caseExecutionSpecification(ExecutionSpecification execution) {
+		// Edit execution name
+		execution.setName(editedLabelContent);
+		// Edit start execution name
+		execution.getStart().setName(editedLabelContent + START_SUFFIX);
+		// Edit finish execution name
+		execution.getFinish().setName(editedLabelContent + FINISH_SUFFIX);
+		// Edit message if exists
+		if (execution.getStart() instanceof MessageOccurrenceSpecification) {
+			service.editUmlLabel(((MessageOccurrenceSpecification)execution.getStart()).getMessage(),
+					editedLabelContent);
+		}
+		return execution;
+	}
+
+	@Override
+	public Element caseBehaviorExecutionSpecification(BehaviorExecutionSpecification execution) {
+		// Edit execution
+		caseExecutionSpecification(execution);
+		// Edit opaque behavior
+		Behavior behavior = execution.getBehavior();
+		service.editUmlLabel(behavior, editedLabelContent);
+		// Edit operation
+		Operation operation = (Operation)behavior.getSpecification();
+		service.editUmlLabel(operation, editedLabelContent);
+		return execution;
+	}
+
+	@Override
+	public Element caseMessage(Message message) {
+		// Edit message name
+		message.setName(editedLabelContent);
+		// Edit message send
+		service.editUmlLabel(message.getSendEvent(), editedLabelContent);
+		// Edit message receive
+		service.editUmlLabel(message.getReceiveEvent(), editedLabelContent);
+		return message;
+	}
+
+	@Override
+	public Element caseLifeline(Lifeline lifeline) {
+		// Edit associated property
+		String name = PropertyServices
+				.parseInputLabel((Property)lifeline.getRepresents(), editedLabelContent);
+		// Edit lifeline name
+		lifeline.setName(name);
+		return lifeline;
+	}
+
+	@Override
+	public Element caseMessageOccurrenceSpecification(MessageOccurrenceSpecification occurence) {
+		if (occurence.equals(occurence.getMessage().getSendEvent()))
+			occurence.setName(editedLabelContent + SENDER_SUFFIX);
+		else if (occurence.equals(occurence.getMessage().getReceiveEvent()))
+			occurence.setName(editedLabelContent + RECEIVER_SUFFIX);
+		else
+			occurence.setName(editedLabelContent);
+		return occurence;
+	}
+
+	@Override
+	public Element caseExecutionOccurrenceSpecification(ExecutionOccurrenceSpecification occurence) {
+		if (occurence.equals(occurence.getExecution().getStart()))
+			occurence.setName(editedLabelContent + START_SUFFIX);
+		else if (occurence.equals(occurence.getExecution().getFinish()))
+			occurence.setName(editedLabelContent + FINISH_SUFFIX);
+		else
+			occurence.setName(editedLabelContent);
+		return occurence;
+	}
 }
