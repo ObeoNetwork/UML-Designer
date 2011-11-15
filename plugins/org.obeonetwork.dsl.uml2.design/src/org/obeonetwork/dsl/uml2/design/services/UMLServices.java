@@ -29,7 +29,9 @@ import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.InterfaceRealization;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Package;
+import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 import org.eclipse.uml2.uml.resource.UMLResource;
@@ -47,6 +49,40 @@ import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
  * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
  */
 public class UMLServices {
+	
+	public Package applyAllProfiles(Package packagge, List<Profile> profilesToApply) {
+		// Unapplying not selected profiles
+		List<Profile> alreadyAppliedProfiles = packagge.getAppliedProfiles();
+		for (Profile alreadyAppliedProfile : alreadyAppliedProfiles) {
+			if (! profilesToApply.contains(alreadyAppliedProfile)) {
+				packagge.unapplyProfile(alreadyAppliedProfile);
+			}
+		}
+		// Aplying selected profiles
+		for (Profile profileToApply : profilesToApply) {
+			if (!packagge.isProfileApplied(profileToApply)) {
+				packagge.applyProfile(profileToApply);
+			}
+		}
+		return packagge;
+	}
+	
+	public Element applyAllStereotypes(Element element, List<Stereotype> stereotypesToApply) {
+		// Unapplying not selected stereotypes
+		List<Stereotype> alreadyAppliedStereotypes = element.getAppliedStereotypes();
+		for (Stereotype alreadyAppliedStereotype : alreadyAppliedStereotypes) {
+			if (!stereotypesToApply.contains(alreadyAppliedStereotype)) {
+				element.unapplyStereotype(alreadyAppliedStereotype);
+			}
+		}
+		// Applying selected stereotypes
+		for (Stereotype stereotypeToApply : stereotypesToApply) {
+			if (!element.isStereotypeApplied(stereotypeToApply)) {
+				element.applyStereotype(stereotypeToApply);
+			}
+		}
+		return element;
+	}
 
 	/**
 	 * Returns a human readable string for the specified visibility.

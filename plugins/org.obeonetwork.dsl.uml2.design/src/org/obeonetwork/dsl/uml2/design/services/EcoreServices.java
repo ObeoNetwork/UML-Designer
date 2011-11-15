@@ -20,6 +20,9 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Type;
 
+import fr.obeo.dsl.viewpoint.business.api.session.Session;
+import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
+
 /**
  * Utility services to manage Ecore UML resources.
  * 
@@ -81,6 +84,17 @@ public class EcoreServices {
 			return Collections.emptySet();
 		}
 	}
+	
+    static public Collection<EObject> getAllRootsInSession(EObject any) {
+    	Session session = SessionManager.INSTANCE.getSession(any);
+        Collection<EObject> roots = new ArrayList<EObject>();
+        if (session != null) {
+	        for (Resource childRes : session.getSemanticResources()) {
+	            roots.addAll(childRes.getContents());
+	        }
+        }
+        return roots;
+    }
 
 	/**
 	 * Iterate over the root children to find a {@link Type} element with the given name.
