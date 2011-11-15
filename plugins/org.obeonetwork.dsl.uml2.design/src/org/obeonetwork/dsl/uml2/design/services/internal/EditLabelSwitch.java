@@ -12,6 +12,7 @@ package org.obeonetwork.dsl.uml2.design.services.internal;
 
 import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.Association;
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.DataStoreNode;
 import org.eclipse.uml2.uml.Element;
@@ -130,6 +131,11 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 		property.setName(escapedLabel);
 	}
 
+	public Element caseComment(Comment comment) {
+		comment.setBody(editedLabelContent);
+		return comment;
+	}
+	
 	/**
 	 * {@inheritDoc}
 	 */
