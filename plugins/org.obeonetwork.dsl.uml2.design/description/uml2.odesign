@@ -6,7 +6,21 @@
   <ownedViewpoints documentation="Initialize an UML Analysis" name="UML Structural Modeling" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description:DiagramDescription" documentation="Fake ViewPointDescription - factorize elements" name="Reused Description" domainClass="" preconditionExpression="&lt;%false%>">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
-      <defaultLayer name="default"/>
+      <defaultLayer name="default">
+        <nodeMappings name="RED_Comment" preconditionExpression="&lt;%(annotatedElement &amp;&amp; ($diagram.diagramElements.filter(&quot;AbstractDNode&quot;).target + $diagram.target)).nSize > 0%>" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%eAllContents()%>" semanticElements="&lt;%self%>" domainClass="uml.Comment">
+          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%body%>" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW" width="16" height="5">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_yellow']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="RED_CommentLink" deletionDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='DEL_CommentLink_PreventDeletion']" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='RED_Comment']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_DataType'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Interface'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_NestedPackage'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_PrimitiveType'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@optionalLayers[name='Imported%20packages']/@containerMappings[name='CD_ImportedPackage'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_ControlNode'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_DataStore'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']/@borderedNodeMappings[name='AD_Pin'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@borderedNodeMappings[name='AD_Parameter'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_Partition'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_Region'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_Region']/@subNodeMappings[name='SM_FinalState'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_Region']/@subContainerMappings[name='SM_State'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@optionalLayers[name='Stereotype']/@nodeMappings[name='TypeStereotypeDescription'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_Actor'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']/@subNodeMappings[name='UCD_UseCase'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@nodeMappings[name='PH_Package'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']/@borderedNodeMappings[name='CO_Port'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_Interface'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_Element'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_InstanceSpecification'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_InstanceSpecification']/@subNodeMappings[name='OD_Slot'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@optionalLayers[name='Type']/@containerMappings[name='OD_Class'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@optionalLayers[name='Type']/@containerMappings[name='OD_Enumeration'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@optionalLayers[name='Type']/@containerMappings[name='OD_Interface'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@optionalLayers[name='Type']/@nodeMappings[name='OD_PrimitiveType'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@subContainerMappings[name='COD_Attribute'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@subContainerMappings[name='COD_Attribute']/@subNodeMappings[name='COD_AttributeDefaultValue'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@subContainerMappings[name='COD_Attribute']/@borderedNodeMappings[name='Port'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_UseCase']" targetFinderExpression="&lt;%annotatedElement%>" reconnections="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='REC_CommentLink_Target']">
+          <style showIcon="false" lineStyle="dot" targetArrow="NoDecoration" sizeComputationExpression="1">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+      </defaultLayer>
       <toolSection documentation="reused tools" name="reused tools">
         <ownedTools xsi:type="tool:DirectEditLabel" documentation="A basic Direct Edit tool for NamedElement" name="GenericServiceDirectEdit">
           <mask mask="{0}"/>
@@ -61,6 +75,74 @@
           <ownedTools xsi:type="tool:DiagramCreationDescription" documentation="Create a new Component Diagram" name="Component Diagram" diagramDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']">
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
+          </ownedTools>
+        </subSections>
+        <subSections name="profiles">
+          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="Apply profile" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Profile.gif" windowTitle="Select profiles to apply" candidatesExpression="&lt;%getAllRootsInSession().filter(&quot;Profile&quot;)%>" preSelectedCandidatesExpression="&lt;%eContainer(&quot;Package&quot;).getAllAppliedProfiles()%>">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.eContainer(&quot;Package&quot;).applyAllProfiles($element)%>"/>
+            </initialOperation>
+            <element name="element"/>
+            <containerView name="containerView"/>
+            <container name="container"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="Apply stereotype" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Stereotype.gif" windowTitle="Select stereotypes to apply" candidatesExpression="&lt;%getApplicableStereotypes().getProfile() + getApplicableStereotypes()%>" tree="true" rootExpression="&lt;%getApplicableStereotypes().getProfile().nMinimize()%>" childrenExpression="&lt;%ownedStereotype%>" preSelectedCandidatesExpression="&lt;%getAppliedStereotypes()%>">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.applyAllStereotypes($element)%>"/>
+            </initialOperation>
+            <element name="element"/>
+            <containerView name="containerView"/>
+            <container name="container"/>
+          </ownedTools>
+        </subSections>
+        <subSections name="Comments">
+          <ownedTools xsi:type="tool:ToolDescription" name="CRE_Comment" label="Comment" precondition="&lt;%filter(&quot;Comment&quot;) == null%>" forceRefresh="true" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Comment.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element%>">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Comment" referenceName="ownedComment" variableName="comment">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="body" valueExpression="Empty comment"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="annotatedElement" valueExpression="&lt;%eContainer%>"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$diagram.refreshDiagram%>"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="CRE_CommentLink" label="Link comment" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@edgeMappings[name='RED_CommentLink']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Association.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source%>">
+                <subModelOperations xsi:type="tool:SetValue" featureName="annotatedElement" valueExpression="&lt;%$target%>"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="DEL_CommentLink_PreventDeletion">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView.sourceNode.target%>">
+                <subModelOperations xsi:type="tool:Unset" featureName="annotatedElement" elementExpression="&lt;%$elementView.targetNode.target%>"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="REC_CommentLink_Target">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$edgeView.sourceNode.target%>">
+                <subModelOperations xsi:type="tool:Unset" featureName="annotatedElement" elementExpression="&lt;%$source%>"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="annotatedElement" valueExpression="&lt;%$target%>"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
           </ownedTools>
         </subSections>
       </toolSection>
@@ -166,6 +248,12 @@
           </ownedTools>
         </toolSections>
       </defaultLayer>
+      <optionalLayers name="Profiles">
+        <toolSections name="Profiles" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Apply%20profile'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Apply%20stereotype']"/>
+      </optionalLayers>
+      <optionalLayers name="Comments" reusedMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='RED_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@edgeMappings[name='RED_CommentLink']" activeByDefault="true">
+        <toolSections name="Comments" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_CommentLink']"/>
+      </optionalLayers>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description:DiagramDescription" documentation="Representation to edit class diagrams" name="Class Diagram" titleExpression="&lt;%name%> Class Diagram" domainClass="uml.Package" preconditionExpression="" enablePopupBars="true">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
@@ -827,6 +915,12 @@
           <decorationDescriptions xsi:type="description:MappingBasedDecoration" name="Package Import" position="NORTH_EAST" decoratorPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/PackageImport.gif" mappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@optionalLayers[name='Imported%20packages']/@containerMappings[name='CD_ImportedPackage']"/>
         </decorationDescriptionsSet>
       </optionalLayers>
+      <optionalLayers name="Profiles">
+        <toolSections name="Profiles" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Apply%20profile'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Apply%20stereotype']"/>
+      </optionalLayers>
+      <optionalLayers name="Comments" reusedMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='RED_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@edgeMappings[name='RED_CommentLink']" activeByDefault="true">
+        <toolSections name="Comments" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_CommentLink']"/>
+      </optionalLayers>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='edit']/@ownedTools[name='Drop%20Interface%20or%20Component%20on%20canvas']" name="Component Diagram" titleExpression="&lt;%name%> Component Diagram" domainClass="uml.Package" enablePopupBars="true">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
@@ -1095,6 +1189,12 @@
           <decorationDescriptions xsi:type="description:MappingBasedDecoration" name="Package Import" position="NORTH_EAST" decoratorPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/PackageImport.gif" mappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@optionalLayers[name='Imported%20packages']/@containerMappings[name='CO_ImportedPackage']"/>
         </decorationDescriptionsSet>
       </optionalLayers>
+      <optionalLayers name="Profiles">
+        <toolSections name="Profiles" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Apply%20profile'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Apply%20stereotype']"/>
+      </optionalLayers>
+      <optionalLayers name="Comments" reusedMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='RED_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@edgeMappings[name='RED_CommentLink']" activeByDefault="true">
+        <toolSections name="Comments" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_CommentLink']"/>
+      </optionalLayers>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description:DiagramDescription" documentation="Diagrams to show instances and relation between them." name="Object Diagram" titleExpression="&lt;%name%> Object Diagram" domainClass="uml.Package">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
@@ -1278,6 +1378,12 @@
           </style>
         </edgeMappings>
       </optionalLayers>
+      <optionalLayers name="Profiles">
+        <toolSections name="Profiles" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Apply%20profile'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Apply%20stereotype']"/>
+      </optionalLayers>
+      <optionalLayers name="Comments" reusedMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='RED_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@edgeMappings[name='RED_CommentLink']" activeByDefault="true">
+        <toolSections name="Comments" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_CommentLink']"/>
+      </optionalLayers>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description:DiagramDescription" documentation="Description to edit class diagrams" name="Composite Diagram" titleExpression="&lt;%name%> Composite Diagram" domainClass="uml.Class" preconditionExpression="&lt;%eClass.name.equalsIgnoreCase(&quot;Class&quot;)%>">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
@@ -1361,6 +1467,12 @@
           </style>
         </containerMappings>
       </defaultLayer>
+      <optionalLayers name="Profiles">
+        <toolSections name="Profiles" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Apply%20profile'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Apply%20stereotype']"/>
+      </optionalLayers>
+      <optionalLayers name="Comments" reusedMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='RED_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@edgeMappings[name='RED_CommentLink']" activeByDefault="true">
+        <toolSections name="Comments" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_CommentLink']"/>
+      </optionalLayers>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description:DiagramDescription" documentation="Representation to view related classes" name="Related Classes Diagram" titleExpression="&lt;%name%> Related Classes Diagram" domainClass="uml.Classifier" preconditionExpression="&lt;%eClass.name == &quot;Class&quot; || eClass.name == &quot;Interface&quot;%>" rootExpression="&lt;%eContainer(&quot;Model&quot;)%>" enablePopupBars="true">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
@@ -1580,11 +1692,91 @@
         </containerMappings>
       </defaultLayer>
     </ownedRepresentations>
+    <ownedRepresentations xsi:type="description:DiagramDescription" name="Profile Diagram" initialisation="true" showOnStartup="true" domainClass="uml.Profile">
+      <defaultLayer name="Profile">
+        <nodeMappings name="PD_ElementImport" semanticCandidatesExpression="&lt;%eAllContents()%>" domainClass="uml.ElementImport">
+          <style xsi:type="style:SquareDescription" labelExpression="&lt;%computeUmlLabel()%>" sizeComputationExpression="6" labelPosition="node" resizeKind="NSEW" width="15" height="6">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="PD_Extension" deletionDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete%20PD_Extension']" semanticCandidatesExpression="&lt;%packagedElement%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@nodeMappings[name='PD_ElementImport']" targetFinderExpression="&lt;%metaclass.~importedElement%>" sourceFinderExpression="&lt;%endType.filter(&quot;Stereotype&quot;)%>" domainClass="uml.Extension" useDomainElement="true">
+          <style lineStyle="dash" sizeComputationExpression="1">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <containerMappings name="PD_Stereotype" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%getOwnedStereotypes%>" domainClass="uml.Stereotype" reusedNodeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']" listContainer="true">
+          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" labelExpression="&lt;%computeUmlLabel()%>" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_orange']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Profile" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Properties']/@tools.0 //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Import%20primitive%20types']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a Class" name="Stereotype" containerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Stereotype.gif">
+            <variable name="container"/>
+            <viewVariable/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Stereotype" referenceName="packagedElement">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Stereotype&lt;%eContainer().eContents().filter(&quot;Stereotype&quot;).nSize()%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Extension">
+          <ownedTools xsi:type="tool:SelectionWizardDescription" name="Metaclass" precondition="&lt;%filter(&quot;Profile&quot;)%>" candidatesExpression="&lt;%getAllMetaclasses()%>" message="Select a metaclass" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/ElementImport.gif">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.traceWithVariables()%>">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.traceWithVariables()%>"/>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ElementImport" referenceName="elementImport" variableName="elementImport">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="importedElement" valueExpression="&lt;%$element%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <element name="element"/>
+            <containerView name="containerView"/>
+            <container name="container"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Extension" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Extension']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.createMetaclassExtension($target)%>"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete PD_Extension">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.deleteMetaclassExtension()%>"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Profile Definition">
+          <ownedTools xsi:type="tool:ToolDescription" name="Define profile" precondition="&lt;%filter(&quot;Profile&quot;)%>">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.defineProfile()%>"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.UMLServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.UMLProfileServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.LabelServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.EcoreServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.templates.uml_utils"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.UIServices"/>
   </ownedViewpoints>
   <ownedViewpoints name="UML Behavioral Modeling" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description:DiagramDescription" name="State Machine Diagram" titleExpression="&lt;%name%> State Machine Diagram" domainClass="uml.StateMachine" enablePopupBars="true">
@@ -1713,6 +1905,12 @@
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </edgeMappings>
+      </optionalLayers>
+      <optionalLayers name="Profiles">
+        <toolSections name="Profiles" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Apply%20profile'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Apply%20stereotype']"/>
+      </optionalLayers>
+      <optionalLayers name="Comments" reusedMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='RED_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@edgeMappings[name='RED_CommentLink']" activeByDefault="true">
+        <toolSections name="Comments" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_CommentLink']"/>
       </optionalLayers>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description:DiagramDescription" name="Activity Diagram" titleExpression="&lt;%name%> Activity Diagram" domainClass="uml.Activity" enablePopupBars="true">
@@ -2119,6 +2317,12 @@
           </subSections>
         </toolSections>
       </defaultLayer>
+      <optionalLayers name="Profiles">
+        <toolSections name="Profiles" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Apply%20profile'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Apply%20stereotype']"/>
+      </optionalLayers>
+      <optionalLayers name="Comments" reusedMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='RED_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@edgeMappings[name='RED_CommentLink']" activeByDefault="true">
+        <toolSections name="Comments" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_CommentLink']"/>
+      </optionalLayers>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='drag%20%26%20drop']/@ownedTools[name='UC_D%26D_UseCase']" documentation="Diagram for Use Cases" name="Use Case Diagram" titleExpression="&lt;%name%> Use Case Diagram" domainClass="uml.Package" enablePopupBars="true">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
@@ -2347,6 +2551,12 @@
         <decorationDescriptionsSet>
           <decorationDescriptions xsi:type="description:MappingBasedDecoration" name="Package Import" position="NORTH_EAST" decoratorPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/PackageImport.gif" mappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@optionalLayers[name='Imported%20packages']/@containerMappings[name='UCD_ImportedPackage']"/>
         </decorationDescriptionsSet>
+      </optionalLayers>
+      <optionalLayers name="Profiles">
+        <toolSections name="Profiles" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Apply%20profile'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Apply%20stereotype']"/>
+      </optionalLayers>
+      <optionalLayers name="Comments" reusedMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='RED_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@edgeMappings[name='RED_CommentLink']" activeByDefault="true">
+        <toolSections name="Comments" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_CommentLink']"/>
       </optionalLayers>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="SequenceDiagramDescription" documentation="@generated" name="Sequence Diagram" domainClass="uml.Interaction" enablePopupBars="true" endsOrdering="&lt;%fragment.filter(&quot;OccurrenceSpecification&quot;)  &amp;&amp; $eventEnds%>">
