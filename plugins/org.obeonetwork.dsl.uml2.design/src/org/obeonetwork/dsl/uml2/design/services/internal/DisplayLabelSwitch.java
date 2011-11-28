@@ -19,6 +19,7 @@ import org.eclipse.uml2.uml.CallOperationAction;
 import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.DataStoreNode;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.InstanceValue;
 import org.eclipse.uml2.uml.MultiplicityElement;
@@ -302,6 +303,11 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	@Override
 	public String caseNamedElement(NamedElement object) {
 		return computeStereotypes(object) + object.getName();
+	}
+	
+	@Override
+	public String caseElementImport(ElementImport object) {
+		return object.getName();
 	}
 
 	/**
