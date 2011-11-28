@@ -15,6 +15,8 @@ import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
 import org.obeonetwork.dsl.uml2.design.tests.services.ActivityServicesTests;
+import org.obeonetwork.dsl.uml2.design.tests.services.EditLabelTests;
+import org.obeonetwork.dsl.uml2.design.tests.services.IsRelatedServiceTests;
 import org.obeonetwork.dsl.uml2.design.tests.services.OperationServicesTest;
 import org.obeonetwork.dsl.uml2.design.tests.services.PropertyServicesTest;
 import org.obeonetwork.dsl.uml2.design.tests.services.SequenceServiceTests;
@@ -53,6 +55,7 @@ public final class AllTests {
 		suite.addTestSuite(OperationServicesTest.class);
 		suite.addTestSuite(PropertyServicesTest.class);
 		suite.addTestSuite(SequenceServiceTests.class);
+		suite.addTestSuite(EditLabelTests.class);
 		return suite;
 	}
 

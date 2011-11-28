@@ -11,9 +11,11 @@
 package org.obeonetwork.dsl.uml2.design.services.internal;
 
 import org.eclipse.uml2.uml.ActivityEdge;
+import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.DataStoreNode;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.MultiplicityElement;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.OpaqueExpression;
 import org.eclipse.uml2.uml.Operation;
@@ -23,10 +25,11 @@ import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.TypedElement;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.util.UMLSwitch;
+import org.obeonetwork.dsl.uml2.design.services.UMLServices;
 
 /**
  * A switch that handle the label edition for each UML types.
- *
+ * 
  * @author Gonzague Reydet <a href="mailto:gonzague.reydet@obeo.fr">gonzague.reydet@obeo.fr</a>
  */
 public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstants {
@@ -35,14 +38,96 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 	 * The guard suffix constant.
 	 */
 	private static final String GUARD_SUFFIX = "_guard";
-	
+
 	/**
-	 * The raw label content edited by the user. 
+	 * The raw label content edited by the user.
 	 */
 	private String editedLabelContent;
 
 	public void setEditedLabelContent(String editedLabelContent) {
 		this.editedLabelContent = editedLabelContent;
+	}
+
+	@Override
+	public Element caseAssociation(Association object) {
+		/*
+		 * We need to find roles names, end user might type: "aRoleName" "aRoleName - aRoleName
+		 * "aRoleName[cardinality] - anotherRoleName[cardinality]
+		 */
+		// let's see if we have several role names typed
+		final Property source = UMLServices.getSource(object);
+		final Property target = UMLServices.getTarget(object);
+		if (source != null && target != null) {
+			if (editedLabelContent.indexOf('-') > -1) {
+				//
+				String completeSourceLabel = editedLabelContent.substring(0, editedLabelContent.indexOf('-'))
+						.trim();
+				editAssociationEndLabel(source, completeSourceLabel);
+				String completeTargetLabel = editedLabelContent
+						.substring(editedLabelContent.indexOf('-') + 1).trim();
+				editAssociationEndLabel(target, completeTargetLabel);
+			} else {
+				String singleEndLabel = editedLabelContent.trim();								
+				if (target.isNavigable()) {
+					editAssociationEndLabel(target, singleEndLabel);
+				} else {
+					editAssociationEndLabel(source, singleEndLabel);
+				}
+
+			}
+			return object;
+		} else {
+			return super.caseAssociation(object);
+		}
+	}
+
+	private void editAssociationEndLabel(Property property, String label) {
+		String escapedLabel = label;
+		if (label.indexOf('/') > -1) {
+			// should be derived
+			escapedLabel.replace('/', ' ');
+			property.setIsDerived(true);
+		} else {
+			property.setIsDerived(false);
+		}
+		escapedLabel = escapedLabel.trim();
+		// multiplicity
+		if (escapedLabel.indexOf('[') > -1) {
+			String endOfMul = escapedLabel.substring(escapedLabel.indexOf('[') + 1);
+			escapedLabel = escapedLabel.substring(0, escapedLabel.indexOf('['));
+			escapedLabel = escapedLabel.trim();
+			// lower bound
+			int lowerBound = property.getLower();
+			int upperBound = property.getUpper();
+			if (endOfMul.indexOf(']') > -1) {
+				String mulInter = endOfMul.substring(0, endOfMul.indexOf(']')).trim();
+				if ("*".equals(mulInter)) {
+					lowerBound = 0;
+					upperBound = -1;
+				} else {
+					if (mulInter.length() > 0) {
+						if (mulInter.indexOf("..") > -1) {
+							String low = mulInter.substring(0, mulInter.indexOf("..")).trim();
+							if (low.length() > 0) {
+								lowerBound = Integer.valueOf(low);
+							}
+							String up = mulInter.substring(mulInter.indexOf("..") + 2).trim();
+							if (up.length() > 0) {
+								upperBound = Integer.valueOf(up);
+							}
+						} else {
+							Integer singleBound = Integer.valueOf(mulInter);
+							lowerBound = singleBound;
+							upperBound = singleBound;
+						}
+
+					}
+				}
+			}
+			property.setLower(lowerBound);
+			property.setUpper(upperBound);
+		}
+		property.setName(escapedLabel);
 	}
 
 	/**
@@ -125,7 +210,8 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 	 */
 	@Override
 	public Element caseNamedElement(NamedElement object) {
-		// FIXME We should detect the stereotype brackets instead of trying to replace the generated label that might have been modified... 
+		// FIXME We should detect the stereotype brackets instead of trying to replace the generated label
+		// that might have been modified...
 		final String stereotype = DisplayLabelSwitch.computeStereotypes(object);
 		if (stereotype != null && !"".equals(stereotype)) {
 			editedLabelContent = editedLabelContent.replace(stereotype, "");
