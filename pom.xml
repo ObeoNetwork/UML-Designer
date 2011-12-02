@@ -41,7 +41,7 @@ Contributors:
 	<properties>
 		<tycho-version>0.12.0</tycho-version>
 		<platform-version-name>helios</platform-version-name>
-		<od-site>http://www.obeo.fr/download/release/designer/5.0.2/update/3.6</od-site>
+		<od-site>http://www.obeo.fr/download/release/designer/5.0.5/update/3.6</od-site>
 		<od-ext-site>http://marketplace.obeonetwork.com/updates/od5/</od-ext-site>
 		<eclipse-site>http://download.eclipse.org/releases/${platform-version-name}</eclipse-site>
 		<eef-site>http://download.eclipse.org/modeling/emft/eef/updates/nightly/0.9</eef-site>
