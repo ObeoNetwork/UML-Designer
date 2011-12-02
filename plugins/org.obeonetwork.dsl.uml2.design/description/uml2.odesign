@@ -995,46 +995,44 @@
           </style>
         </containerMappings>
         <toolSections name="Node">
-          <subSections name="create">
-            <ownedTools xsi:type="tool:ToolGroup" name="Component">
-              <tools xsi:type="tool:ContainerCreationDescription" name="Component" containerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']">
-                <variable name="container"/>
-                <viewVariable name="containerView"/>
-                <initialOperation>
-                  <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Component" referenceName="packagedElement">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Component&lt;%eContainer().eContents().filter(&quot;Component&quot;).nSize()%>"/>
-                  </firstModelOperations>
-                </initialOperation>
-              </tools>
-              <tools xsi:type="tool:ContainerCreationDescription" name="Class" containerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']">
-                <variable name="container"/>
-                <viewVariable name="containerView"/>
-                <initialOperation>
-                  <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="packagedElement">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Class&lt;%eContainer().eContents().filter(&quot;Class&quot;).nSize()%>"/>
-                  </firstModelOperations>
-                </initialOperation>
-              </tools>
-            </ownedTools>
-            <ownedTools xsi:type="tool:NodeCreationDescription" name="Port" nodeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']/@borderedNodeMappings[name='CO_Port']">
+          <ownedTools xsi:type="tool:ToolGroup" name="Component">
+            <tools xsi:type="tool:ContainerCreationDescription" name="Component" containerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Port" referenceName="ownedAttribute">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Port&lt;%eContainer().eContents().filter(&quot;Port&quot;).nSize()%>"/>
+                <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Component" referenceName="packagedElement">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Component&lt;%eContainer().eContents().filter(&quot;Component&quot;).nSize()%>"/>
                 </firstModelOperations>
               </initialOperation>
-            </ownedTools>
-            <ownedTools xsi:type="tool:NodeCreationDescription" name="Interface" nodeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_Interface']">
+            </tools>
+            <tools xsi:type="tool:ContainerCreationDescription" name="Class" containerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Interface" referenceName="packagedElement">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Interface&lt;%eContainer().eContents().filter(&quot;Interface&quot;).nSize()%>"/>
+                <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="packagedElement">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Class&lt;%eContainer().eContents().filter(&quot;Class&quot;).nSize()%>"/>
                 </firstModelOperations>
               </initialOperation>
-            </ownedTools>
-          </subSections>
+            </tools>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Port" nodeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']/@borderedNodeMappings[name='CO_Port']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Port" referenceName="ownedAttribute">
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Port&lt;%eContainer().eContents().filter(&quot;Port&quot;).nSize()%>"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Interface" nodeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_Interface']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Interface" referenceName="packagedElement">
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Interface&lt;%eContainer().eContents().filter(&quot;Interface&quot;).nSize()%>"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
           <subSections name="edit">
             <ownedTools xsi:type="tool:ContainerDropDescription" name="Drop Interface or Component on canvas" precondition="&lt;%(filter(&quot;Interface&quot;) != null || filter(&quot;Class&quot;) != null)%>" forceRefresh="true" mappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_Interface'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']">
               <oldContainer name="oldSemanticContainer"/>
