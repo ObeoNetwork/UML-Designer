@@ -227,6 +227,13 @@ Each party waives its rights to a jury trial in any resulting
 litigation.
    </license>
 
+   <requires>
+		  <import plugin="fr.obeo.mda.license"/>
+		  <import feature="fr.obeo.dsl.feature.designer.patches"/>
+		  <import feature="fr.obeo.dsl.feature.designer.architect"/>
+		  <import feature="fr.obeo.dsl.feature.obeonetwork"/>
+   </requires>
+
    <plugin
          id="org.obeonetwork.dsl.uml2.design"
          download-size="0"
