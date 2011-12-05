@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <introContent>
   <!-- Extension to the SDK Overview Page. -->
-  <extensionContent id="org.obeonetwork.dsl.uml2.design" name="UML Viewpoint" alt-style="css/overview.properties" style="css/overview.css" path="overview/@">
+  <extensionContent id="org.obeonetwork.dsl.uml2.design" name="UML Designer" alt-style="css/overview.properties" style="css/overview.css" path="overview/@">
      <group id="content-group" style-id="content-group">
-    	<link style-id="content-link" label="UML Viewpoint" url="http://org.eclipse.ui.intro/showHelpTopic?id=/org.obeonetwork.dsl.uml2.design.doc/doc/UML%20Viewpoint%20User%20Guide.html" id="quickstart">
+    	<link style-id="content-link" label="UML Designer" url="http://org.eclipse.ui.intro/showHelpTopic?id=/org.obeonetwork.dsl.uml2.design.doc/doc/UML%20Designer%20User%20Guide.html" id="quickstart">
       		<text>You just installed UML diagramming support based on Obeo Designer. Have a look on the quickstart !</text>
     	</link>    	    	
      </group>

@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Obeo Designer Viewpoint Project
+Bundle-Name: UML Designer Modeler
 Bundle-SymbolicName: org.obeonetwork.dsl.uml2.design;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin

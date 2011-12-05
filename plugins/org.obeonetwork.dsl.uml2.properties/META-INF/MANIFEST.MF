@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: UML2 Properties with EEF
+Bundle-Name: UML Designer Extended Properties
 Bundle-SymbolicName: org.obeonetwork.dsl.uml2.properties;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: org.obeonetwork.dsl.uml2.properties.Activator

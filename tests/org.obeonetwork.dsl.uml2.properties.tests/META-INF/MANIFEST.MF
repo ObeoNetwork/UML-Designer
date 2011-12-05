@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Tests for UML properties views
+Bundle-Name: Tests for UML Designer Extended Properties
 Bundle-SymbolicName: org.obeonetwork.dsl.uml2.properties.tests
 Bundle-Version: 1.0.0.qualifier
 Bundle-Vendor: Obeo.fr

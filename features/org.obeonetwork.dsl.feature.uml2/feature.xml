@@ -11,7 +11,7 @@ Contributors:
 -->
 <feature
       id="org.obeonetwork.dsl.feature.uml2"
-      label="Obeo Designer UML2 Modeler"
+      label="UML Designer (based on Obeo Designer)"
       version="1.0.0.qualifier"
       provider-name="Obeo">
 
