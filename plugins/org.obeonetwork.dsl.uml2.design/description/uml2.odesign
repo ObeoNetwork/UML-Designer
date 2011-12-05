@@ -2703,44 +2703,6 @@
             </tools>
           </ownedTools>
           <subSections name="edit">
-            <ownedTools xsi:type="tool_1:ReorderTool" name="SD_ReorderMessages" mappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']">
-              <startingEndPredecessorBefore name="startingEndBeforeMessageEnd"/>
-              <startingEndPredecessorAfter name="startingEndAfterMessageEnd"/>
-              <finishingEndPredecessorBefore name="finishingEndBeforeMessageEnd"/>
-              <finishingEndPredecessorAfter name="finishingEndAfterMessageEnd"/>
-              <onEventMovedOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%self%>">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;Message&quot;) != null%>">
-                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="moveStartingEnd" id="fr.obeo.dsl.viewpoint.business.api.action.moveElement">
-                      <parameters name="referenceOwner" value="&lt;%interaction%>"/>
-                      <parameters name="referenceName" value="fragment"/>
-                      <parameters name="element" value="&lt;%sendEvent%>"/>
-                      <parameters name="predecessor" value="&lt;%$startingEndAfterMessageEnd.semanticEnd%>"/>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="moveFinishingEnd" id="fr.obeo.dsl.viewpoint.business.api.action.moveElement">
-                      <parameters name="referenceOwner" value="&lt;%interaction%>"/>
-                      <parameters name="referenceName" value="fragment"/>
-                      <parameters name="element" value="&lt;%receiveEvent%>"/>
-                      <parameters name="predecessor" value="&lt;%$finishingEndAfterMessageEnd.semanticEnd%>"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;ExecutionSpecification&quot;) != null%>">
-                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="moveStartingEnd" id="fr.obeo.dsl.viewpoint.business.api.action.moveElement">
-                      <parameters name="referenceOwner" value="&lt;%enclosingInteraction%>"/>
-                      <parameters name="referenceName" value="fragment"/>
-                      <parameters name="element" value="&lt;%start%>"/>
-                      <parameters name="predecessor" value="&lt;%$startingEndAfterMessageEnd.semanticEnd%>"/>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool:ExternalJavaAction" name="moveFinishingEnd" id="fr.obeo.dsl.viewpoint.business.api.action.moveElement">
-                      <parameters name="referenceOwner" value="&lt;%enclosingInteraction%>"/>
-                      <parameters name="referenceName" value="fragment"/>
-                      <parameters name="element" value="&lt;%finish%>"/>
-                      <parameters name="predecessor" value="&lt;%$finishingEndAfterMessageEnd.semanticEnd%>"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                </firstModelOperations>
-              </onEventMovedOperation>
-            </ownedTools>
             <ownedTools xsi:type="tool:DeleteElementDescription" name="SD_FullDelete">
               <element name="element"/>
               <elementView name="elementView"/>
@@ -2764,6 +2726,13 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.delete()%>"/>
               </initialOperation>
+            </ownedTools>
+            <ownedTools xsi:type="tool_1:ReorderTool" name="REO_Fragment" mappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']/@borderedNodeMappings[name='SD_Execution'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']">
+              <startingEndPredecessorAfter name="startingEndPredecessorAfter"/>
+              <finishingEndPredecessorAfter name="finishingEndPredecessorAfter"/>
+              <onEventMovedOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%self.reorder($startingEndPredecessorAfter.semanticEnd, $finishingEndPredecessorAfter.semanticEnd)%>"/>
+              </onEventMovedOperation>
             </ownedTools>
           </subSections>
           <subSections name="navigation">

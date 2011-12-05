@@ -766,4 +766,92 @@ public class SequenceServices {
 		interaction.setName(InteractionServices.getNewInteractionName((Package)pkg));
 		((Package)pkg).getPackagedElements().add(interaction);
 	}
+
+	/**
+	 * Reorder execution.
+	 * 
+	 * @param execution
+	 *            Moved execution
+	 * @param startingEndPredecessorAfter
+	 *            Fragment preceding moved execution start before the beginning of reorder operation
+	 * @param finishingEndPredecessorAfter
+	 *            Fragment preceding moved execution finish before the beginning of reorder operation
+	 */
+	public void reorder(ExecutionSpecification execution, InteractionFragment startingEndPredecessorAfter,
+			InteractionFragment finishingEndPredecessorAfter) {
+		// Get current interaction
+		Interaction interaction = execution.getEnclosingInteraction();
+		// Re-order fragments under the interaction
+		EList<InteractionFragment> fragments = interaction.getFragments();
+
+		// Move execution start after startEndPredecessorAfter
+		int startIndex = 0;
+		if (startingEndPredecessorAfter != null) {
+			// If predecessor is the start of an execution, keep execution just after execution start
+			if (getExecution(startingEndPredecessorAfter) != null
+					&& startingEndPredecessorAfter == (getExecution(startingEndPredecessorAfter).getStart()))
+				startIndex = fragments.indexOf(getExecution(startingEndPredecessorAfter)) + 1;
+			else {
+				// Predecessor is the last fragment, the move operation will update the list
+				if (fragments.indexOf(startingEndPredecessorAfter) == fragments.size() - 1)
+					startIndex = fragments.indexOf(startingEndPredecessorAfter);
+				else
+					startIndex = fragments.indexOf(startingEndPredecessorAfter) + 1;
+			}
+		}
+		List<InteractionFragment> subFragments = new ArrayList<InteractionFragment>();
+		subFragments.addAll(fragments.subList(fragments.indexOf(execution.getStart()) + 1,
+				fragments.indexOf(execution.getFinish()) + 1));
+
+		fragments.move(startIndex, fragments.indexOf(execution.getStart()));
+
+		// Move all the elements attached to the moved execution
+		for (InteractionFragment fragment : subFragments) {
+			int newIndex = startIndex + subFragments.indexOf(fragment) + 1;
+			// Predecessor is the last fragment
+			if (startIndex == fragments.size() - 1)
+				newIndex = startIndex;
+			fragments.move(newIndex, fragments.indexOf(fragment));
+		}
+	}
+
+	/**
+	 * Reorder message.
+	 * 
+	 * @param message
+	 *            Moved message
+	 * @param startingEndPredecessorAfter
+	 *            Fragment preceding moved execution start before the beginning of reorder operation
+	 * @param finishingEndPredecessorAfter
+	 *            Fragment preceding moved execution finish before the beginning of reorder operation
+	 */
+	public void reorder(Message message, InteractionFragment startingEndPredecessorAfter,
+			InteractionFragment finishingEndPredecessorAfter) {
+		// Get current interaction
+		Interaction interaction = message.getInteraction();
+		// Re-order fragments under the interaction
+		EList<InteractionFragment> fragments = interaction.getFragments();
+
+		// Move message start after startEndPredecessorAfter
+		int sendMsgIndex = 0;
+		if (startingEndPredecessorAfter != null) {
+			// If predecessor is the start of an execution, keep execution just after execution start
+			if (getExecution(startingEndPredecessorAfter) != null
+					&& startingEndPredecessorAfter == (getExecution(startingEndPredecessorAfter).getStart()))
+				sendMsgIndex = fragments.indexOf(getExecution(startingEndPredecessorAfter)) + 1;
+			else {
+				// Predecessor is the last fragment, the move operation will update the list
+				if (fragments.indexOf(startingEndPredecessorAfter) == fragments.size() - 1)
+					sendMsgIndex = fragments.indexOf(startingEndPredecessorAfter);
+				else
+					sendMsgIndex = fragments.indexOf(startingEndPredecessorAfter) + 1;
+			}
+		}
+		fragments.move(sendMsgIndex, fragments.indexOf(message.getSendEvent()));
+		int receiveMsgIndex = fragments.indexOf(message.getSendEvent()) + 1;
+		// Predecessor is the last fragment
+		if (sendMsgIndex == fragments.size() - 1)
+			receiveMsgIndex = sendMsgIndex;
+		fragments.move(receiveMsgIndex, fragments.indexOf(message.getReceiveEvent()));
+	}
 }
