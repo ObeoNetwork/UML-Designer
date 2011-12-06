@@ -121,6 +121,8 @@ public class SequenceServices {
 	}
 
 	private BehaviorExecutionSpecification getExecution(InteractionFragment occurence) {
+		if (occurence == null)
+			return null;
 		Map<InteractionFragment, BehaviorExecutionSpecification> behaviors = new HashMap<InteractionFragment, BehaviorExecutionSpecification>();
 		for (InteractionFragment fragment : occurence.getEnclosingInteraction().getFragments()) {
 			if (fragment instanceof BehaviorExecutionSpecification) {
@@ -353,6 +355,7 @@ public class SequenceServices {
 			NamedElement finishingEndPredecessor) {
 		Lifeline source = getLifeline(sourceFragment);
 		Lifeline target = getLifeline(targetFragment);
+		BehaviorExecutionSpecification predecessorExecution = getExecution((InteractionFragment)startingEndPredecessor);
 
 		UMLFactory factory = UMLFactory.eINSTANCE;
 		EList<InteractionFragment> fragments = interaction.getFragments();
@@ -423,13 +426,10 @@ public class SequenceServices {
 		// Add message after starting end predecessor
 		fragments.add(senderEventMessage);
 		// If predecessor is the beginning of an execution add message after the execution
-		if (startingEndPredecessor != null
-				&& startingEndPredecessor instanceof OccurrenceSpecification
-				&& getExecution((InteractionFragment)startingEndPredecessor) != null
-				&& startingEndPredecessor.equals(getExecution((InteractionFragment)startingEndPredecessor)
-						.getStart()))
-			fragments.move(fragments.indexOf(getExecution((InteractionFragment)startingEndPredecessor)) + 1,
-					senderEventMessage);
+		if (startingEndPredecessor != null && startingEndPredecessor instanceof OccurrenceSpecification
+				&& predecessorExecution != null
+				&& startingEndPredecessor.equals(predecessorExecution.getStart()))
+			fragments.move(fragments.indexOf(predecessorExecution) + 1, senderEventMessage);
 		// Else set it directly after the predecessor
 		else
 			fragments.move(fragments.indexOf(startingEndPredecessor) + 1, senderEventMessage);
@@ -485,6 +485,7 @@ public class SequenceServices {
 			NamedElement finishingEndPredecessor) {
 		Lifeline source = getLifeline(sourceFragment);
 		Lifeline target = getLifeline(targetFragment);
+		BehaviorExecutionSpecification predecessorExecution = getExecution((InteractionFragment)startingEndPredecessor);
 
 		UMLFactory factory = UMLFactory.eINSTANCE;
 		EList<InteractionFragment> fragments = interaction.getFragments();
@@ -576,10 +577,10 @@ public class SequenceServices {
 		// If predecessor is the beginning of an execution add message after the execution
 		if (startingEndPredecessor != null
 				&& startingEndPredecessor instanceof OccurrenceSpecification
-				&& getExecution((InteractionFragment)startingEndPredecessor) != null
-				&& startingEndPredecessor.equals(getExecution((InteractionFragment)startingEndPredecessor)
+				&& predecessorExecution != null
+				&& startingEndPredecessor.equals(predecessorExecution
 						.getStart()))
-			fragments.move(fragments.indexOf(getExecution((InteractionFragment)startingEndPredecessor)) + 1,
+			fragments.move(fragments.indexOf(predecessorExecution) + 1,
 					senderEventMessage);
 		// Else set it directly after the predecessor
 		else
@@ -596,35 +597,6 @@ public class SequenceServices {
 
 		fragments.add(receiverEventReplyMessage);
 		fragments.move(fragments.indexOf(senderEventReplyMessage) + 1, receiverEventReplyMessage);
-
-		// // Split source execution
-		// if (sourceFragment instanceof BehaviorExecutionSpecification) {
-		// BehaviorExecutionSpecification splitSourceExec = factory.createBehaviorExecutionSpecification();
-		// splitSourceExec.setName(sourceFragment.getName());
-		// splitSourceExec.getCovereds().add(source);
-		// splitSourceExec.setBehavior(((BehaviorExecutionSpecification)sourceFragment).getBehavior());
-		//
-		// // Create split execution end occurrence
-		// ExecutionOccurrenceSpecification endSplitSourceExec = factory
-		// .createExecutionOccurrenceSpecification();
-		// endSplitSourceExec.setName(sourceFragment.getName() + "_finish2");
-		//
-		// // Set split source execution start to reply message receiver
-		// splitSourceExec.setStart(receiverEventReplyMessage);
-		// splitSourceExec.setFinish(endSplitSourceExec);
-		//
-		// // Remove old end
-		// fragments.remove(((BehaviorExecutionSpecification)sourceFragment).getFinish());
-		//
-		// // Set new end
-		// ((BehaviorExecutionSpecification)sourceFragment).setFinish(senderEventMessage);
-		//
-		// // Add new split execution and split execution end
-		// fragments.add(splitSourceExec);
-		// fragments.move(fragments.indexOf(receiverEventReplyMessage) + 1, splitSourceExec);
-		// fragments.add(endSplitSourceExec);
-		// fragments.move(fragments.indexOf(splitSourceExec) + 1, endSplitSourceExec);
-		// }
 	}
 
 	/**
