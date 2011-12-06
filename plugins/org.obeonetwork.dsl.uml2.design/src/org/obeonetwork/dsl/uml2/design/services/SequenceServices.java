@@ -38,7 +38,7 @@ import org.eclipse.uml2.uml.OpaqueBehavior;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.UMLFactory;
-import org.obeonetwork.dsl.uml2.design.services.internal.InteractionServices;
+import org.obeonetwork.dsl.uml2.design.services.internal.NamedElementServices;
 
 import fr.obeo.dsl.viewpoint.DDiagram;
 import fr.obeo.dsl.viewpoint.DEdge;
@@ -763,7 +763,7 @@ public class SequenceServices {
 	public void createInteraction(EObject pkg) {
 		UMLFactory factory = UMLFactory.eINSTANCE;
 		Interaction interaction = factory.createInteraction();
-		interaction.setName(InteractionServices.getNewInteractionName((Package)pkg));
+		interaction.setName(NamedElementServices.getNewInteractionName((Package)pkg));
 		((Package)pkg).getPackagedElements().add(interaction);
 	}
 
@@ -853,5 +853,60 @@ public class SequenceServices {
 		if (sendMsgIndex == fragments.size() - 1)
 			receiveMsgIndex = sendMsgIndex;
 		fragments.move(receiveMsgIndex, fragments.indexOf(message.getReceiveEvent()));
+	}
+
+	/**
+	 * Create an operation from a lifeline. Create the operation in the class and the execution on the
+	 * lifeline.
+	 * 
+	 * @param lifeline
+	 *            Lifeline
+	 * @param startingEndPredecessor
+	 *            Predecessor
+	 */
+	public void createOperation(Lifeline lifeline, NamedElement startingEndPredecessor) {
+		// Get associated class
+		org.eclipse.uml2.uml.Class type = (org.eclipse.uml2.uml.Class)lifeline.getRepresents().getType();
+		Operation operation = OperationServices.createOperation(type);
+		// Create execution
+		createExecution(lifeline.getInteraction(), lifeline, operation, startingEndPredecessor);
+	}
+
+	/**
+	 * Create an operation from a lifeline. Create the operation in the class and the asynchronous message in
+	 * the interaction.
+	 * 
+	 * @param lifeline
+	 *            Lifeline
+	 * @param startingEndPredecessor
+	 *            Predecessor
+	 */
+	public void createOperationAndAsynchMessage(Lifeline target, Lifeline source,
+			NamedElement startingEndPredecessor, NamedElement finishingEndPredecessor) {
+		// Get associated class
+		org.eclipse.uml2.uml.Class type = (org.eclipse.uml2.uml.Class)target.getRepresents().getType();
+		Operation operation = OperationServices.createOperation(type);
+		// Create message
+		createAsynchronousMessage(target.getInteraction(), source, target, operation, startingEndPredecessor,
+				finishingEndPredecessor);
+	}
+
+	/**
+	 * Create an operation from a lifeline. Create the operation in the class and the execution on the
+	 * lifeline.
+	 * 
+	 * @param lifeline
+	 *            Lifeline
+	 * @param startingEndPredecessor
+	 *            Predecessor
+	 */
+	public void createOperationAndSynchMessage(Lifeline target, Lifeline source,
+			NamedElement startingEndPredecessor, NamedElement finishingEndPredecessor) {
+		// Get associated class
+		org.eclipse.uml2.uml.Class type = (org.eclipse.uml2.uml.Class)target.getRepresents().getType();
+		Operation operation = OperationServices.createOperation(type);
+		// Create message
+		createSynchronousMessage(target.getInteraction(), source, target, operation, startingEndPredecessor,
+				finishingEndPredecessor);
 	}
 }
