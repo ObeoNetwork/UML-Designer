@@ -575,13 +575,10 @@ public class SequenceServices {
 		// Add message after starting end predecessor
 		fragments.add(senderEventMessage);
 		// If predecessor is the beginning of an execution add message after the execution
-		if (startingEndPredecessor != null
-				&& startingEndPredecessor instanceof OccurrenceSpecification
+		if (startingEndPredecessor != null && startingEndPredecessor instanceof OccurrenceSpecification
 				&& predecessorExecution != null
-				&& startingEndPredecessor.equals(predecessorExecution
-						.getStart()))
-			fragments.move(fragments.indexOf(predecessorExecution) + 1,
-					senderEventMessage);
+				&& startingEndPredecessor.equals(predecessorExecution.getStart()))
+			fragments.move(fragments.indexOf(predecessorExecution) + 1, senderEventMessage);
 		// Else set it directly after the predecessor
 		else
 			fragments.move(fragments.indexOf(startingEndPredecessor) + 1, senderEventMessage);
@@ -775,15 +772,27 @@ public class SequenceServices {
 		subFragments.addAll(fragments.subList(fragments.indexOf(execution.getStart()) + 1,
 				fragments.indexOf(execution.getFinish()) + 1));
 
-		fragments.move(startIndex, fragments.indexOf(execution.getStart()));
+		// If execution start is a message move the message start and receive
+		if (execution.getStart() instanceof MessageOccurrenceSpecification)
+			reorder(((MessageOccurrenceSpecification)execution.getStart()).getMessage(),
+					startingEndPredecessorAfter, null);
+		else
+			fragments.move(startIndex, fragments.indexOf(execution.getStart()));
 
 		// Move all the elements attached to the moved execution
 		for (InteractionFragment fragment : subFragments) {
-			int newIndex = startIndex + subFragments.indexOf(fragment) + 1;
-			// Predecessor is the last fragment
-			if (startIndex == fragments.size() - 1)
-				newIndex = startIndex;
-			fragments.move(newIndex, fragments.indexOf(fragment));
+
+			// If execution end is a message move the message start and receive
+			if (fragment.equals(execution.getFinish())
+					&& execution.getFinish() instanceof MessageOccurrenceSpecification)
+				reorder(((MessageOccurrenceSpecification)execution.getFinish()).getMessage(), execution, null);
+			else {
+				int newIndex = startIndex + subFragments.indexOf(fragment) + 1;
+				// Predecessor is the last fragment
+				if (startIndex == fragments.size() - 1)
+					newIndex = startIndex;
+				fragments.move(newIndex, fragments.indexOf(fragment));
+			}
 		}
 	}
 
