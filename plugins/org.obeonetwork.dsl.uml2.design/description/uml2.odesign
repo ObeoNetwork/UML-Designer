@@ -2292,12 +2292,12 @@
             <ownedTools xsi:type="tool:DiagramCreationDescription" name="Activity Diagram" browseExpression="&lt;%eContents.filter(&quot;Activity&quot;).nLast()%>" diagramDescription="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']">
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$containerView.target%>">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%eClass.name == &quot;Package&quot;%>">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;Package&quot;)%>">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Activity" referenceName="packagedElement">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="New Activity"/>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%eClass.name == &quot;Class&quot;%>">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;BehavioredClassifier&quot;)%>">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Activity" referenceName="ownedBehavior">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="New Activity"/>
                     </subModelOperations>
