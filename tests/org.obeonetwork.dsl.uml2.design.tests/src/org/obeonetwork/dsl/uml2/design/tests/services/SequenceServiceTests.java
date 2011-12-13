@@ -28,6 +28,8 @@ import org.eclipse.uml2.uml.Lifeline;
 import org.eclipse.uml2.uml.Message;
 import org.eclipse.uml2.uml.MessageOccurrenceSpecification;
 import org.eclipse.uml2.uml.Model;
+import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.OccurrenceSpecification;
 import org.eclipse.uml2.uml.Operation;
 import org.obeonetwork.dsl.uml2.design.services.SequenceServices;
@@ -37,6 +39,7 @@ import org.obeonetwork.dsl.uml2.design.tests.Activator;
  * Unit tests on sequence services.
  * 
  * @author Gonzague Reydet <a href="mailto:gonzague.reydet@obeo.fr">gonzague.reydet@obeo.fr</a>
+ * @author Mélanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class SequenceServiceTests extends TestCase {
 	/**
@@ -49,14 +52,20 @@ public class SequenceServiceTests extends TestCase {
 	 */
 	private SequenceServices sequenceServices;
 
-	/**
-	 * Constructor.
-	 */
 	private Interaction getInteraction(String resourceUri, String name) {
 		final ResourceSet rset = new ResourceSetImpl();
 		final Resource resource = rset.getResource(URI.createPlatformPluginURI(resourceUri, true), true);
 
 		return (Interaction)((Model)resource.getContents().get(0)).getOwnedMember(name);
+	}
+
+	private org.eclipse.uml2.uml.Class getClass(Interaction interaction, String... names) {
+		NamedElement element = interaction.getModel();
+		for (String name : names) {
+			if (element instanceof Namespace)
+				element = ((Namespace)element).getOwnedMember(name);
+		}
+		return (org.eclipse.uml2.uml.Class)element;
 	}
 
 	/**
@@ -70,7 +79,8 @@ public class SequenceServiceTests extends TestCase {
 	}
 
 	/**
-	 * Test the executionSemanticCandidates() service against {@link Lifeline}.
+	 * Test the {@link SequenceServices#executionSemanticCandidates(Lifeline) executionSemanticCandidates}
+	 * service against {@link Lifeline}.
 	 */
 	public void testExecutionSemanticCandidatesLifeline() {
 		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_5");
@@ -85,7 +95,8 @@ public class SequenceServiceTests extends TestCase {
 	}
 
 	/**
-	 * Test the executionSemanticCandidates() service against {@link ExecutionSpecification}.
+	 * Test the {@link SequenceServices#executionSemanticCandidates(ExecutionSpecification)
+	 * executionSemanticCandidates} service against {@link ExecutionSpecification}.
 	 */
 	public void testExecutionSemanticCandidatesExecutionSpecification() {
 		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_5");
@@ -106,7 +117,8 @@ public class SequenceServiceTests extends TestCase {
 	}
 
 	/**
-	 * Test findOccurrenceSpecificationContext() service.
+	 * Test {@link SequenceServices#findOccurrenceSpecificationContext(OccurrenceSpecification)
+	 * findOccurrenceSpecificationContext} service.
 	 * 
 	 * @throws Exception
 	 *             in case of error.
@@ -143,7 +155,8 @@ public class SequenceServiceTests extends TestCase {
 	}
 
 	/**
-	 * Test createExecution service. Create a new execution on an empty lifeline.
+	 * Test {@link SequenceServices#createExecution(Interaction, NamedElement, Operation, NamedElement)
+	 * createExecution} service. Create a new execution on an empty lifeline.
 	 * 
 	 * @throws Exception
 	 *             in case of error
@@ -171,7 +184,8 @@ public class SequenceServiceTests extends TestCase {
 	}
 
 	/**
-	 * Test createExecution service. Import an execution on an empty lifeline.
+	 * Test {@link SequenceServices#createExecution(Interaction, NamedElement, Operation, NamedElement)
+	 * createExecution} service. Import an execution on an empty lifeline.
 	 * 
 	 * @throws Exception
 	 *             in case of error
@@ -200,7 +214,8 @@ public class SequenceServiceTests extends TestCase {
 	}
 
 	/**
-	 * Test createExecution service. Create an execution on an existing execution.
+	 * Test {@link SequenceServices#createExecution(Interaction, NamedElement, Operation, NamedElement)
+	 * createExecution} service. Create an execution on an existing execution.
 	 * 
 	 * @throws Exception
 	 *             in case of error
@@ -229,7 +244,9 @@ public class SequenceServiceTests extends TestCase {
 	}
 
 	/**
-	 * Test createAsynchronousMessage service. Create an asynchronous message between to empty lifelines.
+	 * Test
+	 * {@link SequenceServices#createAsynchronousMessage(Interaction, NamedElement, NamedElement, Operation, NamedElement, NamedElement)
+	 * createAsynchronousMessage} service. Create an asynchronous message between to empty lifelines.
 	 * 
 	 * @throws Exception
 	 *             in case of error
@@ -254,7 +271,9 @@ public class SequenceServiceTests extends TestCase {
 	}
 
 	/**
-	 * Test createAsynchronousMessage service. Create an asynchronous message between to empty lifelines.
+	 * Test
+	 * {@link SequenceServices#createAsynchronousMessage(Interaction, NamedElement, NamedElement, Operation, NamedElement, NamedElement)
+	 * createAsynchronousMessage} service. Create an asynchronous message between to empty lifelines.
 	 * 
 	 * @throws Exception
 	 *             in case of error
@@ -305,7 +324,9 @@ public class SequenceServiceTests extends TestCase {
 	}
 
 	/**
-	 * Test createAsynchronousMessage service. Import an asynchronous message between to empty lifelines.
+	 * Test
+	 * {@link SequenceServices#createAsynchronousMessage(Interaction, NamedElement, NamedElement, Operation, NamedElement, NamedElement)
+	 * createAsynchronousMessage} service. Import an asynchronous message between to empty lifelines.
 	 * 
 	 * @throws Exception
 	 *             in case of error
@@ -346,8 +367,10 @@ public class SequenceServiceTests extends TestCase {
 	}
 
 	/**
-	 * Test createAsynchronousMessage service. Import an asynchronous message between an existing execution
-	 * and an empty lifeline.
+	 * Test
+	 * {@link SequenceServices#createAsynchronousMessage(Interaction, NamedElement, NamedElement, Operation, NamedElement, NamedElement)
+	 * createAsynchronousMessage} service. Import an asynchronous message between an existing execution and an
+	 * empty lifeline.
 	 * 
 	 * @throws Exception
 	 *             in case of error
@@ -414,8 +437,10 @@ public class SequenceServiceTests extends TestCase {
 	}
 
 	/**
-	 * Test createAsynchronousMessage service. Import two asynchronous messages between an existing execution
-	 * and an empty lifeline.
+	 * Test
+	 * {@link SequenceServices#createAsynchronousMessage(Interaction, NamedElement, NamedElement, Operation, NamedElement, NamedElement)
+	 * createAsynchronousMessage} service. Import two asynchronous messages between an existing execution and
+	 * an empty lifeline.
 	 * 
 	 * @throws Exception
 	 *             in case of error
@@ -512,8 +537,9 @@ public class SequenceServiceTests extends TestCase {
 	}
 
 	/**
-	 * Test createAsynchronousMessage service. Import an asynchronous message between an existing execution
-	 * and an empty lifeline.
+	 * Test
+	 * {@link SequenceServices#createAsynchronousMessage(Interaction, NamedElement, NamedElement, Operation, NamedElement, NamedElement)
+	 * createAsynchronousMessage} service. Import an asynchronous message between two existing executions.
 	 * 
 	 * @throws Exception
 	 *             in case of error
@@ -587,7 +613,9 @@ public class SequenceServiceTests extends TestCase {
 	}
 
 	/**
-	 * Test createSynchronousMessage service. Create a synchronous message between to empty lifelines.
+	 * Test
+	 * {@link SequenceServices#createSynchronousMessage(Interaction, NamedElement, NamedElement, Operation, NamedElement, NamedElement)
+	 * createSynchronousMessage} service. Create a synchronous message between to empty lifelines.
 	 * 
 	 * @throws Exception
 	 *             in case of error
@@ -624,8 +652,10 @@ public class SequenceServiceTests extends TestCase {
 	}
 
 	/**
-	 * Test createSynchronousMessage service. Create a synchronous message between an existing execution and
-	 * an empty lifeline.
+	 * Test
+	 * {@link SequenceServices#createSynchronousMessage(Interaction, NamedElement, NamedElement, Operation, NamedElement, NamedElement)
+	 * createSynchronousMessage} service. Create a synchronous message between an existing execution and an
+	 * empty lifeline.
 	 * 
 	 * @throws Exception
 	 *             in case of error
@@ -689,8 +719,206 @@ public class SequenceServiceTests extends TestCase {
 	}
 
 	/**
-	 * Test createSynchronousMessage service. Create a synchronous message between an existing execution and
-	 * an other execution.
+	 * Test
+	 * {@link SequenceServices#createOperationAndSynchMessage(NamedElement, NamedElement, NamedElement, NamedElement)
+	 * createOperationAndSynchMessage} service. Create a synchronous message between an existing execution and
+	 * an empty lifeline.
+	 * 
+	 * @throws Exception
+	 *             in case of error
+	 */
+	public void testCreateSynchronousMessageAndOperationOnExecution() throws Exception {
+		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_4");
+		Lifeline source = interaction.getLifeline("consumers");
+		Lifeline target = interaction.getLifeline("producers");
+		ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("compute");
+
+		sequenceServices.createOperationAndSynchMessage(target, source, execution.getStart(),
+				execution.getStart());
+
+		List<InteractionFragment> fragments = interaction.getFragments();
+		assertEquals(11, fragments.size());
+		InteractionFragment computeStart = fragments.get(0);
+		InteractionFragment compute = fragments.get(1);
+		InteractionFragment operation0MsgSend = fragments.get(2);
+		InteractionFragment operation0MsgReceive = fragments.get(3);
+		InteractionFragment operation0 = fragments.get(4);
+		InteractionFragment operation0MsgReplySend = fragments.get(5);
+		InteractionFragment operation0MsgReplyReceive = fragments.get(6);
+		InteractionFragment getStart = fragments.get(7);
+		InteractionFragment get = fragments.get(8);
+		InteractionFragment getFinish = fragments.get(9);
+		InteractionFragment computeFinish = fragments.get(10);
+
+		// Operation Operation_0 in class Producer
+		org.eclipse.uml2.uml.Class producer = getClass(interaction, "Structure", "Producer");
+		assertEquals("Operation_0", producer.getOperations().get(producer.getOperations().size() - 1)
+				.getName());
+
+		// Execution compute
+		Behavior computeBehavior = interaction.getOwnedBehaviors().get(0);
+		assertEquals("Opaque behavior does not exist", "compute", computeBehavior.getName());
+		assertTrue(computeStart instanceof ExecutionOccurrenceSpecification);
+		assertEquals("compute_start", computeStart.getName());
+		assertTrue(computeFinish instanceof ExecutionOccurrenceSpecification);
+		assertEquals("compute_finish", computeFinish.getName());
+		assertTrue(compute instanceof BehaviorExecutionSpecification);
+		assertEquals("compute", compute.getName());
+		assertEquals(((BehaviorExecutionSpecification)compute).getStart(), computeStart);
+		assertEquals(((BehaviorExecutionSpecification)compute).getFinish(), computeFinish);
+		assertNotNull(((BehaviorExecutionSpecification)compute).getCovered(source.getName()));
+		assertEquals(computeBehavior, ((BehaviorExecutionSpecification)compute).getBehavior());
+
+		// Message Operation_0
+		Message message = interaction.getMessages().get(0);
+		assertEquals("Message does not exist", "Operation_0", message.getName());
+		assertTrue(operation0MsgSend instanceof MessageOccurrenceSpecification);
+		assertEquals("Operation_0_sender", operation0MsgSend.getName());
+		assertTrue(operation0MsgReceive instanceof MessageOccurrenceSpecification);
+		assertEquals("Operation_0_receiver", operation0MsgReceive.getName());
+		assertEquals(message.getSendEvent(), operation0MsgSend);
+		assertEquals(message.getReceiveEvent(), operation0MsgReceive);
+		assertNotNull(((MessageOccurrenceSpecification)operation0MsgSend).getCovered(source.getName()));
+		assertNotNull(((MessageOccurrenceSpecification)operation0MsgReceive).getCovered(target.getName()));
+
+		// Execution Operation_0
+		Behavior operation0Behavior = interaction.getOwnedBehaviors().get(2);
+		assertEquals("Opaque behavior does not exist", "Operation_0", operation0Behavior.getName());
+		assertTrue(operation0MsgReceive instanceof MessageOccurrenceSpecification);
+		assertEquals("Operation_0_receiver", operation0MsgReceive.getName());
+		assertTrue(operation0MsgReplySend instanceof MessageOccurrenceSpecification);
+		assertEquals("Operation_0_reply_sender", operation0MsgReplySend.getName());
+		assertTrue(operation0 instanceof BehaviorExecutionSpecification);
+		assertEquals("Operation_0", operation0.getName());
+		assertEquals(((BehaviorExecutionSpecification)operation0).getStart(), operation0MsgReceive);
+		assertEquals(((BehaviorExecutionSpecification)operation0).getFinish(), operation0MsgReplySend);
+		assertNotNull(((BehaviorExecutionSpecification)operation0).getCovered(target.getName()));
+		assertEquals(operation0Behavior, ((BehaviorExecutionSpecification)operation0).getBehavior());
+
+		// Reply message Operation_0
+		Message messageReply = interaction.getMessages().get(1);
+		assertEquals("Message does not exist", "Operation_0_reply", messageReply.getName());
+		assertTrue(operation0MsgReplySend instanceof MessageOccurrenceSpecification);
+		assertEquals("Operation_0_reply_sender", operation0MsgReplySend.getName());
+		assertTrue(operation0MsgReplyReceive instanceof MessageOccurrenceSpecification);
+		assertEquals("Operation_0_reply_receiver", operation0MsgReplyReceive.getName());
+		assertEquals(messageReply.getSendEvent(), operation0MsgReplySend);
+		assertEquals(messageReply.getReceiveEvent(), operation0MsgReplyReceive);
+		assertNotNull(((MessageOccurrenceSpecification)operation0MsgReplySend).getCovered(target.getName()));
+		assertNotNull(((MessageOccurrenceSpecification)operation0MsgReplyReceive)
+				.getCovered(source.getName()));
+
+		// Execution get
+		Behavior getBehavior = interaction.getOwnedBehaviors().get(1);
+		assertEquals("Opaque behavior does not exist", "get", getBehavior.getName());
+		assertTrue(getStart instanceof ExecutionOccurrenceSpecification);
+		assertEquals("get_start", getStart.getName());
+		assertTrue(getFinish instanceof ExecutionOccurrenceSpecification);
+		assertEquals("get_finish", getFinish.getName());
+		assertTrue(get instanceof BehaviorExecutionSpecification);
+		assertEquals("get", get.getName());
+		assertEquals(((BehaviorExecutionSpecification)get).getStart(), getStart);
+		assertEquals(((BehaviorExecutionSpecification)get).getFinish(), getFinish);
+		assertNotNull(((BehaviorExecutionSpecification)get).getCovered(target.getName()));
+		assertEquals(getBehavior, ((BehaviorExecutionSpecification)get).getBehavior());
+	}
+
+	/**
+	 * Test
+	 * {@link SequenceServices#createOperationAndAsynchMessage(NamedElement, NamedElement, NamedElement, NamedElement)
+	 * createOperationAndAsynchMessage} service. Create an asynchronous message between an existing execution
+	 * and an empty lifeline.
+	 * 
+	 * @throws Exception
+	 *             in case of error
+	 */
+	public void testCreateAsynchronousMessageAndOperationOnExecution() throws Exception {
+		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_4");
+		Lifeline source = interaction.getLifeline("consumers");
+		Lifeline target = interaction.getLifeline("producers");
+		ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("compute");
+
+		sequenceServices.createOperationAndAsynchMessage(target, source, execution.getStart(),
+				execution.getStart());
+
+		List<InteractionFragment> fragments = interaction.getFragments();
+		assertEquals(10, fragments.size());
+		InteractionFragment computeStart = fragments.get(0);
+		InteractionFragment compute = fragments.get(1);
+		InteractionFragment operation0MsgSend = fragments.get(2);
+		InteractionFragment operation0MsgReceive = fragments.get(3);
+		InteractionFragment operation0 = fragments.get(4);
+		InteractionFragment operation0Finish = fragments.get(5);
+		InteractionFragment getStart = fragments.get(6);
+		InteractionFragment get = fragments.get(7);
+		InteractionFragment getFinish = fragments.get(8);
+		InteractionFragment computeFinish = fragments.get(9);
+
+		// Operation Operation_0 in class Producer
+		org.eclipse.uml2.uml.Class producer = getClass(interaction, "Structure", "Producer");
+		assertEquals("Operation_0", producer.getOperations().get(producer.getOperations().size() - 1)
+				.getName());
+
+		// Execution compute
+		Behavior computeBehavior = interaction.getOwnedBehaviors().get(0);
+		assertEquals("Opaque behavior does not exist", "compute", computeBehavior.getName());
+		assertTrue(computeStart instanceof ExecutionOccurrenceSpecification);
+		assertEquals("compute_start", computeStart.getName());
+		assertTrue(computeFinish instanceof ExecutionOccurrenceSpecification);
+		assertEquals("compute_finish", computeFinish.getName());
+		assertTrue(compute instanceof BehaviorExecutionSpecification);
+		assertEquals("compute", compute.getName());
+		assertEquals(((BehaviorExecutionSpecification)compute).getStart(), computeStart);
+		assertEquals(((BehaviorExecutionSpecification)compute).getFinish(), computeFinish);
+		assertNotNull(((BehaviorExecutionSpecification)compute).getCovered(source.getName()));
+		assertEquals(computeBehavior, ((BehaviorExecutionSpecification)compute).getBehavior());
+
+		// Message Operation_0
+		Message message = interaction.getMessages().get(0);
+		assertEquals("Message does not exist", "Operation_0", message.getName());
+		assertTrue(operation0MsgSend instanceof MessageOccurrenceSpecification);
+		assertEquals("Operation_0_sender", operation0MsgSend.getName());
+		assertTrue(operation0MsgReceive instanceof MessageOccurrenceSpecification);
+		assertEquals("Operation_0_receiver", operation0MsgReceive.getName());
+		assertEquals(message.getSendEvent(), operation0MsgSend);
+		assertEquals(message.getReceiveEvent(), operation0MsgReceive);
+		assertNotNull(((MessageOccurrenceSpecification)operation0MsgSend).getCovered(source.getName()));
+		assertNotNull(((MessageOccurrenceSpecification)operation0MsgReceive).getCovered(target.getName()));
+
+		// Execution Operation_0
+		Behavior operation0Behavior = interaction.getOwnedBehaviors().get(2);
+		assertEquals("Opaque behavior does not exist", "Operation_0", operation0Behavior.getName());
+		assertTrue(operation0MsgReceive instanceof MessageOccurrenceSpecification);
+		assertEquals("Operation_0_receiver", operation0MsgReceive.getName());
+		assertTrue(operation0Finish instanceof ExecutionOccurrenceSpecification);
+		assertEquals("Operation_0_finish", operation0Finish.getName());
+		assertTrue(operation0 instanceof BehaviorExecutionSpecification);
+		assertEquals("Operation_0", operation0.getName());
+		assertEquals(((BehaviorExecutionSpecification)operation0).getStart(), operation0MsgReceive);
+		assertEquals(((BehaviorExecutionSpecification)operation0).getFinish(), operation0Finish);
+		assertNotNull(((BehaviorExecutionSpecification)operation0).getCovered(target.getName()));
+		assertEquals(operation0Behavior, ((BehaviorExecutionSpecification)operation0).getBehavior());
+
+		// Execution get
+		Behavior getBehavior = interaction.getOwnedBehaviors().get(1);
+		assertEquals("Opaque behavior does not exist", "get", getBehavior.getName());
+		assertTrue(getStart instanceof ExecutionOccurrenceSpecification);
+		assertEquals("get_start", getStart.getName());
+		assertTrue(getFinish instanceof ExecutionOccurrenceSpecification);
+		assertEquals("get_finish", getFinish.getName());
+		assertTrue(get instanceof BehaviorExecutionSpecification);
+		assertEquals("get", get.getName());
+		assertEquals(((BehaviorExecutionSpecification)get).getStart(), getStart);
+		assertEquals(((BehaviorExecutionSpecification)get).getFinish(), getFinish);
+		assertNotNull(((BehaviorExecutionSpecification)get).getCovered(target.getName()));
+		assertEquals(getBehavior, ((BehaviorExecutionSpecification)get).getBehavior());
+	}
+
+	/**
+	 * Test
+	 * {@link SequenceServices#createSynchronousMessage(Interaction, NamedElement, NamedElement, Operation, NamedElement, NamedElement)
+	 * createSynchronousMessage} service. Create a synchronous message between an existing execution and an
+	 * other execution.
 	 * 
 	 * @throws Exception
 	 *             in case of error
@@ -777,8 +1005,10 @@ public class SequenceServiceTests extends TestCase {
 	}
 
 	/**
-	 * Test createSynchronousMessage service. Create a synchronous message between an existing execution and
-	 * an empty lifeline.
+	 * Test
+	 * {@link SequenceServices#createSynchronousMessage(Interaction, NamedElement, NamedElement, Operation, NamedElement, NamedElement)
+	 * createSynchronousMessage} service. Create a synchronous message between an existing execution and an
+	 * empty lifeline.
 	 * 
 	 * @throws Exception
 	 *             in case of error
@@ -855,7 +1085,9 @@ public class SequenceServiceTests extends TestCase {
 	}
 
 	/**
-	 * Test createSynchronousMessage service. Import a synchronous message between to empty lifelines.
+	 * Test
+	 * {@link SequenceServices#createSynchronousMessage(Interaction, NamedElement, NamedElement, Operation, NamedElement, NamedElement)
+	 * createSynchronousMessage} service. Import a synchronous message between to empty lifelines.
 	 * 
 	 * @throws Exception
 	 *             in case of error
@@ -905,7 +1137,9 @@ public class SequenceServiceTests extends TestCase {
 	}
 
 	/**
-	 * Test createSynchronousMessage service. Create a synchronous message between an existing execution and a
+	 * Test
+	 * {@link SequenceServices#createSynchronousMessage(Interaction, NamedElement, NamedElement, Operation, NamedElement, NamedElement)
+	 * createSynchronousMessage} service. Create a synchronous message between an existing execution and a
 	 * lifeline. An execution exists on the source which already defines an asynchronous message.
 	 * 
 	 * @throws Exception
@@ -1024,7 +1258,9 @@ public class SequenceServiceTests extends TestCase {
 	}
 
 	/**
-	 * Test createSynchronousMessage service. Create a synchronous message between an existing execution and a
+	 * Test
+	 * {@link SequenceServices#createSynchronousMessage(Interaction, NamedElement, NamedElement, Operation, NamedElement, NamedElement)
+	 * createSynchronousMessage} service. Create a synchronous message between an existing execution and a
 	 * lifeline. An execution exists on the source which already defines an asynchronous message.
 	 * 
 	 * @throws Exception
@@ -1144,7 +1380,8 @@ public class SequenceServiceTests extends TestCase {
 	}
 
 	/**
-	 * Test reorder service. Reorder two executions on the same lifeline. Move the second execution before the
+	 * Test {@link SequenceServices#reorder(ExecutionSpecification, InteractionFragment, InteractionFragment)
+	 * reorder} service. Reorder two executions on the same lifeline. Move the second execution before the
 	 * previous on the lifeline.
 	 * 
 	 * @throws Exception
@@ -1205,8 +1442,8 @@ public class SequenceServiceTests extends TestCase {
 	}
 
 	/**
-	 * Test reorder service. Reorder two executions on the same lifeline. Move the second execution on the
-	 * first.
+	 * Test {@link SequenceServices#reorder(ExecutionSpecification, InteractionFragment, InteractionFragment)
+	 * reorder} service. Reorder two executions on the same lifeline. Move the second execution on the first.
 	 * 
 	 * @throws Exception
 	 *             in case of error
@@ -1267,7 +1504,8 @@ public class SequenceServiceTests extends TestCase {
 	}
 
 	/**
-	 * Test reorder service. Reorder two executions on the same lifeline. Move the third execution between the
+	 * Test {@link SequenceServices#reorder(ExecutionSpecification, InteractionFragment, InteractionFragment)
+	 * reorder} service. Reorder two executions on the same lifeline. Move the third execution between the
 	 * first end the second.
 	 * 
 	 * @throws Exception
@@ -1347,7 +1585,8 @@ public class SequenceServiceTests extends TestCase {
 	}
 
 	/**
-	 * Test reorder service. Reorder two executions on different lifelines. Move the third execution after the
+	 * Test {@link SequenceServices#reorder(ExecutionSpecification, InteractionFragment, InteractionFragment)
+	 * reorder} service. Reorder two executions on different lifelines. Move the third execution after the
 	 * fourth.
 	 * 
 	 * @throws Exception
@@ -1444,7 +1683,8 @@ public class SequenceServiceTests extends TestCase {
 	}
 
 	/**
-	 * Test reorder service. Reorder two executions on different lifelines. Move the third execution after the
+	 * Test {@link SequenceServices#reorder(ExecutionSpecification, InteractionFragment, InteractionFragment)
+	 * reorder} service. Reorder two executions on different lifelines. Move the third execution after the
 	 * fourth.
 	 * 
 	 * @throws Exception
@@ -1625,8 +1865,9 @@ public class SequenceServiceTests extends TestCase {
 	}
 
 	/**
-	 * Test reorder service. Reorder two messages on the same lifelines. Move the first message after the
-	 * previous on the lifeline.
+	 * Test {@link SequenceServices#reorder(Message, InteractionFragment, InteractionFragment) reorder}
+	 * service. Reorder two messages on the same lifelines. Move the first message after the previous on the
+	 * lifeline.
 	 * 
 	 * @throws Exception
 	 *             in case of error
@@ -1682,8 +1923,8 @@ public class SequenceServiceTests extends TestCase {
 	}
 
 	/**
-	 * Test reorder service. Reorder a message and an execution. Move the message from the lifeline to the
-	 * execution.
+	 * Test {@link SequenceServices#reorder(Message, InteractionFragment, InteractionFragment) reorder}
+	 * service. Reorder a message and an execution. Move the message from the lifeline to the execution.
 	 * 
 	 * @throws Exception
 	 *             in case of error
@@ -1742,8 +1983,8 @@ public class SequenceServiceTests extends TestCase {
 	}
 
 	/**
-	 * Test reorder service. Reorder a message and an execution. Move the message from the lifeline to the
-	 * execution.
+	 * Test {@link SequenceServices#reorder(Message, InteractionFragment, InteractionFragment) reorder}
+	 * service. Reorder a message and an execution. Move the message from the lifeline to the execution.
 	 * 
 	 * @throws Exception
 	 *             in case of error
@@ -1960,8 +2201,10 @@ public class SequenceServiceTests extends TestCase {
 	}
 
 	/**
-	 * Test createAsynchronousMessage service. Create an asynchronous message between a lifeline and an
-	 * existing execution.
+	 * Test
+	 * {@link SequenceServices#createAsynchronousMessage(Interaction, NamedElement, NamedElement, Operation, NamedElement, NamedElement)
+	 * createAsynchronousMessage} service. Create an asynchronous message between a lifeline and an existing
+	 * execution.
 	 * 
 	 * @throws Exception
 	 *             in case of error
@@ -2017,7 +2260,9 @@ public class SequenceServiceTests extends TestCase {
 	}
 
 	/**
-	 * Test createSynchronousMessage service. Create a synchronous message between a lifeline and an existing
+	 * Test
+	 * {@link SequenceServices#createSynchronousMessage(Interaction, NamedElement, NamedElement, Operation, NamedElement, NamedElement)
+	 * createSynchronousMessage} service. Create a synchronous message between a lifeline and an existing
 	 * execution.
 	 * 
 	 * @throws Exception

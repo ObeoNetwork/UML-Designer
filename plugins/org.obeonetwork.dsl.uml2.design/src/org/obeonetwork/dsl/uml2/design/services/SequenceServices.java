@@ -48,6 +48,7 @@ import fr.obeo.dsl.viewpoint.DNode;
  * Utility services to manage sequence diagrams.
  * 
  * @author Gonzague Reydet <a href="mailto:gonzague.reydet@obeo.fr">gonzague.reydet@obeo.fr</a>
+ * @author Mélanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class SequenceServices {
 	/**
@@ -854,6 +855,24 @@ public class SequenceServices {
 	}
 
 	/**
+	 * Create an operation from an execution. Create the operation in the class and the execution on the
+	 * execution.
+	 * 
+	 * @param execution
+	 *            Execution
+	 * @param startingEndPredecessor
+	 *            Predecessor
+	 */
+	public void createOperation(ExecutionSpecification execution, NamedElement startingEndPredecessor) {
+		// Get associated class
+		org.eclipse.uml2.uml.Class type = (org.eclipse.uml2.uml.Class)execution.getCovereds().get(0)
+				.getRepresents().getType();
+		Operation operation = OperationServices.createOperation(type);
+		// Create execution
+		createExecution(execution.getEnclosingInteraction(), execution, operation, startingEndPredecessor);
+	}
+
+	/**
 	 * Create an operation from a lifeline. Create the operation in the class and the asynchronous message in
 	 * the interaction.
 	 * 
@@ -862,32 +881,55 @@ public class SequenceServices {
 	 * @param startingEndPredecessor
 	 *            Predecessor
 	 */
-	public void createOperationAndAsynchMessage(Lifeline target, Lifeline source,
+	public void createOperationAndAsynchMessage(NamedElement target, NamedElement source,
 			NamedElement startingEndPredecessor, NamedElement finishingEndPredecessor) {
-		// Get associated class
-		org.eclipse.uml2.uml.Class type = (org.eclipse.uml2.uml.Class)target.getRepresents().getType();
+		// Get associated class and interaction
+		org.eclipse.uml2.uml.Class type;
+		Interaction interaction;
+		if (target instanceof Lifeline) {
+			type = (org.eclipse.uml2.uml.Class)((Lifeline)target).getRepresents().getType();
+			interaction = ((Lifeline)target).getInteraction();
+		} else {
+			type = (org.eclipse.uml2.uml.Class)(((ExecutionSpecification)target).getCovereds().get(0))
+					.getRepresents().getType();
+			interaction = ((ExecutionSpecification)target).getEnclosingInteraction();
+		}
 		Operation operation = OperationServices.createOperation(type);
 		// Create message
-		createAsynchronousMessage(target.getInteraction(), source, target, operation, startingEndPredecessor,
+		createAsynchronousMessage(interaction, source, target, operation, startingEndPredecessor,
 				finishingEndPredecessor);
 	}
 
 	/**
-	 * Create an operation from a lifeline. Create the operation in the class and the execution on the
-	 * lifeline.
+	 * Create an operation from a lifeline or an execution. Create the operation in the class and the
+	 * execution on the source element.
 	 * 
-	 * @param lifeline
-	 *            Lifeline
+	 * @param target
+	 *            Target message element, it could be a lifeline or an execution
+	 * @param source
+	 *            Source messgae element, it could be a lifeline or an execution
 	 * @param startingEndPredecessor
-	 *            Predecessor
+	 *            Start predecessor
+	 * @param finishingEndPredecessor
+	 *            Finish predecessorredecessor
 	 */
-	public void createOperationAndSynchMessage(Lifeline target, Lifeline source,
+	public void createOperationAndSynchMessage(NamedElement target, NamedElement source,
 			NamedElement startingEndPredecessor, NamedElement finishingEndPredecessor) {
-		// Get associated class
-		org.eclipse.uml2.uml.Class type = (org.eclipse.uml2.uml.Class)target.getRepresents().getType();
+		// Get associated class and interaction
+		org.eclipse.uml2.uml.Class type;
+		Interaction interaction;
+		if (target instanceof Lifeline) {
+			type = (org.eclipse.uml2.uml.Class)((Lifeline)target).getRepresents().getType();
+			interaction = ((Lifeline)target).getInteraction();
+		} else {
+			type = (org.eclipse.uml2.uml.Class)(((ExecutionSpecification)target).getCovereds().get(0))
+					.getRepresents().getType();
+			interaction = ((ExecutionSpecification)target).getEnclosingInteraction();
+		}
 		Operation operation = OperationServices.createOperation(type);
 		// Create message
-		createSynchronousMessage(target.getInteraction(), source, target, operation, startingEndPredecessor,
+		createSynchronousMessage(interaction, source, target, operation, startingEndPredecessor,
 				finishingEndPredecessor);
 	}
+
 }
