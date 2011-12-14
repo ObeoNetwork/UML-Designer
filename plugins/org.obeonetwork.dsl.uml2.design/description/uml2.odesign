@@ -2659,6 +2659,16 @@
               <representationNameVariable name="diagramName"/>
             </ownedTools>
           </subSections>
+          <subSections name="menu">
+            <ownedTools xsi:type="tool:PopupMenu" name="PM_LinkToExecution" label="Link to execution" forceRefresh="true">
+              <menuItemDescription xsi:type="tool:OperationAction" name="AsStart" label="As execution start" forceRefresh="true">
+                <view name="views"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%linkToExecutionAsStart()%>"/>
+                </initialOperation>
+              </menuItemDescription>
+            </ownedTools>
+          </subSections>
         </toolSections>
         <toolSections name="Lifelines" icon="/org.obeonetwork.dsl.uml2.design/icons/LifelineCreation.gif">
           <ownedTools xsi:type="tool:NodeCreationDescription" name="CR_TypedLifeline" label="Lifeline Import" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']">

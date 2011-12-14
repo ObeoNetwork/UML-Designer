@@ -43,6 +43,10 @@ import org.obeonetwork.dsl.uml2.design.services.internal.NamedElementServices;
 import fr.obeo.dsl.viewpoint.DDiagram;
 import fr.obeo.dsl.viewpoint.DEdge;
 import fr.obeo.dsl.viewpoint.DNode;
+import fr.obeo.dsl.viewpoint.DRepresentation;
+import fr.obeo.dsl.viewpoint.business.api.dialect.DialectManager;
+import fr.obeo.dsl.viewpoint.business.api.session.Session;
+import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
 
 /**
  * Utility services to manage sequence diagrams.
@@ -364,12 +368,9 @@ public class SequenceServices {
 		// Create message
 		Message message = factory.createMessage();
 		StringBuffer operationName;
-		if (operation == null && targetFragment instanceof Lifeline)
+		if (operation == null)
 			operationName = new StringBuffer("Message_").append(interaction.getMessages().size());
-		else if (targetFragment instanceof BehaviorExecutionSpecification) {
-			// If message finishes on an execution, reference the operation associated to the execution
-			operationName = new StringBuffer(targetFragment.getName());
-		} else
+		else
 			operationName = new StringBuffer(operation.getName());
 
 		message.setName(operationName.toString());
@@ -406,11 +407,8 @@ public class SequenceServices {
 			execution.setName(operationName.toString());
 			execution.getCovereds().add(target);
 			execution.setBehavior(behavior);
-		} else if (targetFragment instanceof BehaviorExecutionSpecification) {
-			execution = (BehaviorExecutionSpecification)targetFragment;
-			fragments.remove(execution.getStart());
-			fragments.remove(execution.getFinish());
 		}
+
 		ExecutionOccurrenceSpecification endExec = null;
 		if (execution != null) {
 			execution.setStart(receiverEventMessage);
@@ -494,12 +492,9 @@ public class SequenceServices {
 		// Create message
 		Message message = factory.createMessage();
 		StringBuffer operationName;
-		if (operation == null && targetFragment instanceof Lifeline)
+		if (operation == null)
 			operationName = new StringBuffer("Message_").append(interaction.getMessages().size());
-		else if (targetFragment instanceof BehaviorExecutionSpecification) {
-			// If message finishes on an execution, reference the operation associated to the execution
-			operationName = new StringBuffer(targetFragment.getName());
-		} else
+		else
 			operationName = new StringBuffer(operation.getName());
 
 		message.setName(operationName.toString());
@@ -536,10 +531,6 @@ public class SequenceServices {
 			execution.setName(operationName.toString());
 			execution.getCovereds().add(target);
 			execution.setBehavior(behavior);
-		} else if (targetFragment instanceof BehaviorExecutionSpecification) {
-			execution = (BehaviorExecutionSpecification)targetFragment;
-			fragments.remove(execution.getStart());
-			fragments.remove(execution.getFinish());
 		}
 		if (execution != null)
 			execution.setStart(receiverEventMessage);
@@ -932,4 +923,34 @@ public class SequenceServices {
 				finishingEndPredecessor);
 	}
 
+	/**
+	 * Link an existing end message as execution target start.
+	 * 
+	 * @param message
+	 *            Message
+	 */
+	public void linkToExecutionAsStart(Message message) {
+		// Get associated execution
+		MessageOccurrenceSpecification msgReceive = (MessageOccurrenceSpecification)message.getReceiveEvent();
+		ExecutionSpecification execution = (ExecutionSpecification)findOccurrenceSpecificationContext(msgReceive);
+		// Get current execution start
+		ExecutionOccurrenceSpecification executionStart = (ExecutionOccurrenceSpecification)execution
+				.getStart();
+		// Set end message as execution start
+		execution.setStart(msgReceive);
+		// Remove execution start
+		EList<InteractionFragment> fragments = message.getInteraction().getFragments();
+		fragments.remove(executionStart);
+		// Move execution and all sub level elements after message receiver
+		fragments.move(fragments.indexOf(msgReceive), execution);
+
+		// Refresh current representation
+		// Get session
+		Session session = SessionManager.INSTANCE.getSession(message);
+		// Get representation
+		DRepresentation diagram = (DRepresentation)DialectManager.INSTANCE.getRepresentations(
+				message.getInteraction(), session).toArray()[0];
+		// Refresh current sequence diagram
+		DialectManager.INSTANCE.refresh(diagram, null);
+	}
 }
