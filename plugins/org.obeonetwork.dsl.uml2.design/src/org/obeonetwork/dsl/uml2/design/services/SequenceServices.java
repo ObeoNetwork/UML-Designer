@@ -21,6 +21,9 @@ import java.util.Stack;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.gef.EditPart;
+import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
+import org.eclipse.ui.IEditorPart;
 import org.eclipse.uml2.uml.BehaviorExecutionSpecification;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ExecutionOccurrenceSpecification;
@@ -40,13 +43,19 @@ import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.obeonetwork.dsl.uml2.design.services.internal.NamedElementServices;
 
+import fr.obeo.dsl.common.ui.tools.api.util.EclipseUIUtil;
 import fr.obeo.dsl.viewpoint.DDiagram;
+import fr.obeo.dsl.viewpoint.DDiagramElement;
 import fr.obeo.dsl.viewpoint.DEdge;
 import fr.obeo.dsl.viewpoint.DNode;
-import fr.obeo.dsl.viewpoint.DRepresentation;
-import fr.obeo.dsl.viewpoint.business.api.dialect.DialectManager;
-import fr.obeo.dsl.viewpoint.business.api.session.Session;
-import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
+import fr.obeo.dsl.viewpoint.diagram.sequence.business.internal.elements.ISequenceEvent;
+import fr.obeo.dsl.viewpoint.diagram.sequence.business.internal.elements.SequenceDiagram;
+import fr.obeo.dsl.viewpoint.diagram.sequence.business.internal.operation.RefreshGraphicalOrderingOperation;
+import fr.obeo.dsl.viewpoint.diagram.sequence.business.internal.operation.RefreshSemanticOrderingOperation;
+import fr.obeo.dsl.viewpoint.diagram.sequence.ui.tool.internal.edit.operation.SynchronizeGraphicalOrderingOperation;
+import fr.obeo.dsl.viewpoint.diagram.sequence.ui.tool.internal.edit.part.ISequenceEventEditPart;
+import fr.obeo.dsl.viewpoint.diagram.sequence.ui.tool.internal.edit.part.SequenceDiagramEditPart;
+import fr.obeo.dsl.viewpoint.diagram.tools.api.editor.DDiagramEditor;
 
 /**
  * Utility services to manage sequence diagrams.
@@ -168,6 +177,44 @@ public class SequenceServices {
 		final List<InteractionFragment> candidateFragments = new ArrayList<InteractionFragment>(
 				fragments.subList(startIndex + 2, finishIndex));
 		return getFirstLevelExecutions(execution.getCovereds().get(0), candidateFragments);
+	}
+
+	/**
+	 * Finds the first level of {@link ExecutionSpecification} in the context of the given
+	 * {@link ExecutionSpecification}.
+	 * 
+	 * @param execution
+	 *            the context.
+	 * @return the {@link ExecutionSpecification} semantic candidates.
+	 */
+	public List<OccurrenceSpecification> executionSemanticCandidateOccurences(ExecutionSpecification execution) {
+		List<ExecutionSpecification> executions = executionSemanticCandidates(execution);
+		List<OccurrenceSpecification> occurrences = new ArrayList<OccurrenceSpecification>();
+		occurrences.add(execution.getStart());
+		occurrences.add(execution.getFinish());
+		for (ExecutionSpecification subExecution : executions) {
+			occurrences.add(subExecution.getStart());
+			occurrences.add(subExecution.getFinish());
+		}
+		return occurrences;
+	}
+
+	/**
+	 * Finds the first level of {@link ExecutionSpecification} in the context of the given
+	 * {@link ExecutionSpecification}.
+	 * 
+	 * @param execution
+	 *            the context.
+	 * @return the {@link ExecutionSpecification} semantic candidates.
+	 */
+	public List<OccurrenceSpecification> executionSemanticCandidateOccurences(Lifeline lifeline) {
+		List<ExecutionSpecification> executions = executionSemanticCandidates(lifeline);
+		List<OccurrenceSpecification> occurrences = new ArrayList<OccurrenceSpecification>();
+		for (ExecutionSpecification subExecution : executions) {
+			occurrences.add(subExecution.getStart());
+			occurrences.add(subExecution.getFinish());
+		}
+		return occurrences;
 	}
 
 	/**
@@ -902,7 +949,7 @@ public class SequenceServices {
 	 * @param startingEndPredecessor
 	 *            Start predecessor
 	 * @param finishingEndPredecessor
-	 *            Finish predecessorredecessor
+	 *            Finish predecessor
 	 */
 	public void createOperationAndSynchMessage(NamedElement target, NamedElement source,
 			NamedElement startingEndPredecessor, NamedElement finishingEndPredecessor) {
@@ -929,7 +976,7 @@ public class SequenceServices {
 	 * @param message
 	 *            Message
 	 */
-	public void linkToExecutionAsStart(Message message) {
+	public void linkToExecutionAsStart(Message message, DDiagramElement containerView) {
 		// Get associated execution
 		MessageOccurrenceSpecification msgReceive = (MessageOccurrenceSpecification)message.getReceiveEvent();
 		ExecutionSpecification execution = (ExecutionSpecification)findOccurrenceSpecificationContext(msgReceive);
@@ -944,13 +991,26 @@ public class SequenceServices {
 		// Move execution and all sub level elements after message receiver
 		fragments.move(fragments.indexOf(msgReceive), execution);
 
-		// Refresh current representation
-		// Get session
-		Session session = SessionManager.INSTANCE.getSession(message);
-		// Get representation
-		DRepresentation diagram = (DRepresentation)DialectManager.INSTANCE.getRepresentations(
-				message.getInteraction(), session).toArray()[0];
-		// Refresh current sequence diagram
-		DialectManager.INSTANCE.refresh(diagram, null);
+		// Refresh layout
+		IEditorPart ed = EclipseUIUtil.getActiveEditor();
+		if (ed instanceof DDiagramEditor && ed instanceof IDiagramWorkbenchPart) {
+			Map editPartRegistry = ((IDiagramWorkbenchPart)ed).getDiagramGraphicalViewer()
+					.getEditPartRegistry();
+			EditPart targetEditPart = (EditPart)editPartRegistry.get(containerView);
+
+			if (targetEditPart instanceof ISequenceEventEditPart) {
+				ISequenceEvent ise = ((ISequenceEventEditPart)targetEditPart).getISequenceEvent();
+
+				if (ise != null) {
+					SequenceDiagram diagram = ise.getDiagram();
+					SequenceDiagramEditPart sdep = (SequenceDiagramEditPart)editPartRegistry.get(diagram
+							.getNotationDiagram());
+
+					new RefreshGraphicalOrderingOperation(diagram).execute();
+					new RefreshSemanticOrderingOperation(diagram.getSequenceDDiagram()).execute();
+					new SynchronizeGraphicalOrderingOperation(sdep, false).execute();
+				}
+			}
+		}
 	}
 }
