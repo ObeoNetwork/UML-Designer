@@ -11,6 +11,7 @@
 package org.obeonetwork.dsl.uml2.design.services;
 
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Interaction;
 import org.obeonetwork.dsl.uml2.design.services.internal.DisplayLabelSwitch;
 import org.obeonetwork.dsl.uml2.design.services.internal.EditLabelSwitch;
 import org.obeonetwork.dsl.uml2.design.services.internal.TooltipLabelSwitch;
@@ -19,8 +20,11 @@ import org.obeonetwork.dsl.uml2.design.services.internal.TooltipLabelSwitch;
  * Manage the diagram elements' labels.
  * 
  * @author Gonzague Reydet <a href="mailto:gonzague.reydet@obeo.fr">gonzague.reydet@obeo.fr</a>
+ * @author Mélanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class LabelServices {
+	private static final String SPACE = " ";
+	private static final String SEQUENCE_DIAGRAM_SUFFIX = "sequence diagram";
 
 	/**
 	 * Compute the label of the given element.
@@ -60,5 +64,16 @@ public class LabelServices {
 	public String computeUmlTooltip(Element context) {
 		final TooltipLabelSwitch tooltipLabel = new TooltipLabelSwitch();
 		return tooltipLabel.doSwitch(context);
+	}
+
+	/**
+	 * Get sequence diagram label.
+	 * 
+	 * @param interaction
+	 *            Interaction associated to sequence diagram
+	 * @return SEquence diagram label
+	 */
+	public static String getSequenceDiagramName(Interaction interaction) {
+		return interaction.getName() + SPACE + SEQUENCE_DIAGRAM_SUFFIX;
 	}
 }

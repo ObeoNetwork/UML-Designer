@@ -13,6 +13,7 @@ package org.obeonetwork.dsl.uml2.design.ui.extension.actions;
 import java.net.URL;
 import java.util.List;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.action.Action;
@@ -21,11 +22,17 @@ import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
+import org.obeonetwork.dsl.uml2.design.services.LabelServices;
 import org.obeonetwork.dsl.uml2.design.services.internal.NamedElementServices;
 
 import fr.obeo.dsl.common.ui.tools.api.editing.EditingDomainService;
+import fr.obeo.dsl.viewpoint.DRepresentation;
+import fr.obeo.dsl.viewpoint.business.api.dialect.DialectManager;
 import fr.obeo.dsl.viewpoint.business.api.session.Session;
 import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
+import fr.obeo.dsl.viewpoint.description.RepresentationDescription;
+import fr.obeo.dsl.viewpoint.diagram.sequence.description.SequenceDiagramDescription;
+import fr.obeo.dsl.viewpoint.ui.business.api.session.UserSession;
 
 /**
  * An action to delete the selected UML elements.
@@ -82,16 +89,39 @@ public class CreateScenarioAction extends Action {
 				.getEditingDomainProvider().getEditingDomain();
 		final RecordingCommand cmd = new RecordingCommand(editingDomain, "Create Scenario") {
 			protected void doExecute() {
-				// Get Session
-				Session session = null;
 				for (Package pkg : packages) {
-					if (session == null) {
-						session = SessionManager.INSTANCE.getSession(pkg);
-					}
+					// Create interaction
 					Interaction interaction = UMLFactory.eINSTANCE.createInteraction();
 					interaction.setName(NamedElementServices.getNewInteractionName(pkg));
 					pkg.getPackagedElements().add(interaction);
+
+					// Get session
+					Session session = SessionManager.INSTANCE.getSession(pkg);
+
+					// Get sequence diagram representation description
+					RepresentationDescription description = getSequenceDiagramDescription(session,
+							interaction);
+
+					// Create representation
+					DRepresentation representation = DialectManager.INSTANCE.createRepresentation(
+							LabelServices.getSequenceDiagramName(interaction), interaction, description,
+							session, new NullProgressMonitor());
+
+					// Open diagram
+					UserSession.from(session).openRepresentation(representation.getName());
 				}
+			}
+
+			private RepresentationDescription getSequenceDiagramDescription(Session session,
+					Interaction interaction) {
+
+				for (RepresentationDescription representation : DialectManager.INSTANCE
+						.getAvailableRepresentationDescriptions(session.getSelectedViewpoints(), interaction)) {
+					if ("Sequence Diagram".equals(representation.getName())
+							&& representation instanceof SequenceDiagramDescription)
+						return representation;
+				}
+				return null;
 			}
 		};
 		editingDomain.getCommandStack().execute(cmd);
