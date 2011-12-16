@@ -988,6 +988,8 @@ public class SequenceServices {
 		// Remove execution start
 		EList<InteractionFragment> fragments = message.getInteraction().getFragments();
 		fragments.remove(executionStart);
+		executionStart.destroy();
+
 		// Move execution and all sub level elements after message receiver
 		fragments.move(fragments.indexOf(msgReceive), execution);
 
