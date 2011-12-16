@@ -14,6 +14,7 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Interaction;
 import org.obeonetwork.dsl.uml2.design.services.internal.DisplayLabelSwitch;
 import org.obeonetwork.dsl.uml2.design.services.internal.EditLabelSwitch;
+import org.obeonetwork.dsl.uml2.design.services.internal.NamedElementServices;
 import org.obeonetwork.dsl.uml2.design.services.internal.TooltipLabelSwitch;
 
 /**
@@ -24,6 +25,7 @@ import org.obeonetwork.dsl.uml2.design.services.internal.TooltipLabelSwitch;
  */
 public class LabelServices {
 	private static final String SPACE = " ";
+
 	private static final String SEQUENCE_DIAGRAM_SUFFIX = "sequence diagram";
 
 	/**
@@ -75,5 +77,16 @@ public class LabelServices {
 	 */
 	public static String getSequenceDiagramName(Interaction interaction) {
 		return interaction.getName() + SPACE + SEQUENCE_DIAGRAM_SUFFIX;
+	}
+
+	/**
+	 * Get sequence diagram label.
+	 * 
+	 * @param pkg
+	 *            Package associated to sequence diagram
+	 * @return Sequence diagram label
+	 */
+	public static String getSequenceDiagramName(org.eclipse.uml2.uml.Package pkg) {
+		return NamedElementServices.getNewInteractionName(pkg) + SPACE + SEQUENCE_DIAGRAM_SUFFIX;
 	}
 }

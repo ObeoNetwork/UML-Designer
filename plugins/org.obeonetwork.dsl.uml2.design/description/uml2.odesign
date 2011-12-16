@@ -2631,7 +2631,7 @@
             </ownedTools>
           </subSections>
           <subSections name="navigation">
-            <ownedTools xsi:type="tool:DiagramCreationDescription" name="Sequence Diagram" browseExpression="&lt;%eContents.filter(&quot;Interaction&quot;).nLast()%>" diagramDescription="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']">
+            <ownedTools xsi:type="tool:DiagramCreationDescription" name="Sequence Diagram" label="Sequence Diagram" titleExpression="&lt;%getSequenceDiagramName()%>" browseExpression="&lt;%eContents.filter(&quot;Interaction&quot;).nLast()%>" diagramDescription="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']">
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$containerView.target.createInteraction()%>"/>
               </initialOperation>
