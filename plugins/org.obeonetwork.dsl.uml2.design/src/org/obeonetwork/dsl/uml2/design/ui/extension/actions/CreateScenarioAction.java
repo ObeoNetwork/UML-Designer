@@ -32,7 +32,7 @@ import fr.obeo.dsl.viewpoint.business.api.session.Session;
 import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
 import fr.obeo.dsl.viewpoint.description.RepresentationDescription;
 import fr.obeo.dsl.viewpoint.diagram.sequence.description.SequenceDiagramDescription;
-import fr.obeo.dsl.viewpoint.ui.business.api.session.UserSession;
+import fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectUIManager;
 
 /**
  * An action to delete the selected UML elements.
@@ -108,7 +108,7 @@ public class CreateScenarioAction extends Action {
 							session, new NullProgressMonitor());
 
 					// Open diagram
-					UserSession.from(session).openRepresentation(representation.getName());
+					DialectUIManager.INSTANCE.openEditor(session, representation);
 				}
 			}
 
