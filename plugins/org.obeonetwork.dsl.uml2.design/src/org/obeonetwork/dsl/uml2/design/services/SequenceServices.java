@@ -64,6 +64,10 @@ import fr.obeo.dsl.viewpoint.diagram.tools.api.editor.DDiagramEditor;
  * @author Mélanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class SequenceServices {
+	private static final String SENDER_MESSAGE_SUFFIX = "_sender";
+
+	private static final String RECEIVER_MESSAGE_SUFFIX = "_receiver";
+
 	/**
 	 * Retrieves the context element ({@link Lifeline} or {@link ExecutionSpecification}) of the given
 	 * {@link OccurrenceSpecification}.
@@ -426,14 +430,14 @@ public class SequenceServices {
 
 		// Create message send event
 		MessageOccurrenceSpecification senderEventMessage = factory.createMessageOccurrenceSpecification();
-		StringBuffer senderEventName = new StringBuffer(operationName).append("_sender");
+		StringBuffer senderEventName = new StringBuffer(operationName).append(SENDER_MESSAGE_SUFFIX);
 		senderEventMessage.setName(senderEventName.toString());
 		senderEventMessage.getCovereds().add(source);
 		senderEventMessage.setMessage(message);
 
 		// Create message receive event
 		MessageOccurrenceSpecification receiverEventMessage = factory.createMessageOccurrenceSpecification();
-		StringBuffer receiverEventName = new StringBuffer(operationName).append("_receiver");
+		StringBuffer receiverEventName = new StringBuffer(operationName).append(RECEIVER_MESSAGE_SUFFIX);
 		receiverEventMessage.setName(receiverEventName.toString());
 		receiverEventMessage.getCovereds().add(target);
 		receiverEventMessage.setMessage(message);
@@ -550,14 +554,14 @@ public class SequenceServices {
 
 		// Create message send event
 		MessageOccurrenceSpecification senderEventMessage = factory.createMessageOccurrenceSpecification();
-		StringBuffer senderEventName = new StringBuffer(operationName).append("_sender");
+		StringBuffer senderEventName = new StringBuffer(operationName).append(SENDER_MESSAGE_SUFFIX);
 		senderEventMessage.setName(senderEventName.toString());
 		senderEventMessage.getCovereds().add(source);
 		senderEventMessage.setMessage(message);
 
 		// Create message receive event
 		MessageOccurrenceSpecification receiverEventMessage = factory.createMessageOccurrenceSpecification();
-		StringBuffer receiverEventName = new StringBuffer(operationName).append("_receiver");
+		StringBuffer receiverEventName = new StringBuffer(operationName).append(RECEIVER_MESSAGE_SUFFIX);
 		receiverEventMessage.setName(receiverEventName.toString());
 		receiverEventMessage.getCovereds().add(target);
 		receiverEventMessage.setMessage(message);
@@ -592,7 +596,7 @@ public class SequenceServices {
 		// Create reply message send event
 		MessageOccurrenceSpecification senderEventReplyMessage = factory
 				.createMessageOccurrenceSpecification();
-		StringBuffer senderReplyEventName = new StringBuffer(replyName).append("_sender");
+		StringBuffer senderReplyEventName = new StringBuffer(replyName).append(SENDER_MESSAGE_SUFFIX);
 		senderEventReplyMessage.setName(senderReplyEventName.toString());
 		senderEventReplyMessage.getCovereds().add(target);
 		senderEventReplyMessage.setMessage(replyMessage);
@@ -600,7 +604,7 @@ public class SequenceServices {
 		// Create reply message receive event
 		MessageOccurrenceSpecification receiverEventReplyMessage = factory
 				.createMessageOccurrenceSpecification();
-		StringBuffer receiverReplyEventName = new StringBuffer(replyName).append("_receiver");
+		StringBuffer receiverReplyEventName = new StringBuffer(replyName).append(RECEIVER_MESSAGE_SUFFIX);
 		receiverEventReplyMessage.setName(receiverReplyEventName.toString());
 		receiverEventReplyMessage.getCovereds().add(source);
 		receiverEventReplyMessage.setMessage(replyMessage);
@@ -993,7 +997,16 @@ public class SequenceServices {
 		// Move execution and all sub level elements after message receiver
 		fragments.move(fragments.indexOf(msgReceive), execution);
 
+		// Rename message, message sender and message receiver
+		message.setName(execution.getName());
+		message.getSendEvent().setName(execution.getName() + SENDER_MESSAGE_SUFFIX);
+		msgReceive.setName(execution.getName() + RECEIVER_MESSAGE_SUFFIX);
+
 		// Refresh layout
+		refreshLayout(containerView);
+	}
+
+	private void refreshLayout(DDiagramElement containerView) {
 		IEditorPart ed = EclipseUIUtil.getActiveEditor();
 		if (ed instanceof DDiagramEditor && ed instanceof IDiagramWorkbenchPart) {
 			Map editPartRegistry = ((IDiagramWorkbenchPart)ed).getDiagramGraphicalViewer()
