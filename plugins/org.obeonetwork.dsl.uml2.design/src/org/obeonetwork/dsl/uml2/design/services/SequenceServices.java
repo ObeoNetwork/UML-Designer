@@ -974,6 +974,15 @@ public class SequenceServices {
 				finishingEndPredecessor);
 	}
 
+	public boolean hasStartMessage(Message message) {
+		MessageOccurrenceSpecification msgReceive = (MessageOccurrenceSpecification)message.getReceiveEvent();
+		ExecutionSpecification execution = (ExecutionSpecification)findOccurrenceSpecificationContext(msgReceive);
+		if (execution.getStart() instanceof MessageOccurrenceSpecification
+				|| msgReceive.equals(execution.getStart()))
+			return true;
+		return false;
+	}
+
 	/**
 	 * Link an existing end message as execution target start.
 	 * 
@@ -991,11 +1000,12 @@ public class SequenceServices {
 		execution.setStart(msgReceive);
 		// Remove execution start
 		EList<InteractionFragment> fragments = message.getInteraction().getFragments();
-		fragments.remove(executionStart);
-		executionStart.destroy();
 
 		// Move execution and all sub level elements after message receiver
 		fragments.move(fragments.indexOf(msgReceive), execution);
+
+		fragments.remove(executionStart);
+		executionStart.destroy();
 
 		// If message is a synchronous message, move and rename reply
 		if (MessageSort.SYNCH_CALL_LITERAL.equals(message.getMessageSort())) {

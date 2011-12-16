@@ -2660,7 +2660,7 @@
             </ownedTools>
           </subSections>
           <subSections name="menu">
-            <ownedTools xsi:type="tool:PopupMenu" name="PM_LinkToExecution" label="Link to execution" forceRefresh="true">
+            <ownedTools xsi:type="tool:PopupMenu" name="PM_LinkToExecution" label="Link to execution" precondition="&lt;%!filter(&quot;Message&quot;).hasStartMessage()%>" forceRefresh="true">
               <menuItemDescription xsi:type="tool:OperationAction" name="AsStart" label="As execution start" forceRefresh="true">
                 <view name="containerView"/>
                 <initialOperation>
