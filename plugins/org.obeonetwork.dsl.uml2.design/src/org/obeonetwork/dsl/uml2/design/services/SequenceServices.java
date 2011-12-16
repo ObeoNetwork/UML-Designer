@@ -997,6 +997,30 @@ public class SequenceServices {
 		// Move execution and all sub level elements after message receiver
 		fragments.move(fragments.indexOf(msgReceive), execution);
 
+		// If message is a synchronous message, move and rename reply
+		if (MessageSort.SYNCH_CALL_LITERAL.equals(message.getMessageSort())) {
+			// Get message reply
+			Message msgReply = getReplyMessage(message);
+			// Get current execution finish
+			OccurrenceSpecification executionFinish = (OccurrenceSpecification)execution.getFinish();
+			MessageOccurrenceSpecification msgReplySend = (MessageOccurrenceSpecification)msgReply
+					.getSendEvent();
+
+			// Move message reply after execution
+			reorder(msgReply, execution.getFinish(), execution.getFinish());
+
+			// Set end message as execution finish
+			execution.setFinish(msgReplySend);
+			// Remove execution finish
+			fragments.remove(executionFinish);
+			executionFinish.destroy();
+
+			// Rename message, message sender and message receiver
+			msgReply.setName(execution.getName());
+			msgReply.getReceiveEvent().setName(execution.getName() + RECEIVER_MESSAGE_SUFFIX);
+			msgReplySend.setName(execution.getName() + SENDER_MESSAGE_SUFFIX);
+		}
+
 		// Rename message, message sender and message receiver
 		message.setName(execution.getName());
 		message.getSendEvent().setName(execution.getName() + SENDER_MESSAGE_SUFFIX);
@@ -1004,6 +1028,16 @@ public class SequenceServices {
 
 		// Refresh layout
 		refreshLayout(containerView);
+	}
+
+	private Message getReplyMessage(Message message) {
+		for (Message messageReply : message.getInteraction().getMessages()) {
+			if (MessageSort.REPLY_LITERAL.equals(messageReply.getMessageSort())
+					&& messageReply.getName().startsWith(message.getName())) {
+				return messageReply;
+			}
+		}
+		return null;
 	}
 
 	private void refreshLayout(DDiagramElement containerView) {
