@@ -1685,7 +1685,7 @@
         </containerMappings>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description:DiagramDescription" name="Profile Diagram" initialisation="true" showOnStartup="true" domainClass="uml.Profile">
+    <ownedRepresentations xsi:type="description:DiagramDescription" name="Profile Diagram" showOnStartup="true" domainClass="uml.Profile">
       <defaultLayer name="Profile">
         <nodeMappings name="PD_ElementImport" semanticCandidatesExpression="&lt;%eAllContents()%>" domainClass="uml.ElementImport">
           <style xsi:type="style:SquareDescription" labelExpression="&lt;%computeUmlLabel()%>" sizeComputationExpression="6" labelPosition="node" resizeKind="NSEW" width="15" height="6">
