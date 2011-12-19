@@ -23,7 +23,7 @@ import org.obeonetwork.dsl.uml2.design.services.EcoreServices;
  * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
  */
 public final class PropertyServices {
-	
+
 	/**
 	 * Hidden constructor.
 	 */
@@ -33,10 +33,13 @@ public final class PropertyServices {
 	/**
 	 * Parse the edited label content and update the underlying {@link Property}.
 	 * 
-	 * @param property the context {@link Property} object.
-	 * @param inputLabel the user edited label content.
+	 * @param property
+	 *            the context {@link Property} object.
+	 * @param inputLabel
+	 *            the user edited label content.
+	 * @return Property name
 	 */
-	public static void parseInputLabel(Property property, String inputLabel) {
+	public static String parseInputLabel(Property property, String inputLabel) {
 		// The discriminating parts in the label are :
 		// - a "/" at the beginning for a derived property
 		// - a ":" between the name and the type
@@ -54,15 +57,19 @@ public final class PropertyServices {
 
 			final String typeInfo = m.group(3).trim();
 			handleTypeAndMultiplicity(property, typeInfo);
+			return name;
 		}
+		return null;
 	}
 
 	/**
-	 * Parse the edited label content for the multiplicity & type part
-	 * and update the underlying {@link Property}.
+	 * Parse the edited label content for the multiplicity & type part and update the underlying
+	 * {@link Property}.
 	 * 
-	 * @param property the context {@link Property} object.
-	 * @param typeInfo the user edited label content for the multiplicity & type part.
+	 * @param property
+	 *            the context {@link Property} object.
+	 * @param typeInfo
+	 *            the user edited label content for the multiplicity & type part.
 	 */
 	private static void handleTypeAndMultiplicity(Property property, String typeInfo) {
 		// Normal expression is
@@ -111,9 +118,12 @@ public final class PropertyServices {
 	/**
 	 * Update the {@link Property} multiplicity.
 	 * 
-	 * @param property the context {@link Property} object.
-	 * @param lowerBound the lower bound user content
-	 * @param upperBound the upper bound user content
+	 * @param property
+	 *            the context {@link Property} object.
+	 * @param lowerBound
+	 *            the lower bound user content
+	 * @param upperBound
+	 *            the upper bound user content
 	 */
 	private static void handleMultiplicity(Property property, String lowerBound, String upperBound) {
 		final Integer lower = convertBound(lowerBound);
@@ -132,7 +142,8 @@ public final class PropertyServices {
 	/**
 	 * {@link String} to {@link Integer} bound conversion.
 	 * 
-	 * @param bound string description
+	 * @param bound
+	 *            string description
 	 * @return converted integer or <code>null</code> in case of {@link NumberFormatException}.
 	 */
 	private static Integer convertBound(String bound) {

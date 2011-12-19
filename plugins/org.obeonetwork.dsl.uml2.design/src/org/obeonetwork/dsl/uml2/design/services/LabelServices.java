@@ -11,21 +11,28 @@
 package org.obeonetwork.dsl.uml2.design.services;
 
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Interaction;
 import org.obeonetwork.dsl.uml2.design.services.internal.DisplayLabelSwitch;
 import org.obeonetwork.dsl.uml2.design.services.internal.EditLabelSwitch;
+import org.obeonetwork.dsl.uml2.design.services.internal.NamedElementServices;
 import org.obeonetwork.dsl.uml2.design.services.internal.TooltipLabelSwitch;
 
 /**
  * Manage the diagram elements' labels.
  * 
  * @author Gonzague Reydet <a href="mailto:gonzague.reydet@obeo.fr">gonzague.reydet@obeo.fr</a>
+ * @author Mélanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class LabelServices {
+	private static final String SPACE = " ";
+
+	private static final String SEQUENCE_DIAGRAM_SUFFIX = "sequence diagram";
 
 	/**
 	 * Compute the label of the given element.
 	 * 
-	 * @param element the {@link Element} for which to retrieve a label.
+	 * @param element
+	 *            the {@link Element} for which to retrieve a label.
 	 * @return the computed label.
 	 */
 	public String computeUmlLabel(Element element) {
@@ -37,8 +44,10 @@ public class LabelServices {
 	/**
 	 * Parse the edited label string and update the underlying context {@link Element}.
 	 * 
-	 * @param context the context object on which to execute this service.
-	 * @param editedLabelContent the content entered by the user.
+	 * @param context
+	 *            the context object on which to execute this service.
+	 * @param editedLabelContent
+	 *            the content entered by the user.
 	 * @return the context {@link Element}
 	 */
 	public Element editUmlLabel(Element context, String editedLabelContent) {
@@ -46,11 +55,12 @@ public class LabelServices {
 		editLabel.setEditedLabelContent(editedLabelContent);
 		return editLabel.doSwitch(context);
 	}
-	
+
 	/**
 	 * Compute the tooltip for the given element.
 	 * 
-	 * @param context the context object on which to execute this service.
+	 * @param context
+	 *            the context object on which to execute this service.
 	 * @return the computed tooltip String to display
 	 */
 	public String computeUmlTooltip(Element context) {
@@ -58,4 +68,25 @@ public class LabelServices {
 		return tooltipLabel.doSwitch(context);
 	}
 
+	/**
+	 * Get sequence diagram label.
+	 * 
+	 * @param interaction
+	 *            Interaction associated to sequence diagram
+	 * @return SEquence diagram label
+	 */
+	public static String getSequenceDiagramName(Interaction interaction) {
+		return interaction.getName() + SPACE + SEQUENCE_DIAGRAM_SUFFIX;
+	}
+
+	/**
+	 * Get sequence diagram label.
+	 * 
+	 * @param pkg
+	 *            Package associated to sequence diagram
+	 * @return Sequence diagram label
+	 */
+	public static String getSequenceDiagramName(org.eclipse.uml2.uml.Package pkg) {
+		return NamedElementServices.getNewInteractionName(pkg) + SPACE + SEQUENCE_DIAGRAM_SUFFIX;
+	}
 }
