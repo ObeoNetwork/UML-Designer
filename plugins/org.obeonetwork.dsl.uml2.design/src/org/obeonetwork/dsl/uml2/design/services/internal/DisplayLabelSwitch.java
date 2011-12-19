@@ -15,13 +15,17 @@ import java.util.Iterator;
 import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Association;
+import org.eclipse.uml2.uml.BehaviorExecutionSpecification;
 import org.eclipse.uml2.uml.CallOperationAction;
 import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.DataStoreNode;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
+import org.eclipse.uml2.uml.ExecutionSpecification;
 import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.InstanceValue;
+import org.eclipse.uml2.uml.Lifeline;
+import org.eclipse.uml2.uml.Message;
 import org.eclipse.uml2.uml.MultiplicityElement;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.OpaqueAction;
@@ -41,7 +45,7 @@ import org.obeonetwork.dsl.uml2.design.services.UMLServices;
 
 /**
  * A switch that handle the label computation for each UML types.
- *
+ * 
  * @author Gonzague Reydet <a href="mailto:gonzague.reydet@obeo.fr">gonzague.reydet@obeo.fr</a>
  */
 public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConstants {
@@ -50,10 +54,12 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	 * Spaced column constant.
 	 */
 	private static final String SPACED_COLUMN = " : ";
+
 	/**
 	 * Closing brace constant.
 	 */
 	private static final String CLOSING_BRACE = "]";
+
 	/**
 	 * Opening brace constant.
 	 */
@@ -101,7 +107,8 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	/**
 	 * Compute the {@link Stereotype} label part for the given {@link Element}.
 	 * 
-	 * @param element the context element.
+	 * @param element
+	 *            the context element.
 	 * @return the {@link Stereotype} label.
 	 */
 	public static String computeStereotypes(Element element) {
@@ -113,7 +120,7 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 
 		final StringBuffer stereotypeLabel = new StringBuffer();
 		stereotypeLabel.append(OPEN_QUOTE_MARK);
-		for ( ;; ) {
+		for (;;) {
 			final Stereotype appliedStereotype = it.next();
 
 			stereotypeLabel.append(appliedStereotype.getName());
@@ -231,7 +238,8 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	@Override
 	public String caseActivityPartition(ActivityPartition object) {
 		if (object.getRepresents() instanceof NamedElement) {
-			return caseNamedElement(object) + SPACED_COLUMN + ((NamedElement)object.getRepresents()).getName();
+			return caseNamedElement(object) + SPACED_COLUMN
+					+ ((NamedElement)object.getRepresents()).getName();
 		}
 
 		return null;
@@ -329,9 +337,45 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	}
 
 	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String caseLifeline(Lifeline lifeline) {
+		StringBuilder label = new StringBuilder(caseNamedElement(lifeline));
+		if (lifeline.getRepresents() != null && lifeline.getRepresents().getType() != null) {
+			label.append(SPACED_COLUMN);
+			label.append(lifeline.getRepresents().getType().getLabel());
+		}
+		return label.toString();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String caseExecutionSpecification(ExecutionSpecification execution) {
+		if (execution instanceof BehaviorExecutionSpecification) {
+			if (((BehaviorExecutionSpecification)execution).getBehavior() != null
+					&& ((BehaviorExecutionSpecification)execution).getBehavior().getSpecification() != null)
+				return caseOperation((Operation)((BehaviorExecutionSpecification)execution).getBehavior()
+						.getSpecification());
+		}
+		return execution.getLabel();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String caseMessage(Message message) {
+		return message.getName();
+	}
+
+	/**
 	 * Compute label for association end.
 	 * 
-	 * @param p the {@link Association}'s {@link Property} end.
+	 * @param p
+	 *            the {@link Association}'s {@link Property} end.
 	 * @return the label of the association end.
 	 */
 	private String getAssociationEndLabel(Property p) {
