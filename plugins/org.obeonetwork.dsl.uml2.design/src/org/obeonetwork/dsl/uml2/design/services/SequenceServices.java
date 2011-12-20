@@ -663,7 +663,8 @@ public class SequenceServices {
 			receiverEventMessage.setEvent(receiveEvent);
 			// Create signal
 			Signal signal = factory.createSignal();
-			signal.setName(operationName.append(SIGNAL_SUFFIX).toString());
+			StringBuffer signalName = new StringBuffer(operationName).append(SIGNAL_SUFFIX);
+			signal.setName(signalName.toString());
 			sendEvent.setSignal(signal);
 			receiveEvent.setSignal(signal);
 			message.getNearestPackage().getPackagedElements().add(signal);
