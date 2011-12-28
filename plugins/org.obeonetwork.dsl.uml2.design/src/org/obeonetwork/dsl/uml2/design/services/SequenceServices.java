@@ -25,11 +25,13 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.uml2.uml.BehaviorExecutionSpecification;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Event;
 import org.eclipse.uml2.uml.ExecutionEvent;
 import org.eclipse.uml2.uml.ExecutionOccurrenceSpecification;
 import org.eclipse.uml2.uml.ExecutionSpecification;
+import org.eclipse.uml2.uml.InstanceSpecification;
 import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.InteractionFragment;
 import org.eclipse.uml2.uml.InterfaceRealization;
@@ -42,7 +44,6 @@ import org.eclipse.uml2.uml.OccurrenceSpecification;
 import org.eclipse.uml2.uml.OpaqueBehavior;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Package;
-import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.ReceiveOperationEvent;
 import org.eclipse.uml2.uml.ReceiveSignalEvent;
 import org.eclipse.uml2.uml.SendOperationEvent;
@@ -316,21 +317,26 @@ public class SequenceServices {
 	 * 
 	 * @param interaction
 	 *            Interaction
-	 * @param property
-	 *            Property associated to lifeline
+	 * @param instance
+	 *            Instance specification associated to lifeline
 	 */
-	public void createLifeline(Interaction interaction, NamedElement property) {
+	public void createLifeline(Interaction interaction, NamedElement instance) {
 		// If the element selected in the selection wizard is not a property, return a warning in error log
 		// view
-		if (!(property instanceof Property)) {
-			logger.warning("A property must be selected to import a lifeline but you have selected "
-					+ property.getName() + " which is a " + property.getClass().getSimpleName(), null);
+		if (!(instance instanceof InstanceSpecification)) {
+			logger.warning(
+					"An instance specification must be selected to import a lifeline but you have selected "
+							+ instance.getName() + " which is a " + instance.getClass().getSimpleName(), null);
 		}
 
 		// Create lifeline
 		Lifeline lifeline = UMLFactory.eINSTANCE.createLifeline();
-		lifeline.setName(((Property)property).getName());
-		lifeline.setRepresents((Property)property);
+		lifeline.setName(((InstanceSpecification)instance).getName());
+		Dependency dependency = UMLFactory.eINSTANCE.createDependency();
+		dependency.getClients().add(lifeline);
+		dependency.getSuppliers().add(instance);
+		interaction.getNearestPackage().getPackagedElements().add(dependency);
+		lifeline.getClientDependencies().add(dependency);
 		interaction.getLifelines().add(lifeline);
 	}
 
@@ -902,7 +908,8 @@ public class SequenceServices {
 	public List<Operation> getOperations(EObject target) {
 		List<Element> elements = null;
 		if (target instanceof Lifeline) {
-			elements = ((Lifeline)target).getRepresents().getType().getOwnedElements();
+			elements = ((InstanceSpecification)((Lifeline)target).getClientDependencies().get(0)
+					.getSuppliers().get(0)).getClassifiers().get(0).getOwnedElements();
 		} else if (target instanceof ExecutionSpecification) {
 			elements = ((ExecutionSpecification)target).getOwnedElements();
 		}
@@ -1051,7 +1058,8 @@ public class SequenceServices {
 	 */
 	public void createOperation(Lifeline lifeline, NamedElement startingEndPredecessor) {
 		// Get associated class
-		org.eclipse.uml2.uml.Class type = (org.eclipse.uml2.uml.Class)lifeline.getRepresents().getType();
+		org.eclipse.uml2.uml.Class type = (org.eclipse.uml2.uml.Class)((InstanceSpecification)lifeline
+				.getClientDependencies().get(0).getSuppliers().get(0)).getClassifiers().get(0);
 		Operation operation = OperationServices.createOperation(type);
 		// Create execution
 		createExecution(lifeline.getInteraction(), lifeline, operation, startingEndPredecessor);
@@ -1068,8 +1076,9 @@ public class SequenceServices {
 	 */
 	public void createOperation(ExecutionSpecification execution, NamedElement startingEndPredecessor) {
 		// Get associated class
-		org.eclipse.uml2.uml.Class type = (org.eclipse.uml2.uml.Class)execution.getCovereds().get(0)
-				.getRepresents().getType();
+		org.eclipse.uml2.uml.Class type = (org.eclipse.uml2.uml.Class)((InstanceSpecification)execution
+				.getCovereds().get(0).getClientDependencies().get(0).getSuppliers().get(0)).getClassifiers()
+				.get(0);
 		Operation operation = OperationServices.createOperation(type);
 		// Create execution
 		createExecution(execution.getEnclosingInteraction(), execution, operation, startingEndPredecessor);
@@ -1090,11 +1099,13 @@ public class SequenceServices {
 		org.eclipse.uml2.uml.Class type;
 		Interaction interaction;
 		if (target instanceof Lifeline) {
-			type = (org.eclipse.uml2.uml.Class)((Lifeline)target).getRepresents().getType();
+			type = (org.eclipse.uml2.uml.Class)((InstanceSpecification)target.getClientDependencies().get(0)
+					.getSuppliers().get(0)).getClassifiers().get(0);
 			interaction = ((Lifeline)target).getInteraction();
 		} else {
-			type = (org.eclipse.uml2.uml.Class)(((ExecutionSpecification)target).getCovereds().get(0))
-					.getRepresents().getType();
+			type = (org.eclipse.uml2.uml.Class)((InstanceSpecification)(((ExecutionSpecification)target)
+					.getCovereds().get(0)).getClientDependencies().get(0).getSuppliers().get(0))
+					.getClassifiers().get(0);
 			interaction = ((ExecutionSpecification)target).getEnclosingInteraction();
 		}
 		Operation operation = OperationServices.createOperation(type);
@@ -1122,11 +1133,13 @@ public class SequenceServices {
 		org.eclipse.uml2.uml.Class type;
 		Interaction interaction;
 		if (target instanceof Lifeline) {
-			type = (org.eclipse.uml2.uml.Class)((Lifeline)target).getRepresents().getType();
+			type = (org.eclipse.uml2.uml.Class)((InstanceSpecification)target.getClientDependencies().get(0)
+					.getSuppliers().get(0)).getClassifiers().get(0);
 			interaction = ((Lifeline)target).getInteraction();
 		} else {
-			type = (org.eclipse.uml2.uml.Class)(((ExecutionSpecification)target).getCovereds().get(0))
-					.getRepresents().getType();
+			type = (org.eclipse.uml2.uml.Class)((InstanceSpecification)(((ExecutionSpecification)target)
+					.getCovereds().get(0)).getClientDependencies().get(0).getSuppliers().get(0))
+					.getClassifiers().get(0);
 			interaction = ((ExecutionSpecification)target).getEnclosingInteraction();
 		}
 		Operation operation = OperationServices.createOperation(type);

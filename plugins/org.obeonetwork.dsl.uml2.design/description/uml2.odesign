@@ -2692,7 +2692,7 @@
               <startingEndPredecessor name="startingEndPredecessor"/>
               <finishingEndPredecessor name="finishingEndPredecessor"/>
             </tools>
-            <tools xsi:type="tool_1:ExecutionCreationTool" name="CR_Operation" label="Execution and Operation Creation" precondition="&lt;%$container.filter(&quot;Lifeline&quot;).represents!=null||$container.filter(&quot;ExecutionSpecification&quot;).covered.represents!=null%>" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']/@borderedNodeMappings[name='SD_Execution']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Operation.gif">
+            <tools xsi:type="tool_1:ExecutionCreationTool" name="CR_Operation" label="Execution and Operation Creation" precondition="&lt;%$container.filter(&quot;Lifeline&quot;).clientDependency.supplier.classifier!=null||$container.filter(&quot;ExecutionSpecification&quot;).covered.clientDependency.supplier.classifier!=null%>" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']/@borderedNodeMappings[name='SD_Execution']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Operation.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -2754,7 +2754,7 @@
         <toolSections name="SD_Import" label="Import from model">
           <ownedTools xsi:type="tool:NodeCreationDescription" name="CR_TypedLifeline" label="Lifeline Import" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']">
             <variable name="container">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="property" candidatesExpression="&lt;%getRootContainer()+getRootContainer().eAllContents().filter(&quot;uml.Package&quot;)+(getRootContainer().eAllContents().filter(&quot;uml.Class&quot;)-getRootContainer().eAllContents().filter(&quot;uml.Interaction&quot;))+getRootContainer().eAllContents().filter(&quot;Association&quot;)+getRootContainer().eAllContents().filter(&quot;Property&quot;)%>" tree="true" rootExpression="&lt;%getRootContainer()%>" childrenExpression="&lt;%eContents()%>" message="Select a property associated to the new lifeline"/>
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="property" candidatesExpression="&lt;%getRootContainer()+getRootContainer().eAllContents().filter(&quot;uml.Package&quot;)+getRootContainer().eAllContents().filter(&quot;uml.InstanceSpecification&quot;)%>" tree="true" rootExpression="&lt;%getRootContainer()%>" childrenExpression="&lt;%eContents()%>" message="Select an instance associated to the new lifeline"/>
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
