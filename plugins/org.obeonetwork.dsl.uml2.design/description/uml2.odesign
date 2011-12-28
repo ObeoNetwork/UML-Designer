@@ -2754,7 +2754,7 @@
         <toolSections name="SD_Import" label="Import from model">
           <ownedTools xsi:type="tool:NodeCreationDescription" name="CR_TypedLifeline" label="Lifeline Import" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']">
             <variable name="container">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="property" candidatesExpression="&lt;%getRootContainer()+getRootContainer().eAllContents(&quot;uml.Property&quot;)+getRootContainer().eAllContents(&quot;uml.Property&quot;).eContainer()+getRootContainer().eAllContents(&quot;uml.Property&quot;).eContainer().eContainer()%>" tree="true" rootExpression="&lt;%getRootContainer()+getRootContainer().eAllContents(&quot;uml.Package&quot;)%>" childrenExpression="&lt;%eContents().filter(&quot;Classifier&quot;)+eContents.filter(&quot;Property&quot;)%>" message="Select a property associated to the new lifeline"/>
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="property" candidatesExpression="&lt;%getRootContainer()+getRootContainer().eAllContents().filter(&quot;uml.Package&quot;)+(getRootContainer().eAllContents().filter(&quot;uml.Class&quot;)-getRootContainer().eAllContents().filter(&quot;uml.Interaction&quot;))+getRootContainer().eAllContents().filter(&quot;Association&quot;)+getRootContainer().eAllContents().filter(&quot;Property&quot;)%>" tree="true" rootExpression="&lt;%getRootContainer()%>" childrenExpression="&lt;%eContents()%>" message="Select a property associated to the new lifeline"/>
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
