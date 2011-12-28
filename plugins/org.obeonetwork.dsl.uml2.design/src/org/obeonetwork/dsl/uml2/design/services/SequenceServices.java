@@ -42,6 +42,7 @@ import org.eclipse.uml2.uml.OccurrenceSpecification;
 import org.eclipse.uml2.uml.OpaqueBehavior;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Package;
+import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.ReceiveOperationEvent;
 import org.eclipse.uml2.uml.ReceiveSignalEvent;
 import org.eclipse.uml2.uml.SendOperationEvent;
@@ -71,6 +72,8 @@ import fr.obeo.dsl.viewpoint.diagram.tools.api.editor.DDiagramEditor;
  * @author Mélanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class SequenceServices {
+	private LogServices logger = new LogServices();
+
 	private static final String SIGNAL_SUFFIX = "_signal";
 
 	private static final String EVENT_MESSAGE_SUFFIX = "_event";
@@ -306,6 +309,29 @@ public class SequenceServices {
 		}
 
 		return elementsToDelete;
+	}
+
+	/**
+	 * Create a lifeline. Lifeline could be created in an interaction.
+	 * 
+	 * @param interaction
+	 *            Interaction
+	 * @param property
+	 *            Property associated to lifeline
+	 */
+	public void createLifeline(Interaction interaction, NamedElement property) {
+		// If the element selected in the selection wizard is not a property, return a warning in error log
+		// view
+		if (!(property instanceof Property)) {
+			logger.warning("A property must be selected to import a lifeline but you have selected "
+					+ property.getName() + " which is a " + property.getClass().getSimpleName(), null);
+		}
+
+		// Create lifeline
+		Lifeline lifeline = UMLFactory.eINSTANCE.createLifeline();
+		lifeline.setName(((Property)property).getName());
+		lifeline.setRepresents((Property)property);
+		interaction.getLifelines().add(lifeline);
 	}
 
 	/**

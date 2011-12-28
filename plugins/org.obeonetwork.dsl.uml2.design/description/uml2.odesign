@@ -2754,21 +2754,16 @@
         <toolSections name="SD_Import" label="Import from model">
           <ownedTools xsi:type="tool:NodeCreationDescription" name="CR_TypedLifeline" label="Lifeline Import" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']">
             <variable name="container">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="property" candidatesExpression="&lt;%getRootContainer()+getRootContainer().eAllContents(&quot;uml.Property&quot;)+getRootContainer().eAllContents(&quot;uml.Property&quot;).eContainer()+getRootContainer().eAllContents(&quot;uml.Property&quot;).eContainer().eContainer()%>" tree="true" rootExpression="&lt;%getRootContainer()+getRootContainer().eAllContents(&quot;uml.Package&quot;)%>" childrenExpression="&lt;%eContents().filter(&quot;Classifier&quot;)+eContents.filter(&quot;Property&quot;)%>"/>
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="property" candidatesExpression="&lt;%getRootContainer()+getRootContainer().eAllContents(&quot;uml.Property&quot;)+getRootContainer().eAllContents(&quot;uml.Property&quot;).eContainer()+getRootContainer().eAllContents(&quot;uml.Property&quot;).eContainer().eContainer()%>" tree="true" rootExpression="&lt;%getRootContainer()+getRootContainer().eAllContents(&quot;uml.Package&quot;)%>" childrenExpression="&lt;%eContents().filter(&quot;Classifier&quot;)+eContents.filter(&quot;Property&quot;)%>" message="Select a property associated to the new lifeline"/>
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Lifeline" referenceName="lifeline">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$property.name%>"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="represents" valueExpression="&lt;%$property%>"/>
-                </subModelOperations>
-              </firstModelOperations>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.createLifeline($property)%>"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ExecutionCreationTool" name="CR_TypedExecution" label="Execution Import" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']/@borderedNodeMappings[name='SD_Execution']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/ActionExecutionSpecification.gif">
             <variable name="container">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="operation" candidatesExpression="&lt;%getOperations()%>"/>
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="operation" candidatesExpression="&lt;%getOperations()%>" message="Select an operation associated to the new execution"/>
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -2780,7 +2775,7 @@
           <ownedTools xsi:type="tool_1:MessageCreationTool" name="CR_TypedAsynchronousMessage" label="Asynchronous Message Import" edgeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Message_asynchCall.gif" extraSourceMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
             <sourceVariable name="source"/>
             <targetVariable name="target">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="operation" candidatesExpression="&lt;%getOperations()%>" message="Select an operation for the new message"/>
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="operation" candidatesExpression="&lt;%getOperations()%>" message="Select an operation associated to the new message"/>
             </targetVariable>
             <sourceViewVariable/>
             <targetViewVariable/>
@@ -2793,7 +2788,7 @@
           <ownedTools xsi:type="tool_1:MessageCreationTool" name="CR_TypedSynchronousMessage" label="Synchronous Message Import" edgeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" extraSourceMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
             <sourceVariable name="source"/>
             <targetVariable name="target">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="operation" candidatesExpression="&lt;%getOperations()%>" message="Select an operation for the new message"/>
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="operation" candidatesExpression="&lt;%getOperations()%>" message="Select an operation associated to the new message"/>
             </targetVariable>
             <sourceViewVariable/>
             <targetViewVariable/>
