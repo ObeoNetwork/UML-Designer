@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -57,6 +58,10 @@ import fr.obeo.dsl.viewpoint.DDiagram;
 import fr.obeo.dsl.viewpoint.DDiagramElement;
 import fr.obeo.dsl.viewpoint.DEdge;
 import fr.obeo.dsl.viewpoint.DNode;
+import fr.obeo.dsl.viewpoint.DRepresentation;
+import fr.obeo.dsl.viewpoint.business.api.dialect.DialectManager;
+import fr.obeo.dsl.viewpoint.business.api.session.Session;
+import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
 import fr.obeo.dsl.viewpoint.diagram.sequence.business.internal.elements.ISequenceEvent;
 import fr.obeo.dsl.viewpoint.diagram.sequence.business.internal.elements.SequenceDiagram;
 import fr.obeo.dsl.viewpoint.diagram.sequence.business.internal.operation.RefreshGraphicalOrderingOperation;
@@ -992,7 +997,6 @@ public class SequenceServices {
 
 		// Move all the elements attached to the moved execution
 		for (InteractionFragment fragment : subFragments) {
-
 			// If execution end is a message move the message start and receive
 			if (fragment.equals(execution.getFinish())
 					&& execution.getFinish() instanceof MessageOccurrenceSpecification)
@@ -1045,6 +1049,25 @@ public class SequenceServices {
 		if (sendMsgIndex == fragments.size() - 1)
 			receiveMsgIndex = sendMsgIndex;
 		fragments.move(receiveMsgIndex, fragments.indexOf(message.getReceiveEvent()));
+
+		// If message is a synchronous message, move the reply message
+		if (MessageSort.SYNCH_CALL_LITERAL.equals(message.getMessageSort())) {
+			Message reply = getReplyMessage(message);
+			reorder(reply, (InteractionFragment)message.getReceiveEvent(),
+					(InteractionFragment)message.getReceiveEvent());
+			refresh(interaction);
+		}
+	}
+
+	private void refresh(Interaction interaction) {
+		// Refresh current representation
+		// Get session
+		Session session = SessionManager.INSTANCE.getSession(interaction);
+		// Get representation
+		DRepresentation diagram = (DRepresentation)DialectManager.INSTANCE.getRepresentations(interaction,
+				session).toArray()[0];
+		// Refresh current sequence diagram
+		DialectManager.INSTANCE.refresh(diagram, new NullProgressMonitor());
 	}
 
 	/**
@@ -1223,6 +1246,16 @@ public class SequenceServices {
 			if (MessageSort.REPLY_LITERAL.equals(messageReply.getMessageSort())
 					&& messageReply.getName().startsWith(message.getName())) {
 				return messageReply;
+			}
+		}
+		return null;
+	}
+
+	private Message getSynchronousMessage(Message message) {
+		for (Message messageSynch : message.getInteraction().getMessages()) {
+			if (MessageSort.SYNCH_CALL_LITERAL.equals(messageSynch.getMessageSort())
+					&& message.getName().contains(messageSynch.getName())) {
+				return messageSynch;
 			}
 		}
 		return null;
