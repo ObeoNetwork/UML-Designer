@@ -338,6 +338,7 @@ public class SequenceServices {
 		Lifeline lifeline = UMLFactory.eINSTANCE.createLifeline();
 		lifeline.setName(((InstanceSpecification)instance).getName());
 		Dependency dependency = UMLFactory.eINSTANCE.createDependency();
+		dependency.setName(lifeline.getName()+"_"+instance.getName());
 		dependency.getClients().add(lifeline);
 		dependency.getSuppliers().add(instance);
 		interaction.getNearestPackage().getPackagedElements().add(dependency);
@@ -816,6 +817,34 @@ public class SequenceServices {
 				finishingEndPredecessor);
 	}
 
+	// /**
+	// * Delete lifeline.
+	// *
+	// * @param lifeline
+	// * Lifeline to delete
+	// */
+	// public void delete(Lifeline lifeline) {
+	// // Get fragments
+	// Interaction interaction = (Interaction)lifeline.eContainer();
+	//
+	// // Delete dependency
+	// interaction.getOwnedBehaviors().remove(execution.getBehavior());
+	// // Delete start and finish behavior
+	// List<InteractionFragment> fragments = interaction.getFragments();
+	// if (execution.getStart() instanceof ExecutionOccurrenceSpecification) {
+	// // Delete event
+	// execution.getStart().getEvent().destroy();
+	// fragments.remove(execution.getStart());
+	// }
+	// if (execution.getFinish() instanceof ExecutionOccurrenceSpecification) {
+	// // Delete event
+	// execution.getFinish().getEvent().destroy();
+	// fragments.remove(execution.getFinish());
+	// }
+	// // Delete execution
+	// fragments.remove(execution);
+	// }
+	
 	/**
 	 * Delete execution.
 	 * 
