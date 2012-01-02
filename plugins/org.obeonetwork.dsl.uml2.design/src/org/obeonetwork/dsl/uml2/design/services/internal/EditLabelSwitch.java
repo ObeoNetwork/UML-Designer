@@ -11,7 +11,6 @@
 package org.obeonetwork.dsl.uml2.design.services.internal;
 
 import org.eclipse.uml2.uml.ActivityEdge;
-
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehaviorExecutionSpecification;
@@ -21,21 +20,27 @@ import org.eclipse.uml2.uml.DataStoreNode;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ExecutionOccurrenceSpecification;
 import org.eclipse.uml2.uml.ExecutionSpecification;
+import org.eclipse.uml2.uml.InstanceSpecification;
+import org.eclipse.uml2.uml.InstanceValue;
 import org.eclipse.uml2.uml.Lifeline;
+import org.eclipse.uml2.uml.LiteralBoolean;
+import org.eclipse.uml2.uml.LiteralInteger;
+import org.eclipse.uml2.uml.LiteralString;
 import org.eclipse.uml2.uml.Message;
 import org.eclipse.uml2.uml.MessageOccurrenceSpecification;
-import org.eclipse.uml2.uml.MultiplicityElement;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.OpaqueExpression;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Region;
+import org.eclipse.uml2.uml.Slot;
 import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.TypedElement;
 import org.eclipse.uml2.uml.UMLFactory;
+import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.util.UMLSwitch;
-import org.obeonetwork.dsl.uml2.design.services.UMLServices;
 import org.obeonetwork.dsl.uml2.design.services.LabelServices;
+import org.obeonetwork.dsl.uml2.design.services.UMLServices;
 
 /**
  * A switch that handle the label edition for each UML types.
@@ -87,7 +92,7 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 						.substring(editedLabelContent.indexOf('-') + 1).trim();
 				editAssociationEndLabel(target, completeTargetLabel);
 			} else {
-				String singleEndLabel = editedLabelContent.trim();								
+				String singleEndLabel = editedLabelContent.trim();
 				if (target.isNavigable()) {
 					editAssociationEndLabel(target, singleEndLabel);
 				} else {
@@ -154,7 +159,7 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 		comment.setBody(editedLabelContent);
 		return comment;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -363,5 +368,45 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 		else
 			occurence.setName(editedLabelContent);
 		return occurence;
+	}
+
+	@Override
+	public Element caseLiteralInteger(LiteralInteger literal) {
+		literal.setValue(Integer.parseInt(ObjectServices.getValue(editedLabelContent)));
+		return literal;
+	}
+
+	@Override
+	public Element caseLiteralBoolean(LiteralBoolean literal) {
+		literal.setValue(Boolean.parseBoolean(ObjectServices.getValue(editedLabelContent)));
+		return literal;
+	}
+
+	@Override
+	public Element caseLiteralString(LiteralString literal) {
+		literal.setValue(ObjectServices.getValue(editedLabelContent));
+		return literal;
+	}
+
+	@Override
+	public Element caseInstanceSpecification(InstanceSpecification instance) {
+		instance.setName(ObjectServices.getInstanceName(editedLabelContent));
+		return instance;
+	}
+
+	@Override
+	public Element caseSlot(Slot slot) {
+		for (ValueSpecification value : slot.getValues()) {
+			if (value instanceof InstanceValue) {
+				caseInstanceValue((InstanceValue)value);
+			} else if (value instanceof LiteralInteger) {
+				caseLiteralInteger((LiteralInteger)value);
+			} else if (value instanceof LiteralBoolean) {
+				caseLiteralBoolean((LiteralBoolean)value);
+			} else if (value instanceof LiteralString) {
+				caseLiteralString((LiteralString)value);
+			}
+		}
+		return slot;
 	}
 }
