@@ -155,18 +155,7 @@ public class ObjectServices {
 	 *            Slot
 	 * @return True if the composition layer is active otherwise false
 	 */
-	public boolean isCompositionLayerActive(Element element) {
-		// Get session
-		Session session = SessionManager.INSTANCE.getSession(element);
-		// Get representation
-		Object[] diagrams = DialectManager.INSTANCE.getRepresentations(element.getNearestPackage(), session)
-				.toArray();
-		DDiagram diagram = null;
-		for (Object object : diagrams) {
-			diagram = (DDiagram)object;
-			if ("Object Diagram".equals(diagram.getDescription().getName()))
-				break;
-		}
+	public boolean isCompositionLayerActive(DDiagram diagram) {
 		if (diagram != null) {
 			// Get active layers
 			EList<Layer> activeLayers = diagram.getActivatedLayers();

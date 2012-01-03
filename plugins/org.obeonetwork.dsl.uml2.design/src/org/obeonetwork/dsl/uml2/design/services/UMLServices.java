@@ -273,6 +273,10 @@ public class UMLServices {
 		}
 	}
 
+	public void deletePackage(Package pkg) {
+		 pkg.destroy();
+	}
+
 	/**
 	 * Get all imported packages
 	 * 
