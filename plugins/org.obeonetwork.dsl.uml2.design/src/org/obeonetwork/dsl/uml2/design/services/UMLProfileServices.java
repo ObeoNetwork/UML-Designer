@@ -57,7 +57,7 @@ public class UMLProfileServices {
 	 * Stereotype argument delimiter.
 	 */
 	private static final String SEPARATOR = ",";
-	
+
 	public List<Class> getAllMetaclasses(Profile profile) {
 		// Look if UML.metamodel.uml is accessible
 		Session session = SessionManager.INSTANCE.getSession(profile);
@@ -76,7 +76,7 @@ public class UMLProfileServices {
 		}
 		return new ArrayList<Class>();
 	}
-	
+
 	public List<Class> getAllMetaclasses(Resource resource) {
 		List<Class> classes = new ArrayList<Class>();
 		for (EObject eObject : resource.getContents()) {
@@ -92,40 +92,39 @@ public class UMLProfileServices {
 		}
 		return classes;
 	}
-	
+
 	public Profile defineProfile(Profile profile) {
 		profile.define();
-		MessageDialog.openInformation(Display.getCurrent().getActiveShell(),
-				"Profile definition", 
+		MessageDialog.openInformation(Display.getCurrent().getActiveShell(), "Profile definition",
 				"Profile has been defined.");
 		return profile;
 	}
-	
+
 	public Extension createMetaclassExtension(Stereotype stereotype, ElementImport elementImport) {
 		Extension extension = null;
 		PackageableElement importedElement = elementImport.getImportedElement();
 		if (importedElement != null && importedElement instanceof Type) {
-			
+
 			Type metaclass = (Type)importedElement;
 			Property baseMetaclass = UMLFactory.eINSTANCE.createProperty();
 			baseMetaclass.setName("base_metaclass");
 			baseMetaclass.setType(metaclass);
 			stereotype.getOwnedAttributes().add(baseMetaclass);
-			
+
 			ExtensionEnd extensionEnd = UMLFactory.eINSTANCE.createExtensionEnd();
 			extensionEnd.setName("extension_" + stereotype.getName());
 			extensionEnd.setType(stereotype);
-			
+
 			extension = UMLFactory.eINSTANCE.createExtension();
 			extension.getOwnedEnds().add(extensionEnd);
 			extension.getMemberEnds().add(baseMetaclass);
-			
+
 			stereotype.getProfile().getPackagedElements().add(extension);
 		}
-		
+
 		return extension;
 	}
-	
+
 	public void deleteMetaclassExtension(Extension extension) {
 		// Delete the referenced property
 		for (Property memberEnd : extension.getMemberEnds()) {
@@ -134,7 +133,7 @@ public class UMLProfileServices {
 				break;
 			}
 		}
-		
+
 		// Delete the extension
 		EcoreUtil.delete(extension, true);
 	}
@@ -152,17 +151,17 @@ public class UMLProfileServices {
 	public static String getStereotypesDescription(Element elt, String attributesToDisplay) {
 		String description = "";
 
-		final ArrayList<String> displayedAttributeList = new ArrayList<String>(Arrays
-				.asList(attributesToDisplay.split(SEPARATOR)));
+		final ArrayList<String> displayedAttributeList = new ArrayList<String>(
+				Arrays.asList(attributesToDisplay.split(SEPARATOR)));
 
 		for (final Iterator<Stereotype> stereotypesIterator = elt.getAppliedStereotypes().iterator(); stereotypesIterator
-				.hasNext(); ) {
+				.hasNext();) {
 			final Stereotype stereotype = stereotypesIterator.next();
 
 			description = description.concat("<<" + stereotype.getName() + ">>\n");
 
 			for (final Iterator<Property> attributeIterator = stereotype.getAllAttributes().iterator(); attributeIterator
-					.hasNext(); ) {
+					.hasNext();) {
 				final Property attribute = attributeIterator.next();
 
 				if (displayedAttributeList.contains(attribute.getName())) {
@@ -226,7 +225,7 @@ public class UMLProfileServices {
 			return false;
 		}
 	}
-	
+
 	/**
 	 * Checks if the element is referenced as a tagged value.
 	 * 
@@ -240,18 +239,20 @@ public class UMLProfileServices {
 	 *            the tag name which may reference the element
 	 * @return Returns true is the given element is referenced by the tag, false otherwise.
 	 */
-	public Boolean isReferencedBy(Element elt, Element stereotypedElement, String stereotypeName, String tagName) {
+	public Boolean isReferencedBy(Element elt, Element stereotypedElement, String stereotypeName,
+			String tagName) {
 		Stereotype stereotype = null;
 		// Get the stereotypes
 		final EList<Stereotype> stereotypes = stereotypedElement.getAppliedStereotypes();
-		for (final Iterator iterator = stereotypes.iterator(); iterator.hasNext() && stereotype == null; ) {
+		for (final Iterator iterator = stereotypes.iterator(); iterator.hasNext() && stereotype == null;) {
 			final Stereotype localStereotype = (Stereotype)iterator.next();
 			if (localStereotype.getName().equalsIgnoreCase(stereotypeName)) {
 				stereotype = localStereotype;
 			}
 		}
-		
-		if (stereotype!= null && stereotypedElement != null && stereotypedElement.isStereotypeApplied(stereotype)) {
+
+		if (stereotype != null && stereotypedElement != null
+				&& stereotypedElement.isStereotypeApplied(stereotype)) {
 			final BasicEList<Element> values = new BasicEList<Element>();
 			final Object value = stereotypedElement.getValue(stereotype, tagName);
 			// The value of a tag can be a list
@@ -283,7 +284,7 @@ public class UMLProfileServices {
 		Stereotype stereotype = null;
 		// Get the stereotypes
 		final EList<Stereotype> stereotypes = stereotypedElement.getAppliedStereotypes();
-		for (final Iterator iterator = stereotypes.iterator(); iterator.hasNext() && stereotype == null; ) {
+		for (final Iterator iterator = stereotypes.iterator(); iterator.hasNext() && stereotype == null;) {
 			final Stereotype localStereotype = (Stereotype)iterator.next();
 			if (localStereotype.getName().equalsIgnoreCase(stereotypeName)) {
 				stereotype = localStereotype;
@@ -291,8 +292,8 @@ public class UMLProfileServices {
 		}
 		// Check for each tag if the elt is referenced
 		if (stereotype != null) {
-			for (final Iterator<Property> iterator = stereotype.getOwnedAttributes().iterator(); iterator.hasNext()
-					&& !isReferenced; ) {
+			for (final Iterator<Property> iterator = stereotype.getOwnedAttributes().iterator(); iterator
+					.hasNext() && !isReferenced;) {
 				final Property tag = (Property)iterator.next();
 				// if the type of the tag is a property or an operation of the UML metamodel then check the
 				// reference
@@ -305,7 +306,27 @@ public class UMLProfileServices {
 		// Otherwise return false -> the stereotype is not applied or the elt is not referenced
 		return isReferenced;
 	}
-	
-	
-	
+
+	/**
+	 * Check if a stereotype is applied to an element.
+	 * 
+	 * @param element
+	 *            Element to check
+	 * @param stereotypeName
+	 *            Name of stereotype
+	 * @return True if stereotype is applied to element otherwise false
+	 */
+	public static boolean isStereotypeApplied(final Element element, final String stereotypeName) {
+		final EList<Stereotype> appliedStereotypes = element.getAppliedStereotypes();
+		List<String> appliedStereotypeNames = new ArrayList<String>();
+		for (Stereotype stereotype : appliedStereotypes) {
+			appliedStereotypeNames.add(stereotype.getName());
+		}
+
+		if (appliedStereotypeNames.contains(stereotypeName)) {
+			return true;
+
+		}
+		return false;
+	}
 }
