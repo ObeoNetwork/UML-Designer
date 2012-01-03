@@ -13,6 +13,7 @@ package org.obeonetwork.dsl.uml2.design.services;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.InstanceSpecification;
 import org.eclipse.uml2.uml.InstanceValue;
 import org.eclipse.uml2.uml.PrimitiveType;
@@ -150,15 +151,15 @@ public class ObjectServices {
 	/**
 	 * Check if the composition layer is active on current representation
 	 * 
-	 * @param slot
+	 * @param element
 	 *            Slot
 	 * @return True if the composition layer is active otherwise false
 	 */
-	public boolean isCompositionLayerActive(Slot slot) {
+	public boolean isCompositionLayerActive(Element element) {
 		// Get session
-		Session session = SessionManager.INSTANCE.getSession(slot);
+		Session session = SessionManager.INSTANCE.getSession(element);
 		// Get representation
-		Object[] diagrams = DialectManager.INSTANCE.getRepresentations(slot.getNearestPackage(), session)
+		Object[] diagrams = DialectManager.INSTANCE.getRepresentations(element.getNearestPackage(), session)
 				.toArray();
 		DDiagram diagram = null;
 		for (Object object : diagrams) {
