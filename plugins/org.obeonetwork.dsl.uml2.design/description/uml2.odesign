@@ -241,7 +241,7 @@
           </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" name="CR_ImportPackage" label="Import Package" nodeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@nodeMappings[name='PH_Package']">
             <variable name="container">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="package" candidatesExpression="&lt;%getRootContainer.filter(&quot;Package&quot;).getAvailablePackages()%>" tree="true" rootExpression="&lt;%getRootContainer.filter(&quot;Package&quot;).getAvailablePackages().filter(&quot;Model&quot;)%>" childrenExpression="&lt;%eContents%>" message="Select package to import"/>
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="package" candidatesExpression="&lt;%(getAllRootsInSession().filter(&quot;Model&quot;)-(getRootContainer()+getRootContainer().packageImport.importedPackage))+(getAllRootsInSession().eAllContents().filter(&quot;Package&quot;)-getRootContainer().packageImport.importedPackage)%>" tree="true" rootExpression="&lt;%getAllRootsInSession().filter(&quot;Model&quot;)%>" childrenExpression="&lt;%eContents%>" message="Select package to import"/>
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -253,7 +253,7 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.deletePackage()%>"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$containerView.target.eContainer(&quot;Model&quot;).deletePackage($element)%>"/>
             </initialOperation>
           </ownedTools>
         </toolSections>

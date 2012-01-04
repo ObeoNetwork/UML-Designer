@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -32,6 +31,7 @@ import org.eclipse.uml2.uml.InterfaceRealization;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Package;
+import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
@@ -223,36 +223,6 @@ public class UMLServices {
 	}
 
 	/**
-	 * Get all available packages from resources.
-	 * 
-	 * @param namespace
-	 *            the {@link Namespace} context
-	 */
-	public List<EObject> getAvailablePackages(Namespace namespace) {
-		final ResourceSet resourceSet = namespace.eResource().getResourceSet();
-		final EList<Resource> resources = resourceSet.getResources();
-		List<EObject> elements = new ArrayList<EObject>();
-		for (Resource resource : resources) {
-			if ("uml".equals(resource.getURI().fileExtension())) {
-				final Model root = (Model)EcoreUtil.getObjectByType(resource.getContents(),
-						UMLPackage.Literals.MODEL);
-				if (root != namespace.getModel()) {
-					Iterator<EObject> iter = resource.getAllContents();
-					while (iter.hasNext()) {
-						EObject object = iter.next();
-						if (object instanceof Package && !(object instanceof Profile)
-								&& !namespace.getModel().getImportedPackages().contains(object)) {
-							if (!UMLProfileServices.isStereotypeApplied((Element)object, "Metamodel"))
-								elements.add(object);
-						}
-					}
-				}
-			}
-		}
-		return elements;
-	}
-
-	/**
 	 * Import a package.
 	 * 
 	 * @param model
@@ -273,8 +243,17 @@ public class UMLServices {
 		}
 	}
 
-	public void deletePackage(Package pkg) {
-		 pkg.destroy();
+	public void deletePackage(Model model, Package pkg) {
+		// Check if package is an imported package
+		List<PackageImport> copy = new ArrayList<PackageImport>();
+		copy.addAll(model.getPackageImports());
+		for (PackageImport pkgImport : copy) {
+			if (pkg.equals(pkgImport.getImportedPackage())) {
+				model.getPackageImports().remove(pkgImport);
+				return;
+			}
+		}
+		pkg.destroy();
 	}
 
 	/**

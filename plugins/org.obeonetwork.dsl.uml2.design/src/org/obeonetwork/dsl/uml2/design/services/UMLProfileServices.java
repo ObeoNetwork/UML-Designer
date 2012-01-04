@@ -306,27 +306,4 @@ public class UMLProfileServices {
 		// Otherwise return false -> the stereotype is not applied or the elt is not referenced
 		return isReferenced;
 	}
-
-	/**
-	 * Check if a stereotype is applied to an element.
-	 * 
-	 * @param element
-	 *            Element to check
-	 * @param stereotypeName
-	 *            Name of stereotype
-	 * @return True if stereotype is applied to element otherwise false
-	 */
-	public static boolean isStereotypeApplied(final Element element, final String stereotypeName) {
-		final EList<Stereotype> appliedStereotypes = element.getAppliedStereotypes();
-		List<String> appliedStereotypeNames = new ArrayList<String>();
-		for (Stereotype stereotype : appliedStereotypes) {
-			appliedStereotypeNames.add(stereotype.getName());
-		}
-
-		if (appliedStereotypeNames.contains(stereotypeName)) {
-			return true;
-
-		}
-		return false;
-	}
 }
