@@ -11,9 +11,7 @@
 package org.obeonetwork.dsl.uml2.design.services;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.uml2.uml.Class;
-import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.InstanceSpecification;
 import org.eclipse.uml2.uml.InstanceValue;
 import org.eclipse.uml2.uml.PrimitiveType;
@@ -22,12 +20,10 @@ import org.eclipse.uml2.uml.Slot;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.ValueSpecification;
 
-import fr.obeo.dsl.viewpoint.DDiagram;
 import fr.obeo.dsl.viewpoint.DRepresentation;
 import fr.obeo.dsl.viewpoint.business.api.dialect.DialectManager;
 import fr.obeo.dsl.viewpoint.business.api.session.Session;
 import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
-import fr.obeo.dsl.viewpoint.description.Layer;
 
 /**
  * Utility services to manage object diagrams.
@@ -146,25 +142,5 @@ public class ObjectServices {
 				.toArray()[0];
 		// Refresh current sequence diagram
 		DialectManager.INSTANCE.refresh(diagram, new NullProgressMonitor());
-	}
-
-	/**
-	 * Check if the composition layer is active on current representation
-	 * 
-	 * @param element
-	 *            Slot
-	 * @return True if the composition layer is active otherwise false
-	 */
-	public boolean isCompositionLayerActive(DDiagram diagram) {
-		if (diagram != null) {
-			// Get active layers
-			EList<Layer> activeLayers = diagram.getActivatedLayers();
-			for (Layer layer : activeLayers) {
-				if ("Composition".equals(layer.getName())) {
-					return true;
-				}
-			}
-		}
-		return false;
 	}
 }
