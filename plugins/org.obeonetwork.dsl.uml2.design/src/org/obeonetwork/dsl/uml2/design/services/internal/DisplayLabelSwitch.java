@@ -23,6 +23,7 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.ExecutionSpecification;
 import org.eclipse.uml2.uml.Feature;
+import org.eclipse.uml2.uml.InstanceSpecification;
 import org.eclipse.uml2.uml.InstanceValue;
 import org.eclipse.uml2.uml.Lifeline;
 import org.eclipse.uml2.uml.Message;
@@ -312,7 +313,7 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	public String caseNamedElement(NamedElement object) {
 		return computeStereotypes(object) + object.getName();
 	}
-	
+
 	@Override
 	public String caseElementImport(ElementImport object) {
 		return object.getName();
@@ -342,9 +343,13 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	@Override
 	public String caseLifeline(Lifeline lifeline) {
 		StringBuilder label = new StringBuilder(caseNamedElement(lifeline));
-		if (lifeline.getRepresents() != null && lifeline.getRepresents().getType() != null) {
+		if (lifeline.getClientDependencies() != null && lifeline.getClientDependencies().size() > 0
+				&& lifeline.getClientDependencies().get(0) != null
+				&& lifeline.getClientDependencies().get(0).getSuppliers() != null
+				&& lifeline.getClientDependencies().get(0).getSuppliers().get(0) != null) {
 			label.append(SPACED_COLUMN);
-			label.append(lifeline.getRepresents().getType().getLabel());
+			label.append(((InstanceSpecification)lifeline.getClientDependencies().get(0).getSuppliers()
+					.get(0)).getClassifiers().get(0).getLabel());
 		}
 		return label.toString();
 	}

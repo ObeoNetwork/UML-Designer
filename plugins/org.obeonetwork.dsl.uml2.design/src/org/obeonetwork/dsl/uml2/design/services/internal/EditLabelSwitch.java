@@ -10,6 +10,10 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.services.internal;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
 import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Behavior;
@@ -17,6 +21,7 @@ import org.eclipse.uml2.uml.BehaviorExecutionSpecification;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.DataStoreNode;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ExecutionOccurrenceSpecification;
 import org.eclipse.uml2.uml.ExecutionSpecification;
@@ -340,11 +345,35 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 
 	@Override
 	public Element caseLifeline(Lifeline lifeline) {
-		// Edit associated property
-		String name = PropertyServices
-				.parseInputLabel((Property)lifeline.getRepresents(), editedLabelContent);
+		String name = editedLabelContent.substring(0, editedLabelContent.indexOf(":"));
+		// Edit associated instance name
+		if (lifeline.getClientDependencies() != null && lifeline.getClientDependencies().size() > 0)
+			((InstanceSpecification)lifeline.getClientDependencies().get(0).getSuppliers().get(0))
+					.setName(name);
 		// Edit lifeline name
 		lifeline.setName(name);
+
+		// Edit dependency
+		String type = editedLabelContent.substring(editedLabelContent.indexOf(":") + 1,
+				editedLabelContent.length()).trim();
+		Iterator itr = lifeline.getModel().eAllContents();
+		Map<String, InstanceSpecification> instances = new HashMap<String, InstanceSpecification>();
+		while (itr.hasNext()) {
+			Object element = itr.next();
+			if (element instanceof InstanceSpecification) {
+				instances.put(((InstanceSpecification)element).getClassifiers().get(0).getName(),
+						(InstanceSpecification)element);
+			}
+		}
+		if (instances.containsKey(type)) {
+			InstanceSpecification instance = instances.get(type);
+			lifeline.getClientDependencies().clear();
+			Dependency dependency = UMLFactory.eINSTANCE.createDependency();
+			dependency.getClients().add(lifeline);
+			dependency.getSuppliers().add(instance);
+			lifeline.getInteraction().getNearestPackage().getPackagedElements().add(dependency);
+		}
+
 		return lifeline;
 	}
 
