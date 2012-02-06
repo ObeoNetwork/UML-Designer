@@ -75,7 +75,7 @@ import fr.obeo.dsl.viewpoint.diagram.tools.api.editor.DDiagramEditor;
  * Utility services to manage sequence diagrams.
  * 
  * @author Gonzague Reydet <a href="mailto:gonzague.reydet@obeo.fr">gonzague.reydet@obeo.fr</a>
- * @author Mélanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+ * @author Mï¿½lanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class SequenceServices {
 	private LogServices logger = new LogServices();
@@ -1081,11 +1081,13 @@ public class SequenceServices {
 		// Refresh current representation
 		// Get session
 		Session session = SessionManager.INSTANCE.getSession(interaction);
-		// Get representation
-		DRepresentation diagram = (DRepresentation)DialectManager.INSTANCE.getRepresentations(interaction,
-				session).toArray()[0];
-		// Refresh current sequence diagram
-		DialectManager.INSTANCE.refresh(diagram, new NullProgressMonitor());
+		if (session != null) {
+			// Get representation
+			DRepresentation diagram = (DRepresentation)DialectManager.INSTANCE.getRepresentations(
+					interaction, session).toArray()[0];
+			// Refresh current sequence diagram
+			DialectManager.INSTANCE.refresh(diagram, new NullProgressMonitor());
+		}
 	}
 
 	/**
