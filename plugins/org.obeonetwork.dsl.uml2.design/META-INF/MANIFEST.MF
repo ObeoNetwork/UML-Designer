@@ -20,7 +20,8 @@ Require-Bundle: fr.obeo.acceleo.gen,
  org.eclipse.ui.ide,
  fr.obeo.dsl.viewpoint.ui,
  fr.obeo.dsl.viewpoint.diagram.sequence,
- fr.obeo.dsl.viewpoint.diagram.sequence.ui
+ fr.obeo.dsl.viewpoint.diagram.sequence.ui,
+ org.eclipse.uml2.uml.resources
 Bundle-ActivationPolicy: lazy
 Export-Package: org.obeonetwork.dsl.uml2.design,
  org.obeonetwork.dsl.uml2.design.services,
