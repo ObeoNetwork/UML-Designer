@@ -76,6 +76,14 @@
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
+          <ownedTools xsi:type="tool:DiagramCreationDescription" documentation="Create a new Class Diagram" name="Object Diagram" titleExpression="&lt;%name%> Object Diagram" diagramDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']">
+            <containerViewVariable name="containerView"/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DiagramCreationDescription" documentation="Create a new Class Diagram" name="Composite Object Diagram" titleExpression="&lt;%name%> Object Diagram" diagramDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Object%20Diagram']">
+            <containerViewVariable name="containerView"/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
         </subSections>
         <subSections name="profiles">
           <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="Apply profile" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Profile.gif" windowTitle="Select profiles to apply" candidatesExpression="&lt;%getAllRootsInSession().filter(&quot;Profile&quot;)%>" preSelectedCandidatesExpression="&lt;%eContainer(&quot;Package&quot;).getAllAppliedProfiles()%>">
@@ -154,7 +162,7 @@
       </filters>
       <layout xsi:type="description:OrderedTreeLayout" childrenExpression="&lt;%eContents().filter(&quot;Package&quot;)%>" nodeMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@nodeMappings[name='PH_Package']"/>
       <defaultLayer name="Package Hierarchy">
-        <nodeMappings name="PH_Package" detailDescriptions="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='State%20Machine%20Diagram'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='details']/@ownedTools[name='Use%20Case%20Diagram'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='details']/@ownedTools[name='Class%20Diagram'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='details']/@ownedTools[name='Component%20Diagram'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='navigation']/@ownedTools[name='Sequence%20Diagram'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='navigation']/@ownedTools[name='Activity%20Diagram']" navigationDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@toolSections.0/@ownedTools[name='activity'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@toolSections.1/@ownedTools[name='state']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%self+eAllContents(&quot;Package&quot;)%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Package">
+        <nodeMappings name="PH_Package" detailDescriptions="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='State%20Machine%20Diagram'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='details']/@ownedTools[name='Use%20Case%20Diagram'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='details']/@ownedTools[name='Class%20Diagram'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='details']/@ownedTools[name='Component%20Diagram'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='navigation']/@ownedTools[name='Sequence%20Diagram'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='navigation']/@ownedTools[name='Activity%20Diagram'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='details']/@ownedTools[name='Object%20Diagram'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='details']/@ownedTools[name='Composite%20Object%20Diagram']" navigationDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@toolSections.0/@ownedTools[name='activity'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@toolSections.1/@ownedTools[name='state'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@toolSections.0/@ownedTools[name='Sequence%20Diagram']" deletionDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@toolSections.0/@ownedTools[name='DEL_Package']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%self+eAllContents(&quot;Package&quot;)+getRootContainer().getImportedPackages()%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Package">
           <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="8" labelPosition="node" resizeKind="NSEW" workspacePath="/org.obeonetwork.dsl.uml2.design/images/Package.png"/>
         </nodeMappings>
         <edgeMappings name="PH_Containment" preconditionExpression="&lt;%~target.%>" deletionDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20a%20contained%20in%20edge']" semanticCandidatesExpression="&lt;%current.eAllContents%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@nodeMappings[name='PH_Package']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@nodeMappings[name='PH_Package']" targetFinderExpression="&lt;%eContainer()%>" reconnections="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@toolSections.0/@ownedTools[name='Reconnect%20package%20containment']">
@@ -238,6 +246,28 @@
               <firstModelOperations xsi:type="tool:MoveElement" newContainerExpression="&lt;%$targetView.target%>" featureName="packagedElement"/>
             </initialOperation>
             <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="CR_ImportPackage" label="Import Package" nodeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@nodeMappings[name='PH_Package']">
+            <variable name="container">
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="package" candidatesExpression="&lt;%(getAllRootsInSession().filter(&quot;Model&quot;)-(getRootContainer()+getRootContainer().packageImport.importedPackage))+(getAllRootsInSession().eAllContents().filter(&quot;Package&quot;)-getRootContainer().packageImport.importedPackage)%>" tree="true" rootExpression="&lt;%getAllRootsInSession().filter(&quot;Model&quot;)%>" childrenExpression="&lt;%eContents%>" message="Select package to import"/>
+            </variable>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%getRootContainer().importPackage($package)%>"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="DEL_Package">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$containerView.target.eContainer(&quot;Model&quot;).deletePackage($element)%>"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Sequence Diagram" browseExpression="&lt;%self.eContents().filter(&quot;Interaction&quot;)%>" navigationNameExpression="Open &lt;%$name%>" diagramDescription="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']">
+            <containerViewVariable name="containerView"/>
+            <containerVariable name="container"/>
+            <representationNameVariable name="diagramName"/>
           </ownedTools>
         </toolSections>
         <toolSections>
@@ -1185,19 +1215,25 @@
         <toolSections name="Comments" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_CommentLink']"/>
       </optionalLayers>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description:DiagramDescription" documentation="Diagrams to show instances and relation between them." name="Object Diagram" titleExpression="&lt;%name%> Object Diagram" domainClass="uml.Package">
+    <ownedRepresentations xsi:type="description:DiagramDescription" documentation="Diagrams to show instances and relation between them." name="Object Diagram" titleExpression="&lt;%name%> Object Diagram" domainClass="uml.Package" enablePopupBars="true">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="Type links">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@optionalLayers[name='Type']/@edgeMappings[name='OD_EnumerationType'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@optionalLayers[name='Type']/@edgeMappings[name='OD_PrimitiveTypeType'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@optionalLayers[name='Type']/@edgeMappings[name='OD_ClassType']"/>
       </filters>
       <defaultLayer name="Object Diagram">
-        <edgeMappings name="OD_InstanceSlot" semanticCandidatesExpression="&lt;%packagedElement.filter(&quot;InstanceSpecification&quot;).slot[value.filter(&quot;InstanceValue&quot;)]%>" semanticElements="&lt;%current + definingFeature%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_Element']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_Element']" targetFinderExpression="&lt;%value.filter(&quot;InstanceValue&quot;).instance%>" sourceFinderExpression="&lt;%owningInstance%>" domainClass="uml.Slot" useDomainElement="true">
+        <edgeMappings name="OD_InstanceSlot" preconditionExpression="&lt;%self.definingFeature.aggregation!=&quot;composite&quot;%>" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticElements="&lt;%current + definingFeature%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_Element']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_Element']" targetFinderExpression="&lt;%self[definingFeature.aggregation!=&quot;composite&quot;].value.instance%>" sourceFinderExpression="&lt;%eContainer%>" domainClass="uml.Slot" useDomainElement="true">
           <style labelExpression="&lt;%definingFeature.name%>" targetArrow="NoDecoration" sizeComputationExpression="1" routingStyle="manhattan">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
           </style>
         </edgeMappings>
-        <containerMappings name="OD_Element" preconditionExpression="&lt;%false%>" semanticCandidatesExpression="&lt;%current.eAllContents%>" semanticElements="&lt;%self + self.getStereotypeApplications()%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Element" listContainer="true">
+        <edgeMappings name="OD_CompositeSlot" preconditionExpression="&lt;%self.definingFeature.aggregation==&quot;composite&quot;%>" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticElements="&lt;%current + definingFeature%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_Element']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_Element']" targetFinderExpression="&lt;%self[definingFeature.aggregation==&quot;composite&quot;].value.instance%>" sourceFinderExpression="&lt;%eContainer%>" domainClass="uml.Slot" useDomainElement="true">
+          <style labelExpression="&lt;%definingFeature.name%>" targetArrow="NoDecoration" sizeComputationExpression="1" routingStyle="manhattan">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
+          </style>
+        </edgeMappings>
+        <containerMappings name="OD_Element" preconditionExpression="&lt;%false%>" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%current.eAllContents%>" semanticElements="&lt;%self + self.getStereotypeApplications()%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Element" listContainer="true">
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="&lt;%name+&quot; : &quot;%>&lt;%for (classifier.sep(&quot;,&quot;)) {%>&lt;%name%>&lt;%}%>">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1205,8 +1241,8 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <containerMappings xsi:type="description:ContainerMappingImport" name="OD_InstanceSpecification" semanticCandidatesExpression="&lt;%packagedElement%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.InstanceSpecification" listContainer="true" hideSubMappings="true" importedMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_Element']">
-          <subNodeMappings name="OD_Slot" semanticCandidatesExpression="&lt;%slot[value.filter(&quot;InstanceValue&quot;).nSize() == 0 || value.filter(&quot;InstanceValue&quot;).instance.filter(&quot;EnumerationLiteral&quot;).nSize() > 0] %>" semanticElements="&lt;%self + self.getStereotypeApplications()%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Slot">
+        <containerMappings xsi:type="description:ContainerMappingImport" name="OD_InstanceSpecification" detailDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='navigation']/@ownedTools[name='Create%20Composite%20Object%20Diagram']" navigationDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='navigation']/@ownedTools[name='for%20InstanceSpecification']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%packagedElement+getRootContainer().getImportedPackages().packagedElement%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.InstanceSpecification" listContainer="true" hideSubMappings="true" importedMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_Element']">
+          <subNodeMappings name="OD_Slot" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%slot[value.filter(&quot;InstanceValue&quot;).nSize() == 0 || value.filter(&quot;InstanceValue&quot;).instance.filter(&quot;EnumerationLiteral&quot;).nSize() > 0] %>" semanticElements="&lt;%self + self.getStereotypeApplications()%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Slot">
             <style xsi:type="style:SquareDescription" labelExpression="&lt;%definingFeature.name + &quot; = &quot;%>&lt;%for (value.sep(&quot;,&quot;)) {%>&lt;%body.toString()%>&lt;%}%>">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1249,38 +1285,50 @@
           </style>
         </containerMappings>
         <toolSections name="Object Diagram">
-          <subSections name="create"/>
-          <subSections name="Wizards">
-            <ownedTools xsi:type="tool:SelectionWizardDescription" name="InstanceSpecification" candidatesExpression="&lt;%$container.getRootContainer().eAllContents(&quot;Classifier&quot;)+$container.getRootContainer().eAllContents(&quot;PackageImport&quot;).importedPackage.minimize().eAllContents(&quot;Classifier&quot;).minimize()%>" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/InstanceSpecification.gif">
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.InstanceSpecification" referenceName="packagedElement">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="InstanceSpecification&lt;%eContainer.packagedElement.filter(&quot;InstanceSpecification&quot;).nSize()%>"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="classifier" valueExpression="&lt;%$element%>"/>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-              <element name="element"/>
-              <containerView name="containerView"/>
-              <container name="container"/>
+          <ownedTools xsi:type="tool:ToolDescription" name="CR_InstanceSpecification" label="Create Instance" forceRefresh="true" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/InstanceSpecification.gif">
+            <element name="element">
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="class" candidatesExpression="&lt;%eContainer(&quot;Model&quot;)+eContainer(&quot;Model&quot;).eAllContents().filter(&quot;Package&quot;)+eContainer(&quot;Model&quot;).eAllContents.filter(&quot;Class&quot;)-(eContainer(&quot;Model&quot;).eAllContents.filter(&quot;Interaction&quot;)+eContainer(&quot;Model&quot;).eAllContents.filter(&quot;OpaqueBehavior&quot;)+eContainer(&quot;Model&quot;).eAllContents.filter(&quot;Activity&quot;)+eContainer(&quot;Model&quot;).eAllContents.filter(&quot;StateMachine&quot;)) +getRootContainer().getImportedPackages()+getRootContainer().getImportedPackages().eAllContents.filter(&quot;Package&quot;)+getRootContainer().getImportedPackages().eAllContents.filter(&quot;Class&quot;)-(getRootContainer().getImportedPackages().eAllContents.filter(&quot;Interaction&quot;)+getRootContainer().getImportedPackages().eAllContents.filter(&quot;OpaqueBehavior&quot;)+getRootContainer().getImportedPackages().eAllContents.filter(&quot;Activity&quot;)+getRootContainer().getImportedPackages().eAllContents.filter(&quot;StateMachine&quot;))%>" tree="true" rootExpression="&lt;%eContainer(&quot;Model&quot;)+getRootContainer().getImportedPackages()%>" childrenExpression="&lt;%eContents()%>" message="Select property to instanciate"/>
+            </element>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.createInstance($class)%>"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="CR_InstanceSlot" label="Reference Instance" precondition="&lt;%(eContainer(&quot;uml.Model&quot;).eAllContents(&quot;uml.Association&quot;).ownedEnd.type.nContains(self.classifier) &amp;&amp; eContainer(&quot;uml.Model&quot;).eAllContents(&quot;uml.Association&quot;).ownedEnd.type.nContains($preTarget.classifier))||(classifier.getAllAttributes()[type==$preTarget.classifier].nSize>0)||(classifier.getAllAttributes()[type==$preTarget.classifier.interfaceRealization.contract].nSize>0)%>" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@edgeMappings[name='OD_CompositeSlot'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Object%20Diagram']/@defaultLayer/@edgeMappings[name='OD_InstanceSlot_Composition'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@edgeMappings[name='OD_InstanceSlot']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Connector.gif">
+            <sourceVariable name="source">
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="property" candidatesExpression="&lt;%$source.eContainer(&quot;uml.Model&quot;).eAllContents(&quot;uml.Association&quot;).ownedEnd[type==$target.classifier]+$source.classifier.getAllAttributes()[type==$target.classifier]+$source.classifier.getAllAttributes()[type==$target.classifier.interfaceRealization.contract]%>"/>
+            </sourceVariable>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.createSlot($target,$property)%>"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" name="CR_PrimitiveSlot" label="Set Default Value" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Slot.gif">
+            <element name="element">
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="property" candidatesExpression="&lt;%$element.classifier.getAllAttributes()[type.filter(&quot;PrimitiveType&quot;).nSize>0]%>"/>
+            </element>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.createSlot($property)%>"/>
+            </initialOperation>
+          </ownedTools>
+          <subSections name="navigation">
+            <ownedTools xsi:type="tool:DiagramNavigationDescription" name="for InstanceSpecification" browseExpression="&lt;%$container.eContainer(&quot;Package&quot;)%>" navigationNameExpression="&lt;%$container.eContainer(&quot;Package&quot;).name%> Composite Object Diagram" diagramDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Object%20Diagram']">
+              <containerViewVariable name="containerView"/>
+              <containerVariable name="container"/>
+              <representationNameVariable name="diagramName"/>
             </ownedTools>
-            <ownedTools xsi:type="tool:SelectionWizardDescription" name="Slot" precondition="&lt;%$container.classifier.filter(&quot;PrimitiveType&quot;).nSize() == 0%>" candidatesExpression="&lt;%$container.classifier.getAllAttributes()%>" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Slot.gif">
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Slot" referenceName="slot">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="definingFeature" valueExpression="&lt;%$element%>"/>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-              <element name="element"/>
-              <containerView name="containerView"/>
-              <container name="container"/>
+            <ownedTools xsi:type="tool:DiagramCreationDescription" name="Create Composite Object Diagram" titleExpression="&lt;%$containerView.target.eContainer.name%> Composite Object Diagram" browseExpression="&lt;%$container.eContainer%>" diagramDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Object%20Diagram']">
+              <containerViewVariable name="containerView"/>
+              <representationNameVariable name="diagramName"/>
             </ownedTools>
           </subSections>
         </toolSections>
       </defaultLayer>
       <optionalLayers name="Type">
-        <nodeMappings name="OD_PrimitiveType" semanticCandidatesExpression="&lt;%self.packagedElement.filter(&quot;InstanceSpecification&quot;).classifier.minimize()%>" semanticElements="&lt;%self + self.getStereotypeApplications()%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.PrimitiveType">
+        <nodeMappings name="OD_PrimitiveType" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%self.packagedElement.filter(&quot;InstanceSpecification&quot;).classifier.minimize()%>" semanticElements="&lt;%self + self.getStereotypeApplications()%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.PrimitiveType">
           <style xsi:type="style:BundledImageDescription" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1760,12 +1808,43 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
+    <ownedRepresentations xsi:type="description:DiagramDescription" name="Composite Object Diagram" titleExpression="&lt;%name%> Composite Object Diagram" domainClass="uml.Package" enablePopupBars="true">
+      <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
+      <defaultLayer xsi:type="description:OptionalLayer" name="Composition">
+        <edgeMappings name="OD_InstanceSlot_Composition" preconditionExpression="&lt;%self.definingFeature.aggregation!=&quot;composite&quot;%>" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticElements="&lt;%current + definingFeature%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_InstanceSpecification_Composition']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_InstanceSpecification_Composition']" targetFinderExpression="&lt;%self[definingFeature.aggregation!=&quot;composite&quot;].value.instance%>" sourceFinderExpression="&lt;%eContainer%>" domainClass="uml.Slot" useDomainElement="true">
+          <style labelExpression="&lt;%definingFeature.name%>" targetArrow="NoDecoration" sizeComputationExpression="1" routingStyle="manhattan">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
+          </style>
+        </edgeMappings>
+        <containerMappings name="OD_InstanceSpecification_Composition" detailDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Object%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Create%20Object%20Diagram']" navigationDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Object%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='for%20InstanceSpecification']" semanticCandidatesExpression="&lt;%(filter(&quot;Package&quot;).eContents().filter(&quot;InstanceSpecification&quot;) - filter(&quot;Package&quot;).eAllContents().filter(&quot;Slot&quot;).value.instance)+self.filter(&quot;InstanceSpecification&quot;).slot[definingFeature.aggregation==&quot;composite&quot;].value.instance%>" domainClass="uml.InstanceSpecification" reusedContainerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_InstanceSpecification_Composition']">
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="&lt;%name%> : &lt;%classifier.name%> (&lt;%filter(&quot;InstanceSpecification&quot;).~instance.~value.definingFeature[aggregation==&quot;composite&quot;].name%>)">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Composite Object Diagram" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CR_InstanceSlot'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CR_InstanceSpecification']">
+          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="for InstanceSpecification" browseExpression="&lt;%$container.eContainer%>" navigationNameExpression="&lt;%$container.eContainer.name%> Object Diagram" diagramDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']">
+            <containerViewVariable name="containerView"/>
+            <containerVariable name="container"/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Create Object Diagram" titleExpression="&lt;%$containerView.target.eContainer.name%> Object Diagram" browseExpression="&lt;%$container.eContainer%>" diagramDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']">
+            <containerViewVariable name="containerView"/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.UMLServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.UMLProfileServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.LabelServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.EcoreServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.templates.uml_utils"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.UIServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.ObjectServices"/>
   </ownedViewpoints>
   <ownedViewpoints name="UML Behavioral Modeling" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description:DiagramDescription" name="State Machine Diagram" titleExpression="&lt;%name%> State Machine Diagram" domainClass="uml.StateMachine" enablePopupBars="true">
@@ -2550,8 +2629,8 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="SequenceDiagramDescription" documentation="@generated" name="Sequence Diagram" titleExpression="&lt;%getSequenceDiagramName()%>" domainClass="uml.Interaction" enablePopupBars="true" endsOrdering="&lt;%fragment &amp;&amp; $eventEnds%>">
       <defaultLayer name="Default">
-        <nodeMappings xsi:type="InstanceRoleMapping" name="SD_Lifeline Instance Role" navigationDescriptions="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='navigation']/@ownedTools[name='for%20lifeline']" deletionDescription="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='edit']/@ownedTools[name='SD_FullDelete']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%lifeline%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" documentation="@generated" domainClass="uml.Lifeline">
-          <borderedNodeMappings xsi:type="ExecutionMapping" name="SD_Lifeline Execution" semanticCandidatesExpression="&lt;%self%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" documentation="@generated" domainClass="uml.Lifeline" startingEndFinderExpression="&lt;%self%>" finishingEndFinderExpression="&lt;%self%>">
+        <nodeMappings xsi:type="InstanceRoleMapping" name="SD_Lifeline Instance Role" navigationDescriptions="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='navigation']/@ownedTools[name='for%20lifeline']" deletionDescription="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='edit']/@ownedTools[name='DEL_Lifeline']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%lifeline%>" semanticElements="&lt;%lifeline.clientDependencies%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" documentation="@generated" domainClass="uml.Lifeline">
+          <borderedNodeMappings xsi:type="ExecutionMapping" name="SD_Lifeline Execution" deletionDescription="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='edit']/@ownedTools[name='DEL_Lifeline']" semanticCandidatesExpression="&lt;%self%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" documentation="@generated" domainClass="uml.Lifeline" startingEndFinderExpression="&lt;%self%>" finishingEndFinderExpression="&lt;%self%>">
             <borderedNodeMappings xsi:type="ExecutionMapping" name="SD_Execution" navigationDescriptions="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='navigation']/@ownedTools[name='for%20execution']" deletionDescription="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='edit']/@ownedTools[name='DEL_Execution']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%executionSemanticCandidates()%>" semanticElements="&lt;%executionSemanticCandidateOccurences()%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" documentation="@generated" domainClass="uml.ExecutionSpecification" reusedBorderedNodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']/@borderedNodeMappings[name='SD_Execution']" startingEndFinderExpression="&lt;%start%>" finishingEndFinderExpression="&lt;%finish%>">
               <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%computeUmlLabel()%>" resizeKind="NORTH_SOUTH" width="2" height="3">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -2629,6 +2708,14 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%self.reorder($startingEndPredecessorAfter.semanticEnd, $finishingEndPredecessorAfter.semanticEnd)%>"/>
               </onEventMovedOperation>
             </ownedTools>
+            <ownedTools xsi:type="tool:DeleteElementDescription" name="DEL_Lifeline">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <containerView name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.delete()%>"/>
+              </initialOperation>
+            </ownedTools>
           </subSections>
           <subSections name="navigation">
             <ownedTools xsi:type="tool:DiagramCreationDescription" name="Sequence Diagram" label="Sequence Diagram" titleExpression="&lt;%%>" browseExpression="&lt;%eContents.filter(&quot;Interaction&quot;).nLast()%>" diagramDescription="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']">
@@ -2670,21 +2757,7 @@
             </ownedTools>
           </subSections>
         </toolSections>
-        <toolSections name="Lifelines" icon="/org.obeonetwork.dsl.uml2.design/icons/LifelineCreation.gif">
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="CR_TypedLifeline" label="Lifeline Import" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']">
-            <variable name="container">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="property" candidatesExpression="&lt;%getRootContainer()+getRootContainer().eAllContents(&quot;uml.Property&quot;)+getRootContainer().eAllContents(&quot;uml.Property&quot;).eContainer()+getRootContainer().eAllContents(&quot;uml.Property&quot;).eContainer().eContainer()%>" tree="true" rootExpression="&lt;%getRootContainer()+getRootContainer().eAllContents(&quot;uml.Package&quot;)%>" childrenExpression="&lt;%eContents().filter(&quot;Classifier&quot;)+eContents.filter(&quot;Property&quot;)%>"/>
-            </variable>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Lifeline" referenceName="lifeline">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$property.name%>"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="represents" valueExpression="&lt;%$property%>"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
+        <toolSections name="SD_Create" label="Creation">
           <ownedTools xsi:type="tool:NodeCreationDescription" name="CR_Lifeline" label="Lifeline Creation" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/LifelineCreation.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -2696,11 +2769,88 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool:ToolGroup" name="CR_Execution" label="Create Execution">
+            <tools xsi:type="tool_1:ExecutionCreationTool" name="CR_Execution" label="Execution Creation" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']/@borderedNodeMappings[name='SD_Execution']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/ExecutionCreation.gif">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.eContainer(&quot;Interaction&quot;).createExecution($container,$startingEndPredecessor.semanticEnd)%>"/>
+              </initialOperation>
+              <startingEndPredecessor name="startingEndPredecessor"/>
+              <finishingEndPredecessor name="finishingEndPredecessor"/>
+            </tools>
+            <tools xsi:type="tool_1:ExecutionCreationTool" name="CR_Operation" label="Execution and Operation Creation" precondition="&lt;%$container.filter(&quot;Lifeline&quot;).clientDependency.supplier.classifier!=null||$container.filter(&quot;ExecutionSpecification&quot;).covered.clientDependency.supplier.classifier!=null%>" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']/@borderedNodeMappings[name='SD_Execution']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Operation.gif">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.createOperation($startingEndPredecessor.semanticEnd)%>"/>
+              </initialOperation>
+              <startingEndPredecessor name="startingEndPredecessor"/>
+              <finishingEndPredecessor name="finishingEndPredecessor"/>
+            </tools>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolGroup" name="CR_Synch_Message">
+            <tools xsi:type="tool_1:MessageCreationTool" name="CR_SynchronousMessage" label="Synchronous Message Creation" edgeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/MessageSynchCallCreation.gif" extraSourceMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable/>
+              <targetViewVariable/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;Interaction&quot;).createSynchronousMessage($source,$target,$startingEndPredecessor.semanticEnd,$finishingEndPredecessor.semanticEnd)%>"/>
+              </initialOperation>
+              <startingEndPredecessor name="startingEndPredecessor"/>
+              <finishingEndPredecessor name="finishingEndPredecessor"/>
+            </tools>
+            <tools xsi:type="tool_1:MessageCreationTool" name="CR_Synchronous_Operation" label="Synchronous Message and Operation Creation" precondition="&lt;%($preTarget.filter(&quot;Lifeline&quot;).represents!=null||$preTarget.filter(&quot;ExecutionSpecification&quot;).covered.represents!=null)%>" edgeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Operation.gif" extraSourceMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable/>
+              <targetViewVariable/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$target.createOperationAndSynchMessage($source,$startingEndPredecessor.semanticEnd,$finishingEndPredecessor.semanticEnd)%>"/>
+              </initialOperation>
+              <startingEndPredecessor name="startingEndPredecessor"/>
+              <finishingEndPredecessor name="finishingEndPredecessor"/>
+            </tools>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolGroup" name="CR_Asynch_Message">
+            <tools xsi:type="tool_1:MessageCreationTool" name="CR_AsynchronousMessage" label="Asynchronous Message Creation" edgeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/MessageAsynchCallCreation.gif" extraSourceMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable/>
+              <targetViewVariable/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;Interaction&quot;).createAsynchronousMessage($source,$target,$startingEndPredecessor.semanticEnd,$finishingEndPredecessor.semanticEnd)%>"/>
+              </initialOperation>
+              <startingEndPredecessor name="startingEndPredecessor"/>
+              <finishingEndPredecessor name="finishingEndPredecessor"/>
+            </tools>
+            <tools xsi:type="tool_1:MessageCreationTool" name="CR_Asynchronous_Operation" label="Asynchronous Message and Operation Creation" precondition="&lt;%($preTarget.filter(&quot;Lifeline&quot;).represents!=null||$preTarget.filter(&quot;ExecutionSpecification&quot;).covered.represents!=null)%>" edgeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Operation.gif" extraSourceMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable/>
+              <targetViewVariable/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$target.createOperationAndAsynchMessage($source,$startingEndPredecessor.semanticEnd,$finishingEndPredecessor.semanticEnd)%>"/>
+              </initialOperation>
+              <startingEndPredecessor name="startingEndPredecessor"/>
+              <finishingEndPredecessor name="finishingEndPredecessor"/>
+            </tools>
+          </ownedTools>
         </toolSections>
-        <toolSections name="Executions" icon="/org.obeonetwork.dsl.uml2.design/icons/ExecutionCreation.gif">
+        <toolSections name="SD_Import" label="Import from model">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="CR_TypedLifeline" label="Lifeline Import" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']">
+            <variable name="container">
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="property" candidatesExpression="&lt;%getRootContainer()+getRootContainer().eAllContents().filter(&quot;uml.Package&quot;)+getRootContainer().eAllContents().filter(&quot;uml.InstanceSpecification&quot;)+getRootContainer().getImportedPackages()+getRootContainer().getImportedPackages().eAllContents().filter(&quot;uml.InstanceSpecification&quot;)%>" tree="true" rootExpression="&lt;%getRootContainer()+getRootContainer().getImportedPackages()%>" childrenExpression="&lt;%eContents()%>" message="Select an instance associated to the new lifeline"/>
+            </variable>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.createLifeline($property)%>"/>
+            </initialOperation>
+          </ownedTools>
           <ownedTools xsi:type="tool_1:ExecutionCreationTool" name="CR_TypedExecution" label="Execution Import" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']/@borderedNodeMappings[name='SD_Execution']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/ActionExecutionSpecification.gif">
             <variable name="container">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="operation" candidatesExpression="&lt;%getOperations()%>"/>
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="operation" candidatesExpression="&lt;%getOperations()%>" message="Select an operation associated to the new execution"/>
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -2709,30 +2859,10 @@
             <startingEndPredecessor name="startingEndPredecessor"/>
             <finishingEndPredecessor name="finishingEndPredecessor"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ExecutionCreationTool" name="CR_Execution" label="Execution Creation" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']/@borderedNodeMappings[name='SD_Execution']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/ExecutionCreation.gif">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.eContainer(&quot;Interaction&quot;).createExecution($container,$startingEndPredecessor.semanticEnd)%>"/>
-            </initialOperation>
-            <startingEndPredecessor name="startingEndPredecessor"/>
-            <finishingEndPredecessor name="finishingEndPredecessor"/>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:ExecutionCreationTool" name="CR_Operation" label="Execution and Operation Creation" precondition="&lt;%$container.filter(&quot;Lifeline&quot;).represents!=null||$container.filter(&quot;ExecutionSpecification&quot;).covered.represents!=null%>" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']/@borderedNodeMappings[name='SD_Execution']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Operation.gif">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.createOperation($startingEndPredecessor.semanticEnd)%>"/>
-            </initialOperation>
-            <startingEndPredecessor name="startingEndPredecessor"/>
-            <finishingEndPredecessor name="finishingEndPredecessor"/>
-          </ownedTools>
-        </toolSections>
-        <toolSections name="Asynchronous Messages" icon="/org.obeonetwork.dsl.uml2.design/icons/MessageAsynchCallCreation.gif">
-          <ownedTools xsi:type="tool_1:MessageCreationTool" name="CR_TypedAsynchronousMessage" label="Message Import" edgeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Message_asynchCall.gif" extraSourceMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
+          <ownedTools xsi:type="tool_1:MessageCreationTool" name="CR_TypedAsynchronousMessage" label="Asynchronous Message Import" edgeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Message_asynchCall.gif" extraSourceMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
             <sourceVariable name="source"/>
             <targetVariable name="target">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="operation" candidatesExpression="&lt;%getOperations()%>" message="Select an operation for the new message"/>
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="operation" candidatesExpression="&lt;%getOperations()%>" message="Select an operation associated to the new message"/>
             </targetVariable>
             <sourceViewVariable/>
             <targetViewVariable/>
@@ -2742,61 +2872,15 @@
             <startingEndPredecessor name="startingEndPredecessor"/>
             <finishingEndPredecessor name="finishingEndPredecessor"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:MessageCreationTool" name="CR_AsynchronousMessage" label="Message Creation" edgeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/MessageAsynchCallCreation.gif" extraSourceMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
-            <sourceVariable name="source"/>
-            <targetVariable name="target"/>
-            <sourceViewVariable/>
-            <targetViewVariable/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;Interaction&quot;).createAsynchronousMessage($source,$target,$startingEndPredecessor.semanticEnd,$finishingEndPredecessor.semanticEnd)%>"/>
-            </initialOperation>
-            <startingEndPredecessor name="startingEndPredecessor"/>
-            <finishingEndPredecessor name="finishingEndPredecessor"/>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:MessageCreationTool" name="CR_Operation" label="Message and Operation Creation" precondition="&lt;%($preTarget.filter(&quot;Lifeline&quot;).represents!=null||$preTarget.filter(&quot;ExecutionSpecification&quot;).covered.represents!=null)%>" edgeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Operation.gif" extraSourceMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
-            <sourceVariable name="source"/>
-            <targetVariable name="target"/>
-            <sourceViewVariable/>
-            <targetViewVariable/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$target.createOperationAndAsynchMessage($source,$startingEndPredecessor.semanticEnd,$finishingEndPredecessor.semanticEnd)%>"/>
-            </initialOperation>
-            <startingEndPredecessor name="startingEndPredecessor"/>
-            <finishingEndPredecessor name="finishingEndPredecessor"/>
-          </ownedTools>
-        </toolSections>
-        <toolSections name="Synchronous Messages" icon="/org.obeonetwork.dsl.uml2.design/icons/MessageSynchCallCreation.gif">
-          <ownedTools xsi:type="tool_1:MessageCreationTool" name="CR_TypedSynchronousMessage" label="Message Import" edgeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" extraSourceMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
+          <ownedTools xsi:type="tool_1:MessageCreationTool" name="CR_TypedSynchronousMessage" label="Synchronous Message Import" edgeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" extraSourceMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
             <sourceVariable name="source"/>
             <targetVariable name="target">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="operation" candidatesExpression="&lt;%getOperations()%>" message="Select an operation for the new message"/>
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="operation" candidatesExpression="&lt;%getOperations()%>" message="Select an operation associated to the new message"/>
             </targetVariable>
             <sourceViewVariable/>
             <targetViewVariable/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;Interaction&quot;).createSynchronousMessage($source,$target,$operation,$startingEndPredecessor.semanticEnd,$finishingEndPredecessor.semanticEnd)%>"/>
-            </initialOperation>
-            <startingEndPredecessor name="startingEndPredecessor"/>
-            <finishingEndPredecessor name="finishingEndPredecessor"/>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:MessageCreationTool" name="CR_SynchronousMessage" label="Message Creation" edgeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/MessageSynchCallCreation.gif" extraSourceMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
-            <sourceVariable name="source"/>
-            <targetVariable name="target"/>
-            <sourceViewVariable/>
-            <targetViewVariable/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;Interaction&quot;).createSynchronousMessage($source,$target,$startingEndPredecessor.semanticEnd,$finishingEndPredecessor.semanticEnd)%>"/>
-            </initialOperation>
-            <startingEndPredecessor name="startingEndPredecessor"/>
-            <finishingEndPredecessor name="finishingEndPredecessor"/>
-          </ownedTools>
-          <ownedTools xsi:type="tool_1:MessageCreationTool" name="CR_Operation" label="Message and Operation Creation" precondition="&lt;%($preTarget.filter(&quot;Lifeline&quot;).represents!=null||$preTarget.filter(&quot;ExecutionSpecification&quot;).covered.represents!=null)%>" edgeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Operation.gif" extraSourceMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
-            <sourceVariable name="source"/>
-            <targetVariable name="target"/>
-            <sourceViewVariable/>
-            <targetViewVariable/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$target.createOperationAndSynchMessage($source,$startingEndPredecessor.semanticEnd,$finishingEndPredecessor.semanticEnd)%>"/>
             </initialOperation>
             <startingEndPredecessor name="startingEndPredecessor"/>
             <finishingEndPredecessor name="finishingEndPredecessor"/>

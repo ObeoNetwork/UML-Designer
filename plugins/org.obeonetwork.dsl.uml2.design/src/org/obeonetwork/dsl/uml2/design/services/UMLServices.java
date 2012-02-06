@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.services;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -27,8 +28,10 @@ import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.InterfaceRealization;
+import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Package;
+import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
@@ -49,12 +52,12 @@ import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
  * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
  */
 public class UMLServices {
-	
+
 	public Package applyAllProfiles(Package packagge, List<Profile> profilesToApply) {
 		// Unapplying not selected profiles
 		List<Profile> alreadyAppliedProfiles = packagge.getAppliedProfiles();
 		for (Profile alreadyAppliedProfile : alreadyAppliedProfiles) {
-			if (! profilesToApply.contains(alreadyAppliedProfile)) {
+			if (!profilesToApply.contains(alreadyAppliedProfile)) {
 				packagge.unapplyProfile(alreadyAppliedProfile);
 			}
 		}
@@ -66,7 +69,7 @@ public class UMLServices {
 		}
 		return packagge;
 	}
-	
+
 	public Element applyAllStereotypes(Element element, List<Stereotype> stereotypesToApply) {
 		// Unapplying not selected stereotypes
 		List<Stereotype> alreadyAppliedStereotypes = element.getAppliedStereotypes();
@@ -217,6 +220,51 @@ public class UMLServices {
 		if (!namespace.getImportedPackages().contains(root)) {
 			namespace.createPackageImport(root);
 		}
+	}
+
+	/**
+	 * Import a package.
+	 * 
+	 * @param model
+	 *            Model
+	 * @param pkg
+	 *            Package to import in model
+	 */
+	public void importPackage(Model model, Package pkg) {
+		// Add the resource to the session's semantic resources
+		Resource resource = pkg.eResource();
+		final Session session = SessionManager.INSTANCE.getSession(model);
+		if (session != null) {
+			session.addSemanticResource(resource, false);
+		}
+		// We check if a package import already exists
+		if (!model.getImportedPackages().contains(pkg)) {
+			model.createPackageImport(pkg);
+		}
+	}
+
+	public void deletePackage(Model model, Package pkg) {
+		// Check if package is an imported package
+		List<PackageImport> copy = new ArrayList<PackageImport>();
+		copy.addAll(model.getPackageImports());
+		for (PackageImport pkgImport : copy) {
+			if (pkg.equals(pkgImport.getImportedPackage())) {
+				model.getPackageImports().remove(pkgImport);
+				return;
+			}
+		}
+		pkg.destroy();
+	}
+
+	/**
+	 * Get all imported packages
+	 * 
+	 * @param model
+	 *            Model
+	 * @return Imported packages
+	 */
+	public List<Package> getImportedPackages(Model model) {
+		return model.getImportedPackages();
 	}
 
 	/**
@@ -400,10 +448,14 @@ public class UMLServices {
 	/**
 	 * Check if a reconnect is possible and is not involving creating a cycle in the model.
 	 * 
-	 * @param host the current element.
-	 * @param source potential source of the edge.
-	 * @param target potential target of the edge
-	 * @param element element represented by the edge.
+	 * @param host
+	 *            the current element.
+	 * @param source
+	 *            potential source of the edge.
+	 * @param target
+	 *            potential target of the edge
+	 * @param element
+	 *            element represented by the edge.
 	 * @return true if no cycle is detected.
 	 */
 	public Boolean reconnectContainmentPrecondition(EObject host, EObject source, EObject target,

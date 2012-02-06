@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -25,11 +26,13 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.uml2.uml.BehaviorExecutionSpecification;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Event;
 import org.eclipse.uml2.uml.ExecutionEvent;
 import org.eclipse.uml2.uml.ExecutionOccurrenceSpecification;
 import org.eclipse.uml2.uml.ExecutionSpecification;
+import org.eclipse.uml2.uml.InstanceSpecification;
 import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.InteractionFragment;
 import org.eclipse.uml2.uml.InterfaceRealization;
@@ -55,6 +58,10 @@ import fr.obeo.dsl.viewpoint.DDiagram;
 import fr.obeo.dsl.viewpoint.DDiagramElement;
 import fr.obeo.dsl.viewpoint.DEdge;
 import fr.obeo.dsl.viewpoint.DNode;
+import fr.obeo.dsl.viewpoint.DRepresentation;
+import fr.obeo.dsl.viewpoint.business.api.dialect.DialectManager;
+import fr.obeo.dsl.viewpoint.business.api.session.Session;
+import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
 import fr.obeo.dsl.viewpoint.diagram.sequence.business.internal.elements.ISequenceEvent;
 import fr.obeo.dsl.viewpoint.diagram.sequence.business.internal.elements.SequenceDiagram;
 import fr.obeo.dsl.viewpoint.diagram.sequence.business.internal.operation.RefreshGraphicalOrderingOperation;
@@ -71,6 +78,8 @@ import fr.obeo.dsl.viewpoint.diagram.tools.api.editor.DDiagramEditor;
  * @author Mélanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class SequenceServices {
+	private LogServices logger = new LogServices();
+
 	private static final String SIGNAL_SUFFIX = "_signal";
 
 	private static final String EVENT_MESSAGE_SUFFIX = "_event";
@@ -306,6 +315,35 @@ public class SequenceServices {
 		}
 
 		return elementsToDelete;
+	}
+
+	/**
+	 * Create a lifeline. Lifeline could be created in an interaction.
+	 * 
+	 * @param interaction
+	 *            Interaction
+	 * @param instance
+	 *            Instance specification associated to lifeline
+	 */
+	public void createLifeline(Interaction interaction, NamedElement instance) {
+		// If the element selected in the selection wizard is not a property, return a warning in error log
+		// view
+		if (!(instance instanceof InstanceSpecification)) {
+			logger.warning(
+					"An instance specification must be selected to import a lifeline but you have selected "
+							+ instance.getName() + " which is a " + instance.getClass().getSimpleName(), null);
+		}
+
+		// Create lifeline
+		Lifeline lifeline = UMLFactory.eINSTANCE.createLifeline();
+		lifeline.setName(((InstanceSpecification)instance).getName());
+		Dependency dependency = UMLFactory.eINSTANCE.createDependency();
+		dependency.setName(lifeline.getName() + "_" + instance.getName());
+		dependency.getClients().add(lifeline);
+		dependency.getSuppliers().add(instance);
+		interaction.getNearestPackage().getPackagedElements().add(dependency);
+		lifeline.getClientDependencies().add(dependency);
+		interaction.getLifelines().add(lifeline);
 	}
 
 	/**
@@ -780,6 +818,23 @@ public class SequenceServices {
 	}
 
 	/**
+	 * Delete lifeline.
+	 * 
+	 * @param lifeline
+	 *            Lifeline to delete
+	 */
+	public void delete(Lifeline lifeline) {
+		// Delete dependency
+		if (lifeline.getClientDependencies() != null && lifeline.getClientDependencies().size() > 0) {
+			Dependency dependency = lifeline.getClientDependencies().get(0);
+			dependency.destroy();
+		}
+
+		// Delete lifeline
+		lifeline.destroy();
+	}
+
+	/**
 	 * Delete execution.
 	 * 
 	 * @param execution
@@ -876,7 +931,8 @@ public class SequenceServices {
 	public List<Operation> getOperations(EObject target) {
 		List<Element> elements = null;
 		if (target instanceof Lifeline) {
-			elements = ((Lifeline)target).getRepresents().getType().getOwnedElements();
+			elements = ((InstanceSpecification)((Lifeline)target).getClientDependencies().get(0)
+					.getSuppliers().get(0)).getClassifiers().get(0).getOwnedElements();
 		} else if (target instanceof ExecutionSpecification) {
 			elements = ((ExecutionSpecification)target).getOwnedElements();
 		}
@@ -959,7 +1015,6 @@ public class SequenceServices {
 
 		// Move all the elements attached to the moved execution
 		for (InteractionFragment fragment : subFragments) {
-
 			// If execution end is a message move the message start and receive
 			if (fragment.equals(execution.getFinish())
 					&& execution.getFinish() instanceof MessageOccurrenceSpecification)
@@ -1012,6 +1067,25 @@ public class SequenceServices {
 		if (sendMsgIndex == fragments.size() - 1)
 			receiveMsgIndex = sendMsgIndex;
 		fragments.move(receiveMsgIndex, fragments.indexOf(message.getReceiveEvent()));
+
+		// If message is a synchronous message, move the reply message
+		if (MessageSort.SYNCH_CALL_LITERAL.equals(message.getMessageSort())) {
+			Message reply = getReplyMessage(message);
+			reorder(reply, (InteractionFragment)message.getReceiveEvent(),
+					(InteractionFragment)message.getReceiveEvent());
+			refresh(interaction);
+		}
+	}
+
+	private void refresh(Interaction interaction) {
+		// Refresh current representation
+		// Get session
+		Session session = SessionManager.INSTANCE.getSession(interaction);
+		// Get representation
+		DRepresentation diagram = (DRepresentation)DialectManager.INSTANCE.getRepresentations(interaction,
+				session).toArray()[0];
+		// Refresh current sequence diagram
+		DialectManager.INSTANCE.refresh(diagram, new NullProgressMonitor());
 	}
 
 	/**
@@ -1025,7 +1099,8 @@ public class SequenceServices {
 	 */
 	public void createOperation(Lifeline lifeline, NamedElement startingEndPredecessor) {
 		// Get associated class
-		org.eclipse.uml2.uml.Class type = (org.eclipse.uml2.uml.Class)lifeline.getRepresents().getType();
+		org.eclipse.uml2.uml.Class type = (org.eclipse.uml2.uml.Class)((InstanceSpecification)lifeline
+				.getClientDependencies().get(0).getSuppliers().get(0)).getClassifiers().get(0);
 		Operation operation = OperationServices.createOperation(type);
 		// Create execution
 		createExecution(lifeline.getInteraction(), lifeline, operation, startingEndPredecessor);
@@ -1042,8 +1117,9 @@ public class SequenceServices {
 	 */
 	public void createOperation(ExecutionSpecification execution, NamedElement startingEndPredecessor) {
 		// Get associated class
-		org.eclipse.uml2.uml.Class type = (org.eclipse.uml2.uml.Class)execution.getCovereds().get(0)
-				.getRepresents().getType();
+		org.eclipse.uml2.uml.Class type = (org.eclipse.uml2.uml.Class)((InstanceSpecification)execution
+				.getCovereds().get(0).getClientDependencies().get(0).getSuppliers().get(0)).getClassifiers()
+				.get(0);
 		Operation operation = OperationServices.createOperation(type);
 		// Create execution
 		createExecution(execution.getEnclosingInteraction(), execution, operation, startingEndPredecessor);
@@ -1064,11 +1140,13 @@ public class SequenceServices {
 		org.eclipse.uml2.uml.Class type;
 		Interaction interaction;
 		if (target instanceof Lifeline) {
-			type = (org.eclipse.uml2.uml.Class)((Lifeline)target).getRepresents().getType();
+			type = (org.eclipse.uml2.uml.Class)((InstanceSpecification)target.getClientDependencies().get(0)
+					.getSuppliers().get(0)).getClassifiers().get(0);
 			interaction = ((Lifeline)target).getInteraction();
 		} else {
-			type = (org.eclipse.uml2.uml.Class)(((ExecutionSpecification)target).getCovereds().get(0))
-					.getRepresents().getType();
+			type = (org.eclipse.uml2.uml.Class)((InstanceSpecification)(((ExecutionSpecification)target)
+					.getCovereds().get(0)).getClientDependencies().get(0).getSuppliers().get(0))
+					.getClassifiers().get(0);
 			interaction = ((ExecutionSpecification)target).getEnclosingInteraction();
 		}
 		Operation operation = OperationServices.createOperation(type);
@@ -1096,11 +1174,13 @@ public class SequenceServices {
 		org.eclipse.uml2.uml.Class type;
 		Interaction interaction;
 		if (target instanceof Lifeline) {
-			type = (org.eclipse.uml2.uml.Class)((Lifeline)target).getRepresents().getType();
+			type = (org.eclipse.uml2.uml.Class)((InstanceSpecification)target.getClientDependencies().get(0)
+					.getSuppliers().get(0)).getClassifiers().get(0);
 			interaction = ((Lifeline)target).getInteraction();
 		} else {
-			type = (org.eclipse.uml2.uml.Class)(((ExecutionSpecification)target).getCovereds().get(0))
-					.getRepresents().getType();
+			type = (org.eclipse.uml2.uml.Class)((InstanceSpecification)(((ExecutionSpecification)target)
+					.getCovereds().get(0)).getClientDependencies().get(0).getSuppliers().get(0))
+					.getClassifiers().get(0);
 			interaction = ((ExecutionSpecification)target).getEnclosingInteraction();
 		}
 		Operation operation = OperationServices.createOperation(type);
@@ -1184,6 +1264,16 @@ public class SequenceServices {
 			if (MessageSort.REPLY_LITERAL.equals(messageReply.getMessageSort())
 					&& messageReply.getName().startsWith(message.getName())) {
 				return messageReply;
+			}
+		}
+		return null;
+	}
+
+	private Message getSynchronousMessage(Message message) {
+		for (Message messageSynch : message.getInteraction().getMessages()) {
+			if (MessageSort.SYNCH_CALL_LITERAL.equals(messageSynch.getMessageSort())
+					&& message.getName().contains(messageSynch.getName())) {
+				return messageSynch;
 			}
 		}
 		return null;
