@@ -314,6 +314,9 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 		return computeStereotypes(object) + object.getName();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String caseElementImport(ElementImport object) {
 		return object.getName();
@@ -342,7 +345,7 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	 */
 	@Override
 	public String caseLifeline(Lifeline lifeline) {
-		StringBuilder label = new StringBuilder(caseNamedElement(lifeline));
+		final StringBuilder label = new StringBuilder(caseNamedElement(lifeline));
 		if (lifeline.getClientDependencies() != null && lifeline.getClientDependencies().size() > 0
 				&& lifeline.getClientDependencies().get(0) != null
 				&& lifeline.getClientDependencies().get(0).getSuppliers() != null

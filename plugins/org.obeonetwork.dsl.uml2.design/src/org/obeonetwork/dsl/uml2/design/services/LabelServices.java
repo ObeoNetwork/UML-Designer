@@ -21,11 +21,17 @@ import org.obeonetwork.dsl.uml2.design.services.internal.TooltipLabelSwitch;
  * Manage the diagram elements' labels.
  * 
  * @author Gonzague Reydet <a href="mailto:gonzague.reydet@obeo.fr">gonzague.reydet@obeo.fr</a>
- * @author Mélanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+ * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class LabelServices {
+	/**
+	 * Space constant.
+	 */
 	private static final String SPACE = " ";
 
+	/**
+	 * Sequence diagram element name suffix.
+	 */
 	private static final String SEQUENCE_DIAGRAM_SUFFIX = "sequence diagram";
 
 	/**

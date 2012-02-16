@@ -13,7 +13,7 @@ package org.obeonetwork.dsl.uml2.design.services.internal;
 /**
  * Utility services to manage direct label edition on objects diagrams.
  * 
- * @author Mélanie Bats<a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+ * @author Melanie Bats<a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public final class ObjectServices {
 
@@ -31,7 +31,7 @@ public final class ObjectServices {
 	 * @return The value
 	 */
 	public static String getValue(String inputLabel) {
-		String value = inputLabel.trim().substring(inputLabel.indexOf("=") + 1).trim();
+		final String value = inputLabel.trim().substring(inputLabel.indexOf("=") + 1).trim();
 		return value;
 	}
 
@@ -43,7 +43,7 @@ public final class ObjectServices {
 	 * @return The instance name
 	 */
 	public static String getInstanceName(String inputLabel) {
-		String name = inputLabel.substring(0, inputLabel.indexOf(":")).trim();
+		final String name = inputLabel.substring(0, inputLabel.indexOf(":")).trim();
 		return name;
 	}
 }
