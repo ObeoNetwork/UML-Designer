@@ -48,6 +48,7 @@ import org.obeonetwork.dsl.uml2.design.services.UMLServices;
  * A switch that handle the label computation for each UML types.
  * 
  * @author Gonzague Reydet <a href="mailto:gonzague.reydet@obeo.fr">gonzague.reydet@obeo.fr</a>
+ * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConstants {
 
@@ -353,6 +354,9 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 			label.append(SPACED_COLUMN);
 			label.append(((InstanceSpecification)lifeline.getClientDependencies().get(0).getSuppliers()
 					.get(0)).getClassifiers().get(0).getLabel());
+		} else if (lifeline.getRepresents() != null) {
+			label.append(SPACED_COLUMN);
+			label.append(((Property)lifeline.getRepresents()).getType().getLabel());
 		}
 		return label.toString();
 	}

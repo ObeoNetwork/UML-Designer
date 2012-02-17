@@ -45,6 +45,7 @@ import org.eclipse.uml2.uml.OccurrenceSpecification;
 import org.eclipse.uml2.uml.OpaqueBehavior;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Package;
+import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.ReceiveOperationEvent;
 import org.eclipse.uml2.uml.ReceiveSignalEvent;
 import org.eclipse.uml2.uml.SendOperationEvent;
@@ -353,18 +354,35 @@ public class SequenceServices {
 	 * 
 	 * @param interaction
 	 *            Interaction
+	 * @param element
+	 *            Instance specification or property associated to lifeline
+	 */
+	public void createLifeline(Interaction interaction, NamedElement element) {
+		// If the element selected in the selection wizard is not an instance specification or a property,
+		// return a warning in error log view
+		if (!(element instanceof InstanceSpecification) && !(element instanceof Property)) {
+			logger.warning(
+					"An instance specification or a property must be selected to import a lifeline but you have selected "
+							+ element.getName() + " which is a " + element.getClass().getSimpleName(), null);
+		}
+
+		// Create lifeline
+		if (element instanceof InstanceSpecification) {
+			createLifeline(interaction, (InstanceSpecification)element);
+		} else {
+			createLifeline(interaction, (Property)element);
+		}
+	}
+
+	/**
+	 * Create a lifeline. Lifeline could be created in an interaction.
+	 * 
+	 * @param interaction
+	 *            Interaction
 	 * @param instance
 	 *            Instance specification associated to lifeline
 	 */
-	public void createLifeline(Interaction interaction, NamedElement instance) {
-		// If the element selected in the selection wizard is not a property, return a warning in error log
-		// view
-		if (!(instance instanceof InstanceSpecification)) {
-			logger.warning(
-					"An instance specification must be selected to import a lifeline but you have selected "
-							+ instance.getName() + " which is a " + instance.getClass().getSimpleName(), null);
-		}
-
+	private void createLifeline(Interaction interaction, InstanceSpecification instance) {
 		// Create lifeline
 		final Lifeline lifeline = UMLFactory.eINSTANCE.createLifeline();
 		lifeline.setName(((InstanceSpecification)instance).getName());
@@ -374,6 +392,22 @@ public class SequenceServices {
 		dependency.getSuppliers().add(instance);
 		interaction.getNearestPackage().getPackagedElements().add(dependency);
 		lifeline.getClientDependencies().add(dependency);
+		interaction.getLifelines().add(lifeline);
+	}
+
+	/**
+	 * Create a lifeline. Lifeline could be created in an interaction.
+	 * 
+	 * @param interaction
+	 *            Interaction
+	 * @param property
+	 *            Property associated to lifeline
+	 */
+	private void createLifeline(Interaction interaction, Property property) {
+		// Create lifeline
+		final Lifeline lifeline = UMLFactory.eINSTANCE.createLifeline();
+		lifeline.setName(property.getName());
+		lifeline.setRepresents(property);
 		interaction.getLifelines().add(lifeline);
 	}
 
