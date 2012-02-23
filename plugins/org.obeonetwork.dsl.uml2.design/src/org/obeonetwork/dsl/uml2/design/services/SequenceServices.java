@@ -632,6 +632,7 @@ public class SequenceServices {
 			final ExecutionEvent endEvent = factory.createExecutionEvent();
 			endEvent.setName(executionEndName.append(EVENT_MESSAGE_SUFFIX).toString());
 			endExec.setEvent(endEvent);
+			message.getNearestPackage().getPackagedElements().add(endEvent);
 		}
 
 		// Add and order fragments under the interaction
@@ -1104,6 +1105,17 @@ public class SequenceServices {
 					newIndex = startIndex;
 				fragments.move(newIndex, fragments.indexOf(fragment));
 			}
+		}
+
+		// Move execution finish after finishEndPredecessorAfter
+		int finishIndex = 0;
+		if (finishingEndPredecessorAfter != null) {
+			// Predecessor is the last fragment, the move operation will update the list
+			if (fragments.indexOf(finishingEndPredecessorAfter) == fragments.size() - 1)
+				finishIndex = fragments.indexOf(finishingEndPredecessorAfter);
+			else
+				finishIndex = fragments.indexOf(finishingEndPredecessorAfter) + 1;
+			fragments.move(finishIndex, fragments.indexOf(execution.getFinish()));
 		}
 	}
 

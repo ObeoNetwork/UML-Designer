@@ -1896,9 +1896,9 @@ public class SequenceServiceTests extends TestCase {
 		// StartingEndPredecessorAfter BehaviorExecution_2_finish execution occurrence
 		final ExecutionOccurrenceSpecification startingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
 				.getFragment("BehaviorExecution_2_finish");
-		// FinishingEndPredecessorAfter compute_start execution occurrence
+		// FinishingEndPredecessorAfter produce_reply_receive execution occurrence
 		final ExecutionOccurrenceSpecification finishingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
-				.getFragment("compute_start");
+				.getFragment("produce_reply_receive");
 
 		sequenceServices.reorder(execution, startingEndPredecessorAfter, finishingEndPredecessorAfter);
 
@@ -2057,6 +2057,218 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(produceReplyMessage.getReceiveEvent(), produceReplyReceive);
 		assertNotNull(((MessageOccurrenceSpecification)produceReplySend).getCovered(producers.getName()));
 		assertNotNull(((MessageOccurrenceSpecification)produceReplyReceive).getCovered(consumers.getName()));
+	}
+
+	/**
+	 * Test {@link SequenceServices#reorder(ExecutionSpecification, InteractionFragment, InteractionFragment)
+	 * reorder} service. Reorder two executions on different lifelines. Move the first execution in order that
+	 * executions are mixed, ie : second execution start > first execution start > second execution end >
+	 * first execution end.
+	 * 
+	 * @throws Exception
+	 *             in case of error
+	 */
+	public void testReorderExecutions6() throws Exception {
+		// Interaction Scenario_15
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_15");
+		final Lifeline lifeline1 = interaction.getLifeline("Lifeline_1");
+		final Lifeline lifeline2 = interaction.getLifeline("Lifeline_2");
+
+		// Execution to move A
+		final ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("A");
+		// StartingEndPredecessorAfter B_start execution occurrence
+		final ExecutionOccurrenceSpecification startingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
+				.getFragment("B_start");
+		// FinishingEndPredecessorAfter B_finish execution occurrence
+		final ExecutionOccurrenceSpecification finishingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
+				.getFragment("B_finish");
+
+		sequenceServices.reorder(execution, startingEndPredecessorAfter, finishingEndPredecessorAfter);
+
+		final List<InteractionFragment> fragments = interaction.getFragments();
+		assertEquals(6, fragments.size());
+
+		final InteractionFragment bStart = fragments.get(0);
+		final InteractionFragment b = fragments.get(1);
+		final InteractionFragment aStart = fragments.get(2);
+		final InteractionFragment a = fragments.get(3);
+		final InteractionFragment bFinish = fragments.get(4);
+		final InteractionFragment aFinish = fragments.get(5);
+
+		// Execution B
+		final Behavior bBehavior = interaction.getOwnedBehaviors().get(1);
+		assertEquals("Opaque behavior does not exist", "B", bBehavior.getName());
+		assertTrue(bStart instanceof ExecutionOccurrenceSpecification);
+		assertEquals("B_start", bStart.getName());
+		assertTrue(bFinish instanceof ExecutionOccurrenceSpecification);
+		assertEquals("B_finish", bFinish.getName());
+		assertTrue(b instanceof BehaviorExecutionSpecification);
+		assertEquals("B", b.getName());
+		assertEquals(((BehaviorExecutionSpecification)b).getStart(), bStart);
+		assertEquals(((BehaviorExecutionSpecification)b).getFinish(), bFinish);
+		assertNotNull(((BehaviorExecutionSpecification)b).getCovered(lifeline2.getName()));
+		assertEquals(bBehavior, ((BehaviorExecutionSpecification)b).getBehavior());
+
+		// Execution A
+		final Behavior aBehavior = interaction.getOwnedBehaviors().get(0);
+		assertEquals("Opaque behavior does not exist", "A", aBehavior.getName());
+		assertTrue(aStart instanceof ExecutionOccurrenceSpecification);
+		assertEquals("A_start", aStart.getName());
+		assertTrue(aFinish instanceof ExecutionOccurrenceSpecification);
+		assertEquals("A_finish", aFinish.getName());
+		assertTrue(a instanceof BehaviorExecutionSpecification);
+		assertEquals("A", a.getName());
+		assertEquals(((BehaviorExecutionSpecification)a).getStart(), aStart);
+		assertEquals(((BehaviorExecutionSpecification)a).getFinish(), aFinish);
+		assertNotNull(((BehaviorExecutionSpecification)a).getCovered(lifeline1.getName()));
+		assertEquals(aBehavior, ((BehaviorExecutionSpecification)a).getBehavior());
+	}
+
+	/**
+	 * Test {@link SequenceServices#reorder(ExecutionSpecification, InteractionFragment, InteractionFragment)
+	 * reorder} service. Reorder two executions on different lifelines. Move the second execution in order
+	 * that executions are mixed, ie : first execution start > second execution start > first execution end >
+	 * second execution end.
+	 * 
+	 * @throws Exception
+	 *             in case of error
+	 */
+	public void testReorderExecutions7() throws Exception {
+		// Interaction Scenario_15
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_15");
+		final Lifeline lifeline1 = interaction.getLifeline("Lifeline_1");
+		final Lifeline lifeline2 = interaction.getLifeline("Lifeline_2");
+
+		// Execution to move B
+		final ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("B");
+		// StartingEndPredecessorAfter A_start execution occurrence
+		final ExecutionOccurrenceSpecification startingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
+				.getFragment("A_start");
+		// FinishingEndPredecessorAfter A_finish execution occurrence
+		final ExecutionOccurrenceSpecification finishingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
+				.getFragment("A_finish");
+
+		sequenceServices.reorder(execution, startingEndPredecessorAfter, finishingEndPredecessorAfter);
+
+		final List<InteractionFragment> fragments = interaction.getFragments();
+		assertEquals(6, fragments.size());
+
+		final InteractionFragment aStart = fragments.get(0);
+		final InteractionFragment a = fragments.get(1);
+		final InteractionFragment bStart = fragments.get(2);
+		final InteractionFragment b = fragments.get(3);
+		final InteractionFragment aFinish = fragments.get(4);
+		final InteractionFragment bFinish = fragments.get(5);
+
+		// Execution B
+		final Behavior bBehavior = interaction.getOwnedBehaviors().get(1);
+		assertEquals("Opaque behavior does not exist", "B", bBehavior.getName());
+		assertTrue(bStart instanceof ExecutionOccurrenceSpecification);
+		assertEquals("B_start", bStart.getName());
+		assertTrue(bFinish instanceof ExecutionOccurrenceSpecification);
+		assertEquals("B_finish", bFinish.getName());
+		assertTrue(b instanceof BehaviorExecutionSpecification);
+		assertEquals("B", b.getName());
+		assertEquals(((BehaviorExecutionSpecification)b).getStart(), bStart);
+		assertEquals(((BehaviorExecutionSpecification)b).getFinish(), bFinish);
+		assertNotNull(((BehaviorExecutionSpecification)b).getCovered(lifeline2.getName()));
+		assertEquals(bBehavior, ((BehaviorExecutionSpecification)b).getBehavior());
+
+		// Execution A
+		final Behavior aBehavior = interaction.getOwnedBehaviors().get(0);
+		assertEquals("Opaque behavior does not exist", "A", aBehavior.getName());
+		assertTrue(aStart instanceof ExecutionOccurrenceSpecification);
+		assertEquals("A_start", aStart.getName());
+		assertTrue(aFinish instanceof ExecutionOccurrenceSpecification);
+		assertEquals("A_finish", aFinish.getName());
+		assertTrue(a instanceof BehaviorExecutionSpecification);
+		assertEquals("A", a.getName());
+		assertEquals(((BehaviorExecutionSpecification)a).getStart(), aStart);
+		assertEquals(((BehaviorExecutionSpecification)a).getFinish(), aFinish);
+		assertNotNull(((BehaviorExecutionSpecification)a).getCovered(lifeline1.getName()));
+		assertEquals(aBehavior, ((BehaviorExecutionSpecification)a).getBehavior());
+	}
+
+	/**
+	 * Test {@link SequenceServices#reorder(ExecutionSpecification, InteractionFragment, InteractionFragment)
+	 * reorder} service. Reorder two executions on different lifelines. Move the execution A after execution
+	 * B, the sub-execution C should be also moved.
+	 * 
+	 * @throws Exception
+	 *             in case of error
+	 */
+	public void testReorderExecutions8() throws Exception {
+		// Interaction Scenario_16
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_16");
+		final Lifeline lifeline1 = interaction.getLifeline("Lifeline_1");
+		final Lifeline lifeline2 = interaction.getLifeline("Lifeline_2");
+
+		// Execution to move A
+		final ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("A");
+		// StartingEndPredecessorAfter B_finish execution occurrence
+		final ExecutionOccurrenceSpecification startingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
+				.getFragment("B_finish");
+		// FinishingEndPredecessorAfter C_finish execution occurrence
+		final ExecutionOccurrenceSpecification finishingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
+				.getFragment("C_finish");
+
+		sequenceServices.reorder(execution, startingEndPredecessorAfter, finishingEndPredecessorAfter);
+
+		final List<InteractionFragment> fragments = interaction.getFragments();
+		assertEquals(9, fragments.size());
+
+		final InteractionFragment bStart = fragments.get(0);
+		final InteractionFragment b = fragments.get(1);
+		final InteractionFragment bFinish = fragments.get(2);
+		final InteractionFragment aStart = fragments.get(3);
+		final InteractionFragment a = fragments.get(4);
+		final InteractionFragment cStart = fragments.get(5);
+		final InteractionFragment c = fragments.get(6);
+		final InteractionFragment cFinish = fragments.get(7);
+		final InteractionFragment aFinish = fragments.get(8);
+
+		// Execution B
+		final Behavior bBehavior = interaction.getOwnedBehaviors().get(1);
+		assertEquals("Opaque behavior does not exist", "B", bBehavior.getName());
+		assertTrue(bStart instanceof ExecutionOccurrenceSpecification);
+		assertEquals("B_start", bStart.getName());
+		assertTrue(bFinish instanceof ExecutionOccurrenceSpecification);
+		assertEquals("B_finish", bFinish.getName());
+		assertTrue(b instanceof BehaviorExecutionSpecification);
+		assertEquals("B", b.getName());
+		assertEquals(((BehaviorExecutionSpecification)b).getStart(), bStart);
+		assertEquals(((BehaviorExecutionSpecification)b).getFinish(), bFinish);
+		assertNotNull(((BehaviorExecutionSpecification)b).getCovered(lifeline2.getName()));
+		assertEquals(bBehavior, ((BehaviorExecutionSpecification)b).getBehavior());
+
+		// Execution A
+		final Behavior aBehavior = interaction.getOwnedBehaviors().get(0);
+		assertEquals("Opaque behavior does not exist", "A", aBehavior.getName());
+		assertTrue(aStart instanceof ExecutionOccurrenceSpecification);
+		assertEquals("A_start", aStart.getName());
+		assertTrue(aFinish instanceof ExecutionOccurrenceSpecification);
+		assertEquals("A_finish", aFinish.getName());
+		assertTrue(a instanceof BehaviorExecutionSpecification);
+		assertEquals("A", a.getName());
+		assertEquals(((BehaviorExecutionSpecification)a).getStart(), aStart);
+		assertEquals(((BehaviorExecutionSpecification)a).getFinish(), aFinish);
+		assertNotNull(((BehaviorExecutionSpecification)a).getCovered(lifeline1.getName()));
+		assertEquals(aBehavior, ((BehaviorExecutionSpecification)a).getBehavior());
+
+		// Execution C
+		final Behavior cBehavior = interaction.getOwnedBehaviors().get(2);
+		assertEquals("Opaque behavior does not exist", "C", cBehavior.getName());
+		assertTrue(cStart instanceof ExecutionOccurrenceSpecification);
+		assertEquals("C_start", cStart.getName());
+		assertTrue(cFinish instanceof ExecutionOccurrenceSpecification);
+		assertEquals("C_finish", cFinish.getName());
+		assertTrue(c instanceof BehaviorExecutionSpecification);
+		assertEquals("C", c.getName());
+		assertEquals(((BehaviorExecutionSpecification)c).getStart(), cStart);
+		assertEquals(((BehaviorExecutionSpecification)c).getFinish(), cFinish);
+		assertNotNull(((BehaviorExecutionSpecification)c).getCovered(lifeline1.getName()));
+		assertEquals(cBehavior, ((BehaviorExecutionSpecification)c).getBehavior());
+
 	}
 
 	/**
@@ -2393,6 +2605,81 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(op1ReplyMessage.getReceiveEvent(), op1ReplyReceive);
 		assertNotNull(((MessageOccurrenceSpecification)op1ReplySend).getCovered(consumers.getName()));
 		assertNotNull(((MessageOccurrenceSpecification)op1ReplyReceive).getCovered(producers.getName()));
+	}
+
+	/**
+	 * Test {@link SequenceServices#reorder(Message, InteractionFragment, InteractionFragment) reorder}
+	 * service. Reorder a message and an execution. Move the message from the lifeline to the execution.
+	 * 
+	 * @throws Exception
+	 *             in case of error
+	 */
+	public void testReorderMessageAndExecution3() throws Exception {
+		// Interaction Scenario_17
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_17");
+		final Lifeline producers = interaction.getLifeline("producers");
+		final Lifeline consumers = interaction.getLifeline("consumers");
+
+		// Execution to move get
+		final ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("get");
+		// StartingEndPredecessorAfter not exists
+		final ExecutionOccurrenceSpecification startingEndPredecessorAfter = null;
+		// FinishingEndPredecessorAfter get_receiver message occurrence
+		final MessageOccurrenceSpecification finishingEndPredecessorAfter = (MessageOccurrenceSpecification)interaction
+				.getFragment("get_receiver");
+
+		sequenceServices.reorder(execution, startingEndPredecessorAfter, finishingEndPredecessorAfter);
+
+		final List<InteractionFragment> fragments = interaction.getFragments();
+		assertEquals(24, fragments.size());
+
+		final InteractionFragment getSend = fragments.get(0);
+		final InteractionFragment getReceive = fragments.get(1);
+		final InteractionFragment get = fragments.get(2);
+		final InteractionFragment getFinish = fragments.get(3);
+		final InteractionFragment computeStart = fragments.get(4);
+		final InteractionFragment compute = fragments.get(5);
+		final InteractionFragment computeFinish = fragments.get(6);
+
+		// Message get
+		final Message getMessage = interaction.getMessages().get(0);
+		assertEquals("Message does not exist", "get", getMessage.getName());
+		assertTrue(getSend instanceof MessageOccurrenceSpecification);
+		assertEquals("get_sender", getSend.getName());
+		assertTrue(getReceive instanceof MessageOccurrenceSpecification);
+		assertEquals("get_receiver", getReceive.getName());
+		assertEquals(getMessage.getSendEvent(), getSend);
+		assertEquals(getMessage.getReceiveEvent(), getReceive);
+		assertNotNull(((MessageOccurrenceSpecification)getSend).getCovered(producers.getName()));
+		assertNotNull(((MessageOccurrenceSpecification)getReceive).getCovered(consumers.getName()));
+		
+		// Execution get
+		final Behavior getBehavior = interaction.getOwnedBehaviors().get(0);
+		assertEquals("Opaque behavior does not exist", "get", getBehavior.getName());
+		assertTrue(getReceive instanceof MessageOccurrenceSpecification);
+		assertEquals("get_receiver", getReceive.getName());
+		assertTrue(getFinish instanceof ExecutionOccurrenceSpecification);
+		assertEquals("get_finish", getFinish.getName());
+		assertTrue(get instanceof BehaviorExecutionSpecification);
+		assertEquals("get", get.getName());
+		assertEquals(((BehaviorExecutionSpecification)get).getStart(), getReceive);
+		assertEquals(((BehaviorExecutionSpecification)get).getFinish(), getFinish);
+		assertNotNull(((BehaviorExecutionSpecification)get).getCovered(producers.getName()));
+		assertEquals(getBehavior, ((BehaviorExecutionSpecification)get).getBehavior());
+		
+		// Execution compute
+		final Behavior computeBehavior = interaction.getOwnedBehaviors().get(0);
+		assertEquals("Opaque behavior does not exist", "compute", computeBehavior.getName());
+		assertTrue(computeStart instanceof ExecutionOccurrenceSpecification);
+		assertEquals("compute_start", computeStart.getName());
+		assertTrue(computeFinish instanceof ExecutionOccurrenceSpecification);
+		assertEquals("compute_finish", computeFinish.getName());
+		assertTrue(compute instanceof BehaviorExecutionSpecification);
+		assertEquals("compute", compute.getName());
+		assertEquals(((BehaviorExecutionSpecification)compute).getStart(), computeStart);
+		assertEquals(((BehaviorExecutionSpecification)compute).getFinish(), computeFinish);
+		assertNotNull(((BehaviorExecutionSpecification)compute).getCovered(consumers.getName()));
+		assertEquals(computeBehavior, ((BehaviorExecutionSpecification)compute).getBehavior());
 	}
 
 	/**
