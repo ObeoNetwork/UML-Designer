@@ -1896,9 +1896,9 @@ public class SequenceServiceTests extends TestCase {
 		// StartingEndPredecessorAfter BehaviorExecution_2_finish execution occurrence
 		final ExecutionOccurrenceSpecification startingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
 				.getFragment("BehaviorExecution_2_finish");
-		// FinishingEndPredecessorAfter produce_reply_receive execution occurrence
-		final ExecutionOccurrenceSpecification finishingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
-				.getFragment("produce_reply_receive");
+		// FinishingEndPredecessorAfter produce_reply_receiver execution occurrence
+		final MessageOccurrenceSpecification finishingEndPredecessorAfter = (MessageOccurrenceSpecification)interaction
+				.getFragment("produce_reply_receiver");
 
 		sequenceServices.reorder(execution, startingEndPredecessorAfter, finishingEndPredecessorAfter);
 
@@ -2631,7 +2631,7 @@ public class SequenceServiceTests extends TestCase {
 		sequenceServices.reorder(execution, startingEndPredecessorAfter, finishingEndPredecessorAfter);
 
 		final List<InteractionFragment> fragments = interaction.getFragments();
-		assertEquals(24, fragments.size());
+		assertEquals(7, fragments.size());
 
 		final InteractionFragment getSend = fragments.get(0);
 		final InteractionFragment getReceive = fragments.get(1);
@@ -2650,11 +2650,11 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals("get_receiver", getReceive.getName());
 		assertEquals(getMessage.getSendEvent(), getSend);
 		assertEquals(getMessage.getReceiveEvent(), getReceive);
-		assertNotNull(((MessageOccurrenceSpecification)getSend).getCovered(producers.getName()));
-		assertNotNull(((MessageOccurrenceSpecification)getReceive).getCovered(consumers.getName()));
-		
+		assertNotNull(((MessageOccurrenceSpecification)getSend).getCovered(consumers.getName()));
+		assertNotNull(((MessageOccurrenceSpecification)getReceive).getCovered(producers.getName()));
+
 		// Execution get
-		final Behavior getBehavior = interaction.getOwnedBehaviors().get(0);
+		final Behavior getBehavior = interaction.getOwnedBehaviors().get(1);
 		assertEquals("Opaque behavior does not exist", "get", getBehavior.getName());
 		assertTrue(getReceive instanceof MessageOccurrenceSpecification);
 		assertEquals("get_receiver", getReceive.getName());
@@ -2666,7 +2666,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(((BehaviorExecutionSpecification)get).getFinish(), getFinish);
 		assertNotNull(((BehaviorExecutionSpecification)get).getCovered(producers.getName()));
 		assertEquals(getBehavior, ((BehaviorExecutionSpecification)get).getBehavior());
-		
+
 		// Execution compute
 		final Behavior computeBehavior = interaction.getOwnedBehaviors().get(0);
 		assertEquals("Opaque behavior does not exist", "compute", computeBehavior.getName());
