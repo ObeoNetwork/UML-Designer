@@ -106,6 +106,11 @@ public class SequenceServices {
 	private LogServices logger = new LogServices();
 
 	/**
+	 * Operation service.
+	 */
+	private OperationServices operationService = new OperationServices();
+
+	/**
 	 * Retrieves the context element ({@link Lifeline} or {@link ExecutionSpecification}) of the given
 	 * {@link OccurrenceSpecification}.
 	 * 
@@ -1265,7 +1270,7 @@ public class SequenceServices {
 	public void createOperation(Lifeline lifeline, NamedElement startingEndPredecessor) {
 		// Get associated class
 		final org.eclipse.uml2.uml.Class type = getType(lifeline);
-		final Operation operation = OperationServices.createOperation(type);
+		final Operation operation = operationService.createOperation(type);
 
 		// Create execution
 		createExecution(lifeline.getInteraction(), lifeline, operation, (NamedElement)startingEndPredecessor);
@@ -1283,7 +1288,7 @@ public class SequenceServices {
 	public void createOperation(ExecutionSpecification execution, NamedElement startingEndPredecessor) {
 		// Get associated class
 		final org.eclipse.uml2.uml.Class type = getType(execution.getCovereds().get(0));
-		final Operation operation = OperationServices.createOperation(type);
+		final Operation operation = operationService.createOperation(type);
 		// Create execution
 		createExecution(execution.getEnclosingInteraction(), execution, operation, startingEndPredecessor);
 	}
@@ -1313,7 +1318,7 @@ public class SequenceServices {
 			type = getType(((ExecutionSpecification)target).getCovereds().get(0));
 			interaction = ((ExecutionSpecification)target).getEnclosingInteraction();
 		}
-		final Operation operation = OperationServices.createOperation(type);
+		final Operation operation = operationService.createOperation(type);
 		// Create message
 		createAsynchronousMessage(interaction, source, target, operation, startingEndPredecessor,
 				finishingEndPredecessor);
@@ -1344,12 +1349,19 @@ public class SequenceServices {
 			type = getType(((ExecutionSpecification)target).getCovereds().get(0));
 			interaction = ((ExecutionSpecification)target).getEnclosingInteraction();
 		}
-		final Operation operation = OperationServices.createOperation(type);
+		final Operation operation = operationService.createOperation(type);
 		// Create message
 		createSynchronousMessage(interaction, source, target, operation, startingEndPredecessor,
 				finishingEndPredecessor);
 	}
 
+	/**
+	 * Get class associated to a lifeline.
+	 * 
+	 * @param target
+	 *            Lifeline
+	 * @return Class
+	 */
 	private Class getType(Lifeline target) {
 		if (target.getClientDependencies() != null && !target.getClientDependencies().isEmpty()) {
 			return (org.eclipse.uml2.uml.Class)((InstanceSpecification)target.getClientDependencies().get(0)
