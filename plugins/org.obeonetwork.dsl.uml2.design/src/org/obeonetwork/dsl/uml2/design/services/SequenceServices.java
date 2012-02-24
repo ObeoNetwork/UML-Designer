@@ -26,6 +26,7 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.uml2.uml.BehaviorExecutionSpecification;
+import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Event;
@@ -1010,8 +1011,7 @@ public class SequenceServices {
 	public List<Operation> getOperations(EObject target) {
 		List<Element> elements = null;
 		if (target instanceof Lifeline) {
-			elements = ((InstanceSpecification)((Lifeline)target).getClientDependencies().get(0)
-					.getSuppliers().get(0)).getClassifiers().get(0).getOwnedElements();
+			elements = getType((Lifeline)target).getOwnedElements();
 		} else if (target instanceof ExecutionSpecification) {
 			elements = ((ExecutionSpecification)target).getOwnedElements();
 		}
@@ -1264,11 +1264,11 @@ public class SequenceServices {
 	 */
 	public void createOperation(Lifeline lifeline, NamedElement startingEndPredecessor) {
 		// Get associated class
-		final org.eclipse.uml2.uml.Class type = (org.eclipse.uml2.uml.Class)((InstanceSpecification)lifeline
-				.getClientDependencies().get(0).getSuppliers().get(0)).getClassifiers().get(0);
+		final org.eclipse.uml2.uml.Class type = getType(lifeline);
 		final Operation operation = OperationServices.createOperation(type);
+
 		// Create execution
-		createExecution(lifeline.getInteraction(), lifeline, operation, startingEndPredecessor);
+		createExecution(lifeline.getInteraction(), lifeline, operation, (NamedElement)startingEndPredecessor);
 	}
 
 	/**
@@ -1282,9 +1282,7 @@ public class SequenceServices {
 	 */
 	public void createOperation(ExecutionSpecification execution, NamedElement startingEndPredecessor) {
 		// Get associated class
-		final org.eclipse.uml2.uml.Class type = (org.eclipse.uml2.uml.Class)((InstanceSpecification)execution
-				.getCovereds().get(0).getClientDependencies().get(0).getSuppliers().get(0)).getClassifiers()
-				.get(0);
+		final org.eclipse.uml2.uml.Class type = getType(execution.getCovereds().get(0));
 		final Operation operation = OperationServices.createOperation(type);
 		// Create execution
 		createExecution(execution.getEnclosingInteraction(), execution, operation, startingEndPredecessor);
@@ -1309,13 +1307,10 @@ public class SequenceServices {
 		org.eclipse.uml2.uml.Class type;
 		Interaction interaction;
 		if (target instanceof Lifeline) {
-			type = (org.eclipse.uml2.uml.Class)((InstanceSpecification)target.getClientDependencies().get(0)
-					.getSuppliers().get(0)).getClassifiers().get(0);
+			type = getType((Lifeline)target);
 			interaction = ((Lifeline)target).getInteraction();
 		} else {
-			type = (org.eclipse.uml2.uml.Class)((InstanceSpecification)(((ExecutionSpecification)target)
-					.getCovereds().get(0)).getClientDependencies().get(0).getSuppliers().get(0))
-					.getClassifiers().get(0);
+			type = getType(((ExecutionSpecification)target).getCovereds().get(0));
 			interaction = ((ExecutionSpecification)target).getEnclosingInteraction();
 		}
 		final Operation operation = OperationServices.createOperation(type);
@@ -1343,19 +1338,24 @@ public class SequenceServices {
 		org.eclipse.uml2.uml.Class type;
 		Interaction interaction;
 		if (target instanceof Lifeline) {
-			type = (org.eclipse.uml2.uml.Class)((InstanceSpecification)target.getClientDependencies().get(0)
-					.getSuppliers().get(0)).getClassifiers().get(0);
+			type = getType((Lifeline)target);
 			interaction = ((Lifeline)target).getInteraction();
 		} else {
-			type = (org.eclipse.uml2.uml.Class)((InstanceSpecification)(((ExecutionSpecification)target)
-					.getCovereds().get(0)).getClientDependencies().get(0).getSuppliers().get(0))
-					.getClassifiers().get(0);
+			type = getType(((ExecutionSpecification)target).getCovereds().get(0));
 			interaction = ((ExecutionSpecification)target).getEnclosingInteraction();
 		}
 		final Operation operation = OperationServices.createOperation(type);
 		// Create message
 		createSynchronousMessage(interaction, source, target, operation, startingEndPredecessor,
 				finishingEndPredecessor);
+	}
+
+	private Class getType(Lifeline target) {
+		if (target.getClientDependencies() != null && !target.getClientDependencies().isEmpty()) {
+			return (org.eclipse.uml2.uml.Class)((InstanceSpecification)target.getClientDependencies().get(0)
+					.getSuppliers().get(0)).getClassifiers().get(0);
+		}
+		return (Class)target.getRepresents().getType();
 	}
 
 	/**
