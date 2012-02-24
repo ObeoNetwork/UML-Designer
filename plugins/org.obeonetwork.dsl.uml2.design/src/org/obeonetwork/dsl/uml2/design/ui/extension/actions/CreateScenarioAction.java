@@ -37,7 +37,7 @@ import fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectUIManager;
 /**
  * An action to delete the selected UML elements.
  * 
- * @author Mélanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+ * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class CreateScenarioAction extends Action {
 	/**
@@ -91,19 +91,19 @@ public class CreateScenarioAction extends Action {
 			protected void doExecute() {
 				for (Package pkg : packages) {
 					// Create interaction
-					Interaction interaction = UMLFactory.eINSTANCE.createInteraction();
+					final Interaction interaction = UMLFactory.eINSTANCE.createInteraction();
 					interaction.setName(NamedElementServices.getNewInteractionName(pkg));
 					pkg.getPackagedElements().add(interaction);
 
 					// Get session
-					Session session = SessionManager.INSTANCE.getSession(pkg);
+					final Session session = SessionManager.INSTANCE.getSession(pkg);
 
 					// Get sequence diagram representation description
-					RepresentationDescription description = getSequenceDiagramDescription(session,
+					final RepresentationDescription description = getSequenceDiagramDescription(session,
 							interaction);
 
 					// Create representation
-					DRepresentation representation = DialectManager.INSTANCE.createRepresentation(
+					final DRepresentation representation = DialectManager.INSTANCE.createRepresentation(
 							LabelServices.getSequenceDiagramName(interaction), interaction, description,
 							session, new NullProgressMonitor());
 

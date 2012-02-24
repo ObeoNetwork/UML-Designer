@@ -51,23 +51,38 @@ import org.obeonetwork.dsl.uml2.design.services.UMLServices;
  * A switch that handle the label edition for each UML types.
  * 
  * @author Gonzague Reydet <a href="mailto:gonzague.reydet@obeo.fr">gonzague.reydet@obeo.fr</a>
+ * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstants {
-
+	/**
+	 * Receiver element name suffix.
+	 */
 	private static final String RECEIVER_SUFFIX = "_receiver";
 
+	/**
+	 * Sender element name suffix.
+	 */
 	private static final String SENDER_SUFFIX = "_sender";
 
+	/**
+	 * Finish element name suffix.
+	 */
 	private static final String FINISH_SUFFIX = "_finish";
 
+	/**
+	 * Start element name suffix.
+	 */
 	private static final String START_SUFFIX = "_start";
-
-	private final LabelServices service = new LabelServices();
 
 	/**
 	 * The guard suffix constant.
 	 */
 	private static final String GUARD_SUFFIX = "_guard";
+
+	/**
+	 * Label service.
+	 */
+	private final LabelServices service = new LabelServices();
 
 	/**
 	 * The raw label content edited by the user.
@@ -78,6 +93,9 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 		this.editedLabelContent = editedLabelContent;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Element caseAssociation(Association object) {
 		/*
@@ -90,14 +108,14 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 		if (source != null && target != null) {
 			if (editedLabelContent.indexOf('-') > -1) {
 				//
-				String completeSourceLabel = editedLabelContent.substring(0, editedLabelContent.indexOf('-'))
-						.trim();
+				final String completeSourceLabel = editedLabelContent.substring(0,
+						editedLabelContent.indexOf('-')).trim();
 				editAssociationEndLabel(source, completeSourceLabel);
-				String completeTargetLabel = editedLabelContent
-						.substring(editedLabelContent.indexOf('-') + 1).trim();
+				final String completeTargetLabel = editedLabelContent.substring(
+						editedLabelContent.indexOf('-') + 1).trim();
 				editAssociationEndLabel(target, completeTargetLabel);
 			} else {
-				String singleEndLabel = editedLabelContent.trim();
+				final String singleEndLabel = editedLabelContent.trim();
 				if (target.isNavigable()) {
 					editAssociationEndLabel(target, singleEndLabel);
 				} else {
@@ -123,30 +141,30 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 		escapedLabel = escapedLabel.trim();
 		// multiplicity
 		if (escapedLabel.indexOf('[') > -1) {
-			String endOfMul = escapedLabel.substring(escapedLabel.indexOf('[') + 1);
+			final String endOfMul = escapedLabel.substring(escapedLabel.indexOf('[') + 1);
 			escapedLabel = escapedLabel.substring(0, escapedLabel.indexOf('['));
 			escapedLabel = escapedLabel.trim();
 			// lower bound
 			int lowerBound = property.getLower();
 			int upperBound = property.getUpper();
 			if (endOfMul.indexOf(']') > -1) {
-				String mulInter = endOfMul.substring(0, endOfMul.indexOf(']')).trim();
+				final String mulInter = endOfMul.substring(0, endOfMul.indexOf(']')).trim();
 				if ("*".equals(mulInter)) {
 					lowerBound = 0;
 					upperBound = -1;
 				} else {
 					if (mulInter.length() > 0) {
 						if (mulInter.indexOf("..") > -1) {
-							String low = mulInter.substring(0, mulInter.indexOf("..")).trim();
+							final String low = mulInter.substring(0, mulInter.indexOf("..")).trim();
 							if (low.length() > 0) {
 								lowerBound = Integer.valueOf(low);
 							}
-							String up = mulInter.substring(mulInter.indexOf("..") + 2).trim();
+							final String up = mulInter.substring(mulInter.indexOf("..") + 2).trim();
 							if (up.length() > 0) {
 								upperBound = Integer.valueOf(up);
 							}
 						} else {
-							Integer singleBound = Integer.valueOf(mulInter);
+							final Integer singleBound = Integer.valueOf(mulInter);
 							lowerBound = singleBound;
 							upperBound = singleBound;
 						}
@@ -160,6 +178,10 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 		property.setName(escapedLabel);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public Element caseComment(Comment comment) {
 		comment.setBody(editedLabelContent);
 		return comment;
@@ -303,6 +325,9 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 		return region;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Element caseExecutionSpecification(ExecutionSpecification execution) {
 		// Edit execution name
@@ -319,19 +344,25 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 		return execution;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Element caseBehaviorExecutionSpecification(BehaviorExecutionSpecification execution) {
 		// Edit execution
 		caseExecutionSpecification(execution);
 		// Edit opaque behavior
-		Behavior behavior = execution.getBehavior();
+		final Behavior behavior = execution.getBehavior();
 		service.editUmlLabel(behavior, editedLabelContent);
 		// Edit operation
-		Operation operation = (Operation)behavior.getSpecification();
+		final Operation operation = (Operation)behavior.getSpecification();
 		service.editUmlLabel(operation, editedLabelContent);
 		return execution;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Element caseMessage(Message message) {
 		// Edit message name
@@ -343,9 +374,12 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 		return message;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Element caseLifeline(Lifeline lifeline) {
-		String name = editedLabelContent.substring(0, editedLabelContent.indexOf(":"));
+		final String name = editedLabelContent.substring(0, editedLabelContent.indexOf(":"));
 		// Edit associated instance name
 		if (lifeline.getClientDependencies() != null && lifeline.getClientDependencies().size() > 0)
 			((InstanceSpecification)lifeline.getClientDependencies().get(0).getSuppliers().get(0))
@@ -354,21 +388,21 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 		lifeline.setName(name);
 
 		// Edit dependency
-		String type = editedLabelContent.substring(editedLabelContent.indexOf(":") + 1,
+		final String type = editedLabelContent.substring(editedLabelContent.indexOf(":") + 1,
 				editedLabelContent.length()).trim();
-		Iterator itr = lifeline.getModel().eAllContents();
+		final Iterator itr = lifeline.getModel().eAllContents();
 		Map<String, InstanceSpecification> instances = new HashMap<String, InstanceSpecification>();
 		while (itr.hasNext()) {
-			Object element = itr.next();
+			final Object element = itr.next();
 			if (element instanceof InstanceSpecification) {
 				instances.put(((InstanceSpecification)element).getClassifiers().get(0).getName(),
 						(InstanceSpecification)element);
 			}
 		}
 		if (instances.containsKey(type)) {
-			InstanceSpecification instance = instances.get(type);
+			final InstanceSpecification instance = instances.get(type);
 			lifeline.getClientDependencies().clear();
-			Dependency dependency = UMLFactory.eINSTANCE.createDependency();
+			final Dependency dependency = UMLFactory.eINSTANCE.createDependency();
 			dependency.getClients().add(lifeline);
 			dependency.getSuppliers().add(instance);
 			lifeline.getInteraction().getNearestPackage().getPackagedElements().add(dependency);
@@ -377,6 +411,9 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 		return lifeline;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Element caseMessageOccurrenceSpecification(MessageOccurrenceSpecification occurence) {
 		if (occurence.equals(occurence.getMessage().getSendEvent()))
@@ -388,6 +425,9 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 		return occurence;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Element caseExecutionOccurrenceSpecification(ExecutionOccurrenceSpecification occurence) {
 		if (occurence.equals(occurence.getExecution().getStart()))
@@ -399,30 +439,45 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 		return occurence;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Element caseLiteralInteger(LiteralInteger literal) {
 		literal.setValue(Integer.parseInt(ObjectServices.getValue(editedLabelContent)));
 		return literal;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Element caseLiteralBoolean(LiteralBoolean literal) {
 		literal.setValue(Boolean.parseBoolean(ObjectServices.getValue(editedLabelContent)));
 		return literal;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Element caseLiteralString(LiteralString literal) {
 		literal.setValue(ObjectServices.getValue(editedLabelContent));
 		return literal;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Element caseInstanceSpecification(InstanceSpecification instance) {
 		instance.setName(ObjectServices.getInstanceName(editedLabelContent));
 		return instance;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Element caseSlot(Slot slot) {
 		for (ValueSpecification value : slot.getValues()) {

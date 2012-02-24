@@ -1,3 +1,4 @@
+// CHECKSTYLE:OFF
 /*******************************************************************************
  * Copyright (c) 2009, 2011 Obeo.
  * All rights reserved. This program and the accompanying materials
@@ -39,7 +40,7 @@ import org.obeonetwork.dsl.uml2.design.tests.Activator;
  * Unit tests on sequence services.
  * 
  * @author Gonzague Reydet <a href="mailto:gonzague.reydet@obeo.fr">gonzague.reydet@obeo.fr</a>
- * @author Mélanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+ * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class SequenceServiceTests extends TestCase {
 	/**
@@ -52,6 +53,15 @@ public class SequenceServiceTests extends TestCase {
 	 */
 	private SequenceServices sequenceServices;
 
+	/**
+	 * Get interaction defined in a resource.
+	 * 
+	 * @param resourceUri
+	 *            URI
+	 * @param name
+	 *            Interaction name
+	 * @return Interaction
+	 */
 	private Interaction getInteraction(String resourceUri, String name) {
 		final ResourceSet rset = new ResourceSetImpl();
 		final Resource resource = rset.getResource(URI.createPlatformPluginURI(resourceUri, true), true);
@@ -59,6 +69,15 @@ public class SequenceServiceTests extends TestCase {
 		return (Interaction)((Model)resource.getContents().get(0)).getOwnedMember(name);
 	}
 
+	/**
+	 * Get the class defined in an interaction.
+	 * 
+	 * @param interaction
+	 *            Interaction
+	 * @param names
+	 *            Class name
+	 * @return Class
+	 */
 	private org.eclipse.uml2.uml.Class getClass(Interaction interaction, String... names) {
 		NamedElement element = interaction.getModel();
 		for (String name : names) {
@@ -83,8 +102,8 @@ public class SequenceServiceTests extends TestCase {
 	 * service against {@link Lifeline}.
 	 */
 	public void testExecutionSemanticCandidatesLifeline() {
-		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_5");
-		Lifeline lifeline = interaction.getLifeline("consumers");
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_5");
+		final Lifeline lifeline = interaction.getLifeline("consumers");
 		final List<ExecutionSpecification> executions = sequenceServices
 				.executionSemanticCandidates(lifeline);
 
@@ -99,8 +118,8 @@ public class SequenceServiceTests extends TestCase {
 	 * executionSemanticCandidates} service against {@link ExecutionSpecification}.
 	 */
 	public void testExecutionSemanticCandidatesExecutionSpecification() {
-		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_5");
-		BehaviorExecutionSpecification execution = (BehaviorExecutionSpecification)interaction
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_5");
+		final BehaviorExecutionSpecification execution = (BehaviorExecutionSpecification)interaction
 				.getFragment("compute");
 		final List<ExecutionSpecification> subExecution = sequenceServices
 				.executionSemanticCandidates(execution);
@@ -108,7 +127,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(1, subExecution.size());
 		assertEquals("BehaviorExecution_1", subExecution.get(0).getName());
 
-		BehaviorExecutionSpecification execution2 = (BehaviorExecutionSpecification)interaction
+		final BehaviorExecutionSpecification execution2 = (BehaviorExecutionSpecification)interaction
 				.getFragment("BehaviorExecution_2");
 		final List<ExecutionSpecification> subExecution2 = sequenceServices
 				.executionSemanticCandidates(execution2);
@@ -125,7 +144,7 @@ public class SequenceServiceTests extends TestCase {
 	 */
 	public void testFindOccurenceSpecificationContext() throws Exception {
 		OccurrenceSpecification executionOccurrence;
-		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_6");
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_6");
 		executionOccurrence = (OccurrenceSpecification)interaction.getFragment("compute_start");
 		assertEquals("consumers", sequenceServices.findOccurrenceSpecificationContext(executionOccurrence)
 				.getName());
@@ -162,11 +181,11 @@ public class SequenceServiceTests extends TestCase {
 	 *             in case of error
 	 */
 	public void testCreateExecution() throws Exception {
-		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_0");
-		Lifeline lifeline = interaction.getLifeline("consumers");
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_0");
+		final Lifeline lifeline = interaction.getLifeline("consumers");
 		sequenceServices.createExecution(interaction, lifeline, null);
 
-		List<InteractionFragment> fragments = interaction.getFragments();
+		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(3, fragments.size());
 		assertEquals("Opaque behavior does not exist", "BehaviorExecution_0", interaction.getOwnedBehaviors()
 				.get(0).getName());
@@ -191,12 +210,12 @@ public class SequenceServiceTests extends TestCase {
 	 *             in case of error
 	 */
 	public void testImportExecution() throws Exception {
-		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_0");
-		Lifeline lifeline = interaction.getLifeline("consumers");
-		Operation operation = (Operation)lifeline.getRepresents().getType().getOwnedElements().get(0);
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_0");
+		final Lifeline lifeline = interaction.getLifeline("consumers");
+		final Operation operation = (Operation)lifeline.getRepresents().getType().getOwnedElements().get(0);
 		sequenceServices.createExecution(interaction, lifeline, operation, null);
 
-		List<InteractionFragment> fragments = interaction.getFragments();
+		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(3, fragments.size());
 		assertEquals("Opaque behavior does not exist", "compute", interaction.getOwnedBehaviors().get(0)
 				.getName());
@@ -221,12 +240,12 @@ public class SequenceServiceTests extends TestCase {
 	 *             in case of error
 	 */
 	public void testCreateExecutionOnExecution() throws Exception {
-		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_1");
-		Lifeline lifeline = interaction.getLifeline("consumers");
-		ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("compute");
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_1");
+		final Lifeline lifeline = interaction.getLifeline("consumers");
+		final ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("compute");
 		sequenceServices.createExecution(interaction, lifeline, execution);
 
-		List<InteractionFragment> fragments = interaction.getFragments();
+		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(6, fragments.size());
 		assertEquals("Opaque behavior does not exist", "BehaviorExecution_1", interaction.getOwnedBehaviors()
 				.get(1).getName());
@@ -252,12 +271,12 @@ public class SequenceServiceTests extends TestCase {
 	 *             in case of error
 	 */
 	public void testCreateAsynchronousMessage() throws Exception {
-		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_2");
-		Lifeline source = interaction.getLifeline("consumers");
-		Lifeline target = interaction.getLifeline("producers");
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_2");
+		final Lifeline source = interaction.getLifeline("consumers");
+		final Lifeline target = interaction.getLifeline("producers");
 		sequenceServices.createAsynchronousMessage(interaction, source, target, null, null);
 
-		List<InteractionFragment> fragments = interaction.getFragments();
+		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(2, fragments.size());
 		assertEquals("Message does not exist", "Message_0", interaction.getMessages().get(0).getName());
 		assertTrue(fragments.get(0) instanceof MessageOccurrenceSpecification);
@@ -279,22 +298,22 @@ public class SequenceServiceTests extends TestCase {
 	 *             in case of error
 	 */
 	public void testCreateAsynchronousMessageOnExecution() throws Exception {
-		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_3");
-		Lifeline source = interaction.getLifeline("consumers");
-		Lifeline target = interaction.getLifeline("producers");
-		ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("compute");
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_3");
+		final Lifeline source = interaction.getLifeline("consumers");
+		final Lifeline target = interaction.getLifeline("producers");
+		final ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("compute");
 
 		sequenceServices.createAsynchronousMessage(interaction, execution, target, execution.getStart(),
 				execution.getStart());
 
-		List<InteractionFragment> fragments = interaction.getFragments();
+		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(5, fragments.size());
 
-		InteractionFragment sourceExecutionStart = fragments.get(0);
-		InteractionFragment sourceExecution = fragments.get(1);
-		InteractionFragment messageSend = fragments.get(2);
-		InteractionFragment messageReceive = fragments.get(3);
-		InteractionFragment sourceExecutionFinish = fragments.get(4);
+		final InteractionFragment sourceExecutionStart = fragments.get(0);
+		final InteractionFragment sourceExecution = fragments.get(1);
+		final InteractionFragment messageSend = fragments.get(2);
+		final InteractionFragment messageReceive = fragments.get(3);
+		final InteractionFragment sourceExecutionFinish = fragments.get(4);
 
 		// Execution
 		assertEquals("Opaque behavior does not exist", "compute", interaction.getOwnedBehaviors().get(0)
@@ -332,14 +351,14 @@ public class SequenceServiceTests extends TestCase {
 	 *             in case of error
 	 */
 	public void testImportAsynchronousMessage() throws Exception {
-		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_2");
-		Lifeline source = interaction.getLifeline("consumers");
-		Lifeline target = interaction.getLifeline("producers");
-		Operation operation = (Operation)source.getRepresents().getType().getOwnedElements().get(0);
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_2");
+		final Lifeline source = interaction.getLifeline("consumers");
+		final Lifeline target = interaction.getLifeline("producers");
+		final Operation operation = (Operation)source.getRepresents().getType().getOwnedElements().get(0);
 
 		sequenceServices.createAsynchronousMessage(interaction, source, target, operation, null, null);
 
-		List<InteractionFragment> fragments = interaction.getFragments();
+		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(4, fragments.size());
 		// Message
 		assertEquals("Message does not exist", "compute", interaction.getMessages().get(0).getName());
@@ -376,25 +395,25 @@ public class SequenceServiceTests extends TestCase {
 	 *             in case of error
 	 */
 	public void testImportAsynchronousMessageOnExecution() throws Exception {
-		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_3");
-		Lifeline source = interaction.getLifeline("consumers");
-		Lifeline target = interaction.getLifeline("producers");
-		Operation operation = (Operation)target.getRepresents().getType().getOwnedElements().get(1);
-		ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("compute");
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_3");
+		final Lifeline source = interaction.getLifeline("consumers");
+		final Lifeline target = interaction.getLifeline("producers");
+		final Operation operation = (Operation)target.getRepresents().getType().getOwnedElements().get(1);
+		final ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("compute");
 
 		sequenceServices.createAsynchronousMessage(interaction, execution, target, operation,
 				execution.getStart(), execution.getStart());
 
-		List<InteractionFragment> fragments = interaction.getFragments();
+		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(7, fragments.size());
 
-		InteractionFragment sourceExecutionStart = fragments.get(0);
-		InteractionFragment sourceExecution = fragments.get(1);
-		InteractionFragment messageSend = fragments.get(2);
-		InteractionFragment messageReceive = fragments.get(3);
-		InteractionFragment targetExecution = fragments.get(4);
-		InteractionFragment targetExecutionFinish = fragments.get(5);
-		InteractionFragment sourceExecutionFinish = fragments.get(6);
+		final InteractionFragment sourceExecutionStart = fragments.get(0);
+		final InteractionFragment sourceExecution = fragments.get(1);
+		final InteractionFragment messageSend = fragments.get(2);
+		final InteractionFragment messageReceive = fragments.get(3);
+		final InteractionFragment targetExecution = fragments.get(4);
+		final InteractionFragment targetExecutionFinish = fragments.get(5);
+		final InteractionFragment sourceExecutionFinish = fragments.get(6);
 
 		// Execution compute
 		assertEquals("Opaque behavior does not exist", "compute", interaction.getOwnedBehaviors().get(0)
@@ -446,29 +465,29 @@ public class SequenceServiceTests extends TestCase {
 	 *             in case of error
 	 */
 	public void testImportTwoAsynchronousMessagesOnExecution() throws Exception {
-		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_7");
-		Lifeline source = interaction.getLifeline("consumers");
-		Lifeline target = interaction.getLifeline("producers");
-		Operation operation = (Operation)target.getRepresents().getType().getOwnedElements().get(0);
-		ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("compute");
-		ExecutionSpecification execution2 = (ExecutionSpecification)interaction.getFragment("get");
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_7");
+		final Lifeline source = interaction.getLifeline("consumers");
+		final Lifeline target = interaction.getLifeline("producers");
+		final Operation operation = (Operation)target.getRepresents().getType().getOwnedElements().get(0);
+		final ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("compute");
+		final ExecutionSpecification execution2 = (ExecutionSpecification)interaction.getFragment("get");
 		sequenceServices.createAsynchronousMessage(interaction, execution, target, operation,
 				execution2.getFinish(), execution2.getFinish());
 
-		List<InteractionFragment> fragments = interaction.getFragments();
+		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(11, fragments.size());
 
-		InteractionFragment sourceExecutionStart = fragments.get(0);
-		InteractionFragment sourceExecution = fragments.get(1);
-		InteractionFragment messageSend = fragments.get(2);
-		InteractionFragment messageReceive = fragments.get(3);
-		InteractionFragment targetExecution = fragments.get(4);
-		InteractionFragment targetExecutionFinish = fragments.get(5);
-		InteractionFragment messageSend2 = fragments.get(6);
-		InteractionFragment messageReceive2 = fragments.get(7);
-		InteractionFragment targetExecution2 = fragments.get(8);
-		InteractionFragment targetExecution2Finish = fragments.get(9);
-		InteractionFragment sourceExecutionFinish = fragments.get(10);
+		final InteractionFragment sourceExecutionStart = fragments.get(0);
+		final InteractionFragment sourceExecution = fragments.get(1);
+		final InteractionFragment messageSend = fragments.get(2);
+		final InteractionFragment messageReceive = fragments.get(3);
+		final InteractionFragment targetExecution = fragments.get(4);
+		final InteractionFragment targetExecutionFinish = fragments.get(5);
+		final InteractionFragment messageSend2 = fragments.get(6);
+		final InteractionFragment messageReceive2 = fragments.get(7);
+		final InteractionFragment targetExecution2 = fragments.get(8);
+		final InteractionFragment targetExecution2Finish = fragments.get(9);
+		final InteractionFragment sourceExecutionFinish = fragments.get(10);
 
 		// Execution compute
 		assertEquals("Opaque behavior does not exist", "compute", interaction.getOwnedBehaviors().get(0)
@@ -486,7 +505,7 @@ public class SequenceServiceTests extends TestCase {
 				((BehaviorExecutionSpecification)sourceExecution).getBehavior());
 
 		// Message get
-		Message message = (Message)interaction.getMessages().get(0);
+		final Message message = (Message)interaction.getMessages().get(0);
 		assertEquals("Message does not exist", "get", message.getName());
 		assertTrue(messageSend instanceof MessageOccurrenceSpecification);
 		assertEquals("get_sender", messageSend.getName());
@@ -511,7 +530,7 @@ public class SequenceServiceTests extends TestCase {
 				((BehaviorExecutionSpecification)targetExecution).getBehavior());
 
 		// Message produce
-		Message message2 = (Message)interaction.getMessages().get(1);
+		final Message message2 = (Message)interaction.getMessages().get(1);
 		assertEquals("Message does not exist", "produce", interaction.getMessages().get(1).getName());
 		assertTrue(messageSend2 instanceof MessageOccurrenceSpecification);
 		assertEquals("produce_sender", messageSend2.getName());
@@ -546,30 +565,31 @@ public class SequenceServiceTests extends TestCase {
 	 */
 	public void testCreateAsynchronousMessageOnExecutionToExecution() throws Exception {
 		// Interaction scenario_4
-		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_4");
-		Lifeline source = interaction.getLifeline("consumers");
-		Lifeline target = interaction.getLifeline("producers");
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_4");
+		final Lifeline source = interaction.getLifeline("consumers");
+		final Lifeline target = interaction.getLifeline("producers");
 		// SourceFragment compute behavior
-		ExecutionSpecification executionSource = (ExecutionSpecification)interaction.getFragment("compute");
+		final ExecutionSpecification executionSource = (ExecutionSpecification)interaction
+				.getFragment("compute");
 		// TargetFragment get behavior
-		ExecutionSpecification executionTarget = (ExecutionSpecification)interaction.getFragment("get");
+		final ExecutionSpecification executionTarget = (ExecutionSpecification)interaction.getFragment("get");
 		// Operation null
 		// StartingElementPredecessor compute_start
 		// FinishingElementPredecessor compute_start
 		sequenceServices.createAsynchronousMessage(interaction, executionSource, executionTarget,
 				executionTarget.getStart(), executionTarget.getStart());
 
-		List<InteractionFragment> fragments = interaction.getFragments();
+		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(8, fragments.size());
 
-		InteractionFragment computeStart = fragments.get(0);
-		InteractionFragment compute = fragments.get(1);
-		InteractionFragment getStart = fragments.get(2);
-		InteractionFragment get = fragments.get(3);
-		InteractionFragment msg0Send = fragments.get(4);
-		InteractionFragment msg0Receive = fragments.get(5);
-		InteractionFragment getFinish = fragments.get(6);
-		InteractionFragment computeFinish = fragments.get(7);
+		final InteractionFragment computeStart = fragments.get(0);
+		final InteractionFragment compute = fragments.get(1);
+		final InteractionFragment getStart = fragments.get(2);
+		final InteractionFragment get = fragments.get(3);
+		final InteractionFragment msg0Send = fragments.get(4);
+		final InteractionFragment msg0Receive = fragments.get(5);
+		final InteractionFragment getFinish = fragments.get(6);
+		final InteractionFragment computeFinish = fragments.get(7);
 
 		// Execution compute
 		assertEquals("Opaque behavior does not exist", "compute", interaction.getOwnedBehaviors().get(0)
@@ -593,7 +613,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals("Message_0_sender", msg0Send.getName());
 		assertTrue(msg0Receive instanceof MessageOccurrenceSpecification);
 		assertEquals("Message_0_receiver", msg0Receive.getName());
-		Message msg0 = (Message)interaction.getMessages().get(0);
+		final Message msg0 = (Message)interaction.getMessages().get(0);
 		assertEquals(msg0.getSendEvent(), msg0Send);
 		assertEquals(msg0.getReceiveEvent(), msg0Receive);
 		assertNotNull(((MessageOccurrenceSpecification)msg0Send).getCovered(source.getName()));
@@ -624,30 +644,31 @@ public class SequenceServiceTests extends TestCase {
 	 */
 	public void testCreateAsynchronousMessageOnExecutionToExecution2() throws Exception {
 		// Interaction scenario_4
-		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_4");
-		Lifeline source = interaction.getLifeline("producers");
-		Lifeline target = interaction.getLifeline("consumers");
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_4");
+		final Lifeline source = interaction.getLifeline("producers");
+		final Lifeline target = interaction.getLifeline("consumers");
 		// SourceFragment get behavior
-		ExecutionSpecification executionSource = (ExecutionSpecification)interaction.getFragment("get");
+		final ExecutionSpecification executionSource = (ExecutionSpecification)interaction.getFragment("get");
 		// TargetFragment compute behavior
-		ExecutionSpecification executionTarget = (ExecutionSpecification)interaction.getFragment("compute");
+		final ExecutionSpecification executionTarget = (ExecutionSpecification)interaction
+				.getFragment("compute");
 		// Operation null
 		// StartingElementPredecessor get_start
 		// FinishingElementPredecessor get_start
 		sequenceServices.createAsynchronousMessage(interaction, executionSource, executionTarget,
 				executionSource.getStart(), executionSource.getStart());
 
-		List<InteractionFragment> fragments = interaction.getFragments();
+		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(8, fragments.size());
 
-		InteractionFragment computeStart = fragments.get(0);
-		InteractionFragment compute = fragments.get(1);
-		InteractionFragment getStart = fragments.get(2);
-		InteractionFragment get = fragments.get(3);
-		InteractionFragment msg0Send = fragments.get(4);
-		InteractionFragment msg0Receive = fragments.get(5);
-		InteractionFragment getFinish = fragments.get(6);
-		InteractionFragment computeFinish = fragments.get(7);
+		final InteractionFragment computeStart = fragments.get(0);
+		final InteractionFragment compute = fragments.get(1);
+		final InteractionFragment getStart = fragments.get(2);
+		final InteractionFragment get = fragments.get(3);
+		final InteractionFragment msg0Send = fragments.get(4);
+		final InteractionFragment msg0Receive = fragments.get(5);
+		final InteractionFragment getFinish = fragments.get(6);
+		final InteractionFragment computeFinish = fragments.get(7);
 
 		// Execution compute
 		assertEquals("Opaque behavior does not exist", "compute", interaction.getOwnedBehaviors().get(0)
@@ -684,7 +705,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals("Message_0_sender", msg0Send.getName());
 		assertTrue(msg0Receive instanceof MessageOccurrenceSpecification);
 		assertEquals("Message_0_receiver", msg0Receive.getName());
-		Message msg0 = (Message)interaction.getMessages().get(0);
+		final Message msg0 = (Message)interaction.getMessages().get(0);
 		assertEquals(msg0.getSendEvent(), msg0Send);
 		assertEquals(msg0.getReceiveEvent(), msg0Receive);
 		assertNotNull(((MessageOccurrenceSpecification)msg0Send).getCovered(source.getName()));
@@ -700,12 +721,12 @@ public class SequenceServiceTests extends TestCase {
 	 *             in case of error
 	 */
 	public void testCreateSynchronousMessage() throws Exception {
-		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_2");
-		Lifeline source = interaction.getLifeline("consumers");
-		Lifeline target = interaction.getLifeline("producers");
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_2");
+		final Lifeline source = interaction.getLifeline("consumers");
+		final Lifeline target = interaction.getLifeline("producers");
 		sequenceServices.createSynchronousMessage(interaction, source, target, null, null);
 
-		List<InteractionFragment> fragments = interaction.getFragments();
+		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(4, fragments.size());
 		// Message
 		assertEquals("Message does not exist", "Message_0", interaction.getMessages().get(0).getName());
@@ -740,26 +761,26 @@ public class SequenceServiceTests extends TestCase {
 	 *             in case of error
 	 */
 	public void testCreateSynchronousMessageOnExecution() throws Exception {
-		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_3");
-		Lifeline source = interaction.getLifeline("consumers");
-		Lifeline target = interaction.getLifeline("producers");
-		ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("compute");
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_3");
+		final Lifeline source = interaction.getLifeline("consumers");
+		final Lifeline target = interaction.getLifeline("producers");
+		final ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("compute");
 
 		sequenceServices.createSynchronousMessage(interaction, execution, target, execution.getStart(),
 				execution.getStart());
 
-		List<InteractionFragment> fragments = interaction.getFragments();
+		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(7, fragments.size());
-		InteractionFragment computeStart = fragments.get(0);
-		InteractionFragment compute = fragments.get(1);
-		InteractionFragment messageSend = fragments.get(2);
-		InteractionFragment messageReceive = fragments.get(3);
-		InteractionFragment messageReplySend = fragments.get(4);
-		InteractionFragment messageReplyReceive = fragments.get(5);
-		InteractionFragment computeFinish = fragments.get(6);
+		final InteractionFragment computeStart = fragments.get(0);
+		final InteractionFragment compute = fragments.get(1);
+		final InteractionFragment messageSend = fragments.get(2);
+		final InteractionFragment messageReceive = fragments.get(3);
+		final InteractionFragment messageReplySend = fragments.get(4);
+		final InteractionFragment messageReplyReceive = fragments.get(5);
+		final InteractionFragment computeFinish = fragments.get(6);
 
 		// Execution compute
-		Behavior computeBehavior = interaction.getOwnedBehaviors().get(0);
+		final Behavior computeBehavior = interaction.getOwnedBehaviors().get(0);
 		assertEquals("Opaque behavior does not exist", "compute", computeBehavior.getName());
 		assertTrue(computeStart instanceof ExecutionOccurrenceSpecification);
 		assertEquals("compute_start", computeStart.getName());
@@ -773,7 +794,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(computeBehavior, ((BehaviorExecutionSpecification)compute).getBehavior());
 
 		// Message Message_0
-		Message message = interaction.getMessages().get(0);
+		final Message message = interaction.getMessages().get(0);
 		assertEquals("Message does not exist", "Message_0", message.getName());
 		assertTrue(messageSend instanceof MessageOccurrenceSpecification);
 		assertEquals("Message_0_sender", messageSend.getName());
@@ -785,7 +806,7 @@ public class SequenceServiceTests extends TestCase {
 		assertNotNull(((MessageOccurrenceSpecification)messageReceive).getCovered(target.getName()));
 
 		// Reply message Message_0
-		Message messageReply = interaction.getMessages().get(1);
+		final Message messageReply = interaction.getMessages().get(1);
 		assertEquals("Message does not exist", "Message_0_reply", messageReply.getName());
 		assertTrue(messageReplySend instanceof MessageOccurrenceSpecification);
 		assertEquals("Message_0_reply_sender", messageReplySend.getName());
@@ -807,35 +828,35 @@ public class SequenceServiceTests extends TestCase {
 	 *             in case of error
 	 */
 	public void testCreateSynchronousMessageAndOperationOnExecution() throws Exception {
-		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_4");
-		Lifeline source = interaction.getLifeline("consumers");
-		Lifeline target = interaction.getLifeline("producers");
-		ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("compute");
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_4");
+		final Lifeline source = interaction.getLifeline("consumers");
+		final Lifeline target = interaction.getLifeline("producers");
+		final ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("compute");
 
 		sequenceServices.createOperationAndSynchMessage(target, source, execution.getStart(),
 				execution.getStart());
 
-		List<InteractionFragment> fragments = interaction.getFragments();
+		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(11, fragments.size());
-		InteractionFragment computeStart = fragments.get(0);
-		InteractionFragment compute = fragments.get(1);
-		InteractionFragment operation0MsgSend = fragments.get(2);
-		InteractionFragment operation0MsgReceive = fragments.get(3);
-		InteractionFragment operation0 = fragments.get(4);
-		InteractionFragment operation0MsgReplySend = fragments.get(5);
-		InteractionFragment operation0MsgReplyReceive = fragments.get(6);
-		InteractionFragment getStart = fragments.get(7);
-		InteractionFragment get = fragments.get(8);
-		InteractionFragment getFinish = fragments.get(9);
-		InteractionFragment computeFinish = fragments.get(10);
+		final InteractionFragment computeStart = fragments.get(0);
+		final InteractionFragment compute = fragments.get(1);
+		final InteractionFragment operation0MsgSend = fragments.get(2);
+		final InteractionFragment operation0MsgReceive = fragments.get(3);
+		final InteractionFragment operation0 = fragments.get(4);
+		final InteractionFragment operation0MsgReplySend = fragments.get(5);
+		final InteractionFragment operation0MsgReplyReceive = fragments.get(6);
+		final InteractionFragment getStart = fragments.get(7);
+		final InteractionFragment get = fragments.get(8);
+		final InteractionFragment getFinish = fragments.get(9);
+		final InteractionFragment computeFinish = fragments.get(10);
 
 		// Operation Operation_0 in class Producer
-		org.eclipse.uml2.uml.Class producer = getClass(interaction, "Structure", "Producer");
+		final org.eclipse.uml2.uml.Class producer = getClass(interaction, "Structure", "Producer");
 		assertEquals("Operation_0", producer.getOperations().get(producer.getOperations().size() - 1)
 				.getName());
 
 		// Execution compute
-		Behavior computeBehavior = interaction.getOwnedBehaviors().get(0);
+		final Behavior computeBehavior = interaction.getOwnedBehaviors().get(0);
 		assertEquals("Opaque behavior does not exist", "compute", computeBehavior.getName());
 		assertTrue(computeStart instanceof ExecutionOccurrenceSpecification);
 		assertEquals("compute_start", computeStart.getName());
@@ -849,7 +870,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(computeBehavior, ((BehaviorExecutionSpecification)compute).getBehavior());
 
 		// Message Operation_0
-		Message message = interaction.getMessages().get(0);
+		final Message message = interaction.getMessages().get(0);
 		assertEquals("Message does not exist", "Operation_0", message.getName());
 		assertTrue(operation0MsgSend instanceof MessageOccurrenceSpecification);
 		assertEquals("Operation_0_sender", operation0MsgSend.getName());
@@ -861,7 +882,7 @@ public class SequenceServiceTests extends TestCase {
 		assertNotNull(((MessageOccurrenceSpecification)operation0MsgReceive).getCovered(target.getName()));
 
 		// Execution Operation_0
-		Behavior operation0Behavior = interaction.getOwnedBehaviors().get(2);
+		final Behavior operation0Behavior = interaction.getOwnedBehaviors().get(2);
 		assertEquals("Opaque behavior does not exist", "Operation_0", operation0Behavior.getName());
 		assertTrue(operation0MsgReceive instanceof MessageOccurrenceSpecification);
 		assertEquals("Operation_0_receiver", operation0MsgReceive.getName());
@@ -875,7 +896,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(operation0Behavior, ((BehaviorExecutionSpecification)operation0).getBehavior());
 
 		// Reply message Operation_0
-		Message messageReply = interaction.getMessages().get(1);
+		final Message messageReply = interaction.getMessages().get(1);
 		assertEquals("Message does not exist", "Operation_0_reply", messageReply.getName());
 		assertTrue(operation0MsgReplySend instanceof MessageOccurrenceSpecification);
 		assertEquals("Operation_0_reply_sender", operation0MsgReplySend.getName());
@@ -888,7 +909,7 @@ public class SequenceServiceTests extends TestCase {
 				.getCovered(source.getName()));
 
 		// Execution get
-		Behavior getBehavior = interaction.getOwnedBehaviors().get(1);
+		final Behavior getBehavior = interaction.getOwnedBehaviors().get(1);
 		assertEquals("Opaque behavior does not exist", "get", getBehavior.getName());
 		assertTrue(getStart instanceof ExecutionOccurrenceSpecification);
 		assertEquals("get_start", getStart.getName());
@@ -912,34 +933,34 @@ public class SequenceServiceTests extends TestCase {
 	 *             in case of error
 	 */
 	public void testCreateAsynchronousMessageAndOperationOnExecution() throws Exception {
-		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_4");
-		Lifeline source = interaction.getLifeline("consumers");
-		Lifeline target = interaction.getLifeline("producers");
-		ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("compute");
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_4");
+		final Lifeline source = interaction.getLifeline("consumers");
+		final Lifeline target = interaction.getLifeline("producers");
+		final ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("compute");
 
 		sequenceServices.createOperationAndAsynchMessage(target, source, execution.getStart(),
 				execution.getStart());
 
-		List<InteractionFragment> fragments = interaction.getFragments();
+		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(10, fragments.size());
-		InteractionFragment computeStart = fragments.get(0);
-		InteractionFragment compute = fragments.get(1);
-		InteractionFragment operation0MsgSend = fragments.get(2);
-		InteractionFragment operation0MsgReceive = fragments.get(3);
-		InteractionFragment operation0 = fragments.get(4);
-		InteractionFragment operation0Finish = fragments.get(5);
-		InteractionFragment getStart = fragments.get(6);
-		InteractionFragment get = fragments.get(7);
-		InteractionFragment getFinish = fragments.get(8);
-		InteractionFragment computeFinish = fragments.get(9);
+		final InteractionFragment computeStart = fragments.get(0);
+		final InteractionFragment compute = fragments.get(1);
+		final InteractionFragment operation0MsgSend = fragments.get(2);
+		final InteractionFragment operation0MsgReceive = fragments.get(3);
+		final InteractionFragment operation0 = fragments.get(4);
+		final InteractionFragment operation0Finish = fragments.get(5);
+		final InteractionFragment getStart = fragments.get(6);
+		final InteractionFragment get = fragments.get(7);
+		final InteractionFragment getFinish = fragments.get(8);
+		final InteractionFragment computeFinish = fragments.get(9);
 
 		// Operation Operation_0 in class Producer
-		org.eclipse.uml2.uml.Class producer = getClass(interaction, "Structure", "Producer");
+		final org.eclipse.uml2.uml.Class producer = getClass(interaction, "Structure", "Producer");
 		assertEquals("Operation_0", producer.getOperations().get(producer.getOperations().size() - 1)
 				.getName());
 
 		// Execution compute
-		Behavior computeBehavior = interaction.getOwnedBehaviors().get(0);
+		final Behavior computeBehavior = interaction.getOwnedBehaviors().get(0);
 		assertEquals("Opaque behavior does not exist", "compute", computeBehavior.getName());
 		assertTrue(computeStart instanceof ExecutionOccurrenceSpecification);
 		assertEquals("compute_start", computeStart.getName());
@@ -953,7 +974,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(computeBehavior, ((BehaviorExecutionSpecification)compute).getBehavior());
 
 		// Message Operation_0
-		Message message = interaction.getMessages().get(0);
+		final Message message = interaction.getMessages().get(0);
 		assertEquals("Message does not exist", "Operation_0", message.getName());
 		assertTrue(operation0MsgSend instanceof MessageOccurrenceSpecification);
 		assertEquals("Operation_0_sender", operation0MsgSend.getName());
@@ -965,7 +986,7 @@ public class SequenceServiceTests extends TestCase {
 		assertNotNull(((MessageOccurrenceSpecification)operation0MsgReceive).getCovered(target.getName()));
 
 		// Execution Operation_0
-		Behavior operation0Behavior = interaction.getOwnedBehaviors().get(2);
+		final Behavior operation0Behavior = interaction.getOwnedBehaviors().get(2);
 		assertEquals("Opaque behavior does not exist", "Operation_0", operation0Behavior.getName());
 		assertTrue(operation0MsgReceive instanceof MessageOccurrenceSpecification);
 		assertEquals("Operation_0_receiver", operation0MsgReceive.getName());
@@ -979,7 +1000,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(operation0Behavior, ((BehaviorExecutionSpecification)operation0).getBehavior());
 
 		// Execution get
-		Behavior getBehavior = interaction.getOwnedBehaviors().get(1);
+		final Behavior getBehavior = interaction.getOwnedBehaviors().get(1);
 		assertEquals("Opaque behavior does not exist", "get", getBehavior.getName());
 		assertTrue(getStart instanceof ExecutionOccurrenceSpecification);
 		assertEquals("get_start", getStart.getName());
@@ -1004,36 +1025,36 @@ public class SequenceServiceTests extends TestCase {
 	 */
 	public void testCreateSynchronousMessageOnExecutionToExecution() throws Exception {
 		// Interaction Scenario_4
-		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_4");
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_4");
 		// SourceFragment compute execution
-		ExecutionSpecification executionSource = (ExecutionSpecification)interaction.getFragment("compute");
+		final ExecutionSpecification executionSource = (ExecutionSpecification)interaction
+				.getFragment("compute");
 		// TargetFragment get execution
-		ExecutionSpecification executionTarget = (ExecutionSpecification)interaction.getFragment("get");
+		final ExecutionSpecification executionTarget = (ExecutionSpecification)interaction.getFragment("get");
 		// Operation null
 		// StartingEndPredecessor compute_start
 		// FinishingEndPredecessor compute_start
-		Lifeline source = interaction.getLifeline("consumers");
-		Lifeline target = interaction.getLifeline("producers");
+		final Lifeline source = interaction.getLifeline("consumers");
+		final Lifeline target = interaction.getLifeline("producers");
 
 		sequenceServices.createSynchronousMessage(interaction, executionSource, executionTarget,
 				executionTarget.getStart(), executionTarget.getStart());
-
-		List<InteractionFragment> fragments = interaction.getFragments();
+		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(10, fragments.size());
 
-		InteractionFragment computeStart = fragments.get(0);
-		InteractionFragment compute = fragments.get(1);
-		InteractionFragment getStart = fragments.get(2);
-		InteractionFragment get = fragments.get(3);
-		InteractionFragment msg0Send = fragments.get(4);
-		InteractionFragment msg0Receive = fragments.get(5);
-		InteractionFragment msg0ReplySend = fragments.get(6);
-		InteractionFragment msg0ReplyReceive = fragments.get(7);
-		InteractionFragment getFinish = fragments.get(8);
-		InteractionFragment computeFinish = fragments.get(9);
+		final InteractionFragment computeStart = fragments.get(0);
+		final InteractionFragment compute = fragments.get(1);
+		final InteractionFragment getStart = fragments.get(2);
+		final InteractionFragment get = fragments.get(3);
+		final InteractionFragment msg0Send = fragments.get(4);
+		final InteractionFragment msg0Receive = fragments.get(5);
+		final InteractionFragment msg0ReplySend = fragments.get(6);
+		final InteractionFragment msg0ReplyReceive = fragments.get(7);
+		final InteractionFragment getFinish = fragments.get(8);
+		final InteractionFragment computeFinish = fragments.get(9);
 
 		// Execution compute
-		Behavior computeBehavior = interaction.getOwnedBehaviors().get(0);
+		final Behavior computeBehavior = interaction.getOwnedBehaviors().get(0);
 		assertEquals("Opaque behavior does not exist", "compute", computeBehavior.getName());
 		assertTrue(computeStart instanceof ExecutionOccurrenceSpecification);
 		assertEquals("compute_start", computeStart.getName());
@@ -1047,7 +1068,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(computeBehavior, ((BehaviorExecutionSpecification)compute).getBehavior());
 
 		// Execution get
-		Behavior getBehavior = interaction.getOwnedBehaviors().get(1);
+		final Behavior getBehavior = interaction.getOwnedBehaviors().get(1);
 		assertEquals("Opaque behavior does not exist", "get", getBehavior.getName());
 		assertTrue(getStart instanceof ExecutionOccurrenceSpecification);
 		assertEquals("get_start", getStart.getName());
@@ -1061,7 +1082,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(getBehavior, ((BehaviorExecutionSpecification)get).getBehavior());
 
 		// Message Message_0
-		Message msg0 = interaction.getMessages().get(0);
+		final Message msg0 = interaction.getMessages().get(0);
 		assertEquals("Message does not exist", "Message_0", msg0.getName());
 		assertTrue(msg0Send instanceof MessageOccurrenceSpecification);
 		assertEquals("Message_0_sender", msg0Send.getName());
@@ -1073,7 +1094,7 @@ public class SequenceServiceTests extends TestCase {
 		assertNotNull(((MessageOccurrenceSpecification)msg0Receive).getCovered(target.getName()));
 
 		// Reply message get
-		Message msg0ReplyMessage = interaction.getMessages().get(1);
+		final Message msg0ReplyMessage = interaction.getMessages().get(1);
 		assertEquals("Message does not exist", "Message_0_reply", msg0ReplyMessage.getName());
 		assertTrue(msg0ReplySend instanceof MessageOccurrenceSpecification);
 		assertEquals("Message_0_reply_sender", msg0ReplySend.getName());
@@ -1096,36 +1117,37 @@ public class SequenceServiceTests extends TestCase {
 	 */
 	public void testCreateSynchronousMessageOnExecutionToExecution2() throws Exception {
 		// Interaction Scenario_4
-		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_4");
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_4");
 		// SourceFragment get execution
-		ExecutionSpecification executionSource = (ExecutionSpecification)interaction.getFragment("get");
+		final ExecutionSpecification executionSource = (ExecutionSpecification)interaction.getFragment("get");
 		// TargetFragment compute execution
-		ExecutionSpecification executionTarget = (ExecutionSpecification)interaction.getFragment("compute");
+		final ExecutionSpecification executionTarget = (ExecutionSpecification)interaction
+				.getFragment("compute");
 		// Operation null
 		// StartingEndPredecessor get_start
 		// FinishingEndPredecessor get_start
-		Lifeline source = interaction.getLifeline("producers");
-		Lifeline target = interaction.getLifeline("consumers");
+		final Lifeline source = interaction.getLifeline("producers");
+		final Lifeline target = interaction.getLifeline("consumers");
 
 		sequenceServices.createSynchronousMessage(interaction, executionSource, executionTarget,
 				executionSource.getStart(), executionSource.getStart());
 
-		List<InteractionFragment> fragments = interaction.getFragments();
+		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(10, fragments.size());
 
-		InteractionFragment computeStart = fragments.get(0);
-		InteractionFragment compute = fragments.get(1);
-		InteractionFragment getStart = fragments.get(2);
-		InteractionFragment get = fragments.get(3);
-		InteractionFragment msg0Send = fragments.get(4);
-		InteractionFragment msg0Receive = fragments.get(5);
-		InteractionFragment msg0ReplySend = fragments.get(6);
-		InteractionFragment msg0ReplyReceive = fragments.get(7);
-		InteractionFragment getFinish = fragments.get(8);
-		InteractionFragment computeFinish = fragments.get(9);
+		final InteractionFragment computeStart = fragments.get(0);
+		final InteractionFragment compute = fragments.get(1);
+		final InteractionFragment getStart = fragments.get(2);
+		final InteractionFragment get = fragments.get(3);
+		final InteractionFragment msg0Send = fragments.get(4);
+		final InteractionFragment msg0Receive = fragments.get(5);
+		final InteractionFragment msg0ReplySend = fragments.get(6);
+		final InteractionFragment msg0ReplyReceive = fragments.get(7);
+		final InteractionFragment getFinish = fragments.get(8);
+		final InteractionFragment computeFinish = fragments.get(9);
 
 		// Execution compute
-		Behavior computeBehavior = interaction.getOwnedBehaviors().get(0);
+		final Behavior computeBehavior = interaction.getOwnedBehaviors().get(0);
 		assertEquals("Opaque behavior does not exist", "compute", computeBehavior.getName());
 		assertTrue(computeStart instanceof ExecutionOccurrenceSpecification);
 		assertEquals("compute_start", computeStart.getName());
@@ -1139,7 +1161,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(computeBehavior, ((BehaviorExecutionSpecification)compute).getBehavior());
 
 		// Execution get
-		Behavior getBehavior = interaction.getOwnedBehaviors().get(1);
+		final Behavior getBehavior = interaction.getOwnedBehaviors().get(1);
 		assertEquals("Opaque behavior does not exist", "get", getBehavior.getName());
 		assertTrue(getStart instanceof ExecutionOccurrenceSpecification);
 		assertEquals("get_start", getStart.getName());
@@ -1153,7 +1175,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(getBehavior, ((BehaviorExecutionSpecification)get).getBehavior());
 
 		// Message Message_0
-		Message msg0 = interaction.getMessages().get(0);
+		final Message msg0 = interaction.getMessages().get(0);
 		assertEquals("Message does not exist", "Message_0", msg0.getName());
 		assertTrue(msg0Send instanceof MessageOccurrenceSpecification);
 		assertEquals("Message_0_sender", msg0Send.getName());
@@ -1165,7 +1187,7 @@ public class SequenceServiceTests extends TestCase {
 		assertNotNull(((MessageOccurrenceSpecification)msg0Receive).getCovered(target.getName()));
 
 		// Reply message Message_0
-		Message msg0ReplyMessage = interaction.getMessages().get(1);
+		final Message msg0ReplyMessage = interaction.getMessages().get(1);
 		assertEquals("Message does not exist", "Message_0_reply", msg0ReplyMessage.getName());
 		assertTrue(msg0ReplySend instanceof MessageOccurrenceSpecification);
 		assertEquals("Message_0_reply_sender", msg0ReplySend.getName());
@@ -1187,29 +1209,29 @@ public class SequenceServiceTests extends TestCase {
 	 *             in case of error
 	 */
 	public void testImportSynchronousMessageOnExecution() throws Exception {
-		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_3");
-		Lifeline source = interaction.getLifeline("consumers");
-		Lifeline target = interaction.getLifeline("producers");
-		Operation operation = (Operation)target.getRepresents().getType().getOwnedElements().get(1);
-		ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("compute");
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_3");
+		final Lifeline source = interaction.getLifeline("consumers");
+		final Lifeline target = interaction.getLifeline("producers");
+		final Operation operation = (Operation)target.getRepresents().getType().getOwnedElements().get(1);
+		final ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("compute");
 
 		sequenceServices.createSynchronousMessage(interaction, execution, target, operation,
 				execution.getStart(), execution.getStart());
 
-		List<InteractionFragment> fragments = interaction.getFragments();
+		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(8, fragments.size());
 
-		InteractionFragment computeStart = fragments.get(0);
-		InteractionFragment compute = fragments.get(1);
-		InteractionFragment getSend = fragments.get(2);
-		InteractionFragment getReceive = fragments.get(3);
-		InteractionFragment get = fragments.get(4);
-		InteractionFragment getReplySend = fragments.get(5);
-		InteractionFragment getReplyReceive = fragments.get(6);
-		InteractionFragment computeFinish = fragments.get(7);
+		final InteractionFragment computeStart = fragments.get(0);
+		final InteractionFragment compute = fragments.get(1);
+		final InteractionFragment getSend = fragments.get(2);
+		final InteractionFragment getReceive = fragments.get(3);
+		final InteractionFragment get = fragments.get(4);
+		final InteractionFragment getReplySend = fragments.get(5);
+		final InteractionFragment getReplyReceive = fragments.get(6);
+		final InteractionFragment computeFinish = fragments.get(7);
 
 		// Execution compute
-		Behavior computeBehavior = interaction.getOwnedBehaviors().get(0);
+		final Behavior computeBehavior = interaction.getOwnedBehaviors().get(0);
 		assertEquals("Opaque behavior does not exist", "compute", computeBehavior.getName());
 		assertTrue(computeStart instanceof ExecutionOccurrenceSpecification);
 		assertEquals("compute_start", computeStart.getName());
@@ -1223,7 +1245,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(computeBehavior, ((BehaviorExecutionSpecification)compute).getBehavior());
 
 		// Message get
-		Message getMessage = interaction.getMessages().get(0);
+		final Message getMessage = interaction.getMessages().get(0);
 		assertEquals("Message does not exist", "get", getMessage.getName());
 		assertTrue(getSend instanceof MessageOccurrenceSpecification);
 		assertEquals("get_sender", getSend.getName());
@@ -1235,7 +1257,7 @@ public class SequenceServiceTests extends TestCase {
 		assertNotNull(((MessageOccurrenceSpecification)getReceive).getCovered(target.getName()));
 
 		// Execution get
-		Behavior getBehavior = interaction.getOwnedBehaviors().get(1);
+		final Behavior getBehavior = interaction.getOwnedBehaviors().get(1);
 		assertEquals("Opaque behavior does not exist", "get", getBehavior.getName());
 		assertTrue(get instanceof BehaviorExecutionSpecification);
 		assertEquals("get", get.getName());
@@ -1245,7 +1267,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(getBehavior, ((BehaviorExecutionSpecification)get).getBehavior());
 
 		// Reply message get
-		Message getReplyMessage = interaction.getMessages().get(1);
+		final Message getReplyMessage = interaction.getMessages().get(1);
 		assertEquals("Message does not exist", "get_reply", getReplyMessage.getName());
 		assertTrue(getReplySend instanceof MessageOccurrenceSpecification);
 		assertEquals("get_reply_sender", getReplySend.getName());
@@ -1266,14 +1288,14 @@ public class SequenceServiceTests extends TestCase {
 	 *             in case of error
 	 */
 	public void testImportSynchronousMessage() throws Exception {
-		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_2");
-		Lifeline source = interaction.getLifeline("consumers");
-		Lifeline target = interaction.getLifeline("producers");
-		Operation operation = (Operation)source.getRepresents().getType().getOwnedElements().get(0);
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_2");
+		final Lifeline source = interaction.getLifeline("consumers");
+		final Lifeline target = interaction.getLifeline("producers");
+		final Operation operation = (Operation)source.getRepresents().getType().getOwnedElements().get(0);
 
 		sequenceServices.createSynchronousMessage(interaction, source, target, operation, null, null);
 
-		List<InteractionFragment> fragments = interaction.getFragments();
+		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(5, fragments.size());
 		// Message
 		assertEquals("Message does not exist", "compute", interaction.getMessages().get(0).getName());
@@ -1320,39 +1342,39 @@ public class SequenceServiceTests extends TestCase {
 	 */
 	public void testImportSynchronousMessageOnExecution2() throws Exception {
 		// Interaction Scenario_8
-		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_8");
-		Lifeline source = interaction.getLifeline("consumers");
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_8");
+		final Lifeline source = interaction.getLifeline("consumers");
 		// SourceFragment compute execution
-		ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("compute");
+		final ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("compute");
 		// TargetFragment producers lifeline
-		Lifeline target = interaction.getLifeline("producers");
+		final Lifeline target = interaction.getLifeline("producers");
 		// Operation produce
-		Operation operation = (Operation)target.getRepresents().getType().getOwnedElements().get(0);
+		final Operation operation = (Operation)target.getRepresents().getType().getOwnedElements().get(0);
 		// StratingEndPredecessor get_finish execution occurrence
 		// FinishindEnPredecessor get_finish execution occurrence
-		ExecutionSpecification execution2 = (ExecutionSpecification)interaction.getFragment("get");
+		final ExecutionSpecification execution2 = (ExecutionSpecification)interaction.getFragment("get");
 
 		sequenceServices.createSynchronousMessage(interaction, execution, target, operation,
 				execution2.getFinish(), execution2.getFinish());
 
-		List<InteractionFragment> fragments = interaction.getFragments();
+		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(12, fragments.size());
 
-		InteractionFragment computeStart = fragments.get(0);
-		InteractionFragment compute = fragments.get(1);
-		InteractionFragment getSend = fragments.get(2);
-		InteractionFragment getReceive = fragments.get(3);
-		InteractionFragment get = fragments.get(4);
-		InteractionFragment getFinish = fragments.get(5);
-		InteractionFragment produceSend = fragments.get(6);
-		InteractionFragment produceReceive = fragments.get(7);
-		InteractionFragment produce = fragments.get(8);
-		InteractionFragment produceReplySend = fragments.get(9);
-		InteractionFragment produceReplyReceive = fragments.get(10);
-		InteractionFragment computeFinish = fragments.get(11);
+		final InteractionFragment computeStart = fragments.get(0);
+		final InteractionFragment compute = fragments.get(1);
+		final InteractionFragment getSend = fragments.get(2);
+		final InteractionFragment getReceive = fragments.get(3);
+		final InteractionFragment get = fragments.get(4);
+		final InteractionFragment getFinish = fragments.get(5);
+		final InteractionFragment produceSend = fragments.get(6);
+		final InteractionFragment produceReceive = fragments.get(7);
+		final InteractionFragment produce = fragments.get(8);
+		final InteractionFragment produceReplySend = fragments.get(9);
+		final InteractionFragment produceReplyReceive = fragments.get(10);
+		final InteractionFragment computeFinish = fragments.get(11);
 
 		// Execution compute
-		Behavior computeBehavior = interaction.getOwnedBehaviors().get(0);
+		final Behavior computeBehavior = interaction.getOwnedBehaviors().get(0);
 		assertEquals("Opaque behavior does not exist", "compute", computeBehavior.getName());
 		assertTrue(computeStart instanceof ExecutionOccurrenceSpecification);
 		assertEquals("compute_start", computeStart.getName());
@@ -1366,7 +1388,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(computeBehavior, ((BehaviorExecutionSpecification)compute).getBehavior());
 
 		// Asynchronous message get
-		Message messageGet = interaction.getMessages().get(0);
+		final Message messageGet = interaction.getMessages().get(0);
 		assertEquals("Message does not exist", "get", messageGet.getName());
 		assertTrue(getSend instanceof MessageOccurrenceSpecification);
 		assertEquals("get_sender", getSend.getName());
@@ -1378,7 +1400,7 @@ public class SequenceServiceTests extends TestCase {
 		assertNotNull(((MessageOccurrenceSpecification)getReceive).getCovered(target.getName()));
 
 		// Execution get
-		Behavior getBehavior = interaction.getOwnedBehaviors().get(1);
+		final Behavior getBehavior = interaction.getOwnedBehaviors().get(1);
 		assertEquals("Opaque behavior does not exist", "get", getBehavior.getName());
 		assertTrue(getReceive instanceof MessageOccurrenceSpecification);
 		assertEquals("get_receiver", getReceive.getName());
@@ -1392,7 +1414,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(getBehavior, ((BehaviorExecutionSpecification)get).getBehavior());
 
 		// Synchronous message produce
-		Message messageProduce = interaction.getMessages().get(1);
+		final Message messageProduce = interaction.getMessages().get(1);
 		assertEquals("Message does not exist", "produce", messageProduce.getName());
 		assertTrue(produceSend instanceof MessageOccurrenceSpecification);
 		assertEquals("produce_sender", produceSend.getName());
@@ -1404,7 +1426,7 @@ public class SequenceServiceTests extends TestCase {
 		assertNotNull(((MessageOccurrenceSpecification)produceReceive).getCovered(target.getName()));
 
 		// Execution produce
-		Behavior produceBehavior = interaction.getOwnedBehaviors().get(2);
+		final Behavior produceBehavior = interaction.getOwnedBehaviors().get(2);
 		assertEquals("Opaque behavior does not exist", "produce", produceBehavior.getName());
 		assertTrue(produceReceive instanceof MessageOccurrenceSpecification);
 		assertEquals("produce_receiver", produceReceive.getName());
@@ -1418,7 +1440,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(produceBehavior, ((BehaviorExecutionSpecification)produce).getBehavior());
 
 		// Synchronous message reply produce
-		Message messageReplyProduce = interaction.getMessages().get(2);
+		final Message messageReplyProduce = interaction.getMessages().get(2);
 		assertEquals("Message does not exist", "produce_reply", messageReplyProduce.getName());
 		assertTrue(produceReplySend instanceof MessageOccurrenceSpecification);
 		assertEquals("produce_reply_sender", produceReplySend.getName());
@@ -1441,40 +1463,40 @@ public class SequenceServiceTests extends TestCase {
 	 */
 	public void testImportAsynchronousMessageOnExecution2() throws Exception {
 		// Interaction Scenario_9
-		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_9");
-		Lifeline source = interaction.getLifeline("consumers");
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_9");
+		final Lifeline source = interaction.getLifeline("consumers");
 		// SourceFragment compute execution
-		ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("compute");
+		final ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("compute");
 		// TargetFragment producers lifeline
-		Lifeline target = interaction.getLifeline("producers");
+		final Lifeline target = interaction.getLifeline("producers");
 		// Operation produce
-		Operation operation = (Operation)target.getRepresents().getType().getOwnedElements().get(0);
+		final Operation operation = (Operation)target.getRepresents().getType().getOwnedElements().get(0);
 		// StratingEndPredecessor get_reply_receiver execution occurrence
 		// FinishindEnPredecessor get_reply_receiver execution occurrence
-		MessageOccurrenceSpecification messageReplyReceive = (MessageOccurrenceSpecification)interaction
+		final MessageOccurrenceSpecification messageReplyReceive = (MessageOccurrenceSpecification)interaction
 				.getFragment("get_reply_receiver");
 
 		sequenceServices.createAsynchronousMessage(interaction, execution, target, operation,
 				messageReplyReceive, messageReplyReceive);
 
-		List<InteractionFragment> fragments = interaction.getFragments();
+		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(12, fragments.size());
 
-		InteractionFragment computeStart = fragments.get(0);
-		InteractionFragment compute = fragments.get(1);
-		InteractionFragment getSend = fragments.get(2);
-		InteractionFragment getReceive = fragments.get(3);
-		InteractionFragment get = fragments.get(4);
-		InteractionFragment getReplySend = fragments.get(5);
-		InteractionFragment getReplyReceive = fragments.get(6);
-		InteractionFragment produceSend = fragments.get(7);
-		InteractionFragment produceReceive = fragments.get(8);
-		InteractionFragment produce = fragments.get(9);
-		InteractionFragment produceFinish = fragments.get(10);
-		InteractionFragment computeFinish = fragments.get(11);
+		final InteractionFragment computeStart = fragments.get(0);
+		final InteractionFragment compute = fragments.get(1);
+		final InteractionFragment getSend = fragments.get(2);
+		final InteractionFragment getReceive = fragments.get(3);
+		final InteractionFragment get = fragments.get(4);
+		final InteractionFragment getReplySend = fragments.get(5);
+		final InteractionFragment getReplyReceive = fragments.get(6);
+		final InteractionFragment produceSend = fragments.get(7);
+		final InteractionFragment produceReceive = fragments.get(8);
+		final InteractionFragment produce = fragments.get(9);
+		final InteractionFragment produceFinish = fragments.get(10);
+		final InteractionFragment computeFinish = fragments.get(11);
 
 		// Execution compute
-		Behavior computeBehavior = interaction.getOwnedBehaviors().get(0);
+		final Behavior computeBehavior = interaction.getOwnedBehaviors().get(0);
 		assertEquals("Opaque behavior does not exist", "compute", computeBehavior.getName());
 		assertTrue(computeStart instanceof ExecutionOccurrenceSpecification);
 		assertEquals("compute_start", computeStart.getName());
@@ -1488,7 +1510,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(computeBehavior, ((BehaviorExecutionSpecification)compute).getBehavior());
 
 		// Synchronous message get
-		Message messageGet = interaction.getMessages().get(0);
+		final Message messageGet = interaction.getMessages().get(0);
 		assertEquals("Message does not exist", "get", messageGet.getName());
 		assertTrue(getSend instanceof MessageOccurrenceSpecification);
 		assertEquals("get_sender", getSend.getName());
@@ -1500,7 +1522,7 @@ public class SequenceServiceTests extends TestCase {
 		assertNotNull(((MessageOccurrenceSpecification)getReceive).getCovered(target.getName()));
 
 		// Execution get
-		Behavior getBehavior = interaction.getOwnedBehaviors().get(1);
+		final Behavior getBehavior = interaction.getOwnedBehaviors().get(1);
 		assertEquals("Opaque behavior does not exist", "get", getBehavior.getName());
 		assertTrue(getReceive instanceof MessageOccurrenceSpecification);
 		assertEquals("get_receiver", getReceive.getName());
@@ -1514,7 +1536,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(getBehavior, ((BehaviorExecutionSpecification)get).getBehavior());
 
 		// Synchronous message reply get
-		Message messageReplyGet = interaction.getMessages().get(1);
+		final Message messageReplyGet = interaction.getMessages().get(1);
 		assertEquals("Message does not exist", "get_reply", messageReplyGet.getName());
 		assertTrue(getReplySend instanceof MessageOccurrenceSpecification);
 		assertEquals("get_reply_sender", getReplySend.getName());
@@ -1526,7 +1548,7 @@ public class SequenceServiceTests extends TestCase {
 		assertNotNull(((MessageOccurrenceSpecification)getReplyReceive).getCovered(source.getName()));
 
 		// Asynchronous message produce
-		Message messageProduce = interaction.getMessages().get(2);
+		final Message messageProduce = interaction.getMessages().get(2);
 		assertEquals("Message does not exist", "produce", messageProduce.getName());
 		assertTrue(produceSend instanceof MessageOccurrenceSpecification);
 		assertEquals("produce_sender", produceSend.getName());
@@ -1538,7 +1560,7 @@ public class SequenceServiceTests extends TestCase {
 		assertNotNull(((MessageOccurrenceSpecification)produceReceive).getCovered(target.getName()));
 
 		// Execution produce
-		Behavior produceBehavior = interaction.getOwnedBehaviors().get(2);
+		final Behavior produceBehavior = interaction.getOwnedBehaviors().get(2);
 		assertEquals("Opaque behavior does not exist", "produce", produceBehavior.getName());
 		assertTrue(produceReceive instanceof MessageOccurrenceSpecification);
 		assertEquals("produce_receiver", produceReceive.getName());
@@ -1562,31 +1584,31 @@ public class SequenceServiceTests extends TestCase {
 	 */
 	public void testReorderExecutions() throws Exception {
 		// Interaction Scenario_10
-		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_10");
-		Lifeline lifeline = interaction.getLifeline("producers");
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_10");
+		final Lifeline lifeline = interaction.getLifeline("producers");
 
 		// Execution to move produce
-		ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("produce");
+		final ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("produce");
 		// StartingEndPredecessorAfter get_start execution occurrence
-		ExecutionOccurrenceSpecification startingEndPredecessorAfter = null;
+		final ExecutionOccurrenceSpecification startingEndPredecessorAfter = null;
 		// FinishingEndPredecessorAfter produce_start execution occurrence
-		ExecutionOccurrenceSpecification finishingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
+		final ExecutionOccurrenceSpecification finishingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
 				.getFragment("produce_start");
 
 		sequenceServices.reorder(execution, startingEndPredecessorAfter, finishingEndPredecessorAfter);
 
-		List<InteractionFragment> fragments = interaction.getFragments();
+		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(12, fragments.size());
 
-		InteractionFragment produceStart = fragments.get(0);
-		InteractionFragment produce = fragments.get(1);
-		InteractionFragment produceFinish = fragments.get(2);
-		InteractionFragment getStart = fragments.get(3);
-		InteractionFragment get = fragments.get(4);
-		InteractionFragment getFinish = fragments.get(5);
+		final InteractionFragment produceStart = fragments.get(0);
+		final InteractionFragment produce = fragments.get(1);
+		final InteractionFragment produceFinish = fragments.get(2);
+		final InteractionFragment getStart = fragments.get(3);
+		final InteractionFragment get = fragments.get(4);
+		final InteractionFragment getFinish = fragments.get(5);
 
 		// Execution produce
-		Behavior produceBehavior = interaction.getOwnedBehaviors().get(1);
+		final Behavior produceBehavior = interaction.getOwnedBehaviors().get(1);
 		assertEquals("Opaque behavior does not exist", "produce", produceBehavior.getName());
 		assertTrue(produceStart instanceof ExecutionOccurrenceSpecification);
 		assertEquals("produce_start", produceStart.getName());
@@ -1600,7 +1622,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(produceBehavior, ((BehaviorExecutionSpecification)produce).getBehavior());
 
 		// Execution get
-		Behavior getBehavior = interaction.getOwnedBehaviors().get(0);
+		final Behavior getBehavior = interaction.getOwnedBehaviors().get(0);
 		assertEquals("Opaque behavior does not exist", "get", getBehavior.getName());
 		assertTrue(getStart instanceof ExecutionOccurrenceSpecification);
 		assertEquals("get_start", getStart.getName());
@@ -1623,32 +1645,32 @@ public class SequenceServiceTests extends TestCase {
 	 */
 	public void testReorderExecutions2() throws Exception {
 		// Interaction Scenario_10
-		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_10");
-		Lifeline lifeline = interaction.getLifeline("producers");
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_10");
+		final Lifeline lifeline = interaction.getLifeline("producers");
 
 		// Execution to move produce
-		ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("produce");
+		final ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("produce");
 		// StartingEndPredecessorAfter get_start execution occurrence
-		ExecutionOccurrenceSpecification startingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
+		final ExecutionOccurrenceSpecification startingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
 				.getFragment("get_start");
 		// FinishingEndPredecessorAfter produce_start execution occurrence
-		ExecutionOccurrenceSpecification finishingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
+		final ExecutionOccurrenceSpecification finishingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
 				.getFragment("produce_start");
 
 		sequenceServices.reorder(execution, startingEndPredecessorAfter, finishingEndPredecessorAfter);
 
-		List<InteractionFragment> fragments = interaction.getFragments();
+		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(12, fragments.size());
 
-		InteractionFragment getStart = fragments.get(0);
-		InteractionFragment get = fragments.get(1);
-		InteractionFragment produceStart = fragments.get(2);
-		InteractionFragment produce = fragments.get(3);
-		InteractionFragment produceFinish = fragments.get(4);
-		InteractionFragment getFinish = fragments.get(5);
+		final InteractionFragment getStart = fragments.get(0);
+		final InteractionFragment get = fragments.get(1);
+		final InteractionFragment produceStart = fragments.get(2);
+		final InteractionFragment produce = fragments.get(3);
+		final InteractionFragment produceFinish = fragments.get(4);
+		final InteractionFragment getFinish = fragments.get(5);
 
 		// Execution get
-		Behavior getBehavior = interaction.getOwnedBehaviors().get(0);
+		final Behavior getBehavior = interaction.getOwnedBehaviors().get(0);
 		assertEquals("Opaque behavior does not exist", "get", getBehavior.getName());
 		assertTrue(getStart instanceof ExecutionOccurrenceSpecification);
 		assertEquals("get_start", getStart.getName());
@@ -1662,7 +1684,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(getBehavior, ((BehaviorExecutionSpecification)get).getBehavior());
 
 		// Execution produce
-		Behavior produceBehavior = interaction.getOwnedBehaviors().get(1);
+		final Behavior produceBehavior = interaction.getOwnedBehaviors().get(1);
 		assertEquals("Opaque behavior does not exist", "produce", produceBehavior.getName());
 		assertTrue(produceStart instanceof ExecutionOccurrenceSpecification);
 		assertEquals("produce_start", produceStart.getName());
@@ -1686,36 +1708,36 @@ public class SequenceServiceTests extends TestCase {
 	 */
 	public void testReorderExecutions3() throws Exception {
 		// Interaction Scenario_10
-		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_10");
-		Lifeline lifeline = interaction.getLifeline("producers");
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_10");
+		final Lifeline lifeline = interaction.getLifeline("producers");
 
 		// Execution to move produce
-		ExecutionSpecification execution = (ExecutionSpecification)interaction
+		final ExecutionSpecification execution = (ExecutionSpecification)interaction
 				.getFragment("BehaviorExecution_2");
 		// StartingEndPredecessorAfter get_finish execution occurrence
-		ExecutionOccurrenceSpecification startingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
+		final ExecutionOccurrenceSpecification startingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
 				.getFragment("get_finish");
 		// FinishingEndPredecessorAfter BehaviorExecution2_start execution occurrence
-		ExecutionOccurrenceSpecification finishingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
+		final ExecutionOccurrenceSpecification finishingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
 				.getFragment("BehaviorExecution_2_start");
 
 		sequenceServices.reorder(execution, startingEndPredecessorAfter, finishingEndPredecessorAfter);
 
-		List<InteractionFragment> fragments = interaction.getFragments();
+		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(12, fragments.size());
 
-		InteractionFragment getStart = fragments.get(0);
-		InteractionFragment get = fragments.get(1);
-		InteractionFragment getFinish = fragments.get(2);
-		InteractionFragment behavior2Start = fragments.get(3);
-		InteractionFragment behavior2 = fragments.get(4);
-		InteractionFragment behavior2Finish = fragments.get(5);
-		InteractionFragment produceStart = fragments.get(6);
-		InteractionFragment produce = fragments.get(7);
-		InteractionFragment produceFinish = fragments.get(8);
+		final InteractionFragment getStart = fragments.get(0);
+		final InteractionFragment get = fragments.get(1);
+		final InteractionFragment getFinish = fragments.get(2);
+		final InteractionFragment behavior2Start = fragments.get(3);
+		final InteractionFragment behavior2 = fragments.get(4);
+		final InteractionFragment behavior2Finish = fragments.get(5);
+		final InteractionFragment produceStart = fragments.get(6);
+		final InteractionFragment produce = fragments.get(7);
+		final InteractionFragment produceFinish = fragments.get(8);
 
 		// Execution get
-		Behavior getBehavior = interaction.getOwnedBehaviors().get(0);
+		final Behavior getBehavior = interaction.getOwnedBehaviors().get(0);
 		assertEquals("Opaque behavior does not exist", "get", getBehavior.getName());
 		assertTrue(getStart instanceof ExecutionOccurrenceSpecification);
 		assertEquals("get_start", getStart.getName());
@@ -1729,7 +1751,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(getBehavior, ((BehaviorExecutionSpecification)get).getBehavior());
 
 		// Execution behavior2
-		Behavior behavior2Behavior = interaction.getOwnedBehaviors().get(2);
+		final Behavior behavior2Behavior = interaction.getOwnedBehaviors().get(2);
 		assertEquals("Opaque behavior does not exist", "BehaviorExecution_2", behavior2Behavior.getName());
 		assertTrue(behavior2Start instanceof ExecutionOccurrenceSpecification);
 		assertEquals("BehaviorExecution_2_start", behavior2Start.getName());
@@ -1743,7 +1765,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(behavior2Behavior, ((BehaviorExecutionSpecification)behavior2).getBehavior());
 
 		// Execution produce
-		Behavior produceBehavior = interaction.getOwnedBehaviors().get(1);
+		final Behavior produceBehavior = interaction.getOwnedBehaviors().get(1);
 		assertEquals("Opaque behavior does not exist", "produce", produceBehavior.getName());
 		assertTrue(produceStart instanceof ExecutionOccurrenceSpecification);
 		assertEquals("produce_start", produceStart.getName());
@@ -1767,39 +1789,39 @@ public class SequenceServiceTests extends TestCase {
 	 */
 	public void testReorderExecutions4() throws Exception {
 		// Interaction Scenario_10
-		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_10");
-		Lifeline producers = interaction.getLifeline("producers");
-		Lifeline consumers = interaction.getLifeline("consumers");
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_10");
+		final Lifeline producers = interaction.getLifeline("producers");
+		final Lifeline consumers = interaction.getLifeline("consumers");
 
 		// Execution to move produce
-		ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("produce");
+		final ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("produce");
 		// StartingEndPredecessorAfter compute_finish execution occurrence
-		ExecutionOccurrenceSpecification startingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
+		final ExecutionOccurrenceSpecification startingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
 				.getFragment("compute_finish");
 		// FinishingEndPredecessorAfter produce_start execution occurrence
-		ExecutionOccurrenceSpecification finishingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
+		final ExecutionOccurrenceSpecification finishingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
 				.getFragment("produce_start");
 
 		sequenceServices.reorder(execution, startingEndPredecessorAfter, finishingEndPredecessorAfter);
 
-		List<InteractionFragment> fragments = interaction.getFragments();
+		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(12, fragments.size());
 
-		InteractionFragment getStart = fragments.get(0);
-		InteractionFragment get = fragments.get(1);
-		InteractionFragment getFinish = fragments.get(2);
-		InteractionFragment behavior2Start = fragments.get(3);
-		InteractionFragment behavior2 = fragments.get(4);
-		InteractionFragment behavior2Finish = fragments.get(5);
-		InteractionFragment computeStart = fragments.get(6);
-		InteractionFragment compute = fragments.get(7);
-		InteractionFragment computeFinish = fragments.get(8);
-		InteractionFragment produceStart = fragments.get(9);
-		InteractionFragment produce = fragments.get(10);
-		InteractionFragment produceFinish = fragments.get(11);
+		final InteractionFragment getStart = fragments.get(0);
+		final InteractionFragment get = fragments.get(1);
+		final InteractionFragment getFinish = fragments.get(2);
+		final InteractionFragment behavior2Start = fragments.get(3);
+		final InteractionFragment behavior2 = fragments.get(4);
+		final InteractionFragment behavior2Finish = fragments.get(5);
+		final InteractionFragment computeStart = fragments.get(6);
+		final InteractionFragment compute = fragments.get(7);
+		final InteractionFragment computeFinish = fragments.get(8);
+		final InteractionFragment produceStart = fragments.get(9);
+		final InteractionFragment produce = fragments.get(10);
+		final InteractionFragment produceFinish = fragments.get(11);
 
 		// Execution get
-		Behavior getBehavior = interaction.getOwnedBehaviors().get(0);
+		final Behavior getBehavior = interaction.getOwnedBehaviors().get(0);
 		assertEquals("Opaque behavior does not exist", "get", getBehavior.getName());
 		assertTrue(getStart instanceof ExecutionOccurrenceSpecification);
 		assertEquals("get_start", getStart.getName());
@@ -1813,7 +1835,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(getBehavior, ((BehaviorExecutionSpecification)get).getBehavior());
 
 		// Execution behavior2
-		Behavior behavior2Behavior = interaction.getOwnedBehaviors().get(2);
+		final Behavior behavior2Behavior = interaction.getOwnedBehaviors().get(2);
 		assertEquals("Opaque behavior does not exist", "BehaviorExecution_2", behavior2Behavior.getName());
 		assertTrue(behavior2Start instanceof ExecutionOccurrenceSpecification);
 		assertEquals("BehaviorExecution_2_start", behavior2Start.getName());
@@ -1827,7 +1849,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(behavior2Behavior, ((BehaviorExecutionSpecification)behavior2).getBehavior());
 
 		// Execution compute
-		Behavior computeBehavior = interaction.getOwnedBehaviors().get(3);
+		final Behavior computeBehavior = interaction.getOwnedBehaviors().get(3);
 		assertEquals("Opaque behavior does not exist", "compute", computeBehavior.getName());
 		assertTrue(computeStart instanceof ExecutionOccurrenceSpecification);
 		assertEquals("compute_start", computeStart.getName());
@@ -1841,7 +1863,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(computeBehavior, ((BehaviorExecutionSpecification)compute).getBehavior());
 
 		// Execution produce
-		Behavior produceBehavior = interaction.getOwnedBehaviors().get(1);
+		final Behavior produceBehavior = interaction.getOwnedBehaviors().get(1);
 		assertEquals("Opaque behavior does not exist", "produce", produceBehavior.getName());
 		assertTrue(produceStart instanceof ExecutionOccurrenceSpecification);
 		assertEquals("produce_start", produceStart.getName());
@@ -1865,49 +1887,49 @@ public class SequenceServiceTests extends TestCase {
 	 */
 	public void testReorderExecutions5() throws Exception {
 		// Interaction Scenario_12
-		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_12");
-		Lifeline producers = interaction.getLifeline("producers");
-		Lifeline consumers = interaction.getLifeline("consumers");
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_12");
+		final Lifeline producers = interaction.getLifeline("producers");
+		final Lifeline consumers = interaction.getLifeline("consumers");
 
 		// Execution to move compute
-		ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("compute");
+		final ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("compute");
 		// StartingEndPredecessorAfter BehaviorExecution_2_finish execution occurrence
-		ExecutionOccurrenceSpecification startingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
+		final ExecutionOccurrenceSpecification startingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
 				.getFragment("BehaviorExecution_2_finish");
-		// FinishingEndPredecessorAfter compute_start execution occurrence
-		ExecutionOccurrenceSpecification finishingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
-				.getFragment("compute_start");
+		// FinishingEndPredecessorAfter produce_reply_receiver execution occurrence
+		final MessageOccurrenceSpecification finishingEndPredecessorAfter = (MessageOccurrenceSpecification)interaction
+				.getFragment("produce_reply_receiver");
 
 		sequenceServices.reorder(execution, startingEndPredecessorAfter, finishingEndPredecessorAfter);
 
-		List<InteractionFragment> fragments = interaction.getFragments();
+		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(22, fragments.size());
 
-		InteractionFragment behavior2Start = fragments.get(0);
-		InteractionFragment behavior2 = fragments.get(1);
-		InteractionFragment behavior2Finish = fragments.get(2);
-		InteractionFragment computeStart = fragments.get(3);
-		InteractionFragment compute = fragments.get(4);
-		InteractionFragment behavior1Start = fragments.get(5);
-		InteractionFragment behavior1 = fragments.get(6);
-		InteractionFragment msg3Send = fragments.get(7);
-		InteractionFragment msg3Receive = fragments.get(8);
-		InteractionFragment msg3ReplySend = fragments.get(9);
-		InteractionFragment msg3ReplyReceive = fragments.get(10);
-		InteractionFragment behavior1Finish = fragments.get(11);
-		InteractionFragment getSend = fragments.get(12);
-		InteractionFragment getReceive = fragments.get(13);
-		InteractionFragment get = fragments.get(14);
-		InteractionFragment getFinish = fragments.get(15);
-		InteractionFragment produceSend = fragments.get(16);
-		InteractionFragment produceReceive = fragments.get(17);
-		InteractionFragment produce = fragments.get(18);
-		InteractionFragment produceReplySend = fragments.get(19);
-		InteractionFragment produceReplyReceive = fragments.get(20);
-		InteractionFragment computeFinish = fragments.get(21);
+		final InteractionFragment behavior2Start = fragments.get(0);
+		final InteractionFragment behavior2 = fragments.get(1);
+		final InteractionFragment behavior2Finish = fragments.get(2);
+		final InteractionFragment computeStart = fragments.get(3);
+		final InteractionFragment compute = fragments.get(4);
+		final InteractionFragment behavior1Start = fragments.get(5);
+		final InteractionFragment behavior1 = fragments.get(6);
+		final InteractionFragment msg3Send = fragments.get(7);
+		final InteractionFragment msg3Receive = fragments.get(8);
+		final InteractionFragment msg3ReplySend = fragments.get(9);
+		final InteractionFragment msg3ReplyReceive = fragments.get(10);
+		final InteractionFragment behavior1Finish = fragments.get(11);
+		final InteractionFragment getSend = fragments.get(12);
+		final InteractionFragment getReceive = fragments.get(13);
+		final InteractionFragment get = fragments.get(14);
+		final InteractionFragment getFinish = fragments.get(15);
+		final InteractionFragment produceSend = fragments.get(16);
+		final InteractionFragment produceReceive = fragments.get(17);
+		final InteractionFragment produce = fragments.get(18);
+		final InteractionFragment produceReplySend = fragments.get(19);
+		final InteractionFragment produceReplyReceive = fragments.get(20);
+		final InteractionFragment computeFinish = fragments.get(21);
 
 		// Execution BehaviorExecution_2
-		Behavior behavior2Behavior = interaction.getOwnedBehaviors().get(2);
+		final Behavior behavior2Behavior = interaction.getOwnedBehaviors().get(2);
 		assertEquals("Opaque behavior does not exist", "BehaviorExecution_2", behavior2Behavior.getName());
 		assertTrue(behavior2Start instanceof ExecutionOccurrenceSpecification);
 		assertEquals("BehaviorExecution_2_start", behavior2Start.getName());
@@ -1921,7 +1943,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(behavior2Behavior, ((BehaviorExecutionSpecification)behavior2).getBehavior());
 
 		// Execution compute
-		Behavior computeBehavior = interaction.getOwnedBehaviors().get(0);
+		final Behavior computeBehavior = interaction.getOwnedBehaviors().get(0);
 		assertEquals("Opaque behavior does not exist", "compute", computeBehavior.getName());
 		assertTrue(computeStart instanceof ExecutionOccurrenceSpecification);
 		assertEquals("compute_start", computeStart.getName());
@@ -1935,7 +1957,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(computeBehavior, ((BehaviorExecutionSpecification)compute).getBehavior());
 
 		// Execution BehaviorExecution_1
-		Behavior behavior1Behavior = interaction.getOwnedBehaviors().get(1);
+		final Behavior behavior1Behavior = interaction.getOwnedBehaviors().get(1);
 		assertEquals("Opaque behavior does not exist", "BehaviorExecution_1", behavior1Behavior.getName());
 		assertTrue(behavior1Start instanceof ExecutionOccurrenceSpecification);
 		assertEquals("BehaviorExecution_1_start", behavior1Start.getName());
@@ -1949,7 +1971,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(behavior1Behavior, ((BehaviorExecutionSpecification)behavior1).getBehavior());
 
 		// Message Message_3
-		Message msg3 = interaction.getMessages().get(3);
+		final Message msg3 = interaction.getMessages().get(3);
 		assertEquals("Message does not exist", "Message_3", msg3.getName());
 		assertTrue(msg3Send instanceof MessageOccurrenceSpecification);
 		assertEquals("Message_3_sender", msg3Send.getName());
@@ -1961,7 +1983,7 @@ public class SequenceServiceTests extends TestCase {
 		assertNotNull(((MessageOccurrenceSpecification)msg3Receive).getCovered(producers.getName()));
 
 		// Message Message_3_reply
-		Message msg3Reply = interaction.getMessages().get(4);
+		final Message msg3Reply = interaction.getMessages().get(4);
 		assertEquals("Message does not exist", "Message_3_reply", msg3Reply.getName());
 		assertTrue(msg3ReplySend instanceof MessageOccurrenceSpecification);
 		assertEquals("Message_3_reply_sender", msg3ReplySend.getName());
@@ -1973,7 +1995,7 @@ public class SequenceServiceTests extends TestCase {
 		assertNotNull(((MessageOccurrenceSpecification)msg3ReplyReceive).getCovered(consumers.getName()));
 
 		// Message get
-		Message getMessage = interaction.getMessages().get(0);
+		final Message getMessage = interaction.getMessages().get(0);
 		assertEquals("Message does not exist", "get", getMessage.getName());
 		assertTrue(getSend instanceof MessageOccurrenceSpecification);
 		assertEquals("get_sender", getSend.getName());
@@ -1985,7 +2007,7 @@ public class SequenceServiceTests extends TestCase {
 		assertNotNull(((MessageOccurrenceSpecification)getReceive).getCovered(producers.getName()));
 
 		// Execution get
-		Behavior getBehavior = interaction.getOwnedBehaviors().get(3);
+		final Behavior getBehavior = interaction.getOwnedBehaviors().get(3);
 		assertEquals("Opaque behavior does not exist", "get", getBehavior.getName());
 		assertTrue(getReceive instanceof MessageOccurrenceSpecification);
 		assertEquals("get_receiver", getReceive.getName());
@@ -1999,7 +2021,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(getBehavior, ((BehaviorExecutionSpecification)get).getBehavior());
 
 		// Message produce
-		Message produceMessage = interaction.getMessages().get(1);
+		final Message produceMessage = interaction.getMessages().get(1);
 		assertEquals("Message does not exist", "produce", produceMessage.getName());
 		assertTrue(produceSend instanceof MessageOccurrenceSpecification);
 		assertEquals("produce_sender", produceSend.getName());
@@ -2011,7 +2033,7 @@ public class SequenceServiceTests extends TestCase {
 		assertNotNull(((MessageOccurrenceSpecification)produceReceive).getCovered(producers.getName()));
 
 		// Execution produce
-		Behavior produceBehavior = interaction.getOwnedBehaviors().get(4);
+		final Behavior produceBehavior = interaction.getOwnedBehaviors().get(4);
 		assertEquals("Opaque behavior does not exist", "produce", produceBehavior.getName());
 		assertTrue(produceSend instanceof MessageOccurrenceSpecification);
 		assertEquals("produce_receiver", produceReceive.getName());
@@ -2025,7 +2047,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(produceBehavior, ((BehaviorExecutionSpecification)produce).getBehavior());
 
 		// Message produce_reply
-		Message produceReplyMessage = interaction.getMessages().get(2);
+		final Message produceReplyMessage = interaction.getMessages().get(2);
 		assertEquals("Message does not exist", "produce_reply", produceReplyMessage.getName());
 		assertTrue(produceReplySend instanceof MessageOccurrenceSpecification);
 		assertEquals("produce_reply_sender", produceReplySend.getName());
@@ -2038,6 +2060,218 @@ public class SequenceServiceTests extends TestCase {
 	}
 
 	/**
+	 * Test {@link SequenceServices#reorder(ExecutionSpecification, InteractionFragment, InteractionFragment)
+	 * reorder} service. Reorder two executions on different lifelines. Move the first execution in order that
+	 * executions are mixed, ie : second execution start > first execution start > second execution end >
+	 * first execution end.
+	 * 
+	 * @throws Exception
+	 *             in case of error
+	 */
+	public void testReorderExecutions6() throws Exception {
+		// Interaction Scenario_15
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_15");
+		final Lifeline lifeline1 = interaction.getLifeline("Lifeline_1");
+		final Lifeline lifeline2 = interaction.getLifeline("Lifeline_2");
+
+		// Execution to move A
+		final ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("A");
+		// StartingEndPredecessorAfter B_start execution occurrence
+		final ExecutionOccurrenceSpecification startingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
+				.getFragment("B_start");
+		// FinishingEndPredecessorAfter B_finish execution occurrence
+		final ExecutionOccurrenceSpecification finishingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
+				.getFragment("B_finish");
+
+		sequenceServices.reorder(execution, startingEndPredecessorAfter, finishingEndPredecessorAfter);
+
+		final List<InteractionFragment> fragments = interaction.getFragments();
+		assertEquals(6, fragments.size());
+
+		final InteractionFragment bStart = fragments.get(0);
+		final InteractionFragment b = fragments.get(1);
+		final InteractionFragment aStart = fragments.get(2);
+		final InteractionFragment a = fragments.get(3);
+		final InteractionFragment bFinish = fragments.get(4);
+		final InteractionFragment aFinish = fragments.get(5);
+
+		// Execution B
+		final Behavior bBehavior = interaction.getOwnedBehaviors().get(1);
+		assertEquals("Opaque behavior does not exist", "B", bBehavior.getName());
+		assertTrue(bStart instanceof ExecutionOccurrenceSpecification);
+		assertEquals("B_start", bStart.getName());
+		assertTrue(bFinish instanceof ExecutionOccurrenceSpecification);
+		assertEquals("B_finish", bFinish.getName());
+		assertTrue(b instanceof BehaviorExecutionSpecification);
+		assertEquals("B", b.getName());
+		assertEquals(((BehaviorExecutionSpecification)b).getStart(), bStart);
+		assertEquals(((BehaviorExecutionSpecification)b).getFinish(), bFinish);
+		assertNotNull(((BehaviorExecutionSpecification)b).getCovered(lifeline2.getName()));
+		assertEquals(bBehavior, ((BehaviorExecutionSpecification)b).getBehavior());
+
+		// Execution A
+		final Behavior aBehavior = interaction.getOwnedBehaviors().get(0);
+		assertEquals("Opaque behavior does not exist", "A", aBehavior.getName());
+		assertTrue(aStart instanceof ExecutionOccurrenceSpecification);
+		assertEquals("A_start", aStart.getName());
+		assertTrue(aFinish instanceof ExecutionOccurrenceSpecification);
+		assertEquals("A_finish", aFinish.getName());
+		assertTrue(a instanceof BehaviorExecutionSpecification);
+		assertEquals("A", a.getName());
+		assertEquals(((BehaviorExecutionSpecification)a).getStart(), aStart);
+		assertEquals(((BehaviorExecutionSpecification)a).getFinish(), aFinish);
+		assertNotNull(((BehaviorExecutionSpecification)a).getCovered(lifeline1.getName()));
+		assertEquals(aBehavior, ((BehaviorExecutionSpecification)a).getBehavior());
+	}
+
+	/**
+	 * Test {@link SequenceServices#reorder(ExecutionSpecification, InteractionFragment, InteractionFragment)
+	 * reorder} service. Reorder two executions on different lifelines. Move the second execution in order
+	 * that executions are mixed, ie : first execution start > second execution start > first execution end >
+	 * second execution end.
+	 * 
+	 * @throws Exception
+	 *             in case of error
+	 */
+	public void testReorderExecutions7() throws Exception {
+		// Interaction Scenario_15
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_15");
+		final Lifeline lifeline1 = interaction.getLifeline("Lifeline_1");
+		final Lifeline lifeline2 = interaction.getLifeline("Lifeline_2");
+
+		// Execution to move B
+		final ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("B");
+		// StartingEndPredecessorAfter A_start execution occurrence
+		final ExecutionOccurrenceSpecification startingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
+				.getFragment("A_start");
+		// FinishingEndPredecessorAfter A_finish execution occurrence
+		final ExecutionOccurrenceSpecification finishingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
+				.getFragment("A_finish");
+
+		sequenceServices.reorder(execution, startingEndPredecessorAfter, finishingEndPredecessorAfter);
+
+		final List<InteractionFragment> fragments = interaction.getFragments();
+		assertEquals(6, fragments.size());
+
+		final InteractionFragment aStart = fragments.get(0);
+		final InteractionFragment a = fragments.get(1);
+		final InteractionFragment bStart = fragments.get(2);
+		final InteractionFragment b = fragments.get(3);
+		final InteractionFragment aFinish = fragments.get(4);
+		final InteractionFragment bFinish = fragments.get(5);
+
+		// Execution B
+		final Behavior bBehavior = interaction.getOwnedBehaviors().get(1);
+		assertEquals("Opaque behavior does not exist", "B", bBehavior.getName());
+		assertTrue(bStart instanceof ExecutionOccurrenceSpecification);
+		assertEquals("B_start", bStart.getName());
+		assertTrue(bFinish instanceof ExecutionOccurrenceSpecification);
+		assertEquals("B_finish", bFinish.getName());
+		assertTrue(b instanceof BehaviorExecutionSpecification);
+		assertEquals("B", b.getName());
+		assertEquals(((BehaviorExecutionSpecification)b).getStart(), bStart);
+		assertEquals(((BehaviorExecutionSpecification)b).getFinish(), bFinish);
+		assertNotNull(((BehaviorExecutionSpecification)b).getCovered(lifeline2.getName()));
+		assertEquals(bBehavior, ((BehaviorExecutionSpecification)b).getBehavior());
+
+		// Execution A
+		final Behavior aBehavior = interaction.getOwnedBehaviors().get(0);
+		assertEquals("Opaque behavior does not exist", "A", aBehavior.getName());
+		assertTrue(aStart instanceof ExecutionOccurrenceSpecification);
+		assertEquals("A_start", aStart.getName());
+		assertTrue(aFinish instanceof ExecutionOccurrenceSpecification);
+		assertEquals("A_finish", aFinish.getName());
+		assertTrue(a instanceof BehaviorExecutionSpecification);
+		assertEquals("A", a.getName());
+		assertEquals(((BehaviorExecutionSpecification)a).getStart(), aStart);
+		assertEquals(((BehaviorExecutionSpecification)a).getFinish(), aFinish);
+		assertNotNull(((BehaviorExecutionSpecification)a).getCovered(lifeline1.getName()));
+		assertEquals(aBehavior, ((BehaviorExecutionSpecification)a).getBehavior());
+	}
+
+	/**
+	 * Test {@link SequenceServices#reorder(ExecutionSpecification, InteractionFragment, InteractionFragment)
+	 * reorder} service. Reorder two executions on different lifelines. Move the execution A after execution
+	 * B, the sub-execution C should be also moved.
+	 * 
+	 * @throws Exception
+	 *             in case of error
+	 */
+	public void testReorderExecutions8() throws Exception {
+		// Interaction Scenario_16
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_16");
+		final Lifeline lifeline1 = interaction.getLifeline("Lifeline_1");
+		final Lifeline lifeline2 = interaction.getLifeline("Lifeline_2");
+
+		// Execution to move A
+		final ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("A");
+		// StartingEndPredecessorAfter B_finish execution occurrence
+		final ExecutionOccurrenceSpecification startingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
+				.getFragment("B_finish");
+		// FinishingEndPredecessorAfter C_finish execution occurrence
+		final ExecutionOccurrenceSpecification finishingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
+				.getFragment("C_finish");
+
+		sequenceServices.reorder(execution, startingEndPredecessorAfter, finishingEndPredecessorAfter);
+
+		final List<InteractionFragment> fragments = interaction.getFragments();
+		assertEquals(9, fragments.size());
+
+		final InteractionFragment bStart = fragments.get(0);
+		final InteractionFragment b = fragments.get(1);
+		final InteractionFragment bFinish = fragments.get(2);
+		final InteractionFragment aStart = fragments.get(3);
+		final InteractionFragment a = fragments.get(4);
+		final InteractionFragment cStart = fragments.get(5);
+		final InteractionFragment c = fragments.get(6);
+		final InteractionFragment cFinish = fragments.get(7);
+		final InteractionFragment aFinish = fragments.get(8);
+
+		// Execution B
+		final Behavior bBehavior = interaction.getOwnedBehaviors().get(1);
+		assertEquals("Opaque behavior does not exist", "B", bBehavior.getName());
+		assertTrue(bStart instanceof ExecutionOccurrenceSpecification);
+		assertEquals("B_start", bStart.getName());
+		assertTrue(bFinish instanceof ExecutionOccurrenceSpecification);
+		assertEquals("B_finish", bFinish.getName());
+		assertTrue(b instanceof BehaviorExecutionSpecification);
+		assertEquals("B", b.getName());
+		assertEquals(((BehaviorExecutionSpecification)b).getStart(), bStart);
+		assertEquals(((BehaviorExecutionSpecification)b).getFinish(), bFinish);
+		assertNotNull(((BehaviorExecutionSpecification)b).getCovered(lifeline2.getName()));
+		assertEquals(bBehavior, ((BehaviorExecutionSpecification)b).getBehavior());
+
+		// Execution A
+		final Behavior aBehavior = interaction.getOwnedBehaviors().get(0);
+		assertEquals("Opaque behavior does not exist", "A", aBehavior.getName());
+		assertTrue(aStart instanceof ExecutionOccurrenceSpecification);
+		assertEquals("A_start", aStart.getName());
+		assertTrue(aFinish instanceof ExecutionOccurrenceSpecification);
+		assertEquals("A_finish", aFinish.getName());
+		assertTrue(a instanceof BehaviorExecutionSpecification);
+		assertEquals("A", a.getName());
+		assertEquals(((BehaviorExecutionSpecification)a).getStart(), aStart);
+		assertEquals(((BehaviorExecutionSpecification)a).getFinish(), aFinish);
+		assertNotNull(((BehaviorExecutionSpecification)a).getCovered(lifeline1.getName()));
+		assertEquals(aBehavior, ((BehaviorExecutionSpecification)a).getBehavior());
+
+		// Execution C
+		final Behavior cBehavior = interaction.getOwnedBehaviors().get(2);
+		assertEquals("Opaque behavior does not exist", "C", cBehavior.getName());
+		assertTrue(cStart instanceof ExecutionOccurrenceSpecification);
+		assertEquals("C_start", cStart.getName());
+		assertTrue(cFinish instanceof ExecutionOccurrenceSpecification);
+		assertEquals("C_finish", cFinish.getName());
+		assertTrue(c instanceof BehaviorExecutionSpecification);
+		assertEquals("C", c.getName());
+		assertEquals(((BehaviorExecutionSpecification)c).getStart(), cStart);
+		assertEquals(((BehaviorExecutionSpecification)c).getFinish(), cFinish);
+		assertNotNull(((BehaviorExecutionSpecification)c).getCovered(lifeline1.getName()));
+		assertEquals(cBehavior, ((BehaviorExecutionSpecification)c).getBehavior());
+
+	}
+
+	/**
 	 * Test {@link SequenceServices#reorder(Message, InteractionFragment, InteractionFragment) reorder}
 	 * service. Reorder two messages on the same lifelines. Move the first message after the previous on the
 	 * lifeline.
@@ -2047,31 +2281,31 @@ public class SequenceServiceTests extends TestCase {
 	 */
 	public void testReorderMessages() throws Exception {
 		// Interaction Scenario_11
-		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_11");
-		Lifeline producers = interaction.getLifeline("producers");
-		Lifeline consumers = interaction.getLifeline("consumers");
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_11");
+		final Lifeline producers = interaction.getLifeline("producers");
+		final Lifeline consumers = interaction.getLifeline("consumers");
 
 		// Message to move Message_0
-		Message message = (Message)interaction.getMessage("Message_0");
+		final Message message = (Message)interaction.getMessage("Message_0");
 		// StartingEndPredecessorAfter Message_1_receiver message occurrence
-		MessageOccurrenceSpecification startingEndPredecessorAfter = (MessageOccurrenceSpecification)interaction
+		final MessageOccurrenceSpecification startingEndPredecessorAfter = (MessageOccurrenceSpecification)interaction
 				.getFragment("Message_1_receiver");
 		// FinishingEndPredecessorAfter Message_0_sender message occurrence
-		MessageOccurrenceSpecification finishingEndPredecessorAfter = (MessageOccurrenceSpecification)interaction
+		final MessageOccurrenceSpecification finishingEndPredecessorAfter = (MessageOccurrenceSpecification)interaction
 				.getFragment("Message_0_sender");
 
 		sequenceServices.reorder(message, startingEndPredecessorAfter, finishingEndPredecessorAfter);
 
-		List<InteractionFragment> fragments = interaction.getFragments();
+		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(4, fragments.size());
 
-		InteractionFragment msg1Send = fragments.get(0);
-		InteractionFragment msg1Receive = fragments.get(1);
-		InteractionFragment msg0Send = fragments.get(2);
-		InteractionFragment msg0Receive = fragments.get(3);
+		final InteractionFragment msg1Send = fragments.get(0);
+		final InteractionFragment msg1Receive = fragments.get(1);
+		final InteractionFragment msg0Send = fragments.get(2);
+		final InteractionFragment msg0Receive = fragments.get(3);
 
 		// Message Message_1
-		Message msg1 = interaction.getMessages().get(1);
+		final Message msg1 = interaction.getMessages().get(1);
 		assertEquals("Message does not exist", "Message_1", msg1.getName());
 		assertTrue(msg1Send instanceof MessageOccurrenceSpecification);
 		assertEquals("Message_1_sender", msg1Send.getName());
@@ -2083,7 +2317,7 @@ public class SequenceServiceTests extends TestCase {
 		assertNotNull(((MessageOccurrenceSpecification)msg1Receive).getCovered(producers.getName()));
 
 		// Message Message_0
-		Message msg0 = interaction.getMessages().get(0);
+		final Message msg0 = interaction.getMessages().get(0);
 		assertEquals("Message does not exist", "Message_0", msg0.getName());
 		assertTrue(msg0Send instanceof MessageOccurrenceSpecification);
 		assertEquals("Message_0_sender", msg0Send.getName());
@@ -2104,32 +2338,32 @@ public class SequenceServiceTests extends TestCase {
 	 */
 	public void testReorderMessageAndExecution() throws Exception {
 		// Interaction Scenario_13
-		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_13");
-		Lifeline producers = interaction.getLifeline("producers");
-		Lifeline consumers = interaction.getLifeline("consumers");
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_13");
+		final Lifeline producers = interaction.getLifeline("producers");
+		final Lifeline consumers = interaction.getLifeline("consumers");
 
 		// Message to move Message_1
-		Message message = (Message)interaction.getMessage("Message_1");
+		final Message message = (Message)interaction.getMessage("Message_1");
 		// StartingEndPredecessorAfter produce_start execution occurrence
-		ExecutionOccurrenceSpecification startingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
+		final ExecutionOccurrenceSpecification startingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
 				.getFragment("produce_start");
 		// FinishingEndPredecessorAfter Message_1_sender message occurrence
-		MessageOccurrenceSpecification finishingEndPredecessorAfter = (MessageOccurrenceSpecification)interaction
+		final MessageOccurrenceSpecification finishingEndPredecessorAfter = (MessageOccurrenceSpecification)interaction
 				.getFragment("Message_1_sender");
 
 		sequenceServices.reorder(message, startingEndPredecessorAfter, finishingEndPredecessorAfter);
 
-		List<InteractionFragment> fragments = interaction.getFragments();
+		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(5, fragments.size());
 
-		InteractionFragment produceStart = fragments.get(0);
-		InteractionFragment produce = fragments.get(1);
-		InteractionFragment msg1Send = fragments.get(2);
-		InteractionFragment msg1Receive = fragments.get(3);
-		InteractionFragment produceFinish = fragments.get(4);
+		final InteractionFragment produceStart = fragments.get(0);
+		final InteractionFragment produce = fragments.get(1);
+		final InteractionFragment msg1Send = fragments.get(2);
+		final InteractionFragment msg1Receive = fragments.get(3);
+		final InteractionFragment produceFinish = fragments.get(4);
 
 		// Execution produce
-		Behavior produceBehavior = interaction.getOwnedBehaviors().get(0);
+		final Behavior produceBehavior = interaction.getOwnedBehaviors().get(0);
 		assertEquals("Opaque behavior does not exist", "produce", produceBehavior.getName());
 		assertTrue(produceStart instanceof ExecutionOccurrenceSpecification);
 		assertEquals("produce_start", produceStart.getName());
@@ -2143,7 +2377,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(produceBehavior, ((BehaviorExecutionSpecification)produce).getBehavior());
 
 		// Message Message_1
-		Message msg1 = interaction.getMessages().get(0);
+		final Message msg1 = interaction.getMessages().get(0);
 		assertEquals("Message does not exist", "Message_1", msg1.getName());
 		assertTrue(msg1Send instanceof MessageOccurrenceSpecification);
 		assertEquals("Message_1_sender", msg1Send.getName());
@@ -2164,51 +2398,52 @@ public class SequenceServiceTests extends TestCase {
 	 */
 	public void testReorderMessageAndExecution2() throws Exception {
 		// Interaction Scenario_14
-		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_14");
-		Lifeline producers = interaction.getLifeline("producers");
-		Lifeline consumers = interaction.getLifeline("consumers");
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_14");
+		final Lifeline producers = interaction.getLifeline("producers");
+		final Lifeline consumers = interaction.getLifeline("consumers");
 
 		// Execution to move Operation_1
-		ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("Operation_1");
+		final ExecutionSpecification execution = (ExecutionSpecification)interaction
+				.getFragment("Operation_1");
 		// StartingEndPredecessorAfter Operation_2_finish execution occurrence
-		ExecutionOccurrenceSpecification startingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
+		final ExecutionOccurrenceSpecification startingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
 				.getFragment("Operation_2_finish");
 		// FinishingEndPredecessorAfter Operation_1_receiver message occurrence
-		MessageOccurrenceSpecification finishingEndPredecessorAfter = (MessageOccurrenceSpecification)interaction
+		final MessageOccurrenceSpecification finishingEndPredecessorAfter = (MessageOccurrenceSpecification)interaction
 				.getFragment("Operation_1_receiver");
 
 		sequenceServices.reorder(execution, startingEndPredecessorAfter, finishingEndPredecessorAfter);
 
-		List<InteractionFragment> fragments = interaction.getFragments();
+		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(24, fragments.size());
 
-		InteractionFragment op0Send = fragments.get(0);
-		InteractionFragment op0Receive = fragments.get(1);
-		InteractionFragment op0 = fragments.get(2);
-		InteractionFragment op0Finish = fragments.get(3);
-		InteractionFragment testSend = fragments.get(4);
-		InteractionFragment testReceive = fragments.get(5);
-		InteractionFragment test = fragments.get(6);
-		InteractionFragment testReplySend = fragments.get(7);
-		InteractionFragment testReplyReceive = fragments.get(8);
-		InteractionFragment msg3Send = fragments.get(9);
-		InteractionFragment msg3Receive = fragments.get(10);
-		InteractionFragment msg3ReplySend = fragments.get(11);
-		InteractionFragment msg3ReplyReceive = fragments.get(12);
-		InteractionFragment msg7Send = fragments.get(13);
-		InteractionFragment msg7Receive = fragments.get(14);
-		InteractionFragment op2Send = fragments.get(15);
-		InteractionFragment op2Receive = fragments.get(16);
-		InteractionFragment op2 = fragments.get(17);
-		InteractionFragment op2Finish = fragments.get(18);
-		InteractionFragment op1Send = fragments.get(19);
-		InteractionFragment op1Receive = fragments.get(20);
-		InteractionFragment op1 = fragments.get(21);
-		InteractionFragment op1ReplySend = fragments.get(22);
-		InteractionFragment op1ReplyReceive = fragments.get(23);
+		final InteractionFragment op0Send = fragments.get(0);
+		final InteractionFragment op0Receive = fragments.get(1);
+		final InteractionFragment op0 = fragments.get(2);
+		final InteractionFragment op0Finish = fragments.get(3);
+		final InteractionFragment testSend = fragments.get(4);
+		final InteractionFragment testReceive = fragments.get(5);
+		final InteractionFragment test = fragments.get(6);
+		final InteractionFragment testReplySend = fragments.get(7);
+		final InteractionFragment testReplyReceive = fragments.get(8);
+		final InteractionFragment msg3Send = fragments.get(9);
+		final InteractionFragment msg3Receive = fragments.get(10);
+		final InteractionFragment msg3ReplySend = fragments.get(11);
+		final InteractionFragment msg3ReplyReceive = fragments.get(12);
+		final InteractionFragment msg7Send = fragments.get(13);
+		final InteractionFragment msg7Receive = fragments.get(14);
+		final InteractionFragment op2Send = fragments.get(15);
+		final InteractionFragment op2Receive = fragments.get(16);
+		final InteractionFragment op2 = fragments.get(17);
+		final InteractionFragment op2Finish = fragments.get(18);
+		final InteractionFragment op1Send = fragments.get(19);
+		final InteractionFragment op1Receive = fragments.get(20);
+		final InteractionFragment op1 = fragments.get(21);
+		final InteractionFragment op1ReplySend = fragments.get(22);
+		final InteractionFragment op1ReplyReceive = fragments.get(23);
 
 		// Message Operation_0
-		Message op0Message = interaction.getMessages().get(0);
+		final Message op0Message = interaction.getMessages().get(0);
 		assertEquals("Message does not exist", "Operation_0", op0Message.getName());
 		assertTrue(op0Send instanceof MessageOccurrenceSpecification);
 		assertEquals("Operation_0_sender", op0Send.getName());
@@ -2220,7 +2455,7 @@ public class SequenceServiceTests extends TestCase {
 		assertNotNull(((MessageOccurrenceSpecification)op0Receive).getCovered(consumers.getName()));
 
 		// Execution Operation_0
-		Behavior op0Behavior = interaction.getOwnedBehaviors().get(0);
+		final Behavior op0Behavior = interaction.getOwnedBehaviors().get(0);
 		assertEquals("Opaque behavior does not exist", "Operation_0", op0Behavior.getName());
 		assertTrue(op0Receive instanceof MessageOccurrenceSpecification);
 		assertEquals("Operation_0_receiver", op0Receive.getName());
@@ -2234,7 +2469,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(op0Behavior, ((BehaviorExecutionSpecification)op0).getBehavior());
 
 		// Message test
-		Message testMessage = interaction.getMessages().get(1);
+		final Message testMessage = interaction.getMessages().get(1);
 		assertEquals("Message does not exist", "test", testMessage.getName());
 		assertTrue(testSend instanceof MessageOccurrenceSpecification);
 		assertEquals("test_sender", testSend.getName());
@@ -2246,7 +2481,7 @@ public class SequenceServiceTests extends TestCase {
 		assertNotNull(((MessageOccurrenceSpecification)testReceive).getCovered(consumers.getName()));
 
 		// Execution test
-		Behavior testBehavior = interaction.getOwnedBehaviors().get(1);
+		final Behavior testBehavior = interaction.getOwnedBehaviors().get(1);
 		assertEquals("Opaque behavior does not exist", "test", testBehavior.getName());
 		assertTrue(testReceive instanceof MessageOccurrenceSpecification);
 		assertEquals("test_receiver", testReceive.getName());
@@ -2260,7 +2495,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(testBehavior, ((BehaviorExecutionSpecification)test).getBehavior());
 
 		// Message test_reply
-		Message testReplyMessage = interaction.getMessages().get(2);
+		final Message testReplyMessage = interaction.getMessages().get(2);
 		assertEquals("Message does not exist", "test_reply", testReplyMessage.getName());
 		assertTrue(testReplySend instanceof MessageOccurrenceSpecification);
 		assertEquals("test_reply_sender", testReplySend.getName());
@@ -2272,7 +2507,7 @@ public class SequenceServiceTests extends TestCase {
 		assertNotNull(((MessageOccurrenceSpecification)testReplyReceive).getCovered(producers.getName()));
 
 		// Message Message_3
-		Message msg3 = interaction.getMessages().get(3);
+		final Message msg3 = interaction.getMessages().get(3);
 		assertEquals("Message does not exist", "Message_3", msg3.getName());
 		assertTrue(msg3Send instanceof MessageOccurrenceSpecification);
 		assertEquals("Message_3_sender", msg3Send.getName());
@@ -2284,7 +2519,7 @@ public class SequenceServiceTests extends TestCase {
 		assertNotNull(((MessageOccurrenceSpecification)msg3Receive).getCovered(consumers.getName()));
 
 		// Message Message_3_reply
-		Message msg3Reply = interaction.getMessages().get(4);
+		final Message msg3Reply = interaction.getMessages().get(4);
 		assertEquals("Message does not exist", "Message_3_reply", msg3Reply.getName());
 		assertTrue(msg3ReplySend instanceof MessageOccurrenceSpecification);
 		assertEquals("Message_3_reply_sender", msg3ReplySend.getName());
@@ -2296,7 +2531,7 @@ public class SequenceServiceTests extends TestCase {
 		assertNotNull(((MessageOccurrenceSpecification)msg3ReplyReceive).getCovered(producers.getName()));
 
 		// Message Message_7
-		Message msg7 = interaction.getMessages().get(7);
+		final Message msg7 = interaction.getMessages().get(7);
 		assertEquals("Message does not exist", "Message_7", msg7.getName());
 		assertTrue(msg7Send instanceof MessageOccurrenceSpecification);
 		assertEquals("Message_7_sender", msg7Send.getName());
@@ -2308,7 +2543,7 @@ public class SequenceServiceTests extends TestCase {
 		assertNotNull(((MessageOccurrenceSpecification)msg7Receive).getCovered(consumers.getName()));
 
 		// Message Operation_2
-		Message op2Message = interaction.getMessages().get(8);
+		final Message op2Message = interaction.getMessages().get(8);
 		assertEquals("Message does not exist", "Operation_2", op2Message.getName());
 		assertTrue(op2Send instanceof MessageOccurrenceSpecification);
 		assertEquals("Operation_2_sender", op2Send.getName());
@@ -2320,7 +2555,7 @@ public class SequenceServiceTests extends TestCase {
 		assertNotNull(((MessageOccurrenceSpecification)op2Receive).getCovered(consumers.getName()));
 
 		// Execution Operation_2
-		Behavior op2Behavior = interaction.getOwnedBehaviors().get(3);
+		final Behavior op2Behavior = interaction.getOwnedBehaviors().get(3);
 		assertEquals("Opaque behavior does not exist", "Operation_2", op2Behavior.getName());
 		assertTrue(op2Receive instanceof MessageOccurrenceSpecification);
 		assertEquals("Operation_2_receiver", op2Receive.getName());
@@ -2334,7 +2569,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(op2Behavior, ((BehaviorExecutionSpecification)op2).getBehavior());
 
 		// Message Operation_1
-		Message op1Message = interaction.getMessages().get(5);
+		final Message op1Message = interaction.getMessages().get(5);
 		assertEquals("Message does not exist", "Operation_1", op1Message.getName());
 		assertTrue(op1Send instanceof MessageOccurrenceSpecification);
 		assertEquals("Operation_1_sender", op1Send.getName());
@@ -2346,7 +2581,7 @@ public class SequenceServiceTests extends TestCase {
 		assertNotNull(((MessageOccurrenceSpecification)op1Receive).getCovered(consumers.getName()));
 
 		// Execution Operation_1
-		Behavior op1Behavior = interaction.getOwnedBehaviors().get(2);
+		final Behavior op1Behavior = interaction.getOwnedBehaviors().get(2);
 		assertEquals("Opaque behavior does not exist", "Operation_1", op1Behavior.getName());
 		assertTrue(op1Receive instanceof MessageOccurrenceSpecification);
 		assertEquals("Operation_1_receiver", op1Receive.getName());
@@ -2360,7 +2595,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(op1Behavior, ((BehaviorExecutionSpecification)op1).getBehavior());
 
 		// Message Operation_1_reply
-		Message op1ReplyMessage = interaction.getMessages().get(6);
+		final Message op1ReplyMessage = interaction.getMessages().get(6);
 		assertEquals("Message does not exist", "Operation_1_reply", op1ReplyMessage.getName());
 		assertTrue(op1ReplySend instanceof MessageOccurrenceSpecification);
 		assertEquals("Operation_1_reply_sender", op1ReplySend.getName());
@@ -2370,7 +2605,81 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(op1ReplyMessage.getReceiveEvent(), op1ReplyReceive);
 		assertNotNull(((MessageOccurrenceSpecification)op1ReplySend).getCovered(consumers.getName()));
 		assertNotNull(((MessageOccurrenceSpecification)op1ReplyReceive).getCovered(producers.getName()));
+	}
 
+	/**
+	 * Test {@link SequenceServices#reorder(Message, InteractionFragment, InteractionFragment) reorder}
+	 * service. Reorder a message and an execution. Move the message from the lifeline to the execution.
+	 * 
+	 * @throws Exception
+	 *             in case of error
+	 */
+	public void testReorderMessageAndExecution3() throws Exception {
+		// Interaction Scenario_17
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_17");
+		final Lifeline producers = interaction.getLifeline("producers");
+		final Lifeline consumers = interaction.getLifeline("consumers");
+
+		// Execution to move get
+		final ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("get");
+		// StartingEndPredecessorAfter not exists
+		final ExecutionOccurrenceSpecification startingEndPredecessorAfter = null;
+		// FinishingEndPredecessorAfter get_receiver message occurrence
+		final MessageOccurrenceSpecification finishingEndPredecessorAfter = (MessageOccurrenceSpecification)interaction
+				.getFragment("get_receiver");
+
+		sequenceServices.reorder(execution, startingEndPredecessorAfter, finishingEndPredecessorAfter);
+
+		final List<InteractionFragment> fragments = interaction.getFragments();
+		assertEquals(7, fragments.size());
+
+		final InteractionFragment getSend = fragments.get(0);
+		final InteractionFragment getReceive = fragments.get(1);
+		final InteractionFragment get = fragments.get(2);
+		final InteractionFragment getFinish = fragments.get(3);
+		final InteractionFragment computeStart = fragments.get(4);
+		final InteractionFragment compute = fragments.get(5);
+		final InteractionFragment computeFinish = fragments.get(6);
+
+		// Message get
+		final Message getMessage = interaction.getMessages().get(0);
+		assertEquals("Message does not exist", "get", getMessage.getName());
+		assertTrue(getSend instanceof MessageOccurrenceSpecification);
+		assertEquals("get_sender", getSend.getName());
+		assertTrue(getReceive instanceof MessageOccurrenceSpecification);
+		assertEquals("get_receiver", getReceive.getName());
+		assertEquals(getMessage.getSendEvent(), getSend);
+		assertEquals(getMessage.getReceiveEvent(), getReceive);
+		assertNotNull(((MessageOccurrenceSpecification)getSend).getCovered(consumers.getName()));
+		assertNotNull(((MessageOccurrenceSpecification)getReceive).getCovered(producers.getName()));
+
+		// Execution get
+		final Behavior getBehavior = interaction.getOwnedBehaviors().get(1);
+		assertEquals("Opaque behavior does not exist", "get", getBehavior.getName());
+		assertTrue(getReceive instanceof MessageOccurrenceSpecification);
+		assertEquals("get_receiver", getReceive.getName());
+		assertTrue(getFinish instanceof ExecutionOccurrenceSpecification);
+		assertEquals("get_finish", getFinish.getName());
+		assertTrue(get instanceof BehaviorExecutionSpecification);
+		assertEquals("get", get.getName());
+		assertEquals(((BehaviorExecutionSpecification)get).getStart(), getReceive);
+		assertEquals(((BehaviorExecutionSpecification)get).getFinish(), getFinish);
+		assertNotNull(((BehaviorExecutionSpecification)get).getCovered(producers.getName()));
+		assertEquals(getBehavior, ((BehaviorExecutionSpecification)get).getBehavior());
+
+		// Execution compute
+		final Behavior computeBehavior = interaction.getOwnedBehaviors().get(0);
+		assertEquals("Opaque behavior does not exist", "compute", computeBehavior.getName());
+		assertTrue(computeStart instanceof ExecutionOccurrenceSpecification);
+		assertEquals("compute_start", computeStart.getName());
+		assertTrue(computeFinish instanceof ExecutionOccurrenceSpecification);
+		assertEquals("compute_finish", computeFinish.getName());
+		assertTrue(compute instanceof BehaviorExecutionSpecification);
+		assertEquals("compute", compute.getName());
+		assertEquals(((BehaviorExecutionSpecification)compute).getStart(), computeStart);
+		assertEquals(((BehaviorExecutionSpecification)compute).getFinish(), computeFinish);
+		assertNotNull(((BehaviorExecutionSpecification)compute).getCovered(consumers.getName()));
+		assertEquals(computeBehavior, ((BehaviorExecutionSpecification)compute).getBehavior());
 	}
 
 	/**
@@ -2384,30 +2693,31 @@ public class SequenceServiceTests extends TestCase {
 	 */
 	public void testCreateAsynchronousMessageToExecution() throws Exception {
 		// Interaction Scenario_3
-		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_3");
-		Lifeline producers = interaction.getLifeline("producers");
-		Lifeline consumers = interaction.getLifeline("consumers");
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_3");
+		final Lifeline producers = interaction.getLifeline("producers");
+		final Lifeline consumers = interaction.getLifeline("consumers");
 
 		// SourceFragment producers lifeline
 		// TargetFragment compute behavior
-		ExecutionSpecification targetExecution = (ExecutionSpecification)interaction.getFragment("compute");
+		final ExecutionSpecification targetExecution = (ExecutionSpecification)interaction
+				.getFragment("compute");
 		// Operation null
 		// StartingElementPredecessor compute_start execution occurrence
 		// FinishingElementPredecessor compute_start execution occurrence
 		sequenceServices.createAsynchronousMessage(interaction, producers, targetExecution,
 				targetExecution.getStart(), targetExecution.getStart());
 
-		List<InteractionFragment> fragments = interaction.getFragments();
+		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(5, fragments.size());
 
-		InteractionFragment computeStart = fragments.get(0);
-		InteractionFragment compute = fragments.get(1);
-		InteractionFragment msg0Send = fragments.get(2);
-		InteractionFragment msg0Receive = fragments.get(3);
-		InteractionFragment computeFinish = fragments.get(4);
+		final InteractionFragment computeStart = fragments.get(0);
+		final InteractionFragment compute = fragments.get(1);
+		final InteractionFragment msg0Send = fragments.get(2);
+		final InteractionFragment msg0Receive = fragments.get(3);
+		final InteractionFragment computeFinish = fragments.get(4);
 
 		// Message Message_0
-		Message msg0 = interaction.getMessages().get(0);
+		final Message msg0 = interaction.getMessages().get(0);
 		assertEquals("Message does not exist", "Message_0", msg0.getName());
 		assertTrue(msg0Send instanceof MessageOccurrenceSpecification);
 		assertEquals("Message_0_sender", msg0Send.getName());
@@ -2419,7 +2729,7 @@ public class SequenceServiceTests extends TestCase {
 		assertNotNull(((MessageOccurrenceSpecification)msg0Receive).getCovered(consumers.getName()));
 
 		// Execution compute
-		Behavior computeBehavior = interaction.getOwnedBehaviors().get(0);
+		final Behavior computeBehavior = interaction.getOwnedBehaviors().get(0);
 		assertEquals("Opaque behavior does not exist", "compute", computeBehavior.getName());
 		assertTrue(computeStart instanceof ExecutionOccurrenceSpecification);
 		assertEquals("compute_start", computeStart.getName());
@@ -2444,32 +2754,33 @@ public class SequenceServiceTests extends TestCase {
 	 */
 	public void testCreateSynchronousMessageToExecution() throws Exception {
 		// Interaction Scenario_3
-		Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_3");
-		Lifeline producers = interaction.getLifeline("producers");
-		Lifeline consumers = interaction.getLifeline("consumers");
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_3");
+		final Lifeline producers = interaction.getLifeline("producers");
+		final Lifeline consumers = interaction.getLifeline("consumers");
 
 		// SourceFragment producers lifeline
 		// TargetFragment compute behavior
-		ExecutionSpecification targetExecution = (ExecutionSpecification)interaction.getFragment("compute");
+		final ExecutionSpecification targetExecution = (ExecutionSpecification)interaction
+				.getFragment("compute");
 		// Operation null
 		// StartingElementPredecessor compute_start execution occurrence
 		// FinishingElementPredecessor compute_start execution occurrence
 		sequenceServices.createSynchronousMessage(interaction, producers, targetExecution,
 				targetExecution.getStart(), targetExecution.getStart());
 
-		List<InteractionFragment> fragments = interaction.getFragments();
+		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(7, fragments.size());
 
-		InteractionFragment computeStart = fragments.get(0);
-		InteractionFragment compute = fragments.get(1);
-		InteractionFragment msg0Send = fragments.get(2);
-		InteractionFragment msg0Receive = fragments.get(3);
-		InteractionFragment msg0ReplySend = fragments.get(4);
-		InteractionFragment msg0ReplyReceive = fragments.get(5);
-		InteractionFragment computeFinish = fragments.get(6);
+		final InteractionFragment computeStart = fragments.get(0);
+		final InteractionFragment compute = fragments.get(1);
+		final InteractionFragment msg0Send = fragments.get(2);
+		final InteractionFragment msg0Receive = fragments.get(3);
+		final InteractionFragment msg0ReplySend = fragments.get(4);
+		final InteractionFragment msg0ReplyReceive = fragments.get(5);
+		final InteractionFragment computeFinish = fragments.get(6);
 
 		// Message Message_0
-		Message msg0 = interaction.getMessages().get(0);
+		final Message msg0 = interaction.getMessages().get(0);
 		assertEquals("Message does not exist", "Message_0", msg0.getName());
 		assertTrue(msg0Send instanceof MessageOccurrenceSpecification);
 		assertEquals("Message_0_sender", msg0Send.getName());
@@ -2481,7 +2792,7 @@ public class SequenceServiceTests extends TestCase {
 		assertNotNull(((MessageOccurrenceSpecification)msg0Receive).getCovered(consumers.getName()));
 
 		// Execution compute
-		Behavior computeBehavior = interaction.getOwnedBehaviors().get(0);
+		final Behavior computeBehavior = interaction.getOwnedBehaviors().get(0);
 		assertEquals("Opaque behavior does not exist", "compute", computeBehavior.getName());
 		assertTrue(computeStart instanceof ExecutionOccurrenceSpecification);
 		assertEquals("compute_start", computeStart.getName());
@@ -2495,7 +2806,7 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(computeBehavior, ((BehaviorExecutionSpecification)compute).getBehavior());
 
 		// Message Message_0_reply
-		Message msg0ReplyMessage = interaction.getMessages().get(1);
+		final Message msg0ReplyMessage = interaction.getMessages().get(1);
 		assertEquals("Message does not exist", "Message_0_reply", msg0ReplyMessage.getName());
 		assertTrue(msg0ReplySend instanceof MessageOccurrenceSpecification);
 		assertEquals("Message_0_reply_sender", msg0ReplySend.getName());

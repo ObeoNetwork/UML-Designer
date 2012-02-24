@@ -19,12 +19,18 @@ import org.eclipse.uml2.uml.Package;
 /**
  * Utility services to manage name creation on sequence diagrams.
  * 
- * @author Mélanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+ * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public final class NamedElementServices {
 
+	/**
+	 * Scenario element name prefix.
+	 */
 	private static final String SCENARIO_PREFIX = "Scenario_";
 
+	/**
+	 * Operation element name prefix.
+	 */
 	private static final String OPERATION_PREFIX = "Operation_";
 
 	/**
@@ -38,9 +44,10 @@ public final class NamedElementServices {
 	 * 
 	 * @param pkg
 	 *            the container {@link Package} object.
+	 * @return Name for new interaction.
 	 */
 	public static String getNewInteractionName(EObject pkg) {
-		StringBuffer name = new StringBuffer(SCENARIO_PREFIX);
+		final StringBuffer name = new StringBuffer(SCENARIO_PREFIX);
 		name.append(getNumberOfElements(((Package)pkg).getPackagedElements(), SCENARIO_PREFIX));
 		return name.toString();
 	}
@@ -50,20 +57,30 @@ public final class NamedElementServices {
 	 * 
 	 * @param type
 	 *            the container {@link org.eclipse.uml2.uml.Class} object.
+	 * @return New operation name
 	 */
 	public static String getNewOperationName(org.eclipse.uml2.uml.Class type) {
-		StringBuffer name = new StringBuffer(OPERATION_PREFIX);
+		final StringBuffer name = new StringBuffer(OPERATION_PREFIX);
 		name.append(getNumberOfElements(type.getOperations(), OPERATION_PREFIX));
 		return name.toString();
 	}
 
+	/**
+	 * Search the index of the last created element.
+	 * 
+	 * @param elements
+	 *            List of elements.
+	 * @param prefix
+	 *            Prefix defining the index
+	 * @return The index to use for a new element
+	 */
 	@SuppressWarnings("rawtypes")
 	private static int getNumberOfElements(List elements, String prefix) {
 		int lastUsedIndex = -1;
 		for (Object element : elements) {
-			String name = ((NamedElement)element).getName();
+			final String name = ((NamedElement)element).getName();
 			if (name != null && name.startsWith(prefix)) {
-				int index = Integer.valueOf(name.substring(name.lastIndexOf("_") + 1));
+				final int index = Integer.valueOf(name.substring(name.lastIndexOf("_") + 1));
 				if (index > lastUsedIndex)
 					lastUsedIndex = index;
 			}

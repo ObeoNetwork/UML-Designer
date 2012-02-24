@@ -28,7 +28,7 @@ import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
 /**
  * Utility services to manage object diagrams.
  * 
- * @author Mélanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+ * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class ObjectServices {
 	/**
@@ -43,7 +43,7 @@ public class ObjectServices {
 	 */
 	public void createSlot(InstanceSpecification source, InstanceSpecification target, Property property) {
 		// Create new slot
-		Slot slot = UMLFactory.eINSTANCE.createSlot();
+		final Slot slot = UMLFactory.eINSTANCE.createSlot();
 		slot.setDefiningFeature(property);
 		source.getSlots().add(slot);
 
@@ -61,13 +61,13 @@ public class ObjectServices {
 	 */
 	public void createSlot(InstanceSpecification source, Property property) {
 		// Create new slot
-		Slot slot = UMLFactory.eINSTANCE.createSlot();
+		final Slot slot = UMLFactory.eINSTANCE.createSlot();
 		slot.setDefiningFeature(property);
 		source.getSlots().add(slot);
 
 		// Set value
 		if (((PrimitiveType)property.getType()) instanceof PrimitiveType) {
-			String typeName = ((PrimitiveType)property.getType()).getName();
+			final String typeName = ((PrimitiveType)property.getType()).getName();
 			ValueSpecification value = null;
 			if ("Integer".equals(typeName)) {
 				value = UMLFactory.eINSTANCE.createLiteralInteger();
@@ -92,7 +92,7 @@ public class ObjectServices {
 	 */
 	private void createInstanceValue(InstanceSpecification instance, Slot slot) {
 		// Set instance value
-		InstanceValue value = UMLFactory.eINSTANCE.createInstanceValue();
+		final InstanceValue value = UMLFactory.eINSTANCE.createInstanceValue();
 		value.setInstance(instance);
 		slot.getValues().add(value);
 	}
@@ -107,7 +107,7 @@ public class ObjectServices {
 	 */
 	public void createInstance(org.eclipse.uml2.uml.Package pkg, org.eclipse.uml2.uml.Class cl) {
 		// Create instance specification
-		InstanceSpecification instance = UMLFactory.eINSTANCE.createInstanceSpecification();
+		final InstanceSpecification instance = UMLFactory.eINSTANCE.createInstanceSpecification();
 		instance.setName("new" + cl.getName());
 		instance.getClassifiers().add(cl);
 		pkg.getPackagedElements().add(instance);
@@ -136,10 +136,10 @@ public class ObjectServices {
 	private void refresh(org.eclipse.uml2.uml.Package pkg) {
 		// Refresh current representation
 		// Get session
-		Session session = SessionManager.INSTANCE.getSession(pkg);
+		final Session session = SessionManager.INSTANCE.getSession(pkg);
 		// Get representation
-		DRepresentation diagram = (DRepresentation)DialectManager.INSTANCE.getRepresentations(pkg, session)
-				.toArray()[0];
+		final DRepresentation diagram = (DRepresentation)DialectManager.INSTANCE.getRepresentations(pkg,
+				session).toArray()[0];
 		// Refresh current sequence diagram
 		DialectManager.INSTANCE.refresh(diagram, new NullProgressMonitor());
 	}
