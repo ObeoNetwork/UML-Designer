@@ -20,20 +20,13 @@ import org.obeonetwork.dsl.uml2.design.services.internal.NamedElementServices;
  */
 public final class OperationServices {
 	/**
-	 * Utility class.
-	 */
-	private OperationServices() {
-		// Nothing todo
-	}
-
-	/**
 	 * Create an operation in a class.
 	 * 
 	 * @param type
 	 *            the container {@link OperationServices.eclipse.uml2.uml.Class} element
 	 * @return New operation
 	 */
-	public static Operation createOperation(org.eclipse.uml2.uml.Class type) {
+	public Operation createOperation(org.eclipse.uml2.uml.Class type) {
 		// Create new operation
 		final String name = NamedElementServices.getNewOperationName(type);
 		final Operation operation = type.createOwnedOperation(name, null, null, null);
