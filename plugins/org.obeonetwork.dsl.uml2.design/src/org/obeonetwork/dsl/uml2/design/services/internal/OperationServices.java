@@ -29,7 +29,7 @@ import org.obeonetwork.dsl.uml2.design.services.EcoreServices;
  * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
  */
 public final class OperationServices {
-	
+
 	/**
 	 * Hidden constructor.
 	 */
@@ -39,8 +39,10 @@ public final class OperationServices {
 	/**
 	 * Parse the edited label content and update the underlying {@link Operation}.
 	 * 
-	 * @param operation the context {@link Operation} object.
-	 * @param inputLabel the user edited label content.
+	 * @param operation
+	 *            the context {@link Operation} object.
+	 * @param inputLabel
+	 *            the user edited label content.
 	 */
 	public static void parseInputLabel(Operation operation, String inputLabel) {
 		// The discriminating parts in the label are :
@@ -96,8 +98,10 @@ public final class OperationServices {
 	/**
 	 * Parse the edited label content for parameters part and update the underlying {@link Operation}.
 	 * 
-	 * @param operation the context {@link Operation} object.
-	 * @param parametersInfo the user edited label content for paramters.
+	 * @param operation
+	 *            the context {@link Operation} object.
+	 * @param parametersInfo
+	 *            the user edited label content for paramters.
 	 */
 	private static void handleParameters(Operation operation, String parametersInfo) {
 		// Regexp used to extract name and type from a string as "name : type" or "name" or ":type"
@@ -131,8 +135,10 @@ public final class OperationServices {
 	/**
 	 * Update the given {@link Operation} with the given parameter descriptions.
 	 * 
-	 * @param operation the context {@link Operation} to update.
-	 * @param paramsToBeCreated the parsed parameter informations.
+	 * @param operation
+	 *            the context {@link Operation} to update.
+	 * @param paramsToBeCreated
+	 *            the parsed parameter informations.
 	 */
 	private static void handleParameters(Operation operation, List<NameAndType> paramsToBeCreated) {
 		// Keep only the non-return params and detach them from the operation (only temporarily for some of
@@ -160,7 +166,8 @@ public final class OperationServices {
 			for (int j = 0; j < existingNonReturnParams.size(); j++) {
 				final Parameter existingParam = existingNonReturnParams.get(j);
 				final String oldName = existingParam.getName();
-				if ((newName == null && oldName == null) || newName.equalsIgnoreCase(oldName)) {
+				if ((newName == null && oldName == null)
+						|| (newName != null && newName.equalsIgnoreCase(oldName))) {
 					tabParameters[i] = existingNonReturnParams.remove(j);
 					updateType(tabParameters[i], paramInfo.getType());
 					tabMarkers[i] = true;
@@ -199,9 +206,11 @@ public final class OperationServices {
 
 	/**
 	 * Update the parameter with the given type.
-	 *  
-	 * @param param the parameter to update.
-	 * @param type the type to set.
+	 * 
+	 * @param param
+	 *            the parameter to update.
+	 * @param type
+	 *            the type to set.
 	 */
 	private static void updateType(Parameter param, Type type) {
 		if (type == null) {
@@ -216,8 +225,10 @@ public final class OperationServices {
 	/**
 	 * Create a new input {@link Parameter}.
 	 * 
-	 * @param name the parameter name.
-	 * @param type the parameter type.
+	 * @param name
+	 *            the parameter name.
+	 * @param type
+	 *            the parameter type.
 	 * @return the new {@link Parameter}.
 	 */
 	private static Parameter createInputParameter(String name, Type type) {
@@ -231,8 +242,10 @@ public final class OperationServices {
 	/**
 	 * Update the return type of the given {@link Operation}.
 	 * 
-	 * @param operation the context {@link Operation} to update.
-	 * @param returnTypeName the name of {@link Operation}'s return type.
+	 * @param operation
+	 *            the context {@link Operation} to update.
+	 * @param returnTypeName
+	 *            the name of {@link Operation}'s return type.
 	 */
 	private static void handleReturnType(Operation operation, String returnTypeName) {
 		// Search the type and sets it on the property if found
