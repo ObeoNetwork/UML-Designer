@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehaviorExecutionSpecification;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Dependency;
@@ -901,10 +902,14 @@ public class SequenceServices {
 	 *            Lifeline to delete
 	 */
 	public void delete(Lifeline lifeline) {
+		if (lifeline == null)
+			return;
 		// Delete dependency
-		if (lifeline.getClientDependencies() != null && lifeline.getClientDependencies().size() > 0) {
-			final Dependency dependency = lifeline.getClientDependencies().get(0);
-			dependency.destroy();
+		final EList<Dependency> dependencies = lifeline.getClientDependencies();
+		if (dependencies != null && dependencies.size() > 0) {
+			final Dependency dependency = dependencies.get(0);
+			if (dependency != null)
+				dependency.destroy();
 		}
 
 		// Delete lifeline
@@ -918,22 +923,34 @@ public class SequenceServices {
 	 *            Execution to delete
 	 */
 	public void delete(BehaviorExecutionSpecification execution) {
+		if (execution == null)
+			return;
+
 		// Get fragments
 		final Interaction interaction = (Interaction)execution.eContainer();
 
 		// Delete opaque behavior
-		interaction.getOwnedBehaviors().remove(execution.getBehavior());
+		final Behavior behavior = execution.getBehavior();
+		if (behavior != null)
+			interaction.getOwnedBehaviors().remove(behavior);
+
 		// Delete start and finish behavior
 		final List<InteractionFragment> fragments = interaction.getFragments();
-		if (execution.getStart() instanceof ExecutionOccurrenceSpecification) {
+		final OccurrenceSpecification start = execution.getStart();
+		if (start instanceof ExecutionOccurrenceSpecification) {
 			// Delete event
-			execution.getStart().getEvent().destroy();
-			fragments.remove(execution.getStart());
+			final Event event = start.getEvent();
+			if (event != null)
+				event.destroy();
+			fragments.remove(start);
 		}
-		if (execution.getFinish() instanceof ExecutionOccurrenceSpecification) {
+		final OccurrenceSpecification finish = execution.getFinish();
+		if (finish instanceof ExecutionOccurrenceSpecification) {
 			// Delete event
-			execution.getFinish().getEvent().destroy();
-			fragments.remove(execution.getFinish());
+			final Event event = finish.getEvent();
+			if (event != null)
+				event.destroy();
+			fragments.remove(finish);
 		}
 		// Delete execution
 		fragments.remove(execution);
@@ -946,6 +963,9 @@ public class SequenceServices {
 	 *            Message to delete
 	 */
 	public void delete(Message message) {
+		if (message == null)
+			return;
+
 		// Get fragments
 		final Interaction interaction = (Interaction)message.eContainer();
 		final List<InteractionFragment> fragments = interaction.getFragments();
@@ -954,34 +974,46 @@ public class SequenceServices {
 		// execution
 		final MessageOccurrenceSpecification receiveMessage = (MessageOccurrenceSpecification)message
 				.getReceiveEvent();
-		// If message is a synchronous message delete also the reply message
-		if (MessageSort.SYNCH_CALL_LITERAL.equals(message.getMessageSort())) {
-			delete(getReplyMessage(message));
-		}
+		if (receiveMessage != null) {
+			// If message is a synchronous message delete also the reply message
+			if (MessageSort.SYNCH_CALL_LITERAL.equals(message.getMessageSort())) {
+				final Message reply = getReplyMessage(message);
+				if (reply != null)
+					delete(reply);
+			}
 
-		if (getExecution(receiveMessage) != null)
-			delete(getExecution(receiveMessage));
-		final Event receiveEvent = receiveMessage.getEvent();
-		// Delete signal
-		if (receiveEvent instanceof ReceiveSignalEvent
-				&& ((ReceiveSignalEvent)receiveEvent).getSignal() != null) {
-			((ReceiveSignalEvent)receiveEvent).getSignal().destroy();
+			final BehaviorExecutionSpecification execution = getExecution(receiveMessage);
+			if (execution != null) {
+				delete(execution);
+			}
+			final Event receiveEvent = receiveMessage.getEvent();
+			if (receiveEvent instanceof ReceiveSignalEvent) {
+				// Delete signal
+				final Signal signal = ((ReceiveSignalEvent)receiveEvent).getSignal();
+				if (receiveEvent instanceof ReceiveSignalEvent && signal != null) {
+					signal.destroy();
+				}
+				receiveEvent.destroy();
+			}
+			fragments.remove(receiveMessage);
 		}
-		receiveEvent.destroy();
-		fragments.remove(receiveMessage);
-
 		final MessageOccurrenceSpecification sendMessage = (MessageOccurrenceSpecification)message
 				.getSendEvent();
-		if (getExecution(sendMessage) != null)
-			delete(getExecution(sendMessage));
-		final Event sendEvent = sendMessage.getEvent();
-		// Delete signal
-		if (sendEvent instanceof SendSignalEvent && ((SendSignalEvent)sendEvent).getSignal() != null) {
-			((SendSignalEvent)sendEvent).getSignal().destroy();
+		if (sendMessage != null) {
+			final BehaviorExecutionSpecification execution = getExecution(sendMessage);
+			if (execution != null)
+				delete(execution);
+			final Event sendEvent = sendMessage.getEvent();
+			// Delete signal
+			if (sendEvent instanceof SendSignalEvent) {
+				final Signal signal = ((SendSignalEvent)sendEvent).getSignal();
+				if (sendEvent instanceof SendSignalEvent && signal != null) {
+					signal.destroy();
+				}
+				sendEvent.destroy();
+			}
+			fragments.remove(message.getSendEvent());
 		}
-		sendEvent.destroy();
-		fragments.remove(message.getSendEvent());
-
 		// Delete message
 		interaction.getMessages().remove(message);
 	}
