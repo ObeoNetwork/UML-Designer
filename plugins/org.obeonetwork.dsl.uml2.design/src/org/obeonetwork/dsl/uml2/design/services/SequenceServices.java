@@ -27,7 +27,6 @@ import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehaviorExecutionSpecification;
-import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Event;
@@ -53,6 +52,7 @@ import org.eclipse.uml2.uml.ReceiveSignalEvent;
 import org.eclipse.uml2.uml.SendOperationEvent;
 import org.eclipse.uml2.uml.SendSignalEvent;
 import org.eclipse.uml2.uml.Signal;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.obeonetwork.dsl.uml2.design.services.internal.NamedElementServices;
 
@@ -1301,7 +1301,7 @@ public class SequenceServices {
 	 */
 	public void createOperation(Lifeline lifeline, NamedElement startingEndPredecessor) {
 		// Get associated class
-		final org.eclipse.uml2.uml.Class type = getType(lifeline);
+		final org.eclipse.uml2.uml.Type type = getType(lifeline);
 		final Operation operation = operationService.createOperation(type);
 
 		// Create execution
@@ -1319,7 +1319,7 @@ public class SequenceServices {
 	 */
 	public void createOperation(ExecutionSpecification execution, NamedElement startingEndPredecessor) {
 		// Get associated class
-		final org.eclipse.uml2.uml.Class type = getType(execution.getCovereds().get(0));
+		final org.eclipse.uml2.uml.Type type = getType(execution.getCovereds().get(0));
 		final Operation operation = operationService.createOperation(type);
 		// Create execution
 		createExecution(execution.getEnclosingInteraction(), execution, operation, startingEndPredecessor);
@@ -1341,7 +1341,7 @@ public class SequenceServices {
 	public void createOperationAndAsynchMessage(NamedElement target, NamedElement source,
 			NamedElement startingEndPredecessor, NamedElement finishingEndPredecessor) {
 		// Get associated class and interaction
-		org.eclipse.uml2.uml.Class type;
+		org.eclipse.uml2.uml.Type type;
 		Interaction interaction;
 		if (target instanceof Lifeline) {
 			type = getType((Lifeline)target);
@@ -1372,7 +1372,7 @@ public class SequenceServices {
 	public void createOperationAndSynchMessage(NamedElement target, NamedElement source,
 			NamedElement startingEndPredecessor, NamedElement finishingEndPredecessor) {
 		// Get associated class and interaction
-		org.eclipse.uml2.uml.Class type;
+		org.eclipse.uml2.uml.Type type;
 		Interaction interaction;
 		if (target instanceof Lifeline) {
 			type = getType((Lifeline)target);
@@ -1388,18 +1388,18 @@ public class SequenceServices {
 	}
 
 	/**
-	 * Get class associated to a lifeline.
+	 * Get type associated to a lifeline.
 	 * 
 	 * @param target
 	 *            Lifeline
-	 * @return Class
+	 * @return Type
 	 */
-	private Class getType(Lifeline target) {
+	private Type getType(Lifeline target) {
 		if (target.getClientDependencies() != null && !target.getClientDependencies().isEmpty()) {
-			return (org.eclipse.uml2.uml.Class)((InstanceSpecification)target.getClientDependencies().get(0)
-					.getSuppliers().get(0)).getClassifiers().get(0);
+			return ((InstanceSpecification)target.getClientDependencies().get(0).getSuppliers().get(0))
+					.getClassifiers().get(0);
 		}
-		return (Class)target.getRepresents().getType();
+		return target.getRepresents().getType();
 	}
 
 	/**
