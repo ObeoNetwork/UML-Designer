@@ -13,7 +13,11 @@ package org.obeonetwork.dsl.uml2.design.services.internal;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Component;
+import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Package;
 
 /**
@@ -56,12 +60,20 @@ public final class NamedElementServices {
 	 * Parse the edited class to find the name of the new operation.
 	 * 
 	 * @param type
-	 *            the container {@link org.eclipse.uml2.uml.Class} object.
+	 *            the container {@link org.eclipse.uml2.uml.Type} object.
 	 * @return New operation name
 	 */
-	public static String getNewOperationName(org.eclipse.uml2.uml.Class type) {
+	public static String getNewOperationName(org.eclipse.uml2.uml.Type type) {
 		final StringBuffer name = new StringBuffer(OPERATION_PREFIX);
-		name.append(getNumberOfElements(type.getOperations(), OPERATION_PREFIX));
+		List<Operation> operations = null;
+		if (type instanceof Class)
+			operations = ((Class)type).getOperations();
+		else if (type instanceof Interface)
+			operations = ((Interface)type).getOperations();
+		else if (type instanceof Component)
+			operations = ((Component)type).getOperations();
+		if (operations != null)
+			name.append(getNumberOfElements(operations, OPERATION_PREFIX));
 		return name.toString();
 	}
 
