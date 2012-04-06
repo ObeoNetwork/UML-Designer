@@ -11,6 +11,7 @@
 package org.obeonetwork.dsl.uml2.design.services;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
@@ -35,6 +36,8 @@ import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
+import org.eclipse.uml2.uml.Type;
+import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 import org.eclipse.uml2.uml.resource.UMLResource;
@@ -469,5 +472,69 @@ public class UMLServices {
 				return false;
 		}
 		return true;
+	}
+
+	/**
+	 * @param container
+	 *            the current container.
+	 * @return a list of association which might be considered as "broken", we are not able to display them as
+	 *         edges.
+	 */
+	public Collection<Association> getBrokenAssociations(EObject container) {
+		Collection<Association> result = new ArrayList<Association>();
+		for (EObject child : container.eContents()) {
+			if (child instanceof Association && isBroken((Association)child)) {
+				result.add((Association)child);
+			}
+		}
+		return result;
+
+	}
+
+	private boolean isBroken(Association child) {
+		Property target = getTarget(child);
+		Property source = getSource(child);
+		if (target != null && target.getType() != null) {
+			if (source != null && source.getType() != null)
+				return false;
+		}
+		return true;
+	}
+
+	public void fixAssociation(EObject host, EObject a, EObject b) {
+		if (a instanceof Association && b instanceof Type) {
+			fixAssociation((Association)a, (Type)b);
+		} else if (b instanceof Association && a instanceof Type) {
+			fixAssociation((Association)b, (Type)a);
+		}
+	}
+
+	private void fixAssociation(Association a, Type b) {
+		Property target = getTarget(a);
+		Property source = getSource(a);
+		String name = "";
+		Property newOne = UMLFactory.eINSTANCE.createProperty();
+		newOne.setName(name);
+		newOne.setUpper(-1);
+		newOne.setUpper(0);
+		newOne.setType(b);
+		if (a.getName() != null) {
+			name = a.getName().toLowerCase();
+		}
+		if (target == null) {
+			a.getOwnedEnds().add(newOne);
+		} else if (source == null) {
+			a.getOwnedEnds().add(newOne);
+		} else {
+			/*
+			 * we already have both property ends, we just need to set the type
+			 */
+			if (target.getType() == null) {
+				target.setType(b);
+			} else if (source.getType() == null) {
+				source.setType(b);
+			}
+		}
+
 	}
 }
