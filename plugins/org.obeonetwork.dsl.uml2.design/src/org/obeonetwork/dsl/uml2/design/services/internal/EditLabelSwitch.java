@@ -23,6 +23,7 @@ import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.DataStoreNode;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.ExecutionOccurrenceSpecification;
 import org.eclipse.uml2.uml.ExecutionSpecification;
 import org.eclipse.uml2.uml.InstanceSpecification;
@@ -322,6 +323,13 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 		return execution;
 	}
 
+	
+	@Override
+	public Element caseEnumerationLiteral(EnumerationLiteral object) {
+		object.setName(editedLabelContent);
+		return object;
+	}
+	
 	/**
 	 * {@inheritDoc}
 	 */
