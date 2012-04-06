@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: UML Designer Modeler
 Bundle-SymbolicName: org.obeonetwork.dsl.uml2.design;singleton:=true
-Bundle-Version: 1.1.0.qualifier
+Bundle-Version: 1.2.0.qualifier
 Bundle-Activator: org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin
 Require-Bundle: fr.obeo.acceleo.gen,
  org.eclipse.ui,
@@ -21,13 +21,13 @@ Require-Bundle: fr.obeo.acceleo.gen,
  fr.obeo.dsl.viewpoint.ui,
  fr.obeo.dsl.viewpoint.diagram.sequence,
  fr.obeo.dsl.viewpoint.diagram.sequence.ui,
- org.eclipse.uml2.uml.resources
+ org.eclipse.uml2.uml.resources,
+ org.eclipse.ui.navigator,
+ org.eclipse.core.expressions
 Bundle-ActivationPolicy: lazy
 Export-Package: org.obeonetwork.dsl.uml2.design,
  org.obeonetwork.dsl.uml2.design.services,
  org.obeonetwork.dsl.uml2.design.services.internal,
  org.obeonetwork.dsl.uml2.design.ui.extension,
- org.obeonetwork.dsl.uml2.design.ui.extension.actions,
- org.obeonetwork.dsl.uml2.design.ui.extension.providers,
  org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel
 Bundle-RequiredExecutionEnvironment: J2SE-1.5

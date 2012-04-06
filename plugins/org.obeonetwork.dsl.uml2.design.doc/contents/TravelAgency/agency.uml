@@ -243,7 +243,7 @@
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4VFdEMfsEeCBha8FS92Ybw"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_8ncqIMfsEeCBha8FS92Ybw" name="agencies[*] - reservations[*]" memberEnd="_8ndRMMfsEeCBha8FS92Ybw _8nfGYMfsEeCBha8FS92Ybw" navigableOwnedEnd="_8ndRMMfsEeCBha8FS92Ybw _8nfGYMfsEeCBha8FS92Ybw">
+  <packagedElement xmi:type="uml:Association" xmi:id="_8ncqIMfsEeCBha8FS92Ybw" name="agenciestoReservations" memberEnd="_8ndRMMfsEeCBha8FS92Ybw _8nfGYMfsEeCBha8FS92Ybw" navigableOwnedEnd="_8ndRMMfsEeCBha8FS92Ybw _8nfGYMfsEeCBha8FS92Ybw">
     <ownedEnd xmi:id="_8ndRMMfsEeCBha8FS92Ybw" name="reservations" type="_HHf20MTfEeC0wZa75TykZw" association="_8ncqIMfsEeCBha8FS92Ybw">
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_8nefUcfsEeCBha8FS92Ybw" value="*"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8nefUMfsEeCBha8FS92Ybw"/>

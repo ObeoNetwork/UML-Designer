@@ -328,17 +328,7 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	 */
 	@Override
 	public String caseAssociation(Association object) {
-		final Property source = UMLServices.getSource(object);
-		final Property target = UMLServices.getTarget(object);
-		if (source.isNavigable() && target.isNavigable()) {
-			return getAssociationEndLabel(target) + " - " + getAssociationEndLabel(source);
-		} else if (source.isNavigable()) {
-			return getAssociationEndLabel(source);
-		} else if (target.isNavigable()) {
-			return getAssociationEndLabel(target);
-		} else {
-			return object.getName();
-		}
+		return object.getName();
 	}
 
 	/**

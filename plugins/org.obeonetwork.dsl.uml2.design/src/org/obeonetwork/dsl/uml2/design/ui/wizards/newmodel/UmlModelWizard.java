@@ -28,7 +28,7 @@ import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
 
 /**
  * The wizard to create a new UML designer session.
- *
+ * 
  * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
  */
 public class UmlModelWizard extends Wizard implements INewWizard {
@@ -57,7 +57,7 @@ public class UmlModelWizard extends Wizard implements INewWizard {
 	 * Remember the workbench during initialization.
 	 */
 	protected IWorkbench workbench;
-	
+
 	/**
 	 * The semantic model creation file page.
 	 */
@@ -69,16 +69,11 @@ public class UmlModelWizard extends Wizard implements INewWizard {
 	private UmlModelWizardInitModelPage initModelPage;
 
 	/**
-	 * The session model creation file page. 
-	 */
-	private UmlModelWizardNewSessionFilePage newSessionFilePage;
-
-	/**
 	 * {@inheritDoc}
 	 */
 	@Override
 	public boolean performFinish() {
-		final IRunnableWithProgress op = new SessionCreationOperation(getModelFile(), getSessionModelFile(),
+		final IRunnableWithProgress op = new SessionCreationOperation(getModelFile(),
 				initModelPage.getInitialObjectName());
 		try {
 			getContainer().run(false, true, op);
@@ -109,22 +104,14 @@ public class UmlModelWizard extends Wizard implements INewWizard {
 				selection);
 		newModelFilePage.setTitle(Messages.UmlModelWizard_UI_NewModelFilePageTitle);
 		newModelFilePage.setDescription(Messages.UmlModelWizard_UI_NewModelFilePageDescription);
-		newModelFilePage.setFileName(Messages.UmlModelWizard_UI_ModelFileDefaultName
-				+ DOT + MODEL_FILE_EXTENSION); //$NON-NLS-1$
+		newModelFilePage.setFileName(Messages.UmlModelWizard_UI_ModelFileDefaultName + DOT
+				+ MODEL_FILE_EXTENSION); //$NON-NLS-1$
 		addPage(newModelFilePage);
 
 		initModelPage = new UmlModelWizardInitModelPage(Messages.UmlModelWizard_UI_InitModelPageId);
 		initModelPage.setTitle(Messages.UmlModelWizard_UI_InitModelPageTitle);
 		initModelPage.setDescription(Messages.UmlModelWizard_UI_InitModelPageDescription);
 		addPage(initModelPage);
-
-		newSessionFilePage = new UmlModelWizardNewSessionFilePage(
-				Messages.UmlModelWizard_UI_NewSessionFilePageId, selection);
-		newSessionFilePage.setTitle(Messages.UmlModelWizard_UI_NewSessionFilePageTitle);
-		newSessionFilePage.setDescription(Messages.UmlModelWizard_UI_NewSessionFilePageDescription);
-		newSessionFilePage.setFileName(Messages.UmlModelWizard_UI_SessionFileDefaultName
-				+ DOT + SESSION_FILE_EXTENSION); //$NON-NLS-1$
-		addPage(newSessionFilePage);
 
 		// Try and get the resource selection to determine a current directory for the file dialog.
 		if (selection != null && !selection.isEmpty()) {
@@ -143,7 +130,6 @@ public class UmlModelWizard extends Wizard implements INewWizard {
 					// Set this for the container.
 					//
 					newModelFilePage.setContainerFullPath(selectedResource.getFullPath());
-					newSessionFilePage.setContainerFullPath(selectedResource.getFullPath());
 
 					// Make up a unique new name here.
 					final String defaultModelBaseFilename = Messages.UmlModelWizard_UI_ModelFileDefaultName; //$NON-NLS-1$
@@ -158,7 +144,6 @@ public class UmlModelWizard extends Wizard implements INewWizard {
 					for (int i = 1; ((IContainer)selectedResource).findMember(sessionFilename) != null; ++i) {
 						sessionFilename = defaultSessionBaseFilename + i + DOT + SESSION_FILE_EXTENSION; //$NON-NLS-1$
 					}
-					newSessionFilePage.setFileName(sessionFilename);
 				}
 			}
 		}
@@ -168,7 +153,4 @@ public class UmlModelWizard extends Wizard implements INewWizard {
 		return newModelFilePage.getModelFile();
 	}
 
-	private IFile getSessionModelFile() {
-		return newSessionFilePage.getModelFile();
-	}
 }

@@ -22,9 +22,11 @@ Contributors:
      <wizard
            category="fr.obeo.dsl.viewpoint.category/fr.obeo.dsl.viewpoint.modelers.category"
            class="org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel.UmlModelWizard"
+           finalPerspective="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
            icon="icons/NewUmlModel.gif"
            id="org.obeonetwork.dsl.uml2.wizard.newUmlModel"
            name="UML Model"
+           preferredPerspectives="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
            project="false">
      </wizard>
      <category
@@ -33,5 +35,107 @@ Contributors:
            parentCategory="fr.obeo.dsl.viewpoint.category">
      </category>
   </extension>
+  
+  
+	   <extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
+	      <editpartProvider class="org.obeonetwork.dsl.uml2.design.ui.extension.editpart.UMLEditPartProvider">
+	         <Priority name="High"/>
+	      </editpartProvider>
+	   </extension>
+  
+  
+  
+    <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.delete"
+            name="Delete UML Element">
+      </command>
+        <command
+            id="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.scenario.create"
+            name="Create Scenario">
+      </command>
+   </extension>
+  
+   <extension
+         point="org.eclipse.ui.handlers">
+        <handler
+              class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.DeleteUMLElement"
+              commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.delete">
+           <enabledWhen>
+            <with variable="selection">
+		           <iterate operator="and">
+		                <instanceof value="org.eclipse.uml2.uml.Element"/>
+		           </iterate>
+       		</with>
+           </enabledWhen>
+        </handler>
+         <handler
+              class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.CreateScenario"
+              commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.scenario.create">
+           <enabledWhen>
+            <with variable="selection">
+                 <iterate
+                     operator="and">
+                  <instanceof
+                        value="org.eclipse.uml2.uml.Package">
+                  </instanceof>
+		          <test
+                     forcePluginActivation="true"
+                     property="org.obeonetwork.dsl.uml2.design.Behavioral">
+                  </test>
+               </iterate>		           
+       		</with>
+           </enabledWhen>
+        </handler>
+   </extension>
+  
+  
+    <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <command
+               icon="icons/deleteModel.gif"               
+               label="Delete"
+               commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.delete"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+            </visibleWhen>
+         </command>
+          <command
+               icon="icons/NewUmlModel.gif"               
+               label="Create Scenario"
+               commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.scenario.create"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+    <extension
+          point="org.eclipse.core.expressions.propertyTesters">
+       <propertyTester
+             class="org.obeonetwork.dsl.uml2.design.ui.extension.ViewpointEnablementPropertyTester"
+             id="org.obeonetwork.dsl.uml2.design.ViewpointEnabled"
+             namespace="org.obeonetwork.dsl.uml2.design"
+             properties="Behavioral,Structural"
+             type="org.eclipse.uml2.uml.Element">
+       </propertyTester>
+    </extension>
+    <extension
+          point="org.eclipse.ui.perspectiveExtensions">
+       <perspectiveExtension
+             targetID="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling">
+          <newWizardShortcut
+                id="org.obeonetwork.dsl.uml2.wizard.newUmlModel">
+          </newWizardShortcut>
+       </perspectiveExtension>
+    </extension>
+  
+  
+  
   
 </plugin>

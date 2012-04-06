@@ -19,7 +19,7 @@ Contributors:
 
 	<groupId>org.obeonetwork.dsl.uml</groupId>
 	<artifactId>uml-parent</artifactId>
-	<version>1.1.0-SNAPSHOT</version>
+	<version>1.2.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>Viewpoint UML2 Parent</name>
@@ -41,10 +41,8 @@ Contributors:
 	<properties>
 		<tycho-version>0.12.0</tycho-version>
 		<platform-version-name>helios</platform-version-name>
-		<od-site>http://www.obeo.fr/download/release/designer/5.0.5/update/3.6</od-site>
-		<od-ext-site>http://marketplace.obeonetwork.com/updates/od5/</od-ext-site>
+		<od-site>http://update.obeo.fr/integration/od/6.0/indigo/update/repository</od-site>
 		<eclipse-site>http://download.eclipse.org/releases/${platform-version-name}</eclipse-site>
-		<eef-site>http://download.eclipse.org/modeling/emft/eef/updates/nightly/0.9</eef-site>
 	</properties>
 
 	<modules>
@@ -62,16 +60,19 @@ Contributors:
 	</modules>
 
 	<repositories>
+		<!--
 		<repository>
-			<id>helios</id>
+			<id>platform</id>
 			<layout>p2</layout>
 			<url>${eclipse-site}</url>
 		</repository>
+                  -->
 		<repository>
 			<id>obeodesigner</id>
 			<layout>p2</layout>
 			<url>${od-site}</url>
 		</repository>
+		<!--
 		<repository>
 			<id>obeodesignerextension</id>
 			<layout>p2</layout>
@@ -82,6 +83,7 @@ Contributors:
 			<layout>p2</layout>
 			<url>${eef-site}</url> 
 		</repository>
+                 -->
 
 	</repositories>
 

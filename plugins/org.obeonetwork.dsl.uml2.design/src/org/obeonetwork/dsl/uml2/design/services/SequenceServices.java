@@ -69,7 +69,7 @@ import fr.obeo.dsl.viewpoint.diagram.sequence.business.internal.elements.ISequen
 import fr.obeo.dsl.viewpoint.diagram.sequence.business.internal.elements.SequenceDiagram;
 import fr.obeo.dsl.viewpoint.diagram.sequence.business.internal.operation.RefreshGraphicalOrderingOperation;
 import fr.obeo.dsl.viewpoint.diagram.sequence.business.internal.operation.RefreshSemanticOrderingOperation;
-import fr.obeo.dsl.viewpoint.diagram.sequence.ui.tool.internal.edit.operation.SynchronizeGraphicalOrderingOperation;
+import fr.obeo.dsl.viewpoint.diagram.sequence.business.internal.operation.SynchronizeGraphicalOrderingOperation;
 import fr.obeo.dsl.viewpoint.diagram.sequence.ui.tool.internal.edit.part.ISequenceEventEditPart;
 import fr.obeo.dsl.viewpoint.diagram.sequence.ui.tool.internal.edit.part.SequenceDiagramEditPart;
 import fr.obeo.dsl.viewpoint.diagram.tools.api.editor.DDiagramEditor;
@@ -1523,7 +1523,7 @@ public class SequenceServices {
 
 					new RefreshGraphicalOrderingOperation(diagram).execute();
 					new RefreshSemanticOrderingOperation(diagram.getSequenceDDiagram()).execute();
-					new SynchronizeGraphicalOrderingOperation(sdep, false).execute();
+					new SynchronizeGraphicalOrderingOperation(sdep.getDiagramView(),false).execute();
 				}
 			}
 		}

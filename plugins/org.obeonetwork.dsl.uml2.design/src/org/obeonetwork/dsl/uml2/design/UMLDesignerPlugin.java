@@ -15,7 +15,6 @@ import java.util.Set;
 
 import org.eclipse.core.runtime.Status;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.obeonetwork.dsl.uml2.design.ui.extension.UmlSessionExtension;
 import org.osgi.framework.BundleContext;
 
 import fr.obeo.dsl.viewpoint.business.api.componentization.ViewpointRegistry;
@@ -59,8 +58,6 @@ public class UMLDesignerPlugin extends AbstractUIPlugin {
 		viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin(
 				PLUGIN_ID + "/description/uml2.odesign"));
 
-		// Add extensions to Model Content view
-		UmlSessionExtension.addExtension();
 	}
 
 	/**
@@ -90,9 +87,12 @@ public class UMLDesignerPlugin extends AbstractUIPlugin {
 	/**
 	 * A helper to log plugin errors.
 	 * 
-	 * @param severity the error severity.
-	 * @param message the error message.
-	 * @param exception the error exception.
+	 * @param severity
+	 *            the error severity.
+	 * @param message
+	 *            the error message.
+	 * @param exception
+	 *            the error exception.
 	 */
 	public static void log(int severity, String message, Throwable exception) {
 		getDefault().getLog().log(new Status(severity, PLUGIN_ID, message, exception));

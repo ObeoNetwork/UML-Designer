@@ -1,0 +1,180 @@
+This document is a small guide to migrate to Obeo Designer 6.0 from an API perspective.
+
+
+
+= Custom Actions =
+
+You might have used the following API to contribute specific actions in the Model Content view. 
+
+  // Oo19414oo = ISessionViewExtension
+  final Oo19414oo extension = new Oo19414oo() {
+  public ITreeContentProvider getContentProvider() {
+     return new UmlAnalysisTreeProvider();
+   }
+
+  // Oo20979oo = IContextMenuActionProvider
+  public Oo20979oo getContextMenuActionProvider() {
+    return new UmlAnalysisContextMenuActionProvider();
+   }
+  };
+  // Oo13727oo = ViewHelperImpl
+  ((Oo13727oo)ViewHelper.INSTANCE).addExtension(extension);
+
+
+For Obeo Designer 6, the Model content view does not exist anymore and is replaced with an extensible '''Modeling Project''', it is based on the '''Common Navigator Framework''' and as such provides several means to provide new content, filters or actions. The preferred way to contribute actions is now to use the '''Eclipse Commands''' framework. 
+
+Here is how to provide a new "Delete" action in the modeling project, you'll need to edit plugin.xml and declare the command :
+
+
+  <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.delete"
+            name="Delete UML Element">
+      </command>
+        <command
+            id="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.scenario.create"
+            name="Create Scenario">
+      </command>
+   </extension>
+  
+
+You associate this command with a Handler. Several handlers might be associated with a given command and the Eclipse platform will pick one or the other depending on their enablement. Enablement is computed using a dedicated language in XML and might test for the current selection or the current editor for instance.
+
+  <extension
+         point="org.eclipse.ui.handlers">
+        <handler class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.DeleteUMLElement"
+              commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.delete">
+           <enabledWhen>
+            <with variable="selection">
+		           <iterate operator="and">
+		                <instanceof value="org.eclipse.uml2.uml.Element"/>
+		           </iterate>
+       		</with>
+           </enabledWhen>
+        </handler>
+  </extension>
+  
+Here we're making sure the selection is an instanceof of UML Element.
+
+Once you did that you have to implement the handler. You can retrieve the current selection doing so :
+
+  public Object execute(ExecutionEvent event) throws ExecutionException {
+  ISelection selection = HandlerUtil.getCurrentSelection(event);
+  // delete the element and do stuff
+  }
+
+We're not done yet. You still have to bind the command to the popup menu 
+
+ <extension point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <command
+               icon="icons/deleteModel.gif"               
+               label="Delete"
+               commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.delete"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+            </visibleWhen>
+         </command>        
+      </menuContribution>
+   </extension>
+
+== Custom Action Depending on the selected Viewpoints ==
+
+In case your action only makes sense if a specific Viewpoint is enabled, you'll have to extend the enablement langage in the plugin.xml to be able to test it.
+
+We're declaring a new '''property tester'''
+ 
+ <extension
+          point="org.eclipse.core.expressions.propertyTesters">
+       <propertyTester
+             class="org.obeonetwork.dsl.uml2.design.ui.extension.ViewpointEnablementPropertyTester"
+             id="org.obeonetwork.dsl.uml2.design.ViewpointEnabled"
+             namespace="org.obeonetwork.dsl.uml2.design"
+             properties="Behavioral,Structural"
+             type="org.eclipse.uml2.uml.Element">
+       </propertyTester>
+    </extension>
+
+The implementation for UML is :
+
+  public class ViewpointEnablementPropertyTester extends PropertyTester {
+
+  public boolean test(Object receiver, String property, Object[] args, Object expectedValue) {
+   if (receiver instanceof EObject) {
+    Session foundSession = SessionManager.INSTANCE.getSession((EObject)receiver);
+    if (foundSession != null) {
+      for (Viewpoint vp : foundSession.getSelectedViewpoints()) {
+      if (vp.getName().contains(property))
+        return true;
+      }
+     }
+    }
+    return false;
+   }
+  }
+
+And then the handler might use this property tester :
+
+  <handler class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.CreateScenario" commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.scenario.create">
+           <enabledWhen>
+            <with variable="selection">
+                 <iterate
+                     operator="and">
+                  <instanceof
+                        value="org.eclipse.uml2.uml.Package">
+                  </instanceof>
+		          <test
+                     forcePluginActivation="true"
+                     property="org.obeonetwork.dsl.uml2.design.Behavioral">
+                  </test>
+               </iterate>		           
+       		</with>
+           </enabledWhen>
+   </handler>
+
+= Wizard = 
+
+Most modeling environments are providing a wizard to start a new Session. With Obeo Designer 6.0 the session has been replaced by a '''Modeling Project'''. That said it is more flexible for the end user to allow the creation of a model file in any kind of project and transform it to a Modeling project if needed.
+
+Remove any '''Wizard Page''' explicitely creating a .aird file, and replace it in the '''performFinish()''' by code saving the model file on the workspace and then doing something similar to this :
+
+  IProject prj = modelFile.getProject();
+    if (prj != null && !ModelingProject.MODELING_PROJECT_PREDICATE.apply(prj)) {
+       ModelingToggleNatureAction toogleProject = new ModelingToggleNatureAction();
+       EvaluationContext evaluationContext = new EvaluationContext(null, Lists.newArrayList(prj));			
+       ExecutionEvent event = new ExecutionEvent(null, new HashMap(), null, evaluationContext);
+       // Convert project to Modeling project
+       try {
+         toogleProject.execute(event);
+        } catch (ExecutionException e) {
+           UMLDesignerPlugin.log(IStatus.ERROR,
+              Messages.UmlModelWizard_UI_Error_CreatingUmlModelSession, e);
+        }
+      }
+
+''Right now the ModelingToggleNatureAction is not adding the .aird file if none is found. This should be fixed before the 6.0.0 release.'' 
+
+
+== Declaring the wizard as being part of the perspective  ==
+
+In order to have your wizard in the '''New...''' popup menu in the modeling perspective, you have to update your plugin.xml with the following directives:
+
+  <extension
+          point="org.eclipse.ui.perspectiveExtensions">
+       <perspectiveExtension
+             targetID="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling">
+          <newWizardShortcut
+                id="org.obeonetwork.dsl.uml2.wizard.newUmlModel">
+          </newWizardShortcut>
+       </perspectiveExtension>
+    </extension>
+   
+
+== Example Project ==
+
+If you used to provide an example project. You should re-create it using the '''New Modeling Project''' wizard, replace the newly created .aird file by yours.  Migrate it using the right click action, close and then reopen the project and then replace the previous project bundled in your examples by this one.
+ 
+

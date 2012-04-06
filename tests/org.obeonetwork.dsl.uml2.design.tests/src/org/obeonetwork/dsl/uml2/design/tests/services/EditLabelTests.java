@@ -16,6 +16,8 @@ import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.obeonetwork.dsl.uml2.design.services.LabelServices;
+import org.obeonetwork.dsl.uml2.design.services.UMLServices;
+import org.obeonetwork.dsl.uml2.design.services.internal.EditLabelSwitch;
 
 public class EditLabelTests extends TestCase {
 
@@ -26,29 +28,36 @@ public class EditLabelTests extends TestCase {
 	private Property secondEnd;
 
 	private LabelServices service = new LabelServices();
+	
+	private EditLabelSwitch editSwitch = new EditLabelSwitch();
 
 	@Override
 	protected void setUp() throws Exception {
 		startAssociation = UMLFactory.eINSTANCE.createAssociation();
-		firstEnd = UMLFactory.eINSTANCE.createProperty();
-		secondEnd = UMLFactory.eINSTANCE.createProperty();
-		startAssociation.getOwnedEnds().add(firstEnd);
-		startAssociation.getOwnedEnds().add(secondEnd);
+		Property oneEnd = UMLFactory.eINSTANCE.createProperty();
+		Property anotherEnd = UMLFactory.eINSTANCE.createProperty();
+		startAssociation.getOwnedEnds().add(oneEnd);
+		startAssociation.getOwnedEnds().add(anotherEnd);
+		firstEnd = UMLServices.getSource(startAssociation);
+		secondEnd = UMLServices.getTarget(startAssociation);
 	}
 
 	public void testClassDiagramEditRolesNames() throws Exception {
-		service.editUmlLabel(startAssociation, "firstRole - secondRole");
+		editFirstRole(startAssociation,"firstRole");
+		editSecondRole(startAssociation,"secondRole");		
 		assertEquals("firstRole", firstEnd.getName());
 		assertEquals("secondRole", secondEnd.getName());
 
 		/*
 		 * we have to trim spaces
 		 */
-		service.editUmlLabel(startAssociation, "  firstRole  -    secondRole   ");
+		editFirstRole(startAssociation,"  firstRole  ");
+		editSecondRole(startAssociation,"  secondRole  ");
 		assertEquals("firstRole", firstEnd.getName());
 		assertEquals("secondRole", secondEnd.getName());
 
-		service.editUmlLabel(startAssociation, "firstRoleRenamed - secondRole");
+		editFirstRole(startAssociation,"firstRoleRenamed");
+		editSecondRole(startAssociation,"secondRole");
 
 		assertEquals("firstRoleRenamed", firstEnd.getName());
 		assertEquals("secondRole", secondEnd.getName());
@@ -56,13 +65,25 @@ public class EditLabelTests extends TestCase {
 		
 	}
 		
+	private void editFirstRole(Association startAssociation2, String string) {
+		Property role = UMLServices.getSource(startAssociation2);
+		editSwitch.setEditedLabelContent(string);
+		editSwitch.caseRole(role);
+	}
+	
+	private void editSecondRole(Association startAssociation2, String string) {
+		Property role = UMLServices.getTarget(startAssociation2);
+		editSwitch.setEditedLabelContent(string);
+		editSwitch.caseRole(role);
+	}
+
 	public void testClassDiagramEditRolesNamesSecondNavigable() throws Exception {
 		firstEnd.setIsNavigable(false);
 		secondEnd.setIsNavigable(true);
 		/*
 		 * only typing one name will edit the first end
 		 */
-		service.editUmlLabel(startAssociation, "aNavigableProperty");
+		editSecondRole(startAssociation,"aNavigableProperty");		
 		assertEquals("aNavigableProperty", secondEnd.getName());
 	}
 	
@@ -72,7 +93,7 @@ public class EditLabelTests extends TestCase {
 		/*
 		 * only typing one name will edit the first end
 		 */
-		service.editUmlLabel(startAssociation, "aNavigableProperty");
+		editFirstRole(startAssociation,"aNavigableProperty");
 		assertEquals("aNavigableProperty", firstEnd.getName());
 	}
 	
@@ -83,7 +104,7 @@ public class EditLabelTests extends TestCase {
 		/*
 		 * only typing one name will edit the first end
 		 */
-		service.editUmlLabel(startAssociation, "aNavigableProperty[2..4]");
+		editFirstRole(startAssociation,"aNavigableProperty[2..4]");
 		assertEquals("aNavigableProperty", firstEnd.getName());
 		assertEquals(2, firstEnd.getLower());
 		assertEquals(4, firstEnd.getUpper());
@@ -95,7 +116,7 @@ public class EditLabelTests extends TestCase {
 		/*
 		 * only typing one name will edit the first end
 		 */
-		service.editUmlLabel(startAssociation, "aNavigableProperty  [ 2 .. 4] ");
+		editFirstRole(startAssociation,"aNavigableProperty  [ 2  .. 4  ]");		
 		assertEquals("aNavigableProperty", firstEnd.getName());
 		assertEquals(2, firstEnd.getLower());
 		assertEquals(4, firstEnd.getUpper());
@@ -107,7 +128,7 @@ public class EditLabelTests extends TestCase {
 		/*
 		 * only typing one name will edit the first end
 		 */
-		service.editUmlLabel(startAssociation, "[2..4]");
+		editFirstRole(startAssociation,"[2..4]");
 		assertEquals(2, firstEnd.getLower());
 		assertEquals(4, firstEnd.getUpper());
 	}
@@ -119,25 +140,29 @@ public class EditLabelTests extends TestCase {
 		/*
 		 * only typing one name will edit the first end
 		 */
-		service.editUmlLabel(startAssociation, "aNavigableProperty");
+		editFirstRole(startAssociation,"aNavigableProperty");		
 		assertEquals("aNavigableProperty", firstEnd.getName());
 	}
 	
 	public void testCardinality() throws Exception {
-		service.editUmlLabel(startAssociation, "firstRole[0..1] - secondRole[*]");
+		
+		editFirstRole(startAssociation,"firstRole[0..1] ");
+		editSecondRole(startAssociation,"secondRole[*]");		
 		assertEquals(0, firstEnd.getLower());
 		assertEquals(1, firstEnd.getUpper());
 		assertEquals(-1, secondEnd.getUpper());
 		assertEquals(0, secondEnd.getLower());
 
 		// with spaces
-		service.editUmlLabel(startAssociation, "firstRole [ 0 .. 1 ] - secondRole [ * ] ");
+		editFirstRole(startAssociation,"firstRole [ 0 .. 1 ] ");
+		editSecondRole(startAssociation," secondRole [ * ] ");		
 		assertEquals(0, firstEnd.getLower());
 		assertEquals(1, firstEnd.getUpper());
 		assertEquals(-1, secondEnd.getUpper());
 		assertEquals(0, secondEnd.getLower());
 
-		service.editUmlLabel(startAssociation, "firstRole[5..5] - secondRole");
+		editFirstRole(startAssociation,"firstRole[5..5] ");
+		editSecondRole(startAssociation," secondRole");
 		assertEquals(5, firstEnd.getLower());
 		assertEquals(5, firstEnd.getUpper());
 		assertEquals(-1, secondEnd.getUpper());
@@ -146,13 +171,15 @@ public class EditLabelTests extends TestCase {
 		/*
 		 * only one end should change cardinality
 		 */
-		service.editUmlLabel(startAssociation, "firstRole - secondRole[1..5]");
+		editFirstRole(startAssociation,"firstRole");
+		editSecondRole(startAssociation," secondRole[1..5]");
 		assertEquals(5, firstEnd.getLower());
 		assertEquals(5, firstEnd.getUpper());
 		assertEquals(1, secondEnd.getLower());
 		assertEquals(5, secondEnd.getUpper());
 
-		service.editUmlLabel(startAssociation, "firstRole[*] - secondRole");
+		editFirstRole(startAssociation,"firstRole[*] ");
+		editSecondRole(startAssociation," secondRole");
 		assertEquals(0, firstEnd.getLower());
 		assertEquals(-1, firstEnd.getUpper());
 		assertEquals(1, secondEnd.getLower());
@@ -160,37 +187,43 @@ public class EditLabelTests extends TestCase {
 	}
 
 	public void testDerivedNone() throws Exception {
-		service.editUmlLabel(startAssociation, "firstRole[0..1] - secondRole[*]");
+		editFirstRole(startAssociation,"firstRole[0..1] ");
+		editSecondRole(startAssociation," secondRole[*]");
 		assertEquals(false, firstEnd.isDerived());
 		assertEquals(false, secondEnd.isDerived());
 	}
 
 	public void testDerivedFirst() throws Exception {
 
-		service.editUmlLabel(startAssociation, "/firstRole[0..1] - secondRole[*]");
+		editFirstRole(startAssociation,"/firstRole[0..1] ");
+		editSecondRole(startAssociation," secondRole[*]");		
 		assertEquals(true, firstEnd.isDerived());
 		assertEquals(false, secondEnd.isDerived());
 	}
 
 	public void testDerivedSecond() throws Exception {
 
-		service.editUmlLabel(startAssociation, "firstRole[0..1] - /secondRole[*]");
+		editFirstRole(startAssociation,"firstRole[0..1] ");
+		editSecondRole(startAssociation," /secondRole[*]");
 		assertEquals(false, firstEnd.isDerived());
 		assertEquals(true, secondEnd.isDerived());
 	}
 
 	public void testDerivedBoth() throws Exception {
 
-		service.editUmlLabel(startAssociation, "/firstRole - /secondRole[*]");
+		editFirstRole(startAssociation,"/firstRole[0..1] ");
+		editSecondRole(startAssociation," /secondRole[*]");
 		assertEquals(true, firstEnd.isDerived());
 		assertEquals(true, secondEnd.isDerived());
 	}
 
 	public void testDerivedBothWithSpaces() throws Exception {
-
+		editFirstRole(startAssociation," / firstRole ");
+		editSecondRole(startAssociation," /  secondRole [ * ] ");
 		service.editUmlLabel(startAssociation, "/   firstRole  - /  secondRole [ * ]   ");
 		assertEquals(true, firstEnd.isDerived());
 		assertEquals(true, secondEnd.isDerived());
 	}
 
 }
+

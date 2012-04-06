@@ -98,40 +98,18 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 	 */
 	@Override
 	public Element caseAssociation(Association object) {
-		/*
-		 * We need to find roles names, end user might type: "aRoleName" "aRoleName - aRoleName
-		 * "aRoleName[cardinality] - anotherRoleName[cardinality]
-		 */
-		// let's see if we have several role names typed
-		final Property source = UMLServices.getSource(object);
-		final Property target = UMLServices.getTarget(object);
-		if (source != null && target != null) {
-			if (editedLabelContent.indexOf('-') > -1) {
-				//
-				final String completeSourceLabel = editedLabelContent.substring(0,
-						editedLabelContent.indexOf('-')).trim();
-				editAssociationEndLabel(source, completeSourceLabel);
-				final String completeTargetLabel = editedLabelContent.substring(
-						editedLabelContent.indexOf('-') + 1).trim();
-				editAssociationEndLabel(target, completeTargetLabel);
-			} else {
-				final String singleEndLabel = editedLabelContent.trim();
-				if (target.isNavigable()) {
-					editAssociationEndLabel(target, singleEndLabel);
-				} else {
-					editAssociationEndLabel(source, singleEndLabel);
-				}
 
-			}
-			return object;
-		} else {
-			return super.caseAssociation(object);
-		}
+		object.setName(editedLabelContent);
+		return object;
 	}
 
-	private void editAssociationEndLabel(Property property, String label) {
-		String escapedLabel = label;
-		if (label.indexOf('/') > -1) {
+	public void caseRole(Property property) {
+		/*
+		 * We need to find roles names, end user might type: "aRoleName" "aRoleName - aRoleName
+		 * "aRoleName[cardinality]
+		 */
+		String escapedLabel = editedLabelContent;
+		if (editedLabelContent.indexOf('/') > -1) {
 			// should be derived
 			escapedLabel.replace('/', ' ');
 			property.setIsDerived(true);
