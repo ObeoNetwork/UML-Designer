@@ -994,6 +994,8 @@ public class SequenceServices {
 					signal.destroy();
 				}
 				receiveEvent.destroy();
+			} else if (receiveEvent instanceof ReceiveOperationEvent) {
+				receiveEvent.destroy();
 			}
 			fragments.remove(receiveMessage);
 		}
@@ -1010,6 +1012,8 @@ public class SequenceServices {
 				if (sendEvent instanceof SendSignalEvent && signal != null) {
 					signal.destroy();
 				}
+				sendEvent.destroy();
+			} else if (sendEvent instanceof SendOperationEvent) {
 				sendEvent.destroy();
 			}
 			fragments.remove(message.getSendEvent());
