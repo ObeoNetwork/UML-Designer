@@ -3087,6 +3087,22 @@
           </ownedTools>
         </toolSections>
       </defaultLayer>
+      <optionalLayers name="Comments" reusedMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='RED_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@edgeMappings[name='RED_CommentLink']">
+        <nodeMappings name="LifelineComment" preconditionExpression="&lt;%represents.nSize()>0%>" semanticCandidatesExpression="&lt;%lifeline%>" semanticElements="&lt;%self%>" domainClass="uml.Lifeline">
+          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="&lt;%represents.eContainer.name%>" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW" width="16" height="5">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_yellow']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="LifelineCommentLink" deletionDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='DEL_CommentLink_PreventDeletion']" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@optionalLayers[name='Comments']/@nodeMappings[name='LifelineComment']" targetMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']" targetFinderExpression="&lt;%self%>" reconnections="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='REC_CommentLink_Target']">
+          <style showIcon="false" lineStyle="dot" targetArrow="NoDecoration" sizeComputationExpression="1">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <toolSections name="Comments" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_CommentLink']"/>
+      </optionalLayers>
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.UMLServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.UMLProfileServices"/>
