@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -42,6 +43,8 @@ import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 import org.eclipse.uml2.uml.resource.UMLResource;
 import org.obeonetwork.dsl.uml2.design.services.internal.ReconnectSwitch;
+
+import com.google.common.collect.Sets;
 
 import fr.obeo.dsl.viewpoint.DEdge;
 import fr.obeo.dsl.viewpoint.EdgeTarget;
@@ -411,6 +414,40 @@ public class UMLServices {
 			}
 		}
 		return res;
+	}
+
+	public Set<EObject> getOwnedClasses(Package pak) {
+		Set<EObject> result = Sets.newLinkedHashSet();
+		for (EObject eObj : pak.eContents()) {
+			if ("Class".equals(eObj.eClass().getName())) {
+				result.add(eObj);
+			}
+			if ("Component".equals(eObj.eClass().getName())) {
+				for (EObject subChild : eObj.eContents()) {
+					if ("Class".equals(subChild.eClass().getName())) {
+						result.add(subChild);
+					}
+				}
+			}
+		}
+		return result;
+	}
+
+	public Set<EObject> getExternalClasses(Package pak) {
+		Set<EObject> valids = Sets.newLinkedHashSet();
+		Session sess = SessionManager.INSTANCE.getSession(pak);
+		if (sess != null) {
+			for (Resource rootResource : sess.getSemanticResources()) {
+				Iterator<EObject> it = rootResource.getAllContents();
+				while (it.hasNext()) {
+					EObject cur = it.next();
+					if ("Class".equals(cur.eClass().getName())) {
+						valids.add(cur);
+					}
+				}
+			}
+		}
+		return Sets.difference(valids, getOwnedClasses(pak));
 	}
 
 	/**
