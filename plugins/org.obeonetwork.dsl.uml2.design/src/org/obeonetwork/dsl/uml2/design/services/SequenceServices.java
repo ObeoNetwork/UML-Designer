@@ -214,6 +214,26 @@ public class SequenceServices {
 	}
 
 	/**
+	 * Get the execution associated to a fragment.
+	 * 
+	 * @param message
+	 *            Message
+	 * @return Execution
+	 */
+	private BehaviorExecutionSpecification getExecution(Message message) {
+		if (message == null)
+			return null;
+		final Map<Message, BehaviorExecutionSpecification> behaviors = new HashMap<Message, BehaviorExecutionSpecification>();
+		for (InteractionFragment fragment : message.getInteraction().getFragments()) {
+			if (fragment instanceof BehaviorExecutionSpecification) {
+				final BehaviorExecutionSpecification behavior = (BehaviorExecutionSpecification)fragment;
+				behaviors.put(message, behavior);
+			}
+		}
+		return behaviors.get(message);
+	}
+
+	/**
 	 * Finds the first level of {@link ExecutionSpecification} in the context of the given {@link Lifeline}.
 	 * 
 	 * @param lifeline
@@ -1495,6 +1515,17 @@ public class SequenceServices {
 	 * @return Reply message if exists otherwise null
 	 */
 	private Message getReplyMessage(Message message) {
+		// To get the reply message associated to a message
+		// Get the execution associated to message if exists
+		final BehaviorExecutionSpecification execution = getExecution(message);
+		// Get the end execution occurrence
+		final OccurrenceSpecification end = execution.getFinish();
+		if (end instanceof MessageOccurrenceSpecification) {
+			// Get the message
+			return ((MessageOccurrenceSpecification)end).getMessage();
+		}
+
+		// else in case of message without execution search by name
 		for (Message messageReply : message.getInteraction().getMessages()) {
 			if (MessageSort.REPLY_LITERAL.equals(messageReply.getMessageSort())
 					&& messageReply.getName().startsWith(message.getName())) {
