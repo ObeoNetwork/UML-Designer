@@ -49,6 +49,8 @@ Contributors:
 
 		<module>features/org.obeonetwork.dsl.feature.uml2</module>
 		<module>features/org.obeonetwork.dsl.uml2.update</module>
+		<module>features/fr.obeo.dsl.feature.uml2</module>
+		<module>features/fr.obeo.dsl.uml2.update</module>		
 
 		<module>plugins/org.obeonetwork.dsl.uml2.design</module>
 		<module>plugins/org.obeonetwork.dsl.uml2.design.doc</module>
