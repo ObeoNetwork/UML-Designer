@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="fr.obeo.dsl.feature.uml2"
+      label="UML Designer"
+      version="1.0.2.qualifier"
+      provider-name="Obeo">
+
+   <description url="http://docs.obeonetwork.com/uml">
+      This modeler provides a set of common diagrams to work with
+UML 2.1 models.
+
+Provides same features as org.obeonetwork.dsl.feature.uml2 
+without the dependencies to Obeo Designer.
+   </description>
+
+   <copyright url="http://www.example.com/copyright">
+      [Enter Copyright Description here.]
+   </copyright>
+
+   <license url="http://www.example.com/license">
+      [Enter License Description here.]
+   </license>
+
+   <plugin
+         id="org.obeonetwork.dsl.uml2.design"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.obeonetwork.dsl.uml2.design.doc"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+</feature>
