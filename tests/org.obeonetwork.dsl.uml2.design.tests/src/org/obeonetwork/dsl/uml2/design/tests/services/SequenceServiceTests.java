@@ -3000,6 +3000,38 @@ public class SequenceServiceTests extends TestCase {
 	}
 
 	/**
+	 * Test {@link SequenceServices#delete(Lifeline) delete} service. Delete a
+	 * lifeline.
+	 * 
+	 * @throws Exception
+	 *             in case of error
+	 */
+	public void testDeleteLifeline() throws Exception {
+		// Interaction Delete Scenario_5
+		final Interaction interaction = getDeleteInteraction(RESOURCE_URI, "DEL_Scenario_5");
+
+		// Lifeline to delete consumers
+		final Lifeline lifeline1 = interaction.getLifeline("consumers");
+		
+		// Lifeline to delete producers
+		final Lifeline lifeline2 = interaction.getLifeline("producers");
+
+		// Delete
+		sequenceServices.delete(lifeline1);
+		sequenceServices.delete(lifeline2);
+
+		final List<InteractionFragment> fragments = interaction.getFragments();
+		assertEquals(0, fragments.size());
+
+		final List<Behavior> behaviors = interaction.getOwnedBehaviors();
+		assertEquals(0, behaviors.size());
+
+		final List<Element> elements = ((Package)interaction.eContainer()).getOwnedElements();
+		assertEquals(1, elements.size());
+	}
+
+	
+	/**
 	 * Test {@link SequenceServices#delete(BehaviorExecutionSpecification) delete} service. Delete an
 	 * execution.
 	 * 

@@ -935,8 +935,40 @@ public class SequenceServices {
 				dependency.destroy();
 		}
 
+		// Delete all executions
+		for (ExecutionSpecification execution : executionSemanticCandidates(lifeline)) {
+			if (execution instanceof BehaviorExecutionSpecification)
+				delete((BehaviorExecutionSpecification)execution);
+		}
+
+		// Delete all messages
+		for (Message message : getAllMessages(lifeline)) {
+			delete(message);
+		}
+
 		// Delete lifeline
 		lifeline.destroy();
+	}
+
+	/**
+	 * Get all messages associated to lifeline.
+	 * 
+	 * @param lifeline
+	 *            Lifeline
+	 * @return Messages associated to lifeline
+	 */
+	private List<Message> getAllMessages(Lifeline lifeline) {
+		final List<Message> messages = new ArrayList<Message>();
+		if (lifeline != null && lifeline.getInteraction() != null) {
+			for (Message message : lifeline.getInteraction().getMessages()) {
+				for (Lifeline coveredLifeline : ((MessageOccurrenceSpecification)message.getSendEvent())
+						.getCovereds()) {
+					if (lifeline.equals(coveredLifeline))
+						messages.add(message);
+				}
+			}
+		}
+		return messages;
 	}
 
 	/**
