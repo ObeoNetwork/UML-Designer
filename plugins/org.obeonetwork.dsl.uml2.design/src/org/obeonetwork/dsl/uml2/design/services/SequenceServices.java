@@ -227,7 +227,10 @@ public class SequenceServices {
 		for (InteractionFragment fragment : message.getInteraction().getFragments()) {
 			if (fragment instanceof BehaviorExecutionSpecification) {
 				final BehaviorExecutionSpecification behavior = (BehaviorExecutionSpecification)fragment;
-				behaviors.put(message, behavior);
+				final OccurrenceSpecification behaviorStart = behavior.getStart();
+				if (behaviorStart instanceof MessageOccurrenceSpecification
+						&& message.equals(((MessageOccurrenceSpecification)behaviorStart).getMessage()))
+					behaviors.put(message, behavior);
 			}
 		}
 		return behaviors.get(message);
@@ -1518,13 +1521,14 @@ public class SequenceServices {
 		// To get the reply message associated to a message
 		// Get the execution associated to message if exists
 		final BehaviorExecutionSpecification execution = getExecution(message);
-		// Get the end execution occurrence
-		final OccurrenceSpecification end = execution.getFinish();
-		if (end instanceof MessageOccurrenceSpecification) {
-			// Get the message
-			return ((MessageOccurrenceSpecification)end).getMessage();
+		if (execution != null) {
+			// Get the end execution occurrence
+			final OccurrenceSpecification end = execution.getFinish();
+			if (end instanceof MessageOccurrenceSpecification) {
+				// Get the message
+				return ((MessageOccurrenceSpecification)end).getMessage();
+			}
 		}
-
 		// else in case of message without execution search by name
 		for (Message messageReply : message.getInteraction().getMessages()) {
 			if (MessageSort.REPLY_LITERAL.equals(messageReply.getMessageSort())
