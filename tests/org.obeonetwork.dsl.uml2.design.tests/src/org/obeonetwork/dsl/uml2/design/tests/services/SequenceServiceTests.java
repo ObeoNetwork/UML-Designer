@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehaviorExecutionSpecification;
+import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ExecutionOccurrenceSpecification;
 import org.eclipse.uml2.uml.ExecutionSpecification;
 import org.eclipse.uml2.uml.Interaction;
@@ -33,6 +34,7 @@ import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.OccurrenceSpecification;
 import org.eclipse.uml2.uml.Operation;
+import org.eclipse.uml2.uml.Package;
 import org.obeonetwork.dsl.uml2.design.services.SequenceServices;
 import org.obeonetwork.dsl.uml2.design.tests.Activator;
 
@@ -67,6 +69,22 @@ public class SequenceServiceTests extends TestCase {
 		final Resource resource = rset.getResource(URI.createPlatformPluginURI(resourceUri, true), true);
 
 		return (Interaction)((Model)resource.getContents().get(0)).getOwnedMember(name);
+	}
+
+	/**
+	 * Get interaction defined in a resource.
+	 * 
+	 * @param resourceUri
+	 *            URI
+	 * @param name
+	 *            Interaction name
+	 * @return Interaction
+	 */
+	private Interaction getDeleteInteraction(String resourceUri, String name) {
+		final ResourceSet rset = new ResourceSetImpl();
+		final Resource resource = rset.getResource(URI.createPlatformPluginURI(resourceUri, true), true);
+		return (Interaction)((Package)((Package)((Model)resource.getContents().get(0))
+				.getPackagedElement("Delete")).getOwnedMember(name)).getOwnedMember(name);
 	}
 
 	/**
@@ -840,11 +858,11 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(11, fragments.size());
 		final InteractionFragment computeStart = fragments.get(0);
 		final InteractionFragment compute = fragments.get(1);
-		final InteractionFragment operation0MsgSend = fragments.get(2);
-		final InteractionFragment operation0MsgReceive = fragments.get(3);
-		final InteractionFragment operation0 = fragments.get(4);
-		final InteractionFragment operation0MsgReplySend = fragments.get(5);
-		final InteractionFragment operation0MsgReplyReceive = fragments.get(6);
+		final InteractionFragment operationMsgSend = fragments.get(2);
+		final InteractionFragment operationMsgReceive = fragments.get(3);
+		final InteractionFragment operation = fragments.get(4);
+		final InteractionFragment operationMsgReplySend = fragments.get(5);
+		final InteractionFragment operationMsgReplyReceive = fragments.get(6);
 		final InteractionFragment getStart = fragments.get(7);
 		final InteractionFragment get = fragments.get(8);
 		final InteractionFragment getFinish = fragments.get(9);
@@ -852,7 +870,8 @@ public class SequenceServiceTests extends TestCase {
 
 		// Operation Operation_0 in class Producer
 		final org.eclipse.uml2.uml.Class producer = getClass(interaction, "Structure", "Producer");
-		assertEquals("Operation_0", producer.getOperations().get(producer.getOperations().size() - 1)
+		String operationName = "Operation_2";
+		assertEquals(operationName, producer.getOperations().get(producer.getOperations().size() - 1)
 				.getName());
 
 		// Execution compute
@@ -871,42 +890,41 @@ public class SequenceServiceTests extends TestCase {
 
 		// Message Operation_0
 		final Message message = interaction.getMessages().get(0);
-		assertEquals("Message does not exist", "Operation_0", message.getName());
-		assertTrue(operation0MsgSend instanceof MessageOccurrenceSpecification);
-		assertEquals("Operation_0_sender", operation0MsgSend.getName());
-		assertTrue(operation0MsgReceive instanceof MessageOccurrenceSpecification);
-		assertEquals("Operation_0_receiver", operation0MsgReceive.getName());
-		assertEquals(message.getSendEvent(), operation0MsgSend);
-		assertEquals(message.getReceiveEvent(), operation0MsgReceive);
-		assertNotNull(((MessageOccurrenceSpecification)operation0MsgSend).getCovered(source.getName()));
-		assertNotNull(((MessageOccurrenceSpecification)operation0MsgReceive).getCovered(target.getName()));
+		assertEquals("Message does not exist", operationName, message.getName());
+		assertTrue(operationMsgSend instanceof MessageOccurrenceSpecification);
+		assertEquals(operationName + "_sender", operationMsgSend.getName());
+		assertTrue(operationMsgReceive instanceof MessageOccurrenceSpecification);
+		assertEquals(operationName + "_receiver", operationMsgReceive.getName());
+		assertEquals(message.getSendEvent(), operationMsgSend);
+		assertEquals(message.getReceiveEvent(), operationMsgReceive);
+		assertNotNull(((MessageOccurrenceSpecification)operationMsgSend).getCovered(source.getName()));
+		assertNotNull(((MessageOccurrenceSpecification)operationMsgReceive).getCovered(target.getName()));
 
 		// Execution Operation_0
 		final Behavior operation0Behavior = interaction.getOwnedBehaviors().get(2);
-		assertEquals("Opaque behavior does not exist", "Operation_0", operation0Behavior.getName());
-		assertTrue(operation0MsgReceive instanceof MessageOccurrenceSpecification);
-		assertEquals("Operation_0_receiver", operation0MsgReceive.getName());
-		assertTrue(operation0MsgReplySend instanceof MessageOccurrenceSpecification);
-		assertEquals("Operation_0_reply_sender", operation0MsgReplySend.getName());
-		assertTrue(operation0 instanceof BehaviorExecutionSpecification);
-		assertEquals("Operation_0", operation0.getName());
-		assertEquals(((BehaviorExecutionSpecification)operation0).getStart(), operation0MsgReceive);
-		assertEquals(((BehaviorExecutionSpecification)operation0).getFinish(), operation0MsgReplySend);
-		assertNotNull(((BehaviorExecutionSpecification)operation0).getCovered(target.getName()));
-		assertEquals(operation0Behavior, ((BehaviorExecutionSpecification)operation0).getBehavior());
+		assertEquals("Opaque behavior does not exist", operationName, operation0Behavior.getName());
+		assertTrue(operationMsgReceive instanceof MessageOccurrenceSpecification);
+		assertEquals(operationName + "_receiver", operationMsgReceive.getName());
+		assertTrue(operationMsgReplySend instanceof MessageOccurrenceSpecification);
+		assertEquals(operationName + "_reply_sender", operationMsgReplySend.getName());
+		assertTrue(operation instanceof BehaviorExecutionSpecification);
+		assertEquals(operationName, operation.getName());
+		assertEquals(((BehaviorExecutionSpecification)operation).getStart(), operationMsgReceive);
+		assertEquals(((BehaviorExecutionSpecification)operation).getFinish(), operationMsgReplySend);
+		assertNotNull(((BehaviorExecutionSpecification)operation).getCovered(target.getName()));
+		assertEquals(operation0Behavior, ((BehaviorExecutionSpecification)operation).getBehavior());
 
 		// Reply message Operation_0
 		final Message messageReply = interaction.getMessages().get(1);
-		assertEquals("Message does not exist", "Operation_0_reply", messageReply.getName());
-		assertTrue(operation0MsgReplySend instanceof MessageOccurrenceSpecification);
-		assertEquals("Operation_0_reply_sender", operation0MsgReplySend.getName());
-		assertTrue(operation0MsgReplyReceive instanceof MessageOccurrenceSpecification);
-		assertEquals("Operation_0_reply_receiver", operation0MsgReplyReceive.getName());
-		assertEquals(messageReply.getSendEvent(), operation0MsgReplySend);
-		assertEquals(messageReply.getReceiveEvent(), operation0MsgReplyReceive);
-		assertNotNull(((MessageOccurrenceSpecification)operation0MsgReplySend).getCovered(target.getName()));
-		assertNotNull(((MessageOccurrenceSpecification)operation0MsgReplyReceive)
-				.getCovered(source.getName()));
+		assertEquals("Message does not exist", operationName + "_reply", messageReply.getName());
+		assertTrue(operationMsgReplySend instanceof MessageOccurrenceSpecification);
+		assertEquals(operationName + "_reply_sender", operationMsgReplySend.getName());
+		assertTrue(operationMsgReplyReceive instanceof MessageOccurrenceSpecification);
+		assertEquals(operationName + "_reply_receiver", operationMsgReplyReceive.getName());
+		assertEquals(messageReply.getSendEvent(), operationMsgReplySend);
+		assertEquals(messageReply.getReceiveEvent(), operationMsgReplyReceive);
+		assertNotNull(((MessageOccurrenceSpecification)operationMsgReplySend).getCovered(target.getName()));
+		assertNotNull(((MessageOccurrenceSpecification)operationMsgReplyReceive).getCovered(source.getName()));
 
 		// Execution get
 		final Behavior getBehavior = interaction.getOwnedBehaviors().get(1);
@@ -945,10 +963,10 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(10, fragments.size());
 		final InteractionFragment computeStart = fragments.get(0);
 		final InteractionFragment compute = fragments.get(1);
-		final InteractionFragment operation0MsgSend = fragments.get(2);
-		final InteractionFragment operation0MsgReceive = fragments.get(3);
-		final InteractionFragment operation0 = fragments.get(4);
-		final InteractionFragment operation0Finish = fragments.get(5);
+		final InteractionFragment operationMsgSend = fragments.get(2);
+		final InteractionFragment operationMsgReceive = fragments.get(3);
+		final InteractionFragment operation = fragments.get(4);
+		final InteractionFragment operationFinish = fragments.get(5);
 		final InteractionFragment getStart = fragments.get(6);
 		final InteractionFragment get = fragments.get(7);
 		final InteractionFragment getFinish = fragments.get(8);
@@ -956,7 +974,8 @@ public class SequenceServiceTests extends TestCase {
 
 		// Operation Operation_0 in class Producer
 		final org.eclipse.uml2.uml.Class producer = getClass(interaction, "Structure", "Producer");
-		assertEquals("Operation_0", producer.getOperations().get(producer.getOperations().size() - 1)
+		String operationName = "Operation_2";
+		assertEquals(operationName, producer.getOperations().get(producer.getOperations().size() - 1)
 				.getName());
 
 		// Execution compute
@@ -975,29 +994,29 @@ public class SequenceServiceTests extends TestCase {
 
 		// Message Operation_0
 		final Message message = interaction.getMessages().get(0);
-		assertEquals("Message does not exist", "Operation_0", message.getName());
-		assertTrue(operation0MsgSend instanceof MessageOccurrenceSpecification);
-		assertEquals("Operation_0_sender", operation0MsgSend.getName());
-		assertTrue(operation0MsgReceive instanceof MessageOccurrenceSpecification);
-		assertEquals("Operation_0_receiver", operation0MsgReceive.getName());
-		assertEquals(message.getSendEvent(), operation0MsgSend);
-		assertEquals(message.getReceiveEvent(), operation0MsgReceive);
-		assertNotNull(((MessageOccurrenceSpecification)operation0MsgSend).getCovered(source.getName()));
-		assertNotNull(((MessageOccurrenceSpecification)operation0MsgReceive).getCovered(target.getName()));
+		assertEquals("Message does not exist", operationName, message.getName());
+		assertTrue(operationMsgSend instanceof MessageOccurrenceSpecification);
+		assertEquals(operationName + "_sender", operationMsgSend.getName());
+		assertTrue(operationMsgReceive instanceof MessageOccurrenceSpecification);
+		assertEquals(operationName + "_receiver", operationMsgReceive.getName());
+		assertEquals(message.getSendEvent(), operationMsgSend);
+		assertEquals(message.getReceiveEvent(), operationMsgReceive);
+		assertNotNull(((MessageOccurrenceSpecification)operationMsgSend).getCovered(source.getName()));
+		assertNotNull(((MessageOccurrenceSpecification)operationMsgReceive).getCovered(target.getName()));
 
 		// Execution Operation_0
 		final Behavior operation0Behavior = interaction.getOwnedBehaviors().get(2);
-		assertEquals("Opaque behavior does not exist", "Operation_0", operation0Behavior.getName());
-		assertTrue(operation0MsgReceive instanceof MessageOccurrenceSpecification);
-		assertEquals("Operation_0_receiver", operation0MsgReceive.getName());
-		assertTrue(operation0Finish instanceof ExecutionOccurrenceSpecification);
-		assertEquals("Operation_0_finish", operation0Finish.getName());
-		assertTrue(operation0 instanceof BehaviorExecutionSpecification);
-		assertEquals("Operation_0", operation0.getName());
-		assertEquals(((BehaviorExecutionSpecification)operation0).getStart(), operation0MsgReceive);
-		assertEquals(((BehaviorExecutionSpecification)operation0).getFinish(), operation0Finish);
-		assertNotNull(((BehaviorExecutionSpecification)operation0).getCovered(target.getName()));
-		assertEquals(operation0Behavior, ((BehaviorExecutionSpecification)operation0).getBehavior());
+		assertEquals("Opaque behavior does not exist", operationName, operation0Behavior.getName());
+		assertTrue(operationMsgReceive instanceof MessageOccurrenceSpecification);
+		assertEquals(operationName + "_receiver", operationMsgReceive.getName());
+		assertTrue(operationFinish instanceof ExecutionOccurrenceSpecification);
+		assertEquals(operationName + "_finish", operationFinish.getName());
+		assertTrue(operation instanceof BehaviorExecutionSpecification);
+		assertEquals(operationName, operation.getName());
+		assertEquals(((BehaviorExecutionSpecification)operation).getStart(), operationMsgReceive);
+		assertEquals(((BehaviorExecutionSpecification)operation).getFinish(), operationFinish);
+		assertNotNull(((BehaviorExecutionSpecification)operation).getCovered(target.getName()));
+		assertEquals(operation0Behavior, ((BehaviorExecutionSpecification)operation).getBehavior());
 
 		// Execution get
 		final Behavior getBehavior = interaction.getOwnedBehaviors().get(1);
@@ -2331,6 +2350,168 @@ public class SequenceServiceTests extends TestCase {
 
 	/**
 	 * Test {@link SequenceServices#reorder(Message, InteractionFragment, InteractionFragment) reorder}
+	 * service. Reorder two messages which as the smae name. Move the first get message after the second on
+	 * the lifeline.
+	 * 
+	 * @throws Exception
+	 *             in case of error
+	 */
+	public void testReorderMessagesWithSameName() throws Exception {
+		// Interaction Scenario_18
+		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_18");
+		final Lifeline producers = interaction.getLifeline("producers");
+		final Lifeline consumers = interaction.getLifeline("consumers");
+
+		// Message to move get
+		final ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("get");
+		// StartingEndPredecessorAfter compute_finish execution occurrence
+		final ExecutionOccurrenceSpecification startingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
+				.getFragment("compute_finish");
+		// FinishingEndPredecessorAfter null
+		final MessageOccurrenceSpecification finishingEndPredecessorAfter = (MessageOccurrenceSpecification)interaction
+				.getFragment("get_receiver");
+
+		sequenceServices.reorder(execution, startingEndPredecessorAfter, finishingEndPredecessorAfter);
+
+		final List<InteractionFragment> fragments = interaction.getFragments();
+		assertEquals(18, fragments.size());
+
+		final InteractionFragment produceSend = fragments.get(0);
+		final InteractionFragment produceReceive = fragments.get(1);
+		final InteractionFragment produce = fragments.get(2);
+		final InteractionFragment produceReplySend = fragments.get(3);
+		final InteractionFragment produceReplyReceive = fragments.get(4);
+		final InteractionFragment computeStart = fragments.get(5);
+		final InteractionFragment compute = fragments.get(6);
+		final InteractionFragment getSend = fragments.get(7);
+		final InteractionFragment getReceive = fragments.get(8);
+		final InteractionFragment get = fragments.get(9);
+		final InteractionFragment getReplySend = fragments.get(10);
+		final InteractionFragment getReplyReceive = fragments.get(11);
+		final InteractionFragment computeFinish = fragments.get(12);
+		final InteractionFragment get2Send = fragments.get(13);
+		final InteractionFragment get2Receive = fragments.get(14);
+		final InteractionFragment get2 = fragments.get(15);
+		final InteractionFragment get2ReplySend = fragments.get(16);
+		final InteractionFragment get2ReplyReceive = fragments.get(17);
+
+		// Message produce
+		final Message produceMessage = interaction.getMessages().get(2);
+		assertEquals("Message does not exist", "produce", produceMessage.getName());
+		assertTrue(produceSend instanceof MessageOccurrenceSpecification);
+		assertEquals("produce_sender", produceSend.getName());
+		assertTrue(produceReceive instanceof MessageOccurrenceSpecification);
+		assertEquals("produce_receiver", produceReceive.getName());
+		assertEquals(produceMessage.getSendEvent(), produceSend);
+		assertEquals(produceMessage.getReceiveEvent(), produceReceive);
+		assertNotNull(((MessageOccurrenceSpecification)produceSend).getCovered(consumers.getName()));
+		assertNotNull(((MessageOccurrenceSpecification)produceReceive).getCovered(producers.getName()));
+
+		// Execution produce
+		final Behavior produceBehavior = interaction.getOwnedBehaviors().get(2);
+		assertEquals("Opaque behavior does not exist", "produce", produceBehavior.getName());
+		assertTrue(produceReceive instanceof MessageOccurrenceSpecification);
+		assertEquals("produce_receiver", produceReceive.getName());
+		assertTrue(produceReplySend instanceof MessageOccurrenceSpecification);
+		assertEquals("produce_reply_sender", produceReplySend.getName());
+		assertTrue(produce instanceof BehaviorExecutionSpecification);
+		assertEquals("produce", produce.getName());
+		assertEquals(((BehaviorExecutionSpecification)produce).getStart(), produceReceive);
+		assertEquals(((BehaviorExecutionSpecification)produce).getFinish(), produceReplySend);
+		assertNotNull(((BehaviorExecutionSpecification)produce).getCovered(producers.getName()));
+		assertEquals(produceBehavior, ((BehaviorExecutionSpecification)produce).getBehavior());
+
+		// Message produce_reply
+		final Message produceReplyMessage = interaction.getMessages().get(3);
+		assertEquals("Message does not exist", "produce_reply", produceReplyMessage.getName());
+		assertTrue(produceReplySend instanceof MessageOccurrenceSpecification);
+		assertEquals("produce_reply_sender", produceReplySend.getName());
+		assertTrue(produceReplyReceive instanceof MessageOccurrenceSpecification);
+		assertEquals("produce_reply_receiver", produceReplyReceive.getName());
+		assertEquals(produceReplyMessage.getSendEvent(), produceReplySend);
+		assertEquals(produceReplyMessage.getReceiveEvent(), produceReplyReceive);
+		assertNotNull(((MessageOccurrenceSpecification)produceReplySend).getCovered(producers.getName()));
+		assertNotNull(((MessageOccurrenceSpecification)produceReplyReceive).getCovered(consumers.getName()));
+
+		// Message get
+		final Message getMessage = interaction.getMessages().get(0);
+		assertEquals("Message does not exist", "get", getMessage.getName());
+		assertTrue(getSend instanceof MessageOccurrenceSpecification);
+		assertEquals("get_sender", getSend.getName());
+		assertTrue(getReceive instanceof MessageOccurrenceSpecification);
+		assertEquals("get_receiver", getReceive.getName());
+		assertEquals(getMessage.getSendEvent(), getSend);
+		assertEquals(getMessage.getReceiveEvent(), getReceive);
+		assertNotNull(((MessageOccurrenceSpecification)getSend).getCovered(consumers.getName()));
+		assertNotNull(((MessageOccurrenceSpecification)getReceive).getCovered(producers.getName()));
+
+		// Execution get
+		final Behavior getBehavior = interaction.getOwnedBehaviors().get(1);
+		assertEquals("Opaque behavior does not exist", "get", getBehavior.getName());
+		assertTrue(getReceive instanceof MessageOccurrenceSpecification);
+		assertEquals("get_receiver", getReceive.getName());
+		assertTrue(getReplySend instanceof MessageOccurrenceSpecification);
+		assertEquals("get_reply_sender", getReplySend.getName());
+		assertTrue(get instanceof BehaviorExecutionSpecification);
+		assertEquals("get", get.getName());
+		assertEquals(((BehaviorExecutionSpecification)get).getStart(), getReceive);
+		assertEquals(((BehaviorExecutionSpecification)get).getFinish(), getReplySend);
+		assertNotNull(((BehaviorExecutionSpecification)get).getCovered(producers.getName()));
+		assertEquals(getBehavior, ((BehaviorExecutionSpecification)get).getBehavior());
+
+		// Message get_reply
+		final Message getReplyMessage = interaction.getMessages().get(1);
+		assertEquals("Message does not exist", "get_reply", getReplyMessage.getName());
+		assertTrue(getReplySend instanceof MessageOccurrenceSpecification);
+		assertEquals("get_reply_sender", getReplySend.getName());
+		assertTrue(getReplyReceive instanceof MessageOccurrenceSpecification);
+		assertEquals("get_reply_receiver", getReplyReceive.getName());
+		assertEquals(getReplyMessage.getSendEvent(), getReplySend);
+		assertEquals(getReplyMessage.getReceiveEvent(), getReplyReceive);
+		assertNotNull(((MessageOccurrenceSpecification)getReplySend).getCovered(producers.getName()));
+		assertNotNull(((MessageOccurrenceSpecification)getReplyReceive).getCovered(consumers.getName()));
+
+		// Message get2
+		final Message get2Message = interaction.getMessages().get(4);
+		assertEquals("Message does not exist", "get", get2Message.getName());
+		assertTrue(get2Send instanceof MessageOccurrenceSpecification);
+		assertEquals("get_sender", get2Send.getName());
+		assertTrue(get2Receive instanceof MessageOccurrenceSpecification);
+		assertEquals("get_receiver", get2Receive.getName());
+		assertEquals(get2Message.getSendEvent(), get2Send);
+		assertEquals(get2Message.getReceiveEvent(), get2Receive);
+		assertNotNull(((MessageOccurrenceSpecification)get2Send).getCovered(consumers.getName()));
+		assertNotNull(((MessageOccurrenceSpecification)get2Receive).getCovered(producers.getName()));
+
+		// Execution get
+		final Behavior get2Behavior = interaction.getOwnedBehaviors().get(3);
+		assertEquals("Opaque behavior does not exist", "get", getBehavior.getName());
+		assertTrue(get2Receive instanceof MessageOccurrenceSpecification);
+		assertEquals("get_receiver", getReceive.getName());
+		assertTrue(get2ReplySend instanceof MessageOccurrenceSpecification);
+		assertEquals("get_reply_sender", get2ReplySend.getName());
+		assertTrue(get instanceof BehaviorExecutionSpecification);
+		assertEquals("get", get2.getName());
+		assertEquals(((BehaviorExecutionSpecification)get2).getStart(), get2Receive);
+		assertEquals(((BehaviorExecutionSpecification)get2).getFinish(), get2ReplySend);
+		assertNotNull(((BehaviorExecutionSpecification)get2).getCovered(producers.getName()));
+		assertEquals(get2Behavior, ((BehaviorExecutionSpecification)get2).getBehavior());
+
+		// Message get_reply
+		final Message get2ReplyMessage = interaction.getMessages().get(5);
+		assertEquals("Message does not exist", "get_reply", get2ReplyMessage.getName());
+		assertTrue(get2ReplySend instanceof MessageOccurrenceSpecification);
+		assertEquals("get_reply_sender", get2ReplySend.getName());
+		assertTrue(get2ReplyReceive instanceof MessageOccurrenceSpecification);
+		assertEquals("get_reply_receiver", get2ReplyReceive.getName());
+		assertEquals(get2ReplyMessage.getSendEvent(), get2ReplySend);
+		assertEquals(get2ReplyMessage.getReceiveEvent(), get2ReplyReceive);
+		assertNotNull(((MessageOccurrenceSpecification)get2ReplySend).getCovered(producers.getName()));
+		assertNotNull(((MessageOccurrenceSpecification)get2ReplyReceive).getCovered(consumers.getName()));
+	}
+
+	/**
+	 * Test {@link SequenceServices#reorder(Message, InteractionFragment, InteractionFragment) reorder}
 	 * service. Reorder a message and an execution. Move the message from the lifeline to the execution.
 	 * 
 	 * @throws Exception
@@ -2816,5 +2997,171 @@ public class SequenceServiceTests extends TestCase {
 		assertEquals(msg0ReplyMessage.getReceiveEvent(), msg0ReplyReceive);
 		assertNotNull(((MessageOccurrenceSpecification)msg0ReplySend).getCovered(consumers.getName()));
 		assertNotNull(((MessageOccurrenceSpecification)msg0ReplyReceive).getCovered(producers.getName()));
+	}
+
+	/**
+	 * Test {@link SequenceServices#delete(Lifeline) delete} service. Delete a
+	 * lifeline.
+	 * 
+	 * @throws Exception
+	 *             in case of error
+	 */
+	public void testDeleteLifeline() throws Exception {
+		// Interaction Delete Scenario_5
+		final Interaction interaction = getDeleteInteraction(RESOURCE_URI, "DEL_Scenario_5");
+
+		// Lifeline to delete consumers
+		final Lifeline lifeline1 = interaction.getLifeline("consumers");
+		
+		// Lifeline to delete producers
+		final Lifeline lifeline2 = interaction.getLifeline("producers");
+
+		// Delete
+		sequenceServices.delete(lifeline1);
+		sequenceServices.delete(lifeline2);
+
+		final List<InteractionFragment> fragments = interaction.getFragments();
+		assertEquals(0, fragments.size());
+
+		final List<Behavior> behaviors = interaction.getOwnedBehaviors();
+		assertEquals(0, behaviors.size());
+
+		final List<Element> elements = ((Package)interaction.eContainer()).getOwnedElements();
+		assertEquals(1, elements.size());
+	}
+
+	
+	/**
+	 * Test {@link SequenceServices#delete(BehaviorExecutionSpecification) delete} service. Delete an
+	 * execution.
+	 * 
+	 * @throws Exception
+	 *             in case of error
+	 */
+	public void testDeleteExecution() throws Exception {
+		// Interaction Delete Scenario_0
+		final Interaction interaction = getDeleteInteraction(RESOURCE_URI, "DEL_Scenario_0");
+
+		// Execution to delete compute
+		final BehaviorExecutionSpecification execution = (BehaviorExecutionSpecification)interaction
+				.getFragment("compute");
+
+		// Delete
+		sequenceServices.delete(execution);
+
+		final List<InteractionFragment> fragments = interaction.getFragments();
+		assertEquals(0, fragments.size());
+
+		final List<Behavior> behaviors = interaction.getOwnedBehaviors();
+		assertEquals(0, behaviors.size());
+
+		final List<Element> elements = ((Package)interaction.eContainer()).getOwnedElements();
+		assertEquals(2, elements.size());
+	}
+
+	/**
+	 * Test {@link SequenceServices#delete(Message) delete} service. Delete an asynchronous message.
+	 * 
+	 * @throws Exception
+	 *             in case of error
+	 */
+	public void testDeleteAsynchronousMessage() throws Exception {
+		// Interaction Delete Scenario_1
+		final Interaction interaction = getDeleteInteraction(RESOURCE_URI, "DEL_Scenario_1");
+
+		// Message to delete get
+		final Message message = (Message)interaction.getMessage("Message_0");
+
+		// Delete
+		sequenceServices.delete(message);
+
+		final List<InteractionFragment> fragments = interaction.getFragments();
+		assertEquals(0, fragments.size());
+
+		final List<Behavior> behaviors = interaction.getOwnedBehaviors();
+		assertEquals(0, behaviors.size());
+
+		final List<Element> elements = ((Package)interaction.eContainer()).getOwnedElements();
+		assertEquals(1, elements.size());
+	}
+
+	/**
+	 * Test {@link SequenceServices#delete(Message) delete} service. Delete a synchronous message.
+	 * 
+	 * @throws Exception
+	 *             in case of error
+	 */
+	public void testDeleteSynchronousMessage() throws Exception {
+		// Interaction Delete Scenario_2
+		final Interaction interaction = getDeleteInteraction(RESOURCE_URI, "DEL_Scenario_2");
+
+		// Message to delete get
+		final Message message = (Message)interaction.getMessage("Message_0");
+
+		// Delete
+		sequenceServices.delete(message);
+
+		final List<InteractionFragment> fragments = interaction.getFragments();
+		assertEquals(0, fragments.size());
+
+		final List<Behavior> behaviors = interaction.getOwnedBehaviors();
+		assertEquals(0, behaviors.size());
+
+		final List<Element> elements = ((Package)interaction.eContainer()).getOwnedElements();
+		assertEquals(1, elements.size());
+	}
+
+	/**
+	 * Test {@link SequenceServices#delete(Message) delete} service. Delete an asynchronous message associated
+	 * to an execution.
+	 * 
+	 * @throws Exception
+	 *             in case of error
+	 */
+	public void testDeleteAsynchronousMessageWithExecution() throws Exception {
+		// Interaction Delete Scenario_1
+		final Interaction interaction = getDeleteInteraction(RESOURCE_URI, "DEL_Scenario_3");
+
+		// Message to delete get
+		final Message message = (Message)interaction.getMessage("Operation_0");
+
+		// Delete
+		sequenceServices.delete(message);
+
+		final List<InteractionFragment> fragments = interaction.getFragments();
+		assertEquals(0, fragments.size());
+
+		final List<Behavior> behaviors = interaction.getOwnedBehaviors();
+		assertEquals(0, behaviors.size());
+
+		final List<Element> elements = ((Package)interaction.eContainer()).getOwnedElements();
+		assertEquals(1, elements.size());
+	}
+
+	/**
+	 * Test {@link SequenceServices#delete(Message) delete} service. Delete a synchronous message associated
+	 * to an execution.
+	 * 
+	 * @throws Exception
+	 *             in case of error
+	 */
+	public void testDeleteSynchronousMessageWithExecution() throws Exception {
+		// Interaction Delete Scenario_1
+		final Interaction interaction = getDeleteInteraction(RESOURCE_URI, "DEL_Scenario_4");
+
+		// Message to delete get
+		final Message message = (Message)interaction.getMessage("Operation_1");
+
+		// Delete
+		sequenceServices.delete(message);
+
+		final List<InteractionFragment> fragments = interaction.getFragments();
+		assertEquals(0, fragments.size());
+
+		final List<Behavior> behaviors = interaction.getOwnedBehaviors();
+		assertEquals(0, behaviors.size());
+
+		final List<Element> elements = ((Package)interaction.eContainer()).getOwnedElements();
+		assertEquals(1, elements.size());
 	}
 }
