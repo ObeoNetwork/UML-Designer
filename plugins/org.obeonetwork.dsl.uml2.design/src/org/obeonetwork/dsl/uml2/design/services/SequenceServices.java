@@ -214,6 +214,29 @@ public class SequenceServices {
 	}
 
 	/**
+	 * Get the execution associated to a fragment.
+	 * 
+	 * @param message
+	 *            Message
+	 * @return Execution
+	 */
+	private BehaviorExecutionSpecification getExecution(Message message) {
+		if (message == null)
+			return null;
+		final Map<Message, BehaviorExecutionSpecification> behaviors = new HashMap<Message, BehaviorExecutionSpecification>();
+		for (InteractionFragment fragment : message.getInteraction().getFragments()) {
+			if (fragment instanceof BehaviorExecutionSpecification) {
+				final BehaviorExecutionSpecification behavior = (BehaviorExecutionSpecification)fragment;
+				final OccurrenceSpecification behaviorStart = behavior.getStart();
+				if (behaviorStart instanceof MessageOccurrenceSpecification
+						&& message.equals(((MessageOccurrenceSpecification)behaviorStart).getMessage()))
+					behaviors.put(message, behavior);
+			}
+		}
+		return behaviors.get(message);
+	}
+
+	/**
 	 * Finds the first level of {@link ExecutionSpecification} in the context of the given {@link Lifeline}.
 	 * 
 	 * @param lifeline
@@ -912,8 +935,40 @@ public class SequenceServices {
 				dependency.destroy();
 		}
 
+		// Delete all executions
+		for (ExecutionSpecification execution : executionSemanticCandidates(lifeline)) {
+			if (execution instanceof BehaviorExecutionSpecification)
+				delete((BehaviorExecutionSpecification)execution);
+		}
+
+		// Delete all messages
+		for (Message message : getAllMessages(lifeline)) {
+			delete(message);
+		}
+
 		// Delete lifeline
 		lifeline.destroy();
+	}
+
+	/**
+	 * Get all messages associated to lifeline.
+	 * 
+	 * @param lifeline
+	 *            Lifeline
+	 * @return Messages associated to lifeline
+	 */
+	private List<Message> getAllMessages(Lifeline lifeline) {
+		final List<Message> messages = new ArrayList<Message>();
+		if (lifeline != null && lifeline.getInteraction() != null) {
+			for (Message message : lifeline.getInteraction().getMessages()) {
+				for (Lifeline coveredLifeline : ((MessageOccurrenceSpecification)message.getSendEvent())
+						.getCovereds()) {
+					if (lifeline.equals(coveredLifeline))
+						messages.add(message);
+				}
+			}
+		}
+		return messages;
 	}
 
 	/**
@@ -994,6 +1049,8 @@ public class SequenceServices {
 					signal.destroy();
 				}
 				receiveEvent.destroy();
+			} else if (receiveEvent instanceof ReceiveOperationEvent) {
+				receiveEvent.destroy();
 			}
 			fragments.remove(receiveMessage);
 		}
@@ -1010,6 +1067,8 @@ public class SequenceServices {
 				if (sendEvent instanceof SendSignalEvent && signal != null) {
 					signal.destroy();
 				}
+				sendEvent.destroy();
+			} else if (sendEvent instanceof SendOperationEvent) {
 				sendEvent.destroy();
 			}
 			fragments.remove(message.getSendEvent());
@@ -1491,6 +1550,18 @@ public class SequenceServices {
 	 * @return Reply message if exists otherwise null
 	 */
 	private Message getReplyMessage(Message message) {
+		// To get the reply message associated to a message
+		// Get the execution associated to message if exists
+		final BehaviorExecutionSpecification execution = getExecution(message);
+		if (execution != null) {
+			// Get the end execution occurrence
+			final OccurrenceSpecification end = execution.getFinish();
+			if (end instanceof MessageOccurrenceSpecification) {
+				// Get the message
+				return ((MessageOccurrenceSpecification)end).getMessage();
+			}
+		}
+		// else in case of message without execution search by name
 		for (Message messageReply : message.getInteraction().getMessages()) {
 			if (MessageSort.REPLY_LITERAL.equals(messageReply.getMessageSort())
 					&& messageReply.getName().startsWith(message.getName())) {
