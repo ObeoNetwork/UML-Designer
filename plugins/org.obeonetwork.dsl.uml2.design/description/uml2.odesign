@@ -2838,7 +2838,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </borderedNodeMappings>
-          <style xsi:type="style:SquareDescription" labelSize="9" labelExpression="&lt;%computeUmlLabel()%>" labelPosition="node" resizeKind="NSEW" width="10" height="4">
+          <style xsi:type="style:SquareDescription" labelSize="9" labelExpression="&lt;%computeUmlLabel()%>" tooltipExpression="&lt;%clientDependency[nSize>0].supplier.eContainer.name+represents.eContainer[nSize>0].name%>" labelPosition="node" resizeKind="NSEW" width="10" height="4">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
@@ -3087,6 +3087,33 @@
           </ownedTools>
         </toolSections>
       </defaultLayer>
+      <optionalLayers name="Comments" reusedMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='RED_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@edgeMappings[name='RED_CommentLink']">
+        <toolSections name="Comments" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_CommentLink']"/>
+      </optionalLayers>
+      <optionalLayers name="Informations" icon="/fr.obeo.dsl.viewpoint.ui/icons/full/others/information.gif">
+        <nodeMappings name="LifelineComment" preconditionExpression="&lt;%clientDependency.nSize>0||represents.eContainer.nSize>0%>" deletionDescription="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@optionalLayers[name='Informations']/@toolSections.0/@ownedTools[name='LifelineCommentDelete']" labelDirectEdit="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@optionalLayers[name='Informations']/@toolSections.0/@ownedTools[name='LifelineCommentEditLabel']" semanticCandidatesExpression="&lt;%lifeline%>" semanticElements="&lt;%self%>" domainClass="uml.Lifeline">
+          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='InformationBorder']" showIcon="false" labelExpression="&lt;%clientDependency[nSize>0].supplier.eContainer.name+represents.eContainer[nSize>0].name%>" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW" width="16" height="5" color="//@userColorsPalettes[name='UMLPalette']/@entries[name='InformationBackground']">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="LifelineCommentLink" deletionDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='DEL_CommentLink_PreventDeletion']" semanticElements="&lt;%self%>" sourceMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@optionalLayers[name='Informations']/@nodeMappings[name='LifelineComment']" targetMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']" targetFinderExpression="&lt;%self%>" reconnections="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='REC_CommentLink_Target']">
+          <style showIcon="false" lineStyle="dot" targetArrow="NoDecoration" sizeComputationExpression="1">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </edgeMappings>
+        <toolSections name="Informations">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="LifelineCommentEditLabel">
+            <initialOperation/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="LifelineCommentDelete">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation/>
+          </ownedTools>
+        </toolSections>
+      </optionalLayers>
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.UMLServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.UMLProfileServices"/>
@@ -3113,5 +3140,7 @@
     <entries xsi:type="description:UserFixedColor" red="228" green="249" blue="239" name="lagune"/>
     <entries xsi:type="description:UserFixedColor" red="110" green="132" blue="132" name="dark lagune"/>
     <entries xsi:type="description:UserFixedColor" red="238" green="249" blue="244" name="light lagune"/>
+    <entries xsi:type="description:UserFixedColor" red="246" green="253" blue="255" name="InformationBackground"/>
+    <entries xsi:type="description:UserFixedColor" red="12" green="92" blue="159" name="InformationBorder"/>
   </userColorsPalettes>
 </description:Group>
