@@ -19,26 +19,12 @@
     <ownedEnd xmi:id="_557CQMTeEeC0wZa75TykZw" type="_v5i7wMTZEeC0wZa75TykZw" association="_5550IMTeEeC0wZa75TykZw"/>
     <ownedEnd xmi:id="_558QYMTeEeC0wZa75TykZw" type="_cSKTMMTeEeC0wZa75TykZw" association="_5550IMTeEeC0wZa75TykZw"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_7POoUMTeEeC0wZa75TykZw" name="Association_Customer_to_to Buy" memberEnd="_7PPPYMTeEeC0wZa75TykZw _7PP2cMTeEeC0wZa75TykZw">
-    <ownedEnd xmi:id="_7PPPYMTeEeC0wZa75TykZw" type="_rRsm4MTZEeC0wZa75TykZw" association="_7POoUMTeEeC0wZa75TykZw"/>
-    <ownedEnd xmi:id="_7PP2cMTeEeC0wZa75TykZw" association="_7POoUMTeEeC0wZa75TykZw"/>
-  </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_8kWBIMTeEeC0wZa75TykZw" name="Association_Accountant_to_Invoice Management" memberEnd="_8kWoMMTeEeC0wZa75TykZw _8kX2UMTeEeC0wZa75TykZw">
     <ownedEnd xmi:id="_8kWoMMTeEeC0wZa75TykZw" type="_x6p34MTZEeC0wZa75TykZw" association="_8kWBIMTeEeC0wZa75TykZw"/>
     <ownedEnd xmi:id="_8kX2UMTeEeC0wZa75TykZw" type="_gauEAMTeEeC0wZa75TykZw" association="_8kWBIMTeEeC0wZa75TykZw"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Activity" xmi:id="_gPcLoMTfEeC0wZa75TykZw" name="to Pay a Trip">
     <node xmi:type="uml:InitialNode" xmi:id="_kgct0MTfEeC0wZa75TykZw" name="Initial_1"/>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_7yOLMMTfEeC0wZa75TykZw" name="travelsToPartners" memberEnd="_7yOyQMTfEeC0wZa75TykZw _7yQncMTfEeC0wZa75TykZw" navigableOwnedEnd="_7yOyQMTfEeC0wZa75TykZw _7yQncMTfEeC0wZa75TykZw">
-    <ownedEnd xmi:id="_7yOyQMTfEeC0wZa75TykZw" name="travels" association="_7yOLMMTfEeC0wZa75TykZw">
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7yQAYMTfEeC0wZa75TykZw" value="*"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7yPZUMTfEeC0wZa75TykZw"/>
-    </ownedEnd>
-    <ownedEnd xmi:id="_7yQncMTfEeC0wZa75TykZw" name="partners" type="_HbZDMMTfEeC0wZa75TykZw" association="_7yOLMMTfEeC0wZa75TykZw">
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_7yTqwMTfEeC0wZa75TykZw" value="*"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_7yTDsMTfEeC0wZa75TykZw"/>
-    </ownedEnd>
   </packagedElement>
   <packagedElement xmi:type="uml:Component" xmi:id="_gcBQQMT5EeC7sd1uYTaNyA" name="CRM" clientDependency="_5vzBoMT5EeC7sd1uYTaNyA" useCase="_V8gc0MgMEeClj_cKl6EI8g _X4CVYMgMEeClj_cKl6EI8g">
     <interfaceRealization xmi:id="_5vzBoMT5EeC7sd1uYTaNyA" supplier="_2r5LwMT5EeC7sd1uYTaNyA _gcBQQMT5EeC7sd1uYTaNyA" client="_gcBQQMT5EeC7sd1uYTaNyA" contract="_2r5LwMT5EeC7sd1uYTaNyA"/>
