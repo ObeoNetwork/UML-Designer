@@ -22,29 +22,41 @@ Click Finish on the wizard and a *TravelAgency* project appears in your workspac
 
 !gettingStarted/example-3-workspace.png!
 
-Double-click on the *agency.aird* file (or right click and @Open Session@), you will be greeted with the main package hierarchy diagram.
+When the project gets opened,  you will be greeted with the main package hierarchy diagram.
 
 !gettingStarted/example-4-maindiag.png!
 
 From here you can navigate to existing diagrams by right clicking on the *Model*.
 
 
-h2. Create a new UML model & session file
+h2. Create a new UML model & UML project
 
-To create a new UML model and an associated designer session, open the wizard through the menu __File > New > Other...__ and select the __UML Model__ item through the category __Viewpoint > Modeler__.
+To create a new UML project , enable the Modeling Perspective.
 
-!gettingStarted/NewUMLModel.PNG!
+!gettingStarted/perspective.png!
 
-You can choose specific name and location for the UML & designer session files on the next wizard pages. When you press the __Finish__ button, the <a href="#vpselection">viewpoint selection</a> dialog shows up.
-Once the __UML Structural viewpoint__ is selected, a new editor opens on the root package hierarchy diagram showing only the root package.
+Then click on the wizard shortcuts at the top-right of the Eclipse Workbench. Select  __New UML Project.__ 
 
-Now you can right click on the displayed package to create all the available diagrams or use the palette to create the package structure that fits to your needs.
+!gettingStarted/newUMLModel.png!
+
+You can choose specific name for the project and the root element for the project on the next pages.
+
+!gettingStarted/newUMLProject.png!
+
+When you press the __Finish__ button, the projects gets created and automatically enabled the UML viewpoints.
+
+!gettingStarted/new-workspace.png!
+
+Now you can right click on the displayed package to create all the available diagrams or use the palette to create the package structure that fits to your needs. You can also open the Package hierarchy diagram and starts from here:
+
+!gettingStarted/new-maindiag.png!
+
 
 h2. Display & edit an existing UML model
 
-To create a new UML design on existing UML models, simply drag & drop the root UML model to handle into the __Model Content__ view.
-Then a wizard will show up asking you to create a new session. Follow the step upon the <a href="#vpselection">viewpoint selection</a> dialog.
-Once the __UML Structural viewpoint__ is selected, a new editor opens on the root package hierarchy diagram showing the existing package structure of your model.
+To create a new UML design on existing UML models, simply drag & drop the models in the Project or use the __Add Model__ action available on the __Project Dependencies__ item.
+
+!gettingStarted/new-add-dependency.png!
 
 h2(#vpselection). UML designer viewpoints
 
@@ -62,8 +74,6 @@ Two viewpoints are specified on the UML designer each bringing the following vie
 ** Use case diagram
 ** Sequence diagram
 
-!gettingStarted/UMLViewpointSelection.PNG!
-
 You can select either viewpoints or both depending on your use case. Note that the __Package hierarchy diagram__ is the entry point to create new diagrams such as Activity or Sequence diagrams. So it is advised to select at least the __UML Structural modeling__ viewpoint.
 
 h1. Features
@@ -72,40 +82,17 @@ h2. Class Diagram
 
 h3. Introduction
 
-!features/agency_pics/entities.JPG!
+!features/agency_pics/entities.jpg!
 
 h3. Support for Broken Associations
 
 It might happen that for some reason you have an *Association* instance in your package which doesn't have the proper *ends*. In that case
 the class diagram will show the broken associations as nodes :
 
-!features/class_pics/broken associations.JPG!
+!features/class_pics/broken associations Class Diagram.jpg!
 
 You can use the *Association* tools in the palette __(Association, Reference, Composition and Aggregation)__ to re-attach the Association to a classifier.
 
-h3. Related Classes/Interface filtering and highlighting
-
-You have two ways to highlight classes related to one given class. The first one is to activate the *Related filter* on the *Class Diagram*. It will hide elements (*Class*, *interface*, *Association*, ...) that are not related to the class you selected (context). The second way can be achive by using the *Related Classes Diagram*. This diagram will show all elements related to the selected class.
-
-Lets use an instance to visualize the result of each methods. Consider the following model :
-
-!features/class_pics/related classes/Related_classes_package.JPG!
-
-By opening the *Class Diagram* on package1 you get the following diagram :
-
-!features/class_pics/related classes/package_1_not_filtered.JPG!
-
-You can then apply the filter on ContextClass :
-
-!features/class_pics/related classes/activate_filter_on_ContextClass.JPG!
-
-The resulting diagram will be as follow :
-
-!features/class_pics/related classes/package_1_filtered_on_ContextClass.JPG!
-
-Notice that only classes present in the initial diagram are present. If you want all classes related to ContextClass you should open the *Related Classes Diagram* on the ContextClass :
-
-!features/class_pics/related classes/ContextClass_related_classes.JPG!
 
 h3. Classes in SubComponents
 
@@ -117,7 +104,7 @@ h2. Component Diagram
 
 h3. Introduction
 
-!features/agency_pics/system architecture.JPG!
+!features/agency_pics/system architecture.jpg!
 
 h3. Connector
 
@@ -125,47 +112,47 @@ You can link two ports using assembly or delegation connectors.
 
 Assembly Connector :
 
-!features/component_pics/assembly connector.JPG!
+!features/component_pics/assembly connector.jpg!
 
 Delegation Connector :
 
-!features/component_pics/delegation connector.JPG!
+!features/component_pics/delegation connector.jpg!
 
 h3. Composite Components
 
-!features/component_pics/composite components.JPG!
+!features/component_pics/composite components.jpg!
 
 h3. Using Class
 
 As a component :
 
-!features/component_pics/class as component.JPG!
+!features/component_pics/class as component.jpg!
 
 In a component :
 
-!features/component_pics/implementation classes in component.JPG!
+!features/component_pics/implementation classes in component.jpg!
 
 
 h3. Required and Provided Interfaces
 
 Using ports :
 
-!features/component_pics/exchange through ports.JPG!
+!features/component_pics/exchange through ports.jpg!
 
 Or directy on the components :
 
-!features/component_pics/exchange through component.JPG!
+!features/component_pics/exchange through component.jpg!
 
 h3. Package imports
 
-!features/component_pics/package imports.JPG!
+!features/component_pics/package imports.jpg!
 
 
 h2. Use Case Diagram
 
 h3. Introduction
 
-!features/agency_pics/system use cases.JPG!
+!features/agency_pics/system use cases.jpg!
 
 h3. Use cases with or without subjects
 
@@ -179,13 +166,13 @@ h2. Activity Diagram
 
 h3. Introduction
 
-!features/agency_pics/to reserve a trip.JPG!
+!features/agency_pics/to reserve a trip.jpg!
 
 h2. State Machine Diagram
 
 h3. Introduction
 
-!features/agency_pics/reservation states.JPG!
+!features/agency_pics/reservation states.jpg!
 
 h2. Sequence Diagram
 

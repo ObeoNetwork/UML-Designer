@@ -2,7 +2,7 @@
 <toc topic="doc/UML Designer User Guide.html" label="UML Designer User Guide">
 	<topic href="doc/UML Designer User Guide.html" label="Getting Started">
 		<topic href="doc/UML Designer User Guide.html#StartingfromtheTravelAgencyexample" label="Starting from the Travel Agency example"></topic>
-		<topic href="doc/UML Designer User Guide.html#CreateanewUMLmodelsessionfile" label="Create a new UML model &amp; session file"></topic>
+		<topic href="doc/UML Designer User Guide.html#CreateanewUMLmodelUMLproject" label="Create a new UML model &amp; UML project"></topic>
 		<topic href="doc/UML Designer User Guide.html#DisplayeditanexistingUMLmodel" label="Display &amp; edit an existing UML model"></topic>
 		<topic href="doc/UML Designer User Guide.html#vpselection" label="UML designer viewpoints"></topic>
 	</topic>
@@ -10,7 +10,6 @@
 		<topic href="doc/UML Designer User Guide.html#ClassDiagram" label="Class Diagram">
 			<topic href="doc/UML Designer User Guide.html#Introduction" label="Introduction"></topic>
 			<topic href="doc/UML Designer User Guide.html#SupportforBrokenAssociations" label="Support for Broken Associations"></topic>
-			<topic href="doc/UML Designer User Guide.html#RelatedClassesInterfacefilteringandhighlighting" label="Related Classes/Interface filtering and highlighting"></topic>
 			<topic href="doc/UML Designer User Guide.html#ClassesinSubComponents" label="Classes in SubComponents"></topic>
 		</topic>
 		<topic href="doc/UML Designer User Guide.html#ComponentDiagram" label="Component Diagram">
