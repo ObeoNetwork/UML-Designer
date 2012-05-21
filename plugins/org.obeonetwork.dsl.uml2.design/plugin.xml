@@ -142,6 +142,9 @@ Contributors:
           <newWizardShortcut
                 id="org.obeonetwork.dsl.uml2.wizard.newUmlModel">
           </newWizardShortcut>
+          <newWizardShortcut
+                id="org.obeonetwork.dsl.uml2.design.wizard1">
+          </newWizardShortcut>
        </perspectiveExtension>
     </extension>
   
