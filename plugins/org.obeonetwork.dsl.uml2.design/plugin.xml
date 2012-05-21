@@ -34,6 +34,16 @@ Contributors:
            name="%_UI_Wizard_category"
            parentCategory="fr.obeo.dsl.viewpoint.category">
      </category>
+     <wizard
+           category="fr.obeo.dsl.viewpoint.category/fr.obeo.dsl.viewpoint.modelers.category"
+           class="org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel.UMLProjectWizard"
+           finalPerspective="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
+           icon="icons/NewUmlModel.gif"
+           id="org.obeonetwork.dsl.uml2.design.wizard1"
+           name="UML Project"
+           preferredPerspectives="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
+           project="true">
+     </wizard>
   </extension>
   
   

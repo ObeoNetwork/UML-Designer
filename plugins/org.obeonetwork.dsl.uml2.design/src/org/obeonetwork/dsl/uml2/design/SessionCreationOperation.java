@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.UMLFactory;
@@ -35,8 +36,12 @@ import org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel.Messages;
 
 import com.google.common.collect.Lists;
 
+import fr.obeo.dsl.common.tools.api.util.Option;
+import fr.obeo.dsl.viewpoint.business.api.componentization.ViewpointRegistry;
 import fr.obeo.dsl.viewpoint.business.api.modelingproject.ModelingProject;
 import fr.obeo.dsl.viewpoint.business.api.session.Session;
+import fr.obeo.dsl.viewpoint.description.Viewpoint;
+import fr.obeo.dsl.viewpoint.ui.business.api.viewpoint.ViewpointSelectionCallback;
 import fr.obeo.dsl.viewpoint.ui.tools.internal.actions.nature.ModelingToggleNatureAction;
 
 /**
@@ -55,6 +60,8 @@ public class SessionCreationOperation extends WorkspaceModifyOperation {
 	 * The type name of an uml.Package element.
 	 */
 	public static final String PACKAGE_OBJECT = "Package"; //$NON-NLS-1$
+
+	public static final String PROFILE_OBJECT = "Profile";
 
 	/**
 	 * An {@link IFile} handle representing the semantic model to create.
@@ -129,6 +136,30 @@ public class SessionCreationOperation extends WorkspaceModifyOperation {
 				UMLDesignerPlugin.log(IStatus.ERROR,
 						Messages.UmlModelWizard_UI_Error_CreatingUmlModelSession, e);
 			}
+			final Option<ModelingProject> created = ModelingProject.asModelingProject(prj);
+			if (created.some()) {
+
+				created.get()
+						.getSession()
+						.getTransactionalEditingDomain()
+						.getCommandStack()
+						.execute(
+								new RecordingCommand(created.get().getSession()
+										.getTransactionalEditingDomain()) {
+
+									@Override
+									protected void doExecute() {
+										ViewpointSelectionCallback selection = new ViewpointSelectionCallback();
+										for (Viewpoint vp : ViewpointRegistry.getInstance().getViewpoints()) {
+											if ("UML Structural Modeling".equals(vp.getName())) {
+												selection.selectViewpoint(vp, created.get().getSession());
+											} else if ("UML Behavioral Modeling".equals(vp.getName())) {
+												selection.selectViewpoint(vp, created.get().getSession());
+											}
+										}
+									}
+								});
+			}
 
 		}
 	}
@@ -145,6 +176,9 @@ public class SessionCreationOperation extends WorkspaceModifyOperation {
 			root.setName(Messages.UmlModelWizard_DefaultModelName);
 		} else if (PACKAGE_OBJECT.equals(rootObjectName)) {
 			root = UMLFactory.eINSTANCE.createPackage();
+			root.setName(Messages.UmlModelWizard_DefaultPackageName);
+		} else if (PROFILE_OBJECT.equals(rootObjectName)) {
+			root = UMLFactory.eINSTANCE.createProfile();
 			root.setName(Messages.UmlModelWizard_DefaultPackageName);
 		}
 		return root;

@@ -137,6 +137,7 @@ public class UmlModelWizardInitModelPage extends WizardPage {
 		List<String> names = new ArrayList<String>();
 		names.add(SessionCreationOperation.MODEL_OBJECT);
 		names.add(SessionCreationOperation.PACKAGE_OBJECT);
+		names.add(SessionCreationOperation.PROFILE_OBJECT);
 		return names;
 	}
 
