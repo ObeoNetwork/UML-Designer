@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: UML Designer Modeler
+Bundle-Name: UML Designer
 Bundle-SymbolicName: org.obeonetwork.dsl.uml2.design;singleton:=true
 Bundle-Version: 1.2.0.qualifier
 Bundle-Activator: org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin
@@ -32,3 +32,4 @@ Export-Package: org.obeonetwork.dsl.uml2.design,
  org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-Localization: plugin
+Bundle-Vendor: Obeo Network
