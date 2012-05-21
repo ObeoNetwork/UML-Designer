@@ -12,3 +12,24 @@ More details about features, screenshots, release notes, dependencies here:
 
 
 To build the module you'll need Maven3 and type @mvn clean verify checkstyle:checkstyle@
+
+
+h2. Class Diagram
+
+!https://github.com/ObeoNetwork/UML-Modeling/raw/fe3ee7f989727866f0cdf60c1902693eb8670093/plugins/org.obeonetwork.dsl.uml2.design.doc/doc/features/agency_pics/entities.jpg!
+
+h2. Use Cases Diagram
+
+!https://github.com/ObeoNetwork/UML-Modeling/raw/fe3ee7f989727866f0cdf60c1902693eb8670093/plugins/org.obeonetwork.dsl.uml2.design.doc/doc/features/agency_pics/system%20use%20cases.jpg!
+
+h2. Component Diagram
+
+!https://github.com/ObeoNetwork/UML-Modeling/raw/fe3ee7f989727866f0cdf60c1902693eb8670093/plugins/org.obeonetwork.dsl.uml2.design.doc/doc/features/agency_pics/system%20architecture.jpg!
+
+h2. States Diagram
+
+!https://github.com/ObeoNetwork/UML-Modeling/raw/fe3ee7f989727866f0cdf60c1902693eb8670093/plugins/org.obeonetwork.dsl.uml2.design.doc/doc/features/agency_pics/reservation%20states.jpg!
+
+h2. Activity Diagram
+
+!https://github.com/ObeoNetwork/UML-Modeling/raw/fe3ee7f989727866f0cdf60c1902693eb8670093/plugins/org.obeonetwork.dsl.uml2.design.doc/doc/features/agency_pics/to%20reserve%20a%20trip.jpg!
