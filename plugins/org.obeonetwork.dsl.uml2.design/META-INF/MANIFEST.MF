@@ -31,3 +31,4 @@ Export-Package: org.obeonetwork.dsl.uml2.design,
  org.obeonetwork.dsl.uml2.design.ui.extension,
  org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-Localization: plugin
