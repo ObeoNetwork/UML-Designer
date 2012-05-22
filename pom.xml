@@ -40,9 +40,7 @@ Contributors:
 
 	<properties>
 		<tycho-version>0.12.0</tycho-version>
-		<platform-version-name>helios</platform-version-name>
-		<od-site>http://update.obeo.fr/integration/od/6.0/indigo/update/repository</od-site>
-		<eclipse-site>http://download.eclipse.org/releases/${platform-version-name}</eclipse-site>
+		<od-site>http://www.obeo.fr/download/release/designer/6.0/latest/indigo/update</od-site>
 	</properties>
 
 	<modules>
@@ -62,13 +60,6 @@ Contributors:
 	</modules>
 
 	<repositories>
-		<!--
-		<repository>
-			<id>platform</id>
-			<layout>p2</layout>
-			<url>${eclipse-site}</url>
-		</repository>
-                  -->
 		<repository>
 			<id>obeodesigner</id>
 			<layout>p2</layout>
