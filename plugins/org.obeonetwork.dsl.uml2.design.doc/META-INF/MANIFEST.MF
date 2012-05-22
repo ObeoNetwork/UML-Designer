@@ -3,6 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: UML Designer Documentation
 Bundle-SymbolicName: org.obeonetwork.dsl.uml2.design.doc;singleton:=true
 Bundle-Version: 1.2.0.qualifier
-Bundle-Vendor: Obeo.fr
 Require-Bundle: org.eclipse.help,
  org.eclipse.emf.common.ui
+Bundle-Localization: plugin
+Bundle-Vendor: Obeo Network
