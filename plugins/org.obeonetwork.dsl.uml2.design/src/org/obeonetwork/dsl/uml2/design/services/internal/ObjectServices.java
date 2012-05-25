@@ -43,7 +43,13 @@ public final class ObjectServices {
 	 * @return The instance name
 	 */
 	public static String getInstanceName(String inputLabel) {
-		final String name = inputLabel.substring(0, inputLabel.indexOf(":")).trim();
-		return name;
+		int colonIndex = inputLabel.indexOf(":");
+		if (colonIndex != -1) {
+			final String name = inputLabel.substring(0, colonIndex).trim();
+			return name;
+		} else {
+			return inputLabel;
+		}
+		
 	}
 }
