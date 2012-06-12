@@ -4,6 +4,21 @@ __(c) Obeo 2011 -  All rights reserved. This program and the accompanying materi
 @Authors@ Gonzague Reydet / Cédric Brun / Yvan Lussaud
 @Contact@ cedric.brun@obeo.fr / yvan.lussaud@obeo.fr
 
+
+
+h1. Providing Feedback
+
+This UML modeling environment is based on the "Obeo Designer":http://www.obeodesigner.com product. It is under an
+Open Source license (*EPL*) and the source code is hosted on "github":https://github.com/ObeoNetwork/UML-Modeling. 
+
+It is intended to cover most use cases behind the usage of UML, and more importantly to be reused when you apply a 
+model driven approach wich uses both *UML and some DSL*. Everything should integrate seamlessly  in the same environment. 
+
+We're constantly looking for feedback about this modeler, if you think something is missing, some behavior is weird or even just to tell us you are happy with it in its current state, *please come and exchange* on the "Obeo Network":http://www.obeonetwork.com/group/uml-designer
+
+Feel free to fork the code, adapt it for your need and trigger a "pull request":https://help.github.com/articles/using-pull-requests.
+
+
 h1. Getting Started
 
 This section describes how to start using the UML designer either from existing UML models or by creating a new one.
@@ -75,6 +90,58 @@ Two viewpoints are specified on the UML designer each bringing the following vie
 ** Sequence diagram
 
 You can select either viewpoints or both depending on your use case. Note that the __Package hierarchy diagram__ is the entry point to create new diagrams such as Activity or Sequence diagrams. So it is advised to select at least the __UML Structural modeling__ viewpoint.
+
+h1. Using the Package Hierarchy Diagram
+
+The @Package Hierarchy@ diagram is the starting point of your modeling task. It shows you 
+the structure of your model (packages and sub-packages) and enable the creation of the other diagrams.
+ 
+
+h2. Creating a Class Diagram
+
+To create a class diagram you should *right-click* on your model or on a package and pick @navigate@ and then @new Class Diagram@.
+
+!using_package_hierarchy/create_classdiag.png!
+
+
+h1. Using the Class Diagram
+
+h2. Creating Elements
+
+All the elements you can create in a class diagram are available through the *palette*.
+
+!using_class_diagram/palette.png!
+
+You also have the ability to create elements in a contextual way related to the currently selected elements.
+If your pointer is on the diagram background, after a few seconds you should see the following assistant :
+
+!using_class_diagram/assistant.png!
+
+If your pointer is *on a class* the assistant will be : 
+
+!using_class_diagram/assistant_class.png!
+
+h2. Editing Elements
+
+The generic way to edit element values is using the *properties view*. If it is not opened yet
+you can open it clicking on the *Window* menu, then *Show View*  and then *Properties*
+
+!using_class_diagram/properties.png! 
+
+To edit a property you should then enable the *Semantic* tab :
+
+!using_class_diagram/properties_values.png!
+
+
+h2. Editing Attributes
+
+We added a few accelerators so that you can quickly edit *Attributes* in a class just by typing the label. Typing : 
+* @aNewName@ will update the attribute name.
+* @aNewName : SomeType@ will update the attribute name and will look for the *datatype* with the given name. If found it will 
+* @/someName@ will set the Attribute as *derived*.
+* @=someValue@ will set the *default value* of the Attribute. 
+* @[0..1]@ will set the *multiplicity* of the attribute to 0 for the lower bound and 1 for the upper bound.
+* @[0..*]@ will set the *multiplicity* of the attribute to 0 for the lower bound and unbounded for the upper bound.
 
 h1. Features
 

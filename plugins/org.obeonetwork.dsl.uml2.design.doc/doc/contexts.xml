@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contexts>
+   <context id="PackageHierarchy" title="Welcome in UML Designer">
+     <description>Welcome in UML Designer. This is the Package Hierarchy diagram : the starting point of your modeling task. It shows you 
+the structure of your model (packages and sub-packages) and enable the creation of the other diagrams.
+
+You might want to have a look on the following help topics :</description>
+     <topic href="doc/UML Designer User Guide.html" label="Quickstart guide"/>
+     <topic href="/org.obeonetwork.dsl.uml2.design.doc/doc/UML%20Designer%20User%20Guide.html" label="Give Feedback"/>
+   </context>
+   <context id="ClassDiagram" title="Using the Class Diagram">
+      <description>You might want to have a look on a few help topics regarding the class diagram :</description>
+      <topic href="/org.obeonetwork.dsl.uml2.design.doc/doc/UML%20Designer%20User%20Guide.html?path=27_3#UsingtheClassDiagram" label="Using the Class Diagram"/>
+      <topic href="/org.obeonetwork.dsl.uml2.design.doc/doc/UML%20Designer%20User%20Guide.html" label="Give Feedback"/>
+   </context>
+</contexts>

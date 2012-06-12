@@ -48,6 +48,14 @@ Contributors:
             configId="org.eclipse.ui.intro.universalConfig"
             content="intro/welcome_intro.xml"/>  
    </extension>
-
+   
+ <extension
+        point="org.eclipse.help.contexts">
+     <contexts
+           file="doc/contexts.xml"
+           plugin="org.obeonetwork.dsl.uml2.design">
+     </contexts>
+  </extension>
+ 
   
 </plugin>

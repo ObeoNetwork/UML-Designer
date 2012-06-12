@@ -1,10 +1,19 @@
 <?xml version='1.0' encoding='utf-8' ?>
 <toc topic="doc/UML Designer User Guide.html" label="UML Designer User Guide">
-	<topic href="doc/UML Designer User Guide.html" label="Getting Started">
+	<topic href="doc/UML Designer User Guide.html" label="Providing Feedback"></topic>
+	<topic href="doc/UML Designer User Guide.html#GettingStarted" label="Getting Started">
 		<topic href="doc/UML Designer User Guide.html#StartingfromtheTravelAgencyexample" label="Starting from the Travel Agency example"></topic>
 		<topic href="doc/UML Designer User Guide.html#CreateanewUMLmodelUMLproject" label="Create a new UML model &amp; UML project"></topic>
 		<topic href="doc/UML Designer User Guide.html#DisplayeditanexistingUMLmodel" label="Display &amp; edit an existing UML model"></topic>
 		<topic href="doc/UML Designer User Guide.html#vpselection" label="UML designer viewpoints"></topic>
+	</topic>
+	<topic href="doc/UML Designer User Guide.html#UsingthePackageHierarchyDiagram" label="Using the Package Hierarchy Diagram">
+		<topic href="doc/UML Designer User Guide.html#CreatingaClassDiagram" label="Creating a Class Diagram"></topic>
+	</topic>
+	<topic href="doc/UML Designer User Guide.html#UsingtheClassDiagram" label="Using the Class Diagram">
+		<topic href="doc/UML Designer User Guide.html#CreatingElements" label="Creating Elements"></topic>
+		<topic href="doc/UML Designer User Guide.html#EditingElements" label="Editing Elements"></topic>
+		<topic href="doc/UML Designer User Guide.html#EditingAttributes" label="Editing Attributes"></topic>
 	</topic>
 	<topic href="doc/UML Designer User Guide.html#Features" label="Features">
 		<topic href="doc/UML Designer User Guide.html#ClassDiagram" label="Class Diagram">

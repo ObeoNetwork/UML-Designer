@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Class;
@@ -58,6 +59,16 @@ import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
  * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
  */
 public class UMLServices {
+
+	public void openContextHelp(EObject any, String contextID) {
+		if (PlatformUI.getWorkbench() != null && PlatformUI.getWorkbench().getActiveWorkbenchWindow() != null
+				&& PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell() != null) {
+			PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+			PlatformUI.getWorkbench().getHelpSystem()
+					.setHelp(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), contextID);
+			PlatformUI.getWorkbench().getHelpSystem().displayDynamicHelp();
+		}
+	}
 
 	public Package applyAllProfiles(Package packagge, List<Profile> profilesToApply) {
 		// Unapplying not selected profiles
