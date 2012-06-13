@@ -10,12 +10,16 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.services;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.core.internal.resources.File;
+import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -43,6 +47,7 @@ import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 import org.eclipse.uml2.uml.resource.UMLResource;
+import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
 import org.obeonetwork.dsl.uml2.design.services.internal.ReconnectSwitch;
 
 import com.google.common.collect.Sets;
@@ -60,13 +65,24 @@ import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
  */
 public class UMLServices {
 
-	public void openContextHelp(EObject any, String contextID) {
+	public void openContextHelp(EObject any, String contextID) throws IOException {
 		if (PlatformUI.getWorkbench() != null && PlatformUI.getWorkbench().getActiveWorkbenchWindow() != null
 				&& PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell() != null) {
-			PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-			PlatformUI.getWorkbench().getHelpSystem()
-					.setHelp(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), contextID);
-			PlatformUI.getWorkbench().getHelpSystem().displayDynamicHelp();
+			IPath path = Platform.getStateLocation(UMLDesignerPlugin.getDefault().getBundle());
+			if (path != null) {
+				path = path.append(contextID);
+				if (!path.toFile().exists()) {
+					PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
+					PlatformUI
+							.getWorkbench()
+							.getHelpSystem()
+							.setHelp(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+									contextID);
+					PlatformUI.getWorkbench().getHelpSystem().displayDynamicHelp();
+					path.toFile().createNewFile();
+				}
+			}
+
 		}
 	}
 
