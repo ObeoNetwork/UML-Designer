@@ -17,9 +17,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import org.eclipse.core.internal.resources.File;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -50,6 +50,8 @@ import org.eclipse.uml2.uml.resource.UMLResource;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
 import org.obeonetwork.dsl.uml2.design.services.internal.ReconnectSwitch;
 
+import com.google.common.base.Predicate;
+import com.google.common.collect.Iterators;
 import com.google.common.collect.Sets;
 
 import fr.obeo.dsl.viewpoint.DEdge;
@@ -445,18 +447,12 @@ public class UMLServices {
 
 	public Set<EObject> getOwnedClasses(Package pak) {
 		Set<EObject> result = Sets.newLinkedHashSet();
-		for (EObject eObj : pak.eContents()) {
-			if ("Class".equals(eObj.eClass().getName())) {
-				result.add(eObj);
+		Iterators.addAll(result, Iterators.filter(pak.eAllContents(), new Predicate<EObject>() {
+
+			public boolean apply(EObject eObj) {
+				return "Class".equals(eObj.eClass().getName());
 			}
-			if ("Component".equals(eObj.eClass().getName())) {
-				for (EObject subChild : eObj.eContents()) {
-					if ("Class".equals(subChild.eClass().getName())) {
-						result.add(subChild);
-					}
-				}
-			}
-		}
+		}));
 		return result;
 	}
 
