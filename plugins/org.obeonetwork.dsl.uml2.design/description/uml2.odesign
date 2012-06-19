@@ -581,6 +581,14 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
+        <edgeMappings name="CD_AssociationClassToAssociation" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']" targetFinderExpression="&lt;%self%>">
+          <style targetArrow="NoDecoration" sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
         <containerMappings name="CD_ReusedMappingForFeatures" semanticCandidatesExpression="null" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Classifier">
           <subNodeMappings name="CD_Operation" detailDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.1/@subSections[name='navigation']/@ownedTools[name='Activity%20diagram'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='State%20Machine%20for%20Operation']" navigationDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.1/@subSections[name='navigation']/@ownedTools[name='Nav%20to%20Activity%20diag'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='navigation']/@ownedTools[name='for%20operation'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='state%20diagram']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%ownedOperation%>" semanticElements="&lt;%self + ownedParameter%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Operation">
             <style xsi:type="style:SquareDescription" labelExpression="&lt;%computeUmlLabel()%>" labelAlignment="LEFT" sizeComputationExpression="1">
@@ -1001,6 +1009,32 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$source.filter(&quot;Association&quot;) || $target.filter(&quot;Association&quot;)%>">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%fixAssociation($source,$target)%>"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:EdgeCreationDescription" name="Association Class" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/AssociationClass.gif">
+              <sourceVariable name="source"/>
+              <targetVariable name="target"/>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;Package&quot;)%>">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.AssociationClass" referenceName="packagedElement">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="AssociationClass&lt;%eContainer().eContents().filter(&quot;Class&quot;).nSize()%>"/>
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedEnd">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$source.name.toL1Case%>s"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$source%>"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="-1"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedEnd">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$target.name.toL1Case%>s"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$target%>"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="-1"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="navigableOwnedEnd" valueExpression="&lt;%memberEnd.nGet(0) + memberEnd.nGet(1)%>"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>

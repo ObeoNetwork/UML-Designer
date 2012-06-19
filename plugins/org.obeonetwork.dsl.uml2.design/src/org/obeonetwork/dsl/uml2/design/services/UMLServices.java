@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
+import org.eclipse.uml2.uml.AssociationClass;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Element;
@@ -450,7 +451,8 @@ public class UMLServices {
 		Iterators.addAll(result, Iterators.filter(pak.eAllContents(), new Predicate<EObject>() {
 
 			public boolean apply(EObject eObj) {
-				return "Class".equals(eObj.eClass().getName());
+				return "Class".equals(eObj.eClass().getName())
+						|| "AssociationClass".equals(eObj.eClass().getName());
 			}
 		}));
 		return result;
@@ -543,7 +545,8 @@ public class UMLServices {
 	public Collection<Association> getBrokenAssociations(EObject container) {
 		Collection<Association> result = new ArrayList<Association>();
 		for (EObject child : container.eContents()) {
-			if (child instanceof Association && isBroken((Association)child)) {
+			if (child instanceof Association && !(child instanceof AssociationClass)
+					&& isBroken((Association)child)) {
 				result.add((Association)child);
 			}
 		}
