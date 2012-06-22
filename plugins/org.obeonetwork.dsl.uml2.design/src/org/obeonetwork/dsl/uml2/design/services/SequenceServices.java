@@ -442,6 +442,25 @@ public class SequenceServices {
 	}
 
 	/**
+	 * Add a context to the lifeline.
+	 * 
+	 * @param lifeline
+	 *            the lifeline
+	 * @param context
+	 *            the context
+	 */
+	public void addContext(Lifeline lifeline, Property context) {
+		// Create lifeline
+		deleteContext(lifeline);
+		final Dependency dependency = UMLFactory.eINSTANCE.createDependency();
+		dependency.setName(lifeline.getName() + "_" + context.getName());
+		dependency.getClients().add(lifeline);
+		dependency.getSuppliers().add(context);
+		lifeline.getNearestPackage().getPackagedElements().add(dependency);
+		lifeline.getClientDependencies().add(dependency);
+	}
+
+	/**
 	 * Create a typed execution. Execution could be created on lifeline or other parent execution.
 	 * 
 	 * @param interaction
@@ -928,12 +947,7 @@ public class SequenceServices {
 		if (lifeline == null)
 			return;
 		// Delete dependency
-		final EList<Dependency> dependencies = lifeline.getClientDependencies();
-		if (dependencies != null && dependencies.size() > 0) {
-			final Dependency dependency = dependencies.get(0);
-			if (dependency != null)
-				dependency.destroy();
-		}
+		deleteContext(lifeline);
 
 		// Delete all executions
 		for (ExecutionSpecification execution : executionSemanticCandidates(lifeline)) {
@@ -948,6 +962,20 @@ public class SequenceServices {
 
 		// Delete lifeline
 		lifeline.destroy();
+	}
+
+	/**
+	 * Delete the client dependency used for the context.
+	 * 
+	 * @param lifeline
+	 *            the lifeline
+	 */
+	// add an eannotation
+	public void deleteContext(Lifeline lifeline) {
+		final EList<Dependency> dependencies = lifeline.getClientDependencies();
+		for (Dependency dependency : dependencies) {
+			EcoreUtil.remove(dependency);
+		}
 	}
 
 	/**
@@ -1107,7 +1135,9 @@ public class SequenceServices {
 	public List<Operation> getOperations(EObject target) {
 		List<Element> elements = null;
 		if (target instanceof Lifeline) {
-			elements = getType((Lifeline)target).getOwnedElements();
+			final Type type = getType((Lifeline)target);
+			if (type != null)
+				elements = type.getOwnedElements();
 		} else if (target instanceof ExecutionSpecification) {
 			elements = ((ExecutionSpecification)target).getOwnedElements();
 		}
@@ -1454,11 +1484,16 @@ public class SequenceServices {
 	 * @return Type
 	 */
 	private Type getType(Lifeline target) {
+		if (target.getRepresents() != null) {
+			return target.getRepresents().getType();
+		}
+
 		if (target.getClientDependencies() != null && !target.getClientDependencies().isEmpty()) {
 			return ((InstanceSpecification)target.getClientDependencies().get(0).getSuppliers().get(0))
 					.getClassifiers().get(0);
 		}
-		return target.getRepresents().getType();
+		return null;
+
 	}
 
 	/**

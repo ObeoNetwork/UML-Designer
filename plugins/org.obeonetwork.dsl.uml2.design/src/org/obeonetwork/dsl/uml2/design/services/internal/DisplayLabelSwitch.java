@@ -17,6 +17,7 @@ import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.BehaviorExecutionSpecification;
 import org.eclipse.uml2.uml.CallOperationAction;
+import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.DataStoreNode;
 import org.eclipse.uml2.uml.Element;
@@ -56,6 +57,11 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	 * Spaced column constant.
 	 */
 	private static final String SPACED_COLUMN = " : ";
+
+	/**
+	 * Spaced column constant.
+	 */
+	private static final String SPACED_COMMA = ", ";
 
 	/**
 	 * Closing brace constant.
@@ -346,19 +352,38 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	 */
 	@Override
 	public String caseLifeline(Lifeline lifeline) {
-		final StringBuilder label = new StringBuilder(caseNamedElement(lifeline));
-		if (lifeline.getClientDependencies() != null && lifeline.getClientDependencies().size() > 0
-				&& lifeline.getClientDependencies().get(0) != null
-				&& lifeline.getClientDependencies().get(0).getSuppliers() != null
-				&& lifeline.getClientDependencies().get(0).getSuppliers().get(0) != null) {
-			label.append(SPACED_COLUMN);
-			label.append(((InstanceSpecification)lifeline.getClientDependencies().get(0).getSuppliers()
-					.get(0)).getClassifiers().get(0).getLabel());
+		final StringBuilder label = new StringBuilder();
+		if (lifeline.getRepresents() != null && isDependencyDescribed(lifeline)) {
+			for (NamedElement context : lifeline.getClientDependencies().get(0).getSuppliers()) {
+				label.append(context.getLabel());
+				label.append(SPACED_COLUMN.trim());
+				label.append(SPACED_COLUMN.trim());
+			}
+			label.append(doSwitch(lifeline.getRepresents()));
+		} else if (lifeline.getRepresents() == null && isDependencyDescribed(lifeline)) {
+			for (NamedElement context : lifeline.getClientDependencies().get(0).getSuppliers()) {
+				label.append(doSwitch(context));
+			}
 		} else if (lifeline.getRepresents() != null) {
-			label.append(SPACED_COLUMN);
-			label.append(((Property)lifeline.getRepresents()).getType().getLabel());
+			// label.append(SPACED_COLUMN);
+			label.append(doSwitch(lifeline.getRepresents()));
+		} else {
+			label.append(caseNamedElement(lifeline));
 		}
 		return label.toString();
+	}
+
+	/**
+	 * Test if a context dependency is added to the lifeline.
+	 * 
+	 * @param lifeline
+	 *            the lifeline
+	 * @return true if any
+	 */
+	private boolean isDependencyDescribed(Lifeline lifeline) {
+		return lifeline.getClientDependencies() != null && lifeline.getClientDependencies().size() > 0
+				&& lifeline.getClientDependencies().get(0) != null
+				&& lifeline.getClientDependencies().get(0).getSuppliers().size() > 0;
 	}
 
 	/**
@@ -398,6 +423,25 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 		sb.append(p.getName());
 		sb.append(caseMultiplicityElement(p));
 		return sb.toString();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public String caseInstanceSpecification(InstanceSpecification object) {
+		final StringBuilder label = new StringBuilder(caseNamedElement(object));
+
+		if (object.getClassifiers() != null && object.getClassifiers().size() > 0) {
+			label.append(SPACED_COLUMN);
+			final Iterator<Classifier> it = object.getClassifiers().iterator();
+			while (it.hasNext()) {
+				final Classifier classifier = (Classifier)it.next();
+				label.append(doSwitch(classifier).replace("\n"," "));
+				if (it.hasNext())
+					label.append(SPACED_COMMA);
+			}
+		}
+		return label.toString();
 	}
 
 }
