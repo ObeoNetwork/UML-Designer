@@ -972,10 +972,12 @@ public class SequenceServices {
 	 */
 	// add an eannotation
 	public void deleteContext(Lifeline lifeline) {
-		final EList<Dependency> dependencies = lifeline.getClientDependencies();
-		for (Dependency dependency : dependencies) {
-			EcoreUtil.remove(dependency);
+		final Object[] dependencies = lifeline.getClientDependencies().toArray();
+		
+		for (int i = 0; i < dependencies.length; i++) {
+			EcoreUtil.delete((Dependency)dependencies[i]);
 		}
+
 	}
 
 	/**

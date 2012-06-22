@@ -364,9 +364,9 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 			for (NamedElement context : lifeline.getClientDependencies().get(0).getSuppliers()) {
 				label.append(doSwitch(context));
 			}
-		} else if (lifeline.getRepresents() != null) {
+		} else if (lifeline.getRepresents() instanceof Property) {
 			// label.append(SPACED_COLUMN);
-			label.append(doSwitch(lifeline.getRepresents()));
+			label.append(caseProperty((Property)lifeline.getRepresents()));
 		} else {
 			label.append(caseNamedElement(lifeline));
 		}
@@ -436,7 +436,7 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 			final Iterator<Classifier> it = object.getClassifiers().iterator();
 			while (it.hasNext()) {
 				final Classifier classifier = (Classifier)it.next();
-				label.append(doSwitch(classifier).replace("\n"," "));
+				label.append(doSwitch(classifier).replace("\n", " "));
 				if (it.hasNext())
 					label.append(SPACED_COMMA);
 			}
