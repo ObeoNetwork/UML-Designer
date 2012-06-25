@@ -62,10 +62,17 @@ public class UmlAnalysisContextMenuActionProvider implements Oo20979oo {
 		return actions;
 	}
 
+	/**
+	 * Check if the UML behavioral viewpoint is active.
+	 * 
+	 * @param selectedObject
+	 *            Selected object
+	 * @return True if UML behavioral viewpoint is active otherwise false.
+	 */
 	private boolean behavioralViewpointExists(Object selectedObject) {
 		if (selectedObject instanceof Package) {
 			// Get session
-			Session session = SessionManager.INSTANCE.getSession((EObject)selectedObject);
+			final Session session = SessionManager.INSTANCE.getSession((EObject)selectedObject);
 
 			// Get selected viewpoints
 			for (Viewpoint vp : session.getSelectedViewpoints()) {
