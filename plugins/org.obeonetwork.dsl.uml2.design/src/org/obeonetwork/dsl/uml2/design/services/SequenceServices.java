@@ -627,8 +627,7 @@ public class SequenceServices {
 		if (operation != null) {
 			final OpaqueBehavior behavior = factory.createOpaqueBehavior();
 			behavior.setName(operationName.toString());
-			if (targetFragment instanceof ExecutionSpecification)
-				behavior.setSpecification(operation);
+			behavior.setSpecification(operation);
 			interaction.getOwnedBehaviors().add(behavior);
 
 			execution = factory.createBehaviorExecutionSpecification();
@@ -790,8 +789,7 @@ public class SequenceServices {
 		if (operation != null) {
 			final OpaqueBehavior behavior = factory.createOpaqueBehavior();
 			behavior.setName(operationName.toString());
-			if (operation != null || targetFragment instanceof ExecutionSpecification)
-				behavior.setSpecification(operation);
+			behavior.setSpecification(operation);
 			interaction.getOwnedBehaviors().add(behavior);
 
 			execution = factory.createBehaviorExecutionSpecification();
@@ -973,7 +971,7 @@ public class SequenceServices {
 	// add an eannotation
 	public void deleteContext(Lifeline lifeline) {
 		final Object[] dependencies = lifeline.getClientDependencies().toArray();
-		
+
 		for (int i = 0; i < dependencies.length; i++) {
 			EcoreUtil.delete((Dependency)dependencies[i]);
 		}
