@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Require-Bundle: org.eclipse.help,org.eclipse.emf.common.ui
 Bundle-Vendor: Obeo Network
-Bundle-Version: 1.3.0.201205251755
+Bundle-Version: 1.3.0.201207101407
 Bundle-Localization: plugin
 Bundle-Name: UML Designer Documentation
 Bundle-ManifestVersion: 2
