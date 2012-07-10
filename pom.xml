@@ -208,7 +208,7 @@ Contributors:
 				<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
 				<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 				<!-- Points to the target folder of the global parent project -->
-				<sonar.jacoco.reportPath>${project.parent.basedir}/target/jacoco.exec</sonar.jacoco.reportPath>
+				<sonar.jacoco.reportPath>../../target/jacoco.exec</sonar.jacoco.reportPath>
 			</properties>
 			<build>
 				<plugins>
