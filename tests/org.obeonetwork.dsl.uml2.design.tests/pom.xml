@@ -46,7 +46,8 @@
 					</includes>
 					<useUIHarness>true</useUIHarness>
 					<useUIThread>true</useUIThread>
-					<argLine>${tycho.testArgLine} -Xmx1024m -XX:MaxPermSize=256m</argLine>
+					<argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+					<appArgLine>${tycho.testArgLine}</appArgLine>
 					<testFailureIgnore>true</testFailureIgnore>
 				</configuration>
 			</plugin>
