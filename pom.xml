@@ -224,9 +224,6 @@ Contributors:
 								<configuration>
 									<append>true</append>
 									<destFile>${sonar.jacoco.reportPath}</destFile>
-									<includes>
-										<include>org.obeonetwork.dsl.uml2.*</include>
-									</includes>
 								</configuration>
 							</execution>
 						</executions>
