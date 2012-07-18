@@ -1524,6 +1524,40 @@
             <containerView name="containerView"/>
             <container name="container"/>
           </ownedTools>
+          <ownedTools xsi:type="tool:SelectionWizardDescription" name="Instance Property" precondition="&lt;%filter(&quot;Type&quot;) || eClass.name == &quot;Property&quot;%>" forceRefresh="true" candidatesExpression="&lt;%eContainer(&quot;Model&quot;)+eContainer(&quot;Model&quot;).eAllContents().filter(&quot;Package&quot;)+eContainer(&quot;Model&quot;).eAllContents.filter(&quot;InstanceSpecification&quot;)%>" tree="true" rootExpression="&lt;%getRootContainer()%>" childrenExpression="&lt;%eContents()%>" message="Please select an instance for the new property" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Property.gif" windowTitle="New property instance selection">
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
+                <subModelOperations xsi:type="tool:ExternalJavaAction" name="debug" id="fr.obeo.dsl.viewpoint.business.api.action.printVariables"/>
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$container.filter(&quot;Property&quot;).nSize()>0%>">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$element.classifier.nGet(0)%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$element.name%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="1"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="1"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="InstanceValue" referenceName="defaultValue">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$element.name.toLowerCase()%>"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="instance" valueExpression="&lt;%$element%>"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$container.filter(&quot;Class&quot;).nSize()>0%>">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedAttribute" variableName="property">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$element.classifier.nGet(0)%>"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$element.name%>"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="1"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="1"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="InstanceValue" referenceName="defaultValue">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$element.name.toLowerCase()%>"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="instance" valueExpression="&lt;%$element%>"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <element name="element"/>
+            <containerView name="containerView"/>
+            <container name="container"/>
+          </ownedTools>
         </toolSections>
         <toolSections name="Delete">
           <ownedTools xsi:type="tool:DeleteElementDescription" name="Part &amp; Connector">
