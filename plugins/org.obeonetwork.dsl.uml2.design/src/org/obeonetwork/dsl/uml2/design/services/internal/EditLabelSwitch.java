@@ -140,7 +140,11 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 							}
 							final String up = mulInter.substring(mulInter.indexOf("..") + 2).trim();
 							if (up.length() > 0) {
-								upperBound = Integer.valueOf(up);
+								if ("*".equals(up)) {
+									upperBound = -1;
+								} else {
+									upperBound = Integer.valueOf(up);
+								}
 							}
 						} else {
 							final Integer singleBound = Integer.valueOf(mulInter);
@@ -323,13 +327,12 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 		return execution;
 	}
 
-	
 	@Override
 	public Element caseEnumerationLiteral(EnumerationLiteral object) {
 		object.setName(editedLabelContent);
 		return object;
 	}
-	
+
 	/**
 	 * {@inheritDoc}
 	 */

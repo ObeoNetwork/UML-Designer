@@ -405,7 +405,7 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	 *            the {@link Association}'s {@link Property} end.
 	 * @return the label of the association end.
 	 */
-	private String getAssociationEndLabel(Property p) {
+	public String getAssociationEndLabel(Property p) {
 		final StringBuilder sb = new StringBuilder("");
 		if (p.isDerived()) {
 			sb.append("/");

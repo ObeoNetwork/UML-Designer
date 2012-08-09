@@ -12,6 +12,7 @@ package org.obeonetwork.dsl.uml2.design.services;
 
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Interaction;
+import org.eclipse.uml2.uml.Property;
 import org.obeonetwork.dsl.uml2.design.services.internal.DisplayLabelSwitch;
 import org.obeonetwork.dsl.uml2.design.services.internal.EditLabelSwitch;
 import org.obeonetwork.dsl.uml2.design.services.internal.NamedElementServices;
@@ -45,6 +46,18 @@ public class LabelServices {
 		final DisplayLabelSwitch displayLabel = new DisplayLabelSwitch();
 
 		return displayLabel.doSwitch(element);
+	}
+
+	/**
+	 * Compute the label of the given property with mutiplicity and such.
+	 * 
+	 * @param element
+	 *            the {@link Element} for which to retrieve a label.
+	 * @return the computed label.
+	 */
+	public String computeAssociationEndLabel(Property p) {
+		final DisplayLabelSwitch displayLabel = new DisplayLabelSwitch();
+		return displayLabel.getAssociationEndLabel(p);
 	}
 
 	/**
