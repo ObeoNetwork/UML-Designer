@@ -466,7 +466,7 @@ public class UMLServices {
 				Iterator<EObject> it = rootResource.getAllContents();
 				while (it.hasNext()) {
 					EObject cur = it.next();
-					if ("Class".equals(cur.eClass().getName())) {
+					if ("Class".equals(cur.eClass().getName()) || "AssociationClass".equals(cur.eClass().getName())) {
 						valids.add(cur);
 					}
 				}
