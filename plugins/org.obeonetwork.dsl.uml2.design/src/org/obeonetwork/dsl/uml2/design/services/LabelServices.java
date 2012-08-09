@@ -56,7 +56,7 @@ public class LabelServices {
 	 * @return the computed label.
 	 */
 	public String computeAssociationEndLabel(Property p) {
-		final DisplayLabelSwitch displayLabel = new DisplayLabelSwitch();
+		final DisplayLabelSwitch displayLabel = new DisplayLabelSwitch();		
 		return displayLabel.getAssociationEndLabel(p);
 	}
 
