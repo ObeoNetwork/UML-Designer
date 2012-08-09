@@ -597,7 +597,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="CD_Property" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%ownedAttribute%>" semanticElements="&lt;%self + defaultValue%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Property">
+          <subNodeMappings name="CD_Property" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%ownedAttribute%>" semanticElements="&lt;%self + defaultValue + nameExpression + eAnnotations%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Property">
             <style xsi:type="style:SquareDescription" labelExpression="&lt;%computeUmlLabel()%>" labelAlignment="LEFT" tooltipExpression="&lt;%computeUmlTooltip()%>" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1129,6 +1129,28 @@
                 <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="&lt;%$element.eContainer(&quot;Package&quot;)%>" featureName="packagedElement"/>
               </firstModelOperations>
             </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:PopupMenu" name="Expression">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Add" precondition="&lt;%self.filter(&quot;Property&quot;) &amp;&amp; !self.nameExpression%>">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:For" expression="&lt;%$views%>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$i.target%>">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="StringExpression" referenceName="nameExpression"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" name="Remove" precondition="&lt;%self.filter(&quot;Property&quot;) &amp;&amp; self.nameExpression%>">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:For" expression="&lt;%$views%>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$i.target.nameExpression%>">
+                    <subModelOperations xsi:type="tool:RemoveElement"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
           </ownedTools>
         </toolSections>
       </defaultLayer>
