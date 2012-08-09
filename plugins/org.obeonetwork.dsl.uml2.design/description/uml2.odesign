@@ -1130,8 +1130,8 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:PopupMenu" name="Expression">
-            <menuItemDescription xsi:type="tool:OperationAction" name="Add" precondition="&lt;%self.filter(&quot;Property&quot;) &amp;&amp; !self.nameExpression%>">
+          <ownedTools xsi:type="tool:PopupMenu" name="StringExpression">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Add" precondition="&lt;%self.filter(&quot;Property&quot;) &amp;&amp; !self.nameExpression%>" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/StringExpression.gif">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:For" expression="&lt;%$views%>">
