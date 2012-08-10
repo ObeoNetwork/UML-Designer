@@ -1125,7 +1125,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Nest Class" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_NestedClass']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Connector.gif">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Nest Classifier" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_NestedClass']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Connector.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>

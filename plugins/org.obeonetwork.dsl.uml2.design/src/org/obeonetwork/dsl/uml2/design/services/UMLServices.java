@@ -57,6 +57,7 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 import fr.obeo.dsl.viewpoint.DEdge;
@@ -474,10 +475,10 @@ public class UMLServices {
 		Set<EObject> result = Sets.newLinkedHashSet();
 		for (EObject eObject : getDirectContent(pak)) {
 			result.add(eObject);
-			result.addAll(getDirectContent(eObject));
+			result.addAll(Lists.newArrayList(Iterators.filter(eObject.eAllContents(), classifierLike)));
 		}
 		for (Component comp : Iterables.filter(pak.eContents(), Component.class)) {
-			result.addAll(getDirectContent(comp));
+			result.addAll(Lists.newArrayList(Iterators.filter(comp.eAllContents(), classifierLike)));
 		}
 		return result;
 	}
