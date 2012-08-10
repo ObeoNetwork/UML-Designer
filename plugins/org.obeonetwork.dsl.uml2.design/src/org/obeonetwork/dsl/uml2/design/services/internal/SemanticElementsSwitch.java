@@ -18,7 +18,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Connector;
-import org.eclipse.uml2.uml.ControlFlow;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Extend;
 import org.eclipse.uml2.uml.Include;
