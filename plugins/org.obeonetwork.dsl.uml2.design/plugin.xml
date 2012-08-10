@@ -73,7 +73,9 @@ Contributors:
               commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.delete">
            <enabledWhen>
             <with variable="selection">
-		           <iterate operator="and">
+		           <iterate
+                   ifEmpty="false"
+                   operator="and">
 		                <instanceof value="org.eclipse.uml2.uml.Element"/>
 		           </iterate>
        		</with>
@@ -85,7 +87,8 @@ Contributors:
            <enabledWhen>
             <with variable="selection">
                  <iterate
-                     operator="and">
+                       ifEmpty="false"
+                       operator="and">
                   <instanceof
                         value="org.eclipse.uml2.uml.Package">
                   </instanceof>
