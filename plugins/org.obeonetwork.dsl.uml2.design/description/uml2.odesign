@@ -1817,7 +1817,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:SelectionWizardDescription" name="Port" precondition="&lt;%filter(&quot;Type&quot;) || eClass.name == &quot;Property&quot;%>" forceRefresh="true" candidatesExpression="&lt;%$diagram.target.eContainer(&quot;uml.Package&quot;).availableTypes.debug()%>" message="Please select a type for the new port" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Property.gif" windowTitle="New property type selection">
+          <ownedTools xsi:type="tool:SelectionWizardDescription" name="Port" precondition="&lt;%filter(&quot;EncapsulatedClassifier&quot;) || (eClass.name == &quot;Property&quot; &amp;&amp; type.filter(&quot;EncapsulatedClassifier&quot;)) %>" forceRefresh="true" candidatesExpression="&lt;%$diagram.target.eContainer(&quot;uml.Package&quot;).availableTypes.debug()%>" message="Please select a type for the new port" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Property.gif" windowTitle="New property type selection">
             <element name="element"/>
             <containerView name="containerView"/>
             <container name="container"/>
