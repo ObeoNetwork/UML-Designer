@@ -50,6 +50,7 @@ import org.eclipse.uml2.uml.VisibilityKind;
 import org.eclipse.uml2.uml.resource.UMLResource;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
 import org.obeonetwork.dsl.uml2.design.services.internal.ReconnectSwitch;
+import org.obeonetwork.dsl.uml2.design.services.internal.SemanticElementsSwitch;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
@@ -121,6 +122,17 @@ public class UMLServices {
 			}
 		}
 		return element;
+	}
+
+	/**
+	 * return the list of semantic elements we should bind with the given element in the property view.
+	 * 
+	 * @param e
+	 *            a semantic element.
+	 * @return the list of semantic elements we should bind with the given element in the property view.
+	 */
+	public Collection<EObject> getSemanticElements(EObject e) {
+		return new SemanticElementsSwitch().getSemanticElements(e);
 	}
 
 	/**
@@ -466,7 +478,8 @@ public class UMLServices {
 				Iterator<EObject> it = rootResource.getAllContents();
 				while (it.hasNext()) {
 					EObject cur = it.next();
-					if ("Class".equals(cur.eClass().getName()) || "AssociationClass".equals(cur.eClass().getName())) {
+					if ("Class".equals(cur.eClass().getName())
+							|| "AssociationClass".equals(cur.eClass().getName())) {
 						valids.add(cur);
 					}
 				}
