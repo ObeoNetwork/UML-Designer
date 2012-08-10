@@ -31,6 +31,7 @@ import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.AssociationClass;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.Generalization;
@@ -53,6 +54,8 @@ import org.obeonetwork.dsl.uml2.design.services.internal.ReconnectSwitch;
 import org.obeonetwork.dsl.uml2.design.services.internal.SemanticElementsSwitch;
 
 import com.google.common.base.Predicate;
+import com.google.common.collect.Collections2;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Sets;
 
@@ -458,34 +461,44 @@ public class UMLServices {
 		return res;
 	}
 
-	public Set<EObject> getOwnedClasses(Package pak) {
-		Set<EObject> result = Sets.newLinkedHashSet();
-		Iterators.addAll(result, Iterators.filter(pak.eAllContents(), new Predicate<EObject>() {
+	private Predicate<EObject> classifierLike = new Predicate<EObject>() {
 
-			public boolean apply(EObject eObj) {
-				return "Class".equals(eObj.eClass().getName())
-						|| "AssociationClass".equals(eObj.eClass().getName());
-			}
-		}));
+		public boolean apply(EObject eObj) {
+			String className = eObj.eClass().getName();
+			return "Class".equals(className) || "AssociationClass".equals(className)
+					|| "Interface".equals(className) || "Enumeration".equals(className);
+		}
+	};
+
+	public Set<EObject> getOwnedClassifiersLike(Package pak) {
+		Set<EObject> result = Sets.newLinkedHashSet();
+		for (EObject eObject : getDirectContent(pak)) {
+			result.add(eObject);
+			result.addAll(getDirectContent(eObject));
+		}
+		for (Component comp : Iterables.filter(pak.eContents(), Component.class)) {
+			result.addAll(getDirectContent(comp));
+		}
 		return result;
 	}
 
-	public Set<EObject> getExternalClasses(Package pak) {
+	private Collection<EObject> getDirectContent(EObject pak) {
+		return Collections2.filter(pak.eContents(), classifierLike);
+	}
+
+	public Set<EObject> getExternalClassifiersLike(Package pak) {
 		Set<EObject> valids = Sets.newLinkedHashSet();
 		Session sess = SessionManager.INSTANCE.getSession(pak);
 		if (sess != null) {
 			for (Resource rootResource : sess.getSemanticResources()) {
-				Iterator<EObject> it = rootResource.getAllContents();
+				Iterator<EObject> it = Iterators.filter(rootResource.getAllContents(), classifierLike);
 				while (it.hasNext()) {
 					EObject cur = it.next();
-					if ("Class".equals(cur.eClass().getName())
-							|| "AssociationClass".equals(cur.eClass().getName())) {
-						valids.add(cur);
-					}
+					valids.add(cur);
 				}
 			}
 		}
-		return Sets.difference(valids, getOwnedClasses(pak));
+		return Sets.difference(valids, getOwnedClassifiersLike(pak));
 	}
 
 	/**
