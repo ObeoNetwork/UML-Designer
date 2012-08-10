@@ -2,7 +2,7 @@
 <feature
       id="fr.obeo.dsl.feature.uml2"
       label="UML Designer"
-      version="1.3.0.qualifier"
+      version="1.4.0.qualifier"
       provider-name="Obeo">
 
    <description url="http://docs.obeonetwork.com/uml">
