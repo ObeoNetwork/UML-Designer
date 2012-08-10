@@ -65,6 +65,24 @@
             </firstModelOperations>
           </initialOperation>
         </ownedTools>
+        <ownedTools xsi:type="tool:PopupMenu" name="EAnnotation">
+          <menuItemDescription xsi:type="tool:OperationAction" name="Create" precondition="&lt;%self.filter(&quot;EModelElement&quot;)%>">
+            <view name="views"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="EAnnotation" referenceName="eAnnotations"/>
+            </initialOperation>
+          </menuItemDescription>
+          <menuItemDescription xsi:type="tool:OperationAction" name="Delete" precondition="&lt;%self.filter(&quot;EModelElement&quot;)%>">
+            <view name="views">
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="selected" candidatesExpression="&lt;%trace.target.eAnnotations.trace%>" multiple="true" message="Select the EAnnotations to delete."/>
+            </view>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:For" expression="&lt;%$selected%>">
+                <subModelOperations xsi:type="tool:RemoveElement"/>
+              </firstModelOperations>
+            </initialOperation>
+          </menuItemDescription>
+        </ownedTools>
         <subSections documentation="available details tools" name="details">
           <ownedTools xsi:type="tool:DiagramCreationDescription" documentation="Create a use case diagram" name="Use Case Diagram" diagramDescription="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']">
             <initialOperation/>
@@ -158,24 +176,6 @@
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>
-          </ownedTools>
-          <ownedTools xsi:type="tool:PopupMenu" name="EAnnotation">
-            <menuItemDescription xsi:type="tool:OperationAction" name="Create" precondition="&lt;%self.filter(&quot;EModelElement&quot;)%>">
-              <view name="views"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:CreateInstance" typeName="EAnnotation" referenceName="eAnnotations"/>
-              </initialOperation>
-            </menuItemDescription>
-            <menuItemDescription xsi:type="tool:OperationAction" name="Delete" precondition="&lt;%self.filter(&quot;EModelElement&quot;)%>">
-              <view name="views">
-                <subVariables xsi:type="tool:SelectModelElementVariable" name="selected" candidatesExpression="&lt;%trace.target.eAnnotations.trace%>" multiple="true" message="Select the EAnnotations to delete."/>
-              </view>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:For" expression="&lt;%$selected%>">
-                  <subModelOperations xsi:type="tool:RemoveElement"/>
-                </firstModelOperations>
-              </initialOperation>
-            </menuItemDescription>
           </ownedTools>
         </subSections>
       </toolSection>
@@ -350,7 +350,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='EAnnotation']">
+        <toolSections reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='EAnnotation']">
           <ownedTools xsi:type="tool:DiagramNavigationDescription" name="state" browseExpression="&lt;%self.eContents().filter(&quot;StateMachine&quot;)%>" navigationNameExpression="Open &lt;%$name%>" diagramDescription="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']">
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
@@ -899,7 +899,7 @@
             </ownedTools>
           </subSections>
         </toolSections>
-        <toolSections name="Relationships" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='EAnnotation']">
+        <toolSections name="Relationships" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='EAnnotation']">
           <ownedTools xsi:type="tool:ToolGroup" name="Associations">
             <tools xsi:type="tool:EdgeCreationDescription" documentation="Create a new Association" name="Association" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']" extraSourceMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@nodeMappings[name='CD_BrokenAssociation']">
               <sourceVariable name="source"/>
@@ -1463,7 +1463,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="delete" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='EAnnotation']">
+        <toolSections name="delete" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='EAnnotation']">
           <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete Usage From Port">
             <element name="element"/>
             <elementView name="elementView"/>
@@ -1598,7 +1598,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <toolSections name="Object Diagram" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='EAnnotation']">
+        <toolSections name="Object Diagram" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='EAnnotation']">
           <ownedTools xsi:type="tool:ToolDescription" name="CR_InstanceSpecification" label="Create Instance" forceRefresh="true" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/InstanceSpecification.gif">
             <element name="element">
               <subVariables xsi:type="tool:SelectModelElementVariable" name="class" candidatesExpression="&lt;%eContainer(&quot;Model&quot;)+eContainer(&quot;Model&quot;).eAllContents().filter(&quot;Package&quot;)+eContainer(&quot;Model&quot;).eAllContents.filter(&quot;Class&quot;)-(eContainer(&quot;Model&quot;).eAllContents.filter(&quot;Interaction&quot;)+eContainer(&quot;Model&quot;).eAllContents.filter(&quot;OpaqueBehavior&quot;)+eContainer(&quot;Model&quot;).eAllContents.filter(&quot;Activity&quot;)+eContainer(&quot;Model&quot;).eAllContents.filter(&quot;StateMachine&quot;)) +getRootContainer().getImportedPackages()+getRootContainer().getImportedPackages().eAllContents.filter(&quot;Package&quot;)+getRootContainer().getImportedPackages().eAllContents.filter(&quot;Class&quot;)-(getRootContainer().getImportedPackages().eAllContents.filter(&quot;Interaction&quot;)+getRootContainer().getImportedPackages().eAllContents.filter(&quot;OpaqueBehavior&quot;)+getRootContainer().getImportedPackages().eAllContents.filter(&quot;Activity&quot;)+getRootContainer().getImportedPackages().eAllContents.filter(&quot;StateMachine&quot;))%>" tree="true" rootExpression="&lt;%eContainer(&quot;Model&quot;)+getRootContainer().getImportedPackages()%>" childrenExpression="&lt;%eContents()%>" message="Select property to instanciate"/>
@@ -1881,7 +1881,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Delete" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='EAnnotation']">
+        <toolSections name="Delete" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='EAnnotation']">
           <ownedTools xsi:type="tool:DeleteElementDescription" name="Part &amp; Connector">
             <element name="element"/>
             <elementView name="elementView"/>
@@ -2178,7 +2178,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
           </style>
         </containerMappings>
-        <toolSections name="Profile" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Properties']/@tools.0 //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Import%20primitive%20types'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='EAnnotation']">
+        <toolSections name="Profile" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Properties']/@tools.0 //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Import%20primitive%20types'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='EAnnotation']">
           <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a Class" name="Stereotype" containerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Stereotype.gif">
             <variable name="container"/>
             <viewVariable/>
@@ -2253,7 +2253,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <toolSections name="Composite Object Diagram" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CR_InstanceSlot'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CR_InstanceSpecification'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='EAnnotation']">
+        <toolSections name="Composite Object Diagram" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CR_InstanceSlot'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CR_InstanceSpecification'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='EAnnotation']">
           <ownedTools xsi:type="tool:DiagramNavigationDescription" name="for InstanceSpecification" browseExpression="&lt;%$container.eContainer%>" navigationNameExpression="&lt;%$container.eContainer.name%> Object Diagram" diagramDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']">
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
@@ -2325,7 +2325,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_chocolate']"/>
           </style>
         </containerMappings>
-        <toolSections name="State Machine" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='EAnnotation']">
+        <toolSections name="State Machine" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='EAnnotation']">
           <ownedTools xsi:type="tool:NodeCreationDescription" name="Initial PseudoState" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -2580,7 +2580,7 @@
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <toolSections name="activity tools" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='EAnnotation']">
+        <toolSections name="activity tools" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='EAnnotation']">
           <ownedTools xsi:type="tool:ContainerCreationDescription" name="Partition" containerMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_Partition']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -2920,7 +2920,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <toolSections name="Use Case" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='EAnnotation']">
+        <toolSections name="Use Case" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='EAnnotation']">
           <subSections name="drag &amp; drop">
             <ownedTools xsi:type="tool:ContainerDropDescription" documentation="Tool to drag &amp; drop a use case" name="UC_D&amp;D_UseCase" mappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']/@subNodeMappings[name='UCD_UseCase'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_UseCase']">
               <oldContainer name="oldSemanticContainer"/>
@@ -3171,7 +3171,7 @@
             </style>
           </conditionnalStyles>
         </edgeMappings>
-        <toolSections name="Tools" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='EAnnotation']">
+        <toolSections name="Tools" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='EAnnotation']">
           <subSections name="edit">
             <ownedTools xsi:type="tool:DeleteElementDescription" name="SD_FullDelete">
               <element name="element"/>
