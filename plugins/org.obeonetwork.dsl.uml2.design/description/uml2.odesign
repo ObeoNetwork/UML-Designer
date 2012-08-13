@@ -2979,9 +2979,10 @@
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="New Activity"/>
                     </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;BehavioredClassifier&quot;)%>">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%filter(&quot;BehavioredClassifier&quot;)%>">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Activity" referenceName="ownedBehavior">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="New Activity"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="specification" valueExpression="&lt;%$containerView.target.createOperation()%>"/>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
