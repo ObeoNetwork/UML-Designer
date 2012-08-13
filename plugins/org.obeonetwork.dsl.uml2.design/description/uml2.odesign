@@ -1599,15 +1599,6 @@
           </style>
         </containerMappings>
         <toolSections name="Object Diagram" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='EAnnotation']">
-          <ownedTools xsi:type="tool:ToolDescription" name="CR_InstanceSpecification" label="Create Instance" forceRefresh="true" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/InstanceSpecification.gif">
-            <element name="element">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="class" candidatesExpression="&lt;%eContainer(&quot;Model&quot;)+eContainer(&quot;Model&quot;).eAllContents().filter(&quot;Package&quot;)+eContainer(&quot;Model&quot;).eAllContents.filter(&quot;Class&quot;)-(eContainer(&quot;Model&quot;).eAllContents.filter(&quot;Interaction&quot;)+eContainer(&quot;Model&quot;).eAllContents.filter(&quot;OpaqueBehavior&quot;)+eContainer(&quot;Model&quot;).eAllContents.filter(&quot;Activity&quot;)+eContainer(&quot;Model&quot;).eAllContents.filter(&quot;StateMachine&quot;)) +getRootContainer().getImportedPackages()+getRootContainer().getImportedPackages().eAllContents.filter(&quot;Package&quot;)+getRootContainer().getImportedPackages().eAllContents.filter(&quot;Class&quot;)-(getRootContainer().getImportedPackages().eAllContents.filter(&quot;Interaction&quot;)+getRootContainer().getImportedPackages().eAllContents.filter(&quot;OpaqueBehavior&quot;)+getRootContainer().getImportedPackages().eAllContents.filter(&quot;Activity&quot;)+getRootContainer().getImportedPackages().eAllContents.filter(&quot;StateMachine&quot;))%>" tree="true" rootExpression="&lt;%eContainer(&quot;Model&quot;)+getRootContainer().getImportedPackages()%>" childrenExpression="&lt;%eContents()%>" message="Select property to instanciate"/>
-            </element>
-            <elementView name="elementView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.createInstance($class)%>"/>
-            </initialOperation>
-          </ownedTools>
           <ownedTools xsi:type="tool:EdgeCreationDescription" name="CR_InstanceSlot" label="Reference Instance" precondition="&lt;%(eContainer(&quot;uml.Model&quot;).eAllContents(&quot;uml.Association&quot;).ownedEnd.type.nContains(self.classifier) &amp;&amp; eContainer(&quot;uml.Model&quot;).eAllContents(&quot;uml.Association&quot;).ownedEnd.type.nContains($preTarget.classifier))||(classifier.getAllAttributes()[type==$preTarget.classifier].nSize>0)||(classifier.getAllAttributes()[type==$preTarget.classifier.interfaceRealization.contract].nSize>0)%>" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@edgeMappings[name='OD_CompositeSlot'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Object%20Diagram']/@defaultLayer/@edgeMappings[name='OD_InstanceSlot_Composition'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@edgeMappings[name='OD_InstanceSlot']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Connector.gif">
             <sourceVariable name="source">
               <subVariables xsi:type="tool:SelectModelElementVariable" name="property" candidatesExpression="&lt;%$source.eContainer(&quot;uml.Model&quot;).eAllContents(&quot;uml.Association&quot;).ownedEnd[type==$target.classifier]+$source.classifier.getAllAttributes()[type==$target.classifier]+$source.classifier.getAllAttributes()[type==$target.classifier.interfaceRealization.contract]%>"/>
@@ -1619,13 +1610,22 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.createSlot($target,$property)%>"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" name="CR_PrimitiveSlot" label="Set Default Value" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Slot.gif">
-            <element name="element">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="property" candidatesExpression="&lt;%$element.classifier.getAllAttributes()[type.filter(&quot;PrimitiveType&quot;).nSize>0]%>"/>
-            </element>
-            <elementView name="elementView"/>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="CR_InstanceSpecification" label="Create Instance" forceRefresh="true" containerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_Element'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_InstanceSpecification']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/InstanceSpecification.gif">
+            <variable name="container">
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="class" candidatesExpression="&lt;%eContainer(&quot;Model&quot;)+eContainer(&quot;Model&quot;).eAllContents().filter(&quot;Package&quot;)+eContainer(&quot;Model&quot;).eAllContents.filter(&quot;Class&quot;)-(eContainer(&quot;Model&quot;).eAllContents.filter(&quot;Interaction&quot;)+eContainer(&quot;Model&quot;).eAllContents.filter(&quot;OpaqueBehavior&quot;)+eContainer(&quot;Model&quot;).eAllContents.filter(&quot;Activity&quot;)+eContainer(&quot;Model&quot;).eAllContents.filter(&quot;StateMachine&quot;)) +getRootContainer().getImportedPackages()+getRootContainer().getImportedPackages().eAllContents.filter(&quot;Package&quot;)+getRootContainer().getImportedPackages().eAllContents.filter(&quot;Class&quot;)-(getRootContainer().getImportedPackages().eAllContents.filter(&quot;Interaction&quot;)+getRootContainer().getImportedPackages().eAllContents.filter(&quot;OpaqueBehavior&quot;)+getRootContainer().getImportedPackages().eAllContents.filter(&quot;Activity&quot;)+getRootContainer().getImportedPackages().eAllContents.filter(&quot;StateMachine&quot;))%>" tree="true" rootExpression="&lt;%eContainer(&quot;Model&quot;)+getRootContainer().getImportedPackages()%>" childrenExpression="&lt;%eContents()%>" message="Select property to instanciate"/>
+            </variable>
+            <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.createSlot($property)%>"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.createInstance($class)%>"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="CR_PrimitiveSlot" label="Set Default Value" nodeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_InstanceSpecification']/@subNodeMappings[name='OD_Slot']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Slot.gif">
+            <variable name="container">
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="property" candidatesExpression="&lt;%$container.classifier.getAllAttributes()[type.filter(&quot;PrimitiveType&quot;).nSize>0]%>"/>
+            </variable>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.createSlot($property)%>"/>
             </initialOperation>
           </ownedTools>
           <subSections name="navigation">
@@ -2253,7 +2253,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <toolSections name="Composite Object Diagram" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CR_InstanceSlot'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CR_InstanceSpecification'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='EAnnotation']">
+        <toolSections name="Composite Object Diagram" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CR_InstanceSlot'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='EAnnotation']">
           <ownedTools xsi:type="tool:DiagramNavigationDescription" name="for InstanceSpecification" browseExpression="&lt;%$container.eContainer%>" navigationNameExpression="&lt;%$container.eContainer.name%> Object Diagram" diagramDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']">
             <containerViewVariable name="containerView"/>
             <containerVariable name="container"/>
