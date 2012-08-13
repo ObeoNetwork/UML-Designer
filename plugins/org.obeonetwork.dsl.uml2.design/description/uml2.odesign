@@ -1148,8 +1148,8 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:PopupMenu" name="StringExpression">
-            <menuItemDescription xsi:type="tool:OperationAction" name="Add" precondition="&lt;%self.filter(&quot;Property&quot;) &amp;&amp; !self.nameExpression%>" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/StringExpression.gif">
+          <ownedTools xsi:type="tool:PopupMenu" name="Name Expression">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Add String Expression" precondition="&lt;%self.filter(&quot;Property&quot;) &amp;&amp; !self.nameExpression%>" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/StringExpression.gif">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:For" expression="&lt;%$views%>">
@@ -1165,6 +1165,148 @@
                 <firstModelOperations xsi:type="tool:For" expression="&lt;%$views%>">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$i.target.nameExpression%>">
                     <subModelOperations xsi:type="tool:RemoveElement"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+          </ownedTools>
+          <ownedTools xsi:type="tool:PopupMenu" name="Default Value">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Remove" precondition="&lt;%self.filter(&quot;Property&quot;) &amp;&amp; self.defaultValue%>">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:For" expression="&lt;%$views%>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$i.target.defaultValue%>">
+                    <subModelOperations xsi:type="tool:RemoveElement"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" name="Add Duration" precondition="&lt;%self.filter(&quot;Property&quot;) &amp;&amp; !self.defaultValue%>" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/Duration.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:For" expression="&lt;%$views%>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$i.target%>">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="Duration" referenceName="defaultValue"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" name="Add Duration Interval" precondition="&lt;%self.filter(&quot;Property&quot;) &amp;&amp; !self.defaultValue%>" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/DurationInterval.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:For" expression="&lt;%$views%>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$i.target%>">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="DurationInterval" referenceName="defaultValue"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" name="Add Expression" precondition="&lt;%self.filter(&quot;Property&quot;) &amp;&amp; !self.defaultValue%>" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/Expression.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:For" expression="&lt;%$views%>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$i.target%>">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="Expression" referenceName="defaultValue"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" name="Add Instance Value" precondition="&lt;%self.filter(&quot;Property&quot;) &amp;&amp; !self.defaultValue%>" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/InstanceValue.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:For" expression="&lt;%$views%>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$i.target%>">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="InstanceValue" referenceName="defaultValue"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" name="Add Interval" precondition="&lt;%self.filter(&quot;Property&quot;) &amp;&amp; !self.defaultValue%>" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/Interval.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:For" expression="&lt;%$views%>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$i.target%>">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="Interval" referenceName="defaultValue"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" name="Add Literal Boolean" precondition="&lt;%self.filter(&quot;Property&quot;) &amp;&amp; !self.defaultValue%>" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/LiteralBoolean.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:For" expression="&lt;%$views%>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$i.target%>">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="LiteralBoolean" referenceName="defaultValue"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" name="Add Literal Integer" precondition="&lt;%self.filter(&quot;Property&quot;) &amp;&amp; !self.defaultValue%>" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/LiteralInteger.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:For" expression="&lt;%$views%>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$i.target%>">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="LiteralInteger" referenceName="defaultValue"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" name="Add Literal Null" precondition="&lt;%self.filter(&quot;Property&quot;) &amp;&amp; !self.defaultValue%>" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/LiteralNull.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:For" expression="&lt;%$views%>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$i.target%>">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="LiteralNull" referenceName="defaultValue"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" name="Add Literal String" precondition="&lt;%self.filter(&quot;Property&quot;) &amp;&amp; !self.defaultValue%>" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/LiteralString.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:For" expression="&lt;%$views%>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$i.target%>">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="LiteralString" referenceName="defaultValue"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" name="Add Literal Unlimited Natural" precondition="&lt;%self.filter(&quot;Property&quot;) &amp;&amp; !self.defaultValue%>" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/LiteralUnlimitedNatural.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:For" expression="&lt;%$views%>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$i.target%>">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="LiteralUnlimitedNatural" referenceName="defaultValue"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" name="Add Opaque Expression" precondition="&lt;%self.filter(&quot;Property&quot;) &amp;&amp; !self.defaultValue%>" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/OpaqueExpression.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:For" expression="&lt;%$views%>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$i.target%>">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="OpaqueExpression" referenceName="defaultValue"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" name="Add String Expression" precondition="&lt;%self.filter(&quot;Property&quot;) &amp;&amp; !self.defaultValue%>" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/StringExpression.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:For" expression="&lt;%$views%>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$i.target%>">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="StringExpression" referenceName="defaultValue"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" name="Add Time Interval" precondition="&lt;%self.filter(&quot;Property&quot;) &amp;&amp; !self.defaultValue%>" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/TimeInterval.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:For" expression="&lt;%$views%>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$i.target%>">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="TimeInterval" referenceName="defaultValue"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
