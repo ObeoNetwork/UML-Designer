@@ -309,7 +309,7 @@
       <ownedParameter xmi:id="_lJBHcMgFEeC-rqkzDXqbnw" type="_HHf20MTfEeC0wZa75TykZw" direction="return"/>
       <ownedParameter xmi:id="_lI_SQMgFEeC-rqkzDXqbnw" name="customer" type="_rRsm4MTZEeC0wZa75TykZw"/>
     </ownedOperation>
-    <ownedOperation xmi:id="_5Wa04MgFEeC-rqkzDXqbnw" name="findByTravel">
+    <ownedOperation xmi:id="_5Wa04MgFEeC-rqkzDXqbnw" name="findByTravel" method="_AWc0IfBWEeGM4vMhC0rGEw">
       <ownedParameter xmi:id="_7EzpUMgFEeC-rqkzDXqbnw" name="travel" type="_F8k70MTfEeC0wZa75TykZw"/>
       <ownedParameter xmi:id="_7E03cMgFEeC-rqkzDXqbnw" type="_HHf20MTfEeC0wZa75TykZw" direction="return"/>
     </ownedOperation>
@@ -321,7 +321,7 @@
     <ownedOperation xmi:id="_W8zgYMgFEeC-rqkzDXqbnw" name="option">
       <ownedParameter xmi:id="_YLaBgMgFEeC-rqkzDXqbnw" name="res" type="_HHf20MTfEeC0wZa75TykZw"/>
     </ownedOperation>
-    <ownedOperation xmi:id="_ZNeigMgFEeC-rqkzDXqbnw" name="confirm">
+    <ownedOperation xmi:id="_ZNeigMgFEeC-rqkzDXqbnw" name="confirm" method="_GefwcPBWEeGM4vMhC0rGEw">
       <ownedParameter xmi:id="_bZkmoMgFEeC-rqkzDXqbnw" name="res" type="_HHf20MTfEeC0wZa75TykZw"/>
     </ownedOperation>
     <ownedOperation xmi:id="_b-zaoMgFEeC-rqkzDXqbnw" name="cancel">
@@ -332,8 +332,11 @@
     </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Interface" xmi:id="_N_c1wMgDEeC-rqkzDXqbnw" name="Travels">
-    <ownedOperation xmi:id="_8ILK0MgFEeC-rqkzDXqbnw" name="findByDestination">
-      <ownedParameter xmi:id="_-f86gMgFEeC-rqkzDXqbnw" name="String"/>
+    <ownedOperation xmi:id="_8ILK0MgFEeC-rqkzDXqbnw" name="findByDestination" method="_qP0UMfBVEeGM4vMhC0rGEw">
+      <ownedParameter xmi:id="_-f86gMgFEeC-rqkzDXqbnw" name="partialName">
+        <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      </ownedParameter>
+      <ownedParameter xmi:id="_uxgMIPBUEeGM4vMhC0rGEw" type="_F8k70MTfEeC0wZa75TykZw" direction="return"/>
     </ownedOperation>
   </packagedElement>
   <packagedElement xmi:type="uml:Component" xmi:id="_Z3sPEMgDEeC-rqkzDXqbnw" name="Web Agent" useCase="_716HYMgLEeClj_cKl6EI8g">
@@ -409,4 +412,52 @@
     <ownedEnd xmi:id="_pP4yAMgMEeClj_cKl6EI8g" type="_snWyQMTZEeC0wZa75TykZw" association="_pP4K8MgMEeClj_cKl6EI8g"/>
     <ownedEnd xmi:id="_pP5ZEMgMEeClj_cKl6EI8g" type="_klkX8MgMEeClj_cKl6EI8g" association="_pP4K8MgMEeClj_cKl6EI8g"/>
   </packagedElement>
+  <packagedElement xmi:type="uml:Interaction" xmi:id="_1hQBoPBUEeGM4vMhC0rGEw" name="Scenario_0">
+    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_qP0UMfBVEeGM4vMhC0rGEw" name="findByDestination" specification="_8ILK0MgFEeC-rqkzDXqbnw"/>
+    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_AWc0IfBWEeGM4vMhC0rGEw" name="findByTravel" specification="_5Wa04MgFEeC-rqkzDXqbnw"/>
+    <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_GefwcPBWEeGM4vMhC0rGEw" name="confirm" specification="_ZNeigMgFEeC-rqkzDXqbnw"/>
+    <lifeline xmi:id="_bSxGEPBVEeGM4vMhC0rGEw" name="AgencyOffers  " clientDependency="_bSwfAPBVEeGM4vMhC0rGEw" coveredBy="_qP07RPBVEeGM4vMhC0rGEw _qP07RvBVEeGM4vMhC0rGEw _qP07RfBVEeGM4vMhC0rGEw _AWgegvBWEeGM4vMhC0rGEw _AWhFkvBWEeGM4vMhC0rGEw"/>
+    <lifeline xmi:id="_gCWaoPBVEeGM4vMhC0rGEw" name="BookingSystem" clientDependency="_gCVzkPBVEeGM4vMhC0rGEw" coveredBy="_AWgeg_BWEeGM4vMhC0rGEw _AWhFkfBWEeGM4vMhC0rGEw _AWhFkPBWEeGM4vMhC0rGEw _GehlofBWEeGM4vMhC0rGEw _GeiMsPBWEeGM4vMhC0rGEw _GehlovBWEeGM4vMhC0rGEw"/>
+    <lifeline xmi:id="_o7oIcfBVEeGM4vMhC0rGEw" name="AgencyApp" clientDependency="_o7oIcPBVEeGM4vMhC0rGEw" coveredBy="_qP07Q_BVEeGM4vMhC0rGEw _qP07R_BVEeGM4vMhC0rGEw _GehloPBWEeGM4vMhC0rGEw _GeiMsfBWEeGM4vMhC0rGEw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_qP07Q_BVEeGM4vMhC0rGEw" name="findByDestination_sender" covered="_o7oIcfBVEeGM4vMhC0rGEw" event="_qP0UMvBVEeGM4vMhC0rGEw" message="_qP0UMPBVEeGM4vMhC0rGEw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_qP07RPBVEeGM4vMhC0rGEw" name="findByDestination_receiver" covered="_bSxGEPBVEeGM4vMhC0rGEw" event="_qP0UM_BVEeGM4vMhC0rGEw" message="_qP0UMPBVEeGM4vMhC0rGEw"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_qP07RvBVEeGM4vMhC0rGEw" name="findByDestination" covered="_bSxGEPBVEeGM4vMhC0rGEw" start="_qP07RPBVEeGM4vMhC0rGEw" finish="_qP07RfBVEeGM4vMhC0rGEw" behavior="_qP0UMfBVEeGM4vMhC0rGEw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_AWgegvBWEeGM4vMhC0rGEw" name="findByTravel_sender" covered="_bSxGEPBVEeGM4vMhC0rGEw" event="_AWf3cPBWEeGM4vMhC0rGEw" message="_AWc0IPBWEeGM4vMhC0rGEw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_AWgeg_BWEeGM4vMhC0rGEw" name="findByTravel_receiver" covered="_gCWaoPBVEeGM4vMhC0rGEw" event="_AWf3cfBWEeGM4vMhC0rGEw" message="_AWc0IPBWEeGM4vMhC0rGEw"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_AWhFkfBWEeGM4vMhC0rGEw" name="findByTravel" covered="_gCWaoPBVEeGM4vMhC0rGEw" start="_AWgeg_BWEeGM4vMhC0rGEw" finish="_AWhFkPBWEeGM4vMhC0rGEw" behavior="_AWc0IfBWEeGM4vMhC0rGEw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_AWhFkPBWEeGM4vMhC0rGEw" name="findByTravel_reply_sender" covered="_gCWaoPBVEeGM4vMhC0rGEw" event="_AWgegPBWEeGM4vMhC0rGEw" message="_AWf3cvBWEeGM4vMhC0rGEw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_AWhFkvBWEeGM4vMhC0rGEw" name="findByTravel_reply_receiver" covered="_bSxGEPBVEeGM4vMhC0rGEw" event="_AWgegfBWEeGM4vMhC0rGEw" message="_AWf3cvBWEeGM4vMhC0rGEw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_qP07RfBVEeGM4vMhC0rGEw" name="findByDestination_reply_sender" covered="_bSxGEPBVEeGM4vMhC0rGEw" event="_qP07QfBVEeGM4vMhC0rGEw" message="_qP07QPBVEeGM4vMhC0rGEw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_qP07R_BVEeGM4vMhC0rGEw" name="findByDestination_reply_receiver" covered="_o7oIcfBVEeGM4vMhC0rGEw" event="_qP07QvBVEeGM4vMhC0rGEw" message="_qP07QPBVEeGM4vMhC0rGEw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_GehloPBWEeGM4vMhC0rGEw" name="confirm_sender" covered="_o7oIcfBVEeGM4vMhC0rGEw" event="_GegXgPBWEeGM4vMhC0rGEw" message="_GeeiUPBWEeGM4vMhC0rGEw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_GehlofBWEeGM4vMhC0rGEw" name="confirm_receiver" covered="_gCWaoPBVEeGM4vMhC0rGEw" event="_GegXgfBWEeGM4vMhC0rGEw" message="_GeeiUPBWEeGM4vMhC0rGEw"/>
+    <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_GeiMsPBWEeGM4vMhC0rGEw" name="confirm" covered="_gCWaoPBVEeGM4vMhC0rGEw" start="_GehlofBWEeGM4vMhC0rGEw" finish="_GehlovBWEeGM4vMhC0rGEw" behavior="_GefwcPBWEeGM4vMhC0rGEw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_GehlovBWEeGM4vMhC0rGEw" name="confirm_reply_sender" covered="_gCWaoPBVEeGM4vMhC0rGEw" event="_Geg-kPBWEeGM4vMhC0rGEw" message="_GegXgvBWEeGM4vMhC0rGEw"/>
+    <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_GeiMsfBWEeGM4vMhC0rGEw" name="confirm_reply_receiver" covered="_o7oIcfBVEeGM4vMhC0rGEw" event="_Geg-kfBWEeGM4vMhC0rGEw" message="_GegXgvBWEeGM4vMhC0rGEw"/>
+    <message xmi:id="_qP0UMPBVEeGM4vMhC0rGEw" name="findByDestination" receiveEvent="_qP07RPBVEeGM4vMhC0rGEw" sendEvent="_qP07Q_BVEeGM4vMhC0rGEw"/>
+    <message xmi:id="_qP07QPBVEeGM4vMhC0rGEw" name="findByDestination_reply" messageSort="reply" receiveEvent="_qP07R_BVEeGM4vMhC0rGEw" sendEvent="_qP07RfBVEeGM4vMhC0rGEw"/>
+    <message xmi:id="_AWc0IPBWEeGM4vMhC0rGEw" name="findByTravel" receiveEvent="_AWgeg_BWEeGM4vMhC0rGEw" sendEvent="_AWgegvBWEeGM4vMhC0rGEw"/>
+    <message xmi:id="_AWf3cvBWEeGM4vMhC0rGEw" name="findByTravel_reply" messageSort="reply" receiveEvent="_AWhFkvBWEeGM4vMhC0rGEw" sendEvent="_AWhFkPBWEeGM4vMhC0rGEw"/>
+    <message xmi:id="_GeeiUPBWEeGM4vMhC0rGEw" name="confirm" receiveEvent="_GehlofBWEeGM4vMhC0rGEw" sendEvent="_GehloPBWEeGM4vMhC0rGEw"/>
+    <message xmi:id="_GegXgvBWEeGM4vMhC0rGEw" name="confirm_reply" messageSort="reply" receiveEvent="_GeiMsfBWEeGM4vMhC0rGEw" sendEvent="_GehlovBWEeGM4vMhC0rGEw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_Vc6tAPBVEeGM4vMhC0rGEw" name="AgencyOffers  " classifier="_99SVwMT5EeC7sd1uYTaNyA"/>
+  <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_XkmLMPBVEeGM4vMhC0rGEw" name="BookingSystem" classifier="_yS5LMMT5EeC7sd1uYTaNyA"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_bSwfAPBVEeGM4vMhC0rGEw" name="Agency Offers_Agency Offers" supplier="_Vc6tAPBVEeGM4vMhC0rGEw" client="_bSxGEPBVEeGM4vMhC0rGEw"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_gCVzkPBVEeGM4vMhC0rGEw" name="BookingSystem_BookingSystem" supplier="_XkmLMPBVEeGM4vMhC0rGEw" client="_gCWaoPBVEeGM4vMhC0rGEw"/>
+  <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_l-YUMPBVEeGM4vMhC0rGEw" name="AgencyApp" classifier="_GT7fEMgEEeC-rqkzDXqbnw"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_o7oIcPBVEeGM4vMhC0rGEw" name="AgencyApp_AgencyApp" supplier="_l-YUMPBVEeGM4vMhC0rGEw" client="_o7oIcfBVEeGM4vMhC0rGEw"/>
+  <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_qP0UMvBVEeGM4vMhC0rGEw" name="findByDestination_sender_event" operation="_8ILK0MgFEeC-rqkzDXqbnw"/>
+  <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_qP0UM_BVEeGM4vMhC0rGEw" name="findByDestination_receiver_event" operation="_8ILK0MgFEeC-rqkzDXqbnw"/>
+  <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_qP07QfBVEeGM4vMhC0rGEw" name="findByDestination_sender_event_event" operation="_8ILK0MgFEeC-rqkzDXqbnw"/>
+  <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_qP07QvBVEeGM4vMhC0rGEw" name="findByDestination_receiver_event_event" operation="_8ILK0MgFEeC-rqkzDXqbnw"/>
+  <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_2L0zMPBVEeGM4vMhC0rGEw" name="Bob" classifier="_Hj8iQMTfEeC0wZa75TykZw"/>
+  <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_AWf3cPBWEeGM4vMhC0rGEw" name="findByTravel_sender_event" operation="_5Wa04MgFEeC-rqkzDXqbnw"/>
+  <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_AWf3cfBWEeGM4vMhC0rGEw" name="findByTravel_receiver_event" operation="_5Wa04MgFEeC-rqkzDXqbnw"/>
+  <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_AWgegPBWEeGM4vMhC0rGEw" name="findByTravel_sender_event_event" operation="_5Wa04MgFEeC-rqkzDXqbnw"/>
+  <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_AWgegfBWEeGM4vMhC0rGEw" name="findByTravel_receiver_event_event" operation="_5Wa04MgFEeC-rqkzDXqbnw"/>
+  <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_GegXgPBWEeGM4vMhC0rGEw" name="confirm_sender_event" operation="_ZNeigMgFEeC-rqkzDXqbnw"/>
+  <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_GegXgfBWEeGM4vMhC0rGEw" name="confirm_receiver_event" operation="_ZNeigMgFEeC-rqkzDXqbnw"/>
+  <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_Geg-kPBWEeGM4vMhC0rGEw" name="confirm_sender_event_event" operation="_ZNeigMgFEeC-rqkzDXqbnw"/>
+  <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_Geg-kfBWEeGM4vMhC0rGEw" name="confirm_receiver_event_event" operation="_ZNeigMgFEeC-rqkzDXqbnw"/>
 </uml:Model>
