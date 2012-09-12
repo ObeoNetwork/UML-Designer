@@ -1,60 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
    Copyright (C) 2011 Obeo
-  
+
    Cedric Brun <cedric.brun@obeo.fr>
-   
+
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	 <parent>
-    <groupId>org.obeonetwork.dsl.uml</groupId>
-    <artifactId>uml-parent</artifactId>
-    <version>1.4.0-SNAPSHOT</version>
-    <relativePath>../..</relativePath>
-  </parent>
+    <parent>
+        <groupId>org.obeonetwork.dsl.uml</groupId>
+        <artifactId>uml-parent</artifactId>
+        <version>1.4.0-SNAPSHOT</version>
+        <relativePath>../..</relativePath>
+    </parent>
 
 
-	<artifactId>org.obeonetwork.dsl.uml2.design.tests</artifactId>
-	<packaging>eclipse-test-plugin</packaging>
+    <artifactId>org.obeonetwork.dsl.uml2.design.tests</artifactId>
+    <packaging>eclipse-test-plugin</packaging>
 
-	<name>Viewpoint Based Modeler for UML2  Test Plug-in</name>
+    <name>Viewpoint Based Modeler for UML2  Test Plug-in</name>
 
-	<build>
-		<resources>
-			<resource>
-				<directory>src</directory>
-				<excludes>
-					<exclude>**/*.java</exclude>
-				</excludes>
-			</resource>
-		</resources>
-		<plugins>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-source-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-surefire-plugin</artifactId>
-				<version>${tycho-version}</version>
-				<configuration>
-					<includes>
-						<include>org/obeonetwork/dsl/uml2/design/tests/AllTests.class</include>
-					</includes>
-					<useUIHarness>true</useUIHarness>
-					<useUIThread>true</useUIThread>
-					<argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
-					<argLine append="true">${tycho.testArgLine}</argLine>
-					<testFailureIgnore>true</testFailureIgnore>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-pmd-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
+    <properties>
+        <ui.test.vmargs.all>-Xmx2048m -XX:MaxPermSize=256m ${tycho.testArgLine}</ui.test.vmargs.all>
+        <ui.test.vmargs.mac>-XstartOnFirstThread</ui.test.vmargs.mac>
+        <ui.test.vmargs>${ui.test.vmargs.all}</ui.test.vmargs>
+    </properties>
+
+
+    <profiles>
+        <profile>
+            <id>mac-customization</id>
+            <activation>
+                <os>
+                    <family>mac</family>
+                </os>
+            </activation>
+            <properties>
+                <ui.test.vmargs>${ui.test.vmargs.all} ${ui.test.vmargs.mac}</ui.test.vmargs>
+            </properties>
+        </profile>
+    </profiles>
+
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src</directory>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>tycho-source-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>tycho-surefire-plugin</artifactId>
+                <version>${tycho-version}</version>
+                <configuration>
+                    <includes>
+                        <include>org/obeonetwork/dsl/uml2/design/tests/AllTests.class</include>
+                    </includes>
+                    <useUIHarness>true</useUIHarness>
+                    <useUIThread>true</useUIThread>
+                    <argLine>${ui.test.vmargs}</argLine>
+                    <!--
+                    <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
+                    <argLine append="true">${tycho.testArgLine}</argLine>
+                    -->
+                    <testFailureIgnore>true</testFailureIgnore>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
