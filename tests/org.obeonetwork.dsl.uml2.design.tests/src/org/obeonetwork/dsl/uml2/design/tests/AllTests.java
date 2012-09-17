@@ -10,13 +10,14 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.tests;
 
+import junit.framework.JUnit4TestAdapter;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
 import org.obeonetwork.dsl.uml2.design.tests.services.ActivityServicesTests;
+import org.obeonetwork.dsl.uml2.design.tests.services.DiagramElementMappingSpecificationTests;
 import org.obeonetwork.dsl.uml2.design.tests.services.EditLabelTests;
-import org.obeonetwork.dsl.uml2.design.tests.services.IsRelatedServiceTests;
 import org.obeonetwork.dsl.uml2.design.tests.services.OperationServicesTest;
 import org.obeonetwork.dsl.uml2.design.tests.services.PropertyServicesTest;
 import org.obeonetwork.dsl.uml2.design.tests.services.SequenceServiceTests;
@@ -27,7 +28,7 @@ import org.obeonetwork.dsl.uml2.design.tests.services.SequenceServiceTests;
  * @author Cedric Brun <a href="mailto:cedric.brun@obeo.fr">cedric.brun@obeo.fr</a>
  */
 public final class AllTests {
-	
+
 	/**
 	 * Hidden constructor.
 	 */
@@ -56,6 +57,7 @@ public final class AllTests {
 		suite.addTestSuite(PropertyServicesTest.class);
 		suite.addTestSuite(SequenceServiceTests.class);
 		suite.addTestSuite(EditLabelTests.class);
+		suite.addTest(new JUnit4TestAdapter(DiagramElementMappingSpecificationTests.class));
 		return suite;
 	}
 
