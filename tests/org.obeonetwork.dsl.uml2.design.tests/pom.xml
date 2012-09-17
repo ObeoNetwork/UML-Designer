@@ -23,7 +23,7 @@
     <name>Viewpoint Based Modeler for UML2  Test Plug-in</name>
 
     <properties>
-        <ui.test.vmargs.all>-Xmx2048m -XX:MaxPermSize=256m ${tycho.testArgLine}</ui.test.vmargs.all>
+        <ui.test.vmargs.all>-Xmx2048m -XX:MaxPermSize=256m</ui.test.vmargs.all>
         <ui.test.vmargs.mac>-XstartOnFirstThread</ui.test.vmargs.mac>
         <ui.test.vmargs>${ui.test.vmargs.all}</ui.test.vmargs>
     </properties>
