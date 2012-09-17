@@ -20,6 +20,7 @@ import com.google.common.collect.Sets;
 
 import fr.obeo.dsl.viewpoint.business.api.componentization.ViewpointRegistry;
 import fr.obeo.dsl.viewpoint.description.DiagramElementMapping;
+import fr.obeo.dsl.viewpoint.description.EdgeMapping;
 import fr.obeo.dsl.viewpoint.description.Viewpoint;
 import fr.obeo.dsl.viewpoint.description.style.BasicLabelStyleDescription;
 import fr.obeo.dsl.viewpoint.description.util.DescriptionSwitch;
@@ -27,7 +28,9 @@ import fr.obeo.dsl.viewpoint.description.util.DescriptionSwitch;
 @RunWith(value = Parameterized.class)
 public class DiagramElementMappingSpecificationTests {
 
-	private static Set<String> directEditWhiteList = Sets.newHashSet("PH_Import", "SD_Lifeline EOL","UCD_Generalization" , "UCD_Include","UCD_Extend","CD_BrokenAssociation","CD_BrokenAssociationToClasses");
+	private static Set<String> directEditWhiteList = Sets.newHashSet("PH_Import", "SD_Lifeline EOL",
+			"UCD_Generalization", "UCD_Include", "UCD_Extend", "CD_BrokenAssociation",
+			"CD_BrokenAssociationToClasses");
 
 	private DiagramElementMapping underTest;
 
@@ -41,7 +44,7 @@ public class DiagramElementMappingSpecificationTests {
 		Viewpoint structural = ViewpointRegistry.getInstance().getViewpoint(
 				URI.createURI("viewpoint:/org.obeonetwork.dsl.uml2.design/UML Structural Modeling"));
 		collectMappingsFromViewpoint(parameters, structural);
-		
+
 		Viewpoint behavior = ViewpointRegistry.getInstance().getViewpoint(
 				URI.createURI("viewpoint:/org.obeonetwork.dsl.uml2.design/UML Behavioral Modeling"));
 		collectMappingsFromViewpoint(parameters, behavior);
@@ -63,6 +66,15 @@ public class DiagramElementMappingSpecificationTests {
 		if (underTest.getLabelDirectEdit() == null && isDisplayingALabel(underTest)
 				&& !directEditWhiteList.contains(underTest.getName())) {
 			fail("Mapping : " + underTest.getName() + " has no direct edit and is not in the white list");
+		}
+	}
+
+	@Test
+	public void reconnect() {
+		if (underTest instanceof EdgeMapping) {
+			if (((EdgeMapping)underTest).getReconnections().size() ==0) {
+				fail("EdgeMapping : " + underTest.getName() + " has no reconnect tool.");
+			}
 		}
 	}
 
