@@ -30,7 +30,7 @@ public class DiagramElementMappingSpecificationTests {
 
 	private static Set<String> directEditWhiteList = Sets.newHashSet("PH_Import", "SD_Lifeline EOL",
 			"UCD_Generalization", "UCD_Include", "UCD_Extend", "CD_BrokenAssociation",
-			"CD_BrokenAssociationToClasses");
+			"CD_BrokenAssociationToClasses","SD_Lifeline Execution");
 
 	private DiagramElementMapping underTest;
 
