@@ -42,6 +42,8 @@ To launch the build, go to the root of your git repository and type :
 
 @mvn clean package@
 
+bq.  You might want to build with another version of Obeo Designer as an input (for instance a beta or an integration build) You can do so using the *od-site* property : @@ mvn clean package -Dod-site="http://www.mydomain.com/some/update/site/"@@
+
 Maven will bootstrap itself, download all the dependencies and build UML Designer. The output of the build is a p2 repository (an update site) generated here : 
 
 @features/org.obeonetwork.dsl.uml2.update/target/repository@
@@ -62,6 +64,7 @@ The build instructions are the same as for an Obeo Designer installation. It wil
 To launch the build, go to the root of your git repository and type :
 
 @mvn clean package@
+
 
 UML Designer technically only depend on the *Viewpoint* component of Obeo Designer but to ease installation for end user the UML Designer feature specify some explicit dependencies on some of the Obeo Designer features.
 
