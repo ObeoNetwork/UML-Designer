@@ -2454,7 +2454,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description:DiagramDescription" name="Deployment Diagram" titleExpression="&lt;%name%> Deployment Diagram" domainClass="uml.Package" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20PackageableElement']" name="Deployment Diagram" titleExpression="&lt;%name%> Deployment Diagram" domainClass="uml.Package" enablePopupBars="true">
       <metamodel href="http://www.eclipse.org/uml2/3.0.0/UML#/"/>
       <defaultLayer name="Deployment diagram">
         <edgeMappings name="DE_Link" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%current.getAllRootsInResourceSet.eAllContents%>" semanticElements="&lt;%self.getSemanticElements()%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Device'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Execution_Environment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Node']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Device'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Node'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Execution_Environment']" targetFinderExpression="&lt;%getTarget.type%>" sourceFinderExpression="&lt;%getSource.type%>" targetExpression="&lt;%self + getSource + getTarget%>" domainClass="uml.Association" useDomainElement="true" reconnections="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.1/@subSections[name='Reconnect']/@ownedTools[name='ReconnectLinkSource'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.1/@subSections[name='Reconnect']/@ownedTools[name='ReconnectLinkTarget']">
@@ -2465,7 +2465,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="DE_Dependency" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%ownedMember[eClass.name == &quot;Dependency&quot;]%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Artifact']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Artifact']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="&lt;%client%>" domainClass="uml.Dependency" useDomainElement="true" reconnections="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.1/@subSections[name='Reconnect']/@ownedTools[name='ReconnectDependencyDeploymentManifestationSource'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.1/@subSections[name='Reconnect']/@ownedTools[name='ReconnectDependencyDeploymentManifestationTarget']">
+        <edgeMappings name="DE_Dependency" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%ownedMember[eClass.name == &quot;Dependency&quot;]%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Artifact']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Artifact']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="&lt;%client%>" domainClass="uml.Dependency" useDomainElement="true" reconnections="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.1/@subSections[name='Reconnect']/@ownedTools[name='ReconnectDependencySource']">
           <style lineStyle="dash" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelExpression="&lt;%name%>">
@@ -2481,7 +2481,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="DE_Deployment" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%self.eAllContents(&quot;Node&quot;).deployment%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Artifact']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Device'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Execution_Environment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Node']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="&lt;%client%>" domainClass="uml.Deployment" useDomainElement="true" reconnections="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.1/@subSections[name='Reconnect']/@ownedTools[name='ReconnectDependencyDeploymentManifestationSource'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.1/@subSections[name='Reconnect']/@ownedTools[name='ReconnectDependencyDeploymentManifestationSource'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.1/@subSections[name='Reconnect']/@ownedTools[name='ReconnectDependencyDeploymentManifestationTarget']">
+        <edgeMappings name="DE_Deployment" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%self.eAllContents(&quot;Node&quot;).deployment%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Artifact']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Device'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Execution_Environment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Node']" targetFinderExpression="&lt;%self.eContainer(&quot;Node&quot;)%>" sourceFinderExpression="&lt;%self.deployedArtifact%>" domainClass="uml.Deployment" useDomainElement="true" reconnections="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.1/@subSections[name='Reconnect']/@ownedTools[name='ReconnectDeploymentSource'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.1/@subSections[name='Reconnect']/@ownedTools[name='ReconnectDeploymentTarget'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.1/@subSections[name='Reconnect']/@ownedTools[name='ReconnectDeploymentTarget']">
           <style lineStyle="dash" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelExpression="&lt;&lt;&lt;%name%>>>">
@@ -2489,7 +2489,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="DE_Manifestation" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Artifact']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Artifact']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="&lt;%client%>" domainClass="uml.Manifestation" useDomainElement="true" reconnections="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.1/@subSections[name='Reconnect']/@ownedTools[name='ReconnectDependencyDeploymentManifestationSource'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.1/@subSections[name='Reconnect']/@ownedTools[name='ReconnectDependencyDeploymentManifestationTarget']">
+        <edgeMappings name="DE_Manifestation" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Artifact']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" targetFinderExpression="&lt;%self.utilizedElement%>" sourceFinderExpression="&lt;%self.eContainer(&quot;Artifact&quot;)%>" domainClass="uml.Manifestation" useDomainElement="true" reconnections="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.1/@subSections[name='Reconnect']/@ownedTools[name='ReconnectManifestationSource'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.1/@subSections[name='Reconnect']/@ownedTools[name='ReconnectManifestationTarget']">
           <style lineStyle="dash" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelExpression="&lt;&lt;&lt;%name%>>>">
@@ -2517,6 +2517,12 @@
         <containerMappings name="DE_Node" deletionDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='DeleteItem']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%ownedMember[eClass.name == &quot;Node&quot;]%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Node" reusedContainerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Node'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Execution_Environment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Artifact'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Device']">
           <style xsi:type="style:WorkspaceImageDescription" labelSize="10" labelFormat="bold" sizeComputationExpression="8" labelPosition="node" resizeKind="EAST_WEST" arcWidth="0" arcHeight="0" workspacePath="/org.obeonetwork.dsl.uml2.design/images/boxGray.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="DE_PackageableElement" detailDescriptions="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='navigation']/@ownedTools[name='Activity%20Diagram'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='State%20Machine%20Diagram']" navigationDescriptions="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='navigation']/@ownedTools[name='activity%20diagram'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='state%20diagram']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%self.ownedMember.filter(&quot;Component&quot;)+self.ownedMember.filter(&quot;Package&quot;)%>" domainClass="uml.PackageableElement" dropDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='edit']/@ownedTools[name='Drop%20Interface%20or%20Component%20on%20canvas']">
+          <style xsi:type="style:FlatContainerStyleDescription" borderColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='dark%20lagune']" labelSize="10" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='light%20lagune']">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
         <toolSections name="Types">
@@ -2592,6 +2598,15 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drop PackageableElement" precondition="&lt;%filter(&quot;Component&quot;)+filter(&quot;Package&quot;)%>" forceRefresh="true" mappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" dragSource="PROJECT_EXPLORER">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element%>"/>
+            </initialOperation>
+          </ownedTools>
         </toolSections>
         <toolSections name="Relationships" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='EAnnotation']">
           <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Create a new Link" name="Link" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@edgeMappings[name='DE_Link']">
@@ -2662,8 +2677,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$target%>">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Deployment" referenceName="deployment">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="&lt;%$source%>"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="&lt;%$target%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="deployedArtifact" valueExpression="&lt;%$source%>"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="deploy"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -2675,10 +2689,9 @@
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;Package&quot;)%>">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Manifestation" referenceName="packagedElement">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="&lt;%$source%>"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="&lt;%$target%>"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source%>">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Manifestation" referenceName="manifestation">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="utilizedElement" valueExpression="&lt;%$target%>"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="manifest"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -2711,7 +2724,38 @@
               </initialOperation>
               <edgeView name="edgeView"/>
             </ownedTools>
-            <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ReconnectDependencyDeploymentManifestationSource" reconnectionKind="RECONNECT_SOURCE">
+            <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ReconnectDeploymentSource" reconnectionKind="RECONNECT_SOURCE">
+              <source name="source"/>
+              <target name="target"/>
+              <sourceView name="sourceView"/>
+              <targetView name="targetView"/>
+              <element name="element"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element%>">
+                  <subModelOperations xsi:type="tool:Unset" featureName="deployedArtifact" elementExpression="&lt;%$source%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="deployedArtifact" valueExpression="&lt;%$target%>"/>
+                </firstModelOperations>
+              </initialOperation>
+              <edgeView name="edgeView"/>
+            </ownedTools>
+            <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ReconnectDeploymentTarget">
+              <source name="source"/>
+              <target name="target"/>
+              <sourceView name="sourceView"/>
+              <targetView name="targetView"/>
+              <element name="element"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source%>">
+                  <subModelOperations xsi:type="tool:Unset" featureName="deployment" elementExpression="&lt;%$element%>">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$target%>">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="deployment" valueExpression="&lt;%$element%>"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+              <edgeView name="edgeView"/>
+            </ownedTools>
+            <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ReconnectDependencySource" reconnectionKind="RECONNECT_SOURCE">
               <source name="source"/>
               <target name="target"/>
               <sourceView name="sourceView"/>
@@ -2726,7 +2770,7 @@
               </initialOperation>
               <edgeView name="edgeView"/>
             </ownedTools>
-            <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ReconnectDependencyDeploymentManifestationTarget">
+            <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ReconnectDeploymentTarget">
               <source name="source"/>
               <target name="target"/>
               <sourceView name="sourceView"/>
@@ -2763,6 +2807,38 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element%>">
                   <subModelOperations xsi:type="tool:SetValue" featureName="general" valueExpression="&lt;%$target%>"/>
+                </firstModelOperations>
+              </initialOperation>
+              <edgeView name="edgeView"/>
+            </ownedTools>
+            <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ReconnectManifestationSource" reconnectionKind="RECONNECT_SOURCE">
+              <source name="source"/>
+              <target name="target"/>
+              <sourceView name="sourceView"/>
+              <targetView name="targetView"/>
+              <element name="element"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source%>">
+                  <subModelOperations xsi:type="tool:Unset" featureName="manifestation" elementExpression="&lt;%$element%>">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$target%>">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="manifestation" valueExpression="&lt;%$element%>"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+              <edgeView name="edgeView"/>
+            </ownedTools>
+            <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ReconnectManifestationTarget">
+              <source name="source"/>
+              <target name="target"/>
+              <sourceView name="sourceView"/>
+              <targetView name="targetView"/>
+              <element name="element"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element%>">
+                  <subModelOperations xsi:type="tool:Unset" featureName="utilizedElement" elementExpression="&lt;%utilizedElement%>">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="utilizedElement" valueExpression="&lt;%$target%>"/>
+                  </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
               <edgeView name="edgeView"/>
