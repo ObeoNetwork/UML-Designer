@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,11 +19,13 @@ import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
+import fr.obeo.dsl.viewpoint.description.tool.ReconnectionKind;
 import fr.obeo.dsl.viewpoint.business.api.componentization.ViewpointRegistry;
 import fr.obeo.dsl.viewpoint.description.DiagramElementMapping;
 import fr.obeo.dsl.viewpoint.description.EdgeMapping;
 import fr.obeo.dsl.viewpoint.description.Viewpoint;
 import fr.obeo.dsl.viewpoint.description.style.BasicLabelStyleDescription;
+import fr.obeo.dsl.viewpoint.description.tool.ReconnectEdgeDescription;
 import fr.obeo.dsl.viewpoint.description.util.DescriptionSwitch;
 
 @RunWith(value = Parameterized.class)
@@ -31,6 +34,9 @@ public class DiagramElementMappingSpecificationTests {
 	private static Set<String> directEditWhiteList = Sets.newHashSet("PH_Import", "SD_Lifeline EOL",
 			"UCD_Generalization", "UCD_Include", "UCD_Extend", "CD_BrokenAssociation",
 			"CD_BrokenAssociationToClasses","SD_Lifeline Execution");
+	
+	private static Set<String> reconnectWhiteList = Sets.newHashSet("CD_BrokenAssociationToClasses",
+			"CD_NestedClass", "CD_BrokenAssociation", "CD_AssociationClassToAssociation");
 
 	private DiagramElementMapping underTest;
 
@@ -71,9 +77,30 @@ public class DiagramElementMappingSpecificationTests {
 
 	@Test
 	public void reconnect() {
-		if (underTest instanceof EdgeMapping) {
-			if (((EdgeMapping)underTest).getReconnections().size() ==0) {
+		if (underTest instanceof EdgeMapping && !reconnectWhiteList.contains(underTest.getName())) {
+			EList<ReconnectEdgeDescription> reconnections = ((EdgeMapping)underTest).getReconnections();
+			if (reconnections.size() ==0) {
 				fail("EdgeMapping : " + underTest.getName() + " has no reconnect tool.");
+			} else if (reconnections.size() ==1 && ReconnectionKind.RECONNECT_BOTH_LITERAL!=reconnections.get(0).getReconnectionKind()) {
+				
+				if (ReconnectionKind.RECONNECT_SOURCE_LITERAL==reconnections.get(0).getReconnectionKind()) {
+					fail("EdgeMapping : " + underTest.getName() + " has no target reconnect tool.");
+				} else {
+					fail("EdgeMapping : " + underTest.getName() + " has no source reconnect tool.");
+				}
+				
+			} else if (reconnections.size() ==2) {
+				
+				if (ReconnectionKind.RECONNECT_SOURCE_LITERAL==reconnections.get(0).getReconnectionKind() &&
+						ReconnectionKind.RECONNECT_SOURCE_LITERAL==reconnections.get(1).getReconnectionKind()) {
+					fail("EdgeMapping : " + underTest.getName() + " has two source reconnect tools and no taget reconnect tool.");
+				} else if (ReconnectionKind.RECONNECT_TARGET_LITERAL==reconnections.get(0).getReconnectionKind() &&
+						ReconnectionKind.RECONNECT_TARGET_LITERAL==reconnections.get(1).getReconnectionKind()) {
+					fail("EdgeMapping : " + underTest.getName() + " has two taget reconnect tools and no source reconnect tool.");
+				}
+				
+			} else if (reconnections.size() >=2) {
+				fail("EdgeMapping : " + underTest.getName() + " has more than two reconnect tools.");
 			}
 		}
 	}
