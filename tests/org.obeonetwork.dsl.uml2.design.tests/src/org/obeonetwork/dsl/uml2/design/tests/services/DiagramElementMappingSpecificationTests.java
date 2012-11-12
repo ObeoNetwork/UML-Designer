@@ -35,8 +35,12 @@ public class DiagramElementMappingSpecificationTests {
 			"UCD_Generalization", "UCD_Include", "UCD_Extend", "CD_BrokenAssociation",
 			"CD_BrokenAssociationToClasses","SD_Lifeline Execution");
 	
-	private static Set<String> reconnectWhiteList = Sets.newHashSet("CD_BrokenAssociationToClasses",
-			"CD_NestedClass", "CD_BrokenAssociation", "CD_AssociationClassToAssociation");
+	private static Set<String> reconnectWhiteList = Sets.newHashSet(
+			"CD_BrokenAssociationToClasses", "CD_NestedClass", "CD_BrokenAssociation", "CD_AssociationClassToAssociation",
+			"PD_Extension",
+			"OD_InstanceSlot", "OD_CompositeSlot", "OD_InstanceSlot_Composition", "OD_ClassType", "OD_EnumerationType", "OD_PrimitiveTypeType", "OD_InterfaceType",
+			"SD_Message",
+			"stereotypeLink");
 
 	private DiagramElementMapping underTest;
 
