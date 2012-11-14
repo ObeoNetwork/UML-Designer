@@ -977,6 +977,24 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool:PopupMenu" name="CD_Move TO Attributes or Operations" label="Move to">
+            <menuItemDescription xsi:type="tool:OperationAction" name="CD_Move TO Up" label="Up" precondition="&lt;%self.filter(&quot;Property&quot;)+self.filter(&quot;Operation&quot;)%>">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$views.target.filter(&quot;Operation&quot;).moveUpOperations()%>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$views.target.filter(&quot;Property&quot;).moveUpProperties()%>"/>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" name="CD_Move TO Down" label="Down" precondition="&lt;%self.filter(&quot;Property&quot;)+self.filter(&quot;Operation&quot;)%>">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$views.target.filter(&quot;Operation&quot;).moveDownOperations()%>">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$views.target.filter(&quot;Property&quot;).moveDownProperties()%>"/>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+          </ownedTools>
           <subSections name="navigation">
             <ownedTools xsi:type="tool:DiagramCreationDescription" name="Activity diagram" titleExpression="&lt;%name%> activity diagram" browseExpression="&lt;%method.filter(&quot;Activity&quot;)%>" diagramDescription="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']">
               <initialOperation>
@@ -3094,6 +3112,8 @@
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.UIServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.ObjectServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.ConnectorServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.OperationServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.PropertyServices"/>
   </ownedViewpoints>
   <ownedViewpoints name="UML Behavioral Modeling" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description:DiagramDescription" name="State Machine Diagram" titleExpression="&lt;%name%> State Machine Diagram" domainClass="uml.StateMachine" enablePopupBars="true">
