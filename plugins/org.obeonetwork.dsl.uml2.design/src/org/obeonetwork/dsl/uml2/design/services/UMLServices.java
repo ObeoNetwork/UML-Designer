@@ -19,7 +19,6 @@ import java.util.Set;
 
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -467,7 +466,8 @@ public class UMLServices {
 		public boolean apply(EObject eObj) {
 			String className = eObj.eClass().getName();
 			return "Class".equals(className) || "AssociationClass".equals(className)
-					|| "Interface".equals(className) || "Enumeration".equals(className);
+					|| "Interface".equals(className) || "Enumeration".equals(className)
+					|| "PrimitiveType".equals(className) || "DataType".equals(className);
 		}
 	};
 
