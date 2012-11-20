@@ -21,6 +21,7 @@ import org.obeonetwork.dsl.uml2.design.services.EcoreServices;
  * Utility services to manage edges direct label editoin on properties.
  * 
  * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
+ * @author Hugo Marchadour <a href="mailto:hugo.marchadour@obeo.fr">hugo.marchadour@obeo.fr</a>
  */
 public final class PropertyServices {
 
@@ -45,7 +46,7 @@ public final class PropertyServices {
 		// - a ":" between the name and the type
 		// - a "=" preceding the default value
 		// Between these signs who all are optional one can find any character
-		final Pattern p = Pattern.compile("^(/?)([^:]*):?([^=]*)=?.*$");
+		final Pattern p = Pattern.compile("^(/?)([^:]*):?([^=]*)=?(.*)$");
 		final Matcher m = p.matcher(inputLabel.trim());
 
 		if (m.find()) {
@@ -57,6 +58,12 @@ public final class PropertyServices {
 
 			final String typeInfo = m.group(3).trim();
 			handleTypeAndMultiplicity(property, typeInfo);
+			
+			// Use UML api to manage the default value
+			if(m.group(4) != null && !"".equals(m.group(4))) {
+				String defaultValue = m.group(4).trim();
+				property.setDefault(defaultValue);
+			}
 			return name;
 		}
 		return null;
