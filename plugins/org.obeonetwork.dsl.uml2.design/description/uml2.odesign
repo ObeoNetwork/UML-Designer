@@ -458,7 +458,7 @@
         <toolSections name="Comments" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_CommentLink']"/>
       </optionalLayers>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description:DiagramDescription" documentation="Representation to edit class diagrams" name="Class Diagram" titleExpression="&lt;%name%> Class Diagram" domainClass="uml.Package" preconditionExpression="" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Drop%20to%20Class%20Diagram']" documentation="Representation to edit class diagrams" name="Class Diagram" titleExpression="&lt;%name%> Class Diagram" domainClass="uml.Package" preconditionExpression="" enablePopupBars="true">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" documentation="Hides elements (Classes, Interfaces, Associations, ...) not related to the selected (context) Class/Interface." name="Related filter">
         <filters xsi:type="filter:VariableFilter" semanticConditionExpression="&lt;%current.isRelated($context)%>">
@@ -1028,6 +1028,144 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView%>">
                 <subModelOperations xsi:type="tool:DeleteView"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drop to Class Diagram" precondition="&lt;%$element!=$newContainer%>" forceRefresh="true" mappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ExternalClass'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_DataType'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ExternalDataType'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Interface'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ExternalInterface'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ExternalEnumeration'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_PrimitiveType'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ExternalPrimitiveType'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ImportPackage'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Package']" dragSource="PROJECT_EXPLORER">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element%>">
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.eContainer()!=$newSemanticContainer%>">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$element.filter(&quot;Class&quot;)%>">
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ExternalClass']" containerViewExpression="&lt;%$newContainerView%>"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$element.filter(&quot;Package&quot;)%>">
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ImportPackage']" containerViewExpression="&lt;%$newContainerView%>"/>
+                    <subModelOperations xsi:type="tool:For" expression="&lt;%$element.eContents()%>" iteratorName="j">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;Class&quot;)%>">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']" containerViewExpression="&lt;%$element.~target.filter(&quot;DNodeContainer&quot;).nFirst()%>"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;DataType&quot;)%>">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_DataType']" containerViewExpression="&lt;%$element.~target.filter(&quot;DNodeContainer&quot;).nFirst()%>"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;Enumeration&quot;)%>">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration']" containerViewExpression="&lt;%$element.~target.filter(&quot;DNodeContainer&quot;).nFirst()%>"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;Interface&quot;)%>">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Interface']" containerViewExpression="&lt;%$element.~target.filter(&quot;DNodeContainer&quot;).nFirst()%>"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;PrimitiveType&quot;)%>">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_PrimitiveType']" containerViewExpression="&lt;%$element.~target.filter(&quot;DNodeContainer&quot;).nFirst()%>"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;Enumeration&quot;)%>">
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ExternalEnumeration']" containerViewExpression="&lt;%$newContainerView%>"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;Interface&quot;)%>">
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ExternalInterface']" containerViewExpression="&lt;%$newContainerView%>"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;DataType&quot;)%>">
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ExternalDataType']" containerViewExpression="&lt;%$newContainerView%>"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;PrimitiveType&quot;)%>">
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ExternalPrimitiveType']" containerViewExpression="&lt;%$newContainerView%>"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;Class&quot;)%>">
+                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']" containerViewExpression="&lt;%$newContainerView%>"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;Package&quot;)%>">
+                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Package']" containerViewExpression="&lt;%$newContainerView%>"/>
+                  <subModelOperations xsi:type="tool:For" expression="&lt;%$element.eContents()%>" iteratorName="j">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;Class&quot;)%>">
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']" containerViewExpression="&lt;%$element.~target.filter(&quot;DNodeContainer&quot;).nFirst()%>"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;DataType&quot;)%>">
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_DataType']" containerViewExpression="&lt;%$element.~target.filter(&quot;DNodeContainer&quot;).nFirst()%>"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;Enumeration&quot;)%>">
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration']" containerViewExpression="&lt;%$element.~target.filter(&quot;DNodeContainer&quot;).nFirst()%>"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;Interface&quot;)%>">
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Interface']" containerViewExpression="&lt;%$element.~target.filter(&quot;DNodeContainer&quot;).nFirst()%>"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;PrimitiveType&quot;)%>">
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_PrimitiveType']" containerViewExpression="&lt;%$element.~target.filter(&quot;DNodeContainer&quot;).nFirst()%>"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;Enumeration&quot;)%>">
+                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration']" containerViewExpression="&lt;%$newContainerView%>"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;Interface&quot;)%>">
+                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Interface']" containerViewExpression="&lt;%$newContainerView%>"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;DataType&quot;)%>">
+                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_DataType']" containerViewExpression="&lt;%$newContainerView%>"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;PrimitiveType&quot;)%>">
+                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_PrimitiveType']" containerViewExpression="&lt;%$newContainerView%>"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;Component&quot;)%>">
+                  <subModelOperations xsi:type="tool:For" expression="&lt;%$element.eContents()%>" iteratorName="j">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.eContainer()!=$newSemanticContainer%>">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$element.filter(&quot;Class&quot;)%>">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ExternalClass']" containerViewExpression="&lt;%$containerView%>"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$element.filter(&quot;Package&quot;)%>">
+                        <subModelOperations xsi:type="tool:CreateView" containerViewExpression="&lt;%$containerView%>"/>
+                        <subModelOperations xsi:type="tool:For">
+                          <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;Class&quot;)%>">
+                            <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']" containerViewExpression="&lt;%$element.~target.filter(&quot;DNodeContainer&quot;).nFirst()%>"/>
+                          </subModelOperations>
+                          <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;DataType&quot;)%>">
+                            <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_DataType']" containerViewExpression="&lt;%$element.~target.filter(&quot;DNodeContainer&quot;).nFirst()%>"/>
+                          </subModelOperations>
+                          <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;Enumeration&quot;)%>">
+                            <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration']" containerViewExpression="&lt;%$element.~target.filter(&quot;DNodeContainer&quot;).nFirst()%>"/>
+                          </subModelOperations>
+                          <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;Interface&quot;)%>">
+                            <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Interface']" containerViewExpression="&lt;%$element.~target.filter(&quot;DNodeContainer&quot;).nFirst()%>"/>
+                          </subModelOperations>
+                          <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;PrimitiveType&quot;)%>">
+                            <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_PrimitiveType']" containerViewExpression="&lt;%$element.~target.filter(&quot;DNodeContainer&quot;).nFirst()%>"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;Enumeration&quot;)%>">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ExternalEnumeration']" containerViewExpression="&lt;%$containerView%>"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;Interface&quot;)%>">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ExternalInterface']" containerViewExpression="&lt;%$containerView%>"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;DataType&quot;)%>">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ExternalDataType']" containerViewExpression="&lt;%$containerView%>"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;PrimitiveType&quot;)%>">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ExternalPrimitiveType']" containerViewExpression="&lt;%$containerView%>"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;Class&quot;)%>">
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']" containerViewExpression="&lt;%$newContainerView%>"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;DataType&quot;)%>">
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_DataType']" containerViewExpression="&lt;%$newContainerView%>"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;Interface&quot;)%>">
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Interface']" containerViewExpression="&lt;%$newContainerView%>"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;PrimitiveType&quot;)%>">
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_PrimitiveType']" containerViewExpression="&lt;%$newContainerView%>"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;Enumeration&quot;)%>">
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration']" containerViewExpression="&lt;%$newContainerView%>"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
