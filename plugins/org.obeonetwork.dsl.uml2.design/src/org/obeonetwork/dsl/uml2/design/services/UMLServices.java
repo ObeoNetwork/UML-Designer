@@ -396,68 +396,71 @@ public class UMLServices {
 	 * @return <code>true</code> if the given object is related to the context {@link Classifier},
 	 *         <code>false</code> otherwise.
 	 */
-	public boolean isRelated(EObject toFilter, Classifier context) {
+	public boolean isRelated(EObject toFilter, EObject context) {
 		boolean res = false;
-		if (toFilter instanceof Generalization) {
-			res = context.getGeneralizations().contains(toFilter)
-					|| ((Generalization)toFilter).getGeneral() == context;
-		} else if (toFilter instanceof InterfaceRealization && context instanceof Class) {
-			res = ((Class)context).getInterfaceRealizations().contains(toFilter)
-					|| ((InterfaceRealization)toFilter).getContract() == context;
-		} else if (toFilter instanceof Association) {
-			res = context.getAssociations().contains(toFilter);
-		} else if (toFilter instanceof Feature) {
-			res = isRelated(toFilter.eContainer(), context);
-		} else if (toFilter instanceof Classifier) {
-			res = context == toFilter;
-			// is it a generalization end
-			if (!res) {
-				for (Generalization generalization : context.getGeneralizations()) {
-					if (generalization.getGeneral() == toFilter) {
-						res = true;
-						break;
-					}
-				}
-			}
-			// is it a generalization opposite end
-			if (!res) {
-				for (Generalization generalization : ((Classifier)toFilter).getGeneralizations()) {
-					if (generalization.getGeneral() == context) {
-						res = true;
-						break;
-					}
-				}
-			}
-			if (toFilter instanceof Interface && context instanceof Class) {
-				// is it a realization end
+		if (context instanceof Classifier) {
+			if (toFilter instanceof Generalization) {
+				res = ((Classifier)context).getGeneralizations().contains(toFilter)
+						|| ((Generalization)toFilter).getGeneral() == context;
+			} else if (toFilter instanceof InterfaceRealization && context instanceof Class) {
+				res = ((Class)context).getInterfaceRealizations().contains(toFilter)
+						|| ((InterfaceRealization)toFilter).getContract() == context;
+			} else if (toFilter instanceof Association) {
+				res = ((Classifier)context).getAssociations().contains(toFilter);
+			} else if (toFilter instanceof Feature) {
+				res = isRelated(toFilter.eContainer(), context);
+			} else if (toFilter instanceof Classifier) {
+				res = context == toFilter;
+				// is it a generalization end
 				if (!res) {
-					for (InterfaceRealization realization : ((Class)context).getInterfaceRealizations()) {
-						if (realization.getContract() == toFilter) {
+					for (Generalization generalization : ((Classifier)context).getGeneralizations()) {
+						if (generalization.getGeneral() == toFilter) {
 							res = true;
 							break;
 						}
 					}
 				}
-			}
-			// is it an association end
-			if (!res) {
-				final List<Association> toFilterAsso = ((Classifier)toFilter).getAssociations();
-				final List<Association> contextAsso = context.getAssociations();
-				for (Association association : toFilterAsso) {
-					if (contextAsso.contains(association)) {
+				// is it a generalization opposite end
+				if (!res) {
+					for (Generalization generalization : ((Classifier)toFilter).getGeneralizations()) {
+						if (generalization.getGeneral() == context) {
+							res = true;
+							break;
+						}
+					}
+				}
+				if (toFilter instanceof Interface && context instanceof Class) {
+					// is it a realization end
+					if (!res) {
+						for (InterfaceRealization realization : ((Class)context).getInterfaceRealizations()) {
+							if (realization.getContract() == toFilter) {
+								res = true;
+								break;
+							}
+						}
+					}
+				}
+				// is it an association end
+				if (!res) {
+					final List<Association> toFilterAsso = ((Classifier)toFilter).getAssociations();
+					final List<Association> contextAsso = ((Classifier)context).getAssociations();
+					for (Association association : toFilterAsso) {
+						if (contextAsso.contains(association)) {
+							res = true;
+							break;
+						}
+					}
+				}
+			} else if (toFilter instanceof Package) {
+				for (EObject content : toFilter.eContents()) {
+					if (isRelated(content, context)) {
 						res = true;
 						break;
 					}
 				}
 			}
-		} else if (toFilter instanceof Package) {
-			for (EObject content : toFilter.eContents()) {
-				if (isRelated(content, context)) {
-					res = true;
-					break;
-				}
-			}
 		}
+
 		return res;
 	}
 
