@@ -410,7 +410,7 @@ public class UMLServices {
 			} else if (toFilter instanceof Feature) {
 				res = isRelated(toFilter.eContainer(), context);
 			} else if (toFilter instanceof Classifier) {
-				if(context == toFilter)
+				if (context == toFilter)
 					return false;
 				res = context == toFilter;
 				// is it a generalization end
@@ -471,6 +471,17 @@ public class UMLServices {
 						break;
 					}
 				}
+			}
+		} else if (context instanceof Package) {
+			if (toFilter instanceof Package) {
+				res = ((Package)context).getNestedPackages().contains(toFilter)
+						|| ((Package)context).getImportedPackages().contains(toFilter);
+				for (PackageImport packageImport : ((Package)context).getPackageImports()) {
+					if (packageImport.getImportedPackage().equals(toFilter))
+						res = true;
+				}
+			} else {
+				res = ((Package)context).getOwnedElements().contains(toFilter);
 			}
 		}
 

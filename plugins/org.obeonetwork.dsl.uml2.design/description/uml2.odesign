@@ -2573,6 +2573,20 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool:OperationAction" name="OD_AddRelatedElements" label="Add Related Elements" forceRefresh="true" icon="/org.eclipse.search/icons/full/etool16/search.gif">
+            <view name="views"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$views.target%>">
+                <subModelOperations xsi:type="tool:For" expression="&lt;%eContainer(&quot;Model&quot;).eAllContents()%>">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$i.isRelated($views.target)%>">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$i.filter(&quot;InstanceSpecification&quot;)%>">
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_InstanceSpecification']" containerViewExpression="&lt;%$diagram%>"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
         </toolSections>
         <toolSections name="Object Diagram" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='EAnnotation']">
           <ownedTools xsi:type="tool:EdgeCreationDescription" name="CR_InstanceSlot" label="Reference Instance" precondition="&lt;%(eContainer(&quot;uml.Model&quot;).eAllContents(&quot;uml.Association&quot;).ownedEnd.type.nContains(self.classifier) &amp;&amp; eContainer(&quot;uml.Model&quot;).eAllContents(&quot;uml.Association&quot;).ownedEnd.type.nContains($preTarget.classifier))||(classifier.getAllAttributes()[type==$preTarget.classifier].nSize>0)||(classifier.getAllAttributes()[type==$preTarget.classifier.interfaceRealization.contract].nSize>0)%>" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@edgeMappings[name='OD_CompositeSlot'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Object%20Diagram']/@defaultLayer/@edgeMappings[name='OD_InstanceSlot_Composition'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@edgeMappings[name='OD_InstanceSlot']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Connector.gif">
