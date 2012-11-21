@@ -2438,7 +2438,7 @@
         <toolSections name="Comments" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_CommentLink']"/>
       </optionalLayers>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description:DiagramDescription" documentation="Diagrams to show instances and relation between them." name="Object Diagram" titleExpression="&lt;%name%> Object Diagram" domainClass="uml.Package" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='OD_Drop']" documentation="Diagrams to show instances and relation between them." name="Object Diagram" titleExpression="&lt;%name%> Object Diagram" domainClass="uml.Package" enablePopupBars="true">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="Type links">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@optionalLayers[name='Type']/@edgeMappings[name='OD_EnumerationType'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@optionalLayers[name='Type']/@edgeMappings[name='OD_PrimitiveTypeType'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@optionalLayers[name='Type']/@edgeMappings[name='OD_ClassType']"/>
@@ -2519,21 +2519,12 @@
                       <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;InstanceSpecification&quot;)%>">
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_InstanceSpecification']" containerViewExpression="&lt;%$containerView%>"/>
                       </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;Element&quot;)%>">
-                        <subModelOperations xsi:type="tool:CreateView" containerViewExpression="&lt;%$containerView%>"/>
-                      </subModelOperations>
                     </subModelOperations>
-                  </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;Element&quot;)%>">
-                    <subModelOperations xsi:type="tool:CreateView" containerViewExpression="&lt;%$containerView%>"/>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;Component&quot;)%>">
                     <subModelOperations xsi:type="tool:For" expression="&lt;%$element.eContents()%>" iteratorName="j">
                       <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;InstanceSpecification&quot;)%>">
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_InstanceSpecification']" containerViewExpression="&lt;%$containerView%>"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;Element&quot;)%>">
-                        <subModelOperations xsi:type="tool:CreateView" containerViewExpression="&lt;%$containerView%>"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -2547,6 +2538,38 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView%>">
                 <subModelOperations xsi:type="tool:DeleteView"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="OD_Drop" label="Drop to Object Diagram" precondition="&lt;%$element!=$newContainer%>" forceRefresh="true" mappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_InstanceSpecification']" dragSource="PROJECT_EXPLORER">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element%>">
+                <subModelOperations xsi:type="tool:For" expression="&lt;%$element%>">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;InstanceSpecification&quot;)%>">
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_InstanceSpecification']" containerViewExpression="&lt;%$newContainerView%>"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;InstanceSpecification&quot;)%>">
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_InstanceSpecification']" containerViewExpression="&lt;%$newContainerView%>"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;Package&quot;)%>">
+                    <subModelOperations xsi:type="tool:For" expression="&lt;%$element.eContents()%>" iteratorName="j">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;InstanceSpecification&quot;)%>">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_InstanceSpecification']" containerViewExpression="&lt;%$newContainerView%>"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;Component&quot;)%>">
+                    <subModelOperations xsi:type="tool:For" expression="&lt;%$element.eContents()%>" iteratorName="j">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%self.filter(&quot;InstanceSpecification&quot;)%>">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_InstanceSpecification']" containerViewExpression="&lt;%$newContainerView%>"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
