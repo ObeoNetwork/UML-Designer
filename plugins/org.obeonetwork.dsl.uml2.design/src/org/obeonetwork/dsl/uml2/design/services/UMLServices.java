@@ -410,6 +410,8 @@ public class UMLServices {
 			} else if (toFilter instanceof Feature) {
 				res = isRelated(toFilter.eContainer(), context);
 			} else if (toFilter instanceof Classifier) {
+				if(context == toFilter)
+					return false;
 				res = context == toFilter;
 				// is it a generalization end
 				if (!res) {
@@ -434,6 +436,17 @@ public class UMLServices {
 					if (!res) {
 						for (InterfaceRealization realization : ((Class)context).getInterfaceRealizations()) {
 							if (realization.getContract() == toFilter) {
+								res = true;
+								break;
+							}
+						}
+					}
+				}
+				if (context instanceof Interface && toFilter instanceof Class) {
+					// is it a realization end
+					if (!res) {
+						for (InterfaceRealization realization : ((Class)toFilter).getInterfaceRealizations()) {
+							if (realization.getContract() == context) {
 								res = true;
 								break;
 							}
