@@ -1954,7 +1954,7 @@
             <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
           </style>
         </containerMappings>
-        <toolSections name="CO_ExistingElements" label="Existing Elements">
+        <toolSections name="CO_ExistingElements" label="Existing Elements" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CD_RemoveExistingElements']">
           <ownedTools xsi:type="tool:SelectionWizardDescription" name="CO_AddExistingElements" label="Add" precondition="&lt;%self.filter(&quot;Package&quot;)%>" forceRefresh="true" candidatesExpression="&lt;%getRootContainer()+getRootContainer().eAllContents(&quot;Package&quot;)+getRootContainer().getImportedPackages()+getRootContainer().getImportedPackages().getModel()+allAvailableRootPackages.eAllContents(&quot;Class&quot;)[!filter(&quot;Behavior&quot;)]+allAvailableRootPackages.eAllContents(&quot;Interface&quot;)%>" multiple="true" tree="true" rootExpression="&lt;%allAvailableRootPackages%>" childrenExpression="&lt;%eContents()%>" iconPath="/org.eclipse.search/icons/full/etool16/search.gif" windowTitle="Select element to add in current representation">
             <element name="element"/>
             <containerView name="containerView"/>
@@ -1993,15 +1993,6 @@
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" name="CO_RemoveExistingElements" label="Remove" precondition="&lt;%!$containerView.filter(&quot;DDiagram&quot;)%>" forceRefresh="true" iconPath="/org.eclipse.search/icons/full/dtool16/search.gif">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView%>">
-                <subModelOperations xsi:type="tool:DeleteView"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -2503,7 +2494,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <toolSections name="OD_ExistingElements" label="Existing Elements">
+        <toolSections name="OD_ExistingElements" label="Existing Elements" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CD_RemoveExistingElements']">
           <ownedTools xsi:type="tool:SelectionWizardDescription" name="OD_AddExistingElements" label="Add" precondition="&lt;%self.filter(&quot;Package&quot;)%>" forceRefresh="true" candidatesExpression="&lt;%getRootContainer()+getRootContainer().eAllContents(&quot;Package&quot;)+getRootContainer().getImportedPackages()+getRootContainer().getImportedPackages().getModel()+allAvailableRootPackages.eAllContents(&quot;InstanceSpecification&quot;)%>" multiple="true" tree="true" rootExpression="&lt;%allAvailableRootPackages%>" childrenExpression="&lt;%eContents()%>" iconPath="/org.eclipse.search/icons/full/etool16/search.gif" windowTitle="Select element to add in current representation">
             <element name="element"/>
             <containerView name="containerView"/>
@@ -2529,15 +2520,6 @@
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" name="OD_RemoveExistingElements" label="Remove" precondition="&lt;%!$containerView.filter(&quot;DDiagram&quot;)%>" forceRefresh="true" iconPath="/org.eclipse.search/icons/full/dtool16/search.gif">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView%>">
-                <subModelOperations xsi:type="tool:DeleteView"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -2726,7 +2708,7 @@
         <filters xsi:type="filter:MappingFilter"/>
       </filters>
       <defaultLayer name="Class">
-        <edgeMappings name="COD_Connector" preconditionExpression="&lt;%isValidConnector($sourceView,$targetView)%>" deletionDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Part%20%26%20Connector']" semanticCandidatesExpression="&lt;%ownedConnector%>" semanticElements="&lt;%self.getSemanticElements()%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@subContainerMappings[name='COD_Part'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@subContainerMappings[name='COD_Part']/@borderedNodeMappings[name='COD_PartPort'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@borderedNodeMappings[name='COD_ClassPort']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@subContainerMappings[name='COD_Part'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@subContainerMappings[name='COD_Part']/@borderedNodeMappings[name='COD_PartPort'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@borderedNodeMappings[name='COD_ClassPort']" targetFinderExpression="&lt;%end.nLast().role()%>" sourceFinderExpression="&lt;%end.nFirst().role%>" targetExpression="&lt;%self%>" domainClass="uml.Connector" useDomainElement="true" reconnections="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Reconnect%20Connector%20source'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Reconnect%20Connector%20target']">
+        <edgeMappings name="COD_Connector" preconditionExpression="&lt;%isValidConnector($sourceView,$targetView)%>" deletionDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Part%20%26%20Connector']" semanticCandidatesExpression="&lt;%ownedConnector%>" semanticElements="&lt;%self.getSemanticElements()%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@subContainerMappings[name='COD_Part'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@subContainerMappings[name='COD_Part']/@borderedNodeMappings[name='COD_PartPort'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@borderedNodeMappings[name='COD_ClassPort']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@subContainerMappings[name='COD_Part'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@subContainerMappings[name='COD_Part']/@borderedNodeMappings[name='COD_PartPort'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@borderedNodeMappings[name='COD_ClassPort']" targetFinderExpression="&lt;%end.nLast().role()%>" sourceFinderExpression="&lt;%end.nFirst().role%>" targetExpression="&lt;%self%>" domainClass="uml.Connector" useDomainElement="true" reconnections="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Reconnect%20Connector%20source'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Reconnect%20Connector%20target']">
           <style targetArrow="NoDecoration" sizeComputationExpression="1" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_orange']"/>
             <centerLabelStyleDescription>
@@ -2734,7 +2716,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="COD_Class" navigationDescriptions="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='Creation%20and%20Navigation']/@ownedTools[name='state%20diagram']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%self%>" createElements="false" semanticElements="&lt;%self.getSemanticElements()%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Class">
+        <containerMappings name="COD_Class" navigationDescriptions="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='Creation%20and%20Navigation']/@ownedTools[name='state%20diagram']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" createElements="false" semanticElements="&lt;%self.getSemanticElements()%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Class">
           <borderedNodeMappings name="COD_ClassPort" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%ownedPort%>" domainClass="uml.Port">
             <style xsi:type="style:SquareDescription" labelExpression="&lt;%computeUmlLabel()%>" tooltipExpression="&lt;%computeUmlTooltip()%>" sizeComputationExpression="1" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -2742,7 +2724,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </borderedNodeMappings>
-          <subContainerMappings name="COD_Part" deletionDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Part%20%26%20Connector']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%part[eClass.name == &quot;Property&quot;]%>" createElements="false" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Property">
+          <subContainerMappings name="COD_Part" deletionDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Part%20%26%20Connector']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" createElements="false" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Property">
             <borderedNodeMappings name="COD_PartPort" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%type.filter(&quot;Class&quot;).ownedPort%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Port">
               <style xsi:type="style:SquareDescription" labelExpression="&lt;%computeUmlLabel()%>" tooltipExpression="&lt;%computeUmlTooltip()%>" sizeComputationExpression="1" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -2761,7 +2743,58 @@
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
+          <conditionnalStyles predicateExpression="&lt;%self!=$diagram.target%>">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='lighter%20blue']">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
         </containerMappings>
+        <toolSections name="CD_ExistingElements" label="Existing Elements" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CD_RemoveExistingElements']">
+          <ownedTools xsi:type="tool:SelectionWizardDescription" documentation="Add an existing element to current representation" name="COD_AddExistingElements" label="Add" forceRefresh="true" candidatesExpression="&lt;%getRootContainer()+getRootContainer().eAllContents(&quot;Package&quot;)+getRootContainer().getImportedPackages()+getRootContainer().getImportedPackages().getModel()+allAvailableRootPackages.eAllContents(&quot;Class&quot;)[!filter(&quot;Behavior&quot;)]+allAvailableRootPackages.eAllContents(&quot;Property&quot;)%>" multiple="true" tree="true" rootExpression="&lt;%allAvailableRootPackages%>" childrenExpression="&lt;%eContents()%>" iconPath="/org.eclipse.search/icons/full/etool16/search.gif" windowTitle="Select element to add in current representation">
+            <element name="element"/>
+            <containerView name="containerView"/>
+            <container name="container"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element%>">
+                <subModelOperations xsi:type="tool:For" expression="&lt;%$element%>" iteratorName="selection">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$selection.filter(&quot;Class&quot;)%>">
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']" containerViewExpression="&lt;%$containerView%>"/>
+                    <subModelOperations xsi:type="tool:For" expression="&lt;%$selection.part.filter(&quot;Property&quot;)%>" iteratorName="part">
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@subContainerMappings[name='COD_Part']" containerViewExpression="&lt;%$selection.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;COD_Class&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $diagram]%>"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$selection.filter(&quot;Package&quot;)%>">
+                    <subModelOperations xsi:type="tool:For" expression="&lt;%$selection.eContents().filter(&quot;Class&quot;)%>" iteratorName="class">
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']" containerViewExpression="&lt;%$containerView%>"/>
+                      <subModelOperations xsi:type="tool:For" expression="&lt;%$class.part.filter(&quot;Property&quot;)%>" iteratorName="part">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@subContainerMappings[name='COD_Part']" containerViewExpression="&lt;%$class.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;COD_Class&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $diagram]%>"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$selection.filter(&quot;Component&quot;)%>">
+                    <subModelOperations xsi:type="tool:For" expression="&lt;%$element.eContents().filter(&quot;Class&quot;)%>" iteratorName="class">
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']" containerViewExpression="&lt;%$containerView%>"/>
+                      <subModelOperations xsi:type="tool:For" expression="&lt;%$class.eContents().filter(&quot;Property&quot;)%>" iteratorName="part">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@subContainerMappings[name='COD_Part']" containerViewExpression="&lt;%$class.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;COD_Class&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $diagram]%>"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$selection.filter(&quot;Property&quot;)%>">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$selection.eContainer()%>">
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']" containerViewExpression="&lt;%$containerView%>">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$selection%>">
+                          <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@subContainerMappings[name='COD_Part']" containerViewExpression="&lt;%$selection.eContainer().~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;COD_Class&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $diagram]%>"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
         <toolSections name="Default" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Properties']/@tools.1">
           <ownedTools xsi:type="tool:EdgeCreationDescription" name="COD_Connector" label="Connector Creation" precondition="&lt;%$preSource.type==$preTarget.type%>" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@edgeMappings[name='COD_Connector']">
             <sourceVariable name="source"/>
