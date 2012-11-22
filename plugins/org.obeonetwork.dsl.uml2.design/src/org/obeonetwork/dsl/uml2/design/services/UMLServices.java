@@ -26,20 +26,25 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.uml2.uml.AggregationKind;
+import org.eclipse.uml2.uml.Artifact;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.AssociationClass;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Component;
+import org.eclipse.uml2.uml.Deployment;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.ExecutionEnvironment;
 import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.InterfaceRealization;
+import org.eclipse.uml2.uml.Manifestation;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageImport;
+import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
@@ -407,6 +412,28 @@ public class UMLServices {
 						|| ((InterfaceRealization)toFilter).getContract() == context;
 			} else if (toFilter instanceof Association) {
 				res = ((Classifier)context).getAssociations().contains(toFilter);
+			} else if (toFilter instanceof Artifact && context instanceof ExecutionEnvironment) {
+				for (Deployment deployment : ((ExecutionEnvironment)context).getDeployments()) {
+					if (deployment.getSuppliers().contains(toFilter))
+						res = true;
+				}
+			} else if (toFilter instanceof ExecutionEnvironment && context instanceof Artifact) {
+				for (Deployment deployment : ((ExecutionEnvironment)toFilter).getDeployments()) {
+					if (deployment.getSuppliers().contains(context))
+						res = true;
+				}
+			} else if (toFilter instanceof PackageableElement && context instanceof Artifact) {
+				res = ((Artifact)context).getManifestations().contains(toFilter);
+				for (Manifestation manifestation : ((Artifact)context).getManifestations()) {
+					if (manifestation.getTargets().contains(toFilter))
+						res = true;
+				}
+			} else if (toFilter instanceof Artifact && context instanceof PackageableElement) {
+				res = ((Artifact)toFilter).getManifestations().contains(context);
+				for (Manifestation manifestation : ((Artifact)toFilter).getManifestations()) {
+					if (manifestation.getTargets().contains(context))
+						res = true;
+				}
 			} else if (toFilter instanceof Feature) {
 				res = isRelated(toFilter.eContainer(), context);
 			} else if (toFilter instanceof Classifier) {
