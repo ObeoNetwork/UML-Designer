@@ -1171,7 +1171,23 @@
               <container name="container"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
-                  <subModelOperations xsi:type="tool:ExternalJavaAction" name="debug" id="fr.obeo.dsl.viewpoint.business.api.action.printVariables"/>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedAttribute">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$element%>"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="property&lt;%eContainer().eContents().filter(&quot;Property&quot;).nSize()%>"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="1"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:NodeCreationDescription" name="CR_TypedProperty" precondition="&lt;%self.debug()%>" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']">
+              <variable name="container">
+                <subVariables xsi:type="tool:SelectModelElementVariable" name="element" candidatesExpression="&lt;%$diagram.target.eContainer(&quot;uml.Package&quot;).availableTypes%>" message="Please select a type for the new property"/>
+              </variable>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedAttribute">
                     <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$element%>"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="property&lt;%eContainer().eContents().filter(&quot;Property&quot;).nSize()%>"/>
@@ -2487,7 +2503,12 @@
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.createInstance($class)%>"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="InstanceSpecification" referenceName="packagedElement">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%&quot;new&quot; + $class.getName()%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="classifier" valueExpression="&lt;%$class%>"/>
+                </subModelOperations>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" name="CR_PrimitiveSlot" label="Set Default Value" nodeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_InstanceSpecification']/@subNodeMappings[name='OD_Slot']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Slot.gif">
@@ -2751,7 +2772,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Default" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Properties']/@tools.1">
+        <toolSections name="Default">
           <ownedTools xsi:type="tool:EdgeCreationDescription" name="COD_Connector" label="Connector Creation" precondition="&lt;%$preSource.type==$preTarget.type%>" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@edgeMappings[name='COD_Connector']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
@@ -2777,7 +2798,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:SelectionWizardDescription" name="Port" precondition="&lt;%filter(&quot;EncapsulatedClassifier&quot;) || (eClass.name == &quot;Property&quot; &amp;&amp; type.filter(&quot;EncapsulatedClassifier&quot;)) %>" forceRefresh="true" candidatesExpression="&lt;%$diagram.target.eContainer(&quot;uml.Package&quot;).availableTypes.debug()%>" message="Please select a type for the new port" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Property.gif" windowTitle="New property type selection">
+          <ownedTools xsi:type="tool:SelectionWizardDescription" name="Port" precondition="&lt;%filter(&quot;EncapsulatedClassifier&quot;) || (eClass.name == &quot;Property&quot; &amp;&amp; type.filter(&quot;EncapsulatedClassifier&quot;)) %>" forceRefresh="true" candidatesExpression="&lt;%$diagram.target.eContainer(&quot;uml.Package&quot;).availableTypes%>" message="Please select a type for the new port" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Property.gif" windowTitle="New property type selection">
             <element name="element"/>
             <containerView name="containerView"/>
             <container name="container"/>
@@ -2802,40 +2823,6 @@
                       <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="1"/>
                     </subModelOperations>
                   </default>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:SelectionWizardDescription" name="Instance Property" precondition="&lt;%filter(&quot;Type&quot;) || eClass.name == &quot;Property&quot;%>" forceRefresh="true" candidatesExpression="&lt;%eContainer(&quot;Model&quot;)+eContainer(&quot;Model&quot;).eAllContents().filter(&quot;Package&quot;)+eContainer(&quot;Model&quot;).eAllContents.filter(&quot;InstanceSpecification&quot;)%>" tree="true" rootExpression="&lt;%getRootContainer()%>" childrenExpression="&lt;%eContents()%>" message="Please select an instance for the new property" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Property.gif" windowTitle="New property instance selection">
-            <element name="element"/>
-            <containerView name="containerView"/>
-            <container name="container"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
-                <subModelOperations xsi:type="tool:ExternalJavaAction" name="debug" id="fr.obeo.dsl.viewpoint.business.api.action.printVariables"/>
-                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$container.filter(&quot;Property&quot;).nSize()>0%>">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$element.classifier.nGet(0)%>"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$element.name%>"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="1"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="1"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="InstanceValue" referenceName="defaultValue">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$element.name.toLowerCase()%>"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="instance" valueExpression="&lt;%$element%>"/>
-                  </subModelOperations>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$container.filter(&quot;Class&quot;).nSize()>0%>">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedAttribute" variableName="property">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$element.classifier.nGet(0)%>"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$element.name%>"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="1"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="1"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="InstanceValue" referenceName="defaultValue">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$element.name.toLowerCase()%>"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="instance" valueExpression="&lt;%$element%>"/>
-                    </subModelOperations>
-                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -2869,6 +2856,57 @@
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="CR_TypedProperty" label="Typed Property" forceRefresh="true" containerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@subContainerMappings[name='COD_Part']">
+            <variable name="container">
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="element" candidatesExpression="&lt;%getRootContainer().eAllContents().filter(&quot;Type&quot;)%>" message="Please select a type for the new property"/>
+            </variable>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedAttribute">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$element%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="property&lt;%eContainer().eContents().filter(&quot;Property&quot;).nSize()%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="1"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="CR_InstanceProperty" label="Instance Property" forceRefresh="true" containerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@subContainerMappings[name='COD_Part']">
+            <variable name="container">
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="element" candidatesExpression="&lt;%eContainer(&quot;Model&quot;)+eContainer(&quot;Model&quot;).eAllContents().filter(&quot;Package&quot;)+eContainer(&quot;Model&quot;).eAllContents.filter(&quot;InstanceSpecification&quot;)%>" tree="true" rootExpression="&lt;%getRootContainer()%>" childrenExpression="&lt;%eContents()%>" message="Please select an instance for the new property"/>
+            </variable>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$container.filter(&quot;Property&quot;).nSize()>0%>">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$element.classifier.nGet(0)%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$element.name%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="1"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="1"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="InstanceValue" referenceName="defaultValue">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$element.name.toLowerCase()%>"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="instance" valueExpression="&lt;%$element%>"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$container.filter(&quot;Class&quot;).nSize()>0%>">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedAttribute" variableName="property">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$element.classifier.nGet(0)%>"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$element.name%>"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="1"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="1"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="InstanceValue" referenceName="defaultValue">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$element.name.toLowerCase()%>"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="instance" valueExpression="&lt;%$element%>"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
           </ownedTools>
         </toolSections>
         <toolSections name="Delete" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='EAnnotation']">

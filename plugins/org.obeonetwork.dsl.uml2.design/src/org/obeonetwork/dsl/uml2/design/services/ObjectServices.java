@@ -98,36 +98,6 @@ public class ObjectServices {
 	}
 
 	/**
-	 * Create an instance specification.
-	 * 
-	 * @param pkg
-	 *            Package under which instance will be created
-	 * @param cl
-	 *            Class to instanciate
-	 */
-	public void createInstance(org.eclipse.uml2.uml.Package pkg, org.eclipse.uml2.uml.Class cl) {
-		// Create instance specification
-		final InstanceSpecification instance = UMLFactory.eINSTANCE.createInstanceSpecification();
-		instance.setName("new" + cl.getName());
-		instance.getClassifiers().add(cl);
-		pkg.getPackagedElements().add(instance);
-
-		refresh(pkg);
-	}
-
-	/**
-	 * Create an instance specification.
-	 * 
-	 * @param container
-	 *            Package under which instance will be created
-	 * @param cl
-	 *            Class to instanciate
-	 */
-	public void createInstance(InstanceSpecification container, Class cl) {
-		createInstance(container.getNearestPackage(), cl);
-	}
-
-	/**
 	 * Refresh the representation associated to a package.
 	 * 
 	 * @param pkg
