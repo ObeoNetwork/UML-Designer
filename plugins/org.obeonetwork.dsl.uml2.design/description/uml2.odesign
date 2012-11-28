@@ -1191,23 +1191,6 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:NodeCreationDescription" name="CR_TypedProperty" precondition="&lt;%self.debug()%>" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']">
-              <variable name="container">
-                <subVariables xsi:type="tool:SelectModelElementVariable" name="element" candidatesExpression="&lt;%$diagram.target.eContainer(&quot;uml.Package&quot;).availableTypes%>" message="Please select a type for the new property"/>
-              </variable>
-              <viewVariable name="containerView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedAttribute">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$element%>"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="property&lt;%eContainer().eContents().filter(&quot;Property&quot;).nSize()%>"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="1"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
           </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" name="Operation" nodeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Operation']">
             <variable name="container"/>
@@ -2801,7 +2784,7 @@
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="ConnectorEnd" referenceName="end" variableName="targetPort">
                     <subModelOperations xsi:type="tool:SetValue" featureName="role" valueExpression="&lt;%$target%>"/>
                     <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$target.filter(&quot;uml.Port&quot;)%>">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="partWithPort" valueExpression="&lt;%$targetView.debug().eContainer.target%>"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="partWithPort" valueExpression="&lt;%$targetView.eContainer.target%>"/>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
