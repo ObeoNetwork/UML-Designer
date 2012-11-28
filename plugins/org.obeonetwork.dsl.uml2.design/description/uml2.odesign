@@ -1039,7 +1039,7 @@
             <view name="views"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$views.target%>">
-                <subModelOperations xsi:type="tool:For" expression="&lt;%eContainer(&quot;Model&quot;).eAllContents()%>">
+                <subModelOperations xsi:type="tool:For" expression="&lt;%getAllRootsInSession().filter(&quot;Model&quot;).eAllContents()%>">
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$i.isRelated($views.target)%>">
                     <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$views.target.eContainer()!=$diagram%>">
                       <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$i.filter(&quot;Class&quot;)%>">
@@ -1932,7 +1932,7 @@
             <view name="views"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$views.target%>">
-                <subModelOperations xsi:type="tool:For" expression="&lt;%eContainer(&quot;Model&quot;).eAllContents()%>">
+                <subModelOperations xsi:type="tool:For" expression="&lt;%getAllRootsInSession().filter(&quot;Model&quot;).eAllContents()%>">
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$i.isRelated($views.target)%>">
                     <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$i.filter(&quot;Class&quot;)%>">
                       <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']" containerViewExpression="&lt;%$diagram%>"/>
@@ -2467,7 +2467,7 @@
             <view name="views"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$views.target%>">
-                <subModelOperations xsi:type="tool:For" expression="&lt;%eContainer(&quot;Model&quot;).eAllContents()%>">
+                <subModelOperations xsi:type="tool:For" expression="&lt;%getAllRootsInSession().filter(&quot;Model&quot;).eAllContents()%>">
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$i.isRelated($views.target)%>">
                     <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$i.filter(&quot;InstanceSpecification&quot;)%>">
                       <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_InstanceSpecification']" containerViewExpression="&lt;%$diagram%>"/>
@@ -2754,7 +2754,7 @@
             <view name="views"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$views.target%>">
-                <subModelOperations xsi:type="tool:For" expression="&lt;%eContainer(&quot;Model&quot;).eAllContents()%>">
+                <subModelOperations xsi:type="tool:For" expression="&lt;%getAllRootsInSession().filter(&quot;Model&quot;).eAllContents()%>">
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$i.isRelated($views.target)%>">
                     <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$i.filter(&quot;Class&quot;)%>">
                       <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']" containerViewExpression="&lt;%$diagram%>"/>
@@ -3213,7 +3213,7 @@
             <view name="views"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$views.target%>">
-                <subModelOperations xsi:type="tool:For" expression="&lt;%eContainer(&quot;Model&quot;).eAllContents()%>">
+                <subModelOperations xsi:type="tool:For" expression="&lt;%getAllRootsInSession().filter(&quot;Model&quot;).eAllContents()%>">
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$i.isRelated($views.target)%>">
                     <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$i.filter(&quot;Artifact&quot;)%>">
                       <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Artifact']" containerViewExpression="&lt;%$diagram%>"/>
