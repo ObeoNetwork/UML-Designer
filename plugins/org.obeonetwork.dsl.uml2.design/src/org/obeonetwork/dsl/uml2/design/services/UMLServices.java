@@ -32,6 +32,7 @@ import org.eclipse.uml2.uml.AssociationClass;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Component;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Deployment;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ExecutionEnvironment;
@@ -41,6 +42,7 @@ import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.InterfaceRealization;
 import org.eclipse.uml2.uml.Manifestation;
 import org.eclipse.uml2.uml.Model;
+import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageImport;
@@ -455,6 +457,30 @@ public class UMLServices {
 						if (generalization.getGeneral() == context) {
 							res = true;
 							break;
+						}
+					}
+				}
+				if (toFilter instanceof NamedElement && context instanceof NamedElement) {
+					// is it a dependency end
+					if (!res) {
+						for (Dependency dependency : ((NamedElement)context).getClientDependencies()) {
+							if (dependency.getClients().contains(toFilter)
+									|| dependency.getSuppliers().contains(toFilter)) {
+								res = true;
+								break;
+							}
+						}
+					}
+				}
+				if (context instanceof NamedElement && toFilter instanceof NamedElement) {
+					// is it a dependency end
+					if (!res) {
+						for (Dependency dependency : ((NamedElement)toFilter).getClientDependencies()) {
+							if (dependency.getClients().contains(context)
+									|| dependency.getSuppliers().contains(context)) {
+								res = true;
+								break;
+							}
 						}
 					}
 				}
