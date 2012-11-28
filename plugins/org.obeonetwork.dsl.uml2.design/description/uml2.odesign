@@ -104,7 +104,7 @@
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
           </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" documentation="Create a new Class Diagram" name="Composite Object Diagram" titleExpression="&lt;%name%> Object Diagram" diagramDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Object%20Diagram']">
+          <ownedTools xsi:type="tool:DiagramCreationDescription" documentation="Create a new Class Diagram" name="Composite Object Diagram" titleExpression="&lt;%name%> Object Diagram">
             <initialOperation/>
             <containerViewVariable name="containerView"/>
             <representationNameVariable name="diagramName"/>
@@ -2496,7 +2496,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Object Diagram" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='EAnnotation']">
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="CR_InstanceSlot" label="Reference Instance" precondition="&lt;%(eContainer(&quot;uml.Model&quot;).eAllContents(&quot;uml.Association&quot;).ownedEnd.type.nContains(self.classifier) &amp;&amp; eContainer(&quot;uml.Model&quot;).eAllContents(&quot;uml.Association&quot;).ownedEnd.type.nContains($preTarget.classifier))||(classifier.getAllAttributes()[type==$preTarget.classifier].nSize>0)||(classifier.getAllAttributes()[type==$preTarget.classifier.interfaceRealization.contract].nSize>0)%>" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@edgeMappings[name='OD_CompositeSlot'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Object%20Diagram']/@defaultLayer/@edgeMappings[name='OD_InstanceSlot_Composition'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@edgeMappings[name='OD_InstanceSlot']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Connector.gif">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="CR_InstanceSlot" label="Reference Instance" precondition="&lt;%(eContainer(&quot;uml.Model&quot;).eAllContents(&quot;uml.Association&quot;).ownedEnd.type.nContains(self.classifier) &amp;&amp; eContainer(&quot;uml.Model&quot;).eAllContents(&quot;uml.Association&quot;).ownedEnd.type.nContains($preTarget.classifier))||(classifier.getAllAttributes()[type==$preTarget.classifier].nSize>0)||(classifier.getAllAttributes()[type==$preTarget.classifier.interfaceRealization.contract].nSize>0)%>" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@edgeMappings[name='OD_CompositeSlot'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@edgeMappings[name='OD_InstanceSlot']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Connector.gif">
             <sourceVariable name="source">
               <subVariables xsi:type="tool:SelectModelElementVariable" name="property" candidatesExpression="&lt;%$source.eContainer(&quot;uml.Model&quot;).eAllContents(&quot;uml.Association&quot;).ownedEnd[type==$target.classifier]+$source.classifier.getAllAttributes()[type==$target.classifier]+$source.classifier.getAllAttributes()[type==$target.classifier.interfaceRealization.contract]%>"/>
             </sourceVariable>
@@ -2531,12 +2531,12 @@
             </initialOperation>
           </ownedTools>
           <subSections name="navigation">
-            <ownedTools xsi:type="tool:DiagramNavigationDescription" name="for InstanceSpecification" browseExpression="&lt;%$container.eContainer(&quot;Package&quot;)%>" navigationNameExpression="&lt;%$container.eContainer(&quot;Package&quot;).name%> Composite Object Diagram" diagramDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Object%20Diagram']">
+            <ownedTools xsi:type="tool:DiagramNavigationDescription" name="for InstanceSpecification" browseExpression="&lt;%$container.eContainer(&quot;Package&quot;)%>" navigationNameExpression="&lt;%$container.eContainer(&quot;Package&quot;).name%> Composite Object Diagram">
               <containerViewVariable name="containerView"/>
               <containerVariable name="container"/>
               <representationNameVariable name="diagramName"/>
             </ownedTools>
-            <ownedTools xsi:type="tool:DiagramCreationDescription" name="Create Composite Object Diagram" titleExpression="&lt;%$containerView.target.eContainer.name%> Composite Object Diagram" browseExpression="&lt;%$container.eContainer%>" diagramDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Object%20Diagram']">
+            <ownedTools xsi:type="tool:DiagramCreationDescription" name="Create Composite Object Diagram" titleExpression="&lt;%$containerView.target.eContainer.name%> Composite Object Diagram" browseExpression="&lt;%$container.eContainer%>">
               <initialOperation/>
               <containerViewVariable name="containerView"/>
               <representationNameVariable name="diagramName"/>
@@ -3017,39 +3017,6 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.defineProfile()%>"/>
             </initialOperation>
-          </ownedTools>
-        </toolSections>
-      </defaultLayer>
-    </ownedRepresentations>
-    <ownedRepresentations xsi:type="description:DiagramDescription" name="Composite Object Diagram" titleExpression="&lt;%name%> Composite Object Diagram" domainClass="uml.Package" enablePopupBars="true">
-      <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
-      <defaultLayer xsi:type="description:OptionalLayer" name="Composition">
-        <edgeMappings name="OD_InstanceSlot_Composition" preconditionExpression="&lt;%self.definingFeature.aggregation!=&quot;composite&quot;%>" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticElements="&lt;%self.getSemanticElements()%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_InstanceSpecification_Composition']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_InstanceSpecification_Composition']" targetFinderExpression="&lt;%self[definingFeature.aggregation!=&quot;composite&quot;].value.instance%>" sourceFinderExpression="&lt;%eContainer%>" domainClass="uml.Slot" useDomainElement="true">
-          <style targetArrow="NoDecoration" sizeComputationExpression="1" routingStyle="manhattan">
-            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
-            <centerLabelStyleDescription labelExpression="&lt;%definingFeature.name%>">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
-          </style>
-        </edgeMappings>
-        <containerMappings name="OD_InstanceSpecification_Composition" detailDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Object%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Create%20Object%20Diagram']" navigationDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Object%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='for%20InstanceSpecification']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%(filter(&quot;Package&quot;).eContents().filter(&quot;InstanceSpecification&quot;) - filter(&quot;Package&quot;).eAllContents().filter(&quot;Slot&quot;).value.instance)+self.filter(&quot;InstanceSpecification&quot;).slot[definingFeature.aggregation==&quot;composite&quot;].value.instance%>" semanticElements="&lt;%self.getSemanticElements()%>" domainClass="uml.InstanceSpecification" reusedContainerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_InstanceSpecification_Composition']">
-          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="&lt;%name%> : &lt;%classifier.name%> (&lt;%filter(&quot;InstanceSpecification&quot;).~instance.~value.definingFeature[aggregation==&quot;composite&quot;].name%>)">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
-          </style>
-        </containerMappings>
-        <toolSections name="Composite Object Diagram" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='CR_InstanceSlot'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='EAnnotation']">
-          <ownedTools xsi:type="tool:DiagramNavigationDescription" name="for InstanceSpecification" browseExpression="&lt;%$container.eContainer%>" navigationNameExpression="&lt;%$container.eContainer.name%> Object Diagram" diagramDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']">
-            <containerViewVariable name="containerView"/>
-            <containerVariable name="container"/>
-            <representationNameVariable name="diagramName"/>
-          </ownedTools>
-          <ownedTools xsi:type="tool:DiagramCreationDescription" name="Create Object Diagram" titleExpression="&lt;%$containerView.target.eContainer.name%> Object Diagram" browseExpression="&lt;%$container.eContainer%>" diagramDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']">
-            <initialOperation/>
-            <containerViewVariable name="containerView"/>
-            <representationNameVariable name="diagramName"/>
           </ownedTools>
         </toolSections>
       </defaultLayer>
