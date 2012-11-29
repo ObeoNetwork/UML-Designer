@@ -9,11 +9,16 @@
 	</topic>
 	<topic href="doc/UML Designer User Guide.html#UsingthePackageHierarchyDiagram" label="Using the Package Hierarchy Diagram">
 		<topic href="doc/UML Designer User Guide.html#CreatingaClassDiagram" label="Creating a Class Diagram"></topic>
+		<topic href="doc/UML Designer User Guide.html#CreatingaDeploymentDiagram" label="Creating a Deployment Diagram"></topic>
 	</topic>
 	<topic href="doc/UML Designer User Guide.html#UsingtheClassDiagram" label="Using the Class Diagram">
 		<topic href="doc/UML Designer User Guide.html#CreatingElements" label="Creating Elements"></topic>
 		<topic href="doc/UML Designer User Guide.html#EditingElements" label="Editing Elements"></topic>
 		<topic href="doc/UML Designer User Guide.html#EditingAttributes" label="Editing Attributes"></topic>
+	</topic>
+	<topic href="doc/UML Designer User Guide.html#UsingtheDeploymentDiagram" label="Using the Deployment Diagram">
+		<topic href="doc/UML Designer User Guide.html#CreatingElements2" label="Creating Elements"></topic>
+		<topic href="doc/UML Designer User Guide.html#Editinglabels" label="Editing labels"></topic>
 	</topic>
 	<topic href="doc/UML Designer User Guide.html#Features" label="Features">
 		<topic href="doc/UML Designer User Guide.html#ClassDiagram" label="Class Diagram">
@@ -40,5 +45,13 @@
 			<topic href="doc/UML Designer User Guide.html#Introduction5" label="Introduction"></topic>
 		</topic>
 		<topic href="doc/UML Designer User Guide.html#SequenceDiagram" label="Sequence Diagram"></topic>
+		<topic href="doc/UML Designer User Guide.html#DeploymentDiagram" label="Deployment Diagram">
+			<topic href="doc/UML Designer User Guide.html#Introduction6" label="Introduction"></topic>
+			<topic href="doc/UML Designer User Guide.html#Artifactdependencyandgeneralization" label="Artifact dependency and generalization"></topic>
+			<topic href="doc/UML Designer User Guide.html#Artifactmanifestationofpackageableelements" label="Artifact manifestation of packageable elements"></topic>
+			<topic href="doc/UML Designer User Guide.html#Artifactdeployment" label="Artifact deployment"></topic>
+			<topic href="doc/UML Designer User Guide.html#DeviceExecutionEnvironmentNodeandlinks." label="Device, Execution Environment, Node and links."></topic>
+			<topic href="doc/UML Designer User Guide.html#CompositeNodes" label="Composite Nodes"></topic>
+		</topic>
 	</topic>
 </toc>
