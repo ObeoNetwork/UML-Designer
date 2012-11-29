@@ -460,4 +460,55 @@
   <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_GegXgfBWEeGM4vMhC0rGEw" name="confirm_receiver_event" operation="_ZNeigMgFEeC-rqkzDXqbnw"/>
   <packagedElement xmi:type="uml:SendOperationEvent" xmi:id="_Geg-kPBWEeGM4vMhC0rGEw" name="confirm_sender_event_event" operation="_ZNeigMgFEeC-rqkzDXqbnw"/>
   <packagedElement xmi:type="uml:ReceiveOperationEvent" xmi:id="_Geg-kfBWEeGM4vMhC0rGEw" name="confirm_receiver_event_event" operation="_ZNeigMgFEeC-rqkzDXqbnw"/>
+  <packagedElement xmi:type="uml:Device" xmi:id="_L95_MDozEeKHT8Fbj3g8nQ" name="Red Hat Enterprise Linux Advanced Server 3.0 ">
+    <nestedNode xmi:type="uml:ExecutionEnvironment" xmi:id="_iEjtQDozEeKHT8Fbj3g8nQ" name="Tomecat 7">
+      <nestedNode xmi:type="uml:ExecutionEnvironment" xmi:id="_nbt_MDozEeKHT8Fbj3g8nQ" name="Catalina Servlet Container">
+        <nestedClassifier xmi:type="uml:Artifact" xmi:id="_KelsEDo0EeKHT8Fbj3g8nQ" name="agency.war" clientDependency="_HsROEDo3EeKHT8Fbj3g8nQ _hJ07oDo5EeKHT8Fbj3g8nQ">
+          <manifestation xmi:id="_HsROEDo3EeKHT8Fbj3g8nQ" name="manifest" supplier="_GT7fEMgEEeC-rqkzDXqbnw" client="_KelsEDo0EeKHT8Fbj3g8nQ" utilizedElement="_GT7fEMgEEeC-rqkzDXqbnw"/>
+        </nestedClassifier>
+        <nestedClassifier xmi:type="uml:Artifact" xmi:id="_L0pgEDo0EeKHT8Fbj3g8nQ" name="customers.war" clientDependency="_IrIDADo3EeKHT8Fbj3g8nQ">
+          <manifestation xmi:id="_IrIDADo3EeKHT8Fbj3g8nQ" name="manifest" supplier="_JSceoMgEEeC-rqkzDXqbnw" client="_L0pgEDo0EeKHT8Fbj3g8nQ" utilizedElement="_JSceoMgEEeC-rqkzDXqbnw"/>
+        </nestedClassifier>
+      </nestedNode>
+    </nestedNode>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Device" xmi:id="_V3O38Do3EeKHT8Fbj3g8nQ" name="Sun SPARC Server">
+    <nestedNode xmi:type="uml:ExecutionEnvironment" xmi:id="_ZJ2p0Do4EeKHT8Fbj3g8nQ" name="Oracle 10g"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_iUa78Do4EeKHT8Fbj3g8nQ" name="JDBC" memberEnd="_iUa78To4EeKHT8Fbj3g8nQ _iUcxITo4EeKHT8Fbj3g8nQ" navigableOwnedEnd="_iUa78To4EeKHT8Fbj3g8nQ _iUcxITo4EeKHT8Fbj3g8nQ">
+    <ownedEnd xmi:id="_iUa78To4EeKHT8Fbj3g8nQ" name="red Hat Enterprise Linux Advanced Server 3.0 s" type="_iEjtQDozEeKHT8Fbj3g8nQ" association="_iUa78Do4EeKHT8Fbj3g8nQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iUcxIDo4EeKHT8Fbj3g8nQ" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iUcKEDo4EeKHT8Fbj3g8nQ"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_iUcxITo4EeKHT8Fbj3g8nQ" name="sun SPARC Servers" type="_ZJ2p0Do4EeKHT8Fbj3g8nQ" association="_iUa78Do4EeKHT8Fbj3g8nQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_iUcxIzo4EeKHT8Fbj3g8nQ" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_iUcxIjo4EeKHT8Fbj3g8nQ"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_hJ07oDo5EeKHT8Fbj3g8nQ" supplier="_L0pgEDo0EeKHT8Fbj3g8nQ" client="_KelsEDo0EeKHT8Fbj3g8nQ"/>
+  <packagedElement xmi:type="uml:Device" xmi:id="_s4cpcDo6EeKHT8Fbj3g8nQ" name="Red Hat Enterprise Linux Advanced Server 6.0 ">
+    <nestedClassifier xmi:type="uml:Artifact" xmi:id="_LwXY0Do7EeKHT8Fbj3g8nQ" name="Artifact1" clientDependency="_PcHR0Do7EeKHT8Fbj3g8nQ">
+      <manifestation xmi:id="_PcHR0Do7EeKHT8Fbj3g8nQ" name="manifest" supplier="_99SVwMT5EeC7sd1uYTaNyA" client="_LwXY0Do7EeKHT8Fbj3g8nQ" utilizedElement="_99SVwMT5EeC7sd1uYTaNyA"/>
+    </nestedClassifier>
+    <nestedClassifier xmi:type="uml:Artifact" xmi:id="_MtjZ0Do7EeKHT8Fbj3g8nQ" name="Artifact2" clientDependency="_QAfKMDo7EeKHT8Fbj3g8nQ">
+      <manifestation xmi:id="_QAfKMDo7EeKHT8Fbj3g8nQ" name="manifest" supplier="_yS5LMMT5EeC7sd1uYTaNyA" client="_MtjZ0Do7EeKHT8Fbj3g8nQ" utilizedElement="_yS5LMMT5EeC7sd1uYTaNyA"/>
+    </nestedClassifier>
+    <nestedNode xmi:id="_I-tUEDo8EeKHT8Fbj3g8nQ" name="Authentification">
+      <nestedClassifier xmi:type="uml:Artifact" xmi:id="_MLPhgDo8EeKHT8Fbj3g8nQ" name="oauth 2.0"/>
+      <nestedClassifier xmi:type="uml:Artifact" xmi:id="_OQYCADo8EeKHT8Fbj3g8nQ" name="internal oauth" clientDependency="_rKaPwDo5EeKHT8Fbj3g8nQ">
+        <generalization xmi:id="_RwAKkDo8EeKHT8Fbj3g8nQ" general="_MLPhgDo8EeKHT8Fbj3g8nQ"/>
+        <manifestation xmi:id="_rKaPwDo5EeKHT8Fbj3g8nQ" name="manifest" supplier="_ApIQ8MT6EeC7sd1uYTaNyA" client="_OQYCADo8EeKHT8Fbj3g8nQ" utilizedElement="_ApIQ8MT6EeC7sd1uYTaNyA"/>
+      </nestedClassifier>
+    </nestedNode>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_ew-tkDo8EeKHT8Fbj3g8nQ" name="&lt;&lt;protocole>>TCP/IP" memberEnd="_ew_UoDo8EeKHT8Fbj3g8nQ _ew_Uozo8EeKHT8Fbj3g8nQ" navigableOwnedEnd="_ew_UoDo8EeKHT8Fbj3g8nQ _ew_Uozo8EeKHT8Fbj3g8nQ">
+    <ownedEnd xmi:id="_ew_UoDo8EeKHT8Fbj3g8nQ" name="red Hat Enterprise Linux Advanced Server 3.0 s" type="_L95_MDozEeKHT8Fbj3g8nQ" association="_ew-tkDo8EeKHT8Fbj3g8nQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ew_Uojo8EeKHT8Fbj3g8nQ" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ew_UoTo8EeKHT8Fbj3g8nQ"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_ew_Uozo8EeKHT8Fbj3g8nQ" name="red Hat Enterprise Linux Advanced Server 6.0 s" type="_s4cpcDo6EeKHT8Fbj3g8nQ" association="_ew-tkDo8EeKHT8Fbj3g8nQ">
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ew_UpTo8EeKHT8Fbj3g8nQ" value="*"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ew_UpDo8EeKHT8Fbj3g8nQ"/>
+    </ownedEnd>
+  </packagedElement>
 </uml:Model>
