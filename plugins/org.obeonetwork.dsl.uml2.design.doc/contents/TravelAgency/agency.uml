@@ -45,8 +45,8 @@
     <packagedElement xmi:type="uml:Class" xmi:id="_HbZDMMTfEeC0wZa75TykZw" name="Partner"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Component" xmi:id="_yS5LMMT5EeC7sd1uYTaNyA" name="Booking System" clientDependency="_MbwOYMgDEeC-rqkzDXqbnw _QqVusMgDEeC-rqkzDXqbnw _id8VYMgSEeCyyts5kz1NCA _jsGKkMgSEeCyyts5kz1NCA" useCase="_klkX8MgMEeClj_cKl6EI8g">
-    <interfaceRealization xmi:id="_MbwOYMgDEeC-rqkzDXqbnw" supplier="_Gg8c0MgDEeC-rqkzDXqbnw _yS5LMMT5EeC7sd1uYTaNyA" client="_yS5LMMT5EeC7sd1uYTaNyA" contract="_Gg8c0MgDEeC-rqkzDXqbnw"/>
-    <interfaceRealization xmi:id="_QqVusMgDEeC-rqkzDXqbnw" supplier="_C1k-UMgDEeC-rqkzDXqbnw _yS5LMMT5EeC7sd1uYTaNyA" client="_yS5LMMT5EeC7sd1uYTaNyA" contract="_C1k-UMgDEeC-rqkzDXqbnw"/>
+    <interfaceRealization xmi:id="_MbwOYMgDEeC-rqkzDXqbnw" supplier="_yS5LMMT5EeC7sd1uYTaNyA _C1k-UMgDEeC-rqkzDXqbnw" client="_yS5LMMT5EeC7sd1uYTaNyA"/>
+    <interfaceRealization xmi:id="_QqVusMgDEeC-rqkzDXqbnw" supplier="_yS5LMMT5EeC7sd1uYTaNyA _2r5LwMT5EeC7sd1uYTaNyA" client="_yS5LMMT5EeC7sd1uYTaNyA"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_HHf20MTfEeC0wZa75TykZw" name="Reservation">
       <ownedAttribute xmi:id="_ErUNYMgCEeC-rqkzDXqbnw" name="issuedOn" type="_zIMjoMf7EeCUSo-uQfq_HA">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ErcJMMgCEeC-rqkzDXqbnw" value="1"/>
@@ -118,9 +118,10 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Usage" xmi:id="_iGeQkMgSEeCyyts5kz1NCA" supplier="_BwTUYMT6EeC7sd1uYTaNyA" client="_99SVwMT5EeC7sd1uYTaNyA"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Component" xmi:id="_ApIQ8MT6EeC7sd1uYTaNyA" name="Internal Authentification" clientDependency="_DZOaAMT6EeC7sd1uYTaNyA">
-    <ownedAttribute xmi:type="uml:Port" xmi:id="_vlVcsMgCEeC-rqkzDXqbnw" name="ldap"/>
+  <packagedElement xmi:type="uml:Component" xmi:id="_ApIQ8MT6EeC7sd1uYTaNyA" name="Internal Authentification" clientDependency="_DZOaAMT6EeC7sd1uYTaNyA _YlukcD0qEeK8baNqK4YrSA">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_vlVcsMgCEeC-rqkzDXqbnw" name="ldap" clientDependency="_YlukcD0qEeK8baNqK4YrSA"/>
     <interfaceRealization xmi:id="_DZOaAMT6EeC7sd1uYTaNyA" supplier="_BwTUYMT6EeC7sd1uYTaNyA _ApIQ8MT6EeC7sd1uYTaNyA" client="_ApIQ8MT6EeC7sd1uYTaNyA" contract="_BwTUYMT6EeC7sd1uYTaNyA"/>
+    <interfaceRealization xmi:id="_YlukcD0qEeK8baNqK4YrSA" supplier="_X7jmED0qEeK8baNqK4YrSA" client="_ApIQ8MT6EeC7sd1uYTaNyA _vlVcsMgCEeC-rqkzDXqbnw"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Interface" xmi:id="_BwTUYMT6EeC7sd1uYTaNyA" name="auth">
     <ownedOperation xmi:id="_pC14sMgFEeC-rqkzDXqbnw" name="login">
@@ -356,33 +357,38 @@
       <subvertex xmi:type="uml:State" xmi:id="_XanTMMgEEeC-rqkzDXqbnw" name="Option"/>
       <subvertex xmi:type="uml:State" xmi:id="_Z3DgcMgEEeC-rqkzDXqbnw" name="Confirmed"/>
       <subvertex xmi:type="uml:State" xmi:id="_d2294MgEEeC-rqkzDXqbnw" name="Past"/>
-      <subvertex xmi:type="uml:State" xmi:id="_e3etYMgEEeC-rqkzDXqbnw" name="Cancelled"/>
-      <transition xmi:id="_gUon4MgEEeC-rqkzDXqbnw" name="Transition_PseudoState_0ToTentative" source="_Tr_sYMgEEeC-rqkzDXqbnw" target="_UXC0gMgEEeC-rqkzDXqbnw"/>
-      <transition xmi:id="_gvyS0MgEEeC-rqkzDXqbnw" name="Transition_TentativeToOption" source="_UXC0gMgEEeC-rqkzDXqbnw" target="_XanTMMgEEeC-rqkzDXqbnw"/>
-      <transition xmi:id="_g-DYUMgEEeC-rqkzDXqbnw" name="Transition_TentativeToConfirmed" source="_UXC0gMgEEeC-rqkzDXqbnw" target="_Z3DgcMgEEeC-rqkzDXqbnw"/>
-      <transition xmi:id="_hNZb4MgEEeC-rqkzDXqbnw" name="Transition_OptionToConfirmed" source="_XanTMMgEEeC-rqkzDXqbnw" target="_Z3DgcMgEEeC-rqkzDXqbnw" guard="_xk2ygMgEEeC-rqkzDXqbnw">
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_pWPFsD1VEeKq16HF0Y8Q2g" name="Fork_3" kind="fork"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_P1pVcD1XEeKMTLtzIWwtLA" name="validation" kind="choice"/>
+      <subvertex xmi:type="uml:State" xmi:id="_vUT7wD1XEeKMTLtzIWwtLA" name="Pending"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_ObOT8D1ZEeKMTLtzIWwtLA" name="Join_4" kind="join"/>
+      <subvertex xmi:type="uml:State" xmi:id="_QusLYD1ZEeKMTLtzIWwtLA" name="Payment"/>
+      <subvertex xmi:type="uml:State" xmi:id="_AP-gwD1aEeKMTLtzIWwtLA" name="Selection"/>
+      <transition xmi:id="_gUon4MgEEeC-rqkzDXqbnw" name="Transition_PseudoState_0ToTentative" source="_Tr_sYMgEEeC-rqkzDXqbnw" target="_vUT7wD1XEeKMTLtzIWwtLA"/>
+      <transition xmi:id="_gvyS0MgEEeC-rqkzDXqbnw" name="Transition_TentativeToOption" source="_vUT7wD1XEeKMTLtzIWwtLA" target="_XanTMMgEEeC-rqkzDXqbnw"/>
+      <transition xmi:id="_g-DYUMgEEeC-rqkzDXqbnw" name="Transition_TentativeToConfirmed" source="_UXC0gMgEEeC-rqkzDXqbnw" target="_P1pVcD1XEeKMTLtzIWwtLA"/>
+      <transition xmi:id="_hNZb4MgEEeC-rqkzDXqbnw" name="Transition_OptionToConfirmed" source="_XanTMMgEEeC-rqkzDXqbnw" target="_UXC0gMgEEeC-rqkzDXqbnw" guard="_xk2ygMgEEeC-rqkzDXqbnw">
         <ownedRule xmi:id="_xk2ygMgEEeC-rqkzDXqbnw" name="Transition_OptionToConfirmed_transition">
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_xk2ygcgEEeC-rqkzDXqbnw" name="Transition_OptionToConfirmed_guard">
             <body>confirmation from customer</body>
           </specification>
         </ownedRule>
       </transition>
-      <transition xmi:id="_hbQ4wMgEEeC-rqkzDXqbnw" name="Transition_OptionToCancelled" source="_XanTMMgEEeC-rqkzDXqbnw" target="_e3etYMgEEeC-rqkzDXqbnw" guard="_9fkRAMgEEeC-rqkzDXqbnw">
+      <transition xmi:id="_hbQ4wMgEEeC-rqkzDXqbnw" name="Transition_OptionToCancelled" source="_XanTMMgEEeC-rqkzDXqbnw" target="_jU6VED1YEeKMTLtzIWwtLA" guard="_9fkRAMgEEeC-rqkzDXqbnw">
         <ownedRule xmi:id="_9fkRAMgEEeC-rqkzDXqbnw" name="Transition_OptionToCancelled_transition">
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_9fk4EMgEEeC-rqkzDXqbnw" name="Transition_OptionToCancelled_guard">
             <body>delay is over</body>
           </specification>
         </ownedRule>
       </transition>
-      <transition xmi:id="_im4-YMgEEeC-rqkzDXqbnw" name="Transition_ConfirmedToPast" source="_Z3DgcMgEEeC-rqkzDXqbnw" target="_d2294MgEEeC-rqkzDXqbnw" guard="_tBeG4MgEEeC-rqkzDXqbnw">
+      <transition xmi:id="_im4-YMgEEeC-rqkzDXqbnw" name="Transition_ConfirmedToPast" source="_Z3DgcMgEEeC-rqkzDXqbnw" target="_pWPFsD1VEeKq16HF0Y8Q2g" guard="_tBeG4MgEEeC-rqkzDXqbnw">
         <ownedRule xmi:id="_tBeG4MgEEeC-rqkzDXqbnw" name="Transition_ConfirmedToPast_transition">
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_tBeG4cgEEeC-rqkzDXqbnw" name="Transition_ConfirmedToPast_guard">
             <body></body>
           </specification>
         </ownedRule>
       </transition>
-      <transition xmi:id="_jPVecMgEEeC-rqkzDXqbnw" name="Transition_PastToFinalState_1" source="_d2294MgEEeC-rqkzDXqbnw" target="_UxvMcMgEEeC-rqkzDXqbnw"/>
-      <transition xmi:id="_jdBVIMgEEeC-rqkzDXqbnw" name="Transition_CancelledToFinalState_1" source="_e3etYMgEEeC-rqkzDXqbnw" target="_UxvMcMgEEeC-rqkzDXqbnw"/>
+      <transition xmi:id="_jPVecMgEEeC-rqkzDXqbnw" name="Transition_PastToFinalState_1" source="_ObOT8D1ZEeKMTLtzIWwtLA" target="_UxvMcMgEEeC-rqkzDXqbnw"/>
+      <transition xmi:id="_jdBVIMgEEeC-rqkzDXqbnw" name="Transition_CancelledToFinalState_1" source="_e3etYMgEEeC-rqkzDXqbnw" target="_5lfikD1VEeKq16HF0Y8Q2g"/>
       <transition xmi:id="_zKiW4MgEEeC-rqkzDXqbnw" name="Transition_ConfirmedToCancelled" source="_Z3DgcMgEEeC-rqkzDXqbnw" target="_e3etYMgEEeC-rqkzDXqbnw" guard="_1_Ds8MgEEeC-rqkzDXqbnw">
         <ownedRule xmi:id="_1_Ds8MgEEeC-rqkzDXqbnw" name="Transition_ConfirmedToCancelled_transition">
           <specification xmi:type="uml:OpaqueExpression" xmi:id="_1_Ds8cgEEeC-rqkzDXqbnw" name="Transition_ConfirmedToCancelled_guard">
@@ -390,7 +396,49 @@
           </specification>
         </ownedRule>
       </transition>
+      <transition xmi:id="_0bdGoD1VEeKq16HF0Y8Q2g" name="Transition_Fork_3ToPast" source="_pWPFsD1VEeKq16HF0Y8Q2g" target="_d2294MgEEeC-rqkzDXqbnw"/>
+      <transition xmi:id="_gissID1YEeKMTLtzIWwtLA" name="Transition_PendingToTentative" source="_vUT7wD1XEeKMTLtzIWwtLA" target="_UXC0gMgEEeC-rqkzDXqbnw"/>
+      <transition xmi:id="_o3fM0D1YEeKMTLtzIWwtLA" name="Transition_PendingToJoin_2" source="_vUT7wD1XEeKMTLtzIWwtLA" target="_jU6VED1YEeKMTLtzIWwtLA" guard="_sP_ZsD1YEeKMTLtzIWwtLA">
+        <ownedRule xmi:id="_sP_ZsD1YEeKMTLtzIWwtLA" name="Transition_PendingToJoin_2_transition">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_sP_ZsT1YEeKMTLtzIWwtLA" name="Transition_PendingToJoin_2_guard">
+            <body>cancel</body>
+          </specification>
+        </ownedRule>
+      </transition>
+      <transition xmi:id="_zcbLMD1YEeKMTLtzIWwtLA" name="Transition_validationToTentative" source="_P1pVcD1XEeKMTLtzIWwtLA" target="_UXC0gMgEEeC-rqkzDXqbnw" guard="_24EysD1YEeKMTLtzIWwtLA">
+        <ownedRule xmi:id="_24EysD1YEeKMTLtzIWwtLA" name="Transition_validationToTentative_transition">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_24EysT1YEeKMTLtzIWwtLA" name="Transition_validationToTentative_guard">
+            <body>No results</body>
+          </specification>
+        </ownedRule>
+      </transition>
+      <transition xmi:id="_7BCzMD1YEeKMTLtzIWwtLA" name="Transition_validationToConfirmed" source="_P1pVcD1XEeKMTLtzIWwtLA" target="_Z3DgcMgEEeC-rqkzDXqbnw" guard="_Heq8ED1aEeKMTLtzIWwtLA">
+        <ownedRule xmi:id="_Heq8ED1aEeKMTLtzIWwtLA" name="Transition_validationToConfirmed_transition">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_Heq8ET1aEeKMTLtzIWwtLA" name="Transition_validationToConfirmed_guard">
+            <body>results.size()==1</body>
+          </specification>
+        </ownedRule>
+      </transition>
+      <transition xmi:id="_SoUmgD1ZEeKMTLtzIWwtLA" name="Transition_Fork_3ToPayment" source="_pWPFsD1VEeKq16HF0Y8Q2g" target="_QusLYD1ZEeKMTLtzIWwtLA"/>
+      <transition xmi:id="_Y0pl4D1ZEeKMTLtzIWwtLA" name="Transition_PaymentToJoin_4" source="_QusLYD1ZEeKMTLtzIWwtLA" target="_ObOT8D1ZEeKMTLtzIWwtLA"/>
+      <transition xmi:id="_aYnTAD1ZEeKMTLtzIWwtLA" name="Transition_PastToJoin_4" source="_d2294MgEEeC-rqkzDXqbnw" target="_ObOT8D1ZEeKMTLtzIWwtLA"/>
+      <transition xmi:id="_KUhH0D1aEeKMTLtzIWwtLA" name="Transition_validationToSelection" source="_P1pVcD1XEeKMTLtzIWwtLA" target="_AP-gwD1aEeKMTLtzIWwtLA" guard="_NCr-QD1aEeKMTLtzIWwtLA">
+        <ownedRule xmi:id="_NCr-QD1aEeKMTLtzIWwtLA" name="Transition_validationToSelection_transition">
+          <specification xmi:type="uml:OpaqueExpression" xmi:id="_NCr-QT1aEeKMTLtzIWwtLA" name="Transition_validationToSelection_guard">
+            <body>results.size()>1</body>
+          </specification>
+        </ownedRule>
+      </transition>
+      <transition xmi:id="_Sm_7YD1aEeKMTLtzIWwtLA" name="Transition_SelectionToConfirmed" source="_AP-gwD1aEeKMTLtzIWwtLA" target="_Z3DgcMgEEeC-rqkzDXqbnw"/>
     </region>
+    <region xmi:id="_Mbqz0D1VEeKq16HF0Y8Q2g" name="Cancel">
+      <subvertex xmi:type="uml:State" xmi:id="_e3etYMgEEeC-rqkzDXqbnw" name="Cancelled"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_5lfikD1VEeKq16HF0Y8Q2g" name="Terminate_1" kind="terminate"/>
+      <subvertex xmi:type="uml:Pseudostate" xmi:id="_jU6VED1YEeKMTLtzIWwtLA" name="Join_2" kind="join"/>
+      <transition xmi:id="_mrwqMD1aEeKMTLtzIWwtLA" name="Transition_Join_2ToCancelled" source="_jU6VED1YEeKMTLtzIWwtLA" target="_e3etYMgEEeC-rqkzDXqbnw"/>
+    </region>
+    <connectionPoint xmi:id="_ij4oID1VEeKq16HF0Y8Q2g" name="in" kind="entryPoint"/>
+    <connectionPoint xmi:id="_jKy3ID1VEeKq16HF0Y8Q2g" name="out" kind="exitPoint"/>
   </packagedElement>
   <packagedElement xmi:type="uml:UseCase" xmi:id="_716HYMgLEeClj_cKl6EI8g" name="to Consult Reservation Status" subject="_Z3sPEMgDEeC-rqkzDXqbnw"/>
   <packagedElement xmi:type="uml:UseCase" xmi:id="_V8gc0MgMEeClj_cKl6EI8g" name="to be reminded of customers opportunity" subject="_gcBQQMT5EeC7sd1uYTaNyA"/>
@@ -511,4 +559,19 @@
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ew_UpDo8EeKHT8Fbj3g8nQ"/>
     </ownedEnd>
   </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_iSh2YD0pEeK8baNqK4YrSA" name="Component8" clientDependency="_kIswAD04EeKkTISKiPHOmA">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_gf5lsD0qEeK8baNqK4YrSA" name="Port1" clientDependency="_kIswAD04EeKkTISKiPHOmA"/>
+    <interfaceRealization xmi:id="_kIswAD04EeKkTISKiPHOmA" supplier="_jN1BAD0pEeK8baNqK4YrSA" client="_iSh2YD0pEeK8baNqK4YrSA _gf5lsD0qEeK8baNqK4YrSA"/>
+    <packagedElement xmi:type="uml:Package" xmi:id="_-MqdoD03EeKD1tqsBqQbaA" name="Component8"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_jN1BAD0pEeK8baNqK4YrSA" name="Interface6"/>
+  <packagedElement xmi:type="uml:Component" xmi:id="_kW9MQD0pEeK8baNqK4YrSA" name="Component9" clientDependency="_AglAAD1DEeKAU9NJT5aMIQ _mJ7dYD03EeKD1tqsBqQbaA">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_qI8QoD03EeKD1tqsBqQbaA" name="Port1"/>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="__00GMD1CEeKAU9NJT5aMIQ" name="Port2" clientDependency="_AglAAD1DEeKAU9NJT5aMIQ"/>
+    <interfaceRealization xmi:id="_AglAAD1DEeKAU9NJT5aMIQ" supplier="_jN1BAD0pEeK8baNqK4YrSA" client="_kW9MQD0pEeK8baNqK4YrSA __00GMD1CEeKAU9NJT5aMIQ"/>
+    <interfaceRealization xmi:id="_mJ7dYD03EeKD1tqsBqQbaA" supplier="_jN1BAD0pEeK8baNqK4YrSA" client="_kW9MQD0pEeK8baNqK4YrSA"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_X7jmED0qEeK8baNqK4YrSA" name="Interface7"/>
+  <packagedElement xmi:type="uml:Component" xmi:id="_dNQPkD0yEeKq_f6EiZ1GRw" name="Component10"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_HCxNkD02EeKPhKRNjRK1og" name="Interface8"/>
 </uml:Model>

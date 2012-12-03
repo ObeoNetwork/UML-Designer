@@ -266,7 +266,7 @@ h2. State Machine Diagram
 
 h3. Introduction
 
-!features/agency_pics/reservation states.jpg!
+!features/agency_pics/state_machine.png!
 
 h2. Sequence Diagram
 

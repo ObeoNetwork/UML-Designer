@@ -3745,9 +3745,7 @@
               <targetView name="targetView"/>
               <element name="element"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:If" conditionExpression="&lt;%$element.container==$target.container%>">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="&lt;%$target%>"/>
-                </firstModelOperations>
+                <firstModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="&lt;%$target%>"/>
               </initialOperation>
               <edgeView name="edgeView"/>
             </ownedTools>
@@ -3758,9 +3756,7 @@
               <targetView name="targetView"/>
               <element name="element"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:If" conditionExpression="&lt;%target.container==$target.container%>">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="&lt;%$target%>"/>
-                </firstModelOperations>
+                <firstModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="&lt;%$target%>"/>
               </initialOperation>
               <edgeView name="edgeView"/>
             </ownedTools>
