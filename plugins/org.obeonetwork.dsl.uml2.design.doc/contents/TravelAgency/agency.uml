@@ -557,14 +557,4 @@
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ew_UpDo8EeKHT8Fbj3g8nQ"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_jN1BAD0pEeK8baNqK4YrSA" name="Interface6"/>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_X7jmED0qEeK8baNqK4YrSA" name="Interface7"/>
-  <packagedElement xmi:type="uml:Interface" xmi:id="_HCxNkD02EeKPhKRNjRK1og" name="Interface8"/>
-  <packagedElement xmi:type="uml:Class" xmi:id="_krWGED1kEeKWnOZ7I7k2Ew" name="Class19">
-    <ownedAttribute xmi:id="_mCqeUD1kEeKWnOZ7I7k2Ew" name="property1">
-      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mCwk8T1kEeKWnOZ7I7k2Ew" value="1"/>
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mCwk8D1kEeKWnOZ7I7k2Ew"/>
-    </ownedAttribute>
-  </packagedElement>
 </uml:Model>
