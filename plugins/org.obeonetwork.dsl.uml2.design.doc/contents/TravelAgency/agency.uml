@@ -44,9 +44,8 @@
   <packagedElement xmi:type="uml:Component" xmi:id="_wq-yMMT5EeC7sd1uYTaNyA" name="Supplier Purchasing" useCase="_cSKTMMTeEeC0wZa75TykZw">
     <packagedElement xmi:type="uml:Class" xmi:id="_HbZDMMTfEeC0wZa75TykZw" name="Partner"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Component" xmi:id="_yS5LMMT5EeC7sd1uYTaNyA" name="Booking System" clientDependency="_MbwOYMgDEeC-rqkzDXqbnw _QqVusMgDEeC-rqkzDXqbnw _id8VYMgSEeCyyts5kz1NCA _jsGKkMgSEeCyyts5kz1NCA" useCase="_klkX8MgMEeClj_cKl6EI8g">
+  <packagedElement xmi:type="uml:Component" xmi:id="_yS5LMMT5EeC7sd1uYTaNyA" name="Booking System" clientDependency="_MbwOYMgDEeC-rqkzDXqbnw _id8VYMgSEeCyyts5kz1NCA _jsGKkMgSEeCyyts5kz1NCA" useCase="_klkX8MgMEeClj_cKl6EI8g">
     <interfaceRealization xmi:id="_MbwOYMgDEeC-rqkzDXqbnw" supplier="_yS5LMMT5EeC7sd1uYTaNyA _C1k-UMgDEeC-rqkzDXqbnw" client="_yS5LMMT5EeC7sd1uYTaNyA"/>
-    <interfaceRealization xmi:id="_QqVusMgDEeC-rqkzDXqbnw" supplier="_yS5LMMT5EeC7sd1uYTaNyA _2r5LwMT5EeC7sd1uYTaNyA" client="_yS5LMMT5EeC7sd1uYTaNyA"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_HHf20MTfEeC0wZa75TykZw" name="Reservation">
       <ownedAttribute xmi:id="_ErUNYMgCEeC-rqkzDXqbnw" name="issuedOn" type="_zIMjoMf7EeCUSo-uQfq_HA">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ErcJMMgCEeC-rqkzDXqbnw" value="1"/>
@@ -118,10 +117,9 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Usage" xmi:id="_iGeQkMgSEeCyyts5kz1NCA" supplier="_BwTUYMT6EeC7sd1uYTaNyA" client="_99SVwMT5EeC7sd1uYTaNyA"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Component" xmi:id="_ApIQ8MT6EeC7sd1uYTaNyA" name="Internal Authentification" clientDependency="_DZOaAMT6EeC7sd1uYTaNyA _YlukcD0qEeK8baNqK4YrSA">
-    <ownedAttribute xmi:type="uml:Port" xmi:id="_vlVcsMgCEeC-rqkzDXqbnw" name="ldap" clientDependency="_YlukcD0qEeK8baNqK4YrSA"/>
+  <packagedElement xmi:type="uml:Component" xmi:id="_ApIQ8MT6EeC7sd1uYTaNyA" name="Internal Authentification" clientDependency="_DZOaAMT6EeC7sd1uYTaNyA">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_vlVcsMgCEeC-rqkzDXqbnw" name="ldap"/>
     <interfaceRealization xmi:id="_DZOaAMT6EeC7sd1uYTaNyA" supplier="_BwTUYMT6EeC7sd1uYTaNyA _ApIQ8MT6EeC7sd1uYTaNyA" client="_ApIQ8MT6EeC7sd1uYTaNyA" contract="_BwTUYMT6EeC7sd1uYTaNyA"/>
-    <interfaceRealization xmi:id="_YlukcD0qEeK8baNqK4YrSA" supplier="_X7jmED0qEeK8baNqK4YrSA" client="_ApIQ8MT6EeC7sd1uYTaNyA _vlVcsMgCEeC-rqkzDXqbnw"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Interface" xmi:id="_BwTUYMT6EeC7sd1uYTaNyA" name="auth">
     <ownedOperation xmi:id="_pC14sMgFEeC-rqkzDXqbnw" name="login">
@@ -559,19 +557,14 @@
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ew_UpDo8EeKHT8Fbj3g8nQ"/>
     </ownedEnd>
   </packagedElement>
-  <packagedElement xmi:type="uml:Component" xmi:id="_iSh2YD0pEeK8baNqK4YrSA" name="Component8" clientDependency="_kIswAD04EeKkTISKiPHOmA">
-    <ownedAttribute xmi:type="uml:Port" xmi:id="_gf5lsD0qEeK8baNqK4YrSA" name="Port1" clientDependency="_kIswAD04EeKkTISKiPHOmA"/>
-    <interfaceRealization xmi:id="_kIswAD04EeKkTISKiPHOmA" supplier="_jN1BAD0pEeK8baNqK4YrSA" client="_iSh2YD0pEeK8baNqK4YrSA _gf5lsD0qEeK8baNqK4YrSA"/>
-    <packagedElement xmi:type="uml:Package" xmi:id="_-MqdoD03EeKD1tqsBqQbaA" name="Component8"/>
-  </packagedElement>
   <packagedElement xmi:type="uml:Interface" xmi:id="_jN1BAD0pEeK8baNqK4YrSA" name="Interface6"/>
-  <packagedElement xmi:type="uml:Component" xmi:id="_kW9MQD0pEeK8baNqK4YrSA" name="Component9" clientDependency="_AglAAD1DEeKAU9NJT5aMIQ _mJ7dYD03EeKD1tqsBqQbaA">
-    <ownedAttribute xmi:type="uml:Port" xmi:id="_qI8QoD03EeKD1tqsBqQbaA" name="Port1"/>
-    <ownedAttribute xmi:type="uml:Port" xmi:id="__00GMD1CEeKAU9NJT5aMIQ" name="Port2" clientDependency="_AglAAD1DEeKAU9NJT5aMIQ"/>
-    <interfaceRealization xmi:id="_AglAAD1DEeKAU9NJT5aMIQ" supplier="_jN1BAD0pEeK8baNqK4YrSA" client="_kW9MQD0pEeK8baNqK4YrSA __00GMD1CEeKAU9NJT5aMIQ"/>
-    <interfaceRealization xmi:id="_mJ7dYD03EeKD1tqsBqQbaA" supplier="_jN1BAD0pEeK8baNqK4YrSA" client="_kW9MQD0pEeK8baNqK4YrSA"/>
-  </packagedElement>
   <packagedElement xmi:type="uml:Interface" xmi:id="_X7jmED0qEeK8baNqK4YrSA" name="Interface7"/>
-  <packagedElement xmi:type="uml:Component" xmi:id="_dNQPkD0yEeKq_f6EiZ1GRw" name="Component10"/>
   <packagedElement xmi:type="uml:Interface" xmi:id="_HCxNkD02EeKPhKRNjRK1og" name="Interface8"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_krWGED1kEeKWnOZ7I7k2Ew" name="Class19">
+    <ownedAttribute xmi:id="_mCqeUD1kEeKWnOZ7I7k2Ew" name="property1">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_mCwk8T1kEeKWnOZ7I7k2Ew" value="1"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_mCwk8D1kEeKWnOZ7I7k2Ew"/>
+    </ownedAttribute>
+  </packagedElement>
 </uml:Model>
