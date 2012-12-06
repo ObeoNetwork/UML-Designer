@@ -908,7 +908,7 @@
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$selection.filter(&quot;Package&quot;)%>">
                     <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Package']" containerViewExpression="&lt;%$containerView%>"/>
                     <subModelOperations xsi:type="tool:For" expression="&lt;%$element.eContents()%>" iteratorName="packagedElement">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$packagedElement.filter(&quot;Class&quot;)%>">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$packagedElement.filter(&quot;Class&quot;)[eClass.name==&quot;Class&quot;||eClass.name==&quot;Component&quot;]%>">
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']" containerViewExpression="&lt;%$selection.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;CD_Package&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $diagram]%>"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$packagedElement.filter(&quot;DataType&quot;)%>">
@@ -939,7 +939,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$selection.filter(&quot;Component&quot;)%>">
                     <subModelOperations xsi:type="tool:For" expression="&lt;%$element.eContents()%>" iteratorName="packagedElement">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$packagedElement.filter(&quot;Class&quot;)%>">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$packagedElement.filter(&quot;Class&quot;)[eClass.name==&quot;Class&quot;||eClass.name==&quot;Component&quot;]%>">
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']" containerViewExpression="&lt;%$containerView%>"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$packagedElement.filter(&quot;DataType&quot;)%>">
@@ -983,7 +983,7 @@
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$selection.filter(&quot;Package&quot;)%>">
                     <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Package']" containerViewExpression="&lt;%$newContainerView%>"/>
                     <subModelOperations xsi:type="tool:For" expression="&lt;%$element.eContents()%>" iteratorName="packagedElement">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$packagedElement.filter(&quot;Class&quot;)%>">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$packagedElement.filter(&quot;Class&quot;)[eClass.name==&quot;Class&quot;||eClass.name==&quot;Component&quot;]%>">
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']" containerViewExpression="&lt;%$selection.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;CD_Package&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $newContainerView]%>"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$packagedElement.filter(&quot;DataType&quot;)%>">
@@ -1014,7 +1014,7 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$selection.filter(&quot;Component&quot;)%>">
                     <subModelOperations xsi:type="tool:For" expression="&lt;%$element.eContents()%>" iteratorName="packagedElement">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$packagedElement.filter(&quot;Class&quot;)%>">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$packagedElement.filter(&quot;Class&quot;)[eClass.name==&quot;Class&quot;||eClass.name==&quot;Component&quot;]%>">
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']" containerViewExpression="&lt;%$newContainerView%>"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$packagedElement.filter(&quot;DataType&quot;)%>">
@@ -2639,7 +2639,7 @@
         <toolSections name="Comments" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_CommentLink']"/>
       </optionalLayers>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='COD_Drop']" documentation="Description to edit class diagrams" name="Composite Diagram" titleExpression="&lt;%name%> Composite Diagram" domainClass="uml.Class" preconditionExpression="&lt;%eClass.name.equalsIgnoreCase(&quot;Class&quot;)+eClass.name.equalsIgnoreCase(&quot;Component&quot;)%>">
+    <ownedRepresentations xsi:type="description:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='COD_Drop']" documentation="Description to edit class diagrams" name="Composite Diagram" titleExpression="&lt;%name%> Composite Diagram" domainClass="uml.Class" preconditionExpression="&lt;%eClass.name.equalsIgnoreCase(&quot;Class&quot;)+eClass.name.equalsIgnoreCase(&quot;Component&quot;)%>" enablePopupBars="true">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="Attributes">
         <filters xsi:type="filter:MappingFilter"/>
@@ -2689,7 +2689,7 @@
           </conditionnalStyles>
         </containerMappings>
         <toolSections name="CD_ExistingElements" label="Existing Elements" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CD_RemoveExistingElements']">
-          <ownedTools xsi:type="tool:SelectionWizardDescription" documentation="Add an existing element to current representation" name="COD_AddExistingElements" label="Add" forceRefresh="true" candidatesExpression="&lt;%getAllRootsInSession().filter(&quot;Model&quot;)+getAllRootsInSession().filter(&quot;Model&quot;).eAllContents(&quot;Package&quot;)+getAllRootsInSession().filter(&quot;Model&quot;).getImportedPackages()+getAllRootsInSession().filter(&quot;Model&quot;).getImportedPackages().getModel()+getAllRootsInSession().filter(&quot;Model&quot;).eAllContents(&quot;Class&quot;)[eClass.name=&quot;Class&quot;||eClass.name=&quot;Component&quot;]+getAllRootsInSession().filter(&quot;Model&quot;).eAllContents(&quot;Property&quot;)[eClass.name==&quot;Property&quot;]%>" multiple="true" tree="true" rootExpression="&lt;%getAllRootsInSession().filter(&quot;Model&quot;)%>" childrenExpression="&lt;%eContents()%>" iconPath="/org.eclipse.search/icons/full/etool16/search.gif" windowTitle="Select element to add in current representation">
+          <ownedTools xsi:type="tool:SelectionWizardDescription" documentation="Add an existing element to current representation" name="COD_AddExistingElements" label="Add" forceRefresh="true" candidatesExpression="&lt;%getAllRootsInSession().filter(&quot;Model&quot;)+getAllRootsInSession().filter(&quot;Model&quot;).eAllContents(&quot;Package&quot;)+getAllRootsInSession().filter(&quot;Model&quot;).getImportedPackages()+getAllRootsInSession().filter(&quot;Model&quot;).getImportedPackages().getModel()+getAllRootsInSession().filter(&quot;Model&quot;).eAllContents(&quot;Class&quot;)[eClass.name==&quot;Class&quot;||eClass.name==&quot;Component&quot;]+getAllRootsInSession().filter(&quot;Model&quot;).eAllContents(&quot;Property&quot;)[eClass.name==&quot;Property&quot;]%>" multiple="true" tree="true" rootExpression="&lt;%getAllRootsInSession().filter(&quot;Model&quot;)%>" childrenExpression="&lt;%eContents()%>" iconPath="/org.eclipse.search/icons/full/etool16/search.gif" windowTitle="Select element to add in current representation">
             <element name="element"/>
             <containerView name="containerView"/>
             <container name="container"/>
@@ -2703,7 +2703,7 @@
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$selection.filter(&quot;Package&quot;)%>">
-                    <subModelOperations xsi:type="tool:For" expression="&lt;%$selection.eContents().filter(&quot;Class&quot;)%>" iteratorName="class">
+                    <subModelOperations xsi:type="tool:For" expression="&lt;%$selection.eContents().filter(&quot;Class&quot;)[eClass.name==&quot;Class&quot;||eClass.name==&quot;Component&quot;]%>" iteratorName="class">
                       <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']" containerViewExpression="&lt;%$containerView%>"/>
                       <subModelOperations xsi:type="tool:For" expression="&lt;%$class.part.filter(&quot;Property&quot;)%>" iteratorName="part">
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@subContainerMappings[name='COD_Part']" containerViewExpression="&lt;%$class.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;COD_Class&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $diagram]%>"/>
@@ -2711,7 +2711,7 @@
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$selection.filter(&quot;Component&quot;)%>">
-                    <subModelOperations xsi:type="tool:For" expression="&lt;%$element.eContents().filter(&quot;Class&quot;)%>" iteratorName="class">
+                    <subModelOperations xsi:type="tool:For" expression="&lt;%$element.eContents().filter(&quot;Class&quot;)[eClass.name==&quot;Class&quot;||eClass.name==&quot;Component&quot;]%>" iteratorName="class">
                       <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']" containerViewExpression="&lt;%$containerView%>"/>
                       <subModelOperations xsi:type="tool:For" expression="&lt;%$class.eContents().filter(&quot;Property&quot;)%>" iteratorName="part">
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@subContainerMappings[name='COD_Part']" containerViewExpression="&lt;%$class.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;COD_Class&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $diagram]%>"/>
@@ -2731,7 +2731,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="COD_Drop" label="Drop to Composite Diagram" precondition="&lt;%filter(&quot;Class&quot;)[eClass.name==&quot;Class&quot;||eClass.name==&quot;Component&quot;]+filter(&quot;Package&quot;)[eClass.name=&quot;Package&quot;||eClass.name=&quot;Model&quot;]+filter(&quot;Property&quot;)[eClass.name==&quot;Property&quot;]%>" forceRefresh="true" mappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@subContainerMappings[name='COD_Part']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="COD_Drop" label="Drop to Composite Diagram" precondition="&lt;%filter(&quot;Class&quot;)[eClass.name==&quot;Class&quot;||eClass.name==&quot;Component&quot;]+filter(&quot;Package&quot;)[eClass.name==&quot;Package&quot;||eClass.name==&quot;Model&quot;]+filter(&quot;Property&quot;)[eClass.name==&quot;Property&quot;]%>" forceRefresh="true" mappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@subContainerMappings[name='COD_Part']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -2746,7 +2746,7 @@
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$selection.filter(&quot;Package&quot;)%>">
-                    <subModelOperations xsi:type="tool:For" expression="&lt;%$selection.eContents().filter(&quot;Class&quot;)%>" iteratorName="class">
+                    <subModelOperations xsi:type="tool:For" expression="&lt;%$selection.eContents().filter(&quot;Class&quot;)[eClass.name==&quot;Class&quot;||eClass.name==&quot;Component&quot;]%>" iteratorName="class">
                       <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']" containerViewExpression="&lt;%$newContainerView%>"/>
                       <subModelOperations xsi:type="tool:For" expression="&lt;%$class.part.filter(&quot;Property&quot;)%>" iteratorName="part">
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@subContainerMappings[name='COD_Part']" containerViewExpression="&lt;%$class.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;COD_Class&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $newContainerView]%>"/>
@@ -2754,7 +2754,7 @@
                     </subModelOperations>
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$selection.filter(&quot;Component&quot;)%>">
-                    <subModelOperations xsi:type="tool:For" expression="&lt;%$element.eContents().filter(&quot;Class&quot;)%>" iteratorName="class">
+                    <subModelOperations xsi:type="tool:For" expression="&lt;%$element.eContents().filter(&quot;Class&quot;)[eClass.name==&quot;Class&quot;||eClass.name==&quot;Component&quot;]%>" iteratorName="class">
                       <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']" containerViewExpression="&lt;%$newContainerView%>"/>
                       <subModelOperations xsi:type="tool:For" expression="&lt;%$class.eContents().filter(&quot;Property&quot;)%>" iteratorName="part">
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Diagram']/@defaultLayer/@containerMappings[name='COD_Class']/@subContainerMappings[name='COD_Part']" containerViewExpression="&lt;%$class.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;COD_Class&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $newContainerView]%>"/>
