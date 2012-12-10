@@ -82,7 +82,7 @@ Two viewpoints are specified on the UML designer each bringing the following vie
 ** Component diagram
 ** Object diagram
 ** Composite diagram
-** Related classes diagram
+** Deployment diagram
 * UML Behavioral modeling
 ** State machine diagram
 ** Activity diagram
