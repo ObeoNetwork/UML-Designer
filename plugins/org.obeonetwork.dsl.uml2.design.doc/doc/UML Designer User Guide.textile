@@ -270,6 +270,8 @@ h3. Introduction
 
 h2. Sequence Diagram
 
+!features/agency_pics/sequence.png!
+
 h2. Deployment Diagram
 
 h3. Introduction

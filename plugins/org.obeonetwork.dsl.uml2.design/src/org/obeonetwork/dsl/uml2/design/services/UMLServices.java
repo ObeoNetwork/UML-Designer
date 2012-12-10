@@ -21,6 +21,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -57,6 +58,7 @@ import org.eclipse.uml2.uml.VisibilityKind;
 import org.eclipse.uml2.uml.resource.UMLResource;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
 import org.obeonetwork.dsl.uml2.design.services.internal.ReconnectSwitch;
+import org.obeonetwork.dsl.uml2.design.services.internal.RelatedElementsSwitch;
 import org.obeonetwork.dsl.uml2.design.services.internal.SemanticElementsSwitch;
 
 import com.google.common.base.Predicate;
@@ -391,6 +393,19 @@ public class UMLServices {
 	 */
 	public boolean isComposite(Property p) {
 		return AggregationKind.COMPOSITE_LITERAL.equals(p.getAggregation());
+	}
+
+	public Collection<EObject> getRelated(EObject subject) {
+		List<EObject> result = Lists.newArrayList();
+		Session sess = SessionManager.INSTANCE.getSession(subject);
+		if (sess != null) {
+			if (subject instanceof Interface) {
+				result = new RelatedElementsSwitch().getRelatedElements(subject);
+			}
+
+		}
+		return result;
+
 	}
 
 	/**
