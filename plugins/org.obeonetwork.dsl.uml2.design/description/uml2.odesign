@@ -3152,8 +3152,22 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$selection.filter(&quot;Device&quot;)%>">
                     <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Device']" containerViewExpression="&lt;%$containerView%>"/>
+                    <subModelOperations xsi:type="tool:For" expression="&lt;%$selection.eContents()%>" iteratorName="nodeElement">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$nodeElement.filter(&quot;Artifact&quot;)%>">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Artifact']" containerViewExpression="&lt;%$selection.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;DE_Device&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $diagram]%>"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$nodeElement.filter(&quot;Device&quot;)%>">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Device']" containerViewExpression="&lt;%$selection.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;DE_Device&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $diagram]%>"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$nodeElement.filter(&quot;Node&quot;)[eClass.name==&quot;Node&quot;]%>">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Node']" containerViewExpression="&lt;%$selection.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;DE_Device&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $diagram]%>"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$nodeElement.filter(&quot;ExecutionEnvironment&quot;)%>">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Execution_Environment']" containerViewExpression="&lt;%$selection.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;DE_Device&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $diagram]%>"/>
+                      </subModelOperations>
+                    </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$selection.filter(&quot;Node&quot;)%>">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$selection.filter(&quot;Node&quot;)[eClass.name==&quot;Node&quot;]%>">
                     <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Node']" containerViewExpression="&lt;%$containerView%>"/>
                     <subModelOperations xsi:type="tool:For" expression="&lt;%$selection.eContents()%>" iteratorName="nodeElement">
                       <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$nodeElement.filter(&quot;Artifact&quot;)%>">
@@ -3162,7 +3176,7 @@
                       <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$nodeElement.filter(&quot;Device&quot;)%>">
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Device']" containerViewExpression="&lt;%$selection.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;DE_Node&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $diagram]%>"/>
                       </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$nodeElement.filter(&quot;Node&quot;)%>">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$nodeElement.filter(&quot;Node&quot;)[eClass.name==&quot;Node&quot;]%>">
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Node']" containerViewExpression="&lt;%$selection.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;DE_Node&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $diagram]%>"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$nodeElement.filter(&quot;ExecutionEnvironment&quot;)%>">
@@ -3208,8 +3222,22 @@
                   </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$selection.filter(&quot;Device&quot;)%>">
                     <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Device']" containerViewExpression="&lt;%$newContainerView%>"/>
+                    <subModelOperations xsi:type="tool:For" expression="&lt;%$selection.eContents()%>" iteratorName="nodeElement">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$nodeElement.filter(&quot;Artifact&quot;)%>">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Artifact']" containerViewExpression="&lt;%$selection.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;DE_Device&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $newContainerView]%>"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$nodeElement.filter(&quot;Device&quot;)%>">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Device']" containerViewExpression="&lt;%$selection.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;DE_Device&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $newContainerView]%>"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$nodeElement.filter(&quot;Node&quot;)[eClass.name==&quot;Node&quot;]%>">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Node']" containerViewExpression="&lt;%$selection.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;DE_Device&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $newContainerView]%>"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$nodeElement.filter(&quot;ExecutionEnvironment&quot;)%>">
+                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Execution_Environment']" containerViewExpression="&lt;%$selection.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;DE_Device&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $newContainerView]%>"/>
+                      </subModelOperations>
+                    </subModelOperations>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$selection.filter(&quot;Node&quot;)%>">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$selection.filter(&quot;Node&quot;)[eClass.name==&quot;Node&quot;]%>">
                     <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Node']" containerViewExpression="&lt;%$newContainerView%>"/>
                     <subModelOperations xsi:type="tool:For" expression="&lt;%$selection.eContents()%>" iteratorName="nodeElement">
                       <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$nodeElement.filter(&quot;Artifact&quot;)%>">
@@ -3218,7 +3246,7 @@
                       <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$nodeElement.filter(&quot;Device&quot;)%>">
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Device']" containerViewExpression="&lt;%$selection.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;DE_Node&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $newContainerView]%>"/>
                       </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$nodeElement.filter(&quot;Node&quot;)%>">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$nodeElement.filter(&quot;Node&quot;)[eClass.name==&quot;Node&quot;]%>">
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Node']" containerViewExpression="&lt;%$selection.~target.filter(&quot;DNodeContainer&quot;)[actualMapping.name==&quot;DE_Node&quot; &amp;&amp; eContainer(&quot;DDiagram&quot;) == $newContainerView]%>"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$nodeElement.filter(&quot;ExecutionEnvironment&quot;)%>">
