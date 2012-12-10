@@ -2946,7 +2946,7 @@
         <toolSections name="Comments" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_CommentLink']"/>
       </optionalLayers>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description:DiagramDescription" name="Profile Diagram" showOnStartup="true" domainClass="uml.Profile">
+    <ownedRepresentations xsi:type="description:DiagramDescription" name="Profile Diagram" domainClass="uml.Profile">
       <metamodel href="http://www.eclipse.org/uml2/3.0.0/UML#/"/>
       <defaultLayer name="Profile">
         <nodeMappings name="PD_ElementImport" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%eAllContents()%>" domainClass="uml.ElementImport">
