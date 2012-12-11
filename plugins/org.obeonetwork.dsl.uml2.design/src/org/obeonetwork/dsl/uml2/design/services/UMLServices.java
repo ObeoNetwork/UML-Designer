@@ -32,18 +32,23 @@ import org.eclipse.uml2.uml.AssociationClass;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Component;
+import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Deployment;
+import org.eclipse.uml2.uml.Device;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.ExecutionEnvironment;
 import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.Generalization;
+import org.eclipse.uml2.uml.InstanceSpecification;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.InterfaceRealization;
 import org.eclipse.uml2.uml.Manifestation;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
+import org.eclipse.uml2.uml.Node;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.PackageableElement;
@@ -312,6 +317,74 @@ public class UMLServices {
 			}
 		}
 		pkg.destroy();
+	}
+
+	public List<EObject> getValidsForClassDiagram(EObject cur) {
+		Predicate<EObject> validForClassDiagram = new Predicate<EObject>() {
+
+			public boolean apply(EObject input) {
+				return input instanceof Package || input instanceof Interface || input instanceof DataType
+						|| "Class".equals(input.eClass().getName())
+						|| "Component".equals(input.eClass().getName());
+			}
+		};
+		return allValidSessionElements(cur, validForClassDiagram);
+	}
+
+	public List<EObject> getValidsForComponentDiagram(EObject cur) {
+		Predicate<EObject> validForComponentDiagram = new Predicate<EObject>() {
+
+			public boolean apply(EObject input) {
+				return input instanceof Package || input instanceof Interface
+						|| "Class".equals(input.eClass().getName())
+						|| "Component".equals(input.eClass().getName());
+			}
+		};
+		return allValidSessionElements(cur, validForComponentDiagram);
+	}
+
+	public List<EObject> getValidsForObjectDiagram(EObject cur) {
+		Predicate<EObject> validForComponentDiagram = new Predicate<EObject>() {
+
+			public boolean apply(EObject input) {
+				return input instanceof Package || input instanceof InstanceSpecification;
+			}
+		};
+		return allValidSessionElements(cur, validForComponentDiagram);
+	}
+
+	public List<EObject> getValidsForCompositeDiagram(EObject cur) {
+		Predicate<EObject> validForCompositeDiagram = new Predicate<EObject>() {
+
+			public boolean apply(EObject input) {
+				return input instanceof Package || "Class".equals(input.eClass().getName())
+						|| "Component".equals(input.eClass().getName())
+						|| "Property".equals(input.eClass().getName());
+			}
+		};
+		return allValidSessionElements(cur, validForCompositeDiagram);
+	}
+
+	public List<EObject> getValidsForDeploymentDiagram(EObject cur) {
+		Predicate<EObject> validForDeploymentDiagram = new Predicate<EObject>() {
+
+			public boolean apply(EObject input) {
+				return input instanceof Package || input instanceof ExecutionEnvironment
+						|| input instanceof Node || input instanceof Artifact || input instanceof Device;
+			}
+		};
+		return allValidSessionElements(cur, validForDeploymentDiagram);
+	}
+
+	private List<EObject> allValidSessionElements(EObject cur, Predicate<EObject> validForClassDiagram) {
+		Session found = SessionManager.INSTANCE.getSession(cur);
+		List<EObject> result = Lists.newArrayList();
+		if (found != null) {
+			for (Resource res : found.getSemanticResources()) {
+				Iterators.addAll(result, Iterators.filter(res.getAllContents(), validForClassDiagram));
+			}
+		}
+		return result;
 	}
 
 	/**
