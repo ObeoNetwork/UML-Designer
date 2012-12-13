@@ -1757,7 +1757,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="CO_Realization" preconditionExpression="&lt;%client.filter(&quot;Class&quot;) &amp;&amp; !client.filter(&quot;Port&quot;)%>" semanticElements="&lt;%self.getSemanticElements()%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_Interface']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="&lt;%client%>" domainClass="uml.InterfaceRealization" useDomainElement="true" reconnections="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect%20Realization%20target'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect%20Realization%20source']">
+        <edgeMappings name="CO_Realization" preconditionExpression="&lt;%client.filter(&quot;Class&quot;) &amp;&amp; !client.filter(&quot;Port&quot;)%>" semanticElements="&lt;%self.getSemanticElements()%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_Interface']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="&lt;%client%>" domainClass="uml.InterfaceRealization" useDomainElement="true" reconnections="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect%20Realization%20source'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect%20Realization%20target']">
           <style targetArrow="NoDecoration" sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
             <centerLabelStyleDescription showIcon="false">
@@ -1765,7 +1765,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="CO_Realization_From_Port" semanticElements="&lt;%self.getSemanticElements()%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']/@borderedNodeMappings[name='CO_Port']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_Interface']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="&lt;%client%>" domainClass="uml.InterfaceRealization" useDomainElement="true" reconnections="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect%20Usage_From_Port%20target'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect%20Realization_From_Port%20source']">
+        <edgeMappings name="CO_Realization_From_Port" semanticElements="&lt;%self.getSemanticElements()%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']/@borderedNodeMappings[name='CO_Port']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_Interface']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="&lt;%client%>" domainClass="uml.InterfaceRealization" useDomainElement="true" reconnections="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect%20Realization_From_Port%20source'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect%20Realization%20target']">
           <style targetArrow="NoDecoration" sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
             <centerLabelStyleDescription showIcon="false">
@@ -1975,6 +1975,7 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Port" referenceName="ownedAttribute">
                 <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Port&lt;%eContainer().eContents().filter(&quot;Port&quot;).nSize()%>"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -2062,6 +2063,7 @@
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.InterfaceRealization" referenceName="interfaceRealization">
                   <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="&lt;%$source%>"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="&lt;%$target%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="contract" valueExpression="&lt;%$target%>"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -2198,6 +2200,9 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element%>">
                 <subModelOperations xsi:type="tool:Unset" featureName="supplier" elementExpression="&lt;%$source%>">
                   <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="&lt;%$target%>"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:Unset" featureName="contract" elementExpression="&lt;%$source%>">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="contract" valueExpression="&lt;%$target%>"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -4215,6 +4220,10 @@
                     <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$container.filter(&quot;ActivityPartition&quot;) != null%>">
                       <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="&lt;%$container%>"/>
                     </subModelOperations>
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.LiteralBoolean" referenceName="joinSpec">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Join_&lt;%$container.node.filter(&quot;JoinNode&quot;).nSize()%>"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="value" valueExpression="true"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -4319,6 +4328,13 @@
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$source.name%>_To_&lt;%$target.name%>"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="&lt;%$source%>"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="&lt;%$target%>"/>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.LiteralBoolean" referenceName="guard" variableName="guard">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="value" valueExpression="true"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$source.name%>_To_&lt;%$target.name%>_guard"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.LiteralInteger" referenceName="weight" variableName="weight">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$source.name%>_To_&lt;%$target.name%>_weight"/>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
