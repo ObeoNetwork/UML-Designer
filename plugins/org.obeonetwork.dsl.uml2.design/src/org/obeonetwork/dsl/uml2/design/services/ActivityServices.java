@@ -119,7 +119,7 @@ public class ActivityServices {
 		List<ActivityNode> childNodes;
 
 		if (context instanceof Activity) {
-			final EList<ActivityNode> allActivityNodes = ((Activity)context).getNodes();
+			final EList<ActivityNode> allActivityNodes = ((Activity)context).getOwnedNodes();
 			childNodes = new ArrayList<ActivityNode>(allActivityNodes);
 
 			for (ActivityNode activityNode : allActivityNodes) {

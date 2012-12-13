@@ -85,11 +85,11 @@ public class ActivityServicesTests extends TestCase {
 		
 		OpaqueAction action = UMLFactory.eINSTANCE.createOpaqueAction();
 		action.setName(IN_ACTIVITY_ACTION);
-		activity.getNodes().add(action);
+		activity.getOwnedNodes().add(action);
 		
 		action = UMLFactory.eINSTANCE.createOpaqueAction();
 		action.setName("InPartition1");
-		activity.getNodes().add(action);
+		activity.getOwnedNodes().add(action);
 		partition.getNodes().add(action);
 		
 		final ActivityPartition subPartition = UMLFactory.eINSTANCE.createActivityPartition();

@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.obeo.fr/dsl/viewpoint/diagram/sequence/description/2.0.0" xmlns:description="http://www.obeo.fr/dsl/viewpoint/description/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sequence="http://www.obeo.fr/dsl/viewpoint/diagram/sequence/2.0.0" xmlns:style="http://www.obeo.fr/dsl/viewpoint/description/style/1.1.0" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmlns:viewpoint="http://www.obeo.fr/dsl/viewpoint/1.1.0" xsi:schemaLocation="http://www.obeo.fr/dsl/viewpoint/diagram/sequence/description/2.0.0 http://www.obeo.fr/dsl/viewpoint/diagram/sequence/2.0.0#//description http://www.obeo.fr/dsl/viewpoint/description/1.1.0 http://www.obeo.fr/dsl/viewpoint/1.1.0#//description http://www.obeo.fr/dsl/viewpoint/description/style/1.1.0 http://www.obeo.fr/dsl/viewpoint/1.1.0#//description/style" xmi:id="_diyLQJhNEeGQjZXnNfPuzg" selectedViews="_fKGHUJhNEeGQjZXnNfPuzg _fU6QMJhNEeGQjZXnNfPuzg">
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.obeo.fr/dsl/viewpoint/description/1.1.0" xmlns:description_1="http://www.obeo.fr/dsl/viewpoint/diagram/sequence/description/2.0.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sequence="http://www.obeo.fr/dsl/viewpoint/diagram/sequence/2.0.0" xmlns:style="http://www.obeo.fr/dsl/viewpoint/description/style/1.1.0" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmlns:viewpoint="http://www.obeo.fr/dsl/viewpoint/1.1.0" xsi:schemaLocation="http://www.obeo.fr/dsl/viewpoint/description/1.1.0 http://www.obeo.fr/dsl/viewpoint/1.1.0#//description http://www.obeo.fr/dsl/viewpoint/diagram/sequence/description/2.0.0 http://www.obeo.fr/dsl/viewpoint/diagram/sequence/2.0.0#//description http://www.obeo.fr/dsl/viewpoint/description/style/1.1.0 http://www.obeo.fr/dsl/viewpoint/1.1.0#//description/style" xmi:id="_diyLQJhNEeGQjZXnNfPuzg" selectedViews="_fKGHUJhNEeGQjZXnNfPuzg _fU6QMJhNEeGQjZXnNfPuzg" version="6.5.0.201210011230">
+  <models xmi:type="uml:Model" href="Test.uml#_R7rI4AksEeGS4-mV_m3ZXQ"/>
+  <models xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#_0"/>
+  <models xmi:type="uml:Profile" href="pathmap://UML_PROFILES/StandardL2.profile.uml#_0"/>
+  <models xmi:type="uml:Model" href="pathmap://UML_METAMODELS/UML.metamodel.uml#_0"/>
+  <models xmi:type="uml:Model" href="pathmap://UML_METAMODELS/Ecore.metamodel.uml#_0"/>
+  <models xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  <models xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_fKGHUJhNEeGQjZXnNfPuzg" initialized="true">
     <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_fMX_QJhNEeGQjZXnNfPuzg" name="Test Package Hierarchy">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_fM0EIJhNEeGQjZXnNfPuzg" source="GMF_DIAGRAMS">
@@ -43,7 +50,6 @@
         <target xmi:type="uml:Package" href="Test.uml#_ggZWkAksEeGS4-mV_m3ZXQ"/>
         <semanticElements xmi:type="uml:Package" href="Test.uml#_ggZWkAksEeGS4-mV_m3ZXQ"/>
         <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_vZh4cZhPEeGQjZXnNfPuzg" foldingStyle="TARGET" routingStyle="tree">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_vZh4cphPEeGQjZXnNfPuzg"/>
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Containment']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_vZh4c5hPEeGQjZXnNfPuzg" red="39" green="76" blue="114"/>
         </ownedStyle>
@@ -53,7 +59,6 @@
         <target xmi:type="uml:Package" href="Test.uml#_YQvqgDFuEeGuFpiM9lQatw"/>
         <semanticElements xmi:type="uml:Package" href="Test.uml#_YQvqgDFuEeGuFpiM9lQatw"/>
         <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_vZifgZhPEeGQjZXnNfPuzg" foldingStyle="TARGET" routingStyle="tree">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_vZifgphPEeGQjZXnNfPuzg"/>
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Containment']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_vZifg5hPEeGQjZXnNfPuzg" red="39" green="76" blue="114"/>
         </ownedStyle>
@@ -63,7 +68,6 @@
         <target xmi:type="uml:Package" href="Test.uml#_iYra0JhbEeGQjZXnNfPuzg"/>
         <semanticElements xmi:type="uml:Package" href="Test.uml#_iYra0JhbEeGQjZXnNfPuzg"/>
         <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_m_SZkZhbEeGQjZXnNfPuzg" foldingStyle="TARGET" routingStyle="tree">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_m_SZkphbEeGQjZXnNfPuzg"/>
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Containment']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_m_SZk5hbEeGQjZXnNfPuzg" red="39" green="76" blue="114"/>
         </ownedStyle>
@@ -245,7 +249,6 @@
         <target xmi:type="uml:Package" href="Test.uml#_ggZWkAksEeGS4-mV_m3ZXQ"/>
         <semanticElements xmi:type="uml:Package" href="Test.uml#_ggZWkAksEeGS4-mV_m3ZXQ"/>
         <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_hb63oZhbEeGQjZXnNfPuzg" foldingStyle="TARGET" routingStyle="tree">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_hb63ophbEeGQjZXnNfPuzg"/>
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Containment']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_hb63o5hbEeGQjZXnNfPuzg" red="39" green="76" blue="114"/>
         </ownedStyle>
@@ -255,7 +258,6 @@
         <target xmi:type="uml:Package" href="Test.uml#_YQvqgDFuEeGuFpiM9lQatw"/>
         <semanticElements xmi:type="uml:Package" href="Test.uml#_YQvqgDFuEeGuFpiM9lQatw"/>
         <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_hb63pZhbEeGQjZXnNfPuzg" foldingStyle="TARGET" routingStyle="tree">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_hb63pphbEeGQjZXnNfPuzg"/>
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Containment']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_hb63p5hbEeGQjZXnNfPuzg" red="39" green="76" blue="114"/>
         </ownedStyle>
@@ -298,7 +300,6 @@
         <target xmi:type="uml:Package" href="Test.uml#_iYra0JhbEeGQjZXnNfPuzg"/>
         <semanticElements xmi:type="uml:Package" href="Test.uml#_iYra0JhbEeGQjZXnNfPuzg"/>
         <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_iY1y4ZhbEeGQjZXnNfPuzg" foldingStyle="TARGET" routingStyle="tree">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_iY1y4phbEeGQjZXnNfPuzg"/>
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Containment']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_iY1y45hbEeGQjZXnNfPuzg" red="39" green="76" blue="114"/>
         </ownedStyle>
@@ -308,7 +309,6 @@
         <target xmi:type="uml:Package" href="Test.uml#_fQbJEJheEeGQjZXnNfPuzg"/>
         <semanticElements xmi:type="uml:Package" href="Test.uml#_fQbJEJheEeGQjZXnNfPuzg"/>
         <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_p5muQZheEeGQjZXnNfPuzg" foldingStyle="TARGET" routingStyle="tree">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_p5muQpheEeGQjZXnNfPuzg"/>
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Containment']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_p5muQ5heEeGQjZXnNfPuzg" red="39" green="76" blue="114"/>
         </ownedStyle>
@@ -318,7 +318,6 @@
         <target xmi:type="uml:Package" href="Test.uml#_mIfNEJheEeGQjZXnNfPuzg"/>
         <semanticElements xmi:type="uml:Package" href="Test.uml#_mIfNEJheEeGQjZXnNfPuzg"/>
         <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_p5muRZheEeGQjZXnNfPuzg" foldingStyle="TARGET" routingStyle="tree">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_p5muRpheEeGQjZXnNfPuzg"/>
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Containment']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_p5muR5heEeGQjZXnNfPuzg" red="39" green="76" blue="114"/>
         </ownedStyle>
@@ -349,7 +348,7 @@
               <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_9rbsQphZEeGQjZXnNfPuzg" red="136" green="136" blue="136"/>
               <color xmi:type="viewpoint:RGBValues" xmi:id="_9rbsQ5hZEeGQjZXnNfPuzg" red="209" green="209" blue="209"/>
             </ownedStyle>
-            <actualMapping xmi:type="ExecutionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']/@borderedNodeMappings[name='SD_Execution']"/>
+            <actualMapping xmi:type="description_1:ExecutionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']/@borderedNodeMappings[name='SD_Execution']"/>
           </ownedBorderedNodes>
           <ownedStyle xmi:type="viewpoint:Square" xmi:id="__X3AkZhTEeGQjZXnNfPuzg" showIcon="false" borderSize="1" borderSizeComputationExpression="1" labelPosition="node" width="1" height="40">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="__X3AkphTEeGQjZXnNfPuzg"/>
@@ -357,7 +356,7 @@
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="__X3Ak5hTEeGQjZXnNfPuzg" red="114" green="159" blue="207"/>
             <color xmi:type="viewpoint:RGBValues" xmi:id="__X3AlJhTEeGQjZXnNfPuzg" red="136" green="136" blue="136"/>
           </ownedStyle>
-          <actualMapping xmi:type="ExecutionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']"/>
+          <actualMapping xmi:type="description_1:ExecutionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']"/>
         </ownedBorderedNodes>
         <ownedStyle xmi:type="viewpoint:Square" xmi:id="__X2ZgJhTEeGQjZXnNfPuzg" labelSize="9" labelPosition="node" width="10" height="4">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="__X2ZgZhTEeGQjZXnNfPuzg"/>
@@ -365,9 +364,9 @@
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="__X2ZgphTEeGQjZXnNfPuzg"/>
           <color xmi:type="viewpoint:RGBValues" xmi:id="__X2Zg5hTEeGQjZXnNfPuzg" red="194" green="239" blue="255"/>
         </ownedStyle>
-        <actualMapping xmi:type="InstanceRoleMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']"/>
+        <actualMapping xmi:type="description_1:InstanceRoleMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']"/>
       </ownedDiagramElements>
-      <description xmi:type="SequenceDiagramDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']"/>
+      <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']"/>
       <filterVariableHistory xmi:type="viewpoint:FilterVariableHistory" xmi:id="_hip6IJhNEeGQjZXnNfPuzg"/>
       <activatedLayers xmi:type="description:Layer" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer"/>
     </ownedRepresentations>
@@ -427,7 +426,7 @@
               <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_rm9IQ5hbEeGQjZXnNfPuzg" red="136" green="136" blue="136"/>
               <color xmi:type="viewpoint:RGBValues" xmi:id="_rm9IRJhbEeGQjZXnNfPuzg" red="209" green="209" blue="209"/>
             </ownedStyle>
-            <actualMapping xmi:type="ExecutionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']/@borderedNodeMappings[name='SD_Execution']"/>
+            <actualMapping xmi:type="description_1:ExecutionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']/@borderedNodeMappings[name='SD_Execution']"/>
           </ownedBorderedNodes>
           <ownedStyle xmi:type="viewpoint:Square" xmi:id="_q0E50ZhbEeGQjZXnNfPuzg" showIcon="false" borderSize="1" borderSizeComputationExpression="1" labelPosition="node" width="1" height="40">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_q0E50phbEeGQjZXnNfPuzg"/>
@@ -435,7 +434,7 @@
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_q0E505hbEeGQjZXnNfPuzg" red="114" green="159" blue="207"/>
             <color xmi:type="viewpoint:RGBValues" xmi:id="_q0E51JhbEeGQjZXnNfPuzg" red="136" green="136" blue="136"/>
           </ownedStyle>
-          <actualMapping xmi:type="ExecutionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']"/>
+          <actualMapping xmi:type="description_1:ExecutionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']"/>
         </ownedBorderedNodes>
         <ownedStyle xmi:type="viewpoint:Square" xmi:id="_q0ESwJhbEeGQjZXnNfPuzg" labelSize="9" labelPosition="node" width="10" height="4">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_q0ESwZhbEeGQjZXnNfPuzg"/>
@@ -443,9 +442,9 @@
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_q0ESwphbEeGQjZXnNfPuzg"/>
           <color xmi:type="viewpoint:RGBValues" xmi:id="_q0ESw5hbEeGQjZXnNfPuzg" red="194" green="239" blue="255"/>
         </ownedStyle>
-        <actualMapping xmi:type="InstanceRoleMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']"/>
+        <actualMapping xmi:type="description_1:InstanceRoleMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']"/>
       </ownedDiagramElements>
-      <description xmi:type="SequenceDiagramDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']"/>
+      <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']"/>
       <filterVariableHistory xmi:type="viewpoint:FilterVariableHistory" xmi:id="_oZr7AZhbEeGQjZXnNfPuzg"/>
       <activatedLayers xmi:type="description:Layer" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer"/>
       <target xmi:type="uml:Interaction" href="Test.uml#_oZqF0JhbEeGQjZXnNfPuzg"/>
@@ -522,7 +521,7 @@
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_eGBWAphfEeGQjZXnNfPuzg" red="114" green="159" blue="207"/>
             <color xmi:type="viewpoint:RGBValues" xmi:id="_eGBWA5hfEeGQjZXnNfPuzg" red="136" green="136" blue="136"/>
           </ownedStyle>
-          <actualMapping xmi:type="ExecutionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']"/>
+          <actualMapping xmi:type="description_1:ExecutionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']"/>
         </ownedBorderedNodes>
         <ownedStyle xmi:type="viewpoint:Square" xmi:id="_eGAu8JhfEeGQjZXnNfPuzg" labelSize="9" labelPosition="node" width="10" height="4">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_eGAu8ZhfEeGQjZXnNfPuzg"/>
@@ -530,7 +529,7 @@
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_eGAu8phfEeGQjZXnNfPuzg"/>
           <color xmi:type="viewpoint:RGBValues" xmi:id="_eGAu85hfEeGQjZXnNfPuzg" red="194" green="239" blue="255"/>
         </ownedStyle>
-        <actualMapping xmi:type="InstanceRoleMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']"/>
+        <actualMapping xmi:type="description_1:InstanceRoleMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_feyfwJhfEeGQjZXnNfPuzg" name="producers : Producer" width="10" height="4" resizeKind="NSEW">
         <target xmi:type="uml:Lifeline" href="Test.uml#_fewDgJhfEeGQjZXnNfPuzg"/>
@@ -544,7 +543,7 @@
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fezt5phfEeGQjZXnNfPuzg" red="114" green="159" blue="207"/>
             <color xmi:type="viewpoint:RGBValues" xmi:id="_fezt55hfEeGQjZXnNfPuzg" red="136" green="136" blue="136"/>
           </ownedStyle>
-          <actualMapping xmi:type="ExecutionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']"/>
+          <actualMapping xmi:type="description_1:ExecutionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']"/>
         </ownedBorderedNodes>
         <ownedStyle xmi:type="viewpoint:Square" xmi:id="_fezG0JhfEeGQjZXnNfPuzg" labelSize="9" labelPosition="node" width="10" height="4">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fezt4JhfEeGQjZXnNfPuzg"/>
@@ -552,7 +551,7 @@
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fezt4ZhfEeGQjZXnNfPuzg"/>
           <color xmi:type="viewpoint:RGBValues" xmi:id="_fezt4phfEeGQjZXnNfPuzg" red="194" green="239" blue="255"/>
         </ownedStyle>
-        <actualMapping xmi:type="InstanceRoleMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']"/>
+        <actualMapping xmi:type="description_1:InstanceRoleMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="viewpoint:DEdge" xmi:id="_g_fdgJhfEeGQjZXnNfPuzg" name="Message_0" sourceNode="_eGAu9JhfEeGQjZXnNfPuzg" targetNode="_fezt45hfEeGQjZXnNfPuzg">
         <target xmi:type="uml:Message" href="Test.uml#_g_caMJhfEeGQjZXnNfPuzg"/>
@@ -561,13 +560,12 @@
         <semanticElements xmi:type="uml:MessageOccurrenceSpecification" href="Test.uml#_g_doUZhfEeGQjZXnNfPuzg"/>
         <graphicalFilters xmi:type="viewpoint:AbsoluteBoundsFilter" xmi:id="_g_jH4JhfEeGQjZXnNfPuzg" x="0" y="135" height="0" width="0"/>
         <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_g_fdgZhfEeGQjZXnNfPuzg" size="2">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_g_fdgphfEeGQjZXnNfPuzg"/>
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_g_fdg5hfEeGQjZXnNfPuzg"/>
         </ownedStyle>
-        <actualMapping xmi:type="BasicMessageMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']"/>
+        <actualMapping xmi:type="description_1:BasicMessageMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']"/>
       </ownedDiagramElements>
-      <description xmi:type="SequenceDiagramDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']"/>
+      <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']"/>
       <filterVariableHistory xmi:type="viewpoint:FilterVariableHistory" xmi:id="_eF7PYZhfEeGQjZXnNfPuzg"/>
       <activatedLayers xmi:type="description:Layer" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer"/>
       <target xmi:type="uml:Interaction" href="Test.uml#_mIfNEZheEeGQjZXnNfPuzg"/>
@@ -652,7 +650,7 @@
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_CVn7w5hgEeGQjZXnNfPuzg" red="114" green="159" blue="207"/>
             <color xmi:type="viewpoint:RGBValues" xmi:id="_CVn7xJhgEeGQjZXnNfPuzg" red="136" green="136" blue="136"/>
           </ownedStyle>
-          <actualMapping xmi:type="ExecutionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']"/>
+          <actualMapping xmi:type="description_1:ExecutionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']"/>
         </ownedBorderedNodes>
         <ownedStyle xmi:type="viewpoint:Square" xmi:id="_CVlfgJhgEeGQjZXnNfPuzg" labelSize="9" labelPosition="node" width="10" height="4">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_CVmGkJhgEeGQjZXnNfPuzg"/>
@@ -660,7 +658,7 @@
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_CVmGkZhgEeGQjZXnNfPuzg"/>
           <color xmi:type="viewpoint:RGBValues" xmi:id="_CVmGkphgEeGQjZXnNfPuzg" red="194" green="239" blue="255"/>
         </ownedStyle>
-        <actualMapping xmi:type="InstanceRoleMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']"/>
+        <actualMapping xmi:type="description_1:InstanceRoleMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_CVmGk5hgEeGQjZXnNfPuzg" name="producers : Producer" width="10" height="4" resizeKind="NSEW">
         <target xmi:type="uml:Lifeline" href="Test.uml#_8Pkjg5hfEeGQjZXnNfPuzg"/>
@@ -674,7 +672,7 @@
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_CVoi05hgEeGQjZXnNfPuzg" red="114" green="159" blue="207"/>
             <color xmi:type="viewpoint:RGBValues" xmi:id="_CVoi1JhgEeGQjZXnNfPuzg" red="136" green="136" blue="136"/>
           </ownedStyle>
-          <actualMapping xmi:type="ExecutionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']"/>
+          <actualMapping xmi:type="description_1:ExecutionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']"/>
         </ownedBorderedNodes>
         <ownedStyle xmi:type="viewpoint:Square" xmi:id="_CVmtoJhgEeGQjZXnNfPuzg" labelSize="9" labelPosition="node" width="10" height="4">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_CVnUsJhgEeGQjZXnNfPuzg"/>
@@ -682,7 +680,7 @@
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_CVnUsZhgEeGQjZXnNfPuzg"/>
           <color xmi:type="viewpoint:RGBValues" xmi:id="_CVnUsphgEeGQjZXnNfPuzg" red="194" green="239" blue="255"/>
         </ownedStyle>
-        <actualMapping xmi:type="InstanceRoleMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']"/>
+        <actualMapping xmi:type="description_1:InstanceRoleMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="viewpoint:DEdge" xmi:id="_F_Pt0JhgEeGQjZXnNfPuzg" name="Message_0" sourceNode="_CVn7wJhgEeGQjZXnNfPuzg" targetNode="_CVoi0JhgEeGQjZXnNfPuzg">
         <target xmi:type="uml:Message" href="Test.uml#_F_KOQJhgEeGQjZXnNfPuzg"/>
@@ -691,11 +689,10 @@
         <semanticElements xmi:type="uml:MessageOccurrenceSpecification" href="Test.uml#_F_MDc5hgEeGQjZXnNfPuzg"/>
         <graphicalFilters xmi:type="viewpoint:AbsoluteBoundsFilter" xmi:id="_F_ciIJhgEeGQjZXnNfPuzg" x="0" y="120" height="0" width="0"/>
         <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_F_Pt0ZhgEeGQjZXnNfPuzg" targetArrow="InputFillClosedArrow" size="2">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_F_Pt0phgEeGQjZXnNfPuzg"/>
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']/@conditionnalStyles.0/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_F_Pt05hgEeGQjZXnNfPuzg"/>
         </ownedStyle>
-        <actualMapping xmi:type="BasicMessageMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']"/>
+        <actualMapping xmi:type="description_1:BasicMessageMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="viewpoint:DEdge" xmi:id="_F_Q78JhgEeGQjZXnNfPuzg" name="Message_0_reply" sourceNode="_CVoi0JhgEeGQjZXnNfPuzg" targetNode="_CVn7wJhgEeGQjZXnNfPuzg">
         <target xmi:type="uml:Message" href="Test.uml#_F_LcYphgEeGQjZXnNfPuzg"/>
@@ -704,13 +701,12 @@
         <semanticElements xmi:type="uml:MessageOccurrenceSpecification" href="Test.uml#_F_MqgZhgEeGQjZXnNfPuzg"/>
         <graphicalFilters xmi:type="viewpoint:AbsoluteBoundsFilter" xmi:id="_F_VNYJhgEeGQjZXnNfPuzg" x="0" y="269" height="0" width="0"/>
         <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_F_Q78ZhgEeGQjZXnNfPuzg" lineStyle="dash" size="2">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_F_Q78phgEeGQjZXnNfPuzg"/>
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']/@conditionnalStyles.1/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_F_Q785hgEeGQjZXnNfPuzg"/>
         </ownedStyle>
-        <actualMapping xmi:type="BasicMessageMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']"/>
+        <actualMapping xmi:type="description_1:BasicMessageMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']"/>
       </ownedDiagramElements>
-      <description xmi:type="SequenceDiagramDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']"/>
+      <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']"/>
       <filterVariableHistory xmi:type="viewpoint:FilterVariableHistory" xmi:id="_CVicMZhgEeGQjZXnNfPuzg"/>
       <activatedLayers xmi:type="description:Layer" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer"/>
       <target xmi:type="uml:Interaction" href="Test.uml#_8PkjgZhfEeGQjZXnNfPuzg"/>
@@ -798,7 +794,7 @@
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_cBBi9ZhgEeGQjZXnNfPuzg" red="114" green="159" blue="207"/>
             <color xmi:type="viewpoint:RGBValues" xmi:id="_cBBi9phgEeGQjZXnNfPuzg" red="136" green="136" blue="136"/>
           </ownedStyle>
-          <actualMapping xmi:type="ExecutionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']"/>
+          <actualMapping xmi:type="description_1:ExecutionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']"/>
         </ownedBorderedNodes>
         <ownedStyle xmi:type="viewpoint:Square" xmi:id="_cBAU0JhgEeGQjZXnNfPuzg" labelSize="9" labelPosition="node" width="10" height="4">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_cBAU0ZhgEeGQjZXnNfPuzg"/>
@@ -806,7 +802,7 @@
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_cBAU0phgEeGQjZXnNfPuzg"/>
           <color xmi:type="viewpoint:RGBValues" xmi:id="_cBAU05hgEeGQjZXnNfPuzg" red="194" green="239" blue="255"/>
         </ownedStyle>
-        <actualMapping xmi:type="InstanceRoleMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']"/>
+        <actualMapping xmi:type="description_1:InstanceRoleMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_cBAU1JhgEeGQjZXnNfPuzg" name="producers : Producer" width="10" height="4" resizeKind="NSEW">
         <target xmi:type="uml:Lifeline" href="Test.uml#_XBcDg5hgEeGQjZXnNfPuzg"/>
@@ -825,7 +821,7 @@
               <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fsCcI5hgEeGQjZXnNfPuzg" red="136" green="136" blue="136"/>
               <color xmi:type="viewpoint:RGBValues" xmi:id="_fsCcJJhgEeGQjZXnNfPuzg" red="209" green="209" blue="209"/>
             </ownedStyle>
-            <actualMapping xmi:type="ExecutionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']/@borderedNodeMappings[name='SD_Execution']"/>
+            <actualMapping xmi:type="description_1:ExecutionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']/@borderedNodeMappings[name='SD_Execution']"/>
           </ownedBorderedNodes>
           <ownedStyle xmi:type="viewpoint:Square" xmi:id="_cBCKAZhgEeGQjZXnNfPuzg" showIcon="false" borderSize="1" borderSizeComputationExpression="1" labelPosition="node" width="1" height="40">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_cBCKAphgEeGQjZXnNfPuzg"/>
@@ -833,7 +829,7 @@
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_cBCKA5hgEeGQjZXnNfPuzg" red="114" green="159" blue="207"/>
             <color xmi:type="viewpoint:RGBValues" xmi:id="_cBCKBJhgEeGQjZXnNfPuzg" red="136" green="136" blue="136"/>
           </ownedStyle>
-          <actualMapping xmi:type="ExecutionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']"/>
+          <actualMapping xmi:type="description_1:ExecutionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']"/>
         </ownedBorderedNodes>
         <ownedStyle xmi:type="viewpoint:Square" xmi:id="_cBA74JhgEeGQjZXnNfPuzg" labelSize="9" labelPosition="node" width="10" height="4">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_cBA74ZhgEeGQjZXnNfPuzg"/>
@@ -841,7 +837,7 @@
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_cBBi8JhgEeGQjZXnNfPuzg"/>
           <color xmi:type="viewpoint:RGBValues" xmi:id="_cBBi8ZhgEeGQjZXnNfPuzg" red="194" green="239" blue="255"/>
         </ownedStyle>
-        <actualMapping xmi:type="InstanceRoleMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']"/>
+        <actualMapping xmi:type="description_1:InstanceRoleMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="viewpoint:DEdge" xmi:id="_fsDDMJhgEeGQjZXnNfPuzg" name="Operation_0" sourceNode="_cBBi8phgEeGQjZXnNfPuzg" targetNode="_fsCcIJhgEeGQjZXnNfPuzg">
         <target xmi:type="uml:Message" href="Test.uml#_fr218JhgEeGQjZXnNfPuzg"/>
@@ -850,13 +846,12 @@
         <semanticElements xmi:type="uml:MessageOccurrenceSpecification" href="Test.uml#_fr5SMJhgEeGQjZXnNfPuzg"/>
         <graphicalFilters xmi:type="viewpoint:AbsoluteBoundsFilter" xmi:id="_fsaPkZhgEeGQjZXnNfPuzg" x="0" y="120" height="0" width="0"/>
         <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_fsDDMZhgEeGQjZXnNfPuzg" size="2">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fsDDMphgEeGQjZXnNfPuzg"/>
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_fsDDM5hgEeGQjZXnNfPuzg"/>
         </ownedStyle>
-        <actualMapping xmi:type="BasicMessageMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']"/>
+        <actualMapping xmi:type="description_1:BasicMessageMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']"/>
       </ownedDiagramElements>
-      <description xmi:type="SequenceDiagramDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']"/>
+      <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']"/>
       <filterVariableHistory xmi:type="viewpoint:FilterVariableHistory" xmi:id="_cA9RgZhgEeGQjZXnNfPuzg"/>
       <activatedLayers xmi:type="description:Layer" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer"/>
       <target xmi:type="uml:Interaction" href="Test.uml#_XBcDgZhgEeGQjZXnNfPuzg"/>
@@ -952,7 +947,7 @@
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fG22AZhhEeGQjZXnNfPuzg" red="114" green="159" blue="207"/>
             <color xmi:type="viewpoint:RGBValues" xmi:id="_fG22AphhEeGQjZXnNfPuzg" red="136" green="136" blue="136"/>
           </ownedStyle>
-          <actualMapping xmi:type="ExecutionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']"/>
+          <actualMapping xmi:type="description_1:ExecutionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']"/>
         </ownedBorderedNodes>
         <ownedStyle xmi:type="viewpoint:Square" xmi:id="_fG0ZwJhhEeGQjZXnNfPuzg" labelSize="9" labelPosition="node" width="10" height="4">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fG1A0JhhEeGQjZXnNfPuzg"/>
@@ -960,7 +955,7 @@
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fG1A0ZhhEeGQjZXnNfPuzg"/>
           <color xmi:type="viewpoint:RGBValues" xmi:id="_fG1A0phhEeGQjZXnNfPuzg" red="194" green="239" blue="255"/>
         </ownedStyle>
-        <actualMapping xmi:type="InstanceRoleMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']"/>
+        <actualMapping xmi:type="description_1:InstanceRoleMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_fG1A05hhEeGQjZXnNfPuzg" name="producers : Producer" width="10" height="4" resizeKind="NSEW">
         <target xmi:type="uml:Lifeline" href="Test.uml#_YEV1gphhEeGQjZXnNfPuzg"/>
@@ -978,7 +973,7 @@
               <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_hdNpY5hhEeGQjZXnNfPuzg" red="136" green="136" blue="136"/>
               <color xmi:type="viewpoint:RGBValues" xmi:id="_hdNpZJhhEeGQjZXnNfPuzg" red="209" green="209" blue="209"/>
             </ownedStyle>
-            <actualMapping xmi:type="ExecutionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']/@borderedNodeMappings[name='SD_Execution']"/>
+            <actualMapping xmi:type="description_1:ExecutionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']/@borderedNodeMappings[name='SD_Execution']"/>
           </ownedBorderedNodes>
           <ownedStyle xmi:type="viewpoint:Square" xmi:id="_fG3dEJhhEeGQjZXnNfPuzg" showIcon="false" borderSize="1" borderSizeComputationExpression="1" labelPosition="node" width="1" height="40">
             <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fG3dEZhhEeGQjZXnNfPuzg"/>
@@ -986,7 +981,7 @@
             <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fG3dEphhEeGQjZXnNfPuzg" red="114" green="159" blue="207"/>
             <color xmi:type="viewpoint:RGBValues" xmi:id="_fG3dE5hhEeGQjZXnNfPuzg" red="136" green="136" blue="136"/>
           </ownedStyle>
-          <actualMapping xmi:type="ExecutionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']"/>
+          <actualMapping xmi:type="description_1:ExecutionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']"/>
         </ownedBorderedNodes>
         <ownedStyle xmi:type="viewpoint:Square" xmi:id="_fG1n4JhhEeGQjZXnNfPuzg" labelSize="9" labelPosition="node" width="10" height="4">
           <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_fG2O8JhhEeGQjZXnNfPuzg"/>
@@ -994,7 +989,7 @@
           <borderColor xmi:type="viewpoint:RGBValues" xmi:id="_fG2O8ZhhEeGQjZXnNfPuzg"/>
           <color xmi:type="viewpoint:RGBValues" xmi:id="_fG2O8phhEeGQjZXnNfPuzg" red="194" green="239" blue="255"/>
         </ownedStyle>
-        <actualMapping xmi:type="InstanceRoleMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']"/>
+        <actualMapping xmi:type="description_1:InstanceRoleMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="viewpoint:DEdge" xmi:id="_hdOQcJhhEeGQjZXnNfPuzg" name="Operation_1" sourceNode="_fG2O85hhEeGQjZXnNfPuzg" targetNode="_hdNpYJhhEeGQjZXnNfPuzg">
         <target xmi:type="uml:Message" href="Test.uml#_hdHiwJhhEeGQjZXnNfPuzg"/>
@@ -1003,11 +998,10 @@
         <semanticElements xmi:type="uml:MessageOccurrenceSpecification" href="Test.uml#_hdJ_AJhhEeGQjZXnNfPuzg"/>
         <graphicalFilters xmi:type="viewpoint:AbsoluteBoundsFilter" xmi:id="_hdpuQZhhEeGQjZXnNfPuzg" x="0" y="120" height="0" width="0"/>
         <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_hdOQcZhhEeGQjZXnNfPuzg" targetArrow="InputFillClosedArrow" size="2">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_hdOQcphhEeGQjZXnNfPuzg"/>
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']/@conditionnalStyles.0/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_hdOQc5hhEeGQjZXnNfPuzg"/>
         </ownedStyle>
-        <actualMapping xmi:type="BasicMessageMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']"/>
+        <actualMapping xmi:type="description_1:BasicMessageMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="viewpoint:DEdge" xmi:id="_hdOQdJhhEeGQjZXnNfPuzg" name="Operation_1_reply" sourceNode="_hdNpYJhhEeGQjZXnNfPuzg" targetNode="_fG2O85hhEeGQjZXnNfPuzg">
         <target xmi:type="uml:Message" href="Test.uml#_hdIw4ZhhEeGQjZXnNfPuzg"/>
@@ -1016,24 +1010,16 @@
         <semanticElements xmi:type="uml:MessageOccurrenceSpecification" href="Test.uml#_hdKmEJhhEeGQjZXnNfPuzg"/>
         <graphicalFilters xmi:type="viewpoint:AbsoluteBoundsFilter" xmi:id="_hdpuQphhEeGQjZXnNfPuzg" x="0" y="150" height="0" width="0"/>
         <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_hdOQdZhhEeGQjZXnNfPuzg" lineStyle="dash" size="2">
-          <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_hdOQdphhEeGQjZXnNfPuzg"/>
           <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']/@conditionnalStyles.1/@style"/>
           <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_hdOQd5hhEeGQjZXnNfPuzg"/>
         </ownedStyle>
-        <actualMapping xmi:type="BasicMessageMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']"/>
+        <actualMapping xmi:type="description_1:BasicMessageMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']"/>
       </ownedDiagramElements>
-      <description xmi:type="SequenceDiagramDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']"/>
+      <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']"/>
       <filterVariableHistory xmi:type="viewpoint:FilterVariableHistory" xmi:id="_fGu6MZhhEeGQjZXnNfPuzg"/>
       <activatedLayers xmi:type="description:Layer" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer"/>
       <target xmi:type="uml:Interaction" href="Test.uml#_YEVOcZhhEeGQjZXnNfPuzg"/>
     </ownedRepresentations>
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']"/>
   </ownedViews>
-  <models xmi:type="uml:Model" href="Test.uml#_R7rI4AksEeGS4-mV_m3ZXQ"/>
-  <models xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#_0"/>
-  <eAnnotations xmi:type="description:DAnnotationEntry" xmi:id="_diyLQZhNEeGQjZXnNfPuzg" source="Migration">
-    <details>style</details>
-    <details>someViewsAreHiddenDeactivation</details>
-    <details>sequenceAbsoluteBoundsFlag</details>
-  </eAnnotations>
 </viewpoint:DAnalysis>

@@ -29,8 +29,6 @@ import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehaviorExecutionSpecification;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
-import org.eclipse.uml2.uml.Event;
-import org.eclipse.uml2.uml.ExecutionEvent;
 import org.eclipse.uml2.uml.ExecutionOccurrenceSpecification;
 import org.eclipse.uml2.uml.ExecutionSpecification;
 import org.eclipse.uml2.uml.InstanceSpecification;
@@ -46,11 +44,8 @@ import org.eclipse.uml2.uml.OccurrenceSpecification;
 import org.eclipse.uml2.uml.OpaqueBehavior;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Package;
+import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.Property;
-import org.eclipse.uml2.uml.ReceiveOperationEvent;
-import org.eclipse.uml2.uml.ReceiveSignalEvent;
-import org.eclipse.uml2.uml.SendOperationEvent;
-import org.eclipse.uml2.uml.SendSignalEvent;
 import org.eclipse.uml2.uml.Signal;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
@@ -68,7 +63,7 @@ import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
 import fr.obeo.dsl.viewpoint.diagram.sequence.business.internal.elements.ISequenceEvent;
 import fr.obeo.dsl.viewpoint.diagram.sequence.business.internal.elements.SequenceDiagram;
 import fr.obeo.dsl.viewpoint.diagram.sequence.business.internal.operation.RefreshGraphicalOrderingOperation;
-import fr.obeo.dsl.viewpoint.diagram.sequence.business.internal.operation.RefreshSemanticOrderingOperation;
+import fr.obeo.dsl.viewpoint.diagram.sequence.business.internal.operation.RefreshSemanticOrderingsOperation;
 import fr.obeo.dsl.viewpoint.diagram.sequence.business.internal.operation.SynchronizeGraphicalOrderingOperation;
 import fr.obeo.dsl.viewpoint.diagram.sequence.ui.tool.internal.edit.part.ISequenceEventEditPart;
 import fr.obeo.dsl.viewpoint.diagram.sequence.ui.tool.internal.edit.part.SequenceDiagramEditPart;
@@ -85,11 +80,6 @@ public class SequenceServices {
 	 * Signal name suffix.
 	 */
 	private static final String SIGNAL_SUFFIX = "_signal";
-
-	/**
-	 * Event message name suffix.
-	 */
-	private static final String EVENT_MESSAGE_SUFFIX = "_event";
 
 	/**
 	 * Sender message name suffix.
@@ -494,10 +484,6 @@ public class SequenceServices {
 		final StringBuffer startExecName = new StringBuffer(executionName).append("_start");
 		startExec.setName(startExecName.toString());
 		startExec.getCovereds().add(lifeline);
-		// Create start event
-		final ExecutionEvent startEvent = factory.createExecutionEvent();
-		startEvent.setName(startExecName.append(EVENT_MESSAGE_SUFFIX).toString());
-		startExec.setEvent(startEvent);
 
 		// Create behavior
 		final OpaqueBehavior behavior = factory.createOpaqueBehavior();
@@ -519,17 +505,12 @@ public class SequenceServices {
 		endExec.getCovereds().add(lifeline);
 		endExec.setExecution(execution);
 		execution.setFinish(endExec);
-		// Create end event
-		final ExecutionEvent endEvent = factory.createExecutionEvent();
-		endEvent.setName(endExecName.append(EVENT_MESSAGE_SUFFIX).toString());
-		endExec.setEvent(endEvent);
 
 		// Add and order fragments under the interaction
 		final EList<InteractionFragment> fragments = interaction.getFragments();
 
 		// Ordered fragments
 		fragments.add(startExec);
-		startExec.getNearestPackage().getPackagedElements().add(startEvent);
 
 		// If execution starts from an execution, add the new execution start after the execution
 		// specification
@@ -545,7 +526,6 @@ public class SequenceServices {
 		fragments.add(execution);
 		fragments.move(fragments.indexOf(startExec) + 1, execution);
 		fragments.add(endExec);
-		endExec.getNearestPackage().getPackagedElements().add(endEvent);
 		fragments.move(fragments.indexOf(execution) + 1, endExec);
 	}
 
@@ -634,36 +614,11 @@ public class SequenceServices {
 			execution.setName(operationName.toString());
 			execution.getCovereds().add(target);
 			execution.setBehavior(behavior);
-
-			// Create send event
-			final SendOperationEvent sendEvent = factory.createSendOperationEvent();
-			sendEvent.setName(senderEventName.append(EVENT_MESSAGE_SUFFIX).toString());
-			senderEventMessage.setEvent(sendEvent);
-			sendEvent.setOperation(operation);
-			// Create receive event
-			final ReceiveOperationEvent receiveEvent = factory.createReceiveOperationEvent();
-			receiveEvent.setName(receiverEventName.append(EVENT_MESSAGE_SUFFIX).toString());
-			receiverEventMessage.setEvent(receiveEvent);
-			receiveEvent.setOperation(operation);
-			message.getNearestPackage().getPackagedElements().add(sendEvent);
-			message.getNearestPackage().getPackagedElements().add(receiveEvent);
 		} else {
-			// Create send event
-			final SendSignalEvent sendEvent = factory.createSendSignalEvent();
-			sendEvent.setName(senderEventName.append(EVENT_MESSAGE_SUFFIX).toString());
-			senderEventMessage.setEvent(sendEvent);
-			// Create receive event
-			final ReceiveSignalEvent receiveEvent = factory.createReceiveSignalEvent();
-			receiveEvent.setName(receiverEventName.append(EVENT_MESSAGE_SUFFIX).toString());
-			receiverEventMessage.setEvent(receiveEvent);
 			// Create signal
 			final Signal signal = factory.createSignal();
 			signal.setName(operationName.append(SIGNAL_SUFFIX).toString());
-			sendEvent.setSignal(signal);
-			receiveEvent.setSignal(signal);
 			message.getNearestPackage().getPackagedElements().add(signal);
-			message.getNearestPackage().getPackagedElements().add(sendEvent);
-			message.getNearestPackage().getPackagedElements().add(receiveEvent);
 		}
 
 		ExecutionOccurrenceSpecification endExec = null;
@@ -676,11 +631,6 @@ public class SequenceServices {
 			endExec.getCovereds().add(target);
 			endExec.setExecution(execution);
 			execution.setFinish(endExec);
-			// Create end event
-			final ExecutionEvent endEvent = factory.createExecutionEvent();
-			endEvent.setName(executionEndName.append(EVENT_MESSAGE_SUFFIX).toString());
-			endExec.setEvent(endEvent);
-			message.getNearestPackage().getPackagedElements().add(endEvent);
 		}
 
 		// Add and order fragments under the interaction
@@ -796,37 +746,12 @@ public class SequenceServices {
 			execution.setName(operationName.toString());
 			execution.getCovereds().add(target);
 			execution.setBehavior(behavior);
-
-			// Create send event
-			final SendOperationEvent sendEvent = factory.createSendOperationEvent();
-			sendEvent.setName(senderEventName.append(EVENT_MESSAGE_SUFFIX).toString());
-			senderEventMessage.setEvent(sendEvent);
-			sendEvent.setOperation(operation);
-			// Create receive event
-			final ReceiveOperationEvent receiveEvent = factory.createReceiveOperationEvent();
-			receiveEvent.setName(receiverEventName.append(EVENT_MESSAGE_SUFFIX).toString());
-			receiverEventMessage.setEvent(receiveEvent);
-			receiveEvent.setOperation(operation);
-			message.getNearestPackage().getPackagedElements().add(sendEvent);
-			message.getNearestPackage().getPackagedElements().add(receiveEvent);
 		} else {
-			// Create send event
-			final SendSignalEvent sendEvent = factory.createSendSignalEvent();
-			sendEvent.setName(senderEventName.append(EVENT_MESSAGE_SUFFIX).toString());
-			senderEventMessage.setEvent(sendEvent);
-			// Create receive event
-			final ReceiveSignalEvent receiveEvent = factory.createReceiveSignalEvent();
-			receiveEvent.setName(receiverEventName.append(EVENT_MESSAGE_SUFFIX).toString());
-			receiverEventMessage.setEvent(receiveEvent);
 			// Create signal
 			final Signal signal = factory.createSignal();
 			final StringBuffer signalName = new StringBuffer(operationName).append(SIGNAL_SUFFIX);
 			signal.setName(signalName.toString());
-			sendEvent.setSignal(signal);
-			receiveEvent.setSignal(signal);
 			message.getNearestPackage().getPackagedElements().add(signal);
-			message.getNearestPackage().getPackagedElements().add(sendEvent);
-			message.getNearestPackage().getPackagedElements().add(receiveEvent);
 		}
 		if (execution != null)
 			execution.setStart(receiverEventMessage);
@@ -859,34 +784,6 @@ public class SequenceServices {
 		replyMessage.setReceiveEvent(receiverEventReplyMessage);
 		if (execution != null)
 			execution.setFinish(senderEventReplyMessage);
-
-		if (operation != null) {
-			// Create send event
-			final SendOperationEvent sendReplyEvent = factory.createSendOperationEvent();
-			sendReplyEvent.setName(senderEventName.append(EVENT_MESSAGE_SUFFIX).toString());
-			senderEventReplyMessage.setEvent(sendReplyEvent);
-			sendReplyEvent.setOperation(operation);
-			// Create receive event
-			final ReceiveOperationEvent receiveReplyEvent = factory.createReceiveOperationEvent();
-			receiveReplyEvent.setName(receiverEventName.append(EVENT_MESSAGE_SUFFIX).toString());
-			receiverEventReplyMessage.setEvent(receiveReplyEvent);
-			receiveReplyEvent.setOperation(operation);
-			message.getNearestPackage().getPackagedElements().add(sendReplyEvent);
-			message.getNearestPackage().getPackagedElements().add(receiveReplyEvent);
-		} else {
-			// Create send reply event
-			final SendSignalEvent sendReplyEvent = factory.createSendSignalEvent();
-			sendReplyEvent.setName(senderReplyEventName.append(EVENT_MESSAGE_SUFFIX).toString());
-			sendReplyEvent.setSignal(((SendSignalEvent)senderEventMessage.getEvent()).getSignal());
-			senderEventReplyMessage.setEvent(sendReplyEvent);
-			// Create receive reply event
-			final ReceiveSignalEvent receiveReplyEvent = factory.createReceiveSignalEvent();
-			receiveReplyEvent.setName(receiverReplyEventName.append(EVENT_MESSAGE_SUFFIX).toString());
-			receiveReplyEvent.setSignal(((ReceiveSignalEvent)receiverEventMessage.getEvent()).getSignal());
-			receiverEventReplyMessage.setEvent(receiveReplyEvent);
-			message.getNearestPackage().getPackagedElements().add(sendReplyEvent);
-			message.getNearestPackage().getPackagedElements().add(receiveReplyEvent);
-		}
 
 		// Add and order fragments under the interaction
 		// Add message after starting end predecessor
@@ -1021,18 +918,10 @@ public class SequenceServices {
 		final List<InteractionFragment> fragments = interaction.getFragments();
 		final OccurrenceSpecification start = execution.getStart();
 		if (start instanceof ExecutionOccurrenceSpecification) {
-			// Delete event
-			final Event event = start.getEvent();
-			if (event != null)
-				event.destroy();
 			fragments.remove(start);
 		}
 		final OccurrenceSpecification finish = execution.getFinish();
 		if (finish instanceof ExecutionOccurrenceSpecification) {
-			// Delete event
-			final Event event = finish.getEvent();
-			if (event != null)
-				event.destroy();
 			fragments.remove(finish);
 		}
 		// Delete execution
@@ -1069,17 +958,6 @@ public class SequenceServices {
 			if (execution != null) {
 				delete(execution);
 			}
-			final Event receiveEvent = receiveMessage.getEvent();
-			if (receiveEvent instanceof ReceiveSignalEvent) {
-				// Delete signal
-				final Signal signal = ((ReceiveSignalEvent)receiveEvent).getSignal();
-				if (receiveEvent instanceof ReceiveSignalEvent && signal != null) {
-					signal.destroy();
-				}
-				receiveEvent.destroy();
-			} else if (receiveEvent instanceof ReceiveOperationEvent) {
-				receiveEvent.destroy();
-			}
 			fragments.remove(receiveMessage);
 		}
 		final MessageOccurrenceSpecification sendMessage = (MessageOccurrenceSpecification)message
@@ -1088,16 +966,16 @@ public class SequenceServices {
 			final BehaviorExecutionSpecification execution = getExecution(sendMessage);
 			if (execution != null)
 				delete(execution);
-			final Event sendEvent = sendMessage.getEvent();
 			// Delete signal
-			if (sendEvent instanceof SendSignalEvent) {
-				final Signal signal = ((SendSignalEvent)sendEvent).getSignal();
-				if (sendEvent instanceof SendSignalEvent && signal != null) {
-					signal.destroy();
+			List<PackageableElement> packagedElements = new ArrayList<PackageableElement>();
+			packagedElements.addAll(message.getNearestPackage().getPackagedElements());
+			for (PackageableElement packageableElement : packagedElements) {
+				if (packageableElement instanceof Signal) {
+					Signal signal = (Signal)packageableElement;
+					if (signal.getName().startsWith(message.getName())) {
+						signal.destroy();
+					}
 				}
-				sendEvent.destroy();
-			} else if (sendEvent instanceof SendOperationEvent) {
-				sendEvent.destroy();
 			}
 			fragments.remove(message.getSendEvent());
 		}
@@ -1536,8 +1414,6 @@ public class SequenceServices {
 		final EList<InteractionFragment> fragments = message.getInteraction().getFragments();
 		fragments.move(fragments.indexOf(msgReceive), execution);
 
-		// Remove associated event
-		executionStart.getEvent().destroy();
 		// Remove execution start
 		fragments.remove(executionStart);
 		executionStart.destroy();
@@ -1556,8 +1432,6 @@ public class SequenceServices {
 
 			// Set end message as execution finish
 			execution.setFinish(msgReplySend);
-			// Remove associated event
-			executionFinish.getEvent().destroy();
 			// Remove execution finish
 			fragments.remove(executionFinish);
 			executionFinish.destroy();
@@ -1628,8 +1502,8 @@ public class SequenceServices {
 							.get(diagram.getNotationDiagram());
 
 					new RefreshGraphicalOrderingOperation(diagram).execute();
-					new RefreshSemanticOrderingOperation(diagram.getSequenceDDiagram()).execute();
-					new SynchronizeGraphicalOrderingOperation(sdep.getDiagramView(),false).execute();
+					new RefreshSemanticOrderingsOperation(diagram.getSequenceDDiagram()).execute();
+					new SynchronizeGraphicalOrderingOperation(sdep.getDiagramView(), false).execute();
 				}
 			}
 		}
