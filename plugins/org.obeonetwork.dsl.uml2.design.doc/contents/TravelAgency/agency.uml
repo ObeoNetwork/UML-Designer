@@ -27,7 +27,7 @@
     <node xmi:type="uml:InitialNode" xmi:id="_kgct0MTfEeC0wZa75TykZw" name="Initial_1"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Component" xmi:id="_gcBQQMT5EeC7sd1uYTaNyA" name="CRM" clientDependency="_5vzBoMT5EeC7sd1uYTaNyA" useCase="_V8gc0MgMEeClj_cKl6EI8g _X4CVYMgMEeClj_cKl6EI8g">
-    <interfaceRealization xmi:id="_5vzBoMT5EeC7sd1uYTaNyA" supplier="_2r5LwMT5EeC7sd1uYTaNyA _gcBQQMT5EeC7sd1uYTaNyA" client="_gcBQQMT5EeC7sd1uYTaNyA" contract="_2r5LwMT5EeC7sd1uYTaNyA"/>
+    <interfaceRealization xmi:id="_5vzBoMT5EeC7sd1uYTaNyA" supplier="_2r5LwMT5EeC7sd1uYTaNyA" client="_gcBQQMT5EeC7sd1uYTaNyA" contract="_2r5LwMT5EeC7sd1uYTaNyA"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_Hj8iQMTfEeC0wZa75TykZw" name="Customer">
       <ownedAttribute xmi:id="_4pBloMTfEeC0wZa75TykZw" name="name">
         <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -84,7 +84,7 @@
     </packagedElement>
   </packagedElement>
   <packagedElement xmi:type="uml:Component" xmi:id="_99SVwMT5EeC7sd1uYTaNyA" name="Agency  Offers" clientDependency="_RPSO0MgDEeC-rqkzDXqbnw _iGeQkMgSEeCyyts5kz1NCA" useCase="_dF_j4MTeEeC0wZa75TykZw">
-    <interfaceRealization xmi:id="_RPSO0MgDEeC-rqkzDXqbnw" supplier="_N_c1wMgDEeC-rqkzDXqbnw _99SVwMT5EeC7sd1uYTaNyA" client="_99SVwMT5EeC7sd1uYTaNyA" contract="_N_c1wMgDEeC-rqkzDXqbnw"/>
+    <interfaceRealization xmi:id="_RPSO0MgDEeC-rqkzDXqbnw" supplier="_N_c1wMgDEeC-rqkzDXqbnw" client="_99SVwMT5EeC7sd1uYTaNyA" contract="_N_c1wMgDEeC-rqkzDXqbnw"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_HOkvMMTfEeC0wZa75TykZw" name="Catalog"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_2K8ZoMTfEeC0wZa75TykZw" name="Agency">
       <ownedAttribute xmi:id="_28TlIMTfEeC0wZa75TykZw" name="name">
