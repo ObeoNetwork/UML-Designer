@@ -3285,7 +3285,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Types">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a Node" name="Create Node" label="Node" containerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Node']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a Node" name="Create Node" label="Node" precondition="&lt;%self.filter(&quot;Node&quot;) || self.filter(&quot;Package&quot;)%>" containerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Node']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -3303,7 +3303,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a Device Node" name="Create Device" label="Device" containerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Device']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a Device Node" name="Create Device" label="Device" precondition="&lt;%self.filter(&quot;Node&quot;) || self.filter(&quot;Package&quot;)%>" containerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Device']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -3321,7 +3321,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create an Execution Environment Node" name="Create Execution Environment" label="Execution Environment" containerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Execution_Environment']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create an Execution Environment Node" name="Create Execution Environment" label="Execution Environment" precondition="&lt;%self.filter(&quot;Node&quot;) || self.filter(&quot;Package&quot;)%>" containerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Execution_Environment']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -3339,7 +3339,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create an Artifact" name="Create Artifact" label="Artifact" containerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Artifact']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create an Artifact" name="Create Artifact" label="Artifact" precondition="&lt;%self.filter(&quot;Node&quot;) || self.filter(&quot;Package&quot;)%>" containerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_Artifact']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
