@@ -45,7 +45,7 @@
     <packagedElement xmi:type="uml:Class" xmi:id="_HbZDMMTfEeC0wZa75TykZw" name="Partner"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Component" xmi:id="_yS5LMMT5EeC7sd1uYTaNyA" name="Booking System" clientDependency="_MbwOYMgDEeC-rqkzDXqbnw _id8VYMgSEeCyyts5kz1NCA _jsGKkMgSEeCyyts5kz1NCA" useCase="_klkX8MgMEeClj_cKl6EI8g">
-    <interfaceRealization xmi:id="_MbwOYMgDEeC-rqkzDXqbnw" supplier="_yS5LMMT5EeC7sd1uYTaNyA _C1k-UMgDEeC-rqkzDXqbnw" client="_yS5LMMT5EeC7sd1uYTaNyA"/>
+    <interfaceRealization xmi:id="_MbwOYMgDEeC-rqkzDXqbnw" name="" supplier="_C1k-UMgDEeC-rqkzDXqbnw" client="_yS5LMMT5EeC7sd1uYTaNyA" contract="_C1k-UMgDEeC-rqkzDXqbnw"/>
     <packagedElement xmi:type="uml:Class" xmi:id="_HHf20MTfEeC0wZa75TykZw" name="Reservation">
       <ownedAttribute xmi:id="_ErUNYMgCEeC-rqkzDXqbnw" name="issuedOn" type="_zIMjoMf7EeCUSo-uQfq_HA">
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ErcJMMgCEeC-rqkzDXqbnw" value="1"/>
@@ -117,9 +117,9 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Usage" xmi:id="_iGeQkMgSEeCyyts5kz1NCA" supplier="_BwTUYMT6EeC7sd1uYTaNyA" client="_99SVwMT5EeC7sd1uYTaNyA"/>
   </packagedElement>
-  <packagedElement xmi:type="uml:Component" xmi:id="_ApIQ8MT6EeC7sd1uYTaNyA" name="Internal Authentification" clientDependency="_DZOaAMT6EeC7sd1uYTaNyA">
-    <ownedAttribute xmi:type="uml:Port" xmi:id="_vlVcsMgCEeC-rqkzDXqbnw" name="ldap"/>
-    <interfaceRealization xmi:id="_DZOaAMT6EeC7sd1uYTaNyA" supplier="_BwTUYMT6EeC7sd1uYTaNyA _ApIQ8MT6EeC7sd1uYTaNyA" client="_ApIQ8MT6EeC7sd1uYTaNyA" contract="_BwTUYMT6EeC7sd1uYTaNyA"/>
+  <packagedElement xmi:type="uml:Component" xmi:id="_ApIQ8MT6EeC7sd1uYTaNyA" name="Internal Authentification" clientDependency="_8DrkMEUUEeKKrffBqFWY_w">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_vlVcsMgCEeC-rqkzDXqbnw" name="ldap" aggregation="composite"/>
+    <interfaceRealization xmi:id="_8DrkMEUUEeKKrffBqFWY_w" supplier="_BwTUYMT6EeC7sd1uYTaNyA" client="_ApIQ8MT6EeC7sd1uYTaNyA" contract="_BwTUYMT6EeC7sd1uYTaNyA"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Interface" xmi:id="_BwTUYMT6EeC7sd1uYTaNyA" name="auth">
     <ownedOperation xmi:id="_pC14sMgFEeC-rqkzDXqbnw" name="login">
@@ -143,40 +143,79 @@
     <node xmi:type="uml:OpaqueAction" xmi:id="_DohH4MfnEeCl6cTHvttAxQ" name="Print boardingcard" outgoing="_1PEgoMfnEeCl6cTHvttAxQ" incoming="_x6B3cMfnEeCl6cTHvttAxQ" body=""/>
     <node xmi:type="uml:OpaqueAction" xmi:id="_K-IqkMfnEeCl6cTHvttAxQ" name="Schedule Baggage Booking" outgoing="_W04ZoMfoEeCl6cTHvttAxQ" incoming="_zDXeEMfnEeCl6cTHvttAxQ" body=""/>
     <node xmi:type="uml:MergeNode" xmi:id="_PhIUoMfnEeCl6cTHvttAxQ" name="Merge_1" outgoing="_0tbzMMfnEeCl6cTHvttAxQ" incoming="_zqquoMfnEeCl6cTHvttAxQ _W04ZoMfoEeCl6cTHvttAxQ"/>
-    <node xmi:type="uml:JoinNode" xmi:id="_Uw8ocMfnEeCl6cTHvttAxQ" name="Join_1" outgoing="_1qgfcMfnEeCl6cTHvttAxQ" incoming="_0tbzMMfnEeCl6cTHvttAxQ _1PEgoMfnEeCl6cTHvttAxQ"/>
+    <node xmi:type="uml:JoinNode" xmi:id="_Uw8ocMfnEeCl6cTHvttAxQ" name="Join_1" outgoing="_1qgfcMfnEeCl6cTHvttAxQ" incoming="_0tbzMMfnEeCl6cTHvttAxQ _1PEgoMfnEeCl6cTHvttAxQ">
+      <joinSpec xmi:type="uml:Duration" xmi:id="_lKpB0EUSEeKKrffBqFWY_w"/>
+    </node>
     <node xmi:type="uml:OpaqueAction" xmi:id="_ZTV1kMfnEeCl6cTHvttAxQ" name="Send travel details to customer" outgoing="_2CVJkMfnEeCl6cTHvttAxQ" incoming="_1qgfcMfnEeCl6cTHvttAxQ" body=""/>
     <node xmi:type="uml:ActivityFinalNode" xmi:id="_kBvR8MfnEeCl6cTHvttAxQ" name="ActivityFinal_1" incoming="_2CVJkMfnEeCl6cTHvttAxQ _2XaBsMfnEeCl6cTHvttAxQ"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_uM9IwMfnEeCl6cTHvttAxQ" name="Initial_1_To_Verify reservation" source="_kG7JYMfmEeCl6cTHvttAxQ" target="_ktn9AMfmEeCl6cTHvttAxQ"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_u0S1kMfnEeCl6cTHvttAxQ" name="Verify reservation_To_Decision_1" source="_ktn9AMfmEeCl6cTHvttAxQ" target="_p1ICUMfmEeCl6cTHvttAxQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_uM9IwMfnEeCl6cTHvttAxQ" name="Initial_1_To_Verify reservation" source="_kG7JYMfmEeCl6cTHvttAxQ" target="_ktn9AMfmEeCl6cTHvttAxQ">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="__E9OwEUSEeKKrffBqFWY_w" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_ErXdoEUTEeKKrffBqFWY_w"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_u0S1kMfnEeCl6cTHvttAxQ" name="Verify reservation_To_Decision_1" source="_ktn9AMfmEeCl6cTHvttAxQ" target="_p1ICUMfmEeCl6cTHvttAxQ">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_A3s-wEUTEeKKrffBqFWY_w" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_HRgZcEUTEeKKrffBqFWY_w"/>
+    </edge>
     <edge xmi:type="uml:ControlFlow" xmi:id="_vTNmMMfnEeCl6cTHvttAxQ" name="Decision_1_To_Send to airport travel agency" source="_p1ICUMfmEeCl6cTHvttAxQ" target="_rI7MgMfmEeCl6cTHvttAxQ">
       <guard xmi:type="uml:OpaqueExpression" xmi:id="_OlxqMMfoEeCl6cTHvttAxQ" name="Decision_1_To_Send to airport travel agency_guard">
         <body>Incorrect</body>
       </guard>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_IEumIEUTEeKKrffBqFWY_w"/>
     </edge>
     <edge xmi:type="uml:ControlFlow" xmi:id="_wdvfoMfnEeCl6cTHvttAxQ" name="Decision_1_To_Get preferences" source="_p1ICUMfmEeCl6cTHvttAxQ" target="_u9jUsMfmEeCl6cTHvttAxQ">
       <guard xmi:type="uml:OpaqueExpression" xmi:id="_QEUr0MfoEeCl6cTHvttAxQ" name="Decision_1_To_Get preferences_guard">
         <body>Correct</body>
       </guard>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_Jov9oEUTEeKKrffBqFWY_w"/>
     </edge>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_xAFXsMfnEeCl6cTHvttAxQ" name="Get preferences_To_Fork_1" source="_u9jUsMfmEeCl6cTHvttAxQ" target="_0Z_vQMfmEeCl6cTHvttAxQ"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_x6B3cMfnEeCl6cTHvttAxQ" name="Fork_1_To_Print boardingcard" source="_0Z_vQMfmEeCl6cTHvttAxQ" target="_DohH4MfnEeCl6cTHvttAxQ"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_ysnK8MfnEeCl6cTHvttAxQ" name="Fork_1_To_Decision_2" source="_0Z_vQMfmEeCl6cTHvttAxQ" target="_CD56gMfnEeCl6cTHvttAxQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_xAFXsMfnEeCl6cTHvttAxQ" name="Get preferences_To_Fork_1" source="_u9jUsMfmEeCl6cTHvttAxQ" target="_0Z_vQMfmEeCl6cTHvttAxQ">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_BQkxwEUTEeKKrffBqFWY_w" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_KZLVAEUTEeKKrffBqFWY_w"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_x6B3cMfnEeCl6cTHvttAxQ" name="Fork_1_To_Print boardingcard" source="_0Z_vQMfmEeCl6cTHvttAxQ" target="_DohH4MfnEeCl6cTHvttAxQ">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_BY0HwEUTEeKKrffBqFWY_w" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_LgosUEUTEeKKrffBqFWY_w"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_ysnK8MfnEeCl6cTHvttAxQ" name="Fork_1_To_Decision_2" source="_0Z_vQMfmEeCl6cTHvttAxQ" target="_CD56gMfnEeCl6cTHvttAxQ">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_Bkt1wEUTEeKKrffBqFWY_w" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_MYwAEEUTEeKKrffBqFWY_w"/>
+    </edge>
     <edge xmi:type="uml:ControlFlow" xmi:id="_zDXeEMfnEeCl6cTHvttAxQ" name="Decision_2_To_Receive baggage and print receipt" source="_CD56gMfnEeCl6cTHvttAxQ" target="_K-IqkMfnEeCl6cTHvttAxQ">
       <guard xmi:type="uml:OpaqueExpression" xmi:id="_dvrBgMfoEeCl6cTHvttAxQ" name="Decision_2_To_Receive baggage and print receipt_guard">
         <body>Baggage</body>
       </guard>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_NJbPEEUTEeKKrffBqFWY_w"/>
     </edge>
     <edge xmi:type="uml:ControlFlow" xmi:id="_zqquoMfnEeCl6cTHvttAxQ" name="Decision_2_To_Merge_1" source="_CD56gMfnEeCl6cTHvttAxQ" target="_PhIUoMfnEeCl6cTHvttAxQ">
       <guard xmi:type="uml:OpaqueExpression" xmi:id="_cK7RQMfoEeCl6cTHvttAxQ" name="Decision_2_To_Merge_1_guard">
         <body>No baggage</body>
       </guard>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_OPXjcEUTEeKKrffBqFWY_w"/>
     </edge>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_0tbzMMfnEeCl6cTHvttAxQ" name="Merge_1_To_Join_1" source="_PhIUoMfnEeCl6cTHvttAxQ" target="_Uw8ocMfnEeCl6cTHvttAxQ"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_1PEgoMfnEeCl6cTHvttAxQ" name="Print boardingcard_To_Join_1" source="_DohH4MfnEeCl6cTHvttAxQ" target="_Uw8ocMfnEeCl6cTHvttAxQ"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_1qgfcMfnEeCl6cTHvttAxQ" name="Join_1_To_Give travail documentation to passenger" source="_Uw8ocMfnEeCl6cTHvttAxQ" target="_ZTV1kMfnEeCl6cTHvttAxQ"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_2CVJkMfnEeCl6cTHvttAxQ" name="Give travail documentation to passenger_To_ActivityFinal_1" source="_ZTV1kMfnEeCl6cTHvttAxQ" target="_kBvR8MfnEeCl6cTHvttAxQ"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_2XaBsMfnEeCl6cTHvttAxQ" name="Send to airport travel agency_To_ActivityFinal_1" source="_rI7MgMfmEeCl6cTHvttAxQ" target="_kBvR8MfnEeCl6cTHvttAxQ"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_W04ZoMfoEeCl6cTHvttAxQ" name="Receive baggage and print receipt_To_Merge_1" source="_K-IqkMfnEeCl6cTHvttAxQ" target="_PhIUoMfnEeCl6cTHvttAxQ"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_0tbzMMfnEeCl6cTHvttAxQ" name="Merge_1_To_Join_1" source="_PhIUoMfnEeCl6cTHvttAxQ" target="_Uw8ocMfnEeCl6cTHvttAxQ">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_B5ADsEUTEeKKrffBqFWY_w" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_PEa8IEUTEeKKrffBqFWY_w"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_1PEgoMfnEeCl6cTHvttAxQ" name="Print boardingcard_To_Join_1" source="_DohH4MfnEeCl6cTHvttAxQ" target="_Uw8ocMfnEeCl6cTHvttAxQ">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_CCnSsEUTEeKKrffBqFWY_w" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_P3wdkEUTEeKKrffBqFWY_w"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_1qgfcMfnEeCl6cTHvttAxQ" name="Join_1_To_Give travail documentation to passenger" source="_Uw8ocMfnEeCl6cTHvttAxQ" target="_ZTV1kMfnEeCl6cTHvttAxQ">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_CLndsEUTEeKKrffBqFWY_w" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_Qp8vgEUTEeKKrffBqFWY_w"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_2CVJkMfnEeCl6cTHvttAxQ" name="Give travail documentation to passenger_To_ActivityFinal_1" source="_ZTV1kMfnEeCl6cTHvttAxQ" target="_kBvR8MfnEeCl6cTHvttAxQ">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_CZ9bsEUTEeKKrffBqFWY_w" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_RhgCkEUTEeKKrffBqFWY_w"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_2XaBsMfnEeCl6cTHvttAxQ" name="Send to airport travel agency_To_ActivityFinal_1" source="_rI7MgMfmEeCl6cTHvttAxQ" target="_kBvR8MfnEeCl6cTHvttAxQ">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_Ci0cwEUTEeKKrffBqFWY_w" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_SHkkEEUTEeKKrffBqFWY_w"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_W04ZoMfoEeCl6cTHvttAxQ" name="Receive baggage and print receipt_To_Merge_1" source="_K-IqkMfnEeCl6cTHvttAxQ" target="_PhIUoMfnEeCl6cTHvttAxQ">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_CsvNwEUTEeKKrffBqFWY_w" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_S5JyAEUTEeKKrffBqFWY_w"/>
+    </edge>
   </packagedElement>
   <packagedElement xmi:type="uml:Activity" xmi:id="_guftoMfpEeC6tb4Y3loyNQ" name="Sales" partition="_kUpU8MfpEeC6tb4Y3loyNQ _9Zy0cMfpEeCBqqqHPaJgog __XvH0MfpEeCBqqqHPaJgog">
     <node xmi:type="uml:InitialNode" xmi:id="_LD83UMfqEeCBqqqHPaJgog" name="Initial_0" outgoing="_c59aIMfrEeCBha8FS92Ybw" inPartition="_kUpU8MfpEeC6tb4Y3loyNQ"/>
@@ -187,7 +226,9 @@
     <node xmi:type="uml:OpaqueAction" xmi:id="_0d-6kMfqEeCBha8FS92Ybw" name="Analyse and finalize proposal" outgoing="_jbktAMfrEeCBha8FS92Ybw" incoming="_ha2ycMfrEeCBha8FS92Ybw" inPartition="_9Zy0cMfpEeCBqqqHPaJgog"/>
     <node xmi:type="uml:OpaqueAction" xmi:id="_2G-RoMfqEeCBha8FS92Ybw" name="Create delivery project plan" outgoing="_j3YfQMfrEeCBha8FS92Ybw" incoming="_h4qIwMfrEeCBha8FS92Ybw" inPartition="_9Zy0cMfpEeCBqqqHPaJgog"/>
     <node xmi:type="uml:OpaqueAction" xmi:id="_4IEmsMfqEeCBha8FS92Ybw" name="Prepare a quote" outgoing="_keC2oMfrEeCBha8FS92Ybw" incoming="_iTcnUMfrEeCBha8FS92Ybw" inPartition="__XvH0MfpEeCBqqqHPaJgog"/>
-    <node xmi:type="uml:JoinNode" xmi:id="_6qoqEMfqEeCBha8FS92Ybw" name="Join_0" outgoing="_lIStgMfrEeCBha8FS92Ybw" incoming="_jbktAMfrEeCBha8FS92Ybw _j3YfQMfrEeCBha8FS92Ybw _keC2oMfrEeCBha8FS92Ybw" inPartition="_9Zy0cMfpEeCBqqqHPaJgog"/>
+    <node xmi:type="uml:JoinNode" xmi:id="_6qoqEMfqEeCBha8FS92Ybw" name="Join_0" outgoing="_lIStgMfrEeCBha8FS92Ybw" incoming="_jbktAMfrEeCBha8FS92Ybw _j3YfQMfrEeCBha8FS92Ybw _keC2oMfrEeCBha8FS92Ybw" inPartition="_9Zy0cMfpEeCBqqqHPaJgog">
+      <joinSpec xmi:type="uml:Duration" xmi:id="_PGutcEUMEeKAa6okHQDBsw"/>
+    </node>
     <node xmi:type="uml:OpaqueAction" xmi:id="_DdtpQMfrEeCBha8FS92Ybw" name="Compile additional information" outgoing="_lfBygMfrEeCBha8FS92Ybw" incoming="_lIStgMfrEeCBha8FS92Ybw" inPartition="_9Zy0cMfpEeCBqqqHPaJgog"/>
     <node xmi:type="uml:OpaqueAction" xmi:id="_KJMCwMfrEeCBha8FS92Ybw" name="Present the proposal" outgoing="_mE8jAMfrEeCBha8FS92Ybw" incoming="_lfBygMfrEeCBha8FS92Ybw" inPartition="_kUpU8MfpEeC6tb4Y3loyNQ"/>
     <node xmi:type="uml:OpaqueAction" xmi:id="_LTRQQMfrEeCBha8FS92Ybw" name="Obtain customer decision" outgoing="_HfEwcMfsEeCBha8FS92Ybw" incoming="_f0wXUMfrEeCBha8FS92Ybw _mE8jAMfrEeCBha8FS92Ybw" inPartition="_kUpU8MfpEeC6tb4Y3loyNQ"/>
@@ -195,32 +236,89 @@
     <node xmi:type="uml:OpaqueAction" xmi:id="_UwXc0MfrEeCBha8FS92Ybw" name="Search alternatives" outgoing="_ebh6kMfrEeCBha8FS92Ybw" incoming="_eAwqIMfrEeCBha8FS92Ybw" inPartition="_kUpU8MfpEeC6tb4Y3loyNQ"/>
     <node xmi:type="uml:DecisionNode" xmi:id="_XmZ10MfrEeCBha8FS92Ybw" name="Decision_0" outgoing="_eAwqIMfrEeCBha8FS92Ybw _gdUMIMfrEeCBha8FS92Ybw" incoming="_drSwcMfrEeCBha8FS92Ybw" inPartition="_kUpU8MfpEeC6tb4Y3loyNQ"/>
     <node xmi:type="uml:DecisionNode" xmi:id="_ZErxsMfrEeCBha8FS92Ybw" name="Decision_1" outgoing="_e1ZzIMfrEeCBha8FS92Ybw _f0wXUMfrEeCBha8FS92Ybw" incoming="_ebh6kMfrEeCBha8FS92Ybw" inPartition="_kUpU8MfpEeC6tb4Y3loyNQ"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_c59aIMfrEeCBha8FS92Ybw" name="Initial_0_To_Initialize contact" source="_LD83UMfqEeCBqqqHPaJgog" target="_Lz8J0MfqEeCBqqqHPaJgog"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_dSXTEMfrEeCBha8FS92Ybw" name="Initialize contact_To_Initial opportunity work" source="_Lz8J0MfqEeCBqqqHPaJgog" target="_QKLxUMfqEeCBqqqHPaJgog"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_drSwcMfrEeCBha8FS92Ybw" name="Initial opportunity work_To_Decision_0" source="_QKLxUMfqEeCBqqqHPaJgog" target="_XmZ10MfrEeCBha8FS92Ybw"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_eAwqIMfrEeCBha8FS92Ybw" name="Decision_0_To_Search alternatives" source="_XmZ10MfrEeCBha8FS92Ybw" target="_UwXc0MfrEeCBha8FS92Ybw"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_ebh6kMfrEeCBha8FS92Ybw" name="Search alternatives_To_Decision_1" source="_UwXc0MfrEeCBha8FS92Ybw" target="_ZErxsMfrEeCBha8FS92Ybw"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_e1ZzIMfrEeCBha8FS92Ybw" name="Decision_1_To_Initialize contact" source="_ZErxsMfrEeCBha8FS92Ybw" target="_Lz8J0MfqEeCBqqqHPaJgog"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_f0wXUMfrEeCBha8FS92Ybw" name="Decision_1_To_Obtain customer decision" source="_ZErxsMfrEeCBha8FS92Ybw" target="_LTRQQMfrEeCBha8FS92Ybw"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_gdUMIMfrEeCBha8FS92Ybw" name="Decision_0_To_Create proposal project plan" source="_XmZ10MfrEeCBha8FS92Ybw" target="_Uzb0YMfqEeCBqqqHPaJgog"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_g95JoMfrEeCBha8FS92Ybw" name="Create proposal project plan_To_Fork_0" source="_Uzb0YMfqEeCBqqqHPaJgog" target="_dgGCgMfqEeCBqqqHPaJgog"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_ha2ycMfrEeCBha8FS92Ybw" name="Fork_0_To_Analyse and finalize proposal" source="_dgGCgMfqEeCBqqqHPaJgog" target="_0d-6kMfqEeCBha8FS92Ybw"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_h4qIwMfrEeCBha8FS92Ybw" name="Fork_0_To_Create delivery project plan" source="_dgGCgMfqEeCBqqqHPaJgog" target="_2G-RoMfqEeCBha8FS92Ybw"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_iTcnUMfrEeCBha8FS92Ybw" name="Fork_0_To_Prepare a quote" source="_dgGCgMfqEeCBqqqHPaJgog" target="_4IEmsMfqEeCBha8FS92Ybw"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_jbktAMfrEeCBha8FS92Ybw" name="Analyse and finalize proposal_To_Join_0" source="_0d-6kMfqEeCBha8FS92Ybw" target="_6qoqEMfqEeCBha8FS92Ybw"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_j3YfQMfrEeCBha8FS92Ybw" name="Create delivery project plan_To_Join_0" source="_2G-RoMfqEeCBha8FS92Ybw" target="_6qoqEMfqEeCBha8FS92Ybw"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_keC2oMfrEeCBha8FS92Ybw" name="Prepare a quote_To_Join_0" source="_4IEmsMfqEeCBha8FS92Ybw" target="_6qoqEMfqEeCBha8FS92Ybw"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_lIStgMfrEeCBha8FS92Ybw" name="Join_0_To_Compile additional information" source="_6qoqEMfqEeCBha8FS92Ybw" target="_DdtpQMfrEeCBha8FS92Ybw"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_lfBygMfrEeCBha8FS92Ybw" name="Compile additional information_To_Present the proposal" source="_DdtpQMfrEeCBha8FS92Ybw" target="_KJMCwMfrEeCBha8FS92Ybw"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_mE8jAMfrEeCBha8FS92Ybw" name="Present the proposal_To_Obtain customer decision" source="_KJMCwMfrEeCBha8FS92Ybw" target="_LTRQQMfrEeCBha8FS92Ybw"/>
-    <edge xmi:type="uml:ControlFlow" xmi:id="_HfEwcMfsEeCBha8FS92Ybw" name="Obtain customer decision_To_ActivityFinal_0" source="_LTRQQMfrEeCBha8FS92Ybw" target="_PV-3wMfrEeCBha8FS92Ybw"/>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_c59aIMfrEeCBha8FS92Ybw" name="Initial_0_To_Initialize contact" source="_LD83UMfqEeCBqqqHPaJgog" target="_Lz8J0MfqEeCBqqqHPaJgog">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_qPRj4EUTEeKKrffBqFWY_w" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_3qM38EUTEeKKrffBqFWY_w"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_dSXTEMfrEeCBha8FS92Ybw" name="Initialize contact_To_Initial opportunity work" source="_Lz8J0MfqEeCBqqqHPaJgog" target="_QKLxUMfqEeCBqqqHPaJgog">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_xtmWoEUTEeKKrffBqFWY_w" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_6PSD0EUTEeKKrffBqFWY_w"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_drSwcMfrEeCBha8FS92Ybw" name="Initial opportunity work_To_Decision_0" source="_QKLxUMfqEeCBqqqHPaJgog" target="_XmZ10MfrEeCBha8FS92Ybw">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_x26DoEUTEeKKrffBqFWY_w" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_64Md8EUTEeKKrffBqFWY_w"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_eAwqIMfrEeCBha8FS92Ybw" name="Decision_0_To_Search alternatives" source="_XmZ10MfrEeCBha8FS92Ybw" target="_UwXc0MfrEeCBha8FS92Ybw">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_x_msoEUTEeKKrffBqFWY_w" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_7ssdAEUTEeKKrffBqFWY_w"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_ebh6kMfrEeCBha8FS92Ybw" name="Search alternatives_To_Decision_1" source="_UwXc0MfrEeCBha8FS92Ybw" target="_ZErxsMfrEeCBha8FS92Ybw">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_yJNUkEUTEeKKrffBqFWY_w" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_8oD5EEUTEeKKrffBqFWY_w"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_e1ZzIMfrEeCBha8FS92Ybw" name="Decision_1_To_Initialize contact" source="_ZErxsMfrEeCBha8FS92Ybw" target="_Lz8J0MfqEeCBqqqHPaJgog">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_ySX3oEUTEeKKrffBqFWY_w" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_9vJc8EUTEeKKrffBqFWY_w"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_f0wXUMfrEeCBha8FS92Ybw" name="Decision_1_To_Obtain customer decision" source="_ZErxsMfrEeCBha8FS92Ybw" target="_LTRQQMfrEeCBha8FS92Ybw">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_yb-fkEUTEeKKrffBqFWY_w" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_-aijUEUTEeKKrffBqFWY_w"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_gdUMIMfrEeCBha8FS92Ybw" name="Decision_0_To_Create proposal project plan" source="_XmZ10MfrEeCBha8FS92Ybw" target="_Uzb0YMfqEeCBqqqHPaJgog">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_ylSzoEUTEeKKrffBqFWY_w" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="__J3HcEUTEeKKrffBqFWY_w"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_g95JoMfrEeCBha8FS92Ybw" name="Create proposal project plan_To_Fork_0" source="_Uzb0YMfqEeCBqqqHPaJgog" target="_dgGCgMfqEeCBqqqHPaJgog">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_yucvoEUTEeKKrffBqFWY_w" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_BPTxAEUUEeKKrffBqFWY_w"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_ha2ycMfrEeCBha8FS92Ybw" name="Fork_0_To_Analyse and finalize proposal" source="_dgGCgMfqEeCBqqqHPaJgog" target="_0d-6kMfqEeCBha8FS92Ybw">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_y_YHkEUTEeKKrffBqFWY_w" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_CKSykEUUEeKKrffBqFWY_w"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_h4qIwMfrEeCBha8FS92Ybw" name="Fork_0_To_Create delivery project plan" source="_dgGCgMfqEeCBqqqHPaJgog" target="_2G-RoMfqEeCBha8FS92Ybw">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_zI1lkEUTEeKKrffBqFWY_w" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_DIcc4EUUEeKKrffBqFWY_w"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_iTcnUMfrEeCBha8FS92Ybw" name="Fork_0_To_Prepare a quote" source="_dgGCgMfqEeCBqqqHPaJgog" target="_4IEmsMfqEeCBha8FS92Ybw">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_zROskEUTEeKKrffBqFWY_w" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_EkAb8EUUEeKKrffBqFWY_w"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_jbktAMfrEeCBha8FS92Ybw" name="Analyse and finalize proposal_To_Join_0" source="_0d-6kMfqEeCBha8FS92Ybw" target="_6qoqEMfqEeCBha8FS92Ybw">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_zbJdkEUTEeKKrffBqFWY_w" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_GSYpUEUUEeKKrffBqFWY_w"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_j3YfQMfrEeCBha8FS92Ybw" name="Create delivery project plan_To_Join_0" source="_2G-RoMfqEeCBha8FS92Ybw" target="_6qoqEMfqEeCBha8FS92Ybw">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_zj_3kEUTEeKKrffBqFWY_w" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_HfbrQEUUEeKKrffBqFWY_w"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_keC2oMfrEeCBha8FS92Ybw" name="Prepare a quote_To_Join_0" source="_4IEmsMfqEeCBha8FS92Ybw" target="_6qoqEMfqEeCBha8FS92Ybw">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_zxRekEUTEeKKrffBqFWY_w" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_IT8RYEUUEeKKrffBqFWY_w"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_lIStgMfrEeCBha8FS92Ybw" name="Join_0_To_Compile additional information" source="_6qoqEMfqEeCBha8FS92Ybw" target="_DdtpQMfrEeCBha8FS92Ybw">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_z5-HkEUTEeKKrffBqFWY_w" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_JJLQQEUUEeKKrffBqFWY_w"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_lfBygMfrEeCBha8FS92Ybw" name="Compile additional information_To_Present the proposal" source="_DdtpQMfrEeCBha8FS92Ybw" target="_KJMCwMfrEeCBha8FS92Ybw">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_0BdPoEUTEeKKrffBqFWY_w" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_Jus_MEUUEeKKrffBqFWY_w"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_mE8jAMfrEeCBha8FS92Ybw" name="Present the proposal_To_Obtain customer decision" source="_KJMCwMfrEeCBha8FS92Ybw" target="_LTRQQMfrEeCBha8FS92Ybw">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_0W-MoEUTEeKKrffBqFWY_w" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_KbMRwEUUEeKKrffBqFWY_w"/>
+    </edge>
+    <edge xmi:type="uml:ControlFlow" xmi:id="_HfEwcMfsEeCBha8FS92Ybw" name="Obtain customer decision_To_ActivityFinal_0" source="_LTRQQMfrEeCBha8FS92Ybw" target="_PV-3wMfrEeCBha8FS92Ybw">
+      <guard xmi:type="uml:LiteralBoolean" xmi:id="_0gulkEUTEeKKrffBqFWY_w" value="true"/>
+      <weight xmi:type="uml:LiteralInteger" xmi:id="_LdmxAEUUEeKKrffBqFWY_w"/>
+    </edge>
     <group xmi:type="uml:ActivityPartition" xmi:id="_kUpU8MfpEeC6tb4Y3loyNQ" name="Customers Sales Interface" node="_LD83UMfqEeCBqqqHPaJgog _Lz8J0MfqEeCBqqqHPaJgog _QKLxUMfqEeCBqqqHPaJgog _KJMCwMfrEeCBha8FS92Ybw _LTRQQMfrEeCBha8FS92Ybw _PV-3wMfrEeCBha8FS92Ybw _UwXc0MfrEeCBha8FS92Ybw _XmZ10MfrEeCBha8FS92Ybw _ZErxsMfrEeCBha8FS92Ybw"/>
     <group xmi:type="uml:ActivityPartition" xmi:id="_9Zy0cMfpEeCBqqqHPaJgog" name="Proposal Owner" node="_Uzb0YMfqEeCBqqqHPaJgog _dgGCgMfqEeCBqqqHPaJgog _0d-6kMfqEeCBha8FS92Ybw _2G-RoMfqEeCBha8FS92Ybw _6qoqEMfqEeCBha8FS92Ybw _DdtpQMfrEeCBha8FS92Ybw"/>
     <group xmi:type="uml:ActivityPartition" xmi:id="__XvH0MfpEeCBqqqHPaJgog" name="Quote Owner" node="_4IEmsMfqEeCBha8FS92Ybw"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Association" xmi:id="_4VAkkMfsEeCBha8FS92Ybw" name="catalogsToTravels" memberEnd="_4VBLoMfsEeCBha8FS92Ybw _4VEO8MfsEeCBha8FS92Ybw" navigableOwnedEnd="_4VBLoMfsEeCBha8FS92Ybw _4VEO8MfsEeCBha8FS92Ybw">
     <ownedEnd xmi:id="_4VBLoMfsEeCBha8FS92Ybw" name="catalogs" type="_HOkvMMTfEeC0wZa75TykZw" association="_4VAkkMfsEeCBha8FS92Ybw">
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4VDn4MfsEeCBha8FS92Ybw" value="*"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4VDn4MfsEeCBha8FS92Ybw" value="1"/>
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4VDA0MfsEeCBha8FS92Ybw"/>
     </ownedEnd>
     <ownedEnd xmi:id="_4VEO8MfsEeCBha8FS92Ybw" name="travels" type="_F8k70MTfEeC0wZa75TykZw" aggregation="composite" association="_4VAkkMfsEeCBha8FS92Ybw">
