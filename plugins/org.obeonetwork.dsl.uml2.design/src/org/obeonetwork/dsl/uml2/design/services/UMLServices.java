@@ -19,6 +19,7 @@ import java.util.Set;
 
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -33,11 +34,14 @@ import org.eclipse.uml2.uml.AssociationClass;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Component;
+import org.eclipse.uml2.uml.Connector;
+import org.eclipse.uml2.uml.ConnectorEnd;
 import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Deployment;
 import org.eclipse.uml2.uml.Device;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.EncapsulatedClassifier;
 import org.eclipse.uml2.uml.ExecutionEnvironment;
 import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.Generalization;
@@ -52,9 +56,11 @@ import org.eclipse.uml2.uml.Node;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.PackageableElement;
+import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
+import org.eclipse.uml2.uml.StructuredClassifier;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -370,8 +376,10 @@ public class UMLServices {
 		Predicate<EObject> validForCompositeDiagram = new Predicate<EObject>() {
 
 			public boolean apply(EObject input) {
-				return input instanceof Package || "Class".equals(input.eClass().getName())
-						|| "Component".equals(input.eClass().getName())
+				return input instanceof StructuredClassifier 
+						|| input instanceof Package
+						|| input instanceof Interface
+						|| "Port".equals(input.eClass().getName())
 						|| "Property".equals(input.eClass().getName());
 			}
 		};
@@ -545,6 +553,30 @@ public class UMLServices {
 				if (context == toFilter)
 					return false;
 				res = context == toFilter;
+				
+				if (context instanceof EncapsulatedClassifier && toFilter instanceof EncapsulatedClassifier) {
+					if (!res) {
+						if (((EncapsulatedClassifier)context).getOwnedElements().contains(toFilter)){
+							res = true;
+						} else {
+							for (Port portContext : ((EncapsulatedClassifier)context).getOwnedPorts()) {
+								if (portIsRelated(toFilter, portContext)) {
+									res = true;
+									break;
+								}
+							}
+						}
+					}
+				}
+				
+				if (context instanceof EncapsulatedClassifier && toFilter instanceof Property) {
+					if (!res) {
+						if (((EncapsulatedClassifier)context).getOwnedAttributes().contains(toFilter)){
+							res = true;
+						}
+					}
+				}
+				
 				// is it a generalization end
 				if (!res) {
 					for (Generalization generalization : ((Classifier)context).getGeneralizations()) {
@@ -609,6 +641,7 @@ public class UMLServices {
 						}
 					}
 				}
+				
 				// is it an association end
 				if (!res) {
 					final List<Association> toFilterAsso = ((Classifier)toFilter).getAssociations();
@@ -639,9 +672,42 @@ public class UMLServices {
 			} else {
 				res = ((Package)context).getOwnedElements().contains(toFilter);
 			}
+		} else if (context instanceof Port) {
+			res = portIsRelated(toFilter, (Port)context);
 		}
 
 		return res;
+	}
+	
+	private boolean portIsRelated(EObject toFilter, Port portContext) {
+		
+		if (portContext == toFilter)
+			return false;
+		
+		if (toFilter instanceof Port) {
+			List<ConnectorEnd> ends = ((Port)portContext).getEnds();
+			for (ConnectorEnd portEnd : ends) {
+				EObject eContainer = portEnd.eContainer();
+				if (eContainer instanceof Connector) {
+					Connector connector = (Connector)eContainer;
+					EList<ConnectorEnd> connectorEnds = connector.getEnds();
+					for (ConnectorEnd connectorEnd : connectorEnds) {
+						if (connectorEnd.getRole()!=null && connectorEnd.getRole().equals(toFilter)) {
+							return true;
+						}
+					}
+				}
+			}
+		} else if (toFilter instanceof EncapsulatedClassifier) {
+			List<Port> ownedPortsToFilter = ((EncapsulatedClassifier)toFilter).getOwnedPorts();
+			for (Port portToFilter : ownedPortsToFilter) {
+				if(portIsRelated(portToFilter, portContext)) {
+					return true;
+				}
+			}
+		}
+		
+		return false;
 	}
 
 	private Predicate<EObject> classifierLike = new Predicate<EObject>() {

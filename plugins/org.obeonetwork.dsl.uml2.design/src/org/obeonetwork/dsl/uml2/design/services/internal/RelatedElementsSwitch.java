@@ -11,9 +11,11 @@
 package org.obeonetwork.dsl.uml2.design.services.internal;
 
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
@@ -21,7 +23,11 @@ import org.eclipse.uml2.uml.Actor;
 import org.eclipse.uml2.uml.Artifact;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.ConnectableElement;
+import org.eclipse.uml2.uml.Connector;
+import org.eclipse.uml2.uml.ConnectorEnd;
 import org.eclipse.uml2.uml.Deployment;
+import org.eclipse.uml2.uml.EncapsulatedClassifier;
 import org.eclipse.uml2.uml.ExecutionEnvironment;
 import org.eclipse.uml2.uml.Extend;
 import org.eclipse.uml2.uml.Feature;
@@ -35,6 +41,7 @@ import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.Parameter;
+import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Relationship;
 import org.eclipse.uml2.uml.Type;
@@ -54,6 +61,7 @@ import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
  * A switch implementation retrieving all the elements which might be related to a single one.
  * 
  * @author Cedric Brun <a href="mailto:cedric.brun@obeo.fr">cedric.brun@obeo.fr</a>
+ * @author Cedric Brun <a href="mailto:hugo.marchadour@obeo.fr">hugo.marchadour@obeo.fr</a>
  */
 public class RelatedElementsSwitch extends UMLSwitch<List<EObject>> {
 
@@ -82,6 +90,9 @@ public class RelatedElementsSwitch extends UMLSwitch<List<EObject>> {
 		}
 		doSwitch(ctx);
 		relateds.remove(ctx);
+		// hack to prevent some null element in relateds for a unknown reason.
+		relateds.remove(null);
+		
 		if (ctx instanceof Actor || ctx instanceof UseCase) {
 			clearAssociationsFromResult();
 		}
@@ -231,4 +242,45 @@ public class RelatedElementsSwitch extends UMLSwitch<List<EObject>> {
 		return super.caseInterface(object);
 	}
 
+	@Override
+	public List<EObject> caseEncapsulatedClassifier(EncapsulatedClassifier object) {
+		for (Port port : object.getOwnedPorts()) {
+			if(!relateds.contains(port)) {
+				relateds.add(port);
+				casePort(port);
+			}
+		}
+		return super.caseEncapsulatedClassifier(object);
+	}
+	
+	@Override
+	public List<EObject> casePort(Port object) {
+		relateds.addAll(object.getRedefinedPorts());
+		for (ConnectorEnd end : object.getEnds()) {
+			EObject eContainer = end.eContainer();
+			if (eContainer!=null && eContainer instanceof Connector && !relateds.contains(eContainer)) {
+				relateds.add(eContainer);
+				caseConnector((Connector)eContainer);
+			}
+		}
+		return super.casePort(object);
+	}
+	
+	@Override
+	public List<EObject> caseConnector(Connector object) {
+		List<ConnectorEnd> ends = object.getEnds();
+		for (ConnectorEnd end : ends) {
+			ConnectableElement role = end.getRole();
+			if(role!=null && role instanceof Port && !relateds.contains(role)) {
+				relateds.add(role);
+				casePort((Port)role);
+				EObject eContainer = role.eContainer();
+				if(eContainer!=null && eContainer instanceof EncapsulatedClassifier && !relateds.contains(eContainer)) {
+					relateds.add(eContainer);
+					caseEncapsulatedClassifier((EncapsulatedClassifier)eContainer);
+				}
+			}
+		}
+		return super.caseConnector(object);
+	}
 }
