@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,56 +10,56 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts;
 
-// Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.ecore.EEnum;
+
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
-
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public interface ReceptionPropertiesEditionPart {
 
 	/**
 	 * @return the name
-	 * 
+	 * @generated
 	 */
 	public String getName();
 
 	/**
 	 * Defines a new name
 	 * @param newValue the new name to set
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue);
 
 
 	/**
 	 * @return the visibility
-	 * 
+	 * @generated
 	 */
 	public Enumerator getVisibility();
 
 	/**
 	 * Init the visibility
-	 * @param eenum the enum to manage
+	 * @param input the viewer input
 	 * @param current the current value
 	 */
-	public void initVisibility(EEnum eenum, Enumerator current);
+	public void initVisibility(Object input, Enumerator current);
 
 	/**
 	 * Defines a new visibility
 	 * @param newValue the new visibility to set
-	 * 
+	 * @generated
 	 */
 	public void setVisibility(Enumerator newValue);
 
@@ -75,7 +75,7 @@ public interface ReceptionPropertiesEditionPart {
 	/**
 	 * Update the clientDependency
 	 * @param newValue the clientDependency to update
-	 * 
+	 * @generated
 	 */
 	public void updateClientDependency();
 
@@ -85,7 +85,7 @@ public interface ReceptionPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToClientDependency(ViewerFilter filter);
 
@@ -95,55 +95,55 @@ public interface ReceptionPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToClientDependency(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the clientDependency table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInClientDependencyTable(EObject element);
 
 
 	/**
 	 * @return the isLeaf
-	 * 
+	 * @generated
 	 */
 	public Boolean getIsLeaf();
 
 	/**
 	 * Defines a new isLeaf
 	 * @param newValue the new isLeaf to set
-	 * 
+	 * @generated
 	 */
 	public void setIsLeaf(Boolean newValue);
 
 
 	/**
 	 * @return the isStatic
-	 * 
+	 * @generated
 	 */
 	public Boolean getIsStatic();
 
 	/**
 	 * Defines a new isStatic
 	 * @param newValue the new isStatic to set
-	 * 
+	 * @generated
 	 */
 	public void setIsStatic(Boolean newValue);
 
 
 	/**
 	 * @return the isAbstract
-	 * 
+	 * @generated
 	 */
 	public Boolean getIsAbstract();
 
 	/**
 	 * Defines a new isAbstract
 	 * @param newValue the new isAbstract to set
-	 * 
+	 * @generated
 	 */
 	public void setIsAbstract(Boolean newValue);
 
@@ -159,7 +159,7 @@ public interface ReceptionPropertiesEditionPart {
 	/**
 	 * Update the method
 	 * @param newValue the method to update
-	 * 
+	 * @generated
 	 */
 	public void updateMethod();
 
@@ -169,7 +169,7 @@ public interface ReceptionPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToMethod(ViewerFilter filter);
 
@@ -179,34 +179,34 @@ public interface ReceptionPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToMethod(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the method table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInMethodTable(EObject element);
 
 
 	/**
 	 * @return the concurrency
-	 * 
+	 * @generated
 	 */
 	public Enumerator getConcurrency();
 
 	/**
 	 * Init the concurrency
-	 * @param eenum the enum to manage
+	 * @param input the viewer input
 	 * @param current the current value
 	 */
-	public void initConcurrency(EEnum eenum, Enumerator current);
+	public void initConcurrency(Object input, Enumerator current);
 
 	/**
 	 * Defines a new concurrency
 	 * @param newValue the new concurrency to set
-	 * 
+	 * @generated
 	 */
 	public void setConcurrency(Enumerator newValue);
 
@@ -222,7 +222,7 @@ public interface ReceptionPropertiesEditionPart {
 	/**
 	 * Update the raisedException
 	 * @param newValue the raisedException to update
-	 * 
+	 * @generated
 	 */
 	public void updateRaisedException();
 
@@ -232,7 +232,7 @@ public interface ReceptionPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToRaisedException(ViewerFilter filter);
 
@@ -242,20 +242,20 @@ public interface ReceptionPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToRaisedException(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the raisedException table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInRaisedExceptionTable(EObject element);
 
 
 	/**
 	 * @return the signal
-	 * 
+	 * @generated
 	 */
 	public EObject getSignal();
 
@@ -268,14 +268,14 @@ public interface ReceptionPropertiesEditionPart {
 	/**
 	 * Defines a new signal
 	 * @param newValue the new signal to set
-	 * 
+	 * @generated
 	 */
 	public void setSignal(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setSignalButtonMode(ButtonsModeEnum newValue);
 
@@ -285,7 +285,7 @@ public interface ReceptionPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToSignal(ViewerFilter filter);
 
@@ -295,7 +295,7 @@ public interface ReceptionPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToSignal(ViewerFilter filter);
 
@@ -307,12 +307,9 @@ public interface ReceptionPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
-	 * 
+	 * @generated
 	 */
 	public String getTitle();
 
-	// Start of user code for additional methods
-
-// End of user code
 
 }

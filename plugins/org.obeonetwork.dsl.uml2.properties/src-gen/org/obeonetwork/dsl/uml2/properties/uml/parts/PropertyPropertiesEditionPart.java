@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,56 +10,56 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts;
 
-// Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.ecore.EEnum;
+
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
-
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public interface PropertyPropertiesEditionPart {
 
 	/**
 	 * @return the name
-	 * 
+	 * @generated
 	 */
 	public String getName();
 
 	/**
 	 * Defines a new name
 	 * @param newValue the new name to set
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue);
 
 
 	/**
 	 * @return the visibility
-	 * 
+	 * @generated
 	 */
 	public Enumerator getVisibility();
 
 	/**
 	 * Init the visibility
-	 * @param eenum the enum to manage
+	 * @param input the viewer input
 	 * @param current the current value
 	 */
-	public void initVisibility(EEnum eenum, Enumerator current);
+	public void initVisibility(Object input, Enumerator current);
 
 	/**
 	 * Defines a new visibility
 	 * @param newValue the new visibility to set
-	 * 
+	 * @generated
 	 */
 	public void setVisibility(Enumerator newValue);
 
@@ -75,7 +75,7 @@ public interface PropertyPropertiesEditionPart {
 	/**
 	 * Update the clientDependency
 	 * @param newValue the clientDependency to update
-	 * 
+	 * @generated
 	 */
 	public void updateClientDependency();
 
@@ -85,7 +85,7 @@ public interface PropertyPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToClientDependency(ViewerFilter filter);
 
@@ -95,48 +95,48 @@ public interface PropertyPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToClientDependency(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the clientDependency table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInClientDependencyTable(EObject element);
 
 
 	/**
 	 * @return the isLeaf
-	 * 
+	 * @generated
 	 */
 	public Boolean getIsLeaf();
 
 	/**
 	 * Defines a new isLeaf
 	 * @param newValue the new isLeaf to set
-	 * 
+	 * @generated
 	 */
 	public void setIsLeaf(Boolean newValue);
 
 
 	/**
 	 * @return the isStatic
-	 * 
+	 * @generated
 	 */
 	public Boolean getIsStatic();
 
 	/**
 	 * Defines a new isStatic
 	 * @param newValue the new isStatic to set
-	 * 
+	 * @generated
 	 */
 	public void setIsStatic(Boolean newValue);
 
 
 	/**
 	 * @return the type
-	 * 
+	 * @generated
 	 */
 	public EObject getType();
 
@@ -149,14 +149,14 @@ public interface PropertyPropertiesEditionPart {
 	/**
 	 * Defines a new type
 	 * @param newValue the new type to set
-	 * 
+	 * @generated
 	 */
 	public void setType(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setTypeButtonMode(ButtonsModeEnum newValue);
 
@@ -166,7 +166,7 @@ public interface PropertyPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToType(ViewerFilter filter);
 
@@ -176,56 +176,56 @@ public interface PropertyPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToType(ViewerFilter filter);
 
 
 	/**
 	 * @return the isOrdered
-	 * 
+	 * @generated
 	 */
 	public Boolean getIsOrdered();
 
 	/**
 	 * Defines a new isOrdered
 	 * @param newValue the new isOrdered to set
-	 * 
+	 * @generated
 	 */
 	public void setIsOrdered(Boolean newValue);
 
 
 	/**
 	 * @return the isUnique
-	 * 
+	 * @generated
 	 */
 	public Boolean getIsUnique();
 
 	/**
 	 * Defines a new isUnique
 	 * @param newValue the new isUnique to set
-	 * 
+	 * @generated
 	 */
 	public void setIsUnique(Boolean newValue);
 
 
 	/**
 	 * @return the isReadOnly
-	 * 
+	 * @generated
 	 */
 	public Boolean getIsReadOnly();
 
 	/**
 	 * Defines a new isReadOnly
 	 * @param newValue the new isReadOnly to set
-	 * 
+	 * @generated
 	 */
 	public void setIsReadOnly(Boolean newValue);
 
 
 	/**
 	 * @return the owningTemplateParameter
-	 * 
+	 * @generated
 	 */
 	public EObject getOwningTemplateParameter();
 
@@ -238,14 +238,14 @@ public interface PropertyPropertiesEditionPart {
 	/**
 	 * Defines a new owningTemplateParameter
 	 * @param newValue the new owningTemplateParameter to set
-	 * 
+	 * @generated
 	 */
 	public void setOwningTemplateParameter(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setOwningTemplateParameterButtonMode(ButtonsModeEnum newValue);
 
@@ -255,7 +255,7 @@ public interface PropertyPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToOwningTemplateParameter(ViewerFilter filter);
 
@@ -265,14 +265,14 @@ public interface PropertyPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToOwningTemplateParameter(ViewerFilter filter);
 
 
 	/**
 	 * @return the templateParameter
-	 * 
+	 * @generated
 	 */
 	public EObject getTemplateParameter();
 
@@ -285,14 +285,14 @@ public interface PropertyPropertiesEditionPart {
 	/**
 	 * Defines a new templateParameter
 	 * @param newValue the new templateParameter to set
-	 * 
+	 * @generated
 	 */
 	public void setTemplateParameter(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setTemplateParameterButtonMode(ButtonsModeEnum newValue);
 
@@ -302,7 +302,7 @@ public interface PropertyPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToTemplateParameter(ViewerFilter filter);
 
@@ -312,14 +312,14 @@ public interface PropertyPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToTemplateParameter(ViewerFilter filter);
 
 
 	/**
 	 * @return the class
-	 * 
+	 * @generated
 	 */
 	public EObject getClass_();
 
@@ -332,14 +332,14 @@ public interface PropertyPropertiesEditionPart {
 	/**
 	 * Defines a new class
 	 * @param newValue the new class to set
-	 * 
+	 * @generated
 	 */
 	public void setClass_(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setClass_ButtonMode(ButtonsModeEnum newValue);
 
@@ -349,7 +349,7 @@ public interface PropertyPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToClass_(ViewerFilter filter);
 
@@ -359,14 +359,14 @@ public interface PropertyPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToClass_(ViewerFilter filter);
 
 
 	/**
 	 * @return the datatype
-	 * 
+	 * @generated
 	 */
 	public EObject getDatatype();
 
@@ -379,14 +379,14 @@ public interface PropertyPropertiesEditionPart {
 	/**
 	 * Defines a new datatype
 	 * @param newValue the new datatype to set
-	 * 
+	 * @generated
 	 */
 	public void setDatatype(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setDatatypeButtonMode(ButtonsModeEnum newValue);
 
@@ -396,7 +396,7 @@ public interface PropertyPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToDatatype(ViewerFilter filter);
 
@@ -406,56 +406,56 @@ public interface PropertyPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToDatatype(ViewerFilter filter);
 
 
 	/**
 	 * @return the isDerived
-	 * 
+	 * @generated
 	 */
 	public Boolean getIsDerived();
 
 	/**
 	 * Defines a new isDerived
 	 * @param newValue the new isDerived to set
-	 * 
+	 * @generated
 	 */
 	public void setIsDerived(Boolean newValue);
 
 
 	/**
 	 * @return the isDerivedUnion
-	 * 
+	 * @generated
 	 */
 	public Boolean getIsDerivedUnion();
 
 	/**
 	 * Defines a new isDerivedUnion
 	 * @param newValue the new isDerivedUnion to set
-	 * 
+	 * @generated
 	 */
 	public void setIsDerivedUnion(Boolean newValue);
 
 
 	/**
 	 * @return the aggregation
-	 * 
+	 * @generated
 	 */
 	public Enumerator getAggregation();
 
 	/**
 	 * Init the aggregation
-	 * @param eenum the enum to manage
+	 * @param input the viewer input
 	 * @param current the current value
 	 */
-	public void initAggregation(EEnum eenum, Enumerator current);
+	public void initAggregation(Object input, Enumerator current);
 
 	/**
 	 * Defines a new aggregation
 	 * @param newValue the new aggregation to set
-	 * 
+	 * @generated
 	 */
 	public void setAggregation(Enumerator newValue);
 
@@ -471,7 +471,7 @@ public interface PropertyPropertiesEditionPart {
 	/**
 	 * Update the redefinedProperty
 	 * @param newValue the redefinedProperty to update
-	 * 
+	 * @generated
 	 */
 	public void updateRedefinedProperty();
 
@@ -481,7 +481,7 @@ public interface PropertyPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToRedefinedProperty(ViewerFilter filter);
 
@@ -491,20 +491,20 @@ public interface PropertyPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToRedefinedProperty(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the redefinedProperty table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInRedefinedPropertyTable(EObject element);
 
 
 	/**
 	 * @return the owningAssociation
-	 * 
+	 * @generated
 	 */
 	public EObject getOwningAssociation();
 
@@ -517,14 +517,14 @@ public interface PropertyPropertiesEditionPart {
 	/**
 	 * Defines a new owningAssociation
 	 * @param newValue the new owningAssociation to set
-	 * 
+	 * @generated
 	 */
 	public void setOwningAssociation(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setOwningAssociationButtonMode(ButtonsModeEnum newValue);
 
@@ -534,7 +534,7 @@ public interface PropertyPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToOwningAssociation(ViewerFilter filter);
 
@@ -544,7 +544,7 @@ public interface PropertyPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToOwningAssociation(ViewerFilter filter);
 
@@ -560,7 +560,7 @@ public interface PropertyPropertiesEditionPart {
 	/**
 	 * Update the subsettedProperty
 	 * @param newValue the subsettedProperty to update
-	 * 
+	 * @generated
 	 */
 	public void updateSubsettedProperty();
 
@@ -570,7 +570,7 @@ public interface PropertyPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToSubsettedProperty(ViewerFilter filter);
 
@@ -580,20 +580,20 @@ public interface PropertyPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToSubsettedProperty(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the subsettedProperty table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInSubsettedPropertyTable(EObject element);
 
 
 	/**
 	 * @return the association
-	 * 
+	 * @generated
 	 */
 	public EObject getAssociation();
 
@@ -606,14 +606,14 @@ public interface PropertyPropertiesEditionPart {
 	/**
 	 * Defines a new association
 	 * @param newValue the new association to set
-	 * 
+	 * @generated
 	 */
 	public void setAssociation(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setAssociationButtonMode(ButtonsModeEnum newValue);
 
@@ -623,7 +623,7 @@ public interface PropertyPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToAssociation(ViewerFilter filter);
 
@@ -633,14 +633,14 @@ public interface PropertyPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToAssociation(ViewerFilter filter);
 
 
 	/**
 	 * @return the associationEnd
-	 * 
+	 * @generated
 	 */
 	public EObject getAssociationEnd();
 
@@ -653,14 +653,14 @@ public interface PropertyPropertiesEditionPart {
 	/**
 	 * Defines a new associationEnd
 	 * @param newValue the new associationEnd to set
-	 * 
+	 * @generated
 	 */
 	public void setAssociationEnd(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setAssociationEndButtonMode(ButtonsModeEnum newValue);
 
@@ -670,7 +670,7 @@ public interface PropertyPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToAssociationEnd(ViewerFilter filter);
 
@@ -680,7 +680,7 @@ public interface PropertyPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToAssociationEnd(ViewerFilter filter);
 
@@ -692,12 +692,9 @@ public interface PropertyPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
-	 * 
+	 * @generated
 	 */
 	public String getTitle();
 
-	// Start of user code for additional methods
-
-// End of user code
 
 }

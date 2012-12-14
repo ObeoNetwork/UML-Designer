@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,69 +10,90 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts.impl;
 
-// Start of user code for imports
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EEnumLiteral;
+
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
+
 import org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
+
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 
 
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, JoinNodePropertiesEditionPart {
 
@@ -106,7 +127,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
+	 * @generated
 	 */
 	public JoinNodePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -117,7 +138,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
@@ -133,7 +154,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public void createControls(Composite view) { 
 		CompositionSequence joinNodeStep = new BindingCompositionSequence(propertiesEditionComponent);
@@ -202,7 +223,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
@@ -216,10 +237,13 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		return propertiesGroup;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.JoinNodePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.JoinNode.Properties.name, UmlViewsRepository.SWT_KIND));
-		name = new Text(parent, SWT.BORDER);
+		createDescription(parent, UmlViewsRepository.JoinNode.Properties.name, UmlMessages.JoinNodePropertiesEditionPart_NameLabel);
+		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {
@@ -228,7 +252,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -244,7 +268,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -262,12 +286,15 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		return parent;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createVisibilityEMFComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.JoinNodePropertiesEditionPart_VisibilityLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.JoinNode.Properties.visibility, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.JoinNode.Properties.visibility, UmlMessages.JoinNodePropertiesEditionPart_VisibilityLabel);
 		visibility = new EMFComboViewer(parent);
 		visibility.setContentProvider(new ArrayContentProvider());
-		visibility.setLabelProvider(new AdapterFactoryLabelProvider(new EcoreAdapterFactory()));
+		visibility.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData visibilityData = new GridData(GridData.FILL_HORIZONTAL);
 		visibility.getCombo().setLayoutData(visibilityData);
 		visibility.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -276,7 +303,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
+			 * 	@generated
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
@@ -290,10 +317,11 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createClientDependencyAdvancedReferencesTable(Composite parent) {
-		this.clientDependency = new ReferencesTable(UmlMessages.JoinNodePropertiesEditionPart_ClientDependencyLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.JoinNode.Properties.clientDependency, UmlMessages.JoinNodePropertiesEditionPart_ClientDependencyLabel);		 
+		this.clientDependency = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addClientDependency(); }
 			public void handleEdit(EObject element) { editClientDependency(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveClientDependency(element, oldIndex, newIndex); }
@@ -321,7 +349,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addClientDependency() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(clientDependency.getInput(), clientDependencyFilters, clientDependencyBusinessFilters,
@@ -340,7 +368,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveClientDependency(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(JoinNodePropertiesEditionPartImpl.this, UmlViewsRepository.JoinNode.Properties.clientDependency, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -348,7 +376,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromClientDependency(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(JoinNodePropertiesEditionPartImpl.this, UmlViewsRepository.JoinNode.Properties.clientDependency, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -356,7 +384,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editClientDependency(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -370,17 +398,20 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		}
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createIsLeafCheckbox(Composite parent) {
 		isLeaf = new Button(parent, SWT.CHECK);
-		isLeaf.setText(UmlMessages.JoinNodePropertiesEditionPart_IsLeafLabel);
+		isLeaf.setText(getDescription(UmlViewsRepository.JoinNode.Properties.isLeaf, UmlMessages.JoinNodePropertiesEditionPart_IsLeafLabel));
 		isLeaf.addSelectionListener(new SelectionAdapter() {
 
 			/**
 			 * {@inheritDoc}
 			 *
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	
+			 * 	@generated
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
@@ -399,10 +430,10 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createInStructuredNodeFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.JoinNodePropertiesEditionPart_InStructuredNodeLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.JoinNode.Properties.inStructuredNode, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.JoinNode.Properties.inStructuredNode, UmlMessages.JoinNodePropertiesEditionPart_InStructuredNodeLabel);
 		inStructuredNode = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.JoinNode.Properties.inStructuredNode, UmlViewsRepository.SWT_KIND));
 		inStructuredNode.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -422,10 +453,10 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createActivityFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.JoinNodePropertiesEditionPart_ActivityLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.JoinNode.Properties.activity, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.JoinNode.Properties.activity, UmlMessages.JoinNodePropertiesEditionPart_ActivityLabel);
 		activity = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.JoinNode.Properties.activity, UmlViewsRepository.SWT_KIND));
 		activity.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -444,10 +475,11 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createOutgoingAdvancedReferencesTable(Composite parent) {
-		this.outgoing = new ReferencesTable(UmlMessages.JoinNodePropertiesEditionPart_OutgoingLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.JoinNode.Properties.outgoing, UmlMessages.JoinNodePropertiesEditionPart_OutgoingLabel);		 
+		this.outgoing = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addOutgoing(); }
 			public void handleEdit(EObject element) { editOutgoing(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveOutgoing(element, oldIndex, newIndex); }
@@ -475,7 +507,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addOutgoing() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(outgoing.getInput(), outgoingFilters, outgoingBusinessFilters,
@@ -494,7 +526,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveOutgoing(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(JoinNodePropertiesEditionPartImpl.this, UmlViewsRepository.JoinNode.Properties.outgoing, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -502,7 +534,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromOutgoing(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(JoinNodePropertiesEditionPartImpl.this, UmlViewsRepository.JoinNode.Properties.outgoing, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -510,7 +542,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editOutgoing(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -525,10 +557,11 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createIncomingAdvancedReferencesTable(Composite parent) {
-		this.incoming = new ReferencesTable(UmlMessages.JoinNodePropertiesEditionPart_IncomingLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.JoinNode.Properties.incoming, UmlMessages.JoinNodePropertiesEditionPart_IncomingLabel);		 
+		this.incoming = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addIncoming(); }
 			public void handleEdit(EObject element) { editIncoming(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveIncoming(element, oldIndex, newIndex); }
@@ -556,7 +589,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addIncoming() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(incoming.getInput(), incomingFilters, incomingBusinessFilters,
@@ -575,7 +608,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveIncoming(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(JoinNodePropertiesEditionPartImpl.this, UmlViewsRepository.JoinNode.Properties.incoming, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -583,7 +616,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromIncoming(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(JoinNodePropertiesEditionPartImpl.this, UmlViewsRepository.JoinNode.Properties.incoming, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -591,7 +624,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editIncoming(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -606,10 +639,11 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createInPartitionAdvancedReferencesTable(Composite parent) {
-		this.inPartition = new ReferencesTable(UmlMessages.JoinNodePropertiesEditionPart_InPartitionLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.JoinNode.Properties.inPartition, UmlMessages.JoinNodePropertiesEditionPart_InPartitionLabel);		 
+		this.inPartition = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addInPartition(); }
 			public void handleEdit(EObject element) { editInPartition(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveInPartition(element, oldIndex, newIndex); }
@@ -637,7 +671,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addInPartition() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(inPartition.getInput(), inPartitionFilters, inPartitionBusinessFilters,
@@ -656,7 +690,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveInPartition(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(JoinNodePropertiesEditionPartImpl.this, UmlViewsRepository.JoinNode.Properties.inPartition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -664,7 +698,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromInPartition(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(JoinNodePropertiesEditionPartImpl.this, UmlViewsRepository.JoinNode.Properties.inPartition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -672,7 +706,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editInPartition(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -687,10 +721,11 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createInInterruptibleRegionAdvancedReferencesTable(Composite parent) {
-		this.inInterruptibleRegion = new ReferencesTable(UmlMessages.JoinNodePropertiesEditionPart_InInterruptibleRegionLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.JoinNode.Properties.inInterruptibleRegion, UmlMessages.JoinNodePropertiesEditionPart_InInterruptibleRegionLabel);		 
+		this.inInterruptibleRegion = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addInInterruptibleRegion(); }
 			public void handleEdit(EObject element) { editInInterruptibleRegion(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveInInterruptibleRegion(element, oldIndex, newIndex); }
@@ -718,7 +753,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addInInterruptibleRegion() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(inInterruptibleRegion.getInput(), inInterruptibleRegionFilters, inInterruptibleRegionBusinessFilters,
@@ -737,7 +772,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveInInterruptibleRegion(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(JoinNodePropertiesEditionPartImpl.this, UmlViewsRepository.JoinNode.Properties.inInterruptibleRegion, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -745,7 +780,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromInInterruptibleRegion(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(JoinNodePropertiesEditionPartImpl.this, UmlViewsRepository.JoinNode.Properties.inInterruptibleRegion, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -753,7 +788,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editInInterruptibleRegion(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -768,10 +803,11 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createRedefinedNodeAdvancedReferencesTable(Composite parent) {
-		this.redefinedNode = new ReferencesTable(UmlMessages.JoinNodePropertiesEditionPart_RedefinedNodeLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.JoinNode.Properties.redefinedNode, UmlMessages.JoinNodePropertiesEditionPart_RedefinedNodeLabel);		 
+		this.redefinedNode = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addRedefinedNode(); }
 			public void handleEdit(EObject element) { editRedefinedNode(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveRedefinedNode(element, oldIndex, newIndex); }
@@ -799,7 +835,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addRedefinedNode() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(redefinedNode.getInput(), redefinedNodeFilters, redefinedNodeBusinessFilters,
@@ -818,7 +854,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveRedefinedNode(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(JoinNodePropertiesEditionPartImpl.this, UmlViewsRepository.JoinNode.Properties.redefinedNode, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -826,7 +862,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromRedefinedNode(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(JoinNodePropertiesEditionPartImpl.this, UmlViewsRepository.JoinNode.Properties.redefinedNode, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -834,7 +870,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editRedefinedNode(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -848,17 +884,20 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		}
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createIsCombineDuplicateCheckbox(Composite parent) {
 		isCombineDuplicate = new Button(parent, SWT.CHECK);
-		isCombineDuplicate.setText(UmlMessages.JoinNodePropertiesEditionPart_IsCombineDuplicateLabel);
+		isCombineDuplicate.setText(getDescription(UmlViewsRepository.JoinNode.Properties.isCombineDuplicate, UmlMessages.JoinNodePropertiesEditionPart_IsCombineDuplicateLabel));
 		isCombineDuplicate.addSelectionListener(new SelectionAdapter() {
 
 			/**
 			 * {@inheritDoc}
 			 *
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	
+			 * 	@generated
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
@@ -876,24 +915,20 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-
-// End of user code
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#getName()
-	 * 
+	 * @generated
 	 */
 	public String getName() {
 		return name.getText();
@@ -903,7 +938,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#setName(String newValue)
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue) {
 		if (newValue != null) {
@@ -911,40 +946,62 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.JoinNode.Properties.name);
+		if (readOnly && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(UmlMessages.JoinNode_ReadOnly);
+		} else if (!readOnly && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
-
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#getVisibility()
-	 * 
+	 * @generated
 	 */
 	public Enumerator getVisibility() {
-		EEnumLiteral selection = (EEnumLiteral) ((StructuredSelection) visibility.getSelection()).getFirstElement();
-		return selection.getInstance();
+		Enumerator selection = (Enumerator) ((StructuredSelection) visibility.getSelection()).getFirstElement();
+		return selection;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#initVisibility(EEnum eenum, Enumerator current)
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#initVisibility(Object input, Enumerator current)
 	 */
-	public void initVisibility(EEnum eenum, Enumerator current) {
-		visibility.setInput(eenum.getELiterals());
+	public void initVisibility(Object input, Enumerator current) {
+		visibility.setInput(input);
 		visibility.modelUpdating(new StructuredSelection(current));
+		boolean readOnly = isReadOnly(UmlViewsRepository.JoinNode.Properties.visibility);
+		if (readOnly && visibility.isEnabled()) {
+			visibility.setEnabled(false);
+			visibility.setToolTipText(UmlMessages.JoinNode_ReadOnly);
+		} else if (!readOnly && !visibility.isEnabled()) {
+			visibility.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#setVisibility(Enumerator newValue)
-	 * 
+	 * @generated
 	 */
 	public void setVisibility(Enumerator newValue) {
 		visibility.modelUpdating(new StructuredSelection(newValue));
+		boolean readOnly = isReadOnly(UmlViewsRepository.JoinNode.Properties.visibility);
+		if (readOnly && visibility.isEnabled()) {
+			visibility.setEnabled(false);
+			visibility.setToolTipText(UmlMessages.JoinNode_ReadOnly);
+		} else if (!readOnly && !visibility.isEnabled()) {
+			visibility.setEnabled(true);
+		}	
+		
 	}
-
 
 
 
@@ -959,13 +1016,21 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		clientDependency.setContentProvider(contentProvider);
 		clientDependency.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.JoinNode.Properties.clientDependency);
+		if (readOnly && clientDependency.getTable().isEnabled()) {
+			clientDependency.setEnabled(false);
+			clientDependency.setToolTipText(UmlMessages.JoinNode_ReadOnly);
+		} else if (!readOnly && !clientDependency.getTable().isEnabled()) {
+			clientDependency.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#updateClientDependency()
-	 * 
+	 * @generated
 	 */
 	public void updateClientDependency() {
 	clientDependency.refresh();
@@ -975,7 +1040,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#addFilterClientDependency(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToClientDependency(ViewerFilter filter) {
 		clientDependencyFilters.add(filter);
@@ -985,7 +1050,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#addBusinessFilterClientDependency(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToClientDependency(ViewerFilter filter) {
 		clientDependencyBusinessFilters.add(filter);
@@ -995,18 +1060,17 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#isContainedInClientDependencyTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInClientDependencyTable(EObject element) {
 		return ((ReferencesTableSettings)clientDependency.getInput()).contains(element);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#getIsLeaf()
-	 * 
+	 * @generated
 	 */
 	public Boolean getIsLeaf() {
 		return Boolean.valueOf(isLeaf.getSelection());
@@ -1016,7 +1080,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#setIsLeaf(Boolean newValue)
-	 * 
+	 * @generated
 	 */
 	public void setIsLeaf(Boolean newValue) {
 		if (newValue != null) {
@@ -1024,14 +1088,21 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		} else {
 			isLeaf.setSelection(false);
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.JoinNode.Properties.isLeaf);
+		if (readOnly && isLeaf.isEnabled()) {
+			isLeaf.setEnabled(false);
+			isLeaf.setToolTipText(UmlMessages.JoinNode_ReadOnly);
+		} else if (!readOnly && !isLeaf.isEnabled()) {
+			isLeaf.setEnabled(true);
+		}	
+		
 	}
-
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#getInStructuredNode()
-	 * 
+	 * @generated
 	 */
 	public EObject getInStructuredNode() {
 		if (inStructuredNode.getSelection() instanceof StructuredSelection) {
@@ -1052,13 +1123,21 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		if (current != null) {
 			inStructuredNode.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.JoinNode.Properties.inStructuredNode);
+		if (readOnly && inStructuredNode.isEnabled()) {
+			inStructuredNode.setEnabled(false);
+			inStructuredNode.setToolTipText(UmlMessages.JoinNode_ReadOnly);
+		} else if (!readOnly && !inStructuredNode.isEnabled()) {
+			inStructuredNode.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#setInStructuredNode(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setInStructuredNode(EObject newValue) {
 		if (newValue != null) {
@@ -1066,6 +1145,14 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		} else {
 			inStructuredNode.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.JoinNode.Properties.inStructuredNode);
+		if (readOnly && inStructuredNode.isEnabled()) {
+			inStructuredNode.setEnabled(false);
+			inStructuredNode.setToolTipText(UmlMessages.JoinNode_ReadOnly);
+		} else if (!readOnly && !inStructuredNode.isEnabled()) {
+			inStructuredNode.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -1081,7 +1168,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#addFilterInStructuredNode(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToInStructuredNode(ViewerFilter filter) {
 		inStructuredNode.addFilter(filter);
@@ -1091,18 +1178,17 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#addBusinessFilterInStructuredNode(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToInStructuredNode(ViewerFilter filter) {
 		inStructuredNode.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#getActivity()
-	 * 
+	 * @generated
 	 */
 	public EObject getActivity() {
 		if (activity.getSelection() instanceof StructuredSelection) {
@@ -1123,13 +1209,21 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		if (current != null) {
 			activity.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.JoinNode.Properties.activity);
+		if (readOnly && activity.isEnabled()) {
+			activity.setEnabled(false);
+			activity.setToolTipText(UmlMessages.JoinNode_ReadOnly);
+		} else if (!readOnly && !activity.isEnabled()) {
+			activity.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#setActivity(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setActivity(EObject newValue) {
 		if (newValue != null) {
@@ -1137,6 +1231,14 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		} else {
 			activity.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.JoinNode.Properties.activity);
+		if (readOnly && activity.isEnabled()) {
+			activity.setEnabled(false);
+			activity.setToolTipText(UmlMessages.JoinNode_ReadOnly);
+		} else if (!readOnly && !activity.isEnabled()) {
+			activity.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -1152,7 +1254,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#addFilterActivity(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToActivity(ViewerFilter filter) {
 		activity.addFilter(filter);
@@ -1162,12 +1264,11 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#addBusinessFilterActivity(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToActivity(ViewerFilter filter) {
 		activity.addBusinessRuleFilter(filter);
 	}
-
 
 
 
@@ -1182,13 +1283,21 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		outgoing.setContentProvider(contentProvider);
 		outgoing.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.JoinNode.Properties.outgoing);
+		if (readOnly && outgoing.getTable().isEnabled()) {
+			outgoing.setEnabled(false);
+			outgoing.setToolTipText(UmlMessages.JoinNode_ReadOnly);
+		} else if (!readOnly && !outgoing.getTable().isEnabled()) {
+			outgoing.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#updateOutgoing()
-	 * 
+	 * @generated
 	 */
 	public void updateOutgoing() {
 	outgoing.refresh();
@@ -1198,7 +1307,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#addFilterOutgoing(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToOutgoing(ViewerFilter filter) {
 		outgoingFilters.add(filter);
@@ -1208,7 +1317,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#addBusinessFilterOutgoing(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToOutgoing(ViewerFilter filter) {
 		outgoingBusinessFilters.add(filter);
@@ -1218,12 +1327,11 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#isContainedInOutgoingTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInOutgoingTable(EObject element) {
 		return ((ReferencesTableSettings)outgoing.getInput()).contains(element);
 	}
-
 
 
 
@@ -1238,13 +1346,21 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		incoming.setContentProvider(contentProvider);
 		incoming.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.JoinNode.Properties.incoming);
+		if (readOnly && incoming.getTable().isEnabled()) {
+			incoming.setEnabled(false);
+			incoming.setToolTipText(UmlMessages.JoinNode_ReadOnly);
+		} else if (!readOnly && !incoming.getTable().isEnabled()) {
+			incoming.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#updateIncoming()
-	 * 
+	 * @generated
 	 */
 	public void updateIncoming() {
 	incoming.refresh();
@@ -1254,7 +1370,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#addFilterIncoming(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToIncoming(ViewerFilter filter) {
 		incomingFilters.add(filter);
@@ -1264,7 +1380,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#addBusinessFilterIncoming(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToIncoming(ViewerFilter filter) {
 		incomingBusinessFilters.add(filter);
@@ -1274,12 +1390,11 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#isContainedInIncomingTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInIncomingTable(EObject element) {
 		return ((ReferencesTableSettings)incoming.getInput()).contains(element);
 	}
-
 
 
 
@@ -1294,13 +1409,21 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		inPartition.setContentProvider(contentProvider);
 		inPartition.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.JoinNode.Properties.inPartition);
+		if (readOnly && inPartition.getTable().isEnabled()) {
+			inPartition.setEnabled(false);
+			inPartition.setToolTipText(UmlMessages.JoinNode_ReadOnly);
+		} else if (!readOnly && !inPartition.getTable().isEnabled()) {
+			inPartition.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#updateInPartition()
-	 * 
+	 * @generated
 	 */
 	public void updateInPartition() {
 	inPartition.refresh();
@@ -1310,7 +1433,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#addFilterInPartition(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToInPartition(ViewerFilter filter) {
 		inPartitionFilters.add(filter);
@@ -1320,7 +1443,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#addBusinessFilterInPartition(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToInPartition(ViewerFilter filter) {
 		inPartitionBusinessFilters.add(filter);
@@ -1330,12 +1453,11 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#isContainedInInPartitionTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInInPartitionTable(EObject element) {
 		return ((ReferencesTableSettings)inPartition.getInput()).contains(element);
 	}
-
 
 
 
@@ -1350,13 +1472,21 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		inInterruptibleRegion.setContentProvider(contentProvider);
 		inInterruptibleRegion.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.JoinNode.Properties.inInterruptibleRegion);
+		if (readOnly && inInterruptibleRegion.getTable().isEnabled()) {
+			inInterruptibleRegion.setEnabled(false);
+			inInterruptibleRegion.setToolTipText(UmlMessages.JoinNode_ReadOnly);
+		} else if (!readOnly && !inInterruptibleRegion.getTable().isEnabled()) {
+			inInterruptibleRegion.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#updateInInterruptibleRegion()
-	 * 
+	 * @generated
 	 */
 	public void updateInInterruptibleRegion() {
 	inInterruptibleRegion.refresh();
@@ -1366,7 +1496,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#addFilterInInterruptibleRegion(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToInInterruptibleRegion(ViewerFilter filter) {
 		inInterruptibleRegionFilters.add(filter);
@@ -1376,7 +1506,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#addBusinessFilterInInterruptibleRegion(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToInInterruptibleRegion(ViewerFilter filter) {
 		inInterruptibleRegionBusinessFilters.add(filter);
@@ -1386,12 +1516,11 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#isContainedInInInterruptibleRegionTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInInInterruptibleRegionTable(EObject element) {
 		return ((ReferencesTableSettings)inInterruptibleRegion.getInput()).contains(element);
 	}
-
 
 
 
@@ -1406,13 +1535,21 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		redefinedNode.setContentProvider(contentProvider);
 		redefinedNode.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.JoinNode.Properties.redefinedNode);
+		if (readOnly && redefinedNode.getTable().isEnabled()) {
+			redefinedNode.setEnabled(false);
+			redefinedNode.setToolTipText(UmlMessages.JoinNode_ReadOnly);
+		} else if (!readOnly && !redefinedNode.getTable().isEnabled()) {
+			redefinedNode.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#updateRedefinedNode()
-	 * 
+	 * @generated
 	 */
 	public void updateRedefinedNode() {
 	redefinedNode.refresh();
@@ -1422,7 +1559,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#addFilterRedefinedNode(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToRedefinedNode(ViewerFilter filter) {
 		redefinedNodeFilters.add(filter);
@@ -1432,7 +1569,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#addBusinessFilterRedefinedNode(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToRedefinedNode(ViewerFilter filter) {
 		redefinedNodeBusinessFilters.add(filter);
@@ -1442,18 +1579,17 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#isContainedInRedefinedNodeTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInRedefinedNodeTable(EObject element) {
 		return ((ReferencesTableSettings)redefinedNode.getInput()).contains(element);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#getIsCombineDuplicate()
-	 * 
+	 * @generated
 	 */
 	public Boolean getIsCombineDuplicate() {
 		return Boolean.valueOf(isCombineDuplicate.getSelection());
@@ -1463,7 +1599,7 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.JoinNodePropertiesEditionPart#setIsCombineDuplicate(Boolean newValue)
-	 * 
+	 * @generated
 	 */
 	public void setIsCombineDuplicate(Boolean newValue) {
 		if (newValue != null) {
@@ -1471,8 +1607,15 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		} else {
 			isCombineDuplicate.setSelection(false);
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.JoinNode.Properties.isCombineDuplicate);
+		if (readOnly && isCombineDuplicate.isEnabled()) {
+			isCombineDuplicate.setEnabled(false);
+			isCombineDuplicate.setToolTipText(UmlMessages.JoinNode_ReadOnly);
+		} else if (!readOnly && !isCombineDuplicate.isEnabled()) {
+			isCombineDuplicate.setEnabled(true);
+		}	
+		
 	}
-
 
 
 
@@ -1483,15 +1626,12 @@ public class JoinNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
+	 * @generated
 	 */
 	public String getTitle() {
 		return UmlMessages.JoinNode_Part_Title;
 	}
 
-	// Start of user code additional methods
-	
-	// End of user code
 
 
 }

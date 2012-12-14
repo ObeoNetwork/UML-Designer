@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,47 +10,70 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.components;
 
-// Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
+import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.GeneralizationSet;
 import org.eclipse.uml2.uml.UMLPackage;
+
 import org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralizationPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 
 
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public class GeneralizationPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
+	/**
+	 * @generated
+	 */
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
@@ -58,21 +81,22 @@ public class GeneralizationPropertiesEditionComponent extends SinglePartProperti
 	/**
 	 * Settings for general EObjectFlatComboViewer
 	 */
-	private	EObjectFlatComboSettings generalSettings;
+	private EObjectFlatComboSettings generalSettings;
 	
 	/**
 	 * Settings for generalizationSet ReferencesTable
 	 */
-	private	ReferencesTableSettings generalizationSetSettings;
+	private ReferencesTableSettings generalizationSetSettings;
 	
 	/**
 	 * Settings for specific EObjectFlatComboViewer
 	 */
-	private	EObjectFlatComboSettings specificSettings;
+	private EObjectFlatComboSettings specificSettings;
+	
 	
 	/**
 	 * Default constructor
-	 * 
+	 * @generated
 	 */
 	public GeneralizationPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject generalization, String editing_mode) {
 		super(editingContext, generalization, editing_mode);
@@ -86,17 +110,19 @@ public class GeneralizationPropertiesEditionComponent extends SinglePartProperti
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
-	 * 
+	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final Generalization generalization = (Generalization)elt;
 			final GeneralizationPropertiesEditionPart basePart = (GeneralizationPropertiesEditionPart)editingPart;
 			// init values
-			basePart.setIsSubstitutable(generalization.isSubstitutable());
-			
+			if (isAccessible(UmlViewsRepository.Generalization.Properties.isSubstitutable)) {
+				basePart.setIsSubstitutable(generalization.isSubstitutable());
+			}
 			if (isAccessible(UmlViewsRepository.Generalization.Properties.general)) {
 				// init part
 				generalSettings = new EObjectFlatComboSettings(generalization, UMLPackage.eINSTANCE.getGeneralization_General());
@@ -117,54 +143,51 @@ public class GeneralizationPropertiesEditionComponent extends SinglePartProperti
 			}
 			// init filters
 			
-			basePart.addFilterToGeneral(new ViewerFilter() {
-			
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof Classifier);
-				}
-			
-			});
-			// Start of user code for additional businessfilters for general
-			// End of user code
-			
-			basePart.addFilterToGeneralizationSet(new ViewerFilter() {
-			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInGeneralizationSetTable((EObject)element));
-					return element instanceof Resource;
-				}
-			
-			});
-			basePart.addFilterToGeneralizationSet(new EObjectFilter(UMLPackage.eINSTANCE.getGeneralizationSet()));
-			// Start of user code for additional businessfilters for generalizationSet
-			// End of user code
-			
-			basePart.addFilterToSpecific(new ViewerFilter() {
-			
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof Classifier);
-				}
-			
-			});
-			// Start of user code for additional businessfilters for specific
-			// End of user code
-			
+			if (isAccessible(UmlViewsRepository.Generalization.Properties.general)) {
+				basePart.addFilterToGeneral(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof Classifier);
+					}
+					
+				});
+			}
+			if (isAccessible(UmlViewsRepository.Generalization.Properties.generalizationSet)) {
+				basePart.addFilterToGeneralizationSet(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInGeneralizationSetTable((EObject)element));
+						return element instanceof Resource;
+					}
+				
+				});
+				basePart.addFilterToGeneralizationSet(new EObjectFilter(UMLPackage.Literals.GENERALIZATION_SET));
+			}
+			if (isAccessible(UmlViewsRepository.Generalization.Properties.specific)) {
+				basePart.addFilterToSpecific(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof Classifier);
+					}
+					
+				});
+			}
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -183,7 +206,7 @@ public class GeneralizationPropertiesEditionComponent extends SinglePartProperti
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
-	protected EStructuralFeature associatedFeature(Object editorKey) {
+	public EStructuralFeature associatedFeature(Object editorKey) {
 		if (editorKey == UmlViewsRepository.Generalization.Properties.isSubstitutable) {
 			return UMLPackage.eINSTANCE.getGeneralization_IsSubstitutable();
 		}
@@ -202,7 +225,7 @@ public class GeneralizationPropertiesEditionComponent extends SinglePartProperti
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Generalization generalization = (Generalization)semanticObject;
@@ -229,7 +252,9 @@ public class GeneralizationPropertiesEditionComponent extends SinglePartProperti
 					generalizationSetSettings.addToReference((EObject) event.getNewValue());
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-					generalizationSetSettings.removeFromReference((EObject) event.getNewValue());
+				generalizationSetSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				generalizationSetSettings.move(event.getNewIndex(), (GeneralizationSet) event.getNewValue());
 			}
 		}
 		if (UmlViewsRepository.Generalization.Properties.specific == event.getAffectedEditor()) {
@@ -253,9 +278,10 @@ public class GeneralizationPropertiesEditionComponent extends SinglePartProperti
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		if (editingPart.isVisible()) {	
+		super.updatePart(msg);
+		if (editingPart.isVisible()) {
 			GeneralizationPropertiesEditionPart basePart = (GeneralizationPropertiesEditionPart)editingPart;
-			if (UMLPackage.eINSTANCE.getGeneralization_IsSubstitutable().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.Generalization.Properties.isSubstitutable))
+			if (UMLPackage.eINSTANCE.getGeneralization_IsSubstitutable().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(UmlViewsRepository.Generalization.Properties.isSubstitutable))
 				basePart.setIsSubstitutable((Boolean)msg.getNewValue());
 			
 			if (UMLPackage.eINSTANCE.getGeneralization_General().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.Generalization.Properties.general))
@@ -268,12 +294,27 @@ public class GeneralizationPropertiesEditionComponent extends SinglePartProperti
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			UMLPackage.eINSTANCE.getGeneralization_IsSubstitutable(),
+			UMLPackage.eINSTANCE.getGeneralization_General(),
+			UMLPackage.eINSTANCE.getGeneralization_GeneralizationSet(),
+			UMLPackage.eINSTANCE.getGeneralization_Specific()		);
+		return new NotificationFilter[] {filter,};
+	}
+
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
-	 * 
+	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
 		return key == UmlViewsRepository.Generalization.Properties.general || key == UmlViewsRepository.Generalization.Properties.specific;
@@ -283,7 +324,7 @@ public class GeneralizationPropertiesEditionComponent extends SinglePartProperti
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
@@ -292,7 +333,7 @@ public class GeneralizationPropertiesEditionComponent extends SinglePartProperti
 				if (UmlViewsRepository.Generalization.Properties.isSubstitutable == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(UMLPackage.eINSTANCE.getGeneralization_IsSubstitutable().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getGeneralization_IsSubstitutable().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getGeneralization_IsSubstitutable().getEAttributeType(), newValue);
 				}
@@ -304,5 +345,8 @@ public class GeneralizationPropertiesEditionComponent extends SinglePartProperti
 		}
 		return ret;
 	}
+
+
+	
 
 }

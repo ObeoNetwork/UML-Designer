@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,45 +10,60 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts.impl;
 
-// Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
+
 import org.obeonetwork.dsl.uml2.properties.uml.parts.LinkEndDestructionDataPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
+
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 
 
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, LinkEndDestructionDataPropertiesEditionPart {
 
@@ -62,7 +77,7 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
+	 * @generated
 	 */
 	public LinkEndDestructionDataPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -73,7 +88,7 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
@@ -89,7 +104,7 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public void createControls(Composite view) { 
 		CompositionSequence linkEndDestructionDataStep = new BindingCompositionSequence(propertiesEditionComponent);
@@ -126,7 +141,7 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
@@ -142,10 +157,10 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createValueFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.LinkEndDestructionDataPropertiesEditionPart_ValueLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.LinkEndDestructionData.Properties.value, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.LinkEndDestructionData.Properties.value, UmlMessages.LinkEndDestructionDataPropertiesEditionPart_ValueLabel);
 		value = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.LinkEndDestructionData.Properties.value, UmlViewsRepository.SWT_KIND));
 		value.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -165,10 +180,10 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createEndFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.LinkEndDestructionDataPropertiesEditionPart_EndLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.LinkEndDestructionData.Properties.end, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.LinkEndDestructionData.Properties.end, UmlMessages.LinkEndDestructionDataPropertiesEditionPart_EndLabel);
 		end = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.LinkEndDestructionData.Properties.end, UmlViewsRepository.SWT_KIND));
 		end.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -186,17 +201,20 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 		return parent;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createIsDestroyDuplicatesCheckbox(Composite parent) {
 		isDestroyDuplicates = new Button(parent, SWT.CHECK);
-		isDestroyDuplicates.setText(UmlMessages.LinkEndDestructionDataPropertiesEditionPart_IsDestroyDuplicatesLabel);
+		isDestroyDuplicates.setText(getDescription(UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates, UmlMessages.LinkEndDestructionDataPropertiesEditionPart_IsDestroyDuplicatesLabel));
 		isDestroyDuplicates.addSelectionListener(new SelectionAdapter() {
 
 			/**
 			 * {@inheritDoc}
 			 *
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	
+			 * 	@generated
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
@@ -215,10 +233,10 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createDestroyAtFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.LinkEndDestructionDataPropertiesEditionPart_DestroyAtLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt, UmlMessages.LinkEndDestructionDataPropertiesEditionPart_DestroyAtLabel);
 		destroyAt = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt, UmlViewsRepository.SWT_KIND));
 		destroyAt.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -237,24 +255,20 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 	}
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-
-// End of user code
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LinkEndDestructionDataPropertiesEditionPart#getValue()
-	 * 
+	 * @generated
 	 */
 	public EObject getValue() {
 		if (value.getSelection() instanceof StructuredSelection) {
@@ -275,13 +289,21 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 		if (current != null) {
 			value.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.LinkEndDestructionData.Properties.value);
+		if (readOnly && value.isEnabled()) {
+			value.setEnabled(false);
+			value.setToolTipText(UmlMessages.LinkEndDestructionData_ReadOnly);
+		} else if (!readOnly && !value.isEnabled()) {
+			value.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LinkEndDestructionDataPropertiesEditionPart#setValue(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setValue(EObject newValue) {
 		if (newValue != null) {
@@ -289,6 +311,14 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 		} else {
 			value.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.LinkEndDestructionData.Properties.value);
+		if (readOnly && value.isEnabled()) {
+			value.setEnabled(false);
+			value.setToolTipText(UmlMessages.LinkEndDestructionData_ReadOnly);
+		} else if (!readOnly && !value.isEnabled()) {
+			value.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -304,7 +334,7 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LinkEndDestructionDataPropertiesEditionPart#addFilterValue(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToValue(ViewerFilter filter) {
 		value.addFilter(filter);
@@ -314,18 +344,17 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LinkEndDestructionDataPropertiesEditionPart#addBusinessFilterValue(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToValue(ViewerFilter filter) {
 		value.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LinkEndDestructionDataPropertiesEditionPart#getEnd()
-	 * 
+	 * @generated
 	 */
 	public EObject getEnd() {
 		if (end.getSelection() instanceof StructuredSelection) {
@@ -346,13 +375,21 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 		if (current != null) {
 			end.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.LinkEndDestructionData.Properties.end);
+		if (readOnly && end.isEnabled()) {
+			end.setEnabled(false);
+			end.setToolTipText(UmlMessages.LinkEndDestructionData_ReadOnly);
+		} else if (!readOnly && !end.isEnabled()) {
+			end.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LinkEndDestructionDataPropertiesEditionPart#setEnd(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setEnd(EObject newValue) {
 		if (newValue != null) {
@@ -360,6 +397,14 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 		} else {
 			end.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.LinkEndDestructionData.Properties.end);
+		if (readOnly && end.isEnabled()) {
+			end.setEnabled(false);
+			end.setToolTipText(UmlMessages.LinkEndDestructionData_ReadOnly);
+		} else if (!readOnly && !end.isEnabled()) {
+			end.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -375,7 +420,7 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LinkEndDestructionDataPropertiesEditionPart#addFilterEnd(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToEnd(ViewerFilter filter) {
 		end.addFilter(filter);
@@ -385,18 +430,17 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LinkEndDestructionDataPropertiesEditionPart#addBusinessFilterEnd(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToEnd(ViewerFilter filter) {
 		end.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LinkEndDestructionDataPropertiesEditionPart#getIsDestroyDuplicates()
-	 * 
+	 * @generated
 	 */
 	public Boolean getIsDestroyDuplicates() {
 		return Boolean.valueOf(isDestroyDuplicates.getSelection());
@@ -406,7 +450,7 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LinkEndDestructionDataPropertiesEditionPart#setIsDestroyDuplicates(Boolean newValue)
-	 * 
+	 * @generated
 	 */
 	public void setIsDestroyDuplicates(Boolean newValue) {
 		if (newValue != null) {
@@ -414,14 +458,21 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 		} else {
 			isDestroyDuplicates.setSelection(false);
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates);
+		if (readOnly && isDestroyDuplicates.isEnabled()) {
+			isDestroyDuplicates.setEnabled(false);
+			isDestroyDuplicates.setToolTipText(UmlMessages.LinkEndDestructionData_ReadOnly);
+		} else if (!readOnly && !isDestroyDuplicates.isEnabled()) {
+			isDestroyDuplicates.setEnabled(true);
+		}	
+		
 	}
-
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LinkEndDestructionDataPropertiesEditionPart#getDestroyAt()
-	 * 
+	 * @generated
 	 */
 	public EObject getDestroyAt() {
 		if (destroyAt.getSelection() instanceof StructuredSelection) {
@@ -442,13 +493,21 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 		if (current != null) {
 			destroyAt.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt);
+		if (readOnly && destroyAt.isEnabled()) {
+			destroyAt.setEnabled(false);
+			destroyAt.setToolTipText(UmlMessages.LinkEndDestructionData_ReadOnly);
+		} else if (!readOnly && !destroyAt.isEnabled()) {
+			destroyAt.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LinkEndDestructionDataPropertiesEditionPart#setDestroyAt(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setDestroyAt(EObject newValue) {
 		if (newValue != null) {
@@ -456,6 +515,14 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 		} else {
 			destroyAt.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt);
+		if (readOnly && destroyAt.isEnabled()) {
+			destroyAt.setEnabled(false);
+			destroyAt.setToolTipText(UmlMessages.LinkEndDestructionData_ReadOnly);
+		} else if (!readOnly && !destroyAt.isEnabled()) {
+			destroyAt.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -471,7 +538,7 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LinkEndDestructionDataPropertiesEditionPart#addFilterDestroyAt(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToDestroyAt(ViewerFilter filter) {
 		destroyAt.addFilter(filter);
@@ -481,7 +548,7 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LinkEndDestructionDataPropertiesEditionPart#addBusinessFilterDestroyAt(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToDestroyAt(ViewerFilter filter) {
 		destroyAt.addBusinessRuleFilter(filter);
@@ -492,20 +559,16 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
+	 * @generated
 	 */
 	public String getTitle() {
 		return UmlMessages.LinkEndDestructionData_Part_Title;
 	}
 
-	// Start of user code additional methods
-	
-	// End of user code
 
 
 }

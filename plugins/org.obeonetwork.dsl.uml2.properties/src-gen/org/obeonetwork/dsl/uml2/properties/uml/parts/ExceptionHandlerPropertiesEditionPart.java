@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,26 +10,26 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts;
 
-// Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
-
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public interface ExceptionHandlerPropertiesEditionPart {
 
 	/**
 	 * @return the handlerBody
-	 * 
+	 * @generated
 	 */
 	public EObject getHandlerBody();
 
@@ -42,14 +42,14 @@ public interface ExceptionHandlerPropertiesEditionPart {
 	/**
 	 * Defines a new handlerBody
 	 * @param newValue the new handlerBody to set
-	 * 
+	 * @generated
 	 */
 	public void setHandlerBody(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setHandlerBodyButtonMode(ButtonsModeEnum newValue);
 
@@ -59,7 +59,7 @@ public interface ExceptionHandlerPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToHandlerBody(ViewerFilter filter);
 
@@ -69,14 +69,14 @@ public interface ExceptionHandlerPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToHandlerBody(ViewerFilter filter);
 
 
 	/**
 	 * @return the exceptionInput
-	 * 
+	 * @generated
 	 */
 	public EObject getExceptionInput();
 
@@ -89,14 +89,14 @@ public interface ExceptionHandlerPropertiesEditionPart {
 	/**
 	 * Defines a new exceptionInput
 	 * @param newValue the new exceptionInput to set
-	 * 
+	 * @generated
 	 */
 	public void setExceptionInput(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setExceptionInputButtonMode(ButtonsModeEnum newValue);
 
@@ -106,7 +106,7 @@ public interface ExceptionHandlerPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToExceptionInput(ViewerFilter filter);
 
@@ -116,7 +116,7 @@ public interface ExceptionHandlerPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToExceptionInput(ViewerFilter filter);
 
@@ -132,7 +132,7 @@ public interface ExceptionHandlerPropertiesEditionPart {
 	/**
 	 * Update the exceptionType
 	 * @param newValue the exceptionType to update
-	 * 
+	 * @generated
 	 */
 	public void updateExceptionType();
 
@@ -142,7 +142,7 @@ public interface ExceptionHandlerPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToExceptionType(ViewerFilter filter);
 
@@ -152,20 +152,20 @@ public interface ExceptionHandlerPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToExceptionType(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the exceptionType table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInExceptionTypeTable(EObject element);
 
 
 	/**
 	 * @return the protectedNode
-	 * 
+	 * @generated
 	 */
 	public EObject getProtectedNode();
 
@@ -178,14 +178,14 @@ public interface ExceptionHandlerPropertiesEditionPart {
 	/**
 	 * Defines a new protectedNode
 	 * @param newValue the new protectedNode to set
-	 * 
+	 * @generated
 	 */
 	public void setProtectedNode(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setProtectedNodeButtonMode(ButtonsModeEnum newValue);
 
@@ -195,7 +195,7 @@ public interface ExceptionHandlerPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToProtectedNode(ViewerFilter filter);
 
@@ -205,7 +205,7 @@ public interface ExceptionHandlerPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToProtectedNode(ViewerFilter filter);
 
@@ -217,12 +217,9 @@ public interface ExceptionHandlerPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
-	 * 
+	 * @generated
 	 */
 	public String getTitle();
 
-	// Start of user code for additional methods
-
-// End of user code
 
 }

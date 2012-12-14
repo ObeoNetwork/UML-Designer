@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,26 +10,26 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts;
 
-// Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
-
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public interface ClassifierTemplateParameterPropertiesEditionPart {
 
 	/**
 	 * @return the signature
-	 * 
+	 * @generated
 	 */
 	public EObject getSignature();
 
@@ -42,14 +42,14 @@ public interface ClassifierTemplateParameterPropertiesEditionPart {
 	/**
 	 * Defines a new signature
 	 * @param newValue the new signature to set
-	 * 
+	 * @generated
 	 */
 	public void setSignature(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setSignatureButtonMode(ButtonsModeEnum newValue);
 
@@ -59,7 +59,7 @@ public interface ClassifierTemplateParameterPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToSignature(ViewerFilter filter);
 
@@ -69,14 +69,14 @@ public interface ClassifierTemplateParameterPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToSignature(ViewerFilter filter);
 
 
 	/**
 	 * @return the parameteredElement
-	 * 
+	 * @generated
 	 */
 	public EObject getParameteredElement();
 
@@ -89,14 +89,14 @@ public interface ClassifierTemplateParameterPropertiesEditionPart {
 	/**
 	 * Defines a new parameteredElement
 	 * @param newValue the new parameteredElement to set
-	 * 
+	 * @generated
 	 */
 	public void setParameteredElement(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setParameteredElementButtonMode(ButtonsModeEnum newValue);
 
@@ -106,7 +106,7 @@ public interface ClassifierTemplateParameterPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToParameteredElement(ViewerFilter filter);
 
@@ -116,14 +116,14 @@ public interface ClassifierTemplateParameterPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToParameteredElement(ViewerFilter filter);
 
 
 	/**
 	 * @return the default
-	 * 
+	 * @generated
 	 */
 	public EObject getDefault_();
 
@@ -136,14 +136,14 @@ public interface ClassifierTemplateParameterPropertiesEditionPart {
 	/**
 	 * Defines a new default
 	 * @param newValue the new default to set
-	 * 
+	 * @generated
 	 */
 	public void setDefault_(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setDefault_ButtonMode(ButtonsModeEnum newValue);
 
@@ -153,7 +153,7 @@ public interface ClassifierTemplateParameterPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToDefault_(ViewerFilter filter);
 
@@ -163,21 +163,21 @@ public interface ClassifierTemplateParameterPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToDefault_(ViewerFilter filter);
 
 
 	/**
 	 * @return the allowSubstitutable
-	 * 
+	 * @generated
 	 */
 	public Boolean getAllowSubstitutable();
 
 	/**
 	 * Defines a new allowSubstitutable
 	 * @param newValue the new allowSubstitutable to set
-	 * 
+	 * @generated
 	 */
 	public void setAllowSubstitutable(Boolean newValue);
 
@@ -193,7 +193,7 @@ public interface ClassifierTemplateParameterPropertiesEditionPart {
 	/**
 	 * Update the constrainingClassifier
 	 * @param newValue the constrainingClassifier to update
-	 * 
+	 * @generated
 	 */
 	public void updateConstrainingClassifier();
 
@@ -203,7 +203,7 @@ public interface ClassifierTemplateParameterPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToConstrainingClassifier(ViewerFilter filter);
 
@@ -213,13 +213,13 @@ public interface ClassifierTemplateParameterPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToConstrainingClassifier(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the constrainingClassifier table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInConstrainingClassifierTable(EObject element);
 
@@ -231,12 +231,9 @@ public interface ClassifierTemplateParameterPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
-	 * 
+	 * @generated
 	 */
 	public String getTitle();
 
-	// Start of user code for additional methods
-
-// End of user code
 
 }

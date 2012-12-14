@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,35 +10,54 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.components;
 
-// Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
-import org.eclipse.emf.ecore.EEnum;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Parameter;
@@ -50,18 +69,20 @@ import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
+
 import org.obeonetwork.dsl.uml2.properties.uml.parts.ParameterPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 
 
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public class ParameterPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
+	/**
+	 * @generated
+	 */
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
@@ -69,36 +90,37 @@ public class ParameterPropertiesEditionComponent extends SinglePartPropertiesEdi
 	/**
 	 * Settings for clientDependency ReferencesTable
 	 */
-	private	ReferencesTableSettings clientDependencySettings;
+	private ReferencesTableSettings clientDependencySettings;
 	
 	/**
 	 * Settings for type EObjectFlatComboViewer
 	 */
-	private	EObjectFlatComboSettings typeSettings;
+	private EObjectFlatComboSettings typeSettings;
 	
 	/**
 	 * Settings for owningTemplateParameter EObjectFlatComboViewer
 	 */
-	private	EObjectFlatComboSettings owningTemplateParameterSettings;
+	private EObjectFlatComboSettings owningTemplateParameterSettings;
 	
 	/**
 	 * Settings for templateParameter EObjectFlatComboViewer
 	 */
-	private	EObjectFlatComboSettings templateParameterSettings;
+	private EObjectFlatComboSettings templateParameterSettings;
 	
 	/**
 	 * Settings for parameterSet ReferencesTable
 	 */
-	private	ReferencesTableSettings parameterSetSettings;
+	private ReferencesTableSettings parameterSetSettings;
 	
 	/**
 	 * Settings for operation EObjectFlatComboViewer
 	 */
-	private	EObjectFlatComboSettings operationSettings;
+	private EObjectFlatComboSettings operationSettings;
+	
 	
 	/**
 	 * Default constructor
-	 * 
+	 * @generated
 	 */
 	public ParameterPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject parameter, String editing_mode) {
 		super(editingContext, parameter, editing_mode);
@@ -112,20 +134,21 @@ public class ParameterPropertiesEditionComponent extends SinglePartPropertiesEdi
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
-	 * 
+	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final Parameter parameter = (Parameter)elt;
 			final ParameterPropertiesEditionPart basePart = (ParameterPropertiesEditionPart)editingPart;
 			// init values
-			if (parameter.getName() != null && isAccessible(UmlViewsRepository.Parameter.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(UMLPackage.eINSTANCE.getString(), parameter.getName()));
+			if (isAccessible(UmlViewsRepository.Parameter.Properties.name))
+				basePart.setName(EEFConverterUtil.convertToString(UMLPackage.Literals.STRING, parameter.getName()));
 			
 			if (isAccessible(UmlViewsRepository.Parameter.Properties.visibility)) {
-				basePart.initVisibility((EEnum) UMLPackage.eINSTANCE.getNamedElement_Visibility().getEType(), parameter.getVisibility());
+				basePart.initVisibility(EEFUtils.choiceOfValues(parameter, UMLPackage.eINSTANCE.getNamedElement_Visibility()), parameter.getVisibility());
 			}
 			if (isAccessible(UmlViewsRepository.Parameter.Properties.clientDependency)) {
 				clientDependencySettings = new ReferencesTableSettings(parameter, UMLPackage.eINSTANCE.getNamedElement_ClientDependency());
@@ -152,10 +175,12 @@ public class ParameterPropertiesEditionComponent extends SinglePartPropertiesEdi
 				// set the button mode
 				basePart.setTemplateParameterButtonMode(ButtonsModeEnum.BROWSE);
 			}
-			basePart.setIsOrdered(parameter.isOrdered());
-			
-			basePart.setIsUnique(parameter.isUnique());
-			
+			if (isAccessible(UmlViewsRepository.Parameter.Properties.isOrdered)) {
+				basePart.setIsOrdered(parameter.isOrdered());
+			}
+			if (isAccessible(UmlViewsRepository.Parameter.Properties.isUnique)) {
+				basePart.setIsUnique(parameter.isUnique());
+			}
 			if (isAccessible(UmlViewsRepository.Parameter.Properties.parameterSet)) {
 				parameterSetSettings = new ReferencesTableSettings(parameter, UMLPackage.eINSTANCE.getParameter_ParameterSet());
 				basePart.initParameterSet(parameterSetSettings);
@@ -168,116 +193,112 @@ public class ParameterPropertiesEditionComponent extends SinglePartPropertiesEdi
 				basePart.setOperationButtonMode(ButtonsModeEnum.BROWSE);
 			}
 			if (isAccessible(UmlViewsRepository.Parameter.Properties.direction)) {
-				basePart.initDirection((EEnum) UMLPackage.eINSTANCE.getParameter_Direction().getEType(), parameter.getDirection());
+				basePart.initDirection(EEFUtils.choiceOfValues(parameter, UMLPackage.eINSTANCE.getParameter_Direction()), parameter.getDirection());
 			}
-			basePart.setIsException(parameter.isException());
-			
-			basePart.setIsStream(parameter.isStream());
-			
+			if (isAccessible(UmlViewsRepository.Parameter.Properties.isException)) {
+				basePart.setIsException(parameter.isException());
+			}
+			if (isAccessible(UmlViewsRepository.Parameter.Properties.isStream)) {
+				basePart.setIsStream(parameter.isStream());
+			}
 			if (isAccessible(UmlViewsRepository.Parameter.Properties.effect)) {
-				basePart.initEffect((EEnum) UMLPackage.eINSTANCE.getParameter_Effect().getEType(), parameter.getEffect());
+				basePart.initEffect(EEFUtils.choiceOfValues(parameter, UMLPackage.eINSTANCE.getParameter_Effect()), parameter.getEffect());
 			}
 			// init filters
 			
 			
-			basePart.addFilterToClientDependency(new ViewerFilter() {
-			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInClientDependencyTable((EObject)element));
-					return element instanceof Resource;
-				}
-			
-			});
-			basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.eINSTANCE.getDependency()));
-			// Start of user code for additional businessfilters for clientDependency
-			// End of user code
-			
-			basePart.addFilterToType(new ViewerFilter() {
-			
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof String && element.equals("")) || (element instanceof Type); //$NON-NLS-1$ 
-				}
-			
-			});
-			// Start of user code for additional businessfilters for type
-			// End of user code
-			
-			basePart.addFilterToOwningTemplateParameter(new ViewerFilter() {
-			
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof String && element.equals("")) || (element instanceof TemplateParameter); //$NON-NLS-1$ 
-				}
-			
-			});
-			// Start of user code for additional businessfilters for owningTemplateParameter
-			// End of user code
-			
-			basePart.addFilterToTemplateParameter(new ViewerFilter() {
-			
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof String && element.equals("")) || (element instanceof TemplateParameter); //$NON-NLS-1$ 
-				}
-			
-			});
-			// Start of user code for additional businessfilters for templateParameter
-			// End of user code
+			if (isAccessible(UmlViewsRepository.Parameter.Properties.clientDependency)) {
+				basePart.addFilterToClientDependency(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInClientDependencyTable((EObject)element));
+						return element instanceof Resource;
+					}
+				
+				});
+				basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.Literals.DEPENDENCY));
+			}
+			if (isAccessible(UmlViewsRepository.Parameter.Properties.type)) {
+				basePart.addFilterToType(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof Type); //$NON-NLS-1$ 
+					}
+					
+				});
+			}
+			if (isAccessible(UmlViewsRepository.Parameter.Properties.owningTemplateParameter)) {
+				basePart.addFilterToOwningTemplateParameter(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof TemplateParameter); //$NON-NLS-1$ 
+					}
+					
+				});
+			}
+			if (isAccessible(UmlViewsRepository.Parameter.Properties.templateParameter)) {
+				basePart.addFilterToTemplateParameter(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof TemplateParameter); //$NON-NLS-1$ 
+					}
+					
+				});
+			}
 			
 			
-			
-			basePart.addFilterToParameterSet(new ViewerFilter() {
-			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInParameterSetTable((EObject)element));
-					return element instanceof Resource;
-				}
-			
-			});
-			basePart.addFilterToParameterSet(new EObjectFilter(UMLPackage.eINSTANCE.getParameterSet()));
-			// Start of user code for additional businessfilters for parameterSet
-			// End of user code
-			
-			basePart.addFilterToOperation(new ViewerFilter() {
-			
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof String && element.equals("")) || (element instanceof Operation); //$NON-NLS-1$ 
-				}
-			
-			});
-			// Start of user code for additional businessfilters for operation
-			// End of user code
-			
+			if (isAccessible(UmlViewsRepository.Parameter.Properties.parameterSet)) {
+				basePart.addFilterToParameterSet(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInParameterSetTable((EObject)element));
+						return element instanceof Resource;
+					}
+				
+				});
+				basePart.addFilterToParameterSet(new EObjectFilter(UMLPackage.Literals.PARAMETER_SET));
+			}
+			if (isAccessible(UmlViewsRepository.Parameter.Properties.operation)) {
+				basePart.addFilterToOperation(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof Operation); //$NON-NLS-1$ 
+					}
+					
+				});
+			}
 			
 			
 			
@@ -310,7 +331,7 @@ public class ParameterPropertiesEditionComponent extends SinglePartPropertiesEdi
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
-	protected EStructuralFeature associatedFeature(Object editorKey) {
+	public EStructuralFeature associatedFeature(Object editorKey) {
 		if (editorKey == UmlViewsRepository.Parameter.Properties.name) {
 			return UMLPackage.eINSTANCE.getNamedElement_Name();
 		}
@@ -359,12 +380,12 @@ public class ParameterPropertiesEditionComponent extends SinglePartPropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Parameter parameter = (Parameter)semanticObject;
 		if (UmlViewsRepository.Parameter.Properties.name == event.getAffectedEditor()) {
-			parameter.setName((java.lang.String)EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getString(), (String)event.getNewValue()));
+			parameter.setName((java.lang.String)EEFConverterUtil.createFromString(UMLPackage.Literals.STRING, (String)event.getNewValue()));
 		}
 		if (UmlViewsRepository.Parameter.Properties.visibility == event.getAffectedEditor()) {
 			parameter.setVisibility((VisibilityKind)event.getNewValue());
@@ -375,7 +396,9 @@ public class ParameterPropertiesEditionComponent extends SinglePartPropertiesEdi
 					clientDependencySettings.addToReference((EObject) event.getNewValue());
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-					clientDependencySettings.removeFromReference((EObject) event.getNewValue());
+				clientDependencySettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				clientDependencySettings.move(event.getNewIndex(), (Dependency) event.getNewValue());
 			}
 		}
 		if (UmlViewsRepository.Parameter.Properties.type == event.getAffectedEditor()) {
@@ -436,7 +459,9 @@ public class ParameterPropertiesEditionComponent extends SinglePartPropertiesEdi
 					parameterSetSettings.addToReference((EObject) event.getNewValue());
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-					parameterSetSettings.removeFromReference((EObject) event.getNewValue());
+				parameterSetSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				parameterSetSettings.move(event.getNewIndex(), (ParameterSet) event.getNewValue());
 			}
 		}
 		if (UmlViewsRepository.Parameter.Properties.direction == event.getAffectedEditor()) {
@@ -458,17 +483,18 @@ public class ParameterPropertiesEditionComponent extends SinglePartPropertiesEdi
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		if (editingPart.isVisible()) {	
+		super.updatePart(msg);
+		if (editingPart.isVisible()) {
 			ParameterPropertiesEditionPart basePart = (ParameterPropertiesEditionPart)editingPart;
-			if (UMLPackage.eINSTANCE.getNamedElement_Name().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.Parameter.Properties.name)) {
+			if (UMLPackage.eINSTANCE.getNamedElement_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(UmlViewsRepository.Parameter.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(UMLPackage.eINSTANCE.getString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(UMLPackage.Literals.STRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}
 			}
-			if (UMLPackage.eINSTANCE.getNamedElement_Visibility().equals(msg.getFeature()) && isAccessible(UmlViewsRepository.Parameter.Properties.visibility))
-				basePart.setVisibility((Enumerator)msg.getNewValue());
+			if (UMLPackage.eINSTANCE.getNamedElement_Visibility().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(UmlViewsRepository.Parameter.Properties.visibility))
+				basePart.setVisibility((VisibilityKind)msg.getNewValue());
 			
 			if (UMLPackage.eINSTANCE.getNamedElement_ClientDependency().equals(msg.getFeature())  && isAccessible(UmlViewsRepository.Parameter.Properties.clientDependency))
 				basePart.updateClientDependency();
@@ -478,30 +504,55 @@ public class ParameterPropertiesEditionComponent extends SinglePartPropertiesEdi
 				basePart.setOwningTemplateParameter((EObject)msg.getNewValue());
 			if (UMLPackage.eINSTANCE.getParameterableElement_TemplateParameter().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.Parameter.Properties.templateParameter))
 				basePart.setTemplateParameter((EObject)msg.getNewValue());
-			if (UMLPackage.eINSTANCE.getMultiplicityElement_IsOrdered().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.Parameter.Properties.isOrdered))
+			if (UMLPackage.eINSTANCE.getMultiplicityElement_IsOrdered().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(UmlViewsRepository.Parameter.Properties.isOrdered))
 				basePart.setIsOrdered((Boolean)msg.getNewValue());
 			
-			if (UMLPackage.eINSTANCE.getMultiplicityElement_IsUnique().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.Parameter.Properties.isUnique))
+			if (UMLPackage.eINSTANCE.getMultiplicityElement_IsUnique().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(UmlViewsRepository.Parameter.Properties.isUnique))
 				basePart.setIsUnique((Boolean)msg.getNewValue());
 			
 			if (UMLPackage.eINSTANCE.getParameter_ParameterSet().equals(msg.getFeature())  && isAccessible(UmlViewsRepository.Parameter.Properties.parameterSet))
 				basePart.updateParameterSet();
 			if (UMLPackage.eINSTANCE.getParameter_Operation().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.Parameter.Properties.operation))
 				basePart.setOperation((EObject)msg.getNewValue());
-			if (UMLPackage.eINSTANCE.getParameter_Direction().equals(msg.getFeature()) && isAccessible(UmlViewsRepository.Parameter.Properties.direction))
-				basePart.setDirection((Enumerator)msg.getNewValue());
+			if (UMLPackage.eINSTANCE.getParameter_Direction().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(UmlViewsRepository.Parameter.Properties.direction))
+				basePart.setDirection((ParameterDirectionKind)msg.getNewValue());
 			
-			if (UMLPackage.eINSTANCE.getParameter_IsException().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.Parameter.Properties.isException))
+			if (UMLPackage.eINSTANCE.getParameter_IsException().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(UmlViewsRepository.Parameter.Properties.isException))
 				basePart.setIsException((Boolean)msg.getNewValue());
 			
-			if (UMLPackage.eINSTANCE.getParameter_IsStream().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.Parameter.Properties.isStream))
+			if (UMLPackage.eINSTANCE.getParameter_IsStream().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(UmlViewsRepository.Parameter.Properties.isStream))
 				basePart.setIsStream((Boolean)msg.getNewValue());
 			
-			if (UMLPackage.eINSTANCE.getParameter_Effect().equals(msg.getFeature()) && isAccessible(UmlViewsRepository.Parameter.Properties.effect))
-				basePart.setEffect((Enumerator)msg.getNewValue());
+			if (UMLPackage.eINSTANCE.getParameter_Effect().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(UmlViewsRepository.Parameter.Properties.effect))
+				basePart.setEffect((ParameterEffectKind)msg.getNewValue());
 			
 			
 		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			UMLPackage.eINSTANCE.getNamedElement_Name(),
+			UMLPackage.eINSTANCE.getNamedElement_Visibility(),
+			UMLPackage.eINSTANCE.getNamedElement_ClientDependency(),
+			UMLPackage.eINSTANCE.getTypedElement_Type(),
+			UMLPackage.eINSTANCE.getParameterableElement_OwningTemplateParameter(),
+			UMLPackage.eINSTANCE.getParameterableElement_TemplateParameter(),
+			UMLPackage.eINSTANCE.getMultiplicityElement_IsOrdered(),
+			UMLPackage.eINSTANCE.getMultiplicityElement_IsUnique(),
+			UMLPackage.eINSTANCE.getParameter_ParameterSet(),
+			UMLPackage.eINSTANCE.getParameter_Operation(),
+			UMLPackage.eINSTANCE.getParameter_Direction(),
+			UMLPackage.eINSTANCE.getParameter_IsException(),
+			UMLPackage.eINSTANCE.getParameter_IsStream(),
+			UMLPackage.eINSTANCE.getParameter_Effect()		);
+		return new NotificationFilter[] {filter,};
 	}
 
 
@@ -509,7 +560,7 @@ public class ParameterPropertiesEditionComponent extends SinglePartPropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
-	 * 
+	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
 		return key == UmlViewsRepository.Parameter.Properties.isOrdered || key == UmlViewsRepository.Parameter.Properties.isUnique || key == UmlViewsRepository.Parameter.Properties.direction || key == UmlViewsRepository.Parameter.Properties.isException || key == UmlViewsRepository.Parameter.Properties.isStream;
@@ -519,7 +570,7 @@ public class ParameterPropertiesEditionComponent extends SinglePartPropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
@@ -528,56 +579,56 @@ public class ParameterPropertiesEditionComponent extends SinglePartPropertiesEdi
 				if (UmlViewsRepository.Parameter.Properties.name == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newValue);
 				}
 				if (UmlViewsRepository.Parameter.Properties.visibility == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), newValue);
 				}
 				if (UmlViewsRepository.Parameter.Properties.isOrdered == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(UMLPackage.eINSTANCE.getMultiplicityElement_IsOrdered().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getMultiplicityElement_IsOrdered().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getMultiplicityElement_IsOrdered().getEAttributeType(), newValue);
 				}
 				if (UmlViewsRepository.Parameter.Properties.isUnique == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(UMLPackage.eINSTANCE.getMultiplicityElement_IsUnique().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getMultiplicityElement_IsUnique().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getMultiplicityElement_IsUnique().getEAttributeType(), newValue);
 				}
 				if (UmlViewsRepository.Parameter.Properties.direction == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(UMLPackage.eINSTANCE.getParameter_Direction().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getParameter_Direction().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getParameter_Direction().getEAttributeType(), newValue);
 				}
 				if (UmlViewsRepository.Parameter.Properties.isException == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(UMLPackage.eINSTANCE.getParameter_IsException().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getParameter_IsException().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getParameter_IsException().getEAttributeType(), newValue);
 				}
 				if (UmlViewsRepository.Parameter.Properties.isStream == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(UMLPackage.eINSTANCE.getParameter_IsStream().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getParameter_IsStream().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getParameter_IsStream().getEAttributeType(), newValue);
 				}
 				if (UmlViewsRepository.Parameter.Properties.effect == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(UMLPackage.eINSTANCE.getParameter_Effect().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getParameter_Effect().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getParameter_Effect().getEAttributeType(), newValue);
 				}
@@ -589,5 +640,8 @@ public class ParameterPropertiesEditionComponent extends SinglePartPropertiesEdi
 		}
 		return ret;
 	}
+
+
+	
 
 }

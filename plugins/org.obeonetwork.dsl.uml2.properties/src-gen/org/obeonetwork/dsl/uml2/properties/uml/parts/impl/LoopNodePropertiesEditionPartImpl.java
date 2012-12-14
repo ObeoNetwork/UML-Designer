@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,69 +10,90 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts.impl;
 
-// Start of user code for imports
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EEnumLiteral;
+
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
+
 import org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
+
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 
 
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, LoopNodePropertiesEditionPart {
 
@@ -124,7 +145,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
+	 * @generated
 	 */
 	public LoopNodePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -135,7 +156,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
@@ -151,7 +172,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public void createControls(Composite view) { 
 		CompositionSequence loopNodeStep = new BindingCompositionSequence(propertiesEditionComponent);
@@ -252,7 +273,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
@@ -266,10 +287,13 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		return propertiesGroup;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.LoopNodePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.LoopNode.Properties.name, UmlViewsRepository.SWT_KIND));
-		name = new Text(parent, SWT.BORDER);
+		createDescription(parent, UmlViewsRepository.LoopNode.Properties.name, UmlMessages.LoopNodePropertiesEditionPart_NameLabel);
+		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {
@@ -278,7 +302,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -294,7 +318,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -312,12 +336,15 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		return parent;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createVisibilityEMFComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.LoopNodePropertiesEditionPart_VisibilityLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.LoopNode.Properties.visibility, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.LoopNode.Properties.visibility, UmlMessages.LoopNodePropertiesEditionPart_VisibilityLabel);
 		visibility = new EMFComboViewer(parent);
 		visibility.setContentProvider(new ArrayContentProvider());
-		visibility.setLabelProvider(new AdapterFactoryLabelProvider(new EcoreAdapterFactory()));
+		visibility.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData visibilityData = new GridData(GridData.FILL_HORIZONTAL);
 		visibility.getCombo().setLayoutData(visibilityData);
 		visibility.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -326,7 +353,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
+			 * 	@generated
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
@@ -340,10 +367,11 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createClientDependencyAdvancedReferencesTable(Composite parent) {
-		this.clientDependency = new ReferencesTable(UmlMessages.LoopNodePropertiesEditionPart_ClientDependencyLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.LoopNode.Properties.clientDependency, UmlMessages.LoopNodePropertiesEditionPart_ClientDependencyLabel);		 
+		this.clientDependency = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addClientDependency(); }
 			public void handleEdit(EObject element) { editClientDependency(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveClientDependency(element, oldIndex, newIndex); }
@@ -371,7 +399,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addClientDependency() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(clientDependency.getInput(), clientDependencyFilters, clientDependencyBusinessFilters,
@@ -390,7 +418,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveClientDependency(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LoopNodePropertiesEditionPartImpl.this, UmlViewsRepository.LoopNode.Properties.clientDependency, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -398,7 +426,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromClientDependency(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LoopNodePropertiesEditionPartImpl.this, UmlViewsRepository.LoopNode.Properties.clientDependency, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -406,7 +434,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editClientDependency(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -420,17 +448,20 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		}
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createIsLeafCheckbox(Composite parent) {
 		isLeaf = new Button(parent, SWT.CHECK);
-		isLeaf.setText(UmlMessages.LoopNodePropertiesEditionPart_IsLeafLabel);
+		isLeaf.setText(getDescription(UmlViewsRepository.LoopNode.Properties.isLeaf, UmlMessages.LoopNodePropertiesEditionPart_IsLeafLabel));
 		isLeaf.addSelectionListener(new SelectionAdapter() {
 
 			/**
 			 * {@inheritDoc}
 			 *
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	
+			 * 	@generated
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
@@ -449,10 +480,10 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createInStructuredNodeFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.LoopNodePropertiesEditionPart_InStructuredNodeLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.LoopNode.Properties.inStructuredNode, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.LoopNode.Properties.inStructuredNode, UmlMessages.LoopNodePropertiesEditionPart_InStructuredNodeLabel);
 		inStructuredNode = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.LoopNode.Properties.inStructuredNode, UmlViewsRepository.SWT_KIND));
 		inStructuredNode.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -472,10 +503,10 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createActivityFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.LoopNodePropertiesEditionPart_ActivityLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.LoopNode.Properties.activity, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.LoopNode.Properties.activity, UmlMessages.LoopNodePropertiesEditionPart_ActivityLabel);
 		activity = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.LoopNode.Properties.activity, UmlViewsRepository.SWT_KIND));
 		activity.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -494,10 +525,11 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createOutgoingAdvancedReferencesTable(Composite parent) {
-		this.outgoing = new ReferencesTable(UmlMessages.LoopNodePropertiesEditionPart_OutgoingLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.LoopNode.Properties.outgoing, UmlMessages.LoopNodePropertiesEditionPart_OutgoingLabel);		 
+		this.outgoing = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addOutgoing(); }
 			public void handleEdit(EObject element) { editOutgoing(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveOutgoing(element, oldIndex, newIndex); }
@@ -525,7 +557,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addOutgoing() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(outgoing.getInput(), outgoingFilters, outgoingBusinessFilters,
@@ -544,7 +576,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveOutgoing(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LoopNodePropertiesEditionPartImpl.this, UmlViewsRepository.LoopNode.Properties.outgoing, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -552,7 +584,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromOutgoing(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LoopNodePropertiesEditionPartImpl.this, UmlViewsRepository.LoopNode.Properties.outgoing, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -560,7 +592,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editOutgoing(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -575,10 +607,11 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createIncomingAdvancedReferencesTable(Composite parent) {
-		this.incoming = new ReferencesTable(UmlMessages.LoopNodePropertiesEditionPart_IncomingLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.LoopNode.Properties.incoming, UmlMessages.LoopNodePropertiesEditionPart_IncomingLabel);		 
+		this.incoming = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addIncoming(); }
 			public void handleEdit(EObject element) { editIncoming(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveIncoming(element, oldIndex, newIndex); }
@@ -606,7 +639,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addIncoming() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(incoming.getInput(), incomingFilters, incomingBusinessFilters,
@@ -625,7 +658,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveIncoming(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LoopNodePropertiesEditionPartImpl.this, UmlViewsRepository.LoopNode.Properties.incoming, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -633,7 +666,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromIncoming(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LoopNodePropertiesEditionPartImpl.this, UmlViewsRepository.LoopNode.Properties.incoming, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -641,7 +674,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editIncoming(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -656,10 +689,11 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createInPartitionAdvancedReferencesTable(Composite parent) {
-		this.inPartition = new ReferencesTable(UmlMessages.LoopNodePropertiesEditionPart_InPartitionLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.LoopNode.Properties.inPartition, UmlMessages.LoopNodePropertiesEditionPart_InPartitionLabel);		 
+		this.inPartition = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addInPartition(); }
 			public void handleEdit(EObject element) { editInPartition(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveInPartition(element, oldIndex, newIndex); }
@@ -687,7 +721,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addInPartition() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(inPartition.getInput(), inPartitionFilters, inPartitionBusinessFilters,
@@ -706,7 +740,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveInPartition(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LoopNodePropertiesEditionPartImpl.this, UmlViewsRepository.LoopNode.Properties.inPartition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -714,7 +748,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromInPartition(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LoopNodePropertiesEditionPartImpl.this, UmlViewsRepository.LoopNode.Properties.inPartition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -722,7 +756,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editInPartition(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -737,10 +771,11 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createInInterruptibleRegionAdvancedReferencesTable(Composite parent) {
-		this.inInterruptibleRegion = new ReferencesTable(UmlMessages.LoopNodePropertiesEditionPart_InInterruptibleRegionLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.LoopNode.Properties.inInterruptibleRegion, UmlMessages.LoopNodePropertiesEditionPart_InInterruptibleRegionLabel);		 
+		this.inInterruptibleRegion = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addInInterruptibleRegion(); }
 			public void handleEdit(EObject element) { editInInterruptibleRegion(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveInInterruptibleRegion(element, oldIndex, newIndex); }
@@ -768,7 +803,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addInInterruptibleRegion() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(inInterruptibleRegion.getInput(), inInterruptibleRegionFilters, inInterruptibleRegionBusinessFilters,
@@ -787,7 +822,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveInInterruptibleRegion(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LoopNodePropertiesEditionPartImpl.this, UmlViewsRepository.LoopNode.Properties.inInterruptibleRegion, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -795,7 +830,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromInInterruptibleRegion(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LoopNodePropertiesEditionPartImpl.this, UmlViewsRepository.LoopNode.Properties.inInterruptibleRegion, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -803,7 +838,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editInInterruptibleRegion(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -818,10 +853,11 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createRedefinedNodeAdvancedReferencesTable(Composite parent) {
-		this.redefinedNode = new ReferencesTable(UmlMessages.LoopNodePropertiesEditionPart_RedefinedNodeLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.LoopNode.Properties.redefinedNode, UmlMessages.LoopNodePropertiesEditionPart_RedefinedNodeLabel);		 
+		this.redefinedNode = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addRedefinedNode(); }
 			public void handleEdit(EObject element) { editRedefinedNode(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveRedefinedNode(element, oldIndex, newIndex); }
@@ -849,7 +885,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addRedefinedNode() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(redefinedNode.getInput(), redefinedNodeFilters, redefinedNodeBusinessFilters,
@@ -868,7 +904,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveRedefinedNode(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LoopNodePropertiesEditionPartImpl.this, UmlViewsRepository.LoopNode.Properties.redefinedNode, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -876,7 +912,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromRedefinedNode(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LoopNodePropertiesEditionPartImpl.this, UmlViewsRepository.LoopNode.Properties.redefinedNode, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -884,7 +920,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editRedefinedNode(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -900,10 +936,10 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createInActivityFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.LoopNodePropertiesEditionPart_InActivityLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.LoopNode.Properties.inActivity, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.LoopNode.Properties.inActivity, UmlMessages.LoopNodePropertiesEditionPart_InActivityLabel);
 		inActivity = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.LoopNode.Properties.inActivity, UmlViewsRepository.SWT_KIND));
 		inActivity.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -921,17 +957,20 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		return parent;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createMustIsolateCheckbox(Composite parent) {
 		mustIsolate = new Button(parent, SWT.CHECK);
-		mustIsolate.setText(UmlMessages.LoopNodePropertiesEditionPart_MustIsolateLabel);
+		mustIsolate.setText(getDescription(UmlViewsRepository.LoopNode.Properties.mustIsolate, UmlMessages.LoopNodePropertiesEditionPart_MustIsolateLabel));
 		mustIsolate.addSelectionListener(new SelectionAdapter() {
 
 			/**
 			 * {@inheritDoc}
 			 *
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	
+			 * 	@generated
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
@@ -948,17 +987,20 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		return parent;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createIsTestedFirstCheckbox(Composite parent) {
 		isTestedFirst = new Button(parent, SWT.CHECK);
-		isTestedFirst.setText(UmlMessages.LoopNodePropertiesEditionPart_IsTestedFirstLabel);
+		isTestedFirst.setText(getDescription(UmlViewsRepository.LoopNode.Properties.isTestedFirst, UmlMessages.LoopNodePropertiesEditionPart_IsTestedFirstLabel));
 		isTestedFirst.addSelectionListener(new SelectionAdapter() {
 
 			/**
 			 * {@inheritDoc}
 			 *
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	
+			 * 	@generated
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
@@ -976,10 +1018,11 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createBodyPartAdvancedReferencesTable(Composite parent) {
-		this.bodyPart = new ReferencesTable(UmlMessages.LoopNodePropertiesEditionPart_BodyPartLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.LoopNode.Properties.bodyPart, UmlMessages.LoopNodePropertiesEditionPart_BodyPartLabel);		 
+		this.bodyPart = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addBodyPart(); }
 			public void handleEdit(EObject element) { editBodyPart(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveBodyPart(element, oldIndex, newIndex); }
@@ -1007,7 +1050,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addBodyPart() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(bodyPart.getInput(), bodyPartFilters, bodyPartBusinessFilters,
@@ -1026,7 +1069,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveBodyPart(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LoopNodePropertiesEditionPartImpl.this, UmlViewsRepository.LoopNode.Properties.bodyPart, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -1034,7 +1077,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromBodyPart(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LoopNodePropertiesEditionPartImpl.this, UmlViewsRepository.LoopNode.Properties.bodyPart, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -1042,7 +1085,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editBodyPart(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -1057,10 +1100,11 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createSetupPartAdvancedReferencesTable(Composite parent) {
-		this.setupPart = new ReferencesTable(UmlMessages.LoopNodePropertiesEditionPart_SetupPartLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.LoopNode.Properties.setupPart, UmlMessages.LoopNodePropertiesEditionPart_SetupPartLabel);		 
+		this.setupPart = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addSetupPart(); }
 			public void handleEdit(EObject element) { editSetupPart(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveSetupPart(element, oldIndex, newIndex); }
@@ -1088,7 +1132,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addSetupPart() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(setupPart.getInput(), setupPartFilters, setupPartBusinessFilters,
@@ -1107,7 +1151,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveSetupPart(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LoopNodePropertiesEditionPartImpl.this, UmlViewsRepository.LoopNode.Properties.setupPart, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -1115,7 +1159,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromSetupPart(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LoopNodePropertiesEditionPartImpl.this, UmlViewsRepository.LoopNode.Properties.setupPart, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -1123,7 +1167,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editSetupPart(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -1139,10 +1183,10 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createDeciderFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.LoopNodePropertiesEditionPart_DeciderLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.LoopNode.Properties.decider, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.LoopNode.Properties.decider, UmlMessages.LoopNodePropertiesEditionPart_DeciderLabel);
 		decider = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.LoopNode.Properties.decider, UmlViewsRepository.SWT_KIND));
 		decider.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -1161,10 +1205,11 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createTestAdvancedReferencesTable(Composite parent) {
-		this.test = new ReferencesTable(UmlMessages.LoopNodePropertiesEditionPart_TestLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.LoopNode.Properties.test, UmlMessages.LoopNodePropertiesEditionPart_TestLabel);		 
+		this.test = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addTest(); }
 			public void handleEdit(EObject element) { editTest(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveTest(element, oldIndex, newIndex); }
@@ -1192,7 +1237,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addTest() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(test.getInput(), testFilters, testBusinessFilters,
@@ -1211,7 +1256,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveTest(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LoopNodePropertiesEditionPartImpl.this, UmlViewsRepository.LoopNode.Properties.test, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -1219,7 +1264,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromTest(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LoopNodePropertiesEditionPartImpl.this, UmlViewsRepository.LoopNode.Properties.test, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -1227,7 +1272,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editTest(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -1242,10 +1287,11 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createLoopVariableAdvancedReferencesTable(Composite parent) {
-		this.loopVariable = new ReferencesTable(UmlMessages.LoopNodePropertiesEditionPart_LoopVariableLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.LoopNode.Properties.loopVariable, UmlMessages.LoopNodePropertiesEditionPart_LoopVariableLabel);		 
+		this.loopVariable = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addLoopVariable(); }
 			public void handleEdit(EObject element) { editLoopVariable(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveLoopVariable(element, oldIndex, newIndex); }
@@ -1273,7 +1319,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addLoopVariable() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(loopVariable.getInput(), loopVariableFilters, loopVariableBusinessFilters,
@@ -1292,7 +1338,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveLoopVariable(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LoopNodePropertiesEditionPartImpl.this, UmlViewsRepository.LoopNode.Properties.loopVariable, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -1300,7 +1346,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromLoopVariable(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LoopNodePropertiesEditionPartImpl.this, UmlViewsRepository.LoopNode.Properties.loopVariable, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -1308,7 +1354,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editLoopVariable(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -1323,10 +1369,11 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createBodyOutputAdvancedReferencesTable(Composite parent) {
-		this.bodyOutput = new ReferencesTable(UmlMessages.LoopNodePropertiesEditionPart_BodyOutputLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.LoopNode.Properties.bodyOutput, UmlMessages.LoopNodePropertiesEditionPart_BodyOutputLabel);		 
+		this.bodyOutput = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addBodyOutput(); }
 			public void handleEdit(EObject element) { editBodyOutput(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveBodyOutput(element, oldIndex, newIndex); }
@@ -1354,7 +1401,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addBodyOutput() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(bodyOutput.getInput(), bodyOutputFilters, bodyOutputBusinessFilters,
@@ -1373,7 +1420,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveBodyOutput(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LoopNodePropertiesEditionPartImpl.this, UmlViewsRepository.LoopNode.Properties.bodyOutput, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -1381,7 +1428,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromBodyOutput(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LoopNodePropertiesEditionPartImpl.this, UmlViewsRepository.LoopNode.Properties.bodyOutput, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -1389,7 +1436,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editBodyOutput(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -1404,24 +1451,20 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	}
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-
-// End of user code
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#getName()
-	 * 
+	 * @generated
 	 */
 	public String getName() {
 		return name.getText();
@@ -1431,7 +1474,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#setName(String newValue)
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue) {
 		if (newValue != null) {
@@ -1439,40 +1482,62 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.LoopNode.Properties.name);
+		if (readOnly && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(UmlMessages.LoopNode_ReadOnly);
+		} else if (!readOnly && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
-
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#getVisibility()
-	 * 
+	 * @generated
 	 */
 	public Enumerator getVisibility() {
-		EEnumLiteral selection = (EEnumLiteral) ((StructuredSelection) visibility.getSelection()).getFirstElement();
-		return selection.getInstance();
+		Enumerator selection = (Enumerator) ((StructuredSelection) visibility.getSelection()).getFirstElement();
+		return selection;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#initVisibility(EEnum eenum, Enumerator current)
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#initVisibility(Object input, Enumerator current)
 	 */
-	public void initVisibility(EEnum eenum, Enumerator current) {
-		visibility.setInput(eenum.getELiterals());
+	public void initVisibility(Object input, Enumerator current) {
+		visibility.setInput(input);
 		visibility.modelUpdating(new StructuredSelection(current));
+		boolean readOnly = isReadOnly(UmlViewsRepository.LoopNode.Properties.visibility);
+		if (readOnly && visibility.isEnabled()) {
+			visibility.setEnabled(false);
+			visibility.setToolTipText(UmlMessages.LoopNode_ReadOnly);
+		} else if (!readOnly && !visibility.isEnabled()) {
+			visibility.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#setVisibility(Enumerator newValue)
-	 * 
+	 * @generated
 	 */
 	public void setVisibility(Enumerator newValue) {
 		visibility.modelUpdating(new StructuredSelection(newValue));
+		boolean readOnly = isReadOnly(UmlViewsRepository.LoopNode.Properties.visibility);
+		if (readOnly && visibility.isEnabled()) {
+			visibility.setEnabled(false);
+			visibility.setToolTipText(UmlMessages.LoopNode_ReadOnly);
+		} else if (!readOnly && !visibility.isEnabled()) {
+			visibility.setEnabled(true);
+		}	
+		
 	}
-
 
 
 
@@ -1487,13 +1552,21 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		clientDependency.setContentProvider(contentProvider);
 		clientDependency.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.LoopNode.Properties.clientDependency);
+		if (readOnly && clientDependency.getTable().isEnabled()) {
+			clientDependency.setEnabled(false);
+			clientDependency.setToolTipText(UmlMessages.LoopNode_ReadOnly);
+		} else if (!readOnly && !clientDependency.getTable().isEnabled()) {
+			clientDependency.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#updateClientDependency()
-	 * 
+	 * @generated
 	 */
 	public void updateClientDependency() {
 	clientDependency.refresh();
@@ -1503,7 +1576,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#addFilterClientDependency(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToClientDependency(ViewerFilter filter) {
 		clientDependencyFilters.add(filter);
@@ -1513,7 +1586,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#addBusinessFilterClientDependency(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToClientDependency(ViewerFilter filter) {
 		clientDependencyBusinessFilters.add(filter);
@@ -1523,18 +1596,17 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#isContainedInClientDependencyTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInClientDependencyTable(EObject element) {
 		return ((ReferencesTableSettings)clientDependency.getInput()).contains(element);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#getIsLeaf()
-	 * 
+	 * @generated
 	 */
 	public Boolean getIsLeaf() {
 		return Boolean.valueOf(isLeaf.getSelection());
@@ -1544,7 +1616,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#setIsLeaf(Boolean newValue)
-	 * 
+	 * @generated
 	 */
 	public void setIsLeaf(Boolean newValue) {
 		if (newValue != null) {
@@ -1552,14 +1624,21 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		} else {
 			isLeaf.setSelection(false);
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.LoopNode.Properties.isLeaf);
+		if (readOnly && isLeaf.isEnabled()) {
+			isLeaf.setEnabled(false);
+			isLeaf.setToolTipText(UmlMessages.LoopNode_ReadOnly);
+		} else if (!readOnly && !isLeaf.isEnabled()) {
+			isLeaf.setEnabled(true);
+		}	
+		
 	}
-
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#getInStructuredNode()
-	 * 
+	 * @generated
 	 */
 	public EObject getInStructuredNode() {
 		if (inStructuredNode.getSelection() instanceof StructuredSelection) {
@@ -1580,13 +1659,21 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		if (current != null) {
 			inStructuredNode.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.LoopNode.Properties.inStructuredNode);
+		if (readOnly && inStructuredNode.isEnabled()) {
+			inStructuredNode.setEnabled(false);
+			inStructuredNode.setToolTipText(UmlMessages.LoopNode_ReadOnly);
+		} else if (!readOnly && !inStructuredNode.isEnabled()) {
+			inStructuredNode.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#setInStructuredNode(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setInStructuredNode(EObject newValue) {
 		if (newValue != null) {
@@ -1594,6 +1681,14 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		} else {
 			inStructuredNode.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.LoopNode.Properties.inStructuredNode);
+		if (readOnly && inStructuredNode.isEnabled()) {
+			inStructuredNode.setEnabled(false);
+			inStructuredNode.setToolTipText(UmlMessages.LoopNode_ReadOnly);
+		} else if (!readOnly && !inStructuredNode.isEnabled()) {
+			inStructuredNode.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -1609,7 +1704,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#addFilterInStructuredNode(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToInStructuredNode(ViewerFilter filter) {
 		inStructuredNode.addFilter(filter);
@@ -1619,18 +1714,17 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#addBusinessFilterInStructuredNode(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToInStructuredNode(ViewerFilter filter) {
 		inStructuredNode.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#getActivity()
-	 * 
+	 * @generated
 	 */
 	public EObject getActivity() {
 		if (activity.getSelection() instanceof StructuredSelection) {
@@ -1651,13 +1745,21 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		if (current != null) {
 			activity.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.LoopNode.Properties.activity);
+		if (readOnly && activity.isEnabled()) {
+			activity.setEnabled(false);
+			activity.setToolTipText(UmlMessages.LoopNode_ReadOnly);
+		} else if (!readOnly && !activity.isEnabled()) {
+			activity.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#setActivity(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setActivity(EObject newValue) {
 		if (newValue != null) {
@@ -1665,6 +1767,14 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		} else {
 			activity.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.LoopNode.Properties.activity);
+		if (readOnly && activity.isEnabled()) {
+			activity.setEnabled(false);
+			activity.setToolTipText(UmlMessages.LoopNode_ReadOnly);
+		} else if (!readOnly && !activity.isEnabled()) {
+			activity.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -1680,7 +1790,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#addFilterActivity(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToActivity(ViewerFilter filter) {
 		activity.addFilter(filter);
@@ -1690,12 +1800,11 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#addBusinessFilterActivity(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToActivity(ViewerFilter filter) {
 		activity.addBusinessRuleFilter(filter);
 	}
-
 
 
 
@@ -1710,13 +1819,21 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		outgoing.setContentProvider(contentProvider);
 		outgoing.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.LoopNode.Properties.outgoing);
+		if (readOnly && outgoing.getTable().isEnabled()) {
+			outgoing.setEnabled(false);
+			outgoing.setToolTipText(UmlMessages.LoopNode_ReadOnly);
+		} else if (!readOnly && !outgoing.getTable().isEnabled()) {
+			outgoing.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#updateOutgoing()
-	 * 
+	 * @generated
 	 */
 	public void updateOutgoing() {
 	outgoing.refresh();
@@ -1726,7 +1843,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#addFilterOutgoing(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToOutgoing(ViewerFilter filter) {
 		outgoingFilters.add(filter);
@@ -1736,7 +1853,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#addBusinessFilterOutgoing(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToOutgoing(ViewerFilter filter) {
 		outgoingBusinessFilters.add(filter);
@@ -1746,12 +1863,11 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#isContainedInOutgoingTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInOutgoingTable(EObject element) {
 		return ((ReferencesTableSettings)outgoing.getInput()).contains(element);
 	}
-
 
 
 
@@ -1766,13 +1882,21 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		incoming.setContentProvider(contentProvider);
 		incoming.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.LoopNode.Properties.incoming);
+		if (readOnly && incoming.getTable().isEnabled()) {
+			incoming.setEnabled(false);
+			incoming.setToolTipText(UmlMessages.LoopNode_ReadOnly);
+		} else if (!readOnly && !incoming.getTable().isEnabled()) {
+			incoming.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#updateIncoming()
-	 * 
+	 * @generated
 	 */
 	public void updateIncoming() {
 	incoming.refresh();
@@ -1782,7 +1906,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#addFilterIncoming(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToIncoming(ViewerFilter filter) {
 		incomingFilters.add(filter);
@@ -1792,7 +1916,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#addBusinessFilterIncoming(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToIncoming(ViewerFilter filter) {
 		incomingBusinessFilters.add(filter);
@@ -1802,12 +1926,11 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#isContainedInIncomingTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInIncomingTable(EObject element) {
 		return ((ReferencesTableSettings)incoming.getInput()).contains(element);
 	}
-
 
 
 
@@ -1822,13 +1945,21 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		inPartition.setContentProvider(contentProvider);
 		inPartition.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.LoopNode.Properties.inPartition);
+		if (readOnly && inPartition.getTable().isEnabled()) {
+			inPartition.setEnabled(false);
+			inPartition.setToolTipText(UmlMessages.LoopNode_ReadOnly);
+		} else if (!readOnly && !inPartition.getTable().isEnabled()) {
+			inPartition.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#updateInPartition()
-	 * 
+	 * @generated
 	 */
 	public void updateInPartition() {
 	inPartition.refresh();
@@ -1838,7 +1969,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#addFilterInPartition(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToInPartition(ViewerFilter filter) {
 		inPartitionFilters.add(filter);
@@ -1848,7 +1979,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#addBusinessFilterInPartition(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToInPartition(ViewerFilter filter) {
 		inPartitionBusinessFilters.add(filter);
@@ -1858,12 +1989,11 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#isContainedInInPartitionTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInInPartitionTable(EObject element) {
 		return ((ReferencesTableSettings)inPartition.getInput()).contains(element);
 	}
-
 
 
 
@@ -1878,13 +2008,21 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		inInterruptibleRegion.setContentProvider(contentProvider);
 		inInterruptibleRegion.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.LoopNode.Properties.inInterruptibleRegion);
+		if (readOnly && inInterruptibleRegion.getTable().isEnabled()) {
+			inInterruptibleRegion.setEnabled(false);
+			inInterruptibleRegion.setToolTipText(UmlMessages.LoopNode_ReadOnly);
+		} else if (!readOnly && !inInterruptibleRegion.getTable().isEnabled()) {
+			inInterruptibleRegion.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#updateInInterruptibleRegion()
-	 * 
+	 * @generated
 	 */
 	public void updateInInterruptibleRegion() {
 	inInterruptibleRegion.refresh();
@@ -1894,7 +2032,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#addFilterInInterruptibleRegion(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToInInterruptibleRegion(ViewerFilter filter) {
 		inInterruptibleRegionFilters.add(filter);
@@ -1904,7 +2042,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#addBusinessFilterInInterruptibleRegion(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToInInterruptibleRegion(ViewerFilter filter) {
 		inInterruptibleRegionBusinessFilters.add(filter);
@@ -1914,12 +2052,11 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#isContainedInInInterruptibleRegionTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInInInterruptibleRegionTable(EObject element) {
 		return ((ReferencesTableSettings)inInterruptibleRegion.getInput()).contains(element);
 	}
-
 
 
 
@@ -1934,13 +2071,21 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		redefinedNode.setContentProvider(contentProvider);
 		redefinedNode.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.LoopNode.Properties.redefinedNode);
+		if (readOnly && redefinedNode.getTable().isEnabled()) {
+			redefinedNode.setEnabled(false);
+			redefinedNode.setToolTipText(UmlMessages.LoopNode_ReadOnly);
+		} else if (!readOnly && !redefinedNode.getTable().isEnabled()) {
+			redefinedNode.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#updateRedefinedNode()
-	 * 
+	 * @generated
 	 */
 	public void updateRedefinedNode() {
 	redefinedNode.refresh();
@@ -1950,7 +2095,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#addFilterRedefinedNode(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToRedefinedNode(ViewerFilter filter) {
 		redefinedNodeFilters.add(filter);
@@ -1960,7 +2105,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#addBusinessFilterRedefinedNode(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToRedefinedNode(ViewerFilter filter) {
 		redefinedNodeBusinessFilters.add(filter);
@@ -1970,18 +2115,17 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#isContainedInRedefinedNodeTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInRedefinedNodeTable(EObject element) {
 		return ((ReferencesTableSettings)redefinedNode.getInput()).contains(element);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#getInActivity()
-	 * 
+	 * @generated
 	 */
 	public EObject getInActivity() {
 		if (inActivity.getSelection() instanceof StructuredSelection) {
@@ -2002,13 +2146,21 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		if (current != null) {
 			inActivity.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.LoopNode.Properties.inActivity);
+		if (readOnly && inActivity.isEnabled()) {
+			inActivity.setEnabled(false);
+			inActivity.setToolTipText(UmlMessages.LoopNode_ReadOnly);
+		} else if (!readOnly && !inActivity.isEnabled()) {
+			inActivity.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#setInActivity(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setInActivity(EObject newValue) {
 		if (newValue != null) {
@@ -2016,6 +2168,14 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		} else {
 			inActivity.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.LoopNode.Properties.inActivity);
+		if (readOnly && inActivity.isEnabled()) {
+			inActivity.setEnabled(false);
+			inActivity.setToolTipText(UmlMessages.LoopNode_ReadOnly);
+		} else if (!readOnly && !inActivity.isEnabled()) {
+			inActivity.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -2031,7 +2191,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#addFilterInActivity(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToInActivity(ViewerFilter filter) {
 		inActivity.addFilter(filter);
@@ -2041,18 +2201,17 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#addBusinessFilterInActivity(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToInActivity(ViewerFilter filter) {
 		inActivity.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#getMustIsolate()
-	 * 
+	 * @generated
 	 */
 	public Boolean getMustIsolate() {
 		return Boolean.valueOf(mustIsolate.getSelection());
@@ -2062,7 +2221,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#setMustIsolate(Boolean newValue)
-	 * 
+	 * @generated
 	 */
 	public void setMustIsolate(Boolean newValue) {
 		if (newValue != null) {
@@ -2070,14 +2229,21 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		} else {
 			mustIsolate.setSelection(false);
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.LoopNode.Properties.mustIsolate);
+		if (readOnly && mustIsolate.isEnabled()) {
+			mustIsolate.setEnabled(false);
+			mustIsolate.setToolTipText(UmlMessages.LoopNode_ReadOnly);
+		} else if (!readOnly && !mustIsolate.isEnabled()) {
+			mustIsolate.setEnabled(true);
+		}	
+		
 	}
-
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#getIsTestedFirst()
-	 * 
+	 * @generated
 	 */
 	public Boolean getIsTestedFirst() {
 		return Boolean.valueOf(isTestedFirst.getSelection());
@@ -2087,7 +2253,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#setIsTestedFirst(Boolean newValue)
-	 * 
+	 * @generated
 	 */
 	public void setIsTestedFirst(Boolean newValue) {
 		if (newValue != null) {
@@ -2095,8 +2261,15 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		} else {
 			isTestedFirst.setSelection(false);
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.LoopNode.Properties.isTestedFirst);
+		if (readOnly && isTestedFirst.isEnabled()) {
+			isTestedFirst.setEnabled(false);
+			isTestedFirst.setToolTipText(UmlMessages.LoopNode_ReadOnly);
+		} else if (!readOnly && !isTestedFirst.isEnabled()) {
+			isTestedFirst.setEnabled(true);
+		}	
+		
 	}
-
 
 
 
@@ -2111,13 +2284,21 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		bodyPart.setContentProvider(contentProvider);
 		bodyPart.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.LoopNode.Properties.bodyPart);
+		if (readOnly && bodyPart.getTable().isEnabled()) {
+			bodyPart.setEnabled(false);
+			bodyPart.setToolTipText(UmlMessages.LoopNode_ReadOnly);
+		} else if (!readOnly && !bodyPart.getTable().isEnabled()) {
+			bodyPart.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#updateBodyPart()
-	 * 
+	 * @generated
 	 */
 	public void updateBodyPart() {
 	bodyPart.refresh();
@@ -2127,7 +2308,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#addFilterBodyPart(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToBodyPart(ViewerFilter filter) {
 		bodyPartFilters.add(filter);
@@ -2137,7 +2318,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#addBusinessFilterBodyPart(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToBodyPart(ViewerFilter filter) {
 		bodyPartBusinessFilters.add(filter);
@@ -2147,12 +2328,11 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#isContainedInBodyPartTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInBodyPartTable(EObject element) {
 		return ((ReferencesTableSettings)bodyPart.getInput()).contains(element);
 	}
-
 
 
 
@@ -2167,13 +2347,21 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		setupPart.setContentProvider(contentProvider);
 		setupPart.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.LoopNode.Properties.setupPart);
+		if (readOnly && setupPart.getTable().isEnabled()) {
+			setupPart.setEnabled(false);
+			setupPart.setToolTipText(UmlMessages.LoopNode_ReadOnly);
+		} else if (!readOnly && !setupPart.getTable().isEnabled()) {
+			setupPart.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#updateSetupPart()
-	 * 
+	 * @generated
 	 */
 	public void updateSetupPart() {
 	setupPart.refresh();
@@ -2183,7 +2371,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#addFilterSetupPart(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToSetupPart(ViewerFilter filter) {
 		setupPartFilters.add(filter);
@@ -2193,7 +2381,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#addBusinessFilterSetupPart(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToSetupPart(ViewerFilter filter) {
 		setupPartBusinessFilters.add(filter);
@@ -2203,18 +2391,17 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#isContainedInSetupPartTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInSetupPartTable(EObject element) {
 		return ((ReferencesTableSettings)setupPart.getInput()).contains(element);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#getDecider()
-	 * 
+	 * @generated
 	 */
 	public EObject getDecider() {
 		if (decider.getSelection() instanceof StructuredSelection) {
@@ -2235,13 +2422,21 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		if (current != null) {
 			decider.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.LoopNode.Properties.decider);
+		if (readOnly && decider.isEnabled()) {
+			decider.setEnabled(false);
+			decider.setToolTipText(UmlMessages.LoopNode_ReadOnly);
+		} else if (!readOnly && !decider.isEnabled()) {
+			decider.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#setDecider(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setDecider(EObject newValue) {
 		if (newValue != null) {
@@ -2249,6 +2444,14 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		} else {
 			decider.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.LoopNode.Properties.decider);
+		if (readOnly && decider.isEnabled()) {
+			decider.setEnabled(false);
+			decider.setToolTipText(UmlMessages.LoopNode_ReadOnly);
+		} else if (!readOnly && !decider.isEnabled()) {
+			decider.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -2264,7 +2467,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#addFilterDecider(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToDecider(ViewerFilter filter) {
 		decider.addFilter(filter);
@@ -2274,12 +2477,11 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#addBusinessFilterDecider(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToDecider(ViewerFilter filter) {
 		decider.addBusinessRuleFilter(filter);
 	}
-
 
 
 
@@ -2294,13 +2496,21 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		test.setContentProvider(contentProvider);
 		test.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.LoopNode.Properties.test);
+		if (readOnly && test.getTable().isEnabled()) {
+			test.setEnabled(false);
+			test.setToolTipText(UmlMessages.LoopNode_ReadOnly);
+		} else if (!readOnly && !test.getTable().isEnabled()) {
+			test.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#updateTest()
-	 * 
+	 * @generated
 	 */
 	public void updateTest() {
 	test.refresh();
@@ -2310,7 +2520,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#addFilterTest(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToTest(ViewerFilter filter) {
 		testFilters.add(filter);
@@ -2320,7 +2530,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#addBusinessFilterTest(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToTest(ViewerFilter filter) {
 		testBusinessFilters.add(filter);
@@ -2330,12 +2540,11 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#isContainedInTestTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInTestTable(EObject element) {
 		return ((ReferencesTableSettings)test.getInput()).contains(element);
 	}
-
 
 
 
@@ -2350,13 +2559,21 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		loopVariable.setContentProvider(contentProvider);
 		loopVariable.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.LoopNode.Properties.loopVariable);
+		if (readOnly && loopVariable.getTable().isEnabled()) {
+			loopVariable.setEnabled(false);
+			loopVariable.setToolTipText(UmlMessages.LoopNode_ReadOnly);
+		} else if (!readOnly && !loopVariable.getTable().isEnabled()) {
+			loopVariable.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#updateLoopVariable()
-	 * 
+	 * @generated
 	 */
 	public void updateLoopVariable() {
 	loopVariable.refresh();
@@ -2366,7 +2583,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#addFilterLoopVariable(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToLoopVariable(ViewerFilter filter) {
 		loopVariableFilters.add(filter);
@@ -2376,7 +2593,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#addBusinessFilterLoopVariable(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToLoopVariable(ViewerFilter filter) {
 		loopVariableBusinessFilters.add(filter);
@@ -2386,12 +2603,11 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#isContainedInLoopVariableTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInLoopVariableTable(EObject element) {
 		return ((ReferencesTableSettings)loopVariable.getInput()).contains(element);
 	}
-
 
 
 
@@ -2406,13 +2622,21 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		bodyOutput.setContentProvider(contentProvider);
 		bodyOutput.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.LoopNode.Properties.bodyOutput);
+		if (readOnly && bodyOutput.getTable().isEnabled()) {
+			bodyOutput.setEnabled(false);
+			bodyOutput.setToolTipText(UmlMessages.LoopNode_ReadOnly);
+		} else if (!readOnly && !bodyOutput.getTable().isEnabled()) {
+			bodyOutput.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#updateBodyOutput()
-	 * 
+	 * @generated
 	 */
 	public void updateBodyOutput() {
 	bodyOutput.refresh();
@@ -2422,7 +2646,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#addFilterBodyOutput(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToBodyOutput(ViewerFilter filter) {
 		bodyOutputFilters.add(filter);
@@ -2432,7 +2656,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#addBusinessFilterBodyOutput(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToBodyOutput(ViewerFilter filter) {
 		bodyOutputBusinessFilters.add(filter);
@@ -2442,7 +2666,7 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LoopNodePropertiesEditionPart#isContainedInBodyOutputTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInBodyOutputTable(EObject element) {
 		return ((ReferencesTableSettings)bodyOutput.getInput()).contains(element);
@@ -2453,20 +2677,16 @@ public class LoopNodePropertiesEditionPartImpl extends CompositePropertiesEditio
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
+	 * @generated
 	 */
 	public String getTitle() {
 		return UmlMessages.LoopNode_Part_Title;
 	}
 
-	// Start of user code additional methods
-	
-	// End of user code
 
 
 }

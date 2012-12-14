@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,69 +10,90 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts.impl;
 
-// Start of user code for imports
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EEnumLiteral;
+
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
+
 import org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
+
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 
 
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, StructuredActivityNodePropertiesEditionPart {
 
@@ -107,7 +128,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
+	 * @generated
 	 */
 	public StructuredActivityNodePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -118,7 +139,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
@@ -134,7 +155,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public void createControls(Composite view) { 
 		CompositionSequence structuredActivityNodeStep = new BindingCompositionSequence(propertiesEditionComponent);
@@ -207,7 +228,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
@@ -221,10 +242,13 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 		return propertiesGroup;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.StructuredActivityNodePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.StructuredActivityNode.Properties.name, UmlViewsRepository.SWT_KIND));
-		name = new Text(parent, SWT.BORDER);
+		createDescription(parent, UmlViewsRepository.StructuredActivityNode.Properties.name, UmlMessages.StructuredActivityNodePropertiesEditionPart_NameLabel);
+		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {
@@ -233,7 +257,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -249,7 +273,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -267,12 +291,15 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 		return parent;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createVisibilityEMFComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.StructuredActivityNodePropertiesEditionPart_VisibilityLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.StructuredActivityNode.Properties.visibility, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.StructuredActivityNode.Properties.visibility, UmlMessages.StructuredActivityNodePropertiesEditionPart_VisibilityLabel);
 		visibility = new EMFComboViewer(parent);
 		visibility.setContentProvider(new ArrayContentProvider());
-		visibility.setLabelProvider(new AdapterFactoryLabelProvider(new EcoreAdapterFactory()));
+		visibility.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData visibilityData = new GridData(GridData.FILL_HORIZONTAL);
 		visibility.getCombo().setLayoutData(visibilityData);
 		visibility.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -281,7 +308,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
+			 * 	@generated
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
@@ -295,10 +322,11 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createClientDependencyAdvancedReferencesTable(Composite parent) {
-		this.clientDependency = new ReferencesTable(UmlMessages.StructuredActivityNodePropertiesEditionPart_ClientDependencyLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.StructuredActivityNode.Properties.clientDependency, UmlMessages.StructuredActivityNodePropertiesEditionPart_ClientDependencyLabel);		 
+		this.clientDependency = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addClientDependency(); }
 			public void handleEdit(EObject element) { editClientDependency(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveClientDependency(element, oldIndex, newIndex); }
@@ -326,7 +354,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addClientDependency() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(clientDependency.getInput(), clientDependencyFilters, clientDependencyBusinessFilters,
@@ -345,7 +373,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveClientDependency(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StructuredActivityNodePropertiesEditionPartImpl.this, UmlViewsRepository.StructuredActivityNode.Properties.clientDependency, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -353,7 +381,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromClientDependency(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StructuredActivityNodePropertiesEditionPartImpl.this, UmlViewsRepository.StructuredActivityNode.Properties.clientDependency, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -361,7 +389,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editClientDependency(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -375,17 +403,20 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 		}
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createIsLeafCheckbox(Composite parent) {
 		isLeaf = new Button(parent, SWT.CHECK);
-		isLeaf.setText(UmlMessages.StructuredActivityNodePropertiesEditionPart_IsLeafLabel);
+		isLeaf.setText(getDescription(UmlViewsRepository.StructuredActivityNode.Properties.isLeaf, UmlMessages.StructuredActivityNodePropertiesEditionPart_IsLeafLabel));
 		isLeaf.addSelectionListener(new SelectionAdapter() {
 
 			/**
 			 * {@inheritDoc}
 			 *
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	
+			 * 	@generated
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
@@ -404,10 +435,10 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createInStructuredNodeFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.StructuredActivityNodePropertiesEditionPart_InStructuredNodeLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.StructuredActivityNode.Properties.inStructuredNode, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.StructuredActivityNode.Properties.inStructuredNode, UmlMessages.StructuredActivityNodePropertiesEditionPart_InStructuredNodeLabel);
 		inStructuredNode = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.StructuredActivityNode.Properties.inStructuredNode, UmlViewsRepository.SWT_KIND));
 		inStructuredNode.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -427,10 +458,10 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createActivityFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.StructuredActivityNodePropertiesEditionPart_ActivityLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.StructuredActivityNode.Properties.activity, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.StructuredActivityNode.Properties.activity, UmlMessages.StructuredActivityNodePropertiesEditionPart_ActivityLabel);
 		activity = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.StructuredActivityNode.Properties.activity, UmlViewsRepository.SWT_KIND));
 		activity.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -449,10 +480,11 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createOutgoingAdvancedReferencesTable(Composite parent) {
-		this.outgoing = new ReferencesTable(UmlMessages.StructuredActivityNodePropertiesEditionPart_OutgoingLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.StructuredActivityNode.Properties.outgoing, UmlMessages.StructuredActivityNodePropertiesEditionPart_OutgoingLabel);		 
+		this.outgoing = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addOutgoing(); }
 			public void handleEdit(EObject element) { editOutgoing(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveOutgoing(element, oldIndex, newIndex); }
@@ -480,7 +512,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addOutgoing() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(outgoing.getInput(), outgoingFilters, outgoingBusinessFilters,
@@ -499,7 +531,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveOutgoing(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StructuredActivityNodePropertiesEditionPartImpl.this, UmlViewsRepository.StructuredActivityNode.Properties.outgoing, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -507,7 +539,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromOutgoing(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StructuredActivityNodePropertiesEditionPartImpl.this, UmlViewsRepository.StructuredActivityNode.Properties.outgoing, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -515,7 +547,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editOutgoing(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -530,10 +562,11 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createIncomingAdvancedReferencesTable(Composite parent) {
-		this.incoming = new ReferencesTable(UmlMessages.StructuredActivityNodePropertiesEditionPart_IncomingLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.StructuredActivityNode.Properties.incoming, UmlMessages.StructuredActivityNodePropertiesEditionPart_IncomingLabel);		 
+		this.incoming = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addIncoming(); }
 			public void handleEdit(EObject element) { editIncoming(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveIncoming(element, oldIndex, newIndex); }
@@ -561,7 +594,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addIncoming() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(incoming.getInput(), incomingFilters, incomingBusinessFilters,
@@ -580,7 +613,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveIncoming(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StructuredActivityNodePropertiesEditionPartImpl.this, UmlViewsRepository.StructuredActivityNode.Properties.incoming, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -588,7 +621,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromIncoming(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StructuredActivityNodePropertiesEditionPartImpl.this, UmlViewsRepository.StructuredActivityNode.Properties.incoming, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -596,7 +629,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editIncoming(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -611,10 +644,11 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createInPartitionAdvancedReferencesTable(Composite parent) {
-		this.inPartition = new ReferencesTable(UmlMessages.StructuredActivityNodePropertiesEditionPart_InPartitionLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.StructuredActivityNode.Properties.inPartition, UmlMessages.StructuredActivityNodePropertiesEditionPart_InPartitionLabel);		 
+		this.inPartition = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addInPartition(); }
 			public void handleEdit(EObject element) { editInPartition(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveInPartition(element, oldIndex, newIndex); }
@@ -642,7 +676,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addInPartition() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(inPartition.getInput(), inPartitionFilters, inPartitionBusinessFilters,
@@ -661,7 +695,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveInPartition(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StructuredActivityNodePropertiesEditionPartImpl.this, UmlViewsRepository.StructuredActivityNode.Properties.inPartition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -669,7 +703,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromInPartition(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StructuredActivityNodePropertiesEditionPartImpl.this, UmlViewsRepository.StructuredActivityNode.Properties.inPartition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -677,7 +711,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editInPartition(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -692,10 +726,11 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createInInterruptibleRegionAdvancedReferencesTable(Composite parent) {
-		this.inInterruptibleRegion = new ReferencesTable(UmlMessages.StructuredActivityNodePropertiesEditionPart_InInterruptibleRegionLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.StructuredActivityNode.Properties.inInterruptibleRegion, UmlMessages.StructuredActivityNodePropertiesEditionPart_InInterruptibleRegionLabel);		 
+		this.inInterruptibleRegion = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addInInterruptibleRegion(); }
 			public void handleEdit(EObject element) { editInInterruptibleRegion(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveInInterruptibleRegion(element, oldIndex, newIndex); }
@@ -723,7 +758,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addInInterruptibleRegion() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(inInterruptibleRegion.getInput(), inInterruptibleRegionFilters, inInterruptibleRegionBusinessFilters,
@@ -742,7 +777,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveInInterruptibleRegion(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StructuredActivityNodePropertiesEditionPartImpl.this, UmlViewsRepository.StructuredActivityNode.Properties.inInterruptibleRegion, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -750,7 +785,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromInInterruptibleRegion(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StructuredActivityNodePropertiesEditionPartImpl.this, UmlViewsRepository.StructuredActivityNode.Properties.inInterruptibleRegion, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -758,7 +793,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editInInterruptibleRegion(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -773,10 +808,11 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createRedefinedNodeAdvancedReferencesTable(Composite parent) {
-		this.redefinedNode = new ReferencesTable(UmlMessages.StructuredActivityNodePropertiesEditionPart_RedefinedNodeLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.StructuredActivityNode.Properties.redefinedNode, UmlMessages.StructuredActivityNodePropertiesEditionPart_RedefinedNodeLabel);		 
+		this.redefinedNode = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addRedefinedNode(); }
 			public void handleEdit(EObject element) { editRedefinedNode(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveRedefinedNode(element, oldIndex, newIndex); }
@@ -804,7 +840,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addRedefinedNode() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(redefinedNode.getInput(), redefinedNodeFilters, redefinedNodeBusinessFilters,
@@ -823,7 +859,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveRedefinedNode(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StructuredActivityNodePropertiesEditionPartImpl.this, UmlViewsRepository.StructuredActivityNode.Properties.redefinedNode, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -831,7 +867,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromRedefinedNode(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(StructuredActivityNodePropertiesEditionPartImpl.this, UmlViewsRepository.StructuredActivityNode.Properties.redefinedNode, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -839,7 +875,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editRedefinedNode(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -855,10 +891,10 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createInActivityFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.StructuredActivityNodePropertiesEditionPart_InActivityLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.StructuredActivityNode.Properties.inActivity, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.StructuredActivityNode.Properties.inActivity, UmlMessages.StructuredActivityNodePropertiesEditionPart_InActivityLabel);
 		inActivity = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.StructuredActivityNode.Properties.inActivity, UmlViewsRepository.SWT_KIND));
 		inActivity.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -876,17 +912,20 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 		return parent;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createMustIsolateCheckbox(Composite parent) {
 		mustIsolate = new Button(parent, SWT.CHECK);
-		mustIsolate.setText(UmlMessages.StructuredActivityNodePropertiesEditionPart_MustIsolateLabel);
+		mustIsolate.setText(getDescription(UmlViewsRepository.StructuredActivityNode.Properties.mustIsolate, UmlMessages.StructuredActivityNodePropertiesEditionPart_MustIsolateLabel));
 		mustIsolate.addSelectionListener(new SelectionAdapter() {
 
 			/**
 			 * {@inheritDoc}
 			 *
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	
+			 * 	@generated
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
@@ -904,24 +943,20 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	}
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-
-// End of user code
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#getName()
-	 * 
+	 * @generated
 	 */
 	public String getName() {
 		return name.getText();
@@ -931,7 +966,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#setName(String newValue)
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue) {
 		if (newValue != null) {
@@ -939,40 +974,62 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.StructuredActivityNode.Properties.name);
+		if (readOnly && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(UmlMessages.StructuredActivityNode_ReadOnly);
+		} else if (!readOnly && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
-
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#getVisibility()
-	 * 
+	 * @generated
 	 */
 	public Enumerator getVisibility() {
-		EEnumLiteral selection = (EEnumLiteral) ((StructuredSelection) visibility.getSelection()).getFirstElement();
-		return selection.getInstance();
+		Enumerator selection = (Enumerator) ((StructuredSelection) visibility.getSelection()).getFirstElement();
+		return selection;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#initVisibility(EEnum eenum, Enumerator current)
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#initVisibility(Object input, Enumerator current)
 	 */
-	public void initVisibility(EEnum eenum, Enumerator current) {
-		visibility.setInput(eenum.getELiterals());
+	public void initVisibility(Object input, Enumerator current) {
+		visibility.setInput(input);
 		visibility.modelUpdating(new StructuredSelection(current));
+		boolean readOnly = isReadOnly(UmlViewsRepository.StructuredActivityNode.Properties.visibility);
+		if (readOnly && visibility.isEnabled()) {
+			visibility.setEnabled(false);
+			visibility.setToolTipText(UmlMessages.StructuredActivityNode_ReadOnly);
+		} else if (!readOnly && !visibility.isEnabled()) {
+			visibility.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#setVisibility(Enumerator newValue)
-	 * 
+	 * @generated
 	 */
 	public void setVisibility(Enumerator newValue) {
 		visibility.modelUpdating(new StructuredSelection(newValue));
+		boolean readOnly = isReadOnly(UmlViewsRepository.StructuredActivityNode.Properties.visibility);
+		if (readOnly && visibility.isEnabled()) {
+			visibility.setEnabled(false);
+			visibility.setToolTipText(UmlMessages.StructuredActivityNode_ReadOnly);
+		} else if (!readOnly && !visibility.isEnabled()) {
+			visibility.setEnabled(true);
+		}	
+		
 	}
-
 
 
 
@@ -987,13 +1044,21 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		clientDependency.setContentProvider(contentProvider);
 		clientDependency.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.StructuredActivityNode.Properties.clientDependency);
+		if (readOnly && clientDependency.getTable().isEnabled()) {
+			clientDependency.setEnabled(false);
+			clientDependency.setToolTipText(UmlMessages.StructuredActivityNode_ReadOnly);
+		} else if (!readOnly && !clientDependency.getTable().isEnabled()) {
+			clientDependency.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#updateClientDependency()
-	 * 
+	 * @generated
 	 */
 	public void updateClientDependency() {
 	clientDependency.refresh();
@@ -1003,7 +1068,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#addFilterClientDependency(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToClientDependency(ViewerFilter filter) {
 		clientDependencyFilters.add(filter);
@@ -1013,7 +1078,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#addBusinessFilterClientDependency(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToClientDependency(ViewerFilter filter) {
 		clientDependencyBusinessFilters.add(filter);
@@ -1023,18 +1088,17 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#isContainedInClientDependencyTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInClientDependencyTable(EObject element) {
 		return ((ReferencesTableSettings)clientDependency.getInput()).contains(element);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#getIsLeaf()
-	 * 
+	 * @generated
 	 */
 	public Boolean getIsLeaf() {
 		return Boolean.valueOf(isLeaf.getSelection());
@@ -1044,7 +1108,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#setIsLeaf(Boolean newValue)
-	 * 
+	 * @generated
 	 */
 	public void setIsLeaf(Boolean newValue) {
 		if (newValue != null) {
@@ -1052,14 +1116,21 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 		} else {
 			isLeaf.setSelection(false);
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.StructuredActivityNode.Properties.isLeaf);
+		if (readOnly && isLeaf.isEnabled()) {
+			isLeaf.setEnabled(false);
+			isLeaf.setToolTipText(UmlMessages.StructuredActivityNode_ReadOnly);
+		} else if (!readOnly && !isLeaf.isEnabled()) {
+			isLeaf.setEnabled(true);
+		}	
+		
 	}
-
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#getInStructuredNode()
-	 * 
+	 * @generated
 	 */
 	public EObject getInStructuredNode() {
 		if (inStructuredNode.getSelection() instanceof StructuredSelection) {
@@ -1080,13 +1151,21 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 		if (current != null) {
 			inStructuredNode.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.StructuredActivityNode.Properties.inStructuredNode);
+		if (readOnly && inStructuredNode.isEnabled()) {
+			inStructuredNode.setEnabled(false);
+			inStructuredNode.setToolTipText(UmlMessages.StructuredActivityNode_ReadOnly);
+		} else if (!readOnly && !inStructuredNode.isEnabled()) {
+			inStructuredNode.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#setInStructuredNode(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setInStructuredNode(EObject newValue) {
 		if (newValue != null) {
@@ -1094,6 +1173,14 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 		} else {
 			inStructuredNode.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.StructuredActivityNode.Properties.inStructuredNode);
+		if (readOnly && inStructuredNode.isEnabled()) {
+			inStructuredNode.setEnabled(false);
+			inStructuredNode.setToolTipText(UmlMessages.StructuredActivityNode_ReadOnly);
+		} else if (!readOnly && !inStructuredNode.isEnabled()) {
+			inStructuredNode.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -1109,7 +1196,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#addFilterInStructuredNode(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToInStructuredNode(ViewerFilter filter) {
 		inStructuredNode.addFilter(filter);
@@ -1119,18 +1206,17 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#addBusinessFilterInStructuredNode(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToInStructuredNode(ViewerFilter filter) {
 		inStructuredNode.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#getActivity()
-	 * 
+	 * @generated
 	 */
 	public EObject getActivity() {
 		if (activity.getSelection() instanceof StructuredSelection) {
@@ -1151,13 +1237,21 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 		if (current != null) {
 			activity.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.StructuredActivityNode.Properties.activity);
+		if (readOnly && activity.isEnabled()) {
+			activity.setEnabled(false);
+			activity.setToolTipText(UmlMessages.StructuredActivityNode_ReadOnly);
+		} else if (!readOnly && !activity.isEnabled()) {
+			activity.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#setActivity(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setActivity(EObject newValue) {
 		if (newValue != null) {
@@ -1165,6 +1259,14 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 		} else {
 			activity.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.StructuredActivityNode.Properties.activity);
+		if (readOnly && activity.isEnabled()) {
+			activity.setEnabled(false);
+			activity.setToolTipText(UmlMessages.StructuredActivityNode_ReadOnly);
+		} else if (!readOnly && !activity.isEnabled()) {
+			activity.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -1180,7 +1282,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#addFilterActivity(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToActivity(ViewerFilter filter) {
 		activity.addFilter(filter);
@@ -1190,12 +1292,11 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#addBusinessFilterActivity(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToActivity(ViewerFilter filter) {
 		activity.addBusinessRuleFilter(filter);
 	}
-
 
 
 
@@ -1210,13 +1311,21 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		outgoing.setContentProvider(contentProvider);
 		outgoing.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.StructuredActivityNode.Properties.outgoing);
+		if (readOnly && outgoing.getTable().isEnabled()) {
+			outgoing.setEnabled(false);
+			outgoing.setToolTipText(UmlMessages.StructuredActivityNode_ReadOnly);
+		} else if (!readOnly && !outgoing.getTable().isEnabled()) {
+			outgoing.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#updateOutgoing()
-	 * 
+	 * @generated
 	 */
 	public void updateOutgoing() {
 	outgoing.refresh();
@@ -1226,7 +1335,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#addFilterOutgoing(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToOutgoing(ViewerFilter filter) {
 		outgoingFilters.add(filter);
@@ -1236,7 +1345,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#addBusinessFilterOutgoing(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToOutgoing(ViewerFilter filter) {
 		outgoingBusinessFilters.add(filter);
@@ -1246,12 +1355,11 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#isContainedInOutgoingTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInOutgoingTable(EObject element) {
 		return ((ReferencesTableSettings)outgoing.getInput()).contains(element);
 	}
-
 
 
 
@@ -1266,13 +1374,21 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		incoming.setContentProvider(contentProvider);
 		incoming.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.StructuredActivityNode.Properties.incoming);
+		if (readOnly && incoming.getTable().isEnabled()) {
+			incoming.setEnabled(false);
+			incoming.setToolTipText(UmlMessages.StructuredActivityNode_ReadOnly);
+		} else if (!readOnly && !incoming.getTable().isEnabled()) {
+			incoming.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#updateIncoming()
-	 * 
+	 * @generated
 	 */
 	public void updateIncoming() {
 	incoming.refresh();
@@ -1282,7 +1398,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#addFilterIncoming(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToIncoming(ViewerFilter filter) {
 		incomingFilters.add(filter);
@@ -1292,7 +1408,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#addBusinessFilterIncoming(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToIncoming(ViewerFilter filter) {
 		incomingBusinessFilters.add(filter);
@@ -1302,12 +1418,11 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#isContainedInIncomingTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInIncomingTable(EObject element) {
 		return ((ReferencesTableSettings)incoming.getInput()).contains(element);
 	}
-
 
 
 
@@ -1322,13 +1437,21 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		inPartition.setContentProvider(contentProvider);
 		inPartition.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.StructuredActivityNode.Properties.inPartition);
+		if (readOnly && inPartition.getTable().isEnabled()) {
+			inPartition.setEnabled(false);
+			inPartition.setToolTipText(UmlMessages.StructuredActivityNode_ReadOnly);
+		} else if (!readOnly && !inPartition.getTable().isEnabled()) {
+			inPartition.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#updateInPartition()
-	 * 
+	 * @generated
 	 */
 	public void updateInPartition() {
 	inPartition.refresh();
@@ -1338,7 +1461,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#addFilterInPartition(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToInPartition(ViewerFilter filter) {
 		inPartitionFilters.add(filter);
@@ -1348,7 +1471,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#addBusinessFilterInPartition(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToInPartition(ViewerFilter filter) {
 		inPartitionBusinessFilters.add(filter);
@@ -1358,12 +1481,11 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#isContainedInInPartitionTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInInPartitionTable(EObject element) {
 		return ((ReferencesTableSettings)inPartition.getInput()).contains(element);
 	}
-
 
 
 
@@ -1378,13 +1500,21 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		inInterruptibleRegion.setContentProvider(contentProvider);
 		inInterruptibleRegion.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.StructuredActivityNode.Properties.inInterruptibleRegion);
+		if (readOnly && inInterruptibleRegion.getTable().isEnabled()) {
+			inInterruptibleRegion.setEnabled(false);
+			inInterruptibleRegion.setToolTipText(UmlMessages.StructuredActivityNode_ReadOnly);
+		} else if (!readOnly && !inInterruptibleRegion.getTable().isEnabled()) {
+			inInterruptibleRegion.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#updateInInterruptibleRegion()
-	 * 
+	 * @generated
 	 */
 	public void updateInInterruptibleRegion() {
 	inInterruptibleRegion.refresh();
@@ -1394,7 +1524,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#addFilterInInterruptibleRegion(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToInInterruptibleRegion(ViewerFilter filter) {
 		inInterruptibleRegionFilters.add(filter);
@@ -1404,7 +1534,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#addBusinessFilterInInterruptibleRegion(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToInInterruptibleRegion(ViewerFilter filter) {
 		inInterruptibleRegionBusinessFilters.add(filter);
@@ -1414,12 +1544,11 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#isContainedInInInterruptibleRegionTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInInInterruptibleRegionTable(EObject element) {
 		return ((ReferencesTableSettings)inInterruptibleRegion.getInput()).contains(element);
 	}
-
 
 
 
@@ -1434,13 +1563,21 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		redefinedNode.setContentProvider(contentProvider);
 		redefinedNode.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.StructuredActivityNode.Properties.redefinedNode);
+		if (readOnly && redefinedNode.getTable().isEnabled()) {
+			redefinedNode.setEnabled(false);
+			redefinedNode.setToolTipText(UmlMessages.StructuredActivityNode_ReadOnly);
+		} else if (!readOnly && !redefinedNode.getTable().isEnabled()) {
+			redefinedNode.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#updateRedefinedNode()
-	 * 
+	 * @generated
 	 */
 	public void updateRedefinedNode() {
 	redefinedNode.refresh();
@@ -1450,7 +1587,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#addFilterRedefinedNode(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToRedefinedNode(ViewerFilter filter) {
 		redefinedNodeFilters.add(filter);
@@ -1460,7 +1597,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#addBusinessFilterRedefinedNode(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToRedefinedNode(ViewerFilter filter) {
 		redefinedNodeBusinessFilters.add(filter);
@@ -1470,18 +1607,17 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#isContainedInRedefinedNodeTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInRedefinedNodeTable(EObject element) {
 		return ((ReferencesTableSettings)redefinedNode.getInput()).contains(element);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#getInActivity()
-	 * 
+	 * @generated
 	 */
 	public EObject getInActivity() {
 		if (inActivity.getSelection() instanceof StructuredSelection) {
@@ -1502,13 +1638,21 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 		if (current != null) {
 			inActivity.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.StructuredActivityNode.Properties.inActivity);
+		if (readOnly && inActivity.isEnabled()) {
+			inActivity.setEnabled(false);
+			inActivity.setToolTipText(UmlMessages.StructuredActivityNode_ReadOnly);
+		} else if (!readOnly && !inActivity.isEnabled()) {
+			inActivity.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#setInActivity(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setInActivity(EObject newValue) {
 		if (newValue != null) {
@@ -1516,6 +1660,14 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 		} else {
 			inActivity.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.StructuredActivityNode.Properties.inActivity);
+		if (readOnly && inActivity.isEnabled()) {
+			inActivity.setEnabled(false);
+			inActivity.setToolTipText(UmlMessages.StructuredActivityNode_ReadOnly);
+		} else if (!readOnly && !inActivity.isEnabled()) {
+			inActivity.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -1531,7 +1683,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#addFilterInActivity(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToInActivity(ViewerFilter filter) {
 		inActivity.addFilter(filter);
@@ -1541,18 +1693,17 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#addBusinessFilterInActivity(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToInActivity(ViewerFilter filter) {
 		inActivity.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#getMustIsolate()
-	 * 
+	 * @generated
 	 */
 	public Boolean getMustIsolate() {
 		return Boolean.valueOf(mustIsolate.getSelection());
@@ -1562,7 +1713,7 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.StructuredActivityNodePropertiesEditionPart#setMustIsolate(Boolean newValue)
-	 * 
+	 * @generated
 	 */
 	public void setMustIsolate(Boolean newValue) {
 		if (newValue != null) {
@@ -1570,8 +1721,15 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 		} else {
 			mustIsolate.setSelection(false);
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.StructuredActivityNode.Properties.mustIsolate);
+		if (readOnly && mustIsolate.isEnabled()) {
+			mustIsolate.setEnabled(false);
+			mustIsolate.setToolTipText(UmlMessages.StructuredActivityNode_ReadOnly);
+		} else if (!readOnly && !mustIsolate.isEnabled()) {
+			mustIsolate.setEnabled(true);
+		}	
+		
 	}
-
 
 
 
@@ -1582,15 +1740,12 @@ public class StructuredActivityNodePropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
+	 * @generated
 	 */
 	public String getTitle() {
 		return UmlMessages.StructuredActivityNode_Part_Title;
 	}
 
-	// Start of user code additional methods
-	
-	// End of user code
 
 
 }

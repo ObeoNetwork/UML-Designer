@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,20 +10,20 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts;
 
-// Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
-
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public interface TemplateSignaturePropertiesEditionPart {
 
@@ -38,7 +38,7 @@ public interface TemplateSignaturePropertiesEditionPart {
 	/**
 	 * Update the parameter
 	 * @param newValue the parameter to update
-	 * 
+	 * @generated
 	 */
 	public void updateParameter();
 
@@ -48,7 +48,7 @@ public interface TemplateSignaturePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToParameter(ViewerFilter filter);
 
@@ -58,20 +58,20 @@ public interface TemplateSignaturePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToParameter(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the parameter table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInParameterTable(EObject element);
 
 
 	/**
 	 * @return the template
-	 * 
+	 * @generated
 	 */
 	public EObject getTemplate();
 
@@ -84,14 +84,14 @@ public interface TemplateSignaturePropertiesEditionPart {
 	/**
 	 * Defines a new template
 	 * @param newValue the new template to set
-	 * 
+	 * @generated
 	 */
 	public void setTemplate(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setTemplateButtonMode(ButtonsModeEnum newValue);
 
@@ -101,7 +101,7 @@ public interface TemplateSignaturePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToTemplate(ViewerFilter filter);
 
@@ -111,7 +111,7 @@ public interface TemplateSignaturePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToTemplate(ViewerFilter filter);
 
@@ -123,12 +123,9 @@ public interface TemplateSignaturePropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
-	 * 
+	 * @generated
 	 */
 	public String getTitle();
 
-	// Start of user code for additional methods
-
-// End of user code
 
 }

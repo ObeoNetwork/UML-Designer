@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,79 +10,103 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts.forms;
 
-// Start of user code for imports
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EEnumLiteral;
+
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
+import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
+
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
+
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
+
 import org.obeonetwork.dsl.uml2.properties.uml.parts.LiteralIntegerPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
+
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 
 
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
-public class LiteralIntegerPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, LiteralIntegerPropertiesEditionPart {
+public class LiteralIntegerPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, LiteralIntegerPropertiesEditionPart {
 
 	protected Text name;
 	protected EMFComboViewer visibility;
-		protected ReferencesTable clientDependency;
-		protected List<ViewerFilter> clientDependencyBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> clientDependencyFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable clientDependency;
+	protected List<ViewerFilter> clientDependencyBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> clientDependencyFilters = new ArrayList<ViewerFilter>();
 	protected EObjectFlatComboViewer owningTemplateParameter;
 	protected EObjectFlatComboViewer templateParameter;
 	protected EObjectFlatComboViewer type;
@@ -91,9 +115,14 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 
 
 	/**
+	 * For {@link ISection} use only.
+	 */
+	public LiteralIntegerPropertiesEditionPartForm() { super(); }
+
+	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
+	 * @generated
 	 */
 	public LiteralIntegerPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -104,7 +133,7 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
-	 * 
+	 * @generated
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -122,7 +151,7 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence literalIntegerStep = new BindingCompositionSequence(propertiesEditionComponent);
@@ -144,7 +173,7 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 					return createPropertiesGroup(widgetFactory, parent);
 				}
 				if (key == UmlViewsRepository.LiteralInteger.Properties.name) {
-					return 		createNameText(widgetFactory, parent);
+					return createNameText(widgetFactory, parent);
 				}
 				if (key == UmlViewsRepository.LiteralInteger.Properties.visibility) {
 					return createVisibilityEMFComboViewer(widgetFactory, parent);
@@ -162,7 +191,7 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 					return createTypeFlatComboViewer(parent, widgetFactory);
 				}
 				if (key == UmlViewsRepository.LiteralInteger.Properties.value) {
-					return 		createValueText(widgetFactory, parent);
+					return createValueText(widgetFactory, parent);
 				}
 				return parent;
 			}
@@ -170,7 +199,7 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 		composer.compose(view);
 	}
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
 		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
@@ -186,9 +215,12 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 		return propertiesGroup;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, UmlMessages.LiteralIntegerPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.LiteralInteger.Properties.name, UmlViewsRepository.FORM_KIND));
+		createDescription(parent, UmlViewsRepository.LiteralInteger.Properties.name, UmlMessages.LiteralIntegerPropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -197,19 +229,44 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 		name.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LiteralIntegerPropertiesEditionPartForm.this, UmlViewsRepository.LiteralInteger.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							LiteralIntegerPropertiesEditionPartForm.this,
+							UmlViewsRepository.LiteralInteger.Properties.name,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									LiteralIntegerPropertiesEditionPartForm.this,
+									UmlViewsRepository.LiteralInteger.Properties.name,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+									null, name.getText()));
+				}
+			}
+
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+			 */
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									LiteralIntegerPropertiesEditionPartForm.this,
+									null,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+									null, null));
+				}
 			}
 		});
 		name.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -226,12 +283,15 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 		return parent;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createVisibilityEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, UmlMessages.LiteralIntegerPropertiesEditionPart_VisibilityLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.LiteralInteger.Properties.visibility, UmlViewsRepository.FORM_KIND));
+		createDescription(parent, UmlViewsRepository.LiteralInteger.Properties.visibility, UmlMessages.LiteralIntegerPropertiesEditionPart_VisibilityLabel);
 		visibility = new EMFComboViewer(parent);
 		visibility.setContentProvider(new ArrayContentProvider());
-		visibility.setLabelProvider(new AdapterFactoryLabelProvider(new EcoreAdapterFactory()));
+		visibility.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData visibilityData = new GridData(GridData.FILL_HORIZONTAL);
 		visibility.getCombo().setLayoutData(visibilityData);
 		visibility.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -240,7 +300,7 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
+			 * 	@generated
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
@@ -254,10 +314,10 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createClientDependencyReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.clientDependency = new ReferencesTable(UmlMessages.LiteralIntegerPropertiesEditionPart_ClientDependencyLabel, new ReferencesTableListener	() {
+		this.clientDependency = new ReferencesTable(getDescription(UmlViewsRepository.LiteralInteger.Properties.clientDependency, UmlMessages.LiteralIntegerPropertiesEditionPart_ClientDependencyLabel), new ReferencesTableListener	() {
 			public void handleAdd() { addClientDependency(); }
 			public void handleEdit(EObject element) { editClientDependency(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveClientDependency(element, oldIndex, newIndex); }
@@ -285,7 +345,7 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addClientDependency() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(clientDependency.getInput(), clientDependencyFilters, clientDependencyBusinessFilters,
@@ -304,7 +364,7 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveClientDependency(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LiteralIntegerPropertiesEditionPartForm.this, UmlViewsRepository.LiteralInteger.Properties.clientDependency, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -312,7 +372,7 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromClientDependency(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LiteralIntegerPropertiesEditionPartForm.this, UmlViewsRepository.LiteralInteger.Properties.clientDependency, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -320,7 +380,7 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editClientDependency(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -337,10 +397,10 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 	/**
 	 * @param parent the parent composite
 	 * @param widgetFactory factory to use to instanciante widget of the form
-	 * 
+	 * @generated
 	 */
 	protected Composite createOwningTemplateParameterFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, UmlMessages.LiteralIntegerPropertiesEditionPart_OwningTemplateParameterLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.LiteralInteger.Properties.owningTemplateParameter, UmlViewsRepository.FORM_KIND));
+		createDescription(parent, UmlViewsRepository.LiteralInteger.Properties.owningTemplateParameter, UmlMessages.LiteralIntegerPropertiesEditionPart_OwningTemplateParameterLabel);
 		owningTemplateParameter = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.LiteralInteger.Properties.owningTemplateParameter, UmlViewsRepository.FORM_KIND));
 		widgetFactory.adapt(owningTemplateParameter);
 		owningTemplateParameter.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -367,10 +427,10 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 	/**
 	 * @param parent the parent composite
 	 * @param widgetFactory factory to use to instanciante widget of the form
-	 * 
+	 * @generated
 	 */
 	protected Composite createTemplateParameterFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, UmlMessages.LiteralIntegerPropertiesEditionPart_TemplateParameterLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.LiteralInteger.Properties.templateParameter, UmlViewsRepository.FORM_KIND));
+		createDescription(parent, UmlViewsRepository.LiteralInteger.Properties.templateParameter, UmlMessages.LiteralIntegerPropertiesEditionPart_TemplateParameterLabel);
 		templateParameter = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.LiteralInteger.Properties.templateParameter, UmlViewsRepository.FORM_KIND));
 		widgetFactory.adapt(templateParameter);
 		templateParameter.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -397,10 +457,10 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 	/**
 	 * @param parent the parent composite
 	 * @param widgetFactory factory to use to instanciante widget of the form
-	 * 
+	 * @generated
 	 */
 	protected Composite createTypeFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, UmlMessages.LiteralIntegerPropertiesEditionPart_TypeLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.LiteralInteger.Properties.type, UmlViewsRepository.FORM_KIND));
+		createDescription(parent, UmlViewsRepository.LiteralInteger.Properties.type, UmlMessages.LiteralIntegerPropertiesEditionPart_TypeLabel);
 		type = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.LiteralInteger.Properties.type, UmlViewsRepository.FORM_KIND));
 		widgetFactory.adapt(type);
 		type.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -424,9 +484,12 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 		return parent;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createValueText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, UmlMessages.LiteralIntegerPropertiesEditionPart_ValueLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.LiteralInteger.Properties.value, UmlViewsRepository.FORM_KIND));
+		createDescription(parent, UmlViewsRepository.LiteralInteger.Properties.value, UmlMessages.LiteralIntegerPropertiesEditionPart_ValueLabel);
 		value = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		value.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -435,19 +498,44 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 		value.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LiteralIntegerPropertiesEditionPartForm.this, UmlViewsRepository.LiteralInteger.Properties.value, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, value.getText()));
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							LiteralIntegerPropertiesEditionPartForm.this,
+							UmlViewsRepository.LiteralInteger.Properties.value,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, value.getText()));
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									LiteralIntegerPropertiesEditionPartForm.this,
+									UmlViewsRepository.LiteralInteger.Properties.value,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+									null, value.getText()));
+				}
+			}
+
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+			 */
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									LiteralIntegerPropertiesEditionPartForm.this,
+									null,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+									null, null));
+				}
 			}
 		});
 		value.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -465,24 +553,20 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 	}
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-
-// End of user code
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LiteralIntegerPropertiesEditionPart#getName()
-	 * 
+	 * @generated
 	 */
 	public String getName() {
 		return name.getText();
@@ -492,7 +576,7 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LiteralIntegerPropertiesEditionPart#setName(String newValue)
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue) {
 		if (newValue != null) {
@@ -500,40 +584,62 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.LiteralInteger.Properties.name);
+		if (readOnly && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(UmlMessages.LiteralInteger_ReadOnly);
+		} else if (!readOnly && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
-
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LiteralIntegerPropertiesEditionPart#getVisibility()
-	 * 
+	 * @generated
 	 */
 	public Enumerator getVisibility() {
-		EEnumLiteral selection = (EEnumLiteral) ((StructuredSelection) visibility.getSelection()).getFirstElement();
-		return selection.getInstance();
+		Enumerator selection = (Enumerator) ((StructuredSelection) visibility.getSelection()).getFirstElement();
+		return selection;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LiteralIntegerPropertiesEditionPart#initVisibility(EEnum eenum, Enumerator current)
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LiteralIntegerPropertiesEditionPart#initVisibility(Object input, Enumerator current)
 	 */
-	public void initVisibility(EEnum eenum, Enumerator current) {
-		visibility.setInput(eenum.getELiterals());
+	public void initVisibility(Object input, Enumerator current) {
+		visibility.setInput(input);
 		visibility.modelUpdating(new StructuredSelection(current));
+		boolean readOnly = isReadOnly(UmlViewsRepository.LiteralInteger.Properties.visibility);
+		if (readOnly && visibility.isEnabled()) {
+			visibility.setEnabled(false);
+			visibility.setToolTipText(UmlMessages.LiteralInteger_ReadOnly);
+		} else if (!readOnly && !visibility.isEnabled()) {
+			visibility.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LiteralIntegerPropertiesEditionPart#setVisibility(Enumerator newValue)
-	 * 
+	 * @generated
 	 */
 	public void setVisibility(Enumerator newValue) {
 		visibility.modelUpdating(new StructuredSelection(newValue));
+		boolean readOnly = isReadOnly(UmlViewsRepository.LiteralInteger.Properties.visibility);
+		if (readOnly && visibility.isEnabled()) {
+			visibility.setEnabled(false);
+			visibility.setToolTipText(UmlMessages.LiteralInteger_ReadOnly);
+		} else if (!readOnly && !visibility.isEnabled()) {
+			visibility.setEnabled(true);
+		}	
+		
 	}
-
 
 
 
@@ -548,13 +654,21 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		clientDependency.setContentProvider(contentProvider);
 		clientDependency.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.LiteralInteger.Properties.clientDependency);
+		if (readOnly && clientDependency.getTable().isEnabled()) {
+			clientDependency.setEnabled(false);
+			clientDependency.setToolTipText(UmlMessages.LiteralInteger_ReadOnly);
+		} else if (!readOnly && !clientDependency.getTable().isEnabled()) {
+			clientDependency.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LiteralIntegerPropertiesEditionPart#updateClientDependency()
-	 * 
+	 * @generated
 	 */
 	public void updateClientDependency() {
 	clientDependency.refresh();
@@ -564,7 +678,7 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LiteralIntegerPropertiesEditionPart#addFilterClientDependency(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToClientDependency(ViewerFilter filter) {
 		clientDependencyFilters.add(filter);
@@ -574,7 +688,7 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LiteralIntegerPropertiesEditionPart#addBusinessFilterClientDependency(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToClientDependency(ViewerFilter filter) {
 		clientDependencyBusinessFilters.add(filter);
@@ -584,18 +698,17 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LiteralIntegerPropertiesEditionPart#isContainedInClientDependencyTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInClientDependencyTable(EObject element) {
 		return ((ReferencesTableSettings)clientDependency.getInput()).contains(element);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LiteralIntegerPropertiesEditionPart#getOwningTemplateParameter()
-	 * 
+	 * @generated
 	 */
 	public EObject getOwningTemplateParameter() {
 		if (owningTemplateParameter.getSelection() instanceof StructuredSelection) {
@@ -616,13 +729,21 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 		if (current != null) {
 			owningTemplateParameter.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.LiteralInteger.Properties.owningTemplateParameter);
+		if (readOnly && owningTemplateParameter.isEnabled()) {
+			owningTemplateParameter.setEnabled(false);
+			owningTemplateParameter.setToolTipText(UmlMessages.LiteralInteger_ReadOnly);
+		} else if (!readOnly && !owningTemplateParameter.isEnabled()) {
+			owningTemplateParameter.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LiteralIntegerPropertiesEditionPart#setOwningTemplateParameter(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setOwningTemplateParameter(EObject newValue) {
 		if (newValue != null) {
@@ -630,6 +751,14 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 		} else {
 			owningTemplateParameter.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.LiteralInteger.Properties.owningTemplateParameter);
+		if (readOnly && owningTemplateParameter.isEnabled()) {
+			owningTemplateParameter.setEnabled(false);
+			owningTemplateParameter.setToolTipText(UmlMessages.LiteralInteger_ReadOnly);
+		} else if (!readOnly && !owningTemplateParameter.isEnabled()) {
+			owningTemplateParameter.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -645,7 +774,7 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LiteralIntegerPropertiesEditionPart#addFilterOwningTemplateParameter(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToOwningTemplateParameter(ViewerFilter filter) {
 		owningTemplateParameter.addFilter(filter);
@@ -655,18 +784,17 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LiteralIntegerPropertiesEditionPart#addBusinessFilterOwningTemplateParameter(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToOwningTemplateParameter(ViewerFilter filter) {
 		owningTemplateParameter.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LiteralIntegerPropertiesEditionPart#getTemplateParameter()
-	 * 
+	 * @generated
 	 */
 	public EObject getTemplateParameter() {
 		if (templateParameter.getSelection() instanceof StructuredSelection) {
@@ -687,13 +815,21 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 		if (current != null) {
 			templateParameter.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.LiteralInteger.Properties.templateParameter);
+		if (readOnly && templateParameter.isEnabled()) {
+			templateParameter.setEnabled(false);
+			templateParameter.setToolTipText(UmlMessages.LiteralInteger_ReadOnly);
+		} else if (!readOnly && !templateParameter.isEnabled()) {
+			templateParameter.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LiteralIntegerPropertiesEditionPart#setTemplateParameter(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setTemplateParameter(EObject newValue) {
 		if (newValue != null) {
@@ -701,6 +837,14 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 		} else {
 			templateParameter.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.LiteralInteger.Properties.templateParameter);
+		if (readOnly && templateParameter.isEnabled()) {
+			templateParameter.setEnabled(false);
+			templateParameter.setToolTipText(UmlMessages.LiteralInteger_ReadOnly);
+		} else if (!readOnly && !templateParameter.isEnabled()) {
+			templateParameter.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -716,7 +860,7 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LiteralIntegerPropertiesEditionPart#addFilterTemplateParameter(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToTemplateParameter(ViewerFilter filter) {
 		templateParameter.addFilter(filter);
@@ -726,18 +870,17 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LiteralIntegerPropertiesEditionPart#addBusinessFilterTemplateParameter(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToTemplateParameter(ViewerFilter filter) {
 		templateParameter.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LiteralIntegerPropertiesEditionPart#getType()
-	 * 
+	 * @generated
 	 */
 	public EObject getType() {
 		if (type.getSelection() instanceof StructuredSelection) {
@@ -758,13 +901,21 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 		if (current != null) {
 			type.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.LiteralInteger.Properties.type);
+		if (readOnly && type.isEnabled()) {
+			type.setEnabled(false);
+			type.setToolTipText(UmlMessages.LiteralInteger_ReadOnly);
+		} else if (!readOnly && !type.isEnabled()) {
+			type.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LiteralIntegerPropertiesEditionPart#setType(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setType(EObject newValue) {
 		if (newValue != null) {
@@ -772,6 +923,14 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 		} else {
 			type.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.LiteralInteger.Properties.type);
+		if (readOnly && type.isEnabled()) {
+			type.setEnabled(false);
+			type.setToolTipText(UmlMessages.LiteralInteger_ReadOnly);
+		} else if (!readOnly && !type.isEnabled()) {
+			type.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -787,7 +946,7 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LiteralIntegerPropertiesEditionPart#addFilterType(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToType(ViewerFilter filter) {
 		type.addFilter(filter);
@@ -797,18 +956,17 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LiteralIntegerPropertiesEditionPart#addBusinessFilterType(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToType(ViewerFilter filter) {
 		type.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LiteralIntegerPropertiesEditionPart#getValue()
-	 * 
+	 * @generated
 	 */
 	public String getValue() {
 		return value.getText();
@@ -818,7 +976,7 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.LiteralIntegerPropertiesEditionPart#setValue(String newValue)
-	 * 
+	 * @generated
 	 */
 	public void setValue(String newValue) {
 		if (newValue != null) {
@@ -826,7 +984,17 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 		} else {
 			value.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.LiteralInteger.Properties.value);
+		if (readOnly && value.isEnabled()) {
+			value.setEnabled(false);
+			value.setToolTipText(UmlMessages.LiteralInteger_ReadOnly);
+		} else if (!readOnly && !value.isEnabled()) {
+			value.setEnabled(true);
+		}	
+		
 	}
+
+
 
 
 
@@ -835,15 +1003,12 @@ public class LiteralIntegerPropertiesEditionPartForm extends CompositeProperties
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
+	 * @generated
 	 */
 	public String getTitle() {
 		return UmlMessages.LiteralInteger_Part_Title;
 	}
 
-	// Start of user code additional methods
-	
-	// End of user code
 
 
 }

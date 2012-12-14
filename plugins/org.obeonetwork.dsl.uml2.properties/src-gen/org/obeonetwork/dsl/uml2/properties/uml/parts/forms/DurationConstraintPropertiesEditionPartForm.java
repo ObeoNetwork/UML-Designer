@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts.forms;
 
-// Start of user code for imports
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -18,93 +17,125 @@ import java.util.List;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EEnumLiteral;
+
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
+import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
+
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EEFFeatureEditorDialog;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.jface.window.Window;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
+
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
+
 import org.eclipse.uml2.uml.UMLPackage;
+
 import org.obeonetwork.dsl.uml2.properties.uml.parts.DurationConstraintPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
+
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 
 
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
-public class DurationConstraintPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, DurationConstraintPropertiesEditionPart {
+public class DurationConstraintPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, DurationConstraintPropertiesEditionPart {
 
 	protected Text name;
 	protected EMFComboViewer visibility;
-		protected ReferencesTable clientDependency;
-		protected List<ViewerFilter> clientDependencyBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> clientDependencyFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable clientDependency;
+	protected List<ViewerFilter> clientDependencyBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> clientDependencyFilters = new ArrayList<ViewerFilter>();
 	protected EObjectFlatComboViewer owningTemplateParameter;
 	protected EObjectFlatComboViewer templateParameter;
-		protected ReferencesTable constrainedElement;
-		protected List<ViewerFilter> constrainedElementBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> constrainedElementFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable constrainedElement;
+	protected List<ViewerFilter> constrainedElementBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> constrainedElementFilters = new ArrayList<ViewerFilter>();
 	protected EObjectFlatComboViewer context;
 	protected Text firstEvent;
-		protected Button editFirstEvent;
-		private EList firstEventList;
+	protected Button editFirstEvent;
+	private EList firstEventList;
 
 
 
 	/**
+	 * For {@link ISection} use only.
+	 */
+	public DurationConstraintPropertiesEditionPartForm() { super(); }
+
+	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
+	 * @generated
 	 */
 	public DurationConstraintPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -115,7 +146,7 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
-	 * 
+	 * @generated
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -133,7 +164,7 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence durationConstraintStep = new BindingCompositionSequence(propertiesEditionComponent);
@@ -156,7 +187,7 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 					return createPropertiesGroup(widgetFactory, parent);
 				}
 				if (key == UmlViewsRepository.DurationConstraint.Properties.name) {
-					return 		createNameText(widgetFactory, parent);
+					return createNameText(widgetFactory, parent);
 				}
 				if (key == UmlViewsRepository.DurationConstraint.Properties.visibility) {
 					return createVisibilityEMFComboViewer(widgetFactory, parent);
@@ -185,7 +216,7 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 		composer.compose(view);
 	}
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
 		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
@@ -201,9 +232,12 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 		return propertiesGroup;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, UmlMessages.DurationConstraintPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.DurationConstraint.Properties.name, UmlViewsRepository.FORM_KIND));
+		createDescription(parent, UmlViewsRepository.DurationConstraint.Properties.name, UmlMessages.DurationConstraintPropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -212,19 +246,44 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 		name.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DurationConstraintPropertiesEditionPartForm.this, UmlViewsRepository.DurationConstraint.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							DurationConstraintPropertiesEditionPartForm.this,
+							UmlViewsRepository.DurationConstraint.Properties.name,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									DurationConstraintPropertiesEditionPartForm.this,
+									UmlViewsRepository.DurationConstraint.Properties.name,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+									null, name.getText()));
+				}
+			}
+
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+			 */
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									DurationConstraintPropertiesEditionPartForm.this,
+									null,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+									null, null));
+				}
 			}
 		});
 		name.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -241,12 +300,15 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 		return parent;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createVisibilityEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, UmlMessages.DurationConstraintPropertiesEditionPart_VisibilityLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.DurationConstraint.Properties.visibility, UmlViewsRepository.FORM_KIND));
+		createDescription(parent, UmlViewsRepository.DurationConstraint.Properties.visibility, UmlMessages.DurationConstraintPropertiesEditionPart_VisibilityLabel);
 		visibility = new EMFComboViewer(parent);
 		visibility.setContentProvider(new ArrayContentProvider());
-		visibility.setLabelProvider(new AdapterFactoryLabelProvider(new EcoreAdapterFactory()));
+		visibility.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData visibilityData = new GridData(GridData.FILL_HORIZONTAL);
 		visibility.getCombo().setLayoutData(visibilityData);
 		visibility.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -255,7 +317,7 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
+			 * 	@generated
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
@@ -269,10 +331,10 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createClientDependencyReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.clientDependency = new ReferencesTable(UmlMessages.DurationConstraintPropertiesEditionPart_ClientDependencyLabel, new ReferencesTableListener	() {
+		this.clientDependency = new ReferencesTable(getDescription(UmlViewsRepository.DurationConstraint.Properties.clientDependency, UmlMessages.DurationConstraintPropertiesEditionPart_ClientDependencyLabel), new ReferencesTableListener	() {
 			public void handleAdd() { addClientDependency(); }
 			public void handleEdit(EObject element) { editClientDependency(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveClientDependency(element, oldIndex, newIndex); }
@@ -300,7 +362,7 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addClientDependency() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(clientDependency.getInput(), clientDependencyFilters, clientDependencyBusinessFilters,
@@ -319,7 +381,7 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveClientDependency(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DurationConstraintPropertiesEditionPartForm.this, UmlViewsRepository.DurationConstraint.Properties.clientDependency, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -327,7 +389,7 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromClientDependency(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DurationConstraintPropertiesEditionPartForm.this, UmlViewsRepository.DurationConstraint.Properties.clientDependency, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -335,7 +397,7 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editClientDependency(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -352,10 +414,10 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 	/**
 	 * @param parent the parent composite
 	 * @param widgetFactory factory to use to instanciante widget of the form
-	 * 
+	 * @generated
 	 */
 	protected Composite createOwningTemplateParameterFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, UmlMessages.DurationConstraintPropertiesEditionPart_OwningTemplateParameterLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.DurationConstraint.Properties.owningTemplateParameter, UmlViewsRepository.FORM_KIND));
+		createDescription(parent, UmlViewsRepository.DurationConstraint.Properties.owningTemplateParameter, UmlMessages.DurationConstraintPropertiesEditionPart_OwningTemplateParameterLabel);
 		owningTemplateParameter = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.DurationConstraint.Properties.owningTemplateParameter, UmlViewsRepository.FORM_KIND));
 		widgetFactory.adapt(owningTemplateParameter);
 		owningTemplateParameter.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -382,10 +444,10 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 	/**
 	 * @param parent the parent composite
 	 * @param widgetFactory factory to use to instanciante widget of the form
-	 * 
+	 * @generated
 	 */
 	protected Composite createTemplateParameterFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, UmlMessages.DurationConstraintPropertiesEditionPart_TemplateParameterLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.DurationConstraint.Properties.templateParameter, UmlViewsRepository.FORM_KIND));
+		createDescription(parent, UmlViewsRepository.DurationConstraint.Properties.templateParameter, UmlMessages.DurationConstraintPropertiesEditionPart_TemplateParameterLabel);
 		templateParameter = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.DurationConstraint.Properties.templateParameter, UmlViewsRepository.FORM_KIND));
 		widgetFactory.adapt(templateParameter);
 		templateParameter.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -410,10 +472,10 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createConstrainedElementReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.constrainedElement = new ReferencesTable(UmlMessages.DurationConstraintPropertiesEditionPart_ConstrainedElementLabel, new ReferencesTableListener	() {
+		this.constrainedElement = new ReferencesTable(getDescription(UmlViewsRepository.DurationConstraint.Properties.constrainedElement, UmlMessages.DurationConstraintPropertiesEditionPart_ConstrainedElementLabel), new ReferencesTableListener	() {
 			public void handleAdd() { addConstrainedElement(); }
 			public void handleEdit(EObject element) { editConstrainedElement(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveConstrainedElement(element, oldIndex, newIndex); }
@@ -441,7 +503,7 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addConstrainedElement() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(constrainedElement.getInput(), constrainedElementFilters, constrainedElementBusinessFilters,
@@ -460,7 +522,7 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveConstrainedElement(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DurationConstraintPropertiesEditionPartForm.this, UmlViewsRepository.DurationConstraint.Properties.constrainedElement, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -468,7 +530,7 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromConstrainedElement(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(DurationConstraintPropertiesEditionPartForm.this, UmlViewsRepository.DurationConstraint.Properties.constrainedElement, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -476,7 +538,7 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editConstrainedElement(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -493,10 +555,10 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 	/**
 	 * @param parent the parent composite
 	 * @param widgetFactory factory to use to instanciante widget of the form
-	 * 
+	 * @generated
 	 */
 	protected Composite createContextFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, UmlMessages.DurationConstraintPropertiesEditionPart_ContextLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.DurationConstraint.Properties.context, UmlViewsRepository.FORM_KIND));
+		createDescription(parent, UmlViewsRepository.DurationConstraint.Properties.context, UmlMessages.DurationConstraintPropertiesEditionPart_ContextLabel);
 		context = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.DurationConstraint.Properties.context, UmlViewsRepository.FORM_KIND));
 		widgetFactory.adapt(context);
 		context.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -521,7 +583,7 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createFirstEventMultiValuedEditor(FormToolkit widgetFactory, Composite parent) {
 		firstEvent = widgetFactory.createText(parent, "", SWT.READ_ONLY); //$NON-NLS-1$
@@ -530,7 +592,7 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 		firstEvent.setLayoutData(firstEventData);
 		EditingUtils.setID(firstEvent, UmlViewsRepository.DurationConstraint.Properties.firstEvent);
 		EditingUtils.setEEFtype(firstEvent, "eef::MultiValuedEditor::field"); //$NON-NLS-1$
-		editFirstEvent = widgetFactory.createButton(parent, UmlMessages.DurationConstraintPropertiesEditionPart_FirstEventLabel, SWT.NONE);
+		editFirstEvent = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.DurationConstraint.Properties.firstEvent, UmlMessages.DurationConstraintPropertiesEditionPart_FirstEventLabel), SWT.NONE);
 		GridData editFirstEventData = new GridData();
 		editFirstEvent.setLayoutData(editFirstEventData);
 		editFirstEvent.addSelectionListener(new SelectionAdapter() {
@@ -539,7 +601,7 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 
+			 * @generated
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				EEFFeatureEditorDialog dialog = new EEFFeatureEditorDialog(
@@ -564,24 +626,20 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 	}
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-
-// End of user code
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.DurationConstraintPropertiesEditionPart#getName()
-	 * 
+	 * @generated
 	 */
 	public String getName() {
 		return name.getText();
@@ -591,7 +649,7 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.DurationConstraintPropertiesEditionPart#setName(String newValue)
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue) {
 		if (newValue != null) {
@@ -599,40 +657,62 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.DurationConstraint.Properties.name);
+		if (readOnly && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(UmlMessages.DurationConstraint_ReadOnly);
+		} else if (!readOnly && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
-
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.DurationConstraintPropertiesEditionPart#getVisibility()
-	 * 
+	 * @generated
 	 */
 	public Enumerator getVisibility() {
-		EEnumLiteral selection = (EEnumLiteral) ((StructuredSelection) visibility.getSelection()).getFirstElement();
-		return selection.getInstance();
+		Enumerator selection = (Enumerator) ((StructuredSelection) visibility.getSelection()).getFirstElement();
+		return selection;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.DurationConstraintPropertiesEditionPart#initVisibility(EEnum eenum, Enumerator current)
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.DurationConstraintPropertiesEditionPart#initVisibility(Object input, Enumerator current)
 	 */
-	public void initVisibility(EEnum eenum, Enumerator current) {
-		visibility.setInput(eenum.getELiterals());
+	public void initVisibility(Object input, Enumerator current) {
+		visibility.setInput(input);
 		visibility.modelUpdating(new StructuredSelection(current));
+		boolean readOnly = isReadOnly(UmlViewsRepository.DurationConstraint.Properties.visibility);
+		if (readOnly && visibility.isEnabled()) {
+			visibility.setEnabled(false);
+			visibility.setToolTipText(UmlMessages.DurationConstraint_ReadOnly);
+		} else if (!readOnly && !visibility.isEnabled()) {
+			visibility.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.DurationConstraintPropertiesEditionPart#setVisibility(Enumerator newValue)
-	 * 
+	 * @generated
 	 */
 	public void setVisibility(Enumerator newValue) {
 		visibility.modelUpdating(new StructuredSelection(newValue));
+		boolean readOnly = isReadOnly(UmlViewsRepository.DurationConstraint.Properties.visibility);
+		if (readOnly && visibility.isEnabled()) {
+			visibility.setEnabled(false);
+			visibility.setToolTipText(UmlMessages.DurationConstraint_ReadOnly);
+		} else if (!readOnly && !visibility.isEnabled()) {
+			visibility.setEnabled(true);
+		}	
+		
 	}
-
 
 
 
@@ -647,13 +727,21 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		clientDependency.setContentProvider(contentProvider);
 		clientDependency.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.DurationConstraint.Properties.clientDependency);
+		if (readOnly && clientDependency.getTable().isEnabled()) {
+			clientDependency.setEnabled(false);
+			clientDependency.setToolTipText(UmlMessages.DurationConstraint_ReadOnly);
+		} else if (!readOnly && !clientDependency.getTable().isEnabled()) {
+			clientDependency.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.DurationConstraintPropertiesEditionPart#updateClientDependency()
-	 * 
+	 * @generated
 	 */
 	public void updateClientDependency() {
 	clientDependency.refresh();
@@ -663,7 +751,7 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.DurationConstraintPropertiesEditionPart#addFilterClientDependency(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToClientDependency(ViewerFilter filter) {
 		clientDependencyFilters.add(filter);
@@ -673,7 +761,7 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.DurationConstraintPropertiesEditionPart#addBusinessFilterClientDependency(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToClientDependency(ViewerFilter filter) {
 		clientDependencyBusinessFilters.add(filter);
@@ -683,18 +771,17 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.DurationConstraintPropertiesEditionPart#isContainedInClientDependencyTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInClientDependencyTable(EObject element) {
 		return ((ReferencesTableSettings)clientDependency.getInput()).contains(element);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.DurationConstraintPropertiesEditionPart#getOwningTemplateParameter()
-	 * 
+	 * @generated
 	 */
 	public EObject getOwningTemplateParameter() {
 		if (owningTemplateParameter.getSelection() instanceof StructuredSelection) {
@@ -715,13 +802,21 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 		if (current != null) {
 			owningTemplateParameter.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.DurationConstraint.Properties.owningTemplateParameter);
+		if (readOnly && owningTemplateParameter.isEnabled()) {
+			owningTemplateParameter.setEnabled(false);
+			owningTemplateParameter.setToolTipText(UmlMessages.DurationConstraint_ReadOnly);
+		} else if (!readOnly && !owningTemplateParameter.isEnabled()) {
+			owningTemplateParameter.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.DurationConstraintPropertiesEditionPart#setOwningTemplateParameter(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setOwningTemplateParameter(EObject newValue) {
 		if (newValue != null) {
@@ -729,6 +824,14 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 		} else {
 			owningTemplateParameter.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.DurationConstraint.Properties.owningTemplateParameter);
+		if (readOnly && owningTemplateParameter.isEnabled()) {
+			owningTemplateParameter.setEnabled(false);
+			owningTemplateParameter.setToolTipText(UmlMessages.DurationConstraint_ReadOnly);
+		} else if (!readOnly && !owningTemplateParameter.isEnabled()) {
+			owningTemplateParameter.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -744,7 +847,7 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.DurationConstraintPropertiesEditionPart#addFilterOwningTemplateParameter(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToOwningTemplateParameter(ViewerFilter filter) {
 		owningTemplateParameter.addFilter(filter);
@@ -754,18 +857,17 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.DurationConstraintPropertiesEditionPart#addBusinessFilterOwningTemplateParameter(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToOwningTemplateParameter(ViewerFilter filter) {
 		owningTemplateParameter.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.DurationConstraintPropertiesEditionPart#getTemplateParameter()
-	 * 
+	 * @generated
 	 */
 	public EObject getTemplateParameter() {
 		if (templateParameter.getSelection() instanceof StructuredSelection) {
@@ -786,13 +888,21 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 		if (current != null) {
 			templateParameter.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.DurationConstraint.Properties.templateParameter);
+		if (readOnly && templateParameter.isEnabled()) {
+			templateParameter.setEnabled(false);
+			templateParameter.setToolTipText(UmlMessages.DurationConstraint_ReadOnly);
+		} else if (!readOnly && !templateParameter.isEnabled()) {
+			templateParameter.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.DurationConstraintPropertiesEditionPart#setTemplateParameter(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setTemplateParameter(EObject newValue) {
 		if (newValue != null) {
@@ -800,6 +910,14 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 		} else {
 			templateParameter.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.DurationConstraint.Properties.templateParameter);
+		if (readOnly && templateParameter.isEnabled()) {
+			templateParameter.setEnabled(false);
+			templateParameter.setToolTipText(UmlMessages.DurationConstraint_ReadOnly);
+		} else if (!readOnly && !templateParameter.isEnabled()) {
+			templateParameter.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -815,7 +933,7 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.DurationConstraintPropertiesEditionPart#addFilterTemplateParameter(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToTemplateParameter(ViewerFilter filter) {
 		templateParameter.addFilter(filter);
@@ -825,12 +943,11 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.DurationConstraintPropertiesEditionPart#addBusinessFilterTemplateParameter(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToTemplateParameter(ViewerFilter filter) {
 		templateParameter.addBusinessRuleFilter(filter);
 	}
-
 
 
 
@@ -845,13 +962,21 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		constrainedElement.setContentProvider(contentProvider);
 		constrainedElement.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.DurationConstraint.Properties.constrainedElement);
+		if (readOnly && constrainedElement.getTable().isEnabled()) {
+			constrainedElement.setEnabled(false);
+			constrainedElement.setToolTipText(UmlMessages.DurationConstraint_ReadOnly);
+		} else if (!readOnly && !constrainedElement.getTable().isEnabled()) {
+			constrainedElement.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.DurationConstraintPropertiesEditionPart#updateConstrainedElement()
-	 * 
+	 * @generated
 	 */
 	public void updateConstrainedElement() {
 	constrainedElement.refresh();
@@ -861,7 +986,7 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.DurationConstraintPropertiesEditionPart#addFilterConstrainedElement(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToConstrainedElement(ViewerFilter filter) {
 		constrainedElementFilters.add(filter);
@@ -871,7 +996,7 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.DurationConstraintPropertiesEditionPart#addBusinessFilterConstrainedElement(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToConstrainedElement(ViewerFilter filter) {
 		constrainedElementBusinessFilters.add(filter);
@@ -881,18 +1006,17 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.DurationConstraintPropertiesEditionPart#isContainedInConstrainedElementTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInConstrainedElementTable(EObject element) {
 		return ((ReferencesTableSettings)constrainedElement.getInput()).contains(element);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.DurationConstraintPropertiesEditionPart#getContext()
-	 * 
+	 * @generated
 	 */
 	public EObject getContext() {
 		if (context.getSelection() instanceof StructuredSelection) {
@@ -913,13 +1037,21 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 		if (current != null) {
 			context.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.DurationConstraint.Properties.context);
+		if (readOnly && context.isEnabled()) {
+			context.setEnabled(false);
+			context.setToolTipText(UmlMessages.DurationConstraint_ReadOnly);
+		} else if (!readOnly && !context.isEnabled()) {
+			context.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.DurationConstraintPropertiesEditionPart#setContext(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setContext(EObject newValue) {
 		if (newValue != null) {
@@ -927,6 +1059,14 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 		} else {
 			context.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.DurationConstraint.Properties.context);
+		if (readOnly && context.isEnabled()) {
+			context.setEnabled(false);
+			context.setToolTipText(UmlMessages.DurationConstraint_ReadOnly);
+		} else if (!readOnly && !context.isEnabled()) {
+			context.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -942,7 +1082,7 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.DurationConstraintPropertiesEditionPart#addFilterContext(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToContext(ViewerFilter filter) {
 		context.addFilter(filter);
@@ -952,20 +1092,19 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.DurationConstraintPropertiesEditionPart#addBusinessFilterContext(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToContext(ViewerFilter filter) {
 		context.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.DurationConstraintPropertiesEditionPart#getFirstEvent()
-	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.DurationConstraintPropertiesEditionPart#getFirstEvents()
+	 * @generated
 	 */
-	public EList getFirstEvent() {
+	public EList getFirstEvents() {
 		return firstEventList;
 	}
 
@@ -973,7 +1112,7 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.DurationConstraintPropertiesEditionPart#setFirstEvent(EList newValue)
-	 * 
+	 * @generated
 	 */
 	public void setFirstEvent(EList newValue) {
 		firstEventList = newValue;
@@ -982,6 +1121,14 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 		} else {
 			firstEvent.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.DurationConstraint.Properties.firstEvent);
+		if (readOnly && firstEvent.isEnabled()) {
+			firstEvent.setEnabled(false);
+			firstEvent.setToolTipText(UmlMessages.DurationConstraint_ReadOnly);
+		} else if (!readOnly && !firstEvent.isEnabled()) {
+			firstEvent.setEnabled(true);
+		}	
+		
 	}
 
 	public void addToFirstEvent(Object newValue) {
@@ -1005,19 +1152,18 @@ public class DurationConstraintPropertiesEditionPartForm extends CompositeProper
 
 
 
+
+
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
+	 * @generated
 	 */
 	public String getTitle() {
 		return UmlMessages.DurationConstraint_Part_Title;
 	}
 
-	// Start of user code additional methods
-	
-	// End of user code
 
 
 }

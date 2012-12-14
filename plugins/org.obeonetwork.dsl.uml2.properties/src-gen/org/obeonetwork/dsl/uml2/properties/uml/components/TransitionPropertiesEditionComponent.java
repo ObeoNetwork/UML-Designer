@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,35 +10,54 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.components;
 
-// Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
-import org.eclipse.emf.ecore.EEnum;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Region;
@@ -48,18 +67,20 @@ import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.Vertex;
 import org.eclipse.uml2.uml.VisibilityKind;
+
 import org.obeonetwork.dsl.uml2.properties.uml.parts.TransitionPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 
 
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
+	/**
+	 * @generated
+	 */
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
@@ -67,36 +88,37 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 	/**
 	 * Settings for clientDependency ReferencesTable
 	 */
-	private	ReferencesTableSettings clientDependencySettings;
+	private ReferencesTableSettings clientDependencySettings;
 	
 	/**
 	 * Settings for container EObjectFlatComboViewer
 	 */
-	private	EObjectFlatComboSettings containerSettings;
+	private EObjectFlatComboSettings containerSettings;
 	
 	/**
 	 * Settings for source EObjectFlatComboViewer
 	 */
-	private	EObjectFlatComboSettings sourceSettings;
+	private EObjectFlatComboSettings sourceSettings;
 	
 	/**
 	 * Settings for target EObjectFlatComboViewer
 	 */
-	private	EObjectFlatComboSettings targetSettings;
+	private EObjectFlatComboSettings targetSettings;
 	
 	/**
 	 * Settings for redefinedTransition EObjectFlatComboViewer
 	 */
-	private	EObjectFlatComboSettings redefinedTransitionSettings;
+	private EObjectFlatComboSettings redefinedTransitionSettings;
 	
 	/**
 	 * Settings for guard EObjectFlatComboViewer
 	 */
-	private	EObjectFlatComboSettings guardSettings;
+	private EObjectFlatComboSettings guardSettings;
+	
 	
 	/**
 	 * Default constructor
-	 * 
+	 * @generated
 	 */
 	public TransitionPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject transition, String editing_mode) {
 		super(editingContext, transition, editing_mode);
@@ -110,29 +132,31 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
-	 * 
+	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final Transition transition = (Transition)elt;
 			final TransitionPropertiesEditionPart basePart = (TransitionPropertiesEditionPart)editingPart;
 			// init values
-			if (transition.getName() != null && isAccessible(UmlViewsRepository.Transition.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(UMLPackage.eINSTANCE.getString(), transition.getName()));
+			if (isAccessible(UmlViewsRepository.Transition.Properties.name))
+				basePart.setName(EEFConverterUtil.convertToString(UMLPackage.Literals.STRING, transition.getName()));
 			
 			if (isAccessible(UmlViewsRepository.Transition.Properties.visibility)) {
-				basePart.initVisibility((EEnum) UMLPackage.eINSTANCE.getNamedElement_Visibility().getEType(), transition.getVisibility());
+				basePart.initVisibility(EEFUtils.choiceOfValues(transition, UMLPackage.eINSTANCE.getNamedElement_Visibility()), transition.getVisibility());
 			}
 			if (isAccessible(UmlViewsRepository.Transition.Properties.clientDependency)) {
 				clientDependencySettings = new ReferencesTableSettings(transition, UMLPackage.eINSTANCE.getNamedElement_ClientDependency());
 				basePart.initClientDependency(clientDependencySettings);
 			}
-			basePart.setIsLeaf(transition.isLeaf());
-			
+			if (isAccessible(UmlViewsRepository.Transition.Properties.isLeaf)) {
+				basePart.setIsLeaf(transition.isLeaf());
+			}
 			if (isAccessible(UmlViewsRepository.Transition.Properties.kind)) {
-				basePart.initKind((EEnum) UMLPackage.eINSTANCE.getTransition_Kind().getEType(), transition.getKind());
+				basePart.initKind(EEFUtils.choiceOfValues(transition, UMLPackage.eINSTANCE.getTransition_Kind()), transition.getKind());
 			}
 			if (isAccessible(UmlViewsRepository.Transition.Properties.container)) {
 				// init part
@@ -172,101 +196,95 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 			// init filters
 			
 			
-			basePart.addFilterToClientDependency(new ViewerFilter() {
+			if (isAccessible(UmlViewsRepository.Transition.Properties.clientDependency)) {
+				basePart.addFilterToClientDependency(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInClientDependencyTable((EObject)element));
+						return element instanceof Resource;
+					}
+				
+				});
+				basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.Literals.DEPENDENCY));
+			}
 			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInClientDependencyTable((EObject)element));
-					return element instanceof Resource;
-				}
 			
-			});
-			basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.eINSTANCE.getDependency()));
-			// Start of user code for additional businessfilters for clientDependency
-			// End of user code
-			
-			
-			
-			basePart.addFilterToContainer(new ViewerFilter() {
-			
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof Region);
-				}
-			
-			});
-			// Start of user code for additional businessfilters for container
-			// End of user code
-			
-			basePart.addFilterToSource(new ViewerFilter() {
-			
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof Vertex);
-				}
-			
-			});
-			// Start of user code for additional businessfilters for source
-			// End of user code
-			
-			basePart.addFilterToTarget(new ViewerFilter() {
-			
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof Vertex);
-				}
-			
-			});
-			// Start of user code for additional businessfilters for target
-			// End of user code
-			
-			basePart.addFilterToRedefinedTransition(new ViewerFilter() {
-			
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof String && element.equals("")) || (element instanceof Transition); //$NON-NLS-1$ 
-				}
-			
-			});
-			// Start of user code for additional businessfilters for redefinedTransition
-			// End of user code
-			
-			basePart.addFilterToGuard(new ViewerFilter() {
-			
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof String && element.equals("")) || (element instanceof Constraint); //$NON-NLS-1$ 
-				}
-			
-			});
-			// Start of user code for additional businessfilters for guard
-			// End of user code
-			
+			if (isAccessible(UmlViewsRepository.Transition.Properties.container)) {
+				basePart.addFilterToContainer(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof Region);
+					}
+					
+				});
+			}
+			if (isAccessible(UmlViewsRepository.Transition.Properties.source)) {
+				basePart.addFilterToSource(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof Vertex);
+					}
+					
+				});
+			}
+			if (isAccessible(UmlViewsRepository.Transition.Properties.target)) {
+				basePart.addFilterToTarget(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof Vertex);
+					}
+					
+				});
+			}
+			if (isAccessible(UmlViewsRepository.Transition.Properties.redefinedTransition)) {
+				basePart.addFilterToRedefinedTransition(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof Transition); //$NON-NLS-1$ 
+					}
+					
+				});
+			}
+			if (isAccessible(UmlViewsRepository.Transition.Properties.guard)) {
+				basePart.addFilterToGuard(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof Constraint); //$NON-NLS-1$ 
+					}
+					
+				});
+			}
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -291,7 +309,7 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
-	protected EStructuralFeature associatedFeature(Object editorKey) {
+	public EStructuralFeature associatedFeature(Object editorKey) {
 		if (editorKey == UmlViewsRepository.Transition.Properties.name) {
 			return UMLPackage.eINSTANCE.getNamedElement_Name();
 		}
@@ -328,12 +346,12 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Transition transition = (Transition)semanticObject;
 		if (UmlViewsRepository.Transition.Properties.name == event.getAffectedEditor()) {
-			transition.setName((java.lang.String)EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getString(), (String)event.getNewValue()));
+			transition.setName((java.lang.String)EEFConverterUtil.createFromString(UMLPackage.Literals.STRING, (String)event.getNewValue()));
 		}
 		if (UmlViewsRepository.Transition.Properties.visibility == event.getAffectedEditor()) {
 			transition.setVisibility((VisibilityKind)event.getNewValue());
@@ -344,7 +362,9 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 					clientDependencySettings.addToReference((EObject) event.getNewValue());
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-					clientDependencySettings.removeFromReference((EObject) event.getNewValue());
+				clientDependencySettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				clientDependencySettings.move(event.getNewIndex(), (Dependency) event.getNewValue());
 			}
 		}
 		if (UmlViewsRepository.Transition.Properties.isLeaf == event.getAffectedEditor()) {
@@ -436,25 +456,26 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		if (editingPart.isVisible()) {	
+		super.updatePart(msg);
+		if (editingPart.isVisible()) {
 			TransitionPropertiesEditionPart basePart = (TransitionPropertiesEditionPart)editingPart;
-			if (UMLPackage.eINSTANCE.getNamedElement_Name().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.Transition.Properties.name)) {
+			if (UMLPackage.eINSTANCE.getNamedElement_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(UmlViewsRepository.Transition.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(UMLPackage.eINSTANCE.getString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(UMLPackage.Literals.STRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}
 			}
-			if (UMLPackage.eINSTANCE.getNamedElement_Visibility().equals(msg.getFeature()) && isAccessible(UmlViewsRepository.Transition.Properties.visibility))
-				basePart.setVisibility((Enumerator)msg.getNewValue());
+			if (UMLPackage.eINSTANCE.getNamedElement_Visibility().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(UmlViewsRepository.Transition.Properties.visibility))
+				basePart.setVisibility((VisibilityKind)msg.getNewValue());
 			
 			if (UMLPackage.eINSTANCE.getNamedElement_ClientDependency().equals(msg.getFeature())  && isAccessible(UmlViewsRepository.Transition.Properties.clientDependency))
 				basePart.updateClientDependency();
-			if (UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.Transition.Properties.isLeaf))
+			if (UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(UmlViewsRepository.Transition.Properties.isLeaf))
 				basePart.setIsLeaf((Boolean)msg.getNewValue());
 			
-			if (UMLPackage.eINSTANCE.getTransition_Kind().equals(msg.getFeature()) && isAccessible(UmlViewsRepository.Transition.Properties.kind))
-				basePart.setKind((Enumerator)msg.getNewValue());
+			if (UMLPackage.eINSTANCE.getTransition_Kind().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(UmlViewsRepository.Transition.Properties.kind))
+				basePart.setKind((TransitionKind)msg.getNewValue());
 			
 			if (UMLPackage.eINSTANCE.getTransition_Container().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.Transition.Properties.container))
 				basePart.setContainer((EObject)msg.getNewValue());
@@ -470,12 +491,33 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			UMLPackage.eINSTANCE.getNamedElement_Name(),
+			UMLPackage.eINSTANCE.getNamedElement_Visibility(),
+			UMLPackage.eINSTANCE.getNamedElement_ClientDependency(),
+			UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf(),
+			UMLPackage.eINSTANCE.getTransition_Kind(),
+			UMLPackage.eINSTANCE.getTransition_Container(),
+			UMLPackage.eINSTANCE.getTransition_Source(),
+			UMLPackage.eINSTANCE.getTransition_Target(),
+			UMLPackage.eINSTANCE.getTransition_RedefinedTransition(),
+			UMLPackage.eINSTANCE.getTransition_Guard()		);
+		return new NotificationFilter[] {filter,};
+	}
+
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
-	 * 
+	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
 		return key == UmlViewsRepository.Transition.Properties.isLeaf || key == UmlViewsRepository.Transition.Properties.kind || key == UmlViewsRepository.Transition.Properties.container || key == UmlViewsRepository.Transition.Properties.source || key == UmlViewsRepository.Transition.Properties.target;
@@ -485,7 +527,7 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
@@ -494,28 +536,28 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 				if (UmlViewsRepository.Transition.Properties.name == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newValue);
 				}
 				if (UmlViewsRepository.Transition.Properties.visibility == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), newValue);
 				}
 				if (UmlViewsRepository.Transition.Properties.isLeaf == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), newValue);
 				}
 				if (UmlViewsRepository.Transition.Properties.kind == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(UMLPackage.eINSTANCE.getTransition_Kind().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getTransition_Kind().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getTransition_Kind().getEAttributeType(), newValue);
 				}
@@ -527,5 +569,8 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 		}
 		return ret;
 	}
+
+
+	
 
 }

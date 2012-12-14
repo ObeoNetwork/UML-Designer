@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,56 +10,56 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts;
 
-// Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.ecore.EEnum;
+
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
-
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public interface DataStoreNodePropertiesEditionPart {
 
 	/**
 	 * @return the name
-	 * 
+	 * @generated
 	 */
 	public String getName();
 
 	/**
 	 * Defines a new name
 	 * @param newValue the new name to set
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue);
 
 
 	/**
 	 * @return the visibility
-	 * 
+	 * @generated
 	 */
 	public Enumerator getVisibility();
 
 	/**
 	 * Init the visibility
-	 * @param eenum the enum to manage
+	 * @param input the viewer input
 	 * @param current the current value
 	 */
-	public void initVisibility(EEnum eenum, Enumerator current);
+	public void initVisibility(Object input, Enumerator current);
 
 	/**
 	 * Defines a new visibility
 	 * @param newValue the new visibility to set
-	 * 
+	 * @generated
 	 */
 	public void setVisibility(Enumerator newValue);
 
@@ -75,7 +75,7 @@ public interface DataStoreNodePropertiesEditionPart {
 	/**
 	 * Update the clientDependency
 	 * @param newValue the clientDependency to update
-	 * 
+	 * @generated
 	 */
 	public void updateClientDependency();
 
@@ -85,7 +85,7 @@ public interface DataStoreNodePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToClientDependency(ViewerFilter filter);
 
@@ -95,34 +95,34 @@ public interface DataStoreNodePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToClientDependency(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the clientDependency table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInClientDependencyTable(EObject element);
 
 
 	/**
 	 * @return the isLeaf
-	 * 
+	 * @generated
 	 */
 	public Boolean getIsLeaf();
 
 	/**
 	 * Defines a new isLeaf
 	 * @param newValue the new isLeaf to set
-	 * 
+	 * @generated
 	 */
 	public void setIsLeaf(Boolean newValue);
 
 
 	/**
 	 * @return the inStructuredNode
-	 * 
+	 * @generated
 	 */
 	public EObject getInStructuredNode();
 
@@ -135,14 +135,14 @@ public interface DataStoreNodePropertiesEditionPart {
 	/**
 	 * Defines a new inStructuredNode
 	 * @param newValue the new inStructuredNode to set
-	 * 
+	 * @generated
 	 */
 	public void setInStructuredNode(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setInStructuredNodeButtonMode(ButtonsModeEnum newValue);
 
@@ -152,7 +152,7 @@ public interface DataStoreNodePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToInStructuredNode(ViewerFilter filter);
 
@@ -162,14 +162,14 @@ public interface DataStoreNodePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToInStructuredNode(ViewerFilter filter);
 
 
 	/**
 	 * @return the activity
-	 * 
+	 * @generated
 	 */
 	public EObject getActivity();
 
@@ -182,14 +182,14 @@ public interface DataStoreNodePropertiesEditionPart {
 	/**
 	 * Defines a new activity
 	 * @param newValue the new activity to set
-	 * 
+	 * @generated
 	 */
 	public void setActivity(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setActivityButtonMode(ButtonsModeEnum newValue);
 
@@ -199,7 +199,7 @@ public interface DataStoreNodePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToActivity(ViewerFilter filter);
 
@@ -209,7 +209,7 @@ public interface DataStoreNodePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToActivity(ViewerFilter filter);
 
@@ -225,7 +225,7 @@ public interface DataStoreNodePropertiesEditionPart {
 	/**
 	 * Update the outgoing
 	 * @param newValue the outgoing to update
-	 * 
+	 * @generated
 	 */
 	public void updateOutgoing();
 
@@ -235,7 +235,7 @@ public interface DataStoreNodePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToOutgoing(ViewerFilter filter);
 
@@ -245,13 +245,13 @@ public interface DataStoreNodePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToOutgoing(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the outgoing table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInOutgoingTable(EObject element);
 
@@ -267,7 +267,7 @@ public interface DataStoreNodePropertiesEditionPart {
 	/**
 	 * Update the incoming
 	 * @param newValue the incoming to update
-	 * 
+	 * @generated
 	 */
 	public void updateIncoming();
 
@@ -277,7 +277,7 @@ public interface DataStoreNodePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToIncoming(ViewerFilter filter);
 
@@ -287,13 +287,13 @@ public interface DataStoreNodePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToIncoming(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the incoming table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInIncomingTable(EObject element);
 
@@ -309,7 +309,7 @@ public interface DataStoreNodePropertiesEditionPart {
 	/**
 	 * Update the inPartition
 	 * @param newValue the inPartition to update
-	 * 
+	 * @generated
 	 */
 	public void updateInPartition();
 
@@ -319,7 +319,7 @@ public interface DataStoreNodePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToInPartition(ViewerFilter filter);
 
@@ -329,13 +329,13 @@ public interface DataStoreNodePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToInPartition(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the inPartition table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInInPartitionTable(EObject element);
 
@@ -351,7 +351,7 @@ public interface DataStoreNodePropertiesEditionPart {
 	/**
 	 * Update the inInterruptibleRegion
 	 * @param newValue the inInterruptibleRegion to update
-	 * 
+	 * @generated
 	 */
 	public void updateInInterruptibleRegion();
 
@@ -361,7 +361,7 @@ public interface DataStoreNodePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToInInterruptibleRegion(ViewerFilter filter);
 
@@ -371,13 +371,13 @@ public interface DataStoreNodePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToInInterruptibleRegion(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the inInterruptibleRegion table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInInInterruptibleRegionTable(EObject element);
 
@@ -393,7 +393,7 @@ public interface DataStoreNodePropertiesEditionPart {
 	/**
 	 * Update the redefinedNode
 	 * @param newValue the redefinedNode to update
-	 * 
+	 * @generated
 	 */
 	public void updateRedefinedNode();
 
@@ -403,7 +403,7 @@ public interface DataStoreNodePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToRedefinedNode(ViewerFilter filter);
 
@@ -413,20 +413,20 @@ public interface DataStoreNodePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToRedefinedNode(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the redefinedNode table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInRedefinedNodeTable(EObject element);
 
 
 	/**
 	 * @return the type
-	 * 
+	 * @generated
 	 */
 	public EObject getType();
 
@@ -439,14 +439,14 @@ public interface DataStoreNodePropertiesEditionPart {
 	/**
 	 * Defines a new type
 	 * @param newValue the new type to set
-	 * 
+	 * @generated
 	 */
 	public void setType(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setTypeButtonMode(ButtonsModeEnum newValue);
 
@@ -456,7 +456,7 @@ public interface DataStoreNodePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToType(ViewerFilter filter);
 
@@ -466,42 +466,42 @@ public interface DataStoreNodePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToType(ViewerFilter filter);
 
 
 	/**
 	 * @return the ordering
-	 * 
+	 * @generated
 	 */
 	public Enumerator getOrdering();
 
 	/**
 	 * Init the ordering
-	 * @param eenum the enum to manage
+	 * @param input the viewer input
 	 * @param current the current value
 	 */
-	public void initOrdering(EEnum eenum, Enumerator current);
+	public void initOrdering(Object input, Enumerator current);
 
 	/**
 	 * Defines a new ordering
 	 * @param newValue the new ordering to set
-	 * 
+	 * @generated
 	 */
 	public void setOrdering(Enumerator newValue);
 
 
 	/**
 	 * @return the isControlType
-	 * 
+	 * @generated
 	 */
 	public Boolean getIsControlType();
 
 	/**
 	 * Defines a new isControlType
 	 * @param newValue the new isControlType to set
-	 * 
+	 * @generated
 	 */
 	public void setIsControlType(Boolean newValue);
 
@@ -517,7 +517,7 @@ public interface DataStoreNodePropertiesEditionPart {
 	/**
 	 * Update the inState
 	 * @param newValue the inState to update
-	 * 
+	 * @generated
 	 */
 	public void updateInState();
 
@@ -527,7 +527,7 @@ public interface DataStoreNodePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToInState(ViewerFilter filter);
 
@@ -537,20 +537,20 @@ public interface DataStoreNodePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToInState(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the inState table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInInStateTable(EObject element);
 
 
 	/**
 	 * @return the selection
-	 * 
+	 * @generated
 	 */
 	public EObject getSelection();
 
@@ -563,14 +563,14 @@ public interface DataStoreNodePropertiesEditionPart {
 	/**
 	 * Defines a new selection
 	 * @param newValue the new selection to set
-	 * 
+	 * @generated
 	 */
 	public void setSelection(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setSelectionButtonMode(ButtonsModeEnum newValue);
 
@@ -580,7 +580,7 @@ public interface DataStoreNodePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToSelection(ViewerFilter filter);
 
@@ -590,7 +590,7 @@ public interface DataStoreNodePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToSelection(ViewerFilter filter);
 
@@ -602,12 +602,9 @@ public interface DataStoreNodePropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
-	 * 
+	 * @generated
 	 */
 	public String getTitle();
 
-	// Start of user code for additional methods
-
-// End of user code
 
 }

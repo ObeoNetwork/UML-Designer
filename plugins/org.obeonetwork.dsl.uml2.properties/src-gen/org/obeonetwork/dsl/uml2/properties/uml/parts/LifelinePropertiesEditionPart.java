@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,56 +10,56 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts;
 
-// Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.ecore.EEnum;
+
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
-
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public interface LifelinePropertiesEditionPart {
 
 	/**
 	 * @return the name
-	 * 
+	 * @generated
 	 */
 	public String getName();
 
 	/**
 	 * Defines a new name
 	 * @param newValue the new name to set
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue);
 
 
 	/**
 	 * @return the visibility
-	 * 
+	 * @generated
 	 */
 	public Enumerator getVisibility();
 
 	/**
 	 * Init the visibility
-	 * @param eenum the enum to manage
+	 * @param input the viewer input
 	 * @param current the current value
 	 */
-	public void initVisibility(EEnum eenum, Enumerator current);
+	public void initVisibility(Object input, Enumerator current);
 
 	/**
 	 * Defines a new visibility
 	 * @param newValue the new visibility to set
-	 * 
+	 * @generated
 	 */
 	public void setVisibility(Enumerator newValue);
 
@@ -75,7 +75,7 @@ public interface LifelinePropertiesEditionPart {
 	/**
 	 * Update the clientDependency
 	 * @param newValue the clientDependency to update
-	 * 
+	 * @generated
 	 */
 	public void updateClientDependency();
 
@@ -85,7 +85,7 @@ public interface LifelinePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToClientDependency(ViewerFilter filter);
 
@@ -95,20 +95,20 @@ public interface LifelinePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToClientDependency(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the clientDependency table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInClientDependencyTable(EObject element);
 
 
 	/**
 	 * @return the represents
-	 * 
+	 * @generated
 	 */
 	public EObject getRepresents();
 
@@ -121,14 +121,14 @@ public interface LifelinePropertiesEditionPart {
 	/**
 	 * Defines a new represents
 	 * @param newValue the new represents to set
-	 * 
+	 * @generated
 	 */
 	public void setRepresents(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setRepresentsButtonMode(ButtonsModeEnum newValue);
 
@@ -138,7 +138,7 @@ public interface LifelinePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToRepresents(ViewerFilter filter);
 
@@ -148,14 +148,14 @@ public interface LifelinePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToRepresents(ViewerFilter filter);
 
 
 	/**
 	 * @return the interaction
-	 * 
+	 * @generated
 	 */
 	public EObject getInteraction();
 
@@ -168,14 +168,14 @@ public interface LifelinePropertiesEditionPart {
 	/**
 	 * Defines a new interaction
 	 * @param newValue the new interaction to set
-	 * 
+	 * @generated
 	 */
 	public void setInteraction(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setInteractionButtonMode(ButtonsModeEnum newValue);
 
@@ -185,7 +185,7 @@ public interface LifelinePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToInteraction(ViewerFilter filter);
 
@@ -195,14 +195,14 @@ public interface LifelinePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToInteraction(ViewerFilter filter);
 
 
 	/**
 	 * @return the decomposedAs
-	 * 
+	 * @generated
 	 */
 	public EObject getDecomposedAs();
 
@@ -215,14 +215,14 @@ public interface LifelinePropertiesEditionPart {
 	/**
 	 * Defines a new decomposedAs
 	 * @param newValue the new decomposedAs to set
-	 * 
+	 * @generated
 	 */
 	public void setDecomposedAs(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setDecomposedAsButtonMode(ButtonsModeEnum newValue);
 
@@ -232,7 +232,7 @@ public interface LifelinePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToDecomposedAs(ViewerFilter filter);
 
@@ -242,7 +242,7 @@ public interface LifelinePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToDecomposedAs(ViewerFilter filter);
 
@@ -258,7 +258,7 @@ public interface LifelinePropertiesEditionPart {
 	/**
 	 * Update the coveredBy
 	 * @param newValue the coveredBy to update
-	 * 
+	 * @generated
 	 */
 	public void updateCoveredBy();
 
@@ -268,7 +268,7 @@ public interface LifelinePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToCoveredBy(ViewerFilter filter);
 
@@ -278,13 +278,13 @@ public interface LifelinePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToCoveredBy(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the coveredBy table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInCoveredByTable(EObject element);
 
@@ -296,12 +296,9 @@ public interface LifelinePropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
-	 * 
+	 * @generated
 	 */
 	public String getTitle();
 
-	// Start of user code for additional methods
-
-// End of user code
 
 }

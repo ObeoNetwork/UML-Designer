@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,45 +10,58 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts.forms;
 
-// Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
+import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Composite;
+
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
+
 import org.obeonetwork.dsl.uml2.properties.uml.parts.OperationTemplateParameterPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
+
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 
 
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
-public class OperationTemplateParameterPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, OperationTemplateParameterPropertiesEditionPart {
+public class OperationTemplateParameterPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, OperationTemplateParameterPropertiesEditionPart {
 
 	protected EObjectFlatComboViewer signature;
 	protected EObjectFlatComboViewer parameteredElement;
@@ -57,9 +70,14 @@ public class OperationTemplateParameterPropertiesEditionPartForm extends Composi
 
 
 	/**
+	 * For {@link ISection} use only.
+	 */
+	public OperationTemplateParameterPropertiesEditionPartForm() { super(); }
+
+	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
+	 * @generated
 	 */
 	public OperationTemplateParameterPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -70,7 +88,7 @@ public class OperationTemplateParameterPropertiesEditionPartForm extends Composi
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
-	 * 
+	 * @generated
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -88,7 +106,7 @@ public class OperationTemplateParameterPropertiesEditionPartForm extends Composi
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence operationTemplateParameterStep = new BindingCompositionSequence(propertiesEditionComponent);
@@ -120,7 +138,7 @@ public class OperationTemplateParameterPropertiesEditionPartForm extends Composi
 		composer.compose(view);
 	}
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
 		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
@@ -139,10 +157,10 @@ public class OperationTemplateParameterPropertiesEditionPartForm extends Composi
 	/**
 	 * @param parent the parent composite
 	 * @param widgetFactory factory to use to instanciante widget of the form
-	 * 
+	 * @generated
 	 */
 	protected Composite createSignatureFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, UmlMessages.OperationTemplateParameterPropertiesEditionPart_SignatureLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.OperationTemplateParameter.Properties.signature, UmlViewsRepository.FORM_KIND));
+		createDescription(parent, UmlViewsRepository.OperationTemplateParameter.Properties.signature, UmlMessages.OperationTemplateParameterPropertiesEditionPart_SignatureLabel);
 		signature = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.OperationTemplateParameter.Properties.signature, UmlViewsRepository.FORM_KIND));
 		widgetFactory.adapt(signature);
 		signature.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -169,10 +187,10 @@ public class OperationTemplateParameterPropertiesEditionPartForm extends Composi
 	/**
 	 * @param parent the parent composite
 	 * @param widgetFactory factory to use to instanciante widget of the form
-	 * 
+	 * @generated
 	 */
 	protected Composite createParameteredElementFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, UmlMessages.OperationTemplateParameterPropertiesEditionPart_ParameteredElementLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.OperationTemplateParameter.Properties.parameteredElement, UmlViewsRepository.FORM_KIND));
+		createDescription(parent, UmlViewsRepository.OperationTemplateParameter.Properties.parameteredElement, UmlMessages.OperationTemplateParameterPropertiesEditionPart_ParameteredElementLabel);
 		parameteredElement = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.OperationTemplateParameter.Properties.parameteredElement, UmlViewsRepository.FORM_KIND));
 		widgetFactory.adapt(parameteredElement);
 		parameteredElement.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -199,10 +217,10 @@ public class OperationTemplateParameterPropertiesEditionPartForm extends Composi
 	/**
 	 * @param parent the parent composite
 	 * @param widgetFactory factory to use to instanciante widget of the form
-	 * 
+	 * @generated
 	 */
 	protected Composite createDefault_FlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, UmlMessages.OperationTemplateParameterPropertiesEditionPart_Default_Label, propertiesEditionComponent.isRequired(UmlViewsRepository.OperationTemplateParameter.Properties.default_, UmlViewsRepository.FORM_KIND));
+		createDescription(parent, UmlViewsRepository.OperationTemplateParameter.Properties.default_, UmlMessages.OperationTemplateParameterPropertiesEditionPart_Default_Label);
 		default_ = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.OperationTemplateParameter.Properties.default_, UmlViewsRepository.FORM_KIND));
 		widgetFactory.adapt(default_);
 		default_.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -227,24 +245,20 @@ public class OperationTemplateParameterPropertiesEditionPartForm extends Composi
 	}
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-
-// End of user code
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.OperationTemplateParameterPropertiesEditionPart#getSignature()
-	 * 
+	 * @generated
 	 */
 	public EObject getSignature() {
 		if (signature.getSelection() instanceof StructuredSelection) {
@@ -265,13 +279,21 @@ public class OperationTemplateParameterPropertiesEditionPartForm extends Composi
 		if (current != null) {
 			signature.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.OperationTemplateParameter.Properties.signature);
+		if (readOnly && signature.isEnabled()) {
+			signature.setEnabled(false);
+			signature.setToolTipText(UmlMessages.OperationTemplateParameter_ReadOnly);
+		} else if (!readOnly && !signature.isEnabled()) {
+			signature.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.OperationTemplateParameterPropertiesEditionPart#setSignature(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setSignature(EObject newValue) {
 		if (newValue != null) {
@@ -279,6 +301,14 @@ public class OperationTemplateParameterPropertiesEditionPartForm extends Composi
 		} else {
 			signature.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.OperationTemplateParameter.Properties.signature);
+		if (readOnly && signature.isEnabled()) {
+			signature.setEnabled(false);
+			signature.setToolTipText(UmlMessages.OperationTemplateParameter_ReadOnly);
+		} else if (!readOnly && !signature.isEnabled()) {
+			signature.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -294,7 +324,7 @@ public class OperationTemplateParameterPropertiesEditionPartForm extends Composi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.OperationTemplateParameterPropertiesEditionPart#addFilterSignature(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToSignature(ViewerFilter filter) {
 		signature.addFilter(filter);
@@ -304,18 +334,17 @@ public class OperationTemplateParameterPropertiesEditionPartForm extends Composi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.OperationTemplateParameterPropertiesEditionPart#addBusinessFilterSignature(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToSignature(ViewerFilter filter) {
 		signature.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.OperationTemplateParameterPropertiesEditionPart#getParameteredElement()
-	 * 
+	 * @generated
 	 */
 	public EObject getParameteredElement() {
 		if (parameteredElement.getSelection() instanceof StructuredSelection) {
@@ -336,13 +365,21 @@ public class OperationTemplateParameterPropertiesEditionPartForm extends Composi
 		if (current != null) {
 			parameteredElement.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.OperationTemplateParameter.Properties.parameteredElement);
+		if (readOnly && parameteredElement.isEnabled()) {
+			parameteredElement.setEnabled(false);
+			parameteredElement.setToolTipText(UmlMessages.OperationTemplateParameter_ReadOnly);
+		} else if (!readOnly && !parameteredElement.isEnabled()) {
+			parameteredElement.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.OperationTemplateParameterPropertiesEditionPart#setParameteredElement(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setParameteredElement(EObject newValue) {
 		if (newValue != null) {
@@ -350,6 +387,14 @@ public class OperationTemplateParameterPropertiesEditionPartForm extends Composi
 		} else {
 			parameteredElement.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.OperationTemplateParameter.Properties.parameteredElement);
+		if (readOnly && parameteredElement.isEnabled()) {
+			parameteredElement.setEnabled(false);
+			parameteredElement.setToolTipText(UmlMessages.OperationTemplateParameter_ReadOnly);
+		} else if (!readOnly && !parameteredElement.isEnabled()) {
+			parameteredElement.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -365,7 +410,7 @@ public class OperationTemplateParameterPropertiesEditionPartForm extends Composi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.OperationTemplateParameterPropertiesEditionPart#addFilterParameteredElement(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToParameteredElement(ViewerFilter filter) {
 		parameteredElement.addFilter(filter);
@@ -375,18 +420,17 @@ public class OperationTemplateParameterPropertiesEditionPartForm extends Composi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.OperationTemplateParameterPropertiesEditionPart#addBusinessFilterParameteredElement(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToParameteredElement(ViewerFilter filter) {
 		parameteredElement.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.OperationTemplateParameterPropertiesEditionPart#getDefault_()
-	 * 
+	 * @generated
 	 */
 	public EObject getDefault_() {
 		if (default_.getSelection() instanceof StructuredSelection) {
@@ -407,13 +451,21 @@ public class OperationTemplateParameterPropertiesEditionPartForm extends Composi
 		if (current != null) {
 			default_.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.OperationTemplateParameter.Properties.default_);
+		if (readOnly && default_.isEnabled()) {
+			default_.setEnabled(false);
+			default_.setToolTipText(UmlMessages.OperationTemplateParameter_ReadOnly);
+		} else if (!readOnly && !default_.isEnabled()) {
+			default_.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.OperationTemplateParameterPropertiesEditionPart#setDefault_(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setDefault_(EObject newValue) {
 		if (newValue != null) {
@@ -421,6 +473,14 @@ public class OperationTemplateParameterPropertiesEditionPartForm extends Composi
 		} else {
 			default_.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.OperationTemplateParameter.Properties.default_);
+		if (readOnly && default_.isEnabled()) {
+			default_.setEnabled(false);
+			default_.setToolTipText(UmlMessages.OperationTemplateParameter_ReadOnly);
+		} else if (!readOnly && !default_.isEnabled()) {
+			default_.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -436,7 +496,7 @@ public class OperationTemplateParameterPropertiesEditionPartForm extends Composi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.OperationTemplateParameterPropertiesEditionPart#addFilterDefault_(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToDefault_(ViewerFilter filter) {
 		default_.addFilter(filter);
@@ -446,7 +506,7 @@ public class OperationTemplateParameterPropertiesEditionPartForm extends Composi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.OperationTemplateParameterPropertiesEditionPart#addBusinessFilterDefault_(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToDefault_(ViewerFilter filter) {
 		default_.addBusinessRuleFilter(filter);
@@ -455,19 +515,18 @@ public class OperationTemplateParameterPropertiesEditionPartForm extends Composi
 
 
 
+
+
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
+	 * @generated
 	 */
 	public String getTitle() {
 		return UmlMessages.OperationTemplateParameter_Part_Title;
 	}
 
-	// Start of user code additional methods
-	
-	// End of user code
 
 
 }

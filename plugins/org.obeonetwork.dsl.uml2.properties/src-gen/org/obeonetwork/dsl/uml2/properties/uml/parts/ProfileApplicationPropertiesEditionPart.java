@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,25 +10,24 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts;
 
-// Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
-
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public interface ProfileApplicationPropertiesEditionPart {
 
 	/**
 	 * @return the appliedProfile
-	 * 
+	 * @generated
 	 */
 	public EObject getAppliedProfile();
 
@@ -41,14 +40,14 @@ public interface ProfileApplicationPropertiesEditionPart {
 	/**
 	 * Defines a new appliedProfile
 	 * @param newValue the new appliedProfile to set
-	 * 
+	 * @generated
 	 */
 	public void setAppliedProfile(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setAppliedProfileButtonMode(ButtonsModeEnum newValue);
 
@@ -58,7 +57,7 @@ public interface ProfileApplicationPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToAppliedProfile(ViewerFilter filter);
 
@@ -68,28 +67,28 @@ public interface ProfileApplicationPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToAppliedProfile(ViewerFilter filter);
 
 
 	/**
 	 * @return the isStrict
-	 * 
+	 * @generated
 	 */
 	public Boolean getIsStrict();
 
 	/**
 	 * Defines a new isStrict
 	 * @param newValue the new isStrict to set
-	 * 
+	 * @generated
 	 */
 	public void setIsStrict(Boolean newValue);
 
 
 	/**
 	 * @return the applyingPackage
-	 * 
+	 * @generated
 	 */
 	public EObject getApplyingPackage();
 
@@ -102,14 +101,14 @@ public interface ProfileApplicationPropertiesEditionPart {
 	/**
 	 * Defines a new applyingPackage
 	 * @param newValue the new applyingPackage to set
-	 * 
+	 * @generated
 	 */
 	public void setApplyingPackage(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setApplyingPackageButtonMode(ButtonsModeEnum newValue);
 
@@ -119,7 +118,7 @@ public interface ProfileApplicationPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToApplyingPackage(ViewerFilter filter);
 
@@ -129,7 +128,7 @@ public interface ProfileApplicationPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToApplyingPackage(ViewerFilter filter);
 
@@ -141,12 +140,9 @@ public interface ProfileApplicationPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
-	 * 
+	 * @generated
 	 */
 	public String getTitle();
 
-	// Start of user code for additional methods
-
-// End of user code
 
 }

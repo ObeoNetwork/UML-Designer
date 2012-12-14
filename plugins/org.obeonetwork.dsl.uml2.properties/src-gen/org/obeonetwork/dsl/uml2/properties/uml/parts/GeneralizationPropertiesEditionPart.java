@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,40 +10,40 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts;
 
-// Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
-
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public interface GeneralizationPropertiesEditionPart {
 
 	/**
 	 * @return the isSubstitutable
-	 * 
+	 * @generated
 	 */
 	public Boolean getIsSubstitutable();
 
 	/**
 	 * Defines a new isSubstitutable
 	 * @param newValue the new isSubstitutable to set
-	 * 
+	 * @generated
 	 */
 	public void setIsSubstitutable(Boolean newValue);
 
 
 	/**
 	 * @return the general
-	 * 
+	 * @generated
 	 */
 	public EObject getGeneral();
 
@@ -56,14 +56,14 @@ public interface GeneralizationPropertiesEditionPart {
 	/**
 	 * Defines a new general
 	 * @param newValue the new general to set
-	 * 
+	 * @generated
 	 */
 	public void setGeneral(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setGeneralButtonMode(ButtonsModeEnum newValue);
 
@@ -73,7 +73,7 @@ public interface GeneralizationPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToGeneral(ViewerFilter filter);
 
@@ -83,7 +83,7 @@ public interface GeneralizationPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToGeneral(ViewerFilter filter);
 
@@ -99,7 +99,7 @@ public interface GeneralizationPropertiesEditionPart {
 	/**
 	 * Update the generalizationSet
 	 * @param newValue the generalizationSet to update
-	 * 
+	 * @generated
 	 */
 	public void updateGeneralizationSet();
 
@@ -109,7 +109,7 @@ public interface GeneralizationPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToGeneralizationSet(ViewerFilter filter);
 
@@ -119,20 +119,20 @@ public interface GeneralizationPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToGeneralizationSet(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the generalizationSet table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInGeneralizationSetTable(EObject element);
 
 
 	/**
 	 * @return the specific
-	 * 
+	 * @generated
 	 */
 	public EObject getSpecific();
 
@@ -145,14 +145,14 @@ public interface GeneralizationPropertiesEditionPart {
 	/**
 	 * Defines a new specific
 	 * @param newValue the new specific to set
-	 * 
+	 * @generated
 	 */
 	public void setSpecific(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setSpecificButtonMode(ButtonsModeEnum newValue);
 
@@ -162,7 +162,7 @@ public interface GeneralizationPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToSpecific(ViewerFilter filter);
 
@@ -172,7 +172,7 @@ public interface GeneralizationPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToSpecific(ViewerFilter filter);
 
@@ -184,12 +184,9 @@ public interface GeneralizationPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
-	 * 
+	 * @generated
 	 */
 	public String getTitle();
 
-	// Start of user code for additional methods
-
-// End of user code
 
 }

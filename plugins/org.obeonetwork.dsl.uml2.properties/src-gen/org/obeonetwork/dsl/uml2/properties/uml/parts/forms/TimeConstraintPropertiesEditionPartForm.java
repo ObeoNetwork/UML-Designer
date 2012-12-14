@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,94 +10,123 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts.forms;
 
-// Start of user code for imports
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EEnumLiteral;
+
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
+import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
+
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
+
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
+
 import org.obeonetwork.dsl.uml2.properties.uml.parts.TimeConstraintPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
+
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 
 
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
-public class TimeConstraintPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, TimeConstraintPropertiesEditionPart {
+public class TimeConstraintPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, TimeConstraintPropertiesEditionPart {
 
 	protected Text name;
 	protected EMFComboViewer visibility;
-		protected ReferencesTable clientDependency;
-		protected List<ViewerFilter> clientDependencyBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> clientDependencyFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable clientDependency;
+	protected List<ViewerFilter> clientDependencyBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> clientDependencyFilters = new ArrayList<ViewerFilter>();
 	protected EObjectFlatComboViewer owningTemplateParameter;
 	protected EObjectFlatComboViewer templateParameter;
-		protected ReferencesTable constrainedElement;
-		protected List<ViewerFilter> constrainedElementBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> constrainedElementFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable constrainedElement;
+	protected List<ViewerFilter> constrainedElementBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> constrainedElementFilters = new ArrayList<ViewerFilter>();
 	protected EObjectFlatComboViewer context;
 	protected Button firstEvent;
 
 
 
 	/**
+	 * For {@link ISection} use only.
+	 */
+	public TimeConstraintPropertiesEditionPartForm() { super(); }
+
+	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
+	 * @generated
 	 */
 	public TimeConstraintPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -108,7 +137,7 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
-	 * 
+	 * @generated
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -126,7 +155,7 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence timeConstraintStep = new BindingCompositionSequence(propertiesEditionComponent);
@@ -149,7 +178,7 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 					return createPropertiesGroup(widgetFactory, parent);
 				}
 				if (key == UmlViewsRepository.TimeConstraint.Properties.name) {
-					return 		createNameText(widgetFactory, parent);
+					return createNameText(widgetFactory, parent);
 				}
 				if (key == UmlViewsRepository.TimeConstraint.Properties.visibility) {
 					return createVisibilityEMFComboViewer(widgetFactory, parent);
@@ -178,7 +207,7 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 		composer.compose(view);
 	}
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
 		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
@@ -194,9 +223,12 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 		return propertiesGroup;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, UmlMessages.TimeConstraintPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.TimeConstraint.Properties.name, UmlViewsRepository.FORM_KIND));
+		createDescription(parent, UmlViewsRepository.TimeConstraint.Properties.name, UmlMessages.TimeConstraintPropertiesEditionPart_NameLabel);
 		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
 		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
 		widgetFactory.paintBordersFor(parent);
@@ -205,19 +237,44 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 		name.addFocusListener(new FocusAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
 			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TimeConstraintPropertiesEditionPartForm.this, UmlViewsRepository.TimeConstraint.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+							TimeConstraintPropertiesEditionPartForm.this,
+							UmlViewsRepository.TimeConstraint.Properties.name,
+							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									TimeConstraintPropertiesEditionPartForm.this,
+									UmlViewsRepository.TimeConstraint.Properties.name,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+									null, name.getText()));
+				}
+			}
+
+			/**
+			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+			 */
+			@Override
+			public void focusGained(FocusEvent e) {
+				if (propertiesEditionComponent != null) {
+					propertiesEditionComponent
+							.firePropertiesChanged(new PropertiesEditionEvent(
+									TimeConstraintPropertiesEditionPartForm.this,
+									null,
+									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+									null, null));
+				}
 			}
 		});
 		name.addKeyListener(new KeyAdapter() {
 			/**
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -234,12 +291,15 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 		return parent;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createVisibilityEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		FormUtils.createPartLabel(widgetFactory, parent, UmlMessages.TimeConstraintPropertiesEditionPart_VisibilityLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.TimeConstraint.Properties.visibility, UmlViewsRepository.FORM_KIND));
+		createDescription(parent, UmlViewsRepository.TimeConstraint.Properties.visibility, UmlMessages.TimeConstraintPropertiesEditionPart_VisibilityLabel);
 		visibility = new EMFComboViewer(parent);
 		visibility.setContentProvider(new ArrayContentProvider());
-		visibility.setLabelProvider(new AdapterFactoryLabelProvider(new EcoreAdapterFactory()));
+		visibility.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData visibilityData = new GridData(GridData.FILL_HORIZONTAL);
 		visibility.getCombo().setLayoutData(visibilityData);
 		visibility.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -248,7 +308,7 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
+			 * 	@generated
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
@@ -262,10 +322,10 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createClientDependencyReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.clientDependency = new ReferencesTable(UmlMessages.TimeConstraintPropertiesEditionPart_ClientDependencyLabel, new ReferencesTableListener	() {
+		this.clientDependency = new ReferencesTable(getDescription(UmlViewsRepository.TimeConstraint.Properties.clientDependency, UmlMessages.TimeConstraintPropertiesEditionPart_ClientDependencyLabel), new ReferencesTableListener	() {
 			public void handleAdd() { addClientDependency(); }
 			public void handleEdit(EObject element) { editClientDependency(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveClientDependency(element, oldIndex, newIndex); }
@@ -293,7 +353,7 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addClientDependency() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(clientDependency.getInput(), clientDependencyFilters, clientDependencyBusinessFilters,
@@ -312,7 +372,7 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveClientDependency(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TimeConstraintPropertiesEditionPartForm.this, UmlViewsRepository.TimeConstraint.Properties.clientDependency, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -320,7 +380,7 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromClientDependency(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TimeConstraintPropertiesEditionPartForm.this, UmlViewsRepository.TimeConstraint.Properties.clientDependency, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -328,7 +388,7 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editClientDependency(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -345,10 +405,10 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 	/**
 	 * @param parent the parent composite
 	 * @param widgetFactory factory to use to instanciante widget of the form
-	 * 
+	 * @generated
 	 */
 	protected Composite createOwningTemplateParameterFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, UmlMessages.TimeConstraintPropertiesEditionPart_OwningTemplateParameterLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.TimeConstraint.Properties.owningTemplateParameter, UmlViewsRepository.FORM_KIND));
+		createDescription(parent, UmlViewsRepository.TimeConstraint.Properties.owningTemplateParameter, UmlMessages.TimeConstraintPropertiesEditionPart_OwningTemplateParameterLabel);
 		owningTemplateParameter = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.TimeConstraint.Properties.owningTemplateParameter, UmlViewsRepository.FORM_KIND));
 		widgetFactory.adapt(owningTemplateParameter);
 		owningTemplateParameter.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -375,10 +435,10 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 	/**
 	 * @param parent the parent composite
 	 * @param widgetFactory factory to use to instanciante widget of the form
-	 * 
+	 * @generated
 	 */
 	protected Composite createTemplateParameterFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, UmlMessages.TimeConstraintPropertiesEditionPart_TemplateParameterLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.TimeConstraint.Properties.templateParameter, UmlViewsRepository.FORM_KIND));
+		createDescription(parent, UmlViewsRepository.TimeConstraint.Properties.templateParameter, UmlMessages.TimeConstraintPropertiesEditionPart_TemplateParameterLabel);
 		templateParameter = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.TimeConstraint.Properties.templateParameter, UmlViewsRepository.FORM_KIND));
 		widgetFactory.adapt(templateParameter);
 		templateParameter.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -403,10 +463,10 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createConstrainedElementReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.constrainedElement = new ReferencesTable(UmlMessages.TimeConstraintPropertiesEditionPart_ConstrainedElementLabel, new ReferencesTableListener	() {
+		this.constrainedElement = new ReferencesTable(getDescription(UmlViewsRepository.TimeConstraint.Properties.constrainedElement, UmlMessages.TimeConstraintPropertiesEditionPart_ConstrainedElementLabel), new ReferencesTableListener	() {
 			public void handleAdd() { addConstrainedElement(); }
 			public void handleEdit(EObject element) { editConstrainedElement(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveConstrainedElement(element, oldIndex, newIndex); }
@@ -434,7 +494,7 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addConstrainedElement() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(constrainedElement.getInput(), constrainedElementFilters, constrainedElementBusinessFilters,
@@ -453,7 +513,7 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveConstrainedElement(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TimeConstraintPropertiesEditionPartForm.this, UmlViewsRepository.TimeConstraint.Properties.constrainedElement, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -461,7 +521,7 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromConstrainedElement(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TimeConstraintPropertiesEditionPartForm.this, UmlViewsRepository.TimeConstraint.Properties.constrainedElement, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -469,7 +529,7 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editConstrainedElement(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -486,10 +546,10 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 	/**
 	 * @param parent the parent composite
 	 * @param widgetFactory factory to use to instanciante widget of the form
-	 * 
+	 * @generated
 	 */
 	protected Composite createContextFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, UmlMessages.TimeConstraintPropertiesEditionPart_ContextLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.TimeConstraint.Properties.context, UmlViewsRepository.FORM_KIND));
+		createDescription(parent, UmlViewsRepository.TimeConstraint.Properties.context, UmlMessages.TimeConstraintPropertiesEditionPart_ContextLabel);
 		context = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.TimeConstraint.Properties.context, UmlViewsRepository.FORM_KIND));
 		widgetFactory.adapt(context);
 		context.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -513,16 +573,19 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 		return parent;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createFirstEventCheckbox(FormToolkit widgetFactory, Composite parent) {
-		firstEvent = widgetFactory.createButton(parent, UmlMessages.TimeConstraintPropertiesEditionPart_FirstEventLabel, SWT.CHECK);
+		firstEvent = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.TimeConstraint.Properties.firstEvent, UmlMessages.TimeConstraintPropertiesEditionPart_FirstEventLabel), SWT.CHECK);
 		firstEvent.addSelectionListener(new SelectionAdapter() {
 
 			/**
 			 * {@inheritDoc}
 			 *
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	
+			 * 	@generated
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
@@ -540,24 +603,20 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 	}
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-
-// End of user code
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TimeConstraintPropertiesEditionPart#getName()
-	 * 
+	 * @generated
 	 */
 	public String getName() {
 		return name.getText();
@@ -567,7 +626,7 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TimeConstraintPropertiesEditionPart#setName(String newValue)
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue) {
 		if (newValue != null) {
@@ -575,40 +634,62 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.TimeConstraint.Properties.name);
+		if (readOnly && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(UmlMessages.TimeConstraint_ReadOnly);
+		} else if (!readOnly && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
-
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TimeConstraintPropertiesEditionPart#getVisibility()
-	 * 
+	 * @generated
 	 */
 	public Enumerator getVisibility() {
-		EEnumLiteral selection = (EEnumLiteral) ((StructuredSelection) visibility.getSelection()).getFirstElement();
-		return selection.getInstance();
+		Enumerator selection = (Enumerator) ((StructuredSelection) visibility.getSelection()).getFirstElement();
+		return selection;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TimeConstraintPropertiesEditionPart#initVisibility(EEnum eenum, Enumerator current)
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TimeConstraintPropertiesEditionPart#initVisibility(Object input, Enumerator current)
 	 */
-	public void initVisibility(EEnum eenum, Enumerator current) {
-		visibility.setInput(eenum.getELiterals());
+	public void initVisibility(Object input, Enumerator current) {
+		visibility.setInput(input);
 		visibility.modelUpdating(new StructuredSelection(current));
+		boolean readOnly = isReadOnly(UmlViewsRepository.TimeConstraint.Properties.visibility);
+		if (readOnly && visibility.isEnabled()) {
+			visibility.setEnabled(false);
+			visibility.setToolTipText(UmlMessages.TimeConstraint_ReadOnly);
+		} else if (!readOnly && !visibility.isEnabled()) {
+			visibility.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TimeConstraintPropertiesEditionPart#setVisibility(Enumerator newValue)
-	 * 
+	 * @generated
 	 */
 	public void setVisibility(Enumerator newValue) {
 		visibility.modelUpdating(new StructuredSelection(newValue));
+		boolean readOnly = isReadOnly(UmlViewsRepository.TimeConstraint.Properties.visibility);
+		if (readOnly && visibility.isEnabled()) {
+			visibility.setEnabled(false);
+			visibility.setToolTipText(UmlMessages.TimeConstraint_ReadOnly);
+		} else if (!readOnly && !visibility.isEnabled()) {
+			visibility.setEnabled(true);
+		}	
+		
 	}
-
 
 
 
@@ -623,13 +704,21 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		clientDependency.setContentProvider(contentProvider);
 		clientDependency.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.TimeConstraint.Properties.clientDependency);
+		if (readOnly && clientDependency.getTable().isEnabled()) {
+			clientDependency.setEnabled(false);
+			clientDependency.setToolTipText(UmlMessages.TimeConstraint_ReadOnly);
+		} else if (!readOnly && !clientDependency.getTable().isEnabled()) {
+			clientDependency.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TimeConstraintPropertiesEditionPart#updateClientDependency()
-	 * 
+	 * @generated
 	 */
 	public void updateClientDependency() {
 	clientDependency.refresh();
@@ -639,7 +728,7 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TimeConstraintPropertiesEditionPart#addFilterClientDependency(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToClientDependency(ViewerFilter filter) {
 		clientDependencyFilters.add(filter);
@@ -649,7 +738,7 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TimeConstraintPropertiesEditionPart#addBusinessFilterClientDependency(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToClientDependency(ViewerFilter filter) {
 		clientDependencyBusinessFilters.add(filter);
@@ -659,18 +748,17 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TimeConstraintPropertiesEditionPart#isContainedInClientDependencyTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInClientDependencyTable(EObject element) {
 		return ((ReferencesTableSettings)clientDependency.getInput()).contains(element);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TimeConstraintPropertiesEditionPart#getOwningTemplateParameter()
-	 * 
+	 * @generated
 	 */
 	public EObject getOwningTemplateParameter() {
 		if (owningTemplateParameter.getSelection() instanceof StructuredSelection) {
@@ -691,13 +779,21 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 		if (current != null) {
 			owningTemplateParameter.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.TimeConstraint.Properties.owningTemplateParameter);
+		if (readOnly && owningTemplateParameter.isEnabled()) {
+			owningTemplateParameter.setEnabled(false);
+			owningTemplateParameter.setToolTipText(UmlMessages.TimeConstraint_ReadOnly);
+		} else if (!readOnly && !owningTemplateParameter.isEnabled()) {
+			owningTemplateParameter.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TimeConstraintPropertiesEditionPart#setOwningTemplateParameter(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setOwningTemplateParameter(EObject newValue) {
 		if (newValue != null) {
@@ -705,6 +801,14 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 		} else {
 			owningTemplateParameter.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.TimeConstraint.Properties.owningTemplateParameter);
+		if (readOnly && owningTemplateParameter.isEnabled()) {
+			owningTemplateParameter.setEnabled(false);
+			owningTemplateParameter.setToolTipText(UmlMessages.TimeConstraint_ReadOnly);
+		} else if (!readOnly && !owningTemplateParameter.isEnabled()) {
+			owningTemplateParameter.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -720,7 +824,7 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TimeConstraintPropertiesEditionPart#addFilterOwningTemplateParameter(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToOwningTemplateParameter(ViewerFilter filter) {
 		owningTemplateParameter.addFilter(filter);
@@ -730,18 +834,17 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TimeConstraintPropertiesEditionPart#addBusinessFilterOwningTemplateParameter(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToOwningTemplateParameter(ViewerFilter filter) {
 		owningTemplateParameter.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TimeConstraintPropertiesEditionPart#getTemplateParameter()
-	 * 
+	 * @generated
 	 */
 	public EObject getTemplateParameter() {
 		if (templateParameter.getSelection() instanceof StructuredSelection) {
@@ -762,13 +865,21 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 		if (current != null) {
 			templateParameter.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.TimeConstraint.Properties.templateParameter);
+		if (readOnly && templateParameter.isEnabled()) {
+			templateParameter.setEnabled(false);
+			templateParameter.setToolTipText(UmlMessages.TimeConstraint_ReadOnly);
+		} else if (!readOnly && !templateParameter.isEnabled()) {
+			templateParameter.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TimeConstraintPropertiesEditionPart#setTemplateParameter(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setTemplateParameter(EObject newValue) {
 		if (newValue != null) {
@@ -776,6 +887,14 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 		} else {
 			templateParameter.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.TimeConstraint.Properties.templateParameter);
+		if (readOnly && templateParameter.isEnabled()) {
+			templateParameter.setEnabled(false);
+			templateParameter.setToolTipText(UmlMessages.TimeConstraint_ReadOnly);
+		} else if (!readOnly && !templateParameter.isEnabled()) {
+			templateParameter.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -791,7 +910,7 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TimeConstraintPropertiesEditionPart#addFilterTemplateParameter(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToTemplateParameter(ViewerFilter filter) {
 		templateParameter.addFilter(filter);
@@ -801,12 +920,11 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TimeConstraintPropertiesEditionPart#addBusinessFilterTemplateParameter(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToTemplateParameter(ViewerFilter filter) {
 		templateParameter.addBusinessRuleFilter(filter);
 	}
-
 
 
 
@@ -821,13 +939,21 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		constrainedElement.setContentProvider(contentProvider);
 		constrainedElement.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.TimeConstraint.Properties.constrainedElement);
+		if (readOnly && constrainedElement.getTable().isEnabled()) {
+			constrainedElement.setEnabled(false);
+			constrainedElement.setToolTipText(UmlMessages.TimeConstraint_ReadOnly);
+		} else if (!readOnly && !constrainedElement.getTable().isEnabled()) {
+			constrainedElement.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TimeConstraintPropertiesEditionPart#updateConstrainedElement()
-	 * 
+	 * @generated
 	 */
 	public void updateConstrainedElement() {
 	constrainedElement.refresh();
@@ -837,7 +963,7 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TimeConstraintPropertiesEditionPart#addFilterConstrainedElement(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToConstrainedElement(ViewerFilter filter) {
 		constrainedElementFilters.add(filter);
@@ -847,7 +973,7 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TimeConstraintPropertiesEditionPart#addBusinessFilterConstrainedElement(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToConstrainedElement(ViewerFilter filter) {
 		constrainedElementBusinessFilters.add(filter);
@@ -857,18 +983,17 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TimeConstraintPropertiesEditionPart#isContainedInConstrainedElementTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInConstrainedElementTable(EObject element) {
 		return ((ReferencesTableSettings)constrainedElement.getInput()).contains(element);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TimeConstraintPropertiesEditionPart#getContext()
-	 * 
+	 * @generated
 	 */
 	public EObject getContext() {
 		if (context.getSelection() instanceof StructuredSelection) {
@@ -889,13 +1014,21 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 		if (current != null) {
 			context.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.TimeConstraint.Properties.context);
+		if (readOnly && context.isEnabled()) {
+			context.setEnabled(false);
+			context.setToolTipText(UmlMessages.TimeConstraint_ReadOnly);
+		} else if (!readOnly && !context.isEnabled()) {
+			context.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TimeConstraintPropertiesEditionPart#setContext(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setContext(EObject newValue) {
 		if (newValue != null) {
@@ -903,6 +1036,14 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 		} else {
 			context.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.TimeConstraint.Properties.context);
+		if (readOnly && context.isEnabled()) {
+			context.setEnabled(false);
+			context.setToolTipText(UmlMessages.TimeConstraint_ReadOnly);
+		} else if (!readOnly && !context.isEnabled()) {
+			context.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -918,7 +1059,7 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TimeConstraintPropertiesEditionPart#addFilterContext(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToContext(ViewerFilter filter) {
 		context.addFilter(filter);
@@ -928,20 +1069,19 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TimeConstraintPropertiesEditionPart#addBusinessFilterContext(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToContext(ViewerFilter filter) {
 		context.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TimeConstraintPropertiesEditionPart#getFirstEvent()
-	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TimeConstraintPropertiesEditionPart#getFirstEvents()
+	 * @generated
 	 */
-	public Boolean getFirstEvent() {
+	public Boolean getFirstEvents() {
 		return Boolean.valueOf(firstEvent.getSelection());
 	}
 
@@ -949,7 +1089,7 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TimeConstraintPropertiesEditionPart#setFirstEvent(Boolean newValue)
-	 * 
+	 * @generated
 	 */
 	public void setFirstEvent(Boolean newValue) {
 		if (newValue != null) {
@@ -957,7 +1097,17 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 		} else {
 			firstEvent.setSelection(false);
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.TimeConstraint.Properties.firstEvent);
+		if (readOnly && firstEvent.isEnabled()) {
+			firstEvent.setEnabled(false);
+			firstEvent.setToolTipText(UmlMessages.TimeConstraint_ReadOnly);
+		} else if (!readOnly && !firstEvent.isEnabled()) {
+			firstEvent.setEnabled(true);
+		}	
+		
 	}
+
+
 
 
 
@@ -966,15 +1116,12 @@ public class TimeConstraintPropertiesEditionPartForm extends CompositeProperties
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
+	 * @generated
 	 */
 	public String getTitle() {
 		return UmlMessages.TimeConstraint_Part_Title;
 	}
 
-	// Start of user code additional methods
-	
-	// End of user code
 
 
 }

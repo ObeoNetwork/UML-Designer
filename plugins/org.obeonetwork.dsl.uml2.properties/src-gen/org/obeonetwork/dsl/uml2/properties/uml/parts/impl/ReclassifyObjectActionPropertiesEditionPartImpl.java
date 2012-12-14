@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,69 +10,90 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts.impl;
 
-// Start of user code for imports
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EEnumLiteral;
+
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
+
 import org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
+
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 
 
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, ReclassifyObjectActionPropertiesEditionPart {
 
@@ -112,7 +133,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
+	 * @generated
 	 */
 	public ReclassifyObjectActionPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -123,7 +144,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
@@ -139,7 +160,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public void createControls(Composite view) { 
 		CompositionSequence reclassifyObjectActionStep = new BindingCompositionSequence(propertiesEditionComponent);
@@ -216,7 +237,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
@@ -230,10 +251,13 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 		return propertiesGroup;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.ReclassifyObjectActionPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.ReclassifyObjectAction.Properties.name, UmlViewsRepository.SWT_KIND));
-		name = new Text(parent, SWT.BORDER);
+		createDescription(parent, UmlViewsRepository.ReclassifyObjectAction.Properties.name, UmlMessages.ReclassifyObjectActionPropertiesEditionPart_NameLabel);
+		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {
@@ -242,7 +266,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -258,7 +282,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -276,12 +300,15 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 		return parent;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createVisibilityEMFComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.ReclassifyObjectActionPropertiesEditionPart_VisibilityLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.ReclassifyObjectAction.Properties.visibility, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.ReclassifyObjectAction.Properties.visibility, UmlMessages.ReclassifyObjectActionPropertiesEditionPart_VisibilityLabel);
 		visibility = new EMFComboViewer(parent);
 		visibility.setContentProvider(new ArrayContentProvider());
-		visibility.setLabelProvider(new AdapterFactoryLabelProvider(new EcoreAdapterFactory()));
+		visibility.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData visibilityData = new GridData(GridData.FILL_HORIZONTAL);
 		visibility.getCombo().setLayoutData(visibilityData);
 		visibility.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -290,7 +317,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
+			 * 	@generated
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
@@ -304,10 +331,11 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createClientDependencyAdvancedReferencesTable(Composite parent) {
-		this.clientDependency = new ReferencesTable(UmlMessages.ReclassifyObjectActionPropertiesEditionPart_ClientDependencyLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.ReclassifyObjectAction.Properties.clientDependency, UmlMessages.ReclassifyObjectActionPropertiesEditionPart_ClientDependencyLabel);		 
+		this.clientDependency = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addClientDependency(); }
 			public void handleEdit(EObject element) { editClientDependency(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveClientDependency(element, oldIndex, newIndex); }
@@ -335,7 +363,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addClientDependency() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(clientDependency.getInput(), clientDependencyFilters, clientDependencyBusinessFilters,
@@ -354,7 +382,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveClientDependency(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReclassifyObjectActionPropertiesEditionPartImpl.this, UmlViewsRepository.ReclassifyObjectAction.Properties.clientDependency, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -362,7 +390,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromClientDependency(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReclassifyObjectActionPropertiesEditionPartImpl.this, UmlViewsRepository.ReclassifyObjectAction.Properties.clientDependency, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -370,7 +398,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editClientDependency(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -384,17 +412,20 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 		}
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createIsLeafCheckbox(Composite parent) {
 		isLeaf = new Button(parent, SWT.CHECK);
-		isLeaf.setText(UmlMessages.ReclassifyObjectActionPropertiesEditionPart_IsLeafLabel);
+		isLeaf.setText(getDescription(UmlViewsRepository.ReclassifyObjectAction.Properties.isLeaf, UmlMessages.ReclassifyObjectActionPropertiesEditionPart_IsLeafLabel));
 		isLeaf.addSelectionListener(new SelectionAdapter() {
 
 			/**
 			 * {@inheritDoc}
 			 *
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	
+			 * 	@generated
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
@@ -413,10 +444,10 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createInStructuredNodeFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.ReclassifyObjectActionPropertiesEditionPart_InStructuredNodeLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.ReclassifyObjectAction.Properties.inStructuredNode, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.ReclassifyObjectAction.Properties.inStructuredNode, UmlMessages.ReclassifyObjectActionPropertiesEditionPart_InStructuredNodeLabel);
 		inStructuredNode = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ReclassifyObjectAction.Properties.inStructuredNode, UmlViewsRepository.SWT_KIND));
 		inStructuredNode.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -436,10 +467,10 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createActivityFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.ReclassifyObjectActionPropertiesEditionPart_ActivityLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.ReclassifyObjectAction.Properties.activity, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.ReclassifyObjectAction.Properties.activity, UmlMessages.ReclassifyObjectActionPropertiesEditionPart_ActivityLabel);
 		activity = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ReclassifyObjectAction.Properties.activity, UmlViewsRepository.SWT_KIND));
 		activity.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -458,10 +489,11 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createOutgoingAdvancedReferencesTable(Composite parent) {
-		this.outgoing = new ReferencesTable(UmlMessages.ReclassifyObjectActionPropertiesEditionPart_OutgoingLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.ReclassifyObjectAction.Properties.outgoing, UmlMessages.ReclassifyObjectActionPropertiesEditionPart_OutgoingLabel);		 
+		this.outgoing = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addOutgoing(); }
 			public void handleEdit(EObject element) { editOutgoing(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveOutgoing(element, oldIndex, newIndex); }
@@ -489,7 +521,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addOutgoing() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(outgoing.getInput(), outgoingFilters, outgoingBusinessFilters,
@@ -508,7 +540,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveOutgoing(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReclassifyObjectActionPropertiesEditionPartImpl.this, UmlViewsRepository.ReclassifyObjectAction.Properties.outgoing, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -516,7 +548,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromOutgoing(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReclassifyObjectActionPropertiesEditionPartImpl.this, UmlViewsRepository.ReclassifyObjectAction.Properties.outgoing, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -524,7 +556,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editOutgoing(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -539,10 +571,11 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createIncomingAdvancedReferencesTable(Composite parent) {
-		this.incoming = new ReferencesTable(UmlMessages.ReclassifyObjectActionPropertiesEditionPart_IncomingLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.ReclassifyObjectAction.Properties.incoming, UmlMessages.ReclassifyObjectActionPropertiesEditionPart_IncomingLabel);		 
+		this.incoming = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addIncoming(); }
 			public void handleEdit(EObject element) { editIncoming(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveIncoming(element, oldIndex, newIndex); }
@@ -570,7 +603,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addIncoming() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(incoming.getInput(), incomingFilters, incomingBusinessFilters,
@@ -589,7 +622,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveIncoming(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReclassifyObjectActionPropertiesEditionPartImpl.this, UmlViewsRepository.ReclassifyObjectAction.Properties.incoming, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -597,7 +630,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromIncoming(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReclassifyObjectActionPropertiesEditionPartImpl.this, UmlViewsRepository.ReclassifyObjectAction.Properties.incoming, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -605,7 +638,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editIncoming(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -620,10 +653,11 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createInPartitionAdvancedReferencesTable(Composite parent) {
-		this.inPartition = new ReferencesTable(UmlMessages.ReclassifyObjectActionPropertiesEditionPart_InPartitionLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.ReclassifyObjectAction.Properties.inPartition, UmlMessages.ReclassifyObjectActionPropertiesEditionPart_InPartitionLabel);		 
+		this.inPartition = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addInPartition(); }
 			public void handleEdit(EObject element) { editInPartition(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveInPartition(element, oldIndex, newIndex); }
@@ -651,7 +685,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addInPartition() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(inPartition.getInput(), inPartitionFilters, inPartitionBusinessFilters,
@@ -670,7 +704,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveInPartition(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReclassifyObjectActionPropertiesEditionPartImpl.this, UmlViewsRepository.ReclassifyObjectAction.Properties.inPartition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -678,7 +712,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromInPartition(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReclassifyObjectActionPropertiesEditionPartImpl.this, UmlViewsRepository.ReclassifyObjectAction.Properties.inPartition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -686,7 +720,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editInPartition(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -701,10 +735,11 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createInInterruptibleRegionAdvancedReferencesTable(Composite parent) {
-		this.inInterruptibleRegion = new ReferencesTable(UmlMessages.ReclassifyObjectActionPropertiesEditionPart_InInterruptibleRegionLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.ReclassifyObjectAction.Properties.inInterruptibleRegion, UmlMessages.ReclassifyObjectActionPropertiesEditionPart_InInterruptibleRegionLabel);		 
+		this.inInterruptibleRegion = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addInInterruptibleRegion(); }
 			public void handleEdit(EObject element) { editInInterruptibleRegion(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveInInterruptibleRegion(element, oldIndex, newIndex); }
@@ -732,7 +767,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addInInterruptibleRegion() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(inInterruptibleRegion.getInput(), inInterruptibleRegionFilters, inInterruptibleRegionBusinessFilters,
@@ -751,7 +786,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveInInterruptibleRegion(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReclassifyObjectActionPropertiesEditionPartImpl.this, UmlViewsRepository.ReclassifyObjectAction.Properties.inInterruptibleRegion, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -759,7 +794,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromInInterruptibleRegion(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReclassifyObjectActionPropertiesEditionPartImpl.this, UmlViewsRepository.ReclassifyObjectAction.Properties.inInterruptibleRegion, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -767,7 +802,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editInInterruptibleRegion(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -782,10 +817,11 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createRedefinedNodeAdvancedReferencesTable(Composite parent) {
-		this.redefinedNode = new ReferencesTable(UmlMessages.ReclassifyObjectActionPropertiesEditionPart_RedefinedNodeLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.ReclassifyObjectAction.Properties.redefinedNode, UmlMessages.ReclassifyObjectActionPropertiesEditionPart_RedefinedNodeLabel);		 
+		this.redefinedNode = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addRedefinedNode(); }
 			public void handleEdit(EObject element) { editRedefinedNode(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveRedefinedNode(element, oldIndex, newIndex); }
@@ -813,7 +849,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addRedefinedNode() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(redefinedNode.getInput(), redefinedNodeFilters, redefinedNodeBusinessFilters,
@@ -832,7 +868,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveRedefinedNode(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReclassifyObjectActionPropertiesEditionPartImpl.this, UmlViewsRepository.ReclassifyObjectAction.Properties.redefinedNode, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -840,7 +876,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromRedefinedNode(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReclassifyObjectActionPropertiesEditionPartImpl.this, UmlViewsRepository.ReclassifyObjectAction.Properties.redefinedNode, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -848,7 +884,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editRedefinedNode(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -862,17 +898,20 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 		}
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createIsReplaceAllCheckbox(Composite parent) {
 		isReplaceAll = new Button(parent, SWT.CHECK);
-		isReplaceAll.setText(UmlMessages.ReclassifyObjectActionPropertiesEditionPart_IsReplaceAllLabel);
+		isReplaceAll.setText(getDescription(UmlViewsRepository.ReclassifyObjectAction.Properties.isReplaceAll, UmlMessages.ReclassifyObjectActionPropertiesEditionPart_IsReplaceAllLabel));
 		isReplaceAll.addSelectionListener(new SelectionAdapter() {
 
 			/**
 			 * {@inheritDoc}
 			 *
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	
+			 * 	@generated
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
@@ -890,10 +929,11 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createOldClassifierAdvancedReferencesTable(Composite parent) {
-		this.oldClassifier = new ReferencesTable(UmlMessages.ReclassifyObjectActionPropertiesEditionPart_OldClassifierLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.ReclassifyObjectAction.Properties.oldClassifier, UmlMessages.ReclassifyObjectActionPropertiesEditionPart_OldClassifierLabel);		 
+		this.oldClassifier = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addOldClassifier(); }
 			public void handleEdit(EObject element) { editOldClassifier(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveOldClassifier(element, oldIndex, newIndex); }
@@ -921,7 +961,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addOldClassifier() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(oldClassifier.getInput(), oldClassifierFilters, oldClassifierBusinessFilters,
@@ -940,7 +980,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveOldClassifier(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReclassifyObjectActionPropertiesEditionPartImpl.this, UmlViewsRepository.ReclassifyObjectAction.Properties.oldClassifier, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -948,7 +988,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromOldClassifier(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReclassifyObjectActionPropertiesEditionPartImpl.this, UmlViewsRepository.ReclassifyObjectAction.Properties.oldClassifier, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -956,7 +996,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editOldClassifier(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -971,10 +1011,11 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createNewClassifierAdvancedReferencesTable(Composite parent) {
-		this.newClassifier = new ReferencesTable(UmlMessages.ReclassifyObjectActionPropertiesEditionPart_NewClassifierLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.ReclassifyObjectAction.Properties.newClassifier, UmlMessages.ReclassifyObjectActionPropertiesEditionPart_NewClassifierLabel);		 
+		this.newClassifier = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addNewClassifier(); }
 			public void handleEdit(EObject element) { editNewClassifier(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveNewClassifier(element, oldIndex, newIndex); }
@@ -1002,7 +1043,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addNewClassifier() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(newClassifier.getInput(), newClassifierFilters, newClassifierBusinessFilters,
@@ -1021,7 +1062,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveNewClassifier(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReclassifyObjectActionPropertiesEditionPartImpl.this, UmlViewsRepository.ReclassifyObjectAction.Properties.newClassifier, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -1029,7 +1070,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromNewClassifier(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ReclassifyObjectActionPropertiesEditionPartImpl.this, UmlViewsRepository.ReclassifyObjectAction.Properties.newClassifier, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -1037,7 +1078,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editNewClassifier(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -1052,24 +1093,20 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	}
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-
-// End of user code
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#getName()
-	 * 
+	 * @generated
 	 */
 	public String getName() {
 		return name.getText();
@@ -1079,7 +1116,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#setName(String newValue)
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue) {
 		if (newValue != null) {
@@ -1087,40 +1124,62 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.ReclassifyObjectAction.Properties.name);
+		if (readOnly && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(UmlMessages.ReclassifyObjectAction_ReadOnly);
+		} else if (!readOnly && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
-
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#getVisibility()
-	 * 
+	 * @generated
 	 */
 	public Enumerator getVisibility() {
-		EEnumLiteral selection = (EEnumLiteral) ((StructuredSelection) visibility.getSelection()).getFirstElement();
-		return selection.getInstance();
+		Enumerator selection = (Enumerator) ((StructuredSelection) visibility.getSelection()).getFirstElement();
+		return selection;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#initVisibility(EEnum eenum, Enumerator current)
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#initVisibility(Object input, Enumerator current)
 	 */
-	public void initVisibility(EEnum eenum, Enumerator current) {
-		visibility.setInput(eenum.getELiterals());
+	public void initVisibility(Object input, Enumerator current) {
+		visibility.setInput(input);
 		visibility.modelUpdating(new StructuredSelection(current));
+		boolean readOnly = isReadOnly(UmlViewsRepository.ReclassifyObjectAction.Properties.visibility);
+		if (readOnly && visibility.isEnabled()) {
+			visibility.setEnabled(false);
+			visibility.setToolTipText(UmlMessages.ReclassifyObjectAction_ReadOnly);
+		} else if (!readOnly && !visibility.isEnabled()) {
+			visibility.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#setVisibility(Enumerator newValue)
-	 * 
+	 * @generated
 	 */
 	public void setVisibility(Enumerator newValue) {
 		visibility.modelUpdating(new StructuredSelection(newValue));
+		boolean readOnly = isReadOnly(UmlViewsRepository.ReclassifyObjectAction.Properties.visibility);
+		if (readOnly && visibility.isEnabled()) {
+			visibility.setEnabled(false);
+			visibility.setToolTipText(UmlMessages.ReclassifyObjectAction_ReadOnly);
+		} else if (!readOnly && !visibility.isEnabled()) {
+			visibility.setEnabled(true);
+		}	
+		
 	}
-
 
 
 
@@ -1135,13 +1194,21 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		clientDependency.setContentProvider(contentProvider);
 		clientDependency.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.ReclassifyObjectAction.Properties.clientDependency);
+		if (readOnly && clientDependency.getTable().isEnabled()) {
+			clientDependency.setEnabled(false);
+			clientDependency.setToolTipText(UmlMessages.ReclassifyObjectAction_ReadOnly);
+		} else if (!readOnly && !clientDependency.getTable().isEnabled()) {
+			clientDependency.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#updateClientDependency()
-	 * 
+	 * @generated
 	 */
 	public void updateClientDependency() {
 	clientDependency.refresh();
@@ -1151,7 +1218,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#addFilterClientDependency(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToClientDependency(ViewerFilter filter) {
 		clientDependencyFilters.add(filter);
@@ -1161,7 +1228,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#addBusinessFilterClientDependency(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToClientDependency(ViewerFilter filter) {
 		clientDependencyBusinessFilters.add(filter);
@@ -1171,18 +1238,17 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#isContainedInClientDependencyTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInClientDependencyTable(EObject element) {
 		return ((ReferencesTableSettings)clientDependency.getInput()).contains(element);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#getIsLeaf()
-	 * 
+	 * @generated
 	 */
 	public Boolean getIsLeaf() {
 		return Boolean.valueOf(isLeaf.getSelection());
@@ -1192,7 +1258,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#setIsLeaf(Boolean newValue)
-	 * 
+	 * @generated
 	 */
 	public void setIsLeaf(Boolean newValue) {
 		if (newValue != null) {
@@ -1200,14 +1266,21 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 		} else {
 			isLeaf.setSelection(false);
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.ReclassifyObjectAction.Properties.isLeaf);
+		if (readOnly && isLeaf.isEnabled()) {
+			isLeaf.setEnabled(false);
+			isLeaf.setToolTipText(UmlMessages.ReclassifyObjectAction_ReadOnly);
+		} else if (!readOnly && !isLeaf.isEnabled()) {
+			isLeaf.setEnabled(true);
+		}	
+		
 	}
-
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#getInStructuredNode()
-	 * 
+	 * @generated
 	 */
 	public EObject getInStructuredNode() {
 		if (inStructuredNode.getSelection() instanceof StructuredSelection) {
@@ -1228,13 +1301,21 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 		if (current != null) {
 			inStructuredNode.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.ReclassifyObjectAction.Properties.inStructuredNode);
+		if (readOnly && inStructuredNode.isEnabled()) {
+			inStructuredNode.setEnabled(false);
+			inStructuredNode.setToolTipText(UmlMessages.ReclassifyObjectAction_ReadOnly);
+		} else if (!readOnly && !inStructuredNode.isEnabled()) {
+			inStructuredNode.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#setInStructuredNode(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setInStructuredNode(EObject newValue) {
 		if (newValue != null) {
@@ -1242,6 +1323,14 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 		} else {
 			inStructuredNode.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.ReclassifyObjectAction.Properties.inStructuredNode);
+		if (readOnly && inStructuredNode.isEnabled()) {
+			inStructuredNode.setEnabled(false);
+			inStructuredNode.setToolTipText(UmlMessages.ReclassifyObjectAction_ReadOnly);
+		} else if (!readOnly && !inStructuredNode.isEnabled()) {
+			inStructuredNode.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -1257,7 +1346,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#addFilterInStructuredNode(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToInStructuredNode(ViewerFilter filter) {
 		inStructuredNode.addFilter(filter);
@@ -1267,18 +1356,17 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#addBusinessFilterInStructuredNode(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToInStructuredNode(ViewerFilter filter) {
 		inStructuredNode.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#getActivity()
-	 * 
+	 * @generated
 	 */
 	public EObject getActivity() {
 		if (activity.getSelection() instanceof StructuredSelection) {
@@ -1299,13 +1387,21 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 		if (current != null) {
 			activity.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.ReclassifyObjectAction.Properties.activity);
+		if (readOnly && activity.isEnabled()) {
+			activity.setEnabled(false);
+			activity.setToolTipText(UmlMessages.ReclassifyObjectAction_ReadOnly);
+		} else if (!readOnly && !activity.isEnabled()) {
+			activity.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#setActivity(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setActivity(EObject newValue) {
 		if (newValue != null) {
@@ -1313,6 +1409,14 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 		} else {
 			activity.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.ReclassifyObjectAction.Properties.activity);
+		if (readOnly && activity.isEnabled()) {
+			activity.setEnabled(false);
+			activity.setToolTipText(UmlMessages.ReclassifyObjectAction_ReadOnly);
+		} else if (!readOnly && !activity.isEnabled()) {
+			activity.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -1328,7 +1432,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#addFilterActivity(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToActivity(ViewerFilter filter) {
 		activity.addFilter(filter);
@@ -1338,12 +1442,11 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#addBusinessFilterActivity(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToActivity(ViewerFilter filter) {
 		activity.addBusinessRuleFilter(filter);
 	}
-
 
 
 
@@ -1358,13 +1461,21 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		outgoing.setContentProvider(contentProvider);
 		outgoing.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.ReclassifyObjectAction.Properties.outgoing);
+		if (readOnly && outgoing.getTable().isEnabled()) {
+			outgoing.setEnabled(false);
+			outgoing.setToolTipText(UmlMessages.ReclassifyObjectAction_ReadOnly);
+		} else if (!readOnly && !outgoing.getTable().isEnabled()) {
+			outgoing.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#updateOutgoing()
-	 * 
+	 * @generated
 	 */
 	public void updateOutgoing() {
 	outgoing.refresh();
@@ -1374,7 +1485,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#addFilterOutgoing(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToOutgoing(ViewerFilter filter) {
 		outgoingFilters.add(filter);
@@ -1384,7 +1495,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#addBusinessFilterOutgoing(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToOutgoing(ViewerFilter filter) {
 		outgoingBusinessFilters.add(filter);
@@ -1394,12 +1505,11 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#isContainedInOutgoingTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInOutgoingTable(EObject element) {
 		return ((ReferencesTableSettings)outgoing.getInput()).contains(element);
 	}
-
 
 
 
@@ -1414,13 +1524,21 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		incoming.setContentProvider(contentProvider);
 		incoming.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.ReclassifyObjectAction.Properties.incoming);
+		if (readOnly && incoming.getTable().isEnabled()) {
+			incoming.setEnabled(false);
+			incoming.setToolTipText(UmlMessages.ReclassifyObjectAction_ReadOnly);
+		} else if (!readOnly && !incoming.getTable().isEnabled()) {
+			incoming.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#updateIncoming()
-	 * 
+	 * @generated
 	 */
 	public void updateIncoming() {
 	incoming.refresh();
@@ -1430,7 +1548,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#addFilterIncoming(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToIncoming(ViewerFilter filter) {
 		incomingFilters.add(filter);
@@ -1440,7 +1558,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#addBusinessFilterIncoming(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToIncoming(ViewerFilter filter) {
 		incomingBusinessFilters.add(filter);
@@ -1450,12 +1568,11 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#isContainedInIncomingTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInIncomingTable(EObject element) {
 		return ((ReferencesTableSettings)incoming.getInput()).contains(element);
 	}
-
 
 
 
@@ -1470,13 +1587,21 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		inPartition.setContentProvider(contentProvider);
 		inPartition.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.ReclassifyObjectAction.Properties.inPartition);
+		if (readOnly && inPartition.getTable().isEnabled()) {
+			inPartition.setEnabled(false);
+			inPartition.setToolTipText(UmlMessages.ReclassifyObjectAction_ReadOnly);
+		} else if (!readOnly && !inPartition.getTable().isEnabled()) {
+			inPartition.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#updateInPartition()
-	 * 
+	 * @generated
 	 */
 	public void updateInPartition() {
 	inPartition.refresh();
@@ -1486,7 +1611,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#addFilterInPartition(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToInPartition(ViewerFilter filter) {
 		inPartitionFilters.add(filter);
@@ -1496,7 +1621,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#addBusinessFilterInPartition(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToInPartition(ViewerFilter filter) {
 		inPartitionBusinessFilters.add(filter);
@@ -1506,12 +1631,11 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#isContainedInInPartitionTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInInPartitionTable(EObject element) {
 		return ((ReferencesTableSettings)inPartition.getInput()).contains(element);
 	}
-
 
 
 
@@ -1526,13 +1650,21 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		inInterruptibleRegion.setContentProvider(contentProvider);
 		inInterruptibleRegion.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.ReclassifyObjectAction.Properties.inInterruptibleRegion);
+		if (readOnly && inInterruptibleRegion.getTable().isEnabled()) {
+			inInterruptibleRegion.setEnabled(false);
+			inInterruptibleRegion.setToolTipText(UmlMessages.ReclassifyObjectAction_ReadOnly);
+		} else if (!readOnly && !inInterruptibleRegion.getTable().isEnabled()) {
+			inInterruptibleRegion.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#updateInInterruptibleRegion()
-	 * 
+	 * @generated
 	 */
 	public void updateInInterruptibleRegion() {
 	inInterruptibleRegion.refresh();
@@ -1542,7 +1674,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#addFilterInInterruptibleRegion(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToInInterruptibleRegion(ViewerFilter filter) {
 		inInterruptibleRegionFilters.add(filter);
@@ -1552,7 +1684,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#addBusinessFilterInInterruptibleRegion(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToInInterruptibleRegion(ViewerFilter filter) {
 		inInterruptibleRegionBusinessFilters.add(filter);
@@ -1562,12 +1694,11 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#isContainedInInInterruptibleRegionTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInInInterruptibleRegionTable(EObject element) {
 		return ((ReferencesTableSettings)inInterruptibleRegion.getInput()).contains(element);
 	}
-
 
 
 
@@ -1582,13 +1713,21 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		redefinedNode.setContentProvider(contentProvider);
 		redefinedNode.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.ReclassifyObjectAction.Properties.redefinedNode);
+		if (readOnly && redefinedNode.getTable().isEnabled()) {
+			redefinedNode.setEnabled(false);
+			redefinedNode.setToolTipText(UmlMessages.ReclassifyObjectAction_ReadOnly);
+		} else if (!readOnly && !redefinedNode.getTable().isEnabled()) {
+			redefinedNode.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#updateRedefinedNode()
-	 * 
+	 * @generated
 	 */
 	public void updateRedefinedNode() {
 	redefinedNode.refresh();
@@ -1598,7 +1737,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#addFilterRedefinedNode(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToRedefinedNode(ViewerFilter filter) {
 		redefinedNodeFilters.add(filter);
@@ -1608,7 +1747,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#addBusinessFilterRedefinedNode(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToRedefinedNode(ViewerFilter filter) {
 		redefinedNodeBusinessFilters.add(filter);
@@ -1618,18 +1757,17 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#isContainedInRedefinedNodeTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInRedefinedNodeTable(EObject element) {
 		return ((ReferencesTableSettings)redefinedNode.getInput()).contains(element);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#getIsReplaceAll()
-	 * 
+	 * @generated
 	 */
 	public Boolean getIsReplaceAll() {
 		return Boolean.valueOf(isReplaceAll.getSelection());
@@ -1639,7 +1777,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#setIsReplaceAll(Boolean newValue)
-	 * 
+	 * @generated
 	 */
 	public void setIsReplaceAll(Boolean newValue) {
 		if (newValue != null) {
@@ -1647,8 +1785,15 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 		} else {
 			isReplaceAll.setSelection(false);
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.ReclassifyObjectAction.Properties.isReplaceAll);
+		if (readOnly && isReplaceAll.isEnabled()) {
+			isReplaceAll.setEnabled(false);
+			isReplaceAll.setToolTipText(UmlMessages.ReclassifyObjectAction_ReadOnly);
+		} else if (!readOnly && !isReplaceAll.isEnabled()) {
+			isReplaceAll.setEnabled(true);
+		}	
+		
 	}
-
 
 
 
@@ -1663,13 +1808,21 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		oldClassifier.setContentProvider(contentProvider);
 		oldClassifier.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.ReclassifyObjectAction.Properties.oldClassifier);
+		if (readOnly && oldClassifier.getTable().isEnabled()) {
+			oldClassifier.setEnabled(false);
+			oldClassifier.setToolTipText(UmlMessages.ReclassifyObjectAction_ReadOnly);
+		} else if (!readOnly && !oldClassifier.getTable().isEnabled()) {
+			oldClassifier.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#updateOldClassifier()
-	 * 
+	 * @generated
 	 */
 	public void updateOldClassifier() {
 	oldClassifier.refresh();
@@ -1679,7 +1832,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#addFilterOldClassifier(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToOldClassifier(ViewerFilter filter) {
 		oldClassifierFilters.add(filter);
@@ -1689,7 +1842,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#addBusinessFilterOldClassifier(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToOldClassifier(ViewerFilter filter) {
 		oldClassifierBusinessFilters.add(filter);
@@ -1699,12 +1852,11 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#isContainedInOldClassifierTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInOldClassifierTable(EObject element) {
 		return ((ReferencesTableSettings)oldClassifier.getInput()).contains(element);
 	}
-
 
 
 
@@ -1719,13 +1871,21 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		newClassifier.setContentProvider(contentProvider);
 		newClassifier.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.ReclassifyObjectAction.Properties.newClassifier);
+		if (readOnly && newClassifier.getTable().isEnabled()) {
+			newClassifier.setEnabled(false);
+			newClassifier.setToolTipText(UmlMessages.ReclassifyObjectAction_ReadOnly);
+		} else if (!readOnly && !newClassifier.getTable().isEnabled()) {
+			newClassifier.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#updateNewClassifier()
-	 * 
+	 * @generated
 	 */
 	public void updateNewClassifier() {
 	newClassifier.refresh();
@@ -1735,7 +1895,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#addFilterNewClassifier(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToNewClassifier(ViewerFilter filter) {
 		newClassifierFilters.add(filter);
@@ -1745,7 +1905,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#addBusinessFilterNewClassifier(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToNewClassifier(ViewerFilter filter) {
 		newClassifierBusinessFilters.add(filter);
@@ -1755,7 +1915,7 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ReclassifyObjectActionPropertiesEditionPart#isContainedInNewClassifierTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInNewClassifierTable(EObject element) {
 		return ((ReferencesTableSettings)newClassifier.getInput()).contains(element);
@@ -1766,20 +1926,16 @@ public class ReclassifyObjectActionPropertiesEditionPartImpl extends CompositePr
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
+	 * @generated
 	 */
 	public String getTitle() {
 		return UmlMessages.ReclassifyObjectAction_Part_Title;
 	}
 
-	// Start of user code additional methods
-	
-	// End of user code
 
 
 }

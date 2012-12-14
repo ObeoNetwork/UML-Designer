@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,26 +10,26 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts;
 
-// Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
-
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public interface InterruptibleActivityRegionPropertiesEditionPart {
 
 	/**
 	 * @return the inActivity
-	 * 
+	 * @generated
 	 */
 	public EObject getInActivity();
 
@@ -42,14 +42,14 @@ public interface InterruptibleActivityRegionPropertiesEditionPart {
 	/**
 	 * Defines a new inActivity
 	 * @param newValue the new inActivity to set
-	 * 
+	 * @generated
 	 */
 	public void setInActivity(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setInActivityButtonMode(ButtonsModeEnum newValue);
 
@@ -59,7 +59,7 @@ public interface InterruptibleActivityRegionPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToInActivity(ViewerFilter filter);
 
@@ -69,7 +69,7 @@ public interface InterruptibleActivityRegionPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToInActivity(ViewerFilter filter);
 
@@ -85,7 +85,7 @@ public interface InterruptibleActivityRegionPropertiesEditionPart {
 	/**
 	 * Update the node
 	 * @param newValue the node to update
-	 * 
+	 * @generated
 	 */
 	public void updateNode();
 
@@ -95,7 +95,7 @@ public interface InterruptibleActivityRegionPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToNode(ViewerFilter filter);
 
@@ -105,13 +105,13 @@ public interface InterruptibleActivityRegionPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToNode(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the node table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInNodeTable(EObject element);
 
@@ -127,7 +127,7 @@ public interface InterruptibleActivityRegionPropertiesEditionPart {
 	/**
 	 * Update the interruptingEdge
 	 * @param newValue the interruptingEdge to update
-	 * 
+	 * @generated
 	 */
 	public void updateInterruptingEdge();
 
@@ -137,7 +137,7 @@ public interface InterruptibleActivityRegionPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToInterruptingEdge(ViewerFilter filter);
 
@@ -147,13 +147,13 @@ public interface InterruptibleActivityRegionPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToInterruptingEdge(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the interruptingEdge table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInInterruptingEdgeTable(EObject element);
 
@@ -165,12 +165,9 @@ public interface InterruptibleActivityRegionPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
-	 * 
+	 * @generated
 	 */
 	public String getTitle();
 
-	// Start of user code for additional methods
-
-// End of user code
 
 }

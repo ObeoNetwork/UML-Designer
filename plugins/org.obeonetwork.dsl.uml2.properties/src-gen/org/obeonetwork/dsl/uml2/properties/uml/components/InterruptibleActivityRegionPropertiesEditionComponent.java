@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,46 +10,69 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.components;
 
-// Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
+import org.eclipse.emf.ecore.util.EcoreUtil;
+
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
+import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.ActivityNode;
 import org.eclipse.uml2.uml.InterruptibleActivityRegion;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
+
 import org.obeonetwork.dsl.uml2.properties.uml.parts.InterruptibleActivityRegionPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 
 
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public class InterruptibleActivityRegionPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
+	/**
+	 * @generated
+	 */
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
@@ -57,21 +80,22 @@ public class InterruptibleActivityRegionPropertiesEditionComponent extends Singl
 	/**
 	 * Settings for inActivity EObjectFlatComboViewer
 	 */
-	private	EObjectFlatComboSettings inActivitySettings;
+	private EObjectFlatComboSettings inActivitySettings;
 	
 	/**
 	 * Settings for node ReferencesTable
 	 */
-	private	ReferencesTableSettings nodeSettings;
+	private ReferencesTableSettings nodeSettings;
 	
 	/**
 	 * Settings for interruptingEdge ReferencesTable
 	 */
-	private	ReferencesTableSettings interruptingEdgeSettings;
+	private ReferencesTableSettings interruptingEdgeSettings;
+	
 	
 	/**
 	 * Default constructor
-	 * 
+	 * @generated
 	 */
 	public InterruptibleActivityRegionPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject interruptibleActivityRegion, String editing_mode) {
 		super(editingContext, interruptibleActivityRegion, editing_mode);
@@ -85,12 +109,13 @@ public class InterruptibleActivityRegionPropertiesEditionComponent extends Singl
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
-	 * 
+	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final InterruptibleActivityRegion interruptibleActivityRegion = (InterruptibleActivityRegion)elt;
 			final InterruptibleActivityRegionPropertiesEditionPart basePart = (InterruptibleActivityRegionPropertiesEditionPart)editingPart;
 			// init values
@@ -110,57 +135,54 @@ public class InterruptibleActivityRegionPropertiesEditionComponent extends Singl
 				basePart.initInterruptingEdge(interruptingEdgeSettings);
 			}
 			// init filters
-			basePart.addFilterToInActivity(new ViewerFilter() {
-			
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof String && element.equals("")) || (element instanceof Activity); //$NON-NLS-1$ 
-				}
-			
-			});
-			// Start of user code for additional businessfilters for inActivity
-			// End of user code
-			
-			basePart.addFilterToNode(new ViewerFilter() {
-			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInNodeTable((EObject)element));
-					return element instanceof Resource;
-				}
-			
-			});
-			basePart.addFilterToNode(new EObjectFilter(UMLPackage.eINSTANCE.getActivityNode()));
-			// Start of user code for additional businessfilters for node
-			// End of user code
-			
-			basePart.addFilterToInterruptingEdge(new ViewerFilter() {
-			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInInterruptingEdgeTable((EObject)element));
-					return element instanceof Resource;
-				}
-			
-			});
-			basePart.addFilterToInterruptingEdge(new EObjectFilter(UMLPackage.eINSTANCE.getActivityEdge()));
-			// Start of user code for additional businessfilters for interruptingEdge
-			// End of user code
-			
+			if (isAccessible(UmlViewsRepository.InterruptibleActivityRegion.Properties.inActivity)) {
+				basePart.addFilterToInActivity(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof Activity); //$NON-NLS-1$ 
+					}
+					
+				});
+			}
+			if (isAccessible(UmlViewsRepository.InterruptibleActivityRegion.Properties.node)) {
+				basePart.addFilterToNode(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInNodeTable((EObject)element));
+						return element instanceof Resource;
+					}
+				
+				});
+				basePart.addFilterToNode(new EObjectFilter(UMLPackage.Literals.ACTIVITY_NODE));
+			}
+			if (isAccessible(UmlViewsRepository.InterruptibleActivityRegion.Properties.interruptingEdge)) {
+				basePart.addFilterToInterruptingEdge(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInInterruptingEdgeTable((EObject)element));
+						return element instanceof Resource;
+					}
+				
+				});
+				basePart.addFilterToInterruptingEdge(new EObjectFilter(UMLPackage.Literals.ACTIVITY_EDGE));
+			}
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -178,7 +200,7 @@ public class InterruptibleActivityRegionPropertiesEditionComponent extends Singl
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
-	protected EStructuralFeature associatedFeature(Object editorKey) {
+	public EStructuralFeature associatedFeature(Object editorKey) {
 		if (editorKey == UmlViewsRepository.InterruptibleActivityRegion.Properties.inActivity) {
 			return UMLPackage.eINSTANCE.getActivityGroup_InActivity();
 		}
@@ -194,7 +216,7 @@ public class InterruptibleActivityRegionPropertiesEditionComponent extends Singl
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		InterruptibleActivityRegion interruptibleActivityRegion = (InterruptibleActivityRegion)semanticObject;
@@ -220,7 +242,9 @@ public class InterruptibleActivityRegionPropertiesEditionComponent extends Singl
 					nodeSettings.addToReference((EObject) event.getNewValue());
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-					nodeSettings.removeFromReference((EObject) event.getNewValue());
+				nodeSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				nodeSettings.move(event.getNewIndex(), (ActivityNode) event.getNewValue());
 			}
 		}
 		if (UmlViewsRepository.InterruptibleActivityRegion.Properties.interruptingEdge == event.getAffectedEditor()) {
@@ -229,7 +253,9 @@ public class InterruptibleActivityRegionPropertiesEditionComponent extends Singl
 					interruptingEdgeSettings.addToReference((EObject) event.getNewValue());
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-					interruptingEdgeSettings.removeFromReference((EObject) event.getNewValue());
+				interruptingEdgeSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				interruptingEdgeSettings.move(event.getNewIndex(), (ActivityEdge) event.getNewValue());
 			}
 		}
 	}
@@ -239,7 +265,8 @@ public class InterruptibleActivityRegionPropertiesEditionComponent extends Singl
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		if (editingPart.isVisible()) {	
+		super.updatePart(msg);
+		if (editingPart.isVisible()) {
 			InterruptibleActivityRegionPropertiesEditionPart basePart = (InterruptibleActivityRegionPropertiesEditionPart)editingPart;
 			if (UMLPackage.eINSTANCE.getActivityGroup_InActivity().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.InterruptibleActivityRegion.Properties.inActivity))
 				basePart.setInActivity((EObject)msg.getNewValue());
@@ -251,12 +278,26 @@ public class InterruptibleActivityRegionPropertiesEditionComponent extends Singl
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			UMLPackage.eINSTANCE.getActivityGroup_InActivity(),
+			UMLPackage.eINSTANCE.getInterruptibleActivityRegion_Node(),
+			UMLPackage.eINSTANCE.getInterruptibleActivityRegion_InterruptingEdge()		);
+		return new NotificationFilter[] {filter,};
+	}
+
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
@@ -270,5 +311,8 @@ public class InterruptibleActivityRegionPropertiesEditionComponent extends Singl
 		}
 		return ret;
 	}
+
+
+	
 
 }

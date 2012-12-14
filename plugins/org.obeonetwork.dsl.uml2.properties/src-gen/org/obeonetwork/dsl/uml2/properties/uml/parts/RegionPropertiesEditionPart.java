@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,56 +10,56 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts;
 
-// Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.ecore.EEnum;
+
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
-
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public interface RegionPropertiesEditionPart {
 
 	/**
 	 * @return the name
-	 * 
+	 * @generated
 	 */
 	public String getName();
 
 	/**
 	 * Defines a new name
 	 * @param newValue the new name to set
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue);
 
 
 	/**
 	 * @return the visibility
-	 * 
+	 * @generated
 	 */
 	public Enumerator getVisibility();
 
 	/**
 	 * Init the visibility
-	 * @param eenum the enum to manage
+	 * @param input the viewer input
 	 * @param current the current value
 	 */
-	public void initVisibility(EEnum eenum, Enumerator current);
+	public void initVisibility(Object input, Enumerator current);
 
 	/**
 	 * Defines a new visibility
 	 * @param newValue the new visibility to set
-	 * 
+	 * @generated
 	 */
 	public void setVisibility(Enumerator newValue);
 
@@ -75,7 +75,7 @@ public interface RegionPropertiesEditionPart {
 	/**
 	 * Update the clientDependency
 	 * @param newValue the clientDependency to update
-	 * 
+	 * @generated
 	 */
 	public void updateClientDependency();
 
@@ -85,7 +85,7 @@ public interface RegionPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToClientDependency(ViewerFilter filter);
 
@@ -95,34 +95,34 @@ public interface RegionPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToClientDependency(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the clientDependency table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInClientDependencyTable(EObject element);
 
 
 	/**
 	 * @return the isLeaf
-	 * 
+	 * @generated
 	 */
 	public Boolean getIsLeaf();
 
 	/**
 	 * Defines a new isLeaf
 	 * @param newValue the new isLeaf to set
-	 * 
+	 * @generated
 	 */
 	public void setIsLeaf(Boolean newValue);
 
 
 	/**
 	 * @return the state
-	 * 
+	 * @generated
 	 */
 	public EObject getState();
 
@@ -135,14 +135,14 @@ public interface RegionPropertiesEditionPart {
 	/**
 	 * Defines a new state
 	 * @param newValue the new state to set
-	 * 
+	 * @generated
 	 */
 	public void setState(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setStateButtonMode(ButtonsModeEnum newValue);
 
@@ -152,7 +152,7 @@ public interface RegionPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToState(ViewerFilter filter);
 
@@ -162,14 +162,14 @@ public interface RegionPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToState(ViewerFilter filter);
 
 
 	/**
 	 * @return the extendedRegion
-	 * 
+	 * @generated
 	 */
 	public EObject getExtendedRegion();
 
@@ -182,14 +182,14 @@ public interface RegionPropertiesEditionPart {
 	/**
 	 * Defines a new extendedRegion
 	 * @param newValue the new extendedRegion to set
-	 * 
+	 * @generated
 	 */
 	public void setExtendedRegion(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setExtendedRegionButtonMode(ButtonsModeEnum newValue);
 
@@ -199,7 +199,7 @@ public interface RegionPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToExtendedRegion(ViewerFilter filter);
 
@@ -209,14 +209,14 @@ public interface RegionPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToExtendedRegion(ViewerFilter filter);
 
 
 	/**
 	 * @return the stateMachine
-	 * 
+	 * @generated
 	 */
 	public EObject getStateMachine();
 
@@ -229,14 +229,14 @@ public interface RegionPropertiesEditionPart {
 	/**
 	 * Defines a new stateMachine
 	 * @param newValue the new stateMachine to set
-	 * 
+	 * @generated
 	 */
 	public void setStateMachine(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setStateMachineButtonMode(ButtonsModeEnum newValue);
 
@@ -246,7 +246,7 @@ public interface RegionPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToStateMachine(ViewerFilter filter);
 
@@ -256,7 +256,7 @@ public interface RegionPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToStateMachine(ViewerFilter filter);
 
@@ -268,12 +268,9 @@ public interface RegionPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
-	 * 
+	 * @generated
 	 */
 	public String getTitle();
 
-	// Start of user code for additional methods
-
-// End of user code
 
 }

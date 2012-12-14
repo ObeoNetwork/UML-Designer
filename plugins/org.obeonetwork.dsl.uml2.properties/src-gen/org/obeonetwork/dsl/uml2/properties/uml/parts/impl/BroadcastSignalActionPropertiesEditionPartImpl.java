@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,69 +10,90 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts.impl;
 
-// Start of user code for imports
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EEnumLiteral;
+
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
+
 import org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
+
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 
 
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, BroadcastSignalActionPropertiesEditionPart {
 
@@ -107,7 +128,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
+	 * @generated
 	 */
 	public BroadcastSignalActionPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -118,7 +139,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
@@ -134,7 +155,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public void createControls(Composite view) { 
 		CompositionSequence broadcastSignalActionStep = new BindingCompositionSequence(propertiesEditionComponent);
@@ -207,7 +228,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
@@ -221,10 +242,13 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 		return propertiesGroup;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.BroadcastSignalActionPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.BroadcastSignalAction.Properties.name, UmlViewsRepository.SWT_KIND));
-		name = new Text(parent, SWT.BORDER);
+		createDescription(parent, UmlViewsRepository.BroadcastSignalAction.Properties.name, UmlMessages.BroadcastSignalActionPropertiesEditionPart_NameLabel);
+		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {
@@ -233,7 +257,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -249,7 +273,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -267,12 +291,15 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 		return parent;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createVisibilityEMFComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.BroadcastSignalActionPropertiesEditionPart_VisibilityLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.BroadcastSignalAction.Properties.visibility, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.BroadcastSignalAction.Properties.visibility, UmlMessages.BroadcastSignalActionPropertiesEditionPart_VisibilityLabel);
 		visibility = new EMFComboViewer(parent);
 		visibility.setContentProvider(new ArrayContentProvider());
-		visibility.setLabelProvider(new AdapterFactoryLabelProvider(new EcoreAdapterFactory()));
+		visibility.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData visibilityData = new GridData(GridData.FILL_HORIZONTAL);
 		visibility.getCombo().setLayoutData(visibilityData);
 		visibility.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -281,7 +308,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
+			 * 	@generated
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
@@ -295,10 +322,11 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createClientDependencyAdvancedReferencesTable(Composite parent) {
-		this.clientDependency = new ReferencesTable(UmlMessages.BroadcastSignalActionPropertiesEditionPart_ClientDependencyLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.BroadcastSignalAction.Properties.clientDependency, UmlMessages.BroadcastSignalActionPropertiesEditionPart_ClientDependencyLabel);		 
+		this.clientDependency = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addClientDependency(); }
 			public void handleEdit(EObject element) { editClientDependency(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveClientDependency(element, oldIndex, newIndex); }
@@ -326,7 +354,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addClientDependency() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(clientDependency.getInput(), clientDependencyFilters, clientDependencyBusinessFilters,
@@ -345,7 +373,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveClientDependency(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(BroadcastSignalActionPropertiesEditionPartImpl.this, UmlViewsRepository.BroadcastSignalAction.Properties.clientDependency, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -353,7 +381,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromClientDependency(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(BroadcastSignalActionPropertiesEditionPartImpl.this, UmlViewsRepository.BroadcastSignalAction.Properties.clientDependency, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -361,7 +389,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editClientDependency(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -375,17 +403,20 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 		}
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createIsLeafCheckbox(Composite parent) {
 		isLeaf = new Button(parent, SWT.CHECK);
-		isLeaf.setText(UmlMessages.BroadcastSignalActionPropertiesEditionPart_IsLeafLabel);
+		isLeaf.setText(getDescription(UmlViewsRepository.BroadcastSignalAction.Properties.isLeaf, UmlMessages.BroadcastSignalActionPropertiesEditionPart_IsLeafLabel));
 		isLeaf.addSelectionListener(new SelectionAdapter() {
 
 			/**
 			 * {@inheritDoc}
 			 *
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	
+			 * 	@generated
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
@@ -404,10 +435,10 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createInStructuredNodeFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.BroadcastSignalActionPropertiesEditionPart_InStructuredNodeLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.BroadcastSignalAction.Properties.inStructuredNode, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.BroadcastSignalAction.Properties.inStructuredNode, UmlMessages.BroadcastSignalActionPropertiesEditionPart_InStructuredNodeLabel);
 		inStructuredNode = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.BroadcastSignalAction.Properties.inStructuredNode, UmlViewsRepository.SWT_KIND));
 		inStructuredNode.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -427,10 +458,10 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createActivityFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.BroadcastSignalActionPropertiesEditionPart_ActivityLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.BroadcastSignalAction.Properties.activity, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.BroadcastSignalAction.Properties.activity, UmlMessages.BroadcastSignalActionPropertiesEditionPart_ActivityLabel);
 		activity = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.BroadcastSignalAction.Properties.activity, UmlViewsRepository.SWT_KIND));
 		activity.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -449,10 +480,11 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createOutgoingAdvancedReferencesTable(Composite parent) {
-		this.outgoing = new ReferencesTable(UmlMessages.BroadcastSignalActionPropertiesEditionPart_OutgoingLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.BroadcastSignalAction.Properties.outgoing, UmlMessages.BroadcastSignalActionPropertiesEditionPart_OutgoingLabel);		 
+		this.outgoing = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addOutgoing(); }
 			public void handleEdit(EObject element) { editOutgoing(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveOutgoing(element, oldIndex, newIndex); }
@@ -480,7 +512,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addOutgoing() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(outgoing.getInput(), outgoingFilters, outgoingBusinessFilters,
@@ -499,7 +531,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveOutgoing(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(BroadcastSignalActionPropertiesEditionPartImpl.this, UmlViewsRepository.BroadcastSignalAction.Properties.outgoing, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -507,7 +539,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromOutgoing(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(BroadcastSignalActionPropertiesEditionPartImpl.this, UmlViewsRepository.BroadcastSignalAction.Properties.outgoing, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -515,7 +547,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editOutgoing(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -530,10 +562,11 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createIncomingAdvancedReferencesTable(Composite parent) {
-		this.incoming = new ReferencesTable(UmlMessages.BroadcastSignalActionPropertiesEditionPart_IncomingLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.BroadcastSignalAction.Properties.incoming, UmlMessages.BroadcastSignalActionPropertiesEditionPart_IncomingLabel);		 
+		this.incoming = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addIncoming(); }
 			public void handleEdit(EObject element) { editIncoming(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveIncoming(element, oldIndex, newIndex); }
@@ -561,7 +594,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addIncoming() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(incoming.getInput(), incomingFilters, incomingBusinessFilters,
@@ -580,7 +613,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveIncoming(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(BroadcastSignalActionPropertiesEditionPartImpl.this, UmlViewsRepository.BroadcastSignalAction.Properties.incoming, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -588,7 +621,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromIncoming(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(BroadcastSignalActionPropertiesEditionPartImpl.this, UmlViewsRepository.BroadcastSignalAction.Properties.incoming, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -596,7 +629,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editIncoming(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -611,10 +644,11 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createInPartitionAdvancedReferencesTable(Composite parent) {
-		this.inPartition = new ReferencesTable(UmlMessages.BroadcastSignalActionPropertiesEditionPart_InPartitionLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.BroadcastSignalAction.Properties.inPartition, UmlMessages.BroadcastSignalActionPropertiesEditionPart_InPartitionLabel);		 
+		this.inPartition = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addInPartition(); }
 			public void handleEdit(EObject element) { editInPartition(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveInPartition(element, oldIndex, newIndex); }
@@ -642,7 +676,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addInPartition() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(inPartition.getInput(), inPartitionFilters, inPartitionBusinessFilters,
@@ -661,7 +695,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveInPartition(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(BroadcastSignalActionPropertiesEditionPartImpl.this, UmlViewsRepository.BroadcastSignalAction.Properties.inPartition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -669,7 +703,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromInPartition(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(BroadcastSignalActionPropertiesEditionPartImpl.this, UmlViewsRepository.BroadcastSignalAction.Properties.inPartition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -677,7 +711,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editInPartition(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -692,10 +726,11 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createInInterruptibleRegionAdvancedReferencesTable(Composite parent) {
-		this.inInterruptibleRegion = new ReferencesTable(UmlMessages.BroadcastSignalActionPropertiesEditionPart_InInterruptibleRegionLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.BroadcastSignalAction.Properties.inInterruptibleRegion, UmlMessages.BroadcastSignalActionPropertiesEditionPart_InInterruptibleRegionLabel);		 
+		this.inInterruptibleRegion = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addInInterruptibleRegion(); }
 			public void handleEdit(EObject element) { editInInterruptibleRegion(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveInInterruptibleRegion(element, oldIndex, newIndex); }
@@ -723,7 +758,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addInInterruptibleRegion() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(inInterruptibleRegion.getInput(), inInterruptibleRegionFilters, inInterruptibleRegionBusinessFilters,
@@ -742,7 +777,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveInInterruptibleRegion(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(BroadcastSignalActionPropertiesEditionPartImpl.this, UmlViewsRepository.BroadcastSignalAction.Properties.inInterruptibleRegion, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -750,7 +785,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromInInterruptibleRegion(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(BroadcastSignalActionPropertiesEditionPartImpl.this, UmlViewsRepository.BroadcastSignalAction.Properties.inInterruptibleRegion, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -758,7 +793,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editInInterruptibleRegion(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -773,10 +808,11 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createRedefinedNodeAdvancedReferencesTable(Composite parent) {
-		this.redefinedNode = new ReferencesTable(UmlMessages.BroadcastSignalActionPropertiesEditionPart_RedefinedNodeLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.BroadcastSignalAction.Properties.redefinedNode, UmlMessages.BroadcastSignalActionPropertiesEditionPart_RedefinedNodeLabel);		 
+		this.redefinedNode = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addRedefinedNode(); }
 			public void handleEdit(EObject element) { editRedefinedNode(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveRedefinedNode(element, oldIndex, newIndex); }
@@ -804,7 +840,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addRedefinedNode() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(redefinedNode.getInput(), redefinedNodeFilters, redefinedNodeBusinessFilters,
@@ -823,7 +859,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveRedefinedNode(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(BroadcastSignalActionPropertiesEditionPartImpl.this, UmlViewsRepository.BroadcastSignalAction.Properties.redefinedNode, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -831,7 +867,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromRedefinedNode(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(BroadcastSignalActionPropertiesEditionPartImpl.this, UmlViewsRepository.BroadcastSignalAction.Properties.redefinedNode, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -839,7 +875,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editRedefinedNode(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -855,10 +891,10 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createOnPortFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.BroadcastSignalActionPropertiesEditionPart_OnPortLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.BroadcastSignalAction.Properties.onPort, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.BroadcastSignalAction.Properties.onPort, UmlMessages.BroadcastSignalActionPropertiesEditionPart_OnPortLabel);
 		onPort = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.BroadcastSignalAction.Properties.onPort, UmlViewsRepository.SWT_KIND));
 		onPort.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -878,10 +914,10 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createSignalFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.BroadcastSignalActionPropertiesEditionPart_SignalLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.BroadcastSignalAction.Properties.signal, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.BroadcastSignalAction.Properties.signal, UmlMessages.BroadcastSignalActionPropertiesEditionPart_SignalLabel);
 		signal = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.BroadcastSignalAction.Properties.signal, UmlViewsRepository.SWT_KIND));
 		signal.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -900,24 +936,20 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	}
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-
-// End of user code
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#getName()
-	 * 
+	 * @generated
 	 */
 	public String getName() {
 		return name.getText();
@@ -927,7 +959,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#setName(String newValue)
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue) {
 		if (newValue != null) {
@@ -935,40 +967,62 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.BroadcastSignalAction.Properties.name);
+		if (readOnly && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(UmlMessages.BroadcastSignalAction_ReadOnly);
+		} else if (!readOnly && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
-
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#getVisibility()
-	 * 
+	 * @generated
 	 */
 	public Enumerator getVisibility() {
-		EEnumLiteral selection = (EEnumLiteral) ((StructuredSelection) visibility.getSelection()).getFirstElement();
-		return selection.getInstance();
+		Enumerator selection = (Enumerator) ((StructuredSelection) visibility.getSelection()).getFirstElement();
+		return selection;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#initVisibility(EEnum eenum, Enumerator current)
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#initVisibility(Object input, Enumerator current)
 	 */
-	public void initVisibility(EEnum eenum, Enumerator current) {
-		visibility.setInput(eenum.getELiterals());
+	public void initVisibility(Object input, Enumerator current) {
+		visibility.setInput(input);
 		visibility.modelUpdating(new StructuredSelection(current));
+		boolean readOnly = isReadOnly(UmlViewsRepository.BroadcastSignalAction.Properties.visibility);
+		if (readOnly && visibility.isEnabled()) {
+			visibility.setEnabled(false);
+			visibility.setToolTipText(UmlMessages.BroadcastSignalAction_ReadOnly);
+		} else if (!readOnly && !visibility.isEnabled()) {
+			visibility.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#setVisibility(Enumerator newValue)
-	 * 
+	 * @generated
 	 */
 	public void setVisibility(Enumerator newValue) {
 		visibility.modelUpdating(new StructuredSelection(newValue));
+		boolean readOnly = isReadOnly(UmlViewsRepository.BroadcastSignalAction.Properties.visibility);
+		if (readOnly && visibility.isEnabled()) {
+			visibility.setEnabled(false);
+			visibility.setToolTipText(UmlMessages.BroadcastSignalAction_ReadOnly);
+		} else if (!readOnly && !visibility.isEnabled()) {
+			visibility.setEnabled(true);
+		}	
+		
 	}
-
 
 
 
@@ -983,13 +1037,21 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		clientDependency.setContentProvider(contentProvider);
 		clientDependency.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.BroadcastSignalAction.Properties.clientDependency);
+		if (readOnly && clientDependency.getTable().isEnabled()) {
+			clientDependency.setEnabled(false);
+			clientDependency.setToolTipText(UmlMessages.BroadcastSignalAction_ReadOnly);
+		} else if (!readOnly && !clientDependency.getTable().isEnabled()) {
+			clientDependency.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#updateClientDependency()
-	 * 
+	 * @generated
 	 */
 	public void updateClientDependency() {
 	clientDependency.refresh();
@@ -999,7 +1061,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#addFilterClientDependency(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToClientDependency(ViewerFilter filter) {
 		clientDependencyFilters.add(filter);
@@ -1009,7 +1071,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#addBusinessFilterClientDependency(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToClientDependency(ViewerFilter filter) {
 		clientDependencyBusinessFilters.add(filter);
@@ -1019,18 +1081,17 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#isContainedInClientDependencyTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInClientDependencyTable(EObject element) {
 		return ((ReferencesTableSettings)clientDependency.getInput()).contains(element);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#getIsLeaf()
-	 * 
+	 * @generated
 	 */
 	public Boolean getIsLeaf() {
 		return Boolean.valueOf(isLeaf.getSelection());
@@ -1040,7 +1101,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#setIsLeaf(Boolean newValue)
-	 * 
+	 * @generated
 	 */
 	public void setIsLeaf(Boolean newValue) {
 		if (newValue != null) {
@@ -1048,14 +1109,21 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 		} else {
 			isLeaf.setSelection(false);
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.BroadcastSignalAction.Properties.isLeaf);
+		if (readOnly && isLeaf.isEnabled()) {
+			isLeaf.setEnabled(false);
+			isLeaf.setToolTipText(UmlMessages.BroadcastSignalAction_ReadOnly);
+		} else if (!readOnly && !isLeaf.isEnabled()) {
+			isLeaf.setEnabled(true);
+		}	
+		
 	}
-
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#getInStructuredNode()
-	 * 
+	 * @generated
 	 */
 	public EObject getInStructuredNode() {
 		if (inStructuredNode.getSelection() instanceof StructuredSelection) {
@@ -1076,13 +1144,21 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 		if (current != null) {
 			inStructuredNode.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.BroadcastSignalAction.Properties.inStructuredNode);
+		if (readOnly && inStructuredNode.isEnabled()) {
+			inStructuredNode.setEnabled(false);
+			inStructuredNode.setToolTipText(UmlMessages.BroadcastSignalAction_ReadOnly);
+		} else if (!readOnly && !inStructuredNode.isEnabled()) {
+			inStructuredNode.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#setInStructuredNode(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setInStructuredNode(EObject newValue) {
 		if (newValue != null) {
@@ -1090,6 +1166,14 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 		} else {
 			inStructuredNode.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.BroadcastSignalAction.Properties.inStructuredNode);
+		if (readOnly && inStructuredNode.isEnabled()) {
+			inStructuredNode.setEnabled(false);
+			inStructuredNode.setToolTipText(UmlMessages.BroadcastSignalAction_ReadOnly);
+		} else if (!readOnly && !inStructuredNode.isEnabled()) {
+			inStructuredNode.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -1105,7 +1189,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#addFilterInStructuredNode(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToInStructuredNode(ViewerFilter filter) {
 		inStructuredNode.addFilter(filter);
@@ -1115,18 +1199,17 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#addBusinessFilterInStructuredNode(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToInStructuredNode(ViewerFilter filter) {
 		inStructuredNode.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#getActivity()
-	 * 
+	 * @generated
 	 */
 	public EObject getActivity() {
 		if (activity.getSelection() instanceof StructuredSelection) {
@@ -1147,13 +1230,21 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 		if (current != null) {
 			activity.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.BroadcastSignalAction.Properties.activity);
+		if (readOnly && activity.isEnabled()) {
+			activity.setEnabled(false);
+			activity.setToolTipText(UmlMessages.BroadcastSignalAction_ReadOnly);
+		} else if (!readOnly && !activity.isEnabled()) {
+			activity.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#setActivity(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setActivity(EObject newValue) {
 		if (newValue != null) {
@@ -1161,6 +1252,14 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 		} else {
 			activity.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.BroadcastSignalAction.Properties.activity);
+		if (readOnly && activity.isEnabled()) {
+			activity.setEnabled(false);
+			activity.setToolTipText(UmlMessages.BroadcastSignalAction_ReadOnly);
+		} else if (!readOnly && !activity.isEnabled()) {
+			activity.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -1176,7 +1275,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#addFilterActivity(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToActivity(ViewerFilter filter) {
 		activity.addFilter(filter);
@@ -1186,12 +1285,11 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#addBusinessFilterActivity(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToActivity(ViewerFilter filter) {
 		activity.addBusinessRuleFilter(filter);
 	}
-
 
 
 
@@ -1206,13 +1304,21 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		outgoing.setContentProvider(contentProvider);
 		outgoing.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.BroadcastSignalAction.Properties.outgoing);
+		if (readOnly && outgoing.getTable().isEnabled()) {
+			outgoing.setEnabled(false);
+			outgoing.setToolTipText(UmlMessages.BroadcastSignalAction_ReadOnly);
+		} else if (!readOnly && !outgoing.getTable().isEnabled()) {
+			outgoing.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#updateOutgoing()
-	 * 
+	 * @generated
 	 */
 	public void updateOutgoing() {
 	outgoing.refresh();
@@ -1222,7 +1328,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#addFilterOutgoing(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToOutgoing(ViewerFilter filter) {
 		outgoingFilters.add(filter);
@@ -1232,7 +1338,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#addBusinessFilterOutgoing(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToOutgoing(ViewerFilter filter) {
 		outgoingBusinessFilters.add(filter);
@@ -1242,12 +1348,11 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#isContainedInOutgoingTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInOutgoingTable(EObject element) {
 		return ((ReferencesTableSettings)outgoing.getInput()).contains(element);
 	}
-
 
 
 
@@ -1262,13 +1367,21 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		incoming.setContentProvider(contentProvider);
 		incoming.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.BroadcastSignalAction.Properties.incoming);
+		if (readOnly && incoming.getTable().isEnabled()) {
+			incoming.setEnabled(false);
+			incoming.setToolTipText(UmlMessages.BroadcastSignalAction_ReadOnly);
+		} else if (!readOnly && !incoming.getTable().isEnabled()) {
+			incoming.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#updateIncoming()
-	 * 
+	 * @generated
 	 */
 	public void updateIncoming() {
 	incoming.refresh();
@@ -1278,7 +1391,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#addFilterIncoming(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToIncoming(ViewerFilter filter) {
 		incomingFilters.add(filter);
@@ -1288,7 +1401,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#addBusinessFilterIncoming(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToIncoming(ViewerFilter filter) {
 		incomingBusinessFilters.add(filter);
@@ -1298,12 +1411,11 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#isContainedInIncomingTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInIncomingTable(EObject element) {
 		return ((ReferencesTableSettings)incoming.getInput()).contains(element);
 	}
-
 
 
 
@@ -1318,13 +1430,21 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		inPartition.setContentProvider(contentProvider);
 		inPartition.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.BroadcastSignalAction.Properties.inPartition);
+		if (readOnly && inPartition.getTable().isEnabled()) {
+			inPartition.setEnabled(false);
+			inPartition.setToolTipText(UmlMessages.BroadcastSignalAction_ReadOnly);
+		} else if (!readOnly && !inPartition.getTable().isEnabled()) {
+			inPartition.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#updateInPartition()
-	 * 
+	 * @generated
 	 */
 	public void updateInPartition() {
 	inPartition.refresh();
@@ -1334,7 +1454,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#addFilterInPartition(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToInPartition(ViewerFilter filter) {
 		inPartitionFilters.add(filter);
@@ -1344,7 +1464,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#addBusinessFilterInPartition(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToInPartition(ViewerFilter filter) {
 		inPartitionBusinessFilters.add(filter);
@@ -1354,12 +1474,11 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#isContainedInInPartitionTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInInPartitionTable(EObject element) {
 		return ((ReferencesTableSettings)inPartition.getInput()).contains(element);
 	}
-
 
 
 
@@ -1374,13 +1493,21 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		inInterruptibleRegion.setContentProvider(contentProvider);
 		inInterruptibleRegion.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.BroadcastSignalAction.Properties.inInterruptibleRegion);
+		if (readOnly && inInterruptibleRegion.getTable().isEnabled()) {
+			inInterruptibleRegion.setEnabled(false);
+			inInterruptibleRegion.setToolTipText(UmlMessages.BroadcastSignalAction_ReadOnly);
+		} else if (!readOnly && !inInterruptibleRegion.getTable().isEnabled()) {
+			inInterruptibleRegion.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#updateInInterruptibleRegion()
-	 * 
+	 * @generated
 	 */
 	public void updateInInterruptibleRegion() {
 	inInterruptibleRegion.refresh();
@@ -1390,7 +1517,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#addFilterInInterruptibleRegion(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToInInterruptibleRegion(ViewerFilter filter) {
 		inInterruptibleRegionFilters.add(filter);
@@ -1400,7 +1527,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#addBusinessFilterInInterruptibleRegion(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToInInterruptibleRegion(ViewerFilter filter) {
 		inInterruptibleRegionBusinessFilters.add(filter);
@@ -1410,12 +1537,11 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#isContainedInInInterruptibleRegionTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInInInterruptibleRegionTable(EObject element) {
 		return ((ReferencesTableSettings)inInterruptibleRegion.getInput()).contains(element);
 	}
-
 
 
 
@@ -1430,13 +1556,21 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		redefinedNode.setContentProvider(contentProvider);
 		redefinedNode.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.BroadcastSignalAction.Properties.redefinedNode);
+		if (readOnly && redefinedNode.getTable().isEnabled()) {
+			redefinedNode.setEnabled(false);
+			redefinedNode.setToolTipText(UmlMessages.BroadcastSignalAction_ReadOnly);
+		} else if (!readOnly && !redefinedNode.getTable().isEnabled()) {
+			redefinedNode.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#updateRedefinedNode()
-	 * 
+	 * @generated
 	 */
 	public void updateRedefinedNode() {
 	redefinedNode.refresh();
@@ -1446,7 +1580,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#addFilterRedefinedNode(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToRedefinedNode(ViewerFilter filter) {
 		redefinedNodeFilters.add(filter);
@@ -1456,7 +1590,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#addBusinessFilterRedefinedNode(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToRedefinedNode(ViewerFilter filter) {
 		redefinedNodeBusinessFilters.add(filter);
@@ -1466,18 +1600,17 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#isContainedInRedefinedNodeTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInRedefinedNodeTable(EObject element) {
 		return ((ReferencesTableSettings)redefinedNode.getInput()).contains(element);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#getOnPort()
-	 * 
+	 * @generated
 	 */
 	public EObject getOnPort() {
 		if (onPort.getSelection() instanceof StructuredSelection) {
@@ -1498,13 +1631,21 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 		if (current != null) {
 			onPort.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.BroadcastSignalAction.Properties.onPort);
+		if (readOnly && onPort.isEnabled()) {
+			onPort.setEnabled(false);
+			onPort.setToolTipText(UmlMessages.BroadcastSignalAction_ReadOnly);
+		} else if (!readOnly && !onPort.isEnabled()) {
+			onPort.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#setOnPort(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setOnPort(EObject newValue) {
 		if (newValue != null) {
@@ -1512,6 +1653,14 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 		} else {
 			onPort.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.BroadcastSignalAction.Properties.onPort);
+		if (readOnly && onPort.isEnabled()) {
+			onPort.setEnabled(false);
+			onPort.setToolTipText(UmlMessages.BroadcastSignalAction_ReadOnly);
+		} else if (!readOnly && !onPort.isEnabled()) {
+			onPort.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -1527,7 +1676,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#addFilterOnPort(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToOnPort(ViewerFilter filter) {
 		onPort.addFilter(filter);
@@ -1537,18 +1686,17 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#addBusinessFilterOnPort(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToOnPort(ViewerFilter filter) {
 		onPort.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#getSignal()
-	 * 
+	 * @generated
 	 */
 	public EObject getSignal() {
 		if (signal.getSelection() instanceof StructuredSelection) {
@@ -1569,13 +1717,21 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 		if (current != null) {
 			signal.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.BroadcastSignalAction.Properties.signal);
+		if (readOnly && signal.isEnabled()) {
+			signal.setEnabled(false);
+			signal.setToolTipText(UmlMessages.BroadcastSignalAction_ReadOnly);
+		} else if (!readOnly && !signal.isEnabled()) {
+			signal.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#setSignal(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setSignal(EObject newValue) {
 		if (newValue != null) {
@@ -1583,6 +1739,14 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 		} else {
 			signal.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.BroadcastSignalAction.Properties.signal);
+		if (readOnly && signal.isEnabled()) {
+			signal.setEnabled(false);
+			signal.setToolTipText(UmlMessages.BroadcastSignalAction_ReadOnly);
+		} else if (!readOnly && !signal.isEnabled()) {
+			signal.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -1598,7 +1762,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#addFilterSignal(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToSignal(ViewerFilter filter) {
 		signal.addFilter(filter);
@@ -1608,7 +1772,7 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.BroadcastSignalActionPropertiesEditionPart#addBusinessFilterSignal(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToSignal(ViewerFilter filter) {
 		signal.addBusinessRuleFilter(filter);
@@ -1619,20 +1783,16 @@ public class BroadcastSignalActionPropertiesEditionPartImpl extends CompositePro
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
+	 * @generated
 	 */
 	public String getTitle() {
 		return UmlMessages.BroadcastSignalAction_Part_Title;
 	}
 
-	// Start of user code additional methods
-	
-	// End of user code
 
 
 }

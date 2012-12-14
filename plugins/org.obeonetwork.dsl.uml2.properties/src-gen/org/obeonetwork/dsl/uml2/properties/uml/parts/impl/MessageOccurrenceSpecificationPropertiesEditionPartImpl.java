@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,68 +10,89 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts.impl;
 
-// Start of user code for imports
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EEnumLiteral;
+
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
+
 import org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
+
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 
 
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, MessageOccurrenceSpecificationPropertiesEditionPart {
 
@@ -99,7 +120,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
+	 * @generated
 	 */
 	public MessageOccurrenceSpecificationPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -110,7 +131,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
@@ -126,7 +147,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public void createControls(Composite view) { 
 		CompositionSequence messageOccurrenceSpecificationStep = new BindingCompositionSequence(propertiesEditionComponent);
@@ -187,7 +208,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
@@ -201,10 +222,13 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 		return propertiesGroup;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.MessageOccurrenceSpecificationPropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.MessageOccurrenceSpecification.Properties.name, UmlViewsRepository.SWT_KIND));
-		name = new Text(parent, SWT.BORDER);
+		createDescription(parent, UmlViewsRepository.MessageOccurrenceSpecification.Properties.name, UmlMessages.MessageOccurrenceSpecificationPropertiesEditionPart_NameLabel);
+		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {
@@ -213,7 +237,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -229,7 +253,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -247,12 +271,15 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 		return parent;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createVisibilityEMFComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.MessageOccurrenceSpecificationPropertiesEditionPart_VisibilityLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.MessageOccurrenceSpecification.Properties.visibility, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.MessageOccurrenceSpecification.Properties.visibility, UmlMessages.MessageOccurrenceSpecificationPropertiesEditionPart_VisibilityLabel);
 		visibility = new EMFComboViewer(parent);
 		visibility.setContentProvider(new ArrayContentProvider());
-		visibility.setLabelProvider(new AdapterFactoryLabelProvider(new EcoreAdapterFactory()));
+		visibility.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData visibilityData = new GridData(GridData.FILL_HORIZONTAL);
 		visibility.getCombo().setLayoutData(visibilityData);
 		visibility.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -261,7 +288,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
+			 * 	@generated
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
@@ -275,10 +302,11 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createClientDependencyAdvancedReferencesTable(Composite parent) {
-		this.clientDependency = new ReferencesTable(UmlMessages.MessageOccurrenceSpecificationPropertiesEditionPart_ClientDependencyLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.MessageOccurrenceSpecification.Properties.clientDependency, UmlMessages.MessageOccurrenceSpecificationPropertiesEditionPart_ClientDependencyLabel);		 
+		this.clientDependency = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addClientDependency(); }
 			public void handleEdit(EObject element) { editClientDependency(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveClientDependency(element, oldIndex, newIndex); }
@@ -306,7 +334,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addClientDependency() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(clientDependency.getInput(), clientDependencyFilters, clientDependencyBusinessFilters,
@@ -325,7 +353,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveClientDependency(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MessageOccurrenceSpecificationPropertiesEditionPartImpl.this, UmlViewsRepository.MessageOccurrenceSpecification.Properties.clientDependency, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -333,7 +361,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromClientDependency(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MessageOccurrenceSpecificationPropertiesEditionPartImpl.this, UmlViewsRepository.MessageOccurrenceSpecification.Properties.clientDependency, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -341,7 +369,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editClientDependency(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -356,10 +384,11 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createCoveredAdvancedReferencesTable(Composite parent) {
-		this.covered = new ReferencesTable(UmlMessages.MessageOccurrenceSpecificationPropertiesEditionPart_CoveredLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.MessageOccurrenceSpecification.Properties.covered, UmlMessages.MessageOccurrenceSpecificationPropertiesEditionPart_CoveredLabel);		 
+		this.covered = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addCovered(); }
 			public void handleEdit(EObject element) { editCovered(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveCovered(element, oldIndex, newIndex); }
@@ -387,7 +416,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addCovered() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(covered.getInput(), coveredFilters, coveredBusinessFilters,
@@ -406,7 +435,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveCovered(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MessageOccurrenceSpecificationPropertiesEditionPartImpl.this, UmlViewsRepository.MessageOccurrenceSpecification.Properties.covered, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -414,7 +443,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromCovered(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MessageOccurrenceSpecificationPropertiesEditionPartImpl.this, UmlViewsRepository.MessageOccurrenceSpecification.Properties.covered, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -422,7 +451,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editCovered(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -438,10 +467,10 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createEnclosingInteractionFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.MessageOccurrenceSpecificationPropertiesEditionPart_EnclosingInteractionLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.MessageOccurrenceSpecification.Properties.enclosingInteraction, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.MessageOccurrenceSpecification.Properties.enclosingInteraction, UmlMessages.MessageOccurrenceSpecificationPropertiesEditionPart_EnclosingInteractionLabel);
 		enclosingInteraction = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.MessageOccurrenceSpecification.Properties.enclosingInteraction, UmlViewsRepository.SWT_KIND));
 		enclosingInteraction.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -461,10 +490,10 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createEnclosingOperandFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.MessageOccurrenceSpecificationPropertiesEditionPart_EnclosingOperandLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.MessageOccurrenceSpecification.Properties.enclosingOperand, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.MessageOccurrenceSpecification.Properties.enclosingOperand, UmlMessages.MessageOccurrenceSpecificationPropertiesEditionPart_EnclosingOperandLabel);
 		enclosingOperand = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.MessageOccurrenceSpecification.Properties.enclosingOperand, UmlViewsRepository.SWT_KIND));
 		enclosingOperand.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -483,10 +512,11 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createToBeforeAdvancedReferencesTable(Composite parent) {
-		this.toBefore = new ReferencesTable(UmlMessages.MessageOccurrenceSpecificationPropertiesEditionPart_ToBeforeLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.MessageOccurrenceSpecification.Properties.toBefore, UmlMessages.MessageOccurrenceSpecificationPropertiesEditionPart_ToBeforeLabel);		 
+		this.toBefore = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addToBefore(); }
 			public void handleEdit(EObject element) { editToBefore(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveToBefore(element, oldIndex, newIndex); }
@@ -514,7 +544,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addToBefore() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(toBefore.getInput(), toBeforeFilters, toBeforeBusinessFilters,
@@ -533,7 +563,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveToBefore(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MessageOccurrenceSpecificationPropertiesEditionPartImpl.this, UmlViewsRepository.MessageOccurrenceSpecification.Properties.toBefore, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -541,7 +571,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromToBefore(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MessageOccurrenceSpecificationPropertiesEditionPartImpl.this, UmlViewsRepository.MessageOccurrenceSpecification.Properties.toBefore, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -549,7 +579,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editToBefore(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -565,10 +595,10 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createEventFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.MessageOccurrenceSpecificationPropertiesEditionPart_EventLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.MessageOccurrenceSpecification.Properties.event, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.MessageOccurrenceSpecification.Properties.event, UmlMessages.MessageOccurrenceSpecificationPropertiesEditionPart_EventLabel);
 		event = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.MessageOccurrenceSpecification.Properties.event, UmlViewsRepository.SWT_KIND));
 		event.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -587,10 +617,11 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createToAfterAdvancedReferencesTable(Composite parent) {
-		this.toAfter = new ReferencesTable(UmlMessages.MessageOccurrenceSpecificationPropertiesEditionPart_ToAfterLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.MessageOccurrenceSpecification.Properties.toAfter, UmlMessages.MessageOccurrenceSpecificationPropertiesEditionPart_ToAfterLabel);		 
+		this.toAfter = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addToAfter(); }
 			public void handleEdit(EObject element) { editToAfter(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveToAfter(element, oldIndex, newIndex); }
@@ -618,7 +649,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addToAfter() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(toAfter.getInput(), toAfterFilters, toAfterBusinessFilters,
@@ -637,7 +668,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveToAfter(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MessageOccurrenceSpecificationPropertiesEditionPartImpl.this, UmlViewsRepository.MessageOccurrenceSpecification.Properties.toAfter, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -645,7 +676,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromToAfter(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MessageOccurrenceSpecificationPropertiesEditionPartImpl.this, UmlViewsRepository.MessageOccurrenceSpecification.Properties.toAfter, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -653,7 +684,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editToAfter(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -669,10 +700,10 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createMessageFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.MessageOccurrenceSpecificationPropertiesEditionPart_MessageLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.MessageOccurrenceSpecification.Properties.message, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.MessageOccurrenceSpecification.Properties.message, UmlMessages.MessageOccurrenceSpecificationPropertiesEditionPart_MessageLabel);
 		message = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.MessageOccurrenceSpecification.Properties.message, UmlViewsRepository.SWT_KIND));
 		message.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -691,24 +722,20 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	}
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-
-// End of user code
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#getName()
-	 * 
+	 * @generated
 	 */
 	public String getName() {
 		return name.getText();
@@ -718,7 +745,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#setName(String newValue)
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue) {
 		if (newValue != null) {
@@ -726,40 +753,62 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.MessageOccurrenceSpecification.Properties.name);
+		if (readOnly && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(UmlMessages.MessageOccurrenceSpecification_ReadOnly);
+		} else if (!readOnly && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
-
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#getVisibility()
-	 * 
+	 * @generated
 	 */
 	public Enumerator getVisibility() {
-		EEnumLiteral selection = (EEnumLiteral) ((StructuredSelection) visibility.getSelection()).getFirstElement();
-		return selection.getInstance();
+		Enumerator selection = (Enumerator) ((StructuredSelection) visibility.getSelection()).getFirstElement();
+		return selection;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#initVisibility(EEnum eenum, Enumerator current)
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#initVisibility(Object input, Enumerator current)
 	 */
-	public void initVisibility(EEnum eenum, Enumerator current) {
-		visibility.setInput(eenum.getELiterals());
+	public void initVisibility(Object input, Enumerator current) {
+		visibility.setInput(input);
 		visibility.modelUpdating(new StructuredSelection(current));
+		boolean readOnly = isReadOnly(UmlViewsRepository.MessageOccurrenceSpecification.Properties.visibility);
+		if (readOnly && visibility.isEnabled()) {
+			visibility.setEnabled(false);
+			visibility.setToolTipText(UmlMessages.MessageOccurrenceSpecification_ReadOnly);
+		} else if (!readOnly && !visibility.isEnabled()) {
+			visibility.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#setVisibility(Enumerator newValue)
-	 * 
+	 * @generated
 	 */
 	public void setVisibility(Enumerator newValue) {
 		visibility.modelUpdating(new StructuredSelection(newValue));
+		boolean readOnly = isReadOnly(UmlViewsRepository.MessageOccurrenceSpecification.Properties.visibility);
+		if (readOnly && visibility.isEnabled()) {
+			visibility.setEnabled(false);
+			visibility.setToolTipText(UmlMessages.MessageOccurrenceSpecification_ReadOnly);
+		} else if (!readOnly && !visibility.isEnabled()) {
+			visibility.setEnabled(true);
+		}	
+		
 	}
-
 
 
 
@@ -774,13 +823,21 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		clientDependency.setContentProvider(contentProvider);
 		clientDependency.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.MessageOccurrenceSpecification.Properties.clientDependency);
+		if (readOnly && clientDependency.getTable().isEnabled()) {
+			clientDependency.setEnabled(false);
+			clientDependency.setToolTipText(UmlMessages.MessageOccurrenceSpecification_ReadOnly);
+		} else if (!readOnly && !clientDependency.getTable().isEnabled()) {
+			clientDependency.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#updateClientDependency()
-	 * 
+	 * @generated
 	 */
 	public void updateClientDependency() {
 	clientDependency.refresh();
@@ -790,7 +847,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#addFilterClientDependency(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToClientDependency(ViewerFilter filter) {
 		clientDependencyFilters.add(filter);
@@ -800,7 +857,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#addBusinessFilterClientDependency(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToClientDependency(ViewerFilter filter) {
 		clientDependencyBusinessFilters.add(filter);
@@ -810,12 +867,11 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#isContainedInClientDependencyTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInClientDependencyTable(EObject element) {
 		return ((ReferencesTableSettings)clientDependency.getInput()).contains(element);
 	}
-
 
 
 
@@ -830,13 +886,21 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		covered.setContentProvider(contentProvider);
 		covered.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.MessageOccurrenceSpecification.Properties.covered);
+		if (readOnly && covered.getTable().isEnabled()) {
+			covered.setEnabled(false);
+			covered.setToolTipText(UmlMessages.MessageOccurrenceSpecification_ReadOnly);
+		} else if (!readOnly && !covered.getTable().isEnabled()) {
+			covered.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#updateCovered()
-	 * 
+	 * @generated
 	 */
 	public void updateCovered() {
 	covered.refresh();
@@ -846,7 +910,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#addFilterCovered(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToCovered(ViewerFilter filter) {
 		coveredFilters.add(filter);
@@ -856,7 +920,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#addBusinessFilterCovered(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToCovered(ViewerFilter filter) {
 		coveredBusinessFilters.add(filter);
@@ -866,18 +930,17 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#isContainedInCoveredTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInCoveredTable(EObject element) {
 		return ((ReferencesTableSettings)covered.getInput()).contains(element);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#getEnclosingInteraction()
-	 * 
+	 * @generated
 	 */
 	public EObject getEnclosingInteraction() {
 		if (enclosingInteraction.getSelection() instanceof StructuredSelection) {
@@ -898,13 +961,21 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 		if (current != null) {
 			enclosingInteraction.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.MessageOccurrenceSpecification.Properties.enclosingInteraction);
+		if (readOnly && enclosingInteraction.isEnabled()) {
+			enclosingInteraction.setEnabled(false);
+			enclosingInteraction.setToolTipText(UmlMessages.MessageOccurrenceSpecification_ReadOnly);
+		} else if (!readOnly && !enclosingInteraction.isEnabled()) {
+			enclosingInteraction.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#setEnclosingInteraction(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setEnclosingInteraction(EObject newValue) {
 		if (newValue != null) {
@@ -912,6 +983,14 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 		} else {
 			enclosingInteraction.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.MessageOccurrenceSpecification.Properties.enclosingInteraction);
+		if (readOnly && enclosingInteraction.isEnabled()) {
+			enclosingInteraction.setEnabled(false);
+			enclosingInteraction.setToolTipText(UmlMessages.MessageOccurrenceSpecification_ReadOnly);
+		} else if (!readOnly && !enclosingInteraction.isEnabled()) {
+			enclosingInteraction.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -927,7 +1006,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#addFilterEnclosingInteraction(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToEnclosingInteraction(ViewerFilter filter) {
 		enclosingInteraction.addFilter(filter);
@@ -937,18 +1016,17 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#addBusinessFilterEnclosingInteraction(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToEnclosingInteraction(ViewerFilter filter) {
 		enclosingInteraction.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#getEnclosingOperand()
-	 * 
+	 * @generated
 	 */
 	public EObject getEnclosingOperand() {
 		if (enclosingOperand.getSelection() instanceof StructuredSelection) {
@@ -969,13 +1047,21 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 		if (current != null) {
 			enclosingOperand.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.MessageOccurrenceSpecification.Properties.enclosingOperand);
+		if (readOnly && enclosingOperand.isEnabled()) {
+			enclosingOperand.setEnabled(false);
+			enclosingOperand.setToolTipText(UmlMessages.MessageOccurrenceSpecification_ReadOnly);
+		} else if (!readOnly && !enclosingOperand.isEnabled()) {
+			enclosingOperand.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#setEnclosingOperand(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setEnclosingOperand(EObject newValue) {
 		if (newValue != null) {
@@ -983,6 +1069,14 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 		} else {
 			enclosingOperand.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.MessageOccurrenceSpecification.Properties.enclosingOperand);
+		if (readOnly && enclosingOperand.isEnabled()) {
+			enclosingOperand.setEnabled(false);
+			enclosingOperand.setToolTipText(UmlMessages.MessageOccurrenceSpecification_ReadOnly);
+		} else if (!readOnly && !enclosingOperand.isEnabled()) {
+			enclosingOperand.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -998,7 +1092,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#addFilterEnclosingOperand(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToEnclosingOperand(ViewerFilter filter) {
 		enclosingOperand.addFilter(filter);
@@ -1008,12 +1102,11 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#addBusinessFilterEnclosingOperand(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToEnclosingOperand(ViewerFilter filter) {
 		enclosingOperand.addBusinessRuleFilter(filter);
 	}
-
 
 
 
@@ -1028,13 +1121,21 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		toBefore.setContentProvider(contentProvider);
 		toBefore.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.MessageOccurrenceSpecification.Properties.toBefore);
+		if (readOnly && toBefore.getTable().isEnabled()) {
+			toBefore.setEnabled(false);
+			toBefore.setToolTipText(UmlMessages.MessageOccurrenceSpecification_ReadOnly);
+		} else if (!readOnly && !toBefore.getTable().isEnabled()) {
+			toBefore.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#updateToBefore()
-	 * 
+	 * @generated
 	 */
 	public void updateToBefore() {
 	toBefore.refresh();
@@ -1044,7 +1145,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#addFilterToBefore(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToToBefore(ViewerFilter filter) {
 		toBeforeFilters.add(filter);
@@ -1054,7 +1155,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#addBusinessFilterToBefore(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToToBefore(ViewerFilter filter) {
 		toBeforeBusinessFilters.add(filter);
@@ -1064,18 +1165,17 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#isContainedInToBeforeTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInToBeforeTable(EObject element) {
 		return ((ReferencesTableSettings)toBefore.getInput()).contains(element);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#getEvent()
-	 * 
+	 * @generated
 	 */
 	public EObject getEvent() {
 		if (event.getSelection() instanceof StructuredSelection) {
@@ -1096,13 +1196,21 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 		if (current != null) {
 			event.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.MessageOccurrenceSpecification.Properties.event);
+		if (readOnly && event.isEnabled()) {
+			event.setEnabled(false);
+			event.setToolTipText(UmlMessages.MessageOccurrenceSpecification_ReadOnly);
+		} else if (!readOnly && !event.isEnabled()) {
+			event.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#setEvent(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setEvent(EObject newValue) {
 		if (newValue != null) {
@@ -1110,6 +1218,14 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 		} else {
 			event.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.MessageOccurrenceSpecification.Properties.event);
+		if (readOnly && event.isEnabled()) {
+			event.setEnabled(false);
+			event.setToolTipText(UmlMessages.MessageOccurrenceSpecification_ReadOnly);
+		} else if (!readOnly && !event.isEnabled()) {
+			event.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -1125,7 +1241,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#addFilterEvent(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToEvent(ViewerFilter filter) {
 		event.addFilter(filter);
@@ -1135,12 +1251,11 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#addBusinessFilterEvent(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToEvent(ViewerFilter filter) {
 		event.addBusinessRuleFilter(filter);
 	}
-
 
 
 
@@ -1155,13 +1270,21 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		toAfter.setContentProvider(contentProvider);
 		toAfter.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.MessageOccurrenceSpecification.Properties.toAfter);
+		if (readOnly && toAfter.getTable().isEnabled()) {
+			toAfter.setEnabled(false);
+			toAfter.setToolTipText(UmlMessages.MessageOccurrenceSpecification_ReadOnly);
+		} else if (!readOnly && !toAfter.getTable().isEnabled()) {
+			toAfter.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#updateToAfter()
-	 * 
+	 * @generated
 	 */
 	public void updateToAfter() {
 	toAfter.refresh();
@@ -1171,7 +1294,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#addFilterToAfter(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToToAfter(ViewerFilter filter) {
 		toAfterFilters.add(filter);
@@ -1181,7 +1304,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#addBusinessFilterToAfter(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToToAfter(ViewerFilter filter) {
 		toAfterBusinessFilters.add(filter);
@@ -1191,18 +1314,17 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#isContainedInToAfterTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInToAfterTable(EObject element) {
 		return ((ReferencesTableSettings)toAfter.getInput()).contains(element);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#getMessage()
-	 * 
+	 * @generated
 	 */
 	public EObject getMessage() {
 		if (message.getSelection() instanceof StructuredSelection) {
@@ -1223,13 +1345,21 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 		if (current != null) {
 			message.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.MessageOccurrenceSpecification.Properties.message);
+		if (readOnly && message.isEnabled()) {
+			message.setEnabled(false);
+			message.setToolTipText(UmlMessages.MessageOccurrenceSpecification_ReadOnly);
+		} else if (!readOnly && !message.isEnabled()) {
+			message.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#setMessage(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setMessage(EObject newValue) {
 		if (newValue != null) {
@@ -1237,6 +1367,14 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 		} else {
 			message.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.MessageOccurrenceSpecification.Properties.message);
+		if (readOnly && message.isEnabled()) {
+			message.setEnabled(false);
+			message.setToolTipText(UmlMessages.MessageOccurrenceSpecification_ReadOnly);
+		} else if (!readOnly && !message.isEnabled()) {
+			message.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -1252,7 +1390,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#addFilterMessage(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToMessage(ViewerFilter filter) {
 		message.addFilter(filter);
@@ -1262,7 +1400,7 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessageOccurrenceSpecificationPropertiesEditionPart#addBusinessFilterMessage(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToMessage(ViewerFilter filter) {
 		message.addBusinessRuleFilter(filter);
@@ -1273,20 +1411,16 @@ public class MessageOccurrenceSpecificationPropertiesEditionPartImpl extends Com
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
+	 * @generated
 	 */
 	public String getTitle() {
 		return UmlMessages.MessageOccurrenceSpecification_Part_Title;
 	}
 
-	// Start of user code additional methods
-	
-	// End of user code
 
 
 }

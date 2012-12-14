@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,48 +10,67 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.components;
 
-// Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
-import org.eclipse.emf.ecore.EEnum;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
+
 import org.obeonetwork.dsl.uml2.properties.uml.parts.ElementImportPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 
 
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public class ElementImportPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
+	/**
+	 * @generated
+	 */
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
@@ -59,16 +78,17 @@ public class ElementImportPropertiesEditionComponent extends SinglePartPropertie
 	/**
 	 * Settings for importedElement EObjectFlatComboViewer
 	 */
-	private	EObjectFlatComboSettings importedElementSettings;
+	private EObjectFlatComboSettings importedElementSettings;
 	
 	/**
 	 * Settings for importingNamespace EObjectFlatComboViewer
 	 */
-	private	EObjectFlatComboSettings importingNamespaceSettings;
+	private EObjectFlatComboSettings importingNamespaceSettings;
+	
 	
 	/**
 	 * Default constructor
-	 * 
+	 * @generated
 	 */
 	public ElementImportPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject elementImport, String editing_mode) {
 		super(editingContext, elementImport, editing_mode);
@@ -82,20 +102,21 @@ public class ElementImportPropertiesEditionComponent extends SinglePartPropertie
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
-	 * 
+	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final ElementImport elementImport = (ElementImport)elt;
 			final ElementImportPropertiesEditionPart basePart = (ElementImportPropertiesEditionPart)editingPart;
 			// init values
 			if (isAccessible(UmlViewsRepository.ElementImport.Properties.visibility)) {
-				basePart.initVisibility((EEnum) UMLPackage.eINSTANCE.getElementImport_Visibility().getEType(), elementImport.getVisibility());
+				basePart.initVisibility(EEFUtils.choiceOfValues(elementImport, UMLPackage.eINSTANCE.getElementImport_Visibility()), elementImport.getVisibility());
 			}
-			if (elementImport.getAlias() != null && isAccessible(UmlViewsRepository.ElementImport.Properties.alias))
-				basePart.setAlias(EEFConverterUtil.convertToString(UMLPackage.eINSTANCE.getString(), elementImport.getAlias()));
+			if (isAccessible(UmlViewsRepository.ElementImport.Properties.alias))
+				basePart.setAlias(EEFConverterUtil.convertToString(UMLPackage.Literals.STRING, elementImport.getAlias()));
 			
 			if (isAccessible(UmlViewsRepository.ElementImport.Properties.importedElement)) {
 				// init part
@@ -114,36 +135,34 @@ public class ElementImportPropertiesEditionComponent extends SinglePartPropertie
 			// init filters
 			
 			
-			basePart.addFilterToImportedElement(new ViewerFilter() {
-			
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof PackageableElement);
-				}
-			
-			});
-			// Start of user code for additional businessfilters for importedElement
-			// End of user code
-			
-			basePart.addFilterToImportingNamespace(new ViewerFilter() {
-			
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof Namespace);
-				}
-			
-			});
-			// Start of user code for additional businessfilters for importingNamespace
-			// End of user code
-			
+			if (isAccessible(UmlViewsRepository.ElementImport.Properties.importedElement)) {
+				basePart.addFilterToImportedElement(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof PackageableElement);
+					}
+					
+				});
+			}
+			if (isAccessible(UmlViewsRepository.ElementImport.Properties.importingNamespace)) {
+				basePart.addFilterToImportingNamespace(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof Namespace);
+					}
+					
+				});
+			}
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -162,7 +181,7 @@ public class ElementImportPropertiesEditionComponent extends SinglePartPropertie
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
-	protected EStructuralFeature associatedFeature(Object editorKey) {
+	public EStructuralFeature associatedFeature(Object editorKey) {
 		if (editorKey == UmlViewsRepository.ElementImport.Properties.visibility) {
 			return UMLPackage.eINSTANCE.getElementImport_Visibility();
 		}
@@ -181,7 +200,7 @@ public class ElementImportPropertiesEditionComponent extends SinglePartPropertie
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		ElementImport elementImport = (ElementImport)semanticObject;
@@ -189,7 +208,7 @@ public class ElementImportPropertiesEditionComponent extends SinglePartPropertie
 			elementImport.setVisibility((VisibilityKind)event.getNewValue());
 		}
 		if (UmlViewsRepository.ElementImport.Properties.alias == event.getAffectedEditor()) {
-			elementImport.setAlias((java.lang.String)EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getString(), (String)event.getNewValue()));
+			elementImport.setAlias((java.lang.String)EEFConverterUtil.createFromString(UMLPackage.Literals.STRING, (String)event.getNewValue()));
 		}
 		if (UmlViewsRepository.ElementImport.Properties.importedElement == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET) {
@@ -226,14 +245,15 @@ public class ElementImportPropertiesEditionComponent extends SinglePartPropertie
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		if (editingPart.isVisible()) {	
+		super.updatePart(msg);
+		if (editingPart.isVisible()) {
 			ElementImportPropertiesEditionPart basePart = (ElementImportPropertiesEditionPart)editingPart;
-			if (UMLPackage.eINSTANCE.getElementImport_Visibility().equals(msg.getFeature()) && isAccessible(UmlViewsRepository.ElementImport.Properties.visibility))
-				basePart.setVisibility((Enumerator)msg.getNewValue());
+			if (UMLPackage.eINSTANCE.getElementImport_Visibility().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(UmlViewsRepository.ElementImport.Properties.visibility))
+				basePart.setVisibility((VisibilityKind)msg.getNewValue());
 			
-			if (UMLPackage.eINSTANCE.getElementImport_Alias().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.ElementImport.Properties.alias)) {
+			if (UMLPackage.eINSTANCE.getElementImport_Alias().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(UmlViewsRepository.ElementImport.Properties.alias)) {
 				if (msg.getNewValue() != null) {
-					basePart.setAlias(EcoreUtil.convertToString(UMLPackage.eINSTANCE.getString(), msg.getNewValue()));
+					basePart.setAlias(EcoreUtil.convertToString(UMLPackage.Literals.STRING, msg.getNewValue()));
 				} else {
 					basePart.setAlias("");
 				}
@@ -246,12 +266,27 @@ public class ElementImportPropertiesEditionComponent extends SinglePartPropertie
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			UMLPackage.eINSTANCE.getElementImport_Visibility(),
+			UMLPackage.eINSTANCE.getElementImport_Alias(),
+			UMLPackage.eINSTANCE.getElementImport_ImportedElement(),
+			UMLPackage.eINSTANCE.getElementImport_ImportingNamespace()		);
+		return new NotificationFilter[] {filter,};
+	}
+
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
-	 * 
+	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
 		return key == UmlViewsRepository.ElementImport.Properties.visibility || key == UmlViewsRepository.ElementImport.Properties.importedElement || key == UmlViewsRepository.ElementImport.Properties.importingNamespace;
@@ -261,7 +296,7 @@ public class ElementImportPropertiesEditionComponent extends SinglePartPropertie
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
@@ -270,14 +305,14 @@ public class ElementImportPropertiesEditionComponent extends SinglePartPropertie
 				if (UmlViewsRepository.ElementImport.Properties.visibility == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(UMLPackage.eINSTANCE.getElementImport_Visibility().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getElementImport_Visibility().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getElementImport_Visibility().getEAttributeType(), newValue);
 				}
 				if (UmlViewsRepository.ElementImport.Properties.alias == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(UMLPackage.eINSTANCE.getElementImport_Alias().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getElementImport_Alias().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getElementImport_Alias().getEAttributeType(), newValue);
 				}
@@ -289,5 +324,8 @@ public class ElementImportPropertiesEditionComponent extends SinglePartPropertie
 		}
 		return ret;
 	}
+
+
+	
 
 }

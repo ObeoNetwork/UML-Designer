@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,25 +10,24 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts;
 
-// Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
-
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public interface TemplateBindingPropertiesEditionPart {
 
 	/**
 	 * @return the signature
-	 * 
+	 * @generated
 	 */
 	public EObject getSignature();
 
@@ -41,14 +40,14 @@ public interface TemplateBindingPropertiesEditionPart {
 	/**
 	 * Defines a new signature
 	 * @param newValue the new signature to set
-	 * 
+	 * @generated
 	 */
 	public void setSignature(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setSignatureButtonMode(ButtonsModeEnum newValue);
 
@@ -58,7 +57,7 @@ public interface TemplateBindingPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToSignature(ViewerFilter filter);
 
@@ -68,14 +67,14 @@ public interface TemplateBindingPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToSignature(ViewerFilter filter);
 
 
 	/**
 	 * @return the boundElement
-	 * 
+	 * @generated
 	 */
 	public EObject getBoundElement();
 
@@ -88,14 +87,14 @@ public interface TemplateBindingPropertiesEditionPart {
 	/**
 	 * Defines a new boundElement
 	 * @param newValue the new boundElement to set
-	 * 
+	 * @generated
 	 */
 	public void setBoundElement(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setBoundElementButtonMode(ButtonsModeEnum newValue);
 
@@ -105,7 +104,7 @@ public interface TemplateBindingPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToBoundElement(ViewerFilter filter);
 
@@ -115,7 +114,7 @@ public interface TemplateBindingPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToBoundElement(ViewerFilter filter);
 
@@ -127,12 +126,9 @@ public interface TemplateBindingPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
-	 * 
+	 * @generated
 	 */
 	public String getTitle();
 
-	// Start of user code for additional methods
-
-// End of user code
 
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,74 +10,99 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts.forms;
 
-// Start of user code for imports
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
+import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
+
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Composite;
+
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
+
 import org.obeonetwork.dsl.uml2.properties.uml.parts.ExceptionHandlerPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
+
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 
 
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
-public class ExceptionHandlerPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, ExceptionHandlerPropertiesEditionPart {
+public class ExceptionHandlerPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, ExceptionHandlerPropertiesEditionPart {
 
 	protected EObjectFlatComboViewer handlerBody;
 	protected EObjectFlatComboViewer exceptionInput;
-		protected ReferencesTable exceptionType;
-		protected List<ViewerFilter> exceptionTypeBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> exceptionTypeFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable exceptionType;
+	protected List<ViewerFilter> exceptionTypeBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> exceptionTypeFilters = new ArrayList<ViewerFilter>();
 	protected EObjectFlatComboViewer protectedNode;
 
 
 
 	/**
+	 * For {@link ISection} use only.
+	 */
+	public ExceptionHandlerPropertiesEditionPartForm() { super(); }
+
+	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
+	 * @generated
 	 */
 	public ExceptionHandlerPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -88,7 +113,7 @@ public class ExceptionHandlerPropertiesEditionPartForm extends CompositeProperti
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
-	 * 
+	 * @generated
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -106,7 +131,7 @@ public class ExceptionHandlerPropertiesEditionPartForm extends CompositeProperti
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence exceptionHandlerStep = new BindingCompositionSequence(propertiesEditionComponent);
@@ -142,7 +167,7 @@ public class ExceptionHandlerPropertiesEditionPartForm extends CompositeProperti
 		composer.compose(view);
 	}
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
 		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
@@ -161,10 +186,10 @@ public class ExceptionHandlerPropertiesEditionPartForm extends CompositeProperti
 	/**
 	 * @param parent the parent composite
 	 * @param widgetFactory factory to use to instanciante widget of the form
-	 * 
+	 * @generated
 	 */
 	protected Composite createHandlerBodyFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, UmlMessages.ExceptionHandlerPropertiesEditionPart_HandlerBodyLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.ExceptionHandler.Properties.handlerBody, UmlViewsRepository.FORM_KIND));
+		createDescription(parent, UmlViewsRepository.ExceptionHandler.Properties.handlerBody, UmlMessages.ExceptionHandlerPropertiesEditionPart_HandlerBodyLabel);
 		handlerBody = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ExceptionHandler.Properties.handlerBody, UmlViewsRepository.FORM_KIND));
 		widgetFactory.adapt(handlerBody);
 		handlerBody.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -191,10 +216,10 @@ public class ExceptionHandlerPropertiesEditionPartForm extends CompositeProperti
 	/**
 	 * @param parent the parent composite
 	 * @param widgetFactory factory to use to instanciante widget of the form
-	 * 
+	 * @generated
 	 */
 	protected Composite createExceptionInputFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, UmlMessages.ExceptionHandlerPropertiesEditionPart_ExceptionInputLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.ExceptionHandler.Properties.exceptionInput, UmlViewsRepository.FORM_KIND));
+		createDescription(parent, UmlViewsRepository.ExceptionHandler.Properties.exceptionInput, UmlMessages.ExceptionHandlerPropertiesEditionPart_ExceptionInputLabel);
 		exceptionInput = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ExceptionHandler.Properties.exceptionInput, UmlViewsRepository.FORM_KIND));
 		widgetFactory.adapt(exceptionInput);
 		exceptionInput.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -219,10 +244,10 @@ public class ExceptionHandlerPropertiesEditionPartForm extends CompositeProperti
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createExceptionTypeReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.exceptionType = new ReferencesTable(UmlMessages.ExceptionHandlerPropertiesEditionPart_ExceptionTypeLabel, new ReferencesTableListener	() {
+		this.exceptionType = new ReferencesTable(getDescription(UmlViewsRepository.ExceptionHandler.Properties.exceptionType, UmlMessages.ExceptionHandlerPropertiesEditionPart_ExceptionTypeLabel), new ReferencesTableListener	() {
 			public void handleAdd() { addExceptionType(); }
 			public void handleEdit(EObject element) { editExceptionType(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveExceptionType(element, oldIndex, newIndex); }
@@ -250,7 +275,7 @@ public class ExceptionHandlerPropertiesEditionPartForm extends CompositeProperti
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addExceptionType() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(exceptionType.getInput(), exceptionTypeFilters, exceptionTypeBusinessFilters,
@@ -269,7 +294,7 @@ public class ExceptionHandlerPropertiesEditionPartForm extends CompositeProperti
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveExceptionType(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ExceptionHandlerPropertiesEditionPartForm.this, UmlViewsRepository.ExceptionHandler.Properties.exceptionType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -277,7 +302,7 @@ public class ExceptionHandlerPropertiesEditionPartForm extends CompositeProperti
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromExceptionType(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ExceptionHandlerPropertiesEditionPartForm.this, UmlViewsRepository.ExceptionHandler.Properties.exceptionType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -285,7 +310,7 @@ public class ExceptionHandlerPropertiesEditionPartForm extends CompositeProperti
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editExceptionType(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -302,10 +327,10 @@ public class ExceptionHandlerPropertiesEditionPartForm extends CompositeProperti
 	/**
 	 * @param parent the parent composite
 	 * @param widgetFactory factory to use to instanciante widget of the form
-	 * 
+	 * @generated
 	 */
 	protected Composite createProtectedNodeFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, UmlMessages.ExceptionHandlerPropertiesEditionPart_ProtectedNodeLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.ExceptionHandler.Properties.protectedNode, UmlViewsRepository.FORM_KIND));
+		createDescription(parent, UmlViewsRepository.ExceptionHandler.Properties.protectedNode, UmlMessages.ExceptionHandlerPropertiesEditionPart_ProtectedNodeLabel);
 		protectedNode = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ExceptionHandler.Properties.protectedNode, UmlViewsRepository.FORM_KIND));
 		widgetFactory.adapt(protectedNode);
 		protectedNode.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -330,24 +355,20 @@ public class ExceptionHandlerPropertiesEditionPartForm extends CompositeProperti
 	}
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-
-// End of user code
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ExceptionHandlerPropertiesEditionPart#getHandlerBody()
-	 * 
+	 * @generated
 	 */
 	public EObject getHandlerBody() {
 		if (handlerBody.getSelection() instanceof StructuredSelection) {
@@ -368,13 +389,21 @@ public class ExceptionHandlerPropertiesEditionPartForm extends CompositeProperti
 		if (current != null) {
 			handlerBody.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.ExceptionHandler.Properties.handlerBody);
+		if (readOnly && handlerBody.isEnabled()) {
+			handlerBody.setEnabled(false);
+			handlerBody.setToolTipText(UmlMessages.ExceptionHandler_ReadOnly);
+		} else if (!readOnly && !handlerBody.isEnabled()) {
+			handlerBody.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ExceptionHandlerPropertiesEditionPart#setHandlerBody(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setHandlerBody(EObject newValue) {
 		if (newValue != null) {
@@ -382,6 +411,14 @@ public class ExceptionHandlerPropertiesEditionPartForm extends CompositeProperti
 		} else {
 			handlerBody.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.ExceptionHandler.Properties.handlerBody);
+		if (readOnly && handlerBody.isEnabled()) {
+			handlerBody.setEnabled(false);
+			handlerBody.setToolTipText(UmlMessages.ExceptionHandler_ReadOnly);
+		} else if (!readOnly && !handlerBody.isEnabled()) {
+			handlerBody.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -397,7 +434,7 @@ public class ExceptionHandlerPropertiesEditionPartForm extends CompositeProperti
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ExceptionHandlerPropertiesEditionPart#addFilterHandlerBody(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToHandlerBody(ViewerFilter filter) {
 		handlerBody.addFilter(filter);
@@ -407,18 +444,17 @@ public class ExceptionHandlerPropertiesEditionPartForm extends CompositeProperti
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ExceptionHandlerPropertiesEditionPart#addBusinessFilterHandlerBody(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToHandlerBody(ViewerFilter filter) {
 		handlerBody.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ExceptionHandlerPropertiesEditionPart#getExceptionInput()
-	 * 
+	 * @generated
 	 */
 	public EObject getExceptionInput() {
 		if (exceptionInput.getSelection() instanceof StructuredSelection) {
@@ -439,13 +475,21 @@ public class ExceptionHandlerPropertiesEditionPartForm extends CompositeProperti
 		if (current != null) {
 			exceptionInput.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.ExceptionHandler.Properties.exceptionInput);
+		if (readOnly && exceptionInput.isEnabled()) {
+			exceptionInput.setEnabled(false);
+			exceptionInput.setToolTipText(UmlMessages.ExceptionHandler_ReadOnly);
+		} else if (!readOnly && !exceptionInput.isEnabled()) {
+			exceptionInput.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ExceptionHandlerPropertiesEditionPart#setExceptionInput(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setExceptionInput(EObject newValue) {
 		if (newValue != null) {
@@ -453,6 +497,14 @@ public class ExceptionHandlerPropertiesEditionPartForm extends CompositeProperti
 		} else {
 			exceptionInput.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.ExceptionHandler.Properties.exceptionInput);
+		if (readOnly && exceptionInput.isEnabled()) {
+			exceptionInput.setEnabled(false);
+			exceptionInput.setToolTipText(UmlMessages.ExceptionHandler_ReadOnly);
+		} else if (!readOnly && !exceptionInput.isEnabled()) {
+			exceptionInput.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -468,7 +520,7 @@ public class ExceptionHandlerPropertiesEditionPartForm extends CompositeProperti
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ExceptionHandlerPropertiesEditionPart#addFilterExceptionInput(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToExceptionInput(ViewerFilter filter) {
 		exceptionInput.addFilter(filter);
@@ -478,12 +530,11 @@ public class ExceptionHandlerPropertiesEditionPartForm extends CompositeProperti
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ExceptionHandlerPropertiesEditionPart#addBusinessFilterExceptionInput(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToExceptionInput(ViewerFilter filter) {
 		exceptionInput.addBusinessRuleFilter(filter);
 	}
-
 
 
 
@@ -498,13 +549,21 @@ public class ExceptionHandlerPropertiesEditionPartForm extends CompositeProperti
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		exceptionType.setContentProvider(contentProvider);
 		exceptionType.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.ExceptionHandler.Properties.exceptionType);
+		if (readOnly && exceptionType.getTable().isEnabled()) {
+			exceptionType.setEnabled(false);
+			exceptionType.setToolTipText(UmlMessages.ExceptionHandler_ReadOnly);
+		} else if (!readOnly && !exceptionType.getTable().isEnabled()) {
+			exceptionType.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ExceptionHandlerPropertiesEditionPart#updateExceptionType()
-	 * 
+	 * @generated
 	 */
 	public void updateExceptionType() {
 	exceptionType.refresh();
@@ -514,7 +573,7 @@ public class ExceptionHandlerPropertiesEditionPartForm extends CompositeProperti
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ExceptionHandlerPropertiesEditionPart#addFilterExceptionType(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToExceptionType(ViewerFilter filter) {
 		exceptionTypeFilters.add(filter);
@@ -524,7 +583,7 @@ public class ExceptionHandlerPropertiesEditionPartForm extends CompositeProperti
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ExceptionHandlerPropertiesEditionPart#addBusinessFilterExceptionType(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToExceptionType(ViewerFilter filter) {
 		exceptionTypeBusinessFilters.add(filter);
@@ -534,18 +593,17 @@ public class ExceptionHandlerPropertiesEditionPartForm extends CompositeProperti
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ExceptionHandlerPropertiesEditionPart#isContainedInExceptionTypeTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInExceptionTypeTable(EObject element) {
 		return ((ReferencesTableSettings)exceptionType.getInput()).contains(element);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ExceptionHandlerPropertiesEditionPart#getProtectedNode()
-	 * 
+	 * @generated
 	 */
 	public EObject getProtectedNode() {
 		if (protectedNode.getSelection() instanceof StructuredSelection) {
@@ -566,13 +624,21 @@ public class ExceptionHandlerPropertiesEditionPartForm extends CompositeProperti
 		if (current != null) {
 			protectedNode.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.ExceptionHandler.Properties.protectedNode);
+		if (readOnly && protectedNode.isEnabled()) {
+			protectedNode.setEnabled(false);
+			protectedNode.setToolTipText(UmlMessages.ExceptionHandler_ReadOnly);
+		} else if (!readOnly && !protectedNode.isEnabled()) {
+			protectedNode.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ExceptionHandlerPropertiesEditionPart#setProtectedNode(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setProtectedNode(EObject newValue) {
 		if (newValue != null) {
@@ -580,6 +646,14 @@ public class ExceptionHandlerPropertiesEditionPartForm extends CompositeProperti
 		} else {
 			protectedNode.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.ExceptionHandler.Properties.protectedNode);
+		if (readOnly && protectedNode.isEnabled()) {
+			protectedNode.setEnabled(false);
+			protectedNode.setToolTipText(UmlMessages.ExceptionHandler_ReadOnly);
+		} else if (!readOnly && !protectedNode.isEnabled()) {
+			protectedNode.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -595,7 +669,7 @@ public class ExceptionHandlerPropertiesEditionPartForm extends CompositeProperti
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ExceptionHandlerPropertiesEditionPart#addFilterProtectedNode(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToProtectedNode(ViewerFilter filter) {
 		protectedNode.addFilter(filter);
@@ -605,7 +679,7 @@ public class ExceptionHandlerPropertiesEditionPartForm extends CompositeProperti
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ExceptionHandlerPropertiesEditionPart#addBusinessFilterProtectedNode(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToProtectedNode(ViewerFilter filter) {
 		protectedNode.addBusinessRuleFilter(filter);
@@ -614,19 +688,18 @@ public class ExceptionHandlerPropertiesEditionPartForm extends CompositeProperti
 
 
 
+
+
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
+	 * @generated
 	 */
 	public String getTitle() {
 		return UmlMessages.ExceptionHandler_Part_Title;
 	}
 
-	// Start of user code additional methods
-	
-	// End of user code
 
 
 }

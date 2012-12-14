@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,58 +10,79 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts.impl;
 
-// Start of user code for imports
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
+
 import org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralizationPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
+
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 
 
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public class GeneralizationPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, GeneralizationPropertiesEditionPart {
 
@@ -77,7 +98,7 @@ public class GeneralizationPropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
+	 * @generated
 	 */
 	public GeneralizationPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -88,7 +109,7 @@ public class GeneralizationPropertiesEditionPartImpl extends CompositeProperties
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
@@ -104,7 +125,7 @@ public class GeneralizationPropertiesEditionPartImpl extends CompositeProperties
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public void createControls(Composite view) { 
 		CompositionSequence generalizationStep = new BindingCompositionSequence(propertiesEditionComponent);
@@ -141,7 +162,7 @@ public class GeneralizationPropertiesEditionPartImpl extends CompositeProperties
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
@@ -155,17 +176,20 @@ public class GeneralizationPropertiesEditionPartImpl extends CompositeProperties
 		return propertiesGroup;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createIsSubstitutableCheckbox(Composite parent) {
 		isSubstitutable = new Button(parent, SWT.CHECK);
-		isSubstitutable.setText(UmlMessages.GeneralizationPropertiesEditionPart_IsSubstitutableLabel);
+		isSubstitutable.setText(getDescription(UmlViewsRepository.Generalization.Properties.isSubstitutable, UmlMessages.GeneralizationPropertiesEditionPart_IsSubstitutableLabel));
 		isSubstitutable.addSelectionListener(new SelectionAdapter() {
 
 			/**
 			 * {@inheritDoc}
 			 *
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	
+			 * 	@generated
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
@@ -184,10 +208,10 @@ public class GeneralizationPropertiesEditionPartImpl extends CompositeProperties
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createGeneralFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.GeneralizationPropertiesEditionPart_GeneralLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.Generalization.Properties.general, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.Generalization.Properties.general, UmlMessages.GeneralizationPropertiesEditionPart_GeneralLabel);
 		general = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.Generalization.Properties.general, UmlViewsRepository.SWT_KIND));
 		general.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -206,10 +230,11 @@ public class GeneralizationPropertiesEditionPartImpl extends CompositeProperties
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createGeneralizationSetAdvancedReferencesTable(Composite parent) {
-		this.generalizationSet = new ReferencesTable(UmlMessages.GeneralizationPropertiesEditionPart_GeneralizationSetLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.Generalization.Properties.generalizationSet, UmlMessages.GeneralizationPropertiesEditionPart_GeneralizationSetLabel);		 
+		this.generalizationSet = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addGeneralizationSet(); }
 			public void handleEdit(EObject element) { editGeneralizationSet(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveGeneralizationSet(element, oldIndex, newIndex); }
@@ -237,7 +262,7 @@ public class GeneralizationPropertiesEditionPartImpl extends CompositeProperties
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addGeneralizationSet() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(generalizationSet.getInput(), generalizationSetFilters, generalizationSetBusinessFilters,
@@ -256,7 +281,7 @@ public class GeneralizationPropertiesEditionPartImpl extends CompositeProperties
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveGeneralizationSet(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralizationPropertiesEditionPartImpl.this, UmlViewsRepository.Generalization.Properties.generalizationSet, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -264,7 +289,7 @@ public class GeneralizationPropertiesEditionPartImpl extends CompositeProperties
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromGeneralizationSet(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralizationPropertiesEditionPartImpl.this, UmlViewsRepository.Generalization.Properties.generalizationSet, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -272,7 +297,7 @@ public class GeneralizationPropertiesEditionPartImpl extends CompositeProperties
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editGeneralizationSet(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -288,10 +313,10 @@ public class GeneralizationPropertiesEditionPartImpl extends CompositeProperties
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createSpecificFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.GeneralizationPropertiesEditionPart_SpecificLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.Generalization.Properties.specific, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.Generalization.Properties.specific, UmlMessages.GeneralizationPropertiesEditionPart_SpecificLabel);
 		specific = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.Generalization.Properties.specific, UmlViewsRepository.SWT_KIND));
 		specific.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -310,24 +335,20 @@ public class GeneralizationPropertiesEditionPartImpl extends CompositeProperties
 	}
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-
-// End of user code
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralizationPropertiesEditionPart#getIsSubstitutable()
-	 * 
+	 * @generated
 	 */
 	public Boolean getIsSubstitutable() {
 		return Boolean.valueOf(isSubstitutable.getSelection());
@@ -337,7 +358,7 @@ public class GeneralizationPropertiesEditionPartImpl extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralizationPropertiesEditionPart#setIsSubstitutable(Boolean newValue)
-	 * 
+	 * @generated
 	 */
 	public void setIsSubstitutable(Boolean newValue) {
 		if (newValue != null) {
@@ -345,14 +366,21 @@ public class GeneralizationPropertiesEditionPartImpl extends CompositeProperties
 		} else {
 			isSubstitutable.setSelection(false);
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.Generalization.Properties.isSubstitutable);
+		if (readOnly && isSubstitutable.isEnabled()) {
+			isSubstitutable.setEnabled(false);
+			isSubstitutable.setToolTipText(UmlMessages.Generalization_ReadOnly);
+		} else if (!readOnly && !isSubstitutable.isEnabled()) {
+			isSubstitutable.setEnabled(true);
+		}	
+		
 	}
-
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralizationPropertiesEditionPart#getGeneral()
-	 * 
+	 * @generated
 	 */
 	public EObject getGeneral() {
 		if (general.getSelection() instanceof StructuredSelection) {
@@ -373,13 +401,21 @@ public class GeneralizationPropertiesEditionPartImpl extends CompositeProperties
 		if (current != null) {
 			general.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.Generalization.Properties.general);
+		if (readOnly && general.isEnabled()) {
+			general.setEnabled(false);
+			general.setToolTipText(UmlMessages.Generalization_ReadOnly);
+		} else if (!readOnly && !general.isEnabled()) {
+			general.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralizationPropertiesEditionPart#setGeneral(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setGeneral(EObject newValue) {
 		if (newValue != null) {
@@ -387,6 +423,14 @@ public class GeneralizationPropertiesEditionPartImpl extends CompositeProperties
 		} else {
 			general.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.Generalization.Properties.general);
+		if (readOnly && general.isEnabled()) {
+			general.setEnabled(false);
+			general.setToolTipText(UmlMessages.Generalization_ReadOnly);
+		} else if (!readOnly && !general.isEnabled()) {
+			general.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -402,7 +446,7 @@ public class GeneralizationPropertiesEditionPartImpl extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralizationPropertiesEditionPart#addFilterGeneral(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToGeneral(ViewerFilter filter) {
 		general.addFilter(filter);
@@ -412,12 +456,11 @@ public class GeneralizationPropertiesEditionPartImpl extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralizationPropertiesEditionPart#addBusinessFilterGeneral(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToGeneral(ViewerFilter filter) {
 		general.addBusinessRuleFilter(filter);
 	}
-
 
 
 
@@ -432,13 +475,21 @@ public class GeneralizationPropertiesEditionPartImpl extends CompositeProperties
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		generalizationSet.setContentProvider(contentProvider);
 		generalizationSet.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.Generalization.Properties.generalizationSet);
+		if (readOnly && generalizationSet.getTable().isEnabled()) {
+			generalizationSet.setEnabled(false);
+			generalizationSet.setToolTipText(UmlMessages.Generalization_ReadOnly);
+		} else if (!readOnly && !generalizationSet.getTable().isEnabled()) {
+			generalizationSet.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralizationPropertiesEditionPart#updateGeneralizationSet()
-	 * 
+	 * @generated
 	 */
 	public void updateGeneralizationSet() {
 	generalizationSet.refresh();
@@ -448,7 +499,7 @@ public class GeneralizationPropertiesEditionPartImpl extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralizationPropertiesEditionPart#addFilterGeneralizationSet(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToGeneralizationSet(ViewerFilter filter) {
 		generalizationSetFilters.add(filter);
@@ -458,7 +509,7 @@ public class GeneralizationPropertiesEditionPartImpl extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralizationPropertiesEditionPart#addBusinessFilterGeneralizationSet(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToGeneralizationSet(ViewerFilter filter) {
 		generalizationSetBusinessFilters.add(filter);
@@ -468,18 +519,17 @@ public class GeneralizationPropertiesEditionPartImpl extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralizationPropertiesEditionPart#isContainedInGeneralizationSetTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInGeneralizationSetTable(EObject element) {
 		return ((ReferencesTableSettings)generalizationSet.getInput()).contains(element);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralizationPropertiesEditionPart#getSpecific()
-	 * 
+	 * @generated
 	 */
 	public EObject getSpecific() {
 		if (specific.getSelection() instanceof StructuredSelection) {
@@ -500,13 +550,21 @@ public class GeneralizationPropertiesEditionPartImpl extends CompositeProperties
 		if (current != null) {
 			specific.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.Generalization.Properties.specific);
+		if (readOnly && specific.isEnabled()) {
+			specific.setEnabled(false);
+			specific.setToolTipText(UmlMessages.Generalization_ReadOnly);
+		} else if (!readOnly && !specific.isEnabled()) {
+			specific.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralizationPropertiesEditionPart#setSpecific(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setSpecific(EObject newValue) {
 		if (newValue != null) {
@@ -514,6 +572,14 @@ public class GeneralizationPropertiesEditionPartImpl extends CompositeProperties
 		} else {
 			specific.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.Generalization.Properties.specific);
+		if (readOnly && specific.isEnabled()) {
+			specific.setEnabled(false);
+			specific.setToolTipText(UmlMessages.Generalization_ReadOnly);
+		} else if (!readOnly && !specific.isEnabled()) {
+			specific.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -529,7 +595,7 @@ public class GeneralizationPropertiesEditionPartImpl extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralizationPropertiesEditionPart#addFilterSpecific(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToSpecific(ViewerFilter filter) {
 		specific.addFilter(filter);
@@ -539,7 +605,7 @@ public class GeneralizationPropertiesEditionPartImpl extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralizationPropertiesEditionPart#addBusinessFilterSpecific(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToSpecific(ViewerFilter filter) {
 		specific.addBusinessRuleFilter(filter);
@@ -550,20 +616,16 @@ public class GeneralizationPropertiesEditionPartImpl extends CompositeProperties
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
+	 * @generated
 	 */
 	public String getTitle() {
 		return UmlMessages.Generalization_Part_Title;
 	}
 
-	// Start of user code additional methods
-	
-	// End of user code
 
 
 }

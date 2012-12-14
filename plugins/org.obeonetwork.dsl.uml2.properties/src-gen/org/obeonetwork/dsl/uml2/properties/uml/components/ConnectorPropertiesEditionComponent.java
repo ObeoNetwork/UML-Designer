@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,33 +10,51 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.components;
 
-// Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
-import org.eclipse.emf.ecore.EEnum;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Connector;
@@ -45,18 +63,20 @@ import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
+
 import org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectorPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 
 
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public class ConnectorPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
+	/**
+	 * @generated
+	 */
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
@@ -64,26 +84,27 @@ public class ConnectorPropertiesEditionComponent extends SinglePartPropertiesEdi
 	/**
 	 * Settings for clientDependency ReferencesTable
 	 */
-	private	ReferencesTableSettings clientDependencySettings;
+	private ReferencesTableSettings clientDependencySettings;
 	
 	/**
 	 * Settings for type EObjectFlatComboViewer
 	 */
-	private	EObjectFlatComboSettings typeSettings;
+	private EObjectFlatComboSettings typeSettings;
 	
 	/**
 	 * Settings for redefinedConnector ReferencesTable
 	 */
-	private	ReferencesTableSettings redefinedConnectorSettings;
+	private ReferencesTableSettings redefinedConnectorSettings;
 	
 	/**
 	 * Settings for contract ReferencesTable
 	 */
-	private	ReferencesTableSettings contractSettings;
+	private ReferencesTableSettings contractSettings;
+	
 	
 	/**
 	 * Default constructor
-	 * 
+	 * @generated
 	 */
 	public ConnectorPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject connector, String editing_mode) {
 		super(editingContext, connector, editing_mode);
@@ -97,29 +118,32 @@ public class ConnectorPropertiesEditionComponent extends SinglePartPropertiesEdi
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
-	 * 
+	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final Connector connector = (Connector)elt;
 			final ConnectorPropertiesEditionPart basePart = (ConnectorPropertiesEditionPart)editingPart;
 			// init values
-			if (connector.getName() != null && isAccessible(UmlViewsRepository.Connector.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(UMLPackage.eINSTANCE.getString(), connector.getName()));
+			if (isAccessible(UmlViewsRepository.Connector.Properties.name))
+				basePart.setName(EEFConverterUtil.convertToString(UMLPackage.Literals.STRING, connector.getName()));
 			
 			if (isAccessible(UmlViewsRepository.Connector.Properties.visibility)) {
-				basePart.initVisibility((EEnum) UMLPackage.eINSTANCE.getNamedElement_Visibility().getEType(), connector.getVisibility());
+				basePart.initVisibility(EEFUtils.choiceOfValues(connector, UMLPackage.eINSTANCE.getNamedElement_Visibility()), connector.getVisibility());
 			}
 			if (isAccessible(UmlViewsRepository.Connector.Properties.clientDependency)) {
 				clientDependencySettings = new ReferencesTableSettings(connector, UMLPackage.eINSTANCE.getNamedElement_ClientDependency());
 				basePart.initClientDependency(clientDependencySettings);
 			}
-			basePart.setIsLeaf(connector.isLeaf());
-			
-			basePart.setIsStatic(connector.isStatic());
-			
+			if (isAccessible(UmlViewsRepository.Connector.Properties.isLeaf)) {
+				basePart.setIsLeaf(connector.isLeaf());
+			}
+			if (isAccessible(UmlViewsRepository.Connector.Properties.isStatic)) {
+				basePart.setIsStatic(connector.isStatic());
+			}
 			if (isAccessible(UmlViewsRepository.Connector.Properties.type)) {
 				// init part
 				typeSettings = new EObjectFlatComboSettings(connector, UMLPackage.eINSTANCE.getConnector_Type());
@@ -132,7 +156,7 @@ public class ConnectorPropertiesEditionComponent extends SinglePartPropertiesEdi
 				basePart.initRedefinedConnector(redefinedConnectorSettings);
 			}
 			if (isAccessible(UmlViewsRepository.Connector.Properties.kind)) {
-				basePart.initKind((EEnum) UMLPackage.eINSTANCE.getConnector_Kind().getEType(), connector.getKind());
+				basePart.initKind(EEFUtils.choiceOfValues(connector, UMLPackage.eINSTANCE.getConnector_Kind()), connector.getKind());
 			}
 			if (isAccessible(UmlViewsRepository.Connector.Properties.contract)) {
 				contractSettings = new ReferencesTableSettings(connector, UMLPackage.eINSTANCE.getConnector_Contract());
@@ -141,78 +165,74 @@ public class ConnectorPropertiesEditionComponent extends SinglePartPropertiesEdi
 			// init filters
 			
 			
-			basePart.addFilterToClientDependency(new ViewerFilter() {
-			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInClientDependencyTable((EObject)element));
-					return element instanceof Resource;
-				}
-			
-			});
-			basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.eINSTANCE.getDependency()));
-			// Start of user code for additional businessfilters for clientDependency
-			// End of user code
-			
-			
-			
-			basePart.addFilterToType(new ViewerFilter() {
-			
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof String && element.equals("")) || (element instanceof Association); //$NON-NLS-1$ 
-				}
-			
-			});
-			// Start of user code for additional businessfilters for type
-			// End of user code
-			
-			basePart.addFilterToRedefinedConnector(new ViewerFilter() {
-			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInRedefinedConnectorTable((EObject)element));
-					return element instanceof Resource;
-				}
-			
-			});
-			basePart.addFilterToRedefinedConnector(new EObjectFilter(UMLPackage.eINSTANCE.getConnector()));
-			// Start of user code for additional businessfilters for redefinedConnector
-			// End of user code
+			if (isAccessible(UmlViewsRepository.Connector.Properties.clientDependency)) {
+				basePart.addFilterToClientDependency(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInClientDependencyTable((EObject)element));
+						return element instanceof Resource;
+					}
+				
+				});
+				basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.Literals.DEPENDENCY));
+			}
 			
 			
-			basePart.addFilterToContract(new ViewerFilter() {
+			if (isAccessible(UmlViewsRepository.Connector.Properties.type)) {
+				basePart.addFilterToType(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof Association); //$NON-NLS-1$ 
+					}
+					
+				});
+			}
+			if (isAccessible(UmlViewsRepository.Connector.Properties.redefinedConnector)) {
+				basePart.addFilterToRedefinedConnector(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInRedefinedConnectorTable((EObject)element));
+						return element instanceof Resource;
+					}
+				
+				});
+				basePart.addFilterToRedefinedConnector(new EObjectFilter(UMLPackage.Literals.CONNECTOR));
+			}
 			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInContractTable((EObject)element));
-					return element instanceof Resource;
-				}
-			
-			});
-			basePart.addFilterToContract(new EObjectFilter(UMLPackage.eINSTANCE.getBehavior()));
-			// Start of user code for additional businessfilters for contract
-			// End of user code
-			
+			if (isAccessible(UmlViewsRepository.Connector.Properties.contract)) {
+				basePart.addFilterToContract(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInContractTable((EObject)element));
+						return element instanceof Resource;
+					}
+				
+				});
+				basePart.addFilterToContract(new EObjectFilter(UMLPackage.Literals.BEHAVIOR));
+			}
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -236,7 +256,7 @@ public class ConnectorPropertiesEditionComponent extends SinglePartPropertiesEdi
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
-	protected EStructuralFeature associatedFeature(Object editorKey) {
+	public EStructuralFeature associatedFeature(Object editorKey) {
 		if (editorKey == UmlViewsRepository.Connector.Properties.name) {
 			return UMLPackage.eINSTANCE.getNamedElement_Name();
 		}
@@ -270,12 +290,12 @@ public class ConnectorPropertiesEditionComponent extends SinglePartPropertiesEdi
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Connector connector = (Connector)semanticObject;
 		if (UmlViewsRepository.Connector.Properties.name == event.getAffectedEditor()) {
-			connector.setName((java.lang.String)EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getString(), (String)event.getNewValue()));
+			connector.setName((java.lang.String)EEFConverterUtil.createFromString(UMLPackage.Literals.STRING, (String)event.getNewValue()));
 		}
 		if (UmlViewsRepository.Connector.Properties.visibility == event.getAffectedEditor()) {
 			connector.setVisibility((VisibilityKind)event.getNewValue());
@@ -286,7 +306,9 @@ public class ConnectorPropertiesEditionComponent extends SinglePartPropertiesEdi
 					clientDependencySettings.addToReference((EObject) event.getNewValue());
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-					clientDependencySettings.removeFromReference((EObject) event.getNewValue());
+				clientDependencySettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				clientDependencySettings.move(event.getNewIndex(), (Dependency) event.getNewValue());
 			}
 		}
 		if (UmlViewsRepository.Connector.Properties.isLeaf == event.getAffectedEditor()) {
@@ -317,7 +339,9 @@ public class ConnectorPropertiesEditionComponent extends SinglePartPropertiesEdi
 					redefinedConnectorSettings.addToReference((EObject) event.getNewValue());
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-					redefinedConnectorSettings.removeFromReference((EObject) event.getNewValue());
+				redefinedConnectorSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				redefinedConnectorSettings.move(event.getNewIndex(), (Connector) event.getNewValue());
 			}
 		}
 		if (UmlViewsRepository.Connector.Properties.kind == event.getAffectedEditor()) {
@@ -329,7 +353,9 @@ public class ConnectorPropertiesEditionComponent extends SinglePartPropertiesEdi
 					contractSettings.addToReference((EObject) event.getNewValue());
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-					contractSettings.removeFromReference((EObject) event.getNewValue());
+				contractSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				contractSettings.move(event.getNewIndex(), (Behavior) event.getNewValue());
 			}
 		}
 	}
@@ -339,32 +365,33 @@ public class ConnectorPropertiesEditionComponent extends SinglePartPropertiesEdi
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		if (editingPart.isVisible()) {	
+		super.updatePart(msg);
+		if (editingPart.isVisible()) {
 			ConnectorPropertiesEditionPart basePart = (ConnectorPropertiesEditionPart)editingPart;
-			if (UMLPackage.eINSTANCE.getNamedElement_Name().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.Connector.Properties.name)) {
+			if (UMLPackage.eINSTANCE.getNamedElement_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(UmlViewsRepository.Connector.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(UMLPackage.eINSTANCE.getString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(UMLPackage.Literals.STRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}
 			}
-			if (UMLPackage.eINSTANCE.getNamedElement_Visibility().equals(msg.getFeature()) && isAccessible(UmlViewsRepository.Connector.Properties.visibility))
-				basePart.setVisibility((Enumerator)msg.getNewValue());
+			if (UMLPackage.eINSTANCE.getNamedElement_Visibility().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(UmlViewsRepository.Connector.Properties.visibility))
+				basePart.setVisibility((VisibilityKind)msg.getNewValue());
 			
 			if (UMLPackage.eINSTANCE.getNamedElement_ClientDependency().equals(msg.getFeature())  && isAccessible(UmlViewsRepository.Connector.Properties.clientDependency))
 				basePart.updateClientDependency();
-			if (UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.Connector.Properties.isLeaf))
+			if (UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(UmlViewsRepository.Connector.Properties.isLeaf))
 				basePart.setIsLeaf((Boolean)msg.getNewValue());
 			
-			if (UMLPackage.eINSTANCE.getFeature_IsStatic().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.Connector.Properties.isStatic))
+			if (UMLPackage.eINSTANCE.getFeature_IsStatic().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(UmlViewsRepository.Connector.Properties.isStatic))
 				basePart.setIsStatic((Boolean)msg.getNewValue());
 			
 			if (UMLPackage.eINSTANCE.getConnector_Type().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.Connector.Properties.type))
 				basePart.setType((EObject)msg.getNewValue());
 			if (UMLPackage.eINSTANCE.getConnector_RedefinedConnector().equals(msg.getFeature())  && isAccessible(UmlViewsRepository.Connector.Properties.redefinedConnector))
 				basePart.updateRedefinedConnector();
-			if (UMLPackage.eINSTANCE.getConnector_Kind().equals(msg.getFeature()) && isAccessible(UmlViewsRepository.Connector.Properties.kind))
-				basePart.setKind((Enumerator)msg.getNewValue());
+			if (UMLPackage.eINSTANCE.getConnector_Kind().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(UmlViewsRepository.Connector.Properties.kind))
+				basePart.setKind((ConnectorKind)msg.getNewValue());
 			
 			if (UMLPackage.eINSTANCE.getConnector_Contract().equals(msg.getFeature())  && isAccessible(UmlViewsRepository.Connector.Properties.contract))
 				basePart.updateContract();
@@ -372,12 +399,32 @@ public class ConnectorPropertiesEditionComponent extends SinglePartPropertiesEdi
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			UMLPackage.eINSTANCE.getNamedElement_Name(),
+			UMLPackage.eINSTANCE.getNamedElement_Visibility(),
+			UMLPackage.eINSTANCE.getNamedElement_ClientDependency(),
+			UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf(),
+			UMLPackage.eINSTANCE.getFeature_IsStatic(),
+			UMLPackage.eINSTANCE.getConnector_Type(),
+			UMLPackage.eINSTANCE.getConnector_RedefinedConnector(),
+			UMLPackage.eINSTANCE.getConnector_Kind(),
+			UMLPackage.eINSTANCE.getConnector_Contract()		);
+		return new NotificationFilter[] {filter,};
+	}
+
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
-	 * 
+	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
 		return key == UmlViewsRepository.Connector.Properties.isLeaf || key == UmlViewsRepository.Connector.Properties.isStatic;
@@ -387,7 +434,7 @@ public class ConnectorPropertiesEditionComponent extends SinglePartPropertiesEdi
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
@@ -396,35 +443,35 @@ public class ConnectorPropertiesEditionComponent extends SinglePartPropertiesEdi
 				if (UmlViewsRepository.Connector.Properties.name == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newValue);
 				}
 				if (UmlViewsRepository.Connector.Properties.visibility == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), newValue);
 				}
 				if (UmlViewsRepository.Connector.Properties.isLeaf == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), newValue);
 				}
 				if (UmlViewsRepository.Connector.Properties.isStatic == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(UMLPackage.eINSTANCE.getFeature_IsStatic().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getFeature_IsStatic().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getFeature_IsStatic().getEAttributeType(), newValue);
 				}
 				if (UmlViewsRepository.Connector.Properties.kind == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(UMLPackage.eINSTANCE.getConnector_Kind().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getConnector_Kind().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getConnector_Kind().getEAttributeType(), newValue);
 				}
@@ -436,5 +483,8 @@ public class ConnectorPropertiesEditionComponent extends SinglePartPropertiesEdi
 		}
 		return ret;
 	}
+
+
+	
 
 }

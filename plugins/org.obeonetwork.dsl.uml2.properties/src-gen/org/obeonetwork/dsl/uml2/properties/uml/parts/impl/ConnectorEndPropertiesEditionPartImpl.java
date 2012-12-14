@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,45 +10,60 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts.impl;
 
-// Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
+
 import org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectorEndPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
+
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 
 
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public class ConnectorEndPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, ConnectorEndPropertiesEditionPart {
 
@@ -62,7 +77,7 @@ public class ConnectorEndPropertiesEditionPartImpl extends CompositePropertiesEd
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
+	 * @generated
 	 */
 	public ConnectorEndPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -73,7 +88,7 @@ public class ConnectorEndPropertiesEditionPartImpl extends CompositePropertiesEd
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
@@ -89,7 +104,7 @@ public class ConnectorEndPropertiesEditionPartImpl extends CompositePropertiesEd
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public void createControls(Composite view) { 
 		CompositionSequence connectorEndStep = new BindingCompositionSequence(propertiesEditionComponent);
@@ -126,7 +141,7 @@ public class ConnectorEndPropertiesEditionPartImpl extends CompositePropertiesEd
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
@@ -140,17 +155,20 @@ public class ConnectorEndPropertiesEditionPartImpl extends CompositePropertiesEd
 		return propertiesGroup;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createIsOrderedCheckbox(Composite parent) {
 		isOrdered = new Button(parent, SWT.CHECK);
-		isOrdered.setText(UmlMessages.ConnectorEndPropertiesEditionPart_IsOrderedLabel);
+		isOrdered.setText(getDescription(UmlViewsRepository.ConnectorEnd.Properties.isOrdered, UmlMessages.ConnectorEndPropertiesEditionPart_IsOrderedLabel));
 		isOrdered.addSelectionListener(new SelectionAdapter() {
 
 			/**
 			 * {@inheritDoc}
 			 *
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	
+			 * 	@generated
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
@@ -167,17 +185,20 @@ public class ConnectorEndPropertiesEditionPartImpl extends CompositePropertiesEd
 		return parent;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createIsUniqueCheckbox(Composite parent) {
 		isUnique = new Button(parent, SWT.CHECK);
-		isUnique.setText(UmlMessages.ConnectorEndPropertiesEditionPart_IsUniqueLabel);
+		isUnique.setText(getDescription(UmlViewsRepository.ConnectorEnd.Properties.isUnique, UmlMessages.ConnectorEndPropertiesEditionPart_IsUniqueLabel));
 		isUnique.addSelectionListener(new SelectionAdapter() {
 
 			/**
 			 * {@inheritDoc}
 			 *
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	
+			 * 	@generated
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
@@ -196,10 +217,10 @@ public class ConnectorEndPropertiesEditionPartImpl extends CompositePropertiesEd
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createRoleFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.ConnectorEndPropertiesEditionPart_RoleLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.ConnectorEnd.Properties.role, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.ConnectorEnd.Properties.role, UmlMessages.ConnectorEndPropertiesEditionPart_RoleLabel);
 		role = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ConnectorEnd.Properties.role, UmlViewsRepository.SWT_KIND));
 		role.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -219,10 +240,10 @@ public class ConnectorEndPropertiesEditionPartImpl extends CompositePropertiesEd
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createPartWithPortFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.ConnectorEndPropertiesEditionPart_PartWithPortLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.ConnectorEnd.Properties.partWithPort, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.ConnectorEnd.Properties.partWithPort, UmlMessages.ConnectorEndPropertiesEditionPart_PartWithPortLabel);
 		partWithPort = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ConnectorEnd.Properties.partWithPort, UmlViewsRepository.SWT_KIND));
 		partWithPort.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -241,24 +262,20 @@ public class ConnectorEndPropertiesEditionPartImpl extends CompositePropertiesEd
 	}
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-
-// End of user code
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectorEndPropertiesEditionPart#getIsOrdered()
-	 * 
+	 * @generated
 	 */
 	public Boolean getIsOrdered() {
 		return Boolean.valueOf(isOrdered.getSelection());
@@ -268,7 +285,7 @@ public class ConnectorEndPropertiesEditionPartImpl extends CompositePropertiesEd
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectorEndPropertiesEditionPart#setIsOrdered(Boolean newValue)
-	 * 
+	 * @generated
 	 */
 	public void setIsOrdered(Boolean newValue) {
 		if (newValue != null) {
@@ -276,14 +293,21 @@ public class ConnectorEndPropertiesEditionPartImpl extends CompositePropertiesEd
 		} else {
 			isOrdered.setSelection(false);
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.ConnectorEnd.Properties.isOrdered);
+		if (readOnly && isOrdered.isEnabled()) {
+			isOrdered.setEnabled(false);
+			isOrdered.setToolTipText(UmlMessages.ConnectorEnd_ReadOnly);
+		} else if (!readOnly && !isOrdered.isEnabled()) {
+			isOrdered.setEnabled(true);
+		}	
+		
 	}
-
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectorEndPropertiesEditionPart#getIsUnique()
-	 * 
+	 * @generated
 	 */
 	public Boolean getIsUnique() {
 		return Boolean.valueOf(isUnique.getSelection());
@@ -293,7 +317,7 @@ public class ConnectorEndPropertiesEditionPartImpl extends CompositePropertiesEd
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectorEndPropertiesEditionPart#setIsUnique(Boolean newValue)
-	 * 
+	 * @generated
 	 */
 	public void setIsUnique(Boolean newValue) {
 		if (newValue != null) {
@@ -301,14 +325,21 @@ public class ConnectorEndPropertiesEditionPartImpl extends CompositePropertiesEd
 		} else {
 			isUnique.setSelection(false);
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.ConnectorEnd.Properties.isUnique);
+		if (readOnly && isUnique.isEnabled()) {
+			isUnique.setEnabled(false);
+			isUnique.setToolTipText(UmlMessages.ConnectorEnd_ReadOnly);
+		} else if (!readOnly && !isUnique.isEnabled()) {
+			isUnique.setEnabled(true);
+		}	
+		
 	}
-
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectorEndPropertiesEditionPart#getRole()
-	 * 
+	 * @generated
 	 */
 	public EObject getRole() {
 		if (role.getSelection() instanceof StructuredSelection) {
@@ -329,13 +360,21 @@ public class ConnectorEndPropertiesEditionPartImpl extends CompositePropertiesEd
 		if (current != null) {
 			role.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.ConnectorEnd.Properties.role);
+		if (readOnly && role.isEnabled()) {
+			role.setEnabled(false);
+			role.setToolTipText(UmlMessages.ConnectorEnd_ReadOnly);
+		} else if (!readOnly && !role.isEnabled()) {
+			role.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectorEndPropertiesEditionPart#setRole(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setRole(EObject newValue) {
 		if (newValue != null) {
@@ -343,6 +382,14 @@ public class ConnectorEndPropertiesEditionPartImpl extends CompositePropertiesEd
 		} else {
 			role.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.ConnectorEnd.Properties.role);
+		if (readOnly && role.isEnabled()) {
+			role.setEnabled(false);
+			role.setToolTipText(UmlMessages.ConnectorEnd_ReadOnly);
+		} else if (!readOnly && !role.isEnabled()) {
+			role.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -358,7 +405,7 @@ public class ConnectorEndPropertiesEditionPartImpl extends CompositePropertiesEd
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectorEndPropertiesEditionPart#addFilterRole(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToRole(ViewerFilter filter) {
 		role.addFilter(filter);
@@ -368,18 +415,17 @@ public class ConnectorEndPropertiesEditionPartImpl extends CompositePropertiesEd
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectorEndPropertiesEditionPart#addBusinessFilterRole(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToRole(ViewerFilter filter) {
 		role.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectorEndPropertiesEditionPart#getPartWithPort()
-	 * 
+	 * @generated
 	 */
 	public EObject getPartWithPort() {
 		if (partWithPort.getSelection() instanceof StructuredSelection) {
@@ -400,13 +446,21 @@ public class ConnectorEndPropertiesEditionPartImpl extends CompositePropertiesEd
 		if (current != null) {
 			partWithPort.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.ConnectorEnd.Properties.partWithPort);
+		if (readOnly && partWithPort.isEnabled()) {
+			partWithPort.setEnabled(false);
+			partWithPort.setToolTipText(UmlMessages.ConnectorEnd_ReadOnly);
+		} else if (!readOnly && !partWithPort.isEnabled()) {
+			partWithPort.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectorEndPropertiesEditionPart#setPartWithPort(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setPartWithPort(EObject newValue) {
 		if (newValue != null) {
@@ -414,6 +468,14 @@ public class ConnectorEndPropertiesEditionPartImpl extends CompositePropertiesEd
 		} else {
 			partWithPort.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.ConnectorEnd.Properties.partWithPort);
+		if (readOnly && partWithPort.isEnabled()) {
+			partWithPort.setEnabled(false);
+			partWithPort.setToolTipText(UmlMessages.ConnectorEnd_ReadOnly);
+		} else if (!readOnly && !partWithPort.isEnabled()) {
+			partWithPort.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -429,7 +491,7 @@ public class ConnectorEndPropertiesEditionPartImpl extends CompositePropertiesEd
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectorEndPropertiesEditionPart#addFilterPartWithPort(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToPartWithPort(ViewerFilter filter) {
 		partWithPort.addFilter(filter);
@@ -439,7 +501,7 @@ public class ConnectorEndPropertiesEditionPartImpl extends CompositePropertiesEd
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectorEndPropertiesEditionPart#addBusinessFilterPartWithPort(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToPartWithPort(ViewerFilter filter) {
 		partWithPort.addBusinessRuleFilter(filter);
@@ -450,20 +512,16 @@ public class ConnectorEndPropertiesEditionPartImpl extends CompositePropertiesEd
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
+	 * @generated
 	 */
 	public String getTitle() {
 		return UmlMessages.ConnectorEnd_Part_Title;
 	}
 
-	// Start of user code additional methods
-	
-	// End of user code
 
 
 }

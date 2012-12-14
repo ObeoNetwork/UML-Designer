@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,45 +10,58 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts.forms;
 
-// Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
+import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Composite;
+
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
+
 import org.obeonetwork.dsl.uml2.properties.uml.parts.PackageMergePropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
+
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 
 
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
-public class PackageMergePropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, PackageMergePropertiesEditionPart {
+public class PackageMergePropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, PackageMergePropertiesEditionPart {
 
 	protected EObjectFlatComboViewer mergedPackage;
 	protected EObjectFlatComboViewer receivingPackage;
@@ -56,9 +69,14 @@ public class PackageMergePropertiesEditionPartForm extends CompositePropertiesEd
 
 
 	/**
+	 * For {@link ISection} use only.
+	 */
+	public PackageMergePropertiesEditionPartForm() { super(); }
+
+	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
+	 * @generated
 	 */
 	public PackageMergePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -69,7 +87,7 @@ public class PackageMergePropertiesEditionPartForm extends CompositePropertiesEd
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
-	 * 
+	 * @generated
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -87,7 +105,7 @@ public class PackageMergePropertiesEditionPartForm extends CompositePropertiesEd
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence packageMergeStep = new BindingCompositionSequence(propertiesEditionComponent);
@@ -115,7 +133,7 @@ public class PackageMergePropertiesEditionPartForm extends CompositePropertiesEd
 		composer.compose(view);
 	}
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
 		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
@@ -134,10 +152,10 @@ public class PackageMergePropertiesEditionPartForm extends CompositePropertiesEd
 	/**
 	 * @param parent the parent composite
 	 * @param widgetFactory factory to use to instanciante widget of the form
-	 * 
+	 * @generated
 	 */
 	protected Composite createMergedPackageFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, UmlMessages.PackageMergePropertiesEditionPart_MergedPackageLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.PackageMerge.Properties.mergedPackage, UmlViewsRepository.FORM_KIND));
+		createDescription(parent, UmlViewsRepository.PackageMerge.Properties.mergedPackage, UmlMessages.PackageMergePropertiesEditionPart_MergedPackageLabel);
 		mergedPackage = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.PackageMerge.Properties.mergedPackage, UmlViewsRepository.FORM_KIND));
 		widgetFactory.adapt(mergedPackage);
 		mergedPackage.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -164,10 +182,10 @@ public class PackageMergePropertiesEditionPartForm extends CompositePropertiesEd
 	/**
 	 * @param parent the parent composite
 	 * @param widgetFactory factory to use to instanciante widget of the form
-	 * 
+	 * @generated
 	 */
 	protected Composite createReceivingPackageFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, UmlMessages.PackageMergePropertiesEditionPart_ReceivingPackageLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.PackageMerge.Properties.receivingPackage, UmlViewsRepository.FORM_KIND));
+		createDescription(parent, UmlViewsRepository.PackageMerge.Properties.receivingPackage, UmlMessages.PackageMergePropertiesEditionPart_ReceivingPackageLabel);
 		receivingPackage = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.PackageMerge.Properties.receivingPackage, UmlViewsRepository.FORM_KIND));
 		widgetFactory.adapt(receivingPackage);
 		receivingPackage.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -192,24 +210,20 @@ public class PackageMergePropertiesEditionPartForm extends CompositePropertiesEd
 	}
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-
-// End of user code
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.PackageMergePropertiesEditionPart#getMergedPackage()
-	 * 
+	 * @generated
 	 */
 	public EObject getMergedPackage() {
 		if (mergedPackage.getSelection() instanceof StructuredSelection) {
@@ -230,13 +244,21 @@ public class PackageMergePropertiesEditionPartForm extends CompositePropertiesEd
 		if (current != null) {
 			mergedPackage.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.PackageMerge.Properties.mergedPackage);
+		if (readOnly && mergedPackage.isEnabled()) {
+			mergedPackage.setEnabled(false);
+			mergedPackage.setToolTipText(UmlMessages.PackageMerge_ReadOnly);
+		} else if (!readOnly && !mergedPackage.isEnabled()) {
+			mergedPackage.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.PackageMergePropertiesEditionPart#setMergedPackage(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setMergedPackage(EObject newValue) {
 		if (newValue != null) {
@@ -244,6 +266,14 @@ public class PackageMergePropertiesEditionPartForm extends CompositePropertiesEd
 		} else {
 			mergedPackage.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.PackageMerge.Properties.mergedPackage);
+		if (readOnly && mergedPackage.isEnabled()) {
+			mergedPackage.setEnabled(false);
+			mergedPackage.setToolTipText(UmlMessages.PackageMerge_ReadOnly);
+		} else if (!readOnly && !mergedPackage.isEnabled()) {
+			mergedPackage.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -259,7 +289,7 @@ public class PackageMergePropertiesEditionPartForm extends CompositePropertiesEd
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.PackageMergePropertiesEditionPart#addFilterMergedPackage(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToMergedPackage(ViewerFilter filter) {
 		mergedPackage.addFilter(filter);
@@ -269,18 +299,17 @@ public class PackageMergePropertiesEditionPartForm extends CompositePropertiesEd
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.PackageMergePropertiesEditionPart#addBusinessFilterMergedPackage(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToMergedPackage(ViewerFilter filter) {
 		mergedPackage.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.PackageMergePropertiesEditionPart#getReceivingPackage()
-	 * 
+	 * @generated
 	 */
 	public EObject getReceivingPackage() {
 		if (receivingPackage.getSelection() instanceof StructuredSelection) {
@@ -301,13 +330,21 @@ public class PackageMergePropertiesEditionPartForm extends CompositePropertiesEd
 		if (current != null) {
 			receivingPackage.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.PackageMerge.Properties.receivingPackage);
+		if (readOnly && receivingPackage.isEnabled()) {
+			receivingPackage.setEnabled(false);
+			receivingPackage.setToolTipText(UmlMessages.PackageMerge_ReadOnly);
+		} else if (!readOnly && !receivingPackage.isEnabled()) {
+			receivingPackage.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.PackageMergePropertiesEditionPart#setReceivingPackage(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setReceivingPackage(EObject newValue) {
 		if (newValue != null) {
@@ -315,6 +352,14 @@ public class PackageMergePropertiesEditionPartForm extends CompositePropertiesEd
 		} else {
 			receivingPackage.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.PackageMerge.Properties.receivingPackage);
+		if (readOnly && receivingPackage.isEnabled()) {
+			receivingPackage.setEnabled(false);
+			receivingPackage.setToolTipText(UmlMessages.PackageMerge_ReadOnly);
+		} else if (!readOnly && !receivingPackage.isEnabled()) {
+			receivingPackage.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -330,7 +375,7 @@ public class PackageMergePropertiesEditionPartForm extends CompositePropertiesEd
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.PackageMergePropertiesEditionPart#addFilterReceivingPackage(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToReceivingPackage(ViewerFilter filter) {
 		receivingPackage.addFilter(filter);
@@ -340,7 +385,7 @@ public class PackageMergePropertiesEditionPartForm extends CompositePropertiesEd
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.PackageMergePropertiesEditionPart#addBusinessFilterReceivingPackage(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToReceivingPackage(ViewerFilter filter) {
 		receivingPackage.addBusinessRuleFilter(filter);
@@ -349,19 +394,18 @@ public class PackageMergePropertiesEditionPartForm extends CompositePropertiesEd
 
 
 
+
+
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
+	 * @generated
 	 */
 	public String getTitle() {
 		return UmlMessages.PackageMerge_Part_Title;
 	}
 
-	// Start of user code additional methods
-	
-	// End of user code
 
 
 }

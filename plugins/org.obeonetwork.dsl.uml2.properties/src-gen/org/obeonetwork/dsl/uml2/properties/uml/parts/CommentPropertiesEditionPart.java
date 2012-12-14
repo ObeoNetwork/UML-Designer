@@ -10,31 +10,29 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts;
 
-// Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
-
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cedric Brun</a>
+ * @generated
  */
 public interface CommentPropertiesEditionPart {
 
 	/**
 	 * @return the body
-	 * 
+	 * @generated
 	 */
-	public String getBody();
+	public String getBodies();
 
 	/**
 	 * Defines a new body
 	 * @param newValue the new body to set
-	 * 
+	 * @generated
 	 */
 	public void setBody(String newValue);
 
@@ -50,7 +48,7 @@ public interface CommentPropertiesEditionPart {
 	/**
 	 * Update the annotatedElement
 	 * @param newValue the annotatedElement to update
-	 * 
+	 * @generated
 	 */
 	public void updateAnnotatedElement();
 
@@ -60,7 +58,7 @@ public interface CommentPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToAnnotatedElement(ViewerFilter filter);
 
@@ -70,13 +68,13 @@ public interface CommentPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToAnnotatedElement(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the annotatedElement table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInAnnotatedElementTable(EObject element);
 
@@ -88,12 +86,9 @@ public interface CommentPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
-	 * 
+	 * @generated
 	 */
 	public String getTitle();
 
-	// Start of user code for additional methods
-
-// End of user code
 
 }

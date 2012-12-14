@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,68 +10,89 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts.impl;
 
-// Start of user code for imports
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EEnumLiteral;
+
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
+
 import org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectionPointReferencePropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
+
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 
 
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public class ConnectionPointReferencePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, ConnectionPointReferencePropertiesEditionPart {
 
@@ -94,7 +115,7 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
+	 * @generated
 	 */
 	public ConnectionPointReferencePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -105,7 +126,7 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
@@ -121,7 +142,7 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public void createControls(Composite view) { 
 		CompositionSequence connectionPointReferenceStep = new BindingCompositionSequence(propertiesEditionComponent);
@@ -170,7 +191,7 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
@@ -184,10 +205,13 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 		return propertiesGroup;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.ConnectionPointReferencePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.ConnectionPointReference.Properties.name, UmlViewsRepository.SWT_KIND));
-		name = new Text(parent, SWT.BORDER);
+		createDescription(parent, UmlViewsRepository.ConnectionPointReference.Properties.name, UmlMessages.ConnectionPointReferencePropertiesEditionPart_NameLabel);
+		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {
@@ -196,7 +220,7 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -212,7 +236,7 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -230,12 +254,15 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 		return parent;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createVisibilityEMFComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.ConnectionPointReferencePropertiesEditionPart_VisibilityLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.ConnectionPointReference.Properties.visibility, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.ConnectionPointReference.Properties.visibility, UmlMessages.ConnectionPointReferencePropertiesEditionPart_VisibilityLabel);
 		visibility = new EMFComboViewer(parent);
 		visibility.setContentProvider(new ArrayContentProvider());
-		visibility.setLabelProvider(new AdapterFactoryLabelProvider(new EcoreAdapterFactory()));
+		visibility.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData visibilityData = new GridData(GridData.FILL_HORIZONTAL);
 		visibility.getCombo().setLayoutData(visibilityData);
 		visibility.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -244,7 +271,7 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
+			 * 	@generated
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
@@ -258,10 +285,11 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createClientDependencyAdvancedReferencesTable(Composite parent) {
-		this.clientDependency = new ReferencesTable(UmlMessages.ConnectionPointReferencePropertiesEditionPart_ClientDependencyLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.ConnectionPointReference.Properties.clientDependency, UmlMessages.ConnectionPointReferencePropertiesEditionPart_ClientDependencyLabel);		 
+		this.clientDependency = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addClientDependency(); }
 			public void handleEdit(EObject element) { editClientDependency(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveClientDependency(element, oldIndex, newIndex); }
@@ -289,7 +317,7 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addClientDependency() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(clientDependency.getInput(), clientDependencyFilters, clientDependencyBusinessFilters,
@@ -308,7 +336,7 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveClientDependency(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConnectionPointReferencePropertiesEditionPartImpl.this, UmlViewsRepository.ConnectionPointReference.Properties.clientDependency, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -316,7 +344,7 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromClientDependency(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConnectionPointReferencePropertiesEditionPartImpl.this, UmlViewsRepository.ConnectionPointReference.Properties.clientDependency, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -324,7 +352,7 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editClientDependency(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -340,10 +368,10 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createContainerFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.ConnectionPointReferencePropertiesEditionPart_ContainerLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.ConnectionPointReference.Properties.container, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.ConnectionPointReference.Properties.container, UmlMessages.ConnectionPointReferencePropertiesEditionPart_ContainerLabel);
 		container = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ConnectionPointReference.Properties.container, UmlViewsRepository.SWT_KIND));
 		container.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -362,10 +390,11 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createEntryAdvancedReferencesTable(Composite parent) {
-		this.entry = new ReferencesTable(UmlMessages.ConnectionPointReferencePropertiesEditionPart_EntryLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.ConnectionPointReference.Properties.entry, UmlMessages.ConnectionPointReferencePropertiesEditionPart_EntryLabel);		 
+		this.entry = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addEntry(); }
 			public void handleEdit(EObject element) { editEntry(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveEntry(element, oldIndex, newIndex); }
@@ -393,7 +422,7 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addEntry() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(entry.getInput(), entryFilters, entryBusinessFilters,
@@ -412,7 +441,7 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveEntry(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConnectionPointReferencePropertiesEditionPartImpl.this, UmlViewsRepository.ConnectionPointReference.Properties.entry, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -420,7 +449,7 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromEntry(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConnectionPointReferencePropertiesEditionPartImpl.this, UmlViewsRepository.ConnectionPointReference.Properties.entry, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -428,7 +457,7 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editEntry(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -443,10 +472,11 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createExitAdvancedReferencesTable(Composite parent) {
-		this.exit = new ReferencesTable(UmlMessages.ConnectionPointReferencePropertiesEditionPart_ExitLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.ConnectionPointReference.Properties.exit, UmlMessages.ConnectionPointReferencePropertiesEditionPart_ExitLabel);		 
+		this.exit = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addExit(); }
 			public void handleEdit(EObject element) { editExit(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveExit(element, oldIndex, newIndex); }
@@ -474,7 +504,7 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addExit() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(exit.getInput(), exitFilters, exitBusinessFilters,
@@ -493,7 +523,7 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveExit(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConnectionPointReferencePropertiesEditionPartImpl.this, UmlViewsRepository.ConnectionPointReference.Properties.exit, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -501,7 +531,7 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromExit(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConnectionPointReferencePropertiesEditionPartImpl.this, UmlViewsRepository.ConnectionPointReference.Properties.exit, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -509,7 +539,7 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editExit(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -525,10 +555,10 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createStateFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.ConnectionPointReferencePropertiesEditionPart_StateLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.ConnectionPointReference.Properties.state, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.ConnectionPointReference.Properties.state, UmlMessages.ConnectionPointReferencePropertiesEditionPart_StateLabel);
 		state = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ConnectionPointReference.Properties.state, UmlViewsRepository.SWT_KIND));
 		state.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -547,24 +577,20 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 	}
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-
-// End of user code
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectionPointReferencePropertiesEditionPart#getName()
-	 * 
+	 * @generated
 	 */
 	public String getName() {
 		return name.getText();
@@ -574,7 +600,7 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectionPointReferencePropertiesEditionPart#setName(String newValue)
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue) {
 		if (newValue != null) {
@@ -582,40 +608,62 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.ConnectionPointReference.Properties.name);
+		if (readOnly && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(UmlMessages.ConnectionPointReference_ReadOnly);
+		} else if (!readOnly && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
-
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectionPointReferencePropertiesEditionPart#getVisibility()
-	 * 
+	 * @generated
 	 */
 	public Enumerator getVisibility() {
-		EEnumLiteral selection = (EEnumLiteral) ((StructuredSelection) visibility.getSelection()).getFirstElement();
-		return selection.getInstance();
+		Enumerator selection = (Enumerator) ((StructuredSelection) visibility.getSelection()).getFirstElement();
+		return selection;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectionPointReferencePropertiesEditionPart#initVisibility(EEnum eenum, Enumerator current)
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectionPointReferencePropertiesEditionPart#initVisibility(Object input, Enumerator current)
 	 */
-	public void initVisibility(EEnum eenum, Enumerator current) {
-		visibility.setInput(eenum.getELiterals());
+	public void initVisibility(Object input, Enumerator current) {
+		visibility.setInput(input);
 		visibility.modelUpdating(new StructuredSelection(current));
+		boolean readOnly = isReadOnly(UmlViewsRepository.ConnectionPointReference.Properties.visibility);
+		if (readOnly && visibility.isEnabled()) {
+			visibility.setEnabled(false);
+			visibility.setToolTipText(UmlMessages.ConnectionPointReference_ReadOnly);
+		} else if (!readOnly && !visibility.isEnabled()) {
+			visibility.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectionPointReferencePropertiesEditionPart#setVisibility(Enumerator newValue)
-	 * 
+	 * @generated
 	 */
 	public void setVisibility(Enumerator newValue) {
 		visibility.modelUpdating(new StructuredSelection(newValue));
+		boolean readOnly = isReadOnly(UmlViewsRepository.ConnectionPointReference.Properties.visibility);
+		if (readOnly && visibility.isEnabled()) {
+			visibility.setEnabled(false);
+			visibility.setToolTipText(UmlMessages.ConnectionPointReference_ReadOnly);
+		} else if (!readOnly && !visibility.isEnabled()) {
+			visibility.setEnabled(true);
+		}	
+		
 	}
-
 
 
 
@@ -630,13 +678,21 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		clientDependency.setContentProvider(contentProvider);
 		clientDependency.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.ConnectionPointReference.Properties.clientDependency);
+		if (readOnly && clientDependency.getTable().isEnabled()) {
+			clientDependency.setEnabled(false);
+			clientDependency.setToolTipText(UmlMessages.ConnectionPointReference_ReadOnly);
+		} else if (!readOnly && !clientDependency.getTable().isEnabled()) {
+			clientDependency.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectionPointReferencePropertiesEditionPart#updateClientDependency()
-	 * 
+	 * @generated
 	 */
 	public void updateClientDependency() {
 	clientDependency.refresh();
@@ -646,7 +702,7 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectionPointReferencePropertiesEditionPart#addFilterClientDependency(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToClientDependency(ViewerFilter filter) {
 		clientDependencyFilters.add(filter);
@@ -656,7 +712,7 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectionPointReferencePropertiesEditionPart#addBusinessFilterClientDependency(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToClientDependency(ViewerFilter filter) {
 		clientDependencyBusinessFilters.add(filter);
@@ -666,18 +722,17 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectionPointReferencePropertiesEditionPart#isContainedInClientDependencyTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInClientDependencyTable(EObject element) {
 		return ((ReferencesTableSettings)clientDependency.getInput()).contains(element);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectionPointReferencePropertiesEditionPart#getContainer()
-	 * 
+	 * @generated
 	 */
 	public EObject getContainer() {
 		if (container.getSelection() instanceof StructuredSelection) {
@@ -698,13 +753,21 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 		if (current != null) {
 			container.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.ConnectionPointReference.Properties.container);
+		if (readOnly && container.isEnabled()) {
+			container.setEnabled(false);
+			container.setToolTipText(UmlMessages.ConnectionPointReference_ReadOnly);
+		} else if (!readOnly && !container.isEnabled()) {
+			container.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectionPointReferencePropertiesEditionPart#setContainer(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setContainer(EObject newValue) {
 		if (newValue != null) {
@@ -712,6 +775,14 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 		} else {
 			container.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.ConnectionPointReference.Properties.container);
+		if (readOnly && container.isEnabled()) {
+			container.setEnabled(false);
+			container.setToolTipText(UmlMessages.ConnectionPointReference_ReadOnly);
+		} else if (!readOnly && !container.isEnabled()) {
+			container.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -727,7 +798,7 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectionPointReferencePropertiesEditionPart#addFilterContainer(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToContainer(ViewerFilter filter) {
 		container.addFilter(filter);
@@ -737,12 +808,11 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectionPointReferencePropertiesEditionPart#addBusinessFilterContainer(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToContainer(ViewerFilter filter) {
 		container.addBusinessRuleFilter(filter);
 	}
-
 
 
 
@@ -757,13 +827,21 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		entry.setContentProvider(contentProvider);
 		entry.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.ConnectionPointReference.Properties.entry);
+		if (readOnly && entry.getTable().isEnabled()) {
+			entry.setEnabled(false);
+			entry.setToolTipText(UmlMessages.ConnectionPointReference_ReadOnly);
+		} else if (!readOnly && !entry.getTable().isEnabled()) {
+			entry.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectionPointReferencePropertiesEditionPart#updateEntry()
-	 * 
+	 * @generated
 	 */
 	public void updateEntry() {
 	entry.refresh();
@@ -773,7 +851,7 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectionPointReferencePropertiesEditionPart#addFilterEntry(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToEntry(ViewerFilter filter) {
 		entryFilters.add(filter);
@@ -783,7 +861,7 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectionPointReferencePropertiesEditionPart#addBusinessFilterEntry(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToEntry(ViewerFilter filter) {
 		entryBusinessFilters.add(filter);
@@ -793,12 +871,11 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectionPointReferencePropertiesEditionPart#isContainedInEntryTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInEntryTable(EObject element) {
 		return ((ReferencesTableSettings)entry.getInput()).contains(element);
 	}
-
 
 
 
@@ -813,13 +890,21 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		exit.setContentProvider(contentProvider);
 		exit.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.ConnectionPointReference.Properties.exit);
+		if (readOnly && exit.getTable().isEnabled()) {
+			exit.setEnabled(false);
+			exit.setToolTipText(UmlMessages.ConnectionPointReference_ReadOnly);
+		} else if (!readOnly && !exit.getTable().isEnabled()) {
+			exit.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectionPointReferencePropertiesEditionPart#updateExit()
-	 * 
+	 * @generated
 	 */
 	public void updateExit() {
 	exit.refresh();
@@ -829,7 +914,7 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectionPointReferencePropertiesEditionPart#addFilterExit(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToExit(ViewerFilter filter) {
 		exitFilters.add(filter);
@@ -839,7 +924,7 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectionPointReferencePropertiesEditionPart#addBusinessFilterExit(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToExit(ViewerFilter filter) {
 		exitBusinessFilters.add(filter);
@@ -849,18 +934,17 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectionPointReferencePropertiesEditionPart#isContainedInExitTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInExitTable(EObject element) {
 		return ((ReferencesTableSettings)exit.getInput()).contains(element);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectionPointReferencePropertiesEditionPart#getState()
-	 * 
+	 * @generated
 	 */
 	public EObject getState() {
 		if (state.getSelection() instanceof StructuredSelection) {
@@ -881,13 +965,21 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 		if (current != null) {
 			state.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.ConnectionPointReference.Properties.state);
+		if (readOnly && state.isEnabled()) {
+			state.setEnabled(false);
+			state.setToolTipText(UmlMessages.ConnectionPointReference_ReadOnly);
+		} else if (!readOnly && !state.isEnabled()) {
+			state.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectionPointReferencePropertiesEditionPart#setState(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setState(EObject newValue) {
 		if (newValue != null) {
@@ -895,6 +987,14 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 		} else {
 			state.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.ConnectionPointReference.Properties.state);
+		if (readOnly && state.isEnabled()) {
+			state.setEnabled(false);
+			state.setToolTipText(UmlMessages.ConnectionPointReference_ReadOnly);
+		} else if (!readOnly && !state.isEnabled()) {
+			state.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -910,7 +1010,7 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectionPointReferencePropertiesEditionPart#addFilterState(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToState(ViewerFilter filter) {
 		state.addFilter(filter);
@@ -920,7 +1020,7 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectionPointReferencePropertiesEditionPart#addBusinessFilterState(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToState(ViewerFilter filter) {
 		state.addBusinessRuleFilter(filter);
@@ -931,20 +1031,16 @@ public class ConnectionPointReferencePropertiesEditionPartImpl extends Composite
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
+	 * @generated
 	 */
 	public String getTitle() {
 		return UmlMessages.ConnectionPointReference_Part_Title;
 	}
 
-	// Start of user code additional methods
-	
-	// End of user code
 
 
 }

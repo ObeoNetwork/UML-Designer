@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,56 +10,56 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts;
 
-// Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.ecore.EEnum;
+
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
-
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public interface PrimitiveTypePropertiesEditionPart {
 
 	/**
 	 * @return the name
-	 * 
+	 * @generated
 	 */
 	public String getName();
 
 	/**
 	 * Defines a new name
 	 * @param newValue the new name to set
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue);
 
 
 	/**
 	 * @return the visibility
-	 * 
+	 * @generated
 	 */
 	public Enumerator getVisibility();
 
 	/**
 	 * Init the visibility
-	 * @param eenum the enum to manage
+	 * @param input the viewer input
 	 * @param current the current value
 	 */
-	public void initVisibility(EEnum eenum, Enumerator current);
+	public void initVisibility(Object input, Enumerator current);
 
 	/**
 	 * Defines a new visibility
 	 * @param newValue the new visibility to set
-	 * 
+	 * @generated
 	 */
 	public void setVisibility(Enumerator newValue);
 
@@ -75,7 +75,7 @@ public interface PrimitiveTypePropertiesEditionPart {
 	/**
 	 * Update the clientDependency
 	 * @param newValue the clientDependency to update
-	 * 
+	 * @generated
 	 */
 	public void updateClientDependency();
 
@@ -85,7 +85,7 @@ public interface PrimitiveTypePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToClientDependency(ViewerFilter filter);
 
@@ -95,34 +95,34 @@ public interface PrimitiveTypePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToClientDependency(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the clientDependency table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInClientDependencyTable(EObject element);
 
 
 	/**
 	 * @return the isLeaf
-	 * 
+	 * @generated
 	 */
 	public Boolean getIsLeaf();
 
 	/**
 	 * Defines a new isLeaf
 	 * @param newValue the new isLeaf to set
-	 * 
+	 * @generated
 	 */
 	public void setIsLeaf(Boolean newValue);
 
 
 	/**
 	 * @return the owningTemplateParameter
-	 * 
+	 * @generated
 	 */
 	public EObject getOwningTemplateParameter();
 
@@ -135,14 +135,14 @@ public interface PrimitiveTypePropertiesEditionPart {
 	/**
 	 * Defines a new owningTemplateParameter
 	 * @param newValue the new owningTemplateParameter to set
-	 * 
+	 * @generated
 	 */
 	public void setOwningTemplateParameter(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setOwningTemplateParameterButtonMode(ButtonsModeEnum newValue);
 
@@ -152,7 +152,7 @@ public interface PrimitiveTypePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToOwningTemplateParameter(ViewerFilter filter);
 
@@ -162,14 +162,14 @@ public interface PrimitiveTypePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToOwningTemplateParameter(ViewerFilter filter);
 
 
 	/**
 	 * @return the templateParameter
-	 * 
+	 * @generated
 	 */
 	public EObject getTemplateParameter();
 
@@ -182,14 +182,14 @@ public interface PrimitiveTypePropertiesEditionPart {
 	/**
 	 * Defines a new templateParameter
 	 * @param newValue the new templateParameter to set
-	 * 
+	 * @generated
 	 */
 	public void setTemplateParameter(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setTemplateParameterButtonMode(ButtonsModeEnum newValue);
 
@@ -199,7 +199,7 @@ public interface PrimitiveTypePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToTemplateParameter(ViewerFilter filter);
 
@@ -209,21 +209,21 @@ public interface PrimitiveTypePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToTemplateParameter(ViewerFilter filter);
 
 
 	/**
 	 * @return the isAbstract
-	 * 
+	 * @generated
 	 */
 	public Boolean getIsAbstract();
 
 	/**
 	 * Defines a new isAbstract
 	 * @param newValue the new isAbstract to set
-	 * 
+	 * @generated
 	 */
 	public void setIsAbstract(Boolean newValue);
 
@@ -239,7 +239,7 @@ public interface PrimitiveTypePropertiesEditionPart {
 	/**
 	 * Update the powertypeExtent
 	 * @param newValue the powertypeExtent to update
-	 * 
+	 * @generated
 	 */
 	public void updatePowertypeExtent();
 
@@ -249,7 +249,7 @@ public interface PrimitiveTypePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToPowertypeExtent(ViewerFilter filter);
 
@@ -259,13 +259,13 @@ public interface PrimitiveTypePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToPowertypeExtent(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the powertypeExtent table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInPowertypeExtentTable(EObject element);
 
@@ -281,7 +281,7 @@ public interface PrimitiveTypePropertiesEditionPart {
 	/**
 	 * Update the redefinedClassifier
 	 * @param newValue the redefinedClassifier to update
-	 * 
+	 * @generated
 	 */
 	public void updateRedefinedClassifier();
 
@@ -291,7 +291,7 @@ public interface PrimitiveTypePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToRedefinedClassifier(ViewerFilter filter);
 
@@ -301,20 +301,20 @@ public interface PrimitiveTypePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToRedefinedClassifier(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the redefinedClassifier table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInRedefinedClassifierTable(EObject element);
 
 
 	/**
 	 * @return the representation
-	 * 
+	 * @generated
 	 */
 	public EObject getRepresentation();
 
@@ -327,14 +327,14 @@ public interface PrimitiveTypePropertiesEditionPart {
 	/**
 	 * Defines a new representation
 	 * @param newValue the new representation to set
-	 * 
+	 * @generated
 	 */
 	public void setRepresentation(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setRepresentationButtonMode(ButtonsModeEnum newValue);
 
@@ -344,7 +344,7 @@ public interface PrimitiveTypePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToRepresentation(ViewerFilter filter);
 
@@ -354,7 +354,7 @@ public interface PrimitiveTypePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToRepresentation(ViewerFilter filter);
 
@@ -370,7 +370,7 @@ public interface PrimitiveTypePropertiesEditionPart {
 	/**
 	 * Update the useCase
 	 * @param newValue the useCase to update
-	 * 
+	 * @generated
 	 */
 	public void updateUseCase();
 
@@ -380,7 +380,7 @@ public interface PrimitiveTypePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToUseCase(ViewerFilter filter);
 
@@ -390,13 +390,13 @@ public interface PrimitiveTypePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToUseCase(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the useCase table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInUseCaseTable(EObject element);
 
@@ -408,12 +408,9 @@ public interface PrimitiveTypePropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
-	 * 
+	 * @generated
 	 */
 	public String getTitle();
 
-	// Start of user code for additional methods
-
-// End of user code
 
 }

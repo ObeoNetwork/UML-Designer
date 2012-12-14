@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,25 +10,24 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts;
 
-// Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
-
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public interface LinkEndCreationDataPropertiesEditionPart {
 
 	/**
 	 * @return the value
-	 * 
+	 * @generated
 	 */
 	public EObject getValue();
 
@@ -41,14 +40,14 @@ public interface LinkEndCreationDataPropertiesEditionPart {
 	/**
 	 * Defines a new value
 	 * @param newValue the new value to set
-	 * 
+	 * @generated
 	 */
 	public void setValue(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setValueButtonMode(ButtonsModeEnum newValue);
 
@@ -58,7 +57,7 @@ public interface LinkEndCreationDataPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToValue(ViewerFilter filter);
 
@@ -68,14 +67,14 @@ public interface LinkEndCreationDataPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToValue(ViewerFilter filter);
 
 
 	/**
 	 * @return the end
-	 * 
+	 * @generated
 	 */
 	public EObject getEnd();
 
@@ -88,14 +87,14 @@ public interface LinkEndCreationDataPropertiesEditionPart {
 	/**
 	 * Defines a new end
 	 * @param newValue the new end to set
-	 * 
+	 * @generated
 	 */
 	public void setEnd(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setEndButtonMode(ButtonsModeEnum newValue);
 
@@ -105,7 +104,7 @@ public interface LinkEndCreationDataPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToEnd(ViewerFilter filter);
 
@@ -115,28 +114,28 @@ public interface LinkEndCreationDataPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToEnd(ViewerFilter filter);
 
 
 	/**
 	 * @return the isReplaceAll
-	 * 
+	 * @generated
 	 */
 	public Boolean getIsReplaceAll();
 
 	/**
 	 * Defines a new isReplaceAll
 	 * @param newValue the new isReplaceAll to set
-	 * 
+	 * @generated
 	 */
 	public void setIsReplaceAll(Boolean newValue);
 
 
 	/**
 	 * @return the insertAt
-	 * 
+	 * @generated
 	 */
 	public EObject getInsertAt();
 
@@ -149,14 +148,14 @@ public interface LinkEndCreationDataPropertiesEditionPart {
 	/**
 	 * Defines a new insertAt
 	 * @param newValue the new insertAt to set
-	 * 
+	 * @generated
 	 */
 	public void setInsertAt(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setInsertAtButtonMode(ButtonsModeEnum newValue);
 
@@ -166,7 +165,7 @@ public interface LinkEndCreationDataPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToInsertAt(ViewerFilter filter);
 
@@ -176,7 +175,7 @@ public interface LinkEndCreationDataPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToInsertAt(ViewerFilter filter);
 
@@ -188,12 +187,9 @@ public interface LinkEndCreationDataPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
-	 * 
+	 * @generated
 	 */
 	public String getTitle();
 
-	// Start of user code for additional methods
-
-// End of user code
 
 }

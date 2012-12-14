@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,68 +10,89 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts.impl;
 
-// Start of user code for imports
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.ecore.EEnum;
-import org.eclipse.emf.ecore.EEnumLiteral;
+
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreAdapterFactory;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+
+import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
+
 import org.obeonetwork.dsl.uml2.properties.uml.parts.MessagePropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
+
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 
 
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public class MessagePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, MessagePropertiesEditionPart {
 
@@ -91,7 +112,7 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
+	 * @generated
 	 */
 	public MessagePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -102,7 +123,7 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
@@ -118,7 +139,7 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public void createControls(Composite view) { 
 		CompositionSequence messageStep = new BindingCompositionSequence(propertiesEditionComponent);
@@ -171,7 +192,7 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
@@ -185,10 +206,13 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 		return propertiesGroup;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createNameText(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.MessagePropertiesEditionPart_NameLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.Message.Properties.name, UmlViewsRepository.SWT_KIND));
-		name = new Text(parent, SWT.BORDER);
+		createDescription(parent, UmlViewsRepository.Message.Properties.name, UmlMessages.MessagePropertiesEditionPart_NameLabel);
+		name = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
 		name.setLayoutData(nameData);
 		name.addFocusListener(new FocusAdapter() {
@@ -197,7 +221,7 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -213,7 +237,7 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -231,12 +255,15 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 		return parent;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createVisibilityEMFComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.MessagePropertiesEditionPart_VisibilityLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.Message.Properties.visibility, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.Message.Properties.visibility, UmlMessages.MessagePropertiesEditionPart_VisibilityLabel);
 		visibility = new EMFComboViewer(parent);
 		visibility.setContentProvider(new ArrayContentProvider());
-		visibility.setLabelProvider(new AdapterFactoryLabelProvider(new EcoreAdapterFactory()));
+		visibility.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData visibilityData = new GridData(GridData.FILL_HORIZONTAL);
 		visibility.getCombo().setLayoutData(visibilityData);
 		visibility.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -245,7 +272,7 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
+			 * 	@generated
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
@@ -259,10 +286,11 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createClientDependencyAdvancedReferencesTable(Composite parent) {
-		this.clientDependency = new ReferencesTable(UmlMessages.MessagePropertiesEditionPart_ClientDependencyLabel, new ReferencesTableListener() {
+		String label = getDescription(UmlViewsRepository.Message.Properties.clientDependency, UmlMessages.MessagePropertiesEditionPart_ClientDependencyLabel);		 
+		this.clientDependency = new ReferencesTable(label, new ReferencesTableListener() {
 			public void handleAdd() { addClientDependency(); }
 			public void handleEdit(EObject element) { editClientDependency(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveClientDependency(element, oldIndex, newIndex); }
@@ -290,7 +318,7 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addClientDependency() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(clientDependency.getInput(), clientDependencyFilters, clientDependencyBusinessFilters,
@@ -309,7 +337,7 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveClientDependency(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MessagePropertiesEditionPartImpl.this, UmlViewsRepository.Message.Properties.clientDependency, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -317,7 +345,7 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromClientDependency(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(MessagePropertiesEditionPartImpl.this, UmlViewsRepository.Message.Properties.clientDependency, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -325,7 +353,7 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editClientDependency(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -339,12 +367,15 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 		}
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createMessageSortEMFComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.MessagePropertiesEditionPart_MessageSortLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.Message.Properties.messageSort, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.Message.Properties.messageSort, UmlMessages.MessagePropertiesEditionPart_MessageSortLabel);
 		messageSort = new EMFComboViewer(parent);
 		messageSort.setContentProvider(new ArrayContentProvider());
-		messageSort.setLabelProvider(new AdapterFactoryLabelProvider(new EcoreAdapterFactory()));
+		messageSort.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
 		GridData messageSortData = new GridData(GridData.FILL_HORIZONTAL);
 		messageSort.getCombo().setLayoutData(messageSortData);
 		messageSort.addSelectionChangedListener(new ISelectionChangedListener() {
@@ -353,7 +384,7 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	
+			 * 	@generated
 			 */
 			public void selectionChanged(SelectionChangedEvent event) {
 				if (propertiesEditionComponent != null)
@@ -368,10 +399,10 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createReceiveEventFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.MessagePropertiesEditionPart_ReceiveEventLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.Message.Properties.receiveEvent, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.Message.Properties.receiveEvent, UmlMessages.MessagePropertiesEditionPart_ReceiveEventLabel);
 		receiveEvent = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.Message.Properties.receiveEvent, UmlViewsRepository.SWT_KIND));
 		receiveEvent.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -391,10 +422,10 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createSendEventFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.MessagePropertiesEditionPart_SendEventLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.Message.Properties.sendEvent, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.Message.Properties.sendEvent, UmlMessages.MessagePropertiesEditionPart_SendEventLabel);
 		sendEvent = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.Message.Properties.sendEvent, UmlViewsRepository.SWT_KIND));
 		sendEvent.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -414,10 +445,10 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createConnectorFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.MessagePropertiesEditionPart_ConnectorLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.Message.Properties.connector, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.Message.Properties.connector, UmlMessages.MessagePropertiesEditionPart_ConnectorLabel);
 		connector = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.Message.Properties.connector, UmlViewsRepository.SWT_KIND));
 		connector.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -437,10 +468,10 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createInteractionFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.MessagePropertiesEditionPart_InteractionLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.Message.Properties.interaction, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.Message.Properties.interaction, UmlMessages.MessagePropertiesEditionPart_InteractionLabel);
 		interaction = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.Message.Properties.interaction, UmlViewsRepository.SWT_KIND));
 		interaction.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -459,24 +490,20 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 	}
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-
-// End of user code
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessagePropertiesEditionPart#getName()
-	 * 
+	 * @generated
 	 */
 	public String getName() {
 		return name.getText();
@@ -486,7 +513,7 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessagePropertiesEditionPart#setName(String newValue)
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue) {
 		if (newValue != null) {
@@ -494,40 +521,62 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 		} else {
 			name.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.Message.Properties.name);
+		if (readOnly && name.isEnabled()) {
+			name.setEnabled(false);
+			name.setToolTipText(UmlMessages.Message_ReadOnly);
+		} else if (!readOnly && !name.isEnabled()) {
+			name.setEnabled(true);
+		}	
+		
 	}
-
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessagePropertiesEditionPart#getVisibility()
-	 * 
+	 * @generated
 	 */
 	public Enumerator getVisibility() {
-		EEnumLiteral selection = (EEnumLiteral) ((StructuredSelection) visibility.getSelection()).getFirstElement();
-		return selection.getInstance();
+		Enumerator selection = (Enumerator) ((StructuredSelection) visibility.getSelection()).getFirstElement();
+		return selection;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessagePropertiesEditionPart#initVisibility(EEnum eenum, Enumerator current)
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessagePropertiesEditionPart#initVisibility(Object input, Enumerator current)
 	 */
-	public void initVisibility(EEnum eenum, Enumerator current) {
-		visibility.setInput(eenum.getELiterals());
+	public void initVisibility(Object input, Enumerator current) {
+		visibility.setInput(input);
 		visibility.modelUpdating(new StructuredSelection(current));
+		boolean readOnly = isReadOnly(UmlViewsRepository.Message.Properties.visibility);
+		if (readOnly && visibility.isEnabled()) {
+			visibility.setEnabled(false);
+			visibility.setToolTipText(UmlMessages.Message_ReadOnly);
+		} else if (!readOnly && !visibility.isEnabled()) {
+			visibility.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessagePropertiesEditionPart#setVisibility(Enumerator newValue)
-	 * 
+	 * @generated
 	 */
 	public void setVisibility(Enumerator newValue) {
 		visibility.modelUpdating(new StructuredSelection(newValue));
+		boolean readOnly = isReadOnly(UmlViewsRepository.Message.Properties.visibility);
+		if (readOnly && visibility.isEnabled()) {
+			visibility.setEnabled(false);
+			visibility.setToolTipText(UmlMessages.Message_ReadOnly);
+		} else if (!readOnly && !visibility.isEnabled()) {
+			visibility.setEnabled(true);
+		}	
+		
 	}
-
 
 
 
@@ -542,13 +591,21 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		clientDependency.setContentProvider(contentProvider);
 		clientDependency.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.Message.Properties.clientDependency);
+		if (readOnly && clientDependency.getTable().isEnabled()) {
+			clientDependency.setEnabled(false);
+			clientDependency.setToolTipText(UmlMessages.Message_ReadOnly);
+		} else if (!readOnly && !clientDependency.getTable().isEnabled()) {
+			clientDependency.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessagePropertiesEditionPart#updateClientDependency()
-	 * 
+	 * @generated
 	 */
 	public void updateClientDependency() {
 	clientDependency.refresh();
@@ -558,7 +615,7 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessagePropertiesEditionPart#addFilterClientDependency(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToClientDependency(ViewerFilter filter) {
 		clientDependencyFilters.add(filter);
@@ -568,7 +625,7 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessagePropertiesEditionPart#addBusinessFilterClientDependency(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToClientDependency(ViewerFilter filter) {
 		clientDependencyBusinessFilters.add(filter);
@@ -578,50 +635,64 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessagePropertiesEditionPart#isContainedInClientDependencyTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInClientDependencyTable(EObject element) {
 		return ((ReferencesTableSettings)clientDependency.getInput()).contains(element);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessagePropertiesEditionPart#getMessageSort()
-	 * 
+	 * @generated
 	 */
 	public Enumerator getMessageSort() {
-		EEnumLiteral selection = (EEnumLiteral) ((StructuredSelection) messageSort.getSelection()).getFirstElement();
-		return selection.getInstance();
+		Enumerator selection = (Enumerator) ((StructuredSelection) messageSort.getSelection()).getFirstElement();
+		return selection;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessagePropertiesEditionPart#initMessageSort(EEnum eenum, Enumerator current)
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessagePropertiesEditionPart#initMessageSort(Object input, Enumerator current)
 	 */
-	public void initMessageSort(EEnum eenum, Enumerator current) {
-		messageSort.setInput(eenum.getELiterals());
+	public void initMessageSort(Object input, Enumerator current) {
+		messageSort.setInput(input);
 		messageSort.modelUpdating(new StructuredSelection(current));
+		boolean readOnly = isReadOnly(UmlViewsRepository.Message.Properties.messageSort);
+		if (readOnly && messageSort.isEnabled()) {
+			messageSort.setEnabled(false);
+			messageSort.setToolTipText(UmlMessages.Message_ReadOnly);
+		} else if (!readOnly && !messageSort.isEnabled()) {
+			messageSort.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessagePropertiesEditionPart#setMessageSort(Enumerator newValue)
-	 * 
+	 * @generated
 	 */
 	public void setMessageSort(Enumerator newValue) {
 		messageSort.modelUpdating(new StructuredSelection(newValue));
+		boolean readOnly = isReadOnly(UmlViewsRepository.Message.Properties.messageSort);
+		if (readOnly && messageSort.isEnabled()) {
+			messageSort.setEnabled(false);
+			messageSort.setToolTipText(UmlMessages.Message_ReadOnly);
+		} else if (!readOnly && !messageSort.isEnabled()) {
+			messageSort.setEnabled(true);
+		}	
+		
 	}
-
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessagePropertiesEditionPart#getReceiveEvent()
-	 * 
+	 * @generated
 	 */
 	public EObject getReceiveEvent() {
 		if (receiveEvent.getSelection() instanceof StructuredSelection) {
@@ -642,13 +713,21 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 		if (current != null) {
 			receiveEvent.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.Message.Properties.receiveEvent);
+		if (readOnly && receiveEvent.isEnabled()) {
+			receiveEvent.setEnabled(false);
+			receiveEvent.setToolTipText(UmlMessages.Message_ReadOnly);
+		} else if (!readOnly && !receiveEvent.isEnabled()) {
+			receiveEvent.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessagePropertiesEditionPart#setReceiveEvent(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setReceiveEvent(EObject newValue) {
 		if (newValue != null) {
@@ -656,6 +735,14 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 		} else {
 			receiveEvent.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.Message.Properties.receiveEvent);
+		if (readOnly && receiveEvent.isEnabled()) {
+			receiveEvent.setEnabled(false);
+			receiveEvent.setToolTipText(UmlMessages.Message_ReadOnly);
+		} else if (!readOnly && !receiveEvent.isEnabled()) {
+			receiveEvent.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -671,7 +758,7 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessagePropertiesEditionPart#addFilterReceiveEvent(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToReceiveEvent(ViewerFilter filter) {
 		receiveEvent.addFilter(filter);
@@ -681,18 +768,17 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessagePropertiesEditionPart#addBusinessFilterReceiveEvent(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToReceiveEvent(ViewerFilter filter) {
 		receiveEvent.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessagePropertiesEditionPart#getSendEvent()
-	 * 
+	 * @generated
 	 */
 	public EObject getSendEvent() {
 		if (sendEvent.getSelection() instanceof StructuredSelection) {
@@ -713,13 +799,21 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 		if (current != null) {
 			sendEvent.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.Message.Properties.sendEvent);
+		if (readOnly && sendEvent.isEnabled()) {
+			sendEvent.setEnabled(false);
+			sendEvent.setToolTipText(UmlMessages.Message_ReadOnly);
+		} else if (!readOnly && !sendEvent.isEnabled()) {
+			sendEvent.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessagePropertiesEditionPart#setSendEvent(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setSendEvent(EObject newValue) {
 		if (newValue != null) {
@@ -727,6 +821,14 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 		} else {
 			sendEvent.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.Message.Properties.sendEvent);
+		if (readOnly && sendEvent.isEnabled()) {
+			sendEvent.setEnabled(false);
+			sendEvent.setToolTipText(UmlMessages.Message_ReadOnly);
+		} else if (!readOnly && !sendEvent.isEnabled()) {
+			sendEvent.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -742,7 +844,7 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessagePropertiesEditionPart#addFilterSendEvent(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToSendEvent(ViewerFilter filter) {
 		sendEvent.addFilter(filter);
@@ -752,18 +854,17 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessagePropertiesEditionPart#addBusinessFilterSendEvent(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToSendEvent(ViewerFilter filter) {
 		sendEvent.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessagePropertiesEditionPart#getConnector()
-	 * 
+	 * @generated
 	 */
 	public EObject getConnector() {
 		if (connector.getSelection() instanceof StructuredSelection) {
@@ -784,13 +885,21 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 		if (current != null) {
 			connector.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.Message.Properties.connector);
+		if (readOnly && connector.isEnabled()) {
+			connector.setEnabled(false);
+			connector.setToolTipText(UmlMessages.Message_ReadOnly);
+		} else if (!readOnly && !connector.isEnabled()) {
+			connector.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessagePropertiesEditionPart#setConnector(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setConnector(EObject newValue) {
 		if (newValue != null) {
@@ -798,6 +907,14 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 		} else {
 			connector.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.Message.Properties.connector);
+		if (readOnly && connector.isEnabled()) {
+			connector.setEnabled(false);
+			connector.setToolTipText(UmlMessages.Message_ReadOnly);
+		} else if (!readOnly && !connector.isEnabled()) {
+			connector.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -813,7 +930,7 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessagePropertiesEditionPart#addFilterConnector(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToConnector(ViewerFilter filter) {
 		connector.addFilter(filter);
@@ -823,18 +940,17 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessagePropertiesEditionPart#addBusinessFilterConnector(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToConnector(ViewerFilter filter) {
 		connector.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessagePropertiesEditionPart#getInteraction()
-	 * 
+	 * @generated
 	 */
 	public EObject getInteraction() {
 		if (interaction.getSelection() instanceof StructuredSelection) {
@@ -855,13 +971,21 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 		if (current != null) {
 			interaction.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.Message.Properties.interaction);
+		if (readOnly && interaction.isEnabled()) {
+			interaction.setEnabled(false);
+			interaction.setToolTipText(UmlMessages.Message_ReadOnly);
+		} else if (!readOnly && !interaction.isEnabled()) {
+			interaction.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessagePropertiesEditionPart#setInteraction(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setInteraction(EObject newValue) {
 		if (newValue != null) {
@@ -869,6 +993,14 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 		} else {
 			interaction.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.Message.Properties.interaction);
+		if (readOnly && interaction.isEnabled()) {
+			interaction.setEnabled(false);
+			interaction.setToolTipText(UmlMessages.Message_ReadOnly);
+		} else if (!readOnly && !interaction.isEnabled()) {
+			interaction.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -884,7 +1016,7 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessagePropertiesEditionPart#addFilterInteraction(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToInteraction(ViewerFilter filter) {
 		interaction.addFilter(filter);
@@ -894,7 +1026,7 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.MessagePropertiesEditionPart#addBusinessFilterInteraction(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToInteraction(ViewerFilter filter) {
 		interaction.addBusinessRuleFilter(filter);
@@ -905,20 +1037,16 @@ public class MessagePropertiesEditionPartImpl extends CompositePropertiesEdition
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
+	 * @generated
 	 */
 	public String getTitle() {
 		return UmlMessages.Message_Part_Title;
 	}
 
-	// Start of user code additional methods
-	
-	// End of user code
 
 
 }

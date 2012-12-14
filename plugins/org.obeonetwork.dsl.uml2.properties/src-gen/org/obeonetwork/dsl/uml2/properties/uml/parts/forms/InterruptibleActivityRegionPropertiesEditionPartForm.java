@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,75 +10,100 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts.forms;
 
-// Start of user code for imports
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
+import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
+
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Composite;
+
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
+
 import org.obeonetwork.dsl.uml2.properties.uml.parts.InterruptibleActivityRegionPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
+
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 
 
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
-public class InterruptibleActivityRegionPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, InterruptibleActivityRegionPropertiesEditionPart {
+public class InterruptibleActivityRegionPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, InterruptibleActivityRegionPropertiesEditionPart {
 
 	protected EObjectFlatComboViewer inActivity;
-		protected ReferencesTable node;
-		protected List<ViewerFilter> nodeBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> nodeFilters = new ArrayList<ViewerFilter>();
-		protected ReferencesTable interruptingEdge;
-		protected List<ViewerFilter> interruptingEdgeBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> interruptingEdgeFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable node;
+	protected List<ViewerFilter> nodeBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> nodeFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable interruptingEdge;
+	protected List<ViewerFilter> interruptingEdgeBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> interruptingEdgeFilters = new ArrayList<ViewerFilter>();
 
 
 
 	/**
+	 * For {@link ISection} use only.
+	 */
+	public InterruptibleActivityRegionPropertiesEditionPartForm() { super(); }
+
+	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
+	 * @generated
 	 */
 	public InterruptibleActivityRegionPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -89,7 +114,7 @@ public class InterruptibleActivityRegionPropertiesEditionPartForm extends Compos
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
-	 * 
+	 * @generated
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -107,7 +132,7 @@ public class InterruptibleActivityRegionPropertiesEditionPartForm extends Compos
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence interruptibleActivityRegionStep = new BindingCompositionSequence(propertiesEditionComponent);
@@ -139,7 +164,7 @@ public class InterruptibleActivityRegionPropertiesEditionPartForm extends Compos
 		composer.compose(view);
 	}
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
 		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
@@ -158,10 +183,10 @@ public class InterruptibleActivityRegionPropertiesEditionPartForm extends Compos
 	/**
 	 * @param parent the parent composite
 	 * @param widgetFactory factory to use to instanciante widget of the form
-	 * 
+	 * @generated
 	 */
 	protected Composite createInActivityFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, UmlMessages.InterruptibleActivityRegionPropertiesEditionPart_InActivityLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.InterruptibleActivityRegion.Properties.inActivity, UmlViewsRepository.FORM_KIND));
+		createDescription(parent, UmlViewsRepository.InterruptibleActivityRegion.Properties.inActivity, UmlMessages.InterruptibleActivityRegionPropertiesEditionPart_InActivityLabel);
 		inActivity = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.InterruptibleActivityRegion.Properties.inActivity, UmlViewsRepository.FORM_KIND));
 		widgetFactory.adapt(inActivity);
 		inActivity.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -186,10 +211,10 @@ public class InterruptibleActivityRegionPropertiesEditionPartForm extends Compos
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createNodeReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.node = new ReferencesTable(UmlMessages.InterruptibleActivityRegionPropertiesEditionPart_NodeLabel, new ReferencesTableListener	() {
+		this.node = new ReferencesTable(getDescription(UmlViewsRepository.InterruptibleActivityRegion.Properties.node, UmlMessages.InterruptibleActivityRegionPropertiesEditionPart_NodeLabel), new ReferencesTableListener	() {
 			public void handleAdd() { addNode(); }
 			public void handleEdit(EObject element) { editNode(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveNode(element, oldIndex, newIndex); }
@@ -217,7 +242,7 @@ public class InterruptibleActivityRegionPropertiesEditionPartForm extends Compos
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addNode() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(node.getInput(), nodeFilters, nodeBusinessFilters,
@@ -236,7 +261,7 @@ public class InterruptibleActivityRegionPropertiesEditionPartForm extends Compos
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveNode(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InterruptibleActivityRegionPropertiesEditionPartForm.this, UmlViewsRepository.InterruptibleActivityRegion.Properties.node, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -244,7 +269,7 @@ public class InterruptibleActivityRegionPropertiesEditionPartForm extends Compos
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromNode(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InterruptibleActivityRegionPropertiesEditionPartForm.this, UmlViewsRepository.InterruptibleActivityRegion.Properties.node, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -252,7 +277,7 @@ public class InterruptibleActivityRegionPropertiesEditionPartForm extends Compos
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editNode(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -267,10 +292,10 @@ public class InterruptibleActivityRegionPropertiesEditionPartForm extends Compos
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createInterruptingEdgeReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.interruptingEdge = new ReferencesTable(UmlMessages.InterruptibleActivityRegionPropertiesEditionPart_InterruptingEdgeLabel, new ReferencesTableListener	() {
+		this.interruptingEdge = new ReferencesTable(getDescription(UmlViewsRepository.InterruptibleActivityRegion.Properties.interruptingEdge, UmlMessages.InterruptibleActivityRegionPropertiesEditionPart_InterruptingEdgeLabel), new ReferencesTableListener	() {
 			public void handleAdd() { addInterruptingEdge(); }
 			public void handleEdit(EObject element) { editInterruptingEdge(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveInterruptingEdge(element, oldIndex, newIndex); }
@@ -298,7 +323,7 @@ public class InterruptibleActivityRegionPropertiesEditionPartForm extends Compos
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addInterruptingEdge() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(interruptingEdge.getInput(), interruptingEdgeFilters, interruptingEdgeBusinessFilters,
@@ -317,7 +342,7 @@ public class InterruptibleActivityRegionPropertiesEditionPartForm extends Compos
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveInterruptingEdge(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InterruptibleActivityRegionPropertiesEditionPartForm.this, UmlViewsRepository.InterruptibleActivityRegion.Properties.interruptingEdge, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -325,7 +350,7 @@ public class InterruptibleActivityRegionPropertiesEditionPartForm extends Compos
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromInterruptingEdge(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InterruptibleActivityRegionPropertiesEditionPartForm.this, UmlViewsRepository.InterruptibleActivityRegion.Properties.interruptingEdge, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -333,7 +358,7 @@ public class InterruptibleActivityRegionPropertiesEditionPartForm extends Compos
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editInterruptingEdge(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -348,24 +373,20 @@ public class InterruptibleActivityRegionPropertiesEditionPartForm extends Compos
 	}
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-
-// End of user code
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.InterruptibleActivityRegionPropertiesEditionPart#getInActivity()
-	 * 
+	 * @generated
 	 */
 	public EObject getInActivity() {
 		if (inActivity.getSelection() instanceof StructuredSelection) {
@@ -386,13 +407,21 @@ public class InterruptibleActivityRegionPropertiesEditionPartForm extends Compos
 		if (current != null) {
 			inActivity.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.InterruptibleActivityRegion.Properties.inActivity);
+		if (readOnly && inActivity.isEnabled()) {
+			inActivity.setEnabled(false);
+			inActivity.setToolTipText(UmlMessages.InterruptibleActivityRegion_ReadOnly);
+		} else if (!readOnly && !inActivity.isEnabled()) {
+			inActivity.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.InterruptibleActivityRegionPropertiesEditionPart#setInActivity(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setInActivity(EObject newValue) {
 		if (newValue != null) {
@@ -400,6 +429,14 @@ public class InterruptibleActivityRegionPropertiesEditionPartForm extends Compos
 		} else {
 			inActivity.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.InterruptibleActivityRegion.Properties.inActivity);
+		if (readOnly && inActivity.isEnabled()) {
+			inActivity.setEnabled(false);
+			inActivity.setToolTipText(UmlMessages.InterruptibleActivityRegion_ReadOnly);
+		} else if (!readOnly && !inActivity.isEnabled()) {
+			inActivity.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -415,7 +452,7 @@ public class InterruptibleActivityRegionPropertiesEditionPartForm extends Compos
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.InterruptibleActivityRegionPropertiesEditionPart#addFilterInActivity(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToInActivity(ViewerFilter filter) {
 		inActivity.addFilter(filter);
@@ -425,12 +462,11 @@ public class InterruptibleActivityRegionPropertiesEditionPartForm extends Compos
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.InterruptibleActivityRegionPropertiesEditionPart#addBusinessFilterInActivity(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToInActivity(ViewerFilter filter) {
 		inActivity.addBusinessRuleFilter(filter);
 	}
-
 
 
 
@@ -445,13 +481,21 @@ public class InterruptibleActivityRegionPropertiesEditionPartForm extends Compos
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		node.setContentProvider(contentProvider);
 		node.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.InterruptibleActivityRegion.Properties.node);
+		if (readOnly && node.getTable().isEnabled()) {
+			node.setEnabled(false);
+			node.setToolTipText(UmlMessages.InterruptibleActivityRegion_ReadOnly);
+		} else if (!readOnly && !node.getTable().isEnabled()) {
+			node.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.InterruptibleActivityRegionPropertiesEditionPart#updateNode()
-	 * 
+	 * @generated
 	 */
 	public void updateNode() {
 	node.refresh();
@@ -461,7 +505,7 @@ public class InterruptibleActivityRegionPropertiesEditionPartForm extends Compos
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.InterruptibleActivityRegionPropertiesEditionPart#addFilterNode(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToNode(ViewerFilter filter) {
 		nodeFilters.add(filter);
@@ -471,7 +515,7 @@ public class InterruptibleActivityRegionPropertiesEditionPartForm extends Compos
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.InterruptibleActivityRegionPropertiesEditionPart#addBusinessFilterNode(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToNode(ViewerFilter filter) {
 		nodeBusinessFilters.add(filter);
@@ -481,12 +525,11 @@ public class InterruptibleActivityRegionPropertiesEditionPartForm extends Compos
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.InterruptibleActivityRegionPropertiesEditionPart#isContainedInNodeTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInNodeTable(EObject element) {
 		return ((ReferencesTableSettings)node.getInput()).contains(element);
 	}
-
 
 
 
@@ -501,13 +544,21 @@ public class InterruptibleActivityRegionPropertiesEditionPartForm extends Compos
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		interruptingEdge.setContentProvider(contentProvider);
 		interruptingEdge.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.InterruptibleActivityRegion.Properties.interruptingEdge);
+		if (readOnly && interruptingEdge.getTable().isEnabled()) {
+			interruptingEdge.setEnabled(false);
+			interruptingEdge.setToolTipText(UmlMessages.InterruptibleActivityRegion_ReadOnly);
+		} else if (!readOnly && !interruptingEdge.getTable().isEnabled()) {
+			interruptingEdge.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.InterruptibleActivityRegionPropertiesEditionPart#updateInterruptingEdge()
-	 * 
+	 * @generated
 	 */
 	public void updateInterruptingEdge() {
 	interruptingEdge.refresh();
@@ -517,7 +568,7 @@ public class InterruptibleActivityRegionPropertiesEditionPartForm extends Compos
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.InterruptibleActivityRegionPropertiesEditionPart#addFilterInterruptingEdge(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToInterruptingEdge(ViewerFilter filter) {
 		interruptingEdgeFilters.add(filter);
@@ -527,7 +578,7 @@ public class InterruptibleActivityRegionPropertiesEditionPartForm extends Compos
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.InterruptibleActivityRegionPropertiesEditionPart#addBusinessFilterInterruptingEdge(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToInterruptingEdge(ViewerFilter filter) {
 		interruptingEdgeBusinessFilters.add(filter);
@@ -537,7 +588,7 @@ public class InterruptibleActivityRegionPropertiesEditionPartForm extends Compos
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.InterruptibleActivityRegionPropertiesEditionPart#isContainedInInterruptingEdgeTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInInterruptingEdgeTable(EObject element) {
 		return ((ReferencesTableSettings)interruptingEdge.getInput()).contains(element);
@@ -546,19 +597,18 @@ public class InterruptibleActivityRegionPropertiesEditionPartForm extends Compos
 
 
 
+
+
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
+	 * @generated
 	 */
 	public String getTitle() {
 		return UmlMessages.InterruptibleActivityRegion_Part_Title;
 	}
 
-	// Start of user code additional methods
-	
-	// End of user code
 
 
 }

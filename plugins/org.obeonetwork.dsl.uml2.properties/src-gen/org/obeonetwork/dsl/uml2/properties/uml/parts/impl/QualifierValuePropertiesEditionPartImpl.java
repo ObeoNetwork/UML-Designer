@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,41 +10,54 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts.impl;
 
-// Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
+
 import org.obeonetwork.dsl.uml2.properties.uml.parts.QualifierValuePropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
+
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 
 
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public class QualifierValuePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, QualifierValuePropertiesEditionPart {
 
@@ -56,7 +69,7 @@ public class QualifierValuePropertiesEditionPartImpl extends CompositeProperties
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
+	 * @generated
 	 */
 	public QualifierValuePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -67,7 +80,7 @@ public class QualifierValuePropertiesEditionPartImpl extends CompositeProperties
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
@@ -83,7 +96,7 @@ public class QualifierValuePropertiesEditionPartImpl extends CompositeProperties
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public void createControls(Composite view) { 
 		CompositionSequence qualifierValueStep = new BindingCompositionSequence(propertiesEditionComponent);
@@ -112,7 +125,7 @@ public class QualifierValuePropertiesEditionPartImpl extends CompositeProperties
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
@@ -128,10 +141,10 @@ public class QualifierValuePropertiesEditionPartImpl extends CompositeProperties
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createQualifierFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.QualifierValuePropertiesEditionPart_QualifierLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.QualifierValue.Properties.qualifier, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.QualifierValue.Properties.qualifier, UmlMessages.QualifierValuePropertiesEditionPart_QualifierLabel);
 		qualifier = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.QualifierValue.Properties.qualifier, UmlViewsRepository.SWT_KIND));
 		qualifier.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -151,10 +164,10 @@ public class QualifierValuePropertiesEditionPartImpl extends CompositeProperties
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createValueFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.QualifierValuePropertiesEditionPart_ValueLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.QualifierValue.Properties.value, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.QualifierValue.Properties.value, UmlMessages.QualifierValuePropertiesEditionPart_ValueLabel);
 		value = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.QualifierValue.Properties.value, UmlViewsRepository.SWT_KIND));
 		value.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -173,24 +186,20 @@ public class QualifierValuePropertiesEditionPartImpl extends CompositeProperties
 	}
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-
-// End of user code
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.QualifierValuePropertiesEditionPart#getQualifier()
-	 * 
+	 * @generated
 	 */
 	public EObject getQualifier() {
 		if (qualifier.getSelection() instanceof StructuredSelection) {
@@ -211,13 +220,21 @@ public class QualifierValuePropertiesEditionPartImpl extends CompositeProperties
 		if (current != null) {
 			qualifier.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.QualifierValue.Properties.qualifier);
+		if (readOnly && qualifier.isEnabled()) {
+			qualifier.setEnabled(false);
+			qualifier.setToolTipText(UmlMessages.QualifierValue_ReadOnly);
+		} else if (!readOnly && !qualifier.isEnabled()) {
+			qualifier.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.QualifierValuePropertiesEditionPart#setQualifier(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setQualifier(EObject newValue) {
 		if (newValue != null) {
@@ -225,6 +242,14 @@ public class QualifierValuePropertiesEditionPartImpl extends CompositeProperties
 		} else {
 			qualifier.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.QualifierValue.Properties.qualifier);
+		if (readOnly && qualifier.isEnabled()) {
+			qualifier.setEnabled(false);
+			qualifier.setToolTipText(UmlMessages.QualifierValue_ReadOnly);
+		} else if (!readOnly && !qualifier.isEnabled()) {
+			qualifier.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -240,7 +265,7 @@ public class QualifierValuePropertiesEditionPartImpl extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.QualifierValuePropertiesEditionPart#addFilterQualifier(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToQualifier(ViewerFilter filter) {
 		qualifier.addFilter(filter);
@@ -250,18 +275,17 @@ public class QualifierValuePropertiesEditionPartImpl extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.QualifierValuePropertiesEditionPart#addBusinessFilterQualifier(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToQualifier(ViewerFilter filter) {
 		qualifier.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.QualifierValuePropertiesEditionPart#getValue()
-	 * 
+	 * @generated
 	 */
 	public EObject getValue() {
 		if (value.getSelection() instanceof StructuredSelection) {
@@ -282,13 +306,21 @@ public class QualifierValuePropertiesEditionPartImpl extends CompositeProperties
 		if (current != null) {
 			value.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.QualifierValue.Properties.value);
+		if (readOnly && value.isEnabled()) {
+			value.setEnabled(false);
+			value.setToolTipText(UmlMessages.QualifierValue_ReadOnly);
+		} else if (!readOnly && !value.isEnabled()) {
+			value.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.QualifierValuePropertiesEditionPart#setValue(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setValue(EObject newValue) {
 		if (newValue != null) {
@@ -296,6 +328,14 @@ public class QualifierValuePropertiesEditionPartImpl extends CompositeProperties
 		} else {
 			value.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.QualifierValue.Properties.value);
+		if (readOnly && value.isEnabled()) {
+			value.setEnabled(false);
+			value.setToolTipText(UmlMessages.QualifierValue_ReadOnly);
+		} else if (!readOnly && !value.isEnabled()) {
+			value.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -311,7 +351,7 @@ public class QualifierValuePropertiesEditionPartImpl extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.QualifierValuePropertiesEditionPart#addFilterValue(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToValue(ViewerFilter filter) {
 		value.addFilter(filter);
@@ -321,7 +361,7 @@ public class QualifierValuePropertiesEditionPartImpl extends CompositeProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.QualifierValuePropertiesEditionPart#addBusinessFilterValue(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToValue(ViewerFilter filter) {
 		value.addBusinessRuleFilter(filter);
@@ -332,20 +372,16 @@ public class QualifierValuePropertiesEditionPartImpl extends CompositeProperties
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
+	 * @generated
 	 */
 	public String getTitle() {
 		return UmlMessages.QualifierValue_Part_Title;
 	}
 
-	// Start of user code additional methods
-	
-	// End of user code
 
 
 }

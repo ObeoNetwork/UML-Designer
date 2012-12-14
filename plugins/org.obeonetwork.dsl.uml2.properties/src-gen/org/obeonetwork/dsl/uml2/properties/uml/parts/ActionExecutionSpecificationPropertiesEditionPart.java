@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,56 +10,56 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts;
 
-// Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.ecore.EEnum;
+
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
-
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public interface ActionExecutionSpecificationPropertiesEditionPart {
 
 	/**
 	 * @return the name
-	 * 
+	 * @generated
 	 */
 	public String getName();
 
 	/**
 	 * Defines a new name
 	 * @param newValue the new name to set
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue);
 
 
 	/**
 	 * @return the visibility
-	 * 
+	 * @generated
 	 */
 	public Enumerator getVisibility();
 
 	/**
 	 * Init the visibility
-	 * @param eenum the enum to manage
+	 * @param input the viewer input
 	 * @param current the current value
 	 */
-	public void initVisibility(EEnum eenum, Enumerator current);
+	public void initVisibility(Object input, Enumerator current);
 
 	/**
 	 * Defines a new visibility
 	 * @param newValue the new visibility to set
-	 * 
+	 * @generated
 	 */
 	public void setVisibility(Enumerator newValue);
 
@@ -75,7 +75,7 @@ public interface ActionExecutionSpecificationPropertiesEditionPart {
 	/**
 	 * Update the clientDependency
 	 * @param newValue the clientDependency to update
-	 * 
+	 * @generated
 	 */
 	public void updateClientDependency();
 
@@ -85,7 +85,7 @@ public interface ActionExecutionSpecificationPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToClientDependency(ViewerFilter filter);
 
@@ -95,13 +95,13 @@ public interface ActionExecutionSpecificationPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToClientDependency(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the clientDependency table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInClientDependencyTable(EObject element);
 
@@ -117,7 +117,7 @@ public interface ActionExecutionSpecificationPropertiesEditionPart {
 	/**
 	 * Update the covered
 	 * @param newValue the covered to update
-	 * 
+	 * @generated
 	 */
 	public void updateCovered();
 
@@ -127,7 +127,7 @@ public interface ActionExecutionSpecificationPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToCovered(ViewerFilter filter);
 
@@ -137,20 +137,20 @@ public interface ActionExecutionSpecificationPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToCovered(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the covered table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInCoveredTable(EObject element);
 
 
 	/**
 	 * @return the enclosingInteraction
-	 * 
+	 * @generated
 	 */
 	public EObject getEnclosingInteraction();
 
@@ -163,14 +163,14 @@ public interface ActionExecutionSpecificationPropertiesEditionPart {
 	/**
 	 * Defines a new enclosingInteraction
 	 * @param newValue the new enclosingInteraction to set
-	 * 
+	 * @generated
 	 */
 	public void setEnclosingInteraction(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setEnclosingInteractionButtonMode(ButtonsModeEnum newValue);
 
@@ -180,7 +180,7 @@ public interface ActionExecutionSpecificationPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToEnclosingInteraction(ViewerFilter filter);
 
@@ -190,14 +190,14 @@ public interface ActionExecutionSpecificationPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToEnclosingInteraction(ViewerFilter filter);
 
 
 	/**
 	 * @return the enclosingOperand
-	 * 
+	 * @generated
 	 */
 	public EObject getEnclosingOperand();
 
@@ -210,14 +210,14 @@ public interface ActionExecutionSpecificationPropertiesEditionPart {
 	/**
 	 * Defines a new enclosingOperand
 	 * @param newValue the new enclosingOperand to set
-	 * 
+	 * @generated
 	 */
 	public void setEnclosingOperand(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setEnclosingOperandButtonMode(ButtonsModeEnum newValue);
 
@@ -227,7 +227,7 @@ public interface ActionExecutionSpecificationPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToEnclosingOperand(ViewerFilter filter);
 
@@ -237,14 +237,14 @@ public interface ActionExecutionSpecificationPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToEnclosingOperand(ViewerFilter filter);
 
 
 	/**
 	 * @return the start
-	 * 
+	 * @generated
 	 */
 	public EObject getStart();
 
@@ -257,14 +257,14 @@ public interface ActionExecutionSpecificationPropertiesEditionPart {
 	/**
 	 * Defines a new start
 	 * @param newValue the new start to set
-	 * 
+	 * @generated
 	 */
 	public void setStart(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setStartButtonMode(ButtonsModeEnum newValue);
 
@@ -274,7 +274,7 @@ public interface ActionExecutionSpecificationPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToStart(ViewerFilter filter);
 
@@ -284,14 +284,14 @@ public interface ActionExecutionSpecificationPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToStart(ViewerFilter filter);
 
 
 	/**
 	 * @return the finish
-	 * 
+	 * @generated
 	 */
 	public EObject getFinish();
 
@@ -304,14 +304,14 @@ public interface ActionExecutionSpecificationPropertiesEditionPart {
 	/**
 	 * Defines a new finish
 	 * @param newValue the new finish to set
-	 * 
+	 * @generated
 	 */
 	public void setFinish(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setFinishButtonMode(ButtonsModeEnum newValue);
 
@@ -321,7 +321,7 @@ public interface ActionExecutionSpecificationPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToFinish(ViewerFilter filter);
 
@@ -331,14 +331,14 @@ public interface ActionExecutionSpecificationPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToFinish(ViewerFilter filter);
 
 
 	/**
 	 * @return the action
-	 * 
+	 * @generated
 	 */
 	public EObject getAction();
 
@@ -351,14 +351,14 @@ public interface ActionExecutionSpecificationPropertiesEditionPart {
 	/**
 	 * Defines a new action
 	 * @param newValue the new action to set
-	 * 
+	 * @generated
 	 */
 	public void setAction(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setActionButtonMode(ButtonsModeEnum newValue);
 
@@ -368,7 +368,7 @@ public interface ActionExecutionSpecificationPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToAction(ViewerFilter filter);
 
@@ -378,7 +378,7 @@ public interface ActionExecutionSpecificationPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToAction(ViewerFilter filter);
 
@@ -390,12 +390,9 @@ public interface ActionExecutionSpecificationPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
-	 * 
+	 * @generated
 	 */
 	public String getTitle();
 
-	// Start of user code for additional methods
-
-// End of user code
 
 }

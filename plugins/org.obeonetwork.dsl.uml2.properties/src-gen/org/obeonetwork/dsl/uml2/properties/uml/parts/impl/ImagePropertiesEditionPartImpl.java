@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,38 +10,49 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts.impl;
 
-// Start of user code for imports
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.FocusAdapter;
 import org.eclipse.swt.events.FocusEvent;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
+
 import org.obeonetwork.dsl.uml2.properties.uml.parts.ImagePropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
+
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 
 
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public class ImagePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, ImagePropertiesEditionPart {
 
@@ -54,7 +65,7 @@ public class ImagePropertiesEditionPartImpl extends CompositePropertiesEditionPa
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
+	 * @generated
 	 */
 	public ImagePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -65,7 +76,7 @@ public class ImagePropertiesEditionPartImpl extends CompositePropertiesEditionPa
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
@@ -81,7 +92,7 @@ public class ImagePropertiesEditionPartImpl extends CompositePropertiesEditionPa
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public void createControls(Composite view) { 
 		CompositionSequence imageStep = new BindingCompositionSequence(propertiesEditionComponent);
@@ -114,7 +125,7 @@ public class ImagePropertiesEditionPartImpl extends CompositePropertiesEditionPa
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
@@ -128,10 +139,13 @@ public class ImagePropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		return propertiesGroup;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createContentText(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.ImagePropertiesEditionPart_ContentLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.Image.Properties.content, UmlViewsRepository.SWT_KIND));
-		content = new Text(parent, SWT.BORDER);
+		createDescription(parent, UmlViewsRepository.Image.Properties.content, UmlMessages.ImagePropertiesEditionPart_ContentLabel);
+		content = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData contentData = new GridData(GridData.FILL_HORIZONTAL);
 		content.setLayoutData(contentData);
 		content.addFocusListener(new FocusAdapter() {
@@ -140,7 +154,7 @@ public class ImagePropertiesEditionPartImpl extends CompositePropertiesEditionPa
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -156,7 +170,7 @@ public class ImagePropertiesEditionPartImpl extends CompositePropertiesEditionPa
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -174,10 +188,13 @@ public class ImagePropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		return parent;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createLocationText(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.ImagePropertiesEditionPart_LocationLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.Image.Properties.location, UmlViewsRepository.SWT_KIND));
-		location = new Text(parent, SWT.BORDER);
+		createDescription(parent, UmlViewsRepository.Image.Properties.location, UmlMessages.ImagePropertiesEditionPart_LocationLabel);
+		location = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData locationData = new GridData(GridData.FILL_HORIZONTAL);
 		location.setLayoutData(locationData);
 		location.addFocusListener(new FocusAdapter() {
@@ -186,7 +203,7 @@ public class ImagePropertiesEditionPartImpl extends CompositePropertiesEditionPa
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -202,7 +219,7 @@ public class ImagePropertiesEditionPartImpl extends CompositePropertiesEditionPa
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -220,10 +237,13 @@ public class ImagePropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		return parent;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createFormatText(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.ImagePropertiesEditionPart_FormatLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.Image.Properties.format, UmlViewsRepository.SWT_KIND));
-		format = new Text(parent, SWT.BORDER);
+		createDescription(parent, UmlViewsRepository.Image.Properties.format, UmlMessages.ImagePropertiesEditionPart_FormatLabel);
+		format = SWTUtils.createScrollableText(parent, SWT.BORDER);
 		GridData formatData = new GridData(GridData.FILL_HORIZONTAL);
 		format.setLayoutData(formatData);
 		format.addFocusListener(new FocusAdapter() {
@@ -232,7 +252,7 @@ public class ImagePropertiesEditionPartImpl extends CompositePropertiesEditionPa
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -248,7 +268,7 @@ public class ImagePropertiesEditionPartImpl extends CompositePropertiesEditionPa
 			 * {@inheritDoc}
 			 * 
 			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * 
+			 * @generated
 			 */
 			@Override
 			@SuppressWarnings("synthetic-access")
@@ -267,24 +287,20 @@ public class ImagePropertiesEditionPartImpl extends CompositePropertiesEditionPa
 	}
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-
-// End of user code
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ImagePropertiesEditionPart#getContent()
-	 * 
+	 * @generated
 	 */
 	public String getContent() {
 		return content.getText();
@@ -294,7 +310,7 @@ public class ImagePropertiesEditionPartImpl extends CompositePropertiesEditionPa
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ImagePropertiesEditionPart#setContent(String newValue)
-	 * 
+	 * @generated
 	 */
 	public void setContent(String newValue) {
 		if (newValue != null) {
@@ -302,14 +318,21 @@ public class ImagePropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		} else {
 			content.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.Image.Properties.content);
+		if (readOnly && content.isEnabled()) {
+			content.setEnabled(false);
+			content.setToolTipText(UmlMessages.Image_ReadOnly);
+		} else if (!readOnly && !content.isEnabled()) {
+			content.setEnabled(true);
+		}	
+		
 	}
-
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ImagePropertiesEditionPart#getLocation()
-	 * 
+	 * @generated
 	 */
 	public String getLocation() {
 		return location.getText();
@@ -319,7 +342,7 @@ public class ImagePropertiesEditionPartImpl extends CompositePropertiesEditionPa
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ImagePropertiesEditionPart#setLocation(String newValue)
-	 * 
+	 * @generated
 	 */
 	public void setLocation(String newValue) {
 		if (newValue != null) {
@@ -327,14 +350,21 @@ public class ImagePropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		} else {
 			location.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.Image.Properties.location);
+		if (readOnly && location.isEnabled()) {
+			location.setEnabled(false);
+			location.setToolTipText(UmlMessages.Image_ReadOnly);
+		} else if (!readOnly && !location.isEnabled()) {
+			location.setEnabled(true);
+		}	
+		
 	}
-
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ImagePropertiesEditionPart#getFormat()
-	 * 
+	 * @generated
 	 */
 	public String getFormat() {
 		return format.getText();
@@ -344,7 +374,7 @@ public class ImagePropertiesEditionPartImpl extends CompositePropertiesEditionPa
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ImagePropertiesEditionPart#setFormat(String newValue)
-	 * 
+	 * @generated
 	 */
 	public void setFormat(String newValue) {
 		if (newValue != null) {
@@ -352,8 +382,15 @@ public class ImagePropertiesEditionPartImpl extends CompositePropertiesEditionPa
 		} else {
 			format.setText(""); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.Image.Properties.format);
+		if (readOnly && format.isEnabled()) {
+			format.setEnabled(false);
+			format.setToolTipText(UmlMessages.Image_ReadOnly);
+		} else if (!readOnly && !format.isEnabled()) {
+			format.setEnabled(true);
+		}	
+		
 	}
-
 
 
 
@@ -364,15 +401,12 @@ public class ImagePropertiesEditionPartImpl extends CompositePropertiesEditionPa
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
+	 * @generated
 	 */
 	public String getTitle() {
 		return UmlMessages.Image_Part_Title;
 	}
 
-	// Start of user code additional methods
-	
-	// End of user code
 
 
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,35 +10,54 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.components;
 
-// Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
-import org.eclipse.emf.ecore.EEnum;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.ActivityNode;
@@ -51,18 +70,20 @@ import org.eclipse.uml2.uml.StructuredActivityNode;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
+
 import org.obeonetwork.dsl.uml2.properties.uml.parts.ReadStructuralFeatureActionPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 
 
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public class ReadStructuralFeatureActionPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
+	/**
+	 * @generated
+	 */
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
@@ -70,51 +91,52 @@ public class ReadStructuralFeatureActionPropertiesEditionComponent extends Singl
 	/**
 	 * Settings for clientDependency ReferencesTable
 	 */
-	private	ReferencesTableSettings clientDependencySettings;
+	private ReferencesTableSettings clientDependencySettings;
 	
 	/**
 	 * Settings for inStructuredNode EObjectFlatComboViewer
 	 */
-	private	EObjectFlatComboSettings inStructuredNodeSettings;
+	private EObjectFlatComboSettings inStructuredNodeSettings;
 	
 	/**
 	 * Settings for activity EObjectFlatComboViewer
 	 */
-	private	EObjectFlatComboSettings activitySettings;
+	private EObjectFlatComboSettings activitySettings;
 	
 	/**
 	 * Settings for outgoing ReferencesTable
 	 */
-	private	ReferencesTableSettings outgoingSettings;
+	private ReferencesTableSettings outgoingSettings;
 	
 	/**
 	 * Settings for incoming ReferencesTable
 	 */
-	private	ReferencesTableSettings incomingSettings;
+	private ReferencesTableSettings incomingSettings;
 	
 	/**
 	 * Settings for inPartition ReferencesTable
 	 */
-	private	ReferencesTableSettings inPartitionSettings;
+	private ReferencesTableSettings inPartitionSettings;
 	
 	/**
 	 * Settings for inInterruptibleRegion ReferencesTable
 	 */
-	private	ReferencesTableSettings inInterruptibleRegionSettings;
+	private ReferencesTableSettings inInterruptibleRegionSettings;
 	
 	/**
 	 * Settings for redefinedNode ReferencesTable
 	 */
-	private	ReferencesTableSettings redefinedNodeSettings;
+	private ReferencesTableSettings redefinedNodeSettings;
 	
 	/**
 	 * Settings for structuralFeature EObjectFlatComboViewer
 	 */
-	private	EObjectFlatComboSettings structuralFeatureSettings;
+	private EObjectFlatComboSettings structuralFeatureSettings;
+	
 	
 	/**
 	 * Default constructor
-	 * 
+	 * @generated
 	 */
 	public ReadStructuralFeatureActionPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject readStructuralFeatureAction, String editing_mode) {
 		super(editingContext, readStructuralFeatureAction, editing_mode);
@@ -128,27 +150,29 @@ public class ReadStructuralFeatureActionPropertiesEditionComponent extends Singl
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
-	 * 
+	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final ReadStructuralFeatureAction readStructuralFeatureAction = (ReadStructuralFeatureAction)elt;
 			final ReadStructuralFeatureActionPropertiesEditionPart basePart = (ReadStructuralFeatureActionPropertiesEditionPart)editingPart;
 			// init values
-			if (readStructuralFeatureAction.getName() != null && isAccessible(UmlViewsRepository.ReadStructuralFeatureAction.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(UMLPackage.eINSTANCE.getString(), readStructuralFeatureAction.getName()));
+			if (isAccessible(UmlViewsRepository.ReadStructuralFeatureAction.Properties.name))
+				basePart.setName(EEFConverterUtil.convertToString(UMLPackage.Literals.STRING, readStructuralFeatureAction.getName()));
 			
 			if (isAccessible(UmlViewsRepository.ReadStructuralFeatureAction.Properties.visibility)) {
-				basePart.initVisibility((EEnum) UMLPackage.eINSTANCE.getNamedElement_Visibility().getEType(), readStructuralFeatureAction.getVisibility());
+				basePart.initVisibility(EEFUtils.choiceOfValues(readStructuralFeatureAction, UMLPackage.eINSTANCE.getNamedElement_Visibility()), readStructuralFeatureAction.getVisibility());
 			}
 			if (isAccessible(UmlViewsRepository.ReadStructuralFeatureAction.Properties.clientDependency)) {
 				clientDependencySettings = new ReferencesTableSettings(readStructuralFeatureAction, UMLPackage.eINSTANCE.getNamedElement_ClientDependency());
 				basePart.initClientDependency(clientDependencySettings);
 			}
-			basePart.setIsLeaf(readStructuralFeatureAction.isLeaf());
-			
+			if (isAccessible(UmlViewsRepository.ReadStructuralFeatureAction.Properties.isLeaf)) {
+				basePart.setIsLeaf(readStructuralFeatureAction.isLeaf());
+			}
 			if (isAccessible(UmlViewsRepository.ReadStructuralFeatureAction.Properties.inStructuredNode)) {
 				// init part
 				inStructuredNodeSettings = new EObjectFlatComboSettings(readStructuralFeatureAction, UMLPackage.eINSTANCE.getActivityNode_InStructuredNode());
@@ -193,160 +217,151 @@ public class ReadStructuralFeatureActionPropertiesEditionComponent extends Singl
 			// init filters
 			
 			
-			basePart.addFilterToClientDependency(new ViewerFilter() {
+			if (isAccessible(UmlViewsRepository.ReadStructuralFeatureAction.Properties.clientDependency)) {
+				basePart.addFilterToClientDependency(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInClientDependencyTable((EObject)element));
+						return element instanceof Resource;
+					}
+				
+				});
+				basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.Literals.DEPENDENCY));
+			}
 			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInClientDependencyTable((EObject)element));
-					return element instanceof Resource;
-				}
-			
-			});
-			basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.eINSTANCE.getDependency()));
-			// Start of user code for additional businessfilters for clientDependency
-			// End of user code
-			
-			
-			basePart.addFilterToInStructuredNode(new ViewerFilter() {
-			
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof String && element.equals("")) || (element instanceof StructuredActivityNode); //$NON-NLS-1$ 
-				}
-			
-			});
-			// Start of user code for additional businessfilters for inStructuredNode
-			// End of user code
-			
-			basePart.addFilterToActivity(new ViewerFilter() {
-			
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof String && element.equals("")) || (element instanceof Activity); //$NON-NLS-1$ 
-				}
-			
-			});
-			// Start of user code for additional businessfilters for activity
-			// End of user code
-			
-			basePart.addFilterToOutgoing(new ViewerFilter() {
-			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInOutgoingTable((EObject)element));
-					return element instanceof Resource;
-				}
-			
-			});
-			basePart.addFilterToOutgoing(new EObjectFilter(UMLPackage.eINSTANCE.getActivityEdge()));
-			// Start of user code for additional businessfilters for outgoing
-			// End of user code
-			
-			basePart.addFilterToIncoming(new ViewerFilter() {
-			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInIncomingTable((EObject)element));
-					return element instanceof Resource;
-				}
-			
-			});
-			basePart.addFilterToIncoming(new EObjectFilter(UMLPackage.eINSTANCE.getActivityEdge()));
-			// Start of user code for additional businessfilters for incoming
-			// End of user code
-			
-			basePart.addFilterToInPartition(new ViewerFilter() {
-			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInInPartitionTable((EObject)element));
-					return element instanceof Resource;
-				}
-			
-			});
-			basePart.addFilterToInPartition(new EObjectFilter(UMLPackage.eINSTANCE.getActivityPartition()));
-			// Start of user code for additional businessfilters for inPartition
-			// End of user code
-			
-			basePart.addFilterToInInterruptibleRegion(new ViewerFilter() {
-			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInInInterruptibleRegionTable((EObject)element));
-					return element instanceof Resource;
-				}
-			
-			});
-			basePart.addFilterToInInterruptibleRegion(new EObjectFilter(UMLPackage.eINSTANCE.getInterruptibleActivityRegion()));
-			// Start of user code for additional businessfilters for inInterruptibleRegion
-			// End of user code
-			
-			basePart.addFilterToRedefinedNode(new ViewerFilter() {
-			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInRedefinedNodeTable((EObject)element));
-					return element instanceof Resource;
-				}
-			
-			});
-			basePart.addFilterToRedefinedNode(new EObjectFilter(UMLPackage.eINSTANCE.getActivityNode()));
-			// Start of user code for additional businessfilters for redefinedNode
-			// End of user code
-			
-			basePart.addFilterToStructuralFeature(new ViewerFilter() {
-			
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof StructuralFeature);
-				}
-			
-			});
-			// Start of user code for additional businessfilters for structuralFeature
-			// End of user code
-			
+			if (isAccessible(UmlViewsRepository.ReadStructuralFeatureAction.Properties.inStructuredNode)) {
+				basePart.addFilterToInStructuredNode(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof StructuredActivityNode); //$NON-NLS-1$ 
+					}
+					
+				});
+			}
+			if (isAccessible(UmlViewsRepository.ReadStructuralFeatureAction.Properties.activity)) {
+				basePart.addFilterToActivity(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof Activity); //$NON-NLS-1$ 
+					}
+					
+				});
+			}
+			if (isAccessible(UmlViewsRepository.ReadStructuralFeatureAction.Properties.outgoing)) {
+				basePart.addFilterToOutgoing(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInOutgoingTable((EObject)element));
+						return element instanceof Resource;
+					}
+				
+				});
+				basePart.addFilterToOutgoing(new EObjectFilter(UMLPackage.Literals.ACTIVITY_EDGE));
+			}
+			if (isAccessible(UmlViewsRepository.ReadStructuralFeatureAction.Properties.incoming)) {
+				basePart.addFilterToIncoming(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInIncomingTable((EObject)element));
+						return element instanceof Resource;
+					}
+				
+				});
+				basePart.addFilterToIncoming(new EObjectFilter(UMLPackage.Literals.ACTIVITY_EDGE));
+			}
+			if (isAccessible(UmlViewsRepository.ReadStructuralFeatureAction.Properties.inPartition)) {
+				basePart.addFilterToInPartition(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInInPartitionTable((EObject)element));
+						return element instanceof Resource;
+					}
+				
+				});
+				basePart.addFilterToInPartition(new EObjectFilter(UMLPackage.Literals.ACTIVITY_PARTITION));
+			}
+			if (isAccessible(UmlViewsRepository.ReadStructuralFeatureAction.Properties.inInterruptibleRegion)) {
+				basePart.addFilterToInInterruptibleRegion(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInInInterruptibleRegionTable((EObject)element));
+						return element instanceof Resource;
+					}
+				
+				});
+				basePart.addFilterToInInterruptibleRegion(new EObjectFilter(UMLPackage.Literals.INTERRUPTIBLE_ACTIVITY_REGION));
+			}
+			if (isAccessible(UmlViewsRepository.ReadStructuralFeatureAction.Properties.redefinedNode)) {
+				basePart.addFilterToRedefinedNode(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInRedefinedNodeTable((EObject)element));
+						return element instanceof Resource;
+					}
+				
+				});
+				basePart.addFilterToRedefinedNode(new EObjectFilter(UMLPackage.Literals.ACTIVITY_NODE));
+			}
+			if (isAccessible(UmlViewsRepository.ReadStructuralFeatureAction.Properties.structuralFeature)) {
+				basePart.addFilterToStructuralFeature(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof StructuralFeature);
+					}
+					
+				});
+			}
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -373,7 +388,7 @@ public class ReadStructuralFeatureActionPropertiesEditionComponent extends Singl
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
-	protected EStructuralFeature associatedFeature(Object editorKey) {
+	public EStructuralFeature associatedFeature(Object editorKey) {
 		if (editorKey == UmlViewsRepository.ReadStructuralFeatureAction.Properties.name) {
 			return UMLPackage.eINSTANCE.getNamedElement_Name();
 		}
@@ -416,12 +431,12 @@ public class ReadStructuralFeatureActionPropertiesEditionComponent extends Singl
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		ReadStructuralFeatureAction readStructuralFeatureAction = (ReadStructuralFeatureAction)semanticObject;
 		if (UmlViewsRepository.ReadStructuralFeatureAction.Properties.name == event.getAffectedEditor()) {
-			readStructuralFeatureAction.setName((java.lang.String)EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getString(), (String)event.getNewValue()));
+			readStructuralFeatureAction.setName((java.lang.String)EEFConverterUtil.createFromString(UMLPackage.Literals.STRING, (String)event.getNewValue()));
 		}
 		if (UmlViewsRepository.ReadStructuralFeatureAction.Properties.visibility == event.getAffectedEditor()) {
 			readStructuralFeatureAction.setVisibility((VisibilityKind)event.getNewValue());
@@ -432,7 +447,9 @@ public class ReadStructuralFeatureActionPropertiesEditionComponent extends Singl
 					clientDependencySettings.addToReference((EObject) event.getNewValue());
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-					clientDependencySettings.removeFromReference((EObject) event.getNewValue());
+				clientDependencySettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				clientDependencySettings.move(event.getNewIndex(), (Dependency) event.getNewValue());
 			}
 		}
 		if (UmlViewsRepository.ReadStructuralFeatureAction.Properties.isLeaf == event.getAffectedEditor()) {
@@ -476,7 +493,9 @@ public class ReadStructuralFeatureActionPropertiesEditionComponent extends Singl
 					outgoingSettings.addToReference((EObject) event.getNewValue());
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-					outgoingSettings.removeFromReference((EObject) event.getNewValue());
+				outgoingSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				outgoingSettings.move(event.getNewIndex(), (ActivityEdge) event.getNewValue());
 			}
 		}
 		if (UmlViewsRepository.ReadStructuralFeatureAction.Properties.incoming == event.getAffectedEditor()) {
@@ -485,7 +504,9 @@ public class ReadStructuralFeatureActionPropertiesEditionComponent extends Singl
 					incomingSettings.addToReference((EObject) event.getNewValue());
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-					incomingSettings.removeFromReference((EObject) event.getNewValue());
+				incomingSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				incomingSettings.move(event.getNewIndex(), (ActivityEdge) event.getNewValue());
 			}
 		}
 		if (UmlViewsRepository.ReadStructuralFeatureAction.Properties.inPartition == event.getAffectedEditor()) {
@@ -494,7 +515,9 @@ public class ReadStructuralFeatureActionPropertiesEditionComponent extends Singl
 					inPartitionSettings.addToReference((EObject) event.getNewValue());
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-					inPartitionSettings.removeFromReference((EObject) event.getNewValue());
+				inPartitionSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				inPartitionSettings.move(event.getNewIndex(), (ActivityPartition) event.getNewValue());
 			}
 		}
 		if (UmlViewsRepository.ReadStructuralFeatureAction.Properties.inInterruptibleRegion == event.getAffectedEditor()) {
@@ -503,7 +526,9 @@ public class ReadStructuralFeatureActionPropertiesEditionComponent extends Singl
 					inInterruptibleRegionSettings.addToReference((EObject) event.getNewValue());
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-					inInterruptibleRegionSettings.removeFromReference((EObject) event.getNewValue());
+				inInterruptibleRegionSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				inInterruptibleRegionSettings.move(event.getNewIndex(), (InterruptibleActivityRegion) event.getNewValue());
 			}
 		}
 		if (UmlViewsRepository.ReadStructuralFeatureAction.Properties.redefinedNode == event.getAffectedEditor()) {
@@ -512,7 +537,9 @@ public class ReadStructuralFeatureActionPropertiesEditionComponent extends Singl
 					redefinedNodeSettings.addToReference((EObject) event.getNewValue());
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-					redefinedNodeSettings.removeFromReference((EObject) event.getNewValue());
+				redefinedNodeSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				redefinedNodeSettings.move(event.getNewIndex(), (ActivityNode) event.getNewValue());
 			}
 		}
 		if (UmlViewsRepository.ReadStructuralFeatureAction.Properties.structuralFeature == event.getAffectedEditor()) {
@@ -536,21 +563,22 @@ public class ReadStructuralFeatureActionPropertiesEditionComponent extends Singl
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		if (editingPart.isVisible()) {	
+		super.updatePart(msg);
+		if (editingPart.isVisible()) {
 			ReadStructuralFeatureActionPropertiesEditionPart basePart = (ReadStructuralFeatureActionPropertiesEditionPart)editingPart;
-			if (UMLPackage.eINSTANCE.getNamedElement_Name().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.ReadStructuralFeatureAction.Properties.name)) {
+			if (UMLPackage.eINSTANCE.getNamedElement_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(UmlViewsRepository.ReadStructuralFeatureAction.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(UMLPackage.eINSTANCE.getString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(UMLPackage.Literals.STRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}
 			}
-			if (UMLPackage.eINSTANCE.getNamedElement_Visibility().equals(msg.getFeature()) && isAccessible(UmlViewsRepository.ReadStructuralFeatureAction.Properties.visibility))
-				basePart.setVisibility((Enumerator)msg.getNewValue());
+			if (UMLPackage.eINSTANCE.getNamedElement_Visibility().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(UmlViewsRepository.ReadStructuralFeatureAction.Properties.visibility))
+				basePart.setVisibility((VisibilityKind)msg.getNewValue());
 			
 			if (UMLPackage.eINSTANCE.getNamedElement_ClientDependency().equals(msg.getFeature())  && isAccessible(UmlViewsRepository.ReadStructuralFeatureAction.Properties.clientDependency))
 				basePart.updateClientDependency();
-			if (UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.ReadStructuralFeatureAction.Properties.isLeaf))
+			if (UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(UmlViewsRepository.ReadStructuralFeatureAction.Properties.isLeaf))
 				basePart.setIsLeaf((Boolean)msg.getNewValue());
 			
 			if (UMLPackage.eINSTANCE.getActivityNode_InStructuredNode().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.ReadStructuralFeatureAction.Properties.inStructuredNode))
@@ -573,12 +601,35 @@ public class ReadStructuralFeatureActionPropertiesEditionComponent extends Singl
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			UMLPackage.eINSTANCE.getNamedElement_Name(),
+			UMLPackage.eINSTANCE.getNamedElement_Visibility(),
+			UMLPackage.eINSTANCE.getNamedElement_ClientDependency(),
+			UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf(),
+			UMLPackage.eINSTANCE.getActivityNode_InStructuredNode(),
+			UMLPackage.eINSTANCE.getActivityNode_Activity(),
+			UMLPackage.eINSTANCE.getActivityNode_Outgoing(),
+			UMLPackage.eINSTANCE.getActivityNode_Incoming(),
+			UMLPackage.eINSTANCE.getActivityNode_InPartition(),
+			UMLPackage.eINSTANCE.getActivityNode_InInterruptibleRegion(),
+			UMLPackage.eINSTANCE.getActivityNode_RedefinedNode(),
+			UMLPackage.eINSTANCE.getStructuralFeatureAction_StructuralFeature()		);
+		return new NotificationFilter[] {filter,};
+	}
+
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
-	 * 
+	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
 		return key == UmlViewsRepository.ReadStructuralFeatureAction.Properties.isLeaf || key == UmlViewsRepository.ReadStructuralFeatureAction.Properties.structuralFeature;
@@ -588,7 +639,7 @@ public class ReadStructuralFeatureActionPropertiesEditionComponent extends Singl
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
@@ -597,21 +648,21 @@ public class ReadStructuralFeatureActionPropertiesEditionComponent extends Singl
 				if (UmlViewsRepository.ReadStructuralFeatureAction.Properties.name == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newValue);
 				}
 				if (UmlViewsRepository.ReadStructuralFeatureAction.Properties.visibility == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), newValue);
 				}
 				if (UmlViewsRepository.ReadStructuralFeatureAction.Properties.isLeaf == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), newValue);
 				}
@@ -623,5 +674,8 @@ public class ReadStructuralFeatureActionPropertiesEditionComponent extends Singl
 		}
 		return ret;
 	}
+
+
+	
 
 }

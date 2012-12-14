@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,35 +10,54 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.components;
 
-// Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.common.util.WrappedException;
-import org.eclipse.emf.ecore.EEnum;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehavioralFeature;
 import org.eclipse.uml2.uml.Classifier;
@@ -54,18 +73,20 @@ import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UseCase;
 import org.eclipse.uml2.uml.VisibilityKind;
+
 import org.obeonetwork.dsl.uml2.properties.uml.parts.ProtocolStateMachinePropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 
 
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
+	/**
+	 * @generated
+	 */
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
@@ -73,76 +94,77 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 	/**
 	 * Settings for clientDependency ReferencesTable
 	 */
-	private	ReferencesTableSettings clientDependencySettings;
+	private ReferencesTableSettings clientDependencySettings;
 	
 	/**
 	 * Settings for owningTemplateParameter EObjectFlatComboViewer
 	 */
-	private	EObjectFlatComboSettings owningTemplateParameterSettings;
+	private EObjectFlatComboSettings owningTemplateParameterSettings;
 	
 	/**
 	 * Settings for templateParameter EObjectFlatComboViewer
 	 */
-	private	EObjectFlatComboSettings templateParameterSettings;
+	private EObjectFlatComboSettings templateParameterSettings;
 	
 	/**
 	 * Settings for powertypeExtent ReferencesTable
 	 */
-	private	ReferencesTableSettings powertypeExtentSettings;
+	private ReferencesTableSettings powertypeExtentSettings;
 	
 	/**
 	 * Settings for redefinedClassifier ReferencesTable
 	 */
-	private	ReferencesTableSettings redefinedClassifierSettings;
+	private ReferencesTableSettings redefinedClassifierSettings;
 	
 	/**
 	 * Settings for representation EObjectFlatComboViewer
 	 */
-	private	EObjectFlatComboSettings representationSettings;
+	private EObjectFlatComboSettings representationSettings;
 	
 	/**
 	 * Settings for useCase ReferencesTable
 	 */
-	private	ReferencesTableSettings useCaseSettings;
+	private ReferencesTableSettings useCaseSettings;
 	
 	/**
 	 * Settings for classifierBehavior EObjectFlatComboViewer
 	 */
-	private	EObjectFlatComboSettings classifierBehaviorSettings;
+	private EObjectFlatComboSettings classifierBehaviorSettings;
 	
 	/**
 	 * Settings for redefinedBehavior ReferencesTable
 	 */
-	private	ReferencesTableSettings redefinedBehaviorSettings;
+	private ReferencesTableSettings redefinedBehaviorSettings;
 	
 	/**
 	 * Settings for precondition ReferencesTable
 	 */
-	private	ReferencesTableSettings preconditionSettings;
+	private ReferencesTableSettings preconditionSettings;
 	
 	/**
 	 * Settings for postcondition ReferencesTable
 	 */
-	private	ReferencesTableSettings postconditionSettings;
+	private ReferencesTableSettings postconditionSettings;
 	
 	/**
 	 * Settings for specification EObjectFlatComboViewer
 	 */
-	private	EObjectFlatComboSettings specificationSettings;
+	private EObjectFlatComboSettings specificationSettings;
 	
 	/**
 	 * Settings for submachineState ReferencesTable
 	 */
-	private	ReferencesTableSettings submachineStateSettings;
+	private ReferencesTableSettings submachineStateSettings;
 	
 	/**
 	 * Settings for extendedStateMachine ReferencesTable
 	 */
-	private	ReferencesTableSettings extendedStateMachineSettings;
+	private ReferencesTableSettings extendedStateMachineSettings;
+	
 	
 	/**
 	 * Default constructor
-	 * 
+	 * @generated
 	 */
 	public ProtocolStateMachinePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject protocolStateMachine, String editing_mode) {
 		super(editingContext, protocolStateMachine, editing_mode);
@@ -156,27 +178,29 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
-	 * 
+	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final ProtocolStateMachine protocolStateMachine = (ProtocolStateMachine)elt;
 			final ProtocolStateMachinePropertiesEditionPart basePart = (ProtocolStateMachinePropertiesEditionPart)editingPart;
 			// init values
-			if (protocolStateMachine.getName() != null && isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(UMLPackage.eINSTANCE.getString(), protocolStateMachine.getName()));
+			if (isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.name))
+				basePart.setName(EEFConverterUtil.convertToString(UMLPackage.Literals.STRING, protocolStateMachine.getName()));
 			
 			if (isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.visibility)) {
-				basePart.initVisibility((EEnum) UMLPackage.eINSTANCE.getNamedElement_Visibility().getEType(), protocolStateMachine.getVisibility());
+				basePart.initVisibility(EEFUtils.choiceOfValues(protocolStateMachine, UMLPackage.eINSTANCE.getNamedElement_Visibility()), protocolStateMachine.getVisibility());
 			}
 			if (isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.clientDependency)) {
 				clientDependencySettings = new ReferencesTableSettings(protocolStateMachine, UMLPackage.eINSTANCE.getNamedElement_ClientDependency());
 				basePart.initClientDependency(clientDependencySettings);
 			}
-			basePart.setIsLeaf(protocolStateMachine.isLeaf());
-			
+			if (isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.isLeaf)) {
+				basePart.setIsLeaf(protocolStateMachine.isLeaf());
+			}
 			if (isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.owningTemplateParameter)) {
 				// init part
 				owningTemplateParameterSettings = new EObjectFlatComboSettings(protocolStateMachine, UMLPackage.eINSTANCE.getParameterableElement_OwningTemplateParameter());
@@ -191,8 +215,9 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 				// set the button mode
 				basePart.setTemplateParameterButtonMode(ButtonsModeEnum.BROWSE);
 			}
-			basePart.setIsAbstract(protocolStateMachine.isAbstract());
-			
+			if (isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.isAbstract)) {
+				basePart.setIsAbstract(protocolStateMachine.isAbstract());
+			}
 			if (isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.powertypeExtent)) {
 				powertypeExtentSettings = new ReferencesTableSettings(protocolStateMachine, UMLPackage.eINSTANCE.getClassifier_PowertypeExtent());
 				basePart.initPowertypeExtent(powertypeExtentSettings);
@@ -219,10 +244,12 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 				// set the button mode
 				basePart.setClassifierBehaviorButtonMode(ButtonsModeEnum.BROWSE);
 			}
-			basePart.setIsActive(protocolStateMachine.isActive());
-			
-			basePart.setIsReentrant(protocolStateMachine.isReentrant());
-			
+			if (isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.isActive)) {
+				basePart.setIsActive(protocolStateMachine.isActive());
+			}
+			if (isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.isReentrant)) {
+				basePart.setIsReentrant(protocolStateMachine.isReentrant());
+			}
 			if (isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.redefinedBehavior)) {
 				redefinedBehaviorSettings = new ReferencesTableSettings(protocolStateMachine, UMLPackage.eINSTANCE.getBehavior_RedefinedBehavior());
 				basePart.initRedefinedBehavior(redefinedBehaviorSettings);
@@ -253,247 +280,233 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 			// init filters
 			
 			
-			basePart.addFilterToClientDependency(new ViewerFilter() {
+			if (isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.clientDependency)) {
+				basePart.addFilterToClientDependency(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInClientDependencyTable((EObject)element));
+						return element instanceof Resource;
+					}
+				
+				});
+				basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.Literals.DEPENDENCY));
+			}
 			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInClientDependencyTable((EObject)element));
-					return element instanceof Resource;
-				}
+			if (isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.owningTemplateParameter)) {
+				basePart.addFilterToOwningTemplateParameter(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof TemplateParameter); //$NON-NLS-1$ 
+					}
+					
+				});
+			}
+			if (isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.templateParameter)) {
+				basePart.addFilterToTemplateParameter(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof TemplateParameter); //$NON-NLS-1$ 
+					}
+					
+				});
+			}
 			
-			});
-			basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.eINSTANCE.getDependency()));
-			// Start of user code for additional businessfilters for clientDependency
-			// End of user code
-			
-			
-			basePart.addFilterToOwningTemplateParameter(new ViewerFilter() {
-			
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof String && element.equals("")) || (element instanceof TemplateParameter); //$NON-NLS-1$ 
-				}
-			
-			});
-			// Start of user code for additional businessfilters for owningTemplateParameter
-			// End of user code
-			
-			basePart.addFilterToTemplateParameter(new ViewerFilter() {
-			
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof String && element.equals("")) || (element instanceof TemplateParameter); //$NON-NLS-1$ 
-				}
-			
-			});
-			// Start of user code for additional businessfilters for templateParameter
-			// End of user code
-			
-			
-			basePart.addFilterToPowertypeExtent(new ViewerFilter() {
-			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInPowertypeExtentTable((EObject)element));
-					return element instanceof Resource;
-				}
-			
-			});
-			basePart.addFilterToPowertypeExtent(new EObjectFilter(UMLPackage.eINSTANCE.getGeneralizationSet()));
-			// Start of user code for additional businessfilters for powertypeExtent
-			// End of user code
-			
-			basePart.addFilterToRedefinedClassifier(new ViewerFilter() {
-			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInRedefinedClassifierTable((EObject)element));
-					return element instanceof Resource;
-				}
-			
-			});
-			basePart.addFilterToRedefinedClassifier(new EObjectFilter(UMLPackage.eINSTANCE.getClassifier()));
-			// Start of user code for additional businessfilters for redefinedClassifier
-			// End of user code
-			
-			basePart.addFilterToRepresentation(new ViewerFilter() {
-			
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof String && element.equals("")) || (element instanceof CollaborationUse); //$NON-NLS-1$ 
-				}
-			
-			});
-			// Start of user code for additional businessfilters for representation
-			// End of user code
-			
-			basePart.addFilterToUseCase(new ViewerFilter() {
-			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInUseCaseTable((EObject)element));
-					return element instanceof Resource;
-				}
-			
-			});
-			basePart.addFilterToUseCase(new EObjectFilter(UMLPackage.eINSTANCE.getUseCase()));
-			// Start of user code for additional businessfilters for useCase
-			// End of user code
-			
-			basePart.addFilterToClassifierBehavior(new ViewerFilter() {
-			
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof String && element.equals("")) || (element instanceof Behavior); //$NON-NLS-1$ 
-				}
-			
-			});
-			// Start of user code for additional businessfilters for classifierBehavior
-			// End of user code
+			if (isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.powertypeExtent)) {
+				basePart.addFilterToPowertypeExtent(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInPowertypeExtentTable((EObject)element));
+						return element instanceof Resource;
+					}
+				
+				});
+				basePart.addFilterToPowertypeExtent(new EObjectFilter(UMLPackage.Literals.GENERALIZATION_SET));
+			}
+			if (isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.redefinedClassifier)) {
+				basePart.addFilterToRedefinedClassifier(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInRedefinedClassifierTable((EObject)element));
+						return element instanceof Resource;
+					}
+				
+				});
+				basePart.addFilterToRedefinedClassifier(new EObjectFilter(UMLPackage.Literals.CLASSIFIER));
+			}
+			if (isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.representation)) {
+				basePart.addFilterToRepresentation(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof CollaborationUse); //$NON-NLS-1$ 
+					}
+					
+				});
+			}
+			if (isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.useCase)) {
+				basePart.addFilterToUseCase(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInUseCaseTable((EObject)element));
+						return element instanceof Resource;
+					}
+				
+				});
+				basePart.addFilterToUseCase(new EObjectFilter(UMLPackage.Literals.USE_CASE));
+			}
+			if (isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.classifierBehavior)) {
+				basePart.addFilterToClassifierBehavior(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof Behavior); //$NON-NLS-1$ 
+					}
+					
+				});
+			}
 			
 			
-			
-			basePart.addFilterToRedefinedBehavior(new ViewerFilter() {
-			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInRedefinedBehaviorTable((EObject)element));
-					return element instanceof Resource;
-				}
-			
-			});
-			basePart.addFilterToRedefinedBehavior(new EObjectFilter(UMLPackage.eINSTANCE.getBehavior()));
-			// Start of user code for additional businessfilters for redefinedBehavior
-			// End of user code
-			
-			basePart.addFilterToPrecondition(new ViewerFilter() {
-			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInPreconditionTable((EObject)element));
-					return element instanceof Resource;
-				}
-			
-			});
-			basePart.addFilterToPrecondition(new EObjectFilter(UMLPackage.eINSTANCE.getConstraint()));
-			// Start of user code for additional businessfilters for precondition
-			// End of user code
-			
-			basePart.addFilterToPostcondition(new ViewerFilter() {
-			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInPostconditionTable((EObject)element));
-					return element instanceof Resource;
-				}
-			
-			});
-			basePart.addFilterToPostcondition(new EObjectFilter(UMLPackage.eINSTANCE.getConstraint()));
-			// Start of user code for additional businessfilters for postcondition
-			// End of user code
-			
-			basePart.addFilterToSpecification(new ViewerFilter() {
-			
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof String && element.equals("")) || (element instanceof BehavioralFeature); //$NON-NLS-1$ 
-				}
-			
-			});
-			// Start of user code for additional businessfilters for specification
-			// End of user code
-			
-			basePart.addFilterToSubmachineState(new ViewerFilter() {
-			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInSubmachineStateTable((EObject)element));
-					return element instanceof Resource;
-				}
-			
-			});
-			basePart.addFilterToSubmachineState(new EObjectFilter(UMLPackage.eINSTANCE.getState()));
-			// Start of user code for additional businessfilters for submachineState
-			// End of user code
-			
-			basePart.addFilterToExtendedStateMachine(new ViewerFilter() {
-			
-				/**
-				 * {@inheritDoc}
-				 * 
-				 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-				 */
-				public boolean select(Viewer viewer, Object parentElement, Object element) {
-					if (element instanceof EObject)
-						return (!basePart.isContainedInExtendedStateMachineTable((EObject)element));
-					return element instanceof Resource;
-				}
-			
-			});
-			basePart.addFilterToExtendedStateMachine(new EObjectFilter(UMLPackage.eINSTANCE.getStateMachine()));
-			// Start of user code for additional businessfilters for extendedStateMachine
-			// End of user code
-			
+			if (isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.redefinedBehavior)) {
+				basePart.addFilterToRedefinedBehavior(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInRedefinedBehaviorTable((EObject)element));
+						return element instanceof Resource;
+					}
+				
+				});
+				basePart.addFilterToRedefinedBehavior(new EObjectFilter(UMLPackage.Literals.BEHAVIOR));
+			}
+			if (isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.precondition)) {
+				basePart.addFilterToPrecondition(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInPreconditionTable((EObject)element));
+						return element instanceof Resource;
+					}
+				
+				});
+				basePart.addFilterToPrecondition(new EObjectFilter(UMLPackage.Literals.CONSTRAINT));
+			}
+			if (isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.postcondition)) {
+				basePart.addFilterToPostcondition(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInPostconditionTable((EObject)element));
+						return element instanceof Resource;
+					}
+				
+				});
+				basePart.addFilterToPostcondition(new EObjectFilter(UMLPackage.Literals.CONSTRAINT));
+			}
+			if (isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.specification)) {
+				basePart.addFilterToSpecification(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof BehavioralFeature); //$NON-NLS-1$ 
+					}
+					
+				});
+			}
+			if (isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.submachineState)) {
+				basePart.addFilterToSubmachineState(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInSubmachineStateTable((EObject)element));
+						return element instanceof Resource;
+					}
+				
+				});
+				basePart.addFilterToSubmachineState(new EObjectFilter(UMLPackage.Literals.STATE));
+			}
+			if (isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.extendedStateMachine)) {
+				basePart.addFilterToExtendedStateMachine(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						if (element instanceof EObject)
+							return (!basePart.isContainedInExtendedStateMachineTable((EObject)element));
+						return element instanceof Resource;
+					}
+				
+				});
+				basePart.addFilterToExtendedStateMachine(new EObjectFilter(UMLPackage.Literals.STATE_MACHINE));
+			}
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -528,7 +541,7 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
-	protected EStructuralFeature associatedFeature(Object editorKey) {
+	public EStructuralFeature associatedFeature(Object editorKey) {
 		if (editorKey == UmlViewsRepository.ProtocolStateMachine.Properties.name) {
 			return UMLPackage.eINSTANCE.getNamedElement_Name();
 		}
@@ -595,12 +608,12 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		ProtocolStateMachine protocolStateMachine = (ProtocolStateMachine)semanticObject;
 		if (UmlViewsRepository.ProtocolStateMachine.Properties.name == event.getAffectedEditor()) {
-			protocolStateMachine.setName((java.lang.String)EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getString(), (String)event.getNewValue()));
+			protocolStateMachine.setName((java.lang.String)EEFConverterUtil.createFromString(UMLPackage.Literals.STRING, (String)event.getNewValue()));
 		}
 		if (UmlViewsRepository.ProtocolStateMachine.Properties.visibility == event.getAffectedEditor()) {
 			protocolStateMachine.setVisibility((VisibilityKind)event.getNewValue());
@@ -611,7 +624,9 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 					clientDependencySettings.addToReference((EObject) event.getNewValue());
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-					clientDependencySettings.removeFromReference((EObject) event.getNewValue());
+				clientDependencySettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				clientDependencySettings.move(event.getNewIndex(), (Dependency) event.getNewValue());
 			}
 		}
 		if (UmlViewsRepository.ProtocolStateMachine.Properties.isLeaf == event.getAffectedEditor()) {
@@ -658,7 +673,9 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 					powertypeExtentSettings.addToReference((EObject) event.getNewValue());
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-					powertypeExtentSettings.removeFromReference((EObject) event.getNewValue());
+				powertypeExtentSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				powertypeExtentSettings.move(event.getNewIndex(), (GeneralizationSet) event.getNewValue());
 			}
 		}
 		if (UmlViewsRepository.ProtocolStateMachine.Properties.redefinedClassifier == event.getAffectedEditor()) {
@@ -667,7 +684,9 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 					redefinedClassifierSettings.addToReference((EObject) event.getNewValue());
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-					redefinedClassifierSettings.removeFromReference((EObject) event.getNewValue());
+				redefinedClassifierSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				redefinedClassifierSettings.move(event.getNewIndex(), (Classifier) event.getNewValue());
 			}
 		}
 		if (UmlViewsRepository.ProtocolStateMachine.Properties.representation == event.getAffectedEditor()) {
@@ -692,7 +711,9 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 					useCaseSettings.addToReference((EObject) event.getNewValue());
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-					useCaseSettings.removeFromReference((EObject) event.getNewValue());
+				useCaseSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				useCaseSettings.move(event.getNewIndex(), (UseCase) event.getNewValue());
 			}
 		}
 		if (UmlViewsRepository.ProtocolStateMachine.Properties.classifierBehavior == event.getAffectedEditor()) {
@@ -721,7 +742,9 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 					redefinedBehaviorSettings.addToReference((EObject) event.getNewValue());
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-					redefinedBehaviorSettings.removeFromReference((EObject) event.getNewValue());
+				redefinedBehaviorSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				redefinedBehaviorSettings.move(event.getNewIndex(), (Behavior) event.getNewValue());
 			}
 		}
 		if (UmlViewsRepository.ProtocolStateMachine.Properties.precondition == event.getAffectedEditor()) {
@@ -730,7 +753,9 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 					preconditionSettings.addToReference((EObject) event.getNewValue());
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-					preconditionSettings.removeFromReference((EObject) event.getNewValue());
+				preconditionSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				preconditionSettings.move(event.getNewIndex(), (Constraint) event.getNewValue());
 			}
 		}
 		if (UmlViewsRepository.ProtocolStateMachine.Properties.postcondition == event.getAffectedEditor()) {
@@ -739,7 +764,9 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 					postconditionSettings.addToReference((EObject) event.getNewValue());
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-					postconditionSettings.removeFromReference((EObject) event.getNewValue());
+				postconditionSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				postconditionSettings.move(event.getNewIndex(), (Constraint) event.getNewValue());
 			}
 		}
 		if (UmlViewsRepository.ProtocolStateMachine.Properties.specification == event.getAffectedEditor()) {
@@ -762,7 +789,9 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 					submachineStateSettings.addToReference((EObject) event.getNewValue());
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-					submachineStateSettings.removeFromReference((EObject) event.getNewValue());
+				submachineStateSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				submachineStateSettings.move(event.getNewIndex(), (State) event.getNewValue());
 			}
 		}
 		if (UmlViewsRepository.ProtocolStateMachine.Properties.extendedStateMachine == event.getAffectedEditor()) {
@@ -771,7 +800,9 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 					extendedStateMachineSettings.addToReference((EObject) event.getNewValue());
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-					extendedStateMachineSettings.removeFromReference((EObject) event.getNewValue());
+				extendedStateMachineSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				extendedStateMachineSettings.move(event.getNewIndex(), (StateMachine) event.getNewValue());
 			}
 		}
 	}
@@ -781,28 +812,29 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		if (editingPart.isVisible()) {	
+		super.updatePart(msg);
+		if (editingPart.isVisible()) {
 			ProtocolStateMachinePropertiesEditionPart basePart = (ProtocolStateMachinePropertiesEditionPart)editingPart;
-			if (UMLPackage.eINSTANCE.getNamedElement_Name().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.name)) {
+			if (UMLPackage.eINSTANCE.getNamedElement_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.name)) {
 				if (msg.getNewValue() != null) {
-					basePart.setName(EcoreUtil.convertToString(UMLPackage.eINSTANCE.getString(), msg.getNewValue()));
+					basePart.setName(EcoreUtil.convertToString(UMLPackage.Literals.STRING, msg.getNewValue()));
 				} else {
 					basePart.setName("");
 				}
 			}
-			if (UMLPackage.eINSTANCE.getNamedElement_Visibility().equals(msg.getFeature()) && isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.visibility))
-				basePart.setVisibility((Enumerator)msg.getNewValue());
+			if (UMLPackage.eINSTANCE.getNamedElement_Visibility().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.visibility))
+				basePart.setVisibility((VisibilityKind)msg.getNewValue());
 			
 			if (UMLPackage.eINSTANCE.getNamedElement_ClientDependency().equals(msg.getFeature())  && isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.clientDependency))
 				basePart.updateClientDependency();
-			if (UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.isLeaf))
+			if (UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.isLeaf))
 				basePart.setIsLeaf((Boolean)msg.getNewValue());
 			
 			if (UMLPackage.eINSTANCE.getParameterableElement_OwningTemplateParameter().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.owningTemplateParameter))
 				basePart.setOwningTemplateParameter((EObject)msg.getNewValue());
 			if (UMLPackage.eINSTANCE.getParameterableElement_TemplateParameter().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.templateParameter))
 				basePart.setTemplateParameter((EObject)msg.getNewValue());
-			if (UMLPackage.eINSTANCE.getClassifier_IsAbstract().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.isAbstract))
+			if (UMLPackage.eINSTANCE.getClassifier_IsAbstract().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.isAbstract))
 				basePart.setIsAbstract((Boolean)msg.getNewValue());
 			
 			if (UMLPackage.eINSTANCE.getClassifier_PowertypeExtent().equals(msg.getFeature())  && isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.powertypeExtent))
@@ -815,10 +847,10 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 				basePart.updateUseCase();
 			if (UMLPackage.eINSTANCE.getBehavioredClassifier_ClassifierBehavior().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.classifierBehavior))
 				basePart.setClassifierBehavior((EObject)msg.getNewValue());
-			if (UMLPackage.eINSTANCE.getClass_IsActive().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.isActive))
+			if (UMLPackage.eINSTANCE.getClass_IsActive().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.isActive))
 				basePart.setIsActive((Boolean)msg.getNewValue());
 			
-			if (UMLPackage.eINSTANCE.getBehavior_IsReentrant().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.isReentrant))
+			if (UMLPackage.eINSTANCE.getBehavior_IsReentrant().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.isReentrant))
 				basePart.setIsReentrant((Boolean)msg.getNewValue());
 			
 			if (UMLPackage.eINSTANCE.getBehavior_RedefinedBehavior().equals(msg.getFeature())  && isAccessible(UmlViewsRepository.ProtocolStateMachine.Properties.redefinedBehavior))
@@ -837,12 +869,43 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			UMLPackage.eINSTANCE.getNamedElement_Name(),
+			UMLPackage.eINSTANCE.getNamedElement_Visibility(),
+			UMLPackage.eINSTANCE.getNamedElement_ClientDependency(),
+			UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf(),
+			UMLPackage.eINSTANCE.getParameterableElement_OwningTemplateParameter(),
+			UMLPackage.eINSTANCE.getParameterableElement_TemplateParameter(),
+			UMLPackage.eINSTANCE.getClassifier_IsAbstract(),
+			UMLPackage.eINSTANCE.getClassifier_PowertypeExtent(),
+			UMLPackage.eINSTANCE.getClassifier_RedefinedClassifier(),
+			UMLPackage.eINSTANCE.getClassifier_Representation(),
+			UMLPackage.eINSTANCE.getClassifier_UseCase(),
+			UMLPackage.eINSTANCE.getBehavioredClassifier_ClassifierBehavior(),
+			UMLPackage.eINSTANCE.getClass_IsActive(),
+			UMLPackage.eINSTANCE.getBehavior_IsReentrant(),
+			UMLPackage.eINSTANCE.getBehavior_RedefinedBehavior(),
+			UMLPackage.eINSTANCE.getBehavior_Precondition(),
+			UMLPackage.eINSTANCE.getBehavior_Postcondition(),
+			UMLPackage.eINSTANCE.getBehavior_Specification(),
+			UMLPackage.eINSTANCE.getStateMachine_SubmachineState(),
+			UMLPackage.eINSTANCE.getStateMachine_ExtendedStateMachine()		);
+		return new NotificationFilter[] {filter,};
+	}
+
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
-	 * 
+	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
 		return key == UmlViewsRepository.ProtocolStateMachine.Properties.isLeaf || key == UmlViewsRepository.ProtocolStateMachine.Properties.isAbstract || key == UmlViewsRepository.ProtocolStateMachine.Properties.isActive || key == UmlViewsRepository.ProtocolStateMachine.Properties.isReentrant;
@@ -852,7 +915,7 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
@@ -861,42 +924,42 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 				if (UmlViewsRepository.ProtocolStateMachine.Properties.name == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newValue);
 				}
 				if (UmlViewsRepository.ProtocolStateMachine.Properties.visibility == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), newValue);
 				}
 				if (UmlViewsRepository.ProtocolStateMachine.Properties.isLeaf == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), newValue);
 				}
 				if (UmlViewsRepository.ProtocolStateMachine.Properties.isAbstract == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(UMLPackage.eINSTANCE.getClassifier_IsAbstract().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getClassifier_IsAbstract().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getClassifier_IsAbstract().getEAttributeType(), newValue);
 				}
 				if (UmlViewsRepository.ProtocolStateMachine.Properties.isActive == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(UMLPackage.eINSTANCE.getClass_IsActive().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getClass_IsActive().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getClass_IsActive().getEAttributeType(), newValue);
 				}
 				if (UmlViewsRepository.ProtocolStateMachine.Properties.isReentrant == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(UMLPackage.eINSTANCE.getBehavior_IsReentrant().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getBehavior_IsReentrant().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getBehavior_IsReentrant().getEAttributeType(), newValue);
 				}
@@ -908,5 +971,8 @@ public class ProtocolStateMachinePropertiesEditionComponent extends SinglePartPr
 		}
 		return ret;
 	}
+
+
+	
 
 }

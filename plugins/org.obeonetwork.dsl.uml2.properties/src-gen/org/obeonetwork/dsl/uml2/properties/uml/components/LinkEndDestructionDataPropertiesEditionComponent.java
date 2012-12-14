@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,44 +10,64 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.components;
 
-// Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
+import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.LinkEndDestructionData;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
+
 import org.obeonetwork.dsl.uml2.properties.uml.parts.LinkEndDestructionDataPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 
 
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public class LinkEndDestructionDataPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
+	/**
+	 * @generated
+	 */
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
@@ -55,21 +75,22 @@ public class LinkEndDestructionDataPropertiesEditionComponent extends SinglePart
 	/**
 	 * Settings for value EObjectFlatComboViewer
 	 */
-	private	EObjectFlatComboSettings valueSettings;
+	private EObjectFlatComboSettings valueSettings;
 	
 	/**
 	 * Settings for end EObjectFlatComboViewer
 	 */
-	private	EObjectFlatComboSettings endSettings;
+	private EObjectFlatComboSettings endSettings;
 	
 	/**
 	 * Settings for destroyAt EObjectFlatComboViewer
 	 */
-	private	EObjectFlatComboSettings destroyAtSettings;
+	private EObjectFlatComboSettings destroyAtSettings;
+	
 	
 	/**
 	 * Default constructor
-	 * 
+	 * @generated
 	 */
 	public LinkEndDestructionDataPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject linkEndDestructionData, String editing_mode) {
 		super(editingContext, linkEndDestructionData, editing_mode);
@@ -83,12 +104,13 @@ public class LinkEndDestructionDataPropertiesEditionComponent extends SinglePart
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
-	 * 
+	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final LinkEndDestructionData linkEndDestructionData = (LinkEndDestructionData)elt;
 			final LinkEndDestructionDataPropertiesEditionPart basePart = (LinkEndDestructionDataPropertiesEditionPart)editingPart;
 			// init values
@@ -106,8 +128,9 @@ public class LinkEndDestructionDataPropertiesEditionComponent extends SinglePart
 				// set the button mode
 				basePart.setEndButtonMode(ButtonsModeEnum.BROWSE);
 			}
-			basePart.setIsDestroyDuplicates(linkEndDestructionData.isDestroyDuplicates());
-			
+			if (isAccessible(UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates)) {
+				basePart.setIsDestroyDuplicates(linkEndDestructionData.isDestroyDuplicates());
+			}
 			if (isAccessible(UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt)) {
 				// init part
 				destroyAtSettings = new EObjectFlatComboSettings(linkEndDestructionData, UMLPackage.eINSTANCE.getLinkEndDestructionData_DestroyAt());
@@ -116,52 +139,49 @@ public class LinkEndDestructionDataPropertiesEditionComponent extends SinglePart
 				basePart.setDestroyAtButtonMode(ButtonsModeEnum.BROWSE);
 			}
 			// init filters
-			basePart.addFilterToValue(new ViewerFilter() {
+			if (isAccessible(UmlViewsRepository.LinkEndDestructionData.Properties.value)) {
+				basePart.addFilterToValue(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof InputPin); //$NON-NLS-1$ 
+					}
+					
+				});
+			}
+			if (isAccessible(UmlViewsRepository.LinkEndDestructionData.Properties.end)) {
+				basePart.addFilterToEnd(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof Property);
+					}
+					
+				});
+			}
 			
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof String && element.equals("")) || (element instanceof InputPin); //$NON-NLS-1$ 
-				}
-			
-			});
-			// Start of user code for additional businessfilters for value
-			// End of user code
-			
-			basePart.addFilterToEnd(new ViewerFilter() {
-			
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof Property);
-				}
-			
-			});
-			// Start of user code for additional businessfilters for end
-			// End of user code
-			
-			
-			basePart.addFilterToDestroyAt(new ViewerFilter() {
-			
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof String && element.equals("")) || (element instanceof InputPin); //$NON-NLS-1$ 
-				}
-			
-			});
-			// Start of user code for additional businessfilters for destroyAt
-			// End of user code
-			
+			if (isAccessible(UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt)) {
+				basePart.addFilterToDestroyAt(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof InputPin); //$NON-NLS-1$ 
+					}
+					
+				});
+			}
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -180,7 +200,7 @@ public class LinkEndDestructionDataPropertiesEditionComponent extends SinglePart
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
-	protected EStructuralFeature associatedFeature(Object editorKey) {
+	public EStructuralFeature associatedFeature(Object editorKey) {
 		if (editorKey == UmlViewsRepository.LinkEndDestructionData.Properties.value) {
 			return UMLPackage.eINSTANCE.getLinkEndData_Value();
 		}
@@ -199,7 +219,7 @@ public class LinkEndDestructionDataPropertiesEditionComponent extends SinglePart
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		LinkEndDestructionData linkEndDestructionData = (LinkEndDestructionData)semanticObject;
@@ -261,13 +281,14 @@ public class LinkEndDestructionDataPropertiesEditionComponent extends SinglePart
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		if (editingPart.isVisible()) {	
+		super.updatePart(msg);
+		if (editingPart.isVisible()) {
 			LinkEndDestructionDataPropertiesEditionPart basePart = (LinkEndDestructionDataPropertiesEditionPart)editingPart;
 			if (UMLPackage.eINSTANCE.getLinkEndData_Value().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.LinkEndDestructionData.Properties.value))
 				basePart.setValue((EObject)msg.getNewValue());
 			if (UMLPackage.eINSTANCE.getLinkEndData_End().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.LinkEndDestructionData.Properties.end))
 				basePart.setEnd((EObject)msg.getNewValue());
-			if (UMLPackage.eINSTANCE.getLinkEndDestructionData_IsDestroyDuplicates().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates))
+			if (UMLPackage.eINSTANCE.getLinkEndDestructionData_IsDestroyDuplicates().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates))
 				basePart.setIsDestroyDuplicates((Boolean)msg.getNewValue());
 			
 			if (UMLPackage.eINSTANCE.getLinkEndDestructionData_DestroyAt().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt))
@@ -276,12 +297,27 @@ public class LinkEndDestructionDataPropertiesEditionComponent extends SinglePart
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			UMLPackage.eINSTANCE.getLinkEndData_Value(),
+			UMLPackage.eINSTANCE.getLinkEndData_End(),
+			UMLPackage.eINSTANCE.getLinkEndDestructionData_IsDestroyDuplicates(),
+			UMLPackage.eINSTANCE.getLinkEndDestructionData_DestroyAt()		);
+		return new NotificationFilter[] {filter,};
+	}
+
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
-	 * 
+	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
 		return key == UmlViewsRepository.LinkEndDestructionData.Properties.end || key == UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates;
@@ -291,7 +327,7 @@ public class LinkEndDestructionDataPropertiesEditionComponent extends SinglePart
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
@@ -300,7 +336,7 @@ public class LinkEndDestructionDataPropertiesEditionComponent extends SinglePart
 				if (UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(UMLPackage.eINSTANCE.getLinkEndDestructionData_IsDestroyDuplicates().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getLinkEndDestructionData_IsDestroyDuplicates().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getLinkEndDestructionData_IsDestroyDuplicates().getEAttributeType(), newValue);
 				}
@@ -312,5 +348,8 @@ public class LinkEndDestructionDataPropertiesEditionComponent extends SinglePart
 		}
 		return ret;
 	}
+
+
+	
 
 }

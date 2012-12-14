@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,56 +10,56 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts;
 
-// Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.ecore.EEnum;
+
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
-
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public interface InformationFlowPropertiesEditionPart {
 
 	/**
 	 * @return the name
-	 * 
+	 * @generated
 	 */
 	public String getName();
 
 	/**
 	 * Defines a new name
 	 * @param newValue the new name to set
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue);
 
 
 	/**
 	 * @return the visibility
-	 * 
+	 * @generated
 	 */
 	public Enumerator getVisibility();
 
 	/**
 	 * Init the visibility
-	 * @param eenum the enum to manage
+	 * @param input the viewer input
 	 * @param current the current value
 	 */
-	public void initVisibility(EEnum eenum, Enumerator current);
+	public void initVisibility(Object input, Enumerator current);
 
 	/**
 	 * Defines a new visibility
 	 * @param newValue the new visibility to set
-	 * 
+	 * @generated
 	 */
 	public void setVisibility(Enumerator newValue);
 
@@ -75,7 +75,7 @@ public interface InformationFlowPropertiesEditionPart {
 	/**
 	 * Update the clientDependency
 	 * @param newValue the clientDependency to update
-	 * 
+	 * @generated
 	 */
 	public void updateClientDependency();
 
@@ -85,7 +85,7 @@ public interface InformationFlowPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToClientDependency(ViewerFilter filter);
 
@@ -95,20 +95,20 @@ public interface InformationFlowPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToClientDependency(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the clientDependency table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInClientDependencyTable(EObject element);
 
 
 	/**
 	 * @return the owningTemplateParameter
-	 * 
+	 * @generated
 	 */
 	public EObject getOwningTemplateParameter();
 
@@ -121,14 +121,14 @@ public interface InformationFlowPropertiesEditionPart {
 	/**
 	 * Defines a new owningTemplateParameter
 	 * @param newValue the new owningTemplateParameter to set
-	 * 
+	 * @generated
 	 */
 	public void setOwningTemplateParameter(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setOwningTemplateParameterButtonMode(ButtonsModeEnum newValue);
 
@@ -138,7 +138,7 @@ public interface InformationFlowPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToOwningTemplateParameter(ViewerFilter filter);
 
@@ -148,14 +148,14 @@ public interface InformationFlowPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToOwningTemplateParameter(ViewerFilter filter);
 
 
 	/**
 	 * @return the templateParameter
-	 * 
+	 * @generated
 	 */
 	public EObject getTemplateParameter();
 
@@ -168,14 +168,14 @@ public interface InformationFlowPropertiesEditionPart {
 	/**
 	 * Defines a new templateParameter
 	 * @param newValue the new templateParameter to set
-	 * 
+	 * @generated
 	 */
 	public void setTemplateParameter(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setTemplateParameterButtonMode(ButtonsModeEnum newValue);
 
@@ -185,7 +185,7 @@ public interface InformationFlowPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToTemplateParameter(ViewerFilter filter);
 
@@ -195,7 +195,7 @@ public interface InformationFlowPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToTemplateParameter(ViewerFilter filter);
 
@@ -211,7 +211,7 @@ public interface InformationFlowPropertiesEditionPart {
 	/**
 	 * Update the realization
 	 * @param newValue the realization to update
-	 * 
+	 * @generated
 	 */
 	public void updateRealization();
 
@@ -221,7 +221,7 @@ public interface InformationFlowPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToRealization(ViewerFilter filter);
 
@@ -231,13 +231,13 @@ public interface InformationFlowPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToRealization(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the realization table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInRealizationTable(EObject element);
 
@@ -253,7 +253,7 @@ public interface InformationFlowPropertiesEditionPart {
 	/**
 	 * Update the conveyed
 	 * @param newValue the conveyed to update
-	 * 
+	 * @generated
 	 */
 	public void updateConveyed();
 
@@ -263,7 +263,7 @@ public interface InformationFlowPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToConveyed(ViewerFilter filter);
 
@@ -273,13 +273,13 @@ public interface InformationFlowPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToConveyed(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the conveyed table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInConveyedTable(EObject element);
 
@@ -295,7 +295,7 @@ public interface InformationFlowPropertiesEditionPart {
 	/**
 	 * Update the informationSource
 	 * @param newValue the informationSource to update
-	 * 
+	 * @generated
 	 */
 	public void updateInformationSource();
 
@@ -305,7 +305,7 @@ public interface InformationFlowPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToInformationSource(ViewerFilter filter);
 
@@ -315,13 +315,13 @@ public interface InformationFlowPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToInformationSource(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the informationSource table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInInformationSourceTable(EObject element);
 
@@ -337,7 +337,7 @@ public interface InformationFlowPropertiesEditionPart {
 	/**
 	 * Update the informationTarget
 	 * @param newValue the informationTarget to update
-	 * 
+	 * @generated
 	 */
 	public void updateInformationTarget();
 
@@ -347,7 +347,7 @@ public interface InformationFlowPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToInformationTarget(ViewerFilter filter);
 
@@ -357,13 +357,13 @@ public interface InformationFlowPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToInformationTarget(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the informationTarget table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInInformationTargetTable(EObject element);
 
@@ -379,7 +379,7 @@ public interface InformationFlowPropertiesEditionPart {
 	/**
 	 * Update the realizingActivityEdge
 	 * @param newValue the realizingActivityEdge to update
-	 * 
+	 * @generated
 	 */
 	public void updateRealizingActivityEdge();
 
@@ -389,7 +389,7 @@ public interface InformationFlowPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToRealizingActivityEdge(ViewerFilter filter);
 
@@ -399,13 +399,13 @@ public interface InformationFlowPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToRealizingActivityEdge(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the realizingActivityEdge table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInRealizingActivityEdgeTable(EObject element);
 
@@ -421,7 +421,7 @@ public interface InformationFlowPropertiesEditionPart {
 	/**
 	 * Update the realizingConnector
 	 * @param newValue the realizingConnector to update
-	 * 
+	 * @generated
 	 */
 	public void updateRealizingConnector();
 
@@ -431,7 +431,7 @@ public interface InformationFlowPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToRealizingConnector(ViewerFilter filter);
 
@@ -441,13 +441,13 @@ public interface InformationFlowPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToRealizingConnector(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the realizingConnector table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInRealizingConnectorTable(EObject element);
 
@@ -463,7 +463,7 @@ public interface InformationFlowPropertiesEditionPart {
 	/**
 	 * Update the realizingMessage
 	 * @param newValue the realizingMessage to update
-	 * 
+	 * @generated
 	 */
 	public void updateRealizingMessage();
 
@@ -473,7 +473,7 @@ public interface InformationFlowPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToRealizingMessage(ViewerFilter filter);
 
@@ -483,13 +483,13 @@ public interface InformationFlowPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToRealizingMessage(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the realizingMessage table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInRealizingMessageTable(EObject element);
 
@@ -501,12 +501,9 @@ public interface InformationFlowPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
-	 * 
+	 * @generated
 	 */
 	public String getTitle();
 
-	// Start of user code for additional methods
-
-// End of user code
 
 }

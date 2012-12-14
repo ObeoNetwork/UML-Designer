@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,56 +10,56 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts;
 
-// Start of user code for imports
 import org.eclipse.emf.common.util.Enumerator;
-import org.eclipse.emf.ecore.EEnum;
+
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
-
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public interface ConnectorPropertiesEditionPart {
 
 	/**
 	 * @return the name
-	 * 
+	 * @generated
 	 */
 	public String getName();
 
 	/**
 	 * Defines a new name
 	 * @param newValue the new name to set
-	 * 
+	 * @generated
 	 */
 	public void setName(String newValue);
 
 
 	/**
 	 * @return the visibility
-	 * 
+	 * @generated
 	 */
 	public Enumerator getVisibility();
 
 	/**
 	 * Init the visibility
-	 * @param eenum the enum to manage
+	 * @param input the viewer input
 	 * @param current the current value
 	 */
-	public void initVisibility(EEnum eenum, Enumerator current);
+	public void initVisibility(Object input, Enumerator current);
 
 	/**
 	 * Defines a new visibility
 	 * @param newValue the new visibility to set
-	 * 
+	 * @generated
 	 */
 	public void setVisibility(Enumerator newValue);
 
@@ -75,7 +75,7 @@ public interface ConnectorPropertiesEditionPart {
 	/**
 	 * Update the clientDependency
 	 * @param newValue the clientDependency to update
-	 * 
+	 * @generated
 	 */
 	public void updateClientDependency();
 
@@ -85,7 +85,7 @@ public interface ConnectorPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToClientDependency(ViewerFilter filter);
 
@@ -95,48 +95,48 @@ public interface ConnectorPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToClientDependency(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the clientDependency table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInClientDependencyTable(EObject element);
 
 
 	/**
 	 * @return the isLeaf
-	 * 
+	 * @generated
 	 */
 	public Boolean getIsLeaf();
 
 	/**
 	 * Defines a new isLeaf
 	 * @param newValue the new isLeaf to set
-	 * 
+	 * @generated
 	 */
 	public void setIsLeaf(Boolean newValue);
 
 
 	/**
 	 * @return the isStatic
-	 * 
+	 * @generated
 	 */
 	public Boolean getIsStatic();
 
 	/**
 	 * Defines a new isStatic
 	 * @param newValue the new isStatic to set
-	 * 
+	 * @generated
 	 */
 	public void setIsStatic(Boolean newValue);
 
 
 	/**
 	 * @return the type
-	 * 
+	 * @generated
 	 */
 	public EObject getType();
 
@@ -149,14 +149,14 @@ public interface ConnectorPropertiesEditionPart {
 	/**
 	 * Defines a new type
 	 * @param newValue the new type to set
-	 * 
+	 * @generated
 	 */
 	public void setType(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setTypeButtonMode(ButtonsModeEnum newValue);
 
@@ -166,7 +166,7 @@ public interface ConnectorPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToType(ViewerFilter filter);
 
@@ -176,7 +176,7 @@ public interface ConnectorPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToType(ViewerFilter filter);
 
@@ -192,7 +192,7 @@ public interface ConnectorPropertiesEditionPart {
 	/**
 	 * Update the redefinedConnector
 	 * @param newValue the redefinedConnector to update
-	 * 
+	 * @generated
 	 */
 	public void updateRedefinedConnector();
 
@@ -202,7 +202,7 @@ public interface ConnectorPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToRedefinedConnector(ViewerFilter filter);
 
@@ -212,34 +212,34 @@ public interface ConnectorPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToRedefinedConnector(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the redefinedConnector table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInRedefinedConnectorTable(EObject element);
 
 
 	/**
 	 * @return the kind
-	 * 
+	 * @generated
 	 */
 	public Enumerator getKind();
 
 	/**
 	 * Init the kind
-	 * @param eenum the enum to manage
+	 * @param input the viewer input
 	 * @param current the current value
 	 */
-	public void initKind(EEnum eenum, Enumerator current);
+	public void initKind(Object input, Enumerator current);
 
 	/**
 	 * Defines a new kind
 	 * @param newValue the new kind to set
-	 * 
+	 * @generated
 	 */
 	public void setKind(Enumerator newValue);
 
@@ -255,7 +255,7 @@ public interface ConnectorPropertiesEditionPart {
 	/**
 	 * Update the contract
 	 * @param newValue the contract to update
-	 * 
+	 * @generated
 	 */
 	public void updateContract();
 
@@ -265,7 +265,7 @@ public interface ConnectorPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToContract(ViewerFilter filter);
 
@@ -275,13 +275,13 @@ public interface ConnectorPropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToContract(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the contract table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInContractTable(EObject element);
 
@@ -293,12 +293,9 @@ public interface ConnectorPropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
-	 * 
+	 * @generated
 	 */
 	public String getTitle();
 
-	// Start of user code for additional methods
-
-// End of user code
 
 }

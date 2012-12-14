@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,20 +10,20 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts;
 
-// Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ViewerFilter;
 
 
-
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public interface ClausePropertiesEditionPart {
 
@@ -38,7 +38,7 @@ public interface ClausePropertiesEditionPart {
 	/**
 	 * Update the test
 	 * @param newValue the test to update
-	 * 
+	 * @generated
 	 */
 	public void updateTest();
 
@@ -48,7 +48,7 @@ public interface ClausePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToTest(ViewerFilter filter);
 
@@ -58,13 +58,13 @@ public interface ClausePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToTest(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the test table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInTestTable(EObject element);
 
@@ -80,7 +80,7 @@ public interface ClausePropertiesEditionPart {
 	/**
 	 * Update the body
 	 * @param newValue the body to update
-	 * 
+	 * @generated
 	 */
 	public void updateBody();
 
@@ -90,7 +90,7 @@ public interface ClausePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToBody(ViewerFilter filter);
 
@@ -100,13 +100,13 @@ public interface ClausePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToBody(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the body table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInBodyTable(EObject element);
 
@@ -122,7 +122,7 @@ public interface ClausePropertiesEditionPart {
 	/**
 	 * Update the predecessorClause
 	 * @param newValue the predecessorClause to update
-	 * 
+	 * @generated
 	 */
 	public void updatePredecessorClause();
 
@@ -132,7 +132,7 @@ public interface ClausePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToPredecessorClause(ViewerFilter filter);
 
@@ -142,13 +142,13 @@ public interface ClausePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToPredecessorClause(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the predecessorClause table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInPredecessorClauseTable(EObject element);
 
@@ -164,7 +164,7 @@ public interface ClausePropertiesEditionPart {
 	/**
 	 * Update the successorClause
 	 * @param newValue the successorClause to update
-	 * 
+	 * @generated
 	 */
 	public void updateSuccessorClause();
 
@@ -174,7 +174,7 @@ public interface ClausePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToSuccessorClause(ViewerFilter filter);
 
@@ -184,20 +184,20 @@ public interface ClausePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToSuccessorClause(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the successorClause table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInSuccessorClauseTable(EObject element);
 
 
 	/**
 	 * @return the decider
-	 * 
+	 * @generated
 	 */
 	public EObject getDecider();
 
@@ -210,14 +210,14 @@ public interface ClausePropertiesEditionPart {
 	/**
 	 * Defines a new decider
 	 * @param newValue the new decider to set
-	 * 
+	 * @generated
 	 */
 	public void setDecider(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
-	 * 
+	 * @generated
 	 */
 	public void setDeciderButtonMode(ButtonsModeEnum newValue);
 
@@ -227,7 +227,7 @@ public interface ClausePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToDecider(ViewerFilter filter);
 
@@ -237,7 +237,7 @@ public interface ClausePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToDecider(ViewerFilter filter);
 
@@ -253,7 +253,7 @@ public interface ClausePropertiesEditionPart {
 	/**
 	 * Update the bodyOutput
 	 * @param newValue the bodyOutput to update
-	 * 
+	 * @generated
 	 */
 	public void updateBodyOutput();
 
@@ -263,7 +263,7 @@ public interface ClausePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToBodyOutput(ViewerFilter filter);
 
@@ -273,13 +273,13 @@ public interface ClausePropertiesEditionPart {
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToBodyOutput(ViewerFilter filter);
 
 	/**
 	 * @return true if the given element is contained inside the bodyOutput table
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInBodyOutputTable(EObject element);
 
@@ -291,12 +291,9 @@ public interface ClausePropertiesEditionPart {
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.
-	 * 
+	 * @generated
 	 */
 	public String getTitle();
 
-	// Start of user code for additional methods
-
-// End of user code
 
 }

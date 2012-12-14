@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,78 +10,105 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts.forms;
 
-// Start of user code for imports
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
+import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
+
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.forms.widgets.Section;
+
 import org.obeonetwork.dsl.uml2.properties.uml.parts.ClassifierTemplateParameterPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
+
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 
 
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
-public class ClassifierTemplateParameterPropertiesEditionPartForm extends CompositePropertiesEditionPart implements IFormPropertiesEditionPart, ClassifierTemplateParameterPropertiesEditionPart {
+public class ClassifierTemplateParameterPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, ClassifierTemplateParameterPropertiesEditionPart {
 
 	protected EObjectFlatComboViewer signature;
 	protected EObjectFlatComboViewer parameteredElement;
 	protected EObjectFlatComboViewer default_;
 	protected Button allowSubstitutable;
-		protected ReferencesTable constrainingClassifier;
-		protected List<ViewerFilter> constrainingClassifierBusinessFilters = new ArrayList<ViewerFilter>();
-		protected List<ViewerFilter> constrainingClassifierFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable constrainingClassifier;
+	protected List<ViewerFilter> constrainingClassifierBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> constrainingClassifierFilters = new ArrayList<ViewerFilter>();
 
 
 
 	/**
+	 * For {@link ISection} use only.
+	 */
+	public ClassifierTemplateParameterPropertiesEditionPartForm() { super(); }
+
+	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
+	 * @generated
 	 */
 	public ClassifierTemplateParameterPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -92,7 +119,7 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Compos
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createFigure(org.eclipse.swt.widgets.Composite, org.eclipse.ui.forms.widgets.FormToolkit)
-	 * 
+	 * @generated
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
 		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
@@ -110,7 +137,7 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Compos
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart#
 	 *  createControls(org.eclipse.ui.forms.widgets.FormToolkit, org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
 		CompositionSequence classifierTemplateParameterStep = new BindingCompositionSequence(propertiesEditionComponent);
@@ -150,7 +177,7 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Compos
 		composer.compose(view);
 	}
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
 		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
@@ -169,10 +196,10 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Compos
 	/**
 	 * @param parent the parent composite
 	 * @param widgetFactory factory to use to instanciante widget of the form
-	 * 
+	 * @generated
 	 */
 	protected Composite createSignatureFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, UmlMessages.ClassifierTemplateParameterPropertiesEditionPart_SignatureLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.ClassifierTemplateParameter.Properties.signature, UmlViewsRepository.FORM_KIND));
+		createDescription(parent, UmlViewsRepository.ClassifierTemplateParameter.Properties.signature, UmlMessages.ClassifierTemplateParameterPropertiesEditionPart_SignatureLabel);
 		signature = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ClassifierTemplateParameter.Properties.signature, UmlViewsRepository.FORM_KIND));
 		widgetFactory.adapt(signature);
 		signature.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -199,10 +226,10 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Compos
 	/**
 	 * @param parent the parent composite
 	 * @param widgetFactory factory to use to instanciante widget of the form
-	 * 
+	 * @generated
 	 */
 	protected Composite createParameteredElementFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, UmlMessages.ClassifierTemplateParameterPropertiesEditionPart_ParameteredElementLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.ClassifierTemplateParameter.Properties.parameteredElement, UmlViewsRepository.FORM_KIND));
+		createDescription(parent, UmlViewsRepository.ClassifierTemplateParameter.Properties.parameteredElement, UmlMessages.ClassifierTemplateParameterPropertiesEditionPart_ParameteredElementLabel);
 		parameteredElement = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ClassifierTemplateParameter.Properties.parameteredElement, UmlViewsRepository.FORM_KIND));
 		widgetFactory.adapt(parameteredElement);
 		parameteredElement.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -229,10 +256,10 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Compos
 	/**
 	 * @param parent the parent composite
 	 * @param widgetFactory factory to use to instanciante widget of the form
-	 * 
+	 * @generated
 	 */
 	protected Composite createDefault_FlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		FormUtils.createPartLabel(widgetFactory, parent, UmlMessages.ClassifierTemplateParameterPropertiesEditionPart_Default_Label, propertiesEditionComponent.isRequired(UmlViewsRepository.ClassifierTemplateParameter.Properties.default_, UmlViewsRepository.FORM_KIND));
+		createDescription(parent, UmlViewsRepository.ClassifierTemplateParameter.Properties.default_, UmlMessages.ClassifierTemplateParameterPropertiesEditionPart_Default_Label);
 		default_ = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ClassifierTemplateParameter.Properties.default_, UmlViewsRepository.FORM_KIND));
 		widgetFactory.adapt(default_);
 		default_.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
@@ -256,16 +283,19 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Compos
 		return parent;
 	}
 
+	/**
+	 * @generated
+	 */
 	
 	protected Composite createAllowSubstitutableCheckbox(FormToolkit widgetFactory, Composite parent) {
-		allowSubstitutable = widgetFactory.createButton(parent, UmlMessages.ClassifierTemplateParameterPropertiesEditionPart_AllowSubstitutableLabel, SWT.CHECK);
+		allowSubstitutable = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.ClassifierTemplateParameter.Properties.allowSubstitutable, UmlMessages.ClassifierTemplateParameterPropertiesEditionPart_AllowSubstitutableLabel), SWT.CHECK);
 		allowSubstitutable.addSelectionListener(new SelectionAdapter() {
 
 			/**
 			 * {@inheritDoc}
 			 *
 			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	
+			 * 	@generated
 			 */
 			public void widgetSelected(SelectionEvent e) {
 				if (propertiesEditionComponent != null)
@@ -283,10 +313,10 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Compos
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createConstrainingClassifierReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.constrainingClassifier = new ReferencesTable(UmlMessages.ClassifierTemplateParameterPropertiesEditionPart_ConstrainingClassifierLabel, new ReferencesTableListener	() {
+		this.constrainingClassifier = new ReferencesTable(getDescription(UmlViewsRepository.ClassifierTemplateParameter.Properties.constrainingClassifier, UmlMessages.ClassifierTemplateParameterPropertiesEditionPart_ConstrainingClassifierLabel), new ReferencesTableListener	() {
 			public void handleAdd() { addConstrainingClassifier(); }
 			public void handleEdit(EObject element) { editConstrainingClassifier(element); }
 			public void handleMove(EObject element, int oldIndex, int newIndex) { moveConstrainingClassifier(element, oldIndex, newIndex); }
@@ -314,7 +344,7 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Compos
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void addConstrainingClassifier() {
 		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(constrainingClassifier.getInput(), constrainingClassifierFilters, constrainingClassifierBusinessFilters,
@@ -333,7 +363,7 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Compos
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void moveConstrainingClassifier(EObject element, int oldIndex, int newIndex) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ClassifierTemplateParameterPropertiesEditionPartForm.this, UmlViewsRepository.ClassifierTemplateParameter.Properties.constrainingClassifier, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
@@ -341,7 +371,7 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Compos
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void removeFromConstrainingClassifier(EObject element) {
 		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ClassifierTemplateParameterPropertiesEditionPartForm.this, UmlViewsRepository.ClassifierTemplateParameter.Properties.constrainingClassifier, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
@@ -349,7 +379,7 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Compos
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected void editConstrainingClassifier(EObject element) {
 		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
@@ -364,24 +394,20 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Compos
 	}
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-
-// End of user code
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ClassifierTemplateParameterPropertiesEditionPart#getSignature()
-	 * 
+	 * @generated
 	 */
 	public EObject getSignature() {
 		if (signature.getSelection() instanceof StructuredSelection) {
@@ -402,13 +428,21 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Compos
 		if (current != null) {
 			signature.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.ClassifierTemplateParameter.Properties.signature);
+		if (readOnly && signature.isEnabled()) {
+			signature.setEnabled(false);
+			signature.setToolTipText(UmlMessages.ClassifierTemplateParameter_ReadOnly);
+		} else if (!readOnly && !signature.isEnabled()) {
+			signature.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ClassifierTemplateParameterPropertiesEditionPart#setSignature(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setSignature(EObject newValue) {
 		if (newValue != null) {
@@ -416,6 +450,14 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Compos
 		} else {
 			signature.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.ClassifierTemplateParameter.Properties.signature);
+		if (readOnly && signature.isEnabled()) {
+			signature.setEnabled(false);
+			signature.setToolTipText(UmlMessages.ClassifierTemplateParameter_ReadOnly);
+		} else if (!readOnly && !signature.isEnabled()) {
+			signature.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -431,7 +473,7 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Compos
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ClassifierTemplateParameterPropertiesEditionPart#addFilterSignature(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToSignature(ViewerFilter filter) {
 		signature.addFilter(filter);
@@ -441,18 +483,17 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Compos
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ClassifierTemplateParameterPropertiesEditionPart#addBusinessFilterSignature(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToSignature(ViewerFilter filter) {
 		signature.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ClassifierTemplateParameterPropertiesEditionPart#getParameteredElement()
-	 * 
+	 * @generated
 	 */
 	public EObject getParameteredElement() {
 		if (parameteredElement.getSelection() instanceof StructuredSelection) {
@@ -473,13 +514,21 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Compos
 		if (current != null) {
 			parameteredElement.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.ClassifierTemplateParameter.Properties.parameteredElement);
+		if (readOnly && parameteredElement.isEnabled()) {
+			parameteredElement.setEnabled(false);
+			parameteredElement.setToolTipText(UmlMessages.ClassifierTemplateParameter_ReadOnly);
+		} else if (!readOnly && !parameteredElement.isEnabled()) {
+			parameteredElement.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ClassifierTemplateParameterPropertiesEditionPart#setParameteredElement(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setParameteredElement(EObject newValue) {
 		if (newValue != null) {
@@ -487,6 +536,14 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Compos
 		} else {
 			parameteredElement.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.ClassifierTemplateParameter.Properties.parameteredElement);
+		if (readOnly && parameteredElement.isEnabled()) {
+			parameteredElement.setEnabled(false);
+			parameteredElement.setToolTipText(UmlMessages.ClassifierTemplateParameter_ReadOnly);
+		} else if (!readOnly && !parameteredElement.isEnabled()) {
+			parameteredElement.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -502,7 +559,7 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Compos
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ClassifierTemplateParameterPropertiesEditionPart#addFilterParameteredElement(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToParameteredElement(ViewerFilter filter) {
 		parameteredElement.addFilter(filter);
@@ -512,18 +569,17 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Compos
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ClassifierTemplateParameterPropertiesEditionPart#addBusinessFilterParameteredElement(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToParameteredElement(ViewerFilter filter) {
 		parameteredElement.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ClassifierTemplateParameterPropertiesEditionPart#getDefault_()
-	 * 
+	 * @generated
 	 */
 	public EObject getDefault_() {
 		if (default_.getSelection() instanceof StructuredSelection) {
@@ -544,13 +600,21 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Compos
 		if (current != null) {
 			default_.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.ClassifierTemplateParameter.Properties.default_);
+		if (readOnly && default_.isEnabled()) {
+			default_.setEnabled(false);
+			default_.setToolTipText(UmlMessages.ClassifierTemplateParameter_ReadOnly);
+		} else if (!readOnly && !default_.isEnabled()) {
+			default_.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ClassifierTemplateParameterPropertiesEditionPart#setDefault_(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setDefault_(EObject newValue) {
 		if (newValue != null) {
@@ -558,6 +622,14 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Compos
 		} else {
 			default_.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.ClassifierTemplateParameter.Properties.default_);
+		if (readOnly && default_.isEnabled()) {
+			default_.setEnabled(false);
+			default_.setToolTipText(UmlMessages.ClassifierTemplateParameter_ReadOnly);
+		} else if (!readOnly && !default_.isEnabled()) {
+			default_.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -573,7 +645,7 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Compos
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ClassifierTemplateParameterPropertiesEditionPart#addFilterDefault_(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToDefault_(ViewerFilter filter) {
 		default_.addFilter(filter);
@@ -583,18 +655,17 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Compos
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ClassifierTemplateParameterPropertiesEditionPart#addBusinessFilterDefault_(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToDefault_(ViewerFilter filter) {
 		default_.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ClassifierTemplateParameterPropertiesEditionPart#getAllowSubstitutable()
-	 * 
+	 * @generated
 	 */
 	public Boolean getAllowSubstitutable() {
 		return Boolean.valueOf(allowSubstitutable.getSelection());
@@ -604,7 +675,7 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Compos
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ClassifierTemplateParameterPropertiesEditionPart#setAllowSubstitutable(Boolean newValue)
-	 * 
+	 * @generated
 	 */
 	public void setAllowSubstitutable(Boolean newValue) {
 		if (newValue != null) {
@@ -612,8 +683,15 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Compos
 		} else {
 			allowSubstitutable.setSelection(false);
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.ClassifierTemplateParameter.Properties.allowSubstitutable);
+		if (readOnly && allowSubstitutable.isEnabled()) {
+			allowSubstitutable.setEnabled(false);
+			allowSubstitutable.setToolTipText(UmlMessages.ClassifierTemplateParameter_ReadOnly);
+		} else if (!readOnly && !allowSubstitutable.isEnabled()) {
+			allowSubstitutable.setEnabled(true);
+		}	
+		
 	}
-
 
 
 
@@ -628,13 +706,21 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Compos
 		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
 		constrainingClassifier.setContentProvider(contentProvider);
 		constrainingClassifier.setInput(settings);
+		boolean readOnly = isReadOnly(UmlViewsRepository.ClassifierTemplateParameter.Properties.constrainingClassifier);
+		if (readOnly && constrainingClassifier.getTable().isEnabled()) {
+			constrainingClassifier.setEnabled(false);
+			constrainingClassifier.setToolTipText(UmlMessages.ClassifierTemplateParameter_ReadOnly);
+		} else if (!readOnly && !constrainingClassifier.getTable().isEnabled()) {
+			constrainingClassifier.setEnabled(true);
+		}
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ClassifierTemplateParameterPropertiesEditionPart#updateConstrainingClassifier()
-	 * 
+	 * @generated
 	 */
 	public void updateConstrainingClassifier() {
 	constrainingClassifier.refresh();
@@ -644,7 +730,7 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Compos
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ClassifierTemplateParameterPropertiesEditionPart#addFilterConstrainingClassifier(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToConstrainingClassifier(ViewerFilter filter) {
 		constrainingClassifierFilters.add(filter);
@@ -654,7 +740,7 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Compos
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ClassifierTemplateParameterPropertiesEditionPart#addBusinessFilterConstrainingClassifier(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToConstrainingClassifier(ViewerFilter filter) {
 		constrainingClassifierBusinessFilters.add(filter);
@@ -664,7 +750,7 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Compos
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ClassifierTemplateParameterPropertiesEditionPart#isContainedInConstrainingClassifierTable(EObject element)
-	 * 
+	 * @generated
 	 */
 	public boolean isContainedInConstrainingClassifierTable(EObject element) {
 		return ((ReferencesTableSettings)constrainingClassifier.getInput()).contains(element);
@@ -673,19 +759,18 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Compos
 
 
 
+
+
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
+	 * @generated
 	 */
 	public String getTitle() {
 		return UmlMessages.ClassifierTemplateParameter_Part_Title;
 	}
 
-	// Start of user code additional methods
-	
-	// End of user code
 
 
 }

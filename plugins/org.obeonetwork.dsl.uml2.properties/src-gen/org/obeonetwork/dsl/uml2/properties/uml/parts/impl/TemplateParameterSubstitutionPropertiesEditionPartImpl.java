@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,41 +10,54 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts.impl;
 
-// Start of user code for imports
 import org.eclipse.emf.ecore.EObject;
+
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
+
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
+
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
+
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
+
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.swt.SWT;
+
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
+
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
+
 import org.obeonetwork.dsl.uml2.properties.uml.parts.TemplateParameterSubstitutionPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
+
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 
 
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, TemplateParameterSubstitutionPropertiesEditionPart {
 
@@ -57,7 +70,7 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 	/**
 	 * Default constructor
 	 * @param editionComponent the {@link IPropertiesEditionComponent} that manage this part
-	 * 
+	 * @generated
 	 */
 	public TemplateParameterSubstitutionPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
 		super(editionComponent);
@@ -68,7 +81,7 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createFigure(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public Composite createFigure(final Composite parent) {
 		view = new Composite(parent, SWT.NONE);
@@ -84,7 +97,7 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#
 	 * 			createControls(org.eclipse.swt.widgets.Composite)
-	 * 
+	 * @generated
 	 */
 	public void createControls(Composite view) { 
 		CompositionSequence templateParameterSubstitutionStep = new BindingCompositionSequence(propertiesEditionComponent);
@@ -117,7 +130,7 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 	}
 
 	/**
-	 * 
+	 * @generated
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
 		Group propertiesGroup = new Group(parent, SWT.NONE);
@@ -133,10 +146,10 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createFormalFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.TemplateParameterSubstitutionPropertiesEditionPart_FormalLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.TemplateParameterSubstitution.Properties.formal, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.TemplateParameterSubstitution.Properties.formal, UmlMessages.TemplateParameterSubstitutionPropertiesEditionPart_FormalLabel);
 		formal = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.TemplateParameterSubstitution.Properties.formal, UmlViewsRepository.SWT_KIND));
 		formal.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -156,10 +169,10 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createActualFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.TemplateParameterSubstitutionPropertiesEditionPart_ActualLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.TemplateParameterSubstitution.Properties.actual, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.TemplateParameterSubstitution.Properties.actual, UmlMessages.TemplateParameterSubstitutionPropertiesEditionPart_ActualLabel);
 		actual = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.TemplateParameterSubstitution.Properties.actual, UmlViewsRepository.SWT_KIND));
 		actual.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -179,10 +192,10 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 
 	/**
 	 * @param parent the parent composite
-	 * 
+	 * @generated
 	 */
 	protected Composite createTemplateBindingFlatComboViewer(Composite parent) {
-		SWTUtils.createPartLabel(parent, UmlMessages.TemplateParameterSubstitutionPropertiesEditionPart_TemplateBindingLabel, propertiesEditionComponent.isRequired(UmlViewsRepository.TemplateParameterSubstitution.Properties.templateBinding, UmlViewsRepository.SWT_KIND));
+		createDescription(parent, UmlViewsRepository.TemplateParameterSubstitution.Properties.templateBinding, UmlMessages.TemplateParameterSubstitutionPropertiesEditionPart_TemplateBindingLabel);
 		templateBinding = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.TemplateParameterSubstitution.Properties.templateBinding, UmlViewsRepository.SWT_KIND));
 		templateBinding.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
@@ -201,24 +214,20 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 	}
 
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-		// Start of user code for tab synchronization
-
-// End of user code
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TemplateParameterSubstitutionPropertiesEditionPart#getFormal()
-	 * 
+	 * @generated
 	 */
 	public EObject getFormal() {
 		if (formal.getSelection() instanceof StructuredSelection) {
@@ -239,13 +248,21 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 		if (current != null) {
 			formal.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.TemplateParameterSubstitution.Properties.formal);
+		if (readOnly && formal.isEnabled()) {
+			formal.setEnabled(false);
+			formal.setToolTipText(UmlMessages.TemplateParameterSubstitution_ReadOnly);
+		} else if (!readOnly && !formal.isEnabled()) {
+			formal.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TemplateParameterSubstitutionPropertiesEditionPart#setFormal(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setFormal(EObject newValue) {
 		if (newValue != null) {
@@ -253,6 +270,14 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 		} else {
 			formal.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.TemplateParameterSubstitution.Properties.formal);
+		if (readOnly && formal.isEnabled()) {
+			formal.setEnabled(false);
+			formal.setToolTipText(UmlMessages.TemplateParameterSubstitution_ReadOnly);
+		} else if (!readOnly && !formal.isEnabled()) {
+			formal.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -268,7 +293,7 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TemplateParameterSubstitutionPropertiesEditionPart#addFilterFormal(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToFormal(ViewerFilter filter) {
 		formal.addFilter(filter);
@@ -278,18 +303,17 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TemplateParameterSubstitutionPropertiesEditionPart#addBusinessFilterFormal(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToFormal(ViewerFilter filter) {
 		formal.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TemplateParameterSubstitutionPropertiesEditionPart#getActual()
-	 * 
+	 * @generated
 	 */
 	public EObject getActual() {
 		if (actual.getSelection() instanceof StructuredSelection) {
@@ -310,13 +334,21 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 		if (current != null) {
 			actual.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.TemplateParameterSubstitution.Properties.actual);
+		if (readOnly && actual.isEnabled()) {
+			actual.setEnabled(false);
+			actual.setToolTipText(UmlMessages.TemplateParameterSubstitution_ReadOnly);
+		} else if (!readOnly && !actual.isEnabled()) {
+			actual.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TemplateParameterSubstitutionPropertiesEditionPart#setActual(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setActual(EObject newValue) {
 		if (newValue != null) {
@@ -324,6 +356,14 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 		} else {
 			actual.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.TemplateParameterSubstitution.Properties.actual);
+		if (readOnly && actual.isEnabled()) {
+			actual.setEnabled(false);
+			actual.setToolTipText(UmlMessages.TemplateParameterSubstitution_ReadOnly);
+		} else if (!readOnly && !actual.isEnabled()) {
+			actual.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -339,7 +379,7 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TemplateParameterSubstitutionPropertiesEditionPart#addFilterActual(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToActual(ViewerFilter filter) {
 		actual.addFilter(filter);
@@ -349,18 +389,17 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TemplateParameterSubstitutionPropertiesEditionPart#addBusinessFilterActual(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToActual(ViewerFilter filter) {
 		actual.addBusinessRuleFilter(filter);
 	}
 
-
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TemplateParameterSubstitutionPropertiesEditionPart#getTemplateBinding()
-	 * 
+	 * @generated
 	 */
 	public EObject getTemplateBinding() {
 		if (templateBinding.getSelection() instanceof StructuredSelection) {
@@ -381,13 +420,21 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 		if (current != null) {
 			templateBinding.setSelection(new StructuredSelection(settings.getValue()));
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.TemplateParameterSubstitution.Properties.templateBinding);
+		if (readOnly && templateBinding.isEnabled()) {
+			templateBinding.setEnabled(false);
+			templateBinding.setToolTipText(UmlMessages.TemplateParameterSubstitution_ReadOnly);
+		} else if (!readOnly && !templateBinding.isEnabled()) {
+			templateBinding.setEnabled(true);
+		}	
+		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TemplateParameterSubstitutionPropertiesEditionPart#setTemplateBinding(EObject newValue)
-	 * 
+	 * @generated
 	 */
 	public void setTemplateBinding(EObject newValue) {
 		if (newValue != null) {
@@ -395,6 +442,14 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 		} else {
 			templateBinding.setSelection(new StructuredSelection()); //$NON-NLS-1$
 		}
+		boolean readOnly = isReadOnly(UmlViewsRepository.TemplateParameterSubstitution.Properties.templateBinding);
+		if (readOnly && templateBinding.isEnabled()) {
+			templateBinding.setEnabled(false);
+			templateBinding.setToolTipText(UmlMessages.TemplateParameterSubstitution_ReadOnly);
+		} else if (!readOnly && !templateBinding.isEnabled()) {
+			templateBinding.setEnabled(true);
+		}	
+		
 	}
 
 	/**
@@ -410,7 +465,7 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TemplateParameterSubstitutionPropertiesEditionPart#addFilterTemplateBinding(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addFilterToTemplateBinding(ViewerFilter filter) {
 		templateBinding.addFilter(filter);
@@ -420,7 +475,7 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.TemplateParameterSubstitutionPropertiesEditionPart#addBusinessFilterTemplateBinding(ViewerFilter filter)
-	 * 
+	 * @generated
 	 */
 	public void addBusinessFilterToTemplateBinding(ViewerFilter filter) {
 		templateBinding.addBusinessRuleFilter(filter);
@@ -431,20 +486,16 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 
 
 
-
 	/**
 	 * {@inheritDoc}
 	 *
 	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 * 
+	 * @generated
 	 */
 	public String getTitle() {
 		return UmlMessages.TemplateParameterSubstitution_Part_Title;
 	}
 
-	// Start of user code additional methods
-	
-	// End of user code
 
 
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,46 +10,67 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.components;
 
-// Start of user code for imports
 import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+
 import org.eclipse.emf.ecore.resource.ResourceSet;
+
 import org.eclipse.emf.ecore.util.Diagnostician;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
+import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy;
+
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
+
 import org.eclipse.uml2.uml.ConnectableElement;
 import org.eclipse.uml2.uml.ConnectorEnd;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
+
 import org.obeonetwork.dsl.uml2.properties.uml.parts.ConnectorEndPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 
 
-// End of user code
-
 /**
- * @author <a href="mailto:stephane.bouchet@obeo.fr">Stephane Bouchet</a>
- * 
+ * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
+ * @generated
  */
 public class ConnectorEndPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
+	/**
+	 * @generated
+	 */
 	
 	public static String BASE_PART = "Base"; //$NON-NLS-1$
 
@@ -57,16 +78,17 @@ public class ConnectorEndPropertiesEditionComponent extends SinglePartProperties
 	/**
 	 * Settings for role EObjectFlatComboViewer
 	 */
-	private	EObjectFlatComboSettings roleSettings;
+	private EObjectFlatComboSettings roleSettings;
 	
 	/**
 	 * Settings for partWithPort EObjectFlatComboViewer
 	 */
-	private	EObjectFlatComboSettings partWithPortSettings;
+	private EObjectFlatComboSettings partWithPortSettings;
+	
 	
 	/**
 	 * Default constructor
-	 * 
+	 * @generated
 	 */
 	public ConnectorEndPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject connectorEnd, String editing_mode) {
 		super(editingContext, connectorEnd, editing_mode);
@@ -80,19 +102,22 @@ public class ConnectorEndPropertiesEditionComponent extends SinglePartProperties
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
-	 * 
+	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
 		setInitializing(true);
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
+			
 			final ConnectorEnd connectorEnd = (ConnectorEnd)elt;
 			final ConnectorEndPropertiesEditionPart basePart = (ConnectorEndPropertiesEditionPart)editingPart;
 			// init values
-			basePart.setIsOrdered(connectorEnd.isOrdered());
-			
-			basePart.setIsUnique(connectorEnd.isUnique());
-			
+			if (isAccessible(UmlViewsRepository.ConnectorEnd.Properties.isOrdered)) {
+				basePart.setIsOrdered(connectorEnd.isOrdered());
+			}
+			if (isAccessible(UmlViewsRepository.ConnectorEnd.Properties.isUnique)) {
+				basePart.setIsUnique(connectorEnd.isUnique());
+			}
 			if (isAccessible(UmlViewsRepository.ConnectorEnd.Properties.role)) {
 				// init part
 				roleSettings = new EObjectFlatComboSettings(connectorEnd, UMLPackage.eINSTANCE.getConnectorEnd_Role());
@@ -110,36 +135,34 @@ public class ConnectorEndPropertiesEditionComponent extends SinglePartProperties
 			// init filters
 			
 			
-			basePart.addFilterToRole(new ViewerFilter() {
-			
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof ConnectableElement);
-				}
-			
-			});
-			// Start of user code for additional businessfilters for role
-			// End of user code
-			
-			basePart.addFilterToPartWithPort(new ViewerFilter() {
-			
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-			 */
-			public boolean select(Viewer viewer, Object parentElement, Object element) {
-				return (element instanceof String && element.equals("")) || (element instanceof Property); //$NON-NLS-1$ 
-				}
-			
-			});
-			// Start of user code for additional businessfilters for partWithPort
-			// End of user code
-			
+			if (isAccessible(UmlViewsRepository.ConnectorEnd.Properties.role)) {
+				basePart.addFilterToRole(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof ConnectableElement);
+					}
+					
+				});
+			}
+			if (isAccessible(UmlViewsRepository.ConnectorEnd.Properties.partWithPort)) {
+				basePart.addFilterToPartWithPort(new ViewerFilter() {
+				
+					/**
+					 * {@inheritDoc}
+					 * 
+					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+					 */
+					public boolean select(Viewer viewer, Object parentElement, Object element) {
+						return (element instanceof String && element.equals("")) || (element instanceof Property); //$NON-NLS-1$ 
+					}
+					
+				});
+			}
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -158,7 +181,7 @@ public class ConnectorEndPropertiesEditionComponent extends SinglePartProperties
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
 	 */
-	protected EStructuralFeature associatedFeature(Object editorKey) {
+	public EStructuralFeature associatedFeature(Object editorKey) {
 		if (editorKey == UmlViewsRepository.ConnectorEnd.Properties.isOrdered) {
 			return UMLPackage.eINSTANCE.getMultiplicityElement_IsOrdered();
 		}
@@ -177,7 +200,7 @@ public class ConnectorEndPropertiesEditionComponent extends SinglePartProperties
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		ConnectorEnd connectorEnd = (ConnectorEnd)semanticObject;
@@ -224,12 +247,13 @@ public class ConnectorEndPropertiesEditionComponent extends SinglePartProperties
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
 	 */
 	public void updatePart(Notification msg) {
-		if (editingPart.isVisible()) {	
+		super.updatePart(msg);
+		if (editingPart.isVisible()) {
 			ConnectorEndPropertiesEditionPart basePart = (ConnectorEndPropertiesEditionPart)editingPart;
-			if (UMLPackage.eINSTANCE.getMultiplicityElement_IsOrdered().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.ConnectorEnd.Properties.isOrdered))
+			if (UMLPackage.eINSTANCE.getMultiplicityElement_IsOrdered().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(UmlViewsRepository.ConnectorEnd.Properties.isOrdered))
 				basePart.setIsOrdered((Boolean)msg.getNewValue());
 			
-			if (UMLPackage.eINSTANCE.getMultiplicityElement_IsUnique().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.ConnectorEnd.Properties.isUnique))
+			if (UMLPackage.eINSTANCE.getMultiplicityElement_IsUnique().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && basePart != null && isAccessible(UmlViewsRepository.ConnectorEnd.Properties.isUnique))
 				basePart.setIsUnique((Boolean)msg.getNewValue());
 			
 			if (UMLPackage.eINSTANCE.getConnectorEnd_Role().equals(msg.getFeature()) && basePart != null && isAccessible(UmlViewsRepository.ConnectorEnd.Properties.role))
@@ -240,12 +264,27 @@ public class ConnectorEndPropertiesEditionComponent extends SinglePartProperties
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			UMLPackage.eINSTANCE.getMultiplicityElement_IsOrdered(),
+			UMLPackage.eINSTANCE.getMultiplicityElement_IsUnique(),
+			UMLPackage.eINSTANCE.getConnectorEnd_Role(),
+			UMLPackage.eINSTANCE.getConnectorEnd_PartWithPort()		);
+		return new NotificationFilter[] {filter,};
+	}
+
 
 	/**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
-	 * 
+	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
 		return key == UmlViewsRepository.ConnectorEnd.Properties.isOrdered || key == UmlViewsRepository.ConnectorEnd.Properties.isUnique || key == UmlViewsRepository.ConnectorEnd.Properties.role;
@@ -255,7 +294,7 @@ public class ConnectorEndPropertiesEditionComponent extends SinglePartProperties
 	 * {@inheritDoc}
 	 * 
 	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * 
+	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
 		Diagnostic ret = Diagnostic.OK_INSTANCE;
@@ -264,14 +303,14 @@ public class ConnectorEndPropertiesEditionComponent extends SinglePartProperties
 				if (UmlViewsRepository.ConnectorEnd.Properties.isOrdered == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(UMLPackage.eINSTANCE.getMultiplicityElement_IsOrdered().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getMultiplicityElement_IsOrdered().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getMultiplicityElement_IsOrdered().getEAttributeType(), newValue);
 				}
 				if (UmlViewsRepository.ConnectorEnd.Properties.isUnique == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
-						newValue = EcoreUtil.createFromString(UMLPackage.eINSTANCE.getMultiplicityElement_IsUnique().getEAttributeType(), (String)newValue);
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getMultiplicityElement_IsUnique().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getMultiplicityElement_IsUnique().getEAttributeType(), newValue);
 				}
@@ -283,5 +322,8 @@ public class ConnectorEndPropertiesEditionComponent extends SinglePartProperties
 		}
 		return ret;
 	}
+
+
+	
 
 }
