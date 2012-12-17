@@ -58,9 +58,9 @@ public class ObjectFlowPropertiesEditionProvider extends PropertiesEditingProvid
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof ObjectFlow) 
-					&& (UMLPackage.Literals.OBJECT_FLOW == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof ObjectFlow) 
+          && (UMLPackage.Literals.OBJECT_FLOW == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class ObjectFlowPropertiesEditionProvider extends PropertiesEditingProvid
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof ObjectFlow) && (ObjectFlowPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof ObjectFlow) && (ObjectFlowPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class ObjectFlowPropertiesEditionProvider extends PropertiesEditingProvid
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ObjectFlow) && (refinement == ObjectFlowPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof ObjectFlow) && (refinement == ObjectFlowPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class ObjectFlowPropertiesEditionProvider extends PropertiesEditingProvid
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ObjectFlow) && ((ObjectFlowPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ObjectFlowPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof ObjectFlow) && ((ObjectFlowPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ObjectFlowPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class ObjectFlowPropertiesEditionProvider extends PropertiesEditingProvid
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof ObjectFlow) {
-			return new ObjectFlowPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof ObjectFlow) {
+      return new ObjectFlowPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class ObjectFlowPropertiesEditionProvider extends PropertiesEditingProvid
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof ObjectFlow) {
-			if (ObjectFlowPropertiesEditionComponent.BASE_PART.equals(part))
-				return new ObjectFlowPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof ObjectFlow) {
+      if (ObjectFlowPropertiesEditionComponent.BASE_PART.equals(part))
+        return new ObjectFlowPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

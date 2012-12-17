@@ -58,9 +58,9 @@ public class ReadLinkActionPropertiesEditionProvider extends PropertiesEditingPr
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof ReadLinkAction) 
-					&& (UMLPackage.Literals.READ_LINK_ACTION == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof ReadLinkAction) 
+          && (UMLPackage.Literals.READ_LINK_ACTION == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class ReadLinkActionPropertiesEditionProvider extends PropertiesEditingPr
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof ReadLinkAction) && (ReadLinkActionPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof ReadLinkAction) && (ReadLinkActionPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class ReadLinkActionPropertiesEditionProvider extends PropertiesEditingPr
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ReadLinkAction) && (refinement == ReadLinkActionPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof ReadLinkAction) && (refinement == ReadLinkActionPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class ReadLinkActionPropertiesEditionProvider extends PropertiesEditingPr
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ReadLinkAction) && ((ReadLinkActionPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ReadLinkActionPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof ReadLinkAction) && ((ReadLinkActionPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ReadLinkActionPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class ReadLinkActionPropertiesEditionProvider extends PropertiesEditingPr
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof ReadLinkAction) {
-			return new ReadLinkActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof ReadLinkAction) {
+      return new ReadLinkActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class ReadLinkActionPropertiesEditionProvider extends PropertiesEditingPr
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof ReadLinkAction) {
-			if (ReadLinkActionPropertiesEditionComponent.BASE_PART.equals(part))
-				return new ReadLinkActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof ReadLinkAction) {
+      if (ReadLinkActionPropertiesEditionComponent.BASE_PART.equals(part))
+        return new ReadLinkActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

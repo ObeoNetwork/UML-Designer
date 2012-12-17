@@ -58,9 +58,9 @@ public class ParameterPropertiesEditionProvider extends PropertiesEditingProvide
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof Parameter) 
-					&& (UMLPackage.Literals.PARAMETER == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof Parameter) 
+          && (UMLPackage.Literals.PARAMETER == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class ParameterPropertiesEditionProvider extends PropertiesEditingProvide
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof Parameter) && (ParameterPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof Parameter) && (ParameterPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class ParameterPropertiesEditionProvider extends PropertiesEditingProvide
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Parameter) && (refinement == ParameterPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof Parameter) && (refinement == ParameterPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class ParameterPropertiesEditionProvider extends PropertiesEditingProvide
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Parameter) && ((ParameterPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ParameterPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof Parameter) && ((ParameterPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ParameterPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class ParameterPropertiesEditionProvider extends PropertiesEditingProvide
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof Parameter) {
-			return new ParameterPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof Parameter) {
+      return new ParameterPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class ParameterPropertiesEditionProvider extends PropertiesEditingProvide
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof Parameter) {
-			if (ParameterPropertiesEditionComponent.BASE_PART.equals(part))
-				return new ParameterPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof Parameter) {
+      if (ParameterPropertiesEditionComponent.BASE_PART.equals(part))
+        return new ParameterPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

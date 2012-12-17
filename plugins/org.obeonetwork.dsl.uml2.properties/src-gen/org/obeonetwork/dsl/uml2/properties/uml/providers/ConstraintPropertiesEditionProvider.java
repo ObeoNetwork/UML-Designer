@@ -58,9 +58,9 @@ public class ConstraintPropertiesEditionProvider extends PropertiesEditingProvid
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof Constraint) 
-					&& (UMLPackage.Literals.CONSTRAINT == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof Constraint) 
+          && (UMLPackage.Literals.CONSTRAINT == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class ConstraintPropertiesEditionProvider extends PropertiesEditingProvid
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof Constraint) && (ConstraintPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof Constraint) && (ConstraintPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class ConstraintPropertiesEditionProvider extends PropertiesEditingProvid
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Constraint) && (refinement == ConstraintPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof Constraint) && (refinement == ConstraintPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class ConstraintPropertiesEditionProvider extends PropertiesEditingProvid
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Constraint) && ((ConstraintPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ConstraintPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof Constraint) && ((ConstraintPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ConstraintPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class ConstraintPropertiesEditionProvider extends PropertiesEditingProvid
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof Constraint) {
-			return new ConstraintPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof Constraint) {
+      return new ConstraintPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class ConstraintPropertiesEditionProvider extends PropertiesEditingProvid
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof Constraint) {
-			if (ConstraintPropertiesEditionComponent.BASE_PART.equals(part))
-				return new ConstraintPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof Constraint) {
+      if (ConstraintPropertiesEditionComponent.BASE_PART.equals(part))
+        return new ConstraintPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

@@ -96,11 +96,11 @@ public class TemplateParameterSubstitutionPropertiesEditionComponent extends Sin
 	 * @generated
 	 */
 	public TemplateParameterSubstitutionPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject templateParameterSubstitution, String editing_mode) {
-		super(editingContext, templateParameterSubstitution, editing_mode);
-		parts = new String[] { BASE_PART };
-		repositoryKey = UmlViewsRepository.class;
-		partKey = UmlViewsRepository.TemplateParameterSubstitution.class;
-	}
+    super(editingContext, templateParameterSubstitution, editing_mode);
+    parts = new String[] { BASE_PART };
+    repositoryKey = UmlViewsRepository.class;
+    partKey = UmlViewsRepository.TemplateParameterSubstitution.class;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -110,84 +110,84 @@ public class TemplateParameterSubstitutionPropertiesEditionComponent extends Sin
 	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			
-			final TemplateParameterSubstitution templateParameterSubstitution = (TemplateParameterSubstitution)elt;
-			final TemplateParameterSubstitutionPropertiesEditionPart basePart = (TemplateParameterSubstitutionPropertiesEditionPart)editingPart;
-			// init values
-			if (isAccessible(UmlViewsRepository.TemplateParameterSubstitution.Properties.formal)) {
-				// init part
-				formalSettings = new EObjectFlatComboSettings(templateParameterSubstitution, UMLPackage.eINSTANCE.getTemplateParameterSubstitution_Formal());
-				basePart.initFormal(formalSettings);
-				// set the button mode
-				basePart.setFormalButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			if (isAccessible(UmlViewsRepository.TemplateParameterSubstitution.Properties.actual)) {
-				// init part
-				actualSettings = new EObjectFlatComboSettings(templateParameterSubstitution, UMLPackage.eINSTANCE.getTemplateParameterSubstitution_Actual());
-				basePart.initActual(actualSettings);
-				// set the button mode
-				basePart.setActualButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			if (isAccessible(UmlViewsRepository.TemplateParameterSubstitution.Properties.templateBinding)) {
-				// init part
-				templateBindingSettings = new EObjectFlatComboSettings(templateParameterSubstitution, UMLPackage.eINSTANCE.getTemplateParameterSubstitution_TemplateBinding());
-				basePart.initTemplateBinding(templateBindingSettings);
-				// set the button mode
-				basePart.setTemplateBindingButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			// init filters
-			if (isAccessible(UmlViewsRepository.TemplateParameterSubstitution.Properties.formal)) {
-				basePart.addFilterToFormal(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof TemplateParameter);
-					}
-					
-				});
-			}
-			if (isAccessible(UmlViewsRepository.TemplateParameterSubstitution.Properties.actual)) {
-				basePart.addFilterToActual(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof ParameterableElement);
-					}
-					
-				});
-			}
-			if (isAccessible(UmlViewsRepository.TemplateParameterSubstitution.Properties.templateBinding)) {
-				basePart.addFilterToTemplateBinding(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof TemplateBinding);
-					}
-					
-				});
-			}
-			// init values for referenced views
-			
-			// init filters for referenced views
-			
-		}
-		setInitializing(false);
-	}
+    setInitializing(true);
+    if (editingPart != null && key == partKey) {
+      editingPart.setContext(elt, allResource);
+      
+      final TemplateParameterSubstitution templateParameterSubstitution = (TemplateParameterSubstitution)elt;
+      final TemplateParameterSubstitutionPropertiesEditionPart basePart = (TemplateParameterSubstitutionPropertiesEditionPart)editingPart;
+      // init values
+      if (isAccessible(UmlViewsRepository.TemplateParameterSubstitution.Properties.formal)) {
+        // init part
+        formalSettings = new EObjectFlatComboSettings(templateParameterSubstitution, UMLPackage.eINSTANCE.getTemplateParameterSubstitution_Formal());
+        basePart.initFormal(formalSettings);
+        // set the button mode
+        basePart.setFormalButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      if (isAccessible(UmlViewsRepository.TemplateParameterSubstitution.Properties.actual)) {
+        // init part
+        actualSettings = new EObjectFlatComboSettings(templateParameterSubstitution, UMLPackage.eINSTANCE.getTemplateParameterSubstitution_Actual());
+        basePart.initActual(actualSettings);
+        // set the button mode
+        basePart.setActualButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      if (isAccessible(UmlViewsRepository.TemplateParameterSubstitution.Properties.templateBinding)) {
+        // init part
+        templateBindingSettings = new EObjectFlatComboSettings(templateParameterSubstitution, UMLPackage.eINSTANCE.getTemplateParameterSubstitution_TemplateBinding());
+        basePart.initTemplateBinding(templateBindingSettings);
+        // set the button mode
+        basePart.setTemplateBindingButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      // init filters
+      if (isAccessible(UmlViewsRepository.TemplateParameterSubstitution.Properties.formal)) {
+        basePart.addFilterToFormal(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof TemplateParameter);
+          }
+          
+        });
+      }
+      if (isAccessible(UmlViewsRepository.TemplateParameterSubstitution.Properties.actual)) {
+        basePart.addFilterToActual(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof ParameterableElement);
+          }
+          
+        });
+      }
+      if (isAccessible(UmlViewsRepository.TemplateParameterSubstitution.Properties.templateBinding)) {
+        basePart.addFilterToTemplateBinding(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof TemplateBinding);
+          }
+          
+        });
+      }
+      // init values for referenced views
+      
+      // init filters for referenced views
+      
+    }
+    setInitializing(false);
+  }
 
 
 
@@ -217,54 +217,54 @@ public class TemplateParameterSubstitutionPropertiesEditionComponent extends Sin
 	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		TemplateParameterSubstitution templateParameterSubstitution = (TemplateParameterSubstitution)semanticObject;
-		if (UmlViewsRepository.TemplateParameterSubstitution.Properties.formal == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				formalSettings.setToReference((TemplateParameter)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				TemplateParameter eObject = UMLFactory.eINSTANCE.createTemplateParameter();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy != null) {
-						policy.execute();
-					}
-				}
-				formalSettings.setToReference(eObject);
-			}
-		}
-		if (UmlViewsRepository.TemplateParameterSubstitution.Properties.actual == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				actualSettings.setToReference((ParameterableElement)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, actualSettings, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy instanceof CreateEditingPolicy) {
-						policy.execute();
-					}
-				}
-			}
-		}
-		if (UmlViewsRepository.TemplateParameterSubstitution.Properties.templateBinding == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				templateBindingSettings.setToReference((TemplateBinding)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				TemplateBinding eObject = UMLFactory.eINSTANCE.createTemplateBinding();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy != null) {
-						policy.execute();
-					}
-				}
-				templateBindingSettings.setToReference(eObject);
-			}
-		}
-	}
+    TemplateParameterSubstitution templateParameterSubstitution = (TemplateParameterSubstitution)semanticObject;
+    if (UmlViewsRepository.TemplateParameterSubstitution.Properties.formal == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        formalSettings.setToReference((TemplateParameter)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        TemplateParameter eObject = UMLFactory.eINSTANCE.createTemplateParameter();
+        EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy != null) {
+            policy.execute();
+          }
+        }
+        formalSettings.setToReference(eObject);
+      }
+    }
+    if (UmlViewsRepository.TemplateParameterSubstitution.Properties.actual == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        actualSettings.setToReference((ParameterableElement)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, actualSettings, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy instanceof CreateEditingPolicy) {
+            policy.execute();
+          }
+        }
+      }
+    }
+    if (UmlViewsRepository.TemplateParameterSubstitution.Properties.templateBinding == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        templateBindingSettings.setToReference((TemplateBinding)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        TemplateBinding eObject = UMLFactory.eINSTANCE.createTemplateBinding();
+        EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy != null) {
+            policy.execute();
+          }
+        }
+        templateBindingSettings.setToReference(eObject);
+      }
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -306,8 +306,8 @@ public class TemplateParameterSubstitutionPropertiesEditionComponent extends Sin
 	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == UmlViewsRepository.TemplateParameterSubstitution.Properties.formal || key == UmlViewsRepository.TemplateParameterSubstitution.Properties.actual || key == UmlViewsRepository.TemplateParameterSubstitution.Properties.templateBinding;
-	}
+    return key == UmlViewsRepository.TemplateParameterSubstitution.Properties.formal || key == UmlViewsRepository.TemplateParameterSubstitution.Properties.actual || key == UmlViewsRepository.TemplateParameterSubstitution.Properties.templateBinding;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -316,17 +316,17 @@ public class TemplateParameterSubstitutionPropertiesEditionComponent extends Sin
 	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
-		Diagnostic ret = Diagnostic.OK_INSTANCE;
-		if (event.getNewValue() != null) {
-			try {
-			} catch (IllegalArgumentException iae) {
-				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
-				ret = BasicDiagnostic.toDiagnostic(we);
-			}
-		}
-		return ret;
-	}
+    Diagnostic ret = Diagnostic.OK_INSTANCE;
+    if (event.getNewValue() != null) {
+      try {
+      } catch (IllegalArgumentException iae) {
+        ret = BasicDiagnostic.toDiagnostic(iae);
+      } catch (WrappedException we) {
+        ret = BasicDiagnostic.toDiagnostic(we);
+      }
+    }
+    return ret;
+  }
 
 
 	

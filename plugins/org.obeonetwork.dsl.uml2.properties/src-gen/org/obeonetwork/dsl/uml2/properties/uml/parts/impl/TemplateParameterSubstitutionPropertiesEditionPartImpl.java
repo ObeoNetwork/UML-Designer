@@ -73,8 +73,8 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 	 * @generated
 	 */
 	public TemplateParameterSubstitutionPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+    super(editionComponent);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -84,13 +84,13 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 	 * @generated
 	 */
 	public Composite createFigure(final Composite parent) {
-		view = new Composite(parent, SWT.NONE);
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
-		view.setLayout(layout);
-		createControls(view);
-		return view;
-	}
+    view = new Composite(parent, SWT.NONE);
+    GridLayout layout = new GridLayout();
+    layout.numColumns = 3;
+    view.setLayout(layout);
+    createControls(view);
+    return view;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -100,118 +100,118 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 	 * @generated
 	 */
 	public void createControls(Composite view) { 
-		CompositionSequence templateParameterSubstitutionStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep propertiesStep = templateParameterSubstitutionStep.addStep(UmlViewsRepository.TemplateParameterSubstitution.Properties.class);
-		propertiesStep.addStep(UmlViewsRepository.TemplateParameterSubstitution.Properties.formal);
-		propertiesStep.addStep(UmlViewsRepository.TemplateParameterSubstitution.Properties.actual);
-		propertiesStep.addStep(UmlViewsRepository.TemplateParameterSubstitution.Properties.templateBinding);
-		
-		
-		composer = new PartComposer(templateParameterSubstitutionStep) {
+    CompositionSequence templateParameterSubstitutionStep = new BindingCompositionSequence(propertiesEditionComponent);
+    CompositionStep propertiesStep = templateParameterSubstitutionStep.addStep(UmlViewsRepository.TemplateParameterSubstitution.Properties.class);
+    propertiesStep.addStep(UmlViewsRepository.TemplateParameterSubstitution.Properties.formal);
+    propertiesStep.addStep(UmlViewsRepository.TemplateParameterSubstitution.Properties.actual);
+    propertiesStep.addStep(UmlViewsRepository.TemplateParameterSubstitution.Properties.templateBinding);
+    
+    
+    composer = new PartComposer(templateParameterSubstitutionStep) {
 
-			@Override
-			public Composite addToPart(Composite parent, Object key) {
-				if (key == UmlViewsRepository.TemplateParameterSubstitution.Properties.class) {
-					return createPropertiesGroup(parent);
-				}
-				if (key == UmlViewsRepository.TemplateParameterSubstitution.Properties.formal) {
-					return createFormalFlatComboViewer(parent);
-				}
-				if (key == UmlViewsRepository.TemplateParameterSubstitution.Properties.actual) {
-					return createActualFlatComboViewer(parent);
-				}
-				if (key == UmlViewsRepository.TemplateParameterSubstitution.Properties.templateBinding) {
-					return createTemplateBindingFlatComboViewer(parent);
-				}
-				return parent;
-			}
-		};
-		composer.compose(view);
-	}
+      @Override
+      public Composite addToPart(Composite parent, Object key) {
+        if (key == UmlViewsRepository.TemplateParameterSubstitution.Properties.class) {
+          return createPropertiesGroup(parent);
+        }
+        if (key == UmlViewsRepository.TemplateParameterSubstitution.Properties.formal) {
+          return createFormalFlatComboViewer(parent);
+        }
+        if (key == UmlViewsRepository.TemplateParameterSubstitution.Properties.actual) {
+          return createActualFlatComboViewer(parent);
+        }
+        if (key == UmlViewsRepository.TemplateParameterSubstitution.Properties.templateBinding) {
+          return createTemplateBindingFlatComboViewer(parent);
+        }
+        return parent;
+      }
+    };
+    composer.compose(view);
+  }
 
 	/**
 	 * @generated
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
-		Group propertiesGroup = new Group(parent, SWT.NONE);
-		propertiesGroup.setText(UmlMessages.TemplateParameterSubstitutionPropertiesEditionPart_PropertiesGroupLabel);
-		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesGroupData.horizontalSpan = 3;
-		propertiesGroup.setLayoutData(propertiesGroupData);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		return propertiesGroup;
-	}
+    Group propertiesGroup = new Group(parent, SWT.NONE);
+    propertiesGroup.setText(UmlMessages.TemplateParameterSubstitutionPropertiesEditionPart_PropertiesGroupLabel);
+    GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
+    propertiesGroupData.horizontalSpan = 3;
+    propertiesGroup.setLayoutData(propertiesGroupData);
+    GridLayout propertiesGroupLayout = new GridLayout();
+    propertiesGroupLayout.numColumns = 3;
+    propertiesGroup.setLayout(propertiesGroupLayout);
+    return propertiesGroup;
+  }
 
 	/**
 	 * @param parent the parent composite
 	 * @generated
 	 */
 	protected Composite createFormalFlatComboViewer(Composite parent) {
-		createDescription(parent, UmlViewsRepository.TemplateParameterSubstitution.Properties.formal, UmlMessages.TemplateParameterSubstitutionPropertiesEditionPart_FormalLabel);
-		formal = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.TemplateParameterSubstitution.Properties.formal, UmlViewsRepository.SWT_KIND));
-		formal.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    createDescription(parent, UmlViewsRepository.TemplateParameterSubstitution.Properties.formal, UmlMessages.TemplateParameterSubstitutionPropertiesEditionPart_FormalLabel);
+    formal = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.TemplateParameterSubstitution.Properties.formal, UmlViewsRepository.SWT_KIND));
+    formal.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
-		formal.addSelectionChangedListener(new ISelectionChangedListener() {
+    formal.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TemplateParameterSubstitutionPropertiesEditionPartImpl.this, UmlViewsRepository.TemplateParameterSubstitution.Properties.formal, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getFormal()));
-			}
+      public void selectionChanged(SelectionChangedEvent event) {
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TemplateParameterSubstitutionPropertiesEditionPartImpl.this, UmlViewsRepository.TemplateParameterSubstitution.Properties.formal, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getFormal()));
+      }
 
-		});
-		GridData formalData = new GridData(GridData.FILL_HORIZONTAL);
-		formal.setLayoutData(formalData);
-		formal.setID(UmlViewsRepository.TemplateParameterSubstitution.Properties.formal);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.TemplateParameterSubstitution.Properties.formal, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    GridData formalData = new GridData(GridData.FILL_HORIZONTAL);
+    formal.setLayoutData(formalData);
+    formal.setID(UmlViewsRepository.TemplateParameterSubstitution.Properties.formal);
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.TemplateParameterSubstitution.Properties.formal, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @param parent the parent composite
 	 * @generated
 	 */
 	protected Composite createActualFlatComboViewer(Composite parent) {
-		createDescription(parent, UmlViewsRepository.TemplateParameterSubstitution.Properties.actual, UmlMessages.TemplateParameterSubstitutionPropertiesEditionPart_ActualLabel);
-		actual = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.TemplateParameterSubstitution.Properties.actual, UmlViewsRepository.SWT_KIND));
-		actual.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    createDescription(parent, UmlViewsRepository.TemplateParameterSubstitution.Properties.actual, UmlMessages.TemplateParameterSubstitutionPropertiesEditionPart_ActualLabel);
+    actual = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.TemplateParameterSubstitution.Properties.actual, UmlViewsRepository.SWT_KIND));
+    actual.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
-		actual.addSelectionChangedListener(new ISelectionChangedListener() {
+    actual.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TemplateParameterSubstitutionPropertiesEditionPartImpl.this, UmlViewsRepository.TemplateParameterSubstitution.Properties.actual, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getActual()));
-			}
+      public void selectionChanged(SelectionChangedEvent event) {
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TemplateParameterSubstitutionPropertiesEditionPartImpl.this, UmlViewsRepository.TemplateParameterSubstitution.Properties.actual, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getActual()));
+      }
 
-		});
-		GridData actualData = new GridData(GridData.FILL_HORIZONTAL);
-		actual.setLayoutData(actualData);
-		actual.setID(UmlViewsRepository.TemplateParameterSubstitution.Properties.actual);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.TemplateParameterSubstitution.Properties.actual, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    GridData actualData = new GridData(GridData.FILL_HORIZONTAL);
+    actual.setLayoutData(actualData);
+    actual.setID(UmlViewsRepository.TemplateParameterSubstitution.Properties.actual);
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.TemplateParameterSubstitution.Properties.actual, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @param parent the parent composite
 	 * @generated
 	 */
 	protected Composite createTemplateBindingFlatComboViewer(Composite parent) {
-		createDescription(parent, UmlViewsRepository.TemplateParameterSubstitution.Properties.templateBinding, UmlMessages.TemplateParameterSubstitutionPropertiesEditionPart_TemplateBindingLabel);
-		templateBinding = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.TemplateParameterSubstitution.Properties.templateBinding, UmlViewsRepository.SWT_KIND));
-		templateBinding.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    createDescription(parent, UmlViewsRepository.TemplateParameterSubstitution.Properties.templateBinding, UmlMessages.TemplateParameterSubstitutionPropertiesEditionPart_TemplateBindingLabel);
+    templateBinding = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.TemplateParameterSubstitution.Properties.templateBinding, UmlViewsRepository.SWT_KIND));
+    templateBinding.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
-		templateBinding.addSelectionChangedListener(new ISelectionChangedListener() {
+    templateBinding.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TemplateParameterSubstitutionPropertiesEditionPartImpl.this, UmlViewsRepository.TemplateParameterSubstitution.Properties.templateBinding, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getTemplateBinding()));
-			}
+      public void selectionChanged(SelectionChangedEvent event) {
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TemplateParameterSubstitutionPropertiesEditionPartImpl.this, UmlViewsRepository.TemplateParameterSubstitution.Properties.templateBinding, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getTemplateBinding()));
+      }
 
-		});
-		GridData templateBindingData = new GridData(GridData.FILL_HORIZONTAL);
-		templateBinding.setLayoutData(templateBindingData);
-		templateBinding.setID(UmlViewsRepository.TemplateParameterSubstitution.Properties.templateBinding);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.TemplateParameterSubstitution.Properties.templateBinding, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    GridData templateBindingData = new GridData(GridData.FILL_HORIZONTAL);
+    templateBinding.setLayoutData(templateBindingData);
+    templateBinding.setID(UmlViewsRepository.TemplateParameterSubstitution.Properties.templateBinding);
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.TemplateParameterSubstitution.Properties.templateBinding, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 
 	/**
@@ -221,7 +221,7 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-	}
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -230,13 +230,13 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 	 * @generated
 	 */
 	public EObject getFormal() {
-		if (formal.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) formal.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (formal.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) formal.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -265,20 +265,20 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 	 * @generated
 	 */
 	public void setFormal(EObject newValue) {
-		if (newValue != null) {
-			formal.setSelection(new StructuredSelection(newValue));
-		} else {
-			formal.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.TemplateParameterSubstitution.Properties.formal);
-		if (readOnly && formal.isEnabled()) {
-			formal.setEnabled(false);
-			formal.setToolTipText(UmlMessages.TemplateParameterSubstitution_ReadOnly);
-		} else if (!readOnly && !formal.isEnabled()) {
-			formal.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      formal.setSelection(new StructuredSelection(newValue));
+    } else {
+      formal.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.TemplateParameterSubstitution.Properties.formal);
+    if (readOnly && formal.isEnabled()) {
+      formal.setEnabled(false);
+      formal.setToolTipText(UmlMessages.TemplateParameterSubstitution_ReadOnly);
+    } else if (!readOnly && !formal.isEnabled()) {
+      formal.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -296,8 +296,8 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 	 * @generated
 	 */
 	public void addFilterToFormal(ViewerFilter filter) {
-		formal.addFilter(filter);
-	}
+    formal.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -306,8 +306,8 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 	 * @generated
 	 */
 	public void addBusinessFilterToFormal(ViewerFilter filter) {
-		formal.addBusinessRuleFilter(filter);
-	}
+    formal.addBusinessRuleFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -316,13 +316,13 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 	 * @generated
 	 */
 	public EObject getActual() {
-		if (actual.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) actual.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (actual.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) actual.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -351,20 +351,20 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 	 * @generated
 	 */
 	public void setActual(EObject newValue) {
-		if (newValue != null) {
-			actual.setSelection(new StructuredSelection(newValue));
-		} else {
-			actual.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.TemplateParameterSubstitution.Properties.actual);
-		if (readOnly && actual.isEnabled()) {
-			actual.setEnabled(false);
-			actual.setToolTipText(UmlMessages.TemplateParameterSubstitution_ReadOnly);
-		} else if (!readOnly && !actual.isEnabled()) {
-			actual.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      actual.setSelection(new StructuredSelection(newValue));
+    } else {
+      actual.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.TemplateParameterSubstitution.Properties.actual);
+    if (readOnly && actual.isEnabled()) {
+      actual.setEnabled(false);
+      actual.setToolTipText(UmlMessages.TemplateParameterSubstitution_ReadOnly);
+    } else if (!readOnly && !actual.isEnabled()) {
+      actual.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -382,8 +382,8 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 	 * @generated
 	 */
 	public void addFilterToActual(ViewerFilter filter) {
-		actual.addFilter(filter);
-	}
+    actual.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -392,8 +392,8 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 	 * @generated
 	 */
 	public void addBusinessFilterToActual(ViewerFilter filter) {
-		actual.addBusinessRuleFilter(filter);
-	}
+    actual.addBusinessRuleFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -402,13 +402,13 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 	 * @generated
 	 */
 	public EObject getTemplateBinding() {
-		if (templateBinding.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) templateBinding.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (templateBinding.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) templateBinding.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -437,20 +437,20 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 	 * @generated
 	 */
 	public void setTemplateBinding(EObject newValue) {
-		if (newValue != null) {
-			templateBinding.setSelection(new StructuredSelection(newValue));
-		} else {
-			templateBinding.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.TemplateParameterSubstitution.Properties.templateBinding);
-		if (readOnly && templateBinding.isEnabled()) {
-			templateBinding.setEnabled(false);
-			templateBinding.setToolTipText(UmlMessages.TemplateParameterSubstitution_ReadOnly);
-		} else if (!readOnly && !templateBinding.isEnabled()) {
-			templateBinding.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      templateBinding.setSelection(new StructuredSelection(newValue));
+    } else {
+      templateBinding.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.TemplateParameterSubstitution.Properties.templateBinding);
+    if (readOnly && templateBinding.isEnabled()) {
+      templateBinding.setEnabled(false);
+      templateBinding.setToolTipText(UmlMessages.TemplateParameterSubstitution_ReadOnly);
+    } else if (!readOnly && !templateBinding.isEnabled()) {
+      templateBinding.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -468,8 +468,8 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 	 * @generated
 	 */
 	public void addFilterToTemplateBinding(ViewerFilter filter) {
-		templateBinding.addFilter(filter);
-	}
+    templateBinding.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -478,8 +478,8 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 	 * @generated
 	 */
 	public void addBusinessFilterToTemplateBinding(ViewerFilter filter) {
-		templateBinding.addBusinessRuleFilter(filter);
-	}
+    templateBinding.addBusinessRuleFilter(filter);
+  }
 
 
 
@@ -493,8 +493,8 @@ public class TemplateParameterSubstitutionPropertiesEditionPartImpl extends Comp
 	 * @generated
 	 */
 	public String getTitle() {
-		return UmlMessages.TemplateParameterSubstitution_Part_Title;
-	}
+    return UmlMessages.TemplateParameterSubstitution_Part_Title;
+  }
 
 
 

@@ -58,9 +58,9 @@ public class AbstractionPropertiesEditionProvider extends PropertiesEditingProvi
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof Abstraction) 
-					&& (UMLPackage.Literals.ABSTRACTION == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof Abstraction) 
+          && (UMLPackage.Literals.ABSTRACTION == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class AbstractionPropertiesEditionProvider extends PropertiesEditingProvi
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof Abstraction) && (AbstractionPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof Abstraction) && (AbstractionPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class AbstractionPropertiesEditionProvider extends PropertiesEditingProvi
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Abstraction) && (refinement == AbstractionPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof Abstraction) && (refinement == AbstractionPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class AbstractionPropertiesEditionProvider extends PropertiesEditingProvi
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Abstraction) && ((AbstractionPropertiesEditionComponent.BASE_PART.equals(part) && refinement == AbstractionPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof Abstraction) && ((AbstractionPropertiesEditionComponent.BASE_PART.equals(part) && refinement == AbstractionPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class AbstractionPropertiesEditionProvider extends PropertiesEditingProvi
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof Abstraction) {
-			return new AbstractionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof Abstraction) {
+      return new AbstractionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class AbstractionPropertiesEditionProvider extends PropertiesEditingProvi
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof Abstraction) {
-			if (AbstractionPropertiesEditionComponent.BASE_PART.equals(part))
-				return new AbstractionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof Abstraction) {
+      if (AbstractionPropertiesEditionComponent.BASE_PART.equals(part))
+        return new AbstractionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

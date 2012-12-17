@@ -105,8 +105,8 @@ public class ExceptionHandlerPropertiesEditionPartForm extends SectionProperties
 	 * @generated
 	 */
 	public ExceptionHandlerPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+    super(editionComponent);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -116,15 +116,15 @@ public class ExceptionHandlerPropertiesEditionPartForm extends SectionProperties
 	 * @generated
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
-		view = form.getBody();
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
-		view.setLayout(layout);
-		createControls(widgetFactory, view);
-		return scrolledForm;
-	}
+    ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
+    Form form = scrolledForm.getForm();
+    view = form.getBody();
+    GridLayout layout = new GridLayout();
+    layout.numColumns = 3;
+    view.setLayout(layout);
+    createControls(widgetFactory, view);
+    return scrolledForm;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -134,54 +134,54 @@ public class ExceptionHandlerPropertiesEditionPartForm extends SectionProperties
 	 * @generated
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		CompositionSequence exceptionHandlerStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep propertiesStep = exceptionHandlerStep.addStep(UmlViewsRepository.ExceptionHandler.Properties.class);
-		propertiesStep.addStep(UmlViewsRepository.ExceptionHandler.Properties.handlerBody);
-		propertiesStep.addStep(UmlViewsRepository.ExceptionHandler.Properties.exceptionInput);
-		propertiesStep.addStep(UmlViewsRepository.ExceptionHandler.Properties.exceptionType);
-		propertiesStep.addStep(UmlViewsRepository.ExceptionHandler.Properties.protectedNode);
-		
-		
-		composer = new PartComposer(exceptionHandlerStep) {
+    CompositionSequence exceptionHandlerStep = new BindingCompositionSequence(propertiesEditionComponent);
+    CompositionStep propertiesStep = exceptionHandlerStep.addStep(UmlViewsRepository.ExceptionHandler.Properties.class);
+    propertiesStep.addStep(UmlViewsRepository.ExceptionHandler.Properties.handlerBody);
+    propertiesStep.addStep(UmlViewsRepository.ExceptionHandler.Properties.exceptionInput);
+    propertiesStep.addStep(UmlViewsRepository.ExceptionHandler.Properties.exceptionType);
+    propertiesStep.addStep(UmlViewsRepository.ExceptionHandler.Properties.protectedNode);
+    
+    
+    composer = new PartComposer(exceptionHandlerStep) {
 
-			@Override
-			public Composite addToPart(Composite parent, Object key) {
-				if (key == UmlViewsRepository.ExceptionHandler.Properties.class) {
-					return createPropertiesGroup(widgetFactory, parent);
-				}
-				if (key == UmlViewsRepository.ExceptionHandler.Properties.handlerBody) {
-					return createHandlerBodyFlatComboViewer(parent, widgetFactory);
-				}
-				if (key == UmlViewsRepository.ExceptionHandler.Properties.exceptionInput) {
-					return createExceptionInputFlatComboViewer(parent, widgetFactory);
-				}
-				if (key == UmlViewsRepository.ExceptionHandler.Properties.exceptionType) {
-					return createExceptionTypeReferencesTable(widgetFactory, parent);
-				}
-				if (key == UmlViewsRepository.ExceptionHandler.Properties.protectedNode) {
-					return createProtectedNodeFlatComboViewer(parent, widgetFactory);
-				}
-				return parent;
-			}
-		};
-		composer.compose(view);
-	}
+      @Override
+      public Composite addToPart(Composite parent, Object key) {
+        if (key == UmlViewsRepository.ExceptionHandler.Properties.class) {
+          return createPropertiesGroup(widgetFactory, parent);
+        }
+        if (key == UmlViewsRepository.ExceptionHandler.Properties.handlerBody) {
+          return createHandlerBodyFlatComboViewer(parent, widgetFactory);
+        }
+        if (key == UmlViewsRepository.ExceptionHandler.Properties.exceptionInput) {
+          return createExceptionInputFlatComboViewer(parent, widgetFactory);
+        }
+        if (key == UmlViewsRepository.ExceptionHandler.Properties.exceptionType) {
+          return createExceptionTypeReferencesTable(widgetFactory, parent);
+        }
+        if (key == UmlViewsRepository.ExceptionHandler.Properties.protectedNode) {
+          return createProtectedNodeFlatComboViewer(parent, widgetFactory);
+        }
+        return parent;
+      }
+    };
+    composer.compose(view);
+  }
 	/**
 	 * @generated
 	 */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
-		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
-		propertiesSection.setText(UmlMessages.ExceptionHandlerPropertiesEditionPart_PropertiesGroupLabel);
-		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesSectionData.horizontalSpan = 3;
-		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		propertiesSection.setClient(propertiesGroup);
-		return propertiesGroup;
-	}
+    Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+    propertiesSection.setText(UmlMessages.ExceptionHandlerPropertiesEditionPart_PropertiesGroupLabel);
+    GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
+    propertiesSectionData.horizontalSpan = 3;
+    propertiesSection.setLayoutData(propertiesSectionData);
+    Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+    GridLayout propertiesGroupLayout = new GridLayout();
+    propertiesGroupLayout.numColumns = 3;
+    propertiesGroup.setLayout(propertiesGroupLayout);
+    propertiesSection.setClient(propertiesGroup);
+    return propertiesGroup;
+  }
 
 	/**
 	 * @param parent the parent composite
@@ -189,29 +189,29 @@ public class ExceptionHandlerPropertiesEditionPartForm extends SectionProperties
 	 * @generated
 	 */
 	protected Composite createHandlerBodyFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		createDescription(parent, UmlViewsRepository.ExceptionHandler.Properties.handlerBody, UmlMessages.ExceptionHandlerPropertiesEditionPart_HandlerBodyLabel);
-		handlerBody = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ExceptionHandler.Properties.handlerBody, UmlViewsRepository.FORM_KIND));
-		widgetFactory.adapt(handlerBody);
-		handlerBody.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		GridData handlerBodyData = new GridData(GridData.FILL_HORIZONTAL);
-		handlerBody.setLayoutData(handlerBodyData);
-		handlerBody.addSelectionChangedListener(new ISelectionChangedListener() {
+    createDescription(parent, UmlViewsRepository.ExceptionHandler.Properties.handlerBody, UmlMessages.ExceptionHandlerPropertiesEditionPart_HandlerBodyLabel);
+    handlerBody = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ExceptionHandler.Properties.handlerBody, UmlViewsRepository.FORM_KIND));
+    widgetFactory.adapt(handlerBody);
+    handlerBody.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    GridData handlerBodyData = new GridData(GridData.FILL_HORIZONTAL);
+    handlerBody.setLayoutData(handlerBodyData);
+    handlerBody.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ExceptionHandlerPropertiesEditionPartForm.this, UmlViewsRepository.ExceptionHandler.Properties.handlerBody, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getHandlerBody()));
-			}
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ExceptionHandlerPropertiesEditionPartForm.this, UmlViewsRepository.ExceptionHandler.Properties.handlerBody, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getHandlerBody()));
+      }
 
-		});
-		handlerBody.setID(UmlViewsRepository.ExceptionHandler.Properties.handlerBody);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ExceptionHandler.Properties.handlerBody, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    handlerBody.setID(UmlViewsRepository.ExceptionHandler.Properties.handlerBody);
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ExceptionHandler.Properties.handlerBody, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @param parent the parent composite
@@ -219,110 +219,110 @@ public class ExceptionHandlerPropertiesEditionPartForm extends SectionProperties
 	 * @generated
 	 */
 	protected Composite createExceptionInputFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		createDescription(parent, UmlViewsRepository.ExceptionHandler.Properties.exceptionInput, UmlMessages.ExceptionHandlerPropertiesEditionPart_ExceptionInputLabel);
-		exceptionInput = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ExceptionHandler.Properties.exceptionInput, UmlViewsRepository.FORM_KIND));
-		widgetFactory.adapt(exceptionInput);
-		exceptionInput.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		GridData exceptionInputData = new GridData(GridData.FILL_HORIZONTAL);
-		exceptionInput.setLayoutData(exceptionInputData);
-		exceptionInput.addSelectionChangedListener(new ISelectionChangedListener() {
+    createDescription(parent, UmlViewsRepository.ExceptionHandler.Properties.exceptionInput, UmlMessages.ExceptionHandlerPropertiesEditionPart_ExceptionInputLabel);
+    exceptionInput = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ExceptionHandler.Properties.exceptionInput, UmlViewsRepository.FORM_KIND));
+    widgetFactory.adapt(exceptionInput);
+    exceptionInput.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    GridData exceptionInputData = new GridData(GridData.FILL_HORIZONTAL);
+    exceptionInput.setLayoutData(exceptionInputData);
+    exceptionInput.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ExceptionHandlerPropertiesEditionPartForm.this, UmlViewsRepository.ExceptionHandler.Properties.exceptionInput, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getExceptionInput()));
-			}
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ExceptionHandlerPropertiesEditionPartForm.this, UmlViewsRepository.ExceptionHandler.Properties.exceptionInput, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getExceptionInput()));
+      }
 
-		});
-		exceptionInput.setID(UmlViewsRepository.ExceptionHandler.Properties.exceptionInput);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ExceptionHandler.Properties.exceptionInput, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    exceptionInput.setID(UmlViewsRepository.ExceptionHandler.Properties.exceptionInput);
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ExceptionHandler.Properties.exceptionInput, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @generated
 	 */
 	protected Composite createExceptionTypeReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.exceptionType = new ReferencesTable(getDescription(UmlViewsRepository.ExceptionHandler.Properties.exceptionType, UmlMessages.ExceptionHandlerPropertiesEditionPart_ExceptionTypeLabel), new ReferencesTableListener	() {
-			public void handleAdd() { addExceptionType(); }
-			public void handleEdit(EObject element) { editExceptionType(element); }
-			public void handleMove(EObject element, int oldIndex, int newIndex) { moveExceptionType(element, oldIndex, newIndex); }
-			public void handleRemove(EObject element) { removeFromExceptionType(element); }
-			public void navigateTo(EObject element) { }
-		});
-		this.exceptionType.setHelpText(propertiesEditionComponent.getHelpContent(UmlViewsRepository.ExceptionHandler.Properties.exceptionType, UmlViewsRepository.FORM_KIND));
-		this.exceptionType.createControls(parent, widgetFactory);
-		this.exceptionType.addSelectionListener(new SelectionAdapter() {
-			
-			public void widgetSelected(SelectionEvent e) {
-				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ExceptionHandlerPropertiesEditionPartForm.this, UmlViewsRepository.ExceptionHandler.Properties.exceptionType, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
-				}
-			}
-			
-		});
-		GridData exceptionTypeData = new GridData(GridData.FILL_HORIZONTAL);
-		exceptionTypeData.horizontalSpan = 3;
-		this.exceptionType.setLayoutData(exceptionTypeData);
-		this.exceptionType.disableMove();
-		exceptionType.setID(UmlViewsRepository.ExceptionHandler.Properties.exceptionType);
-		exceptionType.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
-		return parent;
-	}
+    this.exceptionType = new ReferencesTable(getDescription(UmlViewsRepository.ExceptionHandler.Properties.exceptionType, UmlMessages.ExceptionHandlerPropertiesEditionPart_ExceptionTypeLabel), new ReferencesTableListener	() {
+      public void handleAdd() { addExceptionType(); }
+      public void handleEdit(EObject element) { editExceptionType(element); }
+      public void handleMove(EObject element, int oldIndex, int newIndex) { moveExceptionType(element, oldIndex, newIndex); }
+      public void handleRemove(EObject element) { removeFromExceptionType(element); }
+      public void navigateTo(EObject element) { }
+    });
+    this.exceptionType.setHelpText(propertiesEditionComponent.getHelpContent(UmlViewsRepository.ExceptionHandler.Properties.exceptionType, UmlViewsRepository.FORM_KIND));
+    this.exceptionType.createControls(parent, widgetFactory);
+    this.exceptionType.addSelectionListener(new SelectionAdapter() {
+      
+      public void widgetSelected(SelectionEvent e) {
+        if (e.item != null && e.item.getData() instanceof EObject) {
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ExceptionHandlerPropertiesEditionPartForm.this, UmlViewsRepository.ExceptionHandler.Properties.exceptionType, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+        }
+      }
+      
+    });
+    GridData exceptionTypeData = new GridData(GridData.FILL_HORIZONTAL);
+    exceptionTypeData.horizontalSpan = 3;
+    this.exceptionType.setLayoutData(exceptionTypeData);
+    this.exceptionType.disableMove();
+    exceptionType.setID(UmlViewsRepository.ExceptionHandler.Properties.exceptionType);
+    exceptionType.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @generated
 	 */
 	protected void addExceptionType() {
-		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(exceptionType.getInput(), exceptionTypeFilters, exceptionTypeBusinessFilters,
-		"exceptionType", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
-			@Override
-			public void process(IStructuredSelection selection) {
-				for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
-					EObject elem = (EObject) iter.next();
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ExceptionHandlerPropertiesEditionPartForm.this, UmlViewsRepository.ExceptionHandler.Properties.exceptionType,
-						PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
-				}
-				exceptionType.refresh();
-			}
-		};
-		dialog.open();
-	}
+    TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(exceptionType.getInput(), exceptionTypeFilters, exceptionTypeBusinessFilters,
+    "exceptionType", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
+      @Override
+      public void process(IStructuredSelection selection) {
+        for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
+          EObject elem = (EObject) iter.next();
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ExceptionHandlerPropertiesEditionPartForm.this, UmlViewsRepository.ExceptionHandler.Properties.exceptionType,
+            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+        }
+        exceptionType.refresh();
+      }
+    };
+    dialog.open();
+  }
 
 	/**
 	 * @generated
 	 */
 	protected void moveExceptionType(EObject element, int oldIndex, int newIndex) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ExceptionHandlerPropertiesEditionPartForm.this, UmlViewsRepository.ExceptionHandler.Properties.exceptionType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		exceptionType.refresh();
-	}
+    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ExceptionHandlerPropertiesEditionPartForm.this, UmlViewsRepository.ExceptionHandler.Properties.exceptionType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+    exceptionType.refresh();
+  }
 
 	/**
 	 * @generated
 	 */
 	protected void removeFromExceptionType(EObject element) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ExceptionHandlerPropertiesEditionPartForm.this, UmlViewsRepository.ExceptionHandler.Properties.exceptionType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-		exceptionType.refresh();
-	}
+    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ExceptionHandlerPropertiesEditionPartForm.this, UmlViewsRepository.ExceptionHandler.Properties.exceptionType, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+    exceptionType.refresh();
+  }
 
 	/**
 	 * @generated
 	 */
 	protected void editExceptionType(EObject element) {
-		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
-		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
-		if (provider != null) {
-			PropertiesEditingPolicy policy = provider.getPolicy(context);
-			if (policy != null) {
-				policy.execute();
-				exceptionType.refresh();
-			}
-		}
-	}
+    EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
+    PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
+    if (provider != null) {
+      PropertiesEditingPolicy policy = provider.getPolicy(context);
+      if (policy != null) {
+        policy.execute();
+        exceptionType.refresh();
+      }
+    }
+  }
 
 	/**
 	 * @param parent the parent composite
@@ -330,29 +330,29 @@ public class ExceptionHandlerPropertiesEditionPartForm extends SectionProperties
 	 * @generated
 	 */
 	protected Composite createProtectedNodeFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		createDescription(parent, UmlViewsRepository.ExceptionHandler.Properties.protectedNode, UmlMessages.ExceptionHandlerPropertiesEditionPart_ProtectedNodeLabel);
-		protectedNode = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ExceptionHandler.Properties.protectedNode, UmlViewsRepository.FORM_KIND));
-		widgetFactory.adapt(protectedNode);
-		protectedNode.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		GridData protectedNodeData = new GridData(GridData.FILL_HORIZONTAL);
-		protectedNode.setLayoutData(protectedNodeData);
-		protectedNode.addSelectionChangedListener(new ISelectionChangedListener() {
+    createDescription(parent, UmlViewsRepository.ExceptionHandler.Properties.protectedNode, UmlMessages.ExceptionHandlerPropertiesEditionPart_ProtectedNodeLabel);
+    protectedNode = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ExceptionHandler.Properties.protectedNode, UmlViewsRepository.FORM_KIND));
+    widgetFactory.adapt(protectedNode);
+    protectedNode.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    GridData protectedNodeData = new GridData(GridData.FILL_HORIZONTAL);
+    protectedNode.setLayoutData(protectedNodeData);
+    protectedNode.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ExceptionHandlerPropertiesEditionPartForm.this, UmlViewsRepository.ExceptionHandler.Properties.protectedNode, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getProtectedNode()));
-			}
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ExceptionHandlerPropertiesEditionPartForm.this, UmlViewsRepository.ExceptionHandler.Properties.protectedNode, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getProtectedNode()));
+      }
 
-		});
-		protectedNode.setID(UmlViewsRepository.ExceptionHandler.Properties.protectedNode);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ExceptionHandler.Properties.protectedNode, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    protectedNode.setID(UmlViewsRepository.ExceptionHandler.Properties.protectedNode);
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ExceptionHandler.Properties.protectedNode, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 
 	/**
@@ -362,7 +362,7 @@ public class ExceptionHandlerPropertiesEditionPartForm extends SectionProperties
 	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-	}
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -371,13 +371,13 @@ public class ExceptionHandlerPropertiesEditionPartForm extends SectionProperties
 	 * @generated
 	 */
 	public EObject getHandlerBody() {
-		if (handlerBody.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) handlerBody.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (handlerBody.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) handlerBody.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -406,20 +406,20 @@ public class ExceptionHandlerPropertiesEditionPartForm extends SectionProperties
 	 * @generated
 	 */
 	public void setHandlerBody(EObject newValue) {
-		if (newValue != null) {
-			handlerBody.setSelection(new StructuredSelection(newValue));
-		} else {
-			handlerBody.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.ExceptionHandler.Properties.handlerBody);
-		if (readOnly && handlerBody.isEnabled()) {
-			handlerBody.setEnabled(false);
-			handlerBody.setToolTipText(UmlMessages.ExceptionHandler_ReadOnly);
-		} else if (!readOnly && !handlerBody.isEnabled()) {
-			handlerBody.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      handlerBody.setSelection(new StructuredSelection(newValue));
+    } else {
+      handlerBody.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.ExceptionHandler.Properties.handlerBody);
+    if (readOnly && handlerBody.isEnabled()) {
+      handlerBody.setEnabled(false);
+      handlerBody.setToolTipText(UmlMessages.ExceptionHandler_ReadOnly);
+    } else if (!readOnly && !handlerBody.isEnabled()) {
+      handlerBody.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -437,8 +437,8 @@ public class ExceptionHandlerPropertiesEditionPartForm extends SectionProperties
 	 * @generated
 	 */
 	public void addFilterToHandlerBody(ViewerFilter filter) {
-		handlerBody.addFilter(filter);
-	}
+    handlerBody.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -447,8 +447,8 @@ public class ExceptionHandlerPropertiesEditionPartForm extends SectionProperties
 	 * @generated
 	 */
 	public void addBusinessFilterToHandlerBody(ViewerFilter filter) {
-		handlerBody.addBusinessRuleFilter(filter);
-	}
+    handlerBody.addBusinessRuleFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -457,13 +457,13 @@ public class ExceptionHandlerPropertiesEditionPartForm extends SectionProperties
 	 * @generated
 	 */
 	public EObject getExceptionInput() {
-		if (exceptionInput.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) exceptionInput.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (exceptionInput.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) exceptionInput.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -492,20 +492,20 @@ public class ExceptionHandlerPropertiesEditionPartForm extends SectionProperties
 	 * @generated
 	 */
 	public void setExceptionInput(EObject newValue) {
-		if (newValue != null) {
-			exceptionInput.setSelection(new StructuredSelection(newValue));
-		} else {
-			exceptionInput.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.ExceptionHandler.Properties.exceptionInput);
-		if (readOnly && exceptionInput.isEnabled()) {
-			exceptionInput.setEnabled(false);
-			exceptionInput.setToolTipText(UmlMessages.ExceptionHandler_ReadOnly);
-		} else if (!readOnly && !exceptionInput.isEnabled()) {
-			exceptionInput.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      exceptionInput.setSelection(new StructuredSelection(newValue));
+    } else {
+      exceptionInput.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.ExceptionHandler.Properties.exceptionInput);
+    if (readOnly && exceptionInput.isEnabled()) {
+      exceptionInput.setEnabled(false);
+      exceptionInput.setToolTipText(UmlMessages.ExceptionHandler_ReadOnly);
+    } else if (!readOnly && !exceptionInput.isEnabled()) {
+      exceptionInput.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -523,8 +523,8 @@ public class ExceptionHandlerPropertiesEditionPartForm extends SectionProperties
 	 * @generated
 	 */
 	public void addFilterToExceptionInput(ViewerFilter filter) {
-		exceptionInput.addFilter(filter);
-	}
+    exceptionInput.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -533,8 +533,8 @@ public class ExceptionHandlerPropertiesEditionPartForm extends SectionProperties
 	 * @generated
 	 */
 	public void addBusinessFilterToExceptionInput(ViewerFilter filter) {
-		exceptionInput.addBusinessRuleFilter(filter);
-	}
+    exceptionInput.addBusinessRuleFilter(filter);
+  }
 
 
 
@@ -566,7 +566,7 @@ public class ExceptionHandlerPropertiesEditionPartForm extends SectionProperties
 	 * @generated
 	 */
 	public void updateExceptionType() {
-	exceptionType.refresh();
+  exceptionType.refresh();
 }
 
 	/**
@@ -576,8 +576,8 @@ public class ExceptionHandlerPropertiesEditionPartForm extends SectionProperties
 	 * @generated
 	 */
 	public void addFilterToExceptionType(ViewerFilter filter) {
-		exceptionTypeFilters.add(filter);
-	}
+    exceptionTypeFilters.add(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -586,8 +586,8 @@ public class ExceptionHandlerPropertiesEditionPartForm extends SectionProperties
 	 * @generated
 	 */
 	public void addBusinessFilterToExceptionType(ViewerFilter filter) {
-		exceptionTypeBusinessFilters.add(filter);
-	}
+    exceptionTypeBusinessFilters.add(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -596,8 +596,8 @@ public class ExceptionHandlerPropertiesEditionPartForm extends SectionProperties
 	 * @generated
 	 */
 	public boolean isContainedInExceptionTypeTable(EObject element) {
-		return ((ReferencesTableSettings)exceptionType.getInput()).contains(element);
-	}
+    return ((ReferencesTableSettings)exceptionType.getInput()).contains(element);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -606,13 +606,13 @@ public class ExceptionHandlerPropertiesEditionPartForm extends SectionProperties
 	 * @generated
 	 */
 	public EObject getProtectedNode() {
-		if (protectedNode.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) protectedNode.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (protectedNode.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) protectedNode.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -641,20 +641,20 @@ public class ExceptionHandlerPropertiesEditionPartForm extends SectionProperties
 	 * @generated
 	 */
 	public void setProtectedNode(EObject newValue) {
-		if (newValue != null) {
-			protectedNode.setSelection(new StructuredSelection(newValue));
-		} else {
-			protectedNode.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.ExceptionHandler.Properties.protectedNode);
-		if (readOnly && protectedNode.isEnabled()) {
-			protectedNode.setEnabled(false);
-			protectedNode.setToolTipText(UmlMessages.ExceptionHandler_ReadOnly);
-		} else if (!readOnly && !protectedNode.isEnabled()) {
-			protectedNode.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      protectedNode.setSelection(new StructuredSelection(newValue));
+    } else {
+      protectedNode.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.ExceptionHandler.Properties.protectedNode);
+    if (readOnly && protectedNode.isEnabled()) {
+      protectedNode.setEnabled(false);
+      protectedNode.setToolTipText(UmlMessages.ExceptionHandler_ReadOnly);
+    } else if (!readOnly && !protectedNode.isEnabled()) {
+      protectedNode.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -672,8 +672,8 @@ public class ExceptionHandlerPropertiesEditionPartForm extends SectionProperties
 	 * @generated
 	 */
 	public void addFilterToProtectedNode(ViewerFilter filter) {
-		protectedNode.addFilter(filter);
-	}
+    protectedNode.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -682,8 +682,8 @@ public class ExceptionHandlerPropertiesEditionPartForm extends SectionProperties
 	 * @generated
 	 */
 	public void addBusinessFilterToProtectedNode(ViewerFilter filter) {
-		protectedNode.addBusinessRuleFilter(filter);
-	}
+    protectedNode.addBusinessRuleFilter(filter);
+  }
 
 
 
@@ -697,8 +697,8 @@ public class ExceptionHandlerPropertiesEditionPartForm extends SectionProperties
 	 * @generated
 	 */
 	public String getTitle() {
-		return UmlMessages.ExceptionHandler_Part_Title;
-	}
+    return UmlMessages.ExceptionHandler_Part_Title;
+  }
 
 
 

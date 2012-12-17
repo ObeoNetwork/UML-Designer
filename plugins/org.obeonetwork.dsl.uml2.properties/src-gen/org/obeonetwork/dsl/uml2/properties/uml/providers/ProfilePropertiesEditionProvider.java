@@ -58,9 +58,9 @@ public class ProfilePropertiesEditionProvider extends PropertiesEditingProviderI
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof Profile) 
-					&& (UMLPackage.Literals.PROFILE == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof Profile) 
+          && (UMLPackage.Literals.PROFILE == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class ProfilePropertiesEditionProvider extends PropertiesEditingProviderI
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof Profile) && (ProfilePropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof Profile) && (ProfilePropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class ProfilePropertiesEditionProvider extends PropertiesEditingProviderI
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Profile) && (refinement == ProfilePropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof Profile) && (refinement == ProfilePropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class ProfilePropertiesEditionProvider extends PropertiesEditingProviderI
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Profile) && ((ProfilePropertiesEditionComponent.BASE_PART.equals(part) && refinement == ProfilePropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof Profile) && ((ProfilePropertiesEditionComponent.BASE_PART.equals(part) && refinement == ProfilePropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class ProfilePropertiesEditionProvider extends PropertiesEditingProviderI
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof Profile) {
-			return new ProfilePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof Profile) {
+      return new ProfilePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class ProfilePropertiesEditionProvider extends PropertiesEditingProviderI
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof Profile) {
-			if (ProfilePropertiesEditionComponent.BASE_PART.equals(part))
-				return new ProfilePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof Profile) {
+      if (ProfilePropertiesEditionComponent.BASE_PART.equals(part))
+        return new ProfilePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

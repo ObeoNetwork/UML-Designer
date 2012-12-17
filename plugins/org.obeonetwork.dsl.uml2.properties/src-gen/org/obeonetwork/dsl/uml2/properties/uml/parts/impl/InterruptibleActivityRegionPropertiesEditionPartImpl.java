@@ -99,8 +99,8 @@ public class InterruptibleActivityRegionPropertiesEditionPartImpl extends Compos
 	 * @generated
 	 */
 	public InterruptibleActivityRegionPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+    super(editionComponent);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -110,13 +110,13 @@ public class InterruptibleActivityRegionPropertiesEditionPartImpl extends Compos
 	 * @generated
 	 */
 	public Composite createFigure(final Composite parent) {
-		view = new Composite(parent, SWT.NONE);
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
-		view.setLayout(layout);
-		createControls(view);
-		return view;
-	}
+    view = new Composite(parent, SWT.NONE);
+    GridLayout layout = new GridLayout();
+    layout.numColumns = 3;
+    view.setLayout(layout);
+    createControls(view);
+    return view;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -126,236 +126,236 @@ public class InterruptibleActivityRegionPropertiesEditionPartImpl extends Compos
 	 * @generated
 	 */
 	public void createControls(Composite view) { 
-		CompositionSequence interruptibleActivityRegionStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep propertiesStep = interruptibleActivityRegionStep.addStep(UmlViewsRepository.InterruptibleActivityRegion.Properties.class);
-		propertiesStep.addStep(UmlViewsRepository.InterruptibleActivityRegion.Properties.inActivity);
-		propertiesStep.addStep(UmlViewsRepository.InterruptibleActivityRegion.Properties.node);
-		propertiesStep.addStep(UmlViewsRepository.InterruptibleActivityRegion.Properties.interruptingEdge);
-		
-		
-		composer = new PartComposer(interruptibleActivityRegionStep) {
+    CompositionSequence interruptibleActivityRegionStep = new BindingCompositionSequence(propertiesEditionComponent);
+    CompositionStep propertiesStep = interruptibleActivityRegionStep.addStep(UmlViewsRepository.InterruptibleActivityRegion.Properties.class);
+    propertiesStep.addStep(UmlViewsRepository.InterruptibleActivityRegion.Properties.inActivity);
+    propertiesStep.addStep(UmlViewsRepository.InterruptibleActivityRegion.Properties.node);
+    propertiesStep.addStep(UmlViewsRepository.InterruptibleActivityRegion.Properties.interruptingEdge);
+    
+    
+    composer = new PartComposer(interruptibleActivityRegionStep) {
 
-			@Override
-			public Composite addToPart(Composite parent, Object key) {
-				if (key == UmlViewsRepository.InterruptibleActivityRegion.Properties.class) {
-					return createPropertiesGroup(parent);
-				}
-				if (key == UmlViewsRepository.InterruptibleActivityRegion.Properties.inActivity) {
-					return createInActivityFlatComboViewer(parent);
-				}
-				if (key == UmlViewsRepository.InterruptibleActivityRegion.Properties.node) {
-					return createNodeAdvancedReferencesTable(parent);
-				}
-				if (key == UmlViewsRepository.InterruptibleActivityRegion.Properties.interruptingEdge) {
-					return createInterruptingEdgeAdvancedReferencesTable(parent);
-				}
-				return parent;
-			}
-		};
-		composer.compose(view);
-	}
+      @Override
+      public Composite addToPart(Composite parent, Object key) {
+        if (key == UmlViewsRepository.InterruptibleActivityRegion.Properties.class) {
+          return createPropertiesGroup(parent);
+        }
+        if (key == UmlViewsRepository.InterruptibleActivityRegion.Properties.inActivity) {
+          return createInActivityFlatComboViewer(parent);
+        }
+        if (key == UmlViewsRepository.InterruptibleActivityRegion.Properties.node) {
+          return createNodeAdvancedReferencesTable(parent);
+        }
+        if (key == UmlViewsRepository.InterruptibleActivityRegion.Properties.interruptingEdge) {
+          return createInterruptingEdgeAdvancedReferencesTable(parent);
+        }
+        return parent;
+      }
+    };
+    composer.compose(view);
+  }
 
 	/**
 	 * @generated
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
-		Group propertiesGroup = new Group(parent, SWT.NONE);
-		propertiesGroup.setText(UmlMessages.InterruptibleActivityRegionPropertiesEditionPart_PropertiesGroupLabel);
-		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesGroupData.horizontalSpan = 3;
-		propertiesGroup.setLayoutData(propertiesGroupData);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		return propertiesGroup;
-	}
+    Group propertiesGroup = new Group(parent, SWT.NONE);
+    propertiesGroup.setText(UmlMessages.InterruptibleActivityRegionPropertiesEditionPart_PropertiesGroupLabel);
+    GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
+    propertiesGroupData.horizontalSpan = 3;
+    propertiesGroup.setLayoutData(propertiesGroupData);
+    GridLayout propertiesGroupLayout = new GridLayout();
+    propertiesGroupLayout.numColumns = 3;
+    propertiesGroup.setLayout(propertiesGroupLayout);
+    return propertiesGroup;
+  }
 
 	/**
 	 * @param parent the parent composite
 	 * @generated
 	 */
 	protected Composite createInActivityFlatComboViewer(Composite parent) {
-		createDescription(parent, UmlViewsRepository.InterruptibleActivityRegion.Properties.inActivity, UmlMessages.InterruptibleActivityRegionPropertiesEditionPart_InActivityLabel);
-		inActivity = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.InterruptibleActivityRegion.Properties.inActivity, UmlViewsRepository.SWT_KIND));
-		inActivity.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    createDescription(parent, UmlViewsRepository.InterruptibleActivityRegion.Properties.inActivity, UmlMessages.InterruptibleActivityRegionPropertiesEditionPart_InActivityLabel);
+    inActivity = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.InterruptibleActivityRegion.Properties.inActivity, UmlViewsRepository.SWT_KIND));
+    inActivity.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
-		inActivity.addSelectionChangedListener(new ISelectionChangedListener() {
+    inActivity.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InterruptibleActivityRegionPropertiesEditionPartImpl.this, UmlViewsRepository.InterruptibleActivityRegion.Properties.inActivity, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getInActivity()));
-			}
+      public void selectionChanged(SelectionChangedEvent event) {
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InterruptibleActivityRegionPropertiesEditionPartImpl.this, UmlViewsRepository.InterruptibleActivityRegion.Properties.inActivity, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getInActivity()));
+      }
 
-		});
-		GridData inActivityData = new GridData(GridData.FILL_HORIZONTAL);
-		inActivity.setLayoutData(inActivityData);
-		inActivity.setID(UmlViewsRepository.InterruptibleActivityRegion.Properties.inActivity);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.InterruptibleActivityRegion.Properties.inActivity, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    GridData inActivityData = new GridData(GridData.FILL_HORIZONTAL);
+    inActivity.setLayoutData(inActivityData);
+    inActivity.setID(UmlViewsRepository.InterruptibleActivityRegion.Properties.inActivity);
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.InterruptibleActivityRegion.Properties.inActivity, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @generated
 	 */
 	protected Composite createNodeAdvancedReferencesTable(Composite parent) {
-		String label = getDescription(UmlViewsRepository.InterruptibleActivityRegion.Properties.node, UmlMessages.InterruptibleActivityRegionPropertiesEditionPart_NodeLabel);		 
-		this.node = new ReferencesTable(label, new ReferencesTableListener() {
-			public void handleAdd() { addNode(); }
-			public void handleEdit(EObject element) { editNode(element); }
-			public void handleMove(EObject element, int oldIndex, int newIndex) { moveNode(element, oldIndex, newIndex); }
-			public void handleRemove(EObject element) { removeFromNode(element); }
-			public void navigateTo(EObject element) { }
-		});
-		this.node.setHelpText(propertiesEditionComponent.getHelpContent(UmlViewsRepository.InterruptibleActivityRegion.Properties.node, UmlViewsRepository.SWT_KIND));
-		this.node.createControls(parent);
-		this.node.addSelectionListener(new SelectionAdapter() {
-			
-			public void widgetSelected(SelectionEvent e) {
-				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InterruptibleActivityRegionPropertiesEditionPartImpl.this, UmlViewsRepository.InterruptibleActivityRegion.Properties.node, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
-				}
-			}
-			
-		});
-		GridData nodeData = new GridData(GridData.FILL_HORIZONTAL);
-		nodeData.horizontalSpan = 3;
-		this.node.setLayoutData(nodeData);
-		this.node.disableMove();
-		node.setID(UmlViewsRepository.InterruptibleActivityRegion.Properties.node);
-		node.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
-		return parent;
-	}
+    String label = getDescription(UmlViewsRepository.InterruptibleActivityRegion.Properties.node, UmlMessages.InterruptibleActivityRegionPropertiesEditionPart_NodeLabel);		 
+    this.node = new ReferencesTable(label, new ReferencesTableListener() {
+      public void handleAdd() { addNode(); }
+      public void handleEdit(EObject element) { editNode(element); }
+      public void handleMove(EObject element, int oldIndex, int newIndex) { moveNode(element, oldIndex, newIndex); }
+      public void handleRemove(EObject element) { removeFromNode(element); }
+      public void navigateTo(EObject element) { }
+    });
+    this.node.setHelpText(propertiesEditionComponent.getHelpContent(UmlViewsRepository.InterruptibleActivityRegion.Properties.node, UmlViewsRepository.SWT_KIND));
+    this.node.createControls(parent);
+    this.node.addSelectionListener(new SelectionAdapter() {
+      
+      public void widgetSelected(SelectionEvent e) {
+        if (e.item != null && e.item.getData() instanceof EObject) {
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InterruptibleActivityRegionPropertiesEditionPartImpl.this, UmlViewsRepository.InterruptibleActivityRegion.Properties.node, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+        }
+      }
+      
+    });
+    GridData nodeData = new GridData(GridData.FILL_HORIZONTAL);
+    nodeData.horizontalSpan = 3;
+    this.node.setLayoutData(nodeData);
+    this.node.disableMove();
+    node.setID(UmlViewsRepository.InterruptibleActivityRegion.Properties.node);
+    node.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @generated
 	 */
 	protected void addNode() {
-		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(node.getInput(), nodeFilters, nodeBusinessFilters,
-		"node", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
-			@Override
-			public void process(IStructuredSelection selection) {
-				for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
-					EObject elem = (EObject) iter.next();
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InterruptibleActivityRegionPropertiesEditionPartImpl.this, UmlViewsRepository.InterruptibleActivityRegion.Properties.node,
-						PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
-				}
-				node.refresh();
-			}
-		};
-		dialog.open();
-	}
+    TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(node.getInput(), nodeFilters, nodeBusinessFilters,
+    "node", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
+      @Override
+      public void process(IStructuredSelection selection) {
+        for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
+          EObject elem = (EObject) iter.next();
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InterruptibleActivityRegionPropertiesEditionPartImpl.this, UmlViewsRepository.InterruptibleActivityRegion.Properties.node,
+            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+        }
+        node.refresh();
+      }
+    };
+    dialog.open();
+  }
 
 	/**
 	 * @generated
 	 */
 	protected void moveNode(EObject element, int oldIndex, int newIndex) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InterruptibleActivityRegionPropertiesEditionPartImpl.this, UmlViewsRepository.InterruptibleActivityRegion.Properties.node, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		node.refresh();
-	}
+    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InterruptibleActivityRegionPropertiesEditionPartImpl.this, UmlViewsRepository.InterruptibleActivityRegion.Properties.node, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+    node.refresh();
+  }
 
 	/**
 	 * @generated
 	 */
 	protected void removeFromNode(EObject element) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InterruptibleActivityRegionPropertiesEditionPartImpl.this, UmlViewsRepository.InterruptibleActivityRegion.Properties.node, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-		node.refresh();
-	}
+    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InterruptibleActivityRegionPropertiesEditionPartImpl.this, UmlViewsRepository.InterruptibleActivityRegion.Properties.node, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+    node.refresh();
+  }
 
 	/**
 	 * @generated
 	 */
 	protected void editNode(EObject element) {
-		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
-		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
-		if (provider != null) {
-			PropertiesEditingPolicy policy = provider.getPolicy(context);
-			if (policy != null) {
-				policy.execute();
-				node.refresh();
-			}
-		}
-	}
+    EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
+    PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
+    if (provider != null) {
+      PropertiesEditingPolicy policy = provider.getPolicy(context);
+      if (policy != null) {
+        policy.execute();
+        node.refresh();
+      }
+    }
+  }
 
 	/**
 	 * @generated
 	 */
 	protected Composite createInterruptingEdgeAdvancedReferencesTable(Composite parent) {
-		String label = getDescription(UmlViewsRepository.InterruptibleActivityRegion.Properties.interruptingEdge, UmlMessages.InterruptibleActivityRegionPropertiesEditionPart_InterruptingEdgeLabel);		 
-		this.interruptingEdge = new ReferencesTable(label, new ReferencesTableListener() {
-			public void handleAdd() { addInterruptingEdge(); }
-			public void handleEdit(EObject element) { editInterruptingEdge(element); }
-			public void handleMove(EObject element, int oldIndex, int newIndex) { moveInterruptingEdge(element, oldIndex, newIndex); }
-			public void handleRemove(EObject element) { removeFromInterruptingEdge(element); }
-			public void navigateTo(EObject element) { }
-		});
-		this.interruptingEdge.setHelpText(propertiesEditionComponent.getHelpContent(UmlViewsRepository.InterruptibleActivityRegion.Properties.interruptingEdge, UmlViewsRepository.SWT_KIND));
-		this.interruptingEdge.createControls(parent);
-		this.interruptingEdge.addSelectionListener(new SelectionAdapter() {
-			
-			public void widgetSelected(SelectionEvent e) {
-				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InterruptibleActivityRegionPropertiesEditionPartImpl.this, UmlViewsRepository.InterruptibleActivityRegion.Properties.interruptingEdge, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
-				}
-			}
-			
-		});
-		GridData interruptingEdgeData = new GridData(GridData.FILL_HORIZONTAL);
-		interruptingEdgeData.horizontalSpan = 3;
-		this.interruptingEdge.setLayoutData(interruptingEdgeData);
-		this.interruptingEdge.disableMove();
-		interruptingEdge.setID(UmlViewsRepository.InterruptibleActivityRegion.Properties.interruptingEdge);
-		interruptingEdge.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
-		return parent;
-	}
+    String label = getDescription(UmlViewsRepository.InterruptibleActivityRegion.Properties.interruptingEdge, UmlMessages.InterruptibleActivityRegionPropertiesEditionPart_InterruptingEdgeLabel);		 
+    this.interruptingEdge = new ReferencesTable(label, new ReferencesTableListener() {
+      public void handleAdd() { addInterruptingEdge(); }
+      public void handleEdit(EObject element) { editInterruptingEdge(element); }
+      public void handleMove(EObject element, int oldIndex, int newIndex) { moveInterruptingEdge(element, oldIndex, newIndex); }
+      public void handleRemove(EObject element) { removeFromInterruptingEdge(element); }
+      public void navigateTo(EObject element) { }
+    });
+    this.interruptingEdge.setHelpText(propertiesEditionComponent.getHelpContent(UmlViewsRepository.InterruptibleActivityRegion.Properties.interruptingEdge, UmlViewsRepository.SWT_KIND));
+    this.interruptingEdge.createControls(parent);
+    this.interruptingEdge.addSelectionListener(new SelectionAdapter() {
+      
+      public void widgetSelected(SelectionEvent e) {
+        if (e.item != null && e.item.getData() instanceof EObject) {
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InterruptibleActivityRegionPropertiesEditionPartImpl.this, UmlViewsRepository.InterruptibleActivityRegion.Properties.interruptingEdge, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+        }
+      }
+      
+    });
+    GridData interruptingEdgeData = new GridData(GridData.FILL_HORIZONTAL);
+    interruptingEdgeData.horizontalSpan = 3;
+    this.interruptingEdge.setLayoutData(interruptingEdgeData);
+    this.interruptingEdge.disableMove();
+    interruptingEdge.setID(UmlViewsRepository.InterruptibleActivityRegion.Properties.interruptingEdge);
+    interruptingEdge.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @generated
 	 */
 	protected void addInterruptingEdge() {
-		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(interruptingEdge.getInput(), interruptingEdgeFilters, interruptingEdgeBusinessFilters,
-		"interruptingEdge", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
-			@Override
-			public void process(IStructuredSelection selection) {
-				for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
-					EObject elem = (EObject) iter.next();
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InterruptibleActivityRegionPropertiesEditionPartImpl.this, UmlViewsRepository.InterruptibleActivityRegion.Properties.interruptingEdge,
-						PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
-				}
-				interruptingEdge.refresh();
-			}
-		};
-		dialog.open();
-	}
+    TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(interruptingEdge.getInput(), interruptingEdgeFilters, interruptingEdgeBusinessFilters,
+    "interruptingEdge", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
+      @Override
+      public void process(IStructuredSelection selection) {
+        for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
+          EObject elem = (EObject) iter.next();
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InterruptibleActivityRegionPropertiesEditionPartImpl.this, UmlViewsRepository.InterruptibleActivityRegion.Properties.interruptingEdge,
+            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+        }
+        interruptingEdge.refresh();
+      }
+    };
+    dialog.open();
+  }
 
 	/**
 	 * @generated
 	 */
 	protected void moveInterruptingEdge(EObject element, int oldIndex, int newIndex) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InterruptibleActivityRegionPropertiesEditionPartImpl.this, UmlViewsRepository.InterruptibleActivityRegion.Properties.interruptingEdge, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		interruptingEdge.refresh();
-	}
+    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InterruptibleActivityRegionPropertiesEditionPartImpl.this, UmlViewsRepository.InterruptibleActivityRegion.Properties.interruptingEdge, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+    interruptingEdge.refresh();
+  }
 
 	/**
 	 * @generated
 	 */
 	protected void removeFromInterruptingEdge(EObject element) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InterruptibleActivityRegionPropertiesEditionPartImpl.this, UmlViewsRepository.InterruptibleActivityRegion.Properties.interruptingEdge, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-		interruptingEdge.refresh();
-	}
+    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(InterruptibleActivityRegionPropertiesEditionPartImpl.this, UmlViewsRepository.InterruptibleActivityRegion.Properties.interruptingEdge, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+    interruptingEdge.refresh();
+  }
 
 	/**
 	 * @generated
 	 */
 	protected void editInterruptingEdge(EObject element) {
-		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
-		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
-		if (provider != null) {
-			PropertiesEditingPolicy policy = provider.getPolicy(context);
-			if (policy != null) {
-				policy.execute();
-				interruptingEdge.refresh();
-			}
-		}
-	}
+    EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
+    PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
+    if (provider != null) {
+      PropertiesEditingPolicy policy = provider.getPolicy(context);
+      if (policy != null) {
+        policy.execute();
+        interruptingEdge.refresh();
+      }
+    }
+  }
 
 
 	/**
@@ -365,7 +365,7 @@ public class InterruptibleActivityRegionPropertiesEditionPartImpl extends Compos
 	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-	}
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -374,13 +374,13 @@ public class InterruptibleActivityRegionPropertiesEditionPartImpl extends Compos
 	 * @generated
 	 */
 	public EObject getInActivity() {
-		if (inActivity.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) inActivity.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (inActivity.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) inActivity.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -409,20 +409,20 @@ public class InterruptibleActivityRegionPropertiesEditionPartImpl extends Compos
 	 * @generated
 	 */
 	public void setInActivity(EObject newValue) {
-		if (newValue != null) {
-			inActivity.setSelection(new StructuredSelection(newValue));
-		} else {
-			inActivity.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.InterruptibleActivityRegion.Properties.inActivity);
-		if (readOnly && inActivity.isEnabled()) {
-			inActivity.setEnabled(false);
-			inActivity.setToolTipText(UmlMessages.InterruptibleActivityRegion_ReadOnly);
-		} else if (!readOnly && !inActivity.isEnabled()) {
-			inActivity.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      inActivity.setSelection(new StructuredSelection(newValue));
+    } else {
+      inActivity.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.InterruptibleActivityRegion.Properties.inActivity);
+    if (readOnly && inActivity.isEnabled()) {
+      inActivity.setEnabled(false);
+      inActivity.setToolTipText(UmlMessages.InterruptibleActivityRegion_ReadOnly);
+    } else if (!readOnly && !inActivity.isEnabled()) {
+      inActivity.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -440,8 +440,8 @@ public class InterruptibleActivityRegionPropertiesEditionPartImpl extends Compos
 	 * @generated
 	 */
 	public void addFilterToInActivity(ViewerFilter filter) {
-		inActivity.addFilter(filter);
-	}
+    inActivity.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -450,8 +450,8 @@ public class InterruptibleActivityRegionPropertiesEditionPartImpl extends Compos
 	 * @generated
 	 */
 	public void addBusinessFilterToInActivity(ViewerFilter filter) {
-		inActivity.addBusinessRuleFilter(filter);
-	}
+    inActivity.addBusinessRuleFilter(filter);
+  }
 
 
 
@@ -483,7 +483,7 @@ public class InterruptibleActivityRegionPropertiesEditionPartImpl extends Compos
 	 * @generated
 	 */
 	public void updateNode() {
-	node.refresh();
+  node.refresh();
 }
 
 	/**
@@ -493,8 +493,8 @@ public class InterruptibleActivityRegionPropertiesEditionPartImpl extends Compos
 	 * @generated
 	 */
 	public void addFilterToNode(ViewerFilter filter) {
-		nodeFilters.add(filter);
-	}
+    nodeFilters.add(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -503,8 +503,8 @@ public class InterruptibleActivityRegionPropertiesEditionPartImpl extends Compos
 	 * @generated
 	 */
 	public void addBusinessFilterToNode(ViewerFilter filter) {
-		nodeBusinessFilters.add(filter);
-	}
+    nodeBusinessFilters.add(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -513,8 +513,8 @@ public class InterruptibleActivityRegionPropertiesEditionPartImpl extends Compos
 	 * @generated
 	 */
 	public boolean isContainedInNodeTable(EObject element) {
-		return ((ReferencesTableSettings)node.getInput()).contains(element);
-	}
+    return ((ReferencesTableSettings)node.getInput()).contains(element);
+  }
 
 
 
@@ -546,7 +546,7 @@ public class InterruptibleActivityRegionPropertiesEditionPartImpl extends Compos
 	 * @generated
 	 */
 	public void updateInterruptingEdge() {
-	interruptingEdge.refresh();
+  interruptingEdge.refresh();
 }
 
 	/**
@@ -556,8 +556,8 @@ public class InterruptibleActivityRegionPropertiesEditionPartImpl extends Compos
 	 * @generated
 	 */
 	public void addFilterToInterruptingEdge(ViewerFilter filter) {
-		interruptingEdgeFilters.add(filter);
-	}
+    interruptingEdgeFilters.add(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -566,8 +566,8 @@ public class InterruptibleActivityRegionPropertiesEditionPartImpl extends Compos
 	 * @generated
 	 */
 	public void addBusinessFilterToInterruptingEdge(ViewerFilter filter) {
-		interruptingEdgeBusinessFilters.add(filter);
-	}
+    interruptingEdgeBusinessFilters.add(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -576,8 +576,8 @@ public class InterruptibleActivityRegionPropertiesEditionPartImpl extends Compos
 	 * @generated
 	 */
 	public boolean isContainedInInterruptingEdgeTable(EObject element) {
-		return ((ReferencesTableSettings)interruptingEdge.getInput()).contains(element);
-	}
+    return ((ReferencesTableSettings)interruptingEdge.getInput()).contains(element);
+  }
 
 
 
@@ -591,8 +591,8 @@ public class InterruptibleActivityRegionPropertiesEditionPartImpl extends Compos
 	 * @generated
 	 */
 	public String getTitle() {
-		return UmlMessages.InterruptibleActivityRegion_Part_Title;
-	}
+    return UmlMessages.InterruptibleActivityRegion_Part_Title;
+  }
 
 
 

@@ -79,8 +79,8 @@ public class PackageMergePropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated
 	 */
 	public PackageMergePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+    super(editionComponent);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -90,15 +90,15 @@ public class PackageMergePropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
-		view = form.getBody();
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
-		view.setLayout(layout);
-		createControls(widgetFactory, view);
-		return scrolledForm;
-	}
+    ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
+    Form form = scrolledForm.getForm();
+    view = form.getBody();
+    GridLayout layout = new GridLayout();
+    layout.numColumns = 3;
+    view.setLayout(layout);
+    createControls(widgetFactory, view);
+    return scrolledForm;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -108,46 +108,46 @@ public class PackageMergePropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		CompositionSequence packageMergeStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep propertiesStep = packageMergeStep.addStep(UmlViewsRepository.PackageMerge.Properties.class);
-		propertiesStep.addStep(UmlViewsRepository.PackageMerge.Properties.mergedPackage);
-		propertiesStep.addStep(UmlViewsRepository.PackageMerge.Properties.receivingPackage);
-		
-		
-		composer = new PartComposer(packageMergeStep) {
+    CompositionSequence packageMergeStep = new BindingCompositionSequence(propertiesEditionComponent);
+    CompositionStep propertiesStep = packageMergeStep.addStep(UmlViewsRepository.PackageMerge.Properties.class);
+    propertiesStep.addStep(UmlViewsRepository.PackageMerge.Properties.mergedPackage);
+    propertiesStep.addStep(UmlViewsRepository.PackageMerge.Properties.receivingPackage);
+    
+    
+    composer = new PartComposer(packageMergeStep) {
 
-			@Override
-			public Composite addToPart(Composite parent, Object key) {
-				if (key == UmlViewsRepository.PackageMerge.Properties.class) {
-					return createPropertiesGroup(widgetFactory, parent);
-				}
-				if (key == UmlViewsRepository.PackageMerge.Properties.mergedPackage) {
-					return createMergedPackageFlatComboViewer(parent, widgetFactory);
-				}
-				if (key == UmlViewsRepository.PackageMerge.Properties.receivingPackage) {
-					return createReceivingPackageFlatComboViewer(parent, widgetFactory);
-				}
-				return parent;
-			}
-		};
-		composer.compose(view);
-	}
+      @Override
+      public Composite addToPart(Composite parent, Object key) {
+        if (key == UmlViewsRepository.PackageMerge.Properties.class) {
+          return createPropertiesGroup(widgetFactory, parent);
+        }
+        if (key == UmlViewsRepository.PackageMerge.Properties.mergedPackage) {
+          return createMergedPackageFlatComboViewer(parent, widgetFactory);
+        }
+        if (key == UmlViewsRepository.PackageMerge.Properties.receivingPackage) {
+          return createReceivingPackageFlatComboViewer(parent, widgetFactory);
+        }
+        return parent;
+      }
+    };
+    composer.compose(view);
+  }
 	/**
 	 * @generated
 	 */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
-		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
-		propertiesSection.setText(UmlMessages.PackageMergePropertiesEditionPart_PropertiesGroupLabel);
-		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesSectionData.horizontalSpan = 3;
-		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		propertiesSection.setClient(propertiesGroup);
-		return propertiesGroup;
-	}
+    Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+    propertiesSection.setText(UmlMessages.PackageMergePropertiesEditionPart_PropertiesGroupLabel);
+    GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
+    propertiesSectionData.horizontalSpan = 3;
+    propertiesSection.setLayoutData(propertiesSectionData);
+    Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+    GridLayout propertiesGroupLayout = new GridLayout();
+    propertiesGroupLayout.numColumns = 3;
+    propertiesGroup.setLayout(propertiesGroupLayout);
+    propertiesSection.setClient(propertiesGroup);
+    return propertiesGroup;
+  }
 
 	/**
 	 * @param parent the parent composite
@@ -155,29 +155,29 @@ public class PackageMergePropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated
 	 */
 	protected Composite createMergedPackageFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		createDescription(parent, UmlViewsRepository.PackageMerge.Properties.mergedPackage, UmlMessages.PackageMergePropertiesEditionPart_MergedPackageLabel);
-		mergedPackage = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.PackageMerge.Properties.mergedPackage, UmlViewsRepository.FORM_KIND));
-		widgetFactory.adapt(mergedPackage);
-		mergedPackage.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		GridData mergedPackageData = new GridData(GridData.FILL_HORIZONTAL);
-		mergedPackage.setLayoutData(mergedPackageData);
-		mergedPackage.addSelectionChangedListener(new ISelectionChangedListener() {
+    createDescription(parent, UmlViewsRepository.PackageMerge.Properties.mergedPackage, UmlMessages.PackageMergePropertiesEditionPart_MergedPackageLabel);
+    mergedPackage = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.PackageMerge.Properties.mergedPackage, UmlViewsRepository.FORM_KIND));
+    widgetFactory.adapt(mergedPackage);
+    mergedPackage.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    GridData mergedPackageData = new GridData(GridData.FILL_HORIZONTAL);
+    mergedPackage.setLayoutData(mergedPackageData);
+    mergedPackage.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PackageMergePropertiesEditionPartForm.this, UmlViewsRepository.PackageMerge.Properties.mergedPackage, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getMergedPackage()));
-			}
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PackageMergePropertiesEditionPartForm.this, UmlViewsRepository.PackageMerge.Properties.mergedPackage, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getMergedPackage()));
+      }
 
-		});
-		mergedPackage.setID(UmlViewsRepository.PackageMerge.Properties.mergedPackage);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.PackageMerge.Properties.mergedPackage, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    mergedPackage.setID(UmlViewsRepository.PackageMerge.Properties.mergedPackage);
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.PackageMerge.Properties.mergedPackage, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @param parent the parent composite
@@ -185,29 +185,29 @@ public class PackageMergePropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated
 	 */
 	protected Composite createReceivingPackageFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		createDescription(parent, UmlViewsRepository.PackageMerge.Properties.receivingPackage, UmlMessages.PackageMergePropertiesEditionPart_ReceivingPackageLabel);
-		receivingPackage = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.PackageMerge.Properties.receivingPackage, UmlViewsRepository.FORM_KIND));
-		widgetFactory.adapt(receivingPackage);
-		receivingPackage.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		GridData receivingPackageData = new GridData(GridData.FILL_HORIZONTAL);
-		receivingPackage.setLayoutData(receivingPackageData);
-		receivingPackage.addSelectionChangedListener(new ISelectionChangedListener() {
+    createDescription(parent, UmlViewsRepository.PackageMerge.Properties.receivingPackage, UmlMessages.PackageMergePropertiesEditionPart_ReceivingPackageLabel);
+    receivingPackage = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.PackageMerge.Properties.receivingPackage, UmlViewsRepository.FORM_KIND));
+    widgetFactory.adapt(receivingPackage);
+    receivingPackage.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    GridData receivingPackageData = new GridData(GridData.FILL_HORIZONTAL);
+    receivingPackage.setLayoutData(receivingPackageData);
+    receivingPackage.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PackageMergePropertiesEditionPartForm.this, UmlViewsRepository.PackageMerge.Properties.receivingPackage, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getReceivingPackage()));
-			}
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(PackageMergePropertiesEditionPartForm.this, UmlViewsRepository.PackageMerge.Properties.receivingPackage, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getReceivingPackage()));
+      }
 
-		});
-		receivingPackage.setID(UmlViewsRepository.PackageMerge.Properties.receivingPackage);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.PackageMerge.Properties.receivingPackage, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    receivingPackage.setID(UmlViewsRepository.PackageMerge.Properties.receivingPackage);
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.PackageMerge.Properties.receivingPackage, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 
 	/**
@@ -217,7 +217,7 @@ public class PackageMergePropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-	}
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -226,13 +226,13 @@ public class PackageMergePropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated
 	 */
 	public EObject getMergedPackage() {
-		if (mergedPackage.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) mergedPackage.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (mergedPackage.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) mergedPackage.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -261,20 +261,20 @@ public class PackageMergePropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated
 	 */
 	public void setMergedPackage(EObject newValue) {
-		if (newValue != null) {
-			mergedPackage.setSelection(new StructuredSelection(newValue));
-		} else {
-			mergedPackage.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.PackageMerge.Properties.mergedPackage);
-		if (readOnly && mergedPackage.isEnabled()) {
-			mergedPackage.setEnabled(false);
-			mergedPackage.setToolTipText(UmlMessages.PackageMerge_ReadOnly);
-		} else if (!readOnly && !mergedPackage.isEnabled()) {
-			mergedPackage.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      mergedPackage.setSelection(new StructuredSelection(newValue));
+    } else {
+      mergedPackage.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.PackageMerge.Properties.mergedPackage);
+    if (readOnly && mergedPackage.isEnabled()) {
+      mergedPackage.setEnabled(false);
+      mergedPackage.setToolTipText(UmlMessages.PackageMerge_ReadOnly);
+    } else if (!readOnly && !mergedPackage.isEnabled()) {
+      mergedPackage.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -292,8 +292,8 @@ public class PackageMergePropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated
 	 */
 	public void addFilterToMergedPackage(ViewerFilter filter) {
-		mergedPackage.addFilter(filter);
-	}
+    mergedPackage.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -302,8 +302,8 @@ public class PackageMergePropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated
 	 */
 	public void addBusinessFilterToMergedPackage(ViewerFilter filter) {
-		mergedPackage.addBusinessRuleFilter(filter);
-	}
+    mergedPackage.addBusinessRuleFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -312,13 +312,13 @@ public class PackageMergePropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated
 	 */
 	public EObject getReceivingPackage() {
-		if (receivingPackage.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) receivingPackage.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (receivingPackage.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) receivingPackage.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -347,20 +347,20 @@ public class PackageMergePropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated
 	 */
 	public void setReceivingPackage(EObject newValue) {
-		if (newValue != null) {
-			receivingPackage.setSelection(new StructuredSelection(newValue));
-		} else {
-			receivingPackage.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.PackageMerge.Properties.receivingPackage);
-		if (readOnly && receivingPackage.isEnabled()) {
-			receivingPackage.setEnabled(false);
-			receivingPackage.setToolTipText(UmlMessages.PackageMerge_ReadOnly);
-		} else if (!readOnly && !receivingPackage.isEnabled()) {
-			receivingPackage.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      receivingPackage.setSelection(new StructuredSelection(newValue));
+    } else {
+      receivingPackage.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.PackageMerge.Properties.receivingPackage);
+    if (readOnly && receivingPackage.isEnabled()) {
+      receivingPackage.setEnabled(false);
+      receivingPackage.setToolTipText(UmlMessages.PackageMerge_ReadOnly);
+    } else if (!readOnly && !receivingPackage.isEnabled()) {
+      receivingPackage.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -378,8 +378,8 @@ public class PackageMergePropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated
 	 */
 	public void addFilterToReceivingPackage(ViewerFilter filter) {
-		receivingPackage.addFilter(filter);
-	}
+    receivingPackage.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -388,8 +388,8 @@ public class PackageMergePropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated
 	 */
 	public void addBusinessFilterToReceivingPackage(ViewerFilter filter) {
-		receivingPackage.addBusinessRuleFilter(filter);
-	}
+    receivingPackage.addBusinessRuleFilter(filter);
+  }
 
 
 
@@ -403,8 +403,8 @@ public class PackageMergePropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated
 	 */
 	public String getTitle() {
-		return UmlMessages.PackageMerge_Part_Title;
-	}
+    return UmlMessages.PackageMerge_Part_Title;
+  }
 
 
 

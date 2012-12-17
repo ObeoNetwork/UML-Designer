@@ -58,9 +58,9 @@ public class CallBehaviorActionPropertiesEditionProvider extends PropertiesEditi
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof CallBehaviorAction) 
-					&& (UMLPackage.Literals.CALL_BEHAVIOR_ACTION == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof CallBehaviorAction) 
+          && (UMLPackage.Literals.CALL_BEHAVIOR_ACTION == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class CallBehaviorActionPropertiesEditionProvider extends PropertiesEditi
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof CallBehaviorAction) && (CallBehaviorActionPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof CallBehaviorAction) && (CallBehaviorActionPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class CallBehaviorActionPropertiesEditionProvider extends PropertiesEditi
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof CallBehaviorAction) && (refinement == CallBehaviorActionPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof CallBehaviorAction) && (refinement == CallBehaviorActionPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class CallBehaviorActionPropertiesEditionProvider extends PropertiesEditi
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof CallBehaviorAction) && ((CallBehaviorActionPropertiesEditionComponent.BASE_PART.equals(part) && refinement == CallBehaviorActionPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof CallBehaviorAction) && ((CallBehaviorActionPropertiesEditionComponent.BASE_PART.equals(part) && refinement == CallBehaviorActionPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class CallBehaviorActionPropertiesEditionProvider extends PropertiesEditi
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof CallBehaviorAction) {
-			return new CallBehaviorActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof CallBehaviorAction) {
+      return new CallBehaviorActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class CallBehaviorActionPropertiesEditionProvider extends PropertiesEditi
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof CallBehaviorAction) {
-			if (CallBehaviorActionPropertiesEditionComponent.BASE_PART.equals(part))
-				return new CallBehaviorActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof CallBehaviorAction) {
+      if (CallBehaviorActionPropertiesEditionComponent.BASE_PART.equals(part))
+        return new CallBehaviorActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

@@ -91,11 +91,11 @@ public class ElementImportPropertiesEditionComponent extends SinglePartPropertie
 	 * @generated
 	 */
 	public ElementImportPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject elementImport, String editing_mode) {
-		super(editingContext, elementImport, editing_mode);
-		parts = new String[] { BASE_PART };
-		repositoryKey = UmlViewsRepository.class;
-		partKey = UmlViewsRepository.ElementImport.class;
-	}
+    super(editingContext, elementImport, editing_mode);
+    parts = new String[] { BASE_PART };
+    repositoryKey = UmlViewsRepository.class;
+    partKey = UmlViewsRepository.ElementImport.class;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -105,71 +105,71 @@ public class ElementImportPropertiesEditionComponent extends SinglePartPropertie
 	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			
-			final ElementImport elementImport = (ElementImport)elt;
-			final ElementImportPropertiesEditionPart basePart = (ElementImportPropertiesEditionPart)editingPart;
-			// init values
-			if (isAccessible(UmlViewsRepository.ElementImport.Properties.visibility)) {
-				basePart.initVisibility(EEFUtils.choiceOfValues(elementImport, UMLPackage.eINSTANCE.getElementImport_Visibility()), elementImport.getVisibility());
-			}
-			if (isAccessible(UmlViewsRepository.ElementImport.Properties.alias))
-				basePart.setAlias(EEFConverterUtil.convertToString(UMLPackage.Literals.STRING, elementImport.getAlias()));
-			
-			if (isAccessible(UmlViewsRepository.ElementImport.Properties.importedElement)) {
-				// init part
-				importedElementSettings = new EObjectFlatComboSettings(elementImport, UMLPackage.eINSTANCE.getElementImport_ImportedElement());
-				basePart.initImportedElement(importedElementSettings);
-				// set the button mode
-				basePart.setImportedElementButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			if (isAccessible(UmlViewsRepository.ElementImport.Properties.importingNamespace)) {
-				// init part
-				importingNamespaceSettings = new EObjectFlatComboSettings(elementImport, UMLPackage.eINSTANCE.getElementImport_ImportingNamespace());
-				basePart.initImportingNamespace(importingNamespaceSettings);
-				// set the button mode
-				basePart.setImportingNamespaceButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			// init filters
-			
-			
-			if (isAccessible(UmlViewsRepository.ElementImport.Properties.importedElement)) {
-				basePart.addFilterToImportedElement(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof PackageableElement);
-					}
-					
-				});
-			}
-			if (isAccessible(UmlViewsRepository.ElementImport.Properties.importingNamespace)) {
-				basePart.addFilterToImportingNamespace(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof Namespace);
-					}
-					
-				});
-			}
-			// init values for referenced views
-			
-			// init filters for referenced views
-			
-		}
-		setInitializing(false);
-	}
+    setInitializing(true);
+    if (editingPart != null && key == partKey) {
+      editingPart.setContext(elt, allResource);
+      
+      final ElementImport elementImport = (ElementImport)elt;
+      final ElementImportPropertiesEditionPart basePart = (ElementImportPropertiesEditionPart)editingPart;
+      // init values
+      if (isAccessible(UmlViewsRepository.ElementImport.Properties.visibility)) {
+        basePart.initVisibility(EEFUtils.choiceOfValues(elementImport, UMLPackage.eINSTANCE.getElementImport_Visibility()), elementImport.getVisibility());
+      }
+      if (isAccessible(UmlViewsRepository.ElementImport.Properties.alias))
+        basePart.setAlias(EEFConverterUtil.convertToString(UMLPackage.Literals.STRING, elementImport.getAlias()));
+      
+      if (isAccessible(UmlViewsRepository.ElementImport.Properties.importedElement)) {
+        // init part
+        importedElementSettings = new EObjectFlatComboSettings(elementImport, UMLPackage.eINSTANCE.getElementImport_ImportedElement());
+        basePart.initImportedElement(importedElementSettings);
+        // set the button mode
+        basePart.setImportedElementButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      if (isAccessible(UmlViewsRepository.ElementImport.Properties.importingNamespace)) {
+        // init part
+        importingNamespaceSettings = new EObjectFlatComboSettings(elementImport, UMLPackage.eINSTANCE.getElementImport_ImportingNamespace());
+        basePart.initImportingNamespace(importingNamespaceSettings);
+        // set the button mode
+        basePart.setImportingNamespaceButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      // init filters
+      
+      
+      if (isAccessible(UmlViewsRepository.ElementImport.Properties.importedElement)) {
+        basePart.addFilterToImportedElement(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof PackageableElement);
+          }
+          
+        });
+      }
+      if (isAccessible(UmlViewsRepository.ElementImport.Properties.importingNamespace)) {
+        basePart.addFilterToImportingNamespace(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof Namespace);
+          }
+          
+        });
+      }
+      // init values for referenced views
+      
+      // init filters for referenced views
+      
+    }
+    setInitializing(false);
+  }
 
 
 
@@ -203,42 +203,42 @@ public class ElementImportPropertiesEditionComponent extends SinglePartPropertie
 	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		ElementImport elementImport = (ElementImport)semanticObject;
-		if (UmlViewsRepository.ElementImport.Properties.visibility == event.getAffectedEditor()) {
-			elementImport.setVisibility((VisibilityKind)event.getNewValue());
-		}
-		if (UmlViewsRepository.ElementImport.Properties.alias == event.getAffectedEditor()) {
-			elementImport.setAlias((java.lang.String)EEFConverterUtil.createFromString(UMLPackage.Literals.STRING, (String)event.getNewValue()));
-		}
-		if (UmlViewsRepository.ElementImport.Properties.importedElement == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				importedElementSettings.setToReference((PackageableElement)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, importedElementSettings, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy instanceof CreateEditingPolicy) {
-						policy.execute();
-					}
-				}
-			}
-		}
-		if (UmlViewsRepository.ElementImport.Properties.importingNamespace == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				importingNamespaceSettings.setToReference((Namespace)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, importingNamespaceSettings, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy instanceof CreateEditingPolicy) {
-						policy.execute();
-					}
-				}
-			}
-		}
-	}
+    ElementImport elementImport = (ElementImport)semanticObject;
+    if (UmlViewsRepository.ElementImport.Properties.visibility == event.getAffectedEditor()) {
+      elementImport.setVisibility((VisibilityKind)event.getNewValue());
+    }
+    if (UmlViewsRepository.ElementImport.Properties.alias == event.getAffectedEditor()) {
+      elementImport.setAlias((java.lang.String)EEFConverterUtil.createFromString(UMLPackage.Literals.STRING, (String)event.getNewValue()));
+    }
+    if (UmlViewsRepository.ElementImport.Properties.importedElement == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        importedElementSettings.setToReference((PackageableElement)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, importedElementSettings, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy instanceof CreateEditingPolicy) {
+            policy.execute();
+          }
+        }
+      }
+    }
+    if (UmlViewsRepository.ElementImport.Properties.importingNamespace == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        importingNamespaceSettings.setToReference((Namespace)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, importingNamespaceSettings, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy instanceof CreateEditingPolicy) {
+            policy.execute();
+          }
+        }
+      }
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -289,8 +289,8 @@ public class ElementImportPropertiesEditionComponent extends SinglePartPropertie
 	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == UmlViewsRepository.ElementImport.Properties.visibility || key == UmlViewsRepository.ElementImport.Properties.importedElement || key == UmlViewsRepository.ElementImport.Properties.importingNamespace;
-	}
+    return key == UmlViewsRepository.ElementImport.Properties.visibility || key == UmlViewsRepository.ElementImport.Properties.importedElement || key == UmlViewsRepository.ElementImport.Properties.importingNamespace;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -299,31 +299,31 @@ public class ElementImportPropertiesEditionComponent extends SinglePartPropertie
 	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
-		Diagnostic ret = Diagnostic.OK_INSTANCE;
-		if (event.getNewValue() != null) {
-			try {
-				if (UmlViewsRepository.ElementImport.Properties.visibility == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getElementImport_Visibility().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getElementImport_Visibility().getEAttributeType(), newValue);
-				}
-				if (UmlViewsRepository.ElementImport.Properties.alias == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getElementImport_Alias().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getElementImport_Alias().getEAttributeType(), newValue);
-				}
-			} catch (IllegalArgumentException iae) {
-				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
-				ret = BasicDiagnostic.toDiagnostic(we);
-			}
-		}
-		return ret;
-	}
+    Diagnostic ret = Diagnostic.OK_INSTANCE;
+    if (event.getNewValue() != null) {
+      try {
+        if (UmlViewsRepository.ElementImport.Properties.visibility == event.getAffectedEditor()) {
+          Object newValue = event.getNewValue();
+          if (newValue instanceof String) {
+            newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getElementImport_Visibility().getEAttributeType(), (String)newValue);
+          }
+          ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getElementImport_Visibility().getEAttributeType(), newValue);
+        }
+        if (UmlViewsRepository.ElementImport.Properties.alias == event.getAffectedEditor()) {
+          Object newValue = event.getNewValue();
+          if (newValue instanceof String) {
+            newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getElementImport_Alias().getEAttributeType(), (String)newValue);
+          }
+          ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getElementImport_Alias().getEAttributeType(), newValue);
+        }
+      } catch (IllegalArgumentException iae) {
+        ret = BasicDiagnostic.toDiagnostic(iae);
+      } catch (WrappedException we) {
+        ret = BasicDiagnostic.toDiagnostic(we);
+      }
+    }
+    return ret;
+  }
 
 
 	

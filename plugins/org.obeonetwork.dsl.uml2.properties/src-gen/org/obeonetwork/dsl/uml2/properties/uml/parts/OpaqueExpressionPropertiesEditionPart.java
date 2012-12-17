@@ -249,12 +249,12 @@ public interface OpaqueExpressionPropertiesEditionPart {
 
 
 	/**
-	 * @return the body
-	 * @generated
-	 */
-	public EList getBodies();
+   * @return the body
+   * @generated
+   */
+  public EList getBody();
 
-	/**
+  /**
 	 * Defines a new body
 	 * @param newValue the new body to set
 	 * @generated

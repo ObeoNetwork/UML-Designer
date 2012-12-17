@@ -58,9 +58,9 @@ public class DurationObservationPropertiesEditionProvider extends PropertiesEdit
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof DurationObservation) 
-					&& (UMLPackage.Literals.DURATION_OBSERVATION == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof DurationObservation) 
+          && (UMLPackage.Literals.DURATION_OBSERVATION == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class DurationObservationPropertiesEditionProvider extends PropertiesEdit
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof DurationObservation) && (DurationObservationPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof DurationObservation) && (DurationObservationPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class DurationObservationPropertiesEditionProvider extends PropertiesEdit
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof DurationObservation) && (refinement == DurationObservationPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof DurationObservation) && (refinement == DurationObservationPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class DurationObservationPropertiesEditionProvider extends PropertiesEdit
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof DurationObservation) && ((DurationObservationPropertiesEditionComponent.BASE_PART.equals(part) && refinement == DurationObservationPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof DurationObservation) && ((DurationObservationPropertiesEditionComponent.BASE_PART.equals(part) && refinement == DurationObservationPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class DurationObservationPropertiesEditionProvider extends PropertiesEdit
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof DurationObservation) {
-			return new DurationObservationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof DurationObservation) {
+      return new DurationObservationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class DurationObservationPropertiesEditionProvider extends PropertiesEdit
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof DurationObservation) {
-			if (DurationObservationPropertiesEditionComponent.BASE_PART.equals(part))
-				return new DurationObservationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof DurationObservation) {
+      if (DurationObservationPropertiesEditionComponent.BASE_PART.equals(part))
+        return new DurationObservationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

@@ -58,9 +58,9 @@ public class LinkEndDataPropertiesEditionProvider extends PropertiesEditingProvi
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof LinkEndData) 
-					&& (UMLPackage.Literals.LINK_END_DATA == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof LinkEndData) 
+          && (UMLPackage.Literals.LINK_END_DATA == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class LinkEndDataPropertiesEditionProvider extends PropertiesEditingProvi
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof LinkEndData) && (LinkEndDataPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof LinkEndData) && (LinkEndDataPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class LinkEndDataPropertiesEditionProvider extends PropertiesEditingProvi
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof LinkEndData) && (refinement == LinkEndDataPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof LinkEndData) && (refinement == LinkEndDataPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class LinkEndDataPropertiesEditionProvider extends PropertiesEditingProvi
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof LinkEndData) && ((LinkEndDataPropertiesEditionComponent.BASE_PART.equals(part) && refinement == LinkEndDataPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof LinkEndData) && ((LinkEndDataPropertiesEditionComponent.BASE_PART.equals(part) && refinement == LinkEndDataPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class LinkEndDataPropertiesEditionProvider extends PropertiesEditingProvi
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof LinkEndData) {
-			return new LinkEndDataPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof LinkEndData) {
+      return new LinkEndDataPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class LinkEndDataPropertiesEditionProvider extends PropertiesEditingProvi
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof LinkEndData) {
-			if (LinkEndDataPropertiesEditionComponent.BASE_PART.equals(part))
-				return new LinkEndDataPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof LinkEndData) {
+      if (LinkEndDataPropertiesEditionComponent.BASE_PART.equals(part))
+        return new LinkEndDataPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

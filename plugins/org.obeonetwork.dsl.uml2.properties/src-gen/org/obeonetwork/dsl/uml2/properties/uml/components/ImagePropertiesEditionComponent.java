@@ -60,11 +60,11 @@ public class ImagePropertiesEditionComponent extends SinglePartPropertiesEditing
 	 * @generated
 	 */
 	public ImagePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject image, String editing_mode) {
-		super(editingContext, image, editing_mode);
-		parts = new String[] { BASE_PART };
-		repositoryKey = UmlViewsRepository.class;
-		partKey = UmlViewsRepository.Image.class;
-	}
+    super(editingContext, image, editing_mode);
+    parts = new String[] { BASE_PART };
+    repositoryKey = UmlViewsRepository.class;
+    partKey = UmlViewsRepository.Image.class;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -74,33 +74,33 @@ public class ImagePropertiesEditionComponent extends SinglePartPropertiesEditing
 	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			
-			final Image image = (Image)elt;
-			final ImagePropertiesEditionPart basePart = (ImagePropertiesEditionPart)editingPart;
-			// init values
-			if (isAccessible(UmlViewsRepository.Image.Properties.content))
-				basePart.setContent(EEFConverterUtil.convertToString(UMLPackage.Literals.STRING, image.getContent()));
-			
-			if (isAccessible(UmlViewsRepository.Image.Properties.location))
-				basePart.setLocation(EEFConverterUtil.convertToString(UMLPackage.Literals.STRING, image.getLocation()));
-			
-			if (isAccessible(UmlViewsRepository.Image.Properties.format))
-				basePart.setFormat(EEFConverterUtil.convertToString(UMLPackage.Literals.STRING, image.getFormat()));
-			
-			// init filters
-			
-			
-			
-			// init values for referenced views
-			
-			// init filters for referenced views
-			
-		}
-		setInitializing(false);
-	}
+    setInitializing(true);
+    if (editingPart != null && key == partKey) {
+      editingPart.setContext(elt, allResource);
+      
+      final Image image = (Image)elt;
+      final ImagePropertiesEditionPart basePart = (ImagePropertiesEditionPart)editingPart;
+      // init values
+      if (isAccessible(UmlViewsRepository.Image.Properties.content))
+        basePart.setContent(EEFConverterUtil.convertToString(UMLPackage.Literals.STRING, image.getContent()));
+      
+      if (isAccessible(UmlViewsRepository.Image.Properties.location))
+        basePart.setLocation(EEFConverterUtil.convertToString(UMLPackage.Literals.STRING, image.getLocation()));
+      
+      if (isAccessible(UmlViewsRepository.Image.Properties.format))
+        basePart.setFormat(EEFConverterUtil.convertToString(UMLPackage.Literals.STRING, image.getFormat()));
+      
+      // init filters
+      
+      
+      
+      // init values for referenced views
+      
+      // init filters for referenced views
+      
+    }
+    setInitializing(false);
+  }
 
 
 
@@ -130,17 +130,17 @@ public class ImagePropertiesEditionComponent extends SinglePartPropertiesEditing
 	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		Image image = (Image)semanticObject;
-		if (UmlViewsRepository.Image.Properties.content == event.getAffectedEditor()) {
-			image.setContent((java.lang.String)EEFConverterUtil.createFromString(UMLPackage.Literals.STRING, (String)event.getNewValue()));
-		}
-		if (UmlViewsRepository.Image.Properties.location == event.getAffectedEditor()) {
-			image.setLocation((java.lang.String)EEFConverterUtil.createFromString(UMLPackage.Literals.STRING, (String)event.getNewValue()));
-		}
-		if (UmlViewsRepository.Image.Properties.format == event.getAffectedEditor()) {
-			image.setFormat((java.lang.String)EEFConverterUtil.createFromString(UMLPackage.Literals.STRING, (String)event.getNewValue()));
-		}
-	}
+    Image image = (Image)semanticObject;
+    if (UmlViewsRepository.Image.Properties.content == event.getAffectedEditor()) {
+      image.setContent((java.lang.String)EEFConverterUtil.createFromString(UMLPackage.Literals.STRING, (String)event.getNewValue()));
+    }
+    if (UmlViewsRepository.Image.Properties.location == event.getAffectedEditor()) {
+      image.setLocation((java.lang.String)EEFConverterUtil.createFromString(UMLPackage.Literals.STRING, (String)event.getNewValue()));
+    }
+    if (UmlViewsRepository.Image.Properties.format == event.getAffectedEditor()) {
+      image.setFormat((java.lang.String)EEFConverterUtil.createFromString(UMLPackage.Literals.STRING, (String)event.getNewValue()));
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -197,38 +197,38 @@ public class ImagePropertiesEditionComponent extends SinglePartPropertiesEditing
 	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
-		Diagnostic ret = Diagnostic.OK_INSTANCE;
-		if (event.getNewValue() != null) {
-			try {
-				if (UmlViewsRepository.Image.Properties.content == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getImage_Content().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getImage_Content().getEAttributeType(), newValue);
-				}
-				if (UmlViewsRepository.Image.Properties.location == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getImage_Location().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getImage_Location().getEAttributeType(), newValue);
-				}
-				if (UmlViewsRepository.Image.Properties.format == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getImage_Format().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getImage_Format().getEAttributeType(), newValue);
-				}
-			} catch (IllegalArgumentException iae) {
-				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
-				ret = BasicDiagnostic.toDiagnostic(we);
-			}
-		}
-		return ret;
-	}
+    Diagnostic ret = Diagnostic.OK_INSTANCE;
+    if (event.getNewValue() != null) {
+      try {
+        if (UmlViewsRepository.Image.Properties.content == event.getAffectedEditor()) {
+          Object newValue = event.getNewValue();
+          if (newValue instanceof String) {
+            newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getImage_Content().getEAttributeType(), (String)newValue);
+          }
+          ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getImage_Content().getEAttributeType(), newValue);
+        }
+        if (UmlViewsRepository.Image.Properties.location == event.getAffectedEditor()) {
+          Object newValue = event.getNewValue();
+          if (newValue instanceof String) {
+            newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getImage_Location().getEAttributeType(), (String)newValue);
+          }
+          ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getImage_Location().getEAttributeType(), newValue);
+        }
+        if (UmlViewsRepository.Image.Properties.format == event.getAffectedEditor()) {
+          Object newValue = event.getNewValue();
+          if (newValue instanceof String) {
+            newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getImage_Format().getEAttributeType(), (String)newValue);
+          }
+          ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getImage_Format().getEAttributeType(), newValue);
+        }
+      } catch (IllegalArgumentException iae) {
+        ret = BasicDiagnostic.toDiagnostic(iae);
+      } catch (WrappedException we) {
+        ret = BasicDiagnostic.toDiagnostic(we);
+      }
+    }
+    return ret;
+  }
 
 
 	

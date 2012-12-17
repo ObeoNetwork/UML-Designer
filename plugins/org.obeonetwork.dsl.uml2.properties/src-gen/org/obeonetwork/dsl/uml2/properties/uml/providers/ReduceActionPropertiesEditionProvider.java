@@ -58,9 +58,9 @@ public class ReduceActionPropertiesEditionProvider extends PropertiesEditingProv
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof ReduceAction) 
-					&& (UMLPackage.Literals.REDUCE_ACTION == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof ReduceAction) 
+          && (UMLPackage.Literals.REDUCE_ACTION == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class ReduceActionPropertiesEditionProvider extends PropertiesEditingProv
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof ReduceAction) && (ReduceActionPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof ReduceAction) && (ReduceActionPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class ReduceActionPropertiesEditionProvider extends PropertiesEditingProv
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ReduceAction) && (refinement == ReduceActionPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof ReduceAction) && (refinement == ReduceActionPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class ReduceActionPropertiesEditionProvider extends PropertiesEditingProv
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ReduceAction) && ((ReduceActionPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ReduceActionPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof ReduceAction) && ((ReduceActionPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ReduceActionPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class ReduceActionPropertiesEditionProvider extends PropertiesEditingProv
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof ReduceAction) {
-			return new ReduceActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof ReduceAction) {
+      return new ReduceActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class ReduceActionPropertiesEditionProvider extends PropertiesEditingProv
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof ReduceAction) {
-			if (ReduceActionPropertiesEditionComponent.BASE_PART.equals(part))
-				return new ReduceActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof ReduceAction) {
+      if (ReduceActionPropertiesEditionComponent.BASE_PART.equals(part))
+        return new ReduceActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

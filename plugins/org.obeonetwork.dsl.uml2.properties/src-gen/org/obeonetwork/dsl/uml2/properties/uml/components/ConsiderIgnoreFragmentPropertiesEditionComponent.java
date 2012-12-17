@@ -114,11 +114,11 @@ public class ConsiderIgnoreFragmentPropertiesEditionComponent extends SinglePart
 	 * @generated
 	 */
 	public ConsiderIgnoreFragmentPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject considerIgnoreFragment, String editing_mode) {
-		super(editingContext, considerIgnoreFragment, editing_mode);
-		parts = new String[] { BASE_PART };
-		repositoryKey = UmlViewsRepository.class;
-		partKey = UmlViewsRepository.ConsiderIgnoreFragment.class;
-	}
+    super(editingContext, considerIgnoreFragment, editing_mode);
+    parts = new String[] { BASE_PART };
+    repositoryKey = UmlViewsRepository.class;
+    partKey = UmlViewsRepository.ConsiderIgnoreFragment.class;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -128,138 +128,138 @@ public class ConsiderIgnoreFragmentPropertiesEditionComponent extends SinglePart
 	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			
-			final ConsiderIgnoreFragment considerIgnoreFragment = (ConsiderIgnoreFragment)elt;
-			final ConsiderIgnoreFragmentPropertiesEditionPart basePart = (ConsiderIgnoreFragmentPropertiesEditionPart)editingPart;
-			// init values
-			if (isAccessible(UmlViewsRepository.ConsiderIgnoreFragment.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(UMLPackage.Literals.STRING, considerIgnoreFragment.getName()));
-			
-			if (isAccessible(UmlViewsRepository.ConsiderIgnoreFragment.Properties.visibility)) {
-				basePart.initVisibility(EEFUtils.choiceOfValues(considerIgnoreFragment, UMLPackage.eINSTANCE.getNamedElement_Visibility()), considerIgnoreFragment.getVisibility());
-			}
-			if (isAccessible(UmlViewsRepository.ConsiderIgnoreFragment.Properties.clientDependency)) {
-				clientDependencySettings = new ReferencesTableSettings(considerIgnoreFragment, UMLPackage.eINSTANCE.getNamedElement_ClientDependency());
-				basePart.initClientDependency(clientDependencySettings);
-			}
-			if (isAccessible(UmlViewsRepository.ConsiderIgnoreFragment.Properties.covered)) {
-				coveredSettings = new ReferencesTableSettings(considerIgnoreFragment, UMLPackage.eINSTANCE.getInteractionFragment_Covered());
-				basePart.initCovered(coveredSettings);
-			}
-			if (isAccessible(UmlViewsRepository.ConsiderIgnoreFragment.Properties.enclosingInteraction)) {
-				// init part
-				enclosingInteractionSettings = new EObjectFlatComboSettings(considerIgnoreFragment, UMLPackage.eINSTANCE.getInteractionFragment_EnclosingInteraction());
-				basePart.initEnclosingInteraction(enclosingInteractionSettings);
-				// set the button mode
-				basePart.setEnclosingInteractionButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			if (isAccessible(UmlViewsRepository.ConsiderIgnoreFragment.Properties.enclosingOperand)) {
-				// init part
-				enclosingOperandSettings = new EObjectFlatComboSettings(considerIgnoreFragment, UMLPackage.eINSTANCE.getInteractionFragment_EnclosingOperand());
-				basePart.initEnclosingOperand(enclosingOperandSettings);
-				// set the button mode
-				basePart.setEnclosingOperandButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			if (isAccessible(UmlViewsRepository.ConsiderIgnoreFragment.Properties.interactionOperator)) {
-				basePart.initInteractionOperator(EEFUtils.choiceOfValues(considerIgnoreFragment, UMLPackage.eINSTANCE.getCombinedFragment_InteractionOperator()), considerIgnoreFragment.getInteractionOperator());
-			}
-			if (isAccessible(UmlViewsRepository.ConsiderIgnoreFragment.Properties.message)) {
-				messageSettings = new ReferencesTableSettings(considerIgnoreFragment, UMLPackage.eINSTANCE.getConsiderIgnoreFragment_Message());
-				basePart.initMessage(messageSettings);
-			}
-			// init filters
-			
-			
-			if (isAccessible(UmlViewsRepository.ConsiderIgnoreFragment.Properties.clientDependency)) {
-				basePart.addFilterToClientDependency(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (!basePart.isContainedInClientDependencyTable((EObject)element));
-						return element instanceof Resource;
-					}
-				
-				});
-				basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.Literals.DEPENDENCY));
-			}
-			if (isAccessible(UmlViewsRepository.ConsiderIgnoreFragment.Properties.covered)) {
-				basePart.addFilterToCovered(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (!basePart.isContainedInCoveredTable((EObject)element));
-						return element instanceof Resource;
-					}
-				
-				});
-				basePart.addFilterToCovered(new EObjectFilter(UMLPackage.Literals.LIFELINE));
-			}
-			if (isAccessible(UmlViewsRepository.ConsiderIgnoreFragment.Properties.enclosingInteraction)) {
-				basePart.addFilterToEnclosingInteraction(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof String && element.equals("")) || (element instanceof Interaction); //$NON-NLS-1$ 
-					}
-					
-				});
-			}
-			if (isAccessible(UmlViewsRepository.ConsiderIgnoreFragment.Properties.enclosingOperand)) {
-				basePart.addFilterToEnclosingOperand(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof String && element.equals("")) || (element instanceof InteractionOperand); //$NON-NLS-1$ 
-					}
-					
-				});
-			}
-			
-			if (isAccessible(UmlViewsRepository.ConsiderIgnoreFragment.Properties.message)) {
-				basePart.addFilterToMessage(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (!basePart.isContainedInMessageTable((EObject)element));
-						return element instanceof Resource;
-					}
-				
-				});
-				basePart.addFilterToMessage(new EObjectFilter(UMLPackage.Literals.NAMED_ELEMENT));
-			}
-			// init values for referenced views
-			
-			// init filters for referenced views
-			
-		}
-		setInitializing(false);
-	}
+    setInitializing(true);
+    if (editingPart != null && key == partKey) {
+      editingPart.setContext(elt, allResource);
+      
+      final ConsiderIgnoreFragment considerIgnoreFragment = (ConsiderIgnoreFragment)elt;
+      final ConsiderIgnoreFragmentPropertiesEditionPart basePart = (ConsiderIgnoreFragmentPropertiesEditionPart)editingPart;
+      // init values
+      if (isAccessible(UmlViewsRepository.ConsiderIgnoreFragment.Properties.name))
+        basePart.setName(EEFConverterUtil.convertToString(UMLPackage.Literals.STRING, considerIgnoreFragment.getName()));
+      
+      if (isAccessible(UmlViewsRepository.ConsiderIgnoreFragment.Properties.visibility)) {
+        basePart.initVisibility(EEFUtils.choiceOfValues(considerIgnoreFragment, UMLPackage.eINSTANCE.getNamedElement_Visibility()), considerIgnoreFragment.getVisibility());
+      }
+      if (isAccessible(UmlViewsRepository.ConsiderIgnoreFragment.Properties.clientDependency)) {
+        clientDependencySettings = new ReferencesTableSettings(considerIgnoreFragment, UMLPackage.eINSTANCE.getNamedElement_ClientDependency());
+        basePart.initClientDependency(clientDependencySettings);
+      }
+      if (isAccessible(UmlViewsRepository.ConsiderIgnoreFragment.Properties.covered)) {
+        coveredSettings = new ReferencesTableSettings(considerIgnoreFragment, UMLPackage.eINSTANCE.getInteractionFragment_Covered());
+        basePart.initCovered(coveredSettings);
+      }
+      if (isAccessible(UmlViewsRepository.ConsiderIgnoreFragment.Properties.enclosingInteraction)) {
+        // init part
+        enclosingInteractionSettings = new EObjectFlatComboSettings(considerIgnoreFragment, UMLPackage.eINSTANCE.getInteractionFragment_EnclosingInteraction());
+        basePart.initEnclosingInteraction(enclosingInteractionSettings);
+        // set the button mode
+        basePart.setEnclosingInteractionButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      if (isAccessible(UmlViewsRepository.ConsiderIgnoreFragment.Properties.enclosingOperand)) {
+        // init part
+        enclosingOperandSettings = new EObjectFlatComboSettings(considerIgnoreFragment, UMLPackage.eINSTANCE.getInteractionFragment_EnclosingOperand());
+        basePart.initEnclosingOperand(enclosingOperandSettings);
+        // set the button mode
+        basePart.setEnclosingOperandButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      if (isAccessible(UmlViewsRepository.ConsiderIgnoreFragment.Properties.interactionOperator)) {
+        basePart.initInteractionOperator(EEFUtils.choiceOfValues(considerIgnoreFragment, UMLPackage.eINSTANCE.getCombinedFragment_InteractionOperator()), considerIgnoreFragment.getInteractionOperator());
+      }
+      if (isAccessible(UmlViewsRepository.ConsiderIgnoreFragment.Properties.message)) {
+        messageSettings = new ReferencesTableSettings(considerIgnoreFragment, UMLPackage.eINSTANCE.getConsiderIgnoreFragment_Message());
+        basePart.initMessage(messageSettings);
+      }
+      // init filters
+      
+      
+      if (isAccessible(UmlViewsRepository.ConsiderIgnoreFragment.Properties.clientDependency)) {
+        basePart.addFilterToClientDependency(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            if (element instanceof EObject)
+              return (!basePart.isContainedInClientDependencyTable((EObject)element));
+            return element instanceof Resource;
+          }
+        
+        });
+        basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.Literals.DEPENDENCY));
+      }
+      if (isAccessible(UmlViewsRepository.ConsiderIgnoreFragment.Properties.covered)) {
+        basePart.addFilterToCovered(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            if (element instanceof EObject)
+              return (!basePart.isContainedInCoveredTable((EObject)element));
+            return element instanceof Resource;
+          }
+        
+        });
+        basePart.addFilterToCovered(new EObjectFilter(UMLPackage.Literals.LIFELINE));
+      }
+      if (isAccessible(UmlViewsRepository.ConsiderIgnoreFragment.Properties.enclosingInteraction)) {
+        basePart.addFilterToEnclosingInteraction(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof String && element.equals("")) || (element instanceof Interaction); //$NON-NLS-1$ 
+          }
+          
+        });
+      }
+      if (isAccessible(UmlViewsRepository.ConsiderIgnoreFragment.Properties.enclosingOperand)) {
+        basePart.addFilterToEnclosingOperand(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof String && element.equals("")) || (element instanceof InteractionOperand); //$NON-NLS-1$ 
+          }
+          
+        });
+      }
+      
+      if (isAccessible(UmlViewsRepository.ConsiderIgnoreFragment.Properties.message)) {
+        basePart.addFilterToMessage(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            if (element instanceof EObject)
+              return (!basePart.isContainedInMessageTable((EObject)element));
+            return element instanceof Resource;
+          }
+        
+        });
+        basePart.addFilterToMessage(new EObjectFilter(UMLPackage.Literals.NAMED_ELEMENT));
+      }
+      // init values for referenced views
+      
+      // init filters for referenced views
+      
+    }
+    setInitializing(false);
+  }
 
 
 
@@ -309,82 +309,82 @@ public class ConsiderIgnoreFragmentPropertiesEditionComponent extends SinglePart
 	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		ConsiderIgnoreFragment considerIgnoreFragment = (ConsiderIgnoreFragment)semanticObject;
-		if (UmlViewsRepository.ConsiderIgnoreFragment.Properties.name == event.getAffectedEditor()) {
-			considerIgnoreFragment.setName((java.lang.String)EEFConverterUtil.createFromString(UMLPackage.Literals.STRING, (String)event.getNewValue()));
-		}
-		if (UmlViewsRepository.ConsiderIgnoreFragment.Properties.visibility == event.getAffectedEditor()) {
-			considerIgnoreFragment.setVisibility((VisibilityKind)event.getNewValue());
-		}
-		if (UmlViewsRepository.ConsiderIgnoreFragment.Properties.clientDependency == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD) {
-				if (event.getNewValue() instanceof Dependency) {
-					clientDependencySettings.addToReference((EObject) event.getNewValue());
-				}
-			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				clientDependencySettings.removeFromReference((EObject) event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-				clientDependencySettings.move(event.getNewIndex(), (Dependency) event.getNewValue());
-			}
-		}
-		if (UmlViewsRepository.ConsiderIgnoreFragment.Properties.covered == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD) {
-				if (event.getNewValue() instanceof Lifeline) {
-					coveredSettings.addToReference((EObject) event.getNewValue());
-				}
-			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				coveredSettings.removeFromReference((EObject) event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-				coveredSettings.move(event.getNewIndex(), (Lifeline) event.getNewValue());
-			}
-		}
-		if (UmlViewsRepository.ConsiderIgnoreFragment.Properties.enclosingInteraction == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				enclosingInteractionSettings.setToReference((Interaction)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				Interaction eObject = UMLFactory.eINSTANCE.createInteraction();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy != null) {
-						policy.execute();
-					}
-				}
-				enclosingInteractionSettings.setToReference(eObject);
-			}
-		}
-		if (UmlViewsRepository.ConsiderIgnoreFragment.Properties.enclosingOperand == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				enclosingOperandSettings.setToReference((InteractionOperand)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				InteractionOperand eObject = UMLFactory.eINSTANCE.createInteractionOperand();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy != null) {
-						policy.execute();
-					}
-				}
-				enclosingOperandSettings.setToReference(eObject);
-			}
-		}
-		if (UmlViewsRepository.ConsiderIgnoreFragment.Properties.interactionOperator == event.getAffectedEditor()) {
-			considerIgnoreFragment.setInteractionOperator((InteractionOperatorKind)event.getNewValue());
-		}
-		if (UmlViewsRepository.ConsiderIgnoreFragment.Properties.message == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD) {
-				if (event.getNewValue() instanceof NamedElement) {
-					messageSettings.addToReference((EObject) event.getNewValue());
-				}
-			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				messageSettings.removeFromReference((EObject) event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-				messageSettings.move(event.getNewIndex(), (NamedElement) event.getNewValue());
-			}
-		}
-	}
+    ConsiderIgnoreFragment considerIgnoreFragment = (ConsiderIgnoreFragment)semanticObject;
+    if (UmlViewsRepository.ConsiderIgnoreFragment.Properties.name == event.getAffectedEditor()) {
+      considerIgnoreFragment.setName((java.lang.String)EEFConverterUtil.createFromString(UMLPackage.Literals.STRING, (String)event.getNewValue()));
+    }
+    if (UmlViewsRepository.ConsiderIgnoreFragment.Properties.visibility == event.getAffectedEditor()) {
+      considerIgnoreFragment.setVisibility((VisibilityKind)event.getNewValue());
+    }
+    if (UmlViewsRepository.ConsiderIgnoreFragment.Properties.clientDependency == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.ADD) {
+        if (event.getNewValue() instanceof Dependency) {
+          clientDependencySettings.addToReference((EObject) event.getNewValue());
+        }
+      } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+        clientDependencySettings.removeFromReference((EObject) event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+        clientDependencySettings.move(event.getNewIndex(), (Dependency) event.getNewValue());
+      }
+    }
+    if (UmlViewsRepository.ConsiderIgnoreFragment.Properties.covered == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.ADD) {
+        if (event.getNewValue() instanceof Lifeline) {
+          coveredSettings.addToReference((EObject) event.getNewValue());
+        }
+      } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+        coveredSettings.removeFromReference((EObject) event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+        coveredSettings.move(event.getNewIndex(), (Lifeline) event.getNewValue());
+      }
+    }
+    if (UmlViewsRepository.ConsiderIgnoreFragment.Properties.enclosingInteraction == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        enclosingInteractionSettings.setToReference((Interaction)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        Interaction eObject = UMLFactory.eINSTANCE.createInteraction();
+        EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy != null) {
+            policy.execute();
+          }
+        }
+        enclosingInteractionSettings.setToReference(eObject);
+      }
+    }
+    if (UmlViewsRepository.ConsiderIgnoreFragment.Properties.enclosingOperand == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        enclosingOperandSettings.setToReference((InteractionOperand)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        InteractionOperand eObject = UMLFactory.eINSTANCE.createInteractionOperand();
+        EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy != null) {
+            policy.execute();
+          }
+        }
+        enclosingOperandSettings.setToReference(eObject);
+      }
+    }
+    if (UmlViewsRepository.ConsiderIgnoreFragment.Properties.interactionOperator == event.getAffectedEditor()) {
+      considerIgnoreFragment.setInteractionOperator((InteractionOperatorKind)event.getNewValue());
+    }
+    if (UmlViewsRepository.ConsiderIgnoreFragment.Properties.message == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.ADD) {
+        if (event.getNewValue() instanceof NamedElement) {
+          messageSettings.addToReference((EObject) event.getNewValue());
+        }
+      } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+        messageSettings.removeFromReference((EObject) event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+        messageSettings.move(event.getNewIndex(), (NamedElement) event.getNewValue());
+      }
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -448,8 +448,8 @@ public class ConsiderIgnoreFragmentPropertiesEditionComponent extends SinglePart
 	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == UmlViewsRepository.ConsiderIgnoreFragment.Properties.interactionOperator;
-	}
+    return key == UmlViewsRepository.ConsiderIgnoreFragment.Properties.interactionOperator;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -458,38 +458,38 @@ public class ConsiderIgnoreFragmentPropertiesEditionComponent extends SinglePart
 	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
-		Diagnostic ret = Diagnostic.OK_INSTANCE;
-		if (event.getNewValue() != null) {
-			try {
-				if (UmlViewsRepository.ConsiderIgnoreFragment.Properties.name == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newValue);
-				}
-				if (UmlViewsRepository.ConsiderIgnoreFragment.Properties.visibility == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), newValue);
-				}
-				if (UmlViewsRepository.ConsiderIgnoreFragment.Properties.interactionOperator == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getCombinedFragment_InteractionOperator().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getCombinedFragment_InteractionOperator().getEAttributeType(), newValue);
-				}
-			} catch (IllegalArgumentException iae) {
-				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
-				ret = BasicDiagnostic.toDiagnostic(we);
-			}
-		}
-		return ret;
-	}
+    Diagnostic ret = Diagnostic.OK_INSTANCE;
+    if (event.getNewValue() != null) {
+      try {
+        if (UmlViewsRepository.ConsiderIgnoreFragment.Properties.name == event.getAffectedEditor()) {
+          Object newValue = event.getNewValue();
+          if (newValue instanceof String) {
+            newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), (String)newValue);
+          }
+          ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newValue);
+        }
+        if (UmlViewsRepository.ConsiderIgnoreFragment.Properties.visibility == event.getAffectedEditor()) {
+          Object newValue = event.getNewValue();
+          if (newValue instanceof String) {
+            newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), (String)newValue);
+          }
+          ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), newValue);
+        }
+        if (UmlViewsRepository.ConsiderIgnoreFragment.Properties.interactionOperator == event.getAffectedEditor()) {
+          Object newValue = event.getNewValue();
+          if (newValue instanceof String) {
+            newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getCombinedFragment_InteractionOperator().getEAttributeType(), (String)newValue);
+          }
+          ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getCombinedFragment_InteractionOperator().getEAttributeType(), newValue);
+        }
+      } catch (IllegalArgumentException iae) {
+        ret = BasicDiagnostic.toDiagnostic(iae);
+      } catch (WrappedException we) {
+        ret = BasicDiagnostic.toDiagnostic(we);
+      }
+    }
+    return ret;
+  }
 
 
 	

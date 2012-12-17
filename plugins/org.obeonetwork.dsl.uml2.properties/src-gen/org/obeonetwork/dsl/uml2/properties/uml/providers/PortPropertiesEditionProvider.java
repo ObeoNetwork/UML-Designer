@@ -58,9 +58,9 @@ public class PortPropertiesEditionProvider extends PropertiesEditingProviderImpl
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof Port) 
-					&& (UMLPackage.Literals.PORT == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof Port) 
+          && (UMLPackage.Literals.PORT == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class PortPropertiesEditionProvider extends PropertiesEditingProviderImpl
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof Port) && (PortPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof Port) && (PortPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class PortPropertiesEditionProvider extends PropertiesEditingProviderImpl
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Port) && (refinement == PortPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof Port) && (refinement == PortPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class PortPropertiesEditionProvider extends PropertiesEditingProviderImpl
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Port) && ((PortPropertiesEditionComponent.BASE_PART.equals(part) && refinement == PortPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof Port) && ((PortPropertiesEditionComponent.BASE_PART.equals(part) && refinement == PortPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class PortPropertiesEditionProvider extends PropertiesEditingProviderImpl
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof Port) {
-			return new PortPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof Port) {
+      return new PortPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class PortPropertiesEditionProvider extends PropertiesEditingProviderImpl
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof Port) {
-			if (PortPropertiesEditionComponent.BASE_PART.equals(part))
-				return new PortPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof Port) {
+      if (PortPropertiesEditionComponent.BASE_PART.equals(part))
+        return new PortPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

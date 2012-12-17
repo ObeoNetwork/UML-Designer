@@ -91,11 +91,11 @@ public class ConnectorEndPropertiesEditionComponent extends SinglePartProperties
 	 * @generated
 	 */
 	public ConnectorEndPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject connectorEnd, String editing_mode) {
-		super(editingContext, connectorEnd, editing_mode);
-		parts = new String[] { BASE_PART };
-		repositoryKey = UmlViewsRepository.class;
-		partKey = UmlViewsRepository.ConnectorEnd.class;
-	}
+    super(editingContext, connectorEnd, editing_mode);
+    parts = new String[] { BASE_PART };
+    repositoryKey = UmlViewsRepository.class;
+    partKey = UmlViewsRepository.ConnectorEnd.class;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -105,71 +105,69 @@ public class ConnectorEndPropertiesEditionComponent extends SinglePartProperties
 	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			
-			final ConnectorEnd connectorEnd = (ConnectorEnd)elt;
-			final ConnectorEndPropertiesEditionPart basePart = (ConnectorEndPropertiesEditionPart)editingPart;
-			// init values
-			if (isAccessible(UmlViewsRepository.ConnectorEnd.Properties.isOrdered)) {
-				basePart.setIsOrdered(connectorEnd.isOrdered());
-			}
-			if (isAccessible(UmlViewsRepository.ConnectorEnd.Properties.isUnique)) {
-				basePart.setIsUnique(connectorEnd.isUnique());
-			}
-			if (isAccessible(UmlViewsRepository.ConnectorEnd.Properties.role)) {
-				// init part
-				roleSettings = new EObjectFlatComboSettings(connectorEnd, UMLPackage.eINSTANCE.getConnectorEnd_Role());
-				basePart.initRole(roleSettings);
-				// set the button mode
-				basePart.setRoleButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			if (isAccessible(UmlViewsRepository.ConnectorEnd.Properties.partWithPort)) {
-				// init part
-				partWithPortSettings = new EObjectFlatComboSettings(connectorEnd, UMLPackage.eINSTANCE.getConnectorEnd_PartWithPort());
-				basePart.initPartWithPort(partWithPortSettings);
-				// set the button mode
-				basePart.setPartWithPortButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			// init filters
-			
-			
-			if (isAccessible(UmlViewsRepository.ConnectorEnd.Properties.role)) {
-				basePart.addFilterToRole(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof ConnectableElement);
-					}
-					
-				});
-			}
-			if (isAccessible(UmlViewsRepository.ConnectorEnd.Properties.partWithPort)) {
-				basePart.addFilterToPartWithPort(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof String && element.equals("")) || (element instanceof Property); //$NON-NLS-1$ 
-					}
-					
-				});
-			}
-			// init values for referenced views
-			
-			// init filters for referenced views
-			
-		}
-		setInitializing(false);
-	}
+    setInitializing(true);
+    if (editingPart != null && key == partKey) {
+      editingPart.setContext(elt, allResource);
+      
+      final ConnectorEnd connectorEnd = (ConnectorEnd)elt;
+      final ConnectorEndPropertiesEditionPart basePart = (ConnectorEndPropertiesEditionPart)editingPart;
+      // init values
+      basePart.setIsOrdered(connectorEnd.isOrdered());
+      
+      basePart.setIsUnique(connectorEnd.isUnique());
+      
+      if (isAccessible(UmlViewsRepository.ConnectorEnd.Properties.role)) {
+        // init part
+        roleSettings = new EObjectFlatComboSettings(connectorEnd, UMLPackage.eINSTANCE.getConnectorEnd_Role());
+        basePart.initRole(roleSettings);
+        // set the button mode
+        basePart.setRoleButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      if (isAccessible(UmlViewsRepository.ConnectorEnd.Properties.partWithPort)) {
+        // init part
+        partWithPortSettings = new EObjectFlatComboSettings(connectorEnd, UMLPackage.eINSTANCE.getConnectorEnd_PartWithPort());
+        basePart.initPartWithPort(partWithPortSettings);
+        // set the button mode
+        basePart.setPartWithPortButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      // init filters
+      
+      
+      if (isAccessible(UmlViewsRepository.ConnectorEnd.Properties.role)) {
+        basePart.addFilterToRole(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof ConnectableElement);
+          }
+          
+        });
+      }
+      if (isAccessible(UmlViewsRepository.ConnectorEnd.Properties.partWithPort)) {
+        basePart.addFilterToPartWithPort(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof String && element.equals("")) || (element instanceof Property); //$NON-NLS-1$ 
+          }
+          
+        });
+      }
+      // init values for referenced views
+      
+      // init filters for referenced views
+      
+    }
+    setInitializing(false);
+  }
 
 
 
@@ -203,44 +201,44 @@ public class ConnectorEndPropertiesEditionComponent extends SinglePartProperties
 	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		ConnectorEnd connectorEnd = (ConnectorEnd)semanticObject;
-		if (UmlViewsRepository.ConnectorEnd.Properties.isOrdered == event.getAffectedEditor()) {
-			connectorEnd.setIsOrdered((Boolean)event.getNewValue());
-		}
-		if (UmlViewsRepository.ConnectorEnd.Properties.isUnique == event.getAffectedEditor()) {
-			connectorEnd.setIsUnique((Boolean)event.getNewValue());
-		}
-		if (UmlViewsRepository.ConnectorEnd.Properties.role == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				roleSettings.setToReference((ConnectableElement)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, roleSettings, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy instanceof CreateEditingPolicy) {
-						policy.execute();
-					}
-				}
-			}
-		}
-		if (UmlViewsRepository.ConnectorEnd.Properties.partWithPort == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				partWithPortSettings.setToReference((Property)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				Property eObject = UMLFactory.eINSTANCE.createProperty();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy != null) {
-						policy.execute();
-					}
-				}
-				partWithPortSettings.setToReference(eObject);
-			}
-		}
-	}
+    ConnectorEnd connectorEnd = (ConnectorEnd)semanticObject;
+    if (UmlViewsRepository.ConnectorEnd.Properties.isOrdered == event.getAffectedEditor()) {
+      connectorEnd.setIsOrdered((Boolean)event.getNewValue());
+    }
+    if (UmlViewsRepository.ConnectorEnd.Properties.isUnique == event.getAffectedEditor()) {
+      connectorEnd.setIsUnique((Boolean)event.getNewValue());
+    }
+    if (UmlViewsRepository.ConnectorEnd.Properties.role == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        roleSettings.setToReference((ConnectableElement)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, roleSettings, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy instanceof CreateEditingPolicy) {
+            policy.execute();
+          }
+        }
+      }
+    }
+    if (UmlViewsRepository.ConnectorEnd.Properties.partWithPort == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        partWithPortSettings.setToReference((Property)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        Property eObject = UMLFactory.eINSTANCE.createProperty();
+        EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy != null) {
+            policy.execute();
+          }
+        }
+        partWithPortSettings.setToReference(eObject);
+      }
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -287,8 +285,8 @@ public class ConnectorEndPropertiesEditionComponent extends SinglePartProperties
 	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == UmlViewsRepository.ConnectorEnd.Properties.isOrdered || key == UmlViewsRepository.ConnectorEnd.Properties.isUnique || key == UmlViewsRepository.ConnectorEnd.Properties.role;
-	}
+    return key == UmlViewsRepository.ConnectorEnd.Properties.isOrdered || key == UmlViewsRepository.ConnectorEnd.Properties.isUnique || key == UmlViewsRepository.ConnectorEnd.Properties.role;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -297,31 +295,31 @@ public class ConnectorEndPropertiesEditionComponent extends SinglePartProperties
 	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
-		Diagnostic ret = Diagnostic.OK_INSTANCE;
-		if (event.getNewValue() != null) {
-			try {
-				if (UmlViewsRepository.ConnectorEnd.Properties.isOrdered == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getMultiplicityElement_IsOrdered().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getMultiplicityElement_IsOrdered().getEAttributeType(), newValue);
-				}
-				if (UmlViewsRepository.ConnectorEnd.Properties.isUnique == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getMultiplicityElement_IsUnique().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getMultiplicityElement_IsUnique().getEAttributeType(), newValue);
-				}
-			} catch (IllegalArgumentException iae) {
-				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
-				ret = BasicDiagnostic.toDiagnostic(we);
-			}
-		}
-		return ret;
-	}
+    Diagnostic ret = Diagnostic.OK_INSTANCE;
+    if (event.getNewValue() != null) {
+      try {
+        if (UmlViewsRepository.ConnectorEnd.Properties.isOrdered == event.getAffectedEditor()) {
+          Object newValue = event.getNewValue();
+          if (newValue instanceof String) {
+            newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getMultiplicityElement_IsOrdered().getEAttributeType(), (String)newValue);
+          }
+          ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getMultiplicityElement_IsOrdered().getEAttributeType(), newValue);
+        }
+        if (UmlViewsRepository.ConnectorEnd.Properties.isUnique == event.getAffectedEditor()) {
+          Object newValue = event.getNewValue();
+          if (newValue instanceof String) {
+            newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getMultiplicityElement_IsUnique().getEAttributeType(), (String)newValue);
+          }
+          ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getMultiplicityElement_IsUnique().getEAttributeType(), newValue);
+        }
+      } catch (IllegalArgumentException iae) {
+        ret = BasicDiagnostic.toDiagnostic(iae);
+      } catch (WrappedException we) {
+        ret = BasicDiagnostic.toDiagnostic(we);
+      }
+    }
+    return ret;
+  }
 
 
 	

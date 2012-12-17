@@ -87,11 +87,11 @@ public class QualifierValuePropertiesEditionComponent extends SinglePartProperti
 	 * @generated
 	 */
 	public QualifierValuePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject qualifierValue, String editing_mode) {
-		super(editingContext, qualifierValue, editing_mode);
-		parts = new String[] { BASE_PART };
-		repositoryKey = UmlViewsRepository.class;
-		partKey = UmlViewsRepository.QualifierValue.class;
-	}
+    super(editingContext, qualifierValue, editing_mode);
+    parts = new String[] { BASE_PART };
+    repositoryKey = UmlViewsRepository.class;
+    partKey = UmlViewsRepository.QualifierValue.class;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -101,63 +101,63 @@ public class QualifierValuePropertiesEditionComponent extends SinglePartProperti
 	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			
-			final QualifierValue qualifierValue = (QualifierValue)elt;
-			final QualifierValuePropertiesEditionPart basePart = (QualifierValuePropertiesEditionPart)editingPart;
-			// init values
-			if (isAccessible(UmlViewsRepository.QualifierValue.Properties.qualifier)) {
-				// init part
-				qualifierSettings = new EObjectFlatComboSettings(qualifierValue, UMLPackage.eINSTANCE.getQualifierValue_Qualifier());
-				basePart.initQualifier(qualifierSettings);
-				// set the button mode
-				basePart.setQualifierButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			if (isAccessible(UmlViewsRepository.QualifierValue.Properties.value)) {
-				// init part
-				valueSettings = new EObjectFlatComboSettings(qualifierValue, UMLPackage.eINSTANCE.getQualifierValue_Value());
-				basePart.initValue(valueSettings);
-				// set the button mode
-				basePart.setValueButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			// init filters
-			if (isAccessible(UmlViewsRepository.QualifierValue.Properties.qualifier)) {
-				basePart.addFilterToQualifier(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof Property);
-					}
-					
-				});
-			}
-			if (isAccessible(UmlViewsRepository.QualifierValue.Properties.value)) {
-				basePart.addFilterToValue(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof InputPin);
-					}
-					
-				});
-			}
-			// init values for referenced views
-			
-			// init filters for referenced views
-			
-		}
-		setInitializing(false);
-	}
+    setInitializing(true);
+    if (editingPart != null && key == partKey) {
+      editingPart.setContext(elt, allResource);
+      
+      final QualifierValue qualifierValue = (QualifierValue)elt;
+      final QualifierValuePropertiesEditionPart basePart = (QualifierValuePropertiesEditionPart)editingPart;
+      // init values
+      if (isAccessible(UmlViewsRepository.QualifierValue.Properties.qualifier)) {
+        // init part
+        qualifierSettings = new EObjectFlatComboSettings(qualifierValue, UMLPackage.eINSTANCE.getQualifierValue_Qualifier());
+        basePart.initQualifier(qualifierSettings);
+        // set the button mode
+        basePart.setQualifierButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      if (isAccessible(UmlViewsRepository.QualifierValue.Properties.value)) {
+        // init part
+        valueSettings = new EObjectFlatComboSettings(qualifierValue, UMLPackage.eINSTANCE.getQualifierValue_Value());
+        basePart.initValue(valueSettings);
+        // set the button mode
+        basePart.setValueButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      // init filters
+      if (isAccessible(UmlViewsRepository.QualifierValue.Properties.qualifier)) {
+        basePart.addFilterToQualifier(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof Property);
+          }
+          
+        });
+      }
+      if (isAccessible(UmlViewsRepository.QualifierValue.Properties.value)) {
+        basePart.addFilterToValue(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof InputPin);
+          }
+          
+        });
+      }
+      // init values for referenced views
+      
+      // init filters for referenced views
+      
+    }
+    setInitializing(false);
+  }
 
 
 
@@ -183,40 +183,40 @@ public class QualifierValuePropertiesEditionComponent extends SinglePartProperti
 	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		QualifierValue qualifierValue = (QualifierValue)semanticObject;
-		if (UmlViewsRepository.QualifierValue.Properties.qualifier == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				qualifierSettings.setToReference((Property)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				Property eObject = UMLFactory.eINSTANCE.createProperty();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy != null) {
-						policy.execute();
-					}
-				}
-				qualifierSettings.setToReference(eObject);
-			}
-		}
-		if (UmlViewsRepository.QualifierValue.Properties.value == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				valueSettings.setToReference((InputPin)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				InputPin eObject = UMLFactory.eINSTANCE.createInputPin();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy != null) {
-						policy.execute();
-					}
-				}
-				valueSettings.setToReference(eObject);
-			}
-		}
-	}
+    QualifierValue qualifierValue = (QualifierValue)semanticObject;
+    if (UmlViewsRepository.QualifierValue.Properties.qualifier == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        qualifierSettings.setToReference((Property)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        Property eObject = UMLFactory.eINSTANCE.createProperty();
+        EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy != null) {
+            policy.execute();
+          }
+        }
+        qualifierSettings.setToReference(eObject);
+      }
+    }
+    if (UmlViewsRepository.QualifierValue.Properties.value == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        valueSettings.setToReference((InputPin)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        InputPin eObject = UMLFactory.eINSTANCE.createInputPin();
+        EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy != null) {
+            policy.execute();
+          }
+        }
+        valueSettings.setToReference(eObject);
+      }
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -255,8 +255,8 @@ public class QualifierValuePropertiesEditionComponent extends SinglePartProperti
 	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == UmlViewsRepository.QualifierValue.Properties.qualifier || key == UmlViewsRepository.QualifierValue.Properties.value;
-	}
+    return key == UmlViewsRepository.QualifierValue.Properties.qualifier || key == UmlViewsRepository.QualifierValue.Properties.value;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -265,17 +265,17 @@ public class QualifierValuePropertiesEditionComponent extends SinglePartProperti
 	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
-		Diagnostic ret = Diagnostic.OK_INSTANCE;
-		if (event.getNewValue() != null) {
-			try {
-			} catch (IllegalArgumentException iae) {
-				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
-				ret = BasicDiagnostic.toDiagnostic(we);
-			}
-		}
-		return ret;
-	}
+    Diagnostic ret = Diagnostic.OK_INSTANCE;
+    if (event.getNewValue() != null) {
+      try {
+      } catch (IllegalArgumentException iae) {
+        ret = BasicDiagnostic.toDiagnostic(iae);
+      } catch (WrappedException we) {
+        ret = BasicDiagnostic.toDiagnostic(we);
+      }
+    }
+    return ret;
+  }
 
 
 	

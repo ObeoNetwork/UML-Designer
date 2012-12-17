@@ -58,9 +58,9 @@ public class RegionPropertiesEditionProvider extends PropertiesEditingProviderIm
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof Region) 
-					&& (UMLPackage.Literals.REGION == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof Region) 
+          && (UMLPackage.Literals.REGION == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class RegionPropertiesEditionProvider extends PropertiesEditingProviderIm
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof Region) && (RegionPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof Region) && (RegionPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class RegionPropertiesEditionProvider extends PropertiesEditingProviderIm
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Region) && (refinement == RegionPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof Region) && (refinement == RegionPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class RegionPropertiesEditionProvider extends PropertiesEditingProviderIm
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Region) && ((RegionPropertiesEditionComponent.BASE_PART.equals(part) && refinement == RegionPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof Region) && ((RegionPropertiesEditionComponent.BASE_PART.equals(part) && refinement == RegionPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class RegionPropertiesEditionProvider extends PropertiesEditingProviderIm
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof Region) {
-			return new RegionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof Region) {
+      return new RegionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class RegionPropertiesEditionProvider extends PropertiesEditingProviderIm
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof Region) {
-			if (RegionPropertiesEditionComponent.BASE_PART.equals(part))
-				return new RegionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof Region) {
+      if (RegionPropertiesEditionComponent.BASE_PART.equals(part))
+        return new RegionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

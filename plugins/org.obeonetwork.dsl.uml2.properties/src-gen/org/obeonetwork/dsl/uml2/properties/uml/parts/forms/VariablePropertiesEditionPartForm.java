@@ -129,8 +129,8 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public VariablePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+    super(editionComponent);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -140,15 +140,15 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
-		view = form.getBody();
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
-		view.setLayout(layout);
-		createControls(widgetFactory, view);
-		return scrolledForm;
-	}
+    ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
+    Form form = scrolledForm.getForm();
+    view = form.getBody();
+    GridLayout layout = new GridLayout();
+    layout.numColumns = 3;
+    view.setLayout(layout);
+    createControls(widgetFactory, view);
+    return scrolledForm;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -158,257 +158,257 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		CompositionSequence variableStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep propertiesStep = variableStep.addStep(UmlViewsRepository.Variable.Properties.class);
-		propertiesStep.addStep(UmlViewsRepository.Variable.Properties.name);
-		propertiesStep.addStep(UmlViewsRepository.Variable.Properties.visibility);
-		propertiesStep.addStep(UmlViewsRepository.Variable.Properties.clientDependency);
-		propertiesStep.addStep(UmlViewsRepository.Variable.Properties.type);
-		propertiesStep.addStep(UmlViewsRepository.Variable.Properties.owningTemplateParameter);
-		propertiesStep.addStep(UmlViewsRepository.Variable.Properties.templateParameter);
-		propertiesStep.addStep(UmlViewsRepository.Variable.Properties.isOrdered);
-		propertiesStep.addStep(UmlViewsRepository.Variable.Properties.isUnique);
-		propertiesStep.addStep(UmlViewsRepository.Variable.Properties.scope);
-		propertiesStep.addStep(UmlViewsRepository.Variable.Properties.activityScope);
-		
-		
-		composer = new PartComposer(variableStep) {
+    CompositionSequence variableStep = new BindingCompositionSequence(propertiesEditionComponent);
+    CompositionStep propertiesStep = variableStep.addStep(UmlViewsRepository.Variable.Properties.class);
+    propertiesStep.addStep(UmlViewsRepository.Variable.Properties.name);
+    propertiesStep.addStep(UmlViewsRepository.Variable.Properties.visibility);
+    propertiesStep.addStep(UmlViewsRepository.Variable.Properties.clientDependency);
+    propertiesStep.addStep(UmlViewsRepository.Variable.Properties.type);
+    propertiesStep.addStep(UmlViewsRepository.Variable.Properties.owningTemplateParameter);
+    propertiesStep.addStep(UmlViewsRepository.Variable.Properties.templateParameter);
+    propertiesStep.addStep(UmlViewsRepository.Variable.Properties.isOrdered);
+    propertiesStep.addStep(UmlViewsRepository.Variable.Properties.isUnique);
+    propertiesStep.addStep(UmlViewsRepository.Variable.Properties.scope);
+    propertiesStep.addStep(UmlViewsRepository.Variable.Properties.activityScope);
+    
+    
+    composer = new PartComposer(variableStep) {
 
-			@Override
-			public Composite addToPart(Composite parent, Object key) {
-				if (key == UmlViewsRepository.Variable.Properties.class) {
-					return createPropertiesGroup(widgetFactory, parent);
-				}
-				if (key == UmlViewsRepository.Variable.Properties.name) {
-					return createNameText(widgetFactory, parent);
-				}
-				if (key == UmlViewsRepository.Variable.Properties.visibility) {
-					return createVisibilityEMFComboViewer(widgetFactory, parent);
-				}
-				if (key == UmlViewsRepository.Variable.Properties.clientDependency) {
-					return createClientDependencyReferencesTable(widgetFactory, parent);
-				}
-				if (key == UmlViewsRepository.Variable.Properties.type) {
-					return createTypeFlatComboViewer(parent, widgetFactory);
-				}
-				if (key == UmlViewsRepository.Variable.Properties.owningTemplateParameter) {
-					return createOwningTemplateParameterFlatComboViewer(parent, widgetFactory);
-				}
-				if (key == UmlViewsRepository.Variable.Properties.templateParameter) {
-					return createTemplateParameterFlatComboViewer(parent, widgetFactory);
-				}
-				if (key == UmlViewsRepository.Variable.Properties.isOrdered) {
-					return createIsOrderedCheckbox(widgetFactory, parent);
-				}
-				if (key == UmlViewsRepository.Variable.Properties.isUnique) {
-					return createIsUniqueCheckbox(widgetFactory, parent);
-				}
-				if (key == UmlViewsRepository.Variable.Properties.scope) {
-					return createScopeFlatComboViewer(parent, widgetFactory);
-				}
-				if (key == UmlViewsRepository.Variable.Properties.activityScope) {
-					return createActivityScopeFlatComboViewer(parent, widgetFactory);
-				}
-				return parent;
-			}
-		};
-		composer.compose(view);
-	}
+      @Override
+      public Composite addToPart(Composite parent, Object key) {
+        if (key == UmlViewsRepository.Variable.Properties.class) {
+          return createPropertiesGroup(widgetFactory, parent);
+        }
+        if (key == UmlViewsRepository.Variable.Properties.name) {
+          return createNameText(widgetFactory, parent);
+        }
+        if (key == UmlViewsRepository.Variable.Properties.visibility) {
+          return createVisibilityEMFComboViewer(widgetFactory, parent);
+        }
+        if (key == UmlViewsRepository.Variable.Properties.clientDependency) {
+          return createClientDependencyReferencesTable(widgetFactory, parent);
+        }
+        if (key == UmlViewsRepository.Variable.Properties.type) {
+          return createTypeFlatComboViewer(parent, widgetFactory);
+        }
+        if (key == UmlViewsRepository.Variable.Properties.owningTemplateParameter) {
+          return createOwningTemplateParameterFlatComboViewer(parent, widgetFactory);
+        }
+        if (key == UmlViewsRepository.Variable.Properties.templateParameter) {
+          return createTemplateParameterFlatComboViewer(parent, widgetFactory);
+        }
+        if (key == UmlViewsRepository.Variable.Properties.isOrdered) {
+          return createIsOrderedCheckbox(widgetFactory, parent);
+        }
+        if (key == UmlViewsRepository.Variable.Properties.isUnique) {
+          return createIsUniqueCheckbox(widgetFactory, parent);
+        }
+        if (key == UmlViewsRepository.Variable.Properties.scope) {
+          return createScopeFlatComboViewer(parent, widgetFactory);
+        }
+        if (key == UmlViewsRepository.Variable.Properties.activityScope) {
+          return createActivityScopeFlatComboViewer(parent, widgetFactory);
+        }
+        return parent;
+      }
+    };
+    composer.compose(view);
+  }
 	/**
 	 * @generated
 	 */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
-		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
-		propertiesSection.setText(UmlMessages.VariablePropertiesEditionPart_PropertiesGroupLabel);
-		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesSectionData.horizontalSpan = 3;
-		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		propertiesSection.setClient(propertiesGroup);
-		return propertiesGroup;
-	}
+    Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+    propertiesSection.setText(UmlMessages.VariablePropertiesEditionPart_PropertiesGroupLabel);
+    GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
+    propertiesSectionData.horizontalSpan = 3;
+    propertiesSection.setLayoutData(propertiesSectionData);
+    Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+    GridLayout propertiesGroupLayout = new GridLayout();
+    propertiesGroupLayout.numColumns = 3;
+    propertiesGroup.setLayout(propertiesGroupLayout);
+    propertiesSection.setClient(propertiesGroup);
+    return propertiesGroup;
+  }
 
 	/**
 	 * @generated
 	 */
 	
 	protected Composite createNameText(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, UmlViewsRepository.Variable.Properties.name, UmlMessages.VariablePropertiesEditionPart_NameLabel);
-		name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-		name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-		widgetFactory.paintBordersFor(parent);
-		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
-		name.setLayoutData(nameData);
-		name.addFocusListener(new FocusAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * @generated
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-							VariablePropertiesEditionPartForm.this,
-							UmlViewsRepository.Variable.Properties.name,
-							PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									VariablePropertiesEditionPartForm.this,
-									UmlViewsRepository.Variable.Properties.name,
-									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-									null, name.getText()));
-				}
-			}
+    createDescription(parent, UmlViewsRepository.Variable.Properties.name, UmlMessages.VariablePropertiesEditionPart_NameLabel);
+    name = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+    name.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+    widgetFactory.paintBordersFor(parent);
+    GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
+    name.setLayoutData(nameData);
+    name.addFocusListener(new FocusAdapter() {
+      /**
+       * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+       * @generated
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void focusLost(FocusEvent e) {
+        if (propertiesEditionComponent != null) {
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+              VariablePropertiesEditionPartForm.this,
+              UmlViewsRepository.Variable.Properties.name,
+              PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+          propertiesEditionComponent
+              .firePropertiesChanged(new PropertiesEditionEvent(
+                  VariablePropertiesEditionPartForm.this,
+                  UmlViewsRepository.Variable.Properties.name,
+                  PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+                  null, name.getText()));
+        }
+      }
 
-			/**
-			 * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-			 */
-			@Override
-			public void focusGained(FocusEvent e) {
-				if (propertiesEditionComponent != null) {
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									VariablePropertiesEditionPartForm.this,
-									null,
-									PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
-									null, null));
-				}
-			}
-		});
-		name.addKeyListener(new KeyAdapter() {
-			/**
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * @generated
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(VariablePropertiesEditionPartForm.this, UmlViewsRepository.Variable.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
-				}
-			}
-		});
-		EditingUtils.setID(name, UmlViewsRepository.Variable.Properties.name);
-		EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.Variable.Properties.name, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+      /**
+       * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+       */
+      @Override
+      public void focusGained(FocusEvent e) {
+        if (propertiesEditionComponent != null) {
+          propertiesEditionComponent
+              .firePropertiesChanged(new PropertiesEditionEvent(
+                  VariablePropertiesEditionPartForm.this,
+                  null,
+                  PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+                  null, null));
+        }
+      }
+    });
+    name.addKeyListener(new KeyAdapter() {
+      /**
+       * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+       * @generated
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void keyPressed(KeyEvent e) {
+        if (e.character == SWT.CR) {
+          if (propertiesEditionComponent != null)
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(VariablePropertiesEditionPartForm.this, UmlViewsRepository.Variable.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
+        }
+      }
+    });
+    EditingUtils.setID(name, UmlViewsRepository.Variable.Properties.name);
+    EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.Variable.Properties.name, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @generated
 	 */
 	
 	protected Composite createVisibilityEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
-		createDescription(parent, UmlViewsRepository.Variable.Properties.visibility, UmlMessages.VariablePropertiesEditionPart_VisibilityLabel);
-		visibility = new EMFComboViewer(parent);
-		visibility.setContentProvider(new ArrayContentProvider());
-		visibility.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
-		GridData visibilityData = new GridData(GridData.FILL_HORIZONTAL);
-		visibility.getCombo().setLayoutData(visibilityData);
-		visibility.addSelectionChangedListener(new ISelectionChangedListener() {
+    createDescription(parent, UmlViewsRepository.Variable.Properties.visibility, UmlMessages.VariablePropertiesEditionPart_VisibilityLabel);
+    visibility = new EMFComboViewer(parent);
+    visibility.setContentProvider(new ArrayContentProvider());
+    visibility.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+    GridData visibilityData = new GridData(GridData.FILL_HORIZONTAL);
+    visibility.getCombo().setLayoutData(visibilityData);
+    visibility.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	@generated
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(VariablePropertiesEditionPartForm.this, UmlViewsRepository.Variable.Properties.visibility, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getVisibility()));
-			}
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       * 	@generated
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(VariablePropertiesEditionPartForm.this, UmlViewsRepository.Variable.Properties.visibility, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getVisibility()));
+      }
 
-		});
-		visibility.setID(UmlViewsRepository.Variable.Properties.visibility);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.Variable.Properties.visibility, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    visibility.setID(UmlViewsRepository.Variable.Properties.visibility);
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.Variable.Properties.visibility, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @generated
 	 */
 	protected Composite createClientDependencyReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.clientDependency = new ReferencesTable(getDescription(UmlViewsRepository.Variable.Properties.clientDependency, UmlMessages.VariablePropertiesEditionPart_ClientDependencyLabel), new ReferencesTableListener	() {
-			public void handleAdd() { addClientDependency(); }
-			public void handleEdit(EObject element) { editClientDependency(element); }
-			public void handleMove(EObject element, int oldIndex, int newIndex) { moveClientDependency(element, oldIndex, newIndex); }
-			public void handleRemove(EObject element) { removeFromClientDependency(element); }
-			public void navigateTo(EObject element) { }
-		});
-		this.clientDependency.setHelpText(propertiesEditionComponent.getHelpContent(UmlViewsRepository.Variable.Properties.clientDependency, UmlViewsRepository.FORM_KIND));
-		this.clientDependency.createControls(parent, widgetFactory);
-		this.clientDependency.addSelectionListener(new SelectionAdapter() {
-			
-			public void widgetSelected(SelectionEvent e) {
-				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(VariablePropertiesEditionPartForm.this, UmlViewsRepository.Variable.Properties.clientDependency, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
-				}
-			}
-			
-		});
-		GridData clientDependencyData = new GridData(GridData.FILL_HORIZONTAL);
-		clientDependencyData.horizontalSpan = 3;
-		this.clientDependency.setLayoutData(clientDependencyData);
-		this.clientDependency.disableMove();
-		clientDependency.setID(UmlViewsRepository.Variable.Properties.clientDependency);
-		clientDependency.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
-		return parent;
-	}
+    this.clientDependency = new ReferencesTable(getDescription(UmlViewsRepository.Variable.Properties.clientDependency, UmlMessages.VariablePropertiesEditionPart_ClientDependencyLabel), new ReferencesTableListener	() {
+      public void handleAdd() { addClientDependency(); }
+      public void handleEdit(EObject element) { editClientDependency(element); }
+      public void handleMove(EObject element, int oldIndex, int newIndex) { moveClientDependency(element, oldIndex, newIndex); }
+      public void handleRemove(EObject element) { removeFromClientDependency(element); }
+      public void navigateTo(EObject element) { }
+    });
+    this.clientDependency.setHelpText(propertiesEditionComponent.getHelpContent(UmlViewsRepository.Variable.Properties.clientDependency, UmlViewsRepository.FORM_KIND));
+    this.clientDependency.createControls(parent, widgetFactory);
+    this.clientDependency.addSelectionListener(new SelectionAdapter() {
+      
+      public void widgetSelected(SelectionEvent e) {
+        if (e.item != null && e.item.getData() instanceof EObject) {
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(VariablePropertiesEditionPartForm.this, UmlViewsRepository.Variable.Properties.clientDependency, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+        }
+      }
+      
+    });
+    GridData clientDependencyData = new GridData(GridData.FILL_HORIZONTAL);
+    clientDependencyData.horizontalSpan = 3;
+    this.clientDependency.setLayoutData(clientDependencyData);
+    this.clientDependency.disableMove();
+    clientDependency.setID(UmlViewsRepository.Variable.Properties.clientDependency);
+    clientDependency.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @generated
 	 */
 	protected void addClientDependency() {
-		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(clientDependency.getInput(), clientDependencyFilters, clientDependencyBusinessFilters,
-		"clientDependency", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
-			@Override
-			public void process(IStructuredSelection selection) {
-				for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
-					EObject elem = (EObject) iter.next();
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(VariablePropertiesEditionPartForm.this, UmlViewsRepository.Variable.Properties.clientDependency,
-						PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
-				}
-				clientDependency.refresh();
-			}
-		};
-		dialog.open();
-	}
+    TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(clientDependency.getInput(), clientDependencyFilters, clientDependencyBusinessFilters,
+    "clientDependency", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
+      @Override
+      public void process(IStructuredSelection selection) {
+        for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
+          EObject elem = (EObject) iter.next();
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(VariablePropertiesEditionPartForm.this, UmlViewsRepository.Variable.Properties.clientDependency,
+            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+        }
+        clientDependency.refresh();
+      }
+    };
+    dialog.open();
+  }
 
 	/**
 	 * @generated
 	 */
 	protected void moveClientDependency(EObject element, int oldIndex, int newIndex) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(VariablePropertiesEditionPartForm.this, UmlViewsRepository.Variable.Properties.clientDependency, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		clientDependency.refresh();
-	}
+    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(VariablePropertiesEditionPartForm.this, UmlViewsRepository.Variable.Properties.clientDependency, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+    clientDependency.refresh();
+  }
 
 	/**
 	 * @generated
 	 */
 	protected void removeFromClientDependency(EObject element) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(VariablePropertiesEditionPartForm.this, UmlViewsRepository.Variable.Properties.clientDependency, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-		clientDependency.refresh();
-	}
+    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(VariablePropertiesEditionPartForm.this, UmlViewsRepository.Variable.Properties.clientDependency, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+    clientDependency.refresh();
+  }
 
 	/**
 	 * @generated
 	 */
 	protected void editClientDependency(EObject element) {
-		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
-		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
-		if (provider != null) {
-			PropertiesEditingPolicy policy = provider.getPolicy(context);
-			if (policy != null) {
-				policy.execute();
-				clientDependency.refresh();
-			}
-		}
-	}
+    EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
+    PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
+    if (provider != null) {
+      PropertiesEditingPolicy policy = provider.getPolicy(context);
+      if (policy != null) {
+        policy.execute();
+        clientDependency.refresh();
+      }
+    }
+  }
 
 	/**
 	 * @param parent the parent composite
@@ -416,29 +416,29 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	protected Composite createTypeFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		createDescription(parent, UmlViewsRepository.Variable.Properties.type, UmlMessages.VariablePropertiesEditionPart_TypeLabel);
-		type = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.Variable.Properties.type, UmlViewsRepository.FORM_KIND));
-		widgetFactory.adapt(type);
-		type.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		GridData typeData = new GridData(GridData.FILL_HORIZONTAL);
-		type.setLayoutData(typeData);
-		type.addSelectionChangedListener(new ISelectionChangedListener() {
+    createDescription(parent, UmlViewsRepository.Variable.Properties.type, UmlMessages.VariablePropertiesEditionPart_TypeLabel);
+    type = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.Variable.Properties.type, UmlViewsRepository.FORM_KIND));
+    widgetFactory.adapt(type);
+    type.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    GridData typeData = new GridData(GridData.FILL_HORIZONTAL);
+    type.setLayoutData(typeData);
+    type.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(VariablePropertiesEditionPartForm.this, UmlViewsRepository.Variable.Properties.type, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getType()));
-			}
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(VariablePropertiesEditionPartForm.this, UmlViewsRepository.Variable.Properties.type, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getType()));
+      }
 
-		});
-		type.setID(UmlViewsRepository.Variable.Properties.type);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.Variable.Properties.type, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    type.setID(UmlViewsRepository.Variable.Properties.type);
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.Variable.Properties.type, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @param parent the parent composite
@@ -446,29 +446,29 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	protected Composite createOwningTemplateParameterFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		createDescription(parent, UmlViewsRepository.Variable.Properties.owningTemplateParameter, UmlMessages.VariablePropertiesEditionPart_OwningTemplateParameterLabel);
-		owningTemplateParameter = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.Variable.Properties.owningTemplateParameter, UmlViewsRepository.FORM_KIND));
-		widgetFactory.adapt(owningTemplateParameter);
-		owningTemplateParameter.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		GridData owningTemplateParameterData = new GridData(GridData.FILL_HORIZONTAL);
-		owningTemplateParameter.setLayoutData(owningTemplateParameterData);
-		owningTemplateParameter.addSelectionChangedListener(new ISelectionChangedListener() {
+    createDescription(parent, UmlViewsRepository.Variable.Properties.owningTemplateParameter, UmlMessages.VariablePropertiesEditionPart_OwningTemplateParameterLabel);
+    owningTemplateParameter = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.Variable.Properties.owningTemplateParameter, UmlViewsRepository.FORM_KIND));
+    widgetFactory.adapt(owningTemplateParameter);
+    owningTemplateParameter.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    GridData owningTemplateParameterData = new GridData(GridData.FILL_HORIZONTAL);
+    owningTemplateParameter.setLayoutData(owningTemplateParameterData);
+    owningTemplateParameter.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(VariablePropertiesEditionPartForm.this, UmlViewsRepository.Variable.Properties.owningTemplateParameter, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getOwningTemplateParameter()));
-			}
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(VariablePropertiesEditionPartForm.this, UmlViewsRepository.Variable.Properties.owningTemplateParameter, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getOwningTemplateParameter()));
+      }
 
-		});
-		owningTemplateParameter.setID(UmlViewsRepository.Variable.Properties.owningTemplateParameter);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.Variable.Properties.owningTemplateParameter, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    owningTemplateParameter.setID(UmlViewsRepository.Variable.Properties.owningTemplateParameter);
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.Variable.Properties.owningTemplateParameter, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @param parent the parent composite
@@ -476,87 +476,87 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	protected Composite createTemplateParameterFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		createDescription(parent, UmlViewsRepository.Variable.Properties.templateParameter, UmlMessages.VariablePropertiesEditionPart_TemplateParameterLabel);
-		templateParameter = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.Variable.Properties.templateParameter, UmlViewsRepository.FORM_KIND));
-		widgetFactory.adapt(templateParameter);
-		templateParameter.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		GridData templateParameterData = new GridData(GridData.FILL_HORIZONTAL);
-		templateParameter.setLayoutData(templateParameterData);
-		templateParameter.addSelectionChangedListener(new ISelectionChangedListener() {
+    createDescription(parent, UmlViewsRepository.Variable.Properties.templateParameter, UmlMessages.VariablePropertiesEditionPart_TemplateParameterLabel);
+    templateParameter = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.Variable.Properties.templateParameter, UmlViewsRepository.FORM_KIND));
+    widgetFactory.adapt(templateParameter);
+    templateParameter.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    GridData templateParameterData = new GridData(GridData.FILL_HORIZONTAL);
+    templateParameter.setLayoutData(templateParameterData);
+    templateParameter.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(VariablePropertiesEditionPartForm.this, UmlViewsRepository.Variable.Properties.templateParameter, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getTemplateParameter()));
-			}
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(VariablePropertiesEditionPartForm.this, UmlViewsRepository.Variable.Properties.templateParameter, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getTemplateParameter()));
+      }
 
-		});
-		templateParameter.setID(UmlViewsRepository.Variable.Properties.templateParameter);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.Variable.Properties.templateParameter, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    templateParameter.setID(UmlViewsRepository.Variable.Properties.templateParameter);
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.Variable.Properties.templateParameter, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @generated
 	 */
 	
 	protected Composite createIsOrderedCheckbox(FormToolkit widgetFactory, Composite parent) {
-		isOrdered = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.Variable.Properties.isOrdered, UmlMessages.VariablePropertiesEditionPart_IsOrderedLabel), SWT.CHECK);
-		isOrdered.addSelectionListener(new SelectionAdapter() {
+    isOrdered = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.Variable.Properties.isOrdered, UmlMessages.VariablePropertiesEditionPart_IsOrderedLabel), SWT.CHECK);
+    isOrdered.addSelectionListener(new SelectionAdapter() {
 
-			/**
-			 * {@inheritDoc}
-			 *
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	@generated
-			 */
-			public void widgetSelected(SelectionEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(VariablePropertiesEditionPartForm.this, UmlViewsRepository.Variable.Properties.isOrdered, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(isOrdered.getSelection())));
-			}
+      /**
+       * {@inheritDoc}
+       *
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       * 	@generated
+       */
+      public void widgetSelected(SelectionEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(VariablePropertiesEditionPartForm.this, UmlViewsRepository.Variable.Properties.isOrdered, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(isOrdered.getSelection())));
+      }
 
-		});
-		GridData isOrderedData = new GridData(GridData.FILL_HORIZONTAL);
-		isOrderedData.horizontalSpan = 2;
-		isOrdered.setLayoutData(isOrderedData);
-		EditingUtils.setID(isOrdered, UmlViewsRepository.Variable.Properties.isOrdered);
-		EditingUtils.setEEFtype(isOrdered, "eef::Checkbox"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.Variable.Properties.isOrdered, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    GridData isOrderedData = new GridData(GridData.FILL_HORIZONTAL);
+    isOrderedData.horizontalSpan = 2;
+    isOrdered.setLayoutData(isOrderedData);
+    EditingUtils.setID(isOrdered, UmlViewsRepository.Variable.Properties.isOrdered);
+    EditingUtils.setEEFtype(isOrdered, "eef::Checkbox"); //$NON-NLS-1$
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.Variable.Properties.isOrdered, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @generated
 	 */
 	
 	protected Composite createIsUniqueCheckbox(FormToolkit widgetFactory, Composite parent) {
-		isUnique = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.Variable.Properties.isUnique, UmlMessages.VariablePropertiesEditionPart_IsUniqueLabel), SWT.CHECK);
-		isUnique.addSelectionListener(new SelectionAdapter() {
+    isUnique = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.Variable.Properties.isUnique, UmlMessages.VariablePropertiesEditionPart_IsUniqueLabel), SWT.CHECK);
+    isUnique.addSelectionListener(new SelectionAdapter() {
 
-			/**
-			 * {@inheritDoc}
-			 *
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	@generated
-			 */
-			public void widgetSelected(SelectionEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(VariablePropertiesEditionPartForm.this, UmlViewsRepository.Variable.Properties.isUnique, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(isUnique.getSelection())));
-			}
+      /**
+       * {@inheritDoc}
+       *
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       * 	@generated
+       */
+      public void widgetSelected(SelectionEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(VariablePropertiesEditionPartForm.this, UmlViewsRepository.Variable.Properties.isUnique, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(isUnique.getSelection())));
+      }
 
-		});
-		GridData isUniqueData = new GridData(GridData.FILL_HORIZONTAL);
-		isUniqueData.horizontalSpan = 2;
-		isUnique.setLayoutData(isUniqueData);
-		EditingUtils.setID(isUnique, UmlViewsRepository.Variable.Properties.isUnique);
-		EditingUtils.setEEFtype(isUnique, "eef::Checkbox"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.Variable.Properties.isUnique, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    GridData isUniqueData = new GridData(GridData.FILL_HORIZONTAL);
+    isUniqueData.horizontalSpan = 2;
+    isUnique.setLayoutData(isUniqueData);
+    EditingUtils.setID(isUnique, UmlViewsRepository.Variable.Properties.isUnique);
+    EditingUtils.setEEFtype(isUnique, "eef::Checkbox"); //$NON-NLS-1$
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.Variable.Properties.isUnique, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @param parent the parent composite
@@ -564,29 +564,29 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	protected Composite createScopeFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		createDescription(parent, UmlViewsRepository.Variable.Properties.scope, UmlMessages.VariablePropertiesEditionPart_ScopeLabel);
-		scope = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.Variable.Properties.scope, UmlViewsRepository.FORM_KIND));
-		widgetFactory.adapt(scope);
-		scope.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		GridData scopeData = new GridData(GridData.FILL_HORIZONTAL);
-		scope.setLayoutData(scopeData);
-		scope.addSelectionChangedListener(new ISelectionChangedListener() {
+    createDescription(parent, UmlViewsRepository.Variable.Properties.scope, UmlMessages.VariablePropertiesEditionPart_ScopeLabel);
+    scope = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.Variable.Properties.scope, UmlViewsRepository.FORM_KIND));
+    widgetFactory.adapt(scope);
+    scope.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    GridData scopeData = new GridData(GridData.FILL_HORIZONTAL);
+    scope.setLayoutData(scopeData);
+    scope.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(VariablePropertiesEditionPartForm.this, UmlViewsRepository.Variable.Properties.scope, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getScope()));
-			}
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(VariablePropertiesEditionPartForm.this, UmlViewsRepository.Variable.Properties.scope, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getScope()));
+      }
 
-		});
-		scope.setID(UmlViewsRepository.Variable.Properties.scope);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.Variable.Properties.scope, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    scope.setID(UmlViewsRepository.Variable.Properties.scope);
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.Variable.Properties.scope, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @param parent the parent composite
@@ -594,29 +594,29 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	protected Composite createActivityScopeFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		createDescription(parent, UmlViewsRepository.Variable.Properties.activityScope, UmlMessages.VariablePropertiesEditionPart_ActivityScopeLabel);
-		activityScope = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.Variable.Properties.activityScope, UmlViewsRepository.FORM_KIND));
-		widgetFactory.adapt(activityScope);
-		activityScope.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		GridData activityScopeData = new GridData(GridData.FILL_HORIZONTAL);
-		activityScope.setLayoutData(activityScopeData);
-		activityScope.addSelectionChangedListener(new ISelectionChangedListener() {
+    createDescription(parent, UmlViewsRepository.Variable.Properties.activityScope, UmlMessages.VariablePropertiesEditionPart_ActivityScopeLabel);
+    activityScope = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.Variable.Properties.activityScope, UmlViewsRepository.FORM_KIND));
+    widgetFactory.adapt(activityScope);
+    activityScope.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    GridData activityScopeData = new GridData(GridData.FILL_HORIZONTAL);
+    activityScope.setLayoutData(activityScopeData);
+    activityScope.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(VariablePropertiesEditionPartForm.this, UmlViewsRepository.Variable.Properties.activityScope, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getActivityScope()));
-			}
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(VariablePropertiesEditionPartForm.this, UmlViewsRepository.Variable.Properties.activityScope, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getActivityScope()));
+      }
 
-		});
-		activityScope.setID(UmlViewsRepository.Variable.Properties.activityScope);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.Variable.Properties.activityScope, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    activityScope.setID(UmlViewsRepository.Variable.Properties.activityScope);
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.Variable.Properties.activityScope, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 
 	/**
@@ -626,7 +626,7 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-	}
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -635,8 +635,8 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public String getName() {
-		return name.getText();
-	}
+    return name.getText();
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -645,20 +645,20 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public void setName(String newValue) {
-		if (newValue != null) {
-			name.setText(newValue);
-		} else {
-			name.setText(""); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.Variable.Properties.name);
-		if (readOnly && name.isEnabled()) {
-			name.setEnabled(false);
-			name.setToolTipText(UmlMessages.Variable_ReadOnly);
-		} else if (!readOnly && !name.isEnabled()) {
-			name.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      name.setText(newValue);
+    } else {
+      name.setText(""); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.Variable.Properties.name);
+    if (readOnly && name.isEnabled()) {
+      name.setEnabled(false);
+      name.setToolTipText(UmlMessages.Variable_ReadOnly);
+    } else if (!readOnly && !name.isEnabled()) {
+      name.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -667,9 +667,9 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public Enumerator getVisibility() {
-		Enumerator selection = (Enumerator) ((StructuredSelection) visibility.getSelection()).getFirstElement();
-		return selection;
-	}
+    Enumerator selection = (Enumerator) ((StructuredSelection) visibility.getSelection()).getFirstElement();
+    return selection;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -696,16 +696,16 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public void setVisibility(Enumerator newValue) {
-		visibility.modelUpdating(new StructuredSelection(newValue));
-		boolean readOnly = isReadOnly(UmlViewsRepository.Variable.Properties.visibility);
-		if (readOnly && visibility.isEnabled()) {
-			visibility.setEnabled(false);
-			visibility.setToolTipText(UmlMessages.Variable_ReadOnly);
-		} else if (!readOnly && !visibility.isEnabled()) {
-			visibility.setEnabled(true);
-		}	
-		
-	}
+    visibility.modelUpdating(new StructuredSelection(newValue));
+    boolean readOnly = isReadOnly(UmlViewsRepository.Variable.Properties.visibility);
+    if (readOnly && visibility.isEnabled()) {
+      visibility.setEnabled(false);
+      visibility.setToolTipText(UmlMessages.Variable_ReadOnly);
+    } else if (!readOnly && !visibility.isEnabled()) {
+      visibility.setEnabled(true);
+    }	
+    
+  }
 
 
 
@@ -737,7 +737,7 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public void updateClientDependency() {
-	clientDependency.refresh();
+  clientDependency.refresh();
 }
 
 	/**
@@ -747,8 +747,8 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public void addFilterToClientDependency(ViewerFilter filter) {
-		clientDependencyFilters.add(filter);
-	}
+    clientDependencyFilters.add(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -757,8 +757,8 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public void addBusinessFilterToClientDependency(ViewerFilter filter) {
-		clientDependencyBusinessFilters.add(filter);
-	}
+    clientDependencyBusinessFilters.add(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -767,8 +767,8 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public boolean isContainedInClientDependencyTable(EObject element) {
-		return ((ReferencesTableSettings)clientDependency.getInput()).contains(element);
-	}
+    return ((ReferencesTableSettings)clientDependency.getInput()).contains(element);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -777,13 +777,13 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public EObject getType() {
-		if (type.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) type.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (type.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) type.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -812,20 +812,20 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public void setType(EObject newValue) {
-		if (newValue != null) {
-			type.setSelection(new StructuredSelection(newValue));
-		} else {
-			type.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.Variable.Properties.type);
-		if (readOnly && type.isEnabled()) {
-			type.setEnabled(false);
-			type.setToolTipText(UmlMessages.Variable_ReadOnly);
-		} else if (!readOnly && !type.isEnabled()) {
-			type.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      type.setSelection(new StructuredSelection(newValue));
+    } else {
+      type.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.Variable.Properties.type);
+    if (readOnly && type.isEnabled()) {
+      type.setEnabled(false);
+      type.setToolTipText(UmlMessages.Variable_ReadOnly);
+    } else if (!readOnly && !type.isEnabled()) {
+      type.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -843,8 +843,8 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public void addFilterToType(ViewerFilter filter) {
-		type.addFilter(filter);
-	}
+    type.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -853,8 +853,8 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public void addBusinessFilterToType(ViewerFilter filter) {
-		type.addBusinessRuleFilter(filter);
-	}
+    type.addBusinessRuleFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -863,13 +863,13 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public EObject getOwningTemplateParameter() {
-		if (owningTemplateParameter.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) owningTemplateParameter.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (owningTemplateParameter.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) owningTemplateParameter.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -898,20 +898,20 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public void setOwningTemplateParameter(EObject newValue) {
-		if (newValue != null) {
-			owningTemplateParameter.setSelection(new StructuredSelection(newValue));
-		} else {
-			owningTemplateParameter.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.Variable.Properties.owningTemplateParameter);
-		if (readOnly && owningTemplateParameter.isEnabled()) {
-			owningTemplateParameter.setEnabled(false);
-			owningTemplateParameter.setToolTipText(UmlMessages.Variable_ReadOnly);
-		} else if (!readOnly && !owningTemplateParameter.isEnabled()) {
-			owningTemplateParameter.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      owningTemplateParameter.setSelection(new StructuredSelection(newValue));
+    } else {
+      owningTemplateParameter.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.Variable.Properties.owningTemplateParameter);
+    if (readOnly && owningTemplateParameter.isEnabled()) {
+      owningTemplateParameter.setEnabled(false);
+      owningTemplateParameter.setToolTipText(UmlMessages.Variable_ReadOnly);
+    } else if (!readOnly && !owningTemplateParameter.isEnabled()) {
+      owningTemplateParameter.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -929,8 +929,8 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public void addFilterToOwningTemplateParameter(ViewerFilter filter) {
-		owningTemplateParameter.addFilter(filter);
-	}
+    owningTemplateParameter.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -939,8 +939,8 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public void addBusinessFilterToOwningTemplateParameter(ViewerFilter filter) {
-		owningTemplateParameter.addBusinessRuleFilter(filter);
-	}
+    owningTemplateParameter.addBusinessRuleFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -949,13 +949,13 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public EObject getTemplateParameter() {
-		if (templateParameter.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) templateParameter.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (templateParameter.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) templateParameter.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -984,20 +984,20 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public void setTemplateParameter(EObject newValue) {
-		if (newValue != null) {
-			templateParameter.setSelection(new StructuredSelection(newValue));
-		} else {
-			templateParameter.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.Variable.Properties.templateParameter);
-		if (readOnly && templateParameter.isEnabled()) {
-			templateParameter.setEnabled(false);
-			templateParameter.setToolTipText(UmlMessages.Variable_ReadOnly);
-		} else if (!readOnly && !templateParameter.isEnabled()) {
-			templateParameter.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      templateParameter.setSelection(new StructuredSelection(newValue));
+    } else {
+      templateParameter.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.Variable.Properties.templateParameter);
+    if (readOnly && templateParameter.isEnabled()) {
+      templateParameter.setEnabled(false);
+      templateParameter.setToolTipText(UmlMessages.Variable_ReadOnly);
+    } else if (!readOnly && !templateParameter.isEnabled()) {
+      templateParameter.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -1015,8 +1015,8 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public void addFilterToTemplateParameter(ViewerFilter filter) {
-		templateParameter.addFilter(filter);
-	}
+    templateParameter.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -1025,8 +1025,8 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public void addBusinessFilterToTemplateParameter(ViewerFilter filter) {
-		templateParameter.addBusinessRuleFilter(filter);
-	}
+    templateParameter.addBusinessRuleFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -1035,8 +1035,8 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public Boolean getIsOrdered() {
-		return Boolean.valueOf(isOrdered.getSelection());
-	}
+    return Boolean.valueOf(isOrdered.getSelection());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -1045,20 +1045,20 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public void setIsOrdered(Boolean newValue) {
-		if (newValue != null) {
-			isOrdered.setSelection(newValue.booleanValue());
-		} else {
-			isOrdered.setSelection(false);
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.Variable.Properties.isOrdered);
-		if (readOnly && isOrdered.isEnabled()) {
-			isOrdered.setEnabled(false);
-			isOrdered.setToolTipText(UmlMessages.Variable_ReadOnly);
-		} else if (!readOnly && !isOrdered.isEnabled()) {
-			isOrdered.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      isOrdered.setSelection(newValue.booleanValue());
+    } else {
+      isOrdered.setSelection(false);
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.Variable.Properties.isOrdered);
+    if (readOnly && isOrdered.isEnabled()) {
+      isOrdered.setEnabled(false);
+      isOrdered.setToolTipText(UmlMessages.Variable_ReadOnly);
+    } else if (!readOnly && !isOrdered.isEnabled()) {
+      isOrdered.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -1067,8 +1067,8 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public Boolean getIsUnique() {
-		return Boolean.valueOf(isUnique.getSelection());
-	}
+    return Boolean.valueOf(isUnique.getSelection());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -1077,20 +1077,20 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public void setIsUnique(Boolean newValue) {
-		if (newValue != null) {
-			isUnique.setSelection(newValue.booleanValue());
-		} else {
-			isUnique.setSelection(false);
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.Variable.Properties.isUnique);
-		if (readOnly && isUnique.isEnabled()) {
-			isUnique.setEnabled(false);
-			isUnique.setToolTipText(UmlMessages.Variable_ReadOnly);
-		} else if (!readOnly && !isUnique.isEnabled()) {
-			isUnique.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      isUnique.setSelection(newValue.booleanValue());
+    } else {
+      isUnique.setSelection(false);
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.Variable.Properties.isUnique);
+    if (readOnly && isUnique.isEnabled()) {
+      isUnique.setEnabled(false);
+      isUnique.setToolTipText(UmlMessages.Variable_ReadOnly);
+    } else if (!readOnly && !isUnique.isEnabled()) {
+      isUnique.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -1099,13 +1099,13 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public EObject getScope() {
-		if (scope.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) scope.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (scope.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) scope.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -1134,20 +1134,20 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public void setScope(EObject newValue) {
-		if (newValue != null) {
-			scope.setSelection(new StructuredSelection(newValue));
-		} else {
-			scope.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.Variable.Properties.scope);
-		if (readOnly && scope.isEnabled()) {
-			scope.setEnabled(false);
-			scope.setToolTipText(UmlMessages.Variable_ReadOnly);
-		} else if (!readOnly && !scope.isEnabled()) {
-			scope.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      scope.setSelection(new StructuredSelection(newValue));
+    } else {
+      scope.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.Variable.Properties.scope);
+    if (readOnly && scope.isEnabled()) {
+      scope.setEnabled(false);
+      scope.setToolTipText(UmlMessages.Variable_ReadOnly);
+    } else if (!readOnly && !scope.isEnabled()) {
+      scope.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -1165,8 +1165,8 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public void addFilterToScope(ViewerFilter filter) {
-		scope.addFilter(filter);
-	}
+    scope.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -1175,8 +1175,8 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public void addBusinessFilterToScope(ViewerFilter filter) {
-		scope.addBusinessRuleFilter(filter);
-	}
+    scope.addBusinessRuleFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -1185,13 +1185,13 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public EObject getActivityScope() {
-		if (activityScope.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) activityScope.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (activityScope.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) activityScope.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -1220,20 +1220,20 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public void setActivityScope(EObject newValue) {
-		if (newValue != null) {
-			activityScope.setSelection(new StructuredSelection(newValue));
-		} else {
-			activityScope.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.Variable.Properties.activityScope);
-		if (readOnly && activityScope.isEnabled()) {
-			activityScope.setEnabled(false);
-			activityScope.setToolTipText(UmlMessages.Variable_ReadOnly);
-		} else if (!readOnly && !activityScope.isEnabled()) {
-			activityScope.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      activityScope.setSelection(new StructuredSelection(newValue));
+    } else {
+      activityScope.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.Variable.Properties.activityScope);
+    if (readOnly && activityScope.isEnabled()) {
+      activityScope.setEnabled(false);
+      activityScope.setToolTipText(UmlMessages.Variable_ReadOnly);
+    } else if (!readOnly && !activityScope.isEnabled()) {
+      activityScope.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -1251,8 +1251,8 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public void addFilterToActivityScope(ViewerFilter filter) {
-		activityScope.addFilter(filter);
-	}
+    activityScope.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -1261,8 +1261,8 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public void addBusinessFilterToActivityScope(ViewerFilter filter) {
-		activityScope.addBusinessRuleFilter(filter);
-	}
+    activityScope.addBusinessRuleFilter(filter);
+  }
 
 
 
@@ -1276,8 +1276,8 @@ public class VariablePropertiesEditionPartForm extends SectionPropertiesEditingP
 	 * @generated
 	 */
 	public String getTitle() {
-		return UmlMessages.Variable_Part_Title;
-	}
+    return UmlMessages.Variable_Part_Title;
+  }
 
 
 

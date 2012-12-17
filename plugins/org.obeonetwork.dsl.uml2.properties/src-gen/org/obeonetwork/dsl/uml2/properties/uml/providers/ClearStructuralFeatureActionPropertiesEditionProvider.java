@@ -58,9 +58,9 @@ public class ClearStructuralFeatureActionPropertiesEditionProvider extends Prope
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof ClearStructuralFeatureAction) 
-					&& (UMLPackage.Literals.CLEAR_STRUCTURAL_FEATURE_ACTION == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof ClearStructuralFeatureAction) 
+          && (UMLPackage.Literals.CLEAR_STRUCTURAL_FEATURE_ACTION == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class ClearStructuralFeatureActionPropertiesEditionProvider extends Prope
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof ClearStructuralFeatureAction) && (ClearStructuralFeatureActionPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof ClearStructuralFeatureAction) && (ClearStructuralFeatureActionPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class ClearStructuralFeatureActionPropertiesEditionProvider extends Prope
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ClearStructuralFeatureAction) && (refinement == ClearStructuralFeatureActionPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof ClearStructuralFeatureAction) && (refinement == ClearStructuralFeatureActionPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class ClearStructuralFeatureActionPropertiesEditionProvider extends Prope
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ClearStructuralFeatureAction) && ((ClearStructuralFeatureActionPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ClearStructuralFeatureActionPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof ClearStructuralFeatureAction) && ((ClearStructuralFeatureActionPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ClearStructuralFeatureActionPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class ClearStructuralFeatureActionPropertiesEditionProvider extends Prope
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof ClearStructuralFeatureAction) {
-			return new ClearStructuralFeatureActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof ClearStructuralFeatureAction) {
+      return new ClearStructuralFeatureActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class ClearStructuralFeatureActionPropertiesEditionProvider extends Prope
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof ClearStructuralFeatureAction) {
-			if (ClearStructuralFeatureActionPropertiesEditionComponent.BASE_PART.equals(part))
-				return new ClearStructuralFeatureActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof ClearStructuralFeatureAction) {
+      if (ClearStructuralFeatureActionPropertiesEditionComponent.BASE_PART.equals(part))
+        return new ClearStructuralFeatureActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

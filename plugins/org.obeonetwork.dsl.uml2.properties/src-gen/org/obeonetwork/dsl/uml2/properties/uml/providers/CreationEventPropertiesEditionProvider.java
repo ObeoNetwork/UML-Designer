@@ -58,9 +58,9 @@ public class CreationEventPropertiesEditionProvider extends PropertiesEditingPro
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof CreationEvent) 
-					&& (UMLPackage.Literals.CREATION_EVENT == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof CreationEvent) 
+          && (UMLPackage.Literals.CREATION_EVENT == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class CreationEventPropertiesEditionProvider extends PropertiesEditingPro
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof CreationEvent) && (CreationEventPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof CreationEvent) && (CreationEventPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class CreationEventPropertiesEditionProvider extends PropertiesEditingPro
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof CreationEvent) && (refinement == CreationEventPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof CreationEvent) && (refinement == CreationEventPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class CreationEventPropertiesEditionProvider extends PropertiesEditingPro
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof CreationEvent) && ((CreationEventPropertiesEditionComponent.BASE_PART.equals(part) && refinement == CreationEventPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof CreationEvent) && ((CreationEventPropertiesEditionComponent.BASE_PART.equals(part) && refinement == CreationEventPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class CreationEventPropertiesEditionProvider extends PropertiesEditingPro
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof CreationEvent) {
-			return new CreationEventPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof CreationEvent) {
+      return new CreationEventPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class CreationEventPropertiesEditionProvider extends PropertiesEditingPro
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof CreationEvent) {
-			if (CreationEventPropertiesEditionComponent.BASE_PART.equals(part))
-				return new CreationEventPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof CreationEvent) {
+      if (CreationEventPropertiesEditionComponent.BASE_PART.equals(part))
+        return new CreationEventPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

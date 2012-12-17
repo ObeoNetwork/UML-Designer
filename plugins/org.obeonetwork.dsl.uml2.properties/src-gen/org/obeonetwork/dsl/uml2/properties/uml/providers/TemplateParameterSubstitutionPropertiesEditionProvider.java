@@ -58,9 +58,9 @@ public class TemplateParameterSubstitutionPropertiesEditionProvider extends Prop
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof TemplateParameterSubstitution) 
-					&& (UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof TemplateParameterSubstitution) 
+          && (UMLPackage.Literals.TEMPLATE_PARAMETER_SUBSTITUTION == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class TemplateParameterSubstitutionPropertiesEditionProvider extends Prop
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof TemplateParameterSubstitution) && (TemplateParameterSubstitutionPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof TemplateParameterSubstitution) && (TemplateParameterSubstitutionPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class TemplateParameterSubstitutionPropertiesEditionProvider extends Prop
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof TemplateParameterSubstitution) && (refinement == TemplateParameterSubstitutionPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof TemplateParameterSubstitution) && (refinement == TemplateParameterSubstitutionPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class TemplateParameterSubstitutionPropertiesEditionProvider extends Prop
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof TemplateParameterSubstitution) && ((TemplateParameterSubstitutionPropertiesEditionComponent.BASE_PART.equals(part) && refinement == TemplateParameterSubstitutionPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof TemplateParameterSubstitution) && ((TemplateParameterSubstitutionPropertiesEditionComponent.BASE_PART.equals(part) && refinement == TemplateParameterSubstitutionPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class TemplateParameterSubstitutionPropertiesEditionProvider extends Prop
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof TemplateParameterSubstitution) {
-			return new TemplateParameterSubstitutionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof TemplateParameterSubstitution) {
+      return new TemplateParameterSubstitutionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class TemplateParameterSubstitutionPropertiesEditionProvider extends Prop
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof TemplateParameterSubstitution) {
-			if (TemplateParameterSubstitutionPropertiesEditionComponent.BASE_PART.equals(part))
-				return new TemplateParameterSubstitutionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof TemplateParameterSubstitution) {
+      if (TemplateParameterSubstitutionPropertiesEditionComponent.BASE_PART.equals(part))
+        return new TemplateParameterSubstitutionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

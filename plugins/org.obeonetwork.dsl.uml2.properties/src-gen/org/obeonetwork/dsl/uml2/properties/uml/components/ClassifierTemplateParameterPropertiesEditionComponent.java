@@ -107,11 +107,11 @@ public class ClassifierTemplateParameterPropertiesEditionComponent extends Singl
 	 * @generated
 	 */
 	public ClassifierTemplateParameterPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject classifierTemplateParameter, String editing_mode) {
-		super(editingContext, classifierTemplateParameter, editing_mode);
-		parts = new String[] { BASE_PART };
-		repositoryKey = UmlViewsRepository.class;
-		partKey = UmlViewsRepository.ClassifierTemplateParameter.class;
-	}
+    super(editingContext, classifierTemplateParameter, editing_mode);
+    parts = new String[] { BASE_PART };
+    repositoryKey = UmlViewsRepository.class;
+    partKey = UmlViewsRepository.ClassifierTemplateParameter.class;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -121,109 +121,108 @@ public class ClassifierTemplateParameterPropertiesEditionComponent extends Singl
 	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			
-			final ClassifierTemplateParameter classifierTemplateParameter = (ClassifierTemplateParameter)elt;
-			final ClassifierTemplateParameterPropertiesEditionPart basePart = (ClassifierTemplateParameterPropertiesEditionPart)editingPart;
-			// init values
-			if (isAccessible(UmlViewsRepository.ClassifierTemplateParameter.Properties.signature)) {
-				// init part
-				signatureSettings = new EObjectFlatComboSettings(classifierTemplateParameter, UMLPackage.eINSTANCE.getTemplateParameter_Signature());
-				basePart.initSignature(signatureSettings);
-				// set the button mode
-				basePart.setSignatureButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			if (isAccessible(UmlViewsRepository.ClassifierTemplateParameter.Properties.parameteredElement)) {
-				// init part
-				parameteredElementSettings = new EObjectFlatComboSettings(classifierTemplateParameter, UMLPackage.eINSTANCE.getTemplateParameter_ParameteredElement());
-				basePart.initParameteredElement(parameteredElementSettings);
-				// set the button mode
-				basePart.setParameteredElementButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			if (isAccessible(UmlViewsRepository.ClassifierTemplateParameter.Properties.default_)) {
-				// init part
-				default_Settings = new EObjectFlatComboSettings(classifierTemplateParameter, UMLPackage.eINSTANCE.getTemplateParameter_Default());
-				basePart.initDefault_(default_Settings);
-				// set the button mode
-				basePart.setDefault_ButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			if (isAccessible(UmlViewsRepository.ClassifierTemplateParameter.Properties.allowSubstitutable)) {
-				basePart.setAllowSubstitutable(classifierTemplateParameter.isAllowSubstitutable());
-			}
-			if (isAccessible(UmlViewsRepository.ClassifierTemplateParameter.Properties.constrainingClassifier)) {
-				constrainingClassifierSettings = new ReferencesTableSettings(classifierTemplateParameter, UMLPackage.eINSTANCE.getClassifierTemplateParameter_ConstrainingClassifier());
-				basePart.initConstrainingClassifier(constrainingClassifierSettings);
-			}
-			// init filters
-			if (isAccessible(UmlViewsRepository.ClassifierTemplateParameter.Properties.signature)) {
-				basePart.addFilterToSignature(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof TemplateSignature);
-					}
-					
-				});
-			}
-			if (isAccessible(UmlViewsRepository.ClassifierTemplateParameter.Properties.parameteredElement)) {
-				basePart.addFilterToParameteredElement(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof ParameterableElement);
-					}
-					
-				});
-			}
-			if (isAccessible(UmlViewsRepository.ClassifierTemplateParameter.Properties.default_)) {
-				basePart.addFilterToDefault_(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof String && element.equals("")) || (element instanceof ParameterableElement); //$NON-NLS-1$ 
-					}
-					
-				});
-			}
-			
-			if (isAccessible(UmlViewsRepository.ClassifierTemplateParameter.Properties.constrainingClassifier)) {
-				basePart.addFilterToConstrainingClassifier(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (!basePart.isContainedInConstrainingClassifierTable((EObject)element));
-						return element instanceof Resource;
-					}
-				
-				});
-				basePart.addFilterToConstrainingClassifier(new EObjectFilter(UMLPackage.Literals.CLASSIFIER));
-			}
-			// init values for referenced views
-			
-			// init filters for referenced views
-			
-		}
-		setInitializing(false);
-	}
+    setInitializing(true);
+    if (editingPart != null && key == partKey) {
+      editingPart.setContext(elt, allResource);
+      
+      final ClassifierTemplateParameter classifierTemplateParameter = (ClassifierTemplateParameter)elt;
+      final ClassifierTemplateParameterPropertiesEditionPart basePart = (ClassifierTemplateParameterPropertiesEditionPart)editingPart;
+      // init values
+      if (isAccessible(UmlViewsRepository.ClassifierTemplateParameter.Properties.signature)) {
+        // init part
+        signatureSettings = new EObjectFlatComboSettings(classifierTemplateParameter, UMLPackage.eINSTANCE.getTemplateParameter_Signature());
+        basePart.initSignature(signatureSettings);
+        // set the button mode
+        basePart.setSignatureButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      if (isAccessible(UmlViewsRepository.ClassifierTemplateParameter.Properties.parameteredElement)) {
+        // init part
+        parameteredElementSettings = new EObjectFlatComboSettings(classifierTemplateParameter, UMLPackage.eINSTANCE.getTemplateParameter_ParameteredElement());
+        basePart.initParameteredElement(parameteredElementSettings);
+        // set the button mode
+        basePart.setParameteredElementButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      if (isAccessible(UmlViewsRepository.ClassifierTemplateParameter.Properties.default_)) {
+        // init part
+        default_Settings = new EObjectFlatComboSettings(classifierTemplateParameter, UMLPackage.eINSTANCE.getTemplateParameter_Default());
+        basePart.initDefault_(default_Settings);
+        // set the button mode
+        basePart.setDefault_ButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      basePart.setAllowSubstitutable(classifierTemplateParameter.isAllowSubstitutable());
+      
+      if (isAccessible(UmlViewsRepository.ClassifierTemplateParameter.Properties.constrainingClassifier)) {
+        constrainingClassifierSettings = new ReferencesTableSettings(classifierTemplateParameter, UMLPackage.eINSTANCE.getClassifierTemplateParameter_ConstrainingClassifier());
+        basePart.initConstrainingClassifier(constrainingClassifierSettings);
+      }
+      // init filters
+      if (isAccessible(UmlViewsRepository.ClassifierTemplateParameter.Properties.signature)) {
+        basePart.addFilterToSignature(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof TemplateSignature);
+          }
+          
+        });
+      }
+      if (isAccessible(UmlViewsRepository.ClassifierTemplateParameter.Properties.parameteredElement)) {
+        basePart.addFilterToParameteredElement(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof ParameterableElement);
+          }
+          
+        });
+      }
+      if (isAccessible(UmlViewsRepository.ClassifierTemplateParameter.Properties.default_)) {
+        basePart.addFilterToDefault_(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof String && element.equals("")) || (element instanceof ParameterableElement); //$NON-NLS-1$ 
+          }
+          
+        });
+      }
+      
+      if (isAccessible(UmlViewsRepository.ClassifierTemplateParameter.Properties.constrainingClassifier)) {
+        basePart.addFilterToConstrainingClassifier(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            if (element instanceof EObject)
+              return (!basePart.isContainedInConstrainingClassifierTable((EObject)element));
+            return element instanceof Resource;
+          }
+        
+        });
+        basePart.addFilterToConstrainingClassifier(new EObjectFilter(UMLPackage.Literals.CLASSIFIER));
+      }
+      // init values for referenced views
+      
+      // init filters for referenced views
+      
+    }
+    setInitializing(false);
+  }
 
 
 
@@ -261,66 +260,66 @@ public class ClassifierTemplateParameterPropertiesEditionComponent extends Singl
 	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		ClassifierTemplateParameter classifierTemplateParameter = (ClassifierTemplateParameter)semanticObject;
-		if (UmlViewsRepository.ClassifierTemplateParameter.Properties.signature == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				signatureSettings.setToReference((TemplateSignature)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				TemplateSignature eObject = UMLFactory.eINSTANCE.createTemplateSignature();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy != null) {
-						policy.execute();
-					}
-				}
-				signatureSettings.setToReference(eObject);
-			}
-		}
-		if (UmlViewsRepository.ClassifierTemplateParameter.Properties.parameteredElement == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				parameteredElementSettings.setToReference((ParameterableElement)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, parameteredElementSettings, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy instanceof CreateEditingPolicy) {
-						policy.execute();
-					}
-				}
-			}
-		}
-		if (UmlViewsRepository.ClassifierTemplateParameter.Properties.default_ == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				default_Settings.setToReference((ParameterableElement)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, default_Settings, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy instanceof CreateEditingPolicy) {
-						policy.execute();
-					}
-				}
-			}
-		}
-		if (UmlViewsRepository.ClassifierTemplateParameter.Properties.allowSubstitutable == event.getAffectedEditor()) {
-			classifierTemplateParameter.setAllowSubstitutable((Boolean)event.getNewValue());
-		}
-		if (UmlViewsRepository.ClassifierTemplateParameter.Properties.constrainingClassifier == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD) {
-				if (event.getNewValue() instanceof Classifier) {
-					constrainingClassifierSettings.addToReference((EObject) event.getNewValue());
-				}
-			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				constrainingClassifierSettings.removeFromReference((EObject) event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-				constrainingClassifierSettings.move(event.getNewIndex(), (Classifier) event.getNewValue());
-			}
-		}
-	}
+    ClassifierTemplateParameter classifierTemplateParameter = (ClassifierTemplateParameter)semanticObject;
+    if (UmlViewsRepository.ClassifierTemplateParameter.Properties.signature == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        signatureSettings.setToReference((TemplateSignature)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        TemplateSignature eObject = UMLFactory.eINSTANCE.createTemplateSignature();
+        EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy != null) {
+            policy.execute();
+          }
+        }
+        signatureSettings.setToReference(eObject);
+      }
+    }
+    if (UmlViewsRepository.ClassifierTemplateParameter.Properties.parameteredElement == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        parameteredElementSettings.setToReference((ParameterableElement)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, parameteredElementSettings, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy instanceof CreateEditingPolicy) {
+            policy.execute();
+          }
+        }
+      }
+    }
+    if (UmlViewsRepository.ClassifierTemplateParameter.Properties.default_ == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        default_Settings.setToReference((ParameterableElement)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, default_Settings, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy instanceof CreateEditingPolicy) {
+            policy.execute();
+          }
+        }
+      }
+    }
+    if (UmlViewsRepository.ClassifierTemplateParameter.Properties.allowSubstitutable == event.getAffectedEditor()) {
+      classifierTemplateParameter.setAllowSubstitutable((Boolean)event.getNewValue());
+    }
+    if (UmlViewsRepository.ClassifierTemplateParameter.Properties.constrainingClassifier == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.ADD) {
+        if (event.getNewValue() instanceof Classifier) {
+          constrainingClassifierSettings.addToReference((EObject) event.getNewValue());
+        }
+      } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+        constrainingClassifierSettings.removeFromReference((EObject) event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+        constrainingClassifierSettings.move(event.getNewIndex(), (Classifier) event.getNewValue());
+      }
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -369,8 +368,8 @@ public class ClassifierTemplateParameterPropertiesEditionComponent extends Singl
 	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == UmlViewsRepository.ClassifierTemplateParameter.Properties.signature || key == UmlViewsRepository.ClassifierTemplateParameter.Properties.parameteredElement || key == UmlViewsRepository.ClassifierTemplateParameter.Properties.allowSubstitutable;
-	}
+    return key == UmlViewsRepository.ClassifierTemplateParameter.Properties.signature || key == UmlViewsRepository.ClassifierTemplateParameter.Properties.parameteredElement || key == UmlViewsRepository.ClassifierTemplateParameter.Properties.allowSubstitutable;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -379,24 +378,24 @@ public class ClassifierTemplateParameterPropertiesEditionComponent extends Singl
 	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
-		Diagnostic ret = Diagnostic.OK_INSTANCE;
-		if (event.getNewValue() != null) {
-			try {
-				if (UmlViewsRepository.ClassifierTemplateParameter.Properties.allowSubstitutable == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getClassifierTemplateParameter_AllowSubstitutable().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getClassifierTemplateParameter_AllowSubstitutable().getEAttributeType(), newValue);
-				}
-			} catch (IllegalArgumentException iae) {
-				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
-				ret = BasicDiagnostic.toDiagnostic(we);
-			}
-		}
-		return ret;
-	}
+    Diagnostic ret = Diagnostic.OK_INSTANCE;
+    if (event.getNewValue() != null) {
+      try {
+        if (UmlViewsRepository.ClassifierTemplateParameter.Properties.allowSubstitutable == event.getAffectedEditor()) {
+          Object newValue = event.getNewValue();
+          if (newValue instanceof String) {
+            newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getClassifierTemplateParameter_AllowSubstitutable().getEAttributeType(), (String)newValue);
+          }
+          ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getClassifierTemplateParameter_AllowSubstitutable().getEAttributeType(), newValue);
+        }
+      } catch (IllegalArgumentException iae) {
+        ret = BasicDiagnostic.toDiagnostic(iae);
+      } catch (WrappedException we) {
+        ret = BasicDiagnostic.toDiagnostic(we);
+      }
+    }
+    return ret;
+  }
 
 
 	

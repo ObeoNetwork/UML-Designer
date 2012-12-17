@@ -113,11 +113,11 @@ public class RedefinableTemplateSignaturePropertiesEditionComponent extends Sing
 	 * @generated
 	 */
 	public RedefinableTemplateSignaturePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject redefinableTemplateSignature, String editing_mode) {
-		super(editingContext, redefinableTemplateSignature, editing_mode);
-		parts = new String[] { BASE_PART };
-		repositoryKey = UmlViewsRepository.class;
-		partKey = UmlViewsRepository.RedefinableTemplateSignature.class;
-	}
+    super(editingContext, redefinableTemplateSignature, editing_mode);
+    parts = new String[] { BASE_PART };
+    repositoryKey = UmlViewsRepository.class;
+    partKey = UmlViewsRepository.RedefinableTemplateSignature.class;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -127,138 +127,137 @@ public class RedefinableTemplateSignaturePropertiesEditionComponent extends Sing
 	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			
-			final RedefinableTemplateSignature redefinableTemplateSignature = (RedefinableTemplateSignature)elt;
-			final RedefinableTemplateSignaturePropertiesEditionPart basePart = (RedefinableTemplateSignaturePropertiesEditionPart)editingPart;
-			// init values
-			if (isAccessible(UmlViewsRepository.RedefinableTemplateSignature.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(UMLPackage.Literals.STRING, redefinableTemplateSignature.getName()));
-			
-			if (isAccessible(UmlViewsRepository.RedefinableTemplateSignature.Properties.visibility)) {
-				basePart.initVisibility(EEFUtils.choiceOfValues(redefinableTemplateSignature, UMLPackage.eINSTANCE.getNamedElement_Visibility()), redefinableTemplateSignature.getVisibility());
-			}
-			if (isAccessible(UmlViewsRepository.RedefinableTemplateSignature.Properties.clientDependency)) {
-				clientDependencySettings = new ReferencesTableSettings(redefinableTemplateSignature, UMLPackage.eINSTANCE.getNamedElement_ClientDependency());
-				basePart.initClientDependency(clientDependencySettings);
-			}
-			if (isAccessible(UmlViewsRepository.RedefinableTemplateSignature.Properties.isLeaf)) {
-				basePart.setIsLeaf(redefinableTemplateSignature.isLeaf());
-			}
-			if (isAccessible(UmlViewsRepository.RedefinableTemplateSignature.Properties.parameter)) {
-				parameterSettings = new ReferencesTableSettings(redefinableTemplateSignature, UMLPackage.eINSTANCE.getTemplateSignature_Parameter());
-				basePart.initParameter(parameterSettings);
-			}
-			if (isAccessible(UmlViewsRepository.RedefinableTemplateSignature.Properties.template)) {
-				// init part
-				templateSettings = new EObjectFlatComboSettings(redefinableTemplateSignature, UMLPackage.eINSTANCE.getTemplateSignature_Template());
-				basePart.initTemplate(templateSettings);
-				// set the button mode
-				basePart.setTemplateButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			if (isAccessible(UmlViewsRepository.RedefinableTemplateSignature.Properties.extendedSignature)) {
-				extendedSignatureSettings = new ReferencesTableSettings(redefinableTemplateSignature, UMLPackage.eINSTANCE.getRedefinableTemplateSignature_ExtendedSignature());
-				basePart.initExtendedSignature(extendedSignatureSettings);
-			}
-			if (isAccessible(UmlViewsRepository.RedefinableTemplateSignature.Properties.classifier)) {
-				// init part
-				classifierSettings = new EObjectFlatComboSettings(redefinableTemplateSignature, UMLPackage.eINSTANCE.getRedefinableTemplateSignature_Classifier());
-				basePart.initClassifier(classifierSettings);
-				// set the button mode
-				basePart.setClassifierButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			// init filters
-			
-			
-			if (isAccessible(UmlViewsRepository.RedefinableTemplateSignature.Properties.clientDependency)) {
-				basePart.addFilterToClientDependency(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (!basePart.isContainedInClientDependencyTable((EObject)element));
-						return element instanceof Resource;
-					}
-				
-				});
-				basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.Literals.DEPENDENCY));
-			}
-			
-			if (isAccessible(UmlViewsRepository.RedefinableTemplateSignature.Properties.parameter)) {
-				basePart.addFilterToParameter(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (!basePart.isContainedInParameterTable((EObject)element));
-						return element instanceof Resource;
-					}
-				
-				});
-				basePart.addFilterToParameter(new EObjectFilter(UMLPackage.Literals.TEMPLATE_PARAMETER));
-			}
-			if (isAccessible(UmlViewsRepository.RedefinableTemplateSignature.Properties.template)) {
-				basePart.addFilterToTemplate(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof TemplateableElement);
-					}
-					
-				});
-			}
-			if (isAccessible(UmlViewsRepository.RedefinableTemplateSignature.Properties.extendedSignature)) {
-				basePart.addFilterToExtendedSignature(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (!basePart.isContainedInExtendedSignatureTable((EObject)element));
-						return element instanceof Resource;
-					}
-				
-				});
-				basePart.addFilterToExtendedSignature(new EObjectFilter(UMLPackage.Literals.REDEFINABLE_TEMPLATE_SIGNATURE));
-			}
-			if (isAccessible(UmlViewsRepository.RedefinableTemplateSignature.Properties.classifier)) {
-				basePart.addFilterToClassifier(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof Classifier);
-					}
-					
-				});
-			}
-			// init values for referenced views
-			
-			// init filters for referenced views
-			
-		}
-		setInitializing(false);
-	}
+    setInitializing(true);
+    if (editingPart != null && key == partKey) {
+      editingPart.setContext(elt, allResource);
+      
+      final RedefinableTemplateSignature redefinableTemplateSignature = (RedefinableTemplateSignature)elt;
+      final RedefinableTemplateSignaturePropertiesEditionPart basePart = (RedefinableTemplateSignaturePropertiesEditionPart)editingPart;
+      // init values
+      if (isAccessible(UmlViewsRepository.RedefinableTemplateSignature.Properties.name))
+        basePart.setName(EEFConverterUtil.convertToString(UMLPackage.Literals.STRING, redefinableTemplateSignature.getName()));
+      
+      if (isAccessible(UmlViewsRepository.RedefinableTemplateSignature.Properties.visibility)) {
+        basePart.initVisibility(EEFUtils.choiceOfValues(redefinableTemplateSignature, UMLPackage.eINSTANCE.getNamedElement_Visibility()), redefinableTemplateSignature.getVisibility());
+      }
+      if (isAccessible(UmlViewsRepository.RedefinableTemplateSignature.Properties.clientDependency)) {
+        clientDependencySettings = new ReferencesTableSettings(redefinableTemplateSignature, UMLPackage.eINSTANCE.getNamedElement_ClientDependency());
+        basePart.initClientDependency(clientDependencySettings);
+      }
+      basePart.setIsLeaf(redefinableTemplateSignature.isLeaf());
+      
+      if (isAccessible(UmlViewsRepository.RedefinableTemplateSignature.Properties.parameter)) {
+        parameterSettings = new ReferencesTableSettings(redefinableTemplateSignature, UMLPackage.eINSTANCE.getTemplateSignature_Parameter());
+        basePart.initParameter(parameterSettings);
+      }
+      if (isAccessible(UmlViewsRepository.RedefinableTemplateSignature.Properties.template)) {
+        // init part
+        templateSettings = new EObjectFlatComboSettings(redefinableTemplateSignature, UMLPackage.eINSTANCE.getTemplateSignature_Template());
+        basePart.initTemplate(templateSettings);
+        // set the button mode
+        basePart.setTemplateButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      if (isAccessible(UmlViewsRepository.RedefinableTemplateSignature.Properties.extendedSignature)) {
+        extendedSignatureSettings = new ReferencesTableSettings(redefinableTemplateSignature, UMLPackage.eINSTANCE.getRedefinableTemplateSignature_ExtendedSignature());
+        basePart.initExtendedSignature(extendedSignatureSettings);
+      }
+      if (isAccessible(UmlViewsRepository.RedefinableTemplateSignature.Properties.classifier)) {
+        // init part
+        classifierSettings = new EObjectFlatComboSettings(redefinableTemplateSignature, UMLPackage.eINSTANCE.getRedefinableTemplateSignature_Classifier());
+        basePart.initClassifier(classifierSettings);
+        // set the button mode
+        basePart.setClassifierButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      // init filters
+      
+      
+      if (isAccessible(UmlViewsRepository.RedefinableTemplateSignature.Properties.clientDependency)) {
+        basePart.addFilterToClientDependency(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            if (element instanceof EObject)
+              return (!basePart.isContainedInClientDependencyTable((EObject)element));
+            return element instanceof Resource;
+          }
+        
+        });
+        basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.Literals.DEPENDENCY));
+      }
+      
+      if (isAccessible(UmlViewsRepository.RedefinableTemplateSignature.Properties.parameter)) {
+        basePart.addFilterToParameter(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            if (element instanceof EObject)
+              return (!basePart.isContainedInParameterTable((EObject)element));
+            return element instanceof Resource;
+          }
+        
+        });
+        basePart.addFilterToParameter(new EObjectFilter(UMLPackage.Literals.TEMPLATE_PARAMETER));
+      }
+      if (isAccessible(UmlViewsRepository.RedefinableTemplateSignature.Properties.template)) {
+        basePart.addFilterToTemplate(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof TemplateableElement);
+          }
+          
+        });
+      }
+      if (isAccessible(UmlViewsRepository.RedefinableTemplateSignature.Properties.extendedSignature)) {
+        basePart.addFilterToExtendedSignature(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            if (element instanceof EObject)
+              return (!basePart.isContainedInExtendedSignatureTable((EObject)element));
+            return element instanceof Resource;
+          }
+        
+        });
+        basePart.addFilterToExtendedSignature(new EObjectFilter(UMLPackage.Literals.REDEFINABLE_TEMPLATE_SIGNATURE));
+      }
+      if (isAccessible(UmlViewsRepository.RedefinableTemplateSignature.Properties.classifier)) {
+        basePart.addFilterToClassifier(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof Classifier);
+          }
+          
+        });
+      }
+      // init values for referenced views
+      
+      // init filters for referenced views
+      
+    }
+    setInitializing(false);
+  }
 
 
 
@@ -308,64 +307,64 @@ public class RedefinableTemplateSignaturePropertiesEditionComponent extends Sing
 	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		RedefinableTemplateSignature redefinableTemplateSignature = (RedefinableTemplateSignature)semanticObject;
-		if (UmlViewsRepository.RedefinableTemplateSignature.Properties.name == event.getAffectedEditor()) {
-			redefinableTemplateSignature.setName((java.lang.String)EEFConverterUtil.createFromString(UMLPackage.Literals.STRING, (String)event.getNewValue()));
-		}
-		if (UmlViewsRepository.RedefinableTemplateSignature.Properties.visibility == event.getAffectedEditor()) {
-			redefinableTemplateSignature.setVisibility((VisibilityKind)event.getNewValue());
-		}
-		if (UmlViewsRepository.RedefinableTemplateSignature.Properties.clientDependency == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD) {
-				if (event.getNewValue() instanceof Dependency) {
-					clientDependencySettings.addToReference((EObject) event.getNewValue());
-				}
-			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				clientDependencySettings.removeFromReference((EObject) event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-				clientDependencySettings.move(event.getNewIndex(), (Dependency) event.getNewValue());
-			}
-		}
-		if (UmlViewsRepository.RedefinableTemplateSignature.Properties.isLeaf == event.getAffectedEditor()) {
-			redefinableTemplateSignature.setIsLeaf((Boolean)event.getNewValue());
-		}
-		if (UmlViewsRepository.RedefinableTemplateSignature.Properties.parameter == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD) {
-				if (event.getNewValue() instanceof TemplateParameter) {
-					parameterSettings.addToReference((EObject) event.getNewValue());
-				}
-			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				parameterSettings.removeFromReference((EObject) event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-				parameterSettings.move(event.getNewIndex(), (TemplateParameter) event.getNewValue());
-			}
-		}
-		if (UmlViewsRepository.RedefinableTemplateSignature.Properties.template == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				templateSettings.setToReference((TemplateableElement)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, templateSettings, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy instanceof CreateEditingPolicy) {
-						policy.execute();
-					}
-				}
-			}
-		}
-		if (UmlViewsRepository.RedefinableTemplateSignature.Properties.extendedSignature == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD) {
-				if (event.getNewValue() instanceof RedefinableTemplateSignature) {
-					extendedSignatureSettings.addToReference((EObject) event.getNewValue());
-				}
-			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				extendedSignatureSettings.removeFromReference((EObject) event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-				extendedSignatureSettings.move(event.getNewIndex(), (RedefinableTemplateSignature) event.getNewValue());
-			}
-		}
-	}
+    RedefinableTemplateSignature redefinableTemplateSignature = (RedefinableTemplateSignature)semanticObject;
+    if (UmlViewsRepository.RedefinableTemplateSignature.Properties.name == event.getAffectedEditor()) {
+      redefinableTemplateSignature.setName((java.lang.String)EEFConverterUtil.createFromString(UMLPackage.Literals.STRING, (String)event.getNewValue()));
+    }
+    if (UmlViewsRepository.RedefinableTemplateSignature.Properties.visibility == event.getAffectedEditor()) {
+      redefinableTemplateSignature.setVisibility((VisibilityKind)event.getNewValue());
+    }
+    if (UmlViewsRepository.RedefinableTemplateSignature.Properties.clientDependency == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.ADD) {
+        if (event.getNewValue() instanceof Dependency) {
+          clientDependencySettings.addToReference((EObject) event.getNewValue());
+        }
+      } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+        clientDependencySettings.removeFromReference((EObject) event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+        clientDependencySettings.move(event.getNewIndex(), (Dependency) event.getNewValue());
+      }
+    }
+    if (UmlViewsRepository.RedefinableTemplateSignature.Properties.isLeaf == event.getAffectedEditor()) {
+      redefinableTemplateSignature.setIsLeaf((Boolean)event.getNewValue());
+    }
+    if (UmlViewsRepository.RedefinableTemplateSignature.Properties.parameter == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.ADD) {
+        if (event.getNewValue() instanceof TemplateParameter) {
+          parameterSettings.addToReference((EObject) event.getNewValue());
+        }
+      } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+        parameterSettings.removeFromReference((EObject) event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+        parameterSettings.move(event.getNewIndex(), (TemplateParameter) event.getNewValue());
+      }
+    }
+    if (UmlViewsRepository.RedefinableTemplateSignature.Properties.template == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        templateSettings.setToReference((TemplateableElement)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, templateSettings, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy instanceof CreateEditingPolicy) {
+            policy.execute();
+          }
+        }
+      }
+    }
+    if (UmlViewsRepository.RedefinableTemplateSignature.Properties.extendedSignature == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.ADD) {
+        if (event.getNewValue() instanceof RedefinableTemplateSignature) {
+          extendedSignatureSettings.addToReference((EObject) event.getNewValue());
+        }
+      } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+        extendedSignatureSettings.removeFromReference((EObject) event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+        extendedSignatureSettings.move(event.getNewIndex(), (RedefinableTemplateSignature) event.getNewValue());
+      }
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -429,8 +428,8 @@ public class RedefinableTemplateSignaturePropertiesEditionComponent extends Sing
 	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == UmlViewsRepository.RedefinableTemplateSignature.Properties.isLeaf || key == UmlViewsRepository.RedefinableTemplateSignature.Properties.parameter || key == UmlViewsRepository.RedefinableTemplateSignature.Properties.template || key == UmlViewsRepository.RedefinableTemplateSignature.Properties.classifier;
-	}
+    return key == UmlViewsRepository.RedefinableTemplateSignature.Properties.isLeaf || key == UmlViewsRepository.RedefinableTemplateSignature.Properties.parameter || key == UmlViewsRepository.RedefinableTemplateSignature.Properties.template || key == UmlViewsRepository.RedefinableTemplateSignature.Properties.classifier;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -439,38 +438,38 @@ public class RedefinableTemplateSignaturePropertiesEditionComponent extends Sing
 	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
-		Diagnostic ret = Diagnostic.OK_INSTANCE;
-		if (event.getNewValue() != null) {
-			try {
-				if (UmlViewsRepository.RedefinableTemplateSignature.Properties.name == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newValue);
-				}
-				if (UmlViewsRepository.RedefinableTemplateSignature.Properties.visibility == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), newValue);
-				}
-				if (UmlViewsRepository.RedefinableTemplateSignature.Properties.isLeaf == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), newValue);
-				}
-			} catch (IllegalArgumentException iae) {
-				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
-				ret = BasicDiagnostic.toDiagnostic(we);
-			}
-		}
-		return ret;
-	}
+    Diagnostic ret = Diagnostic.OK_INSTANCE;
+    if (event.getNewValue() != null) {
+      try {
+        if (UmlViewsRepository.RedefinableTemplateSignature.Properties.name == event.getAffectedEditor()) {
+          Object newValue = event.getNewValue();
+          if (newValue instanceof String) {
+            newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), (String)newValue);
+          }
+          ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newValue);
+        }
+        if (UmlViewsRepository.RedefinableTemplateSignature.Properties.visibility == event.getAffectedEditor()) {
+          Object newValue = event.getNewValue();
+          if (newValue instanceof String) {
+            newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), (String)newValue);
+          }
+          ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), newValue);
+        }
+        if (UmlViewsRepository.RedefinableTemplateSignature.Properties.isLeaf == event.getAffectedEditor()) {
+          Object newValue = event.getNewValue();
+          if (newValue instanceof String) {
+            newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), (String)newValue);
+          }
+          ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), newValue);
+        }
+      } catch (IllegalArgumentException iae) {
+        ret = BasicDiagnostic.toDiagnostic(iae);
+      } catch (WrappedException we) {
+        ret = BasicDiagnostic.toDiagnostic(we);
+      }
+    }
+    return ret;
+  }
 
 
 	

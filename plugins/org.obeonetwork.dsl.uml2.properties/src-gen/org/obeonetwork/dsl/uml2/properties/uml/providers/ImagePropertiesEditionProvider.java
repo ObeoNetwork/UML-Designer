@@ -58,9 +58,9 @@ public class ImagePropertiesEditionProvider extends PropertiesEditingProviderImp
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof Image) 
-					&& (UMLPackage.Literals.IMAGE == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof Image) 
+          && (UMLPackage.Literals.IMAGE == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class ImagePropertiesEditionProvider extends PropertiesEditingProviderImp
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof Image) && (ImagePropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof Image) && (ImagePropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class ImagePropertiesEditionProvider extends PropertiesEditingProviderImp
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Image) && (refinement == ImagePropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof Image) && (refinement == ImagePropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class ImagePropertiesEditionProvider extends PropertiesEditingProviderImp
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Image) && ((ImagePropertiesEditionComponent.BASE_PART.equals(part) && refinement == ImagePropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof Image) && ((ImagePropertiesEditionComponent.BASE_PART.equals(part) && refinement == ImagePropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class ImagePropertiesEditionProvider extends PropertiesEditingProviderImp
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof Image) {
-			return new ImagePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof Image) {
+      return new ImagePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class ImagePropertiesEditionProvider extends PropertiesEditingProviderImp
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof Image) {
-			if (ImagePropertiesEditionComponent.BASE_PART.equals(part))
-				return new ImagePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof Image) {
+      if (ImagePropertiesEditionComponent.BASE_PART.equals(part))
+        return new ImagePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

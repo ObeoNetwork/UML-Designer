@@ -466,6 +466,47 @@ public interface Class_PropertiesEditionPart {
 
 
 	/**
+   * Init the operations
+   * @param current the current value
+   * @param containgFeature the feature where to navigate if necessary
+   * @param feature the feature to manage
+   */
+  public void initOperations(ReferencesTableSettings settings);
+
+  /**
+   * Update the operations
+   * @param newValue the operations to update
+   * @generated
+   */
+  public void updateOperations();
+
+  /**
+   * Adds the given filter to the operations edition editor.
+   * 
+   * @param filter
+   *            a viewer filter
+   * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+   * @generated
+   */
+  public void addFilterToOperations(ViewerFilter filter);
+
+  /**
+   * Adds the given filter to the operations edition editor.
+   * 
+   * @param filter
+   *            a viewer filter
+   * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+   * @generated
+   */
+  public void addBusinessFilterToOperations(ViewerFilter filter);
+
+  /**
+   * @return true if the given element is contained inside the operations table
+   * @generated
+   */
+  public boolean isContainedInOperationsTable(EObject element);
+
+  /**
 	 * Returns the internationalized title text.
 	 * 
 	 * @return the internationalized title text.

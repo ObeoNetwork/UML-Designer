@@ -291,12 +291,12 @@ public interface DurationConstraintPropertiesEditionPart {
 
 
 	/**
-	 * @return the firstEvent
-	 * @generated
-	 */
-	public EList getFirstEvents();
+   * @return the firstEvent
+   * @generated
+   */
+  public EList getFirstEvent();
 
-	/**
+  /**
 	 * Defines a new firstEvent
 	 * @param newValue the new firstEvent to set
 	 * @generated

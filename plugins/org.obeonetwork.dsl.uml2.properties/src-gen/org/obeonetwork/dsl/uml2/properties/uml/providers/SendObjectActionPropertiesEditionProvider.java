@@ -58,9 +58,9 @@ public class SendObjectActionPropertiesEditionProvider extends PropertiesEditing
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof SendObjectAction) 
-					&& (UMLPackage.Literals.SEND_OBJECT_ACTION == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof SendObjectAction) 
+          && (UMLPackage.Literals.SEND_OBJECT_ACTION == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class SendObjectActionPropertiesEditionProvider extends PropertiesEditing
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof SendObjectAction) && (SendObjectActionPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof SendObjectAction) && (SendObjectActionPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class SendObjectActionPropertiesEditionProvider extends PropertiesEditing
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof SendObjectAction) && (refinement == SendObjectActionPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof SendObjectAction) && (refinement == SendObjectActionPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class SendObjectActionPropertiesEditionProvider extends PropertiesEditing
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof SendObjectAction) && ((SendObjectActionPropertiesEditionComponent.BASE_PART.equals(part) && refinement == SendObjectActionPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof SendObjectAction) && ((SendObjectActionPropertiesEditionComponent.BASE_PART.equals(part) && refinement == SendObjectActionPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class SendObjectActionPropertiesEditionProvider extends PropertiesEditing
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof SendObjectAction) {
-			return new SendObjectActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof SendObjectAction) {
+      return new SendObjectActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class SendObjectActionPropertiesEditionProvider extends PropertiesEditing
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof SendObjectAction) {
-			if (SendObjectActionPropertiesEditionComponent.BASE_PART.equals(part))
-				return new SendObjectActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof SendObjectAction) {
+      if (SendObjectActionPropertiesEditionComponent.BASE_PART.equals(part))
+        return new SendObjectActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

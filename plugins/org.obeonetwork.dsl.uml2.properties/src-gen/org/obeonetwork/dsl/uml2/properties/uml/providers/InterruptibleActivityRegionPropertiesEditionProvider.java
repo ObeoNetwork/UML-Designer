@@ -58,9 +58,9 @@ public class InterruptibleActivityRegionPropertiesEditionProvider extends Proper
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof InterruptibleActivityRegion) 
-					&& (UMLPackage.Literals.INTERRUPTIBLE_ACTIVITY_REGION == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof InterruptibleActivityRegion) 
+          && (UMLPackage.Literals.INTERRUPTIBLE_ACTIVITY_REGION == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class InterruptibleActivityRegionPropertiesEditionProvider extends Proper
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof InterruptibleActivityRegion) && (InterruptibleActivityRegionPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof InterruptibleActivityRegion) && (InterruptibleActivityRegionPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class InterruptibleActivityRegionPropertiesEditionProvider extends Proper
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof InterruptibleActivityRegion) && (refinement == InterruptibleActivityRegionPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof InterruptibleActivityRegion) && (refinement == InterruptibleActivityRegionPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class InterruptibleActivityRegionPropertiesEditionProvider extends Proper
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof InterruptibleActivityRegion) && ((InterruptibleActivityRegionPropertiesEditionComponent.BASE_PART.equals(part) && refinement == InterruptibleActivityRegionPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof InterruptibleActivityRegion) && ((InterruptibleActivityRegionPropertiesEditionComponent.BASE_PART.equals(part) && refinement == InterruptibleActivityRegionPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class InterruptibleActivityRegionPropertiesEditionProvider extends Proper
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof InterruptibleActivityRegion) {
-			return new InterruptibleActivityRegionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof InterruptibleActivityRegion) {
+      return new InterruptibleActivityRegionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class InterruptibleActivityRegionPropertiesEditionProvider extends Proper
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof InterruptibleActivityRegion) {
-			if (InterruptibleActivityRegionPropertiesEditionComponent.BASE_PART.equals(part))
-				return new InterruptibleActivityRegionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof InterruptibleActivityRegion) {
+      if (InterruptibleActivityRegionPropertiesEditionComponent.BASE_PART.equals(part))
+        return new InterruptibleActivityRegionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

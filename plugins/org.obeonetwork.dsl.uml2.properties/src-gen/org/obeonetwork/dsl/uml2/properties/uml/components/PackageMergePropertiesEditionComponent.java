@@ -17,6 +17,7 @@ import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.common.util.WrappedException;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.uml2.uml.Package;
 import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -85,11 +86,11 @@ public class PackageMergePropertiesEditionComponent extends SinglePartProperties
 	 * @generated
 	 */
 	public PackageMergePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject packageMerge, String editing_mode) {
-		super(editingContext, packageMerge, editing_mode);
-		parts = new String[] { BASE_PART };
-		repositoryKey = UmlViewsRepository.class;
-		partKey = UmlViewsRepository.PackageMerge.class;
-	}
+    super(editingContext, packageMerge, editing_mode);
+    parts = new String[] { BASE_PART };
+    repositoryKey = UmlViewsRepository.class;
+    partKey = UmlViewsRepository.PackageMerge.class;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -99,63 +100,63 @@ public class PackageMergePropertiesEditionComponent extends SinglePartProperties
 	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			
-			final PackageMerge packageMerge = (PackageMerge)elt;
-			final PackageMergePropertiesEditionPart basePart = (PackageMergePropertiesEditionPart)editingPart;
-			// init values
-			if (isAccessible(UmlViewsRepository.PackageMerge.Properties.mergedPackage)) {
-				// init part
-				mergedPackageSettings = new EObjectFlatComboSettings(packageMerge, UMLPackage.eINSTANCE.getPackageMerge_MergedPackage());
-				basePart.initMergedPackage(mergedPackageSettings);
-				// set the button mode
-				basePart.setMergedPackageButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			if (isAccessible(UmlViewsRepository.PackageMerge.Properties.receivingPackage)) {
-				// init part
-				receivingPackageSettings = new EObjectFlatComboSettings(packageMerge, UMLPackage.eINSTANCE.getPackageMerge_ReceivingPackage());
-				basePart.initReceivingPackage(receivingPackageSettings);
-				// set the button mode
-				basePart.setReceivingPackageButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			// init filters
-			if (isAccessible(UmlViewsRepository.PackageMerge.Properties.mergedPackage)) {
-				basePart.addFilterToMergedPackage(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof Package);
-					}
-					
-				});
-			}
-			if (isAccessible(UmlViewsRepository.PackageMerge.Properties.receivingPackage)) {
-				basePart.addFilterToReceivingPackage(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof Package);
-					}
-					
-				});
-			}
-			// init values for referenced views
-			
-			// init filters for referenced views
-			
-		}
-		setInitializing(false);
-	}
+    setInitializing(true);
+    if (editingPart != null && key == partKey) {
+      editingPart.setContext(elt, allResource);
+      
+      final PackageMerge packageMerge = (PackageMerge)elt;
+      final PackageMergePropertiesEditionPart basePart = (PackageMergePropertiesEditionPart)editingPart;
+      // init values
+      if (isAccessible(UmlViewsRepository.PackageMerge.Properties.mergedPackage)) {
+        // init part
+        mergedPackageSettings = new EObjectFlatComboSettings(packageMerge, UMLPackage.eINSTANCE.getPackageMerge_MergedPackage());
+        basePart.initMergedPackage(mergedPackageSettings);
+        // set the button mode
+        basePart.setMergedPackageButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      if (isAccessible(UmlViewsRepository.PackageMerge.Properties.receivingPackage)) {
+        // init part
+        receivingPackageSettings = new EObjectFlatComboSettings(packageMerge, UMLPackage.eINSTANCE.getPackageMerge_ReceivingPackage());
+        basePart.initReceivingPackage(receivingPackageSettings);
+        // set the button mode
+        basePart.setReceivingPackageButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      // init filters
+      if (isAccessible(UmlViewsRepository.PackageMerge.Properties.mergedPackage)) {
+        basePart.addFilterToMergedPackage(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof Package);
+          }
+          
+        });
+      }
+      if (isAccessible(UmlViewsRepository.PackageMerge.Properties.receivingPackage)) {
+        basePart.addFilterToReceivingPackage(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof Package);
+          }
+          
+        });
+      }
+      // init values for referenced views
+      
+      // init filters for referenced views
+      
+    }
+    setInitializing(false);
+  }
 
 
 
@@ -181,40 +182,40 @@ public class PackageMergePropertiesEditionComponent extends SinglePartProperties
 	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		PackageMerge packageMerge = (PackageMerge)semanticObject;
-		if (UmlViewsRepository.PackageMerge.Properties.mergedPackage == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				mergedPackageSettings.setToReference((Package)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				org.eclipse.uml2.uml.Package eObject = UMLFactory.eINSTANCE.createPackage();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy != null) {
-						policy.execute();
-					}
-				}
-				mergedPackageSettings.setToReference(eObject);
-			}
-		}
-		if (UmlViewsRepository.PackageMerge.Properties.receivingPackage == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				receivingPackageSettings.setToReference((Package)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				org.eclipse.uml2.uml.Package eObject = UMLFactory.eINSTANCE.createPackage();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy != null) {
-						policy.execute();
-					}
-				}
-				receivingPackageSettings.setToReference(eObject);
-			}
-		}
-	}
+    PackageMerge packageMerge = (PackageMerge)semanticObject;
+    if (UmlViewsRepository.PackageMerge.Properties.mergedPackage == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        mergedPackageSettings.setToReference((Package)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        Package eObject = UMLFactory.eINSTANCE.createPackage();
+        EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy != null) {
+            policy.execute();
+          }
+        }
+        mergedPackageSettings.setToReference(eObject);
+      }
+    }
+    if (UmlViewsRepository.PackageMerge.Properties.receivingPackage == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        receivingPackageSettings.setToReference((Package)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        Package eObject = UMLFactory.eINSTANCE.createPackage();
+        EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy != null) {
+            policy.execute();
+          }
+        }
+        receivingPackageSettings.setToReference(eObject);
+      }
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -253,8 +254,8 @@ public class PackageMergePropertiesEditionComponent extends SinglePartProperties
 	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == UmlViewsRepository.PackageMerge.Properties.mergedPackage || key == UmlViewsRepository.PackageMerge.Properties.receivingPackage;
-	}
+    return key == UmlViewsRepository.PackageMerge.Properties.mergedPackage || key == UmlViewsRepository.PackageMerge.Properties.receivingPackage;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -263,17 +264,17 @@ public class PackageMergePropertiesEditionComponent extends SinglePartProperties
 	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
-		Diagnostic ret = Diagnostic.OK_INSTANCE;
-		if (event.getNewValue() != null) {
-			try {
-			} catch (IllegalArgumentException iae) {
-				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
-				ret = BasicDiagnostic.toDiagnostic(we);
-			}
-		}
-		return ret;
-	}
+    Diagnostic ret = Diagnostic.OK_INSTANCE;
+    if (event.getNewValue() != null) {
+      try {
+      } catch (IllegalArgumentException iae) {
+        ret = BasicDiagnostic.toDiagnostic(iae);
+      } catch (WrappedException we) {
+        ret = BasicDiagnostic.toDiagnostic(we);
+      }
+    }
+    return ret;
+  }
 
 
 	

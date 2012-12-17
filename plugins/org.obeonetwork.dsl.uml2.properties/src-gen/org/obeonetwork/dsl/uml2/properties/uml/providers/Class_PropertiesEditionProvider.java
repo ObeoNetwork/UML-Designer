@@ -14,6 +14,8 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 
+import org.eclipse.uml2.uml.Package;
+import org.eclipse.uml2.uml.Class;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
@@ -57,9 +59,9 @@ public class Class_PropertiesEditionProvider extends PropertiesEditingProviderIm
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof org.eclipse.uml2.uml.Class) 
-					&& (UMLPackage.Literals.CLASS == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof Class) 
+          && (UMLPackage.Literals.CLASS == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -67,8 +69,8 @@ public class Class_PropertiesEditionProvider extends PropertiesEditingProviderIm
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof org.eclipse.uml2.uml.Class) && (ClassPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof Class) && (ClassPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -77,8 +79,8 @@ public class Class_PropertiesEditionProvider extends PropertiesEditingProviderIm
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof org.eclipse.uml2.uml.Class) && (refinement == ClassPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof Class) && (refinement == ClassPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -87,8 +89,8 @@ public class Class_PropertiesEditionProvider extends PropertiesEditingProviderIm
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof org.eclipse.uml2.uml.Class) && ((ClassPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ClassPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof Class) && ((ClassPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ClassPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -96,11 +98,11 @@ public class Class_PropertiesEditionProvider extends PropertiesEditingProviderIm
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof org.eclipse.uml2.uml.Class) {
-			return new ClassPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof Class) {
+      return new ClassPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -108,12 +110,12 @@ public class Class_PropertiesEditionProvider extends PropertiesEditingProviderIm
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof org.eclipse.uml2.uml.Class) {
-			if (ClassPropertiesEditionComponent.BASE_PART.equals(part))
-				return new ClassPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof Class) {
+      if (ClassPropertiesEditionComponent.BASE_PART.equals(part))
+        return new ClassPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

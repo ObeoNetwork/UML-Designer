@@ -58,9 +58,9 @@ public class StructuredActivityNodePropertiesEditionProvider extends PropertiesE
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof StructuredActivityNode) 
-					&& (UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof StructuredActivityNode) 
+          && (UMLPackage.Literals.STRUCTURED_ACTIVITY_NODE == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class StructuredActivityNodePropertiesEditionProvider extends PropertiesE
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof StructuredActivityNode) && (StructuredActivityNodePropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof StructuredActivityNode) && (StructuredActivityNodePropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class StructuredActivityNodePropertiesEditionProvider extends PropertiesE
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof StructuredActivityNode) && (refinement == StructuredActivityNodePropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof StructuredActivityNode) && (refinement == StructuredActivityNodePropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class StructuredActivityNodePropertiesEditionProvider extends PropertiesE
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof StructuredActivityNode) && ((StructuredActivityNodePropertiesEditionComponent.BASE_PART.equals(part) && refinement == StructuredActivityNodePropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof StructuredActivityNode) && ((StructuredActivityNodePropertiesEditionComponent.BASE_PART.equals(part) && refinement == StructuredActivityNodePropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class StructuredActivityNodePropertiesEditionProvider extends PropertiesE
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof StructuredActivityNode) {
-			return new StructuredActivityNodePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof StructuredActivityNode) {
+      return new StructuredActivityNodePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class StructuredActivityNodePropertiesEditionProvider extends PropertiesE
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof StructuredActivityNode) {
-			if (StructuredActivityNodePropertiesEditionComponent.BASE_PART.equals(part))
-				return new StructuredActivityNodePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof StructuredActivityNode) {
+      if (StructuredActivityNodePropertiesEditionComponent.BASE_PART.equals(part))
+        return new StructuredActivityNodePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

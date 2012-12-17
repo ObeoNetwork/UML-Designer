@@ -58,9 +58,9 @@ public class ReadIsClassifiedObjectActionPropertiesEditionProvider extends Prope
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof ReadIsClassifiedObjectAction) 
-					&& (UMLPackage.Literals.READ_IS_CLASSIFIED_OBJECT_ACTION == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof ReadIsClassifiedObjectAction) 
+          && (UMLPackage.Literals.READ_IS_CLASSIFIED_OBJECT_ACTION == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class ReadIsClassifiedObjectActionPropertiesEditionProvider extends Prope
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof ReadIsClassifiedObjectAction) && (ReadIsClassifiedObjectActionPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof ReadIsClassifiedObjectAction) && (ReadIsClassifiedObjectActionPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class ReadIsClassifiedObjectActionPropertiesEditionProvider extends Prope
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ReadIsClassifiedObjectAction) && (refinement == ReadIsClassifiedObjectActionPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof ReadIsClassifiedObjectAction) && (refinement == ReadIsClassifiedObjectActionPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class ReadIsClassifiedObjectActionPropertiesEditionProvider extends Prope
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ReadIsClassifiedObjectAction) && ((ReadIsClassifiedObjectActionPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ReadIsClassifiedObjectActionPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof ReadIsClassifiedObjectAction) && ((ReadIsClassifiedObjectActionPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ReadIsClassifiedObjectActionPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class ReadIsClassifiedObjectActionPropertiesEditionProvider extends Prope
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof ReadIsClassifiedObjectAction) {
-			return new ReadIsClassifiedObjectActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof ReadIsClassifiedObjectAction) {
+      return new ReadIsClassifiedObjectActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class ReadIsClassifiedObjectActionPropertiesEditionProvider extends Prope
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof ReadIsClassifiedObjectAction) {
-			if (ReadIsClassifiedObjectActionPropertiesEditionComponent.BASE_PART.equals(part))
-				return new ReadIsClassifiedObjectActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof ReadIsClassifiedObjectAction) {
+      if (ReadIsClassifiedObjectActionPropertiesEditionComponent.BASE_PART.equals(part))
+        return new ReadIsClassifiedObjectActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

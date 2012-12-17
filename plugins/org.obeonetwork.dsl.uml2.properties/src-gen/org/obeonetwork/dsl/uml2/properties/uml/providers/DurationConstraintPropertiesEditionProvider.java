@@ -58,9 +58,9 @@ public class DurationConstraintPropertiesEditionProvider extends PropertiesEditi
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof DurationConstraint) 
-					&& (UMLPackage.Literals.DURATION_CONSTRAINT == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof DurationConstraint) 
+          && (UMLPackage.Literals.DURATION_CONSTRAINT == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class DurationConstraintPropertiesEditionProvider extends PropertiesEditi
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof DurationConstraint) && (DurationConstraintPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof DurationConstraint) && (DurationConstraintPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class DurationConstraintPropertiesEditionProvider extends PropertiesEditi
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof DurationConstraint) && (refinement == DurationConstraintPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof DurationConstraint) && (refinement == DurationConstraintPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class DurationConstraintPropertiesEditionProvider extends PropertiesEditi
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof DurationConstraint) && ((DurationConstraintPropertiesEditionComponent.BASE_PART.equals(part) && refinement == DurationConstraintPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof DurationConstraint) && ((DurationConstraintPropertiesEditionComponent.BASE_PART.equals(part) && refinement == DurationConstraintPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class DurationConstraintPropertiesEditionProvider extends PropertiesEditi
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof DurationConstraint) {
-			return new DurationConstraintPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof DurationConstraint) {
+      return new DurationConstraintPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class DurationConstraintPropertiesEditionProvider extends PropertiesEditi
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof DurationConstraint) {
-			if (DurationConstraintPropertiesEditionComponent.BASE_PART.equals(part))
-				return new DurationConstraintPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof DurationConstraint) {
+      if (DurationConstraintPropertiesEditionComponent.BASE_PART.equals(part))
+        return new DurationConstraintPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

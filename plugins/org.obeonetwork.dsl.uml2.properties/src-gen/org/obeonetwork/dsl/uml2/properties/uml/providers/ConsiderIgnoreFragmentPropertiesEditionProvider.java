@@ -58,9 +58,9 @@ public class ConsiderIgnoreFragmentPropertiesEditionProvider extends PropertiesE
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof ConsiderIgnoreFragment) 
-					&& (UMLPackage.Literals.CONSIDER_IGNORE_FRAGMENT == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof ConsiderIgnoreFragment) 
+          && (UMLPackage.Literals.CONSIDER_IGNORE_FRAGMENT == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class ConsiderIgnoreFragmentPropertiesEditionProvider extends PropertiesE
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof ConsiderIgnoreFragment) && (ConsiderIgnoreFragmentPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof ConsiderIgnoreFragment) && (ConsiderIgnoreFragmentPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class ConsiderIgnoreFragmentPropertiesEditionProvider extends PropertiesE
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ConsiderIgnoreFragment) && (refinement == ConsiderIgnoreFragmentPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof ConsiderIgnoreFragment) && (refinement == ConsiderIgnoreFragmentPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class ConsiderIgnoreFragmentPropertiesEditionProvider extends PropertiesE
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ConsiderIgnoreFragment) && ((ConsiderIgnoreFragmentPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ConsiderIgnoreFragmentPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof ConsiderIgnoreFragment) && ((ConsiderIgnoreFragmentPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ConsiderIgnoreFragmentPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class ConsiderIgnoreFragmentPropertiesEditionProvider extends PropertiesE
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof ConsiderIgnoreFragment) {
-			return new ConsiderIgnoreFragmentPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof ConsiderIgnoreFragment) {
+      return new ConsiderIgnoreFragmentPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class ConsiderIgnoreFragmentPropertiesEditionProvider extends PropertiesE
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof ConsiderIgnoreFragment) {
-			if (ConsiderIgnoreFragmentPropertiesEditionComponent.BASE_PART.equals(part))
-				return new ConsiderIgnoreFragmentPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof ConsiderIgnoreFragment) {
+      if (ConsiderIgnoreFragmentPropertiesEditionComponent.BASE_PART.equals(part))
+        return new ConsiderIgnoreFragmentPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

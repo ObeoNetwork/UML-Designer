@@ -72,8 +72,8 @@ public class ProtocolConformancePropertiesEditionPartImpl extends CompositePrope
 	 * @generated
 	 */
 	public ProtocolConformancePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+    super(editionComponent);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -83,13 +83,13 @@ public class ProtocolConformancePropertiesEditionPartImpl extends CompositePrope
 	 * @generated
 	 */
 	public Composite createFigure(final Composite parent) {
-		view = new Composite(parent, SWT.NONE);
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
-		view.setLayout(layout);
-		createControls(view);
-		return view;
-	}
+    view = new Composite(parent, SWT.NONE);
+    GridLayout layout = new GridLayout();
+    layout.numColumns = 3;
+    view.setLayout(layout);
+    createControls(view);
+    return view;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -99,91 +99,91 @@ public class ProtocolConformancePropertiesEditionPartImpl extends CompositePrope
 	 * @generated
 	 */
 	public void createControls(Composite view) { 
-		CompositionSequence protocolConformanceStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep propertiesStep = protocolConformanceStep.addStep(UmlViewsRepository.ProtocolConformance.Properties.class);
-		propertiesStep.addStep(UmlViewsRepository.ProtocolConformance.Properties.generalMachine);
-		propertiesStep.addStep(UmlViewsRepository.ProtocolConformance.Properties.specificMachine);
-		
-		
-		composer = new PartComposer(protocolConformanceStep) {
+    CompositionSequence protocolConformanceStep = new BindingCompositionSequence(propertiesEditionComponent);
+    CompositionStep propertiesStep = protocolConformanceStep.addStep(UmlViewsRepository.ProtocolConformance.Properties.class);
+    propertiesStep.addStep(UmlViewsRepository.ProtocolConformance.Properties.generalMachine);
+    propertiesStep.addStep(UmlViewsRepository.ProtocolConformance.Properties.specificMachine);
+    
+    
+    composer = new PartComposer(protocolConformanceStep) {
 
-			@Override
-			public Composite addToPart(Composite parent, Object key) {
-				if (key == UmlViewsRepository.ProtocolConformance.Properties.class) {
-					return createPropertiesGroup(parent);
-				}
-				if (key == UmlViewsRepository.ProtocolConformance.Properties.generalMachine) {
-					return createGeneralMachineFlatComboViewer(parent);
-				}
-				if (key == UmlViewsRepository.ProtocolConformance.Properties.specificMachine) {
-					return createSpecificMachineFlatComboViewer(parent);
-				}
-				return parent;
-			}
-		};
-		composer.compose(view);
-	}
+      @Override
+      public Composite addToPart(Composite parent, Object key) {
+        if (key == UmlViewsRepository.ProtocolConformance.Properties.class) {
+          return createPropertiesGroup(parent);
+        }
+        if (key == UmlViewsRepository.ProtocolConformance.Properties.generalMachine) {
+          return createGeneralMachineFlatComboViewer(parent);
+        }
+        if (key == UmlViewsRepository.ProtocolConformance.Properties.specificMachine) {
+          return createSpecificMachineFlatComboViewer(parent);
+        }
+        return parent;
+      }
+    };
+    composer.compose(view);
+  }
 
 	/**
 	 * @generated
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
-		Group propertiesGroup = new Group(parent, SWT.NONE);
-		propertiesGroup.setText(UmlMessages.ProtocolConformancePropertiesEditionPart_PropertiesGroupLabel);
-		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesGroupData.horizontalSpan = 3;
-		propertiesGroup.setLayoutData(propertiesGroupData);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		return propertiesGroup;
-	}
+    Group propertiesGroup = new Group(parent, SWT.NONE);
+    propertiesGroup.setText(UmlMessages.ProtocolConformancePropertiesEditionPart_PropertiesGroupLabel);
+    GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
+    propertiesGroupData.horizontalSpan = 3;
+    propertiesGroup.setLayoutData(propertiesGroupData);
+    GridLayout propertiesGroupLayout = new GridLayout();
+    propertiesGroupLayout.numColumns = 3;
+    propertiesGroup.setLayout(propertiesGroupLayout);
+    return propertiesGroup;
+  }
 
 	/**
 	 * @param parent the parent composite
 	 * @generated
 	 */
 	protected Composite createGeneralMachineFlatComboViewer(Composite parent) {
-		createDescription(parent, UmlViewsRepository.ProtocolConformance.Properties.generalMachine, UmlMessages.ProtocolConformancePropertiesEditionPart_GeneralMachineLabel);
-		generalMachine = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ProtocolConformance.Properties.generalMachine, UmlViewsRepository.SWT_KIND));
-		generalMachine.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    createDescription(parent, UmlViewsRepository.ProtocolConformance.Properties.generalMachine, UmlMessages.ProtocolConformancePropertiesEditionPart_GeneralMachineLabel);
+    generalMachine = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ProtocolConformance.Properties.generalMachine, UmlViewsRepository.SWT_KIND));
+    generalMachine.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
-		generalMachine.addSelectionChangedListener(new ISelectionChangedListener() {
+    generalMachine.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProtocolConformancePropertiesEditionPartImpl.this, UmlViewsRepository.ProtocolConformance.Properties.generalMachine, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getGeneralMachine()));
-			}
+      public void selectionChanged(SelectionChangedEvent event) {
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProtocolConformancePropertiesEditionPartImpl.this, UmlViewsRepository.ProtocolConformance.Properties.generalMachine, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getGeneralMachine()));
+      }
 
-		});
-		GridData generalMachineData = new GridData(GridData.FILL_HORIZONTAL);
-		generalMachine.setLayoutData(generalMachineData);
-		generalMachine.setID(UmlViewsRepository.ProtocolConformance.Properties.generalMachine);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ProtocolConformance.Properties.generalMachine, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    GridData generalMachineData = new GridData(GridData.FILL_HORIZONTAL);
+    generalMachine.setLayoutData(generalMachineData);
+    generalMachine.setID(UmlViewsRepository.ProtocolConformance.Properties.generalMachine);
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ProtocolConformance.Properties.generalMachine, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @param parent the parent composite
 	 * @generated
 	 */
 	protected Composite createSpecificMachineFlatComboViewer(Composite parent) {
-		createDescription(parent, UmlViewsRepository.ProtocolConformance.Properties.specificMachine, UmlMessages.ProtocolConformancePropertiesEditionPart_SpecificMachineLabel);
-		specificMachine = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ProtocolConformance.Properties.specificMachine, UmlViewsRepository.SWT_KIND));
-		specificMachine.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    createDescription(parent, UmlViewsRepository.ProtocolConformance.Properties.specificMachine, UmlMessages.ProtocolConformancePropertiesEditionPart_SpecificMachineLabel);
+    specificMachine = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ProtocolConformance.Properties.specificMachine, UmlViewsRepository.SWT_KIND));
+    specificMachine.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
-		specificMachine.addSelectionChangedListener(new ISelectionChangedListener() {
+    specificMachine.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProtocolConformancePropertiesEditionPartImpl.this, UmlViewsRepository.ProtocolConformance.Properties.specificMachine, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getSpecificMachine()));
-			}
+      public void selectionChanged(SelectionChangedEvent event) {
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProtocolConformancePropertiesEditionPartImpl.this, UmlViewsRepository.ProtocolConformance.Properties.specificMachine, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getSpecificMachine()));
+      }
 
-		});
-		GridData specificMachineData = new GridData(GridData.FILL_HORIZONTAL);
-		specificMachine.setLayoutData(specificMachineData);
-		specificMachine.setID(UmlViewsRepository.ProtocolConformance.Properties.specificMachine);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ProtocolConformance.Properties.specificMachine, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    GridData specificMachineData = new GridData(GridData.FILL_HORIZONTAL);
+    specificMachine.setLayoutData(specificMachineData);
+    specificMachine.setID(UmlViewsRepository.ProtocolConformance.Properties.specificMachine);
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ProtocolConformance.Properties.specificMachine, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 
 	/**
@@ -193,7 +193,7 @@ public class ProtocolConformancePropertiesEditionPartImpl extends CompositePrope
 	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-	}
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -202,13 +202,13 @@ public class ProtocolConformancePropertiesEditionPartImpl extends CompositePrope
 	 * @generated
 	 */
 	public EObject getGeneralMachine() {
-		if (generalMachine.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) generalMachine.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (generalMachine.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) generalMachine.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -237,20 +237,20 @@ public class ProtocolConformancePropertiesEditionPartImpl extends CompositePrope
 	 * @generated
 	 */
 	public void setGeneralMachine(EObject newValue) {
-		if (newValue != null) {
-			generalMachine.setSelection(new StructuredSelection(newValue));
-		} else {
-			generalMachine.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.ProtocolConformance.Properties.generalMachine);
-		if (readOnly && generalMachine.isEnabled()) {
-			generalMachine.setEnabled(false);
-			generalMachine.setToolTipText(UmlMessages.ProtocolConformance_ReadOnly);
-		} else if (!readOnly && !generalMachine.isEnabled()) {
-			generalMachine.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      generalMachine.setSelection(new StructuredSelection(newValue));
+    } else {
+      generalMachine.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.ProtocolConformance.Properties.generalMachine);
+    if (readOnly && generalMachine.isEnabled()) {
+      generalMachine.setEnabled(false);
+      generalMachine.setToolTipText(UmlMessages.ProtocolConformance_ReadOnly);
+    } else if (!readOnly && !generalMachine.isEnabled()) {
+      generalMachine.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -268,8 +268,8 @@ public class ProtocolConformancePropertiesEditionPartImpl extends CompositePrope
 	 * @generated
 	 */
 	public void addFilterToGeneralMachine(ViewerFilter filter) {
-		generalMachine.addFilter(filter);
-	}
+    generalMachine.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -278,8 +278,8 @@ public class ProtocolConformancePropertiesEditionPartImpl extends CompositePrope
 	 * @generated
 	 */
 	public void addBusinessFilterToGeneralMachine(ViewerFilter filter) {
-		generalMachine.addBusinessRuleFilter(filter);
-	}
+    generalMachine.addBusinessRuleFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -288,13 +288,13 @@ public class ProtocolConformancePropertiesEditionPartImpl extends CompositePrope
 	 * @generated
 	 */
 	public EObject getSpecificMachine() {
-		if (specificMachine.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) specificMachine.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (specificMachine.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) specificMachine.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -323,20 +323,20 @@ public class ProtocolConformancePropertiesEditionPartImpl extends CompositePrope
 	 * @generated
 	 */
 	public void setSpecificMachine(EObject newValue) {
-		if (newValue != null) {
-			specificMachine.setSelection(new StructuredSelection(newValue));
-		} else {
-			specificMachine.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.ProtocolConformance.Properties.specificMachine);
-		if (readOnly && specificMachine.isEnabled()) {
-			specificMachine.setEnabled(false);
-			specificMachine.setToolTipText(UmlMessages.ProtocolConformance_ReadOnly);
-		} else if (!readOnly && !specificMachine.isEnabled()) {
-			specificMachine.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      specificMachine.setSelection(new StructuredSelection(newValue));
+    } else {
+      specificMachine.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.ProtocolConformance.Properties.specificMachine);
+    if (readOnly && specificMachine.isEnabled()) {
+      specificMachine.setEnabled(false);
+      specificMachine.setToolTipText(UmlMessages.ProtocolConformance_ReadOnly);
+    } else if (!readOnly && !specificMachine.isEnabled()) {
+      specificMachine.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -354,8 +354,8 @@ public class ProtocolConformancePropertiesEditionPartImpl extends CompositePrope
 	 * @generated
 	 */
 	public void addFilterToSpecificMachine(ViewerFilter filter) {
-		specificMachine.addFilter(filter);
-	}
+    specificMachine.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -364,8 +364,8 @@ public class ProtocolConformancePropertiesEditionPartImpl extends CompositePrope
 	 * @generated
 	 */
 	public void addBusinessFilterToSpecificMachine(ViewerFilter filter) {
-		specificMachine.addBusinessRuleFilter(filter);
-	}
+    specificMachine.addBusinessRuleFilter(filter);
+  }
 
 
 
@@ -379,8 +379,8 @@ public class ProtocolConformancePropertiesEditionPartImpl extends CompositePrope
 	 * @generated
 	 */
 	public String getTitle() {
-		return UmlMessages.ProtocolConformance_Part_Title;
-	}
+    return UmlMessages.ProtocolConformance_Part_Title;
+  }
 
 
 

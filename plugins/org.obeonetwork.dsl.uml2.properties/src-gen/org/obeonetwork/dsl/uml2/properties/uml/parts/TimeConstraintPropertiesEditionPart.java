@@ -290,12 +290,12 @@ public interface TimeConstraintPropertiesEditionPart {
 
 
 	/**
-	 * @return the firstEvent
-	 * @generated
-	 */
-	public Boolean getFirstEvents();
+   * @return the firstEvent
+   * @generated
+   */
+  public Boolean getFirstEvent();
 
-	/**
+  /**
 	 * Defines a new firstEvent
 	 * @param newValue the new firstEvent to set
 	 * @generated

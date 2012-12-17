@@ -58,9 +58,9 @@ public class OpaqueBehaviorPropertiesEditionProvider extends PropertiesEditingPr
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof OpaqueBehavior) 
-					&& (UMLPackage.Literals.OPAQUE_BEHAVIOR == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof OpaqueBehavior) 
+          && (UMLPackage.Literals.OPAQUE_BEHAVIOR == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class OpaqueBehaviorPropertiesEditionProvider extends PropertiesEditingPr
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof OpaqueBehavior) && (OpaqueBehaviorPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof OpaqueBehavior) && (OpaqueBehaviorPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class OpaqueBehaviorPropertiesEditionProvider extends PropertiesEditingPr
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof OpaqueBehavior) && (refinement == OpaqueBehaviorPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof OpaqueBehavior) && (refinement == OpaqueBehaviorPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class OpaqueBehaviorPropertiesEditionProvider extends PropertiesEditingPr
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof OpaqueBehavior) && ((OpaqueBehaviorPropertiesEditionComponent.BASE_PART.equals(part) && refinement == OpaqueBehaviorPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof OpaqueBehavior) && ((OpaqueBehaviorPropertiesEditionComponent.BASE_PART.equals(part) && refinement == OpaqueBehaviorPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class OpaqueBehaviorPropertiesEditionProvider extends PropertiesEditingPr
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof OpaqueBehavior) {
-			return new OpaqueBehaviorPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof OpaqueBehavior) {
+      return new OpaqueBehaviorPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class OpaqueBehaviorPropertiesEditionProvider extends PropertiesEditingPr
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof OpaqueBehavior) {
-			if (OpaqueBehaviorPropertiesEditionComponent.BASE_PART.equals(part))
-				return new OpaqueBehaviorPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof OpaqueBehavior) {
+      if (OpaqueBehaviorPropertiesEditionComponent.BASE_PART.equals(part))
+        return new OpaqueBehaviorPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

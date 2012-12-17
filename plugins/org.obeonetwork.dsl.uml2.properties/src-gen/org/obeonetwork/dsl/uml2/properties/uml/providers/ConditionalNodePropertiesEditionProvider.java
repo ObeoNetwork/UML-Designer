@@ -58,9 +58,9 @@ public class ConditionalNodePropertiesEditionProvider extends PropertiesEditingP
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof ConditionalNode) 
-					&& (UMLPackage.Literals.CONDITIONAL_NODE == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof ConditionalNode) 
+          && (UMLPackage.Literals.CONDITIONAL_NODE == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class ConditionalNodePropertiesEditionProvider extends PropertiesEditingP
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof ConditionalNode) && (ConditionalNodePropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof ConditionalNode) && (ConditionalNodePropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class ConditionalNodePropertiesEditionProvider extends PropertiesEditingP
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ConditionalNode) && (refinement == ConditionalNodePropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof ConditionalNode) && (refinement == ConditionalNodePropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class ConditionalNodePropertiesEditionProvider extends PropertiesEditingP
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ConditionalNode) && ((ConditionalNodePropertiesEditionComponent.BASE_PART.equals(part) && refinement == ConditionalNodePropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof ConditionalNode) && ((ConditionalNodePropertiesEditionComponent.BASE_PART.equals(part) && refinement == ConditionalNodePropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class ConditionalNodePropertiesEditionProvider extends PropertiesEditingP
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof ConditionalNode) {
-			return new ConditionalNodePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof ConditionalNode) {
+      return new ConditionalNodePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class ConditionalNodePropertiesEditionProvider extends PropertiesEditingP
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof ConditionalNode) {
-			if (ConditionalNodePropertiesEditionComponent.BASE_PART.equals(part))
-				return new ConditionalNodePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof ConditionalNode) {
+      if (ConditionalNodePropertiesEditionComponent.BASE_PART.equals(part))
+        return new ConditionalNodePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

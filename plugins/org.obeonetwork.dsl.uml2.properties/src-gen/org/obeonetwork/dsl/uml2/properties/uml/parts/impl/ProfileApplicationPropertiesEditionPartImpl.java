@@ -79,8 +79,8 @@ public class ProfileApplicationPropertiesEditionPartImpl extends CompositeProper
 	 * @generated
 	 */
 	public ProfileApplicationPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+    super(editionComponent);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -90,13 +90,13 @@ public class ProfileApplicationPropertiesEditionPartImpl extends CompositeProper
 	 * @generated
 	 */
 	public Composite createFigure(final Composite parent) {
-		view = new Composite(parent, SWT.NONE);
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
-		view.setLayout(layout);
-		createControls(view);
-		return view;
-	}
+    view = new Composite(parent, SWT.NONE);
+    GridLayout layout = new GridLayout();
+    layout.numColumns = 3;
+    view.setLayout(layout);
+    createControls(view);
+    return view;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -106,125 +106,125 @@ public class ProfileApplicationPropertiesEditionPartImpl extends CompositeProper
 	 * @generated
 	 */
 	public void createControls(Composite view) { 
-		CompositionSequence profileApplicationStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep propertiesStep = profileApplicationStep.addStep(UmlViewsRepository.ProfileApplication.Properties.class);
-		propertiesStep.addStep(UmlViewsRepository.ProfileApplication.Properties.appliedProfile);
-		propertiesStep.addStep(UmlViewsRepository.ProfileApplication.Properties.isStrict);
-		propertiesStep.addStep(UmlViewsRepository.ProfileApplication.Properties.applyingPackage);
-		
-		
-		composer = new PartComposer(profileApplicationStep) {
+    CompositionSequence profileApplicationStep = new BindingCompositionSequence(propertiesEditionComponent);
+    CompositionStep propertiesStep = profileApplicationStep.addStep(UmlViewsRepository.ProfileApplication.Properties.class);
+    propertiesStep.addStep(UmlViewsRepository.ProfileApplication.Properties.appliedProfile);
+    propertiesStep.addStep(UmlViewsRepository.ProfileApplication.Properties.isStrict);
+    propertiesStep.addStep(UmlViewsRepository.ProfileApplication.Properties.applyingPackage);
+    
+    
+    composer = new PartComposer(profileApplicationStep) {
 
-			@Override
-			public Composite addToPart(Composite parent, Object key) {
-				if (key == UmlViewsRepository.ProfileApplication.Properties.class) {
-					return createPropertiesGroup(parent);
-				}
-				if (key == UmlViewsRepository.ProfileApplication.Properties.appliedProfile) {
-					return createAppliedProfileFlatComboViewer(parent);
-				}
-				if (key == UmlViewsRepository.ProfileApplication.Properties.isStrict) {
-					return createIsStrictCheckbox(parent);
-				}
-				if (key == UmlViewsRepository.ProfileApplication.Properties.applyingPackage) {
-					return createApplyingPackageFlatComboViewer(parent);
-				}
-				return parent;
-			}
-		};
-		composer.compose(view);
-	}
+      @Override
+      public Composite addToPart(Composite parent, Object key) {
+        if (key == UmlViewsRepository.ProfileApplication.Properties.class) {
+          return createPropertiesGroup(parent);
+        }
+        if (key == UmlViewsRepository.ProfileApplication.Properties.appliedProfile) {
+          return createAppliedProfileFlatComboViewer(parent);
+        }
+        if (key == UmlViewsRepository.ProfileApplication.Properties.isStrict) {
+          return createIsStrictCheckbox(parent);
+        }
+        if (key == UmlViewsRepository.ProfileApplication.Properties.applyingPackage) {
+          return createApplyingPackageFlatComboViewer(parent);
+        }
+        return parent;
+      }
+    };
+    composer.compose(view);
+  }
 
 	/**
 	 * @generated
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
-		Group propertiesGroup = new Group(parent, SWT.NONE);
-		propertiesGroup.setText(UmlMessages.ProfileApplicationPropertiesEditionPart_PropertiesGroupLabel);
-		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesGroupData.horizontalSpan = 3;
-		propertiesGroup.setLayoutData(propertiesGroupData);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		return propertiesGroup;
-	}
+    Group propertiesGroup = new Group(parent, SWT.NONE);
+    propertiesGroup.setText(UmlMessages.ProfileApplicationPropertiesEditionPart_PropertiesGroupLabel);
+    GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
+    propertiesGroupData.horizontalSpan = 3;
+    propertiesGroup.setLayoutData(propertiesGroupData);
+    GridLayout propertiesGroupLayout = new GridLayout();
+    propertiesGroupLayout.numColumns = 3;
+    propertiesGroup.setLayout(propertiesGroupLayout);
+    return propertiesGroup;
+  }
 
 	/**
 	 * @param parent the parent composite
 	 * @generated
 	 */
 	protected Composite createAppliedProfileFlatComboViewer(Composite parent) {
-		createDescription(parent, UmlViewsRepository.ProfileApplication.Properties.appliedProfile, UmlMessages.ProfileApplicationPropertiesEditionPart_AppliedProfileLabel);
-		appliedProfile = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ProfileApplication.Properties.appliedProfile, UmlViewsRepository.SWT_KIND));
-		appliedProfile.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    createDescription(parent, UmlViewsRepository.ProfileApplication.Properties.appliedProfile, UmlMessages.ProfileApplicationPropertiesEditionPart_AppliedProfileLabel);
+    appliedProfile = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ProfileApplication.Properties.appliedProfile, UmlViewsRepository.SWT_KIND));
+    appliedProfile.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
-		appliedProfile.addSelectionChangedListener(new ISelectionChangedListener() {
+    appliedProfile.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProfileApplicationPropertiesEditionPartImpl.this, UmlViewsRepository.ProfileApplication.Properties.appliedProfile, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getAppliedProfile()));
-			}
+      public void selectionChanged(SelectionChangedEvent event) {
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProfileApplicationPropertiesEditionPartImpl.this, UmlViewsRepository.ProfileApplication.Properties.appliedProfile, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getAppliedProfile()));
+      }
 
-		});
-		GridData appliedProfileData = new GridData(GridData.FILL_HORIZONTAL);
-		appliedProfile.setLayoutData(appliedProfileData);
-		appliedProfile.setID(UmlViewsRepository.ProfileApplication.Properties.appliedProfile);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ProfileApplication.Properties.appliedProfile, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    GridData appliedProfileData = new GridData(GridData.FILL_HORIZONTAL);
+    appliedProfile.setLayoutData(appliedProfileData);
+    appliedProfile.setID(UmlViewsRepository.ProfileApplication.Properties.appliedProfile);
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ProfileApplication.Properties.appliedProfile, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @generated
 	 */
 	
 	protected Composite createIsStrictCheckbox(Composite parent) {
-		isStrict = new Button(parent, SWT.CHECK);
-		isStrict.setText(getDescription(UmlViewsRepository.ProfileApplication.Properties.isStrict, UmlMessages.ProfileApplicationPropertiesEditionPart_IsStrictLabel));
-		isStrict.addSelectionListener(new SelectionAdapter() {
+    isStrict = new Button(parent, SWT.CHECK);
+    isStrict.setText(getDescription(UmlViewsRepository.ProfileApplication.Properties.isStrict, UmlMessages.ProfileApplicationPropertiesEditionPart_IsStrictLabel));
+    isStrict.addSelectionListener(new SelectionAdapter() {
 
-			/**
-			 * {@inheritDoc}
-			 *
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	@generated
-			 */
-			public void widgetSelected(SelectionEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProfileApplicationPropertiesEditionPartImpl.this, UmlViewsRepository.ProfileApplication.Properties.isStrict, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(isStrict.getSelection())));
-			}
+      /**
+       * {@inheritDoc}
+       *
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       * 	@generated
+       */
+      public void widgetSelected(SelectionEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProfileApplicationPropertiesEditionPartImpl.this, UmlViewsRepository.ProfileApplication.Properties.isStrict, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(isStrict.getSelection())));
+      }
 
-		});
-		GridData isStrictData = new GridData(GridData.FILL_HORIZONTAL);
-		isStrictData.horizontalSpan = 2;
-		isStrict.setLayoutData(isStrictData);
-		EditingUtils.setID(isStrict, UmlViewsRepository.ProfileApplication.Properties.isStrict);
-		EditingUtils.setEEFtype(isStrict, "eef::Checkbox"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ProfileApplication.Properties.isStrict, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    GridData isStrictData = new GridData(GridData.FILL_HORIZONTAL);
+    isStrictData.horizontalSpan = 2;
+    isStrict.setLayoutData(isStrictData);
+    EditingUtils.setID(isStrict, UmlViewsRepository.ProfileApplication.Properties.isStrict);
+    EditingUtils.setEEFtype(isStrict, "eef::Checkbox"); //$NON-NLS-1$
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ProfileApplication.Properties.isStrict, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @param parent the parent composite
 	 * @generated
 	 */
 	protected Composite createApplyingPackageFlatComboViewer(Composite parent) {
-		createDescription(parent, UmlViewsRepository.ProfileApplication.Properties.applyingPackage, UmlMessages.ProfileApplicationPropertiesEditionPart_ApplyingPackageLabel);
-		applyingPackage = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ProfileApplication.Properties.applyingPackage, UmlViewsRepository.SWT_KIND));
-		applyingPackage.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    createDescription(parent, UmlViewsRepository.ProfileApplication.Properties.applyingPackage, UmlMessages.ProfileApplicationPropertiesEditionPart_ApplyingPackageLabel);
+    applyingPackage = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ProfileApplication.Properties.applyingPackage, UmlViewsRepository.SWT_KIND));
+    applyingPackage.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
-		applyingPackage.addSelectionChangedListener(new ISelectionChangedListener() {
+    applyingPackage.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProfileApplicationPropertiesEditionPartImpl.this, UmlViewsRepository.ProfileApplication.Properties.applyingPackage, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getApplyingPackage()));
-			}
+      public void selectionChanged(SelectionChangedEvent event) {
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProfileApplicationPropertiesEditionPartImpl.this, UmlViewsRepository.ProfileApplication.Properties.applyingPackage, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getApplyingPackage()));
+      }
 
-		});
-		GridData applyingPackageData = new GridData(GridData.FILL_HORIZONTAL);
-		applyingPackage.setLayoutData(applyingPackageData);
-		applyingPackage.setID(UmlViewsRepository.ProfileApplication.Properties.applyingPackage);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ProfileApplication.Properties.applyingPackage, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    GridData applyingPackageData = new GridData(GridData.FILL_HORIZONTAL);
+    applyingPackage.setLayoutData(applyingPackageData);
+    applyingPackage.setID(UmlViewsRepository.ProfileApplication.Properties.applyingPackage);
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ProfileApplication.Properties.applyingPackage, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 
 	/**
@@ -234,7 +234,7 @@ public class ProfileApplicationPropertiesEditionPartImpl extends CompositeProper
 	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-	}
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -243,13 +243,13 @@ public class ProfileApplicationPropertiesEditionPartImpl extends CompositeProper
 	 * @generated
 	 */
 	public EObject getAppliedProfile() {
-		if (appliedProfile.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) appliedProfile.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (appliedProfile.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) appliedProfile.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -278,20 +278,20 @@ public class ProfileApplicationPropertiesEditionPartImpl extends CompositeProper
 	 * @generated
 	 */
 	public void setAppliedProfile(EObject newValue) {
-		if (newValue != null) {
-			appliedProfile.setSelection(new StructuredSelection(newValue));
-		} else {
-			appliedProfile.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.ProfileApplication.Properties.appliedProfile);
-		if (readOnly && appliedProfile.isEnabled()) {
-			appliedProfile.setEnabled(false);
-			appliedProfile.setToolTipText(UmlMessages.ProfileApplication_ReadOnly);
-		} else if (!readOnly && !appliedProfile.isEnabled()) {
-			appliedProfile.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      appliedProfile.setSelection(new StructuredSelection(newValue));
+    } else {
+      appliedProfile.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.ProfileApplication.Properties.appliedProfile);
+    if (readOnly && appliedProfile.isEnabled()) {
+      appliedProfile.setEnabled(false);
+      appliedProfile.setToolTipText(UmlMessages.ProfileApplication_ReadOnly);
+    } else if (!readOnly && !appliedProfile.isEnabled()) {
+      appliedProfile.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -309,8 +309,8 @@ public class ProfileApplicationPropertiesEditionPartImpl extends CompositeProper
 	 * @generated
 	 */
 	public void addFilterToAppliedProfile(ViewerFilter filter) {
-		appliedProfile.addFilter(filter);
-	}
+    appliedProfile.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -319,8 +319,8 @@ public class ProfileApplicationPropertiesEditionPartImpl extends CompositeProper
 	 * @generated
 	 */
 	public void addBusinessFilterToAppliedProfile(ViewerFilter filter) {
-		appliedProfile.addBusinessRuleFilter(filter);
-	}
+    appliedProfile.addBusinessRuleFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -329,8 +329,8 @@ public class ProfileApplicationPropertiesEditionPartImpl extends CompositeProper
 	 * @generated
 	 */
 	public Boolean getIsStrict() {
-		return Boolean.valueOf(isStrict.getSelection());
-	}
+    return Boolean.valueOf(isStrict.getSelection());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -339,20 +339,20 @@ public class ProfileApplicationPropertiesEditionPartImpl extends CompositeProper
 	 * @generated
 	 */
 	public void setIsStrict(Boolean newValue) {
-		if (newValue != null) {
-			isStrict.setSelection(newValue.booleanValue());
-		} else {
-			isStrict.setSelection(false);
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.ProfileApplication.Properties.isStrict);
-		if (readOnly && isStrict.isEnabled()) {
-			isStrict.setEnabled(false);
-			isStrict.setToolTipText(UmlMessages.ProfileApplication_ReadOnly);
-		} else if (!readOnly && !isStrict.isEnabled()) {
-			isStrict.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      isStrict.setSelection(newValue.booleanValue());
+    } else {
+      isStrict.setSelection(false);
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.ProfileApplication.Properties.isStrict);
+    if (readOnly && isStrict.isEnabled()) {
+      isStrict.setEnabled(false);
+      isStrict.setToolTipText(UmlMessages.ProfileApplication_ReadOnly);
+    } else if (!readOnly && !isStrict.isEnabled()) {
+      isStrict.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -361,13 +361,13 @@ public class ProfileApplicationPropertiesEditionPartImpl extends CompositeProper
 	 * @generated
 	 */
 	public EObject getApplyingPackage() {
-		if (applyingPackage.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) applyingPackage.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (applyingPackage.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) applyingPackage.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -396,20 +396,20 @@ public class ProfileApplicationPropertiesEditionPartImpl extends CompositeProper
 	 * @generated
 	 */
 	public void setApplyingPackage(EObject newValue) {
-		if (newValue != null) {
-			applyingPackage.setSelection(new StructuredSelection(newValue));
-		} else {
-			applyingPackage.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.ProfileApplication.Properties.applyingPackage);
-		if (readOnly && applyingPackage.isEnabled()) {
-			applyingPackage.setEnabled(false);
-			applyingPackage.setToolTipText(UmlMessages.ProfileApplication_ReadOnly);
-		} else if (!readOnly && !applyingPackage.isEnabled()) {
-			applyingPackage.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      applyingPackage.setSelection(new StructuredSelection(newValue));
+    } else {
+      applyingPackage.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.ProfileApplication.Properties.applyingPackage);
+    if (readOnly && applyingPackage.isEnabled()) {
+      applyingPackage.setEnabled(false);
+      applyingPackage.setToolTipText(UmlMessages.ProfileApplication_ReadOnly);
+    } else if (!readOnly && !applyingPackage.isEnabled()) {
+      applyingPackage.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -427,8 +427,8 @@ public class ProfileApplicationPropertiesEditionPartImpl extends CompositeProper
 	 * @generated
 	 */
 	public void addFilterToApplyingPackage(ViewerFilter filter) {
-		applyingPackage.addFilter(filter);
-	}
+    applyingPackage.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -437,8 +437,8 @@ public class ProfileApplicationPropertiesEditionPartImpl extends CompositeProper
 	 * @generated
 	 */
 	public void addBusinessFilterToApplyingPackage(ViewerFilter filter) {
-		applyingPackage.addBusinessRuleFilter(filter);
-	}
+    applyingPackage.addBusinessRuleFilter(filter);
+  }
 
 
 
@@ -452,8 +452,8 @@ public class ProfileApplicationPropertiesEditionPartImpl extends CompositeProper
 	 * @generated
 	 */
 	public String getTitle() {
-		return UmlMessages.ProfileApplication_Part_Title;
-	}
+    return UmlMessages.ProfileApplication_Part_Title;
+  }
 
 
 

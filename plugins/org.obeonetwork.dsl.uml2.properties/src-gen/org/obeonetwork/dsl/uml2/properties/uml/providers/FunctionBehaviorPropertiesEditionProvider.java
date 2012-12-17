@@ -58,9 +58,9 @@ public class FunctionBehaviorPropertiesEditionProvider extends PropertiesEditing
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof FunctionBehavior) 
-					&& (UMLPackage.Literals.FUNCTION_BEHAVIOR == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof FunctionBehavior) 
+          && (UMLPackage.Literals.FUNCTION_BEHAVIOR == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class FunctionBehaviorPropertiesEditionProvider extends PropertiesEditing
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof FunctionBehavior) && (FunctionBehaviorPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof FunctionBehavior) && (FunctionBehaviorPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class FunctionBehaviorPropertiesEditionProvider extends PropertiesEditing
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof FunctionBehavior) && (refinement == FunctionBehaviorPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof FunctionBehavior) && (refinement == FunctionBehaviorPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class FunctionBehaviorPropertiesEditionProvider extends PropertiesEditing
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof FunctionBehavior) && ((FunctionBehaviorPropertiesEditionComponent.BASE_PART.equals(part) && refinement == FunctionBehaviorPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof FunctionBehavior) && ((FunctionBehaviorPropertiesEditionComponent.BASE_PART.equals(part) && refinement == FunctionBehaviorPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class FunctionBehaviorPropertiesEditionProvider extends PropertiesEditing
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof FunctionBehavior) {
-			return new FunctionBehaviorPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof FunctionBehavior) {
+      return new FunctionBehaviorPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class FunctionBehaviorPropertiesEditionProvider extends PropertiesEditing
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof FunctionBehavior) {
-			if (FunctionBehaviorPropertiesEditionComponent.BASE_PART.equals(part))
-				return new FunctionBehaviorPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof FunctionBehavior) {
+      if (FunctionBehaviorPropertiesEditionComponent.BASE_PART.equals(part))
+        return new FunctionBehaviorPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

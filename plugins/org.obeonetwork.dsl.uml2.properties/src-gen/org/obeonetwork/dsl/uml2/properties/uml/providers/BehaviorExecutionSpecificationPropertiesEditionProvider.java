@@ -58,9 +58,9 @@ public class BehaviorExecutionSpecificationPropertiesEditionProvider extends Pro
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof BehaviorExecutionSpecification) 
-					&& (UMLPackage.Literals.BEHAVIOR_EXECUTION_SPECIFICATION == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof BehaviorExecutionSpecification) 
+          && (UMLPackage.Literals.BEHAVIOR_EXECUTION_SPECIFICATION == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class BehaviorExecutionSpecificationPropertiesEditionProvider extends Pro
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof BehaviorExecutionSpecification) && (BehaviorExecutionSpecificationPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof BehaviorExecutionSpecification) && (BehaviorExecutionSpecificationPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class BehaviorExecutionSpecificationPropertiesEditionProvider extends Pro
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof BehaviorExecutionSpecification) && (refinement == BehaviorExecutionSpecificationPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof BehaviorExecutionSpecification) && (refinement == BehaviorExecutionSpecificationPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class BehaviorExecutionSpecificationPropertiesEditionProvider extends Pro
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof BehaviorExecutionSpecification) && ((BehaviorExecutionSpecificationPropertiesEditionComponent.BASE_PART.equals(part) && refinement == BehaviorExecutionSpecificationPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof BehaviorExecutionSpecification) && ((BehaviorExecutionSpecificationPropertiesEditionComponent.BASE_PART.equals(part) && refinement == BehaviorExecutionSpecificationPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class BehaviorExecutionSpecificationPropertiesEditionProvider extends Pro
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof BehaviorExecutionSpecification) {
-			return new BehaviorExecutionSpecificationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof BehaviorExecutionSpecification) {
+      return new BehaviorExecutionSpecificationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class BehaviorExecutionSpecificationPropertiesEditionProvider extends Pro
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof BehaviorExecutionSpecification) {
-			if (BehaviorExecutionSpecificationPropertiesEditionComponent.BASE_PART.equals(part))
-				return new BehaviorExecutionSpecificationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof BehaviorExecutionSpecification) {
+      if (BehaviorExecutionSpecificationPropertiesEditionComponent.BASE_PART.equals(part))
+        return new BehaviorExecutionSpecificationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

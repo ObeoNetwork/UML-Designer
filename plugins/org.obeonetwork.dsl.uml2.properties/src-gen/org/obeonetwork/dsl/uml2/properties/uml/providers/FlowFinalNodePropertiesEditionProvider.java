@@ -58,9 +58,9 @@ public class FlowFinalNodePropertiesEditionProvider extends PropertiesEditingPro
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof FlowFinalNode) 
-					&& (UMLPackage.Literals.FLOW_FINAL_NODE == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof FlowFinalNode) 
+          && (UMLPackage.Literals.FLOW_FINAL_NODE == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class FlowFinalNodePropertiesEditionProvider extends PropertiesEditingPro
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof FlowFinalNode) && (FlowFinalNodePropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof FlowFinalNode) && (FlowFinalNodePropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class FlowFinalNodePropertiesEditionProvider extends PropertiesEditingPro
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof FlowFinalNode) && (refinement == FlowFinalNodePropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof FlowFinalNode) && (refinement == FlowFinalNodePropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class FlowFinalNodePropertiesEditionProvider extends PropertiesEditingPro
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof FlowFinalNode) && ((FlowFinalNodePropertiesEditionComponent.BASE_PART.equals(part) && refinement == FlowFinalNodePropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof FlowFinalNode) && ((FlowFinalNodePropertiesEditionComponent.BASE_PART.equals(part) && refinement == FlowFinalNodePropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class FlowFinalNodePropertiesEditionProvider extends PropertiesEditingPro
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof FlowFinalNode) {
-			return new FlowFinalNodePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof FlowFinalNode) {
+      return new FlowFinalNodePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class FlowFinalNodePropertiesEditionProvider extends PropertiesEditingPro
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof FlowFinalNode) {
-			if (FlowFinalNodePropertiesEditionComponent.BASE_PART.equals(part))
-				return new FlowFinalNodePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof FlowFinalNode) {
+      if (FlowFinalNodePropertiesEditionComponent.BASE_PART.equals(part))
+        return new FlowFinalNodePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

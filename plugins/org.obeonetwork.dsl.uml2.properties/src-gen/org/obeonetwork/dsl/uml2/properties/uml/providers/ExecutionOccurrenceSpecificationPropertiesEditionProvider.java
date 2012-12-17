@@ -58,9 +58,9 @@ public class ExecutionOccurrenceSpecificationPropertiesEditionProvider extends P
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof ExecutionOccurrenceSpecification) 
-					&& (UMLPackage.Literals.EXECUTION_OCCURRENCE_SPECIFICATION == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof ExecutionOccurrenceSpecification) 
+          && (UMLPackage.Literals.EXECUTION_OCCURRENCE_SPECIFICATION == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class ExecutionOccurrenceSpecificationPropertiesEditionProvider extends P
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof ExecutionOccurrenceSpecification) && (ExecutionOccurrenceSpecificationPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof ExecutionOccurrenceSpecification) && (ExecutionOccurrenceSpecificationPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class ExecutionOccurrenceSpecificationPropertiesEditionProvider extends P
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ExecutionOccurrenceSpecification) && (refinement == ExecutionOccurrenceSpecificationPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof ExecutionOccurrenceSpecification) && (refinement == ExecutionOccurrenceSpecificationPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class ExecutionOccurrenceSpecificationPropertiesEditionProvider extends P
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ExecutionOccurrenceSpecification) && ((ExecutionOccurrenceSpecificationPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ExecutionOccurrenceSpecificationPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof ExecutionOccurrenceSpecification) && ((ExecutionOccurrenceSpecificationPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ExecutionOccurrenceSpecificationPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class ExecutionOccurrenceSpecificationPropertiesEditionProvider extends P
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof ExecutionOccurrenceSpecification) {
-			return new ExecutionOccurrenceSpecificationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof ExecutionOccurrenceSpecification) {
+      return new ExecutionOccurrenceSpecificationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class ExecutionOccurrenceSpecificationPropertiesEditionProvider extends P
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof ExecutionOccurrenceSpecification) {
-			if (ExecutionOccurrenceSpecificationPropertiesEditionComponent.BASE_PART.equals(part))
-				return new ExecutionOccurrenceSpecificationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof ExecutionOccurrenceSpecification) {
+      if (ExecutionOccurrenceSpecificationPropertiesEditionComponent.BASE_PART.equals(part))
+        return new ExecutionOccurrenceSpecificationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

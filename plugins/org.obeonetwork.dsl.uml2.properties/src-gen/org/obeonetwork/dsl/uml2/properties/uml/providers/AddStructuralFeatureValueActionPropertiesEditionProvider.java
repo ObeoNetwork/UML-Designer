@@ -58,9 +58,9 @@ public class AddStructuralFeatureValueActionPropertiesEditionProvider extends Pr
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof AddStructuralFeatureValueAction) 
-					&& (UMLPackage.Literals.ADD_STRUCTURAL_FEATURE_VALUE_ACTION == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof AddStructuralFeatureValueAction) 
+          && (UMLPackage.Literals.ADD_STRUCTURAL_FEATURE_VALUE_ACTION == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class AddStructuralFeatureValueActionPropertiesEditionProvider extends Pr
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof AddStructuralFeatureValueAction) && (AddStructuralFeatureValueActionPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof AddStructuralFeatureValueAction) && (AddStructuralFeatureValueActionPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class AddStructuralFeatureValueActionPropertiesEditionProvider extends Pr
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof AddStructuralFeatureValueAction) && (refinement == AddStructuralFeatureValueActionPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof AddStructuralFeatureValueAction) && (refinement == AddStructuralFeatureValueActionPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class AddStructuralFeatureValueActionPropertiesEditionProvider extends Pr
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof AddStructuralFeatureValueAction) && ((AddStructuralFeatureValueActionPropertiesEditionComponent.BASE_PART.equals(part) && refinement == AddStructuralFeatureValueActionPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof AddStructuralFeatureValueAction) && ((AddStructuralFeatureValueActionPropertiesEditionComponent.BASE_PART.equals(part) && refinement == AddStructuralFeatureValueActionPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class AddStructuralFeatureValueActionPropertiesEditionProvider extends Pr
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof AddStructuralFeatureValueAction) {
-			return new AddStructuralFeatureValueActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof AddStructuralFeatureValueAction) {
+      return new AddStructuralFeatureValueActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class AddStructuralFeatureValueActionPropertiesEditionProvider extends Pr
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof AddStructuralFeatureValueAction) {
-			if (AddStructuralFeatureValueActionPropertiesEditionComponent.BASE_PART.equals(part))
-				return new AddStructuralFeatureValueActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof AddStructuralFeatureValueAction) {
+      if (AddStructuralFeatureValueActionPropertiesEditionComponent.BASE_PART.equals(part))
+        return new AddStructuralFeatureValueActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

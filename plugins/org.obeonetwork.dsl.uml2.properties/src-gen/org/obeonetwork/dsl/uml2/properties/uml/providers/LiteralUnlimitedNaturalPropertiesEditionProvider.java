@@ -58,9 +58,9 @@ public class LiteralUnlimitedNaturalPropertiesEditionProvider extends Properties
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof LiteralUnlimitedNatural) 
-					&& (UMLPackage.Literals.LITERAL_UNLIMITED_NATURAL == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof LiteralUnlimitedNatural) 
+          && (UMLPackage.Literals.LITERAL_UNLIMITED_NATURAL == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class LiteralUnlimitedNaturalPropertiesEditionProvider extends Properties
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof LiteralUnlimitedNatural) && (LiteralUnlimitedNaturalPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof LiteralUnlimitedNatural) && (LiteralUnlimitedNaturalPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class LiteralUnlimitedNaturalPropertiesEditionProvider extends Properties
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof LiteralUnlimitedNatural) && (refinement == LiteralUnlimitedNaturalPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof LiteralUnlimitedNatural) && (refinement == LiteralUnlimitedNaturalPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class LiteralUnlimitedNaturalPropertiesEditionProvider extends Properties
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof LiteralUnlimitedNatural) && ((LiteralUnlimitedNaturalPropertiesEditionComponent.BASE_PART.equals(part) && refinement == LiteralUnlimitedNaturalPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof LiteralUnlimitedNatural) && ((LiteralUnlimitedNaturalPropertiesEditionComponent.BASE_PART.equals(part) && refinement == LiteralUnlimitedNaturalPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class LiteralUnlimitedNaturalPropertiesEditionProvider extends Properties
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof LiteralUnlimitedNatural) {
-			return new LiteralUnlimitedNaturalPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof LiteralUnlimitedNatural) {
+      return new LiteralUnlimitedNaturalPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class LiteralUnlimitedNaturalPropertiesEditionProvider extends Properties
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof LiteralUnlimitedNatural) {
-			if (LiteralUnlimitedNaturalPropertiesEditionComponent.BASE_PART.equals(part))
-				return new LiteralUnlimitedNaturalPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof LiteralUnlimitedNatural) {
+      if (LiteralUnlimitedNaturalPropertiesEditionComponent.BASE_PART.equals(part))
+        return new LiteralUnlimitedNaturalPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

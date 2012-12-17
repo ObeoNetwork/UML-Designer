@@ -121,11 +121,11 @@ public class ActivityPartitionPropertiesEditionComponent extends SinglePartPrope
 	 * @generated
 	 */
 	public ActivityPartitionPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject activityPartition, String editing_mode) {
-		super(editingContext, activityPartition, editing_mode);
-		parts = new String[] { BASE_PART };
-		repositoryKey = UmlViewsRepository.class;
-		partKey = UmlViewsRepository.ActivityPartition.class;
-	}
+    super(editingContext, activityPartition, editing_mode);
+    parts = new String[] { BASE_PART };
+    repositoryKey = UmlViewsRepository.class;
+    partKey = UmlViewsRepository.ActivityPartition.class;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -135,163 +135,161 @@ public class ActivityPartitionPropertiesEditionComponent extends SinglePartPrope
 	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			
-			final ActivityPartition activityPartition = (ActivityPartition)elt;
-			final ActivityPartitionPropertiesEditionPart basePart = (ActivityPartitionPropertiesEditionPart)editingPart;
-			// init values
-			if (isAccessible(UmlViewsRepository.ActivityPartition.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(UMLPackage.Literals.STRING, activityPartition.getName()));
-			
-			if (isAccessible(UmlViewsRepository.ActivityPartition.Properties.visibility)) {
-				basePart.initVisibility(EEFUtils.choiceOfValues(activityPartition, UMLPackage.eINSTANCE.getNamedElement_Visibility()), activityPartition.getVisibility());
-			}
-			if (isAccessible(UmlViewsRepository.ActivityPartition.Properties.clientDependency)) {
-				clientDependencySettings = new ReferencesTableSettings(activityPartition, UMLPackage.eINSTANCE.getNamedElement_ClientDependency());
-				basePart.initClientDependency(clientDependencySettings);
-			}
-			if (isAccessible(UmlViewsRepository.ActivityPartition.Properties.inActivity)) {
-				// init part
-				inActivitySettings = new EObjectFlatComboSettings(activityPartition, UMLPackage.eINSTANCE.getActivityGroup_InActivity());
-				basePart.initInActivity(inActivitySettings);
-				// set the button mode
-				basePart.setInActivityButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			if (isAccessible(UmlViewsRepository.ActivityPartition.Properties.isDimension)) {
-				basePart.setIsDimension(activityPartition.isDimension());
-			}
-			if (isAccessible(UmlViewsRepository.ActivityPartition.Properties.isExternal)) {
-				basePart.setIsExternal(activityPartition.isExternal());
-			}
-			if (isAccessible(UmlViewsRepository.ActivityPartition.Properties.node)) {
-				nodeSettings = new ReferencesTableSettings(activityPartition, UMLPackage.eINSTANCE.getActivityPartition_Node());
-				basePart.initNode(nodeSettings);
-			}
-			if (isAccessible(UmlViewsRepository.ActivityPartition.Properties.superPartition)) {
-				// init part
-				superPartitionSettings = new EObjectFlatComboSettings(activityPartition, UMLPackage.eINSTANCE.getActivityPartition_SuperPartition());
-				basePart.initSuperPartition(superPartitionSettings);
-				// set the button mode
-				basePart.setSuperPartitionButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			if (isAccessible(UmlViewsRepository.ActivityPartition.Properties.represents)) {
-				// init part
-				representsSettings = new EObjectFlatComboSettings(activityPartition, UMLPackage.eINSTANCE.getActivityPartition_Represents());
-				basePart.initRepresents(representsSettings);
-				// set the button mode
-				basePart.setRepresentsButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			if (isAccessible(UmlViewsRepository.ActivityPartition.Properties.edge)) {
-				edgeSettings = new ReferencesTableSettings(activityPartition, UMLPackage.eINSTANCE.getActivityPartition_Edge());
-				basePart.initEdge(edgeSettings);
-			}
-			// init filters
-			
-			
-			if (isAccessible(UmlViewsRepository.ActivityPartition.Properties.clientDependency)) {
-				basePart.addFilterToClientDependency(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (!basePart.isContainedInClientDependencyTable((EObject)element));
-						return element instanceof Resource;
-					}
-				
-				});
-				basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.Literals.DEPENDENCY));
-			}
-			if (isAccessible(UmlViewsRepository.ActivityPartition.Properties.inActivity)) {
-				basePart.addFilterToInActivity(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof String && element.equals("")) || (element instanceof Activity); //$NON-NLS-1$ 
-					}
-					
-				});
-			}
-			
-			
-			if (isAccessible(UmlViewsRepository.ActivityPartition.Properties.node)) {
-				basePart.addFilterToNode(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (!basePart.isContainedInNodeTable((EObject)element));
-						return element instanceof Resource;
-					}
-				
-				});
-				basePart.addFilterToNode(new EObjectFilter(UMLPackage.Literals.ACTIVITY_NODE));
-			}
-			if (isAccessible(UmlViewsRepository.ActivityPartition.Properties.superPartition)) {
-				basePart.addFilterToSuperPartition(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof String && element.equals("")) || (element instanceof ActivityPartition); //$NON-NLS-1$ 
-					}
-					
-				});
-			}
-			if (isAccessible(UmlViewsRepository.ActivityPartition.Properties.represents)) {
-				basePart.addFilterToRepresents(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof String && element.equals("")) || (element instanceof Element); //$NON-NLS-1$ 
-					}
-					
-				});
-			}
-			if (isAccessible(UmlViewsRepository.ActivityPartition.Properties.edge)) {
-				basePart.addFilterToEdge(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (!basePart.isContainedInEdgeTable((EObject)element));
-						return element instanceof Resource;
-					}
-				
-				});
-				basePart.addFilterToEdge(new EObjectFilter(UMLPackage.Literals.ACTIVITY_EDGE));
-			}
-			// init values for referenced views
-			
-			// init filters for referenced views
-			
-		}
-		setInitializing(false);
-	}
+    setInitializing(true);
+    if (editingPart != null && key == partKey) {
+      editingPart.setContext(elt, allResource);
+      
+      final ActivityPartition activityPartition = (ActivityPartition)elt;
+      final ActivityPartitionPropertiesEditionPart basePart = (ActivityPartitionPropertiesEditionPart)editingPart;
+      // init values
+      if (isAccessible(UmlViewsRepository.ActivityPartition.Properties.name))
+        basePart.setName(EEFConverterUtil.convertToString(UMLPackage.Literals.STRING, activityPartition.getName()));
+      
+      if (isAccessible(UmlViewsRepository.ActivityPartition.Properties.visibility)) {
+        basePart.initVisibility(EEFUtils.choiceOfValues(activityPartition, UMLPackage.eINSTANCE.getNamedElement_Visibility()), activityPartition.getVisibility());
+      }
+      if (isAccessible(UmlViewsRepository.ActivityPartition.Properties.clientDependency)) {
+        clientDependencySettings = new ReferencesTableSettings(activityPartition, UMLPackage.eINSTANCE.getNamedElement_ClientDependency());
+        basePart.initClientDependency(clientDependencySettings);
+      }
+      if (isAccessible(UmlViewsRepository.ActivityPartition.Properties.inActivity)) {
+        // init part
+        inActivitySettings = new EObjectFlatComboSettings(activityPartition, UMLPackage.eINSTANCE.getActivityGroup_InActivity());
+        basePart.initInActivity(inActivitySettings);
+        // set the button mode
+        basePart.setInActivityButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      basePart.setIsDimension(activityPartition.isDimension());
+      
+      basePart.setIsExternal(activityPartition.isExternal());
+      
+      if (isAccessible(UmlViewsRepository.ActivityPartition.Properties.node)) {
+        nodeSettings = new ReferencesTableSettings(activityPartition, UMLPackage.eINSTANCE.getActivityPartition_Node());
+        basePart.initNode(nodeSettings);
+      }
+      if (isAccessible(UmlViewsRepository.ActivityPartition.Properties.superPartition)) {
+        // init part
+        superPartitionSettings = new EObjectFlatComboSettings(activityPartition, UMLPackage.eINSTANCE.getActivityPartition_SuperPartition());
+        basePart.initSuperPartition(superPartitionSettings);
+        // set the button mode
+        basePart.setSuperPartitionButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      if (isAccessible(UmlViewsRepository.ActivityPartition.Properties.represents)) {
+        // init part
+        representsSettings = new EObjectFlatComboSettings(activityPartition, UMLPackage.eINSTANCE.getActivityPartition_Represents());
+        basePart.initRepresents(representsSettings);
+        // set the button mode
+        basePart.setRepresentsButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      if (isAccessible(UmlViewsRepository.ActivityPartition.Properties.edge)) {
+        edgeSettings = new ReferencesTableSettings(activityPartition, UMLPackage.eINSTANCE.getActivityPartition_Edge());
+        basePart.initEdge(edgeSettings);
+      }
+      // init filters
+      
+      
+      if (isAccessible(UmlViewsRepository.ActivityPartition.Properties.clientDependency)) {
+        basePart.addFilterToClientDependency(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            if (element instanceof EObject)
+              return (!basePart.isContainedInClientDependencyTable((EObject)element));
+            return element instanceof Resource;
+          }
+        
+        });
+        basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.Literals.DEPENDENCY));
+      }
+      if (isAccessible(UmlViewsRepository.ActivityPartition.Properties.inActivity)) {
+        basePart.addFilterToInActivity(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof String && element.equals("")) || (element instanceof Activity); //$NON-NLS-1$ 
+          }
+          
+        });
+      }
+      
+      
+      if (isAccessible(UmlViewsRepository.ActivityPartition.Properties.node)) {
+        basePart.addFilterToNode(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            if (element instanceof EObject)
+              return (!basePart.isContainedInNodeTable((EObject)element));
+            return element instanceof Resource;
+          }
+        
+        });
+        basePart.addFilterToNode(new EObjectFilter(UMLPackage.Literals.ACTIVITY_NODE));
+      }
+      if (isAccessible(UmlViewsRepository.ActivityPartition.Properties.superPartition)) {
+        basePart.addFilterToSuperPartition(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof String && element.equals("")) || (element instanceof ActivityPartition); //$NON-NLS-1$ 
+          }
+          
+        });
+      }
+      if (isAccessible(UmlViewsRepository.ActivityPartition.Properties.represents)) {
+        basePart.addFilterToRepresents(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof String && element.equals("")) || (element instanceof Element); //$NON-NLS-1$ 
+          }
+          
+        });
+      }
+      if (isAccessible(UmlViewsRepository.ActivityPartition.Properties.edge)) {
+        basePart.addFilterToEdge(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            if (element instanceof EObject)
+              return (!basePart.isContainedInEdgeTable((EObject)element));
+            return element instanceof Resource;
+          }
+        
+        });
+        basePart.addFilterToEdge(new EObjectFilter(UMLPackage.Literals.ACTIVITY_EDGE));
+      }
+      // init values for referenced views
+      
+      // init filters for referenced views
+      
+    }
+    setInitializing(false);
+  }
 
 
 
@@ -349,99 +347,99 @@ public class ActivityPartitionPropertiesEditionComponent extends SinglePartPrope
 	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		ActivityPartition activityPartition = (ActivityPartition)semanticObject;
-		if (UmlViewsRepository.ActivityPartition.Properties.name == event.getAffectedEditor()) {
-			activityPartition.setName((java.lang.String)EEFConverterUtil.createFromString(UMLPackage.Literals.STRING, (String)event.getNewValue()));
-		}
-		if (UmlViewsRepository.ActivityPartition.Properties.visibility == event.getAffectedEditor()) {
-			activityPartition.setVisibility((VisibilityKind)event.getNewValue());
-		}
-		if (UmlViewsRepository.ActivityPartition.Properties.clientDependency == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD) {
-				if (event.getNewValue() instanceof Dependency) {
-					clientDependencySettings.addToReference((EObject) event.getNewValue());
-				}
-			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				clientDependencySettings.removeFromReference((EObject) event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-				clientDependencySettings.move(event.getNewIndex(), (Dependency) event.getNewValue());
-			}
-		}
-		if (UmlViewsRepository.ActivityPartition.Properties.inActivity == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				inActivitySettings.setToReference((Activity)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				Activity eObject = UMLFactory.eINSTANCE.createActivity();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy != null) {
-						policy.execute();
-					}
-				}
-				inActivitySettings.setToReference(eObject);
-			}
-		}
-		if (UmlViewsRepository.ActivityPartition.Properties.isDimension == event.getAffectedEditor()) {
-			activityPartition.setIsDimension((Boolean)event.getNewValue());
-		}
-		if (UmlViewsRepository.ActivityPartition.Properties.isExternal == event.getAffectedEditor()) {
-			activityPartition.setIsExternal((Boolean)event.getNewValue());
-		}
-		if (UmlViewsRepository.ActivityPartition.Properties.node == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD) {
-				if (event.getNewValue() instanceof ActivityNode) {
-					nodeSettings.addToReference((EObject) event.getNewValue());
-				}
-			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				nodeSettings.removeFromReference((EObject) event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-				nodeSettings.move(event.getNewIndex(), (ActivityNode) event.getNewValue());
-			}
-		}
-		if (UmlViewsRepository.ActivityPartition.Properties.superPartition == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				superPartitionSettings.setToReference((ActivityPartition)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				ActivityPartition eObject = UMLFactory.eINSTANCE.createActivityPartition();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy != null) {
-						policy.execute();
-					}
-				}
-				superPartitionSettings.setToReference(eObject);
-			}
-		}
-		if (UmlViewsRepository.ActivityPartition.Properties.represents == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				representsSettings.setToReference((Element)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, representsSettings, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy instanceof CreateEditingPolicy) {
-						policy.execute();
-					}
-				}
-			}
-		}
-		if (UmlViewsRepository.ActivityPartition.Properties.edge == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD) {
-				if (event.getNewValue() instanceof ActivityEdge) {
-					edgeSettings.addToReference((EObject) event.getNewValue());
-				}
-			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				edgeSettings.removeFromReference((EObject) event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-				edgeSettings.move(event.getNewIndex(), (ActivityEdge) event.getNewValue());
-			}
-		}
-	}
+    ActivityPartition activityPartition = (ActivityPartition)semanticObject;
+    if (UmlViewsRepository.ActivityPartition.Properties.name == event.getAffectedEditor()) {
+      activityPartition.setName((java.lang.String)EEFConverterUtil.createFromString(UMLPackage.Literals.STRING, (String)event.getNewValue()));
+    }
+    if (UmlViewsRepository.ActivityPartition.Properties.visibility == event.getAffectedEditor()) {
+      activityPartition.setVisibility((VisibilityKind)event.getNewValue());
+    }
+    if (UmlViewsRepository.ActivityPartition.Properties.clientDependency == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.ADD) {
+        if (event.getNewValue() instanceof Dependency) {
+          clientDependencySettings.addToReference((EObject) event.getNewValue());
+        }
+      } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+        clientDependencySettings.removeFromReference((EObject) event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+        clientDependencySettings.move(event.getNewIndex(), (Dependency) event.getNewValue());
+      }
+    }
+    if (UmlViewsRepository.ActivityPartition.Properties.inActivity == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        inActivitySettings.setToReference((Activity)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        Activity eObject = UMLFactory.eINSTANCE.createActivity();
+        EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy != null) {
+            policy.execute();
+          }
+        }
+        inActivitySettings.setToReference(eObject);
+      }
+    }
+    if (UmlViewsRepository.ActivityPartition.Properties.isDimension == event.getAffectedEditor()) {
+      activityPartition.setIsDimension((Boolean)event.getNewValue());
+    }
+    if (UmlViewsRepository.ActivityPartition.Properties.isExternal == event.getAffectedEditor()) {
+      activityPartition.setIsExternal((Boolean)event.getNewValue());
+    }
+    if (UmlViewsRepository.ActivityPartition.Properties.node == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.ADD) {
+        if (event.getNewValue() instanceof ActivityNode) {
+          nodeSettings.addToReference((EObject) event.getNewValue());
+        }
+      } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+        nodeSettings.removeFromReference((EObject) event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+        nodeSettings.move(event.getNewIndex(), (ActivityNode) event.getNewValue());
+      }
+    }
+    if (UmlViewsRepository.ActivityPartition.Properties.superPartition == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        superPartitionSettings.setToReference((ActivityPartition)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        ActivityPartition eObject = UMLFactory.eINSTANCE.createActivityPartition();
+        EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy != null) {
+            policy.execute();
+          }
+        }
+        superPartitionSettings.setToReference(eObject);
+      }
+    }
+    if (UmlViewsRepository.ActivityPartition.Properties.represents == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        representsSettings.setToReference((Element)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, representsSettings, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy instanceof CreateEditingPolicy) {
+            policy.execute();
+          }
+        }
+      }
+    }
+    if (UmlViewsRepository.ActivityPartition.Properties.edge == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.ADD) {
+        if (event.getNewValue() instanceof ActivityEdge) {
+          edgeSettings.addToReference((EObject) event.getNewValue());
+        }
+      } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+        edgeSettings.removeFromReference((EObject) event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+        edgeSettings.move(event.getNewIndex(), (ActivityEdge) event.getNewValue());
+      }
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -512,8 +510,8 @@ public class ActivityPartitionPropertiesEditionComponent extends SinglePartPrope
 	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == UmlViewsRepository.ActivityPartition.Properties.isDimension || key == UmlViewsRepository.ActivityPartition.Properties.isExternal;
-	}
+    return key == UmlViewsRepository.ActivityPartition.Properties.isDimension || key == UmlViewsRepository.ActivityPartition.Properties.isExternal;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -522,45 +520,45 @@ public class ActivityPartitionPropertiesEditionComponent extends SinglePartPrope
 	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
-		Diagnostic ret = Diagnostic.OK_INSTANCE;
-		if (event.getNewValue() != null) {
-			try {
-				if (UmlViewsRepository.ActivityPartition.Properties.name == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newValue);
-				}
-				if (UmlViewsRepository.ActivityPartition.Properties.visibility == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), newValue);
-				}
-				if (UmlViewsRepository.ActivityPartition.Properties.isDimension == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getActivityPartition_IsDimension().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getActivityPartition_IsDimension().getEAttributeType(), newValue);
-				}
-				if (UmlViewsRepository.ActivityPartition.Properties.isExternal == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getActivityPartition_IsExternal().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getActivityPartition_IsExternal().getEAttributeType(), newValue);
-				}
-			} catch (IllegalArgumentException iae) {
-				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
-				ret = BasicDiagnostic.toDiagnostic(we);
-			}
-		}
-		return ret;
-	}
+    Diagnostic ret = Diagnostic.OK_INSTANCE;
+    if (event.getNewValue() != null) {
+      try {
+        if (UmlViewsRepository.ActivityPartition.Properties.name == event.getAffectedEditor()) {
+          Object newValue = event.getNewValue();
+          if (newValue instanceof String) {
+            newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), (String)newValue);
+          }
+          ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newValue);
+        }
+        if (UmlViewsRepository.ActivityPartition.Properties.visibility == event.getAffectedEditor()) {
+          Object newValue = event.getNewValue();
+          if (newValue instanceof String) {
+            newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), (String)newValue);
+          }
+          ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), newValue);
+        }
+        if (UmlViewsRepository.ActivityPartition.Properties.isDimension == event.getAffectedEditor()) {
+          Object newValue = event.getNewValue();
+          if (newValue instanceof String) {
+            newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getActivityPartition_IsDimension().getEAttributeType(), (String)newValue);
+          }
+          ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getActivityPartition_IsDimension().getEAttributeType(), newValue);
+        }
+        if (UmlViewsRepository.ActivityPartition.Properties.isExternal == event.getAffectedEditor()) {
+          Object newValue = event.getNewValue();
+          if (newValue instanceof String) {
+            newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getActivityPartition_IsExternal().getEAttributeType(), (String)newValue);
+          }
+          ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getActivityPartition_IsExternal().getEAttributeType(), newValue);
+        }
+      } catch (IllegalArgumentException iae) {
+        ret = BasicDiagnostic.toDiagnostic(iae);
+      } catch (WrappedException we) {
+        ret = BasicDiagnostic.toDiagnostic(we);
+      }
+    }
+    return ret;
+  }
 
 
 	

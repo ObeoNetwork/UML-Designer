@@ -88,8 +88,8 @@ public class ElementImportPropertiesEditionPartImpl extends CompositePropertiesE
 	 * @generated
 	 */
 	public ElementImportPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+    super(editionComponent);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -99,13 +99,13 @@ public class ElementImportPropertiesEditionPartImpl extends CompositePropertiesE
 	 * @generated
 	 */
 	public Composite createFigure(final Composite parent) {
-		view = new Composite(parent, SWT.NONE);
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
-		view.setLayout(layout);
-		createControls(view);
-		return view;
-	}
+    view = new Composite(parent, SWT.NONE);
+    GridLayout layout = new GridLayout();
+    layout.numColumns = 3;
+    view.setLayout(layout);
+    createControls(view);
+    return view;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -115,178 +115,178 @@ public class ElementImportPropertiesEditionPartImpl extends CompositePropertiesE
 	 * @generated
 	 */
 	public void createControls(Composite view) { 
-		CompositionSequence elementImportStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep propertiesStep = elementImportStep.addStep(UmlViewsRepository.ElementImport.Properties.class);
-		propertiesStep.addStep(UmlViewsRepository.ElementImport.Properties.visibility);
-		propertiesStep.addStep(UmlViewsRepository.ElementImport.Properties.alias);
-		propertiesStep.addStep(UmlViewsRepository.ElementImport.Properties.importedElement);
-		propertiesStep.addStep(UmlViewsRepository.ElementImport.Properties.importingNamespace);
-		
-		
-		composer = new PartComposer(elementImportStep) {
+    CompositionSequence elementImportStep = new BindingCompositionSequence(propertiesEditionComponent);
+    CompositionStep propertiesStep = elementImportStep.addStep(UmlViewsRepository.ElementImport.Properties.class);
+    propertiesStep.addStep(UmlViewsRepository.ElementImport.Properties.visibility);
+    propertiesStep.addStep(UmlViewsRepository.ElementImport.Properties.alias);
+    propertiesStep.addStep(UmlViewsRepository.ElementImport.Properties.importedElement);
+    propertiesStep.addStep(UmlViewsRepository.ElementImport.Properties.importingNamespace);
+    
+    
+    composer = new PartComposer(elementImportStep) {
 
-			@Override
-			public Composite addToPart(Composite parent, Object key) {
-				if (key == UmlViewsRepository.ElementImport.Properties.class) {
-					return createPropertiesGroup(parent);
-				}
-				if (key == UmlViewsRepository.ElementImport.Properties.visibility) {
-					return createVisibilityEMFComboViewer(parent);
-				}
-				if (key == UmlViewsRepository.ElementImport.Properties.alias) {
-					return createAliasText(parent);
-				}
-				if (key == UmlViewsRepository.ElementImport.Properties.importedElement) {
-					return createImportedElementFlatComboViewer(parent);
-				}
-				if (key == UmlViewsRepository.ElementImport.Properties.importingNamespace) {
-					return createImportingNamespaceFlatComboViewer(parent);
-				}
-				return parent;
-			}
-		};
-		composer.compose(view);
-	}
+      @Override
+      public Composite addToPart(Composite parent, Object key) {
+        if (key == UmlViewsRepository.ElementImport.Properties.class) {
+          return createPropertiesGroup(parent);
+        }
+        if (key == UmlViewsRepository.ElementImport.Properties.visibility) {
+          return createVisibilityEMFComboViewer(parent);
+        }
+        if (key == UmlViewsRepository.ElementImport.Properties.alias) {
+          return createAliasText(parent);
+        }
+        if (key == UmlViewsRepository.ElementImport.Properties.importedElement) {
+          return createImportedElementFlatComboViewer(parent);
+        }
+        if (key == UmlViewsRepository.ElementImport.Properties.importingNamespace) {
+          return createImportingNamespaceFlatComboViewer(parent);
+        }
+        return parent;
+      }
+    };
+    composer.compose(view);
+  }
 
 	/**
 	 * @generated
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
-		Group propertiesGroup = new Group(parent, SWT.NONE);
-		propertiesGroup.setText(UmlMessages.ElementImportPropertiesEditionPart_PropertiesGroupLabel);
-		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesGroupData.horizontalSpan = 3;
-		propertiesGroup.setLayoutData(propertiesGroupData);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		return propertiesGroup;
-	}
+    Group propertiesGroup = new Group(parent, SWT.NONE);
+    propertiesGroup.setText(UmlMessages.ElementImportPropertiesEditionPart_PropertiesGroupLabel);
+    GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
+    propertiesGroupData.horizontalSpan = 3;
+    propertiesGroup.setLayoutData(propertiesGroupData);
+    GridLayout propertiesGroupLayout = new GridLayout();
+    propertiesGroupLayout.numColumns = 3;
+    propertiesGroup.setLayout(propertiesGroupLayout);
+    return propertiesGroup;
+  }
 
 	/**
 	 * @generated
 	 */
 	
 	protected Composite createVisibilityEMFComboViewer(Composite parent) {
-		createDescription(parent, UmlViewsRepository.ElementImport.Properties.visibility, UmlMessages.ElementImportPropertiesEditionPart_VisibilityLabel);
-		visibility = new EMFComboViewer(parent);
-		visibility.setContentProvider(new ArrayContentProvider());
-		visibility.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
-		GridData visibilityData = new GridData(GridData.FILL_HORIZONTAL);
-		visibility.getCombo().setLayoutData(visibilityData);
-		visibility.addSelectionChangedListener(new ISelectionChangedListener() {
+    createDescription(parent, UmlViewsRepository.ElementImport.Properties.visibility, UmlMessages.ElementImportPropertiesEditionPart_VisibilityLabel);
+    visibility = new EMFComboViewer(parent);
+    visibility.setContentProvider(new ArrayContentProvider());
+    visibility.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+    GridData visibilityData = new GridData(GridData.FILL_HORIZONTAL);
+    visibility.getCombo().setLayoutData(visibilityData);
+    visibility.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * 	@generated
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ElementImportPropertiesEditionPartImpl.this, UmlViewsRepository.ElementImport.Properties.visibility, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getVisibility()));
-			}
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       * 	@generated
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ElementImportPropertiesEditionPartImpl.this, UmlViewsRepository.ElementImport.Properties.visibility, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getVisibility()));
+      }
 
-		});
-		visibility.setID(UmlViewsRepository.ElementImport.Properties.visibility);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ElementImport.Properties.visibility, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    visibility.setID(UmlViewsRepository.ElementImport.Properties.visibility);
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ElementImport.Properties.visibility, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @generated
 	 */
 	
 	protected Composite createAliasText(Composite parent) {
-		createDescription(parent, UmlViewsRepository.ElementImport.Properties.alias, UmlMessages.ElementImportPropertiesEditionPart_AliasLabel);
-		alias = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		GridData aliasData = new GridData(GridData.FILL_HORIZONTAL);
-		alias.setLayoutData(aliasData);
-		alias.addFocusListener(new FocusAdapter() {
+    createDescription(parent, UmlViewsRepository.ElementImport.Properties.alias, UmlMessages.ElementImportPropertiesEditionPart_AliasLabel);
+    alias = SWTUtils.createScrollableText(parent, SWT.BORDER);
+    GridData aliasData = new GridData(GridData.FILL_HORIZONTAL);
+    alias.setLayoutData(aliasData);
+    alias.addFocusListener(new FocusAdapter() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 * @generated
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ElementImportPropertiesEditionPartImpl.this, UmlViewsRepository.ElementImport.Properties.alias, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, alias.getText()));
-			}
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+       * @generated
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void focusLost(FocusEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ElementImportPropertiesEditionPartImpl.this, UmlViewsRepository.ElementImport.Properties.alias, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, alias.getText()));
+      }
 
-		});
-		alias.addKeyListener(new KeyAdapter() {
+    });
+    alias.addKeyListener(new KeyAdapter() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 * @generated
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ElementImportPropertiesEditionPartImpl.this, UmlViewsRepository.ElementImport.Properties.alias, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, alias.getText()));
-				}
-			}
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+       * @generated
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void keyPressed(KeyEvent e) {
+        if (e.character == SWT.CR) {
+          if (propertiesEditionComponent != null)
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ElementImportPropertiesEditionPartImpl.this, UmlViewsRepository.ElementImport.Properties.alias, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, alias.getText()));
+        }
+      }
 
-		});
-		EditingUtils.setID(alias, UmlViewsRepository.ElementImport.Properties.alias);
-		EditingUtils.setEEFtype(alias, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ElementImport.Properties.alias, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    EditingUtils.setID(alias, UmlViewsRepository.ElementImport.Properties.alias);
+    EditingUtils.setEEFtype(alias, "eef::Text"); //$NON-NLS-1$
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ElementImport.Properties.alias, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @param parent the parent composite
 	 * @generated
 	 */
 	protected Composite createImportedElementFlatComboViewer(Composite parent) {
-		createDescription(parent, UmlViewsRepository.ElementImport.Properties.importedElement, UmlMessages.ElementImportPropertiesEditionPart_ImportedElementLabel);
-		importedElement = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ElementImport.Properties.importedElement, UmlViewsRepository.SWT_KIND));
-		importedElement.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    createDescription(parent, UmlViewsRepository.ElementImport.Properties.importedElement, UmlMessages.ElementImportPropertiesEditionPart_ImportedElementLabel);
+    importedElement = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ElementImport.Properties.importedElement, UmlViewsRepository.SWT_KIND));
+    importedElement.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
-		importedElement.addSelectionChangedListener(new ISelectionChangedListener() {
+    importedElement.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ElementImportPropertiesEditionPartImpl.this, UmlViewsRepository.ElementImport.Properties.importedElement, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getImportedElement()));
-			}
+      public void selectionChanged(SelectionChangedEvent event) {
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ElementImportPropertiesEditionPartImpl.this, UmlViewsRepository.ElementImport.Properties.importedElement, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getImportedElement()));
+      }
 
-		});
-		GridData importedElementData = new GridData(GridData.FILL_HORIZONTAL);
-		importedElement.setLayoutData(importedElementData);
-		importedElement.setID(UmlViewsRepository.ElementImport.Properties.importedElement);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ElementImport.Properties.importedElement, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    GridData importedElementData = new GridData(GridData.FILL_HORIZONTAL);
+    importedElement.setLayoutData(importedElementData);
+    importedElement.setID(UmlViewsRepository.ElementImport.Properties.importedElement);
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ElementImport.Properties.importedElement, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @param parent the parent composite
 	 * @generated
 	 */
 	protected Composite createImportingNamespaceFlatComboViewer(Composite parent) {
-		createDescription(parent, UmlViewsRepository.ElementImport.Properties.importingNamespace, UmlMessages.ElementImportPropertiesEditionPart_ImportingNamespaceLabel);
-		importingNamespace = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ElementImport.Properties.importingNamespace, UmlViewsRepository.SWT_KIND));
-		importingNamespace.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    createDescription(parent, UmlViewsRepository.ElementImport.Properties.importingNamespace, UmlMessages.ElementImportPropertiesEditionPart_ImportingNamespaceLabel);
+    importingNamespace = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ElementImport.Properties.importingNamespace, UmlViewsRepository.SWT_KIND));
+    importingNamespace.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
-		importingNamespace.addSelectionChangedListener(new ISelectionChangedListener() {
+    importingNamespace.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ElementImportPropertiesEditionPartImpl.this, UmlViewsRepository.ElementImport.Properties.importingNamespace, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getImportingNamespace()));
-			}
+      public void selectionChanged(SelectionChangedEvent event) {
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ElementImportPropertiesEditionPartImpl.this, UmlViewsRepository.ElementImport.Properties.importingNamespace, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getImportingNamespace()));
+      }
 
-		});
-		GridData importingNamespaceData = new GridData(GridData.FILL_HORIZONTAL);
-		importingNamespace.setLayoutData(importingNamespaceData);
-		importingNamespace.setID(UmlViewsRepository.ElementImport.Properties.importingNamespace);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ElementImport.Properties.importingNamespace, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    GridData importingNamespaceData = new GridData(GridData.FILL_HORIZONTAL);
+    importingNamespace.setLayoutData(importingNamespaceData);
+    importingNamespace.setID(UmlViewsRepository.ElementImport.Properties.importingNamespace);
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ElementImport.Properties.importingNamespace, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 
 	/**
@@ -296,7 +296,7 @@ public class ElementImportPropertiesEditionPartImpl extends CompositePropertiesE
 	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-	}
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -305,9 +305,9 @@ public class ElementImportPropertiesEditionPartImpl extends CompositePropertiesE
 	 * @generated
 	 */
 	public Enumerator getVisibility() {
-		Enumerator selection = (Enumerator) ((StructuredSelection) visibility.getSelection()).getFirstElement();
-		return selection;
-	}
+    Enumerator selection = (Enumerator) ((StructuredSelection) visibility.getSelection()).getFirstElement();
+    return selection;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -334,16 +334,16 @@ public class ElementImportPropertiesEditionPartImpl extends CompositePropertiesE
 	 * @generated
 	 */
 	public void setVisibility(Enumerator newValue) {
-		visibility.modelUpdating(new StructuredSelection(newValue));
-		boolean readOnly = isReadOnly(UmlViewsRepository.ElementImport.Properties.visibility);
-		if (readOnly && visibility.isEnabled()) {
-			visibility.setEnabled(false);
-			visibility.setToolTipText(UmlMessages.ElementImport_ReadOnly);
-		} else if (!readOnly && !visibility.isEnabled()) {
-			visibility.setEnabled(true);
-		}	
-		
-	}
+    visibility.modelUpdating(new StructuredSelection(newValue));
+    boolean readOnly = isReadOnly(UmlViewsRepository.ElementImport.Properties.visibility);
+    if (readOnly && visibility.isEnabled()) {
+      visibility.setEnabled(false);
+      visibility.setToolTipText(UmlMessages.ElementImport_ReadOnly);
+    } else if (!readOnly && !visibility.isEnabled()) {
+      visibility.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -352,8 +352,8 @@ public class ElementImportPropertiesEditionPartImpl extends CompositePropertiesE
 	 * @generated
 	 */
 	public String getAlias() {
-		return alias.getText();
-	}
+    return alias.getText();
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -362,20 +362,20 @@ public class ElementImportPropertiesEditionPartImpl extends CompositePropertiesE
 	 * @generated
 	 */
 	public void setAlias(String newValue) {
-		if (newValue != null) {
-			alias.setText(newValue);
-		} else {
-			alias.setText(""); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.ElementImport.Properties.alias);
-		if (readOnly && alias.isEnabled()) {
-			alias.setEnabled(false);
-			alias.setToolTipText(UmlMessages.ElementImport_ReadOnly);
-		} else if (!readOnly && !alias.isEnabled()) {
-			alias.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      alias.setText(newValue);
+    } else {
+      alias.setText(""); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.ElementImport.Properties.alias);
+    if (readOnly && alias.isEnabled()) {
+      alias.setEnabled(false);
+      alias.setToolTipText(UmlMessages.ElementImport_ReadOnly);
+    } else if (!readOnly && !alias.isEnabled()) {
+      alias.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -384,13 +384,13 @@ public class ElementImportPropertiesEditionPartImpl extends CompositePropertiesE
 	 * @generated
 	 */
 	public EObject getImportedElement() {
-		if (importedElement.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) importedElement.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (importedElement.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) importedElement.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -419,20 +419,20 @@ public class ElementImportPropertiesEditionPartImpl extends CompositePropertiesE
 	 * @generated
 	 */
 	public void setImportedElement(EObject newValue) {
-		if (newValue != null) {
-			importedElement.setSelection(new StructuredSelection(newValue));
-		} else {
-			importedElement.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.ElementImport.Properties.importedElement);
-		if (readOnly && importedElement.isEnabled()) {
-			importedElement.setEnabled(false);
-			importedElement.setToolTipText(UmlMessages.ElementImport_ReadOnly);
-		} else if (!readOnly && !importedElement.isEnabled()) {
-			importedElement.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      importedElement.setSelection(new StructuredSelection(newValue));
+    } else {
+      importedElement.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.ElementImport.Properties.importedElement);
+    if (readOnly && importedElement.isEnabled()) {
+      importedElement.setEnabled(false);
+      importedElement.setToolTipText(UmlMessages.ElementImport_ReadOnly);
+    } else if (!readOnly && !importedElement.isEnabled()) {
+      importedElement.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -450,8 +450,8 @@ public class ElementImportPropertiesEditionPartImpl extends CompositePropertiesE
 	 * @generated
 	 */
 	public void addFilterToImportedElement(ViewerFilter filter) {
-		importedElement.addFilter(filter);
-	}
+    importedElement.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -460,8 +460,8 @@ public class ElementImportPropertiesEditionPartImpl extends CompositePropertiesE
 	 * @generated
 	 */
 	public void addBusinessFilterToImportedElement(ViewerFilter filter) {
-		importedElement.addBusinessRuleFilter(filter);
-	}
+    importedElement.addBusinessRuleFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -470,13 +470,13 @@ public class ElementImportPropertiesEditionPartImpl extends CompositePropertiesE
 	 * @generated
 	 */
 	public EObject getImportingNamespace() {
-		if (importingNamespace.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) importingNamespace.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (importingNamespace.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) importingNamespace.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -505,20 +505,20 @@ public class ElementImportPropertiesEditionPartImpl extends CompositePropertiesE
 	 * @generated
 	 */
 	public void setImportingNamespace(EObject newValue) {
-		if (newValue != null) {
-			importingNamespace.setSelection(new StructuredSelection(newValue));
-		} else {
-			importingNamespace.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.ElementImport.Properties.importingNamespace);
-		if (readOnly && importingNamespace.isEnabled()) {
-			importingNamespace.setEnabled(false);
-			importingNamespace.setToolTipText(UmlMessages.ElementImport_ReadOnly);
-		} else if (!readOnly && !importingNamespace.isEnabled()) {
-			importingNamespace.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      importingNamespace.setSelection(new StructuredSelection(newValue));
+    } else {
+      importingNamespace.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.ElementImport.Properties.importingNamespace);
+    if (readOnly && importingNamespace.isEnabled()) {
+      importingNamespace.setEnabled(false);
+      importingNamespace.setToolTipText(UmlMessages.ElementImport_ReadOnly);
+    } else if (!readOnly && !importingNamespace.isEnabled()) {
+      importingNamespace.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -536,8 +536,8 @@ public class ElementImportPropertiesEditionPartImpl extends CompositePropertiesE
 	 * @generated
 	 */
 	public void addFilterToImportingNamespace(ViewerFilter filter) {
-		importingNamespace.addFilter(filter);
-	}
+    importingNamespace.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -546,8 +546,8 @@ public class ElementImportPropertiesEditionPartImpl extends CompositePropertiesE
 	 * @generated
 	 */
 	public void addBusinessFilterToImportingNamespace(ViewerFilter filter) {
-		importingNamespace.addBusinessRuleFilter(filter);
-	}
+    importingNamespace.addBusinessRuleFilter(filter);
+  }
 
 
 
@@ -561,8 +561,8 @@ public class ElementImportPropertiesEditionPartImpl extends CompositePropertiesE
 	 * @generated
 	 */
 	public String getTitle() {
-		return UmlMessages.ElementImport_Part_Title;
-	}
+    return UmlMessages.ElementImport_Part_Title;
+  }
 
 
 

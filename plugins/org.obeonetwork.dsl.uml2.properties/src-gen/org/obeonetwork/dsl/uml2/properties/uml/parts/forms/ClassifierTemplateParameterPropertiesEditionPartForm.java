@@ -111,8 +111,8 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Sectio
 	 * @generated
 	 */
 	public ClassifierTemplateParameterPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+    super(editionComponent);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -122,15 +122,15 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Sectio
 	 * @generated
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
-		view = form.getBody();
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
-		view.setLayout(layout);
-		createControls(widgetFactory, view);
-		return scrolledForm;
-	}
+    ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
+    Form form = scrolledForm.getForm();
+    view = form.getBody();
+    GridLayout layout = new GridLayout();
+    layout.numColumns = 3;
+    view.setLayout(layout);
+    createControls(widgetFactory, view);
+    return scrolledForm;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -140,58 +140,58 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Sectio
 	 * @generated
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		CompositionSequence classifierTemplateParameterStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep propertiesStep = classifierTemplateParameterStep.addStep(UmlViewsRepository.ClassifierTemplateParameter.Properties.class);
-		propertiesStep.addStep(UmlViewsRepository.ClassifierTemplateParameter.Properties.signature);
-		propertiesStep.addStep(UmlViewsRepository.ClassifierTemplateParameter.Properties.parameteredElement);
-		propertiesStep.addStep(UmlViewsRepository.ClassifierTemplateParameter.Properties.default_);
-		propertiesStep.addStep(UmlViewsRepository.ClassifierTemplateParameter.Properties.allowSubstitutable);
-		propertiesStep.addStep(UmlViewsRepository.ClassifierTemplateParameter.Properties.constrainingClassifier);
-		
-		
-		composer = new PartComposer(classifierTemplateParameterStep) {
+    CompositionSequence classifierTemplateParameterStep = new BindingCompositionSequence(propertiesEditionComponent);
+    CompositionStep propertiesStep = classifierTemplateParameterStep.addStep(UmlViewsRepository.ClassifierTemplateParameter.Properties.class);
+    propertiesStep.addStep(UmlViewsRepository.ClassifierTemplateParameter.Properties.signature);
+    propertiesStep.addStep(UmlViewsRepository.ClassifierTemplateParameter.Properties.parameteredElement);
+    propertiesStep.addStep(UmlViewsRepository.ClassifierTemplateParameter.Properties.default_);
+    propertiesStep.addStep(UmlViewsRepository.ClassifierTemplateParameter.Properties.allowSubstitutable);
+    propertiesStep.addStep(UmlViewsRepository.ClassifierTemplateParameter.Properties.constrainingClassifier);
+    
+    
+    composer = new PartComposer(classifierTemplateParameterStep) {
 
-			@Override
-			public Composite addToPart(Composite parent, Object key) {
-				if (key == UmlViewsRepository.ClassifierTemplateParameter.Properties.class) {
-					return createPropertiesGroup(widgetFactory, parent);
-				}
-				if (key == UmlViewsRepository.ClassifierTemplateParameter.Properties.signature) {
-					return createSignatureFlatComboViewer(parent, widgetFactory);
-				}
-				if (key == UmlViewsRepository.ClassifierTemplateParameter.Properties.parameteredElement) {
-					return createParameteredElementFlatComboViewer(parent, widgetFactory);
-				}
-				if (key == UmlViewsRepository.ClassifierTemplateParameter.Properties.default_) {
-					return createDefault_FlatComboViewer(parent, widgetFactory);
-				}
-				if (key == UmlViewsRepository.ClassifierTemplateParameter.Properties.allowSubstitutable) {
-					return createAllowSubstitutableCheckbox(widgetFactory, parent);
-				}
-				if (key == UmlViewsRepository.ClassifierTemplateParameter.Properties.constrainingClassifier) {
-					return createConstrainingClassifierReferencesTable(widgetFactory, parent);
-				}
-				return parent;
-			}
-		};
-		composer.compose(view);
-	}
+      @Override
+      public Composite addToPart(Composite parent, Object key) {
+        if (key == UmlViewsRepository.ClassifierTemplateParameter.Properties.class) {
+          return createPropertiesGroup(widgetFactory, parent);
+        }
+        if (key == UmlViewsRepository.ClassifierTemplateParameter.Properties.signature) {
+          return createSignatureFlatComboViewer(parent, widgetFactory);
+        }
+        if (key == UmlViewsRepository.ClassifierTemplateParameter.Properties.parameteredElement) {
+          return createParameteredElementFlatComboViewer(parent, widgetFactory);
+        }
+        if (key == UmlViewsRepository.ClassifierTemplateParameter.Properties.default_) {
+          return createDefault_FlatComboViewer(parent, widgetFactory);
+        }
+        if (key == UmlViewsRepository.ClassifierTemplateParameter.Properties.allowSubstitutable) {
+          return createAllowSubstitutableCheckbox(widgetFactory, parent);
+        }
+        if (key == UmlViewsRepository.ClassifierTemplateParameter.Properties.constrainingClassifier) {
+          return createConstrainingClassifierReferencesTable(widgetFactory, parent);
+        }
+        return parent;
+      }
+    };
+    composer.compose(view);
+  }
 	/**
 	 * @generated
 	 */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
-		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
-		propertiesSection.setText(UmlMessages.ClassifierTemplateParameterPropertiesEditionPart_PropertiesGroupLabel);
-		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesSectionData.horizontalSpan = 3;
-		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		propertiesSection.setClient(propertiesGroup);
-		return propertiesGroup;
-	}
+    Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+    propertiesSection.setText(UmlMessages.ClassifierTemplateParameterPropertiesEditionPart_PropertiesGroupLabel);
+    GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
+    propertiesSectionData.horizontalSpan = 3;
+    propertiesSection.setLayoutData(propertiesSectionData);
+    Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+    GridLayout propertiesGroupLayout = new GridLayout();
+    propertiesGroupLayout.numColumns = 3;
+    propertiesGroup.setLayout(propertiesGroupLayout);
+    propertiesSection.setClient(propertiesGroup);
+    return propertiesGroup;
+  }
 
 	/**
 	 * @param parent the parent composite
@@ -199,29 +199,29 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Sectio
 	 * @generated
 	 */
 	protected Composite createSignatureFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		createDescription(parent, UmlViewsRepository.ClassifierTemplateParameter.Properties.signature, UmlMessages.ClassifierTemplateParameterPropertiesEditionPart_SignatureLabel);
-		signature = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ClassifierTemplateParameter.Properties.signature, UmlViewsRepository.FORM_KIND));
-		widgetFactory.adapt(signature);
-		signature.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		GridData signatureData = new GridData(GridData.FILL_HORIZONTAL);
-		signature.setLayoutData(signatureData);
-		signature.addSelectionChangedListener(new ISelectionChangedListener() {
+    createDescription(parent, UmlViewsRepository.ClassifierTemplateParameter.Properties.signature, UmlMessages.ClassifierTemplateParameterPropertiesEditionPart_SignatureLabel);
+    signature = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ClassifierTemplateParameter.Properties.signature, UmlViewsRepository.FORM_KIND));
+    widgetFactory.adapt(signature);
+    signature.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    GridData signatureData = new GridData(GridData.FILL_HORIZONTAL);
+    signature.setLayoutData(signatureData);
+    signature.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ClassifierTemplateParameterPropertiesEditionPartForm.this, UmlViewsRepository.ClassifierTemplateParameter.Properties.signature, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSignature()));
-			}
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ClassifierTemplateParameterPropertiesEditionPartForm.this, UmlViewsRepository.ClassifierTemplateParameter.Properties.signature, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSignature()));
+      }
 
-		});
-		signature.setID(UmlViewsRepository.ClassifierTemplateParameter.Properties.signature);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ClassifierTemplateParameter.Properties.signature, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    signature.setID(UmlViewsRepository.ClassifierTemplateParameter.Properties.signature);
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ClassifierTemplateParameter.Properties.signature, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @param parent the parent composite
@@ -229,29 +229,29 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Sectio
 	 * @generated
 	 */
 	protected Composite createParameteredElementFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		createDescription(parent, UmlViewsRepository.ClassifierTemplateParameter.Properties.parameteredElement, UmlMessages.ClassifierTemplateParameterPropertiesEditionPart_ParameteredElementLabel);
-		parameteredElement = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ClassifierTemplateParameter.Properties.parameteredElement, UmlViewsRepository.FORM_KIND));
-		widgetFactory.adapt(parameteredElement);
-		parameteredElement.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		GridData parameteredElementData = new GridData(GridData.FILL_HORIZONTAL);
-		parameteredElement.setLayoutData(parameteredElementData);
-		parameteredElement.addSelectionChangedListener(new ISelectionChangedListener() {
+    createDescription(parent, UmlViewsRepository.ClassifierTemplateParameter.Properties.parameteredElement, UmlMessages.ClassifierTemplateParameterPropertiesEditionPart_ParameteredElementLabel);
+    parameteredElement = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ClassifierTemplateParameter.Properties.parameteredElement, UmlViewsRepository.FORM_KIND));
+    widgetFactory.adapt(parameteredElement);
+    parameteredElement.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    GridData parameteredElementData = new GridData(GridData.FILL_HORIZONTAL);
+    parameteredElement.setLayoutData(parameteredElementData);
+    parameteredElement.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ClassifierTemplateParameterPropertiesEditionPartForm.this, UmlViewsRepository.ClassifierTemplateParameter.Properties.parameteredElement, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getParameteredElement()));
-			}
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ClassifierTemplateParameterPropertiesEditionPartForm.this, UmlViewsRepository.ClassifierTemplateParameter.Properties.parameteredElement, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getParameteredElement()));
+      }
 
-		});
-		parameteredElement.setID(UmlViewsRepository.ClassifierTemplateParameter.Properties.parameteredElement);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ClassifierTemplateParameter.Properties.parameteredElement, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    parameteredElement.setID(UmlViewsRepository.ClassifierTemplateParameter.Properties.parameteredElement);
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ClassifierTemplateParameter.Properties.parameteredElement, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @param parent the parent composite
@@ -259,139 +259,139 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Sectio
 	 * @generated
 	 */
 	protected Composite createDefault_FlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		createDescription(parent, UmlViewsRepository.ClassifierTemplateParameter.Properties.default_, UmlMessages.ClassifierTemplateParameterPropertiesEditionPart_Default_Label);
-		default_ = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ClassifierTemplateParameter.Properties.default_, UmlViewsRepository.FORM_KIND));
-		widgetFactory.adapt(default_);
-		default_.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		GridData default_Data = new GridData(GridData.FILL_HORIZONTAL);
-		default_.setLayoutData(default_Data);
-		default_.addSelectionChangedListener(new ISelectionChangedListener() {
+    createDescription(parent, UmlViewsRepository.ClassifierTemplateParameter.Properties.default_, UmlMessages.ClassifierTemplateParameterPropertiesEditionPart_Default_Label);
+    default_ = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ClassifierTemplateParameter.Properties.default_, UmlViewsRepository.FORM_KIND));
+    widgetFactory.adapt(default_);
+    default_.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    GridData default_Data = new GridData(GridData.FILL_HORIZONTAL);
+    default_.setLayoutData(default_Data);
+    default_.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ClassifierTemplateParameterPropertiesEditionPartForm.this, UmlViewsRepository.ClassifierTemplateParameter.Properties.default_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getDefault_()));
-			}
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ClassifierTemplateParameterPropertiesEditionPartForm.this, UmlViewsRepository.ClassifierTemplateParameter.Properties.default_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getDefault_()));
+      }
 
-		});
-		default_.setID(UmlViewsRepository.ClassifierTemplateParameter.Properties.default_);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ClassifierTemplateParameter.Properties.default_, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    default_.setID(UmlViewsRepository.ClassifierTemplateParameter.Properties.default_);
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ClassifierTemplateParameter.Properties.default_, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @generated
 	 */
 	
 	protected Composite createAllowSubstitutableCheckbox(FormToolkit widgetFactory, Composite parent) {
-		allowSubstitutable = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.ClassifierTemplateParameter.Properties.allowSubstitutable, UmlMessages.ClassifierTemplateParameterPropertiesEditionPart_AllowSubstitutableLabel), SWT.CHECK);
-		allowSubstitutable.addSelectionListener(new SelectionAdapter() {
+    allowSubstitutable = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.ClassifierTemplateParameter.Properties.allowSubstitutable, UmlMessages.ClassifierTemplateParameterPropertiesEditionPart_AllowSubstitutableLabel), SWT.CHECK);
+    allowSubstitutable.addSelectionListener(new SelectionAdapter() {
 
-			/**
-			 * {@inheritDoc}
-			 *
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	@generated
-			 */
-			public void widgetSelected(SelectionEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ClassifierTemplateParameterPropertiesEditionPartForm.this, UmlViewsRepository.ClassifierTemplateParameter.Properties.allowSubstitutable, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(allowSubstitutable.getSelection())));
-			}
+      /**
+       * {@inheritDoc}
+       *
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       * 	@generated
+       */
+      public void widgetSelected(SelectionEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ClassifierTemplateParameterPropertiesEditionPartForm.this, UmlViewsRepository.ClassifierTemplateParameter.Properties.allowSubstitutable, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(allowSubstitutable.getSelection())));
+      }
 
-		});
-		GridData allowSubstitutableData = new GridData(GridData.FILL_HORIZONTAL);
-		allowSubstitutableData.horizontalSpan = 2;
-		allowSubstitutable.setLayoutData(allowSubstitutableData);
-		EditingUtils.setID(allowSubstitutable, UmlViewsRepository.ClassifierTemplateParameter.Properties.allowSubstitutable);
-		EditingUtils.setEEFtype(allowSubstitutable, "eef::Checkbox"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ClassifierTemplateParameter.Properties.allowSubstitutable, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    GridData allowSubstitutableData = new GridData(GridData.FILL_HORIZONTAL);
+    allowSubstitutableData.horizontalSpan = 2;
+    allowSubstitutable.setLayoutData(allowSubstitutableData);
+    EditingUtils.setID(allowSubstitutable, UmlViewsRepository.ClassifierTemplateParameter.Properties.allowSubstitutable);
+    EditingUtils.setEEFtype(allowSubstitutable, "eef::Checkbox"); //$NON-NLS-1$
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ClassifierTemplateParameter.Properties.allowSubstitutable, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @generated
 	 */
 	protected Composite createConstrainingClassifierReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.constrainingClassifier = new ReferencesTable(getDescription(UmlViewsRepository.ClassifierTemplateParameter.Properties.constrainingClassifier, UmlMessages.ClassifierTemplateParameterPropertiesEditionPart_ConstrainingClassifierLabel), new ReferencesTableListener	() {
-			public void handleAdd() { addConstrainingClassifier(); }
-			public void handleEdit(EObject element) { editConstrainingClassifier(element); }
-			public void handleMove(EObject element, int oldIndex, int newIndex) { moveConstrainingClassifier(element, oldIndex, newIndex); }
-			public void handleRemove(EObject element) { removeFromConstrainingClassifier(element); }
-			public void navigateTo(EObject element) { }
-		});
-		this.constrainingClassifier.setHelpText(propertiesEditionComponent.getHelpContent(UmlViewsRepository.ClassifierTemplateParameter.Properties.constrainingClassifier, UmlViewsRepository.FORM_KIND));
-		this.constrainingClassifier.createControls(parent, widgetFactory);
-		this.constrainingClassifier.addSelectionListener(new SelectionAdapter() {
-			
-			public void widgetSelected(SelectionEvent e) {
-				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ClassifierTemplateParameterPropertiesEditionPartForm.this, UmlViewsRepository.ClassifierTemplateParameter.Properties.constrainingClassifier, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
-				}
-			}
-			
-		});
-		GridData constrainingClassifierData = new GridData(GridData.FILL_HORIZONTAL);
-		constrainingClassifierData.horizontalSpan = 3;
-		this.constrainingClassifier.setLayoutData(constrainingClassifierData);
-		this.constrainingClassifier.disableMove();
-		constrainingClassifier.setID(UmlViewsRepository.ClassifierTemplateParameter.Properties.constrainingClassifier);
-		constrainingClassifier.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
-		return parent;
-	}
+    this.constrainingClassifier = new ReferencesTable(getDescription(UmlViewsRepository.ClassifierTemplateParameter.Properties.constrainingClassifier, UmlMessages.ClassifierTemplateParameterPropertiesEditionPart_ConstrainingClassifierLabel), new ReferencesTableListener	() {
+      public void handleAdd() { addConstrainingClassifier(); }
+      public void handleEdit(EObject element) { editConstrainingClassifier(element); }
+      public void handleMove(EObject element, int oldIndex, int newIndex) { moveConstrainingClassifier(element, oldIndex, newIndex); }
+      public void handleRemove(EObject element) { removeFromConstrainingClassifier(element); }
+      public void navigateTo(EObject element) { }
+    });
+    this.constrainingClassifier.setHelpText(propertiesEditionComponent.getHelpContent(UmlViewsRepository.ClassifierTemplateParameter.Properties.constrainingClassifier, UmlViewsRepository.FORM_KIND));
+    this.constrainingClassifier.createControls(parent, widgetFactory);
+    this.constrainingClassifier.addSelectionListener(new SelectionAdapter() {
+      
+      public void widgetSelected(SelectionEvent e) {
+        if (e.item != null && e.item.getData() instanceof EObject) {
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ClassifierTemplateParameterPropertiesEditionPartForm.this, UmlViewsRepository.ClassifierTemplateParameter.Properties.constrainingClassifier, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+        }
+      }
+      
+    });
+    GridData constrainingClassifierData = new GridData(GridData.FILL_HORIZONTAL);
+    constrainingClassifierData.horizontalSpan = 3;
+    this.constrainingClassifier.setLayoutData(constrainingClassifierData);
+    this.constrainingClassifier.disableMove();
+    constrainingClassifier.setID(UmlViewsRepository.ClassifierTemplateParameter.Properties.constrainingClassifier);
+    constrainingClassifier.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @generated
 	 */
 	protected void addConstrainingClassifier() {
-		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(constrainingClassifier.getInput(), constrainingClassifierFilters, constrainingClassifierBusinessFilters,
-		"constrainingClassifier", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
-			@Override
-			public void process(IStructuredSelection selection) {
-				for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
-					EObject elem = (EObject) iter.next();
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ClassifierTemplateParameterPropertiesEditionPartForm.this, UmlViewsRepository.ClassifierTemplateParameter.Properties.constrainingClassifier,
-						PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
-				}
-				constrainingClassifier.refresh();
-			}
-		};
-		dialog.open();
-	}
+    TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(constrainingClassifier.getInput(), constrainingClassifierFilters, constrainingClassifierBusinessFilters,
+    "constrainingClassifier", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
+      @Override
+      public void process(IStructuredSelection selection) {
+        for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
+          EObject elem = (EObject) iter.next();
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ClassifierTemplateParameterPropertiesEditionPartForm.this, UmlViewsRepository.ClassifierTemplateParameter.Properties.constrainingClassifier,
+            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+        }
+        constrainingClassifier.refresh();
+      }
+    };
+    dialog.open();
+  }
 
 	/**
 	 * @generated
 	 */
 	protected void moveConstrainingClassifier(EObject element, int oldIndex, int newIndex) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ClassifierTemplateParameterPropertiesEditionPartForm.this, UmlViewsRepository.ClassifierTemplateParameter.Properties.constrainingClassifier, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		constrainingClassifier.refresh();
-	}
+    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ClassifierTemplateParameterPropertiesEditionPartForm.this, UmlViewsRepository.ClassifierTemplateParameter.Properties.constrainingClassifier, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+    constrainingClassifier.refresh();
+  }
 
 	/**
 	 * @generated
 	 */
 	protected void removeFromConstrainingClassifier(EObject element) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ClassifierTemplateParameterPropertiesEditionPartForm.this, UmlViewsRepository.ClassifierTemplateParameter.Properties.constrainingClassifier, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-		constrainingClassifier.refresh();
-	}
+    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ClassifierTemplateParameterPropertiesEditionPartForm.this, UmlViewsRepository.ClassifierTemplateParameter.Properties.constrainingClassifier, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+    constrainingClassifier.refresh();
+  }
 
 	/**
 	 * @generated
 	 */
 	protected void editConstrainingClassifier(EObject element) {
-		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
-		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
-		if (provider != null) {
-			PropertiesEditingPolicy policy = provider.getPolicy(context);
-			if (policy != null) {
-				policy.execute();
-				constrainingClassifier.refresh();
-			}
-		}
-	}
+    EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
+    PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
+    if (provider != null) {
+      PropertiesEditingPolicy policy = provider.getPolicy(context);
+      if (policy != null) {
+        policy.execute();
+        constrainingClassifier.refresh();
+      }
+    }
+  }
 
 
 	/**
@@ -401,7 +401,7 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Sectio
 	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-	}
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -410,13 +410,13 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Sectio
 	 * @generated
 	 */
 	public EObject getSignature() {
-		if (signature.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) signature.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (signature.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) signature.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -445,20 +445,20 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Sectio
 	 * @generated
 	 */
 	public void setSignature(EObject newValue) {
-		if (newValue != null) {
-			signature.setSelection(new StructuredSelection(newValue));
-		} else {
-			signature.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.ClassifierTemplateParameter.Properties.signature);
-		if (readOnly && signature.isEnabled()) {
-			signature.setEnabled(false);
-			signature.setToolTipText(UmlMessages.ClassifierTemplateParameter_ReadOnly);
-		} else if (!readOnly && !signature.isEnabled()) {
-			signature.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      signature.setSelection(new StructuredSelection(newValue));
+    } else {
+      signature.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.ClassifierTemplateParameter.Properties.signature);
+    if (readOnly && signature.isEnabled()) {
+      signature.setEnabled(false);
+      signature.setToolTipText(UmlMessages.ClassifierTemplateParameter_ReadOnly);
+    } else if (!readOnly && !signature.isEnabled()) {
+      signature.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -476,8 +476,8 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Sectio
 	 * @generated
 	 */
 	public void addFilterToSignature(ViewerFilter filter) {
-		signature.addFilter(filter);
-	}
+    signature.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -486,8 +486,8 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Sectio
 	 * @generated
 	 */
 	public void addBusinessFilterToSignature(ViewerFilter filter) {
-		signature.addBusinessRuleFilter(filter);
-	}
+    signature.addBusinessRuleFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -496,13 +496,13 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Sectio
 	 * @generated
 	 */
 	public EObject getParameteredElement() {
-		if (parameteredElement.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) parameteredElement.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (parameteredElement.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) parameteredElement.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -531,20 +531,20 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Sectio
 	 * @generated
 	 */
 	public void setParameteredElement(EObject newValue) {
-		if (newValue != null) {
-			parameteredElement.setSelection(new StructuredSelection(newValue));
-		} else {
-			parameteredElement.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.ClassifierTemplateParameter.Properties.parameteredElement);
-		if (readOnly && parameteredElement.isEnabled()) {
-			parameteredElement.setEnabled(false);
-			parameteredElement.setToolTipText(UmlMessages.ClassifierTemplateParameter_ReadOnly);
-		} else if (!readOnly && !parameteredElement.isEnabled()) {
-			parameteredElement.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      parameteredElement.setSelection(new StructuredSelection(newValue));
+    } else {
+      parameteredElement.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.ClassifierTemplateParameter.Properties.parameteredElement);
+    if (readOnly && parameteredElement.isEnabled()) {
+      parameteredElement.setEnabled(false);
+      parameteredElement.setToolTipText(UmlMessages.ClassifierTemplateParameter_ReadOnly);
+    } else if (!readOnly && !parameteredElement.isEnabled()) {
+      parameteredElement.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -562,8 +562,8 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Sectio
 	 * @generated
 	 */
 	public void addFilterToParameteredElement(ViewerFilter filter) {
-		parameteredElement.addFilter(filter);
-	}
+    parameteredElement.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -572,8 +572,8 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Sectio
 	 * @generated
 	 */
 	public void addBusinessFilterToParameteredElement(ViewerFilter filter) {
-		parameteredElement.addBusinessRuleFilter(filter);
-	}
+    parameteredElement.addBusinessRuleFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -582,13 +582,13 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Sectio
 	 * @generated
 	 */
 	public EObject getDefault_() {
-		if (default_.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) default_.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (default_.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) default_.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -617,20 +617,20 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Sectio
 	 * @generated
 	 */
 	public void setDefault_(EObject newValue) {
-		if (newValue != null) {
-			default_.setSelection(new StructuredSelection(newValue));
-		} else {
-			default_.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.ClassifierTemplateParameter.Properties.default_);
-		if (readOnly && default_.isEnabled()) {
-			default_.setEnabled(false);
-			default_.setToolTipText(UmlMessages.ClassifierTemplateParameter_ReadOnly);
-		} else if (!readOnly && !default_.isEnabled()) {
-			default_.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      default_.setSelection(new StructuredSelection(newValue));
+    } else {
+      default_.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.ClassifierTemplateParameter.Properties.default_);
+    if (readOnly && default_.isEnabled()) {
+      default_.setEnabled(false);
+      default_.setToolTipText(UmlMessages.ClassifierTemplateParameter_ReadOnly);
+    } else if (!readOnly && !default_.isEnabled()) {
+      default_.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -648,8 +648,8 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Sectio
 	 * @generated
 	 */
 	public void addFilterToDefault_(ViewerFilter filter) {
-		default_.addFilter(filter);
-	}
+    default_.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -658,8 +658,8 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Sectio
 	 * @generated
 	 */
 	public void addBusinessFilterToDefault_(ViewerFilter filter) {
-		default_.addBusinessRuleFilter(filter);
-	}
+    default_.addBusinessRuleFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -668,8 +668,8 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Sectio
 	 * @generated
 	 */
 	public Boolean getAllowSubstitutable() {
-		return Boolean.valueOf(allowSubstitutable.getSelection());
-	}
+    return Boolean.valueOf(allowSubstitutable.getSelection());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -678,20 +678,20 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Sectio
 	 * @generated
 	 */
 	public void setAllowSubstitutable(Boolean newValue) {
-		if (newValue != null) {
-			allowSubstitutable.setSelection(newValue.booleanValue());
-		} else {
-			allowSubstitutable.setSelection(false);
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.ClassifierTemplateParameter.Properties.allowSubstitutable);
-		if (readOnly && allowSubstitutable.isEnabled()) {
-			allowSubstitutable.setEnabled(false);
-			allowSubstitutable.setToolTipText(UmlMessages.ClassifierTemplateParameter_ReadOnly);
-		} else if (!readOnly && !allowSubstitutable.isEnabled()) {
-			allowSubstitutable.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      allowSubstitutable.setSelection(newValue.booleanValue());
+    } else {
+      allowSubstitutable.setSelection(false);
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.ClassifierTemplateParameter.Properties.allowSubstitutable);
+    if (readOnly && allowSubstitutable.isEnabled()) {
+      allowSubstitutable.setEnabled(false);
+      allowSubstitutable.setToolTipText(UmlMessages.ClassifierTemplateParameter_ReadOnly);
+    } else if (!readOnly && !allowSubstitutable.isEnabled()) {
+      allowSubstitutable.setEnabled(true);
+    }	
+    
+  }
 
 
 
@@ -723,7 +723,7 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Sectio
 	 * @generated
 	 */
 	public void updateConstrainingClassifier() {
-	constrainingClassifier.refresh();
+  constrainingClassifier.refresh();
 }
 
 	/**
@@ -733,8 +733,8 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Sectio
 	 * @generated
 	 */
 	public void addFilterToConstrainingClassifier(ViewerFilter filter) {
-		constrainingClassifierFilters.add(filter);
-	}
+    constrainingClassifierFilters.add(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -743,8 +743,8 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Sectio
 	 * @generated
 	 */
 	public void addBusinessFilterToConstrainingClassifier(ViewerFilter filter) {
-		constrainingClassifierBusinessFilters.add(filter);
-	}
+    constrainingClassifierBusinessFilters.add(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -753,8 +753,8 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Sectio
 	 * @generated
 	 */
 	public boolean isContainedInConstrainingClassifierTable(EObject element) {
-		return ((ReferencesTableSettings)constrainingClassifier.getInput()).contains(element);
-	}
+    return ((ReferencesTableSettings)constrainingClassifier.getInput()).contains(element);
+  }
 
 
 
@@ -768,8 +768,8 @@ public class ClassifierTemplateParameterPropertiesEditionPartForm extends Sectio
 	 * @generated
 	 */
 	public String getTitle() {
-		return UmlMessages.ClassifierTemplateParameter_Part_Title;
-	}
+    return UmlMessages.ClassifierTemplateParameter_Part_Title;
+  }
 
 
 

@@ -58,9 +58,9 @@ public class LoopNodePropertiesEditionProvider extends PropertiesEditingProvider
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof LoopNode) 
-					&& (UMLPackage.Literals.LOOP_NODE == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof LoopNode) 
+          && (UMLPackage.Literals.LOOP_NODE == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class LoopNodePropertiesEditionProvider extends PropertiesEditingProvider
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof LoopNode) && (LoopNodePropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof LoopNode) && (LoopNodePropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class LoopNodePropertiesEditionProvider extends PropertiesEditingProvider
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof LoopNode) && (refinement == LoopNodePropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof LoopNode) && (refinement == LoopNodePropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class LoopNodePropertiesEditionProvider extends PropertiesEditingProvider
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof LoopNode) && ((LoopNodePropertiesEditionComponent.BASE_PART.equals(part) && refinement == LoopNodePropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof LoopNode) && ((LoopNodePropertiesEditionComponent.BASE_PART.equals(part) && refinement == LoopNodePropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class LoopNodePropertiesEditionProvider extends PropertiesEditingProvider
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof LoopNode) {
-			return new LoopNodePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof LoopNode) {
+      return new LoopNodePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class LoopNodePropertiesEditionProvider extends PropertiesEditingProvider
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof LoopNode) {
-			if (LoopNodePropertiesEditionComponent.BASE_PART.equals(part))
-				return new LoopNodePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof LoopNode) {
+      if (LoopNodePropertiesEditionComponent.BASE_PART.equals(part))
+        return new LoopNodePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

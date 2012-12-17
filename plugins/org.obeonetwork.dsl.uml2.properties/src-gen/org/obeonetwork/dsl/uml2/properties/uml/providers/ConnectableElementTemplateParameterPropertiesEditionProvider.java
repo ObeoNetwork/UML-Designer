@@ -58,9 +58,9 @@ public class ConnectableElementTemplateParameterPropertiesEditionProvider extend
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof ConnectableElementTemplateParameter) 
-					&& (UMLPackage.Literals.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof ConnectableElementTemplateParameter) 
+          && (UMLPackage.Literals.CONNECTABLE_ELEMENT_TEMPLATE_PARAMETER == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class ConnectableElementTemplateParameterPropertiesEditionProvider extend
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof ConnectableElementTemplateParameter) && (ConnectableElementTemplateParameterPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof ConnectableElementTemplateParameter) && (ConnectableElementTemplateParameterPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class ConnectableElementTemplateParameterPropertiesEditionProvider extend
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ConnectableElementTemplateParameter) && (refinement == ConnectableElementTemplateParameterPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof ConnectableElementTemplateParameter) && (refinement == ConnectableElementTemplateParameterPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class ConnectableElementTemplateParameterPropertiesEditionProvider extend
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ConnectableElementTemplateParameter) && ((ConnectableElementTemplateParameterPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ConnectableElementTemplateParameterPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof ConnectableElementTemplateParameter) && ((ConnectableElementTemplateParameterPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ConnectableElementTemplateParameterPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class ConnectableElementTemplateParameterPropertiesEditionProvider extend
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof ConnectableElementTemplateParameter) {
-			return new ConnectableElementTemplateParameterPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof ConnectableElementTemplateParameter) {
+      return new ConnectableElementTemplateParameterPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class ConnectableElementTemplateParameterPropertiesEditionProvider extend
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof ConnectableElementTemplateParameter) {
-			if (ConnectableElementTemplateParameterPropertiesEditionComponent.BASE_PART.equals(part))
-				return new ConnectableElementTemplateParameterPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof ConnectableElementTemplateParameter) {
+      if (ConnectableElementTemplateParameterPropertiesEditionComponent.BASE_PART.equals(part))
+        return new ConnectableElementTemplateParameterPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

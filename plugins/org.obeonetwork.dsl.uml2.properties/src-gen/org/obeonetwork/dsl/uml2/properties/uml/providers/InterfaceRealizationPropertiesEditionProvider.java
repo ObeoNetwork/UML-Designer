@@ -58,9 +58,9 @@ public class InterfaceRealizationPropertiesEditionProvider extends PropertiesEdi
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof InterfaceRealization) 
-					&& (UMLPackage.Literals.INTERFACE_REALIZATION == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof InterfaceRealization) 
+          && (UMLPackage.Literals.INTERFACE_REALIZATION == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class InterfaceRealizationPropertiesEditionProvider extends PropertiesEdi
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof InterfaceRealization) && (InterfaceRealizationPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof InterfaceRealization) && (InterfaceRealizationPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class InterfaceRealizationPropertiesEditionProvider extends PropertiesEdi
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof InterfaceRealization) && (refinement == InterfaceRealizationPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof InterfaceRealization) && (refinement == InterfaceRealizationPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class InterfaceRealizationPropertiesEditionProvider extends PropertiesEdi
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof InterfaceRealization) && ((InterfaceRealizationPropertiesEditionComponent.BASE_PART.equals(part) && refinement == InterfaceRealizationPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof InterfaceRealization) && ((InterfaceRealizationPropertiesEditionComponent.BASE_PART.equals(part) && refinement == InterfaceRealizationPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class InterfaceRealizationPropertiesEditionProvider extends PropertiesEdi
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof InterfaceRealization) {
-			return new InterfaceRealizationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof InterfaceRealization) {
+      return new InterfaceRealizationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class InterfaceRealizationPropertiesEditionProvider extends PropertiesEdi
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof InterfaceRealization) {
-			if (InterfaceRealizationPropertiesEditionComponent.BASE_PART.equals(part))
-				return new InterfaceRealizationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof InterfaceRealization) {
+      if (InterfaceRealizationPropertiesEditionComponent.BASE_PART.equals(part))
+        return new InterfaceRealizationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

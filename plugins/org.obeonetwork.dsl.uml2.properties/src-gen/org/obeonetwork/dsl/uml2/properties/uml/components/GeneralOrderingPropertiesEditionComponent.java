@@ -100,11 +100,11 @@ public class GeneralOrderingPropertiesEditionComponent extends SinglePartPropert
 	 * @generated
 	 */
 	public GeneralOrderingPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject generalOrdering, String editing_mode) {
-		super(editingContext, generalOrdering, editing_mode);
-		parts = new String[] { BASE_PART };
-		repositoryKey = UmlViewsRepository.class;
-		partKey = UmlViewsRepository.GeneralOrdering.class;
-	}
+    super(editingContext, generalOrdering, editing_mode);
+    parts = new String[] { BASE_PART };
+    repositoryKey = UmlViewsRepository.class;
+    partKey = UmlViewsRepository.GeneralOrdering.class;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -114,92 +114,92 @@ public class GeneralOrderingPropertiesEditionComponent extends SinglePartPropert
 	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			
-			final GeneralOrdering generalOrdering = (GeneralOrdering)elt;
-			final GeneralOrderingPropertiesEditionPart basePart = (GeneralOrderingPropertiesEditionPart)editingPart;
-			// init values
-			if (isAccessible(UmlViewsRepository.GeneralOrdering.Properties.name))
-				basePart.setName(EEFConverterUtil.convertToString(UMLPackage.Literals.STRING, generalOrdering.getName()));
-			
-			if (isAccessible(UmlViewsRepository.GeneralOrdering.Properties.visibility)) {
-				basePart.initVisibility(EEFUtils.choiceOfValues(generalOrdering, UMLPackage.eINSTANCE.getNamedElement_Visibility()), generalOrdering.getVisibility());
-			}
-			if (isAccessible(UmlViewsRepository.GeneralOrdering.Properties.clientDependency)) {
-				clientDependencySettings = new ReferencesTableSettings(generalOrdering, UMLPackage.eINSTANCE.getNamedElement_ClientDependency());
-				basePart.initClientDependency(clientDependencySettings);
-			}
-			if (isAccessible(UmlViewsRepository.GeneralOrdering.Properties.before)) {
-				// init part
-				beforeSettings = new EObjectFlatComboSettings(generalOrdering, UMLPackage.eINSTANCE.getGeneralOrdering_Before());
-				basePart.initBefore(beforeSettings);
-				// set the button mode
-				basePart.setBeforeButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			if (isAccessible(UmlViewsRepository.GeneralOrdering.Properties.after)) {
-				// init part
-				afterSettings = new EObjectFlatComboSettings(generalOrdering, UMLPackage.eINSTANCE.getGeneralOrdering_After());
-				basePart.initAfter(afterSettings);
-				// set the button mode
-				basePart.setAfterButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			// init filters
-			
-			
-			if (isAccessible(UmlViewsRepository.GeneralOrdering.Properties.clientDependency)) {
-				basePart.addFilterToClientDependency(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (!basePart.isContainedInClientDependencyTable((EObject)element));
-						return element instanceof Resource;
-					}
-				
-				});
-				basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.Literals.DEPENDENCY));
-			}
-			if (isAccessible(UmlViewsRepository.GeneralOrdering.Properties.before)) {
-				basePart.addFilterToBefore(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof OccurrenceSpecification);
-					}
-					
-				});
-			}
-			if (isAccessible(UmlViewsRepository.GeneralOrdering.Properties.after)) {
-				basePart.addFilterToAfter(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof OccurrenceSpecification);
-					}
-					
-				});
-			}
-			// init values for referenced views
-			
-			// init filters for referenced views
-			
-		}
-		setInitializing(false);
-	}
+    setInitializing(true);
+    if (editingPart != null && key == partKey) {
+      editingPart.setContext(elt, allResource);
+      
+      final GeneralOrdering generalOrdering = (GeneralOrdering)elt;
+      final GeneralOrderingPropertiesEditionPart basePart = (GeneralOrderingPropertiesEditionPart)editingPart;
+      // init values
+      if (isAccessible(UmlViewsRepository.GeneralOrdering.Properties.name))
+        basePart.setName(EEFConverterUtil.convertToString(UMLPackage.Literals.STRING, generalOrdering.getName()));
+      
+      if (isAccessible(UmlViewsRepository.GeneralOrdering.Properties.visibility)) {
+        basePart.initVisibility(EEFUtils.choiceOfValues(generalOrdering, UMLPackage.eINSTANCE.getNamedElement_Visibility()), generalOrdering.getVisibility());
+      }
+      if (isAccessible(UmlViewsRepository.GeneralOrdering.Properties.clientDependency)) {
+        clientDependencySettings = new ReferencesTableSettings(generalOrdering, UMLPackage.eINSTANCE.getNamedElement_ClientDependency());
+        basePart.initClientDependency(clientDependencySettings);
+      }
+      if (isAccessible(UmlViewsRepository.GeneralOrdering.Properties.before)) {
+        // init part
+        beforeSettings = new EObjectFlatComboSettings(generalOrdering, UMLPackage.eINSTANCE.getGeneralOrdering_Before());
+        basePart.initBefore(beforeSettings);
+        // set the button mode
+        basePart.setBeforeButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      if (isAccessible(UmlViewsRepository.GeneralOrdering.Properties.after)) {
+        // init part
+        afterSettings = new EObjectFlatComboSettings(generalOrdering, UMLPackage.eINSTANCE.getGeneralOrdering_After());
+        basePart.initAfter(afterSettings);
+        // set the button mode
+        basePart.setAfterButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      // init filters
+      
+      
+      if (isAccessible(UmlViewsRepository.GeneralOrdering.Properties.clientDependency)) {
+        basePart.addFilterToClientDependency(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            if (element instanceof EObject)
+              return (!basePart.isContainedInClientDependencyTable((EObject)element));
+            return element instanceof Resource;
+          }
+        
+        });
+        basePart.addFilterToClientDependency(new EObjectFilter(UMLPackage.Literals.DEPENDENCY));
+      }
+      if (isAccessible(UmlViewsRepository.GeneralOrdering.Properties.before)) {
+        basePart.addFilterToBefore(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof OccurrenceSpecification);
+          }
+          
+        });
+      }
+      if (isAccessible(UmlViewsRepository.GeneralOrdering.Properties.after)) {
+        basePart.addFilterToAfter(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof OccurrenceSpecification);
+          }
+          
+        });
+      }
+      // init values for referenced views
+      
+      // init filters for referenced views
+      
+    }
+    setInitializing(false);
+  }
 
 
 
@@ -237,57 +237,57 @@ public class GeneralOrderingPropertiesEditionComponent extends SinglePartPropert
 	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		GeneralOrdering generalOrdering = (GeneralOrdering)semanticObject;
-		if (UmlViewsRepository.GeneralOrdering.Properties.name == event.getAffectedEditor()) {
-			generalOrdering.setName((java.lang.String)EEFConverterUtil.createFromString(UMLPackage.Literals.STRING, (String)event.getNewValue()));
-		}
-		if (UmlViewsRepository.GeneralOrdering.Properties.visibility == event.getAffectedEditor()) {
-			generalOrdering.setVisibility((VisibilityKind)event.getNewValue());
-		}
-		if (UmlViewsRepository.GeneralOrdering.Properties.clientDependency == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD) {
-				if (event.getNewValue() instanceof Dependency) {
-					clientDependencySettings.addToReference((EObject) event.getNewValue());
-				}
-			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				clientDependencySettings.removeFromReference((EObject) event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-				clientDependencySettings.move(event.getNewIndex(), (Dependency) event.getNewValue());
-			}
-		}
-		if (UmlViewsRepository.GeneralOrdering.Properties.before == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				beforeSettings.setToReference((OccurrenceSpecification)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				OccurrenceSpecification eObject = UMLFactory.eINSTANCE.createOccurrenceSpecification();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy != null) {
-						policy.execute();
-					}
-				}
-				beforeSettings.setToReference(eObject);
-			}
-		}
-		if (UmlViewsRepository.GeneralOrdering.Properties.after == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				afterSettings.setToReference((OccurrenceSpecification)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				OccurrenceSpecification eObject = UMLFactory.eINSTANCE.createOccurrenceSpecification();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy != null) {
-						policy.execute();
-					}
-				}
-				afterSettings.setToReference(eObject);
-			}
-		}
-	}
+    GeneralOrdering generalOrdering = (GeneralOrdering)semanticObject;
+    if (UmlViewsRepository.GeneralOrdering.Properties.name == event.getAffectedEditor()) {
+      generalOrdering.setName((java.lang.String)EEFConverterUtil.createFromString(UMLPackage.Literals.STRING, (String)event.getNewValue()));
+    }
+    if (UmlViewsRepository.GeneralOrdering.Properties.visibility == event.getAffectedEditor()) {
+      generalOrdering.setVisibility((VisibilityKind)event.getNewValue());
+    }
+    if (UmlViewsRepository.GeneralOrdering.Properties.clientDependency == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.ADD) {
+        if (event.getNewValue() instanceof Dependency) {
+          clientDependencySettings.addToReference((EObject) event.getNewValue());
+        }
+      } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+        clientDependencySettings.removeFromReference((EObject) event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+        clientDependencySettings.move(event.getNewIndex(), (Dependency) event.getNewValue());
+      }
+    }
+    if (UmlViewsRepository.GeneralOrdering.Properties.before == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        beforeSettings.setToReference((OccurrenceSpecification)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        OccurrenceSpecification eObject = UMLFactory.eINSTANCE.createOccurrenceSpecification();
+        EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy != null) {
+            policy.execute();
+          }
+        }
+        beforeSettings.setToReference(eObject);
+      }
+    }
+    if (UmlViewsRepository.GeneralOrdering.Properties.after == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        afterSettings.setToReference((OccurrenceSpecification)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        OccurrenceSpecification eObject = UMLFactory.eINSTANCE.createOccurrenceSpecification();
+        EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy != null) {
+            policy.execute();
+          }
+        }
+        afterSettings.setToReference(eObject);
+      }
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -341,8 +341,8 @@ public class GeneralOrderingPropertiesEditionComponent extends SinglePartPropert
 	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == UmlViewsRepository.GeneralOrdering.Properties.before || key == UmlViewsRepository.GeneralOrdering.Properties.after;
-	}
+    return key == UmlViewsRepository.GeneralOrdering.Properties.before || key == UmlViewsRepository.GeneralOrdering.Properties.after;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -351,31 +351,31 @@ public class GeneralOrderingPropertiesEditionComponent extends SinglePartPropert
 	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
-		Diagnostic ret = Diagnostic.OK_INSTANCE;
-		if (event.getNewValue() != null) {
-			try {
-				if (UmlViewsRepository.GeneralOrdering.Properties.name == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newValue);
-				}
-				if (UmlViewsRepository.GeneralOrdering.Properties.visibility == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), newValue);
-				}
-			} catch (IllegalArgumentException iae) {
-				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
-				ret = BasicDiagnostic.toDiagnostic(we);
-			}
-		}
-		return ret;
-	}
+    Diagnostic ret = Diagnostic.OK_INSTANCE;
+    if (event.getNewValue() != null) {
+      try {
+        if (UmlViewsRepository.GeneralOrdering.Properties.name == event.getAffectedEditor()) {
+          Object newValue = event.getNewValue();
+          if (newValue instanceof String) {
+            newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), (String)newValue);
+          }
+          ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newValue);
+        }
+        if (UmlViewsRepository.GeneralOrdering.Properties.visibility == event.getAffectedEditor()) {
+          Object newValue = event.getNewValue();
+          if (newValue instanceof String) {
+            newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), (String)newValue);
+          }
+          ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), newValue);
+        }
+      } catch (IllegalArgumentException iae) {
+        ret = BasicDiagnostic.toDiagnostic(iae);
+      } catch (WrappedException we) {
+        ret = BasicDiagnostic.toDiagnostic(we);
+      }
+    }
+    return ret;
+  }
 
 
 	

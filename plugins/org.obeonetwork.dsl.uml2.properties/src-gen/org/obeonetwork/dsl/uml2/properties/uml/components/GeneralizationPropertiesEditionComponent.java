@@ -99,11 +99,11 @@ public class GeneralizationPropertiesEditionComponent extends SinglePartProperti
 	 * @generated
 	 */
 	public GeneralizationPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject generalization, String editing_mode) {
-		super(editingContext, generalization, editing_mode);
-		parts = new String[] { BASE_PART };
-		repositoryKey = UmlViewsRepository.class;
-		partKey = UmlViewsRepository.Generalization.class;
-	}
+    super(editingContext, generalization, editing_mode);
+    parts = new String[] { BASE_PART };
+    repositoryKey = UmlViewsRepository.class;
+    partKey = UmlViewsRepository.Generalization.class;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -113,88 +113,87 @@ public class GeneralizationPropertiesEditionComponent extends SinglePartProperti
 	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			
-			final Generalization generalization = (Generalization)elt;
-			final GeneralizationPropertiesEditionPart basePart = (GeneralizationPropertiesEditionPart)editingPart;
-			// init values
-			if (isAccessible(UmlViewsRepository.Generalization.Properties.isSubstitutable)) {
-				basePart.setIsSubstitutable(generalization.isSubstitutable());
-			}
-			if (isAccessible(UmlViewsRepository.Generalization.Properties.general)) {
-				// init part
-				generalSettings = new EObjectFlatComboSettings(generalization, UMLPackage.eINSTANCE.getGeneralization_General());
-				basePart.initGeneral(generalSettings);
-				// set the button mode
-				basePart.setGeneralButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			if (isAccessible(UmlViewsRepository.Generalization.Properties.generalizationSet)) {
-				generalizationSetSettings = new ReferencesTableSettings(generalization, UMLPackage.eINSTANCE.getGeneralization_GeneralizationSet());
-				basePart.initGeneralizationSet(generalizationSetSettings);
-			}
-			if (isAccessible(UmlViewsRepository.Generalization.Properties.specific)) {
-				// init part
-				specificSettings = new EObjectFlatComboSettings(generalization, UMLPackage.eINSTANCE.getGeneralization_Specific());
-				basePart.initSpecific(specificSettings);
-				// set the button mode
-				basePart.setSpecificButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			// init filters
-			
-			if (isAccessible(UmlViewsRepository.Generalization.Properties.general)) {
-				basePart.addFilterToGeneral(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof Classifier);
-					}
-					
-				});
-			}
-			if (isAccessible(UmlViewsRepository.Generalization.Properties.generalizationSet)) {
-				basePart.addFilterToGeneralizationSet(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (!basePart.isContainedInGeneralizationSetTable((EObject)element));
-						return element instanceof Resource;
-					}
-				
-				});
-				basePart.addFilterToGeneralizationSet(new EObjectFilter(UMLPackage.Literals.GENERALIZATION_SET));
-			}
-			if (isAccessible(UmlViewsRepository.Generalization.Properties.specific)) {
-				basePart.addFilterToSpecific(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof Classifier);
-					}
-					
-				});
-			}
-			// init values for referenced views
-			
-			// init filters for referenced views
-			
-		}
-		setInitializing(false);
-	}
+    setInitializing(true);
+    if (editingPart != null && key == partKey) {
+      editingPart.setContext(elt, allResource);
+      
+      final Generalization generalization = (Generalization)elt;
+      final GeneralizationPropertiesEditionPart basePart = (GeneralizationPropertiesEditionPart)editingPart;
+      // init values
+      basePart.setIsSubstitutable(generalization.isSubstitutable());
+      
+      if (isAccessible(UmlViewsRepository.Generalization.Properties.general)) {
+        // init part
+        generalSettings = new EObjectFlatComboSettings(generalization, UMLPackage.eINSTANCE.getGeneralization_General());
+        basePart.initGeneral(generalSettings);
+        // set the button mode
+        basePart.setGeneralButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      if (isAccessible(UmlViewsRepository.Generalization.Properties.generalizationSet)) {
+        generalizationSetSettings = new ReferencesTableSettings(generalization, UMLPackage.eINSTANCE.getGeneralization_GeneralizationSet());
+        basePart.initGeneralizationSet(generalizationSetSettings);
+      }
+      if (isAccessible(UmlViewsRepository.Generalization.Properties.specific)) {
+        // init part
+        specificSettings = new EObjectFlatComboSettings(generalization, UMLPackage.eINSTANCE.getGeneralization_Specific());
+        basePart.initSpecific(specificSettings);
+        // set the button mode
+        basePart.setSpecificButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      // init filters
+      
+      if (isAccessible(UmlViewsRepository.Generalization.Properties.general)) {
+        basePart.addFilterToGeneral(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof Classifier);
+          }
+          
+        });
+      }
+      if (isAccessible(UmlViewsRepository.Generalization.Properties.generalizationSet)) {
+        basePart.addFilterToGeneralizationSet(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            if (element instanceof EObject)
+              return (!basePart.isContainedInGeneralizationSetTable((EObject)element));
+            return element instanceof Resource;
+          }
+        
+        });
+        basePart.addFilterToGeneralizationSet(new EObjectFilter(UMLPackage.Literals.GENERALIZATION_SET));
+      }
+      if (isAccessible(UmlViewsRepository.Generalization.Properties.specific)) {
+        basePart.addFilterToSpecific(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof Classifier);
+          }
+          
+        });
+      }
+      // init values for referenced views
+      
+      // init filters for referenced views
+      
+    }
+    setInitializing(false);
+  }
 
 
 
@@ -228,50 +227,50 @@ public class GeneralizationPropertiesEditionComponent extends SinglePartProperti
 	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		Generalization generalization = (Generalization)semanticObject;
-		if (UmlViewsRepository.Generalization.Properties.isSubstitutable == event.getAffectedEditor()) {
-			generalization.setIsSubstitutable((Boolean)event.getNewValue());
-		}
-		if (UmlViewsRepository.Generalization.Properties.general == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				generalSettings.setToReference((Classifier)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, generalSettings, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy instanceof CreateEditingPolicy) {
-						policy.execute();
-					}
-				}
-			}
-		}
-		if (UmlViewsRepository.Generalization.Properties.generalizationSet == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD) {
-				if (event.getNewValue() instanceof GeneralizationSet) {
-					generalizationSetSettings.addToReference((EObject) event.getNewValue());
-				}
-			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				generalizationSetSettings.removeFromReference((EObject) event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-				generalizationSetSettings.move(event.getNewIndex(), (GeneralizationSet) event.getNewValue());
-			}
-		}
-		if (UmlViewsRepository.Generalization.Properties.specific == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				specificSettings.setToReference((Classifier)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, specificSettings, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy instanceof CreateEditingPolicy) {
-						policy.execute();
-					}
-				}
-			}
-		}
-	}
+    Generalization generalization = (Generalization)semanticObject;
+    if (UmlViewsRepository.Generalization.Properties.isSubstitutable == event.getAffectedEditor()) {
+      generalization.setIsSubstitutable((Boolean)event.getNewValue());
+    }
+    if (UmlViewsRepository.Generalization.Properties.general == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        generalSettings.setToReference((Classifier)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, generalSettings, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy instanceof CreateEditingPolicy) {
+            policy.execute();
+          }
+        }
+      }
+    }
+    if (UmlViewsRepository.Generalization.Properties.generalizationSet == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.ADD) {
+        if (event.getNewValue() instanceof GeneralizationSet) {
+          generalizationSetSettings.addToReference((EObject) event.getNewValue());
+        }
+      } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+        generalizationSetSettings.removeFromReference((EObject) event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+        generalizationSetSettings.move(event.getNewIndex(), (GeneralizationSet) event.getNewValue());
+      }
+    }
+    if (UmlViewsRepository.Generalization.Properties.specific == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        specificSettings.setToReference((Classifier)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, specificSettings, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy instanceof CreateEditingPolicy) {
+            policy.execute();
+          }
+        }
+      }
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -317,8 +316,8 @@ public class GeneralizationPropertiesEditionComponent extends SinglePartProperti
 	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == UmlViewsRepository.Generalization.Properties.general || key == UmlViewsRepository.Generalization.Properties.specific;
-	}
+    return key == UmlViewsRepository.Generalization.Properties.general || key == UmlViewsRepository.Generalization.Properties.specific;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -327,24 +326,24 @@ public class GeneralizationPropertiesEditionComponent extends SinglePartProperti
 	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
-		Diagnostic ret = Diagnostic.OK_INSTANCE;
-		if (event.getNewValue() != null) {
-			try {
-				if (UmlViewsRepository.Generalization.Properties.isSubstitutable == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getGeneralization_IsSubstitutable().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getGeneralization_IsSubstitutable().getEAttributeType(), newValue);
-				}
-			} catch (IllegalArgumentException iae) {
-				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
-				ret = BasicDiagnostic.toDiagnostic(we);
-			}
-		}
-		return ret;
-	}
+    Diagnostic ret = Diagnostic.OK_INSTANCE;
+    if (event.getNewValue() != null) {
+      try {
+        if (UmlViewsRepository.Generalization.Properties.isSubstitutable == event.getAffectedEditor()) {
+          Object newValue = event.getNewValue();
+          if (newValue instanceof String) {
+            newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getGeneralization_IsSubstitutable().getEAttributeType(), (String)newValue);
+          }
+          ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getGeneralization_IsSubstitutable().getEAttributeType(), newValue);
+        }
+      } catch (IllegalArgumentException iae) {
+        ret = BasicDiagnostic.toDiagnostic(iae);
+      } catch (WrappedException we) {
+        ret = BasicDiagnostic.toDiagnostic(we);
+      }
+    }
+    return ret;
+  }
 
 
 	

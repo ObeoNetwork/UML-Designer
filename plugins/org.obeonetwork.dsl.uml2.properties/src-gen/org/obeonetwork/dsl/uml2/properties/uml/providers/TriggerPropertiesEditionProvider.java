@@ -58,9 +58,9 @@ public class TriggerPropertiesEditionProvider extends PropertiesEditingProviderI
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof Trigger) 
-					&& (UMLPackage.Literals.TRIGGER == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof Trigger) 
+          && (UMLPackage.Literals.TRIGGER == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class TriggerPropertiesEditionProvider extends PropertiesEditingProviderI
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof Trigger) && (TriggerPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof Trigger) && (TriggerPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class TriggerPropertiesEditionProvider extends PropertiesEditingProviderI
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Trigger) && (refinement == TriggerPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof Trigger) && (refinement == TriggerPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class TriggerPropertiesEditionProvider extends PropertiesEditingProviderI
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Trigger) && ((TriggerPropertiesEditionComponent.BASE_PART.equals(part) && refinement == TriggerPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof Trigger) && ((TriggerPropertiesEditionComponent.BASE_PART.equals(part) && refinement == TriggerPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class TriggerPropertiesEditionProvider extends PropertiesEditingProviderI
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof Trigger) {
-			return new TriggerPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof Trigger) {
+      return new TriggerPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class TriggerPropertiesEditionProvider extends PropertiesEditingProviderI
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof Trigger) {
-			if (TriggerPropertiesEditionComponent.BASE_PART.equals(part))
-				return new TriggerPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof Trigger) {
+      if (TriggerPropertiesEditionComponent.BASE_PART.equals(part))
+        return new TriggerPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

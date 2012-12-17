@@ -304,16 +304,16 @@ public class CommentPropertiesEditionPartImpl extends CompositePropertiesEdition
   }
 
 	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.CommentPropertiesEditionPart#getBodies()
-	 * @generated
-	 */
-	public String getBodies() {
+   * {@inheritDoc}
+   * 
+   * @see org.obeonetwork.dsl.uml2.properties.uml.parts.CommentPropertiesEditionPart#getBody()
+   * @generated
+   */
+  public String getBody() {
     return body.getText();
   }
 
-	/**
+  /**
 	 * {@inheritDoc}
 	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.CommentPropertiesEditionPart#setBody(String newValue)

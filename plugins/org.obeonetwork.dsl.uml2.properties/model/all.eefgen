@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ASCII"?>
+<eef-gen:EEFGenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:eef-gen="http://www.eclipse.org/emf/eef/generation/1.0.0" genDirectory="/org.obeonetwork.dsl.uml2.properties/src-gen" author="&lt;a href=&quot;mailto:cedric.brun@obeo.fr&quot;>C&#xe9;dric Brun&lt;/a>" license="/*******************************************************************************&#xA; * Copyright (c) 2009, 2012 Obeo.&#xA; * All rights reserved. This program and the accompanying materials&#xA; * are made available under the terms of the Eclipse Public License v1.0&#xA; * which accompanies this distribution, and is available at&#xA; * http://www.eclipse.org/legal/epl-v10.html&#xA; * &#xA; * Contributors:&#xA; *     Obeo - initial API and implementation&#xA; *******************************************************************************/" testsGenDirectory="/org.obeonetwork.dsl.uml2.properties.tests/src-gen" useJMergeForUserCode="true">
+  <editionContexts basePackage="org.obeonetwork.dsl.uml2.properties" descriptorsContributorID="fr.obeo.dsl.viewpoint.diagram" descriptorsGenericPropertiesViews="true">
+    <PropertiesEditionContext href="all.components#_j_XB4ZabEeCthc_-fH5cSw"/>
+  </editionContexts>
+  <viewsRepositories basePackage="org.obeonetwork.dsl.uml2.properties.uml" swtViews="true" formViews="true" helpStrategy="ECOREMODEL">
+    <viewsRepository href="all.components#_j_3YUpabEeCthc_-fH5cSw"/>
+  </viewsRepositories>
+</eef-gen:EEFGenModel>

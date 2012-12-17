@@ -184,6 +184,12 @@ public class UmlMessages extends NLS {
    * @generated
    */
   
+  public static String Class_PropertiesEditionPart_OperationsGroupLabel;
+
+  /**
+   * @generated
+   */
+  
   public static String InterfaceRealizationPropertiesEditionPart_PropertiesGroupLabel;
 
   /**
@@ -4806,6 +4812,12 @@ public class UmlMessages extends NLS {
    * @generated
    */
   
+  public static String OperationPropertiesEditionPart_ParametersLabel;
+
+  /**
+   * @generated
+   */
+  
   public static String Class_PropertiesEditionPart_NameLabel;
 
   /**
@@ -4879,6 +4891,12 @@ public class UmlMessages extends NLS {
    */
   
   public static String Class_PropertiesEditionPart_IsActiveLabel;
+
+  /**
+   * @generated
+   */
+  
+  public static String Class_PropertiesEditionPart_OperationsLabel;
 
   /**
    * @generated

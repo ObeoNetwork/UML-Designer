@@ -80,8 +80,8 @@ public class ConnectableElementTemplateParameterPropertiesEditionPartForm extend
 	 * @generated
 	 */
 	public ConnectableElementTemplateParameterPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+    super(editionComponent);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -91,15 +91,15 @@ public class ConnectableElementTemplateParameterPropertiesEditionPartForm extend
 	 * @generated
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
-		view = form.getBody();
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
-		view.setLayout(layout);
-		createControls(widgetFactory, view);
-		return scrolledForm;
-	}
+    ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
+    Form form = scrolledForm.getForm();
+    view = form.getBody();
+    GridLayout layout = new GridLayout();
+    layout.numColumns = 3;
+    view.setLayout(layout);
+    createControls(widgetFactory, view);
+    return scrolledForm;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,50 +109,50 @@ public class ConnectableElementTemplateParameterPropertiesEditionPartForm extend
 	 * @generated
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		CompositionSequence connectableElementTemplateParameterStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep propertiesStep = connectableElementTemplateParameterStep.addStep(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.class);
-		propertiesStep.addStep(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.signature);
-		propertiesStep.addStep(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.parameteredElement);
-		propertiesStep.addStep(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.default_);
-		
-		
-		composer = new PartComposer(connectableElementTemplateParameterStep) {
+    CompositionSequence connectableElementTemplateParameterStep = new BindingCompositionSequence(propertiesEditionComponent);
+    CompositionStep propertiesStep = connectableElementTemplateParameterStep.addStep(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.class);
+    propertiesStep.addStep(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.signature);
+    propertiesStep.addStep(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.parameteredElement);
+    propertiesStep.addStep(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.default_);
+    
+    
+    composer = new PartComposer(connectableElementTemplateParameterStep) {
 
-			@Override
-			public Composite addToPart(Composite parent, Object key) {
-				if (key == UmlViewsRepository.ConnectableElementTemplateParameter.Properties.class) {
-					return createPropertiesGroup(widgetFactory, parent);
-				}
-				if (key == UmlViewsRepository.ConnectableElementTemplateParameter.Properties.signature) {
-					return createSignatureFlatComboViewer(parent, widgetFactory);
-				}
-				if (key == UmlViewsRepository.ConnectableElementTemplateParameter.Properties.parameteredElement) {
-					return createParameteredElementFlatComboViewer(parent, widgetFactory);
-				}
-				if (key == UmlViewsRepository.ConnectableElementTemplateParameter.Properties.default_) {
-					return createDefault_FlatComboViewer(parent, widgetFactory);
-				}
-				return parent;
-			}
-		};
-		composer.compose(view);
-	}
+      @Override
+      public Composite addToPart(Composite parent, Object key) {
+        if (key == UmlViewsRepository.ConnectableElementTemplateParameter.Properties.class) {
+          return createPropertiesGroup(widgetFactory, parent);
+        }
+        if (key == UmlViewsRepository.ConnectableElementTemplateParameter.Properties.signature) {
+          return createSignatureFlatComboViewer(parent, widgetFactory);
+        }
+        if (key == UmlViewsRepository.ConnectableElementTemplateParameter.Properties.parameteredElement) {
+          return createParameteredElementFlatComboViewer(parent, widgetFactory);
+        }
+        if (key == UmlViewsRepository.ConnectableElementTemplateParameter.Properties.default_) {
+          return createDefault_FlatComboViewer(parent, widgetFactory);
+        }
+        return parent;
+      }
+    };
+    composer.compose(view);
+  }
 	/**
 	 * @generated
 	 */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
-		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
-		propertiesSection.setText(UmlMessages.ConnectableElementTemplateParameterPropertiesEditionPart_PropertiesGroupLabel);
-		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesSectionData.horizontalSpan = 3;
-		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		propertiesSection.setClient(propertiesGroup);
-		return propertiesGroup;
-	}
+    Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+    propertiesSection.setText(UmlMessages.ConnectableElementTemplateParameterPropertiesEditionPart_PropertiesGroupLabel);
+    GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
+    propertiesSectionData.horizontalSpan = 3;
+    propertiesSection.setLayoutData(propertiesSectionData);
+    Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+    GridLayout propertiesGroupLayout = new GridLayout();
+    propertiesGroupLayout.numColumns = 3;
+    propertiesGroup.setLayout(propertiesGroupLayout);
+    propertiesSection.setClient(propertiesGroup);
+    return propertiesGroup;
+  }
 
 	/**
 	 * @param parent the parent composite
@@ -160,29 +160,29 @@ public class ConnectableElementTemplateParameterPropertiesEditionPartForm extend
 	 * @generated
 	 */
 	protected Composite createSignatureFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		createDescription(parent, UmlViewsRepository.ConnectableElementTemplateParameter.Properties.signature, UmlMessages.ConnectableElementTemplateParameterPropertiesEditionPart_SignatureLabel);
-		signature = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.signature, UmlViewsRepository.FORM_KIND));
-		widgetFactory.adapt(signature);
-		signature.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		GridData signatureData = new GridData(GridData.FILL_HORIZONTAL);
-		signature.setLayoutData(signatureData);
-		signature.addSelectionChangedListener(new ISelectionChangedListener() {
+    createDescription(parent, UmlViewsRepository.ConnectableElementTemplateParameter.Properties.signature, UmlMessages.ConnectableElementTemplateParameterPropertiesEditionPart_SignatureLabel);
+    signature = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.signature, UmlViewsRepository.FORM_KIND));
+    widgetFactory.adapt(signature);
+    signature.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    GridData signatureData = new GridData(GridData.FILL_HORIZONTAL);
+    signature.setLayoutData(signatureData);
+    signature.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConnectableElementTemplateParameterPropertiesEditionPartForm.this, UmlViewsRepository.ConnectableElementTemplateParameter.Properties.signature, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSignature()));
-			}
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConnectableElementTemplateParameterPropertiesEditionPartForm.this, UmlViewsRepository.ConnectableElementTemplateParameter.Properties.signature, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSignature()));
+      }
 
-		});
-		signature.setID(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.signature);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.signature, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    signature.setID(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.signature);
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.signature, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @param parent the parent composite
@@ -190,29 +190,29 @@ public class ConnectableElementTemplateParameterPropertiesEditionPartForm extend
 	 * @generated
 	 */
 	protected Composite createParameteredElementFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		createDescription(parent, UmlViewsRepository.ConnectableElementTemplateParameter.Properties.parameteredElement, UmlMessages.ConnectableElementTemplateParameterPropertiesEditionPart_ParameteredElementLabel);
-		parameteredElement = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.parameteredElement, UmlViewsRepository.FORM_KIND));
-		widgetFactory.adapt(parameteredElement);
-		parameteredElement.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		GridData parameteredElementData = new GridData(GridData.FILL_HORIZONTAL);
-		parameteredElement.setLayoutData(parameteredElementData);
-		parameteredElement.addSelectionChangedListener(new ISelectionChangedListener() {
+    createDescription(parent, UmlViewsRepository.ConnectableElementTemplateParameter.Properties.parameteredElement, UmlMessages.ConnectableElementTemplateParameterPropertiesEditionPart_ParameteredElementLabel);
+    parameteredElement = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.parameteredElement, UmlViewsRepository.FORM_KIND));
+    widgetFactory.adapt(parameteredElement);
+    parameteredElement.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    GridData parameteredElementData = new GridData(GridData.FILL_HORIZONTAL);
+    parameteredElement.setLayoutData(parameteredElementData);
+    parameteredElement.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConnectableElementTemplateParameterPropertiesEditionPartForm.this, UmlViewsRepository.ConnectableElementTemplateParameter.Properties.parameteredElement, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getParameteredElement()));
-			}
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConnectableElementTemplateParameterPropertiesEditionPartForm.this, UmlViewsRepository.ConnectableElementTemplateParameter.Properties.parameteredElement, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getParameteredElement()));
+      }
 
-		});
-		parameteredElement.setID(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.parameteredElement);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.parameteredElement, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    parameteredElement.setID(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.parameteredElement);
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.parameteredElement, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @param parent the parent composite
@@ -220,29 +220,29 @@ public class ConnectableElementTemplateParameterPropertiesEditionPartForm extend
 	 * @generated
 	 */
 	protected Composite createDefault_FlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		createDescription(parent, UmlViewsRepository.ConnectableElementTemplateParameter.Properties.default_, UmlMessages.ConnectableElementTemplateParameterPropertiesEditionPart_Default_Label);
-		default_ = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.default_, UmlViewsRepository.FORM_KIND));
-		widgetFactory.adapt(default_);
-		default_.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		GridData default_Data = new GridData(GridData.FILL_HORIZONTAL);
-		default_.setLayoutData(default_Data);
-		default_.addSelectionChangedListener(new ISelectionChangedListener() {
+    createDescription(parent, UmlViewsRepository.ConnectableElementTemplateParameter.Properties.default_, UmlMessages.ConnectableElementTemplateParameterPropertiesEditionPart_Default_Label);
+    default_ = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.default_, UmlViewsRepository.FORM_KIND));
+    widgetFactory.adapt(default_);
+    default_.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    GridData default_Data = new GridData(GridData.FILL_HORIZONTAL);
+    default_.setLayoutData(default_Data);
+    default_.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConnectableElementTemplateParameterPropertiesEditionPartForm.this, UmlViewsRepository.ConnectableElementTemplateParameter.Properties.default_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getDefault_()));
-			}
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConnectableElementTemplateParameterPropertiesEditionPartForm.this, UmlViewsRepository.ConnectableElementTemplateParameter.Properties.default_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getDefault_()));
+      }
 
-		});
-		default_.setID(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.default_);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.default_, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    default_.setID(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.default_);
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.default_, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 
 	/**
@@ -252,7 +252,7 @@ public class ConnectableElementTemplateParameterPropertiesEditionPartForm extend
 	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-	}
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -261,13 +261,13 @@ public class ConnectableElementTemplateParameterPropertiesEditionPartForm extend
 	 * @generated
 	 */
 	public EObject getSignature() {
-		if (signature.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) signature.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (signature.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) signature.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -296,20 +296,20 @@ public class ConnectableElementTemplateParameterPropertiesEditionPartForm extend
 	 * @generated
 	 */
 	public void setSignature(EObject newValue) {
-		if (newValue != null) {
-			signature.setSelection(new StructuredSelection(newValue));
-		} else {
-			signature.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.signature);
-		if (readOnly && signature.isEnabled()) {
-			signature.setEnabled(false);
-			signature.setToolTipText(UmlMessages.ConnectableElementTemplateParameter_ReadOnly);
-		} else if (!readOnly && !signature.isEnabled()) {
-			signature.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      signature.setSelection(new StructuredSelection(newValue));
+    } else {
+      signature.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.signature);
+    if (readOnly && signature.isEnabled()) {
+      signature.setEnabled(false);
+      signature.setToolTipText(UmlMessages.ConnectableElementTemplateParameter_ReadOnly);
+    } else if (!readOnly && !signature.isEnabled()) {
+      signature.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -327,8 +327,8 @@ public class ConnectableElementTemplateParameterPropertiesEditionPartForm extend
 	 * @generated
 	 */
 	public void addFilterToSignature(ViewerFilter filter) {
-		signature.addFilter(filter);
-	}
+    signature.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -337,8 +337,8 @@ public class ConnectableElementTemplateParameterPropertiesEditionPartForm extend
 	 * @generated
 	 */
 	public void addBusinessFilterToSignature(ViewerFilter filter) {
-		signature.addBusinessRuleFilter(filter);
-	}
+    signature.addBusinessRuleFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -347,13 +347,13 @@ public class ConnectableElementTemplateParameterPropertiesEditionPartForm extend
 	 * @generated
 	 */
 	public EObject getParameteredElement() {
-		if (parameteredElement.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) parameteredElement.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (parameteredElement.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) parameteredElement.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -382,20 +382,20 @@ public class ConnectableElementTemplateParameterPropertiesEditionPartForm extend
 	 * @generated
 	 */
 	public void setParameteredElement(EObject newValue) {
-		if (newValue != null) {
-			parameteredElement.setSelection(new StructuredSelection(newValue));
-		} else {
-			parameteredElement.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.parameteredElement);
-		if (readOnly && parameteredElement.isEnabled()) {
-			parameteredElement.setEnabled(false);
-			parameteredElement.setToolTipText(UmlMessages.ConnectableElementTemplateParameter_ReadOnly);
-		} else if (!readOnly && !parameteredElement.isEnabled()) {
-			parameteredElement.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      parameteredElement.setSelection(new StructuredSelection(newValue));
+    } else {
+      parameteredElement.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.parameteredElement);
+    if (readOnly && parameteredElement.isEnabled()) {
+      parameteredElement.setEnabled(false);
+      parameteredElement.setToolTipText(UmlMessages.ConnectableElementTemplateParameter_ReadOnly);
+    } else if (!readOnly && !parameteredElement.isEnabled()) {
+      parameteredElement.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -413,8 +413,8 @@ public class ConnectableElementTemplateParameterPropertiesEditionPartForm extend
 	 * @generated
 	 */
 	public void addFilterToParameteredElement(ViewerFilter filter) {
-		parameteredElement.addFilter(filter);
-	}
+    parameteredElement.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -423,8 +423,8 @@ public class ConnectableElementTemplateParameterPropertiesEditionPartForm extend
 	 * @generated
 	 */
 	public void addBusinessFilterToParameteredElement(ViewerFilter filter) {
-		parameteredElement.addBusinessRuleFilter(filter);
-	}
+    parameteredElement.addBusinessRuleFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -433,13 +433,13 @@ public class ConnectableElementTemplateParameterPropertiesEditionPartForm extend
 	 * @generated
 	 */
 	public EObject getDefault_() {
-		if (default_.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) default_.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (default_.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) default_.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -468,20 +468,20 @@ public class ConnectableElementTemplateParameterPropertiesEditionPartForm extend
 	 * @generated
 	 */
 	public void setDefault_(EObject newValue) {
-		if (newValue != null) {
-			default_.setSelection(new StructuredSelection(newValue));
-		} else {
-			default_.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.default_);
-		if (readOnly && default_.isEnabled()) {
-			default_.setEnabled(false);
-			default_.setToolTipText(UmlMessages.ConnectableElementTemplateParameter_ReadOnly);
-		} else if (!readOnly && !default_.isEnabled()) {
-			default_.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      default_.setSelection(new StructuredSelection(newValue));
+    } else {
+      default_.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.default_);
+    if (readOnly && default_.isEnabled()) {
+      default_.setEnabled(false);
+      default_.setToolTipText(UmlMessages.ConnectableElementTemplateParameter_ReadOnly);
+    } else if (!readOnly && !default_.isEnabled()) {
+      default_.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -499,8 +499,8 @@ public class ConnectableElementTemplateParameterPropertiesEditionPartForm extend
 	 * @generated
 	 */
 	public void addFilterToDefault_(ViewerFilter filter) {
-		default_.addFilter(filter);
-	}
+    default_.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -509,8 +509,8 @@ public class ConnectableElementTemplateParameterPropertiesEditionPartForm extend
 	 * @generated
 	 */
 	public void addBusinessFilterToDefault_(ViewerFilter filter) {
-		default_.addBusinessRuleFilter(filter);
-	}
+    default_.addBusinessRuleFilter(filter);
+  }
 
 
 
@@ -524,8 +524,8 @@ public class ConnectableElementTemplateParameterPropertiesEditionPartForm extend
 	 * @generated
 	 */
 	public String getTitle() {
-		return UmlMessages.ConnectableElementTemplateParameter_Part_Title;
-	}
+    return UmlMessages.ConnectableElementTemplateParameter_Part_Title;
+  }
 
 
 

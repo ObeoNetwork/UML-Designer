@@ -58,9 +58,9 @@ public class RaiseExceptionActionPropertiesEditionProvider extends PropertiesEdi
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof RaiseExceptionAction) 
-					&& (UMLPackage.Literals.RAISE_EXCEPTION_ACTION == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof RaiseExceptionAction) 
+          && (UMLPackage.Literals.RAISE_EXCEPTION_ACTION == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class RaiseExceptionActionPropertiesEditionProvider extends PropertiesEdi
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof RaiseExceptionAction) && (RaiseExceptionActionPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof RaiseExceptionAction) && (RaiseExceptionActionPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class RaiseExceptionActionPropertiesEditionProvider extends PropertiesEdi
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof RaiseExceptionAction) && (refinement == RaiseExceptionActionPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof RaiseExceptionAction) && (refinement == RaiseExceptionActionPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class RaiseExceptionActionPropertiesEditionProvider extends PropertiesEdi
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof RaiseExceptionAction) && ((RaiseExceptionActionPropertiesEditionComponent.BASE_PART.equals(part) && refinement == RaiseExceptionActionPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof RaiseExceptionAction) && ((RaiseExceptionActionPropertiesEditionComponent.BASE_PART.equals(part) && refinement == RaiseExceptionActionPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class RaiseExceptionActionPropertiesEditionProvider extends PropertiesEdi
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof RaiseExceptionAction) {
-			return new RaiseExceptionActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof RaiseExceptionAction) {
+      return new RaiseExceptionActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class RaiseExceptionActionPropertiesEditionProvider extends PropertiesEdi
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof RaiseExceptionAction) {
-			if (RaiseExceptionActionPropertiesEditionComponent.BASE_PART.equals(part))
-				return new RaiseExceptionActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof RaiseExceptionAction) {
+      if (RaiseExceptionActionPropertiesEditionComponent.BASE_PART.equals(part))
+        return new RaiseExceptionActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

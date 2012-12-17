@@ -58,9 +58,9 @@ public class ExpansionNodePropertiesEditionProvider extends PropertiesEditingPro
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof ExpansionNode) 
-					&& (UMLPackage.Literals.EXPANSION_NODE == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof ExpansionNode) 
+          && (UMLPackage.Literals.EXPANSION_NODE == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class ExpansionNodePropertiesEditionProvider extends PropertiesEditingPro
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof ExpansionNode) && (ExpansionNodePropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof ExpansionNode) && (ExpansionNodePropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class ExpansionNodePropertiesEditionProvider extends PropertiesEditingPro
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ExpansionNode) && (refinement == ExpansionNodePropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof ExpansionNode) && (refinement == ExpansionNodePropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class ExpansionNodePropertiesEditionProvider extends PropertiesEditingPro
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ExpansionNode) && ((ExpansionNodePropertiesEditionComponent.BASE_PART.equals(part) && refinement == ExpansionNodePropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof ExpansionNode) && ((ExpansionNodePropertiesEditionComponent.BASE_PART.equals(part) && refinement == ExpansionNodePropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class ExpansionNodePropertiesEditionProvider extends PropertiesEditingPro
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof ExpansionNode) {
-			return new ExpansionNodePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof ExpansionNode) {
+      return new ExpansionNodePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class ExpansionNodePropertiesEditionProvider extends PropertiesEditingPro
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof ExpansionNode) {
-			if (ExpansionNodePropertiesEditionComponent.BASE_PART.equals(part))
-				return new ExpansionNodePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof ExpansionNode) {
+      if (ExpansionNodePropertiesEditionComponent.BASE_PART.equals(part))
+        return new ExpansionNodePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

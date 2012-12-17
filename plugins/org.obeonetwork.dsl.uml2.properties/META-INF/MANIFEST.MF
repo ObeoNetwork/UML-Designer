@@ -8,7 +8,7 @@ Bundle-Vendor: ObeoNetwork
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.ui.views.properties.tabbed,
- org.eclipse.emf.eef.runtime;bundle-version="0.9.0",
+ org.eclipse.emf.eef.runtime;bundle-version="1.2.0",
  org.eclipse.uml2.uml,
  org.eclipse.uml2.uml.edit
 Bundle-RequiredExecutionEnvironment: J2SE-1.5

@@ -1533,6 +1533,12 @@ public class UmlViewsRepository {
        */
       
       public static String bodyCondition = "uml::Operation::properties::bodyCondition";
+
+      /**
+       * @generated
+       */
+      
+      public static String parameters = "uml::Operation::properties::parameters";
       
   
     }
@@ -1624,6 +1630,17 @@ public class UmlViewsRepository {
        */
       
       public static String isActive = "uml::Class::properties::isActive";
+      
+  
+    }
+
+    public static class Operations {
+  
+      /**
+       * @generated
+       */
+      
+      public static String operations_ = "uml::Class::operations::operations_";
       
   
     }

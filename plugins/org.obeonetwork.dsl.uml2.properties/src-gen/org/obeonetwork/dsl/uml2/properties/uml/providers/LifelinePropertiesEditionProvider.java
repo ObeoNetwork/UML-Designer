@@ -58,9 +58,9 @@ public class LifelinePropertiesEditionProvider extends PropertiesEditingProvider
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof Lifeline) 
-					&& (UMLPackage.Literals.LIFELINE == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof Lifeline) 
+          && (UMLPackage.Literals.LIFELINE == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class LifelinePropertiesEditionProvider extends PropertiesEditingProvider
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof Lifeline) && (LifelinePropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof Lifeline) && (LifelinePropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class LifelinePropertiesEditionProvider extends PropertiesEditingProvider
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Lifeline) && (refinement == LifelinePropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof Lifeline) && (refinement == LifelinePropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class LifelinePropertiesEditionProvider extends PropertiesEditingProvider
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Lifeline) && ((LifelinePropertiesEditionComponent.BASE_PART.equals(part) && refinement == LifelinePropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof Lifeline) && ((LifelinePropertiesEditionComponent.BASE_PART.equals(part) && refinement == LifelinePropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class LifelinePropertiesEditionProvider extends PropertiesEditingProvider
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof Lifeline) {
-			return new LifelinePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof Lifeline) {
+      return new LifelinePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class LifelinePropertiesEditionProvider extends PropertiesEditingProvider
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof Lifeline) {
-			if (LifelinePropertiesEditionComponent.BASE_PART.equals(part))
-				return new LifelinePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof Lifeline) {
+      if (LifelinePropertiesEditionComponent.BASE_PART.equals(part))
+        return new LifelinePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

@@ -80,8 +80,8 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 	 * @generated
 	 */
 	public LinkEndDestructionDataPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+    super(editionComponent);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -91,13 +91,13 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 	 * @generated
 	 */
 	public Composite createFigure(final Composite parent) {
-		view = new Composite(parent, SWT.NONE);
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
-		view.setLayout(layout);
-		createControls(view);
-		return view;
-	}
+    view = new Composite(parent, SWT.NONE);
+    GridLayout layout = new GridLayout();
+    layout.numColumns = 3;
+    view.setLayout(layout);
+    createControls(view);
+    return view;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -107,152 +107,152 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 	 * @generated
 	 */
 	public void createControls(Composite view) { 
-		CompositionSequence linkEndDestructionDataStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep propertiesStep = linkEndDestructionDataStep.addStep(UmlViewsRepository.LinkEndDestructionData.Properties.class);
-		propertiesStep.addStep(UmlViewsRepository.LinkEndDestructionData.Properties.value);
-		propertiesStep.addStep(UmlViewsRepository.LinkEndDestructionData.Properties.end);
-		propertiesStep.addStep(UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates);
-		propertiesStep.addStep(UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt);
-		
-		
-		composer = new PartComposer(linkEndDestructionDataStep) {
+    CompositionSequence linkEndDestructionDataStep = new BindingCompositionSequence(propertiesEditionComponent);
+    CompositionStep propertiesStep = linkEndDestructionDataStep.addStep(UmlViewsRepository.LinkEndDestructionData.Properties.class);
+    propertiesStep.addStep(UmlViewsRepository.LinkEndDestructionData.Properties.value);
+    propertiesStep.addStep(UmlViewsRepository.LinkEndDestructionData.Properties.end);
+    propertiesStep.addStep(UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates);
+    propertiesStep.addStep(UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt);
+    
+    
+    composer = new PartComposer(linkEndDestructionDataStep) {
 
-			@Override
-			public Composite addToPart(Composite parent, Object key) {
-				if (key == UmlViewsRepository.LinkEndDestructionData.Properties.class) {
-					return createPropertiesGroup(parent);
-				}
-				if (key == UmlViewsRepository.LinkEndDestructionData.Properties.value) {
-					return createValueFlatComboViewer(parent);
-				}
-				if (key == UmlViewsRepository.LinkEndDestructionData.Properties.end) {
-					return createEndFlatComboViewer(parent);
-				}
-				if (key == UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates) {
-					return createIsDestroyDuplicatesCheckbox(parent);
-				}
-				if (key == UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt) {
-					return createDestroyAtFlatComboViewer(parent);
-				}
-				return parent;
-			}
-		};
-		composer.compose(view);
-	}
+      @Override
+      public Composite addToPart(Composite parent, Object key) {
+        if (key == UmlViewsRepository.LinkEndDestructionData.Properties.class) {
+          return createPropertiesGroup(parent);
+        }
+        if (key == UmlViewsRepository.LinkEndDestructionData.Properties.value) {
+          return createValueFlatComboViewer(parent);
+        }
+        if (key == UmlViewsRepository.LinkEndDestructionData.Properties.end) {
+          return createEndFlatComboViewer(parent);
+        }
+        if (key == UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates) {
+          return createIsDestroyDuplicatesCheckbox(parent);
+        }
+        if (key == UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt) {
+          return createDestroyAtFlatComboViewer(parent);
+        }
+        return parent;
+      }
+    };
+    composer.compose(view);
+  }
 
 	/**
 	 * @generated
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
-		Group propertiesGroup = new Group(parent, SWT.NONE);
-		propertiesGroup.setText(UmlMessages.LinkEndDestructionDataPropertiesEditionPart_PropertiesGroupLabel);
-		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesGroupData.horizontalSpan = 3;
-		propertiesGroup.setLayoutData(propertiesGroupData);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		return propertiesGroup;
-	}
+    Group propertiesGroup = new Group(parent, SWT.NONE);
+    propertiesGroup.setText(UmlMessages.LinkEndDestructionDataPropertiesEditionPart_PropertiesGroupLabel);
+    GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
+    propertiesGroupData.horizontalSpan = 3;
+    propertiesGroup.setLayoutData(propertiesGroupData);
+    GridLayout propertiesGroupLayout = new GridLayout();
+    propertiesGroupLayout.numColumns = 3;
+    propertiesGroup.setLayout(propertiesGroupLayout);
+    return propertiesGroup;
+  }
 
 	/**
 	 * @param parent the parent composite
 	 * @generated
 	 */
 	protected Composite createValueFlatComboViewer(Composite parent) {
-		createDescription(parent, UmlViewsRepository.LinkEndDestructionData.Properties.value, UmlMessages.LinkEndDestructionDataPropertiesEditionPart_ValueLabel);
-		value = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.LinkEndDestructionData.Properties.value, UmlViewsRepository.SWT_KIND));
-		value.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    createDescription(parent, UmlViewsRepository.LinkEndDestructionData.Properties.value, UmlMessages.LinkEndDestructionDataPropertiesEditionPart_ValueLabel);
+    value = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.LinkEndDestructionData.Properties.value, UmlViewsRepository.SWT_KIND));
+    value.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
-		value.addSelectionChangedListener(new ISelectionChangedListener() {
+    value.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LinkEndDestructionDataPropertiesEditionPartImpl.this, UmlViewsRepository.LinkEndDestructionData.Properties.value, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getValue()));
-			}
+      public void selectionChanged(SelectionChangedEvent event) {
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LinkEndDestructionDataPropertiesEditionPartImpl.this, UmlViewsRepository.LinkEndDestructionData.Properties.value, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getValue()));
+      }
 
-		});
-		GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
-		value.setLayoutData(valueData);
-		value.setID(UmlViewsRepository.LinkEndDestructionData.Properties.value);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.LinkEndDestructionData.Properties.value, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+    value.setLayoutData(valueData);
+    value.setID(UmlViewsRepository.LinkEndDestructionData.Properties.value);
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.LinkEndDestructionData.Properties.value, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @param parent the parent composite
 	 * @generated
 	 */
 	protected Composite createEndFlatComboViewer(Composite parent) {
-		createDescription(parent, UmlViewsRepository.LinkEndDestructionData.Properties.end, UmlMessages.LinkEndDestructionDataPropertiesEditionPart_EndLabel);
-		end = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.LinkEndDestructionData.Properties.end, UmlViewsRepository.SWT_KIND));
-		end.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    createDescription(parent, UmlViewsRepository.LinkEndDestructionData.Properties.end, UmlMessages.LinkEndDestructionDataPropertiesEditionPart_EndLabel);
+    end = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.LinkEndDestructionData.Properties.end, UmlViewsRepository.SWT_KIND));
+    end.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
-		end.addSelectionChangedListener(new ISelectionChangedListener() {
+    end.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LinkEndDestructionDataPropertiesEditionPartImpl.this, UmlViewsRepository.LinkEndDestructionData.Properties.end, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getEnd()));
-			}
+      public void selectionChanged(SelectionChangedEvent event) {
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LinkEndDestructionDataPropertiesEditionPartImpl.this, UmlViewsRepository.LinkEndDestructionData.Properties.end, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getEnd()));
+      }
 
-		});
-		GridData endData = new GridData(GridData.FILL_HORIZONTAL);
-		end.setLayoutData(endData);
-		end.setID(UmlViewsRepository.LinkEndDestructionData.Properties.end);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.LinkEndDestructionData.Properties.end, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    GridData endData = new GridData(GridData.FILL_HORIZONTAL);
+    end.setLayoutData(endData);
+    end.setID(UmlViewsRepository.LinkEndDestructionData.Properties.end);
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.LinkEndDestructionData.Properties.end, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @generated
 	 */
 	
 	protected Composite createIsDestroyDuplicatesCheckbox(Composite parent) {
-		isDestroyDuplicates = new Button(parent, SWT.CHECK);
-		isDestroyDuplicates.setText(getDescription(UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates, UmlMessages.LinkEndDestructionDataPropertiesEditionPart_IsDestroyDuplicatesLabel));
-		isDestroyDuplicates.addSelectionListener(new SelectionAdapter() {
+    isDestroyDuplicates = new Button(parent, SWT.CHECK);
+    isDestroyDuplicates.setText(getDescription(UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates, UmlMessages.LinkEndDestructionDataPropertiesEditionPart_IsDestroyDuplicatesLabel));
+    isDestroyDuplicates.addSelectionListener(new SelectionAdapter() {
 
-			/**
-			 * {@inheritDoc}
-			 *
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	@generated
-			 */
-			public void widgetSelected(SelectionEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LinkEndDestructionDataPropertiesEditionPartImpl.this, UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(isDestroyDuplicates.getSelection())));
-			}
+      /**
+       * {@inheritDoc}
+       *
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       * 	@generated
+       */
+      public void widgetSelected(SelectionEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LinkEndDestructionDataPropertiesEditionPartImpl.this, UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(isDestroyDuplicates.getSelection())));
+      }
 
-		});
-		GridData isDestroyDuplicatesData = new GridData(GridData.FILL_HORIZONTAL);
-		isDestroyDuplicatesData.horizontalSpan = 2;
-		isDestroyDuplicates.setLayoutData(isDestroyDuplicatesData);
-		EditingUtils.setID(isDestroyDuplicates, UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates);
-		EditingUtils.setEEFtype(isDestroyDuplicates, "eef::Checkbox"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    GridData isDestroyDuplicatesData = new GridData(GridData.FILL_HORIZONTAL);
+    isDestroyDuplicatesData.horizontalSpan = 2;
+    isDestroyDuplicates.setLayoutData(isDestroyDuplicatesData);
+    EditingUtils.setID(isDestroyDuplicates, UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates);
+    EditingUtils.setEEFtype(isDestroyDuplicates, "eef::Checkbox"); //$NON-NLS-1$
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @param parent the parent composite
 	 * @generated
 	 */
 	protected Composite createDestroyAtFlatComboViewer(Composite parent) {
-		createDescription(parent, UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt, UmlMessages.LinkEndDestructionDataPropertiesEditionPart_DestroyAtLabel);
-		destroyAt = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt, UmlViewsRepository.SWT_KIND));
-		destroyAt.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    createDescription(parent, UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt, UmlMessages.LinkEndDestructionDataPropertiesEditionPart_DestroyAtLabel);
+    destroyAt = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt, UmlViewsRepository.SWT_KIND));
+    destroyAt.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
-		destroyAt.addSelectionChangedListener(new ISelectionChangedListener() {
+    destroyAt.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LinkEndDestructionDataPropertiesEditionPartImpl.this, UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getDestroyAt()));
-			}
+      public void selectionChanged(SelectionChangedEvent event) {
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LinkEndDestructionDataPropertiesEditionPartImpl.this, UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getDestroyAt()));
+      }
 
-		});
-		GridData destroyAtData = new GridData(GridData.FILL_HORIZONTAL);
-		destroyAt.setLayoutData(destroyAtData);
-		destroyAt.setID(UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    GridData destroyAtData = new GridData(GridData.FILL_HORIZONTAL);
+    destroyAt.setLayoutData(destroyAtData);
+    destroyAt.setID(UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt);
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 
 	/**
@@ -262,7 +262,7 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-	}
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -271,13 +271,13 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 	 * @generated
 	 */
 	public EObject getValue() {
-		if (value.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) value.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (value.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) value.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -306,20 +306,20 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 	 * @generated
 	 */
 	public void setValue(EObject newValue) {
-		if (newValue != null) {
-			value.setSelection(new StructuredSelection(newValue));
-		} else {
-			value.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.LinkEndDestructionData.Properties.value);
-		if (readOnly && value.isEnabled()) {
-			value.setEnabled(false);
-			value.setToolTipText(UmlMessages.LinkEndDestructionData_ReadOnly);
-		} else if (!readOnly && !value.isEnabled()) {
-			value.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      value.setSelection(new StructuredSelection(newValue));
+    } else {
+      value.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.LinkEndDestructionData.Properties.value);
+    if (readOnly && value.isEnabled()) {
+      value.setEnabled(false);
+      value.setToolTipText(UmlMessages.LinkEndDestructionData_ReadOnly);
+    } else if (!readOnly && !value.isEnabled()) {
+      value.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -337,8 +337,8 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 	 * @generated
 	 */
 	public void addFilterToValue(ViewerFilter filter) {
-		value.addFilter(filter);
-	}
+    value.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -347,8 +347,8 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 	 * @generated
 	 */
 	public void addBusinessFilterToValue(ViewerFilter filter) {
-		value.addBusinessRuleFilter(filter);
-	}
+    value.addBusinessRuleFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -357,13 +357,13 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 	 * @generated
 	 */
 	public EObject getEnd() {
-		if (end.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) end.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (end.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) end.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -392,20 +392,20 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 	 * @generated
 	 */
 	public void setEnd(EObject newValue) {
-		if (newValue != null) {
-			end.setSelection(new StructuredSelection(newValue));
-		} else {
-			end.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.LinkEndDestructionData.Properties.end);
-		if (readOnly && end.isEnabled()) {
-			end.setEnabled(false);
-			end.setToolTipText(UmlMessages.LinkEndDestructionData_ReadOnly);
-		} else if (!readOnly && !end.isEnabled()) {
-			end.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      end.setSelection(new StructuredSelection(newValue));
+    } else {
+      end.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.LinkEndDestructionData.Properties.end);
+    if (readOnly && end.isEnabled()) {
+      end.setEnabled(false);
+      end.setToolTipText(UmlMessages.LinkEndDestructionData_ReadOnly);
+    } else if (!readOnly && !end.isEnabled()) {
+      end.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -423,8 +423,8 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 	 * @generated
 	 */
 	public void addFilterToEnd(ViewerFilter filter) {
-		end.addFilter(filter);
-	}
+    end.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -433,8 +433,8 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 	 * @generated
 	 */
 	public void addBusinessFilterToEnd(ViewerFilter filter) {
-		end.addBusinessRuleFilter(filter);
-	}
+    end.addBusinessRuleFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -443,8 +443,8 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 	 * @generated
 	 */
 	public Boolean getIsDestroyDuplicates() {
-		return Boolean.valueOf(isDestroyDuplicates.getSelection());
-	}
+    return Boolean.valueOf(isDestroyDuplicates.getSelection());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -453,20 +453,20 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 	 * @generated
 	 */
 	public void setIsDestroyDuplicates(Boolean newValue) {
-		if (newValue != null) {
-			isDestroyDuplicates.setSelection(newValue.booleanValue());
-		} else {
-			isDestroyDuplicates.setSelection(false);
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates);
-		if (readOnly && isDestroyDuplicates.isEnabled()) {
-			isDestroyDuplicates.setEnabled(false);
-			isDestroyDuplicates.setToolTipText(UmlMessages.LinkEndDestructionData_ReadOnly);
-		} else if (!readOnly && !isDestroyDuplicates.isEnabled()) {
-			isDestroyDuplicates.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      isDestroyDuplicates.setSelection(newValue.booleanValue());
+    } else {
+      isDestroyDuplicates.setSelection(false);
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates);
+    if (readOnly && isDestroyDuplicates.isEnabled()) {
+      isDestroyDuplicates.setEnabled(false);
+      isDestroyDuplicates.setToolTipText(UmlMessages.LinkEndDestructionData_ReadOnly);
+    } else if (!readOnly && !isDestroyDuplicates.isEnabled()) {
+      isDestroyDuplicates.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -475,13 +475,13 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 	 * @generated
 	 */
 	public EObject getDestroyAt() {
-		if (destroyAt.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) destroyAt.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (destroyAt.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) destroyAt.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -510,20 +510,20 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 	 * @generated
 	 */
 	public void setDestroyAt(EObject newValue) {
-		if (newValue != null) {
-			destroyAt.setSelection(new StructuredSelection(newValue));
-		} else {
-			destroyAt.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt);
-		if (readOnly && destroyAt.isEnabled()) {
-			destroyAt.setEnabled(false);
-			destroyAt.setToolTipText(UmlMessages.LinkEndDestructionData_ReadOnly);
-		} else if (!readOnly && !destroyAt.isEnabled()) {
-			destroyAt.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      destroyAt.setSelection(new StructuredSelection(newValue));
+    } else {
+      destroyAt.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt);
+    if (readOnly && destroyAt.isEnabled()) {
+      destroyAt.setEnabled(false);
+      destroyAt.setToolTipText(UmlMessages.LinkEndDestructionData_ReadOnly);
+    } else if (!readOnly && !destroyAt.isEnabled()) {
+      destroyAt.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -541,8 +541,8 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 	 * @generated
 	 */
 	public void addFilterToDestroyAt(ViewerFilter filter) {
-		destroyAt.addFilter(filter);
-	}
+    destroyAt.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -551,8 +551,8 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 	 * @generated
 	 */
 	public void addBusinessFilterToDestroyAt(ViewerFilter filter) {
-		destroyAt.addBusinessRuleFilter(filter);
-	}
+    destroyAt.addBusinessRuleFilter(filter);
+  }
 
 
 
@@ -566,8 +566,8 @@ public class LinkEndDestructionDataPropertiesEditionPartImpl extends CompositePr
 	 * @generated
 	 */
 	public String getTitle() {
-		return UmlMessages.LinkEndDestructionData_Part_Title;
-	}
+    return UmlMessages.LinkEndDestructionData_Part_Title;
+  }
 
 
 

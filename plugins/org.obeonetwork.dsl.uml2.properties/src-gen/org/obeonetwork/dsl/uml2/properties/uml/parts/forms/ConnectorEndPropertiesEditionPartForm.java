@@ -89,8 +89,8 @@ public class ConnectorEndPropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated
 	 */
 	public ConnectorEndPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+    super(editionComponent);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -100,15 +100,15 @@ public class ConnectorEndPropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
-		view = form.getBody();
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
-		view.setLayout(layout);
-		createControls(widgetFactory, view);
-		return scrolledForm;
-	}
+    ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
+    Form form = scrolledForm.getForm();
+    view = form.getBody();
+    GridLayout layout = new GridLayout();
+    layout.numColumns = 3;
+    view.setLayout(layout);
+    createControls(widgetFactory, view);
+    return scrolledForm;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -118,112 +118,112 @@ public class ConnectorEndPropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		CompositionSequence connectorEndStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep propertiesStep = connectorEndStep.addStep(UmlViewsRepository.ConnectorEnd.Properties.class);
-		propertiesStep.addStep(UmlViewsRepository.ConnectorEnd.Properties.isOrdered);
-		propertiesStep.addStep(UmlViewsRepository.ConnectorEnd.Properties.isUnique);
-		propertiesStep.addStep(UmlViewsRepository.ConnectorEnd.Properties.role);
-		propertiesStep.addStep(UmlViewsRepository.ConnectorEnd.Properties.partWithPort);
-		
-		
-		composer = new PartComposer(connectorEndStep) {
+    CompositionSequence connectorEndStep = new BindingCompositionSequence(propertiesEditionComponent);
+    CompositionStep propertiesStep = connectorEndStep.addStep(UmlViewsRepository.ConnectorEnd.Properties.class);
+    propertiesStep.addStep(UmlViewsRepository.ConnectorEnd.Properties.isOrdered);
+    propertiesStep.addStep(UmlViewsRepository.ConnectorEnd.Properties.isUnique);
+    propertiesStep.addStep(UmlViewsRepository.ConnectorEnd.Properties.role);
+    propertiesStep.addStep(UmlViewsRepository.ConnectorEnd.Properties.partWithPort);
+    
+    
+    composer = new PartComposer(connectorEndStep) {
 
-			@Override
-			public Composite addToPart(Composite parent, Object key) {
-				if (key == UmlViewsRepository.ConnectorEnd.Properties.class) {
-					return createPropertiesGroup(widgetFactory, parent);
-				}
-				if (key == UmlViewsRepository.ConnectorEnd.Properties.isOrdered) {
-					return createIsOrderedCheckbox(widgetFactory, parent);
-				}
-				if (key == UmlViewsRepository.ConnectorEnd.Properties.isUnique) {
-					return createIsUniqueCheckbox(widgetFactory, parent);
-				}
-				if (key == UmlViewsRepository.ConnectorEnd.Properties.role) {
-					return createRoleFlatComboViewer(parent, widgetFactory);
-				}
-				if (key == UmlViewsRepository.ConnectorEnd.Properties.partWithPort) {
-					return createPartWithPortFlatComboViewer(parent, widgetFactory);
-				}
-				return parent;
-			}
-		};
-		composer.compose(view);
-	}
+      @Override
+      public Composite addToPart(Composite parent, Object key) {
+        if (key == UmlViewsRepository.ConnectorEnd.Properties.class) {
+          return createPropertiesGroup(widgetFactory, parent);
+        }
+        if (key == UmlViewsRepository.ConnectorEnd.Properties.isOrdered) {
+          return createIsOrderedCheckbox(widgetFactory, parent);
+        }
+        if (key == UmlViewsRepository.ConnectorEnd.Properties.isUnique) {
+          return createIsUniqueCheckbox(widgetFactory, parent);
+        }
+        if (key == UmlViewsRepository.ConnectorEnd.Properties.role) {
+          return createRoleFlatComboViewer(parent, widgetFactory);
+        }
+        if (key == UmlViewsRepository.ConnectorEnd.Properties.partWithPort) {
+          return createPartWithPortFlatComboViewer(parent, widgetFactory);
+        }
+        return parent;
+      }
+    };
+    composer.compose(view);
+  }
 	/**
 	 * @generated
 	 */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
-		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
-		propertiesSection.setText(UmlMessages.ConnectorEndPropertiesEditionPart_PropertiesGroupLabel);
-		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesSectionData.horizontalSpan = 3;
-		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		propertiesSection.setClient(propertiesGroup);
-		return propertiesGroup;
-	}
+    Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+    propertiesSection.setText(UmlMessages.ConnectorEndPropertiesEditionPart_PropertiesGroupLabel);
+    GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
+    propertiesSectionData.horizontalSpan = 3;
+    propertiesSection.setLayoutData(propertiesSectionData);
+    Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+    GridLayout propertiesGroupLayout = new GridLayout();
+    propertiesGroupLayout.numColumns = 3;
+    propertiesGroup.setLayout(propertiesGroupLayout);
+    propertiesSection.setClient(propertiesGroup);
+    return propertiesGroup;
+  }
 
 	/**
 	 * @generated
 	 */
 	
 	protected Composite createIsOrderedCheckbox(FormToolkit widgetFactory, Composite parent) {
-		isOrdered = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.ConnectorEnd.Properties.isOrdered, UmlMessages.ConnectorEndPropertiesEditionPart_IsOrderedLabel), SWT.CHECK);
-		isOrdered.addSelectionListener(new SelectionAdapter() {
+    isOrdered = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.ConnectorEnd.Properties.isOrdered, UmlMessages.ConnectorEndPropertiesEditionPart_IsOrderedLabel), SWT.CHECK);
+    isOrdered.addSelectionListener(new SelectionAdapter() {
 
-			/**
-			 * {@inheritDoc}
-			 *
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	@generated
-			 */
-			public void widgetSelected(SelectionEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConnectorEndPropertiesEditionPartForm.this, UmlViewsRepository.ConnectorEnd.Properties.isOrdered, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(isOrdered.getSelection())));
-			}
+      /**
+       * {@inheritDoc}
+       *
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       * 	@generated
+       */
+      public void widgetSelected(SelectionEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConnectorEndPropertiesEditionPartForm.this, UmlViewsRepository.ConnectorEnd.Properties.isOrdered, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(isOrdered.getSelection())));
+      }
 
-		});
-		GridData isOrderedData = new GridData(GridData.FILL_HORIZONTAL);
-		isOrderedData.horizontalSpan = 2;
-		isOrdered.setLayoutData(isOrderedData);
-		EditingUtils.setID(isOrdered, UmlViewsRepository.ConnectorEnd.Properties.isOrdered);
-		EditingUtils.setEEFtype(isOrdered, "eef::Checkbox"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ConnectorEnd.Properties.isOrdered, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    GridData isOrderedData = new GridData(GridData.FILL_HORIZONTAL);
+    isOrderedData.horizontalSpan = 2;
+    isOrdered.setLayoutData(isOrderedData);
+    EditingUtils.setID(isOrdered, UmlViewsRepository.ConnectorEnd.Properties.isOrdered);
+    EditingUtils.setEEFtype(isOrdered, "eef::Checkbox"); //$NON-NLS-1$
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ConnectorEnd.Properties.isOrdered, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @generated
 	 */
 	
 	protected Composite createIsUniqueCheckbox(FormToolkit widgetFactory, Composite parent) {
-		isUnique = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.ConnectorEnd.Properties.isUnique, UmlMessages.ConnectorEndPropertiesEditionPart_IsUniqueLabel), SWT.CHECK);
-		isUnique.addSelectionListener(new SelectionAdapter() {
+    isUnique = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.ConnectorEnd.Properties.isUnique, UmlMessages.ConnectorEndPropertiesEditionPart_IsUniqueLabel), SWT.CHECK);
+    isUnique.addSelectionListener(new SelectionAdapter() {
 
-			/**
-			 * {@inheritDoc}
-			 *
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	@generated
-			 */
-			public void widgetSelected(SelectionEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConnectorEndPropertiesEditionPartForm.this, UmlViewsRepository.ConnectorEnd.Properties.isUnique, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(isUnique.getSelection())));
-			}
+      /**
+       * {@inheritDoc}
+       *
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       * 	@generated
+       */
+      public void widgetSelected(SelectionEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConnectorEndPropertiesEditionPartForm.this, UmlViewsRepository.ConnectorEnd.Properties.isUnique, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(isUnique.getSelection())));
+      }
 
-		});
-		GridData isUniqueData = new GridData(GridData.FILL_HORIZONTAL);
-		isUniqueData.horizontalSpan = 2;
-		isUnique.setLayoutData(isUniqueData);
-		EditingUtils.setID(isUnique, UmlViewsRepository.ConnectorEnd.Properties.isUnique);
-		EditingUtils.setEEFtype(isUnique, "eef::Checkbox"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ConnectorEnd.Properties.isUnique, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    GridData isUniqueData = new GridData(GridData.FILL_HORIZONTAL);
+    isUniqueData.horizontalSpan = 2;
+    isUnique.setLayoutData(isUniqueData);
+    EditingUtils.setID(isUnique, UmlViewsRepository.ConnectorEnd.Properties.isUnique);
+    EditingUtils.setEEFtype(isUnique, "eef::Checkbox"); //$NON-NLS-1$
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ConnectorEnd.Properties.isUnique, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @param parent the parent composite
@@ -231,29 +231,29 @@ public class ConnectorEndPropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated
 	 */
 	protected Composite createRoleFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		createDescription(parent, UmlViewsRepository.ConnectorEnd.Properties.role, UmlMessages.ConnectorEndPropertiesEditionPart_RoleLabel);
-		role = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ConnectorEnd.Properties.role, UmlViewsRepository.FORM_KIND));
-		widgetFactory.adapt(role);
-		role.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		GridData roleData = new GridData(GridData.FILL_HORIZONTAL);
-		role.setLayoutData(roleData);
-		role.addSelectionChangedListener(new ISelectionChangedListener() {
+    createDescription(parent, UmlViewsRepository.ConnectorEnd.Properties.role, UmlMessages.ConnectorEndPropertiesEditionPart_RoleLabel);
+    role = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ConnectorEnd.Properties.role, UmlViewsRepository.FORM_KIND));
+    widgetFactory.adapt(role);
+    role.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    GridData roleData = new GridData(GridData.FILL_HORIZONTAL);
+    role.setLayoutData(roleData);
+    role.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConnectorEndPropertiesEditionPartForm.this, UmlViewsRepository.ConnectorEnd.Properties.role, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getRole()));
-			}
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConnectorEndPropertiesEditionPartForm.this, UmlViewsRepository.ConnectorEnd.Properties.role, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getRole()));
+      }
 
-		});
-		role.setID(UmlViewsRepository.ConnectorEnd.Properties.role);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ConnectorEnd.Properties.role, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    role.setID(UmlViewsRepository.ConnectorEnd.Properties.role);
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ConnectorEnd.Properties.role, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @param parent the parent composite
@@ -261,29 +261,29 @@ public class ConnectorEndPropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated
 	 */
 	protected Composite createPartWithPortFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		createDescription(parent, UmlViewsRepository.ConnectorEnd.Properties.partWithPort, UmlMessages.ConnectorEndPropertiesEditionPart_PartWithPortLabel);
-		partWithPort = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ConnectorEnd.Properties.partWithPort, UmlViewsRepository.FORM_KIND));
-		widgetFactory.adapt(partWithPort);
-		partWithPort.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		GridData partWithPortData = new GridData(GridData.FILL_HORIZONTAL);
-		partWithPort.setLayoutData(partWithPortData);
-		partWithPort.addSelectionChangedListener(new ISelectionChangedListener() {
+    createDescription(parent, UmlViewsRepository.ConnectorEnd.Properties.partWithPort, UmlMessages.ConnectorEndPropertiesEditionPart_PartWithPortLabel);
+    partWithPort = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.ConnectorEnd.Properties.partWithPort, UmlViewsRepository.FORM_KIND));
+    widgetFactory.adapt(partWithPort);
+    partWithPort.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    GridData partWithPortData = new GridData(GridData.FILL_HORIZONTAL);
+    partWithPort.setLayoutData(partWithPortData);
+    partWithPort.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConnectorEndPropertiesEditionPartForm.this, UmlViewsRepository.ConnectorEnd.Properties.partWithPort, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getPartWithPort()));
-			}
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ConnectorEndPropertiesEditionPartForm.this, UmlViewsRepository.ConnectorEnd.Properties.partWithPort, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getPartWithPort()));
+      }
 
-		});
-		partWithPort.setID(UmlViewsRepository.ConnectorEnd.Properties.partWithPort);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ConnectorEnd.Properties.partWithPort, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    partWithPort.setID(UmlViewsRepository.ConnectorEnd.Properties.partWithPort);
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.ConnectorEnd.Properties.partWithPort, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 
 	/**
@@ -293,7 +293,7 @@ public class ConnectorEndPropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-	}
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -302,8 +302,8 @@ public class ConnectorEndPropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated
 	 */
 	public Boolean getIsOrdered() {
-		return Boolean.valueOf(isOrdered.getSelection());
-	}
+    return Boolean.valueOf(isOrdered.getSelection());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -312,20 +312,20 @@ public class ConnectorEndPropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated
 	 */
 	public void setIsOrdered(Boolean newValue) {
-		if (newValue != null) {
-			isOrdered.setSelection(newValue.booleanValue());
-		} else {
-			isOrdered.setSelection(false);
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.ConnectorEnd.Properties.isOrdered);
-		if (readOnly && isOrdered.isEnabled()) {
-			isOrdered.setEnabled(false);
-			isOrdered.setToolTipText(UmlMessages.ConnectorEnd_ReadOnly);
-		} else if (!readOnly && !isOrdered.isEnabled()) {
-			isOrdered.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      isOrdered.setSelection(newValue.booleanValue());
+    } else {
+      isOrdered.setSelection(false);
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.ConnectorEnd.Properties.isOrdered);
+    if (readOnly && isOrdered.isEnabled()) {
+      isOrdered.setEnabled(false);
+      isOrdered.setToolTipText(UmlMessages.ConnectorEnd_ReadOnly);
+    } else if (!readOnly && !isOrdered.isEnabled()) {
+      isOrdered.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -334,8 +334,8 @@ public class ConnectorEndPropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated
 	 */
 	public Boolean getIsUnique() {
-		return Boolean.valueOf(isUnique.getSelection());
-	}
+    return Boolean.valueOf(isUnique.getSelection());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -344,20 +344,20 @@ public class ConnectorEndPropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated
 	 */
 	public void setIsUnique(Boolean newValue) {
-		if (newValue != null) {
-			isUnique.setSelection(newValue.booleanValue());
-		} else {
-			isUnique.setSelection(false);
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.ConnectorEnd.Properties.isUnique);
-		if (readOnly && isUnique.isEnabled()) {
-			isUnique.setEnabled(false);
-			isUnique.setToolTipText(UmlMessages.ConnectorEnd_ReadOnly);
-		} else if (!readOnly && !isUnique.isEnabled()) {
-			isUnique.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      isUnique.setSelection(newValue.booleanValue());
+    } else {
+      isUnique.setSelection(false);
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.ConnectorEnd.Properties.isUnique);
+    if (readOnly && isUnique.isEnabled()) {
+      isUnique.setEnabled(false);
+      isUnique.setToolTipText(UmlMessages.ConnectorEnd_ReadOnly);
+    } else if (!readOnly && !isUnique.isEnabled()) {
+      isUnique.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -366,13 +366,13 @@ public class ConnectorEndPropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated
 	 */
 	public EObject getRole() {
-		if (role.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) role.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (role.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) role.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -401,20 +401,20 @@ public class ConnectorEndPropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated
 	 */
 	public void setRole(EObject newValue) {
-		if (newValue != null) {
-			role.setSelection(new StructuredSelection(newValue));
-		} else {
-			role.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.ConnectorEnd.Properties.role);
-		if (readOnly && role.isEnabled()) {
-			role.setEnabled(false);
-			role.setToolTipText(UmlMessages.ConnectorEnd_ReadOnly);
-		} else if (!readOnly && !role.isEnabled()) {
-			role.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      role.setSelection(new StructuredSelection(newValue));
+    } else {
+      role.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.ConnectorEnd.Properties.role);
+    if (readOnly && role.isEnabled()) {
+      role.setEnabled(false);
+      role.setToolTipText(UmlMessages.ConnectorEnd_ReadOnly);
+    } else if (!readOnly && !role.isEnabled()) {
+      role.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -432,8 +432,8 @@ public class ConnectorEndPropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated
 	 */
 	public void addFilterToRole(ViewerFilter filter) {
-		role.addFilter(filter);
-	}
+    role.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -442,8 +442,8 @@ public class ConnectorEndPropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated
 	 */
 	public void addBusinessFilterToRole(ViewerFilter filter) {
-		role.addBusinessRuleFilter(filter);
-	}
+    role.addBusinessRuleFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -452,13 +452,13 @@ public class ConnectorEndPropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated
 	 */
 	public EObject getPartWithPort() {
-		if (partWithPort.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) partWithPort.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (partWithPort.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) partWithPort.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -487,20 +487,20 @@ public class ConnectorEndPropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated
 	 */
 	public void setPartWithPort(EObject newValue) {
-		if (newValue != null) {
-			partWithPort.setSelection(new StructuredSelection(newValue));
-		} else {
-			partWithPort.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.ConnectorEnd.Properties.partWithPort);
-		if (readOnly && partWithPort.isEnabled()) {
-			partWithPort.setEnabled(false);
-			partWithPort.setToolTipText(UmlMessages.ConnectorEnd_ReadOnly);
-		} else if (!readOnly && !partWithPort.isEnabled()) {
-			partWithPort.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      partWithPort.setSelection(new StructuredSelection(newValue));
+    } else {
+      partWithPort.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.ConnectorEnd.Properties.partWithPort);
+    if (readOnly && partWithPort.isEnabled()) {
+      partWithPort.setEnabled(false);
+      partWithPort.setToolTipText(UmlMessages.ConnectorEnd_ReadOnly);
+    } else if (!readOnly && !partWithPort.isEnabled()) {
+      partWithPort.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -518,8 +518,8 @@ public class ConnectorEndPropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated
 	 */
 	public void addFilterToPartWithPort(ViewerFilter filter) {
-		partWithPort.addFilter(filter);
-	}
+    partWithPort.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -528,8 +528,8 @@ public class ConnectorEndPropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated
 	 */
 	public void addBusinessFilterToPartWithPort(ViewerFilter filter) {
-		partWithPort.addBusinessRuleFilter(filter);
-	}
+    partWithPort.addBusinessRuleFilter(filter);
+  }
 
 
 
@@ -543,8 +543,8 @@ public class ConnectorEndPropertiesEditionPartForm extends SectionPropertiesEdit
 	 * @generated
 	 */
 	public String getTitle() {
-		return UmlMessages.ConnectorEnd_Part_Title;
-	}
+    return UmlMessages.ConnectorEnd_Part_Title;
+  }
 
 
 

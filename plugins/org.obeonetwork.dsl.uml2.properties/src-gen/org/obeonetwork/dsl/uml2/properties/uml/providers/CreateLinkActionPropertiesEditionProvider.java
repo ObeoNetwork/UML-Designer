@@ -58,9 +58,9 @@ public class CreateLinkActionPropertiesEditionProvider extends PropertiesEditing
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof CreateLinkAction) 
-					&& (UMLPackage.Literals.CREATE_LINK_ACTION == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof CreateLinkAction) 
+          && (UMLPackage.Literals.CREATE_LINK_ACTION == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class CreateLinkActionPropertiesEditionProvider extends PropertiesEditing
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof CreateLinkAction) && (CreateLinkActionPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof CreateLinkAction) && (CreateLinkActionPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class CreateLinkActionPropertiesEditionProvider extends PropertiesEditing
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof CreateLinkAction) && (refinement == CreateLinkActionPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof CreateLinkAction) && (refinement == CreateLinkActionPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class CreateLinkActionPropertiesEditionProvider extends PropertiesEditing
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof CreateLinkAction) && ((CreateLinkActionPropertiesEditionComponent.BASE_PART.equals(part) && refinement == CreateLinkActionPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof CreateLinkAction) && ((CreateLinkActionPropertiesEditionComponent.BASE_PART.equals(part) && refinement == CreateLinkActionPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class CreateLinkActionPropertiesEditionProvider extends PropertiesEditing
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof CreateLinkAction) {
-			return new CreateLinkActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof CreateLinkAction) {
+      return new CreateLinkActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class CreateLinkActionPropertiesEditionProvider extends PropertiesEditing
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof CreateLinkAction) {
-			if (CreateLinkActionPropertiesEditionComponent.BASE_PART.equals(part))
-				return new CreateLinkActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof CreateLinkAction) {
+      if (CreateLinkActionPropertiesEditionComponent.BASE_PART.equals(part))
+        return new CreateLinkActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

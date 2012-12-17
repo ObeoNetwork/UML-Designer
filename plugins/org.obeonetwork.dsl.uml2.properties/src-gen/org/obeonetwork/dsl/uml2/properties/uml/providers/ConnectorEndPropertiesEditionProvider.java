@@ -58,9 +58,9 @@ public class ConnectorEndPropertiesEditionProvider extends PropertiesEditingProv
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof ConnectorEnd) 
-					&& (UMLPackage.Literals.CONNECTOR_END == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof ConnectorEnd) 
+          && (UMLPackage.Literals.CONNECTOR_END == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class ConnectorEndPropertiesEditionProvider extends PropertiesEditingProv
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof ConnectorEnd) && (ConnectorEndPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof ConnectorEnd) && (ConnectorEndPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class ConnectorEndPropertiesEditionProvider extends PropertiesEditingProv
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ConnectorEnd) && (refinement == ConnectorEndPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof ConnectorEnd) && (refinement == ConnectorEndPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class ConnectorEndPropertiesEditionProvider extends PropertiesEditingProv
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ConnectorEnd) && ((ConnectorEndPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ConnectorEndPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof ConnectorEnd) && ((ConnectorEndPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ConnectorEndPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class ConnectorEndPropertiesEditionProvider extends PropertiesEditingProv
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof ConnectorEnd) {
-			return new ConnectorEndPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof ConnectorEnd) {
+      return new ConnectorEndPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class ConnectorEndPropertiesEditionProvider extends PropertiesEditingProv
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof ConnectorEnd) {
-			if (ConnectorEndPropertiesEditionComponent.BASE_PART.equals(part))
-				return new ConnectorEndPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof ConnectorEnd) {
+      if (ConnectorEndPropertiesEditionComponent.BASE_PART.equals(part))
+        return new ConnectorEndPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

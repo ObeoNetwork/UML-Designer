@@ -58,9 +58,9 @@ public class ActionExecutionSpecificationPropertiesEditionProvider extends Prope
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof ActionExecutionSpecification) 
-					&& (UMLPackage.Literals.ACTION_EXECUTION_SPECIFICATION == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof ActionExecutionSpecification) 
+          && (UMLPackage.Literals.ACTION_EXECUTION_SPECIFICATION == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class ActionExecutionSpecificationPropertiesEditionProvider extends Prope
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof ActionExecutionSpecification) && (ActionExecutionSpecificationPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof ActionExecutionSpecification) && (ActionExecutionSpecificationPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class ActionExecutionSpecificationPropertiesEditionProvider extends Prope
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ActionExecutionSpecification) && (refinement == ActionExecutionSpecificationPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof ActionExecutionSpecification) && (refinement == ActionExecutionSpecificationPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class ActionExecutionSpecificationPropertiesEditionProvider extends Prope
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ActionExecutionSpecification) && ((ActionExecutionSpecificationPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ActionExecutionSpecificationPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof ActionExecutionSpecification) && ((ActionExecutionSpecificationPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ActionExecutionSpecificationPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class ActionExecutionSpecificationPropertiesEditionProvider extends Prope
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof ActionExecutionSpecification) {
-			return new ActionExecutionSpecificationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof ActionExecutionSpecification) {
+      return new ActionExecutionSpecificationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class ActionExecutionSpecificationPropertiesEditionProvider extends Prope
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof ActionExecutionSpecification) {
-			if (ActionExecutionSpecificationPropertiesEditionComponent.BASE_PART.equals(part))
-				return new ActionExecutionSpecificationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof ActionExecutionSpecification) {
+      if (ActionExecutionSpecificationPropertiesEditionComponent.BASE_PART.equals(part))
+        return new ActionExecutionSpecificationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

@@ -58,9 +58,9 @@ public class ContinuationPropertiesEditionProvider extends PropertiesEditingProv
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof Continuation) 
-					&& (UMLPackage.Literals.CONTINUATION == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof Continuation) 
+          && (UMLPackage.Literals.CONTINUATION == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class ContinuationPropertiesEditionProvider extends PropertiesEditingProv
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof Continuation) && (ContinuationPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof Continuation) && (ContinuationPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class ContinuationPropertiesEditionProvider extends PropertiesEditingProv
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Continuation) && (refinement == ContinuationPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof Continuation) && (refinement == ContinuationPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class ContinuationPropertiesEditionProvider extends PropertiesEditingProv
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Continuation) && ((ContinuationPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ContinuationPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof Continuation) && ((ContinuationPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ContinuationPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class ContinuationPropertiesEditionProvider extends PropertiesEditingProv
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof Continuation) {
-			return new ContinuationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof Continuation) {
+      return new ContinuationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class ContinuationPropertiesEditionProvider extends PropertiesEditingProv
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof Continuation) {
-			if (ContinuationPropertiesEditionComponent.BASE_PART.equals(part))
-				return new ContinuationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof Continuation) {
+      if (ContinuationPropertiesEditionComponent.BASE_PART.equals(part))
+        return new ContinuationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

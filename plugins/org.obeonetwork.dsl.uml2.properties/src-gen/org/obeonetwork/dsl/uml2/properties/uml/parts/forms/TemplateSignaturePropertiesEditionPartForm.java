@@ -103,8 +103,8 @@ public class TemplateSignaturePropertiesEditionPartForm extends SectionPropertie
 	 * @generated
 	 */
 	public TemplateSignaturePropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+    super(editionComponent);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -114,15 +114,15 @@ public class TemplateSignaturePropertiesEditionPartForm extends SectionPropertie
 	 * @generated
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
-		view = form.getBody();
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
-		view.setLayout(layout);
-		createControls(widgetFactory, view);
-		return scrolledForm;
-	}
+    ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
+    Form form = scrolledForm.getForm();
+    view = form.getBody();
+    GridLayout layout = new GridLayout();
+    layout.numColumns = 3;
+    view.setLayout(layout);
+    createControls(widgetFactory, view);
+    return scrolledForm;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -132,127 +132,127 @@ public class TemplateSignaturePropertiesEditionPartForm extends SectionPropertie
 	 * @generated
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		CompositionSequence templateSignatureStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep propertiesStep = templateSignatureStep.addStep(UmlViewsRepository.TemplateSignature.Properties.class);
-		propertiesStep.addStep(UmlViewsRepository.TemplateSignature.Properties.parameter);
-		propertiesStep.addStep(UmlViewsRepository.TemplateSignature.Properties.template);
-		
-		
-		composer = new PartComposer(templateSignatureStep) {
+    CompositionSequence templateSignatureStep = new BindingCompositionSequence(propertiesEditionComponent);
+    CompositionStep propertiesStep = templateSignatureStep.addStep(UmlViewsRepository.TemplateSignature.Properties.class);
+    propertiesStep.addStep(UmlViewsRepository.TemplateSignature.Properties.parameter);
+    propertiesStep.addStep(UmlViewsRepository.TemplateSignature.Properties.template);
+    
+    
+    composer = new PartComposer(templateSignatureStep) {
 
-			@Override
-			public Composite addToPart(Composite parent, Object key) {
-				if (key == UmlViewsRepository.TemplateSignature.Properties.class) {
-					return createPropertiesGroup(widgetFactory, parent);
-				}
-				if (key == UmlViewsRepository.TemplateSignature.Properties.parameter) {
-					return createParameterReferencesTable(widgetFactory, parent);
-				}
-				if (key == UmlViewsRepository.TemplateSignature.Properties.template) {
-					return createTemplateFlatComboViewer(parent, widgetFactory);
-				}
-				return parent;
-			}
-		};
-		composer.compose(view);
-	}
+      @Override
+      public Composite addToPart(Composite parent, Object key) {
+        if (key == UmlViewsRepository.TemplateSignature.Properties.class) {
+          return createPropertiesGroup(widgetFactory, parent);
+        }
+        if (key == UmlViewsRepository.TemplateSignature.Properties.parameter) {
+          return createParameterReferencesTable(widgetFactory, parent);
+        }
+        if (key == UmlViewsRepository.TemplateSignature.Properties.template) {
+          return createTemplateFlatComboViewer(parent, widgetFactory);
+        }
+        return parent;
+      }
+    };
+    composer.compose(view);
+  }
 	/**
 	 * @generated
 	 */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
-		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
-		propertiesSection.setText(UmlMessages.TemplateSignaturePropertiesEditionPart_PropertiesGroupLabel);
-		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesSectionData.horizontalSpan = 3;
-		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		propertiesSection.setClient(propertiesGroup);
-		return propertiesGroup;
-	}
+    Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+    propertiesSection.setText(UmlMessages.TemplateSignaturePropertiesEditionPart_PropertiesGroupLabel);
+    GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
+    propertiesSectionData.horizontalSpan = 3;
+    propertiesSection.setLayoutData(propertiesSectionData);
+    Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+    GridLayout propertiesGroupLayout = new GridLayout();
+    propertiesGroupLayout.numColumns = 3;
+    propertiesGroup.setLayout(propertiesGroupLayout);
+    propertiesSection.setClient(propertiesGroup);
+    return propertiesGroup;
+  }
 
 	/**
 	 * @generated
 	 */
 	protected Composite createParameterReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.parameter = new ReferencesTable(getDescription(UmlViewsRepository.TemplateSignature.Properties.parameter, UmlMessages.TemplateSignaturePropertiesEditionPart_ParameterLabel), new ReferencesTableListener	() {
-			public void handleAdd() { addParameter(); }
-			public void handleEdit(EObject element) { editParameter(element); }
-			public void handleMove(EObject element, int oldIndex, int newIndex) { moveParameter(element, oldIndex, newIndex); }
-			public void handleRemove(EObject element) { removeFromParameter(element); }
-			public void navigateTo(EObject element) { }
-		});
-		this.parameter.setHelpText(propertiesEditionComponent.getHelpContent(UmlViewsRepository.TemplateSignature.Properties.parameter, UmlViewsRepository.FORM_KIND));
-		this.parameter.createControls(parent, widgetFactory);
-		this.parameter.addSelectionListener(new SelectionAdapter() {
-			
-			public void widgetSelected(SelectionEvent e) {
-				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TemplateSignaturePropertiesEditionPartForm.this, UmlViewsRepository.TemplateSignature.Properties.parameter, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
-				}
-			}
-			
-		});
-		GridData parameterData = new GridData(GridData.FILL_HORIZONTAL);
-		parameterData.horizontalSpan = 3;
-		this.parameter.setLayoutData(parameterData);
-		this.parameter.disableMove();
-		parameter.setID(UmlViewsRepository.TemplateSignature.Properties.parameter);
-		parameter.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
-		return parent;
-	}
+    this.parameter = new ReferencesTable(getDescription(UmlViewsRepository.TemplateSignature.Properties.parameter, UmlMessages.TemplateSignaturePropertiesEditionPart_ParameterLabel), new ReferencesTableListener	() {
+      public void handleAdd() { addParameter(); }
+      public void handleEdit(EObject element) { editParameter(element); }
+      public void handleMove(EObject element, int oldIndex, int newIndex) { moveParameter(element, oldIndex, newIndex); }
+      public void handleRemove(EObject element) { removeFromParameter(element); }
+      public void navigateTo(EObject element) { }
+    });
+    this.parameter.setHelpText(propertiesEditionComponent.getHelpContent(UmlViewsRepository.TemplateSignature.Properties.parameter, UmlViewsRepository.FORM_KIND));
+    this.parameter.createControls(parent, widgetFactory);
+    this.parameter.addSelectionListener(new SelectionAdapter() {
+      
+      public void widgetSelected(SelectionEvent e) {
+        if (e.item != null && e.item.getData() instanceof EObject) {
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TemplateSignaturePropertiesEditionPartForm.this, UmlViewsRepository.TemplateSignature.Properties.parameter, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+        }
+      }
+      
+    });
+    GridData parameterData = new GridData(GridData.FILL_HORIZONTAL);
+    parameterData.horizontalSpan = 3;
+    this.parameter.setLayoutData(parameterData);
+    this.parameter.disableMove();
+    parameter.setID(UmlViewsRepository.TemplateSignature.Properties.parameter);
+    parameter.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @generated
 	 */
 	protected void addParameter() {
-		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(parameter.getInput(), parameterFilters, parameterBusinessFilters,
-		"parameter", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
-			@Override
-			public void process(IStructuredSelection selection) {
-				for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
-					EObject elem = (EObject) iter.next();
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TemplateSignaturePropertiesEditionPartForm.this, UmlViewsRepository.TemplateSignature.Properties.parameter,
-						PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
-				}
-				parameter.refresh();
-			}
-		};
-		dialog.open();
-	}
+    TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(parameter.getInput(), parameterFilters, parameterBusinessFilters,
+    "parameter", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
+      @Override
+      public void process(IStructuredSelection selection) {
+        for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
+          EObject elem = (EObject) iter.next();
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TemplateSignaturePropertiesEditionPartForm.this, UmlViewsRepository.TemplateSignature.Properties.parameter,
+            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+        }
+        parameter.refresh();
+      }
+    };
+    dialog.open();
+  }
 
 	/**
 	 * @generated
 	 */
 	protected void moveParameter(EObject element, int oldIndex, int newIndex) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TemplateSignaturePropertiesEditionPartForm.this, UmlViewsRepository.TemplateSignature.Properties.parameter, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		parameter.refresh();
-	}
+    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TemplateSignaturePropertiesEditionPartForm.this, UmlViewsRepository.TemplateSignature.Properties.parameter, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+    parameter.refresh();
+  }
 
 	/**
 	 * @generated
 	 */
 	protected void removeFromParameter(EObject element) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TemplateSignaturePropertiesEditionPartForm.this, UmlViewsRepository.TemplateSignature.Properties.parameter, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-		parameter.refresh();
-	}
+    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TemplateSignaturePropertiesEditionPartForm.this, UmlViewsRepository.TemplateSignature.Properties.parameter, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+    parameter.refresh();
+  }
 
 	/**
 	 * @generated
 	 */
 	protected void editParameter(EObject element) {
-		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
-		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
-		if (provider != null) {
-			PropertiesEditingPolicy policy = provider.getPolicy(context);
-			if (policy != null) {
-				policy.execute();
-				parameter.refresh();
-			}
-		}
-	}
+    EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
+    PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
+    if (provider != null) {
+      PropertiesEditingPolicy policy = provider.getPolicy(context);
+      if (policy != null) {
+        policy.execute();
+        parameter.refresh();
+      }
+    }
+  }
 
 	/**
 	 * @param parent the parent composite
@@ -260,29 +260,29 @@ public class TemplateSignaturePropertiesEditionPartForm extends SectionPropertie
 	 * @generated
 	 */
 	protected Composite createTemplateFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		createDescription(parent, UmlViewsRepository.TemplateSignature.Properties.template, UmlMessages.TemplateSignaturePropertiesEditionPart_TemplateLabel);
-		template = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.TemplateSignature.Properties.template, UmlViewsRepository.FORM_KIND));
-		widgetFactory.adapt(template);
-		template.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		GridData templateData = new GridData(GridData.FILL_HORIZONTAL);
-		template.setLayoutData(templateData);
-		template.addSelectionChangedListener(new ISelectionChangedListener() {
+    createDescription(parent, UmlViewsRepository.TemplateSignature.Properties.template, UmlMessages.TemplateSignaturePropertiesEditionPart_TemplateLabel);
+    template = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.TemplateSignature.Properties.template, UmlViewsRepository.FORM_KIND));
+    widgetFactory.adapt(template);
+    template.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    GridData templateData = new GridData(GridData.FILL_HORIZONTAL);
+    template.setLayoutData(templateData);
+    template.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TemplateSignaturePropertiesEditionPartForm.this, UmlViewsRepository.TemplateSignature.Properties.template, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getTemplate()));
-			}
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(TemplateSignaturePropertiesEditionPartForm.this, UmlViewsRepository.TemplateSignature.Properties.template, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getTemplate()));
+      }
 
-		});
-		template.setID(UmlViewsRepository.TemplateSignature.Properties.template);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.TemplateSignature.Properties.template, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    template.setID(UmlViewsRepository.TemplateSignature.Properties.template);
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.TemplateSignature.Properties.template, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 
 	/**
@@ -292,7 +292,7 @@ public class TemplateSignaturePropertiesEditionPartForm extends SectionPropertie
 	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-	}
+  }
 
 
 
@@ -324,7 +324,7 @@ public class TemplateSignaturePropertiesEditionPartForm extends SectionPropertie
 	 * @generated
 	 */
 	public void updateParameter() {
-	parameter.refresh();
+  parameter.refresh();
 }
 
 	/**
@@ -334,8 +334,8 @@ public class TemplateSignaturePropertiesEditionPartForm extends SectionPropertie
 	 * @generated
 	 */
 	public void addFilterToParameter(ViewerFilter filter) {
-		parameterFilters.add(filter);
-	}
+    parameterFilters.add(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -344,8 +344,8 @@ public class TemplateSignaturePropertiesEditionPartForm extends SectionPropertie
 	 * @generated
 	 */
 	public void addBusinessFilterToParameter(ViewerFilter filter) {
-		parameterBusinessFilters.add(filter);
-	}
+    parameterBusinessFilters.add(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -354,8 +354,8 @@ public class TemplateSignaturePropertiesEditionPartForm extends SectionPropertie
 	 * @generated
 	 */
 	public boolean isContainedInParameterTable(EObject element) {
-		return ((ReferencesTableSettings)parameter.getInput()).contains(element);
-	}
+    return ((ReferencesTableSettings)parameter.getInput()).contains(element);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -364,13 +364,13 @@ public class TemplateSignaturePropertiesEditionPartForm extends SectionPropertie
 	 * @generated
 	 */
 	public EObject getTemplate() {
-		if (template.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) template.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (template.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) template.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -399,20 +399,20 @@ public class TemplateSignaturePropertiesEditionPartForm extends SectionPropertie
 	 * @generated
 	 */
 	public void setTemplate(EObject newValue) {
-		if (newValue != null) {
-			template.setSelection(new StructuredSelection(newValue));
-		} else {
-			template.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.TemplateSignature.Properties.template);
-		if (readOnly && template.isEnabled()) {
-			template.setEnabled(false);
-			template.setToolTipText(UmlMessages.TemplateSignature_ReadOnly);
-		} else if (!readOnly && !template.isEnabled()) {
-			template.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      template.setSelection(new StructuredSelection(newValue));
+    } else {
+      template.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.TemplateSignature.Properties.template);
+    if (readOnly && template.isEnabled()) {
+      template.setEnabled(false);
+      template.setToolTipText(UmlMessages.TemplateSignature_ReadOnly);
+    } else if (!readOnly && !template.isEnabled()) {
+      template.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -430,8 +430,8 @@ public class TemplateSignaturePropertiesEditionPartForm extends SectionPropertie
 	 * @generated
 	 */
 	public void addFilterToTemplate(ViewerFilter filter) {
-		template.addFilter(filter);
-	}
+    template.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -440,8 +440,8 @@ public class TemplateSignaturePropertiesEditionPartForm extends SectionPropertie
 	 * @generated
 	 */
 	public void addBusinessFilterToTemplate(ViewerFilter filter) {
-		template.addBusinessRuleFilter(filter);
-	}
+    template.addBusinessRuleFilter(filter);
+  }
 
 
 
@@ -455,8 +455,8 @@ public class TemplateSignaturePropertiesEditionPartForm extends SectionPropertie
 	 * @generated
 	 */
 	public String getTitle() {
-		return UmlMessages.TemplateSignature_Part_Title;
-	}
+    return UmlMessages.TemplateSignature_Part_Title;
+  }
 
 
 

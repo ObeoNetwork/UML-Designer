@@ -58,9 +58,9 @@ public class ExtendPropertiesEditionProvider extends PropertiesEditingProviderIm
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof Extend) 
-					&& (UMLPackage.Literals.EXTEND == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof Extend) 
+          && (UMLPackage.Literals.EXTEND == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class ExtendPropertiesEditionProvider extends PropertiesEditingProviderIm
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof Extend) && (ExtendPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof Extend) && (ExtendPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class ExtendPropertiesEditionProvider extends PropertiesEditingProviderIm
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Extend) && (refinement == ExtendPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof Extend) && (refinement == ExtendPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class ExtendPropertiesEditionProvider extends PropertiesEditingProviderIm
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Extend) && ((ExtendPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ExtendPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof Extend) && ((ExtendPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ExtendPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class ExtendPropertiesEditionProvider extends PropertiesEditingProviderIm
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof Extend) {
-			return new ExtendPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof Extend) {
+      return new ExtendPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class ExtendPropertiesEditionProvider extends PropertiesEditingProviderIm
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof Extend) {
-			if (ExtendPropertiesEditionComponent.BASE_PART.equals(part))
-				return new ExtendPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof Extend) {
+      if (ExtendPropertiesEditionComponent.BASE_PART.equals(part))
+        return new ExtendPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

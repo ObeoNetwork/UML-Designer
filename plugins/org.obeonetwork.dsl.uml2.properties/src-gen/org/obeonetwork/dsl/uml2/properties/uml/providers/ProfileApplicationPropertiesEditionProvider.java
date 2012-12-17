@@ -58,9 +58,9 @@ public class ProfileApplicationPropertiesEditionProvider extends PropertiesEditi
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof ProfileApplication) 
-					&& (UMLPackage.Literals.PROFILE_APPLICATION == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof ProfileApplication) 
+          && (UMLPackage.Literals.PROFILE_APPLICATION == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class ProfileApplicationPropertiesEditionProvider extends PropertiesEditi
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof ProfileApplication) && (ProfileApplicationPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof ProfileApplication) && (ProfileApplicationPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class ProfileApplicationPropertiesEditionProvider extends PropertiesEditi
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ProfileApplication) && (refinement == ProfileApplicationPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof ProfileApplication) && (refinement == ProfileApplicationPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class ProfileApplicationPropertiesEditionProvider extends PropertiesEditi
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ProfileApplication) && ((ProfileApplicationPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ProfileApplicationPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof ProfileApplication) && ((ProfileApplicationPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ProfileApplicationPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class ProfileApplicationPropertiesEditionProvider extends PropertiesEditi
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof ProfileApplication) {
-			return new ProfileApplicationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof ProfileApplication) {
+      return new ProfileApplicationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class ProfileApplicationPropertiesEditionProvider extends PropertiesEditi
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof ProfileApplication) {
-			if (ProfileApplicationPropertiesEditionComponent.BASE_PART.equals(part))
-				return new ProfileApplicationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof ProfileApplication) {
+      if (ProfileApplicationPropertiesEditionComponent.BASE_PART.equals(part))
+        return new ProfileApplicationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

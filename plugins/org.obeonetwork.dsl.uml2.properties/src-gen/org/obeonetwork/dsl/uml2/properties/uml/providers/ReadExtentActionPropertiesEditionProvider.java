@@ -58,9 +58,9 @@ public class ReadExtentActionPropertiesEditionProvider extends PropertiesEditing
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof ReadExtentAction) 
-					&& (UMLPackage.Literals.READ_EXTENT_ACTION == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof ReadExtentAction) 
+          && (UMLPackage.Literals.READ_EXTENT_ACTION == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class ReadExtentActionPropertiesEditionProvider extends PropertiesEditing
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof ReadExtentAction) && (ReadExtentActionPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof ReadExtentAction) && (ReadExtentActionPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class ReadExtentActionPropertiesEditionProvider extends PropertiesEditing
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ReadExtentAction) && (refinement == ReadExtentActionPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof ReadExtentAction) && (refinement == ReadExtentActionPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class ReadExtentActionPropertiesEditionProvider extends PropertiesEditing
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ReadExtentAction) && ((ReadExtentActionPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ReadExtentActionPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof ReadExtentAction) && ((ReadExtentActionPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ReadExtentActionPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class ReadExtentActionPropertiesEditionProvider extends PropertiesEditing
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof ReadExtentAction) {
-			return new ReadExtentActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof ReadExtentAction) {
+      return new ReadExtentActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class ReadExtentActionPropertiesEditionProvider extends PropertiesEditing
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof ReadExtentAction) {
-			if (ReadExtentActionPropertiesEditionComponent.BASE_PART.equals(part))
-				return new ReadExtentActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof ReadExtentAction) {
+      if (ReadExtentActionPropertiesEditionComponent.BASE_PART.equals(part))
+        return new ReadExtentActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

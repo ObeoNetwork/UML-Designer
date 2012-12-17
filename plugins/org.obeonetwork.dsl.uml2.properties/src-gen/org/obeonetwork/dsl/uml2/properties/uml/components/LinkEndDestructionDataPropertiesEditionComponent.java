@@ -93,11 +93,11 @@ public class LinkEndDestructionDataPropertiesEditionComponent extends SinglePart
 	 * @generated
 	 */
 	public LinkEndDestructionDataPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject linkEndDestructionData, String editing_mode) {
-		super(editingContext, linkEndDestructionData, editing_mode);
-		parts = new String[] { BASE_PART };
-		repositoryKey = UmlViewsRepository.class;
-		partKey = UmlViewsRepository.LinkEndDestructionData.class;
-	}
+    super(editingContext, linkEndDestructionData, editing_mode);
+    parts = new String[] { BASE_PART };
+    repositoryKey = UmlViewsRepository.class;
+    partKey = UmlViewsRepository.LinkEndDestructionData.class;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -107,88 +107,87 @@ public class LinkEndDestructionDataPropertiesEditionComponent extends SinglePart
 	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			
-			final LinkEndDestructionData linkEndDestructionData = (LinkEndDestructionData)elt;
-			final LinkEndDestructionDataPropertiesEditionPart basePart = (LinkEndDestructionDataPropertiesEditionPart)editingPart;
-			// init values
-			if (isAccessible(UmlViewsRepository.LinkEndDestructionData.Properties.value)) {
-				// init part
-				valueSettings = new EObjectFlatComboSettings(linkEndDestructionData, UMLPackage.eINSTANCE.getLinkEndData_Value());
-				basePart.initValue(valueSettings);
-				// set the button mode
-				basePart.setValueButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			if (isAccessible(UmlViewsRepository.LinkEndDestructionData.Properties.end)) {
-				// init part
-				endSettings = new EObjectFlatComboSettings(linkEndDestructionData, UMLPackage.eINSTANCE.getLinkEndData_End());
-				basePart.initEnd(endSettings);
-				// set the button mode
-				basePart.setEndButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			if (isAccessible(UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates)) {
-				basePart.setIsDestroyDuplicates(linkEndDestructionData.isDestroyDuplicates());
-			}
-			if (isAccessible(UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt)) {
-				// init part
-				destroyAtSettings = new EObjectFlatComboSettings(linkEndDestructionData, UMLPackage.eINSTANCE.getLinkEndDestructionData_DestroyAt());
-				basePart.initDestroyAt(destroyAtSettings);
-				// set the button mode
-				basePart.setDestroyAtButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			// init filters
-			if (isAccessible(UmlViewsRepository.LinkEndDestructionData.Properties.value)) {
-				basePart.addFilterToValue(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof String && element.equals("")) || (element instanceof InputPin); //$NON-NLS-1$ 
-					}
-					
-				});
-			}
-			if (isAccessible(UmlViewsRepository.LinkEndDestructionData.Properties.end)) {
-				basePart.addFilterToEnd(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof Property);
-					}
-					
-				});
-			}
-			
-			if (isAccessible(UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt)) {
-				basePart.addFilterToDestroyAt(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof String && element.equals("")) || (element instanceof InputPin); //$NON-NLS-1$ 
-					}
-					
-				});
-			}
-			// init values for referenced views
-			
-			// init filters for referenced views
-			
-		}
-		setInitializing(false);
-	}
+    setInitializing(true);
+    if (editingPart != null && key == partKey) {
+      editingPart.setContext(elt, allResource);
+      
+      final LinkEndDestructionData linkEndDestructionData = (LinkEndDestructionData)elt;
+      final LinkEndDestructionDataPropertiesEditionPart basePart = (LinkEndDestructionDataPropertiesEditionPart)editingPart;
+      // init values
+      if (isAccessible(UmlViewsRepository.LinkEndDestructionData.Properties.value)) {
+        // init part
+        valueSettings = new EObjectFlatComboSettings(linkEndDestructionData, UMLPackage.eINSTANCE.getLinkEndData_Value());
+        basePart.initValue(valueSettings);
+        // set the button mode
+        basePart.setValueButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      if (isAccessible(UmlViewsRepository.LinkEndDestructionData.Properties.end)) {
+        // init part
+        endSettings = new EObjectFlatComboSettings(linkEndDestructionData, UMLPackage.eINSTANCE.getLinkEndData_End());
+        basePart.initEnd(endSettings);
+        // set the button mode
+        basePart.setEndButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      basePart.setIsDestroyDuplicates(linkEndDestructionData.isDestroyDuplicates());
+      
+      if (isAccessible(UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt)) {
+        // init part
+        destroyAtSettings = new EObjectFlatComboSettings(linkEndDestructionData, UMLPackage.eINSTANCE.getLinkEndDestructionData_DestroyAt());
+        basePart.initDestroyAt(destroyAtSettings);
+        // set the button mode
+        basePart.setDestroyAtButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      // init filters
+      if (isAccessible(UmlViewsRepository.LinkEndDestructionData.Properties.value)) {
+        basePart.addFilterToValue(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof String && element.equals("")) || (element instanceof InputPin); //$NON-NLS-1$ 
+          }
+          
+        });
+      }
+      if (isAccessible(UmlViewsRepository.LinkEndDestructionData.Properties.end)) {
+        basePart.addFilterToEnd(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof Property);
+          }
+          
+        });
+      }
+      
+      if (isAccessible(UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt)) {
+        basePart.addFilterToDestroyAt(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof String && element.equals("")) || (element instanceof InputPin); //$NON-NLS-1$ 
+          }
+          
+        });
+      }
+      // init values for referenced views
+      
+      // init filters for referenced views
+      
+    }
+    setInitializing(false);
+  }
 
 
 
@@ -222,59 +221,59 @@ public class LinkEndDestructionDataPropertiesEditionComponent extends SinglePart
 	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		LinkEndDestructionData linkEndDestructionData = (LinkEndDestructionData)semanticObject;
-		if (UmlViewsRepository.LinkEndDestructionData.Properties.value == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				valueSettings.setToReference((InputPin)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				InputPin eObject = UMLFactory.eINSTANCE.createInputPin();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy != null) {
-						policy.execute();
-					}
-				}
-				valueSettings.setToReference(eObject);
-			}
-		}
-		if (UmlViewsRepository.LinkEndDestructionData.Properties.end == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				endSettings.setToReference((Property)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				Property eObject = UMLFactory.eINSTANCE.createProperty();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy != null) {
-						policy.execute();
-					}
-				}
-				endSettings.setToReference(eObject);
-			}
-		}
-		if (UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates == event.getAffectedEditor()) {
-			linkEndDestructionData.setIsDestroyDuplicates((Boolean)event.getNewValue());
-		}
-		if (UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				destroyAtSettings.setToReference((InputPin)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				InputPin eObject = UMLFactory.eINSTANCE.createInputPin();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy != null) {
-						policy.execute();
-					}
-				}
-				destroyAtSettings.setToReference(eObject);
-			}
-		}
-	}
+    LinkEndDestructionData linkEndDestructionData = (LinkEndDestructionData)semanticObject;
+    if (UmlViewsRepository.LinkEndDestructionData.Properties.value == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        valueSettings.setToReference((InputPin)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        InputPin eObject = UMLFactory.eINSTANCE.createInputPin();
+        EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy != null) {
+            policy.execute();
+          }
+        }
+        valueSettings.setToReference(eObject);
+      }
+    }
+    if (UmlViewsRepository.LinkEndDestructionData.Properties.end == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        endSettings.setToReference((Property)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        Property eObject = UMLFactory.eINSTANCE.createProperty();
+        EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy != null) {
+            policy.execute();
+          }
+        }
+        endSettings.setToReference(eObject);
+      }
+    }
+    if (UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates == event.getAffectedEditor()) {
+      linkEndDestructionData.setIsDestroyDuplicates((Boolean)event.getNewValue());
+    }
+    if (UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        destroyAtSettings.setToReference((InputPin)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        InputPin eObject = UMLFactory.eINSTANCE.createInputPin();
+        EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy != null) {
+            policy.execute();
+          }
+        }
+        destroyAtSettings.setToReference(eObject);
+      }
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -320,8 +319,8 @@ public class LinkEndDestructionDataPropertiesEditionComponent extends SinglePart
 	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == UmlViewsRepository.LinkEndDestructionData.Properties.end || key == UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates;
-	}
+    return key == UmlViewsRepository.LinkEndDestructionData.Properties.end || key == UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -330,24 +329,24 @@ public class LinkEndDestructionDataPropertiesEditionComponent extends SinglePart
 	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
-		Diagnostic ret = Diagnostic.OK_INSTANCE;
-		if (event.getNewValue() != null) {
-			try {
-				if (UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getLinkEndDestructionData_IsDestroyDuplicates().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getLinkEndDestructionData_IsDestroyDuplicates().getEAttributeType(), newValue);
-				}
-			} catch (IllegalArgumentException iae) {
-				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
-				ret = BasicDiagnostic.toDiagnostic(we);
-			}
-		}
-		return ret;
-	}
+    Diagnostic ret = Diagnostic.OK_INSTANCE;
+    if (event.getNewValue() != null) {
+      try {
+        if (UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates == event.getAffectedEditor()) {
+          Object newValue = event.getNewValue();
+          if (newValue instanceof String) {
+            newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getLinkEndDestructionData_IsDestroyDuplicates().getEAttributeType(), (String)newValue);
+          }
+          ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getLinkEndDestructionData_IsDestroyDuplicates().getEAttributeType(), newValue);
+        }
+      } catch (IllegalArgumentException iae) {
+        ret = BasicDiagnostic.toDiagnostic(iae);
+      } catch (WrappedException we) {
+        ret = BasicDiagnostic.toDiagnostic(we);
+      }
+    }
+    return ret;
+  }
 
 
 	

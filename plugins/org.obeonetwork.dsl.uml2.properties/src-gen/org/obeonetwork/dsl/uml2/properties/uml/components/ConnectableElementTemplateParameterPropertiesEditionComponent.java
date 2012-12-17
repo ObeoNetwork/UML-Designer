@@ -95,11 +95,11 @@ public class ConnectableElementTemplateParameterPropertiesEditionComponent exten
 	 * @generated
 	 */
 	public ConnectableElementTemplateParameterPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject connectableElementTemplateParameter, String editing_mode) {
-		super(editingContext, connectableElementTemplateParameter, editing_mode);
-		parts = new String[] { BASE_PART };
-		repositoryKey = UmlViewsRepository.class;
-		partKey = UmlViewsRepository.ConnectableElementTemplateParameter.class;
-	}
+    super(editingContext, connectableElementTemplateParameter, editing_mode);
+    parts = new String[] { BASE_PART };
+    repositoryKey = UmlViewsRepository.class;
+    partKey = UmlViewsRepository.ConnectableElementTemplateParameter.class;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,84 +109,84 @@ public class ConnectableElementTemplateParameterPropertiesEditionComponent exten
 	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			
-			final ConnectableElementTemplateParameter connectableElementTemplateParameter = (ConnectableElementTemplateParameter)elt;
-			final ConnectableElementTemplateParameterPropertiesEditionPart basePart = (ConnectableElementTemplateParameterPropertiesEditionPart)editingPart;
-			// init values
-			if (isAccessible(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.signature)) {
-				// init part
-				signatureSettings = new EObjectFlatComboSettings(connectableElementTemplateParameter, UMLPackage.eINSTANCE.getTemplateParameter_Signature());
-				basePart.initSignature(signatureSettings);
-				// set the button mode
-				basePart.setSignatureButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			if (isAccessible(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.parameteredElement)) {
-				// init part
-				parameteredElementSettings = new EObjectFlatComboSettings(connectableElementTemplateParameter, UMLPackage.eINSTANCE.getTemplateParameter_ParameteredElement());
-				basePart.initParameteredElement(parameteredElementSettings);
-				// set the button mode
-				basePart.setParameteredElementButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			if (isAccessible(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.default_)) {
-				// init part
-				default_Settings = new EObjectFlatComboSettings(connectableElementTemplateParameter, UMLPackage.eINSTANCE.getTemplateParameter_Default());
-				basePart.initDefault_(default_Settings);
-				// set the button mode
-				basePart.setDefault_ButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			// init filters
-			if (isAccessible(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.signature)) {
-				basePart.addFilterToSignature(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof TemplateSignature);
-					}
-					
-				});
-			}
-			if (isAccessible(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.parameteredElement)) {
-				basePart.addFilterToParameteredElement(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof ParameterableElement);
-					}
-					
-				});
-			}
-			if (isAccessible(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.default_)) {
-				basePart.addFilterToDefault_(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof String && element.equals("")) || (element instanceof ParameterableElement); //$NON-NLS-1$ 
-					}
-					
-				});
-			}
-			// init values for referenced views
-			
-			// init filters for referenced views
-			
-		}
-		setInitializing(false);
-	}
+    setInitializing(true);
+    if (editingPart != null && key == partKey) {
+      editingPart.setContext(elt, allResource);
+      
+      final ConnectableElementTemplateParameter connectableElementTemplateParameter = (ConnectableElementTemplateParameter)elt;
+      final ConnectableElementTemplateParameterPropertiesEditionPart basePart = (ConnectableElementTemplateParameterPropertiesEditionPart)editingPart;
+      // init values
+      if (isAccessible(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.signature)) {
+        // init part
+        signatureSettings = new EObjectFlatComboSettings(connectableElementTemplateParameter, UMLPackage.eINSTANCE.getTemplateParameter_Signature());
+        basePart.initSignature(signatureSettings);
+        // set the button mode
+        basePart.setSignatureButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      if (isAccessible(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.parameteredElement)) {
+        // init part
+        parameteredElementSettings = new EObjectFlatComboSettings(connectableElementTemplateParameter, UMLPackage.eINSTANCE.getTemplateParameter_ParameteredElement());
+        basePart.initParameteredElement(parameteredElementSettings);
+        // set the button mode
+        basePart.setParameteredElementButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      if (isAccessible(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.default_)) {
+        // init part
+        default_Settings = new EObjectFlatComboSettings(connectableElementTemplateParameter, UMLPackage.eINSTANCE.getTemplateParameter_Default());
+        basePart.initDefault_(default_Settings);
+        // set the button mode
+        basePart.setDefault_ButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      // init filters
+      if (isAccessible(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.signature)) {
+        basePart.addFilterToSignature(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof TemplateSignature);
+          }
+          
+        });
+      }
+      if (isAccessible(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.parameteredElement)) {
+        basePart.addFilterToParameteredElement(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof ParameterableElement);
+          }
+          
+        });
+      }
+      if (isAccessible(UmlViewsRepository.ConnectableElementTemplateParameter.Properties.default_)) {
+        basePart.addFilterToDefault_(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof String && element.equals("")) || (element instanceof ParameterableElement); //$NON-NLS-1$ 
+          }
+          
+        });
+      }
+      // init values for referenced views
+      
+      // init filters for referenced views
+      
+    }
+    setInitializing(false);
+  }
 
 
 
@@ -216,52 +216,52 @@ public class ConnectableElementTemplateParameterPropertiesEditionComponent exten
 	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		ConnectableElementTemplateParameter connectableElementTemplateParameter = (ConnectableElementTemplateParameter)semanticObject;
-		if (UmlViewsRepository.ConnectableElementTemplateParameter.Properties.signature == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				signatureSettings.setToReference((TemplateSignature)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				TemplateSignature eObject = UMLFactory.eINSTANCE.createTemplateSignature();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy != null) {
-						policy.execute();
-					}
-				}
-				signatureSettings.setToReference(eObject);
-			}
-		}
-		if (UmlViewsRepository.ConnectableElementTemplateParameter.Properties.parameteredElement == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				parameteredElementSettings.setToReference((ParameterableElement)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, parameteredElementSettings, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy instanceof CreateEditingPolicy) {
-						policy.execute();
-					}
-				}
-			}
-		}
-		if (UmlViewsRepository.ConnectableElementTemplateParameter.Properties.default_ == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				default_Settings.setToReference((ParameterableElement)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, default_Settings, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy instanceof CreateEditingPolicy) {
-						policy.execute();
-					}
-				}
-			}
-		}
-	}
+    ConnectableElementTemplateParameter connectableElementTemplateParameter = (ConnectableElementTemplateParameter)semanticObject;
+    if (UmlViewsRepository.ConnectableElementTemplateParameter.Properties.signature == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        signatureSettings.setToReference((TemplateSignature)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        TemplateSignature eObject = UMLFactory.eINSTANCE.createTemplateSignature();
+        EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy != null) {
+            policy.execute();
+          }
+        }
+        signatureSettings.setToReference(eObject);
+      }
+    }
+    if (UmlViewsRepository.ConnectableElementTemplateParameter.Properties.parameteredElement == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        parameteredElementSettings.setToReference((ParameterableElement)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, parameteredElementSettings, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy instanceof CreateEditingPolicy) {
+            policy.execute();
+          }
+        }
+      }
+    }
+    if (UmlViewsRepository.ConnectableElementTemplateParameter.Properties.default_ == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        default_Settings.setToReference((ParameterableElement)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, default_Settings, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy instanceof CreateEditingPolicy) {
+            policy.execute();
+          }
+        }
+      }
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -303,8 +303,8 @@ public class ConnectableElementTemplateParameterPropertiesEditionComponent exten
 	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == UmlViewsRepository.ConnectableElementTemplateParameter.Properties.signature || key == UmlViewsRepository.ConnectableElementTemplateParameter.Properties.parameteredElement;
-	}
+    return key == UmlViewsRepository.ConnectableElementTemplateParameter.Properties.signature || key == UmlViewsRepository.ConnectableElementTemplateParameter.Properties.parameteredElement;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -313,17 +313,17 @@ public class ConnectableElementTemplateParameterPropertiesEditionComponent exten
 	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
-		Diagnostic ret = Diagnostic.OK_INSTANCE;
-		if (event.getNewValue() != null) {
-			try {
-			} catch (IllegalArgumentException iae) {
-				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
-				ret = BasicDiagnostic.toDiagnostic(we);
-			}
-		}
-		return ret;
-	}
+    Diagnostic ret = Diagnostic.OK_INSTANCE;
+    if (event.getNewValue() != null) {
+      try {
+      } catch (IllegalArgumentException iae) {
+        ret = BasicDiagnostic.toDiagnostic(iae);
+      } catch (WrappedException we) {
+        ret = BasicDiagnostic.toDiagnostic(we);
+      }
+    }
+    return ret;
+  }
 
 
 	

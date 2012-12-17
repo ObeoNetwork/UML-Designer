@@ -58,9 +58,9 @@ public class DurationIntervalPropertiesEditionProvider extends PropertiesEditing
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof DurationInterval) 
-					&& (UMLPackage.Literals.DURATION_INTERVAL == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof DurationInterval) 
+          && (UMLPackage.Literals.DURATION_INTERVAL == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class DurationIntervalPropertiesEditionProvider extends PropertiesEditing
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof DurationInterval) && (DurationIntervalPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof DurationInterval) && (DurationIntervalPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class DurationIntervalPropertiesEditionProvider extends PropertiesEditing
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof DurationInterval) && (refinement == DurationIntervalPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof DurationInterval) && (refinement == DurationIntervalPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class DurationIntervalPropertiesEditionProvider extends PropertiesEditing
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof DurationInterval) && ((DurationIntervalPropertiesEditionComponent.BASE_PART.equals(part) && refinement == DurationIntervalPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof DurationInterval) && ((DurationIntervalPropertiesEditionComponent.BASE_PART.equals(part) && refinement == DurationIntervalPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class DurationIntervalPropertiesEditionProvider extends PropertiesEditing
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof DurationInterval) {
-			return new DurationIntervalPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof DurationInterval) {
+      return new DurationIntervalPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class DurationIntervalPropertiesEditionProvider extends PropertiesEditing
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof DurationInterval) {
-			if (DurationIntervalPropertiesEditionComponent.BASE_PART.equals(part))
-				return new DurationIntervalPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof DurationInterval) {
+      if (DurationIntervalPropertiesEditionComponent.BASE_PART.equals(part))
+        return new DurationIntervalPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

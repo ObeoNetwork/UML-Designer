@@ -90,11 +90,11 @@ public class TemplateBindingPropertiesEditionComponent extends SinglePartPropert
 	 * @generated
 	 */
 	public TemplateBindingPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject templateBinding, String editing_mode) {
-		super(editingContext, templateBinding, editing_mode);
-		parts = new String[] { BASE_PART };
-		repositoryKey = UmlViewsRepository.class;
-		partKey = UmlViewsRepository.TemplateBinding.class;
-	}
+    super(editingContext, templateBinding, editing_mode);
+    parts = new String[] { BASE_PART };
+    repositoryKey = UmlViewsRepository.class;
+    partKey = UmlViewsRepository.TemplateBinding.class;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -104,63 +104,63 @@ public class TemplateBindingPropertiesEditionComponent extends SinglePartPropert
 	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			
-			final TemplateBinding templateBinding = (TemplateBinding)elt;
-			final TemplateBindingPropertiesEditionPart basePart = (TemplateBindingPropertiesEditionPart)editingPart;
-			// init values
-			if (isAccessible(UmlViewsRepository.TemplateBinding.Properties.signature)) {
-				// init part
-				signatureSettings = new EObjectFlatComboSettings(templateBinding, UMLPackage.eINSTANCE.getTemplateBinding_Signature());
-				basePart.initSignature(signatureSettings);
-				// set the button mode
-				basePart.setSignatureButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			if (isAccessible(UmlViewsRepository.TemplateBinding.Properties.boundElement)) {
-				// init part
-				boundElementSettings = new EObjectFlatComboSettings(templateBinding, UMLPackage.eINSTANCE.getTemplateBinding_BoundElement());
-				basePart.initBoundElement(boundElementSettings);
-				// set the button mode
-				basePart.setBoundElementButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			// init filters
-			if (isAccessible(UmlViewsRepository.TemplateBinding.Properties.signature)) {
-				basePart.addFilterToSignature(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof TemplateSignature);
-					}
-					
-				});
-			}
-			if (isAccessible(UmlViewsRepository.TemplateBinding.Properties.boundElement)) {
-				basePart.addFilterToBoundElement(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof TemplateableElement);
-					}
-					
-				});
-			}
-			// init values for referenced views
-			
-			// init filters for referenced views
-			
-		}
-		setInitializing(false);
-	}
+    setInitializing(true);
+    if (editingPart != null && key == partKey) {
+      editingPart.setContext(elt, allResource);
+      
+      final TemplateBinding templateBinding = (TemplateBinding)elt;
+      final TemplateBindingPropertiesEditionPart basePart = (TemplateBindingPropertiesEditionPart)editingPart;
+      // init values
+      if (isAccessible(UmlViewsRepository.TemplateBinding.Properties.signature)) {
+        // init part
+        signatureSettings = new EObjectFlatComboSettings(templateBinding, UMLPackage.eINSTANCE.getTemplateBinding_Signature());
+        basePart.initSignature(signatureSettings);
+        // set the button mode
+        basePart.setSignatureButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      if (isAccessible(UmlViewsRepository.TemplateBinding.Properties.boundElement)) {
+        // init part
+        boundElementSettings = new EObjectFlatComboSettings(templateBinding, UMLPackage.eINSTANCE.getTemplateBinding_BoundElement());
+        basePart.initBoundElement(boundElementSettings);
+        // set the button mode
+        basePart.setBoundElementButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      // init filters
+      if (isAccessible(UmlViewsRepository.TemplateBinding.Properties.signature)) {
+        basePart.addFilterToSignature(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof TemplateSignature);
+          }
+          
+        });
+      }
+      if (isAccessible(UmlViewsRepository.TemplateBinding.Properties.boundElement)) {
+        basePart.addFilterToBoundElement(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof TemplateableElement);
+          }
+          
+        });
+      }
+      // init values for referenced views
+      
+      // init filters for referenced views
+      
+    }
+    setInitializing(false);
+  }
 
 
 
@@ -186,38 +186,38 @@ public class TemplateBindingPropertiesEditionComponent extends SinglePartPropert
 	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		TemplateBinding templateBinding = (TemplateBinding)semanticObject;
-		if (UmlViewsRepository.TemplateBinding.Properties.signature == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				signatureSettings.setToReference((TemplateSignature)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				TemplateSignature eObject = UMLFactory.eINSTANCE.createTemplateSignature();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy != null) {
-						policy.execute();
-					}
-				}
-				signatureSettings.setToReference(eObject);
-			}
-		}
-		if (UmlViewsRepository.TemplateBinding.Properties.boundElement == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				boundElementSettings.setToReference((TemplateableElement)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, boundElementSettings, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy instanceof CreateEditingPolicy) {
-						policy.execute();
-					}
-				}
-			}
-		}
-	}
+    TemplateBinding templateBinding = (TemplateBinding)semanticObject;
+    if (UmlViewsRepository.TemplateBinding.Properties.signature == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        signatureSettings.setToReference((TemplateSignature)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        TemplateSignature eObject = UMLFactory.eINSTANCE.createTemplateSignature();
+        EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy != null) {
+            policy.execute();
+          }
+        }
+        signatureSettings.setToReference(eObject);
+      }
+    }
+    if (UmlViewsRepository.TemplateBinding.Properties.boundElement == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        boundElementSettings.setToReference((TemplateableElement)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, boundElementSettings, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy instanceof CreateEditingPolicy) {
+            policy.execute();
+          }
+        }
+      }
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -256,8 +256,8 @@ public class TemplateBindingPropertiesEditionComponent extends SinglePartPropert
 	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == UmlViewsRepository.TemplateBinding.Properties.signature || key == UmlViewsRepository.TemplateBinding.Properties.boundElement;
-	}
+    return key == UmlViewsRepository.TemplateBinding.Properties.signature || key == UmlViewsRepository.TemplateBinding.Properties.boundElement;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -266,17 +266,17 @@ public class TemplateBindingPropertiesEditionComponent extends SinglePartPropert
 	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
-		Diagnostic ret = Diagnostic.OK_INSTANCE;
-		if (event.getNewValue() != null) {
-			try {
-			} catch (IllegalArgumentException iae) {
-				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
-				ret = BasicDiagnostic.toDiagnostic(we);
-			}
-		}
-		return ret;
-	}
+    Diagnostic ret = Diagnostic.OK_INSTANCE;
+    if (event.getNewValue() != null) {
+      try {
+      } catch (IllegalArgumentException iae) {
+        ret = BasicDiagnostic.toDiagnostic(iae);
+      } catch (WrappedException we) {
+        ret = BasicDiagnostic.toDiagnostic(we);
+      }
+    }
+    return ret;
+  }
 
 
 	

@@ -58,9 +58,9 @@ public class PartDecompositionPropertiesEditionProvider extends PropertiesEditin
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof PartDecomposition) 
-					&& (UMLPackage.Literals.PART_DECOMPOSITION == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof PartDecomposition) 
+          && (UMLPackage.Literals.PART_DECOMPOSITION == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class PartDecompositionPropertiesEditionProvider extends PropertiesEditin
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof PartDecomposition) && (PartDecompositionPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof PartDecomposition) && (PartDecompositionPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class PartDecompositionPropertiesEditionProvider extends PropertiesEditin
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof PartDecomposition) && (refinement == PartDecompositionPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof PartDecomposition) && (refinement == PartDecompositionPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class PartDecompositionPropertiesEditionProvider extends PropertiesEditin
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof PartDecomposition) && ((PartDecompositionPropertiesEditionComponent.BASE_PART.equals(part) && refinement == PartDecompositionPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof PartDecomposition) && ((PartDecompositionPropertiesEditionComponent.BASE_PART.equals(part) && refinement == PartDecompositionPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class PartDecompositionPropertiesEditionProvider extends PropertiesEditin
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof PartDecomposition) {
-			return new PartDecompositionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof PartDecomposition) {
+      return new PartDecompositionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class PartDecompositionPropertiesEditionProvider extends PropertiesEditin
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof PartDecomposition) {
-			if (PartDecompositionPropertiesEditionComponent.BASE_PART.equals(part))
-				return new PartDecompositionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof PartDecomposition) {
+      if (PartDecompositionPropertiesEditionComponent.BASE_PART.equals(part))
+        return new PartDecompositionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

@@ -89,8 +89,8 @@ public class LinkEndDestructionDataPropertiesEditionPartForm extends SectionProp
 	 * @generated
 	 */
 	public LinkEndDestructionDataPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+    super(editionComponent);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -100,15 +100,15 @@ public class LinkEndDestructionDataPropertiesEditionPartForm extends SectionProp
 	 * @generated
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
-		view = form.getBody();
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
-		view.setLayout(layout);
-		createControls(widgetFactory, view);
-		return scrolledForm;
-	}
+    ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
+    Form form = scrolledForm.getForm();
+    view = form.getBody();
+    GridLayout layout = new GridLayout();
+    layout.numColumns = 3;
+    view.setLayout(layout);
+    createControls(widgetFactory, view);
+    return scrolledForm;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -118,54 +118,54 @@ public class LinkEndDestructionDataPropertiesEditionPartForm extends SectionProp
 	 * @generated
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		CompositionSequence linkEndDestructionDataStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep propertiesStep = linkEndDestructionDataStep.addStep(UmlViewsRepository.LinkEndDestructionData.Properties.class);
-		propertiesStep.addStep(UmlViewsRepository.LinkEndDestructionData.Properties.value);
-		propertiesStep.addStep(UmlViewsRepository.LinkEndDestructionData.Properties.end);
-		propertiesStep.addStep(UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates);
-		propertiesStep.addStep(UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt);
-		
-		
-		composer = new PartComposer(linkEndDestructionDataStep) {
+    CompositionSequence linkEndDestructionDataStep = new BindingCompositionSequence(propertiesEditionComponent);
+    CompositionStep propertiesStep = linkEndDestructionDataStep.addStep(UmlViewsRepository.LinkEndDestructionData.Properties.class);
+    propertiesStep.addStep(UmlViewsRepository.LinkEndDestructionData.Properties.value);
+    propertiesStep.addStep(UmlViewsRepository.LinkEndDestructionData.Properties.end);
+    propertiesStep.addStep(UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates);
+    propertiesStep.addStep(UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt);
+    
+    
+    composer = new PartComposer(linkEndDestructionDataStep) {
 
-			@Override
-			public Composite addToPart(Composite parent, Object key) {
-				if (key == UmlViewsRepository.LinkEndDestructionData.Properties.class) {
-					return createPropertiesGroup(widgetFactory, parent);
-				}
-				if (key == UmlViewsRepository.LinkEndDestructionData.Properties.value) {
-					return createValueFlatComboViewer(parent, widgetFactory);
-				}
-				if (key == UmlViewsRepository.LinkEndDestructionData.Properties.end) {
-					return createEndFlatComboViewer(parent, widgetFactory);
-				}
-				if (key == UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates) {
-					return createIsDestroyDuplicatesCheckbox(widgetFactory, parent);
-				}
-				if (key == UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt) {
-					return createDestroyAtFlatComboViewer(parent, widgetFactory);
-				}
-				return parent;
-			}
-		};
-		composer.compose(view);
-	}
+      @Override
+      public Composite addToPart(Composite parent, Object key) {
+        if (key == UmlViewsRepository.LinkEndDestructionData.Properties.class) {
+          return createPropertiesGroup(widgetFactory, parent);
+        }
+        if (key == UmlViewsRepository.LinkEndDestructionData.Properties.value) {
+          return createValueFlatComboViewer(parent, widgetFactory);
+        }
+        if (key == UmlViewsRepository.LinkEndDestructionData.Properties.end) {
+          return createEndFlatComboViewer(parent, widgetFactory);
+        }
+        if (key == UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates) {
+          return createIsDestroyDuplicatesCheckbox(widgetFactory, parent);
+        }
+        if (key == UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt) {
+          return createDestroyAtFlatComboViewer(parent, widgetFactory);
+        }
+        return parent;
+      }
+    };
+    composer.compose(view);
+  }
 	/**
 	 * @generated
 	 */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
-		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
-		propertiesSection.setText(UmlMessages.LinkEndDestructionDataPropertiesEditionPart_PropertiesGroupLabel);
-		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesSectionData.horizontalSpan = 3;
-		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		propertiesSection.setClient(propertiesGroup);
-		return propertiesGroup;
-	}
+    Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+    propertiesSection.setText(UmlMessages.LinkEndDestructionDataPropertiesEditionPart_PropertiesGroupLabel);
+    GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
+    propertiesSectionData.horizontalSpan = 3;
+    propertiesSection.setLayoutData(propertiesSectionData);
+    Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+    GridLayout propertiesGroupLayout = new GridLayout();
+    propertiesGroupLayout.numColumns = 3;
+    propertiesGroup.setLayout(propertiesGroupLayout);
+    propertiesSection.setClient(propertiesGroup);
+    return propertiesGroup;
+  }
 
 	/**
 	 * @param parent the parent composite
@@ -173,29 +173,29 @@ public class LinkEndDestructionDataPropertiesEditionPartForm extends SectionProp
 	 * @generated
 	 */
 	protected Composite createValueFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		createDescription(parent, UmlViewsRepository.LinkEndDestructionData.Properties.value, UmlMessages.LinkEndDestructionDataPropertiesEditionPart_ValueLabel);
-		value = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.LinkEndDestructionData.Properties.value, UmlViewsRepository.FORM_KIND));
-		widgetFactory.adapt(value);
-		value.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
-		value.setLayoutData(valueData);
-		value.addSelectionChangedListener(new ISelectionChangedListener() {
+    createDescription(parent, UmlViewsRepository.LinkEndDestructionData.Properties.value, UmlMessages.LinkEndDestructionDataPropertiesEditionPart_ValueLabel);
+    value = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.LinkEndDestructionData.Properties.value, UmlViewsRepository.FORM_KIND));
+    widgetFactory.adapt(value);
+    value.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+    value.setLayoutData(valueData);
+    value.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LinkEndDestructionDataPropertiesEditionPartForm.this, UmlViewsRepository.LinkEndDestructionData.Properties.value, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getValue()));
-			}
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LinkEndDestructionDataPropertiesEditionPartForm.this, UmlViewsRepository.LinkEndDestructionData.Properties.value, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getValue()));
+      }
 
-		});
-		value.setID(UmlViewsRepository.LinkEndDestructionData.Properties.value);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.LinkEndDestructionData.Properties.value, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    value.setID(UmlViewsRepository.LinkEndDestructionData.Properties.value);
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.LinkEndDestructionData.Properties.value, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @param parent the parent composite
@@ -203,58 +203,58 @@ public class LinkEndDestructionDataPropertiesEditionPartForm extends SectionProp
 	 * @generated
 	 */
 	protected Composite createEndFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		createDescription(parent, UmlViewsRepository.LinkEndDestructionData.Properties.end, UmlMessages.LinkEndDestructionDataPropertiesEditionPart_EndLabel);
-		end = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.LinkEndDestructionData.Properties.end, UmlViewsRepository.FORM_KIND));
-		widgetFactory.adapt(end);
-		end.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		GridData endData = new GridData(GridData.FILL_HORIZONTAL);
-		end.setLayoutData(endData);
-		end.addSelectionChangedListener(new ISelectionChangedListener() {
+    createDescription(parent, UmlViewsRepository.LinkEndDestructionData.Properties.end, UmlMessages.LinkEndDestructionDataPropertiesEditionPart_EndLabel);
+    end = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.LinkEndDestructionData.Properties.end, UmlViewsRepository.FORM_KIND));
+    widgetFactory.adapt(end);
+    end.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    GridData endData = new GridData(GridData.FILL_HORIZONTAL);
+    end.setLayoutData(endData);
+    end.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LinkEndDestructionDataPropertiesEditionPartForm.this, UmlViewsRepository.LinkEndDestructionData.Properties.end, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getEnd()));
-			}
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LinkEndDestructionDataPropertiesEditionPartForm.this, UmlViewsRepository.LinkEndDestructionData.Properties.end, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getEnd()));
+      }
 
-		});
-		end.setID(UmlViewsRepository.LinkEndDestructionData.Properties.end);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.LinkEndDestructionData.Properties.end, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    end.setID(UmlViewsRepository.LinkEndDestructionData.Properties.end);
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.LinkEndDestructionData.Properties.end, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @generated
 	 */
 	
 	protected Composite createIsDestroyDuplicatesCheckbox(FormToolkit widgetFactory, Composite parent) {
-		isDestroyDuplicates = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates, UmlMessages.LinkEndDestructionDataPropertiesEditionPart_IsDestroyDuplicatesLabel), SWT.CHECK);
-		isDestroyDuplicates.addSelectionListener(new SelectionAdapter() {
+    isDestroyDuplicates = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates, UmlMessages.LinkEndDestructionDataPropertiesEditionPart_IsDestroyDuplicatesLabel), SWT.CHECK);
+    isDestroyDuplicates.addSelectionListener(new SelectionAdapter() {
 
-			/**
-			 * {@inheritDoc}
-			 *
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	@generated
-			 */
-			public void widgetSelected(SelectionEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LinkEndDestructionDataPropertiesEditionPartForm.this, UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(isDestroyDuplicates.getSelection())));
-			}
+      /**
+       * {@inheritDoc}
+       *
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       * 	@generated
+       */
+      public void widgetSelected(SelectionEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LinkEndDestructionDataPropertiesEditionPartForm.this, UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(isDestroyDuplicates.getSelection())));
+      }
 
-		});
-		GridData isDestroyDuplicatesData = new GridData(GridData.FILL_HORIZONTAL);
-		isDestroyDuplicatesData.horizontalSpan = 2;
-		isDestroyDuplicates.setLayoutData(isDestroyDuplicatesData);
-		EditingUtils.setID(isDestroyDuplicates, UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates);
-		EditingUtils.setEEFtype(isDestroyDuplicates, "eef::Checkbox"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    GridData isDestroyDuplicatesData = new GridData(GridData.FILL_HORIZONTAL);
+    isDestroyDuplicatesData.horizontalSpan = 2;
+    isDestroyDuplicates.setLayoutData(isDestroyDuplicatesData);
+    EditingUtils.setID(isDestroyDuplicates, UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates);
+    EditingUtils.setEEFtype(isDestroyDuplicates, "eef::Checkbox"); //$NON-NLS-1$
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @param parent the parent composite
@@ -262,29 +262,29 @@ public class LinkEndDestructionDataPropertiesEditionPartForm extends SectionProp
 	 * @generated
 	 */
 	protected Composite createDestroyAtFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		createDescription(parent, UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt, UmlMessages.LinkEndDestructionDataPropertiesEditionPart_DestroyAtLabel);
-		destroyAt = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt, UmlViewsRepository.FORM_KIND));
-		widgetFactory.adapt(destroyAt);
-		destroyAt.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		GridData destroyAtData = new GridData(GridData.FILL_HORIZONTAL);
-		destroyAt.setLayoutData(destroyAtData);
-		destroyAt.addSelectionChangedListener(new ISelectionChangedListener() {
+    createDescription(parent, UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt, UmlMessages.LinkEndDestructionDataPropertiesEditionPart_DestroyAtLabel);
+    destroyAt = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt, UmlViewsRepository.FORM_KIND));
+    widgetFactory.adapt(destroyAt);
+    destroyAt.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    GridData destroyAtData = new GridData(GridData.FILL_HORIZONTAL);
+    destroyAt.setLayoutData(destroyAtData);
+    destroyAt.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LinkEndDestructionDataPropertiesEditionPartForm.this, UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getDestroyAt()));
-			}
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LinkEndDestructionDataPropertiesEditionPartForm.this, UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getDestroyAt()));
+      }
 
-		});
-		destroyAt.setID(UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    destroyAt.setID(UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt);
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 
 	/**
@@ -294,7 +294,7 @@ public class LinkEndDestructionDataPropertiesEditionPartForm extends SectionProp
 	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-	}
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -303,13 +303,13 @@ public class LinkEndDestructionDataPropertiesEditionPartForm extends SectionProp
 	 * @generated
 	 */
 	public EObject getValue() {
-		if (value.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) value.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (value.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) value.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -338,20 +338,20 @@ public class LinkEndDestructionDataPropertiesEditionPartForm extends SectionProp
 	 * @generated
 	 */
 	public void setValue(EObject newValue) {
-		if (newValue != null) {
-			value.setSelection(new StructuredSelection(newValue));
-		} else {
-			value.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.LinkEndDestructionData.Properties.value);
-		if (readOnly && value.isEnabled()) {
-			value.setEnabled(false);
-			value.setToolTipText(UmlMessages.LinkEndDestructionData_ReadOnly);
-		} else if (!readOnly && !value.isEnabled()) {
-			value.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      value.setSelection(new StructuredSelection(newValue));
+    } else {
+      value.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.LinkEndDestructionData.Properties.value);
+    if (readOnly && value.isEnabled()) {
+      value.setEnabled(false);
+      value.setToolTipText(UmlMessages.LinkEndDestructionData_ReadOnly);
+    } else if (!readOnly && !value.isEnabled()) {
+      value.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -369,8 +369,8 @@ public class LinkEndDestructionDataPropertiesEditionPartForm extends SectionProp
 	 * @generated
 	 */
 	public void addFilterToValue(ViewerFilter filter) {
-		value.addFilter(filter);
-	}
+    value.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -379,8 +379,8 @@ public class LinkEndDestructionDataPropertiesEditionPartForm extends SectionProp
 	 * @generated
 	 */
 	public void addBusinessFilterToValue(ViewerFilter filter) {
-		value.addBusinessRuleFilter(filter);
-	}
+    value.addBusinessRuleFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -389,13 +389,13 @@ public class LinkEndDestructionDataPropertiesEditionPartForm extends SectionProp
 	 * @generated
 	 */
 	public EObject getEnd() {
-		if (end.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) end.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (end.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) end.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -424,20 +424,20 @@ public class LinkEndDestructionDataPropertiesEditionPartForm extends SectionProp
 	 * @generated
 	 */
 	public void setEnd(EObject newValue) {
-		if (newValue != null) {
-			end.setSelection(new StructuredSelection(newValue));
-		} else {
-			end.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.LinkEndDestructionData.Properties.end);
-		if (readOnly && end.isEnabled()) {
-			end.setEnabled(false);
-			end.setToolTipText(UmlMessages.LinkEndDestructionData_ReadOnly);
-		} else if (!readOnly && !end.isEnabled()) {
-			end.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      end.setSelection(new StructuredSelection(newValue));
+    } else {
+      end.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.LinkEndDestructionData.Properties.end);
+    if (readOnly && end.isEnabled()) {
+      end.setEnabled(false);
+      end.setToolTipText(UmlMessages.LinkEndDestructionData_ReadOnly);
+    } else if (!readOnly && !end.isEnabled()) {
+      end.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -455,8 +455,8 @@ public class LinkEndDestructionDataPropertiesEditionPartForm extends SectionProp
 	 * @generated
 	 */
 	public void addFilterToEnd(ViewerFilter filter) {
-		end.addFilter(filter);
-	}
+    end.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -465,8 +465,8 @@ public class LinkEndDestructionDataPropertiesEditionPartForm extends SectionProp
 	 * @generated
 	 */
 	public void addBusinessFilterToEnd(ViewerFilter filter) {
-		end.addBusinessRuleFilter(filter);
-	}
+    end.addBusinessRuleFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -475,8 +475,8 @@ public class LinkEndDestructionDataPropertiesEditionPartForm extends SectionProp
 	 * @generated
 	 */
 	public Boolean getIsDestroyDuplicates() {
-		return Boolean.valueOf(isDestroyDuplicates.getSelection());
-	}
+    return Boolean.valueOf(isDestroyDuplicates.getSelection());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -485,20 +485,20 @@ public class LinkEndDestructionDataPropertiesEditionPartForm extends SectionProp
 	 * @generated
 	 */
 	public void setIsDestroyDuplicates(Boolean newValue) {
-		if (newValue != null) {
-			isDestroyDuplicates.setSelection(newValue.booleanValue());
-		} else {
-			isDestroyDuplicates.setSelection(false);
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates);
-		if (readOnly && isDestroyDuplicates.isEnabled()) {
-			isDestroyDuplicates.setEnabled(false);
-			isDestroyDuplicates.setToolTipText(UmlMessages.LinkEndDestructionData_ReadOnly);
-		} else if (!readOnly && !isDestroyDuplicates.isEnabled()) {
-			isDestroyDuplicates.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      isDestroyDuplicates.setSelection(newValue.booleanValue());
+    } else {
+      isDestroyDuplicates.setSelection(false);
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.LinkEndDestructionData.Properties.isDestroyDuplicates);
+    if (readOnly && isDestroyDuplicates.isEnabled()) {
+      isDestroyDuplicates.setEnabled(false);
+      isDestroyDuplicates.setToolTipText(UmlMessages.LinkEndDestructionData_ReadOnly);
+    } else if (!readOnly && !isDestroyDuplicates.isEnabled()) {
+      isDestroyDuplicates.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -507,13 +507,13 @@ public class LinkEndDestructionDataPropertiesEditionPartForm extends SectionProp
 	 * @generated
 	 */
 	public EObject getDestroyAt() {
-		if (destroyAt.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) destroyAt.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (destroyAt.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) destroyAt.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -542,20 +542,20 @@ public class LinkEndDestructionDataPropertiesEditionPartForm extends SectionProp
 	 * @generated
 	 */
 	public void setDestroyAt(EObject newValue) {
-		if (newValue != null) {
-			destroyAt.setSelection(new StructuredSelection(newValue));
-		} else {
-			destroyAt.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt);
-		if (readOnly && destroyAt.isEnabled()) {
-			destroyAt.setEnabled(false);
-			destroyAt.setToolTipText(UmlMessages.LinkEndDestructionData_ReadOnly);
-		} else if (!readOnly && !destroyAt.isEnabled()) {
-			destroyAt.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      destroyAt.setSelection(new StructuredSelection(newValue));
+    } else {
+      destroyAt.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.LinkEndDestructionData.Properties.destroyAt);
+    if (readOnly && destroyAt.isEnabled()) {
+      destroyAt.setEnabled(false);
+      destroyAt.setToolTipText(UmlMessages.LinkEndDestructionData_ReadOnly);
+    } else if (!readOnly && !destroyAt.isEnabled()) {
+      destroyAt.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -573,8 +573,8 @@ public class LinkEndDestructionDataPropertiesEditionPartForm extends SectionProp
 	 * @generated
 	 */
 	public void addFilterToDestroyAt(ViewerFilter filter) {
-		destroyAt.addFilter(filter);
-	}
+    destroyAt.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -583,8 +583,8 @@ public class LinkEndDestructionDataPropertiesEditionPartForm extends SectionProp
 	 * @generated
 	 */
 	public void addBusinessFilterToDestroyAt(ViewerFilter filter) {
-		destroyAt.addBusinessRuleFilter(filter);
-	}
+    destroyAt.addBusinessRuleFilter(filter);
+  }
 
 
 
@@ -598,8 +598,8 @@ public class LinkEndDestructionDataPropertiesEditionPartForm extends SectionProp
 	 * @generated
 	 */
 	public String getTitle() {
-		return UmlMessages.LinkEndDestructionData_Part_Title;
-	}
+    return UmlMessages.LinkEndDestructionData_Part_Title;
+  }
 
 
 

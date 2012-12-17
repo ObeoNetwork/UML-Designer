@@ -86,11 +86,11 @@ public class ProtocolConformancePropertiesEditionComponent extends SinglePartPro
 	 * @generated
 	 */
 	public ProtocolConformancePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject protocolConformance, String editing_mode) {
-		super(editingContext, protocolConformance, editing_mode);
-		parts = new String[] { BASE_PART };
-		repositoryKey = UmlViewsRepository.class;
-		partKey = UmlViewsRepository.ProtocolConformance.class;
-	}
+    super(editingContext, protocolConformance, editing_mode);
+    parts = new String[] { BASE_PART };
+    repositoryKey = UmlViewsRepository.class;
+    partKey = UmlViewsRepository.ProtocolConformance.class;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -100,63 +100,63 @@ public class ProtocolConformancePropertiesEditionComponent extends SinglePartPro
 	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			
-			final ProtocolConformance protocolConformance = (ProtocolConformance)elt;
-			final ProtocolConformancePropertiesEditionPart basePart = (ProtocolConformancePropertiesEditionPart)editingPart;
-			// init values
-			if (isAccessible(UmlViewsRepository.ProtocolConformance.Properties.generalMachine)) {
-				// init part
-				generalMachineSettings = new EObjectFlatComboSettings(protocolConformance, UMLPackage.eINSTANCE.getProtocolConformance_GeneralMachine());
-				basePart.initGeneralMachine(generalMachineSettings);
-				// set the button mode
-				basePart.setGeneralMachineButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			if (isAccessible(UmlViewsRepository.ProtocolConformance.Properties.specificMachine)) {
-				// init part
-				specificMachineSettings = new EObjectFlatComboSettings(protocolConformance, UMLPackage.eINSTANCE.getProtocolConformance_SpecificMachine());
-				basePart.initSpecificMachine(specificMachineSettings);
-				// set the button mode
-				basePart.setSpecificMachineButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			// init filters
-			if (isAccessible(UmlViewsRepository.ProtocolConformance.Properties.generalMachine)) {
-				basePart.addFilterToGeneralMachine(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof ProtocolStateMachine);
-					}
-					
-				});
-			}
-			if (isAccessible(UmlViewsRepository.ProtocolConformance.Properties.specificMachine)) {
-				basePart.addFilterToSpecificMachine(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof ProtocolStateMachine);
-					}
-					
-				});
-			}
-			// init values for referenced views
-			
-			// init filters for referenced views
-			
-		}
-		setInitializing(false);
-	}
+    setInitializing(true);
+    if (editingPart != null && key == partKey) {
+      editingPart.setContext(elt, allResource);
+      
+      final ProtocolConformance protocolConformance = (ProtocolConformance)elt;
+      final ProtocolConformancePropertiesEditionPart basePart = (ProtocolConformancePropertiesEditionPart)editingPart;
+      // init values
+      if (isAccessible(UmlViewsRepository.ProtocolConformance.Properties.generalMachine)) {
+        // init part
+        generalMachineSettings = new EObjectFlatComboSettings(protocolConformance, UMLPackage.eINSTANCE.getProtocolConformance_GeneralMachine());
+        basePart.initGeneralMachine(generalMachineSettings);
+        // set the button mode
+        basePart.setGeneralMachineButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      if (isAccessible(UmlViewsRepository.ProtocolConformance.Properties.specificMachine)) {
+        // init part
+        specificMachineSettings = new EObjectFlatComboSettings(protocolConformance, UMLPackage.eINSTANCE.getProtocolConformance_SpecificMachine());
+        basePart.initSpecificMachine(specificMachineSettings);
+        // set the button mode
+        basePart.setSpecificMachineButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      // init filters
+      if (isAccessible(UmlViewsRepository.ProtocolConformance.Properties.generalMachine)) {
+        basePart.addFilterToGeneralMachine(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof ProtocolStateMachine);
+          }
+          
+        });
+      }
+      if (isAccessible(UmlViewsRepository.ProtocolConformance.Properties.specificMachine)) {
+        basePart.addFilterToSpecificMachine(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof ProtocolStateMachine);
+          }
+          
+        });
+      }
+      // init values for referenced views
+      
+      // init filters for referenced views
+      
+    }
+    setInitializing(false);
+  }
 
 
 
@@ -182,40 +182,40 @@ public class ProtocolConformancePropertiesEditionComponent extends SinglePartPro
 	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		ProtocolConformance protocolConformance = (ProtocolConformance)semanticObject;
-		if (UmlViewsRepository.ProtocolConformance.Properties.generalMachine == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				generalMachineSettings.setToReference((ProtocolStateMachine)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				ProtocolStateMachine eObject = UMLFactory.eINSTANCE.createProtocolStateMachine();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy != null) {
-						policy.execute();
-					}
-				}
-				generalMachineSettings.setToReference(eObject);
-			}
-		}
-		if (UmlViewsRepository.ProtocolConformance.Properties.specificMachine == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				specificMachineSettings.setToReference((ProtocolStateMachine)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				ProtocolStateMachine eObject = UMLFactory.eINSTANCE.createProtocolStateMachine();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy != null) {
-						policy.execute();
-					}
-				}
-				specificMachineSettings.setToReference(eObject);
-			}
-		}
-	}
+    ProtocolConformance protocolConformance = (ProtocolConformance)semanticObject;
+    if (UmlViewsRepository.ProtocolConformance.Properties.generalMachine == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        generalMachineSettings.setToReference((ProtocolStateMachine)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        ProtocolStateMachine eObject = UMLFactory.eINSTANCE.createProtocolStateMachine();
+        EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy != null) {
+            policy.execute();
+          }
+        }
+        generalMachineSettings.setToReference(eObject);
+      }
+    }
+    if (UmlViewsRepository.ProtocolConformance.Properties.specificMachine == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        specificMachineSettings.setToReference((ProtocolStateMachine)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        ProtocolStateMachine eObject = UMLFactory.eINSTANCE.createProtocolStateMachine();
+        EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy != null) {
+            policy.execute();
+          }
+        }
+        specificMachineSettings.setToReference(eObject);
+      }
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -254,8 +254,8 @@ public class ProtocolConformancePropertiesEditionComponent extends SinglePartPro
 	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == UmlViewsRepository.ProtocolConformance.Properties.generalMachine || key == UmlViewsRepository.ProtocolConformance.Properties.specificMachine;
-	}
+    return key == UmlViewsRepository.ProtocolConformance.Properties.generalMachine || key == UmlViewsRepository.ProtocolConformance.Properties.specificMachine;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -264,17 +264,17 @@ public class ProtocolConformancePropertiesEditionComponent extends SinglePartPro
 	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
-		Diagnostic ret = Diagnostic.OK_INSTANCE;
-		if (event.getNewValue() != null) {
-			try {
-			} catch (IllegalArgumentException iae) {
-				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
-				ret = BasicDiagnostic.toDiagnostic(we);
-			}
-		}
-		return ret;
-	}
+    Diagnostic ret = Diagnostic.OK_INSTANCE;
+    if (event.getNewValue() != null) {
+      try {
+      } catch (IllegalArgumentException iae) {
+        ret = BasicDiagnostic.toDiagnostic(iae);
+      } catch (WrappedException we) {
+        ret = BasicDiagnostic.toDiagnostic(we);
+      }
+    }
+    return ret;
+  }
 
 
 	

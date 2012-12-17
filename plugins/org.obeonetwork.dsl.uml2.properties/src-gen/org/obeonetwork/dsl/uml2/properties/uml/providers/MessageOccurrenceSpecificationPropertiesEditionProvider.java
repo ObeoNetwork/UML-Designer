@@ -58,9 +58,9 @@ public class MessageOccurrenceSpecificationPropertiesEditionProvider extends Pro
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof MessageOccurrenceSpecification) 
-					&& (UMLPackage.Literals.MESSAGE_OCCURRENCE_SPECIFICATION == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof MessageOccurrenceSpecification) 
+          && (UMLPackage.Literals.MESSAGE_OCCURRENCE_SPECIFICATION == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class MessageOccurrenceSpecificationPropertiesEditionProvider extends Pro
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof MessageOccurrenceSpecification) && (MessageOccurrenceSpecificationPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof MessageOccurrenceSpecification) && (MessageOccurrenceSpecificationPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class MessageOccurrenceSpecificationPropertiesEditionProvider extends Pro
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof MessageOccurrenceSpecification) && (refinement == MessageOccurrenceSpecificationPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof MessageOccurrenceSpecification) && (refinement == MessageOccurrenceSpecificationPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class MessageOccurrenceSpecificationPropertiesEditionProvider extends Pro
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof MessageOccurrenceSpecification) && ((MessageOccurrenceSpecificationPropertiesEditionComponent.BASE_PART.equals(part) && refinement == MessageOccurrenceSpecificationPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof MessageOccurrenceSpecification) && ((MessageOccurrenceSpecificationPropertiesEditionComponent.BASE_PART.equals(part) && refinement == MessageOccurrenceSpecificationPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class MessageOccurrenceSpecificationPropertiesEditionProvider extends Pro
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof MessageOccurrenceSpecification) {
-			return new MessageOccurrenceSpecificationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof MessageOccurrenceSpecification) {
+      return new MessageOccurrenceSpecificationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class MessageOccurrenceSpecificationPropertiesEditionProvider extends Pro
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof MessageOccurrenceSpecification) {
-			if (MessageOccurrenceSpecificationPropertiesEditionComponent.BASE_PART.equals(part))
-				return new MessageOccurrenceSpecificationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof MessageOccurrenceSpecification) {
+      if (MessageOccurrenceSpecificationPropertiesEditionComponent.BASE_PART.equals(part))
+        return new MessageOccurrenceSpecificationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

@@ -58,9 +58,9 @@ public class ArtifactPropertiesEditionProvider extends PropertiesEditingProvider
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof Artifact) 
-					&& (UMLPackage.Literals.ARTIFACT == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof Artifact) 
+          && (UMLPackage.Literals.ARTIFACT == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class ArtifactPropertiesEditionProvider extends PropertiesEditingProvider
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof Artifact) && (ArtifactPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof Artifact) && (ArtifactPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class ArtifactPropertiesEditionProvider extends PropertiesEditingProvider
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Artifact) && (refinement == ArtifactPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof Artifact) && (refinement == ArtifactPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class ArtifactPropertiesEditionProvider extends PropertiesEditingProvider
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Artifact) && ((ArtifactPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ArtifactPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof Artifact) && ((ArtifactPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ArtifactPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class ArtifactPropertiesEditionProvider extends PropertiesEditingProvider
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof Artifact) {
-			return new ArtifactPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof Artifact) {
+      return new ArtifactPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class ArtifactPropertiesEditionProvider extends PropertiesEditingProvider
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof Artifact) {
-			if (ArtifactPropertiesEditionComponent.BASE_PART.equals(part))
-				return new ArtifactPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof Artifact) {
+      if (ArtifactPropertiesEditionComponent.BASE_PART.equals(part))
+        return new ArtifactPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

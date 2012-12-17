@@ -24,12 +24,12 @@ import org.eclipse.jface.viewers.ViewerFilter;
 public interface CommentPropertiesEditionPart {
 
 	/**
-	 * @return the body
-	 * @generated
-	 */
-	public String getBodies();
+   * @return the body
+   * @generated
+   */
+  public String getBody();
 
-	/**
+  /**
 	 * Defines a new body
 	 * @param newValue the new body to set
 	 * @generated

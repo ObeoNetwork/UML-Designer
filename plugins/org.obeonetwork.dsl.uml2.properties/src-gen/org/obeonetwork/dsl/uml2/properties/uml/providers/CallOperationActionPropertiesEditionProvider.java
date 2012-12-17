@@ -58,9 +58,9 @@ public class CallOperationActionPropertiesEditionProvider extends PropertiesEdit
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof CallOperationAction) 
-					&& (UMLPackage.Literals.CALL_OPERATION_ACTION == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof CallOperationAction) 
+          && (UMLPackage.Literals.CALL_OPERATION_ACTION == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class CallOperationActionPropertiesEditionProvider extends PropertiesEdit
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof CallOperationAction) && (CallOperationActionPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof CallOperationAction) && (CallOperationActionPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class CallOperationActionPropertiesEditionProvider extends PropertiesEdit
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof CallOperationAction) && (refinement == CallOperationActionPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof CallOperationAction) && (refinement == CallOperationActionPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class CallOperationActionPropertiesEditionProvider extends PropertiesEdit
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof CallOperationAction) && ((CallOperationActionPropertiesEditionComponent.BASE_PART.equals(part) && refinement == CallOperationActionPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof CallOperationAction) && ((CallOperationActionPropertiesEditionComponent.BASE_PART.equals(part) && refinement == CallOperationActionPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class CallOperationActionPropertiesEditionProvider extends PropertiesEdit
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof CallOperationAction) {
-			return new CallOperationActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof CallOperationAction) {
+      return new CallOperationActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class CallOperationActionPropertiesEditionProvider extends PropertiesEdit
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof CallOperationAction) {
-			if (CallOperationActionPropertiesEditionComponent.BASE_PART.equals(part))
-				return new CallOperationActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof CallOperationAction) {
+      if (CallOperationActionPropertiesEditionComponent.BASE_PART.equals(part))
+        return new CallOperationActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

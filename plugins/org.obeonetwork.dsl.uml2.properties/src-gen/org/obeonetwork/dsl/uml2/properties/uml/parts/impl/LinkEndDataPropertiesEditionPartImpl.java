@@ -72,8 +72,8 @@ public class LinkEndDataPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * @generated
 	 */
 	public LinkEndDataPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+    super(editionComponent);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -83,13 +83,13 @@ public class LinkEndDataPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * @generated
 	 */
 	public Composite createFigure(final Composite parent) {
-		view = new Composite(parent, SWT.NONE);
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
-		view.setLayout(layout);
-		createControls(view);
-		return view;
-	}
+    view = new Composite(parent, SWT.NONE);
+    GridLayout layout = new GridLayout();
+    layout.numColumns = 3;
+    view.setLayout(layout);
+    createControls(view);
+    return view;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -99,91 +99,91 @@ public class LinkEndDataPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * @generated
 	 */
 	public void createControls(Composite view) { 
-		CompositionSequence linkEndDataStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep propertiesStep = linkEndDataStep.addStep(UmlViewsRepository.LinkEndData.Properties.class);
-		propertiesStep.addStep(UmlViewsRepository.LinkEndData.Properties.value);
-		propertiesStep.addStep(UmlViewsRepository.LinkEndData.Properties.end);
-		
-		
-		composer = new PartComposer(linkEndDataStep) {
+    CompositionSequence linkEndDataStep = new BindingCompositionSequence(propertiesEditionComponent);
+    CompositionStep propertiesStep = linkEndDataStep.addStep(UmlViewsRepository.LinkEndData.Properties.class);
+    propertiesStep.addStep(UmlViewsRepository.LinkEndData.Properties.value);
+    propertiesStep.addStep(UmlViewsRepository.LinkEndData.Properties.end);
+    
+    
+    composer = new PartComposer(linkEndDataStep) {
 
-			@Override
-			public Composite addToPart(Composite parent, Object key) {
-				if (key == UmlViewsRepository.LinkEndData.Properties.class) {
-					return createPropertiesGroup(parent);
-				}
-				if (key == UmlViewsRepository.LinkEndData.Properties.value) {
-					return createValueFlatComboViewer(parent);
-				}
-				if (key == UmlViewsRepository.LinkEndData.Properties.end) {
-					return createEndFlatComboViewer(parent);
-				}
-				return parent;
-			}
-		};
-		composer.compose(view);
-	}
+      @Override
+      public Composite addToPart(Composite parent, Object key) {
+        if (key == UmlViewsRepository.LinkEndData.Properties.class) {
+          return createPropertiesGroup(parent);
+        }
+        if (key == UmlViewsRepository.LinkEndData.Properties.value) {
+          return createValueFlatComboViewer(parent);
+        }
+        if (key == UmlViewsRepository.LinkEndData.Properties.end) {
+          return createEndFlatComboViewer(parent);
+        }
+        return parent;
+      }
+    };
+    composer.compose(view);
+  }
 
 	/**
 	 * @generated
 	 */
 	protected Composite createPropertiesGroup(Composite parent) {
-		Group propertiesGroup = new Group(parent, SWT.NONE);
-		propertiesGroup.setText(UmlMessages.LinkEndDataPropertiesEditionPart_PropertiesGroupLabel);
-		GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesGroupData.horizontalSpan = 3;
-		propertiesGroup.setLayoutData(propertiesGroupData);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		return propertiesGroup;
-	}
+    Group propertiesGroup = new Group(parent, SWT.NONE);
+    propertiesGroup.setText(UmlMessages.LinkEndDataPropertiesEditionPart_PropertiesGroupLabel);
+    GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
+    propertiesGroupData.horizontalSpan = 3;
+    propertiesGroup.setLayoutData(propertiesGroupData);
+    GridLayout propertiesGroupLayout = new GridLayout();
+    propertiesGroupLayout.numColumns = 3;
+    propertiesGroup.setLayout(propertiesGroupLayout);
+    return propertiesGroup;
+  }
 
 	/**
 	 * @param parent the parent composite
 	 * @generated
 	 */
 	protected Composite createValueFlatComboViewer(Composite parent) {
-		createDescription(parent, UmlViewsRepository.LinkEndData.Properties.value, UmlMessages.LinkEndDataPropertiesEditionPart_ValueLabel);
-		value = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.LinkEndData.Properties.value, UmlViewsRepository.SWT_KIND));
-		value.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    createDescription(parent, UmlViewsRepository.LinkEndData.Properties.value, UmlMessages.LinkEndDataPropertiesEditionPart_ValueLabel);
+    value = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.LinkEndData.Properties.value, UmlViewsRepository.SWT_KIND));
+    value.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
-		value.addSelectionChangedListener(new ISelectionChangedListener() {
+    value.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LinkEndDataPropertiesEditionPartImpl.this, UmlViewsRepository.LinkEndData.Properties.value, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getValue()));
-			}
+      public void selectionChanged(SelectionChangedEvent event) {
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LinkEndDataPropertiesEditionPartImpl.this, UmlViewsRepository.LinkEndData.Properties.value, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getValue()));
+      }
 
-		});
-		GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
-		value.setLayoutData(valueData);
-		value.setID(UmlViewsRepository.LinkEndData.Properties.value);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.LinkEndData.Properties.value, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    GridData valueData = new GridData(GridData.FILL_HORIZONTAL);
+    value.setLayoutData(valueData);
+    value.setID(UmlViewsRepository.LinkEndData.Properties.value);
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.LinkEndData.Properties.value, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @param parent the parent composite
 	 * @generated
 	 */
 	protected Composite createEndFlatComboViewer(Composite parent) {
-		createDescription(parent, UmlViewsRepository.LinkEndData.Properties.end, UmlMessages.LinkEndDataPropertiesEditionPart_EndLabel);
-		end = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.LinkEndData.Properties.end, UmlViewsRepository.SWT_KIND));
-		end.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    createDescription(parent, UmlViewsRepository.LinkEndData.Properties.end, UmlMessages.LinkEndDataPropertiesEditionPart_EndLabel);
+    end = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.LinkEndData.Properties.end, UmlViewsRepository.SWT_KIND));
+    end.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
 
-		end.addSelectionChangedListener(new ISelectionChangedListener() {
+    end.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			public void selectionChanged(SelectionChangedEvent event) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LinkEndDataPropertiesEditionPartImpl.this, UmlViewsRepository.LinkEndData.Properties.end, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getEnd()));
-			}
+      public void selectionChanged(SelectionChangedEvent event) {
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LinkEndDataPropertiesEditionPartImpl.this, UmlViewsRepository.LinkEndData.Properties.end, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getEnd()));
+      }
 
-		});
-		GridData endData = new GridData(GridData.FILL_HORIZONTAL);
-		end.setLayoutData(endData);
-		end.setID(UmlViewsRepository.LinkEndData.Properties.end);
-		SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.LinkEndData.Properties.end, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    GridData endData = new GridData(GridData.FILL_HORIZONTAL);
+    end.setLayoutData(endData);
+    end.setID(UmlViewsRepository.LinkEndData.Properties.end);
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.LinkEndData.Properties.end, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 
 	/**
@@ -193,7 +193,7 @@ public class LinkEndDataPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-	}
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -202,13 +202,13 @@ public class LinkEndDataPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * @generated
 	 */
 	public EObject getValue() {
-		if (value.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) value.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (value.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) value.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -237,20 +237,20 @@ public class LinkEndDataPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * @generated
 	 */
 	public void setValue(EObject newValue) {
-		if (newValue != null) {
-			value.setSelection(new StructuredSelection(newValue));
-		} else {
-			value.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.LinkEndData.Properties.value);
-		if (readOnly && value.isEnabled()) {
-			value.setEnabled(false);
-			value.setToolTipText(UmlMessages.LinkEndData_ReadOnly);
-		} else if (!readOnly && !value.isEnabled()) {
-			value.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      value.setSelection(new StructuredSelection(newValue));
+    } else {
+      value.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.LinkEndData.Properties.value);
+    if (readOnly && value.isEnabled()) {
+      value.setEnabled(false);
+      value.setToolTipText(UmlMessages.LinkEndData_ReadOnly);
+    } else if (!readOnly && !value.isEnabled()) {
+      value.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -268,8 +268,8 @@ public class LinkEndDataPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * @generated
 	 */
 	public void addFilterToValue(ViewerFilter filter) {
-		value.addFilter(filter);
-	}
+    value.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -278,8 +278,8 @@ public class LinkEndDataPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * @generated
 	 */
 	public void addBusinessFilterToValue(ViewerFilter filter) {
-		value.addBusinessRuleFilter(filter);
-	}
+    value.addBusinessRuleFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -288,13 +288,13 @@ public class LinkEndDataPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * @generated
 	 */
 	public EObject getEnd() {
-		if (end.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) end.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (end.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) end.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -323,20 +323,20 @@ public class LinkEndDataPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * @generated
 	 */
 	public void setEnd(EObject newValue) {
-		if (newValue != null) {
-			end.setSelection(new StructuredSelection(newValue));
-		} else {
-			end.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.LinkEndData.Properties.end);
-		if (readOnly && end.isEnabled()) {
-			end.setEnabled(false);
-			end.setToolTipText(UmlMessages.LinkEndData_ReadOnly);
-		} else if (!readOnly && !end.isEnabled()) {
-			end.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      end.setSelection(new StructuredSelection(newValue));
+    } else {
+      end.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.LinkEndData.Properties.end);
+    if (readOnly && end.isEnabled()) {
+      end.setEnabled(false);
+      end.setToolTipText(UmlMessages.LinkEndData_ReadOnly);
+    } else if (!readOnly && !end.isEnabled()) {
+      end.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -354,8 +354,8 @@ public class LinkEndDataPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * @generated
 	 */
 	public void addFilterToEnd(ViewerFilter filter) {
-		end.addFilter(filter);
-	}
+    end.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -364,8 +364,8 @@ public class LinkEndDataPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * @generated
 	 */
 	public void addBusinessFilterToEnd(ViewerFilter filter) {
-		end.addBusinessRuleFilter(filter);
-	}
+    end.addBusinessRuleFilter(filter);
+  }
 
 
 
@@ -379,8 +379,8 @@ public class LinkEndDataPropertiesEditionPartImpl extends CompositePropertiesEdi
 	 * @generated
 	 */
 	public String getTitle() {
-		return UmlMessages.LinkEndData_Part_Title;
-	}
+    return UmlMessages.LinkEndData_Part_Title;
+  }
 
 
 

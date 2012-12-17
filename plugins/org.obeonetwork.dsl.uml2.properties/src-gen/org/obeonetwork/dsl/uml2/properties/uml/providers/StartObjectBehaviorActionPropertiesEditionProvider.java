@@ -58,9 +58,9 @@ public class StartObjectBehaviorActionPropertiesEditionProvider extends Properti
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof StartObjectBehaviorAction) 
-					&& (UMLPackage.Literals.START_OBJECT_BEHAVIOR_ACTION == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof StartObjectBehaviorAction) 
+          && (UMLPackage.Literals.START_OBJECT_BEHAVIOR_ACTION == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +68,8 @@ public class StartObjectBehaviorActionPropertiesEditionProvider extends Properti
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof StartObjectBehaviorAction) && (StartObjectBehaviorActionPropertiesEditionComponent.BASE_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof StartObjectBehaviorAction) && (StartObjectBehaviorActionPropertiesEditionComponent.BASE_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +78,8 @@ public class StartObjectBehaviorActionPropertiesEditionProvider extends Properti
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof StartObjectBehaviorAction) && (refinement == StartObjectBehaviorActionPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof StartObjectBehaviorAction) && (refinement == StartObjectBehaviorActionPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +88,8 @@ public class StartObjectBehaviorActionPropertiesEditionProvider extends Properti
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof StartObjectBehaviorAction) && ((StartObjectBehaviorActionPropertiesEditionComponent.BASE_PART.equals(part) && refinement == StartObjectBehaviorActionPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof StartObjectBehaviorAction) && ((StartObjectBehaviorActionPropertiesEditionComponent.BASE_PART.equals(part) && refinement == StartObjectBehaviorActionPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +97,11 @@ public class StartObjectBehaviorActionPropertiesEditionProvider extends Properti
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof StartObjectBehaviorAction) {
-			return new StartObjectBehaviorActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof StartObjectBehaviorAction) {
+      return new StartObjectBehaviorActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +109,12 @@ public class StartObjectBehaviorActionPropertiesEditionProvider extends Properti
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof StartObjectBehaviorAction) {
-			if (StartObjectBehaviorActionPropertiesEditionComponent.BASE_PART.equals(part))
-				return new StartObjectBehaviorActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof StartObjectBehaviorAction) {
+      if (StartObjectBehaviorActionPropertiesEditionComponent.BASE_PART.equals(part))
+        return new StartObjectBehaviorActionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

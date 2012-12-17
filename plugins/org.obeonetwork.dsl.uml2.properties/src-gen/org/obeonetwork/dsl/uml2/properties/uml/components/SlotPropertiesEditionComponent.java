@@ -90,11 +90,11 @@ public class SlotPropertiesEditionComponent extends SinglePartPropertiesEditingC
 	 * @generated
 	 */
 	public SlotPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject slot, String editing_mode) {
-		super(editingContext, slot, editing_mode);
-		parts = new String[] { BASE_PART };
-		repositoryKey = UmlViewsRepository.class;
-		partKey = UmlViewsRepository.Slot.class;
-	}
+    super(editingContext, slot, editing_mode);
+    parts = new String[] { BASE_PART };
+    repositoryKey = UmlViewsRepository.class;
+    partKey = UmlViewsRepository.Slot.class;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -104,63 +104,63 @@ public class SlotPropertiesEditionComponent extends SinglePartPropertiesEditingC
 	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			
-			final Slot slot = (Slot)elt;
-			final SlotPropertiesEditionPart basePart = (SlotPropertiesEditionPart)editingPart;
-			// init values
-			if (isAccessible(UmlViewsRepository.Slot.Properties.definingFeature)) {
-				// init part
-				definingFeatureSettings = new EObjectFlatComboSettings(slot, UMLPackage.eINSTANCE.getSlot_DefiningFeature());
-				basePart.initDefiningFeature(definingFeatureSettings);
-				// set the button mode
-				basePart.setDefiningFeatureButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			if (isAccessible(UmlViewsRepository.Slot.Properties.owningInstance)) {
-				// init part
-				owningInstanceSettings = new EObjectFlatComboSettings(slot, UMLPackage.eINSTANCE.getSlot_OwningInstance());
-				basePart.initOwningInstance(owningInstanceSettings);
-				// set the button mode
-				basePart.setOwningInstanceButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			// init filters
-			if (isAccessible(UmlViewsRepository.Slot.Properties.definingFeature)) {
-				basePart.addFilterToDefiningFeature(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof StructuralFeature);
-					}
-					
-				});
-			}
-			if (isAccessible(UmlViewsRepository.Slot.Properties.owningInstance)) {
-				basePart.addFilterToOwningInstance(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof InstanceSpecification);
-					}
-					
-				});
-			}
-			// init values for referenced views
-			
-			// init filters for referenced views
-			
-		}
-		setInitializing(false);
-	}
+    setInitializing(true);
+    if (editingPart != null && key == partKey) {
+      editingPart.setContext(elt, allResource);
+      
+      final Slot slot = (Slot)elt;
+      final SlotPropertiesEditionPart basePart = (SlotPropertiesEditionPart)editingPart;
+      // init values
+      if (isAccessible(UmlViewsRepository.Slot.Properties.definingFeature)) {
+        // init part
+        definingFeatureSettings = new EObjectFlatComboSettings(slot, UMLPackage.eINSTANCE.getSlot_DefiningFeature());
+        basePart.initDefiningFeature(definingFeatureSettings);
+        // set the button mode
+        basePart.setDefiningFeatureButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      if (isAccessible(UmlViewsRepository.Slot.Properties.owningInstance)) {
+        // init part
+        owningInstanceSettings = new EObjectFlatComboSettings(slot, UMLPackage.eINSTANCE.getSlot_OwningInstance());
+        basePart.initOwningInstance(owningInstanceSettings);
+        // set the button mode
+        basePart.setOwningInstanceButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      // init filters
+      if (isAccessible(UmlViewsRepository.Slot.Properties.definingFeature)) {
+        basePart.addFilterToDefiningFeature(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof StructuralFeature);
+          }
+          
+        });
+      }
+      if (isAccessible(UmlViewsRepository.Slot.Properties.owningInstance)) {
+        basePart.addFilterToOwningInstance(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof InstanceSpecification);
+          }
+          
+        });
+      }
+      // init values for referenced views
+      
+      // init filters for referenced views
+      
+    }
+    setInitializing(false);
+  }
 
 
 
@@ -186,38 +186,38 @@ public class SlotPropertiesEditionComponent extends SinglePartPropertiesEditingC
 	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		Slot slot = (Slot)semanticObject;
-		if (UmlViewsRepository.Slot.Properties.definingFeature == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				definingFeatureSettings.setToReference((StructuralFeature)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, definingFeatureSettings, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy instanceof CreateEditingPolicy) {
-						policy.execute();
-					}
-				}
-			}
-		}
-		if (UmlViewsRepository.Slot.Properties.owningInstance == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				owningInstanceSettings.setToReference((InstanceSpecification)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				InstanceSpecification eObject = UMLFactory.eINSTANCE.createInstanceSpecification();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy != null) {
-						policy.execute();
-					}
-				}
-				owningInstanceSettings.setToReference(eObject);
-			}
-		}
-	}
+    Slot slot = (Slot)semanticObject;
+    if (UmlViewsRepository.Slot.Properties.definingFeature == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        definingFeatureSettings.setToReference((StructuralFeature)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, definingFeatureSettings, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy instanceof CreateEditingPolicy) {
+            policy.execute();
+          }
+        }
+      }
+    }
+    if (UmlViewsRepository.Slot.Properties.owningInstance == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        owningInstanceSettings.setToReference((InstanceSpecification)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        InstanceSpecification eObject = UMLFactory.eINSTANCE.createInstanceSpecification();
+        EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy != null) {
+            policy.execute();
+          }
+        }
+        owningInstanceSettings.setToReference(eObject);
+      }
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -256,8 +256,8 @@ public class SlotPropertiesEditionComponent extends SinglePartPropertiesEditingC
 	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == UmlViewsRepository.Slot.Properties.definingFeature || key == UmlViewsRepository.Slot.Properties.owningInstance;
-	}
+    return key == UmlViewsRepository.Slot.Properties.definingFeature || key == UmlViewsRepository.Slot.Properties.owningInstance;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -266,17 +266,17 @@ public class SlotPropertiesEditionComponent extends SinglePartPropertiesEditingC
 	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
-		Diagnostic ret = Diagnostic.OK_INSTANCE;
-		if (event.getNewValue() != null) {
-			try {
-			} catch (IllegalArgumentException iae) {
-				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
-				ret = BasicDiagnostic.toDiagnostic(we);
-			}
-		}
-		return ret;
-	}
+    Diagnostic ret = Diagnostic.OK_INSTANCE;
+    if (event.getNewValue() != null) {
+      try {
+      } catch (IllegalArgumentException iae) {
+        ret = BasicDiagnostic.toDiagnostic(iae);
+      } catch (WrappedException we) {
+        ret = BasicDiagnostic.toDiagnostic(we);
+      }
+    }
+    return ret;
+  }
 
 
 	

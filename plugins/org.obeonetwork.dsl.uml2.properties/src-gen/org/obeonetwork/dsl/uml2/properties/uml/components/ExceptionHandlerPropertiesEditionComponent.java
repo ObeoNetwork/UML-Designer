@@ -104,11 +104,11 @@ public class ExceptionHandlerPropertiesEditionComponent extends SinglePartProper
 	 * @generated
 	 */
 	public ExceptionHandlerPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject exceptionHandler, String editing_mode) {
-		super(editingContext, exceptionHandler, editing_mode);
-		parts = new String[] { BASE_PART };
-		repositoryKey = UmlViewsRepository.class;
-		partKey = UmlViewsRepository.ExceptionHandler.class;
-	}
+    super(editingContext, exceptionHandler, editing_mode);
+    parts = new String[] { BASE_PART };
+    repositoryKey = UmlViewsRepository.class;
+    partKey = UmlViewsRepository.ExceptionHandler.class;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -118,105 +118,105 @@ public class ExceptionHandlerPropertiesEditionComponent extends SinglePartProper
 	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			
-			final ExceptionHandler exceptionHandler = (ExceptionHandler)elt;
-			final ExceptionHandlerPropertiesEditionPart basePart = (ExceptionHandlerPropertiesEditionPart)editingPart;
-			// init values
-			if (isAccessible(UmlViewsRepository.ExceptionHandler.Properties.handlerBody)) {
-				// init part
-				handlerBodySettings = new EObjectFlatComboSettings(exceptionHandler, UMLPackage.eINSTANCE.getExceptionHandler_HandlerBody());
-				basePart.initHandlerBody(handlerBodySettings);
-				// set the button mode
-				basePart.setHandlerBodyButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			if (isAccessible(UmlViewsRepository.ExceptionHandler.Properties.exceptionInput)) {
-				// init part
-				exceptionInputSettings = new EObjectFlatComboSettings(exceptionHandler, UMLPackage.eINSTANCE.getExceptionHandler_ExceptionInput());
-				basePart.initExceptionInput(exceptionInputSettings);
-				// set the button mode
-				basePart.setExceptionInputButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			if (isAccessible(UmlViewsRepository.ExceptionHandler.Properties.exceptionType)) {
-				exceptionTypeSettings = new ReferencesTableSettings(exceptionHandler, UMLPackage.eINSTANCE.getExceptionHandler_ExceptionType());
-				basePart.initExceptionType(exceptionTypeSettings);
-			}
-			if (isAccessible(UmlViewsRepository.ExceptionHandler.Properties.protectedNode)) {
-				// init part
-				protectedNodeSettings = new EObjectFlatComboSettings(exceptionHandler, UMLPackage.eINSTANCE.getExceptionHandler_ProtectedNode());
-				basePart.initProtectedNode(protectedNodeSettings);
-				// set the button mode
-				basePart.setProtectedNodeButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			// init filters
-			if (isAccessible(UmlViewsRepository.ExceptionHandler.Properties.handlerBody)) {
-				basePart.addFilterToHandlerBody(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof ExecutableNode);
-					}
-					
-				});
-			}
-			if (isAccessible(UmlViewsRepository.ExceptionHandler.Properties.exceptionInput)) {
-				basePart.addFilterToExceptionInput(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof ObjectNode);
-					}
-					
-				});
-			}
-			if (isAccessible(UmlViewsRepository.ExceptionHandler.Properties.exceptionType)) {
-				basePart.addFilterToExceptionType(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (!basePart.isContainedInExceptionTypeTable((EObject)element));
-						return element instanceof Resource;
-					}
-				
-				});
-				basePart.addFilterToExceptionType(new EObjectFilter(UMLPackage.Literals.CLASSIFIER));
-			}
-			if (isAccessible(UmlViewsRepository.ExceptionHandler.Properties.protectedNode)) {
-				basePart.addFilterToProtectedNode(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof ExecutableNode);
-					}
-					
-				});
-			}
-			// init values for referenced views
-			
-			// init filters for referenced views
-			
-		}
-		setInitializing(false);
-	}
+    setInitializing(true);
+    if (editingPart != null && key == partKey) {
+      editingPart.setContext(elt, allResource);
+      
+      final ExceptionHandler exceptionHandler = (ExceptionHandler)elt;
+      final ExceptionHandlerPropertiesEditionPart basePart = (ExceptionHandlerPropertiesEditionPart)editingPart;
+      // init values
+      if (isAccessible(UmlViewsRepository.ExceptionHandler.Properties.handlerBody)) {
+        // init part
+        handlerBodySettings = new EObjectFlatComboSettings(exceptionHandler, UMLPackage.eINSTANCE.getExceptionHandler_HandlerBody());
+        basePart.initHandlerBody(handlerBodySettings);
+        // set the button mode
+        basePart.setHandlerBodyButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      if (isAccessible(UmlViewsRepository.ExceptionHandler.Properties.exceptionInput)) {
+        // init part
+        exceptionInputSettings = new EObjectFlatComboSettings(exceptionHandler, UMLPackage.eINSTANCE.getExceptionHandler_ExceptionInput());
+        basePart.initExceptionInput(exceptionInputSettings);
+        // set the button mode
+        basePart.setExceptionInputButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      if (isAccessible(UmlViewsRepository.ExceptionHandler.Properties.exceptionType)) {
+        exceptionTypeSettings = new ReferencesTableSettings(exceptionHandler, UMLPackage.eINSTANCE.getExceptionHandler_ExceptionType());
+        basePart.initExceptionType(exceptionTypeSettings);
+      }
+      if (isAccessible(UmlViewsRepository.ExceptionHandler.Properties.protectedNode)) {
+        // init part
+        protectedNodeSettings = new EObjectFlatComboSettings(exceptionHandler, UMLPackage.eINSTANCE.getExceptionHandler_ProtectedNode());
+        basePart.initProtectedNode(protectedNodeSettings);
+        // set the button mode
+        basePart.setProtectedNodeButtonMode(ButtonsModeEnum.BROWSE);
+      }
+      // init filters
+      if (isAccessible(UmlViewsRepository.ExceptionHandler.Properties.handlerBody)) {
+        basePart.addFilterToHandlerBody(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof ExecutableNode);
+          }
+          
+        });
+      }
+      if (isAccessible(UmlViewsRepository.ExceptionHandler.Properties.exceptionInput)) {
+        basePart.addFilterToExceptionInput(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof ObjectNode);
+          }
+          
+        });
+      }
+      if (isAccessible(UmlViewsRepository.ExceptionHandler.Properties.exceptionType)) {
+        basePart.addFilterToExceptionType(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            if (element instanceof EObject)
+              return (!basePart.isContainedInExceptionTypeTable((EObject)element));
+            return element instanceof Resource;
+          }
+        
+        });
+        basePart.addFilterToExceptionType(new EObjectFilter(UMLPackage.Literals.CLASSIFIER));
+      }
+      if (isAccessible(UmlViewsRepository.ExceptionHandler.Properties.protectedNode)) {
+        basePart.addFilterToProtectedNode(new ViewerFilter() {
+        
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof ExecutableNode);
+          }
+          
+        });
+      }
+      // init values for referenced views
+      
+      // init filters for referenced views
+      
+    }
+    setInitializing(false);
+  }
 
 
 
@@ -250,61 +250,61 @@ public class ExceptionHandlerPropertiesEditionComponent extends SinglePartProper
 	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		ExceptionHandler exceptionHandler = (ExceptionHandler)semanticObject;
-		if (UmlViewsRepository.ExceptionHandler.Properties.handlerBody == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				handlerBodySettings.setToReference((ExecutableNode)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, handlerBodySettings, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy instanceof CreateEditingPolicy) {
-						policy.execute();
-					}
-				}
-			}
-		}
-		if (UmlViewsRepository.ExceptionHandler.Properties.exceptionInput == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				exceptionInputSettings.setToReference((ObjectNode)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, exceptionInputSettings, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy instanceof CreateEditingPolicy) {
-						policy.execute();
-					}
-				}
-			}
-		}
-		if (UmlViewsRepository.ExceptionHandler.Properties.exceptionType == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD) {
-				if (event.getNewValue() instanceof Classifier) {
-					exceptionTypeSettings.addToReference((EObject) event.getNewValue());
-				}
-			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				exceptionTypeSettings.removeFromReference((EObject) event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-				exceptionTypeSettings.move(event.getNewIndex(), (Classifier) event.getNewValue());
-			}
-		}
-		if (UmlViewsRepository.ExceptionHandler.Properties.protectedNode == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				protectedNodeSettings.setToReference((ExecutableNode)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, protectedNodeSettings, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy instanceof CreateEditingPolicy) {
-						policy.execute();
-					}
-				}
-			}
-		}
-	}
+    ExceptionHandler exceptionHandler = (ExceptionHandler)semanticObject;
+    if (UmlViewsRepository.ExceptionHandler.Properties.handlerBody == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        handlerBodySettings.setToReference((ExecutableNode)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, handlerBodySettings, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy instanceof CreateEditingPolicy) {
+            policy.execute();
+          }
+        }
+      }
+    }
+    if (UmlViewsRepository.ExceptionHandler.Properties.exceptionInput == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        exceptionInputSettings.setToReference((ObjectNode)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, exceptionInputSettings, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy instanceof CreateEditingPolicy) {
+            policy.execute();
+          }
+        }
+      }
+    }
+    if (UmlViewsRepository.ExceptionHandler.Properties.exceptionType == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.ADD) {
+        if (event.getNewValue() instanceof Classifier) {
+          exceptionTypeSettings.addToReference((EObject) event.getNewValue());
+        }
+      } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+        exceptionTypeSettings.removeFromReference((EObject) event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+        exceptionTypeSettings.move(event.getNewIndex(), (Classifier) event.getNewValue());
+      }
+    }
+    if (UmlViewsRepository.ExceptionHandler.Properties.protectedNode == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.SET) {
+        protectedNodeSettings.setToReference((ExecutableNode)event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.ADD) {
+        EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, protectedNodeSettings, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy instanceof CreateEditingPolicy) {
+            policy.execute();
+          }
+        }
+      }
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -349,8 +349,8 @@ public class ExceptionHandlerPropertiesEditionComponent extends SinglePartProper
 	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == UmlViewsRepository.ExceptionHandler.Properties.handlerBody || key == UmlViewsRepository.ExceptionHandler.Properties.exceptionInput || key == UmlViewsRepository.ExceptionHandler.Properties.exceptionType || key == UmlViewsRepository.ExceptionHandler.Properties.protectedNode;
-	}
+    return key == UmlViewsRepository.ExceptionHandler.Properties.handlerBody || key == UmlViewsRepository.ExceptionHandler.Properties.exceptionInput || key == UmlViewsRepository.ExceptionHandler.Properties.exceptionType || key == UmlViewsRepository.ExceptionHandler.Properties.protectedNode;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -359,17 +359,17 @@ public class ExceptionHandlerPropertiesEditionComponent extends SinglePartProper
 	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
-		Diagnostic ret = Diagnostic.OK_INSTANCE;
-		if (event.getNewValue() != null) {
-			try {
-			} catch (IllegalArgumentException iae) {
-				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
-				ret = BasicDiagnostic.toDiagnostic(we);
-			}
-		}
-		return ret;
-	}
+    Diagnostic ret = Diagnostic.OK_INSTANCE;
+    if (event.getNewValue() != null) {
+      try {
+      } catch (IllegalArgumentException iae) {
+        ret = BasicDiagnostic.toDiagnostic(iae);
+      } catch (WrappedException we) {
+        ret = BasicDiagnostic.toDiagnostic(we);
+      }
+    }
+    return ret;
+  }
 
 
 	

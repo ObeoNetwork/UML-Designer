@@ -110,8 +110,8 @@ public class GeneralizationPropertiesEditionPartForm extends SectionPropertiesEd
 	 * @generated
 	 */
 	public GeneralizationPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+    super(editionComponent);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -121,15 +121,15 @@ public class GeneralizationPropertiesEditionPartForm extends SectionPropertiesEd
 	 * @generated
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
-		view = form.getBody();
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
-		view.setLayout(layout);
-		createControls(widgetFactory, view);
-		return scrolledForm;
-	}
+    ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
+    Form form = scrolledForm.getForm();
+    view = form.getBody();
+    GridLayout layout = new GridLayout();
+    layout.numColumns = 3;
+    view.setLayout(layout);
+    createControls(widgetFactory, view);
+    return scrolledForm;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -139,83 +139,83 @@ public class GeneralizationPropertiesEditionPartForm extends SectionPropertiesEd
 	 * @generated
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		CompositionSequence generalizationStep = new BindingCompositionSequence(propertiesEditionComponent);
-		CompositionStep propertiesStep = generalizationStep.addStep(UmlViewsRepository.Generalization.Properties.class);
-		propertiesStep.addStep(UmlViewsRepository.Generalization.Properties.isSubstitutable);
-		propertiesStep.addStep(UmlViewsRepository.Generalization.Properties.general);
-		propertiesStep.addStep(UmlViewsRepository.Generalization.Properties.generalizationSet);
-		propertiesStep.addStep(UmlViewsRepository.Generalization.Properties.specific);
-		
-		
-		composer = new PartComposer(generalizationStep) {
+    CompositionSequence generalizationStep = new BindingCompositionSequence(propertiesEditionComponent);
+    CompositionStep propertiesStep = generalizationStep.addStep(UmlViewsRepository.Generalization.Properties.class);
+    propertiesStep.addStep(UmlViewsRepository.Generalization.Properties.isSubstitutable);
+    propertiesStep.addStep(UmlViewsRepository.Generalization.Properties.general);
+    propertiesStep.addStep(UmlViewsRepository.Generalization.Properties.generalizationSet);
+    propertiesStep.addStep(UmlViewsRepository.Generalization.Properties.specific);
+    
+    
+    composer = new PartComposer(generalizationStep) {
 
-			@Override
-			public Composite addToPart(Composite parent, Object key) {
-				if (key == UmlViewsRepository.Generalization.Properties.class) {
-					return createPropertiesGroup(widgetFactory, parent);
-				}
-				if (key == UmlViewsRepository.Generalization.Properties.isSubstitutable) {
-					return createIsSubstitutableCheckbox(widgetFactory, parent);
-				}
-				if (key == UmlViewsRepository.Generalization.Properties.general) {
-					return createGeneralFlatComboViewer(parent, widgetFactory);
-				}
-				if (key == UmlViewsRepository.Generalization.Properties.generalizationSet) {
-					return createGeneralizationSetReferencesTable(widgetFactory, parent);
-				}
-				if (key == UmlViewsRepository.Generalization.Properties.specific) {
-					return createSpecificFlatComboViewer(parent, widgetFactory);
-				}
-				return parent;
-			}
-		};
-		composer.compose(view);
-	}
+      @Override
+      public Composite addToPart(Composite parent, Object key) {
+        if (key == UmlViewsRepository.Generalization.Properties.class) {
+          return createPropertiesGroup(widgetFactory, parent);
+        }
+        if (key == UmlViewsRepository.Generalization.Properties.isSubstitutable) {
+          return createIsSubstitutableCheckbox(widgetFactory, parent);
+        }
+        if (key == UmlViewsRepository.Generalization.Properties.general) {
+          return createGeneralFlatComboViewer(parent, widgetFactory);
+        }
+        if (key == UmlViewsRepository.Generalization.Properties.generalizationSet) {
+          return createGeneralizationSetReferencesTable(widgetFactory, parent);
+        }
+        if (key == UmlViewsRepository.Generalization.Properties.specific) {
+          return createSpecificFlatComboViewer(parent, widgetFactory);
+        }
+        return parent;
+      }
+    };
+    composer.compose(view);
+  }
 	/**
 	 * @generated
 	 */
 	protected Composite createPropertiesGroup(FormToolkit widgetFactory, final Composite parent) {
-		Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
-		propertiesSection.setText(UmlMessages.GeneralizationPropertiesEditionPart_PropertiesGroupLabel);
-		GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
-		propertiesSectionData.horizontalSpan = 3;
-		propertiesSection.setLayoutData(propertiesSectionData);
-		Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
-		GridLayout propertiesGroupLayout = new GridLayout();
-		propertiesGroupLayout.numColumns = 3;
-		propertiesGroup.setLayout(propertiesGroupLayout);
-		propertiesSection.setClient(propertiesGroup);
-		return propertiesGroup;
-	}
+    Section propertiesSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
+    propertiesSection.setText(UmlMessages.GeneralizationPropertiesEditionPart_PropertiesGroupLabel);
+    GridData propertiesSectionData = new GridData(GridData.FILL_HORIZONTAL);
+    propertiesSectionData.horizontalSpan = 3;
+    propertiesSection.setLayoutData(propertiesSectionData);
+    Composite propertiesGroup = widgetFactory.createComposite(propertiesSection);
+    GridLayout propertiesGroupLayout = new GridLayout();
+    propertiesGroupLayout.numColumns = 3;
+    propertiesGroup.setLayout(propertiesGroupLayout);
+    propertiesSection.setClient(propertiesGroup);
+    return propertiesGroup;
+  }
 
 	/**
 	 * @generated
 	 */
 	
 	protected Composite createIsSubstitutableCheckbox(FormToolkit widgetFactory, Composite parent) {
-		isSubstitutable = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.Generalization.Properties.isSubstitutable, UmlMessages.GeneralizationPropertiesEditionPart_IsSubstitutableLabel), SWT.CHECK);
-		isSubstitutable.addSelectionListener(new SelectionAdapter() {
+    isSubstitutable = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.Generalization.Properties.isSubstitutable, UmlMessages.GeneralizationPropertiesEditionPart_IsSubstitutableLabel), SWT.CHECK);
+    isSubstitutable.addSelectionListener(new SelectionAdapter() {
 
-			/**
-			 * {@inheritDoc}
-			 *
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * 	@generated
-			 */
-			public void widgetSelected(SelectionEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralizationPropertiesEditionPartForm.this, UmlViewsRepository.Generalization.Properties.isSubstitutable, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(isSubstitutable.getSelection())));
-			}
+      /**
+       * {@inheritDoc}
+       *
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       * 	@generated
+       */
+      public void widgetSelected(SelectionEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralizationPropertiesEditionPartForm.this, UmlViewsRepository.Generalization.Properties.isSubstitutable, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(isSubstitutable.getSelection())));
+      }
 
-		});
-		GridData isSubstitutableData = new GridData(GridData.FILL_HORIZONTAL);
-		isSubstitutableData.horizontalSpan = 2;
-		isSubstitutable.setLayoutData(isSubstitutableData);
-		EditingUtils.setID(isSubstitutable, UmlViewsRepository.Generalization.Properties.isSubstitutable);
-		EditingUtils.setEEFtype(isSubstitutable, "eef::Checkbox"); //$NON-NLS-1$
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.Generalization.Properties.isSubstitutable, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    GridData isSubstitutableData = new GridData(GridData.FILL_HORIZONTAL);
+    isSubstitutableData.horizontalSpan = 2;
+    isSubstitutable.setLayoutData(isSubstitutableData);
+    EditingUtils.setID(isSubstitutable, UmlViewsRepository.Generalization.Properties.isSubstitutable);
+    EditingUtils.setEEFtype(isSubstitutable, "eef::Checkbox"); //$NON-NLS-1$
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.Generalization.Properties.isSubstitutable, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @param parent the parent composite
@@ -223,110 +223,110 @@ public class GeneralizationPropertiesEditionPartForm extends SectionPropertiesEd
 	 * @generated
 	 */
 	protected Composite createGeneralFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		createDescription(parent, UmlViewsRepository.Generalization.Properties.general, UmlMessages.GeneralizationPropertiesEditionPart_GeneralLabel);
-		general = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.Generalization.Properties.general, UmlViewsRepository.FORM_KIND));
-		widgetFactory.adapt(general);
-		general.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		GridData generalData = new GridData(GridData.FILL_HORIZONTAL);
-		general.setLayoutData(generalData);
-		general.addSelectionChangedListener(new ISelectionChangedListener() {
+    createDescription(parent, UmlViewsRepository.Generalization.Properties.general, UmlMessages.GeneralizationPropertiesEditionPart_GeneralLabel);
+    general = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.Generalization.Properties.general, UmlViewsRepository.FORM_KIND));
+    widgetFactory.adapt(general);
+    general.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    GridData generalData = new GridData(GridData.FILL_HORIZONTAL);
+    general.setLayoutData(generalData);
+    general.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralizationPropertiesEditionPartForm.this, UmlViewsRepository.Generalization.Properties.general, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getGeneral()));
-			}
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralizationPropertiesEditionPartForm.this, UmlViewsRepository.Generalization.Properties.general, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getGeneral()));
+      }
 
-		});
-		general.setID(UmlViewsRepository.Generalization.Properties.general);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.Generalization.Properties.general, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    general.setID(UmlViewsRepository.Generalization.Properties.general);
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.Generalization.Properties.general, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @generated
 	 */
 	protected Composite createGeneralizationSetReferencesTable(FormToolkit widgetFactory, Composite parent) {
-		this.generalizationSet = new ReferencesTable(getDescription(UmlViewsRepository.Generalization.Properties.generalizationSet, UmlMessages.GeneralizationPropertiesEditionPart_GeneralizationSetLabel), new ReferencesTableListener	() {
-			public void handleAdd() { addGeneralizationSet(); }
-			public void handleEdit(EObject element) { editGeneralizationSet(element); }
-			public void handleMove(EObject element, int oldIndex, int newIndex) { moveGeneralizationSet(element, oldIndex, newIndex); }
-			public void handleRemove(EObject element) { removeFromGeneralizationSet(element); }
-			public void navigateTo(EObject element) { }
-		});
-		this.generalizationSet.setHelpText(propertiesEditionComponent.getHelpContent(UmlViewsRepository.Generalization.Properties.generalizationSet, UmlViewsRepository.FORM_KIND));
-		this.generalizationSet.createControls(parent, widgetFactory);
-		this.generalizationSet.addSelectionListener(new SelectionAdapter() {
-			
-			public void widgetSelected(SelectionEvent e) {
-				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralizationPropertiesEditionPartForm.this, UmlViewsRepository.Generalization.Properties.generalizationSet, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
-				}
-			}
-			
-		});
-		GridData generalizationSetData = new GridData(GridData.FILL_HORIZONTAL);
-		generalizationSetData.horizontalSpan = 3;
-		this.generalizationSet.setLayoutData(generalizationSetData);
-		this.generalizationSet.disableMove();
-		generalizationSet.setID(UmlViewsRepository.Generalization.Properties.generalizationSet);
-		generalizationSet.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
-		return parent;
-	}
+    this.generalizationSet = new ReferencesTable(getDescription(UmlViewsRepository.Generalization.Properties.generalizationSet, UmlMessages.GeneralizationPropertiesEditionPart_GeneralizationSetLabel), new ReferencesTableListener	() {
+      public void handleAdd() { addGeneralizationSet(); }
+      public void handleEdit(EObject element) { editGeneralizationSet(element); }
+      public void handleMove(EObject element, int oldIndex, int newIndex) { moveGeneralizationSet(element, oldIndex, newIndex); }
+      public void handleRemove(EObject element) { removeFromGeneralizationSet(element); }
+      public void navigateTo(EObject element) { }
+    });
+    this.generalizationSet.setHelpText(propertiesEditionComponent.getHelpContent(UmlViewsRepository.Generalization.Properties.generalizationSet, UmlViewsRepository.FORM_KIND));
+    this.generalizationSet.createControls(parent, widgetFactory);
+    this.generalizationSet.addSelectionListener(new SelectionAdapter() {
+      
+      public void widgetSelected(SelectionEvent e) {
+        if (e.item != null && e.item.getData() instanceof EObject) {
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralizationPropertiesEditionPartForm.this, UmlViewsRepository.Generalization.Properties.generalizationSet, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+        }
+      }
+      
+    });
+    GridData generalizationSetData = new GridData(GridData.FILL_HORIZONTAL);
+    generalizationSetData.horizontalSpan = 3;
+    this.generalizationSet.setLayoutData(generalizationSetData);
+    this.generalizationSet.disableMove();
+    generalizationSet.setID(UmlViewsRepository.Generalization.Properties.generalizationSet);
+    generalizationSet.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
+    return parent;
+  }
 
 	/**
 	 * @generated
 	 */
 	protected void addGeneralizationSet() {
-		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(generalizationSet.getInput(), generalizationSetFilters, generalizationSetBusinessFilters,
-		"generalizationSet", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
-			@Override
-			public void process(IStructuredSelection selection) {
-				for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
-					EObject elem = (EObject) iter.next();
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralizationPropertiesEditionPartForm.this, UmlViewsRepository.Generalization.Properties.generalizationSet,
-						PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
-				}
-				generalizationSet.refresh();
-			}
-		};
-		dialog.open();
-	}
+    TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(generalizationSet.getInput(), generalizationSetFilters, generalizationSetBusinessFilters,
+    "generalizationSet", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
+      @Override
+      public void process(IStructuredSelection selection) {
+        for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
+          EObject elem = (EObject) iter.next();
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralizationPropertiesEditionPartForm.this, UmlViewsRepository.Generalization.Properties.generalizationSet,
+            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+        }
+        generalizationSet.refresh();
+      }
+    };
+    dialog.open();
+  }
 
 	/**
 	 * @generated
 	 */
 	protected void moveGeneralizationSet(EObject element, int oldIndex, int newIndex) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralizationPropertiesEditionPartForm.this, UmlViewsRepository.Generalization.Properties.generalizationSet, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-		generalizationSet.refresh();
-	}
+    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralizationPropertiesEditionPartForm.this, UmlViewsRepository.Generalization.Properties.generalizationSet, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+    generalizationSet.refresh();
+  }
 
 	/**
 	 * @generated
 	 */
 	protected void removeFromGeneralizationSet(EObject element) {
-		propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralizationPropertiesEditionPartForm.this, UmlViewsRepository.Generalization.Properties.generalizationSet, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-		generalizationSet.refresh();
-	}
+    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralizationPropertiesEditionPartForm.this, UmlViewsRepository.Generalization.Properties.generalizationSet, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+    generalizationSet.refresh();
+  }
 
 	/**
 	 * @generated
 	 */
 	protected void editGeneralizationSet(EObject element) {
-		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
-		PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
-		if (provider != null) {
-			PropertiesEditingPolicy policy = provider.getPolicy(context);
-			if (policy != null) {
-				policy.execute();
-				generalizationSet.refresh();
-			}
-		}
-	}
+    EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
+    PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
+    if (provider != null) {
+      PropertiesEditingPolicy policy = provider.getPolicy(context);
+      if (policy != null) {
+        policy.execute();
+        generalizationSet.refresh();
+      }
+    }
+  }
 
 	/**
 	 * @param parent the parent composite
@@ -334,29 +334,29 @@ public class GeneralizationPropertiesEditionPartForm extends SectionPropertiesEd
 	 * @generated
 	 */
 	protected Composite createSpecificFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-		createDescription(parent, UmlViewsRepository.Generalization.Properties.specific, UmlMessages.GeneralizationPropertiesEditionPart_SpecificLabel);
-		specific = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.Generalization.Properties.specific, UmlViewsRepository.FORM_KIND));
-		widgetFactory.adapt(specific);
-		specific.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-		GridData specificData = new GridData(GridData.FILL_HORIZONTAL);
-		specific.setLayoutData(specificData);
-		specific.addSelectionChangedListener(new ISelectionChangedListener() {
+    createDescription(parent, UmlViewsRepository.Generalization.Properties.specific, UmlMessages.GeneralizationPropertiesEditionPart_SpecificLabel);
+    specific = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.Generalization.Properties.specific, UmlViewsRepository.FORM_KIND));
+    widgetFactory.adapt(specific);
+    specific.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    GridData specificData = new GridData(GridData.FILL_HORIZONTAL);
+    specific.setLayoutData(specificData);
+    specific.addSelectionChangedListener(new ISelectionChangedListener() {
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralizationPropertiesEditionPartForm.this, UmlViewsRepository.Generalization.Properties.specific, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSpecific()));
-			}
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralizationPropertiesEditionPartForm.this, UmlViewsRepository.Generalization.Properties.specific, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getSpecific()));
+      }
 
-		});
-		specific.setID(UmlViewsRepository.Generalization.Properties.specific);
-		FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.Generalization.Properties.specific, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    });
+    specific.setID(UmlViewsRepository.Generalization.Properties.specific);
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.Generalization.Properties.specific, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    return parent;
+  }
 
 
 	/**
@@ -366,7 +366,7 @@ public class GeneralizationPropertiesEditionPartForm extends SectionPropertiesEd
 	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-	}
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -375,8 +375,8 @@ public class GeneralizationPropertiesEditionPartForm extends SectionPropertiesEd
 	 * @generated
 	 */
 	public Boolean getIsSubstitutable() {
-		return Boolean.valueOf(isSubstitutable.getSelection());
-	}
+    return Boolean.valueOf(isSubstitutable.getSelection());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -385,20 +385,20 @@ public class GeneralizationPropertiesEditionPartForm extends SectionPropertiesEd
 	 * @generated
 	 */
 	public void setIsSubstitutable(Boolean newValue) {
-		if (newValue != null) {
-			isSubstitutable.setSelection(newValue.booleanValue());
-		} else {
-			isSubstitutable.setSelection(false);
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.Generalization.Properties.isSubstitutable);
-		if (readOnly && isSubstitutable.isEnabled()) {
-			isSubstitutable.setEnabled(false);
-			isSubstitutable.setToolTipText(UmlMessages.Generalization_ReadOnly);
-		} else if (!readOnly && !isSubstitutable.isEnabled()) {
-			isSubstitutable.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      isSubstitutable.setSelection(newValue.booleanValue());
+    } else {
+      isSubstitutable.setSelection(false);
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.Generalization.Properties.isSubstitutable);
+    if (readOnly && isSubstitutable.isEnabled()) {
+      isSubstitutable.setEnabled(false);
+      isSubstitutable.setToolTipText(UmlMessages.Generalization_ReadOnly);
+    } else if (!readOnly && !isSubstitutable.isEnabled()) {
+      isSubstitutable.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -407,13 +407,13 @@ public class GeneralizationPropertiesEditionPartForm extends SectionPropertiesEd
 	 * @generated
 	 */
 	public EObject getGeneral() {
-		if (general.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) general.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (general.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) general.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -442,20 +442,20 @@ public class GeneralizationPropertiesEditionPartForm extends SectionPropertiesEd
 	 * @generated
 	 */
 	public void setGeneral(EObject newValue) {
-		if (newValue != null) {
-			general.setSelection(new StructuredSelection(newValue));
-		} else {
-			general.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.Generalization.Properties.general);
-		if (readOnly && general.isEnabled()) {
-			general.setEnabled(false);
-			general.setToolTipText(UmlMessages.Generalization_ReadOnly);
-		} else if (!readOnly && !general.isEnabled()) {
-			general.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      general.setSelection(new StructuredSelection(newValue));
+    } else {
+      general.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.Generalization.Properties.general);
+    if (readOnly && general.isEnabled()) {
+      general.setEnabled(false);
+      general.setToolTipText(UmlMessages.Generalization_ReadOnly);
+    } else if (!readOnly && !general.isEnabled()) {
+      general.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -473,8 +473,8 @@ public class GeneralizationPropertiesEditionPartForm extends SectionPropertiesEd
 	 * @generated
 	 */
 	public void addFilterToGeneral(ViewerFilter filter) {
-		general.addFilter(filter);
-	}
+    general.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -483,8 +483,8 @@ public class GeneralizationPropertiesEditionPartForm extends SectionPropertiesEd
 	 * @generated
 	 */
 	public void addBusinessFilterToGeneral(ViewerFilter filter) {
-		general.addBusinessRuleFilter(filter);
-	}
+    general.addBusinessRuleFilter(filter);
+  }
 
 
 
@@ -516,7 +516,7 @@ public class GeneralizationPropertiesEditionPartForm extends SectionPropertiesEd
 	 * @generated
 	 */
 	public void updateGeneralizationSet() {
-	generalizationSet.refresh();
+  generalizationSet.refresh();
 }
 
 	/**
@@ -526,8 +526,8 @@ public class GeneralizationPropertiesEditionPartForm extends SectionPropertiesEd
 	 * @generated
 	 */
 	public void addFilterToGeneralizationSet(ViewerFilter filter) {
-		generalizationSetFilters.add(filter);
-	}
+    generalizationSetFilters.add(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -536,8 +536,8 @@ public class GeneralizationPropertiesEditionPartForm extends SectionPropertiesEd
 	 * @generated
 	 */
 	public void addBusinessFilterToGeneralizationSet(ViewerFilter filter) {
-		generalizationSetBusinessFilters.add(filter);
-	}
+    generalizationSetBusinessFilters.add(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -546,8 +546,8 @@ public class GeneralizationPropertiesEditionPartForm extends SectionPropertiesEd
 	 * @generated
 	 */
 	public boolean isContainedInGeneralizationSetTable(EObject element) {
-		return ((ReferencesTableSettings)generalizationSet.getInput()).contains(element);
-	}
+    return ((ReferencesTableSettings)generalizationSet.getInput()).contains(element);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -556,13 +556,13 @@ public class GeneralizationPropertiesEditionPartForm extends SectionPropertiesEd
 	 * @generated
 	 */
 	public EObject getSpecific() {
-		if (specific.getSelection() instanceof StructuredSelection) {
-			Object firstElement = ((StructuredSelection) specific.getSelection()).getFirstElement();
-			if (firstElement instanceof EObject)
-				return (EObject) firstElement;
-		}
-		return null;
-	}
+    if (specific.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) specific.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -591,20 +591,20 @@ public class GeneralizationPropertiesEditionPartForm extends SectionPropertiesEd
 	 * @generated
 	 */
 	public void setSpecific(EObject newValue) {
-		if (newValue != null) {
-			specific.setSelection(new StructuredSelection(newValue));
-		} else {
-			specific.setSelection(new StructuredSelection()); //$NON-NLS-1$
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.Generalization.Properties.specific);
-		if (readOnly && specific.isEnabled()) {
-			specific.setEnabled(false);
-			specific.setToolTipText(UmlMessages.Generalization_ReadOnly);
-		} else if (!readOnly && !specific.isEnabled()) {
-			specific.setEnabled(true);
-		}	
-		
-	}
+    if (newValue != null) {
+      specific.setSelection(new StructuredSelection(newValue));
+    } else {
+      specific.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean readOnly = isReadOnly(UmlViewsRepository.Generalization.Properties.specific);
+    if (readOnly && specific.isEnabled()) {
+      specific.setEnabled(false);
+      specific.setToolTipText(UmlMessages.Generalization_ReadOnly);
+    } else if (!readOnly && !specific.isEnabled()) {
+      specific.setEnabled(true);
+    }	
+    
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -622,8 +622,8 @@ public class GeneralizationPropertiesEditionPartForm extends SectionPropertiesEd
 	 * @generated
 	 */
 	public void addFilterToSpecific(ViewerFilter filter) {
-		specific.addFilter(filter);
-	}
+    specific.addFilter(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -632,8 +632,8 @@ public class GeneralizationPropertiesEditionPartForm extends SectionPropertiesEd
 	 * @generated
 	 */
 	public void addBusinessFilterToSpecific(ViewerFilter filter) {
-		specific.addBusinessRuleFilter(filter);
-	}
+    specific.addBusinessRuleFilter(filter);
+  }
 
 
 
@@ -647,8 +647,8 @@ public class GeneralizationPropertiesEditionPartForm extends SectionPropertiesEd
 	 * @generated
 	 */
 	public String getTitle() {
-		return UmlMessages.Generalization_Part_Title;
-	}
+    return UmlMessages.Generalization_Part_Title;
+  }
 
 
 
