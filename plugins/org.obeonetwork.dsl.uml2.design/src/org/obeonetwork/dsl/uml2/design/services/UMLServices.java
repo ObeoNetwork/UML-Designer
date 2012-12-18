@@ -62,6 +62,7 @@ import org.eclipse.uml2.uml.VisibilityKind;
 import org.eclipse.uml2.uml.resource.UMLResource;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
 import org.obeonetwork.dsl.uml2.design.services.internal.ReconnectSwitch;
+import org.obeonetwork.dsl.uml2.design.services.internal.RelatedElementsSwitch;
 import org.obeonetwork.dsl.uml2.design.services.internal.SemanticElementsSwitch;
 
 import com.google.common.base.Predicate;
@@ -442,6 +443,10 @@ public class UMLServices {
 			return association.getMemberEnds().get(1);
 		}
 		return null;
+	}
+
+	public Collection<EObject> getRelated(EObject cur) {
+		return new RelatedElementsSwitch().getRelatedElements(cur);
 	}
 
 	/**
