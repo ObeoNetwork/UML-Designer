@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: UML Designer
 Bundle-SymbolicName: org.obeonetwork.dsl.uml2.design;singleton:=true
-Bundle-Version: 1.5.1.qualifier
+Bundle-Version: 1.5.2.qualifier
 Bundle-Activator: org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin
 Require-Bundle: fr.obeo.acceleo.gen,
  org.eclipse.ui,
