@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="ASCII"?>
+<specification:Specification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:specification="http://www.eclipse.org/intent/specification" name="UML Designer Specification">
+  <features name="Feature_ClassDiagram">
+    <stories name="Story_CreateClassDiagram" as="_fbFtmlWEEeK-j4kYUfEdxA" soThat="//@features.0/@benefits.0" iWant="//@features.0/@capabilities.0">
+      <notes xsi:type="specification:TestNote" description="The user will have to create/add elements by hand to view elements on a new diagram."/>
+      <notes xsi:type="specification:ImplementationNote" description="The class diagram elements are unsynchronized."/>
+      <scenarios name="Scenario_CreateAClassDiagramFromAPackage" given="_Nw-qEFWJEeK-j4kYUfEdxA //@automationLayer/@context.1" when="//@automationLayer/@actions.0" then="//@automationLayer/@behaviours.0"/>
+    </stories>
+    <stories name="Story_DeleteClassDiagram" as="_fbFtmlWEEeK-j4kYUfEdxA" soThat="//@features.0/@benefits.1" iWant="//@features.0/@capabilities.1">
+      <scenarios name="Scenario_DeleteAClassDiagramFromAPackage" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA" when="//@automationLayer/@actions.1" then="//@automationLayer/@behaviours.1"/>
+    </stories>
+    <stories name="Story_DragAndDropASemanticElement" as="_fbFtmlWEEeK-j4kYUfEdxA" soThat="_fbFtQVWEEeK-j4kYUfEdxA" iWant="//@features.0/@capabilities.10">
+      <scenarios name="Scenario_DragAndDropAClass" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _GpWcuVWFEeK-j4kYUfEdxA" when="//@automationLayer/@actions.27" then="_2hF35lWHEeK-j4kYUfEdxA"/>
+      <scenarios name="Scenario_DragAndDropAnEnumeration" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _2hFRdlWHEeK-j4kYUfEdxA" when="//@automationLayer/@actions.27" then="_2hF35lWHEeK-j4kYUfEdxA"/>
+      <scenarios name="Scenario_DragAndDropAnInterface" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _D7mffFT1EeK-j4kYUfEdxA" when="//@automationLayer/@actions.27" then="_2hF35lWHEeK-j4kYUfEdxA"/>
+      <scenarios name="Scenario_DragAndDropADataType" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _mYGIaVT1EeK-j4kYUfEdxA" when="//@automationLayer/@actions.27" then="_2hF35lWHEeK-j4kYUfEdxA"/>
+      <scenarios name="Scenario_DragAndDropAPrimitiveType" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _mYGIalT1EeK-j4kYUfEdxA" when="//@automationLayer/@actions.27" then="_2hF35lWHEeK-j4kYUfEdxA"/>
+      <scenarios name="Scenario_DragAndDropAPackage" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _mYGIZlT1EeK-j4kYUfEdxA" when="//@automationLayer/@actions.27" then="_2hF35lWHEeK-j4kYUfEdxA"/>
+      <scenarios name="Scenario_DragAndDropAComponent" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _mYGIa1T1EeK-j4kYUfEdxA" when="//@automationLayer/@actions.27" then="_2hF35lWHEeK-j4kYUfEdxA"/>
+      <scenarios name="Scenario_DragAndDropAClassFromAnotherPackage" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _GpWcuVWFEeK-j4kYUfEdxA" when="//@automationLayer/@actions.27" then="_2hF35lWHEeK-j4kYUfEdxA"/>
+      <scenarios name="Scenario_DragAndDropAnEnumerationFromAnotherPackage" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _2hFRdlWHEeK-j4kYUfEdxA" when="//@automationLayer/@actions.27" then="_2hF35lWHEeK-j4kYUfEdxA"/>
+      <scenarios name="Scenario_DragAndDropAnInterfaceFromAnotherPackage" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _D7mffFT1EeK-j4kYUfEdxA" when="//@automationLayer/@actions.27" then="_2hF35lWHEeK-j4kYUfEdxA"/>
+      <scenarios name="Scenario_DragAndDropADataTypeFromAnotherPackage" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _mYGIaVT1EeK-j4kYUfEdxA" when="//@automationLayer/@actions.27" then="_2hF35lWHEeK-j4kYUfEdxA"/>
+      <scenarios name="Scenario_DragAndDropAPrimitiveTypeFromAnotherPackage" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _mYGIalT1EeK-j4kYUfEdxA" when="//@automationLayer/@actions.27" then="_2hF35lWHEeK-j4kYUfEdxA"/>
+      <scenarios name="Scenario_DragAndDropAPackageFromAnotherPackage" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _mYGIZlT1EeK-j4kYUfEdxA" when="//@automationLayer/@actions.27" then="_2hF35lWHEeK-j4kYUfEdxA"/>
+      <scenarios name="Scenario_DragAndDropAComponentFromAnotherPackage" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _mYGIa1T1EeK-j4kYUfEdxA" when="//@automationLayer/@actions.27" then="_2hF35lWHEeK-j4kYUfEdxA"/>
+    </stories>
+    <stories name="Story_AddRelatedElements" as="_fbFtmlWEEeK-j4kYUfEdxA" soThat="_fbFtQVWEEeK-j4kYUfEdxA" iWant="_nDFRPFTzEeK-j4kYUfEdxA">
+      <notes xsi:type="specification:ImplementationNote" xmi:id="_sGzs2FT3EeK-j4kYUfEdxA" description="This feature is implemented extending the UMLSwitch."/>
+      <scenarios xmi:id="_nDFRGFTzEeK-j4kYUfEdxA" name="Scenario_AddRelatedElementsFromAClass" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _GpWcuVWFEeK-j4kYUfEdxA" when="_mYGIf1T1EeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA">
+        <notes xsi:type="specification:ImplementationNote" xmi:id="_sGzs2lT3EeK-j4kYUfEdxA" description="The related elements are connected through Association, Generalization, InterfaceRealization, Feature."/>
+        <notes xsi:type="specification:ImplementationNote" xmi:id="_9mQmS1T3EeK-j4kYUfEdxA" description="The related elements are connected through Association."/>
+        <notes xsi:type="specification:ImplementationNote" xmi:id="_9mQmTFT3EeK-j4kYUfEdxA" description="The related elements are connected through Association."/>
+        <notes xsi:type="specification:ImplementationNote" xmi:id="_9mQmTVT3EeK-j4kYUfEdxA" description="The related elements are connected through Association."/>
+        <notes xsi:type="specification:ImplementationNote" xmi:id="_9mQmTlT3EeK-j4kYUfEdxA" description="The related elements are connected through ImportedPackage."/>
+      </scenarios>
+      <scenarios xmi:id="_-z8BuVT0EeK-j4kYUfEdxA" name="Scenario_AddRelatedElementsFromAnEnumeration" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _2hFRdlWHEeK-j4kYUfEdxA" when="_mYGIf1T1EeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA"/>
+      <scenarios xmi:id="_-z8BulT0EeK-j4kYUfEdxA" name="Scenario_AddRelatedElementsFromAnInterface" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _D7mffFT1EeK-j4kYUfEdxA" when="_mYGIf1T1EeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA">
+        <notes xsi:type="specification:ImplementationNote" xmi:id="_sGzs3VT3EeK-j4kYUfEdxA" description="The related elements are connected through InterfaceRealization."/>
+      </scenarios>
+      <scenarios xmi:id="_kR6fG1T1EeK-j4kYUfEdxA" name="Scenario_AddRelatedElementsFromADataType" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _mYGIaVT1EeK-j4kYUfEdxA" when="_mYGIf1T1EeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA"/>
+      <scenarios xmi:id="_kR6fHFT1EeK-j4kYUfEdxA" name="Scenario_AddRelatedElementsFromAPrimitiveType" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _mYGIalT1EeK-j4kYUfEdxA" when="_mYGIf1T1EeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA"/>
+      <scenarios xmi:id="_kR6fHVT1EeK-j4kYUfEdxA" name="Scenario_AddRelatedElementsFromAPackage" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _mYGIZlT1EeK-j4kYUfEdxA" when="_mYGIf1T1EeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA"/>
+      <scenarios xmi:id="_kR6fHlT1EeK-j4kYUfEdxA" name="Scenario_AddRelatedElementsFromAComponent" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _mYGIa1T1EeK-j4kYUfEdxA" when="_mYGIf1T1EeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA"/>
+      <scenarios xmi:id="_kR6fH1T1EeK-j4kYUfEdxA" name="Scenario_AddRelatedElementsFromAClassDiagram" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA" when="_mYGIf1T1EeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA"/>
+    </stories>
+    <stories name="Story_EditASemanticElement" as="_fbFtmlWEEeK-j4kYUfEdxA" soThat="_jvF5glUKEeK-j4kYUfEdxA" iWant="_jvF5jVUKEeK-j4kYUfEdxA">
+      <notes xsi:type="specification:ImplementationNote" xmi:id="_jvF5aFUKEeK-j4kYUfEdxA" description="This feature is implemented extending the UMLSwitch."/>
+    </stories>
+    <stories name="Story_EditSemanticElementAttributes"/>
+    <stories name="Story_NavigateFromClassDiagramToOthersRepresentations" as="_fbFtmlWEEeK-j4kYUfEdxA" soThat="//@features.0/@benefits.4" iWant="//@features.0/@capabilities.13">
+      <scenarios name="Scenario_NavigateFromAGivenElementInClassDiagramToOtherRelatedClassDiagram" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA //@automationLayer/@context.15" when="//@automationLayer/@actions.29" then="//@automationLayer/@behaviours.7"/>
+      <scenarios name="Scenario_NavigateFromAGivenElementInClassDiagramToOtherRelatedComponentDiagram" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA //@automationLayer/@context.15" when="//@automationLayer/@actions.30" then="//@automationLayer/@behaviours.7"/>
+    </stories>
+    <stories name="Story_MoveElements" as="_fbFtmlWEEeK-j4kYUfEdxA" soThat="//@features.0/@benefits.5" iWant="//@features.0/@capabilities.14">
+      <notes xsi:type="specification:ImplementationNote" description="Nothing to implement, this is provided by OD."/>
+      <scenarios name="Scenario_MoveAClass" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _GpWcuVWFEeK-j4kYUfEdxA" when="//@automationLayer/@actions.31" then="//@automationLayer/@behaviours.8"/>
+      <scenarios name="Scenario_MoveAPackage" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _mYGIZlT1EeK-j4kYUfEdxA" when="//@automationLayer/@actions.31" then="//@automationLayer/@behaviours.8"/>
+      <scenarios name="Scenario_MoveSeveralElements" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA //@automationLayer/@context.16" when="//@automationLayer/@actions.31" then="//@automationLayer/@behaviours.8"/>
+    </stories>
+    <stories name="Story_CopyASemanticElement">
+      <notes xsi:type="specification:ImplementationNote" description="Nothing to implement, this is provided by OD."/>
+    </stories>
+    <stories name="Story_PasteASemanticElement">
+      <notes xsi:type="specification:ImplementationNote" description="Nothing to implement, this is provided by OD."/>
+    </stories>
+    <stories name="Story_CutASemanticElement">
+      <notes xsi:type="specification:ImplementationNote" description="Nothing to implement, this is provided by OD."/>
+    </stories>
+    <stories name="Story_ShowElement">
+      <notes xsi:type="specification:ImplementationNote" description="Nothing to implement, this is provided by OD."/>
+    </stories>
+    <stories name="Story_HideElement">
+      <notes xsi:type="specification:ImplementationNote" description="Nothing to implement, this is provided by OD."/>
+    </stories>
+    <stories name="Story_ArrangeClassDiagram" as="_fbFtmlWEEeK-j4kYUfEdxA" soThat="//@features.0/@benefits.5" iWant="//@features.0/@capabilities.15">
+      <scenarios name="Scenario_ArrangeAll" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA" when="//@automationLayer/@actions.32" then="//@automationLayer/@behaviours.9"/>
+      <scenarios name="Scenario_ArrangeSelectedElements" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA //@automationLayer/@context.17" when="//@automationLayer/@actions.32" then="//@automationLayer/@behaviours.9"/>
+    </stories>
+    <benefits name="Benefit_DescribeTheStructure"/>
+    <benefits name="Benefit_CleanTheRepresentations"/>
+    <benefits xmi:id="_fbFtQVWEEeK-j4kYUfEdxA" name="Benefit_DescribeTheSoftware"/>
+    <benefits xmi:id="_jvF5glUKEeK-j4kYUfEdxA" name="Benefit_UpdateElement"/>
+    <benefits name="Benefit_GoThroughDescribedSystem"/>
+    <benefits name="Benefit_ArrangeTheRepresentation"/>
+    <capabilities name="Capability_CreateClassDiagram"/>
+    <capabilities name="Capability_DeleteClassDiagram"/>
+    <capabilities name="Capability_AddSemanticElement"/>
+    <capabilities name="Capability_DeleteSemanticElement"/>
+    <capabilities xmi:id="_LjFS-VWCEeK-j4kYUfEdxA" name="Capability_CreateARelation"/>
+    <capabilities xmi:id="_C4gTClWDEeK-j4kYUfEdxA" name="Capability_DeleteARelation"/>
+    <capabilities xmi:id="_beSgWVWEEeK-j4kYUfEdxA" name="Capability_CreateAFeature"/>
+    <capabilities xmi:id="_beSgWlWEEeK-j4kYUfEdxA" name="Capability_DeleteAFeature"/>
+    <capabilities xmi:id="_fyOIKFTyEeK-j4kYUfEdxA" name="Capability_AddAnExistingElement"/>
+    <capabilities xmi:id="_fyOIKVTyEeK-j4kYUfEdxA" name="Capability_RemoveAnExistingElement"/>
+    <capabilities name="Capability_DragAndDropElement"/>
+    <capabilities xmi:id="_nDFRPFTzEeK-j4kYUfEdxA" name="Capability_AddRelatedElements"/>
+    <capabilities xmi:id="_jvF5jVUKEeK-j4kYUfEdxA" name="Capability_EditSemanticElement"/>
+    <capabilities name="Capability_NavigateFromDiagramToOtherRepresentations"/>
+    <capabilities name="Capability_MoveElements"/>
+    <capabilities name="Capability_LayoutClassDiagram"/>
+    <features name="Feature_ManageTypes">
+      <notes xsi:type="specification:ImplementationNote" description="A specific section 'Types' exists in the palette and must be at the second position."/>
+      <stories name="Story_CreateAType" as="_fbFtmlWEEeK-j4kYUfEdxA" soThat="_fbFtQVWEEeK-j4kYUfEdxA" iWant="//@features.0/@capabilities.2">
+        <scenarios name="Scenario_CreateAClass" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA" when="//@automationLayer/@actions.2" then="_2hF35FWHEeK-j4kYUfEdxA"/>
+        <scenarios name="Scenario_CreateAnEnumeration" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA" when="//@automationLayer/@actions.3" then="_2hF35FWHEeK-j4kYUfEdxA"/>
+        <scenarios name="Scenario_CreateAnInterface" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA" when="//@automationLayer/@actions.4" then="_2hF35FWHEeK-j4kYUfEdxA"/>
+        <scenarios name="Scenario_CreateADataType" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA" when="//@automationLayer/@actions.5" then="_2hF35FWHEeK-j4kYUfEdxA"/>
+        <scenarios name="Scenario_CreateAPrimitiveType" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA" when="//@automationLayer/@actions.6" then="_2hF35FWHEeK-j4kYUfEdxA"/>
+        <scenarios name="Scenario_CreateAPackage" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA" when="//@automationLayer/@actions.7" then="_2hF35FWHEeK-j4kYUfEdxA"/>
+        <scenarios name="Scenario_CreateAClassInAVisiblePackage" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA" when="//@automationLayer/@actions.8" then="_2hF35FWHEeK-j4kYUfEdxA"/>
+      </stories>
+      <stories name="Story_DeleteAType" as="_fbFtmlWEEeK-j4kYUfEdxA" soThat="_fbFtQVWEEeK-j4kYUfEdxA" iWant="//@features.0/@capabilities.3">
+        <notes xsi:type="specification:TestNote" description="It is possible to delete a semantic element : from the class diagram by using : Ctrl+D on keyboard, the context menu action 'Delete from model', the toolbar action 'Delete from model'; from the model explorer by using : the context menu action 'Delete'"/>
+        <scenarios name="Scenario_DeleteAClass" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _GpWcuVWFEeK-j4kYUfEdxA" when="//@automationLayer/@actions.9" then="_Nw-qTVWJEeK-j4kYUfEdxA"/>
+        <scenarios name="Scenario_DeleteAPackage" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _mYGIZlT1EeK-j4kYUfEdxA" when="//@automationLayer/@actions.9" then="_Nw-qTVWJEeK-j4kYUfEdxA"/>
+      </stories>
+    </features>
+    <features xmi:id="_LjFTEFWCEeK-j4kYUfEdxA" name="Feature_ManageRelations">
+      <notes xsi:type="specification:ImplementationNote" xmi:id="_LjFTEVWCEeK-j4kYUfEdxA" description="A specific section 'Relationships' exists in the palette."/>
+      <stories xmi:id="_LjFTElWCEeK-j4kYUfEdxA" name="Story_CreateARelation" as="_fbFtmlWEEeK-j4kYUfEdxA" soThat="_fbFtQVWEEeK-j4kYUfEdxA" iWant="_LjFS-VWCEeK-j4kYUfEdxA">
+        <scenarios xmi:id="_LjFTE1WCEeK-j4kYUfEdxA" name="Scenario_CreateAnAssociation" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _LjFTSFWCEeK-j4kYUfEdxA _LjFTSVWCEeK-j4kYUfEdxA" when="_LjFTX1WCEeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA _2hF35FWHEeK-j4kYUfEdxA"/>
+        <scenarios xmi:id="_LjFTFFWCEeK-j4kYUfEdxA" name="Scenario_CreateAReference" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _LjFTSFWCEeK-j4kYUfEdxA _LjFTSVWCEeK-j4kYUfEdxA" when="_LjFTYFWCEeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA _2hF35FWHEeK-j4kYUfEdxA"/>
+        <scenarios xmi:id="_LjFTFVWCEeK-j4kYUfEdxA" name="Scenario_CreateAComposition" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _LjFTSFWCEeK-j4kYUfEdxA _LjFTSVWCEeK-j4kYUfEdxA" when="_LjFTYVWCEeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA _2hF35FWHEeK-j4kYUfEdxA"/>
+        <scenarios xmi:id="_LjFTFlWCEeK-j4kYUfEdxA" name="Scenario_CreateAnAggregation" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _LjFTSFWCEeK-j4kYUfEdxA _LjFTSVWCEeK-j4kYUfEdxA" when="_LjFTYlWCEeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA _2hF35FWHEeK-j4kYUfEdxA"/>
+        <scenarios xmi:id="_LjFTF1WCEeK-j4kYUfEdxA" name="Scenario_CreateAnAssociationClass" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _LjFTSFWCEeK-j4kYUfEdxA _LjFTSVWCEeK-j4kYUfEdxA" when="_LjFTY1WCEeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA _2hF35FWHEeK-j4kYUfEdxA"/>
+        <scenarios xmi:id="_LjFTGFWCEeK-j4kYUfEdxA" name="Scenario_CreateAGeneralization" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _LjFTSFWCEeK-j4kYUfEdxA _LjFTSVWCEeK-j4kYUfEdxA" when="_LjFTZFWCEeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA _2hF35FWHEeK-j4kYUfEdxA"/>
+        <scenarios xmi:id="_LjFTGVWCEeK-j4kYUfEdxA" name="Scenario_CreateAnInterfaceRealization" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _LjFTSFWCEeK-j4kYUfEdxA _LjFTSVWCEeK-j4kYUfEdxA" when="_LjFTZVWCEeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA _2hF35FWHEeK-j4kYUfEdxA"/>
+        <scenarios xmi:id="_LjFTGlWCEeK-j4kYUfEdxA" name="Scenario_CreateADependency" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _LjFTSFWCEeK-j4kYUfEdxA _LjFTSVWCEeK-j4kYUfEdxA" when="_LjFTZlWCEeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA _2hF35FWHEeK-j4kYUfEdxA"/>
+        <scenarios xmi:id="_LjFTG1WCEeK-j4kYUfEdxA" name="Scenario_CreateAUsage" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _LjFTSFWCEeK-j4kYUfEdxA _LjFTSVWCEeK-j4kYUfEdxA" when="_LjFTZ1WCEeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA _2hF35FWHEeK-j4kYUfEdxA"/>
+        <scenarios xmi:id="_LjFTHFWCEeK-j4kYUfEdxA" name="Scenario_CreateANestClassifier" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _LjFTSFWCEeK-j4kYUfEdxA _LjFTSVWCEeK-j4kYUfEdxA" when="_LjFTaFWCEeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA _2hF35FWHEeK-j4kYUfEdxA"/>
+      </stories>
+      <stories xmi:id="_C4gTLlWDEeK-j4kYUfEdxA" name="Story_DeleteARelation" as="_fbFtmlWEEeK-j4kYUfEdxA" soThat="_fbFtQVWEEeK-j4kYUfEdxA" iWant="_C4gTClWDEeK-j4kYUfEdxA">
+        <scenarios xmi:id="_Id3xgVWJEeK-j4kYUfEdxA" name="Scenario_DeleteAnAssociation" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _Nw-qF1WJEeK-j4kYUfEdxA" when="_Nw-qOVWJEeK-j4kYUfEdxA" then="_Nw-qTVWJEeK-j4kYUfEdxA"/>
+      </stories>
+      <stories xmi:id="_beSggFWEEeK-j4kYUfEdxA" name="Story_CreateAFeature" as="_fbFtmlWEEeK-j4kYUfEdxA" soThat="_fbFtQVWEEeK-j4kYUfEdxA" iWant="_beSgWVWEEeK-j4kYUfEdxA">
+        <scenarios xmi:id="_beSgflWEEeK-j4kYUfEdxA" name="Scenario_CreateAProperty" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _GpWcuVWFEeK-j4kYUfEdxA" when="_beSg0FWEEeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA _2hF35FWHEeK-j4kYUfEdxA"/>
+        <scenarios xmi:id="_AsHpQVWFEeK-j4kYUfEdxA" name="Scenario_CreateATypedProperty" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _GpWcuVWFEeK-j4kYUfEdxA _AsHpdFWFEeK-j4kYUfEdxA" when="_AsHplVWFEeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA _2hF35FWHEeK-j4kYUfEdxA"/>
+        <scenarios xmi:id="_zCEMtFWHEeK-j4kYUfEdxA" name="Scenario_CreateALiteral" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _2hFRdlWHEeK-j4kYUfEdxA" when="_2hFRl1WHEeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA _2hF35FWHEeK-j4kYUfEdxA"/>
+      </stories>
+      <stories xmi:id="_beSggVWEEeK-j4kYUfEdxA" name="Story_DeleteAFeature" as="_fbFtmlWEEeK-j4kYUfEdxA" soThat="_fbFtQVWEEeK-j4kYUfEdxA" iWant="_beSgWlWEEeK-j4kYUfEdxA">
+        <scenarios xmi:id="_NRREYVWIEeK-j4kYUfEdxA" name="Scenario_DeleteAProperty" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _NRREklWIEeK-j4kYUfEdxA" when="_NRREtVWIEeK-j4kYUfEdxA" then="_Nw-qTVWJEeK-j4kYUfEdxA"/>
+      </stories>
+    </features>
+    <features xmi:id="_beSgglWEEeK-j4kYUfEdxA" name="Feature_ManageFeatures">
+      <notes xsi:type="specification:ImplementationNote" xmi:id="_beSgg1WEEeK-j4kYUfEdxA" description="A specific section 'Features' exists in the palette."/>
+    </features>
+    <features xmi:id="_XMoyfFTyEeK-j4kYUfEdxA" name="Feature_ManageExistingElements">
+      <notes xsi:type="specification:ImplementationNote" xmi:id="_XMoyfVTyEeK-j4kYUfEdxA" description="A specific section 'Existing Elements' exists in the palette and must be at the first position."/>
+      <stories xmi:id="_XMoyflTyEeK-j4kYUfEdxA" name="Story_AddAnExistingElement" references="_XMpZSVTyEeK-j4kYUfEdxA" as="_fbFtmlWEEeK-j4kYUfEdxA" soThat="_fbFtQVWEEeK-j4kYUfEdxA" iWant="_fyOIKFTyEeK-j4kYUfEdxA">
+        <notes xsi:type="specification:ImplementationNote" xmi:id="_XMoyf1TyEeK-j4kYUfEdxA" description="This tool is defined in the section 'Existing Elements'."/>
+        <notes xsi:type="specification:ImplementationNote" xmi:id="_XMoygFTyEeK-j4kYUfEdxA" description="The tool label is 'Add'."/>
+        <scenarios xmi:id="_XMoygVTyEeK-j4kYUfEdxA" name="Scenario_AddAnExistingClassFromCurrentPackage" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _GpWcuVWFEeK-j4kYUfEdxA" when="_fyOIfFTyEeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA"/>
+        <scenarios xmi:id="_XMoyglTyEeK-j4kYUfEdxA" name="Scenario_AddAnExistingEnumerationFromCurrentPackage" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _2hFRdlWHEeK-j4kYUfEdxA" when="_fyOIfFTyEeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA"/>
+        <scenarios xmi:id="_XMoyg1TyEeK-j4kYUfEdxA" name="Scenario_AddAnExistingInterfaceFromCurrentPackage" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _D7mffFT1EeK-j4kYUfEdxA" when="_fyOIfFTyEeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA"/>
+        <scenarios xmi:id="_XMoyhFTyEeK-j4kYUfEdxA" name="Scenario_AddAnExistingDataTypeFromCurrentPackage" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _mYGIaVT1EeK-j4kYUfEdxA" when="_fyOIfFTyEeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA"/>
+        <scenarios xmi:id="_XMoyhVTyEeK-j4kYUfEdxA" name="Scenario_AddAnExistingPrimitiveTypeFromCurrentPackage" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _mYGIalT1EeK-j4kYUfEdxA" when="_fyOIfFTyEeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA"/>
+        <scenarios xmi:id="_XMpZQFTyEeK-j4kYUfEdxA" name="Scenario_AddAnExistingPackageFromCurrentPackage" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _mYGIZlT1EeK-j4kYUfEdxA" when="_fyOIfFTyEeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA _fyOIjFTyEeK-j4kYUfEdxA"/>
+        <scenarios xmi:id="_XMpZQVTyEeK-j4kYUfEdxA" name="Scenario_AddAnExistingComponentFromCurrentPackage" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _mYGIa1T1EeK-j4kYUfEdxA" when="_fyOIfFTyEeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA _fyOIjFTyEeK-j4kYUfEdxA"/>
+        <scenarios xmi:id="_XMpZQlTyEeK-j4kYUfEdxA" name="Scenario_AddAnExistingClassFromAnotherPackage" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _GpWcuVWFEeK-j4kYUfEdxA" when="_fyOIfFTyEeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA"/>
+        <scenarios xmi:id="_XMpZQ1TyEeK-j4kYUfEdxA" name="Scenario_AddAnExistingEnumerationFromAnotherPackage" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _2hFRdlWHEeK-j4kYUfEdxA" when="_fyOIfFTyEeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA"/>
+        <scenarios xmi:id="_XMpZRFTyEeK-j4kYUfEdxA" name="Scenario_AddAnExistingInterfaceFromAnotherPackage" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _D7mffFT1EeK-j4kYUfEdxA" when="_fyOIfFTyEeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA"/>
+        <scenarios xmi:id="_XMpZRVTyEeK-j4kYUfEdxA" name="Scenario_AddAnExistingDataTypeFromAnotherPackage" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _mYGIaVT1EeK-j4kYUfEdxA" when="_fyOIfFTyEeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA"/>
+        <scenarios xmi:id="_XMpZRlTyEeK-j4kYUfEdxA" name="Scenario_AddAnExistingPrimitiveTypeFromAnotherPackage" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _mYGIalT1EeK-j4kYUfEdxA" when="_fyOIfFTyEeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA"/>
+        <scenarios xmi:id="_XMpZR1TyEeK-j4kYUfEdxA" name="Scenario_AddAnExistingPackageFromAnotherPackage" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _mYGIZlT1EeK-j4kYUfEdxA" when="_fyOIfFTyEeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA _fyOIjFTyEeK-j4kYUfEdxA"/>
+        <scenarios xmi:id="_XMpZSFTyEeK-j4kYUfEdxA" name="Scenario_AddAnExistingComponentFromAnotherPackage" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _mYGIa1T1EeK-j4kYUfEdxA" when="_fyOIfFTyEeK-j4kYUfEdxA" then="_2hF35lWHEeK-j4kYUfEdxA _fyOIjFTyEeK-j4kYUfEdxA"/>
+      </stories>
+      <stories xmi:id="_XMpZSVTyEeK-j4kYUfEdxA" name="Story_RemoveAnExistingElement" references="_XMoyflTyEeK-j4kYUfEdxA" as="_fbFtmlWEEeK-j4kYUfEdxA" soThat="_fbFtQVWEEeK-j4kYUfEdxA" iWant="_fyOIKVTyEeK-j4kYUfEdxA">
+        <notes xsi:type="specification:ImplementationNote" xmi:id="_XMpZSlTyEeK-j4kYUfEdxA" description="This tool is defined in the section 'Existing Elements'."/>
+        <notes xsi:type="specification:ImplementationNote" xmi:id="_XMpZS1TyEeK-j4kYUfEdxA" description="The tool label is 'Remove'"/>
+        <notes xsi:type="specification:ImplementationNote" xmi:id="_XMpZTFTyEeK-j4kYUfEdxA" description="This tool should be reused for all the other kind of diagram"/>
+        <notes xsi:type="specification:ImplementationNote" xmi:id="_XMpZTVTyEeK-j4kYUfEdxA" description="Another tool 'Delete from diagram' to remove an existing element from diagram already exists in the editor toolbar. This tool is provided with OD."/>
+        <notes xsi:type="specification:TestNote" xmi:id="_XMpZTlTyEeK-j4kYUfEdxA" description="It is possible to delete the element from the 'Remove' tool in the palette and the 'Remove' tooltip. The 'Delete from diagram' toolbar action is provided by OD."/>
+        <scenarios xmi:id="_XMpZT1TyEeK-j4kYUfEdxA" name="Scenario_RemoveAnExistingClass" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA _GpWcuVWFEeK-j4kYUfEdxA" when="_fyOIfVTyEeK-j4kYUfEdxA" then="_fyOIjVTyEeK-j4kYUfEdxA"/>
+      </stories>
+    </features>
+  </features>
+  <features name="Feature_ManageComments">
+    <notes xsi:type="specification:ImplementationNote" description="The comment's tools and mapping are defined in a separated layer in order that the user can show/hide them on the representation"/>
+    <stories name="Story_CreateComment" as="_fbFtmlWEEeK-j4kYUfEdxA" soThat="_fbFtQVWEEeK-j4kYUfEdxA" iWant="//@features.0/@capabilities.2">
+      <scenarios name="Scenario_CreateAComment" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA //@automationLayer/@context.18" when="//@automationLayer/@actions.33" then="_2hF35FWHEeK-j4kYUfEdxA"/>
+    </stories>
+    <stories name="Story_CreateCommentLink" as="_fbFtmlWEEeK-j4kYUfEdxA" soThat="_fbFtQVWEEeK-j4kYUfEdxA" iWant="//@features.0/@capabilities.2">
+      <scenarios name="Scenario_CreateACommentLink" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA //@automationLayer/@context.18 _GpWcuVWFEeK-j4kYUfEdxA //@automationLayer/@context.19" when="//@automationLayer/@actions.34" then="_2hF35FWHEeK-j4kYUfEdxA"/>
+    </stories>
+    <stories name="Story_DeleteComment" as="_fbFtmlWEEeK-j4kYUfEdxA" soThat="_fbFtQVWEEeK-j4kYUfEdxA" iWant="//@features.0/@capabilities.3">
+      <scenarios name="Scenario_DeleteAComment" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA //@automationLayer/@context.19" when="//@automationLayer/@actions.35" then="_Nw-qTVWJEeK-j4kYUfEdxA"/>
+    </stories>
+    <stories name="Story_DeleteCommentLink" as="_fbFtmlWEEeK-j4kYUfEdxA" soThat="_fbFtQVWEEeK-j4kYUfEdxA" iWant="//@features.0/@capabilities.2">
+      <scenarios name="Scenario_DeleteACommentLink" given="_Nw-qEFWJEeK-j4kYUfEdxA _Nw-qElWJEeK-j4kYUfEdxA //@automationLayer/@context.20" when="//@automationLayer/@actions.36" then="_Nw-qTVWJEeK-j4kYUfEdxA"/>
+    </stories>
+  </features>
+  <roles xmi:id="_fbFtmlWEEeK-j4kYUfEdxA" name="softwareDeveloper"/>
+  <automationLayer>
+    <context xmi:id="_Nw-qEFWJEeK-j4kYUfEdxA" name="Context_TheReferenceUmlModel"/>
+    <context name="Context_TheUmlPackage"/>
+    <context xmi:id="_Nw-qElWJEeK-j4kYUfEdxA" name="Context_TheClassDiagram"/>
+    <context xmi:id="_GpWcuVWFEeK-j4kYUfEdxA" name="Context_TheSelectedClass"/>
+    <context xmi:id="_mYGIZlT1EeK-j4kYUfEdxA" name="Context_TheSelectedPackage"/>
+    <context xmi:id="_LjFTSFWCEeK-j4kYUfEdxA" name="Context_TheSourceSelectedClass"/>
+    <context xmi:id="_LjFTSVWCEeK-j4kYUfEdxA" name="Context_TheTargetSelectedClass"/>
+    <context xmi:id="_Nw-qF1WJEeK-j4kYUfEdxA" name="Context_TheSelectedAssociation"/>
+    <context xmi:id="_AsHpdFWFEeK-j4kYUfEdxA" name="Context_TheSelectedType"/>
+    <context xmi:id="_NRREklWIEeK-j4kYUfEdxA" name="Context_TheSelectedProperty"/>
+    <context xmi:id="_2hFRdlWHEeK-j4kYUfEdxA" name="Context_TheSelectedEnumeration"/>
+    <context xmi:id="_D7mffFT1EeK-j4kYUfEdxA" name="Context_TheSelectedInterface"/>
+    <context xmi:id="_mYGIaVT1EeK-j4kYUfEdxA" name="Context_TheSelectedDataType"/>
+    <context xmi:id="_mYGIalT1EeK-j4kYUfEdxA" name="Context_TheSelectedPrimitiveType"/>
+    <context xmi:id="_mYGIa1T1EeK-j4kYUfEdxA" name="Context_TheSelectedComponent"/>
+    <context name="Context_TheClassElement"/>
+    <context name="Context_TheSelectedElements"/>
+    <context name="Context_SelectedElements"/>
+    <context name="Context_CommentLayerActivated"/>
+    <context name="Context_TheSelectedComment"/>
+    <context name="Context_TheSelectedCommentLink"/>
+    <actions name="Action_CreateAClassDiagram"/>
+    <actions name="Action_DeleteAClassDiagram"/>
+    <actions name="Action_CreateAClass"/>
+    <actions name="Action_CreateAnEnumeration"/>
+    <actions name="Action_CreateAnInterface"/>
+    <actions name="Action_CreateADataType"/>
+    <actions name="Action_CreateAPrimitiveType"/>
+    <actions name="Action_CreateAPackage"/>
+    <actions name="Action_CreateAClassInAVisiblePackage"/>
+    <actions name="Action_DeleteSemanticElement"/>
+    <actions xmi:id="_LjFTX1WCEeK-j4kYUfEdxA" name="Action_CreateAnAssociation"/>
+    <actions xmi:id="_LjFTYFWCEeK-j4kYUfEdxA" name="Action_CreateAReference"/>
+    <actions xmi:id="_LjFTYVWCEeK-j4kYUfEdxA" name="Action_CreateAComposition"/>
+    <actions xmi:id="_LjFTYlWCEeK-j4kYUfEdxA" name="Action_CreateAnAggregation"/>
+    <actions xmi:id="_LjFTY1WCEeK-j4kYUfEdxA" name="Action_CreateAnAssociationClass"/>
+    <actions xmi:id="_LjFTZFWCEeK-j4kYUfEdxA" name="Action_CreateAGeneralization"/>
+    <actions xmi:id="_LjFTZVWCEeK-j4kYUfEdxA" name="Action_CreateAnInterfaceRealization"/>
+    <actions xmi:id="_LjFTZlWCEeK-j4kYUfEdxA" name="Action_CreateADependency"/>
+    <actions xmi:id="_LjFTZ1WCEeK-j4kYUfEdxA" name="Action_CreateAUsage"/>
+    <actions xmi:id="_LjFTaFWCEeK-j4kYUfEdxA" name="Action_CreateANestClassifier"/>
+    <actions xmi:id="_Nw-qOVWJEeK-j4kYUfEdxA" name="Action_DeleteAnAssociation"/>
+    <actions xmi:id="_beSg0FWEEeK-j4kYUfEdxA" name="Action_CreateAProperty"/>
+    <actions xmi:id="_AsHplVWFEeK-j4kYUfEdxA" name="Action_CreateATypedProperty"/>
+    <actions xmi:id="_2hFRl1WHEeK-j4kYUfEdxA" name="Action_CreateALiteral"/>
+    <actions xmi:id="_NRREtVWIEeK-j4kYUfEdxA" name="Action_DeleteAProperty"/>
+    <actions xmi:id="_fyOIfFTyEeK-j4kYUfEdxA" name="Action_AddExistingElement"/>
+    <actions xmi:id="_fyOIfVTyEeK-j4kYUfEdxA" name="Action_RemoveExistingElement"/>
+    <actions name="Action_DragAndDropElement"/>
+    <actions xmi:id="_mYGIf1T1EeK-j4kYUfEdxA" name="Action_AddRelatedElements"/>
+    <actions name="Action_OpenRelatedClassDiagram"/>
+    <actions name="Action_OpenRelatedComponentDiagram"/>
+    <actions name="Action_MoveElement"/>
+    <actions name="Action_ArrangeSelectedElements"/>
+    <actions name="Action_CreateAComment"/>
+    <actions name="Action_CreateACommentLink"/>
+    <actions name="Action_DeleteAComment"/>
+    <actions name="Action_DeleteACommentLink"/>
+    <behaviours name="Behaviour_DiagramCreated"/>
+    <behaviours name="Behaviour_DiagramDeleted"/>
+    <behaviours xmi:id="_2hF35FWHEeK-j4kYUfEdxA" name="Behaviour_SemanticElementCreated"/>
+    <behaviours xmi:id="_Nw-qTVWJEeK-j4kYUfEdxA" name="Behaviour_SemanticElementDeleted"/>
+    <behaviours xmi:id="_2hF35lWHEeK-j4kYUfEdxA" name="Behaviour_ElementVisibleOnDiagram"/>
+    <behaviours xmi:id="_fyOIjFTyEeK-j4kYUfEdxA" name="Behaviour_FirstLevelElementsVisibleOnDiagram"/>
+    <behaviours xmi:id="_fyOIjVTyEeK-j4kYUfEdxA" name="Behaviour_ElementNotVisibleOnDiagram"/>
+    <behaviours name="Behaviour_DiagramOpened"/>
+    <behaviours name="Behaviour_NewElementPosition"/>
+    <behaviours name="Behaviour_DiagramLayouted"/>
+  </automationLayer>
+</specification:Specification>
