@@ -8,7 +8,7 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.obeonetwork.dsl.uml2.design.ui.tests.automation;
+package org.obeonetwork.dsl.uml2.design.tests.automation.ui;
 
 import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.withMnemonic;
 import static org.hamcrest.Matchers.allOf;
@@ -122,4 +122,5 @@ public class ContextMenuHelper {
 			hide(menu.getParentMenu());
 		}
 	}
+
 }
