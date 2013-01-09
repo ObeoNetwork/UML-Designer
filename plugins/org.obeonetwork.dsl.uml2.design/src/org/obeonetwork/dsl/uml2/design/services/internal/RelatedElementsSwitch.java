@@ -17,12 +17,16 @@ import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
+import org.eclipse.uml2.uml.Actor;
 import org.eclipse.uml2.uml.Artifact;
+import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Deployment;
 import org.eclipse.uml2.uml.ExecutionEnvironment;
+import org.eclipse.uml2.uml.Extend;
 import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.Generalization;
+import org.eclipse.uml2.uml.Include;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.InterfaceRealization;
 import org.eclipse.uml2.uml.NamedElement;
@@ -34,8 +38,10 @@ import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Relationship;
 import org.eclipse.uml2.uml.Type;
+import org.eclipse.uml2.uml.UseCase;
 import org.eclipse.uml2.uml.util.UMLSwitch;
 
+import com.google.common.base.Predicate;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -76,6 +82,9 @@ public class RelatedElementsSwitch extends UMLSwitch<List<EObject>> {
 		}
 		doSwitch(ctx);
 		relateds.remove(ctx);
+		if (ctx instanceof Actor || ctx instanceof UseCase) {
+			clearAssociationsFromResult();
+		}
 		return ImmutableList.copyOf(relateds);
 	}
 
@@ -157,6 +166,9 @@ public class RelatedElementsSwitch extends UMLSwitch<List<EObject>> {
 			if (xRef.getEObject() instanceof Feature) {
 				relateds.addAll(((org.eclipse.uml2.uml.Feature)xRef.getEObject()).getFeaturingClassifiers());
 			}
+			if (xRef.getEObject() instanceof UseCase) {
+				relateds.add((UseCase)xRef.getEObject());
+			}
 		}
 		/*
 		 * Nested Classes
@@ -164,6 +176,35 @@ public class RelatedElementsSwitch extends UMLSwitch<List<EObject>> {
 		relateds.addAll(Lists.newArrayList(Iterables.filter(object.getOwnedElements(), Classifier.class)));
 		relateds.addAll(object.getFeatures());
 		return super.caseClassifier(object);
+	}
+
+	@Override
+	public List<EObject> caseUseCase(UseCase object) {
+		for (Setting xRef : xRefs) {
+			if (xRef.getEObject() instanceof Extend) {
+				relateds.add(((Extend)xRef.getEObject()).getExtendedCase());
+				relateds.add(((Extend)xRef.getEObject()).getExtension());
+			}
+			if (xRef.getEObject() instanceof Include) {
+				relateds.add(((Include)xRef.getEObject()).getAddition());
+				relateds.add(((Include)xRef.getEObject()).getIncludingCase());
+			}
+
+		}
+		return super.caseUseCase(object);
+	}
+
+	private void clearAssociationsFromResult() {
+		/*
+		 * We don't want to retrieve the Associations themselves or they will appear as "potential subjects"
+		 * in the use case diagram.
+		 */
+		relateds = Sets.newLinkedHashSet(Iterables.filter(relateds, new Predicate<EObject>() {
+
+			public boolean apply(EObject input) {
+				return !(input instanceof Association);
+			}
+		}));
 	}
 
 	@Override

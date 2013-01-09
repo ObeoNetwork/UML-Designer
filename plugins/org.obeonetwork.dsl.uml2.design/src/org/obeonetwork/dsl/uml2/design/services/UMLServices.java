@@ -58,6 +58,7 @@ import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.UseCase;
 import org.eclipse.uml2.uml.VisibilityKind;
 import org.eclipse.uml2.uml.resource.UMLResource;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
@@ -330,6 +331,16 @@ public class UMLServices {
 			}
 		};
 		return allValidSessionElements(cur, validForClassDiagram);
+	}
+
+	public List<EObject> getValidsForUseCaseDiagram(EObject cur) {
+		Predicate<EObject> validForUseCaseDiagram = new Predicate<EObject>() {
+
+			public boolean apply(EObject input) {
+				return input instanceof Package || input instanceof Classifier;
+			}
+		};
+		return allValidSessionElements(cur, validForUseCaseDiagram);
 	}
 
 	public List<EObject> getValidsForComponentDiagram(EObject cur) {
