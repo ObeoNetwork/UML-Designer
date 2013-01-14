@@ -40,7 +40,7 @@ Contributors:
 
 	<properties>
 		<tycho-version>0.14.1</tycho-version>
-		<od-site>http://www.obeo.fr/download/release/designer/6.0/latest/indigo/update</od-site>
+		<od-site>http://www.obeo.fr/download/release/designer/6.1/latest/juno3/update</od-site>
 	</properties>
 
 	<modules>
