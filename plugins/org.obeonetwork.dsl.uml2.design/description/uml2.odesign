@@ -1031,23 +1031,6 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$views.target%>">
                 <subModelOperations xsi:type="tool:For" expression="&lt;%getRelated()%>">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$views.target.eContainer()!=$diagram%>">
-                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$i.filter(&quot;Class&quot;)%>">
-                      <subModelOperations xsi:type="tool:CreateView" containerViewExpression="&lt;%$diagram%>"/>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$i.filter(&quot;Enumeration&quot;)%>">
-                      <subModelOperations xsi:type="tool:CreateView" containerViewExpression="&lt;%$diagram%>"/>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$i.filter(&quot;Interface&quot;)%>">
-                      <subModelOperations xsi:type="tool:CreateView" containerViewExpression="&lt;%$diagram%>"/>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$i.filter(&quot;DataType&quot;)%>">
-                      <subModelOperations xsi:type="tool:CreateView" containerViewExpression="&lt;%$diagram%>"/>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$i.filter(&quot;PrimitiveType&quot;)%>">
-                      <subModelOperations xsi:type="tool:CreateView" containerViewExpression="&lt;%$diagram%>"/>
-                    </subModelOperations>
-                  </subModelOperations>
                   <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$i.filter(&quot;Class&quot;)%>">
                     <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']" containerViewExpression="&lt;%$diagram%>"/>
                   </subModelOperations>
