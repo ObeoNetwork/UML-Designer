@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.uml2.uml.Actor;
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Artifact;
 import org.eclipse.uml2.uml.Association;
@@ -37,7 +38,6 @@ import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Deployment;
 import org.eclipse.uml2.uml.Device;
 import org.eclipse.uml2.uml.Element;
-import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.ExecutionEnvironment;
 import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.Generalization;
@@ -68,6 +68,7 @@ import org.obeonetwork.dsl.uml2.design.services.internal.SemanticElementsSwitch;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
@@ -458,6 +459,19 @@ public class UMLServices {
 
 	public Collection<EObject> getRelated(EObject cur) {
 		return new RelatedElementsSwitch().getRelatedElements(cur);
+	}
+
+	public Collection<EObject> getRelatedForUseCase(EObject cur) {
+		if (!(cur instanceof UseCase || cur instanceof Actor)) {
+			List result = ImmutableList.copyOf(Iterables.filter(getRelated(cur), new Predicate<EObject>() {
+
+				public boolean apply(EObject input) {
+					return input instanceof UseCase || input instanceof Actor;
+				}
+			}));
+			return result;
+		}
+		return getRelated(cur);
 	}
 
 	/**

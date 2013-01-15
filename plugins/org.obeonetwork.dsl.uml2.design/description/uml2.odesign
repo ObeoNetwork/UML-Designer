@@ -4598,17 +4598,24 @@
             <view name="views"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$views.target%>">
-                <subModelOperations xsi:type="tool:For" expression="&lt;%getRelated()%>" iteratorName="selection">
+                <subModelOperations xsi:type="tool:For" expression="&lt;%getRelatedForUseCase()%>" iteratorName="selection">
                   <subModelOperations xsi:type="tool:Switch">
                     <cases conditionExpression="&lt;%$selection.filter(&quot;Actor&quot;)%>">
                       <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_Actor']" containerViewExpression="&lt;%$diagram%>"/>
                     </cases>
                     <cases conditionExpression="&lt;%$selection.filter(&quot;UseCase&quot;)%>">
                       <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$selection[subject]%>">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$selection.subject%>">
-                          <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" containerViewExpression="&lt;%$diagram%>" variableName="newView">
-                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$selection%>">
-                              <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']/@subNodeMappings[name='UCD_UseCase']" containerViewExpression="&lt;%$newView%>"/>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$diagram.containers[target==$selection.subject]%>">
+                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$selection%>">
+                            <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']/@subNodeMappings[name='UCD_UseCase']" containerViewExpression="&lt;%$diagram.containers[target==$selection.subject]%>"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%!$diagram.containers[target==$selection.subject]%>">
+                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$selection.subject%>">
+                            <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" containerViewExpression="&lt;%$diagram%>" variableName="newView">
+                              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$selection%>">
+                                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']/@subNodeMappings[name='UCD_UseCase']" containerViewExpression="&lt;%$newView%>"/>
+                              </subModelOperations>
                             </subModelOperations>
                           </subModelOperations>
                         </subModelOperations>
@@ -4628,6 +4635,165 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Use Case" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='EAnnotation']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create an actor" name="Actor" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_Actor']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Actor" referenceName="packagedElement">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Actor&lt;%eContainer.eContents.filter(&quot;Actor&quot;).nSize%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Use Case" name="Use Case" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']/@subNodeMappings[name='UCD_UseCase'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_UseCase_Root']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.eContainer(&quot;Package&quot;)%>">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.UseCase" referenceName="packagedElement">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="UseCase&lt;%eContainer(&quot;Package&quot;).name%>&lt;%eContainer(&quot;Package&quot;).eContents().filter(&quot;UseCase&quot;).nSize()%>"/>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$container.filter(&quot;Classifier&quot;)%>">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="subject" valueExpression="&lt;%$container%>"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Tool to create an Association between an Actor and an Use Case." name="Association" edgeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@edgeMappings[name='UCD_Association']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;Package&quot;)%>">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Association" referenceName="packagedElement">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedEnd">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$source%>"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedEnd">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$target%>"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Association_&lt;%$source.name%>_to_&lt;%$target.name%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Create an Extend" name="Extend" precondition="&lt;%($preSource + $preTarget).filter(&quot;UseCase&quot;).nSize() == 2%>" edgeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@edgeMappings[name='UCD_Extend']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source%>">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Extend" referenceName="extend">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="extension" valueExpression="&lt;%$source%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="extendedCase" valueExpression="&lt;%$target%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Create an Include" name="Include" precondition="&lt;%($preSource + $preTarget).filter(&quot;UseCase&quot;).nSize() == 2%>" edgeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@edgeMappings[name='UCD_Include']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source%>">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Include" referenceName="include">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="includingCase" valueExpression="&lt;%$source%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="addition" valueExpression="&lt;%$target%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Tool to create a Generalization" name="Generalization" precondition="&lt;%($preSource + $preTarget).filter(&quot;Actor&quot;).nSize() == 2%>" edgeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@edgeMappings[name='UCD_Generalization']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source%>">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Generalization" referenceName="generalization">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="general" valueExpression="&lt;%$target%>"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolGroup" name="Subject">
+            <tools xsi:type="tool:ContainerCreationDescription" documentation="Create a new Subject" name="Component" containerMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Component.gif">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Component" referenceName="packagedElement">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%eContainer(&quot;Package&quot;).name%> Subject"/>
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" containerViewExpression="&lt;%$containerView%>"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:ContainerCreationDescription" documentation="Create a new Subject" name="Artifact" containerMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Artifact.gif">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Artifact" referenceName="packagedElement">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%eContainer(&quot;Package&quot;).name%> Subject"/>
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" containerViewExpression="&lt;%$containerView%>"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:ContainerCreationDescription" documentation="Create a new Subject" name="DataType" containerMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/DataType.gif">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.DataType" referenceName="packagedElement">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%eContainer(&quot;Package&quot;).name%> Subject"/>
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" containerViewExpression="&lt;%$containerView%>"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:ContainerCreationDescription" documentation="Create a new Subject" name="Interface" containerMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Interface.gif">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Interface" referenceName="packagedElement">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%eContainer(&quot;Package&quot;).name%> Subject"/>
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" containerViewExpression="&lt;%$containerView%>"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:ContainerCreationDescription" documentation="Create a new Subject" name="Collaboration" containerMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Collaboration.gif">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Collaboration" referenceName="packagedElement">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%eContainer(&quot;Package&quot;).name%> Subject"/>
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" containerViewExpression="&lt;%$containerView%>"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:ContainerCreationDescription" documentation="Create a new Subject" name="Class" containerMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Class.gif">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="packagedElement">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%eContainer(&quot;Package&quot;).name%> Subject"/>
+                    <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" containerViewExpression="&lt;%$containerView%>"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+          </ownedTools>
           <subSections name="drag &amp; drop">
             <ownedTools xsi:type="tool:ContainerDropDescription" documentation="Tool to drag &amp; drop a use case" name="UC_D&amp;D_UseCase" mappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']/@subNodeMappings[name='UCD_UseCase'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_UseCase_Root']">
               <oldContainer name="oldSemanticContainer"/>
@@ -4639,93 +4805,6 @@
                   <subModelOperations xsi:type="tool:For" expression="&lt;%current.filter(&quot;UseCase&quot;)[!subject.nContains($newSemanticContainer)]%>">
                     <subModelOperations xsi:type="tool:SetValue" featureName="subject" valueExpression="&lt;%$newSemanticContainer%>"/>
                     <subModelOperations xsi:type="tool:Unset" featureName="subject" elementExpression="&lt;%$oldSemanticContainer%>"/>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </ownedTools>
-          </subSections>
-          <subSections documentation="Tools to create elements" name="create">
-            <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create an actor" name="Actor" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_Actor']">
-              <variable name="container"/>
-              <viewVariable name="containerView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Actor" referenceName="packagedElement">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Actor&lt;%eContainer.eContents.filter(&quot;Actor&quot;).nSize%>"/>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </ownedTools>
-            <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Use Case" name="Use Case" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']/@subNodeMappings[name='UCD_UseCase'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_UseCase_Root']">
-              <variable name="container"/>
-              <viewVariable name="containerView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.eContainer(&quot;Package&quot;)%>">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.UseCase" referenceName="packagedElement">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="UseCase&lt;%eContainer(&quot;Package&quot;).name%>&lt;%eContainer(&quot;Package&quot;).eContents().filter(&quot;UseCase&quot;).nSize()%>"/>
-                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$container.filter(&quot;Classifier&quot;)%>">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="subject" valueExpression="&lt;%$container%>"/>
-                    </subModelOperations>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </ownedTools>
-            <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Tool to create an Association between an Actor and an Use Case." name="Association" edgeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@edgeMappings[name='UCD_Association']">
-              <sourceVariable name="source"/>
-              <targetVariable name="target"/>
-              <sourceViewVariable name="sourceView"/>
-              <targetViewVariable name="targetView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;Package&quot;)%>">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Association" referenceName="packagedElement">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedEnd">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$source%>"/>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedEnd">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$target%>"/>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Association_&lt;%$source.name%>_to_&lt;%$target.name%>"/>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </ownedTools>
-            <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Create an Extend" name="Extend" precondition="&lt;%($preSource + $preTarget).filter(&quot;UseCase&quot;).nSize() == 2%>" edgeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@edgeMappings[name='UCD_Extend']">
-              <sourceVariable name="source"/>
-              <targetVariable name="target"/>
-              <sourceViewVariable name="sourceView"/>
-              <targetViewVariable name="targetView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source%>">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Extend" referenceName="extend">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="extension" valueExpression="&lt;%$source%>"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="extendedCase" valueExpression="&lt;%$target%>"/>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </ownedTools>
-            <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Create an Include" name="Include" precondition="&lt;%($preSource + $preTarget).filter(&quot;UseCase&quot;).nSize() == 2%>" edgeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@edgeMappings[name='UCD_Include']">
-              <sourceVariable name="source"/>
-              <targetVariable name="target"/>
-              <sourceViewVariable name="sourceView"/>
-              <targetViewVariable name="targetView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source%>">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Include" referenceName="include">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="includingCase" valueExpression="&lt;%$source%>"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="addition" valueExpression="&lt;%$target%>"/>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </ownedTools>
-            <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Tool to create a Generalization" name="Generalization" precondition="&lt;%($preSource + $preTarget).filter(&quot;Actor&quot;).nSize() == 2%>" edgeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@edgeMappings[name='UCD_Generalization']">
-              <sourceVariable name="source"/>
-              <targetVariable name="target"/>
-              <sourceViewVariable name="sourceView"/>
-              <targetViewVariable name="targetView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source%>">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Generalization" referenceName="generalization">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="general" valueExpression="&lt;%$target%>"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -4855,80 +4934,6 @@
               <edgeView name="edgeView"/>
             </ownedTools>
           </subSections>
-        </toolSections>
-        <toolSections name="Subject">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a new Subject" name="Component" containerMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Component.gif">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Component" referenceName="packagedElement">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%eContainer(&quot;Package&quot;).name%> Subject"/>
-                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" containerViewExpression="&lt;%$containerView%>"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a new Subject" name="Artifact" containerMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Artifact.gif">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Artifact" referenceName="packagedElement">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%eContainer(&quot;Package&quot;).name%> Subject"/>
-                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" containerViewExpression="&lt;%$containerView%>"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a new Subject" name="DataType" containerMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/DataType.gif">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.DataType" referenceName="packagedElement">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%eContainer(&quot;Package&quot;).name%> Subject"/>
-                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" containerViewExpression="&lt;%$containerView%>"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a new Subject" name="Interface" containerMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Interface.gif">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Interface" referenceName="packagedElement">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%eContainer(&quot;Package&quot;).name%> Subject"/>
-                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" containerViewExpression="&lt;%$containerView%>"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a new Subject" name="Collaboration" containerMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Collaboration.gif">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Collaboration" referenceName="packagedElement">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%eContainer(&quot;Package&quot;).name%> Subject"/>
-                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" containerViewExpression="&lt;%$containerView%>"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a new Subject" name="Class" containerMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Class.gif">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="packagedElement">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%eContainer(&quot;Package&quot;).name%> Subject"/>
-                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" containerViewExpression="&lt;%$containerView%>"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
         </toolSections>
       </defaultLayer>
       <optionalLayers name="Imported packages">
