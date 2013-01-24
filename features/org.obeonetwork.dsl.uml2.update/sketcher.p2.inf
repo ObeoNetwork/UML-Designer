@@ -1,0 +1,74 @@
+instructions.configure=\
+addRepository(type:0,location:http${#58}//www.obeo.fr/download/release/designer/6.1/latest/juno3/update,name:Obeo Designer 6.1);\
+addRepository(type:1,location:http${#58}//www.obeo.fr/download/release/designer/6.1/latest/juno3/update,name:Obeo Designer 6.1);\
+addRepository(type:0,location:http${#58}//www.obeo.fr/download/eclipse/juno-3.8,name:Juno 3.8);\
+addRepository(type:1,location:http${#58}//www.obeo.fr/download/eclipse/juno-3.8,name:Juno 3.8);\
+  mkdir(path:${installFolder}/dropins);
+
+requires.1.namespace=org.eclipse.equinox.p2.iu
+requires.1.name=toolingorg.eclipse.configuration.macosx
+requires.1.filter=(osgi.os=macosx)
+requires.1.range=[1.0.0,1.0.0]
+requires.1.greedy=true
+
+requires.2.namespace=org.eclipse.equinox.p2.iu
+requires.2.name=toolingorg.eclipse.configuration
+requires.2.filter=(!(osgi.os=macosx))
+requires.2.range=[1.0.0,1.0.0]
+requires.2.greedy=true
+
+requires.3.namespace=org.eclipse.equinox.p2.iu
+requires.3.name=toolingorg.eclipse.configuration.macosx.x86_64
+requires.3.filter=(&(osgi.os=macosx) (osgi.arch=x86_64))
+requires.3.range=[1.0.0,1.0.0]
+requires.3.greedy=true
+
+requires.4.namespace=org.eclipse.equinox.p2.iu
+requires.4.name=toolingorg.eclipse.configuration.aix.ppc64
+requires.4.filter=(&(osgi.os=aix) (osgi.arch=ppc64))
+requires.4.range=[1.0.0,1.0.0]
+requires.4.greedy=true
+
+units.1.id=toolingorg.eclipse.configuration.macosx-collab
+units.1.version=1.0.0
+units.1.provides.1.namespace=org.eclipse.equinox.p2.iu
+units.1.provides.1.name=toolingorg.eclipse.configuration.macosx
+units.1.provides.1.version=1.0.0
+units.1.filter=(osgi.os=macosx)
+units.1.touchpoint.id=org.eclipse.equinox.p2.osgi
+units.1.touchpoint.version=1.0.0
+units.1.instructions.configure=setProgramProperty(propName:osgi.instance.area.default,propValue:workspace);
+units.1.instructions.unconfigure=setProgramProperty(propName:osgi.instance.area.default,propValue:);
+
+units.2.id=toolingorg.eclipse.configuration-collab
+units.2.version=1.0.0
+units.2.provides.1.namespace=org.eclipse.equinox.p2.iu
+units.2.provides.1.name=toolingorg.eclipse.configuration
+units.2.provides.1.version=1.0.0
+units.2.filter=(!(osgi.os=macosx))
+units.2.touchpoint.id=org.eclipse.equinox.p2.osgi
+units.2.touchpoint.version=1.0.0
+units.2.instructions.configure=setProgramProperty(propName:osgi.instance.area.default,propValue:workspace);
+units.2.instructions.unconfigure=setProgramProperty(propName:osgi.instance.area.default,propValue:);
+
+units.3.id=toolingorg.eclipse.configuration.macosx.x86_64-collab
+units.3.version=1.0.0
+units.3.provides.1.namespace=org.eclipse.equinox.p2.iu
+units.3.provides.1.name=toolingorg.eclipse.configuration.macosx.x86_64
+units.3.provides.1.version=1.0.0
+units.3.filter=(&(osgi.os=macosx) (osgi.arch=x86_64))
+units.3.touchpoint.id=org.eclipse.equinox.p2.osgi
+units.3.touchpoint.version=1.0.0
+units.3.instructions.configure=addJvmArg(jvmArg:-Xms40m);addJvmArg(jvmArg:-Xmx512m);
+units.3.instructions.unconfigure=removeJvmArg(jvmArg:-Xms40m);removeJvmArg(jvmArg:-Xmx512m);
+
+units.4.id=toolingorg.eclipse.configuration.aix.ppc64-collab
+units.4.version=1.0.0
+units.4.provides.1.namespace=org.eclipse.equinox.p2.iu
+units.4.provides.1.name=toolingorg.eclipse.configuration.aix.ppc64
+units.4.provides.1.version=1.0.0
+units.4.filter=(&(osgi.os=aix) (osgi.arch=ppc64))
+units.4.touchpoint.id=org.eclipse.equinox.p2.osgi
+units.4.touchpoint.version=1.0.0
+units.4.instructions.configure=addJvmArg(jvmArg:-Xms40m);addJvmArg(jvmArg:-Xmx512m);
+units.4.instructions.unconfigure=removeJvmArg(jvmArg:-Xms40m);removeJvmArg(jvmArg:-Xmx512m);
