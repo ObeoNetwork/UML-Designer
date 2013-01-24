@@ -10,228 +10,237 @@ Contributors:
     Obeo - initial API and implementation
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<prerequisites>
-		<maven>3.0</maven>
-	</prerequisites>
+    <prerequisites>
+        <maven>3.0</maven>
+    </prerequisites>
 
-	<groupId>org.obeonetwork.dsl.uml</groupId>
-	<artifactId>uml-parent</artifactId>
-	<version>2.0.0-SNAPSHOT</version>
-	<packaging>pom</packaging>
+    <groupId>org.obeonetwork.dsl.uml</groupId>
+    <artifactId>uml-parent</artifactId>
+    <version>2.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
-	<name>Viewpoint UML2 Parent</name>
+    <name>Viewpoint UML2 Parent</name>
 
-	<licenses>
-		<license>
-			<name>Eclipse Public License v1.0</name>
-			<comments>
-       All rights reserved.
+    <licenses>
+        <license>
+            <name>Eclipse Public License v1.0</name>
+            <comments>
+                All rights reserved.
 
-       This program and the accompanying materials are made
-       available under the terms of the Eclipse Public License v1.0
-       which accompanies this distribution, and is available at
-       http://www.eclipse.org/legal/epl-v10.htm
-      </comments>
-		</license>
-	</licenses>
+                This program and the accompanying materials are made
+                available under the terms of the Eclipse Public License v1.0
+                which accompanies this distribution, and is available at
+                http://www.eclipse.org/legal/epl-v10.htm
+            </comments>
+        </license>
+    </licenses>
 
-	<properties>
-		<tycho-version>0.14.1</tycho-version>
-		<od-site>http://www.obeo.fr/download/release/designer/6.1/latest/juno3/update</od-site>
-	</properties>
+    <properties>
+        <tycho-version>0.14.1</tycho-version>
+        <od-site>http://www.obeo.fr/download/release/designer/6.1/latest/juno3/update</od-site>
+    </properties>
 
-	<modules>
+    <modules>
 
-		<module>features/org.obeonetwork.dsl.feature.uml2</module>
-		<module>features/org.obeonetwork.dsl.uml2.update</module>
-		<module>features/fr.obeo.dsl.feature.uml2</module>
-		<module>features/fr.obeo.dsl.uml2.update</module>		
+        <module>features/fr.obeo.dsl.feature.uml2</module>
+        <module>features/fr.obeo.dsl.uml2.update</module>		
 
-		<module>plugins/org.obeonetwork.dsl.uml2.design</module>
-		<module>plugins/org.obeonetwork.dsl.uml2.design.doc</module>
+        <module>plugins/org.obeonetwork.dsl.uml2.design</module>
+        <module>plugins/org.obeonetwork.dsl.uml2.design.doc</module>
 
-		<module>tests/org.obeonetwork.dsl.uml2.design.tests</module>
-		<!--
-		<module>plugins/org.obeonetwork.dsl.uml2.properties</module>
-		<module>tests/org.obeonetwork.dsl.uml2.properties.tests</module> -->
-	</modules>
+        <module>tests/org.obeonetwork.dsl.uml2.design.tests</module>
+        <!--
+        <module>plugins/org.obeonetwork.dsl.uml2.properties</module>
+        <module>tests/org.obeonetwork.dsl.uml2.properties.tests</module> -->
+    </modules>
 
-	<repositories>
-		<repository>
-			<id>obeodesigner</id>
-			<layout>p2</layout>
-			<url>${od-site}</url>
-		</repository>
-		<!--
-		<repository>
-			<id>obeodesignerextension</id>
-			<layout>p2</layout>
-			<url>${od-ext-site}</url>
-		</repository>
-		<repository>
-			<id>eef</id>
-			<layout>p2</layout>
-			<url>${eef-site}</url> 
-		</repository>
+    <repositories>
+        <repository>
+            <id>obeodesigner</id>
+            <layout>p2</layout>
+            <url>${od-site}</url>
+        </repository>
+        <!--
+        <repository>
+            <id>obeodesignerextension</id>
+            <layout>p2</layout>
+            <url>${od-ext-site}</url>
+        </repository>
+        <repository>
+            <id>eef</id>
+            <layout>p2</layout>
+            <url>${eef-site}</url> 
+        </repository>
                  -->
 
-	</repositories>
+    </repositories>
 
-	<build>
-		<sourceDirectory>src</sourceDirectory>
-		<plugins>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>tycho-maven-plugin</artifactId>
-				<version>${tycho-version}</version>
-				<extensions>true</extensions>
-			</plugin>
-			<plugin>
-				<groupId>org.eclipse.tycho</groupId>
-				<artifactId>target-platform-configuration</artifactId>
-				<version>${tycho-version}</version>
-				<configuration>
-					<resolver>p2</resolver>
-				</configuration>
-			</plugin>
-		</plugins>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>tycho-compiler-plugin</artifactId>
-					<version>${tycho-version}</version>
-					<configuration>
-						<encoding>UTF-8</encoding>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>tycho-source-plugin</artifactId>
-					<version>${tycho-version}</version>
-					<executions>
-						<execution>
-							<id>plugin-source</id>
-							<goals>
-								<goal>plugin-source</goal>
-							</goals>
-						</execution>
-					</executions>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-resources-plugin</artifactId>
-					<version>2.4.1</version>
-					<configuration>
-						<encoding>ISO-8859-1</encoding>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-antrun-plugin</artifactId>
-					<version>1.3</version>
-				</plugin>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-pmd-plugin</artifactId>
-					<version>2.5</version>
-					<configuration>
-						<sourceEncoding>utf-8</sourceEncoding>
-						<minimumTokens>100</minimumTokens>
-						<targetJdk>1.5</targetJdk>
-						<format>xml</format>
-						<failOnViolation>false</failOnViolation>
-					</configuration>
-					<executions>
-						<execution>
-							<!-- <goals> <goal>cpd-check</goal> </goals> -->
-						</execution>
-					</executions>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
+    <build>
+        <sourceDirectory>src</sourceDirectory>
+        <plugins>
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>tycho-maven-plugin</artifactId>
+                <version>${tycho-version}</version>
+                <extensions>true</extensions>
+            </plugin>
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>target-platform-configuration</artifactId>
+                <version>${tycho-version}</version>
+                <configuration>
+                    <resolver>p2</resolver>
+                </configuration>
+            </plugin>
+        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.eclipse.tycho</groupId>
+                    <artifactId>tycho-compiler-plugin</artifactId>
+                    <version>${tycho-version}</version>
+                    <configuration>
+                        <encoding>UTF-8</encoding>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.eclipse.tycho</groupId>
+                    <artifactId>tycho-source-plugin</artifactId>
+                    <version>${tycho-version}</version>
+                    <executions>
+                        <execution>
+                            <id>plugin-source</id>
+                            <goals>
+                                <goal>plugin-source</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>2.4.1</version>
+                    <configuration>
+                        <encoding>ISO-8859-1</encoding>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-antrun-plugin</artifactId>
+                    <version>1.3</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-pmd-plugin</artifactId>
+                    <version>2.5</version>
+                    <configuration>
+                        <sourceEncoding>utf-8</sourceEncoding>
+                        <minimumTokens>100</minimumTokens>
+                        <targetJdk>1.5</targetJdk>
+                        <format>xml</format>
+                        <failOnViolation>false</failOnViolation>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <!-- <goals> <goal>cpd-check</goal> </goals> -->
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
-	<profiles>
+    <profiles>
 
-		<profile>
-			<id>checkstyle</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-checkstyle-plugin</artifactId>
-						<version>2.2</version>
-						<executions>
-							<execution>
-								<id>check my sources</id>
-								<goals>
-									<goal>checkstyle</goal>
-								</goals>
-								<phase>verify</phase>
-								<configuration>
-								        <configLocation>./features/org.obeonetwork.dsl.feature.uml2/codestyle/checkstyle.xml</configLocation>
-									<failOnErrors>false</failOnErrors>
-									<consoleOutput>true</consoleOutput>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
+        <profile>
+            <id>od-build</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <modules>
+                <module>features/org.obeonetwork.dsl.feature.uml2</module>
+                <module>features/org.obeonetwork.dsl.uml2.update</module>
+            </modules>
+        </profile>
 
-		<profile>
-			<id>coverage</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<modules>
-				<module>org.eclemma.runtime.equinox</module>
-			</modules>
-		</profile>
+        <profile>
+            <id>checkstyle</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-checkstyle-plugin</artifactId>
+                        <version>2.2</version>
+                        <executions>
+                            <execution>
+                                <id>check my sources</id>
+                                <goals>
+                                    <goal>checkstyle</goal>
+                                </goals>
+                                <phase>verify</phase>
+                                <configuration>
+                                    <configLocation>./features/org.obeonetwork.dsl.feature.uml2/codestyle/checkstyle.xml</configLocation>
+                                    <failOnErrors>false</failOnErrors>
+                                    <consoleOutput>true</consoleOutput>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
 
-		<profile>
-			<!-- This profile should be enabled for sonar analysis-->
-			<id>quality</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<!-- Sonar properties -->
-				<sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
-				<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
-				<!-- Points to the target folder of the global parent project -->
-				<sonar.jacoco.reportPath>../../target/jacoco.exec</sonar.jacoco.reportPath>
-			</properties>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.jacoco</groupId>
-						<artifactId>jacoco-maven-plugin</artifactId>
-						<version>0.5.6.201201232323</version>
-						<executions>
-							<execution>
-								<goals>
-									<goal>prepare-agent</goal>
-								</goals>
-								<configuration>
-									<append>true</append>
-									<destFile>${sonar.jacoco.reportPath}</destFile>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>    
+        <profile>
+            <id>coverage</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <modules>
+                <module>org.eclemma.runtime.equinox</module>
+            </modules>
+        </profile>
 
-	</profiles>
+        <profile>
+            <!-- This profile should be enabled for sonar analysis-->
+            <id>quality</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <!-- Sonar properties -->
+                <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+                <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+                <!-- Points to the target folder of the global parent project -->
+                <sonar.jacoco.reportPath>../../target/jacoco.exec</sonar.jacoco.reportPath>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                        <version>0.5.6.201201232323</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>prepare-agent</goal>
+                                </goals>
+                                <configuration>
+                                    <append>true</append>
+                                    <destFile>${sonar.jacoco.reportPath}</destFile>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>    
+
+    </profiles>
 
 </project>

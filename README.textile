@@ -63,7 +63,9 @@ The build instructions are the same as for an Obeo Designer installation. It wil
 
 To launch the build, go to the root of your git repository and type :
 
-@mvn clean package@
+@mvn clean package -P!od-build@
+
+bq. If you are using bash, you might need to escape the @!@.
 
 
 UML Designer technically only depend on the *Viewpoint* component of Obeo Designer but to ease installation for end user the UML Designer feature specify some explicit dependencies on some of the Obeo Designer features.
