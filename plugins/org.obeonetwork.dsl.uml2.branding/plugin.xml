@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension point="org.eclipse.ui.activities">
+      <!-- EMF MDD Tools -->
+      <activity
+            id="org.eclipse.emf.activity"
+            description="%activity.emf.desc"
+            name="%activity.emf">
+      </activity>
+      <!-- EMF Project and EMF Generator Model wizards and Reload action --> 
+      <activityPatternBinding
+            activityId="org.eclipse.emf.activity"
+            pattern="org\.eclipse\.emf\.codegen\.ecore\.ui/.*">
+      </activityPatternBinding>      
+      <!-- Model importers -->
+      <activityPatternBinding
+            activityId="org.eclipse.emf.activity"
+            pattern="org\.eclipse\.emf\.importer/.*">
+      </activityPatternBinding>
+      <!-- Model exporters -->
+      <activityPatternBinding
+            activityId="org.eclipse.emf.activity"
+            pattern="org\.eclipse\.emf\.exporter/.*">
+      </activityPatternBinding>
+      <!-- Ecore editor -->
+      <activityPatternBinding
+            activityId="org.eclipse.emf.activity"
+            pattern="org\.eclipse\.emf\.ecore\.editor/.*Ecore.*">
+      </activityPatternBinding>
+      <!-- Create Dynamic Instance action -->
+      <activityPatternBinding
+            activityId="org.eclipse.emf.activity"
+            pattern="org\.eclipse\.emf\.ecore\.editor/.*CreateDynamic.*">
+      </activityPatternBinding>
+      <!-- XML Schema to Ecore mapping -->
+      <activityPatternBinding
+            activityId="org.eclipse.emf.activity"
+            pattern="org\.eclipse\.emf\.mapping\.xsd2ecore\.editor/.*">
+      </activityPatternBinding>
+      <!-- Ecore to Ecore mapping -->
+      <activityPatternBinding
+            activityId="org.eclipse.emf.activity"
+            pattern="org\.eclipse\.emf\.mapping\.ecore2ecore\.editor/.*">
+      </activityPatternBinding>
+      <!-- Ecore to XML mapping -->
+      <activityPatternBinding
+            activityId="org.eclipse.emf.activity"
+            pattern="org\.eclipse\.emf\.mapping\.ecore2xml\.ui/.*">
+      </activityPatternBinding>
+      <!-- Validation -->
+      <activityPatternBinding
+            activityId="org.eclipse.emf.activity"
+            pattern="org\.eclipse\.emf\.validation\.ui/.*">
+      </activityPatternBinding>      
+
+      <!-- Reflective Editors -->
+      <activity
+            id="org.eclipse.emf.reflective.activity"
+            description="%activity.emf.reflective.desc"
+            name="%activity.emf.reflective">
+      </activity>
+      <activityPatternBinding
+            activityId="org.eclipse.emf.reflective.activity"
+            pattern="org\.eclipse\.emf\.ecore\.editor/.Open*">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="org.eclipse.emf.reflective.activity"
+            pattern="org\.eclipse\.emf\.ecore\.editor/.*Reflective.*">
+      </activityPatternBinding>
+
+      <!-- EMF JET -->
+      <activity
+            id="org.eclipse.emf.jet.activity"
+            description="%activity.emf.jet.desc"
+            name="%activity.emf.jet">
+      </activity>
+      <activityPatternBinding
+            activityId="org.eclipse.emf.jet.activity"
+            pattern="org\.eclipse\.emf\.codegen\.ui/.*">
+      </activityPatternBinding>
+
+      <!-- Sample XML Schema Editor -->
+      <activity
+            id="org.eclipse.xsd.activity"
+            description="%activity.xsd.desc"
+            name="%activity.xsd">
+      </activity>
+      <activityPatternBinding
+            activityId="org.eclipse.xsd.activity"
+            pattern="org\.eclipse\.xsd\.editor/.*">
+      </activityPatternBinding>
+
+      <!-- EMF Examples -->
+      <activity
+            id="org.eclipse.emf.examples.activity"
+            description="%activity.emf.examples.desc"
+            name="%activity.emf.examples">
+      </activity>
+      <activityPatternBinding
+            activityId="org.eclipse.emf.examples.activity"
+            pattern="org\.eclipse\.emf\.example\.installer/.*">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="org.eclipse.emf.examples.activity"
+            pattern="org\.eclipse\.xsd\.example\.installer/.*">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="org.eclipse.emf.examples.activity"
+            pattern="org\.eclipse\.emf\.examples\.library\.editor/.*">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="org.eclipse.emf.examples.activity"
+            pattern="org\.eclipse\.emf\.query\.examples/.*">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="org.eclipse.emf.examples.activity"
+            pattern="org\.eclipse\.emf\.transaction\.examples/.*">
+      </activityPatternBinding>
+      <activityPatternBinding
+            activityId="org.eclipse.emf.examples.activity"
+            pattern="org\.eclipse\.emf\.validation\.examples/.*">
+      </activityPatternBinding>
+
+      <!-- The category should be something that makes sense for the product -->
+      <category
+            description="%activity.cat.emf.desc"
+            id="org.eclipse.emf.Category"
+            name="%activity.cat.emf">
+      </category>
+
+      <categoryActivityBinding
+            activityId="org.eclipse.emf.activity"
+            categoryId="org.eclipse.emf.Category">
+      </categoryActivityBinding>
+      <categoryActivityBinding
+            activityId="org.eclipse.emf.reflective.activity"
+            categoryId="org.eclipse.emf.Category">
+      </categoryActivityBinding>
+      <categoryActivityBinding
+            activityId="org.eclipse.emf.jet.activity"
+            categoryId="org.eclipse.emf.Category">
+      </categoryActivityBinding>
+      <categoryActivityBinding
+            activityId="org.eclipse.xsd.activity"
+            categoryId="org.eclipse.emf.Category">
+      </categoryActivityBinding>
+      <categoryActivityBinding
+            activityId="org.eclipse.emf.examples.activity"
+            categoryId="org.eclipse.emf.Category">
+      </categoryActivityBinding>
+    
+    
+     <!-- Viewpoint Specification -->
+      <activity
+            id="fr.obeo.dsl.viewpoint.specification.activity"
+            description="Viewpoint specification"
+            name="viewpointspecification">
+      </activity>
+      <activityPatternBinding
+            activityId="fr.obeo.dsl.viewpoint.specification.activity"
+            pattern=".*/fr.obeo.dsl.viewpoint.ui.specificationproject.wizard">
+      </activityPatternBinding>
+    
+     <categoryActivityBinding
+            activityId="fr.obeo.dsl.viewpoint.specification.activity"
+            categoryId="org.eclipse.emf.Category">
+      </categoryActivityBinding>
+   </extension>
+    
+    
+   <extension point="org.eclipse.core.runtime.products" id="product">
+    <product name="UML Designer" application="org.eclipse.ui.ide.workbench">
+      <property name="windowImages" value="icons/logo_16.gif,icons/logo_32.gif,icons/logo_64.gif"/>
+      <property name="appName" value="UML Designer"/>
+      <property name="aboutImage" value="icons/about.gif"/>
+      <property name="aboutText" value="UML Designer &#x0A;&#x0A;Version  6.1.0&#x0A;&#x0A;&#x0A;(c) Copyright (c) 2005-2012 Obeo. All Rights Reserved.&#x0A;Viewpoint Specification : (c) Copyright (c) 2005-2012 Thales.&#x0A;&#x0A;Visit http://www.obeo.fr"/>
+      <property name="startupForegroundColor" value="000000"/>
+      <property name="startupMessageRect" value="3,300,495,15"/>
+      <property name="startupProgressRect" value="3,315,495,15"/>
+      <property name="preferenceCustomization" value="plugin_customization.ini"/>
+    </product>
+  </extension>
+    
+    
+</plugin>

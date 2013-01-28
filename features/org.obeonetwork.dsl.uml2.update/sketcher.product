@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="UML Designer" uid="org.obeonetwork.dsl.uml2.product" id="org.obeonetwork.dsl.uml2.product" application="org.eclipse.ui.ide.workbench" version="6.1.0.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="UML Designer" uid="org.obeonetwork.dsl.uml2.branding.product" id="org.obeonetwork.dsl.uml2.branding.product" application="org.eclipse.ui.ide.workbench" version="2.0.0.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="icons/about.gif"/>
@@ -33,7 +33,7 @@ Visit http://www.obeo.fr
    <windowImages i16="icons/logo_16.png" i32="icons/logo_32.png" i48="icons/logo_48.png" i64="icons/logo_64.png" i128="icons/logo_128.png"/>
 
    <splash
-      location="fr.obeo.dsl.designer"
+      location="org.obeonetwork.dsl.uml2.branding"
       startupProgressRect="0,328,458,18"
       startupMessageRect="7,308,458,18"
       startupForegroundColor="000000" />
@@ -46,7 +46,7 @@ Visit http://www.obeo.fr
       </win>
    </launcher>
 
-   <intro introId="fr.obeo.dsl.designer.architect.intro"/>
+   <intro introId="org.eclipse.ui.intro.universal"/>
 
    <vm>
       <linux include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6</linux>
@@ -125,6 +125,7 @@ The user is not authorized to install or make a technical means to hide within t
       <feature id="fr.obeo.dsl.viewpoint.runtime.ide.ui"/>      
       <feature id="fr.obeo.dsl.viewpoint.runtime"/>
       <feature id="org.eclipse.platform"/>
+      <feature id="fr.obeo.dsl.feature.designer.gen.html"/>
    </features>
 
    <configurations>

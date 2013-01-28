@@ -3,7 +3,8 @@
       id="fr.obeo.dsl.feature.uml2"
       label="UML Designer"
       version="2.0.0.qualifier"
-      provider-name="Obeo">
+      provider-name="Obeo"
+      plugin="org.obeonetwork.dsl.uml2.branding">
 
    <description url="http://docs.obeonetwork.com/uml">
       This modeler provides a set of common diagrams to work with
@@ -222,6 +223,13 @@ litigation.
 
    <plugin
          id="org.obeonetwork.dsl.uml2.design"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.obeonetwork.dsl.uml2.branding"
          download-size="0"
          install-size="0"
          version="0.0.0"

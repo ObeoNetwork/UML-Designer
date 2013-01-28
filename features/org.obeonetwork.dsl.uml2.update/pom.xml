@@ -26,7 +26,7 @@
     <version>2.0.0-SNAPSHOT</version>
 
     <properties>
-        <product-id>org.obeonetwork.dsl.uml2.product</product-id>
+        <product-id>org.obeonetwork.dsl.uml2.branding.product</product-id>
     </properties>
 
     <build>
