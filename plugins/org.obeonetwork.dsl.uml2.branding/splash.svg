@@ -26,15 +26,15 @@
      borderopacity="1"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:zoom="4.0000001"
-     inkscape:cx="318.04886"
-     inkscape:cy="86.67253"
+     inkscape:zoom="1"
+     inkscape:cx="205.88712"
+     inkscape:cy="225.59712"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1680"
-     inkscape:window-height="1030"
-     inkscape:window-x="1363"
+     inkscape:window-width="1366"
+     inkscape:window-height="721"
+     inkscape:window-x="-3"
      inkscape:window-y="-3"
      inkscape:window-maximized="1"
      inkscape:snap-global="false"
@@ -56,8 +56,8 @@
        inkscape:collect="always"
        xlink:href="#linearGradient6215"
        id="linearGradient6221"
-       x1="55.568539"
-       y1="127.76746"
+       x1="53.643234"
+       y1="170.0797"
        x2="-106.48027"
        y2="676.4823"
        gradientUnits="userSpaceOnUse"
@@ -81,7 +81,7 @@
      inkscape:groupmode="layer"
      inkscape:label="Calque 1">
     <rect
-       style="fill:url(#linearGradient6221);fill-opacity:1;stroke:#a3acb3;stroke-width:2.10217285;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       style="fill:url(#linearGradient6221);fill-opacity:1;stroke:#a3acb3;stroke-width:2.10217285000000009;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
        id="rect6213"
        width="527.39941"
        height="353.45123"
@@ -318,21 +318,23 @@
          y="1012.7357"
          x="312.38571"
          id="tspan3092"
-         sodipodi:role="line">powered by Obeo Designer</tspan></text>
+         sodipodi:role="line"
+         style="-inkscape-font-specification:RondaEF;font-family:RondaEF;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal">powered by Obeo Designer</tspan></text>
     <text
        sodipodi:linespacing="125%"
        id="text3094"
-       y="995.03351"
-       x="310.50516"
-       style="font-size:22px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+       y="990.70599"
+       x="288.10287"
+       style="font-size:27.53130913px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
        xml:space="preserve"><tspan
-         y="995.03351"
-         x="310.50516"
+         y="990.70599"
+         x="288.10287"
          id="tspan3096"
-         sodipodi:role="line"><tspan
-           style="font-size:40px"
+         sodipodi:role="line"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:RondaEF;-inkscape-font-specification:RondaEF"><tspan
+           style="font-size:50.05692673px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:RondaEF;-inkscape-font-specification:RondaEF"
            id="tspan6211">uml</tspan><tspan
-           style="font-size:22px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans"
+           style="font-size:27.53130913px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;font-family:RondaEF;-inkscape-font-specification:RondaEF"
            id="tspan6205"> designer</tspan></tspan></text>
     <path
        sodipodi:nodetypes="csc"
@@ -348,7 +350,7 @@
        style="fill:none;stroke:#8eb5de;stroke-width:0.89999998;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
     <path
        transform="matrix(1.2168675,0,0,1.2168675,-6.3378109,685.56148)"
-       d="m 129.29953,110.29182 a 41.921329,41.921329 0 1 1 -83.842663,0 41.921329,41.921329 0 1 1 83.842663,0 z"
+       d="m 129.29953,110.29182 c 0,23.15251 -18.76882,41.92133 -41.921333,41.92133 -23.152511,0 -41.92133,-18.76882 -41.92133,-41.92133 0,-23.152514 18.768819,-41.921333 41.92133,-41.921333 23.152513,0 41.921333,18.768819 41.921333,41.921333 z"
        sodipodi:ry="41.921329"
        sodipodi:rx="41.921329"
        sodipodi:cy="110.29182"
