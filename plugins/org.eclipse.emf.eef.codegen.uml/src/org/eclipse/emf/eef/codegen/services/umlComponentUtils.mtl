@@ -1,0 +1,31 @@
+[comment 
+ *******************************************************************************
+ * Copyright (c) 2008-2010 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************
+ /]
+[module umlComponentUtils('http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore') extends org::eclipse::emf::eef::codegen::widgets::impl::checkbox::checkboxControl/]
+
+[import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::naming /]
+[import org::eclipse::emf::eef::codegen::services::typeUtils /]
+
+[template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides updater ? (editionElement.model.isAttributeSingle() and editionElement.representationName('Checkbox'))]
+[if (editionElement.model.oclAsType("EAttribute").eType.instanceClassName = 'boolean')]
+	[if (editionElement.model.name.startsWith('is'))]
+[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([pec.model.name.toJavaIdentifier()/].[editionElement.model.name.toJavaClassifier().toLowerFirst()/]());
+	[else]
+[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([pec.model.name.toJavaIdentifier()/].is[editionElement.model.name.toJavaClassifier()/]());
+	[/if]
+[elseif (editionElement.model.oclAsType(ecore::EAttribute).isBoolean())]
+[view.viewIdentifier(pec)/].[editionElement.views->first().viewPackageSetter()/]([pec.model.name.toJavaIdentifier()/].get[editionElement.model.name.toJavaClassifier()/]());
+[else]
+//FIXME invalid case in updater(), Case : model = Attribute(1) : [editionElement.model.name/] - view = Checkbox
+[/if]
+[/template]

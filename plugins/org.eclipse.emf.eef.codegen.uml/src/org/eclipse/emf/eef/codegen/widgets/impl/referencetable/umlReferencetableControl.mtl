@@ -1,0 +1,26 @@
+[comment 
+ *******************************************************************************
+ * Copyright (c) 2008-2010 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************
+ /]
+[module umlReferencetableControl('http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/2002/GenModel', 'http://www.eclipse.org/emf/eef/mapping/1.0.0', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/generation/1.0.0') extends org::eclipse::emf::eef::codegen::widgets::impl::referencetable::referencetableControl/]
+
+[import org::eclipse::emf::eef::codegen::services::imports /]
+[import org::eclipse::emf::eef::codegen::services::common /]
+
+[comment ==== To extend the component==== /]
+[template public additionalComponentField(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) overrides additionalComponentField ? (editionElement.validCaseForSimpleReference())]
+
+/**
+ * Settings for [editionElement.name/] ReferencesTable
+ */
+protected [include('org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings')/] [editionElement.name.toJavaIdentifier()/]Settings;
+
+[/template]

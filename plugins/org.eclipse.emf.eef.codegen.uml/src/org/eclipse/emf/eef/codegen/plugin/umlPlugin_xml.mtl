@@ -1,0 +1,120 @@
+[comment encoding = UTF-8
+ *******************************************************************************
+ * Copyright (c) 2008-2009 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************
+ /]
+[module umlPlugin_xml('http://www.eclipse.org/emf/eef/components/1.0.0', 'http://www.eclipse.org/emf/eef/views/1.0.0', 'http://www.eclipse.org/emf/2002/Ecore', 'http://www.eclipse.org/emf/2002/GenModel', 'http://www.eclipse.org/emf/eef/generation/1.0.0') extends org::eclipse::emf::eef::codegen::plugin::plugin_xml/]
+
+[import org::eclipse::emf::eef::codegen::services::common /]
+[import org::eclipse::emf::eef::codegen::services::naming /]
+[import org::eclipse::emf::eef::codegen::services::pluginservice /]
+
+[template public plugin_xml(editionContext : PropertiesEditionContext, basePackage : String)]
+	[file (editionContext.model.ecorePackage.name.concat('_properties.plugin.xml'), false)]
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+ <plugin>
+
+  <!-- EEF extensions -->
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
+            uri="[editionContext.model.ecorePackage.nsURI/]"
+            class="[editionContext.providersPackage()/].[editionContext.model.ecorePackage.pecPackageProviderClass()/]"
+            supportedTypes="org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider"/>
+   </extension>
+[for (genViewRepository : GenViewsRepository | editionContext.associatedGenModel().viewsRepositories)]
+   <extension
+         point="org.eclipse.emf.eef.runtime.PropertiesEditionPartProvider">
+      <PropertiesEditionPartProvider
+            providerClass="[genViewRepository.viewsRepository.pepQualifiedProvider()/]">
+      </PropertiesEditionPartProvider>
+   </extension>
+[/for]
+
+  <!-- Tabbed properties views extension -->
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+      <propertyContributor
+            contributorId="[editionContext.contributorID(basePackage).trim()/]"
+            labelProvider="org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider">
+         <propertyCategory
+               category="default">
+         </propertyCategory>
+         <propertyCategory
+               category="extended">
+         </propertyCategory>
+         <propertyCategory
+               category="advanced">
+         </propertyCategory>
+      </propertyContributor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs
+            contributorId="[editionContext.contributorID(basePackage).trim()/]">
+[for (entry : Sequence(OclAny) | editionContext.getPluginTabs())]
+[editionContext.propertyTab(basePackage, entry -> at(1).oclAsType(View), entry -> at(2).oclAsType(PropertiesEditionComponent))/]
+[/for]
+      <propertyTab
+            id="Relationships"
+            label="Relationships"
+            category="extended"
+            afterTab="Attributes">
+         </propertyTab>
+
+         <propertyTab
+             id="Stereotypes"
+             label="Stereotypes"
+             category="extended"
+             afterTab="Relationships">
+         </propertyTab>
+      </propertyTabs>
+   </extension>
+[propertySections(editionContext, basePackage)/]
+ </plugin>
+[/file]
+[/template]
+
+[template public propertySections(editionContext : PropertiesEditionContext, basePackage : String)]
+[let pecs : Sequence(PropertiesEditionComponent) = 
+	editionContext.eAllContents(PropertiesEditionComponent).oclAsType(PropertiesEditionComponent) -> 
+		select(mustBeGenerated() and explicit and model.oclIsTypeOf(EClass) and not model.oclAsType(EClass).abstract)]
+[if (not (pecs -> isEmpty()))]
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections
+            contributorId="[editionContext.contributorID(basePackage).trim()/]">
+[for (pec : PropertiesEditionComponent | pecs)]
+[for (view : View | pec.involvedViews())]
+         <propertySection
+               class="[view.pepFormQualifiedClass()/]"
+               filter="[pec.pecProviderQualifiedClass()/]$EditionFilter"
+               id="[pec.model.eefPackage(basePackage)/].section.[pec.pecModelClass()/]"
+               tab="[view.genTabId(pec)/]">
+         </propertySection>
+          <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.RelationshipsPropertiesEditionPartForm"
+               filter="[pec.pecProviderQualifiedClass()/]$EditionFilter"
+               id="[pec.model.eefPackage(basePackage)/].section.[pec.pecModelClass()/]"
+               tab="Relationships">
+         </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.StereotypesPropertiesEditionPartForm"
+               filter="[pec.pecProviderQualifiedClass()/]$EditionFilter"
+               id="[pec.model.eefPackage(basePackage)/].section.[pec.pecModelClass()/]"
+               tab="Stereotypes">
+         </propertySection>
+[/for]
+[/for]
+      </propertySections>
+   </extension>[/if]
+[/let]
+[/template]
