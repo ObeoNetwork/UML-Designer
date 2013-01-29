@@ -10,6 +10,10 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.providers;
 
+import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Package;
+import org.eclipse.uml2.uml.VisibilityKind;
+
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -22,20 +26,23 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
-import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
-
 import org.eclipse.jface.viewers.IFilter;
 
 import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.UMLPackage;
 
+import org.obeonetwork.dsl.uml2.properties.providers.UmlPropertiesEditionProvider;
+
+import org.obeonetwork.dsl.uml2.properties.uml.components.DataTypeAttributesPropertiesEditionComponent;
+import org.obeonetwork.dsl.uml2.properties.uml.components.DataTypeDocumentationPropertiesEditionComponent;
+import org.obeonetwork.dsl.uml2.properties.uml.components.DataTypeGeneralPropertiesEditionComponent;
 import org.obeonetwork.dsl.uml2.properties.uml.components.DataTypePropertiesEditionComponent;
 
 /**
  * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
  * @generated
  */
-public class DataTypePropertiesEditionProvider extends PropertiesEditingProviderImpl {
+public class DataTypePropertiesEditionProvider extends UmlPropertiesEditionProvider {
 
 	/**
 	 * Constructor without provider for super types.
@@ -58,9 +65,9 @@ public class DataTypePropertiesEditionProvider extends PropertiesEditingProvider
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-    return (editingContext.getEObject() instanceof DataType) 
-          && (UMLPackage.Literals.DATA_TYPE == editingContext.getEObject().eClass());
-  }
+		return (editingContext.getEObject() instanceof DataType) 
+					&& (UMLPackage.Literals.DATA_TYPE == editingContext.getEObject().eClass());
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +75,8 @@ public class DataTypePropertiesEditionProvider extends PropertiesEditingProvider
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-    return (editingContext.getEObject() instanceof DataType) && (DataTypePropertiesEditionComponent.BASE_PART.equals(part));
-  }
+		return (editingContext.getEObject() instanceof DataType) && (DataTypeGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) || DataTypeDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) || DataTypeAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part));
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +85,8 @@ public class DataTypePropertiesEditionProvider extends PropertiesEditingProvider
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-    return (editingContext.getEObject() instanceof DataType) && (refinement == DataTypePropertiesEditionComponent.class);
-  }
+		return (editingContext.getEObject() instanceof DataType) && (refinement == DataTypeGeneralPropertiesEditionComponent.class || refinement == DataTypeDocumentationPropertiesEditionComponent.class || refinement == DataTypeAttributesPropertiesEditionComponent.class);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +95,8 @@ public class DataTypePropertiesEditionProvider extends PropertiesEditingProvider
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-    return (editingContext.getEObject() instanceof DataType) && ((DataTypePropertiesEditionComponent.BASE_PART.equals(part) && refinement == DataTypePropertiesEditionComponent.class));
-  }
+		return (editingContext.getEObject() instanceof DataType) && ((DataTypeGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == DataTypeGeneralPropertiesEditionComponent.class) || (DataTypeDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == DataTypeDocumentationPropertiesEditionComponent.class) || (DataTypeAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part) && refinement == DataTypeAttributesPropertiesEditionComponent.class));
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +104,11 @@ public class DataTypePropertiesEditionProvider extends PropertiesEditingProvider
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-    if (editingContext.getEObject() instanceof DataType) {
-      return new DataTypePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-    }
-    return super.getPropertiesEditingComponent(editingContext, mode);
-  }
+		if (editingContext.getEObject() instanceof DataType) {
+			return new DataTypePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		}
+		return super.getPropertiesEditingComponent(editingContext, mode);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +116,16 @@ public class DataTypePropertiesEditionProvider extends PropertiesEditingProvider
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-    if (editingContext.getEObject() instanceof DataType) {
-      if (DataTypePropertiesEditionComponent.BASE_PART.equals(part))
-        return new DataTypePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-    }
-    return super.getPropertiesEditingComponent(editingContext, mode, part);
-  }
+		if (editingContext.getEObject() instanceof DataType) {
+			if (DataTypeGeneralPropertiesEditionComponent.GENERAL_PART.equals(part))
+				return new DataTypeGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (DataTypeDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part))
+				return new DataTypeDocumentationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (DataTypeAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part))
+				return new DataTypeAttributesPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		}
+		return super.getPropertiesEditingComponent(editingContext, mode, part);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -123,9 +134,15 @@ public class DataTypePropertiesEditionProvider extends PropertiesEditingProvider
 	@SuppressWarnings("rawtypes")
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
 		if (editingContext.getEObject() instanceof DataType) {
-			if (DataTypePropertiesEditionComponent.BASE_PART.equals(part)
-				&& refinement == DataTypePropertiesEditionComponent.class)
-				return new DataTypePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (DataTypeGeneralPropertiesEditionComponent.GENERAL_PART.equals(part)
+				&& refinement == DataTypeGeneralPropertiesEditionComponent.class)
+				return new DataTypeGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (DataTypeDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part)
+				&& refinement == DataTypeDocumentationPropertiesEditionComponent.class)
+				return new DataTypeDocumentationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (DataTypeAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part)
+				&& refinement == DataTypeAttributesPropertiesEditionComponent.class)
+				return new DataTypeAttributesPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}

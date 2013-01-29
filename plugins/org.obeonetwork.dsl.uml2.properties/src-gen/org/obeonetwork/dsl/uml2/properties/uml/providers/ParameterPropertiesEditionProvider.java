@@ -10,6 +10,10 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.providers;
 
+import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Package;
+import org.eclipse.uml2.uml.VisibilityKind;
+
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -22,20 +26,22 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
-import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
-
 import org.eclipse.jface.viewers.IFilter;
 
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.UMLPackage;
 
+import org.obeonetwork.dsl.uml2.properties.providers.UmlPropertiesEditionProvider;
+
+import org.obeonetwork.dsl.uml2.properties.uml.components.ParameterDocumentationPropertiesEditionComponent;
+import org.obeonetwork.dsl.uml2.properties.uml.components.ParameterGeneralPropertiesEditionComponent;
 import org.obeonetwork.dsl.uml2.properties.uml.components.ParameterPropertiesEditionComponent;
 
 /**
  * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
  * @generated
  */
-public class ParameterPropertiesEditionProvider extends PropertiesEditingProviderImpl {
+public class ParameterPropertiesEditionProvider extends UmlPropertiesEditionProvider {
 
 	/**
 	 * Constructor without provider for super types.
@@ -58,9 +64,9 @@ public class ParameterPropertiesEditionProvider extends PropertiesEditingProvide
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-    return (editingContext.getEObject() instanceof Parameter) 
-          && (UMLPackage.Literals.PARAMETER == editingContext.getEObject().eClass());
-  }
+		return (editingContext.getEObject() instanceof Parameter) 
+					&& (UMLPackage.Literals.PARAMETER == editingContext.getEObject().eClass());
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +74,8 @@ public class ParameterPropertiesEditionProvider extends PropertiesEditingProvide
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-    return (editingContext.getEObject() instanceof Parameter) && (ParameterPropertiesEditionComponent.BASE_PART.equals(part));
-  }
+		return (editingContext.getEObject() instanceof Parameter) && (ParameterGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) || ParameterDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +84,8 @@ public class ParameterPropertiesEditionProvider extends PropertiesEditingProvide
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-    return (editingContext.getEObject() instanceof Parameter) && (refinement == ParameterPropertiesEditionComponent.class);
-  }
+		return (editingContext.getEObject() instanceof Parameter) && (refinement == ParameterGeneralPropertiesEditionComponent.class || refinement == ParameterDocumentationPropertiesEditionComponent.class);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +94,8 @@ public class ParameterPropertiesEditionProvider extends PropertiesEditingProvide
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-    return (editingContext.getEObject() instanceof Parameter) && ((ParameterPropertiesEditionComponent.BASE_PART.equals(part) && refinement == ParameterPropertiesEditionComponent.class));
-  }
+		return (editingContext.getEObject() instanceof Parameter) && ((ParameterGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == ParameterGeneralPropertiesEditionComponent.class) || (ParameterDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == ParameterDocumentationPropertiesEditionComponent.class));
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +103,11 @@ public class ParameterPropertiesEditionProvider extends PropertiesEditingProvide
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-    if (editingContext.getEObject() instanceof Parameter) {
-      return new ParameterPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-    }
-    return super.getPropertiesEditingComponent(editingContext, mode);
-  }
+		if (editingContext.getEObject() instanceof Parameter) {
+			return new ParameterPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		}
+		return super.getPropertiesEditingComponent(editingContext, mode);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +115,14 @@ public class ParameterPropertiesEditionProvider extends PropertiesEditingProvide
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-    if (editingContext.getEObject() instanceof Parameter) {
-      if (ParameterPropertiesEditionComponent.BASE_PART.equals(part))
-        return new ParameterPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-    }
-    return super.getPropertiesEditingComponent(editingContext, mode, part);
-  }
+		if (editingContext.getEObject() instanceof Parameter) {
+			if (ParameterGeneralPropertiesEditionComponent.GENERAL_PART.equals(part))
+				return new ParameterGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (ParameterDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part))
+				return new ParameterDocumentationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		}
+		return super.getPropertiesEditingComponent(editingContext, mode, part);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -123,9 +131,12 @@ public class ParameterPropertiesEditionProvider extends PropertiesEditingProvide
 	@SuppressWarnings("rawtypes")
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
 		if (editingContext.getEObject() instanceof Parameter) {
-			if (ParameterPropertiesEditionComponent.BASE_PART.equals(part)
-				&& refinement == ParameterPropertiesEditionComponent.class)
-				return new ParameterPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (ParameterGeneralPropertiesEditionComponent.GENERAL_PART.equals(part)
+				&& refinement == ParameterGeneralPropertiesEditionComponent.class)
+				return new ParameterGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (ParameterDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part)
+				&& refinement == ParameterDocumentationPropertiesEditionComponent.class)
+				return new ParameterDocumentationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}

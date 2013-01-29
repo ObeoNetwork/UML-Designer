@@ -10,12 +10,12 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.ui.views.properties.tabbed,
  org.eclipse.emf.eef.runtime;bundle-version="1.2.0",
  org.eclipse.uml2.uml,
- org.eclipse.uml2.uml.edit
+ org.eclipse.uml2.uml.edit,
+ org.obeonetwork.dsl.uml2.design;bundle-version="2.0.0"
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ActivationPolicy: lazy
 Export-Package: org.obeonetwork.dsl.uml2.properties,
  org.obeonetwork.dsl.uml2.properties.uml.components,
  org.obeonetwork.dsl.uml2.properties.uml.parts,
- org.obeonetwork.dsl.uml2.properties.uml.parts.forms,
- org.obeonetwork.dsl.uml2.properties.uml.parts.impl,
  org.obeonetwork.dsl.uml2.properties.uml.providers
+Import-Package: org.obeonetwork.dsl.uml2.properties.uml.providers

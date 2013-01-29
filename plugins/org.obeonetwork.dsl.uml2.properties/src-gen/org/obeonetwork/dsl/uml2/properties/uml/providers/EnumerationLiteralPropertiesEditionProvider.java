@@ -10,6 +10,10 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.providers;
 
+import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Package;
+import org.eclipse.uml2.uml.VisibilityKind;
+
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -22,20 +26,22 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
-import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
-
 import org.eclipse.jface.viewers.IFilter;
 
 import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.UMLPackage;
 
+import org.obeonetwork.dsl.uml2.properties.providers.UmlPropertiesEditionProvider;
+
+import org.obeonetwork.dsl.uml2.properties.uml.components.EnumerationLiteralDocumentationPropertiesEditionComponent;
+import org.obeonetwork.dsl.uml2.properties.uml.components.EnumerationLiteralGeneralPropertiesEditionComponent;
 import org.obeonetwork.dsl.uml2.properties.uml.components.EnumerationLiteralPropertiesEditionComponent;
 
 /**
  * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
  * @generated
  */
-public class EnumerationLiteralPropertiesEditionProvider extends PropertiesEditingProviderImpl {
+public class EnumerationLiteralPropertiesEditionProvider extends UmlPropertiesEditionProvider {
 
 	/**
 	 * Constructor without provider for super types.
@@ -58,9 +64,9 @@ public class EnumerationLiteralPropertiesEditionProvider extends PropertiesEditi
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-    return (editingContext.getEObject() instanceof EnumerationLiteral) 
-          && (UMLPackage.Literals.ENUMERATION_LITERAL == editingContext.getEObject().eClass());
-  }
+		return (editingContext.getEObject() instanceof EnumerationLiteral) 
+					&& (UMLPackage.Literals.ENUMERATION_LITERAL == editingContext.getEObject().eClass());
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +74,8 @@ public class EnumerationLiteralPropertiesEditionProvider extends PropertiesEditi
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-    return (editingContext.getEObject() instanceof EnumerationLiteral) && (EnumerationLiteralPropertiesEditionComponent.BASE_PART.equals(part));
-  }
+		return (editingContext.getEObject() instanceof EnumerationLiteral) && (EnumerationLiteralGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) || EnumerationLiteralDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +84,8 @@ public class EnumerationLiteralPropertiesEditionProvider extends PropertiesEditi
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-    return (editingContext.getEObject() instanceof EnumerationLiteral) && (refinement == EnumerationLiteralPropertiesEditionComponent.class);
-  }
+		return (editingContext.getEObject() instanceof EnumerationLiteral) && (refinement == EnumerationLiteralGeneralPropertiesEditionComponent.class || refinement == EnumerationLiteralDocumentationPropertiesEditionComponent.class);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +94,8 @@ public class EnumerationLiteralPropertiesEditionProvider extends PropertiesEditi
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-    return (editingContext.getEObject() instanceof EnumerationLiteral) && ((EnumerationLiteralPropertiesEditionComponent.BASE_PART.equals(part) && refinement == EnumerationLiteralPropertiesEditionComponent.class));
-  }
+		return (editingContext.getEObject() instanceof EnumerationLiteral) && ((EnumerationLiteralGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == EnumerationLiteralGeneralPropertiesEditionComponent.class) || (EnumerationLiteralDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == EnumerationLiteralDocumentationPropertiesEditionComponent.class));
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +103,11 @@ public class EnumerationLiteralPropertiesEditionProvider extends PropertiesEditi
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-    if (editingContext.getEObject() instanceof EnumerationLiteral) {
-      return new EnumerationLiteralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-    }
-    return super.getPropertiesEditingComponent(editingContext, mode);
-  }
+		if (editingContext.getEObject() instanceof EnumerationLiteral) {
+			return new EnumerationLiteralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		}
+		return super.getPropertiesEditingComponent(editingContext, mode);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +115,14 @@ public class EnumerationLiteralPropertiesEditionProvider extends PropertiesEditi
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-    if (editingContext.getEObject() instanceof EnumerationLiteral) {
-      if (EnumerationLiteralPropertiesEditionComponent.BASE_PART.equals(part))
-        return new EnumerationLiteralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-    }
-    return super.getPropertiesEditingComponent(editingContext, mode, part);
-  }
+		if (editingContext.getEObject() instanceof EnumerationLiteral) {
+			if (EnumerationLiteralGeneralPropertiesEditionComponent.GENERAL_PART.equals(part))
+				return new EnumerationLiteralGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (EnumerationLiteralDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part))
+				return new EnumerationLiteralDocumentationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		}
+		return super.getPropertiesEditingComponent(editingContext, mode, part);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -123,9 +131,12 @@ public class EnumerationLiteralPropertiesEditionProvider extends PropertiesEditi
 	@SuppressWarnings("rawtypes")
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
 		if (editingContext.getEObject() instanceof EnumerationLiteral) {
-			if (EnumerationLiteralPropertiesEditionComponent.BASE_PART.equals(part)
-				&& refinement == EnumerationLiteralPropertiesEditionComponent.class)
-				return new EnumerationLiteralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (EnumerationLiteralGeneralPropertiesEditionComponent.GENERAL_PART.equals(part)
+				&& refinement == EnumerationLiteralGeneralPropertiesEditionComponent.class)
+				return new EnumerationLiteralGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (EnumerationLiteralDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part)
+				&& refinement == EnumerationLiteralDocumentationPropertiesEditionComponent.class)
+				return new EnumerationLiteralDocumentationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}

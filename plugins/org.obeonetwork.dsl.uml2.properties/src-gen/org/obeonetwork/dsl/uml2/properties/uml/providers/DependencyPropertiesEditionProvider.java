@@ -10,6 +10,10 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.providers;
 
+import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Package;
+import org.eclipse.uml2.uml.VisibilityKind;
+
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -22,20 +26,22 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
-import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
-
 import org.eclipse.jface.viewers.IFilter;
 
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.UMLPackage;
 
+import org.obeonetwork.dsl.uml2.properties.providers.UmlPropertiesEditionProvider;
+
+import org.obeonetwork.dsl.uml2.properties.uml.components.DependencyDocumentationPropertiesEditionComponent;
+import org.obeonetwork.dsl.uml2.properties.uml.components.DependencyGeneralPropertiesEditionComponent;
 import org.obeonetwork.dsl.uml2.properties.uml.components.DependencyPropertiesEditionComponent;
 
 /**
  * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
  * @generated
  */
-public class DependencyPropertiesEditionProvider extends PropertiesEditingProviderImpl {
+public class DependencyPropertiesEditionProvider extends UmlPropertiesEditionProvider {
 
 	/**
 	 * Constructor without provider for super types.
@@ -58,9 +64,9 @@ public class DependencyPropertiesEditionProvider extends PropertiesEditingProvid
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-    return (editingContext.getEObject() instanceof Dependency) 
-          && (UMLPackage.Literals.DEPENDENCY == editingContext.getEObject().eClass());
-  }
+		return (editingContext.getEObject() instanceof Dependency) 
+					&& (UMLPackage.Literals.DEPENDENCY == editingContext.getEObject().eClass());
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +74,8 @@ public class DependencyPropertiesEditionProvider extends PropertiesEditingProvid
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-    return (editingContext.getEObject() instanceof Dependency) && (DependencyPropertiesEditionComponent.BASE_PART.equals(part));
-  }
+		return (editingContext.getEObject() instanceof Dependency) && (DependencyGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) || DependencyDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +84,8 @@ public class DependencyPropertiesEditionProvider extends PropertiesEditingProvid
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-    return (editingContext.getEObject() instanceof Dependency) && (refinement == DependencyPropertiesEditionComponent.class);
-  }
+		return (editingContext.getEObject() instanceof Dependency) && (refinement == DependencyGeneralPropertiesEditionComponent.class || refinement == DependencyDocumentationPropertiesEditionComponent.class);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +94,8 @@ public class DependencyPropertiesEditionProvider extends PropertiesEditingProvid
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-    return (editingContext.getEObject() instanceof Dependency) && ((DependencyPropertiesEditionComponent.BASE_PART.equals(part) && refinement == DependencyPropertiesEditionComponent.class));
-  }
+		return (editingContext.getEObject() instanceof Dependency) && ((DependencyGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == DependencyGeneralPropertiesEditionComponent.class) || (DependencyDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == DependencyDocumentationPropertiesEditionComponent.class));
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +103,11 @@ public class DependencyPropertiesEditionProvider extends PropertiesEditingProvid
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-    if (editingContext.getEObject() instanceof Dependency) {
-      return new DependencyPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-    }
-    return super.getPropertiesEditingComponent(editingContext, mode);
-  }
+		if (editingContext.getEObject() instanceof Dependency) {
+			return new DependencyPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		}
+		return super.getPropertiesEditingComponent(editingContext, mode);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +115,14 @@ public class DependencyPropertiesEditionProvider extends PropertiesEditingProvid
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-    if (editingContext.getEObject() instanceof Dependency) {
-      if (DependencyPropertiesEditionComponent.BASE_PART.equals(part))
-        return new DependencyPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-    }
-    return super.getPropertiesEditingComponent(editingContext, mode, part);
-  }
+		if (editingContext.getEObject() instanceof Dependency) {
+			if (DependencyGeneralPropertiesEditionComponent.GENERAL_PART.equals(part))
+				return new DependencyGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (DependencyDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part))
+				return new DependencyDocumentationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		}
+		return super.getPropertiesEditingComponent(editingContext, mode, part);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -123,9 +131,12 @@ public class DependencyPropertiesEditionProvider extends PropertiesEditingProvid
 	@SuppressWarnings("rawtypes")
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
 		if (editingContext.getEObject() instanceof Dependency) {
-			if (DependencyPropertiesEditionComponent.BASE_PART.equals(part)
-				&& refinement == DependencyPropertiesEditionComponent.class)
-				return new DependencyPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (DependencyGeneralPropertiesEditionComponent.GENERAL_PART.equals(part)
+				&& refinement == DependencyGeneralPropertiesEditionComponent.class)
+				return new DependencyGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (DependencyDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part)
+				&& refinement == DependencyDocumentationPropertiesEditionComponent.class)
+				return new DependencyDocumentationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}

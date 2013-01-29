@@ -10,17 +10,13 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts.impl;
 
+import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Package;
+
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.emf.common.util.Enumerator;
-
 import org.eclipse.emf.ecore.EObject;
-
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
-
-import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 
@@ -28,52 +24,26 @@ import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 
 import org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart;
 
-import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
-
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 
 import org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart;
-
-import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
-
-import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
-import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 
-import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
-
-import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
-import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
-import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
 
-import org.eclipse.emf.eef.runtime.ui.widgets.SWTUtils;
-import org.eclipse.emf.eef.runtime.ui.widgets.TabElementTreeSelectionDialog;
-
-import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
-
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableContentProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 
-import org.eclipse.jface.viewers.ArrayContentProvider;
-import org.eclipse.jface.viewers.ISelectionChangedListener;
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.SelectionChangedEvent;
-import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 import org.eclipse.swt.SWT;
 
-import org.eclipse.swt.events.FocusAdapter;
-import org.eclipse.swt.events.FocusEvent;
-import org.eclipse.swt.events.KeyAdapter;
-import org.eclipse.swt.events.KeyEvent;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
@@ -81,8 +51,8 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Group;
-import org.eclipse.swt.widgets.Text;
+
+import org.obeonetwork.dsl.uml2.properties.uml.components.PackageProfilePropertiesEditionComponent;
 
 import org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
@@ -96,19 +66,9 @@ import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
  */
 public class ProfilePropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, ProfilePropertiesEditionPart {
 
-	protected Text name;
-	protected EMFComboViewer visibility;
-	protected ReferencesTable clientDependency;
-	protected List<ViewerFilter> clientDependencyBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> clientDependencyFilters = new ArrayList<ViewerFilter>();
-	protected EObjectFlatComboViewer owningTemplateParameter;
-	protected EObjectFlatComboViewer templateParameter;
-	protected ReferencesTable metaclassReference;
-	protected List<ViewerFilter> metaclassReferenceBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> metaclassReferenceFilters = new ArrayList<ViewerFilter>();
-	protected ReferencesTable metamodelReference;
-	protected List<ViewerFilter> metamodelReferenceBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> metamodelReferenceFilters = new ArrayList<ViewerFilter>();
+	protected ReferencesTable appliedProfiles;
+	protected List<ViewerFilter> appliedProfilesBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> appliedProfilesFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -118,8 +78,8 @@ public class ProfilePropertiesEditionPartImpl extends CompositePropertiesEdition
 	 * @generated
 	 */
 	public ProfilePropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
-    super(editionComponent);
-  }
+		super(editionComponent);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -129,13 +89,13 @@ public class ProfilePropertiesEditionPartImpl extends CompositePropertiesEdition
 	 * @generated
 	 */
 	public Composite createFigure(final Composite parent) {
-    view = new Composite(parent, SWT.NONE);
-    GridLayout layout = new GridLayout();
-    layout.numColumns = 3;
-    view.setLayout(layout);
-    createControls(view);
-    return view;
-  }
+		view = new Composite(parent, SWT.NONE);
+		GridLayout layout = new GridLayout();
+		layout.numColumns = 3;
+		view.setLayout(layout);
+		createControls(view);
+		return view;
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -145,436 +105,72 @@ public class ProfilePropertiesEditionPartImpl extends CompositePropertiesEdition
 	 * @generated
 	 */
 	public void createControls(Composite view) { 
-    CompositionSequence profileStep = new BindingCompositionSequence(propertiesEditionComponent);
-    CompositionStep propertiesStep = profileStep.addStep(UmlViewsRepository.Profile.Properties.class);
-    propertiesStep.addStep(UmlViewsRepository.Profile.Properties.name);
-    propertiesStep.addStep(UmlViewsRepository.Profile.Properties.visibility);
-    propertiesStep.addStep(UmlViewsRepository.Profile.Properties.clientDependency);
-    propertiesStep.addStep(UmlViewsRepository.Profile.Properties.owningTemplateParameter);
-    propertiesStep.addStep(UmlViewsRepository.Profile.Properties.templateParameter);
-    propertiesStep.addStep(UmlViewsRepository.Profile.Properties.metaclassReference);
-    propertiesStep.addStep(UmlViewsRepository.Profile.Properties.metamodelReference);
-    
-    
-    composer = new PartComposer(profileStep) {
+		CompositionSequence profileStep = new BindingCompositionSequence(propertiesEditionComponent);
+		profileStep.addStep(UmlViewsRepository.Profile.appliedProfiles);
+		
+		composer = new PartComposer(profileStep) {
 
-      @Override
-      public Composite addToPart(Composite parent, Object key) {
-        if (key == UmlViewsRepository.Profile.Properties.class) {
-          return createPropertiesGroup(parent);
-        }
-        if (key == UmlViewsRepository.Profile.Properties.name) {
-          return createNameText(parent);
-        }
-        if (key == UmlViewsRepository.Profile.Properties.visibility) {
-          return createVisibilityEMFComboViewer(parent);
-        }
-        if (key == UmlViewsRepository.Profile.Properties.clientDependency) {
-          return createClientDependencyAdvancedReferencesTable(parent);
-        }
-        if (key == UmlViewsRepository.Profile.Properties.owningTemplateParameter) {
-          return createOwningTemplateParameterFlatComboViewer(parent);
-        }
-        if (key == UmlViewsRepository.Profile.Properties.templateParameter) {
-          return createTemplateParameterFlatComboViewer(parent);
-        }
-        if (key == UmlViewsRepository.Profile.Properties.metaclassReference) {
-          return createMetaclassReferenceAdvancedReferencesTable(parent);
-        }
-        if (key == UmlViewsRepository.Profile.Properties.metamodelReference) {
-          return createMetamodelReferenceAdvancedReferencesTable(parent);
-        }
-        return parent;
-      }
-    };
-    composer.compose(view);
-  }
+			@Override
+			public Composite addToPart(Composite parent, Object key) {
+				if (key == UmlViewsRepository.Profile.appliedProfiles) {
+					return createAppliedProfilesAdvancedTableComposition(parent);
+				}
+				return parent;
+			}
+		};
+		composer.compose(view);
+	}
 
 	/**
+	 * @param container
 	 * @generated
 	 */
-	protected Composite createPropertiesGroup(Composite parent) {
-    Group propertiesGroup = new Group(parent, SWT.NONE);
-    propertiesGroup.setText(UmlMessages.ProfilePropertiesEditionPart_PropertiesGroupLabel);
-    GridData propertiesGroupData = new GridData(GridData.FILL_HORIZONTAL);
-    propertiesGroupData.horizontalSpan = 3;
-    propertiesGroup.setLayoutData(propertiesGroupData);
-    GridLayout propertiesGroupLayout = new GridLayout();
-    propertiesGroupLayout.numColumns = 3;
-    propertiesGroup.setLayout(propertiesGroupLayout);
-    return propertiesGroup;
-  }
+	protected Composite createAppliedProfilesAdvancedTableComposition(Composite parent) {
+		this.appliedProfiles = new ReferencesTable(getDescription(UmlViewsRepository.Profile.appliedProfiles, UmlMessages.ProfilePropertiesEditionPart_AppliedProfilesLabel), new ReferencesTableListener() {
+			public void handleAdd() { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProfilePropertiesEditionPartImpl.this, UmlViewsRepository.Profile.appliedProfiles, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+				appliedProfiles.refresh();
+			}
+			public void handleEdit(EObject element) {
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProfilePropertiesEditionPartImpl.this, UmlViewsRepository.Profile.appliedProfiles, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+				appliedProfiles.refresh();
+			}
+			public void handleMove(EObject element, int oldIndex, int newIndex) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProfilePropertiesEditionPartImpl.this, UmlViewsRepository.Profile.appliedProfiles, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+				appliedProfiles.refresh();
+			}
+			public void handleRemove(EObject element) { 
+				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProfilePropertiesEditionPartImpl.this, UmlViewsRepository.Profile.appliedProfiles, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+				appliedProfiles.refresh();
+			}
+			public void navigateTo(EObject element) { }
+		});
+		for (ViewerFilter filter : this.appliedProfilesFilters) {
+			this.appliedProfiles.addFilter(filter);
+		}
+		this.appliedProfiles.setHelpText(propertiesEditionComponent.getHelpContent(UmlViewsRepository.Profile.appliedProfiles, UmlViewsRepository.SWT_KIND));
+		this.appliedProfiles.createControls(parent);
+		this.appliedProfiles.addSelectionListener(new SelectionAdapter() {
+			
+			public void widgetSelected(SelectionEvent e) {
+				if (e.item != null && e.item.getData() instanceof EObject) {
+					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProfilePropertiesEditionPartImpl.this, UmlViewsRepository.Profile.appliedProfiles, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+				}
+			}
+			
+		});
+		GridData appliedProfilesData = new GridData(GridData.FILL_HORIZONTAL);
+		appliedProfilesData.horizontalSpan = 3;
+		this.appliedProfiles.setLayoutData(appliedProfilesData);
+		this.appliedProfiles.setLowerBound(1);
+		this.appliedProfiles.setUpperBound(1);
+		appliedProfiles.setID(UmlViewsRepository.Profile.appliedProfiles);
+		appliedProfiles.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+		// Start of user code for createAppliedProfilesAdvancedTableComposition
 
-	/**
-	 * @generated
-	 */
-	
-	protected Composite createNameText(Composite parent) {
-    createDescription(parent, UmlViewsRepository.Profile.Properties.name, UmlMessages.ProfilePropertiesEditionPart_NameLabel);
-    name = SWTUtils.createScrollableText(parent, SWT.BORDER);
-    GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
-    name.setLayoutData(nameData);
-    name.addFocusListener(new FocusAdapter() {
-
-      /**
-       * {@inheritDoc}
-       * 
-       * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-       * @generated
-       */
-      @Override
-      @SuppressWarnings("synthetic-access")
-      public void focusLost(FocusEvent e) {
-        if (propertiesEditionComponent != null)
-          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProfilePropertiesEditionPartImpl.this, UmlViewsRepository.Profile.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
-      }
-
-    });
-    name.addKeyListener(new KeyAdapter() {
-
-      /**
-       * {@inheritDoc}
-       * 
-       * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-       * @generated
-       */
-      @Override
-      @SuppressWarnings("synthetic-access")
-      public void keyPressed(KeyEvent e) {
-        if (e.character == SWT.CR) {
-          if (propertiesEditionComponent != null)
-            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProfilePropertiesEditionPartImpl.this, UmlViewsRepository.Profile.Properties.name, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, name.getText()));
-        }
-      }
-
-    });
-    EditingUtils.setID(name, UmlViewsRepository.Profile.Properties.name);
-    EditingUtils.setEEFtype(name, "eef::Text"); //$NON-NLS-1$
-    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.Profile.Properties.name, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-    return parent;
-  }
-
-	/**
-	 * @generated
-	 */
-	
-	protected Composite createVisibilityEMFComboViewer(Composite parent) {
-    createDescription(parent, UmlViewsRepository.Profile.Properties.visibility, UmlMessages.ProfilePropertiesEditionPart_VisibilityLabel);
-    visibility = new EMFComboViewer(parent);
-    visibility.setContentProvider(new ArrayContentProvider());
-    visibility.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
-    GridData visibilityData = new GridData(GridData.FILL_HORIZONTAL);
-    visibility.getCombo().setLayoutData(visibilityData);
-    visibility.addSelectionChangedListener(new ISelectionChangedListener() {
-
-      /**
-       * {@inheritDoc}
-       * 
-       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-       * 	@generated
-       */
-      public void selectionChanged(SelectionChangedEvent event) {
-        if (propertiesEditionComponent != null)
-          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProfilePropertiesEditionPartImpl.this, UmlViewsRepository.Profile.Properties.visibility, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getVisibility()));
-      }
-
-    });
-    visibility.setID(UmlViewsRepository.Profile.Properties.visibility);
-    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.Profile.Properties.visibility, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-    return parent;
-  }
-
-	/**
-	 * @generated
-	 */
-	protected Composite createClientDependencyAdvancedReferencesTable(Composite parent) {
-    String label = getDescription(UmlViewsRepository.Profile.Properties.clientDependency, UmlMessages.ProfilePropertiesEditionPart_ClientDependencyLabel);		 
-    this.clientDependency = new ReferencesTable(label, new ReferencesTableListener() {
-      public void handleAdd() { addClientDependency(); }
-      public void handleEdit(EObject element) { editClientDependency(element); }
-      public void handleMove(EObject element, int oldIndex, int newIndex) { moveClientDependency(element, oldIndex, newIndex); }
-      public void handleRemove(EObject element) { removeFromClientDependency(element); }
-      public void navigateTo(EObject element) { }
-    });
-    this.clientDependency.setHelpText(propertiesEditionComponent.getHelpContent(UmlViewsRepository.Profile.Properties.clientDependency, UmlViewsRepository.SWT_KIND));
-    this.clientDependency.createControls(parent);
-    this.clientDependency.addSelectionListener(new SelectionAdapter() {
-      
-      public void widgetSelected(SelectionEvent e) {
-        if (e.item != null && e.item.getData() instanceof EObject) {
-          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProfilePropertiesEditionPartImpl.this, UmlViewsRepository.Profile.Properties.clientDependency, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
-        }
-      }
-      
-    });
-    GridData clientDependencyData = new GridData(GridData.FILL_HORIZONTAL);
-    clientDependencyData.horizontalSpan = 3;
-    this.clientDependency.setLayoutData(clientDependencyData);
-    this.clientDependency.disableMove();
-    clientDependency.setID(UmlViewsRepository.Profile.Properties.clientDependency);
-    clientDependency.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
-    return parent;
-  }
-
-	/**
-	 * @generated
-	 */
-	protected void addClientDependency() {
-    TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(clientDependency.getInput(), clientDependencyFilters, clientDependencyBusinessFilters,
-    "clientDependency", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
-      @Override
-      public void process(IStructuredSelection selection) {
-        for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
-          EObject elem = (EObject) iter.next();
-          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProfilePropertiesEditionPartImpl.this, UmlViewsRepository.Profile.Properties.clientDependency,
-            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
-        }
-        clientDependency.refresh();
-      }
-    };
-    dialog.open();
-  }
-
-	/**
-	 * @generated
-	 */
-	protected void moveClientDependency(EObject element, int oldIndex, int newIndex) {
-    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProfilePropertiesEditionPartImpl.this, UmlViewsRepository.Profile.Properties.clientDependency, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-    clientDependency.refresh();
-  }
-
-	/**
-	 * @generated
-	 */
-	protected void removeFromClientDependency(EObject element) {
-    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProfilePropertiesEditionPartImpl.this, UmlViewsRepository.Profile.Properties.clientDependency, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-    clientDependency.refresh();
-  }
-
-	/**
-	 * @generated
-	 */
-	protected void editClientDependency(EObject element) {
-    EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
-    PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
-    if (provider != null) {
-      PropertiesEditingPolicy policy = provider.getPolicy(context);
-      if (policy != null) {
-        policy.execute();
-        clientDependency.refresh();
-      }
-    }
-  }
-
-	/**
-	 * @param parent the parent composite
-	 * @generated
-	 */
-	protected Composite createOwningTemplateParameterFlatComboViewer(Composite parent) {
-    createDescription(parent, UmlViewsRepository.Profile.Properties.owningTemplateParameter, UmlMessages.ProfilePropertiesEditionPart_OwningTemplateParameterLabel);
-    owningTemplateParameter = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.Profile.Properties.owningTemplateParameter, UmlViewsRepository.SWT_KIND));
-    owningTemplateParameter.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
-    owningTemplateParameter.addSelectionChangedListener(new ISelectionChangedListener() {
-
-      public void selectionChanged(SelectionChangedEvent event) {
-        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProfilePropertiesEditionPartImpl.this, UmlViewsRepository.Profile.Properties.owningTemplateParameter, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getOwningTemplateParameter()));
-      }
-
-    });
-    GridData owningTemplateParameterData = new GridData(GridData.FILL_HORIZONTAL);
-    owningTemplateParameter.setLayoutData(owningTemplateParameterData);
-    owningTemplateParameter.setID(UmlViewsRepository.Profile.Properties.owningTemplateParameter);
-    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.Profile.Properties.owningTemplateParameter, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-    return parent;
-  }
-
-	/**
-	 * @param parent the parent composite
-	 * @generated
-	 */
-	protected Composite createTemplateParameterFlatComboViewer(Composite parent) {
-    createDescription(parent, UmlViewsRepository.Profile.Properties.templateParameter, UmlMessages.ProfilePropertiesEditionPart_TemplateParameterLabel);
-    templateParameter = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.Profile.Properties.templateParameter, UmlViewsRepository.SWT_KIND));
-    templateParameter.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-
-    templateParameter.addSelectionChangedListener(new ISelectionChangedListener() {
-
-      public void selectionChanged(SelectionChangedEvent event) {
-        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProfilePropertiesEditionPartImpl.this, UmlViewsRepository.Profile.Properties.templateParameter, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SET, null, getTemplateParameter()));
-      }
-
-    });
-    GridData templateParameterData = new GridData(GridData.FILL_HORIZONTAL);
-    templateParameter.setLayoutData(templateParameterData);
-    templateParameter.setID(UmlViewsRepository.Profile.Properties.templateParameter);
-    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.Profile.Properties.templateParameter, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-    return parent;
-  }
-
-	/**
-	 * @generated
-	 */
-	protected Composite createMetaclassReferenceAdvancedReferencesTable(Composite parent) {
-    String label = getDescription(UmlViewsRepository.Profile.Properties.metaclassReference, UmlMessages.ProfilePropertiesEditionPart_MetaclassReferenceLabel);		 
-    this.metaclassReference = new ReferencesTable(label, new ReferencesTableListener() {
-      public void handleAdd() { addMetaclassReference(); }
-      public void handleEdit(EObject element) { editMetaclassReference(element); }
-      public void handleMove(EObject element, int oldIndex, int newIndex) { moveMetaclassReference(element, oldIndex, newIndex); }
-      public void handleRemove(EObject element) { removeFromMetaclassReference(element); }
-      public void navigateTo(EObject element) { }
-    });
-    this.metaclassReference.setHelpText(propertiesEditionComponent.getHelpContent(UmlViewsRepository.Profile.Properties.metaclassReference, UmlViewsRepository.SWT_KIND));
-    this.metaclassReference.createControls(parent);
-    this.metaclassReference.addSelectionListener(new SelectionAdapter() {
-      
-      public void widgetSelected(SelectionEvent e) {
-        if (e.item != null && e.item.getData() instanceof EObject) {
-          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProfilePropertiesEditionPartImpl.this, UmlViewsRepository.Profile.Properties.metaclassReference, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
-        }
-      }
-      
-    });
-    GridData metaclassReferenceData = new GridData(GridData.FILL_HORIZONTAL);
-    metaclassReferenceData.horizontalSpan = 3;
-    this.metaclassReference.setLayoutData(metaclassReferenceData);
-    this.metaclassReference.disableMove();
-    metaclassReference.setID(UmlViewsRepository.Profile.Properties.metaclassReference);
-    metaclassReference.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
-    return parent;
-  }
-
-	/**
-	 * @generated
-	 */
-	protected void addMetaclassReference() {
-    TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(metaclassReference.getInput(), metaclassReferenceFilters, metaclassReferenceBusinessFilters,
-    "metaclassReference", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
-      @Override
-      public void process(IStructuredSelection selection) {
-        for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
-          EObject elem = (EObject) iter.next();
-          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProfilePropertiesEditionPartImpl.this, UmlViewsRepository.Profile.Properties.metaclassReference,
-            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
-        }
-        metaclassReference.refresh();
-      }
-    };
-    dialog.open();
-  }
-
-	/**
-	 * @generated
-	 */
-	protected void moveMetaclassReference(EObject element, int oldIndex, int newIndex) {
-    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProfilePropertiesEditionPartImpl.this, UmlViewsRepository.Profile.Properties.metaclassReference, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-    metaclassReference.refresh();
-  }
-
-	/**
-	 * @generated
-	 */
-	protected void removeFromMetaclassReference(EObject element) {
-    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProfilePropertiesEditionPartImpl.this, UmlViewsRepository.Profile.Properties.metaclassReference, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-    metaclassReference.refresh();
-  }
-
-	/**
-	 * @generated
-	 */
-	protected void editMetaclassReference(EObject element) {
-    EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
-    PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
-    if (provider != null) {
-      PropertiesEditingPolicy policy = provider.getPolicy(context);
-      if (policy != null) {
-        policy.execute();
-        metaclassReference.refresh();
-      }
-    }
-  }
-
-	/**
-	 * @generated
-	 */
-	protected Composite createMetamodelReferenceAdvancedReferencesTable(Composite parent) {
-    String label = getDescription(UmlViewsRepository.Profile.Properties.metamodelReference, UmlMessages.ProfilePropertiesEditionPart_MetamodelReferenceLabel);		 
-    this.metamodelReference = new ReferencesTable(label, new ReferencesTableListener() {
-      public void handleAdd() { addMetamodelReference(); }
-      public void handleEdit(EObject element) { editMetamodelReference(element); }
-      public void handleMove(EObject element, int oldIndex, int newIndex) { moveMetamodelReference(element, oldIndex, newIndex); }
-      public void handleRemove(EObject element) { removeFromMetamodelReference(element); }
-      public void navigateTo(EObject element) { }
-    });
-    this.metamodelReference.setHelpText(propertiesEditionComponent.getHelpContent(UmlViewsRepository.Profile.Properties.metamodelReference, UmlViewsRepository.SWT_KIND));
-    this.metamodelReference.createControls(parent);
-    this.metamodelReference.addSelectionListener(new SelectionAdapter() {
-      
-      public void widgetSelected(SelectionEvent e) {
-        if (e.item != null && e.item.getData() instanceof EObject) {
-          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProfilePropertiesEditionPartImpl.this, UmlViewsRepository.Profile.Properties.metamodelReference, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
-        }
-      }
-      
-    });
-    GridData metamodelReferenceData = new GridData(GridData.FILL_HORIZONTAL);
-    metamodelReferenceData.horizontalSpan = 3;
-    this.metamodelReference.setLayoutData(metamodelReferenceData);
-    this.metamodelReference.disableMove();
-    metamodelReference.setID(UmlViewsRepository.Profile.Properties.metamodelReference);
-    metamodelReference.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
-    return parent;
-  }
-
-	/**
-	 * @generated
-	 */
-	protected void addMetamodelReference() {
-    TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(metamodelReference.getInput(), metamodelReferenceFilters, metamodelReferenceBusinessFilters,
-    "metamodelReference", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
-      @Override
-      public void process(IStructuredSelection selection) {
-        for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
-          EObject elem = (EObject) iter.next();
-          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProfilePropertiesEditionPartImpl.this, UmlViewsRepository.Profile.Properties.metamodelReference,
-            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
-        }
-        metamodelReference.refresh();
-      }
-    };
-    dialog.open();
-  }
-
-	/**
-	 * @generated
-	 */
-	protected void moveMetamodelReference(EObject element, int oldIndex, int newIndex) {
-    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProfilePropertiesEditionPartImpl.this, UmlViewsRepository.Profile.Properties.metamodelReference, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-    metamodelReference.refresh();
-  }
-
-	/**
-	 * @generated
-	 */
-	protected void removeFromMetamodelReference(EObject element) {
-    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ProfilePropertiesEditionPartImpl.this, UmlViewsRepository.Profile.Properties.metamodelReference, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-    metamodelReference.refresh();
-  }
-
-	/**
-	 * @generated
-	 */
-	protected void editMetamodelReference(EObject element) {
-    EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
-    PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
-    if (provider != null) {
-      PropertiesEditingPolicy policy = provider.getPolicy(context);
-      if (policy != null) {
-        policy.execute();
-        metamodelReference.refresh();
-      }
-    }
-  }
+		// End of user code
+		return parent;
+	}
 
 
 	/**
@@ -584,65 +180,27 @@ public class ProfilePropertiesEditionPartImpl extends CompositePropertiesEdition
 	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-  }
+	}
+
+
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#getName()
-	 * @generated
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#initAppliedProfiles(EObject current, EReference containingFeature, EReference feature)
 	 */
-	public String getName() {
-    return name.getText();
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#setName(String newValue)
-	 * @generated
-	 */
-	public void setName(String newValue) {
-    if (newValue != null) {
-      name.setText(newValue);
-    } else {
-      name.setText(""); //$NON-NLS-1$
-    }
-    boolean readOnly = isReadOnly(UmlViewsRepository.Profile.Properties.name);
-    if (readOnly && name.isEnabled()) {
-      name.setEnabled(false);
-      name.setToolTipText(UmlMessages.Profile_ReadOnly);
-    } else if (!readOnly && !name.isEnabled()) {
-      name.setEnabled(true);
-    }	
-    
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#getVisibility()
-	 * @generated
-	 */
-	public Enumerator getVisibility() {
-    Enumerator selection = (Enumerator) ((StructuredSelection) visibility.getSelection()).getFirstElement();
-    return selection;
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#initVisibility(Object input, Enumerator current)
-	 */
-	public void initVisibility(Object input, Enumerator current) {
-		visibility.setInput(input);
-		visibility.modelUpdating(new StructuredSelection(current));
-		boolean readOnly = isReadOnly(UmlViewsRepository.Profile.Properties.visibility);
-		if (readOnly && visibility.isEnabled()) {
-			visibility.setEnabled(false);
-			visibility.setToolTipText(UmlMessages.Profile_ReadOnly);
-		} else if (!readOnly && !visibility.isEnabled()) {
-			visibility.setEnabled(true);
+	public void initAppliedProfiles(ReferencesTableSettings settings) {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		appliedProfiles.setContentProvider(contentProvider);
+		appliedProfiles.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.Profile.appliedProfiles, ((PackageProfilePropertiesEditionComponent) propertiesEditionComponent).getAppliedProfileSettings().getOrCreateSignificantObject());
+		if (eefElementEditorReadOnlyState && appliedProfiles.isEnabled()) {
+			appliedProfiles.setEnabled(false);
+			appliedProfiles.setToolTipText(UmlMessages.Profile_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !appliedProfiles.isEnabled()) {
+			appliedProfiles.setEnabled(true);
 		}	
 		
 	}
@@ -650,381 +208,45 @@ public class ProfilePropertiesEditionPartImpl extends CompositePropertiesEdition
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#setVisibility(Enumerator newValue)
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#updateAppliedProfiles()
 	 * @generated
 	 */
-	public void setVisibility(Enumerator newValue) {
-    visibility.modelUpdating(new StructuredSelection(newValue));
-    boolean readOnly = isReadOnly(UmlViewsRepository.Profile.Properties.visibility);
-    if (readOnly && visibility.isEnabled()) {
-      visibility.setEnabled(false);
-      visibility.setToolTipText(UmlMessages.Profile_ReadOnly);
-    } else if (!readOnly && !visibility.isEnabled()) {
-      visibility.setEnabled(true);
-    }	
-    
-  }
-
-
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#initClientDependency(org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings)
-	 */
-	public void initClientDependency(ReferencesTableSettings settings) {
-		if (current.eResource() != null && current.eResource().getResourceSet() != null)
-			this.resourceSet = current.eResource().getResourceSet();
-		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
-		clientDependency.setContentProvider(contentProvider);
-		clientDependency.setInput(settings);
-		boolean readOnly = isReadOnly(UmlViewsRepository.Profile.Properties.clientDependency);
-		if (readOnly && clientDependency.getTable().isEnabled()) {
-			clientDependency.setEnabled(false);
-			clientDependency.setToolTipText(UmlMessages.Profile_ReadOnly);
-		} else if (!readOnly && !clientDependency.getTable().isEnabled()) {
-			clientDependency.setEnabled(true);
-		}
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#updateClientDependency()
-	 * @generated
-	 */
-	public void updateClientDependency() {
-  clientDependency.refresh();
+	public void updateAppliedProfiles() {
+	appliedProfiles.refresh();
 }
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#addFilterClientDependency(ViewerFilter filter)
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#addFilterAppliedProfiles(ViewerFilter filter)
 	 * @generated
 	 */
-	public void addFilterToClientDependency(ViewerFilter filter) {
-    clientDependencyFilters.add(filter);
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#addBusinessFilterClientDependency(ViewerFilter filter)
-	 * @generated
-	 */
-	public void addBusinessFilterToClientDependency(ViewerFilter filter) {
-    clientDependencyBusinessFilters.add(filter);
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#isContainedInClientDependencyTable(EObject element)
-	 * @generated
-	 */
-	public boolean isContainedInClientDependencyTable(EObject element) {
-    return ((ReferencesTableSettings)clientDependency.getInput()).contains(element);
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#getOwningTemplateParameter()
-	 * @generated
-	 */
-	public EObject getOwningTemplateParameter() {
-    if (owningTemplateParameter.getSelection() instanceof StructuredSelection) {
-      Object firstElement = ((StructuredSelection) owningTemplateParameter.getSelection()).getFirstElement();
-      if (firstElement instanceof EObject)
-        return (EObject) firstElement;
-    }
-    return null;
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#initOwningTemplateParameter(EObjectFlatComboSettings)
-	 */
-	public void initOwningTemplateParameter(EObjectFlatComboSettings settings) {
-		owningTemplateParameter.setInput(settings);
-		if (current != null) {
-			owningTemplateParameter.setSelection(new StructuredSelection(settings.getValue()));
+	public void addFilterToAppliedProfiles(ViewerFilter filter) {
+		appliedProfilesFilters.add(filter);
+		if (this.appliedProfiles != null) {
+			this.appliedProfiles.addFilter(filter);
 		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.Profile.Properties.owningTemplateParameter);
-		if (readOnly && owningTemplateParameter.isEnabled()) {
-			owningTemplateParameter.setEnabled(false);
-			owningTemplateParameter.setToolTipText(UmlMessages.Profile_ReadOnly);
-		} else if (!readOnly && !owningTemplateParameter.isEnabled()) {
-			owningTemplateParameter.setEnabled(true);
-		}	
-		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#setOwningTemplateParameter(EObject newValue)
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#addBusinessFilterAppliedProfiles(ViewerFilter filter)
 	 * @generated
 	 */
-	public void setOwningTemplateParameter(EObject newValue) {
-    if (newValue != null) {
-      owningTemplateParameter.setSelection(new StructuredSelection(newValue));
-    } else {
-      owningTemplateParameter.setSelection(new StructuredSelection()); //$NON-NLS-1$
-    }
-    boolean readOnly = isReadOnly(UmlViewsRepository.Profile.Properties.owningTemplateParameter);
-    if (readOnly && owningTemplateParameter.isEnabled()) {
-      owningTemplateParameter.setEnabled(false);
-      owningTemplateParameter.setToolTipText(UmlMessages.Profile_ReadOnly);
-    } else if (!readOnly && !owningTemplateParameter.isEnabled()) {
-      owningTemplateParameter.setEnabled(true);
-    }	
-    
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#setOwningTemplateParameterButtonMode(ButtonsModeEnum newValue)
-	 */
-	public void setOwningTemplateParameterButtonMode(ButtonsModeEnum newValue) {
-		owningTemplateParameter.setButtonMode(newValue);
+	public void addBusinessFilterToAppliedProfiles(ViewerFilter filter) {
+		appliedProfilesBusinessFilters.add(filter);
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#addFilterOwningTemplateParameter(ViewerFilter filter)
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#isContainedInAppliedProfilesTable(EObject element)
 	 * @generated
 	 */
-	public void addFilterToOwningTemplateParameter(ViewerFilter filter) {
-    owningTemplateParameter.addFilter(filter);
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#addBusinessFilterOwningTemplateParameter(ViewerFilter filter)
-	 * @generated
-	 */
-	public void addBusinessFilterToOwningTemplateParameter(ViewerFilter filter) {
-    owningTemplateParameter.addBusinessRuleFilter(filter);
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#getTemplateParameter()
-	 * @generated
-	 */
-	public EObject getTemplateParameter() {
-    if (templateParameter.getSelection() instanceof StructuredSelection) {
-      Object firstElement = ((StructuredSelection) templateParameter.getSelection()).getFirstElement();
-      if (firstElement instanceof EObject)
-        return (EObject) firstElement;
-    }
-    return null;
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#initTemplateParameter(EObjectFlatComboSettings)
-	 */
-	public void initTemplateParameter(EObjectFlatComboSettings settings) {
-		templateParameter.setInput(settings);
-		if (current != null) {
-			templateParameter.setSelection(new StructuredSelection(settings.getValue()));
-		}
-		boolean readOnly = isReadOnly(UmlViewsRepository.Profile.Properties.templateParameter);
-		if (readOnly && templateParameter.isEnabled()) {
-			templateParameter.setEnabled(false);
-			templateParameter.setToolTipText(UmlMessages.Profile_ReadOnly);
-		} else if (!readOnly && !templateParameter.isEnabled()) {
-			templateParameter.setEnabled(true);
-		}	
-		
+	public boolean isContainedInAppliedProfilesTable(EObject element) {
+		return ((ReferencesTableSettings)appliedProfiles.getInput()).contains(element);
 	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#setTemplateParameter(EObject newValue)
-	 * @generated
-	 */
-	public void setTemplateParameter(EObject newValue) {
-    if (newValue != null) {
-      templateParameter.setSelection(new StructuredSelection(newValue));
-    } else {
-      templateParameter.setSelection(new StructuredSelection()); //$NON-NLS-1$
-    }
-    boolean readOnly = isReadOnly(UmlViewsRepository.Profile.Properties.templateParameter);
-    if (readOnly && templateParameter.isEnabled()) {
-      templateParameter.setEnabled(false);
-      templateParameter.setToolTipText(UmlMessages.Profile_ReadOnly);
-    } else if (!readOnly && !templateParameter.isEnabled()) {
-      templateParameter.setEnabled(true);
-    }	
-    
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#setTemplateParameterButtonMode(ButtonsModeEnum newValue)
-	 */
-	public void setTemplateParameterButtonMode(ButtonsModeEnum newValue) {
-		templateParameter.setButtonMode(newValue);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#addFilterTemplateParameter(ViewerFilter filter)
-	 * @generated
-	 */
-	public void addFilterToTemplateParameter(ViewerFilter filter) {
-    templateParameter.addFilter(filter);
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#addBusinessFilterTemplateParameter(ViewerFilter filter)
-	 * @generated
-	 */
-	public void addBusinessFilterToTemplateParameter(ViewerFilter filter) {
-    templateParameter.addBusinessRuleFilter(filter);
-  }
-
-
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#initMetaclassReference(org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings)
-	 */
-	public void initMetaclassReference(ReferencesTableSettings settings) {
-		if (current.eResource() != null && current.eResource().getResourceSet() != null)
-			this.resourceSet = current.eResource().getResourceSet();
-		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
-		metaclassReference.setContentProvider(contentProvider);
-		metaclassReference.setInput(settings);
-		boolean readOnly = isReadOnly(UmlViewsRepository.Profile.Properties.metaclassReference);
-		if (readOnly && metaclassReference.getTable().isEnabled()) {
-			metaclassReference.setEnabled(false);
-			metaclassReference.setToolTipText(UmlMessages.Profile_ReadOnly);
-		} else if (!readOnly && !metaclassReference.getTable().isEnabled()) {
-			metaclassReference.setEnabled(true);
-		}
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#updateMetaclassReference()
-	 * @generated
-	 */
-	public void updateMetaclassReference() {
-  metaclassReference.refresh();
-}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#addFilterMetaclassReference(ViewerFilter filter)
-	 * @generated
-	 */
-	public void addFilterToMetaclassReference(ViewerFilter filter) {
-    metaclassReferenceFilters.add(filter);
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#addBusinessFilterMetaclassReference(ViewerFilter filter)
-	 * @generated
-	 */
-	public void addBusinessFilterToMetaclassReference(ViewerFilter filter) {
-    metaclassReferenceBusinessFilters.add(filter);
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#isContainedInMetaclassReferenceTable(EObject element)
-	 * @generated
-	 */
-	public boolean isContainedInMetaclassReferenceTable(EObject element) {
-    return ((ReferencesTableSettings)metaclassReference.getInput()).contains(element);
-  }
-
-
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#initMetamodelReference(org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings)
-	 */
-	public void initMetamodelReference(ReferencesTableSettings settings) {
-		if (current.eResource() != null && current.eResource().getResourceSet() != null)
-			this.resourceSet = current.eResource().getResourceSet();
-		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
-		metamodelReference.setContentProvider(contentProvider);
-		metamodelReference.setInput(settings);
-		boolean readOnly = isReadOnly(UmlViewsRepository.Profile.Properties.metamodelReference);
-		if (readOnly && metamodelReference.getTable().isEnabled()) {
-			metamodelReference.setEnabled(false);
-			metamodelReference.setToolTipText(UmlMessages.Profile_ReadOnly);
-		} else if (!readOnly && !metamodelReference.getTable().isEnabled()) {
-			metamodelReference.setEnabled(true);
-		}
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#updateMetamodelReference()
-	 * @generated
-	 */
-	public void updateMetamodelReference() {
-  metamodelReference.refresh();
-}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#addFilterMetamodelReference(ViewerFilter filter)
-	 * @generated
-	 */
-	public void addFilterToMetamodelReference(ViewerFilter filter) {
-    metamodelReferenceFilters.add(filter);
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#addBusinessFilterMetamodelReference(ViewerFilter filter)
-	 * @generated
-	 */
-	public void addBusinessFilterToMetamodelReference(ViewerFilter filter) {
-    metamodelReferenceBusinessFilters.add(filter);
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilePropertiesEditionPart#isContainedInMetamodelReferenceTable(EObject element)
-	 * @generated
-	 */
-	public boolean isContainedInMetamodelReferenceTable(EObject element) {
-    return ((ReferencesTableSettings)metamodelReference.getInput()).contains(element);
-  }
 
 
 
@@ -1038,8 +260,8 @@ public class ProfilePropertiesEditionPartImpl extends CompositePropertiesEdition
 	 * @generated
 	 */
 	public String getTitle() {
-    return UmlMessages.Profile_Part_Title;
-  }
+		return UmlMessages.Profile_Part_Title;
+	}
 
 
 

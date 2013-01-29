@@ -10,6 +10,10 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.providers;
 
+import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Package;
+import org.eclipse.uml2.uml.VisibilityKind;
+
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -22,20 +26,22 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
-import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
-
 import org.eclipse.jface.viewers.IFilter;
 
 import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.UMLPackage;
 
+import org.obeonetwork.dsl.uml2.properties.providers.UmlPropertiesEditionProvider;
+
+import org.obeonetwork.dsl.uml2.properties.uml.components.GeneralizationDocumentationPropertiesEditionComponent;
+import org.obeonetwork.dsl.uml2.properties.uml.components.GeneralizationGeneralPropertiesEditionComponent;
 import org.obeonetwork.dsl.uml2.properties.uml.components.GeneralizationPropertiesEditionComponent;
 
 /**
  * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
  * @generated
  */
-public class GeneralizationPropertiesEditionProvider extends PropertiesEditingProviderImpl {
+public class GeneralizationPropertiesEditionProvider extends UmlPropertiesEditionProvider {
 
 	/**
 	 * Constructor without provider for super types.
@@ -58,9 +64,9 @@ public class GeneralizationPropertiesEditionProvider extends PropertiesEditingPr
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-    return (editingContext.getEObject() instanceof Generalization) 
-          && (UMLPackage.Literals.GENERALIZATION == editingContext.getEObject().eClass());
-  }
+		return (editingContext.getEObject() instanceof Generalization) 
+					&& (UMLPackage.Literals.GENERALIZATION == editingContext.getEObject().eClass());
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +74,8 @@ public class GeneralizationPropertiesEditionProvider extends PropertiesEditingPr
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-    return (editingContext.getEObject() instanceof Generalization) && (GeneralizationPropertiesEditionComponent.BASE_PART.equals(part));
-  }
+		return (editingContext.getEObject() instanceof Generalization) && (GeneralizationGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) || GeneralizationDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +84,8 @@ public class GeneralizationPropertiesEditionProvider extends PropertiesEditingPr
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-    return (editingContext.getEObject() instanceof Generalization) && (refinement == GeneralizationPropertiesEditionComponent.class);
-  }
+		return (editingContext.getEObject() instanceof Generalization) && (refinement == GeneralizationGeneralPropertiesEditionComponent.class || refinement == GeneralizationDocumentationPropertiesEditionComponent.class);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +94,8 @@ public class GeneralizationPropertiesEditionProvider extends PropertiesEditingPr
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-    return (editingContext.getEObject() instanceof Generalization) && ((GeneralizationPropertiesEditionComponent.BASE_PART.equals(part) && refinement == GeneralizationPropertiesEditionComponent.class));
-  }
+		return (editingContext.getEObject() instanceof Generalization) && ((GeneralizationGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == GeneralizationGeneralPropertiesEditionComponent.class) || (GeneralizationDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == GeneralizationDocumentationPropertiesEditionComponent.class));
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +103,11 @@ public class GeneralizationPropertiesEditionProvider extends PropertiesEditingPr
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-    if (editingContext.getEObject() instanceof Generalization) {
-      return new GeneralizationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-    }
-    return super.getPropertiesEditingComponent(editingContext, mode);
-  }
+		if (editingContext.getEObject() instanceof Generalization) {
+			return new GeneralizationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		}
+		return super.getPropertiesEditingComponent(editingContext, mode);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +115,14 @@ public class GeneralizationPropertiesEditionProvider extends PropertiesEditingPr
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-    if (editingContext.getEObject() instanceof Generalization) {
-      if (GeneralizationPropertiesEditionComponent.BASE_PART.equals(part))
-        return new GeneralizationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-    }
-    return super.getPropertiesEditingComponent(editingContext, mode, part);
-  }
+		if (editingContext.getEObject() instanceof Generalization) {
+			if (GeneralizationGeneralPropertiesEditionComponent.GENERAL_PART.equals(part))
+				return new GeneralizationGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (GeneralizationDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part))
+				return new GeneralizationDocumentationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		}
+		return super.getPropertiesEditingComponent(editingContext, mode, part);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -123,9 +131,12 @@ public class GeneralizationPropertiesEditionProvider extends PropertiesEditingPr
 	@SuppressWarnings("rawtypes")
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
 		if (editingContext.getEObject() instanceof Generalization) {
-			if (GeneralizationPropertiesEditionComponent.BASE_PART.equals(part)
-				&& refinement == GeneralizationPropertiesEditionComponent.class)
-				return new GeneralizationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (GeneralizationGeneralPropertiesEditionComponent.GENERAL_PART.equals(part)
+				&& refinement == GeneralizationGeneralPropertiesEditionComponent.class)
+				return new GeneralizationGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (GeneralizationDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part)
+				&& refinement == GeneralizationDocumentationPropertiesEditionComponent.class)
+				return new GeneralizationDocumentationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}

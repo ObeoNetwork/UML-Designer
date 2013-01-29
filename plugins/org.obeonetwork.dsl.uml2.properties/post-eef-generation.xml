@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="/org.obeonetwork.dsl.uml2.properties" default="clean-source">
+    <description>
+            Generate Class and Package imports
+    </description>
+
+	<target name="clean-source">
+		<replace dir="src-gen/org/obeonetwork/dsl/uml2/properties/uml/components/">
+			<include name="**/*.java"/>
+  			<replacetoken><![CDATA[package org.obeonetwork.dsl.uml2.properties.uml.components;]]></replacetoken>
+			<replacevalue><![CDATA[package org.obeonetwork.dsl.uml2.properties.uml.components;
+
+import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Package;
+import org.eclipse.uml2.uml.VisibilityKind;]]></replacevalue>
+		</replace>
+		<replace dir="src-gen/org/obeonetwork/dsl/uml2/properties/uml/parts/">
+		<include name="**/*.java"/>
+	  	<replacetoken><![CDATA[package org.obeonetwork.dsl.uml2.properties.uml.parts;]]></replacetoken>
+		<replacevalue><![CDATA[package org.obeonetwork.dsl.uml2.properties.uml.parts;
+
+import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Package;]]></replacevalue>
+		</replace>
+		<replace dir="src-gen/org/obeonetwork/dsl/uml2/properties/uml/parts/">
+			<include name="**/*.java"/>
+		  	<replacetoken><![CDATA[package org.obeonetwork.dsl.uml2.properties.uml.parts.forms;]]></replacetoken>
+			<replacevalue><![CDATA[package org.obeonetwork.dsl.uml2.properties.uml.parts.forms;
+
+import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Package;]]></replacevalue>
+		</replace>		
+		<replace dir="src-gen/org/obeonetwork/dsl/uml2/properties/uml/parts/">
+		<include name="**/*.java"/>
+	  	<replacetoken><![CDATA[package org.obeonetwork.dsl.uml2.properties.uml.parts.impl;]]></replacetoken>
+		<replacevalue><![CDATA[package org.obeonetwork.dsl.uml2.properties.uml.parts.impl;
+
+import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Package;]]></replacevalue>
+		</replace>
+		<replace dir="src-gen/org/obeonetwork/dsl/uml2/properties/uml/providers/">
+		<include name="**/*.java"/>
+	  	<replacetoken><![CDATA[package org.obeonetwork.dsl.uml2.properties.uml.providers;]]></replacetoken>
+		<replacevalue><![CDATA[package org.obeonetwork.dsl.uml2.properties.uml.providers;
+
+import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Package;
+import org.eclipse.uml2.uml.VisibilityKind;]]></replacevalue>
+		</replace>
+	</target>
+</project>

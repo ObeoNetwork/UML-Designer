@@ -10,6 +10,10 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.providers;
 
+import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Package;
+import org.eclipse.uml2.uml.VisibilityKind;
+
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
@@ -22,20 +26,23 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
-import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
-
 import org.eclipse.jface.viewers.IFilter;
 
 import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.UMLPackage;
 
+import org.obeonetwork.dsl.uml2.properties.providers.UmlPropertiesEditionProvider;
+
+import org.obeonetwork.dsl.uml2.properties.uml.components.PrimitiveTypeAttributesPropertiesEditionComponent;
+import org.obeonetwork.dsl.uml2.properties.uml.components.PrimitiveTypeDocumentationPropertiesEditionComponent;
+import org.obeonetwork.dsl.uml2.properties.uml.components.PrimitiveTypeGeneralPropertiesEditionComponent;
 import org.obeonetwork.dsl.uml2.properties.uml.components.PrimitiveTypePropertiesEditionComponent;
 
 /**
  * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
  * @generated
  */
-public class PrimitiveTypePropertiesEditionProvider extends PropertiesEditingProviderImpl {
+public class PrimitiveTypePropertiesEditionProvider extends UmlPropertiesEditionProvider {
 
 	/**
 	 * Constructor without provider for super types.
@@ -58,9 +65,9 @@ public class PrimitiveTypePropertiesEditionProvider extends PropertiesEditingPro
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-    return (editingContext.getEObject() instanceof PrimitiveType) 
-          && (UMLPackage.Literals.PRIMITIVE_TYPE == editingContext.getEObject().eClass());
-  }
+		return (editingContext.getEObject() instanceof PrimitiveType) 
+					&& (UMLPackage.Literals.PRIMITIVE_TYPE == editingContext.getEObject().eClass());
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -68,8 +75,8 @@ public class PrimitiveTypePropertiesEditionProvider extends PropertiesEditingPro
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-    return (editingContext.getEObject() instanceof PrimitiveType) && (PrimitiveTypePropertiesEditionComponent.BASE_PART.equals(part));
-  }
+		return (editingContext.getEObject() instanceof PrimitiveType) && (PrimitiveTypeGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) || PrimitiveTypeDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) || PrimitiveTypeAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part));
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -78,8 +85,8 @@ public class PrimitiveTypePropertiesEditionProvider extends PropertiesEditingPro
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-    return (editingContext.getEObject() instanceof PrimitiveType) && (refinement == PrimitiveTypePropertiesEditionComponent.class);
-  }
+		return (editingContext.getEObject() instanceof PrimitiveType) && (refinement == PrimitiveTypeGeneralPropertiesEditionComponent.class || refinement == PrimitiveTypeDocumentationPropertiesEditionComponent.class || refinement == PrimitiveTypeAttributesPropertiesEditionComponent.class);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -88,8 +95,8 @@ public class PrimitiveTypePropertiesEditionProvider extends PropertiesEditingPro
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-    return (editingContext.getEObject() instanceof PrimitiveType) && ((PrimitiveTypePropertiesEditionComponent.BASE_PART.equals(part) && refinement == PrimitiveTypePropertiesEditionComponent.class));
-  }
+		return (editingContext.getEObject() instanceof PrimitiveType) && ((PrimitiveTypeGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == PrimitiveTypeGeneralPropertiesEditionComponent.class) || (PrimitiveTypeDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == PrimitiveTypeDocumentationPropertiesEditionComponent.class) || (PrimitiveTypeAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part) && refinement == PrimitiveTypeAttributesPropertiesEditionComponent.class));
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -97,11 +104,11 @@ public class PrimitiveTypePropertiesEditionProvider extends PropertiesEditingPro
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-    if (editingContext.getEObject() instanceof PrimitiveType) {
-      return new PrimitiveTypePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-    }
-    return super.getPropertiesEditingComponent(editingContext, mode);
-  }
+		if (editingContext.getEObject() instanceof PrimitiveType) {
+			return new PrimitiveTypePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		}
+		return super.getPropertiesEditingComponent(editingContext, mode);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -109,12 +116,16 @@ public class PrimitiveTypePropertiesEditionProvider extends PropertiesEditingPro
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-    if (editingContext.getEObject() instanceof PrimitiveType) {
-      if (PrimitiveTypePropertiesEditionComponent.BASE_PART.equals(part))
-        return new PrimitiveTypePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-    }
-    return super.getPropertiesEditingComponent(editingContext, mode, part);
-  }
+		if (editingContext.getEObject() instanceof PrimitiveType) {
+			if (PrimitiveTypeGeneralPropertiesEditionComponent.GENERAL_PART.equals(part))
+				return new PrimitiveTypeGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (PrimitiveTypeDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part))
+				return new PrimitiveTypeDocumentationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (PrimitiveTypeAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part))
+				return new PrimitiveTypeAttributesPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		}
+		return super.getPropertiesEditingComponent(editingContext, mode, part);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -123,9 +134,15 @@ public class PrimitiveTypePropertiesEditionProvider extends PropertiesEditingPro
 	@SuppressWarnings("rawtypes")
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
 		if (editingContext.getEObject() instanceof PrimitiveType) {
-			if (PrimitiveTypePropertiesEditionComponent.BASE_PART.equals(part)
-				&& refinement == PrimitiveTypePropertiesEditionComponent.class)
-				return new PrimitiveTypePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (PrimitiveTypeGeneralPropertiesEditionComponent.GENERAL_PART.equals(part)
+				&& refinement == PrimitiveTypeGeneralPropertiesEditionComponent.class)
+				return new PrimitiveTypeGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (PrimitiveTypeDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part)
+				&& refinement == PrimitiveTypeDocumentationPropertiesEditionComponent.class)
+				return new PrimitiveTypeDocumentationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (PrimitiveTypeAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part)
+				&& refinement == PrimitiveTypeAttributesPropertiesEditionComponent.class)
+				return new PrimitiveTypeAttributesPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}
