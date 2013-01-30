@@ -143,9 +143,15 @@ public class ElementDocumentationPropertiesEditionComponent extends
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		if (CustomUmlViewsRepository.Documentation.comment == event
 				.getAffectedEditor()) {
+			Object oldValue = commentSettings.getValue();
+			Object newValue = event.getNewValue();
+			// Discard event if value does not change
+			if (oldValue == null && "".equals(newValue)
+					|| newValue.equals(oldValue))
+				return;
 			commentSettings.setValue((java.lang.String) EEFConverterUtil
 					.createFromString(TypesPackage.Literals.STRING,
-							(String) event.getNewValue()));
+							(String) newValue));
 		}
 	}
 
