@@ -153,6 +153,7 @@ public class EnumerationAttributesPropertiesEditionComponent extends SinglePartP
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Enumeration enumeration = (Enumeration)semanticObject;
+
 		if (UmlViewsRepository.Attributes.attributes_ == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, attributesSettings, editingContext.getAdapterFactory());

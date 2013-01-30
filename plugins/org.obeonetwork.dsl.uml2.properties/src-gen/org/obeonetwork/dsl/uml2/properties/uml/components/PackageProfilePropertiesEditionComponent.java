@@ -143,6 +143,7 @@ public class PackageProfilePropertiesEditionComponent extends SinglePartProperti
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Package package_ = (Package)semanticObject;
+
 		if (UmlViewsRepository.Profile.appliedProfiles == event.getAffectedEditor()) {
 			// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : appliedProfile, Profile, Package.
 		}

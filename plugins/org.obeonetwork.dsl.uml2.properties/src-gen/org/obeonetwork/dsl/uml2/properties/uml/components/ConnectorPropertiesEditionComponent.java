@@ -154,6 +154,7 @@ public class ConnectorPropertiesEditionComponent extends SinglePartPropertiesEdi
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Connector connector = (Connector)semanticObject;
+
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			connector.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}

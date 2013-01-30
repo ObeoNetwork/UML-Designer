@@ -111,6 +111,12 @@ public class UmlMessages extends NLS {
 	 * @generated
 	 */
 	
+	public static String GeneralPropertiesEditionPart_OrderedLabel;
+
+	/**
+	 * @generated
+	 */
+	
 	public static String GeneralPropertiesEditionPart_Abstract_Label;
 
 	/**
@@ -118,12 +124,6 @@ public class UmlMessages extends NLS {
 	 */
 	
 	public static String GeneralPropertiesEditionPart_LeafLabel;
-
-	/**
-	 * @generated
-	 */
-	
-	public static String GeneralPropertiesEditionPart_OrderedLabel;
 
 	/**
 	 * @generated

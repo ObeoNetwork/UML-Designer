@@ -144,6 +144,7 @@ public class ClassGeneralPropertiesEditionComponent extends SinglePartProperties
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Class class_ = (Class)semanticObject;
+
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			class_.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}

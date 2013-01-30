@@ -145,6 +145,7 @@ public class DataTypeGeneralPropertiesEditionComponent extends SinglePartPropert
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		DataType dataType = (DataType)semanticObject;
+
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			dataType.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}

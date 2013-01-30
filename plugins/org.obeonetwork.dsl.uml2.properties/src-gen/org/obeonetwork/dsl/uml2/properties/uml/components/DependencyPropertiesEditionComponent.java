@@ -170,6 +170,7 @@ public class DependencyPropertiesEditionComponent extends SinglePartPropertiesEd
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Dependency dependency = (Dependency)semanticObject;
+
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			dependency.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}

@@ -259,6 +259,7 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Port port = (Port)semanticObject;
+
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			port.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}

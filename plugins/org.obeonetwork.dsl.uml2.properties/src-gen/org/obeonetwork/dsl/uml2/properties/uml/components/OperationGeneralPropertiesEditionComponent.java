@@ -39,17 +39,9 @@ import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingCo
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
-import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
-
-import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
-
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.viewers.ViewerFilter;
-
 import org.eclipse.uml2.types.TypesPackage;
 
 import org.eclipse.uml2.uml.Operation;
-import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -69,11 +61,6 @@ public class OperationGeneralPropertiesEditionComponent extends SinglePartProper
 	
 	public static String GENERAL_PART = "General"; //$NON-NLS-1$
 
-	
-	/**
-	 * Settings for returnType EObjectFlatComboViewer
-	 */
-	private EObjectFlatComboSettings returnTypeSettings;
 	
 	
 	/**
@@ -110,8 +97,6 @@ public class OperationGeneralPropertiesEditionComponent extends SinglePartProper
 			}
 			generalPart.setLeaf(operation.isLeaf());
 			
-			generalPart.setOrdered(operation.isOrdered());
-			
 			generalPart.setStatic_(operation.isStatic());
 			
 			generalPart.setUnique(operation.isUnique());
@@ -120,13 +105,6 @@ public class OperationGeneralPropertiesEditionComponent extends SinglePartProper
 			
 			generalPart.setQuery(operation.isQuery());
 			
-			if (isAccessible(UmlViewsRepository.General.type)) {
-				// init part
-				returnTypeSettings = new EObjectFlatComboSettings(operation, UMLPackage.eINSTANCE.getOperation_Type());
-				generalPart.initType(returnTypeSettings);
-				// set the button mode
-				generalPart.setTypeButtonMode(ButtonsModeEnum.BROWSE);
-			}
 			// init filters
 			
 			
@@ -135,21 +113,6 @@ public class OperationGeneralPropertiesEditionComponent extends SinglePartProper
 			
 			
 			
-			
-			if (isAccessible(UmlViewsRepository.General.type)) {
-				generalPart.addFilterToType(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof String && element.equals("")) || (element instanceof Type); //$NON-NLS-1$ 
-					}
-					
-				});
-			}
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -157,8 +120,6 @@ public class OperationGeneralPropertiesEditionComponent extends SinglePartProper
 		}
 		setInitializing(false);
 	}
-
-
 
 
 
@@ -183,9 +144,6 @@ public class OperationGeneralPropertiesEditionComponent extends SinglePartProper
 		if (editorKey == UmlViewsRepository.General.Qualifiers.leaf) {
 			return UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf();
 		}
-		if (editorKey == UmlViewsRepository.General.Qualifiers.ordered) {
-			return UMLPackage.eINSTANCE.getOperation_IsOrdered();
-		}
 		if (editorKey == UmlViewsRepository.General.Qualifiers.static_) {
 			return UMLPackage.eINSTANCE.getFeature_IsStatic();
 		}
@@ -198,9 +156,6 @@ public class OperationGeneralPropertiesEditionComponent extends SinglePartProper
 		if (editorKey == UmlViewsRepository.General.Qualifiers.query) {
 			return UMLPackage.eINSTANCE.getOperation_IsQuery();
 		}
-		if (editorKey == UmlViewsRepository.General.type) {
-			return UMLPackage.eINSTANCE.getOperation_Type();
-		}
 		return super.associatedFeature(editorKey);
 	}
 
@@ -211,6 +166,7 @@ public class OperationGeneralPropertiesEditionComponent extends SinglePartProper
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Operation operation = (Operation)semanticObject;
+
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			operation.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}
@@ -252,9 +208,6 @@ public class OperationGeneralPropertiesEditionComponent extends SinglePartProper
 			if (UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.Qualifiers.leaf))
 				generalPart.setLeaf((Boolean)msg.getNewValue());
 			
-			if (UMLPackage.eINSTANCE.getOperation_IsOrdered().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.Qualifiers.ordered))
-				generalPart.setOrdered((Boolean)msg.getNewValue());
-			
 			if (UMLPackage.eINSTANCE.getFeature_IsStatic().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.Qualifiers.static_))
 				generalPart.setStatic_((Boolean)msg.getNewValue());
 			
@@ -267,8 +220,6 @@ public class OperationGeneralPropertiesEditionComponent extends SinglePartProper
 			if (UMLPackage.eINSTANCE.getOperation_IsQuery().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.Qualifiers.query))
 				generalPart.setQuery((Boolean)msg.getNewValue());
 			
-			if (UMLPackage.eINSTANCE.getOperation_Type().equals(msg.getFeature()) && generalPart != null && isAccessible(UmlViewsRepository.General.type))
-				generalPart.setType((EObject)msg.getNewValue());
 			
 		}
 	}
@@ -284,12 +235,10 @@ public class OperationGeneralPropertiesEditionComponent extends SinglePartProper
 			UMLPackage.eINSTANCE.getNamedElement_Name(),
 			UMLPackage.eINSTANCE.getNamedElement_Visibility(),
 			UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf(),
-			UMLPackage.eINSTANCE.getOperation_IsOrdered(),
 			UMLPackage.eINSTANCE.getFeature_IsStatic(),
 			UMLPackage.eINSTANCE.getOperation_IsUnique(),
 			UMLPackage.eINSTANCE.getClassifier_IsAbstract(),
-			UMLPackage.eINSTANCE.getOperation_IsQuery(),
-			UMLPackage.eINSTANCE.getOperation_Type()		);
+			UMLPackage.eINSTANCE.getOperation_IsQuery()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -298,7 +247,7 @@ public class OperationGeneralPropertiesEditionComponent extends SinglePartProper
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#mustBeComposed(java.lang.Object, int)
 	 */
 	public boolean mustBeComposed(Object key, int kind) {
-		return key == UmlViewsRepository.General.name || key == UmlViewsRepository.General.visibility || key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.Qualifiers.ordered || key == UmlViewsRepository.General.Qualifiers.static_ || key == UmlViewsRepository.General.Qualifiers.unique || key == UmlViewsRepository.General.Qualifiers.abstract_ || key == UmlViewsRepository.General.Qualifiers.query || key == UmlViewsRepository.General.type || key == UmlViewsRepository.General.Qualifiers.class;
+		return key == UmlViewsRepository.General.name || key == UmlViewsRepository.General.visibility || key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.Qualifiers.static_ || key == UmlViewsRepository.General.Qualifiers.unique || key == UmlViewsRepository.General.Qualifiers.abstract_ || key == UmlViewsRepository.General.Qualifiers.query || key == UmlViewsRepository.General.Qualifiers.class;
 	}
 
 	/**
@@ -308,7 +257,7 @@ public class OperationGeneralPropertiesEditionComponent extends SinglePartProper
 	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.Qualifiers.ordered || key == UmlViewsRepository.General.Qualifiers.static_ || key == UmlViewsRepository.General.Qualifiers.unique || key == UmlViewsRepository.General.Qualifiers.abstract_ || key == UmlViewsRepository.General.Qualifiers.query;
+		return key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.Qualifiers.static_ || key == UmlViewsRepository.General.Qualifiers.unique || key == UmlViewsRepository.General.Qualifiers.abstract_ || key == UmlViewsRepository.General.Qualifiers.query;
 	}
 
 	/**
@@ -341,13 +290,6 @@ public class OperationGeneralPropertiesEditionComponent extends SinglePartProper
 						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), newValue);
-				}
-				if (UmlViewsRepository.General.Qualifiers.ordered == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getOperation_IsOrdered().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getOperation_IsOrdered().getEAttributeType(), newValue);
 				}
 				if (UmlViewsRepository.General.Qualifiers.static_ == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();

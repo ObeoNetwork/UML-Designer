@@ -131,9 +131,6 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_eAQasFv7EeKZBNASYbV97A" name="leaf" views="_nujsAFv7EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//RedefinableElement/isLeaf"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_szAdUFv7EeKZBNASYbV97A" name="ordered" views="_vU7ngFv7EeKZBNASYbV97A">
-          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Operation/isOrdered.1"/>
-        </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_4BgWEFv7EeKZBNASYbV97A" name="static" views="_0YtDYFv7EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Feature/isStatic"/>
         </properties>
@@ -145,9 +142,6 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_NW3KEFv8EeKZBNASYbV97A" name="query" views="_PBNzEFv8EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Operation/isQuery"/>
-        </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_yuwNkFv8EeKZBNASYbV97A" name="returnType" views="_tYLxgFv8EeKZBNASYbV97A">
-          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Operation/type"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_9sHToGCJEeKd8d7WgZ31eQ" name="parameters" views="_Fh2g0GCKEeKd8d7WgZ31eQ">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//BehavioralFeature/ownedParameter"/>
@@ -446,13 +440,13 @@
         </elements>
         <elements xsi:type="eef-views:Container" xmi:id="_GefuoFv9EeKZBNASYbV97A" name="qualifiers">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_vU7ngFv7EeKZBNASYbV97A" name="ordered" nameAsLabel="true">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_aDX1wFv4EeKZBNASYbV97A" name="abstract">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_nujsAFv7EeKZBNASYbV97A" name="leaf" nameAsLabel="true">
-            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
-          </elements>
-          <elements xsi:type="eef-views:ElementEditor" xmi:id="_vU7ngFv7EeKZBNASYbV97A" name="ordered" nameAsLabel="true">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_0YtDYFv7EeKZBNASYbV97A" name="static" nameAsLabel="true">

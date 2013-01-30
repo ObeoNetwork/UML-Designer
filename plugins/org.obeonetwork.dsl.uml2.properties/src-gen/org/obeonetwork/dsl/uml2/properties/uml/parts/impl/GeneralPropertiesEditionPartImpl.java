@@ -105,9 +105,9 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
 
 	protected Text name;
 	protected EMFComboViewer visibility;
+	protected Button ordered;
 	protected Button abstract_;
 	protected Button leaf;
-	protected Button ordered;
 	protected Button static_;
 	protected Button unique;
 	protected Button query;
@@ -186,9 +186,9 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
     generalStep.addStep(UmlViewsRepository.General.name);
     generalStep.addStep(UmlViewsRepository.General.visibility);
     CompositionStep qualifiersStep = generalStep.addStep(UmlViewsRepository.General.Qualifiers.class);
+    qualifiersStep.addStep(UmlViewsRepository.General.Qualifiers.ordered);
     qualifiersStep.addStep(UmlViewsRepository.General.Qualifiers.abstract_);
     qualifiersStep.addStep(UmlViewsRepository.General.Qualifiers.leaf);
-    qualifiersStep.addStep(UmlViewsRepository.General.Qualifiers.ordered);
     qualifiersStep.addStep(UmlViewsRepository.General.Qualifiers.static_);
     qualifiersStep.addStep(UmlViewsRepository.General.Qualifiers.unique);
     qualifiersStep.addStep(UmlViewsRepository.General.Qualifiers.query);
@@ -232,14 +232,14 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
         if (key == UmlViewsRepository.General.Qualifiers.class) {
           return createQualifiersGroup(parent);
         }
+        if (key == UmlViewsRepository.General.Qualifiers.ordered) {
+          return createOrderedCheckbox(parent);
+        }
         if (key == UmlViewsRepository.General.Qualifiers.abstract_) {
           return createAbstract_Checkbox(parent);
         }
         if (key == UmlViewsRepository.General.Qualifiers.leaf) {
           return createLeafCheckbox(parent);
-        }
-        if (key == UmlViewsRepository.General.Qualifiers.ordered) {
-          return createOrderedCheckbox(parent);
         }
         if (key == UmlViewsRepository.General.Qualifiers.static_) {
           return createStatic_Checkbox(parent);
@@ -435,6 +435,39 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
 	 * @generated
 	 */
 	
+	protected Composite createOrderedCheckbox(Composite parent) {
+    ordered = new Button(parent, SWT.CHECK);
+    ordered.setText(getDescription(UmlViewsRepository.General.Qualifiers.ordered, UmlMessages.GeneralPropertiesEditionPart_OrderedLabel));
+    ordered.addSelectionListener(new SelectionAdapter() {
+
+      /**
+       * {@inheritDoc}
+       *
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       * 	@generated
+       */
+      public void widgetSelected(SelectionEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartImpl.this, UmlViewsRepository.General.Qualifiers.ordered, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(ordered.getSelection())));
+      }
+
+    });
+    GridData orderedData = new GridData(GridData.FILL_HORIZONTAL);
+    orderedData.horizontalSpan = 2;
+    ordered.setLayoutData(orderedData);
+    EditingUtils.setID(ordered, UmlViewsRepository.General.Qualifiers.ordered);
+    EditingUtils.setEEFtype(ordered, "eef::Checkbox"); //$NON-NLS-1$
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.Qualifiers.ordered, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    // Start of user code for createOrderedCheckbox
+
+    // End of user code
+    return parent;
+  }
+
+	/**
+	 * @generated
+	 */
+	
 	protected Composite createAbstract_Checkbox(Composite parent) {
     abstract_ = new Button(parent, SWT.CHECK);
     abstract_.setText(getDescription(UmlViewsRepository.General.Qualifiers.abstract_, UmlMessages.GeneralPropertiesEditionPart_Abstract_Label));
@@ -492,39 +525,6 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
     EditingUtils.setEEFtype(leaf, "eef::Checkbox"); //$NON-NLS-1$
     SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.Qualifiers.leaf, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
     // Start of user code for createLeafCheckbox
-
-    // End of user code
-    return parent;
-  }
-
-	/**
-	 * @generated
-	 */
-	
-	protected Composite createOrderedCheckbox(Composite parent) {
-    ordered = new Button(parent, SWT.CHECK);
-    ordered.setText(getDescription(UmlViewsRepository.General.Qualifiers.ordered, UmlMessages.GeneralPropertiesEditionPart_OrderedLabel));
-    ordered.addSelectionListener(new SelectionAdapter() {
-
-      /**
-       * {@inheritDoc}
-       *
-       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-       * 	@generated
-       */
-      public void widgetSelected(SelectionEvent e) {
-        if (propertiesEditionComponent != null)
-          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartImpl.this, UmlViewsRepository.General.Qualifiers.ordered, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(ordered.getSelection())));
-      }
-
-    });
-    GridData orderedData = new GridData(GridData.FILL_HORIZONTAL);
-    orderedData.horizontalSpan = 2;
-    ordered.setLayoutData(orderedData);
-    EditingUtils.setID(ordered, UmlViewsRepository.General.Qualifiers.ordered);
-    EditingUtils.setEEFtype(ordered, "eef::Checkbox"); //$NON-NLS-1$
-    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.Qualifiers.ordered, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-    // Start of user code for createOrderedCheckbox
 
     // End of user code
     return parent;
@@ -1809,6 +1809,38 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getOrdered()
+	 * @generated
+	 */
+	public Boolean getOrdered() {
+    return Boolean.valueOf(ordered.getSelection());
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#setOrdered(Boolean newValue)
+	 * @generated
+	 */
+	public void setOrdered(Boolean newValue) {
+    if (newValue != null) {
+      ordered.setSelection(newValue.booleanValue());
+    } else {
+      ordered.setSelection(false);
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.Qualifiers.ordered);
+    if (eefElementEditorReadOnlyState && ordered.isEnabled()) {
+      ordered.setEnabled(false);
+      ordered.setToolTipText(UmlMessages.General_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !ordered.isEnabled()) {
+      ordered.setEnabled(true);
+    }	
+    
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getAbstract_()
 	 * @generated
 	 */
@@ -1866,38 +1898,6 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
       leaf.setToolTipText(UmlMessages.General_ReadOnly);
     } else if (!eefElementEditorReadOnlyState && !leaf.isEnabled()) {
       leaf.setEnabled(true);
-    }	
-    
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getOrdered()
-	 * @generated
-	 */
-	public Boolean getOrdered() {
-    return Boolean.valueOf(ordered.getSelection());
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#setOrdered(Boolean newValue)
-	 * @generated
-	 */
-	public void setOrdered(Boolean newValue) {
-    if (newValue != null) {
-      ordered.setSelection(newValue.booleanValue());
-    } else {
-      ordered.setSelection(false);
-    }
-    boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.Qualifiers.ordered);
-    if (eefElementEditorReadOnlyState && ordered.isEnabled()) {
-      ordered.setEnabled(false);
-      ordered.setToolTipText(UmlMessages.General_ReadOnly);
-    } else if (!eefElementEditorReadOnlyState && !ordered.isEnabled()) {
-      ordered.setEnabled(true);
     }	
     
   }

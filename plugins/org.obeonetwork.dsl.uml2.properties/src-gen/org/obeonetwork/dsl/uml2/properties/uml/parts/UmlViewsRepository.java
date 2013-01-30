@@ -47,6 +47,12 @@ public class UmlViewsRepository {
 			 * @generated
 			 */
 			
+			public static String ordered = "uml::General::qualifiers::ordered";
+			
+			/**
+			 * @generated
+			 */
+			
 			public static String abstract_ = "uml::General::qualifiers::abstract";
 			
 			/**
@@ -54,12 +60,6 @@ public class UmlViewsRepository {
 			 */
 			
 			public static String leaf = "uml::General::qualifiers::leaf";
-			
-			/**
-			 * @generated
-			 */
-			
-			public static String ordered = "uml::General::qualifiers::ordered";
 			
 			/**
 			 * @generated

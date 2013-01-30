@@ -68,6 +68,20 @@ public interface GeneralPropertiesEditionPart {
 
 
 	/**
+	 * @return the ordered
+	 * @generated
+	 */
+	public Boolean getOrdered();
+
+	/**
+	 * Defines a new ordered
+	 * @param newValue the new ordered to set
+	 * @generated
+	 */
+	public void setOrdered(Boolean newValue);
+
+
+	/**
 	 * @return the abstract
 	 * @generated
 	 */
@@ -93,20 +107,6 @@ public interface GeneralPropertiesEditionPart {
 	 * @generated
 	 */
 	public void setLeaf(Boolean newValue);
-
-
-	/**
-	 * @return the ordered
-	 * @generated
-	 */
-	public Boolean getOrdered();
-
-	/**
-	 * Defines a new ordered
-	 * @param newValue the new ordered to set
-	 * @generated
-	 */
-	public void setOrdered(Boolean newValue);
 
 
 	/**
