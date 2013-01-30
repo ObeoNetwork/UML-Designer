@@ -58,6 +58,11 @@ public class UmlCustomPropertiesEditionPartProvider extends
 				return new RelationshipsPropertiesEditionPartForm(component);
 		}
 
+		if (key == CustomUmlViewsRepository.Documentation.class) {
+			if (kind == UmlViewsRepository.FORM_KIND)
+				return new RelationshipsPropertiesEditionPartForm(component);
+		}
+
 		return super.getPropertiesEditionPart(key, kind, component);
 	}
 }

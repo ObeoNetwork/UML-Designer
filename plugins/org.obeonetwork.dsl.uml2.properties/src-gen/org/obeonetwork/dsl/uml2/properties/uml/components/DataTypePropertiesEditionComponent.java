@@ -29,7 +29,6 @@ import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.uml2.uml.DataType;
 
 import org.obeonetwork.dsl.uml2.properties.uml.parts.AttributesPropertiesEditionPart;
-import org.obeonetwork.dsl.uml2.properties.uml.parts.DocumentationPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 
@@ -51,18 +50,6 @@ public class DataTypePropertiesEditionComponent extends ComposedPropertiesEditio
 	 * @generated
 	 */
 	protected DataTypeGeneralPropertiesEditionComponent dataTypeGeneralPropertiesEditionComponent;
-
-	/**
-	 * The Documentation part
-	 * @generated
-	 */
-	private DocumentationPropertiesEditionPart documentationPart;
-
-	/**
-	 * The DataTypeDocumentationPropertiesEditionComponent sub component
-	 * @generated
-	 */
-	protected DataTypeDocumentationPropertiesEditionComponent dataTypeDocumentationPropertiesEditionComponent;
 
 	/**
 	 * The Attributes part
@@ -90,9 +77,6 @@ public class DataTypePropertiesEditionComponent extends ComposedPropertiesEditio
 			dataTypeGeneralPropertiesEditionComponent = (DataTypeGeneralPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, DataTypeGeneralPropertiesEditionComponent.GENERAL_PART, DataTypeGeneralPropertiesEditionComponent.class);
 			addSubComponent(dataTypeGeneralPropertiesEditionComponent);
 			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(dataType, PropertiesEditingProvider.class);
-			dataTypeDocumentationPropertiesEditionComponent = (DataTypeDocumentationPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, DataTypeDocumentationPropertiesEditionComponent.DOCUMENTATION_PART, DataTypeDocumentationPropertiesEditionComponent.class);
-			addSubComponent(dataTypeDocumentationPropertiesEditionComponent);
-			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(dataType, PropertiesEditingProvider.class);
 			dataTypeAttributesPropertiesEditionComponent = (DataTypeAttributesPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, DataTypeAttributesPropertiesEditionComponent.ATTRIBUTES_PART, DataTypeAttributesPropertiesEditionComponent.class);
 			addSubComponent(dataTypeAttributesPropertiesEditionComponent);
 		}
@@ -109,10 +93,6 @@ public class DataTypePropertiesEditionComponent extends ComposedPropertiesEditio
 		if (DataTypeGeneralPropertiesEditionComponent.GENERAL_PART.equals(key)) {
 			generalPart = (GeneralPropertiesEditionPart)dataTypeGeneralPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
 			return (IPropertiesEditionPart)generalPart;
-		}
-		if (DataTypeDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(key)) {
-			documentationPart = (DocumentationPropertiesEditionPart)dataTypeDocumentationPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
-			return (IPropertiesEditionPart)documentationPart;
 		}
 		if (DataTypeAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(key)) {
 			attributesPart = (AttributesPropertiesEditionPart)dataTypeAttributesPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
@@ -134,10 +114,6 @@ public class DataTypePropertiesEditionComponent extends ComposedPropertiesEditio
 			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
 			generalPart = (GeneralPropertiesEditionPart)propertiesEditionPart;
 		}
-		if (UmlViewsRepository.Documentation.class == key) {
-			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
-			documentationPart = (DocumentationPropertiesEditionPart)propertiesEditionPart;
-		}
 		if (UmlViewsRepository.Attributes.class == key) {
 			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
 			attributesPart = (AttributesPropertiesEditionPart)propertiesEditionPart;
@@ -154,9 +130,6 @@ public class DataTypePropertiesEditionComponent extends ComposedPropertiesEditio
 	 */
 	public void initPart(java.lang.Object key, int kind, EObject element, ResourceSet allResource) {
 		if (key == UmlViewsRepository.General.class) {
-			super.initPart(key, kind, element, allResource);
-		}
-		if (key == UmlViewsRepository.Documentation.class) {
 			super.initPart(key, kind, element, allResource);
 		}
 		if (key == UmlViewsRepository.Attributes.class) {

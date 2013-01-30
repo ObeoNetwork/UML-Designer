@@ -14,21 +14,43 @@ import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.VisibilityKind;
 
+import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.WrappedException;
+
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
-import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
+import org.eclipse.emf.ecore.util.Diagnostician;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 
-import org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent;
+import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 
-import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
+
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
+import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
+import org.eclipse.uml2.types.TypesPackage;
 
 import org.eclipse.uml2.uml.AssociationClass;
+import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.UMLPackage;
 
-import org.obeonetwork.dsl.uml2.properties.uml.parts.DocumentationPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 
@@ -37,103 +59,283 @@ import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
  * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
  * @generated
  */
-public class AssociationClassPropertiesEditionComponent extends ComposedPropertiesEditionComponent {
+public class AssociationClassPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
 	/**
-	 * The General part
 	 * @generated
 	 */
-	private GeneralPropertiesEditionPart generalPart;
+	
+	public static String GENERAL_PART = "General"; //$NON-NLS-1$
 
+	
 	/**
-	 * The AssociationClassGeneralPropertiesEditionComponent sub component
-	 * @generated
+	 * Settings for memberEnd ReferencesTable
 	 */
-	protected AssociationClassGeneralPropertiesEditionComponent associationClassGeneralPropertiesEditionComponent;
-
+	protected ReferencesTableSettings memberEndSettings;
+	
+	
 	/**
-	 * The Documentation part
-	 * @generated
-	 */
-	private DocumentationPropertiesEditionPart documentationPart;
-
-	/**
-	 * The AssociationClassDocumentationPropertiesEditionComponent sub component
-	 * @generated
-	 */
-	protected AssociationClassDocumentationPropertiesEditionComponent associationClassDocumentationPropertiesEditionComponent;
-
-	/**
-	 * Parameterized constructor
-	 * 
-	 * @param associationClass the EObject to edit
+	 * Default constructor
 	 * @generated
 	 */
 	public AssociationClassPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject associationClass, String editing_mode) {
-		super(editingContext, editing_mode);
-		if (associationClass instanceof AssociationClass) {
-			PropertiesEditingProvider provider = null;
-			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(associationClass, PropertiesEditingProvider.class);
-			associationClassGeneralPropertiesEditionComponent = (AssociationClassGeneralPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, AssociationClassGeneralPropertiesEditionComponent.GENERAL_PART, AssociationClassGeneralPropertiesEditionComponent.class);
-			addSubComponent(associationClassGeneralPropertiesEditionComponent);
-			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(associationClass, PropertiesEditingProvider.class);
-			associationClassDocumentationPropertiesEditionComponent = (AssociationClassDocumentationPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, AssociationClassDocumentationPropertiesEditionComponent.DOCUMENTATION_PART, AssociationClassDocumentationPropertiesEditionComponent.class);
-			addSubComponent(associationClassDocumentationPropertiesEditionComponent);
-		}
+		super(editingContext, associationClass, editing_mode);
+		parts = new String[] { GENERAL_PART };
+		repositoryKey = UmlViewsRepository.class;
+		partKey = UmlViewsRepository.General.class;
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 *      getPropertiesEditionPart(int, java.lang.String)
-	 * @generated
-	 */
-	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-		if (AssociationClassGeneralPropertiesEditionComponent.GENERAL_PART.equals(key)) {
-			generalPart = (GeneralPropertiesEditionPart)associationClassGeneralPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
-			return (IPropertiesEditionPart)generalPart;
-		}
-		if (AssociationClassDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(key)) {
-			documentationPart = (DocumentationPropertiesEditionPart)associationClassDocumentationPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
-			return (IPropertiesEditionPart)documentationPart;
-		}
-		return super.getPropertiesEditionPart(kind, key);
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 *      setPropertiesEditionPart(java.lang.Object, int,
-	 *      org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart)
-	 * @generated
-	 */
-	public void setPropertiesEditionPart(java.lang.Object key, int kind, IPropertiesEditionPart propertiesEditionPart) {
-		if (UmlViewsRepository.General.class == key) {
-			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
-			generalPart = (GeneralPropertiesEditionPart)propertiesEditionPart;
-		}
-		if (UmlViewsRepository.Documentation.class == key) {
-			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
-			documentationPart = (DocumentationPropertiesEditionPart)propertiesEditionPart;
-		}
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.ComposedPropertiesEditionComponent#
-	 *      initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject,
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
 	 *      org.eclipse.emf.ecore.resource.ResourceSet)
 	 * @generated
 	 */
-	public void initPart(java.lang.Object key, int kind, EObject element, ResourceSet allResource) {
-		if (key == UmlViewsRepository.General.class) {
-			super.initPart(key, kind, element, allResource);
+	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
+		setInitializing(true);
+		if (editingPart != null && key == partKey) {
+			editingPart.setContext(elt, allResource);
+			
+			final AssociationClass associationClass = (AssociationClass)elt;
+			final GeneralPropertiesEditionPart generalPart = (GeneralPropertiesEditionPart)editingPart;
+			// init values
+			if (isAccessible(UmlViewsRepository.General.name))
+				generalPart.setName(EEFConverterUtil.convertToString(TypesPackage.Literals.STRING, associationClass.getName()));
+			
+			if (isAccessible(UmlViewsRepository.General.visibility)) {
+				generalPart.initVisibility(EEFUtils.choiceOfValues(associationClass, UMLPackage.eINSTANCE.getNamedElement_Visibility()), associationClass.getVisibility());
+			}
+			generalPart.setAbstract_(associationClass.isAbstract());
+			
+			generalPart.setLeaf(associationClass.isLeaf());
+			
+			generalPart.setDerived(associationClass.isDerived());
+			
+			// FIXME NO VALID CASE INTO template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : ownedEnd, General, AssociationClass.
+			if (isAccessible(UmlViewsRepository.General.memberEnd)) {
+				memberEndSettings = new ReferencesTableSettings(associationClass, UMLPackage.eINSTANCE.getAssociation_MemberEnd());
+				generalPart.initMemberEnd(memberEndSettings);
+			}
+			// init filters
+			
+			
+			
+			
+			
+			// FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : ownedEnd, General, AssociationClass.
+			if (isAccessible(UmlViewsRepository.General.memberEnd)) {
+				generalPart.addFilterToMemberEnd(new EObjectFilter(UMLPackage.Literals.PROPERTY));
+			}
+			// init values for referenced views
+			
+			// init filters for referenced views
+			
 		}
-		if (key == UmlViewsRepository.Documentation.class) {
-			super.initPart(key, kind, element, allResource);
+		setInitializing(false);
+	}
+
+
+
+
+
+
+
+
+
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+	 */
+	public EStructuralFeature associatedFeature(Object editorKey) {
+		if (editorKey == UmlViewsRepository.General.name) {
+			return UMLPackage.eINSTANCE.getNamedElement_Name();
+		}
+		if (editorKey == UmlViewsRepository.General.visibility) {
+			return UMLPackage.eINSTANCE.getNamedElement_Visibility();
+		}
+		if (editorKey == UmlViewsRepository.General.Qualifiers.abstract_) {
+			return UMLPackage.eINSTANCE.getClassifier_IsAbstract();
+		}
+		if (editorKey == UmlViewsRepository.General.Qualifiers.leaf) {
+			return UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf();
+		}
+		if (editorKey == UmlViewsRepository.General.derived) {
+			return UMLPackage.eINSTANCE.getProperty_IsDerived();
+		}
+		if (editorKey == UmlViewsRepository.General.ownedEnd) {
+			return UMLPackage.eINSTANCE.getAssociation_OwnedEnd();
+		}
+		if (editorKey == UmlViewsRepository.General.memberEnd) {
+			return UMLPackage.eINSTANCE.getAssociation_MemberEnd();
+		}
+		return super.associatedFeature(editorKey);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @generated
+	 */
+	public void updateSemanticModel(final IPropertiesEditionEvent event) {
+		AssociationClass associationClass = (AssociationClass)semanticObject;
+		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
+			associationClass.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
+		}
+		if (UmlViewsRepository.General.visibility == event.getAffectedEditor()) {
+			associationClass.setVisibility((VisibilityKind)event.getNewValue());
+		}
+		if (UmlViewsRepository.General.Qualifiers.abstract_ == event.getAffectedEditor()) {
+			associationClass.setIsAbstract((Boolean)event.getNewValue());
+		}
+		if (UmlViewsRepository.General.Qualifiers.leaf == event.getAffectedEditor()) {
+			associationClass.setIsLeaf((Boolean)event.getNewValue());
+		}
+		if (UmlViewsRepository.General.derived == event.getAffectedEditor()) {
+			associationClass.setIsDerived((Boolean)event.getNewValue());
+		}
+		if (UmlViewsRepository.General.ownedEnd == event.getAffectedEditor()) {
+			// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : ownedEnd, General, AssociationClass.
+		}
+		if (UmlViewsRepository.General.memberEnd == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
+				if (event.getNewValue() instanceof Property) {
+					memberEndSettings.addToReference((EObject) event.getNewValue());
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				memberEndSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				memberEndSettings.move(event.getNewIndex(), (Property) event.getNewValue());
+			}
 		}
 	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+	 */
+	public void updatePart(Notification msg) {
+		super.updatePart(msg);
+		if (editingPart.isVisible()) {
+			GeneralPropertiesEditionPart generalPart = (GeneralPropertiesEditionPart)editingPart;
+			if (UMLPackage.eINSTANCE.getNamedElement_Name().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.name)) {
+				if (msg.getNewValue() != null) {
+					generalPart.setName(EcoreUtil.convertToString(TypesPackage.Literals.STRING, msg.getNewValue()));
+				} else {
+					generalPart.setName("");
+				}
+			}
+			if (UMLPackage.eINSTANCE.getNamedElement_Visibility().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null  && isAccessible(UmlViewsRepository.General.visibility))
+				generalPart.setVisibility((Object)msg.getNewValue());
+			
+			if (UMLPackage.eINSTANCE.getClassifier_IsAbstract().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.Qualifiers.abstract_))
+				generalPart.setAbstract_((Boolean)msg.getNewValue());
+			
+			if (UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.Qualifiers.leaf))
+				generalPart.setLeaf((Boolean)msg.getNewValue());
+			
+			if (UMLPackage.eINSTANCE.getProperty_IsDerived().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.derived))
+				generalPart.setDerived((Boolean)msg.getNewValue());
+			
+			// FIXME INVALID CASE INTO template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : ownedEnd, General, AssociationClass.
+			if (UMLPackage.eINSTANCE.getAssociation_MemberEnd().equals(msg.getFeature())  && isAccessible(UmlViewsRepository.General.memberEnd))
+				generalPart.updateMemberEnd();
+			
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+	 */
+	@Override
+	protected NotificationFilter[] getNotificationFilters() {
+		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
+			UMLPackage.eINSTANCE.getNamedElement_Name(),
+			UMLPackage.eINSTANCE.getNamedElement_Visibility(),
+			UMLPackage.eINSTANCE.getClassifier_IsAbstract(),
+			UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf(),
+			UMLPackage.eINSTANCE.getProperty_IsDerived(),
+			UMLPackage.eINSTANCE.getAssociation_OwnedEnd(),
+			UMLPackage.eINSTANCE.getAssociation_MemberEnd()		);
+		return new NotificationFilter[] {filter,};
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#mustBeComposed(java.lang.Object, int)
+	 */
+	public boolean mustBeComposed(Object key, int kind) {
+		return key == UmlViewsRepository.General.name || key == UmlViewsRepository.General.visibility || key == UmlViewsRepository.General.Qualifiers.abstract_ || key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.derived || key == UmlViewsRepository.General.ownedEnd || key == UmlViewsRepository.General.memberEnd || key == UmlViewsRepository.General.Qualifiers.class;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
+	 * @generated
+	 */
+	public boolean isRequired(Object key, int kind) {
+		return key == UmlViewsRepository.General.Qualifiers.abstract_ || key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.derived || key == UmlViewsRepository.General.memberEnd;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+	 * @generated
+	 */
+	public Diagnostic validateValue(IPropertiesEditionEvent event) {
+		Diagnostic ret = Diagnostic.OK_INSTANCE;
+		if (event.getNewValue() != null) {
+			try {
+				if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newValue);
+				}
+				if (UmlViewsRepository.General.visibility == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), newValue);
+				}
+				if (UmlViewsRepository.General.Qualifiers.abstract_ == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getClassifier_IsAbstract().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getClassifier_IsAbstract().getEAttributeType(), newValue);
+				}
+				if (UmlViewsRepository.General.Qualifiers.leaf == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), newValue);
+				}
+				if (UmlViewsRepository.General.derived == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getProperty_IsDerived().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getProperty_IsDerived().getEAttributeType(), newValue);
+				}
+			} catch (IllegalArgumentException iae) {
+				ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (WrappedException we) {
+				ret = BasicDiagnostic.toDiagnostic(we);
+			}
+		}
+		return ret;
+	}
+
+
+	
+
 }

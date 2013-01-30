@@ -235,19 +235,6 @@ public class UmlViewsRepository {
 	}
 
 	/**
-	 * Documentation view descriptor
-	 * @generated
-	 */
-	public static class Documentation {
-	/**
-	 * @generated
-	 */
-	
-	public static String comment = "uml::Documentation::comment";
-	
-	}
-
-	/**
 	 * Operations view descriptor
 	 * @generated
 	 */

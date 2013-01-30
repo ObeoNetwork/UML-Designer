@@ -33,8 +33,6 @@ import org.eclipse.uml2.uml.UMLPackage;
 
 import org.obeonetwork.dsl.uml2.properties.providers.UmlPropertiesEditionProvider;
 
-import org.obeonetwork.dsl.uml2.properties.uml.components.TransitionDocumentationPropertiesEditionComponent;
-import org.obeonetwork.dsl.uml2.properties.uml.components.TransitionGeneralPropertiesEditionComponent;
 import org.obeonetwork.dsl.uml2.properties.uml.components.TransitionPropertiesEditionComponent;
 
 /**
@@ -74,7 +72,7 @@ public class TransitionPropertiesEditionProvider extends UmlPropertiesEditionPro
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof Transition) && (TransitionGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) || TransitionDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
+		return (editingContext.getEObject() instanceof Transition) && (TransitionPropertiesEditionComponent.GENERAL_PART.equals(part));
 	}
 
 	/**
@@ -84,7 +82,7 @@ public class TransitionPropertiesEditionProvider extends UmlPropertiesEditionPro
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Transition) && (refinement == TransitionGeneralPropertiesEditionComponent.class || refinement == TransitionDocumentationPropertiesEditionComponent.class);
+		return (editingContext.getEObject() instanceof Transition) && (refinement == TransitionPropertiesEditionComponent.class);
 	}
 
 	/**
@@ -94,7 +92,7 @@ public class TransitionPropertiesEditionProvider extends UmlPropertiesEditionPro
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Transition) && ((TransitionGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == TransitionGeneralPropertiesEditionComponent.class) || (TransitionDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == TransitionDocumentationPropertiesEditionComponent.class));
+		return (editingContext.getEObject() instanceof Transition) && ((TransitionPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == TransitionPropertiesEditionComponent.class));
 	}
 
 	/**
@@ -116,10 +114,8 @@ public class TransitionPropertiesEditionProvider extends UmlPropertiesEditionPro
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
 		if (editingContext.getEObject() instanceof Transition) {
-			if (TransitionGeneralPropertiesEditionComponent.GENERAL_PART.equals(part))
-				return new TransitionGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-			if (TransitionDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part))
-				return new TransitionDocumentationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (TransitionPropertiesEditionComponent.GENERAL_PART.equals(part))
+				return new TransitionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part);
 	}
@@ -131,12 +127,9 @@ public class TransitionPropertiesEditionProvider extends UmlPropertiesEditionPro
 	@SuppressWarnings("rawtypes")
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
 		if (editingContext.getEObject() instanceof Transition) {
-			if (TransitionGeneralPropertiesEditionComponent.GENERAL_PART.equals(part)
-				&& refinement == TransitionGeneralPropertiesEditionComponent.class)
-				return new TransitionGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-			if (TransitionDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part)
-				&& refinement == TransitionDocumentationPropertiesEditionComponent.class)
-				return new TransitionDocumentationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (TransitionPropertiesEditionComponent.GENERAL_PART.equals(part)
+				&& refinement == TransitionPropertiesEditionComponent.class)
+				return new TransitionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}

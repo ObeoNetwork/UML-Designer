@@ -33,8 +33,6 @@ import org.eclipse.uml2.uml.UMLPackage;
 
 import org.obeonetwork.dsl.uml2.properties.providers.UmlPropertiesEditionProvider;
 
-import org.obeonetwork.dsl.uml2.properties.uml.components.PortDocumentationPropertiesEditionComponent;
-import org.obeonetwork.dsl.uml2.properties.uml.components.PortGeneralPropertiesEditionComponent;
 import org.obeonetwork.dsl.uml2.properties.uml.components.PortPropertiesEditionComponent;
 
 /**
@@ -74,7 +72,7 @@ public class PortPropertiesEditionProvider extends UmlPropertiesEditionProvider 
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof Port) && (PortGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) || PortDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
+		return (editingContext.getEObject() instanceof Port) && (PortPropertiesEditionComponent.GENERAL_PART.equals(part));
 	}
 
 	/**
@@ -84,7 +82,7 @@ public class PortPropertiesEditionProvider extends UmlPropertiesEditionProvider 
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Port) && (refinement == PortGeneralPropertiesEditionComponent.class || refinement == PortDocumentationPropertiesEditionComponent.class);
+		return (editingContext.getEObject() instanceof Port) && (refinement == PortPropertiesEditionComponent.class);
 	}
 
 	/**
@@ -94,7 +92,7 @@ public class PortPropertiesEditionProvider extends UmlPropertiesEditionProvider 
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Port) && ((PortGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == PortGeneralPropertiesEditionComponent.class) || (PortDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == PortDocumentationPropertiesEditionComponent.class));
+		return (editingContext.getEObject() instanceof Port) && ((PortPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == PortPropertiesEditionComponent.class));
 	}
 
 	/**
@@ -116,10 +114,8 @@ public class PortPropertiesEditionProvider extends UmlPropertiesEditionProvider 
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
 		if (editingContext.getEObject() instanceof Port) {
-			if (PortGeneralPropertiesEditionComponent.GENERAL_PART.equals(part))
-				return new PortGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-			if (PortDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part))
-				return new PortDocumentationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (PortPropertiesEditionComponent.GENERAL_PART.equals(part))
+				return new PortPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part);
 	}
@@ -131,12 +127,9 @@ public class PortPropertiesEditionProvider extends UmlPropertiesEditionProvider 
 	@SuppressWarnings("rawtypes")
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
 		if (editingContext.getEObject() instanceof Port) {
-			if (PortGeneralPropertiesEditionComponent.GENERAL_PART.equals(part)
-				&& refinement == PortGeneralPropertiesEditionComponent.class)
-				return new PortGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-			if (PortDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part)
-				&& refinement == PortDocumentationPropertiesEditionComponent.class)
-				return new PortDocumentationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (PortPropertiesEditionComponent.GENERAL_PART.equals(part)
+				&& refinement == PortPropertiesEditionComponent.class)
+				return new PortPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}

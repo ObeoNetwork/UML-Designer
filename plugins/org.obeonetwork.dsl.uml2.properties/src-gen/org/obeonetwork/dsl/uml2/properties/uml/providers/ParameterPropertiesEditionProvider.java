@@ -33,8 +33,6 @@ import org.eclipse.uml2.uml.UMLPackage;
 
 import org.obeonetwork.dsl.uml2.properties.providers.UmlPropertiesEditionProvider;
 
-import org.obeonetwork.dsl.uml2.properties.uml.components.ParameterDocumentationPropertiesEditionComponent;
-import org.obeonetwork.dsl.uml2.properties.uml.components.ParameterGeneralPropertiesEditionComponent;
 import org.obeonetwork.dsl.uml2.properties.uml.components.ParameterPropertiesEditionComponent;
 
 /**
@@ -74,7 +72,7 @@ public class ParameterPropertiesEditionProvider extends UmlPropertiesEditionProv
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof Parameter) && (ParameterGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) || ParameterDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
+		return (editingContext.getEObject() instanceof Parameter) && (ParameterPropertiesEditionComponent.GENERAL_PART.equals(part));
 	}
 
 	/**
@@ -84,7 +82,7 @@ public class ParameterPropertiesEditionProvider extends UmlPropertiesEditionProv
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Parameter) && (refinement == ParameterGeneralPropertiesEditionComponent.class || refinement == ParameterDocumentationPropertiesEditionComponent.class);
+		return (editingContext.getEObject() instanceof Parameter) && (refinement == ParameterPropertiesEditionComponent.class);
 	}
 
 	/**
@@ -94,7 +92,7 @@ public class ParameterPropertiesEditionProvider extends UmlPropertiesEditionProv
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Parameter) && ((ParameterGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == ParameterGeneralPropertiesEditionComponent.class) || (ParameterDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == ParameterDocumentationPropertiesEditionComponent.class));
+		return (editingContext.getEObject() instanceof Parameter) && ((ParameterPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == ParameterPropertiesEditionComponent.class));
 	}
 
 	/**
@@ -116,10 +114,8 @@ public class ParameterPropertiesEditionProvider extends UmlPropertiesEditionProv
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
 		if (editingContext.getEObject() instanceof Parameter) {
-			if (ParameterGeneralPropertiesEditionComponent.GENERAL_PART.equals(part))
-				return new ParameterGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-			if (ParameterDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part))
-				return new ParameterDocumentationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (ParameterPropertiesEditionComponent.GENERAL_PART.equals(part))
+				return new ParameterPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part);
 	}
@@ -131,12 +127,9 @@ public class ParameterPropertiesEditionProvider extends UmlPropertiesEditionProv
 	@SuppressWarnings("rawtypes")
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
 		if (editingContext.getEObject() instanceof Parameter) {
-			if (ParameterGeneralPropertiesEditionComponent.GENERAL_PART.equals(part)
-				&& refinement == ParameterGeneralPropertiesEditionComponent.class)
-				return new ParameterGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-			if (ParameterDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part)
-				&& refinement == ParameterDocumentationPropertiesEditionComponent.class)
-				return new ParameterDocumentationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (ParameterPropertiesEditionComponent.GENERAL_PART.equals(part)
+				&& refinement == ParameterPropertiesEditionComponent.class)
+				return new ParameterPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}

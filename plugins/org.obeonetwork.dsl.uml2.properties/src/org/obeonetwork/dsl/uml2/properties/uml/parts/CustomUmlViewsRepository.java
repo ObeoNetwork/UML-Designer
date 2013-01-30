@@ -31,4 +31,11 @@ public class CustomUmlViewsRepository extends UmlViewsRepository {
 		public static String relationshipsTargeting = "uml::Relationships::relationshipsTargeting";
 
 	}
+
+	/**
+	 * Documentation view descriptor
+	 */
+	public static class Documentation {
+		public static String comment = "uml::Documentation::comment";
+	}
 }

@@ -34,7 +34,6 @@ import org.eclipse.uml2.uml.UMLPackage;
 import org.obeonetwork.dsl.uml2.properties.providers.UmlPropertiesEditionProvider;
 
 import org.obeonetwork.dsl.uml2.properties.uml.components.InterfaceAttributesPropertiesEditionComponent;
-import org.obeonetwork.dsl.uml2.properties.uml.components.InterfaceDocumentationPropertiesEditionComponent;
 import org.obeonetwork.dsl.uml2.properties.uml.components.InterfaceGeneralPropertiesEditionComponent;
 import org.obeonetwork.dsl.uml2.properties.uml.components.InterfaceOperationsPropertiesEditionComponent;
 import org.obeonetwork.dsl.uml2.properties.uml.components.InterfacePropertiesEditionComponent;
@@ -76,7 +75,7 @@ public class Interface_PropertiesEditionProvider extends UmlPropertiesEditionPro
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof Interface) && (InterfaceGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) || InterfaceDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) || InterfaceOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(part) || InterfaceAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part));
+		return (editingContext.getEObject() instanceof Interface) && (InterfaceGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) || InterfaceOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(part) || InterfaceAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part));
 	}
 
 	/**
@@ -86,7 +85,7 @@ public class Interface_PropertiesEditionProvider extends UmlPropertiesEditionPro
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Interface) && (refinement == InterfaceGeneralPropertiesEditionComponent.class || refinement == InterfaceDocumentationPropertiesEditionComponent.class || refinement == InterfaceOperationsPropertiesEditionComponent.class || refinement == InterfaceAttributesPropertiesEditionComponent.class);
+		return (editingContext.getEObject() instanceof Interface) && (refinement == InterfaceGeneralPropertiesEditionComponent.class || refinement == InterfaceOperationsPropertiesEditionComponent.class || refinement == InterfaceAttributesPropertiesEditionComponent.class);
 	}
 
 	/**
@@ -96,7 +95,7 @@ public class Interface_PropertiesEditionProvider extends UmlPropertiesEditionPro
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Interface) && ((InterfaceGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == InterfaceGeneralPropertiesEditionComponent.class) || (InterfaceDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == InterfaceDocumentationPropertiesEditionComponent.class) || (InterfaceOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(part) && refinement == InterfaceOperationsPropertiesEditionComponent.class) || (InterfaceAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part) && refinement == InterfaceAttributesPropertiesEditionComponent.class));
+		return (editingContext.getEObject() instanceof Interface) && ((InterfaceGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == InterfaceGeneralPropertiesEditionComponent.class) || (InterfaceOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(part) && refinement == InterfaceOperationsPropertiesEditionComponent.class) || (InterfaceAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part) && refinement == InterfaceAttributesPropertiesEditionComponent.class));
 	}
 
 	/**
@@ -120,8 +119,6 @@ public class Interface_PropertiesEditionProvider extends UmlPropertiesEditionPro
 		if (editingContext.getEObject() instanceof Interface) {
 			if (InterfaceGeneralPropertiesEditionComponent.GENERAL_PART.equals(part))
 				return new InterfaceGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-			if (InterfaceDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part))
-				return new InterfaceDocumentationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 			if (InterfaceOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(part))
 				return new InterfaceOperationsPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 			if (InterfaceAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part))
@@ -140,9 +137,6 @@ public class Interface_PropertiesEditionProvider extends UmlPropertiesEditionPro
 			if (InterfaceGeneralPropertiesEditionComponent.GENERAL_PART.equals(part)
 				&& refinement == InterfaceGeneralPropertiesEditionComponent.class)
 				return new InterfaceGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-			if (InterfaceDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part)
-				&& refinement == InterfaceDocumentationPropertiesEditionComponent.class)
-				return new InterfaceDocumentationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 			if (InterfaceOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(part)
 				&& refinement == InterfaceOperationsPropertiesEditionComponent.class)
 				return new InterfaceOperationsPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);

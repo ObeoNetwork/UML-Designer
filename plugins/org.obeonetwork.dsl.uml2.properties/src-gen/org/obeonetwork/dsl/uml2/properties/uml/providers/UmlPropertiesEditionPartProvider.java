@@ -23,14 +23,12 @@ import org.eclipse.emf.eef.runtime.api.providers.IPropertiesEditionPartProvider;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 
 import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.AttributesPropertiesEditionPartForm;
-import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.DocumentationPropertiesEditionPartForm;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.OperationsPropertiesEditionPartForm;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.ParametersPropertiesEditionPartForm;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.ProfilePropertiesEditionPartForm;
 
 import org.obeonetwork.dsl.uml2.properties.uml.parts.impl.AttributesPropertiesEditionPartImpl;
-import org.obeonetwork.dsl.uml2.properties.uml.parts.impl.DocumentationPropertiesEditionPartImpl;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.impl.GeneralPropertiesEditionPartImpl;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.impl.OperationsPropertiesEditionPartImpl;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.impl.ParametersPropertiesEditionPartImpl;
@@ -62,12 +60,6 @@ public class UmlPropertiesEditionPartProvider implements IPropertiesEditionPartP
 				return new GeneralPropertiesEditionPartImpl(component);
 			if (kind == UmlViewsRepository.FORM_KIND)
 				return new GeneralPropertiesEditionPartForm(component);
-		}
-		if (key == UmlViewsRepository.Documentation.class) {
-			if (kind == UmlViewsRepository.SWT_KIND)
-				return new DocumentationPropertiesEditionPartImpl(component);
-			if (kind == UmlViewsRepository.FORM_KIND)
-				return new DocumentationPropertiesEditionPartForm(component);
 		}
 		if (key == UmlViewsRepository.Operations.class) {
 			if (kind == UmlViewsRepository.SWT_KIND)

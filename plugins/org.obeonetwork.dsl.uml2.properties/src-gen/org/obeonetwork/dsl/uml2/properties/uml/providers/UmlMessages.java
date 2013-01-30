@@ -50,18 +50,6 @@ public class UmlMessages extends NLS {
 	 * @generated
 	 */
 	
-	public static String Documentation_ReadOnly;
-
-	/**
-	 * @generated
-	 */
-	
-	public static String Documentation_Part_Title;
-
-	/**
-	 * @generated
-	 */
-	
 	public static String Operations_ReadOnly;
 
 	/**
@@ -304,12 +292,6 @@ public class UmlMessages extends NLS {
 	 */
 	
 	public static String GeneralPropertiesEditionPart_IconLabel;
-
-	/**
-	 * @generated
-	 */
-	
-	public static String DocumentationPropertiesEditionPart_CommentLabel;
 
 	/**
 	 * @generated

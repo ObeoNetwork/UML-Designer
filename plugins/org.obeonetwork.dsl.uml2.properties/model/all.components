@@ -2,18 +2,9 @@
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eef-components="http://www.eclipse.org/emf/eef/components/1.0.0" xmlns:eef-mapping-navigation="http://www.eclipse.org/emf/eef/mapping/navigation/1.0.0" xmlns:eef-views="http://www.eclipse.org/emf/eef/views/1.0.0">
   <eef-components:PropertiesEditionContext xmi:id="_j_XB4ZabEeCthc_-fH5cSw" documentation="Edition Context for uml GenPackage">
     <categories xmi:id="_SM1vgFsVEeKITrl1rsP4xw" name="uml">
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_TjGFoF4nEeKttZbtn302Pg" name="Package" views="_Kt6kIFv3EeKZBNASYbV97A _MiCb0F8mEeKd8d7WgZ31eQ _30W7YGFgEeKd8d7WgZ31eQ">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_TjGFoF4nEeKttZbtn302Pg" name="Package" views="_Kt6kIFv3EeKZBNASYbV97A _30W7YGFgEeKd8d7WgZ31eQ">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_TjGFoV4nEeKttZbtn302Pg" name="name" views="_3INTYFv3EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
-        </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_oZ5r0F8sEeKd8d7WgZ31eQ" name="comment" views="_OXZa8F8mEeKd8d7WgZ31eQ">
-          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Comment/body"/>
-          <navigation xsi:type="eef-mapping-navigation:SmartModelNavigation" xmi:id="_oZ6S4F8sEeKd8d7WgZ31eQ">
-            <step xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_oZ6S4V8sEeKd8d7WgZ31eQ">
-              <initializer xsi:type="eef-mapping-navigation:JavaDeclarationStepInitializer" xmi:id="_oZ6S4l8sEeKd8d7WgZ31eQ" qualifiedClass="org.obeonetwork.dsl.uml2.properties.service.EEFService" methodName="createComment" staticMethod="true"/>
-              <feature href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Element/ownedComment"/>
-            </step>
-          </navigation>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_AZdwAGFhEeKd8d7WgZ31eQ" name="appliedProfile" views="_5lh-EGFgEeKd8d7WgZ31eQ">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//ProfileApplication/appliedProfile"/>
@@ -25,7 +16,7 @@
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Package"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_qQVzoFv4EeKZBNASYbV97A" name="Class" views="_Kt6kIFv3EeKZBNASYbV97A _MiCb0F8mEeKd8d7WgZ31eQ _55BGsF8vEeKd8d7WgZ31eQ _fgTgsGCnEeKd8d7WgZ31eQ">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_qQVzoFv4EeKZBNASYbV97A" name="Class" views="_Kt6kIFv3EeKZBNASYbV97A _55BGsF8vEeKd8d7WgZ31eQ _fgTgsGCnEeKd8d7WgZ31eQ">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_TRi1QFv7EeKZBNASYbV97A" name="name" views="_3INTYFv3EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
         </properties>
@@ -38,15 +29,6 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Fc0EoFv8EeKZBNASYbV97A" name="leaf" views="_nujsAFv7EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//RedefinableElement/isLeaf"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_fW_dsF8oEeKd8d7WgZ31eQ" name="comment" views="_OXZa8F8mEeKd8d7WgZ31eQ">
-          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Comment/body"/>
-          <navigation xsi:type="eef-mapping-navigation:SmartModelNavigation" xmi:id="_ha85gF8oEeKd8d7WgZ31eQ">
-            <step xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_hz16oF8oEeKd8d7WgZ31eQ">
-              <initializer xsi:type="eef-mapping-navigation:JavaDeclarationStepInitializer" xmi:id="_FsBpcF8qEeKd8d7WgZ31eQ" qualifiedClass="org.obeonetwork.dsl.uml2.properties.service.EEFService" methodName="createComment" staticMethod="true"/>
-              <feature href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Element/ownedComment"/>
-            </step>
-          </navigation>
-        </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_W3biAGCJEeKd8d7WgZ31eQ" name="operations" views="_7kJy0F8vEeKd8d7WgZ31eQ">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Class/ownedOperation"/>
         </properties>
@@ -55,7 +37,7 @@
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Class"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_urjyoF4lEeKttZbtn302Pg" name="Interface" views="_Kt6kIFv3EeKZBNASYbV97A _MiCb0F8mEeKd8d7WgZ31eQ _55BGsF8vEeKd8d7WgZ31eQ _fgTgsGCnEeKd8d7WgZ31eQ">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_urjyoF4lEeKttZbtn302Pg" name="Interface" views="_Kt6kIFv3EeKZBNASYbV97A _55BGsF8vEeKd8d7WgZ31eQ _fgTgsGCnEeKd8d7WgZ31eQ">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_2kMi0F4lEeKttZbtn302Pg" name="name" views="_3INTYFv3EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
         </properties>
@@ -68,15 +50,6 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_2kMi014lEeKttZbtn302Pg" name="leaf" views="_nujsAFv7EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//RedefinableElement/isLeaf"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_pK2noF8sEeKd8d7WgZ31eQ" name="comment" views="_OXZa8F8mEeKd8d7WgZ31eQ">
-          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Comment/body"/>
-          <navigation xsi:type="eef-mapping-navigation:SmartModelNavigation" xmi:id="_pK2noV8sEeKd8d7WgZ31eQ">
-            <step xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_pK2nol8sEeKd8d7WgZ31eQ">
-              <initializer xsi:type="eef-mapping-navigation:JavaDeclarationStepInitializer" xmi:id="_pK2no18sEeKd8d7WgZ31eQ" qualifiedClass="org.obeonetwork.dsl.uml2.properties.service.EEFService" methodName="createComment" staticMethod="true"/>
-              <feature href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Element/ownedComment"/>
-            </step>
-          </navigation>
-        </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_kOAWUF8wEeKd8d7WgZ31eQ" name="operations" views="_7kJy0F8vEeKd8d7WgZ31eQ">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Interface/ownedOperation"/>
         </properties>
@@ -85,7 +58,7 @@
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Interface"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_HVLMsF4mEeKttZbtn302Pg" name="DataType" views="_Kt6kIFv3EeKZBNASYbV97A _MiCb0F8mEeKd8d7WgZ31eQ _fgTgsGCnEeKd8d7WgZ31eQ">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_HVLMsF4mEeKttZbtn302Pg" name="DataType" views="_Kt6kIFv3EeKZBNASYbV97A _fgTgsGCnEeKd8d7WgZ31eQ">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_HVLzwF4mEeKttZbtn302Pg" name="name" views="_3INTYFv3EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
         </properties>
@@ -98,21 +71,12 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_HVLzw14mEeKttZbtn302Pg" name="leaf" views="_nujsAFv7EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//RedefinableElement/isLeaf"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_p3zNMF8sEeKd8d7WgZ31eQ" name="comment" views="_OXZa8F8mEeKd8d7WgZ31eQ">
-          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Comment/body"/>
-          <navigation xsi:type="eef-mapping-navigation:SmartModelNavigation" xmi:id="_p3zNMV8sEeKd8d7WgZ31eQ">
-            <step xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_p3zNMl8sEeKd8d7WgZ31eQ">
-              <initializer xsi:type="eef-mapping-navigation:JavaDeclarationStepInitializer" xmi:id="_p3zNM18sEeKd8d7WgZ31eQ" qualifiedClass="org.obeonetwork.dsl.uml2.properties.service.EEFService" methodName="createComment" staticMethod="true"/>
-              <feature href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Element/ownedComment"/>
-            </step>
-          </navigation>
-        </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Pie90GDCEeKd8d7WgZ31eQ" name="attributes" views="_hKXOwGCnEeKd8d7WgZ31eQ">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//DataType/ownedAttribute"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//DataType"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_NNKTwF4mEeKttZbtn302Pg" name="PrimitiveType" views="_Kt6kIFv3EeKZBNASYbV97A _MiCb0F8mEeKd8d7WgZ31eQ _fgTgsGCnEeKd8d7WgZ31eQ">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_NNKTwF4mEeKttZbtn302Pg" name="PrimitiveType" views="_Kt6kIFv3EeKZBNASYbV97A _fgTgsGCnEeKd8d7WgZ31eQ">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_NNKTwV4mEeKttZbtn302Pg" name="name" views="_3INTYFv3EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
         </properties>
@@ -125,21 +89,12 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_NNKTxF4mEeKttZbtn302Pg" name="leaf" views="_nujsAFv7EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//RedefinableElement/isLeaf"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_qgjPQF8sEeKd8d7WgZ31eQ" name="comment" views="_OXZa8F8mEeKd8d7WgZ31eQ">
-          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Comment/body"/>
-          <navigation xsi:type="eef-mapping-navigation:SmartModelNavigation" xmi:id="_qgjPQV8sEeKd8d7WgZ31eQ">
-            <step xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_qgjPQl8sEeKd8d7WgZ31eQ">
-              <initializer xsi:type="eef-mapping-navigation:JavaDeclarationStepInitializer" xmi:id="_qgjPQ18sEeKd8d7WgZ31eQ" qualifiedClass="org.obeonetwork.dsl.uml2.properties.service.EEFService" methodName="createComment" staticMethod="true"/>
-              <feature href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Element/ownedComment"/>
-            </step>
-          </navigation>
-        </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_UDtGQGDCEeKd8d7WgZ31eQ" name="attributes" views="_hKXOwGCnEeKd8d7WgZ31eQ">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//DataType/ownedAttribute"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//PrimitiveType"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_TyOjQF4mEeKttZbtn302Pg" name="Enumeration" views="_Kt6kIFv3EeKZBNASYbV97A _MiCb0F8mEeKd8d7WgZ31eQ _fgTgsGCnEeKd8d7WgZ31eQ">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_TyOjQF4mEeKttZbtn302Pg" name="Enumeration" views="_Kt6kIFv3EeKZBNASYbV97A _fgTgsGCnEeKd8d7WgZ31eQ">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_TyOjQV4mEeKttZbtn302Pg" name="name" views="_3INTYFv3EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
         </properties>
@@ -152,39 +107,21 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_TyOjRF4mEeKttZbtn302Pg" name="leaf" views="_nujsAFv7EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//RedefinableElement/isLeaf"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rH7YUF8sEeKd8d7WgZ31eQ" name="comment" views="_OXZa8F8mEeKd8d7WgZ31eQ">
-          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Comment/body"/>
-          <navigation xsi:type="eef-mapping-navigation:SmartModelNavigation" xmi:id="_rH7YUV8sEeKd8d7WgZ31eQ">
-            <step xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_rH7YUl8sEeKd8d7WgZ31eQ">
-              <initializer xsi:type="eef-mapping-navigation:JavaDeclarationStepInitializer" xmi:id="_rH7YU18sEeKd8d7WgZ31eQ" qualifiedClass="org.obeonetwork.dsl.uml2.properties.service.EEFService" methodName="createComment" staticMethod="true"/>
-              <feature href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Element/ownedComment"/>
-            </step>
-          </navigation>
-        </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_O6phwGDCEeKd8d7WgZ31eQ" name="attributes" views="_hKXOwGCnEeKd8d7WgZ31eQ">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//DataType/ownedAttribute"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Enumeration"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_YZozQF4mEeKttZbtn302Pg" name="EnumerationLiteral" views="_Kt6kIFv3EeKZBNASYbV97A _MiCb0F8mEeKd8d7WgZ31eQ">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_YZozQF4mEeKttZbtn302Pg" name="EnumerationLiteral" views="_Kt6kIFv3EeKZBNASYbV97A">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_YZozQV4mEeKttZbtn302Pg" name="name" views="_3INTYFv3EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_YZozQl4mEeKttZbtn302Pg" name="visibility" views="_maltQFv8EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/visibility"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_r3SYsF8sEeKd8d7WgZ31eQ" name="comment" views="_OXZa8F8mEeKd8d7WgZ31eQ">
-          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Comment/body"/>
-          <navigation xsi:type="eef-mapping-navigation:SmartModelNavigation" xmi:id="_r3SYsV8sEeKd8d7WgZ31eQ">
-            <step xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_r3SYsl8sEeKd8d7WgZ31eQ">
-              <initializer xsi:type="eef-mapping-navigation:JavaDeclarationStepInitializer" xmi:id="_r3SYs18sEeKd8d7WgZ31eQ" qualifiedClass="org.obeonetwork.dsl.uml2.properties.service.EEFService" methodName="createComment" staticMethod="true"/>
-              <feature href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Element/ownedComment"/>
-            </step>
-          </navigation>
-        </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//EnumerationLiteral"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_aMhqYFv7EeKZBNASYbV97A" name="Operation" views="_Kt6kIFv3EeKZBNASYbV97A _MiCb0F8mEeKd8d7WgZ31eQ _EC2MMGCKEeKd8d7WgZ31eQ">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_aMhqYFv7EeKZBNASYbV97A" name="Operation" views="_Kt6kIFv3EeKZBNASYbV97A _EC2MMGCKEeKd8d7WgZ31eQ">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_iaqUAFv8EeKZBNASYbV97A" name="name" views="_3INTYFv3EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
         </properties>
@@ -212,21 +149,12 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_yuwNkFv8EeKZBNASYbV97A" name="returnType" views="_tYLxgFv8EeKZBNASYbV97A">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Operation/type"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_s7gOwF8sEeKd8d7WgZ31eQ" name="comment" views="_OXZa8F8mEeKd8d7WgZ31eQ">
-          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Comment/body"/>
-          <navigation xsi:type="eef-mapping-navigation:SmartModelNavigation" xmi:id="_s7gOwV8sEeKd8d7WgZ31eQ">
-            <step xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_s7gOwl8sEeKd8d7WgZ31eQ">
-              <initializer xsi:type="eef-mapping-navigation:JavaDeclarationStepInitializer" xmi:id="_s7gOw18sEeKd8d7WgZ31eQ" qualifiedClass="org.obeonetwork.dsl.uml2.properties.service.EEFService" methodName="createComment" staticMethod="true"/>
-              <feature href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Element/ownedComment"/>
-            </step>
-          </navigation>
-        </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_9sHToGCJEeKd8d7WgZ31eQ" name="parameters" views="_Fh2g0GCKEeKd8d7WgZ31eQ">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//BehavioralFeature/ownedParameter"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Operation"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_dTxn0Fv-EeKZBNASYbV97A" name="Parameter" views="_Kt6kIFv3EeKZBNASYbV97A _MiCb0F8mEeKd8d7WgZ31eQ">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_dTxn0Fv-EeKZBNASYbV97A" name="Parameter" views="_Kt6kIFv3EeKZBNASYbV97A">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_jImtMFv-EeKZBNASYbV97A" name="name" views="_3INTYFv3EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
         </properties>
@@ -236,21 +164,12 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_pe9LQFv-EeKZBNASYbV97A" name="direction" views="_N1LWYFv_EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Parameter/direction"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_thkwQF8sEeKd8d7WgZ31eQ" name="comment" views="_OXZa8F8mEeKd8d7WgZ31eQ">
-          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Comment/body"/>
-          <navigation xsi:type="eef-mapping-navigation:SmartModelNavigation" xmi:id="_thkwQV8sEeKd8d7WgZ31eQ">
-            <step xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_thkwQl8sEeKd8d7WgZ31eQ">
-              <initializer xsi:type="eef-mapping-navigation:JavaDeclarationStepInitializer" xmi:id="_thkwQ18sEeKd8d7WgZ31eQ" qualifiedClass="org.obeonetwork.dsl.uml2.properties.service.EEFService" methodName="createComment" staticMethod="true"/>
-              <feature href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Element/ownedComment"/>
-            </step>
-          </navigation>
-        </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_0NHWsGCWEeKd8d7WgZ31eQ" name="type" views="_tYLxgFv8EeKZBNASYbV97A">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//TypedElement/type"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Parameter"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_ZLS6EFv_EeKZBNASYbV97A" name="Property" views="_Kt6kIFv3EeKZBNASYbV97A _MiCb0F8mEeKd8d7WgZ31eQ">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_ZLS6EFv_EeKZBNASYbV97A" name="Property" views="_Kt6kIFv3EeKZBNASYbV97A">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ZLS6EVv_EeKZBNASYbV97A" name="name" views="_3INTYFv3EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
         </properties>
@@ -293,33 +212,15 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_byCH0F7pEeKd8d7WgZ31eQ" name="type" views="_tYLxgFv8EeKZBNASYbV97A">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//TypedElement/type"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_vagAwF8sEeKd8d7WgZ31eQ" name="comment" views="_OXZa8F8mEeKd8d7WgZ31eQ">
-          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Comment/body"/>
-          <navigation xsi:type="eef-mapping-navigation:SmartModelNavigation" xmi:id="_vagAwV8sEeKd8d7WgZ31eQ">
-            <step xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_vagAwl8sEeKd8d7WgZ31eQ">
-              <initializer xsi:type="eef-mapping-navigation:JavaDeclarationStepInitializer" xmi:id="_vagAw18sEeKd8d7WgZ31eQ" qualifiedClass="org.obeonetwork.dsl.uml2.properties.service.EEFService" methodName="createComment" staticMethod="true"/>
-              <feature href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Element/ownedComment"/>
-            </step>
-          </navigation>
-        </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Property"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_FULzcFwEEeKZBNASYbV97A" name="Generalization" views="_Kt6kIFv3EeKZBNASYbV97A _MiCb0F8mEeKd8d7WgZ31eQ">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_FULzcFwEEeKZBNASYbV97A" name="Generalization" views="_Kt6kIFv3EeKZBNASYbV97A">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_L8QToFwEEeKZBNASYbV97A" name="substitutable" views="_S7wcYFwEEeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Generalization/isSubstitutable"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_wDFDsF8sEeKd8d7WgZ31eQ" name="comment" views="_OXZa8F8mEeKd8d7WgZ31eQ">
-          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Comment/body"/>
-          <navigation xsi:type="eef-mapping-navigation:SmartModelNavigation" xmi:id="_wDFDsV8sEeKd8d7WgZ31eQ">
-            <step xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_wDFDsl8sEeKd8d7WgZ31eQ">
-              <initializer xsi:type="eef-mapping-navigation:JavaDeclarationStepInitializer" xmi:id="_wDFDs18sEeKd8d7WgZ31eQ" qualifiedClass="org.obeonetwork.dsl.uml2.properties.service.EEFService" methodName="createComment" staticMethod="true"/>
-              <feature href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Element/ownedComment"/>
-            </step>
-          </navigation>
-        </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Generalization"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_-gfywV5sEeKd8d7WgZ31eQ" name="Association" views="_Kt6kIFv3EeKZBNASYbV97A _MiCb0F8mEeKd8d7WgZ31eQ">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_-gfywV5sEeKd8d7WgZ31eQ" name="Association" views="_Kt6kIFv3EeKZBNASYbV97A">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_-gfywl5sEeKd8d7WgZ31eQ" name="name" views="_3INTYFv3EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
         </properties>
@@ -341,18 +242,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_-gfyyF5sEeKd8d7WgZ31eQ" name="memberEnd" views="_0d7ykFwEEeKZBNASYbV97A">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Association/memberEnd"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_xekKQF8sEeKd8d7WgZ31eQ" name="comment" views="_OXZa8F8mEeKd8d7WgZ31eQ">
-          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Comment/body"/>
-          <navigation xsi:type="eef-mapping-navigation:SmartModelNavigation" xmi:id="_xekKQV8sEeKd8d7WgZ31eQ">
-            <step xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_xekKQl8sEeKd8d7WgZ31eQ">
-              <initializer xsi:type="eef-mapping-navigation:JavaDeclarationStepInitializer" xmi:id="_xekKQ18sEeKd8d7WgZ31eQ" qualifiedClass="org.obeonetwork.dsl.uml2.properties.service.EEFService" methodName="createComment" staticMethod="true"/>
-              <feature href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Element/ownedComment"/>
-            </step>
-          </navigation>
-        </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Association"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_aKU74FwEEeKZBNASYbV97A" name="AssociationClass" views="_Kt6kIFv3EeKZBNASYbV97A _MiCb0F8mEeKd8d7WgZ31eQ">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_aKU74FwEEeKZBNASYbV97A" name="AssociationClass" views="_Kt6kIFv3EeKZBNASYbV97A">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_j-VzoFwEEeKZBNASYbV97A" name="name" views="_3INTYFv3EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
         </properties>
@@ -374,18 +266,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_fLw1cFwEEeKZBNASYbV97A" name="memberEnd" views="_0d7ykFwEEeKZBNASYbV97A">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Association/memberEnd"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_yGnowF8sEeKd8d7WgZ31eQ" name="comment" views="_OXZa8F8mEeKd8d7WgZ31eQ">
-          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Comment/body"/>
-          <navigation xsi:type="eef-mapping-navigation:SmartModelNavigation" xmi:id="_yGoP0F8sEeKd8d7WgZ31eQ">
-            <step xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_yGoP0V8sEeKd8d7WgZ31eQ">
-              <initializer xsi:type="eef-mapping-navigation:JavaDeclarationStepInitializer" xmi:id="_yGoP0l8sEeKd8d7WgZ31eQ" qualifiedClass="org.obeonetwork.dsl.uml2.properties.service.EEFService" methodName="createComment" staticMethod="true"/>
-              <feature href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Element/ownedComment"/>
-            </step>
-          </navigation>
-        </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//AssociationClass"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_kyzhAFwFEeKZBNASYbV97A" name="Dependency" views="_Kt6kIFv3EeKZBNASYbV97A _MiCb0F8mEeKd8d7WgZ31eQ">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_kyzhAFwFEeKZBNASYbV97A" name="Dependency" views="_Kt6kIFv3EeKZBNASYbV97A">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_kyzhAVwFEeKZBNASYbV97A" name="name" views="_3INTYFv3EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
         </properties>
@@ -398,18 +281,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_qmW0AFwFEeKZBNASYbV97A" name="client" views="_txvx8FwFEeKZBNASYbV97A">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Dependency/client"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_yr5gEF8sEeKd8d7WgZ31eQ" name="comment" views="_OXZa8F8mEeKd8d7WgZ31eQ">
-          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Comment/body"/>
-          <navigation xsi:type="eef-mapping-navigation:SmartModelNavigation" xmi:id="_yr5gEV8sEeKd8d7WgZ31eQ">
-            <step xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_yr5gEl8sEeKd8d7WgZ31eQ">
-              <initializer xsi:type="eef-mapping-navigation:JavaDeclarationStepInitializer" xmi:id="_yr5gE18sEeKd8d7WgZ31eQ" qualifiedClass="org.obeonetwork.dsl.uml2.properties.service.EEFService" methodName="createComment" staticMethod="true"/>
-              <feature href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Element/ownedComment"/>
-            </step>
-          </navigation>
-        </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Dependency"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_2o-RUFwFEeKZBNASYbV97A" name="Component" views="_Kt6kIFv3EeKZBNASYbV97A _MiCb0F8mEeKd8d7WgZ31eQ">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_2o-RUFwFEeKZBNASYbV97A" name="Component" views="_Kt6kIFv3EeKZBNASYbV97A">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_2o-RUVwFEeKZBNASYbV97A" name="name" views="_3INTYFv3EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
         </properties>
@@ -428,18 +302,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Dqj4UFwGEeKZBNASYbV97A" name="indirectlyInstantiated" views="_BJ9j0FwGEeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Component/isIndirectlyInstantiated"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_zQs2QF8sEeKd8d7WgZ31eQ" name="comment" views="_OXZa8F8mEeKd8d7WgZ31eQ">
-          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Comment/body"/>
-          <navigation xsi:type="eef-mapping-navigation:SmartModelNavigation" xmi:id="_zQs2QV8sEeKd8d7WgZ31eQ">
-            <step xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_zQs2Ql8sEeKd8d7WgZ31eQ">
-              <initializer xsi:type="eef-mapping-navigation:JavaDeclarationStepInitializer" xmi:id="_zQs2Q18sEeKd8d7WgZ31eQ" qualifiedClass="org.obeonetwork.dsl.uml2.properties.service.EEFService" methodName="createComment" staticMethod="true"/>
-              <feature href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Element/ownedComment"/>
-            </step>
-          </navigation>
-        </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Component"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_Mfht4FwGEeKZBNASYbV97A" name="Connector" views="_Kt6kIFv3EeKZBNASYbV97A _MiCb0F8mEeKd8d7WgZ31eQ">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_Mfht4FwGEeKZBNASYbV97A" name="Connector" views="_Kt6kIFv3EeKZBNASYbV97A">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Mfht4VwGEeKZBNASYbV97A" name="name" views="_3INTYFv3EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
         </properties>
@@ -455,18 +320,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_VWOo0FwGEeKZBNASYbV97A" name="static" views="_0YtDYFv7EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Feature/isStatic"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_53bSoF8sEeKd8d7WgZ31eQ" name="comment" views="_OXZa8F8mEeKd8d7WgZ31eQ">
-          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Comment/body"/>
-          <navigation xsi:type="eef-mapping-navigation:SmartModelNavigation" xmi:id="_53bSoV8sEeKd8d7WgZ31eQ">
-            <step xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_53bSol8sEeKd8d7WgZ31eQ">
-              <initializer xsi:type="eef-mapping-navigation:JavaDeclarationStepInitializer" xmi:id="_53bSo18sEeKd8d7WgZ31eQ" qualifiedClass="org.obeonetwork.dsl.uml2.properties.service.EEFService" methodName="createComment" staticMethod="true"/>
-              <feature href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Element/ownedComment"/>
-            </step>
-          </navigation>
-        </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Connector"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_tszyIFwGEeKZBNASYbV97A" name="Port" views="_Kt6kIFv3EeKZBNASYbV97A _MiCb0F8mEeKd8d7WgZ31eQ">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_tszyIFwGEeKZBNASYbV97A" name="Port" views="_Kt6kIFv3EeKZBNASYbV97A">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ts0ZMFwGEeKZBNASYbV97A" name="name" views="_3INTYFv3EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
         </properties>
@@ -515,18 +371,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_MYGawFwHEeKZBNASYbV97A" name="service" views="_RibxoFwHEeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Port/isService"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_6sw_MF8sEeKd8d7WgZ31eQ" name="comment" views="_OXZa8F8mEeKd8d7WgZ31eQ">
-          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Comment/body"/>
-          <navigation xsi:type="eef-mapping-navigation:SmartModelNavigation" xmi:id="_6sw_MV8sEeKd8d7WgZ31eQ">
-            <step xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_6sw_Ml8sEeKd8d7WgZ31eQ">
-              <initializer xsi:type="eef-mapping-navigation:JavaDeclarationStepInitializer" xmi:id="_6sxmQF8sEeKd8d7WgZ31eQ" qualifiedClass="org.obeonetwork.dsl.uml2.properties.service.EEFService" methodName="createComment" staticMethod="true"/>
-              <feature href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Element/ownedComment"/>
-            </step>
-          </navigation>
-        </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Port"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E4q0wFwHEeKZBNASYbV97A" name="Transition" views="_Kt6kIFv3EeKZBNASYbV97A _MiCb0F8mEeKd8d7WgZ31eQ">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_E4q0wFwHEeKZBNASYbV97A" name="Transition" views="_Kt6kIFv3EeKZBNASYbV97A">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E4q0wVwHEeKZBNASYbV97A" name="name" views="_3INTYFv3EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
         </properties>
@@ -554,36 +401,18 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_OVXOwF4iEeKttZbtn302Pg" name="ownedRule" views="_n_DlwF4iEeKttZbtn302Pg">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Namespace/ownedRule"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_7Tu4kF8sEeKd8d7WgZ31eQ" name="comment" views="_OXZa8F8mEeKd8d7WgZ31eQ">
-          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Comment/body"/>
-          <navigation xsi:type="eef-mapping-navigation:SmartModelNavigation" xmi:id="_7Tu4kV8sEeKd8d7WgZ31eQ">
-            <step xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_7Tu4kl8sEeKd8d7WgZ31eQ">
-              <initializer xsi:type="eef-mapping-navigation:JavaDeclarationStepInitializer" xmi:id="_7Tu4k18sEeKd8d7WgZ31eQ" qualifiedClass="org.obeonetwork.dsl.uml2.properties.service.EEFService" methodName="createComment" staticMethod="true"/>
-              <feature href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Element/ownedComment"/>
-            </step>
-          </navigation>
-        </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Transition"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_7dD2kF4iEeKttZbtn302Pg" name="Vertex" views="_Kt6kIFv3EeKZBNASYbV97A _MiCb0F8mEeKd8d7WgZ31eQ">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_7dD2kF4iEeKttZbtn302Pg" name="Vertex" views="_Kt6kIFv3EeKZBNASYbV97A">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="__mct0F4iEeKttZbtn302Pg" name="name" views="_3INTYFv3EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="__mct0V4iEeKttZbtn302Pg" name="visibility" views="_maltQFv8EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/visibility"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_7wV8EF8sEeKd8d7WgZ31eQ" name="comment" views="_OXZa8F8mEeKd8d7WgZ31eQ">
-          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Comment/body"/>
-          <navigation xsi:type="eef-mapping-navigation:SmartModelNavigation" xmi:id="_7wV8EV8sEeKd8d7WgZ31eQ">
-            <step xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_7wV8El8sEeKd8d7WgZ31eQ">
-              <initializer xsi:type="eef-mapping-navigation:JavaDeclarationStepInitializer" xmi:id="_7wV8E18sEeKd8d7WgZ31eQ" qualifiedClass="org.obeonetwork.dsl.uml2.properties.service.EEFService" methodName="createComment" staticMethod="true"/>
-              <feature href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Element/ownedComment"/>
-            </step>
-          </navigation>
-        </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Vertex"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_B5DCkF4jEeKttZbtn302Pg" name="Stereotype" views="_Kt6kIFv3EeKZBNASYbV97A _MiCb0F8mEeKd8d7WgZ31eQ">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_B5DCkF4jEeKttZbtn302Pg" name="Stereotype" views="_Kt6kIFv3EeKZBNASYbV97A">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E6k54F4jEeKttZbtn302Pg" name="name" views="_3INTYFv3EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
         </properties>
@@ -598,15 +427,6 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_FrxtUF4jEeKttZbtn302Pg" name="icon" views="_L0KA0F4jEeKttZbtn302Pg">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Stereotype/icon"/>
-        </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_8h3foF8sEeKd8d7WgZ31eQ" name="comment" views="_OXZa8F8mEeKd8d7WgZ31eQ">
-          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Comment/body"/>
-          <navigation xsi:type="eef-mapping-navigation:SmartModelNavigation" xmi:id="_8h3foV8sEeKd8d7WgZ31eQ">
-            <step xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_8h3fol8sEeKd8d7WgZ31eQ">
-              <initializer xsi:type="eef-mapping-navigation:JavaDeclarationStepInitializer" xmi:id="_8h3fo18sEeKd8d7WgZ31eQ" qualifiedClass="org.obeonetwork.dsl.uml2.properties.service.EEFService" methodName="createComment" staticMethod="true"/>
-              <feature href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Element/ownedComment"/>
-            </step>
-          </navigation>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Stereotype"/>
       </bindings>
@@ -719,11 +539,6 @@
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_L0KA0F4jEeKttZbtn302Pg" name="icon">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.11"/>
-        </elements>
-      </views>
-      <views xmi:id="_MiCb0F8mEeKd8d7WgZ31eQ" name="Documentation">
-        <elements xsi:type="eef-views:ElementEditor" xmi:id="_OXZa8F8mEeKd8d7WgZ31eQ" name="comment">
-          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
         </elements>
       </views>
       <views xmi:id="_55BGsF8vEeKd8d7WgZ31eQ" name="Operations">

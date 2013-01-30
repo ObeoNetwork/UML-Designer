@@ -33,8 +33,6 @@ import org.eclipse.uml2.uml.UMLPackage;
 
 import org.obeonetwork.dsl.uml2.properties.providers.UmlPropertiesEditionProvider;
 
-import org.obeonetwork.dsl.uml2.properties.uml.components.ComponentDocumentationPropertiesEditionComponent;
-import org.obeonetwork.dsl.uml2.properties.uml.components.ComponentGeneralPropertiesEditionComponent;
 import org.obeonetwork.dsl.uml2.properties.uml.components.ComponentPropertiesEditionComponent;
 
 /**
@@ -74,7 +72,7 @@ public class ComponentPropertiesEditionProvider extends UmlPropertiesEditionProv
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof Component) && (ComponentGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) || ComponentDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
+		return (editingContext.getEObject() instanceof Component) && (ComponentPropertiesEditionComponent.GENERAL_PART.equals(part));
 	}
 
 	/**
@@ -84,7 +82,7 @@ public class ComponentPropertiesEditionProvider extends UmlPropertiesEditionProv
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Component) && (refinement == ComponentGeneralPropertiesEditionComponent.class || refinement == ComponentDocumentationPropertiesEditionComponent.class);
+		return (editingContext.getEObject() instanceof Component) && (refinement == ComponentPropertiesEditionComponent.class);
 	}
 
 	/**
@@ -94,7 +92,7 @@ public class ComponentPropertiesEditionProvider extends UmlPropertiesEditionProv
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Component) && ((ComponentGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == ComponentGeneralPropertiesEditionComponent.class) || (ComponentDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == ComponentDocumentationPropertiesEditionComponent.class));
+		return (editingContext.getEObject() instanceof Component) && ((ComponentPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == ComponentPropertiesEditionComponent.class));
 	}
 
 	/**
@@ -116,10 +114,8 @@ public class ComponentPropertiesEditionProvider extends UmlPropertiesEditionProv
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
 		if (editingContext.getEObject() instanceof Component) {
-			if (ComponentGeneralPropertiesEditionComponent.GENERAL_PART.equals(part))
-				return new ComponentGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-			if (ComponentDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part))
-				return new ComponentDocumentationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (ComponentPropertiesEditionComponent.GENERAL_PART.equals(part))
+				return new ComponentPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part);
 	}
@@ -131,12 +127,9 @@ public class ComponentPropertiesEditionProvider extends UmlPropertiesEditionProv
 	@SuppressWarnings("rawtypes")
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
 		if (editingContext.getEObject() instanceof Component) {
-			if (ComponentGeneralPropertiesEditionComponent.GENERAL_PART.equals(part)
-				&& refinement == ComponentGeneralPropertiesEditionComponent.class)
-				return new ComponentGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-			if (ComponentDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part)
-				&& refinement == ComponentDocumentationPropertiesEditionComponent.class)
-				return new ComponentDocumentationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (ComponentPropertiesEditionComponent.GENERAL_PART.equals(part)
+				&& refinement == ComponentPropertiesEditionComponent.class)
+				return new ComponentPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}

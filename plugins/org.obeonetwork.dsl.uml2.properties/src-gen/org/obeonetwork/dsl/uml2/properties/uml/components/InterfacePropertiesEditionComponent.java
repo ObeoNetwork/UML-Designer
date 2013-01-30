@@ -29,7 +29,6 @@ import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.uml2.uml.Interface;
 
 import org.obeonetwork.dsl.uml2.properties.uml.parts.AttributesPropertiesEditionPart;
-import org.obeonetwork.dsl.uml2.properties.uml.parts.DocumentationPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.OperationsPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
@@ -52,18 +51,6 @@ public class InterfacePropertiesEditionComponent extends ComposedPropertiesEditi
 	 * @generated
 	 */
 	protected InterfaceGeneralPropertiesEditionComponent interfaceGeneralPropertiesEditionComponent;
-
-	/**
-	 * The Documentation part
-	 * @generated
-	 */
-	private DocumentationPropertiesEditionPart documentationPart;
-
-	/**
-	 * The InterfaceDocumentationPropertiesEditionComponent sub component
-	 * @generated
-	 */
-	protected InterfaceDocumentationPropertiesEditionComponent interfaceDocumentationPropertiesEditionComponent;
 
 	/**
 	 * The Operations part
@@ -103,9 +90,6 @@ public class InterfacePropertiesEditionComponent extends ComposedPropertiesEditi
 			interfaceGeneralPropertiesEditionComponent = (InterfaceGeneralPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, InterfaceGeneralPropertiesEditionComponent.GENERAL_PART, InterfaceGeneralPropertiesEditionComponent.class);
 			addSubComponent(interfaceGeneralPropertiesEditionComponent);
 			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(interface_, PropertiesEditingProvider.class);
-			interfaceDocumentationPropertiesEditionComponent = (InterfaceDocumentationPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, InterfaceDocumentationPropertiesEditionComponent.DOCUMENTATION_PART, InterfaceDocumentationPropertiesEditionComponent.class);
-			addSubComponent(interfaceDocumentationPropertiesEditionComponent);
-			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(interface_, PropertiesEditingProvider.class);
 			interfaceOperationsPropertiesEditionComponent = (InterfaceOperationsPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, InterfaceOperationsPropertiesEditionComponent.OPERATIONS_PART, InterfaceOperationsPropertiesEditionComponent.class);
 			addSubComponent(interfaceOperationsPropertiesEditionComponent);
 			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(interface_, PropertiesEditingProvider.class);
@@ -125,10 +109,6 @@ public class InterfacePropertiesEditionComponent extends ComposedPropertiesEditi
 		if (InterfaceGeneralPropertiesEditionComponent.GENERAL_PART.equals(key)) {
 			generalPart = (GeneralPropertiesEditionPart)interfaceGeneralPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
 			return (IPropertiesEditionPart)generalPart;
-		}
-		if (InterfaceDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(key)) {
-			documentationPart = (DocumentationPropertiesEditionPart)interfaceDocumentationPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
-			return (IPropertiesEditionPart)documentationPart;
 		}
 		if (InterfaceOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(key)) {
 			operationsPart = (OperationsPropertiesEditionPart)interfaceOperationsPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
@@ -154,10 +134,6 @@ public class InterfacePropertiesEditionComponent extends ComposedPropertiesEditi
 			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
 			generalPart = (GeneralPropertiesEditionPart)propertiesEditionPart;
 		}
-		if (UmlViewsRepository.Documentation.class == key) {
-			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
-			documentationPart = (DocumentationPropertiesEditionPart)propertiesEditionPart;
-		}
 		if (UmlViewsRepository.Operations.class == key) {
 			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
 			operationsPart = (OperationsPropertiesEditionPart)propertiesEditionPart;
@@ -178,9 +154,6 @@ public class InterfacePropertiesEditionComponent extends ComposedPropertiesEditi
 	 */
 	public void initPart(java.lang.Object key, int kind, EObject element, ResourceSet allResource) {
 		if (key == UmlViewsRepository.General.class) {
-			super.initPart(key, kind, element, allResource);
-		}
-		if (key == UmlViewsRepository.Documentation.class) {
 			super.initPart(key, kind, element, allResource);
 		}
 		if (key == UmlViewsRepository.Operations.class) {

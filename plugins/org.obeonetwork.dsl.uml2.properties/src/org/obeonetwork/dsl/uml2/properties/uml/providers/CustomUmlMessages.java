@@ -10,10 +10,14 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.providers;
 
+import org.eclipse.osgi.util.NLS;
+
 /**
  * @author <a href="mailto:melanie.bats@obeo.fr">Melanie Bats</a>
  */
 public class CustomUmlMessages {
+	private static final String BUNDLE_NAME = "org.obeonetwork.dsl.uml2.properties.uml.providers.customUmlMessages"; //$NON-NLS-1$
+
 	public static String Stereotypes_ReadOnly;
 
 	public static String Stereotypes_Part_Title;
@@ -28,4 +32,18 @@ public class CustomUmlMessages {
 
 	public static String RelationshipsPropertiesEditionPart_RelationshipsTargetingLabel;
 
+	public static String Documentation_ReadOnly;
+
+	public static String Documentation_Part_Title;
+
+	public static String DocumentationPropertiesEditionPart_CommentLabel;
+
+	static {
+		// initialize resource bundle
+		NLS.initializeMessages(BUNDLE_NAME, CustomUmlMessages.class);
+	}
+
+	private CustomUmlMessages() {
+		// protect instanciation
+	}
 }

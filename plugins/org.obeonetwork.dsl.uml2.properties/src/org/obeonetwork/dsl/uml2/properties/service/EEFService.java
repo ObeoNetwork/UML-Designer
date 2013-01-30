@@ -36,6 +36,7 @@ public class EEFService {
 		Comment comment = null;
 		if (ownerElement instanceof Element) {
 			comment = UMLFactory.eINSTANCE.createComment();
+			comment.getAnnotatedElements().add((Element) ownerElement);
 		}
 		return comment;
 	}

@@ -19,8 +19,10 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.providers.impl.PropertiesEditingProviderImpl;
 import org.eclipse.jface.viewers.IFilter;
+import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.obeonetwork.dsl.uml2.properties.uml.components.ElementDocumentationPropertiesEditionComponent;
 import org.obeonetwork.dsl.uml2.properties.uml.components.NamedElementRelationshipsPropertiesEditionComponent;
 import org.obeonetwork.dsl.uml2.properties.uml.components.NamedElementStereotypesPropertiesEditionComponent;
 
@@ -125,6 +127,13 @@ public class UmlPropertiesEditionProvider extends PropertiesEditingProviderImpl 
 					.equals(part))
 				return new NamedElementRelationshipsPropertiesEditionComponent(
 						editingContext, editingContext.getEObject(), mode);
+		}
+
+		if (editingContext.getEObject() instanceof Element) {
+			if (ElementDocumentationPropertiesEditionComponent.DOCUMENTATION_PART
+					.equals(part))
+				return new ElementDocumentationPropertiesEditionComponent(
+						editingContext, editingContext.getEObject(), mode);
 
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part);
@@ -147,12 +156,20 @@ public class UmlPropertiesEditionProvider extends PropertiesEditingProviderImpl 
 					&& refinement == NamedElementStereotypesPropertiesEditionComponent.class)
 				return new NamedElementStereotypesPropertiesEditionComponent(
 						editingContext, editingContext.getEObject(), mode);
+
+			if (NamedElementRelationshipsPropertiesEditionComponent.RELATIONSHIPS_PART
+					.equals(part))
+				return new NamedElementRelationshipsPropertiesEditionComponent(
+						editingContext, editingContext.getEObject(), mode);
 		}
 
-		if (NamedElementRelationshipsPropertiesEditionComponent.RELATIONSHIPS_PART
-				.equals(part))
-			return new NamedElementRelationshipsPropertiesEditionComponent(
-					editingContext, editingContext.getEObject(), mode);
+		if (editingContext.getEObject() instanceof Element) {
+			if (ElementDocumentationPropertiesEditionComponent.DOCUMENTATION_PART
+					.equals(part))
+				return new ElementDocumentationPropertiesEditionComponent(
+						editingContext, editingContext.getEObject(), mode);
+		}
+
 		return super.getPropertiesEditingComponent(editingContext, mode, part,
 				refinement);
 	}
@@ -169,8 +186,10 @@ public class UmlPropertiesEditionProvider extends PropertiesEditingProviderImpl 
 		 */
 		public boolean select(Object toTest) {
 			EObject eObj = EEFUtils.resolveSemanticObject(toTest);
-			return eObj != null
-					&& UMLPackage.Literals.NAMED_ELEMENT == eObj.eClass();
+			return (eObj != null && UMLPackage.Literals.NAMED_ELEMENT == eObj
+					.eClass())
+					|| (eObj != null && UMLPackage.Literals.ELEMENT == eObj
+							.eClass());
 		}
 
 	}

@@ -33,8 +33,6 @@ import org.eclipse.uml2.uml.Vertex;
 
 import org.obeonetwork.dsl.uml2.properties.providers.UmlPropertiesEditionProvider;
 
-import org.obeonetwork.dsl.uml2.properties.uml.components.VertexDocumentationPropertiesEditionComponent;
-import org.obeonetwork.dsl.uml2.properties.uml.components.VertexGeneralPropertiesEditionComponent;
 import org.obeonetwork.dsl.uml2.properties.uml.components.VertexPropertiesEditionComponent;
 
 /**
@@ -74,7 +72,7 @@ public class VertexPropertiesEditionProvider extends UmlPropertiesEditionProvide
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof Vertex) && (VertexGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) || VertexDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part));
+		return (editingContext.getEObject() instanceof Vertex) && (VertexPropertiesEditionComponent.GENERAL_PART.equals(part));
 	}
 
 	/**
@@ -84,7 +82,7 @@ public class VertexPropertiesEditionProvider extends UmlPropertiesEditionProvide
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Vertex) && (refinement == VertexGeneralPropertiesEditionComponent.class || refinement == VertexDocumentationPropertiesEditionComponent.class);
+		return (editingContext.getEObject() instanceof Vertex) && (refinement == VertexPropertiesEditionComponent.class);
 	}
 
 	/**
@@ -94,7 +92,7 @@ public class VertexPropertiesEditionProvider extends UmlPropertiesEditionProvide
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Vertex) && ((VertexGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == VertexGeneralPropertiesEditionComponent.class) || (VertexDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == VertexDocumentationPropertiesEditionComponent.class));
+		return (editingContext.getEObject() instanceof Vertex) && ((VertexPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == VertexPropertiesEditionComponent.class));
 	}
 
 	/**
@@ -116,10 +114,8 @@ public class VertexPropertiesEditionProvider extends UmlPropertiesEditionProvide
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
 		if (editingContext.getEObject() instanceof Vertex) {
-			if (VertexGeneralPropertiesEditionComponent.GENERAL_PART.equals(part))
-				return new VertexGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-			if (VertexDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part))
-				return new VertexDocumentationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (VertexPropertiesEditionComponent.GENERAL_PART.equals(part))
+				return new VertexPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part);
 	}
@@ -131,12 +127,9 @@ public class VertexPropertiesEditionProvider extends UmlPropertiesEditionProvide
 	@SuppressWarnings("rawtypes")
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
 		if (editingContext.getEObject() instanceof Vertex) {
-			if (VertexGeneralPropertiesEditionComponent.GENERAL_PART.equals(part)
-				&& refinement == VertexGeneralPropertiesEditionComponent.class)
-				return new VertexGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-			if (VertexDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part)
-				&& refinement == VertexDocumentationPropertiesEditionComponent.class)
-				return new VertexDocumentationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (VertexPropertiesEditionComponent.GENERAL_PART.equals(part)
+				&& refinement == VertexPropertiesEditionComponent.class)
+				return new VertexPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}

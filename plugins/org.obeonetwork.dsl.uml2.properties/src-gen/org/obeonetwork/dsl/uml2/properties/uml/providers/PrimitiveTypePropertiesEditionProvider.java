@@ -34,7 +34,6 @@ import org.eclipse.uml2.uml.UMLPackage;
 import org.obeonetwork.dsl.uml2.properties.providers.UmlPropertiesEditionProvider;
 
 import org.obeonetwork.dsl.uml2.properties.uml.components.PrimitiveTypeAttributesPropertiesEditionComponent;
-import org.obeonetwork.dsl.uml2.properties.uml.components.PrimitiveTypeDocumentationPropertiesEditionComponent;
 import org.obeonetwork.dsl.uml2.properties.uml.components.PrimitiveTypeGeneralPropertiesEditionComponent;
 import org.obeonetwork.dsl.uml2.properties.uml.components.PrimitiveTypePropertiesEditionComponent;
 
@@ -75,7 +74,7 @@ public class PrimitiveTypePropertiesEditionProvider extends UmlPropertiesEdition
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof PrimitiveType) && (PrimitiveTypeGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) || PrimitiveTypeDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) || PrimitiveTypeAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part));
+		return (editingContext.getEObject() instanceof PrimitiveType) && (PrimitiveTypeGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) || PrimitiveTypeAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part));
 	}
 
 	/**
@@ -85,7 +84,7 @@ public class PrimitiveTypePropertiesEditionProvider extends UmlPropertiesEdition
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof PrimitiveType) && (refinement == PrimitiveTypeGeneralPropertiesEditionComponent.class || refinement == PrimitiveTypeDocumentationPropertiesEditionComponent.class || refinement == PrimitiveTypeAttributesPropertiesEditionComponent.class);
+		return (editingContext.getEObject() instanceof PrimitiveType) && (refinement == PrimitiveTypeGeneralPropertiesEditionComponent.class || refinement == PrimitiveTypeAttributesPropertiesEditionComponent.class);
 	}
 
 	/**
@@ -95,7 +94,7 @@ public class PrimitiveTypePropertiesEditionProvider extends UmlPropertiesEdition
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof PrimitiveType) && ((PrimitiveTypeGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == PrimitiveTypeGeneralPropertiesEditionComponent.class) || (PrimitiveTypeDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part) && refinement == PrimitiveTypeDocumentationPropertiesEditionComponent.class) || (PrimitiveTypeAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part) && refinement == PrimitiveTypeAttributesPropertiesEditionComponent.class));
+		return (editingContext.getEObject() instanceof PrimitiveType) && ((PrimitiveTypeGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == PrimitiveTypeGeneralPropertiesEditionComponent.class) || (PrimitiveTypeAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part) && refinement == PrimitiveTypeAttributesPropertiesEditionComponent.class));
 	}
 
 	/**
@@ -119,8 +118,6 @@ public class PrimitiveTypePropertiesEditionProvider extends UmlPropertiesEdition
 		if (editingContext.getEObject() instanceof PrimitiveType) {
 			if (PrimitiveTypeGeneralPropertiesEditionComponent.GENERAL_PART.equals(part))
 				return new PrimitiveTypeGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-			if (PrimitiveTypeDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part))
-				return new PrimitiveTypeDocumentationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 			if (PrimitiveTypeAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part))
 				return new PrimitiveTypeAttributesPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
@@ -137,9 +134,6 @@ public class PrimitiveTypePropertiesEditionProvider extends UmlPropertiesEdition
 			if (PrimitiveTypeGeneralPropertiesEditionComponent.GENERAL_PART.equals(part)
 				&& refinement == PrimitiveTypeGeneralPropertiesEditionComponent.class)
 				return new PrimitiveTypeGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-			if (PrimitiveTypeDocumentationPropertiesEditionComponent.DOCUMENTATION_PART.equals(part)
-				&& refinement == PrimitiveTypeDocumentationPropertiesEditionComponent.class)
-				return new PrimitiveTypeDocumentationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 			if (PrimitiveTypeAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part)
 				&& refinement == PrimitiveTypeAttributesPropertiesEditionComponent.class)
 				return new PrimitiveTypeAttributesPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
