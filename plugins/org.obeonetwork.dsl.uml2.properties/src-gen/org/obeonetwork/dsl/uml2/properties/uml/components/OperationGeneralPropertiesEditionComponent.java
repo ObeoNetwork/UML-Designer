@@ -118,7 +118,7 @@ public class OperationGeneralPropertiesEditionComponent extends SinglePartProper
 			
 			generalPart.setAbstract_(operation.isAbstract());
 			
-			generalPart.setAbstract_(operation.isQuery());
+			generalPart.setQuery(operation.isQuery());
 			
 			if (isAccessible(UmlViewsRepository.General.type)) {
 				// init part
@@ -195,7 +195,7 @@ public class OperationGeneralPropertiesEditionComponent extends SinglePartProper
 		if (editorKey == UmlViewsRepository.General.Qualifiers.abstract_) {
 			return UMLPackage.eINSTANCE.getClassifier_IsAbstract();
 		}
-		if (editorKey == UmlViewsRepository.General.Qualifiers.abstract_) {
+		if (editorKey == UmlViewsRepository.General.Qualifiers.query) {
 			return UMLPackage.eINSTANCE.getOperation_IsQuery();
 		}
 		if (editorKey == UmlViewsRepository.General.type) {
@@ -226,7 +226,7 @@ public class OperationGeneralPropertiesEditionComponent extends SinglePartProper
 		if (UmlViewsRepository.General.Qualifiers.abstract_ == event.getAffectedEditor()) {
 			operation.setIsAbstract((Boolean)event.getNewValue());
 		}
-		if (UmlViewsRepository.General.Qualifiers.abstract_ == event.getAffectedEditor()) {
+		if (UmlViewsRepository.General.Qualifiers.query == event.getAffectedEditor()) {
 			operation.setIsQuery((Boolean)event.getNewValue());
 		}
 	}
@@ -264,8 +264,8 @@ public class OperationGeneralPropertiesEditionComponent extends SinglePartProper
 			if (UMLPackage.eINSTANCE.getClassifier_IsAbstract().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.Qualifiers.abstract_))
 				generalPart.setAbstract_((Boolean)msg.getNewValue());
 			
-			if (UMLPackage.eINSTANCE.getOperation_IsQuery().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.Qualifiers.abstract_))
-				generalPart.setAbstract_((Boolean)msg.getNewValue());
+			if (UMLPackage.eINSTANCE.getOperation_IsQuery().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.Qualifiers.query))
+				generalPart.setQuery((Boolean)msg.getNewValue());
 			
 			if (UMLPackage.eINSTANCE.getOperation_Type().equals(msg.getFeature()) && generalPart != null && isAccessible(UmlViewsRepository.General.type))
 				generalPart.setType((EObject)msg.getNewValue());
@@ -298,7 +298,7 @@ public class OperationGeneralPropertiesEditionComponent extends SinglePartProper
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#mustBeComposed(java.lang.Object, int)
 	 */
 	public boolean mustBeComposed(Object key, int kind) {
-		return key == UmlViewsRepository.General.name || key == UmlViewsRepository.General.visibility || key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.Qualifiers.ordered || key == UmlViewsRepository.General.Qualifiers.static_ || key == UmlViewsRepository.General.Qualifiers.unique || key == UmlViewsRepository.General.Qualifiers.abstract_ || key == UmlViewsRepository.General.Qualifiers.abstract_ || key == UmlViewsRepository.General.type || key == UmlViewsRepository.General.Qualifiers.class;
+		return key == UmlViewsRepository.General.name || key == UmlViewsRepository.General.visibility || key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.Qualifiers.ordered || key == UmlViewsRepository.General.Qualifiers.static_ || key == UmlViewsRepository.General.Qualifiers.unique || key == UmlViewsRepository.General.Qualifiers.abstract_ || key == UmlViewsRepository.General.Qualifiers.query || key == UmlViewsRepository.General.type || key == UmlViewsRepository.General.Qualifiers.class;
 	}
 
 	/**
@@ -308,7 +308,7 @@ public class OperationGeneralPropertiesEditionComponent extends SinglePartProper
 	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.Qualifiers.ordered || key == UmlViewsRepository.General.Qualifiers.static_ || key == UmlViewsRepository.General.Qualifiers.unique || key == UmlViewsRepository.General.Qualifiers.abstract_ || key == UmlViewsRepository.General.Qualifiers.abstract_;
+		return key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.Qualifiers.ordered || key == UmlViewsRepository.General.Qualifiers.static_ || key == UmlViewsRepository.General.Qualifiers.unique || key == UmlViewsRepository.General.Qualifiers.abstract_ || key == UmlViewsRepository.General.Qualifiers.query;
 	}
 
 	/**
@@ -370,7 +370,7 @@ public class OperationGeneralPropertiesEditionComponent extends SinglePartProper
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getClassifier_IsAbstract().getEAttributeType(), newValue);
 				}
-				if (UmlViewsRepository.General.Qualifiers.abstract_ == event.getAffectedEditor()) {
+				if (UmlViewsRepository.General.Qualifiers.query == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getOperation_IsQuery().getEAttributeType(), (String)newValue);

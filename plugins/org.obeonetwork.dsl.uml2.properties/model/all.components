@@ -143,7 +143,7 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_uOfEMFv4EeKZBNASYbV97A" name="abstract" views="_aDX1wFv4EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Classifier/isAbstract"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_NW3KEFv8EeKZBNASYbV97A" name="query" views="_aDX1wFv4EeKZBNASYbV97A _PBNzEFv8EeKZBNASYbV97A">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_NW3KEFv8EeKZBNASYbV97A" name="query" views="_PBNzEFv8EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Operation/isQuery"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_yuwNkFv8EeKZBNASYbV97A" name="returnType" views="_tYLxgFv8EeKZBNASYbV97A">
