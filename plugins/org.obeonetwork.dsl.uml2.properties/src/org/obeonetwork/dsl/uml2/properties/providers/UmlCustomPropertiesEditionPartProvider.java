@@ -15,7 +15,6 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.CustomUmlViewsRepository;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.AttributesCustomPropertiesEditionPartForm;
-import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralCustomPropertiesEditionPartForm;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.OperationsCustomPropertiesEditionPartForm;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.ParametersCustomPropertiesEditionPartForm;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.RelationshipsPropertiesEditionPartForm;
@@ -41,11 +40,6 @@ public class UmlCustomPropertiesEditionPartProvider extends
 		if (key == UmlViewsRepository.Attributes.class) {
 			if (kind == UmlViewsRepository.FORM_KIND)
 				return new AttributesCustomPropertiesEditionPartForm(component);
-		}
-
-		if (key == UmlViewsRepository.General.class) {
-			if (kind == UmlViewsRepository.FORM_KIND)
-				return new GeneralCustomPropertiesEditionPartForm(component);
 		}
 
 		if (key == CustomUmlViewsRepository.Stereotypes.class) {

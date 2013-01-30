@@ -50,7 +50,7 @@ public interface GeneralPropertiesEditionPart {
 	 * @return the visibility
 	 * @generated
 	 */
-	public Object getVisibility();
+	public Enumerator getVisibility();
 
 	/**
 	 * Init the visibility
@@ -64,7 +64,7 @@ public interface GeneralPropertiesEditionPart {
 	 * @param newValue the new visibility to set
 	 * @generated
 	 */
-	public void setVisibility(Object newValue);
+	public void setVisibility(Enumerator newValue);
 
 
 	/**

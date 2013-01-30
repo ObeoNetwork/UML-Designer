@@ -19,7 +19,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.Enumerator;
 
-import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
@@ -53,7 +52,6 @@ import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
-import org.eclipse.emf.eef.runtime.ui.widgets.RadioViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
@@ -106,7 +104,7 @@ import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, GeneralPropertiesEditionPart {
 
 	protected Text name;
-	protected RadioViewer visibilityRadioViewer;
+	protected EMFComboViewer visibility;
 	protected Button abstract_;
 	protected Button leaf;
 	protected Button ordered;
@@ -229,7 +227,7 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
           return createNameText(parent);
         }
         if (key == UmlViewsRepository.General.visibility) {
-          return createVisibilityRadioViewer(parent);
+          return createVisibilityEMFComboViewer(parent);
         }
         if (key == UmlViewsRepository.General.Qualifiers.class) {
           return createQualifiersGroup(parent);
@@ -388,22 +386,31 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
 	/**
 	 * @generated
 	 */
-	protected Composite createVisibilityRadioViewer(Composite parent) {
-    visibilityRadioViewer = new RadioViewer(parent, SWT.CHECK);
+	
+	protected Composite createVisibilityEMFComboViewer(Composite parent) {
+    createDescription(parent, UmlViewsRepository.General.visibility, UmlMessages.GeneralPropertiesEditionPart_VisibilityLabel);
+    visibility = new EMFComboViewer(parent);
+    visibility.setContentProvider(new ArrayContentProvider());
+    visibility.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
     GridData visibilityData = new GridData(GridData.FILL_HORIZONTAL);
-    visibilityData.horizontalSpan = 2;
-    visibilityRadioViewer.setLayoutData(visibilityData);
-    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.visibility, UmlViewsRepository.FORM_KIND), null);
-    visibilityRadioViewer.addSelectionChangedListener(new ISelectionChangedListener() {
+    visibility.getCombo().setLayoutData(visibilityData);
+    visibility.addSelectionChangedListener(new ISelectionChangedListener() {
 
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       * 	@generated
+       */
       public void selectionChanged(SelectionChangedEvent event) {
         if (propertiesEditionComponent != null)
-          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartImpl.this, UmlViewsRepository.General.visibility, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, ((StructuredSelection)event.getSelection()).getFirstElement()));
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartImpl.this, UmlViewsRepository.General.visibility, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getVisibility()));
       }
+
     });
-    visibilityRadioViewer.setID(UmlViewsRepository.General.visibility);
-    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.visibility, UmlViewsRepository.SWT_KIND), null);
-    // Start of user code for createVisibilityRadioViewer
+    visibility.setID(UmlViewsRepository.General.visibility);
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.visibility, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    // Start of user code for createVisibilityEMFComboViewer
 
     // End of user code
     return parent;
@@ -1758,12 +1765,9 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getVisibility()
 	 * @generated
 	 */
-	public Object getVisibility() {
-    if (visibilityRadioViewer.getSelection() instanceof StructuredSelection) {
-      StructuredSelection sSelection = (StructuredSelection) visibilityRadioViewer.getSelection();
-      return sSelection.getFirstElement();
-    }
-    return null;
+	public Enumerator getVisibility() {
+    Enumerator selection = (Enumerator) ((StructuredSelection) visibility.getSelection()).getFirstElement();
+    return selection;
   }
 
 	/**
@@ -1772,33 +1776,33 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#initVisibility(Object input, Enumerator current)
 	 */
 	public void initVisibility(Object input, Enumerator current) {
-		visibilityRadioViewer.setInput(input);
-		visibilityRadioViewer.setSelection(new StructuredSelection(current));
+		visibility.setInput(input);
+		visibility.modelUpdating(new StructuredSelection(current));
 		boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.visibility);
-		if (eefElementEditorReadOnlyState && visibilityRadioViewer.isEnabled()) {
-			visibilityRadioViewer.setEnabled(false);
-			visibilityRadioViewer.setToolTipText(UmlMessages.General_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !visibilityRadioViewer.isEnabled()) {
-			visibilityRadioViewer.setEnabled(true);
-		}
+		if (eefElementEditorReadOnlyState && visibility.isEnabled()) {
+			visibility.setEnabled(false);
+			visibility.setToolTipText(UmlMessages.General_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !visibility.isEnabled()) {
+			visibility.setEnabled(true);
+		}	
 		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#setVisibility(Object newValue)
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#setVisibility(Enumerator newValue)
 	 * @generated
 	 */
-	public void setVisibility(Object newValue) {
-    visibilityRadioViewer.setSelection(new StructuredSelection(newValue));
+	public void setVisibility(Enumerator newValue) {
+    visibility.modelUpdating(new StructuredSelection(newValue));
     boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.visibility);
-    if (eefElementEditorReadOnlyState && visibilityRadioViewer.isEnabled()) {
-      visibilityRadioViewer.setEnabled(false);
-      visibilityRadioViewer.setToolTipText(UmlMessages.General_ReadOnly);
-    } else if (!eefElementEditorReadOnlyState && !visibilityRadioViewer.isEnabled()) {
-      visibilityRadioViewer.setEnabled(true);
-    }
+    if (eefElementEditorReadOnlyState && visibility.isEnabled()) {
+      visibility.setEnabled(false);
+      visibility.setToolTipText(UmlMessages.General_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !visibility.isEnabled()) {
+      visibility.setEnabled(true);
+    }	
     
   }
 
