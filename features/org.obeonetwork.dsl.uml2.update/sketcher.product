@@ -125,6 +125,7 @@ The user is not authorized to install or make a technical means to hide within t
       <feature id="fr.obeo.dsl.viewpoint.runtime.ide.ui"/>      
       <feature id="fr.obeo.dsl.viewpoint.runtime"/>
       <feature id="org.eclipse.platform"/>
+      <feature id="org.eclipse.uml2"/>
       <feature id="fr.obeo.dsl.feature.designer.gen.html"/>
    </features>
 
