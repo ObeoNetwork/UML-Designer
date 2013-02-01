@@ -507,160 +507,6 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </endLabelStyleDescription>
           </style>
-          <conditionnalStyles predicateExpression="&lt;%getTarget.isNavigable() &amp;&amp; getTarget.isShared()%>">
-            <style sourceArrow="Diamond" sizeComputationExpression="1">
-              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-              <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getSource().computeAssociationEndLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </beginLabelStyleDescription>
-              <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%computeUmlLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </centerLabelStyleDescription>
-              <endLabelStyleDescription showIcon="false" labelExpression="&lt;%getTarget().computeAssociationEndLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </endLabelStyleDescription>
-            </style>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="&lt;%getTarget.isNavigable() &amp;&amp; getTarget.isComposite()%>">
-            <style sourceArrow="FillDiamond" sizeComputationExpression="1">
-              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-              <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getSource().computeAssociationEndLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </beginLabelStyleDescription>
-              <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%computeUmlLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </centerLabelStyleDescription>
-              <endLabelStyleDescription showIcon="false" labelExpression="&lt;%getTarget().computeAssociationEndLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </endLabelStyleDescription>
-            </style>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="&lt;%!getTarget.isNavigable() &amp;&amp; getTarget.isShared()%>">
-            <style sourceArrow="Diamond" targetArrow="NoDecoration" sizeComputationExpression="1">
-              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-              <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getSource().computeAssociationEndLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </beginLabelStyleDescription>
-              <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%computeUmlLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </centerLabelStyleDescription>
-              <endLabelStyleDescription showIcon="false" labelExpression="&lt;%getTarget().computeAssociationEndLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </endLabelStyleDescription>
-            </style>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="&lt;%!getTarget.isNavigable() &amp;&amp; getTarget.isComposite()%>">
-            <style sourceArrow="FillDiamond" targetArrow="NoDecoration" sizeComputationExpression="1">
-              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-              <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getSource().computeAssociationEndLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </beginLabelStyleDescription>
-              <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%computeUmlLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </centerLabelStyleDescription>
-              <endLabelStyleDescription showIcon="false" labelExpression="&lt;%getTarget().computeAssociationEndLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </endLabelStyleDescription>
-            </style>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="&lt;%getSource.isNavigable() &amp;&amp; getSource.isShared()%>">
-            <style sourceArrow="InputArrow" targetArrow="Diamond" sizeComputationExpression="1">
-              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-              <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getSource().computeAssociationEndLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </beginLabelStyleDescription>
-              <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%computeUmlLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </centerLabelStyleDescription>
-              <endLabelStyleDescription showIcon="false" labelExpression="&lt;%getTarget().computeAssociationEndLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </endLabelStyleDescription>
-            </style>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="&lt;%getSource.isNavigable() &amp;&amp; getSource.isComposite()%>">
-            <style sourceArrow="InputArrow" targetArrow="FillDiamond" sizeComputationExpression="1">
-              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-              <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getSource().computeAssociationEndLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </beginLabelStyleDescription>
-              <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%computeUmlLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </centerLabelStyleDescription>
-              <endLabelStyleDescription showIcon="false" labelExpression="&lt;%getTarget().computeAssociationEndLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </endLabelStyleDescription>
-            </style>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="&lt;%!getSource.isNavigable() &amp;&amp; getSource.isShared()%>">
-            <style targetArrow="Diamond" sizeComputationExpression="1">
-              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-              <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getSource().computeAssociationEndLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </beginLabelStyleDescription>
-              <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%computeUmlLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </centerLabelStyleDescription>
-              <endLabelStyleDescription showIcon="false" labelExpression="&lt;%getTarget().computeAssociationEndLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </endLabelStyleDescription>
-            </style>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="&lt;%!getSource.isNavigable() &amp;&amp; getSource.isComposite()%>">
-            <style targetArrow="FillDiamond" sizeComputationExpression="1">
-              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-              <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getSource().computeAssociationEndLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </beginLabelStyleDescription>
-              <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%computeUmlLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </centerLabelStyleDescription>
-              <endLabelStyleDescription showIcon="false" labelExpression="&lt;%getTarget().computeAssociationEndLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </endLabelStyleDescription>
-            </style>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="&lt;%getSource.isNavigable() &amp;&amp; getTarget.isNavigable()%>">
-            <style sourceArrow="InputArrow" sizeComputationExpression="1">
-              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-              <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getSource().computeAssociationEndLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </beginLabelStyleDescription>
-              <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%computeUmlLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </centerLabelStyleDescription>
-              <endLabelStyleDescription showIcon="false" labelExpression="&lt;%getTarget().computeAssociationEndLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </endLabelStyleDescription>
-            </style>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="&lt;%getSource.isNavigable() &amp;&amp; !getTarget.isNavigable()%>">
-            <style sourceArrow="InputArrow" targetArrow="NoDecoration" sizeComputationExpression="1">
-              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-              <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getSource().computeAssociationEndLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </beginLabelStyleDescription>
-              <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%computeUmlLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </centerLabelStyleDescription>
-              <endLabelStyleDescription showIcon="false" labelExpression="&lt;%getTarget().computeAssociationEndLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </endLabelStyleDescription>
-            </style>
-          </conditionnalStyles>
-          <conditionnalStyles predicateExpression="&lt;%!getSource.isNavigable() &amp;&amp; getTarget.isNavigable()%>">
-            <style sizeComputationExpression="1">
-              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-              <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getSource().computeAssociationEndLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </beginLabelStyleDescription>
-              <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%computeUmlLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </centerLabelStyleDescription>
-              <endLabelStyleDescription showIcon="false" labelExpression="&lt;%getTarget().computeAssociationEndLabel()%>">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </endLabelStyleDescription>
-            </style>
-          </conditionnalStyles>
         </edgeMappings>
         <edgeMappings name="CD_Dependency" preconditionExpression="&lt;%!filter(&quot;InterfaceRealization&quot;)%>" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticElements="&lt;%self.getSemanticElements()%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Interface'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Package'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_DataType'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_PrimitiveType']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Interface'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Package'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_DataType'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_PrimitiveType']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="&lt;%client%>" targetExpression="&lt;%self%>" domainClass="uml.Dependency" useDomainElement="true" reconnections="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='Reconnect']">
           <style lineStyle="dash" sizeComputationExpression="1">
@@ -1316,15 +1162,15 @@
                         <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$source%>"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="1"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedEnd">
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$target.name.toL1Case%>s"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$target%>"/>
-                        <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="-1"/>
                       </subModelOperations>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="navigableOwnedEnd" valueExpression="&lt;%memberEnd.nGet(0) + memberEnd.nGet(1)%>"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="navigableOwnedEnd" valueExpression="&lt;%memberEnd.nGet(1)%>"/>
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%ownedEnd.nGet(0).name%>To&lt;%ownedEnd.nGet(1).name.toU1Case()%>"/>
                     </subModelOperations>
                   </subModelOperations>
@@ -1348,15 +1194,15 @@
                         <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$source%>"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="-1"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="shared"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedEnd">
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$target.name.toL1Case%>s"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$target%>"/>
-                        <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="shared"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="-1"/>
                       </subModelOperations>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="navigableOwnedEnd" valueExpression="&lt;%memberEnd.nGet(0) + memberEnd.nGet(1)%>"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="navigableOwnedEnd" valueExpression="&lt;%memberEnd.nGet(1)%>"/>
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%ownedEnd.nGet(0).name%>To&lt;%ownedEnd.nGet(1).name.toU1Case()%>"/>
                     </subModelOperations>
                   </subModelOperations>
@@ -1648,6 +1494,38 @@
             </menuItemDescription>
           </ownedTools>
         </toolSections>
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="&lt;%getTarget.isNavigable()%>">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']/@style" attributeName="targetArrow" value="[EdgeArrows::InputArrow/]"/>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="&lt;%getTarget.isComposite()%>">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']/@style" attributeName="targetArrow" value="[EdgeArrows::FillDiamond/]"/>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="&lt;%getTarget.isShared()%>">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']/@style" attributeName="targetArrow" value="[EdgeArrows::Diamond/]"/>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="&lt;%getTarget.isNavigable() &amp;&amp; getTarget().isComposite()%>">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']/@style" attributeName="targetArrow" value="[EdgeArrows::InputArrowWithFillDiamond/]"/>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="&lt;%getTarget.isNavigable() &amp;&amp; getTarget().isShared()%>">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']/@style" attributeName="targetArrow" value="[EdgeArrows::InputArrowWithDiamond/]"/>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="&lt;%getSource.isNavigable()%>">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']/@style" attributeName="sourceArrow" value="[EdgeArrows::InputArrow/]"/>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="&lt;%getSource.isComposite()%>">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']/@style" attributeName="sourceArrow" value="[EdgeArrows::FillDiamond/]"/>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="&lt;%getSource.isShared()%>">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']/@style" attributeName="sourceArrow" value="[EdgeArrows::Diamond/]"/>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="&lt;%getSource.isNavigable() &amp;&amp; getSource().isComposite()%>">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']/@style" attributeName="sourceArrow" value="[EdgeArrows::InputArrowWithFillDiamond/]"/>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="&lt;%getSource.isNavigable() &amp;&amp; getSource().isShared()%>">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']/@style" attributeName="sourceArrow" value="[EdgeArrows::InputArrowWithDiamond/]"/>
+          </vsmElementCustomizations>
+        </customization>
       </defaultLayer>
       <optionalLayers name="Imported packages">
         <containerMappings name="CD_ImportedPackage" detailDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='details']/@ownedTools[name='Class%20Diagram'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='details']/@ownedTools[name='Object%20Diagram'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='details']/@ownedTools[name='Component%20Diagram'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='details']/@ownedTools[name='Composite%20Object%20Diagram'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='details']/@ownedTools[name='Deployment%20Diagram']" deletionDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@optionalLayers[name='Imported%20packages']/@toolSections.1/@ownedTools[name='Delete%20ImportPackage']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%packageImport.importedPackage%>" semanticElements="&lt;%self.getSemanticElements()%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Package" reusedContainerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Interface'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Package']">
