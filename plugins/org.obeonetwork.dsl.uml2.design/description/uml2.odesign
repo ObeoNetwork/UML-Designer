@@ -3703,7 +3703,7 @@
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
-            <ownedTools xsi:type="tool:NodeCreationDescription" name="Fork State Node" label="Fork" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_FinalState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_fork.gif">
+            <ownedTools xsi:type="tool:NodeCreationDescription" name="Fork State Node" label="Fork" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_fork.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -3713,7 +3713,7 @@
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
-            <ownedTools xsi:type="tool:NodeCreationDescription" name="Join State Node" label="Join" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_FinalState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_join.gif">
+            <ownedTools xsi:type="tool:NodeCreationDescription" name="Join State Node" label="Join" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_join.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -3723,7 +3723,7 @@
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
-            <ownedTools xsi:type="tool:NodeCreationDescription" name="Choice State Node" label="Choice" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_FinalState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_choice.gif">
+            <ownedTools xsi:type="tool:NodeCreationDescription" name="Choice State Node" label="Choice" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_choice.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -3733,7 +3733,7 @@
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
-            <ownedTools xsi:type="tool:NodeCreationDescription" name="Junction State Node" label="Junction" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_FinalState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_junction.gif">
+            <ownedTools xsi:type="tool:NodeCreationDescription" name="Junction State Node" label="Junction" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_junction.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -3743,7 +3743,7 @@
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
-            <ownedTools xsi:type="tool:NodeCreationDescription" name="Terminate State Node" label="Terminate" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_FinalState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_terminate.gif">
+            <ownedTools xsi:type="tool:NodeCreationDescription" name="Terminate State Node" label="Terminate" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_terminate.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -3753,7 +3753,7 @@
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
-            <ownedTools xsi:type="tool:NodeCreationDescription" name="Shallow History State Node" label="Shallow History" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_FinalState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_deepHistory.gif">
+            <ownedTools xsi:type="tool:NodeCreationDescription" name="Shallow History State Node" label="Shallow History" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_deepHistory.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -3763,7 +3763,7 @@
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
-            <ownedTools xsi:type="tool:NodeCreationDescription" name="Deep History State Node" label="Deep History" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_FinalState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_deepHistory.gif">
+            <ownedTools xsi:type="tool:NodeCreationDescription" name="Deep History State Node" label="Deep History" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_deepHistory.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
