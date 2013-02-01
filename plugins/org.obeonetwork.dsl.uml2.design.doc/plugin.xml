@@ -11,52 +11,53 @@ Contributors:
     Obeo - initial API and implementation
 -->
 <plugin>
-   <extension
-         point="org.eclipse.help.toc">
-      <toc
+    <extension
+        point="org.eclipse.help.toc">
+        <toc
             file="doc/UML Designer User Guide-toc.xml"
             primary="true">
-      </toc>
-   </extension>
-   
-<extension point="org.eclipse.emf.common.ui.examples">
-   <example wizardID="org.obeonetwork.dsl.uml2.design.doc.TravelAgencyWizard">
-	   <projectDescriptor name="TravelAgency"
-		   contentURI="contents/TravelAgency/" />
-		     </example>
-   </extension>
-			
-<extension point="org.eclipse.ui.newWizards">
-  <category
-          id="fr.obeo.dsl.viewpoint.sample.category"
-          name="%_UI_Wizard_category"
-          parentCategory="org.eclipse.ui.Examples"/>     
-   <wizard
-         category="org.eclipse.ui.Examples/fr.obeo.dsl.viewpoint.sample.category"
-         class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
-         finalPerspective="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
-         icon="icons/NewUmlModel.gif"
-         id="org.obeonetwork.dsl.uml2.design.doc.TravelAgencyWizard"
-         name="Travel Agency UML"
-         project="true">
-    <description>An UML model for a travel agency business leveraging class, components, use case, activity and states diagrams.</description>
-  </wizard>
-  </extension>
-  
-  <extension
-         point="org.eclipse.ui.intro.configExtension">
-      <configExtension
+        </toc>
+    </extension>
+
+    <extension point="org.eclipse.emf.common.ui.examples">
+        <example wizardID="org.obeonetwork.dsl.uml2.design.doc.TravelAgencyWizard">
+            <projectDescriptor name="TravelAgency"
+                contentURI="contents/TravelAgency/" />
+        </example>
+    </extension>
+
+    <extension point="org.eclipse.ui.newWizards">
+        <category
+            id="org.obeonetwork.dsl.uml.examples.category"
+            name="UML"
+            parentCategory="org.eclipse.ui.Examples">
+        </category>
+        <wizard
+            category="org.eclipse.ui.Examples/org.obeonetwork.dsl.uml.examples.category"
+            class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
+            finalPerspective="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
+            icon="icons/NewUmlModel.gif"
+            id="org.obeonetwork.dsl.uml2.design.doc.TravelAgencyWizard"
+            name="Travel Agency UML"
+            project="true">
+            <description>An UML model for a travel agency business leveraging class, components, use case, activity and states diagrams.</description>
+        </wizard>
+    </extension>
+
+    <extension
+        point="org.eclipse.ui.intro.configExtension">
+        <configExtension
             configId="org.eclipse.ui.intro.universalConfig"
             content="intro/welcome_intro.xml"/>  
-   </extension>
-   
- <extension
+    </extension>
+
+    <extension
         point="org.eclipse.help.contexts">
-     <contexts
-           file="doc/contexts.xml"
-           plugin="org.obeonetwork.dsl.uml2.design">
-     </contexts>
-  </extension>
- 
-  
+        <contexts
+            file="doc/contexts.xml"
+            plugin="org.obeonetwork.dsl.uml2.design">
+        </contexts>
+    </extension>
+
+
 </plugin>
