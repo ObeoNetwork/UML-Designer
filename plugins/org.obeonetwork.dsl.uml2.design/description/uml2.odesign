@@ -4017,7 +4017,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.findParentActivity()%>">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.InitialNode" referenceName="node">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.InitialNode" referenceName="ownedNode">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Initial_&lt;%$container.node.filter(&quot;InitialNode&quot;).nSize()%>"/>
                     <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$container.filter(&quot;ActivityPartition&quot;) != null%>">
                       <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="&lt;%$container%>"/>
@@ -4031,7 +4031,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.findParentActivity()%>">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ActivityFinalNode" referenceName="node">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ActivityFinalNode" referenceName="ownedNode">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="ActivityFinal_&lt;%$container.node.filter(&quot;ActivityFinalNode&quot;).nSize()%>"/>
                     <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$container.filter(&quot;ActivityPartition&quot;) != null%>">
                       <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="&lt;%$container%>"/>
@@ -4045,10 +4045,11 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.findParentActivity()%>">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.FlowFinalNode" referenceName="node">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="flowFinal_&lt;%$container.node.filter(&quot;FlowFinalNode&quot;).nSize()%>"/>
-                    <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$container.filter(&quot;ActivityPartition&quot;) != null%>">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="&lt;%$container%>"/>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.FlowFinalNode" referenceName="ownedNode">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="flowFinal_&lt;%$container.node.filter(&quot;FlowFinalNode&quot;).nSize()%>">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$container.filter(&quot;ActivityPartition&quot;) != null%>">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="&lt;%$container%>"/>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -4059,7 +4060,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.findParentActivity()%>">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.DecisionNode" referenceName="node">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.DecisionNode" referenceName="ownedNode">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Decision_&lt;%$container.node.filter(&quot;DecisionNode&quot;).nSize()%>"/>
                     <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$container.filter(&quot;ActivityPartition&quot;) != null%>">
                       <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="&lt;%$container%>"/>
@@ -4073,7 +4074,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.findParentActivity()%>">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.MergeNode" referenceName="node">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.MergeNode" referenceName="ownedNode">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Merge_&lt;%$container.node.filter(&quot;MergeNode&quot;).nSize()%>"/>
                     <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$container.filter(&quot;ActivityPartition&quot;) != null%>">
                       <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="&lt;%$container%>"/>
@@ -4087,7 +4088,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.findParentActivity()%>">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ForkNode" referenceName="node">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ForkNode" referenceName="ownedNode">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Fork_&lt;%$container.node.filter(&quot;ForkNode&quot;).nSize()%>"/>
                     <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$container.filter(&quot;ActivityPartition&quot;) != null%>">
                       <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="&lt;%$container%>"/>
@@ -4101,7 +4102,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.findParentActivity()%>">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.JoinNode" referenceName="node">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.JoinNode" referenceName="ownedNode">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Join_&lt;%$container.node.filter(&quot;JoinNode&quot;).nSize()%>"/>
                     <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$container.filter(&quot;ActivityPartition&quot;) != null%>">
                       <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="&lt;%$container%>"/>
@@ -4121,7 +4122,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.findParentActivity()%>">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.OpaqueAction" referenceName="node">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.OpaqueAction" referenceName="ownedNode">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="OpaqueAction_&lt;%$container.node.filter(&quot;OpaqueAction&quot;).nSize()%>"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="body" valueExpression="// TODO body of &lt;%$instance.name%>"/>
                     <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$container.filter(&quot;ActivityPartition&quot;) != null%>">
@@ -4136,7 +4137,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.findParentActivity()%>">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.OpaqueAction" referenceName="node">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.OpaqueAction" referenceName="ownedNode">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Activity State &lt;%$container.node.filter(&quot;OpaqueAction&quot;).nSize()%>"/>
                     <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$container.filter(&quot;ActivityPartition&quot;) != null%>">
                       <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="&lt;%$container%>"/>
@@ -4151,7 +4152,7 @@
               <container name="container"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.findParentActivity()%>">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.CallOperationAction" referenceName="node">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.CallOperationAction" referenceName="ownedNode">
                     <subModelOperations xsi:type="tool:SetValue" featureName="operation" valueExpression="&lt;%$element%>"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$element.name%>_call"/>
                     <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$container.filter(&quot;ActivityPartition&quot;) != null%>">
@@ -4168,7 +4169,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ActivityParameterNode" referenceName="node">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ActivityParameterNode" referenceName="ownedNode">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Parameter_&lt;%$container.node.filter(&quot;ActivityParameterNode&quot;).nSize()%>"/>
                   </subModelOperations>
                 </firstModelOperations>
@@ -4179,7 +4180,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.findParentActivity()%>">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.DataStoreNode" referenceName="node">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.DataStoreNode" referenceName="ownedNode">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="DataStore_&lt;%$container.node.filter(&quot;DataStoreNode&quot;).nSize()%>"/>
                     <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$container.filter(&quot;ActivityPartition&quot;) != null%>">
                       <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="&lt;%$container%>"/>
@@ -4188,14 +4189,14 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:NodeCreationDescription" name="Input Pin" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']/@borderedNodeMappings[name='AD_Pin']">
+            <tools xsi:type="tool:NodeCreationDescription" name="Input Pin" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']/@borderedNodeMappings[name='AD_Pin']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/InputPin.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.createInputPin()%>"/>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:NodeCreationDescription" name="Ouput Pin" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']/@borderedNodeMappings[name='AD_Pin']">
+            <tools xsi:type="tool:NodeCreationDescription" name="Ouput Pin" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']/@borderedNodeMappings[name='AD_Pin']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/OutputPin.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
