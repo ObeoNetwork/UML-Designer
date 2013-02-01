@@ -3,7 +3,7 @@
    <description url="http://www.obeo.fr">
       Viewpoint
    </description>
-   <feature url="features/org.obeonetwork.dsl.feature.uml2_0.0.0.qualifier.jar" id="org.obeonetwork.dsl.feature.uml2" version="0.0.0">
+   <feature  id="org.obeonetwork.dsl.feature.uml2" version="0.0.0">
       <category name="Obeo Network"/>
    </feature>
    <category-def name="Obeo Network" label="Obeo Network">
