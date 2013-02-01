@@ -8,16 +8,29 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+    <modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>org.obeonetwork.dsl.uml</groupId>
-    <artifactId>uml-parent</artifactId>
-    <version>2.0.0-SNAPSHOT</version>
-    <relativePath>../..</relativePath>
-  </parent>
+    <parent>
+        <groupId>org.obeonetwork.dsl.uml</groupId>
+        <artifactId>uml-parent</artifactId>
+        <version>2.0.0-SNAPSHOT</version>
+        <relativePath>../..</relativePath>
+    </parent>
 
-  <artifactId>fr.obeo.dsl.feature.uml2</artifactId>
-  <packaging>eclipse-feature</packaging>
+    <artifactId>fr.obeo.dsl.feature.uml2</artifactId>
+    <packaging>eclipse-feature</packaging>
+
+    <properties>
+        <sysml-site>http://update.obeo.fr/integration/sysml/repository/</sysml-site>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>sysml</id>
+            <layout>p2</layout>
+            <url>${sysml-site}</url>
+        </repository>
+    </repositories>
+
 
 </project>

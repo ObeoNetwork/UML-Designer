@@ -235,10 +235,31 @@ litigation.
          version="0.0.0"
          unpack="false"/>
 
-   <plugin
+     <plugin
          id="org.obeonetwork.dsl.uml2.design.doc"
          download-size="0"
          install-size="0"
          version="0.0.0"/>
+
+     <plugin
+         id="org.obeonetwork.dsl.sysml.design"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+     <plugin
+         id="org.obeonetwork.dsl.sysml.examples"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+     <plugin
+         id="org.obeonetwork.dsl.sysml.doc"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
 
 </feature>

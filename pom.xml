@@ -64,12 +64,12 @@ Contributors:
             <layout>p2</layout>
             <url>${od-site}</url>
         </repository>
-        <!--
         <repository>
-            <id>obeodesignerextension</id>
+            <id>sysml</id>
             <layout>p2</layout>
-            <url>${od-ext-site}</url>
+            <url>http://update.obeo.fr/integration/sysml/repository/</url>
         </repository>
+        <!--
         <repository>
             <id>eef</id>
             <layout>p2</layout>
