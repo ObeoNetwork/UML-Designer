@@ -18,9 +18,10 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
-import org.eclipse.ui.wizards.newresource.BasicNewResourceWizard;
+import org.eclipse.ui.wizards.newresource.BasicNewProjectResourceWizard;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
@@ -36,7 +37,7 @@ import fr.obeo.dsl.viewpoint.description.Viewpoint;
 import fr.obeo.dsl.viewpoint.ui.business.api.viewpoint.ViewpointSelectionCallback;
 import fr.obeo.dsl.viewpoint.ui.tools.api.project.ModelingProjectManager;
 
-public class UMLProjectWizard extends BasicNewResourceWizard {
+public class UMLProjectWizard extends BasicNewProjectResourceWizard {
 	/**
 	 * Dot constant.
 	 */
@@ -53,7 +54,9 @@ public class UMLProjectWizard extends BasicNewResourceWizard {
 
 	@Override
 	public void addPages() {
-		super.addPages();
+		// we're not calling the super as we want to control the project creation, we don't want the default
+		// page.
+//		 super.addPages();
 
 		newProjectPage = new WizardNewProjectCreationPage("Project"); //$NON-NLS-1$
 		newProjectPage.setInitialProjectName("");
@@ -70,11 +73,16 @@ public class UMLProjectWizard extends BasicNewResourceWizard {
 	@Override
 	public boolean performFinish() {
 		try {
-			getContainer().run(
-					true,
-					false,
-					new InitProject(newProjectPage.getProjectName(), newProjectPage.getLocationPath(),
-							modelPage.getInitialObjectName()));
+			final InitProject runnable = new InitProject(newProjectPage.getProjectName(),
+					newProjectPage.getLocationPath(), modelPage.getInitialObjectName());
+			getContainer().run(true, false, runnable);
+			updatePerspective();
+			Display.getDefault().syncExec(new Runnable() {
+				
+				public void run() {
+					runnable.enableViewpointsAndReveal();
+				}
+			});
 		} catch (InvocationTargetException e) {
 			UMLDesignerPlugin.log(IStatus.ERROR, Messages.UmlModelWizard_UI_Error_CreatingUmlModel, e);
 			return false;
@@ -94,6 +102,12 @@ public class UMLProjectWizard extends BasicNewResourceWizard {
 
 		private String initialObjectName;
 
+		private Session session;
+
+		private IProject project;
+
+		private Option<IFile> optionalNewfile;
+
 		public InitProject(String projectName, IPath locationPath, String initialObjectName) {
 			this.projectName = projectName;
 			this.locationPath = locationPath;
@@ -103,18 +117,38 @@ public class UMLProjectWizard extends BasicNewResourceWizard {
 		@Override
 		protected void execute(IProgressMonitor monitor) throws CoreException, InvocationTargetException,
 				InterruptedException {
-			IProject project = ModelingProjectManager.INSTANCE.createNewModelingProject(projectName,
-					locationPath, true);
-			Option<IFile> optionalNewfile = createSemanticResource(project);
-			if (optionalNewfile.some() && optionalNewfile.get().exists()) {
-				selectAndReveal(optionalNewfile.get());
-			} else {
-				selectAndReveal(project);
+			project = ModelingProjectManager.INSTANCE.createNewModelingProject(projectName, locationPath,
+					true);
+			optionalNewfile = createSemanticResource(project);
+
+		}
+
+		public void enableViewpointsAndReveal() {
+			if (session != null) {
+				session.getTransactionalEditingDomain().getCommandStack()
+						.execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+							@Override
+							protected void doExecute() {
+								ViewpointSelectionCallback callback = new ViewpointSelectionCallback();
+
+								for (Viewpoint vp : ViewpointRegistry.getInstance().getViewpoints()) {
+									if ("UML Structural Modeling".equals(vp.getName())) {
+										callback.selectViewpoint(vp, session);
+									} else if ("UML Behavioral Modeling".equals(vp.getName())) {
+										callback.selectViewpoint(vp, session);
+									}
+								}
+							}
+						});
+				if (optionalNewfile.some() && optionalNewfile.get().exists()) {
+					selectAndReveal(optionalNewfile.get());
+				} else {
+					selectAndReveal(project);
+				}
 			}
 		}
 
 		private Option<IFile> createSemanticResource(final IProject project) {
-			final Session session;
 			Option<ModelingProject> modelingProject = ModelingProject.asModelingProject(project);
 			if (modelingProject.some()) {
 				session = modelingProject.get().getSession();
@@ -148,16 +182,7 @@ public class UMLProjectWizard extends BasicNewResourceWizard {
 							}
 
 							session.addSemanticResource(semanticModelURI, true);
-							ViewpointSelectionCallback callback = new ViewpointSelectionCallback();
 
-							for (Viewpoint vp : ViewpointRegistry.getInstance().getViewpoints()) {
-								if ("UML Structural Modeling".equals(vp.getName())) {
-									callback.selectViewpoint(vp, session);
-								} else if ("UML Behavioral Modeling".equals(vp.getName())) {
-									callback.selectViewpoint(vp, session);
-								}
-
-							}
 							session.save();
 						}
 					});
