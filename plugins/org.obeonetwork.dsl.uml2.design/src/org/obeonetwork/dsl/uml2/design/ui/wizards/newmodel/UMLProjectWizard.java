@@ -48,15 +48,25 @@ public class UMLProjectWizard extends BasicNewProjectResourceWizard {
 	 */
 	public static final String MODEL_FILE_EXTENSION = "uml"; //$NON-NLS-1$
 
-	private UmlModelWizardInitModelPage modelPage;
+	/**
+	 * UML structural viewpoint name defined in odesign.
+	 */
+	public static final String UML_STRUCTURAL_VP = "UML Structural Modeling";
 
-	private WizardNewProjectCreationPage newProjectPage;
+	/**
+	 * UML behavioral viewpoint name defined in odesign.
+	 */
+	public static final String UML_BEHAVIORAL_VP = "UML Behavioral Modeling";
+
+	protected UmlModelWizardInitModelPage modelPage;
+
+	protected WizardNewProjectCreationPage newProjectPage;
 
 	@Override
 	public void addPages() {
 		// we're not calling the super as we want to control the project creation, we don't want the default
 		// page.
-//		 super.addPages();
+		// super.addPages();
 
 		newProjectPage = new WizardNewProjectCreationPage("Project"); //$NON-NLS-1$
 		newProjectPage.setInitialProjectName("");
@@ -78,9 +88,9 @@ public class UMLProjectWizard extends BasicNewProjectResourceWizard {
 			getContainer().run(true, false, runnable);
 			updatePerspective();
 			Display.getDefault().syncExec(new Runnable() {
-				
+
 				public void run() {
-					runnable.enableViewpointsAndReveal();
+					runnable.enableViewpointsAndReveal(UML_STRUCTURAL_VP, UML_BEHAVIORAL_VP);
 				}
 			});
 		} catch (InvocationTargetException e) {
@@ -94,7 +104,7 @@ public class UMLProjectWizard extends BasicNewProjectResourceWizard {
 
 	}
 
-	class InitProject extends WorkspaceModifyOperation {
+	public class InitProject extends WorkspaceModifyOperation {
 
 		private String projectName;
 
@@ -123,7 +133,7 @@ public class UMLProjectWizard extends BasicNewProjectResourceWizard {
 
 		}
 
-		public void enableViewpointsAndReveal() {
+		public void enableViewpointsAndReveal(final String... viewpointsToActivate) {
 			if (session != null) {
 				session.getTransactionalEditingDomain().getCommandStack()
 						.execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
@@ -132,10 +142,9 @@ public class UMLProjectWizard extends BasicNewProjectResourceWizard {
 								ViewpointSelectionCallback callback = new ViewpointSelectionCallback();
 
 								for (Viewpoint vp : ViewpointRegistry.getInstance().getViewpoints()) {
-									if ("UML Structural Modeling".equals(vp.getName())) {
-										callback.selectViewpoint(vp, session);
-									} else if ("UML Behavioral Modeling".equals(vp.getName())) {
-										callback.selectViewpoint(vp, session);
+									for (String viewpoint : viewpointsToActivate) {
+										if (viewpoint.equals(vp.getName()))
+											callback.selectViewpoint(vp, session);
 									}
 								}
 							}
