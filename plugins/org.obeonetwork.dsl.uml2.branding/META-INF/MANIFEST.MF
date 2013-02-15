@@ -5,5 +5,6 @@ Bundle-SymbolicName: org.obeonetwork.dsl.uml2.branding;singleton:=true
 Bundle-Version: 2.1.0.qualifier
 Bundle-Vendor: Obeo Network
 Require-Bundle: org.eclipse.ui.intro.universal,
- org.eclipse.ui.intro;bundle-version="3.4.200"
+ org.eclipse.ui.intro;bundle-version="3.4.200",
+ org.eclipse.ui
 Bundle-Localization: plugin

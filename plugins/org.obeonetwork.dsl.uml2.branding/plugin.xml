@@ -181,6 +181,33 @@
       <property name="preferenceCustomization" value="plugin_customization.ini"/>
     </product>
   </extension>
+   <extension
+         point="org.eclipse.ui.intro">
+      <introProductBinding
+            introId="org.obeonetwork.dsl.uml2.design.welcome.intro"
+            productId="org.obeonetwork.dsl.uml2.branding.product">
+      </introProductBinding>
+      <intro
+            class="org.eclipse.ui.intro.config.CustomizableIntroPart"
+            icon="icons/logo_16.gif"
+            id="org.obeonetwork.dsl.uml2.design.welcome.intro">
+      </intro>
+   </extension>
+   <extension
+         point="org.eclipse.ui.intro.config">
+      <config
+            content="intro/product_welcome_intro.xml"
+            id="org.obeonetwork.dsl.uml2.design.welcome.config"
+            introId="org.obeonetwork.dsl.uml2.design.welcome.intro">
+         <presentation
+               home-page-id="root">
+            <implementation
+                  kind="html"
+                  os="win32,linux,macosx">
+            </implementation>
+         </presentation>
+      </config>
+   </extension>
     
     
 </plugin>

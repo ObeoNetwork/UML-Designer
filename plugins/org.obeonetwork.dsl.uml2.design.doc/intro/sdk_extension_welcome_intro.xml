@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<introContent>
+  <!-- Extension to the SDK Overview Page. -->
+  <extensionContent id="org.eclipse.jdt" name="UML Designer" alt-style="css/umldesigner.properties" style="css/umldesigner.css" path="overview/@">
+    <group id="jdt" style-id="content-group">
+    	<group label="UML Designer" style-id="content-group">
+    		<link style-id="content-link" label="Getting started" url="http://org.eclipse.ui.intro/showPage?id=tutorials" id="umldesigner">
+    			<text>Learn how to use UML Designer by completing the tutorials.</text>
+    		</link>
+    		<link style-id="content-link" label="Find Help" url="http://org.eclipse.ui.intro/showHelpTopic?id=/org.obeonetwork.dsl.uml2.design.doc/doc/UML%20Designer%20User%20Guide.html" id="umldesigner">
+    			<text>See the guide to discover UML Designer features.</text>
+    		</link>
+    		<link style-id="content-link" label="Get Involved" url="http://www.obeonetwork.com/group/uml-designer" id="umldesigner">
+    			<text>The best ways to contribute are by finding, reporting bugs and helping us to improve the documentation.</text>
+    		</link>   	
+     	</group>
+    </group>
+  </extensionContent>
+  
+    <!-- Extension to the SDK Tutorials Page. -->
+  <extensionContent id="org.eclipse.jdt" name="UML Designer" alt-style="css/umldesigner.properties" style="css/umldesigner.css" path="tutorials/@">
+    <group label="UML Designer" id="jdt" style-id="content-group">
+       <link label="Create an UML project" url="http://org.eclipse.ui.intro/showStandby?partId=org.eclipse.platform.cheatsheet&amp;input=org.obeonetwork.dsl.uml2.design.doc.cheatsheets.createProject" id="umldesigner" style-id="content-link">
+          <text>Learn how to create a minimal working UML project that can be enriched later.</text>
+       </link>
+       <link label="Create your first UML Diagram" url="http://org.eclipse.ui.intro/showStandby?partId=org.eclipse.platform.cheatsheet&amp;input=org.obeonetwork.dsl.uml2.design.doc.cheatsheets.createRepresentation" id="umldesigner" style-id="content-link">
+          <text>Learn how to create your first UML diagram.</text>
+       </link>
+       <link label="Import an existing UML model" url="http://org.eclipse.ui.intro/showStandby?partId=org.eclipse.platform.cheatsheet&amp;input=org.obeonetwork.dsl.uml2.design.doc.cheatsheets.importModel" id="umldesigner" style-id="content-link">
+          <text>Learn how to import an existing UML model in UML Designer to create new representations.</text>
+       </link>
+    </group>
+  </extensionContent>
+  
+  <!-- Extension to the SDK Samples Page. -->
+  <extensionContent id="org.eclipse.jdt" name="UML Designer" alt-style="css/umldesigner.properties" style="css/umldesigner.css" path="samples/@">
+    <group label="UML Designer" id="jdt" style-id="content-group">
+       <text style-id="group-description">UML model examples realized with UML Designer.</text>
+       <link label="Travel agency example" url="http://org.eclipse.ui.intro/showStandby?partId=org.eclipse.platform.cheatsheet&amp;input=org.obeonetwork.dsl.uml2.design.doc.cheatsheets.sampleModel" id="umldesigner" style-id="content-link">
+          <text>Set of UML diagrams representing a Travel Agency.</text>
+       </link>
+    </group>
+  </extensionContent>
+  
+    <!-- Extension to the SDK What's New Page. -->
+  <extensionContent id="org.eclipse.jdt" name="UML Designer" alt-style="css/umldesigner.properties" style="css/umldesigner.css" path="whatsnew/@">
+    <group id="jdt" style-id="content-group">
+       <link label="UML Designer" url="http://marketplace.obeonetwork.com/module/uml#release-notes" id="umldesigner" style-id="content-link">
+          <text>Discover the latest features available in this release of UML Designer. (Internet connection required).</text>
+       </link>
+    </group>
+  </extensionContent>
+</introContent>

@@ -1,0 +1,52 @@
+<cheatsheet title="Creating an UML project">
+<intro>
+<description>
+Learn how to create a minimal working UML project that can be enriched later.
+</description>
+</intro>
+<item
+      skip="true"
+      title="Go to the &apos;Modeling&apos; perspective">
+   <description>
+      First make sure you are in the &apos;Modeling&apos; perspective.
+If the &apos;Modeling&apos;perspective is not active, in the title bar select Window &gt; Open Perspective &gt; Other &gt; Modeling
+   </description>
+</item>
+<item title="Create the project" dialog="true" skip="false">
+<description>
+First, you need to create an UML Project.
+</description>
+<subitem
+      label="In the title bar, select File &gt; New &gt; UML Project.">
+</subitem>
+<subitem
+      label="Enter the name of the new project and hit &apos;Next&apos;.">
+</subitem>
+<subitem
+      label="On the next page, select &apos;Model&apos; as type for the UML model root element, and then &apos;Finish&apos;.">
+</subitem>
+</item>
+<item
+      title="Fill the UML Model">
+   <description> 
+     In the &apos;Model Explorer&apos; view a new project was created. The project created is a complete Eclipse plug-in project, and contains :
+   </description>
+   <subitem
+         label="&apos;Project Dependencies&apos;, where you can add external dependencies you rely on, i.e. models you will depend on but which are stored outside of the project."
+         skip="true">
+   </subitem>
+   <subitem
+         label="&apos;xxx.uml&apos; which is the empty semantic UML model."
+         skip="true">
+   </subitem>
+   <subitem
+         label="&apos;representations.aird&apos; which is the top-level representation file for the project."
+         skip="true">
+   </subitem>
+   <subitem
+         label="Refer to the UML Designer User Guide to learn how to create elements and representations."
+         skip="true">
+   </subitem>
+</item>
+
+</cheatsheet>

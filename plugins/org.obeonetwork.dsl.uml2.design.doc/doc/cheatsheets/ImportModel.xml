@@ -1,0 +1,51 @@
+<cheatsheet title="Importing an UML model">
+<intro>
+<description>
+Learn how to import an existing UML model in UML Designer to create new representations.
+</description>
+</intro>
+<item
+      skip="true"
+      title="Go to the &apos;Modeling&apos; perspective">
+   <description>
+      First make sure you are in the &apos;Modeling&apos; perspective.
+If the &apos;Modeling&apos;perspective is not active, in the title bar select Window &gt; Open Perspective &gt; Other &gt; Modeling
+   </description>
+</item>
+<item title="Create the project" dialog="true" skip="false">
+<description>
+First, you need to create an UML Project.
+</description>
+<subitem
+      label="In the title bar, select File &gt; New &gt; UML Project."
+      skip="true">
+</subitem>
+<subitem
+      label="Enter the name of the new project and hit &apos;Next&apos;."
+      skip="true">
+</subitem>
+<subitem
+      label="On the next page, select &apos;Model&apos; as type for the UML model root element, and then &apos;Finish&apos;."
+      skip="true">
+</subitem>
+</item>
+<item
+      title="Import the existing UML model">
+   <description> 
+     In the &apos;Model Explorer&apos; view a new project was created. To create a new representations for existing UML model, you can :
+   </description>
+   <subitem
+         label="Simply drag &amp; drop the models in the Project ."
+         skip="true">
+   </subitem>
+   <subitem
+         label="Or Right-click Project Dependencies item in the &apos;Model Explorer&apos; view and select the &apos;Add Model&apos; action. Then in the wizard select the UML model that must be imported."
+         skip="true">
+   </subitem>
+   <subitem
+         label="The selected file should be an OMG compliant XMI file and should define as extension &apos;.uml&apos;."
+         skip="true">
+   </subitem>
+</item>
+
+</cheatsheet>

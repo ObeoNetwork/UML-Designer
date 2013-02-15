@@ -46,7 +46,7 @@ Visit http://www.obeo.fr
       </win>
    </launcher>
 
-   <intro introId="org.eclipse.ui.intro.universal"/>
+   <intro introId="org.obeonetwork.dsl.uml2.design.welcome.intro"/>
 
    <vm>
       <linux include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6</linux>
@@ -119,10 +119,10 @@ The user is not authorized to install or make a technical means to hide within t
    </plugins>
 
    <features>
-      <feature id="fr.obeo.dsl.feature.uml2"/>                                         
+      <feature id="fr.obeo.dsl.feature.uml2"/>
       <feature id="fr.obeo.dsl.viewpoint.runtime.acceleo2"/>
       <feature id="fr.obeo.dsl.viewpoint.runtime.acceleo"/>
-      <feature id="fr.obeo.dsl.viewpoint.runtime.ide.ui"/>      
+      <feature id="fr.obeo.dsl.viewpoint.runtime.ide.ui"/>
       <feature id="fr.obeo.dsl.viewpoint.runtime"/>
       <feature id="org.eclipse.platform"/>
       <feature id="org.eclipse.uml2"/>

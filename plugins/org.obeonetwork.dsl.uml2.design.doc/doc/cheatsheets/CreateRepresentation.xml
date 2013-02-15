@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Creating your first UML Diagram">
+   <intro>
+      <description>
+         <b>Learn how to create your first UML diagram.</b>  This cheat sheet will guide you through the creation of an UML diagram.
+      </description>
+   </intro>
+   
+   <item
+         title="Create a class diagram">
+      <description>
+         To create your first diagram:
+      </description>
+ <subitem
+            label="In the &apos;Model Explorer&apos; view, select an UML project. If no project exists have a look to the corresponding cheatsheet in the Welcome page &gt; Getting Started &gt; First steps &gt; Create a new project.">
+      </subitem>
+       <subitem
+            label="Right-click on the project and select &apos;Create Representation&apos;">
+      </subitem>
+       <subitem
+            label="In the wizard, expand &apos;UML Structural Modeling&apos;, select &apos;Class Diagram&apos; and then &apos;Next&apos;.">
+      </subitem>
+       <subitem
+            label="On the next page, select &apos;Model&apos; as semantic element to which the diagram will be attached.  In our example the new class diagram will be attached to the root element of the UML model.">
+      </subitem>
+</item>
+   <item
+         title="Set the name of the representation">
+      <description>
+         Give a name to the new class diagram.
+      </description>
+   </item>
+   <item
+         title="New class diagram is opened">
+         <description>
+   A new class diagram editor is opened, you can use the tools in the palette to create new elements. Have a look to the UML Designer User Guide for more detailed information on tools.
+      </description>
+   </item>
+</cheatsheet>

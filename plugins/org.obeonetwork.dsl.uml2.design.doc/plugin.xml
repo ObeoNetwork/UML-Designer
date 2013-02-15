@@ -48,7 +48,11 @@ Contributors:
         point="org.eclipse.ui.intro.configExtension">
         <configExtension
             configId="org.eclipse.ui.intro.universalConfig"
-            content="intro/welcome_intro.xml"/>  
+            content="intro/sdk_extension_welcome_intro.xml"/>
+        <configExtension
+              configId="org.obeonetwork.dsl.uml2.design.welcome.config"
+              content="intro/product_welcome_intro.xml">
+        </configExtension>  
     </extension>
 
     <extension
@@ -57,6 +61,37 @@ Contributors:
             file="doc/contexts.xml"
             plugin="org.obeonetwork.dsl.uml2.design">
         </contexts>
+    </extension>
+    <extension
+          point="org.eclipse.ui.cheatsheets.cheatSheetContent">
+       <cheatsheet
+             category="org.obeonetwork.dsl.uml2"
+             composite="false"
+             contentFile="doc/cheatsheets/CreateProject.xml"
+             id="org.obeonetwork.dsl.uml2.design.doc.cheatsheets.createProject"
+             name="org.obeonetwork.dsl.uml2.design.doc.cheatsheets.createProject">
+       </cheatsheet>
+       <cheatsheet
+             category="org.obeonetwork.dsl.uml2"
+             composite="false"
+             contentFile="doc/cheatsheets/CreateRepresentation.xml"
+             id="org.obeonetwork.dsl.uml2.design.doc.cheatsheets.createRepresentation"
+             name="org.obeonetwork.dsl.uml2.design.doc.cheatsheets.createRepresentation">
+       </cheatsheet>
+       <cheatsheet
+             category="org.obeonetwork.dsl.uml2"
+             composite="false"
+             contentFile="doc/cheatsheets/ImportModel.xml"
+             id="org.obeonetwork.dsl.uml2.design.doc.cheatsheets.importModel"
+             name="org.obeonetwork.dsl.uml2.design.doc.cheatsheets.importModel">
+       </cheatsheet>
+       <cheatsheet
+             category="org.obeonetwork.dsl.uml2"
+             composite="false"
+             contentFile="doc/cheatsheets/SampleModel.xml"
+             id="org.obeonetwork.dsl.uml2.design.doc.cheatsheets.sampleModel"
+             name="org.obeonetwork.dsl.uml2.design.doc.cheatsheets.sampleModel">
+       </cheatsheet>
     </extension>
 
 
