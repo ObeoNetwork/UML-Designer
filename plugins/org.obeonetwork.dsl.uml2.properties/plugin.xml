@@ -151,8 +151,8 @@ Contributors:
          </propertySection>
          <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.StereotypesPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.Class_PropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.Class"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.StereotypesEditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Stereotypes"
                tab="Stereotypes">
          </propertySection>
          <propertySection
@@ -174,12 +174,6 @@ Contributors:
                tab="Attributes">
          </propertySection>
          <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.StereotypesPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.Interface_PropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.Interface"
-               tab="Stereotypes">
-         </propertySection>
-         <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.DataTypePropertiesEditionProvider$EditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.DataType"
@@ -190,12 +184,6 @@ Contributors:
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.DataTypePropertiesEditionProvider$EditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.DataType"
                tab="Attributes">
-         </propertySection>
-         <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.StereotypesPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.DataTypePropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.DataType"
-               tab="Stereotypes">
          </propertySection>
          <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
@@ -210,12 +198,6 @@ Contributors:
                tab="Attributes">
          </propertySection>
          <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.StereotypesPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.PrimitiveTypePropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.PrimitiveType"
-               tab="Stereotypes">
-         </propertySection>
-         <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.EnumerationPropertiesEditionProvider$EditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Enumeration"
@@ -226,12 +208,6 @@ Contributors:
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.EnumerationPropertiesEditionProvider$EditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Enumeration"
                tab="Attributes">
-         </propertySection>
-         <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.StereotypesPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.EnumerationPropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.Enumeration"
-               tab="Stereotypes">
          </propertySection>
          <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
@@ -252,34 +228,16 @@ Contributors:
                tab="Parameters">
          </propertySection>
          <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.StereotypesPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.OperationPropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.Operation"
-               tab="Stereotypes">
-         </propertySection>
-         <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.ParameterPropertiesEditionProvider$EditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Parameter"
                tab="General">
          </propertySection>
          <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.StereotypesPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.ParameterPropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.Parameter"
-               tab="Stereotypes">
-         </propertySection>
-         <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.PropertyPropertiesEditionProvider$EditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Property"
                tab="General">
-         </propertySection>
-         <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.StereotypesPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.PropertyPropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.Property"
-               tab="Stereotypes">
          </propertySection>
          <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
@@ -312,12 +270,6 @@ Contributors:
                tab="General">
          </propertySection>
          <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.StereotypesPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.ComponentPropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.Component"
-               tab="Stereotypes">
-         </propertySection>
-         <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.ConnectorPropertiesEditionProvider$EditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Connector"
@@ -328,12 +280,6 @@ Contributors:
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.PortPropertiesEditionProvider$EditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Port"
                tab="General">
-         </propertySection>
-         <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.StereotypesPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.PortPropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.Port"
-               tab="Stereotypes">
          </propertySection>
          <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
