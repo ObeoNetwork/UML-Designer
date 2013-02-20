@@ -115,8 +115,8 @@ Contributors:
          </propertySection>
          <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.DocumentationPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.Package_PropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.Package"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.DocumentationEditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Documentation"
                tab="Documentation">
          </propertySection>
          <propertySection
@@ -132,12 +132,6 @@ Contributors:
                tab="General">
          </propertySection>
          <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.DocumentationPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.Class_PropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.Class"
-               tab="Documentation">
-         </propertySection>
-         <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.OperationsCustomPropertiesEditionPartForm"
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.Class_PropertiesEditionProvider$EditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Class"
@@ -168,12 +162,6 @@ Contributors:
                tab="General">
          </propertySection>
          <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.DocumentationPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.Interface_PropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.Interface"
-               tab="Documentation">
-         </propertySection>
-         <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.OperationsCustomPropertiesEditionPartForm"
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.Interface_PropertiesEditionProvider$EditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Interface"
@@ -185,7 +173,7 @@ Contributors:
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Interface"
                tab="Attributes">
          </propertySection>
-                  <propertySection
+         <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.RelationshipsPropertiesEditionPartForm"
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.Interface_PropertiesEditionProvider$EditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Interface"
@@ -202,12 +190,6 @@ Contributors:
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.DataTypePropertiesEditionProvider$EditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.DataType"
                tab="General">
-         </propertySection>
-         <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.DocumentationPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.DataTypePropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.DataType"
-               tab="Documentation">
          </propertySection>
          <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.AttributesCustomPropertiesEditionPartForm"
@@ -234,12 +216,6 @@ Contributors:
                tab="General">
          </propertySection>
          <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.DocumentationPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.PrimitiveTypePropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.PrimitiveType"
-               tab="Documentation">
-         </propertySection>
-         <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.AttributesCustomPropertiesEditionPartForm"
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.PrimitiveTypePropertiesEditionProvider$EditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.PrimitiveType"
@@ -262,12 +238,6 @@ Contributors:
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.EnumerationPropertiesEditionProvider$EditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Enumeration"
                tab="General">
-         </propertySection>
-         <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.DocumentationPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.EnumerationPropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.Enumeration"
-               tab="Documentation">
          </propertySection>
          <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.AttributesCustomPropertiesEditionPartForm"
@@ -294,22 +264,10 @@ Contributors:
                tab="General">
          </propertySection>
          <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.DocumentationPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.EnumerationLiteralPropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.EnumerationLiteral"
-               tab="Documentation">
-         </propertySection>
-         <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.OperationPropertiesEditionProvider$EditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Operation"
                tab="General">
-         </propertySection>
-         <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.DocumentationPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.OperationPropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.Operation"
-               tab="Documentation">
          </propertySection>
          <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.ParametersCustomPropertiesEditionPartForm"
@@ -336,12 +294,6 @@ Contributors:
                tab="General">
          </propertySection>
          <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.DocumentationPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.ParameterPropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.Parameter"
-               tab="Documentation">
-         </propertySection>
-         <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.RelationshipsPropertiesEditionPartForm"
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.ParameterPropertiesEditionProvider$EditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Parameter"
@@ -358,12 +310,6 @@ Contributors:
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.PropertyPropertiesEditionProvider$EditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Property"
                tab="General">
-         </propertySection>
-         <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.DocumentationPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.PropertyPropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.Property"
-               tab="Documentation">
          </propertySection>
          <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.RelationshipsPropertiesEditionPartForm"
@@ -384,22 +330,10 @@ Contributors:
                tab="General">
          </propertySection>
          <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.DocumentationPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.GeneralizationPropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.Generalization"
-               tab="Documentation">
-         </propertySection>
-         <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.AssociationPropertiesEditionProvider$EditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Association"
                tab="General">
-         </propertySection>
-         <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.DocumentationPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.AssociationPropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.Association"
-               tab="Documentation">
          </propertySection>
          <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
@@ -408,34 +342,16 @@ Contributors:
                tab="General">
          </propertySection>
          <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.DocumentationPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.AssociationClassPropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.AssociationClass"
-               tab="Documentation">
-         </propertySection>
-         <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.DependencyPropertiesEditionProvider$EditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Dependency"
                tab="General">
          </propertySection>
          <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.DocumentationPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.DependencyPropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.Dependency"
-               tab="Documentation">
-         </propertySection>
-         <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.ComponentPropertiesEditionProvider$EditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Component"
                tab="General">
-         </propertySection>
-         <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.DocumentationPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.ComponentPropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.Component"
-               tab="Documentation">
          </propertySection>
          <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.RelationshipsPropertiesEditionPartForm"
@@ -456,22 +372,10 @@ Contributors:
                tab="General">
          </propertySection>
          <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.DocumentationPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.ConnectorPropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.Connector"
-               tab="Documentation">
-         </propertySection>
-         <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.PortPropertiesEditionProvider$EditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Port"
                tab="General">
-         </propertySection>
-         <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.DocumentationPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.PortPropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.Port"
-               tab="Documentation">
          </propertySection>
          <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.RelationshipsPropertiesEditionPartForm"
@@ -492,22 +396,10 @@ Contributors:
                tab="General">
          </propertySection>
          <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.DocumentationPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.TransitionPropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.Transition"
-               tab="Documentation">
-         </propertySection>
-         <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.StereotypePropertiesEditionProvider$EditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Stereotype"
                tab="General">
-         </propertySection>
-         <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.DocumentationPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.StereotypePropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.Stereotype"
-               tab="Documentation">
          </propertySection>
       </propertySections>
    </extension>
