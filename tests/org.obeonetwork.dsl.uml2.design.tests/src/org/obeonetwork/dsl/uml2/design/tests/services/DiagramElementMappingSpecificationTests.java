@@ -40,6 +40,8 @@ public class DiagramElementMappingSpecificationTests {
 			"PD_Extension",
 			"OD_InstanceSlot", "OD_CompositeSlot", "OD_InstanceSlot_Composition", "OD_ClassType", "OD_EnumerationType", "OD_PrimitiveTypeType", "OD_InterfaceType",
 			"SD_Message",
+			"CS_IR_Port2ProvidedInterface", "CS_IR_SubPort2ProvidedInterface", "CS_U_SubPort2RequiredInterface", "CS_U_Port2RequiredInterface",
+			"CS_C_ProvidedInterface2Port", "CS_C_RequiredInterface2Port", "CS_C_ProvidedInterface2RequiredInterface", "CS_C_Property2Property", "CS_C_SubProvidedInterface2SubRequiredInterface",
 			"stereotypeLink");
 
 	private DiagramElementMapping underTest;
