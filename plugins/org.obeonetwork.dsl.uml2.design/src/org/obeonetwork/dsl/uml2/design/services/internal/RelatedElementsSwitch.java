@@ -11,11 +11,9 @@
 package org.obeonetwork.dsl.uml2.design.services.internal;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
@@ -248,6 +246,7 @@ public class RelatedElementsSwitch extends UMLSwitch<List<EObject>> {
 			if(!relateds.contains(port)) {
 				relateds.add(port);
 				casePort(port);
+				caseConnectableElement(port);
 			}
 		}
 		return super.caseEncapsulatedClassifier(object);
@@ -255,15 +254,25 @@ public class RelatedElementsSwitch extends UMLSwitch<List<EObject>> {
 	
 	@Override
 	public List<EObject> casePort(Port object) {
+		
 		relateds.addAll(object.getRedefinedPorts());
+		relateds.add(object.eContainer());
+
+		return super.casePort(object);
+	}
+	
+	@Override
+	public List<EObject> caseConnectableElement(ConnectableElement object) {
+		
 		for (ConnectorEnd end : object.getEnds()) {
-			EObject eContainer = end.eContainer();
-			if (eContainer!=null && eContainer instanceof Connector && !relateds.contains(eContainer)) {
-				relateds.add(eContainer);
-				caseConnector((Connector)eContainer);
+			EObject connector = end.eContainer();
+			if (connector!=null && connector instanceof Connector && !relateds.contains(connector)) {
+				relateds.add(connector);
+				caseConnector((Connector)connector);
 			}
 		}
-		return super.casePort(object);
+		
+		return super.caseConnectableElement(object);
 	}
 	
 	@Override
@@ -271,13 +280,10 @@ public class RelatedElementsSwitch extends UMLSwitch<List<EObject>> {
 		List<ConnectorEnd> ends = object.getEnds();
 		for (ConnectorEnd end : ends) {
 			ConnectableElement role = end.getRole();
-			if(role!=null && role instanceof Port && !relateds.contains(role)) {
+			if(role!=null && !relateds.contains(role)) {
 				relateds.add(role);
-				casePort((Port)role);
-				EObject eContainer = role.eContainer();
-				if(eContainer!=null && eContainer instanceof EncapsulatedClassifier && !relateds.contains(eContainer)) {
-					relateds.add(eContainer);
-					caseEncapsulatedClassifier((EncapsulatedClassifier)eContainer);
+				if(role instanceof Port) {
+					casePort((Port)role);
 				}
 			}
 		}

@@ -2485,13 +2485,13 @@
         <toolSections name="Comments" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_CommentLink']"/>
       </optionalLayers>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CS_DropOnDiagram']" documentation="Description to edit composite structure diagrams" name="Composite Structure Diagram" titleExpression="&lt;%name%> Composite Structure Diagram" domainClass="uml.PackageableElement" preconditionExpression="[oclIsKindOf(uml::Package) or oclIsKindOf(uml::StructuredClassifier)/]" rootExpression="&lt;%self%>">
+    <ownedRepresentations xsi:type="description:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CS_DropOnDiagram']" documentation="Description to edit composite structure diagrams" name="Composite Structure Diagram" titleExpression="&lt;%name%> Composite Structure Diagram" domainClass="uml.PackageableElement" preconditionExpression="[oclIsKindOf(uml::Package) or oclIsKindOf(uml::StructuredClassifier)/]" rootExpression="&lt;%self%>" enablePopupBars="true">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="Sub StructuredClassifier">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Property'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subNodeMappings[name='CS_SubProvidedInterface'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subNodeMappings[name='CS_SubRequiredInterface'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_SubStructuredClassifier']"/>
       </filters>
       <defaultLayer name="Composite structure">
-        <nodeMappings name="CS_ProvidedInterface" deletionDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete%20Service%20Interface']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="[diagram.oclAsType(DDiagram).ownedDiagramElements.target->filter(uml::StructuredClassifier).ownedAttribute->filter(uml::Port).provided/]" domainClass="uml.Interface">
+        <nodeMappings name="CS_ProvidedInterface" deletionDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='CS_Delete_ServiceInterface']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="[diagram.oclAsType(DDiagram).ownedDiagramElements.target->filter(uml::StructuredClassifier).ownedAttribute->filter(uml::Port).provided/]" domainClass="uml.Interface">
           <style xsi:type="style:BundledImageDescription" labelFormat="italic" showIcon="false" sizeComputationExpression="2" shape="dot">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -2505,7 +2505,7 @@
             </style>
           </conditionnalStyles>
         </nodeMappings>
-        <nodeMappings name="CS_RequiredInterface" deletionDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete%20Service%20Interface']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="[diagram.oclAsType(DDiagram).ownedDiagramElements.target->filter(uml::StructuredClassifier).ownedAttribute->filter(uml::Port).required/]" domainClass="uml.Interface">
+        <nodeMappings name="CS_RequiredInterface" deletionDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='CS_Delete_ServiceInterface']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="[diagram.oclAsType(DDiagram).ownedDiagramElements.target->filter(uml::StructuredClassifier).ownedAttribute->filter(uml::Port).required/]" domainClass="uml.Interface">
           <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/org.obeonetwork.dsl.uml2.design/images/required.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -2557,7 +2557,7 @@
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
           </style>
         </edgeMappings>
-        <edgeMappings name="CS_C_Property2Property" preconditionExpression="[source &lt;> target/]" semanticCandidatesExpression="[diagram.target.eContents(uml::StructuredClassifier).eContents(uml::StructuredClassifier).ownedConnector/]" semanticElements="&lt;%self.getSemanticElements()%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Property']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Property']" targetFinderExpression="[end.role->filter(uml::Property)->at(2)/]" sourceFinderExpression="[end.role->filter(uml::Property)->first()/]" targetExpression="&lt;%self%>" domainClass="uml.Connector" useDomainElement="true">
+        <edgeMappings name="CS_C_Property2Property" preconditionExpression="[source &lt;> target/]" semanticCandidatesExpression="[diagram.target.eContents(uml::StructuredClassifier).ownedConnector/]" semanticElements="&lt;%self.getSemanticElements()%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Property']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Property']" targetFinderExpression="[end.role->filter(uml::Property)/]" sourceFinderExpression="[end.role->filter(uml::Property)->first()/]" targetExpression="&lt;%self%>" domainClass="uml.Connector" useDomainElement="true">
           <style targetArrow="NoDecoration" sizeComputationExpression="2" routingStyle="tree">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
           </style>
@@ -2575,20 +2575,20 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
             </style>
           </borderedNodeMappings>
-          <subNodeMappings name="CS_SubProvidedInterface" deletionDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete%20Service%20Interface']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="[diagram.oclAsType(DDiagram).ownedDiagramElements->filter(DNodeContainer).ownedDiagramElements.target->filter(uml::StructuredClassifier).ownedAttribute->filter(uml::Port).provided->select(interface | self.ownedElement->filter(uml::StructuredClassifier).ownedAttribute->filter(uml::Port).provided->includes(interface))/]" domainClass="uml.Interface">
+          <subNodeMappings name="CS_SubProvidedInterface" deletionDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='CS_Delete_ServiceInterface']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="[diagram.oclAsType(DDiagram).ownedDiagramElements->filter(DNodeContainer).ownedDiagramElements.target->filter(uml::StructuredClassifier).ownedAttribute->filter(uml::Port).provided->select(interface | self.ownedElement->filter(uml::StructuredClassifier).ownedAttribute->filter(uml::Port).provided->includes(interface))/]" domainClass="uml.Interface">
             <style xsi:type="style:BundledImageDescription" labelFormat="italic" showIcon="false" sizeComputationExpression="2" shape="dot">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             </style>
           </subNodeMappings>
-          <subNodeMappings name="CS_SubRequiredInterface" deletionDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Delete%20Service%20Interface']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="[diagram.oclAsType(DDiagram).ownedDiagramElements->filter(DNodeContainer).ownedDiagramElements.target->filter(uml::StructuredClassifier).ownedAttribute->filter(uml::Port).required->select(interface | self.ownedElement->filter(uml::StructuredClassifier).ownedAttribute->filter(uml::Port).required->includes(interface))/]" domainClass="uml.Interface">
+          <subNodeMappings name="CS_SubRequiredInterface" deletionDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='CS_Delete_ServiceInterface']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="[diagram.oclAsType(DDiagram).ownedDiagramElements->filter(DNodeContainer).ownedDiagramElements.target->filter(uml::StructuredClassifier).ownedAttribute->filter(uml::Port).required->select(interface | self.ownedElement->filter(uml::StructuredClassifier).ownedAttribute->filter(uml::Port).required->includes(interface))/]" domainClass="uml.Interface">
             <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/org.obeonetwork.dsl.uml2.design/images/required.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
-          <subContainerMappings name="CS_Property" preconditionExpression="[oclIsTypeOf(Property)/]" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="[oclAsType(uml::StructuredClassifier).ownedAttribute/]" createElements="false" domainClass="uml.Property">
+          <subContainerMappings name="CS_Property" preconditionExpression="[oclIsTypeOf(Property)/]" deletionDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='CS_Delete_Property']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="[oclAsType(uml::StructuredClassifier).ownedAttribute/]" createElements="false" domainClass="uml.Property">
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="9" labelExpression="&lt;%computeUmlLabel()%>" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='lighter%20purple']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -2717,41 +2717,46 @@
               <firstModelOperations xsi:type="tool:For" expression="[views/]" iteratorName="view">
                 <subModelOperations xsi:type="tool:For" expression="[view.target.getRelated()/]" iteratorName="object">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[object/]">
-                    <subModelOperations xsi:type="tool:If" conditionExpression="[object.oclIsKindOf(uml::EncapsulatedClassifier)/]">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="[view.target.oclIsKindOf(uml::EncapsulatedClassifier)/]">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="[object &lt;> view.target and object &lt;> view.target.eContainer() and diagram.diagramElements.target->excludes(object)/]">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="[object.oclIsKindOf(uml::EncapsulatedClassifier)/]">
+                        <subModelOperations xsi:type="tool:If" conditionExpression="[view.target.oclIsKindOf(uml::EncapsulatedClassifier)/]">
+                          <subModelOperations xsi:type="tool:If" conditionExpression="[view.eContainer().oclIsKindOf(viewpoint::DDiagram)/]">
+                            <subModelOperations xsi:type="tool:If" conditionExpression="[view.target.oclAsType(uml::EncapsulatedClassifier).ownedElement->includes(object)/]">
+                              <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_SubStructuredClassifier']" containerViewExpression="[view/]"/>
+                            </subModelOperations>
+                            <subModelOperations xsi:type="tool:If" conditionExpression="[not view.target.oclAsType(uml::EncapsulatedClassifier).ownedElement->includes(object)/]">
+                              <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']" containerViewExpression="[diagram/]"/>
+                            </subModelOperations>
+                          </subModelOperations>
+                          <subModelOperations xsi:type="tool:If" conditionExpression="[view.eContainer().eContainer().oclIsKindOf(viewpoint::DDiagram)/]">
+                            <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_SubStructuredClassifier']" containerViewExpression="[view.eContainer()/]"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="[view.target.oclIsKindOf(uml::Port)/]">
+                          <subModelOperations xsi:type="tool:If" conditionExpression="[view.eContainer().eContainer().oclIsKindOf(viewpoint::DDiagram)/]">
+                            <subModelOperations xsi:type="tool:If" conditionExpression="[not view.target.eContainer(uml::EncapsulatedClassifier).ownedElement->includes(object)/]">
+                              <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']" containerViewExpression="[diagram/]"/>
+                            </subModelOperations>
+                          </subModelOperations>
+                          <subModelOperations xsi:type="tool:If" conditionExpression="[view.eContainer().eContainer().eContainer().oclIsKindOf(viewpoint::DDiagram)/]">
+                            <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_SubStructuredClassifier']" containerViewExpression="[view.eContainer().eContainer()/]"/>
+                          </subModelOperations>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="[view.target.oclIsKindOf(uml::PackageableElement)/]">
+                          <subModelOperations xsi:type="tool:If" conditionExpression="[view.oclIsKindOf(viewpoint::DDiagram)/]">
+                            <subModelOperations xsi:type="tool:If" conditionExpression="[view.target.oclAsType(uml::Element).ownedElement->includes(object)/]">
+                              <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']" containerViewExpression="[view/]"/>
+                            </subModelOperations>
+                          </subModelOperations>
+                        </subModelOperations>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:If" conditionExpression="[object.oclIsKindOf(uml::Property)/]">
                         <subModelOperations xsi:type="tool:If" conditionExpression="[view.eContainer().oclIsKindOf(viewpoint::DDiagram)/]">
-                          <subModelOperations xsi:type="tool:If" conditionExpression="[view.target.oclAsType(uml::EncapsulatedClassifier).ownedElement->includes(object)/]">
-                            <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_SubStructuredClassifier']" containerViewExpression="[view/]"/>
-                          </subModelOperations>
-                          <subModelOperations xsi:type="tool:If" conditionExpression="[not view.target.oclAsType(uml::EncapsulatedClassifier).ownedElement->includes(object)/]">
-                            <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']" containerViewExpression="[diagram/]"/>
-                          </subModelOperations>
+                          <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Property']" containerViewExpression="[view/]"/>
                         </subModelOperations>
                         <subModelOperations xsi:type="tool:If" conditionExpression="[view.eContainer().eContainer().oclIsKindOf(viewpoint::DDiagram)/]">
-                          <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_SubStructuredClassifier']" containerViewExpression="[view/]"/>
+                          <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Property']" containerViewExpression="[view.eContainer()/]"/>
                         </subModelOperations>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="[view.target.oclIsKindOf(uml::Port)/]">
-                        <subModelOperations xsi:type="tool:If" conditionExpression="[view.eContainer().eContainer().oclIsKindOf(viewpoint::DDiagram)/]">
-                          <subModelOperations xsi:type="tool:If" conditionExpression="[not view.target.eContainer(uml::EncapsulatedClassifier).ownedElement->includes(object)/]">
-                            <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']" containerViewExpression="[diagram/]"/>
-                          </subModelOperations>
-                        </subModelOperations>
-                        <subModelOperations xsi:type="tool:If" conditionExpression="[view.eContainer().eContainer().eContainer().oclIsKindOf(viewpoint::DDiagram)/]">
-                          <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_SubStructuredClassifier']" containerViewExpression="[view.eContainer().eContainer()/]"/>
-                        </subModelOperations>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="[view.target.oclIsKindOf(uml::PackageableElement)/]">
-                        <subModelOperations xsi:type="tool:If" conditionExpression="[view.oclIsKindOf(viewpoint::DDiagram)/]">
-                          <subModelOperations xsi:type="tool:If" conditionExpression="[view.target.oclAsType(uml::Element).ownedElement->includes(object)/]">
-                            <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']" containerViewExpression="[view/]"/>
-                          </subModelOperations>
-                        </subModelOperations>
-                      </subModelOperations>
-                    </subModelOperations>
-                    <subModelOperations xsi:type="tool:If" conditionExpression="[object.oclIsKindOf(uml::Property)/]">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="[view.eContainer().oclIsKindOf(viewpoint::DDiagram)/]">
-                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Property']" containerViewExpression="[view/]"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -2762,7 +2767,7 @@
         </toolSections>
         <toolSections name="Node">
           <ownedTools xsi:type="tool:ToolGroup" name="Component">
-            <tools xsi:type="tool:ContainerCreationDescription" name="Component" containerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_SubStructuredClassifier']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Component.gif">
+            <tools xsi:type="tool:ContainerCreationDescription" name="CS_Create_Component" label="Component" containerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_SubStructuredClassifier']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Component.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -2780,7 +2785,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ContainerCreationDescription" name="Class" containerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_SubStructuredClassifier']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Class.gif">
+            <tools xsi:type="tool:ContainerCreationDescription" name="CS_Create_Class" label="Class" containerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_SubStructuredClassifier']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Class.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -2800,7 +2805,7 @@
             </tools>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="Property">
-            <tools xsi:type="tool:ContainerCreationDescription" name="Part" containerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Property']">
+            <tools xsi:type="tool:ContainerCreationDescription" name="CS_Create_Part" label="Part" containerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Property']">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -2810,7 +2815,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ContainerCreationDescription" name="Property" containerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Property']">
+            <tools xsi:type="tool:ContainerCreationDescription" name="CS_Create_Property" label="Property" containerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Property']">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -2820,7 +2825,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool:SelectionWizardDescription" name="Port" precondition="[oclIsKindOf(uml::StructuredClassifier)/]" candidatesExpression="[getValidsForCompositeDiagram()->select(eObject | eObject.oclIsKindOf(uml::Class) or eObject.oclIsKindOf(uml::Component) or eObject.oclIsKindOf(uml::Package))/]" tree="true" rootExpression="[getAllRootsInSession()->filter(uml::Model)/]" childrenExpression="[eContents()->select(eObject | eObject.oclIsKindOf(uml::Class) or eObject.oclIsKindOf(uml::Component) or eObject.oclIsKindOf(uml::Package))/]" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Port.gif">
+          <ownedTools xsi:type="tool:SelectionWizardDescription" name="CS_Add_Port" label="Port" precondition="[oclIsKindOf(uml::StructuredClassifier)/]" candidatesExpression="[getValidsForCompositeDiagram()->select(eObject | eObject.oclIsKindOf(uml::Class) or eObject.oclIsKindOf(uml::Component) or eObject.oclIsKindOf(uml::Package))/]" tree="true" rootExpression="[getAllRootsInSession()->filter(uml::Model)/]" childrenExpression="[eContents()->select(eObject | eObject.oclIsKindOf(uml::Class) or eObject.oclIsKindOf(uml::Component) or eObject.oclIsKindOf(uml::Package))/]" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Port.gif" windowTitle="Select the port type">
             <element name="element"/>
             <containerView name="containerView"/>
             <container name="container"/>
@@ -2832,7 +2837,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:SelectionWizardDescription" name="Add Required Service" label="Required Service" precondition="[oclIsKindOf(uml::Port) and oclAsType(uml::Port).type.oclIsTypeOf(uml::Class)/]" candidatesExpression="[getValidsForCompositeDiagram()->select(eObject | eObject.oclIsKindOf(uml::Classifier) or eObject.oclIsKindOf(uml::Package))/]" multiple="true" tree="true" rootExpression="[getAllRootsInSession()->filter(uml::Model)/]" childrenExpression="[eContents()->select(eObject | eObject.oclIsKindOf(uml::Classifier) or eObject.oclIsKindOf(uml::Package))/]" message="Select a required interface" iconPath="/org.obeonetwork.dsl.uml2.design/icons/RequiredService.gif">
+          <ownedTools xsi:type="tool:SelectionWizardDescription" name="CS_Add_Required_Service" label="Required Service" precondition="[oclIsKindOf(uml::Port) and oclAsType(uml::Port).type.oclIsTypeOf(uml::Class)/]" candidatesExpression="[getValidsForCompositeDiagram()->select(eObject | eObject.oclIsKindOf(uml::Classifier) or eObject.oclIsKindOf(uml::Package))/]" multiple="true" tree="true" rootExpression="[getAllRootsInSession()->filter(uml::Model)/]" childrenExpression="[eContents()->select(eObject |(eObject.oclIsKindOf(uml::Classifier) or eObject.oclIsKindOf(uml::Package)) and (eObject.oclIsKindOf(uml::Interface) or  eObject.eAllContents(uml::Interface)->notEmpty()))/]" message="Select a required interface on a port" iconPath="/org.obeonetwork.dsl.uml2.design/icons/RequiredService.gif" windowTitle="Select the required interface">
             <element name="elements"/>
             <containerView name="containerView"/>
             <container name="container"/>
@@ -2842,7 +2847,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:SelectionWizardDescription" name="Add Provided Service" label="Provided Service" precondition="[oclIsKindOf(uml::Port) and oclAsType(uml::Port).type.oclIsTypeOf(uml::Class)/]" candidatesExpression="[getValidsForCompositeDiagram()->select(eObject | eObject.oclIsKindOf(uml::Classifier) or eObject.oclIsKindOf(uml::Package))/]" multiple="true" tree="true" rootExpression="[getAllRootsInSession()->filter(uml::Model)/]" childrenExpression="[eContents()->select(eObject | eObject.oclIsKindOf(uml::Classifier) or eObject.oclIsKindOf(uml::Package))/]" message="Select a provided interface" iconPath="/org.obeonetwork.dsl.uml2.design/icons/ProvidedService.gif">
+          <ownedTools xsi:type="tool:SelectionWizardDescription" name="CS_Add_ProvidedService" label="Provided Service" precondition="[oclIsKindOf(uml::Port) and oclAsType(uml::Port).type.oclIsTypeOf(uml::Class)/]" candidatesExpression="[getValidsForCompositeDiagram()->select(eObject | eObject.oclIsKindOf(uml::Classifier) or eObject.oclIsKindOf(uml::Package))/]" multiple="true" tree="true" rootExpression="[getAllRootsInSession()->filter(uml::Model)/]" childrenExpression="[eContents()->select(eObject |(eObject.oclIsKindOf(uml::Classifier) or eObject.oclIsKindOf(uml::Package)) and (eObject.oclIsKindOf(uml::Interface) or  eObject.eAllContents(uml::Interface)->notEmpty()))/]" message="Select a provided interface on a port" iconPath="/org.obeonetwork.dsl.uml2.design/icons/ProvidedService.gif" windowTitle="Select the provided interface">
             <element name="elements"/>
             <containerView name="containerView"/>
             <container name="container"/>
@@ -2858,17 +2863,37 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete Service Interface">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="CS_Delete_ServiceInterface">
             <element name="interface"/>
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.oclAsType(uml::Port).type.oclAsType(uml::Class).clientDependency->filter(uml::InterfaceRealization).removeSupplier(interface)/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[interface/]">
+                <subModelOperations xsi:type="tool:For" expression="[elementView.oclAsType(viewpoint::DNode).incomingEdges.target->filter(uml::Dependency)/]" iteratorName="dependency">
+                  <subModelOperations xsi:type="tool:RemoveElement"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:For" expression="[elementView.oclAsType(viewpoint::DNode).incomingEdges.target->filter(uml::Connector)/]" iteratorName="connector">
+                  <subModelOperations xsi:type="tool:RemoveElement"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="CS_Delete_Property">
+            <element name="property"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[property/]">
+                <subModelOperations xsi:type="tool:For" expression="[property.oclAsType(uml::ConnectableElement).end.eContainer(uml::Connector)->flatten()/]" iteratorName="connector">
+                  <subModelOperations xsi:type="tool:RemoveElement"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:RemoveElement"/>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
         </toolSections>
         <toolSections name="Edge">
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Create Connector" label="ConnectorJava" precondition="[if preSource.oclIsTypeOf(uml::Interface) and preTarget.oclIsTypeOf(uml::Interface) then preSource.oclAsType(uml::Interface).conformsTo(preTarget.oclAsType(uml::Interface)) else true endif/]" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@edgeMappings[name='CS_C_ProvidedInterface2RequiredInterface'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@edgeMappings[name='CS_C_Property2Property'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@edgeMappings[name='CS_C_RequiredInterface2Port'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@edgeMappings[name='CS_C_ProvidedInterface2Port'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@edgeMappings[name='CS_C_SubProvidedInterface2SubRequiredInterface']">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Create Connector" label="ConnectorJava" precondition="[checkConnectable(preSource, preTarget)/]" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@edgeMappings[name='CS_C_ProvidedInterface2RequiredInterface'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@edgeMappings[name='CS_C_Property2Property'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@edgeMappings[name='CS_C_RequiredInterface2Port'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@edgeMappings[name='CS_C_ProvidedInterface2Port'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@edgeMappings[name='CS_C_SubProvidedInterface2SubRequiredInterface']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>

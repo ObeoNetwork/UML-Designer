@@ -18,6 +18,7 @@ import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.ConnectorEnd;
 import org.eclipse.uml2.uml.Dependency;
@@ -32,6 +33,7 @@ import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.Usage;
 
 import fr.obeo.dsl.common.tools.api.util.Option;
+import fr.obeo.dsl.viewpoint.AbstractDNode;
 import fr.obeo.dsl.viewpoint.DEdge;
 import fr.obeo.dsl.viewpoint.DNode;
 import fr.obeo.dsl.viewpoint.DNodeContainer;
@@ -126,6 +128,60 @@ public final class ConnectorServices {
 	}
 	
 	/**
+	 * check that source and target are connectable
+	 * @param source
+	 * @param target
+	 * @return
+	 */
+	public boolean checkConnectable(Interface source, Interface target) {
+		return source.conformsTo(target);
+	}
+	
+	/**
+	 * check that source and target are connectable
+	 * @param source
+	 * @param target
+	 * @return
+	 */
+	public boolean checkConnectable(Interface source, Port target) {
+		
+		boolean res = false;
+		
+		List<Dependency> clientDependencies = target.getType().getClientDependencies();
+		for (Dependency dependency : clientDependencies) {
+			List<NamedElement> suppliers = dependency.getSuppliers();
+			for (NamedElement supplier : suppliers) {
+				if(supplier instanceof Classifier && source.conformsTo((Classifier)supplier)) {
+					res = true;
+					break;
+				}
+			}
+			if(res) {
+				break;
+			}
+		}
+		
+		return res;
+	}
+	
+	
+	public boolean checkConnectable(Property source, Property target) {
+		return !source.equals(target);
+	}
+	public boolean checkConnectable(Interface source, Property target) {
+		return false;
+	}
+	public boolean checkConnectable(Property source, Interface target) {
+		return false;
+	}
+	public boolean checkConnectable(Port source, Property target) {
+		return false;
+	}
+	public boolean checkConnectable(Property source, Port target) {
+		return false;
+	}
+	
+	/**
 	 * Connect two elements with a connector.
 	 * 
 	 * Enable features :
@@ -136,21 +192,21 @@ public final class ConnectorServices {
 	 * @param sourceView the current source view
 	 * @param targetView the current target view
 	 */
-	public void createConnector(DNode sourceView, DNode targetView) {
+	public void createConnector(AbstractDNode sourceView, AbstractDNode targetView) {
 
 		final EObject source = sourceView.getTarget();
 		final EObject target = targetView.getTarget();
 
-		if (source instanceof Interface) {
+		if (source instanceof Interface && sourceView instanceof DNode) {
 			
-			final StructuredClassifier structuredClassifier = getFirstStructuredClassifierRelated2InterfaceView(sourceView);
+			final StructuredClassifier structuredClassifier = getFirstStructuredClassifierRelated2InterfaceView((DNode)sourceView);
 			
-			if (target instanceof Interface) {
+			if (target instanceof Interface && targetView instanceof DNode) {
 				// Make a new connector From Interface to Interface
-				connectInterface2Interface(structuredClassifier, sourceView, (Interface)source, targetView, (Interface)target);
-			} else if (target instanceof Port) {
+				connectInterface2Interface(structuredClassifier, (DNode)sourceView, (Interface)source, (DNode)targetView, (Interface)target);
+			} else if (target instanceof Port && targetView instanceof DNode) {
 				// Make a new connector From Interface to Port
-				connectInterface2Port(structuredClassifier, sourceView, (Interface)source, targetView, (Port)target);
+				connectInterface2Port(structuredClassifier, (DNode)sourceView, (Interface)source, (DNode)targetView, (Port)target);
 			}
 		} else if (source instanceof Property && target instanceof Property) {
 
@@ -171,7 +227,7 @@ public final class ConnectorServices {
 	 */
 	private StructuredClassifier getFirstStructuredClassifierRelated2InterfaceView(DNode interfaceView) {
 		
-		// [sourceView.oclAsType(viewpoint::DNode).incomingEdges.sourceNode.eContainer(viewpoint::DNodeContainer).target->flatten()->first()/]
+		// [sourceView.oclAsType(viewpoint::AbstractDNode).incomingEdges.sourceNode.eContainer(viewpoint::DNodeContainer).target->flatten()->first()/]
 		final List<DEdge> incomingEdges = interfaceView.getIncomingEdges();
 		for (DEdge dEdge : incomingEdges) {
 			final EdgeTarget sourceNode = dEdge.getSourceNode();
@@ -207,7 +263,7 @@ public final class ConnectorServices {
 		incomingEdges.addAll(targetView.getIncomingEdges());
 		
 		for (DEdge dEdge : incomingEdges) {
-			final DNode sourceNode = (DNode)dEdge.getSourceNode();
+			final AbstractDNode sourceNode = (AbstractDNode)dEdge.getSourceNode();
 			final EObject targetSourceNode = sourceNode.getTarget();
 			if (targetSourceNode instanceof Port) {
 				final ConnectorEnd connectorEnd = connector.createEnd();
@@ -266,7 +322,7 @@ public final class ConnectorServices {
 		
 		// add ConnectorEnd
 		for (DEdge dEdge : incomingEdges) {
-			final DNode sourceNode = (DNode)dEdge.getSourceNode();
+			final AbstractDNode sourceNode = (AbstractDNode)dEdge.getSourceNode();
 			final EObject targetSourceNode = sourceNode.getTarget();
 			if (targetSourceNode instanceof Port) {
 				final ConnectorEnd connectorEnd = connector.createEnd();
