@@ -18,10 +18,10 @@ import java.util.Set;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.ConnectorEnd;
 import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.InterfaceRealization;
 import org.eclipse.uml2.uml.NamedElement;
@@ -134,7 +134,23 @@ public final class ConnectorServices {
 	 * @return
 	 */
 	public boolean checkConnectable(Interface source, Interface target) {
-		return source.conformsTo(target);
+		
+		boolean res = source.conformsTo(target);
+		if(!res) {
+			List<Generalization> generalizations = target.getGeneralizations();
+			
+			
+			for (Generalization generalization : generalizations) {
+				if(generalization.getGeneral() instanceof Interface) {
+					res = checkConnectable(source, (Interface)generalization.getGeneral());
+				}
+				if(res) {
+					break;
+				}
+			}
+		}
+		
+		return res;
 	}
 	
 	/**
@@ -150,9 +166,12 @@ public final class ConnectorServices {
 		List<Dependency> clientDependencies = target.getType().getClientDependencies();
 		for (Dependency dependency : clientDependencies) {
 			List<NamedElement> suppliers = dependency.getSuppliers();
-			for (NamedElement supplier : suppliers) {
-				if(supplier instanceof Classifier && source.conformsTo((Classifier)supplier)) {
-					res = true;
+			for (NamedElement interfaceSupplier : suppliers) {
+				if(interfaceSupplier instanceof Interface) {
+					res = checkConnectable(source, (Interface)interfaceSupplier);
+				}
+				
+				if(res) {
 					break;
 				}
 			}
@@ -256,6 +275,7 @@ public final class ConnectorServices {
 	private Connector connectInterface2Interface(StructuredClassifier structuredClassifier, DNode sourceView, Interface iSource, DNode targetView, Interface iTarget) {
 
 		final Connector connector = createConnector(structuredClassifier, (Interface)iSource, (Interface)iTarget);
+		final EList<Dependency> dependencies = connector.getClientDependencies();
 
 		// add ConnectorEnd
 		final Set<DEdge> incomingEdges = new HashSet<DEdge>();
@@ -269,33 +289,20 @@ public final class ConnectorServices {
 				final ConnectorEnd connectorEnd = connector.createEnd();
 				connectorEnd.setRole((Port)targetSourceNode);
 			}
-		}
-
-		// set Dependencies
-		// [connector.eContainer(uml::Package).eAllContents(uml::Dependency)
-		final Option<EObject> packageContext = new EObjectQuery(connector).getFirstAncestorOfType(UMLFactory.eINSTANCE.getUMLPackage().getPackage());
-		if (packageContext.some()) {
-			final Package eContainerPackage = (Package)packageContext.get();
 			
-			final EList<Dependency> dependencies = connector.getClientDependencies();
-			final Iterator<EObject> eAllContents = eContainerPackage.eAllContents();
-			while (eAllContents.hasNext()) {
-				final EObject eObject = (EObject)eAllContents.next();
-				if (eObject instanceof Dependency) {
-					final Dependency dependency = (Dependency)eObject;
-					//select(aDependency : uml::Dependency | ((aDependency.oclIsKindOf(uml::Usage) or aDependency.oclIsKindOf(uml::InterfaceRealization)) and
-					if (dependency instanceof Usage) {
-						//  (aDependency.supplier->includes(source) or (aDependency.supplier->includes(target))) ))/]
-						final List<NamedElement> suppliers = dependency.getSuppliers();
-						if (suppliers.contains(iSource)) {
-							dependencies.add(dependency);
-						}
-					} else if (dependency instanceof InterfaceRealization) {
-						//  (aDependency.supplier->includes(source) or (aDependency.supplier->includes(target))) ))/]
-						final List<NamedElement> suppliers = dependency.getSuppliers();
-						if (suppliers.contains(iTarget)) {
-							dependencies.add(dependency);
-						}
+			EObject eObject = dEdge.getTarget();
+			
+			if (eObject instanceof Dependency) {
+				final Dependency dependency = (Dependency)eObject;
+				if (dependency instanceof Usage) {
+					final List<NamedElement> suppliers = dependency.getSuppliers();
+					if (suppliers.contains(iTarget)) {
+						dependencies.add(dependency);
+					}
+				} else if (dependency instanceof InterfaceRealization) {
+					final List<NamedElement> suppliers = dependency.getSuppliers();
+					if (suppliers.contains(iSource)) {
+						dependencies.add(dependency);
 					}
 				}
 			}
