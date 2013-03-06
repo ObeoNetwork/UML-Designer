@@ -35,6 +35,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ml1Y8GCnEeKd8d7WgZ31eQ" name="attributes" views="_hKXOwGCnEeKd8d7WgZ31eQ">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//StructuredClassifier/ownedAttribute"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_mgwLgYaBEeK4Q5tTZetd-w" name="active" views="_-hRqUFwFEeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Class/isActive"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Class"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_urjyoF4lEeKttZbtn302Pg" name="Interface" views="_Kt6kIFv3EeKZBNASYbV97A _55BGsF8vEeKd8d7WgZ31eQ _fgTgsGCnEeKd8d7WgZ31eQ">
@@ -421,6 +424,9 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_FrxtUF4jEeKttZbtn302Pg" name="icon" views="_L0KA0F4jEeKttZbtn302Pg">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Stereotype/icon"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_LDUFUIaJEeKz6PgDC7_CIQ" name="active" views="_-hRqUFwFEeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Class/isActive"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Stereotype"/>
       </bindings>

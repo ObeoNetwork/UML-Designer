@@ -100,12 +100,15 @@ public class StereotypePropertiesEditionComponent extends SinglePartPropertiesEd
 			generalPart.setLeaf(stereotype.isLeaf());
 			
 			// FIXME NO VALID CASE INTO template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : icon, General, Stereotype.
+			generalPart.setActive(stereotype.isActive());
+			
 			// init filters
 			
 			
 			
 			
 			// FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : icon, General, Stereotype.
+			
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -113,6 +116,7 @@ public class StereotypePropertiesEditionComponent extends SinglePartPropertiesEd
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -141,6 +145,9 @@ public class StereotypePropertiesEditionComponent extends SinglePartPropertiesEd
 		if (editorKey == UmlViewsRepository.General.icon) {
 			return UMLPackage.eINSTANCE.getStereotype_Icon();
 		}
+		if (editorKey == UmlViewsRepository.General.active) {
+			return UMLPackage.eINSTANCE.getClass_IsActive();
+		}
 		return super.associatedFeature(editorKey);
 	}
 
@@ -166,6 +173,9 @@ public class StereotypePropertiesEditionComponent extends SinglePartPropertiesEd
 		}
 		if (UmlViewsRepository.General.icon == event.getAffectedEditor()) {
 			// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : icon, General, Stereotype.
+		}
+		if (UmlViewsRepository.General.active == event.getAffectedEditor()) {
+			stereotype.setIsActive((Boolean)event.getNewValue());
 		}
 	}
 
@@ -194,6 +204,9 @@ public class StereotypePropertiesEditionComponent extends SinglePartPropertiesEd
 				generalPart.setLeaf((Boolean)msg.getNewValue());
 			
 			// FIXME INVALID CASE INTO template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : icon, General, Stereotype.
+			if (UMLPackage.eINSTANCE.getClass_IsActive().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.active))
+				generalPart.setActive((Boolean)msg.getNewValue());
+			
 			
 		}
 	}
@@ -210,7 +223,8 @@ public class StereotypePropertiesEditionComponent extends SinglePartPropertiesEd
 			UMLPackage.eINSTANCE.getNamedElement_Visibility(),
 			UMLPackage.eINSTANCE.getClassifier_IsAbstract(),
 			UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf(),
-			UMLPackage.eINSTANCE.getStereotype_Icon()		);
+			UMLPackage.eINSTANCE.getStereotype_Icon(),
+			UMLPackage.eINSTANCE.getClass_IsActive()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -219,7 +233,7 @@ public class StereotypePropertiesEditionComponent extends SinglePartPropertiesEd
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#mustBeComposed(java.lang.Object, int)
 	 */
 	public boolean mustBeComposed(Object key, int kind) {
-		return key == UmlViewsRepository.General.name || key == UmlViewsRepository.General.visibility || key == UmlViewsRepository.General.Qualifiers.abstract_ || key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.icon || key == UmlViewsRepository.General.Qualifiers.class;
+		return key == UmlViewsRepository.General.name || key == UmlViewsRepository.General.visibility || key == UmlViewsRepository.General.Qualifiers.abstract_ || key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.icon || key == UmlViewsRepository.General.active || key == UmlViewsRepository.General.Qualifiers.class;
 	}
 
 	/**
@@ -229,7 +243,7 @@ public class StereotypePropertiesEditionComponent extends SinglePartPropertiesEd
 	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == UmlViewsRepository.General.Qualifiers.abstract_ || key == UmlViewsRepository.General.Qualifiers.leaf;
+		return key == UmlViewsRepository.General.Qualifiers.abstract_ || key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.active;
 	}
 
 	/**
@@ -269,6 +283,13 @@ public class StereotypePropertiesEditionComponent extends SinglePartPropertiesEd
 						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), newValue);
+				}
+				if (UmlViewsRepository.General.active == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getClass_IsActive().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getClass_IsActive().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

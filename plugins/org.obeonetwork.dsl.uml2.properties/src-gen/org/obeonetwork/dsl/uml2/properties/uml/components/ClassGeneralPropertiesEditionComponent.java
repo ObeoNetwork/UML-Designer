@@ -98,7 +98,10 @@ public class ClassGeneralPropertiesEditionComponent extends SinglePartProperties
 			
 			generalPart.setLeaf(class_.isLeaf());
 			
+			generalPart.setActive(class_.isActive());
+			
 			// init filters
+			
 			
 			
 			
@@ -110,6 +113,7 @@ public class ClassGeneralPropertiesEditionComponent extends SinglePartProperties
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -134,6 +138,9 @@ public class ClassGeneralPropertiesEditionComponent extends SinglePartProperties
 		if (editorKey == UmlViewsRepository.General.Qualifiers.leaf) {
 			return UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf();
 		}
+		if (editorKey == UmlViewsRepository.General.active) {
+			return UMLPackage.eINSTANCE.getClass_IsActive();
+		}
 		return super.associatedFeature(editorKey);
 	}
 
@@ -156,6 +163,9 @@ public class ClassGeneralPropertiesEditionComponent extends SinglePartProperties
 		}
 		if (UmlViewsRepository.General.Qualifiers.leaf == event.getAffectedEditor()) {
 			class_.setIsLeaf((Boolean)event.getNewValue());
+		}
+		if (UmlViewsRepository.General.active == event.getAffectedEditor()) {
+			class_.setIsActive((Boolean)event.getNewValue());
 		}
 	}
 
@@ -183,6 +193,9 @@ public class ClassGeneralPropertiesEditionComponent extends SinglePartProperties
 			if (UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.Qualifiers.leaf))
 				generalPart.setLeaf((Boolean)msg.getNewValue());
 			
+			if (UMLPackage.eINSTANCE.getClass_IsActive().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.active))
+				generalPart.setActive((Boolean)msg.getNewValue());
+			
 			
 		}
 	}
@@ -198,7 +211,8 @@ public class ClassGeneralPropertiesEditionComponent extends SinglePartProperties
 			UMLPackage.eINSTANCE.getNamedElement_Name(),
 			UMLPackage.eINSTANCE.getNamedElement_Visibility(),
 			UMLPackage.eINSTANCE.getClassifier_IsAbstract(),
-			UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf()		);
+			UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf(),
+			UMLPackage.eINSTANCE.getClass_IsActive()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -207,7 +221,7 @@ public class ClassGeneralPropertiesEditionComponent extends SinglePartProperties
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#mustBeComposed(java.lang.Object, int)
 	 */
 	public boolean mustBeComposed(Object key, int kind) {
-		return key == UmlViewsRepository.General.name || key == UmlViewsRepository.General.visibility || key == UmlViewsRepository.General.Qualifiers.abstract_ || key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.Qualifiers.class;
+		return key == UmlViewsRepository.General.name || key == UmlViewsRepository.General.visibility || key == UmlViewsRepository.General.Qualifiers.abstract_ || key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.active || key == UmlViewsRepository.General.Qualifiers.class;
 	}
 
 	/**
@@ -217,7 +231,7 @@ public class ClassGeneralPropertiesEditionComponent extends SinglePartProperties
 	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == UmlViewsRepository.General.Qualifiers.abstract_ || key == UmlViewsRepository.General.Qualifiers.leaf;
+		return key == UmlViewsRepository.General.Qualifiers.abstract_ || key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.active;
 	}
 
 	/**
@@ -257,6 +271,13 @@ public class ClassGeneralPropertiesEditionComponent extends SinglePartProperties
 						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), newValue);
+				}
+				if (UmlViewsRepository.General.active == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getClass_IsActive().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getClass_IsActive().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
