@@ -46,7 +46,9 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.views.properties.tabbed.ITabbedPropertyConstants;
 
 /**
- * ReferencesTable for which we add a method to disable the buttons.
+ * FIXME With next EEF version just have to extends ReferencTEable instead of
+ * copy/pasting the code. ReferencesTable for which we add a method to disable
+ * the buttons.
  * 
  * @see ReferencesTable
  */
@@ -722,8 +724,12 @@ public class CustomReferencesTable implements IPropertiesFilteredWidget {
 		public void handleEvent(Event event) {
 			if (table.getSelection().length > 0) {
 				TableItem item = table.getSelection()[0];
-				// Edit
-				referencesTableListener.handleEdit((EObject) item.getData());
+
+				if (item.getData() instanceof EObject) {
+					// Edit
+					referencesTableListener
+							.handleEdit((EObject) item.getData());
+				}
 			}
 		}
 	}
