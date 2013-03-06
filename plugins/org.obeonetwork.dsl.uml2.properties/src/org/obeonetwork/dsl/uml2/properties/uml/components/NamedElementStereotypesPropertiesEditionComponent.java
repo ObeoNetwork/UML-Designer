@@ -241,6 +241,16 @@ public class NamedElementStereotypesPropertiesEditionComponent extends
 	public void remove(EObject valueToRemove) {
 		((NamedElement) semanticObject)
 				.unapplyStereotype((Stereotype) valueToRemove);
+
+		// FIXME Force the refresh of the diagram. If the semantic element is
+		// not updated, the diagram is not refreshed and then the removed
+		// stereotype still appears on the class even if does not exists anymore
+		// in the semantic model. After a manual refresh, the removed stereotype
+		// disappears. The workaround is to really "update" the semantic element
+		// by changing its name and re-setting it immediately
+		String name = ((NamedElement) semanticObject).getName();
+		((NamedElement) semanticObject).setName("Dummy");
+		((NamedElement) semanticObject).setName(name);
 	}
 
 	/**
