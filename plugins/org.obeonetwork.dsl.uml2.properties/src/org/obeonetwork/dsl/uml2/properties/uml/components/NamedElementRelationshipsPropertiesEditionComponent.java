@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.components;
 
+import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -20,9 +21,12 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.OperationsTableSettings;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.RelationshipsOriginatingTableSettings;
@@ -145,6 +149,23 @@ public class NamedElementRelationshipsPropertiesEditionComponent extends
 					((OperationsTableSettings) relationshipsOriginatingSettings)
 							.addToReference((EObject) newValue);
 				}
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				AdapterFactory adapterFactory = getEditingContext()
+						.getAdapterFactory();
+				EObject element = (EObject) newValue;
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(
+						getEditingContext(), this, element, getEditingContext()
+								.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider) adapterFactory
+						.adapt(element, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider
+							.getPolicy(context);
+					if (policy != null) {
+						policy.execute();
+					}
+				}
+
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 				if (newValue instanceof Relationship)
 					((OperationsTableSettings) relationshipsOriginatingSettings)
@@ -158,6 +179,23 @@ public class NamedElementRelationshipsPropertiesEditionComponent extends
 					((OperationsTableSettings) relationshipsTargetingSettings)
 							.addToReference((EObject) newValue);
 				}
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				AdapterFactory adapterFactory = getEditingContext()
+						.getAdapterFactory();
+				EObject element = (EObject) newValue;
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(
+						getEditingContext(), this, element, getEditingContext()
+								.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider) adapterFactory
+						.adapt(element, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider
+							.getPolicy(context);
+					if (policy != null) {
+						policy.execute();
+					}
+				}
+
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 				((OperationsTableSettings) relationshipsTargetingSettings)
 						.removeFromReference((EObject) newValue);

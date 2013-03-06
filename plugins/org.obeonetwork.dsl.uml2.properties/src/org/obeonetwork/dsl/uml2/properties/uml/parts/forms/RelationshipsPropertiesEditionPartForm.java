@@ -19,11 +19,8 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
-import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
-import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
@@ -48,9 +45,9 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.views.properties.tabbed.ISection;
 import org.eclipse.uml2.uml.Relationship;
+import org.obeonetwork.dsl.uml2.properties.service.TableColumnService;
 import org.obeonetwork.dsl.uml2.properties.service.TableLabelService;
 import org.obeonetwork.dsl.uml2.properties.service.TableLabelService.TableColumnName;
-import org.obeonetwork.dsl.uml2.properties.service.TableColumnService;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.CustomUmlViewsRepository;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.RelationshipsPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
@@ -305,18 +302,13 @@ public class RelationshipsPropertiesEditionPartForm extends
 	}
 
 	protected void editRelationshipsOriginating(EObject element) {
-		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(
-				propertiesEditionComponent.getEditingContext(),
-				propertiesEditionComponent, element, adapterFactory);
-		PropertiesEditingProvider provider = (PropertiesEditingProvider) adapterFactory
-				.adapt(element, PropertiesEditingProvider.class);
-		if (provider != null) {
-			PropertiesEditingPolicy policy = provider.getPolicy(context);
-			if (policy != null) {
-				policy.execute();
-				relationshipsOriginating.refresh();
-			}
-		}
+		propertiesEditionComponent
+				.firePropertiesChanged(new PropertiesEditionEvent(
+						RelationshipsPropertiesEditionPartForm.this,
+						CustomUmlViewsRepository.Relationships.relationshipsOriginating,
+						PropertiesEditionEvent.COMMIT,
+						PropertiesEditionEvent.EDIT, null, element));
+		relationshipsOriginating.refresh();
 	}
 
 	protected Composite createRelationshipsTargetingReferencesTable(
@@ -481,18 +473,13 @@ public class RelationshipsPropertiesEditionPartForm extends
 	}
 
 	protected void editRelationshipsTargeting(EObject element) {
-		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(
-				propertiesEditionComponent.getEditingContext(),
-				propertiesEditionComponent, element, adapterFactory);
-		PropertiesEditingProvider provider = (PropertiesEditingProvider) adapterFactory
-				.adapt(element, PropertiesEditingProvider.class);
-		if (provider != null) {
-			PropertiesEditingPolicy policy = provider.getPolicy(context);
-			if (policy != null) {
-				policy.execute();
-				relationshipsTargeting.refresh();
-			}
-		}
+		propertiesEditionComponent
+				.firePropertiesChanged(new PropertiesEditionEvent(
+						RelationshipsPropertiesEditionPartForm.this,
+						CustomUmlViewsRepository.Relationships.relationshipsTargeting,
+						PropertiesEditionEvent.COMMIT,
+						PropertiesEditionEvent.EDIT, null, element));
+		relationshipsTargeting.refresh();
 	}
 
 	/**

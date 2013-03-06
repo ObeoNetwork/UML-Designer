@@ -13,6 +13,7 @@ package org.obeonetwork.dsl.uml2.properties.uml.components;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -23,9 +24,12 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ITableOperations;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.OperationsTableSettings;
 import org.eclipse.uml2.uml.NamedElement;
@@ -115,6 +119,7 @@ public class NamedElementStereotypesPropertiesEditionComponent extends
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
+		Object newValue = event.getNewValue();
 		if (CustomUmlViewsRepository.Stereotypes.appliedStereotypes == event
 				.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
@@ -125,6 +130,22 @@ public class NamedElementStereotypesPropertiesEditionComponent extends
 			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
 				((OperationsTableSettings) appliedStereotypesSettings)
 						.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				AdapterFactory adapterFactory = getEditingContext()
+						.getAdapterFactory();
+				EObject element = (EObject) newValue;
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(
+						getEditingContext(), this, element, getEditingContext()
+								.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider) adapterFactory
+						.adapt(element, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider
+							.getPolicy(context);
+					if (policy != null) {
+						policy.execute();
+					}
+				}
 			}
 		}
 	}

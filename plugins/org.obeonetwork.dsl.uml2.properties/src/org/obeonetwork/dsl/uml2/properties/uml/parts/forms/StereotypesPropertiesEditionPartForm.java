@@ -19,11 +19,8 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
-import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
-import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
-import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
@@ -48,9 +45,9 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.views.properties.tabbed.ISection;
 import org.eclipse.uml2.uml.Stereotype;
+import org.obeonetwork.dsl.uml2.properties.service.TableColumnService;
 import org.obeonetwork.dsl.uml2.properties.service.TableLabelService;
 import org.obeonetwork.dsl.uml2.properties.service.TableLabelService.TableColumnName;
-import org.obeonetwork.dsl.uml2.properties.service.TableColumnService;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.CustomUmlViewsRepository;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.StereotypesPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
@@ -230,7 +227,8 @@ public class StereotypesPropertiesEditionPartForm extends
 		}
 
 		table.setHeaderVisible(true);
-		tableColumnService.createMediumColumn(table, TableColumnName.STEREOTYPE);
+		tableColumnService
+				.createMediumColumn(table, TableColumnName.STEREOTYPE);
 		tableColumnService.createMediumColumn(table, TableColumnName.PROFILE);
 		tableColumnService.createSmallColumn(table, TableColumnName.REQUIRED);
 
@@ -283,18 +281,13 @@ public class StereotypesPropertiesEditionPartForm extends
 	}
 
 	protected void editAppliedStereotypes(EObject element) {
-		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(
-				propertiesEditionComponent.getEditingContext(),
-				propertiesEditionComponent, element, adapterFactory);
-		PropertiesEditingProvider provider = (PropertiesEditingProvider) adapterFactory
-				.adapt(element, PropertiesEditingProvider.class);
-		if (provider != null) {
-			PropertiesEditingPolicy policy = provider.getPolicy(context);
-			if (policy != null) {
-				policy.execute();
-				appliedStereotypes.refresh();
-			}
-		}
+		propertiesEditionComponent
+				.firePropertiesChanged(new PropertiesEditionEvent(
+						StereotypesPropertiesEditionPartForm.this,
+						CustomUmlViewsRepository.Stereotypes.appliedStereotypes,
+						PropertiesEditionEvent.COMMIT,
+						PropertiesEditionEvent.EDIT, null, element));
+		appliedStereotypes.refresh();
 	}
 
 	/**
