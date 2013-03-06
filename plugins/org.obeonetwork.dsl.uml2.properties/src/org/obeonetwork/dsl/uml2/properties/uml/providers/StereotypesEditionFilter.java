@@ -13,16 +13,25 @@ package org.obeonetwork.dsl.uml2.properties.uml.providers;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.jface.viewers.IFilter;
+import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Component;
+import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.DataType;
+import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.Deployment;
 import org.eclipse.uml2.uml.Enumeration;
+import org.eclipse.uml2.uml.EnumerationLiteral;
+import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.Interface;
+import org.eclipse.uml2.uml.InterfaceRealization;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Transition;
+import org.eclipse.uml2.uml.Usage;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.StereotypesPropertiesEditionPart;
 
 /**
@@ -48,7 +57,15 @@ public class StereotypesEditionFilter implements IFilter {
 						|| eObj instanceof Operation
 						|| eObj instanceof Parameter
 						|| eObj instanceof Property
-						|| eObj instanceof Component || eObj instanceof Port);
+						|| eObj instanceof Component || eObj instanceof Port
+						|| eObj instanceof Association
+						|| eObj instanceof Connector
+						|| eObj instanceof Dependency
+						|| eObj instanceof Deployment
+						|| eObj instanceof EnumerationLiteral
+						|| eObj instanceof Extension
+						|| eObj instanceof InterfaceRealization
+						|| eObj instanceof Transition || eObj instanceof Usage);
 	}
 
 }
