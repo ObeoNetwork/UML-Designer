@@ -1,0 +1,349 @@
+Document {
+	Chapter Specification {
+		@author "Melanie Bats":mailto:melanie.bats@obeo.fr
+
+		Section Model {
+			UML Designer specification :
+			@M
+				@ref "platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/model/umlDesigner.specification#UMLDesigner"
+				 
+			M@
+		}
+	}
+	Chapter Scope {
+		The UML Designer is a graphical designer compatible with the 
+		"UML2 specification":http://www.omg.org/spec/UML/2.4.1/and based on "Obeo Designer":http://www.obeodesigner.com/.
+		UML 2.4 has 14 types of diagrams divided into two categories:
+		'http://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/UML_diagrams_overview.svg/500px-UML_diagrams_overview.svg.png'
+	}
+	Chapter Role {
+		Section Software developer {
+			The software developer use the UML Designer to describe the structure and the behaviour of software components.
+		}
+	}
+	Chapter Features {
+		Section Structural diagrams {
+			The structure diagrams are used to describe the structure of a software system.
+			@M
+				@ref "platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/model/umlDesigner.specification#StructuralDiagrams"
+				 
+			M@
+
+			Section Class diagram {
+				A class diagram is a type of static structure diagram that describes the structure of a system by showing the system's classes, their attributes, operations (or methods), and the relationships among the classes.
+				@M
+					@ref "platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/model/umlDesigner.specification#ClassDiagram"
+					 
+				M@
+
+				Section Manage class diagrams {
+					In the designer, it should be possible to manage (create and delete) the class diagrams .
+					@M
+						@ref "platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/model/umlDesigner.specification#ManageClassDiagrams"
+						 
+					M@
+
+					Section Create a class diagram {
+						Section Scenarios {
+							Section Create a class diagram from package element {							}
+						}
+					}
+
+					Section Delete a class diagram {
+						Section Scenarios {
+							Section Delete a class diagram from package element {							}
+						}
+					}
+				}
+
+				Section Manage  types {
+					In the class diagram, it should be possible to manage (create and delete) the different possible types (class, enumeration, datatype, primitivetype, interface).
+
+					Section Create a type {
+						Section Scenarios {
+							Section Create a class {							}
+
+							Section Create an enumeration {							}
+
+							Section Create an interface {							}
+
+							Section Create a data type {							}
+
+							Section Create a primitive type {							}
+
+							Section Create a package {							}
+
+							Section Create a class in an existing visible package {							}
+						}
+					}
+
+					Section Delete a type {
+						Section Scenarios {
+							Section Delete a class {							}
+
+							Section Delete a package {							}
+						}
+					}
+				}
+
+				Section Manage  relationships {
+					Section Create a relation {
+						Section Scenarios {
+							Section Create an association {							}
+
+							Section Create a reference {							}
+
+							Section Create a composition {							}
+
+							Section Create an aggregation {							}
+
+							Section Create an association class {							}
+
+							Section Create a generalization {							}
+
+							Section Create an interface realization {							}
+
+							Section Create a dependency {							}
+
+							Section Create a usage {							}
+
+							Section Create a nest classifier {							}
+						}
+					}
+
+					Section Delete a relation {
+						Section Scenarios {
+							Section Delete an association {							}
+						}
+					}
+				}
+
+				Section Manage  features {
+					Section Create a feature {
+						Section Scenarios {
+							Section Create a property {							}
+
+							Section Create a typed property {							}
+
+							Section Create a literal {							}
+						}
+					}
+
+					Section Delete a feature {
+						Section Scenarios {
+							Section Delete a property {							}
+						}
+					}
+				}
+
+				Section Manage  existing elements {
+					Section Add an existing element {
+						Section Scenarios {
+							Section Add an existing class from current package {							}
+
+							Section Add an existing enumeration from current package {							}
+
+							Section Add an existing interface from current package {							}
+
+							Section Add an existing data type from current package {							}
+
+							Section Add an existing primitive type from current package {							}
+
+							Section Add an existing package from current package {							}
+
+							Section Add an existing component from current package {							}
+
+							Section Add an existing class from another package {							}
+
+							Section Add an existing enumeration from another package {							}
+
+							Section Add an existing interface from another package {							}
+
+							Section Add an existing data type from another package {							}
+
+							Section Add an existing primitive type from another package {							}
+
+							Section Add an existing package from another package {							}
+
+							Section Add an existing component from another package {							}
+						}
+					}
+
+					Section Remove an existing element {
+						Section Scenarios {
+							Section Remove an existing class {							}
+						}
+					}
+				}
+
+				Section Drag and drop elements {
+					Section Scenarios {
+						Section Drag and drop a class from current package {						}
+
+						Section Drag and drop an enumeration from current package {						}
+
+						Section Drag and drop an interface from current package {						}
+
+						Section Drag and drop a data type from current package {						}
+
+						Section Drag and drop a primitive type from current package {						}
+
+						Section Drag and drop a package from current package {						}
+
+						Section Drag and drop a component from current package {						}
+
+						Section Drag and drop a class from another package {						}
+
+						Section Drag and drop an enumeration from another package {						}
+
+						Section Drag and drop an interface from another package {						}
+
+						Section Drag and drop a data type from another package {						}
+
+						Section Drag and drop a primitive type from another package {						}
+
+						Section Drag and drop a package from another package {						}
+
+						Section Drag and drop a component from another package {						}
+					}
+				}
+
+				Section Add related elements {
+					Section Scenarios {
+						Section Add related elements from a class {						}
+
+						Section Add related elements from an enumeration {						}
+
+						Section Add related elements from an interface {						}
+
+						Section Add related elements from a data type {						}
+
+						Section Add related elements from a primitive type {						}
+
+						Section Add related elements from a package {						}
+
+						Section Add related elements from a component {						}
+
+						Section Add related elements from a class diagram {						}
+					}
+				}
+
+				Section Edit elements {
+					Section Scenarios {
+						Section Edit association roles {						}
+					}
+				}
+
+				Section Edit the attributes of a semantic element {
+					Section Scenarios {					}
+				}
+
+				Section Navigate from class diagram to others representations {
+					Section Scenarios {
+						Section Navigate from a given class diagram element to an other related class diagram {						}
+
+						Section Navigate from a given class diagram element to an other related component diagram {						}
+					}
+				}
+
+				Section Move elements {
+					Section Scenarios {
+						Section Move a class {						}
+
+						Section Move a package {						}
+
+						Section Move several elements {						}
+					}
+				}
+
+				Section Copy elements {
+					Section Scenarios {					}
+				}
+
+				Section Paste elements {
+					Section Scenarios {					}
+				}
+
+				Section Cut elements {
+					Section Scenarios {					}
+				}
+
+				Section Show elements {
+					Section Scenarios {					}
+				}
+
+				Section Hide elements {
+					Section Scenarios {					}
+				}
+
+				Section Arrange a class diagram {
+					Section Scenarios {
+						Section Arrange class diagram {						}
+
+						Section Arrange selected elements in class diagram {						}
+					}
+				}
+			}
+
+			Section Component diagram {			}
+
+			Section Object diagram {			}
+
+			Section Package diagram {			}
+
+			Section Profile diagram {			}
+
+			Section Composite Structure diagram {			}
+
+			Section Deployment diagram {			}
+		}
+
+		Section Behavioural diagrams {
+			Section Activity diagram {			}
+
+			Section Use Case diagram {			}
+
+			Section State Machine diagram {			}
+
+			Section Sequence diagram {			}
+		}
+
+		Section Generic features {
+			Section Manage comments {
+				Section Create a comment {
+					Section Scenarios {
+						Section Create a comment in a class diagram {						}
+					}
+				}
+
+				Section Create a comment link {
+					Section Scenarios {
+						Section Create a comment link to a class {						}
+					}
+				}
+
+				Section Delete a comment {
+					Section Scenarios {
+						Section Delete a comment in a class diagram {						}
+					}
+				}
+
+				Section Delete a comment link {
+					Section Scenarios {
+						Section Delete a comment link in a class diagram {						}
+					}
+				}
+			}
+		}
+	}
+	Chapter Non-Goals {
+		This version will not support the following features:
+
+		* Timing Diagram
+		* Communication Diagram
+		* Interaction Overview Diagram
+		
+
+		
+	}
+}

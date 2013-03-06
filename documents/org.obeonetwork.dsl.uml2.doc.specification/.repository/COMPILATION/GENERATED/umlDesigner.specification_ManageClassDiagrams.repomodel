@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="ASCII"?>
+<specification:Feature xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:specification="http://www.eclipse.org/intent/specification/1.0" xmi:id="_7LWXoIZHEeKhi8HAhStA7g" name="ManageClassDiagrams"><stories xmi:id="_7LWXoYZHEeKhi8HAhStA7g" name="CreateAClassDiagram"/><stories xmi:id="_7LWXooZHEeKhi8HAhStA7g" name="DeleteAClassDiagram"/></specification:Feature>
