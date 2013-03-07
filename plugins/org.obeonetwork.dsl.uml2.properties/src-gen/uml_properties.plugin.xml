@@ -282,6 +282,36 @@
                id="org.obeonetwork.dsl.uml2.properties.uml.section.StateMachine"
                tab="General">
          </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.ActorPropertiesEditionProvider$EditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Actor"
+               tab="General">
+         </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.ArtifactPropertiesEditionProvider$EditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Artifact"
+               tab="General">
+         </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.CallOperationActionPropertiesEditionProvider$EditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.CallOperationAction"
+               tab="General">
+         </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.CollaborationPropertiesEditionProvider$EditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Collaboration"
+               tab="General">
+         </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.CommentPropertiesEditionProvider$EditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Comment"
+               tab="General">
+         </propertySection>
       </propertySections>
    </extension>
  </plugin>

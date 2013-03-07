@@ -848,6 +848,20 @@ public interface GeneralPropertiesEditionPart {
 	public void setReentrant(Boolean newValue);
 
 
+	/**
+	 * @return the body
+	 * @generated
+	 */
+	public String getBody();
+
+	/**
+	 * Defines a new body
+	 * @param newValue the new body to set
+	 * @generated
+	 */
+	public void setBody(String newValue);
+
+
 
 
 

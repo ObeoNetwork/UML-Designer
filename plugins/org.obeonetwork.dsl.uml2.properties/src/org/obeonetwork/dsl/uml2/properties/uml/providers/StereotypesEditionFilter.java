@@ -13,8 +13,12 @@ package org.obeonetwork.dsl.uml2.properties.uml.providers;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.jface.viewers.IFilter;
+import org.eclipse.uml2.uml.Actor;
+import org.eclipse.uml2.uml.Artifact;
 import org.eclipse.uml2.uml.Association;
+import org.eclipse.uml2.uml.CallOperationAction;
 import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Collaboration;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.DataType;
@@ -65,7 +69,9 @@ public class StereotypesEditionFilter implements IFilter {
 						|| eObj instanceof EnumerationLiteral
 						|| eObj instanceof Extension
 						|| eObj instanceof InterfaceRealization
-						|| eObj instanceof Transition || eObj instanceof Usage);
+						|| eObj instanceof Transition || eObj instanceof Usage
+						|| eObj instanceof Actor || eObj instanceof Artifact
+						|| eObj instanceof CallOperationAction || eObj instanceof Collaboration);
 	}
 
 }

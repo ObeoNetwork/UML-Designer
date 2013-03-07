@@ -34,6 +34,14 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createCommentAdapter()
+	 * @generated
+	 */
+	public Adapter createCommentAdapter() {
+		return new CommentPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createClassAdapter()
 	 * @generated
 	 */
@@ -71,6 +79,14 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	 */
 	public Adapter createPropertyAdapter() {
 		return new PropertyPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createArtifactAdapter()
+	 * @generated
+	 */
+	public Adapter createArtifactAdapter() {
+		return new ArtifactPropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}
@@ -162,6 +178,14 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createCollaborationAdapter()
+	 * @generated
+	 */
+	public Adapter createCollaborationAdapter() {
+		return new CollaborationPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createGeneralizationAdapter()
 	 * @generated
 	 */
@@ -178,11 +202,27 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createActorAdapter()
+	 * @generated
+	 */
+	public Adapter createActorAdapter() {
+		return new ActorPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createAssociationClassAdapter()
 	 * @generated
 	 */
 	public Adapter createAssociationClassAdapter() {
 		return new AssociationClassPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createCallOperationActionAdapter()
+	 * @generated
+	 */
+	public Adapter createCallOperationActionAdapter() {
+		return new CallOperationActionPropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}

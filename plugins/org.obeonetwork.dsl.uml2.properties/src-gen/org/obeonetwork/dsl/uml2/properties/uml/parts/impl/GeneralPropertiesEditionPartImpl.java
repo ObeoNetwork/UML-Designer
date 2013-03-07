@@ -89,6 +89,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 
 import org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart;
@@ -147,6 +148,7 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
 	protected List<ViewerFilter> ownedRuleFilters = new ArrayList<ViewerFilter>();
 	protected EEFImageViewer icon;
 	protected Button reentrant;
+	protected Text body;
 
 
 
@@ -220,6 +222,7 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
     generalStep.addStep(UmlViewsRepository.General.ownedRule);
     generalStep.addStep(UmlViewsRepository.General.icon);
     generalStep.addStep(UmlViewsRepository.General.reentrant);
+    generalStep.addStep(UmlViewsRepository.General.body);
     
     composer = new PartComposer(generalStep) {
 
@@ -329,6 +332,9 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
         }
         if (key == UmlViewsRepository.General.reentrant) {
           return createReentrantCheckbox(parent);
+        }
+        if (key == UmlViewsRepository.General.body) {
+          return createBodyTextarea(parent);
         }
         return parent;
       }
@@ -1750,6 +1756,44 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
     EditingUtils.setEEFtype(reentrant, "eef::Checkbox"); //$NON-NLS-1$
     SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.reentrant, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
     // Start of user code for createReentrantCheckbox
+
+    // End of user code
+    return parent;
+  }
+
+	/**
+	 * @generated
+	 */
+	
+	protected Composite createBodyTextarea(Composite parent) {
+    Label bodyLabel = createDescription(parent, UmlViewsRepository.General.body, UmlMessages.GeneralPropertiesEditionPart_BodyLabel);
+    GridData bodyLabelData = new GridData(GridData.FILL_HORIZONTAL);
+    bodyLabelData.horizontalSpan = 3;
+    bodyLabel.setLayoutData(bodyLabelData);
+    body = SWTUtils.createScrollableText(parent, SWT.BORDER | SWT.WRAP | SWT.MULTI | SWT.V_SCROLL);
+    GridData bodyData = new GridData(GridData.FILL_HORIZONTAL);
+    bodyData.horizontalSpan = 2;
+    bodyData.heightHint = 80;
+    bodyData.widthHint = 200;
+    body.setLayoutData(bodyData);
+    body.addFocusListener(new FocusAdapter() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+       * @generated
+       */
+      public void focusLost(FocusEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartImpl.this, UmlViewsRepository.General.body, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, body.getText()));
+      }
+
+    });
+    EditingUtils.setID(body, UmlViewsRepository.General.body);
+    EditingUtils.setEEFtype(body, "eef::Textarea"); //$NON-NLS-1$
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.body, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    // Start of user code for createBodyTextArea
 
     // End of user code
     return parent;
@@ -3359,6 +3403,39 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
       reentrant.setToolTipText(UmlMessages.General_ReadOnly);
     } else if (!eefElementEditorReadOnlyState && !reentrant.isEnabled()) {
       reentrant.setEnabled(true);
+    }	
+    
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getBody()
+	 * @generated
+	 */
+	public String getBody() {
+    return body.getText();
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#setBody(String newValue)
+	 * @generated
+	 */
+	public void setBody(String newValue) {
+    if (newValue != null) {
+      body.setText(newValue);
+    } else {
+      body.setText(""); //$NON-NLS-1$
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.body);
+    if (eefElementEditorReadOnlyState && body.isEnabled()) {
+      body.setEnabled(false);
+      body.setBackground(body.getDisplay().getSystemColor(SWT.COLOR_WIDGET_BACKGROUND));
+      body.setToolTipText(UmlMessages.General_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !body.isEnabled()) {
+      body.setEnabled(true);
     }	
     
   }

@@ -238,6 +238,12 @@ public class UmlViewsRepository {
 	
 	public static String reentrant = "uml::General::reentrant";
 	
+	/**
+	 * @generated
+	 */
+	
+	public static String body = "uml::General::body";
+	
 	}
 
 	/**
