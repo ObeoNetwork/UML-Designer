@@ -240,5 +240,13 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	public Adapter createComponentAdapter() {
 		return new ComponentPropertiesEditionProvider();
 	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createControlFlowAdapter()
+	 * @generated
+	 */
+	public Adapter createControlFlowAdapter() {
+		return new ControlFlowPropertiesEditionProvider();
+	}
 
 }

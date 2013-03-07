@@ -24,6 +24,7 @@ import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.ConnectorEnd;
+import org.eclipse.uml2.uml.ControlFlow;
 import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Enumeration;
@@ -75,7 +76,8 @@ public class GeneralEditionFilter implements IFilter {
 						|| eObj instanceof Artifact
 						|| eObj instanceof CallOperationAction
 						|| eObj instanceof Collaboration
-						|| eObj instanceof Comment || eObj instanceof ConnectorEnd);
+						|| eObj instanceof Comment
+						|| eObj instanceof ConnectorEnd || eObj instanceof ControlFlow);
 	}
 
 }
