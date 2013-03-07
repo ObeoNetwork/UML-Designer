@@ -25,7 +25,9 @@ import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.ConnectorEnd;
 import org.eclipse.uml2.uml.ControlFlow;
+import org.eclipse.uml2.uml.DataStoreNode;
 import org.eclipse.uml2.uml.DataType;
+import org.eclipse.uml2.uml.DecisionNode;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.EnumerationLiteral;
@@ -38,7 +40,6 @@ import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.Transition;
-import org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart;
 
 /**
  * Provides the filter used by the plugin.xml to assign
@@ -77,7 +78,9 @@ public class GeneralEditionFilter implements IFilter {
 						|| eObj instanceof CallOperationAction
 						|| eObj instanceof Collaboration
 						|| eObj instanceof Comment
-						|| eObj instanceof ConnectorEnd || eObj instanceof ControlFlow);
+						|| eObj instanceof ConnectorEnd
+						|| eObj instanceof ControlFlow
+						|| eObj instanceof DataStoreNode || eObj instanceof DecisionNode);
 	}
 
 }

@@ -19,7 +19,9 @@ import org.eclipse.uml2.uml.CallOperationAction;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Collaboration;
 import org.eclipse.uml2.uml.Component;
+import org.eclipse.uml2.uml.DataStoreNode;
 import org.eclipse.uml2.uml.DataType;
+import org.eclipse.uml2.uml.DecisionNode;
 import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.Operation;
@@ -54,7 +56,9 @@ public class RelationshipsEditionFilter implements IFilter {
 						|| eObj instanceof Property
 						|| eObj instanceof Component || eObj instanceof Port
 						|| eObj instanceof Actor || eObj instanceof Artifact
-						|| eObj instanceof CallOperationAction || eObj instanceof Collaboration);
+						|| eObj instanceof CallOperationAction
+						|| eObj instanceof Collaboration
+						|| eObj instanceof DataStoreNode || eObj instanceof DecisionNode);
 	}
 
 }

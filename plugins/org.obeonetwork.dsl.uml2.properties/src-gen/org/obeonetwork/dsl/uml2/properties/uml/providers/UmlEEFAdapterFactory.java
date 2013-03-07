@@ -248,5 +248,21 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	public Adapter createControlFlowAdapter() {
 		return new ControlFlowPropertiesEditionProvider();
 	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createDataStoreNodeAdapter()
+	 * @generated
+	 */
+	public Adapter createDataStoreNodeAdapter() {
+		return new DataStoreNodePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createDecisionNodeAdapter()
+	 * @generated
+	 */
+	public Adapter createDecisionNodeAdapter() {
+		return new DecisionNodePropertiesEditionProvider();
+	}
 
 }

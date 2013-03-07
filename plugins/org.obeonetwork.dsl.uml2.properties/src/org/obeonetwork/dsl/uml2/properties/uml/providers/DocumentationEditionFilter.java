@@ -23,7 +23,9 @@ import org.eclipse.uml2.uml.Collaboration;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.ControlFlow;
+import org.eclipse.uml2.uml.DataStoreNode;
 import org.eclipse.uml2.uml.DataType;
+import org.eclipse.uml2.uml.DecisionNode;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.EnumerationLiteral;
@@ -73,7 +75,8 @@ public class DocumentationEditionFilter implements IFilter {
 						|| eObj instanceof Stereotype || eObj instanceof Actor
 						|| eObj instanceof Artifact
 						|| eObj instanceof CallOperationAction
-						|| eObj instanceof Collaboration || eObj instanceof ControlFlow);
+						|| eObj instanceof Collaboration
+						|| eObj instanceof ControlFlow
+						|| eObj instanceof DataStoreNode || eObj instanceof DecisionNode);
 	}
-
 }
