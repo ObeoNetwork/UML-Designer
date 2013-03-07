@@ -27,7 +27,7 @@ public class CustomUmlViewsRepository extends UmlViewsRepository {
 	 * Relationships view descriptor
 	 */
 	public static class Relationships {
-		public static String relationshipsOriginating = "uml::Relationships::relationships_";
+		public static String relationshipsOriginating = "uml::Relationships::relationshipsOriginating";
 		public static String relationshipsTargeting = "uml::Relationships::relationshipsTargeting";
 
 	}
