@@ -82,6 +82,14 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createConnectorEndAdapter()
+	 * @generated
+	 */
+	public Adapter createConnectorEndAdapter() {
+		return new ConnectorEndPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createArtifactAdapter()
 	 * @generated
 	 */

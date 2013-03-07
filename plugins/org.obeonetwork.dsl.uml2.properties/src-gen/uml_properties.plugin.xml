@@ -312,6 +312,12 @@
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Comment"
                tab="General">
          </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.ConnectorEndPropertiesEditionProvider$EditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.ConnectorEnd"
+               tab="General">
+         </propertySection>
       </propertySections>
    </extension>
  </plugin>
