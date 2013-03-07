@@ -51,18 +51,6 @@ public class ClassPropertiesEditionComponent extends ComposedPropertiesEditionCo
 	protected ClassGeneralPropertiesEditionComponent classGeneralPropertiesEditionComponent;
 
 	/**
-	 * The Operations part
-	 * @generated
-	 */
-	private OperationsPropertiesEditionPart operationsPart;
-
-	/**
-	 * The ClassOperationsPropertiesEditionComponent sub component
-	 * @generated
-	 */
-	protected ClassOperationsPropertiesEditionComponent classOperationsPropertiesEditionComponent;
-
-	/**
 	 * The Attributes part
 	 * @generated
 	 */
@@ -73,6 +61,18 @@ public class ClassPropertiesEditionComponent extends ComposedPropertiesEditionCo
 	 * @generated
 	 */
 	protected ClassAttributesPropertiesEditionComponent classAttributesPropertiesEditionComponent;
+
+	/**
+	 * The Operations part
+	 * @generated
+	 */
+	private OperationsPropertiesEditionPart operationsPart;
+
+	/**
+	 * The ClassOperationsPropertiesEditionComponent sub component
+	 * @generated
+	 */
+	protected ClassOperationsPropertiesEditionComponent classOperationsPropertiesEditionComponent;
 
 	/**
 	 * Parameterized constructor
@@ -88,11 +88,11 @@ public class ClassPropertiesEditionComponent extends ComposedPropertiesEditionCo
 			classGeneralPropertiesEditionComponent = (ClassGeneralPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, ClassGeneralPropertiesEditionComponent.GENERAL_PART, ClassGeneralPropertiesEditionComponent.class);
 			addSubComponent(classGeneralPropertiesEditionComponent);
 			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(class_, PropertiesEditingProvider.class);
-			classOperationsPropertiesEditionComponent = (ClassOperationsPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, ClassOperationsPropertiesEditionComponent.OPERATIONS_PART, ClassOperationsPropertiesEditionComponent.class);
-			addSubComponent(classOperationsPropertiesEditionComponent);
-			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(class_, PropertiesEditingProvider.class);
 			classAttributesPropertiesEditionComponent = (ClassAttributesPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, ClassAttributesPropertiesEditionComponent.ATTRIBUTES_PART, ClassAttributesPropertiesEditionComponent.class);
 			addSubComponent(classAttributesPropertiesEditionComponent);
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(class_, PropertiesEditingProvider.class);
+			classOperationsPropertiesEditionComponent = (ClassOperationsPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, ClassOperationsPropertiesEditionComponent.OPERATIONS_PART, ClassOperationsPropertiesEditionComponent.class);
+			addSubComponent(classOperationsPropertiesEditionComponent);
 		}
 	}
 
@@ -108,13 +108,13 @@ public class ClassPropertiesEditionComponent extends ComposedPropertiesEditionCo
 			generalPart = (GeneralPropertiesEditionPart)classGeneralPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
 			return (IPropertiesEditionPart)generalPart;
 		}
-		if (ClassOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(key)) {
-			operationsPart = (OperationsPropertiesEditionPart)classOperationsPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
-			return (IPropertiesEditionPart)operationsPart;
-		}
 		if (ClassAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(key)) {
 			attributesPart = (AttributesPropertiesEditionPart)classAttributesPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
 			return (IPropertiesEditionPart)attributesPart;
+		}
+		if (ClassOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(key)) {
+			operationsPart = (OperationsPropertiesEditionPart)classOperationsPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
+			return (IPropertiesEditionPart)operationsPart;
 		}
 		return super.getPropertiesEditionPart(kind, key);
 	}
@@ -132,13 +132,13 @@ public class ClassPropertiesEditionComponent extends ComposedPropertiesEditionCo
 			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
 			generalPart = (GeneralPropertiesEditionPart)propertiesEditionPart;
 		}
-		if (UmlViewsRepository.Operations.class == key) {
-			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
-			operationsPart = (OperationsPropertiesEditionPart)propertiesEditionPart;
-		}
 		if (UmlViewsRepository.Attributes.class == key) {
 			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
 			attributesPart = (AttributesPropertiesEditionPart)propertiesEditionPart;
+		}
+		if (UmlViewsRepository.Operations.class == key) {
+			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
+			operationsPart = (OperationsPropertiesEditionPart)propertiesEditionPart;
 		}
 	}
 
@@ -154,10 +154,10 @@ public class ClassPropertiesEditionComponent extends ComposedPropertiesEditionCo
 		if (key == UmlViewsRepository.General.class) {
 			super.initPart(key, kind, element, allResource);
 		}
-		if (key == UmlViewsRepository.Operations.class) {
+		if (key == UmlViewsRepository.Attributes.class) {
 			super.initPart(key, kind, element, allResource);
 		}
-		if (key == UmlViewsRepository.Attributes.class) {
+		if (key == UmlViewsRepository.Operations.class) {
 			super.initPart(key, kind, element, allResource);
 		}
 	}

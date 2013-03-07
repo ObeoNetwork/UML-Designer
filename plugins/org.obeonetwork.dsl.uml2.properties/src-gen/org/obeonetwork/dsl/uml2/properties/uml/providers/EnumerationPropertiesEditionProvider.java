@@ -35,6 +35,7 @@ import org.obeonetwork.dsl.uml2.properties.providers.UmlPropertiesEditionProvide
 
 import org.obeonetwork.dsl.uml2.properties.uml.components.EnumerationAttributesPropertiesEditionComponent;
 import org.obeonetwork.dsl.uml2.properties.uml.components.EnumerationGeneralPropertiesEditionComponent;
+import org.obeonetwork.dsl.uml2.properties.uml.components.EnumerationOperationsPropertiesEditionComponent;
 import org.obeonetwork.dsl.uml2.properties.uml.components.EnumerationPropertiesEditionComponent;
 
 /**
@@ -74,7 +75,7 @@ public class EnumerationPropertiesEditionProvider extends UmlPropertiesEditionPr
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof Enumeration) && (EnumerationGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) || EnumerationAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part));
+		return (editingContext.getEObject() instanceof Enumeration) && (EnumerationGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) || EnumerationAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part) || EnumerationOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(part));
 	}
 
 	/**
@@ -84,7 +85,7 @@ public class EnumerationPropertiesEditionProvider extends UmlPropertiesEditionPr
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Enumeration) && (refinement == EnumerationGeneralPropertiesEditionComponent.class || refinement == EnumerationAttributesPropertiesEditionComponent.class);
+		return (editingContext.getEObject() instanceof Enumeration) && (refinement == EnumerationGeneralPropertiesEditionComponent.class || refinement == EnumerationAttributesPropertiesEditionComponent.class || refinement == EnumerationOperationsPropertiesEditionComponent.class);
 	}
 
 	/**
@@ -94,7 +95,7 @@ public class EnumerationPropertiesEditionProvider extends UmlPropertiesEditionPr
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Enumeration) && ((EnumerationGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == EnumerationGeneralPropertiesEditionComponent.class) || (EnumerationAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part) && refinement == EnumerationAttributesPropertiesEditionComponent.class));
+		return (editingContext.getEObject() instanceof Enumeration) && ((EnumerationGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == EnumerationGeneralPropertiesEditionComponent.class) || (EnumerationAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part) && refinement == EnumerationAttributesPropertiesEditionComponent.class) || (EnumerationOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(part) && refinement == EnumerationOperationsPropertiesEditionComponent.class));
 	}
 
 	/**
@@ -120,6 +121,8 @@ public class EnumerationPropertiesEditionProvider extends UmlPropertiesEditionPr
 				return new EnumerationGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 			if (EnumerationAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part))
 				return new EnumerationAttributesPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (EnumerationOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(part))
+				return new EnumerationOperationsPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part);
 	}
@@ -137,6 +140,9 @@ public class EnumerationPropertiesEditionProvider extends UmlPropertiesEditionPr
 			if (EnumerationAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part)
 				&& refinement == EnumerationAttributesPropertiesEditionComponent.class)
 				return new EnumerationAttributesPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (EnumerationOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(part)
+				&& refinement == EnumerationOperationsPropertiesEditionComponent.class)
+				return new EnumerationOperationsPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}

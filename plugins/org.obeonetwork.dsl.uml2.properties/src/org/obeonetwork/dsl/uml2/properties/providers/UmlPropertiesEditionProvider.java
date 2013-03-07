@@ -22,6 +22,7 @@ import org.eclipse.jface.viewers.IFilter;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.obeonetwork.dsl.uml2.properties.uml.components.ClassOperationsPropertiesEditionComponent;
 import org.obeonetwork.dsl.uml2.properties.uml.components.ElementDocumentationPropertiesEditionComponent;
 import org.obeonetwork.dsl.uml2.properties.uml.components.NamedElementRelationshipsPropertiesEditionComponent;
 import org.obeonetwork.dsl.uml2.properties.uml.components.NamedElementStereotypesPropertiesEditionComponent;
@@ -136,6 +137,13 @@ public class UmlPropertiesEditionProvider extends PropertiesEditingProviderImpl 
 						editingContext, editingContext.getEObject(), mode);
 
 		}
+		if (editingContext.getEObject() instanceof org.eclipse.uml2.uml.Class) {
+			if (ClassOperationsPropertiesEditionComponent.OPERATIONS_PART
+					.equals(part))
+				return new ClassOperationsPropertiesEditionComponent(
+						editingContext, editingContext.getEObject(), mode);
+
+		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part);
 	}
 
@@ -168,6 +176,14 @@ public class UmlPropertiesEditionProvider extends PropertiesEditingProviderImpl 
 					.equals(part))
 				return new ElementDocumentationPropertiesEditionComponent(
 						editingContext, editingContext.getEObject(), mode);
+		}
+
+		if (editingContext.getEObject() instanceof org.eclipse.uml2.uml.Class) {
+			if (ClassOperationsPropertiesEditionComponent.OPERATIONS_PART
+					.equals(part))
+				return new ClassOperationsPropertiesEditionComponent(
+						editingContext, editingContext.getEObject(), mode);
+
 		}
 
 		return super.getPropertiesEditingComponent(editingContext, mode, part,

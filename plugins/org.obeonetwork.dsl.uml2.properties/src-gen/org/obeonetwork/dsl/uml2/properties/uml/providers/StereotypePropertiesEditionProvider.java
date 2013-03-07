@@ -33,6 +33,8 @@ import org.eclipse.uml2.uml.UMLPackage;
 
 import org.obeonetwork.dsl.uml2.properties.providers.UmlPropertiesEditionProvider;
 
+import org.obeonetwork.dsl.uml2.properties.uml.components.StereotypeGeneralPropertiesEditionComponent;
+import org.obeonetwork.dsl.uml2.properties.uml.components.StereotypeOperationsPropertiesEditionComponent;
 import org.obeonetwork.dsl.uml2.properties.uml.components.StereotypePropertiesEditionComponent;
 
 /**
@@ -72,7 +74,7 @@ public class StereotypePropertiesEditionProvider extends UmlPropertiesEditionPro
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof Stereotype) && (StereotypePropertiesEditionComponent.GENERAL_PART.equals(part));
+		return (editingContext.getEObject() instanceof Stereotype) && (StereotypeGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) || StereotypeOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(part));
 	}
 
 	/**
@@ -82,7 +84,7 @@ public class StereotypePropertiesEditionProvider extends UmlPropertiesEditionPro
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Stereotype) && (refinement == StereotypePropertiesEditionComponent.class);
+		return (editingContext.getEObject() instanceof Stereotype) && (refinement == StereotypeGeneralPropertiesEditionComponent.class || refinement == StereotypeOperationsPropertiesEditionComponent.class);
 	}
 
 	/**
@@ -92,7 +94,7 @@ public class StereotypePropertiesEditionProvider extends UmlPropertiesEditionPro
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Stereotype) && ((StereotypePropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == StereotypePropertiesEditionComponent.class));
+		return (editingContext.getEObject() instanceof Stereotype) && ((StereotypeGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == StereotypeGeneralPropertiesEditionComponent.class) || (StereotypeOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(part) && refinement == StereotypeOperationsPropertiesEditionComponent.class));
 	}
 
 	/**
@@ -114,8 +116,10 @@ public class StereotypePropertiesEditionProvider extends UmlPropertiesEditionPro
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
 		if (editingContext.getEObject() instanceof Stereotype) {
-			if (StereotypePropertiesEditionComponent.GENERAL_PART.equals(part))
-				return new StereotypePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (StereotypeGeneralPropertiesEditionComponent.GENERAL_PART.equals(part))
+				return new StereotypeGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (StereotypeOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(part))
+				return new StereotypeOperationsPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part);
 	}
@@ -127,9 +131,12 @@ public class StereotypePropertiesEditionProvider extends UmlPropertiesEditionPro
 	@SuppressWarnings("rawtypes")
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
 		if (editingContext.getEObject() instanceof Stereotype) {
-			if (StereotypePropertiesEditionComponent.GENERAL_PART.equals(part)
-				&& refinement == StereotypePropertiesEditionComponent.class)
-				return new StereotypePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (StereotypeGeneralPropertiesEditionComponent.GENERAL_PART.equals(part)
+				&& refinement == StereotypeGeneralPropertiesEditionComponent.class)
+				return new StereotypeGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (StereotypeOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(part)
+				&& refinement == StereotypeOperationsPropertiesEditionComponent.class)
+				return new StereotypeOperationsPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}

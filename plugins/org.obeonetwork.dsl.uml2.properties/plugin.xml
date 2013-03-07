@@ -127,8 +127,8 @@ Contributors:
          </propertySection>
          <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.OperationsCustomPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.Class_PropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.Class"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.OperationsEditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Operations"
                tab="Operations">
          </propertySection>
          <propertySection
@@ -148,12 +148,6 @@ Contributors:
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.StereotypesEditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Stereotypes"
                tab="Stereotypes">
-         </propertySection>
-         <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.OperationsCustomPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.Interface_PropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.Interface"
-               tab="Operations">
          </propertySection>
          <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.AttributesCustomPropertiesEditionPartForm"

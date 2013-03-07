@@ -16,7 +16,7 @@
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Package"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_qQVzoFv4EeKZBNASYbV97A" name="Class" views="_Kt6kIFv3EeKZBNASYbV97A _55BGsF8vEeKd8d7WgZ31eQ _fgTgsGCnEeKd8d7WgZ31eQ">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_qQVzoFv4EeKZBNASYbV97A" name="Class" views="_Kt6kIFv3EeKZBNASYbV97A _fgTgsGCnEeKd8d7WgZ31eQ _55BGsF8vEeKd8d7WgZ31eQ">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_TRi1QFv7EeKZBNASYbV97A" name="name" views="_3INTYFv3EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
         </properties>
@@ -29,14 +29,14 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Fc0EoFv8EeKZBNASYbV97A" name="leaf" views="_nujsAFv7EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//RedefinableElement/isLeaf"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_W3biAGCJEeKd8d7WgZ31eQ" name="operations" views="_7kJy0F8vEeKd8d7WgZ31eQ">
-          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Class/ownedOperation"/>
-        </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ml1Y8GCnEeKd8d7WgZ31eQ" name="attributes" views="_hKXOwGCnEeKd8d7WgZ31eQ">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//StructuredClassifier/ownedAttribute"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_mgwLgYaBEeK4Q5tTZetd-w" name="active" views="_-hRqUFwFEeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Class/isActive"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Em_XUYcnEeKNyt99hwHqAw" name="operations" views="_7kJy0F8vEeKd8d7WgZ31eQ">
+          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Class/ownedOperation"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Class"/>
       </bindings>
@@ -61,7 +61,7 @@
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Interface"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_HVLMsF4mEeKttZbtn302Pg" name="DataType" views="_Kt6kIFv3EeKZBNASYbV97A _fgTgsGCnEeKd8d7WgZ31eQ">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_HVLMsF4mEeKttZbtn302Pg" name="DataType" views="_Kt6kIFv3EeKZBNASYbV97A _fgTgsGCnEeKd8d7WgZ31eQ _55BGsF8vEeKd8d7WgZ31eQ">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_HVLzwF4mEeKttZbtn302Pg" name="name" views="_3INTYFv3EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
         </properties>
@@ -77,9 +77,12 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Pie90GDCEeKd8d7WgZ31eQ" name="attributes" views="_hKXOwGCnEeKd8d7WgZ31eQ">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//DataType/ownedAttribute"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_OXfyoIcoEeKNyt99hwHqAw" name="operations" views="_7kJy0F8vEeKd8d7WgZ31eQ">
+          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//DataType/ownedOperation"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//DataType"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_NNKTwF4mEeKttZbtn302Pg" name="PrimitiveType" views="_Kt6kIFv3EeKZBNASYbV97A _fgTgsGCnEeKd8d7WgZ31eQ">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_NNKTwF4mEeKttZbtn302Pg" name="PrimitiveType" views="_Kt6kIFv3EeKZBNASYbV97A _fgTgsGCnEeKd8d7WgZ31eQ _55BGsF8vEeKd8d7WgZ31eQ">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_NNKTwV4mEeKttZbtn302Pg" name="name" views="_3INTYFv3EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
         </properties>
@@ -95,9 +98,12 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_UDtGQGDCEeKd8d7WgZ31eQ" name="attributes" views="_hKXOwGCnEeKd8d7WgZ31eQ">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//DataType/ownedAttribute"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Syn6IIcoEeKNyt99hwHqAw" name="operations" views="_7kJy0F8vEeKd8d7WgZ31eQ">
+          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//DataType/ownedOperation"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//PrimitiveType"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_TyOjQF4mEeKttZbtn302Pg" name="Enumeration" views="_Kt6kIFv3EeKZBNASYbV97A _fgTgsGCnEeKd8d7WgZ31eQ">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_TyOjQF4mEeKttZbtn302Pg" name="Enumeration" views="_Kt6kIFv3EeKZBNASYbV97A _fgTgsGCnEeKd8d7WgZ31eQ _55BGsF8vEeKd8d7WgZ31eQ">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_TyOjQV4mEeKttZbtn302Pg" name="name" views="_3INTYFv3EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
         </properties>
@@ -112,6 +118,9 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_O6phwGDCEeKd8d7WgZ31eQ" name="attributes" views="_hKXOwGCnEeKd8d7WgZ31eQ">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//DataType/ownedAttribute"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_3a-zkIcnEeKNyt99hwHqAw" name="operations" views="_7kJy0F8vEeKd8d7WgZ31eQ">
+          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//DataType/ownedOperation"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Enumeration"/>
       </bindings>
@@ -409,7 +418,7 @@
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Vertex"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_B5DCkF4jEeKttZbtn302Pg" name="Stereotype" views="_Kt6kIFv3EeKZBNASYbV97A">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_B5DCkF4jEeKttZbtn302Pg" name="Stereotype" views="_Kt6kIFv3EeKZBNASYbV97A _55BGsF8vEeKd8d7WgZ31eQ">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_E6k54F4jEeKttZbtn302Pg" name="name" views="_3INTYFv3EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
         </properties>
@@ -427,6 +436,9 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_LDUFUIaJEeKz6PgDC7_CIQ" name="active" views="_-hRqUFwFEeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Class/isActive"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CrHEAIcoEeKNyt99hwHqAw" name="operations" views="_7kJy0F8vEeKd8d7WgZ31eQ">
+          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Class/ownedOperation"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Stereotype"/>
       </bindings>

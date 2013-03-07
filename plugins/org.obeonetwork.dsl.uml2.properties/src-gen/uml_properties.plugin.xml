@@ -52,17 +52,17 @@
          </propertyTab>
 
          <propertyTab
-               id="Operations"
-               label="Operations"
+               id="Attributes"
+               label="Attributes"
                category="extended"
                afterTab="General">
          </propertyTab>
 
          <propertyTab
-               id="Attributes"
-               label="Attributes"
+               id="Operations"
+               label="Operations"
                category="extended"
-               afterTab="Operations">
+               afterTab="Attributes">
          </propertyTab>
 
          <propertyTab
@@ -97,16 +97,16 @@
                tab="General">
          </propertySection>
          <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.OperationsPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.Class_PropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.Class"
-               tab="Operations">
-         </propertySection>
-         <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.AttributesPropertiesEditionPartForm"
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.Class_PropertiesEditionProvider$EditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Class"
                tab="Attributes">
+         </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.OperationsPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.Class_PropertiesEditionProvider$EditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Class"
+               tab="Operations">
          </propertySection>
          <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
@@ -139,6 +139,12 @@
                tab="Attributes">
          </propertySection>
          <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.OperationsPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.DataTypePropertiesEditionProvider$EditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.DataType"
+               tab="Operations">
+         </propertySection>
+         <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.PrimitiveTypePropertiesEditionProvider$EditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.PrimitiveType"
@@ -151,6 +157,12 @@
                tab="Attributes">
          </propertySection>
          <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.OperationsPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.PrimitiveTypePropertiesEditionProvider$EditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.PrimitiveType"
+               tab="Operations">
+         </propertySection>
+         <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.EnumerationPropertiesEditionProvider$EditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Enumeration"
@@ -161,6 +173,12 @@
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.EnumerationPropertiesEditionProvider$EditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Enumeration"
                tab="Attributes">
+         </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.OperationsPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.EnumerationPropertiesEditionProvider$EditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Enumeration"
+               tab="Operations">
          </propertySection>
          <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
@@ -245,6 +263,12 @@
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.StereotypePropertiesEditionProvider$EditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Stereotype"
                tab="General">
+         </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.OperationsPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.StereotypePropertiesEditionProvider$EditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Stereotype"
+               tab="Operations">
          </propertySection>
       </propertySections>
    </extension>

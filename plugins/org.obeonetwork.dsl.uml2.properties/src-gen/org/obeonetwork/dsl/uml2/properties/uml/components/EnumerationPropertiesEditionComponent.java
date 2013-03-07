@@ -30,6 +30,7 @@ import org.eclipse.uml2.uml.Enumeration;
 
 import org.obeonetwork.dsl.uml2.properties.uml.parts.AttributesPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.OperationsPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 
 
@@ -64,6 +65,18 @@ public class EnumerationPropertiesEditionComponent extends ComposedPropertiesEdi
 	protected EnumerationAttributesPropertiesEditionComponent enumerationAttributesPropertiesEditionComponent;
 
 	/**
+	 * The Operations part
+	 * @generated
+	 */
+	private OperationsPropertiesEditionPart operationsPart;
+
+	/**
+	 * The EnumerationOperationsPropertiesEditionComponent sub component
+	 * @generated
+	 */
+	protected EnumerationOperationsPropertiesEditionComponent enumerationOperationsPropertiesEditionComponent;
+
+	/**
 	 * Parameterized constructor
 	 * 
 	 * @param enumeration the EObject to edit
@@ -79,6 +92,9 @@ public class EnumerationPropertiesEditionComponent extends ComposedPropertiesEdi
 			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(enumeration, PropertiesEditingProvider.class);
 			enumerationAttributesPropertiesEditionComponent = (EnumerationAttributesPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, EnumerationAttributesPropertiesEditionComponent.ATTRIBUTES_PART, EnumerationAttributesPropertiesEditionComponent.class);
 			addSubComponent(enumerationAttributesPropertiesEditionComponent);
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(enumeration, PropertiesEditingProvider.class);
+			enumerationOperationsPropertiesEditionComponent = (EnumerationOperationsPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, EnumerationOperationsPropertiesEditionComponent.OPERATIONS_PART, EnumerationOperationsPropertiesEditionComponent.class);
+			addSubComponent(enumerationOperationsPropertiesEditionComponent);
 		}
 	}
 
@@ -97,6 +113,10 @@ public class EnumerationPropertiesEditionComponent extends ComposedPropertiesEdi
 		if (EnumerationAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(key)) {
 			attributesPart = (AttributesPropertiesEditionPart)enumerationAttributesPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
 			return (IPropertiesEditionPart)attributesPart;
+		}
+		if (EnumerationOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(key)) {
+			operationsPart = (OperationsPropertiesEditionPart)enumerationOperationsPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
+			return (IPropertiesEditionPart)operationsPart;
 		}
 		return super.getPropertiesEditionPart(kind, key);
 	}
@@ -118,6 +138,10 @@ public class EnumerationPropertiesEditionComponent extends ComposedPropertiesEdi
 			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
 			attributesPart = (AttributesPropertiesEditionPart)propertiesEditionPart;
 		}
+		if (UmlViewsRepository.Operations.class == key) {
+			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
+			operationsPart = (OperationsPropertiesEditionPart)propertiesEditionPart;
+		}
 	}
 
 	/**
@@ -133,6 +157,9 @@ public class EnumerationPropertiesEditionComponent extends ComposedPropertiesEdi
 			super.initPart(key, kind, element, allResource);
 		}
 		if (key == UmlViewsRepository.Attributes.class) {
+			super.initPart(key, kind, element, allResource);
+		}
+		if (key == UmlViewsRepository.Operations.class) {
 			super.initPart(key, kind, element, allResource);
 		}
 	}

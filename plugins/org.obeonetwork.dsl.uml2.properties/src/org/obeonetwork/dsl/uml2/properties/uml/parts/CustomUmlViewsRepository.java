@@ -38,4 +38,5 @@ public class CustomUmlViewsRepository extends UmlViewsRepository {
 	public static class Documentation {
 		public static String comment = "uml::Documentation::comment";
 	}
+
 }

@@ -30,6 +30,7 @@ import org.eclipse.uml2.uml.PrimitiveType;
 
 import org.obeonetwork.dsl.uml2.properties.uml.parts.AttributesPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.OperationsPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 
 
@@ -64,6 +65,18 @@ public class PrimitiveTypePropertiesEditionComponent extends ComposedPropertiesE
 	protected PrimitiveTypeAttributesPropertiesEditionComponent primitiveTypeAttributesPropertiesEditionComponent;
 
 	/**
+	 * The Operations part
+	 * @generated
+	 */
+	private OperationsPropertiesEditionPart operationsPart;
+
+	/**
+	 * The PrimitiveTypeOperationsPropertiesEditionComponent sub component
+	 * @generated
+	 */
+	protected PrimitiveTypeOperationsPropertiesEditionComponent primitiveTypeOperationsPropertiesEditionComponent;
+
+	/**
 	 * Parameterized constructor
 	 * 
 	 * @param primitiveType the EObject to edit
@@ -79,6 +92,9 @@ public class PrimitiveTypePropertiesEditionComponent extends ComposedPropertiesE
 			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(primitiveType, PropertiesEditingProvider.class);
 			primitiveTypeAttributesPropertiesEditionComponent = (PrimitiveTypeAttributesPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, PrimitiveTypeAttributesPropertiesEditionComponent.ATTRIBUTES_PART, PrimitiveTypeAttributesPropertiesEditionComponent.class);
 			addSubComponent(primitiveTypeAttributesPropertiesEditionComponent);
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(primitiveType, PropertiesEditingProvider.class);
+			primitiveTypeOperationsPropertiesEditionComponent = (PrimitiveTypeOperationsPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, PrimitiveTypeOperationsPropertiesEditionComponent.OPERATIONS_PART, PrimitiveTypeOperationsPropertiesEditionComponent.class);
+			addSubComponent(primitiveTypeOperationsPropertiesEditionComponent);
 		}
 	}
 
@@ -97,6 +113,10 @@ public class PrimitiveTypePropertiesEditionComponent extends ComposedPropertiesE
 		if (PrimitiveTypeAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(key)) {
 			attributesPart = (AttributesPropertiesEditionPart)primitiveTypeAttributesPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
 			return (IPropertiesEditionPart)attributesPart;
+		}
+		if (PrimitiveTypeOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(key)) {
+			operationsPart = (OperationsPropertiesEditionPart)primitiveTypeOperationsPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
+			return (IPropertiesEditionPart)operationsPart;
 		}
 		return super.getPropertiesEditionPart(kind, key);
 	}
@@ -118,6 +138,10 @@ public class PrimitiveTypePropertiesEditionComponent extends ComposedPropertiesE
 			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
 			attributesPart = (AttributesPropertiesEditionPart)propertiesEditionPart;
 		}
+		if (UmlViewsRepository.Operations.class == key) {
+			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
+			operationsPart = (OperationsPropertiesEditionPart)propertiesEditionPart;
+		}
 	}
 
 	/**
@@ -133,6 +157,9 @@ public class PrimitiveTypePropertiesEditionComponent extends ComposedPropertiesE
 			super.initPart(key, kind, element, allResource);
 		}
 		if (key == UmlViewsRepository.Attributes.class) {
+			super.initPart(key, kind, element, allResource);
+		}
+		if (key == UmlViewsRepository.Operations.class) {
 			super.initPart(key, kind, element, allResource);
 		}
 	}
