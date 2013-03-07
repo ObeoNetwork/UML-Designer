@@ -445,6 +445,27 @@
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Stereotype"/>
       </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_BCsicIctEeKNyt99hwHqAw" name="StateMachine" views="_Kt6kIFv3EeKZBNASYbV97A">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_yuUDkIc8EeKcacknc_K90g" name="name" views="_3INTYFv3EeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="__c2ywIc8EeKcacknc_K90g" name="visibility" views="_maltQFv8EeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/visibility"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_D2lzIIc9EeKcacknc_K90g" name="abstract" views="_aDX1wFv4EeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Classifier/isAbstract"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_HY9GoIc9EeKcacknc_K90g" name="leaf" views="_nujsAFv7EeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//RedefinableElement/isLeaf"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_LRrrsIc9EeKcacknc_K90g" name="active" views="_-hRqUFwFEeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Class/isActive"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_J_gFYIctEeKNyt99hwHqAw" name="reentrant" views="_3whzgIcsEeKNyt99hwHqAw">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Behavior/isReentrant"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//StateMachine"/>
+      </bindings>
     </categories>
     <model href="platform:/plugin/org.eclipse.uml2.uml/model/UML.genmodel#//uml"/>
   </eef-components:PropertiesEditionContext>
@@ -554,6 +575,9 @@
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_L0KA0F4jEeKttZbtn302Pg" name="icon">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.11"/>
+        </elements>
+        <elements xsi:type="eef-views:ElementEditor" xmi:id="_3whzgIcsEeKNyt99hwHqAw" name="reentrant" nameAsLabel="true">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
         </elements>
       </views>
       <views xmi:id="_55BGsF8vEeKd8d7WgZ31eQ" name="Operations">

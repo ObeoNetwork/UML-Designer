@@ -232,6 +232,12 @@ public class UmlViewsRepository {
 	
 	public static String icon = "uml::General::icon";
 	
+	/**
+	 * @generated
+	 */
+	
+	public static String reentrant = "uml::General::reentrant";
+	
 	}
 
 	/**

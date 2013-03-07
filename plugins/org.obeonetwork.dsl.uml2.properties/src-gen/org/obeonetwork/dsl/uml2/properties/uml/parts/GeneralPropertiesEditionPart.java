@@ -834,6 +834,20 @@ public interface GeneralPropertiesEditionPart {
 	public void setIcon(String newValue);
 
 
+	/**
+	 * @return the reentrant
+	 * @generated
+	 */
+	public Boolean getReentrant();
+
+	/**
+	 * Defines a new reentrant
+	 * @param newValue the new reentrant to set
+	 * @generated
+	 */
+	public void setReentrant(Boolean newValue);
+
+
 
 
 

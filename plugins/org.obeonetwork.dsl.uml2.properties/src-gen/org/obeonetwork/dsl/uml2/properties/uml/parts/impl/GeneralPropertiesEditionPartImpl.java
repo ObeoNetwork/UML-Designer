@@ -146,6 +146,7 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
 	protected List<ViewerFilter> ownedRuleBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> ownedRuleFilters = new ArrayList<ViewerFilter>();
 	protected EEFImageViewer icon;
+	protected Button reentrant;
 
 
 
@@ -218,6 +219,7 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
     generalStep.addStep(UmlViewsRepository.General.guard);
     generalStep.addStep(UmlViewsRepository.General.ownedRule);
     generalStep.addStep(UmlViewsRepository.General.icon);
+    generalStep.addStep(UmlViewsRepository.General.reentrant);
     
     composer = new PartComposer(generalStep) {
 
@@ -324,6 +326,9 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
         }
         if (key == UmlViewsRepository.General.icon) {
           return createIconImageViewer(parent);
+        }
+        if (key == UmlViewsRepository.General.reentrant) {
+          return createReentrantCheckbox(parent);
         }
         return parent;
       }
@@ -1712,6 +1717,39 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
     icon.setID(UmlViewsRepository.General.icon);
     SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.icon, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
     // Start of user code for createIconImageViewer
+
+    // End of user code
+    return parent;
+  }
+
+	/**
+	 * @generated
+	 */
+	
+	protected Composite createReentrantCheckbox(Composite parent) {
+    reentrant = new Button(parent, SWT.CHECK);
+    reentrant.setText(getDescription(UmlViewsRepository.General.reentrant, UmlMessages.GeneralPropertiesEditionPart_ReentrantLabel));
+    reentrant.addSelectionListener(new SelectionAdapter() {
+
+      /**
+       * {@inheritDoc}
+       *
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       * 	@generated
+       */
+      public void widgetSelected(SelectionEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartImpl.this, UmlViewsRepository.General.reentrant, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(reentrant.getSelection())));
+      }
+
+    });
+    GridData reentrantData = new GridData(GridData.FILL_HORIZONTAL);
+    reentrantData.horizontalSpan = 2;
+    reentrant.setLayoutData(reentrantData);
+    EditingUtils.setID(reentrant, UmlViewsRepository.General.reentrant);
+    EditingUtils.setEEFtype(reentrant, "eef::Checkbox"); //$NON-NLS-1$
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.reentrant, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    // Start of user code for createReentrantCheckbox
 
     // End of user code
     return parent;
@@ -3289,6 +3327,38 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
       icon.setToolTipText(UmlMessages.General_ReadOnly);
     } else if (!eefElementEditorReadOnlyState && !icon.isEnabled()) {
       icon.setEnabled(true);
+    }	
+    
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getReentrant()
+	 * @generated
+	 */
+	public Boolean getReentrant() {
+    return Boolean.valueOf(reentrant.getSelection());
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#setReentrant(Boolean newValue)
+	 * @generated
+	 */
+	public void setReentrant(Boolean newValue) {
+    if (newValue != null) {
+      reentrant.setSelection(newValue.booleanValue());
+    } else {
+      reentrant.setSelection(false);
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.reentrant);
+    if (eefElementEditorReadOnlyState && reentrant.isEnabled()) {
+      reentrant.setEnabled(false);
+      reentrant.setToolTipText(UmlMessages.General_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !reentrant.isEnabled()) {
+      reentrant.setEnabled(true);
     }	
     
   }

@@ -90,6 +90,14 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createStateMachineAdapter()
+	 * @generated
+	 */
+	public Adapter createStateMachineAdapter() {
+		return new StateMachinePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createVertexAdapter()
 	 * @generated
 	 */
