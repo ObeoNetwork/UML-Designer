@@ -28,6 +28,7 @@ import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
 import org.eclipse.uml2.uml.Stereotype;
 
+import org.obeonetwork.dsl.uml2.properties.uml.parts.AttributesPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.OperationsPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
@@ -64,6 +65,18 @@ public class StereotypePropertiesEditionComponent extends ComposedPropertiesEdit
 	protected StereotypeOperationsPropertiesEditionComponent stereotypeOperationsPropertiesEditionComponent;
 
 	/**
+	 * The Attributes part
+	 * @generated
+	 */
+	private AttributesPropertiesEditionPart attributesPart;
+
+	/**
+	 * The StereotypeAttributesPropertiesEditionComponent sub component
+	 * @generated
+	 */
+	protected StereotypeAttributesPropertiesEditionComponent stereotypeAttributesPropertiesEditionComponent;
+
+	/**
 	 * Parameterized constructor
 	 * 
 	 * @param stereotype the EObject to edit
@@ -79,6 +92,9 @@ public class StereotypePropertiesEditionComponent extends ComposedPropertiesEdit
 			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(stereotype, PropertiesEditingProvider.class);
 			stereotypeOperationsPropertiesEditionComponent = (StereotypeOperationsPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, StereotypeOperationsPropertiesEditionComponent.OPERATIONS_PART, StereotypeOperationsPropertiesEditionComponent.class);
 			addSubComponent(stereotypeOperationsPropertiesEditionComponent);
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(stereotype, PropertiesEditingProvider.class);
+			stereotypeAttributesPropertiesEditionComponent = (StereotypeAttributesPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, StereotypeAttributesPropertiesEditionComponent.ATTRIBUTES_PART, StereotypeAttributesPropertiesEditionComponent.class);
+			addSubComponent(stereotypeAttributesPropertiesEditionComponent);
 		}
 	}
 
@@ -97,6 +113,10 @@ public class StereotypePropertiesEditionComponent extends ComposedPropertiesEdit
 		if (StereotypeOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(key)) {
 			operationsPart = (OperationsPropertiesEditionPart)stereotypeOperationsPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
 			return (IPropertiesEditionPart)operationsPart;
+		}
+		if (StereotypeAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(key)) {
+			attributesPart = (AttributesPropertiesEditionPart)stereotypeAttributesPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
+			return (IPropertiesEditionPart)attributesPart;
 		}
 		return super.getPropertiesEditionPart(kind, key);
 	}
@@ -118,6 +138,10 @@ public class StereotypePropertiesEditionComponent extends ComposedPropertiesEdit
 			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
 			operationsPart = (OperationsPropertiesEditionPart)propertiesEditionPart;
 		}
+		if (UmlViewsRepository.Attributes.class == key) {
+			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
+			attributesPart = (AttributesPropertiesEditionPart)propertiesEditionPart;
+		}
 	}
 
 	/**
@@ -133,6 +157,9 @@ public class StereotypePropertiesEditionComponent extends ComposedPropertiesEdit
 			super.initPart(key, kind, element, allResource);
 		}
 		if (key == UmlViewsRepository.Operations.class) {
+			super.initPart(key, kind, element, allResource);
+		}
+		if (key == UmlViewsRepository.Attributes.class) {
 			super.initPart(key, kind, element, allResource);
 		}
 	}

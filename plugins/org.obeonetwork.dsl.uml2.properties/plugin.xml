@@ -133,8 +133,8 @@ Contributors:
          </propertySection>
          <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.AttributesCustomPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.Class_PropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.Class"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.AttributesEditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Attributes"
                tab="Attributes">
          </propertySection>
          <propertySection
@@ -148,30 +148,6 @@ Contributors:
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.StereotypesEditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Stereotypes"
                tab="Stereotypes">
-         </propertySection>
-         <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.AttributesCustomPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.Interface_PropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.Interface"
-               tab="Attributes">
-         </propertySection>
-         <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.AttributesCustomPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.DataTypePropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.DataType"
-               tab="Attributes">
-         </propertySection>
-         <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.AttributesCustomPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.PrimitiveTypePropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.PrimitiveType"
-               tab="Attributes">
-         </propertySection>
-         <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.AttributesCustomPropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.EnumerationPropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.Enumeration"
-               tab="Attributes">
          </propertySection>
          <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.ParametersCustomPropertiesEditionPartForm"

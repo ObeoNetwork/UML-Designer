@@ -270,6 +270,12 @@
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Stereotype"
                tab="Operations">
          </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.AttributesPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.StereotypePropertiesEditionProvider$EditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Stereotype"
+               tab="Attributes">
+         </propertySection>
       </propertySections>
    </extension>
  </plugin>
