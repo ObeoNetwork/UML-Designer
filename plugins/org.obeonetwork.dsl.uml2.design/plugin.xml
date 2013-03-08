@@ -157,11 +157,11 @@ Contributors:
          id="org.obeonetwork.dsl.uml2.design.ui.extension.rotableNode.requiredInterface"
          point="org.obeonetwork.gmf.runtime.diagram.ui.extension.rotatableNode">
       <image
-            bottom="/org.obeonetwork.dsl.uml2.design/images/required-bottom2.svg"
+            bottom="/org.obeonetwork.dsl.uml2.design/images/required-bottom.svg"
             id="org.obeonetwork.dsl.uml2.design.ui.extension.rotableNode.requiredInterface"
-            left="/org.obeonetwork.dsl.uml2.design/images/required-left2.svg"
-            right="/org.obeonetwork.dsl.uml2.design/images/required-right2.svg"
-            top="/org.obeonetwork.dsl.uml2.design/images/required-top2.svg">
+            left="/org.obeonetwork.dsl.uml2.design/images/required-left.svg"
+            right="/org.obeonetwork.dsl.uml2.design/images/required-right.svg"
+            top="/org.obeonetwork.dsl.uml2.design/images/required-top.svg">
       </image>
    </extension>     
 </plugin>

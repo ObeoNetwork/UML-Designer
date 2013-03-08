@@ -6,8 +6,6 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  fr.obeo.dsl.viewpoint.diagram,
  fr.obeo.dsl.common.ui,
- org.eclipse.uml2.uml;bundle-version="[4.0.0,5.0.0)",
- org.eclipse.uml2.uml.edit,
  org.eclipse.gmf.runtime.diagram.ui
 Bundle-Activator: org.obeonetwork.gmf.runtime.diagram.ui.extension.ExtensionActivator
 Bundle-Localization: plugin
