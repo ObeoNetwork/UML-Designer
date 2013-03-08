@@ -37,11 +37,13 @@ import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
 import org.eclipse.uml2.types.TypesPackage;
 
-import org.eclipse.uml2.uml.ControlFlow;
+import org.eclipse.uml2.uml.OpaqueAction;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.VisibilityKind;
 
 import org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
@@ -51,7 +53,7 @@ import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
  * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
  * @generated
  */
-public class ControlFlowPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
+public class OpaqueActionPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
 	/**
 	 * @generated
@@ -65,8 +67,8 @@ public class ControlFlowPropertiesEditionComponent extends SinglePartPropertiesE
 	 * Default constructor
 	 * @generated
 	 */
-	public ControlFlowPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject controlFlow, String editing_mode) {
-		super(editingContext, controlFlow, editing_mode);
+	public OpaqueActionPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject opaqueAction, String editing_mode) {
+		super(editingContext, opaqueAction, editing_mode);
 		parts = new String[] { GENERAL_PART };
 		repositoryKey = UmlViewsRepository.class;
 		partKey = UmlViewsRepository.General.class;
@@ -84,13 +86,20 @@ public class ControlFlowPropertiesEditionComponent extends SinglePartPropertiesE
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
 			
-			final ControlFlow controlFlow = (ControlFlow)elt;
+			final OpaqueAction opaqueAction = (OpaqueAction)elt;
 			final GeneralPropertiesEditionPart generalPart = (GeneralPropertiesEditionPart)editingPart;
 			// init values
 			if (isAccessible(UmlViewsRepository.General.name))
-				generalPart.setName(EEFConverterUtil.convertToString(TypesPackage.Literals.STRING, controlFlow.getName()));
+				generalPart.setName(EEFConverterUtil.convertToString(TypesPackage.Literals.STRING, opaqueAction.getName()));
+			
+			if (isAccessible(UmlViewsRepository.General.visibility)) {
+				generalPart.initVisibility(EEFUtils.choiceOfValues(opaqueAction, UMLPackage.eINSTANCE.getNamedElement_Visibility()), opaqueAction.getVisibility());
+			}
+			generalPart.setLeaf(opaqueAction.isLeaf());
 			
 			// init filters
+			
+			
 			
 			// init values for referenced views
 			
@@ -103,6 +112,8 @@ public class ControlFlowPropertiesEditionComponent extends SinglePartPropertiesE
 
 
 
+
+
 	/**
 	 * {@inheritDoc}
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
@@ -110,6 +121,12 @@ public class ControlFlowPropertiesEditionComponent extends SinglePartPropertiesE
 	public EStructuralFeature associatedFeature(Object editorKey) {
 		if (editorKey == UmlViewsRepository.General.name) {
 			return UMLPackage.eINSTANCE.getNamedElement_Name();
+		}
+		if (editorKey == UmlViewsRepository.General.visibility) {
+			return UMLPackage.eINSTANCE.getNamedElement_Visibility();
+		}
+		if (editorKey == UmlViewsRepository.General.Qualifiers.leaf) {
+			return UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -120,10 +137,16 @@ public class ControlFlowPropertiesEditionComponent extends SinglePartPropertiesE
 	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		ControlFlow controlFlow = (ControlFlow)semanticObject;
+		OpaqueAction opaqueAction = (OpaqueAction)semanticObject;
 
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
-			controlFlow.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
+			opaqueAction.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
+		}
+		if (UmlViewsRepository.General.visibility == event.getAffectedEditor()) {
+			opaqueAction.setVisibility((VisibilityKind)event.getNewValue());
+		}
+		if (UmlViewsRepository.General.Qualifiers.leaf == event.getAffectedEditor()) {
+			opaqueAction.setIsLeaf((Boolean)event.getNewValue());
 		}
 	}
 
@@ -142,6 +165,12 @@ public class ControlFlowPropertiesEditionComponent extends SinglePartPropertiesE
 					generalPart.setName("");
 				}
 			}
+			if (UMLPackage.eINSTANCE.getNamedElement_Visibility().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(UmlViewsRepository.General.visibility))
+				generalPart.setVisibility((VisibilityKind)msg.getNewValue());
+			
+			if (UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.Qualifiers.leaf))
+				generalPart.setLeaf((Boolean)msg.getNewValue());
+			
 			
 		}
 	}
@@ -154,7 +183,9 @@ public class ControlFlowPropertiesEditionComponent extends SinglePartPropertiesE
 	@Override
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			UMLPackage.eINSTANCE.getNamedElement_Name()		);
+			UMLPackage.eINSTANCE.getNamedElement_Name(),
+			UMLPackage.eINSTANCE.getNamedElement_Visibility(),
+			UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -163,7 +194,17 @@ public class ControlFlowPropertiesEditionComponent extends SinglePartPropertiesE
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#mustBeComposed(java.lang.Object, int)
 	 */
 	public boolean mustBeComposed(Object key, int kind) {
-		return key == UmlViewsRepository.General.name;
+		return key == UmlViewsRepository.General.name || key == UmlViewsRepository.General.visibility || key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.Qualifiers.class;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
+	 * @generated
+	 */
+	public boolean isRequired(Object key, int kind) {
+		return key == UmlViewsRepository.General.Qualifiers.leaf;
 	}
 
 	/**
@@ -182,6 +223,20 @@ public class ControlFlowPropertiesEditionComponent extends SinglePartPropertiesE
 						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newValue);
+				}
+				if (UmlViewsRepository.General.visibility == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), newValue);
+				}
+				if (UmlViewsRepository.General.Qualifiers.leaf == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

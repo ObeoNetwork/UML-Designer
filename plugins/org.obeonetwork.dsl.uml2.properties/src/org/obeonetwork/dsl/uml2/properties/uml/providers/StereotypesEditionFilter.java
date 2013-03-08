@@ -13,6 +13,7 @@ package org.obeonetwork.dsl.uml2.properties.uml.providers;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.jface.viewers.IFilter;
+import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.Actor;
 import org.eclipse.uml2.uml.Artifact;
 import org.eclipse.uml2.uml.Association;
@@ -21,7 +22,6 @@ import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Collaboration;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Connector;
-import org.eclipse.uml2.uml.ControlFlow;
 import org.eclipse.uml2.uml.ControlNode;
 import org.eclipse.uml2.uml.DataStoreNode;
 import org.eclipse.uml2.uml.DataType;
@@ -35,6 +35,7 @@ import org.eclipse.uml2.uml.FinalState;
 import org.eclipse.uml2.uml.Include;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.InterfaceRealization;
+import org.eclipse.uml2.uml.OpaqueAction;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.Pin;
@@ -80,11 +81,11 @@ public class StereotypesEditionFilter implements IFilter {
 						|| eObj instanceof Actor || eObj instanceof Artifact
 						|| eObj instanceof CallOperationAction
 						|| eObj instanceof Collaboration
-						|| eObj instanceof ControlFlow
+						|| eObj instanceof ActivityEdge
 						|| eObj instanceof DataStoreNode
 						|| eObj instanceof ControlNode
 						|| eObj instanceof Extend || eObj instanceof FinalState
-						|| eObj instanceof Include || eObj instanceof Pin);
+						|| eObj instanceof Include || eObj instanceof Pin || eObj instanceof OpaqueAction);
 	}
 
 }

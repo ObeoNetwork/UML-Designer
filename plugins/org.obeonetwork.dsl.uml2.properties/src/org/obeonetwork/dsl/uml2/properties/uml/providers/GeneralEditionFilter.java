@@ -13,6 +13,7 @@ package org.obeonetwork.dsl.uml2.properties.uml.providers;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.jface.viewers.IFilter;
+import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.Actor;
 import org.eclipse.uml2.uml.Artifact;
 import org.eclipse.uml2.uml.Association;
@@ -24,7 +25,6 @@ import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.ConnectorEnd;
-import org.eclipse.uml2.uml.ControlFlow;
 import org.eclipse.uml2.uml.ControlNode;
 import org.eclipse.uml2.uml.DataStoreNode;
 import org.eclipse.uml2.uml.DataType;
@@ -36,6 +36,7 @@ import org.eclipse.uml2.uml.FinalState;
 import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.Include;
 import org.eclipse.uml2.uml.Interface;
+import org.eclipse.uml2.uml.OpaqueAction;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.Pin;
@@ -84,11 +85,11 @@ public class GeneralEditionFilter implements IFilter {
 						|| eObj instanceof Collaboration
 						|| eObj instanceof Comment
 						|| eObj instanceof ConnectorEnd
-						|| eObj instanceof ControlFlow
+						|| eObj instanceof ActivityEdge
 						|| eObj instanceof DataStoreNode
 						|| eObj instanceof ControlNode
 						|| eObj instanceof Extend || eObj instanceof FinalState
-						|| eObj instanceof Include || eObj instanceof Pin);
+						|| eObj instanceof Include || eObj instanceof Pin || eObj instanceof OpaqueAction);
 	}
 
 }

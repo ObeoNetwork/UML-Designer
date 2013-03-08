@@ -28,23 +28,23 @@ import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
 import org.eclipse.jface.viewers.IFilter;
 
-import org.eclipse.uml2.uml.ControlFlow;
+import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import org.obeonetwork.dsl.uml2.properties.providers.UmlPropertiesEditionProvider;
 
-import org.obeonetwork.dsl.uml2.properties.uml.components.ControlFlowPropertiesEditionComponent;
+import org.obeonetwork.dsl.uml2.properties.uml.components.ActivityEdgePropertiesEditionComponent;
 
 /**
  * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
  * @generated
  */
-public class ControlFlowPropertiesEditionProvider extends UmlPropertiesEditionProvider {
+public class ActivityEdgePropertiesEditionProvider extends UmlPropertiesEditionProvider {
 
 	/**
 	 * Constructor without provider for super types.
 	 */
-	public ControlFlowPropertiesEditionProvider() {
+	public ActivityEdgePropertiesEditionProvider() {
 		super();
 	}
 
@@ -52,7 +52,7 @@ public class ControlFlowPropertiesEditionProvider extends UmlPropertiesEditionPr
 	 * Constructor with providers for super types.
 	 * @param superProviders providers to use for super types.
 	 */
-	public ControlFlowPropertiesEditionProvider(List<PropertiesEditingProvider> superProviders) {
+	public ActivityEdgePropertiesEditionProvider(List<PropertiesEditingProvider> superProviders) {
 		super(superProviders);
 	}
 
@@ -62,8 +62,8 @@ public class ControlFlowPropertiesEditionProvider extends UmlPropertiesEditionPr
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof ControlFlow) 
-					&& (UMLPackage.Literals.CONTROL_FLOW == editingContext.getEObject().eClass());
+		return (editingContext.getEObject() instanceof ActivityEdge) 
+					&& (UMLPackage.Literals.ACTIVITY_EDGE == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -72,7 +72,7 @@ public class ControlFlowPropertiesEditionProvider extends UmlPropertiesEditionPr
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof ControlFlow) && (ControlFlowPropertiesEditionComponent.GENERAL_PART.equals(part));
+		return (editingContext.getEObject() instanceof ActivityEdge) && (ActivityEdgePropertiesEditionComponent.GENERAL_PART.equals(part));
 	}
 
 	/**
@@ -82,7 +82,7 @@ public class ControlFlowPropertiesEditionProvider extends UmlPropertiesEditionPr
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ControlFlow) && (refinement == ControlFlowPropertiesEditionComponent.class);
+		return (editingContext.getEObject() instanceof ActivityEdge) && (refinement == ActivityEdgePropertiesEditionComponent.class);
 	}
 
 	/**
@@ -92,7 +92,7 @@ public class ControlFlowPropertiesEditionProvider extends UmlPropertiesEditionPr
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ControlFlow) && ((ControlFlowPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == ControlFlowPropertiesEditionComponent.class));
+		return (editingContext.getEObject() instanceof ActivityEdge) && ((ActivityEdgePropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == ActivityEdgePropertiesEditionComponent.class));
 	}
 
 	/**
@@ -101,8 +101,8 @@ public class ControlFlowPropertiesEditionProvider extends UmlPropertiesEditionPr
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof ControlFlow) {
-			return new ControlFlowPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		if (editingContext.getEObject() instanceof ActivityEdge) {
+			return new ActivityEdgePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode);
 	}
@@ -113,9 +113,9 @@ public class ControlFlowPropertiesEditionProvider extends UmlPropertiesEditionPr
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof ControlFlow) {
-			if (ControlFlowPropertiesEditionComponent.GENERAL_PART.equals(part))
-				return new ControlFlowPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		if (editingContext.getEObject() instanceof ActivityEdge) {
+			if (ActivityEdgePropertiesEditionComponent.GENERAL_PART.equals(part))
+				return new ActivityEdgePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part);
 	}
@@ -126,10 +126,10 @@ public class ControlFlowPropertiesEditionProvider extends UmlPropertiesEditionPr
 	 */
 	@SuppressWarnings("rawtypes")
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
-		if (editingContext.getEObject() instanceof ControlFlow) {
-			if (ControlFlowPropertiesEditionComponent.GENERAL_PART.equals(part)
-				&& refinement == ControlFlowPropertiesEditionComponent.class)
-				return new ControlFlowPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		if (editingContext.getEObject() instanceof ActivityEdge) {
+			if (ActivityEdgePropertiesEditionComponent.GENERAL_PART.equals(part)
+				&& refinement == ActivityEdgePropertiesEditionComponent.class)
+				return new ActivityEdgePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}
@@ -146,7 +146,7 @@ public class ControlFlowPropertiesEditionProvider extends UmlPropertiesEditionPr
 		 */
 		public boolean select(Object toTest) {
 			EObject eObj = EEFUtils.resolveSemanticObject(toTest);
-			return eObj != null && UMLPackage.Literals.CONTROL_FLOW == eObj.eClass();
+			return eObj != null && UMLPackage.Literals.ACTIVITY_EDGE == eObj.eClass();
 		}
 		
 	}

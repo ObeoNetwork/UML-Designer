@@ -226,6 +226,14 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createActivityEdgeAdapter()
+	 * @generated
+	 */
+	public Adapter createActivityEdgeAdapter() {
+		return new ActivityEdgePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createPinAdapter()
 	 * @generated
 	 */
@@ -274,14 +282,6 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createControlFlowAdapter()
-	 * @generated
-	 */
-	public Adapter createControlFlowAdapter() {
-		return new ControlFlowPropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
 	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createDataStoreNodeAdapter()
 	 * @generated
 	 */
@@ -295,6 +295,14 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	 */
 	public Adapter createFinalStateAdapter() {
 		return new FinalStatePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createOpaqueActionAdapter()
+	 * @generated
+	 */
+	public Adapter createOpaqueActionAdapter() {
+		return new OpaqueActionPropertiesEditionProvider();
 	}
 
 }
