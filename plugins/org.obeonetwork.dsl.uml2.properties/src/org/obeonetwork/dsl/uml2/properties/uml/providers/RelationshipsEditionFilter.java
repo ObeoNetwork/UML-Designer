@@ -27,6 +27,7 @@ import org.eclipse.uml2.uml.FinalState;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Parameter;
+import org.eclipse.uml2.uml.Pin;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Property;
@@ -60,7 +61,8 @@ public class RelationshipsEditionFilter implements IFilter {
 						|| eObj instanceof CallOperationAction
 						|| eObj instanceof Collaboration
 						|| eObj instanceof DataStoreNode
-						|| eObj instanceof ControlNode || eObj instanceof FinalState);
+						|| eObj instanceof ControlNode
+						|| eObj instanceof FinalState || eObj instanceof Pin);
 	}
 
 }

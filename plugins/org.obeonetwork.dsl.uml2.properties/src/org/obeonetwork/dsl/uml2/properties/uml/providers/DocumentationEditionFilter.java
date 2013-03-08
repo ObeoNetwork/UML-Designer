@@ -36,6 +36,7 @@ import org.eclipse.uml2.uml.Include;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Parameter;
+import org.eclipse.uml2.uml.Pin;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Property;
@@ -82,6 +83,7 @@ public class DocumentationEditionFilter implements IFilter {
 						|| eObj instanceof ControlFlow
 						|| eObj instanceof DataStoreNode
 						|| eObj instanceof ControlNode
-						|| eObj instanceof Extend || eObj instanceof FinalState || eObj instanceof Include);
+						|| eObj instanceof Extend || eObj instanceof FinalState
+						|| eObj instanceof Include || eObj instanceof Pin);
 	}
 }

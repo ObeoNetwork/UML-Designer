@@ -226,6 +226,14 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createPinAdapter()
+	 * @generated
+	 */
+	public Adapter createPinAdapter() {
+		return new PinPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createControlNodeAdapter()
 	 * @generated
 	 */
