@@ -49,6 +49,8 @@ import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionStep;
 
+import org.eclipse.emf.eef.runtime.ui.providers.EMFListContentProvider;
+
 import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
@@ -155,6 +157,7 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	protected EEFImageViewer icon;
 	protected Button reentrant;
 	protected Text body;
+	protected EMFComboViewer extendedCase;
 
 
 
@@ -236,6 +239,7 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
     generalStep.addStep(UmlViewsRepository.General.icon);
     generalStep.addStep(UmlViewsRepository.General.reentrant);
     generalStep.addStep(UmlViewsRepository.General.body);
+    generalStep.addStep(UmlViewsRepository.General.extendedCase);
     
     composer = new PartComposer(generalStep) {
 
@@ -348,6 +352,9 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
         }
         if (key == UmlViewsRepository.General.body) {
           return createBodyTextarea(widgetFactory, parent);
+        }
+        if (key == UmlViewsRepository.General.extendedCase) {
+          return createExtendedCaseEMFComboViewer(widgetFactory, parent);
         }
         return parent;
       }
@@ -1936,6 +1943,39 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
     EditingUtils.setEEFtype(body, "eef::Textarea"); //$NON-NLS-1$
     FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.body, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
     // Start of user code for createBodyTextArea
+
+    // End of user code
+    return parent;
+  }
+
+	/**
+	 * @generated
+	 */
+	
+	protected Composite createExtendedCaseEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
+    createDescription(parent, UmlViewsRepository.General.extendedCase, UmlMessages.GeneralPropertiesEditionPart_ExtendedCaseLabel);
+    extendedCase = new EMFComboViewer(parent);
+    GridData extendedCaseData = new GridData(GridData.FILL_HORIZONTAL);
+    extendedCase.getCombo().setLayoutData(extendedCaseData);
+    extendedCase.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    extendedCase.addSelectionChangedListener(new ISelectionChangedListener() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.extendedCase, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getExtendedCase()));
+      }
+
+    });
+    extendedCase.setContentProvider(new EMFListContentProvider());
+    EditingUtils.setID(extendedCase.getCombo(), UmlViewsRepository.General.extendedCase);
+    EditingUtils.setEEFtype(extendedCase.getCombo(), "eef::Combo");
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.extendedCase, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    // Start of user code for createExtendedCaseEMFComboViewer
 
     // End of user code
     return parent;
@@ -3580,6 +3620,63 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
       body.setEnabled(true);
     }	
     
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getExtendedCase()
+	 * @generated
+	 */
+	public Object getExtendedCase() {
+    if (extendedCase.getSelection() instanceof StructuredSelection) {
+      return ((StructuredSelection) extendedCase.getSelection()).getFirstElement();
+    }
+    return "";
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#initExtendedCase(Object input, Object currentValue)
+	 */
+	public void initExtendedCase(Object input, Object currentValue) {
+		extendedCase.setInput(input);
+		if (currentValue != null) {
+			extendedCase.setSelection(new StructuredSelection(currentValue));
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#setExtendedCase(Object newValue)
+	 * @generated
+	 */
+	public void setExtendedCase(Object newValue) {
+    if (newValue != null) {
+      extendedCase.modelUpdating(new StructuredSelection(newValue));
+    } else {
+      extendedCase.modelUpdating(new StructuredSelection("")); //$NON-NLS-1$
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.extendedCase);
+    if (eefElementEditorReadOnlyState && extendedCase.isEnabled()) {
+      extendedCase.setEnabled(false);
+      extendedCase.setToolTipText(UmlMessages.General_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !extendedCase.isEnabled()) {
+      extendedCase.setEnabled(true);
+    }	
+    
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#addFilterExtendedCase(ViewerFilter filter)
+	 * @generated
+	 */
+	public void addFilterToExtendedCase(ViewerFilter filter) {
+    extendedCase.addFilter(filter);
   }
 
 

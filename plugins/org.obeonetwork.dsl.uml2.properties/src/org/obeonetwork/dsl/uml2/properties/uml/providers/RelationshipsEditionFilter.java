@@ -23,6 +23,7 @@ import org.eclipse.uml2.uml.DataStoreNode;
 import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.DecisionNode;
 import org.eclipse.uml2.uml.Enumeration;
+import org.eclipse.uml2.uml.FinalState;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Parameter;
@@ -58,7 +59,8 @@ public class RelationshipsEditionFilter implements IFilter {
 						|| eObj instanceof Actor || eObj instanceof Artifact
 						|| eObj instanceof CallOperationAction
 						|| eObj instanceof Collaboration
-						|| eObj instanceof DataStoreNode || eObj instanceof DecisionNode);
+						|| eObj instanceof DataStoreNode
+						|| eObj instanceof DecisionNode || eObj instanceof FinalState);
 	}
 
 }

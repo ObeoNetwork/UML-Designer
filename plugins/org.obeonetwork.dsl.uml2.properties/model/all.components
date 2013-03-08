@@ -565,6 +565,30 @@
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//DecisionNode"/>
       </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_66xJ0IdLEeKcacknc_K90g" name="Extend" views="_Kt6kIFv3EeKZBNASYbV97A">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_DVALMIdMEeKcacknc_K90g" name="name" views="_3INTYFv3EeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Goi_kIdMEeKcacknc_K90g" name="visibility" views="_maltQFv8EeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/visibility"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_NLJJ4IdMEeKcacknc_K90g" name="extendedCase" views="_RPP4gIdMEeKcacknc_K90g">
+          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Extend/extendedCase"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Extend"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_W7lTwIdNEeKcacknc_K90g" name="FinalState" views="_Kt6kIFv3EeKZBNASYbV97A">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ictpoIfGEeKcacknc_K90g" name="name" views="_3INTYFv3EeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ictpoYfGEeKcacknc_K90g" name="visibility" views="_maltQFv8EeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/visibility"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_jOC_8IfGEeKcacknc_K90g" name="leaf" views="_nujsAFv7EeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//RedefinableElement/isLeaf"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//FinalState"/>
+      </bindings>
     </categories>
     <model href="platform:/plugin/org.eclipse.uml2.uml/model/UML.genmodel#//uml"/>
   </eef-components:PropertiesEditionContext>
@@ -680,6 +704,9 @@
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_FFoNkIdHEeKcacknc_K90g" name="body">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>
+        </elements>
+        <elements xsi:type="eef-views:ElementEditor" xmi:id="_RPP4gIdMEeKcacknc_K90g" name="extendedCase">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.6"/>
         </elements>
       </views>
       <views xmi:id="_55BGsF8vEeKd8d7WgZ31eQ" name="Operations">

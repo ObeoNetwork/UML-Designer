@@ -336,6 +336,18 @@
                id="org.obeonetwork.dsl.uml2.properties.uml.section.DecisionNode"
                tab="General">
          </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.ExtendPropertiesEditionProvider$EditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Extend"
+               tab="General">
+         </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.FinalStatePropertiesEditionProvider$EditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.FinalState"
+               tab="General">
+         </propertySection>
       </propertySections>
    </extension>
  </plugin>

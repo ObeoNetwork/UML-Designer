@@ -309,6 +309,12 @@ public class UmlMessages extends NLS {
 	 * @generated
 	 */
 	
+	public static String GeneralPropertiesEditionPart_ExtendedCaseLabel;
+
+	/**
+	 * @generated
+	 */
+	
 	public static String OperationsPropertiesEditionPart_OperationsLabel;
 
 	/**

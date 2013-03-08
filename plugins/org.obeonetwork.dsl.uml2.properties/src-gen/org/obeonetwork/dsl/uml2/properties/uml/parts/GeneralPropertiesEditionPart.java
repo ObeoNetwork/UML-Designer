@@ -862,6 +862,37 @@ public interface GeneralPropertiesEditionPart {
 	public void setBody(String newValue);
 
 
+	/**
+	 * @return the extendedCase
+	 * @generated
+	 */
+	public Object getExtendedCase();
+
+	/**
+	 * Init the extendedCase
+	 * @param input choice of values
+	 * @param currentValue the current value
+	 */
+	public void initExtendedCase(Object input, Object currentValue);
+
+	/**
+	 * Defines a new extendedCase
+	 * @param newValue the new extendedCase to set
+	 * @generated
+	 */
+	public void setExtendedCase(Object newValue);
+
+	/**
+	 * Adds the given filter to the extendedCase edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addFilterToExtendedCase(ViewerFilter filter);
+
+
 
 
 

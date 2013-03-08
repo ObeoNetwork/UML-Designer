@@ -244,6 +244,12 @@ public class UmlViewsRepository {
 	
 	public static String body = "uml::General::body";
 	
+	/**
+	 * @generated
+	 */
+	
+	public static String extendedCase = "uml::General::extendedCase";
+	
 	}
 
 	/**
