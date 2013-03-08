@@ -26,7 +26,8 @@ Require-Bundle: fr.obeo.acceleo.gen,
  org.eclipse.core.expressions,
  org.apache.xerces;bundle-version="2.9.0",
  fr.obeo.dsl.common.acceleo;bundle-version="1.0.0",
- fr.obeo.dsl.common.acceleo.mtl;bundle-version="1.0.0"
+ fr.obeo.dsl.common.acceleo.mtl;bundle-version="1.0.0",
+ org.obeonetwork.gmf.runtime.diagram.ui.extension
 Bundle-ActivationPolicy: lazy
 Export-Package: org.obeonetwork.dsl.uml2.design,
  org.obeonetwork.dsl.uml2.design.services,
