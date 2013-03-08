@@ -893,6 +893,37 @@ public interface GeneralPropertiesEditionPart {
 	public void addFilterToExtendedCase(ViewerFilter filter);
 
 
+	/**
+	 * @return the addition
+	 * @generated
+	 */
+	public Object getAddition();
+
+	/**
+	 * Init the addition
+	 * @param input choice of values
+	 * @param currentValue the current value
+	 */
+	public void initAddition(Object input, Object currentValue);
+
+	/**
+	 * Defines a new addition
+	 * @param newValue the new addition to set
+	 * @generated
+	 */
+	public void setAddition(Object newValue);
+
+	/**
+	 * Adds the given filter to the addition edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addFilterToAddition(ViewerFilter filter);
+
+
 
 
 

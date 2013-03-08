@@ -32,6 +32,7 @@ import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.Extend;
 import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.FinalState;
+import org.eclipse.uml2.uml.Include;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.InterfaceRealization;
 import org.eclipse.uml2.uml.Operation;
@@ -81,7 +82,7 @@ public class StereotypesEditionFilter implements IFilter {
 						|| eObj instanceof ControlFlow
 						|| eObj instanceof DataStoreNode
 						|| eObj instanceof ControlNode
-						|| eObj instanceof Extend || eObj instanceof FinalState);
+						|| eObj instanceof Extend || eObj instanceof FinalState || eObj instanceof Include);
 	}
 
 }

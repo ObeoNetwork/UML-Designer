@@ -34,6 +34,7 @@ import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.Extend;
 import org.eclipse.uml2.uml.FinalState;
 import org.eclipse.uml2.uml.Generalization;
+import org.eclipse.uml2.uml.Include;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Parameter;
@@ -85,7 +86,7 @@ public class GeneralEditionFilter implements IFilter {
 						|| eObj instanceof ControlFlow
 						|| eObj instanceof DataStoreNode
 						|| eObj instanceof ControlNode
-						|| eObj instanceof Extend || eObj instanceof FinalState);
+						|| eObj instanceof Extend || eObj instanceof FinalState || eObj instanceof Include);
 	}
 
 }

@@ -250,6 +250,12 @@ public class UmlViewsRepository {
 	
 	public static String extendedCase = "uml::General::extendedCase";
 	
+	/**
+	 * @generated
+	 */
+	
+	public static String addition = "uml::General::addition";
+	
 	}
 
 	/**

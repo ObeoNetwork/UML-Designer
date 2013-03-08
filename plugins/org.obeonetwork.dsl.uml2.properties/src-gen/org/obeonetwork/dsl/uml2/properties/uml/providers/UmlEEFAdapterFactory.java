@@ -210,6 +210,14 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createIncludeAdapter()
+	 * @generated
+	 */
+	public Adapter createIncludeAdapter() {
+		return new IncludePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createConnectorAdapter()
 	 * @generated
 	 */

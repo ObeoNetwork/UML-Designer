@@ -152,6 +152,7 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
 	protected Button reentrant;
 	protected Text body;
 	protected EMFComboViewer extendedCase;
+	protected EMFComboViewer addition;
 
 
 
@@ -227,6 +228,7 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
     generalStep.addStep(UmlViewsRepository.General.reentrant);
     generalStep.addStep(UmlViewsRepository.General.body);
     generalStep.addStep(UmlViewsRepository.General.extendedCase);
+    generalStep.addStep(UmlViewsRepository.General.addition);
     
     composer = new PartComposer(generalStep) {
 
@@ -342,6 +344,9 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
         }
         if (key == UmlViewsRepository.General.extendedCase) {
           return createExtendedCaseEMFComboViewer(parent);
+        }
+        if (key == UmlViewsRepository.General.addition) {
+          return createAdditionEMFComboViewer(parent);
         }
         return parent;
       }
@@ -1834,6 +1839,39 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
     EditingUtils.setEEFtype(extendedCase.getCombo(), "eef::Combo"); //$NON-NLS-1$
     SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.extendedCase, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
     // Start of user code for createExtendedCaseEMFComboViewer
+
+    // End of user code
+    return parent;
+  }
+
+	/**
+	 * @generated
+	 */
+	
+	protected Composite createAdditionEMFComboViewer(Composite parent) {
+    createDescription(parent, UmlViewsRepository.General.addition, UmlMessages.GeneralPropertiesEditionPart_AdditionLabel);
+    addition = new EMFComboViewer(parent);
+    GridData additionData = new GridData(GridData.FILL_HORIZONTAL);
+    addition.getCombo().setLayoutData(additionData);
+    addition.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    addition.addSelectionChangedListener(new ISelectionChangedListener() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartImpl.this, UmlViewsRepository.General.addition, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getAddition()));
+      }
+
+    });
+    addition.setContentProvider(new EMFListContentProvider());
+    EditingUtils.setID(addition.getCombo(), UmlViewsRepository.General.addition);
+    EditingUtils.setEEFtype(addition.getCombo(), "eef::Combo"); //$NON-NLS-1$
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.addition, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    // Start of user code for createAdditionEMFComboViewer
 
     // End of user code
     return parent;
@@ -3535,6 +3573,63 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
 	 */
 	public void addFilterToExtendedCase(ViewerFilter filter) {
     extendedCase.addFilter(filter);
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getAddition()
+	 * @generated
+	 */
+	public Object getAddition() {
+    if (addition.getSelection() instanceof StructuredSelection) {
+      return ((StructuredSelection) addition.getSelection()).getFirstElement();
+    }
+    return "";
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#initAddition(Object input, Object currentValue)
+	 */
+	public void initAddition(Object input, Object currentValue) {
+		addition.setInput(input);
+		if (currentValue != null) {
+			addition.setSelection(new StructuredSelection(currentValue));
+		}
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#setAddition(Object newValue)
+	 * @generated
+	 */
+	public void setAddition(Object newValue) {
+    if (newValue != null) {
+      addition.modelUpdating(new StructuredSelection(newValue));
+    } else {
+      addition.modelUpdating(new StructuredSelection("")); //$NON-NLS-1$
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.addition);
+    if (eefElementEditorReadOnlyState && addition.isEnabled()) {
+      addition.setEnabled(false);
+      addition.setToolTipText(UmlMessages.General_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !addition.isEnabled()) {
+      addition.setEnabled(true);
+    }	
+    
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#addFilterAddition(ViewerFilter filter)
+	 * @generated
+	 */
+	public void addFilterToAddition(ViewerFilter filter) {
+    addition.addFilter(filter);
   }
 
 
