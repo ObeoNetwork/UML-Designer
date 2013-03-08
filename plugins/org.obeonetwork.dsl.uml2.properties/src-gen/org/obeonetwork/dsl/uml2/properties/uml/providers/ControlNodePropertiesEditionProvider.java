@@ -28,23 +28,23 @@ import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
 import org.eclipse.jface.viewers.IFilter;
 
-import org.eclipse.uml2.uml.DecisionNode;
+import org.eclipse.uml2.uml.ControlNode;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import org.obeonetwork.dsl.uml2.properties.providers.UmlPropertiesEditionProvider;
 
-import org.obeonetwork.dsl.uml2.properties.uml.components.DecisionNodePropertiesEditionComponent;
+import org.obeonetwork.dsl.uml2.properties.uml.components.ControlNodePropertiesEditionComponent;
 
 /**
  * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
  * @generated
  */
-public class DecisionNodePropertiesEditionProvider extends UmlPropertiesEditionProvider {
+public class ControlNodePropertiesEditionProvider extends UmlPropertiesEditionProvider {
 
 	/**
 	 * Constructor without provider for super types.
 	 */
-	public DecisionNodePropertiesEditionProvider() {
+	public ControlNodePropertiesEditionProvider() {
 		super();
 	}
 
@@ -52,7 +52,7 @@ public class DecisionNodePropertiesEditionProvider extends UmlPropertiesEditionP
 	 * Constructor with providers for super types.
 	 * @param superProviders providers to use for super types.
 	 */
-	public DecisionNodePropertiesEditionProvider(List<PropertiesEditingProvider> superProviders) {
+	public ControlNodePropertiesEditionProvider(List<PropertiesEditingProvider> superProviders) {
 		super(superProviders);
 	}
 
@@ -62,8 +62,8 @@ public class DecisionNodePropertiesEditionProvider extends UmlPropertiesEditionP
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof DecisionNode) 
-					&& (UMLPackage.Literals.DECISION_NODE == editingContext.getEObject().eClass());
+		return (editingContext.getEObject() instanceof ControlNode) 
+					&& (UMLPackage.Literals.CONTROL_NODE == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -72,7 +72,7 @@ public class DecisionNodePropertiesEditionProvider extends UmlPropertiesEditionP
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof DecisionNode) && (DecisionNodePropertiesEditionComponent.GENERAL_PART.equals(part));
+		return (editingContext.getEObject() instanceof ControlNode) && (ControlNodePropertiesEditionComponent.GENERAL_PART.equals(part));
 	}
 
 	/**
@@ -82,7 +82,7 @@ public class DecisionNodePropertiesEditionProvider extends UmlPropertiesEditionP
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof DecisionNode) && (refinement == DecisionNodePropertiesEditionComponent.class);
+		return (editingContext.getEObject() instanceof ControlNode) && (refinement == ControlNodePropertiesEditionComponent.class);
 	}
 
 	/**
@@ -92,7 +92,7 @@ public class DecisionNodePropertiesEditionProvider extends UmlPropertiesEditionP
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof DecisionNode) && ((DecisionNodePropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == DecisionNodePropertiesEditionComponent.class));
+		return (editingContext.getEObject() instanceof ControlNode) && ((ControlNodePropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == ControlNodePropertiesEditionComponent.class));
 	}
 
 	/**
@@ -101,8 +101,8 @@ public class DecisionNodePropertiesEditionProvider extends UmlPropertiesEditionP
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof DecisionNode) {
-			return new DecisionNodePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		if (editingContext.getEObject() instanceof ControlNode) {
+			return new ControlNodePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode);
 	}
@@ -113,9 +113,9 @@ public class DecisionNodePropertiesEditionProvider extends UmlPropertiesEditionP
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof DecisionNode) {
-			if (DecisionNodePropertiesEditionComponent.GENERAL_PART.equals(part))
-				return new DecisionNodePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		if (editingContext.getEObject() instanceof ControlNode) {
+			if (ControlNodePropertiesEditionComponent.GENERAL_PART.equals(part))
+				return new ControlNodePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part);
 	}
@@ -126,10 +126,10 @@ public class DecisionNodePropertiesEditionProvider extends UmlPropertiesEditionP
 	 */
 	@SuppressWarnings("rawtypes")
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
-		if (editingContext.getEObject() instanceof DecisionNode) {
-			if (DecisionNodePropertiesEditionComponent.GENERAL_PART.equals(part)
-				&& refinement == DecisionNodePropertiesEditionComponent.class)
-				return new DecisionNodePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		if (editingContext.getEObject() instanceof ControlNode) {
+			if (ControlNodePropertiesEditionComponent.GENERAL_PART.equals(part)
+				&& refinement == ControlNodePropertiesEditionComponent.class)
+				return new ControlNodePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}
@@ -146,7 +146,7 @@ public class DecisionNodePropertiesEditionProvider extends UmlPropertiesEditionP
 		 */
 		public boolean select(Object toTest) {
 			EObject eObj = EEFUtils.resolveSemanticObject(toTest);
-			return eObj != null && UMLPackage.Literals.DECISION_NODE == eObj.eClass();
+			return eObj != null && UMLPackage.Literals.CONTROL_NODE == eObj.eClass();
 		}
 		
 	}

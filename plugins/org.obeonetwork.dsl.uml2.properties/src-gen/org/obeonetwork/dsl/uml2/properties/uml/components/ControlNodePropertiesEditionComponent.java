@@ -41,7 +41,7 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
 import org.eclipse.uml2.types.TypesPackage;
 
-import org.eclipse.uml2.uml.DecisionNode;
+import org.eclipse.uml2.uml.ControlNode;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -53,7 +53,7 @@ import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
  * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
  * @generated
  */
-public class DecisionNodePropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
+public class ControlNodePropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
 	/**
 	 * @generated
@@ -67,8 +67,8 @@ public class DecisionNodePropertiesEditionComponent extends SinglePartProperties
 	 * Default constructor
 	 * @generated
 	 */
-	public DecisionNodePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject decisionNode, String editing_mode) {
-		super(editingContext, decisionNode, editing_mode);
+	public ControlNodePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject controlNode, String editing_mode) {
+		super(editingContext, controlNode, editing_mode);
 		parts = new String[] { GENERAL_PART };
 		repositoryKey = UmlViewsRepository.class;
 		partKey = UmlViewsRepository.General.class;
@@ -86,16 +86,16 @@ public class DecisionNodePropertiesEditionComponent extends SinglePartProperties
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
 			
-			final DecisionNode decisionNode = (DecisionNode)elt;
+			final ControlNode controlNode = (ControlNode)elt;
 			final GeneralPropertiesEditionPart generalPart = (GeneralPropertiesEditionPart)editingPart;
 			// init values
 			if (isAccessible(UmlViewsRepository.General.name))
-				generalPart.setName(EEFConverterUtil.convertToString(TypesPackage.Literals.STRING, decisionNode.getName()));
+				generalPart.setName(EEFConverterUtil.convertToString(TypesPackage.Literals.STRING, controlNode.getName()));
 			
 			if (isAccessible(UmlViewsRepository.General.visibility)) {
-				generalPart.initVisibility(EEFUtils.choiceOfValues(decisionNode, UMLPackage.eINSTANCE.getNamedElement_Visibility()), decisionNode.getVisibility());
+				generalPart.initVisibility(EEFUtils.choiceOfValues(controlNode, UMLPackage.eINSTANCE.getNamedElement_Visibility()), controlNode.getVisibility());
 			}
-			generalPart.setLeaf(decisionNode.isLeaf());
+			generalPart.setLeaf(controlNode.isLeaf());
 			
 			// init filters
 			
@@ -137,16 +137,16 @@ public class DecisionNodePropertiesEditionComponent extends SinglePartProperties
 	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		DecisionNode decisionNode = (DecisionNode)semanticObject;
+		ControlNode controlNode = (ControlNode)semanticObject;
 
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
-			decisionNode.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
+			controlNode.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}
 		if (UmlViewsRepository.General.visibility == event.getAffectedEditor()) {
-			decisionNode.setVisibility((VisibilityKind)event.getNewValue());
+			controlNode.setVisibility((VisibilityKind)event.getNewValue());
 		}
 		if (UmlViewsRepository.General.Qualifiers.leaf == event.getAffectedEditor()) {
-			decisionNode.setIsLeaf((Boolean)event.getNewValue());
+			controlNode.setIsLeaf((Boolean)event.getNewValue());
 		}
 	}
 

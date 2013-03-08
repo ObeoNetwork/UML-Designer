@@ -553,7 +553,7 @@
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//DataStoreNode"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_64EQkIdKEeKcacknc_K90g" name="DecisionNode" views="_Kt6kIFv3EeKZBNASYbV97A">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_64EQkIdKEeKcacknc_K90g" name="ControlNode" views="_Kt6kIFv3EeKZBNASYbV97A">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_CeWFcIdLEeKcacknc_K90g" name="name" views="_3INTYFv3EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
         </properties>
@@ -563,7 +563,7 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_DLKIIYdLEeKcacknc_K90g" name="leaf" views="_nujsAFv7EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//RedefinableElement/isLeaf"/>
         </properties>
-        <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//DecisionNode"/>
+        <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//ControlNode"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_66xJ0IdLEeKcacknc_K90g" name="Extend" views="_Kt6kIFv3EeKZBNASYbV97A">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_DVALMIdMEeKcacknc_K90g" name="name" views="_3INTYFv3EeKZBNASYbV97A">

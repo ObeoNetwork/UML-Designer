@@ -22,9 +22,9 @@ import org.eclipse.uml2.uml.Collaboration;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.ControlFlow;
+import org.eclipse.uml2.uml.ControlNode;
 import org.eclipse.uml2.uml.DataStoreNode;
 import org.eclipse.uml2.uml.DataType;
-import org.eclipse.uml2.uml.DecisionNode;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Deployment;
 import org.eclipse.uml2.uml.Enumeration;
@@ -80,7 +80,7 @@ public class StereotypesEditionFilter implements IFilter {
 						|| eObj instanceof Collaboration
 						|| eObj instanceof ControlFlow
 						|| eObj instanceof DataStoreNode
-						|| eObj instanceof DecisionNode
+						|| eObj instanceof ControlNode
 						|| eObj instanceof Extend || eObj instanceof FinalState);
 	}
 

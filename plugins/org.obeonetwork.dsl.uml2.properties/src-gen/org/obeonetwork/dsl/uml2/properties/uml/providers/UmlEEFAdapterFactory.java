@@ -218,6 +218,14 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createControlNodeAdapter()
+	 * @generated
+	 */
+	public Adapter createControlNodeAdapter() {
+		return new ControlNodePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createActorAdapter()
 	 * @generated
 	 */
@@ -263,14 +271,6 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	 */
 	public Adapter createDataStoreNodeAdapter() {
 		return new DataStoreNodePropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createDecisionNodeAdapter()
-	 * @generated
-	 */
-	public Adapter createDecisionNodeAdapter() {
-		return new DecisionNodePropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}
