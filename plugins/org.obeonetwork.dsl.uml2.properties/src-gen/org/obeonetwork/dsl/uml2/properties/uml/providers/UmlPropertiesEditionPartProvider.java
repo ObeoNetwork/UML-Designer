@@ -24,12 +24,14 @@ import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 
 import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.AttributesPropertiesEditionPartForm;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.LiteralsPropertiesEditionPartForm;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.OperationsPropertiesEditionPartForm;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.ParametersPropertiesEditionPartForm;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.ProfilePropertiesEditionPartForm;
 
 import org.obeonetwork.dsl.uml2.properties.uml.parts.impl.AttributesPropertiesEditionPartImpl;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.impl.GeneralPropertiesEditionPartImpl;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.impl.LiteralsPropertiesEditionPartImpl;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.impl.OperationsPropertiesEditionPartImpl;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.impl.ParametersPropertiesEditionPartImpl;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.impl.ProfilePropertiesEditionPartImpl;
@@ -84,6 +86,12 @@ public class UmlPropertiesEditionPartProvider implements IPropertiesEditionPartP
 				return new ProfilePropertiesEditionPartImpl(component);
 			if (kind == UmlViewsRepository.FORM_KIND)
 				return new ProfilePropertiesEditionPartForm(component);
+		}
+		if (key == UmlViewsRepository.Literals.class) {
+			if (kind == UmlViewsRepository.SWT_KIND)
+				return new LiteralsPropertiesEditionPartImpl(component);
+			if (kind == UmlViewsRepository.FORM_KIND)
+				return new LiteralsPropertiesEditionPartForm(component);
 		}
 		return null;
 	}

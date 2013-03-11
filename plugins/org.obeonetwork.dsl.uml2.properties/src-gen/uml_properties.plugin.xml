@@ -66,6 +66,13 @@
          </propertyTab>
 
          <propertyTab
+               id="Literals"
+               label="Literals"
+               category="extended"
+               afterTab="General">
+         </propertyTab>
+
+         <propertyTab
                id="Parameters"
                label="Parameters"
                category="extended"
@@ -167,6 +174,12 @@
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.EnumerationPropertiesEditionProvider$EditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Enumeration"
                tab="General">
+         </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.LiteralsPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.EnumerationPropertiesEditionProvider$EditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Enumeration"
+               tab="Literals">
          </propertySection>
          <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.AttributesPropertiesEditionPartForm"

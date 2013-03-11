@@ -316,4 +316,17 @@ public class UmlViewsRepository {
 	
 	}
 
+	/**
+	 * Literals view descriptor
+	 * @generated
+	 */
+	public static class Literals {
+	/**
+	 * @generated
+	 */
+	
+	public static String literals_ = "uml::Literals::literals_";
+	
+	}
+
 }

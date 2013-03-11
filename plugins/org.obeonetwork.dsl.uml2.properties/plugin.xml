@@ -51,6 +51,48 @@ Contributors:
                label="General"
                category="default">
          </propertyTab>
+         <propertyTab
+               afterTab="General"
+               category="extended"
+               id="Literals"
+               label="Literals">
+         </propertyTab>
+         <propertyTab
+               afterTab="General"
+               category="extended"
+               id="Parameters"
+               label="Parameters">
+         </propertyTab>
+         <propertyTab
+               afterTab="General"
+               category="extended"
+               id="Profile"
+               label="Profile">
+         </propertyTab>
+         <propertyTab
+               afterTab="General"
+               category="extended"
+               id="Attributes"
+               label="Attributes">
+         </propertyTab>
+         <propertyTab
+               afterTab="Attributes"
+               category="extended"
+               id="Operations"
+               label="Operations">
+         </propertyTab>
+         <propertyTab
+               afterTab="General"
+               category="extended"
+               id="Relationships"
+               label="Relationships">
+         </propertyTab>
+         <propertyTab
+               afterTab="General"
+               category="extended"
+               id="Stereotypes"
+               label="Stereotypes">
+         </propertyTab>
 
          <propertyTab
                id="Documentation"
@@ -59,47 +101,11 @@ Contributors:
                afterTab="General">
          </propertyTab>
 
-         <propertyTab
-               id="Profile"
-               label="Profile"
-               category="extended"
-               afterTab="Documentation">
-         </propertyTab>
 
-         <propertyTab
-               id="Operations"
-               label="Operations"
-               category="extended"
-               afterTab="Documentation">
-         </propertyTab>
 
-         <propertyTab
-               id="Attributes"
-               label="Attributes"
-               category="extended"
-               afterTab="Operations">
-         </propertyTab>
 
-         <propertyTab
-               id="Relationships"
-               label="Relationships"
-               category="extended"
-               afterTab="Attributes">
-         </propertyTab>
 
-         <propertyTab
-               id="Stereotypes"
-               label="Stereotypes"
-               category="extended"
-               afterTab="Relationships">
-         </propertyTab>
 
-         <propertyTab
-               id="Parameters"
-               label="Parameters"
-               category="extended"
-               afterTab="Documentation">
-         </propertyTab>
 
       </propertyTabs>
    </extension>
@@ -154,6 +160,12 @@ Contributors:
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.OperationPropertiesEditionProvider$EditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Operation"
                tab="Parameters">
+         </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.LiteralsPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.EnumerationPropertiesEditionProvider$EditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Enumeration"
+               tab="Literals">
          </propertySection>
       </propertySections>
    </extension>
