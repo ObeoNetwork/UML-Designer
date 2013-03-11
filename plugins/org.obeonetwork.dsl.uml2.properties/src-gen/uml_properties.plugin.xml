@@ -348,6 +348,18 @@
                id="org.obeonetwork.dsl.uml2.properties.uml.section.OpaqueAction"
                tab="General">
          </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.PseudoStatePropertiesEditionProvider$EditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Pseudostate"
+               tab="General">
+         </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.RegionPropertiesEditionProvider$EditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Region"
+               tab="General">
+         </propertySection>
       </propertySections>
    </extension>
  </plugin>

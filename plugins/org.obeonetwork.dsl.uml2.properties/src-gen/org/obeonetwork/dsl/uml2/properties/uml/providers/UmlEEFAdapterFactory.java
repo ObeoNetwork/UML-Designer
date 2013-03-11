@@ -130,6 +130,22 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createPseudostateAdapter()
+	 * @generated
+	 */
+	public Adapter createPseudostateAdapter() {
+		return new PseudoStatePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createRegionAdapter()
+	 * @generated
+	 */
+	public Adapter createRegionAdapter() {
+		return new RegionPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createPortAdapter()
 	 * @generated
 	 */

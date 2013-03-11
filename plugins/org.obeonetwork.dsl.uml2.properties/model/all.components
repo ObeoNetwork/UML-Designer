@@ -640,6 +640,27 @@
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//OpaqueAction"/>
       </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_PqelkYoqEeKz7Nysxc3j5A" name="PseudoState" views="_Kt6kIFv3EeKZBNASYbV97A">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_UM7_8IoxEeKz7Nysxc3j5A" name="name" views="_3INTYFv3EeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_UM7_8YoxEeKz7Nysxc3j5A" name="visibility" views="_maltQFv8EeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/visibility"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_dkIY0IoxEeKz7Nysxc3j5A" name="kind" views="_EDmS8IozEeKz7Nysxc3j5A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Pseudostate/kind"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Pseudostate"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_oYDRkIo1EeKz7Nysxc3j5A" name="Region" views="_Kt6kIFv3EeKZBNASYbV97A">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_qRam8Io1EeKz7Nysxc3j5A" name="name" views="_3INTYFv3EeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_qRam8Yo1EeKz7Nysxc3j5A" name="visibility" views="_maltQFv8EeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/visibility"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Region"/>
+      </bindings>
     </categories>
     <model href="platform:/plugin/org.eclipse.uml2.uml/model/UML.genmodel#//uml"/>
   </eef-components:PropertiesEditionContext>
@@ -761,6 +782,9 @@
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_ZExhsIf5EeKJf7EuS7bbSA" name="addition">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.6"/>
+        </elements>
+        <elements xsi:type="eef-views:ElementEditor" xmi:id="_EDmS8IozEeKz7Nysxc3j5A" name="pseudostatekind">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
         </elements>
       </views>
       <views xmi:id="_55BGsF8vEeKd8d7WgZ31eQ" name="Operations">

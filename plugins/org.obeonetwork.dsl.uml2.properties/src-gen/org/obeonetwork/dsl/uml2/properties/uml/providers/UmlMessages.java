@@ -321,6 +321,12 @@ public class UmlMessages extends NLS {
 	 * @generated
 	 */
 	
+	public static String GeneralPropertiesEditionPart_PseudostatekindLabel;
+
+	/**
+	 * @generated
+	 */
+	
 	public static String OperationsPropertiesEditionPart_OperationsLabel;
 
 	/**

@@ -32,6 +32,8 @@ import org.eclipse.uml2.uml.Pin;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Region;
+import org.eclipse.uml2.uml.Vertex;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.RelationshipsPropertiesEditionPart;
 
 /**
@@ -64,7 +66,9 @@ public class RelationshipsEditionFilter implements IFilter {
 						|| eObj instanceof Collaboration
 						|| eObj instanceof DataStoreNode
 						|| eObj instanceof ControlNode
-						|| eObj instanceof FinalState || eObj instanceof Pin || eObj instanceof OpaqueAction);
+						|| eObj instanceof FinalState || eObj instanceof Pin
+						|| eObj instanceof OpaqueAction
+						|| eObj instanceof Vertex || eObj instanceof Region);
 	}
 
 }

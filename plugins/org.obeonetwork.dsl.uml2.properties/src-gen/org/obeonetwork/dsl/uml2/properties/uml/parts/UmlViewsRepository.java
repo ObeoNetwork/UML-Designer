@@ -256,6 +256,12 @@ public class UmlViewsRepository {
 	
 	public static String addition = "uml::General::addition";
 	
+	/**
+	 * @generated
+	 */
+	
+	public static String pseudostatekind = "uml::General::pseudostatekind";
+	
 	}
 
 	/**

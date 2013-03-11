@@ -924,6 +924,27 @@ public interface GeneralPropertiesEditionPart {
 	public void addFilterToAddition(ViewerFilter filter);
 
 
+	/**
+	 * @return the pseudostatekind
+	 * @generated
+	 */
+	public Enumerator getPseudostatekind();
+
+	/**
+	 * Init the pseudostatekind
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initPseudostatekind(Object input, Enumerator current);
+
+	/**
+	 * Defines a new pseudostatekind
+	 * @param newValue the new pseudostatekind to set
+	 * @generated
+	 */
+	public void setPseudostatekind(Enumerator newValue);
+
+
 
 
 
