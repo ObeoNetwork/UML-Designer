@@ -34,10 +34,20 @@ import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 
+import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+
+import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
+import org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy;
+
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 
@@ -128,7 +138,7 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			}
 			if (isAccessible(UmlViewsRepository.General.type)) {
 				// init part
-				typeSettings = new EObjectFlatComboSettings(port, UMLPackage.eINSTANCE.getOperation_Type());
+				typeSettings = new EObjectFlatComboSettings(port, UMLPackage.eINSTANCE.getTypedElement_Type());
 				generalPart.initType(typeSettings);
 				// set the button mode
 				generalPart.setTypeButtonMode(ButtonsModeEnum.BROWSE);
@@ -232,7 +242,7 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			return UMLPackage.eINSTANCE.getProperty_Aggregation();
 		}
 		if (editorKey == UmlViewsRepository.General.type) {
-			return UMLPackage.eINSTANCE.getOperation_Type();
+			return UMLPackage.eINSTANCE.getTypedElement_Type();
 		}
 		if (editorKey == UmlViewsRepository.General.upperValue) {
 			return UMLPackage.eINSTANCE.getMultiplicityElement_UpperValue();
@@ -283,6 +293,20 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 		}
 		if (UmlViewsRepository.General.aggregation == event.getAffectedEditor()) {
 			port.setAggregation((AggregationKind)event.getNewValue());
+		}
+		if (UmlViewsRepository.General.type == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
+				typeSettings.setToReference((Type)event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, typeSettings, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy instanceof CreateEditingPolicy) {
+						policy.execute();
+					}
+				}
+			}
 		}
 		if (UmlViewsRepository.General.upperValue == event.getAffectedEditor()) {
 			// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : upperValue, General, Port.
@@ -343,7 +367,7 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			if (UMLPackage.eINSTANCE.getProperty_Aggregation().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(UmlViewsRepository.General.aggregation))
 				generalPart.setAggregation((AggregationKind)msg.getNewValue());
 			
-			if (UMLPackage.eINSTANCE.getOperation_Type().equals(msg.getFeature()) && generalPart != null && isAccessible(UmlViewsRepository.General.type))
+			if (UMLPackage.eINSTANCE.getTypedElement_Type().equals(msg.getFeature()) && generalPart != null && isAccessible(UmlViewsRepository.General.type))
 				generalPart.setType((EObject)msg.getNewValue());
 			// FIXME INVALID CASE INTO template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : upperValue, General, Port.
 			// FIXME INVALID CASE INTO template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : lowerValue, General, Port.
@@ -376,7 +400,7 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			UMLPackage.eINSTANCE.getProperty_IsDerived(),
 			UMLPackage.eINSTANCE.getProperty_IsDerivedUnion(),
 			UMLPackage.eINSTANCE.getProperty_Aggregation(),
-			UMLPackage.eINSTANCE.getOperation_Type(),
+			UMLPackage.eINSTANCE.getTypedElement_Type(),
 			UMLPackage.eINSTANCE.getMultiplicityElement_UpperValue(),
 			UMLPackage.eINSTANCE.getMultiplicityElement_LowerValue(),
 			UMLPackage.eINSTANCE.getProperty_DefaultValue(),

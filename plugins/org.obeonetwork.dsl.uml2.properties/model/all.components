@@ -366,7 +366,7 @@
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Property/aggregation"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ts0ZOlwGEeKZBNASYbV97A" name="type" views="_tYLxgFv8EeKZBNASYbV97A">
-          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Operation/type"/>
+          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//TypedElement/type"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ts0ZO1wGEeKZBNASYbV97A" name="upperValue" views="_DxkG8FwAEeKZBNASYbV97A">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//MultiplicityElement/upperValue"/>
