@@ -262,6 +262,12 @@ public class UmlViewsRepository {
 	
 	public static String pseudostatekind = "uml::General::pseudostatekind";
 	
+	/**
+	 * @generated
+	 */
+	
+	public static String role = "uml::General::role";
+	
 	}
 
 	/**
@@ -326,6 +332,19 @@ public class UmlViewsRepository {
 	 */
 	
 	public static String literals_ = "uml::Literals::literals_";
+	
+	}
+
+	/**
+	 * Ends view descriptor
+	 * @generated
+	 */
+	public static class Ends {
+	/**
+	 * @generated
+	 */
+	
+	public static String ends_ = "uml::Ends::ends_";
 	
 	}
 

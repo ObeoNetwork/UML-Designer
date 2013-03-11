@@ -316,7 +316,7 @@
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Component"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_Mfht4FwGEeKZBNASYbV97A" name="Connector" views="_Kt6kIFv3EeKZBNASYbV97A">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_Mfht4FwGEeKZBNASYbV97A" name="Connector" views="_Kt6kIFv3EeKZBNASYbV97A _2oeWUIpNEeKz7Nysxc3j5A">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Mfht4VwGEeKZBNASYbV97A" name="name" views="_3INTYFv3EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
         </properties>
@@ -332,7 +332,22 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_VWOo0FwGEeKZBNASYbV97A" name="static" views="_0YtDYFv7EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Feature/isStatic"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_DeOgwIpOEeKz7Nysxc3j5A" name="ends" views="_4yn5sIpNEeKz7Nysxc3j5A">
+          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Connector/end"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Connector"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_bRU_AIpNEeKz7Nysxc3j5A" name="ConnectorEnd" views="_Kt6kIFv3EeKZBNASYbV97A">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_gnwRIIpNEeKz7Nysxc3j5A" name="ordered" views="_vU7ngFv7EeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//MultiplicityElement/isOrdered"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_kAPP4IpNEeKz7Nysxc3j5A" name="unique" views="_7zTMsFv7EeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//MultiplicityElement/isUnique"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_sMEW8IpPEeKz7Nysxc3j5A" name="role" views="_wML9cIpPEeKz7Nysxc3j5A">
+          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//ConnectorEnd/role"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//ConnectorEnd"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_tszyIFwGEeKZBNASYbV97A" name="Port" views="_Kt6kIFv3EeKZBNASYbV97A">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ts0ZMFwGEeKZBNASYbV97A" name="name" views="_3INTYFv3EeKZBNASYbV97A">
@@ -804,6 +819,9 @@
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_EDmS8IozEeKz7Nysxc3j5A" name="pseudostatekind">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
         </elements>
+        <elements xsi:type="eef-views:ElementEditor" xmi:id="_wML9cIpPEeKz7Nysxc3j5A" name="role">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
+        </elements>
       </views>
       <views xmi:id="_55BGsF8vEeKd8d7WgZ31eQ" name="Operations">
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_7kJy0F8vEeKd8d7WgZ31eQ" name="operations">
@@ -827,6 +845,11 @@
       </views>
       <views xmi:id="_FYhhsIo3EeKz7Nysxc3j5A" name="Literals">
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_kJFkgIo6EeKz7Nysxc3j5A" name="literals">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
+        </elements>
+      </views>
+      <views xmi:id="_2oeWUIpNEeKz7Nysxc3j5A" name="Ends">
+        <elements xsi:type="eef-views:ElementEditor" xmi:id="_4yn5sIpNEeKz7Nysxc3j5A" name="ends">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
         </elements>
       </views>

@@ -106,6 +106,18 @@ public class UmlMessages extends NLS {
 	
 	public static String Literals_Part_Title;
 
+	/**
+	 * @generated
+	 */
+	
+	public static String Ends_ReadOnly;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String Ends_Part_Title;
+
 
 	/**
 	 * @generated
@@ -339,6 +351,12 @@ public class UmlMessages extends NLS {
 	 * @generated
 	 */
 	
+	public static String GeneralPropertiesEditionPart_RoleLabel;
+
+	/**
+	 * @generated
+	 */
+	
 	public static String OperationsPropertiesEditionPart_OperationsLabel;
 
 	/**
@@ -364,6 +382,12 @@ public class UmlMessages extends NLS {
 	 */
 	
 	public static String LiteralsPropertiesEditionPart_LiteralsLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String EndsPropertiesEditionPart_EndsLabel;
 
 
 	/**

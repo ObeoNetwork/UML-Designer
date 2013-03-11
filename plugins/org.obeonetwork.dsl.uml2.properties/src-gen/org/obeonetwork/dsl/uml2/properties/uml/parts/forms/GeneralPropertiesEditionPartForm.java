@@ -160,6 +160,7 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	protected EMFComboViewer extendedCase;
 	protected EMFComboViewer addition;
 	protected EMFComboViewer pseudostatekind;
+	protected EObjectFlatComboViewer role;
 
 
 
@@ -244,6 +245,7 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
     generalStep.addStep(UmlViewsRepository.General.extendedCase);
     generalStep.addStep(UmlViewsRepository.General.addition);
     generalStep.addStep(UmlViewsRepository.General.pseudostatekind);
+    generalStep.addStep(UmlViewsRepository.General.role);
     
     composer = new PartComposer(generalStep) {
 
@@ -365,6 +367,9 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
         }
         if (key == UmlViewsRepository.General.pseudostatekind) {
           return createPseudostatekindEMFComboViewer(widgetFactory, parent);
+        }
+        if (key == UmlViewsRepository.General.role) {
+          return createRoleFlatComboViewer(parent, widgetFactory);
         }
         return parent;
       }
@@ -2052,6 +2057,39 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
     pseudostatekind.setID(UmlViewsRepository.General.pseudostatekind);
     FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.pseudostatekind, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
     // Start of user code for createPseudostatekindEMFComboViewer
+
+    // End of user code
+    return parent;
+  }
+
+	/**
+	 * @param parent the parent composite
+	 * @param widgetFactory factory to use to instanciante widget of the form
+	 * @generated
+	 */
+	protected Composite createRoleFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
+    createDescription(parent, UmlViewsRepository.General.role, UmlMessages.GeneralPropertiesEditionPart_RoleLabel);
+    role = new EObjectFlatComboViewer(parent, !propertiesEditionComponent.isRequired(UmlViewsRepository.General.role, UmlViewsRepository.FORM_KIND));
+    widgetFactory.adapt(role);
+    role.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
+    GridData roleData = new GridData(GridData.FILL_HORIZONTAL);
+    role.setLayoutData(roleData);
+    role.addSelectionChangedListener(new ISelectionChangedListener() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.role, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getRole()));
+      }
+
+    });
+    role.setID(UmlViewsRepository.General.role);
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.role, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    // Start of user code for createRoleFlatComboViewer
 
     // End of user code
     return parent;
@@ -3857,6 +3895,92 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
       pseudostatekind.setEnabled(true);
     }	
     
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getRole()
+	 * @generated
+	 */
+	public EObject getRole() {
+    if (role.getSelection() instanceof StructuredSelection) {
+      Object firstElement = ((StructuredSelection) role.getSelection()).getFirstElement();
+      if (firstElement instanceof EObject)
+        return (EObject) firstElement;
+    }
+    return null;
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#initRole(EObjectFlatComboSettings)
+	 */
+	public void initRole(EObjectFlatComboSettings settings) {
+		role.setInput(settings);
+		if (current != null) {
+			role.setSelection(new StructuredSelection(settings.getValue()));
+		}
+		boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.role);
+		if (eefElementEditorReadOnlyState && role.isEnabled()) {
+			role.setEnabled(false);
+			role.setToolTipText(UmlMessages.General_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !role.isEnabled()) {
+			role.setEnabled(true);
+		}	
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#setRole(EObject newValue)
+	 * @generated
+	 */
+	public void setRole(EObject newValue) {
+    if (newValue != null) {
+      role.setSelection(new StructuredSelection(newValue));
+    } else {
+      role.setSelection(new StructuredSelection()); //$NON-NLS-1$
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.role);
+    if (eefElementEditorReadOnlyState && role.isEnabled()) {
+      role.setEnabled(false);
+      role.setToolTipText(UmlMessages.General_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !role.isEnabled()) {
+      role.setEnabled(true);
+    }	
+    
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#setRoleButtonMode(ButtonsModeEnum newValue)
+	 */
+	public void setRoleButtonMode(ButtonsModeEnum newValue) {
+		role.setButtonMode(newValue);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#addFilterRole(ViewerFilter filter)
+	 * @generated
+	 */
+	public void addFilterToRole(ViewerFilter filter) {
+    role.addFilter(filter);
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#addBusinessFilterRole(ViewerFilter filter)
+	 * @generated
+	 */
+	public void addBusinessFilterToRole(ViewerFilter filter) {
+    role.addBusinessRuleFilter(filter);
   }
 
 

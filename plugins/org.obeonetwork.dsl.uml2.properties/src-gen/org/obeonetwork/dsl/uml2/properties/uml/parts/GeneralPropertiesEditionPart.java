@@ -945,6 +945,53 @@ public interface GeneralPropertiesEditionPart {
 	public void setPseudostatekind(Enumerator newValue);
 
 
+	/**
+	 * @return the role
+	 * @generated
+	 */
+	public EObject getRole();
+
+	/**
+	 * Init the role
+	 * @param settings the combo setting
+	 */
+	public void initRole(EObjectFlatComboSettings settings);
+
+	/**
+	 * Defines a new role
+	 * @param newValue the new role to set
+	 * @generated
+	 */
+	public void setRole(EObject newValue);
+
+	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 * @generated
+	 */
+	public void setRoleButtonMode(ButtonsModeEnum newValue);
+
+	/**
+	 * Adds the given filter to the role edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addFilterToRole(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the role edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addBusinessFilterToRole(ViewerFilter filter);
+
+
 
 
 

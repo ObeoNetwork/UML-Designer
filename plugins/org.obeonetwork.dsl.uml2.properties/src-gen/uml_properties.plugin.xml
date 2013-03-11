@@ -79,6 +79,13 @@
                afterTab="General">
          </propertyTab>
 
+         <propertyTab
+               id="Ends"
+               label="Ends"
+               category="extended"
+               afterTab="General">
+         </propertyTab>
+
       </propertyTabs>
    </extension>
    <extension
@@ -257,6 +264,18 @@
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.ConnectorPropertiesEditionProvider$EditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Connector"
+               tab="General">
+         </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.EndsPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.ConnectorPropertiesEditionProvider$EditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Connector"
+               tab="Ends">
+         </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.ConnectorEndPropertiesEditionProvider$EditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.ConnectorEnd"
                tab="General">
          </propertySection>
          <propertySection

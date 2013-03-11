@@ -34,10 +34,28 @@ import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 
+import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
+
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 
+import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+
+import org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy;
+
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+
+import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
+
+import org.eclipse.uml2.uml.ConnectableElement;
 import org.eclipse.uml2.uml.ConnectorEnd;
 import org.eclipse.uml2.uml.UMLPackage;
 
@@ -58,17 +76,22 @@ public class ConnectorEndPropertiesEditionComponent extends SinglePartProperties
 	public static String GENERAL_PART = "General"; //$NON-NLS-1$
 
 	
+	/**
+	 * Settings for role EObjectFlatComboViewer
+	 */
+	private EObjectFlatComboSettings roleSettings;
+	
 	
 	/**
 	 * Default constructor
 	 * @generated
 	 */
 	public ConnectorEndPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject connectorEnd, String editing_mode) {
-		super(editingContext, connectorEnd, editing_mode);
-		parts = new String[] { GENERAL_PART };
-		repositoryKey = UmlViewsRepository.class;
-		partKey = UmlViewsRepository.General.class;
-	}
+    super(editingContext, connectorEnd, editing_mode);
+    parts = new String[] { GENERAL_PART };
+    repositoryKey = UmlViewsRepository.class;
+    partKey = UmlViewsRepository.General.class;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -78,27 +101,28 @@ public class ConnectorEndPropertiesEditionComponent extends SinglePartProperties
 	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			
-			final ConnectorEnd connectorEnd = (ConnectorEnd)elt;
-			final GeneralPropertiesEditionPart generalPart = (GeneralPropertiesEditionPart)editingPart;
-			// init values
-			generalPart.setOrdered(connectorEnd.isOrdered());
-			
-			generalPart.setUnique(connectorEnd.isUnique());
-			
-			// init filters
-			
-			
-			// init values for referenced views
-			
-			// init filters for referenced views
-			
-		}
-		setInitializing(false);
-	}
+    setInitializing(true);
+    if (editingPart != null && key == partKey) {
+      editingPart.setContext(elt, allResource);
+      
+      final ConnectorEnd connectorEnd = (ConnectorEnd)elt;
+      final GeneralPropertiesEditionPart generalPart = (GeneralPropertiesEditionPart)editingPart;
+      // init values
+      generalPart.setOrdered(connectorEnd.isOrdered());
+      
+      generalPart.setUnique(connectorEnd.isUnique());
+      
+      // init filters
+      
+      
+      // init values for referenced views
+      
+      // init filters for referenced views
+      
+    }
+    setInitializing(false);
+  }
+
 
 
 
@@ -115,6 +139,9 @@ public class ConnectorEndPropertiesEditionComponent extends SinglePartProperties
 		if (editorKey == UmlViewsRepository.General.Qualifiers.unique) {
 			return UMLPackage.eINSTANCE.getMultiplicityElement_IsUnique();
 		}
+		if (editorKey == UmlViewsRepository.General.role) {
+			return UMLPackage.eINSTANCE.getConnectorEnd_Role();
+		}
 		return super.associatedFeature(editorKey);
 	}
 
@@ -124,15 +151,15 @@ public class ConnectorEndPropertiesEditionComponent extends SinglePartProperties
 	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		ConnectorEnd connectorEnd = (ConnectorEnd)semanticObject;
+    ConnectorEnd connectorEnd = (ConnectorEnd)semanticObject;
 
-		if (UmlViewsRepository.General.Qualifiers.ordered == event.getAffectedEditor()) {
-			connectorEnd.setIsOrdered((Boolean)event.getNewValue());
-		}
-		if (UmlViewsRepository.General.Qualifiers.unique == event.getAffectedEditor()) {
-			connectorEnd.setIsUnique((Boolean)event.getNewValue());
-		}
-	}
+    if (UmlViewsRepository.General.Qualifiers.ordered == event.getAffectedEditor()) {
+      connectorEnd.setIsOrdered((Boolean)event.getNewValue());
+    }
+    if (UmlViewsRepository.General.Qualifiers.unique == event.getAffectedEditor()) {
+      connectorEnd.setIsUnique((Boolean)event.getNewValue());
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -148,6 +175,8 @@ public class ConnectorEndPropertiesEditionComponent extends SinglePartProperties
 			if (UMLPackage.eINSTANCE.getMultiplicityElement_IsUnique().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.Qualifiers.unique))
 				generalPart.setUnique((Boolean)msg.getNewValue());
 			
+			if (UMLPackage.eINSTANCE.getConnectorEnd_Role().equals(msg.getFeature()) && generalPart != null && isAccessible(UmlViewsRepository.General.role))
+				generalPart.setRole((EObject)msg.getNewValue());
 			
 		}
 	}
@@ -161,7 +190,8 @@ public class ConnectorEndPropertiesEditionComponent extends SinglePartProperties
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			UMLPackage.eINSTANCE.getMultiplicityElement_IsOrdered(),
-			UMLPackage.eINSTANCE.getMultiplicityElement_IsUnique()		);
+			UMLPackage.eINSTANCE.getMultiplicityElement_IsUnique(),
+			UMLPackage.eINSTANCE.getConnectorEnd_Role()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -170,7 +200,7 @@ public class ConnectorEndPropertiesEditionComponent extends SinglePartProperties
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#mustBeComposed(java.lang.Object, int)
 	 */
 	public boolean mustBeComposed(Object key, int kind) {
-		return key == UmlViewsRepository.General.Qualifiers.ordered || key == UmlViewsRepository.General.Qualifiers.unique || key == UmlViewsRepository.General.Qualifiers.class;
+		return key == UmlViewsRepository.General.Qualifiers.ordered || key == UmlViewsRepository.General.Qualifiers.unique || key == UmlViewsRepository.General.role || key == UmlViewsRepository.General.Qualifiers.class;
 	}
 
 	/**
@@ -180,8 +210,8 @@ public class ConnectorEndPropertiesEditionComponent extends SinglePartProperties
 	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == UmlViewsRepository.General.Qualifiers.ordered || key == UmlViewsRepository.General.Qualifiers.unique;
-	}
+    return key == UmlViewsRepository.General.Qualifiers.ordered || key == UmlViewsRepository.General.Qualifiers.unique;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -190,31 +220,31 @@ public class ConnectorEndPropertiesEditionComponent extends SinglePartProperties
 	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
-		Diagnostic ret = Diagnostic.OK_INSTANCE;
-		if (event.getNewValue() != null) {
-			try {
-				if (UmlViewsRepository.General.Qualifiers.ordered == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getMultiplicityElement_IsOrdered().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getMultiplicityElement_IsOrdered().getEAttributeType(), newValue);
-				}
-				if (UmlViewsRepository.General.Qualifiers.unique == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getMultiplicityElement_IsUnique().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getMultiplicityElement_IsUnique().getEAttributeType(), newValue);
-				}
-			} catch (IllegalArgumentException iae) {
-				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
-				ret = BasicDiagnostic.toDiagnostic(we);
-			}
-		}
-		return ret;
-	}
+    Diagnostic ret = Diagnostic.OK_INSTANCE;
+    if (event.getNewValue() != null) {
+      try {
+        if (UmlViewsRepository.General.Qualifiers.ordered == event.getAffectedEditor()) {
+          Object newValue = event.getNewValue();
+          if (newValue instanceof String) {
+            newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getMultiplicityElement_IsOrdered().getEAttributeType(), (String)newValue);
+          }
+          ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getMultiplicityElement_IsOrdered().getEAttributeType(), newValue);
+        }
+        if (UmlViewsRepository.General.Qualifiers.unique == event.getAffectedEditor()) {
+          Object newValue = event.getNewValue();
+          if (newValue instanceof String) {
+            newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getMultiplicityElement_IsUnique().getEAttributeType(), (String)newValue);
+          }
+          ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getMultiplicityElement_IsUnique().getEAttributeType(), newValue);
+        }
+      } catch (IllegalArgumentException iae) {
+        ret = BasicDiagnostic.toDiagnostic(iae);
+      } catch (WrappedException we) {
+        ret = BasicDiagnostic.toDiagnostic(we);
+      }
+    }
+    return ret;
+  }
 
 
 	

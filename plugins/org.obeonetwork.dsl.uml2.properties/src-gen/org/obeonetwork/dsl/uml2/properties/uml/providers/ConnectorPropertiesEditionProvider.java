@@ -33,6 +33,8 @@ import org.eclipse.uml2.uml.UMLPackage;
 
 import org.obeonetwork.dsl.uml2.properties.providers.UmlPropertiesEditionProvider;
 
+import org.obeonetwork.dsl.uml2.properties.uml.components.ConnectorEndsPropertiesEditionComponent;
+import org.obeonetwork.dsl.uml2.properties.uml.components.ConnectorGeneralPropertiesEditionComponent;
 import org.obeonetwork.dsl.uml2.properties.uml.components.ConnectorPropertiesEditionComponent;
 
 /**
@@ -72,7 +74,7 @@ public class ConnectorPropertiesEditionProvider extends UmlPropertiesEditionProv
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof Connector) && (ConnectorPropertiesEditionComponent.GENERAL_PART.equals(part));
+		return (editingContext.getEObject() instanceof Connector) && (ConnectorGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) || ConnectorEndsPropertiesEditionComponent.ENDS_PART.equals(part));
 	}
 
 	/**
@@ -82,7 +84,7 @@ public class ConnectorPropertiesEditionProvider extends UmlPropertiesEditionProv
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Connector) && (refinement == ConnectorPropertiesEditionComponent.class);
+		return (editingContext.getEObject() instanceof Connector) && (refinement == ConnectorGeneralPropertiesEditionComponent.class || refinement == ConnectorEndsPropertiesEditionComponent.class);
 	}
 
 	/**
@@ -92,7 +94,7 @@ public class ConnectorPropertiesEditionProvider extends UmlPropertiesEditionProv
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Connector) && ((ConnectorPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == ConnectorPropertiesEditionComponent.class));
+		return (editingContext.getEObject() instanceof Connector) && ((ConnectorGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == ConnectorGeneralPropertiesEditionComponent.class) || (ConnectorEndsPropertiesEditionComponent.ENDS_PART.equals(part) && refinement == ConnectorEndsPropertiesEditionComponent.class));
 	}
 
 	/**
@@ -114,8 +116,10 @@ public class ConnectorPropertiesEditionProvider extends UmlPropertiesEditionProv
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
 		if (editingContext.getEObject() instanceof Connector) {
-			if (ConnectorPropertiesEditionComponent.GENERAL_PART.equals(part))
-				return new ConnectorPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (ConnectorGeneralPropertiesEditionComponent.GENERAL_PART.equals(part))
+				return new ConnectorGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (ConnectorEndsPropertiesEditionComponent.ENDS_PART.equals(part))
+				return new ConnectorEndsPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part);
 	}
@@ -127,9 +131,12 @@ public class ConnectorPropertiesEditionProvider extends UmlPropertiesEditionProv
 	@SuppressWarnings("rawtypes")
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
 		if (editingContext.getEObject() instanceof Connector) {
-			if (ConnectorPropertiesEditionComponent.GENERAL_PART.equals(part)
-				&& refinement == ConnectorPropertiesEditionComponent.class)
-				return new ConnectorPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (ConnectorGeneralPropertiesEditionComponent.GENERAL_PART.equals(part)
+				&& refinement == ConnectorGeneralPropertiesEditionComponent.class)
+				return new ConnectorGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (ConnectorEndsPropertiesEditionComponent.ENDS_PART.equals(part)
+				&& refinement == ConnectorEndsPropertiesEditionComponent.class)
+				return new ConnectorEndsPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}

@@ -15,6 +15,7 @@ import org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.CustomUmlViewsRepository;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.AttributesCustomPropertiesEditionPartForm;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.EndsCustomPropertiesEditionPartForm;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.OperationsCustomPropertiesEditionPartForm;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.ParametersCustomPropertiesEditionPartForm;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.RelationshipsPropertiesEditionPartForm;
@@ -55,6 +56,11 @@ public class UmlCustomPropertiesEditionPartProvider extends
 		if (key == CustomUmlViewsRepository.Documentation.class) {
 			if (kind == UmlViewsRepository.FORM_KIND)
 				return new RelationshipsPropertiesEditionPartForm(component);
+		}
+
+		if (key == UmlViewsRepository.Ends.class) {
+			if (kind == UmlViewsRepository.FORM_KIND)
+				return new EndsCustomPropertiesEditionPartForm(component);
 		}
 
 		return super.getPropertiesEditionPart(key, kind, component);

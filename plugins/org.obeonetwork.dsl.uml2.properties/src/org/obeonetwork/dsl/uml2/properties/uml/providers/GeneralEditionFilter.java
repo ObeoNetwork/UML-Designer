@@ -94,7 +94,8 @@ public class GeneralEditionFilter implements IFilter {
 						|| eObj instanceof Extend || eObj instanceof FinalState
 						|| eObj instanceof Include || eObj instanceof Pin
 						|| eObj instanceof OpaqueAction
-						|| eObj instanceof Vertex || eObj instanceof Region || eObj instanceof UseCase);
+						|| eObj instanceof Vertex || eObj instanceof Region
+						|| eObj instanceof UseCase || eObj instanceof ConnectorEnd);
 	}
 
 }

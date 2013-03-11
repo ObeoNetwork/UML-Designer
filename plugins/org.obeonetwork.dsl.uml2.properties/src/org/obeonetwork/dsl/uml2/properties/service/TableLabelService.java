@@ -16,6 +16,8 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.uml2.uml.BehavioralFeature;
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.ConnectableElement;
+import org.eclipse.uml2.uml.ConnectorEnd;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.MultiplicityElement;
@@ -43,7 +45,7 @@ public class TableLabelService {
 				"Visibility"), IS_STATIC("Static"), MULTIPLICITY("Multiplicity"), IS_ABSTRACT(
 				"Abstract"), PARAMETERS("Parameters"), DIRECTION("Direction"), STEREOTYPE(
 				"Stereotype"), PROFILE("Profile"), REQUIRED("Required"), OTHER_RELATED_ELEMENTS(
-				"Other Related Element(s)");
+				"Other Related Element(s)"), ROLE("Role");
 
 		private String label;
 
@@ -201,6 +203,18 @@ public class TableLabelService {
 					result.append(",");
 			}
 			return result.toString();
+		}
+		throw new IllegalArgumentException();
+	}
+
+	public String caseRole(Object object) {
+		if (object instanceof ConnectorEnd) {
+			ConnectorEnd connectorEnd = (ConnectorEnd) object;
+			ConnectableElement connectableElement = connectorEnd.getRole();
+			if (connectableElement != null) {
+				return connectableElement.getName();
+			}
+			return EMPTY;
 		}
 		throw new IllegalArgumentException();
 	}
