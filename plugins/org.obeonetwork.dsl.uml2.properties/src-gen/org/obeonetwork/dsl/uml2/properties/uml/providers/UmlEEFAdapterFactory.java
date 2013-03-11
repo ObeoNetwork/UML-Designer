@@ -218,6 +218,14 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createUseCaseAdapter()
+	 * @generated
+	 */
+	public Adapter createUseCaseAdapter() {
+		return new UseCasePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createExtendAdapter()
 	 * @generated
 	 */
