@@ -6,6 +6,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_TjGFoV4nEeKttZbtn302Pg" name="name" views="_3INTYFv3EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_7EyzAIgQEeKvVepkggHJ6w" name="visibility" views="_maltQFv8EeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/visibility"/>
+        </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_AZdwAGFhEeKd8d7WgZ31eQ" name="appliedProfile" views="_5lh-EGFgEeKd8d7WgZ31eQ">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//ProfileApplication/appliedProfile"/>
           <navigation xsi:type="eef-mapping-navigation:SmartModelNavigation" xmi:id="_D1B38GFhEeKd8d7WgZ31eQ">

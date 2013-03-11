@@ -61,8 +61,8 @@ public class DocumentationEditionFilter implements IFilter {
 	public boolean select(Object toTest) {
 		EObject eObj = EEFUtils.resolveSemanticObject(toTest);
 		return eObj != null
-				&& (eObj instanceof Package || eObj instanceof Class
-						|| eObj instanceof Interface
+				&& (eObj instanceof org.eclipse.uml2.uml.Package
+						|| eObj instanceof Class || eObj instanceof Interface
 						|| eObj instanceof DataType
 						|| eObj instanceof PrimitiveType
 						|| eObj instanceof Enumeration

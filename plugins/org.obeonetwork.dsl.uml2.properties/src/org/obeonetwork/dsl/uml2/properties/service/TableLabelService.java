@@ -145,7 +145,7 @@ public class TableLabelService {
 	public String caseName(Object object) {
 		if (object instanceof Element) {
 			String label = labelServices.computeUmlLabel((Element) object);
-			if (!label.isEmpty() && label != null && !"null".equals(label))
+			if (label != null && !label.isEmpty() && !"null".equals(label))
 				return label;
 			return EMPTY;
 		}

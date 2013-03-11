@@ -194,7 +194,7 @@ public class RelationshipsPropertiesEditionPartForm extends
 
 					@Override
 					public Image getColumnImage(Object object, int columnIndex) {
-						if (object instanceof Relationship) {
+						if (object != null && object instanceof Relationship) {
 							if (columnIndex == tableColumnService
 									.indexOf(TableColumnName.NAME)) {
 								return super
