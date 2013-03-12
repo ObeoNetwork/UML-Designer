@@ -25,6 +25,7 @@ import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ParameterDirectionKind;
+import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Relationship;
 import org.eclipse.uml2.uml.Stereotype;
@@ -74,6 +75,8 @@ public class TableLabelService {
 	public String caseProfile(Object object) {
 		if (object instanceof Stereotype)
 			return ((Stereotype) object).getProfile().getName();
+		if (object instanceof Profile)
+			return ((Profile) object).getName();
 		throw new IllegalArgumentException();
 	}
 

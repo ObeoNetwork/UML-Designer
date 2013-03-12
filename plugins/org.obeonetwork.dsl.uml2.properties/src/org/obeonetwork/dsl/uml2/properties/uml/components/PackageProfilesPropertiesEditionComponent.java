@@ -278,12 +278,4 @@ public class PackageProfilesPropertiesEditionComponent extends
 		applicableProfiles.removeAll(appliedProfiles);
 		return applicableProfiles;
 	}
-	//
-	// private Predicate<EObject> packagePredicate = new Predicate<EObject>() {
-	// public boolean apply(EObject eObj) {
-	// String className = eObj.eClass().getName();
-	// return "Package".equals(className);
-	// }
-	// };
-
 }
