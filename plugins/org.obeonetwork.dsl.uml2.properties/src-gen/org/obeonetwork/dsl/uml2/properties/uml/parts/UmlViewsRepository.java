@@ -310,19 +310,6 @@ public class UmlViewsRepository {
 	}
 
 	/**
-	 * Profile view descriptor
-	 * @generated
-	 */
-	public static class Profile {
-	/**
-	 * @generated
-	 */
-	
-	public static String appliedProfiles = "uml::Profile::appliedProfiles";
-	
-	}
-
-	/**
 	 * Literals view descriptor
 	 * @generated
 	 */

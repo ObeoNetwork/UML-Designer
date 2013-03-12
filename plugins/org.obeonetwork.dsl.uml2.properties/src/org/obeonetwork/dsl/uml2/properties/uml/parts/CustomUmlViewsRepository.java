@@ -24,6 +24,14 @@ public class CustomUmlViewsRepository extends UmlViewsRepository {
 	}
 
 	/**
+	 * Profiles view descriptor
+	 */
+	public static class Profiles {
+		public static String appliedProfiles = "uml::Profiles::appliedProfiles";
+
+	}
+
+	/**
 	 * Relationships view descriptor
 	 */
 	public static class Relationships {

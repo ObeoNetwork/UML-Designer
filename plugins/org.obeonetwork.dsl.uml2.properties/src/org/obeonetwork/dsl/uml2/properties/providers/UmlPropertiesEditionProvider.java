@@ -25,6 +25,7 @@ import org.eclipse.uml2.uml.UMLPackage;
 import org.obeonetwork.dsl.uml2.properties.uml.components.ElementDocumentationPropertiesEditionComponent;
 import org.obeonetwork.dsl.uml2.properties.uml.components.NamedElementRelationshipsPropertiesEditionComponent;
 import org.obeonetwork.dsl.uml2.properties.uml.components.NamedElementStereotypesPropertiesEditionComponent;
+import org.obeonetwork.dsl.uml2.properties.uml.components.PackageProfilesPropertiesEditionComponent;
 
 /**
  * @author <a href="mailto:melanie.bats@obeo.fr">Melanie Bats</a>
@@ -118,6 +119,13 @@ public class UmlPropertiesEditionProvider extends PropertiesEditingProviderImpl 
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(
 			PropertiesEditingContext editingContext, String mode, String part) {
+		if (editingContext.getEObject() instanceof org.eclipse.uml2.uml.Package) {
+			if (PackageProfilesPropertiesEditionComponent.PROFILES_PART
+					.equals(part))
+				return new PackageProfilesPropertiesEditionComponent(
+						editingContext, editingContext.getEObject(), mode);
+		}
+
 		if (editingContext.getEObject() instanceof NamedElement) {
 			if (NamedElementStereotypesPropertiesEditionComponent.STEREOTYPES_PART
 					.equals(part))
@@ -136,6 +144,7 @@ public class UmlPropertiesEditionProvider extends PropertiesEditingProviderImpl 
 						editingContext, editingContext.getEObject(), mode);
 
 		}
+
 		return super.getPropertiesEditingComponent(editingContext, mode, part);
 	}
 
@@ -149,6 +158,13 @@ public class UmlPropertiesEditionProvider extends PropertiesEditingProviderImpl 
 	public IPropertiesEditionComponent getPropertiesEditingComponent(
 			PropertiesEditingContext editingContext, String mode, String part,
 			java.lang.Class refinement) {
+
+		if (editingContext.getEObject() instanceof org.eclipse.uml2.uml.Package) {
+			if (PackageProfilesPropertiesEditionComponent.PROFILES_PART
+					.equals(part))
+				return new PackageProfilesPropertiesEditionComponent(
+						editingContext, editingContext.getEObject(), mode);
+		}
 
 		if (editingContext.getEObject() instanceof NamedElement) {
 			if (NamedElementStereotypesPropertiesEditionComponent.STEREOTYPES_PART

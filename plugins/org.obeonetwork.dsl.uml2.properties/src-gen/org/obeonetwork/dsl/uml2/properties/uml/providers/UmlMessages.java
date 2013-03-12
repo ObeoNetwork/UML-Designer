@@ -86,18 +86,6 @@ public class UmlMessages extends NLS {
 	 * @generated
 	 */
 	
-	public static String Profile_ReadOnly;
-
-	/**
-	 * @generated
-	 */
-	
-	public static String Profile_Part_Title;
-
-	/**
-	 * @generated
-	 */
-	
 	public static String Literals_ReadOnly;
 
 	/**
@@ -370,12 +358,6 @@ public class UmlMessages extends NLS {
 	 */
 	
 	public static String AttributesPropertiesEditionPart_AttributesLabel;
-
-	/**
-	 * @generated
-	 */
-	
-	public static String ProfilePropertiesEditionPart_AppliedProfilesLabel;
 
 	/**
 	 * @generated

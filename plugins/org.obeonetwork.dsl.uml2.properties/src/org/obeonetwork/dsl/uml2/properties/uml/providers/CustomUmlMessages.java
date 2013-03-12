@@ -22,11 +22,17 @@ public class CustomUmlMessages {
 
 	public static String Stereotypes_Part_Title;
 
+	public static String Profiles_ReadOnly;
+
+	public static String Profiles_Part_Title;
+
 	public static String Relationships_ReadOnly;
 
 	public static String Relationships_Part_Title;
 
 	public static String StereotypesPropertiesEditionPart_AppliedStereotypesLabel;
+
+	public static String ProfilesPropertiesEditionPart_AppliedProfilesLabel;
 
 	public static String RelationshipsPropertiesEditionPart_RelationshipsOriginatingLabel;
 

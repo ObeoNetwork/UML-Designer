@@ -45,13 +45,6 @@
          </propertyTab>
 
          <propertyTab
-               id="Profile"
-               label="Profile"
-               category="extended"
-               afterTab="General">
-         </propertyTab>
-
-         <propertyTab
                id="Attributes"
                label="Attributes"
                category="extended"
@@ -97,12 +90,6 @@
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.Package_PropertiesEditionProvider$EditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Package"
                tab="General">
-         </propertySection>
-         <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.ProfilePropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.Package_PropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.Package"
-               tab="Profile">
          </propertySection>
          <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"

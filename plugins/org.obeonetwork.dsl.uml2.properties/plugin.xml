@@ -93,7 +93,12 @@ Contributors:
                id="Stereotypes"
                label="Stereotypes">
          </propertyTab>
-
+         <propertyTab
+               afterTab="General"
+               category="extended"
+               id="Profiles"
+               label="Profiles">
+         </propertyTab>
          <propertyTab
                id="Documentation"
                label="Documentation"
@@ -125,12 +130,6 @@ Contributors:
                tab="Documentation">
          </propertySection>
          <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.ProfilePropertiesEditionPartForm"
-               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.Package_PropertiesEditionProvider$EditionFilter"
-               id="org.obeonetwork.dsl.uml2.properties.uml.section.Package"
-               tab="Profile">
-         </propertySection>
-         <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.OperationsCustomPropertiesEditionPartForm"
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.OperationsEditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Operations"
@@ -153,6 +152,12 @@ Contributors:
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.StereotypesEditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Stereotypes"
                tab="Stereotypes">
+         </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.ProfilesPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.ProfilesEditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Profiles"
+               tab="Profiles">
          </propertySection>
          <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.ParametersCustomPropertiesEditionPartForm"

@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="ASCII"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eef-components="http://www.eclipse.org/emf/eef/components/1.0.0" xmlns:eef-mapping-navigation="http://www.eclipse.org/emf/eef/mapping/navigation/1.0.0" xmlns:eef-views="http://www.eclipse.org/emf/eef/views/1.0.0">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eef-components="http://www.eclipse.org/emf/eef/components/1.0.0" xmlns:eef-views="http://www.eclipse.org/emf/eef/views/1.0.0">
   <eef-components:PropertiesEditionContext xmi:id="_j_XB4ZabEeCthc_-fH5cSw" documentation="Edition Context for uml GenPackage">
     <categories xmi:id="_SM1vgFsVEeKITrl1rsP4xw" name="uml">
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_TjGFoF4nEeKttZbtn302Pg" name="Package" views="_Kt6kIFv3EeKZBNASYbV97A _30W7YGFgEeKd8d7WgZ31eQ">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_TjGFoF4nEeKttZbtn302Pg" name="Package" views="_Kt6kIFv3EeKZBNASYbV97A">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_TjGFoV4nEeKttZbtn302Pg" name="name" views="_3INTYFv3EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_7EyzAIgQEeKvVepkggHJ6w" name="visibility" views="_maltQFv8EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/visibility"/>
-        </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_AZdwAGFhEeKd8d7WgZ31eQ" name="appliedProfile" views="_5lh-EGFgEeKd8d7WgZ31eQ">
-          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//ProfileApplication/appliedProfile"/>
-          <navigation xsi:type="eef-mapping-navigation:SmartModelNavigation" xmi:id="_D1B38GFhEeKd8d7WgZ31eQ">
-            <step xsi:type="eef-mapping-navigation:DeclarativeNavigationStep" xmi:id="_EL4RsGFhEeKd8d7WgZ31eQ">
-              <feature href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Package/profileApplication"/>
-            </step>
-          </navigation>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Package"/>
       </bindings>
@@ -835,11 +827,6 @@
       </views>
       <views xmi:id="_fgTgsGCnEeKd8d7WgZ31eQ" name="Attributes">
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_hKXOwGCnEeKd8d7WgZ31eQ" name="attributes">
-          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
-        </elements>
-      </views>
-      <views xmi:id="_30W7YGFgEeKd8d7WgZ31eQ" name="Profile">
-        <elements xsi:type="eef-views:ElementEditor" xmi:id="_5lh-EGFgEeKd8d7WgZ31eQ" name="appliedProfiles">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.7"/>
         </elements>
       </views>

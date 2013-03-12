@@ -18,6 +18,7 @@ import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.AttributesCustomPrope
 import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.EndsCustomPropertiesEditionPartForm;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.OperationsCustomPropertiesEditionPartForm;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.ParametersCustomPropertiesEditionPartForm;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.ProfilesPropertiesEditionPartForm;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.RelationshipsPropertiesEditionPartForm;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.StereotypesPropertiesEditionPartForm;
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlPropertiesEditionPartProvider;
@@ -46,6 +47,11 @@ public class UmlCustomPropertiesEditionPartProvider extends
 		if (key == CustomUmlViewsRepository.Stereotypes.class) {
 			if (kind == UmlViewsRepository.FORM_KIND)
 				return new StereotypesPropertiesEditionPartForm(component);
+		}
+
+		if (key == CustomUmlViewsRepository.Profiles.class) {
+			if (kind == UmlViewsRepository.FORM_KIND)
+				return new ProfilesPropertiesEditionPartForm(component);
 		}
 
 		if (key == CustomUmlViewsRepository.Relationships.class) {
