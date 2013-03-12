@@ -22,6 +22,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -72,6 +73,7 @@ import org.obeonetwork.dsl.uml2.design.services.internal.ReconnectSwitch;
 import org.obeonetwork.dsl.uml2.design.services.internal.RelatedElementsSwitch;
 import org.obeonetwork.dsl.uml2.design.services.internal.SemanticElementsSwitch;
 
+import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.ImmutableList;
@@ -80,7 +82,9 @@ import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
+import fr.obeo.dsl.viewpoint.AbstractDNode;
 import fr.obeo.dsl.viewpoint.DEdge;
+import fr.obeo.dsl.viewpoint.DSemanticDiagram;
 import fr.obeo.dsl.viewpoint.EdgeTarget;
 import fr.obeo.dsl.viewpoint.business.api.session.Session;
 import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
@@ -129,6 +133,51 @@ public class UMLServices {
 			}
 		}
 		return packagge;
+	}
+
+	/**
+	 * Retrieve the cross references of the given type of all the UML elements displayed as node in a Diagram.
+	 * Note that a Property cross reference will lead to retrieve the cross references of this property.
+	 * 
+	 * @param diagram
+	 *            a diagram.
+	 * @param typeName
+	 *            the expected type.
+	 * @return the list of cross reference of the given
+	 */
+	public Collection<EObject> getNodeInverseRefs(DSemanticDiagram diagram, String typeName) {
+		Session sess = SessionManager.INSTANCE.getSession(diagram.getTarget());
+		Set<EObject> result = Sets.newLinkedHashSet();
+		Iterator<EObject> it = Iterators.transform(
+				Iterators.filter(diagram.eAllContents(), AbstractDNode.class),
+				new Function<AbstractDNode, EObject>() {
+
+					public EObject apply(AbstractDNode input) {
+						return input.getTarget();
+					}
+				});
+		while (it.hasNext()) {
+			EObject displayedAsANode = it.next();
+			for (Setting xRef : sess.getSemanticCrossReferencer().getInverseReferences(displayedAsANode)) {
+				EObject eObject = xRef.getEObject();
+				if (sess.getModelAccessor().eInstanceOf(eObject, typeName)) {
+					result.add(eObject);
+				}
+				/*
+				 * In the case of an association the real interesting object is the association linked to the
+				 * Property and not the direct cross reference.
+				 */
+				if (eObject instanceof Property) {
+					if (((Property)eObject).getAssociation() != null) {
+						if (sess.getModelAccessor().eInstanceOf(((Property)eObject).getAssociation(), typeName)) {
+							result.add(((Property)eObject).getAssociation());
+						}
+					} 
+
+				}
+			}
+		}
+		return result;
 	}
 
 	public Element applyAllStereotypes(Element element, List<Stereotype> stereotypesToApply) {
@@ -376,10 +425,8 @@ public class UMLServices {
 		Predicate<EObject> validForCompositeDiagram = new Predicate<EObject>() {
 
 			public boolean apply(EObject input) {
-				return input instanceof StructuredClassifier 
-						|| input instanceof Package
-						|| input instanceof Interface
-						|| "Port".equals(input.eClass().getName())
+				return input instanceof StructuredClassifier || input instanceof Package
+						|| input instanceof Interface || "Port".equals(input.eClass().getName())
 						|| "Property".equals(input.eClass().getName());
 			}
 		};
@@ -553,10 +600,10 @@ public class UMLServices {
 				if (context == toFilter)
 					return false;
 				res = context == toFilter;
-				
+
 				if (context instanceof EncapsulatedClassifier && toFilter instanceof EncapsulatedClassifier) {
 					if (!res) {
-						if (((EncapsulatedClassifier)context).getOwnedElements().contains(toFilter)){
+						if (((EncapsulatedClassifier)context).getOwnedElements().contains(toFilter)) {
 							res = true;
 						} else {
 							for (Port portContext : ((EncapsulatedClassifier)context).getOwnedPorts()) {
@@ -568,15 +615,15 @@ public class UMLServices {
 						}
 					}
 				}
-				
+
 				if (context instanceof EncapsulatedClassifier && toFilter instanceof Property) {
 					if (!res) {
-						if (((EncapsulatedClassifier)context).getOwnedAttributes().contains(toFilter)){
+						if (((EncapsulatedClassifier)context).getOwnedAttributes().contains(toFilter)) {
 							res = true;
 						}
 					}
 				}
-				
+
 				// is it a generalization end
 				if (!res) {
 					for (Generalization generalization : ((Classifier)context).getGeneralizations()) {
@@ -641,7 +688,7 @@ public class UMLServices {
 						}
 					}
 				}
-				
+
 				// is it an association end
 				if (!res) {
 					final List<Association> toFilterAsso = ((Classifier)toFilter).getAssociations();
@@ -678,12 +725,12 @@ public class UMLServices {
 
 		return res;
 	}
-	
+
 	private boolean portIsRelated(EObject toFilter, Port portContext) {
-		
+
 		if (portContext == toFilter)
 			return false;
-		
+
 		if (toFilter instanceof Port) {
 			List<ConnectorEnd> ends = ((Port)portContext).getEnds();
 			for (ConnectorEnd portEnd : ends) {
@@ -692,7 +739,7 @@ public class UMLServices {
 					Connector connector = (Connector)eContainer;
 					EList<ConnectorEnd> connectorEnds = connector.getEnds();
 					for (ConnectorEnd connectorEnd : connectorEnds) {
-						if (connectorEnd.getRole()!=null && connectorEnd.getRole().equals(toFilter)) {
+						if (connectorEnd.getRole() != null && connectorEnd.getRole().equals(toFilter)) {
 							return true;
 						}
 					}
@@ -701,12 +748,12 @@ public class UMLServices {
 		} else if (toFilter instanceof EncapsulatedClassifier) {
 			List<Port> ownedPortsToFilter = ((EncapsulatedClassifier)toFilter).getOwnedPorts();
 			for (Port portToFilter : ownedPortsToFilter) {
-				if(portIsRelated(portToFilter, portContext)) {
+				if (portIsRelated(portToFilter, portContext)) {
 					return true;
 				}
 			}
 		}
-		
+
 		return false;
 	}
 
