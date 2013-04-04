@@ -8,8 +8,6 @@
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="_2lnr0AktEeGvSubrM0lppw" name="get" method="_YSxyUBnqEeGglfZsXl4VOQ _2uJKUBpzEeGWjr3-Gx2wcA _z_eA4RtgEeGmWezIlnxuUg _g47bgBwpEeGJcINCqdT0xQ _wYOSoBz7EeGtdtVWj-oLtQ _2B_JkB9CEeGK1pOESdKfpQ _jYWJsDFxEeGadY5mbEam3g _DwKj0JnkEeGooKrrug6kMg _LKQW0JnkEeGooKrrug6kMg"/>
-      <ownedOperation xmi:id="_fr2O4JhgEeGQjZXnNfPuzg" name="Operation_0"/>
-      <ownedOperation xmi:id="_hdG7sJhhEeGQjZXnNfPuzg" name="Operation_1" method="_hdIJ0JhhEeGQjZXnNfPuzg"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_kcjDEAksEeGS4-mV_m3ZXQ" name="Consumer">
       <ownedOperation xmi:id="_3_u5YAktEeGvSubrM0lppw" name="compute" method="_Db3f0BazEeGi4d_NPq-rGA _6VizEBmoEeGCgYzEJ9BPkA _X4DskBnnEeGUdMKJ5RNKyA _W-dDsBnqEeGglfZsXl4VOQ _1YVN8BpzEeGWjr3-Gx2wcA _yeNCcBtgEeGmWezIlnxuUg _f32ZABwpEeGJcINCqdT0xQ _xvVZsB8jEeGvibD6RCoKkA _2tNtUB9BEeG17rXfEtJ6iA _iOb7UDFxEeGadY5mbEam3g _HdKPIF49EeGTaJWsATPTtQ _3gYNMJnjEeGooKrrug6kMg _Nb0CQJtvEeG7J_nIj5pFXg _D6eukJtyEeG7J_nIj5pFXg"/>
@@ -393,7 +391,7 @@
     </packagedElement>
     <packagedElement xmi:type="uml:Package" xmi:id="_YEVOcJhhEeGQjZXnNfPuzg" name="DEL_Scenario_4">
       <packagedElement xmi:type="uml:Interaction" xmi:id="_YEVOcZhhEeGQjZXnNfPuzg" name="DEL_Scenario_4">
-        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_hdIJ0JhhEeGQjZXnNfPuzg" name="Operation_1" specification="_hdG7sJhhEeGQjZXnNfPuzg"/>
+        <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_hdIJ0JhhEeGQjZXnNfPuzg" name="Operation_1"/>
         <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_hdJX8phhEeGQjZXnNfPuzg" name="Operation_1_sender" covered="_YEV1gZhhEeGQjZXnNfPuzg" message="_hdHiwJhhEeGQjZXnNfPuzg" event="_hdIJ0ZhhEeGQjZXnNfPuzg"/>
         <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_hdJ_AJhhEeGQjZXnNfPuzg" name="Operation_1_receiver" covered="_YEV1gphhEeGQjZXnNfPuzg" message="_hdHiwJhhEeGQjZXnNfPuzg" event="_hdIw4JhhEeGQjZXnNfPuzg"/>
         <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_hdJ_AphhEeGQjZXnNfPuzg" name="Operation_1" covered="_YEV1gphhEeGQjZXnNfPuzg" finish="_hdJ_AZhhEeGQjZXnNfPuzg" start="_hdJ_AJhhEeGQjZXnNfPuzg" behavior="_hdIJ0JhhEeGQjZXnNfPuzg"/>

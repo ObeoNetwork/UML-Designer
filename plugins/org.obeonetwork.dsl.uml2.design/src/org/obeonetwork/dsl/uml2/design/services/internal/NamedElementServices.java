@@ -64,7 +64,7 @@ public final class NamedElementServices {
 	 * @return New operation name
 	 */
 	public static String getNewOperationName(org.eclipse.uml2.uml.Type type) {
-		final StringBuffer name = new StringBuffer(OPERATION_PREFIX);
+		String name = "";
 		List<Operation> operations = null;
 		if (type instanceof Class)
 			operations = ((Class)type).getOperations();
@@ -73,8 +73,8 @@ public final class NamedElementServices {
 		else if (type instanceof Component)
 			operations = ((Component)type).getOperations();
 		if (operations != null)
-			name.append(getNumberOfElements(operations, OPERATION_PREFIX));
-		return name.toString();
+			name = OPERATION_PREFIX + (operations.size() + 1);
+		return name;
 	}
 
 	/**
