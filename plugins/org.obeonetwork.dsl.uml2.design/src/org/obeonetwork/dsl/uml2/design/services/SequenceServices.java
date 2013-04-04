@@ -13,20 +13,29 @@ package org.obeonetwork.dsl.uml2.design.services;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.Stack;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.uml2.uml.Actor;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehaviorExecutionSpecification;
+import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.CombinedFragment;
+import org.eclipse.uml2.uml.Comment;
+import org.eclipse.uml2.uml.ConnectableElement;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ExecutionOccurrenceSpecification;
@@ -34,6 +43,7 @@ import org.eclipse.uml2.uml.ExecutionSpecification;
 import org.eclipse.uml2.uml.InstanceSpecification;
 import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.InteractionFragment;
+import org.eclipse.uml2.uml.InteractionOperand;
 import org.eclipse.uml2.uml.InterfaceRealization;
 import org.eclipse.uml2.uml.Lifeline;
 import org.eclipse.uml2.uml.Message;
@@ -51,6 +61,7 @@ import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.obeonetwork.dsl.uml2.design.services.internal.NamedElementServices;
 
+import fr.obeo.acceleo.gen.template.eval.ENode;
 import fr.obeo.dsl.common.ui.tools.api.util.EclipseUIUtil;
 import fr.obeo.dsl.viewpoint.DDiagram;
 import fr.obeo.dsl.viewpoint.DDiagramElement;
@@ -76,6 +87,8 @@ import fr.obeo.dsl.viewpoint.diagram.tools.api.editor.DDiagramEditor;
  * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class SequenceServices {
+	private static final String EXECUTION_END_SUFFIX = "_finish";
+
 	/**
 	 * Signal name suffix.
 	 */
@@ -115,8 +128,9 @@ public class SequenceServices {
 		final Stack<NamedElement> context = new Stack<NamedElement>();
 		context.add(lifeline);
 
-		final List<InteractionFragment> allFragments = occurrenceSpecification.getEnclosingInteraction()
-				.getFragments();
+		Interaction enclosingInteraction = getEnclosingInteraction(occurrenceSpecification);
+		List<InteractionFragment> allFragments = enclosingInteraction.getFragments();
+
 		final List<InteractionFragment> fragments = new ArrayList<InteractionFragment>();
 		for (InteractionFragment fragment : allFragments) {
 			if (fragment.getCovered(lifeline.getName()) != null)
@@ -158,6 +172,24 @@ public class SequenceServices {
 		return lifeline;
 	}
 
+	private Interaction getEnclosingInteraction(Element occurrenceSpecification) {
+		Interaction enclosingInteraction = null;
+
+		if (enclosingInteraction == null) {
+			EObject container = occurrenceSpecification.eContainer();
+			while (!(container instanceof Interaction)) {
+				container = container.eContainer();
+			}
+
+			if (container instanceof Interaction) {
+				Interaction result = (Interaction)container;
+				return result;
+			}
+		}
+
+		return enclosingInteraction;
+	}
+
 	/**
 	 * Check if fragment is an execution finish.
 	 * 
@@ -191,7 +223,9 @@ public class SequenceServices {
 		if (occurence == null)
 			return null;
 		final Map<InteractionFragment, BehaviorExecutionSpecification> behaviors = new HashMap<InteractionFragment, BehaviorExecutionSpecification>();
-		for (InteractionFragment fragment : occurence.getEnclosingInteraction().getFragments()) {
+
+		Interaction interaction = getEnclosingInteraction(occurence);
+		for (InteractionFragment fragment : interaction.getFragments()) {
 			if (fragment instanceof BehaviorExecutionSpecification) {
 				final BehaviorExecutionSpecification behavior = (BehaviorExecutionSpecification)fragment;
 				// Get start
@@ -380,18 +414,44 @@ public class SequenceServices {
 	public void createLifeline(Interaction interaction, NamedElement element) {
 		// If the element selected in the selection wizard is not an instance specification or a property,
 		// return a warning in error log view
-		if (!(element instanceof InstanceSpecification) && !(element instanceof Property)) {
+		if (!(element instanceof org.eclipse.uml2.uml.Class) && !(element instanceof Property)) {
 			logger.warning(
 					"An instance specification or a property must be selected to import a lifeline but you have selected "
 							+ element.getName() + " which is a " + element.getClass().getSimpleName(), null);
 		}
 
 		// Create lifeline
-		if (element instanceof InstanceSpecification) {
-			createLifeline(interaction, (InstanceSpecification)element);
-		} else {
+		if (element instanceof org.eclipse.uml2.uml.Class) {
+			createLifeline(interaction, (org.eclipse.uml2.uml.Class)element);
+		} else if (element instanceof Property) {
 			createLifeline(interaction, (Property)element);
+		} else if (element instanceof Actor) {
+			createLifeline(interaction, (Actor)element);
 		}
+	}
+
+	private void createLifeline(Interaction interaction, org.eclipse.uml2.uml.Class type) {
+		// Create lifeline
+		final Lifeline lifeline = UMLFactory.eINSTANCE.createLifeline();
+		lifeline.setName(type.getName());
+		final Property property = UMLFactory.eINSTANCE.createProperty();
+		property.setName(type.getName());
+		property.setType(type);
+		interaction.getOwnedAttributes().add(property);
+		lifeline.setRepresents(property);
+		interaction.getLifelines().add(lifeline);
+	}
+
+	private void createLifeline(Interaction interaction, Actor type) {
+		// Create lifeline
+		final Lifeline lifeline = UMLFactory.eINSTANCE.createLifeline();
+		lifeline.setName(type.getName());
+		final Property property = UMLFactory.eINSTANCE.createProperty();
+		property.setName(type.getName());
+		property.setType(type);
+		interaction.getOwnedAttributes().add(property);
+		lifeline.setRepresents(property);
+		interaction.getLifelines().add(lifeline);
 	}
 
 	/**
@@ -402,18 +462,18 @@ public class SequenceServices {
 	 * @param instance
 	 *            Instance specification associated to lifeline
 	 */
-	private void createLifeline(Interaction interaction, InstanceSpecification instance) {
-		// Create lifeline
-		final Lifeline lifeline = UMLFactory.eINSTANCE.createLifeline();
-		lifeline.setName(((InstanceSpecification)instance).getName());
-		final Dependency dependency = UMLFactory.eINSTANCE.createDependency();
-		dependency.setName(lifeline.getName() + "_" + instance.getName());
-		dependency.getClients().add(lifeline);
-		dependency.getSuppliers().add(instance);
-		interaction.getNearestPackage().getPackagedElements().add(dependency);
-		lifeline.getClientDependencies().add(dependency);
-		interaction.getLifelines().add(lifeline);
-	}
+	// private void createLifeline(Interaction interaction, InstanceSpecification instance) {
+	// // Create lifeline
+	// final Lifeline lifeline = UMLFactory.eINSTANCE.createLifeline();
+	// lifeline.setName(((InstanceSpecification)instance).getName());
+	// final Dependency dependency = UMLFactory.eINSTANCE.createDependency();
+	// dependency.setName(lifeline.getName() + "_" + instance.getName());
+	// dependency.getClients().add(lifeline);
+	// dependency.getSuppliers().add(instance);
+	// interaction.getNearestPackage().getPackagedElements().add(dependency);
+	// lifeline.getClientDependencies().add(dependency);
+	// interaction.getLifelines().add(lifeline);
+	// }
 
 	/**
 	 * Create a lifeline. Lifeline could be created in an interaction.
@@ -500,7 +560,7 @@ public class SequenceServices {
 
 		// Create execution end
 		final ExecutionOccurrenceSpecification endExec = factory.createExecutionOccurrenceSpecification();
-		final StringBuffer endExecName = new StringBuffer(executionName).append("_finish");
+		final StringBuffer endExecName = new StringBuffer(executionName).append(EXECUTION_END_SUFFIX);
 		endExec.setName(endExecName.toString());
 		endExec.getCovereds().add(lifeline);
 		endExec.setExecution(execution);
@@ -545,138 +605,6 @@ public class SequenceServices {
 	}
 
 	/**
-	 * Create asynchronous typed message.
-	 * 
-	 * @param interaction
-	 *            Interaction
-	 * @param sourceFragment
-	 *            Source
-	 * @param targetFragment
-	 *            Target
-	 * @param operation
-	 *            Operation associated to message
-	 * @param startingEndPredecessor
-	 *            Starting end predecessor
-	 * @param finishingEndPredecessor
-	 *            Finishing end predecessor
-	 */
-	public void createAsynchronousMessage(Interaction interaction, NamedElement sourceFragment,
-			NamedElement targetFragment, Operation operation, NamedElement startingEndPredecessor,
-			NamedElement finishingEndPredecessor) {
-		final Lifeline source = getLifeline(sourceFragment);
-		final Lifeline target = getLifeline(targetFragment);
-		final BehaviorExecutionSpecification predecessorExecution = getExecution((InteractionFragment)startingEndPredecessor);
-
-		final UMLFactory factory = UMLFactory.eINSTANCE;
-		final EList<InteractionFragment> fragments = interaction.getFragments();
-
-		// Create message
-		final Message message = factory.createMessage();
-		StringBuffer operationName;
-		if (operation == null)
-			operationName = new StringBuffer("Message_").append(interaction.getMessages().size());
-		else
-			operationName = new StringBuffer(operation.getName());
-
-		message.setName(operationName.toString());
-		message.setMessageSort(MessageSort.ASYNCH_CALL_LITERAL);
-		interaction.getMessages().add(message);
-
-		// Create message send event
-		final MessageOccurrenceSpecification senderEventMessage = factory
-				.createMessageOccurrenceSpecification();
-		final StringBuffer senderEventName = new StringBuffer(operationName).append(SENDER_MESSAGE_SUFFIX);
-		senderEventMessage.setName(senderEventName.toString());
-		senderEventMessage.getCovereds().add(source);
-		senderEventMessage.setMessage(message);
-
-		// Create message receive event
-		final MessageOccurrenceSpecification receiverEventMessage = factory
-				.createMessageOccurrenceSpecification();
-		final StringBuffer receiverEventName = new StringBuffer(operationName)
-				.append(RECEIVER_MESSAGE_SUFFIX);
-		receiverEventMessage.setName(receiverEventName.toString());
-		receiverEventMessage.getCovereds().add(target);
-		receiverEventMessage.setMessage(message);
-
-		message.setSendEvent(senderEventMessage);
-		message.setReceiveEvent(receiverEventMessage);
-
-		// Create behavior
-		BehaviorExecutionSpecification execution = null;
-		if (operation != null) {
-			final OpaqueBehavior behavior = factory.createOpaqueBehavior();
-			behavior.setName(operationName.toString());
-			behavior.setSpecification(operation);
-			interaction.getOwnedBehaviors().add(behavior);
-
-			execution = factory.createBehaviorExecutionSpecification();
-			execution.setName(operationName.toString());
-			execution.getCovereds().add(target);
-			execution.setBehavior(behavior);
-		} else {
-			// Create signal
-			final Signal signal = factory.createSignal();
-			signal.setName(operationName.append(SIGNAL_SUFFIX).toString());
-			message.getNearestPackage().getPackagedElements().add(signal);
-		}
-
-		ExecutionOccurrenceSpecification endExec = null;
-		if (execution != null) {
-			execution.setStart(receiverEventMessage);
-			// Create end execution
-			endExec = factory.createExecutionOccurrenceSpecification();
-			final StringBuffer executionEndName = new StringBuffer(execution.getName()).append("_finish");
-			endExec.setName(executionEndName.toString());
-			endExec.getCovereds().add(target);
-			endExec.setExecution(execution);
-			execution.setFinish(endExec);
-		}
-
-		// Add and order fragments under the interaction
-		// Add message after starting end predecessor
-		fragments.add(senderEventMessage);
-
-		// If predecessor is the beginning of an execution add message after the execution
-		if (startingEndPredecessor != null && startingEndPredecessor instanceof OccurrenceSpecification
-				&& predecessorExecution != null
-				&& startingEndPredecessor.equals(predecessorExecution.getStart()))
-			fragments.move(fragments.indexOf(predecessorExecution) + 1, senderEventMessage);
-		// Else set it directly after the predecessor
-		else
-			fragments.move(fragments.indexOf(startingEndPredecessor) + 1, senderEventMessage);
-		fragments.add(receiverEventMessage);
-		fragments.move(fragments.indexOf(senderEventMessage) + 1, receiverEventMessage);
-		if (execution != null) {
-			fragments.add(execution);
-			fragments.add(endExec);
-			fragments.move(fragments.indexOf(receiverEventMessage) + 1, execution);
-			fragments.move(fragments.indexOf(execution) + 1, endExec);
-		}
-	}
-
-	/**
-	 * Create asynchronous message.
-	 * 
-	 * @param interaction
-	 *            Interaction
-	 * @param sourceFragment
-	 *            Source
-	 * @param targetFragment
-	 *            Target
-	 * @param startingEndPredecessor
-	 *            Starting end predecessor
-	 * @param finishingEndPredecessor
-	 *            Finishing end predecessor
-	 */
-	public void createAsynchronousMessage(Interaction interaction, NamedElement sourceFragment,
-			NamedElement targetFragment, NamedElement startingEndPredecessor,
-			NamedElement finishingEndPredecessor) {
-		createAsynchronousMessage(interaction, sourceFragment, targetFragment, null, startingEndPredecessor,
-				finishingEndPredecessor);
-	}
-
-	/**
 	 * Create synchronous typed message.
 	 * 
 	 * @param interaction
@@ -693,143 +621,229 @@ public class SequenceServices {
 	 *            Finishing end predecessor
 	 */
 	public void createSynchronousMessage(Interaction interaction, NamedElement sourceFragment,
-			NamedElement targetFragment, Operation operation, NamedElement startingEndPredecessor,
-			NamedElement finishingEndPredecessor) {
-		final Lifeline source = getLifeline(sourceFragment);
+			NamedElement targetFragment, boolean createExecution, NamedElement startingEndPredecessor,
+			NamedElement finishingEndPredecessor, Operation operation) {
 		final Lifeline target = getLifeline(targetFragment);
 		final BehaviorExecutionSpecification predecessorExecution = getExecution((InteractionFragment)startingEndPredecessor);
 
 		final UMLFactory factory = UMLFactory.eINSTANCE;
 		final EList<InteractionFragment> fragments = interaction.getFragments();
 
-		// Create message
-		final Message message = factory.createMessage();
-		StringBuffer operationName;
-		if (operation == null)
-			operationName = new StringBuffer("Message_").append(interaction.getMessages().size());
-		else
-			operationName = new StringBuffer(operation.getName());
-
-		message.setName(operationName.toString());
-		message.setMessageSort(MessageSort.SYNCH_CALL_LITERAL);
+		Message message = createSynchronousMessage(interaction, sourceFragment, targetFragment,
+				startingEndPredecessor, finishingEndPredecessor, operation);
 		interaction.getMessages().add(message);
+
+		if (null != operation) {
+			message.setSignature(operation);
+		}
+
+		// Create behavior
+		BehaviorExecutionSpecification execution = null;
+		if (createExecution) {
+			execution = createExecution(/* operation, */target, message);
+			interaction.getOwnedBehaviors().add(execution.getBehavior());
+		} else {
+			// Create signal
+			final Signal signal = factory.createSignal();
+			signal.setName(message.getName() + SIGNAL_SUFFIX);
+			message.getNearestPackage().getPackagedElements().add(signal);
+		}
+		if (execution != null)
+			execution.setStart((MessageOccurrenceSpecification)message.getReceiveEvent());
+
+		Message replyMessage = createReplyMessage(interaction, sourceFragment, targetFragment,
+				startingEndPredecessor, finishingEndPredecessor, message);
+		interaction.getMessages().add(replyMessage);
+
+		if (execution != null)
+			execution.setFinish((MessageOccurrenceSpecification)replyMessage.getSendEvent());
+
+		// Add and order fragments under the interaction
+		// If predecessor is the beginning of an execution add message after the execution
+		if (startingEndPredecessor != null && startingEndPredecessor instanceof OccurrenceSpecification
+				&& predecessorExecution != null
+				&& startingEndPredecessor.equals(predecessorExecution.getStart())) {
+			fragments.add(fragments.indexOf(predecessorExecution) + 1,
+					(MessageOccurrenceSpecification)message.getSendEvent());
+			// Else set it directly after the predecessor
+		} else {
+			fragments.add(fragments.indexOf(startingEndPredecessor) + 1,
+					(MessageOccurrenceSpecification)message.getSendEvent());
+		}
+
+		fragments.add(fragments.indexOf((MessageOccurrenceSpecification)message.getSendEvent()) + 1,
+				(MessageOccurrenceSpecification)message.getReceiveEvent());
+
+		fragments.add((MessageOccurrenceSpecification)replyMessage.getSendEvent());
+		if (execution != null) {
+			fragments.add(fragments.indexOf((MessageOccurrenceSpecification)message.getReceiveEvent()) + 1,
+					execution);
+			fragments.move(fragments.indexOf(execution) + 1,
+					(MessageOccurrenceSpecification)replyMessage.getSendEvent());
+		} else
+			fragments.move(fragments.indexOf((MessageOccurrenceSpecification)message.getReceiveEvent()) + 1,
+					(MessageOccurrenceSpecification)replyMessage.getSendEvent());
+
+		fragments.add(fragments.indexOf((MessageOccurrenceSpecification)replyMessage.getSendEvent()) + 1,
+				(MessageOccurrenceSpecification)replyMessage.getReceiveEvent());
+	}
+
+	public Set<EObject> getAllClassesAndContainers(Interaction interaction) {
+		EObject rootContainer = EcoreUtil.getRootContainer(interaction);
+		Iterator<EObject> eObjects = rootContainer.eAllContents();
+
+		Set<EObject> result = new HashSet<EObject>();
+
+		result.add(rootContainer);
+
+		while (eObjects.hasNext()) {
+			EObject eObject = eObjects.next();
+			if (eObject instanceof org.eclipse.uml2.uml.Class && !(eObject instanceof OpaqueBehavior)) {
+				result.add(eObject);
+				Set<EObject> containers = getAllContainers(eObject);
+				result.addAll(containers);
+			}
+			if (eObject instanceof Property) {
+				Property property = (Property)eObject;
+				if (property.getType() instanceof org.eclipse.uml2.uml.Class) {
+					result.add(property);
+					Set<EObject> containers = getAllContainers(property);
+					result.addAll(containers);
+				}
+			}
+		}
+
+		return result;
+	}
+
+	public Set<EObject> getAllActorsAndContainers(Interaction interaction) {
+		EObject rootContainer = EcoreUtil.getRootContainer(interaction);
+		Iterator<EObject> eObjects = rootContainer.eAllContents();
+
+		Set<EObject> result = new HashSet<EObject>();
+
+		result.add(rootContainer);
+
+		while (eObjects.hasNext()) {
+			EObject eObject = eObjects.next();
+			if (eObject instanceof Actor) {
+				result.add(eObject);
+				Set<EObject> containers = getAllContainers(eObject);
+				result.addAll(containers);
+			}
+			if (eObject instanceof Property) {
+				Property property = (Property)eObject;
+				if (property.getType() instanceof Actor) {
+					result.add(property);
+					Set<EObject> containers = getAllContainers(property);
+					result.addAll(containers);
+				}
+			}
+		}
+
+		return result;
+	}
+
+	private Set<EObject> getAllContainers(EObject eObject) {
+		EObject container = eObject.eContainer();
+		Set<EObject> result = new HashSet<EObject>();
+
+		while (container.eContainer() != null) {
+			result.add(container);
+			container = container.eContainer();
+		}
+
+		return result;
+	}
+
+	/**
+	 * Create synchronous typed message.
+	 * 
+	 * @param interaction
+	 *            Interaction
+	 * @param sourceFragment
+	 *            Source
+	 * @param targetFragment
+	 *            Target
+	 * @param startingEndPredecessor
+	 *            Starting end predecessor
+	 * @param finishingEndPredecessor
+	 *            Finishing end predecessor
+	 */
+	public Message createSynchronousMessage(Interaction interaction, NamedElement sourceFragment,
+			NamedElement targetFragment, NamedElement startingEndPredecessor,
+			NamedElement finishingEndPredecessor, Operation operation) {
+
+		final UMLFactory factory = UMLFactory.eINSTANCE;
+
+		final Lifeline source = getLifeline(sourceFragment);
+		final Lifeline target = getLifeline(targetFragment);
+
+		String messageName = "";
+		if (operation == null) {
+			messageName = "Message_" + interaction.getMessages().size();
+		} else {
+			messageName = operation.getName();
+		}
+
+		final Message message = factory.createMessage();
+		message.setName(messageName);
+		message.setMessageSort(MessageSort.SYNCH_CALL_LITERAL);
 
 		// Create message send event
 		final MessageOccurrenceSpecification senderEventMessage = factory
 				.createMessageOccurrenceSpecification();
-		final StringBuffer senderEventName = new StringBuffer(operationName).append(SENDER_MESSAGE_SUFFIX);
-		senderEventMessage.setName(senderEventName.toString());
+		senderEventMessage.setName(message.getName() + SENDER_MESSAGE_SUFFIX);
 		senderEventMessage.getCovereds().add(source);
 		senderEventMessage.setMessage(message);
 
 		// Create message receive event
 		final MessageOccurrenceSpecification receiverEventMessage = factory
 				.createMessageOccurrenceSpecification();
-		final StringBuffer receiverEventName = new StringBuffer(operationName)
-				.append(RECEIVER_MESSAGE_SUFFIX);
-		receiverEventMessage.setName(receiverEventName.toString());
+		receiverEventMessage.setName(message.getName() + RECEIVER_MESSAGE_SUFFIX);
 		receiverEventMessage.getCovereds().add(target);
 		receiverEventMessage.setMessage(message);
 
 		message.setSendEvent(senderEventMessage);
 		message.setReceiveEvent(receiverEventMessage);
 
-		// Create behavior
-		BehaviorExecutionSpecification execution = null;
-		if (operation != null) {
-			final OpaqueBehavior behavior = factory.createOpaqueBehavior();
-			behavior.setName(operationName.toString());
-			behavior.setSpecification(operation);
-			interaction.getOwnedBehaviors().add(behavior);
+		return message;
 
-			execution = factory.createBehaviorExecutionSpecification();
-			execution.setName(operationName.toString());
-			execution.getCovereds().add(target);
-			execution.setBehavior(behavior);
-		} else {
-			// Create signal
-			final Signal signal = factory.createSignal();
-			final StringBuffer signalName = new StringBuffer(operationName).append(SIGNAL_SUFFIX);
-			signal.setName(signalName.toString());
-			message.getNearestPackage().getPackagedElements().add(signal);
-		}
-		if (execution != null)
-			execution.setStart(receiverEventMessage);
+	}
+
+	public Message createReplyMessage(Interaction interaction, NamedElement sourceFragment,
+			NamedElement targetFragment, NamedElement startingEndPredecessor,
+			NamedElement finishingEndPredecessor, Message message) {
+
+		final UMLFactory factory = UMLFactory.eINSTANCE;
+
+		final Lifeline source = getLifeline(sourceFragment);
+		final Lifeline target = getLifeline(targetFragment);
 
 		// Create reply message
 		final Message replyMessage = factory.createMessage();
-		final StringBuffer replyName = new StringBuffer(operationName).append("_reply");
-		replyMessage.setName(replyName.toString());
+		replyMessage.setName(message.getName() + "_reply");
 		replyMessage.setMessageSort(MessageSort.REPLY_LITERAL);
 		interaction.getMessages().add(replyMessage);
 
 		// Create reply message send event
 		final MessageOccurrenceSpecification senderEventReplyMessage = factory
 				.createMessageOccurrenceSpecification();
-		final StringBuffer senderReplyEventName = new StringBuffer(replyName).append(SENDER_MESSAGE_SUFFIX);
-		senderEventReplyMessage.setName(senderReplyEventName.toString());
+		senderEventReplyMessage.setName(replyMessage.getName() + SENDER_MESSAGE_SUFFIX);
 		senderEventReplyMessage.getCovereds().add(target);
 		senderEventReplyMessage.setMessage(replyMessage);
 
 		// Create reply message receive event
 		final MessageOccurrenceSpecification receiverEventReplyMessage = factory
 				.createMessageOccurrenceSpecification();
-		final StringBuffer receiverReplyEventName = new StringBuffer(replyName)
-				.append(RECEIVER_MESSAGE_SUFFIX);
-		receiverEventReplyMessage.setName(receiverReplyEventName.toString());
+		receiverEventReplyMessage.setName(replyMessage.getName() + RECEIVER_MESSAGE_SUFFIX);
 		receiverEventReplyMessage.getCovereds().add(source);
 		receiverEventReplyMessage.setMessage(replyMessage);
 
 		replyMessage.setSendEvent(senderEventReplyMessage);
 		replyMessage.setReceiveEvent(receiverEventReplyMessage);
-		if (execution != null)
-			execution.setFinish(senderEventReplyMessage);
 
-		// Add and order fragments under the interaction
-		// Add message after starting end predecessor
-		fragments.add(senderEventMessage);
-
-		// If predecessor is the beginning of an execution add message after the execution
-		if (startingEndPredecessor != null && startingEndPredecessor instanceof OccurrenceSpecification
-				&& predecessorExecution != null
-				&& startingEndPredecessor.equals(predecessorExecution.getStart()))
-			fragments.move(fragments.indexOf(predecessorExecution) + 1, senderEventMessage);
-		// Else set it directly after the predecessor
-		else
-			fragments.move(fragments.indexOf(startingEndPredecessor) + 1, senderEventMessage);
-		fragments.add(receiverEventMessage);
-		fragments.move(fragments.indexOf(senderEventMessage) + 1, receiverEventMessage);
-		fragments.add(senderEventReplyMessage);
-		if (execution != null) {
-			fragments.add(execution);
-			fragments.move(fragments.indexOf(receiverEventMessage) + 1, execution);
-			fragments.move(fragments.indexOf(execution) + 1, senderEventReplyMessage);
-		} else
-			fragments.move(fragments.indexOf(receiverEventMessage) + 1, senderEventReplyMessage);
-
-		fragments.add(receiverEventReplyMessage);
-		fragments.move(fragments.indexOf(senderEventReplyMessage) + 1, receiverEventReplyMessage);
-	}
-
-	/**
-	 * Create synchronous typed message.
-	 * 
-	 * @param interaction
-	 *            Interaction
-	 * @param sourceFragment
-	 *            Source
-	 * @param targetFragment
-	 *            Target
-	 * @param startingEndPredecessor
-	 *            Starting end predecessor
-	 * @param finishingEndPredecessor
-	 *            Finishing end predecessor
-	 */
-	public void createSynchronousMessage(Interaction interaction, NamedElement sourceFragment,
-			NamedElement targetFragment, NamedElement startingEndPredecessor,
-			NamedElement finishingEndPredecessor) {
-		createSynchronousMessage(interaction, sourceFragment, targetFragment, null, startingEndPredecessor,
-				finishingEndPredecessor);
+		return replyMessage;
 	}
 
 	/**
@@ -1065,47 +1079,143 @@ public class SequenceServices {
 	 */
 	public void reorder(ExecutionSpecification execution, InteractionFragment startingEndPredecessorAfter,
 			InteractionFragment finishingEndPredecessorAfter) {
-		// Get current interaction
+
 		final Interaction interaction = execution.getEnclosingInteraction();
-		// Re-order fragments under the interaction
 		final EList<InteractionFragment> fragments = interaction.getFragments();
 
-		final List<InteractionFragment> subFragments = new ArrayList<InteractionFragment>();
-		subFragments.addAll(fragments.subList(fragments.indexOf(execution.getStart()) + 2,
-				fragments.indexOf(execution.getFinish())));
-		int startIndex = getPredecessorIndex(startingEndPredecessorAfter, fragments);
-		// Move the execution start and the execution
-		if (startingEndPredecessorAfter != null) {
-			// If startingEndPredecessorAfter is the start of an execution, keep the behavior just after the
-			// start
-			startIndex = fragments.indexOf(startingEndPredecessorAfter);
-			reorderExecutionOccurence(execution, execution.getStart(), startingEndPredecessorAfter,
-					interaction, fragments);
-		} else {
-			reorderExecutionOccurence(execution, execution.getStart(), startingEndPredecessorAfter,
-					interaction, fragments);
+		final boolean executionFinishPredecessorChanged = executionFinishPredecessorChanged(execution,
+				finishingEndPredecessorAfter);
+		final boolean executionStartPredecessorChanged = executionStartPredecessorChanged(execution,
+				startingEndPredecessorAfter);
+
+		if (executionStartPredecessorChanged) {
+
+			fragments.remove(execution.getStart());
+			fragments.remove(execution);
+
+			if (isStartOfExecution(startingEndPredecessorAfter, fragments)) {
+				fragments.add(getFragmentIndex(startingEndPredecessorAfter, fragments) + 2,
+						execution.getStart());
+			} else {
+				fragments.add(getFragmentIndex(startingEndPredecessorAfter, fragments) + 1,
+						execution.getStart());
+			}
+			fragments.add(getFragmentIndex(execution.getStart(), fragments) + 1, execution);
 		}
 
-		// Move all the elements attached to the moved execution
-		for (InteractionFragment fragment : subFragments) {
-			// If execution end is a message move the message start and receive
-			if (fragment.equals(execution.getFinish())
-					&& execution.getFinish() instanceof MessageOccurrenceSpecification)
-				reorder(((MessageOccurrenceSpecification)execution.getFinish()).getMessage(), execution, null);
-			else {
-				int newIndex = startIndex + subFragments.indexOf(fragment) + 1;
-				// Predecessor is the last fragment
-				if (startIndex == fragments.size() - 1)
-					newIndex = startIndex;
-				fragments.move(newIndex, fragments.indexOf(fragment));
+		if (executionFinishPredecessorChanged) {
+			fragments.remove(execution.getFinish());
+			if (isStartOfExecution(finishingEndPredecessorAfter, fragments)) {
+				fragments.add(getFragmentIndex(finishingEndPredecessorAfter, fragments) + 2,
+						execution.getFinish());
+			} else {
+				fragments.add(getFragmentIndex(finishingEndPredecessorAfter, fragments) + 1,
+						execution.getFinish());
+			}
+		}
+	}
+
+//	private List<InteractionFragment> getExecutionElementsToMove(ExecutionSpecification execution) {
+//
+//		List<InteractionFragment> result = new BasicEList<InteractionFragment>();
+//
+//		Interaction interaction = execution.getEnclosingInteraction();
+//		List<InteractionFragment> fragments = interaction.getFragments();
+//
+//		InteractionFragment executionStart = execution.getStart();
+//		InteractionFragment executionFinish = execution.getFinish();
+//
+//		if (executionStart instanceof MessageOccurrenceSpecification) {
+//			executionStart = ((MessageOccurrenceSpecification)((MessageOccurrenceSpecification)executionStart)
+//					.getMessage().getSendEvent());
+//		}
+//
+//		if (executionFinish instanceof MessageOccurrenceSpecification) {
+//			executionFinish = ((MessageOccurrenceSpecification)((MessageOccurrenceSpecification)executionFinish)
+//					.getMessage().getReceiveEvent());
+//		}
+//
+//		int startExecutionIndex = fragments.indexOf(executionStart);
+//		int finishExecutionIndex = fragments.indexOf(executionFinish);
+//
+//		for (int i = startExecutionIndex; i <= finishExecutionIndex; i++) {
+//			result.add(fragments.get(i));
+//		}
+//
+//		return result;
+//	}
+
+	public void reorder(CombinedFragment combinedFragment, InteractionFragment startingEndPredecessorAfter,
+			InteractionFragment finishingEndPredecessorAfter) {
+
+		final Interaction interaction = combinedFragment.getEnclosingInteraction();
+		final EList<InteractionFragment> fragments = interaction.getFragments();
+
+		final boolean combinedFragmentStartPredecessorChanged = combinedFragmentStartPredecessorChanged(
+				combinedFragment, startingEndPredecessorAfter);
+
+		if (combinedFragmentStartPredecessorChanged) {
+			fragments.remove(combinedFragment);
+			if (isStartOfExecution(startingEndPredecessorAfter, fragments)) {
+				fragments.add(getFragmentIndex(startingEndPredecessorAfter, fragments) + 2, combinedFragment);
+			} else {
+				fragments.add(getFragmentIndex(startingEndPredecessorAfter, fragments) + 1, combinedFragment);
+			}
+		}
+	}
+
+	private boolean combinedFragmentStartPredecessorChanged(CombinedFragment combinedFragment,
+			InteractionFragment startingEndPredecessorAfter) {
+		final Interaction interaction = combinedFragment.getEnclosingInteraction();
+		final EList<InteractionFragment> fragments = interaction.getFragments();
+		final InteractionFragment initialPredecessor = fragments.get(fragments.indexOf(combinedFragment) - 1);
+
+		return !initialPredecessor.equals(startingEndPredecessorAfter);
+	}
+
+	private boolean isStartOfExecution(InteractionFragment startingEndPredecessorAfter,
+			EList<InteractionFragment> fragments) {
+		if (startingEndPredecessorAfter instanceof ExecutionOccurrenceSpecification) {
+			ExecutionOccurrenceSpecification executionStart = (ExecutionOccurrenceSpecification)startingEndPredecessorAfter;
+			if (executionStart.getExecution().getStart().equals(executionStart)) {
+				return true;
 			}
 		}
 
-		// Move the execution finish
-		if (finishingEndPredecessorAfter != null) {
-			reorderExecutionOccurence(execution, execution.getFinish(), finishingEndPredecessorAfter,
-					interaction, fragments);
+		if (startingEndPredecessorAfter instanceof MessageOccurrenceSpecification) {
+			if ((fragments.indexOf(startingEndPredecessorAfter) + 1) < fragments.size()) {
+				InteractionFragment candidate = fragments
+						.get(fragments.indexOf(startingEndPredecessorAfter) + 1);
+				if (candidate instanceof BehaviorExecutionSpecification) {
+					BehaviorExecutionSpecification behaviorExecution = (BehaviorExecutionSpecification)candidate;
+					if (behaviorExecution.getStart().equals(startingEndPredecessorAfter)) {
+						return true;
+					}
+				}
+			}
 		}
+
+		return false;
+	}
+
+	private boolean executionStartPredecessorChanged(ExecutionSpecification execution,
+			InteractionFragment startingEndPredecessorAfter) {
+		final Interaction interaction = execution.getEnclosingInteraction();
+		final EList<InteractionFragment> fragments = interaction.getFragments();
+		final InteractionFragment initialPredecessor = fragments
+				.get(fragments.indexOf(execution.getStart()) - 1);
+
+		return !initialPredecessor.equals(startingEndPredecessorAfter);
+	}
+
+	private boolean executionFinishPredecessorChanged(ExecutionSpecification execution,
+			InteractionFragment finishingEndPredecessorAfter) {
+		final Interaction interaction = execution.getEnclosingInteraction();
+		final EList<InteractionFragment> fragments = interaction.getFragments();
+		final InteractionFragment initialPredecessor = fragments
+				.get(fragments.indexOf(execution.getFinish()) - 1);
+
+		return !initialPredecessor.equals(finishingEndPredecessorAfter);
 	}
 
 	/**
@@ -1117,7 +1227,7 @@ public class SequenceServices {
 	 *            List of fragments
 	 * @return Index of fragment if exists otherwise 0
 	 */
-	private int getPredecessorIndex(InteractionFragment fragment, final EList<InteractionFragment> fragments) {
+	private int getFragmentIndex(InteractionFragment fragment, final EList<InteractionFragment> fragments) {
 		if (fragment != null)
 			return fragments.indexOf(fragment);
 		return 0;
@@ -1137,50 +1247,50 @@ public class SequenceServices {
 	 * @param fragments
 	 *            Fragments
 	 */
-	private void reorderExecutionOccurence(ExecutionSpecification execution,
-			OccurrenceSpecification occurrence, InteractionFragment startingEndPredecessorAfter,
-			final Interaction interaction, final EList<InteractionFragment> fragments) {
-		int startIndex = getPredecessorIndex(startingEndPredecessorAfter, fragments);
-		if (getExecution(startingEndPredecessorAfter) != null
-				&& startingEndPredecessorAfter == (getExecution(startingEndPredecessorAfter).getStart())) {
-			startIndex += 1;
-		}
-
-		// If element moves up
-		if (startingEndPredecessorAfter != null && fragments.indexOf(occurrence) > startIndex) {
-			startIndex += 1;
-		}
-
-		// If execution start is a message move the message start and receive
-		if (occurrence instanceof MessageOccurrenceSpecification) {
-			reorder(((MessageOccurrenceSpecification)occurrence).getMessage(), startingEndPredecessorAfter,
-					null);
-			if (fragments.indexOf(occurrence) > startIndex) {
-				startIndex += 1;
-			}
-		} else {
-			// Move execution start
-			fragments.move(startIndex, fragments.indexOf(occurrence));
-		}
-		if (getExecution(occurrence).getStart() == occurrence) {
-			// Move execution
-			int behaviorIndex = startIndex;
-			if (fragments.indexOf(execution) > startIndex) {
-				behaviorIndex += 1;
-			}
-			fragments.move(behaviorIndex, fragments.indexOf(execution));
-		}
-		if (occurrence instanceof MessageOccurrenceSpecification) {
-			final Message message = ((MessageOccurrenceSpecification)occurrence).getMessage();
-			// If message is a synchronous message, move the reply message
-			if (MessageSort.SYNCH_CALL_LITERAL.equals(message.getMessageSort())) {
-				final Message reply = getReplyMessage(message);
-				reorder(reply, (InteractionFragment)message.getReceiveEvent(),
-						(InteractionFragment)message.getReceiveEvent());
-				refresh(interaction);
-			}
-		}
-	}
+	// private void reorderExecutionOccurence(ExecutionSpecification execution,
+	// OccurrenceSpecification occurrence, InteractionFragment startingEndPredecessorAfter,
+	// final Interaction interaction, final EList<InteractionFragment> fragments) {
+	// int startIndex = getFragmentIndex(startingEndPredecessorAfter, fragments);
+	// if (getExecution(startingEndPredecessorAfter) != null
+	// && startingEndPredecessorAfter == (getExecution(startingEndPredecessorAfter).getStart())) {
+	// startIndex += 1;
+	// }
+	//
+	// // If element moves up
+	// if (startingEndPredecessorAfter != null && fragments.indexOf(occurrence) > startIndex) {
+	// startIndex += 1;
+	// }
+	//
+	// // If execution start is a message move the message start and receive
+	// if (occurrence instanceof MessageOccurrenceSpecification) {
+	// reorder(((MessageOccurrenceSpecification)occurrence).getMessage(), startingEndPredecessorAfter,
+	// null);
+	// if (fragments.indexOf(occurrence) > startIndex) {
+	// startIndex += 1;
+	// }
+	// } else {
+	// // Move execution start
+	// fragments.move(startIndex, fragments.indexOf(occurrence));
+	// }
+	// if (getExecution(occurrence).getStart() == occurrence) {
+	// // Move execution
+	// int behaviorIndex = startIndex;
+	// if (fragments.indexOf(execution) > startIndex) {
+	// behaviorIndex += 1;
+	// }
+	// fragments.move(behaviorIndex, fragments.indexOf(execution));
+	// }
+	// if (occurrence instanceof MessageOccurrenceSpecification) {
+	// final Message message = ((MessageOccurrenceSpecification)occurrence).getMessage();
+	// // If message is a synchronous message, move the reply message
+	// if (MessageSort.SYNCH_CALL_LITERAL.equals(message.getMessageSort())) {
+	// final Message reply = getReplyMessage(message);
+	// reorder(reply, (InteractionFragment)message.getReceiveEvent(),
+	// (InteractionFragment)message.getReceiveEvent());
+	// refresh(interaction);
+	// }
+	// }
+	// }
 
 	/**
 	 * Reorder message.
@@ -1194,49 +1304,180 @@ public class SequenceServices {
 	 */
 	public void reorder(Message message, InteractionFragment startingEndPredecessorAfter,
 			InteractionFragment finishingEndPredecessorAfter) {
-		// Get current interaction
-		final Interaction interaction = message.getInteraction();
-		// Re-order fragments under the interaction
-		final EList<InteractionFragment> fragments = interaction.getFragments();
+		if (isMoveAuthorized(message)) {
+			final Interaction interaction = message.getInteraction();
+			final EList<InteractionFragment> fragments = interaction.getFragments();
 
-		// Move message start after startEndPredecessorAfter
-		int sendMsgIndex = 0;
-		if (startingEndPredecessorAfter != null) {
-			// If startingEndPredecessorAfter is the start of an execution, keep the behavior just after the
-			// start
-			sendMsgIndex = fragments.indexOf(startingEndPredecessorAfter);
-			if (getExecution(startingEndPredecessorAfter) != null
-					&& startingEndPredecessorAfter == (getExecution(startingEndPredecessorAfter).getStart())) {
-				sendMsgIndex += 1;
+			final boolean messageStartPredecessorChanged = messageStartPredecessorChanged(message,
+					startingEndPredecessorAfter);
+
+			if (messageStartPredecessorChanged) {
+				fragments.remove(message.getSendEvent());
+				fragments.remove(message.getReceiveEvent());
+
+				if (isStartOfExecution(startingEndPredecessorAfter, fragments)) {
+					fragments.add(getFragmentIndex(startingEndPredecessorAfter, fragments) + 2,
+							(MessageOccurrenceSpecification)message.getSendEvent());
+				} else {
+					fragments.add(getFragmentIndex(startingEndPredecessorAfter, fragments) + 1,
+							(MessageOccurrenceSpecification)message.getSendEvent());
+				}
+
+				fragments
+						.add(getFragmentIndex((MessageOccurrenceSpecification)message.getSendEvent(),
+								fragments) + 1, (MessageOccurrenceSpecification)message.getReceiveEvent());
 			}
 
-			// If element moves up
-			if (fragments.indexOf(message.getSendEvent()) > sendMsgIndex) {
-				sendMsgIndex += 1;
+			// Move reply for synchronous message
+			if (message.getMessageSort().equals(MessageSort.SYNCH_CALL_LITERAL)) {
+				Message replyMessage = getReplyMessage(message);
+				fragments.remove(replyMessage.getSendEvent());
+				fragments.remove(replyMessage.getReceiveEvent());
+
+				if (isStartOfExecution((MessageOccurrenceSpecification)message.getReceiveEvent(), fragments)) {
+					fragments.add(
+							getFragmentIndex((MessageOccurrenceSpecification)message.getReceiveEvent(),
+									fragments) + 2, (MessageOccurrenceSpecification)replyMessage
+									.getSendEvent());
+				} else {
+					fragments.add(
+							getFragmentIndex((MessageOccurrenceSpecification)message.getReceiveEvent(),
+									fragments) + 1, (MessageOccurrenceSpecification)replyMessage
+									.getSendEvent());
+				}
+
+				fragments.add(
+						getFragmentIndex((MessageOccurrenceSpecification)replyMessage.getSendEvent(),
+								fragments) + 1, (MessageOccurrenceSpecification)replyMessage
+								.getReceiveEvent());
+
 			}
+
+			// Move message start after startEndPredecessorAfter
+			// int sendMsgIndex = 0;
+			// boolean moveup = false;
+			// if (startingEndPredecessorAfter != null) {
+			// // If startingEndPredecessorAfter is the start of an execution, keep the behavior just after
+			// // the
+			// // start
+			// sendMsgIndex = fragments.indexOf(startingEndPredecessorAfter);
+			//
+			// if (getExecution(startingEndPredecessorAfter) != null
+			// && startingEndPredecessorAfter == (getExecution(startingEndPredecessorAfter)
+			// .getStart())) {
+			// sendMsgIndex += 1;
+			// }
+			//
+			// // If element moves up
+			// if (fragments.indexOf(message.getSendEvent()) > sendMsgIndex) {
+			// sendMsgIndex += 1;
+			// moveup = true;
+			// }
 
 			// If execution start is a message move the message start and receive
 			// Move execution start
-			fragments.move(sendMsgIndex, fragments.indexOf(message.getSendEvent()));
+			// fragments.move(sendMsgIndex, fragments.indexOf(message.getSendEvent()));
+			//
+			// // Move execution
+			// int receiveReplyMsgIndex = sendMsgIndex + 1;
+			// int receiveMsgIndex = sendMsgIndex;
+			// if (fragments.indexOf(message.getReceiveEvent()) > sendMsgIndex) {
+			// receiveMsgIndex += 1;
+			// }
+			// fragments.move(receiveMsgIndex, fragments.indexOf(message.getReceiveEvent()));
 
-			// Move execution
-			int receiveMsgIndex = sendMsgIndex;
-			if (fragments.indexOf(message.getReceiveEvent()) > sendMsgIndex) {
-				receiveMsgIndex += 1;
-			}
-			fragments.move(receiveMsgIndex, fragments.indexOf(message.getReceiveEvent()));
-		} else {
-			// Element moved at the beginning of sequence, so no startingPredecessorAfter exists
-			// Move execution start
-			fragments.move(sendMsgIndex, fragments.indexOf(message.getSendEvent()));
-			// Move execution
-			int receiveMsgIndex = sendMsgIndex;
-			if (fragments.indexOf(message.getReceiveEvent()) > sendMsgIndex) {
-				receiveMsgIndex += 1;
-			}
-			fragments.move(receiveMsgIndex, fragments.indexOf(message.getReceiveEvent()));
+			// if (message.getMessageSort().equals(MessageSort.SYNCH_CALL_LITERAL)) {
+			// Message replyMessage = getReplyMessage(message);
+			// if (moveup) {
+			// fragments.move(receiveMsgIndex + 1, fragments.indexOf(replyMessage.getSendEvent()));
+			// fragments
+			// .move(receiveMsgIndex + 1, fragments.indexOf(replyMessage.getReceiveEvent()));
+			// } else {
+			// fragments.move(receiveMsgIndex, fragments.indexOf(replyMessage.getSendEvent()));
+			// fragments.move(receiveMsgIndex, fragments.indexOf(replyMessage.getReceiveEvent()));
+			// }
+			// }
+			// } else {
+			// // Element moved at the beginning of sequence, so no startingPredecessorAfter exists
+			// // Move execution start
+			// fragments.move(sendMsgIndex, fragments.indexOf(message.getSendEvent()));
+			// // Move execution
+			// int receiveMsgIndex = sendMsgIndex;
+			// if (fragments.indexOf(message.getReceiveEvent()) > sendMsgIndex) {
+			// receiveMsgIndex += 1;
+			// }
+			// fragments.move(receiveMsgIndex, fragments.indexOf(message.getReceiveEvent()));
+			// }
 		}
 	}
+
+	private boolean messageStartPredecessorChanged(Message message,
+			InteractionFragment startingEndPredecessorAfter) {
+		final Interaction interaction = message.getInteraction();
+		final EList<InteractionFragment> fragments = interaction.getFragments();
+		final InteractionFragment initialPredecessor = fragments
+				.get(fragments.indexOf(message.getSendEvent()) - 1);
+
+		return !initialPredecessor.equals(startingEndPredecessorAfter);
+
+	}
+
+	private boolean isMoveAuthorized(Message message) {
+		if (message.getMessageSort().equals(MessageSort.REPLY_LITERAL)) {
+			return false;
+		}
+		return true;
+	}
+
+//	private int getInteractionFragmentIndex(InteractionFragment interactionFragment) {
+//		Interaction interaction = interactionFragment.getEnclosingInteraction();
+//		EList<InteractionFragment> fragments = interaction.getFragments();
+//
+//		return fragments.indexOf(interactionFragment);
+//	}
+
+	/**
+	 * Reorder combinedFragment.
+	 * 
+	 * @param combinedFragment
+	 *            Moved combinedFragment
+	 * @param startingEndPredecessorAfter
+	 *            Fragment preceding moved execution start before the beginning of reorder operation
+	 * @param finishingEndPredecessorAfter
+	 *            Fragment preceding moved execution finish before the beginning of reorder operation
+	 */
+	// public void reorder(CombinedFragment combinedFragment, InteractionFragment startingEndPredecessorAfter,
+	// InteractionFragment finishingEndPredecessorAfter) {
+	// // Get current interaction
+	// final Interaction interaction = combinedFragment.getEnclosingInteraction();
+	// // Re-order fragments under the interaction
+	// final EList<InteractionFragment> fragments = interaction.getFragments();
+	//
+	// // Move message start after startEndPredecessorAfter
+	// int sendMsgIndex = 0;
+	// if (startingEndPredecessorAfter != null) {
+	// // If startingEndPredecessorAfter is the start of an execution, keep the behavior just after the
+	// // start
+	// sendMsgIndex = fragments.indexOf(startingEndPredecessorAfter);
+	// if (getExecution(startingEndPredecessorAfter) != null
+	// && startingEndPredecessorAfter == (getExecution(startingEndPredecessorAfter).getStart())) {
+	// sendMsgIndex += 1;
+	// }
+	//
+	// // If element moves up
+	// if (fragments.indexOf(combinedFragment) > sendMsgIndex) {
+	// sendMsgIndex += 1;
+	// }
+	//
+	// // If execution start is a message move the message start and receive
+	// // Move execution start
+	// fragments.move(sendMsgIndex, fragments.indexOf(combinedFragment));
+	// } else {
+	// // Element moved at the beginning of sequence, so no startingPredecessorAfter exists
+	// // Move execution start
+	// fragments.move(sendMsgIndex, fragments.indexOf(combinedFragment));
+	// }
+	// }
 
 	/**
 	 * Refresh diagram associated to interaction.
@@ -1244,18 +1485,18 @@ public class SequenceServices {
 	 * @param interaction
 	 *            Interaction
 	 */
-	private void refresh(Interaction interaction) {
-		// Refresh current representation
-		// Get session
-		final Session session = SessionManager.INSTANCE.getSession(interaction);
-		if (session != null) {
-			// Get representation
-			final DRepresentation diagram = (DRepresentation)DialectManager.INSTANCE.getRepresentations(
-					interaction, session).toArray()[0];
-			// Refresh current sequence diagram
-			DialectManager.INSTANCE.refresh(diagram, new NullProgressMonitor());
-		}
-	}
+//	private void refresh(Interaction interaction) {
+//		// Refresh current representation
+//		// Get session
+//		final Session session = SessionManager.INSTANCE.getSession(interaction);
+//		if (session != null) {
+//			// Get representation
+//			final DRepresentation diagram = (DRepresentation)DialectManager.INSTANCE.getRepresentations(
+//					interaction, session).toArray()[0];
+//			// Refresh current sequence diagram
+//			DialectManager.INSTANCE.refresh(diagram, new NullProgressMonitor());
+//		}
+//	}
 
 	/**
 	 * Create an operation from a lifeline. Create the operation in the class and the execution on the
@@ -1319,8 +1560,26 @@ public class SequenceServices {
 		}
 		final Operation operation = operationService.createOperation(type);
 		// Create message
-		createAsynchronousMessage(interaction, source, target, operation, startingEndPredecessor,
-				finishingEndPredecessor);
+		createAsynchronousMessage(interaction, source, target, true, startingEndPredecessor,
+				finishingEndPredecessor, operation);
+	}
+
+	public void createOperationAndSynchMessage(NamedElement target, NamedElement source,
+			NamedElement startingEndPredecessor, NamedElement finishingEndPredecessor) {
+		// Get associated class and interaction
+		org.eclipse.uml2.uml.Type type;
+		Interaction interaction;
+		if (target instanceof Lifeline) {
+			type = getType((Lifeline)target);
+			interaction = ((Lifeline)target).getInteraction();
+		} else {
+			type = getType(((ExecutionSpecification)target).getCovereds().get(0));
+			interaction = ((ExecutionSpecification)target).getEnclosingInteraction();
+		}
+		final Operation operation = operationService.createOperation(type);
+		// Create message
+		createSynchronousMessage(interaction, source, target, true, startingEndPredecessor,
+				finishingEndPredecessor, operation);
 	}
 
 	/**
@@ -1336,23 +1595,23 @@ public class SequenceServices {
 	 * @param finishingEndPredecessor
 	 *            Finish predecessor
 	 */
-	public void createOperationAndSynchMessage(NamedElement target, NamedElement source,
-			NamedElement startingEndPredecessor, NamedElement finishingEndPredecessor) {
-		// Get associated class and interaction
-		org.eclipse.uml2.uml.Type type;
-		Interaction interaction;
-		if (target instanceof Lifeline) {
-			type = getType((Lifeline)target);
-			interaction = ((Lifeline)target).getInteraction();
-		} else {
-			type = getType(((ExecutionSpecification)target).getCovereds().get(0));
-			interaction = ((ExecutionSpecification)target).getEnclosingInteraction();
-		}
-		final Operation operation = operationService.createOperation(type);
-		// Create message
-		createSynchronousMessage(interaction, source, target, operation, startingEndPredecessor,
-				finishingEndPredecessor);
-	}
+	// public void createOperationAndSynchMessage(NamedElement target, NamedElement source,
+	// NamedElement startingEndPredecessor, NamedElement finishingEndPredecessor) {
+	// // Get associated class and interaction
+	// org.eclipse.uml2.uml.Type type;
+	// Interaction interaction;
+	// if (target instanceof Lifeline) {
+	// type = getType((Lifeline)target);
+	// interaction = ((Lifeline)target).getInteraction();
+	// } else {
+	// type = getType(((ExecutionSpecification)target).getCovereds().get(0));
+	// interaction = ((ExecutionSpecification)target).getEnclosingInteraction();
+	// }
+	// final Operation operation = operationService.createOperation(type);
+	// // Create message
+	// createSynchronousMessage(interaction, source, target, operation, startingEndPredecessor,
+	// finishingEndPredecessor);
+	// }
 
 	/**
 	 * Get type associated to a lifeline.
@@ -1508,4 +1767,393 @@ public class SequenceServices {
 			}
 		}
 	}
+
+	// public InteractionFragment getStartingEnd(final CombinedFragment combinedFragment) {
+	// final Interaction enclosingInteraction = combinedFragment.getEnclosingInteraction();
+	// final int index = enclosingInteraction.getFragments().indexOf(combinedFragment);
+	//
+	// if (index == 0)
+	// return null;
+	// else {
+	// InteractionFragment result = enclosingInteraction.getFragments().get(index - 1);
+	// return result;
+	// }
+	// }
+
+	public Object getFinishingEnd(final CombinedFragment combinedFragment) {
+
+		if (combinedFragment.getOperands().isEmpty()) {
+			return combinedFragment;
+		} else {
+			InteractionOperand lastOperand = combinedFragment.getOperands().get(
+					combinedFragment.getOperands().size() - 1);
+			return getFinishingEnd(lastOperand);
+		}
+
+	}
+
+	public Element getFinishingEnd(final InteractionOperand interactionOperand) {
+
+		for (Element element : interactionOperand.allOwnedElements()) {
+			if (element instanceof Comment) {
+				return element;
+			}
+		}
+
+		return null;
+
+		// if (interactionOperand.getFragments().isEmpty()) {
+		// Object result = interactionOperand.allOwnedElements().get(0);
+		// return result;
+		// } else {
+		// return interactionOperand.getFragments().get(interactionOperand.getFragments().size() - 1);
+		// }
+
+	}
+
+	/**
+	 * Create asynchronous message.
+	 * 
+	 * @param interaction
+	 *            Interaction
+	 * @param sourceFragment
+	 *            Source
+	 * @param targetFragment
+	 *            Target
+	 * @param startingEndPredecessor
+	 *            Starting end predecessor
+	 * @param finishingEndPredecessor
+	 *            Finishing end predecessor
+	 */
+	public void createAsynchronousMessage(Interaction interaction, NamedElement sourceFragment,
+			NamedElement targetFragment, NamedElement startingEndPredecessor,
+			NamedElement finishingEndPredecessor, Operation operation) {
+		createAsynchronousMessage(interaction, sourceFragment, targetFragment, false, startingEndPredecessor,
+				finishingEndPredecessor, operation);
+	}
+
+	/**
+	 * Create asynchronous typed message.
+	 * 
+	 * @param interaction
+	 *            Interaction
+	 * @param sourceFragment
+	 *            Source
+	 * @param targetFragment
+	 *            Target
+	 * @param operation
+	 *            Operation associated to message
+	 * @param startingEndPredecessor
+	 *            Starting end predecessor
+	 * @param finishingEndPredecessor
+	 *            Finishing end predecessor
+	 */
+	public void createAsynchronousMessage(Interaction interaction, NamedElement sourceFragment,
+			NamedElement targetFragment, boolean createExecution, NamedElement startingEndPredecessor,
+			NamedElement finishingEndPredecessor, Operation operation) {
+		final Lifeline target = getLifeline(targetFragment);
+
+		final BehaviorExecutionSpecification predecessorExecution = getExecution((InteractionFragment)startingEndPredecessor);
+
+		final UMLFactory factory = UMLFactory.eINSTANCE;
+		final EList<InteractionFragment> fragments = interaction.getFragments();
+
+		// Create message
+		final Message message = createAsynchronousMessage(interaction, createExecution, sourceFragment,
+				targetFragment, operation);
+
+		if (null != operation) {
+			message.setSignature(operation);
+		}
+
+		interaction.getMessages().add(message);
+
+		// Create execution or signal
+		BehaviorExecutionSpecification execution = null;
+		if (createExecution) {
+			execution = createExecution(/* operation, */target, message);
+			interaction.getOwnedBehaviors().add(execution.getBehavior());
+		} else {
+			final Signal signal = factory.createSignal();
+			signal.setName(message.getName() + SIGNAL_SUFFIX);
+			message.getNearestPackage().getPackagedElements().add(signal);
+		}
+
+		MessageOccurrenceSpecification senderEventMessage = (MessageOccurrenceSpecification)message
+				.getSendEvent();
+		MessageOccurrenceSpecification receiverEventMessage = (MessageOccurrenceSpecification)message
+				.getReceiveEvent();
+
+		ExecutionOccurrenceSpecification endExec = null;
+		if (execution != null) {
+			execution.setStart(receiverEventMessage);
+			endExec = factory.createExecutionOccurrenceSpecification();
+			endExec.setName(execution.getName() + EXECUTION_END_SUFFIX);
+			endExec.getCovereds().add(target);
+			endExec.setExecution(execution);
+			execution.setFinish(endExec);
+		}
+
+		// If predecessor is the beginning of an execution add message after the execution
+		if (startingEndPredecessor != null && startingEndPredecessor instanceof OccurrenceSpecification
+				&& predecessorExecution != null
+				&& startingEndPredecessor.equals(predecessorExecution.getStart())) {
+			fragments.add(fragments.indexOf(predecessorExecution) + 1, senderEventMessage);
+		}
+		// Else set it directly after the predecessor
+		else {
+			fragments.add(fragments.indexOf(startingEndPredecessor) + 1, senderEventMessage);
+		}
+
+		fragments.add(receiverEventMessage);
+		fragments.move(fragments.indexOf(senderEventMessage) + 1, receiverEventMessage);
+		if (execution != null) {
+			fragments.add(execution);
+			fragments.add(endExec);
+			fragments.move(fragments.indexOf(receiverEventMessage) + 1, execution);
+			fragments.move(fragments.indexOf(execution) + 1, endExec);
+		}
+	}
+
+	private BehaviorExecutionSpecification createExecution(/* Operation operation, */
+	final Lifeline covered, final Message message) {
+		final UMLFactory factory = UMLFactory.eINSTANCE;
+		final OpaqueBehavior behavior = factory.createOpaqueBehavior();
+
+		behavior.setName(message.getName());
+		// behavior.setSpecification(operation);
+
+		BehaviorExecutionSpecification execution = factory.createBehaviorExecutionSpecification();
+		execution.setName(message.getName());
+		execution.getCovereds().add(covered);
+		execution.setBehavior(behavior);
+
+		return execution;
+	}
+
+	private Message createAsynchronousMessage(Interaction interaction, boolean createOperation,
+			NamedElement sourceFragment, NamedElement targetFragment, Operation operation) {
+		final UMLFactory factory = UMLFactory.eINSTANCE;
+		final Message message = factory.createMessage();
+
+		final Lifeline source = getLifeline(sourceFragment);
+		final Lifeline target = getLifeline(targetFragment);
+
+		String messageName = "";
+		if (operation == null) {
+			messageName = "Message_" + Integer.toString(interaction.getMessages().size());
+		} else {
+			messageName = operation.getName();
+		}
+
+		message.setName(messageName);
+		message.setMessageSort(MessageSort.ASYNCH_CALL_LITERAL);
+
+		// Create message send event
+		final MessageOccurrenceSpecification senderEventMessage = factory
+				.createMessageOccurrenceSpecification();
+		senderEventMessage.setName(message.getName() + SENDER_MESSAGE_SUFFIX);
+		senderEventMessage.getCovereds().add(source);
+		senderEventMessage.setMessage(message);
+
+		// Create message receive event
+		final MessageOccurrenceSpecification receiverEventMessage = factory
+				.createMessageOccurrenceSpecification();
+		receiverEventMessage.setName(message.getName() + RECEIVER_MESSAGE_SUFFIX);
+		receiverEventMessage.getCovereds().add(target);
+		receiverEventMessage.setMessage(message);
+
+		message.setSendEvent(senderEventMessage);
+		message.setReceiveEvent(receiverEventMessage);
+
+		return message;
+	}
+
+	public void createCombinedFragment(Interaction interaction, InteractionFragment startingEndPredecessor,
+			InteractionFragment finishingEndPredecessor, List<Lifeline> coveredLifelines, ENode variable) {
+
+		final UMLFactory factory = UMLFactory.eINSTANCE;
+		CombinedFragment combinedFragment = factory.createCombinedFragment();
+		// combinedFragment.setName("");
+		combinedFragment.getCovereds().addAll(coveredLifelines);
+
+		int index = interaction.getFragments().indexOf(startingEndPredecessor) + 1;
+		interaction.getFragments().add(index, combinedFragment);
+
+		InteractionOperand defaultOperand = factory.createInteractionOperand();
+		// defaultOperand.setName("true");
+		defaultOperand.getCovereds().addAll(coveredLifelines);
+		combinedFragment.getOperands().add(defaultOperand);
+
+		// TODO refactor the next line when the way to know the end of a CombinedFragment is found
+		Comment endCombinedFragment = factory.createComment();
+		endCombinedFragment.setBody("endCF");
+		defaultOperand.getOwnedComments().add(endCombinedFragment);
+
+	}
+
+	public void createOperand(CombinedFragment combinedFragment) {
+		InteractionOperand operand = UMLFactory.eINSTANCE.createInteractionOperand();
+		// TODO : remove this comment when fix CF finishing end
+		Comment endOfOperand = UMLFactory.eINSTANCE.createComment();
+		endOfOperand.setBody("end of Operand");
+		operand.getOwnedComments().add(endOfOperand);
+
+		combinedFragment.getOperands().add(operand);
+
+		// if(startingEndPredecessor instanceof InteractionOperand) {
+		// combinedFragment.getOperands().add(combinedFragment.getOperands().indexOf(startingEndPredecessor) +
+		// 1, operand);
+		// }
+	}
+
+	public void reorderLifeline(Lifeline movedLifeline, Lifeline predecessorBefore, Lifeline predecessorAfter) {
+		Interaction ownedInteraction = movedLifeline.getInteraction();
+		EList<Lifeline> lifelines = ownedInteraction.getLifelines();
+		final int movedLifelineIndex = lifelines.indexOf(movedLifeline);
+		if (predecessorAfter != null) {
+			final int predecessorAfterIndex = lifelines.indexOf(predecessorAfter);
+			if (movedLifelineIndex > predecessorAfterIndex) {
+				// Moved from the right to the left
+				lifelines.move(predecessorAfterIndex + 1, movedLifeline);
+				return;
+			}
+			if (movedLifelineIndex < predecessorAfterIndex) {
+				// Moved from the left to the right
+				lifelines.move(predecessorAfterIndex, movedLifeline);
+				return;
+			}
+		} else {
+			// moved at the beginning
+			lifelines.move(0, movedLifeline);
+		}
+	}
+
+	public List<EObject> getEndsOrdering(Interaction interaction) {
+
+		List<EObject> result = new BasicEList<EObject>();
+
+		Iterator<EObject> eObjects = interaction.eAllContents();
+		while (eObjects.hasNext()) {
+			EObject eObject = (EObject)eObjects.next();
+			if (eObject instanceof InteractionFragment) {
+				result.add(eObject);
+			}
+			if (eObject instanceof CombinedFragment) {
+				result.add(eObject);
+			}
+			if (eObject instanceof Comment) {
+				result.add(eObject);
+			}
+			if (eObject instanceof InteractionOperand) {
+				InteractionOperand interactionOperand = (InteractionOperand)eObject;
+				List<EObject> tempList = getOrderedInteractionOperandElements(interactionOperand);
+				for (int i = 0; i < tempList.size(); i++) {
+					eObjects.next();
+				}
+				result.addAll(tempList);
+			}
+		}
+
+		return result;
+	}
+
+	private List<EObject> getOrderedInteractionOperandElements(InteractionOperand interactionOperand) {
+		List<EObject> result = new BasicEList<EObject>();
+
+		Iterator<EObject> eObjects = interactionOperand.eAllContents();
+		Comment lastElement = null;
+
+		while (eObjects.hasNext()) {
+			EObject eObject = (EObject)eObjects.next();
+			if (eObject instanceof Comment) {
+				lastElement = (Comment)eObject;
+			} else {
+				result.add(eObject);
+			}
+
+		}
+
+		if (lastElement != null) {
+			result.add(lastElement);
+		}
+
+		return result;
+
+	}
+
+	public List<Operation> getAllOperations(Lifeline lifeline) {
+		List<Operation> result = new BasicEList<Operation>();
+
+		if (null != lifeline.getRepresents()) {
+			ConnectableElement element = lifeline.getRepresents();
+			Type typedElement = element.getType();
+
+			if (typedElement instanceof Class) {
+				Class umlClass = (Class)typedElement;
+				result.addAll(umlClass.getOwnedOperations());
+			} else if (typedElement instanceof Actor) {
+				Actor actor = (Actor)typedElement;
+				result.addAll(actor.getAllOperations());
+			}
+		}
+
+		return result;
+	}
+
+	public List<Operation> getAllOperations(BehaviorExecutionSpecification execution) {
+		List<Operation> result = new BasicEList<Operation>();
+		Lifeline lifeline = execution.getCovereds().get(0);
+
+		if (null != lifeline.getRepresents()) {
+			ConnectableElement element = lifeline.getRepresents();
+			Type typedElement = element.getType();
+
+			if (typedElement instanceof Class) {
+				Class umlClass = (Class)typedElement;
+				result.addAll(umlClass.getOwnedOperations());
+			} else if (typedElement instanceof Actor) {
+				Actor actor = (Actor)typedElement;
+				result.addAll(actor.getAllOperations());
+			}
+		}
+
+		return result;
+	}
+	
+	public List<Message> getCreationMessages(Interaction interaction) {
+		List<Message> result = new BasicEList<Message>();
+
+		for (Message message : interaction.getMessages()) {
+			if (message.getMessageSort().equals(MessageSort.CREATE_MESSAGE)) {
+				result.add(message);
+			}
+		}
+
+		return result;
+	}
+
+	public List<Message> getSynchAndAsynchMessages(Interaction interaction) {
+		List<Message> result = new BasicEList<Message>();
+
+		for (Message message : interaction.getMessages()) {
+			if (message.getMessageSort().equals(MessageSort.SYNCH_CALL)
+					|| message.getMessageSort().equals(MessageSort.ASYNCH_CALL)
+					|| message.getMessageSort().equals(MessageSort.REPLY)) {
+				result.add(message);
+			}
+		}
+
+		return result;
+	}
+
+	// public Package getNearestPackage(ENode node) {
+	// if(node instanceof Element) {
+	// Element element = (Element)node;
+	// return element.getNearestPackage();
+	// }
+	//
+	// return null;
+	// }
+
 }
