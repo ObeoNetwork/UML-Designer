@@ -12,7 +12,10 @@
     		</link>
     		<link style-id="content-link" label="Get Involved" url="http://www.obeonetwork.com/group/uml-designer" id="umldesigner">
     			<text>The best ways to contribute are by finding, reporting bugs and helping us to improve the documentation.</text>
-    		</link>   	
+    		</link>
+    		<link style-id="content-link" label="Fill in our survey!" url="http://bit.ly/UMLDesignerSurvey" id="umldesigner">
+    			<text>Give us your feedback!</text>
+    		</link>
      	</group>
     </group>
   </extensionContent>

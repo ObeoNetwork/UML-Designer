@@ -15,6 +15,7 @@ It is intended to cover most use cases behind the usage of UML, and more importa
 model driven approach wich uses both *UML and some DSL*. Everything should integrate seamlessly  in the same environment. 
 
 We're constantly looking for feedback about this modeler, if you think something is missing, some behavior is weird or even just to tell us you are happy with it in its current state, *please come and exchange* on the "Obeo Network":http://www.obeonetwork.com/group/uml-designer
+Fill in our "survey":http://bit.ly/UMLDesignerSurvey!
 
 Feel free to fork the code, adapt it for your need and trigger a "pull request":https://help.github.com/articles/using-pull-requests.
 
