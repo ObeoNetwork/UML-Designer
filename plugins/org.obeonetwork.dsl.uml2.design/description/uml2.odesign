@@ -4983,7 +4983,7 @@
         <toolSections name="Comments" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_CommentLink']"/>
       </optionalLayers>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:SequenceDiagramDescription" documentation="@generated" name="Sequence Diagram" titleExpression="&lt;%getSequenceDiagramName()%>" domainClass="uml.Interaction" enablePopupBars="true" endsOrdering="&lt;%fragment &amp;&amp; $eventEnds%>">
+    <ownedRepresentations xsi:type="description_1:SequenceDiagramDescription" documentation="@generated" name="Sequence Diagram" titleExpression="&lt;%getSequenceDiagramName()%>" domainClass="uml.Interaction" enablePopupBars="true" endsOrdering="&lt;%self.getEndsOrdering() &amp;&amp; $eventEnds%>">
       <defaultLayer name="Default">
         <nodeMappings xsi:type="description_1:InstanceRoleMapping" name="SD_Lifeline Instance Role" navigationDescriptions="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='navigation']/@ownedTools[name='for%20lifeline']" deletionDescription="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='edit']/@ownedTools[name='DEL_Lifeline']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%lifeline%>" semanticElements="&lt;%lifeline.clientDependencies%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" documentation="@generated" domainClass="uml.Lifeline">
           <borderedNodeMappings xsi:type="description_1:ExecutionMapping" name="SD_Lifeline Execution" deletionDescription="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='edit']/@ownedTools[name='DEL_Lifeline']" semanticCandidatesExpression="&lt;%self%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" documentation="@generated" domainClass="uml.Lifeline" startingEndFinderExpression="&lt;%self%>" finishingEndFinderExpression="&lt;%self%>">
@@ -5044,8 +5044,47 @@
             </style>
           </conditionnalStyles>
         </edgeMappings>
+        <edgeMappings xsi:type="description_1:CreationMessageMapping" name="SD_Creation_Message" semanticCandidatesExpression="&lt;%getCreationMessages()%>" sourceMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']/@borderedNodeMappings[name='SD_Execution']" targetMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']" targetFinderExpression="&lt;%receiveEvent.findOccurrenceSpecificationContext()%>" sourceFinderExpression="&lt;%sendEvent.findOccurrenceSpecificationContext()%>" domainClass="uml.Message" useDomainElement="true" sendingEndFinderExpression="&lt;%sendEvent%>" receivingEndFinderExpression="&lt;%receiveEvent%>">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription labelExpression="&lt;%computeUmlLabel()%>">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+          <conditionnalStyles predicateExpression="&lt;%messageSort==&quot;createMessage&quot;%>">
+            <style lineStyle="dash" sizeComputationExpression="2">
+              <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <centerLabelStyleDescription labelExpression="&lt;%computeUmlLabel()%>">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </centerLabelStyleDescription>
+            </style>
+          </conditionnalStyles>
+        </edgeMappings>
+        <containerMappings xsi:type="description_1:CombinedFragmentMapping" name="SD_CombinedFragment" domainClass="uml.CombinedFragment" startingEndFinderExpression="&lt;%self%>" finishingEndFinderExpression="&lt;%self.getFinishingEnd()%>" coveredLifelinesExpression="&lt;%self.covered%>">
+          <subContainerMappings xsi:type="description_1:OperandMapping" name="SD_Operand" domainClass="uml.InteractionOperand" startingEndFinderExpression="&lt;%self%>" finishingEndFinderExpression="&lt;%self.getFinishingEnd()%>">
+            <style xsi:type="style:FlatContainerStyleDescription">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="&lt;%interactionOperator%>">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
         <toolSections name="Tools" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='EAnnotation']">
           <subSections name="edit">
+            <ownedTools xsi:type="tool_1:InstanceRoleReorderTool" name="REO_Lifeline" mappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']">
+              <predecessorBefore name="predecessorBefore"/>
+              <predecessorAfter name="predecessorAfter"/>
+              <instanceRoleMoved>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%self.reorderLifeline($predecessorBefore, $predecessorAfter)%>"/>
+              </instanceRoleMoved>
+            </ownedTools>
             <ownedTools xsi:type="tool:DeleteElementDescription" name="SD_FullDelete">
               <element name="element"/>
               <elementView name="elementView"/>
@@ -5059,7 +5098,7 @@
               <elementView name="elementView"/>
               <containerView name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.delete()%>"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%self%>"/>
               </initialOperation>
             </ownedTools>
             <ownedTools xsi:type="tool:DeleteElementDescription" name="DEL_Message">
@@ -5067,10 +5106,14 @@
               <elementView name="elementView"/>
               <containerView name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.delete()%>"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%self%>">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$element.messageSort != &quot;reply&quot;%>">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.delete()%>"/>
+                  </subModelOperations>
+                </firstModelOperations>
               </initialOperation>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:ReorderTool" name="REO_Fragment" mappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']/@borderedNodeMappings[name='SD_Execution'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']">
+            <ownedTools xsi:type="tool_1:ReorderTool" name="REO_Fragment" mappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']/@borderedNodeMappings[name='SD_Execution'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@containerMappings[name='SD_CombinedFragment'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@containerMappings[name='SD_CombinedFragment']/@subContainerMappings[name='SD_Operand']">
               <startingEndPredecessorAfter name="startingEndPredecessorAfter"/>
               <finishingEndPredecessorAfter name="finishingEndPredecessorAfter"/>
               <onEventMovedOperation>
@@ -5143,19 +5186,58 @@
           </subSections>
         </toolSections>
         <toolSections name="SD_Create" label="Creation">
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="CR_Lifeline" label="Lifeline Creation" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/LifelineCreation.gif">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Lifeline" referenceName="lifeline">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Lifeline_&lt;%$container.lifeline.nSize()%>"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
+          <ownedTools xsi:type="tool:ToolGroup" name="Lifeline">
+            <tools xsi:type="tool:NodeCreationDescription" name="CR_Lifeline" label="Class" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/LifelineCreation.gif">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%self.getNearestPackage()%>">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="packagedElement" variableName="class">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Class&lt;%eContainer.eContents.filter(&quot;Class&quot;).nSize%>">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Lifeline" referenceName="lifeline" variableName="lifeline">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$class.name%>"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedAttribute" variableName="property">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$class.name%>"/>
+                          <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$class%>"/>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$lifeline%>">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="represents" valueExpression="&lt;%$property%>"/>
+                        </subModelOperations>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool:NodeCreationDescription" documentation="Create an actor" name="Actor" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%self.getNearestPackage()%>">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Actor" referenceName="packagedElement" variableName="actor">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Actor&lt;%eContainer.eContents.filter(&quot;Actor&quot;).nSize%>"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Lifeline" referenceName="lifeline" variableName="lifeline">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$actor.name%>"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedAttribute" variableName="property">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;%$actor.name%>"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="&lt;%$actor%>"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$lifeline%>">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="represents" valueExpression="&lt;%$property%>"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="CR_Execution" label="Create Execution">
-            <tools xsi:type="tool_1:ExecutionCreationTool" name="CR_Execution" label="Execution Creation" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']/@borderedNodeMappings[name='SD_Execution']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/ExecutionCreation.gif">
+            <tools xsi:type="tool_1:ExecutionCreationTool" name="CR_Execution" label="Execution" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']/@borderedNodeMappings[name='SD_Execution']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/ExecutionCreation.gif">
+              <filters precondition="&lt;%true%>" elementsToListen="&lt;% self %>"/>
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -5165,6 +5247,7 @@
               <finishingEndPredecessor name="finishingEndPredecessor"/>
             </tools>
             <tools xsi:type="tool_1:ExecutionCreationTool" name="CR_Operation" label="Execution and Operation Creation" precondition="&lt;%$container.filter(&quot;Lifeline&quot;).represents.type!=null||$container.filter(&quot;ExecutionSpecification&quot;).covered.represents.type!=null||$container.filter(&quot;Lifeline&quot;).clientDependency.supplier.classifier!=null||$container.filter(&quot;ExecutionSpecification&quot;).covered.clientDependency.supplier.classifier!=null%>" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']/@borderedNodeMappings[name='SD_Execution']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Operation.gif">
+              <filters precondition="&lt;% true    %>" elementsToListen="&lt;% self %>"/>
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -5176,12 +5259,26 @@
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="CR_Synch_Message">
             <tools xsi:type="tool_1:MessageCreationTool" name="CR_SynchronousMessage" label="Synchronous Message Creation" edgeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/MessageSynchCallCreation.gif" extraSourceMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
+              <filters precondition="&lt;% true    %>" elementsToListen="&lt;% self %>"/>
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
               <sourceViewVariable name="sourceView"/>
               <targetViewVariable name="targetView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;Interaction&quot;).createSynchronousMessage($source,$target,$startingEndPredecessor.semanticEnd,$finishingEndPredecessor.semanticEnd)%>"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;Interaction&quot;).createSynchronousMessage($source,$target,false,$startingEndPredecessor.semanticEnd,$finishingEndPredecessor.semanticEnd)%>"/>
+              </initialOperation>
+              <startingEndPredecessor name="startingEndPredecessor"/>
+              <finishingEndPredecessor name="finishingEndPredecessor"/>
+            </tools>
+            <tools xsi:type="tool_1:MessageCreationTool" name="CR_SynchronousMessage" label="Synchronous Message" edgeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/MessageSynchCallCreation.gif" extraSourceMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
+              <sourceVariable name="source"/>
+              <targetVariable name="target">
+                <subVariables xsi:type="tool:SelectModelElementVariable" name="operation" candidatesExpression="&lt;%getAllOperations()%>" message="Select an operation"/>
+              </targetVariable>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;Interaction&quot;).createSynchronousMessage($source,$target,true,$startingEndPredecessor.semanticEnd,$finishingEndPredecessor.semanticEnd, $operation)%>"/>
               </initialOperation>
               <startingEndPredecessor name="startingEndPredecessor"/>
               <finishingEndPredecessor name="finishingEndPredecessor"/>
@@ -5200,12 +5297,28 @@
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="CR_Asynch_Message">
             <tools xsi:type="tool_1:MessageCreationTool" name="CR_AsynchronousMessage" label="Asynchronous Message Creation" edgeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/MessageAsynchCallCreation.gif" extraSourceMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
+              <filters precondition="&lt;%true%>" elementsToListen="&lt;% self %>"/>
               <sourceVariable name="source"/>
-              <targetVariable name="target"/>
+              <targetVariable name="target">
+                <subVariables xsi:type="tool:SelectModelElementVariable" name="operation" candidatesExpression="&lt;%getAllOperations()%>" message="Select an operation"/>
+              </targetVariable>
               <sourceViewVariable name="sourceView"/>
               <targetViewVariable name="targetView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;Interaction&quot;).createAsynchronousMessage($source,$target,$startingEndPredecessor.semanticEnd,$finishingEndPredecessor.semanticEnd)%>"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;Interaction&quot;).createAsynchronousMessage($source,$target,$startingEndPredecessor.semanticEnd,$finishingEndPredecessor.semanticEnd, $operation)%>"/>
+              </initialOperation>
+              <startingEndPredecessor name="startingEndPredecessor"/>
+              <finishingEndPredecessor name="finishingEndPredecessor"/>
+            </tools>
+            <tools xsi:type="tool_1:MessageCreationTool" name="CR_AsynchronousMessage" label="Asynchronous Message" edgeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/MessageAsynchCallCreation.gif" extraSourceMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
+              <sourceVariable name="source"/>
+              <targetVariable name="target">
+                <subVariables xsi:type="tool:SelectModelElementVariable" name="operation" candidatesExpression="&lt;%getAllOperations()%>" message="Select an operation"/>
+              </targetVariable>
+              <sourceViewVariable name="sourceView"/>
+              <targetViewVariable name="targetView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.eContainer(&quot;Interaction&quot;).createAsynchronousMessage($source,$target,true,$startingEndPredecessor.semanticEnd,$finishingEndPredecessor.semanticEnd, $operation)%>"/>
               </initialOperation>
               <startingEndPredecessor name="startingEndPredecessor"/>
               <finishingEndPredecessor name="finishingEndPredecessor"/>
@@ -5222,11 +5335,39 @@
               <finishingEndPredecessor name="finishingEndPredecessor"/>
             </tools>
           </ownedTools>
+          <ownedTools xsi:type="tool_1:CombinedFragmentCreationTool" name="Combined fragment" containerMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@containerMappings[name='SD_CombinedFragment']">
+            <variable name="variable"/>
+            <viewVariable name="variableView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%self.createCombinedFragment($startingEndPredecessor.semanticEnd,$finishingEndPredecessor.semanticEnd, $coveredLifelines, $variable)%>"/>
+            </initialOperation>
+            <startingEndPredecessor name="startingEndPredecessor"/>
+            <finishingEndPredecessor name="finishingEndPredecessor"/>
+            <coveredLifelines name="coveredLifelines"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:OperandCreationTool" name="Operand" containerMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@containerMappings[name='SD_CombinedFragment']/@subContainerMappings[name='SD_Operand']">
+            <variable name="variable"/>
+            <viewVariable name="viewVariable"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%self.createOperand()%>"/>
+            </initialOperation>
+            <startingEndPredecessor name="startingEndPredecessor"/>
+            <finishingEndPredecessor name="finishingEndPredecessor"/>
+          </ownedTools>
         </toolSections>
-        <toolSections name="SD_Import" label="Import from model">
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="CR_TypedLifeline" label="Lifeline Import" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']">
+        <toolSections name="SD_Import" label="Reuse">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="CR_ClassLifeline" label="Class" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']">
             <variable name="container">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="property" candidatesExpression="&lt;%getRootContainer()+getRootContainer().eAllContents().filter(&quot;uml.Package&quot;)+getRootContainer().eAllContents().filter(&quot;uml.Class&quot;)[ownedAttribute]+getRootContainer().eAllContents().filter(&quot;uml.Association&quot;)+getRootContainer().eAllContents().filter(&quot;uml.InstanceSpecification&quot;)+getRootContainer().eAllContents().filter(&quot;uml.Property&quot;)+getRootContainer().getImportedPackages()+getRootContainer().getImportedPackages().eAllContents().filter(&quot;uml.InstanceSpecification&quot;)+getRootContainer().getImportedPackages().eAllContents().filter(&quot;uml.Property&quot;)%>" tree="true" rootExpression="&lt;%getRootContainer()+getRootContainer().getImportedPackages()%>" childrenExpression="&lt;%eContents()%>" message="Select an instance or a property associated to the new lifeline"/>
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="property" candidatesExpression="&lt;%self.getAllClassesAndContainers()%>" tree="true" rootExpression="&lt;%getRootContainer()+getRootContainer().getImportedPackages()%>" childrenExpression="&lt;%eContents()%>" message="Select an instance or a property associated to the new lifeline"/>
+            </variable>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container.createLifeline($property)%>"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="CR_ActorLifeline" label="Actor" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']">
+            <variable name="container">
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="property" candidatesExpression="&lt;%self.getAllActorsAndContainers()%>" tree="true" rootExpression="&lt;%getRootContainer()+getRootContainer().getImportedPackages()%>" childrenExpression="&lt;%eContents()%>" message="Select an instance or a property associated to the new lifeline"/>
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -5234,6 +5375,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ExecutionCreationTool" name="CR_TypedExecution" label="Execution Import" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']/@borderedNodeMappings[name='SD_Execution']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/ActionExecutionSpecification.gif">
+            <filters precondition="&lt;% true    %>" elementsToListen="&lt;% self %>"/>
             <variable name="container">
               <subVariables xsi:type="tool:SelectModelElementVariable" name="operation" candidatesExpression="&lt;%getOperations()%>" message="Select an operation associated to the new execution"/>
             </variable>
@@ -5245,6 +5387,7 @@
             <finishingEndPredecessor name="finishingEndPredecessor"/>
           </ownedTools>
           <ownedTools xsi:type="tool_1:MessageCreationTool" name="CR_TypedAsynchronousMessage" label="Asynchronous Message Import" edgeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Message_asynchCall.gif" extraSourceMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
+            <filters precondition="&lt;% true    %>" elementsToListen="&lt;% self %>"/>
             <sourceVariable name="source"/>
             <targetVariable name="target">
               <subVariables xsi:type="tool:SelectModelElementVariable" name="operation" candidatesExpression="&lt;%getOperations()%>" message="Select an operation associated to the new message"/>
@@ -5258,6 +5401,7 @@
             <finishingEndPredecessor name="finishingEndPredecessor"/>
           </ownedTools>
           <ownedTools xsi:type="tool_1:MessageCreationTool" name="CR_TypedSynchronousMessage" label="Synchronous Message Import" edgeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" extraSourceMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
+            <filters precondition="&lt;% true    %>" elementsToListen="&lt;% self %>"/>
             <sourceVariable name="source"/>
             <targetVariable name="target">
               <subVariables xsi:type="tool:SelectModelElementVariable" name="operation" candidatesExpression="&lt;%getOperations()%>" message="Select an operation associated to the new message"/>
