@@ -1595,9 +1595,9 @@
             </centerLabelStyleDescription>
           </style>
           <conditionnalStyles predicateExpression="&lt;%self.filter(&quot;Usage&quot;)%>">
-            <style lineStyle="dot" sourceArrow="OutputArrow" targetArrow="NoDecoration" sizeComputationExpression="2" routingStyle="manhattan">
+            <style lineStyle="dash" sizeComputationExpression="2" routingStyle="manhattan">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
-              <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;Usage>> &lt;%name%>">
+              <centerLabelStyleDescription showIcon="false" labelExpression="&lt;&lt;use>>">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </centerLabelStyleDescription>
             </style>
