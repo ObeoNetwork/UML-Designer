@@ -13,10 +13,10 @@ package org.obeonetwork.dsl.uml2.design.tests.automation.ui.features;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
-import org.obeonetwork.dsl.uml2.design.tests.automation.ui.stories.CreateClassDiagram;
+import org.obeonetwork.dsl.uml2.design.tests.automation.ui.stories.createClassDiagram.CreateAClassDiagramFromAPackage;
 
 @RunWith(Suite.class)
-@SuiteClasses({ ManageTypesUITests.class, CreateClassDiagram.class })
+@SuiteClasses({ ManageTypesUITests.class, CreateAClassDiagramFromAPackage.class })
 public class ClassDiagramUITests {
 
 }

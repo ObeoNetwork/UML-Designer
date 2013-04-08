@@ -13,10 +13,10 @@ package org.obeonetwork.dsl.uml2.design.tests.automation.unit.features;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
-import org.obeonetwork.dsl.uml2.design.tests.automation.unit.stories.EditElements;
+import org.obeonetwork.dsl.uml2.design.tests.automation.unit.stories.editElements.EditAssociationRole;
 
 @RunWith(Suite.class)
-@SuiteClasses({ EditElements.class })
+@SuiteClasses({ EditAssociationRole.class })
 public class ClassDiagramUnitTests {
 
 }

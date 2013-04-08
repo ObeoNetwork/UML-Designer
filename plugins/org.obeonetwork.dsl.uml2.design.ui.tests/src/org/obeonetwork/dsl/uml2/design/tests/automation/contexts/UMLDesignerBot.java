@@ -8,9 +8,7 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.obeonetwork.dsl.uml2.design.tests.automation.ui;
-
-import static org.junit.Assert.fail;
+package org.obeonetwork.dsl.uml2.design.tests.automation.contexts;
 
 import java.util.List;
 
@@ -92,9 +90,11 @@ public class UMLDesignerBot {
 		bot.menu("File").menu("New").menu("Example...").click();
 		bot.waitUntil(Conditions.shellIsActive("New Example"));
 
-		bot.tree().expandNode("Modeler").getNode(nameInWizard).select();
+		bot.shell("New Example").bot().tree().expandNode("UML")
+				.getNode(nameInWizard).select();
 		bot.button("Next >").click();
 		bot.button("Finish").click();
+		closeWelcome();
 		bot.viewByTitle("Model Explorer").bot().tree()
 				.expandNode("TravelAgency").expandNode("agency.uml");
 
@@ -144,7 +144,7 @@ public class UMLDesignerBot {
 	protected void waitForProgressInformationComplete() {
 		bot.waitUntil(Conditions.shellIsActive("Progress Information"));
 		final SWTBotShell showViewShell = bot.shell("Progress Information");
-		bot.waitUntil(Conditions.shellCloses(showViewShell), 15000);
+		bot.waitUntil(Conditions.shellCloses(showViewShell), 25000);
 	}
 
 	protected void waitForMigrationPopup() {
@@ -185,7 +185,8 @@ public class UMLDesignerBot {
 				.bot()
 				.tree()
 				.expandNode("TravelAgency", "agency.uml",
-						"<Model> Travel Agency","<Component> Agency  Offers","<Class> Catalog").select();
+						"<Model> Travel Agency", "<Component> Agency  Offers",
+						"<Class> Catalog").select();
 		ContextMenuHelper.clickContextMenu(tree, "Delete");
 	}
 
@@ -202,7 +203,7 @@ public class UMLDesignerBot {
 						"<Model> Travel Agency").select();
 		ContextMenuHelper.clickContextMenu(tree, "New Representation",
 				"Travel Agency Class Diagram");
-		
+
 		bot.button("OK").click();
 	}
 

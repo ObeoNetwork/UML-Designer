@@ -13,10 +13,12 @@ package org.obeonetwork.dsl.uml2.design.tests.automation.ui.contexts;
 import static org.junit.Assert.assertEquals;
 
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
-import org.obeonetwork.dsl.uml2.design.tests.automation.ui.UIContextTestCase;
+import org.obeonetwork.dsl.uml2.design.tests.automation.contexts.Context;
+import org.obeonetwork.dsl.uml2.design.tests.automation.contexts.UMLDesignerBot;
 
 //@Context("TheReferenceModelSelectedInModelExplorer")
-public class TheReferenceModelSelectedInModelExplorer extends UIContextTestCase {
+public class TheReferenceModelSelectedInModelExplorer extends Context {
+	protected UMLDesignerBot bot = new UMLDesignerBot();
 
 	@Override
 	public void setup() {
@@ -30,12 +32,12 @@ public class TheReferenceModelSelectedInModelExplorer extends UIContextTestCase 
 	}
 
 	// @Action("CreateAClassDiagram")
-	protected void actionCreateAClassDiagram() {
+	public void actionCreateAClassDiagram() {
 		bot.createAClassDiagram();
 	}
 
 	// @Behaviour("ClassDiagramCreated")
-	protected void assertClassDiagramCreated() {
+	public void assertClassDiagramCreated() {
 		SWTBotEditor editor = bot.getActiveEditor();
 		assertEquals("Travel Agency Class Diagram", editor.getTitle());
 	}

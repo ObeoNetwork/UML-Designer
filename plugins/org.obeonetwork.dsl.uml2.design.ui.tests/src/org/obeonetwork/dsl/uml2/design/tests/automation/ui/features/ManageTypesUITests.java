@@ -13,11 +13,11 @@ package org.obeonetwork.dsl.uml2.design.tests.automation.ui.features;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
-import org.obeonetwork.dsl.uml2.design.tests.automation.ui.stories.CreateAType;
-import org.obeonetwork.dsl.uml2.design.tests.automation.ui.stories.DeleteAType;
+import org.obeonetwork.dsl.uml2.design.tests.automation.ui.stories.createAType.CreateATypeUITests;
+import org.obeonetwork.dsl.uml2.design.tests.automation.ui.stories.deleteAType.DeleteAClass;
 
 @RunWith(Suite.class)
-@SuiteClasses({ CreateAType.class, DeleteAType.class })
+@SuiteClasses({ CreateATypeUITests.class, DeleteAClass.class })
 public class ManageTypesUITests {
 
 }

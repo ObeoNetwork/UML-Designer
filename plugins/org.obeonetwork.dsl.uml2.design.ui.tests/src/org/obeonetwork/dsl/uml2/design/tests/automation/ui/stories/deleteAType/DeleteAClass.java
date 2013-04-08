@@ -8,26 +8,22 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.obeonetwork.dsl.uml2.design.tests.automation.ui.stories;
+package org.obeonetwork.dsl.uml2.design.tests.automation.ui.stories.deleteAType;
 
+import org.junit.Rule;
 import org.junit.Test;
 import org.obeonetwork.dsl.uml2.design.tests.automation.ui.contexts.TheReferenceClassDiagramOpened;
 
-//@Story("CreateAType")
-public class CreateAType extends TheReferenceClassDiagramOpened {
-	// @Scenario("CreateAClass")
-	@Test
-	public void createAClass() throws Exception {
-		actionCreateAClass();
-		assertElementCreatedInUmlModel("Class16");
-		assertElementExistsInTheReferenceClassDiagram("Class16");
-	}
+// @Story("DeleteAType")
+public class DeleteAClass {
+	@Rule
+	TheReferenceClassDiagramOpened context = new TheReferenceClassDiagramOpened();
 
-	// @Scenario("CreateAnEnumeration")
+	// @Scenario("DeleteAClass")
 	@Test
-	public void createAnEnumeration() throws Exception {
-		actionCreateAnEnumeration();
-		assertElementCreatedInUmlModel("Enumeration15");
-		assertElementExistsInTheReferenceClassDiagram("Enumeration15");
+	public void deleteAClass() throws Exception {
+		context.actionDeleteAClass();
+		context.assertClassDeletedInUmlModel();
+		context.assertClassRemovedFromTheReferenceClassDiagram();
 	}
 }

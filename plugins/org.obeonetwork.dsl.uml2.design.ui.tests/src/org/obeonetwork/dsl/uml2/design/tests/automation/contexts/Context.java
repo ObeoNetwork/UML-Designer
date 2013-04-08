@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,14 +8,19 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.obeonetwork.dsl.uml2.design.tests.automation.ui;
+package org.obeonetwork.dsl.uml2.design.tests.automation.contexts;
 
-import org.obeonetwork.dsl.uml2.design.tests.automation.ContextTestCase;
+import org.junit.rules.TestRule;
+import org.junit.runner.Description;
+import org.junit.runners.model.Statement;
 
-public abstract class UIContextTestCase extends ContextTestCase {
-	protected UMLDesignerBot bot;
+public abstract class Context implements IContext, TestRule {
+	public abstract void setup();
 
-	public UIContextTestCase() {
-		bot = new UMLDesignerBot();
+	public abstract void tearDown();
+
+	@Override
+	public Statement apply(Statement base, Description description) {
+		return new ContextStatement(base, this);
 	}
 }

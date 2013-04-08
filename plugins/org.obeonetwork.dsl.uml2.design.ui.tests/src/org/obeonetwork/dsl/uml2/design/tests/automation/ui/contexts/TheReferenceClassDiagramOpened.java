@@ -17,16 +17,18 @@ import static org.junit.Assert.fail;
 
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.uml2.uml.Model;
-import org.obeonetwork.dsl.uml2.design.tests.automation.ui.UIContextTestCase;
+import org.obeonetwork.dsl.uml2.design.tests.automation.contexts.Context;
+import org.obeonetwork.dsl.uml2.design.tests.automation.contexts.UMLDesignerBot;
 
 import fr.obeo.dsl.viewpoint.tests.swtbot.support.api.editor.SWTBotDesignerEditor;
 
-// @Context("TheReferenceClassDiagramOpened")
-public class TheReferenceClassDiagramOpened extends UIContextTestCase {
+public class TheReferenceClassDiagramOpened extends Context {
+	protected UMLDesignerBot bot;
 	SWTBotDesignerEditor classDiagram;
 
 	@Override
 	public void setup() {
+		bot = new UMLDesignerBot();
 		classDiagram = bot.openEntitiesClassDiagram();
 	}
 
@@ -37,12 +39,12 @@ public class TheReferenceClassDiagramOpened extends UIContextTestCase {
 	}
 
 	// @Action("CreateAClass")
-	protected void actionCreateAClass() {
+	public void actionCreateAClass() {
 		actionCreateAType("Class");
 	}
 
 	// @Action("CreateAnEnumeration")
-	protected void actionCreateAnEnumeration() {
+	public void actionCreateAnEnumeration() {
 		actionCreateAType("Enumeration");
 	}
 
@@ -53,30 +55,29 @@ public class TheReferenceClassDiagramOpened extends UIContextTestCase {
 	}
 
 	// @Action("DeleteAClass")
-	protected void actionDeleteAClass() {
+	public void actionDeleteAClass() {
 		bot.deleteCatalogClass();
 	}
 
 	// @Behaviour("ElementCreatedInUmlModel")
-	protected void assertElementCreatedInUmlModel(String elementName) {
+	public void assertElementCreatedInUmlModel(String elementName) {
 		Model model = bot.getTravelAgencyModel();
 		assertNotNull(model.getOwnedMember(elementName));
 	}
 
 	// @Behaviour("ElementExistsInTheReferenceClassDiagram")
-	protected void assertElementExistsInTheReferenceClassDiagram(
-			String elementName) {
+	public void assertElementExistsInTheReferenceClassDiagram(String elementName) {
 		assertNotNull(classDiagram.getEditPart(elementName));
 	}
 
 	// @Behaviour("ClassDeletedInUmlModel")
-	protected void assertClassDeletedInUmlModel() {
+	public void assertClassDeletedInUmlModel() {
 		Model model = bot.getTravelAgencyModel();
 		assertNull(model.getMember("Catalog"));
 	}
 
 	// @Behaviour("ClassRemovedFromTheReferenceClassDiagram")
-	protected void assertClassRemovedFromTheReferenceClassDiagram() {
+	public void assertClassRemovedFromTheReferenceClassDiagram() {
 		try {
 			classDiagram.getEditPart("Catalog");
 			fail();

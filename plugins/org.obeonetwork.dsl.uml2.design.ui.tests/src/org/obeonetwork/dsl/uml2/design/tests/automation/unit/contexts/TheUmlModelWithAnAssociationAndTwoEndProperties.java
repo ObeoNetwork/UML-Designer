@@ -1,13 +1,3 @@
-/*******************************************************************************
- * Copyright (c) 2013 Obeo.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
- * Contributors:
- *     Obeo - initial API and implementation
- *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.tests.automation.unit.contexts;
 
 import static org.junit.Assert.assertEquals;
@@ -17,15 +7,25 @@ import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.obeonetwork.dsl.uml2.design.services.UMLServices;
 import org.obeonetwork.dsl.uml2.design.services.internal.EditLabelSwitch;
-import org.obeonetwork.dsl.uml2.design.tests.automation.unit.UnitContextTestCase;
+import org.obeonetwork.dsl.uml2.design.tests.automation.contexts.Context;
 
-// @Context("TheUmlModelWithAnAssociationAndTwoEndProperties")
-public class TheUmlModelWithAnAssociationAndTwoEndProperties extends
-		UnitContextTestCase {
+public class TheUmlModelWithAnAssociationAndTwoEndProperties extends Context {
 	private Association startAssociation;
 	private Property firstEnd;
 	private Property secondEnd;
 	private EditLabelSwitch editSwitch = new EditLabelSwitch();
+
+	public void editFirstRole(String string) {
+		Property role = UMLServices.getSource(startAssociation);
+		editSwitch.setEditedLabelContent(string);
+		editSwitch.caseRole(role);
+	}
+
+	public void editSecondRole(String string) {
+		Property role = UMLServices.getTarget(startAssociation);
+		editSwitch.setEditedLabelContent(string);
+		editSwitch.caseRole(role);
+	}
 
 	@Override
 	public void setup() {
@@ -40,29 +40,15 @@ public class TheUmlModelWithAnAssociationAndTwoEndProperties extends
 
 	@Override
 	public void tearDown() {
+		// Nothing
 	}
 
-	// @Action("EditAssociationRoles")
-	protected void actionEditAssociationRoles() {
-		editFirstRole(startAssociation, "firstRole");
-		editSecondRole(startAssociation, "secondRole");
+	public void assertfirstEndEquals(String name) {
+		assertEquals(name, firstEnd.getName());
 	}
 
-	// @Behaviour("PropertiesEndValueUpdated")
-	protected void assertPropertiesEndValueUpdated() {
-		assertEquals("firstRole", firstEnd.getName());
-		assertEquals("secondRole", secondEnd.getName());
+	public void assertSecondEndEquals(String name) {
+		assertEquals(name, secondEnd.getName());
 	}
 
-	private void editFirstRole(Association startAssociation2, String string) {
-		Property role = UMLServices.getSource(startAssociation2);
-		editSwitch.setEditedLabelContent(string);
-		editSwitch.caseRole(role);
-	}
-
-	private void editSecondRole(Association startAssociation2, String string) {
-		Property role = UMLServices.getTarget(startAssociation2);
-		editSwitch.setEditedLabelContent(string);
-		editSwitch.caseRole(role);
-	}
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 Obeo.
+ * Copyright (c) 2009, 2012 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,18 +8,20 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.obeonetwork.dsl.uml2.design.tests.automation.ui.stories;
+package org.obeonetwork.dsl.uml2.design.tests.automation.ui.stories.createAType;
 
+import org.junit.Rule;
 import org.junit.Test;
 import org.obeonetwork.dsl.uml2.design.tests.automation.ui.contexts.TheReferenceClassDiagramOpened;
 
-// @Story("DeleteAType")
-public class DeleteAType extends TheReferenceClassDiagramOpened {
-	// @Scenario("DeleteAClass")
+public class CreateAClass {
+	@Rule
+	public TheReferenceClassDiagramOpened context = new TheReferenceClassDiagramOpened();
+
 	@Test
-	public void deleteAClass() throws Exception {
-		actionDeleteAClass();
-		assertClassDeletedInUmlModel();
-		assertClassRemovedFromTheReferenceClassDiagram();
+	public void createAClass() throws Exception {
+		context.actionCreateAClass();
+		context.assertElementCreatedInUmlModel("Class16");
+		context.assertElementExistsInTheReferenceClassDiagram("Class16");
 	}
 }

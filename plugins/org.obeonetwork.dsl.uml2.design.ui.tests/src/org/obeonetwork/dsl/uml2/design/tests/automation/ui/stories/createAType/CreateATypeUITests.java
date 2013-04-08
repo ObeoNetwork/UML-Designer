@@ -8,9 +8,14 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.obeonetwork.dsl.uml2.design.tests.automation.plugin;
+package org.obeonetwork.dsl.uml2.design.tests.automation.ui.stories.createAType;
 
-import org.obeonetwork.dsl.uml2.design.tests.automation.ContextTestCase;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+import org.junit.runners.Suite.SuiteClasses;
 
-public abstract class PluginContextTestCase extends ContextTestCase {
+@RunWith(Suite.class)
+@SuiteClasses({ CreateAClass.class, CreateAnEnumeration.class })
+public class CreateATypeUITests {
+
 }

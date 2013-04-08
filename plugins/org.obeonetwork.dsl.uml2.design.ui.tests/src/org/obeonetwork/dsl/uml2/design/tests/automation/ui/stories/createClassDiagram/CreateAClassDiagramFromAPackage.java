@@ -8,18 +8,21 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.obeonetwork.dsl.uml2.design.tests.automation.ui.stories;
+package org.obeonetwork.dsl.uml2.design.tests.automation.ui.stories.createClassDiagram;
 
+import org.junit.Rule;
 import org.junit.Test;
 import org.obeonetwork.dsl.uml2.design.tests.automation.ui.contexts.TheReferenceModelSelectedInModelExplorer;
 
 //@Story("CreateClassDiagram")
-public class CreateClassDiagram extends
-		TheReferenceModelSelectedInModelExplorer {
+public class CreateAClassDiagramFromAPackage {
+	@Rule
+	TheReferenceModelSelectedInModelExplorer context = new TheReferenceModelSelectedInModelExplorer();
+
 	// @Scenario("CreateAClassDiagramFromAPackage")
 	@Test
-	public void createAClassDiagramFromAPackage() throws Exception {
-		actionCreateAClassDiagram();
-		assertClassDiagramCreated();
+	public void test() throws Exception {
+		context.actionCreateAClassDiagram();
+		context.assertClassDiagramCreated();
 	}
 }
