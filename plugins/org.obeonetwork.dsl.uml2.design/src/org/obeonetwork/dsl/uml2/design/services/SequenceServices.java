@@ -21,7 +21,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
 
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -61,16 +60,11 @@ import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.obeonetwork.dsl.uml2.design.services.internal.NamedElementServices;
 
-import fr.obeo.acceleo.gen.template.eval.ENode;
 import fr.obeo.dsl.common.ui.tools.api.util.EclipseUIUtil;
 import fr.obeo.dsl.viewpoint.DDiagram;
 import fr.obeo.dsl.viewpoint.DDiagramElement;
 import fr.obeo.dsl.viewpoint.DEdge;
 import fr.obeo.dsl.viewpoint.DNode;
-import fr.obeo.dsl.viewpoint.DRepresentation;
-import fr.obeo.dsl.viewpoint.business.api.dialect.DialectManager;
-import fr.obeo.dsl.viewpoint.business.api.session.Session;
-import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
 import fr.obeo.dsl.viewpoint.diagram.sequence.business.internal.elements.ISequenceEvent;
 import fr.obeo.dsl.viewpoint.diagram.sequence.business.internal.elements.SequenceDiagram;
 import fr.obeo.dsl.viewpoint.diagram.sequence.business.internal.operation.RefreshGraphicalOrderingOperation;
@@ -172,22 +166,25 @@ public class SequenceServices {
 		return lifeline;
 	}
 
+	/**
+	 * Get the enclosing interaction
+	 * 
+	 * @param occurrenceSpecification
+	 * @return the interaction
+	 */
 	private Interaction getEnclosingInteraction(Element occurrenceSpecification) {
-		Interaction enclosingInteraction = null;
-
-		if (enclosingInteraction == null) {
-			EObject container = occurrenceSpecification.eContainer();
-			while (!(container instanceof Interaction)) {
-				container = container.eContainer();
-			}
-
-			if (container instanceof Interaction) {
-				Interaction result = (Interaction)container;
-				return result;
-			}
+		Interaction result = null;
+		EObject container = occurrenceSpecification.eContainer();
+		while (!(container instanceof Interaction)) {
+			container = container.eContainer();
 		}
 
-		return enclosingInteraction;
+		if (container instanceof Interaction) {
+			result = (Interaction)container;
+			return result;
+		}
+
+		return result;
 	}
 
 	/**
@@ -459,27 +456,6 @@ public class SequenceServices {
 	 * 
 	 * @param interaction
 	 *            Interaction
-	 * @param instance
-	 *            Instance specification associated to lifeline
-	 */
-	// private void createLifeline(Interaction interaction, InstanceSpecification instance) {
-	// // Create lifeline
-	// final Lifeline lifeline = UMLFactory.eINSTANCE.createLifeline();
-	// lifeline.setName(((InstanceSpecification)instance).getName());
-	// final Dependency dependency = UMLFactory.eINSTANCE.createDependency();
-	// dependency.setName(lifeline.getName() + "_" + instance.getName());
-	// dependency.getClients().add(lifeline);
-	// dependency.getSuppliers().add(instance);
-	// interaction.getNearestPackage().getPackagedElements().add(dependency);
-	// lifeline.getClientDependencies().add(dependency);
-	// interaction.getLifelines().add(lifeline);
-	// }
-
-	/**
-	 * Create a lifeline. Lifeline could be created in an interaction.
-	 * 
-	 * @param interaction
-	 *            Interaction
 	 * @param property
 	 *            Property associated to lifeline
 	 */
@@ -613,12 +589,14 @@ public class SequenceServices {
 	 *            Source
 	 * @param targetFragment
 	 *            Target
-	 * @param operation
-	 *            Operation associated to message
+	 * @param createExecution
+	 *            set to true to create an execution
 	 * @param startingEndPredecessor
 	 *            Starting end predecessor
 	 * @param finishingEndPredecessor
 	 *            Finishing end predecessor
+	 * @param operation
+	 *            Operation associated with the message
 	 */
 	public void createSynchronousMessage(Interaction interaction, NamedElement sourceFragment,
 			NamedElement targetFragment, boolean createExecution, NamedElement startingEndPredecessor,
@@ -688,8 +666,15 @@ public class SequenceServices {
 				(MessageOccurrenceSpecification)replyMessage.getReceiveEvent());
 	}
 
-	public Set<EObject> getAllClassesAndContainers(Interaction interaction) {
-		EObject rootContainer = EcoreUtil.getRootContainer(interaction);
+	/**
+	 * Get all classes and their containers
+	 * 
+	 * @param element
+	 *            a model element
+	 * @return all classes and their containers of the UML model
+	 */
+	public Set<EObject> getAllClassesAndContainers(EObject element) {
+		EObject rootContainer = EcoreUtil.getRootContainer(element);
 		Iterator<EObject> eObjects = rootContainer.eAllContents();
 
 		Set<EObject> result = new HashSet<EObject>();
@@ -716,8 +701,15 @@ public class SequenceServices {
 		return result;
 	}
 
-	public Set<EObject> getAllActorsAndContainers(Interaction interaction) {
-		EObject rootContainer = EcoreUtil.getRootContainer(interaction);
+	/**
+	 * Get all actors and their containers
+	 * 
+	 * @param element
+	 *            a model element
+	 * @return all actors and their containers of the UML model
+	 */
+	public Set<EObject> getAllActorsAndContainers(EObject element) {
+		EObject rootContainer = EcoreUtil.getRootContainer(element);
 		Iterator<EObject> eObjects = rootContainer.eAllContents();
 
 		Set<EObject> result = new HashSet<EObject>();
@@ -744,6 +736,13 @@ public class SequenceServices {
 		return result;
 	}
 
+	/**
+	 * Get a set of all containers from an eObject to the model root
+	 * 
+	 * @param eObject
+	 *            an eObject
+	 * @return a list of containers
+	 */
 	private Set<EObject> getAllContainers(EObject eObject) {
 		EObject container = eObject.eContainer();
 		Set<EObject> result = new HashSet<EObject>();
@@ -760,15 +759,18 @@ public class SequenceServices {
 	 * Create synchronous typed message.
 	 * 
 	 * @param interaction
-	 *            Interaction
+	 *            interaction
 	 * @param sourceFragment
-	 *            Source
+	 *            source
 	 * @param targetFragment
-	 *            Target
+	 *            target
 	 * @param startingEndPredecessor
-	 *            Starting end predecessor
+	 *            starting end predecessor
 	 * @param finishingEndPredecessor
-	 *            Finishing end predecessor
+	 *            finishing end predecessor
+	 * @param operation
+	 *            operation associated with the message
+	 * @return a synchronous message
 	 */
 	public Message createSynchronousMessage(Interaction interaction, NamedElement sourceFragment,
 			NamedElement targetFragment, NamedElement startingEndPredecessor,
@@ -811,6 +813,23 @@ public class SequenceServices {
 
 	}
 
+	/**
+	 * create a reply message for a synchronous message
+	 * 
+	 * @param interaction
+	 *            interaction.
+	 * @param sourceFragment
+	 *            source
+	 * @param targetFragment
+	 *            target
+	 * @param startingEndPredecessor
+	 *            starting end predecessor
+	 * @param finishingEndPredecessor
+	 *            finishing end predecessor
+	 * @param message
+	 *            a synchronous message
+	 * @return a reply message
+	 */
 	public Message createReplyMessage(Interaction interaction, NamedElement sourceFragment,
 			NamedElement targetFragment, NamedElement startingEndPredecessor,
 			NamedElement finishingEndPredecessor, Message message) {
@@ -1115,36 +1134,16 @@ public class SequenceServices {
 		}
 	}
 
-//	private List<InteractionFragment> getExecutionElementsToMove(ExecutionSpecification execution) {
-//
-//		List<InteractionFragment> result = new BasicEList<InteractionFragment>();
-//
-//		Interaction interaction = execution.getEnclosingInteraction();
-//		List<InteractionFragment> fragments = interaction.getFragments();
-//
-//		InteractionFragment executionStart = execution.getStart();
-//		InteractionFragment executionFinish = execution.getFinish();
-//
-//		if (executionStart instanceof MessageOccurrenceSpecification) {
-//			executionStart = ((MessageOccurrenceSpecification)((MessageOccurrenceSpecification)executionStart)
-//					.getMessage().getSendEvent());
-//		}
-//
-//		if (executionFinish instanceof MessageOccurrenceSpecification) {
-//			executionFinish = ((MessageOccurrenceSpecification)((MessageOccurrenceSpecification)executionFinish)
-//					.getMessage().getReceiveEvent());
-//		}
-//
-//		int startExecutionIndex = fragments.indexOf(executionStart);
-//		int finishExecutionIndex = fragments.indexOf(executionFinish);
-//
-//		for (int i = startExecutionIndex; i <= finishExecutionIndex; i++) {
-//			result.add(fragments.get(i));
-//		}
-//
-//		return result;
-//	}
-
+	/**
+	 * Reorder combined fragment.
+	 * 
+	 * @param combinedFragment
+	 *            Moved combined fragment
+	 * @param startingEndPredecessorAfter
+	 *            Fragment preceding moved combined fragment start before the beginning of reorder operation
+	 * @param finishingEndPredecessorAfter
+	 *            Fragment preceding moved combined fragment finish before the beginning of reorder operation
+	 */
 	public void reorder(CombinedFragment combinedFragment, InteractionFragment startingEndPredecessorAfter,
 			InteractionFragment finishingEndPredecessorAfter) {
 
@@ -1234,65 +1233,6 @@ public class SequenceServices {
 	}
 
 	/**
-	 * Move an execution occurrence.
-	 * 
-	 * @param execution
-	 *            Execution to move
-	 * @param occurrence
-	 *            Occurrence start or finish
-	 * @param startingEndPredecessorAfter
-	 *            Predecessor after move
-	 * @param interaction
-	 *            Interaction
-	 * @param fragments
-	 *            Fragments
-	 */
-	// private void reorderExecutionOccurence(ExecutionSpecification execution,
-	// OccurrenceSpecification occurrence, InteractionFragment startingEndPredecessorAfter,
-	// final Interaction interaction, final EList<InteractionFragment> fragments) {
-	// int startIndex = getFragmentIndex(startingEndPredecessorAfter, fragments);
-	// if (getExecution(startingEndPredecessorAfter) != null
-	// && startingEndPredecessorAfter == (getExecution(startingEndPredecessorAfter).getStart())) {
-	// startIndex += 1;
-	// }
-	//
-	// // If element moves up
-	// if (startingEndPredecessorAfter != null && fragments.indexOf(occurrence) > startIndex) {
-	// startIndex += 1;
-	// }
-	//
-	// // If execution start is a message move the message start and receive
-	// if (occurrence instanceof MessageOccurrenceSpecification) {
-	// reorder(((MessageOccurrenceSpecification)occurrence).getMessage(), startingEndPredecessorAfter,
-	// null);
-	// if (fragments.indexOf(occurrence) > startIndex) {
-	// startIndex += 1;
-	// }
-	// } else {
-	// // Move execution start
-	// fragments.move(startIndex, fragments.indexOf(occurrence));
-	// }
-	// if (getExecution(occurrence).getStart() == occurrence) {
-	// // Move execution
-	// int behaviorIndex = startIndex;
-	// if (fragments.indexOf(execution) > startIndex) {
-	// behaviorIndex += 1;
-	// }
-	// fragments.move(behaviorIndex, fragments.indexOf(execution));
-	// }
-	// if (occurrence instanceof MessageOccurrenceSpecification) {
-	// final Message message = ((MessageOccurrenceSpecification)occurrence).getMessage();
-	// // If message is a synchronous message, move the reply message
-	// if (MessageSort.SYNCH_CALL_LITERAL.equals(message.getMessageSort())) {
-	// final Message reply = getReplyMessage(message);
-	// reorder(reply, (InteractionFragment)message.getReceiveEvent(),
-	// (InteractionFragment)message.getReceiveEvent());
-	// refresh(interaction);
-	// }
-	// }
-	// }
-
-	/**
 	 * Reorder message.
 	 * 
 	 * @param message
@@ -1352,62 +1292,6 @@ public class SequenceServices {
 								.getReceiveEvent());
 
 			}
-
-			// Move message start after startEndPredecessorAfter
-			// int sendMsgIndex = 0;
-			// boolean moveup = false;
-			// if (startingEndPredecessorAfter != null) {
-			// // If startingEndPredecessorAfter is the start of an execution, keep the behavior just after
-			// // the
-			// // start
-			// sendMsgIndex = fragments.indexOf(startingEndPredecessorAfter);
-			//
-			// if (getExecution(startingEndPredecessorAfter) != null
-			// && startingEndPredecessorAfter == (getExecution(startingEndPredecessorAfter)
-			// .getStart())) {
-			// sendMsgIndex += 1;
-			// }
-			//
-			// // If element moves up
-			// if (fragments.indexOf(message.getSendEvent()) > sendMsgIndex) {
-			// sendMsgIndex += 1;
-			// moveup = true;
-			// }
-
-			// If execution start is a message move the message start and receive
-			// Move execution start
-			// fragments.move(sendMsgIndex, fragments.indexOf(message.getSendEvent()));
-			//
-			// // Move execution
-			// int receiveReplyMsgIndex = sendMsgIndex + 1;
-			// int receiveMsgIndex = sendMsgIndex;
-			// if (fragments.indexOf(message.getReceiveEvent()) > sendMsgIndex) {
-			// receiveMsgIndex += 1;
-			// }
-			// fragments.move(receiveMsgIndex, fragments.indexOf(message.getReceiveEvent()));
-
-			// if (message.getMessageSort().equals(MessageSort.SYNCH_CALL_LITERAL)) {
-			// Message replyMessage = getReplyMessage(message);
-			// if (moveup) {
-			// fragments.move(receiveMsgIndex + 1, fragments.indexOf(replyMessage.getSendEvent()));
-			// fragments
-			// .move(receiveMsgIndex + 1, fragments.indexOf(replyMessage.getReceiveEvent()));
-			// } else {
-			// fragments.move(receiveMsgIndex, fragments.indexOf(replyMessage.getSendEvent()));
-			// fragments.move(receiveMsgIndex, fragments.indexOf(replyMessage.getReceiveEvent()));
-			// }
-			// }
-			// } else {
-			// // Element moved at the beginning of sequence, so no startingPredecessorAfter exists
-			// // Move execution start
-			// fragments.move(sendMsgIndex, fragments.indexOf(message.getSendEvent()));
-			// // Move execution
-			// int receiveMsgIndex = sendMsgIndex;
-			// if (fragments.indexOf(message.getReceiveEvent()) > sendMsgIndex) {
-			// receiveMsgIndex += 1;
-			// }
-			// fragments.move(receiveMsgIndex, fragments.indexOf(message.getReceiveEvent()));
-			// }
 		}
 	}
 
@@ -1428,75 +1312,6 @@ public class SequenceServices {
 		}
 		return true;
 	}
-
-//	private int getInteractionFragmentIndex(InteractionFragment interactionFragment) {
-//		Interaction interaction = interactionFragment.getEnclosingInteraction();
-//		EList<InteractionFragment> fragments = interaction.getFragments();
-//
-//		return fragments.indexOf(interactionFragment);
-//	}
-
-	/**
-	 * Reorder combinedFragment.
-	 * 
-	 * @param combinedFragment
-	 *            Moved combinedFragment
-	 * @param startingEndPredecessorAfter
-	 *            Fragment preceding moved execution start before the beginning of reorder operation
-	 * @param finishingEndPredecessorAfter
-	 *            Fragment preceding moved execution finish before the beginning of reorder operation
-	 */
-	// public void reorder(CombinedFragment combinedFragment, InteractionFragment startingEndPredecessorAfter,
-	// InteractionFragment finishingEndPredecessorAfter) {
-	// // Get current interaction
-	// final Interaction interaction = combinedFragment.getEnclosingInteraction();
-	// // Re-order fragments under the interaction
-	// final EList<InteractionFragment> fragments = interaction.getFragments();
-	//
-	// // Move message start after startEndPredecessorAfter
-	// int sendMsgIndex = 0;
-	// if (startingEndPredecessorAfter != null) {
-	// // If startingEndPredecessorAfter is the start of an execution, keep the behavior just after the
-	// // start
-	// sendMsgIndex = fragments.indexOf(startingEndPredecessorAfter);
-	// if (getExecution(startingEndPredecessorAfter) != null
-	// && startingEndPredecessorAfter == (getExecution(startingEndPredecessorAfter).getStart())) {
-	// sendMsgIndex += 1;
-	// }
-	//
-	// // If element moves up
-	// if (fragments.indexOf(combinedFragment) > sendMsgIndex) {
-	// sendMsgIndex += 1;
-	// }
-	//
-	// // If execution start is a message move the message start and receive
-	// // Move execution start
-	// fragments.move(sendMsgIndex, fragments.indexOf(combinedFragment));
-	// } else {
-	// // Element moved at the beginning of sequence, so no startingPredecessorAfter exists
-	// // Move execution start
-	// fragments.move(sendMsgIndex, fragments.indexOf(combinedFragment));
-	// }
-	// }
-
-	/**
-	 * Refresh diagram associated to interaction.
-	 * 
-	 * @param interaction
-	 *            Interaction
-	 */
-//	private void refresh(Interaction interaction) {
-//		// Refresh current representation
-//		// Get session
-//		final Session session = SessionManager.INSTANCE.getSession(interaction);
-//		if (session != null) {
-//			// Get representation
-//			final DRepresentation diagram = (DRepresentation)DialectManager.INSTANCE.getRepresentations(
-//					interaction, session).toArray()[0];
-//			// Refresh current sequence diagram
-//			DialectManager.INSTANCE.refresh(diagram, new NullProgressMonitor());
-//		}
-//	}
 
 	/**
 	 * Create an operation from a lifeline. Create the operation in the class and the execution on the
@@ -1564,6 +1379,19 @@ public class SequenceServices {
 				finishingEndPredecessor, operation);
 	}
 
+	/**
+	 * Create an operation and an synchronous message from a lifeline or an execution. Create the operation in
+	 * the class and the synchronous message in the interaction.
+	 * 
+	 * @param target
+	 *            Target message element, it could be a lifeline or an execution
+	 * @param source
+	 *            Source message element, it could be a lifeline or an execution
+	 * @param startingEndPredecessor
+	 *            Start predecessor
+	 * @param finishingEndPredecessor
+	 *            Finish predecessor
+	 */
 	public void createOperationAndSynchMessage(NamedElement target, NamedElement source,
 			NamedElement startingEndPredecessor, NamedElement finishingEndPredecessor) {
 		// Get associated class and interaction
@@ -1581,37 +1409,6 @@ public class SequenceServices {
 		createSynchronousMessage(interaction, source, target, true, startingEndPredecessor,
 				finishingEndPredecessor, operation);
 	}
-
-	/**
-	 * Create an operation from a lifeline or an execution. Create the operation in the class and the
-	 * execution on the source element.
-	 * 
-	 * @param target
-	 *            Target message element, it could be a lifeline or an execution
-	 * @param source
-	 *            Source messgae element, it could be a lifeline or an execution
-	 * @param startingEndPredecessor
-	 *            Start predecessor
-	 * @param finishingEndPredecessor
-	 *            Finish predecessor
-	 */
-	// public void createOperationAndSynchMessage(NamedElement target, NamedElement source,
-	// NamedElement startingEndPredecessor, NamedElement finishingEndPredecessor) {
-	// // Get associated class and interaction
-	// org.eclipse.uml2.uml.Type type;
-	// Interaction interaction;
-	// if (target instanceof Lifeline) {
-	// type = getType((Lifeline)target);
-	// interaction = ((Lifeline)target).getInteraction();
-	// } else {
-	// type = getType(((ExecutionSpecification)target).getCovereds().get(0));
-	// interaction = ((ExecutionSpecification)target).getEnclosingInteraction();
-	// }
-	// final Operation operation = operationService.createOperation(type);
-	// // Create message
-	// createSynchronousMessage(interaction, source, target, operation, startingEndPredecessor,
-	// finishingEndPredecessor);
-	// }
 
 	/**
 	 * Get type associated to a lifeline.
@@ -1768,18 +1565,6 @@ public class SequenceServices {
 		}
 	}
 
-	// public InteractionFragment getStartingEnd(final CombinedFragment combinedFragment) {
-	// final Interaction enclosingInteraction = combinedFragment.getEnclosingInteraction();
-	// final int index = enclosingInteraction.getFragments().indexOf(combinedFragment);
-	//
-	// if (index == 0)
-	// return null;
-	// else {
-	// InteractionFragment result = enclosingInteraction.getFragments().get(index - 1);
-	// return result;
-	// }
-	// }
-
 	public Object getFinishingEnd(final CombinedFragment combinedFragment) {
 
 		if (combinedFragment.getOperands().isEmpty()) {
@@ -1801,14 +1586,6 @@ public class SequenceServices {
 		}
 
 		return null;
-
-		// if (interactionOperand.getFragments().isEmpty()) {
-		// Object result = interactionOperand.allOwnedElements().get(0);
-		// return result;
-		// } else {
-		// return interactionOperand.getFragments().get(interactionOperand.getFragments().size() - 1);
-		// }
-
 	}
 
 	/**
@@ -1824,6 +1601,8 @@ public class SequenceServices {
 	 *            Starting end predecessor
 	 * @param finishingEndPredecessor
 	 *            Finishing end predecessor
+	 * @param operation
+	 *            Operation to be associated with the message
 	 */
 	public void createAsynchronousMessage(Interaction interaction, NamedElement sourceFragment,
 			NamedElement targetFragment, NamedElement startingEndPredecessor,
@@ -1841,12 +1620,14 @@ public class SequenceServices {
 	 *            Source
 	 * @param targetFragment
 	 *            Target
-	 * @param operation
-	 *            Operation associated to message
+	 * @param createExecution
+	 *            Set to true to create an execution
 	 * @param startingEndPredecessor
 	 *            Starting end predecessor
 	 * @param finishingEndPredecessor
 	 *            Finishing end predecessor
+	 * @param operation
+	 *            Operation associated to message
 	 */
 	public void createAsynchronousMessage(Interaction interaction, NamedElement sourceFragment,
 			NamedElement targetFragment, boolean createExecution, NamedElement startingEndPredecessor,
@@ -1969,8 +1750,20 @@ public class SequenceServices {
 		return message;
 	}
 
+	/**
+	 * Create a combined fragment
+	 * 
+	 * @param interaction
+	 *            interaction
+	 * @param startingEndPredecessor
+	 *            start end predecessor
+	 * @param finishingEndPredecessor
+	 *            finish end predecessor
+	 * @param coveredLifelines
+	 *            lifelines covered by the combines fragment
+	 */
 	public void createCombinedFragment(Interaction interaction, InteractionFragment startingEndPredecessor,
-			InteractionFragment finishingEndPredecessor, List<Lifeline> coveredLifelines, ENode variable) {
+			InteractionFragment finishingEndPredecessor, List<Lifeline> coveredLifelines) {
 
 		final UMLFactory factory = UMLFactory.eINSTANCE;
 		CombinedFragment combinedFragment = factory.createCombinedFragment();
@@ -1985,13 +1778,19 @@ public class SequenceServices {
 		defaultOperand.getCovereds().addAll(coveredLifelines);
 		combinedFragment.getOperands().add(defaultOperand);
 
-		// TODO refactor the next line when the way to know the end of a CombinedFragment is found
+		// TODO refactor the next lines when the way to know the end of a CombinedFragment is found
 		Comment endCombinedFragment = factory.createComment();
 		endCombinedFragment.setBody("endCF");
 		defaultOperand.getOwnedComments().add(endCombinedFragment);
 
 	}
 
+	/**
+	 * Create en operand in a combine fragment
+	 * 
+	 * @param combinedFragment
+	 *            combined fragment
+	 */
 	public void createOperand(CombinedFragment combinedFragment) {
 		InteractionOperand operand = UMLFactory.eINSTANCE.createInteractionOperand();
 		// TODO : remove this comment when fix CF finishing end
@@ -2000,13 +1799,18 @@ public class SequenceServices {
 		operand.getOwnedComments().add(endOfOperand);
 
 		combinedFragment.getOperands().add(operand);
-
-		// if(startingEndPredecessor instanceof InteractionOperand) {
-		// combinedFragment.getOperands().add(combinedFragment.getOperands().indexOf(startingEndPredecessor) +
-		// 1, operand);
-		// }
 	}
 
+	/**
+	 * reorder lifelines horizontally
+	 * 
+	 * @param movedLifeline
+	 *            moved lifeline
+	 * @param predecessorBefore
+	 *            lifeline predecessor before
+	 * @param predecessorAfter
+	 *            lifeline predecessor after
+	 */
 	public void reorderLifeline(Lifeline movedLifeline, Lifeline predecessorBefore, Lifeline predecessorAfter) {
 		Interaction ownedInteraction = movedLifeline.getInteraction();
 		EList<Lifeline> lifelines = ownedInteraction.getLifelines();
@@ -2029,6 +1833,13 @@ public class SequenceServices {
 		}
 	}
 
+	/**
+	 * return the ordered list of all ends of an interaction
+	 * 
+	 * @param interaction
+	 *            interaction
+	 * @return the ordered list of all ends
+	 */
 	public List<EObject> getEndsOrdering(Interaction interaction) {
 
 		List<EObject> result = new BasicEList<EObject>();
@@ -2042,6 +1853,8 @@ public class SequenceServices {
 			if (eObject instanceof CombinedFragment) {
 				result.add(eObject);
 			}
+
+			// TODO: remove/adapt when combine fragment end element is defined
 			if (eObject instanceof Comment) {
 				result.add(eObject);
 			}
@@ -2082,6 +1895,13 @@ public class SequenceServices {
 
 	}
 
+	/**
+	 * Get all the operation contained in the class (or actor) represented by a lifeline
+	 * 
+	 * @param lifeline
+	 *            lifeline
+	 * @return a list of operations
+	 */
 	public List<Operation> getAllOperations(Lifeline lifeline) {
 		List<Operation> result = new BasicEList<Operation>();
 
@@ -2101,6 +1921,14 @@ public class SequenceServices {
 		return result;
 	}
 
+	/**
+	 * Get all the operation contained in the class (or actor) represented by the lifeline covered by the
+	 * execution
+	 * 
+	 * @param execution
+	 *            execution
+	 * @return a list of operations
+	 */
 	public List<Operation> getAllOperations(BehaviorExecutionSpecification execution) {
 		List<Operation> result = new BasicEList<Operation>();
 		Lifeline lifeline = execution.getCovereds().get(0);
@@ -2120,7 +1948,14 @@ public class SequenceServices {
 
 		return result;
 	}
-	
+
+	/**
+	 * Get all the creation message of an interaction
+	 * 
+	 * @param interaction
+	 *            interaction
+	 * @return the creation messages contained in an interaction
+	 */
 	public List<Message> getCreationMessages(Interaction interaction) {
 		List<Message> result = new BasicEList<Message>();
 
@@ -2133,6 +1968,13 @@ public class SequenceServices {
 		return result;
 	}
 
+	/**
+	 * Get synchronous message (and reply) and asynchronous message contained in an interaction
+	 * 
+	 * @param interaction
+	 *            interaction
+	 * @return list of messages
+	 */
 	public List<Message> getSynchAndAsynchMessages(Interaction interaction) {
 		List<Message> result = new BasicEList<Message>();
 
@@ -2146,14 +1988,5 @@ public class SequenceServices {
 
 		return result;
 	}
-
-	// public Package getNearestPackage(ENode node) {
-	// if(node instanceof Element) {
-	// Element element = (Element)node;
-	// return element.getNearestPackage();
-	// }
-	//
-	// return null;
-	// }
 
 }
