@@ -2,7 +2,7 @@
 <feature
       id="fr.obeo.dsl.feature.uml2"
       label="UML Designer"
-      version="2.1.1.qualifier"
+      version="2.2.0.qualifier"
       provider-name="Obeo"
       plugin="org.obeonetwork.dsl.uml2.branding">
 
