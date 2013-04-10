@@ -1,4 +1,14 @@
-package org.obeonetwork.dsl.uml2.usage;
+/*******************************************************************************
+ * Copyright (c) 2013 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
+package org.obeonetwork.dsl.uml2.usage.analytics;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -10,6 +20,8 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.ui.IPartListener2;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartReference;
+import org.obeonetwork.dsl.uml2.usage.UsageActivator;
+import org.obeonetwork.dsl.uml2.usage.preferences.UsagePreferences;
 
 import com.dmurph.tracking.AnalyticsConfigData;
 import com.dmurph.tracking.JGoogleAnalyticsTracker;
@@ -22,14 +34,24 @@ import fr.obeo.dsl.viewpoint.description.RepresentationDescription;
 import fr.obeo.dsl.viewpoint.description.Viewpoint;
 import fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectEditor;
 
+/**
+ * Detect when a Sirius editor is used and send information to google analytics.
+ * 
+ * @author Cedric Brun <a
+ *         href="mailto:cedric.brun@obeo.fr">cedric.brun@obeo.fr</a>
+ * @author Melanie Bats <a
+ *         href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+ */
 public class SiriusEditorsListener implements IPartListener2 {
 
+	private static final String ANALYTICS_ID = UsageMessages.Usage_GoogleAnalytics;
 	private JGoogleAnalyticsTracker tracker;
 	private EclipseUserAgent eclipseUserAgent;
 	private String hostname;
+	private UsagePreferences preferences = new UsagePreferences();
 
 	public SiriusEditorsListener() {
-		AnalyticsConfigData config = new AnalyticsConfigData("UA-39907049-2");
+		AnalyticsConfigData config = new AnalyticsConfigData(ANALYTICS_ID);
 		// if you want to set your own config parameters:
 		eclipseUserAgent = new EclipseUserAgent();
 		config.setUserAgent(eclipseUserAgent.toString());
@@ -67,26 +89,21 @@ public class SiriusEditorsListener implements IPartListener2 {
 	}
 
 	public void partActivated(IWorkbenchPartReference partRef) {
-		// TODO Auto-generated method stub
-
 	}
 
 	public void partBroughtToTop(IWorkbenchPartReference partRef) {
-		// TODO Auto-generated method stub
-
 	}
 
 	public void partClosed(IWorkbenchPartReference partRef) {
-		// TODO Auto-generated method stub
-
 	}
 
 	public void partDeactivated(IWorkbenchPartReference partRef) {
-		// TODO Auto-generated method stub
-
 	}
 
 	public void partOpened(IWorkbenchPartReference partRef) {
+		if (!preferences.isEnabled())
+			return;
+
 		IWorkbenchPart part = partRef.getPart(false);
 		if (part instanceof DialectEditor) {
 			DialectEditor dEditor = (DialectEditor) part;
@@ -100,6 +117,7 @@ public class SiriusEditorsListener implements IPartListener2 {
 					String diagTypeName = description.getName();
 					String viewpointName = ((Viewpoint) description
 							.eContainer()).getName();
+					preferences.storeDiagramsUsage(diagTypeName);
 					tracker.trackPageViewFromReferrer(viewpointName + "/"
 							+ diagTypeName, diagURI.toString(), hostname,
 							eclipseUserAgent.getApplicationName() + ":"
@@ -112,18 +130,12 @@ public class SiriusEditorsListener implements IPartListener2 {
 	}
 
 	public void partHidden(IWorkbenchPartReference partRef) {
-		// TODO Auto-generated method stub
-
 	}
 
 	public void partVisible(IWorkbenchPartReference partRef) {
-		// TODO Auto-generated method stub
-
 	}
 
 	public void partInputChanged(IWorkbenchPartReference partRef) {
-		// TODO Auto-generated method stub
-
 	}
 
 }

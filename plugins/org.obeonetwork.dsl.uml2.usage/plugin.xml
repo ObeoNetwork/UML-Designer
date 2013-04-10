@@ -4,8 +4,23 @@
    <extension
          point="org.eclipse.ui.startup">
       <startup
-            class="org.obeonetwork.dsl.uml2.usage.UsageStartup">
+            class="org.obeonetwork.dsl.uml2.usage.analytics.UsageStartup">
       </startup>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="fr.obeo.dsl.viewpoint.ui.page"
+            class="org.obeonetwork.dsl.uml2.usage.preferences.UsagePreferencesPage"
+            id="org.obeonetwork.dsl.uml2.usage.preferences.UsageAnalyticsPreferencePage"
+            name="Usage">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.obeonetwork.dsl.uml2.usage.preferences.UsagePreferenceInitializer">
+      </initializer>
    </extension>
 
 </plugin>
