@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Bundle-Name: UML Designer
+Bundle-Name: UML Designer Extension
 Bundle-SymbolicName: org.obeonetwork.gmf.runtime.diagram.ui.extension;singleton=true
 Bundle-Version: 2.2.0.qualifier
 Require-Bundle: org.eclipse.ui,
