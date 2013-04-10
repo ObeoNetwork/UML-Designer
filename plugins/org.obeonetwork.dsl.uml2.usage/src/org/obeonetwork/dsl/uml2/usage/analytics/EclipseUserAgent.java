@@ -8,7 +8,7 @@
  * Contributors:
  *     Red Hat, Inc. - initial API and implementation
  ******************************************************************************/
-package org.obeonetwork.dsl.uml2.usage;
+package org.obeonetwork.dsl.uml2.usage.analytics;
 
 import java.text.MessageFormat;
 
@@ -73,13 +73,8 @@ public class EclipseUserAgent {
 		String productId = getApplicationName();
 		String productVersion = getApplicationVersion();
 
-		return MessageFormat.format(
-				getUserAgentPattern(getOS())
-				, productId
-				, productVersion
-				, getOSVersion()
-				, getBrowserLanguage()
-				);
+		return MessageFormat.format(getUserAgentPattern(getOS()), productId,
+				productVersion, getOSVersion(), getBrowserLanguage());
 	}
 
 	public String getOS() {
