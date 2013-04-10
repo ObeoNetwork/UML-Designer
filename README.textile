@@ -2,7 +2,7 @@ h1. Welcome to UML Modeling by Obeo Network
 
 This modeler provides a set of common diagrams to work with UML 2.1 models. The intent is to provide an easy way to make the transition from UML to domain specific modeling. This way users can continue to manipulate legacy UML models and start working with DSL. Users can even re-use the provided representations and work in a total transparence on both UML and DSL models at the same time.
 
-These plugins are released under the EPL Open-Souce License.
+These plugins are released under the EPL Open-Source License.
 
 More details about features, screenshots, release notes, dependencies here:
 
@@ -10,7 +10,7 @@ More details about features, screenshots, release notes, dependencies here:
  * http://docs.obeonetwork.com/uml
  * http://www.obeodesigner.com
 
-
+Give us feedback and fill in our "survey":http://bit.ly/UMLDesignerSurvey !
 
 h2. Class Diagram
 
