@@ -13,7 +13,7 @@
             category="fr.obeo.dsl.viewpoint.ui.page"
             class="org.obeonetwork.dsl.uml2.usage.preferences.UsagePreferencesPage"
             id="org.obeonetwork.dsl.uml2.usage.preferences.UsageAnalyticsPreferencePage"
-            name="Usage">
+            name="UML Designer Usage">
       </page>
    </extension>
    <extension
