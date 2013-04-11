@@ -253,4 +253,11 @@ litigation.
          install-size="0"
          version="0.0.0"/>
 
+   <plugin
+         id="org.obeonetwork.gmf.runtime.diagram.ui.extension"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
 </feature>
