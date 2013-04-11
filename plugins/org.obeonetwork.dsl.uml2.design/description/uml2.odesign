@@ -5199,7 +5199,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:NodeCreationDescription" documentation="Create an actor" name="CR_Actor" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']">
+            <tools xsi:type="tool:NodeCreationDescription" documentation="Create an actor" name="CR_Actor" label="Actor" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
