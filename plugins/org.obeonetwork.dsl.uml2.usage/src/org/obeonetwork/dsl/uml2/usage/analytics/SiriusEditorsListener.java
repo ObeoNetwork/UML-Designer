@@ -17,10 +17,13 @@ import java.util.UUID;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IPartListener2;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartReference;
+import org.eclipse.ui.PlatformUI;
 import org.obeonetwork.dsl.uml2.usage.UsageActivator;
+import org.obeonetwork.dsl.uml2.usage.dialog.UsageDialog;
 import org.obeonetwork.dsl.uml2.usage.preferences.UsagePreferences;
 
 import com.dmurph.tracking.AnalyticsConfigData;
@@ -101,9 +104,13 @@ public class SiriusEditorsListener implements IPartListener2 {
 	}
 
 	public void partOpened(IWorkbenchPartReference partRef) {
+		// Ask to the user for usage report enablement
+		askUser();
+
 		if (!preferences.isEnabled())
 			return;
 
+		// If usage report is enabled send data to google analytics
 		IWorkbenchPart part = partRef.getPart(false);
 		if (part instanceof DialectEditor) {
 			DialectEditor dEditor = (DialectEditor) part;
@@ -136,6 +143,29 @@ public class SiriusEditorsListener implements IPartListener2 {
 	}
 
 	public void partInputChanged(IWorkbenchPartReference partRef) {
+	}
+
+	/**
+	 * Ask to user if it is ok to send some statistics about its usage of UML
+	 * Designer.
+	 */
+	private void askUser() {
+		// Check preference to see if user already answer the question
+		if (preferences.hasAnswered()) {
+			return;
+		}
+
+		// User does not answer to the question, ask him
+		Shell shell = PlatformUI.getWorkbench().getModalDialogShellProvider()
+				.getShell();
+		UsageDialog dialog = new UsageDialog(shell);
+		int answer = dialog.open();
+
+		// Set the user answer to the preference store in order to not ask him
+		// anymore if he answered. If the user just close the dialog, the
+		// question will be ask again at next startup. The user can update its
+		// answer at any time in the preferences page.
+		preferences.storeUserAnswer(answer);
 	}
 
 }
