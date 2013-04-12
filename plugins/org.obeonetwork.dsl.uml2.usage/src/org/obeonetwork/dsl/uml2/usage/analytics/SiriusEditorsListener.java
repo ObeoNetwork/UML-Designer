@@ -166,6 +166,15 @@ public class SiriusEditorsListener implements IPartListener2 {
 		// question will be ask again at next startup. The user can update its
 		// answer at any time in the preferences page.
 		preferences.storeUserAnswer(answer);
+
+		// Send to google analytics information of usage report activation
+		if (preferences.isEnabled()) {
+			tracker.trackPageViewFromReferrer(
+					UsageMessages.Usage_ActivationPageURL,
+					UsageMessages.Usage_ActivationPageTitle, hostname,
+					eclipseUserAgent.getApplicationName() + ":"
+							+ eclipseUserAgent.getApplicationVersion(), "");
+		}
 	}
 
 }
