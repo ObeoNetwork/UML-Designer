@@ -13,6 +13,7 @@ package org.obeonetwork.dsl.uml2.usage.dialog;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.layout.GridDataFactory;
@@ -25,6 +26,8 @@ import org.eclipse.swt.widgets.Link;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
+import org.obeonetwork.dsl.uml2.usage.UsageActivator;
+import org.obeonetwork.dsl.uml2.usage.analytics.UsageMessages;
 
 /**
  * Dialog about enabling usage report through google analytics.
@@ -57,9 +60,11 @@ public class UsageDialog extends Dialog {
 					PlatformUI.getWorkbench().getBrowserSupport()
 							.getExternalBrowser().openURL(new URL(e.text));
 				} catch (PartInitException ex) {
-					ex.printStackTrace();
+					UsageActivator.log(IStatus.ERROR,
+							UsageMessages.Error_OpeningUsageHyperlink, ex);
 				} catch (MalformedURLException ex) {
-					ex.printStackTrace();
+					UsageActivator.log(IStatus.ERROR,
+							UsageMessages.Error_OpeningUsageHyperlink, ex);
 				}
 			}
 		});
