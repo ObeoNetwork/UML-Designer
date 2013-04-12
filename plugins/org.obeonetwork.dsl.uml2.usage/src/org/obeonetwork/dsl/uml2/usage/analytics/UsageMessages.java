@@ -22,6 +22,8 @@ public class UsageMessages extends NLS {
 	private static final String BUNDLE_NAME = "org.obeonetwork.dsl.uml2.usage.analytics.messages"; //$NON-NLS-1$
 
 	public static String Usage_GoogleAnalytics;
+	public static String Usage_ActivationPageURL;
+	public static String Usage_ActivationPageTitle;
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, UsageMessages.class);
