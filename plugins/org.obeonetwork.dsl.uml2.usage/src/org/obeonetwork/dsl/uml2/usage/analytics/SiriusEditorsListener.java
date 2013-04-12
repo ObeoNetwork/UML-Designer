@@ -15,6 +15,7 @@ import java.nio.charset.Charset;
 import java.util.UUID;
 
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.swt.widgets.Shell;
@@ -69,7 +70,8 @@ public class SiriusEditorsListener implements IPartListener2 {
 		try {
 			found = retrieveMarker(found);
 		} catch (IOException e) {
-			e.printStackTrace();
+			UsageActivator.log(IStatus.ERROR,
+					UsageMessages.Error_CreatingGoogleAnalyticsConfig, e);
 		}
 		return found;
 	}

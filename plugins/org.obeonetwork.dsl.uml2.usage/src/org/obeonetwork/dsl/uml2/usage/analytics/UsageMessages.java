@@ -24,6 +24,10 @@ public class UsageMessages extends NLS {
 	public static String Usage_GoogleAnalytics;
 	public static String Usage_ActivationPageURL;
 	public static String Usage_ActivationPageTitle;
+
+	public static String Error_CreatingGoogleAnalyticsConfig;
+	public static String Error_OpeningUsageHyperlink;
+
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, UsageMessages.class);

@@ -11,6 +11,7 @@
 package org.obeonetwork.dsl.uml2.usage;
 
 import org.eclipse.core.runtime.Plugin;
+import org.eclipse.core.runtime.Status;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 
@@ -23,6 +24,10 @@ import org.osgi.framework.BundleContext;
  *         href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class UsageActivator extends Plugin implements BundleActivator {
+	/**
+	 * The plug-in ID.
+	 */
+	public static final String PLUGIN_ID = "org.obeonetwork.dsl.uml2.usage";
 
 	private static BundleContext context;
 
@@ -66,4 +71,18 @@ public class UsageActivator extends Plugin implements BundleActivator {
 		return plugin;
 	}
 
+	/**
+	 * A helper to log plugin errors.
+	 * 
+	 * @param severity
+	 *            the error severity.
+	 * @param message
+	 *            the error message.
+	 * @param exception
+	 *            the error exception.
+	 */
+	public static void log(int severity, String message, Throwable exception) {
+		getDefault().getLog().log(
+				new Status(severity, PLUGIN_ID, message, exception));
+	}
 }
