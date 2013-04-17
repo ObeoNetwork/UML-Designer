@@ -106,15 +106,15 @@ public class SiriusEditorsListener implements IPartListener2 {
 	}
 
 	public void partOpened(IWorkbenchPartReference partRef) {
-		// Ask to the user for usage report enablement
-		askUser();
-
-		if (!preferences.isEnabled())
-			return;
 
 		// If usage report is enabled send data to google analytics
 		IWorkbenchPart part = partRef.getPart(false);
 		if (part instanceof DialectEditor) {
+			// Ask to the user for usage report enablement
+			askUser();
+			
+			if (!preferences.isEnabled())
+				return;
 			DialectEditor dEditor = (DialectEditor) part;
 			DRepresentation rep = dEditor.getRepresentation();
 			if (rep != null
