@@ -1,2 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<specification:Specification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:specification="http://www.eclipse.org/intent/specification/1.0" name="UMLDesigner"><features name="StructuralDiagrams"><benefits name="ICanDescribeMySoftwaresStructure"/><benefits name="ICanCleanMySoftwareStructure"/><features name="ClassDiagram"><features name="ManageClassDiagrams"><stories name="CreateAClassDiagram"/><stories name="DeleteAClassDiagram"/></features><features name="ManageTypes"><stories name="CreateAType" as="SoftwareDeveloper" soThat="ICanDescribeMySoftwaresStructure" iWant="ToCreateAType"><scenarios name="CreateANewClass"/><scenarios name="CreateANewEnumeration"/><scenarios name="CreateANewClassInAnExistingVisiblePackage"/></stories><stories name="DeleteAType" as="SoftwareDeveloper" soThat="ICanCleanMySoftwareStructure" iWant="ToDeleteAType"><scenarios name="DeleteAClass"/><scenarios name="DeleteAnEnumeration"/></stories><capabilities name="ToCreateAType"/><capabilities name="ToDeleteAType"/></features></features></features><roles name="SoftwareDeveloper"/><automationLayer/></specification:Specification>
+<specification:Specification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:specification="http://www.eclipse.org/intent/specification/1.0" name="UMLDesigner">
+  <features name="StructuralDiagrams">
+    <benefits name="ICanUpdateMySoftwareStructure"/>
+    <benefits name="ICanDescribeMySoftwareStructure"/>
+    <capabilities name="ToEditElements"/>
+    <capabilities name="ToCreateAType"/>
+    <capabilities name="ToCreateAClassDiagram"/>
+    <features name="ClassDiagrams">
+      <features name="ManageDiagrams">
+        <stories name="CreateAClassDiagram" as="SoftwareDeveloper" soThat="ICanDescribeMySoftwareStructure" iWant="ToCreateAClassDiagram">
+          <scenarios name="CreateAClassDiagramFromAPackage" given="TheModelPackageIsSelectedFromModelExplorer" when="ICreateAClassDiagram" then="NewClassDiagramIsCreatedAndOpened">
+            <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+          </scenarios>
+        </stories>
+      </features>
+      <features name="ManageTypes">
+        <stories name="CreateAType" as="SoftwareDeveloper" soThat="ICanDescribeMySoftwareStructure" iWant="ToCreateAType">
+          <scenarios name="CreateAClass" given="TheReferenceClassDiagramOpened" when="ICreateAClass" then="ElementCreatedInUMLModel ElementExistsInTheReferenceClassDiagram">
+            <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+          </scenarios>
+          <scenarios name="CreateAnEnumeration" given="TheReferenceClassDiagramOpened" when="ICreateAnEnumeration" then="ElementCreatedInUMLModel ElementExistsInTheReferenceClassDiagram">
+            <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+          </scenarios>
+        </stories>
+        <stories name="DeleteAType" as="SoftwareDeveloper" soThat="ICanDescribeMySoftwareStructure" iWant="ToCreateAType">
+          <scenarios name="DeleteAClass" given="TheReferenceClassDiagramOpened" when="IDeleteAClass" then="ElementDeletedInUMLModel ElementRemovedFromTheReferenceClassDiagram">
+            <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+          </scenarios>
+        </stories>
+      </features>
+      <features name="EditElements">
+        <stories name="EditLabels" as="SoftwareDeveloper" soThat="ICanUpdateMySoftwareStructure" iWant="ToEditElements">
+          <scenarios name="EditAssociationRole" given="TheModelWithAnAssociationAndTwoEndProperties" when="IEditSourceRole IEditTargetRole" then="AssociationLabelEndsUpdated">
+            <notes xsi:type="specification:TestGenerationNote"/>
+          </scenarios>
+        </stories>
+      </features>
+    </features>
+  </features>
+  <roles name="SoftwareDeveloper"/>
+  <automationLayer basePackage="org.obeonetwork.dsl.uml2.test">
+    <context name="ImportAndOpenTheReferenceModel">
+      <contexts name="TheReferenceClassDiagramOpened"/>
+      <contexts name="TheModelPackageIsSelectedFromModelExplorer"/>
+    </context>
+    <context name="TheModelWithAnAssociationAndTwoEndProperties" type=""/>
+    <actions name="ICreateAClass"/>
+    <actions name="ICreateAnEnumeration"/>
+    <actions name="IDeleteAClass"/>
+    <actions name="ICreateAClassDiagram"/>
+    <actions name="IEditSourceRole"/>
+    <actions name="IEditTargetRole"/>
+    <behaviours name="ElementCreatedInUMLModel"/>
+    <behaviours name="ElementExistsInTheReferenceClassDiagram"/>
+    <behaviours name="ElementDeletedInUMLModel"/>
+    <behaviours name="ElementRemovedFromTheReferenceClassDiagram"/>
+    <behaviours name="NewClassDiagramIsCreatedAndOpened"/>
+    <behaviours name="AssociationLabelEndsUpdated" type=""/>
+  </automationLayer>
+</specification:Specification>

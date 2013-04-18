@@ -1,349 +1,154 @@
 Document {
-	Chapter Specification {
-		@author "Melanie Bats":mailto:melanie.bats@obeo.fr
+	Chapter Functional {
+		Section Context {
+			The UML Designer is a graphical designer compatible with the 
+			"UML2 specification":http://www.omg.org/spec/UML/2.4.1/and based on "Obeo Designer":http://www.obeodesigner.com/.
+			UML 2.2 has 14 types of diagrams divided into two categories:
+			!images/UML_diagrams_overview.svg.png!
+			
 
-		Section Model {
-			UML Designer specification :
-			@M
-				@ref "platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/model/umlDesigner.specification#UMLDesigner"
-				 
-			M@
+			It is released as Eclipse plugins under the EPL License.
+			The source code is available on "github":https://github.com/ObeoNetwork/UML-Modeling
 		}
-	}
-	Chapter Scope {
-		The UML Designer is a graphical designer compatible with the 
-		"UML2 specification":http://www.omg.org/spec/UML/2.4.1/and based on "Obeo Designer":http://www.obeodesigner.com/.
-		UML 2.4 has 14 types of diagrams divided into two categories:
-		'http://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/UML_diagrams_overview.svg/500px-UML_diagrams_overview.svg.png'
-	}
-	Chapter Role {
-		Section Software developer {
-			The software developer use the UML Designer to describe the structure and the behaviour of software components.
+
+		Section System purpose {
+			The UML Designer will not cover all the diagrams described in the UML Standard. It is mainly focused on the more used diagrams (Class diagrams, Use Case diagram...) and try to provide a user friendly GUI.
+			The intent is also to provide an easy way to make the transition from UML to domain specific modeling. This way users can continue to manipulate legacy UML models and start working with DSL. Users can even re-use the provided representations and work in a total transparence on both UML and DSL models at the same time.
 		}
-	}
-	Chapter Features {
-		Section Structural diagrams {
-			The structure diagrams are used to describe the structure of a software system.
-			@M
-				@ref "platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/model/umlDesigner.specification#StructuralDiagrams"
-				 
-			M@
 
-			Section Class diagram {
-				A class diagram is a type of static structure diagram that describes the structure of a system by showing the system's classes, their attributes, operations (or methods), and the relationships among the classes.
-				@M
-					@ref "platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/model/umlDesigner.specification#ClassDiagram"
-					 
-				M@
+		Section Key Functions {
+			The UML Designer provides two kinds of viewpoints :
 
-				Section Manage class diagrams {
-					In the designer, it should be possible to manage (create and delete) the class diagrams .
-					@M
-						@ref "platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/model/umlDesigner.specification#ManageClassDiagrams"
-						 
-					M@
+			* UML Structural Modeling
+			* UML Behavioral Modeling
+			
 
-					Section Create a class diagram {
-						Section Scenarios {
-							Section Create a class diagram from package element {							}
-						}
-					}
+			
 
-					Section Delete a class diagram {
-						Section Scenarios {
-							Section Delete a class diagram from package element {							}
-						}
-					}
+			Section Structure diagrams {
+				The structural diagrams are used to describe the structure of a software system.
+
+				Section Class diagram {
+					The class diagram is used to describe the structure of the system by showing the classes, the interfaces, their attributes, their operations and their relationships.
 				}
 
-				Section Manage  types {
-					In the class diagram, it should be possible to manage (create and delete) the different possible types (class, enumeration, datatype, primitivetype, interface).
-
-					Section Create a type {
-						Section Scenarios {
-							Section Create a class {							}
-
-							Section Create an enumeration {							}
-
-							Section Create an interface {							}
-
-							Section Create a data type {							}
-
-							Section Create a primitive type {							}
-
-							Section Create a package {							}
-
-							Section Create a class in an existing visible package {							}
-						}
-					}
-
-					Section Delete a type {
-						Section Scenarios {
-							Section Delete a class {							}
-
-							Section Delete a package {							}
-						}
-					}
+				Section Component diagram {
+					The component diagram is used to describe the structure of the system by showing the components and their connectors.
 				}
 
-				Section Manage  relationships {
-					Section Create a relation {
-						Section Scenarios {
-							Section Create an association {							}
-
-							Section Create a reference {							}
-
-							Section Create a composition {							}
-
-							Section Create an aggregation {							}
-
-							Section Create an association class {							}
-
-							Section Create a generalization {							}
-
-							Section Create an interface realization {							}
-
-							Section Create a dependency {							}
-
-							Section Create a usage {							}
-
-							Section Create a nest classifier {							}
-						}
-					}
-
-					Section Delete a relation {
-						Section Scenarios {
-							Section Delete an association {							}
-						}
-					}
+				Section Composite structure diagram {
+					The composite structure diagram is used to describe the structure of the system by showing the internal structure of classes and the interfaces they used to collaborate.
 				}
 
-				Section Manage  features {
-					Section Create a feature {
-						Section Scenarios {
-							Section Create a property {							}
-
-							Section Create a typed property {							}
-
-							Section Create a literal {							}
-						}
-					}
-
-					Section Delete a feature {
-						Section Scenarios {
-							Section Delete a property {							}
-						}
-					}
+				Section Deployment diagram {
+					The deployment diagram is used to describe the structure of the system by showing the physical deployment of artifacts on nodes.
 				}
 
-				Section Manage  existing elements {
-					Section Add an existing element {
-						Section Scenarios {
-							Section Add an existing class from current package {							}
-
-							Section Add an existing enumeration from current package {							}
-
-							Section Add an existing interface from current package {							}
-
-							Section Add an existing data type from current package {							}
-
-							Section Add an existing primitive type from current package {							}
-
-							Section Add an existing package from current package {							}
-
-							Section Add an existing component from current package {							}
-
-							Section Add an existing class from another package {							}
-
-							Section Add an existing enumeration from another package {							}
-
-							Section Add an existing interface from another package {							}
-
-							Section Add an existing data type from another package {							}
-
-							Section Add an existing primitive type from another package {							}
-
-							Section Add an existing package from another package {							}
-
-							Section Add an existing component from another package {							}
-						}
-					}
-
-					Section Remove an existing element {
-						Section Scenarios {
-							Section Remove an existing class {							}
-						}
-					}
+				Section Package diagram {
+					The package diagram is used to describe the structure of the system by showing the packages and their dependencies.
 				}
 
-				Section Drag and drop elements {
-					Section Scenarios {
-						Section Drag and drop a class from current package {						}
-
-						Section Drag and drop an enumeration from current package {						}
-
-						Section Drag and drop an interface from current package {						}
-
-						Section Drag and drop a data type from current package {						}
-
-						Section Drag and drop a primitive type from current package {						}
-
-						Section Drag and drop a package from current package {						}
-
-						Section Drag and drop a component from current package {						}
-
-						Section Drag and drop a class from another package {						}
-
-						Section Drag and drop an enumeration from another package {						}
-
-						Section Drag and drop an interface from another package {						}
-
-						Section Drag and drop a data type from another package {						}
-
-						Section Drag and drop a primitive type from another package {						}
-
-						Section Drag and drop a package from another package {						}
-
-						Section Drag and drop a component from another package {						}
-					}
+				Section Object diagram {
+					The object diagram is used to describe the structure of the system by showing the objects at a specific time.
 				}
 
-				Section Add related elements {
-					Section Scenarios {
-						Section Add related elements from a class {						}
-
-						Section Add related elements from an enumeration {						}
-
-						Section Add related elements from an interface {						}
-
-						Section Add related elements from a data type {						}
-
-						Section Add related elements from a primitive type {						}
-
-						Section Add related elements from a package {						}
-
-						Section Add related elements from a component {						}
-
-						Section Add related elements from a class diagram {						}
-					}
-				}
-
-				Section Edit elements {
-					Section Scenarios {
-						Section Edit association roles {						}
-					}
-				}
-
-				Section Edit the attributes of a semantic element {
-					Section Scenarios {					}
-				}
-
-				Section Navigate from class diagram to others representations {
-					Section Scenarios {
-						Section Navigate from a given class diagram element to an other related class diagram {						}
-
-						Section Navigate from a given class diagram element to an other related component diagram {						}
-					}
-				}
-
-				Section Move elements {
-					Section Scenarios {
-						Section Move a class {						}
-
-						Section Move a package {						}
-
-						Section Move several elements {						}
-					}
-				}
-
-				Section Copy elements {
-					Section Scenarios {					}
-				}
-
-				Section Paste elements {
-					Section Scenarios {					}
-				}
-
-				Section Cut elements {
-					Section Scenarios {					}
-				}
-
-				Section Show elements {
-					Section Scenarios {					}
-				}
-
-				Section Hide elements {
-					Section Scenarios {					}
-				}
-
-				Section Arrange a class diagram {
-					Section Scenarios {
-						Section Arrange class diagram {						}
-
-						Section Arrange selected elements in class diagram {						}
-					}
+				Section Profile diagram {
+					The profile diagram operates at the metamodel level to provide new stereotypes and profiles.
 				}
 			}
 
-			Section Component diagram {			}
+			Section Behavior diagrams {
+				The behavioral diagrams are used to describe what happen in the software system.
 
-			Section Object diagram {			}
-
-			Section Package diagram {			}
-
-			Section Profile diagram {			}
-
-			Section Composite Structure diagram {			}
-
-			Section Deployment diagram {			}
-		}
-
-		Section Behavioural diagrams {
-			Section Activity diagram {			}
-
-			Section Use Case diagram {			}
-
-			Section State Machine diagram {			}
-
-			Section Sequence diagram {			}
-		}
-
-		Section Generic features {
-			Section Manage comments {
-				Section Create a comment {
-					Section Scenarios {
-						Section Create a comment in a class diagram {						}
-					}
+				Section Activity diagram {
+					The activity diagram is used to represent workflows of stepwise activities.
 				}
 
-				Section Create a comment link {
-					Section Scenarios {
-						Section Create a comment link to a class {						}
-					}
+				Section Statemachine diagram {
+					The statemachine diagram is used to represent the different states and transitions of a system.
 				}
 
-				Section Delete a comment {
-					Section Scenarios {
-						Section Delete a comment in a class diagram {						}
-					}
-				}
-
-				Section Delete a comment link {
-					Section Scenarios {
-						Section Delete a comment link in a class diagram {						}
-					}
+				Section Use case diagram {
+					The use case diagram is used to describe the interaction of the user with a system.
 				}
 			}
 		}
+
+		Section Non-Goals {
+			The UML Designer will not support the following diagrams:
+
+			* Timing Diagram
+			* Communication Diagram
+			* Interaction Overview Diagram
+			
+
+			
+		}
+
+		Section Related Business Processes {
+			Does the software implement a given business process ? How does it
+			integrates with other business processes.
+		}
+
+		Section Actor and Roles {
+			Who are they and how the system caters their need ?
+		}
+
+		Section Significant Scenarios {
+			What are the use and functions which are significant for the architecture
+			?
+			Those should be described as scenarios in the form of "Given
+			[CONTEXT], then
+		}
 	}
-	Chapter Non-Goals {
-		This version will not support the following features:
+	Chapter Non-functional {
+		Section {		}
+	}
+	Chapter Architecture {
+		Section Constraints {
+			If you have constraints, how do they affect the architecture?
+			Constraints might be related to Time, budget, resource, approved
+			technology lists, standards, skill profile of the development team.
+		}
 
-		* Timing Diagram
-		* Communication Diagram
-		* Interaction Overview Diagram
-		
+		Section Principles {
+			What principles do you want to adopt ?
 
-		
+			Example principles include; architectural layering, use of frameworks
+			and libraries, common design patterns and templates for
+			building components and common approaches (e.g. error handling,
+			logging, etc)
+		}
+
+		Section Logical {
+			This section purpose is to describe your software big picture.
+
+			Typically, you should document here major components, 
+			interfaces or models.
+		}
+
+		Section Key Internal Interfaces {
+			Synchronous or asynchronous, who has the ownership of the interfaces?
+		}
+
+		Section Key External Interfaces {
+			Synchronous or asynchronous, who has the ownership of the interfaces?
+
+			Is the interface always available or do you (e.g.) need to cache data
+			locally?
+		}
+
+		Section Evolutions and Versioning {
+			How often does the interface change and how is versioning handled?
+		}
+	}
+	Chapter Design Guidelines {
+		Section {		}
+	}
+	Chapter Operational {
+		Section {		}
+	}
+	Chapter Architecture Justification {
+		Section {		}
 	}
 }
