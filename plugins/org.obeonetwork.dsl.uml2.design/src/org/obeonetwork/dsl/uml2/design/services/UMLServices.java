@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.Actor;
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Artifact;
@@ -47,6 +48,7 @@ import org.eclipse.uml2.uml.ExecutionEnvironment;
 import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.InstanceSpecification;
+import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.InterfaceRealization;
 import org.eclipse.uml2.uml.Manifestation;
@@ -60,6 +62,7 @@ import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.StructuredClassifier;
 import org.eclipse.uml2.uml.Type;
@@ -169,10 +172,11 @@ public class UMLServices {
 				 */
 				if (eObject instanceof Property) {
 					if (((Property)eObject).getAssociation() != null) {
-						if (sess.getModelAccessor().eInstanceOf(((Property)eObject).getAssociation(), typeName)) {
+						if (sess.getModelAccessor().eInstanceOf(((Property)eObject).getAssociation(),
+								typeName)) {
 							result.add(((Property)eObject).getAssociation());
 						}
-					} 
+					}
 
 				}
 			}
@@ -425,9 +429,14 @@ public class UMLServices {
 		Predicate<EObject> validForCompositeDiagram = new Predicate<EObject>() {
 
 			public boolean apply(EObject input) {
-				return input instanceof StructuredClassifier || input instanceof Package
-						|| input instanceof Interface || "Port".equals(input.eClass().getName())
-						|| "Property".equals(input.eClass().getName());
+				if (input instanceof StructuredClassifier) {
+					return !(input instanceof Interaction || input instanceof StateMachine || input instanceof Activity);
+				} else {
+					return input instanceof Package || input instanceof Interface
+							|| "Port".equals(input.eClass().getName())
+							|| "Property".equals(input.eClass().getName());
+				}
+
 			}
 		};
 		return allValidSessionElements(cur, validForCompositeDiagram);
@@ -449,7 +458,9 @@ public class UMLServices {
 		List<EObject> result = Lists.newArrayList();
 		if (found != null) {
 			for (Resource res : found.getSemanticResources()) {
-				Iterators.addAll(result, Iterators.filter(res.getAllContents(), validForClassDiagram));
+				if (res.getURI().isPlatformResource() || res.getURI().isPlatformPlugin()) {
+					Iterators.addAll(result, Iterators.filter(res.getAllContents(), validForClassDiagram));
+				}
 			}
 		}
 		return result;

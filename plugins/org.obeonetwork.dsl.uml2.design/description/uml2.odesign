@@ -2710,46 +2710,48 @@
             <initialOperation>
               <firstModelOperations xsi:type="tool:For" expression="[views/]" iteratorName="view">
                 <subModelOperations xsi:type="tool:For" expression="[view.target.getRelated()/]" iteratorName="object">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[object/]">
-                    <subModelOperations xsi:type="tool:If" conditionExpression="[object &lt;> view.target and object &lt;> view.target.eContainer() and diagram.diagramElements.target->excludes(object)/]">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="[object.oclIsKindOf(uml::EncapsulatedClassifier)/]">
-                        <subModelOperations xsi:type="tool:If" conditionExpression="[view.target.oclIsKindOf(uml::EncapsulatedClassifier)/]">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="[not(object.oclIsKindOf(uml::Interaction) or object.oclIsKindOf(uml::StateMachine) or object.oclIsKindOf(uml::Activity))/]">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[object/]">
+                      <subModelOperations xsi:type="tool:If" conditionExpression="[object &lt;> view.target and object &lt;> view.target.eContainer() and diagram.diagramElements.target->excludes(object)/]">
+                        <subModelOperations xsi:type="tool:If" conditionExpression="[object.oclIsKindOf(uml::EncapsulatedClassifier)/]">
+                          <subModelOperations xsi:type="tool:If" conditionExpression="[view.target.oclIsKindOf(uml::EncapsulatedClassifier)/]">
+                            <subModelOperations xsi:type="tool:If" conditionExpression="[view.eContainer().oclIsKindOf(viewpoint::DDiagram)/]">
+                              <subModelOperations xsi:type="tool:If" conditionExpression="[view.target.oclAsType(uml::EncapsulatedClassifier).ownedElement->includes(object)/]">
+                                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_SubStructuredClassifier']" containerViewExpression="[view/]"/>
+                              </subModelOperations>
+                              <subModelOperations xsi:type="tool:If" conditionExpression="[not view.target.oclAsType(uml::EncapsulatedClassifier).ownedElement->includes(object)/]">
+                                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']" containerViewExpression="[diagram/]"/>
+                              </subModelOperations>
+                            </subModelOperations>
+                            <subModelOperations xsi:type="tool:If" conditionExpression="[view.eContainer().eContainer().oclIsKindOf(viewpoint::DDiagram)/]">
+                              <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_SubStructuredClassifier']" containerViewExpression="[view.eContainer()/]"/>
+                            </subModelOperations>
+                          </subModelOperations>
+                          <subModelOperations xsi:type="tool:If" conditionExpression="[view.target.oclIsKindOf(uml::Port)/]">
+                            <subModelOperations xsi:type="tool:If" conditionExpression="[view.eContainer().eContainer().oclIsKindOf(viewpoint::DDiagram)/]">
+                              <subModelOperations xsi:type="tool:If" conditionExpression="[not view.target.eContainer(uml::EncapsulatedClassifier).ownedElement->includes(object)/]">
+                                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']" containerViewExpression="[diagram/]"/>
+                              </subModelOperations>
+                            </subModelOperations>
+                            <subModelOperations xsi:type="tool:If" conditionExpression="[view.eContainer().eContainer().eContainer().oclIsKindOf(viewpoint::DDiagram)/]">
+                              <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_SubStructuredClassifier']" containerViewExpression="[view.eContainer().eContainer()/]"/>
+                            </subModelOperations>
+                          </subModelOperations>
+                          <subModelOperations xsi:type="tool:If" conditionExpression="[view.target.oclIsKindOf(uml::PackageableElement)/]">
+                            <subModelOperations xsi:type="tool:If" conditionExpression="[view.oclIsKindOf(viewpoint::DDiagram)/]">
+                              <subModelOperations xsi:type="tool:If" conditionExpression="[view.target.oclAsType(uml::Element).ownedElement->includes(object)/]">
+                                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']" containerViewExpression="[view/]"/>
+                              </subModelOperations>
+                            </subModelOperations>
+                          </subModelOperations>
+                        </subModelOperations>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="[object.oclIsKindOf(uml::Property)/]">
                           <subModelOperations xsi:type="tool:If" conditionExpression="[view.eContainer().oclIsKindOf(viewpoint::DDiagram)/]">
-                            <subModelOperations xsi:type="tool:If" conditionExpression="[view.target.oclAsType(uml::EncapsulatedClassifier).ownedElement->includes(object)/]">
-                              <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_SubStructuredClassifier']" containerViewExpression="[view/]"/>
-                            </subModelOperations>
-                            <subModelOperations xsi:type="tool:If" conditionExpression="[not view.target.oclAsType(uml::EncapsulatedClassifier).ownedElement->includes(object)/]">
-                              <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']" containerViewExpression="[diagram/]"/>
-                            </subModelOperations>
+                            <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Property']" containerViewExpression="[view/]"/>
                           </subModelOperations>
                           <subModelOperations xsi:type="tool:If" conditionExpression="[view.eContainer().eContainer().oclIsKindOf(viewpoint::DDiagram)/]">
-                            <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_SubStructuredClassifier']" containerViewExpression="[view.eContainer()/]"/>
+                            <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Property']" containerViewExpression="[view.eContainer()/]"/>
                           </subModelOperations>
-                        </subModelOperations>
-                        <subModelOperations xsi:type="tool:If" conditionExpression="[view.target.oclIsKindOf(uml::Port)/]">
-                          <subModelOperations xsi:type="tool:If" conditionExpression="[view.eContainer().eContainer().oclIsKindOf(viewpoint::DDiagram)/]">
-                            <subModelOperations xsi:type="tool:If" conditionExpression="[not view.target.eContainer(uml::EncapsulatedClassifier).ownedElement->includes(object)/]">
-                              <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']" containerViewExpression="[diagram/]"/>
-                            </subModelOperations>
-                          </subModelOperations>
-                          <subModelOperations xsi:type="tool:If" conditionExpression="[view.eContainer().eContainer().eContainer().oclIsKindOf(viewpoint::DDiagram)/]">
-                            <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_SubStructuredClassifier']" containerViewExpression="[view.eContainer().eContainer()/]"/>
-                          </subModelOperations>
-                        </subModelOperations>
-                        <subModelOperations xsi:type="tool:If" conditionExpression="[view.target.oclIsKindOf(uml::PackageableElement)/]">
-                          <subModelOperations xsi:type="tool:If" conditionExpression="[view.oclIsKindOf(viewpoint::DDiagram)/]">
-                            <subModelOperations xsi:type="tool:If" conditionExpression="[view.target.oclAsType(uml::Element).ownedElement->includes(object)/]">
-                              <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']" containerViewExpression="[view/]"/>
-                            </subModelOperations>
-                          </subModelOperations>
-                        </subModelOperations>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="[object.oclIsKindOf(uml::Property)/]">
-                        <subModelOperations xsi:type="tool:If" conditionExpression="[view.eContainer().oclIsKindOf(viewpoint::DDiagram)/]">
-                          <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Property']" containerViewExpression="[view/]"/>
-                        </subModelOperations>
-                        <subModelOperations xsi:type="tool:If" conditionExpression="[view.eContainer().eContainer().oclIsKindOf(viewpoint::DDiagram)/]">
-                          <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Property']" containerViewExpression="[view.eContainer()/]"/>
                         </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
