@@ -5,57 +5,122 @@
     <benefits name="ICanDescribeMySoftwareStructure"/>
     <capabilities name="ToEditElements"/>
     <capabilities name="ToCreateAType"/>
-    <capabilities name="ToCreateAClassDiagram"/>
     <features name="ClassDiagrams">
-      <features name="ManageDiagrams">
-        <stories name="CreateAClassDiagram" as="SoftwareDeveloper" soThat="ICanDescribeMySoftwareStructure" iWant="ToCreateAClassDiagram">
-          <scenarios name="CreateAClassDiagramFromAPackage" given="TheModelPackageIsSelectedFromModelExplorer" when="ICreateAClassDiagram" then="NewClassDiagramIsCreatedAndOpened">
-            <notes xsi:type="specification:TestGenerationNote" type="ui"/>
-          </scenarios>
-        </stories>
-      </features>
       <features name="ManageTypes">
         <stories name="CreateAType" as="SoftwareDeveloper" soThat="ICanDescribeMySoftwareStructure" iWant="ToCreateAType">
-          <scenarios name="CreateAClass" given="TheReferenceClassDiagramOpened" when="ICreateAClass" then="ElementCreatedInUMLModel ElementExistsInTheReferenceClassDiagram">
+          <scenarios name="CreateAClass" given="TheReferenceClassDiagramOpened" when="ICreateAClass" then="ClassCreatedInUMLModel ClassExistsInTheReferenceClassDiagram">
             <notes xsi:type="specification:TestGenerationNote" type="ui"/>
           </scenarios>
-          <scenarios name="CreateAnEnumeration" given="TheReferenceClassDiagramOpened" when="ICreateAnEnumeration" then="ElementCreatedInUMLModel ElementExistsInTheReferenceClassDiagram">
+          <scenarios name="CreateAnEnumeration" given="TheReferenceClassDiagramOpened" when="ICreateAnEnumeration" then="EnumerationCreatedInUMLModel EnumerationExistsInTheReferenceClassDiagram">
             <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+          </scenarios>
+          <scenarios name="CreateAnInterface" given="TheReferenceClassDiagramOpened" when="ICreateAnInterface" then="InterfaceCreatedInUMLModel InterfaceExistsInTheReferenceClassDiagram">
+            <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+          </scenarios>
+          <scenarios name="CreateADatatype" given="TheReferenceClassDiagramOpened" when="ICreateADatatype" then="DatatypeCreatedInUMLModel DatatypeExistsInTheReferenceClassDiagram">
+            <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+          </scenarios>
+          <scenarios name="CreateAPrimitiveType" given="TheReferenceClassDiagramOpened" when="ICreateAPrimitiveType" then="PrimitiveTypeCreatedInUMLModel PrimitiveTypeExistsInTheReferenceClassDiagram">
+            <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+          </scenarios>
+          <scenarios name="CreateAPackage" given="TheReferenceClassDiagramOpened" when="ICreateAPackage" then="PackageCreatedInUMLModel PackageExistsInTheReferenceClassDiagram">
+            <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+          </scenarios>
+          <scenarios name="CreateAClassUnderAVisiblePackage" given="APackageIsSelectedInTheClassDiagram" when="ICreateAClass" then="ClassCreatedInUMLModel ClassExistsInTheReferenceClassDiagram">
+            <notes xsi:type="specification:TestGenerationNote" type="manual"/>
           </scenarios>
         </stories>
         <stories name="DeleteAType" as="SoftwareDeveloper" soThat="ICanDescribeMySoftwareStructure" iWant="ToCreateAType">
-          <scenarios name="DeleteAClass" given="TheReferenceClassDiagramOpened" when="IDeleteAClass" then="ElementDeletedInUMLModel ElementRemovedFromTheReferenceClassDiagram">
+          <scenarios name="DeleteAClass" given="AClassIsSelectedInTheClassDIagram" when="IDeleteAClass" then="ClassDeletedInUMLModel ClassRemovedFromTheReferenceClassDiagram">
             <notes xsi:type="specification:TestGenerationNote" type="ui"/>
           </scenarios>
         </stories>
       </features>
-      <features name="EditElements">
-        <stories name="EditLabels" as="SoftwareDeveloper" soThat="ICanUpdateMySoftwareStructure" iWant="ToEditElements">
-          <scenarios name="EditAssociationRole" given="TheModelWithAnAssociationAndTwoEndProperties" when="IEditSourceRole IEditTargetRole" then="AssociationLabelEndsUpdated">
-            <notes xsi:type="specification:TestGenerationNote"/>
+      <features name="ManageExistingElements">
+        <stories name="AddAnExistingElement" as="SoftwareDeveloper" soThat="ICanDescribeMySoftwareStructure" iWant="ToAddAnExistingElement">
+          <scenarios name="AddAClassFromCurrentPackage" given="TheReferenceClassDiagramOpened" when="IAddAnExistingClass" then="ClassExistsInTheReferenceClassDiagram">
+            <notes xsi:type="specification:TestGenerationNote" type="manual"/>
+          </scenarios>
+          <scenarios name="DragAndDropAClassFromTheModelExplorer" given="TheReferenceClassDiagramOpened" when="IDragAndDropAnExistingClass" then="ClassExistsInTheReferenceClassDiagram">
+            <notes xsi:type="specification:TestGenerationNote" type="manual"/>
           </scenarios>
         </stories>
+        <capabilities name="ToAddAnExistingElement"/>
       </features>
+    </features>
+    <features name="ComponentDiagrams"/>
+    <features name="CompositeStructureDiagrams"/>
+    <features name="DeploymentDiagrams"/>
+    <features name="PackageDiagrams"/>
+    <features name="ObjectDiagrams"/>
+    <features name="ProfileDiagrams"/>
+  </features>
+  <features name="BehavioralDiagrams">
+    <features name="ActivityDiagrams"/>
+    <features name="StatemachineDiagrams"/>
+    <features name="UseCaseDiagrams"/>
+  </features>
+  <features name="Common">
+    <capabilities name="ToCreateADiagram"/>
+    <capabilities name="ToDeleteADiagram"/>
+    <features name="ManageDiagrams">
+      <stories name="CreateADiagram" as="SoftwareDeveloper" soThat="ICanDescribeMySoftwareStructure" iWant="ToCreateADiagram">
+        <scenarios name="CreateAClassDiagramFromAPackage" given="TheModelPackageIsSelectedFromModelExplorer" when="ICreateAClassDiagram" then="NewClassDiagramIsCreatedAndOpened">
+          <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+        </scenarios>
+      </stories>
+      <stories name="DeleteADiagram" as="SoftwareDeveloper" soThat="ICanUpdateMySoftwareStructure" iWant="ToDeleteADiagram">
+        <scenarios name="DeleteAClassDiagramFromModelExplorer" given="TheClassDiagramIsSelectedFromModelExplorer" when="IDeleteAClassDiagram" then="ClassDiagramIsDeleted"/>
+      </stories>
+    </features>
+    <features name="EditElements">
+      <stories name="EditLabels" as="SoftwareDeveloper" soThat="ICanUpdateMySoftwareStructure" iWant="ToEditElements">
+        <scenarios name="EditAssociationRole" given="TheModelWithAnAssociationAndTwoEndProperties" when="IEditSourceRole IEditTargetRole" then="AssociationLabelEndsUpdated">
+          <notes xsi:type="specification:TestGenerationNote"/>
+        </scenarios>
+      </stories>
     </features>
   </features>
   <roles name="SoftwareDeveloper"/>
   <automationLayer basePackage="org.obeonetwork.dsl.uml2.test">
     <context name="ImportAndOpenTheReferenceModel">
-      <contexts name="TheReferenceClassDiagramOpened"/>
+      <contexts name="TheReferenceClassDiagramOpened">
+        <contexts name="AClassIsSelectedInTheClassDIagram"/>
+        <contexts name="APackageIsSelectedInTheClassDiagram"/>
+      </contexts>
       <contexts name="TheModelPackageIsSelectedFromModelExplorer"/>
+      <contexts name="TheClassDiagramIsSelectedFromModelExplorer"/>
     </context>
-    <context name="TheModelWithAnAssociationAndTwoEndProperties" type=""/>
+    <context name="TheModelWithAnAssociationAndTwoEndProperties"/>
     <actions name="ICreateAClass"/>
     <actions name="ICreateAnEnumeration"/>
     <actions name="IDeleteAClass"/>
     <actions name="ICreateAClassDiagram"/>
     <actions name="IEditSourceRole"/>
     <actions name="IEditTargetRole"/>
-    <behaviours name="ElementCreatedInUMLModel"/>
-    <behaviours name="ElementExistsInTheReferenceClassDiagram"/>
-    <behaviours name="ElementDeletedInUMLModel"/>
-    <behaviours name="ElementRemovedFromTheReferenceClassDiagram"/>
+    <actions name="IDeleteAClassDiagram"/>
+    <actions name="ICreateAnInterface"/>
+    <actions name="ICreateADatatype"/>
+    <actions name="ICreateAPrimitiveType"/>
+    <actions name="ICreateAPackage"/>
+    <actions name="IAddAnExistingClass"/>
+    <actions name="IDragAndDropAnExistingClass"/>
+    <behaviours name="PrimitiveTypeCreatedInUMLModel"/>
+    <behaviours name="PrimitiveTypeExistsInTheReferenceClassDiagram"/>
+    <behaviours name="ClassCreatedInUMLModel"/>
+    <behaviours name="ClassExistsInTheReferenceClassDiagram"/>
+    <behaviours name="ClassRemovedFromTheReferenceClassDiagram"/>
     <behaviours name="NewClassDiagramIsCreatedAndOpened"/>
-    <behaviours name="AssociationLabelEndsUpdated" type=""/>
+    <behaviours name="AssociationLabelEndsUpdated"/>
+    <behaviours name="EnumerationCreatedInUMLModel"/>
+    <behaviours name="EnumerationExistsInTheReferenceClassDiagram"/>
+    <behaviours name="ClassDiagramIsDeleted"/>
+    <behaviours name="InterfaceCreatedInUMLModel"/>
+    <behaviours name="InterfaceExistsInTheReferenceClassDiagram"/>
+    <behaviours name="DatatypeExistsInTheReferenceClassDiagram"/>
+    <behaviours name="DatatypeCreatedInUMLModel"/>
+    <behaviours name="ClassDeletedInUMLModel"/>
+    <behaviours name="PackageCreatedInUMLModel"/>
+    <behaviours name="PackageExistsInTheReferenceClassDiagram"/>
   </automationLayer>
 </specification:Specification>
