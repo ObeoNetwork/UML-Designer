@@ -2833,27 +2833,37 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:SelectionWizardDescription" name="CS_Add_Required_Service" label="Required Service" precondition="[oclIsKindOf(uml::Port) and oclAsType(uml::Port).type.oclIsKindOf(uml::StructuredClassifier)/]" candidatesExpression="[getValidsForCompositeDiagram()->select(eObject | eObject.oclIsKindOf(uml::Classifier) or eObject.oclIsKindOf(uml::Package))/]" multiple="true" tree="true" rootExpression="[getAllRootsInSession()->filter(uml::Model)/]" childrenExpression="[eContents()->select(eObject |(eObject.oclIsKindOf(uml::Classifier) or eObject.oclIsKindOf(uml::Package)) and (eObject.oclIsKindOf(uml::Interface) or  eObject.eAllContents(uml::Interface)->notEmpty()))/]" message="Select a required interface on a port" iconPath="/org.obeonetwork.dsl.uml2.design/icons/RequiredService.gif" windowTitle="Select the required interface">
+          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" documentation="Select provided interfaces" name="CS_Add_RequireService" label="Required Service" precondition="[oclIsKindOf(uml::Port) and oclAsType(uml::Port).type.oclIsKindOf(uml::StructuredClassifier)/]" iconPath="/org.obeonetwork.dsl.uml2.design/icons/RequiredService.gif" windowTitle="Select required interfaces on this port" message="Select required interfaces on this port" choiceOfValuesMessage="Candidate Interfaces" candidatesExpression="[getValidsForCompositeDiagram()->select(eObject | eObject.oclIsKindOf(uml::Classifier) or eObject.oclIsKindOf(uml::Package))->asSet()/]" tree="true" rootExpression="[getAllRootsInSession()->filter(uml::Model)/]" childrenExpression="[eContents()->select(eObject |(eObject.oclIsKindOf(uml::Classifier) or eObject.oclIsKindOf(uml::Package)) and (eObject.oclIsKindOf(uml::Interface) or  eObject.eAllContents(uml::Interface)->notEmpty()))/]" selectedValuesMessage="Selected Interfaces" preSelectedCandidatesExpression="[container.oclAsType(uml::Port).type.eInverse(uml::Usage).supplier/]">
             <element name="elements"/>
             <containerView name="containerView"/>
             <container name="container"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:For" expression="[elements/]" iteratorName="element">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.oclAsType(uml::Port).type.oclAsType(uml::Class).createUsage(element)/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[containerView/]">
+                <subModelOperations xsi:type="tool:For" expression="[containerView.findUsagesToDelete(elements->filter(uml::Interface))/]" iteratorName="usageToDelete">
+                  <subModelOperations xsi:type="tool:RemoveElement"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:For" expression="[containerView.findRequiredInterfacesToAdd(elements->filter(uml::Interface))/]" iteratorName="interfaceToAdd">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.oclAsType(uml::Port).type.oclAsType(uml::Class).createUsage(interfaceToAdd)/]"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:SelectionWizardDescription" name="CS_Add_ProvidedService" label="Provided Service" precondition="[oclIsKindOf(uml::Port) and oclAsType(uml::Port).type.oclIsKindOf(uml::StructuredClassifier)/]" candidatesExpression="[getValidsForCompositeDiagram()->select(eObject | eObject.oclIsKindOf(uml::Classifier) or eObject.oclIsKindOf(uml::Package))/]" multiple="true" tree="true" rootExpression="[getAllRootsInSession()->filter(uml::Model)/]" childrenExpression="[eContents()->select(eObject |(eObject.oclIsKindOf(uml::Classifier) or eObject.oclIsKindOf(uml::Package)) and (eObject.oclIsKindOf(uml::Interface) or  eObject.eAllContents(uml::Interface)->notEmpty()))/]" message="Select a provided interface on a port" iconPath="/org.obeonetwork.dsl.uml2.design/icons/ProvidedService.gif" windowTitle="Select the provided interface">
+          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" documentation="Select provided interfaces" name="CS_Add_ProvidedService" label="Provided Service" precondition="[oclIsKindOf(uml::Port) and oclAsType(uml::Port).type.oclIsKindOf(uml::StructuredClassifier)/]" iconPath="/org.obeonetwork.dsl.uml2.design/icons/ProvidedService.gif" windowTitle="Select provided interfaces on this port" message="Select provided interfaces on this port" choiceOfValuesMessage="Candidate Interfaces" candidatesExpression="[getValidsForCompositeDiagram()->select(eObject | eObject.oclIsKindOf(uml::Classifier) or eObject.oclIsKindOf(uml::Package))->asSet()/]" tree="true" rootExpression="[getAllRootsInSession()->filter(uml::Model)/]" childrenExpression="[eContents()->select(eObject |(eObject.oclIsKindOf(uml::Classifier) or eObject.oclIsKindOf(uml::Package)) and (eObject.oclIsKindOf(uml::Interface) or  eObject.eAllContents(uml::Interface)->notEmpty()))/]" selectedValuesMessage="Selected Interfaces" preSelectedCandidatesExpression="[container.oclAsType(uml::Port).type.eInverse(uml::InterfaceRealization).supplier/]">
             <element name="elements"/>
             <containerView name="containerView"/>
             <container name="container"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:For" expression="[elements/]" iteratorName="element">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.oclAsType(uml::Port).type.oclAsType(uml::Class)/]">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.InterfaceRealization" referenceName="interfaceRealization">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="[self/]"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="[element/]"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="contract" valueExpression="[element/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[containerView/]">
+                <subModelOperations xsi:type="tool:For" expression="[containerView.findInterfaceRealizationsToDelete(elements->filter(uml::Interface))/]" iteratorName="interfaceRealizationToDelete">
+                  <subModelOperations xsi:type="tool:RemoveElement"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:For" expression="[containerView.findProvidedInterfacesToAdd(elements->filter(uml::Interface))/]" iteratorName="interfaceToAdd">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.oclAsType(uml::Port).type.oclAsType(uml::Class)/]">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.InterfaceRealization" referenceName="interfaceRealization">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="[self/]"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="[interfaceToAdd/]"/>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="contract" valueExpression="[interfaceToAdd/]"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -3605,6 +3615,7 @@
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.PropertyServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.DebugServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.DependencyServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.CompositeStructureServices"/>
   </ownedViewpoints>
   <ownedViewpoints name="UML Behavioral Modeling" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description:DiagramDescription" name="State Machine Diagram" titleExpression="&lt;%name%> State Machine Diagram" domainClass="uml.StateMachine" enablePopupBars="true">
