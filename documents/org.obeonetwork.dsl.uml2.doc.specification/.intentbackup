@@ -138,6 +138,12 @@ Document {
 
 							Section Create a class under a visible package {
 								In this case the user selects a visible package on the diagram as container for the new class.
+								@M
+									@ref "platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/model/umlDesigner.specification#CreateAClassUnderAVisiblePackage"
+									 
+									@ref "platform:/resource/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='Class']"
+									 
+								M@
 							}
 						}
 
@@ -166,7 +172,15 @@ Document {
 
 					Section Manage features {
 						Section Create a feature {
-							Section Create a property {							}
+							Section Create a property {								@M
+									@ref "org.obeonetwork.dsl.uml2.tests/src/org/obeonetwork/dsl/uml2/test/ui/structuralDiagrams/classDiagrams/manageFeatures/createAFeature/CreateAProperty.java#/"
+									 
+									@ref "platform:/resource/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']"
+									 
+									@ref "platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/model/umlDesigner.specification#CreateAProperty"
+									 
+								M@
+							}
 
 							Section Create a typed property {							}
 
@@ -209,15 +223,35 @@ Document {
 					}
 
 					Section Manage existing elements {
-						Section Add an existing element {
+						Section Add an existing element {							@M
+								@ref "platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/model/umlDesigner.specification#AddAnExistingElement"
+								 
+							M@
+
 							Section Add an existing element from current package {
 								Section Add an existing element using the palette tool {
 									In the palette, an _Existing elements_ section contains a _Add_ tool.
 									When this tool is selected a wizard will propose all the existing elements in the model which could be visible on the class diagram.
+									@M
+										@ref "platform:/resource/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CD_AddExistingElements']"
+										 
+									M@
 
-									Section Add a class {									}
+									Section Add a class {										@M
+											@ref "platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/model/umlDesigner.specification#AddAClassFromCurrentPackage"
+											 
+											@ref "platform:/resource/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CD_AddExistingElements']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.0"
+											 
+										M@
+									}
 
-									Section Add an enumeration {									}
+									Section Add an enumeration {										@M
+											@ref "platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/model/umlDesigner.specification#AddAnEnumerationFromCurrentPackage"
+											 
+											@ref "platform:/resource/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CD_AddExistingElements']/@initialOperation/@firstModelOperations/@subModelOperations.0/@subModelOperations.2"
+											 
+										M@
+									}
 
 									Section Add an interface {									}
 
@@ -231,7 +265,11 @@ Document {
 								Section Drag & drop an element from the Model Explorer {
 									In the model explorer, an element can be selected and then dropped in the opened class diagram.
 
-									Section Drag & drop a class {									}
+									Section Drag & drop a class {										@M
+											@ref "platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/model/umlDesigner.specification#DragAndDropAClassFromTheModelExplorer"
+											 
+										M@
+									}
 
 									Section Drag & drop an enumeration {									}
 
@@ -467,8 +505,6 @@ Document {
 						Section Edit association role {							@M
 								@ref "org.obeonetwork.dsl.uml2.tests/src/org/obeonetwork/dsl/uml2/test/unit/common/editElements/editLabels/EditAssociationRole.java#//@methods[name='editAssociationRole()']"
 								 
-							M@
-							@M
 								@ref "platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/model/umlDesigner.specification#EditAssociationRole"
 								 
 							M@

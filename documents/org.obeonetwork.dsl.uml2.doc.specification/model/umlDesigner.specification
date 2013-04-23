@@ -44,8 +44,19 @@
           <scenarios name="DragAndDropAClassFromTheModelExplorer" given="TheReferenceClassDiagramOpened" when="IDragAndDropAnExistingClass" then="ClassExistsInTheReferenceClassDiagram">
             <notes xsi:type="specification:TestGenerationNote" type="manual"/>
           </scenarios>
+          <scenarios name="AddAnEnumerationFromCurrentPackage" given="TheReferenceClassDiagramOpened" when="IAddAnExistingEnumeration" then="EnumerationExistsInTheReferenceClassDiagram">
+            <notes xsi:type="specification:TestGenerationNote" type="manual"/>
+          </scenarios>
         </stories>
         <capabilities name="ToAddAnExistingElement"/>
+      </features>
+      <features name="ManageFeatures">
+        <stories name="CreateAFeature" as="SoftwareDeveloper" soThat="ICanDescribeMySoftwareStructure" iWant="ToCreateAFeature">
+          <scenarios name="CreateAProperty" given="AClassIsSelectedInTheClassDIagram" when="ICreateAProperty" then="PropertyCreatedInUMLModel PropertyExistsinTheReferenceClassDiagram">
+            <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+          </scenarios>
+        </stories>
+        <capabilities name="ToCreateAFeature"/>
       </features>
     </features>
     <features name="ComponentDiagrams"/>
@@ -105,6 +116,8 @@
     <actions name="ICreateAPackage"/>
     <actions name="IAddAnExistingClass"/>
     <actions name="IDragAndDropAnExistingClass"/>
+    <actions name="IAddAnExistingEnumeration"/>
+    <actions name="ICreateAProperty"/>
     <behaviours name="PrimitiveTypeCreatedInUMLModel"/>
     <behaviours name="PrimitiveTypeExistsInTheReferenceClassDiagram"/>
     <behaviours name="ClassCreatedInUMLModel"/>
@@ -122,5 +135,7 @@
     <behaviours name="ClassDeletedInUMLModel"/>
     <behaviours name="PackageCreatedInUMLModel"/>
     <behaviours name="PackageExistsInTheReferenceClassDiagram"/>
+    <behaviours name="PropertyCreatedInUMLModel"/>
+    <behaviours name="PropertyExistsinTheReferenceClassDiagram"/>
   </automationLayer>
 </specification:Specification>
