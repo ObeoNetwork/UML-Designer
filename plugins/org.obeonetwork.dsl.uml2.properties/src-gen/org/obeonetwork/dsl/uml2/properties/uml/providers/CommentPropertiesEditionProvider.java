@@ -62,9 +62,9 @@ public class CommentPropertiesEditionProvider extends UmlPropertiesEditionProvid
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof Comment) 
-					&& (UMLPackage.Literals.COMMENT == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof Comment) 
+          && (UMLPackage.Literals.COMMENT == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -72,8 +72,8 @@ public class CommentPropertiesEditionProvider extends UmlPropertiesEditionProvid
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof Comment) && (CommentPropertiesEditionComponent.GENERAL_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof Comment) && (CommentPropertiesEditionComponent.GENERAL_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -82,8 +82,8 @@ public class CommentPropertiesEditionProvider extends UmlPropertiesEditionProvid
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Comment) && (refinement == CommentPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof Comment) && (refinement == CommentPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -92,8 +92,8 @@ public class CommentPropertiesEditionProvider extends UmlPropertiesEditionProvid
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Comment) && ((CommentPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == CommentPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof Comment) && ((CommentPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == CommentPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -101,11 +101,11 @@ public class CommentPropertiesEditionProvider extends UmlPropertiesEditionProvid
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof Comment) {
-			return new CommentPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof Comment) {
+      return new CommentPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -113,12 +113,12 @@ public class CommentPropertiesEditionProvider extends UmlPropertiesEditionProvid
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof Comment) {
-			if (CommentPropertiesEditionComponent.GENERAL_PART.equals(part))
-				return new CommentPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof Comment) {
+      if (CommentPropertiesEditionComponent.GENERAL_PART.equals(part))
+        return new CommentPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

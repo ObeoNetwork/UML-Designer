@@ -64,9 +64,9 @@ public class OperationPropertiesEditionProvider extends UmlPropertiesEditionProv
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof Operation) 
-					&& (UMLPackage.Literals.OPERATION == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof Operation) 
+          && (UMLPackage.Literals.OPERATION == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -74,8 +74,8 @@ public class OperationPropertiesEditionProvider extends UmlPropertiesEditionProv
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof Operation) && (OperationGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) || OperationParametersPropertiesEditionComponent.PARAMETERS_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof Operation) && (OperationGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) || OperationParametersPropertiesEditionComponent.PARAMETERS_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -84,8 +84,8 @@ public class OperationPropertiesEditionProvider extends UmlPropertiesEditionProv
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Operation) && (refinement == OperationGeneralPropertiesEditionComponent.class || refinement == OperationParametersPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof Operation) && (refinement == OperationGeneralPropertiesEditionComponent.class || refinement == OperationParametersPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -94,8 +94,8 @@ public class OperationPropertiesEditionProvider extends UmlPropertiesEditionProv
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Operation) && ((OperationGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == OperationGeneralPropertiesEditionComponent.class) || (OperationParametersPropertiesEditionComponent.PARAMETERS_PART.equals(part) && refinement == OperationParametersPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof Operation) && ((OperationGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == OperationGeneralPropertiesEditionComponent.class) || (OperationParametersPropertiesEditionComponent.PARAMETERS_PART.equals(part) && refinement == OperationParametersPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -103,11 +103,11 @@ public class OperationPropertiesEditionProvider extends UmlPropertiesEditionProv
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof Operation) {
-			return new OperationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof Operation) {
+      return new OperationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -115,14 +115,14 @@ public class OperationPropertiesEditionProvider extends UmlPropertiesEditionProv
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof Operation) {
-			if (OperationGeneralPropertiesEditionComponent.GENERAL_PART.equals(part))
-				return new OperationGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-			if (OperationParametersPropertiesEditionComponent.PARAMETERS_PART.equals(part))
-				return new OperationParametersPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof Operation) {
+      if (OperationGeneralPropertiesEditionComponent.GENERAL_PART.equals(part))
+        return new OperationGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+      if (OperationParametersPropertiesEditionComponent.PARAMETERS_PART.equals(part))
+        return new OperationParametersPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

@@ -68,11 +68,11 @@ public class ControlNodePropertiesEditionComponent extends SinglePartPropertiesE
 	 * @generated
 	 */
 	public ControlNodePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject controlNode, String editing_mode) {
-		super(editingContext, controlNode, editing_mode);
-		parts = new String[] { GENERAL_PART };
-		repositoryKey = UmlViewsRepository.class;
-		partKey = UmlViewsRepository.General.class;
-	}
+    super(editingContext, controlNode, editing_mode);
+    parts = new String[] { GENERAL_PART };
+    repositoryKey = UmlViewsRepository.class;
+    partKey = UmlViewsRepository.General.class;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -82,32 +82,32 @@ public class ControlNodePropertiesEditionComponent extends SinglePartPropertiesE
 	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			
-			final ControlNode controlNode = (ControlNode)elt;
-			final GeneralPropertiesEditionPart generalPart = (GeneralPropertiesEditionPart)editingPart;
-			// init values
-			if (isAccessible(UmlViewsRepository.General.name))
-				generalPart.setName(EEFConverterUtil.convertToString(TypesPackage.Literals.STRING, controlNode.getName()));
-			
-			if (isAccessible(UmlViewsRepository.General.visibility)) {
-				generalPart.initVisibility(EEFUtils.choiceOfValues(controlNode, UMLPackage.eINSTANCE.getNamedElement_Visibility()), controlNode.getVisibility());
-			}
-			generalPart.setLeaf(controlNode.isLeaf());
-			
-			// init filters
-			
-			
-			
-			// init values for referenced views
-			
-			// init filters for referenced views
-			
-		}
-		setInitializing(false);
-	}
+    setInitializing(true);
+    if (editingPart != null && key == partKey) {
+      editingPart.setContext(elt, allResource);
+      
+      final ControlNode controlNode = (ControlNode)elt;
+      final GeneralPropertiesEditionPart generalPart = (GeneralPropertiesEditionPart)editingPart;
+      // init values
+      if (isAccessible(UmlViewsRepository.General.name))
+        generalPart.setName(EEFConverterUtil.convertToString(TypesPackage.Literals.STRING, controlNode.getName()));
+      
+      if (isAccessible(UmlViewsRepository.General.visibility)) {
+        generalPart.initVisibility(EEFUtils.choiceOfValues(controlNode, UMLPackage.eINSTANCE.getNamedElement_Visibility()), controlNode.getVisibility());
+      }
+      generalPart.setLeaf(controlNode.isLeaf());
+      
+      // init filters
+      
+      
+      
+      // init values for referenced views
+      
+      // init filters for referenced views
+      
+    }
+    setInitializing(false);
+  }
 
 
 
@@ -137,18 +137,17 @@ public class ControlNodePropertiesEditionComponent extends SinglePartPropertiesE
 	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		ControlNode controlNode = (ControlNode)semanticObject;
-
-		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
-			controlNode.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
-		}
-		if (UmlViewsRepository.General.visibility == event.getAffectedEditor()) {
-			controlNode.setVisibility((VisibilityKind)event.getNewValue());
-		}
-		if (UmlViewsRepository.General.Qualifiers.leaf == event.getAffectedEditor()) {
-			controlNode.setIsLeaf((Boolean)event.getNewValue());
-		}
-	}
+    ControlNode controlNode = (ControlNode)semanticObject;
+    if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
+      controlNode.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
+    }
+    if (UmlViewsRepository.General.visibility == event.getAffectedEditor()) {
+      controlNode.setVisibility((VisibilityKind)event.getNewValue());
+    }
+    if (UmlViewsRepository.General.Qualifiers.leaf == event.getAffectedEditor()) {
+      controlNode.setIsLeaf((Boolean)event.getNewValue());
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -204,8 +203,8 @@ public class ControlNodePropertiesEditionComponent extends SinglePartPropertiesE
 	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == UmlViewsRepository.General.Qualifiers.leaf;
-	}
+    return key == UmlViewsRepository.General.Qualifiers.leaf;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -214,38 +213,38 @@ public class ControlNodePropertiesEditionComponent extends SinglePartPropertiesE
 	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
-		Diagnostic ret = Diagnostic.OK_INSTANCE;
-		if (event.getNewValue() != null) {
-			try {
-				if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newValue);
-				}
-				if (UmlViewsRepository.General.visibility == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), newValue);
-				}
-				if (UmlViewsRepository.General.Qualifiers.leaf == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), newValue);
-				}
-			} catch (IllegalArgumentException iae) {
-				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
-				ret = BasicDiagnostic.toDiagnostic(we);
-			}
-		}
-		return ret;
-	}
+    Diagnostic ret = Diagnostic.OK_INSTANCE;
+    if (event.getNewValue() != null) {
+      try {
+        if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
+          Object newValue = event.getNewValue();
+          if (newValue instanceof String) {
+            newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), (String)newValue);
+          }
+          ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newValue);
+        }
+        if (UmlViewsRepository.General.visibility == event.getAffectedEditor()) {
+          Object newValue = event.getNewValue();
+          if (newValue instanceof String) {
+            newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), (String)newValue);
+          }
+          ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), newValue);
+        }
+        if (UmlViewsRepository.General.Qualifiers.leaf == event.getAffectedEditor()) {
+          Object newValue = event.getNewValue();
+          if (newValue instanceof String) {
+            newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), (String)newValue);
+          }
+          ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), newValue);
+        }
+      } catch (IllegalArgumentException iae) {
+        ret = BasicDiagnostic.toDiagnostic(iae);
+      } catch (WrappedException we) {
+        ret = BasicDiagnostic.toDiagnostic(we);
+      }
+    }
+    return ret;
+  }
 
 
 	

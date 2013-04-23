@@ -62,9 +62,9 @@ public class CollaborationPropertiesEditionProvider extends UmlPropertiesEdition
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof Collaboration) 
-					&& (UMLPackage.Literals.COLLABORATION == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof Collaboration) 
+          && (UMLPackage.Literals.COLLABORATION == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -72,8 +72,8 @@ public class CollaborationPropertiesEditionProvider extends UmlPropertiesEdition
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof Collaboration) && (CollaborationPropertiesEditionComponent.GENERAL_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof Collaboration) && (CollaborationPropertiesEditionComponent.GENERAL_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -82,8 +82,8 @@ public class CollaborationPropertiesEditionProvider extends UmlPropertiesEdition
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Collaboration) && (refinement == CollaborationPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof Collaboration) && (refinement == CollaborationPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -92,8 +92,8 @@ public class CollaborationPropertiesEditionProvider extends UmlPropertiesEdition
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Collaboration) && ((CollaborationPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == CollaborationPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof Collaboration) && ((CollaborationPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == CollaborationPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -101,11 +101,11 @@ public class CollaborationPropertiesEditionProvider extends UmlPropertiesEdition
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof Collaboration) {
-			return new CollaborationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof Collaboration) {
+      return new CollaborationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -113,12 +113,12 @@ public class CollaborationPropertiesEditionProvider extends UmlPropertiesEdition
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof Collaboration) {
-			if (CollaborationPropertiesEditionComponent.GENERAL_PART.equals(part))
-				return new CollaborationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof Collaboration) {
+      if (CollaborationPropertiesEditionComponent.GENERAL_PART.equals(part))
+        return new CollaborationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

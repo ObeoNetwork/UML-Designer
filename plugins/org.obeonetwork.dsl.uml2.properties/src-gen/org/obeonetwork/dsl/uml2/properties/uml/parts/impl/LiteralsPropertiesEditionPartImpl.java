@@ -76,8 +76,8 @@ public class LiteralsPropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * @generated
 	 */
 	public LiteralsPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+    super(editionComponent);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -87,13 +87,13 @@ public class LiteralsPropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * @generated
 	 */
 	public Composite createFigure(final Composite parent) {
-		view = new Composite(parent, SWT.NONE);
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
-		view.setLayout(layout);
-		createControls(view);
-		return view;
-	}
+    view = new Composite(parent, SWT.NONE);
+    GridLayout layout = new GridLayout();
+    layout.numColumns = 3;
+    view.setLayout(layout);
+    createControls(view);
+    return view;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -103,72 +103,72 @@ public class LiteralsPropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * @generated
 	 */
 	public void createControls(Composite view) { 
-		CompositionSequence literalsStep = new BindingCompositionSequence(propertiesEditionComponent);
-		literalsStep.addStep(UmlViewsRepository.Literals.literals_);
-		
-		composer = new PartComposer(literalsStep) {
+    CompositionSequence literalsStep = new BindingCompositionSequence(propertiesEditionComponent);
+    literalsStep.addStep(UmlViewsRepository.Literals.literals_);
+    
+    composer = new PartComposer(literalsStep) {
 
-			@Override
-			public Composite addToPart(Composite parent, Object key) {
-				if (key == UmlViewsRepository.Literals.literals_) {
-					return createLiteralsAdvancedTableComposition(parent);
-				}
-				return parent;
-			}
-		};
-		composer.compose(view);
-	}
+      @Override
+      public Composite addToPart(Composite parent, Object key) {
+        if (key == UmlViewsRepository.Literals.literals_) {
+          return createLiteralsAdvancedTableComposition(parent);
+        }
+        return parent;
+      }
+    };
+    composer.compose(view);
+  }
 
 	/**
 	 * @param container
 	 * @generated
 	 */
 	protected Composite createLiteralsAdvancedTableComposition(Composite parent) {
-		this.literals = new ReferencesTable(getDescription(UmlViewsRepository.Literals.literals_, UmlMessages.LiteralsPropertiesEditionPart_LiteralsLabel), new ReferencesTableListener() {
-			public void handleAdd() { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LiteralsPropertiesEditionPartImpl.this, UmlViewsRepository.Literals.literals_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
-				literals.refresh();
-			}
-			public void handleEdit(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LiteralsPropertiesEditionPartImpl.this, UmlViewsRepository.Literals.literals_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
-				literals.refresh();
-			}
-			public void handleMove(EObject element, int oldIndex, int newIndex) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LiteralsPropertiesEditionPartImpl.this, UmlViewsRepository.Literals.literals_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-				literals.refresh();
-			}
-			public void handleRemove(EObject element) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LiteralsPropertiesEditionPartImpl.this, UmlViewsRepository.Literals.literals_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-				literals.refresh();
-			}
-			public void navigateTo(EObject element) { }
-		});
-		for (ViewerFilter filter : this.literalsFilters) {
-			this.literals.addFilter(filter);
-		}
-		this.literals.setHelpText(propertiesEditionComponent.getHelpContent(UmlViewsRepository.Literals.literals_, UmlViewsRepository.SWT_KIND));
-		this.literals.createControls(parent);
-		this.literals.addSelectionListener(new SelectionAdapter() {
-			
-			public void widgetSelected(SelectionEvent e) {
-				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LiteralsPropertiesEditionPartImpl.this, UmlViewsRepository.Literals.literals_, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
-				}
-			}
-			
-		});
-		GridData literalsData = new GridData(GridData.FILL_HORIZONTAL);
-		literalsData.horizontalSpan = 3;
-		this.literals.setLayoutData(literalsData);
-		this.literals.setLowerBound(0);
-		this.literals.setUpperBound(-1);
-		literals.setID(UmlViewsRepository.Literals.literals_);
-		literals.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
-		// Start of user code for createLiteralsAdvancedTableComposition
+    this.literals = new ReferencesTable(getDescription(UmlViewsRepository.Literals.literals_, UmlMessages.LiteralsPropertiesEditionPart_LiteralsLabel), new ReferencesTableListener() {
+      public void handleAdd() { 
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LiteralsPropertiesEditionPartImpl.this, UmlViewsRepository.Literals.literals_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+        literals.refresh();
+      }
+      public void handleEdit(EObject element) {
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LiteralsPropertiesEditionPartImpl.this, UmlViewsRepository.Literals.literals_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+        literals.refresh();
+      }
+      public void handleMove(EObject element, int oldIndex, int newIndex) { 
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LiteralsPropertiesEditionPartImpl.this, UmlViewsRepository.Literals.literals_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+        literals.refresh();
+      }
+      public void handleRemove(EObject element) { 
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LiteralsPropertiesEditionPartImpl.this, UmlViewsRepository.Literals.literals_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+        literals.refresh();
+      }
+      public void navigateTo(EObject element) { }
+    });
+    for (ViewerFilter filter : this.literalsFilters) {
+      this.literals.addFilter(filter);
+    }
+    this.literals.setHelpText(propertiesEditionComponent.getHelpContent(UmlViewsRepository.Literals.literals_, UmlViewsRepository.SWT_KIND));
+    this.literals.createControls(parent);
+    this.literals.addSelectionListener(new SelectionAdapter() {
+      
+      public void widgetSelected(SelectionEvent e) {
+        if (e.item != null && e.item.getData() instanceof EObject) {
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(LiteralsPropertiesEditionPartImpl.this, UmlViewsRepository.Literals.literals_, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+        }
+      }
+      
+    });
+    GridData literalsData = new GridData(GridData.FILL_HORIZONTAL);
+    literalsData.horizontalSpan = 3;
+    this.literals.setLayoutData(literalsData);
+    this.literals.setLowerBound(0);
+    this.literals.setUpperBound(-1);
+    literals.setID(UmlViewsRepository.Literals.literals_);
+    literals.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+    // Start of user code for createLiteralsAdvancedTableComposition
 
-		// End of user code
-		return parent;
-	}
+    // End of user code
+    return parent;
+  }
 
 
 	/**
@@ -178,7 +178,7 @@ public class LiteralsPropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-	}
+  }
 
 
 
@@ -210,7 +210,7 @@ public class LiteralsPropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * @generated
 	 */
 	public void updateLiterals() {
-	literals.refresh();
+  literals.refresh();
 }
 
 	/**
@@ -220,11 +220,11 @@ public class LiteralsPropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * @generated
 	 */
 	public void addFilterToLiterals(ViewerFilter filter) {
-		literalsFilters.add(filter);
-		if (this.literals != null) {
-			this.literals.addFilter(filter);
-		}
-	}
+    literalsFilters.add(filter);
+    if (this.literals != null) {
+      this.literals.addFilter(filter);
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -233,8 +233,8 @@ public class LiteralsPropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * @generated
 	 */
 	public void addBusinessFilterToLiterals(ViewerFilter filter) {
-		literalsBusinessFilters.add(filter);
-	}
+    literalsBusinessFilters.add(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -243,8 +243,8 @@ public class LiteralsPropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * @generated
 	 */
 	public boolean isContainedInLiteralsTable(EObject element) {
-		return ((ReferencesTableSettings)literals.getInput()).contains(element);
-	}
+    return ((ReferencesTableSettings)literals.getInput()).contains(element);
+  }
 
 
 
@@ -258,8 +258,8 @@ public class LiteralsPropertiesEditionPartImpl extends CompositePropertiesEditio
 	 * @generated
 	 */
 	public String getTitle() {
-		return UmlMessages.Literals_Part_Title;
-	}
+    return UmlMessages.Literals_Part_Title;
+  }
 
 
 

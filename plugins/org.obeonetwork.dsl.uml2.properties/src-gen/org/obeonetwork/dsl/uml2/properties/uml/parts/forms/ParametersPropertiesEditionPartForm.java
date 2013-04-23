@@ -83,8 +83,8 @@ public class ParametersPropertiesEditionPartForm extends SectionPropertiesEditin
 	 * @generated
 	 */
 	public ParametersPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+    super(editionComponent);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -94,15 +94,15 @@ public class ParametersPropertiesEditionPartForm extends SectionPropertiesEditin
 	 * @generated
 	 */
 	public Composite createFigure(final Composite parent, final FormToolkit widgetFactory) {
-		ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
-		Form form = scrolledForm.getForm();
-		view = form.getBody();
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
-		view.setLayout(layout);
-		createControls(widgetFactory, view);
-		return scrolledForm;
-	}
+    ScrolledForm scrolledForm = widgetFactory.createScrolledForm(parent);
+    Form form = scrolledForm.getForm();
+    view = form.getBody();
+    GridLayout layout = new GridLayout();
+    layout.numColumns = 3;
+    view.setLayout(layout);
+    createControls(widgetFactory, view);
+    return scrolledForm;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -112,71 +112,71 @@ public class ParametersPropertiesEditionPartForm extends SectionPropertiesEditin
 	 * @generated
 	 */
 	public void createControls(final FormToolkit widgetFactory, Composite view) {
-		CompositionSequence parametersStep = new BindingCompositionSequence(propertiesEditionComponent);
-		parametersStep.addStep(UmlViewsRepository.Parameters.parameters_);
-		
-		composer = new PartComposer(parametersStep) {
+    CompositionSequence parametersStep = new BindingCompositionSequence(propertiesEditionComponent);
+    parametersStep.addStep(UmlViewsRepository.Parameters.parameters_);
+    
+    composer = new PartComposer(parametersStep) {
 
-			@Override
-			public Composite addToPart(Composite parent, Object key) {
-				if (key == UmlViewsRepository.Parameters.parameters_) {
-					return createParametersTableComposition(widgetFactory, parent);
-				}
-				return parent;
-			}
-		};
-		composer.compose(view);
-	}
+      @Override
+      public Composite addToPart(Composite parent, Object key) {
+        if (key == UmlViewsRepository.Parameters.parameters_) {
+          return createParametersTableComposition(widgetFactory, parent);
+        }
+        return parent;
+      }
+    };
+    composer.compose(view);
+  }
 	/**
 	 * @param container
 	 * @generated
 	 */
 	protected Composite createParametersTableComposition(FormToolkit widgetFactory, Composite parent) {
-		this.parameters = new ReferencesTable(getDescription(UmlViewsRepository.Parameters.parameters_, UmlMessages.ParametersPropertiesEditionPart_ParametersLabel), new ReferencesTableListener() {
-			public void handleAdd() {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ParametersPropertiesEditionPartForm.this, UmlViewsRepository.Parameters.parameters_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
-				parameters.refresh();
-			}
-			public void handleEdit(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ParametersPropertiesEditionPartForm.this, UmlViewsRepository.Parameters.parameters_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
-				parameters.refresh();
-			}
-			public void handleMove(EObject element, int oldIndex, int newIndex) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ParametersPropertiesEditionPartForm.this, UmlViewsRepository.Parameters.parameters_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-				parameters.refresh();
-			}
-			public void handleRemove(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ParametersPropertiesEditionPartForm.this, UmlViewsRepository.Parameters.parameters_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-				parameters.refresh();
-			}
-			public void navigateTo(EObject element) { }
-		});
-		for (ViewerFilter filter : this.parametersFilters) {
-			this.parameters.addFilter(filter);
-		}
-		this.parameters.setHelpText(propertiesEditionComponent.getHelpContent(UmlViewsRepository.Parameters.parameters_, UmlViewsRepository.FORM_KIND));
-		this.parameters.createControls(parent, widgetFactory);
-		this.parameters.addSelectionListener(new SelectionAdapter() {
-			
-			public void widgetSelected(SelectionEvent e) {
-				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ParametersPropertiesEditionPartForm.this, UmlViewsRepository.Parameters.parameters_, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
-				}
-			}
-			
-		});
-		GridData parametersData = new GridData(GridData.FILL_HORIZONTAL);
-		parametersData.horizontalSpan = 3;
-		this.parameters.setLayoutData(parametersData);
-		this.parameters.setLowerBound(0);
-		this.parameters.setUpperBound(-1);
-		parameters.setID(UmlViewsRepository.Parameters.parameters_);
-		parameters.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
-		// Start of user code for createParametersTableComposition
+    this.parameters = new ReferencesTable(getDescription(UmlViewsRepository.Parameters.parameters_, UmlMessages.ParametersPropertiesEditionPart_ParametersLabel), new ReferencesTableListener() {
+      public void handleAdd() {
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ParametersPropertiesEditionPartForm.this, UmlViewsRepository.Parameters.parameters_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+        parameters.refresh();
+      }
+      public void handleEdit(EObject element) {
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ParametersPropertiesEditionPartForm.this, UmlViewsRepository.Parameters.parameters_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+        parameters.refresh();
+      }
+      public void handleMove(EObject element, int oldIndex, int newIndex) {
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ParametersPropertiesEditionPartForm.this, UmlViewsRepository.Parameters.parameters_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+        parameters.refresh();
+      }
+      public void handleRemove(EObject element) {
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ParametersPropertiesEditionPartForm.this, UmlViewsRepository.Parameters.parameters_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+        parameters.refresh();
+      }
+      public void navigateTo(EObject element) { }
+    });
+    for (ViewerFilter filter : this.parametersFilters) {
+      this.parameters.addFilter(filter);
+    }
+    this.parameters.setHelpText(propertiesEditionComponent.getHelpContent(UmlViewsRepository.Parameters.parameters_, UmlViewsRepository.FORM_KIND));
+    this.parameters.createControls(parent, widgetFactory);
+    this.parameters.addSelectionListener(new SelectionAdapter() {
+      
+      public void widgetSelected(SelectionEvent e) {
+        if (e.item != null && e.item.getData() instanceof EObject) {
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(ParametersPropertiesEditionPartForm.this, UmlViewsRepository.Parameters.parameters_, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+        }
+      }
+      
+    });
+    GridData parametersData = new GridData(GridData.FILL_HORIZONTAL);
+    parametersData.horizontalSpan = 3;
+    this.parameters.setLayoutData(parametersData);
+    this.parameters.setLowerBound(0);
+    this.parameters.setUpperBound(-1);
+    parameters.setID(UmlViewsRepository.Parameters.parameters_);
+    parameters.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+    // Start of user code for createParametersTableComposition
 
-		// End of user code
-		return parent;
-	}
+    // End of user code
+    return parent;
+  }
 
 
 	/**
@@ -186,7 +186,7 @@ public class ParametersPropertiesEditionPartForm extends SectionPropertiesEditin
 	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-	}
+  }
 
 
 
@@ -218,7 +218,7 @@ public class ParametersPropertiesEditionPartForm extends SectionPropertiesEditin
 	 * @generated
 	 */
 	public void updateParameters() {
-	parameters.refresh();
+  parameters.refresh();
 }
 
 	/**
@@ -228,11 +228,11 @@ public class ParametersPropertiesEditionPartForm extends SectionPropertiesEditin
 	 * @generated
 	 */
 	public void addFilterToParameters(ViewerFilter filter) {
-		parametersFilters.add(filter);
-		if (this.parameters != null) {
-			this.parameters.addFilter(filter);
-		}
-	}
+    parametersFilters.add(filter);
+    if (this.parameters != null) {
+      this.parameters.addFilter(filter);
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -241,8 +241,8 @@ public class ParametersPropertiesEditionPartForm extends SectionPropertiesEditin
 	 * @generated
 	 */
 	public void addBusinessFilterToParameters(ViewerFilter filter) {
-		parametersBusinessFilters.add(filter);
-	}
+    parametersBusinessFilters.add(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -251,8 +251,8 @@ public class ParametersPropertiesEditionPartForm extends SectionPropertiesEditin
 	 * @generated
 	 */
 	public boolean isContainedInParametersTable(EObject element) {
-		return ((ReferencesTableSettings)parameters.getInput()).contains(element);
-	}
+    return ((ReferencesTableSettings)parameters.getInput()).contains(element);
+  }
 
 
 
@@ -266,8 +266,8 @@ public class ParametersPropertiesEditionPartForm extends SectionPropertiesEditin
 	 * @generated
 	 */
 	public String getTitle() {
-		return UmlMessages.Parameters_Part_Title;
-	}
+    return UmlMessages.Parameters_Part_Title;
+  }
 
 
 

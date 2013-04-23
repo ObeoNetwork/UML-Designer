@@ -83,20 +83,20 @@ public class PrimitiveTypePropertiesEditionComponent extends ComposedPropertiesE
 	 * @generated
 	 */
 	public PrimitiveTypePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject primitiveType, String editing_mode) {
-		super(editingContext, editing_mode);
-		if (primitiveType instanceof PrimitiveType) {
-			PropertiesEditingProvider provider = null;
-			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(primitiveType, PropertiesEditingProvider.class);
-			primitiveTypeGeneralPropertiesEditionComponent = (PrimitiveTypeGeneralPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, PrimitiveTypeGeneralPropertiesEditionComponent.GENERAL_PART, PrimitiveTypeGeneralPropertiesEditionComponent.class);
-			addSubComponent(primitiveTypeGeneralPropertiesEditionComponent);
-			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(primitiveType, PropertiesEditingProvider.class);
-			primitiveTypeAttributesPropertiesEditionComponent = (PrimitiveTypeAttributesPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, PrimitiveTypeAttributesPropertiesEditionComponent.ATTRIBUTES_PART, PrimitiveTypeAttributesPropertiesEditionComponent.class);
-			addSubComponent(primitiveTypeAttributesPropertiesEditionComponent);
-			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(primitiveType, PropertiesEditingProvider.class);
-			primitiveTypeOperationsPropertiesEditionComponent = (PrimitiveTypeOperationsPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, PrimitiveTypeOperationsPropertiesEditionComponent.OPERATIONS_PART, PrimitiveTypeOperationsPropertiesEditionComponent.class);
-			addSubComponent(primitiveTypeOperationsPropertiesEditionComponent);
-		}
-	}
+    super(editingContext, editing_mode);
+    if (primitiveType instanceof PrimitiveType) {
+      PropertiesEditingProvider provider = null;
+      provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(primitiveType, PropertiesEditingProvider.class);
+      primitiveTypeGeneralPropertiesEditionComponent = (PrimitiveTypeGeneralPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, PrimitiveTypeGeneralPropertiesEditionComponent.GENERAL_PART, PrimitiveTypeGeneralPropertiesEditionComponent.class);
+      addSubComponent(primitiveTypeGeneralPropertiesEditionComponent);
+      provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(primitiveType, PropertiesEditingProvider.class);
+      primitiveTypeAttributesPropertiesEditionComponent = (PrimitiveTypeAttributesPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, PrimitiveTypeAttributesPropertiesEditionComponent.ATTRIBUTES_PART, PrimitiveTypeAttributesPropertiesEditionComponent.class);
+      addSubComponent(primitiveTypeAttributesPropertiesEditionComponent);
+      provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(primitiveType, PropertiesEditingProvider.class);
+      primitiveTypeOperationsPropertiesEditionComponent = (PrimitiveTypeOperationsPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, PrimitiveTypeOperationsPropertiesEditionComponent.OPERATIONS_PART, PrimitiveTypeOperationsPropertiesEditionComponent.class);
+      addSubComponent(primitiveTypeOperationsPropertiesEditionComponent);
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -106,20 +106,20 @@ public class PrimitiveTypePropertiesEditionComponent extends ComposedPropertiesE
 	 * @generated
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-		if (PrimitiveTypeGeneralPropertiesEditionComponent.GENERAL_PART.equals(key)) {
-			generalPart = (GeneralPropertiesEditionPart)primitiveTypeGeneralPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
-			return (IPropertiesEditionPart)generalPart;
-		}
-		if (PrimitiveTypeAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(key)) {
-			attributesPart = (AttributesPropertiesEditionPart)primitiveTypeAttributesPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
-			return (IPropertiesEditionPart)attributesPart;
-		}
-		if (PrimitiveTypeOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(key)) {
-			operationsPart = (OperationsPropertiesEditionPart)primitiveTypeOperationsPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
-			return (IPropertiesEditionPart)operationsPart;
-		}
-		return super.getPropertiesEditionPart(kind, key);
-	}
+    if (PrimitiveTypeGeneralPropertiesEditionComponent.GENERAL_PART.equals(key)) {
+      generalPart = (GeneralPropertiesEditionPart)primitiveTypeGeneralPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
+      return (IPropertiesEditionPart)generalPart;
+    }
+    if (PrimitiveTypeAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(key)) {
+      attributesPart = (AttributesPropertiesEditionPart)primitiveTypeAttributesPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
+      return (IPropertiesEditionPart)attributesPart;
+    }
+    if (PrimitiveTypeOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(key)) {
+      operationsPart = (OperationsPropertiesEditionPart)primitiveTypeOperationsPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
+      return (IPropertiesEditionPart)operationsPart;
+    }
+    return super.getPropertiesEditionPart(kind, key);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -130,19 +130,19 @@ public class PrimitiveTypePropertiesEditionComponent extends ComposedPropertiesE
 	 * @generated
 	 */
 	public void setPropertiesEditionPart(java.lang.Object key, int kind, IPropertiesEditionPart propertiesEditionPart) {
-		if (UmlViewsRepository.General.class == key) {
-			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
-			generalPart = (GeneralPropertiesEditionPart)propertiesEditionPart;
-		}
-		if (UmlViewsRepository.Attributes.class == key) {
-			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
-			attributesPart = (AttributesPropertiesEditionPart)propertiesEditionPart;
-		}
-		if (UmlViewsRepository.Operations.class == key) {
-			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
-			operationsPart = (OperationsPropertiesEditionPart)propertiesEditionPart;
-		}
-	}
+    if (UmlViewsRepository.General.class == key) {
+      super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
+      generalPart = (GeneralPropertiesEditionPart)propertiesEditionPart;
+    }
+    if (UmlViewsRepository.Attributes.class == key) {
+      super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
+      attributesPart = (AttributesPropertiesEditionPart)propertiesEditionPart;
+    }
+    if (UmlViewsRepository.Operations.class == key) {
+      super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
+      operationsPart = (OperationsPropertiesEditionPart)propertiesEditionPart;
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -153,14 +153,14 @@ public class PrimitiveTypePropertiesEditionComponent extends ComposedPropertiesE
 	 * @generated
 	 */
 	public void initPart(java.lang.Object key, int kind, EObject element, ResourceSet allResource) {
-		if (key == UmlViewsRepository.General.class) {
-			super.initPart(key, kind, element, allResource);
-		}
-		if (key == UmlViewsRepository.Attributes.class) {
-			super.initPart(key, kind, element, allResource);
-		}
-		if (key == UmlViewsRepository.Operations.class) {
-			super.initPart(key, kind, element, allResource);
-		}
-	}
+    if (key == UmlViewsRepository.General.class) {
+      super.initPart(key, kind, element, allResource);
+    }
+    if (key == UmlViewsRepository.Attributes.class) {
+      super.initPart(key, kind, element, allResource);
+    }
+    if (key == UmlViewsRepository.Operations.class) {
+      super.initPart(key, kind, element, allResource);
+    }
+  }
 }

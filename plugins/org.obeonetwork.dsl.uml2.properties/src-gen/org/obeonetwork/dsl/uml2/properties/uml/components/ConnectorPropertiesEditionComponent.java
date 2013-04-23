@@ -70,17 +70,17 @@ public class ConnectorPropertiesEditionComponent extends ComposedPropertiesEditi
 	 * @generated
 	 */
 	public ConnectorPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject connector, String editing_mode) {
-		super(editingContext, editing_mode);
-		if (connector instanceof Connector) {
-			PropertiesEditingProvider provider = null;
-			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(connector, PropertiesEditingProvider.class);
-			connectorGeneralPropertiesEditionComponent = (ConnectorGeneralPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, ConnectorGeneralPropertiesEditionComponent.GENERAL_PART, ConnectorGeneralPropertiesEditionComponent.class);
-			addSubComponent(connectorGeneralPropertiesEditionComponent);
-			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(connector, PropertiesEditingProvider.class);
-			connectorEndsPropertiesEditionComponent = (ConnectorEndsPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, ConnectorEndsPropertiesEditionComponent.ENDS_PART, ConnectorEndsPropertiesEditionComponent.class);
-			addSubComponent(connectorEndsPropertiesEditionComponent);
-		}
-	}
+    super(editingContext, editing_mode);
+    if (connector instanceof Connector) {
+      PropertiesEditingProvider provider = null;
+      provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(connector, PropertiesEditingProvider.class);
+      connectorGeneralPropertiesEditionComponent = (ConnectorGeneralPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, ConnectorGeneralPropertiesEditionComponent.GENERAL_PART, ConnectorGeneralPropertiesEditionComponent.class);
+      addSubComponent(connectorGeneralPropertiesEditionComponent);
+      provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(connector, PropertiesEditingProvider.class);
+      connectorEndsPropertiesEditionComponent = (ConnectorEndsPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, ConnectorEndsPropertiesEditionComponent.ENDS_PART, ConnectorEndsPropertiesEditionComponent.class);
+      addSubComponent(connectorEndsPropertiesEditionComponent);
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -90,16 +90,16 @@ public class ConnectorPropertiesEditionComponent extends ComposedPropertiesEditi
 	 * @generated
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-		if (ConnectorGeneralPropertiesEditionComponent.GENERAL_PART.equals(key)) {
-			generalPart = (GeneralPropertiesEditionPart)connectorGeneralPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
-			return (IPropertiesEditionPart)generalPart;
-		}
-		if (ConnectorEndsPropertiesEditionComponent.ENDS_PART.equals(key)) {
-			endsPart = (EndsPropertiesEditionPart)connectorEndsPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
-			return (IPropertiesEditionPart)endsPart;
-		}
-		return super.getPropertiesEditionPart(kind, key);
-	}
+    if (ConnectorGeneralPropertiesEditionComponent.GENERAL_PART.equals(key)) {
+      generalPart = (GeneralPropertiesEditionPart)connectorGeneralPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
+      return (IPropertiesEditionPart)generalPart;
+    }
+    if (ConnectorEndsPropertiesEditionComponent.ENDS_PART.equals(key)) {
+      endsPart = (EndsPropertiesEditionPart)connectorEndsPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
+      return (IPropertiesEditionPart)endsPart;
+    }
+    return super.getPropertiesEditionPart(kind, key);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -110,15 +110,15 @@ public class ConnectorPropertiesEditionComponent extends ComposedPropertiesEditi
 	 * @generated
 	 */
 	public void setPropertiesEditionPart(java.lang.Object key, int kind, IPropertiesEditionPart propertiesEditionPart) {
-		if (UmlViewsRepository.General.class == key) {
-			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
-			generalPart = (GeneralPropertiesEditionPart)propertiesEditionPart;
-		}
-		if (UmlViewsRepository.Ends.class == key) {
-			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
-			endsPart = (EndsPropertiesEditionPart)propertiesEditionPart;
-		}
-	}
+    if (UmlViewsRepository.General.class == key) {
+      super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
+      generalPart = (GeneralPropertiesEditionPart)propertiesEditionPart;
+    }
+    if (UmlViewsRepository.Ends.class == key) {
+      super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
+      endsPart = (EndsPropertiesEditionPart)propertiesEditionPart;
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -129,11 +129,11 @@ public class ConnectorPropertiesEditionComponent extends ComposedPropertiesEditi
 	 * @generated
 	 */
 	public void initPart(java.lang.Object key, int kind, EObject element, ResourceSet allResource) {
-		if (key == UmlViewsRepository.General.class) {
-			super.initPart(key, kind, element, allResource);
-		}
-		if (key == UmlViewsRepository.Ends.class) {
-			super.initPart(key, kind, element, allResource);
-		}
-	}
+    if (key == UmlViewsRepository.General.class) {
+      super.initPart(key, kind, element, allResource);
+    }
+    if (key == UmlViewsRepository.Ends.class) {
+      super.initPart(key, kind, element, allResource);
+    }
+  }
 }

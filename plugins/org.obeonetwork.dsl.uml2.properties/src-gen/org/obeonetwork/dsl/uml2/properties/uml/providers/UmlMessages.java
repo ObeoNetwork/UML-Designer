@@ -31,13 +31,6 @@ public class UmlMessages extends NLS {
 	 * @generated
 	 */
 	
-	public static String GeneralPropertiesEditionPart_QualifiersGroupLabel;
-
-
-	/**
-	 * @generated
-	 */
-	
 	public static String General_ReadOnly;
 
 	/**
@@ -478,6 +471,6 @@ public class UmlMessages extends NLS {
 	 */
 	
 	private UmlMessages() {
-		//protect instanciation
-	}
+    //protect instanciation
+  }
 }

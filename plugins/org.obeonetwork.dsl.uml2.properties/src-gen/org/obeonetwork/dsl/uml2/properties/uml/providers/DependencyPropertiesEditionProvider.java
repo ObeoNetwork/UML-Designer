@@ -62,9 +62,9 @@ public class DependencyPropertiesEditionProvider extends UmlPropertiesEditionPro
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof Dependency) 
-					&& (UMLPackage.Literals.DEPENDENCY == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof Dependency) 
+          && (UMLPackage.Literals.DEPENDENCY == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -72,8 +72,8 @@ public class DependencyPropertiesEditionProvider extends UmlPropertiesEditionPro
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof Dependency) && (DependencyPropertiesEditionComponent.GENERAL_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof Dependency) && (DependencyPropertiesEditionComponent.GENERAL_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -82,8 +82,8 @@ public class DependencyPropertiesEditionProvider extends UmlPropertiesEditionPro
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Dependency) && (refinement == DependencyPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof Dependency) && (refinement == DependencyPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -92,8 +92,8 @@ public class DependencyPropertiesEditionProvider extends UmlPropertiesEditionPro
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Dependency) && ((DependencyPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == DependencyPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof Dependency) && ((DependencyPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == DependencyPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -101,11 +101,11 @@ public class DependencyPropertiesEditionProvider extends UmlPropertiesEditionPro
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof Dependency) {
-			return new DependencyPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof Dependency) {
+      return new DependencyPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -113,12 +113,12 @@ public class DependencyPropertiesEditionProvider extends UmlPropertiesEditionPro
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof Dependency) {
-			if (DependencyPropertiesEditionComponent.GENERAL_PART.equals(part))
-				return new DependencyPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof Dependency) {
+      if (DependencyPropertiesEditionComponent.GENERAL_PART.equals(part))
+        return new DependencyPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

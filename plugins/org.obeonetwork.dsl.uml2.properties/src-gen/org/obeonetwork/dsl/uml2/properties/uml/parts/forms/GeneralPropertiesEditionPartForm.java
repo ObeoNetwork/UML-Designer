@@ -57,6 +57,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
+import org.eclipse.emf.eef.runtime.ui.widgets.HorizontalBox;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
@@ -258,7 +259,7 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
           return createVisibilityEMFComboViewer(widgetFactory, parent);
         }
         if (key == UmlViewsRepository.General.Qualifiers.class) {
-          return createQualifiersGroup(widgetFactory, parent);
+          return createQualifiersHBox(widgetFactory, parent);
         }
         if (key == UmlViewsRepository.General.Qualifiers.ordered) {
           return createOrderedCheckbox(widgetFactory, parent);
@@ -481,23 +482,26 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
   }
 
 	/**
-	 * @generated
-	 */
-	protected Composite createQualifiersGroup(FormToolkit widgetFactory, final Composite parent) {
-    Section qualifiersSection = widgetFactory.createSection(parent, Section.TITLE_BAR | Section.TWISTIE | Section.EXPANDED);
-    qualifiersSection.setText(UmlMessages.GeneralPropertiesEditionPart_QualifiersGroupLabel);
-    GridData qualifiersSectionData = new GridData(GridData.FILL_HORIZONTAL);
-    qualifiersSectionData.horizontalSpan = 3;
-    qualifiersSection.setLayoutData(qualifiersSectionData);
-    Composite qualifiersGroup = widgetFactory.createComposite(qualifiersSection);
-    GridLayout qualifiersGroupLayout = new GridLayout();
-    qualifiersGroupLayout.numColumns = 3;
-    qualifiersGroup.setLayout(qualifiersGroupLayout);
-    qualifiersSection.setClient(qualifiersGroup);
-    return qualifiersGroup;
+   * @generated
+   */
+  
+  protected Composite createQualifiersHBox(FormToolkit widgetFactory, Composite parent) {
+    Composite container = widgetFactory.createComposite(parent, SWT.NONE);
+    GridLayout layout = new GridLayout();
+    container.setLayout(layout);
+    GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
+    gridData.horizontalSpan=3;
+    container.setLayoutData(gridData);
+        HorizontalBox qualifiersHBox = new HorizontalBox(container);
+    //Apply constraint for checkbox
+    GridData constraint = new GridData(GridData.FILL_HORIZONTAL);
+    constraint.horizontalAlignment = GridData.BEGINNING;
+    qualifiersHBox.setLayoutData(constraint);
+    widgetFactory.adapt(qualifiersHBox);
+    return qualifiersHBox;
   }
 
-	/**
+  /**
 	 * @generated
 	 */
 	

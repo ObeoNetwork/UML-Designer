@@ -701,7 +701,7 @@
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
         </elements>
         <elements xsi:type="eef-views:Container" xmi:id="_GefuoFv9EeKZBNASYbV97A" name="qualifiers">
-          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.4"/>
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.6"/>
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_vU7ngFv7EeKZBNASYbV97A" name="ordered" nameAsLabel="true">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>

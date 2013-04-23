@@ -85,11 +85,11 @@ public class PrimitiveTypeAttributesPropertiesEditionComponent extends SinglePar
 	 * @generated
 	 */
 	public PrimitiveTypeAttributesPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject primitiveType, String editing_mode) {
-		super(editingContext, primitiveType, editing_mode);
-		parts = new String[] { ATTRIBUTES_PART };
-		repositoryKey = UmlViewsRepository.class;
-		partKey = UmlViewsRepository.Attributes.class;
-	}
+    super(editingContext, primitiveType, editing_mode);
+    parts = new String[] { ATTRIBUTES_PART };
+    repositoryKey = UmlViewsRepository.class;
+    partKey = UmlViewsRepository.Attributes.class;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -99,38 +99,38 @@ public class PrimitiveTypeAttributesPropertiesEditionComponent extends SinglePar
 	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			
-			final PrimitiveType primitiveType = (PrimitiveType)elt;
-			final AttributesPropertiesEditionPart attributesPart = (AttributesPropertiesEditionPart)editingPart;
-			// init values
-			if (isAccessible(UmlViewsRepository.Attributes.attributes_)) {
-				attributesSettings = new ReferencesTableSettings(primitiveType, UMLPackage.eINSTANCE.getDataType_OwnedAttribute());
-				attributesPart.initAttributes(attributesSettings);
-			}
-			// init filters
-			if (isAccessible(UmlViewsRepository.Attributes.attributes_)) {
-				attributesPart.addFilterToAttributes(new ViewerFilter() {
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof String && element.equals("")) || (element instanceof Property); //$NON-NLS-1$ 
-					}
-			
-				});
-			}
-			// init values for referenced views
-			
-			// init filters for referenced views
-			
-		}
-		setInitializing(false);
-	}
+    setInitializing(true);
+    if (editingPart != null && key == partKey) {
+      editingPart.setContext(elt, allResource);
+      
+      final PrimitiveType primitiveType = (PrimitiveType)elt;
+      final AttributesPropertiesEditionPart attributesPart = (AttributesPropertiesEditionPart)editingPart;
+      // init values
+      if (isAccessible(UmlViewsRepository.Attributes.attributes_)) {
+        attributesSettings = new ReferencesTableSettings(primitiveType, UMLPackage.eINSTANCE.getDataType_OwnedAttribute());
+        attributesPart.initAttributes(attributesSettings);
+      }
+      // init filters
+      if (isAccessible(UmlViewsRepository.Attributes.attributes_)) {
+        attributesPart.addFilterToAttributes(new ViewerFilter() {
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof String && element.equals("")) || (element instanceof Property); //$NON-NLS-1$ 
+          }
+      
+        });
+      }
+      // init values for referenced views
+      
+      // init filters for referenced views
+      
+    }
+    setInitializing(false);
+  }
 
 
 
@@ -152,34 +152,33 @@ public class PrimitiveTypeAttributesPropertiesEditionComponent extends SinglePar
 	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		PrimitiveType primitiveType = (PrimitiveType)semanticObject;
-
-		if (UmlViewsRepository.Attributes.attributes_ == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, attributesSettings, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy instanceof CreateEditingPolicy) {
-						policy.execute();
-					}
-				}
-			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
-					if (editionPolicy != null) {
-						editionPolicy.execute();
-					}
-				}
-			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				attributesSettings.removeFromReference((EObject) event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-				attributesSettings.move(event.getNewIndex(), (Property) event.getNewValue());
-			}
-		}
-	}
+    PrimitiveType primitiveType = (PrimitiveType)semanticObject;
+    if (UmlViewsRepository.Attributes.attributes_ == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.ADD) {
+        EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, attributesSettings, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy instanceof CreateEditingPolicy) {
+            policy.execute();
+          }
+        }
+      } else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+        EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+          if (editionPolicy != null) {
+            editionPolicy.execute();
+          }
+        }
+      } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+        attributesSettings.removeFromReference((EObject) event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+        attributesSettings.move(event.getNewIndex(), (Property) event.getNewValue());
+      }
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -215,8 +214,8 @@ public class PrimitiveTypeAttributesPropertiesEditionComponent extends SinglePar
 	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == UmlViewsRepository.General.Qualifiers.abstract_ || key == UmlViewsRepository.General.Qualifiers.leaf;
-	}
+    return key == UmlViewsRepository.General.Qualifiers.abstract_ || key == UmlViewsRepository.General.Qualifiers.leaf;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -225,17 +224,17 @@ public class PrimitiveTypeAttributesPropertiesEditionComponent extends SinglePar
 	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
-		Diagnostic ret = Diagnostic.OK_INSTANCE;
-		if (event.getNewValue() != null) {
-			try {
-			} catch (IllegalArgumentException iae) {
-				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
-				ret = BasicDiagnostic.toDiagnostic(we);
-			}
-		}
-		return ret;
-	}
+    Diagnostic ret = Diagnostic.OK_INSTANCE;
+    if (event.getNewValue() != null) {
+      try {
+      } catch (IllegalArgumentException iae) {
+        ret = BasicDiagnostic.toDiagnostic(iae);
+      } catch (WrappedException we) {
+        ret = BasicDiagnostic.toDiagnostic(we);
+      }
+    }
+    return ret;
+  }
 
 
 	

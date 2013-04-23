@@ -66,9 +66,9 @@ public class EnumerationPropertiesEditionProvider extends UmlPropertiesEditionPr
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof Enumeration) 
-					&& (UMLPackage.Literals.ENUMERATION == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof Enumeration) 
+          && (UMLPackage.Literals.ENUMERATION == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -76,8 +76,8 @@ public class EnumerationPropertiesEditionProvider extends UmlPropertiesEditionPr
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof Enumeration) && (EnumerationGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) || EnumerationLiteralsPropertiesEditionComponent.LITERALS_PART.equals(part) || EnumerationAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part) || EnumerationOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof Enumeration) && (EnumerationGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) || EnumerationLiteralsPropertiesEditionComponent.LITERALS_PART.equals(part) || EnumerationAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part) || EnumerationOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -86,8 +86,8 @@ public class EnumerationPropertiesEditionProvider extends UmlPropertiesEditionPr
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Enumeration) && (refinement == EnumerationGeneralPropertiesEditionComponent.class || refinement == EnumerationLiteralsPropertiesEditionComponent.class || refinement == EnumerationAttributesPropertiesEditionComponent.class || refinement == EnumerationOperationsPropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof Enumeration) && (refinement == EnumerationGeneralPropertiesEditionComponent.class || refinement == EnumerationLiteralsPropertiesEditionComponent.class || refinement == EnumerationAttributesPropertiesEditionComponent.class || refinement == EnumerationOperationsPropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -96,8 +96,8 @@ public class EnumerationPropertiesEditionProvider extends UmlPropertiesEditionPr
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Enumeration) && ((EnumerationGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == EnumerationGeneralPropertiesEditionComponent.class) || (EnumerationLiteralsPropertiesEditionComponent.LITERALS_PART.equals(part) && refinement == EnumerationLiteralsPropertiesEditionComponent.class) || (EnumerationAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part) && refinement == EnumerationAttributesPropertiesEditionComponent.class) || (EnumerationOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(part) && refinement == EnumerationOperationsPropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof Enumeration) && ((EnumerationGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == EnumerationGeneralPropertiesEditionComponent.class) || (EnumerationLiteralsPropertiesEditionComponent.LITERALS_PART.equals(part) && refinement == EnumerationLiteralsPropertiesEditionComponent.class) || (EnumerationAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part) && refinement == EnumerationAttributesPropertiesEditionComponent.class) || (EnumerationOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(part) && refinement == EnumerationOperationsPropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -105,11 +105,11 @@ public class EnumerationPropertiesEditionProvider extends UmlPropertiesEditionPr
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof Enumeration) {
-			return new EnumerationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof Enumeration) {
+      return new EnumerationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -117,18 +117,18 @@ public class EnumerationPropertiesEditionProvider extends UmlPropertiesEditionPr
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof Enumeration) {
-			if (EnumerationGeneralPropertiesEditionComponent.GENERAL_PART.equals(part))
-				return new EnumerationGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-			if (EnumerationLiteralsPropertiesEditionComponent.LITERALS_PART.equals(part))
-				return new EnumerationLiteralsPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-			if (EnumerationAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part))
-				return new EnumerationAttributesPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-			if (EnumerationOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(part))
-				return new EnumerationOperationsPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof Enumeration) {
+      if (EnumerationGeneralPropertiesEditionComponent.GENERAL_PART.equals(part))
+        return new EnumerationGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+      if (EnumerationLiteralsPropertiesEditionComponent.LITERALS_PART.equals(part))
+        return new EnumerationLiteralsPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+      if (EnumerationAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part))
+        return new EnumerationAttributesPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+      if (EnumerationOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(part))
+        return new EnumerationOperationsPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

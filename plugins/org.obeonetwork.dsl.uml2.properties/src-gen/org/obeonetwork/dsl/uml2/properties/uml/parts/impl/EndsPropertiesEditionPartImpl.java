@@ -76,8 +76,8 @@ public class EndsPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	 * @generated
 	 */
 	public EndsPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+    super(editionComponent);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -87,13 +87,13 @@ public class EndsPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	 * @generated
 	 */
 	public Composite createFigure(final Composite parent) {
-		view = new Composite(parent, SWT.NONE);
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
-		view.setLayout(layout);
-		createControls(view);
-		return view;
-	}
+    view = new Composite(parent, SWT.NONE);
+    GridLayout layout = new GridLayout();
+    layout.numColumns = 3;
+    view.setLayout(layout);
+    createControls(view);
+    return view;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -103,72 +103,72 @@ public class EndsPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	 * @generated
 	 */
 	public void createControls(Composite view) { 
-		CompositionSequence endsStep = new BindingCompositionSequence(propertiesEditionComponent);
-		endsStep.addStep(UmlViewsRepository.Ends.ends_);
-		
-		composer = new PartComposer(endsStep) {
+    CompositionSequence endsStep = new BindingCompositionSequence(propertiesEditionComponent);
+    endsStep.addStep(UmlViewsRepository.Ends.ends_);
+    
+    composer = new PartComposer(endsStep) {
 
-			@Override
-			public Composite addToPart(Composite parent, Object key) {
-				if (key == UmlViewsRepository.Ends.ends_) {
-					return createEndsAdvancedTableComposition(parent);
-				}
-				return parent;
-			}
-		};
-		composer.compose(view);
-	}
+      @Override
+      public Composite addToPart(Composite parent, Object key) {
+        if (key == UmlViewsRepository.Ends.ends_) {
+          return createEndsAdvancedTableComposition(parent);
+        }
+        return parent;
+      }
+    };
+    composer.compose(view);
+  }
 
 	/**
 	 * @param container
 	 * @generated
 	 */
 	protected Composite createEndsAdvancedTableComposition(Composite parent) {
-		this.ends = new ReferencesTable(getDescription(UmlViewsRepository.Ends.ends_, UmlMessages.EndsPropertiesEditionPart_EndsLabel), new ReferencesTableListener() {
-			public void handleAdd() { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EndsPropertiesEditionPartImpl.this, UmlViewsRepository.Ends.ends_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
-				ends.refresh();
-			}
-			public void handleEdit(EObject element) {
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EndsPropertiesEditionPartImpl.this, UmlViewsRepository.Ends.ends_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
-				ends.refresh();
-			}
-			public void handleMove(EObject element, int oldIndex, int newIndex) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EndsPropertiesEditionPartImpl.this, UmlViewsRepository.Ends.ends_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-				ends.refresh();
-			}
-			public void handleRemove(EObject element) { 
-				propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EndsPropertiesEditionPartImpl.this, UmlViewsRepository.Ends.ends_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-				ends.refresh();
-			}
-			public void navigateTo(EObject element) { }
-		});
-		for (ViewerFilter filter : this.endsFilters) {
-			this.ends.addFilter(filter);
-		}
-		this.ends.setHelpText(propertiesEditionComponent.getHelpContent(UmlViewsRepository.Ends.ends_, UmlViewsRepository.SWT_KIND));
-		this.ends.createControls(parent);
-		this.ends.addSelectionListener(new SelectionAdapter() {
-			
-			public void widgetSelected(SelectionEvent e) {
-				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EndsPropertiesEditionPartImpl.this, UmlViewsRepository.Ends.ends_, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
-				}
-			}
-			
-		});
-		GridData endsData = new GridData(GridData.FILL_HORIZONTAL);
-		endsData.horizontalSpan = 3;
-		this.ends.setLayoutData(endsData);
-		this.ends.setLowerBound(2);
-		this.ends.setUpperBound(-1);
-		ends.setID(UmlViewsRepository.Ends.ends_);
-		ends.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
-		// Start of user code for createEndsAdvancedTableComposition
+    this.ends = new ReferencesTable(getDescription(UmlViewsRepository.Ends.ends_, UmlMessages.EndsPropertiesEditionPart_EndsLabel), new ReferencesTableListener() {
+      public void handleAdd() { 
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EndsPropertiesEditionPartImpl.this, UmlViewsRepository.Ends.ends_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+        ends.refresh();
+      }
+      public void handleEdit(EObject element) {
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EndsPropertiesEditionPartImpl.this, UmlViewsRepository.Ends.ends_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+        ends.refresh();
+      }
+      public void handleMove(EObject element, int oldIndex, int newIndex) { 
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EndsPropertiesEditionPartImpl.this, UmlViewsRepository.Ends.ends_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+        ends.refresh();
+      }
+      public void handleRemove(EObject element) { 
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EndsPropertiesEditionPartImpl.this, UmlViewsRepository.Ends.ends_, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+        ends.refresh();
+      }
+      public void navigateTo(EObject element) { }
+    });
+    for (ViewerFilter filter : this.endsFilters) {
+      this.ends.addFilter(filter);
+    }
+    this.ends.setHelpText(propertiesEditionComponent.getHelpContent(UmlViewsRepository.Ends.ends_, UmlViewsRepository.SWT_KIND));
+    this.ends.createControls(parent);
+    this.ends.addSelectionListener(new SelectionAdapter() {
+      
+      public void widgetSelected(SelectionEvent e) {
+        if (e.item != null && e.item.getData() instanceof EObject) {
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(EndsPropertiesEditionPartImpl.this, UmlViewsRepository.Ends.ends_, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+        }
+      }
+      
+    });
+    GridData endsData = new GridData(GridData.FILL_HORIZONTAL);
+    endsData.horizontalSpan = 3;
+    this.ends.setLayoutData(endsData);
+    this.ends.setLowerBound(2);
+    this.ends.setUpperBound(-1);
+    ends.setID(UmlViewsRepository.Ends.ends_);
+    ends.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+    // Start of user code for createEndsAdvancedTableComposition
 
-		// End of user code
-		return parent;
-	}
+    // End of user code
+    return parent;
+  }
 
 
 	/**
@@ -178,7 +178,7 @@ public class EndsPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	 * @generated
 	 */
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-	}
+  }
 
 
 
@@ -210,7 +210,7 @@ public class EndsPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	 * @generated
 	 */
 	public void updateEnds() {
-	ends.refresh();
+  ends.refresh();
 }
 
 	/**
@@ -220,11 +220,11 @@ public class EndsPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	 * @generated
 	 */
 	public void addFilterToEnds(ViewerFilter filter) {
-		endsFilters.add(filter);
-		if (this.ends != null) {
-			this.ends.addFilter(filter);
-		}
-	}
+    endsFilters.add(filter);
+    if (this.ends != null) {
+      this.ends.addFilter(filter);
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -233,8 +233,8 @@ public class EndsPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	 * @generated
 	 */
 	public void addBusinessFilterToEnds(ViewerFilter filter) {
-		endsBusinessFilters.add(filter);
-	}
+    endsBusinessFilters.add(filter);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -243,8 +243,8 @@ public class EndsPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	 * @generated
 	 */
 	public boolean isContainedInEndsTable(EObject element) {
-		return ((ReferencesTableSettings)ends.getInput()).contains(element);
-	}
+    return ((ReferencesTableSettings)ends.getInput()).contains(element);
+  }
 
 
 
@@ -258,8 +258,8 @@ public class EndsPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 	 * @generated
 	 */
 	public String getTitle() {
-		return UmlMessages.Ends_Part_Title;
-	}
+    return UmlMessages.Ends_Part_Title;
+  }
 
 
 

@@ -54,6 +54,7 @@ import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
+import org.eclipse.emf.eef.runtime.ui.widgets.HorizontalBox;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable.ReferencesTableListener;
@@ -245,7 +246,7 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
           return createVisibilityEMFComboViewer(parent);
         }
         if (key == UmlViewsRepository.General.Qualifiers.class) {
-          return createQualifiersGroup(parent);
+          return createQualifiersHBox(parent);
         }
         if (key == UmlViewsRepository.General.Qualifiers.ordered) {
           return createOrderedCheckbox(parent);
@@ -450,21 +451,25 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
   }
 
 	/**
-	 * @generated
-	 */
-	protected Composite createQualifiersGroup(Composite parent) {
-    Group qualifiersGroup = new Group(parent, SWT.NONE);
-    qualifiersGroup.setText(UmlMessages.GeneralPropertiesEditionPart_QualifiersGroupLabel);
-    GridData qualifiersGroupData = new GridData(GridData.FILL_HORIZONTAL);
-    qualifiersGroupData.horizontalSpan = 3;
-    qualifiersGroup.setLayoutData(qualifiersGroupData);
-    GridLayout qualifiersGroupLayout = new GridLayout();
-    qualifiersGroupLayout.numColumns = 3;
-    qualifiersGroup.setLayout(qualifiersGroupLayout);
-    return qualifiersGroup;
+   * @generated
+   */
+  
+  protected Composite createQualifiersHBox(Composite parent) {
+    Composite container = new Composite(parent, SWT.NONE);
+    GridLayout layout = new GridLayout();
+    container.setLayout(layout);
+    GridData gridData = new GridData(GridData.FILL_HORIZONTAL);
+    gridData.horizontalSpan = 3;
+    container.setLayoutData(gridData);
+    HorizontalBox qualifiersHBox = new HorizontalBox(container);
+    //Apply constraint for checkbox
+    GridData constraint = new GridData(GridData.FILL_HORIZONTAL);
+    constraint.horizontalAlignment = GridData.BEGINNING;
+    qualifiersHBox.setLayoutData(constraint);
+    return qualifiersHBox;
   }
 
-	/**
+  /**
 	 * @generated
 	 */
 	

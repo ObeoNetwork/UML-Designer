@@ -85,11 +85,11 @@ public class ConnectorEndsPropertiesEditionComponent extends SinglePartPropertie
 	 * @generated
 	 */
 	public ConnectorEndsPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject connector, String editing_mode) {
-		super(editingContext, connector, editing_mode);
-		parts = new String[] { ENDS_PART };
-		repositoryKey = UmlViewsRepository.class;
-		partKey = UmlViewsRepository.Ends.class;
-	}
+    super(editingContext, connector, editing_mode);
+    parts = new String[] { ENDS_PART };
+    repositoryKey = UmlViewsRepository.class;
+    partKey = UmlViewsRepository.Ends.class;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -99,38 +99,38 @@ public class ConnectorEndsPropertiesEditionComponent extends SinglePartPropertie
 	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			
-			final Connector connector = (Connector)elt;
-			final EndsPropertiesEditionPart endsPart = (EndsPropertiesEditionPart)editingPart;
-			// init values
-			if (isAccessible(UmlViewsRepository.Ends.ends_)) {
-				endsSettings = new ReferencesTableSettings(connector, UMLPackage.eINSTANCE.getConnector_End());
-				endsPart.initEnds(endsSettings);
-			}
-			// init filters
-			if (isAccessible(UmlViewsRepository.Ends.ends_)) {
-				endsPart.addFilterToEnds(new ViewerFilter() {
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof ConnectorEnd);
-					}
-			
-				});
-			}
-			// init values for referenced views
-			
-			// init filters for referenced views
-			
-		}
-		setInitializing(false);
-	}
+    setInitializing(true);
+    if (editingPart != null && key == partKey) {
+      editingPart.setContext(elt, allResource);
+      
+      final Connector connector = (Connector)elt;
+      final EndsPropertiesEditionPart endsPart = (EndsPropertiesEditionPart)editingPart;
+      // init values
+      if (isAccessible(UmlViewsRepository.Ends.ends_)) {
+        endsSettings = new ReferencesTableSettings(connector, UMLPackage.eINSTANCE.getConnector_End());
+        endsPart.initEnds(endsSettings);
+      }
+      // init filters
+      if (isAccessible(UmlViewsRepository.Ends.ends_)) {
+        endsPart.addFilterToEnds(new ViewerFilter() {
+          /**
+           * {@inheritDoc}
+           * 
+           * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+           */
+          public boolean select(Viewer viewer, Object parentElement, Object element) {
+            return (element instanceof ConnectorEnd);
+          }
+      
+        });
+      }
+      // init values for referenced views
+      
+      // init filters for referenced views
+      
+    }
+    setInitializing(false);
+  }
 
 
 
@@ -152,34 +152,33 @@ public class ConnectorEndsPropertiesEditionComponent extends SinglePartPropertie
 	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		Connector connector = (Connector)semanticObject;
-
-		if (UmlViewsRepository.Ends.ends_ == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, endsSettings, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy instanceof CreateEditingPolicy) {
-						policy.execute();
-					}
-				}
-			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
-					if (editionPolicy != null) {
-						editionPolicy.execute();
-					}
-				}
-			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				endsSettings.removeFromReference((EObject) event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-				endsSettings.move(event.getNewIndex(), (ConnectorEnd) event.getNewValue());
-			}
-		}
-	}
+    Connector connector = (Connector)semanticObject;
+    if (UmlViewsRepository.Ends.ends_ == event.getAffectedEditor()) {
+      if (event.getKind() == PropertiesEditionEvent.ADD) {
+        EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, endsSettings, editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy policy = provider.getPolicy(context);
+          if (policy instanceof CreateEditingPolicy) {
+            policy.execute();
+          }
+        }
+      } else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+        EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+        PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+        if (provider != null) {
+          PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+          if (editionPolicy != null) {
+            editionPolicy.execute();
+          }
+        }
+      } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+        endsSettings.removeFromReference((EObject) event.getNewValue());
+      } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+        endsSettings.move(event.getNewIndex(), (ConnectorEnd) event.getNewValue());
+      }
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -215,8 +214,8 @@ public class ConnectorEndsPropertiesEditionComponent extends SinglePartPropertie
 	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.kind || key == UmlViewsRepository.General.Qualifiers.static_ || key == UmlViewsRepository.Ends.ends_;
-	}
+    return key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.kind || key == UmlViewsRepository.General.Qualifiers.static_ || key == UmlViewsRepository.Ends.ends_;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -225,17 +224,17 @@ public class ConnectorEndsPropertiesEditionComponent extends SinglePartPropertie
 	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
-		Diagnostic ret = Diagnostic.OK_INSTANCE;
-		if (event.getNewValue() != null) {
-			try {
-			} catch (IllegalArgumentException iae) {
-				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
-				ret = BasicDiagnostic.toDiagnostic(we);
-			}
-		}
-		return ret;
-	}
+    Diagnostic ret = Diagnostic.OK_INSTANCE;
+    if (event.getNewValue() != null) {
+      try {
+      } catch (IllegalArgumentException iae) {
+        ret = BasicDiagnostic.toDiagnostic(iae);
+      } catch (WrappedException we) {
+        ret = BasicDiagnostic.toDiagnostic(we);
+      }
+    }
+    return ret;
+  }
 
 
 	
