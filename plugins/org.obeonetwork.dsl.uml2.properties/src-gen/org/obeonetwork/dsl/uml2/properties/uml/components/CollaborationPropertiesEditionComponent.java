@@ -68,11 +68,11 @@ public class CollaborationPropertiesEditionComponent extends SinglePartPropertie
 	 * @generated
 	 */
 	public CollaborationPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject collaboration, String editing_mode) {
-    super(editingContext, collaboration, editing_mode);
-    parts = new String[] { GENERAL_PART };
-    repositoryKey = UmlViewsRepository.class;
-    partKey = UmlViewsRepository.General.class;
-  }
+		super(editingContext, collaboration, editing_mode);
+		parts = new String[] { GENERAL_PART };
+		repositoryKey = UmlViewsRepository.class;
+		partKey = UmlViewsRepository.General.class;
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -82,35 +82,35 @@ public class CollaborationPropertiesEditionComponent extends SinglePartPropertie
 	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-    setInitializing(true);
-    if (editingPart != null && key == partKey) {
-      editingPart.setContext(elt, allResource);
-      
-      final Collaboration collaboration = (Collaboration)elt;
-      final GeneralPropertiesEditionPart generalPart = (GeneralPropertiesEditionPart)editingPart;
-      // init values
-      if (isAccessible(UmlViewsRepository.General.name))
-        generalPart.setName(EEFConverterUtil.convertToString(TypesPackage.Literals.STRING, collaboration.getName()));
-      
-      if (isAccessible(UmlViewsRepository.General.visibility)) {
-        generalPart.initVisibility(EEFUtils.choiceOfValues(collaboration, UMLPackage.eINSTANCE.getNamedElement_Visibility()), collaboration.getVisibility());
-      }
-      generalPart.setAbstract_(collaboration.isAbstract());
-      
-      generalPart.setLeaf(collaboration.isLeaf());
-      
-      // init filters
-      
-      
-      
-      
-      // init values for referenced views
-      
-      // init filters for referenced views
-      
-    }
-    setInitializing(false);
-  }
+		setInitializing(true);
+		if (editingPart != null && key == partKey) {
+			editingPart.setContext(elt, allResource);
+			
+			final Collaboration collaboration = (Collaboration)elt;
+			final GeneralPropertiesEditionPart generalPart = (GeneralPropertiesEditionPart)editingPart;
+			// init values
+			if (isAccessible(UmlViewsRepository.General.name))
+				generalPart.setName(EEFConverterUtil.convertToString(TypesPackage.Literals.STRING, collaboration.getName()));
+			
+			if (isAccessible(UmlViewsRepository.General.visibility)) {
+				generalPart.initVisibility(EEFUtils.choiceOfValues(collaboration, UMLPackage.eINSTANCE.getNamedElement_Visibility()), collaboration.getVisibility());
+			}
+			generalPart.setAbstract_(collaboration.isAbstract());
+			
+			generalPart.setLeaf(collaboration.isLeaf());
+			
+			// init filters
+			
+			
+			
+			
+			// init values for referenced views
+			
+			// init filters for referenced views
+			
+		}
+		setInitializing(false);
+	}
 
 
 
@@ -144,20 +144,20 @@ public class CollaborationPropertiesEditionComponent extends SinglePartPropertie
 	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-    Collaboration collaboration = (Collaboration)semanticObject;
-    if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
-      collaboration.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
-    }
-    if (UmlViewsRepository.General.visibility == event.getAffectedEditor()) {
-      collaboration.setVisibility((VisibilityKind)event.getNewValue());
-    }
-    if (UmlViewsRepository.General.Qualifiers.abstract_ == event.getAffectedEditor()) {
-      collaboration.setIsAbstract((Boolean)event.getNewValue());
-    }
-    if (UmlViewsRepository.General.Qualifiers.leaf == event.getAffectedEditor()) {
-      collaboration.setIsLeaf((Boolean)event.getNewValue());
-    }
-  }
+		Collaboration collaboration = (Collaboration)semanticObject;
+		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
+			collaboration.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
+		}
+		if (UmlViewsRepository.General.visibility == event.getAffectedEditor()) {
+			collaboration.setVisibility((VisibilityKind)event.getNewValue());
+		}
+		if (UmlViewsRepository.General.Qualifiers.abstract_ == event.getAffectedEditor()) {
+			collaboration.setIsAbstract((Boolean)event.getNewValue());
+		}
+		if (UmlViewsRepository.General.Qualifiers.leaf == event.getAffectedEditor()) {
+			collaboration.setIsLeaf((Boolean)event.getNewValue());
+		}
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -217,8 +217,8 @@ public class CollaborationPropertiesEditionComponent extends SinglePartPropertie
 	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-    return key == UmlViewsRepository.General.Qualifiers.abstract_ || key == UmlViewsRepository.General.Qualifiers.leaf;
-  }
+		return key == UmlViewsRepository.General.Qualifiers.abstract_ || key == UmlViewsRepository.General.Qualifiers.leaf;
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -227,45 +227,45 @@ public class CollaborationPropertiesEditionComponent extends SinglePartPropertie
 	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
-    Diagnostic ret = Diagnostic.OK_INSTANCE;
-    if (event.getNewValue() != null) {
-      try {
-        if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
-          Object newValue = event.getNewValue();
-          if (newValue instanceof String) {
-            newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), (String)newValue);
-          }
-          ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newValue);
-        }
-        if (UmlViewsRepository.General.visibility == event.getAffectedEditor()) {
-          Object newValue = event.getNewValue();
-          if (newValue instanceof String) {
-            newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), (String)newValue);
-          }
-          ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), newValue);
-        }
-        if (UmlViewsRepository.General.Qualifiers.abstract_ == event.getAffectedEditor()) {
-          Object newValue = event.getNewValue();
-          if (newValue instanceof String) {
-            newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getClassifier_IsAbstract().getEAttributeType(), (String)newValue);
-          }
-          ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getClassifier_IsAbstract().getEAttributeType(), newValue);
-        }
-        if (UmlViewsRepository.General.Qualifiers.leaf == event.getAffectedEditor()) {
-          Object newValue = event.getNewValue();
-          if (newValue instanceof String) {
-            newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), (String)newValue);
-          }
-          ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), newValue);
-        }
-      } catch (IllegalArgumentException iae) {
-        ret = BasicDiagnostic.toDiagnostic(iae);
-      } catch (WrappedException we) {
-        ret = BasicDiagnostic.toDiagnostic(we);
-      }
-    }
-    return ret;
-  }
+		Diagnostic ret = Diagnostic.OK_INSTANCE;
+		if (event.getNewValue() != null) {
+			try {
+				if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newValue);
+				}
+				if (UmlViewsRepository.General.visibility == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), newValue);
+				}
+				if (UmlViewsRepository.General.Qualifiers.abstract_ == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getClassifier_IsAbstract().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getClassifier_IsAbstract().getEAttributeType(), newValue);
+				}
+				if (UmlViewsRepository.General.Qualifiers.leaf == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), newValue);
+				}
+			} catch (IllegalArgumentException iae) {
+				ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (WrappedException we) {
+				ret = BasicDiagnostic.toDiagnostic(we);
+			}
+		}
+		return ret;
+	}
 
 
 	

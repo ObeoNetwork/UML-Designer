@@ -152,6 +152,132 @@ public interface GeneralPropertiesEditionPart {
 
 
 	/**
+	 * @return the readOnly
+	 * @generated
+	 */
+	public Boolean getReadOnly();
+
+	/**
+	 * Defines a new readOnly
+	 * @param newValue the new readOnly to set
+	 * @generated
+	 */
+	public void setReadOnly(Boolean newValue);
+
+
+	/**
+	 * @return the derived
+	 * @generated
+	 */
+	public Boolean getDerived();
+
+	/**
+	 * Defines a new derived
+	 * @param newValue the new derived to set
+	 * @generated
+	 */
+	public void setDerived(Boolean newValue);
+
+
+	/**
+	 * @return the derivedUnion
+	 * @generated
+	 */
+	public Boolean getDerivedUnion();
+
+	/**
+	 * Defines a new derivedUnion
+	 * @param newValue the new derivedUnion to set
+	 * @generated
+	 */
+	public void setDerivedUnion(Boolean newValue);
+
+
+	/**
+	 * @return the substitutable
+	 * @generated
+	 */
+	public Boolean getSubstitutable();
+
+	/**
+	 * Defines a new substitutable
+	 * @param newValue the new substitutable to set
+	 * @generated
+	 */
+	public void setSubstitutable(Boolean newValue);
+
+
+	/**
+	 * @return the active
+	 * @generated
+	 */
+	public Boolean getActive();
+
+	/**
+	 * Defines a new active
+	 * @param newValue the new active to set
+	 * @generated
+	 */
+	public void setActive(Boolean newValue);
+
+
+	/**
+	 * @return the behavior
+	 * @generated
+	 */
+	public Boolean getBehavior();
+
+	/**
+	 * Defines a new behavior
+	 * @param newValue the new behavior to set
+	 * @generated
+	 */
+	public void setBehavior(Boolean newValue);
+
+
+	/**
+	 * @return the service
+	 * @generated
+	 */
+	public Boolean getService();
+
+	/**
+	 * Defines a new service
+	 * @param newValue the new service to set
+	 * @generated
+	 */
+	public void setService(Boolean newValue);
+
+
+	/**
+	 * @return the reentrant
+	 * @generated
+	 */
+	public Boolean getReentrant();
+
+	/**
+	 * Defines a new reentrant
+	 * @param newValue the new reentrant to set
+	 * @generated
+	 */
+	public void setReentrant(Boolean newValue);
+
+
+	/**
+	 * @return the indirectlyInstantiated
+	 * @generated
+	 */
+	public Boolean getIndirectlyInstantiated();
+
+	/**
+	 * Defines a new indirectlyInstantiated
+	 * @param newValue the new indirectlyInstantiated to set
+	 * @generated
+	 */
+	public void setIndirectlyInstantiated(Boolean newValue);
+
+
+	/**
 	 * @return the type
 	 * @generated
 	 */
@@ -220,48 +346,6 @@ public interface GeneralPropertiesEditionPart {
 
 
 	/**
-	 * @return the readOnly
-	 * @generated
-	 */
-	public Boolean getReadOnly();
-
-	/**
-	 * Defines a new readOnly
-	 * @param newValue the new readOnly to set
-	 * @generated
-	 */
-	public void setReadOnly(Boolean newValue);
-
-
-	/**
-	 * @return the derived
-	 * @generated
-	 */
-	public Boolean getDerived();
-
-	/**
-	 * Defines a new derived
-	 * @param newValue the new derived to set
-	 * @generated
-	 */
-	public void setDerived(Boolean newValue);
-
-
-	/**
-	 * @return the derivedUnion
-	 * @generated
-	 */
-	public Boolean getDerivedUnion();
-
-	/**
-	 * Defines a new derivedUnion
-	 * @param newValue the new derivedUnion to set
-	 * @generated
-	 */
-	public void setDerivedUnion(Boolean newValue);
-
-
-	/**
 	 * @return the aggregation
 	 * @generated
 	 */
@@ -322,20 +406,6 @@ public interface GeneralPropertiesEditionPart {
 	 * @generated
 	 */
 	public void setDefaultValue(String newValue);
-
-
-	/**
-	 * @return the substitutable
-	 * @generated
-	 */
-	public Boolean getSubstitutable();
-
-	/**
-	 * Defines a new substitutable
-	 * @param newValue the new substitutable to set
-	 * @generated
-	 */
-	public void setSubstitutable(Boolean newValue);
 
 
 
@@ -507,34 +577,6 @@ public interface GeneralPropertiesEditionPart {
 
 
 	/**
-	 * @return the active
-	 * @generated
-	 */
-	public Boolean getActive();
-
-	/**
-	 * Defines a new active
-	 * @param newValue the new active to set
-	 * @generated
-	 */
-	public void setActive(Boolean newValue);
-
-
-	/**
-	 * @return the indirectlyInstantiated
-	 * @generated
-	 */
-	public Boolean getIndirectlyInstantiated();
-
-	/**
-	 * Defines a new indirectlyInstantiated
-	 * @param newValue the new indirectlyInstantiated to set
-	 * @generated
-	 */
-	public void setIndirectlyInstantiated(Boolean newValue);
-
-
-	/**
 	 * @return the kind
 	 * @generated
 	 */
@@ -553,34 +595,6 @@ public interface GeneralPropertiesEditionPart {
 	 * @generated
 	 */
 	public void setKind(Enumerator newValue);
-
-
-	/**
-	 * @return the behavior
-	 * @generated
-	 */
-	public Boolean getBehavior();
-
-	/**
-	 * Defines a new behavior
-	 * @param newValue the new behavior to set
-	 * @generated
-	 */
-	public void setBehavior(Boolean newValue);
-
-
-	/**
-	 * @return the service
-	 * @generated
-	 */
-	public Boolean getService();
-
-	/**
-	 * Defines a new service
-	 * @param newValue the new service to set
-	 * @generated
-	 */
-	public void setService(Boolean newValue);
 
 
 	/**
@@ -832,20 +846,6 @@ public interface GeneralPropertiesEditionPart {
 	 * @generated
 	 */
 	public void setIcon(String newValue);
-
-
-	/**
-	 * @return the reentrant
-	 * @generated
-	 */
-	public Boolean getReentrant();
-
-	/**
-	 * Defines a new reentrant
-	 * @param newValue the new reentrant to set
-	 * @generated
-	 */
-	public void setReentrant(Boolean newValue);
 
 
 	/**

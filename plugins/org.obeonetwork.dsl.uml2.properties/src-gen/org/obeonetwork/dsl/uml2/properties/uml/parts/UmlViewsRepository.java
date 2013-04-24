@@ -79,6 +79,60 @@ public class UmlViewsRepository {
 			
 			public static String query = "uml::General::qualifiers::query";
 			
+			/**
+			 * @generated
+			 */
+			
+			public static String readOnly = "uml::General::qualifiers::readOnly";
+			
+			/**
+			 * @generated
+			 */
+			
+			public static String derived = "uml::General::qualifiers::derived";
+			
+			/**
+			 * @generated
+			 */
+			
+			public static String derivedUnion = "uml::General::qualifiers::derivedUnion";
+			
+			/**
+			 * @generated
+			 */
+			
+			public static String substitutable = "uml::General::qualifiers::substitutable";
+			
+			/**
+			 * @generated
+			 */
+			
+			public static String active = "uml::General::qualifiers::active";
+			
+			/**
+			 * @generated
+			 */
+			
+			public static String behavior = "uml::General::qualifiers::behavior";
+			
+			/**
+			 * @generated
+			 */
+			
+			public static String service = "uml::General::qualifiers::service";
+			
+			/**
+			 * @generated
+			 */
+			
+			public static String reentrant = "uml::General::qualifiers::reentrant";
+			
+			/**
+			 * @generated
+			 */
+			
+			public static String indirectlyInstantiated = "uml::General::qualifiers::indirectlyInstantiated";
+			
 	
 		}
 	
@@ -93,24 +147,6 @@ public class UmlViewsRepository {
 	 */
 	
 	public static String direction = "uml::General::direction";
-	
-	/**
-	 * @generated
-	 */
-	
-	public static String readOnly = "uml::General::readOnly";
-	
-	/**
-	 * @generated
-	 */
-	
-	public static String derived = "uml::General::derived";
-	
-	/**
-	 * @generated
-	 */
-	
-	public static String derivedUnion = "uml::General::derivedUnion";
 	
 	/**
 	 * @generated
@@ -140,12 +176,6 @@ public class UmlViewsRepository {
 	 * @generated
 	 */
 	
-	public static String substitutable = "uml::General::substitutable";
-	
-	/**
-	 * @generated
-	 */
-	
 	public static String ownedEnd = "uml::General::ownedEnd";
 	
 	/**
@@ -170,31 +200,7 @@ public class UmlViewsRepository {
 	 * @generated
 	 */
 	
-	public static String active = "uml::General::active";
-	
-	/**
-	 * @generated
-	 */
-	
-	public static String indirectlyInstantiated = "uml::General::indirectlyInstantiated";
-	
-	/**
-	 * @generated
-	 */
-	
 	public static String kind = "uml::General::kind";
-	
-	/**
-	 * @generated
-	 */
-	
-	public static String behavior = "uml::General::behavior";
-	
-	/**
-	 * @generated
-	 */
-	
-	public static String service = "uml::General::service";
 	
 	/**
 	 * @generated
@@ -231,12 +237,6 @@ public class UmlViewsRepository {
 	 */
 	
 	public static String icon = "uml::General::icon";
-	
-	/**
-	 * @generated
-	 */
-	
-	public static String reentrant = "uml::General::reentrant";
 	
 	/**
 	 * @generated

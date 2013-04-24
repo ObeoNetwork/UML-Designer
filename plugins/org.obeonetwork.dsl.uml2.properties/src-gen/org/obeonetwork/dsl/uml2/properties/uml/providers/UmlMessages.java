@@ -27,6 +27,7 @@ public class UmlMessages extends NLS {
 	
 	private static final String BUNDLE_NAME = "org.obeonetwork.dsl.uml2.properties.uml.providers.umlMessages"; //$NON-NLS-1$
 
+
 	/**
 	 * @generated
 	 */
@@ -152,18 +153,6 @@ public class UmlMessages extends NLS {
 	 * @generated
 	 */
 	
-	public static String GeneralPropertiesEditionPart_TypeLabel;
-
-	/**
-	 * @generated
-	 */
-	
-	public static String GeneralPropertiesEditionPart_DirectionLabel;
-
-	/**
-	 * @generated
-	 */
-	
 	public static String GeneralPropertiesEditionPart_ReadOnlyLabel;
 
 	/**
@@ -177,6 +166,54 @@ public class UmlMessages extends NLS {
 	 */
 	
 	public static String GeneralPropertiesEditionPart_DerivedUnionLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_SubstitutableLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_ActiveLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_BehaviorLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_ServiceLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_ReentrantLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_IndirectlyInstantiatedLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_TypeLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_DirectionLabel;
 
 	/**
 	 * @generated
@@ -206,12 +243,6 @@ public class UmlMessages extends NLS {
 	 * @generated
 	 */
 	
-	public static String GeneralPropertiesEditionPart_SubstitutableLabel;
-
-	/**
-	 * @generated
-	 */
-	
 	public static String GeneralPropertiesEditionPart_OwnedEndLabel;
 
 	/**
@@ -236,31 +267,7 @@ public class UmlMessages extends NLS {
 	 * @generated
 	 */
 	
-	public static String GeneralPropertiesEditionPart_ActiveLabel;
-
-	/**
-	 * @generated
-	 */
-	
-	public static String GeneralPropertiesEditionPart_IndirectlyInstantiatedLabel;
-
-	/**
-	 * @generated
-	 */
-	
 	public static String GeneralPropertiesEditionPart_KindLabel;
-
-	/**
-	 * @generated
-	 */
-	
-	public static String GeneralPropertiesEditionPart_BehaviorLabel;
-
-	/**
-	 * @generated
-	 */
-	
-	public static String GeneralPropertiesEditionPart_ServiceLabel;
 
 	/**
 	 * @generated
@@ -297,12 +304,6 @@ public class UmlMessages extends NLS {
 	 */
 	
 	public static String GeneralPropertiesEditionPart_IconLabel;
-
-	/**
-	 * @generated
-	 */
-	
-	public static String GeneralPropertiesEditionPart_ReentrantLabel;
 
 	/**
 	 * @generated
@@ -471,6 +472,6 @@ public class UmlMessages extends NLS {
 	 */
 	
 	private UmlMessages() {
-    //protect instanciation
-  }
+		//protect instanciation
+	}
 }

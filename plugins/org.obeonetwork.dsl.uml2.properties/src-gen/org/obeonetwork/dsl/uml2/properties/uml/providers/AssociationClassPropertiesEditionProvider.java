@@ -62,9 +62,9 @@ public class AssociationClassPropertiesEditionProvider extends UmlPropertiesEdit
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-    return (editingContext.getEObject() instanceof AssociationClass) 
-          && (UMLPackage.Literals.ASSOCIATION_CLASS == editingContext.getEObject().eClass());
-  }
+		return (editingContext.getEObject() instanceof AssociationClass) 
+					&& (UMLPackage.Literals.ASSOCIATION_CLASS == editingContext.getEObject().eClass());
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -72,8 +72,8 @@ public class AssociationClassPropertiesEditionProvider extends UmlPropertiesEdit
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-    return (editingContext.getEObject() instanceof AssociationClass) && (AssociationClassPropertiesEditionComponent.GENERAL_PART.equals(part));
-  }
+		return (editingContext.getEObject() instanceof AssociationClass) && (AssociationClassPropertiesEditionComponent.GENERAL_PART.equals(part));
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -82,8 +82,8 @@ public class AssociationClassPropertiesEditionProvider extends UmlPropertiesEdit
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-    return (editingContext.getEObject() instanceof AssociationClass) && (refinement == AssociationClassPropertiesEditionComponent.class);
-  }
+		return (editingContext.getEObject() instanceof AssociationClass) && (refinement == AssociationClassPropertiesEditionComponent.class);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -92,8 +92,8 @@ public class AssociationClassPropertiesEditionProvider extends UmlPropertiesEdit
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-    return (editingContext.getEObject() instanceof AssociationClass) && ((AssociationClassPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == AssociationClassPropertiesEditionComponent.class));
-  }
+		return (editingContext.getEObject() instanceof AssociationClass) && ((AssociationClassPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == AssociationClassPropertiesEditionComponent.class));
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -101,11 +101,11 @@ public class AssociationClassPropertiesEditionProvider extends UmlPropertiesEdit
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-    if (editingContext.getEObject() instanceof AssociationClass) {
-      return new AssociationClassPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-    }
-    return super.getPropertiesEditingComponent(editingContext, mode);
-  }
+		if (editingContext.getEObject() instanceof AssociationClass) {
+			return new AssociationClassPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		}
+		return super.getPropertiesEditingComponent(editingContext, mode);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -113,12 +113,12 @@ public class AssociationClassPropertiesEditionProvider extends UmlPropertiesEdit
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-    if (editingContext.getEObject() instanceof AssociationClass) {
-      if (AssociationClassPropertiesEditionComponent.GENERAL_PART.equals(part))
-        return new AssociationClassPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-    }
-    return super.getPropertiesEditingComponent(editingContext, mode, part);
-  }
+		if (editingContext.getEObject() instanceof AssociationClass) {
+			if (AssociationClassPropertiesEditionComponent.GENERAL_PART.equals(part))
+				return new AssociationClassPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		}
+		return super.getPropertiesEditingComponent(editingContext, mode, part);
+	}
 
 	/**
 	 * {@inheritDoc}

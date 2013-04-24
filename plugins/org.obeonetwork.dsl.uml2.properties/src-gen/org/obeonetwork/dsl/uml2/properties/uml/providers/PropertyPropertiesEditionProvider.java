@@ -62,9 +62,9 @@ public class PropertyPropertiesEditionProvider extends UmlPropertiesEditionProvi
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-    return (editingContext.getEObject() instanceof Property) 
-          && (UMLPackage.Literals.PROPERTY == editingContext.getEObject().eClass());
-  }
+		return (editingContext.getEObject() instanceof Property) 
+					&& (UMLPackage.Literals.PROPERTY == editingContext.getEObject().eClass());
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -72,8 +72,8 @@ public class PropertyPropertiesEditionProvider extends UmlPropertiesEditionProvi
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-    return (editingContext.getEObject() instanceof Property) && (PropertyPropertiesEditionComponent.GENERAL_PART.equals(part));
-  }
+		return (editingContext.getEObject() instanceof Property) && (PropertyPropertiesEditionComponent.GENERAL_PART.equals(part));
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -82,8 +82,8 @@ public class PropertyPropertiesEditionProvider extends UmlPropertiesEditionProvi
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-    return (editingContext.getEObject() instanceof Property) && (refinement == PropertyPropertiesEditionComponent.class);
-  }
+		return (editingContext.getEObject() instanceof Property) && (refinement == PropertyPropertiesEditionComponent.class);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -92,8 +92,8 @@ public class PropertyPropertiesEditionProvider extends UmlPropertiesEditionProvi
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-    return (editingContext.getEObject() instanceof Property) && ((PropertyPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == PropertyPropertiesEditionComponent.class));
-  }
+		return (editingContext.getEObject() instanceof Property) && ((PropertyPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == PropertyPropertiesEditionComponent.class));
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -101,11 +101,11 @@ public class PropertyPropertiesEditionProvider extends UmlPropertiesEditionProvi
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-    if (editingContext.getEObject() instanceof Property) {
-      return new PropertyPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-    }
-    return super.getPropertiesEditingComponent(editingContext, mode);
-  }
+		if (editingContext.getEObject() instanceof Property) {
+			return new PropertyPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		}
+		return super.getPropertiesEditingComponent(editingContext, mode);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -113,12 +113,12 @@ public class PropertyPropertiesEditionProvider extends UmlPropertiesEditionProvi
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-    if (editingContext.getEObject() instanceof Property) {
-      if (PropertyPropertiesEditionComponent.GENERAL_PART.equals(part))
-        return new PropertyPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-    }
-    return super.getPropertiesEditingComponent(editingContext, mode, part);
-  }
+		if (editingContext.getEObject() instanceof Property) {
+			if (PropertyPropertiesEditionComponent.GENERAL_PART.equals(part))
+				return new PropertyPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		}
+		return super.getPropertiesEditingComponent(editingContext, mode, part);
+	}
 
 	/**
 	 * {@inheritDoc}

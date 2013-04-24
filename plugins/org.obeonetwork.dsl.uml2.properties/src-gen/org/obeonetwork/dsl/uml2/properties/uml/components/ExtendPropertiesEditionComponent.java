@@ -69,11 +69,11 @@ public class ExtendPropertiesEditionComponent extends SinglePartPropertiesEditin
 	 * @generated
 	 */
 	public ExtendPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject extend, String editing_mode) {
-    super(editingContext, extend, editing_mode);
-    parts = new String[] { GENERAL_PART };
-    repositoryKey = UmlViewsRepository.class;
-    partKey = UmlViewsRepository.General.class;
-  }
+		super(editingContext, extend, editing_mode);
+		parts = new String[] { GENERAL_PART };
+		repositoryKey = UmlViewsRepository.class;
+		partKey = UmlViewsRepository.General.class;
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -83,33 +83,33 @@ public class ExtendPropertiesEditionComponent extends SinglePartPropertiesEditin
 	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-    setInitializing(true);
-    if (editingPart != null && key == partKey) {
-      editingPart.setContext(elt, allResource);
-      
-      final Extend extend = (Extend)elt;
-      final GeneralPropertiesEditionPart generalPart = (GeneralPropertiesEditionPart)editingPart;
-      // init values
-      if (isAccessible(UmlViewsRepository.General.name))
-        generalPart.setName(EEFConverterUtil.convertToString(TypesPackage.Literals.STRING, extend.getName()));
-      
-      if (isAccessible(UmlViewsRepository.General.visibility)) {
-        generalPart.initVisibility(EEFUtils.choiceOfValues(extend, UMLPackage.eINSTANCE.getNamedElement_Visibility()), extend.getVisibility());
-      }
-      if (isAccessible(UmlViewsRepository.General.extendedCase)) {
-        generalPart.initExtendedCase(EEFUtils.choiceOfValues(extend, UMLPackage.eINSTANCE.getExtend_ExtendedCase()), extend.getExtendedCase());
-      }
-      // init filters
-      
-      
-      
-      // init values for referenced views
-      
-      // init filters for referenced views
-      
-    }
-    setInitializing(false);
-  }
+		setInitializing(true);
+		if (editingPart != null && key == partKey) {
+			editingPart.setContext(elt, allResource);
+			
+			final Extend extend = (Extend)elt;
+			final GeneralPropertiesEditionPart generalPart = (GeneralPropertiesEditionPart)editingPart;
+			// init values
+			if (isAccessible(UmlViewsRepository.General.name))
+				generalPart.setName(EEFConverterUtil.convertToString(TypesPackage.Literals.STRING, extend.getName()));
+			
+			if (isAccessible(UmlViewsRepository.General.visibility)) {
+				generalPart.initVisibility(EEFUtils.choiceOfValues(extend, UMLPackage.eINSTANCE.getNamedElement_Visibility()), extend.getVisibility());
+			}
+			if (isAccessible(UmlViewsRepository.General.extendedCase)) {
+				generalPart.initExtendedCase(EEFUtils.choiceOfValues(extend, UMLPackage.eINSTANCE.getExtend_ExtendedCase()), extend.getExtendedCase());
+			}
+			// init filters
+			
+			
+			
+			// init values for referenced views
+			
+			// init filters for referenced views
+			
+		}
+		setInitializing(false);
+	}
 
 
 
@@ -139,17 +139,17 @@ public class ExtendPropertiesEditionComponent extends SinglePartPropertiesEditin
 	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-    Extend extend = (Extend)semanticObject;
-    if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
-      extend.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
-    }
-    if (UmlViewsRepository.General.visibility == event.getAffectedEditor()) {
-      extend.setVisibility((VisibilityKind)event.getNewValue());
-    }
-    if (UmlViewsRepository.General.extendedCase == event.getAffectedEditor()) {
-      extend.setExtendedCase(!"".equals(event.getNewValue()) ? (UseCase) event.getNewValue() : null);
-    }
-  }
+		Extend extend = (Extend)semanticObject;
+		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
+			extend.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
+		}
+		if (UmlViewsRepository.General.visibility == event.getAffectedEditor()) {
+			extend.setVisibility((VisibilityKind)event.getNewValue());
+		}
+		if (UmlViewsRepository.General.extendedCase == event.getAffectedEditor()) {
+			extend.setExtendedCase(!"".equals(event.getNewValue()) ? (UseCase) event.getNewValue() : null);
+		}
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -204,8 +204,8 @@ public class ExtendPropertiesEditionComponent extends SinglePartPropertiesEditin
 	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-    return key == UmlViewsRepository.General.extendedCase;
-  }
+		return key == UmlViewsRepository.General.extendedCase;
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -214,31 +214,31 @@ public class ExtendPropertiesEditionComponent extends SinglePartPropertiesEditin
 	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
-    Diagnostic ret = Diagnostic.OK_INSTANCE;
-    if (event.getNewValue() != null) {
-      try {
-        if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
-          Object newValue = event.getNewValue();
-          if (newValue instanceof String) {
-            newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), (String)newValue);
-          }
-          ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newValue);
-        }
-        if (UmlViewsRepository.General.visibility == event.getAffectedEditor()) {
-          Object newValue = event.getNewValue();
-          if (newValue instanceof String) {
-            newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), (String)newValue);
-          }
-          ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), newValue);
-        }
-      } catch (IllegalArgumentException iae) {
-        ret = BasicDiagnostic.toDiagnostic(iae);
-      } catch (WrappedException we) {
-        ret = BasicDiagnostic.toDiagnostic(we);
-      }
-    }
-    return ret;
-  }
+		Diagnostic ret = Diagnostic.OK_INSTANCE;
+		if (event.getNewValue() != null) {
+			try {
+				if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newValue);
+				}
+				if (UmlViewsRepository.General.visibility == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), newValue);
+				}
+			} catch (IllegalArgumentException iae) {
+				ret = BasicDiagnostic.toDiagnostic(iae);
+			} catch (WrappedException we) {
+				ret = BasicDiagnostic.toDiagnostic(we);
+			}
+		}
+		return ret;
+	}
 
 
 	

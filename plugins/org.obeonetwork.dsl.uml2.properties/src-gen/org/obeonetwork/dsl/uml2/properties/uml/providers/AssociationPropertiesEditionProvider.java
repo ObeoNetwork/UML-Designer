@@ -62,9 +62,9 @@ public class AssociationPropertiesEditionProvider extends UmlPropertiesEditionPr
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-    return (editingContext.getEObject() instanceof Association) 
-          && (UMLPackage.Literals.ASSOCIATION == editingContext.getEObject().eClass());
-  }
+		return (editingContext.getEObject() instanceof Association) 
+					&& (UMLPackage.Literals.ASSOCIATION == editingContext.getEObject().eClass());
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -72,8 +72,8 @@ public class AssociationPropertiesEditionProvider extends UmlPropertiesEditionPr
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-    return (editingContext.getEObject() instanceof Association) && (AssociationPropertiesEditionComponent.GENERAL_PART.equals(part));
-  }
+		return (editingContext.getEObject() instanceof Association) && (AssociationPropertiesEditionComponent.GENERAL_PART.equals(part));
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -82,8 +82,8 @@ public class AssociationPropertiesEditionProvider extends UmlPropertiesEditionPr
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-    return (editingContext.getEObject() instanceof Association) && (refinement == AssociationPropertiesEditionComponent.class);
-  }
+		return (editingContext.getEObject() instanceof Association) && (refinement == AssociationPropertiesEditionComponent.class);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -92,8 +92,8 @@ public class AssociationPropertiesEditionProvider extends UmlPropertiesEditionPr
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-    return (editingContext.getEObject() instanceof Association) && ((AssociationPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == AssociationPropertiesEditionComponent.class));
-  }
+		return (editingContext.getEObject() instanceof Association) && ((AssociationPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == AssociationPropertiesEditionComponent.class));
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -101,11 +101,11 @@ public class AssociationPropertiesEditionProvider extends UmlPropertiesEditionPr
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-    if (editingContext.getEObject() instanceof Association) {
-      return new AssociationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-    }
-    return super.getPropertiesEditingComponent(editingContext, mode);
-  }
+		if (editingContext.getEObject() instanceof Association) {
+			return new AssociationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		}
+		return super.getPropertiesEditingComponent(editingContext, mode);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -113,12 +113,12 @@ public class AssociationPropertiesEditionProvider extends UmlPropertiesEditionPr
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-    if (editingContext.getEObject() instanceof Association) {
-      if (AssociationPropertiesEditionComponent.GENERAL_PART.equals(part))
-        return new AssociationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-    }
-    return super.getPropertiesEditingComponent(editingContext, mode, part);
-  }
+		if (editingContext.getEObject() instanceof Association) {
+			if (AssociationPropertiesEditionComponent.GENERAL_PART.equals(part))
+				return new AssociationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		}
+		return super.getPropertiesEditingComponent(editingContext, mode, part);
+	}
 
 	/**
 	 * {@inheritDoc}

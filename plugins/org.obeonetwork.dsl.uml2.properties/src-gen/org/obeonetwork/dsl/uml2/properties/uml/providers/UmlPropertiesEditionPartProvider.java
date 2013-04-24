@@ -48,8 +48,8 @@ public class UmlPropertiesEditionPartProvider implements IPropertiesEditionPartP
 	 * @generated
 	 */
 	public boolean provides(Object key) {
-    return key == UmlViewsRepository.class;
-  }
+		return key == UmlViewsRepository.class;
+	}
 
 	/** 
 	 * {@inheritDoc}
@@ -57,43 +57,43 @@ public class UmlPropertiesEditionPartProvider implements IPropertiesEditionPartP
 	 * @generated
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(Object key, int kind, IPropertiesEditionComponent component) {
-    if (key == UmlViewsRepository.General.class) {
-      if (kind == UmlViewsRepository.SWT_KIND)
-        return new GeneralPropertiesEditionPartImpl(component);
-      if (kind == UmlViewsRepository.FORM_KIND)
-        return new GeneralPropertiesEditionPartForm(component);
-    }
-    if (key == UmlViewsRepository.Operations.class) {
-      if (kind == UmlViewsRepository.SWT_KIND)
-        return new OperationsPropertiesEditionPartImpl(component);
-      if (kind == UmlViewsRepository.FORM_KIND)
-        return new OperationsPropertiesEditionPartForm(component);
-    }
-    if (key == UmlViewsRepository.Parameters.class) {
-      if (kind == UmlViewsRepository.SWT_KIND)
-        return new ParametersPropertiesEditionPartImpl(component);
-      if (kind == UmlViewsRepository.FORM_KIND)
-        return new ParametersPropertiesEditionPartForm(component);
-    }
-    if (key == UmlViewsRepository.Attributes.class) {
-      if (kind == UmlViewsRepository.SWT_KIND)
-        return new AttributesPropertiesEditionPartImpl(component);
-      if (kind == UmlViewsRepository.FORM_KIND)
-        return new AttributesPropertiesEditionPartForm(component);
-    }
-    if (key == UmlViewsRepository.Literals.class) {
-      if (kind == UmlViewsRepository.SWT_KIND)
-        return new LiteralsPropertiesEditionPartImpl(component);
-      if (kind == UmlViewsRepository.FORM_KIND)
-        return new LiteralsPropertiesEditionPartForm(component);
-    }
-    if (key == UmlViewsRepository.Ends.class) {
-      if (kind == UmlViewsRepository.SWT_KIND)
-        return new EndsPropertiesEditionPartImpl(component);
-      if (kind == UmlViewsRepository.FORM_KIND)
-        return new EndsPropertiesEditionPartForm(component);
-    }
-    return null;
-  }
+		if (key == UmlViewsRepository.General.class) {
+			if (kind == UmlViewsRepository.SWT_KIND)
+				return new GeneralPropertiesEditionPartImpl(component);
+			if (kind == UmlViewsRepository.FORM_KIND)
+				return new GeneralPropertiesEditionPartForm(component);
+		}
+		if (key == UmlViewsRepository.Operations.class) {
+			if (kind == UmlViewsRepository.SWT_KIND)
+				return new OperationsPropertiesEditionPartImpl(component);
+			if (kind == UmlViewsRepository.FORM_KIND)
+				return new OperationsPropertiesEditionPartForm(component);
+		}
+		if (key == UmlViewsRepository.Parameters.class) {
+			if (kind == UmlViewsRepository.SWT_KIND)
+				return new ParametersPropertiesEditionPartImpl(component);
+			if (kind == UmlViewsRepository.FORM_KIND)
+				return new ParametersPropertiesEditionPartForm(component);
+		}
+		if (key == UmlViewsRepository.Attributes.class) {
+			if (kind == UmlViewsRepository.SWT_KIND)
+				return new AttributesPropertiesEditionPartImpl(component);
+			if (kind == UmlViewsRepository.FORM_KIND)
+				return new AttributesPropertiesEditionPartForm(component);
+		}
+		if (key == UmlViewsRepository.Literals.class) {
+			if (kind == UmlViewsRepository.SWT_KIND)
+				return new LiteralsPropertiesEditionPartImpl(component);
+			if (kind == UmlViewsRepository.FORM_KIND)
+				return new LiteralsPropertiesEditionPartForm(component);
+		}
+		if (key == UmlViewsRepository.Ends.class) {
+			if (kind == UmlViewsRepository.SWT_KIND)
+				return new EndsPropertiesEditionPartImpl(component);
+			if (kind == UmlViewsRepository.FORM_KIND)
+				return new EndsPropertiesEditionPartForm(component);
+		}
+		return null;
+	}
 
 }

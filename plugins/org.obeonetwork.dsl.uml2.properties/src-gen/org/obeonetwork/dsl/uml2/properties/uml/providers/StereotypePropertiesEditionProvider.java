@@ -65,9 +65,9 @@ public class StereotypePropertiesEditionProvider extends UmlPropertiesEditionPro
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-    return (editingContext.getEObject() instanceof Stereotype) 
-          && (UMLPackage.Literals.STEREOTYPE == editingContext.getEObject().eClass());
-  }
+		return (editingContext.getEObject() instanceof Stereotype) 
+					&& (UMLPackage.Literals.STEREOTYPE == editingContext.getEObject().eClass());
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -75,8 +75,8 @@ public class StereotypePropertiesEditionProvider extends UmlPropertiesEditionPro
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-    return (editingContext.getEObject() instanceof Stereotype) && (StereotypeGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) || StereotypeOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(part) || StereotypeAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part));
-  }
+		return (editingContext.getEObject() instanceof Stereotype) && (StereotypeGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) || StereotypeOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(part) || StereotypeAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part));
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -85,8 +85,8 @@ public class StereotypePropertiesEditionProvider extends UmlPropertiesEditionPro
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-    return (editingContext.getEObject() instanceof Stereotype) && (refinement == StereotypeGeneralPropertiesEditionComponent.class || refinement == StereotypeOperationsPropertiesEditionComponent.class || refinement == StereotypeAttributesPropertiesEditionComponent.class);
-  }
+		return (editingContext.getEObject() instanceof Stereotype) && (refinement == StereotypeGeneralPropertiesEditionComponent.class || refinement == StereotypeOperationsPropertiesEditionComponent.class || refinement == StereotypeAttributesPropertiesEditionComponent.class);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -95,8 +95,8 @@ public class StereotypePropertiesEditionProvider extends UmlPropertiesEditionPro
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-    return (editingContext.getEObject() instanceof Stereotype) && ((StereotypeGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == StereotypeGeneralPropertiesEditionComponent.class) || (StereotypeOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(part) && refinement == StereotypeOperationsPropertiesEditionComponent.class) || (StereotypeAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part) && refinement == StereotypeAttributesPropertiesEditionComponent.class));
-  }
+		return (editingContext.getEObject() instanceof Stereotype) && ((StereotypeGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == StereotypeGeneralPropertiesEditionComponent.class) || (StereotypeOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(part) && refinement == StereotypeOperationsPropertiesEditionComponent.class) || (StereotypeAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part) && refinement == StereotypeAttributesPropertiesEditionComponent.class));
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -104,11 +104,11 @@ public class StereotypePropertiesEditionProvider extends UmlPropertiesEditionPro
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-    if (editingContext.getEObject() instanceof Stereotype) {
-      return new StereotypePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-    }
-    return super.getPropertiesEditingComponent(editingContext, mode);
-  }
+		if (editingContext.getEObject() instanceof Stereotype) {
+			return new StereotypePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		}
+		return super.getPropertiesEditingComponent(editingContext, mode);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -116,16 +116,16 @@ public class StereotypePropertiesEditionProvider extends UmlPropertiesEditionPro
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-    if (editingContext.getEObject() instanceof Stereotype) {
-      if (StereotypeGeneralPropertiesEditionComponent.GENERAL_PART.equals(part))
-        return new StereotypeGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-      if (StereotypeOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(part))
-        return new StereotypeOperationsPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-      if (StereotypeAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part))
-        return new StereotypeAttributesPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-    }
-    return super.getPropertiesEditingComponent(editingContext, mode, part);
-  }
+		if (editingContext.getEObject() instanceof Stereotype) {
+			if (StereotypeGeneralPropertiesEditionComponent.GENERAL_PART.equals(part))
+				return new StereotypeGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (StereotypeOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(part))
+				return new StereotypeOperationsPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+			if (StereotypeAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part))
+				return new StereotypeAttributesPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		}
+		return super.getPropertiesEditingComponent(editingContext, mode, part);
+	}
 
 	/**
 	 * {@inheritDoc}

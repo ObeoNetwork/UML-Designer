@@ -99,7 +99,6 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
-import org.eclipse.ui.forms.widgets.Section;
 
 import org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
@@ -121,16 +120,21 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	protected Button static_;
 	protected Button unique;
 	protected Button query;
-	protected EObjectFlatComboViewer type;
-	protected EMFComboViewer direction;
 	protected Button readOnly;
 	protected Button derived;
 	protected Button derivedUnion;
+	protected Button substitutable;
+	protected Button active;
+	protected Button behavior;
+	protected Button service;
+	protected Button reentrant;
+	protected Button indirectlyInstantiated;
+	protected EObjectFlatComboViewer type;
+	protected EMFComboViewer direction;
 	protected EMFComboViewer aggregation;
 	protected Text upperValue;
 	protected Text lowerValue;
 	protected Text defaultValue;
-	protected Button substitutable;
 	protected ReferencesTable ownedEnd;
 	protected List<ViewerFilter> ownedEndBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> ownedEndFilters = new ArrayList<ViewerFilter>();
@@ -143,11 +147,7 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	protected ReferencesTable client;
 	protected List<ViewerFilter> clientBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> clientFilters = new ArrayList<ViewerFilter>();
-	protected Button active;
-	protected Button indirectlyInstantiated;
 	protected EMFComboViewer kind;
-	protected Button behavior;
-	protected Button service;
 	protected EObjectFlatComboViewer source;
 	protected EObjectFlatComboViewer target;
 	protected EObjectFlatComboViewer effect;
@@ -156,7 +156,6 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	protected List<ViewerFilter> ownedRuleBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> ownedRuleFilters = new ArrayList<ViewerFilter>();
 	protected EEFImageViewer icon;
-	protected Button reentrant;
 	protected Text body;
 	protected EMFComboViewer extendedCase;
 	protected EMFComboViewer addition;
@@ -215,33 +214,33 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
     qualifiersStep.addStep(UmlViewsRepository.General.Qualifiers.static_);
     qualifiersStep.addStep(UmlViewsRepository.General.Qualifiers.unique);
     qualifiersStep.addStep(UmlViewsRepository.General.Qualifiers.query);
+    qualifiersStep.addStep(UmlViewsRepository.General.Qualifiers.readOnly);
+    qualifiersStep.addStep(UmlViewsRepository.General.Qualifiers.derived);
+    qualifiersStep.addStep(UmlViewsRepository.General.Qualifiers.derivedUnion);
+    qualifiersStep.addStep(UmlViewsRepository.General.Qualifiers.substitutable);
+    qualifiersStep.addStep(UmlViewsRepository.General.Qualifiers.active);
+    qualifiersStep.addStep(UmlViewsRepository.General.Qualifiers.behavior);
+    qualifiersStep.addStep(UmlViewsRepository.General.Qualifiers.service);
+    qualifiersStep.addStep(UmlViewsRepository.General.Qualifiers.reentrant);
+    qualifiersStep.addStep(UmlViewsRepository.General.Qualifiers.indirectlyInstantiated);
     
     generalStep.addStep(UmlViewsRepository.General.type);
     generalStep.addStep(UmlViewsRepository.General.direction);
-    generalStep.addStep(UmlViewsRepository.General.readOnly);
-    generalStep.addStep(UmlViewsRepository.General.derived);
-    generalStep.addStep(UmlViewsRepository.General.derivedUnion);
     generalStep.addStep(UmlViewsRepository.General.aggregation);
     generalStep.addStep(UmlViewsRepository.General.upperValue);
     generalStep.addStep(UmlViewsRepository.General.lowerValue);
     generalStep.addStep(UmlViewsRepository.General.defaultValue);
-    generalStep.addStep(UmlViewsRepository.General.substitutable);
     generalStep.addStep(UmlViewsRepository.General.ownedEnd);
     generalStep.addStep(UmlViewsRepository.General.memberEnd);
     generalStep.addStep(UmlViewsRepository.General.supplier);
     generalStep.addStep(UmlViewsRepository.General.client);
-    generalStep.addStep(UmlViewsRepository.General.active);
-    generalStep.addStep(UmlViewsRepository.General.indirectlyInstantiated);
     generalStep.addStep(UmlViewsRepository.General.kind);
-    generalStep.addStep(UmlViewsRepository.General.behavior);
-    generalStep.addStep(UmlViewsRepository.General.service);
     generalStep.addStep(UmlViewsRepository.General.source);
     generalStep.addStep(UmlViewsRepository.General.target);
     generalStep.addStep(UmlViewsRepository.General.effect);
     generalStep.addStep(UmlViewsRepository.General.guard);
     generalStep.addStep(UmlViewsRepository.General.ownedRule);
     generalStep.addStep(UmlViewsRepository.General.icon);
-    generalStep.addStep(UmlViewsRepository.General.reentrant);
     generalStep.addStep(UmlViewsRepository.General.body);
     generalStep.addStep(UmlViewsRepository.General.extendedCase);
     generalStep.addStep(UmlViewsRepository.General.addition);
@@ -279,20 +278,38 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
         if (key == UmlViewsRepository.General.Qualifiers.query) {
           return createQueryCheckbox(widgetFactory, parent);
         }
+        if (key == UmlViewsRepository.General.Qualifiers.readOnly) {
+          return createReadOnlyCheckbox(widgetFactory, parent);
+        }
+        if (key == UmlViewsRepository.General.Qualifiers.derived) {
+          return createDerivedCheckbox(widgetFactory, parent);
+        }
+        if (key == UmlViewsRepository.General.Qualifiers.derivedUnion) {
+          return createDerivedUnionCheckbox(widgetFactory, parent);
+        }
+        if (key == UmlViewsRepository.General.Qualifiers.substitutable) {
+          return createSubstitutableCheckbox(widgetFactory, parent);
+        }
+        if (key == UmlViewsRepository.General.Qualifiers.active) {
+          return createActiveCheckbox(widgetFactory, parent);
+        }
+        if (key == UmlViewsRepository.General.Qualifiers.behavior) {
+          return createBehaviorCheckbox(widgetFactory, parent);
+        }
+        if (key == UmlViewsRepository.General.Qualifiers.service) {
+          return createServiceCheckbox(widgetFactory, parent);
+        }
+        if (key == UmlViewsRepository.General.Qualifiers.reentrant) {
+          return createReentrantCheckbox(widgetFactory, parent);
+        }
+        if (key == UmlViewsRepository.General.Qualifiers.indirectlyInstantiated) {
+          return createIndirectlyInstantiatedCheckbox(widgetFactory, parent);
+        }
         if (key == UmlViewsRepository.General.type) {
           return createTypeFlatComboViewer(parent, widgetFactory);
         }
         if (key == UmlViewsRepository.General.direction) {
           return createDirectionEMFComboViewer(widgetFactory, parent);
-        }
-        if (key == UmlViewsRepository.General.readOnly) {
-          return createReadOnlyCheckbox(widgetFactory, parent);
-        }
-        if (key == UmlViewsRepository.General.derived) {
-          return createDerivedCheckbox(widgetFactory, parent);
-        }
-        if (key == UmlViewsRepository.General.derivedUnion) {
-          return createDerivedUnionCheckbox(widgetFactory, parent);
         }
         if (key == UmlViewsRepository.General.aggregation) {
           return createAggregationEMFComboViewer(widgetFactory, parent);
@@ -306,9 +323,6 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
         if (key == UmlViewsRepository.General.defaultValue) {
           return createDefaultValueText(widgetFactory, parent);
         }
-        if (key == UmlViewsRepository.General.substitutable) {
-          return createSubstitutableCheckbox(widgetFactory, parent);
-        }
         if (key == UmlViewsRepository.General.ownedEnd) {
           return createOwnedEndReferencesTable(widgetFactory, parent);
         }
@@ -321,20 +335,8 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
         if (key == UmlViewsRepository.General.client) {
           return createClientReferencesTable(widgetFactory, parent);
         }
-        if (key == UmlViewsRepository.General.active) {
-          return createActiveCheckbox(widgetFactory, parent);
-        }
-        if (key == UmlViewsRepository.General.indirectlyInstantiated) {
-          return createIndirectlyInstantiatedCheckbox(widgetFactory, parent);
-        }
         if (key == UmlViewsRepository.General.kind) {
           return createKindEMFComboViewer(widgetFactory, parent);
-        }
-        if (key == UmlViewsRepository.General.behavior) {
-          return createBehaviorCheckbox(widgetFactory, parent);
-        }
-        if (key == UmlViewsRepository.General.service) {
-          return createServiceCheckbox(widgetFactory, parent);
         }
         if (key == UmlViewsRepository.General.source) {
           return createSourceFlatComboViewer(parent, widgetFactory);
@@ -353,9 +355,6 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
         }
         if (key == UmlViewsRepository.General.icon) {
           return createIconImageViewer(widgetFactory, parent);
-        }
-        if (key == UmlViewsRepository.General.reentrant) {
-          return createReentrantCheckbox(widgetFactory, parent);
         }
         if (key == UmlViewsRepository.General.body) {
           return createBodyTextarea(widgetFactory, parent);
@@ -482,10 +481,10 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
   }
 
 	/**
-   * @generated
-   */
-  
-  protected Composite createQualifiersHBox(FormToolkit widgetFactory, Composite parent) {
+	 * @generated
+	 */
+	
+	protected Composite createQualifiersHBox(FormToolkit widgetFactory, Composite parent) {
     Composite container = widgetFactory.createComposite(parent, SWT.NONE);
     GridLayout layout = new GridLayout();
     container.setLayout(layout);
@@ -501,7 +500,7 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
     return qualifiersHBox;
   }
 
-  /**
+	/**
 	 * @generated
 	 */
 	
@@ -694,6 +693,294 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
   }
 
 	/**
+	 * @generated
+	 */
+	
+	protected Composite createReadOnlyCheckbox(FormToolkit widgetFactory, Composite parent) {
+    readOnly = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.General.Qualifiers.readOnly, UmlMessages.GeneralPropertiesEditionPart_ReadOnlyLabel), SWT.CHECK);
+    readOnly.addSelectionListener(new SelectionAdapter() {
+
+      /**
+       * {@inheritDoc}
+       *
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       * 	@generated
+       */
+      public void widgetSelected(SelectionEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.Qualifiers.readOnly, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(readOnly.getSelection())));
+      }
+
+    });
+    GridData readOnlyData = new GridData(GridData.FILL_HORIZONTAL);
+    readOnlyData.horizontalSpan = 2;
+    readOnly.setLayoutData(readOnlyData);
+    EditingUtils.setID(readOnly, UmlViewsRepository.General.Qualifiers.readOnly);
+    EditingUtils.setEEFtype(readOnly, "eef::Checkbox"); //$NON-NLS-1$
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.Qualifiers.readOnly, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    // Start of user code for createReadOnlyCheckbox
+
+    // End of user code
+    return parent;
+  }
+
+	/**
+	 * @generated
+	 */
+	
+	protected Composite createDerivedCheckbox(FormToolkit widgetFactory, Composite parent) {
+    derived = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.General.Qualifiers.derived, UmlMessages.GeneralPropertiesEditionPart_DerivedLabel), SWT.CHECK);
+    derived.addSelectionListener(new SelectionAdapter() {
+
+      /**
+       * {@inheritDoc}
+       *
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       * 	@generated
+       */
+      public void widgetSelected(SelectionEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.Qualifiers.derived, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(derived.getSelection())));
+      }
+
+    });
+    GridData derivedData = new GridData(GridData.FILL_HORIZONTAL);
+    derivedData.horizontalSpan = 2;
+    derived.setLayoutData(derivedData);
+    EditingUtils.setID(derived, UmlViewsRepository.General.Qualifiers.derived);
+    EditingUtils.setEEFtype(derived, "eef::Checkbox"); //$NON-NLS-1$
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.Qualifiers.derived, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    // Start of user code for createDerivedCheckbox
+
+    // End of user code
+    return parent;
+  }
+
+	/**
+	 * @generated
+	 */
+	
+	protected Composite createDerivedUnionCheckbox(FormToolkit widgetFactory, Composite parent) {
+    derivedUnion = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.General.Qualifiers.derivedUnion, UmlMessages.GeneralPropertiesEditionPart_DerivedUnionLabel), SWT.CHECK);
+    derivedUnion.addSelectionListener(new SelectionAdapter() {
+
+      /**
+       * {@inheritDoc}
+       *
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       * 	@generated
+       */
+      public void widgetSelected(SelectionEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.Qualifiers.derivedUnion, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(derivedUnion.getSelection())));
+      }
+
+    });
+    GridData derivedUnionData = new GridData(GridData.FILL_HORIZONTAL);
+    derivedUnionData.horizontalSpan = 2;
+    derivedUnion.setLayoutData(derivedUnionData);
+    EditingUtils.setID(derivedUnion, UmlViewsRepository.General.Qualifiers.derivedUnion);
+    EditingUtils.setEEFtype(derivedUnion, "eef::Checkbox"); //$NON-NLS-1$
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.Qualifiers.derivedUnion, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    // Start of user code for createDerivedUnionCheckbox
+
+    // End of user code
+    return parent;
+  }
+
+	/**
+	 * @generated
+	 */
+	
+	protected Composite createSubstitutableCheckbox(FormToolkit widgetFactory, Composite parent) {
+    substitutable = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.General.Qualifiers.substitutable, UmlMessages.GeneralPropertiesEditionPart_SubstitutableLabel), SWT.CHECK);
+    substitutable.addSelectionListener(new SelectionAdapter() {
+
+      /**
+       * {@inheritDoc}
+       *
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       * 	@generated
+       */
+      public void widgetSelected(SelectionEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.Qualifiers.substitutable, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(substitutable.getSelection())));
+      }
+
+    });
+    GridData substitutableData = new GridData(GridData.FILL_HORIZONTAL);
+    substitutableData.horizontalSpan = 2;
+    substitutable.setLayoutData(substitutableData);
+    EditingUtils.setID(substitutable, UmlViewsRepository.General.Qualifiers.substitutable);
+    EditingUtils.setEEFtype(substitutable, "eef::Checkbox"); //$NON-NLS-1$
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.Qualifiers.substitutable, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    // Start of user code for createSubstitutableCheckbox
+
+    // End of user code
+    return parent;
+  }
+
+	/**
+	 * @generated
+	 */
+	
+	protected Composite createActiveCheckbox(FormToolkit widgetFactory, Composite parent) {
+    active = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.General.Qualifiers.active, UmlMessages.GeneralPropertiesEditionPart_ActiveLabel), SWT.CHECK);
+    active.addSelectionListener(new SelectionAdapter() {
+
+      /**
+       * {@inheritDoc}
+       *
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       * 	@generated
+       */
+      public void widgetSelected(SelectionEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.Qualifiers.active, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(active.getSelection())));
+      }
+
+    });
+    GridData activeData = new GridData(GridData.FILL_HORIZONTAL);
+    activeData.horizontalSpan = 2;
+    active.setLayoutData(activeData);
+    EditingUtils.setID(active, UmlViewsRepository.General.Qualifiers.active);
+    EditingUtils.setEEFtype(active, "eef::Checkbox"); //$NON-NLS-1$
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.Qualifiers.active, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    // Start of user code for createActiveCheckbox
+
+    // End of user code
+    return parent;
+  }
+
+	/**
+	 * @generated
+	 */
+	
+	protected Composite createBehaviorCheckbox(FormToolkit widgetFactory, Composite parent) {
+    behavior = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.General.Qualifiers.behavior, UmlMessages.GeneralPropertiesEditionPart_BehaviorLabel), SWT.CHECK);
+    behavior.addSelectionListener(new SelectionAdapter() {
+
+      /**
+       * {@inheritDoc}
+       *
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       * 	@generated
+       */
+      public void widgetSelected(SelectionEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.Qualifiers.behavior, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(behavior.getSelection())));
+      }
+
+    });
+    GridData behaviorData = new GridData(GridData.FILL_HORIZONTAL);
+    behaviorData.horizontalSpan = 2;
+    behavior.setLayoutData(behaviorData);
+    EditingUtils.setID(behavior, UmlViewsRepository.General.Qualifiers.behavior);
+    EditingUtils.setEEFtype(behavior, "eef::Checkbox"); //$NON-NLS-1$
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.Qualifiers.behavior, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    // Start of user code for createBehaviorCheckbox
+
+    // End of user code
+    return parent;
+  }
+
+	/**
+	 * @generated
+	 */
+	
+	protected Composite createServiceCheckbox(FormToolkit widgetFactory, Composite parent) {
+    service = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.General.Qualifiers.service, UmlMessages.GeneralPropertiesEditionPart_ServiceLabel), SWT.CHECK);
+    service.addSelectionListener(new SelectionAdapter() {
+
+      /**
+       * {@inheritDoc}
+       *
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       * 	@generated
+       */
+      public void widgetSelected(SelectionEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.Qualifiers.service, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(service.getSelection())));
+      }
+
+    });
+    GridData serviceData = new GridData(GridData.FILL_HORIZONTAL);
+    serviceData.horizontalSpan = 2;
+    service.setLayoutData(serviceData);
+    EditingUtils.setID(service, UmlViewsRepository.General.Qualifiers.service);
+    EditingUtils.setEEFtype(service, "eef::Checkbox"); //$NON-NLS-1$
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.Qualifiers.service, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    // Start of user code for createServiceCheckbox
+
+    // End of user code
+    return parent;
+  }
+
+	/**
+	 * @generated
+	 */
+	
+	protected Composite createReentrantCheckbox(FormToolkit widgetFactory, Composite parent) {
+    reentrant = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.General.Qualifiers.reentrant, UmlMessages.GeneralPropertiesEditionPart_ReentrantLabel), SWT.CHECK);
+    reentrant.addSelectionListener(new SelectionAdapter() {
+
+      /**
+       * {@inheritDoc}
+       *
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       * 	@generated
+       */
+      public void widgetSelected(SelectionEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.Qualifiers.reentrant, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(reentrant.getSelection())));
+      }
+
+    });
+    GridData reentrantData = new GridData(GridData.FILL_HORIZONTAL);
+    reentrantData.horizontalSpan = 2;
+    reentrant.setLayoutData(reentrantData);
+    EditingUtils.setID(reentrant, UmlViewsRepository.General.Qualifiers.reentrant);
+    EditingUtils.setEEFtype(reentrant, "eef::Checkbox"); //$NON-NLS-1$
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.Qualifiers.reentrant, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    // Start of user code for createReentrantCheckbox
+
+    // End of user code
+    return parent;
+  }
+
+	/**
+	 * @generated
+	 */
+	
+	protected Composite createIndirectlyInstantiatedCheckbox(FormToolkit widgetFactory, Composite parent) {
+    indirectlyInstantiated = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.General.Qualifiers.indirectlyInstantiated, UmlMessages.GeneralPropertiesEditionPart_IndirectlyInstantiatedLabel), SWT.CHECK);
+    indirectlyInstantiated.addSelectionListener(new SelectionAdapter() {
+
+      /**
+       * {@inheritDoc}
+       *
+       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+       * 	@generated
+       */
+      public void widgetSelected(SelectionEvent e) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.Qualifiers.indirectlyInstantiated, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(indirectlyInstantiated.getSelection())));
+      }
+
+    });
+    GridData indirectlyInstantiatedData = new GridData(GridData.FILL_HORIZONTAL);
+    indirectlyInstantiatedData.horizontalSpan = 2;
+    indirectlyInstantiated.setLayoutData(indirectlyInstantiatedData);
+    EditingUtils.setID(indirectlyInstantiated, UmlViewsRepository.General.Qualifiers.indirectlyInstantiated);
+    EditingUtils.setEEFtype(indirectlyInstantiated, "eef::Checkbox"); //$NON-NLS-1$
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.Qualifiers.indirectlyInstantiated, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    // Start of user code for createIndirectlyInstantiatedCheckbox
+
+    // End of user code
+    return parent;
+  }
+
+	/**
 	 * @param parent the parent composite
 	 * @param widgetFactory factory to use to instanciante widget of the form
 	 * @generated
@@ -754,102 +1041,6 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
     direction.setID(UmlViewsRepository.General.direction);
     FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.direction, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
     // Start of user code for createDirectionEMFComboViewer
-
-    // End of user code
-    return parent;
-  }
-
-	/**
-	 * @generated
-	 */
-	
-	protected Composite createReadOnlyCheckbox(FormToolkit widgetFactory, Composite parent) {
-    readOnly = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.General.readOnly, UmlMessages.GeneralPropertiesEditionPart_ReadOnlyLabel), SWT.CHECK);
-    readOnly.addSelectionListener(new SelectionAdapter() {
-
-      /**
-       * {@inheritDoc}
-       *
-       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-       * 	@generated
-       */
-      public void widgetSelected(SelectionEvent e) {
-        if (propertiesEditionComponent != null)
-          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.readOnly, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(readOnly.getSelection())));
-      }
-
-    });
-    GridData readOnlyData = new GridData(GridData.FILL_HORIZONTAL);
-    readOnlyData.horizontalSpan = 2;
-    readOnly.setLayoutData(readOnlyData);
-    EditingUtils.setID(readOnly, UmlViewsRepository.General.readOnly);
-    EditingUtils.setEEFtype(readOnly, "eef::Checkbox"); //$NON-NLS-1$
-    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.readOnly, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-    // Start of user code for createReadOnlyCheckbox
-
-    // End of user code
-    return parent;
-  }
-
-	/**
-	 * @generated
-	 */
-	
-	protected Composite createDerivedCheckbox(FormToolkit widgetFactory, Composite parent) {
-    derived = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.General.derived, UmlMessages.GeneralPropertiesEditionPart_DerivedLabel), SWT.CHECK);
-    derived.addSelectionListener(new SelectionAdapter() {
-
-      /**
-       * {@inheritDoc}
-       *
-       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-       * 	@generated
-       */
-      public void widgetSelected(SelectionEvent e) {
-        if (propertiesEditionComponent != null)
-          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.derived, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(derived.getSelection())));
-      }
-
-    });
-    GridData derivedData = new GridData(GridData.FILL_HORIZONTAL);
-    derivedData.horizontalSpan = 2;
-    derived.setLayoutData(derivedData);
-    EditingUtils.setID(derived, UmlViewsRepository.General.derived);
-    EditingUtils.setEEFtype(derived, "eef::Checkbox"); //$NON-NLS-1$
-    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.derived, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-    // Start of user code for createDerivedCheckbox
-
-    // End of user code
-    return parent;
-  }
-
-	/**
-	 * @generated
-	 */
-	
-	protected Composite createDerivedUnionCheckbox(FormToolkit widgetFactory, Composite parent) {
-    derivedUnion = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.General.derivedUnion, UmlMessages.GeneralPropertiesEditionPart_DerivedUnionLabel), SWT.CHECK);
-    derivedUnion.addSelectionListener(new SelectionAdapter() {
-
-      /**
-       * {@inheritDoc}
-       *
-       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-       * 	@generated
-       */
-      public void widgetSelected(SelectionEvent e) {
-        if (propertiesEditionComponent != null)
-          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.derivedUnion, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(derivedUnion.getSelection())));
-      }
-
-    });
-    GridData derivedUnionData = new GridData(GridData.FILL_HORIZONTAL);
-    derivedUnionData.horizontalSpan = 2;
-    derivedUnion.setLayoutData(derivedUnionData);
-    EditingUtils.setID(derivedUnion, UmlViewsRepository.General.derivedUnion);
-    EditingUtils.setEEFtype(derivedUnion, "eef::Checkbox"); //$NON-NLS-1$
-    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.derivedUnion, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-    // Start of user code for createDerivedUnionCheckbox
 
     // End of user code
     return parent;
@@ -1096,38 +1287,6 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
     EditingUtils.setEEFtype(defaultValue, "eef::Text"); //$NON-NLS-1$
     FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.defaultValue, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
     // Start of user code for createDefaultValueText
-
-    // End of user code
-    return parent;
-  }
-
-	/**
-	 * @generated
-	 */
-	
-	protected Composite createSubstitutableCheckbox(FormToolkit widgetFactory, Composite parent) {
-    substitutable = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.General.substitutable, UmlMessages.GeneralPropertiesEditionPart_SubstitutableLabel), SWT.CHECK);
-    substitutable.addSelectionListener(new SelectionAdapter() {
-
-      /**
-       * {@inheritDoc}
-       *
-       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-       * 	@generated
-       */
-      public void widgetSelected(SelectionEvent e) {
-        if (propertiesEditionComponent != null)
-          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.substitutable, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(substitutable.getSelection())));
-      }
-
-    });
-    GridData substitutableData = new GridData(GridData.FILL_HORIZONTAL);
-    substitutableData.horizontalSpan = 2;
-    substitutable.setLayoutData(substitutableData);
-    EditingUtils.setID(substitutable, UmlViewsRepository.General.substitutable);
-    EditingUtils.setEEFtype(substitutable, "eef::Checkbox"); //$NON-NLS-1$
-    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.substitutable, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-    // Start of user code for createSubstitutableCheckbox
 
     // End of user code
     return parent;
@@ -1473,70 +1632,6 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	 * @generated
 	 */
 	
-	protected Composite createActiveCheckbox(FormToolkit widgetFactory, Composite parent) {
-    active = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.General.active, UmlMessages.GeneralPropertiesEditionPart_ActiveLabel), SWT.CHECK);
-    active.addSelectionListener(new SelectionAdapter() {
-
-      /**
-       * {@inheritDoc}
-       *
-       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-       * 	@generated
-       */
-      public void widgetSelected(SelectionEvent e) {
-        if (propertiesEditionComponent != null)
-          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.active, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(active.getSelection())));
-      }
-
-    });
-    GridData activeData = new GridData(GridData.FILL_HORIZONTAL);
-    activeData.horizontalSpan = 2;
-    active.setLayoutData(activeData);
-    EditingUtils.setID(active, UmlViewsRepository.General.active);
-    EditingUtils.setEEFtype(active, "eef::Checkbox"); //$NON-NLS-1$
-    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.active, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-    // Start of user code for createActiveCheckbox
-
-    // End of user code
-    return parent;
-  }
-
-	/**
-	 * @generated
-	 */
-	
-	protected Composite createIndirectlyInstantiatedCheckbox(FormToolkit widgetFactory, Composite parent) {
-    indirectlyInstantiated = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.General.indirectlyInstantiated, UmlMessages.GeneralPropertiesEditionPart_IndirectlyInstantiatedLabel), SWT.CHECK);
-    indirectlyInstantiated.addSelectionListener(new SelectionAdapter() {
-
-      /**
-       * {@inheritDoc}
-       *
-       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-       * 	@generated
-       */
-      public void widgetSelected(SelectionEvent e) {
-        if (propertiesEditionComponent != null)
-          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.indirectlyInstantiated, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(indirectlyInstantiated.getSelection())));
-      }
-
-    });
-    GridData indirectlyInstantiatedData = new GridData(GridData.FILL_HORIZONTAL);
-    indirectlyInstantiatedData.horizontalSpan = 2;
-    indirectlyInstantiated.setLayoutData(indirectlyInstantiatedData);
-    EditingUtils.setID(indirectlyInstantiated, UmlViewsRepository.General.indirectlyInstantiated);
-    EditingUtils.setEEFtype(indirectlyInstantiated, "eef::Checkbox"); //$NON-NLS-1$
-    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.indirectlyInstantiated, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-    // Start of user code for createIndirectlyInstantiatedCheckbox
-
-    // End of user code
-    return parent;
-  }
-
-	/**
-	 * @generated
-	 */
-	
 	protected Composite createKindEMFComboViewer(FormToolkit widgetFactory, Composite parent) {
     createDescription(parent, UmlViewsRepository.General.kind, UmlMessages.GeneralPropertiesEditionPart_KindLabel);
     kind = new EMFComboViewer(parent);
@@ -1561,70 +1656,6 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
     kind.setID(UmlViewsRepository.General.kind);
     FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.kind, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
     // Start of user code for createKindEMFComboViewer
-
-    // End of user code
-    return parent;
-  }
-
-	/**
-	 * @generated
-	 */
-	
-	protected Composite createBehaviorCheckbox(FormToolkit widgetFactory, Composite parent) {
-    behavior = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.General.behavior, UmlMessages.GeneralPropertiesEditionPart_BehaviorLabel), SWT.CHECK);
-    behavior.addSelectionListener(new SelectionAdapter() {
-
-      /**
-       * {@inheritDoc}
-       *
-       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-       * 	@generated
-       */
-      public void widgetSelected(SelectionEvent e) {
-        if (propertiesEditionComponent != null)
-          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.behavior, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(behavior.getSelection())));
-      }
-
-    });
-    GridData behaviorData = new GridData(GridData.FILL_HORIZONTAL);
-    behaviorData.horizontalSpan = 2;
-    behavior.setLayoutData(behaviorData);
-    EditingUtils.setID(behavior, UmlViewsRepository.General.behavior);
-    EditingUtils.setEEFtype(behavior, "eef::Checkbox"); //$NON-NLS-1$
-    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.behavior, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-    // Start of user code for createBehaviorCheckbox
-
-    // End of user code
-    return parent;
-  }
-
-	/**
-	 * @generated
-	 */
-	
-	protected Composite createServiceCheckbox(FormToolkit widgetFactory, Composite parent) {
-    service = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.General.service, UmlMessages.GeneralPropertiesEditionPart_ServiceLabel), SWT.CHECK);
-    service.addSelectionListener(new SelectionAdapter() {
-
-      /**
-       * {@inheritDoc}
-       *
-       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-       * 	@generated
-       */
-      public void widgetSelected(SelectionEvent e) {
-        if (propertiesEditionComponent != null)
-          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.service, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(service.getSelection())));
-      }
-
-    });
-    GridData serviceData = new GridData(GridData.FILL_HORIZONTAL);
-    serviceData.horizontalSpan = 2;
-    service.setLayoutData(serviceData);
-    EditingUtils.setID(service, UmlViewsRepository.General.service);
-    EditingUtils.setEEFtype(service, "eef::Checkbox"); //$NON-NLS-1$
-    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.service, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-    // Start of user code for createServiceCheckbox
 
     // End of user code
     return parent;
@@ -1868,38 +1899,6 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
     icon.setID(UmlViewsRepository.General.icon);
     FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.icon, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
     // Start of user code for createIconImageViewer
-
-    // End of user code
-    return parent;
-  }
-
-	/**
-	 * @generated
-	 */
-	
-	protected Composite createReentrantCheckbox(FormToolkit widgetFactory, Composite parent) {
-    reentrant = widgetFactory.createButton(parent, getDescription(UmlViewsRepository.General.reentrant, UmlMessages.GeneralPropertiesEditionPart_ReentrantLabel), SWT.CHECK);
-    reentrant.addSelectionListener(new SelectionAdapter() {
-
-      /**
-       * {@inheritDoc}
-       *
-       * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-       * 	@generated
-       */
-      public void widgetSelected(SelectionEvent e) {
-        if (propertiesEditionComponent != null)
-          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.reentrant, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(reentrant.getSelection())));
-      }
-
-    });
-    GridData reentrantData = new GridData(GridData.FILL_HORIZONTAL);
-    reentrantData.horizontalSpan = 2;
-    reentrant.setLayoutData(reentrantData);
-    EditingUtils.setID(reentrant, UmlViewsRepository.General.reentrant);
-    EditingUtils.setEEFtype(reentrant, "eef::Checkbox"); //$NON-NLS-1$
-    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.reentrant, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-    // Start of user code for createReentrantCheckbox
 
     // End of user code
     return parent;
@@ -2383,6 +2382,294 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	/**
 	 * {@inheritDoc}
 	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getReadOnly()
+	 * @generated
+	 */
+	public Boolean getReadOnly() {
+    return Boolean.valueOf(readOnly.getSelection());
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#setReadOnly(Boolean newValue)
+	 * @generated
+	 */
+	public void setReadOnly(Boolean newValue) {
+    if (newValue != null) {
+      readOnly.setSelection(newValue.booleanValue());
+    } else {
+      readOnly.setSelection(false);
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.Qualifiers.readOnly);
+    if (eefElementEditorReadOnlyState && readOnly.isEnabled()) {
+      readOnly.setEnabled(false);
+      readOnly.setToolTipText(UmlMessages.General_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !readOnly.isEnabled()) {
+      readOnly.setEnabled(true);
+    }	
+    
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getDerived()
+	 * @generated
+	 */
+	public Boolean getDerived() {
+    return Boolean.valueOf(derived.getSelection());
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#setDerived(Boolean newValue)
+	 * @generated
+	 */
+	public void setDerived(Boolean newValue) {
+    if (newValue != null) {
+      derived.setSelection(newValue.booleanValue());
+    } else {
+      derived.setSelection(false);
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.Qualifiers.derived);
+    if (eefElementEditorReadOnlyState && derived.isEnabled()) {
+      derived.setEnabled(false);
+      derived.setToolTipText(UmlMessages.General_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !derived.isEnabled()) {
+      derived.setEnabled(true);
+    }	
+    
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getDerivedUnion()
+	 * @generated
+	 */
+	public Boolean getDerivedUnion() {
+    return Boolean.valueOf(derivedUnion.getSelection());
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#setDerivedUnion(Boolean newValue)
+	 * @generated
+	 */
+	public void setDerivedUnion(Boolean newValue) {
+    if (newValue != null) {
+      derivedUnion.setSelection(newValue.booleanValue());
+    } else {
+      derivedUnion.setSelection(false);
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.Qualifiers.derivedUnion);
+    if (eefElementEditorReadOnlyState && derivedUnion.isEnabled()) {
+      derivedUnion.setEnabled(false);
+      derivedUnion.setToolTipText(UmlMessages.General_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !derivedUnion.isEnabled()) {
+      derivedUnion.setEnabled(true);
+    }	
+    
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getSubstitutable()
+	 * @generated
+	 */
+	public Boolean getSubstitutable() {
+    return Boolean.valueOf(substitutable.getSelection());
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#setSubstitutable(Boolean newValue)
+	 * @generated
+	 */
+	public void setSubstitutable(Boolean newValue) {
+    if (newValue != null) {
+      substitutable.setSelection(newValue.booleanValue());
+    } else {
+      substitutable.setSelection(false);
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.Qualifiers.substitutable);
+    if (eefElementEditorReadOnlyState && substitutable.isEnabled()) {
+      substitutable.setEnabled(false);
+      substitutable.setToolTipText(UmlMessages.General_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !substitutable.isEnabled()) {
+      substitutable.setEnabled(true);
+    }	
+    
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getActive()
+	 * @generated
+	 */
+	public Boolean getActive() {
+    return Boolean.valueOf(active.getSelection());
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#setActive(Boolean newValue)
+	 * @generated
+	 */
+	public void setActive(Boolean newValue) {
+    if (newValue != null) {
+      active.setSelection(newValue.booleanValue());
+    } else {
+      active.setSelection(false);
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.Qualifiers.active);
+    if (eefElementEditorReadOnlyState && active.isEnabled()) {
+      active.setEnabled(false);
+      active.setToolTipText(UmlMessages.General_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !active.isEnabled()) {
+      active.setEnabled(true);
+    }	
+    
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getBehavior()
+	 * @generated
+	 */
+	public Boolean getBehavior() {
+    return Boolean.valueOf(behavior.getSelection());
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#setBehavior(Boolean newValue)
+	 * @generated
+	 */
+	public void setBehavior(Boolean newValue) {
+    if (newValue != null) {
+      behavior.setSelection(newValue.booleanValue());
+    } else {
+      behavior.setSelection(false);
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.Qualifiers.behavior);
+    if (eefElementEditorReadOnlyState && behavior.isEnabled()) {
+      behavior.setEnabled(false);
+      behavior.setToolTipText(UmlMessages.General_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !behavior.isEnabled()) {
+      behavior.setEnabled(true);
+    }	
+    
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getService()
+	 * @generated
+	 */
+	public Boolean getService() {
+    return Boolean.valueOf(service.getSelection());
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#setService(Boolean newValue)
+	 * @generated
+	 */
+	public void setService(Boolean newValue) {
+    if (newValue != null) {
+      service.setSelection(newValue.booleanValue());
+    } else {
+      service.setSelection(false);
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.Qualifiers.service);
+    if (eefElementEditorReadOnlyState && service.isEnabled()) {
+      service.setEnabled(false);
+      service.setToolTipText(UmlMessages.General_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !service.isEnabled()) {
+      service.setEnabled(true);
+    }	
+    
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getReentrant()
+	 * @generated
+	 */
+	public Boolean getReentrant() {
+    return Boolean.valueOf(reentrant.getSelection());
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#setReentrant(Boolean newValue)
+	 * @generated
+	 */
+	public void setReentrant(Boolean newValue) {
+    if (newValue != null) {
+      reentrant.setSelection(newValue.booleanValue());
+    } else {
+      reentrant.setSelection(false);
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.Qualifiers.reentrant);
+    if (eefElementEditorReadOnlyState && reentrant.isEnabled()) {
+      reentrant.setEnabled(false);
+      reentrant.setToolTipText(UmlMessages.General_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !reentrant.isEnabled()) {
+      reentrant.setEnabled(true);
+    }	
+    
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getIndirectlyInstantiated()
+	 * @generated
+	 */
+	public Boolean getIndirectlyInstantiated() {
+    return Boolean.valueOf(indirectlyInstantiated.getSelection());
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#setIndirectlyInstantiated(Boolean newValue)
+	 * @generated
+	 */
+	public void setIndirectlyInstantiated(Boolean newValue) {
+    if (newValue != null) {
+      indirectlyInstantiated.setSelection(newValue.booleanValue());
+    } else {
+      indirectlyInstantiated.setSelection(false);
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.Qualifiers.indirectlyInstantiated);
+    if (eefElementEditorReadOnlyState && indirectlyInstantiated.isEnabled()) {
+      indirectlyInstantiated.setEnabled(false);
+      indirectlyInstantiated.setToolTipText(UmlMessages.General_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !indirectlyInstantiated.isEnabled()) {
+      indirectlyInstantiated.setEnabled(true);
+    }	
+    
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getType()
 	 * @generated
 	 */
@@ -2509,102 +2796,6 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
       direction.setToolTipText(UmlMessages.General_ReadOnly);
     } else if (!eefElementEditorReadOnlyState && !direction.isEnabled()) {
       direction.setEnabled(true);
-    }	
-    
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getReadOnly()
-	 * @generated
-	 */
-	public Boolean getReadOnly() {
-    return Boolean.valueOf(readOnly.getSelection());
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#setReadOnly(Boolean newValue)
-	 * @generated
-	 */
-	public void setReadOnly(Boolean newValue) {
-    if (newValue != null) {
-      readOnly.setSelection(newValue.booleanValue());
-    } else {
-      readOnly.setSelection(false);
-    }
-    boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.readOnly);
-    if (eefElementEditorReadOnlyState && readOnly.isEnabled()) {
-      readOnly.setEnabled(false);
-      readOnly.setToolTipText(UmlMessages.General_ReadOnly);
-    } else if (!eefElementEditorReadOnlyState && !readOnly.isEnabled()) {
-      readOnly.setEnabled(true);
-    }	
-    
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getDerived()
-	 * @generated
-	 */
-	public Boolean getDerived() {
-    return Boolean.valueOf(derived.getSelection());
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#setDerived(Boolean newValue)
-	 * @generated
-	 */
-	public void setDerived(Boolean newValue) {
-    if (newValue != null) {
-      derived.setSelection(newValue.booleanValue());
-    } else {
-      derived.setSelection(false);
-    }
-    boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.derived);
-    if (eefElementEditorReadOnlyState && derived.isEnabled()) {
-      derived.setEnabled(false);
-      derived.setToolTipText(UmlMessages.General_ReadOnly);
-    } else if (!eefElementEditorReadOnlyState && !derived.isEnabled()) {
-      derived.setEnabled(true);
-    }	
-    
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getDerivedUnion()
-	 * @generated
-	 */
-	public Boolean getDerivedUnion() {
-    return Boolean.valueOf(derivedUnion.getSelection());
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#setDerivedUnion(Boolean newValue)
-	 * @generated
-	 */
-	public void setDerivedUnion(Boolean newValue) {
-    if (newValue != null) {
-      derivedUnion.setSelection(newValue.booleanValue());
-    } else {
-      derivedUnion.setSelection(false);
-    }
-    boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.derivedUnion);
-    if (eefElementEditorReadOnlyState && derivedUnion.isEnabled()) {
-      derivedUnion.setEnabled(false);
-      derivedUnion.setToolTipText(UmlMessages.General_ReadOnly);
-    } else if (!eefElementEditorReadOnlyState && !derivedUnion.isEnabled()) {
-      derivedUnion.setEnabled(true);
     }	
     
   }
@@ -2748,38 +2939,6 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
       defaultValue.setToolTipText(UmlMessages.General_ReadOnly);
     } else if (!eefElementEditorReadOnlyState && !defaultValue.isEnabled()) {
       defaultValue.setEnabled(true);
-    }	
-    
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getSubstitutable()
-	 * @generated
-	 */
-	public Boolean getSubstitutable() {
-    return Boolean.valueOf(substitutable.getSelection());
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#setSubstitutable(Boolean newValue)
-	 * @generated
-	 */
-	public void setSubstitutable(Boolean newValue) {
-    if (newValue != null) {
-      substitutable.setSelection(newValue.booleanValue());
-    } else {
-      substitutable.setSelection(false);
-    }
-    boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.substitutable);
-    if (eefElementEditorReadOnlyState && substitutable.isEnabled()) {
-      substitutable.setEnabled(false);
-      substitutable.setToolTipText(UmlMessages.General_ReadOnly);
-    } else if (!eefElementEditorReadOnlyState && !substitutable.isEnabled()) {
-      substitutable.setEnabled(true);
     }	
     
   }
@@ -3039,70 +3198,6 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getActive()
-	 * @generated
-	 */
-	public Boolean getActive() {
-    return Boolean.valueOf(active.getSelection());
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#setActive(Boolean newValue)
-	 * @generated
-	 */
-	public void setActive(Boolean newValue) {
-    if (newValue != null) {
-      active.setSelection(newValue.booleanValue());
-    } else {
-      active.setSelection(false);
-    }
-    boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.active);
-    if (eefElementEditorReadOnlyState && active.isEnabled()) {
-      active.setEnabled(false);
-      active.setToolTipText(UmlMessages.General_ReadOnly);
-    } else if (!eefElementEditorReadOnlyState && !active.isEnabled()) {
-      active.setEnabled(true);
-    }	
-    
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getIndirectlyInstantiated()
-	 * @generated
-	 */
-	public Boolean getIndirectlyInstantiated() {
-    return Boolean.valueOf(indirectlyInstantiated.getSelection());
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#setIndirectlyInstantiated(Boolean newValue)
-	 * @generated
-	 */
-	public void setIndirectlyInstantiated(Boolean newValue) {
-    if (newValue != null) {
-      indirectlyInstantiated.setSelection(newValue.booleanValue());
-    } else {
-      indirectlyInstantiated.setSelection(false);
-    }
-    boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.indirectlyInstantiated);
-    if (eefElementEditorReadOnlyState && indirectlyInstantiated.isEnabled()) {
-      indirectlyInstantiated.setEnabled(false);
-      indirectlyInstantiated.setToolTipText(UmlMessages.General_ReadOnly);
-    } else if (!eefElementEditorReadOnlyState && !indirectlyInstantiated.isEnabled()) {
-      indirectlyInstantiated.setEnabled(true);
-    }	
-    
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getKind()
 	 * @generated
 	 */
@@ -3143,70 +3238,6 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
       kind.setToolTipText(UmlMessages.General_ReadOnly);
     } else if (!eefElementEditorReadOnlyState && !kind.isEnabled()) {
       kind.setEnabled(true);
-    }	
-    
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getBehavior()
-	 * @generated
-	 */
-	public Boolean getBehavior() {
-    return Boolean.valueOf(behavior.getSelection());
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#setBehavior(Boolean newValue)
-	 * @generated
-	 */
-	public void setBehavior(Boolean newValue) {
-    if (newValue != null) {
-      behavior.setSelection(newValue.booleanValue());
-    } else {
-      behavior.setSelection(false);
-    }
-    boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.behavior);
-    if (eefElementEditorReadOnlyState && behavior.isEnabled()) {
-      behavior.setEnabled(false);
-      behavior.setToolTipText(UmlMessages.General_ReadOnly);
-    } else if (!eefElementEditorReadOnlyState && !behavior.isEnabled()) {
-      behavior.setEnabled(true);
-    }	
-    
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getService()
-	 * @generated
-	 */
-	public Boolean getService() {
-    return Boolean.valueOf(service.getSelection());
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#setService(Boolean newValue)
-	 * @generated
-	 */
-	public void setService(Boolean newValue) {
-    if (newValue != null) {
-      service.setSelection(newValue.booleanValue());
-    } else {
-      service.setSelection(false);
-    }
-    boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.service);
-    if (eefElementEditorReadOnlyState && service.isEnabled()) {
-      service.setEnabled(false);
-      service.setToolTipText(UmlMessages.General_ReadOnly);
-    } else if (!eefElementEditorReadOnlyState && !service.isEnabled()) {
-      service.setEnabled(true);
     }	
     
   }
@@ -3671,38 +3702,6 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
       icon.setToolTipText(UmlMessages.General_ReadOnly);
     } else if (!eefElementEditorReadOnlyState && !icon.isEnabled()) {
       icon.setEnabled(true);
-    }	
-    
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getReentrant()
-	 * @generated
-	 */
-	public Boolean getReentrant() {
-    return Boolean.valueOf(reentrant.getSelection());
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#setReentrant(Boolean newValue)
-	 * @generated
-	 */
-	public void setReentrant(Boolean newValue) {
-    if (newValue != null) {
-      reentrant.setSelection(newValue.booleanValue());
-    } else {
-      reentrant.setSelection(false);
-    }
-    boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.reentrant);
-    if (eefElementEditorReadOnlyState && reentrant.isEnabled()) {
-      reentrant.setEnabled(false);
-      reentrant.setToolTipText(UmlMessages.General_ReadOnly);
-    } else if (!eefElementEditorReadOnlyState && !reentrant.isEnabled()) {
-      reentrant.setEnabled(true);
     }	
     
   }

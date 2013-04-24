@@ -62,9 +62,9 @@ public class PinPropertiesEditionProvider extends UmlPropertiesEditionProvider {
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-    return (editingContext.getEObject() instanceof Pin) 
-          && (UMLPackage.Literals.PIN == editingContext.getEObject().eClass());
-  }
+		return (editingContext.getEObject() instanceof Pin) 
+					&& (UMLPackage.Literals.PIN == editingContext.getEObject().eClass());
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -72,8 +72,8 @@ public class PinPropertiesEditionProvider extends UmlPropertiesEditionProvider {
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-    return (editingContext.getEObject() instanceof Pin) && (PinPropertiesEditionComponent.GENERAL_PART.equals(part));
-  }
+		return (editingContext.getEObject() instanceof Pin) && (PinPropertiesEditionComponent.GENERAL_PART.equals(part));
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -82,8 +82,8 @@ public class PinPropertiesEditionProvider extends UmlPropertiesEditionProvider {
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-    return (editingContext.getEObject() instanceof Pin) && (refinement == PinPropertiesEditionComponent.class);
-  }
+		return (editingContext.getEObject() instanceof Pin) && (refinement == PinPropertiesEditionComponent.class);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -92,8 +92,8 @@ public class PinPropertiesEditionProvider extends UmlPropertiesEditionProvider {
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-    return (editingContext.getEObject() instanceof Pin) && ((PinPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == PinPropertiesEditionComponent.class));
-  }
+		return (editingContext.getEObject() instanceof Pin) && ((PinPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == PinPropertiesEditionComponent.class));
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -101,11 +101,11 @@ public class PinPropertiesEditionProvider extends UmlPropertiesEditionProvider {
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-    if (editingContext.getEObject() instanceof Pin) {
-      return new PinPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-    }
-    return super.getPropertiesEditingComponent(editingContext, mode);
-  }
+		if (editingContext.getEObject() instanceof Pin) {
+			return new PinPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		}
+		return super.getPropertiesEditingComponent(editingContext, mode);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -113,12 +113,12 @@ public class PinPropertiesEditionProvider extends UmlPropertiesEditionProvider {
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-    if (editingContext.getEObject() instanceof Pin) {
-      if (PinPropertiesEditionComponent.GENERAL_PART.equals(part))
-        return new PinPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-    }
-    return super.getPropertiesEditingComponent(editingContext, mode, part);
-  }
+		if (editingContext.getEObject() instanceof Pin) {
+			if (PinPropertiesEditionComponent.GENERAL_PART.equals(part))
+				return new PinPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		}
+		return super.getPropertiesEditingComponent(editingContext, mode, part);
+	}
 
 	/**
 	 * {@inheritDoc}

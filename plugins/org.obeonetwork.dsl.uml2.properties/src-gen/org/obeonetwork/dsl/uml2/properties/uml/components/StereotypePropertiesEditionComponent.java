@@ -83,20 +83,20 @@ public class StereotypePropertiesEditionComponent extends ComposedPropertiesEdit
 	 * @generated
 	 */
 	public StereotypePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject stereotype, String editing_mode) {
-    super(editingContext, editing_mode);
-    if (stereotype instanceof Stereotype) {
-      PropertiesEditingProvider provider = null;
-      provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(stereotype, PropertiesEditingProvider.class);
-      stereotypeGeneralPropertiesEditionComponent = (StereotypeGeneralPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, StereotypeGeneralPropertiesEditionComponent.GENERAL_PART, StereotypeGeneralPropertiesEditionComponent.class);
-      addSubComponent(stereotypeGeneralPropertiesEditionComponent);
-      provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(stereotype, PropertiesEditingProvider.class);
-      stereotypeOperationsPropertiesEditionComponent = (StereotypeOperationsPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, StereotypeOperationsPropertiesEditionComponent.OPERATIONS_PART, StereotypeOperationsPropertiesEditionComponent.class);
-      addSubComponent(stereotypeOperationsPropertiesEditionComponent);
-      provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(stereotype, PropertiesEditingProvider.class);
-      stereotypeAttributesPropertiesEditionComponent = (StereotypeAttributesPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, StereotypeAttributesPropertiesEditionComponent.ATTRIBUTES_PART, StereotypeAttributesPropertiesEditionComponent.class);
-      addSubComponent(stereotypeAttributesPropertiesEditionComponent);
-    }
-  }
+		super(editingContext, editing_mode);
+		if (stereotype instanceof Stereotype) {
+			PropertiesEditingProvider provider = null;
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(stereotype, PropertiesEditingProvider.class);
+			stereotypeGeneralPropertiesEditionComponent = (StereotypeGeneralPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, StereotypeGeneralPropertiesEditionComponent.GENERAL_PART, StereotypeGeneralPropertiesEditionComponent.class);
+			addSubComponent(stereotypeGeneralPropertiesEditionComponent);
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(stereotype, PropertiesEditingProvider.class);
+			stereotypeOperationsPropertiesEditionComponent = (StereotypeOperationsPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, StereotypeOperationsPropertiesEditionComponent.OPERATIONS_PART, StereotypeOperationsPropertiesEditionComponent.class);
+			addSubComponent(stereotypeOperationsPropertiesEditionComponent);
+			provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(stereotype, PropertiesEditingProvider.class);
+			stereotypeAttributesPropertiesEditionComponent = (StereotypeAttributesPropertiesEditionComponent)provider.getPropertiesEditingComponent(editingContext, editing_mode, StereotypeAttributesPropertiesEditionComponent.ATTRIBUTES_PART, StereotypeAttributesPropertiesEditionComponent.class);
+			addSubComponent(stereotypeAttributesPropertiesEditionComponent);
+		}
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -106,20 +106,20 @@ public class StereotypePropertiesEditionComponent extends ComposedPropertiesEdit
 	 * @generated
 	 */
 	public IPropertiesEditionPart getPropertiesEditionPart(int kind, String key) {
-    if (StereotypeGeneralPropertiesEditionComponent.GENERAL_PART.equals(key)) {
-      generalPart = (GeneralPropertiesEditionPart)stereotypeGeneralPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
-      return (IPropertiesEditionPart)generalPart;
-    }
-    if (StereotypeOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(key)) {
-      operationsPart = (OperationsPropertiesEditionPart)stereotypeOperationsPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
-      return (IPropertiesEditionPart)operationsPart;
-    }
-    if (StereotypeAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(key)) {
-      attributesPart = (AttributesPropertiesEditionPart)stereotypeAttributesPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
-      return (IPropertiesEditionPart)attributesPart;
-    }
-    return super.getPropertiesEditionPart(kind, key);
-  }
+		if (StereotypeGeneralPropertiesEditionComponent.GENERAL_PART.equals(key)) {
+			generalPart = (GeneralPropertiesEditionPart)stereotypeGeneralPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
+			return (IPropertiesEditionPart)generalPart;
+		}
+		if (StereotypeOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(key)) {
+			operationsPart = (OperationsPropertiesEditionPart)stereotypeOperationsPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
+			return (IPropertiesEditionPart)operationsPart;
+		}
+		if (StereotypeAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(key)) {
+			attributesPart = (AttributesPropertiesEditionPart)stereotypeAttributesPropertiesEditionComponent.getPropertiesEditionPart(kind, key);
+			return (IPropertiesEditionPart)attributesPart;
+		}
+		return super.getPropertiesEditionPart(kind, key);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -130,19 +130,19 @@ public class StereotypePropertiesEditionComponent extends ComposedPropertiesEdit
 	 * @generated
 	 */
 	public void setPropertiesEditionPart(java.lang.Object key, int kind, IPropertiesEditionPart propertiesEditionPart) {
-    if (UmlViewsRepository.General.class == key) {
-      super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
-      generalPart = (GeneralPropertiesEditionPart)propertiesEditionPart;
-    }
-    if (UmlViewsRepository.Operations.class == key) {
-      super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
-      operationsPart = (OperationsPropertiesEditionPart)propertiesEditionPart;
-    }
-    if (UmlViewsRepository.Attributes.class == key) {
-      super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
-      attributesPart = (AttributesPropertiesEditionPart)propertiesEditionPart;
-    }
-  }
+		if (UmlViewsRepository.General.class == key) {
+			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
+			generalPart = (GeneralPropertiesEditionPart)propertiesEditionPart;
+		}
+		if (UmlViewsRepository.Operations.class == key) {
+			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
+			operationsPart = (OperationsPropertiesEditionPart)propertiesEditionPart;
+		}
+		if (UmlViewsRepository.Attributes.class == key) {
+			super.setPropertiesEditionPart(key, kind, propertiesEditionPart);
+			attributesPart = (AttributesPropertiesEditionPart)propertiesEditionPart;
+		}
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -153,14 +153,14 @@ public class StereotypePropertiesEditionComponent extends ComposedPropertiesEdit
 	 * @generated
 	 */
 	public void initPart(java.lang.Object key, int kind, EObject element, ResourceSet allResource) {
-    if (key == UmlViewsRepository.General.class) {
-      super.initPart(key, kind, element, allResource);
-    }
-    if (key == UmlViewsRepository.Operations.class) {
-      super.initPart(key, kind, element, allResource);
-    }
-    if (key == UmlViewsRepository.Attributes.class) {
-      super.initPart(key, kind, element, allResource);
-    }
-  }
+		if (key == UmlViewsRepository.General.class) {
+			super.initPart(key, kind, element, allResource);
+		}
+		if (key == UmlViewsRepository.Operations.class) {
+			super.initPart(key, kind, element, allResource);
+		}
+		if (key == UmlViewsRepository.Attributes.class) {
+			super.initPart(key, kind, element, allResource);
+		}
+	}
 }

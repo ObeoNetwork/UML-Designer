@@ -720,21 +720,39 @@
           <elements xsi:type="eef-views:ElementEditor" xmi:id="_PBNzEFv8EeKZBNASYbV97A" name="query" nameAsLabel="true">
             <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
           </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_0cidsFv_EeKZBNASYbV97A" name="readOnly" nameAsLabel="true">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_569OMFv_EeKZBNASYbV97A" name="derived">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_-MIvgFv_EeKZBNASYbV97A" name="derivedUnion">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_S7wcYFwEEeKZBNASYbV97A" name="substitutable">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_-hRqUFwFEeKZBNASYbV97A" name="active">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_PvtPwFwHEeKZBNASYbV97A" name="behavior">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_RibxoFwHEeKZBNASYbV97A" name="service">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_3whzgIcsEeKNyt99hwHqAw" name="reentrant" nameAsLabel="true">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
+          <elements xsi:type="eef-views:ElementEditor" xmi:id="_BJ9j0FwGEeKZBNASYbV97A" name="indirectlyInstantiated">
+            <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
+          </elements>
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_tYLxgFv8EeKZBNASYbV97A" name="type">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_N1LWYFv_EeKZBNASYbV97A" name="direction">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
-        </elements>
-        <elements xsi:type="eef-views:ElementEditor" xmi:id="_0cidsFv_EeKZBNASYbV97A" name="readOnly" nameAsLabel="true">
-          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
-        </elements>
-        <elements xsi:type="eef-views:ElementEditor" xmi:id="_569OMFv_EeKZBNASYbV97A" name="derived">
-          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
-        </elements>
-        <elements xsi:type="eef-views:ElementEditor" xmi:id="_-MIvgFv_EeKZBNASYbV97A" name="derivedUnion">
-          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_Afmm8FwAEeKZBNASYbV97A" name="aggregation">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
@@ -748,9 +766,6 @@
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_GfgT4FwAEeKZBNASYbV97A" name="defaultValue">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
         </elements>
-        <elements xsi:type="eef-views:ElementEditor" xmi:id="_S7wcYFwEEeKZBNASYbV97A" name="substitutable">
-          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
-        </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_rTAUEFwEEeKZBNASYbV97A" name="ownedEnd">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
         </elements>
@@ -763,20 +778,8 @@
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_txvx8FwFEeKZBNASYbV97A" name="client">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
         </elements>
-        <elements xsi:type="eef-views:ElementEditor" xmi:id="_-hRqUFwFEeKZBNASYbV97A" name="active">
-          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
-        </elements>
-        <elements xsi:type="eef-views:ElementEditor" xmi:id="_BJ9j0FwGEeKZBNASYbV97A" name="indirectlyInstantiated">
-          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
-        </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_aI7i0FwGEeKZBNASYbV97A" name="kind">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
-        </elements>
-        <elements xsi:type="eef-views:ElementEditor" xmi:id="_PvtPwFwHEeKZBNASYbV97A" name="behavior">
-          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
-        </elements>
-        <elements xsi:type="eef-views:ElementEditor" xmi:id="_RibxoFwHEeKZBNASYbV97A" name="service">
-          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_Ir2okF4iEeKttZbtn302Pg" name="source">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
@@ -795,9 +798,6 @@
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_L0KA0F4jEeKttZbtn302Pg" name="icon">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.11"/>
-        </elements>
-        <elements xsi:type="eef-views:ElementEditor" xmi:id="_3whzgIcsEeKNyt99hwHqAw" name="reentrant" nameAsLabel="true">
-          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.1"/>
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_FFoNkIdHEeKcacknc_K90g" name="body">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.2"/>

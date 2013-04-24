@@ -62,9 +62,9 @@ public class ControlNodePropertiesEditionProvider extends UmlPropertiesEditionPr
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-    return (editingContext.getEObject() instanceof ControlNode) 
-          && (UMLPackage.Literals.CONTROL_NODE == editingContext.getEObject().eClass());
-  }
+		return (editingContext.getEObject() instanceof ControlNode) 
+					&& (UMLPackage.Literals.CONTROL_NODE == editingContext.getEObject().eClass());
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -72,8 +72,8 @@ public class ControlNodePropertiesEditionProvider extends UmlPropertiesEditionPr
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-    return (editingContext.getEObject() instanceof ControlNode) && (ControlNodePropertiesEditionComponent.GENERAL_PART.equals(part));
-  }
+		return (editingContext.getEObject() instanceof ControlNode) && (ControlNodePropertiesEditionComponent.GENERAL_PART.equals(part));
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -82,8 +82,8 @@ public class ControlNodePropertiesEditionProvider extends UmlPropertiesEditionPr
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-    return (editingContext.getEObject() instanceof ControlNode) && (refinement == ControlNodePropertiesEditionComponent.class);
-  }
+		return (editingContext.getEObject() instanceof ControlNode) && (refinement == ControlNodePropertiesEditionComponent.class);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -92,8 +92,8 @@ public class ControlNodePropertiesEditionProvider extends UmlPropertiesEditionPr
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-    return (editingContext.getEObject() instanceof ControlNode) && ((ControlNodePropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == ControlNodePropertiesEditionComponent.class));
-  }
+		return (editingContext.getEObject() instanceof ControlNode) && ((ControlNodePropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == ControlNodePropertiesEditionComponent.class));
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -101,11 +101,11 @@ public class ControlNodePropertiesEditionProvider extends UmlPropertiesEditionPr
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-    if (editingContext.getEObject() instanceof ControlNode) {
-      return new ControlNodePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-    }
-    return super.getPropertiesEditingComponent(editingContext, mode);
-  }
+		if (editingContext.getEObject() instanceof ControlNode) {
+			return new ControlNodePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		}
+		return super.getPropertiesEditingComponent(editingContext, mode);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -113,12 +113,12 @@ public class ControlNodePropertiesEditionProvider extends UmlPropertiesEditionPr
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-    if (editingContext.getEObject() instanceof ControlNode) {
-      if (ControlNodePropertiesEditionComponent.GENERAL_PART.equals(part))
-        return new ControlNodePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-    }
-    return super.getPropertiesEditingComponent(editingContext, mode, part);
-  }
+		if (editingContext.getEObject() instanceof ControlNode) {
+			if (ControlNodePropertiesEditionComponent.GENERAL_PART.equals(part))
+				return new ControlNodePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		}
+		return super.getPropertiesEditingComponent(editingContext, mode, part);
+	}
 
 	/**
 	 * {@inheritDoc}
