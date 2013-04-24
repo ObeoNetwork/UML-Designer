@@ -58,7 +58,7 @@
           <elementView name="elementView"/>
           <initialOperation>
             <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element%>">
-              <subModelOperations xsi:type="tool:ExternalJavaAction" name="openPropertiesWizard" id="org.obeonetwork.dsl.viewpoint.eef.actions.openPropertiesWizard"/>
+              <subModelOperations xsi:type="tool:ExternalJavaAction" name="openPropertiesWizard" id="fr.obeo.dsl.viewpoint.eef.actions.openPropertiesWizard"/>
             </firstModelOperations>
           </initialOperation>
         </ownedTools>
