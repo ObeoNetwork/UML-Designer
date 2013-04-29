@@ -47,4 +47,12 @@ public class CustomUmlViewsRepository extends UmlViewsRepository {
 		public static String comment = "uml::Documentation::comment";
 	}
 
+	/**
+	 * General custom view descriptor
+	 */
+	public static class General {
+		public static String memberEndOwned = "uml::General::memberEnd::owned";
+		public static String memberEndNavigable = "uml::General::memberEnd::navigable";
+	}
+
 }

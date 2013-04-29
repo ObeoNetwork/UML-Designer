@@ -113,7 +113,6 @@ public class AssociationClassPropertiesEditionComponent extends SinglePartProper
 			
 			generalPart.setDerived(associationClass.isDerived());
 			
-			// FIXME NO VALID CASE INTO template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : ownedEnd, General, AssociationClass.
 			if (isAccessible(UmlViewsRepository.General.memberEnd)) {
 				memberEndSettings = new ReferencesTableSettings(associationClass, UMLPackage.eINSTANCE.getAssociation_MemberEnd());
 				generalPart.initMemberEnd(memberEndSettings);
@@ -124,7 +123,6 @@ public class AssociationClassPropertiesEditionComponent extends SinglePartProper
 			
 			
 			
-			// FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : ownedEnd, General, AssociationClass.
 			if (isAccessible(UmlViewsRepository.General.memberEnd)) {
 				generalPart.addFilterToMemberEnd(new EObjectFilter(UMLPackage.Literals.PROPERTY));
 			}
@@ -135,7 +133,6 @@ public class AssociationClassPropertiesEditionComponent extends SinglePartProper
 		}
 		setInitializing(false);
 	}
-
 
 
 
@@ -165,9 +162,6 @@ public class AssociationClassPropertiesEditionComponent extends SinglePartProper
 		if (editorKey == UmlViewsRepository.General.Qualifiers.derived) {
 			return UMLPackage.eINSTANCE.getProperty_IsDerived();
 		}
-		if (editorKey == UmlViewsRepository.General.ownedEnd) {
-			return UMLPackage.eINSTANCE.getAssociation_OwnedEnd();
-		}
 		if (editorKey == UmlViewsRepository.General.memberEnd) {
 			return UMLPackage.eINSTANCE.getAssociation_MemberEnd();
 		}
@@ -181,6 +175,7 @@ public class AssociationClassPropertiesEditionComponent extends SinglePartProper
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		AssociationClass associationClass = (AssociationClass)semanticObject;
+
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			associationClass.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}
@@ -195,9 +190,6 @@ public class AssociationClassPropertiesEditionComponent extends SinglePartProper
 		}
 		if (UmlViewsRepository.General.Qualifiers.derived == event.getAffectedEditor()) {
 			associationClass.setIsDerived((Boolean)event.getNewValue());
-		}
-		if (UmlViewsRepository.General.ownedEnd == event.getAffectedEditor()) {
-			// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : ownedEnd, General, AssociationClass.
 		}
 		if (UmlViewsRepository.General.memberEnd == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
@@ -239,7 +231,6 @@ public class AssociationClassPropertiesEditionComponent extends SinglePartProper
 			if (UMLPackage.eINSTANCE.getProperty_IsDerived().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.Qualifiers.derived))
 				generalPart.setDerived((Boolean)msg.getNewValue());
 			
-			// FIXME INVALID CASE INTO template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : ownedEnd, General, AssociationClass.
 			if (UMLPackage.eINSTANCE.getAssociation_MemberEnd().equals(msg.getFeature())  && isAccessible(UmlViewsRepository.General.memberEnd))
 				generalPart.updateMemberEnd();
 			
@@ -259,7 +250,6 @@ public class AssociationClassPropertiesEditionComponent extends SinglePartProper
 			UMLPackage.eINSTANCE.getClassifier_IsAbstract(),
 			UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf(),
 			UMLPackage.eINSTANCE.getProperty_IsDerived(),
-			UMLPackage.eINSTANCE.getAssociation_OwnedEnd(),
 			UMLPackage.eINSTANCE.getAssociation_MemberEnd()		);
 		return new NotificationFilter[] {filter,};
 	}
@@ -269,7 +259,7 @@ public class AssociationClassPropertiesEditionComponent extends SinglePartProper
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#mustBeComposed(java.lang.Object, int)
 	 */
 	public boolean mustBeComposed(Object key, int kind) {
-		return key == UmlViewsRepository.General.name || key == UmlViewsRepository.General.visibility || key == UmlViewsRepository.General.Qualifiers.abstract_ || key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.Qualifiers.derived || key == UmlViewsRepository.General.ownedEnd || key == UmlViewsRepository.General.memberEnd || key == UmlViewsRepository.General.Qualifiers.class;
+		return key == UmlViewsRepository.General.name || key == UmlViewsRepository.General.visibility || key == UmlViewsRepository.General.Qualifiers.abstract_ || key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.Qualifiers.derived || key == UmlViewsRepository.General.memberEnd || key == UmlViewsRepository.General.Qualifiers.class;
 	}
 
 	/**

@@ -411,48 +411,6 @@ public interface GeneralPropertiesEditionPart {
 
 
 	/**
-	 * Init the ownedEnd
-	 * @param settings settings for the ownedEnd ReferencesTable 
-	 */
-	public void initOwnedEnd(ReferencesTableSettings settings);
-
-	/**
-	 * Update the ownedEnd
-	 * @param newValue the ownedEnd to update
-	 * @generated
-	 */
-	public void updateOwnedEnd();
-
-	/**
-	 * Adds the given filter to the ownedEnd edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * @generated
-	 */
-	public void addFilterToOwnedEnd(ViewerFilter filter);
-
-	/**
-	 * Adds the given filter to the ownedEnd edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * @generated
-	 */
-	public void addBusinessFilterToOwnedEnd(ViewerFilter filter);
-
-	/**
-	 * @return true if the given element is contained inside the ownedEnd table
-	 * @generated
-	 */
-	public boolean isContainedInOwnedEndTable(EObject element);
-
-
-
-
-	/**
 	 * Init the memberEnd
 	 * @param settings settings for the memberEnd ReferencesTable 
 	 */

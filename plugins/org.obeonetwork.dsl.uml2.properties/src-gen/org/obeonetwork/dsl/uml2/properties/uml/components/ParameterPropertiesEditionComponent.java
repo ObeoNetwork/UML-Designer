@@ -188,6 +188,7 @@ public class ParameterPropertiesEditionComponent extends SinglePartPropertiesEdi
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Parameter parameter = (Parameter)semanticObject;
+
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			parameter.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}

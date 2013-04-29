@@ -118,7 +118,7 @@ Contributors:
       <propertySections
             contributorId="fr.obeo.dsl.viewpoint.diagram">
          <propertySection
-               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralCustomPropertiesEditionPartForm"
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.GeneralEditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.General"
                tab="General">

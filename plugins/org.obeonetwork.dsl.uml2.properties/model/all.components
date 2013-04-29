@@ -240,9 +240,6 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_-gfyxl5sEeKd8d7WgZ31eQ" name="derived" views="_569OMFv_EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Property/isDerived"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_-gfyx15sEeKd8d7WgZ31eQ" name="ownedEnd" views="_rTAUEFwEEeKZBNASYbV97A">
-          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Association/ownedEnd"/>
-        </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_-gfyyF5sEeKd8d7WgZ31eQ" name="memberEnd" views="_0d7ykFwEEeKZBNASYbV97A">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Association/memberEnd"/>
         </properties>
@@ -263,9 +260,6 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_oNt-IFwEEeKZBNASYbV97A" name="derived" views="_569OMFv_EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Property/isDerived"/>
-        </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_b-7tEFwEEeKZBNASYbV97A" name="ownedEnd" views="_rTAUEFwEEeKZBNASYbV97A">
-          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Association/ownedEnd"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_fLw1cFwEEeKZBNASYbV97A" name="memberEnd" views="_0d7ykFwEEeKZBNASYbV97A">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Association/memberEnd"/>
@@ -765,9 +759,6 @@
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_GfgT4FwAEeKZBNASYbV97A" name="defaultValue">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
-        </elements>
-        <elements xsi:type="eef-views:ElementEditor" xmi:id="_rTAUEFwEEeKZBNASYbV97A" name="ownedEnd">
-          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_0d7ykFwEEeKZBNASYbV97A" name="memberEnd">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>

@@ -130,6 +130,7 @@ public class PackagePropertiesEditionComponent extends SinglePartPropertiesEditi
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Package package_ = (Package)semanticObject;
+
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			package_.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}

@@ -153,6 +153,7 @@ public class OperationParametersPropertiesEditionComponent extends SinglePartPro
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Operation operation = (Operation)semanticObject;
+
 		if (UmlViewsRepository.Parameters.parameters_ == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, parametersSettings, editingContext.getAdapterFactory());

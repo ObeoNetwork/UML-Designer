@@ -19,4 +19,9 @@ public class CustomUmlEEFAdapterFactory extends UmlEEFAdapterFactory {
 	public Adapter createConnectorEndAdapter() {
 		return new ConnectorEndCustomPropertiesEditionProvider();
 	}
+
+	@Override
+	public Adapter createAssociationAdapter() {
+		return new AssociationCustomPropertiesEditionProvider();
+	}
 }

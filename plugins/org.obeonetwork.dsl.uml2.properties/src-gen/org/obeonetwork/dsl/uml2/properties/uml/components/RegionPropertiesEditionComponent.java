@@ -131,6 +131,7 @@ public class RegionPropertiesEditionComponent extends SinglePartPropertiesEditin
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Region region = (Region)semanticObject;
+
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			region.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}

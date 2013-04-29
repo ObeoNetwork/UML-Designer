@@ -168,8 +168,6 @@ public class AttributesPropertiesEditionPartForm extends SectionPropertiesEditin
     GridData attributesData = new GridData(GridData.FILL_HORIZONTAL);
     attributesData.horizontalSpan = 3;
     this.attributes.setLayoutData(attributesData);
-    this.attributes.setLowerBound(0);
-    this.attributes.setUpperBound(-1);
     attributes.setID(UmlViewsRepository.Attributes.attributes_);
     attributes.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
     // Start of user code for createAttributesTableComposition

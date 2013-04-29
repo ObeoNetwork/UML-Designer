@@ -118,6 +118,7 @@ public class GeneralizationPropertiesEditionComponent extends SinglePartProperti
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Generalization generalization = (Generalization)semanticObject;
+
 		if (UmlViewsRepository.General.Qualifiers.substitutable == event.getAffectedEditor()) {
 			generalization.setIsSubstitutable((Boolean)event.getNewValue());
 		}

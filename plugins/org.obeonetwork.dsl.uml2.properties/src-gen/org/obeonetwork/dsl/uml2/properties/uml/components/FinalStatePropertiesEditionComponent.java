@@ -138,6 +138,7 @@ public class FinalStatePropertiesEditionComponent extends SinglePartPropertiesEd
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		FinalState finalState = (FinalState)semanticObject;
+
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			finalState.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}

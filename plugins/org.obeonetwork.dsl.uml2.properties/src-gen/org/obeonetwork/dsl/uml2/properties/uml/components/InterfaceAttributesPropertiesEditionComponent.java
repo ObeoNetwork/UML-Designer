@@ -153,6 +153,7 @@ public class InterfaceAttributesPropertiesEditionComponent extends SinglePartPro
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Interface interface_ = (Interface)semanticObject;
+
 		if (UmlViewsRepository.Attributes.attributes_ == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, attributesSettings, editingContext.getAdapterFactory());

@@ -145,6 +145,7 @@ public class EnumerationGeneralPropertiesEditionComponent extends SinglePartProp
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Enumeration enumeration = (Enumeration)semanticObject;
+
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			enumeration.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}

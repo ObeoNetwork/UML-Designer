@@ -145,6 +145,7 @@ public class ActorPropertiesEditionComponent extends SinglePartPropertiesEditing
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Actor actor = (Actor)semanticObject;
+
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			actor.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}

@@ -152,6 +152,7 @@ public class ConnectorEndPropertiesEditionComponent extends SinglePartProperties
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
     ConnectorEnd connectorEnd = (ConnectorEnd)semanticObject;
+
     if (UmlViewsRepository.General.Qualifiers.ordered == event.getAffectedEditor()) {
       connectorEnd.setIsOrdered((Boolean)event.getNewValue());
     }

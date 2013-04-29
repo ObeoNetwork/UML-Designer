@@ -169,6 +169,7 @@ public class DataStoreNodePropertiesEditionComponent extends SinglePartPropertie
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		DataStoreNode dataStoreNode = (DataStoreNode)semanticObject;
+
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			dataStoreNode.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}

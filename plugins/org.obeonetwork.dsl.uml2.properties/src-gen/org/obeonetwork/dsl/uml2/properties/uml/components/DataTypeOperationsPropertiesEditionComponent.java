@@ -153,6 +153,7 @@ public class DataTypeOperationsPropertiesEditionComponent extends SinglePartProp
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		DataType dataType = (DataType)semanticObject;
+
 		if (UmlViewsRepository.Operations.operations_ == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, operationsSettings, editingContext.getAdapterFactory());

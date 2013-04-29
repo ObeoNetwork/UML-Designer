@@ -129,9 +129,6 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
 	protected Text upperValue;
 	protected Text lowerValue;
 	protected Text defaultValue;
-	protected ReferencesTable ownedEnd;
-	protected List<ViewerFilter> ownedEndBusinessFilters = new ArrayList<ViewerFilter>();
-	protected List<ViewerFilter> ownedEndFilters = new ArrayList<ViewerFilter>();
 	protected ReferencesTable memberEnd;
 	protected List<ViewerFilter> memberEndBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> memberEndFilters = new ArrayList<ViewerFilter>();
@@ -217,7 +214,6 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
     generalStep.addStep(UmlViewsRepository.General.upperValue);
     generalStep.addStep(UmlViewsRepository.General.lowerValue);
     generalStep.addStep(UmlViewsRepository.General.defaultValue);
-    generalStep.addStep(UmlViewsRepository.General.ownedEnd);
     generalStep.addStep(UmlViewsRepository.General.memberEnd);
     generalStep.addStep(UmlViewsRepository.General.supplier);
     generalStep.addStep(UmlViewsRepository.General.client);
@@ -309,9 +305,6 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
         }
         if (key == UmlViewsRepository.General.defaultValue) {
           return createDefaultValueText(parent);
-        }
-        if (key == UmlViewsRepository.General.ownedEnd) {
-          return createOwnedEndAdvancedReferencesTable(parent);
         }
         if (key == UmlViewsRepository.General.memberEnd) {
           return createMemberEndAdvancedReferencesTable(parent);
@@ -1209,88 +1202,6 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
 
     // End of user code
     return parent;
-  }
-
-	/**
-	 * @generated
-	 */
-	protected Composite createOwnedEndAdvancedReferencesTable(Composite parent) {
-    String label = getDescription(UmlViewsRepository.General.ownedEnd, UmlMessages.GeneralPropertiesEditionPart_OwnedEndLabel);		 
-    this.ownedEnd = new ReferencesTable(label, new ReferencesTableListener() {
-      public void handleAdd() { addOwnedEnd(); }
-      public void handleEdit(EObject element) { editOwnedEnd(element); }
-      public void handleMove(EObject element, int oldIndex, int newIndex) { moveOwnedEnd(element, oldIndex, newIndex); }
-      public void handleRemove(EObject element) { removeFromOwnedEnd(element); }
-      public void navigateTo(EObject element) { }
-    });
-    this.ownedEnd.setHelpText(propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.ownedEnd, UmlViewsRepository.SWT_KIND));
-    this.ownedEnd.createControls(parent);
-    this.ownedEnd.addSelectionListener(new SelectionAdapter() {
-      
-      public void widgetSelected(SelectionEvent e) {
-        if (e.item != null && e.item.getData() instanceof EObject) {
-          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartImpl.this, UmlViewsRepository.General.ownedEnd, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
-        }
-      }
-      
-    });
-    GridData ownedEndData = new GridData(GridData.FILL_HORIZONTAL);
-    ownedEndData.horizontalSpan = 3;
-    this.ownedEnd.setLayoutData(ownedEndData);
-    this.ownedEnd.disableMove();
-    ownedEnd.setID(UmlViewsRepository.General.ownedEnd);
-    ownedEnd.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
-    return parent;
-  }
-
-	/**
-	 * @generated
-	 */
-	protected void addOwnedEnd() {
-    TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(ownedEnd.getInput(), ownedEndFilters, ownedEndBusinessFilters,
-    "ownedEnd", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
-      @Override
-      public void process(IStructuredSelection selection) {
-        for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
-          EObject elem = (EObject) iter.next();
-          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartImpl.this, UmlViewsRepository.General.ownedEnd,
-            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
-        }
-        ownedEnd.refresh();
-      }
-    };
-    dialog.open();
-  }
-
-	/**
-	 * @generated
-	 */
-	protected void moveOwnedEnd(EObject element, int oldIndex, int newIndex) {
-    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartImpl.this, UmlViewsRepository.General.ownedEnd, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
-    ownedEnd.refresh();
-  }
-
-	/**
-	 * @generated
-	 */
-	protected void removeFromOwnedEnd(EObject element) {
-    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartImpl.this, UmlViewsRepository.General.ownedEnd, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
-    ownedEnd.refresh();
-  }
-
-	/**
-	 * @generated
-	 */
-	protected void editOwnedEnd(EObject element) {
-    EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
-    PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
-    if (provider != null) {
-      PropertiesEditingPolicy policy = provider.getPolicy(context);
-      if (policy != null) {
-        policy.execute();
-        ownedEnd.refresh();
-      }
-    }
   }
 
 	/**
@@ -2793,69 +2704,6 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
       defaultValue.setEnabled(true);
     }	
     
-  }
-
-
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#initOwnedEnd(org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings)
-	 */
-	public void initOwnedEnd(ReferencesTableSettings settings) {
-		if (current.eResource() != null && current.eResource().getResourceSet() != null)
-			this.resourceSet = current.eResource().getResourceSet();
-		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
-		ownedEnd.setContentProvider(contentProvider);
-		ownedEnd.setInput(settings);
-		boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.ownedEnd);
-		if (eefElementEditorReadOnlyState && ownedEnd.getTable().isEnabled()) {
-			ownedEnd.setEnabled(false);
-			ownedEnd.setToolTipText(UmlMessages.General_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !ownedEnd.getTable().isEnabled()) {
-			ownedEnd.setEnabled(true);
-		}
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#updateOwnedEnd()
-	 * @generated
-	 */
-	public void updateOwnedEnd() {
-  ownedEnd.refresh();
-}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#addFilterOwnedEnd(ViewerFilter filter)
-	 * @generated
-	 */
-	public void addFilterToOwnedEnd(ViewerFilter filter) {
-    ownedEndFilters.add(filter);
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#addBusinessFilterOwnedEnd(ViewerFilter filter)
-	 * @generated
-	 */
-	public void addBusinessFilterToOwnedEnd(ViewerFilter filter) {
-    ownedEndBusinessFilters.add(filter);
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#isContainedInOwnedEndTable(EObject element)
-	 * @generated
-	 */
-	public boolean isContainedInOwnedEndTable(EObject element) {
-    return ((ReferencesTableSettings)ownedEnd.getInput()).contains(element);
   }
 
 

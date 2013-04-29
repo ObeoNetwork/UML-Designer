@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.BehavioralFeature;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.ConnectableElement;
@@ -46,7 +47,8 @@ public class TableLabelService {
 				"Visibility"), IS_STATIC("Static"), MULTIPLICITY("Multiplicity"), IS_ABSTRACT(
 				"Abstract"), PARAMETERS("Parameters"), DIRECTION("Direction"), STEREOTYPE(
 				"Stereotype"), PROFILE("Profile"), REQUIRED("Required"), OTHER_RELATED_ELEMENTS(
-				"Other Related Element(s)"), ROLE("Role");
+				"Other Related Element(s)"), ROLE("Role"), PROPERTY("Property"), NAVIGABILITY(
+				"Navigable"), OWNED("Owned");
 
 		private String label;
 
@@ -218,6 +220,30 @@ public class TableLabelService {
 				return connectableElement.getName();
 			}
 			return EMPTY;
+		}
+		throw new IllegalArgumentException();
+	}
+
+	public String caseProperty(Object object) {
+		if (object instanceof Property) {
+			Property property = (Property) object;
+			return property.getName();
+		}
+		throw new IllegalArgumentException();
+	}
+
+	public boolean caseNavigability(Object object) {
+		if (object instanceof Property) {
+			Property property = (Property) object;
+			return property.isNavigable();
+		}
+		throw new IllegalArgumentException();
+	}
+
+	public boolean caseOwned(Object object) {
+		if (object instanceof Property) {
+			Property property = (Property) object;
+			return property.getOwner() instanceof Association;
 		}
 		throw new IllegalArgumentException();
 	}

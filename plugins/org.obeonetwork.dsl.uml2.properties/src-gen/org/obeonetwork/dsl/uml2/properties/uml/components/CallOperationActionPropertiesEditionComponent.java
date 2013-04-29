@@ -138,6 +138,7 @@ public class CallOperationActionPropertiesEditionComponent extends SinglePartPro
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		CallOperationAction callOperationAction = (CallOperationAction)semanticObject;
+
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			callOperationAction.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}
