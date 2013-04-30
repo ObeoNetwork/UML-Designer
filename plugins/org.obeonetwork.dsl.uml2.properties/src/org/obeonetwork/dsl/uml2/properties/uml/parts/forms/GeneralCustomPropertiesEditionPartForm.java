@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.ui.widgets.HorizontalBox;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.CheckboxUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.MemberEndsTable;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.MemberEndsTable.MemberEndsTableListener;
@@ -244,5 +245,14 @@ public class GeneralCustomPropertiesEditionPartForm extends
 						PropertiesEditionEvent.COMMIT,
 						PropertiesEditionEvent.EDIT, true, element));
 		memberEnd.refresh();
+	}
+
+	@Override
+	protected Composite createQualifiersHBox(FormToolkit widgetFactory,
+			Composite parent) {
+		HorizontalBox qualifiersHBox = (HorizontalBox) super
+				.createQualifiersHBox(widgetFactory, parent);
+		qualifiersHBox.setEditorCount(15);
+		return qualifiersHBox;
 	}
 }
