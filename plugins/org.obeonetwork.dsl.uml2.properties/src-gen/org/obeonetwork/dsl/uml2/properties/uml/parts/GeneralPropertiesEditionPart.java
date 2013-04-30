@@ -952,6 +952,48 @@ public interface GeneralPropertiesEditionPart {
 
 
 
+	/**
+	 * Init the usecase
+	 * @param settings settings for the usecase ReferencesTable 
+	 */
+	public void initUsecase(ReferencesTableSettings settings);
+
+	/**
+	 * Update the usecase
+	 * @param newValue the usecase to update
+	 * @generated
+	 */
+	public void updateUsecase();
+
+	/**
+	 * Adds the given filter to the usecase edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addFilterToUsecase(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the usecase edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addBusinessFilterToUsecase(ViewerFilter filter);
+
+	/**
+	 * @return true if the given element is contained inside the usecase table
+	 * @generated
+	 */
+	public boolean isContainedInUsecaseTable(EObject element);
+
+
+
+
 
 	/**
 	 * Returns the internationalized title text.

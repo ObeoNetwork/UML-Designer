@@ -33,6 +33,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Em_XUYcnEeKNyt99hwHqAw" name="operations" views="_7kJy0F8vEeKd8d7WgZ31eQ">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Class/ownedOperation"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_csy1cLFzEeKhdLulAmSCrA" name="usecase" views="_x4yHgLFyEeKhdLulAmSCrA">
+          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Classifier/useCase"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Class"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_urjyoF4lEeKttZbtn302Pg" name="Interface" views="_Kt6kIFv3EeKZBNASYbV97A _55BGsF8vEeKd8d7WgZ31eQ _fgTgsGCnEeKd8d7WgZ31eQ">
@@ -54,6 +57,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Iop_QGDCEeKd8d7WgZ31eQ" name="attributes" views="_hKXOwGCnEeKd8d7WgZ31eQ">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Interface/ownedAttribute"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_R5egALF3EeKhdLulAmSCrA" name="usecase" views="_x4yHgLFyEeKhdLulAmSCrA">
+          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Classifier/useCase"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Interface"/>
       </bindings>
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_HVLMsF4mEeKttZbtn302Pg" name="DataType" views="_Kt6kIFv3EeKZBNASYbV97A _fgTgsGCnEeKd8d7WgZ31eQ _55BGsF8vEeKd8d7WgZ31eQ">
@@ -74,6 +80,9 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_OXfyoIcoEeKNyt99hwHqAw" name="operations" views="_7kJy0F8vEeKd8d7WgZ31eQ">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//DataType/ownedOperation"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_JEOWkLF3EeKhdLulAmSCrA" name="usecase" views="_x4yHgLFyEeKhdLulAmSCrA">
+          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Classifier/useCase"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//DataType"/>
       </bindings>
@@ -299,6 +308,9 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Dqj4UFwGEeKZBNASYbV97A" name="indirectlyInstantiated" views="_BJ9j0FwGEeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Component/isIndirectlyInstantiated"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_DDPrkLF3EeKhdLulAmSCrA" name="usecase" views="_x4yHgLFyEeKhdLulAmSCrA">
+          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Classifier/useCase"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Component"/>
       </bindings>
@@ -527,6 +539,9 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_8Uw8Q4dDEeKcacknc_K90g" name="leaf" views="_nujsAFv7EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//RedefinableElement/isLeaf"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_9a478LF2EeKhdLulAmSCrA" name="usecase" views="_x4yHgLFyEeKhdLulAmSCrA">
+          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Classifier/useCase"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Collaboration"/>
       </bindings>
@@ -804,6 +819,9 @@
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_wML9cIpPEeKz7Nysxc3j5A" name="role">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
+        </elements>
+        <elements xsi:type="eef-views:ElementEditor" xmi:id="_x4yHgLFyEeKhdLulAmSCrA" name="usecase">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.10"/>
         </elements>
       </views>
       <views xmi:id="_55BGsF8vEeKd8d7WgZ31eQ" name="Operations">
