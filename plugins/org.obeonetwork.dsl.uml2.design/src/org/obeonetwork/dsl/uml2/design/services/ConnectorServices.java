@@ -79,7 +79,7 @@ public final class ConnectorServices {
 	 */
 	private EObject getViewContainerTarget(DNode view) {
 		if (view != null && view.eContainer() instanceof DSemanticDecorator) {
-			return ((DSemanticDecorator) view.eContainer()).getTarget();
+			return ((DSemanticDecorator)view.eContainer()).getTarget();
 		}
 		return null;
 
@@ -111,7 +111,7 @@ public final class ConnectorServices {
 	 *            the port
 	 * @return the boolean result
 	 */
-	public boolean checkRequiredInterface(Interface anInterface, Port aPort) {
+	public boolean isRequiredInterface(Interface anInterface, Port aPort) {
 		return aPort.getRequireds().contains(anInterface);
 	}
 
@@ -123,26 +123,26 @@ public final class ConnectorServices {
 	 * @param aPort
 	 * @return the boolean result
 	 */
-	public boolean checkProvidedInterface(Interface anInterface, Port aPort) {
+	public boolean isProvidedInterface(Interface anInterface, Port aPort) {
 		return aPort.getProvideds().contains(anInterface);
 	}
 
 	/**
-	 * check that source and target are connectable
+	 * check that provided and required are connectable
 	 * 
-	 * @param source
-	 * @param target
-	 * @return
+	 * @param required
+	 * @param provided
+	 * @return true if connectable
 	 */
-	public boolean checkConnectable(Interface source, Interface target) {
+	public boolean isConnectable(Interface provided, Interface required) {
 
-		boolean res = source.conformsTo(target);
+		boolean res = provided.conformsTo(required);
 		if (!res) {
-			List<Generalization> generalizations = target.getGeneralizations();
+			List<Generalization> generalizations = provided.getGeneralizations();
 
 			for (Generalization generalization : generalizations) {
 				if (generalization.getGeneral() instanceof Interface) {
-					res = checkConnectable(source, (Interface) generalization.getGeneral());
+					res = isConnectable((Interface)generalization.getGeneral(), required);
 				}
 				if (res) {
 					break;
@@ -156,28 +156,30 @@ public final class ConnectorServices {
 	/**
 	 * check that source and target are connectable
 	 * 
-	 * @param source
+	 * @param provided
 	 * @param target
 	 * @return
 	 */
-	public boolean checkConnectable(Interface source, Port target) {
+	public boolean isConnectable(Interface provided, Port target) {
 
 		boolean res = false;
 
 		List<Dependency> clientDependencies = target.getType().getClientDependencies();
 		for (Dependency dependency : clientDependencies) {
-			List<NamedElement> suppliers = dependency.getSuppliers();
-			for (NamedElement interfaceSupplier : suppliers) {
-				if (interfaceSupplier instanceof Interface) {
-					res = checkConnectable(source, (Interface) interfaceSupplier);
-				}
+			if (dependency instanceof InterfaceRealization) {
+				List<NamedElement> suppliers = dependency.getSuppliers();
+				for (NamedElement interfaceSupplier : suppliers) {
+					if (interfaceSupplier instanceof Interface) {
+						res = isConnectable(provided, (Interface)interfaceSupplier);
+					}
 
+					if (res) {
+						break;
+					}
+				}
 				if (res) {
 					break;
 				}
-			}
-			if (res) {
-				break;
 			}
 		}
 
@@ -187,51 +189,53 @@ public final class ConnectorServices {
 	/**
 	 * check that source and target are connectable
 	 * 
-	 * @param target
+	 * @param required
 	 * @param source
 	 * @return
 	 */
-	public boolean checkConnectable(Port source, Interface target) {
+	public boolean isConnectable(Port source, Interface required) {
 
 		boolean res = false;
 
 		List<Dependency> clientDependencies = source.getType().getClientDependencies();
 		for (Dependency dependency : clientDependencies) {
-			List<NamedElement> suppliers = dependency.getSuppliers();
-			for (NamedElement interfaceSupplier : suppliers) {
-				if (interfaceSupplier instanceof Interface) {
-					res = checkConnectable(target, (Interface) interfaceSupplier);
-				}
+			if (dependency instanceof Usage) {
+				List<NamedElement> suppliers = dependency.getSuppliers();
+				for (NamedElement interfaceSupplier : suppliers) {
+					if (interfaceSupplier instanceof Interface) {
+						res = isConnectable((Interface)interfaceSupplier, required);
+					}
 
+					if (res) {
+						break;
+					}
+				}
 				if (res) {
 					break;
 				}
-			}
-			if (res) {
-				break;
 			}
 		}
 
 		return res;
 	}
 
-	public boolean checkConnectable(Property source, Property target) {
+	public boolean isConnectable(Property source, Property target) {
 		return !source.equals(target);
 	}
 
-	public boolean checkConnectable(Interface source, Property target) {
+	public boolean isConnectable(Interface source, Property target) {
 		return false;
 	}
 
-	public boolean checkConnectable(Property source, Interface target) {
+	public boolean isConnectable(Property source, Interface target) {
 		return false;
 	}
 
-	public boolean checkConnectable(Port source, Property target) {
+	public boolean isConnectable(Port source, Property target) {
 		return false;
 	}
 
-	public boolean checkConnectable(Property source, Port target) {
+	public boolean isConnectable(Property source, Port target) {
 		return false;
 	}
 
@@ -249,39 +253,35 @@ public final class ConnectorServices {
 		final EObject source = sourceView.getTarget();
 		final EObject target = targetView.getTarget();
 
-		if (sourceView instanceof DNode && targetView instanceof DNode) {
+		if (source instanceof Interface) {
 
-			if (source instanceof Interface) {
+			final StructuredClassifier structuredClassifier = getStructuredClassifierRelated2InterfaceView((DNode)sourceView);
 
-				final StructuredClassifier structuredClassifier = getFirstStructuredClassifierRelated2InterfaceView((DNode) sourceView);
+			if (target instanceof Interface) {
+				// Make a new connector From Interface to Interface
+				connectInterface2Interface(structuredClassifier, (DNode)sourceView, (Interface)source,
+						(DNode)targetView, (Interface)target);
+			} else if (target instanceof Port) {
+				// Make a new connector From Interface to Port
+				connectInterface2Port(structuredClassifier, (DNode)sourceView, (Interface)source,
+						(DNode)targetView, (Port)target);
+			}
+		} else if (source instanceof Port) {
 
-				if (target instanceof Interface) {
-					// Make a new connector From Interface to Interface
-					connectInterface2Interface(structuredClassifier, (DNode) sourceView, (Interface) source,
-							(DNode) targetView, (Interface) target);
-				} else if (target instanceof Port) {
-					// Make a new connector From Interface to Port
-					connectInterface2Port(structuredClassifier, (DNode) sourceView, (Interface) source,
-							(DNode) targetView, (Port) target);
-				}
-			} else if (source instanceof Port) {
+			if (target instanceof Interface) {
+				final StructuredClassifier structuredClassifier = getStructuredClassifierRelated2SubInterfaceView((DNode)targetView);
+				// Make a new connector From Port to Interface
+				connectPort2Interface(structuredClassifier, (DNode)sourceView, (Port)source,
+						(DNode)targetView, (Interface)target);
+			}
 
-				final StructuredClassifier structuredClassifier = getFirstStructuredClassifierRelated2InterfaceView((DNode) sourceView);
+		} else if (source instanceof Property && target instanceof Property) {
 
-				if (target instanceof Interface) {
-					// Make a new connector From Port to Interface
-					connectPort2Interface(structuredClassifier, (DNode) sourceView, (Port) source,
-							(DNode) targetView, (Interface) target);
-				}
-
-			} else if (source instanceof Property && target instanceof Property) {
-
-				final EObject eContainer = source.eContainer();
-				if (eContainer instanceof StructuredClassifier) {
-					final StructuredClassifier structuredClassifier = (StructuredClassifier) eContainer;
-					// Make a new connector From Property to Property
-					connectProperty2Property(structuredClassifier, (Property) source, (Property) target);
-				}
+			final EObject eContainer = source.eContainer();
+			if (eContainer instanceof StructuredClassifier) {
+				final StructuredClassifier structuredClassifier = (StructuredClassifier)eContainer;
+				// Make a new connector From Property to Property
+				connectProperty2Property(structuredClassifier, (Property)source, (Property)target);
 			}
 		}
 	}
@@ -293,7 +293,29 @@ public final class ConnectorServices {
 	 *            the interface view
 	 * @return the first Structured Classifier found
 	 */
-	private StructuredClassifier getFirstStructuredClassifierRelated2InterfaceView(DNode interfaceView) {
+	private StructuredClassifier getStructuredClassifierRelated2SubInterfaceView(DNode interfaceView) {
+		final List<DEdge> dEdges = interfaceView.getOutgoingEdges();
+		for (DEdge dEdge : dEdges) {
+			final EdgeTarget targetNode = dEdge.getTargetNode();
+			if (targetNode instanceof DNode) {
+				final DNode dNode = (DNode)targetNode;
+				final EObject target = dNode.getTarget();
+				if (target instanceof Port) {
+					return (StructuredClassifier)target.eContainer();
+				}
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Get the first Structured Classifier related to this interface view.
+	 * 
+	 * @param interfaceView
+	 *            the interface view
+	 * @return the first Structured Classifier found
+	 */
+	private StructuredClassifier getStructuredClassifierRelated2InterfaceView(DNode interfaceView) {
 
 		// [sourceView.oclAsType(viewpoint::AbstractDNode).incomingEdges.sourceNode.eContainer(viewpoint::DNodeContainer).target->flatten()->first()/]
 		final List<DEdge> dEdges = interfaceView.getIncomingEdges();
@@ -304,31 +326,31 @@ public final class ConnectorServices {
 			final EdgeTarget targetNode = dEdge.getTargetNode();
 			final EObject eTargetContainer = targetNode.eContainer();
 			if (eSourceContainer instanceof DNodeContainer) {
-				final DNodeContainer dNodeContainer = (DNodeContainer) eSourceContainer;
+				final DNodeContainer dNodeContainer = (DNodeContainer)eSourceContainer;
 				final EObject target = dNodeContainer.getTarget();
 				if (target instanceof StructuredClassifier) {
-					return (StructuredClassifier) target;
+					return (StructuredClassifier)target;
 				}
 			}
 			if (sourceNode instanceof DNode) {
-				final DNode dNode = (DNode) sourceNode;
+				final DNode dNode = (DNode)sourceNode;
 				final EObject target = dNode.getTarget();
 				if (target instanceof StructuredClassifier) {
-					return (StructuredClassifier) target;
+					return (StructuredClassifier)target;
 				}
 			}
 			if (eTargetContainer instanceof DNodeContainer) {
-				final DNodeContainer dNodeContainer = (DNodeContainer) eTargetContainer;
+				final DNodeContainer dNodeContainer = (DNodeContainer)eTargetContainer;
 				final EObject target = dNodeContainer.getTarget();
 				if (target instanceof StructuredClassifier) {
-					return (StructuredClassifier) target;
+					return (StructuredClassifier)target;
 				}
 			}
 			if (targetNode instanceof DNode) {
-				final DNode dNode = (DNode) targetNode;
+				final DNode dNode = (DNode)targetNode;
 				final EObject target = dNode.getTarget();
 				if (target instanceof StructuredClassifier) {
-					return (StructuredClassifier) target;
+					return (StructuredClassifier)target;
 				}
 			}
 		}
@@ -353,8 +375,8 @@ public final class ConnectorServices {
 	private Connector connectInterface2Interface(StructuredClassifier structuredClassifier, DNode sourceView,
 			Interface iSource, DNode targetView, Interface iTarget) {
 
-		final Connector connector = createConnector(structuredClassifier, (Interface) iSource,
-				(Interface) iTarget);
+		final Connector connector = createConnector(structuredClassifier, (Interface)iSource,
+				(Interface)iTarget);
 		final EList<Dependency> dependencies = connector.getClientDependencies();
 
 		// add ConnectorEnd
@@ -363,17 +385,24 @@ public final class ConnectorServices {
 		edges.addAll(targetView.getOutgoingEdges());
 
 		for (DEdge dEdge : edges) {
-			final AbstractDNode sourceNode = (AbstractDNode) dEdge.getSourceNode();
-			final EObject targetSourceNode = sourceNode.getTarget();
-			if (targetSourceNode instanceof Port) {
+			EObject target = dEdge.getTarget();
+			if (target instanceof Usage) {
+				final AbstractDNode targetNode = (AbstractDNode)dEdge.getTargetNode();
+				Port port = (Port)targetNode.getTarget();
 				final ConnectorEnd connectorEnd = connector.createEnd();
-				connectorEnd.setRole((Port) targetSourceNode);
+				connectorEnd.setRole((Port)port);
+			}
+			if (target instanceof InterfaceRealization) {
+				final AbstractDNode sourceNode = (AbstractDNode)dEdge.getSourceNode();
+				Port port = (Port)sourceNode.getTarget();
+				final ConnectorEnd connectorEnd = connector.createEnd();
+				connectorEnd.setRole((Port)port);
 			}
 
 			EObject eObject = dEdge.getTarget();
 
 			if (eObject instanceof Dependency) {
-				final Dependency dependency = (Dependency) eObject;
+				final Dependency dependency = (Dependency)eObject;
 				if (dependency instanceof Usage) {
 					final List<NamedElement> suppliers = dependency.getSuppliers();
 					if (suppliers.contains(iTarget)) {
@@ -416,16 +445,16 @@ public final class ConnectorServices {
 		final EList<Dependency> dependencies2Set = connector.getClientDependencies();
 		// add ConnectorEnd
 		for (DEdge dEdge : edges) {
-			final AbstractDNode sourceNode = (AbstractDNode) dEdge.getSourceNode();
+			final AbstractDNode sourceNode = (AbstractDNode)dEdge.getSourceNode();
 			final EObject model = sourceNode.getTarget();
 			if (model instanceof Port) {
 				final ConnectorEnd connectorEnd = connector.createEnd();
-				connectorEnd.setRole((Port) model);
+				connectorEnd.setRole((Port)model);
 			}
 
 			final EObject eObject = dEdge.getTarget();
 			if (eObject instanceof InterfaceRealization) {
-				dependencies2Set.add((InterfaceRealization) eObject);
+				dependencies2Set.add((InterfaceRealization)eObject);
 			}
 		}
 
@@ -461,15 +490,15 @@ public final class ConnectorServices {
 		final EList<Dependency> dependencies2Set = connector.getClientDependencies();
 		// add ConnectorEnd
 		for (DEdge dEdge : edges) {
-			final AbstractDNode targetNode = (AbstractDNode) dEdge.getTargetNode();
+			final AbstractDNode targetNode = (AbstractDNode)dEdge.getTargetNode();
 			final EObject model = targetNode.getTarget();
 			if (model instanceof Port) {
 				final ConnectorEnd connectorEnd = connector.createEnd();
-				connectorEnd.setRole((Port) model);
+				connectorEnd.setRole((Port)model);
 			}
 			final EObject eObject = dEdge.getTarget();
 			if (eObject instanceof Usage) {
-				dependencies2Set.add((Usage) eObject);
+				dependencies2Set.add((Usage)eObject);
 			}
 		}
 

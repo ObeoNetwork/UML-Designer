@@ -59,7 +59,7 @@ import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
  * A switch implementation retrieving all the elements which might be related to a single one.
  * 
  * @author Cedric Brun <a href="mailto:cedric.brun@obeo.fr">cedric.brun@obeo.fr</a>
- * @author Cedric Brun <a href="mailto:hugo.marchadour@obeo.fr">hugo.marchadour@obeo.fr</a>
+ * @author Hugo Marchadour <a href="mailto:hugo.marchadour@obeo.fr">hugo.marchadour@obeo.fr</a>
  */
 public class RelatedElementsSwitch extends UMLSwitch<List<EObject>> {
 
@@ -90,7 +90,7 @@ public class RelatedElementsSwitch extends UMLSwitch<List<EObject>> {
 		relateds.remove(ctx);
 		// hack to prevent some null element in relateds for a unknown reason.
 		relateds.remove(null);
-		
+
 		if (ctx instanceof Actor || ctx instanceof UseCase) {
 			clearAssociationsFromResult();
 		}
@@ -243,7 +243,7 @@ public class RelatedElementsSwitch extends UMLSwitch<List<EObject>> {
 	@Override
 	public List<EObject> caseEncapsulatedClassifier(EncapsulatedClassifier object) {
 		for (Port port : object.getOwnedPorts()) {
-			if(!relateds.contains(port)) {
+			if (!relateds.contains(port)) {
 				relateds.add(port);
 				casePort(port);
 				caseConnectableElement(port);
@@ -251,38 +251,38 @@ public class RelatedElementsSwitch extends UMLSwitch<List<EObject>> {
 		}
 		return super.caseEncapsulatedClassifier(object);
 	}
-	
+
 	@Override
 	public List<EObject> casePort(Port object) {
-		
+
 		relateds.addAll(object.getRedefinedPorts());
 		relateds.add(object.eContainer());
 
 		return super.casePort(object);
 	}
-	
+
 	@Override
 	public List<EObject> caseConnectableElement(ConnectableElement object) {
-		
+
 		for (ConnectorEnd end : object.getEnds()) {
 			EObject connector = end.eContainer();
-			if (connector!=null && connector instanceof Connector && !relateds.contains(connector)) {
+			if (connector != null && connector instanceof Connector && !relateds.contains(connector)) {
 				relateds.add(connector);
 				caseConnector((Connector)connector);
 			}
 		}
-		
+
 		return super.caseConnectableElement(object);
 	}
-	
+
 	@Override
 	public List<EObject> caseConnector(Connector object) {
 		List<ConnectorEnd> ends = object.getEnds();
 		for (ConnectorEnd end : ends) {
 			ConnectableElement role = end.getRole();
-			if(role!=null && !relateds.contains(role)) {
+			if (role != null && !relateds.contains(role)) {
 				relateds.add(role);
-				if(role instanceof Port) {
+				if (role instanceof Port) {
 					casePort((Port)role);
 				}
 			}

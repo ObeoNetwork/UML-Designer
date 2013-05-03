@@ -158,4 +158,32 @@ public class CompositeStructureServices {
 		}
 		return result;
 	}
+
+	public List<EObject> handleUnmeaningViews(List<EObject> views) {
+		List<EObject> result = new ArrayList<EObject>();
+
+		for (EObject view : views) {
+			if (isInterfaceView(view)) {
+				DNode interfaceView = (DNode)view;
+				EList<DEdge> edges = interfaceView.getIncomingEdges();
+				edges.addAll(interfaceView.getOutgoingEdges());
+				for (DEdge edge : edges) {
+					EObject target = edge.getTarget();
+					if (target instanceof InterfaceRealization || target instanceof Usage) {
+						result.add(edge);
+					}
+				}
+			} else {
+				result.add(view);
+			}
+		}
+
+		return result;
+	}
+
+	private boolean isInterfaceView(EObject view) {
+		return view instanceof DNode && ((DNode)view).getTarget() != null
+				&& ((DNode)view).getTarget() instanceof Interface;
+	}
+
 }

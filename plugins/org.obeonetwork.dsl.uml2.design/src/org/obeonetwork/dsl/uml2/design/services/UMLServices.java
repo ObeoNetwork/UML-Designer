@@ -73,6 +73,7 @@ import org.eclipse.uml2.uml.VisibilityKind;
 import org.eclipse.uml2.uml.resource.UMLResource;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
 import org.obeonetwork.dsl.uml2.design.services.internal.ReconnectSwitch;
+import org.obeonetwork.dsl.uml2.design.services.internal.RelatedCompositeStructureElementsSwitch;
 import org.obeonetwork.dsl.uml2.design.services.internal.RelatedElementsSwitch;
 import org.obeonetwork.dsl.uml2.design.services.internal.SemanticElementsSwitch;
 
@@ -527,6 +528,10 @@ public class UMLServices {
 		return new RelatedElementsSwitch().getRelatedElements(cur);
 	}
 
+	public Collection<EObject> getRelatedForCompositeStructure(EObject cur) {
+		return new RelatedCompositeStructureElementsSwitch().getRelatedElements(cur);
+	}
+
 	public Collection<EObject> getRelatedForUseCase(EObject cur) {
 		if (!(cur instanceof UseCase || cur instanceof Actor)) {
 			List result = ImmutableList.copyOf(Iterables.filter(getRelated(cur), new Predicate<EObject>() {
@@ -933,5 +938,9 @@ public class UMLServices {
 			}
 		}
 
+	}
+
+	public boolean isValidForEdgeMapping(AbstractDNode sourceView, AbstractDNode targetView) {
+		return sourceView != targetView;
 	}
 }
