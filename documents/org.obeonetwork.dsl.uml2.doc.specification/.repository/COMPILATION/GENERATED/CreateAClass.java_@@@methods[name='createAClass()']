@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="ASCII"?>
+<java:Method xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:java="http://www.eclipse.org/intent/bridges/java/0.8" name="createAClass()" simpleName="createAClass" returnType="void" content="context.actionICreateAClass();&#xA;context.assertClassCreatedInUMLModel();&#xA;context.assertClassExistsInTheReferenceClassDiagram();"><exceptions>Exception</exceptions></java:Method>
