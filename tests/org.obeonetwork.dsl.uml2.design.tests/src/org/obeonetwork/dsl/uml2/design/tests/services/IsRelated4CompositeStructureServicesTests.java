@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.obeonetwork.dsl.uml2.design.tests.Activator;
 
 /**
- * Unit tests on filter services.
+ * Unit tests on IsRelated4CompositeStructure services.
  * 
  * @author <a href="mailto:hugo.marchadour@obeo.fr">Hugo Marchadour</a>
  */

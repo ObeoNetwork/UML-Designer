@@ -14,7 +14,7 @@ import org.obeonetwork.dsl.uml2.design.services.ConnectorServices;
 import org.obeonetwork.dsl.uml2.design.tests.Activator;
 
 /**
- * Unit tests on filter services.
+ * Unit tests on Connector services.
  * 
  * @author <a href="mailto:hugo.marchadour@obeo.fr">Hugo Marchadour</a>
  */
