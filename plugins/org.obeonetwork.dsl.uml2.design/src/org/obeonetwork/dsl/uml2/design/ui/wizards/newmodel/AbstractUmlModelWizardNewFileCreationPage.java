@@ -16,25 +16,36 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.dialogs.WizardNewFileCreationPage;
 
+import fr.obeo.dsl.common.tools.api.util.Option;
+import fr.obeo.dsl.common.tools.api.util.Options;
+
 /**
  * An extension to provide UML designer custom provider in model content view.
- *
+ * 
  * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
  */
 public abstract class AbstractUmlModelWizardNewFileCreationPage extends WizardNewFileCreationPage {
 
 	/**
 	 * Constructor.
-	 *
-	 * @param pageName the page name
-	 * @param selection the selection
+	 * 
+	 * @param pageName
+	 *            the page name
+	 * @param selection
+	 *            the selection
 	 */
 	public AbstractUmlModelWizardNewFileCreationPage(String pageName, IStructuredSelection selection) {
 		super(pageName, selection);
 	}
 
-	public IFile getModelFile() {
-		return ResourcesPlugin.getWorkspace().getRoot().getFile(getContainerFullPath().append(getFileName()));
+	/**
+	 * Get the model file.
+	 * 
+	 * @return Model file
+	 */
+	public Option<IFile> getModelFile() {
+		return Options.newSome(ResourcesPlugin.getWorkspace().getRoot()
+				.getFile(getContainerFullPath().append(getFileName())));
 	}
 
 	/**

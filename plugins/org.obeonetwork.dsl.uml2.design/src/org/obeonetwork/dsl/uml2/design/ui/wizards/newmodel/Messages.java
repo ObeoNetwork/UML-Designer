@@ -40,14 +40,6 @@ public class Messages extends NLS {
 
 	public static String UmlModelWizard_UI_NewModelFilePageTitle;
 
-	public static String UmlModelWizard_UI_NewSessionFilePageDescription;
-
-	public static String UmlModelWizard_UI_NewSessionFilePageId;
-
-	public static String UmlModelWizard_UI_NewSessionFilePageTitle;
-
-	public static String UmlModelWizard_UI_SessionFileDefaultName;
-
 	public static String UmlModelWizard_UI_WizardTitle;
 
 	public static String UmlModelWizardInitModelPage_ContainerLabel;

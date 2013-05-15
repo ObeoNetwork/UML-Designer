@@ -24,11 +24,10 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
-import org.obeonetwork.dsl.uml2.design.SessionCreationOperation;
 
 /**
  * The model initialization wizard page.
- *
+ * 
  * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
  */
 // CHECKSTYLE:OFF
@@ -135,9 +134,9 @@ public class UmlModelWizardInitModelPage extends WizardPage {
 
 	private List<String> getInitialObjectNames() {
 		List<String> names = new ArrayList<String>();
-		names.add(SessionCreationOperation.MODEL_OBJECT);
-		names.add(SessionCreationOperation.PACKAGE_OBJECT);
-		names.add(SessionCreationOperation.PROFILE_OBJECT);
+		names.add(UmlProjectUtils.MODEL_OBJECT);
+		names.add(UmlProjectUtils.PACKAGE_OBJECT);
+		names.add(UmlProjectUtils.PROFILE_OBJECT);
 		return names;
 	}
 

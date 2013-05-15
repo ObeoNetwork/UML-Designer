@@ -14,22 +14,24 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 
 /**
  * The semantic model file creation page.
- *
+ * 
  * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
  */
 public class UmlModelWizardNewModelFilePage extends AbstractUmlModelWizardNewFileCreationPage {
 
 	/**
 	 * Constructor.
-	 *
-	 * @param pageName the page name
-	 * @param selection the selection
+	 * 
+	 * @param pageName
+	 *            the page name
+	 * @param selection
+	 *            the selection
 	 */
 	public UmlModelWizardNewModelFilePage(String pageName, IStructuredSelection selection) {
 		super(pageName, selection);
 	}
 
 	protected String getRequiredExtension() {
-		return UmlModelWizard.MODEL_FILE_EXTENSION;
+		return UmlProjectUtils.MODEL_FILE_EXTENSION;
 	}
 }

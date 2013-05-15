@@ -10,53 +10,31 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel;
 
-import java.lang.reflect.InvocationTargetException;
-
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.wizard.Wizard;
-import org.eclipse.ui.INewWizard;
 import org.eclipse.ui.IWorkbench;
-import org.obeonetwork.dsl.uml2.design.SessionCreationOperation;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
 
+import fr.obeo.dsl.common.tools.api.util.Option;
+import fr.obeo.dsl.viewpoint.ui.tools.api.project.ModelingProjectManager;
+
 /**
- * The wizard to create a new UML designer session.
+ * The wizard to create a new UML designer model.
  * 
  * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
+ * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
-public class UmlModelWizard extends Wizard implements INewWizard {
-
-	/**
-	 * Dot constant.
-	 */
-	public static final String DOT = ".";
-
-	/**
-	 * The UML file extension.
-	 */
-	public static final String MODEL_FILE_EXTENSION = "uml"; //$NON-NLS-1$
-
-	/**
-	 * The session file extension.
-	 */
-	public static final String SESSION_FILE_EXTENSION = "aird"; //$NON-NLS-1$
-
+public class UmlModelWizard extends AbstractNewUmlModelWizard {
 	/**
 	 * Remember the selection during initialization for populating the default container.
 	 */
 	protected IStructuredSelection selection;
-
-	/**
-	 * Remember the workbench during initialization.
-	 */
-	protected IWorkbench workbench;
 
 	/**
 	 * The semantic model creation file page.
@@ -73,15 +51,25 @@ public class UmlModelWizard extends Wizard implements INewWizard {
 	 */
 	@Override
 	public boolean performFinish() {
-		final IRunnableWithProgress op = new SessionCreationOperation(getModelFile(),
-				initModelPage.getInitialObjectName());
-		try {
-			getContainer().run(false, true, op);
+		Option<IFile> option = newModelFilePage.getModelFile();
+
+		if (option.some()) {
+			IFile modelFile = option.get();
+			project = modelFile.getProject();
+
+			// Convert project to modeling project
+			try {
+				ModelingProjectManager.INSTANCE.convertToModelingProject(project);
+			} catch (CoreException e) {
+				UMLDesignerPlugin.log(IStatus.ERROR, Messages.UmlModelWizard_UI_Error_CreatingUmlModel, e);
+				return false;
+			}
+
+			rootObjectName = initModelPage.getInitialObjectName();
+			newUmlModelFileName = newModelFilePage.getFileName();
+
+			super.performFinish();
 			return true;
-		} catch (final InterruptedException e) {
-			// Ignore.
-		} catch (final InvocationTargetException e) {
-			UMLDesignerPlugin.log(IStatus.ERROR, Messages.UmlModelWizard_UI_Error_CreatingUmlModel, e);
 		}
 		return false;
 	}
@@ -90,7 +78,6 @@ public class UmlModelWizard extends Wizard implements INewWizard {
 	 * {@inheritDoc}
 	 */
 	public void init(IWorkbench workbench, IStructuredSelection selection) {
-		this.workbench = workbench;
 		this.selection = selection;
 		setWindowTitle(Messages.UmlModelWizard_UI_WizardTitle);
 	}
@@ -104,8 +91,8 @@ public class UmlModelWizard extends Wizard implements INewWizard {
 				selection);
 		newModelFilePage.setTitle(Messages.UmlModelWizard_UI_NewModelFilePageTitle);
 		newModelFilePage.setDescription(Messages.UmlModelWizard_UI_NewModelFilePageDescription);
-		newModelFilePage.setFileName(Messages.UmlModelWizard_UI_ModelFileDefaultName + DOT
-				+ MODEL_FILE_EXTENSION); //$NON-NLS-1$
+		newModelFilePage.setFileName(Messages.UmlModelWizard_UI_ModelFileDefaultName + UmlProjectUtils.DOT
+				+ UmlProjectUtils.MODEL_FILE_EXTENSION); //$NON-NLS-1$
 		addPage(newModelFilePage);
 
 		initModelPage = new UmlModelWizardInitModelPage(Messages.UmlModelWizard_UI_InitModelPageId);
@@ -132,25 +119,28 @@ public class UmlModelWizard extends Wizard implements INewWizard {
 					newModelFilePage.setContainerFullPath(selectedResource.getFullPath());
 
 					// Make up a unique new name here.
-					final String defaultModelBaseFilename = Messages.UmlModelWizard_UI_ModelFileDefaultName; //$NON-NLS-1$
-					String modelFilename = defaultModelBaseFilename + DOT + MODEL_FILE_EXTENSION; //$NON-NLS-1$
-					for (int i = 1; ((IContainer)selectedResource).findMember(modelFilename) != null; ++i) {
-						modelFilename = defaultModelBaseFilename + i + DOT + MODEL_FILE_EXTENSION; //$NON-NLS-1$
-					}
+					String modelFilename = getNewModelName(selectedResource);
 					newModelFilePage.setFileName(modelFilename);
-
-					final String defaultSessionBaseFilename = Messages.UmlModelWizard_UI_SessionFileDefaultName; //$NON-NLS-1$
-					String sessionFilename = defaultSessionBaseFilename + DOT + SESSION_FILE_EXTENSION; //$NON-NLS-1$
-					for (int i = 1; ((IContainer)selectedResource).findMember(sessionFilename) != null; ++i) {
-						sessionFilename = defaultSessionBaseFilename + i + DOT + SESSION_FILE_EXTENSION; //$NON-NLS-1$
-					}
 				}
 			}
 		}
 	}
 
-	public IFile getModelFile() {
-		return newModelFilePage.getModelFile();
+	/**
+	 * Compute the name of the new UML model.
+	 * 
+	 * @param selectedResource
+	 *            Selected resource
+	 * @return Name of the new UML model
+	 */
+	private String getNewModelName(IResource selectedResource) {
+		final String defaultModelBaseFilename = Messages.UmlModelWizard_UI_ModelFileDefaultName;
+		String modelFilename = defaultModelBaseFilename + UmlProjectUtils.DOT
+				+ UmlProjectUtils.MODEL_FILE_EXTENSION;
+		for (int i = 1; ((IContainer)selectedResource).findMember(modelFilename) != null; ++i) {
+			modelFilename = defaultModelBaseFilename + i + UmlProjectUtils.DOT
+					+ UmlProjectUtils.MODEL_FILE_EXTENSION;
+		}
+		return modelFilename;
 	}
-
 }

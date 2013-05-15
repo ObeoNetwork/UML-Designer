@@ -1,68 +1,29 @@
+/*******************************************************************************
+ * Copyright (c) 2009, 2011 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel;
 
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-
-import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IProject;
-import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.core.runtime.IPath;
-import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Path;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EClassifier;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.transaction.RecordingCommand;
-import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
-import org.eclipse.ui.wizards.newresource.BasicNewProjectResourceWizard;
-import org.eclipse.uml2.uml.UMLFactory;
-import org.eclipse.uml2.uml.UMLPackage;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
 
-import com.google.common.collect.Maps;
-
-import fr.obeo.dsl.common.tools.api.util.Option;
-import fr.obeo.dsl.common.tools.api.util.Options;
-import fr.obeo.dsl.viewpoint.business.api.componentization.ViewpointRegistry;
-import fr.obeo.dsl.viewpoint.business.api.modelingproject.ModelingProject;
-import fr.obeo.dsl.viewpoint.business.api.session.Session;
-import fr.obeo.dsl.viewpoint.description.Viewpoint;
-import fr.obeo.dsl.viewpoint.ui.business.api.viewpoint.ViewpointSelectionCallback;
 import fr.obeo.dsl.viewpoint.ui.tools.api.project.ModelingProjectManager;
 
-public class UMLProjectWizard extends BasicNewProjectResourceWizard {
-	/**
-	 * Dot constant.
-	 */
-	public static final String DOT = ".";
-
-	/**
-	 * The UML file extension.
-	 */
-	public static final String MODEL_FILE_EXTENSION = "uml"; //$NON-NLS-1$
-
-	/**
-	 * UML structural viewpoint name defined in odesign.
-	 */
-	public static final String UML_STRUCTURAL_VP = "UML Structural Modeling";
-
-	/**
-	 * UML behavioral viewpoint name defined in odesign.
-	 */
-	public static final String UML_BEHAVIORAL_VP = "UML Behavioral Modeling";
-
-	/**
-	 * UML extensions viewpoint name defined in odesign.
-	 */
-	public static final String UML_EXTENSIONS_VP = "UML Extensions";
-
+/**
+ * The wizard to create a new UML designer project.
+ * 
+ * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
+ * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+ */
+public class UMLProjectWizard extends AbstractNewUmlModelWizard {
 	protected UmlModelWizardInitModelPage modelPage;
 
 	protected WizardNewProjectCreationPage newProjectPage;
@@ -88,137 +49,18 @@ public class UMLProjectWizard extends BasicNewProjectResourceWizard {
 	@Override
 	public boolean performFinish() {
 		try {
-			final InitProject runnable = new InitProject(newProjectPage.getProjectName(),
-					newProjectPage.getLocationPath(), modelPage.getInitialObjectName());
-			getContainer().run(true, false, runnable);
-			updatePerspective();
-			Display.getDefault().syncExec(new Runnable() {
+			project = ModelingProjectManager.INSTANCE.createNewModelingProject(
+					newProjectPage.getProjectName(), newProjectPage.getLocationPath(), true);
+			rootObjectName = modelPage.getInitialObjectName();
+			newUmlModelFileName = modelPage.getInitialObjectName().toLowerCase() + UmlProjectUtils.DOT
+					+ UmlProjectUtils.MODEL_FILE_EXTENSION;
 
-				public void run() {
-					runnable.enableViewpointsAndReveal(UML_STRUCTURAL_VP, UML_BEHAVIORAL_VP,
-							UML_EXTENSIONS_VP);
-				}
-			});
-		} catch (InvocationTargetException e) {
-			UMLDesignerPlugin.log(IStatus.ERROR, Messages.UmlModelWizard_UI_Error_CreatingUmlModel, e);
-			return false;
-		} catch (InterruptedException e) {
+			super.performFinish();
+		} catch (CoreException e) {
 			UMLDesignerPlugin.log(IStatus.ERROR, Messages.UmlModelWizard_UI_Error_CreatingUmlModel, e);
 			return false;
 		}
+
 		return true;
-
 	}
-
-	public class InitProject extends WorkspaceModifyOperation {
-
-		private String projectName;
-
-		private IPath locationPath;
-
-		private String initialObjectName;
-
-		private Session session;
-
-		private IProject project;
-
-		private Option<IFile> optionalNewfile;
-
-		public InitProject(String projectName, IPath locationPath, String initialObjectName) {
-			this.projectName = projectName;
-			this.locationPath = locationPath;
-			this.initialObjectName = initialObjectName;
-		}
-
-		@Override
-		protected void execute(IProgressMonitor monitor) throws CoreException, InvocationTargetException,
-				InterruptedException {
-			project = ModelingProjectManager.INSTANCE.createNewModelingProject(projectName, locationPath,
-					true);
-			optionalNewfile = createSemanticResource(project);
-
-		}
-
-		public void enableViewpointsAndReveal(final String... viewpointsToActivate) {
-			if (session != null) {
-				session.getTransactionalEditingDomain().getCommandStack()
-						.execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
-							@Override
-							protected void doExecute() {
-								ViewpointSelectionCallback callback = new ViewpointSelectionCallback();
-
-								for (Viewpoint vp : ViewpointRegistry.getInstance().getViewpoints()) {
-									for (String viewpoint : viewpointsToActivate) {
-										if (viewpoint.equals(vp.getName()))
-											callback.selectViewpoint(vp, session);
-									}
-								}
-							}
-						});
-				if (optionalNewfile.some() && optionalNewfile.get().exists()) {
-					selectAndReveal(optionalNewfile.get());
-				} else {
-					selectAndReveal(project);
-				}
-			}
-		}
-
-		private Option<IFile> createSemanticResource(final IProject project) {
-			Option<ModelingProject> modelingProject = ModelingProject.asModelingProject(project);
-			if (modelingProject.some()) {
-				session = modelingProject.get().getSession();
-			} else {
-				session = null;
-			}
-			if (session == null) {
-				return Options.newNone();
-			}
-
-			final String platformPath = '/' + project.getName() + '/' + initialObjectName.toLowerCase() + DOT
-					+ MODEL_FILE_EXTENSION;
-			session.getTransactionalEditingDomain().getCommandStack()
-					.execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
-						@Override
-						protected void doExecute() {
-
-							final URI semanticModelURI = URI.createPlatformResourceURI(platformPath, true);
-							Resource res = new ResourceSetImpl().createResource(semanticModelURI);
-							/* Add the initial model object to the contents. */
-							final EObject rootObject = createInitialModel(initialObjectName);
-
-							if (rootObject != null) {
-								res.getContents().add(rootObject);
-							}
-							try {
-								res.save(Maps.newHashMap());
-							} catch (IOException e) {
-								UMLDesignerPlugin.log(IStatus.ERROR,
-										Messages.UmlModelWizard_UI_Error_CreatingUmlModel, e);
-							}
-
-							session.addSemanticResource(semanticModelURI, true);
-
-							session.save();
-						}
-					});
-			return Options.newSome(ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformPath)));
-		}
-
-		/**
-		 * Creates the semantic root element from the given operation arguments.
-		 * 
-		 * @param initialObjectName2
-		 * @return the semantic root {@link EObject}
-		 */
-		private EObject createInitialModel(String initialObjectName2) {
-			EClassifier found = UMLPackage.eINSTANCE.getEClassifier(initialObjectName2);
-			if (found instanceof EClass) {
-				return UMLFactory.eINSTANCE.create((EClass)found);
-			} else {
-				return UMLFactory.eINSTANCE.createModel();
-			}
-		}
-
-	}
-
 }
