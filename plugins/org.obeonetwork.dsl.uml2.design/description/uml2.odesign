@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.obeo.fr/dsl/viewpoint/description/1.1.0" xmlns:description_1="http://www.obeo.fr/dsl/viewpoint/diagram/sequence/description/2.0.0" xmlns:filter="http://www.obeo.fr/dsl/viewpoint/description/filter/1.1.0" xmlns:style="http://www.obeo.fr/dsl/viewpoint/description/style/1.1.0" xmlns:tool="http://www.obeo.fr/dsl/viewpoint/description/tool/1.1.0" xmlns:tool_1="http://www.obeo.fr/dsl/viewpoint/diagram/sequence/description/tool/2.0.0" documentation="Copyright (c) 2009, 2011 Obeo.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;&#xA;Contributors:&#xA;     Obeo - initial API and implementation" name="UML2 modelers" version="6.5.0.201210011230">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.obeo.fr/dsl/viewpoint/description/1.1.0" xmlns:description_1="http://www.obeo.fr/dsl/viewpoint/diagram/sequence/description/2.0.0" xmlns:description_2="http://www.obeo.fr/dsl/viewpoint/table/description/1.1.0" xmlns:filter="http://www.obeo.fr/dsl/viewpoint/description/filter/1.1.0" xmlns:style="http://www.obeo.fr/dsl/viewpoint/description/style/1.1.0" xmlns:tool="http://www.obeo.fr/dsl/viewpoint/description/tool/1.1.0" xmlns:tool_1="http://www.obeo.fr/dsl/viewpoint/diagram/sequence/description/tool/2.0.0" documentation="Copyright (c) 2009, 2011 Obeo.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;&#xA;Contributors:&#xA;     Obeo - initial API and implementation" name="UML2 modelers" version="6.5.0.201210011230">
   <ownedViewpoints documentation="Initialize an UML Analysis" name="UML Structural Modeling" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description:DiagramDescription" documentation="Fake ViewPointDescription - factorize elements" name="Reused Description" domainClass="" preconditionExpression="&lt;%false%>">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
@@ -5358,6 +5358,49 @@
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.LabelServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.SequenceServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.OperationServices"/>
+  </ownedViewpoints>
+  <ownedViewpoints name="UML Extensions" modelFileExtension="uml">
+    <ownedRepresentations xsi:type="description_2:EditionTableDescription" name="Documentation Table" titleExpression="&lt;%name%> Documentation Table" domainClass="uml.Package">
+      <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML#/"/>
+      <ownedLineMappings name="DT_PackageLine" domainClass="uml.Package" semanticCandidatesExpression="&lt;%self%>">
+        <defaultBackground>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultBackground>
+        <backgroundConditionalStyle predicateExpression="&lt;%ownedComment.body==null%>">
+          <style backgroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='lighter%20blue']"/>
+        </backgroundConditionalStyle>
+        <ownedSubLines name="DT_ElementLine" reusedSubLines="//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Documentation%20Table']/@ownedLineMappings[name='DT_PackageLine']/@ownedSubLines[name='DT_ElementLine']" reusedInMappings="//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Documentation%20Table']/@ownedLineMappings[name='DT_PackageLine']/@ownedSubLines[name='DT_ElementLine']" domainClass="uml.Element" semanticCandidatesExpression="&lt;%eContents()[filter(&quot;Comment&quot;).nSize==0]%>">
+          <defaultBackground>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </defaultBackground>
+          <backgroundConditionalStyle predicateExpression="&lt;%ownedComment.body==null%>">
+            <style backgroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='lighter%20blue']"/>
+          </backgroundConditionalStyle>
+        </ownedSubLines>
+      </ownedLineMappings>
+      <ownedColumnMappings name="DT_CommentColumn" headerLabelExpression="Comments" featureName="ownedComment" labelExpression="&lt;%$lineSemantic.ownedComment.body.nFirst%>">
+        <directEdit>
+          <variables name="element" documentation="The currently edited element."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="root" documentation="The semantic element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="&lt;%$element%>">
+            <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%ownedComment == null%>">
+              <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Comment" referenceName="ownedComment">
+                <subModelOperations xsi:type="tool:SetValue" featureName="body" valueExpression="&lt;%$0%>"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="annotatedElement" valueExpression="&lt;%eContainer%>"/>
+              </subModelOperations>
+            </subModelOperations>
+            <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%ownedComment != null%>">
+              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.ownedComment.nFirst%>">
+                <subModelOperations xsi:type="tool:SetValue" featureName="body" valueExpression="&lt;%$0%>"/>
+              </subModelOperations>
+            </subModelOperations>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </directEdit>
+      </ownedColumnMappings>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.DebugServices"/>
   </ownedViewpoints>
   <userColorsPalettes name="UMLPalette">
     <entries xsi:type="description:UserFixedColor" red="235" green="235" blue="235" name="Nested Package Foreground"/>
