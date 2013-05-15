@@ -58,6 +58,11 @@ public class UMLProjectWizard extends BasicNewProjectResourceWizard {
 	 */
 	public static final String UML_BEHAVIORAL_VP = "UML Behavioral Modeling";
 
+	/**
+	 * UML extensions viewpoint name defined in odesign.
+	 */
+	public static final String UML_EXTENSIONS_VP = "UML Extensions";
+
 	protected UmlModelWizardInitModelPage modelPage;
 
 	protected WizardNewProjectCreationPage newProjectPage;
@@ -90,7 +95,8 @@ public class UMLProjectWizard extends BasicNewProjectResourceWizard {
 			Display.getDefault().syncExec(new Runnable() {
 
 				public void run() {
-					runnable.enableViewpointsAndReveal(UML_STRUCTURAL_VP, UML_BEHAVIORAL_VP);
+					runnable.enableViewpointsAndReveal(UML_STRUCTURAL_VP, UML_BEHAVIORAL_VP,
+							UML_EXTENSIONS_VP);
 				}
 			});
 		} catch (InvocationTargetException e) {
