@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_oRyVocTYEeC0wZa75TykZw" name="Travel Agency">
-  <packagedElement xmi:type="uml:Actor" xmi:id="_rRsm4MTZEeC0wZa75TykZw" name="Customer"/>
+  <ownedComment xmi:id="_QKkMAL79EeKMl6d2yQs6Cw" annotatedElement="_oRyVocTYEeC0wZa75TykZw">
+    <body>Travel Agency model</body>
+  </ownedComment>
+  <packagedElement xmi:type="uml:Actor" xmi:id="_rRsm4MTZEeC0wZa75TykZw" name="Customer">
+    <ownedComment xmi:id="_WN2kIL79EeKMl6d2yQs6Cw" annotatedElement="_rRsm4MTZEeC0wZa75TykZw">
+      <body>A person that interacts with the agency to purchase a travel</body>
+    </ownedComment>
+  </packagedElement>
   <packagedElement xmi:type="uml:Actor" xmi:id="_snWyQMTZEeC0wZa75TykZw" name="Commercial Counsellor"/>
   <packagedElement xmi:type="uml:Actor" xmi:id="_uXwY4MTZEeC0wZa75TykZw" name="Marketing"/>
   <packagedElement xmi:type="uml:Actor" xmi:id="_v5i7wMTZEeC0wZa75TykZw" name="Partners Manager"/>
   <packagedElement xmi:type="uml:Actor" xmi:id="_x6p34MTZEeC0wZa75TykZw" name="Accountant"/>
-  <packagedElement xmi:type="uml:UseCase" xmi:id="_cSKTMMTeEeC0wZa75TykZw" name="Partner Management" subject="_wq-yMMT5EeC7sd1uYTaNyA"/>
-  <packagedElement xmi:type="uml:UseCase" xmi:id="_dF_j4MTeEeC0wZa75TykZw" name="Offer Catalog Management" subject="_99SVwMT5EeC7sd1uYTaNyA"/>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_cSKTMMTeEeC0wZa75TykZw" name="Partner Management" subject="_wq-yMMT5EeC7sd1uYTaNyA">
+    <ownedComment xmi:id="_fhD04L79EeKMl6d2yQs6Cw" annotatedElement="_cSKTMMTeEeC0wZa75TykZw">
+      <body>Manage the travel agency partners</body>
+    </ownedComment>
+  </packagedElement>
+  <packagedElement xmi:type="uml:UseCase" xmi:id="_dF_j4MTeEeC0wZa75TykZw" name="Offer Catalog Management" subject="_99SVwMT5EeC7sd1uYTaNyA">
+    <ownedComment xmi:id="_YOYRcL79EeKMl6d2yQs6Cw" annotatedElement="_dF_j4MTeEeC0wZa75TykZw">
+      <body>Manage the travel agency offer catalog</body>
+    </ownedComment>
+  </packagedElement>
   <packagedElement xmi:type="uml:UseCase" xmi:id="_gauEAMTeEeC0wZa75TykZw" name="Invoice Management" subject="_8kjoQMT5EeC7sd1uYTaNyA">
     <include xmi:id="_yo9WEMTeEeC0wZa75TykZw" addition="_tyc6IMTeEeC0wZa75TykZw"/>
   </packagedElement>
