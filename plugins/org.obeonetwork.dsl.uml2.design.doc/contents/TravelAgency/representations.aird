@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.obeo.fr/dsl/viewpoint/description/1.1.0" xmlns:description_1="http://www.obeo.fr/dsl/viewpoint/diagram/sequence/description/2.0.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sequence="http://www.obeo.fr/dsl/viewpoint/diagram/sequence/2.0.0" xmlns:style="http://www.obeo.fr/dsl/viewpoint/description/style/1.1.0" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmlns:viewpoint="http://www.obeo.fr/dsl/viewpoint/1.1.0" xsi:schemaLocation="http://www.obeo.fr/dsl/viewpoint/description/1.1.0 http://www.obeo.fr/dsl/viewpoint/1.1.0#//description http://www.obeo.fr/dsl/viewpoint/diagram/sequence/description/2.0.0 http://www.obeo.fr/dsl/viewpoint/diagram/sequence/2.0.0#//description http://www.obeo.fr/dsl/viewpoint/description/style/1.1.0 http://www.obeo.fr/dsl/viewpoint/1.1.0#//description/style" xmi:id="_oVkpcMTYEeC0wZa75TykZw" selectedViews="_qBZ5IMTYEeC0wZa75TykZw _qjddUMTYEeC0wZa75TykZw" version="6.5.0.201210011230">
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.obeo.fr/dsl/viewpoint/description/1.1.0" xmlns:description_1="http://www.obeo.fr/dsl/viewpoint/diagram/sequence/description/2.0.0" xmlns:description_2="http://www.obeo.fr/dsl/viewpoint/table/description/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:sequence="http://www.obeo.fr/dsl/viewpoint/diagram/sequence/2.0.0" xmlns:style="http://www.obeo.fr/dsl/viewpoint/description/style/1.1.0" xmlns:table="http://www.obeo.fr/dsl/viewpoint/table/1.1.0" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmlns:viewpoint="http://www.obeo.fr/dsl/viewpoint/1.1.0" xsi:schemaLocation="http://www.obeo.fr/dsl/viewpoint/description/1.1.0 http://www.obeo.fr/dsl/viewpoint/1.1.0#//description http://www.obeo.fr/dsl/viewpoint/diagram/sequence/description/2.0.0 http://www.obeo.fr/dsl/viewpoint/diagram/sequence/2.0.0#//description http://www.obeo.fr/dsl/viewpoint/table/description/1.1.0 http://www.obeo.fr/dsl/viewpoint/table/1.1.0#//description http://www.obeo.fr/dsl/viewpoint/description/style/1.1.0 http://www.obeo.fr/dsl/viewpoint/1.1.0#//description/style" xmi:id="_oVkpcMTYEeC0wZa75TykZw" selectedViews="_qBZ5IMTYEeC0wZa75TykZw _qjddUMTYEeC0wZa75TykZw _LqDusL7QEeKtf5zG9x7Qjw" version="6.5.0.201210011230">
   <models xmi:type="uml:Model" href="agency.uml#_oRyVocTYEeC0wZa75TykZw"/>
   <models xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
   <models xmi:type="uml:Profile" href="pathmap://UML_PROFILES/Ecore.profile.uml#_0"/>
@@ -9,53 +9,6 @@
   <models xmi:type="uml:Model" href="pathmap://UML_METAMODELS/Ecore.metamodel.uml#_0"/>
   <models xmi:type="uml:Profile" href="pathmap://UML_PROFILES/StandardL3.profile.uml#_0"/>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_qBZ5IMTYEeC0wZa75TykZw" initialized="true">
-    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_qHbBkMTYEeC0wZa75TykZw" name="model">
-      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_qJA9AMTYEeC0wZa75TykZw" source="GMF_DIAGRAMS">
-        <data xmi:type="notation:Diagram" xmi:id="_qJA9AcTYEeC0wZa75TykZw" type="Viewpoint" element="_qHbBkMTYEeC0wZa75TykZw" measurementUnit="Pixel">
-          <children xmi:type="notation:Node" xmi:id="_rZS5IMTYEeC0wZa75TykZw" type="2001" element="_3PhZQKNQEeGBMNQVuO__Bw">
-            <children xmi:type="notation:Node" xmi:id="_rZiwwMTYEeC0wZa75TykZw" type="5002">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_rZiwwcTYEeC0wZa75TykZw" y="5"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_rbFo4MTYEeC0wZa75TykZw" type="3005" element="_3PjOcKNQEeGBMNQVuO__Bw">
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_rbFo4cTYEeC0wZa75TykZw" fontName="Sans Serif"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rbFo4sTYEeC0wZa75TykZw"/>
-            </children>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_rZS5IcTYEeC0wZa75TykZw" fontName="Sans Serif" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rZS5IsTYEeC0wZa75TykZw" x="10" y="30" width="101" height="63"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_C6OY8D04EeKD1tqsBqQbaA" type="2001" element="_C6HEMD04EeKD1tqsBqQbaA">
-            <children xmi:type="notation:Node" xmi:id="_C6PAAD04EeKD1tqsBqQbaA" type="5002">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_C6PAAT04EeKD1tqsBqQbaA" y="5"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_C7TXAD04EeKD1tqsBqQbaA" type="3005" element="_C6HrQD04EeKD1tqsBqQbaA">
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_C7TXAT04EeKD1tqsBqQbaA" fontName="Segoe UI"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_C7TXAj04EeKD1tqsBqQbaA"/>
-            </children>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_C6OY8T04EeKD1tqsBqQbaA" fontName="Segoe UI" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_C6OY8j04EeKD1tqsBqQbaA" x="-100" y="-50" width="80" height="50"/>
-          </children>
-          <styles xmi:type="notation:DiagramStyle" xmi:id="_qJA9AsTYEeC0wZa75TykZw"/>
-        </data>
-      </ownedAnnotationEntries>
-      <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_3PhZQKNQEeGBMNQVuO__Bw" name="Travel Agency" width="8" height="8" resizeKind="NSEW">
-        <target xmi:type="uml:Model" href="agency.uml#_oRyVocTYEeC0wZa75TykZw"/>
-        <semanticElements xmi:type="uml:Model" href="agency.uml#_oRyVocTYEeC0wZa75TykZw"/>
-        <ownedStyle xmi:type="viewpoint:WorkspaceImage" xmi:id="_3PjOcKNQEeGBMNQVuO__Bw" showIcon="false" labelPosition="node" workspacePath="/org.obeonetwork.dsl.uml2.design/images/package.svg">
-          <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@nodeMappings[name='PH_Package']/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@nodeMappings[name='PH_Package']"/>
-      </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="viewpoint:DNode" xmi:id="_C6HEMD04EeKD1tqsBqQbaA" name="Component8" width="8" height="8" resizeKind="NSEW">
-        <ownedStyle xmi:type="viewpoint:WorkspaceImage" xmi:id="_C6HrQD04EeKD1tqsBqQbaA" showIcon="false" labelPosition="node" workspacePath="/org.obeonetwork.dsl.uml2.design/images/package.svg">
-          <description xmi:type="style:WorkspaceImageDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@nodeMappings[name='PH_Package']/@style"/>
-        </ownedStyle>
-        <actualMapping xmi:type="description:NodeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@nodeMappings[name='PH_Package']"/>
-      </ownedDiagramElements>
-      <description xmi:type="description:DiagramDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']"/>
-      <filterVariableHistory xmi:type="viewpoint:FilterVariableHistory" xmi:id="_qHbooMTYEeC0wZa75TykZw"/>
-      <activatedLayers xmi:type="description:Layer" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer"/>
-      <target xmi:type="uml:Model" href="agency.uml#_oRyVocTYEeC0wZa75TykZw"/>
-    </ownedRepresentations>
     <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_Vm0AEMTfEeC0wZa75TykZw" name="system architecture">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_Vm0nIMTfEeC0wZa75TykZw" source="GMF_DIAGRAMS">
         <data xmi:type="notation:Diagram" xmi:id="_Vm0nIcTfEeC0wZa75TykZw" type="Viewpoint" element="_Vm0AEMTfEeC0wZa75TykZw" measurementUnit="Pixel">
@@ -2070,16 +2023,16 @@
         <semanticElements xmi:type="uml:Association" href="agency.uml#_4VAkkMfsEeCBha8FS92Ybw"/>
         <semanticElements xmi:type="uml:Property" href="agency.uml#_4VEO8MfsEeCBha8FS92Ybw"/>
         <semanticElements xmi:type="uml:Property" href="agency.uml#_4VBLoMfsEeCBha8FS92Ybw"/>
-        <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_MUqhsKBiEeKyHvoEg92w7Q" sourceArrow="InputArrow" targetArrow="InputArrowWithFillDiamond">
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_MUqhsaBiEeKyHvoEg92w7Q" red="136" green="136" blue="136"/>
-          <beginLabelStyle xmi:type="viewpoint:BeginLabelStyle" xmi:id="_MUqhsqBiEeKyHvoEg92w7Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MUqhs6BiEeKyHvoEg92w7Q"/>
+        <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_0B7A8L7pEeKLFua6wDFuUg" sourceArrow="InputArrow" targetArrow="InputArrowWithFillDiamond">
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_0B7A8b7pEeKLFua6wDFuUg" red="136" green="136" blue="136"/>
+          <beginLabelStyle xmi:type="viewpoint:BeginLabelStyle" xmi:id="_0B7A8r7pEeKLFua6wDFuUg" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_0B7A877pEeKLFua6wDFuUg"/>
           </beginLabelStyle>
-          <centerLabelStyle xmi:type="viewpoint:CenterLabelStyle" xmi:id="_MUqhtKBiEeKyHvoEg92w7Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MUqhtaBiEeKyHvoEg92w7Q"/>
+          <centerLabelStyle xmi:type="viewpoint:CenterLabelStyle" xmi:id="_0B7A9L7pEeKLFua6wDFuUg" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_0B7A9b7pEeKLFua6wDFuUg"/>
           </centerLabelStyle>
-          <endLabelStyle xmi:type="viewpoint:EndLabelStyle" xmi:id="_MUqhtqBiEeKyHvoEg92w7Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MUqht6BiEeKyHvoEg92w7Q"/>
+          <endLabelStyle xmi:type="viewpoint:EndLabelStyle" xmi:id="_0B7A9r7pEeKLFua6wDFuUg" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_0B7A977pEeKLFua6wDFuUg"/>
           </endLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description:EdgeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']"/>
@@ -2089,16 +2042,16 @@
         <semanticElements xmi:type="uml:Association" href="agency.uml#_8ncqIMfsEeCBha8FS92Ybw"/>
         <semanticElements xmi:type="uml:Property" href="agency.uml#_8nfGYMfsEeCBha8FS92Ybw"/>
         <semanticElements xmi:type="uml:Property" href="agency.uml#_8ndRMMfsEeCBha8FS92Ybw"/>
-        <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_MUgwuKBiEeKyHvoEg92w7Q" sourceArrow="InputArrow">
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_MUgwuaBiEeKyHvoEg92w7Q" red="136" green="136" blue="136"/>
-          <beginLabelStyle xmi:type="viewpoint:BeginLabelStyle" xmi:id="_MUgwuqBiEeKyHvoEg92w7Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MUgwu6BiEeKyHvoEg92w7Q"/>
+        <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_0B0TQL7pEeKLFua6wDFuUg" sourceArrow="InputArrow">
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_0B0TQb7pEeKLFua6wDFuUg" red="136" green="136" blue="136"/>
+          <beginLabelStyle xmi:type="viewpoint:BeginLabelStyle" xmi:id="_0B0TQr7pEeKLFua6wDFuUg" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_0B0TQ77pEeKLFua6wDFuUg"/>
           </beginLabelStyle>
-          <centerLabelStyle xmi:type="viewpoint:CenterLabelStyle" xmi:id="_MUgwvKBiEeKyHvoEg92w7Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MUgwvaBiEeKyHvoEg92w7Q"/>
+          <centerLabelStyle xmi:type="viewpoint:CenterLabelStyle" xmi:id="_0B0TRL7pEeKLFua6wDFuUg" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_0B0TRb7pEeKLFua6wDFuUg"/>
           </centerLabelStyle>
-          <endLabelStyle xmi:type="viewpoint:EndLabelStyle" xmi:id="_MUgwvqBiEeKyHvoEg92w7Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MUgwv6BiEeKyHvoEg92w7Q"/>
+          <endLabelStyle xmi:type="viewpoint:EndLabelStyle" xmi:id="_0B0TRr7pEeKLFua6wDFuUg" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_0B0TR77pEeKLFua6wDFuUg"/>
           </endLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description:EdgeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']"/>
@@ -2108,16 +2061,16 @@
         <semanticElements xmi:type="uml:Association" href="agency.uml#_NQECMMftEeCBha8FS92Ybw"/>
         <semanticElements xmi:type="uml:Property" href="agency.uml#_NQHFgMftEeCBha8FS92Ybw"/>
         <semanticElements xmi:type="uml:Property" href="agency.uml#_NQEpQMftEeCBha8FS92Ybw"/>
-        <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_MUgwwKBiEeKyHvoEg92w7Q">
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_MUgwwaBiEeKyHvoEg92w7Q" red="136" green="136" blue="136"/>
-          <beginLabelStyle xmi:type="viewpoint:BeginLabelStyle" xmi:id="_MUgwwqBiEeKyHvoEg92w7Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MUgww6BiEeKyHvoEg92w7Q"/>
+        <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_0B3WkL7pEeKLFua6wDFuUg">
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_0B3Wkb7pEeKLFua6wDFuUg" red="136" green="136" blue="136"/>
+          <beginLabelStyle xmi:type="viewpoint:BeginLabelStyle" xmi:id="_0B3Wkr7pEeKLFua6wDFuUg" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_0B3Wk77pEeKLFua6wDFuUg"/>
           </beginLabelStyle>
-          <centerLabelStyle xmi:type="viewpoint:CenterLabelStyle" xmi:id="_MUgwxKBiEeKyHvoEg92w7Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MUgwxaBiEeKyHvoEg92w7Q"/>
+          <centerLabelStyle xmi:type="viewpoint:CenterLabelStyle" xmi:id="_0B3WlL7pEeKLFua6wDFuUg" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_0B3Wlb7pEeKLFua6wDFuUg"/>
           </centerLabelStyle>
-          <endLabelStyle xmi:type="viewpoint:EndLabelStyle" xmi:id="_MUgwxqBiEeKyHvoEg92w7Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MUgwx6BiEeKyHvoEg92w7Q"/>
+          <endLabelStyle xmi:type="viewpoint:EndLabelStyle" xmi:id="_0B3Wlr7pEeKLFua6wDFuUg" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_0B3Wl77pEeKLFua6wDFuUg"/>
           </endLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description:EdgeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']"/>
@@ -2127,16 +2080,16 @@
         <semanticElements xmi:type="uml:Association" href="agency.uml#_3_iGAMf7EeCUSo-uQfq_HA"/>
         <semanticElements xmi:type="uml:Property" href="agency.uml#_3_j7MMf7EeCUSo-uQfq_HA"/>
         <semanticElements xmi:type="uml:Property" href="agency.uml#_3_itEMf7EeCUSo-uQfq_HA"/>
-        <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_MUW_sKBiEeKyHvoEg92w7Q" sourceArrow="InputArrow" targetArrow="InputArrowWithFillDiamond">
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_MUW_saBiEeKyHvoEg92w7Q" red="136" green="136" blue="136"/>
-          <beginLabelStyle xmi:type="viewpoint:BeginLabelStyle" xmi:id="_MUW_sqBiEeKyHvoEg92w7Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MUW_s6BiEeKyHvoEg92w7Q"/>
+        <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_0Bs-gL7pEeKLFua6wDFuUg" sourceArrow="InputArrow" targetArrow="InputArrowWithFillDiamond">
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_0Bs-gb7pEeKLFua6wDFuUg" red="136" green="136" blue="136"/>
+          <beginLabelStyle xmi:type="viewpoint:BeginLabelStyle" xmi:id="_0Bs-gr7pEeKLFua6wDFuUg" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_0Bs-g77pEeKLFua6wDFuUg"/>
           </beginLabelStyle>
-          <centerLabelStyle xmi:type="viewpoint:CenterLabelStyle" xmi:id="_MUW_tKBiEeKyHvoEg92w7Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MUW_taBiEeKyHvoEg92w7Q"/>
+          <centerLabelStyle xmi:type="viewpoint:CenterLabelStyle" xmi:id="_0Bs-hL7pEeKLFua6wDFuUg" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_0Bs-hb7pEeKLFua6wDFuUg"/>
           </centerLabelStyle>
-          <endLabelStyle xmi:type="viewpoint:EndLabelStyle" xmi:id="_MUW_tqBiEeKyHvoEg92w7Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MUW_t6BiEeKyHvoEg92w7Q"/>
+          <endLabelStyle xmi:type="viewpoint:EndLabelStyle" xmi:id="_0Bs-hr7pEeKLFua6wDFuUg" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_0Bs-h77pEeKLFua6wDFuUg"/>
           </endLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description:EdgeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']"/>
@@ -2146,16 +2099,16 @@
         <semanticElements xmi:type="uml:Association" href="agency.uml#_SQc1EMf8EeCUSo-uQfq_HA"/>
         <semanticElements xmi:type="uml:Property" href="agency.uml#_SQeDMMf8EeCUSo-uQfq_HA"/>
         <semanticElements xmi:type="uml:Property" href="agency.uml#_SQc1Ecf8EeCUSo-uQfq_HA"/>
-        <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_MUqhwKBiEeKyHvoEg92w7Q">
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_MUqhwaBiEeKyHvoEg92w7Q" red="136" green="136" blue="136"/>
-          <beginLabelStyle xmi:type="viewpoint:BeginLabelStyle" xmi:id="_MUqhwqBiEeKyHvoEg92w7Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MUqhw6BiEeKyHvoEg92w7Q"/>
+        <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_0CBHkL7pEeKLFua6wDFuUg">
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_0CBHkb7pEeKLFua6wDFuUg" red="136" green="136" blue="136"/>
+          <beginLabelStyle xmi:type="viewpoint:BeginLabelStyle" xmi:id="_0CBHkr7pEeKLFua6wDFuUg" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_0CBHk77pEeKLFua6wDFuUg"/>
           </beginLabelStyle>
-          <centerLabelStyle xmi:type="viewpoint:CenterLabelStyle" xmi:id="_MUqhxKBiEeKyHvoEg92w7Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MUqhxaBiEeKyHvoEg92w7Q"/>
+          <centerLabelStyle xmi:type="viewpoint:CenterLabelStyle" xmi:id="_0CBHlL7pEeKLFua6wDFuUg" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_0CBHlb7pEeKLFua6wDFuUg"/>
           </centerLabelStyle>
-          <endLabelStyle xmi:type="viewpoint:EndLabelStyle" xmi:id="_MUqhxqBiEeKyHvoEg92w7Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MUqhx6BiEeKyHvoEg92w7Q"/>
+          <endLabelStyle xmi:type="viewpoint:EndLabelStyle" xmi:id="_0CBHlr7pEeKLFua6wDFuUg" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_0CBHl77pEeKLFua6wDFuUg"/>
           </endLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description:EdgeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']"/>
@@ -2165,16 +2118,16 @@
         <semanticElements xmi:type="uml:Association" href="agency.uml#_C4MxUMf_EeCUSo-uQfq_HA"/>
         <semanticElements xmi:type="uml:Property" href="agency.uml#_C4P0oMf_EeCUSo-uQfq_HA"/>
         <semanticElements xmi:type="uml:Property" href="agency.uml#_C4NYYMf_EeCUSo-uQfq_HA"/>
-        <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_MUqhuKBiEeKyHvoEg92w7Q">
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_MUqhuaBiEeKyHvoEg92w7Q" red="136" green="136" blue="136"/>
-          <beginLabelStyle xmi:type="viewpoint:BeginLabelStyle" xmi:id="_MUqhuqBiEeKyHvoEg92w7Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MUqhu6BiEeKyHvoEg92w7Q"/>
+        <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_0B-EQL7pEeKLFua6wDFuUg">
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_0B-EQb7pEeKLFua6wDFuUg" red="136" green="136" blue="136"/>
+          <beginLabelStyle xmi:type="viewpoint:BeginLabelStyle" xmi:id="_0B-EQr7pEeKLFua6wDFuUg" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_0B-EQ77pEeKLFua6wDFuUg"/>
           </beginLabelStyle>
-          <centerLabelStyle xmi:type="viewpoint:CenterLabelStyle" xmi:id="_MUqhvKBiEeKyHvoEg92w7Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MUqhvaBiEeKyHvoEg92w7Q"/>
+          <centerLabelStyle xmi:type="viewpoint:CenterLabelStyle" xmi:id="_0B-ERL7pEeKLFua6wDFuUg" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_0B-ERb7pEeKLFua6wDFuUg"/>
           </centerLabelStyle>
-          <endLabelStyle xmi:type="viewpoint:EndLabelStyle" xmi:id="_MUqhvqBiEeKyHvoEg92w7Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MUqhv6BiEeKyHvoEg92w7Q"/>
+          <endLabelStyle xmi:type="viewpoint:EndLabelStyle" xmi:id="_0B-ERr7pEeKLFua6wDFuUg" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_0B-ER77pEeKLFua6wDFuUg"/>
           </endLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description:EdgeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']"/>
@@ -2184,16 +2137,16 @@
         <semanticElements xmi:type="uml:Association" href="agency.uml#_JyKSwMf_EeCUSo-uQfq_HA"/>
         <semanticElements xmi:type="uml:Property" href="agency.uml#_JyMvAMf_EeCUSo-uQfq_HA"/>
         <semanticElements xmi:type="uml:Property" href="agency.uml#_JyK50Mf_EeCUSo-uQfq_HA"/>
-        <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_MUgwsKBiEeKyHvoEg92w7Q" sourceArrow="InputArrow">
-          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_MUgwsaBiEeKyHvoEg92w7Q" red="136" green="136" blue="136"/>
-          <beginLabelStyle xmi:type="viewpoint:BeginLabelStyle" xmi:id="_MUgwsqBiEeKyHvoEg92w7Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MUgws6BiEeKyHvoEg92w7Q"/>
+        <ownedStyle xmi:type="viewpoint:EdgeStyle" xmi:id="_0BxP8L7pEeKLFua6wDFuUg" sourceArrow="InputArrow">
+          <strokeColor xmi:type="viewpoint:RGBValues" xmi:id="_0BxP8b7pEeKLFua6wDFuUg" red="136" green="136" blue="136"/>
+          <beginLabelStyle xmi:type="viewpoint:BeginLabelStyle" xmi:id="_0BxP8r7pEeKLFua6wDFuUg" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_0BxP877pEeKLFua6wDFuUg"/>
           </beginLabelStyle>
-          <centerLabelStyle xmi:type="viewpoint:CenterLabelStyle" xmi:id="_MUgwtKBiEeKyHvoEg92w7Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MUgwtaBiEeKyHvoEg92w7Q"/>
+          <centerLabelStyle xmi:type="viewpoint:CenterLabelStyle" xmi:id="_0BxP9L7pEeKLFua6wDFuUg" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_0BxP9b7pEeKLFua6wDFuUg"/>
           </centerLabelStyle>
-          <endLabelStyle xmi:type="viewpoint:EndLabelStyle" xmi:id="_MUgwtqBiEeKyHvoEg92w7Q" showIcon="false">
-            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_MUgwt6BiEeKyHvoEg92w7Q"/>
+          <endLabelStyle xmi:type="viewpoint:EndLabelStyle" xmi:id="_0BxP9r7pEeKLFua6wDFuUg" showIcon="false">
+            <labelColor xmi:type="viewpoint:RGBValues" xmi:id="_0BxP977pEeKLFua6wDFuUg"/>
           </endLabelStyle>
         </ownedStyle>
         <actualMapping xmi:type="description:EdgeMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']"/>
@@ -8167,5 +8120,467 @@
       <target xmi:type="uml:StateMachine" href="agency.uml#_SKjHwMgEEeC-rqkzDXqbnw"/>
     </ownedRepresentations>
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_LqDusL7QEeKtf5zG9x7Qjw" initialized="true">
+    <ownedRepresentations xmi:type="table:DTable" xmi:id="_CvBkAL7pEeKLFua6wDFuUg" name="Travel Agency Use Case Cross Table" headerColumnWidth="511">
+      <target xmi:type="uml:Model" href="agency.uml#_oRyVocTYEeC0wZa75TykZw"/>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkAb7pEeKLFua6wDFuUg" label="&lt;Actor> Customer">
+        <target xmi:type="uml:Actor" href="agency.uml#_rRsm4MTZEeC0wZa75TykZw"/>
+        <semanticElements xmi:type="uml:Actor" href="agency.uml#_rRsm4MTZEeC0wZa75TykZw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkAr7pEeKLFua6wDFuUg" label="&lt;Actor> Commercial Counsellor">
+        <target xmi:type="uml:Actor" href="agency.uml#_snWyQMTZEeC0wZa75TykZw"/>
+        <semanticElements xmi:type="uml:Actor" href="agency.uml#_snWyQMTZEeC0wZa75TykZw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkA77pEeKLFua6wDFuUg" label="&lt;Actor> Marketing">
+        <target xmi:type="uml:Actor" href="agency.uml#_uXwY4MTZEeC0wZa75TykZw"/>
+        <semanticElements xmi:type="uml:Actor" href="agency.uml#_uXwY4MTZEeC0wZa75TykZw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkBL7pEeKLFua6wDFuUg" label="&lt;Actor> Partners Manager">
+        <target xmi:type="uml:Actor" href="agency.uml#_v5i7wMTZEeC0wZa75TykZw"/>
+        <semanticElements xmi:type="uml:Actor" href="agency.uml#_v5i7wMTZEeC0wZa75TykZw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkBb7pEeKLFua6wDFuUg" label="&lt;Actor> Accountant">
+        <target xmi:type="uml:Actor" href="agency.uml#_x6p34MTZEeC0wZa75TykZw"/>
+        <semanticElements xmi:type="uml:Actor" href="agency.uml#_x6p34MTZEeC0wZa75TykZw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkBr7pEeKLFua6wDFuUg" label="&lt;Use Case> Partner Management">
+        <target xmi:type="uml:UseCase" href="agency.uml#_cSKTMMTeEeC0wZa75TykZw"/>
+        <semanticElements xmi:type="uml:UseCase" href="agency.uml#_cSKTMMTeEeC0wZa75TykZw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkB77pEeKLFua6wDFuUg" label="&lt;Use Case> Offer Catalog Management">
+        <target xmi:type="uml:UseCase" href="agency.uml#_dF_j4MTeEeC0wZa75TykZw"/>
+        <semanticElements xmi:type="uml:UseCase" href="agency.uml#_dF_j4MTeEeC0wZa75TykZw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkCL7pEeKLFua6wDFuUg" label="&lt;Use Case> Invoice Management">
+        <target xmi:type="uml:UseCase" href="agency.uml#_gauEAMTeEeC0wZa75TykZw"/>
+        <semanticElements xmi:type="uml:UseCase" href="agency.uml#_gauEAMTeEeC0wZa75TykZw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkCb7pEeKLFua6wDFuUg" label="&lt;Use Case> to Invoice">
+        <target xmi:type="uml:UseCase" href="agency.uml#_tyc6IMTeEeC0wZa75TykZw"/>
+        <semanticElements xmi:type="uml:UseCase" href="agency.uml#_tyc6IMTeEeC0wZa75TykZw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkCr7pEeKLFua6wDFuUg" label="&lt;Association> Association_Marketing_to_Offer Catalog Management">
+        <target xmi:type="uml:Association" href="agency.uml#_5QsfEMTeEeC0wZa75TykZw"/>
+        <semanticElements xmi:type="uml:Association" href="agency.uml#_5QsfEMTeEeC0wZa75TykZw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkC77pEeKLFua6wDFuUg" label="&lt;Association> Association_Partners Manager_to_Partner Management">
+        <target xmi:type="uml:Association" href="agency.uml#_5550IMTeEeC0wZa75TykZw"/>
+        <semanticElements xmi:type="uml:Association" href="agency.uml#_5550IMTeEeC0wZa75TykZw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkDL7pEeKLFua6wDFuUg" label="&lt;Association> Association_Accountant_to_Invoice Management">
+        <target xmi:type="uml:Association" href="agency.uml#_8kWBIMTeEeC0wZa75TykZw"/>
+        <semanticElements xmi:type="uml:Association" href="agency.uml#_8kWBIMTeEeC0wZa75TykZw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkDb7pEeKLFua6wDFuUg" label="&lt;Activity> to Pay a Trip">
+        <target xmi:type="uml:Activity" href="agency.uml#_gPcLoMTfEeC0wZa75TykZw"/>
+        <semanticElements xmi:type="uml:Activity" href="agency.uml#_gPcLoMTfEeC0wZa75TykZw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkDr7pEeKLFua6wDFuUg" label="&lt;Component> CRM">
+        <target xmi:type="uml:Component" href="agency.uml#_gcBQQMT5EeC7sd1uYTaNyA"/>
+        <semanticElements xmi:type="uml:Component" href="agency.uml#_gcBQQMT5EeC7sd1uYTaNyA"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+        <cells xmi:type="table:DCell" xmi:id="_CvBkD77pEeKLFua6wDFuUg" label="X" column="_CvCLLL7pEeKLFua6wDFuUg">
+          <target xmi:type="uml:Component" href="agency.uml#_gcBQQMT5EeC7sd1uYTaNyA"/>
+          <semanticElements xmi:type="uml:Component" href="agency.uml#_gcBQQMT5EeC7sd1uYTaNyA"/>
+          <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@intersection.0"/>
+        </cells>
+        <cells xmi:type="table:DCell" xmi:id="_CvBkEL7pEeKLFua6wDFuUg" label="X" column="_CvCLLb7pEeKLFua6wDFuUg">
+          <target xmi:type="uml:Component" href="agency.uml#_gcBQQMT5EeC7sd1uYTaNyA"/>
+          <semanticElements xmi:type="uml:Component" href="agency.uml#_gcBQQMT5EeC7sd1uYTaNyA"/>
+          <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@intersection.0"/>
+        </cells>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkEb7pEeKLFua6wDFuUg" label="&lt;Class> Customer">
+        <target xmi:type="uml:Class" href="agency.uml#_Hj8iQMTfEeC0wZa75TykZw"/>
+        <semanticElements xmi:type="uml:Class" href="agency.uml#_Hj8iQMTfEeC0wZa75TykZw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkEr7pEeKLFua6wDFuUg" label="&lt;Component> Supplier Purchasing">
+        <target xmi:type="uml:Component" href="agency.uml#_wq-yMMT5EeC7sd1uYTaNyA"/>
+        <semanticElements xmi:type="uml:Component" href="agency.uml#_wq-yMMT5EeC7sd1uYTaNyA"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+        <cells xmi:type="table:DCell" xmi:id="_CvBkE77pEeKLFua6wDFuUg" label="X" column="_CvCLJ77pEeKLFua6wDFuUg">
+          <target xmi:type="uml:Component" href="agency.uml#_wq-yMMT5EeC7sd1uYTaNyA"/>
+          <semanticElements xmi:type="uml:Component" href="agency.uml#_wq-yMMT5EeC7sd1uYTaNyA"/>
+          <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@intersection.0"/>
+        </cells>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkFL7pEeKLFua6wDFuUg" label="&lt;Class> Partner">
+        <target xmi:type="uml:Class" href="agency.uml#_HbZDMMTfEeC0wZa75TykZw"/>
+        <semanticElements xmi:type="uml:Class" href="agency.uml#_HbZDMMTfEeC0wZa75TykZw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkFb7pEeKLFua6wDFuUg" label="&lt;Component> Booking System">
+        <target xmi:type="uml:Component" href="agency.uml#_yS5LMMT5EeC7sd1uYTaNyA"/>
+        <semanticElements xmi:type="uml:Component" href="agency.uml#_yS5LMMT5EeC7sd1uYTaNyA"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+        <cells xmi:type="table:DCell" xmi:id="_CvBkFr7pEeKLFua6wDFuUg" label="X" column="_CvCLLr7pEeKLFua6wDFuUg">
+          <target xmi:type="uml:Component" href="agency.uml#_yS5LMMT5EeC7sd1uYTaNyA"/>
+          <semanticElements xmi:type="uml:Component" href="agency.uml#_yS5LMMT5EeC7sd1uYTaNyA"/>
+          <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@intersection.0"/>
+        </cells>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkF77pEeKLFua6wDFuUg" label="&lt;Class> Reservation">
+        <target xmi:type="uml:Class" href="agency.uml#_HHf20MTfEeC0wZa75TykZw"/>
+        <semanticElements xmi:type="uml:Class" href="agency.uml#_HHf20MTfEeC0wZa75TykZw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkGL7pEeKLFua6wDFuUg" label="&lt;Interface> Customers">
+        <target xmi:type="uml:Interface" href="agency.uml#_2r5LwMT5EeC7sd1uYTaNyA"/>
+        <semanticElements xmi:type="uml:Interface" href="agency.uml#_2r5LwMT5EeC7sd1uYTaNyA"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkGb7pEeKLFua6wDFuUg" label="&lt;Component> Accounting">
+        <target xmi:type="uml:Component" href="agency.uml#_8kjoQMT5EeC7sd1uYTaNyA"/>
+        <semanticElements xmi:type="uml:Component" href="agency.uml#_8kjoQMT5EeC7sd1uYTaNyA"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+        <cells xmi:type="table:DCell" xmi:id="_CvBkGr7pEeKLFua6wDFuUg" label="X" column="_CvCLKb7pEeKLFua6wDFuUg">
+          <target xmi:type="uml:Component" href="agency.uml#_8kjoQMT5EeC7sd1uYTaNyA"/>
+          <semanticElements xmi:type="uml:Component" href="agency.uml#_8kjoQMT5EeC7sd1uYTaNyA"/>
+          <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@intersection.0"/>
+        </cells>
+        <cells xmi:type="table:DCell" xmi:id="_CvBkG77pEeKLFua6wDFuUg" label="X" column="_CvCLKr7pEeKLFua6wDFuUg">
+          <target xmi:type="uml:Component" href="agency.uml#_8kjoQMT5EeC7sd1uYTaNyA"/>
+          <semanticElements xmi:type="uml:Component" href="agency.uml#_8kjoQMT5EeC7sd1uYTaNyA"/>
+          <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@intersection.0"/>
+        </cells>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkHL7pEeKLFua6wDFuUg" label="&lt;Class> Invoice">
+        <target xmi:type="uml:Class" href="agency.uml#_HoPzcMTfEeC0wZa75TykZw"/>
+        <semanticElements xmi:type="uml:Class" href="agency.uml#_HoPzcMTfEeC0wZa75TykZw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkHb7pEeKLFua6wDFuUg" label="&lt;Component> Agency  Offers">
+        <target xmi:type="uml:Component" href="agency.uml#_99SVwMT5EeC7sd1uYTaNyA"/>
+        <semanticElements xmi:type="uml:Component" href="agency.uml#_99SVwMT5EeC7sd1uYTaNyA"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+        <cells xmi:type="table:DCell" xmi:id="_CvBkHr7pEeKLFua6wDFuUg" label="X" column="_CvCLKL7pEeKLFua6wDFuUg">
+          <target xmi:type="uml:Component" href="agency.uml#_99SVwMT5EeC7sd1uYTaNyA"/>
+          <semanticElements xmi:type="uml:Component" href="agency.uml#_99SVwMT5EeC7sd1uYTaNyA"/>
+          <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@intersection.0"/>
+        </cells>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkH77pEeKLFua6wDFuUg" label="&lt;Class> Catalog">
+        <target xmi:type="uml:Class" href="agency.uml#_HOkvMMTfEeC0wZa75TykZw"/>
+        <semanticElements xmi:type="uml:Class" href="agency.uml#_HOkvMMTfEeC0wZa75TykZw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkIL7pEeKLFua6wDFuUg" label="&lt;Class> Agency">
+        <target xmi:type="uml:Class" href="agency.uml#_2K8ZoMTfEeC0wZa75TykZw"/>
+        <semanticElements xmi:type="uml:Class" href="agency.uml#_2K8ZoMTfEeC0wZa75TykZw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkIb7pEeKLFua6wDFuUg" label="&lt;Class> Travel">
+        <target xmi:type="uml:Class" href="agency.uml#_F8k70MTfEeC0wZa75TykZw"/>
+        <semanticElements xmi:type="uml:Class" href="agency.uml#_F8k70MTfEeC0wZa75TykZw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkIr7pEeKLFua6wDFuUg" label="&lt;Class> Availability">
+        <target xmi:type="uml:Class" href="agency.uml#_LOzXQMf8EeCUSo-uQfq_HA"/>
+        <semanticElements xmi:type="uml:Class" href="agency.uml#_LOzXQMf8EeCUSo-uQfq_HA"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkI77pEeKLFua6wDFuUg" label="&lt;Component> Internal Authentification">
+        <target xmi:type="uml:Component" href="agency.uml#_ApIQ8MT6EeC7sd1uYTaNyA"/>
+        <semanticElements xmi:type="uml:Component" href="agency.uml#_ApIQ8MT6EeC7sd1uYTaNyA"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkJL7pEeKLFua6wDFuUg" label="&lt;Interface> auth">
+        <target xmi:type="uml:Interface" href="agency.uml#_BwTUYMT6EeC7sd1uYTaNyA"/>
+        <semanticElements xmi:type="uml:Interface" href="agency.uml#_BwTUYMT6EeC7sd1uYTaNyA"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkJb7pEeKLFua6wDFuUg" label="&lt;Activity> To reserve a trip">
+        <target xmi:type="uml:Activity" href="agency.uml#_iRGQMMfmEeCl6cTHvttAxQ"/>
+        <semanticElements xmi:type="uml:Activity" href="agency.uml#_iRGQMMfmEeCl6cTHvttAxQ"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkJr7pEeKLFua6wDFuUg" label="&lt;Activity> Sales">
+        <target xmi:type="uml:Activity" href="agency.uml#_guftoMfpEeC6tb4Y3loyNQ"/>
+        <semanticElements xmi:type="uml:Activity" href="agency.uml#_guftoMfpEeC6tb4Y3loyNQ"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkJ77pEeKLFua6wDFuUg" label="&lt;Association> catalogsToTravels">
+        <target xmi:type="uml:Association" href="agency.uml#_4VAkkMfsEeCBha8FS92Ybw"/>
+        <semanticElements xmi:type="uml:Association" href="agency.uml#_4VAkkMfsEeCBha8FS92Ybw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkKL7pEeKLFua6wDFuUg" label="&lt;Association> agenciestoReservations">
+        <target xmi:type="uml:Association" href="agency.uml#_8ncqIMfsEeCBha8FS92Ybw"/>
+        <semanticElements xmi:type="uml:Association" href="agency.uml#_8ncqIMfsEeCBha8FS92Ybw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkKb7pEeKLFua6wDFuUg" label="&lt;Association> invoicesToReservations">
+        <target xmi:type="uml:Association" href="agency.uml#_NQECMMftEeCBha8FS92Ybw"/>
+        <semanticElements xmi:type="uml:Association" href="agency.uml#_NQECMMftEeCBha8FS92Ybw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkKr7pEeKLFua6wDFuUg" label="&lt;Data Type> Date">
+        <target xmi:type="uml:DataType" href="agency.uml#_zIMjoMf7EeCUSo-uQfq_HA"/>
+        <semanticElements xmi:type="uml:DataType" href="agency.uml#_zIMjoMf7EeCUSo-uQfq_HA"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkK77pEeKLFua6wDFuUg" label="&lt;Association> agencysToCustomers">
+        <target xmi:type="uml:Association" href="agency.uml#_3_iGAMf7EeCUSo-uQfq_HA"/>
+        <semanticElements xmi:type="uml:Association" href="agency.uml#_3_iGAMf7EeCUSo-uQfq_HA"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkLL7pEeKLFua6wDFuUg" label="&lt;Association> Travels">
+        <target xmi:type="uml:Association" href="agency.uml#_SQc1EMf8EeCUSo-uQfq_HA"/>
+        <semanticElements xmi:type="uml:Association" href="agency.uml#_SQc1EMf8EeCUSo-uQfq_HA"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkLb7pEeKLFua6wDFuUg" label="&lt;Association> offers">
+        <target xmi:type="uml:Association" href="agency.uml#_C4MxUMf_EeCUSo-uQfq_HA"/>
+        <semanticElements xmi:type="uml:Association" href="agency.uml#_C4MxUMf_EeCUSo-uQfq_HA"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkLr7pEeKLFua6wDFuUg" label="&lt;Association> reservationsToCustomers">
+        <target xmi:type="uml:Association" href="agency.uml#_JyKSwMf_EeCUSo-uQfq_HA"/>
+        <semanticElements xmi:type="uml:Association" href="agency.uml#_JyKSwMf_EeCUSo-uQfq_HA"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkL77pEeKLFua6wDFuUg" label="&lt;Enumeration> ReservationStatus">
+        <target xmi:type="uml:Enumeration" href="agency.uml#_HeF3AMgCEeC-rqkzDXqbnw"/>
+        <semanticElements xmi:type="uml:Enumeration" href="agency.uml#_HeF3AMgCEeC-rqkzDXqbnw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkML7pEeKLFua6wDFuUg" label="&lt;Interface> ReservationSearch">
+        <target xmi:type="uml:Interface" href="agency.uml#_C1k-UMgDEeC-rqkzDXqbnw"/>
+        <semanticElements xmi:type="uml:Interface" href="agency.uml#_C1k-UMgDEeC-rqkzDXqbnw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkMb7pEeKLFua6wDFuUg" label="&lt;Interface> Reservations">
+        <target xmi:type="uml:Interface" href="agency.uml#_Gg8c0MgDEeC-rqkzDXqbnw"/>
+        <semanticElements xmi:type="uml:Interface" href="agency.uml#_Gg8c0MgDEeC-rqkzDXqbnw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkMr7pEeKLFua6wDFuUg" label="&lt;Interface> Travels">
+        <target xmi:type="uml:Interface" href="agency.uml#_N_c1wMgDEeC-rqkzDXqbnw"/>
+        <semanticElements xmi:type="uml:Interface" href="agency.uml#_N_c1wMgDEeC-rqkzDXqbnw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkM77pEeKLFua6wDFuUg" label="&lt;Component> Web Agent">
+        <target xmi:type="uml:Component" href="agency.uml#_Z3sPEMgDEeC-rqkzDXqbnw"/>
+        <semanticElements xmi:type="uml:Component" href="agency.uml#_Z3sPEMgDEeC-rqkzDXqbnw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+        <cells xmi:type="table:DCell" xmi:id="_CvBkNL7pEeKLFua6wDFuUg" label="X" column="_CvCLK77pEeKLFua6wDFuUg">
+          <target xmi:type="uml:Component" href="agency.uml#_Z3sPEMgDEeC-rqkzDXqbnw"/>
+          <semanticElements xmi:type="uml:Component" href="agency.uml#_Z3sPEMgDEeC-rqkzDXqbnw"/>
+          <intersectionMapping xmi:type="description_2:IntersectionMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@intersection.0"/>
+        </cells>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkNb7pEeKLFua6wDFuUg" label="&lt;Component> Agency App">
+        <target xmi:type="uml:Component" href="agency.uml#_GT7fEMgEEeC-rqkzDXqbnw"/>
+        <semanticElements xmi:type="uml:Component" href="agency.uml#_GT7fEMgEEeC-rqkzDXqbnw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkNr7pEeKLFua6wDFuUg" label="&lt;Component> Customers App">
+        <target xmi:type="uml:Component" href="agency.uml#_JSceoMgEEeC-rqkzDXqbnw"/>
+        <semanticElements xmi:type="uml:Component" href="agency.uml#_JSceoMgEEeC-rqkzDXqbnw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkN77pEeKLFua6wDFuUg" label="&lt;Class> CustomersApp">
+        <target xmi:type="uml:Class" href="agency.uml#_fcaA4KBdEeKxFJLscTuRHQ"/>
+        <semanticElements xmi:type="uml:Class" href="agency.uml#_fcaA4KBdEeKxFJLscTuRHQ"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkOL7pEeKLFua6wDFuUg" label="&lt;State Machine> New StateMachine">
+        <target xmi:type="uml:StateMachine" href="agency.uml#_SKjHwMgEEeC-rqkzDXqbnw"/>
+        <semanticElements xmi:type="uml:StateMachine" href="agency.uml#_SKjHwMgEEeC-rqkzDXqbnw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkOb7pEeKLFua6wDFuUg" label="&lt;Use Case> to Consult Reservation Status">
+        <target xmi:type="uml:UseCase" href="agency.uml#_716HYMgLEeClj_cKl6EI8g"/>
+        <semanticElements xmi:type="uml:UseCase" href="agency.uml#_716HYMgLEeClj_cKl6EI8g"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkOr7pEeKLFua6wDFuUg" label="&lt;Use Case> to be reminded of customers opportunity">
+        <target xmi:type="uml:UseCase" href="agency.uml#_V8gc0MgMEeClj_cKl6EI8g"/>
+        <semanticElements xmi:type="uml:UseCase" href="agency.uml#_V8gc0MgMEeClj_cKl6EI8g"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkO77pEeKLFua6wDFuUg" label="&lt;Use Case> to register and update customers data">
+        <target xmi:type="uml:UseCase" href="agency.uml#_X4CVYMgMEeClj_cKl6EI8g"/>
+        <semanticElements xmi:type="uml:UseCase" href="agency.uml#_X4CVYMgMEeClj_cKl6EI8g"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvBkPL7pEeKLFua6wDFuUg" label="&lt;Association> Association_Customer_to_to Consult Reservation Status">
+        <target xmi:type="uml:Association" href="agency.uml#_h01VsMgMEeClj_cKl6EI8g"/>
+        <semanticElements xmi:type="uml:Association" href="agency.uml#_h01VsMgMEeClj_cKl6EI8g"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvCLEL7pEeKLFua6wDFuUg" label="&lt;Use Case> to create a reservation">
+        <target xmi:type="uml:UseCase" href="agency.uml#_klkX8MgMEeClj_cKl6EI8g"/>
+        <semanticElements xmi:type="uml:UseCase" href="agency.uml#_klkX8MgMEeClj_cKl6EI8g"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvCLEb7pEeKLFua6wDFuUg" label="&lt;Association> Association_Commercial Counsellor_to_to contact Customers Back">
+        <target xmi:type="uml:Association" href="agency.uml#_ouA0AMgMEeClj_cKl6EI8g"/>
+        <semanticElements xmi:type="uml:Association" href="agency.uml#_ouA0AMgMEeClj_cKl6EI8g"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvCLEr7pEeKLFua6wDFuUg" label="&lt;Association> Association_Commercial Counsellor_to_to register and update customers data">
+        <target xmi:type="uml:Association" href="agency.uml#_o-bOkMgMEeClj_cKl6EI8g"/>
+        <semanticElements xmi:type="uml:Association" href="agency.uml#_o-bOkMgMEeClj_cKl6EI8g"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvCLE77pEeKLFua6wDFuUg" label="&lt;Association> Association_Commercial Counsellor_to_to create a reservation">
+        <target xmi:type="uml:Association" href="agency.uml#_pP4K8MgMEeClj_cKl6EI8g"/>
+        <semanticElements xmi:type="uml:Association" href="agency.uml#_pP4K8MgMEeClj_cKl6EI8g"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvCLFL7pEeKLFua6wDFuUg" label="&lt;Interaction> Scenario_0">
+        <target xmi:type="uml:Interaction" href="agency.uml#_1hQBoPBUEeGM4vMhC0rGEw"/>
+        <semanticElements xmi:type="uml:Interaction" href="agency.uml#_1hQBoPBUEeGM4vMhC0rGEw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvCLFb7pEeKLFua6wDFuUg" label="&lt;Opaque Behavior> findByDestination">
+        <target xmi:type="uml:OpaqueBehavior" href="agency.uml#_qP0UMfBVEeGM4vMhC0rGEw"/>
+        <semanticElements xmi:type="uml:OpaqueBehavior" href="agency.uml#_qP0UMfBVEeGM4vMhC0rGEw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvCLFr7pEeKLFua6wDFuUg" label="&lt;Opaque Behavior> findByTravel">
+        <target xmi:type="uml:OpaqueBehavior" href="agency.uml#_AWc0IfBWEeGM4vMhC0rGEw"/>
+        <semanticElements xmi:type="uml:OpaqueBehavior" href="agency.uml#_AWc0IfBWEeGM4vMhC0rGEw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvCLF77pEeKLFua6wDFuUg" label="&lt;Opaque Behavior> confirm">
+        <target xmi:type="uml:OpaqueBehavior" href="agency.uml#_GefwcPBWEeGM4vMhC0rGEw"/>
+        <semanticElements xmi:type="uml:OpaqueBehavior" href="agency.uml#_GefwcPBWEeGM4vMhC0rGEw"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvCLGL7pEeKLFua6wDFuUg" label="&lt;Device> Red Hat Enterprise Linux Advanced Server 3.0 ">
+        <target xmi:type="uml:Device" href="agency.uml#_L95_MDozEeKHT8Fbj3g8nQ"/>
+        <semanticElements xmi:type="uml:Device" href="agency.uml#_L95_MDozEeKHT8Fbj3g8nQ"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvCLGb7pEeKLFua6wDFuUg" label="&lt;Execution Environment> Tomecat 7">
+        <target xmi:type="uml:ExecutionEnvironment" href="agency.uml#_iEjtQDozEeKHT8Fbj3g8nQ"/>
+        <semanticElements xmi:type="uml:ExecutionEnvironment" href="agency.uml#_iEjtQDozEeKHT8Fbj3g8nQ"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvCLGr7pEeKLFua6wDFuUg" label="&lt;Execution Environment> Catalina Servlet Container">
+        <target xmi:type="uml:ExecutionEnvironment" href="agency.uml#_nbt_MDozEeKHT8Fbj3g8nQ"/>
+        <semanticElements xmi:type="uml:ExecutionEnvironment" href="agency.uml#_nbt_MDozEeKHT8Fbj3g8nQ"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvCLG77pEeKLFua6wDFuUg" label="&lt;Artifact> agency.war">
+        <target xmi:type="uml:Artifact" href="agency.uml#_KelsEDo0EeKHT8Fbj3g8nQ"/>
+        <semanticElements xmi:type="uml:Artifact" href="agency.uml#_KelsEDo0EeKHT8Fbj3g8nQ"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvCLHL7pEeKLFua6wDFuUg" label="&lt;Artifact> customers.war">
+        <target xmi:type="uml:Artifact" href="agency.uml#_L0pgEDo0EeKHT8Fbj3g8nQ"/>
+        <semanticElements xmi:type="uml:Artifact" href="agency.uml#_L0pgEDo0EeKHT8Fbj3g8nQ"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvCLHb7pEeKLFua6wDFuUg" label="&lt;Device> Sun SPARC Server">
+        <target xmi:type="uml:Device" href="agency.uml#_V3O38Do3EeKHT8Fbj3g8nQ"/>
+        <semanticElements xmi:type="uml:Device" href="agency.uml#_V3O38Do3EeKHT8Fbj3g8nQ"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvCLHr7pEeKLFua6wDFuUg" label="&lt;Execution Environment> Oracle 10g">
+        <target xmi:type="uml:ExecutionEnvironment" href="agency.uml#_ZJ2p0Do4EeKHT8Fbj3g8nQ"/>
+        <semanticElements xmi:type="uml:ExecutionEnvironment" href="agency.uml#_ZJ2p0Do4EeKHT8Fbj3g8nQ"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvCLH77pEeKLFua6wDFuUg" label="&lt;Association> JDBC">
+        <target xmi:type="uml:Association" href="agency.uml#_iUa78Do4EeKHT8Fbj3g8nQ"/>
+        <semanticElements xmi:type="uml:Association" href="agency.uml#_iUa78Do4EeKHT8Fbj3g8nQ"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvCLIL7pEeKLFua6wDFuUg" label="&lt;Device> Red Hat Enterprise Linux Advanced Server 6.0 ">
+        <target xmi:type="uml:Device" href="agency.uml#_s4cpcDo6EeKHT8Fbj3g8nQ"/>
+        <semanticElements xmi:type="uml:Device" href="agency.uml#_s4cpcDo6EeKHT8Fbj3g8nQ"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvCLIb7pEeKLFua6wDFuUg" label="&lt;Artifact> Artifact1">
+        <target xmi:type="uml:Artifact" href="agency.uml#_LwXY0Do7EeKHT8Fbj3g8nQ"/>
+        <semanticElements xmi:type="uml:Artifact" href="agency.uml#_LwXY0Do7EeKHT8Fbj3g8nQ"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvCLIr7pEeKLFua6wDFuUg" label="&lt;Artifact> Artifact2">
+        <target xmi:type="uml:Artifact" href="agency.uml#_MtjZ0Do7EeKHT8Fbj3g8nQ"/>
+        <semanticElements xmi:type="uml:Artifact" href="agency.uml#_MtjZ0Do7EeKHT8Fbj3g8nQ"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvCLI77pEeKLFua6wDFuUg" label="&lt;Node> Authentification">
+        <target xmi:type="uml:Node" href="agency.uml#_I-tUEDo8EeKHT8Fbj3g8nQ"/>
+        <semanticElements xmi:type="uml:Node" href="agency.uml#_I-tUEDo8EeKHT8Fbj3g8nQ"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvCLJL7pEeKLFua6wDFuUg" label="&lt;Artifact> oauth 2.0">
+        <target xmi:type="uml:Artifact" href="agency.uml#_MLPhgDo8EeKHT8Fbj3g8nQ"/>
+        <semanticElements xmi:type="uml:Artifact" href="agency.uml#_MLPhgDo8EeKHT8Fbj3g8nQ"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvCLJb7pEeKLFua6wDFuUg" label="&lt;Artifact> internal oauth">
+        <target xmi:type="uml:Artifact" href="agency.uml#_OQYCADo8EeKHT8Fbj3g8nQ"/>
+        <semanticElements xmi:type="uml:Artifact" href="agency.uml#_OQYCADo8EeKHT8Fbj3g8nQ"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <lines xmi:type="table:DLine" xmi:id="_CvCLJr7pEeKLFua6wDFuUg" label="&lt;Association> &lt;&lt;protocole>>TCP/IP">
+        <target xmi:type="uml:Association" href="agency.uml#_ew-tkDo8EeKHT8Fbj3g8nQ"/>
+        <semanticElements xmi:type="uml:Association" href="agency.uml#_ew-tkDo8EeKHT8Fbj3g8nQ"/>
+        <originMapping xmi:type="description_2:LineMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']"/>
+      </lines>
+      <columns xmi:type="table:DTargetColumn" xmi:id="_CvCLJ77pEeKLFua6wDFuUg" label="&lt;Use Case> Partner Management" cells="_CvBkE77pEeKLFua6wDFuUg" width="251">
+        <target xmi:type="uml:UseCase" href="agency.uml#_cSKTMMTeEeC0wZa75TykZw"/>
+        <semanticElements xmi:type="uml:UseCase" href="agency.uml#_cSKTMMTeEeC0wZa75TykZw"/>
+        <originMapping xmi:type="description_2:ElementColumnMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedColumnMappings.0"/>
+      </columns>
+      <columns xmi:type="table:DTargetColumn" xmi:id="_CvCLKL7pEeKLFua6wDFuUg" label="&lt;Use Case> Offer Catalog Management" cells="_CvBkHr7pEeKLFua6wDFuUg" width="293">
+        <target xmi:type="uml:UseCase" href="agency.uml#_dF_j4MTeEeC0wZa75TykZw"/>
+        <semanticElements xmi:type="uml:UseCase" href="agency.uml#_dF_j4MTeEeC0wZa75TykZw"/>
+        <originMapping xmi:type="description_2:ElementColumnMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedColumnMappings.0"/>
+      </columns>
+      <columns xmi:type="table:DTargetColumn" xmi:id="_CvCLKb7pEeKLFua6wDFuUg" label="&lt;Use Case> Invoice Management" cells="_CvBkGr7pEeKLFua6wDFuUg" width="246">
+        <target xmi:type="uml:UseCase" href="agency.uml#_gauEAMTeEeC0wZa75TykZw"/>
+        <semanticElements xmi:type="uml:UseCase" href="agency.uml#_gauEAMTeEeC0wZa75TykZw"/>
+        <originMapping xmi:type="description_2:ElementColumnMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedColumnMappings.0"/>
+      </columns>
+      <columns xmi:type="table:DTargetColumn" xmi:id="_CvCLKr7pEeKLFua6wDFuUg" label="&lt;Use Case> to Invoice" cells="_CvBkG77pEeKLFua6wDFuUg" width="173">
+        <target xmi:type="uml:UseCase" href="agency.uml#_tyc6IMTeEeC0wZa75TykZw"/>
+        <semanticElements xmi:type="uml:UseCase" href="agency.uml#_tyc6IMTeEeC0wZa75TykZw"/>
+        <originMapping xmi:type="description_2:ElementColumnMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedColumnMappings.0"/>
+      </columns>
+      <columns xmi:type="table:DTargetColumn" xmi:id="_CvCLK77pEeKLFua6wDFuUg" label="&lt;Use Case> to Consult Reservation Status" cells="_CvBkNL7pEeKLFua6wDFuUg" width="305">
+        <target xmi:type="uml:UseCase" href="agency.uml#_716HYMgLEeClj_cKl6EI8g"/>
+        <semanticElements xmi:type="uml:UseCase" href="agency.uml#_716HYMgLEeClj_cKl6EI8g"/>
+        <originMapping xmi:type="description_2:ElementColumnMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedColumnMappings.0"/>
+      </columns>
+      <columns xmi:type="table:DTargetColumn" xmi:id="_CvCLLL7pEeKLFua6wDFuUg" label="&lt;Use Case> to be reminded of customers opportunity" cells="_CvBkD77pEeKLFua6wDFuUg" width="395">
+        <target xmi:type="uml:UseCase" href="agency.uml#_V8gc0MgMEeClj_cKl6EI8g"/>
+        <semanticElements xmi:type="uml:UseCase" href="agency.uml#_V8gc0MgMEeClj_cKl6EI8g"/>
+        <originMapping xmi:type="description_2:ElementColumnMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedColumnMappings.0"/>
+      </columns>
+      <columns xmi:type="table:DTargetColumn" xmi:id="_CvCLLb7pEeKLFua6wDFuUg" label="&lt;Use Case> to register and update customers data" cells="_CvBkEL7pEeKLFua6wDFuUg" width="82">
+        <target xmi:type="uml:UseCase" href="agency.uml#_X4CVYMgMEeClj_cKl6EI8g"/>
+        <semanticElements xmi:type="uml:UseCase" href="agency.uml#_X4CVYMgMEeClj_cKl6EI8g"/>
+        <originMapping xmi:type="description_2:ElementColumnMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedColumnMappings.0"/>
+      </columns>
+      <columns xmi:type="table:DTargetColumn" xmi:id="_CvCLLr7pEeKLFua6wDFuUg" label="&lt;Use Case> to create a reservation" cells="_CvBkFr7pEeKLFua6wDFuUg">
+        <target xmi:type="uml:UseCase" href="agency.uml#_klkX8MgMEeClj_cKl6EI8g"/>
+        <semanticElements xmi:type="uml:UseCase" href="agency.uml#_klkX8MgMEeClj_cKl6EI8g"/>
+        <originMapping xmi:type="description_2:ElementColumnMapping" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedColumnMappings.0"/>
+      </columns>
+      <description xmi:type="description_2:CrossTableDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']"/>
+    </ownedRepresentations>
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']"/>
   </ownedViews>
 </viewpoint:DAnalysis>
