@@ -37,6 +37,7 @@ import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageImport;
+import org.eclipse.uml2.uml.PackageMerge;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.Port;
@@ -125,6 +126,9 @@ public class RelatedElementsSwitch extends UMLSwitch<List<EObject>> {
 		for (Setting xRef : xRefs) {
 			if (xRef.getEObject() instanceof PackageImport) {
 				relateds.add(((PackageImport)xRef.getEObject()).getImportedPackage());
+			}
+			if (xRef.getEObject() instanceof PackageMerge) {
+				relateds.add(((PackageMerge)xRef.getEObject()).getMergedPackage());
 			}
 		}
 		relateds.addAll(object.getOwnedElements());

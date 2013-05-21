@@ -382,6 +382,16 @@ public class UMLServices {
 		pkg.destroy();
 	}
 
+	public List<EObject> getValidsForPackageDiagram(EObject cur) {
+		Predicate<EObject> validForPackageDiagram = new Predicate<EObject>() {
+
+			public boolean apply(EObject input) {
+				return input instanceof Package;
+			}
+		};
+		return allValidSessionElements(cur, validForPackageDiagram);
+	}
+
 	public List<EObject> getValidsForClassDiagram(EObject cur) {
 		Predicate<EObject> validForClassDiagram = new Predicate<EObject>() {
 
