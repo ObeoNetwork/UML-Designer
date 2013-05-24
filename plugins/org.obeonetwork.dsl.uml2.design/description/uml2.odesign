@@ -574,7 +574,7 @@
       <optionalLayers name="Profiles">
         <toolSections name="Profiles" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Apply%20profile'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Apply%20stereotype']"/>
       </optionalLayers>
-      <optionalLayers name="Comments" reusedMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='RED_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@edgeMappings[name='RED_CommentLink']" activeByDefault="true">
+      <optionalLayers name="Comments" reusedMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='RED_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@edgeMappings[name='RED_CommentLink']">
         <toolSections name="Comments" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_CommentLink']"/>
       </optionalLayers>
     </ownedRepresentations>
@@ -5533,6 +5533,81 @@
           <mask mask="{0}"/>
         </create>
       </intersection>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description:DiagramDescription" name="Package Containment" titleExpression="&lt;%name%> Package Containment" domainClass="uml.Package">
+      <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML#/"/>
+      <defaultLayer name="Default">
+        <containerMappings name="PC_Package" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%self+eAllContents()%>" domainClass="uml.Package" dropDescriptions="//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Package%20Containment']/@defaultLayer/@toolSections.0/@ownedTools[name='PC_Drop']" listContainer="true">
+          <subNodeMappings name="PC_PackageableElement" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%eContents()%>" domainClass="uml.PackageableElement">
+            <style xsi:type="style:SquareDescription" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='light%20lagune']">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Elements">
+          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="PC_ArrangeContainment" label="Containment" forceRefresh="true" iconPath="/org.eclipse.search/icons/full/etool16/search.gif" message="Select elements contained in the current package" choiceOfValuesMessage="Candidate packageable elements" candidatesExpression="&lt;%getRootContainer()+getRootContainer().eAllContents(&quot;PackageableElement&quot;)%>" tree="true" rootExpression="&lt;%getRootContainer()%>" childrenExpression="&lt;%eContents()%>" selectedValuesMessage="Selected packageable elements" preSelectedCandidatesExpression="&lt;%$container.packagedElement%>">
+            <element name="elements"/>
+            <containerView name="containerView"/>
+            <container name="container"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$container%>">
+                <subModelOperations xsi:type="tool:For" expression="&lt;%$elements%>" iteratorName="element">
+                  <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="&lt;%$container%>" featureName="packagedElement"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="PC_Drop" forceRefresh="true" mappings="//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Package%20Containment']/@defaultLayer/@containerMappings[name='PC_Package']/@subNodeMappings[name='PC_PackageableElement']" dragSource="BOTH">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="elements"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elements%>">
+                <subModelOperations xsi:type="tool:For" expression="&lt;%$elements%>" iteratorName="element">
+                  <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="&lt;%$newSemanticContainer%>" featureName="packagedElement"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Package" label="Package" containerMappings="//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Package%20Containment']/@defaultLayer/@containerMappings[name='PC_Package']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Package" referenceName="packagedElement">
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="New package &lt;%eContainer.eContents.filter(&quot;Package&quot;).nSize%>"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+      <optionalLayers name="Components">
+        <containerMappings name="PC_Component" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%eAllContents()%>" domainClass="uml.Component" dropDescriptions="//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Package%20Containment']/@defaultLayer/@toolSections.0/@ownedTools[name='PC_Drop']" reusedNodeMappings="//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Package%20Containment']/@defaultLayer/@containerMappings[name='PC_Package']/@subNodeMappings[name='PC_PackageableElement']" listContainer="true">
+          <style xsi:type="style:FlatContainerStyleDescription" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='very%20light%20gray']">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Elements">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Component" containerMappings="//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Package%20Containment']/@optionalLayers[name='Components']/@containerMappings[name='PC_Component']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Component" referenceName="packagedElement">
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Component&lt;%eContainer().eContents().filter(&quot;Component&quot;).nSize()%>"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </optionalLayers>
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.DebugServices"/>
   </ownedViewpoints>
