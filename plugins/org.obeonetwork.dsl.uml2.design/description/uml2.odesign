@@ -2556,6 +2556,14 @@
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
           </style>
         </edgeMappings>
+        <edgeMappings name="CS_Generalization" semanticCandidatesExpression="&lt;%$diagram.getNodeInverseRefs(&quot;Generalization&quot;)%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_SubStructuredClassifier']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_SubStructuredClassifier']" targetFinderExpression="&lt;%general%>" sourceFinderExpression="&lt;%owner%>" domainClass="uml.Generalization" useDomainElement="true">
+          <style targetArrow="InputClosedArrow" sizeComputationExpression="1" routingStyle="tree">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
         <containerMappings name="CS_StructuredClassifier" detailDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='details']/@ownedTools[name='Create%20Composite%20Structure%20Diagram'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='details']/@ownedTools[name='Create%20a%20Class%20Diagram%20from%20a%20Component']" navigationDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@ownedTools[name='Open%20Composite%20Structure%20Diagram'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@ownedTools[name='Open%20a%20Class%20Diagram%20from%20a%20Component']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" createElements="false" domainClass="uml.StructuredClassifier" dropDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='CS_DropOnStructuredClassifier']">
           <borderedNodeMappings name="CS_Port" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="[oclAsType(uml::StructuredClassifier).ownedAttribute/]" synchronizationLock="true" domainClass="uml.Port">
             <borderedNodeMappings name="CS_Port" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="[oclAsType(uml::StructuredClassifier).ownedAttribute/]" domainClass="uml.Port">
@@ -2923,6 +2931,19 @@
             <targetViewVariable name="targetView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[createConnector(sourceView, targetView)/]"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Generalization" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@edgeMappings[name='CS_Generalization']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Generalization.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source%>">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Generalization" referenceName="generalization">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="general" valueExpression="&lt;%$target%>"/>
+                </subModelOperations>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
         </toolSections>
