@@ -8,7 +8,7 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.obeonetwork.dsl.uml2.design.tests.services;
+package org.obeonetwork.dsl.uml2.design.tests.services.compositestructure;
 
 import java.util.Arrays;
 import java.util.Collection;

@@ -32,7 +32,6 @@ import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.StructuredClassifier;
-import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.Usage;
 import org.eclipse.uml2.uml.util.UMLSwitch;
 
@@ -111,15 +110,13 @@ public class RelatedCompositeStructureElementsSwitch extends UMLSwitch<List<EObj
 	public List<EObject> casePort(Port object) {
 
 		relateds.add(object.eContainer());
-		Type type = object.getType();
-		if (type != null) {
-			List<Dependency> clientDependencies = type.getClientDependencies();
-			for (Dependency clientDependency : clientDependencies) {
-				List<NamedElement> clients = clientDependency.getClients();
-				for (NamedElement client : clients) {
-					if (client instanceof Connector) {
-						caseConnector((Connector)client);
-					}
+		List<Dependency> clientDependencies = object.getClientDependencies();
+
+		for (Dependency clientDependency : clientDependencies) {
+			List<NamedElement> clients = clientDependency.getClients();
+			for (NamedElement client : clients) {
+				if (client instanceof Connector) {
+					caseConnector((Connector)client);
 				}
 			}
 		}

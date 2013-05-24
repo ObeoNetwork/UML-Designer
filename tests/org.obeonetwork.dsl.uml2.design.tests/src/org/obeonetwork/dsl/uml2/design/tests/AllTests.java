@@ -19,11 +19,12 @@ import org.obeonetwork.dsl.uml2.design.tests.services.ActivityServicesTests;
 import org.obeonetwork.dsl.uml2.design.tests.services.ConnectorServicesTests;
 import org.obeonetwork.dsl.uml2.design.tests.services.DiagramElementMappingSpecificationTests;
 import org.obeonetwork.dsl.uml2.design.tests.services.EditLabelTests;
-import org.obeonetwork.dsl.uml2.design.tests.services.IsRelated4CompositeStructureServicesTests;
-import org.obeonetwork.dsl.uml2.design.tests.services.IsRelated4CompositeStructureServicesWithConnectorTests;
 import org.obeonetwork.dsl.uml2.design.tests.services.OperationServicesTest;
 import org.obeonetwork.dsl.uml2.design.tests.services.PropertyServicesTest;
 import org.obeonetwork.dsl.uml2.design.tests.services.SequenceServiceTests;
+import org.obeonetwork.dsl.uml2.design.tests.services.compositestructure.CompositeStructureServicesTest;
+import org.obeonetwork.dsl.uml2.design.tests.services.compositestructure.IsRelated4CompositeStructureServicesTests;
+import org.obeonetwork.dsl.uml2.design.tests.services.compositestructure.IsRelated4CompositeStructureServicesWithConnectorTests;
 
 /**
  * Test Suite including all the enabled tests.
@@ -63,6 +64,7 @@ public final class AllTests {
 		suite.addTestSuite(IsRelated4CompositeStructureServicesTests.class);
 		suite.addTestSuite(IsRelated4CompositeStructureServicesWithConnectorTests.class);
 		suite.addTestSuite(ConnectorServicesTests.class);
+		suite.addTestSuite(CompositeStructureServicesTest.class);
 		suite.addTest(new JUnit4TestAdapter(DiagramElementMappingSpecificationTests.class));
 		return suite;
 	}

@@ -12,6 +12,7 @@ package org.obeonetwork.dsl.uml2.design.tests.services;
 
 import org.obeonetwork.dsl.uml2.design.services.ConnectorServices;
 import org.obeonetwork.dsl.uml2.design.tests.Activator;
+import org.obeonetwork.dsl.uml2.design.tests.services.compositestructure.AbstractCompositeStructueTests;
 
 /**
  * Unit tests on Connector services.
