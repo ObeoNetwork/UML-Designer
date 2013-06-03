@@ -610,9 +610,6 @@
             <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%getSource().computeAssociationEndLabel()%>">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </beginLabelStyleDescription>
-            <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%computeUmlLabel()%>">
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </centerLabelStyleDescription>
             <endLabelStyleDescription showIcon="false" labelExpression="&lt;%getTarget().computeAssociationEndLabel()%>">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </endLabelStyleDescription>
