@@ -46,7 +46,6 @@ import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.util.UMLSwitch;
 import org.obeonetwork.dsl.uml2.design.services.LabelServices;
-import org.obeonetwork.dsl.uml2.design.services.UMLServices;
 
 /**
  * A switch that handle the label edition for each UML types.
@@ -193,8 +192,8 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 	 */
 	@Override
 	public Element caseActivityEdge(ActivityEdge object) {
-		OpaqueExpression expr = (OpaqueExpression)object.getGuard();
-		if (expr == null) {
+		ValueSpecification expr = (ValueSpecification)object.getGuard();
+		if (expr == null || expr instanceof LiteralBoolean) {
 			expr = UMLFactory.eINSTANCE.createOpaqueExpression();
 			expr.setName(object.getName() + GUARD_SUFFIX);
 			object.setGuard(expr);
@@ -205,8 +204,10 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 			editedLabelContent = editedLabelContent.substring(1, editedLabelContent.length() - 1);
 		}
 
-		expr.getBodies().clear();
-		expr.getBodies().add(editedLabelContent);
+		if (expr instanceof OpaqueExpression) {
+			((OpaqueExpression)expr).getBodies().clear();
+			((OpaqueExpression)expr).getBodies().add(editedLabelContent);
+		}
 
 		return object;
 	}
