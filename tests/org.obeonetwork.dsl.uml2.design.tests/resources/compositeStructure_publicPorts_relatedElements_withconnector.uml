@@ -19,10 +19,18 @@
       <end xmi:id="_0UCzgLcZEeKhv9hQlDgQkA" role="_YmppALPwEeK5iozmV46vng"/>
       <end xmi:id="_0UDakLcZEeKhv9hQlDgQkA" role="_UIdmcLPwEeK5iozmV46vng"/>
     </ownedConnector>
+    <ownedConnector xmi:id="_o7B6kLceEeKK1td6yoaVwQ" clientDependency="_61ep0LPwEeK5iozmV46vng" name="Ap_I2_connector">
+      <end xmi:id="_o7Fk8LceEeKK1td6yoaVwQ" role="_n4QK0LPwEeK5iozmV46vng"/>
+      <end xmi:id="_o7GMALceEeKK1td6yoaVwQ" role="_YmppALPwEeK5iozmV46vng"/>
+    </ownedConnector>
     <interfaceRealization xmi:id="_dQ2HQLPwEeK5iozmV46vng" clientDependency="_dQ2HQLPwEeK5iozmV46vng" name="irI1" client="_9ehlILPvEeK5iozmV46vng _dQ2HQLPwEeK5iozmV46vng _0UA-ULcZEeKhv9hQlDgQkA" supplier="_4E51ELPvEeK5iozmV46vng" contract="_4E51ELPvEeK5iozmV46vng"/>
     <nestedClassifier xmi:type="uml:Component" xmi:id="_Is6JILPwEeK5iozmV46vng" clientDependency="_4WJgoLPwEeK5iozmV46vng _CKOCwLPxEeK5iozmV46vng" name="Aa">
       <ownedAttribute xmi:type="uml:Port" xmi:id="_mW_MYLPwEeK5iozmV46vng" name="Aap" type="_Is6JILPwEeK5iozmV46vng" aggregation="composite"/>
-      <interfaceRealization xmi:id="_4WJgoLPwEeK5iozmV46vng" clientDependency="_4WJgoLPwEeK5iozmV46vng" name="irI1" client="_Is6JILPwEeK5iozmV46vng _4WJgoLPwEeK5iozmV46vng" supplier="_4E51ELPvEeK5iozmV46vng" contract="_4E51ELPvEeK5iozmV46vng"/>
+      <ownedConnector xmi:id="_278C0LcZEeKhv9hQlDgQkA" clientDependency="_4WJgoLPwEeK5iozmV46vng" name="I1_Ap_connector">
+        <end xmi:id="_278p4LcZEeKhv9hQlDgQkA" role="_mW_MYLPwEeK5iozmV46vng"/>
+        <end xmi:id="_278p4bcZEeKhv9hQlDgQkA" role="_YmppALPwEeK5iozmV46vng"/>
+      </ownedConnector>
+      <interfaceRealization xmi:id="_4WJgoLPwEeK5iozmV46vng" clientDependency="_4WJgoLPwEeK5iozmV46vng" name="irI1" client="_Is6JILPwEeK5iozmV46vng _4WJgoLPwEeK5iozmV46vng _278C0LcZEeKhv9hQlDgQkA" supplier="_4E51ELPvEeK5iozmV46vng" contract="_4E51ELPvEeK5iozmV46vng"/>
     </nestedClassifier>
     <nestedClassifier xmi:type="uml:Component" xmi:id="_L6HsALPwEeK5iozmV46vng" clientDependency="_0y1K4LPwEeK5iozmV46vng _2bQhQLPwEeK5iozmV46vng" name="Ab">
       <ownedAttribute xmi:type="uml:Port" xmi:id="_nQwtALPwEeK5iozmV46vng" name="Abp" type="_L6HsALPwEeK5iozmV46vng" aggregation="composite"/>
@@ -54,7 +62,7 @@
   </packagedElement>
   <packagedElement xmi:type="uml:Usage" xmi:id="_f4mzsLPwEeK5iozmV46vng" name="usageI1" client="_-psXwLPvEeK5iozmV46vng _0UA-ULcZEeKhv9hQlDgQkA" supplier="_4E51ELPvEeK5iozmV46vng"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_eN3JILPwEeK5iozmV46vng" name="usageI2" client="_9ehlILPvEeK5iozmV46vng _1qH1oLcZEeKhv9hQlDgQkA" supplier="_4-gWkLPvEeK5iozmV46vng"/>
-  <packagedElement xmi:type="uml:Usage" xmi:id="_61ep0LPwEeK5iozmV46vng" name="usageAI2" client="_NZ4OkLPwEeK5iozmV46vng" supplier="_4-gWkLPvEeK5iozmV46vng"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_61ep0LPwEeK5iozmV46vng" name="usageAI2" client="_NZ4OkLPwEeK5iozmV46vng _o7B6kLceEeKK1td6yoaVwQ" supplier="_4-gWkLPvEeK5iozmV46vng"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_2bQhQLPwEeK5iozmV46vng" name="usageAI3" client="_L6HsALPwEeK5iozmV46vng _wq4I4LcjEeKK1td6yoaVwQ" supplier="_6S9BALPvEeK5iozmV46vng"/>
   <packagedElement xmi:type="uml:Usage" xmi:id="_CKOCwLPxEeK5iozmV46vng" name="usageAI4" client="_Is6JILPwEeK5iozmV46vng _wHLl8LcjEeKK1td6yoaVwQ" supplier="_62DHALPvEeK5iozmV46vng"/>
 </uml:Model>
