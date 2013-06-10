@@ -5569,8 +5569,16 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:CrossTableDescription" name="Use Case Cross Table" titleExpression="&lt;%name%> Use Case Cross Table" domainClass="uml.Model" initialHeaderColumnWidth="50">
       <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML#/"/>
-      <ownedLineMappings name="UCT_ClassifierLine" domainClass="uml.Classifier"/>
-      <ownedColumnMappings name="UCT_UseCase" domainClass="uml.UseCase"/>
+      <ownedLineMappings name="UCT_ClassifierLine" domainClass="uml.Classifier">
+        <defaultBackground>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultBackground>
+      </ownedLineMappings>
+      <ownedColumnMappings name="UCT_UseCase" headerLabelExpression="&lt;%name%>" domainClass="uml.UseCase">
+        <defaultBackground>
+          <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+        </defaultBackground>
+      </ownedColumnMappings>
       <intersection name="UCT_RefUseCase" lineMapping="//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedLineMappings[name='UCT_ClassifierLine']" columnMapping="//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']/@ownedColumnMappings.0" labelExpression="X" columnFinderExpression="&lt;%useCase%>">
         <directEdit>
           <variables name="element" documentation="The currently edited element."/>
@@ -5587,6 +5595,7 @@
           </firstModelOperation>
           <mask mask="{0}"/>
         </directEdit>
+        <defaultBackground backgroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='lagune']"/>
         <create name="UCT_CreateCell">
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column."/>
