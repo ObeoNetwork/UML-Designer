@@ -9,7 +9,7 @@
   <models xmi:type="uml:Model" href="pathmap://UML_METAMODELS/Ecore.metamodel.uml#_0"/>
   <models xmi:type="uml:Profile" href="pathmap://UML_PROFILES/StandardL3.profile.uml#_0"/>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_qBZ5IMTYEeC0wZa75TykZw" initialized="true">
-    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_Vm0AEMTfEeC0wZa75TykZw" name="system architecture">
+    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_Vm0AEMTfEeC0wZa75TykZw" name="Component Architecture">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_Vm0nIMTfEeC0wZa75TykZw" source="GMF_DIAGRAMS">
         <data xmi:type="notation:Diagram" xmi:id="_Vm0nIcTfEeC0wZa75TykZw" type="Viewpoint" element="_Vm0AEMTfEeC0wZa75TykZw" measurementUnit="Pixel">
           <children xmi:type="notation:Node" xmi:id="_gd4RcMT5EeC7sd1uYTaNyA" type="2002" element="_3RiLcKNQEeGBMNQVuO__Bw">
@@ -1139,7 +1139,7 @@
       <activatedLayers xmi:type="description:Layer" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer"/>
       <target xmi:type="uml:Model" href="agency.uml#_oRyVocTYEeC0wZa75TykZw"/>
     </ownedRepresentations>
-    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_7Gx_MH_kEeGzVJ6Y3wTtOw" name="entities">
+    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_7Gx_MH_kEeGzVJ6Y3wTtOw" name="Entities">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_7IOJoH_kEeGzVJ6Y3wTtOw" source="GMF_DIAGRAMS">
         <data xmi:type="notation:Diagram" xmi:id="_7IOJoX_kEeGzVJ6Y3wTtOw" type="Viewpoint" element="_7Gx_MH_kEeGzVJ6Y3wTtOw" measurementUnit="Pixel">
           <children xmi:type="notation:Node" xmi:id="_7NoOEH_kEeGzVJ6Y3wTtOw" type="2003" element="_3VqdgKNQEeGBMNQVuO__Bw">
@@ -2218,7 +2218,7 @@
       <activatedLayers xmi:type="description:OptionalLayer" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@optionalLayers[name='Comments']"/>
       <target xmi:type="uml:Model" href="agency.uml#_oRyVocTYEeC0wZa75TykZw"/>
     </ownedRepresentations>
-    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_SnuokPBVEeGM4vMhC0rGEw" name="Travel Agency Object Diagram">
+    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_SnuokPBVEeGM4vMhC0rGEw" name="Instances">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_SoYv4PBVEeGM4vMhC0rGEw" source="GMF_DIAGRAMS">
         <data xmi:type="notation:Diagram" xmi:id="_SoYv4fBVEeGM4vMhC0rGEw" type="Viewpoint" element="_SnuokPBVEeGM4vMhC0rGEw" measurementUnit="Pixel">
           <children xmi:type="notation:Node" xmi:id="_VfPoQPBVEeGM4vMhC0rGEw" type="2003" element="_VdXY8PBVEeGM4vMhC0rGEw">
@@ -2320,7 +2320,7 @@
       <activatedLayers xmi:type="description:OptionalLayer" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@optionalLayers[name='Comments']"/>
       <target xmi:type="uml:Model" href="agency.uml#_oRyVocTYEeC0wZa75TykZw"/>
     </ownedRepresentations>
-    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_Faz7EDoyEeKHT8Fbj3g8nQ" name="system Deployment">
+    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_Faz7EDoyEeKHT8Fbj3g8nQ" name="Deployment">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_Fa8d8DoyEeKHT8Fbj3g8nQ" source="GMF_DIAGRAMS">
         <data xmi:type="notation:Diagram" xmi:id="_Fa8d8ToyEeKHT8Fbj3g8nQ" type="Viewpoint" element="_Faz7EDoyEeKHT8Fbj3g8nQ" measurementUnit="Pixel">
           <children xmi:type="notation:Node" xmi:id="_MAmt4DozEeKHT8Fbj3g8nQ" type="2002" element="_L97NUDozEeKHT8Fbj3g8nQ">
@@ -2946,7 +2946,7 @@
       <activatedLayers xmi:type="description:OptionalLayer" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@optionalLayers[name='Comments']"/>
       <target xmi:type="uml:Model" href="agency.uml#_oRyVocTYEeC0wZa75TykZw"/>
     </ownedRepresentations>
-    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_Mcz5cKBUEeKytpXBok_8qQ" name="system Composite Structure">
+    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_Mcz5cKBUEeKytpXBok_8qQ" name="Composite Structure">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_Md8h4KBUEeKytpXBok_8qQ" source="GMF_DIAGRAMS">
         <data xmi:type="notation:Diagram" xmi:id="_Md8h4aBUEeKytpXBok_8qQ" type="Viewpoint" element="_Mcz5cKBUEeKytpXBok_8qQ" measurementUnit="Pixel">
           <children xmi:type="notation:Node" xmi:id="_Q6PuEKBUEeKytpXBok_8qQ" visible="false" type="2002" element="_Q2WskKBUEeKytpXBok_8qQ">
@@ -4165,7 +4165,7 @@
       <activatedLayers xmi:type="description:OptionalLayer" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@optionalLayers[name='Comments']"/>
       <target xmi:type="uml:Model" href="agency.uml#_oRyVocTYEeC0wZa75TykZw"/>
     </ownedRepresentations>
-    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_I7oMQNHZEeKN4_jbmAij1g" name="Travel Agency Package Hierarchy">
+    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_I7oMQNHZEeKN4_jbmAij1g" name="Package Hierarchy">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_I8B04NHZEeKN4_jbmAij1g" source="GMF_DIAGRAMS">
         <data xmi:type="notation:Diagram" xmi:id="_I8B04dHZEeKN4_jbmAij1g" type="Viewpoint" element="_I7oMQNHZEeKN4_jbmAij1g" measurementUnit="Pixel">
           <children xmi:type="notation:Node" xmi:id="_M08AINHZEeKN4_jbmAij1g" type="2001" element="_Mx_Z0NHZEeKN4_jbmAij1g">
@@ -4406,7 +4406,7 @@
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']"/>
   </ownedViews>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_qjddUMTYEeC0wZa75TykZw" initialized="true">
-    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_qySHAMTZEeC0wZa75TykZw" name="system use cases">
+    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_qySHAMTZEeC0wZa75TykZw" name="Use Cases">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_qyTVIMTZEeC0wZa75TykZw" source="GMF_DIAGRAMS">
         <data xmi:type="notation:Diagram" xmi:id="_qyTVIcTZEeC0wZa75TykZw" type="Viewpoint" element="_qySHAMTZEeC0wZa75TykZw" measurementUnit="Pixel">
           <children xmi:type="notation:Node" xmi:id="_rS2dcMTZEeC0wZa75TykZw" type="2001" element="_32zbsKNQEeGBMNQVuO__Bw">
@@ -5308,7 +5308,7 @@
       <activatedLayers xmi:type="description:Layer" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer"/>
       <target xmi:type="uml:Model" href="agency.uml#_oRyVocTYEeC0wZa75TykZw"/>
     </ownedRepresentations>
-    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_iRNk8MfmEeCl6cTHvttAxQ" name="to reserve a trip">
+    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_iRNk8MfmEeCl6cTHvttAxQ" name="Travel Reservation Activity">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_iRPaIMfmEeCl6cTHvttAxQ" source="GMF_DIAGRAMS">
         <data xmi:type="notation:Diagram" xmi:id="_iRPaIcfmEeCl6cTHvttAxQ" type="Viewpoint" element="_iRNk8MfmEeCl6cTHvttAxQ" measurementUnit="Pixel">
           <children xmi:type="notation:Node" xmi:id="_iRrfAMfmEeCl6cTHvttAxQ" type="2002" element="_35Rg4KNQEeGBMNQVuO__Bw">
@@ -6090,7 +6090,7 @@
       <activatedLayers xmi:type="description:Layer" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer"/>
       <target xmi:type="uml:Activity" href="agency.uml#_iRGQMMfmEeCl6cTHvttAxQ"/>
     </ownedRepresentations>
-    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_gu8ZkMfpEeC6tb4Y3loyNQ" name="sales activity">
+    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_gu8ZkMfpEeC6tb4Y3loyNQ" name="Sales Activity">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_gvMRMMfpEeC6tb4Y3loyNQ" source="GMF_DIAGRAMS">
         <data xmi:type="notation:Diagram" xmi:id="_gvMRMcfpEeC6tb4Y3loyNQ" type="Viewpoint" element="_gu8ZkMfpEeC6tb4Y3loyNQ" measurementUnit="Pixel">
           <children xmi:type="notation:Node" xmi:id="_gwmmcMfpEeC6tb4Y3loyNQ" type="2002" element="_372TwKNQEeGBMNQVuO__Bw">
@@ -7126,7 +7126,7 @@
       <activatedLayers xmi:type="description:Layer" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer"/>
       <target xmi:type="uml:Activity" href="agency.uml#_guftoMfpEeC6tb4Y3loyNQ"/>
     </ownedRepresentations>
-    <ownedRepresentations xmi:type="sequence:SequenceDDiagram" xmi:id="_1hRPwPBUEeGM4vMhC0rGEw" name="Travel reservation">
+    <ownedRepresentations xmi:type="sequence:SequenceDDiagram" xmi:id="_1hRPwPBUEeGM4vMhC0rGEw" name="Travel Reservation Sequence">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_1hhucPBUEeGM4vMhC0rGEw" source="GMF_DIAGRAMS">
         <data xmi:type="notation:Diagram" xmi:id="_1hhucfBUEeGM4vMhC0rGEw" type="Viewpoint" element="_1hRPwPBUEeGM4vMhC0rGEw" measurementUnit="Pixel">
           <children xmi:type="notation:Node" xmi:id="_bUOeoPBVEeGM4vMhC0rGEw" type="2001" element="_bULbUPBVEeGM4vMhC0rGEw">
@@ -7533,7 +7533,7 @@
       <activatedLayers xmi:type="description:Layer" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer"/>
       <target xmi:type="uml:Interaction" href="agency.uml#_1hQBoPBUEeGM4vMhC0rGEw"/>
     </ownedRepresentations>
-    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_4QKg4DpAEeKvzb1abiuLdQ" name="reservation states">
+    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_4QKg4DpAEeKvzb1abiuLdQ" name="Reservation States">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_4RJ_YDpAEeKvzb1abiuLdQ" source="GMF_DIAGRAMS">
         <data xmi:type="notation:Diagram" xmi:id="_4RKmcDpAEeKvzb1abiuLdQ" type="Viewpoint" element="_4QKg4DpAEeKvzb1abiuLdQ" measurementUnit="Pixel">
           <children xmi:type="notation:Node" xmi:id="_4TfhsDpAEeKvzb1abiuLdQ" type="2002" element="_4S1aYDpAEeKvzb1abiuLdQ">
@@ -8576,7 +8576,7 @@
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']"/>
   </ownedViews>
   <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_LqDusL7QEeKtf5zG9x7Qjw" initialized="true">
-    <ownedRepresentations xmi:type="table:DTable" xmi:id="_CvBkAL7pEeKLFua6wDFuUg" name="Travel Agency Use Case Cross Table" headerColumnWidth="511">
+    <ownedRepresentations xmi:type="table:DTable" xmi:id="_CvBkAL7pEeKLFua6wDFuUg" name="Use Cases Matches" headerColumnWidth="511">
       <target xmi:type="uml:Model" href="agency.uml#_oRyVocTYEeC0wZa75TykZw"/>
       <lines xmi:type="table:DLine" xmi:id="_CvBkAb7pEeKLFua6wDFuUg" label="&lt;Actor> Customer">
         <target xmi:type="uml:Actor" href="agency.uml#_rRsm4MTZEeC0wZa75TykZw"/>
@@ -9035,7 +9035,7 @@
       </columns>
       <description xmi:type="description_2:CrossTableDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Use%20Case%20Cross%20Table']"/>
     </ownedRepresentations>
-    <ownedRepresentations xmi:type="table:DTable" xmi:id="_NSPUAL79EeKMl6d2yQs6Cw" name="Travel Agency Documentation Table" headerColumnWidth="534">
+    <ownedRepresentations xmi:type="table:DTable" xmi:id="_NSPUAL79EeKMl6d2yQs6Cw" name="Documentation" headerColumnWidth="534">
       <target xmi:type="uml:Model" href="agency.uml#_oRyVocTYEeC0wZa75TykZw"/>
       <lines xmi:type="table:DLine" xmi:id="_NSPUAb79EeKMl6d2yQs6Cw" label="&lt;Model> Travel Agency">
         <target xmi:type="uml:Model" href="agency.uml#_oRyVocTYEeC0wZa75TykZw"/>
@@ -14826,7 +14826,7 @@
       </columns>
       <description xmi:type="description_2:EditionTableDescription" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Documentation%20Table']"/>
     </ownedRepresentations>
-    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_MQH5kMxMEeKu5MGoAofgQA" name="Travel Agency Package Containment">
+    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_MQH5kMxMEeKu5MGoAofgQA" name="Package Containment">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_MQg7IMxMEeKu5MGoAofgQA" source="GMF_DIAGRAMS">
         <data xmi:type="notation:Diagram" xmi:id="_MQg7IcxMEeKu5MGoAofgQA" type="Viewpoint" element="_MQH5kMxMEeKu5MGoAofgQA" measurementUnit="Pixel">
           <children xmi:type="notation:Node" xmi:id="_d59BkMxNEeKJdOq6yzVo-Q" type="2003" element="_d4u5kMxNEeKJdOq6yzVo-Q">
