@@ -16,6 +16,8 @@ import org.eclipse.osgi.util.NLS;
 public class Messages extends NLS {
 	private static final String BUNDLE_NAME = "org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel.messages"; //$NON-NLS-1$
 
+	public static String UIServices_UI_Error_PastingElement;
+
 	public static String UmlModelWizard_DefaultModelName;
 
 	public static String UmlModelWizard_DefaultPackageName;
