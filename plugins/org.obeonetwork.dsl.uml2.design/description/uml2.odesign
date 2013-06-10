@@ -1737,7 +1737,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="CO_ComponentRealization" semanticCandidatesExpression="&lt;%$diagram.getNodeInverseRefs(&quot;ComponentRealization&quot;)%>" semanticElements="&lt;%self.getSemanticElements()%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']" targetFinderExpression="&lt;%abstraction%>" sourceFinderExpression="&lt;%realizingClassifier%>" domainClass="uml.ComponentRealization" useDomainElement="true">
+        <edgeMappings name="CO_ComponentRealization" semanticCandidatesExpression="&lt;%$diagram.getNodeInverseRefs(&quot;ComponentRealization&quot;)%>" semanticElements="&lt;%self.getSemanticElements()%>" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']" targetFinderExpression="&lt;%abstraction%>" sourceFinderExpression="&lt;%realizingClassifier%>" domainClass="uml.ComponentRealization" useDomainElement="true" reconnections="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect%20ComponentRealization']">
           <style lineStyle="dash" targetArrow="InputClosedArrow" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
@@ -2250,6 +2250,17 @@
                   <subModelOperations xsi:type="tool:SetValue" featureName="role" valueExpression="&lt;%$target%>"/>
                 </subModelOperations>
               </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Reconnect ComponentRealization" reconnectionKind="RECONNECT_BOTH">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.reconnectEdge($edgeView, $sourceView, $targetView, $source, $target)%>"/>
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>

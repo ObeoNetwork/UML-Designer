@@ -10,9 +10,13 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.services.internal;
 
+import java.util.List;
+
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Component;
+import org.eclipse.uml2.uml.ComponentRealization;
 import org.eclipse.uml2.uml.ConnectableElement;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.Dependency;
@@ -27,7 +31,7 @@ import org.obeonetwork.dsl.uml2.design.services.UMLServices;
 
 /**
  * A switch that handle the edge reconnections for each UML types.
- *
+ * 
  * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
  */
 public class ReconnectSwitch extends UMLSwitch<Element> {
@@ -116,6 +120,33 @@ public class ReconnectSwitch extends UMLSwitch<Element> {
 			}
 		}
 		return dependency;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public Element caseComponentRealization(ComponentRealization cRealization) {
+		if (RECONNECT_SOURCE == reconnectKind) {
+			if (newPointedElement instanceof Classifier) {
+				Classifier realizingClassifier = (Classifier)newPointedElement;
+				cRealization.getRealizingClassifiers().clear();
+				cRealization.getRealizingClassifiers().add(realizingClassifier);
+				cRealization.setName(realizingClassifier.getName() + "To"
+						+ cRealization.getAbstraction().getName());
+			}
+		} else {
+			if (newPointedElement instanceof Component) {
+				Component abstraction = (Component)newPointedElement;
+				List<Classifier> realizingClassifiers = cRealization.getRealizingClassifiers();
+				String realizingClassifierName = "";
+				if (!realizingClassifiers.isEmpty()) {
+					realizingClassifierName = realizingClassifiers.get(0).getName();
+				}
+				cRealization.setAbstraction(abstraction);
+				cRealization.setName(realizingClassifierName + "To" + abstraction.getName());
+			}
+		}
+		return cRealization;
 	}
 
 	/**
