@@ -60,11 +60,12 @@ public abstract class AbstractNewUmlModelWizard extends BasicNewProjectResourceW
 		// Get the newly created UML file
 		IResource newUmlModelFile = project.findMember(newUmlModelFileName);
 
+		// Switch to the modeling perspective
+		updatePerspective();
+
 		// Select it in the explorer
 		selectAndReveal(newUmlModelFile, PlatformUI.getWorkbench().getActiveWorkbenchWindow());
 
-		// Switch to the modeling perspective
-		updatePerspective();
 		return true;
 	}
 }
