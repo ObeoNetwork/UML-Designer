@@ -29,8 +29,9 @@
       </ownedConnector>
       <interfaceRealization xmi:id="_8DrkMEUUEeKKrffBqFWY_w" name="auth" client="_ApIQ8MT6EeC7sd1uYTaNyA _eD2xsNJyEeKjEKyG7M9Ljg" supplier="_BwTUYMT6EeC7sd1uYTaNyA" contract="_BwTUYMT6EeC7sd1uYTaNyA"/>
     </packagedElement>
-    <packagedElement xmi:type="uml:Component" xmi:id="_yS5LMMT5EeC7sd1uYTaNyA" clientDependency="_MbwOYMgDEeC-rqkzDXqbnw _id8VYMgSEeCyyts5kz1NCA _jsGKkMgSEeCyyts5kz1NCA" name="Booking System" useCase="_klkX8MgMEeClj_cKl6EI8g">
+    <packagedElement xmi:type="uml:Component" xmi:id="_yS5LMMT5EeC7sd1uYTaNyA" clientDependency="_MbwOYMgDEeC-rqkzDXqbnw _id8VYMgSEeCyyts5kz1NCA _jsGKkMgSEeCyyts5kz1NCA _Ik6qQNJ6EeKjEKyG7M9Ljg" name="Booking System" useCase="_klkX8MgMEeClj_cKl6EI8g">
       <interfaceRealization xmi:id="_MbwOYMgDEeC-rqkzDXqbnw" name="reservationSearch" client="_yS5LMMT5EeC7sd1uYTaNyA" supplier="_C1k-UMgDEeC-rqkzDXqbnw" contract="_C1k-UMgDEeC-rqkzDXqbnw"/>
+      <interfaceRealization xmi:id="_Ik6qQNJ6EeKjEKyG7M9Ljg" client="_yS5LMMT5EeC7sd1uYTaNyA" supplier="_Gg8c0MgDEeC-rqkzDXqbnw" contract="_Gg8c0MgDEeC-rqkzDXqbnw"/>
       <packagedElement xmi:type="uml:Class" xmi:id="_HHf20MTfEeC0wZa75TykZw" name="Reservation">
         <ownedAttribute xmi:id="_ErUNYMgCEeC-rqkzDXqbnw" name="issuedOn" type="_zIMjoMf7EeCUSo-uQfq_HA">
           <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ErbiIMgCEeC-rqkzDXqbnw"/>
