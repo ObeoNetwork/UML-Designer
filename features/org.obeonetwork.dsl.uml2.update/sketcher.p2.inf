@@ -1,8 +1,6 @@
 instructions.configure=\
-addRepository(type:0,location:http${#58}//www.obeo.fr/download/release/designer/6.1/latest/juno3/update,name:Obeo Designer 6.1);\
-addRepository(type:1,location:http${#58}//www.obeo.fr/download/release/designer/6.1/latest/juno3/update,name:Obeo Designer 6.1);\
-addRepository(type:0,location:http${#58}//www.obeo.fr/download/eclipse/juno-3.8,name:Juno 3.8);\
-addRepository(type:1,location:http${#58}//www.obeo.fr/download/eclipse/juno-3.8,name:Juno 3.8);\
+addRepository(type:0,location:http${#58}//www.obeo.fr/download/release/uml/latest/repository,name:UML Designer);\
+addRepository(type:1,location:http${#58}//www.obeo.fr/download/release/uml/latest/repository,name:UML Designer);\
   mkdir(path:${installFolder}/dropins);
 
 requires.1.namespace=org.eclipse.equinox.p2.iu
