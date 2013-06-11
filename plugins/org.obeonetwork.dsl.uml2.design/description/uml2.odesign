@@ -2627,20 +2627,14 @@
       </filters>
       <defaultLayer name="Composite structure">
         <nodeMappings name="CS_ProvidedInterface" deletionDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='CS_Delete_ServiceInterface']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="[diagram.oclAsType(DDiagram).ownedDiagramElements.target->filter(uml::StructuredClassifier).ownedAttribute->filter(uml::Port).provided/]" synchronizationLock="true" domainClass="uml.Interface">
-          <style xsi:type="style:BundledImageDescription" labelFormat="italic" showIcon="false" sizeComputationExpression="2" shape="dot">
+          <style xsi:type="style:BundledImageDescription" showIcon="false" sizeComputationExpression="2" shape="dot">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
           </style>
-          <conditionnalStyles predicateExpression="[view.oclIsKindOf(viewpoint::DNode) and view.oclAsType(viewpoint::DNode).incomingEdges.target->filter(uml::Connector)->size()>0/]">
-            <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="-1" resizeKind="NSEW" workspacePath="/org.obeonetwork.dsl.uml2.design/images/provided.svg">
-              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </style>
-          </conditionnalStyles>
         </nodeMappings>
         <nodeMappings name="CS_RequiredInterface" deletionDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='CS_Delete_ServiceInterface']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="[diagram.oclAsType(DDiagram).ownedDiagramElements.target->filter(uml::StructuredClassifier).ownedAttribute->filter(uml::Port).required/]" synchronizationLock="true" domainClass="uml.Interface">
-          <style xsi:type="style:CustomStyleDescription" labelFormat="italic" showIcon="false" resizeKind="NSEW" id="org.obeonetwork.dsl.uml2.design.ui.extension.rotableNode.requiredInterface">
+          <style xsi:type="style:CustomStyleDescription" showIcon="false" resizeKind="NSEW" id="org.obeonetwork.dsl.uml2.design.ui.extension.rotableNode.requiredInterface">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
@@ -2719,14 +2713,14 @@
             </style>
           </borderedNodeMappings>
           <subNodeMappings name="CS_SubProvidedInterface" deletionDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='CS_Delete_ServiceInterface']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="[diagram.oclAsType(DDiagram).ownedDiagramElements->filter(DNodeContainer).ownedDiagramElements.target->filter(uml::StructuredClassifier).ownedAttribute->filter(uml::Port).provided->select(interface | self.ownedElement->filter(uml::StructuredClassifier).ownedAttribute->filter(uml::Port).provided->includes(interface))/]" synchronizationLock="true" domainClass="uml.Interface">
-            <style xsi:type="style:BundledImageDescription" labelFormat="italic" showIcon="false" sizeComputationExpression="2" shape="dot">
+            <style xsi:type="style:BundledImageDescription" showIcon="false" sizeComputationExpression="2" shape="dot">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             </style>
           </subNodeMappings>
           <subNodeMappings name="CS_SubRequiredInterface" deletionDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='CS_Delete_ServiceInterface']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="[diagram.oclAsType(DDiagram).ownedDiagramElements->filter(DNodeContainer).ownedDiagramElements.target->filter(uml::StructuredClassifier).ownedAttribute->filter(uml::Port).required->select(interface | self.ownedElement->filter(uml::StructuredClassifier).ownedAttribute->filter(uml::Port).required->includes(interface))/]" synchronizationLock="true" domainClass="uml.Interface">
-            <style xsi:type="style:CustomStyleDescription" labelFormat="italic" showIcon="false" resizeKind="NSEW" id="org.obeonetwork.dsl.uml2.design.ui.extension.rotableNode.requiredInterface">
+            <style xsi:type="style:CustomStyleDescription" showIcon="false" resizeKind="NSEW" id="org.obeonetwork.dsl.uml2.design.ui.extension.rotableNode.requiredInterface">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
