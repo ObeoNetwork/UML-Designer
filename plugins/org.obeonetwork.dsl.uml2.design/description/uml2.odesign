@@ -5603,8 +5603,19 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description:DiagramDescription" name="Package Containment" titleExpression="&lt;%name%> Package Containment" domainClass="uml.Package" enablePopupBars="true">
       <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML#/"/>
+      <filters xsi:type="filter:CompositeFilterDescription" name="Containment">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Package%20Containment']/@defaultLayer/@edgeMappings[name='PC_Containment']"/>
+      </filters>
       <defaultLayer name="Default">
-        <containerMappings name="PC_Package" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%self+eAllContents()%>" domainClass="uml.Package" dropDescriptions="//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Package%20Containment']/@defaultLayer/@toolSections.0/@ownedTools[name='PC_Drop']" listContainer="true">
+        <edgeMappings name="PC_Containment" sourceMapping="//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Package%20Containment']/@defaultLayer/@containerMappings[name='PC_Package'] //@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Package%20Containment']/@optionalLayers[name='Components']/@containerMappings[name='PC_Component']" targetMapping="//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Package%20Containment']/@defaultLayer/@containerMappings[name='PC_Package'] //@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Package%20Containment']/@optionalLayers[name='Components']/@containerMappings[name='PC_Component']" targetFinderExpression="&lt;%eContainer()%>">
+          <style sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="PC_Package" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%self+eAllContents(&quot;Package&quot;)%>" domainClass="uml.Package" dropDescriptions="//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Package%20Containment']/@defaultLayer/@toolSections.0/@ownedTools[name='PC_Drop']" listContainer="true">
           <subNodeMappings name="PC_PackageableElement" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%eContents()%>" domainClass="uml.PackageableElement">
             <style xsi:type="style:SquareDescription" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -5612,14 +5623,14 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='light%20lagune']">
+          <style xsi:type="style:FlatContainerStyleDescription" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='Containment%20Background']">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
         <toolSections name="Elements">
-          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="PC_ArrangeContainment" label="Containment" forceRefresh="true" iconPath="/org.eclipse.search/icons/full/etool16/search.gif" message="Select elements contained in the current package" choiceOfValuesMessage="Candidate packageable elements" candidatesExpression="&lt;%getRootContainer()+getRootContainer().eAllContents(&quot;PackageableElement&quot;)%>" tree="true" rootExpression="&lt;%getRootContainer()%>" childrenExpression="&lt;%eContents()%>" selectedValuesMessage="Selected packageable elements" preSelectedCandidatesExpression="&lt;%$container.packagedElement%>">
+          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="PC_ArrangeContainment" label="Move" forceRefresh="true" iconPath="/org.eclipse.search/icons/full/etool16/search.gif" message="Select elements contained in the current package" choiceOfValuesMessage="Candidate packageable elements" candidatesExpression="&lt;%getRootContainer()+getRootContainer().eAllContents(&quot;PackageableElement&quot;)%>" tree="true" rootExpression="&lt;%getRootContainer()%>" childrenExpression="&lt;%eContents()%>" selectedValuesMessage="Selected packageable elements" preSelectedCandidatesExpression="&lt;%$container.packagedElement%>">
             <element name="elements"/>
             <containerView name="containerView"/>
             <container name="container"/>
@@ -5644,12 +5655,15 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Package" label="Package" containerMappings="//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Package%20Containment']/@defaultLayer/@containerMappings[name='PC_Package']">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
+          <ownedTools xsi:type="tool:ToolDescription" name="Package" precondition="&lt;%self.filter(&quot;Package&quot;)%>" forceRefresh="true" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Package.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Package" referenceName="packagedElement">
-                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="New package &lt;%eContainer.eContents.filter(&quot;Package&quot;).nSize%>"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%eContainer(&quot;Package&quot;)%>">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Package" referenceName="packagedElement">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="New package &lt;%eContainer.eContents.filter(&quot;Package&quot;).nSize%>"/>
+                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Package%20Containment']/@defaultLayer/@containerMappings[name='PC_Package']" containerViewExpression="&lt;%$elementView.eContainer(&quot;DDiagram&quot;)%>"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -5664,12 +5678,15 @@
           </style>
         </containerMappings>
         <toolSections name="Elements">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Component" containerMappings="//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Package%20Containment']/@optionalLayers[name='Components']/@containerMappings[name='PC_Component']">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
+          <ownedTools xsi:type="tool:ToolDescription" name="Component" precondition="&lt;%self.filter(&quot;Package&quot;)%>" forceRefresh="true" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Component.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Component" referenceName="packagedElement">
-                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Component&lt;%eContainer().eContents().filter(&quot;Component&quot;).nSize()%>"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%eContainer(&quot;Package&quot;)%>">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Component" referenceName="packagedElement">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Component&lt;%eContainer().eContents().filter(&quot;Component&quot;).nSize()%>"/>
+                  <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Package%20Containment']/@optionalLayers[name='Components']/@containerMappings[name='PC_Component']" containerViewExpression="&lt;%$elementView.eContainer(&quot;DDiagram&quot;)%>"/>
+                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -5702,5 +5719,9 @@
     <entries xsi:type="description:UserFixedColor" red="246" green="253" blue="255" name="InformationBackground"/>
     <entries xsi:type="description:UserFixedColor" red="12" green="92" blue="159" name="InformationBorder"/>
     <entries xsi:type="description:UserFixedColor" red="230" green="230" blue="230" name="very light gray"/>
+    <entries xsi:type="description:InterpolatedColor" name="Containment Background" colorValueComputationExpression="&lt;%ancestor.nSize%>">
+      <colorSteps associatedValue="0" associatedColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='light%20lagune']"/>
+      <colorSteps associatedValue="15" associatedColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='dark%20lagune']"/>
+    </entries>
   </userColorsPalettes>
 </description:Group>
