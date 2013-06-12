@@ -71,13 +71,11 @@ Contributors:
             <layout>p2</layout>
             <url>http://update.obeo.fr/integration/sysml/repository/</url>
         </repository>
-        <!--
         <repository>
-            <id>eef</id>
+            <id>uml2java</id>
             <layout>p2</layout>
-            <url>${eef-site}</url> 
+            <url>http://update.obeo.fr/release/acceleo3-modules/uml2java/release-2.0.2/repository/</url> 
         </repository>
-                 -->
 
     </repositories>
 
