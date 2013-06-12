@@ -20,7 +20,7 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
-import org.obeonetwork.dsl.uml2.design.services.internal.ContainerSwitch;
+import org.obeonetwork.dsl.uml2.design.services.internal.UmlPasteCommand;
 import org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel.Messages;
 
 import fr.obeo.dsl.viewpoint.DDiagramElement;
@@ -73,30 +73,19 @@ public class UIServices {
 	 *            Container view
 	 */
 	public void paste(final Element container, final NamedElement semanticElement,
-			final DSemanticDecorator containerView) {
-		// Attach the copiedElement to its the selected container
-		setContainer(semanticElement, container);
+			final DSemanticDecorator elementView, final DSemanticDecorator containerView) {
+		// Paste the semantic element from the clipboard to the selected container
+		final Session session = SessionManager.INSTANCE.getSession(container);
+		UmlPasteCommand cmd = new UmlPasteCommand(session.getTransactionalEditingDomain(), container);
+		if (cmd.canExecute()) {
+			cmd.execute();
+		}
 
-		// Change the name to show that it is a copy
-		semanticElement.setName(new LabelServices().computeUmlLabel(semanticElement) + "_Copy");
+		// Get the newly pasted element
+		EObject copiedSemanticElement = cmd.getCopiedSemanticElement();
 
 		// Create the view for the pasted element
-		final Session session = SessionManager.INSTANCE.getSession(container);
-		createView(semanticElement, containerView, session);
-	}
-
-	/**
-	 * Attached semantic element to the given container.
-	 * 
-	 * @param semanticElement
-	 *            Semantic element
-	 * @param context
-	 *            Container
-	 */
-	private void setContainer(EObject semanticElement, EObject context) {
-		final ContainerSwitch container = new ContainerSwitch();
-		container.setContainment(semanticElement);
-		container.doSwitch(context);
+		createView(copiedSemanticElement, containerView, session);
 	}
 
 	/**
