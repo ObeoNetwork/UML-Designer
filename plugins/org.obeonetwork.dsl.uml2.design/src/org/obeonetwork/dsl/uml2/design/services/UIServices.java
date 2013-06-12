@@ -15,12 +15,14 @@ import java.util.List;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
-import org.obeonetwork.dsl.uml2.design.services.internal.UmlPasteCommand;
 import org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel.Messages;
 
 import fr.obeo.dsl.viewpoint.DDiagramElement;
@@ -76,16 +78,14 @@ public class UIServices {
 			final DSemanticDecorator elementView, final DSemanticDecorator containerView) {
 		// Paste the semantic element from the clipboard to the selected container
 		final Session session = SessionManager.INSTANCE.getSession(container);
-		UmlPasteCommand cmd = new UmlPasteCommand(session.getTransactionalEditingDomain(), container);
+		TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
+		// The feature is set to null because the domain will deduce it
+		Command cmd = AddCommand.create(domain, container, null, semanticElement);
 		if (cmd.canExecute()) {
 			cmd.execute();
 		}
-
-		// Get the newly pasted element
-		EObject copiedSemanticElement = cmd.getCopiedSemanticElement();
-
 		// Create the view for the pasted element
-		createView(copiedSemanticElement, containerView, session);
+		createView(semanticElement, containerView, session);
 	}
 
 	/**
