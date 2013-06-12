@@ -5638,7 +5638,7 @@
             <newViewContainer name="newContainerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elements%>">
-                <subModelOperations xsi:type="tool:For" expression="&lt;%$elements%>" iteratorName="element">
+                <subModelOperations xsi:type="tool:For" expression="&lt;%($elements.adapt(&quot;list&quot;) -  $newSemanticContainer - $newSemanticContainer.ancestor)%>" iteratorName="element">
                   <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="&lt;%$newSemanticContainer%>" featureName="packagedElement"/>
                 </subModelOperations>
               </firstModelOperations>
