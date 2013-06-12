@@ -35,6 +35,7 @@ import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.AssociationClass;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Collaboration;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.ConnectorEnd;
@@ -408,7 +409,10 @@ public class UMLServices {
 		Predicate<EObject> validForUseCaseDiagram = new Predicate<EObject>() {
 
 			public boolean apply(EObject input) {
-				return input instanceof Package || input instanceof Classifier;
+				return input instanceof Package || input instanceof Class || input instanceof Component
+						|| input instanceof Artifact || input instanceof DataType
+						|| input instanceof Interface || input instanceof Collaboration
+						|| input instanceof UseCase;
 			}
 		};
 		return allValidSessionElements(cur, validForUseCaseDiagram);

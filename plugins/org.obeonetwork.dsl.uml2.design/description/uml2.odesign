@@ -4693,18 +4693,7 @@
                       <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_Actor']" containerViewExpression="&lt;%$newContainerView%>"/>
                     </cases>
                     <cases conditionExpression="&lt;%$selection.filter(&quot;UseCase&quot;)%>">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$selection[subject]%>">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$selection.subject%>">
-                          <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" containerViewExpression="&lt;%$newContainerView%>" variableName="newView">
-                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$selection%>">
-                              <subModelOperations xsi:type="tool:CreateView" containerViewExpression="&lt;%$newView%>"/>
-                            </subModelOperations>
-                          </subModelOperations>
-                        </subModelOperations>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$selection[!subject]%>">
-                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_UseCase']" containerViewExpression="&lt;%$newContainerView.eContainer(&quot;DDiagram&quot;)%>"/>
-                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_UseCase']" containerViewExpression="&lt;%$newContainerView%>"/>
                     </cases>
                     <cases conditionExpression="&lt;%$selection.filter(&quot;Classifier&quot;)%>">
                       <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" containerViewExpression="&lt;%$newContainerView%>"/>
@@ -4715,7 +4704,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:SelectionWizardDescription" documentation="Add an existing element to current representation" name="UCD_AddExistingElements" label="Add" precondition="&lt;%filter(&quot;Package&quot;)%>" forceRefresh="true" candidatesExpression="&lt;%self.getValidsForUseCaseDiagram()%>" multiple="true" tree="true" rootExpression="&lt;%getAllRootsInSession().filter(&quot;Model&quot;)%>" childrenExpression="&lt;%eContents()%>" iconPath="/org.eclipse.search/icons/full/etool16/search.gif" windowTitle="Select element to add in current representation">
+          <ownedTools xsi:type="tool:SelectionWizardDescription" documentation="Add an existing element to current representation" name="UCD_AddExistingElements" label="Add" precondition="&lt;%filter(&quot;Package&quot;)||filter(&quot;Classifier&quot;)%>" forceRefresh="true" candidatesExpression="&lt;%self.getValidsForUseCaseDiagram()%>" multiple="true" tree="true" rootExpression="&lt;%getAllRootsInSession().filter(&quot;Model&quot;)%>" childrenExpression="&lt;%eContents()%>" iconPath="/org.eclipse.search/icons/full/etool16/search.gif" windowTitle="Select element to add in current representation">
             <element name="element"/>
             <containerView name="containerView"/>
             <container name="container"/>
@@ -4727,18 +4716,7 @@
                       <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_Actor']" containerViewExpression="&lt;%$containerView%>"/>
                     </cases>
                     <cases conditionExpression="&lt;%$selection.filter(&quot;UseCase&quot;)%>">
-                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$selection[subject]%>">
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$selection.subject%>">
-                          <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" containerViewExpression="&lt;%$containerView%>" variableName="newView">
-                            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$selection%>">
-                              <subModelOperations xsi:type="tool:CreateView" containerViewExpression="&lt;%$newView%>"/>
-                            </subModelOperations>
-                          </subModelOperations>
-                        </subModelOperations>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$selection[!subject]%>">
-                        <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_UseCase']" containerViewExpression="&lt;%$containerView.eContainer(&quot;DDiagram&quot;)%>"/>
-                      </subModelOperations>
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_UseCase']" containerViewExpression="&lt;%$containerView%>"/>
                     </cases>
                     <cases conditionExpression="&lt;%$selection.filter(&quot;Classifier&quot;)%>">
                       <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" containerViewExpression="&lt;%$containerView%>"/>
