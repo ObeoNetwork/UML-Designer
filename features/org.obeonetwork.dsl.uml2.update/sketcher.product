@@ -127,8 +127,7 @@ The user is not authorized to install or make a technical means to hide within t
       <feature id="org.eclipse.platform"/>
       <feature id="org.eclipse.uml2"/>
       <feature id="fr.obeo.dsl.feature.designer.gen.html"/>
-      <feature id="org.obeonetwork.pim.uml2.gen.java.feature"/>
-      <feature id="org.obeonetwork.pim.uml2.gen.java.ui.feature"/>
+      <feature id="org.eclipse.epp.mpc"/>
    </features>
 
    <configurations>

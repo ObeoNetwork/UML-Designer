@@ -71,11 +71,16 @@ Contributors:
             <layout>p2</layout>
             <url>http://update.obeo.fr/integration/sysml/repository/</url>
         </repository>
-        <repository>
+ 	<repository>
+            <id>Marketplace</id>
+            <layout>p2</layout>
+            <url>http://download.eclipse.org/mpc/indigo/</url> 
+        </repository>
+        <!--repository>
             <id>uml2java</id>
             <layout>p2</layout>
             <url>http://update.obeo.fr/release/acceleo3-modules/uml2java/release-2.0.2/repository/</url> 
-        </repository>
+        </repository-->
 
     </repositories>
 
