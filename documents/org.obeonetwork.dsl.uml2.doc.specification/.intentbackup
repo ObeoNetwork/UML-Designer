@@ -2068,30 +2068,6 @@ Document {
 				!./images/ValidationReport.png!
 				
 			}
-
-			Section Find Help {
-				The UML Designer users can find help on :
-
-				* the Welcome page :
-				
-
-					** Eclipse integration : integration of the UML Designer help contents in the default Eclipse welcome page
-					** Product integration : specific UML Designer welcome page  provided with the UML Designer product
-
-				* in the help contents :
-				
-
-					** 	User guide : describe all the features available in UML Designer
-					** 	Cheatsheets : step by step tutorials which explain the first main steps to use UML Designer
-
-				* in the dynamic help : on diagrams opening
-				
-
-				* in the Travel agency example provided : to import the example, the user select ine the Eclipse menu New>Example>UML>Travel agency.
-				
-
-				
-			}
 		}
 
 		Section Non-Goals {
@@ -2115,7 +2091,23 @@ Document {
 
 		* *Usability* : 
 		** User friendly interfaces : The UML Designer is easy to use and to get started with. The different interfaces are intuitive and learnable.
-		** Documentation : User guide and other supporting materials (tutorials, video, cheatsheets) are available to help the user.
+		** Documentation : User guide and other supporting materials (tutorials, video, cheatsheets) are available to help the user. The UML Designer users can find help on :
+		
+
+			* the Welcome page :
+
+				** Eclipse integration : integration of the UML Designer help contents in the default Eclipse welcome page
+				** Product integration : specific UML Designer welcome page  provided with the UML Designer product
+
+			* in the help contents :
+
+				** 	User guide : describe all the features available in UML Designer
+				** 	Cheatsheets : step by step tutorials which explain the first main steps to use UML Designer
+
+			* in the dynamic help : on diagrams opening
+
+			* in the Travel agency example provided : to import the example, the user select ine the Eclipse menu New>Example>UML>Travel agency.
+
 		* *Response time* : The response time perceived by the end user must be good and when the processing would be longer the user must be informed.
 		* *Licensing* : The UML Designer is provided as an open source project under EPL licence.
 		* *Availability* : The UML Designer is provided as an Eclipse plugin on the marketplace. A product is also built available on the obeo website. The source code is available on github.
