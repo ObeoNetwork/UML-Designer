@@ -361,10 +361,11 @@ Document {
 							The activity diagram is a synchronized diagram which means that any elements existing under an activity in the UML model wil be visible automatically in the activity diagram.
 
 							Section Manage activities {
-								It is possible to create and delete activities elements in the Activity diagram.
+								It is possible to create and delete activities elements in the activity diagram.
 
 								Section Create activities elements {
-									It is possible to create activities elements by selecting the creation tools from the palette and then clicking on the diagram or an element. A diagram is associated to an activity and in this case the element is created under the corresponding activity in the UML model.
+									It is possible to create activities elements by selecting the creation tools from the palette and then clicking on the diagram or an element. A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the UML model.
+									If the user selects a container, the element will be created under the corresponding semantic element in the UML model.
 									!./images/ActivityDiagramPalette.png!
 									
 
@@ -372,12 +373,12 @@ Document {
 									!./images/ActivityDiagramTooltips.png!
 									
 
-									The following activities elements can be created :
+									Creation tools are available in the activity diagram for the following types : 
 
 									* Partition : 
 									
 
-												!./images/ActivityDiagramPartition.png!
+									!./images/ActivityDiagramPartition.png!
 									
 
 									* Initial Node :
@@ -395,77 +396,77 @@ Document {
 									* Flow Final Node :
 									
 
-										!./images/ActivityDiagramFlowFinalNode.png!
+									!./images/ActivityDiagramFlowFinalNode.png!
 									
 
 									* Decision Node :
 									
 
-										!./images/ActivityDiagramDecisionNode.png!
+									!./images/ActivityDiagramDecisionNode.png!
 									
 
 									* Merge Node :
 									
 
-										!./images/ActivityDiagramMergeNode.png!
+									!./images/ActivityDiagramMergeNode.png!
 									
 
 									* Fork Node :
 									
 
-										!./images/ActivityDiagramForkNode.png!
+									!./images/ActivityDiagramForkNode.png!
 									
 
 									* Join Node :
 									
 
-										!./images/ActivityDiagramJoinNode.png!
+									!./images/ActivityDiagramJoinNode.png!
 									
 
 									* Opaque Action :
 									
 
-										!./images/ActivityDiagramOpaqueAction.png!
+									!./images/ActivityDiagramOpaqueAction.png!
 									
 
 									* Activity state :
 									
 
-										!./images/ActivityDiagramActivityState.png!
+									!./images/ActivityDiagramActivityState.png!
 									
 
 									* Call Operation action :
 									
 
-										!./images/ActivityDiagramCallOperationAction.png!
+									!./images/ActivityDiagramCallOperationAction.png!
 									
 
-										When this tool is selected, a selection wizard is opened to ask the user to select an existing operation in the UML model :
-										!./images/ActivityDiagramCallOperationActionWizard.png!
+									When this tool is selected, a selection wizard is opened to ask the user to select an existing operation in the UML model :
+									!./images/ActivityDiagramCallOperationActionWizard.png!
 									
 
 									* Activity parameter :
 									
 
-										!./images/ActivityDiagramActivityParameter.png!
+									!./images/ActivityDiagramActivityParameter.png!
 									
 
 									* Data store :
 									
 
-										!./images/ActivityDiagramDataStore.png!
+									!./images/ActivityDiagramDataStore.png!
 									
 
 									* Input pin : it is represented as bordered node of the activity
 									
 
-										!./images/ActivityDiagramInputPin.png!
+									!./images/ActivityDiagramInputPin.png!
 									
 
 									* Output pin :  it is represented as bordered node of the activity
 									
 
-										!./images/ActivityDiagramOutputPin.png!
+									!./images/ActivityDiagramOutputPin.png!
 									
 								}
 
@@ -485,14 +486,14 @@ Document {
 							}
 
 							Section Manage flows {
-								It is possible to create and delete flows in the Activity diagram.
+								It is possible to create and delete flows in the activity diagram.
 
 								Section Create a flow {
 									It is possible to create a flow by selecting the edge creation tool from the palette and then clicking on a source element and a target element.			
 
 										The following edge creation tools exist in the palette :
 
-										* Control flow : can be created between activity state, call operation action and opaque action. The control flow is represented by a plain edge without label.
+										* Control flow : can be created between activity state, call operation action and opaque action. The control flow is represented by a solid edge without label.
 
 										!./images/ActivityDiagramControlFlow.png!
 									
@@ -528,42 +529,38 @@ Document {
 							When he recovered all his requirements, he starts to sort them by subject in order to see who is going to use the application. He needs now to capture the different users of the system. John creates a UML *Use Case diagram* to specify the different subjects and the roles played by users and other systems that interact.
 						The use case diagram is used to describe the interaction of the user and other applications with the specified system.
 
-						Section Use case diagram {
 							The use case diagram is used to describe the interaction between the system, the users and sub systems.
 							!./images/UseCaseDiagram.png!
-							
+						
 
 							The use case diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.
 
-							Section Manage use cases {
-								It is possible to create and delete elements in the use case diagram.
+						Section Manage use cases {
+							It is possible to create and delete elements in the use case diagram.
 
-								Section Create an element {
-									It is possible to create an element by selecting the creation tool from the palette and then clicking on the diagram or an element. A diagram is associated to a package and in this case the element is created under the corresponding package in the UML model.
+							Section Create an element {
+								It is possible to create an element by selecting the creation tool from the palette and then clicking on the diagram or an element. A diagram is associated to a package and in this case the element is created under the corresponding package in the UML model.
 									!./images/UseCaseDiagramPalette.png!
-									
+								
 
 									Tooltip tools are also available to create any kind of elements.
 
 									The available elements in the use case diagram are :
 
 									* Actor :
-									
 
 									!./images/UseCaseDiagramActor.png!
-									
+								
 
 									* Use Case :
-									
 
 									!./images/UseCaseDiagramUseCase.png!
-									
+								
 
 									* Subject : 
-									
 
 									!./images/UseCaseDiagramSubject.png!
-									
+								
 
 									A subject could be a : 
 
@@ -572,13 +569,12 @@ Document {
 									** Artifact
 									** DataType
 									** Interface
-									
 
 									**Collaboration
-								}
+							}
 
-								Section Delete an element {
-									It is possible to delete a semantic element : 
+							Section Delete an element {
+								It is possible to delete a semantic element : 
 
 									* from the component diagram by using : 
 									** Ctrl+D on keyboard, 
@@ -586,10 +582,8 @@ Document {
 									** the toolbar action 'Delete from model'; 
 									* from the model explorer by using : 
 									** the context menu action 'Delete'
-									
 
 									This tool deletes the semantic element. If a representation is open, the view corresponding to the deleted element is not anymore visible after the delete action.
-								}
 							}
 						}
 
@@ -600,7 +594,7 @@ Document {
 								It is possible to create a relationship by selecting the edge creation tool from the palette and then clicking on a source element and a target element.
 
 									The following edge creation tools exist in the palette :
-									* Association : is represented by a plain edge without label and can be created between an actor and a use case
+									* Association : is represented by a solid edge without label and can be created between an actor and a use case
 									!./images/UseCaseDiagramAssociation.png!
 								
 
@@ -612,7 +606,7 @@ Document {
 									!./images/UseCaseDiagramInclude.png!
 								
 
-									* Generalization : is represented by a plain edge without label and can be created between two actors
+									* Generalization : is represented by a solid edge without label and can be created between two actors
 									!./images/UseCaseDiagramGeneralization.png!
 								
 							}
@@ -637,7 +631,7 @@ Document {
 								* association
 								* extend
 								* include
-								* generaliation
+								* generalization
 								
 
 								
@@ -710,7 +704,8 @@ Document {
 								It is possible to create and delete packages in the Package diagram.
 
 								Section Create a package {
-									It is possible to create a package by selecting the node creation tool from the palette and then clicking on the diagram or an element. A diagram is associated to a package and in this case the element is created under the corresponding package in the UML model.
+									It is possible to create activities elements by selecting the creation tools from the palette and then clicking on the diagram or an element. A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the UML model.
+									If the user selects a container, the element will be created under the corresponding semantic element in the UML model.
 									!./images/PackageDiagramPaletteTypes.png!
 									
 
@@ -718,7 +713,7 @@ Document {
 									!./images/PackageDiagramCreatePackageTooltip.png!
 									
 
-									A package is represented as following :
+									A creation tool is available in the package diagram for the package :
 									!./images/PackageDiagramPackage.png!
 									
 								}
@@ -730,16 +725,19 @@ Document {
 									** Ctrl+D on keyboard, 
 									** the context menu action 'Delete from model',
 									** the toolbar action 'Delete from model'; 
+									
+
+									!./images/PackageDiagramDeletePackage.png!
+									
+
 									* from the model explorer by using : 
 									** the context menu action 'Delete'
 									
 
-									This tool deletes the semantic element. If a representation is open, the view corresponding to the deleted package is not anymore visible after the delete action.
-									!./images/PackageDiagramDeletePackage.png!
-									
-
 									!./images/PackageDiagramDeletePackage2.png!
 									
+
+									This tool deletes the semantic element. If a representation is open, the view corresponding to the deleted package is not anymore visible after the delete action.
 								}
 							}
 
@@ -753,7 +751,7 @@ Document {
 
 											The following edge creation tools exist in the palette :
 
-											* Contained in : to create a containment relation, after the create action the selected source package contains the selected target package. The containment is represented by a plain edge without label.
+											* Contained in : to create a containment relation, after the create action the selected source package contains the selected target package. The containment is represented by a solid edge without label.
 
 											!./images/PackageDiagramContainedIn.png!
 									
@@ -880,13 +878,14 @@ Document {
 									It is possible to create and delete nodes in the component diagram.
 
 									Section Create a node {
-										It is possible to create a node by selecting the node creation tool from the palette and then clicking on the diagram or an element. A diagram is associated to a package and in this case the element is created under the corresponding package in the UML model.
+										It is possible to create activities elements by selecting the creation tools from the palette and then clicking on the diagram or an element. A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the UML model.
+										If the user selects a container, the element will be created under the corresponding semantic element in the UML model.
 										!./images/ComponentDiagramPalette.png!
 										
 
 										Tooltip tools are also available to create any kind of elements.
 
-										The following elements can be created :
+										Creation tools are available in the component diagram for the following types :
 
 										* component : 
 										
@@ -939,7 +938,7 @@ Document {
 
 											The following edge creation tools exist in the palette :
 
-											* Usage : is represented by a plain edge without label and can be created between a component and an interface.
+											* Usage : is represented by a solid edge without label and can be created between a component and an interface.
 
 											!./images/ComponentDiagramUsage.png!
 										
@@ -950,7 +949,7 @@ Document {
 											!./images/ComponentDiagramComponentRealization.png!
 										
 
-											* Generalization : is represented by a plain edge without label and can be created between two components.
+											* Generalization : is represented by a solid edge without label and can be created between two components.
 
 											!./images/CompositeStructureDiagramGeneralization.png!
 										
@@ -965,7 +964,7 @@ Document {
 												!./images/ComponentDiagramRedefined.png!
 										
 
-											* Connector : is represented by a plain edge without label and can be created between two ports.
+											* Connector : is represented by a solid edge without label and can be created between two ports.
 									}
 
 									Section Delete a relationship {
@@ -1075,13 +1074,15 @@ Document {
 									It is possible to create and delete types in the composite structure diagram.
 
 									Section Create a node {
-										It is possible to create a node by selecting the node creation tool from the palette and then clicking on the diagram or an element. A diagram is associated to a package and in this case the element is created under the corresponding package in the UML model.
+										It is possible to create a type by selecting the type creation tool from the palette and then clicking on the diagram or an element. 
+												A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the UML model.
+												If the user selects a container, the element will be created under the corresponding semantic element in the UML model.
 										!./images/CompositeStructureDiagramPalette.png!
 										
 
 										Tooltip tools are also available to create any kind of elements.
 
-												The available types in the composite structure diagram are :
+												Creation tools are available in the composite structure diagram for the following types :
 
 										* Component
 										
@@ -1144,13 +1145,13 @@ Document {
 
 										The following edge creation tools exist in the palette :
 
-										* Connector : is represented by a plain edge without label and can be created between a provided interface and a required interface.
+										* Connector : is represented by a solid edge without label and can be created between a provided interface and a required interface.
 										
 
 										!./images/CompositeStructureDiagramConnector.png!
 										
 
-										* Usage : is represented by a plain edge without label and can be created between a component and an interface.
+										* Usage : is represented by a solid edge without label and can be created between a component and an interface.
 										
 
 										!./images/ComponentDiagramUsage.png!
@@ -1159,7 +1160,7 @@ Document {
 										* Dependency : is represented by a dashed edge without label and can be created between components, interfaces, classes.
 										
 
-										* Generalization : is represented by a plain edge without label and can be created between two components.
+										* Generalization : is represented by a solid edge without label and can be created between two components.
 										
 
 										!./images/CompositeStructureDiagramGeneralization.png!
@@ -1171,7 +1172,7 @@ Document {
 											!./images/ComponentDiagramRedefined.png!
 										
 
-										* Connector : is represented by a plain edge without label and can be created between two ports.
+										* Connector : is represented by a solid edge without label and can be created between two ports.
 										
 
 										
@@ -1321,13 +1322,15 @@ Document {
 									
 
 									Section Create a type {
-										It is possible to create a type by selecting the node creation tool from the palette and then clicking on the diagram or an element. A diagram is associated to a package and in this case the element is created under the corresponding package in the UML model.
+										It is possible to create a type by selecting the type creation tool from the palette and then clicking on the diagram or an element. 
+												A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the UML model.
+												If the user selects a container, the element will be created under the corresponding semantic element in the UML model.
 										!./images/DeploymentDiagramPalette.png!
 										
 
 										Tooltip tools are also available to create any kind of elements.
 
-										The following elements can be created :
+										Creation tools are available in the deployment diagram for the following types :
 
 										* node :
 										
@@ -1377,7 +1380,7 @@ Document {
 
 											The following edge creation tools exist in the palette :
 
-											* Link : is represented by a plain edge without label and can be created between components, nodes, devices, execution environments.
+											* Link : is represented by a solid edge without label and can be created between components, nodes, devices, execution environments.
 
 												!./images/DeploymentDiagramLink.png!
 										
@@ -1386,7 +1389,7 @@ Document {
 												!./images/DeploymentDiagramDependency.png!
 										
 
-											* Generalization: is represented by a plain edge without label and can be created between components, nodes, devices, execution environments, artifacts.
+											* Generalization: is represented by a solid edge without label and can be created between components, nodes, devices, execution environments, artifacts.
 
 												!./images/DeploymentDiagramGeneralization.png!
 										
@@ -1486,78 +1489,125 @@ Document {
 							}
 						}
 
-						Section Define specific new concepts {
-							Sometimes, the UML standard does not provide all the concepts expected by John. Thanks to the *Profile diagram*, it is possible to extend the standard to add new terms.
+						Section Extend UML standard {
+							Section Define extensions {
+								Sometimes, the UML standard does not provide all the concepts expected by John. Thanks to the *Profile diagram*, it is possible to extend the standard to add new concepts.
 
-							Section Profile diagram {
 								The profile diagram operates at the metamodel level to provide new stereotypes and profiles.
 								!./images/ProfileDiagram.png!
 								
 
-									To create a new profile, the user create a new UML model and select as root element *Profile*.
-									Then on the newly created project, it is possible to create a new _Profile diagram_.
+								To create a new profile, the user creates a new UML model and selects as root element a *Profile* element.
+								Then on the newly created UML model, it is possible to create a new _Profile diagram_.
 
-									It is possible to create and delete stereotypes in the profile diagram. 
-									A stereotype can be created by selecting the stereotype creation tool from the palette and then clicking on the diagram. A diagram is associated to a package and in this case the element is created under the corresponding package in the UML model.
-										!./images/ProfileDiagramPalette.png!
+								The main feature is to create and delete stereotypes in the profile diagram. 
+								A stereotype can be created by selecting the stereotype creation tool from the palette and then clicking on the diagram. A diagram is associated to a package and in this case the element is created under the corresponding package in the UML model. Tooltip tools are also available to create any kind of elements.
+
+								The palette defines the following tools :
+
+								* Stereotype : Create a new stereotype. The user selects the tool in the palette or the tooltip and selects the diagram background. A new stereotype looks like a UML class and contains in the label the keyword _stereotype_. By default a stereotype does not extend any metaclass.  When the user validates the UML profile, a warning is thrown when a stereotype does not extend a metaclass.
+								* MetaClass : Reference an existing metaclass. This tool opens a wizard which lists the UML metaclasses which are not already referenced in this profile. This wizard provides filters in order to show only the concretes classes or a sub part of the metamodel.
+								* Attribute : Add a new property in a stereotype.
+								* Extension : Create an extension between a stereotype and a metaclass or create a generalization between to stereotypes. This tool also creates the base_XXXX attributes. This attribute must not be visible on the diagram.
+								* Association : Create an association between two stereotypes or a stereotype and a referenced metaclass. In the UML model, this tool creates a property in the stereotype and a navigable association to the target. This tool opens a wizard which allows to referenced an existing UML directed relationship metaclasses or to create a new kind of association.
 								
 
-										Tooltip tools are also available to create any kind of elements.
+								
+							}
 
-										The palette defines tools to :
-										* Create a stereotype
-										* Add a new property on a stereotype
-										* Add an existing metaclass
-										* Create an extension between a stereotype and a metaclass
-										* Define a profile
+							Section Manage profiles and stereotypes {
+								In UML Designer, a _Profile_ layer is available on all the diagrams. To describe his application John opens the existing diagrams and activates the profile layer.
+									!./images/ProfileLayer.png!
+								
+
+									This layer provides a new section in the palette. 
+
+									!./images/ProfileLayerPalette.png!
+								
+
+									The following tools are available :
+
+									* apply a profile  : the user selects the _Apply profile_ tool in the palette and clicks on the diagram, a wizards opens which shows the applicable and already applied profiles.
+
+									!./images/ApplyProfile.png!
+								
+
+									* apply stereotype : the user selects the _Apply stereotype_ tool in the palette and selects an element in the diagram, a wizards opens which shows the applicable and already applied stereotypes according to the activated profiles. When a stereotype is applied on an element its labels looks like : == << stereotype >> == label
+
+									!./images/ApplyStereotype.png!
+								
 							}
 						}
 					}
 				}
+			}
 
-				Section Implement the application {
-					When John has finished the specification of the application, he gives it to Bob. From the existing application UML definition, Bob defines the application at a lower level.
+			Section Implement the application {
+				When John has finished the specification of the application, he gives it to Bob. From the existing application UML definition, Bob defines the application at a lower level.
 					At this point, Bob breaks the components out into classes and objects.
 
-					Section Define the implementation structure {
-						Section Class diagram {
-							The class diagram is used to describe the structure of the system by showing the classes, the interfaces, their attributes, their operations and their relationships.
+				Section Define the implementation structure {
+					Section Class diagram {
+						The class diagram is used to describe the structure of the system by showing the classes, the interfaces, their attributes, their operations and their relationships.
 
-							Section Manage types {
-								It is possible to create and delete types in the class diagram.
-								The available types in the Class diagram are :
+						!./images/ClassDiagram.png!
+						
 
-								* Class
-								* Enumeration
-								* Interface
+						The class diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.
+
+						Section Manage types {
+							It is possible to create and delete types in the class diagram.
+
+							Section Create a type {
+								It is possible to create a type by selecting the type creation tool from the palette and then clicking on the diagram or an element. 
+								A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the UML model.
+								If the user selects a container, the element will be created under the corresponding semantic element in the UML model.
+								!./images/ClassDiagramPalette.png!
+								
+
+								Tooltip tools are also available to create any kind of elements.
+
+								Creation tools are available in the class diagram for the following types :
+
+								* Class :
+								
+
+									!./images/ClassDiagramClass.png!
+								
+
+								* Enumeration :
+								
+
+									!./images/ClassDiagramEnumeration.png!
+								
+
+								* Interface :
+								
+
+									!./images/ClassDiagramInterface.png!
+								
+
 								* Datatype
-								* Primitive type
 								
 
+									!./images/ClassDiagramDataType.png!
 								
 
-								Section Create a type {
-									It is possible to create a type by selecting the type creation tool from the palette and then clicking on the diagram or an element. A diagram is associated to a package and in this case the element is created under the corresponding package in the UML model.
+								* Primitive type : 
+								
 
-									Section Create a class {									}
+								!./images/ClassDiagramPrimitiveType.png!
+								
 
-									Section Create an enumeration {									}
+								* Package : 
+								
 
-									Section Create an interface {									}
+									!./images/ClassDiagramPackage.png!
+								
+							}
 
-									Section Create a datatype {									}
-
-									Section Create a primitive type {									}
-
-									Section Create a package {									}
-
-									Section Create a class under a visible package {
-										In this case the user selects a visible package on the diagram as container for the new class.
-									}
-								}
-
-								Section Delete a type {
-									It is possible to delete a semantic element : 
+							Section Delete a type {
+								It is possible to delete a semantic element : 
 
 									* from the class diagram by using : 
 									** Ctrl+D on keyboard, 
@@ -1565,333 +1615,513 @@ Document {
 									** the toolbar action 'Delete from model'; 
 									* from the model explorer by using : 
 									** the context menu action 'Delete'
-									
-
-									
-
-									Section Delete a class {									}
-								}
-							}
-
-							Section Manage features {
-								Section Create a feature {
-									Section Create a property {									}
-
-									Section Create a typed property {									}
-
-									Section Create an operation {									}
-
-									Section Create a literal {									}
-								}
-
-								Section Delete feature {
-									Section Delete a property {									}
-								}
-							}
-
-							Section Manage relationships {
-								Section Create a relationship {
-									Section Create an association {									}
-
-									Section Create a reference {									}
-
-									Section Create a composition {									}
-
-									Section Create an aggregation {									}
-
-									Section Create an association class {									}
-
-									Section Create a generalization {									}
-
-									Section Create an interface realization {									}
-
-									Section Create a dependency {									}
-
-									Section Create a usage {									}
-
-									Section Create a nest classifier {									}
-								}
-
-								Section Delete a relationship {
-									Section Delete an association {									}
-								}
-
-								Section Reconnect a relationship {
-									Section Reconnect an association {									}
-
-									Section Reconnect a reference {									}
-
-									Section Reconnect a composition {									}
-
-									Section Reconnect an aggregation {									}
-
-									Section Reconnect an association class {									}
-
-									Section Reconnect a generalization {									}
-
-									Section Reconnect an interface realization {									}
-
-									Section Reconnect a dependency {									}
-
-									Section Reconnect a usage {									}
-
-									Section Reconnect a nest classifier {									}
-								}
-							}
-
-							Section Manage existing elements {
-								Section Add an existing element {
-									Section Add an existing element from current package {
-										Section Add an existing element using the palette tool {
-											In the palette, an _Existing elements_ section contains a _Add_ tool.
-											When this tool is selected a wizard will propose all the existing elements in the model which could be visible on the class diagram.
-
-											Section Add a class {											}
-
-											Section Add an enumeration {											}
-
-											Section Add an interface {											}
-
-											Section Add a datatype {											}
-
-											Section Add a primitive type {											}
-
-											Section Add a package {											}
-										}
-
-										Section Drag & drop an element from the Model Explorer {
-											In the model explorer, an element can be selected and then dropped in the opened class diagram.
-
-											Section Drag & drop a class {											}
-
-											Section Drag & drop an enumeration {											}
-
-											Section Drag & drop an interface {											}
-
-											Section Drag & drop a datatype {											}
-
-											Section Drag & drop a primitive type {											}
-
-											Section Drag & drop a package {											}
-										}
-									}
-
-									Section Add an existing element from another package {
-										The user can see that an element is not coming from the current package :
-
-										* the element border is lighter than the element border of elements defined in the current package
-										* a tooltip shows the container package of the element if the element is not contained by the current package
-										
-
-										
-
-										Section Add a class {										}
-
-										Section Add an enumeration {										}
-
-										Section Add an interface {										}
-
-										Section Add a datatype {										}
-
-										Section Add a primitive type {										}
-
-										Section Add a package {										}
-									}
-								}
-
-								Section Remove an existing element {
-									It is possible to remove an existing element from a diagram. In this case the element is only deleted from the representation but it is not removed from the UML model. This _Remove_ tool exists in the _Existing elements_ section in the palette. An equivalent tool is also available from the tabbar diagram editor.
-
-									Section Remove a class {									}
-								}
-							}
-
-							Section Add related elements {
-								Section From a class {								}
-
-								Section From an interface {								}
-
-								Section From an enumeration {								}
-
-								Section From a package {								}
-
-								Section From a datatype {								}
-
-								Section From a primitive type {								}
-
-								Section From a class diagram {								}
-							}
-
-							Section Edit elements {
-								Section Edit relationships {								}
-
-								Section Edit features {								}
 							}
 						}
 
-						Section Object diagram {
-							The object diagram is used to describe the structure of the system by showing the objects at a specific time.
+						Section Manage features {
+							Section Create a feature {
+								It is possible to create a feature by selecting the feature creation tool from the palette and then clicking on the diagram or an element.
+								If the user selects a container, the feature will be created under the corresponding semantic element in the UML model.					
 
-							Section Manage instances {
-								Section Create an instance {
-									It is possible to create an instance by selecting the node creation tool from the palette and then clicking on the diagram or an element. A diagram is associated to a package and in this case the element is created under the corresponding package in the UML model.
-								}
+								Tooltip tools are also available to create any kind of features.
 
-								Section Set default value {								}
+								Creation tools are available in the class diagram for the following features :
 
-								Section Delete instances {								}
+								* property : Can be created under classes, interfaces, datatypes, primitive types, enumerations.
+								* typed property : Can be created under classes, interfaces, datatypes, primitive types, enumerations. When the user selects a container, a wizard is open which list all the available types existing in thee modeleing project in order that the user selects a type for the property to create.
+								* operation : Can be created under classes, interfaces, datatypes, primitive types, enumerations.
+								* literal:Can be created under enumerations.
+								
+
+								
 							}
 
-							Section Manage references {
-								Section Reference an instance {								}
+							Section Delete feature {
+								It is possible to delete a semantic element : 
 
-								Section Delete a reference {								}
+								* from the component diagram by using : 
+								** Ctrl+D on keyboard, 
+								** the context menu action 'Delete from model',
+								** the toolbar action 'Delete from model'; 
+								* from the model explorer by using : 
+								** the context menu action 'Delete'
+								
+
+								This tool deletes the semantic element. If a representation is open, the view corresponding to the deleted element is not anymore visible after the delete action.
+							}
+						}
+
+						Section Manage relationships {
+							It is possible to create and delete relationships in the class diagram.
+
+							Section Create a relationship {
+								It is possible to create a relationship by selecting the edge creation tool from the palette and then clicking on a source element and a target element.
+
+								The following edge creation tools exist in the palette :
+
+								* association : is represented by a solid link with start and end labels and can be created between two classes. According to the association navigability an arrow will be visible at the start or end of the link.
+								* reference : is represented by a solid link with start and end labels and can be created between two classes. According to the reference navigability an arrow will be visible at the start or end of the link.
+								* composition : is represented by a solid edge with fill diamond decorator and with start and end labels, it can be created between two classes. According to the composition navigability an arrow will be visible at the start or end of the link.
+								* aggregation : is represented by a solid edge with diamond decorator and with start and end labels, it can be created between two classes. According to the aggregation navigability an arrow will be visible at the start or end of the link.
+								* association class : is represented by a dashed edge with start and end labels and a class linked to the dashed edge, it can be created between two classes.
+								* generalization : is represented by a solid edge without label, it can be created between two classifiers (class, interface, datatype, enumeration...).
+								* interface realization : is represented by a dashed edge without label, it can be created between a class and an interface.
+								* dependency : is represented by a dashed edge without label, it can be created between any classifiers.
+								* usage : is represented by a dashed edge with _use_ as label, it can be created between any classifiers.
+								* nest classifier : is represented by a solid edge with an output fill closed arrow at start, it can be created between any classifiers.
+								
+
+								
 							}
 
-							Section Manage existing elements {
-								Section Add an existing element from the current package {
-									Section Add an existing instance {									}
+							Section Delete a relationship {
+								It is possible to delete a semantic element : 
 
-									Section Drag & drop an existing element from the Model Explorer {
-										Section Drag & drop an instance {										}
+								* from the component diagram by using : 
+								** Ctrl+D on keyboard, 
+								** the context menu action 'Delete from model',
+								** the toolbar action 'Delete from model'; 
+								* from the model explorer by using : 
+								** the context menu action 'Delete'
+								
 
-										Section Drag & drop a package {										}
+								This tool deletes the semantic element. If a representation is open, the view corresponding to the deleted relationship is not anymore visible after the delete action.
+							}
 
-										Section Drag & drop a class {										}
+							Section Reconnect a relationship {
+								It is possible to reconnect the source and the target of any kind of edge in the use case diagram :
+
+								* association
+								* reference
+								* composition
+								* aggregation
+								* association class
+								* generalization
+								* interface realization
+								* dependency
+								* usage
+								* nest classifier
+								
+
+								
+							}
+						}
+
+						Section Manage existing elements {
+							It is possible to add and remove existing elements in the class diagram.
+
+							Section Add an existing element {
+								Section Add an existing element from current package {
+									Section Add an existing element using the palette tool {
+										It is possible to add existing elements by :
+
+										* selecting the add tool from the palette or the tooltip and then clicking on the diagram or an element. The add tool opens a selection wizard.
+										* drag and droping an element from the model explorer.
+										
+
+										The following elements can be added on a class diagram :
+
+										* class
+										* package
+										* interface
+										* data type
+										* primitive type
+										* enumeration
+										* component
+										
+
+										
 									}
 								}
 
 								Section Add an existing element from another package {
 									The user can see that an element is not coming from the current package :
 
-									* the element border is lighter than the element border of elements defined in the current package
-									* a tooltip shows the container package of the element if the element is not contained by the current package
-									
-
-									
-
-									Section Add an instance {									}
-								}
-
-								Section Remove an existing element {
-									Section Remove an instance {									}
+										* the element border is lighter than the element border of elements defined in the current package
+										* a tooltip shows the container package of the element if the element is not contained by the current package
 								}
 							}
 
-							Section Add related elements {
-								Section From an instance {								}
-
-								Section From an object diagram {								}
+							Section Remove an existing element {
+								It is possible to remove an existing element from a diagram. In this case the element is only deleted from the representation but it is not removed from the UML model. This _Remove_ tool exists in the _Existing elements_ section in the palette. An equivalent tool * Delete from Diagram* is also available from the tabbar diagram editor.
 							}
+						}
 
-							Section Edit labels {
-								Section Edit instance labels {								}
+						Section Add related elements {
+							In the class diagram a contextual action is available to show on the diagram the element related to the selection. 
 
-								Section Edit default value {								}
-							}
+									The *Add related elements* action is available from :
 
-							Section Reconnect edges {
-								Section Reconnect a reference {								}
-							}
+									*  a class, an interface, a package, an enumeration, a datatype, a primitive type : shows all the elements that define a relationship (dependency, association, composition...) with the selected element
+									*  a class diagram : shows all the elements contained in the package associated to the diagram.
+						}
+
+						Section Edit labels {
+							In the class diagram, it is possible to edit the elements labels by selecting an element and pressing _F2_ on the keyboard. This actions allows to edit :
+
+									* class, interface, package, enumeration, datatype, primitive type labels
+									* relationships labels
 						}
 					}
 
-					Section Define the application behavior {
-						Bob describes the application behavior thanks to * Statemachine diagrams* and *Sequence diagrams*.
+					Section Object diagram {
+						The object diagram is used to describe the structure of the system by showing the objects at a specific time.
 
-						Section Statemachine diagram {
-							The statemachine diagram is used to represent the different states and transitions of a system.
+						!./images/ObjectDiagram.png!
+						
+
+						The object diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.
+
+						Section Manage instances {
+							It is possible to create and delete instances in the object diagram.
+							!./images/ObjectDiagramPalette.png!
+							
+
+							Section Create an instance {
+								It is possible to create an instance by selecting the creation tool from the palette and then clicking on the diagram or an element. 	A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the UML model.
+								If the user selects a container, the element will be created under the corresponding semantic element in the UML model.
+								Tooltip tools are also available to create instances.
+							}
+
+							Section Set default value {
+								It is possible to set a default value to an instance property by selecting the tool from the palette and then clicking on an instance. This tool opens a wizard to ask the user to select a property of the selected instance type.
+							}
+
+							Section Delete instances {
+								It is possible to delete a semantic element : 
+
+									* from the class diagram by using : 
+									** Ctrl+D on keyboard, 
+									** the context menu action 'Delete from model',
+									** the toolbar action 'Delete from model'; 
+									* from the model explorer by using : 
+									** the context menu action 'Delete'
+							}
 						}
 
-						Section Sequence diagram {
-							The sequence diagram is used to show how processes operate with one another and in what order.
+						Section Manage references {
+							Section Reference an instance {							}
+
+							Section Delete a reference {							}
+						}
+
+						Section Manage existing elements {
+							It is possible to add and remove existing elements in the object diagram.
+
+							Section Add an existing element from the current package {
+								Section Add an existing instance {
+									It is possible to add existing elements by :
+
+										* selecting the add tool from the palette or the tooltip and then clicking on the diagram or an element. The add tool opens a selection wizard.
+										* drag and droping an element from the model explorer.
+
+										Only instances can be added on an object diagram.
+								}
+							}
+
+							Section Add an existing element from another package {
+								The user can see that an element is not coming from the current package :
+
+									* the element border is lighter than the element border of elements defined in the current package
+									* a tooltip shows the container package of the element if the element is not contained by the current package
+							}
+
+							Section Remove an existing element {
+								It is possible to remove an existing element from a diagram. In this case the element is only deleted from the representation but it is not removed from the UML model. This _Remove_ tool exists in the _Existing elements_ section in the palette. An equivalent tool * Delete from Diagram* is also available from the tabbar diagram editor.
+							}
+						}
+
+						Section Add related elements {
+							In the class diagram a contextual action is available to show on the diagram the element related to the selection. 
+
+									The *Add related elements* action is available from :
+
+									*  an instance : shows all the elements that define a relationship (dependency, association, composition...) with the selected element
+									*  an object diagram : shows all the elements contained in the package associated to the diagram.
+						}
+
+						Section Edit labels {
+							In the class diagram, it is possible to edit the elements labels by selecting an element and pressing _F2_ on the keyboard. This actions allows to edit :
+
+									* class, interface, package, enumeration, datatype, primitive type labels
+									* relationships labels
 						}
 					}
 				}
 
-				Section Write application documentation {
-					Kevin wants to use UML Designer to document its application. It exists mainly two features to help him in this tasks :
+				Section Define the application behavior {
+					Bob describes the application behavior thanks to * Statemachine diagrams* and *Sequence diagrams*.
+
+					Section Statemachines {
+						The statemachine diagram is used to represent the different states and transitions of a system.
+
+						!./images/StatemachineDiagram.png!
+						
+
+						The statemachine diagram is a synchronized diagram which means that any elements existing under a statemachine in the UML model wil be visible automatically in the statemachine diagram.
+
+						Section Manage statemachines {
+							It is possible to create and delete statemachine elements in the statemachine diagram.
+
+							Section Create statemachine elements {
+								It is possible to create activities elements by selecting the creation tools from the palette and then clicking on the diagram or an element. A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the UML model.
+								If the user selects a container, the element will be created under the corresponding semantic element in the UML model.
+								!./images/StatemachineDiagramPalette.png!
+								
+
+								Tooltip tools are also available to create any kind of elements.
+
+								Creation tools are available in the statemachine diagram for the following types :
+
+								* Region
+								* State
+								* Intitial 
+								* Final 
+								* Fork 
+								* Join 
+								* Choice 
+								* Junction 
+								* Terminate
+								* Shallow history
+								* Deep history
+								* Entry point
+								* Exit point
+								
+
+								
+
+								Section Delete a statemachine element {
+									It is possible to delete a semantic element : 
+
+									* from the component diagram by using : 
+									** Ctrl+D on keyboard, 
+									** the context menu action 'Delete from model',
+									** the toolbar action 'Delete from model'; 
+									* from the model explorer by using : 
+									** the context menu action 'Delete'
+									
+
+									This tool deletes the semantic element. If a representation is open, the view corresponding to the deleted element is not anymore visible after the delete action.
+								}
+							}
+						}
+
+						Section Manage transitions {
+							It is possible to create and delete flows in the statemachine diagram.
+
+							Section Create a transition {
+								It is possible to create a transition by selecting the edge creation tool from the palette and then clicking on a source element and a target element.
+							}
+
+							Section Delete a transition {
+								It is possible to delete a transition by selecting the edge in the diagram or in the Model explorer view and then selecting the delete tool. This tool deletes the semantic element. If a representation is open, the view corresponding to the deleted flow is not anymore visible after the delete action.
+							}
+
+							Section Reconnect transitions {
+								It is possible to reconnect the source and the target of a transition in the statemachine diagram.
+							}
+						}
+
+						Section Edit labels {
+							In the statemachine diagram, it is possible to edit the elements labels by selecting an element and pressing _F2_ on the keyboard. This actions allows to edit any statemachine elements labels.
+						}
+					}
+
+					Section Sequences {
+						The sequence diagram is used to show how processes operate with one another and in what order.
+							!./images/SequenceDiagram.png!
+						
+
+							The sequence diagram is a synchronized diagram which means that any elements existing under an interaction in the UML model wil be visible automatically in the sequence diagram.
+
+						Section Manage interaction elements {
+							It is possible to create and delete interaction elements in the sequence diagram.
+
+							Section Create interaction elements {
+								It is possible to create:
+
+								* lifeline :
+								** associated to a class
+								** associated to an actor
+								** destruction 
+								** creation 
+								* message :
+								** synchronous
+								** asynchronous
+								** lost
+								** found
+								* execution
+								* combined fragments :
+								
+
+								**alternatives
+								**option
+								**iteration
+								**break
+								**paralell
+								**strict sequencing
+								**critical region
+								**ignore
+								**consider
+								**assertion
+								**negative
+
+								* state invariant
+								* interaction use
+								
+
+								
+							}
+
+							Section Delete an interaction element {
+								It is possible to delete a semantic element : 
+
+									* from the component diagram by using : 
+									** Ctrl+D on keyboard, 
+									** the context menu action 'Delete from model',
+									** the toolbar action 'Delete from model'; 
+									* from the model explorer by using : 
+									** the context menu action 'Delete'
+
+									This tool deletes the semantic element. If a representation is open, the view corresponding to the deleted element is not anymore visible after the delete action.
+							}
+
+							Section Reorder an interaction element {
+								It is possible to reorder the interaction elements : 
+
+								* lifeline can be reorder horizontally
+								* other elements (execution, messages...) can be reordered vertically
+								
+
+									This tool updates the semantic element positioned in the interaction fragments list. If a representation is open, the view corresponding to the moved element is automatically updated.
+							}
+						}
+
+						Section Edit labels {
+							In the statemachine diagram, it is possible to edit the elements labels by selecting an element and pressing _F2_ on the keyboard. This actions allows to edit any statemachine elements labels.
+						}
+					}
+				}
+			}
+
+			Section Write the application documentation {
+				Kevin wants to use UML Designer to document its application. It exists mainly two features to help him in this tasks :
 					- Documentation table from the UML Extensions viewpoint,
 					- Export to HTML site or to images.
 
-					Section Comments table {
-						Thanks to the documentation table available in UML Extensions viewpoint. This representation is a table which lists all the elements available in the model and their related comment.
+				Section Manage comments in diagram {
+					In UML Designer, a _Comments_ layer is available on all the diagrams. To document his application Kevin opens the existing diagrams and activates the comments layer.
+					!./images/CommentsLayer.png!
+					
+
+					This layer provides a new section in the palette. 
+
+					!./images/CommentsLayerPalette.png!
+					
+
+					The following tools are available :
+
+					* create a comment  : the user selects the _Comment_ tool in the palette and clicks on the diagram, a new UML comment is created attached to the package associated to the diagram. If the user selects an element on the diagram, the comment will be attached to the selected element. The comments are represented on the diagram as following :
+					
+
+					!./images/CommentsLayer.png!
+					
+
+					* link a comment to a semantic element : the user selects the _Link comment_ tool in the palette and selects as source a comment and as target an element. Thias action attached the comment to the selected element. The link is represented on the diagram by a doted link :
+					
+
+					!./images/CommentsLayer.png!
+					
+
+					When the layer is activated the comments are visible on the diagram.
+
+					The user can remove the comment :
+
+					*  from a diagram : In this case the element is only deleted from the representation but it is not removed from the UML model. The tool _Delete from Diagram_ is available from the tabbar diagram editor.
+					* from the UML model : It is possible to delete a semantic element : 
+					
+
+							* from the diagram by using : 
+							** Ctrl+D on keyboard, 
+							** the context menu action 'Delete from model',
+							** the toolbar action 'Delete from model'; 
+							* from the model explorer by using : 
+							** the context menu action 'Delete'
+					If a representation is open, the view corresponding to the deleted element is not anymore visible after the delete action.
+
+					The comments can be edited on the diagram by selectin a comment and pressing _F2_.
+				}
+
+				Section Comments table {
+					Thanks to the documentation table available in UML Extensions viewpoint, a user can add coment on each model's elements easily. This representation is a table which lists all the elements available in the model and their related comment.
+					The first column show the element name and the second column the associated comment.
+					The elements should be ordered using a tree in order to get the possibility to expand and collapse some sub elements.
+				}
+
+				Section Export {
+					UML Designer allows to export the defined diagrams.
+
+					Section HTML export {
+						This feature allows to export all the models with their representations into an HTML site. The site displays the model explorer on the left with the model elements and their corresponding clickable representations. When selecting a model element on a representation, the site displays its properties. All the pages are generated with Acceleo templates and can easily be adapted.
 					}
 
-					Section Export {
-						UML Designer allows to export the diagrams.
-
-						Section HTML export {
-							This feature allows to export all the models with their representations into an HTML site. The site displays the model explorer on the left with the model elements and their corresponding clickable representations. When selecting a model element on a representation, the site displays its properties. All the pages are generated with Acceleo templates and can easily be adapted.
-						}
-
-						Section Export diagrams as images {
-							It is possible to export a diagram to an image file. To do that right-click on the diagram and choose the menu _Export diagram as image_ or select the corresponding icon in the diagram tab-bar. After selecting the file path, the user can choose the image format and he wants to overwrite an existing file without warning. On the first export of diagram as image the name is set by default with the representation name. After there is an history to select the last export. If you do not specify the file extension, the extension is determined from the selected image format. You can choose the directory in which to create the file using the Browse button.
+					Section Export diagrams as images {
+						It is possible to export a diagram to an image file. To do that right-click on the diagram and choose the menu _Export diagram as image_ or select the corresponding icon in the diagram tab-bar. After selecting the file path, the user can choose the image format and he wants to overwrite an existing file without warning. On the first export of diagram as image the name is set by default with the representation name. After there is an history to select the last export. If you do not specify the file extension, the extension is determined from the selected image format. You can choose the directory in which to create the file using the Browse button.
 
 							It is possible to export all diagram of a representations file at once. To do that, select the representations file (.aird file) and right-click on it. Then choose the menu Export diagrams as image.... On the opened pop-up select the path of the folder where the images will be exported.
-							The same functionality is available on every semantic elements which has representations from the Model Explorer view. In this case, only the diagrams of the selected element will be exported. 
-							bq. Due to some technical limitations, not all export format support all the features of diagrams. For example, exporting to PNG files will not show gradients on diagram elements. The JPG format is the one which currently produces the best result in terms of fidelity to what you see in the diagram editors.
-						}
+							The same functionality is available on every semantic elements which has representations from the Model Explorer view. In this case, only the diagrams of the selected element will be exported.
 					}
 				}
+			}
 
-				Section Common features {
-					Section Manage comments {
-						Section Comments layout {						}
+			Section Refactor an application {
+				Frequently, when John or Bob are working on an application, they change their mind and need to re-structure the application.
+				The idea is to get a representation that represents the structure map of the application. The UML standard does not provide such kind of representation. The package hierarchy shows all the packages as a different element which could became realy unreadebale on big system.
+				This representation is based on the UML standard and so the semantic elements are still saved as UML elements in the model. We just provide another kind of view for the application structure.
+				The _package containment_ representation is defined in the UML Extensions viewpoint as it is a non standard representation.
+				This diagram represents the packages and the components as containers and each container lists all its direct sub elements.
+					!./images/PackageContainmentDiagram.png!
+				
 
-						Section Create comment {						}
+				It is also possible to see the hierarchy links between all the packages.
+				!./images/PackageContainmentDiagramWithLinks.png!
+				
 
-						Section Link comment {						}
+				Thanks to this representation John and Bob can get a quick overview of the current application structure.
+				Moreover a move tool, allows them to drag and drop sub elements from one container to another in one click.
+				If some structure containers are missing, the user can define a new one with the creation tools Package and Component available in the palette and the diagram's tooltip.
+					!./images/PackageContainmentDiagramPalette.png!
+				
+			}
 
-						Section Remove comment {						}
+			Section Validate an application {
+				UML Designer provides a mean to evaluate and ensure the well-formdness of the UML model. On any diagram a tool is available to launch diagram validation.
+				!./images/ValidateDiagram.png!
+				
 
-						Section Edit comment {						}
-					}
+				The validation errors and warnings are listed in the problem view and decorators are positionnned on the invalid elements in the diagrams.
+				!./images/ValidationReport.png!
+				
+			}
 
-					Section Manage profiles {
-						Section Profiles layout {						}
-
-						Section Add profile {						}
-
-						Section Remove profile {						}
-					}
-
-					Section Manage stereotypes {
-						Section Profiles layout {						}
-
-						Section Add stereotype {						}
-
-						Section Remove stereotype {						}
-					}
-
-					Section Validation {					}
-				}
-
-				Section Help {
-					Welcome page :
+			Section Find Help {
+				Welcome page :
 
 					* Eclipse integration :
 					* Product integration :
-					
 
 					Help contents :
 
 					* 	User guide
 					* 	Cheatsheets
-					
 
 					Dynamic help:
 
 					* on diagrams opening
-					
 
 					Example:
 
 					* Travel agency
-					
-
-					
-				}
 			}
 		}
 
