@@ -31,6 +31,9 @@ Document {
 			* *Teddy*: 20 years old, is a student in computer science. He has many projects to tackle and barely some time to do them, yet he has to deliver both the software and comprehensive reports to his teachers. He doesn't know much about IDEs or tools except those used during the courses.
 			
 
+			* *Alfred*: 49 years old, works as system engineer in a big company. His daily work consists in designing heterogeneous systems. He knows the SysML standard and uses it every day in its specification. The systems he specifies are a mix of mechanics, electronics and softwares. He does not know the UML standard, just that SysML was developped based on it. He says that SysML is a good language to exchange with his colleagues but he thinks that the notation is too complicated. He tries to develop systems with some different SysML modelers by the past but usally he prefers to use a simple drawing tool with a SysML profile.
+			
+
 			
 		}
 
@@ -353,125 +356,109 @@ Document {
 					To do so UML propose a very useful diagram : the *Activity diagram*.
 
 					Section Define the application business process {
-						Section Activity diagram {
-							The activity diagram is part of the behavioral diagrams in UML Standard, it is used to represent workflows of stepwise activities.
+						The activity diagram is part of the behavioral diagrams in UML Standard, it is used to represent workflows of stepwise activities.
 								!./images/ActivityDiagram.png!
-							
+						
 
 							The activity diagram is a synchronized diagram which means that any elements existing under an activity in the UML model wil be visible automatically in the activity diagram.
 
-							Section Manage activities {
-								It is possible to create and delete activities elements in the activity diagram.
+						Section Manage activities {
+							It is possible to create and delete activities elements in the activity diagram.
 
-								Section Create activities elements {
-									It is possible to create activities elements by selecting the creation tools from the palette and then clicking on the diagram or an element. A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the UML model.
+							Section Create activities elements {
+								It is possible to create activities elements by selecting the creation tools from the palette and then clicking on the diagram or an element. A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the UML model.
 									If the user selects a container, the element will be created under the corresponding semantic element in the UML model.
 									!./images/ActivityDiagramPalette.png!
-									
+								
 
 									Tooltip tools are also available to create any kind of elements :
 									!./images/ActivityDiagramTooltips.png!
-									
+								
 
 									Creation tools are available in the activity diagram for the following types : 
 
 									* Partition : 
-									
 
 									!./images/ActivityDiagramPartition.png!
-									
+								
 
 									* Initial Node :
-									
 
 									!./images/ActivityDiagramInitialNode.png!
-									
+								
 
 									* Activity Final Node :
-									
 
 									!./images/ActivityDiagramActivityFinalNode.png!
-									
+								
 
 									* Flow Final Node :
-									
 
 									!./images/ActivityDiagramFlowFinalNode.png!
-									
+								
 
 									* Decision Node :
-									
 
 									!./images/ActivityDiagramDecisionNode.png!
-									
+								
 
 									* Merge Node :
-									
 
 									!./images/ActivityDiagramMergeNode.png!
-									
+								
 
 									* Fork Node :
-									
 
 									!./images/ActivityDiagramForkNode.png!
-									
+								
 
 									* Join Node :
-									
 
 									!./images/ActivityDiagramJoinNode.png!
-									
+								
 
 									* Opaque Action :
-									
 
 									!./images/ActivityDiagramOpaqueAction.png!
-									
+								
 
 									* Activity state :
-									
 
 									!./images/ActivityDiagramActivityState.png!
-									
+								
 
 									* Call Operation action :
-									
 
 									!./images/ActivityDiagramCallOperationAction.png!
-									
+								
 
 									When this tool is selected, a selection wizard is opened to ask the user to select an existing operation in the UML model :
 									!./images/ActivityDiagramCallOperationActionWizard.png!
-									
+								
 
 									* Activity parameter :
-									
 
 									!./images/ActivityDiagramActivityParameter.png!
-									
+								
 
 									* Data store :
-									
 
 									!./images/ActivityDiagramDataStore.png!
-									
+								
 
 									* Input pin : it is represented as bordered node of the activity
-									
 
 									!./images/ActivityDiagramInputPin.png!
-									
+								
 
 									* Output pin :  it is represented as bordered node of the activity
-									
 
 									!./images/ActivityDiagramOutputPin.png!
-									
-								}
+								
+							}
 
-								Section Delete an activities element {
-									It is possible to delete a semantic element : 
+							Section Delete an activities element {
+								It is possible to delete a semantic element : 
 
 									* from the component diagram by using : 
 									** Ctrl+D on keyboard, 
@@ -479,46 +466,44 @@ Document {
 									** the toolbar action 'Delete from model'; 
 									* from the model explorer by using : 
 									** the context menu action 'Delete'
-									
 
 									This tool deletes the semantic element. If a representation is open, the view corresponding to the deleted element is not anymore visible after the delete action.
-								}
 							}
+						}
 
-							Section Manage flows {
-								It is possible to create and delete flows in the activity diagram.
+						Section Manage flows {
+							It is possible to create and delete flows in the activity diagram.
 
-								Section Create a flow {
-									It is possible to create a flow by selecting the edge creation tool from the palette and then clicking on a source element and a target element.			
+							Section Create a flow {
+								It is possible to create a flow by selecting the edge creation tool from the palette and then clicking on a source element and a target element.			
 
 										The following edge creation tools exist in the palette :
 
 										* Control flow : can be created between activity state, call operation action and opaque action. The control flow is represented by a solid edge without label.
 
 										!./images/ActivityDiagramControlFlow.png!
-									
+								
 
 										* Object flow : can be created between activity parameters, input/output pins and data store. The object flow is represented by a dashed edge without label.
 
 										!./images/ActivityDiagramObjectFlow.png!
-									
-								}
+								
+							}
 
-								Section Delete a flow {
-									It is possible to delete a flow by selecting the edge in the diagram or in the Model explorer view and then selecting the delete tool. This tool deletes the semantic element. If a representation is open, the view corresponding to the deleted flow is not anymore visible after the delete action.
-								}
+							Section Delete a flow {
+								It is possible to delete a flow by selecting the edge in the diagram or in the Model explorer view and then selecting the delete tool. This tool deletes the semantic element. If a representation is open, the view corresponding to the deleted flow is not anymore visible after the delete action.
+							}
 
-								Section Reconnect flows {
-									It is possible to reconnect the source and the target of any kind of edge in the activity diagram :
+							Section Reconnect flows {
+								It is possible to reconnect the source and the target of any kind of edge in the activity diagram :
 
 										* control flows 
 										* object flows
-								}
 							}
+						}
 
-							Section Edit labels {
-								In the activity diagram, it is possible to edit the elements labels by selecting an element and pressing _F2_ on the keyboard. This actions allows to edit any activity elements labels.
-							}
+						Section Edit labels {
+							In the activity diagram, it is possible to edit the elements labels by selecting an element and pressing _F2_ on the keyboard. This actions allows to edit any activity elements labels.
 						}
 					}
 				}
@@ -693,7 +678,7 @@ Document {
 						At this step, John knows who will use its application and what they are able todo with it. It is time to define the components, the interfaces and the relationships that would be seen and experienced by the application user. The purpose is to detail the available objects in the user's universe and how they can use them to accomplish certain tasks.
 						John defines the big structure of the system thanks to the *Package diagram*.
 
-						Section Package diagram {
+						Section Define the packages {
 							The package diagram is used to describe the structure of the system by showing the packages and their dependencies.
 							!./images/PackageDiagram.png!
 							
@@ -867,7 +852,7 @@ Document {
 						Section Define the components and the information flow {
 							It is the moment for John to split the system in multiple components and describe how all these elements are linked together in a *Component diagram*.
 
-							Section Component diagram {
+							Section Define the components {
 								The component diagram is used to describe the structure of the system by showing the components and their connectors.
 								!./images/ComponentDiagram.png!
 								
@@ -1062,7 +1047,7 @@ Document {
 						Section Define the system interfaces {
 							Then for each component, John details the internal structure of a component thanks to *Composite structure diagrams*.
 
-							Section Composite structure diagram {
+							Section Define the composite structures {
 								The composite structure diagram is used to describe the structure of the system by showing the internal structure of classes and the interfaces they used to collaborate.
 
 								!./images/CompositeStructureDiagram.png!
@@ -1302,63 +1287,55 @@ Document {
 						Section Define the system environment {
 							Then, John defines the system environment thanks to a *Deployment diagram*, and how the software is deployed on the hardware. This diagram describes the current technological limitations and constraints.
 
-							Section Deployment diagram {
 								The deployment diagram is used to describe the structure of the system by showing the physical deployment of artifacts on nodes.
 								!./images/DeploymentDiagram.png!
-								
+							
 
 								The deployment diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.
 
-								Section Manage nodes {
-									It is possible to create and delete types in the deployment diagram.
+							Section Manage nodes {
+								It is possible to create and delete types in the deployment diagram.
 									The available types in the deployment diagram are :
 
 									* Node
 									* Device
 									* Execution Environment
 									* Artifact
-									
 
-									
-
-									Section Create a type {
-										It is possible to create a type by selecting the type creation tool from the palette and then clicking on the diagram or an element. 
+								Section Create a type {
+									It is possible to create a type by selecting the type creation tool from the palette and then clicking on the diagram or an element. 
 												A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the UML model.
 												If the user selects a container, the element will be created under the corresponding semantic element in the UML model.
 										!./images/DeploymentDiagramPalette.png!
-										
+									
 
 										Tooltip tools are also available to create any kind of elements.
 
 										Creation tools are available in the deployment diagram for the following types :
 
 										* node :
-										
 
 										!./images/DeploymentDiagramNode.png!
-										
+									
 
 										* device :
-										
 
 										!./images/DeploymentDiagramDevice.png!
-										
+									
 
 										* execution environment :
-										
 
 										!./images/DeploymentDiagramExecutionEnvironment.png!
-										
+									
 
 										* artifact :
-										
 
 										!./images/DeploymentDiagramArtifact.png!
-										
-									}
+									
+								}
 
-									Section Delete a type {
-										It is possible to delete a semantic element : 
+								Section Delete a type {
+									It is possible to delete a semantic element : 
 
 										* from the component diagram by using : 
 										** Ctrl+D on keyboard, 
@@ -1366,46 +1343,45 @@ Document {
 										** the toolbar action 'Delete from model'; 
 										* from the model explorer by using : 
 										** the context menu action 'Delete'
-										
 
 										This tool deletes the semantic element. If a representation is open, the view corresponding to the deleted element is not anymore visible after the delete action.
-									}
 								}
+							}
 
-								Section Manage relationships {
-									It is possible to create and delete relationships in the deployment diagram.
+							Section Manage relationships {
+								It is possible to create and delete relationships in the deployment diagram.
 
-									Section Create a relationship {
-										It is possible to create a relationship by selecting the edge creation tool from the palette and then clicking on a source element and a target element.
+								Section Create a relationship {
+									It is possible to create a relationship by selecting the edge creation tool from the palette and then clicking on a source element and a target element.
 
 											The following edge creation tools exist in the palette :
 
 											* Link : is represented by a solid edge without label and can be created between components, nodes, devices, execution environments.
 
 												!./images/DeploymentDiagramLink.png!
-										
+									
 
 											* Dependency : is represented by a dashed edge without label and can be created between components, nodes, devices, execution environments, artifacts.
 												!./images/DeploymentDiagramDependency.png!
-										
+									
 
 											* Generalization: is represented by a solid edge without label and can be created between components, nodes, devices, execution environments, artifacts.
 
 												!./images/DeploymentDiagramGeneralization.png!
-										
+									
 
 											* Deployment : is represented by a dashed edge with _deploy_ label and can be created between an artifact and nodes,devices, execution environments.
 												!./images/DeploymentDiagramDeployment.png!
-										
+									
 
 											* Manifestation : is represented by a dashed edge with _manifest_ label and can be created between a component or a class and an interface.
 
 												!./images/DeploymentDiagramManifestation.png!
-										
-									}
+									
+								}
 
-									Section Delete an edge {
-										It is possible to delete a semantic element : 
+								Section Delete an edge {
+									It is possible to delete a semantic element : 
 
 										* from the component diagram by using : 
 										** Ctrl+D on keyboard, 
@@ -1413,31 +1389,27 @@ Document {
 										** the toolbar action 'Delete from model'; 
 										* from the model explorer by using : 
 										** the context menu action 'Delete'
-										
 
 										This tool deletes the semantic element. If a representation is open, the view corresponding to the deleted relationship is not anymore visible after the delete action.
-									}
+								}
 
-									Section Reconnect edges {
-										It is possible to reconnect the source and the target of any kind of edge in the deployment diagram :
+								Section Reconnect edges {
+									It is possible to reconnect the source and the target of any kind of edge in the deployment diagram :
 
 										* link
 										* dependency
 										* generalization
 										* deployment
 										* manifestation
-										
-
-										
-									}
 								}
+							}
 
-								Section Manage existing elements {
-									It is possible to add and remove existing elements in the deployment diagram.
+							Section Manage existing elements {
+								It is possible to add and remove existing elements in the deployment diagram.
 
-									Section Add an existing element from the current package {
-										Section Add an existing element {
-											It is possible to add existing elements by :
+								Section Add an existing element from the current package {
+									Section Add an existing element {
+										It is possible to add existing elements by :
 
 												* selecting the add tool from the palette or the tooltip and then clicking on the diagram or an element. The add tool opens a selection wizard.
 												* drag and droping an element from the model explorer.
@@ -1453,49 +1425,46 @@ Document {
 												* artifact into a node
 												* component
 												* package
-										}
-									}
-
-									Section Add an existing element from another package {
-										The user can see that an element is not coming from the current package :
-
-										* the element border is lighter than the element border of elements defined in the current package
-										* a tooltip shows the container package of the element if the element is not contained by the current package
-										
-
-										
-									}
-
-									Section Remove an existing element {
-										It is possible to remove an existing element from a diagram. In this case the element is only deleted from the representation but it is not removed from the UML model. This _Remove_ tool exists in the _Existing elements_ section in the palette. An equivalent tool * Delete from Diagram* is also available from the tabbar diagram editor.
 									}
 								}
 
-								Section Add related elements {
-									In the deployment diagram a contextual action is available to show on the diagram the element related to the selection. 
+								Section Add an existing element from another package {
+									The user can see that an element is not coming from the current package :
+
+										* the element border is lighter than the element border of elements defined in the current package
+										* a tooltip shows the container package of the element if the element is not contained by the current package
+								}
+
+								Section Remove an existing element {
+									It is possible to remove an existing element from a diagram. In this case the element is only deleted from the representation but it is not removed from the UML model. This _Remove_ tool exists in the _Existing elements_ section in the palette. An equivalent tool * Delete from Diagram* is also available from the tabbar diagram editor.
+								}
+							}
+
+							Section Add related elements {
+								In the deployment diagram a contextual action is available to show on the diagram the element related to the selection. 
 
 											The *Add related elements* action is available from :
 
 											*  a component ,  a node, a device, an execution  environment, an artifact : shows all the elements that define a relationship (dependency, deployment, manifestation...) with the selected element
 											*  a deployment diagram : shows all the elements contained in the package associated to the diagram.
-								}
+							}
 
-								Section Edit labels {
-									In the depoyment diagram, it is possible to edit the elements labels by selecting an element and pressing _F2_ on the keyboard. This actions allows to edit :
+							Section Edit labels {
+								In the depoyment diagram, it is possible to edit the elements labels by selecting an element and pressing _F2_ on the keyboard. This actions allows to edit :
 
 											* component, node, device, execution environment, artifact labels
 											* relationships labels
-								}
 							}
 						}
+					}
 
-						Section Extend UML standard {
-							Section Define extensions {
-								Sometimes, the UML standard does not provide all the concepts expected by John. Thanks to the *Profile diagram*, it is possible to extend the standard to add new concepts.
+					Section Extend UML standard {
+						Section Define extensions {
+							Sometimes, the UML standard does not provide all the concepts expected by John. Thanks to the *Profile diagram*, it is possible to extend the standard to add new concepts.
 
 								The profile diagram operates at the metamodel level to provide new stereotypes and profiles.
 								!./images/ProfileDiagram.png!
-								
+							
 
 								To create a new profile, the user creates a new UML model and selects as root element a *Profile* element.
 								Then on the newly created UML model, it is possible to create a new _Profile diagram_.
@@ -1510,33 +1479,29 @@ Document {
 								* Attribute : Add a new property in a stereotype.
 								* Extension : Create an extension between a stereotype and a metaclass or create a generalization between to stereotypes. This tool also creates the base_XXXX attributes. This attribute must not be visible on the diagram.
 								* Association : Create an association between two stereotypes or a stereotype and a referenced metaclass. In the UML model, this tool creates a property in the stereotype and a navigable association to the target. This tool opens a wizard which allows to referenced an existing UML directed relationship metaclasses or to create a new kind of association.
-								
+						}
 
-								
-							}
-
-							Section Manage profiles and stereotypes {
-								In UML Designer, a _Profile_ layer is available on all the diagrams. To describe his application John opens the existing diagrams and activates the profile layer.
+						Section Manage profiles and stereotypes {
+							In UML Designer, a _Profile_ layer is available on all the diagrams. To describe his application John opens the existing diagrams and activates the profile layer.
 									!./images/ProfileLayer.png!
-								
+							
 
 									This layer provides a new section in the palette. 
 
 									!./images/ProfileLayerPalette.png!
-								
+							
 
 									The following tools are available :
 
 									* apply a profile  : the user selects the _Apply profile_ tool in the palette and clicks on the diagram, a wizards opens which shows the applicable and already applied profiles.
 
 									!./images/ApplyProfile.png!
-								
+							
 
 									* apply stereotype : the user selects the _Apply stereotype_ tool in the palette and selects an element in the diagram, a wizards opens which shows the applicable and already applied stereotypes according to the activated profiles. When a stereotype is applied on an element its labels looks like : == << stereotype >> == label
 
 									!./images/ApplyStereotype.png!
-								
-							}
+							
 						}
 					}
 				}
@@ -1547,7 +1512,7 @@ Document {
 					At this point, Bob breaks the components out into classes and objects.
 
 				Section Define the implementation structure {
-					Section Class diagram {
+					Section Define classes {
 						The class diagram is used to describe the structure of the system by showing the classes, the interfaces, their attributes, their operations and their relationships.
 
 						!./images/ClassDiagram.png!
@@ -1764,7 +1729,7 @@ Document {
 						}
 					}
 
-					Section Object diagram {
+					Section Instanciate the application {
 						The object diagram is used to describe the structure of the system by showing the objects at a specific time.
 
 						!./images/ObjectDiagram.png!
@@ -2105,23 +2070,27 @@ Document {
 			}
 
 			Section Find Help {
-				Welcome page :
+				The UML Designer users can find help on :
 
-					* Eclipse integration :
-					* Product integration :
+				* the Welcome page :
+				
 
-					Help contents :
+					** Eclipse integration : integration of the UML Designer help contents in the default Eclipse welcome page
+					** Product integration : specific UML Designer welcome page  provided with the UML Designer product
 
-					* 	User guide
-					* 	Cheatsheets
+				* in the help contents :
+				
 
-					Dynamic help:
+					** 	User guide : describe all the features available in UML Designer
+					** 	Cheatsheets : step by step tutorials which explain the first main steps to use UML Designer
 
-					* on diagrams opening
+				* in the dynamic help : on diagrams opening
+				
 
-					Example:
+				* in the Travel agency example provided : to import the example, the user select ine the Eclipse menu New>Example>UML>Travel agency.
+				
 
-					* Travel agency
+				
 			}
 		}
 
@@ -2147,8 +2116,9 @@ Document {
 		* *Usability* : 
 		** User friendly interfaces : The UML Designer is easy to use and to get started with. The different interfaces are intuitive and learnable.
 		** Documentation : User guide and other supporting materials (tutorials, video, cheatsheets) are available to help the user.
-		* *Licensing* : The UML Designer is provided as an open source project under EPL licence.
 		* *Response time* : The response time perceived by the end user must be good and when the processing would be longer the user must be informed.
+		* *Licensing* : The UML Designer is provided as an open source project under EPL licence.
+		* *Availability* : The UML Designer is provided as an Eclipse plugin on the marketplace. A product is also built available on the obeo website. The source code is available on github.
 		
 
 		
