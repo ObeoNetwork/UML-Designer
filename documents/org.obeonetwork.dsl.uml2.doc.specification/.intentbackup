@@ -4,7 +4,7 @@ Document {
 			The UML Designer is a graphical designer compatible with the 
 			"UML2 specification":http://www.omg.org/spec/UML/2.4.1/and based on "Obeo Designer":http://www.obeodesigner.com/.
 			UML 2.4 has 14 types of diagrams divided into two categories:
-			!./images/UML_diagrams_overview.png!
+			!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/UML_diagrams_overview.png!
 			
 
 			It is released as Eclipse plugins under the EPL License and a standalone product is also built.
@@ -25,7 +25,7 @@ Document {
 			* *Alice*: 42 years old, works as software quality engineer at SSIICorp in collaboration with Bob. She is used to read UML diagrams to get overview of the features provided by the projects she is monitoring. She is also checking that these projects are well documented using the UML standard and she is checking the traceability between the requirements, the software architecture, the code and the tests. She uses UML modeler for consultation only.
 			
 
-			* *Kevin*: 23 years old, works at YetAnotherSSIICorp as software developer and does not care about UML, he learned the standard at school and found that it was boring. He has to use an UML modeler to write the documentation of the software he is developing. He does not choose to use UML, it was decided by its boss. He has to search a UML designer which is free. At the end it only needs beautiful images to put in its software documentation.
+			* *Kevin*: 23 years old, works in a big company as software developer and does not care about UML, he learned the standard at school and found that it was boring. He has to use an UML modeler to write the documentation of the software he is developing. He does not choose to use UML, it was decided by its boss. He has to search a UML designer which is free. At the end it only needs beautiful images to put in its software documentation.
 			
 
 			* *Teddy*: 20 years old, is a student in computer science. He has many projects to tackle and barely some time to do them, yet he has to deliver both the software and comprehensive reports to his teachers. He doesn't know much about IDEs or tools except those used during the courses.
@@ -77,7 +77,7 @@ Document {
 					* The _Problems_ view contains information markers of different severities (information only, warnings, or errors). This is where you will find validation errors on your models for example.
 					
 
-						!./images/ModelingPerspective.png!
+						!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ModelingPerspective.png!
 					
 				}
 
@@ -101,7 +101,7 @@ Document {
 					* the _tabbar_ at the top of the graphical area, which provides additional, more global operations.
 					
 
-					!./images/DiagramEditor.png!
+					!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/DiagramEditor.png!
 					
 
 					Section Palette {
@@ -158,22 +158,26 @@ Document {
 						*** from the component diagram by using : 
 						**** Ctrl+D on keyboard, 
 						**** the context menu action 'Delete from model',
-						**** the toolbar action 'Delete from model',
-						*** from the model explorer by using the context menu action 'Delete'.
+						**** the toolbar action 'Delete from model' : !platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/PackageDiagramDeletePackage.png!
+						*** from the model explorer by using the context menu action 'Delete' : !platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/PackageDiagramDeletePackage2.png!
 						
 
 						
 					}
 
 					Section Editor main graphical area {
-						In the *main graphical area*, the user can *edit* the text inside an element by using the standard «direct edit» behavior. To activate the direct edit, the user selects an element and :
+						In the main graphical area, the user can edit the text inside an element by using the standard *direct edit* behavior. To activate the direct edit, the user selects an element and :
 
 						* press F2, 
 						* or do a slow double click,
 						* or directly starting to enter alpha-numeric text.
 						
 
+						Another feature available on the editor is the *tooltip tool* which arekind of shortcuts for palette tools :
+							!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/PackageDiagramCreatePackageTooltip.png!
 						
+
+						When the user goes over the main graphical area with his mouse, after a short delay the tools usable according to the current context are poped up. Then the user can select a tool, the tool behaviour will be exactly	the same as if he would have select the same tool in the palette.
 					}
 				}
 
@@ -327,76 +331,78 @@ Document {
 
 				To do so UML propose a very useful diagram : the *Activity diagram*.
 				The activity diagram is part of the behavioral diagrams in UML Standard, it is used to represent workflows of stepwise activities.
-							!./images/ActivityDiagram.png!
+							!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ActivityDiagram.png!
 				
 
 				The activity diagram is a synchronized diagram which means that any elements existing under an activity in the UML model wil be visible automatically in the activity diagram.
 
 				Section Manage activities {
-					!./images/ActivityDiagramPalette.png!
+					!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ActivityDiagramPalette.png!
 					
 
 					It is possible to *create activity elements* by selecting the creation tools from the palette and then clicking on the diagram or an element. A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the UML model. If the user selects a container, the element will be created under the corresponding semantic element in the UML model. 
 					Tooltip tools are also available to create any kind of elements :
-								!./images/ActivityDiagramTooltips.png!
+								!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ActivityDiagramTooltips.png!
 					
 
 					Creation tools are available in the activity diagram for the following types :
 
 						|_. Element |_. Representation |
-						|Partition |!./images/ActivityDiagramPartition.png!
+						|Partition |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ActivityDiagramPartition.png!
 
 						|
-						|Initial Node |!./images/ActivityDiagramInitialNode.png!
+						|Initial Node |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ActivityDiagramInitialNode.png!
 
 						|
-						|Activity Final Node |!./images/ActivityDiagramActivityFinalNode.png!
+						|Activity Final Node |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ActivityDiagramActivityFinalNode.png!
 
 						|
-						|Flow Final Node |!./images/ActivityDiagramFlowFinalNode.png!
+						|Flow Final Node |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ActivityDiagramFlowFinalNode.png!
 
 						|
-						|Decision Node |!./images/ActivityDiagramDecisionNode.png!
+						|Decision Node |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ActivityDiagramDecisionNode.png!
 
 						|
-						|Merge Node |!./images/ActivityDiagramMergeNode.png!
+						|Merge Node |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ActivityDiagramMergeNode.png!
 
 						|
-						|Fork Node |!./images/ActivityDiagramForkNode.png!
+						|Fork Node |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ActivityDiagramForkNode.png!
 
 						|
-						|Join Node |!./images/ActivityDiagramJoinNode.png!
+						|Join Node |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ActivityDiagramJoinNode.png!
 
 						|
-						|Opaque Action |!./images/ActivityDiagramOpaqueAction.png!
+						|Opaque Action |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ActivityDiagramOpaqueAction.png!
 
 						|
-						|Activity state |!./images/ActivityDiagramActivityState.png!
+						|Activity state |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ActivityDiagramActivityState.png!
 
 						|
-						|Call Operation action  |!./images/ActivityDiagramCallOperationAction.png! When this tool is selected, a selection wizard is opened to ask the user to select an existing operation in the UML model :
-								!./images/ActivityDiagramCallOperationActionWizard.png!
+						|Call Operation action  |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ActivityDiagramCallOperationAction.png! 
+
+						|
+
+						|Activity parameter |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ActivityDiagramActivityParameter.png!
+
+						|
+						|Data store |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ActivityDiagramDataStore.png!
+
+						|
+						|Input pin |it is represented as bordered node of the activity  : !platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ActivityDiagramInputPin.png!
+					
+
+						|
+						|Output pin | it is represented as bordered node of the activity : !platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ActivityDiagramOutputPin.png!
 					
 
 						|
 
-						|Activity parameter |!./images/ActivityDiagramActivityParameter.png!
-
-						|
-						|Data store |!./images/ActivityDiagramDataStore.png!
-
-						|
-						|Input pin |it is represented as bordered node of the activity  : !./images/ActivityDiagramInputPin.png!
+						When the _Call Operation action_ tool is selected, a selection wizard is opened to ask the user to select an existing operation in the UML model :
+								!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ActivityDiagramCallOperationActionWizard.png!
 					
-
-						|
-						|Output pin | it is represented as bordered node of the activity : !./images/ActivityDiagramOutputPin.png!
-					
-
-						|
 
 					The user can also *delete an activity element* (See delete element from model in section
-					@see "Editor" "Editor main graphical area" ).
+					@see "Editor tab-bar" ).
 				}
 
 				Section Manage flows {
@@ -407,16 +413,17 @@ Document {
 					
 					
 					|_. Element |_. Representation |
-					|Control flow |can be created between activity state, call operation action and opaque action. The control flow is represented by a solid edge without label.|
-
-									!./images/ActivityDiagramControlFlow.png!
+					|Control flow |can be created between activity state, call operation action and opaque action. The control flow is represented by a solid edge without label. !platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ActivityDiagramControlFlow.png!
 					
+					|
+
+					|
 
 					|
 
 					|Object flow : can be created between activity parameters, input/output pins and data store. The object flow is represented by a dashed edge without label.
 
-									!./images/ActivityDiagramObjectFlow.png!
+									!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ActivityDiagramObjectFlow.png!
 					
 
 					|
@@ -450,13 +457,13 @@ Document {
 					The use case diagram is used to describe the interaction of the user and other applications with the specified system.
 
 						The use case diagram is used to describe the interaction between the system, the users and sub systems.
-						!./images/UseCaseDiagram.png!
+						!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/UseCaseDiagram.png!
 					
 
 						The use case diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.
 
 					Section Manage use cases {
-						!./images/UseCaseDiagramPalette.png!
+						!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/UseCaseDiagramPalette.png!
 						
 
 						It is possible in the use case diagram to *create an element* by selecting the creation tool from the palette and then clicking on the diagram or an element. A diagram is associated to a package and in this case the element is created under the corresponding package in the UML model. Tooltip tools are also available to create any kind of elements. 
@@ -466,18 +473,25 @@ Document {
 						
 						
 						|_. Element |_. Representation |
-						|Actor |!./images/UseCaseDiagramActor.png!
+						|Actor |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/UseCaseDiagramActor.png!
 						
 						|
 
 						|
-						|UseCase |!./images/UseCaseDiagramUseCase.png!
 
 						|
-						|Collaboration |!./images/UseCaseDiagramCollaboration.png!
 
 						|
-						|Subject |!./images/UseCaseDiagramSubject.png!
+
+						|
+
+						|UseCase |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/UseCaseDiagramUseCase.png!
+
+						|
+						|Collaboration |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/UseCaseDiagramCollaboration.png!
+
+						|
+						|Subject |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/UseCaseDiagramSubject.png!
 
 						|
 
@@ -491,18 +505,37 @@ Document {
 						
 
 						The user can also *delete an element* (See delete element from model in section
-						@see "Editor" ).
+						@see "Editor tab-bar" ).
 					}
 
 					Section Manage relationships {
 						It is possible to *create a relationship* by selecting the edge creation tool from the palette and then clicking on a source element and a target element. 
 						The following edge creation tools exist in the palette :
 
-						* Association : is represented by a solid edge without label and can be created between an actor and a use case. !./images/UseCaseDiagramAssociation.png!
-						* Extend :  is represented by a dashed edge with _extend_ label and can be created between two use cases. !./images/UseCaseDiagramExtend.png!
-						* Include :  is represented by a dashed edge with _include_ label and can be created between two use cases. !./images/UseCaseDiagramInclude.png!
-						* Generalization : is represented by a solid edge without label and can be created between two actors. !./images/UseCaseDiagramGeneralization.png!
 						
+						
+						|_. Element |_. Representation |
+						|Association |is represented by a solid edge without label and can be created between an actor and a use case. !platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/UseCaseDiagramAssociation.png!
+						
+						|
+
+						|
+
+						|
+
+						|
+						|Extend | is represented by a dashed edge with _extend_ label and can be created between two use cases. !platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/UseCaseDiagramExtend.png!
+						
+
+						|
+						|Include | is represented by a dashed edge with _include_ label and can be created between two use cases. !platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/UseCaseDiagramInclude.png!
+						
+
+						|
+						|Generalization |is represented by a solid edge without label and can be created between two actors. !platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/UseCaseDiagramGeneralization.png!
+						
+
+						|
 
 						The user can also *delete a relationship* (See delete element from model in section
 						@see "Editor" ).
@@ -527,12 +560,30 @@ Document {
 
 						The following elements can be added on a component diagram :
 
-						* use case
-						* use case into a subject
-						* subject (component,  artifact, datatype, interface, collaboration, class)
-						* actor
-						* package
 						
+						
+						|_. Element |_. Representation |
+						|use case |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/UseCaseDiagramActor.png!
+						
+						|
+
+						|
+
+						|
+
+						|
+						|use case into a subject|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/UseCaseDiagramActor.png!
+
+						|
+						|subject (component,  artifact, datatype, interface, collaboration, class)|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/UseCaseDiagramActor.png!
+
+						|
+						|actor|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/UseCaseDiagramActor.png!
+
+						|
+						|package|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/UseCaseDiagramActor.png!
+
+						|
 
 						The user can see that an element is not coming from the current package :
 
@@ -540,7 +591,8 @@ Document {
 						* a tooltip shows the container package of the element if the element is not contained by the current package
 						
 
-						It is possible to *remove an existing element* from a diagram. In this case the element is only deleted from the representation but it is not removed from the UML model. This _Remove_ tool exists in the _Existing elements_ section in the palette. An equivalent tool _Delete from Diagram_ is also available from the tabbar diagram editor.
+						And finally, he can *remove an existing element* from a diagram. In this case the element is only deleted from the representation but it is not removed from the UML model. This _Remove_ tool exists in the _Existing elements_ section in the palette (See delete element from diagram in section
+						@see "Editor tab-bar" ).
 					}
 
 					Section Add related elements {
@@ -567,50 +619,22 @@ Document {
 
 					Section Define the packages {
 						The package diagram is used to describe the structure of the system by showing the packages and their dependencies.
-						!./images/PackageDiagram.png!
+						!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/PackageDiagram.png!
 						
 
 						The package diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.
 
 						Section Manage packages {
-							It is possible to create and delete packages in the Package diagram.
+							!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/PackageDiagramPaletteTypes.png!
+							
 
-							Section Create a package {
-								It is possible to create activities elements by selecting the creation tools from the palette and then clicking on the diagram or an element. A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the UML model.
-								If the user selects a container, the element will be created under the corresponding semantic element in the UML model.
-								!./images/PackageDiagramPaletteTypes.png!
-								
+							It is possible to *create activities elements* by selecting the creation tools from the palette and then clicking on the diagram or an element. A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the UML model. If the user selects a container, the element will be created under the corresponding semantic element in the UML model.
 
-								A tooltip tool is also available to create a package :
-								!./images/PackageDiagramCreatePackageTooltip.png!
-								
+							A creation tool is available in the package diagram for the package : !platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/PackageDiagramPackage.png!
+							
 
-								A creation tool is available in the package diagram for the package :
-								!./images/PackageDiagramPackage.png!
-								
-							}
-
-							Section Delete a package {
-								It is possible to delete a semantic element  :
-
-								* from the diagram by using : 
-								** Ctrl+D on keyboard, 
-								** the context menu action 'Delete from model',
-								** the toolbar action 'Delete from model'; 
-								
-
-								!./images/PackageDiagramDeletePackage.png!
-								
-
-								* from the model explorer by using : 
-								** the context menu action 'Delete'
-								
-
-								!./images/PackageDiagramDeletePackage2.png!
-								
-
-								This tool deletes the semantic element. If a representation is open, the view corresponding to the deleted package is not anymore visible after the delete action.
-							}
+							The user can also *delete an element* (See delete element from model in section
+							@see "Editor tab-bar" ).
 						}
 
 						Section Manage relationships {
@@ -618,34 +642,34 @@ Document {
 
 							Section Create a relationship {
 								It is possible to create a relationship by selecting the edge creation tool from the palette and then clicking on a source element and a target element.
-										!./images/PackageDiagramPaletteRelationships.png!
+										!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/PackageDiagramPaletteRelationships.png!
 								
 
 										The following edge creation tools exist in the palette :
 
 										* Contained in : to create a containment relation, after the create action the selected source package contains the selected target package. The containment is represented by a solid edge without label.
 
-										!./images/PackageDiagramContainedIn.png!
+										!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/PackageDiagramContainedIn.png!
 								
 
 										* Import : to import an existing package from another UML model. The import is represented by a dashed edge with _import_ as label.
 
-										!./images/PackageDiagramImport.png!
+										!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/PackageDiagramImport.png!
 								
 
 										* Usage : to declare that the selected source package uses the selected target package. The usage is represented by a dashed edge with _use_ as label.
 
-										!./images/PackageDiagramUsage.png!
+										!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/PackageDiagramUsage.png!
 								
 
 										* Dependency : to declare that the selected source package depends on the selected target package. The dependency is represented by a dashed edge without label.
 
-										!./images/PackageDiagramDependency.png!
+										!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/PackageDiagramDependency.png!
 								
 
 										* Merge : to declare that the selected source package merges the selected target package. The merge is represented by a dashed edge with _merge_ as label.
 
-										!./images/PackageDiagramMerge.png!
+										!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/PackageDiagramMerge.png!
 								
 							}
 
@@ -690,16 +714,16 @@ Document {
 
 										* selecting the add tool from the palette and then clicking on the diagram or an element :
 
-										!./images/PackageDiagramPaletteExistingElements.png!
+										!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/PackageDiagramPaletteExistingElements.png!
 								
 
 										The add tool opens a selection wizard :
-										!./images/PackageDiagramAddExistingElements.png!
+										!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/PackageDiagramAddExistingElements.png!
 								
 
 										* drag and droping a package from the model explorer :
 
-										!./images/PackageDiagramDragAndDropExistingElements.png!
+										!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/PackageDiagramDragAndDropExistingElements.png!
 								
 							}
 
@@ -712,14 +736,14 @@ Document {
 
 							Section Remove an existing element {
 								It is possible to remove existing elements by selecting the *Delete from Diagram* tool from the diagram editor toolbar, the *Remove* tool from the palette or the tooltip. This action only remove the element from the diagram but does not delete the semantic element in the UML model.
-										!./images/PackageDiagramRemoveExistingElements.png!
+										!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/PackageDiagramRemoveExistingElements.png!
 								
 							}
 						}
 
 						Section Add related elements {
 							In the package diagram a contextual action is available to show on the diagram the element related to the selection. 
-									!./images/PackageDiagramAddRelatedElements.png!
+									!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/PackageDiagramAddRelatedElements.png!
 							
 
 									The *Add related elements* action is available from :
@@ -741,7 +765,7 @@ Document {
 
 						Section Define the components {
 							The component diagram is used to describe the structure of the system by showing the components and their connectors.
-							!./images/ComponentDiagram.png!
+							!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagram.png!
 							
 
 							The component diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.
@@ -752,7 +776,7 @@ Document {
 								Section Create a node {
 									It is possible to create activities elements by selecting the creation tools from the palette and then clicking on the diagram or an element. A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the UML model.
 									If the user selects a container, the element will be created under the corresponding semantic element in the UML model.
-									!./images/ComponentDiagramPalette.png!
+									!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramPalette.png!
 									
 
 									Tooltip tools are also available to create any kind of elements.
@@ -762,28 +786,28 @@ Document {
 									* component : 
 									
 
-									!./images/ComponentDiagramComponent.png!
+									!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramComponent.png!
 									
 
 									* component into a component 
 									* class : 
 									
 
-									!./images/ComponentDiagramClass.png!
+									!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramClass.png!
 									
 
 									* class into a component
 									* port on a component : 
 									
 
-									!./images/ComponentDiagramPort.png!
+									!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramPort.png!
 									
 
 									* port on a class
 									* interface : 
 									
 
-									!./images/ComponentDiagramInterface.png!
+									!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramInterface.png!
 									
 								}
 
@@ -812,28 +836,28 @@ Document {
 
 										* Usage : is represented by a solid edge without label and can be created between a component and an interface.
 
-										!./images/ComponentDiagramUsage.png!
+										!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramUsage.png!
 									
 
 										* Dependency : is represented by a dashed edge without label and can be created between components, interfaces, classes.
 										* Component Realization: is represented by a dashed edge without label and can be created between two components.
 
-										!./images/ComponentDiagramComponentRealization.png!
+										!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramComponentRealization.png!
 									
 
 										* Generalization : is represented by a solid edge without label and can be created between two components.
 
-										!./images/CompositeStructureDiagramGeneralization.png!
+										!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/CompositeStructureDiagramGeneralization.png!
 									
 
 										* Interface Realization : is represented by a dashed edge without label and can be created between a component or a class and an interface.
 
-											!./images/ComponentDiagramInterfaceRealization.png!
+											!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramInterfaceRealization.png!
 									
 
 										* Redefined : is represented by a dot edge without label and can be created between two ports.
 
-											!./images/ComponentDiagramRedefined.png!
+											!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramRedefined.png!
 									
 
 										* Connector : is represented by a solid edge without label and can be created between two ports.
@@ -937,7 +961,7 @@ Document {
 						Section Define the composite structures {
 							The composite structure diagram is used to describe the structure of the system by showing the internal structure of classes and the interfaces they used to collaborate.
 
-							!./images/CompositeStructureDiagram.png!
+							!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/CompositeStructureDiagram.png!
 							
 
 							The component diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.
@@ -949,7 +973,7 @@ Document {
 									It is possible to create a type by selecting the type creation tool from the palette and then clicking on the diagram or an element. 
 											A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the UML model.
 											If the user selects a container, the element will be created under the corresponding semantic element in the UML model.
-									!./images/CompositeStructureDiagramPalette.png!
+									!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/CompositeStructureDiagramPalette.png!
 									
 
 									Tooltip tools are also available to create any kind of elements.
@@ -959,33 +983,33 @@ Document {
 									* Component
 									
 
-									!./images/ComponentDiagramComponent.png!
+									!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramComponent.png!
 									
 
 									* Component into a component
 									* Class
 									
 
-									!./images/ComponentDiagramClass.png!
+									!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramClass.png!
 									
 
 									* Class into a component
 									* Part
 									
 
-									!./images/CompositeStructurePart.png!
+									!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/CompositeStructurePart.png!
 									
 
 									* Property
 									
 
-									!./images/CompositeStructureProperty.png!
+									!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/CompositeStructureProperty.png!
 									
 
 									* Port on a component
 									
 
-									!./images/ComponentDiagramPort.png!
+									!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramPort.png!
 									
 
 									* Port on a class
@@ -1020,13 +1044,13 @@ Document {
 									* Connector : is represented by a solid edge without label and can be created between a provided interface and a required interface.
 									
 
-									!./images/CompositeStructureDiagramConnector.png!
+									!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/CompositeStructureDiagramConnector.png!
 									
 
 									* Usage : is represented by a solid edge without label and can be created between a component and an interface.
 									
 
-									!./images/ComponentDiagramUsage.png!
+									!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramUsage.png!
 									
 
 									* Dependency : is represented by a dashed edge without label and can be created between components, interfaces, classes.
@@ -1035,13 +1059,13 @@ Document {
 									* Generalization : is represented by a solid edge without label and can be created between two components.
 									
 
-									!./images/CompositeStructureDiagramGeneralization.png!
+									!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/CompositeStructureDiagramGeneralization.png!
 									
 
 									* Redefined : is represented by a dot edge without label and can be created between two ports.
 									
 
-										!./images/ComponentDiagramRedefined.png!
+										!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramRedefined.png!
 									
 
 									* Connector : is represented by a solid edge without label and can be created between two ports.
@@ -1101,23 +1125,23 @@ Document {
 										* required service : when the _Required Service_ tool is selected from the palette, a selection wizard asks the user to select the required interfaces. 
 										
 
-										!./images/CompositeStructureDiagramRequiredServiceWizard.png!
+										!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/CompositeStructureDiagramRequiredServiceWizard.png!
 										
 
 										The required services are represented as following: 
 
-										!./images/CompositeStructureDiagramRequiredService.png!
+										!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/CompositeStructureDiagramRequiredService.png!
 										
 
 										* provided service : when the _Provided Service_ tool is selected from the palette, a selection wizard asks the user to select the required interfaces. 
 										
 
-										!./images/CompositeStructureDiagramProvidedServiceWizard.png!
+										!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/CompositeStructureDiagramProvidedServiceWizard.png!
 										
 
 										The provided services are represented as following: 
 
-										!./images/CompositeStructureDiagramProvidedServiceWizard.png!
+										!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/CompositeStructureDiagramProvidedServiceWizard.png!
 										
 
 										* package : the package will not be visible on the diagram but all the sub elements will be added
@@ -1175,7 +1199,7 @@ Document {
 						Then, John defines the system environment thanks to a *Deployment diagram*, and how the software is deployed on the hardware. This diagram describes the current technological limitations and constraints.
 
 							The deployment diagram is used to describe the structure of the system by showing the physical deployment of artifacts on nodes.
-							!./images/DeploymentDiagram.png!
+							!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/DeploymentDiagram.png!
 						
 
 							The deployment diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.
@@ -1193,7 +1217,7 @@ Document {
 								It is possible to create a type by selecting the type creation tool from the palette and then clicking on the diagram or an element. 
 											A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the UML model.
 											If the user selects a container, the element will be created under the corresponding semantic element in the UML model.
-									!./images/DeploymentDiagramPalette.png!
+									!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/DeploymentDiagramPalette.png!
 								
 
 									Tooltip tools are also available to create any kind of elements.
@@ -1202,22 +1226,22 @@ Document {
 
 									* node :
 
-									!./images/DeploymentDiagramNode.png!
+									!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/DeploymentDiagramNode.png!
 								
 
 									* device :
 
-									!./images/DeploymentDiagramDevice.png!
+									!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/DeploymentDiagramDevice.png!
 								
 
 									* execution environment :
 
-									!./images/DeploymentDiagramExecutionEnvironment.png!
+									!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/DeploymentDiagramExecutionEnvironment.png!
 								
 
 									* artifact :
 
-									!./images/DeploymentDiagramArtifact.png!
+									!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/DeploymentDiagramArtifact.png!
 								
 							}
 
@@ -1245,25 +1269,25 @@ Document {
 
 										* Link : is represented by a solid edge without label and can be created between components, nodes, devices, execution environments.
 
-											!./images/DeploymentDiagramLink.png!
+											!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/DeploymentDiagramLink.png!
 								
 
 										* Dependency : is represented by a dashed edge without label and can be created between components, nodes, devices, execution environments, artifacts.
-											!./images/DeploymentDiagramDependency.png!
+											!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/DeploymentDiagramDependency.png!
 								
 
 										* Generalization: is represented by a solid edge without label and can be created between components, nodes, devices, execution environments, artifacts.
 
-											!./images/DeploymentDiagramGeneralization.png!
+											!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/DeploymentDiagramGeneralization.png!
 								
 
 										* Deployment : is represented by a dashed edge with _deploy_ label and can be created between an artifact and nodes,devices, execution environments.
-											!./images/DeploymentDiagramDeployment.png!
+											!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/DeploymentDiagramDeployment.png!
 								
 
 										* Manifestation : is represented by a dashed edge with _manifest_ label and can be created between a component or a class and an interface.
 
-											!./images/DeploymentDiagramManifestation.png!
+											!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/DeploymentDiagramManifestation.png!
 								
 							}
 
@@ -1350,7 +1374,7 @@ Document {
 						Sometimes, the UML standard does not provide all the concepts expected by John. Thanks to the *Profile diagram*, it is possible to extend the standard to add new concepts.
 
 							The profile diagram operates at the metamodel level to provide new stereotypes and profiles.
-							!./images/ProfileDiagram.png!
+							!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ProfileDiagram.png!
 						
 
 							To create a new profile, the user creates a new UML model and selects as root element a *Profile* element.
@@ -1370,24 +1394,24 @@ Document {
 
 					Section Manage profiles and stereotypes {
 						In UML Designer, a _Profile_ layer is available on all the diagrams. To describe his application John opens the existing diagrams and activates the profile layer.
-								!./images/ProfileLayer.png!
+								!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ProfileLayer.png!
 						
 
 								This layer provides a new section in the palette. 
 
-								!./images/ProfileLayerPalette.png!
+								!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ProfileLayerPalette.png!
 						
 
 								The following tools are available :
 
 								* apply a profile  : the user selects the _Apply profile_ tool in the palette and clicks on the diagram, a wizards opens which shows the applicable and already applied profiles.
 
-								!./images/ApplyProfile.png!
+								!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ApplyProfile.png!
 						
 
 								* apply stereotype : the user selects the _Apply stereotype_ tool in the palette and selects an element in the diagram, a wizards opens which shows the applicable and already applied stereotypes according to the activated profiles. When a stereotype is applied on an element its labels looks like : == << stereotype >> == label
 
-								!./images/ApplyStereotype.png!
+								!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ApplyStereotype.png!
 						
 					}
 				}
@@ -1402,7 +1426,7 @@ Document {
 				Section Define classes {
 					The class diagram is used to describe the structure of the system by showing the classes, the interfaces, their attributes, their operations and their relationships.
 
-					!./images/ClassDiagram.png!
+					!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ClassDiagram.png!
 					
 
 					The class diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.
@@ -1414,7 +1438,7 @@ Document {
 							It is possible to create a type by selecting the type creation tool from the palette and then clicking on the diagram or an element. 
 							A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the UML model.
 							If the user selects a container, the element will be created under the corresponding semantic element in the UML model.
-							!./images/ClassDiagramPalette.png!
+							!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ClassDiagramPalette.png!
 							
 
 							Tooltip tools are also available to create any kind of elements.
@@ -1424,37 +1448,37 @@ Document {
 							* Class :
 							
 
-								!./images/ClassDiagramClass.png!
+								!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ClassDiagramClass.png!
 							
 
 							* Enumeration :
 							
 
-								!./images/ClassDiagramEnumeration.png!
+								!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ClassDiagramEnumeration.png!
 							
 
 							* Interface :
 							
 
-								!./images/ClassDiagramInterface.png!
+								!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ClassDiagramInterface.png!
 							
 
 							* Datatype
 							
 
-								!./images/ClassDiagramDataType.png!
+								!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ClassDiagramDataType.png!
 							
 
 							* Primitive type : 
 							
 
-							!./images/ClassDiagramPrimitiveType.png!
+							!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ClassDiagramPrimitiveType.png!
 							
 
 							* Package : 
 							
 
-								!./images/ClassDiagramPackage.png!
+								!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ClassDiagramPackage.png!
 							
 						}
 
@@ -1619,14 +1643,14 @@ Document {
 				Section Instanciate the application {
 					The object diagram is used to describe the structure of the system by showing the objects at a specific time.
 
-					!./images/ObjectDiagram.png!
+					!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ObjectDiagram.png!
 					
 
 					The object diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.
 
 					Section Manage instances {
 						It is possible to create and delete instances in the object diagram.
-						!./images/ObjectDiagramPalette.png!
+						!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ObjectDiagramPalette.png!
 						
 
 						Section Create an instance {
@@ -1707,7 +1731,7 @@ Document {
 				Section Statemachines {
 					The statemachine diagram is used to represent the different states and transitions of a system.
 
-					!./images/StatemachineDiagram.png!
+					!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/StatemachineDiagram.png!
 					
 
 					The statemachine diagram is a synchronized diagram which means that any elements existing under a statemachine in the UML model wil be visible automatically in the statemachine diagram.
@@ -1718,7 +1742,7 @@ Document {
 						Section Create statemachine elements {
 							It is possible to create activities elements by selecting the creation tools from the palette and then clicking on the diagram or an element. A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the UML model.
 							If the user selects a container, the element will be created under the corresponding semantic element in the UML model.
-							!./images/StatemachineDiagramPalette.png!
+							!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/StatemachineDiagramPalette.png!
 							
 
 							Tooltip tools are also available to create any kind of elements.
@@ -1781,7 +1805,7 @@ Document {
 
 				Section Sequences {
 					The sequence diagram is used to show how processes operate with one another and in what order.
-						!./images/SequenceDiagram.png!
+						!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/SequenceDiagram.png!
 					
 
 						The sequence diagram is a synchronized diagram which means that any elements existing under an interaction in the UML model wil be visible automatically in the sequence diagram.
@@ -1863,12 +1887,12 @@ Document {
 
 			Section Manage comments in diagram {
 				In UML Designer, a _Comments_ layer is available on all the diagrams. To document his application Kevin opens the existing diagrams and activates the comments layer.
-				!./images/CommentsLayer.png!
+				!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/CommentsLayer.png!
 				
 
 				This layer provides a new section in the palette. 
 
-				!./images/CommentsLayerPalette.png!
+				!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/CommentsLayerPalette.png!
 				
 
 				The following tools are available :
@@ -1876,13 +1900,13 @@ Document {
 				* create a comment  : the user selects the _Comment_ tool in the palette and clicks on the diagram, a new UML comment is created attached to the package associated to the diagram. If the user selects an element on the diagram, the comment will be attached to the selected element. The comments are represented on the diagram as following :
 				
 
-				!./images/CommentsLayer.png!
+				!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/CommentsLayer.png!
 				
 
 				* link a comment to a semantic element : the user selects the _Link comment_ tool in the palette and selects as source a comment and as target an element. Thias action attached the comment to the selected element. The link is represented on the diagram by a doted link :
 				
 
-				!./images/CommentsLayer.png!
+				!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/CommentsLayer.png!
 				
 
 				When the layer is activated the comments are visible on the diagram.
@@ -1932,27 +1956,27 @@ Document {
 			This representation is based on the UML standard and so the semantic elements are still saved as UML elements in the model. We just provide another kind of view for the application structure.
 			The _package containment_ representation is defined in the UML Extensions viewpoint as it is a non standard representation.
 			This diagram represents the packages and the components as containers and each container lists all its direct sub elements.
-				!./images/PackageContainmentDiagram.png!
+				!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/PackageContainmentDiagram.png!
 			
 
 			It is also possible to see the hierarchy links between all the packages.
-			!./images/PackageContainmentDiagramWithLinks.png!
+			!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/PackageContainmentDiagramWithLinks.png!
 			
 
 			Thanks to this representation John and Bob can get a quick overview of the current application structure.
 			Moreover a move tool, allows them to drag and drop sub elements from one container to another in one click.
 			If some structure containers are missing, the user can define a new one with the creation tools Package and Component available in the palette and the diagram's tooltip.
-				!./images/PackageContainmentDiagramPalette.png!
+				!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/PackageContainmentDiagramPalette.png!
 			
 		}
 
 		Section Validate an application {
 			UML Designer provides a mean to evaluate and ensure the well-formdness of the UML model. On any diagram a tool is available to launch diagram validation.
-			!./images/ValidateDiagram.png!
+			!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ValidateDiagram.png!
 			
 
 			The validation errors and warnings are listed in the problem view and decorators are positionnned on the invalid elements in the diagrams.
-			!./images/ValidationReport.png!
+			!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ValidationReport.png!
 			
 		}
 	}
