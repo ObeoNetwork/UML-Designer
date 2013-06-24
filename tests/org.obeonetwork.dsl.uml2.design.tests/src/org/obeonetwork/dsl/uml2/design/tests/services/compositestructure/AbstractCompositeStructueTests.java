@@ -10,8 +10,9 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.tests.services.compositestructure;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
+import java.util.List;
 
 import junit.framework.TestCase;
 
@@ -21,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.InterfaceRealization;
 import org.eclipse.uml2.uml.Model;
@@ -65,7 +67,11 @@ public abstract class AbstractCompositeStructueTests extends TestCase {
 
 	protected Property AProp1, AProp2;
 
-	protected Collection<EObject> AllItems;
+	protected List<EObject> AllItems;
+
+	protected List<Interface> AllInterfaces;
+
+	protected List<Dependency> AllDependencies;
 
 	@Override
 	protected void setUp() throws Exception {
@@ -103,11 +109,18 @@ public abstract class AbstractCompositeStructueTests extends TestCase {
 		Bp = (Port)B.getOwnedMember("Bp");
 		Cp = (Port)C.getOwnedMember("Cp");
 
-		usageI1 = (Usage)rootPackage.getOwnedMember("usageI1");
-		usageI2 = (Usage)rootPackage.getOwnedMember("usageI2");
-		usageAI2 = (Usage)rootPackage.getOwnedMember("usageAI2");
-		usageAI3 = (Usage)rootPackage.getOwnedMember("usageAI3");
-		usageAI4 = (Usage)rootPackage.getOwnedMember("usageAI4");
+		List<NamedElement> ownedMembers = rootPackage.getOwnedMembers();
+		List<Usage> usages = new ArrayList<Usage>();
+		for (NamedElement ownedMember : ownedMembers) {
+			if (ownedMember instanceof Usage) {
+				usages.add((Usage)ownedMember);
+			}
+		}
+		usageI1 = usages.get(0);
+		usageI2 = usages.get(1);
+		usageAI2 = usages.get(2);
+		usageAI3 = usages.get(3);
+		usageAI4 = usages.get(4);
 
 		irAI1 = (InterfaceRealization)A.getRelationships().get(0);
 		irAaI1 = (InterfaceRealization)Aa.getRelationships().get(0);
@@ -117,14 +130,17 @@ public abstract class AbstractCompositeStructueTests extends TestCase {
 
 		AllItems = Arrays.asList(new EObject[] {A, Aa, Ab, Ac, B, C, Ap, Aap, Abp, Acp, Bp, Cp, usageI1,
 				usageI2, usageAI2, usageAI3, usageAI4, irAI1, irAaI1, irCI2, irAcI3, irAbI4, AProp1, AProp2});
+		AllInterfaces = Arrays.asList(new Interface[] {I1, I2, I3, I4});
+
+		AllDependencies = Arrays.asList(new Dependency[] {irAI1, irAaI1, irCI2, irAcI3, irAbI4, usageI1,
+				usageI2, usageAI2, usageAI3, usageAI4});
 
 		for (EObject item : AllItems) {
 			assertNotNull(item);
 		}
-		assertNotNull(I1);
-		assertNotNull(I2);
-		assertNotNull(I3);
-		assertNotNull(I4);
+		for (EObject item : AllInterfaces) {
+			assertNotNull(item);
+		}
 	}
 
 	public static String getName(EObject object) {

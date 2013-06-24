@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Connector;
+import org.eclipse.uml2.uml.ConnectorEnd;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.InterfaceRealization;
@@ -233,7 +234,9 @@ public class CompositeStructureServices {
 			List<NamedElement> clients = dependency.getClients();
 			for (NamedElement client : clients) {
 				if (client instanceof Connector) {
-					result.add((Connector)client);
+					if (!result.contains(client)) {
+						result.add((Connector)client);
+					}
 				}
 			}
 		}
@@ -254,7 +257,35 @@ public class CompositeStructureServices {
 			List<NamedElement> clients = dependency.getClients();
 			for (NamedElement client : clients) {
 				if (client instanceof Connector) {
-					result.add((Connector)client);
+					if (!result.contains(client)) {
+						result.add((Connector)client);
+					}
+				}
+			}
+		}
+		// get connector without dependencies
+		List<DDiagramElement> diagramElements = diagram.getDiagramElements();
+		for (DDiagramElement dDiagramElement : diagramElements) {
+			if (dDiagramElement.isVisible() && dDiagramElement instanceof DDiagramElementContainer) {
+				EObject target = ((AbstractDNode)dDiagramElement).getTarget();
+				if (target instanceof StructuredClassifier) {
+					List<Connector> ownedConnectors = ((StructuredClassifier)target).getOwnedConnectors();
+					for (Connector connector : ownedConnectors) {
+						if (connector.getClientDependencies().isEmpty() && connector.getEnds().size() == 2) {
+							List<ConnectorEnd> ends = connector.getEnds();
+							if (ends.get(0).getRole() instanceof Property
+									&& !(ends.get(0).getRole() instanceof Port)) {
+								if (ends.get(1).getRole() instanceof Property
+										&& !(ends.get(1).getRole() instanceof Port)) {
+									if (!result.contains(connector)) {
+										result.add(connector);
+									}
+								}
+							}
+
+						}
+					}
+
 				}
 			}
 		}
@@ -285,18 +316,16 @@ public class CompositeStructureServices {
 	/**
 	 * Get available dependencies at the current level of the dNode.
 	 * 
-	 * @param diagram
-	 *            The diagram view
+	 * @param viewContext
+	 *            The view context
 	 * @return Dependencies
 	 */
-	public List<Dependency> getAvailableSubDependencies(DDiagram diagram) {
+	public List<Dependency> getAvailableSubDependencies(EObject viewContext) {
 		List<Dependency> result = new ArrayList<Dependency>();
-
-		List<DDiagramElement> diagramElements = diagram.getDiagramElements();
-		for (DDiagramElement dDiagramElement : diagramElements) {
-			if (dDiagramElement.isVisible() && dDiagramElement instanceof DDiagramElementContainer) {
-				List<DDiagramElement> subDiagramElements = ((DDiagramElementContainer)dDiagramElement)
-						.getElements();
+		if (viewContext instanceof DDiagramElementContainer) {
+			DDiagramElementContainer dDiagramElement = (DDiagramElementContainer)viewContext;
+			if (dDiagramElement.isVisible()) {
+				List<DDiagramElement> subDiagramElements = (dDiagramElement).getElements();
 				for (DDiagramElement subDiagramElement : subDiagramElements) {
 					if (subDiagramElement.isVisible() && subDiagramElement instanceof AbstractDNode) {
 						EObject target = ((AbstractDNode)subDiagramElement).getTarget();
@@ -308,7 +337,13 @@ public class CompositeStructureServices {
 					}
 				}
 			}
+		} else if (viewContext instanceof DDiagram) {
+			List<DDiagramElement> subDiagramElements = ((DDiagram)viewContext).getDiagramElements();
+			for (DDiagramElement dDiagramElement : subDiagramElements) {
+				result.addAll(getAvailableSubDependencies(dDiagramElement));
+			}
 		}
+
 		return result;
 	}
 
@@ -506,6 +541,13 @@ public class CompositeStructureServices {
 		return result;
 	}
 
+	/**
+	 * Create an interface realization
+	 * 
+	 * @param context
+	 * @param contract
+	 * @return
+	 */
 	public InterfaceRealization createInterfaceRealization(EObject context, Interface contract) {
 		InterfaceRealization result = null;
 
@@ -579,7 +621,13 @@ public class CompositeStructureServices {
 			if (clients.size() > 1) {
 				for (NamedElement client : clients) {
 					if (client instanceof Property) {
-						result = client;
+						Property property = (Property)client;
+						if (property instanceof Port && property.eContainer() instanceof StructuredClassifier
+								&& property.getType().equals(property.eContainer())) {
+							result = (StructuredClassifier)property.eContainer();
+						} else {
+							result = property;
+						}
 						break;
 					}
 				}

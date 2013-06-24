@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2013 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,7 +50,7 @@ public final class CompositeStructureTests {
 	 * @return The testsuite containing all the tests
 	 */
 	public static Test suite() {
-		final TestSuite suite = new TestSuite("UML Viewpoint tests");
+		final TestSuite suite = new TestSuite("UML Composite structure tests");
 		suite.addTestSuite(IsRelated4CompositeStructureServicesTests.class);
 		suite.addTestSuite(IsRelated4CompositeStructureServicesWithConnectorTests.class);
 		suite.addTestSuite(ConnectorServicesTests.class);

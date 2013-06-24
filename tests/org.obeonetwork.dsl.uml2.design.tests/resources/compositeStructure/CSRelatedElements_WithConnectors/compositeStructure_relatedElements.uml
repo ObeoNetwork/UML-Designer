@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_lR2GELPsEeK4pc2VvI68iQ" name="CompositeStructureRelatedElement">
+  <packagedElement xmi:type="uml:Interface" xmi:id="_4E51ELPvEeK5iozmV46vng" name="I1"/>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_4-gWkLPvEeK5iozmV46vng" name="I2">
+    <generalization xmi:id="_5H3FwbfzEeK9p-kQ06R_PQ" general="_4E51ELPvEeK5iozmV46vng"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_6S9BALPvEeK5iozmV46vng" name="I3">
+    <generalization xmi:id="_Au2P0Lf1EeK9p-kQ06R_PQ" general="_4-gWkLPvEeK5iozmV46vng"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Interface" xmi:id="_62DHALPvEeK5iozmV46vng" name="I4"/>
+  <packagedElement xmi:type="uml:Component" xmi:id="_9ehlILPvEeK5iozmV46vng" clientDependency="_Z9zh4NywEeKNcdbTNyOprA _bj9AUNywEeKNcdbTNyOprA" name="A">
+    <ownedAttribute xmi:id="_AcUzALPwEeK5iozmV46vng" name="AProp1" aggregation="composite"/>
+    <ownedAttribute xmi:id="_D5k9ALPwEeK5iozmV46vng" name="AProp2" aggregation="composite">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Fu9xULPwEeK5iozmV46vng" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Fu-_cLPwEeK5iozmV46vng" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_YmppALPwEeK5iozmV46vng" clientDependency="_Z9zh4NywEeKNcdbTNyOprA _bj9AUNywEeKNcdbTNyOprA" name="Ap" type="_2Us7cNyvEeKNcdbTNyOprA" aggregation="composite"/>
+    <ownedConnector xmi:id="_0TF0wNzKEeKJaqAE92u7Tw" clientDependency="_hMZ2kNywEeKNcdbTNyOprA _Z9zh4NywEeKNcdbTNyOprA" name="I1_I1_connector">
+      <end xmi:id="_0TGb0NzKEeKJaqAE92u7Tw" role="_UIdmcLPwEeK5iozmV46vng"/>
+      <end xmi:id="_0TGb0dzKEeKJaqAE92u7Tw" role="_YmppALPwEeK5iozmV46vng"/>
+    </ownedConnector>
+    <interfaceRealization xmi:id="_Z9zh4NywEeKNcdbTNyOprA" name="ApToI1" client="_9ehlILPvEeK5iozmV46vng _YmppALPwEeK5iozmV46vng _0TF0wNzKEeKJaqAE92u7Tw" supplier="_4E51ELPvEeK5iozmV46vng" contract="_4E51ELPvEeK5iozmV46vng"/>
+    <nestedClassifier xmi:type="uml:Component" xmi:id="_Is6JILPwEeK5iozmV46vng" clientDependency="_pbbtgNywEeKNcdbTNyOprA _rsE9oNy0EeKHUKr0xr19pg" name="Aa">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_mW_MYLPwEeK5iozmV46vng" clientDependency="_pbbtgNywEeKNcdbTNyOprA _rsE9oNy0EeKHUKr0xr19pg" name="Aap" type="_2Us7cNyvEeKNcdbTNyOprA" aggregation="composite"/>
+      <ownedConnector xmi:id="_3ge90NzKEeKJaqAE92u7Tw" clientDependency="_pbbtgNywEeKNcdbTNyOprA" name="I1_Ap_connector">
+        <end xmi:id="_3ge90dzKEeKJaqAE92u7Tw" role="_mW_MYLPwEeK5iozmV46vng"/>
+        <end xmi:id="_3ge90tzKEeKJaqAE92u7Tw" role="_YmppALPwEeK5iozmV46vng"/>
+      </ownedConnector>
+      <interfaceRealization xmi:id="_pbbtgNywEeKNcdbTNyOprA" name="AapToI1" client="_Is6JILPwEeK5iozmV46vng _mW_MYLPwEeK5iozmV46vng _3ge90NzKEeKJaqAE92u7Tw" supplier="_4E51ELPvEeK5iozmV46vng" contract="_4E51ELPvEeK5iozmV46vng"/>
+      <nestedClassifier xmi:type="uml:Class" xmi:id="_2Us7cNyvEeKNcdbTNyOprA" name="TypeOfAap"/>
+    </nestedClassifier>
+    <nestedClassifier xmi:type="uml:Component" xmi:id="_L6HsALPwEeK5iozmV46vng" clientDependency="_qdm8MNywEeKNcdbTNyOprA _tqCfINy0EeKHUKr0xr19pg" name="Ab">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_nQwtALPwEeK5iozmV46vng" clientDependency="_qdm8MNywEeKNcdbTNyOprA _tqCfINy0EeKHUKr0xr19pg" name="Abp" type="_2gcRYNyvEeKNcdbTNyOprA" aggregation="composite"/>
+      <ownedConnector xmi:id="_6xjF8NzKEeKJaqAE92u7Tw" clientDependency="_qdm8MNywEeKNcdbTNyOprA _rsE9oNy0EeKHUKr0xr19pg" name="I4_I4_connector">
+        <end xmi:id="_6xjtANzKEeKJaqAE92u7Tw" role="_nQwtALPwEeK5iozmV46vng"/>
+        <end xmi:id="_6xjtAdzKEeKJaqAE92u7Tw" role="_mW_MYLPwEeK5iozmV46vng"/>
+      </ownedConnector>
+      <interfaceRealization xmi:id="_qdm8MNywEeKNcdbTNyOprA" name="AbpToI4" client="_L6HsALPwEeK5iozmV46vng _nQwtALPwEeK5iozmV46vng _6xjF8NzKEeKJaqAE92u7Tw" supplier="_62DHALPvEeK5iozmV46vng" contract="_62DHALPvEeK5iozmV46vng"/>
+      <nestedClassifier xmi:type="uml:Class" xmi:id="_2gcRYNyvEeKNcdbTNyOprA" name="TypeOfAbp"/>
+    </nestedClassifier>
+    <nestedClassifier xmi:type="uml:Component" xmi:id="_NZ4OkLPwEeK5iozmV46vng" clientDependency="_sjzzsNywEeKNcdbTNyOprA _vQL9kNy0EeKHUKr0xr19pg" name="Ac">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_n4QK0LPwEeK5iozmV46vng" clientDependency="_sjzzsNywEeKNcdbTNyOprA _vQL9kNy0EeKHUKr0xr19pg" name="Acp" type="_2pccYNyvEeKNcdbTNyOprA" aggregation="composite"/>
+      <ownedConnector xmi:id="_2P4RkNzKEeKJaqAE92u7Tw" clientDependency="_vQL9kNy0EeKHUKr0xr19pg" name="Ap_I2_connector">
+        <end xmi:id="_2P4RkdzKEeKJaqAE92u7Tw" role="_n4QK0LPwEeK5iozmV46vng"/>
+        <end xmi:id="_2P44oNzKEeKJaqAE92u7Tw" role="_YmppALPwEeK5iozmV46vng"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_6af34NzKEeKJaqAE92u7Tw" clientDependency="_sjzzsNywEeKNcdbTNyOprA _tqCfINy0EeKHUKr0xr19pg" name="I3_I3_connector">
+        <end xmi:id="_6age8NzKEeKJaqAE92u7Tw" role="_n4QK0LPwEeK5iozmV46vng"/>
+        <end xmi:id="_6age8dzKEeKJaqAE92u7Tw" role="_nQwtALPwEeK5iozmV46vng"/>
+      </ownedConnector>
+      <interfaceRealization xmi:id="_sjzzsNywEeKNcdbTNyOprA" name="AcpToI3" client="_NZ4OkLPwEeK5iozmV46vng _n4QK0LPwEeK5iozmV46vng _6af34NzKEeKJaqAE92u7Tw" supplier="_6S9BALPvEeK5iozmV46vng" contract="_6S9BALPvEeK5iozmV46vng"/>
+      <nestedClassifier xmi:type="uml:Class" xmi:id="_2pccYNyvEeKNcdbTNyOprA" name="TypeOfAcp"/>
+    </nestedClassifier>
+    <nestedClassifier xmi:type="uml:Class" xmi:id="_xuY3oNyvEeKNcdbTNyOprA" name="TypeOfAp"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="_-psXwLPvEeK5iozmV46vng" clientDependency="_hMZ2kNywEeKNcdbTNyOprA" name="B">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_UIdmcLPwEeK5iozmV46vng" clientDependency="_hMZ2kNywEeKNcdbTNyOprA" name="Bp" type="_71x-YNyvEeKNcdbTNyOprA" aggregation="composite"/>
+    <nestedClassifier xmi:type="uml:Class" xmi:id="_71x-YNyvEeKNcdbTNyOprA" name="TypeOfBp"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Component" xmi:id="__QbnoLPvEeK5iozmV46vng" clientDependency="_foRxYNywEeKNcdbTNyOprA" name="C">
+    <ownedAttribute xmi:type="uml:Port" xmi:id="_V5MkQLPwEeK5iozmV46vng" clientDependency="_foRxYNywEeKNcdbTNyOprA" name="Cp" type="_8CvcUNyvEeKNcdbTNyOprA" aggregation="composite"/>
+    <ownedConnector xmi:id="_05MLcNzKEeKJaqAE92u7Tw" clientDependency="_bj9AUNywEeKNcdbTNyOprA _foRxYNywEeKNcdbTNyOprA" name="I2_I2_connector">
+      <end xmi:id="_05MLcdzKEeKJaqAE92u7Tw" role="_YmppALPwEeK5iozmV46vng"/>
+      <end xmi:id="_05MLctzKEeKJaqAE92u7Tw" role="_V5MkQLPwEeK5iozmV46vng"/>
+    </ownedConnector>
+    <interfaceRealization xmi:id="_foRxYNywEeKNcdbTNyOprA" name="CpToI2" client="__QbnoLPvEeK5iozmV46vng _V5MkQLPwEeK5iozmV46vng _05MLcNzKEeKJaqAE92u7Tw" supplier="_4-gWkLPvEeK5iozmV46vng" contract="_4-gWkLPvEeK5iozmV46vng"/>
+    <nestedClassifier xmi:type="uml:Class" xmi:id="_8CvcUNyvEeKNcdbTNyOprA" name="TypeOfCp"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_hMZ2kNywEeKNcdbTNyOprA" name="I1ToBp" client="_UIdmcLPwEeK5iozmV46vng _-psXwLPvEeK5iozmV46vng _0TF0wNzKEeKJaqAE92u7Tw" supplier="_4E51ELPvEeK5iozmV46vng"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_bj9AUNywEeKNcdbTNyOprA" name="I2ToAp" client="_YmppALPwEeK5iozmV46vng _9ehlILPvEeK5iozmV46vng _05MLcNzKEeKJaqAE92u7Tw" supplier="_4-gWkLPvEeK5iozmV46vng"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_vQL9kNy0EeKHUKr0xr19pg" name="I2ToAcp" client="_n4QK0LPwEeK5iozmV46vng _NZ4OkLPwEeK5iozmV46vng _2P4RkNzKEeKJaqAE92u7Tw" supplier="_4-gWkLPvEeK5iozmV46vng"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_tqCfINy0EeKHUKr0xr19pg" name="I3ToAbp" client="_nQwtALPwEeK5iozmV46vng _L6HsALPwEeK5iozmV46vng _6af34NzKEeKJaqAE92u7Tw" supplier="_6S9BALPvEeK5iozmV46vng"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_rsE9oNy0EeKHUKr0xr19pg" name="I4ToAap" client="_mW_MYLPwEeK5iozmV46vng _Is6JILPwEeK5iozmV46vng _6xjF8NzKEeKJaqAE92u7Tw" supplier="_62DHALPvEeK5iozmV46vng"/>
+</uml:Model>

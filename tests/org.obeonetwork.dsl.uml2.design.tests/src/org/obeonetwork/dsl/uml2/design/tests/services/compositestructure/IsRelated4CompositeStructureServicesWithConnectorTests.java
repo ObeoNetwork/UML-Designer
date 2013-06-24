@@ -27,7 +27,7 @@ public class IsRelated4CompositeStructureServicesWithConnectorTests extends Abst
 	 * The test resource URI.
 	 */
 	private static final String RESOURCE_URI = Activator.PLUGIN_ID
-			+ "/resources/compositeStructure_relatedElements_withconnector.uml";
+			+ "/resources/compositeStructure/CSRelatedElements_WithConnectors/compositeStructure_relatedElements.uml";
 
 	@Override
 	public String getRessourceURI() {

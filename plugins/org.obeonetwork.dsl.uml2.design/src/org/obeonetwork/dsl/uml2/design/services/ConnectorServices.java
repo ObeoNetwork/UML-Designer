@@ -118,7 +118,18 @@ public final class ConnectorServices {
 	 * @return the boolean result
 	 */
 	public boolean isRequiredInterface(Interface anInterface, Port aPort) {
-		return aPort.getRequireds().contains(anInterface);
+		boolean result = aPort.getRequireds().contains(anInterface);
+		if (!result) {
+			for (Dependency dependency : aPort.getClientDependencies()) {
+				if (result) {
+					break;
+				}
+				if (dependency instanceof Usage) {
+					result = dependency.getSuppliers().contains(anInterface);
+				}
+			}
+		}
+		return result;
 	}
 
 	/**
@@ -131,7 +142,18 @@ public final class ConnectorServices {
 	 * @return the boolean result
 	 */
 	public boolean isProvidedInterface(Interface anInterface, Port aPort) {
-		return aPort.getProvideds().contains(anInterface);
+		boolean result = aPort.getProvideds().contains(anInterface);
+		if (!result) {
+			for (Dependency dependency : aPort.getClientDependencies()) {
+				if (result) {
+					break;
+				}
+				if (dependency instanceof InterfaceRealization) {
+					result = dependency.getSuppliers().contains(anInterface);
+				}
+			}
+		}
+		return result;
 	}
 
 	/**
@@ -307,6 +329,9 @@ public final class ConnectorServices {
 		} else if (source instanceof Port && target instanceof Interface) {
 			// Make a new connector From Port to Interface
 			connectPort2Interface((DNode)sourceView, (Port)source, (DNode)targetView, (Interface)target);
+		} else if (source instanceof Property && target instanceof Property) {
+			// Make a new connector From Port to Interface
+			connectProperty2Property((Property)source, (Property)target);
 		} else {
 			logger.error("ConnectorServices.createConnector(" + source.getClass() + ", " + target.getClass()
 					+ ") not handled", null);
@@ -521,8 +546,9 @@ public final class ConnectorServices {
 	 *            the property target
 	 * @return the new connector
 	 */
-	private Connector connectProperty2Property(StructuredClassifier structuredClassifier, Property pSource,
-			Property pTarget) {
+	private Connector connectProperty2Property(Property pSource, Property pTarget) {
+
+		final StructuredClassifier structuredClassifier = (StructuredClassifier)pSource.eContainer();
 
 		final Connector connector = createConnector(structuredClassifier, pSource, pTarget);
 
@@ -605,6 +631,13 @@ public final class ConnectorServices {
 		return result;
 	}
 
+	/**
+	 * get the edge source for the Port2SubRequiredInterface edge.
+	 * 
+	 * @param connector
+	 *            the connector context
+	 * @return the edge source
+	 */
 	public List<Port> getSource4Port2SubRequiredInterface(Connector connector) {
 		// [end.role.oclAsType(uml::Port)/]
 		List<Port> result = new ArrayList<Port>();

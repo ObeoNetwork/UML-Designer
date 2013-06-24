@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2013 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -25,7 +25,7 @@ public class ConnectorServicesTests extends AbstractCompositeStructueTests {
 	 * The test resource URI.
 	 */
 	private static final String RESOURCE_URI = Activator.PLUGIN_ID
-			+ "/resources/compositeStructure_relatedElements.uml";
+			+ "/resources/compositeStructure/CSRelatedElements/compositeStructure_relatedElements.uml";
 
 	private ConnectorServices connectorServices;
 
@@ -212,10 +212,10 @@ public class ConnectorServicesTests extends AbstractCompositeStructueTests {
 
 	public void testIsConnectableProperty2Property() {
 		// IsConnectable Property Property
-		assertFalse(connectorServices.isConnectable(AProp1, AProp1));
+		assertTrue(connectorServices.isConnectable(AProp1, AProp1));
 		assertTrue(connectorServices.isConnectable(AProp1, AProp2));
 		assertTrue(connectorServices.isConnectable(AProp2, AProp1));
-		assertFalse(connectorServices.isConnectable(AProp2, AProp2));
+		assertTrue(connectorServices.isConnectable(AProp2, AProp2));
 
 	}
 }

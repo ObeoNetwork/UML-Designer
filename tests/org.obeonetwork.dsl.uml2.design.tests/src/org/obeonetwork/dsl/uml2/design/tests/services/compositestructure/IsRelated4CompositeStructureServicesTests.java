@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2013 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,7 +27,7 @@ public class IsRelated4CompositeStructureServicesTests extends AbstractComposite
 	 * The test resource URI.
 	 */
 	private static final String RESOURCE_URI = Activator.PLUGIN_ID
-			+ "/resources/compositeStructure_relatedElements.uml";
+			+ "/resources/compositeStructure/CSRelatedElements/compositeStructure_relatedElements.uml";
 
 	@Override
 	public String getRessourceURI() {

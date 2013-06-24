@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_9lCPUdfqEeK8Hvme-uzzvQ" name="allConnectorCaseUnitTesting">
+  <packagedElement xmi:type="uml:Package" xmi:id="_IOao0NfrEeK8Hvme-uzzvQ" name="caseABCD Classifier with Classifier">
+    <packagedElement xmi:type="uml:Interface" xmi:id="_UXR4ENfrEeK8Hvme-uzzvQ" name="A"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_VQew8NfrEeK8Hvme-uzzvQ" name="B"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_VY338NfrEeK8Hvme-uzzvQ" name="C"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_VhYTsNfrEeK8Hvme-uzzvQ" name="D"/>
+    <packagedElement xmi:type="uml:Component" xmi:id="_oxV2kNftEeK8Hvme-uzzvQ" clientDependency="_LJ19wNnQEeKa4biSCFX1iA _LJ3L4NnQEeKa4biSCFX1iA _NLCZcNnQEeKa4biSCFX1iA _NLDAgNnQEeKa4biSCFX1iA" name="C1">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_0kllsNfuEeKCn79c7IB-xQ" clientDependency="_LJ19wNnQEeKa4biSCFX1iA _LJ3L4NnQEeKa4biSCFX1iA" name="Cp1" type="_hA-cIdfuEeKCn79c7IB-xQ" aggregation="composite" isConjugated="true"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_QWD8ANp1EeKRn4-e9Mo4Eg" name="C1Port" type="_oxV2kNftEeK8Hvme-uzzvQ"/>
+      <ownedConnector xmi:id="_QV2godp1EeKRn4-e9Mo4Eg" clientDependency="_nGiSINnQEeKa4biSCFX1iA _NLCZcNnQEeKa4biSCFX1iA" name="C_C_connector">
+        <end xmi:id="_QWCG0Np1EeKRn4-e9Mo4Eg" role="_26g7QNfuEeKCn79c7IB-xQ"/>
+        <end xmi:id="_QWEjENp1EeKRn4-e9Mo4Eg" role="_QWD8ANp1EeKRn4-e9Mo4Eg"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_RMmicNp1EeKRn4-e9Mo4Eg" clientDependency="_nGTBkNnQEeKa4biSCFX1iA _LJ19wNnQEeKa4biSCFX1iA" name="A_A_connector">
+        <end xmi:id="_RMnJgNp1EeKRn4-e9Mo4Eg" role="_26g7QNfuEeKCn79c7IB-xQ"/>
+        <end xmi:id="_RMnJgdp1EeKRn4-e9Mo4Eg" role="_0kllsNfuEeKCn79c7IB-xQ"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_Rq5oANp1EeKRn4-e9Mo4Eg" clientDependency="_LJ3L4NnQEeKa4biSCFX1iA _pm2SwNnQEeKa4biSCFX1iA" name="B_B_connector">
+        <end xmi:id="_Rq5oAdp1EeKRn4-e9Mo4Eg" role="_0kllsNfuEeKCn79c7IB-xQ"/>
+        <end xmi:id="_Rq6PEdp1EeKRn4-e9Mo4Eg" role="_Rq6PENp1EeKRn4-e9Mo4Eg"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_SETmgNp1EeKRn4-e9Mo4Eg" clientDependency="_pnB48NnQEeKa4biSCFX1iA _NLDAgNnQEeKa4biSCFX1iA" name="D_D_connector">
+        <end xmi:id="_SEUNkNp1EeKRn4-e9Mo4Eg" role="_Rq6PENp1EeKRn4-e9Mo4Eg"/>
+        <end xmi:id="_SEUNkdp1EeKRn4-e9Mo4Eg" role="_QWD8ANp1EeKRn4-e9Mo4Eg"/>
+      </ownedConnector>
+      <interfaceRealization xmi:id="_LJ19wNnQEeKa4biSCFX1iA" name="C1ToA" client="_oxV2kNftEeK8Hvme-uzzvQ _0kllsNfuEeKCn79c7IB-xQ _RMmicNp1EeKRn4-e9Mo4Eg" supplier="_UXR4ENfrEeK8Hvme-uzzvQ" contract="_UXR4ENfrEeK8Hvme-uzzvQ"/>
+      <interfaceRealization xmi:id="_LJ3L4NnQEeKa4biSCFX1iA" name="C1ToB" client="_oxV2kNftEeK8Hvme-uzzvQ _0kllsNfuEeKCn79c7IB-xQ _Rq5oANp1EeKRn4-e9Mo4Eg" supplier="_VQew8NfrEeK8Hvme-uzzvQ" contract="_VQew8NfrEeK8Hvme-uzzvQ"/>
+      <interfaceRealization xmi:id="_NLCZcNnQEeKa4biSCFX1iA" name="C1ToC" client="_oxV2kNftEeK8Hvme-uzzvQ _QV2godp1EeKRn4-e9Mo4Eg" supplier="_VY338NfrEeK8Hvme-uzzvQ" contract="_VY338NfrEeK8Hvme-uzzvQ"/>
+      <interfaceRealization xmi:id="_NLDAgNnQEeKa4biSCFX1iA" name="C1ToD" client="_oxV2kNftEeK8Hvme-uzzvQ _SETmgNp1EeKRn4-e9Mo4Eg" supplier="_VhYTsNfrEeK8Hvme-uzzvQ" contract="_VhYTsNfrEeK8Hvme-uzzvQ"/>
+      <nestedClassifier xmi:type="uml:Class" xmi:id="_hA-cIdfuEeKCn79c7IB-xQ" name="Class1"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_rGuZkNftEeK8Hvme-uzzvQ" clientDependency="_nGTBkNnQEeKa4biSCFX1iA _nGiSINnQEeKa4biSCFX1iA" name="C2">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_26g7QNfuEeKCn79c7IB-xQ" clientDependency="_nGTBkNnQEeKa4biSCFX1iA _nGiSINnQEeKa4biSCFX1iA" name="Cp2" type="_h7dHYNfuEeKCn79c7IB-xQ" aggregation="composite" isConjugated="true"/>
+      <nestedClassifier xmi:type="uml:Class" xmi:id="_h7dHYNfuEeKCn79c7IB-xQ" name="Class2"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Component" xmi:id="_rfEBENftEeK8Hvme-uzzvQ" clientDependency="_pm2SwNnQEeKa4biSCFX1iA _pnB48NnQEeKa4biSCFX1iA" name="C3">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_Rq6PENp1EeKRn4-e9Mo4Eg" name="C3Port" type="_rfEBENftEeK8Hvme-uzzvQ"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_nGTBkNnQEeKa4biSCFX1iA" name="AToCp2" client="_26g7QNfuEeKCn79c7IB-xQ _rGuZkNftEeK8Hvme-uzzvQ _RMmicNp1EeKRn4-e9Mo4Eg" supplier="_UXR4ENfrEeK8Hvme-uzzvQ"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_nGiSINnQEeKa4biSCFX1iA" name="CToCp2" client="_26g7QNfuEeKCn79c7IB-xQ _rGuZkNftEeK8Hvme-uzzvQ _QV2godp1EeKRn4-e9Mo4Eg" supplier="_VY338NfrEeK8Hvme-uzzvQ"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_pm2SwNnQEeKa4biSCFX1iA" name="BToC3" client="_rfEBENftEeK8Hvme-uzzvQ _Rq5oANp1EeKRn4-e9Mo4Eg" supplier="_VQew8NfrEeK8Hvme-uzzvQ"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_pnB48NnQEeKa4biSCFX1iA" name="DToC3" client="_rfEBENftEeK8Hvme-uzzvQ _SETmgNp1EeKRn4-e9Mo4Eg" supplier="_VhYTsNfrEeK8Hvme-uzzvQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_LvXAANfrEeK8Hvme-uzzvQ" name="caseEFGH Classifier with parent Classifier">
+    <packagedElement xmi:type="uml:Interface" xmi:id="_XlGe8NfrEeK8Hvme-uzzvQ" name="E"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_XlGe8dfrEeK8Hvme-uzzvQ" name="F"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_XlGe8tfrEeK8Hvme-uzzvQ" name="G"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_XlGe89frEeK8Hvme-uzzvQ" name="H"/>
+    <packagedElement xmi:type="uml:Component" xmi:id="_n3HeQNpDEeKa4biSCFX1iA" clientDependency="_MlKooNpGEeKa4biSCFX1iA _MlLPsNpGEeKa4biSCFX1iA _OlZbANpGEeKa4biSCFX1iA _OlapINpGEeKa4biSCFX1iA" name="C1">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_mH8xQNpEEeKa4biSCFX1iA" clientDependency="_MlKooNpGEeKa4biSCFX1iA _MlLPsNpGEeKa4biSCFX1iA" name="Cp1Provided" type="_70qKwNpDEeKa4biSCFX1iA" aggregation="composite" isConjugated="true"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_oBAkoNpEEeKa4biSCFX1iA" clientDependency="_OlZbANpGEeKa4biSCFX1iA _OlapINpGEeKa4biSCFX1iA" name="Cp1Requried" type="_iIvJsNpEEeKa4biSCFX1iA" aggregation="composite" isConjugated="true"/>
+      <interfaceRealization xmi:id="_MlKooNpGEeKa4biSCFX1iA" name="C1ToE" client="_n3HeQNpDEeKa4biSCFX1iA _mH8xQNpEEeKa4biSCFX1iA" supplier="_XlGe8NfrEeK8Hvme-uzzvQ" contract="_XlGe8NfrEeK8Hvme-uzzvQ"/>
+      <interfaceRealization xmi:id="_MlLPsNpGEeKa4biSCFX1iA" name="C1ToF" client="_n3HeQNpDEeKa4biSCFX1iA _mH8xQNpEEeKa4biSCFX1iA" supplier="_XlGe8dfrEeK8Hvme-uzzvQ" contract="_XlGe8dfrEeK8Hvme-uzzvQ"/>
+      <nestedClassifier xmi:type="uml:Component" xmi:id="_tQ5mYNpDEeKa4biSCFX1iA" clientDependency="_FNpBcNpGEeKa4biSCFX1iA _GVI1ANpGEeKa4biSCFX1iA _IYtPQNpGEeKa4biSCFX1iA _Jnhy0NpGEeKa4biSCFX1iA" name="C2">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_6fIFwNpEEeKa4biSCFX1iA" clientDependency="_FNpBcNpGEeKa4biSCFX1iA" name="Cp2Provided" type="_4oGvMNpDEeKa4biSCFX1iA" aggregation="composite" isConjugated="true"/>
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_B95H8NpGEeKa4biSCFX1iA" clientDependency="_IYtPQNpGEeKa4biSCFX1iA" name="Cp2Required" type="_us_UcNpEEeKa4biSCFX1iA" aggregation="composite" isConjugated="true"/>
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_1AxvcdqAEeKNvJJSll0EsA" name="C2Port" type="_tQ5mYNpDEeKa4biSCFX1iA"/>
+        <ownedConnector xmi:id="_0FVa4NqAEeKNvJJSll0EsA" clientDependency="_FNpBcNpGEeKa4biSCFX1iA" name="E_Cp1Provided_connector">
+          <end xmi:id="_0FXQENqAEeKNvJJSll0EsA" role="_6fIFwNpEEeKa4biSCFX1iA"/>
+          <end xmi:id="_0FXQEdqAEeKNvJJSll0EsA" role="_mH8xQNpEEeKa4biSCFX1iA"/>
+        </ownedConnector>
+        <ownedConnector xmi:id="_1AxvcNqAEeKNvJJSll0EsA" clientDependency="_GVI1ANpGEeKa4biSCFX1iA" name="F_Cp1Provided_connector">
+          <end xmi:id="_1AyWgNqAEeKNvJJSll0EsA" role="_1AxvcdqAEeKNvJJSll0EsA"/>
+          <end xmi:id="_1AyWgdqAEeKNvJJSll0EsA" role="_mH8xQNpEEeKa4biSCFX1iA"/>
+        </ownedConnector>
+        <ownedConnector xmi:id="_3LhvwNqAEeKNvJJSll0EsA" clientDependency="_IYtPQNpGEeKa4biSCFX1iA" name="Cp1Requried_G_connector">
+          <end xmi:id="_3LhvwdqAEeKNvJJSll0EsA" role="_B95H8NpGEeKa4biSCFX1iA"/>
+          <end xmi:id="_3LiW0NqAEeKNvJJSll0EsA" role="_oBAkoNpEEeKa4biSCFX1iA"/>
+        </ownedConnector>
+        <ownedConnector xmi:id="_YikIwdqIEeKUMsme46ZqHQ" clientDependency="_Jnhy0NpGEeKa4biSCFX1iA" name="Cp1Requried_H_connector">
+          <end xmi:id="_Yiq2cNqIEeKUMsme46ZqHQ" role="_1AxvcdqAEeKNvJJSll0EsA"/>
+          <end xmi:id="_YisEkNqIEeKUMsme46ZqHQ" role="_oBAkoNpEEeKa4biSCFX1iA"/>
+        </ownedConnector>
+        <interfaceRealization xmi:id="_FNpBcNpGEeKa4biSCFX1iA" name="C2ToE" client="_tQ5mYNpDEeKa4biSCFX1iA _6fIFwNpEEeKa4biSCFX1iA _0FVa4NqAEeKNvJJSll0EsA" supplier="_XlGe8NfrEeK8Hvme-uzzvQ" contract="_XlGe8NfrEeK8Hvme-uzzvQ"/>
+        <interfaceRealization xmi:id="_GVI1ANpGEeKa4biSCFX1iA" name="C2ToF" client="_tQ5mYNpDEeKa4biSCFX1iA _1AxvcNqAEeKNvJJSll0EsA" supplier="_XlGe8dfrEeK8Hvme-uzzvQ" contract="_XlGe8dfrEeK8Hvme-uzzvQ"/>
+        <nestedClassifier xmi:type="uml:Class" xmi:id="_4oGvMNpDEeKa4biSCFX1iA" name="Class21"/>
+        <nestedClassifier xmi:type="uml:Class" xmi:id="_us_UcNpEEeKa4biSCFX1iA" name="Class22"/>
+      </nestedClassifier>
+      <nestedClassifier xmi:type="uml:Class" xmi:id="_70qKwNpDEeKa4biSCFX1iA" name="Class11"/>
+      <nestedClassifier xmi:type="uml:Class" xmi:id="_iIvJsNpEEeKa4biSCFX1iA" name="Class12"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_IYtPQNpGEeKa4biSCFX1iA" name="GToCp2Required" client="_B95H8NpGEeKa4biSCFX1iA _tQ5mYNpDEeKa4biSCFX1iA _3LhvwNqAEeKNvJJSll0EsA" supplier="_XlGe8tfrEeK8Hvme-uzzvQ"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_Jnhy0NpGEeKa4biSCFX1iA" name="HToC2" client="_tQ5mYNpDEeKa4biSCFX1iA _YikIwdqIEeKUMsme46ZqHQ" supplier="_XlGe89frEeK8Hvme-uzzvQ"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_OlZbANpGEeKa4biSCFX1iA" name="GToCp1Requried" client="_oBAkoNpEEeKa4biSCFX1iA _n3HeQNpDEeKa4biSCFX1iA" supplier="_XlGe8tfrEeK8Hvme-uzzvQ"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_OlapINpGEeKa4biSCFX1iA" name="HToCp1Requried" client="_oBAkoNpEEeKa4biSCFX1iA _n3HeQNpDEeKa4biSCFX1iA" supplier="_XlGe89frEeK8Hvme-uzzvQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_JvknoNftEeK8Hvme-uzzvQ" name="caseIJ Properties with parent Classifier">
+    <packagedElement xmi:type="uml:Interface" xmi:id="_JvknpdftEeK8Hvme-uzzvQ" name="I"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_JvknptftEeK8Hvme-uzzvQ" name="J"/>
+    <packagedElement xmi:type="uml:Component" xmi:id="_TKjoQNpGEeKa4biSCFX1iA" clientDependency="_wc6vENpGEeKa4biSCFX1iA _yP5IkNpGEeKa4biSCFX1iA _f339gdpIEeKJxq492vIbyQ" name="C1">
+      <ownedAttribute xmi:id="_TqvkMNpGEeKa4biSCFX1iA" clientDependency="_f339gdpIEeKJxq492vIbyQ _JTwzMNpPEeKmp5oa7JEoeQ" name="Part1" aggregation="composite"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_nhjWkNpGEeKa4biSCFX1iA" clientDependency="_yP5IkNpGEeKa4biSCFX1iA" name="Cp1Provided" type="_YTYjQNpGEeKa4biSCFX1iA" aggregation="composite" isConjugated="true"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_qwKAkNpGEeKa4biSCFX1iA" clientDependency="_wc6vENpGEeKa4biSCFX1iA" name="Cp1Required" type="_lu67UNpGEeKa4biSCFX1iA" aggregation="composite" isConjugated="true"/>
+      <ownedConnector xmi:id="_6gdKkNqIEeKUMsme46ZqHQ" clientDependency="_f339gdpIEeKJxq492vIbyQ" name="I_Cp1Provided_connector">
+        <end xmi:id="_6gdxoNqIEeKUMsme46ZqHQ" role="_TqvkMNpGEeKa4biSCFX1iA"/>
+        <end xmi:id="_6gdxodqIEeKUMsme46ZqHQ" role="_nhjWkNpGEeKa4biSCFX1iA"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_8yL8oNqIEeKUMsme46ZqHQ" clientDependency="_JTwzMNpPEeKmp5oa7JEoeQ" name="Cp1Required_J_connector">
+        <end xmi:id="_8yL8odqIEeKUMsme46ZqHQ" role="_TqvkMNpGEeKa4biSCFX1iA"/>
+        <end xmi:id="_8yMjsNqIEeKUMsme46ZqHQ" role="_qwKAkNpGEeKa4biSCFX1iA"/>
+      </ownedConnector>
+      <interfaceRealization xmi:id="_yP5IkNpGEeKa4biSCFX1iA" name="C1ToI" client="_TKjoQNpGEeKa4biSCFX1iA _nhjWkNpGEeKa4biSCFX1iA" supplier="_JvknpdftEeK8Hvme-uzzvQ" contract="_JvknpdftEeK8Hvme-uzzvQ"/>
+      <interfaceRealization xmi:id="_f339gdpIEeKJxq492vIbyQ" name="C1ToI" client="_TKjoQNpGEeKa4biSCFX1iA _TqvkMNpGEeKa4biSCFX1iA _6gdKkNqIEeKUMsme46ZqHQ" supplier="_JvknpdftEeK8Hvme-uzzvQ" contract="_JvknpdftEeK8Hvme-uzzvQ"/>
+      <nestedClassifier xmi:type="uml:Class" xmi:id="_YTYjQNpGEeKa4biSCFX1iA" name="Class1"/>
+      <nestedClassifier xmi:type="uml:Class" xmi:id="_lu67UNpGEeKa4biSCFX1iA" name="Class2"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_wc6vENpGEeKa4biSCFX1iA" name="JToCp1Required" client="_qwKAkNpGEeKa4biSCFX1iA _TKjoQNpGEeKa4biSCFX1iA" supplier="_JvknptftEeK8Hvme-uzzvQ"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_JTwzMNpPEeKmp5oa7JEoeQ" name="JToPart1" client="_TqvkMNpGEeKa4biSCFX1iA _8yL8oNqIEeKUMsme46ZqHQ" supplier="_JvknptftEeK8Hvme-uzzvQ"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_OR2x8NfrEeK8Hvme-uzzvQ" name="caseKLMNOP Properties">
+    <packagedElement xmi:type="uml:Interface" xmi:id="_Xwq1wNfrEeK8Hvme-uzzvQ" name="K"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_Xwq1wdfrEeK8Hvme-uzzvQ" name="L"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_Xwq1wtfrEeK8Hvme-uzzvQ" name="M"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_Xwq1w9frEeK8Hvme-uzzvQ" name="N"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_cramkNftEeK8Hvme-uzzvQ" name="O"/>
+    <packagedElement xmi:type="uml:Interface" xmi:id="_cramkdftEeK8Hvme-uzzvQ" name="P"/>
+    <packagedElement xmi:type="uml:Component" xmi:id="_xZumgNpPEeKhlvAzK64oNw" clientDependency="_-FnDQNpPEeKhlvAzK64oNw _CJV-cNpQEeKhlvAzK64oNw _DX7RcNpQEeKhlvAzK64oNw _NEbroNpTEeKLSMGhKjZpeA" name="C1">
+      <ownedAttribute xmi:id="_zR8sYNpPEeKhlvAzK64oNw" clientDependency="_4xAWENpPEeKhlvAzK64oNw _-FnDQNpPEeKhlvAzK64oNw" name="Part1" aggregation="composite"/>
+      <ownedAttribute xmi:id="_0rc18NpPEeKhlvAzK64oNw" clientDependency="_6uFGwNpPEeKhlvAzK64oNw _CJV-cNpQEeKhlvAzK64oNw" name="Part2" aggregation="composite"/>
+      <ownedAttribute xmi:id="_1_cNYNpPEeKhlvAzK64oNw" clientDependency="_7kvB8NpPEeKhlvAzK64oNw _DX7RcNpQEeKhlvAzK64oNw" name="Part3" aggregation="composite"/>
+      <ownedAttribute xmi:id="_4kwicNpSEeKLSMGhKjZpeA" clientDependency="_NEbroNpTEeKLSMGhKjZpeA _R9VUQNpTEeKLSMGhKjZpeA" name="Part4" aggregation="composite"/>
+      <ownedAttribute xmi:id="_w5X3YNqPEeKvi7JQw3Sccw" name="Part5Notyped" aggregation="composite">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_HjACMNyqEeKNcdbTNyOprA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_HjEToNyqEeKNcdbTNyOprA" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_xtxv0NqPEeKvi7JQw3Sccw" name="Part6NoTyped" aggregation="composite">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JGFlkNyqEeKNcdbTNyOprA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JGGMoNyqEeKNcdbTNyOprA" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_McoqoNyqEeKNcdbTNyOprA" name="Part7Typed" type="_cramkdftEeK8Hvme-uzzvQ" aggregation="composite">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_StHKMNyqEeKNcdbTNyOprA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_StHKMdyqEeKNcdbTNyOprA" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_NgcRANyqEeKNcdbTNyOprA" name="Part8Typed" type="_cramkdftEeK8Hvme-uzzvQ" aggregation="composite">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_VV9bwNyqEeKNcdbTNyOprA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_VV9bwdyqEeKNcdbTNyOprA" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_O1W1gNyqEeKNcdbTNyOprA" name="Part9Typed" type="_cramkdftEeK8Hvme-uzzvQ" aggregation="composite">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_WeysENyqEeKNcdbTNyOprA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_WeysEdyqEeKNcdbTNyOprA" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_PvVKcNyqEeKNcdbTNyOprA" name="Part10NoTyped" aggregation="composite">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_XvzoANyqEeKNcdbTNyOprA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_XvzoAdyqEeKNcdbTNyOprA" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_Y-nkgNyqEeKNcdbTNyOprA" name="Part11NoTyped" aggregation="composite">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_bVxpINyqEeKNcdbTNyOprA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_bVyQMNyqEeKNcdbTNyOprA" value="1"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_Z5bm8NyqEeKNcdbTNyOprA" name="Part12Typed" type="_cramkdftEeK8Hvme-uzzvQ" aggregation="composite">
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_cNhwgNyqEeKNcdbTNyOprA" value="1"/>
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_cNhwgdyqEeKNcdbTNyOprA" value="1"/>
+      </ownedAttribute>
+      <ownedConnector xmi:id="_ITRaMNqJEeKUMsme46ZqHQ" clientDependency="_QYjHwNpTEeKLSMGhKjZpeA _-FnDQNpPEeKhlvAzK64oNw" name="L_L_connector">
+        <end xmi:id="_ITSBQNqJEeKUMsme46ZqHQ" role="_HSt8INqJEeKUMsme46ZqHQ"/>
+        <end xmi:id="_ITSBQdqJEeKUMsme46ZqHQ" role="_zR8sYNpPEeKhlvAzK64oNw"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_JNBssNqJEeKUMsme46ZqHQ" clientDependency="_NEbroNpTEeKLSMGhKjZpeA _6uFGwNpPEeKhlvAzK64oNw" name="M_M_connector">
+        <end xmi:id="_JNBssdqJEeKUMsme46ZqHQ" role="_4kwicNpSEeKLSMGhKjZpeA"/>
+        <end xmi:id="_JNBsstqJEeKUMsme46ZqHQ" role="_0rc18NpPEeKhlvAzK64oNw"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_JQbeoNqMEeK9Mrv6LCOvRQ" clientDependency="_R9VUQNpTEeKLSMGhKjZpeA _CJV-cNpQEeKhlvAzK64oNw" name="N_N_connector">
+        <end xmi:id="_JQbeodqMEeK9Mrv6LCOvRQ" role="_4kwicNpSEeKLSMGhKjZpeA"/>
+        <end xmi:id="_JQbeotqMEeK9Mrv6LCOvRQ" role="_0rc18NpPEeKhlvAzK64oNw"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_HgNW0dqPEeKvi7JQw3Sccw" clientDependency="_WXtN0NpTEeKLSMGhKjZpeA _DX7RcNpQEeKhlvAzK64oNw" name="P_P_connector">
+        <end xmi:id="_HgRBMNqPEeKvi7JQw3Sccw" role="_FOCXINpTEeKLSMGhKjZpeA"/>
+        <end xmi:id="_HgRBMdqPEeKvi7JQw3Sccw" role="_1_cNYNpPEeKhlvAzK64oNw"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_XGMAEdymEeK-6NzBDU0zsQ" name="Part5_Part6_connector">
+        <end xmi:id="_XGRfoNymEeK-6NzBDU0zsQ" role="_w5X3YNqPEeKvi7JQw3Sccw"/>
+        <end xmi:id="_XGSGsNymEeK-6NzBDU0zsQ" role="_xtxv0NqPEeKvi7JQw3Sccw"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_gMjVYNyrEeKNcdbTNyOprA" name="Part7Typed_Part8Typed_connector">
+        <end xmi:id="_gMj8cNyrEeKNcdbTNyOprA" role="_McoqoNyqEeKNcdbTNyOprA"/>
+        <end xmi:id="_gMj8cdyrEeKNcdbTNyOprA" role="_NgcRANyqEeKNcdbTNyOprA"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_gxoYYNyrEeKNcdbTNyOprA" name="Part9Typed_Part10NoTyped_connector">
+        <end xmi:id="_gxoYYdyrEeKNcdbTNyOprA" role="_O1W1gNyqEeKNcdbTNyOprA"/>
+        <end xmi:id="_gxoYYtyrEeKNcdbTNyOprA" role="_PvVKcNyqEeKNcdbTNyOprA"/>
+      </ownedConnector>
+      <ownedConnector xmi:id="_hTcE8NyrEeKNcdbTNyOprA" name="Part11NoTyped_Part12Typed_connector">
+        <end xmi:id="_hTcE8dyrEeKNcdbTNyOprA" role="_Y-nkgNyqEeKNcdbTNyOprA"/>
+        <end xmi:id="_hTcE8tyrEeKNcdbTNyOprA" role="_Z5bm8NyqEeKNcdbTNyOprA"/>
+      </ownedConnector>
+      <interfaceRealization xmi:id="_-FnDQNpPEeKhlvAzK64oNw" name="Part1ToL" client="_xZumgNpPEeKhlvAzK64oNw _zR8sYNpPEeKhlvAzK64oNw _ITRaMNqJEeKUMsme46ZqHQ" supplier="_Xwq1wdfrEeK8Hvme-uzzvQ" contract="_Xwq1wdfrEeK8Hvme-uzzvQ"/>
+      <interfaceRealization xmi:id="_CJV-cNpQEeKhlvAzK64oNw" name="Part2ToN" client="_xZumgNpPEeKhlvAzK64oNw _0rc18NpPEeKhlvAzK64oNw _JQbeoNqMEeK9Mrv6LCOvRQ" supplier="_Xwq1w9frEeK8Hvme-uzzvQ" contract="_Xwq1w9frEeK8Hvme-uzzvQ"/>
+      <interfaceRealization xmi:id="_DX7RcNpQEeKhlvAzK64oNw" name="Part3ToP" client="_xZumgNpPEeKhlvAzK64oNw _1_cNYNpPEeKhlvAzK64oNw _HgNW0dqPEeKvi7JQw3Sccw" supplier="_cramkdftEeK8Hvme-uzzvQ" contract="_cramkdftEeK8Hvme-uzzvQ"/>
+      <interfaceRealization xmi:id="_NEbroNpTEeKLSMGhKjZpeA" name="Part4ToM" client="_xZumgNpPEeKhlvAzK64oNw _4kwicNpSEeKLSMGhKjZpeA _JNBssNqJEeKUMsme46ZqHQ" supplier="_Xwq1wtfrEeK8Hvme-uzzvQ" contract="_Xwq1wtfrEeK8Hvme-uzzvQ"/>
+      <nestedClassifier xmi:type="uml:Class" xmi:id="_56N5gNpSEeKLSMGhKjZpeA" clientDependency="_L3pvcNpTEeKLSMGhKjZpeA _QYjHwNpTEeKLSMGhKjZpeA" name="Class1">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_HSt8INqJEeKUMsme46ZqHQ" name="Class1Port" type="_56N5gNpSEeKLSMGhKjZpeA"/>
+        <ownedConnector xmi:id="_HStVENqJEeKUMsme46ZqHQ" clientDependency="_4xAWENpPEeKhlvAzK64oNw _L3pvcNpTEeKLSMGhKjZpeA" name="K_K_connector">
+          <end xmi:id="_HStVEdqJEeKUMsme46ZqHQ" role="_zR8sYNpPEeKhlvAzK64oNw"/>
+          <end xmi:id="_HSujMNqJEeKUMsme46ZqHQ" role="_HSt8INqJEeKUMsme46ZqHQ"/>
+        </ownedConnector>
+        <interfaceRealization xmi:id="_L3pvcNpTEeKLSMGhKjZpeA" name="Class1ToK" client="_56N5gNpSEeKLSMGhKjZpeA _HStVENqJEeKUMsme46ZqHQ" supplier="_Xwq1wNfrEeK8Hvme-uzzvQ" contract="_Xwq1wNfrEeK8Hvme-uzzvQ"/>
+      </nestedClassifier>
+      <nestedClassifier xmi:type="uml:Class" xmi:id="_689I4NpSEeKLSMGhKjZpeA" clientDependency="_N6QgYNpTEeKLSMGhKjZpeA _WXtN0NpTEeKLSMGhKjZpeA" name="Class2">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_FOCXINpTEeKLSMGhKjZpeA" clientDependency="_N6QgYNpTEeKLSMGhKjZpeA _WXtN0NpTEeKLSMGhKjZpeA" name="P2" type="_-9CTINpSEeKLSMGhKjZpeA" aggregation="composite" isConjugated="true"/>
+        <ownedConnector xmi:id="_J2MeINqMEeK9Mrv6LCOvRQ" clientDependency="_N6QgYNpTEeKLSMGhKjZpeA _7kvB8NpPEeKhlvAzK64oNw" name="O_O_connector">
+          <end xmi:id="_J2MeIdqMEeK9Mrv6LCOvRQ" role="_FOCXINpTEeKLSMGhKjZpeA"/>
+          <end xmi:id="_J2NFMNqMEeK9Mrv6LCOvRQ" role="_1_cNYNpPEeKhlvAzK64oNw"/>
+        </ownedConnector>
+        <interfaceRealization xmi:id="_N6QgYNpTEeKLSMGhKjZpeA" name="P2ToO" client="_689I4NpSEeKLSMGhKjZpeA _FOCXINpTEeKLSMGhKjZpeA _J2MeINqMEeK9Mrv6LCOvRQ" supplier="_cramkNftEeK8Hvme-uzzvQ" contract="_cramkNftEeK8Hvme-uzzvQ"/>
+        <nestedClassifier xmi:type="uml:Class" xmi:id="_-9CTINpSEeKLSMGhKjZpeA" name="TypePort"/>
+      </nestedClassifier>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_4xAWENpPEeKhlvAzK64oNw" name="KToPart1" client="_zR8sYNpPEeKhlvAzK64oNw _HStVENqJEeKUMsme46ZqHQ" supplier="_Xwq1wNfrEeK8Hvme-uzzvQ"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_6uFGwNpPEeKhlvAzK64oNw" name="MToPart2" client="_0rc18NpPEeKhlvAzK64oNw _JNBssNqJEeKUMsme46ZqHQ" supplier="_Xwq1wtfrEeK8Hvme-uzzvQ"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_7kvB8NpPEeKhlvAzK64oNw" name="OToPart3" client="_1_cNYNpPEeKhlvAzK64oNw _J2MeINqMEeK9Mrv6LCOvRQ" supplier="_cramkNftEeK8Hvme-uzzvQ"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_QYjHwNpTEeKLSMGhKjZpeA" name="LToClass1" client="_56N5gNpSEeKLSMGhKjZpeA _ITRaMNqJEeKUMsme46ZqHQ" supplier="_Xwq1wdfrEeK8Hvme-uzzvQ"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_R9VUQNpTEeKLSMGhKjZpeA" name="NToPart4" client="_4kwicNpSEeKLSMGhKjZpeA _JQbeoNqMEeK9Mrv6LCOvRQ" supplier="_Xwq1w9frEeK8Hvme-uzzvQ"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_WXtN0NpTEeKLSMGhKjZpeA" name="PToP2" client="_FOCXINpTEeKLSMGhKjZpeA _689I4NpSEeKLSMGhKjZpeA _HgNW0dqPEeKvi7JQw3Sccw" supplier="_cramkdftEeK8Hvme-uzzvQ"/>
+  </packagedElement>
+</uml:Model>
