@@ -78,7 +78,7 @@ Document {
 					* The  _Model Explorer_ : is an explorer view which is the main UI to interact with the models. 
 					* The  _Outline_ : provides a structural overview of the document or model currently opened. For diagrams, it shows a miniature view of the whole diagram on which the user ca n easily navigate to other parts of the diagram for large ones.
 					* The  _Properties_ view gives detailed information about the currently selected element.
-					* The  _Problems_ view contains information markers of different severities (information only, warnings, or errors). This is where you will find validation errors on your models for example.
+					* The  _Problems_ view contains information markers of different severities (information only, warnings, or errors). This is where the user will find validation errors on the models for example.
 					
 
 					
@@ -115,18 +115,18 @@ Document {
 
 						These actions are available on the palette:
 
-						* _*Resizing*_: You can resize it to take more or less horizontal space by dragging the vertical separator between the palette and the diagram with your mouse.
-						* _*Folding*_: You can also fold the palette to hide it almost completely by clicking on the triangular icon in the corner of the palette header. When folded, you can restore it by clicking again on the same triangular icon. You can also keep it folded except when needed: when it is folded, a single click in the vertical folded area will reveal the palette temporarily so that you can select a tool. It will automatically hide again if you select a tool or click elsewhere.
-						* _*Moving*_: If you prefer, you can move the palette to the left side of the diagram editor by dragging the palette’s header with the mouse, or right-clicking on the header and choosing Dock On -> Left or Dock On -> Right.
+						* _*Resizing*_: The user can resize it to take more or less horizontal space by dragging the vertical separator between the palette and the diagram with his mouse.
+						* _*Folding*_: The user can also fold the palette to hide it almost completely by clicking on the triangular icon in the corner of the palette header. When folded, he can restore it by clicking again on the same triangular icon. He can also keep it folded except when needed: when it is folded, a single click in the vertical folded area will reveal the palette temporarily so that you can select a tool. It will automatically hide again if he selects a tool or clicks elsewhere.
+						* _*Moving*_: If the user prefer, he can move the palette to the left side of the diagram editor by dragging the palette’s header with the mouse, or right-clicking on the header and choosing Dock On -> Left or Dock On -> Right.
 						
 
 						A few general tools are available in standard on all diagrams. They appear in the top row of the palette, just below the header:
 
-						* _*Selection*_: The selection tool is the default one initially selected when a diagram is opened. To select an element on a diagram while this tool is active, simply click on it. To select several elements at the same time, the user can either draw a rectangle on the diagram (all the elements completely contained in the rectangle will get selected), or click on each element individually while keeping the Ctrl key pressed. When selecting elements which are already selected using this method, by clicking on them or drawing a rectangle around them, they are removed from the selection. You can combine both methods (de/selection by single click or by zone) to build complex selection incrementally by always keeping the Ctrl key pressed. Selected elements have an outline and anchors drawn on their border. Note that when a selection contains multiple elements, exactly one of them has black selection anchors; the rest have white anchors. The element with the black anchors is called the primary selection, and some tools treat it differently than the others (for example alignment tools).
+						* _*Selection*_: The selection tool is the default one initially selected when a diagram is opened. To select an element on a diagram while this tool is active, simply click on it. To select several elements at the same time, the user can either draw a rectangle on the diagram (all the elements completely contained in the rectangle will get selected), or click on each element individually while keeping the Ctrl key pressed. When selecting elements which are already selected using this method, by clicking on them or drawing a rectangle around them, they are removed from the selection. The user can combine both methods (de/selection by single click or by zone) to build complex selection incrementally by always keeping the Ctrl key pressed. Selected elements have an outline and anchors drawn on their border. Note that when a selection contains multiple elements, exactly one of them has black selection anchors; the rest have white anchors. The element with the black anchors is called the primary selection, and some tools treat it differently than the others (for example alignment tools).
 						* _*Zoom*_: Next in the palette come two buttons to control the zoom level of the main diagram area. When the Zoom in (resp. Zoom out) button is active, clicking anywhere on the diagram will increment (resp. decrement) the zoom level by 25%. The current zoom level is visible in the tabbar when no diagram element is selected (see the section on the tabbar buttons for more ways to control the zoom level).
-						* _*Notes and note attachments*_: All diagrams support the creation of notes and text elements, which can be attached to diagram elements. These elements are purely graphical annotations, and have no effect on the semantic model. The three tools used to create them are available in a combo-box in the palette’s top row. By default, the Note tool (represented by a yellow sticky note) is selected. If you click on the small arrow next to the sticky note, a menu appears where you can select which of the three tools to enable: Note, Text or Note attachment.
+						* _*Notes and note attachments*_: All diagrams support the creation of notes and text elements, which can be attached to diagram elements. These elements are purely graphical annotations, and have no effect on the semantic model. The three tools used to create them are available in a combo-box in the palette’s top row. By default, the Note tool (represented by a yellow sticky note) is selected. If the user clicks on the small arrow next to the sticky note, a menu appears where he can select which of the three tools to enable: Note, Text or Note attachment.
 						** _Notes and Text elements_: Are created in a similar way: either a single click somewhere on the diagram (which creates an element with a default size), or a click-drag to create the element with a custom initial size. Once created, one can edit the text inside the note or text zone usual the standard «direct edit» behavior ( F2, a slow double click, or by directly starting to enter alpha-numeric text). The only difference between notes and text zones is the visual presentation; notes have a yellow background (by default) and a border which represents a sticky not with a folded top-right corner.
-						** _Note attachments_: Can be created to link either notes or text zone to diagram elements (including other notes and text attachments). To create an attachment, activate the tool and then click once on the source element and once on the target element. You can also click and drag from the source to the target elements.
+						** _Note attachments_: Can be created to link either notes or text zone to diagram elements (including other notes and text attachments). To create an attachment, activate the tool and then click once on the source element and once on the target element. The user can also click and drag from the source to the target elements.
 						* _*Pin/Unpin*_: The final standard tools which are available in the top row of all the palette allow to mark or unmark diagram elements as pinned. Pinning an element on the diagram means that when an automatic layout of the diagram is requested (see the Arrange All action), the element will not be moved or resized: it will stay at the exact same position as you placed it. Pinned element can still be moved manually. To pin or unpin an element, simply select the appropriate tool (using the arrow right next to the icon to make the menu appear), and when the tool is active, click on the element to mark as pinned or un-pinned.
 						
 
@@ -142,12 +142,12 @@ Document {
 						** _Select All_: This is the default operation and will select all the elements visible on the diagram. It is also available via the Ctrl+A keyboard shortcut.
 						** _Select All Connectors_: This action will select all connectors (aka edges) between diagram elements which are visible on the diagram, and only them.
 						** _Select All Shapes_: This action will select all diagram elements which are not connectors/edges which are visible on the diagram.
-						* _*Refresh*_ : This operation, which can also be invoked with the F5 keyboard shortcut, will force an update of the diagram’s content according to the latest version of the underlying semantic model. The default operational mode for UML Designer is to automatically refresh the diagram’s content whenever any relevant change is detected in the semantic model. This can be disabled using the Automatic Refresh preference (see Window > Preferences > Viewpoint). When in manual refresh mode (i.e. Automatic Refresh is unchecked), you must manually use the Refresh operation whenever you want the diagram to take into account changes in the model. Even in automatic refresh mode, it may be sometimes necessary to invoke an explicit, manual refresh using this operation if UML Designer got confused.
+						* _*Refresh*_ : This operation, which can also be invoked with the F5 keyboard shortcut, will force an update of the diagram’s content according to the latest version of the underlying semantic model. The default operational mode for UML Designer is to automatically refresh the diagram’s content whenever any relevant change is detected in the semantic model. This can be disabled using the Automatic Refresh preference (see Window -> Preferences -> Viewpoint). When in manual refresh mode (i.e. Automatic Refresh is unchecked), the user must manually use the Refresh operation whenever he wants the diagram to take into account changes in the model. Even in automatic refresh mode, it may be sometimes necessary to invoke an explicit, manual refresh using this operation if UML Designer got confused.
 						* _*Layouting diagrams*_ :
 						** _Layouting mode_ : can be activated from the diagram toolbar, to allow the user to protect the semantic model while reorganizing a diagram. It avoids unfortunately changing properties or links related to model elements present on the diagram.
 						** _Automatic Layout Tools_ (Arrange All / Arrange Linked Bordered Nodes) :  Automatic layout uses a generic algorithm which tries to arrange the position and sizes of the elements on the diagram in a nice, readable way. In particular it makes sure, unless specific constraints pervent it, that no elements overlap each other, and that elements which contain others (i.e. containers) are large enough to show all their contents. It also tries to minimize the crossing of edges.
 						** _Alignment Control_: This menu contains several operations (Auto size, Make height and width same size...) which can be used to align several graphical elements in various ways. The actions in this menu are only enabled when several elements are selected.
-						** _Pin/Unpin_ : It is possible to mark specific elements in a diagram as having a fixed location so that they are not moved by the Arrange All action. Diagram element pinning allows the user to combine both methods: manually arranging the position and size of elements when it is important while still being able to call Arrange All for the rest, without the risk of destroying your manual layouts.
+						** _Pin/Unpin_ : It is possible to mark specific elements in a diagram as having a fixed location so that they are not moved by the Arrange All action. Diagram element pinning allows the user to combine both methods: manually arranging the position and size of elements when it is important while still being able to call Arrange All for the rest, without the risk of destroying the manual layouts.
 						** _Copy/Paste of layout_ : It is possible to duplicate layout of diagram elements, that is to say to replicate mutual organization of diagram elements from one diagram to another. This replication only applies to the same semantic elements between diagrams.
 						* _*Style customizations*_ : The style of each diagram elements can be customized. This customization can be applied from the tool bar, from the «Style» and «Appearance» tab of the property view, from the «Diagram» menu or from the contextual menu Format.  Theses customizations can be reset by the «Reset style customization» button available in the «Appearance» tab of the property view and in the diagram editor tool bar. The user can customize :
 						** in container style : the background color, the background style, the border size, the foreground color, the label alignment, the label size and the label format.
@@ -156,9 +156,9 @@ Document {
 						* _*Rulers and Grid*_ : Finally, the Rulers And Grid page (see below) contains preferences to control whether or not new diagrams should initialy show the rulers and/or grids, and whether to enable the Snap to grid and Snap to shapes behavior by default. The preferences on this page are only taken into account as starting values for new diagrams. Each diagram has its own configuration of rulers and grid which can be modified in the Rulers & Grid section of the Properties view of the diagram itself.
 						* _*Show/Hide*_ :
 						** Elements : When there is no selected element on the diagram, the tab-bar provides the button Show/Hide. This button opens a dialog to manage the shown and hidden elements on the diagram with a tree view, using various selection buttons (Check all, Uncheck all, Expand All and Collapse all) and various filters (All element, only checked elements and only unchecked elements). The user can also use regular expressions to easily retrieve the elements he wants to hide/reveal. It is possible to :
-						*** Hide element from diagram : Every graphical element on a diagram can be hidden explicitly. To do that, simply right click on the graphical element (or elements if you want to hide several elements at once) you want to hide. Then, choose Show/Hide->Hide Element. The graphical element is now hidden from view. The icon in the tool-bar changes showing a «check box» on it as soon as at least one element has been hidden, to remind the user that what he see is not a complete view of the model being represented.
-						*** Hide element from the outline : It is also possible to hide an element from the outline view. Choose outline mode to see the semantic model in a tree viewer. You can now right click on an element and choose Hide element. There are two ways to reveal hidden elements:
-						**** On the outline view, in outline mode, you can see every model element. The elements that are hidden have their names displayed in italic style. To reveal one of this element, simply right click on it and choose Show element.
+						*** Hide element from diagram : Every graphical element on a diagram can be hidden explicitly. To do that, simply right click on the graphical element (or elements if the user wants to hide several elements at once) that must be hidden. Then, choose Show/Hide->Hide Element. The graphical element is now hidden from view. The icon in the tool-bar changes showing a «check box» on it as soon as at least one element has been hidden, to remind the user that what he see is not a complete view of the model being represented.
+						*** Hide element from the outline : It is also possible to hide an element from the outline view. Choose outline mode to see the semantic model in a tree viewer. The user can now right click on an element and choose Hide element. There are two ways to reveal hidden elements:
+						**** On the outline view, in outline mode, he can see every model element. The elements that are hidden have their names displayed in italic style. To reveal one of this element, simply right click on it and choose Show element.
 						**** Show/Hide elements using a tree viewer
 						** Labels : The approach is the same as for other elements, except that there are a specific menus named «Hide/Show Label». It is possible to call this menu directly on the label or on its graphical element. So it is also possible to hide the label for :
 						*** Node : when the node label is on the border of its node
@@ -194,7 +194,7 @@ Document {
 				}
 
 				Section Outline {
-					The outline view has two display modes that you can select in its upper toolbar:
+					The outline view has two display modes that the user can select in its upper toolbar:
 
 					* In Outline mode, it shows the content of the model in a tree view;
 					* In Overview mode, it shows a complete overview of the active diagram. If the diagram is too big to be seen entirely on the diagram modeler, the overview is an easy way to navigate on the active diagram.
@@ -206,10 +206,16 @@ Document {
 				Section Properties view {
 					In the properties view, the user finds several tabs which will not be the same if an element is selected on the diagram or not. If an element is selected on the diagram, he has on the properties view the following generic tabs:
 
+					* General : contains a set of the most used properties;
+					* Stereotypes : shows the stereotypes applied on the selected element;
+					* Relationships : shows the relations of the selected element;
+					* Documentation : shows the comment associated to the UML element;
 					* Semantic : This tab shows the properties of the semantic element selected. You will find the same informations as in the properties view of an Ecore editor.
 					* Style : This tab presents the properties about the graphical representation of the element. You will find informations like label size and format, shape of the graphical object, background and foreground colors...
 					* Appearance : This tab allows to choose the style and size of text fields contained by the element.
 					
+
+					For a selected element specific tabs are visible depending on the element type : Attributes,  Operations, Ends, Literals, Profiles, Body, Parameters...
 
 					If the user does not select an element, he has in the properties view the properties of the diagram itself :
 
@@ -354,13 +360,13 @@ Document {
 			}
 
 			Section Define the requirements {
-				The first step for Alfred is to capture all the requirements. The SysML standard provides a new kind of diagram : the *requirement diagram*
-				The requirement diagram is used to capture functional, performance, and interface requirements.
+				The first step for Alfred is to capture all the requirements for the system do defined. The SysML standard provides a new kind of diagram : the *requirement diagram*.
+				This diagram is used to capture functional, performance, and interface requirements.
 				!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/RequirementDiagram.png!
 				
 
 				The requirement diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.
-				A second representation is available for representing the requirements : the *requirement table*.
+				A second kind of representation is available for representing the requirements : the *requirement table*.
 					!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/RequirementTable.png!
 				
 
@@ -396,7 +402,7 @@ Document {
 					
 
 					The user can also *delete a requirement or a test case* (
-					@see "Editor tab-bar" delete element from model).
+					@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 				}
 
 				Section Manage requirement relationships {
@@ -412,7 +418,7 @@ Document {
 					|Verify |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/RequirementDiagramVerify.png!|
 
 					The user can also *delete a relationship* (
-					@see "Editor" delete element from model).
+					@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 
 					And finally, he can *reconnect relationships*. It is possible to reconnect the source and the target of any kind of edge in the requirement diagram :
 
@@ -450,7 +456,7 @@ Document {
 					
 
 					And finally, he can *remove an existing element* from a diagram. In this case the element is only deleted from the representation but it is not removed from the UML model. This _Remove_ tool exists in the _Existing elements_ section in the palette (
-					@see "Editor tab-bar" delete element from diagram).
+					@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 				}
 
 				Section Add requirement related element {
@@ -466,7 +472,7 @@ Document {
 
 				Section Edit requirement labels {
 					In the requirement diagram, it is possible to edit the elements labels  (
-					@see "Editor main graphical area" the direct edit action). This actions allows to edit :
+					@see "Diagram editor" _Editor main graphical area -> Direct Edit_). This actions allows to edit :
 
 					* requirement, block, use case, test case labels
 					* relationships labels
@@ -512,7 +518,7 @@ Document {
 					|ConstraintBlock |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/BlockDefinitionDiagramConstraintBlock.png!|
 
 					The user can also *delete an element* (
-					@see "Editor tab-bar" delete element from model).
+					@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 				}
 
 				Section Manage block features {
@@ -532,7 +538,7 @@ Document {
 					The _typed property_ tool opens a wizard to select an existing type for the newly created property.
 
 					The user can also *delete a feature* (
-					@see "Editor" delete element from model).
+					@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 				}
 
 				Section Manage block relationships {
@@ -552,7 +558,7 @@ Document {
 					|Usage |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/BlockDefinitionDiagramUsage.png!|
 
 					The user can also *delete a relationship* (
-					@see "Editor" delete element from model).
+					@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 
 					And finally, he can *reconnect relationships*. It is possible to reconnect the source and the target of any kind of edge in the block definition diagram :
 
@@ -598,7 +604,7 @@ Document {
 					
 
 					And finally, he can *remove an existing element* from a diagram. In this case the element is only deleted from the representation but it is not removed from the UML model. This _Remove_ tool exists in the _Existing elements_ section in the palette (
-					@see "Editor tab-bar" delete element from diagram).
+					@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 				}
 
 				Section Add block related element {
@@ -622,7 +628,7 @@ Document {
 
 				Section Edit block labels {
 					In the block definition diagram, it is possible to edit the elements labels  (
-					@see "Editor main graphical area" the direct edit action). This actions allows to edit :
+					@see "Diagram editor" _Editor main graphical area -> Direct Edit_). This actions allows to edit :
 
 					* requirement, block, unit, value type, interface, dimension, package labels
 					* relationships labels
@@ -659,7 +665,7 @@ Document {
 					|Port |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/InternalBlockDefinitionDiagramPort.png!|
 
 					The user can also *delete an element* (
-					@see "Editor tab-bar" delete element from model).
+					@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 				}
 
 				Section Manage internal block flows {
@@ -668,7 +674,7 @@ Document {
 					
 
 					The user can also *delete a flow* (
-					@see "Editor tab-bar" delete element from model).
+					@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 
 					And finally, he can *reconnect flows*. It is possible to reconnect the source and the target of any flow in the internal block definition diagram.
 				}
@@ -692,7 +698,7 @@ Document {
 					
 
 					And finally, he can *remove an existing element* from a diagram. In this case the element is only deleted from the representation but it is not removed from the UML model. This _Remove_ tool exists in the _Existing elements_ section in the palette (
-					@see "Editor tab-bar" delete element from diagram).
+					@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 				}
 
 				Section Add internal block related element {
@@ -708,7 +714,7 @@ Document {
 
 				Section Edit internal block labels {
 					In the internal block definition diagram, it is possible to edit the elements labels  (
-					@see "Editor main graphical area" the direct edit action). This actions allows to edit :
+					@see "Diagram editor" _Editor main graphical area -> Direct Edit_). This actions allows to edit :
 
 					* part, ports, flow ports labels
 					* flows labels
@@ -742,7 +748,7 @@ Document {
 					|Parameter |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ParametricDiagramParameter.png!|Opens a wizard to select an existing value type|
 
 					The user can also *delete a constraint or a parameter* (
-					@see "Editor tab-bar" delete element from model).
+					@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 				}
 
 				Section Manage constraint block connections {
@@ -756,7 +762,7 @@ Document {
 					|Value |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ParametricDiagramValue.png!|Connect an imported value type to a parameter|
 
 					The user can also *delete a connection* (
-					@see "Editor" delete element from model).
+					@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 
 					And finally, he can *reconnect connections*. It is possible to reconnect the source and the target of any kind of edge in the block definition diagram :
 
@@ -780,7 +786,8 @@ Document {
 					* value type
 					
 
-					
+					And finally, he can *remove an existing element* from a diagram. In this case the element is only deleted from the representation but it is not removed from the UML model. This _Remove_ tool exists in the _Existing elements_ section in the palette (
+					@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 				}
 
 				Section Add constraint block related element {
@@ -796,7 +803,7 @@ Document {
 
 				Section Edit constraint block labels {
 					In the parametric diagram, it is possible to edit the elements labels  (
-					@see "Editor main graphical area" the direct edit action). This actions allows to edit :
+					@see "Diagram editor" _Editor main graphical area -> Direct Edit_). This actions allows to edit :
 
 					* parameter, constraint block, value type labels
 					* connections labels
@@ -863,8 +870,8 @@ Document {
 								!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ActivityDiagramCallOperationActionWizard.png!
 					
 
-					The user can also *delete an activity element* (See delete element from model in section
-					@see "Editor tab-bar" ).
+					The user can also *delete an activity element* (
+					@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 				}
 
 				Section Manage flows {
@@ -878,8 +885,8 @@ Document {
 					|Control flow |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ActivityDiagramControlFlow.png!|
 					|Object flow |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ActivityDiagramObjectFlow.png!|
 
-					The user can also *delete a flow* (See delete element from model in section
-					@see "Editor" ).
+					The user can also *delete a flow* (
+					@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 
 					And finally, he can *reconnect flows*. It is possible to reconnect the source and the target of any kind of edge in the activity diagram :
 
@@ -891,8 +898,8 @@ Document {
 				}
 
 				Section Edit labels {
-					In the use case diagram, it is possible to edit the elements labels  (See the direct edit action in section
-					@see "Editor main graphical area" ).
+					In the use case diagram, it is possible to edit the elements labels  (
+					@see "Diagram editor" _Editor main graphical area -> Direct Edit_).
 					This actions allows to edit :
 
 					* actor, subject (component,  artifact, datatype, interface, collaboration, class), use case labels
@@ -929,7 +936,7 @@ Document {
 						|_. Element    |_. Representation                                                                                     |
 						|Actor         |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/UseCaseDiagramActor.png!        |
 						|UseCase       |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/UseCaseDiagramUseCase.png!      |
-						|TODO Collaboration |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/UseCaseDiagramUseCase.png!|
+						|Collaboration |TBD|
 						|Subject       |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/UseCaseDiagramSubject.png!      |
 
 						A subject could be a : 
@@ -941,8 +948,8 @@ Document {
 						* Interface
 						
 
-						The user can also *delete an element* (See delete element from model in section
-						@see "Editor tab-bar" ).
+						The user can also *delete an element* (
+						@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 					}
 
 					Section Manage relationships {
@@ -957,8 +964,8 @@ Document {
 						|Include        |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/UseCaseDiagramInclude.png!      |
 						|Generalization |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/UseCaseDiagramGeneralization.png!|
 
-						The user can also *delete a relationship* (See delete element from model in section
-						@see "Editor" ).
+						The user can also *delete a relationship* (
+						@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 
 						And finally, he can *reconnect relationships*. It is possible to reconnect the source and the target of any kind of edge in the use case diagram :
 
@@ -983,11 +990,11 @@ Document {
 						
 						
 						|_. Element |_. Representation |
-						|use case |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/UseCaseDiagramActor.png!|
-						|use case into a subject|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/UseCaseDiagramActor.png!|
-						|subject (component,  artifact, datatype, interface, collaboration, class)|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/UseCaseDiagramActor.png!|
-						|actor|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/UseCaseDiagramActor.png!|
-						|package|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/UseCaseDiagramActor.png!|
+						|Use case |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/UseCaseDiagramUseCase.png!|
+						|Use case into a subject|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/UseCaseDiagramSubject.png!|
+						|Subject (component,  artifact, datatype, interface, collaboration, class)|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/UseCaseDiagramSubject.png!|
+						|Actor|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/UseCaseDiagramActor.png!|
+						|Package|Add all the elements which could be visible on the diagram|
 
 						The user can see that an element is not coming from the current package :
 
@@ -995,8 +1002,8 @@ Document {
 						* a tooltip shows the container package of the element if the element is not contained by the current package
 						
 
-						And finally, he can *remove an existing element* from a diagram. In this case the element is only deleted from the representation but it is not removed from the UML model. This _Remove_ tool exists in the _Existing elements_ section in the palette (See delete element from diagram in section
-						@see "Editor tab-bar" ).
+						And finally, he can *remove an existing element* from a diagram. In this case the element is only deleted from the representation but it is not removed from the UML model. This _Remove_ tool exists in the _Existing elements_ section in the palette (
+						@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 					}
 
 					Section Add related elements {
@@ -1012,8 +1019,8 @@ Document {
 					}
 
 					Section Edit labels {
-						In the use case diagram, it is possible to edit the elements labels  (See the direct edit action in section
-						@see "Editor main graphical area" ). This actions allows to edit :
+						In the use case diagram, it is possible to edit the elements labels  (
+						@see "Diagram editor" _Editor main graphical area -> Direct Edit_). This actions allows to edit :
 
 						* actor, collaboration, subject, use case labels
 						* relationships labels
@@ -1046,8 +1053,8 @@ Document {
 							A creation tool is available in the package diagram for the package : !platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/PackageDiagramPackage.png!
 						
 
-							The user can also *delete an element* (See delete element from model in section
-						@see "Editor tab-bar" ).
+							The user can also *delete an element* (
+						@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 					}
 
 					Section Manage relationships {
@@ -1066,8 +1073,8 @@ Document {
 						|Dependency |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/PackageDiagramDependency.png!|
 						|Merge |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/PackageDiagramMerge.png!|
 
-						The user can also *delete a relationship* (See delete element from model in section
-						@see "Editor tab-bar" ).
+						The user can also *delete a relationship* (
+						@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 
 						And finally, he can *reconnect relationships*. It is possible to reconnect the source and the target of any kind of edge in the use case diagram :
 
@@ -1094,8 +1101,8 @@ Document {
 						* a tooltip shows the container package of the element if the element is not contained by the current package
 						
 
-						And finally, he can *remove an existing element* from a diagram. In this case the element is only deleted from the representation but it is not removed from the UML model. This _Remove_ tool exists in the _Existing elements_ section in the palette (See delete element from diagram in section
-						@see "Editor tab-bar" ).
+						And finally, he can *remove an existing element* from a diagram. In this case the element is only deleted from the representation but it is not removed from the UML model. This _Remove_ tool exists in the _Existing elements_ section in the palette (
+						@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 					}
 
 					Section Add related elements {
@@ -1113,8 +1120,8 @@ Document {
 					}
 
 					Section Edit labels {
-						In the package diagram, it is possible to edit the elements labels  (See the direct edit action in section
-						@see "Editor main graphical area" ). This actions allows to edit :
+						In the package diagram, it is possible to edit the elements labels  (
+						@see "Diagram editor" _Editor main graphical area -> Direct Edit_). This actions allows to edit :
 
 						* package labels
 						* relationships labels
@@ -1145,16 +1152,16 @@ Document {
 						
 						
 						|_. Element     |_. Representation |
-						|component |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramComponent.png!|
-						|TODO component into a component|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramComponent.png! |
-						|class |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramClass.png!|
-						|TODO class into a component|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramComponent.png!|
-						|port on a component|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramPort.png!|
-						|TODO port on a class|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramComponent.png!|
-						|interface |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramInterface.png!|
+						|Component |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramComponent.png!|
+						|Component into a component|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/CompositeStructureDiagramSubComponent.png! |
+						|Class |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramClass.png!|
+						|Class into a component|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/CompositeStructureDiagramSubClass.png!|
+						|Port on a component|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramPort.png!|
+						|Port on a class|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/CompositeStructureDiagramPort.png!|
+						|Interface |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramInterface.png!|
 
-						The user can also *delete an element* (See delete element from model in section
-						@see "Editor tab-bar" ).
+						The user can also *delete an element* (
+						@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 					}
 
 					Section Manage relationships {
@@ -1165,15 +1172,15 @@ Document {
 						
 						|_. Element     |_. Representation |
 						|Usage |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramUsage.png!|
-						|TODO Dependency |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramRedefined.png!|
+						|Dependency |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramComponentRealization.png!|
 						|Component Realization|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramComponentRealization.png!|
 						|Generalization |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/CompositeStructureDiagramGeneralization.png!|
 						|Interface Realization |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramInterfaceRealization.png!|
 						|Redefined |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramRedefined.png!|
-						|TODO Connector|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramRedefined.png!|
+						|Connector|Represented by a solid link between two ports|
 
-						The user can also *delete a relationship* (See delete element from model in section
-						@see "Editor tab-bar" ).
+						The user can also *delete a relationship* (
+						@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 
 						And finally, he can *reconnect relationships*. It is possible to reconnect the source and the target of any kind of edge in the use case diagram :
 
@@ -1211,8 +1218,8 @@ Document {
 						* a tooltip shows the container package of the element if the element is not contained by the current package
 						
 
-						And finally, he can *remove an existing element* from a diagram. In this case the element is only deleted from the representation but it is not removed from the UML model. This _Remove_ tool exists in the _Existing elements_ section in the palette (See delete element from diagram in section
-						@see "Editor tab-bar" ).
+						And finally, he can *remove an existing element* from a diagram. In this case the element is only deleted from the representation but it is not removed from the UML model. This _Remove_ tool exists in the _Existing elements_ section in the palette (
+						@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 					}
 
 					Section Add related elements {
@@ -1228,8 +1235,8 @@ Document {
 					}
 
 					Section Edit labels {
-						In the package diagram, it is possible to edit the elements labels  (See the direct edit action in section
-						@see "Editor main graphical area" ). 
+						In the package diagram, it is possible to edit the elements labels  (
+						@see "Diagram editor" _Editor main graphical area -> Direct Edit_). 
 						This actions allows to edit :
 
 						* component, class, interface, port labels
@@ -1242,12 +1249,14 @@ Document {
 
 				Section Define the information flow {
 					By creating links between the components, John defines the flow followed by the data in the system.
-					@see "Manage relationships"
+					To get details on how to manage the information flows,
+					@see "What the application is supposed to be ?" _Define components -> Manage relationships_.
 				}
 
 				Section Diagram the organization of the information {
 					He provides a detailed organization of the information by creating a new kind of activity diagram. This diagram shows how the information goes through the different components of the system. Previously in the process, John used an activity diagram to describe the global business process of the specified application, here the activity diagram is used again but for providing low level information.
-					@see "Activity Diagram"
+					To get details on activity diagram,
+					@see "What the application is supposed to be ?" .
 				}
 
 				Section Define the system interfaces {
@@ -1275,16 +1284,16 @@ Document {
 						
 						|_. Element     |_. Representation |
 						|Component|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramComponent.png!|
-						|TODO Component into a component|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramComponent.png!|
+						|Component into a component|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/CompositeStructureDiagramSubComponent.png!|
 						|Class|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramClass.png!|
-						|TODO Class into a component|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramComponent.png!|
+						|Class into a component|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/CompositeStructureDiagramSubClass.png!|
 						|Part|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/CompositeStructurePart.png!|
 						|Property|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/CompositeStructureProperty.png!|
 						|Port on a component|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramPort.png!|
-						|TODO Port on a class|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramComponent.png!|
+						|Port on a class|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/CompositeStructureDiagramPort.png!|
 
-						The user can also *delete an element* (See delete element from model in section
-						@see "Editor tab-bar" ).
+						The user can also *delete an element* (
+						@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 					}
 
 					Section Manage edges {
@@ -1295,14 +1304,13 @@ Document {
 						
 						
 						|_. Element     |_. Representation |
-						|TODO Connector |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/CompositeStructureDiagramGeneralization.png!|
+						|Connector |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/CompositeStructureConnector.png!|
 						|Usage |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramUsage.png!|
-						|TODO Dependency|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramUsage.png!|
 						|Generalization |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/CompositeStructureDiagramGeneralization.png!|
 						|Redefined |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ComponentDiagramRedefined.png!|
 
-						The user can also *delete an activity element* (See delete element from model in section
-						@see "Editor tab-bar" ).
+						The user can also *delete an activity element* (
+						@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 
 						And finally, he can *reconnect relationships*. It is possible to reconnect the source and the target of any kind of edge in the use case diagram :
 
@@ -1361,8 +1369,8 @@ Document {
 						* a tooltip shows the container package of the element if the element is not contained by the current package
 						
 
-						And finally, he can *remove an existing element* from a diagram. In this case the element is only deleted from the representation but it is not removed from the UML model. This _Remove_ tool exists in the _Existing elements_ section in the palette (See delete element from diagram in section
-						@see "Editor tab-bar" ).
+						And finally, he can *remove an existing element* from a diagram. In this case the element is only deleted from the representation but it is not removed from the UML model. This _Remove_ tool exists in the _Existing elements_ section in the palette (
+						@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 					}
 
 					Section Add related elements {
@@ -1378,8 +1386,8 @@ Document {
 					}
 
 					Section Edit labels {
-						In the composite structure diagram, it is possible to edit the elements labels  (See the direct edit action in section
-						@see "Editor main graphical area" ). This actions allows to edit :
+						In the composite structure diagram, it is possible to edit the elements labels  (
+						@see "Diagram editor" _Editor main graphical area -> Direct Edit_). This actions allows to edit :
 							* component, class, interface, port labels
 							* relationships labels
 					}
@@ -1413,8 +1421,8 @@ Document {
 						|execution environment|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/DeploymentDiagramExecutionEnvironment.png!|
 						|artifact|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/DeploymentDiagramArtifact.png!|
 
-						The user can also *delete an activity element* (See delete element from model in section
-						@see "Editor tab-bar" ).
+						The user can also *delete an activity element* (
+						@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 					}
 
 					Section Manage relationships {
@@ -1430,8 +1438,8 @@ Document {
 						|Deployment|!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/DeploymentDiagramDeployment.png!|
 						|Manifestation |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/DeploymentDiagramManifestation.png!|
 
-						The user can also *delete a flow* (See delete element from model in section
-						@see "Editor" ).
+						The user can also *delete a flow* (
+						@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 
 						And finally, he can *reconnect flows*. It is possible to reconnect the source and the target of any kind of edge in the activity diagram :
 
@@ -1472,8 +1480,8 @@ Document {
 						* a tooltip shows the container package of the element if the element is not contained by the current package
 						
 
-						And finally, he can *remove an existing element* from a diagram. In this case the element is only deleted from the representation but it is not removed from the UML model. This _Remove_ tool exists in the _Existing elements_ section in the palette (See delete element from diagram in section
-						@see "Editor tab-bar" ).
+						And finally, he can *remove an existing element* from a diagram. In this case the element is only deleted from the representation but it is not removed from the UML model. This _Remove_ tool exists in the _Existing elements_ section in the palette (
+						@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 					}
 
 					Section Add related elements {
@@ -1489,8 +1497,8 @@ Document {
 					}
 
 					Section Edit labels {
-						In the package diagram, it is possible to edit the elements labels  (See the direct edit action in section
-						@see "Editor main graphical area" ). This actions allows to edit :
+						In the package diagram, it is possible to edit the elements labels  (
+						@see "Diagram editor" _Editor main graphical area -> Direct Edit_). This actions allows to edit :
 
 						* component, node, device, execution environment, artifact labels
 						* relationships labels
@@ -1586,8 +1594,8 @@ Document {
 					|Primitive type |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ClassDiagramPrimitiveType.png!|
 					|Package |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ClassDiagramPackage.png!|
 
-					The user can also *delete a type* (See delete element from model in section
-					@see "Editor tab-bar" ).
+					The user can also *delete a type* (
+					@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 				}
 
 				Section Manage features {
@@ -1603,8 +1611,8 @@ Document {
 					* literal:Can be created under enumerations.
 					
 
-					The user can also *delete a feature* (See delete element from model in section
-					@see "Editor" ).
+					The user can also *delete a feature* (
+					@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 				}
 
 				Section Manage relationships {
@@ -1623,8 +1631,8 @@ Document {
 					* nest classifier : is represented by a solid edge with an output fill closed arrow at start, it can be created between any classifiers.
 					
 
-					The user can also *delete a flow* (See delete element from model in section
-					@see "Editor" ).
+					The user can also *delete a flow* (
+					@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 
 					And finally, he can *reconnect flows*. It is possible to reconnect the source and the target of any kind of edge in the activity diagram :
 
@@ -1667,8 +1675,8 @@ Document {
 					* a tooltip shows the container package of the element if the element is not contained by the current package
 					
 
-					And finally, he can *remove an existing element* from a diagram. In this case the element is only deleted from the representation but it is not removed from the UML model. This _Remove_ tool exists in the _Existing elements_ section in the palette (See delete element from diagram in section
-					@see "Editor tab-bar" ).
+					And finally, he can *remove an existing element* from a diagram. In this case the element is only deleted from the representation but it is not removed from the UML model. This _Remove_ tool exists in the _Existing elements_ section in the palette (
+					@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 				}
 
 				Section Add related elements {
@@ -1683,8 +1691,8 @@ Document {
 				}
 
 				Section Edit labels {
-					In the class diagram, it is possible to edit the elements labels  (See the direct edit action in section
-					@see "Editor main graphical area" ). This actions allows to edit :
+					In the class diagram, it is possible to edit the elements labels  (
+					@see "Diagram editor" _Editor main graphical area -> Direct Edit_). This actions allows to edit :
 
 					* class, interface, package, enumeration, datatype, primitive type labels
 					* relationships labels
@@ -1716,9 +1724,6 @@ Document {
 					Section Set default value {
 						It is possible to set a default value to an instance property by selecting the tool from the palette and then clicking on an instance. This tool opens a wizard to ask the user to select a property of the selected instance type.
 					}
-
-					The user can also *delete an instance* (See delete element from model in section
-					@see "Editor tab-bar" ).
 				}
 
 				Section Manage existing elements {
@@ -1736,8 +1741,8 @@ Document {
 					* a tooltip shows the container package of the element if the element is not contained by the current package	
 					
 
-					The user can also *delete an instance* (See delete element from model in section
-					@see "Editor tab-bar" ).
+					The user can also *delete an instance* (
+					@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 				}
 
 				Section Add related elements {
@@ -1753,8 +1758,8 @@ Document {
 				}
 
 				Section Edit labels {
-					In the class diagram, it is possible to edit the elements labels  (See the direct edit action in section
-					@see "Editor main graphical area" ). This actions allows to edit :
+					In the class diagram, it is possible to edit the elements labels  (
+					@see "Diagram editor" _Editor main graphical area -> Direct Edit_). This actions allows to edit :
 
 					* class, interface, package, enumeration, datatype, primitive type labels
 					* relationships labels
@@ -1776,47 +1781,44 @@ Document {
 					The statemachine diagram is a synchronized diagram which means that any elements existing under a statemachine in the UML model wil be visible automatically in the statemachine diagram.
 
 					Section Manage statemachines {
-						It is possible to create and delete statemachine elements in the statemachine diagram.
-
-						Section Create statemachine elements {
-							It is possible to create activities elements by selecting the creation tools from the palette and then clicking on the diagram or an element. A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the UML model.
+						It is possible to *create activities elements* by selecting the creation tools from the palette and then clicking on the diagram or an element. A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the UML model.
 							If the user selects a container, the element will be created under the corresponding semantic element in the UML model.
 							!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/StatemachineDiagramPalette.png!
-							
+						
 
 							Tooltip tools are also available to create any kind of elements.
 
-							Creation tools are available in the statemachine diagram for the following types :
+						Creation tools are available in the statemachine diagram for the following types :
 
-							* Region
-							* State
-							* Intitial 
-							* Final 
-							* Fork 
-							* Join 
-							* Choice 
-							* Junction 
-							* Terminate
-							* Shallow history
-							* Deep history
-							* Entry point
-							* Exit point
-							
+						* Region
+						* State
+						* Intitial 
+						* Final 
+						* Fork 
+						* Join 
+						* Choice 
+						* Junction 
+						* Terminate
+						* Shallow history
+						* Deep history
+						* Entry point
+						* Exit point
+						
 
-							
-
-							Section Delete a statemachine element {
-								The user can also *delete a statemachine element* (See delete element from model in section
-								@see "Editor tab-bar" ).
-							}
-						}
+								The user can also *delete a statemachine element* (
+						@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 					}
 
 					Section Manage transitions {
 						It is possible to :
 
 						* *create a transition* : by selecting the edge creation tool from the palette and then clicking on a source element and a target element.
-						* *delete a transition* : by selecting the edge in the diagram or in the Model explorer view and then selecting the delete tool. This tool deletes the semantic element. If a representation is open, the view corresponding to the deleted flow is not anymore visible after the delete action.
+						* *delete a transition* : by selecting the edge in the diagram or in the Model explorer view and then selecting the delete tool. This tool deletes the semantic element. If a representation is open, the view corresponding to the deleted flow is not anymore visible after the delete action (
+						
+
+						
+						@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
+
 						* *reconnect transitions* : to reconnect the source and the target of a transition in the statemachine diagram.
 						
 
@@ -1824,8 +1826,8 @@ Document {
 					}
 
 					Section Edit labels {
-						In the statemachine diagram, it is possible to edit the elements labels  (See the direct edit action in section
-						@see "Editor main graphical area" ). This actions allows to edit any statemachine elements labels.
+						In the statemachine diagram, it is possible to edit the elements labels  (
+						@see "Diagram editor" _Editor main graphical area -> Direct Edit_). This actions allows to edit any statemachine elements labels.
 					}
 				}
 
@@ -1866,8 +1868,8 @@ Document {
 						** negative
 						
 
-						The user can also *delete an element* (See delete element from model in section
-						@see "Editor tab-bar" ).
+						The user can also *delete an element* (
+						@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 					}
 
 					Section Reorder an interaction element {
@@ -1881,8 +1883,8 @@ Document {
 					}
 
 					Section Edit labels {
-						In the sequence diagram, it is possible to edit the elements labels  (See the direct edit action in section
-						@see "Editor main graphical area" ). This actions allows to edit any interaction elements labels.
+						In the sequence diagram, it is possible to edit the elements labels  (
+						@see "Diagram editor" _Editor main graphical area -> Direct Edit_). This actions allows to edit any interaction elements labels.
 					}
 				}
 			}
@@ -1919,8 +1921,8 @@ Document {
 
 				When the layer is activated the comments are visible on the diagram.
 
-				The user can remove the comment (See delete element from model in section
-				@see "Editor tab-bar" "Editor main graphical area" ).
+				The user can remove the comment (
+				@see "Diagram editor" "Diagram editor" _Editor main graphical area -> Direct Edit_).
 			}
 
 			Section Comments table {
