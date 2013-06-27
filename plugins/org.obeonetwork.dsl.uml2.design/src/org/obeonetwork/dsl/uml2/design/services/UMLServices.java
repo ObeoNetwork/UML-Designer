@@ -15,13 +15,18 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EAnnotation;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -106,6 +111,11 @@ import fr.obeo.dsl.viewpoint.description.DiagramDescription;
  * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
  */
 public class UMLServices {
+
+	private static final String ROLE = "Role";
+	private static final String THING = "Thing";
+	private static final String DESCRIPTION = "Description";
+	private static final String MOMENT_INTERVAL = "MomentInterval";
 
 	public void openContextHelp(EObject any, String contextID) throws IOException {
 		if (PlatformUI.getWorkbench() != null && PlatformUI.getWorkbench().getActiveWorkbenchWindow() != null
@@ -997,5 +1007,40 @@ public class UMLServices {
 
 	public boolean isValidForEdgeMapping(AbstractDNode sourceView, AbstractDNode targetView) {
 		return sourceView != targetView;
+	}
+
+	public void addArchetypeKeyword(Class clazz, String archetype) {
+		clearArchetypesKeywords(clazz);
+		clazz.addKeyword(archetype);
+	}
+
+	private void clearArchetypesKeywords(Class clazz) {
+		clazz.removeKeyword(MOMENT_INTERVAL);
+		clazz.removeKeyword(DESCRIPTION);
+		clazz.removeKeyword(THING);
+		clazz.removeKeyword(ROLE);		
+	}
+
+	public boolean isMomentInterval(EObject clazz) {
+		return hasKeyword(clazz, MOMENT_INTERVAL);
+	}
+
+	public boolean isDescription(EObject clazz) {
+		return hasKeyword(clazz, DESCRIPTION);
+	}
+
+	public boolean isThing(EObject clazz) {
+		return hasKeyword(clazz, THING);
+	}
+
+	public boolean isRole(EObject clazz) {
+		return hasKeyword(clazz, ROLE);
+	}
+
+	private boolean hasKeyword(EObject clazz, String keyword) {
+		if (clazz instanceof Class) {
+			return ((Class)clazz).getKeywords().contains(keyword);
+		}
+		return false;
 	}
 }

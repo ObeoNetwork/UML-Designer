@@ -1569,6 +1569,96 @@
       <optionalLayers name="Comments" reusedMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='RED_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@edgeMappings[name='RED_CommentLink']" activeByDefault="true">
         <toolSections name="Comments" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_CommentLink']"/>
       </optionalLayers>
+      <optionalLayers name="Archetypes">
+        <toolSections name="Archetype">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Does the class represent a moment or interval of time that we need to track for business or legal reasons? " name="MomentInterval" containerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/Class_Moment.gif" extraMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container/]">
+                <subModelOperations xsi:type="tool:If" conditionExpression="[container.oclIsTypeOf(uml::Package)/]">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="packagedElement">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Class&lt;%eContainer().eContents().filter(&quot;Class&quot;).nSize()%>">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[addArchetypeKeyword('MomentInterval')/]"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="[container.oclIsTypeOf(uml::Class)/]">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[addArchetypeKeyword('MomentInterval')/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Does the class represent a catalog-entry like description? " name="Description" containerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/Class_Description.gif" extraMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container/]">
+                <subModelOperations xsi:type="tool:If" conditionExpression="[container.oclIsTypeOf(uml::Package)/]">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="packagedElement">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Class&lt;%eContainer().eContents().filter(&quot;Class&quot;).nSize()%>">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[addArchetypeKeyword('Description')/]"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="[container.oclIsTypeOf(uml::Class)/]">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[addArchetypeKeyword('Description')/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Does the class represent a role being played by a party (person or organization), place or thing? &#xA;" name="Role" containerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/Class_Role.gif" extraMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container/]">
+                <subModelOperations xsi:type="tool:If" conditionExpression="[container.oclIsTypeOf(uml::Package)/]">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="packagedElement">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Class&lt;%eContainer().eContents().filter(&quot;Class&quot;).nSize()%>">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[addArchetypeKeyword('Role')/]"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="[container.oclIsTypeOf(uml::Class)/]">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[addArchetypeKeyword('Role')/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="&#xA;" name="Place/Thing" containerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/Class_Thing.gif" extraMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container/]">
+                <subModelOperations xsi:type="tool:If" conditionExpression="[container.oclIsTypeOf(uml::Package)/]">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="packagedElement">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Class&lt;%eContainer().eContents().filter(&quot;Class&quot;).nSize()%>">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[addArchetypeKeyword('Thing')/]"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool:If" conditionExpression="[container.oclIsTypeOf(uml::Class)/]">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[addArchetypeKeyword('Thing')/]"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.isMomentInterval()/]">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']/@style //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']/@conditionnalStyles.0/@style //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']/@conditionnalStyles.1/@style //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']/@conditionnalStyles.2/@style" referenceName="foregroundColor" value="//@userColorsPalettes[name='UMLPalette']/@entries[name='MomentInterval']"/>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.isDescription()/]">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']/@style //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']/@conditionnalStyles.0/@style //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']/@conditionnalStyles.1/@style //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']/@conditionnalStyles.2/@style" referenceName="foregroundColor" value="//@userColorsPalettes[name='UMLPalette']/@entries[name='Description']"/>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.isThing()/]">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']/@style //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']/@conditionnalStyles.0/@style //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']/@conditionnalStyles.1/@style //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']/@conditionnalStyles.2/@style" referenceName="foregroundColor" value="//@userColorsPalettes[name='UMLPalette']/@entries[name='PlaceThing']"/>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[self.isRole()/]">
+            <featureCustomizations xsi:type="description:EReferenceCustomization" appliedOn="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']/@style //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']/@conditionnalStyles.0/@style //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']/@conditionnalStyles.1/@style //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']/@conditionnalStyles.2/@style" referenceName="foregroundColor" value="//@userColorsPalettes[name='UMLPalette']/@entries[name='Role']"/>
+          </vsmElementCustomizations>
+        </customization>
+      </optionalLayers>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.1/@subSections[name='edit']/@ownedTools[name='Drop%20Interface%20or%20Component%20on%20canvas'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Drop%20From%20Model'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Drop%20From%20Diagram']" name="Component Diagram" titleExpression="&lt;%name%> Component Diagram" pasteDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Paste']" domainClass="uml.Package" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='RemoveExistingElements']" enablePopupBars="true">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
@@ -5122,5 +5212,9 @@
       <colorSteps associatedValue="0" associatedColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='light%20lagune']"/>
       <colorSteps associatedValue="15" associatedColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='dark%20lagune']"/>
     </entries>
+    <entries xsi:type="description:UserFixedColor" red="250" green="190" blue="190" name="MomentInterval"/>
+    <entries xsi:type="description:UserFixedColor" red="250" green="240" blue="180" name="Role"/>
+    <entries xsi:type="description:UserFixedColor" red="180" green="230" blue="180" name="PlaceThing"/>
+    <entries xsi:type="description:UserFixedColor" red="180" green="200" blue="210" name="Description"/>
   </userColorsPalettes>
 </description:Group>
