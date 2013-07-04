@@ -18,10 +18,14 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.AddCommand;
+import org.eclipse.emf.edit.command.RemoveCommand;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.UseCase;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
 import org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel.Messages;
 
@@ -34,6 +38,7 @@ import fr.obeo.dsl.viewpoint.business.api.session.Session;
 import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
 import fr.obeo.dsl.viewpoint.business.internal.helper.task.operations.CreateViewTask;
 import fr.obeo.dsl.viewpoint.business.internal.metamodel.spec.DNodeContainerSpec;
+import fr.obeo.dsl.viewpoint.business.internal.metamodel.spec.DSemanticDiagramSpec;
 import fr.obeo.dsl.viewpoint.description.AbstractNodeMapping;
 import fr.obeo.dsl.viewpoint.description.DiagramElementMapping;
 import fr.obeo.dsl.viewpoint.description.tool.CreateView;
@@ -85,7 +90,110 @@ public class UIServices {
 			cmd.execute();
 		}
 		// Create the view for the pasted element
-		createView(semanticElement, containerView, session);
+		createView(semanticElement, containerView, session, "containerView");
+	}
+
+	/**
+	 * Drop a semantic element and create the corresponding view in the given container
+	 * 
+	 * @param newContainer
+	 *            Semantic container
+	 * @param semanticElement
+	 *            Element to drop
+	 * @param containerView
+	 *            Container view
+	 * @param moveSemanticElement
+	 *            True to move the dropped semantic element or false to just show the element on a diagram
+	 */
+	private void drop(final Element newContainer, final NamedElement semanticElement,
+			final DSemanticDecorator containerView, boolean moveSemanticElement) {
+		final Session session = SessionManager.INSTANCE.getSession(newContainer);
+		Element oldContainer = semanticElement.getOwner();
+		if (moveSemanticElement && oldContainer != newContainer) {
+			// Move the semantic element to the selected container
+			TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
+			// The feature is set to null because the domain will deduce it
+			Command cmd = AddCommand.create(domain, newContainer, null, semanticElement);
+			if (cmd.canExecute()) {
+				cmd.execute();
+			}
+			cmd = RemoveCommand.create(domain, oldContainer, null, semanticElement);
+			if (cmd.canExecute()) {
+				cmd.execute();
+			}
+
+			if (semanticElement instanceof UseCase) {
+				// Reset the current element as subject
+				cmd = SetCommand.create(domain, semanticElement, UMLPackage.Literals.USE_CASE__SUBJECT,
+						SetCommand.UNSET_VALUE);
+				if (cmd.canExecute()) {
+					cmd.execute();
+				}
+				List<Element> subjects = new ArrayList<Element>();
+				subjects.add(newContainer);
+				cmd = SetCommand.create(domain, semanticElement, UMLPackage.Literals.USE_CASE__SUBJECT,
+						subjects);
+				if (cmd.canExecute()) {
+					cmd.execute();
+				}
+			}
+		}
+
+		// Create the view for the dropped element
+		createView(semanticElement, containerView, session, "newContainerView");
+	}
+
+	/**
+	 * Drop a semantic element from a diagram and create the corresponding view in the given container
+	 * 
+	 * @param newContainer
+	 *            Semantic container
+	 * @param semanticElement
+	 *            Element to drop
+	 * @param containerView
+	 *            Container view
+	 */
+	public void dropFromDiagram(final Element newContainer, final NamedElement semanticElement,
+			final DSemanticDecorator containerView) {
+		drop(newContainer, semanticElement, containerView, true);
+	}
+
+	/**
+	 * Drop a semantic element and create the corresponding view in the given container
+	 * 
+	 * @param newContainer
+	 *            Semantic container
+	 * @param semanticElement
+	 *            Element to drop
+	 * @param containerView
+	 *            Container view
+	 */
+	@SuppressWarnings("restriction")
+	public void dropFromModel(final Element newContainer, final NamedElement semanticElement,
+			final DSemanticDecorator containerView) {
+		drop(newContainer, semanticElement, containerView, !(containerView instanceof DSemanticDiagramSpec));
+	}
+
+	/**
+	 * Drop a semantic element and create the corresponding view in the given container
+	 * 
+	 * @param container
+	 *            Semantic container
+	 * @param semanticElement
+	 *            Element to drop
+	 * @param containerView
+	 *            Container view
+	 */
+	public boolean isValidElementForContainerView(final Element container,
+			final NamedElement semanticElement, final DSemanticDecorator containerView) {
+		// Paste the semantic element from the clipboard to the selected container
+		final Session session = SessionManager.INSTANCE.getSession(container);
+
+		// Get all available mappings applicable for the selected element in the current container
+		List<DiagramElementMapping> semanticElementMappings = getMappings(semanticElement, containerView,
+				session);
+
+		return semanticElementMappings.size() > 0;
 	}
 
 	/**
@@ -97,9 +205,11 @@ public class UIServices {
 	 *            Container view
 	 * @param session
 	 *            Session
+	 * @param containerViewVariable
+	 *            Name of the container view variable
 	 */
 	private void createView(final EObject semanticElement, final DSemanticDecorator containerView,
-			final Session session) {
+			final Session session, final String containerViewVariable) {
 		// Get all available mappings applicable for the copiedElement in the current container
 		List<DiagramElementMapping> semanticElementMappings = getMappings(semanticElement, containerView,
 				session);
@@ -109,7 +219,8 @@ public class UIServices {
 		for (DiagramElementMapping copiedElementMapping : semanticElementMappings) {
 			final DiagramElementMapping tmpCopiedElementMapping = copiedElementMapping;
 			createViewOp.setMapping(tmpCopiedElementMapping);
-			createViewOp.setContainerViewExpression("<%$containerView%>");
+			final String containerViewExpression = "<%$" + containerViewVariable + "%>";
+			createViewOp.setContainerViewExpression(containerViewExpression);
 
 			session.getTransactionalEditingDomain().getCommandStack()
 					.execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
@@ -131,8 +242,8 @@ public class UIServices {
 
 								// Execute the create view task
 								new CreateViewTask(context, session.getModelAccessor(),
-										tmpCopiedElementMapping, "<%$containerView%>", createViewOp, session
-												.getInterpreter()).execute();
+										tmpCopiedElementMapping, containerViewExpression, createViewOp,
+										session.getInterpreter()).execute();
 							} catch (MetaClassNotFoundException e) {
 								UMLDesignerPlugin.log(IStatus.ERROR, Messages
 										.bind(Messages.UmlModelWizard_UI_ErrorMsg_BadFileExtension,
@@ -156,7 +267,7 @@ public class UIServices {
 	 *            Container view
 	 * @param session
 	 *            Session
-	 * @return List of mappings
+	 * @return List of mappings which could not be null
 	 */
 	@SuppressWarnings("restriction")
 	private List<DiagramElementMapping> getMappings(final EObject semanticElement,
@@ -169,14 +280,16 @@ public class UIServices {
 			for (DiagramElementMapping mapping : (((DSemanticDiagram)containerView).getDescription()
 					.getAllContainerMappings())) {
 				String domainClass = ((AbstractNodeMapping)mapping).getDomainClass();
-				if (modelAccessor.eInstanceOf(semanticElement, domainClass)) {
+				if (modelAccessor.eInstanceOf(semanticElement, domainClass)
+						&& !mapping.isSynchronizationLock()) {
 					mappings.add(mapping);
 				}
 			}
 			for (DiagramElementMapping mapping : (((DSemanticDiagram)containerView).getDescription()
 					.getAllNodeMappings())) {
 				String domainClass = ((AbstractNodeMapping)mapping).getDomainClass();
-				if (modelAccessor.eInstanceOf(semanticElement, domainClass)) {
+				if (modelAccessor.eInstanceOf(semanticElement, domainClass)
+						&& !mapping.isSynchronizationLock()) {
 					mappings.add(mapping);
 				}
 			}
@@ -184,14 +297,16 @@ public class UIServices {
 			for (DiagramElementMapping mapping : (((DNodeContainerSpec)containerView).getActualMapping()
 					.getAllContainerMappings())) {
 				String domainClass = ((AbstractNodeMapping)mapping).getDomainClass();
-				if (modelAccessor.eInstanceOf(semanticElement, domainClass)) {
+				if (modelAccessor.eInstanceOf(semanticElement, domainClass)
+						&& !mapping.isSynchronizationLock()) {
 					mappings.add(mapping);
 				}
 			}
 			for (DiagramElementMapping mapping : (((DNodeContainerSpec)containerView).getActualMapping()
 					.getAllNodeMappings())) {
 				String domainClass = ((AbstractNodeMapping)mapping).getDomainClass();
-				if (modelAccessor.eInstanceOf(semanticElement, domainClass)) {
+				if (modelAccessor.eInstanceOf(semanticElement, domainClass)
+						&& !mapping.isSynchronizationLock()) {
 					mappings.add(mapping);
 				}
 			}
