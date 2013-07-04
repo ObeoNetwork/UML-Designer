@@ -88,11 +88,16 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 import fr.obeo.dsl.viewpoint.AbstractDNode;
+import fr.obeo.dsl.viewpoint.DDiagramElement;
 import fr.obeo.dsl.viewpoint.DEdge;
+import fr.obeo.dsl.viewpoint.DRepresentation;
+import fr.obeo.dsl.viewpoint.DSemanticDecorator;
 import fr.obeo.dsl.viewpoint.DSemanticDiagram;
 import fr.obeo.dsl.viewpoint.EdgeTarget;
 import fr.obeo.dsl.viewpoint.business.api.session.Session;
 import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
+import fr.obeo.dsl.viewpoint.business.internal.metamodel.spec.DSemanticDiagramSpec;
+import fr.obeo.dsl.viewpoint.description.DiagramDescription;
 
 /**
  * Services for UML.
@@ -393,7 +398,7 @@ public class UMLServices {
 		return allValidSessionElements(cur, validForPackageDiagram);
 	}
 
-	public List<EObject> getValidsForClassDiagram(EObject cur) {
+	private List<EObject> getValidsForClassDiagram(EObject cur) {
 		Predicate<EObject> validForClassDiagram = new Predicate<EObject>() {
 
 			public boolean apply(EObject input) {
@@ -405,7 +410,7 @@ public class UMLServices {
 		return allValidSessionElements(cur, validForClassDiagram);
 	}
 
-	public List<EObject> getValidsForUseCaseDiagram(EObject cur) {
+	private List<EObject> getValidsForUseCaseDiagram(EObject cur) {
 		Predicate<EObject> validForUseCaseDiagram = new Predicate<EObject>() {
 
 			public boolean apply(EObject input) {
@@ -418,7 +423,7 @@ public class UMLServices {
 		return allValidSessionElements(cur, validForUseCaseDiagram);
 	}
 
-	public List<EObject> getValidsForComponentDiagram(EObject cur) {
+	private List<EObject> getValidsForComponentDiagram(EObject cur) {
 		Predicate<EObject> validForComponentDiagram = new Predicate<EObject>() {
 
 			public boolean apply(EObject input) {
@@ -430,7 +435,7 @@ public class UMLServices {
 		return allValidSessionElements(cur, validForComponentDiagram);
 	}
 
-	public List<EObject> getValidsForObjectDiagram(EObject cur) {
+	private List<EObject> getValidsForObjectDiagram(EObject cur) {
 		Predicate<EObject> validForComponentDiagram = new Predicate<EObject>() {
 
 			public boolean apply(EObject input) {
@@ -440,7 +445,7 @@ public class UMLServices {
 		return allValidSessionElements(cur, validForComponentDiagram);
 	}
 
-	public List<EObject> getValidsForCompositeDiagram(EObject cur) {
+	private List<EObject> getValidsForCompositeDiagram(EObject cur) {
 		Predicate<EObject> validForCompositeDiagram = new Predicate<EObject>() {
 
 			public boolean apply(EObject input) {
@@ -457,7 +462,7 @@ public class UMLServices {
 		return allValidSessionElements(cur, validForCompositeDiagram);
 	}
 
-	public List<EObject> getValidsForDeploymentDiagram(EObject cur) {
+	private List<EObject> getValidsForDeploymentDiagram(EObject cur) {
 		Predicate<EObject> validForDeploymentDiagram = new Predicate<EObject>() {
 
 			public boolean apply(EObject input) {
@@ -479,6 +484,42 @@ public class UMLServices {
 			}
 		}
 		return result;
+	}
+
+	@SuppressWarnings("restriction")
+	public List<EObject> getValidsForDiagram(final EObject element, final DSemanticDecorator containerView) {
+		// Get representation
+		DRepresentation representation = null;
+		if (containerView instanceof DRepresentation) {
+			representation = (DRepresentation)containerView;
+		} else if (containerView instanceof DDiagramElement) {
+			representation = ((DDiagramElement)containerView).getParentDiagram();
+		}
+		UMLServices service = new UMLServices();
+		List<EObject> results = null;
+		if (representation instanceof DSemanticDiagramSpec) {
+			DiagramDescription description = ((DSemanticDiagramSpec)representation).getDescription();
+
+			if ("Class Diagram".equals(description.getName())) {
+				results = service.getValidsForClassDiagram(element);
+			} else if ("Component Diagram".equals(description.getName())) {
+				results = service.getValidsForComponentDiagram(element);
+			} else if ("Composite Structure Diagram".equals(description.getName())) {
+				results = service.getValidsForCompositeDiagram(element);
+			} else if ("Composite Structure Diagram".equals(description.getName())) {
+				results = service.getValidsForCompositeDiagram(element);
+			} else if ("Deployment Diagram".equals(description.getName())) {
+				results = service.getValidsForDeploymentDiagram(element);
+			} else if ("Object Diagram".equals(description.getName())) {
+				results = service.getValidsForObjectDiagram(element);
+			} else if ("Package Diagram".equals(description.getName())) {
+				results = service.getValidsForPackageDiagram(element);
+			} else if ("Use Case Diagram".equals(description.getName())) {
+				results = service.getValidsForUseCaseDiagram(element);
+			}
+		}
+
+		return results;
 	}
 
 	/**
