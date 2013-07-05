@@ -445,7 +445,7 @@ public class UMLServices {
 		return allValidSessionElements(cur, validForComponentDiagram);
 	}
 
-	private List<EObject> getValidsForCompositeDiagram(EObject cur) {
+	public List<EObject> getValidsForCompositeDiagram(EObject cur) {
 		Predicate<EObject> validForCompositeDiagram = new Predicate<EObject>() {
 
 			public boolean apply(EObject input) {
