@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.tests.automation.ui.stories.createAType;
 
+import org.eclipse.uml2.uml.UMLPackage;
 import org.junit.Rule;
 import org.junit.Test;
 import org.obeonetwork.dsl.uml2.design.tests.automation.ui.contexts.TheReferenceClassDiagramOpened;
@@ -29,7 +30,7 @@ public class CreateAnEnumeration {
 	}
 
 	private void asserts() {
-		context.assertElementCreatedInUmlModel("Enumeration15");
-		context.assertElementExistsInTheReferenceClassDiagram("Enumeration15");
+		context.assertElementCreatedInUmlModel("Enumeration0",UMLPackage.eINSTANCE.getEnumeration());
+		context.assertElementExistsInTheReferenceClassDiagram("Enumeration0");
 	}
 }

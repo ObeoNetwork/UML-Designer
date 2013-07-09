@@ -17,7 +17,7 @@ import org.obeonetwork.dsl.uml2.design.tests.automation.ui.contexts.TheReference
 // @Story("DeleteAType")
 public class DeleteAClass {
 	@Rule
-	TheReferenceClassDiagramOpened context = new TheReferenceClassDiagramOpened();
+	public TheReferenceClassDiagramOpened context = new TheReferenceClassDiagramOpened();
 
 	// @Scenario("DeleteAClass")
 	@Test

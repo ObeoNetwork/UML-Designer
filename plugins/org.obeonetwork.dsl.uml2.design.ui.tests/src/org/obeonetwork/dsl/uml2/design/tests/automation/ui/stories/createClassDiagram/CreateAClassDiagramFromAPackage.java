@@ -17,7 +17,7 @@ import org.obeonetwork.dsl.uml2.design.tests.automation.ui.contexts.TheReference
 //@Story("CreateClassDiagram")
 public class CreateAClassDiagramFromAPackage {
 	@Rule
-	TheReferenceModelSelectedInModelExplorer context = new TheReferenceModelSelectedInModelExplorer();
+	public TheReferenceModelSelectedInModelExplorer context = new TheReferenceModelSelectedInModelExplorer();
 
 	// @Scenario("CreateAClassDiagramFromAPackage")
 	@Test

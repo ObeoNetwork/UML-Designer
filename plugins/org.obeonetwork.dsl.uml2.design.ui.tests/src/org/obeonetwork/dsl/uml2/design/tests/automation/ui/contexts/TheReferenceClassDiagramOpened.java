@@ -15,25 +15,45 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.fail;
 
+import java.util.List;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.uml2.uml.Model;
+import org.eclipse.uml2.uml.NamedElement;
+import org.obeonetwork.dsl.uml2.design.tests.automation.common.EObjects;
+import org.obeonetwork.dsl.uml2.design.tests.automation.common.ModelChangeRecorder;
 import org.obeonetwork.dsl.uml2.design.tests.automation.contexts.Context;
 import org.obeonetwork.dsl.uml2.design.tests.automation.contexts.UMLDesignerBot;
+import org.obeonetwork.dsl.uml2.usage.preferences.UsagePreferences;
 
 import fr.obeo.dsl.viewpoint.tests.swtbot.support.api.editor.SWTBotDesignerEditor;
+import fr.obeo.dsl.viewpoint.ui.business.api.session.SessionEditorInput;
 
 public class TheReferenceClassDiagramOpened extends Context {
 	protected UMLDesignerBot bot;
 	SWTBotDesignerEditor classDiagram;
 
+	public ModelChangeRecorder recorder;
+
 	@Override
 	public void setup() {
+		recorder = new ModelChangeRecorder(); 
+		UsagePreferences preferences = new UsagePreferences();
+		preferences.storeUserAnswer(IDialogConstants.NO_ID);
 		bot = new UMLDesignerBot();
 		classDiagram = bot.openEntitiesClassDiagram();
+		SessionEditorInput input = (SessionEditorInput)classDiagram.getReference().getEditor(false).getEditorInput();
+		recorder.startRecording(input.getSession().getTransactionalEditingDomain());
+		
 	}
 
 	@Override
 	public void tearDown() {
+		SessionEditorInput input = (SessionEditorInput)classDiagram.getReference().getEditor(false).getEditorInput();
+		recorder.stopRecording(input.getSession().getTransactionalEditingDomain());
 		bot.saveChanges();
 		bot.deleteTravelAgencyProject();
 	}
@@ -50,7 +70,7 @@ public class TheReferenceClassDiagramOpened extends Context {
 
 	private void actionCreateAType(String toolName) {
 		classDiagram.activateTool(toolName);
-		classDiagram.click(10, 10);
+		classDiagram.click(10, 150);
 		classDiagram.save();
 	}
 
@@ -60,9 +80,10 @@ public class TheReferenceClassDiagramOpened extends Context {
 	}
 
 	// @Behaviour("ElementCreatedInUmlModel")
-	public void assertElementCreatedInUmlModel(String elementName) {
-		Model model = bot.getTravelAgencyModel();
-		assertNotNull(model.getOwnedMember(elementName));
+	public void assertElementCreatedInUmlModel(String elementName, EClass eClass) {
+		List<EObject> createdClasses = EObjects.perType(recorder.attachedObjects()).get(eClass);
+		assertEquals(createdClasses.size(),1);
+		assertEquals(elementName, ((NamedElement) createdClasses.get(0)).getName());
 	}
 
 	// @Behaviour("ElementExistsInTheReferenceClassDiagram")
@@ -85,4 +106,5 @@ public class TheReferenceClassDiagramOpened extends Context {
 			assertEquals("Expected to find widget Catalog", e.getMessage());
 		}
 	}
+
 }

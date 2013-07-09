@@ -50,7 +50,7 @@ public class UMLDesignerBot {
 	private static final String OPEN_PERSPECTIVE = "Open Perspective";
 
 	public UMLDesignerBot openModelingPerspective() {
-		openPerspective(MODELING_PERSPECTIVE_NAME);
+		openPerspective(MODELING_PERSPECTIVE_NAME);		
 		return this;
 	}
 
@@ -85,6 +85,7 @@ public class UMLDesignerBot {
 	}
 
 	public SWTBotDesignerEditor importAndOpenTravelAgency() {
+		bot.resetWorkbench();
 		String nameInWizard = "Travel Agency UML";
 
 		bot.menu("File").menu("New").menu("Example...").click();
@@ -100,7 +101,7 @@ public class UMLDesignerBot {
 
 		waitForProgressInformationComplete();
 
-		waitForEditor("model");
+		waitForEditor("Package Hierarchy");
 		return new SWTBotDesignerEditor(bot.activeEditor().getReference(),
 				workbench());
 	}
@@ -110,6 +111,8 @@ public class UMLDesignerBot {
 				Conditions.waitForEditor(new BaseMatcher<IEditorReference>() {
 
 					public boolean matches(Object item) {
+						System.out.println(editorName + " "
+								+ ((EditorReference) item).getName());
 						return editorName.equals(((EditorReference) item)
 								.getName());
 					}
@@ -121,15 +124,16 @@ public class UMLDesignerBot {
 	}
 
 	public SWTBotDesignerEditor openEntitiesClassDiagram() {
+
 		importAndOpenTravelAgency();
 
 		bot.viewByTitle("Model Explorer")
 				.bot()
 				.tree()
 				.expandNode("TravelAgency", "agency.uml",
-						"<Model> Travel Agency", "entities").doubleClick();
+						"<Model> Travel Agency", "Entities").doubleClick();
 
-		waitForEditor("entities");
+		waitForEditor("Entities");
 
 		return new SWTBotDesignerEditor(bot.activeEditor().getReference(),
 				workbench());
@@ -174,8 +178,12 @@ public class UMLDesignerBot {
 	}
 
 	public void deleteTravelAgencyProject() {
+		for (SWTBotEditor editor : bot.editors()) {
+			editor.close();
+		}
 		bot.viewByTitle("Model Explorer").bot().tree()
 				.expandNode("TravelAgency").contextMenu("Delete").click();
+		bot.waitUntil(Conditions.shellIsActive("Delete Resources"),5000);
 		bot.button("OK").click();
 	}
 
@@ -185,7 +193,7 @@ public class UMLDesignerBot {
 				.bot()
 				.tree()
 				.expandNode("TravelAgency", "agency.uml",
-						"<Model> Travel Agency", "<Component> Agency  Offers",
+						"<Model> Travel Agency","<Package> Components", "<Component> Agency  Offers",
 						"<Class> Catalog").select();
 		ContextMenuHelper.clickContextMenu(tree, "Delete");
 	}

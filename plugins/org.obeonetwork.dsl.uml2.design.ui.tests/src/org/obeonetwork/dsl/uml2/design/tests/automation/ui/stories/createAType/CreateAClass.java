@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.tests.automation.ui.stories.createAType;
 
+import org.eclipse.uml2.uml.UMLPackage;
 import org.junit.Rule;
 import org.junit.Test;
 import org.obeonetwork.dsl.uml2.design.tests.automation.ui.contexts.TheReferenceClassDiagramOpened;
@@ -17,11 +18,13 @@ import org.obeonetwork.dsl.uml2.design.tests.automation.ui.contexts.TheReference
 public class CreateAClass {
 	@Rule
 	public TheReferenceClassDiagramOpened context = new TheReferenceClassDiagramOpened();
+	
+	
 
 	@Test
 	public void createAClass() throws Exception {
-		context.actionCreateAClass();
-		context.assertElementCreatedInUmlModel("Class16");
-		context.assertElementExistsInTheReferenceClassDiagram("Class16");
+		context.actionCreateAClass();		
+		context.assertElementCreatedInUmlModel("Class1",UMLPackage.eINSTANCE.getClass_());
+		context.assertElementExistsInTheReferenceClassDiagram("Class1");
 	}
 }
