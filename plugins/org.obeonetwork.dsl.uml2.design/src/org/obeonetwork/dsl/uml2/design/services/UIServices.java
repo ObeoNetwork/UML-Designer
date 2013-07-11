@@ -23,7 +23,6 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.uml2.uml.Element;
-import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UseCase;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
@@ -80,7 +79,7 @@ public class UIServices {
 	 * @param containerView
 	 *            Container view
 	 */
-	public void paste(final Element container, final NamedElement semanticElement,
+	public void paste(final Element container, final Element semanticElement,
 			final DSemanticDecorator elementView, final DSemanticDecorator containerView) {
 		// Paste the semantic element from the clipboard to the selected container
 		final Session session = SessionManager.INSTANCE.getSession(container);
@@ -106,7 +105,7 @@ public class UIServices {
 	 * @param moveSemanticElement
 	 *            True to move the dropped semantic element or false to just show the element on a diagram
 	 */
-	private void drop(final Element newContainer, final NamedElement semanticElement,
+	private void drop(final Element newContainer, final Element semanticElement,
 			final DSemanticDecorator containerView, boolean moveSemanticElement) {
 		final Session session = SessionManager.INSTANCE.getSession(newContainer);
 		Element oldContainer = semanticElement.getOwner();
@@ -154,7 +153,7 @@ public class UIServices {
 	 * @param containerView
 	 *            Container view
 	 */
-	public void dropFromDiagram(final Element newContainer, final NamedElement semanticElement,
+	public void dropFromDiagram(final Element newContainer, final Element semanticElement,
 			final DSemanticDecorator containerView) {
 		drop(newContainer, semanticElement, containerView, true);
 	}
@@ -170,7 +169,7 @@ public class UIServices {
 	 *            Container view
 	 */
 	@SuppressWarnings("restriction")
-	public void dropFromModel(final Element newContainer, final NamedElement semanticElement,
+	public void dropFromModel(final Element newContainer, final Element semanticElement,
 			final DSemanticDecorator containerView) {
 		drop(newContainer, semanticElement, containerView, !(containerView instanceof DSemanticDiagramSpec));
 	}
