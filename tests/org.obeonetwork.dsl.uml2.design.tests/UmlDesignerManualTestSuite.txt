@@ -1,0 +1,15 @@
+Feature : Class diagram
+	Story : Create a type
+		Scenario : Create a package in the class diagram from the palette
+			Given A class diagram is opened
+			When I select the package creation tool from the palette
+			When I click on the diagram
+			Then A package is created in the model
+			Then A package appears on the diagram
+	Story : Delete a type
+		Scenario : Delete a class in the class diagram from the delete from model tool in the toolbar
+			Given A class diagram is opened
+			When I select the delete from model tool in toolbar
+			When I click on a class in the diagram
+			Then The class is deleted from the model
+			Then The class does not appear anymore on the diagram

@@ -200,11 +200,28 @@ Document {
 						
 
 						When the user goes over the main graphical area with his mouse, after a short delay the tools usable according to the current context are poped up. Then the user can select a tool, the tool behaviour will be exactly	the same as if he would have select the same tool in the palette.
+
+						Story: Edit labels [Direct edit]
+							As: Business analyst	
+							I want: to edit the label of an element on the diagram
+							So that: I could update the elements name easily
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/EditLabelsUnitTests.java"
+							 
+						M@
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/features/DirectEditUnitTests.java"
+							 
+						M@
 					}
 				}
 
 				Section Outline {
 					The outline view has two display modes that the user can select in its upper toolbar:
+					@M
+						@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/EditLabelsUnitTests.java#/"
+						 
+					M@
 
 					* In Outline mode, it shows the model elements represented in the diagram as a tree view;
 					* In Overview mode, it shows a complete overview of the active diagram. If the diagram is too big to be seen entirely on the diagram modeler, the overview is an easy way to navigate on the active diagram.
@@ -366,6 +383,28 @@ Document {
 				|ConstraintBlock		 |y           |y         |y       |n           |
 
 				
+				@M
+					@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/ui/features/ManageRepresentationUiTests.java"
+					 
+				M@
+
+				Story: Create a new representation [Manage representation]
+					As: Business analyst
+					I want: to create a representation
+					So that: I could manage the different views of my application
+				@M
+					@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/ui/stories/CreateANewRepresentationUiTests.java"
+					 
+				M@
+
+				Scenario: Create a class diagram from a package in the model explorer [Create a new representation]@ui
+					Given: A package selected in the model explorer
+					When: I create a new class diagram
+					Then: A class diagram is created and opened
+				@M
+					@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/ui/stories/createanewrepresentation/CreateAClassDiagramFromAPackageInTheModelExplorer.java"
+					 
+				M@
 			}
 
 			Section Manage UML models {
@@ -875,7 +914,7 @@ Document {
 
 					
 					
-					|_. Element        |_. Representation|_. Comments|                                           |
+					|_. Element        |_. Representation|_. Comments|       |
 					|Partition             |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ActivityDiagramPartition.png!          |Organizes a flow by grouping elements|
 					|Initial Node          |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ActivityDiagramInitialNode.png!        |Start of a flow|
 					|Activity Final Node   |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ActivityDiagramActivityFinalNode.png!  |End of a flow|
@@ -1633,6 +1672,91 @@ Document {
 
 					The user can also *delete a type* (
 					@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
+
+					Story: Create a type [Class diagram]
+					As: Business analyst
+					I want: to create a type in the class diagram
+					So that: I could manage the elements in the model
+
+					Scenario: Create a class in the class diagram from the palette [Create a type] @ui
+					Given: A class diagram is opened
+					When: I select the class creation tool from the palette and I click on the diagram
+					Then: A class is created in the model
+					Then: A class appears on the diagram
+
+					Scenario: Create an enumeration in the class diagram from the palette [Create a type]@ui
+					Given: A class diagram is opened
+					When: I select the enumeration creation tool from the palette and I click on the diagram
+					Then: An enumeration is created in the model
+					Then: An enumeration appears on the diagram
+
+					Scenario: Create a datatype in the class diagram from the palette [Create a type]@ui
+					Given: A class diagram is opened
+					When: I select the datatype creation tool from the palette
+					When: I click on the diagram
+					Then: A datatype is created in the model
+					Then: A datatype appears on the diagram
+
+					Scenario: Create a primitive type in the class diagram from the palette [Create a type]@ui
+					Given: A class diagram is opened
+					When: I select the primitive type creation tool from the palette
+					When: I click on the diagram
+					Then: A primitive type is created in the model
+					Then: A primitive type appears on the diagram
+
+					Scenario: Create an interface in the class diagram from the palette [Create a type]@ui
+					Given: A class diagram is opened
+					When: I select the interface creation tool from the palette
+					When: I click on the diagram
+					Then: An interface is created in the model
+					Then: An interface appears on the diagram
+
+					Scenario: Create a package in the class diagram from the palette [Create a type]
+					Given: A class diagram is opened
+					When: I select the package creation tool from the palette
+					When: I click on the diagram
+					Then: A package is created in the model
+					Then: A package appears on the diagram
+
+					Story: Delete a type [Class diagram]
+					As: Business analyst
+					I want: to delete a type in the class diagram
+					So that: I could manage the elements in the model
+
+					Scenario: Delete a class in the class diagram from the delete from model tool in the toolbar [Delete a type]
+					Given: A class diagram is opened
+					When: I select the delete from model tool in toolbar
+					When: I click on a class in the diagram
+					Then: The class is deleted from the model
+					Then: The class does not appear anymore on the diagram
+					@M
+						@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/ui/stories/CreateATypeUiTests.java"
+						 
+					M@
+					@M
+						@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/ui/features/ClassDiagramUiTests.java"
+						 
+					M@
+					@M
+						@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/ui/stories/createatype/CreateAClassInTheClassDiagramFromThePalette.java"
+						 
+					M@
+					@M
+						@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/ui/stories/createatype/CreateAnEnumerationInTheClassDiagramFromThePalette.java"
+						 
+					M@
+					@M
+						@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/ui/stories/createatype/CreateADatatypeInTheClassDiagramFromThePalette.java"
+						 
+					M@
+					@M
+						@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/ui/stories/createatype/CreateAPrimitiveTypeInTheClassDiagramFromThePalette.java"
+						 
+					M@
+					@M
+						@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/ui/stories/createatype/CreateAnInterfaceInTheClassDiagramFromThePalette.java"
+						 
+					M@
 				}
 
 				Section Manage features {
@@ -1660,6 +1784,11 @@ Document {
 
 					The user can also *delete a feature* (
 					@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
+
+					Story: Create a feature [Class diagram]
+					As: Business analyst
+					I want: to create a feature in the class diagram
+					So that: I could manage the elements in the model
 				}
 
 				Section Manage relationships {
@@ -1746,7 +1875,40 @@ Document {
 					* relationships labels
 					
 
-					
+						Scenario: Edit association role [Edit labels]@unit
+							Given: An Uml model with an association
+							When: I edit the label of the first role to $firstRole
+							When: I edit the label of the second role to $secondRole
+							Then: The first end name equals $firstRole
+							Then: The second end name equals $secondRole
+					@M
+						@ref "platform:/resource/platform://org.obeonetwork.dsl.uml2.design.tests/Edit%20association%20role.java"
+						 
+					M@
+					@M
+						@ref "platform:/resource/org.obeonetwork.dsl.uml2.design.tests/src/EditAssociationRole.java%23/"
+						 
+					M@
+					@M
+						@ref "platform:/resource/org.obeonetwork.dsl.uml2.design.tests/src/unit/stories/editlabels/EditAssociationRole.java%23/"
+						 
+					M@
+					@M
+						@ref "platform:/resource/org.obeonetwork.dsl.uml2.design.tests/src/unit/stories/editlabels/EditAssociationRole.java"
+						 
+					M@
+					@M
+						@ref "platform:/resource/org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/editlabels/EditAssociationRole/EditAssociationRole.java"
+						 
+					M@
+					@M
+						@ref "platform:/resource/org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/editlabels/EditAssociationRole.java"
+						 
+					M@
+					@M
+						@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/editlabels/EditAssociationRole.java"
+						 
+					M@
 				}
 			}
 
@@ -2126,5 +2288,7 @@ Document {
 		Section Architecture Justification {
 			Section {			}
 		}
+
+		Section Tests {		}
 	}
 }
