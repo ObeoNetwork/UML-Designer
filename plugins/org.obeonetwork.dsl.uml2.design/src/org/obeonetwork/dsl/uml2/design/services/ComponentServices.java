@@ -10,9 +10,12 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.services;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.ComponentRealization;
+import org.eclipse.uml2.uml.Interface;
+import org.eclipse.uml2.uml.Port;
 
 /**
  * Utility services to manage operation creation.
@@ -38,4 +41,50 @@ public final class ComponentServices {
 		return result;
 	}
 
+	public boolean createUsageConnectionStartPrecondition(EObject preSource, EObject preSourceView,
+			EObject Container, EObject diagram) {
+		boolean result = preSource instanceof org.eclipse.uml2.uml.Class || preSource instanceof Port;
+		return result;
+	}
+
+	public boolean createUsageConnectionCompletePrecondition(EObject preSource, EObject preSourceView,
+			EObject preTarget, EObject preTargetView, EObject Container, EObject diagram) {
+		boolean result = preTarget instanceof Interface;
+		if (preSource instanceof org.eclipse.uml2.uml.Class || preSource instanceof Port) {
+			result &= validSourceTarget(preSource, preSourceView, preTarget, preTargetView);
+		} else {
+			result = false;
+		}
+		return result;
+	}
+
+	public boolean createIRConnectionStartPrecondition(EObject preSource, EObject preSourceView,
+			EObject Container, EObject diagram) {
+		boolean result = preSource instanceof org.eclipse.uml2.uml.Class || preSource instanceof Port;
+		return result;
+	}
+
+	public boolean createIRConnectionCompletePrecondition(EObject preSource, EObject preSourceView,
+			EObject preTarget, EObject preTargetView, EObject Container, EObject diagram) {
+		boolean result = preTarget instanceof Interface;
+		if (preSource instanceof org.eclipse.uml2.uml.Class || preSource instanceof Port) {
+			result &= validSourceTarget(preSource, preSourceView, preTarget, preTargetView);
+		} else {
+			result = false;
+		}
+		return result;
+	}
+
+	public boolean validSourceTarget(EObject source, EObject sourceView, EObject target, EObject targetView) {
+		boolean result = true;
+
+		if (source instanceof org.eclipse.uml2.uml.Class) {
+			result &= targetView.eContainer().equals(sourceView.eContainer());
+		} else if (source instanceof Port) {
+			result &= targetView.eContainer().equals(sourceView.eContainer().eContainer());
+		} else {
+			result = false;
+		}
+		return result;
+	}
 }
