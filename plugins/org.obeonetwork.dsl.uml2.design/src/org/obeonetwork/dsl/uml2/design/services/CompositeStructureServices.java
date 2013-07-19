@@ -535,7 +535,7 @@ public class CompositeStructureServices {
 	 *            the dependency context
 	 * @return needed clients to handle is the diagram ui
 	 */
-	public List<NamedElement> getClient(Dependency dependency) {
+	public static List<NamedElement> getClient(Dependency dependency) {
 		List<NamedElement> result = new ArrayList<NamedElement>();
 		List<NamedElement> clients = Lists.newArrayList(Iterables.filter(dependency.getClients(),
 				new Predicate<EObject>() {

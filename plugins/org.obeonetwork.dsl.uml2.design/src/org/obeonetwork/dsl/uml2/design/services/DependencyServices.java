@@ -44,7 +44,7 @@ public class DependencyServices {
 	 * @param supplier
 	 *            the supplier to remove
 	 */
-	public void removeSupplier(org.eclipse.uml2.uml.Dependency aDependency,
+	public static void removeSupplier(org.eclipse.uml2.uml.Dependency aDependency,
 			org.eclipse.uml2.uml.NamedElement supplier) {
 
 		EList<NamedElement> suppliers = aDependency.getSuppliers();
@@ -58,7 +58,7 @@ public class DependencyServices {
 	 *            The diagram
 	 * @return Dependencies
 	 */
-	public List<Dependency> getAvailableDependencies(DDiagram diagram) {
+	public static List<Dependency> getAvailableDependencies(DDiagram diagram) {
 		List<Dependency> result = new ArrayList<Dependency>();
 		List<DDiagramElement> ownedDiagramElements = diagram.getOwnedDiagramElements();
 		for (DDiagramElement dDiagramElement : ownedDiagramElements) {
@@ -79,7 +79,7 @@ public class DependencyServices {
 	 *            The view context
 	 * @return Dependencies
 	 */
-	public List<Dependency> getAvailableSubDependencies(EObject viewContext) {
+	public static List<Dependency> getAvailableSubDependencies(EObject viewContext) {
 		List<Dependency> result = new ArrayList<Dependency>();
 		if (viewContext instanceof DDiagramElementContainer) {
 			DDiagramElementContainer dDiagramElement = (DDiagramElementContainer)viewContext;
@@ -106,7 +106,7 @@ public class DependencyServices {
 		return result;
 	}
 
-	private List<Dependency> getAvailableDependencies(StructuredClassifier structuredClassifier) {
+	public static List<Dependency> getAvailableDependencies(StructuredClassifier structuredClassifier) {
 		List<Dependency> result = new ArrayList<Dependency>();
 		// find interesting dependencies
 		List<Dependency> clientDependencies = structuredClassifier.getClientDependencies();
