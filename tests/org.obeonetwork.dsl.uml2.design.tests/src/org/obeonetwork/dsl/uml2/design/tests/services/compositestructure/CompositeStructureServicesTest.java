@@ -12,6 +12,7 @@ package org.obeonetwork.dsl.uml2.design.tests.services.compositestructure;
 
 import org.eclipse.uml2.uml.Dependency;
 import org.obeonetwork.dsl.uml2.design.services.CompositeStructureServices;
+import org.obeonetwork.dsl.uml2.design.services.DependencyServices;
 import org.obeonetwork.dsl.uml2.design.tests.Activator;
 
 public class CompositeStructureServicesTest extends AbstractCompositeStructueTests {
@@ -37,7 +38,7 @@ public class CompositeStructureServicesTest extends AbstractCompositeStructueTes
 
 	public void testGetClient() {
 		for (Dependency dependency : AllDependencies) {
-			assertNotNull(cSService.getClient(dependency));
+			assertNotNull(DependencyServices.getClient(dependency));
 		}
 	}
 	// TODO HMA

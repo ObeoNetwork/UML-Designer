@@ -397,4 +397,69 @@
     <packagedElement xmi:type="uml:Usage" xmi:id="_toHsYPLVEeKY77N6YacPDg" name="XToPort1" client="_0cpwsPLUEeKY77N6YacPDg _jB7w0PLVEeKY77N6YacPDg _OXg6wPLWEeKY77N6YacPDg" supplier="_nWBcMPLVEeKY77N6YacPDg"/>
     <packagedElement xmi:type="uml:Usage" xmi:id="_ucwOUPLVEeKY77N6YacPDg" name="XToC15" client="_0cv3UPLUEeKY77N6YacPDg _OXg6wPLWEeKY77N6YacPDg" supplier="_nWBcMPLVEeKY77N6YacPDg"/>
   </packagedElement>
+  <packagedElement xmi:type="uml:Package" xmi:id="_i2uhMPLnEeKrR52wyX87uQ" name="case Huge">
+    <packagedElement xmi:type="uml:Interface" xmi:id="_yNKDMPLoEeKrR52wyX87uQ" name="Interface2"/>
+    <packagedElement xmi:type="uml:Component" xmi:id="_Ns0OIfNpEeKeLJMnwcIqEQ" clientDependency="_yy-BYPNpEeKeLJMnwcIqEQ _2VVU4PNpEeKeLJMnwcIqEQ" name="N1">
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_rvTxYPNpEeKeLJMnwcIqEQ" clientDependency="_yy-BYPNpEeKeLJMnwcIqEQ _2VVU4PNpEeKeLJMnwcIqEQ" name="Port1" aggregation="composite"/>
+      <interfaceRealization xmi:id="_2VVU4PNpEeKeLJMnwcIqEQ" name="Port1ToService" client="_Ns0OIfNpEeKeLJMnwcIqEQ _rvTxYPNpEeKeLJMnwcIqEQ" supplier="_uMPn8PLnEeKrR52wyX87uQ" contract="_uMPn8PLnEeKrR52wyX87uQ"/>
+      <packagedElement xmi:type="uml:Component" xmi:id="_PVNvUPNpEeKeLJMnwcIqEQ" clientDependency="_yYbacPNpEeKeLJMnwcIqEQ _1zrZUPNpEeKeLJMnwcIqEQ" name="N2">
+        <ownedAttribute xmi:type="uml:Port" xmi:id="_sqVPMPNpEeKeLJMnwcIqEQ" clientDependency="_yYbacPNpEeKeLJMnwcIqEQ _1zrZUPNpEeKeLJMnwcIqEQ" name="Port1" aggregation="composite"/>
+        <ownedConnector xmi:id="_-duYUPNpEeKeLJMnwcIqEQ" clientDependency="_1zrZUPNpEeKeLJMnwcIqEQ" name="Service_Port1_connector">
+          <end xmi:id="_-duYUfNpEeKeLJMnwcIqEQ" role="_sqVPMPNpEeKeLJMnwcIqEQ"/>
+          <end xmi:id="_-du_YPNpEeKeLJMnwcIqEQ" role="_rvTxYPNpEeKeLJMnwcIqEQ"/>
+        </ownedConnector>
+        <ownedConnector xmi:id="_-7n1QPNpEeKeLJMnwcIqEQ" clientDependency="_yYbacPNpEeKeLJMnwcIqEQ" name="Port1_Service_connector">
+          <end xmi:id="_-7n1QfNpEeKeLJMnwcIqEQ" role="_sqVPMPNpEeKeLJMnwcIqEQ"/>
+          <end xmi:id="_-7n1QvNpEeKeLJMnwcIqEQ" role="_rvTxYPNpEeKeLJMnwcIqEQ"/>
+        </ownedConnector>
+        <interfaceRealization xmi:id="_1zrZUPNpEeKeLJMnwcIqEQ" name="Port1ToService" client="_PVNvUPNpEeKeLJMnwcIqEQ _sqVPMPNpEeKeLJMnwcIqEQ _-duYUPNpEeKeLJMnwcIqEQ" supplier="_uMPn8PLnEeKrR52wyX87uQ" contract="_uMPn8PLnEeKrR52wyX87uQ"/>
+        <packagedElement xmi:type="uml:Component" xmi:id="_QmUK0PNpEeKeLJMnwcIqEQ" clientDependency="_x1244PNpEeKeLJMnwcIqEQ _1R464PNpEeKeLJMnwcIqEQ" name="N3">
+          <ownedAttribute xmi:type="uml:Port" xmi:id="_tnD9MPNpEeKeLJMnwcIqEQ" clientDependency="_x1244PNpEeKeLJMnwcIqEQ _1R464PNpEeKeLJMnwcIqEQ" name="Port1" aggregation="composite"/>
+          <ownedConnector xmi:id="_9eo54PNpEeKeLJMnwcIqEQ" clientDependency="_1R464PNpEeKeLJMnwcIqEQ" name="Service_Port1_connector">
+            <end xmi:id="_9epg8PNpEeKeLJMnwcIqEQ" role="_tnD9MPNpEeKeLJMnwcIqEQ"/>
+            <end xmi:id="_9epg8fNpEeKeLJMnwcIqEQ" role="_sqVPMPNpEeKeLJMnwcIqEQ"/>
+          </ownedConnector>
+          <ownedConnector xmi:id="_-AMu0PNpEeKeLJMnwcIqEQ" clientDependency="_x1244PNpEeKeLJMnwcIqEQ" name="Port1_Service_connector">
+            <end xmi:id="_-ANV4PNpEeKeLJMnwcIqEQ" role="_tnD9MPNpEeKeLJMnwcIqEQ"/>
+            <end xmi:id="_-ANV4fNpEeKeLJMnwcIqEQ" role="_sqVPMPNpEeKeLJMnwcIqEQ"/>
+          </ownedConnector>
+          <interfaceRealization xmi:id="_1R464PNpEeKeLJMnwcIqEQ" name="Port1ToService" client="_QmUK0PNpEeKeLJMnwcIqEQ _tnD9MPNpEeKeLJMnwcIqEQ _9eo54PNpEeKeLJMnwcIqEQ" supplier="_uMPn8PLnEeKrR52wyX87uQ" contract="_uMPn8PLnEeKrR52wyX87uQ"/>
+          <packagedElement xmi:type="uml:Component" xmi:id="_VfCNQPNpEeKeLJMnwcIqEQ" clientDependency="_xaoVcPNpEeKeLJMnwcIqEQ _0WBIgPNpEeKeLJMnwcIqEQ" name="N4">
+            <ownedAttribute xmi:type="uml:Port" xmi:id="_ug5vQPNpEeKeLJMnwcIqEQ" clientDependency="_xaoVcPNpEeKeLJMnwcIqEQ _0WBIgPNpEeKeLJMnwcIqEQ" name="Port1" aggregation="composite"/>
+            <ownedConnector xmi:id="_8qv-0PNpEeKeLJMnwcIqEQ" clientDependency="_0WBIgPNpEeKeLJMnwcIqEQ" name="Service_Port1_connector">
+              <end xmi:id="_8qwl4PNpEeKeLJMnwcIqEQ" role="_ug5vQPNpEeKeLJMnwcIqEQ"/>
+              <end xmi:id="_8qwl4fNpEeKeLJMnwcIqEQ" role="_tnD9MPNpEeKeLJMnwcIqEQ"/>
+            </ownedConnector>
+            <ownedConnector xmi:id="_9BlKcPNpEeKeLJMnwcIqEQ" clientDependency="_xaoVcPNpEeKeLJMnwcIqEQ" name="Port1_Service_connector">
+              <end xmi:id="_9BlKcfNpEeKeLJMnwcIqEQ" role="_ug5vQPNpEeKeLJMnwcIqEQ"/>
+              <end xmi:id="_9BlxgPNpEeKeLJMnwcIqEQ" role="_tnD9MPNpEeKeLJMnwcIqEQ"/>
+            </ownedConnector>
+            <interfaceRealization xmi:id="_0WBIgPNpEeKeLJMnwcIqEQ" name="Port1ToService" client="_VfCNQPNpEeKeLJMnwcIqEQ _ug5vQPNpEeKeLJMnwcIqEQ _8qv-0PNpEeKeLJMnwcIqEQ" supplier="_uMPn8PLnEeKrR52wyX87uQ" contract="_uMPn8PLnEeKrR52wyX87uQ"/>
+            <nestedClassifier xmi:type="uml:Interface" xmi:id="_uMPn8PLnEeKrR52wyX87uQ" name="Service"/>
+            <packagedElement xmi:type="uml:Component" xmi:id="_XHjDMPNpEeKeLJMnwcIqEQ" clientDependency="_zjrFkPNpEeKeLJMnwcIqEQ" name="N5">
+              <ownedAttribute xmi:type="uml:Port" xmi:id="_7sltcPNpEeKeLJMnwcIqEQ" name="N5Port" type="_XHjDMPNpEeKeLJMnwcIqEQ"/>
+              <ownedConnector xmi:id="_7slGYPNpEeKeLJMnwcIqEQ" clientDependency="_zjrFkPNpEeKeLJMnwcIqEQ" name="Service_Port1_connector">
+                <end xmi:id="_7sltcfNpEeKeLJMnwcIqEQ" role="_7sltcPNpEeKeLJMnwcIqEQ"/>
+                <end xmi:id="_7smUgPNpEeKeLJMnwcIqEQ" role="_ug5vQPNpEeKeLJMnwcIqEQ"/>
+              </ownedConnector>
+              <interfaceRealization xmi:id="_zjrFkPNpEeKeLJMnwcIqEQ" name="N5ToService" client="_XHjDMPNpEeKeLJMnwcIqEQ _7slGYPNpEeKeLJMnwcIqEQ" supplier="_uMPn8PLnEeKrR52wyX87uQ" contract="_uMPn8PLnEeKrR52wyX87uQ"/>
+            </packagedElement>
+            <packagedElement xmi:type="uml:Class" xmi:id="_YzluQPNpEeKeLJMnwcIqEQ" clientDependency="_w0lCEPNpEeKeLJMnwcIqEQ" name="Class2">
+              <ownedAttribute xmi:type="uml:Port" xmi:id="_8Q7wofNpEeKeLJMnwcIqEQ" name="Class2Port" type="_YzluQPNpEeKeLJMnwcIqEQ"/>
+              <ownedConnector xmi:id="_8Q7woPNpEeKeLJMnwcIqEQ" clientDependency="_w0lCEPNpEeKeLJMnwcIqEQ" name="Port1_Service_connector">
+                <end xmi:id="_8Q8XsPNpEeKeLJMnwcIqEQ" role="_8Q7wofNpEeKeLJMnwcIqEQ"/>
+                <end xmi:id="_8Q8XsfNpEeKeLJMnwcIqEQ" role="_ug5vQPNpEeKeLJMnwcIqEQ"/>
+              </ownedConnector>
+            </packagedElement>
+          </packagedElement>
+        </packagedElement>
+      </packagedElement>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_w0lCEPNpEeKeLJMnwcIqEQ" name="ServiceToClass2" client="_YzluQPNpEeKeLJMnwcIqEQ _8Q7woPNpEeKeLJMnwcIqEQ" supplier="_uMPn8PLnEeKrR52wyX87uQ"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_xaoVcPNpEeKeLJMnwcIqEQ" name="ServiceToPort1" client="_VfCNQPNpEeKeLJMnwcIqEQ _ug5vQPNpEeKeLJMnwcIqEQ _9BlKcPNpEeKeLJMnwcIqEQ" supplier="_uMPn8PLnEeKrR52wyX87uQ"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_x1244PNpEeKeLJMnwcIqEQ" name="ServiceToPort1" client="_QmUK0PNpEeKeLJMnwcIqEQ _tnD9MPNpEeKeLJMnwcIqEQ _-AMu0PNpEeKeLJMnwcIqEQ" supplier="_uMPn8PLnEeKrR52wyX87uQ"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_yYbacPNpEeKeLJMnwcIqEQ" name="ServiceToPort1" client="_PVNvUPNpEeKeLJMnwcIqEQ _sqVPMPNpEeKeLJMnwcIqEQ _-7n1QPNpEeKeLJMnwcIqEQ" supplier="_uMPn8PLnEeKrR52wyX87uQ"/>
+    <packagedElement xmi:type="uml:Usage" xmi:id="_yy-BYPNpEeKeLJMnwcIqEQ" name="ServiceToPort1" client="_Ns0OIfNpEeKeLJMnwcIqEQ _rvTxYPNpEeKeLJMnwcIqEQ" supplier="_uMPn8PLnEeKrR52wyX87uQ"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_Q2PAsPNqEeKeLJMnwcIqEQ" name="Class2"/>
+  </packagedElement>
 </uml:Model>
