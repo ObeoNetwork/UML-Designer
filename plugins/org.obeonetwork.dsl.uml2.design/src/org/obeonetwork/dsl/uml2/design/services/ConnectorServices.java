@@ -592,7 +592,7 @@ public final class ConnectorServices {
 	private Port getStructuredClassifierPublicPort(EncapsulatedClassifier encapsulatedClassifier) {
 		List<Port> ownedPorts = encapsulatedClassifier.getOwnedPorts();
 		for (Port port : ownedPorts) {
-			if (port.getType().equals(encapsulatedClassifier)) {
+			if (encapsulatedClassifier.equals(port.getType())) {
 				return port;
 			}
 		}
@@ -643,26 +643,24 @@ public final class ConnectorServices {
 		List<Port> result = new ArrayList<Port>();
 		List<Dependency> clientDependencies = connector.getClientDependencies();
 
-		if (clientDependencies.size() == 1) {
-			for (ConnectorEnd connectorEnd : connector.getEnds()) {
-				if (connectorEnd.getRole() instanceof Port) {
-					Port portUnderTest = (Port)connectorEnd.getRole();
-					boolean sourcePort = true;
-					for (Dependency dependency : clientDependencies) {
-						if (!sourcePort) {
-							break;
-						}
-						if (dependency instanceof Usage) {
-							for (NamedElement client : dependency.getClients()) {
-								if (client instanceof Port && client.equals(portUnderTest)) {
-									sourcePort = false;
-									break;
-								}
+		for (ConnectorEnd connectorEnd : connector.getEnds()) {
+			if (connectorEnd.getRole() instanceof Port) {
+				Port portUnderTest = (Port)connectorEnd.getRole();
+				boolean sourcePort = true;
+				for (Dependency dependency : clientDependencies) {
+					if (!sourcePort) {
+						break;
+					}
+					if (dependency instanceof Usage) {
+						for (NamedElement client : dependency.getClients()) {
+							if (client instanceof Port && client.equals(portUnderTest)) {
+								sourcePort = false;
+								break;
 							}
 						}
-						if (sourcePort) {
-							result.add(portUnderTest);
-						}
+					}
+					if (sourcePort) {
+						result.add(portUnderTest);
 					}
 				}
 			}
@@ -672,15 +670,12 @@ public final class ConnectorServices {
 
 	public List<Interface> getTarget4Port2SubRequiredInterface(Connector connector) {
 		List<Interface> result = new ArrayList<Interface>();
-		List<Dependency> clientDependencies = connector.getClientDependencies();
-		if (clientDependencies.size() == 1) {
-			for (Dependency dependency : connector.getClientDependencies()) {
-				if (dependency instanceof Usage) {
-					List<NamedElement> suppliers = dependency.getSuppliers();
-					for (NamedElement supplier : suppliers) {
-						if (supplier instanceof Interface) {
-							result.add((Interface)supplier);
-						}
+		for (Dependency dependency : connector.getClientDependencies()) {
+			if (dependency instanceof Usage) {
+				List<NamedElement> suppliers = dependency.getSuppliers();
+				for (NamedElement supplier : suppliers) {
+					if (supplier instanceof Interface) {
+						result.add((Interface)supplier);
 					}
 				}
 			}
@@ -690,15 +685,12 @@ public final class ConnectorServices {
 
 	public List<Interface> getSource4SubProvidedInterface2Port(Connector connector) {
 		List<Interface> result = new ArrayList<Interface>();
-		List<Dependency> clientDependencies = connector.getClientDependencies();
-		if (clientDependencies.size() == 1) {
-			for (Dependency dependency : connector.getClientDependencies()) {
-				if (dependency instanceof InterfaceRealization) {
-					List<NamedElement> suppliers = dependency.getSuppliers();
-					for (NamedElement supplier : suppliers) {
-						if (supplier instanceof Interface) {
-							result.add((Interface)supplier);
-						}
+		for (Dependency dependency : connector.getClientDependencies()) {
+			if (dependency instanceof InterfaceRealization) {
+				List<NamedElement> suppliers = dependency.getSuppliers();
+				for (NamedElement supplier : suppliers) {
+					if (supplier instanceof Interface) {
+						result.add((Interface)supplier);
 					}
 				}
 			}
@@ -709,29 +701,68 @@ public final class ConnectorServices {
 	public List<Port> getTarget4SubProvidedInterface2Port(Connector connector) {
 		List<Port> result = new ArrayList<Port>();
 		List<Dependency> clientDependencies = connector.getClientDependencies();
-		if (clientDependencies.size() == 1) {
-			for (ConnectorEnd connectorEnd : connector.getEnds()) {
-				if (connectorEnd.getRole() instanceof Port) {
-					Port portUnderTest = (Port)connectorEnd.getRole();
-					boolean targetPort = true;
-					for (Dependency dependency : clientDependencies) {
-						if (!targetPort) {
-							break;
-						}
-						if (dependency instanceof InterfaceRealization) {
-							for (NamedElement client : dependency.getClients()) {
-								if (client instanceof Port && client.equals(portUnderTest)) {
-									targetPort = false;
-									break;
-								}
+		for (ConnectorEnd connectorEnd : connector.getEnds()) {
+			if (connectorEnd.getRole() instanceof Port) {
+				Port portUnderTest = (Port)connectorEnd.getRole();
+				boolean targetPort = true;
+				for (Dependency dependency : clientDependencies) {
+					if (!targetPort) {
+						break;
+					}
+					if (dependency instanceof InterfaceRealization) {
+						for (NamedElement client : dependency.getClients()) {
+							if (client instanceof Port && client.equals(portUnderTest)) {
+								targetPort = false;
+								break;
 							}
 						}
-						if (targetPort) {
-							result.add(portUnderTest);
-						}
+					}
+					if (targetPort) {
+						result.add(portUnderTest);
 					}
 				}
 			}
+		}
+		return result;
+	}
+
+	public static boolean validSourceTarget4DelegatedConnector(EObject source, EObject sourceView,
+			EObject target, EObject targetView) {
+		boolean result = true;
+
+		if (source instanceof org.eclipse.uml2.uml.Interface) {
+			if (target instanceof Port) {
+				result &= targetView.eContainer().equals(sourceView.eContainer());
+			}
+		} else {
+			result = false;
+		}
+		return result;
+	}
+
+	public static boolean validSourceTarget4Connector(EObject source, EObject sourceView, EObject target,
+			EObject targetView) {
+		boolean result = true;
+
+		if (source instanceof org.eclipse.uml2.uml.Interface
+				&& target instanceof org.eclipse.uml2.uml.Interface) {
+			result &= targetView.eContainer().equals(sourceView.eContainer());
+		} else {
+			result = false;
+		}
+		return result;
+	}
+
+	public static boolean validSourceTarget4Dependency(EObject source, EObject sourceView, EObject target,
+			EObject targetView) {
+		boolean result = true;
+
+		if (source instanceof org.eclipse.uml2.uml.Class) {
+			result &= targetView.eContainer().equals(sourceView.eContainer());
+		} else if (source instanceof Port) {
+			result &= targetView.eContainer().equals(sourceView.eContainer().eContainer());
+		} else {
+			result = false;
 		}
 		return result;
 	}
