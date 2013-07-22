@@ -81,7 +81,7 @@ public final class ComponentServices {
 			EObject preTarget, EObject preTargetView, EObject Container, EObject diagram) {
 		boolean result = preTarget instanceof Interface;
 		if (preSource instanceof org.eclipse.uml2.uml.Class || preSource instanceof Port) {
-			result &= validSourceTarget(preSource, preSourceView, preTarget, preTargetView);
+			result &= validSourceTarget4Dependency(preSource, preSourceView, preTarget, preTargetView);
 		} else {
 			result = false;
 		}
@@ -98,20 +98,35 @@ public final class ComponentServices {
 			EObject preTarget, EObject preTargetView, EObject Container, EObject diagram) {
 		boolean result = preTarget instanceof Interface;
 		if (preSource instanceof org.eclipse.uml2.uml.Class || preSource instanceof Port) {
-			result &= validSourceTarget(preSource, preSourceView, preTarget, preTargetView);
+			result &= validSourceTarget4Dependency(preSource, preSourceView, preTarget, preTargetView);
 		} else {
 			result = false;
 		}
 		return result;
 	}
 
-	public boolean validSourceTarget(EObject source, EObject sourceView, EObject target, EObject targetView) {
+	public boolean validSourceTarget4Dependency(EObject source, EObject sourceView, EObject target,
+			EObject targetView) {
 		boolean result = true;
 
 		if (source instanceof org.eclipse.uml2.uml.Class) {
 			result &= targetView.eContainer().equals(sourceView.eContainer());
 		} else if (source instanceof Port) {
 			result &= targetView.eContainer().equals(sourceView.eContainer().eContainer());
+		} else {
+			result = false;
+		}
+		return result;
+	}
+
+	public boolean validSourceTarget4DelegatedConnector(EObject source, EObject sourceView, EObject target,
+			EObject targetView) {
+		boolean result = true;
+
+		if (source instanceof org.eclipse.uml2.uml.Interface) {
+			if (target instanceof Port) {
+				result &= targetView.eContainer().equals(sourceView.eContainer());
+			}
 		} else {
 			result = false;
 		}
