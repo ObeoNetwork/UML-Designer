@@ -27,12 +27,7 @@ import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.StructuredClassifier;
-import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.Usage;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 import fr.obeo.dsl.viewpoint.AbstractDNode;
 import fr.obeo.dsl.viewpoint.DDiagram;
@@ -50,13 +45,6 @@ import fr.obeo.dsl.viewpoint.EdgeTarget;
 public class CompositeStructureServices {
 
 	private static final String NOT_HANDLED = ") not handled";
-
-	/**
-	 * Logger.
-	 */
-	private LogServices logger = new LogServices();
-
-	private DependencyServices dependencyServices = new DependencyServices();
 
 	/**
 	 * Find provided interfaces to add.
@@ -236,7 +224,7 @@ public class CompositeStructureServices {
 	 */
 	public List<Connector> getAvailableConnectors(DDiagram diagram) {
 		List<Connector> result = new ArrayList<Connector>();
-		List<Dependency> availableDependencies = dependencyServices.getAvailableDependencies(diagram);
+		List<Dependency> availableDependencies = DependencyServices.getAvailableDependencies(diagram);
 		for (Dependency dependency : availableDependencies) {
 			List<NamedElement> clients = dependency.getClients();
 			for (NamedElement client : clients) {
@@ -259,7 +247,7 @@ public class CompositeStructureServices {
 	 */
 	public List<Connector> getAvailableSubConnectors(DDiagram diagram) {
 		List<Connector> result = new ArrayList<Connector>();
-		List<Dependency> availableDependencies = dependencyServices.getAvailableSubDependencies(diagram);
+		List<Dependency> availableDependencies = DependencyServices.getAvailableSubDependencies(diagram);
 		for (Dependency dependency : availableDependencies) {
 			List<NamedElement> clients = dependency.getClients();
 			for (NamedElement client : clients) {
@@ -413,169 +401,8 @@ public class CompositeStructureServices {
 				}
 			}
 		} else {
-			logger.error(
-					"CompositeStructureServices.getWizardProvidedServiceSelectedCandidates("
-							+ object.getClass() + NOT_HANDLED, null);
-		}
-		return result;
-	}
-
-	/**
-	 * Create an usage.
-	 * 
-	 * @param context
-	 *            the context to create the an usage
-	 * @param contract
-	 *            the contract to respect
-	 * @return the new usage
-	 */
-	public Usage createHelperUsage(EObject context, Interface contract) {
-		Usage result = null;
-		if (context instanceof Property) {
-			final Property property = (Property)context;
-			boolean isPortWithValidType = false;
-			if (context instanceof Port && ((Port)context).isConjugated()) {
-				final Port port = (Port)property;
-				// create InterfaceRealization on the type
-				Type type = port.getType();
-				if (type instanceof NamedElement) {
-					isPortWithValidType = true;
-					NamedElement namedElement = (NamedElement)type;
-					result = namedElement.createUsage(contract);
-					result.setName(genDependencyName(contract, namedElement));
-					result.getClients().add(port);
-				}
-			}
-			if (!isPortWithValidType) {
-				EObject eContainer = context.eContainer();
-				if (eContainer instanceof NamedElement) {
-					NamedElement namedElement = (NamedElement)eContainer;
-					result = namedElement.createUsage(contract);
-					result.setName(genDependencyName(contract, property));
-					result.getClients().add(property);
-				}
-			}
-		} else if (context instanceof NamedElement) {
-			NamedElement namedElement = (NamedElement)context;
-			result = namedElement.createUsage(contract);
-			result.setName(genDependencyName(contract, namedElement));
-		} else {
-			logger.error("CompositeStructureServices.createUsage(" + context.getClass() + NOT_HANDLED, null);
-		}
-
-		return result;
-	}
-
-	/**
-	 * Create an interface realization.
-	 * 
-	 * @param context
-	 *            the context to create the an interface realization
-	 * @param contract
-	 *            the contract to respect
-	 * @return the new interface realization
-	 */
-	public InterfaceRealization createHelperInterfaceRealization(EObject context, Interface contract) {
-		InterfaceRealization result = null;
-
-		if (context instanceof Property) {
-			final Property property = (Property)context;
-			boolean isPortWithValidType = false;
-			if (context instanceof Port && ((Port)context).isConjugated()) {
-				final Port port = (Port)property;
-				// create InterfaceRealization on the type
-				Type type = port.getType();
-				if (type instanceof BehavioredClassifier) {
-					isPortWithValidType = true;
-					BehavioredClassifier behavioredClassifier = (BehavioredClassifier)type;
-					result = behavioredClassifier.createInterfaceRealization(
-							genDependencyName(behavioredClassifier, contract), contract);
-					result.getClients().add(port);
-				}
-			}
-			if (!isPortWithValidType) {
-				EObject eContainer = context.eContainer();
-				if (eContainer instanceof BehavioredClassifier) {
-					BehavioredClassifier behavioredClassifier = (BehavioredClassifier)eContainer;
-					result = behavioredClassifier.createInterfaceRealization(
-							genDependencyName(property, contract), contract);
-					result.getClients().add(property);
-				}
-			}
-		} else if (context instanceof BehavioredClassifier) {
-			BehavioredClassifier behavioredClassifier = (BehavioredClassifier)context;
-			result = behavioredClassifier.createInterfaceRealization(
-					genDependencyName(behavioredClassifier, contract), contract);
-		} else {
-			logger.error("CompositeStructureServices.createInterfaceRealization(" + context.getClass()
-					+ NOT_HANDLED, null);
-		}
-
-		return result;
-	}
-
-	/**
-	 * Generate a dependency label.
-	 * 
-	 * @param source
-	 *            the source
-	 * @param target
-	 *            the target
-	 * @return a dependency label
-	 */
-	public String genDependencyName(NamedElement source, NamedElement target) {
-		return source.getName() + "To" + target.getName();
-	}
-
-	/**
-	 * To avoid duplicate case Port to interface and Class/Component to interface we provide this service that
-	 * return only the required client to ui needs.
-	 * 
-	 * @param dependency
-	 *            the dependency context
-	 * @return needed clients to handle is the diagram ui
-	 */
-	public static List<NamedElement> getClient(Dependency dependency) {
-		List<NamedElement> result = new ArrayList<NamedElement>();
-		List<NamedElement> clients = Lists.newArrayList(Iterables.filter(dependency.getClients(),
-				new Predicate<EObject>() {
-					public boolean apply(EObject input) {
-						return !(input instanceof Connector);
-					}
-				}));
-
-		if (clients.size() == 1) {
-			result.addAll(clients);
-		} else if (clients.size() > 0) {
-
-			for (NamedElement client : clients) {
-				if (client instanceof Property) {
-					Property property = (Property)client;
-					if (property instanceof Port) {
-						Port port = (Port)property;
-						if (port.getType() != null) {
-							if (port.eContainer() instanceof StructuredClassifier
-									&& port.getType().equals(port.eContainer())) {
-								// when the port type is the container type, add directly the container.
-								result.add(port.getType());
-							} else if (port.isConjugated()) {
-								// if conjugated add the port type and the port.
-								result.add(port);
-								result.add(port.getType());
-							} else {
-								// Else add the port
-								result.add(port);
-							}
-						} else {
-							// Else add the port
-							result.add(port);
-						}
-					} else {
-						// Else add the property
-						result.add(property);
-					}
-				}
-			}
+			new LogServices().error("CompositeStructureServices.getWizardProvidedServiceSelectedCandidates("
+					+ object.getClass() + NOT_HANDLED, null);
 		}
 		return result;
 	}
