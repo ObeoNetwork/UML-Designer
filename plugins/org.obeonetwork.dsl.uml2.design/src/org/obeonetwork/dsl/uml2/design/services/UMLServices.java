@@ -566,7 +566,7 @@ public class UMLServices {
 	 *            the {@link Association} context
 	 * @return first end of the association
 	 */
-	public static Property getSource(Association association) {
+	public Property getSource(Association association) {
 		if (association.getMemberEnds() != null && association.getMemberEnds().size() > 0) {
 			return association.getMemberEnds().get(0);
 		}
@@ -580,7 +580,7 @@ public class UMLServices {
 	 *            the {@link Association} context
 	 * @return second end of the association
 	 */
-	public static Property getTarget(Association association) {
+	public Property getTarget(Association association) {
 		if (association.getMemberEnds() != null && association.getMemberEnds().size() > 1) {
 			return association.getMemberEnds().get(1);
 		}

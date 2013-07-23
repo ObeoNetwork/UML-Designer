@@ -44,7 +44,7 @@ public final class ConnectorServices {
 	 *            the port
 	 * @return the boolean result
 	 */
-	public static boolean isRequiredInterface(Interface anInterface, Port aPort) {
+	public boolean isRequiredInterface(Interface anInterface, Port aPort) {
 		boolean result = aPort.getRequireds().contains(anInterface);
 		if (!result) {
 			for (Dependency dependency : aPort.getClientDependencies()) {
@@ -68,7 +68,7 @@ public final class ConnectorServices {
 	 *            the port
 	 * @return the boolean result
 	 */
-	public static boolean isProvidedInterface(Interface anInterface, Port aPort) {
+	public boolean isProvidedInterface(Interface anInterface, Port aPort) {
 		boolean result = aPort.getProvideds().contains(anInterface);
 		if (!result) {
 			for (Dependency dependency : aPort.getClientDependencies()) {
@@ -93,7 +93,7 @@ public final class ConnectorServices {
 	 *            the target element
 	 * @return true if connectable
 	 */
-	public static boolean isConnectable(Element source, Element target) {
+	public boolean isConnectable(Element source, Element target) {
 		boolean result = false;
 
 		if (source instanceof Interface) {
@@ -124,7 +124,7 @@ public final class ConnectorServices {
 		return result;
 	}
 
-	protected static boolean isConnectable(Interface source, Interface target) {
+	protected boolean isConnectable(Interface source, Interface target) {
 		boolean res = source.conformsTo(target);
 		if (!res) {
 			List<Generalization> generalizations = source.getGeneralizations();
@@ -142,7 +142,7 @@ public final class ConnectorServices {
 		return res;
 	}
 
-	protected static boolean isConnectable(Interface source, Port target) {
+	protected boolean isConnectable(Interface source, Port target) {
 
 		boolean res = false;
 		List<Dependency> clientDependencies = target.getClientDependencies();
@@ -170,7 +170,7 @@ public final class ConnectorServices {
 		return res;
 	}
 
-	protected static boolean isConnectable(Port source, Interface target) {
+	protected boolean isConnectable(Port source, Interface target) {
 
 		boolean res = false;
 
@@ -198,7 +198,7 @@ public final class ConnectorServices {
 		return res;
 	}
 
-	protected static boolean isConnectable(Property source, Property target) {
+	protected boolean isConnectable(Property source, Property target) {
 		boolean res = true;
 		if (source.getType() != null && target.getType() != null) {
 			if (source.getType() instanceof Interface && target.getType() instanceof Interface) {
@@ -210,22 +210,22 @@ public final class ConnectorServices {
 		return res;
 	}
 
-	protected static boolean isConnectable(Interface source, Property target) {
+	protected boolean isConnectable(Interface source, Property target) {
 		// TODO HMA
 		return false;
 	}
 
-	protected static boolean isConnectable(Property source, Interface target) {
+	protected boolean isConnectable(Property source, Interface target) {
 		// TODO HMA
 		return false;
 	}
 
-	protected static boolean isConnectable(Port source, Property target) {
+	protected boolean isConnectable(Port source, Property target) {
 		// TODO HMA
 		return false;
 	}
 
-	protected static boolean isConnectable(Property source, Port target) {
+	protected boolean isConnectable(Property source, Port target) {
 		// TODO HMA
 		return false;
 	}
@@ -241,7 +241,7 @@ public final class ConnectorServices {
 	 *            the property target
 	 * @return the new connector
 	 */
-	public static Connector connectProperty2Property(Property pSource, Property pTarget) {
+	public Connector connectProperty2Property(Property pSource, Property pTarget) {
 
 		final StructuredClassifier structuredClassifier = (StructuredClassifier)pSource.eContainer();
 
@@ -267,7 +267,7 @@ public final class ConnectorServices {
 	 *            the second element
 	 * @return a new named connector
 	 */
-	public static Connector createConnector(StructuredClassifier structuredClassifier, NamedElement elem1,
+	public Connector createConnector(StructuredClassifier structuredClassifier, NamedElement elem1,
 			NamedElement elem2) {
 
 		final Connector connector = structuredClassifier.createOwnedConnector(elem1.getName() + "_"
@@ -284,7 +284,7 @@ public final class ConnectorServices {
 	 * @param encapsulatedClassifier
 	 * @return
 	 */
-	public static Port getStructuredClassifierPublicPort(EncapsulatedClassifier encapsulatedClassifier) {
+	public Port getStructuredClassifierPublicPort(EncapsulatedClassifier encapsulatedClassifier) {
 		List<Port> ownedPorts = encapsulatedClassifier.getOwnedPorts();
 		for (Port port : ownedPorts) {
 			if (encapsulatedClassifier.equals(port.getType())) {
@@ -296,7 +296,7 @@ public final class ConnectorServices {
 		return newPort;
 	}
 
-	public static List<Interface> getSource4ProvidedInterface2RequiredInterface(Connector connector) {
+	public List<Interface> getSource4ProvidedInterface2RequiredInterface(Connector connector) {
 		List<Interface> result = new ArrayList<Interface>();
 		for (Dependency dependency : connector.getClientDependencies()) {
 			if (dependency instanceof InterfaceRealization) {
@@ -311,7 +311,7 @@ public final class ConnectorServices {
 		return result;
 	}
 
-	public static List<Interface> getTarget4ProvidedInterface2RequiredInterface(Connector connector) {
+	public List<Interface> getTarget4ProvidedInterface2RequiredInterface(Connector connector) {
 		List<Interface> result = new ArrayList<Interface>();
 		for (Dependency dependency : connector.getClientDependencies()) {
 			if (dependency instanceof Usage) {
@@ -333,7 +333,7 @@ public final class ConnectorServices {
 	 *            the connector context
 	 * @return the edge source
 	 */
-	public static List<Port> getSource4Port2SubRequiredInterface(Connector connector) {
+	public List<Port> getSource4Port2SubRequiredInterface(Connector connector) {
 		// [end.role.oclAsType(uml::Port)/]
 		List<Port> result = new ArrayList<Port>();
 		List<Dependency> clientDependencies = connector.getClientDependencies();
@@ -363,7 +363,7 @@ public final class ConnectorServices {
 		return result;
 	}
 
-	public static List<Interface> getTarget4Port2SubRequiredInterface(Connector connector) {
+	public List<Interface> getTarget4Port2SubRequiredInterface(Connector connector) {
 		List<Interface> result = new ArrayList<Interface>();
 		for (Dependency dependency : connector.getClientDependencies()) {
 			if (dependency instanceof Usage) {
@@ -378,7 +378,7 @@ public final class ConnectorServices {
 		return result;
 	}
 
-	public static List<Interface> getSource4SubProvidedInterface2Port(Connector connector) {
+	public List<Interface> getSource4SubProvidedInterface2Port(Connector connector) {
 		List<Interface> result = new ArrayList<Interface>();
 		for (Dependency dependency : connector.getClientDependencies()) {
 			if (dependency instanceof InterfaceRealization) {
@@ -393,7 +393,7 @@ public final class ConnectorServices {
 		return result;
 	}
 
-	public static List<Port> getTarget4SubProvidedInterface2Port(Connector connector) {
+	public List<Port> getTarget4SubProvidedInterface2Port(Connector connector) {
 		List<Port> result = new ArrayList<Port>();
 		List<Dependency> clientDependencies = connector.getClientDependencies();
 		for (ConnectorEnd connectorEnd : connector.getEnds()) {

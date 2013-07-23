@@ -81,22 +81,22 @@ import fr.obeo.dsl.viewpoint.diagram.tools.api.editor.DDiagramEditor;
  * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class SequenceServices {
-	private static final String EXECUTION_END_SUFFIX = "_finish";
+	private final String EXECUTION_END_SUFFIX = "_finish";
 
 	/**
 	 * Signal name suffix.
 	 */
-	private static final String SIGNAL_SUFFIX = "_signal";
+	private final String SIGNAL_SUFFIX = "_signal";
 
 	/**
 	 * Sender message name suffix.
 	 */
-	private static final String SENDER_MESSAGE_SUFFIX = "_sender";
+	private final String SENDER_MESSAGE_SUFFIX = "_sender";
 
 	/**
 	 * Receiver message name suffix.
 	 */
-	private static final String RECEIVER_MESSAGE_SUFFIX = "_receiver";
+	private final String RECEIVER_MESSAGE_SUFFIX = "_receiver";
 
 	/**
 	 * Logger.

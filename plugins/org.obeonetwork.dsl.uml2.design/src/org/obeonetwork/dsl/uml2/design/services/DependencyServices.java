@@ -48,14 +48,14 @@ public class DependencyServices {
 	 * @param supplier
 	 *            the supplier to remove
 	 */
-	public static void removeSupplier(org.eclipse.uml2.uml.Dependency aDependency,
+	public void removeSupplier(org.eclipse.uml2.uml.Dependency aDependency,
 			org.eclipse.uml2.uml.NamedElement supplier) {
 
 		EList<NamedElement> suppliers = aDependency.getSuppliers();
 		suppliers.remove(supplier);
 	}
 
-	public static List<Dependency> getAvailableDependencies(StructuredClassifier structuredClassifier) {
+	public List<Dependency> getAvailableDependencies(StructuredClassifier structuredClassifier) {
 		List<Dependency> result = new ArrayList<Dependency>();
 		// find interesting dependencies
 		List<Dependency> clientDependencies = structuredClassifier.getClientDependencies();
@@ -99,7 +99,7 @@ public class DependencyServices {
 	 *            the contract to respect
 	 * @return the new interface realization
 	 */
-	public static InterfaceRealization createHelperInterfaceRealization(EObject context, Interface contract) {
+	public InterfaceRealization createHelperInterfaceRealization(EObject context, Interface contract) {
 		InterfaceRealization result = null;
 
 		if (context instanceof Property) {
@@ -148,11 +148,11 @@ public class DependencyServices {
 	 *            the target
 	 * @return a dependency label
 	 */
-	public static String genDependencyName(NamedElement source, NamedElement target) {
+	public String genDependencyName(NamedElement source, NamedElement target) {
 		return source.getName() + "To" + target.getName();
 	}
 
-	private static boolean isHandled(Dependency dependency) {
+	private boolean isHandled(Dependency dependency) {
 		return dependency instanceof Usage || dependency instanceof InterfaceRealization;
 	}
 
@@ -164,7 +164,7 @@ public class DependencyServices {
 	 *            the dependency context
 	 * @return needed clients to handle is the diagram ui
 	 */
-	public static List<NamedElement> getClient(Dependency dependency) {
+	public List<NamedElement> getClient(Dependency dependency) {
 		List<NamedElement> result = new ArrayList<NamedElement>();
 		List<NamedElement> clients = Lists.newArrayList(Iterables.filter(dependency.getClients(),
 				new Predicate<EObject>() {

@@ -35,7 +35,7 @@ public class CompositeStructureServices {
 
 	private static final String NOT_HANDLED = ") not handled";
 
-	public static List<InterfaceRealization> findInterfaceRealizationsToDelete(
+	public List<InterfaceRealization> findInterfaceRealizationsToDelete(
 			InterfaceRealization interfaceRealization, List<Interface> interfaces) {
 		List<InterfaceRealization> result = new ArrayList<InterfaceRealization>();
 
@@ -53,7 +53,7 @@ public class CompositeStructureServices {
 		return result;
 	}
 
-	public static List<Usage> findUsagesToDelete(Usage usage, List<Interface> interfaces) {
+	public List<Usage> findUsagesToDelete(Usage usage, List<Interface> interfaces) {
 		List<Usage> result = new ArrayList<Usage>();
 		List<NamedElement> suppliers = usage.getSuppliers();
 		for (NamedElement namedElement : suppliers) {
@@ -68,7 +68,7 @@ public class CompositeStructureServices {
 		return result;
 	}
 
-	public static List<EObject> getWizardServiceCandidateExpression(EObject object) {
+	public List<EObject> getWizardServiceCandidateExpression(EObject object) {
 		List<EObject> result = new ArrayList<EObject>();
 		UMLServices service = new UMLServices();
 		List<EObject> validsForCompositeDiagram = service.getValidsForCompositeDiagram(object);
@@ -81,7 +81,7 @@ public class CompositeStructureServices {
 		return result;
 	}
 
-	public static List<EObject> getWizardServiceChildren(EObject object) {
+	public List<EObject> getWizardServiceChildren(EObject object) {
 		List<EObject> result = new ArrayList<EObject>();
 		EList<EObject> eContents = object.eContents();
 		for (EObject eObject : eContents) {
@@ -103,7 +103,7 @@ public class CompositeStructureServices {
 		return result;
 	}
 
-	public static List<EObject> getWizardRequiredServiceSelectedCandidates(EObject object) {
+	public List<EObject> getWizardRequiredServiceSelectedCandidates(EObject object) {
 		List<EObject> result = new ArrayList<EObject>();
 
 		if (object instanceof Property) {
@@ -144,7 +144,7 @@ public class CompositeStructureServices {
 		return result;
 	}
 
-	public static List<EObject> getWizardProvidedServiceSelectedCandidates(EObject object) {
+	public List<EObject> getWizardProvidedServiceSelectedCandidates(EObject object) {
 		List<EObject> result = new ArrayList<EObject>();
 
 		if (object instanceof Property) {

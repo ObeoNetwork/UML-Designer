@@ -148,7 +148,7 @@ public class UMLProfileServices {
 	 *            the comma separated list of stereotype attributes to describe.
 	 * @return A String describing the stereotypes applied to the given element.
 	 */
-	public static String getStereotypesDescription(Element elt, String attributesToDisplay) {
+	public String getStereotypesDescription(Element elt, String attributesToDisplay) {
 		String description = "";
 
 		final ArrayList<String> displayedAttributeList = new ArrayList<String>(
@@ -187,7 +187,7 @@ public class UMLProfileServices {
 	 *            the attribute name we want to retreive
 	 * @return the value of the stereotype attribute.
 	 */
-	private static Object getDisplayContent(Element elt, Stereotype stereotype, String attributeToDisplay) {
+	private Object getDisplayContent(Element elt, Stereotype stereotype, String attributeToDisplay) {
 		final Object obj = elt.getValue(stereotype, attributeToDisplay);
 
 		if (obj instanceof NamedElement) {

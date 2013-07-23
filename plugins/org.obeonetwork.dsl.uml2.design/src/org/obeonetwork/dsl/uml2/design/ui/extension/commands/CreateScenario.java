@@ -27,8 +27,6 @@ import fr.obeo.dsl.viewpoint.diagram.sequence.description.SequenceDiagramDescrip
 import fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectUIManager;
 
 public class CreateScenario extends AbstractHandler {
-	
-	
 
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		ISelection selection = HandlerUtil.getCurrentSelection(event);
@@ -53,8 +51,8 @@ public class CreateScenario extends AbstractHandler {
 
 						// Create representation
 						final DRepresentation representation = DialectManager.INSTANCE.createRepresentation(
-								LabelServices.getSequenceDiagramName(interaction), interaction, description,
-								session, new NullProgressMonitor());
+								new LabelServices().getSequenceDiagramName(interaction), interaction,
+								description, session, new NullProgressMonitor());
 
 						// Open diagram
 						DialectUIManager.INSTANCE.openEditor(session, representation);
@@ -97,8 +95,7 @@ public class CreateScenario extends AbstractHandler {
 
 	@Override
 	public boolean isEnabled() {
-		
-		
+
 		return super.isEnabled();
 	}
 

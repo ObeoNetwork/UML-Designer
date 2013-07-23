@@ -98,8 +98,8 @@ public class UIConnectorServices {
 
 	}
 
-	public static boolean validSourceTarget4DelegatedConnector(EObject source, EObject sourceView,
-			EObject target, EObject targetView) {
+	public boolean validSourceTarget4DelegatedConnector(EObject source, EObject sourceView, EObject target,
+			EObject targetView) {
 		boolean result = true;
 
 		if (source instanceof org.eclipse.uml2.uml.Interface) {
@@ -112,7 +112,7 @@ public class UIConnectorServices {
 		return result;
 	}
 
-	public static boolean validSourceTarget4Connector(EObject source, EObject sourceView, EObject target,
+	public boolean validSourceTarget4Connector(EObject source, EObject sourceView, EObject target,
 			EObject targetView) {
 		boolean result = true;
 
@@ -125,7 +125,7 @@ public class UIConnectorServices {
 		return result;
 	}
 
-	public static boolean validSourceTarget4Dependency(EObject source, EObject sourceView, EObject target,
+	public boolean validSourceTarget4Dependency(EObject source, EObject sourceView, EObject target,
 			EObject targetView) {
 		boolean result = true;
 
@@ -167,7 +167,7 @@ public class UIConnectorServices {
 			connectPort2Interface((DNode)sourceView, (Port)source, (DNode)targetView, (Interface)target);
 		} else if (source instanceof Property && target instanceof Property) {
 			// Make a new connector From Port to Interface
-			ConnectorServices.connectProperty2Property((Property)source, (Property)target);
+			new ConnectorServices().connectProperty2Property((Property)source, (Property)target);
 		} else {
 			new LogServices().error(
 					"ConnectorServices.createConnector(" + source.getClass() + ", " + target.getClass()
@@ -247,7 +247,8 @@ public class UIConnectorServices {
 			Interface iTarget) {
 
 		final StructuredClassifier structuredClassifier = getStructuredClassifierRelated2InterfaceView(sourceView);
-		final Connector connector = ConnectorServices.createConnector(structuredClassifier, iSource, iTarget);
+		final Connector connector = new ConnectorServices().createConnector(structuredClassifier, iSource,
+				iTarget);
 
 		// add ConnectorEnds and clientDependencies
 		final Set<DEdge> edges = new HashSet<DEdge>();
@@ -277,7 +278,8 @@ public class UIConnectorServices {
 			Port pTarget) {
 
 		final StructuredClassifier structuredClassifier = getStructuredClassifierRelated2InterfaceView(sourceView);
-		final Connector connector = ConnectorServices.createConnector(structuredClassifier, iSource, pTarget);
+		final Connector connector = new ConnectorServices().createConnector(structuredClassifier, iSource,
+				pTarget);
 
 		final Set<DEdge> edges = new HashSet<DEdge>();
 		edges.addAll(sourceView.getIncomingEdges());
@@ -308,7 +310,8 @@ public class UIConnectorServices {
 			Interface iTarget) {
 
 		final StructuredClassifier structuredClassifier = getStructuredClassifierRelated2SubInterfaceView(targetView);
-		final Connector connector = ConnectorServices.createConnector(structuredClassifier, pSource, iTarget);
+		final Connector connector = new ConnectorServices().createConnector(structuredClassifier, pSource,
+				iTarget);
 
 		final Set<DEdge> edges = new HashSet<DEdge>();
 		edges.addAll(targetView.getOutgoingEdges());
@@ -336,7 +339,7 @@ public class UIConnectorServices {
 						final ConnectorEnd connectorEnd = connector.createEnd();
 						connectorEnd.setRole((ConnectableElement)model);
 					} else if (model instanceof EncapsulatedClassifier) {
-						Port publicPort = ConnectorServices
+						Port publicPort = new ConnectorServices()
 								.getStructuredClassifierPublicPort((EncapsulatedClassifier)model);
 						final ConnectorEnd connectorEnd = connector.createEnd();
 						connectorEnd.setRole(publicPort);
@@ -357,7 +360,7 @@ public class UIConnectorServices {
 						final ConnectorEnd connectorEnd = connector.createEnd();
 						connectorEnd.setRole((ConnectableElement)model);
 					} else if (model instanceof EncapsulatedClassifier) {
-						Port publicPort = ConnectorServices
+						Port publicPort = new ConnectorServices()
 								.getStructuredClassifierPublicPort((EncapsulatedClassifier)model);
 						final ConnectorEnd connectorEnd = connector.createEnd();
 						connectorEnd.setRole(publicPort);

@@ -155,12 +155,12 @@ public class ReconnectSwitch extends UMLSwitch<Element> {
 	public Element caseAssociation(Association association) {
 		if (RECONNECT_SOURCE == reconnectKind) {
 			if (newPointedElement instanceof Type) {
-				final Property source = UMLServices.getSource(association);
+				final Property source = new UMLServices().getSource(association);
 				source.setType((Type)newPointedElement);
 			}
 		} else {
 			if (newPointedElement instanceof Type) {
-				final Property target = UMLServices.getTarget(association);
+				final Property target = new UMLServices().getTarget(association);
 				target.setType((Type)newPointedElement);
 			}
 		}

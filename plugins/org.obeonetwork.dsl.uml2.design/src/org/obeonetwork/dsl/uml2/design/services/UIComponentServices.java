@@ -52,7 +52,7 @@ import fr.obeo.mda.ecore.extender.business.api.accessor.exception.MetaClassNotFo
  * 
  * @author Hugo Marchadour <a href="mailto:hugo.marchadour@obeo.fr">hugo.marchadour@obeo.fr</a>
  */
-public final class UIComponentServices {
+public class UIComponentServices {
 
 	/**
 	 * Create a component realization.
@@ -81,8 +81,8 @@ public final class UIComponentServices {
 			EObject preTarget, EObject preTargetView, EObject Container, EObject diagram) {
 		boolean result = preTarget instanceof Interface;
 		if (preSource instanceof org.eclipse.uml2.uml.Class || preSource instanceof Port) {
-			result &= UIConnectorServices.validSourceTarget4Dependency(preSource, preSourceView, preTarget,
-					preTargetView);
+			result &= new UIConnectorServices().validSourceTarget4Dependency(preSource, preSourceView,
+					preTarget, preTargetView);
 		} else {
 			result = false;
 		}
@@ -99,8 +99,8 @@ public final class UIComponentServices {
 			EObject preTarget, EObject preTargetView, EObject Container, EObject diagram) {
 		boolean result = preTarget instanceof Interface;
 		if (preSource instanceof org.eclipse.uml2.uml.Class || preSource instanceof Port) {
-			result &= UIConnectorServices.validSourceTarget4Dependency(preSource, preSourceView, preTarget,
-					preTargetView);
+			result &= new UIConnectorServices().validSourceTarget4Dependency(preSource, preSourceView,
+					preTarget, preTargetView);
 		} else {
 			result = false;
 		}
@@ -164,7 +164,8 @@ public final class UIComponentServices {
 			}
 
 			// get all interfaces related to this component
-			List<Dependency> availableDependencies = DependencyServices.getAvailableDependencies(component);
+			List<Dependency> availableDependencies = new DependencyServices()
+					.getAvailableDependencies(component);
 			for (Dependency dependency : availableDependencies) {
 				if (dependency instanceof InterfaceRealization) {
 					for (NamedElement namedElement : dependency.getSuppliers()) {

@@ -41,7 +41,7 @@ import fr.obeo.dsl.viewpoint.EdgeTarget;
  */
 public class UICompositeStructureServices {
 
-	public static boolean isInterfaceView(EObject view) {
+	public boolean isInterfaceView(EObject view) {
 		return view instanceof DNode && ((DNode)view).getTarget() != null
 				&& ((DNode)view).getTarget() instanceof Interface;
 	}
@@ -54,7 +54,7 @@ public class UICompositeStructureServices {
 	 *            Views to handle
 	 * @return the handle result
 	 */
-	public static List<EObject> handleUnmeaningViews(List<EObject> views) {
+	public List<EObject> handleUnmeaningViews(List<EObject> views) {
 		List<EObject> result = new ArrayList<EObject>();
 
 		for (EObject view : views) {
@@ -83,9 +83,9 @@ public class UICompositeStructureServices {
 	 *            The diagram
 	 * @return Dependencies
 	 */
-	public static List<Connector> getAvailableConnectors(DDiagram diagram) {
+	public List<Connector> getAvailableConnectors(DDiagram diagram) {
 		List<Connector> result = new ArrayList<Connector>();
-		List<Dependency> availableDependencies = UIDependencyServices.getAvailableDependencies(diagram);
+		List<Dependency> availableDependencies = new UIDependencyServices().getAvailableDependencies(diagram);
 		for (Dependency dependency : availableDependencies) {
 			List<NamedElement> clients = dependency.getClients();
 			for (NamedElement client : clients) {
@@ -106,9 +106,10 @@ public class UICompositeStructureServices {
 	 *            The diagram
 	 * @return Dependencies
 	 */
-	public static List<Connector> getAvailableSubConnectors(DDiagram diagram) {
+	public List<Connector> getAvailableSubConnectors(DDiagram diagram) {
 		List<Connector> result = new ArrayList<Connector>();
-		List<Dependency> availableDependencies = UIDependencyServices.getAvailableSubDependencies(diagram);
+		List<Dependency> availableDependencies = new UIDependencyServices()
+				.getAvailableSubDependencies(diagram);
 		for (Dependency dependency : availableDependencies) {
 			List<NamedElement> clients = dependency.getClients();
 			for (NamedElement client : clients) {
@@ -157,7 +158,7 @@ public class UICompositeStructureServices {
 	 *            selected interfaces
 	 * @return the list of provided interfaces to add
 	 */
-	public static List<Interface> findProvidedInterfacesToAdd(EdgeTarget view, List<Interface> interfaces) {
+	public List<Interface> findProvidedInterfacesToAdd(EdgeTarget view, List<Interface> interfaces) {
 		List<Interface> result = new ArrayList<Interface>(interfaces);
 		List<DEdge> outgoingEdges = view.getOutgoingEdges();
 
@@ -187,7 +188,7 @@ public class UICompositeStructureServices {
 	 *            selected interfaces
 	 * @return the list of interface realizations to delete
 	 */
-	public static List<InterfaceRealization> findInterfaceRealizationsToDelete(EdgeTarget view,
+	public List<InterfaceRealization> findInterfaceRealizationsToDelete(EdgeTarget view,
 			List<Interface> interfaces) {
 		List<InterfaceRealization> result = new ArrayList<InterfaceRealization>();
 		List<DEdge> outgoingEdges = view.getOutgoingEdges();
@@ -196,7 +197,7 @@ public class UICompositeStructureServices {
 			EObject target = outgoingEdge.getTarget();
 
 			if (target instanceof InterfaceRealization) {
-				result.addAll(CompositeStructureServices.findInterfaceRealizationsToDelete(
+				result.addAll(new CompositeStructureServices().findInterfaceRealizationsToDelete(
 						(InterfaceRealization)target, interfaces));
 			}
 		}
@@ -212,7 +213,7 @@ public class UICompositeStructureServices {
 	 *            selected interfaces
 	 * @return the list of required interfaces to add
 	 */
-	public static List<Interface> findRequiredInterfacesToAdd(EdgeTarget view, List<Interface> interfaces) {
+	public List<Interface> findRequiredInterfacesToAdd(EdgeTarget view, List<Interface> interfaces) {
 		List<Interface> result = new ArrayList<Interface>(interfaces);
 		List<DEdge> incomingEdges = view.getIncomingEdges();
 
@@ -241,7 +242,7 @@ public class UICompositeStructureServices {
 	 *            selected interfaces
 	 * @return the list of usages to delete
 	 */
-	public static List<Usage> findUsagesToDelete(EdgeTarget view, List<Interface> interfaces) {
+	public List<Usage> findUsagesToDelete(EdgeTarget view, List<Interface> interfaces) {
 		List<Usage> result = new ArrayList<Usage>();
 		List<DEdge> incomingEdges = view.getIncomingEdges();
 
@@ -249,7 +250,7 @@ public class UICompositeStructureServices {
 			EObject target = incomingEdge.getTarget();
 
 			if (target instanceof Usage) {
-				result.addAll(CompositeStructureServices.findUsagesToDelete((Usage)target, interfaces));
+				result.addAll(new CompositeStructureServices().findUsagesToDelete((Usage)target, interfaces));
 			}
 		}
 		return result;

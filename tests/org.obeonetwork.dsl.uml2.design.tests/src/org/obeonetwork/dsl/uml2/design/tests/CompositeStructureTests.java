@@ -17,7 +17,6 @@ import junit.textui.TestRunner;
 
 import org.obeonetwork.dsl.uml2.design.tests.services.ConnectorServicesTests;
 import org.obeonetwork.dsl.uml2.design.tests.services.DiagramElementMappingSpecificationTests;
-import org.obeonetwork.dsl.uml2.design.tests.services.compositestructure.CompositeStructureServicesTest;
 import org.obeonetwork.dsl.uml2.design.tests.services.compositestructure.IsRelated4CompositeStructureServicesTests;
 import org.obeonetwork.dsl.uml2.design.tests.services.compositestructure.IsRelated4CompositeStructureServicesWithConnectorTests;
 
@@ -54,7 +53,6 @@ public final class CompositeStructureTests {
 		suite.addTestSuite(IsRelated4CompositeStructureServicesTests.class);
 		suite.addTestSuite(IsRelated4CompositeStructureServicesWithConnectorTests.class);
 		suite.addTestSuite(ConnectorServicesTests.class);
-		suite.addTestSuite(CompositeStructureServicesTest.class);
 		suite.addTest(new JUnit4TestAdapter(DiagramElementMappingSpecificationTests.class));
 		return suite;
 	}

@@ -45,14 +45,15 @@ public class UIDependencyServices {
 	 *            The diagram
 	 * @return Dependencies
 	 */
-	public static List<Dependency> getAvailableDependencies(DDiagram diagram) {
+	public List<Dependency> getAvailableDependencies(DDiagram diagram) {
 		List<Dependency> result = new ArrayList<Dependency>();
 		List<DDiagramElement> ownedDiagramElements = diagram.getOwnedDiagramElements();
 		for (DDiagramElement dDiagramElement : ownedDiagramElements) {
 			if (dDiagramElement.isVisible() && dDiagramElement instanceof DNodeContainer) {
 				EObject target = ((DNodeContainer)dDiagramElement).getTarget();
 				if (target instanceof StructuredClassifier) {
-					result.addAll(DependencyServices.getAvailableDependencies((StructuredClassifier)target));
+					result.addAll(new DependencyServices()
+							.getAvailableDependencies((StructuredClassifier)target));
 				}
 			}
 		}
@@ -66,7 +67,7 @@ public class UIDependencyServices {
 	 *            The view context
 	 * @return Dependencies
 	 */
-	public static List<Dependency> getAvailableSubDependencies(EObject viewContext) {
+	public List<Dependency> getAvailableSubDependencies(EObject viewContext) {
 		List<Dependency> result = new ArrayList<Dependency>();
 		if (viewContext instanceof DDiagramElementContainer) {
 			DDiagramElementContainer dDiagramElement = (DDiagramElementContainer)viewContext;
@@ -76,7 +77,7 @@ public class UIDependencyServices {
 					if (subDiagramElement.isVisible() && subDiagramElement instanceof AbstractDNode) {
 						EObject target = ((AbstractDNode)subDiagramElement).getTarget();
 						if (target instanceof StructuredClassifier) {
-							result.addAll(DependencyServices
+							result.addAll(new DependencyServices()
 									.getAvailableDependencies((StructuredClassifier)target));
 						} else if (target instanceof Property && !(target instanceof Port)) {
 							result.addAll(((Property)target).getClientDependencies());
@@ -103,7 +104,7 @@ public class UIDependencyServices {
 	 *            the contract to respect
 	 * @return the new usage
 	 */
-	public static Usage createHelperUsage(EObject context, Interface contract) {
+	public Usage createHelperUsage(EObject context, Interface contract) {
 		Usage result = null;
 		if (context instanceof Property) {
 			final Property property = (Property)context;
@@ -116,7 +117,7 @@ public class UIDependencyServices {
 					isPortWithValidType = true;
 					NamedElement namedElement = (NamedElement)type;
 					result = namedElement.createUsage(contract);
-					result.setName(DependencyServices.genDependencyName(contract, namedElement));
+					result.setName(new DependencyServices().genDependencyName(contract, namedElement));
 					result.getClients().add(port);
 				}
 			}
@@ -125,14 +126,14 @@ public class UIDependencyServices {
 				if (eContainer instanceof NamedElement) {
 					NamedElement namedElement = (NamedElement)eContainer;
 					result = namedElement.createUsage(contract);
-					result.setName(DependencyServices.genDependencyName(contract, property));
+					result.setName(new DependencyServices().genDependencyName(contract, property));
 					result.getClients().add(property);
 				}
 			}
 		} else if (context instanceof NamedElement) {
 			NamedElement namedElement = (NamedElement)context;
 			result = namedElement.createUsage(contract);
-			result.setName(DependencyServices.genDependencyName(contract, namedElement));
+			result.setName(new DependencyServices().genDependencyName(contract, namedElement));
 		} else {
 			new LogServices().error("CompositeStructureServices.createUsage(" + context.getClass()
 					+ NOT_HANDLED, null);

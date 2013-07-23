@@ -56,7 +56,7 @@ public class LabelServices {
 	 * @return the computed label.
 	 */
 	public String computeAssociationEndLabel(Property p) {
-		final DisplayLabelSwitch displayLabel = new DisplayLabelSwitch();		
+		final DisplayLabelSwitch displayLabel = new DisplayLabelSwitch();
 		return displayLabel.getAssociationEndLabel(p);
 	}
 
@@ -94,7 +94,7 @@ public class LabelServices {
 	 *            Interaction associated to sequence diagram
 	 * @return SEquence diagram label
 	 */
-	public static String getSequenceDiagramName(Interaction interaction) {
+	public String getSequenceDiagramName(Interaction interaction) {
 		return interaction.getName() + SPACE + SEQUENCE_DIAGRAM_SUFFIX;
 	}
 
@@ -105,7 +105,7 @@ public class LabelServices {
 	 *            Package associated to sequence diagram
 	 * @return Sequence diagram label
 	 */
-	public static String getSequenceDiagramName(org.eclipse.uml2.uml.Package pkg) {
+	public String getSequenceDiagramName(org.eclipse.uml2.uml.Package pkg) {
 		return NamedElementServices.getNewInteractionName(pkg) + SPACE + SEQUENCE_DIAGRAM_SUFFIX;
 	}
 }

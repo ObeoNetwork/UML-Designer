@@ -29,7 +29,7 @@ import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
  * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
  */
 public class EcoreServices {
-	
+
 	/**
 	 * A singleton instance to be accessed by other java services.
 	 */
@@ -38,8 +38,10 @@ public class EcoreServices {
 	/**
 	 * Find a {@link Type} element that match the given name in the ResourceSet of the given element.
 	 * 
-	 * @param object the object for which to find a corresponding type.
-	 * @param typeName the type name to match.
+	 * @param object
+	 *            the object for which to find a corresponding type.
+	 * @param typeName
+	 *            the type name to match.
 	 * @return the found {@link Type} element or <code>null</code>
 	 */
 	public Type findTypeByName(EObject object, String typeName) {
@@ -48,11 +50,13 @@ public class EcoreServices {
 	}
 
 	/**
-	 * Iterate over the given {@link Collection} of root elements to find a {@link Type} element
-	 * with the given name.
+	 * Iterate over the given {@link Collection} of root elements to find a {@link Type} element with the
+	 * given name.
 	 * 
-	 * @param roots the elements to inspect
-	 * @param typeName the name to match
+	 * @param roots
+	 *            the elements to inspect
+	 * @param typeName
+	 *            the name to match
 	 * @return the found {@link Type} or <code>null</code>
 	 */
 	public Type findTypeByName(Iterable<EObject> roots, String typeName) {
@@ -84,23 +88,32 @@ public class EcoreServices {
 			return Collections.emptySet();
 		}
 	}
-	
-    static public Collection<EObject> getAllRootsInSession(EObject any) {
-    	Session session = SessionManager.INSTANCE.getSession(any);
-        Collection<EObject> roots = new ArrayList<EObject>();
-        if (session != null) {
-	        for (Resource childRes : session.getSemanticResources()) {
-	            roots.addAll(childRes.getContents());
-	        }
-        }
-        return roots;
-    }
+
+	/**
+	 * Get all root elements of the current session.
+	 * 
+	 * @param any
+	 *            The element to retrieve a session
+	 * @return root elements
+	 */
+	public Collection<EObject> getAllRootsInSession(EObject any) {
+		Session session = SessionManager.INSTANCE.getSession(any);
+		Collection<EObject> roots = new ArrayList<EObject>();
+		if (session != null) {
+			for (Resource childRes : session.getSemanticResources()) {
+				roots.addAll(childRes.getContents());
+			}
+		}
+		return roots;
+	}
 
 	/**
 	 * Iterate over the root children to find a {@link Type} element with the given name.
 	 * 
-	 * @param root the root object to iterate.
-	 * @param typeName the name to match
+	 * @param root
+	 *            the root object to iterate.
+	 * @param typeName
+	 *            the name to match
 	 * @return the found {@link Type} or <code>null</code>
 	 */
 	private Type findTypeByNameFrom(EObject root, String typeName) {
@@ -108,7 +121,7 @@ public class EcoreServices {
 			return (Type)root;
 		}
 
-		for (final Iterator<EObject> i = root.eAllContents(); i.hasNext(); ) {
+		for (final Iterator<EObject> i = root.eAllContents(); i.hasNext();) {
 			final EObject obj = i.next();
 			if (obj instanceof Type && nameMatches((Type)obj, typeName)) {
 				return (Type)obj;
@@ -121,8 +134,10 @@ public class EcoreServices {
 	/**
 	 * Check if the given element's name match the given String.
 	 * 
-	 * @param namedElt the {@link NamedElement} to check.
-	 * @param name the name to match.
+	 * @param namedElt
+	 *            the {@link NamedElement} to check.
+	 * @param name
+	 *            the name to match.
 	 * @return <code>true</code> if the name match, <code>false</code> otherwise.
 	 */
 	private boolean nameMatches(NamedElement namedElt, String name) {

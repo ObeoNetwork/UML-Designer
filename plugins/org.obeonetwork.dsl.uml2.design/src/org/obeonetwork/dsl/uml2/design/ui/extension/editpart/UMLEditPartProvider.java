@@ -96,7 +96,7 @@ public class UMLEditPartProvider extends AbstractEditPartProvider {
 					if (element instanceof DSemanticDecorator) {
 						EObject target = ((DSemanticDecorator)element).getTarget();
 						if (target instanceof Association) {
-							Property end = UMLServices.getSource((Association)target);
+							Property end = new UMLServices().getSource((Association)target);
 							if (end != null) {
 								EditLabelSwitch swch = new EditLabelSwitch();
 								swch.setEditedLabelContent(labelText);
@@ -128,7 +128,7 @@ public class UMLEditPartProvider extends AbstractEditPartProvider {
 					if (element instanceof DSemanticDecorator) {
 						EObject target = ((DSemanticDecorator)element).getTarget();
 						if (target instanceof Association) {
-							Property end = UMLServices.getTarget((Association)target);
+							Property end = new UMLServices().getTarget((Association)target);
 							if (end != null) {
 								EditLabelSwitch swch = new EditLabelSwitch();
 								swch.setEditedLabelContent(labelText);
