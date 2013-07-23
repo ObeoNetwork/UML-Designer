@@ -52,7 +52,7 @@ import fr.obeo.mda.ecore.extender.business.api.accessor.exception.MetaClassNotFo
  * 
  * @author Hugo Marchadour <a href="mailto:hugo.marchadour@obeo.fr">hugo.marchadour@obeo.fr</a>
  */
-public final class ComponentServices {
+public final class UIComponentServices {
 
 	/**
 	 * Create a component realization.
