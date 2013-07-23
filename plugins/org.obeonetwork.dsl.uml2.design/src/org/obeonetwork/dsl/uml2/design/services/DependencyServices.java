@@ -31,12 +31,6 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
-import fr.obeo.dsl.viewpoint.AbstractDNode;
-import fr.obeo.dsl.viewpoint.DDiagram;
-import fr.obeo.dsl.viewpoint.DDiagramElement;
-import fr.obeo.dsl.viewpoint.DDiagramElementContainer;
-import fr.obeo.dsl.viewpoint.DNodeContainer;
-
 /**
  * Utility services to manage operation creation.
  * 
@@ -44,7 +38,7 @@ import fr.obeo.dsl.viewpoint.DNodeContainer;
  */
 public class DependencyServices {
 
-	private static final String NOT_HANDLED = ") not handled";
+	protected static final String NOT_HANDLED = ") not handled";
 
 	/**
 	 * Remove remove a specific supplier in this dependency.
@@ -59,61 +53,6 @@ public class DependencyServices {
 
 		EList<NamedElement> suppliers = aDependency.getSuppliers();
 		suppliers.remove(supplier);
-	}
-
-	/**
-	 * Get available dependencies at the first level of the diagram.
-	 * 
-	 * @param diagram
-	 *            The diagram
-	 * @return Dependencies
-	 */
-	public static List<Dependency> getAvailableDependencies(DDiagram diagram) {
-		List<Dependency> result = new ArrayList<Dependency>();
-		List<DDiagramElement> ownedDiagramElements = diagram.getOwnedDiagramElements();
-		for (DDiagramElement dDiagramElement : ownedDiagramElements) {
-			if (dDiagramElement.isVisible() && dDiagramElement instanceof DNodeContainer) {
-				EObject target = ((DNodeContainer)dDiagramElement).getTarget();
-				if (target instanceof StructuredClassifier) {
-					result.addAll(getAvailableDependencies((StructuredClassifier)target));
-				}
-			}
-		}
-		return result;
-	}
-
-	/**
-	 * Get available dependencies at the current level of the dNode.
-	 * 
-	 * @param viewContext
-	 *            The view context
-	 * @return Dependencies
-	 */
-	public static List<Dependency> getAvailableSubDependencies(EObject viewContext) {
-		List<Dependency> result = new ArrayList<Dependency>();
-		if (viewContext instanceof DDiagramElementContainer) {
-			DDiagramElementContainer dDiagramElement = (DDiagramElementContainer)viewContext;
-			if (dDiagramElement.isVisible()) {
-				List<DDiagramElement> subDiagramElements = (dDiagramElement).getElements();
-				for (DDiagramElement subDiagramElement : subDiagramElements) {
-					if (subDiagramElement.isVisible() && subDiagramElement instanceof AbstractDNode) {
-						EObject target = ((AbstractDNode)subDiagramElement).getTarget();
-						if (target instanceof StructuredClassifier) {
-							result.addAll(getAvailableDependencies((StructuredClassifier)target));
-						} else if (target instanceof Property && !(target instanceof Port)) {
-							result.addAll(((Property)target).getClientDependencies());
-						}
-					}
-				}
-			}
-		} else if (viewContext instanceof DDiagram) {
-			List<DDiagramElement> subDiagramElements = ((DDiagram)viewContext).getDiagramElements();
-			for (DDiagramElement dDiagramElement : subDiagramElements) {
-				result.addAll(getAvailableSubDependencies(dDiagramElement));
-			}
-		}
-
-		return result;
 	}
 
 	public static List<Dependency> getAvailableDependencies(StructuredClassifier structuredClassifier) {
@@ -160,7 +99,7 @@ public class DependencyServices {
 	 *            the contract to respect
 	 * @return the new interface realization
 	 */
-	public InterfaceRealization createHelperInterfaceRealization(EObject context, Interface contract) {
+	public static InterfaceRealization createHelperInterfaceRealization(EObject context, Interface contract) {
 		InterfaceRealization result = null;
 
 		if (context instanceof Property) {
@@ -195,53 +134,6 @@ public class DependencyServices {
 			new LogServices().error(
 					"CompositeStructureServices.createInterfaceRealization(" + context.getClass()
 							+ NOT_HANDLED, null);
-		}
-
-		return result;
-	}
-
-	/**
-	 * Create an usage.
-	 * 
-	 * @param context
-	 *            the context to create the an usage
-	 * @param contract
-	 *            the contract to respect
-	 * @return the new usage
-	 */
-	public Usage createHelperUsage(EObject context, Interface contract) {
-		Usage result = null;
-		if (context instanceof Property) {
-			final Property property = (Property)context;
-			boolean isPortWithValidType = false;
-			if (context instanceof Port && ((Port)context).isConjugated()) {
-				final Port port = (Port)property;
-				// create InterfaceRealization on the type
-				Type type = port.getType();
-				if (type instanceof NamedElement) {
-					isPortWithValidType = true;
-					NamedElement namedElement = (NamedElement)type;
-					result = namedElement.createUsage(contract);
-					result.setName(genDependencyName(contract, namedElement));
-					result.getClients().add(port);
-				}
-			}
-			if (!isPortWithValidType) {
-				EObject eContainer = context.eContainer();
-				if (eContainer instanceof NamedElement) {
-					NamedElement namedElement = (NamedElement)eContainer;
-					result = namedElement.createUsage(contract);
-					result.setName(genDependencyName(contract, property));
-					result.getClients().add(property);
-				}
-			}
-		} else if (context instanceof NamedElement) {
-			NamedElement namedElement = (NamedElement)context;
-			result = namedElement.createUsage(contract);
-			result.setName(genDependencyName(contract, namedElement));
-		} else {
-			new LogServices().error("CompositeStructureServices.createUsage(" + context.getClass()
-					+ NOT_HANDLED, null);
 		}
 
 		return result;

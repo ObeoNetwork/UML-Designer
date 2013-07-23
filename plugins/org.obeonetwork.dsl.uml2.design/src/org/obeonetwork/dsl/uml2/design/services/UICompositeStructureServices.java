@@ -85,7 +85,7 @@ public class UICompositeStructureServices {
 	 */
 	public static List<Connector> getAvailableConnectors(DDiagram diagram) {
 		List<Connector> result = new ArrayList<Connector>();
-		List<Dependency> availableDependencies = DependencyServices.getAvailableDependencies(diagram);
+		List<Dependency> availableDependencies = UIDependencyServices.getAvailableDependencies(diagram);
 		for (Dependency dependency : availableDependencies) {
 			List<NamedElement> clients = dependency.getClients();
 			for (NamedElement client : clients) {
@@ -108,7 +108,7 @@ public class UICompositeStructureServices {
 	 */
 	public static List<Connector> getAvailableSubConnectors(DDiagram diagram) {
 		List<Connector> result = new ArrayList<Connector>();
-		List<Dependency> availableDependencies = DependencyServices.getAvailableSubDependencies(diagram);
+		List<Dependency> availableDependencies = UIDependencyServices.getAvailableSubDependencies(diagram);
 		for (Dependency dependency : availableDependencies) {
 			List<NamedElement> clients = dependency.getClients();
 			for (NamedElement client : clients) {
