@@ -32,13 +32,11 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
- * Utility services to manage operation creation.
+ * A set of services to handle dependency actions and tests.
  * 
  * @author Hugo Marchadour <a href="mailto:hugo.marchadour@obeo.fr">hugo.marchadour@obeo.fr</a>
  */
 public class DependencyServices {
-
-	protected static final String NOT_HANDLED = ") not handled";
 
 	/**
 	 * Remove remove a specific supplier in this dependency.
@@ -55,6 +53,13 @@ public class DependencyServices {
 		suppliers.remove(supplier);
 	}
 
+	/**
+	 * Get available dependencies related to a structuredClassifier.
+	 * 
+	 * @param structuredClassifier
+	 *            the structuredClassifier context
+	 * @return available dependencies
+	 */
 	public List<Dependency> getAvailableDependencies(StructuredClassifier structuredClassifier) {
 		List<Dependency> result = new ArrayList<Dependency>();
 		// find interesting dependencies
@@ -82,7 +87,8 @@ public class DependencyServices {
 				}
 			}
 
-			if (isHandled(dependency) && !isCommingFromAProperty) {
+			if ((dependency instanceof Usage || dependency instanceof InterfaceRealization)
+					&& !isCommingFromAProperty) {
 				result.add(dependency);
 			}
 		}
@@ -94,7 +100,8 @@ public class DependencyServices {
 	 * Create an interface realization.
 	 * 
 	 * @param context
-	 *            the context to create the an interface realization
+	 *            the context to create the interface realization. It can be a Property, a Port or a
+	 *            BehavioredClassifier.
 	 * @param contract
 	 *            the contract to respect
 	 * @return the new interface realization
@@ -133,7 +140,7 @@ public class DependencyServices {
 		} else {
 			new LogServices().error(
 					"CompositeStructureServices.createInterfaceRealization(" + context.getClass()
-							+ NOT_HANDLED, null);
+							+ ") not handled", null);
 		}
 
 		return result;
@@ -152,10 +159,6 @@ public class DependencyServices {
 		return source.getName() + "To" + target.getName();
 	}
 
-	private boolean isHandled(Dependency dependency) {
-		return dependency instanceof Usage || dependency instanceof InterfaceRealization;
-	}
-
 	/**
 	 * To avoid duplicate case Port to interface and Class/Component to interface we provide this service that
 	 * return only the required client to ui needs.
@@ -172,37 +175,35 @@ public class DependencyServices {
 						return !(input instanceof Connector);
 					}
 				}));
-
 		if (clients.size() == 1) {
 			result.addAll(clients);
-		} else if (clients.size() > 0) {
-
-			for (NamedElement client : clients) {
-				if (client instanceof Property) {
-					Property property = (Property)client;
-					if (property instanceof Port) {
-						Port port = (Port)property;
-						if (port.getType() != null) {
-							if (port.eContainer() instanceof StructuredClassifier
-									&& port.getType().equals(port.eContainer())) {
-								// when the port type is the container type, add directly the container.
-								result.add(port.getType());
-							} else if (port.isConjugated()) {
-								// if conjugated add the port type and the port.
-								result.add(port);
-								result.add(port.getType());
-							} else {
-								// Else add the port
-								result.add(port);
-							}
+			return result;
+		}
+		for (NamedElement client : clients) {
+			if (client instanceof Property) {
+				Property property = (Property)client;
+				if (property instanceof Port) {
+					Port port = (Port)property;
+					if (port.getType() != null) {
+						if (port.eContainer() instanceof StructuredClassifier
+								&& port.getType().equals(port.eContainer())) {
+							// when the port type is the container type, add directly the container.
+							result.add(port.getType());
+						} else if (port.isConjugated()) {
+							// if conjugated add the port type and the port.
+							result.add(port);
+							result.add(port.getType());
 						} else {
 							// Else add the port
 							result.add(port);
 						}
 					} else {
-						// Else add the property
-						result.add(property);
+						// Else add the port
+						result.add(port);
 					}
+				} else {
+					// Else add the property
+					result.add(property);
 				}
 			}
 		}

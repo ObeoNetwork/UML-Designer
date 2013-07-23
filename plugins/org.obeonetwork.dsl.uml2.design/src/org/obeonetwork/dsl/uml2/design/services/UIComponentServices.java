@@ -48,7 +48,7 @@ import fr.obeo.mda.ecore.extender.business.api.accessor.exception.FeatureNotFoun
 import fr.obeo.mda.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
 
 /**
- * Utility services to manage operation creation.
+ * A set of services to handle graphically Component diagram actions and tests.
  * 
  * @author Hugo Marchadour <a href="mailto:hugo.marchadour@obeo.fr">hugo.marchadour@obeo.fr</a>
  */
@@ -71,44 +71,100 @@ public class UIComponentServices {
 		return result;
 	}
 
+	/**
+	 * Boolean query for create Usage Connection Start Precondition.
+	 * 
+	 * @param preSource
+	 *            the source
+	 * @param preSourceView
+	 *            the source view
+	 * @param container
+	 *            the container
+	 * @param diagram
+	 *            the diagram
+	 * @return true if valid source
+	 */
 	public boolean createUsageConnectionStartPrecondition(EObject preSource, EObject preSourceView,
-			EObject Container, EObject diagram) {
+			EObject container, EObject diagram) {
 		boolean result = preSource instanceof org.eclipse.uml2.uml.Class || preSource instanceof Port;
 		return result;
 	}
 
+	/**
+	 * Boolean query for create Usage Connection Complete Precondition.
+	 * 
+	 * @param preSource
+	 *            the source
+	 * @param preSourceView
+	 *            the source view
+	 * @param preTarget
+	 *            the target
+	 * @param preTargetView
+	 *            the target view
+	 * @param container
+	 *            the container
+	 * @param diagram
+	 *            the diagram
+	 * @return true if valid source and target
+	 */
 	public boolean createUsageConnectionCompletePrecondition(EObject preSource, EObject preSourceView,
-			EObject preTarget, EObject preTargetView, EObject Container, EObject diagram) {
+			EObject preTarget, EObject preTargetView, EObject container, EObject diagram) {
 		boolean result = preTarget instanceof Interface;
-		if (preSource instanceof org.eclipse.uml2.uml.Class || preSource instanceof Port) {
-			result &= new UIConnectorServices().validSourceTarget4Dependency(preSource, preSourceView,
+		if (result && (preSource instanceof org.eclipse.uml2.uml.Class || preSource instanceof Port)) {
+			result = new UIDependencyServices().validSourceTarget4Dependency(preSource, preSourceView,
 					preTarget, preTargetView);
-		} else {
-			result = false;
-		}
-		return result;
-	}
-
-	public boolean createIRConnectionStartPrecondition(EObject preSource, EObject preSourceView,
-			EObject Container, EObject diagram) {
-		boolean result = preSource instanceof org.eclipse.uml2.uml.Class || preSource instanceof Port;
-		return result;
-	}
-
-	public boolean createIRConnectionCompletePrecondition(EObject preSource, EObject preSourceView,
-			EObject preTarget, EObject preTargetView, EObject Container, EObject diagram) {
-		boolean result = preTarget instanceof Interface;
-		if (preSource instanceof org.eclipse.uml2.uml.Class || preSource instanceof Port) {
-			result &= new UIConnectorServices().validSourceTarget4Dependency(preSource, preSourceView,
-					preTarget, preTargetView);
-		} else {
-			result = false;
 		}
 		return result;
 	}
 
 	/**
-	 * Drop a semantic element from a diagram and create the corresponding view in the given container
+	 * Boolean query for create Interface Realization Connection Start Precondition.
+	 * 
+	 * @param preSource
+	 *            the source
+	 * @param preSourceView
+	 *            the source view
+	 * @param container
+	 *            the container
+	 * @param diagram
+	 *            the diagram
+	 * @return true if valid source
+	 */
+	public boolean createIRConnectionStartPrecondition(EObject preSource, EObject preSourceView,
+			EObject container, EObject diagram) {
+		boolean result = preSource instanceof org.eclipse.uml2.uml.Class || preSource instanceof Port;
+		return result;
+	}
+
+	/**
+	 * Boolean query for create Interface Realization Connection Complete Precondition.
+	 * 
+	 * @param preSource
+	 *            the source
+	 * @param preSourceView
+	 *            the source view
+	 * @param preTarget
+	 *            the target
+	 * @param preTargetView
+	 *            the target view
+	 * @param container
+	 *            the container
+	 * @param diagram
+	 *            the diagram
+	 * @return true if valid source and target
+	 */
+	public boolean createIRConnectionCompletePrecondition(EObject preSource, EObject preSourceView,
+			EObject preTarget, EObject preTargetView, EObject container, EObject diagram) {
+		boolean result = preTarget instanceof Interface;
+		if (result && (preSource instanceof org.eclipse.uml2.uml.Class || preSource instanceof Port)) {
+			result = new UIDependencyServices().validSourceTarget4Dependency(preSource, preSourceView,
+					preTarget, preTargetView);
+		}
+		return result;
+	}
+
+	/**
+	 * Drop a semantic element from a diagram and create the corresponding view in the given container.
 	 * 
 	 * @param newContainer
 	 *            Semantic container
@@ -124,7 +180,7 @@ public class UIComponentServices {
 	}
 
 	/**
-	 * Drop a semantic element and create the corresponding view in the given container
+	 * Drop a semantic element and create the corresponding view in the given container.
 	 * 
 	 * @param newContainer
 	 *            Semantic container
@@ -160,7 +216,6 @@ public class UIComponentServices {
 			Element oldContainer = component.getOwner();
 			if (moveSemanticElement && oldContainer != newContainer) {
 				// TODO check if something is needed here
-
 			}
 
 			// get all interfaces related to this component
@@ -296,16 +351,16 @@ public class UIComponentServices {
 
 		if (containerView instanceof DSemanticDiagram) {
 
-			for (DiagramElementMapping mapping : (((DSemanticDiagram)containerView).getDescription()
-					.getAllContainerMappings())) {
+			for (DiagramElementMapping mapping : ((DSemanticDiagram)containerView).getDescription()
+					.getAllContainerMappings()) {
 				String domainClass = ((AbstractNodeMapping)mapping).getDomainClass();
 				if (modelAccessor.eInstanceOf(semanticElement, domainClass)
 						&& !mapping.isSynchronizationLock()) {
 					mappings.add(mapping);
 				}
 			}
-			for (DiagramElementMapping mapping : (((DSemanticDiagram)containerView).getDescription()
-					.getAllNodeMappings())) {
+			for (DiagramElementMapping mapping : ((DSemanticDiagram)containerView).getDescription()
+					.getAllNodeMappings()) {
 				String domainClass = ((AbstractNodeMapping)mapping).getDomainClass();
 				if (modelAccessor.eInstanceOf(semanticElement, domainClass)
 						&& !mapping.isSynchronizationLock()) {
@@ -313,16 +368,16 @@ public class UIComponentServices {
 				}
 			}
 		} else if (containerView instanceof DNodeContainerSpec) {
-			for (DiagramElementMapping mapping : (((DNodeContainerSpec)containerView).getActualMapping()
-					.getAllContainerMappings())) {
+			for (DiagramElementMapping mapping : ((DNodeContainerSpec)containerView).getActualMapping()
+					.getAllContainerMappings()) {
 				String domainClass = ((AbstractNodeMapping)mapping).getDomainClass();
 				if (modelAccessor.eInstanceOf(semanticElement, domainClass)
 						&& !mapping.isSynchronizationLock()) {
 					mappings.add(mapping);
 				}
 			}
-			for (DiagramElementMapping mapping : (((DNodeContainerSpec)containerView).getActualMapping()
-					.getAllNodeMappings())) {
+			for (DiagramElementMapping mapping : ((DNodeContainerSpec)containerView).getActualMapping()
+					.getAllNodeMappings()) {
 				String domainClass = ((AbstractNodeMapping)mapping).getDomainClass();
 				if (modelAccessor.eInstanceOf(semanticElement, domainClass)
 						&& !mapping.isSynchronizationLock()) {

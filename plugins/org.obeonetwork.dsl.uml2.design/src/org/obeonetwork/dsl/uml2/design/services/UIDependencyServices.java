@@ -30,13 +30,11 @@ import fr.obeo.dsl.viewpoint.DDiagramElementContainer;
 import fr.obeo.dsl.viewpoint.DNodeContainer;
 
 /**
- * Utility services to manage operation creation.
+ * A set of services to handle graphically Dependency actions and tests.
  * 
  * @author Hugo Marchadour <a href="mailto:hugo.marchadour@obeo.fr">hugo.marchadour@obeo.fr</a>
  */
 public class UIDependencyServices {
-
-	protected static final String NOT_HANDLED = ") not handled";
 
 	/**
 	 * Get available dependencies at the first level of the diagram.
@@ -72,7 +70,7 @@ public class UIDependencyServices {
 		if (viewContext instanceof DDiagramElementContainer) {
 			DDiagramElementContainer dDiagramElement = (DDiagramElementContainer)viewContext;
 			if (dDiagramElement.isVisible()) {
-				List<DDiagramElement> subDiagramElements = (dDiagramElement).getElements();
+				List<DDiagramElement> subDiagramElements = dDiagramElement.getElements();
 				for (DDiagramElement subDiagramElement : subDiagramElements) {
 					if (subDiagramElement.isVisible() && subDiagramElement instanceof AbstractDNode) {
 						EObject target = ((AbstractDNode)subDiagramElement).getTarget();
@@ -136,9 +134,34 @@ public class UIDependencyServices {
 			result.setName(new DependencyServices().genDependencyName(contract, namedElement));
 		} else {
 			new LogServices().error("CompositeStructureServices.createUsage(" + context.getClass()
-					+ NOT_HANDLED, null);
+					+ ") not handled", null);
 		}
 
+		return result;
+	}
+
+	/**
+	 * Test if a given couple of source/target is valid to display for a dependency.
+	 * 
+	 * @param source
+	 *            the source
+	 * @param sourceView
+	 *            the source view
+	 * @param target
+	 *            the target
+	 * @param targetView
+	 *            the target view
+	 * @return true if valid to display
+	 */
+	public boolean validSourceTarget4Dependency(EObject source, EObject sourceView, EObject target,
+			EObject targetView) {
+		boolean result = false;
+
+		if (source instanceof org.eclipse.uml2.uml.Class) {
+			result = targetView.eContainer().equals(sourceView.eContainer());
+		} else if (source instanceof Port) {
+			result = targetView.eContainer().equals(sourceView.eContainer().eContainer());
+		}
 		return result;
 	}
 }

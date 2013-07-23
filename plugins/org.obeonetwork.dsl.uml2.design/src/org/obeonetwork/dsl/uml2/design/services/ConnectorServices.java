@@ -28,7 +28,7 @@ import org.eclipse.uml2.uml.StructuredClassifier;
 import org.eclipse.uml2.uml.Usage;
 
 /**
- * Utility services to manage operation creation.
+ * A set of services to handle connector actions and tests.
  * 
  * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  * @author Hugo Marchadour <a href="mailto:hugo.marchadour@obeo.fr">hugo.marchadour@obeo.fr</a>
@@ -124,6 +124,16 @@ public final class ConnectorServices {
 		return result;
 	}
 
+	/**
+	 * check that source and target are connectable. We explore recursively source generalizations to handle
+	 * super type cases.
+	 * 
+	 * @param source
+	 *            the source element
+	 * @param target
+	 *            the target element
+	 * @return true if connectable
+	 */
 	protected boolean isConnectable(Interface source, Interface target) {
 		boolean res = source.conformsTo(target);
 		if (!res) {
@@ -142,6 +152,16 @@ public final class ConnectorServices {
 		return res;
 	}
 
+	/**
+	 * check that source and target are connectable. We explore recursively source generalizations to handle
+	 * super type cases.
+	 * 
+	 * @param source
+	 *            the source element
+	 * @param target
+	 *            the target element
+	 * @return true if connectable
+	 */
 	protected boolean isConnectable(Interface source, Port target) {
 
 		boolean res = false;
@@ -170,6 +190,16 @@ public final class ConnectorServices {
 		return res;
 	}
 
+	/**
+	 * check that source and target are connectable. We explore recursively source generalizations to handle
+	 * super type cases.
+	 * 
+	 * @param source
+	 *            the source element
+	 * @param target
+	 *            the target element
+	 * @return true if connectable
+	 */
 	protected boolean isConnectable(Port source, Interface target) {
 
 		boolean res = false;
@@ -198,6 +228,16 @@ public final class ConnectorServices {
 		return res;
 	}
 
+	/**
+	 * check that source and target are connectable. We explore recursively source generalizations to handle
+	 * super type cases.
+	 * 
+	 * @param source
+	 *            the source element
+	 * @param target
+	 *            the target element
+	 * @return true if connectable
+	 */
 	protected boolean isConnectable(Property source, Property target) {
 		boolean res = true;
 		if (source.getType() != null && target.getType() != null) {
@@ -210,31 +250,61 @@ public final class ConnectorServices {
 		return res;
 	}
 
+	/**
+	 * We have not handle this case. We have not any case with this scenario.
+	 * 
+	 * @param source
+	 *            the source element
+	 * @param target
+	 *            the target element
+	 * @return true if connectable
+	 */
 	protected boolean isConnectable(Interface source, Property target) {
-		// TODO HMA
 		return false;
 	}
 
+	/**
+	 * We have not handle this case. We have not any case with this scenario.
+	 * 
+	 * @param source
+	 *            the source element
+	 * @param target
+	 *            the target element
+	 * @return true if connectable
+	 */
 	protected boolean isConnectable(Property source, Interface target) {
-		// TODO HMA
 		return false;
 	}
 
+	/**
+	 * We have not handle this case. We have not any case with this scenario.
+	 * 
+	 * @param source
+	 *            the source element
+	 * @param target
+	 *            the target element
+	 * @return true if connectable
+	 */
 	protected boolean isConnectable(Port source, Property target) {
-		// TODO HMA
 		return false;
 	}
 
+	/**
+	 * We have not handle this case. We have not any case with this scenario.
+	 * 
+	 * @param source
+	 *            the source element
+	 * @param target
+	 *            the target element
+	 * @return true if connectable
+	 */
 	protected boolean isConnectable(Property source, Port target) {
-		// TODO HMA
 		return false;
 	}
 
 	/**
 	 * Create a connector between two properties.
 	 * 
-	 * @param structuredClassifier
-	 *            the connector container
 	 * @param pSource
 	 *            the property source view
 	 * @param pTarget
@@ -282,7 +352,8 @@ public final class ConnectorServices {
 	 * the first match.
 	 * 
 	 * @param encapsulatedClassifier
-	 * @return
+	 *            the encapsulatedClassifier
+	 * @return the found port or a new port
 	 */
 	public Port getStructuredClassifierPublicPort(EncapsulatedClassifier encapsulatedClassifier) {
 		List<Port> ownedPorts = encapsulatedClassifier.getOwnedPorts();
@@ -296,6 +367,13 @@ public final class ConnectorServices {
 		return newPort;
 	}
 
+	/**
+	 * Get the source edge mapping for a connector from a provided interface to a required interface.
+	 * 
+	 * @param connector
+	 *            the connector context
+	 * @return interfaces
+	 */
 	public List<Interface> getSource4ProvidedInterface2RequiredInterface(Connector connector) {
 		List<Interface> result = new ArrayList<Interface>();
 		for (Dependency dependency : connector.getClientDependencies()) {
@@ -311,6 +389,13 @@ public final class ConnectorServices {
 		return result;
 	}
 
+	/**
+	 * Get the target edge mapping for a connector from a provided interface to a required interface.
+	 * 
+	 * @param connector
+	 *            the connector context
+	 * @return interfaces
+	 */
 	public List<Interface> getTarget4ProvidedInterface2RequiredInterface(Connector connector) {
 		List<Interface> result = new ArrayList<Interface>();
 		for (Dependency dependency : connector.getClientDependencies()) {
@@ -327,14 +412,13 @@ public final class ConnectorServices {
 	}
 
 	/**
-	 * get the edge source for the Port2SubRequiredInterface edge.
+	 * Get the source edge mapping for a connector from a port to a required interface.
 	 * 
 	 * @param connector
 	 *            the connector context
-	 * @return the edge source
+	 * @return interfaces
 	 */
 	public List<Port> getSource4Port2SubRequiredInterface(Connector connector) {
-		// [end.role.oclAsType(uml::Port)/]
 		List<Port> result = new ArrayList<Port>();
 		List<Dependency> clientDependencies = connector.getClientDependencies();
 
@@ -363,6 +447,13 @@ public final class ConnectorServices {
 		return result;
 	}
 
+	/**
+	 * Get the target edge mapping for a connector from a port to a required interface.
+	 * 
+	 * @param connector
+	 *            the connector context
+	 * @return interfaces
+	 */
 	public List<Interface> getTarget4Port2SubRequiredInterface(Connector connector) {
 		List<Interface> result = new ArrayList<Interface>();
 		for (Dependency dependency : connector.getClientDependencies()) {
@@ -378,6 +469,13 @@ public final class ConnectorServices {
 		return result;
 	}
 
+	/**
+	 * Get the source edge mapping for a connector from a provided interface to a delegate port.
+	 * 
+	 * @param connector
+	 *            the connector context
+	 * @return interfaces
+	 */
 	public List<Interface> getSource4SubProvidedInterface2Port(Connector connector) {
 		List<Interface> result = new ArrayList<Interface>();
 		for (Dependency dependency : connector.getClientDependencies()) {
@@ -393,6 +491,13 @@ public final class ConnectorServices {
 		return result;
 	}
 
+	/**
+	 * Get the target edge mapping for a connector from a provided interface to a delegate port.
+	 * 
+	 * @param connector
+	 *            the connector context
+	 * @return interfaces
+	 */
 	public List<Port> getTarget4SubProvidedInterface2Port(Connector connector) {
 		List<Port> result = new ArrayList<Port>();
 		List<Dependency> clientDependencies = connector.getClientDependencies();

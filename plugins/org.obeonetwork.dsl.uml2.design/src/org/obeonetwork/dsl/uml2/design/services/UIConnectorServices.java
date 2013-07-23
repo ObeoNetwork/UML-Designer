@@ -35,7 +35,7 @@ import fr.obeo.dsl.viewpoint.DSemanticDecorator;
 import fr.obeo.dsl.viewpoint.EdgeTarget;
 
 /**
- * Utility services to manage operation creation.
+ * A set of services to handle graphically Connector actions and tests.
  * 
  * @author Hugo Marchadour <a href="mailto:hugo.marchadour@obeo.fr">hugo.marchadour@obeo.fr</a>
  */
@@ -98,43 +98,51 @@ public class UIConnectorServices {
 
 	}
 
+	/**
+	 * Test if a given couple of source/target is valid to display for a delegated connector.
+	 * 
+	 * @param source
+	 *            the source
+	 * @param sourceView
+	 *            the source view
+	 * @param target
+	 *            the target
+	 * @param targetView
+	 *            the target view
+	 * @return true if valid to display
+	 */
 	public boolean validSourceTarget4DelegatedConnector(EObject source, EObject sourceView, EObject target,
 			EObject targetView) {
-		boolean result = true;
+		boolean result = false;
 
 		if (source instanceof org.eclipse.uml2.uml.Interface) {
 			if (target instanceof Port) {
-				result &= targetView.eContainer().equals(sourceView.eContainer());
+				result = targetView.eContainer().equals(sourceView.eContainer());
 			}
-		} else {
-			result = false;
 		}
 		return result;
 	}
 
+	/**
+	 * Test if a given couple of source/target is valid to display for a connector.
+	 * 
+	 * @param source
+	 *            the source
+	 * @param sourceView
+	 *            the source view
+	 * @param target
+	 *            the target
+	 * @param targetView
+	 *            the target view
+	 * @return true if valid to display
+	 */
 	public boolean validSourceTarget4Connector(EObject source, EObject sourceView, EObject target,
 			EObject targetView) {
-		boolean result = true;
+		boolean result = false;
 
 		if (source instanceof org.eclipse.uml2.uml.Interface
 				&& target instanceof org.eclipse.uml2.uml.Interface) {
-			result &= targetView.eContainer().equals(sourceView.eContainer());
-		} else {
-			result = false;
-		}
-		return result;
-	}
-
-	public boolean validSourceTarget4Dependency(EObject source, EObject sourceView, EObject target,
-			EObject targetView) {
-		boolean result = true;
-
-		if (source instanceof org.eclipse.uml2.uml.Class) {
-			result &= targetView.eContainer().equals(sourceView.eContainer());
-		} else if (source instanceof Port) {
-			result &= targetView.eContainer().equals(sourceView.eContainer().eContainer());
-		} else {
-			result = false;
+			result = targetView.eContainer().equals(sourceView.eContainer());
 		}
 		return result;
 	}
@@ -184,19 +192,22 @@ public class UIConnectorServices {
 	 */
 	protected StructuredClassifier getStructuredClassifierRelated2SubInterfaceView(DNode interfaceView) {
 		final List<DEdge> dEdges = interfaceView.getOutgoingEdges();
+		StructuredClassifier result = null;
 		for (DEdge dEdge : dEdges) {
 			final EdgeTarget targetNode = dEdge.getTargetNode();
 			if (targetNode instanceof AbstractDNode) {
 				final AbstractDNode dNode = (AbstractDNode)targetNode;
 				final EObject target = dNode.getTarget();
 				if (target instanceof Property) {
-					return (StructuredClassifier)target.eContainer();
+					result = (StructuredClassifier)target.eContainer();
+					break;
 				} else if (target instanceof StructuredClassifier) {
-					return (StructuredClassifier)target;
+					result = (StructuredClassifier)target;
+					break;
 				}
 			}
 		}
-		return null;
+		return result;
 	}
 
 	/**
@@ -298,11 +309,11 @@ public class UIConnectorServices {
 	 * 
 	 * @param sourceView
 	 *            the interface source view
-	 * @param iSource
+	 * @param pSource
 	 *            the interface source
 	 * @param targetView
 	 *            the port target view
-	 * @param pTarget
+	 * @param iTarget
 	 *            the port target
 	 * @return the new connector
 	 */
@@ -325,6 +336,14 @@ public class UIConnectorServices {
 		return connector;
 	}
 
+	/**
+	 * This function adds connectorEnds and clientDependencies on a connector with given edges.
+	 * 
+	 * @param connector
+	 *            the connector
+	 * @param edges
+	 *            graphical edges than can map dependencies
+	 */
 	protected void addConnectorEndsAndClientDependencies(Connector connector, Set<DEdge> edges) {
 		final List<Dependency> clientDependencies = connector.getClientDependencies();
 		for (DEdge dEdge : edges) {

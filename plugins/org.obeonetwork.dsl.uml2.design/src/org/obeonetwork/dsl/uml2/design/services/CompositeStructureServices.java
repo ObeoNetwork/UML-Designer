@@ -35,39 +35,13 @@ public class CompositeStructureServices {
 
 	private static final String NOT_HANDLED = ") not handled";
 
-	public List<InterfaceRealization> findInterfaceRealizationsToDelete(
-			InterfaceRealization interfaceRealization, List<Interface> interfaces) {
-		List<InterfaceRealization> result = new ArrayList<InterfaceRealization>();
-
-		EList<NamedElement> suppliers = interfaceRealization.getSuppliers();
-		for (NamedElement namedElement : suppliers) {
-			if (namedElement instanceof Interface) {
-				Interface anInterface = (Interface)namedElement;
-				if (!interfaces.contains(anInterface)) {
-					result.add(interfaceRealization);
-					break;
-				}
-			}
-		}
-
-		return result;
-	}
-
-	public List<Usage> findUsagesToDelete(Usage usage, List<Interface> interfaces) {
-		List<Usage> result = new ArrayList<Usage>();
-		List<NamedElement> suppliers = usage.getSuppliers();
-		for (NamedElement namedElement : suppliers) {
-			if (namedElement instanceof Interface) {
-				Interface anInterface = (Interface)namedElement;
-				if (!interfaces.contains(anInterface)) {
-					result.add(usage);
-					break;
-				}
-			}
-		}
-		return result;
-	}
-
+	/**
+	 * This query return all available candidates for the wizard tool.
+	 * 
+	 * @param object
+	 *            the wizard context.
+	 * @return all available candidates
+	 */
 	public List<EObject> getWizardServiceCandidateExpression(EObject object) {
 		List<EObject> result = new ArrayList<EObject>();
 		UMLServices service = new UMLServices();
@@ -81,6 +55,13 @@ public class CompositeStructureServices {
 		return result;
 	}
 
+	/**
+	 * This query return all available children for the wizard tool.
+	 * 
+	 * @param object
+	 *            the wizard context.
+	 * @return all available children
+	 */
 	public List<EObject> getWizardServiceChildren(EObject object) {
 		List<EObject> result = new ArrayList<EObject>();
 		EList<EObject> eContents = object.eContents();
@@ -89,13 +70,13 @@ public class CompositeStructureServices {
 				if (eObject instanceof Interface) {
 					result.add(eObject);
 				} else {
-					for (Iterator<EObject> iterator = eObject.eAllContents(); iterator.hasNext();) {
+					Iterator<EObject> iterator = eObject.eAllContents();
+					while (iterator.hasNext()) {
 						EObject eSubObject = (EObject)iterator.next();
 						if (eSubObject instanceof Interface) {
 							result.add(eObject);
 							break;
 						}
-
 					}
 				}
 			}
@@ -103,6 +84,13 @@ public class CompositeStructureServices {
 		return result;
 	}
 
+	/**
+	 * This query return all required services already selected.
+	 * 
+	 * @param object
+	 *            the wizard context.
+	 * @return all required services already selected
+	 */
 	public List<EObject> getWizardRequiredServiceSelectedCandidates(EObject object) {
 		List<EObject> result = new ArrayList<EObject>();
 
@@ -144,6 +132,13 @@ public class CompositeStructureServices {
 		return result;
 	}
 
+	/**
+	 * This query return all provided services already selected.
+	 * 
+	 * @param object
+	 *            the wizard context.
+	 * @return all provided services already selected
+	 */
 	public List<EObject> getWizardProvidedServiceSelectedCandidates(EObject object) {
 		List<EObject> result = new ArrayList<EObject>();
 

@@ -15,6 +15,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.uml2.uml.ConnectableElement;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.ConnectorEnd;
 import org.eclipse.uml2.uml.Dependency;
@@ -35,12 +36,19 @@ import fr.obeo.dsl.viewpoint.DNode;
 import fr.obeo.dsl.viewpoint.EdgeTarget;
 
 /**
- * A set of services to handle the UML Composite Structure diagram.
+ * A set of services to handle graphically Composite Structure diagram actions and tests.
  * 
  * @author Hugo Marchadour <a href="mailto:hugo.marchadour@obeo.fr">hugo.marchadour@obeo.fr</a>
  */
 public class UICompositeStructureServices {
 
+	/**
+	 * Test if the view corresponds to an interface mapping.
+	 * 
+	 * @param view
+	 *            the view
+	 * @return true if it is an interface view
+	 */
 	public boolean isInterfaceView(EObject view) {
 		return view instanceof DNode && ((DNode)view).getTarget() != null
 				&& ((DNode)view).getTarget() instanceof Interface;
@@ -104,7 +112,7 @@ public class UICompositeStructureServices {
 	 * 
 	 * @param diagram
 	 *            The diagram
-	 * @return Dependencies
+	 * @return available dependencies
 	 */
 	public List<Connector> getAvailableSubConnectors(DDiagram diagram) {
 		List<Connector> result = new ArrayList<Connector>();
@@ -130,14 +138,10 @@ public class UICompositeStructureServices {
 					for (Connector connector : ownedConnectors) {
 						if (connector.getClientDependencies().isEmpty() && connector.getEnds().size() == 2) {
 							List<ConnectorEnd> ends = connector.getEnds();
-							if (ends.get(0).getRole() instanceof Property
-									&& !(ends.get(0).getRole() instanceof Port)) {
-								if (ends.get(1).getRole() instanceof Property
-										&& !(ends.get(1).getRole() instanceof Port)) {
-									if (!result.contains(connector)) {
-										result.add(connector);
-									}
-								}
+							if (!result.contains(connector)
+									&& isExaclyInstanceOfProperty(ends.get(0).getRole())
+									&& isExaclyInstanceOfProperty(ends.get(1).getRole())) {
+								result.add(connector);
 							}
 
 						}
@@ -147,6 +151,10 @@ public class UICompositeStructureServices {
 			}
 		}
 		return result;
+	}
+
+	private static boolean isExaclyInstanceOfProperty(ConnectableElement connectableElement) {
+		return connectableElement instanceof Property && !(connectableElement instanceof Port);
 	}
 
 	/**
@@ -197,8 +205,7 @@ public class UICompositeStructureServices {
 			EObject target = outgoingEdge.getTarget();
 
 			if (target instanceof InterfaceRealization) {
-				result.addAll(new CompositeStructureServices().findInterfaceRealizationsToDelete(
-						(InterfaceRealization)target, interfaces));
+				result.addAll(findInterfaceRealizationsToDelete((InterfaceRealization)target, interfaces));
 			}
 		}
 		return result;
@@ -250,7 +257,40 @@ public class UICompositeStructureServices {
 			EObject target = incomingEdge.getTarget();
 
 			if (target instanceof Usage) {
-				result.addAll(new CompositeStructureServices().findUsagesToDelete((Usage)target, interfaces));
+				result.addAll(findUsagesToDelete((Usage)target, interfaces));
+			}
+		}
+		return result;
+	}
+
+	private List<InterfaceRealization> findInterfaceRealizationsToDelete(
+			InterfaceRealization interfaceRealization, List<Interface> selectedInterfaces) {
+		List<InterfaceRealization> result = new ArrayList<InterfaceRealization>();
+
+		EList<NamedElement> suppliers = interfaceRealization.getSuppliers();
+		for (NamedElement namedElement : suppliers) {
+			if (namedElement instanceof Interface) {
+				Interface anInterface = (Interface)namedElement;
+				if (!selectedInterfaces.contains(anInterface)) {
+					result.add(interfaceRealization);
+					break;
+				}
+			}
+		}
+
+		return result;
+	}
+
+	private List<Usage> findUsagesToDelete(Usage usage, List<Interface> interfaces) {
+		List<Usage> result = new ArrayList<Usage>();
+		List<NamedElement> suppliers = usage.getSuppliers();
+		for (NamedElement namedElement : suppliers) {
+			if (namedElement instanceof Interface) {
+				Interface anInterface = (Interface)namedElement;
+				if (!interfaces.contains(anInterface)) {
+					result.add(usage);
+					break;
+				}
 			}
 		}
 		return result;
