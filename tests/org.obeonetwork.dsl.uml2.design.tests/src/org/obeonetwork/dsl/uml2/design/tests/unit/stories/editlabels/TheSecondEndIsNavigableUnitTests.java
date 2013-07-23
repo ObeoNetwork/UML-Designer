@@ -9,20 +9,18 @@
  *     Obeo - initial API and implementation
  *******************************************************************************/
 
-package org.obeonetwork.dsl.uml2.design.tests.ui.stories.createatype;
+package org.obeonetwork.dsl.uml2.design.tests.unit.stories.editlabels;
 import org.junit.Rule;
 import org.junit.Test;
-import org.obeonetwork.dsl.uml2.design.tests.contexts.AClassDiagramIsOpened;
+import org.obeonetwork.dsl.uml2.design.tests.contexts.TheSecondEndIsNavigable;
 
-public class CreateAnInterfaceInTheClassDiagramFromThePalette {
+public class TheSecondEndIsNavigableUnitTests {
 	@Rule
-	public AClassDiagramIsOpened context = new AClassDiagramIsOpened();
+	public TheSecondEndIsNavigable context = new TheSecondEndIsNavigable();
 
 	@Test
-	public void createAnInterfaceInTheClassDiagramFromThePalette() throws Exception {
-		context.actionISelectTheInterfaceCreationToolFromThePalette();
-		context.actionIClickOnTheDiagram();
-		context.assertAnInterfaceIsCreatedInTheModel();
-		context.assertAnInterfaceAppearsOnTheDiagram();
+	public void classDiagramEditRolesNamesSecondNavigable() throws Exception {
+		context.actionIEditTheLabelOfTheSecondRoleTo("aNavigableProperty");
+		context.assertTheSecondEndNameEquals("aNavigableProperty");
 	}
 }

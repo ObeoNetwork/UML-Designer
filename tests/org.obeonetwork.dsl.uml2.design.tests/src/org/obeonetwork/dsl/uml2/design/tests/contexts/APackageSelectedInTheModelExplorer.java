@@ -48,7 +48,8 @@ public class APackageSelectedInTheModelExplorer extends Context {
 	 */
 	public void actionICreateANewClassDiagram() {
 		// Start of user code ICreateANewClassDiagram
-		bot.createAClassDiagram();
+		// TODO Implement action ICreateANewClassDiagram
+		fail("Action ICreateANewClassDiagram not implemented");
 		// End of user code
 	}
 
@@ -57,8 +58,8 @@ public class APackageSelectedInTheModelExplorer extends Context {
 	 */
 	public void assertAClassDiagramIsCreatedAndOpened() {
 		// Start of user code AClassDiagramIsCreatedAndOpened
-		SWTBotEditor editor = bot.getActiveEditor();
-		assertEquals("Travel Agency Class Diagram", editor.getTitle());
+		// TODO Implement behavior AClassDiagramIsCreatedAndOpened
+		fail("Behavior AClassDiagramIsCreatedAndOpened not implemented");
 		// End of user code
 	}
 

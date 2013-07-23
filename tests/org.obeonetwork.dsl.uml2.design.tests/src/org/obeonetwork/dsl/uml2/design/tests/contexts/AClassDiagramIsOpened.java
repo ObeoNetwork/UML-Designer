@@ -63,16 +63,6 @@ public class AClassDiagramIsOpened extends Context {
 		// End of user code
 	}
 	/**
-	 * Action : I select the datatype creation tool from the palette
-	 */
-	public void actionISelectTheDatatypeCreationToolFromThePalette() {
-		// Start of user code ISelectTheDatatypeCreationToolFromThePalette
-		// TODO Implement action ISelectTheDatatypeCreationToolFromThePalette
-		fail("Action ISelectTheDatatypeCreationToolFromThePalette not implemented");
-		// End of user code
-	}
-
-	/**
 	 * Action : I click on the diagram
 	 */
 	public void actionIClickOnTheDiagram() {
@@ -83,11 +73,32 @@ public class AClassDiagramIsOpened extends Context {
 	}
 
 	/**
-	 * Action : I select the enumeration creation tool from the palette and I click on the diagram
+	 * Action : I select the primitive type creation tool from the palette
 	 */
-	public void actionISelectTheEnumerationCreationToolFromThePaletteAndIClickOnTheDiagram() {
-		// Start of user code ISelectTheEnumerationCreationToolFromThePaletteAndIClickOnTheDiagram
-		actionCreateAType("Enumeration");
+	public void actionISelectThePrimitiveTypeCreationToolFromThePalette() {
+		// Start of user code ISelectThePrimitiveTypeCreationToolFromThePalette
+		// TODO Implement action ISelectThePrimitiveTypeCreationToolFromThePalette
+		fail("Action ISelectThePrimitiveTypeCreationToolFromThePalette not implemented");
+		// End of user code
+	}
+
+	/**
+	 * Action : I select the delete from model tool in toolbar
+	 */
+	public void actionISelectTheDeleteFromModelToolInToolbar() {
+		// Start of user code ISelectTheDeleteFromModelToolInToolbar
+		// TODO Implement action ISelectTheDeleteFromModelToolInToolbar
+		fail("Action ISelectTheDeleteFromModelToolInToolbar not implemented");
+		// End of user code
+	}
+
+	/**
+	 * Action : I select the package creation tool from the palette
+	 */
+	public void actionISelectThePackageCreationToolFromThePalette() {
+		// Start of user code ISelectThePackageCreationToolFromThePalette
+		// TODO Implement action ISelectThePackageCreationToolFromThePalette
+		fail("Action ISelectThePackageCreationToolFromThePalette not implemented");
 		// End of user code
 	}
 
@@ -112,12 +123,22 @@ public class AClassDiagramIsOpened extends Context {
 	}
 
 	/**
-	 * Action : I select the primitive type creation tool from the palette
+	 * Action : I select the enumeration creation tool from the palette and I click on the diagram
 	 */
-	public void actionISelectThePrimitiveTypeCreationToolFromThePalette() {
-		// Start of user code ISelectThePrimitiveTypeCreationToolFromThePalette
-		// TODO Implement action ISelectThePrimitiveTypeCreationToolFromThePalette
-		fail("Action ISelectThePrimitiveTypeCreationToolFromThePalette not implemented");
+	public void actionISelectTheEnumerationCreationToolFromThePaletteAndIClickOnTheDiagram() {
+		// Start of user code ISelectTheEnumerationCreationToolFromThePaletteAndIClickOnTheDiagram
+		// TODO Implement action ISelectTheEnumerationCreationToolFromThePaletteAndIClickOnTheDiagram
+		fail("Action ISelectTheEnumerationCreationToolFromThePaletteAndIClickOnTheDiagram not implemented");
+		// End of user code
+	}
+
+	/**
+	 * Action : I select the datatype creation tool from the palette
+	 */
+	public void actionISelectTheDatatypeCreationToolFromThePalette() {
+		// Start of user code ISelectTheDatatypeCreationToolFromThePalette
+		// TODO Implement action ISelectTheDatatypeCreationToolFromThePalette
+		fail("Action ISelectTheDatatypeCreationToolFromThePalette not implemented");
 		// End of user code
 	}
 
@@ -126,88 +147,18 @@ public class AClassDiagramIsOpened extends Context {
 	 */
 	public void actionISelectTheClassCreationToolFromThePaletteAndIClickOnTheDiagram() {
 		// Start of user code ISelectTheClassCreationToolFromThePaletteAndIClickOnTheDiagram
-		actionCreateAType("Class");
+		// TODO Implement action ISelectTheClassCreationToolFromThePaletteAndIClickOnTheDiagram
+		fail("Action ISelectTheClassCreationToolFromThePaletteAndIClickOnTheDiagram not implemented");
 		// End of user code
 	}
 
 	/**
-	 * Action : I select the package creation tool from the palette
+	 * Behavior : A package appears on the diagram
 	 */
-	public void actionISelectThePackageCreationToolFromThePalette() {
-		// Start of user code ISelectThePackageCreationToolFromThePalette
-		// TODO Implement action ISelectThePackageCreationToolFromThePalette
-		fail("Action ISelectThePackageCreationToolFromThePalette not implemented");
-		// End of user code
-	}
-
-	/**
-	 * Action : I select the delete from model tool in toolbar
-	 */
-	public void actionISelectTheDeleteFromModelToolInToolbar() {
-		// Start of user code ISelectTheDeleteFromModelToolInToolbar
-		// TODO Implement action ISelectTheDeleteFromModelToolInToolbar
-		fail("Action ISelectTheDeleteFromModelToolInToolbar not implemented");
-		// End of user code
-	}
-
-	/**
-	 * Behavior : A datatype appears on the diagram
-	 */
-	public void assertADatatypeAppearsOnTheDiagram() {
-		// Start of user code ADatatypeAppearsOnTheDiagram
-		// TODO Implement behavior ADatatypeAppearsOnTheDiagram
-		fail("Behavior ADatatypeAppearsOnTheDiagram not implemented");
-		// End of user code
-	}
-	/**
-	 * Behavior : An enumeration is created in the model
-	 */
-	public void assertAnEnumerationIsCreatedInTheModel() {
-		// Start of user code AnEnumerationIsCreatedInTheModel
-		assertElementCreatedInUmlModel("Enumeration0",UMLPackage.eINSTANCE.getEnumeration());
-		// End of user code
-	}
-	/**
-	 * Behavior : A class is created in the model
-	 */
-	public void assertAClassIsCreatedInTheModel() {
-		// Start of user code AClassIsCreatedInTheModel
-		assertElementCreatedInUmlModel("Class1",UMLPackage.eINSTANCE.getClass_());
-		// End of user code
-	}
-	/**
-	 * Behavior : An enumeration appears on the diagram
-	 */
-	public void assertAnEnumerationAppearsOnTheDiagram() {
-		// Start of user code AnEnumerationAppearsOnTheDiagram
-		assertElementAppearsOnTheDiagram("Enumeration0");
-		// End of user code
-	}
-	/**
-	 * Behavior : A primitive type is created in the model
-	 */
-	public void assertAPrimitiveTypeIsCreatedInTheModel() {
-		// Start of user code APrimitiveTypeIsCreatedInTheModel
-		// TODO Implement behavior APrimitiveTypeIsCreatedInTheModel
-		fail("Behavior APrimitiveTypeIsCreatedInTheModel not implemented");
-		// End of user code
-	}
-	/**
-	 * Behavior : The class is deleted from the model
-	 */
-	public void assertTheClassIsDeletedFromTheModel() {
-		// Start of user code TheClassIsDeletedFromTheModel
-		// TODO Implement behavior TheClassIsDeletedFromTheModel
-		fail("Behavior TheClassIsDeletedFromTheModel not implemented");
-		// End of user code
-	}
-	/**
-	 * Behavior : The class does not appear anymore on the diagram
-	 */
-	public void assertTheClassDoesNotAppearAnymoreOnTheDiagram() {
-		// Start of user code TheClassDoesNotAppearAnymoreOnTheDiagram
-		// TODO Implement behavior TheClassDoesNotAppearAnymoreOnTheDiagram
-		fail("Behavior TheClassDoesNotAppearAnymoreOnTheDiagram not implemented");
+	public void assertAPackageAppearsOnTheDiagram() {
+		// Start of user code APackageAppearsOnTheDiagram
+		// TODO Implement behavior APackageAppearsOnTheDiagram
+		fail("Behavior APackageAppearsOnTheDiagram not implemented");
 		// End of user code
 	}
 	/**
@@ -220,12 +171,48 @@ public class AClassDiagramIsOpened extends Context {
 		// End of user code
 	}
 	/**
-	 * Behavior : A package is created in the model
+	 * Behavior : The class is deleted from the model
 	 */
-	public void assertAPackageIsCreatedInTheModel() {
-		// Start of user code APackageIsCreatedInTheModel
-		// TODO Implement behavior APackageIsCreatedInTheModel
-		fail("Behavior APackageIsCreatedInTheModel not implemented");
+	public void assertTheClassIsDeletedFromTheModel() {
+		// Start of user code TheClassIsDeletedFromTheModel
+		// TODO Implement behavior TheClassIsDeletedFromTheModel
+		fail("Behavior TheClassIsDeletedFromTheModel not implemented");
+		// End of user code
+	}
+	/**
+	 * Behavior : A datatype appears on the diagram
+	 */
+	public void assertADatatypeAppearsOnTheDiagram() {
+		// Start of user code ADatatypeAppearsOnTheDiagram
+		// TODO Implement behavior ADatatypeAppearsOnTheDiagram
+		fail("Behavior ADatatypeAppearsOnTheDiagram not implemented");
+		// End of user code
+	}
+	/**
+	 * Behavior : A primitive type appears on the diagram
+	 */
+	public void assertAPrimitiveTypeAppearsOnTheDiagram() {
+		// Start of user code APrimitiveTypeAppearsOnTheDiagram
+		// TODO Implement behavior APrimitiveTypeAppearsOnTheDiagram
+		fail("Behavior APrimitiveTypeAppearsOnTheDiagram not implemented");
+		// End of user code
+	}
+	/**
+	 * Behavior : A primitive type is created in the model
+	 */
+	public void assertAPrimitiveTypeIsCreatedInTheModel() {
+		// Start of user code APrimitiveTypeIsCreatedInTheModel
+		// TODO Implement behavior APrimitiveTypeIsCreatedInTheModel
+		fail("Behavior APrimitiveTypeIsCreatedInTheModel not implemented");
+		// End of user code
+	}
+	/**
+	 * Behavior : The class does not appear anymore on the diagram
+	 */
+	public void assertTheClassDoesNotAppearAnymoreOnTheDiagram() {
+		// Start of user code TheClassDoesNotAppearAnymoreOnTheDiagram
+		// TODO Implement behavior TheClassDoesNotAppearAnymoreOnTheDiagram
+		fail("Behavior TheClassDoesNotAppearAnymoreOnTheDiagram not implemented");
 		// End of user code
 	}
 	/**
@@ -242,16 +229,17 @@ public class AClassDiagramIsOpened extends Context {
 	 */
 	public void assertAClassAppearsOnTheDiagram() {
 		// Start of user code AClassAppearsOnTheDiagram
-		assertElementAppearsOnTheDiagram("Class1");
+		// TODO Implement behavior AClassAppearsOnTheDiagram
+		fail("Behavior AClassAppearsOnTheDiagram not implemented");
 		// End of user code
 	}
 	/**
-	 * Behavior : A primitive type appears on the diagram
+	 * Behavior : An enumeration appears on the diagram
 	 */
-	public void assertAPrimitiveTypeAppearsOnTheDiagram() {
-		// Start of user code APrimitiveTypeAppearsOnTheDiagram
-		// TODO Implement behavior APrimitiveTypeAppearsOnTheDiagram
-		fail("Behavior APrimitiveTypeAppearsOnTheDiagram not implemented");
+	public void assertAnEnumerationAppearsOnTheDiagram() {
+		// Start of user code AnEnumerationAppearsOnTheDiagram
+		// TODO Implement behavior AnEnumerationAppearsOnTheDiagram
+		fail("Behavior AnEnumerationAppearsOnTheDiagram not implemented");
 		// End of user code
 	}
 	/**
@@ -264,12 +252,30 @@ public class AClassDiagramIsOpened extends Context {
 		// End of user code
 	}
 	/**
-	 * Behavior : A package appears on the diagram
+	 * Behavior : A class is created in the model
 	 */
-	public void assertAPackageAppearsOnTheDiagram() {
-		// Start of user code APackageAppearsOnTheDiagram
-		// TODO Implement behavior APackageAppearsOnTheDiagram
-		fail("Behavior APackageAppearsOnTheDiagram not implemented");
+	public void assertAClassIsCreatedInTheModel() {
+		// Start of user code AClassIsCreatedInTheModel
+		// TODO Implement behavior AClassIsCreatedInTheModel
+		fail("Behavior AClassIsCreatedInTheModel not implemented");
+		// End of user code
+	}
+	/**
+	 * Behavior : A package is created in the model
+	 */
+	public void assertAPackageIsCreatedInTheModel() {
+		// Start of user code APackageIsCreatedInTheModel
+		// TODO Implement behavior APackageIsCreatedInTheModel
+		fail("Behavior APackageIsCreatedInTheModel not implemented");
+		// End of user code
+	}
+	/**
+	 * Behavior : An enumeration is created in the model
+	 */
+	public void assertAnEnumerationIsCreatedInTheModel() {
+		// Start of user code AnEnumerationIsCreatedInTheModel
+		// TODO Implement behavior AnEnumerationIsCreatedInTheModel
+		fail("Behavior AnEnumerationIsCreatedInTheModel not implemented");
 		// End of user code
 	}
 

@@ -15,8 +15,6 @@ import static org.junit.Assert.*;
 	import org.obeonetwork.dsl.uml2.design.tests.automation.Context;
 
 // Start of user code AnUmlModelWithAnAssociation imports
-import static org.junit.Assert.assertEquals;
-
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.UMLFactory;
@@ -29,13 +27,13 @@ import org.obeonetwork.dsl.uml2.design.services.internal.EditLabelSwitch;
  */
 public class AnUmlModelWithAnAssociation extends Context {
 // Start of user code AnUmlModelWithAnAssociation variables
-	private Association startAssociation;
+	protected Association startAssociation;
 
-	private Property firstEnd;
+	protected Property firstEnd;
 
-	private Property secondEnd;
+	protected Property secondEnd;
 
-	private EditLabelSwitch editSwitch = new EditLabelSwitch();
+	protected EditLabelSwitch editSwitch = new EditLabelSwitch();
 
 	// End of user code
 
@@ -61,43 +59,114 @@ public class AnUmlModelWithAnAssociation extends Context {
 	/**
 	 * Action : I edit the label of the first role to
 	 */
-	public void actionIEditTheLabelOfTheFirstRoleTo(String firstRole) {
+	public void actionIEditTheLabelOfTheFirstRoleTo(String iEditTheLabelOfTheFirstRoleTo0) {
 		// Start of user code IEditTheLabelOfTheFirstRoleTo
-		Property role = UMLServices.getSource(startAssociation);
-		editSwitch.setEditedLabelContent(firstRole);
-		editSwitch.caseRole(role);
+		editFirstRole(startAssociation, iEditTheLabelOfTheFirstRoleTo0);
 		// End of user code
 	}
 
 	/**
 	 * Action : I edit the label of the second role to
 	 */
-	public void actionIEditTheLabelOfTheSecondRoleTo(String secondRole) {
+	public void actionIEditTheLabelOfTheSecondRoleTo(String iEditTheLabelOfTheSecondRoleTo0) {
 		// Start of user code IEditTheLabelOfTheSecondRoleTo
-		Property role = UMLServices.getTarget(startAssociation);
-		editSwitch.setEditedLabelContent(secondRole);
-		editSwitch.caseRole(role);
+		editSecondRole(startAssociation, iEditTheLabelOfTheSecondRoleTo0);
 		// End of user code
 	}
 
 	/**
-	 * Behavior : The second end name equals
+	 * Behavior : The first end is derived
 	 */
-	public void assertTheSecondEndNameEquals(String secondRole) {
-		// Start of user code TheSecondEndNameEquals
-		assertEquals(secondRole, secondEnd.getName());
+	public void assertTheFirstEndIsDerived() {
+		// Start of user code TheFirstEndIsDerived
+		assertEquals(true, firstEnd.isDerived());
+		// End of user code
+	}
+	/**
+	 * Behavior : The second end upper cardinality equals
+	 */
+	public void assertTheSecondEndUpperCardinalityEquals(String theSecondEndUpperCardinalityEquals0) {
+		// Start of user code TheSecondEndUpperCardinalityEquals
+		assertEquals(Integer.parseInt(theSecondEndUpperCardinalityEquals0), secondEnd.getUpper());
+		// End of user code
+	}
+	/**
+	 * Behavior : The first end lower cardinality equals
+	 */
+	public void assertTheFirstEndLowerCardinalityEquals(String theFirstEndLowerCardinalityEquals0) {
+		// Start of user code TheFirstEndLowerCardinalityEquals
+		assertEquals(Integer.parseInt(theFirstEndLowerCardinalityEquals0), firstEnd.getLower());
 		// End of user code
 	}
 	/**
 	 * Behavior : The first end name equals
 	 */
-	public void assertTheFirstEndNameEquals(String firstRole) {
+	public void assertTheFirstEndNameEquals(String theFirstEndNameEquals0) {
 		// Start of user code TheFirstEndNameEquals
-		assertEquals(firstRole, firstEnd.getName());
+		assertEquals(theFirstEndNameEquals0, firstEnd.getName());
+		// End of user code
+	}
+	/**
+	 * Behavior : The first end upper cardinality equals
+	 */
+	public void assertTheFirstEndUpperCardinalityEquals(String theFirstEndUpperCardinalityEquals0) {
+		// Start of user code TheFirstEndUpperCardinalityEquals
+		assertEquals(Integer.parseInt(theFirstEndUpperCardinalityEquals0), firstEnd.getUpper());
+		// End of user code
+	}
+	/**
+	 * Behavior : The first end is not derived
+	 */
+	public void assertTheFirstEndIsNotDerived() {
+		// Start of user code TheFirstEndIsNotDerived
+		assertEquals(false, firstEnd.isDerived());
+		// End of user code
+	}
+	/**
+	 * Behavior : The second end is derived
+	 */
+	public void assertTheSecondEndIsDerived() {
+		// Start of user code TheSecondEndIsDerived
+		assertEquals(true, secondEnd.isDerived());
+		// End of user code
+	}
+	/**
+	 * Behavior : The second end is not derived
+	 */
+	public void assertTheSecondEndIsNotDerived() {
+		// Start of user code TheSecondEndIsNotDerived
+		assertEquals(false, secondEnd.isDerived());
+		// End of user code
+	}
+	/**
+	 * Behavior : The second end name equals
+	 */
+	public void assertTheSecondEndNameEquals(String theSecondEndNameEquals0) {
+		// Start of user code TheSecondEndNameEquals
+		assertEquals(theSecondEndNameEquals0, secondEnd.getName());
+		// End of user code
+	}
+	/**
+	 * Behavior : The second end lower cardinality equals
+	 */
+	public void assertTheSecondEndLowerCardinalityEquals(String theSecondEndLowerCardinalityEquals0) {
+		// Start of user code TheSecondEndLowerCardinalityEquals
+		assertEquals(Integer.parseInt(theSecondEndLowerCardinalityEquals0), secondEnd.getLower());
 		// End of user code
 	}
 
 // Start of user code AnUmlModelWithAnAssociation private methods
-	// Nothing
+	protected void editFirstRole(Association startAssociation2, String string) {
+		Property role = UMLServices.getSource(startAssociation2);
+		editSwitch.setEditedLabelContent(string);
+		editSwitch.caseRole(role);
+	}
+
+	protected void editSecondRole(Association startAssociation2, String string) {
+		Property role = UMLServices.getTarget(startAssociation2);
+		editSwitch.setEditedLabelContent(string);
+		editSwitch.caseRole(role);
+	}
+
 	// End of user code
 }

@@ -1,7 +1,7 @@
 Document {
 	Chapter Presentation {
 		Section Context {
-			Today, it exists many proprietary UML modelers available on the market. Some of them are supporting the SysML standard. A large part of these tools are not completly compliant with the UML standard. None of them are providing viewpoint extensions. It exists few open source modelers (as Topcased and Papyrus) even if several initiatives where launched by the past. Due to a low level "TRL":http://fr.wikipedia.org/wiki/Technology_Readiness_Level of the open source solutions, it is not possible to use them currently in an industrial context. The purpose of the Architecture Sketcher is to provide an industrial UML/SysML viewpoint based designers compliant with the standards.
+			Today, it exists many proprietary UML modelers available on the market. Some of them are supporting the SysML standard. A large part of these tools are not completly compliant with the UML standard. None of them are providing viewpoint extensions. It exists few open source modelers (as Topcased and Papyrus) even if several initiatives where launched by the past. Due to a low level "TRL":http://fr.wikipedia.org/wiki/Technology_Readiness_Level of the open source solutions, it is not possible to use them currently in an industrial context. The purpose of the Architecture Sketcher is to provide an industrial UML/SysML viewpoint based designers compliant with the standards.    
 
 			The Architecture Sketcher is composed by two different designer :
 
@@ -403,6 +403,34 @@ Document {
 					Then: A class diagram is created and opened
 				@M
 					@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/ui/stories/createanewrepresentation/CreateAClassDiagramFromAPackageInTheModelExplorer.java"
+					 
+				M@
+				@M
+					@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/ui/stories/createanewrepresentation/apackageselectedinthemodelexplorer.java#//@methods%5Bname='CreateAClassDiagramFromAPackageInTheModelExplorer'%5D"
+					 
+				M@
+				@M
+					@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/ui/stories/createanewrepresentation/APackageSelectedInTheModelExplorer.java#//@methods%5Bname='CreateAClassDiagramFromAPackageInTheModelExplorer'%5D"
+					 
+				M@
+				@M
+					@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/ui/stories/createanewrepresentation/APackageSelectedInTheModelExplorer.java#//@methods%5Bname='99i'%5D"
+					 
+				M@
+				@M
+					@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/ui/stories/createanewrepresentation/APackageSelectedInTheModelExplorer.java#//@methods%5Bname='createAClassDiagramFromAPackageInTheModelExplorer'%5D"
+					 
+				M@
+				@M
+					@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/ui/stories/createanewrepresentation/APackageSelectedInTheModelExplorer.java#//@methods%5Bname='createAClassDiagramFromAPackageInTheModelExplorer()'%5D"
+					 
+				M@
+				@M
+					@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/ui/stories/createanewrepresentation/APackageSelectedInTheModelExplorerUiTest.java#//@methods%5Bname='createAClassDiagramFromAPackageInTheModelExplorer()'%5D"
+					 
+				M@
+				@M
+					@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/ui/stories/createanewrepresentation/APackageSelectedInTheModelExplorerUiTests.java#//@methods%5Bname='createAClassDiagramFromAPackageInTheModelExplorer()'%5D"
 					 
 				M@
 			}
@@ -914,7 +942,7 @@ Document {
 
 					
 					
-					|_. Element        |_. Representation|_. Comments|       |
+					|_. Element        |_. Representation|_. Comments|
 					|Partition             |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ActivityDiagramPartition.png!          |Organizes a flow by grouping elements|
 					|Initial Node          |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ActivityDiagramInitialNode.png!        |Start of a flow|
 					|Activity Final Node   |!platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ActivityDiagramActivityFinalNode.png!  |End of a flow|
@@ -1649,7 +1677,11 @@ Document {
 
 					The class diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.
 
-				Section Manage types {
+				Section Manage types {					@M
+						@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/editlabels/AnUmlModelWithAnAssociationUnitTests.java#//@methods[name='classDiagramEditRolesNames2()']"
+						 
+					M@
+
 					It is possible to *create a type* by selecting the type creation tool from the palette and then clicking on the diagram or an element. 
 					A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the UML model.
 					If the user selects a container, the element will be created under the corresponding semantic element in the UML model.
@@ -1738,23 +1770,23 @@ Document {
 						 
 					M@
 					@M
-						@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/ui/stories/createatype/CreateAClassInTheClassDiagramFromThePalette.java"
+						@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/ui/stories/createatype/AClassDiagramIsOpenedUiTests.java#//@methods%5Bname='createAClassInTheClassDiagramFromThePalette()'%5D"
 						 
 					M@
 					@M
-						@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/ui/stories/createatype/CreateAnEnumerationInTheClassDiagramFromThePalette.java"
+						@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/ui/stories/createatype/AClassDiagramIsOpenedUiTests.java#//@methods%5Bname='createAnEnumerationInTheClassDiagramFromThePalette()'%5D"
 						 
 					M@
 					@M
-						@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/ui/stories/createatype/CreateADatatypeInTheClassDiagramFromThePalette.java"
+						@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/ui/stories/createatype/AClassDiagramIsOpenedUiTests.java#//@methods%5Bname='createADatatypeInTheClassDiagramFromThePalette()'%5D"
 						 
 					M@
 					@M
-						@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/ui/stories/createatype/CreateAPrimitiveTypeInTheClassDiagramFromThePalette.java"
+						@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/ui/stories/createatype/AClassDiagramIsOpenedUiTests.java#//@methods%5Bname='createAPrimitiveTypeInTheClassDiagramFromThePalette()'%5D"
 						 
 					M@
 					@M
-						@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/ui/stories/createatype/CreateAnInterfaceInTheClassDiagramFromThePalette.java"
+						@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/ui/stories/createatype/AClassDiagramIsOpenedUiTests.java#//@methods%5Bname='createAnInterfaceInTheClassDiagramFromThePalette()'%5D"
 						 
 					M@
 				}
@@ -1783,7 +1815,7 @@ Document {
 					
 
 					The user can also *delete a feature* (
-					@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
+					@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).					
 
 					Story: Create a feature [Class diagram]
 					As: Business analyst
@@ -1875,40 +1907,202 @@ Document {
 					* relationships labels
 					
 
+					
+
+					Section Test scenarios {
 						Scenario: Edit association role [Edit labels]@unit
-							Given: An Uml model with an association
-							When: I edit the label of the first role to $firstRole
-							When: I edit the label of the second role to $secondRole
-							Then: The first end name equals $firstRole
-							Then: The second end name equals $secondRole
-					@M
-						@ref "platform:/resource/platform://org.obeonetwork.dsl.uml2.design.tests/Edit%20association%20role.java"
-						 
-					M@
-					@M
-						@ref "platform:/resource/org.obeonetwork.dsl.uml2.design.tests/src/EditAssociationRole.java%23/"
-						 
-					M@
-					@M
-						@ref "platform:/resource/org.obeonetwork.dsl.uml2.design.tests/src/unit/stories/editlabels/EditAssociationRole.java%23/"
-						 
-					M@
-					@M
-						@ref "platform:/resource/org.obeonetwork.dsl.uml2.design.tests/src/unit/stories/editlabels/EditAssociationRole.java"
-						 
-					M@
-					@M
-						@ref "platform:/resource/org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/editlabels/EditAssociationRole/EditAssociationRole.java"
-						 
-					M@
-					@M
-						@ref "platform:/resource/org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/editlabels/EditAssociationRole.java"
-						 
-					M@
-					@M
-						@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/editlabels/EditAssociationRole.java"
-						 
-					M@
+						Given: An Uml model with an association
+						When: I edit the label of the first role to $firstRole
+						When: I edit the label of the second role to $secondRole
+						Then: The first end name equals $firstRole
+						Then: The second end name equals $secondRole
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/editlabels/AnUmlModelWithAnAssociationUnitTests.java#//@methods%5Bname='editAssociationRole()'%5D"
+							 
+						M@
+
+						Scenario: Class diagram edit roles names [Edit labels]@unit
+						Given: An Uml model with an association
+						When: I edit the label of the first role to $firstRole
+						When: I edit the label of the second role to $secondRole
+						Then: The first end name equals $firstRole
+						Then: The second end name equals $secondRole
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/editlabels/AnUmlModelWithAnAssociationUnitTests.java#//@methods%5Bname='classDiagramEditRolesNames()'%5D"
+							 
+						M@
+
+						Scenario: Class diagram edit roles names and trim spaces [Edit labels]@unit
+						Given: An Uml model with an association
+						When: I edit the label of the first role to $  firstRole   
+						When: I edit the label of the second role to $  secondRole 
+						Then: The first end name equals $firstRole
+						Then: The second end name equals $secondRole
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/editlabels/AnUmlModelWithAnAssociationUnitTests.java#//@methods%5Bname='classDiagramEditRolesNamesAndTrimSpaces()'%5D"
+							 
+						M@
+
+						Scenario: Class diagram edit roles names 2 [Edit labels]@unit
+						Given: An Uml model with an association
+						When: I edit the label of the first role to $firstRoleRenamed   
+						When: I edit the label of the second role to $secondRole
+						Then: The first end name equals $firstRoleRenamed
+						Then: The second end name equals $secondRole
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/editlabels/AnUmlModelWithAnAssociationUnitTests.java#//@methods%5Bname='classDiagramEditRolesNames2()'%5D"
+							 
+						M@
+
+						Scenario: Class diagram edit roles names second navigable [Edit labels]@unit
+						Given: The second end is navigable [An Uml model with an association]
+						When: I edit the label of the second role to $aNavigableProperty
+						Then: The second end name equals $aNavigableProperty
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/editlabels/TheSecondEndIsNavigableUnitTests.java#//@methods%5Bname='classDiagramEditRolesNamesSecondNavigable()'%5D"
+							 
+						M@
+
+						Scenario: Class diagram edit roles names none navigable [Edit labels]@unit
+						Given: None end is navigable [An Uml model with an association]
+						When: I edit the label of the first role to $aNavigableProperty
+						Then: The first end name equals $aNavigableProperty
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/editlabels/NoneEndIsNavigableUnitTests.java#//@methods%5Bname='classDiagramEditRolesNamesNoneNavigable()'%5D"
+							 
+						M@
+
+						Scenario: Class diagram edit roles names none navigable cardspaces[Edit labels]@unit
+						Given: None end is navigable [An Uml model with an association]
+						When: I edit the label of the first role to $aNavigableProperty  [ 2  .. 4  ]
+						Then: The first end name equals $aNavigableProperty
+						Then: The first end lower cardinality equals $2
+						Then: The first end upper cardinality equals $4
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/editlabels/NoneEndIsNavigableUnitTests.java#//@methods%5Bname='classDiagramEditRolesNamesNoneNavigableCardspaces()'%5D"
+							 
+						M@
+
+						Scenario: Cardinality [Edit labels]@unit
+						Given: An Uml model with an association
+						When: I edit the label of the first role to $firstRole[0..1]
+						When: I edit the label of the second role to $secondRole[*]
+						Then: The first end lower cardinality equals $0
+						Then: The first end upper cardinality equals $1
+						Then: The second end lower cardinality equals $0
+						Then: The second end upper cardinality equals $-1
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/editlabels/AnUmlModelWithAnAssociationUnitTests.java#//@methods%5Bname='cardinality()'%5D"
+							 
+						M@
+
+						Scenario: Cardinality with spaces [Edit labels]@unit
+						Given: An Uml model with an association
+						When: I edit the label of the first role to $firstRole [ 0 .. 1 ] 
+						When: I edit the label of the second role to $ secondRole [ * ] 
+						Then: The first end lower cardinality equals $0
+						Then: The first end upper cardinality equals $1
+						Then: The second end lower cardinality equals $0
+						Then: The second end upper cardinality equals $-1
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/editlabels/AnUmlModelWithAnAssociationUnitTests.java#//@methods%5Bname='cardinalityWithSpaces()'%5D"
+							 
+						M@
+
+						Scenario: Cardinality with spaces 2 [Edit labels]@unit
+						Given: An Uml model with an association
+						When: I edit the label of the first role to $firstRole[5..5] 
+						When: I edit the label of the second role to $ secondRole 
+						Then: The first end lower cardinality equals $5
+						Then: The first end upper cardinality equals $5
+						Then: The second end lower cardinality equals $1
+						Then: The second end upper cardinality equals $1
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/editlabels/AnUmlModelWithAnAssociationUnitTests.java#//@methods%5Bname='cardinalityWithSpaces2()'%5D"
+							 
+						M@
+
+						Scenario: Cardinality one end change [Edit labels]@unit
+						Given: An Uml model with an association
+						When: I edit the label of the first role to $firstRole
+						When: I edit the label of the second role to $ secondRole[1..5]
+						Then: The first end lower cardinality equals $1
+						Then: The first end upper cardinality equals $1
+						Then: The second end lower cardinality equals $1
+						Then: The second end upper cardinality equals $5
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/editlabels/AnUmlModelWithAnAssociationUnitTests.java#//@methods%5Bname='cardinalityOneEndChange()'%5D"
+							 
+						M@
+
+						Scenario: Cardinality one end change 2 [Edit labels]@unit
+						Given: An Uml model with an association
+						When: I edit the label of the first role to $firstRole[*]
+						When: I edit the label of the second role to $ secondRole
+						Then: The first end lower cardinality equals $0
+						Then: The first end upper cardinality equals $-1
+						Then: The second end lower cardinality equals $1
+						Then: The second end upper cardinality equals $1
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/editlabels/AnUmlModelWithAnAssociationUnitTests.java#//@methods%5Bname='cardinalityOneEndChange2()'%5D"
+							 
+						M@
+
+						Scenario: Derived none [Edit labels]@unit
+						Given: An Uml model with an association
+						When: I edit the label of the first role to $firstRole[0..1] 
+						When: I edit the label of the second role to $ secondRole[*]
+						Then: The first end is not derived
+						Then: The second end is not derived
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/editlabels/AnUmlModelWithAnAssociationUnitTests.java#//@methods%5Bname='derivedNone()'%5D"
+							 
+						M@
+
+						Scenario: Derived first [Edit labels]@unit
+						Given: An Uml model with an association
+						When: I edit the label of the first role to $/firstRole[0..1] 
+						When: I edit the label of the second role to $ secondRole[*]
+						Then: The first end is derived
+						Then: The second end is not derived
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/editlabels/AnUmlModelWithAnAssociationUnitTests.java#//@methods%5Bname='derivedFirst()'%5D"
+							 
+						M@
+
+						Scenario: Derived second [Edit labels]@unit
+						Given: An Uml model with an association
+						When: I edit the label of the first role to $firstRole[0..1] 
+						When: I edit the label of the second role to $ /secondRole[*]
+						Then: The first end is not derived
+						Then: The second end is derived
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/editlabels/AnUmlModelWithAnAssociationUnitTests.java#//@methods%5Bname='derivedSecond()'%5D"
+							 
+						M@
+
+						Scenario: Derived both [Edit labels]@unit
+						Given: An Uml model with an association
+						When: I edit the label of the first role to $/firstRole[0..1] 
+						When: I edit the label of the second role to $ /secondRole[*]
+						Then: The first end is derived
+						Then: The second end is derived
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/editlabels/AnUmlModelWithAnAssociationUnitTests.java#//@methods%5Bname='derivedBoth()'%5D"
+							 
+						M@
+
+						Scenario: Derived both with spaces [Edit labels]@unit
+						Given: An Uml model with an association
+						When: I edit the label of the first role to $/ firstRole  
+						When: I edit the label of the second role to $ / secondRole[*] 
+						Then: The first end is derived
+						Then: The second end is derived
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/editlabels/AnUmlModelWithAnAssociationUnitTests.java#//@methods%5Bname='derivedBothWithSpaces()'%5D"
+							 
+						M@
+					}
 				}
 			}
 
@@ -1960,6 +2154,18 @@ Document {
 					In the class diagram a contextual action is available to show on the diagram the element related to the selection. 
 
 					The *Add related elements* action is available from :
+					@M
+						@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/editlabels/AnUmlModelWithAnAssociationUnitTests.java#//@methods[name='classDiagramEditRolesNames2()']"
+						 
+					M@
+					@M
+						@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/editlabels/AnUmlModelWithAnAssociationUnitTests.java#//@methods[name='classDiagramEditRolesNames()']"
+						 
+					M@
+					@M
+						@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/editlabels/AnUmlModelWithAnAssociationUnitTests.java#//@methods[name='editAssociationRole()']"
+						 
+					M@
 
 					*  an instance : shows all the elements that define a relationship (dependency, association, composition...) with the selected element
 					*  an object diagram : shows all the elements contained in the package associated to the diagram.
@@ -2020,7 +2226,11 @@ Document {
 						@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
 					}
 
-					Section Manage transitions {
+					Section Manage transitions {						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/editlabels/AnUmlModelWithAnAssociationUnitTests.java#//@methods[name='editAssociationRole()']"
+							 
+						M@
+
 						It is possible to :
 
 						* *create a transition* : by selecting the edge creation tool from the palette and then clicking on a source element and a target element.
@@ -2289,6 +2499,19 @@ Document {
 			Section {			}
 		}
 
-		Section Tests {		}
+		Section Tests {
+			Scenario: Name [Direct edit]@plugin
+			Given: A package selected in the model explorer
+			When: I create a new class diagram
+			Then: Behaviour
+			@M
+				@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/plugin/stories/directedit/APackageSelectedInTheModelExplorerPluginTests.java#//@methods%5Bname='name()'%5D"
+				 
+			M@
+			@M
+				@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/plugin/stories/DirectEditPluginTests.java"
+				 
+			M@
+		}
 	}
 }

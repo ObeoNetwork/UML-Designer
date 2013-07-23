@@ -8,6 +8,8 @@
     <context name="A package selected in the model explorer"/>
     <context name="A class diagram is opened"/>
     <context name="An Uml model with an association"/>
+    <context name="The second end is navigable" contexts="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']"/>
+    <context name="None end is navigable" contexts="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']"/>
     <actions name="I create a new class diagram"/>
     <actions name="I select the class creation tool from the palette and I click on the diagram"/>
     <actions name="I select the enumeration creation tool from the palette and I click on the diagram"/>
@@ -19,10 +21,10 @@
     <actions name="I select the delete from model tool in toolbar"/>
     <actions name="I click on a class in the diagram"/>
     <actions name="I edit the label of the first role to">
-      <parameters name="firstRole"/>
+      <parameters name="I edit the label of the first role to0"/>
     </actions>
     <actions name="I edit the label of the second role to">
-      <parameters name="secondRole"/>
+      <parameters name="I edit the label of the second role to0"/>
     </actions>
     <behaviours name="A class diagram is created and opened"/>
     <behaviours name="A class is created in the model"/>
@@ -40,15 +42,144 @@
     <behaviours name="The class is deleted from the model"/>
     <behaviours name="The class does not appear anymore on the diagram"/>
     <behaviours name="The first end name equals">
-      <parameters name="firstRole"/>
+      <parameters name="The first end name equals0"/>
     </behaviours>
     <behaviours name="The second end name equals">
-      <parameters name="secondRole"/>
+      <parameters name="The second end name equals0"/>
     </behaviours>
+    <behaviours name="The first end lower cardinality equals">
+      <parameters name="The first end lower cardinality equals0"/>
+    </behaviours>
+    <behaviours name="The first end upper cardinality equals">
+      <parameters name="The first end upper cardinality equals0"/>
+    </behaviours>
+    <behaviours name="The second end lower cardinality equals">
+      <parameters name="The second end lower cardinality equals0"/>
+    </behaviours>
+    <behaviours name="The second end upper cardinality equals">
+      <parameters name="The second end upper cardinality equals0"/>
+    </behaviours>
+    <behaviours name="The first end is not derived"/>
+    <behaviours name="The second end is not derived"/>
+    <behaviours name="The first end is derived"/>
+    <behaviours name="The second end is derived"/>
+    <behaviours name="Behaviour"/>
   </automationLayer>
   <stories name="Edit labels" As="//@roles[name='Business%20analyst']" soThat="//@benefits[name='I%20could%20update%20the%20elements%20name%20easily']" iWant="//@capabilities[name='to%20edit%20the%20label%20of%20an%20element%20on%20the%20diagram']">
     <scenarios name="Edit association role" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to'] //@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20name%20equals'] //@automationLayer/@behaviours[name='The%20second%20end%20name%20equals']">
       <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="firstRole" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
+      <values value="secondRole" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']/@parameters.0"/>
+      <values value="firstRole" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20name%20equals']/@parameters.0"/>
+      <values value="secondRole" parameter="//@automationLayer/@behaviours[name='The%20second%20end%20name%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Class diagram edit roles names" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to'] //@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20name%20equals'] //@automationLayer/@behaviours[name='The%20second%20end%20name%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="firstRole" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
+      <values value="secondRole" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']/@parameters.0"/>
+      <values value="firstRole" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20name%20equals']/@parameters.0"/>
+      <values value="secondRole" parameter="//@automationLayer/@behaviours[name='The%20second%20end%20name%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Class diagram edit roles names and trim spaces" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to'] //@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20name%20equals'] //@automationLayer/@behaviours[name='The%20second%20end%20name%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="  firstRole" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
+      <values value="  secondRole" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']/@parameters.0"/>
+      <values value="firstRole" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20name%20equals']/@parameters.0"/>
+      <values value="secondRole" parameter="//@automationLayer/@behaviours[name='The%20second%20end%20name%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Class diagram edit roles names 2" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to'] //@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20name%20equals'] //@automationLayer/@behaviours[name='The%20second%20end%20name%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="firstRoleRenamed" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
+      <values value="secondRole" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']/@parameters.0"/>
+      <values value="firstRoleRenamed" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20name%20equals']/@parameters.0"/>
+      <values value="secondRole" parameter="//@automationLayer/@behaviours[name='The%20second%20end%20name%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Class diagram edit roles names second navigable" given="//@automationLayer/@context[name='The%20second%20end%20is%20navigable']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']" then="//@automationLayer/@behaviours[name='The%20second%20end%20name%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="aNavigableProperty" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']/@parameters.0"/>
+      <values value="aNavigableProperty" parameter="//@automationLayer/@behaviours[name='The%20second%20end%20name%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Class diagram edit roles names none navigable" given="//@automationLayer/@context[name='None%20end%20is%20navigable']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20name%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="aNavigableProperty" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
+      <values value="aNavigableProperty" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20name%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Class diagram edit roles names none navigable cardspaces" given="//@automationLayer/@context[name='None%20end%20is%20navigable']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20name%20equals'] //@automationLayer/@behaviours[name='The%20first%20end%20lower%20cardinality%20equals'] //@automationLayer/@behaviours[name='The%20first%20end%20upper%20cardinality%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="aNavigableProperty  [ 2  .. 4  ]" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
+      <values value="aNavigableProperty" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20name%20equals']/@parameters.0"/>
+      <values value="2" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20lower%20cardinality%20equals']/@parameters.0"/>
+      <values value="4" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20upper%20cardinality%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Cardinality" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to'] //@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20lower%20cardinality%20equals'] //@automationLayer/@behaviours[name='The%20first%20end%20upper%20cardinality%20equals'] //@automationLayer/@behaviours[name='The%20second%20end%20lower%20cardinality%20equals'] //@automationLayer/@behaviours[name='The%20second%20end%20upper%20cardinality%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="firstRole[0..1]" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
+      <values value="secondRole[*]" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']/@parameters.0"/>
+      <values value="0" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20lower%20cardinality%20equals']/@parameters.0"/>
+      <values value="1" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20upper%20cardinality%20equals']/@parameters.0"/>
+      <values value="0" parameter="//@automationLayer/@behaviours[name='The%20second%20end%20lower%20cardinality%20equals']/@parameters.0"/>
+      <values value="-1" parameter="//@automationLayer/@behaviours[name='The%20second%20end%20upper%20cardinality%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Cardinality with spaces" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to'] //@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20lower%20cardinality%20equals'] //@automationLayer/@behaviours[name='The%20first%20end%20upper%20cardinality%20equals'] //@automationLayer/@behaviours[name='The%20second%20end%20lower%20cardinality%20equals'] //@automationLayer/@behaviours[name='The%20second%20end%20upper%20cardinality%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="firstRole [ 0 .. 1 ]" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
+      <values value=" secondRole [ * ]" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']/@parameters.0"/>
+      <values value="0" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20lower%20cardinality%20equals']/@parameters.0"/>
+      <values value="1" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20upper%20cardinality%20equals']/@parameters.0"/>
+      <values value="0" parameter="//@automationLayer/@behaviours[name='The%20second%20end%20lower%20cardinality%20equals']/@parameters.0"/>
+      <values value="-1" parameter="//@automationLayer/@behaviours[name='The%20second%20end%20upper%20cardinality%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Cardinality with spaces 2" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to'] //@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20lower%20cardinality%20equals'] //@automationLayer/@behaviours[name='The%20first%20end%20upper%20cardinality%20equals'] //@automationLayer/@behaviours[name='The%20second%20end%20lower%20cardinality%20equals'] //@automationLayer/@behaviours[name='The%20second%20end%20upper%20cardinality%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="firstRole[5..5]" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
+      <values value=" secondRole" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']/@parameters.0"/>
+      <values value="5" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20lower%20cardinality%20equals']/@parameters.0"/>
+      <values value="5" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20upper%20cardinality%20equals']/@parameters.0"/>
+      <values value="1" parameter="//@automationLayer/@behaviours[name='The%20second%20end%20lower%20cardinality%20equals']/@parameters.0"/>
+      <values value="1" parameter="//@automationLayer/@behaviours[name='The%20second%20end%20upper%20cardinality%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Cardinality one end change" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to'] //@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20lower%20cardinality%20equals'] //@automationLayer/@behaviours[name='The%20first%20end%20upper%20cardinality%20equals'] //@automationLayer/@behaviours[name='The%20second%20end%20lower%20cardinality%20equals'] //@automationLayer/@behaviours[name='The%20second%20end%20upper%20cardinality%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="firstRole" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
+      <values value=" secondRole[1..5]" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']/@parameters.0"/>
+      <values value="1" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20lower%20cardinality%20equals']/@parameters.0"/>
+      <values value="1" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20upper%20cardinality%20equals']/@parameters.0"/>
+      <values value="1" parameter="//@automationLayer/@behaviours[name='The%20second%20end%20lower%20cardinality%20equals']/@parameters.0"/>
+      <values value="5" parameter="//@automationLayer/@behaviours[name='The%20second%20end%20upper%20cardinality%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Cardinality one end change 2" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to'] //@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20lower%20cardinality%20equals'] //@automationLayer/@behaviours[name='The%20first%20end%20upper%20cardinality%20equals'] //@automationLayer/@behaviours[name='The%20second%20end%20lower%20cardinality%20equals'] //@automationLayer/@behaviours[name='The%20second%20end%20upper%20cardinality%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="firstRole[*]" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
+      <values value=" secondRole" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']/@parameters.0"/>
+      <values value="0" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20lower%20cardinality%20equals']/@parameters.0"/>
+      <values value="-1" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20upper%20cardinality%20equals']/@parameters.0"/>
+      <values value="1" parameter="//@automationLayer/@behaviours[name='The%20second%20end%20lower%20cardinality%20equals']/@parameters.0"/>
+      <values value="1" parameter="//@automationLayer/@behaviours[name='The%20second%20end%20upper%20cardinality%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Derived none" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to'] //@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20is%20not%20derived'] //@automationLayer/@behaviours[name='The%20second%20end%20is%20not%20derived']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="firstRole[0..1]" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
+      <values value=" secondRole[*]" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Derived first" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to'] //@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20is%20derived'] //@automationLayer/@behaviours[name='The%20second%20end%20is%20not%20derived']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="/firstRole[0..1]" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
+      <values value=" secondRole[*]" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Derived second" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to'] //@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20is%20not%20derived'] //@automationLayer/@behaviours[name='The%20second%20end%20is%20derived']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="firstRole[0..1]" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
+      <values value=" /secondRole[*]" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Derived both" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to'] //@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20is%20derived'] //@automationLayer/@behaviours[name='The%20second%20end%20is%20derived']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="/firstRole[0..1]" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
+      <values value=" /secondRole[*]" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Derived both with spaces" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to'] //@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20is%20derived'] //@automationLayer/@behaviours[name='The%20second%20end%20is%20derived']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="/ firstRole" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
+      <values value=" / secondRole[*]" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']/@parameters.0"/>
     </scenarios>
   </stories>
   <stories name="Create a new representation" As="//@roles[name='Business%20analyst']" soThat="//@benefits[name='I%20could%20manage%20the%20different%20views%20of%20my%20application']" iWant="//@capabilities[name='to%20create%20a%20representation']">
@@ -82,6 +213,11 @@
     </scenarios>
   </stories>
   <stories name="Create a feature" As="//@roles[name='Business%20analyst']" soThat="//@benefits[name='I%20could%20manage%20the%20elements%20in%20the%20model']" iWant="//@capabilities[name='to%20create%20a%20feature%20in%20the%20class%20diagram']"/>
+  <stories name="Direct edit">
+    <scenarios name="Name" given="//@automationLayer/@context[name='A%20package%20selected%20in%20the%20model%20explorer']" when="//@automationLayer/@actions[name='I%20create%20a%20new%20class%20diagram']" then="//@automationLayer/@behaviours[name='Behaviour']">
+      <notes xsi:type="specification:TestGenerationNote" type="plugin"/>
+    </scenarios>
+  </stories>
   <benefits name="I could update the elements name easily"/>
   <benefits name="I could manage the different views of my application"/>
   <benefits name="I could manage the elements in the model"/>

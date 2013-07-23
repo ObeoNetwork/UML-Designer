@@ -1,4 +1,3 @@
-
 /*******************************************************************************
  * Copyright (c) 2013 Obeo.
  * All rights reserved. This program and the accompanying materials
@@ -15,10 +14,10 @@ package org.obeonetwork.dsl.uml2.design.tests.ui.stories;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
-import org.obeonetwork.dsl.uml2.design.tests.ui.stories.createanewrepresentation.CreateAClassDiagramFromAPackageInTheModelExplorer;
+import org.obeonetwork.dsl.uml2.design.tests.ui.stories.createanewrepresentation.APackageSelectedInTheModelExplorerUiTests;
 
 @RunWith(Suite.class)
-@SuiteClasses({CreateAClassDiagramFromAPackageInTheModelExplorer.class})
+@SuiteClasses({APackageSelectedInTheModelExplorerUiTests.class})
 /**
  * Testing : Create a new representation
  */

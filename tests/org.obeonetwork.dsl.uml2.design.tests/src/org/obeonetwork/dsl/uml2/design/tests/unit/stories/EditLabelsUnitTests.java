@@ -1,4 +1,3 @@
-
 /*******************************************************************************
  * Copyright (c) 2013 Obeo.
  * All rights reserved. This program and the accompanying materials
@@ -15,10 +14,12 @@ package org.obeonetwork.dsl.uml2.design.tests.unit.stories;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
-import org.obeonetwork.dsl.uml2.design.tests.unit.stories.editlabels.EditAssociationRole;
+import org.obeonetwork.dsl.uml2.design.tests.unit.stories.editlabels.TheSecondEndIsNavigableUnitTests;
+import org.obeonetwork.dsl.uml2.design.tests.unit.stories.editlabels.AnUmlModelWithAnAssociationUnitTests;
+import org.obeonetwork.dsl.uml2.design.tests.unit.stories.editlabels.NoneEndIsNavigableUnitTests;
 
 @RunWith(Suite.class)
-@SuiteClasses({EditAssociationRole.class})
+@SuiteClasses({TheSecondEndIsNavigableUnitTests.class,AnUmlModelWithAnAssociationUnitTests.class,NoneEndIsNavigableUnitTests.class})
 /**
  * Testing : Edit labels
  */

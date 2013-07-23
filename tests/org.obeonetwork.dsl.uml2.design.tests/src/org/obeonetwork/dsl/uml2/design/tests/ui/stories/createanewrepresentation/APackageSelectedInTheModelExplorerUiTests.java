@@ -9,19 +9,18 @@
  *     Obeo - initial API and implementation
  *******************************************************************************/
 
-package org.obeonetwork.dsl.uml2.design.tests.ui.stories.createatype;
+package org.obeonetwork.dsl.uml2.design.tests.ui.stories.createanewrepresentation;
 import org.junit.Rule;
 import org.junit.Test;
-import org.obeonetwork.dsl.uml2.design.tests.contexts.AClassDiagramIsOpened;
+import org.obeonetwork.dsl.uml2.design.tests.contexts.APackageSelectedInTheModelExplorer;
 
-public class CreateAClassInTheClassDiagramFromThePalette {
+public class APackageSelectedInTheModelExplorerUiTests {
 	@Rule
-	public AClassDiagramIsOpened context = new AClassDiagramIsOpened();
+	public APackageSelectedInTheModelExplorer context = new APackageSelectedInTheModelExplorer();
 
 	@Test
-	public void createAClassInTheClassDiagramFromThePalette() throws Exception {
-		context.actionISelectTheClassCreationToolFromThePaletteAndIClickOnTheDiagram();
-		context.assertAClassIsCreatedInTheModel();
-		context.assertAClassAppearsOnTheDiagram();
+	public void createAClassDiagramFromAPackageInTheModelExplorer() throws Exception {
+		context.actionICreateANewClassDiagram();
+		context.assertAClassDiagramIsCreatedAndOpened();
 	}
 }
