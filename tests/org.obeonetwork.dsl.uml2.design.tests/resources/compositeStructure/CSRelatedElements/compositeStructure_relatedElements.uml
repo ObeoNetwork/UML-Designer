@@ -14,8 +14,17 @@
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_Fu9xULPwEeK5iozmV46vng" value="1"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_Fu-_cLPwEeK5iozmV46vng" value="1"/>
     </ownedAttribute>
+    <ownedAttribute xmi:id="_67JocfN0EeKy19AHeykgTw" name="AProp3" type="_4E51ELPvEeK5iozmV46vng" aggregation="composite"/>
+    <ownedAttribute xmi:id="_67LdoPN0EeKy19AHeykgTw" name="AProp4" type="_4E51ELPvEeK5iozmV46vng" aggregation="composite"/>
+    <ownedAttribute xmi:id="_DhelEPN1EeKy19AHeykgTw" name="AProp5" type="_4E51ELPvEeK5iozmV46vng" aggregation="composite"/>
+    <ownedAttribute xmi:id="_DhelEfN1EeKy19AHeykgTw" name="AProp6" type="_62DHALPvEeK5iozmV46vng" aggregation="composite"/>
     <ownedAttribute xmi:type="uml:Port" xmi:id="_YmppALPwEeK5iozmV46vng" clientDependency="_Z9zh4NywEeKNcdbTNyOprA _bj9AUNywEeKNcdbTNyOprA" name="Ap" type="_2Us7cNyvEeKNcdbTNyOprA" aggregation="composite"/>
+    <ownedAttribute xmi:id="_Nd-ZsPOREeKL0fqx5qG5QQ" name="AProp7" type="_62DHALPvEeK5iozmV46vng" aggregation="composite"/>
+    <ownedAttribute xmi:id="_NsA1sPOREeKL0fqx5qG5QQ" name="AProp8" type="_lgyH4POQEeKL0fqx5qG5QQ" aggregation="composite"/>
     <interfaceRealization xmi:id="_Z9zh4NywEeKNcdbTNyOprA" name="ApToI1" client="_9ehlILPvEeK5iozmV46vng _YmppALPwEeK5iozmV46vng" supplier="_4E51ELPvEeK5iozmV46vng" contract="_4E51ELPvEeK5iozmV46vng"/>
+    <nestedClassifier xmi:type="uml:Class" xmi:id="_lgyH4POQEeKL0fqx5qG5QQ" clientDependency="_uzb_APOQEeKL0fqx5qG5QQ" name="PropertyType">
+      <interfaceRealization xmi:id="_uzb_APOQEeKL0fqx5qG5QQ" client="_lgyH4POQEeKL0fqx5qG5QQ" supplier="_62DHALPvEeK5iozmV46vng" contract="_62DHALPvEeK5iozmV46vng"/>
+    </nestedClassifier>
     <nestedClassifier xmi:type="uml:Component" xmi:id="_Is6JILPwEeK5iozmV46vng" clientDependency="_pbbtgNywEeKNcdbTNyOprA _rsE9oNy0EeKHUKr0xr19pg" name="Aa">
       <ownedAttribute xmi:type="uml:Port" xmi:id="_mW_MYLPwEeK5iozmV46vng" clientDependency="_pbbtgNywEeKNcdbTNyOprA _rsE9oNy0EeKHUKr0xr19pg" name="Aap" type="_2Us7cNyvEeKNcdbTNyOprA" aggregation="composite"/>
       <interfaceRealization xmi:id="_pbbtgNywEeKNcdbTNyOprA" name="AapToI1" client="_Is6JILPwEeK5iozmV46vng _mW_MYLPwEeK5iozmV46vng" supplier="_4E51ELPvEeK5iozmV46vng" contract="_4E51ELPvEeK5iozmV46vng"/>

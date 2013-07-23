@@ -121,11 +121,11 @@ public final class ConnectorServices {
 		boolean result = aPort.getRequireds().contains(anInterface);
 		if (!result) {
 			for (Dependency dependency : aPort.getClientDependencies()) {
-				if (result) {
-					break;
-				}
 				if (dependency instanceof Usage) {
 					result = dependency.getSuppliers().contains(anInterface);
+					if (result) {
+						break;
+					}
 				}
 			}
 		}
@@ -145,11 +145,11 @@ public final class ConnectorServices {
 		boolean result = aPort.getProvideds().contains(anInterface);
 		if (!result) {
 			for (Dependency dependency : aPort.getClientDependencies()) {
-				if (result) {
-					break;
-				}
 				if (dependency instanceof InterfaceRealization) {
 					result = dependency.getSuppliers().contains(anInterface);
+					if (result) {
+						break;
+					}
 				}
 			}
 		}
@@ -205,9 +205,9 @@ public final class ConnectorServices {
 			for (Generalization generalization : generalizations) {
 				if (generalization.getGeneral() instanceof Interface) {
 					res = isConnectable((Interface)generalization.getGeneral(), target);
-				}
-				if (res) {
-					break;
+					if (res) {
+						break;
+					}
 				}
 			}
 		}
@@ -229,9 +229,9 @@ public final class ConnectorServices {
 				for (NamedElement interfaceSupplier : suppliers) {
 					if (interfaceSupplier instanceof Interface) {
 						res = isConnectable(source, (Interface)interfaceSupplier);
-					}
-					if (res) {
-						break;
+						if (res) {
+							break;
+						}
 					}
 				}
 				if (res) {
@@ -257,9 +257,9 @@ public final class ConnectorServices {
 				for (NamedElement interfaceSupplier : suppliers) {
 					if (interfaceSupplier instanceof Interface) {
 						res = isConnectable((Interface)interfaceSupplier, target);
-					}
-					if (res) {
-						break;
+						if (res) {
+							break;
+						}
 					}
 				}
 				if (res) {

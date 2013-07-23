@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.EncapsulatedClassifier;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.InterfaceRealization;
 import org.eclipse.uml2.uml.Model;
@@ -55,7 +56,7 @@ public abstract class AbstractCompositeStructueTests extends TestCase {
 	 */
 	protected Package rootPackage;
 
-	protected StructuredClassifier A, Aa, Ab, Ac, B, C;
+	protected EncapsulatedClassifier A, Aa, Ab, Ac, B, C;
 
 	protected Port Ap, Aap, Abp, Acp, Bp, Cp;
 
@@ -65,13 +66,17 @@ public abstract class AbstractCompositeStructueTests extends TestCase {
 
 	protected InterfaceRealization irAI1, irAaI1, irCI2, irAcI3, irAbI4;
 
-	protected Property AProp1, AProp2;
+	protected Property AProp1, AProp2, AProp3, AProp4, AProp5, AProp6, AProp7, AProp8;
 
 	protected List<EObject> AllItems;
 
 	protected List<Interface> AllInterfaces;
 
 	protected List<Dependency> AllDependencies;
+
+	protected List<Port> AllPorts;
+
+	protected List<Property> AllProperties;
 
 	@Override
 	protected void setUp() throws Exception {
@@ -88,14 +93,22 @@ public abstract class AbstractCompositeStructueTests extends TestCase {
 				.getResource(URI.createPlatformPluginURI(getRessourceURI(), true), true);
 
 		rootPackage = (Package)((Model)resource.getContents().get(0));
-		A = (StructuredClassifier)rootPackage.getOwnedMember("A");
-		Aa = (StructuredClassifier)A.getOwnedMember("Aa");
-		Ab = (StructuredClassifier)A.getOwnedMember("Ab");
-		Ac = (StructuredClassifier)A.getOwnedMember("Ac");
+		A = (EncapsulatedClassifier)rootPackage.getOwnedMember("A");
+		Aa = (EncapsulatedClassifier)A.getOwnedMember("Aa");
+		Ab = (EncapsulatedClassifier)A.getOwnedMember("Ab");
+		Ac = (EncapsulatedClassifier)A.getOwnedMember("Ac");
+
 		AProp1 = (Property)A.getOwnedMember("AProp1");
 		AProp2 = (Property)A.getOwnedMember("AProp2");
-		B = (StructuredClassifier)rootPackage.getOwnedMember("B");
-		C = (StructuredClassifier)rootPackage.getOwnedMember("C");
+		AProp3 = (Property)A.getOwnedMember("AProp3");
+		AProp4 = (Property)A.getOwnedMember("AProp4");
+		AProp5 = (Property)A.getOwnedMember("AProp5");
+		AProp6 = (Property)A.getOwnedMember("AProp6");
+		AProp7 = (Property)A.getOwnedMember("AProp7");
+		AProp8 = (Property)A.getOwnedMember("AProp8");
+
+		B = (EncapsulatedClassifier)rootPackage.getOwnedMember("B");
+		C = (EncapsulatedClassifier)rootPackage.getOwnedMember("C");
 
 		I1 = (Interface)rootPackage.getOwnedMember("I1");
 		I2 = (Interface)rootPackage.getOwnedMember("I2");
@@ -135,10 +148,23 @@ public abstract class AbstractCompositeStructueTests extends TestCase {
 		AllDependencies = Arrays.asList(new Dependency[] {irAI1, irAaI1, irCI2, irAcI3, irAbI4, usageI1,
 				usageI2, usageAI2, usageAI3, usageAI4});
 
+		AllPorts = Arrays.asList(new Port[] {Ap, Aap, Abp, Acp, Bp, Cp});
+
+		AllProperties = Arrays.asList(new Property[] {AProp1, AProp2, AProp3, AProp4, AProp5, AProp6});
+
 		for (EObject item : AllItems) {
 			assertNotNull(item);
 		}
 		for (EObject item : AllInterfaces) {
+			assertNotNull(item);
+		}
+		for (EObject item : AllDependencies) {
+			assertNotNull(item);
+		}
+		for (EObject item : AllPorts) {
+			assertNotNull(item);
+		}
+		for (EObject item : AllProperties) {
 			assertNotNull(item);
 		}
 	}
