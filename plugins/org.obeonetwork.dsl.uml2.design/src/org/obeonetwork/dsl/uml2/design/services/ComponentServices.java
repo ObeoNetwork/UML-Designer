@@ -81,7 +81,7 @@ public final class ComponentServices {
 			EObject preTarget, EObject preTargetView, EObject Container, EObject diagram) {
 		boolean result = preTarget instanceof Interface;
 		if (preSource instanceof org.eclipse.uml2.uml.Class || preSource instanceof Port) {
-			result &= ConnectorServices.validSourceTarget4Dependency(preSource, preSourceView, preTarget,
+			result &= UIConnectorServices.validSourceTarget4Dependency(preSource, preSourceView, preTarget,
 					preTargetView);
 		} else {
 			result = false;
@@ -99,7 +99,7 @@ public final class ComponentServices {
 			EObject preTarget, EObject preTargetView, EObject Container, EObject diagram) {
 		boolean result = preTarget instanceof Interface;
 		if (preSource instanceof org.eclipse.uml2.uml.Class || preSource instanceof Port) {
-			result &= ConnectorServices.validSourceTarget4Dependency(preSource, preSourceView, preTarget,
+			result &= UIConnectorServices.validSourceTarget4Dependency(preSource, preSourceView, preTarget,
 					preTargetView);
 		} else {
 			result = false;

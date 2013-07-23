@@ -1732,7 +1732,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="CO_C_ProvidedInterface2RequiredInterface" preconditionExpression="&lt;%$source.validSourceTarget4Connector($sourceView, $target, $targetView)%>" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%$diagram.getNodeInverseRefs(&quot;Connector&quot;)%>" semanticElements="&lt;%self.getSemanticElements()%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_ProvidedInterface']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_RequiredInterface']" targetFinderExpression="[getTarget4ProvidedInterface2RequiredInterface()/]" sourceFinderExpression="[getSource4ProvidedInterface2RequiredInterface()/]" targetExpression="&lt;%self%>" domainClass="uml.Connector" useDomainElement="true" reconnections="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect%20Connector%20source'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect%20Connector%20target']">
+        <edgeMappings name="CO_C_ProvidedInterface2RequiredInterface" preconditionExpression="&lt;%$source.validSourceTarget4Connector($sourceView, $target, $targetView)%>" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']" semanticCandidatesExpression="&lt;%$diagram.getNodeInverseRefs(&quot;Connector&quot;)%>" semanticElements="&lt;%self.getSemanticElements()%>" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_ProvidedInterface']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_RequiredInterface']" targetFinderExpression="[getTarget4ProvidedInterface2RequiredInterface()/]" sourceFinderExpression="[getSource4ProvidedInterface2RequiredInterface()/]" targetExpression="&lt;%self%>" domainClass="uml.Connector" useDomainElement="true">
           <style targetArrow="NoDecoration" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
           </style>
@@ -1836,8 +1836,17 @@
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="packagedElement">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Class&lt;%eContainer().eContents().filter(&quot;Class&quot;).nSize()%>"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[self/]">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="[self.oclIsKindOf(uml::Package)/]">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="packagedElement">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Class&lt;%eContainer().eContents().filter(&quot;Class&quot;).nSize()%>"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:If" conditionExpression="[self.oclIsKindOf(uml::Class)/]">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="nestedClassifier">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Class&lt;%eContainer().eContents().filter(&quot;Class&quot;).nSize()%>"/>
+                    </subModelOperations>
+                  </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </tools>
@@ -1999,9 +2008,8 @@
             <element name="element"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element%>">
-                <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="&lt;%$target%>" featureName="packagedElement">
-                  <subModelOperations xsi:type="tool:Unset" featureName="client" elementExpression="&lt;%$source%>"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="&lt;%$target%>"/>
+                <subModelOperations xsi:type="tool:Unset" featureName="supplier" elementExpression="&lt;%supplier%>">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="&lt;%$target%>"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -2015,8 +2023,9 @@
             <element name="element"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element%>">
-                <subModelOperations xsi:type="tool:Unset" featureName="supplier" elementExpression="&lt;%supplier%>">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="&lt;%$target%>"/>
+                <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="&lt;%$target%>" featureName="packagedElement">
+                  <subModelOperations xsi:type="tool:Unset" featureName="client" elementExpression="&lt;%$source%>"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="&lt;%$target%>"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -2082,36 +2091,6 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$edgeView.sourceNode.target%>">
                 <subModelOperations xsi:type="tool:Unset" featureName="redefinedPort" elementExpression="&lt;%$source%>"/>
                 <subModelOperations xsi:type="tool:SetValue" featureName="redefinedPort" valueExpression="&lt;%$target%>"/>
-              </firstModelOperations>
-            </initialOperation>
-            <edgeView name="edgeView"/>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Reconnect Connector source" reconnectionKind="RECONNECT_SOURCE">
-            <source name="source"/>
-            <target name="target"/>
-            <sourceView name="sourceView"/>
-            <targetView name="targetView"/>
-            <element name="element"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.end.nGet(0)%>">
-                <subModelOperations xsi:type="tool:Unset" featureName="role" elementExpression="&lt;%$source%>">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="role" valueExpression="&lt;%$target%>"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-            <edgeView name="edgeView"/>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Reconnect Connector target">
-            <source name="source"/>
-            <target name="target"/>
-            <sourceView name="sourceView"/>
-            <targetView name="targetView"/>
-            <element name="element"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.end.nGet(1)%>">
-                <subModelOperations xsi:type="tool:Unset" featureName="role" elementExpression="&lt;%$source%>">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="role" valueExpression="&lt;%$target%>"/>
-                </subModelOperations>
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>
@@ -3376,6 +3355,7 @@
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.templates.uml_utils"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.UIServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.ObjectServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.UIConnectorServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.ConnectorServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.OperationServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.PropertyServices"/>
