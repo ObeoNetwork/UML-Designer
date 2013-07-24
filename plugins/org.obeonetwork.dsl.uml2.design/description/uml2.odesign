@@ -2113,13 +2113,8 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView%>">
-                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$containerView.target != $element.eContainer()%>">
-                  <subModelOperations xsi:type="tool:DeleteView"/>
-                </subModelOperations>
-                <subModelOperations xsi:type="tool:If" conditionExpression="&lt;%$containerView.target == $element.eContainer()%>">
-                  <subModelOperations xsi:type="tool:RemoveElement"/>
-                </subModelOperations>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element%>">
+                <subModelOperations xsi:type="tool:RemoveElement"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
