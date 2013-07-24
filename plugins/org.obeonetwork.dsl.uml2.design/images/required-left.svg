@@ -14,7 +14,7 @@
    id="svg2986"
    version="1.1"
    inkscape:version="0.48.3.1 r9886"
-   sodipodi:docname="required-left.svg">
+   sodipodi:docname="required-bottom.svg">
   <defs
      id="defs2988" />
   <sodipodi:namedview
@@ -24,9 +24,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="15.839192"
-     inkscape:cx="2.386335"
-     inkscape:cy="12.670438"
+     inkscape:zoom="44.8"
+     inkscape:cx="25.785051"
+     inkscape:cy="23.46857"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -40,7 +40,11 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      inkscape:showpageshadow="false"
-     showborder="true" />
+     showborder="true"
+     inkscape:snap-bbox="false"
+     inkscape:snap-page="false"
+     inkscape:snap-grids="false"
+     inkscape:snap-to-guides="false" />
   <metadata
      id="metadata2991">
     <rdf:RDF>
@@ -63,7 +67,7 @@
        transform="translate(-126.13488,-254.71653)">
       <path
          sodipodi:type="spiral"
-         style="fill:#000000;fill-opacity:0;stroke:#ad7fa8;stroke-width:68.45913696;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+         style="fill:#000000;fill-opacity:0;stroke:#ad7fa8;stroke-width:32.25495529;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
          id="path2998"
          sodipodi:cx="594.28571"
          sodipodi:cy="138.07646"
@@ -73,7 +77,7 @@
          sodipodi:argument="-16.822987"
          sodipodi:t0="0.0092222495"
          d="M 442.24295,426.36493 C 285.20287,343.5423 223.17462,143.07379 305.99724,-13.966292 388.81987,-171.00638 589.28837,-233.03462 746.32846,-150.212 c 3.19806,1.68665 6.36805,3.42652 9.50822,5.21865"
-         transform="matrix(-0.03618379,-0.01884899,-0.01998914,0.03700112,165.50513,275.84929)" />
+         transform="matrix(-0.03696759,-0.01942901,-0.02042212,0.03813969,166.08313,275.97197)" />
     </g>
   </g>
 </svg>
