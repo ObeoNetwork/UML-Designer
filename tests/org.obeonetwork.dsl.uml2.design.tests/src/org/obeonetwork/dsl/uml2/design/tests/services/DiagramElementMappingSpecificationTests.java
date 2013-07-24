@@ -33,7 +33,10 @@ public class DiagramElementMappingSpecificationTests {
 
 	private static Set<String> directEditWhiteList = Sets.newHashSet("PH_Import", "SD_Lifeline EOL",
 			"UCD_Generalization", "UCD_Include", "UCD_Extend", "CD_BrokenAssociation",
-			"CD_BrokenAssociationToClasses", "SD_Lifeline Execution");
+			"CD_BrokenAssociationToClasses", "SD_Lifeline Execution",
+			"CO_C_RequiredInterface2ProvidedInterface", "CO_C_Port2SubProvidedInterface",
+			"CO_C_SubRequiredInterface2Port", "CO_U_ComponentOrPort2Interface",
+			"CO_IR_Interface2ComponentOrPort");
 
 	private static Set<String> reconnectWhiteList = Sets.newHashSet("CD_BrokenAssociationToClasses",
 			"CD_NestedClass", "CD_BrokenAssociation", "CD_AssociationClassToAssociation", "PD_Extension",
@@ -41,10 +44,12 @@ public class DiagramElementMappingSpecificationTests {
 			"OD_EnumerationType", "OD_PrimitiveTypeType", "OD_InterfaceType", "SD_Message",
 			"CO_U_ComponentOrPort2Interface", "CO_C_ProvidedInterface2RequiredInterface",
 			"CO_C_SubProvidedInterface2Port", "CO_C_Port2SubRequiredInterface",
-			"CS_IR_Port2ProvidedInterface", "CS_IR_SubPort2ProvidedInterface",
-			"CS_U_SubPort2RequiredInterface", "CS_U_RequiredInterface2Port",
-			"CS_U_RequiredInterface2SubPort", "CS_C_SubProvidedInterface2Port",
-			"CS_C_ProvidedInterface2Port", "CS_C_RequiredInterface2Port",
+			"CO_C_RequiredInterface2ProvidedInterface", "CO_C_Port2SubProvidedInterface",
+			"CO_C_SubRequiredInterface2Port", "CO_U_ComponentOrPort2Interface",
+			"CO_IR_Interface2ComponentOrPort", "CS_IR_Port2ProvidedInterface",
+			"CS_IR_SubPort2ProvidedInterface", "CS_U_SubPort2RequiredInterface",
+			"CS_U_RequiredInterface2Port", "CS_U_RequiredInterface2SubPort",
+			"CS_C_SubProvidedInterface2Port", "CS_C_ProvidedInterface2Port", "CS_C_RequiredInterface2Port",
 			"CS_C_ProvidedInterface2RequiredInterface", "CS_C_Property2Property",
 			"CS_C_Port2SubRequiredInterface", "CS_C_SubProvidedInterface2SubRequiredInterface",
 			"stereotypeLink");
