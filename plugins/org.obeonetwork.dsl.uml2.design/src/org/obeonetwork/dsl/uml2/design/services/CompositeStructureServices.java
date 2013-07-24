@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.Classifier;
@@ -64,7 +63,7 @@ public class CompositeStructureServices {
 	 */
 	public List<EObject> getWizardServiceChildren(EObject object) {
 		List<EObject> result = new ArrayList<EObject>();
-		EList<EObject> eContents = object.eContents();
+		List<EObject> eContents = object.eContents();
 		for (EObject eObject : eContents) {
 			if (eObject instanceof Classifier || eObject instanceof org.eclipse.uml2.uml.Package) {
 				if (eObject instanceof Interface) {

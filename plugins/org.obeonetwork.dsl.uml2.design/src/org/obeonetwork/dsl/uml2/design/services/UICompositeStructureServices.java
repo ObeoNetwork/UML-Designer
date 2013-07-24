@@ -68,7 +68,7 @@ public class UICompositeStructureServices {
 		for (EObject view : views) {
 			if (isInterfaceView(view)) {
 				DNode interfaceView = (DNode)view;
-				EList<DEdge> edges = interfaceView.getIncomingEdges();
+				List<DEdge> edges = new ArrayList<DEdge>(interfaceView.getIncomingEdges());
 				edges.addAll(interfaceView.getOutgoingEdges());
 				for (DEdge edge : edges) {
 					EObject target = edge.getTarget();
@@ -222,7 +222,8 @@ public class UICompositeStructureServices {
 	 */
 	public List<Interface> findRequiredInterfacesToAdd(EdgeTarget view, List<Interface> interfaces) {
 		List<Interface> result = new ArrayList<Interface>(interfaces);
-		List<DEdge> incomingEdges = view.getIncomingEdges();
+
+		List<DEdge> incomingEdges = new ArrayList<DEdge>(view.getIncomingEdges());
 
 		for (DEdge incomingEdge : incomingEdges) {
 			EObject target = incomingEdge.getTarget();
@@ -251,7 +252,7 @@ public class UICompositeStructureServices {
 	 */
 	public List<Usage> findUsagesToDelete(EdgeTarget view, List<Interface> interfaces) {
 		List<Usage> result = new ArrayList<Usage>();
-		List<DEdge> incomingEdges = view.getIncomingEdges();
+		List<DEdge> incomingEdges = new ArrayList<DEdge>(view.getIncomingEdges());
 
 		for (DEdge incomingEdge : incomingEdges) {
 			EObject target = incomingEdge.getTarget();

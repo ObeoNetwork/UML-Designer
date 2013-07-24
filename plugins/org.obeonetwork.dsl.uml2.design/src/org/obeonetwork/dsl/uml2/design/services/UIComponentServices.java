@@ -21,7 +21,6 @@ import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.ComponentRealization;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
-import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.InterfaceRealization;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Port;
@@ -72,7 +71,7 @@ public class UIComponentServices {
 	}
 
 	/**
-	 * Boolean query for create Usage Connection Start Precondition.
+	 * Boolean query for create Dependency Connection Start Precondition.
 	 * 
 	 * @param preSource
 	 *            the source
@@ -84,14 +83,16 @@ public class UIComponentServices {
 	 *            the diagram
 	 * @return true if valid source
 	 */
-	public boolean createUsageConnectionStartPrecondition(EObject preSource, EObject preSourceView,
+	public boolean createDependencyConnectionStartPrecondition(EObject preSource, EObject preSourceView,
 			EObject container, EObject diagram) {
-		boolean result = preSource instanceof org.eclipse.uml2.uml.Class || preSource instanceof Port;
-		return result;
+		boolean fromClassOrPort = preSource instanceof org.eclipse.uml2.uml.Class
+				|| preSource instanceof Port;
+		boolean fromInterface = preSource instanceof org.eclipse.uml2.uml.Interface;
+		return fromClassOrPort || fromInterface;
 	}
 
 	/**
-	 * Boolean query for create Usage Connection Complete Precondition.
+	 * Boolean query for create Dependency Connection Complete Precondition.
 	 * 
 	 * @param preSource
 	 *            the source
@@ -107,60 +108,16 @@ public class UIComponentServices {
 	 *            the diagram
 	 * @return true if valid source and target
 	 */
-	public boolean createUsageConnectionCompletePrecondition(EObject preSource, EObject preSourceView,
+	public boolean createDependencyConnectionCompletePrecondition(EObject preSource, EObject preSourceView,
 			EObject preTarget, EObject preTargetView, EObject container, EObject diagram) {
-		boolean result = preTarget instanceof Interface;
-		if (result && (preSource instanceof org.eclipse.uml2.uml.Class || preSource instanceof Port)) {
-			result = new UIDependencyServices().validSourceTarget4Dependency(preSource, preSourceView,
-					preTarget, preTargetView);
-		}
-		return result;
-	}
 
-	/**
-	 * Boolean query for create Interface Realization Connection Start Precondition.
-	 * 
-	 * @param preSource
-	 *            the source
-	 * @param preSourceView
-	 *            the source view
-	 * @param container
-	 *            the container
-	 * @param diagram
-	 *            the diagram
-	 * @return true if valid source
-	 */
-	public boolean createIRConnectionStartPrecondition(EObject preSource, EObject preSourceView,
-			EObject container, EObject diagram) {
-		boolean result = preSource instanceof org.eclipse.uml2.uml.Class || preSource instanceof Port;
-		return result;
-	}
+		boolean fromInterfaceToClassOrPort = preSource instanceof org.eclipse.uml2.uml.Interface
+				&& (preTarget instanceof org.eclipse.uml2.uml.Class || preTarget instanceof Port);
 
-	/**
-	 * Boolean query for create Interface Realization Connection Complete Precondition.
-	 * 
-	 * @param preSource
-	 *            the source
-	 * @param preSourceView
-	 *            the source view
-	 * @param preTarget
-	 *            the target
-	 * @param preTargetView
-	 *            the target view
-	 * @param container
-	 *            the container
-	 * @param diagram
-	 *            the diagram
-	 * @return true if valid source and target
-	 */
-	public boolean createIRConnectionCompletePrecondition(EObject preSource, EObject preSourceView,
-			EObject preTarget, EObject preTargetView, EObject container, EObject diagram) {
-		boolean result = preTarget instanceof Interface;
-		if (result && (preSource instanceof org.eclipse.uml2.uml.Class || preSource instanceof Port)) {
-			result = new UIDependencyServices().validSourceTarget4Dependency(preSource, preSourceView,
-					preTarget, preTargetView);
-		}
-		return result;
+		boolean fromClassOrPortToInterface = (preSource instanceof org.eclipse.uml2.uml.Class || preSource instanceof Port)
+				&& preTarget instanceof org.eclipse.uml2.uml.Interface;
+
+		return fromInterfaceToClassOrPort || fromClassOrPortToInterface;
 	}
 
 	/**
