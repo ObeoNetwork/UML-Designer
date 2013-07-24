@@ -147,6 +147,53 @@ public class DependencyServices {
 	}
 
 	/**
+	 * Create an usage.
+	 * 
+	 * @param context
+	 *            the context to create the an usage
+	 * @param contract
+	 *            the contract to respect
+	 * @return the new usage
+	 */
+	public Usage createHelperUsage(EObject context, Interface contract) {
+		Usage result = null;
+		if (context instanceof Property) {
+			final Property property = (Property)context;
+			boolean isPortWithValidType = false;
+			if (context instanceof Port && ((Port)context).isConjugated()) {
+				final Port port = (Port)property;
+				// create InterfaceRealization on the type
+				Type type = port.getType();
+				if (type instanceof NamedElement) {
+					isPortWithValidType = true;
+					NamedElement namedElement = (NamedElement)type;
+					result = namedElement.createUsage(contract);
+					result.setName(new DependencyServices().genDependencyName(contract, namedElement));
+					result.getClients().add(port);
+				}
+			}
+			if (!isPortWithValidType) {
+				EObject eContainer = context.eContainer();
+				if (eContainer instanceof NamedElement) {
+					NamedElement namedElement = (NamedElement)eContainer;
+					result = namedElement.createUsage(contract);
+					result.setName(new DependencyServices().genDependencyName(contract, property));
+					result.getClients().add(property);
+				}
+			}
+		} else if (context instanceof NamedElement) {
+			NamedElement namedElement = (NamedElement)context;
+			result = namedElement.createUsage(contract);
+			result.setName(new DependencyServices().genDependencyName(contract, namedElement));
+		} else {
+			new LogServices().error("CompositeStructureServices.createUsage(" + context.getClass()
+					+ ") not handled", null);
+		}
+
+		return result;
+	}
+
+	/**
 	 * Generate a dependency label.
 	 * 
 	 * @param source

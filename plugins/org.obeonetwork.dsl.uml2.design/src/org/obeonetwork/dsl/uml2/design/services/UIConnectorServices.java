@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.services;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -20,6 +21,7 @@ import org.eclipse.uml2.uml.ConnectableElement;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.ConnectorEnd;
 import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.EncapsulatedClassifier;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.InterfaceRealization;
@@ -163,16 +165,66 @@ public class UIConnectorServices {
 
 		if (source instanceof Interface) {
 			if (target instanceof Interface) {
-				// Make a new connector From Interface to Interface
-				connectInterface2Interface((DNode)sourceView, (Interface)source, (DNode)targetView,
-						(Interface)target);
+				final List<DEdge> dEdges = new ArrayList<DEdge>(((DNode)sourceView).getIncomingEdges());
+				dEdges.addAll(((DNode)sourceView).getOutgoingEdges());
+				for (DEdge dEdge : dEdges) {
+					EObject edgeTarget = dEdge.getTarget();
+					if (edgeTarget instanceof Usage) {
+						// Edge from a required interface to a provided Port
+						// Make a new connector From Interface to Interface
+						connectInterface2Interface((DNode)targetView, (Interface)target, (DNode)sourceView,
+								(Interface)source);
+						break;
+					} else if (edgeTarget instanceof InterfaceRealization) {
+						// Edge from a provided interface to a required Port
+						// Make a new connector From Interface to Interface
+						connectInterface2Interface((DNode)sourceView, (Interface)source, (DNode)targetView,
+								(Interface)target);
+						break;
+					}
+				}
+
 			} else if (target instanceof Port) {
-				// Make a new connector From Interface to Port
-				connectInterface2Port((DNode)sourceView, (Interface)source, (DNode)targetView, (Port)target);
+
+				final List<DEdge> dEdges = new ArrayList<DEdge>(((DNode)sourceView).getIncomingEdges());
+				dEdges.addAll(((DNode)sourceView).getOutgoingEdges());
+				for (DEdge dEdge : dEdges) {
+					EObject edgeTarget = dEdge.getTarget();
+					if (edgeTarget instanceof Usage) {
+						// Edge from a required interface to a Port
+						// Make a new connector from a Port to an Interface
+						connectPort2Interface((DNode)targetView, (Port)target, (DNode)sourceView,
+								(Interface)source);
+						break;
+					} else if (edgeTarget instanceof InterfaceRealization) {
+						// Edge from a provided interface to a Port
+						// Make a new connector From Interface to Port
+						connectInterface2Port((DNode)sourceView, (Interface)source, (DNode)targetView,
+								(Port)target);
+						break;
+					}
+				}
 			}
 		} else if (source instanceof Port && target instanceof Interface) {
-			// Make a new connector From Port to Interface
-			connectPort2Interface((DNode)sourceView, (Port)source, (DNode)targetView, (Interface)target);
+
+			final List<DEdge> dEdges = new ArrayList<DEdge>(((DNode)targetView).getIncomingEdges());
+			dEdges.addAll(((DNode)targetView).getOutgoingEdges());
+			for (DEdge dEdge : dEdges) {
+				EObject edgeTarget = dEdge.getTarget();
+				if (edgeTarget instanceof Usage) {
+					// Edge from a required interface to a Port
+					// Make a new connector From Port to Interface
+					connectPort2Interface((DNode)sourceView, (Port)source, (DNode)targetView,
+							(Interface)target);
+					break;
+				} else if (edgeTarget instanceof InterfaceRealization) {
+					// Edge from a provided interface to a Port
+					// Make a new connector From Interface to Port
+					connectInterface2Port((DNode)targetView, (Interface)target, (DNode)targetView,
+							(Port)source);
+					break;
+				}
+			}
 		} else if (source instanceof Property && target instanceof Property) {
 			// Make a new connector From Port to Interface
 			new ConnectorServices().connectProperty2Property((Property)source, (Property)target);
@@ -220,7 +272,7 @@ public class UIConnectorServices {
 	protected StructuredClassifier getStructuredClassifierRelated2InterfaceView(DNode interfaceView) {
 		StructuredClassifier res = null;
 		// [sourceView.oclAsType(viewpoint::AbstractDNode).incomingEdges.sourceNode.eContainer(viewpoint::DNodeContainer).target->flatten()->first()/]
-		final List<DEdge> dEdges = interfaceView.getIncomingEdges();
+		final List<DEdge> dEdges = new ArrayList<DEdge>(interfaceView.getIncomingEdges());
 		dEdges.addAll(interfaceView.getOutgoingEdges());
 		for (DEdge dEdge : dEdges) {
 			final EdgeTarget sourceNode = dEdge.getSourceNode();
@@ -393,5 +445,67 @@ public class UIConnectorServices {
 				}
 			}
 		}
+	}
+
+	/**
+	 * Test if a given couple of sourceView/targetView is valid to display for a dependency.
+	 * 
+	 * @param source
+	 *            the source
+	 * @param sourceView
+	 *            the source view
+	 * @param target
+	 *            the target
+	 * @param targetView
+	 *            the target view
+	 * @return true if valid to display
+	 */
+	public boolean isConnectable(EObject source, EObject sourceView, EObject target, EObject targetView) {
+		boolean result = false;
+		final ConnectorServices connectorServices = new ConnectorServices();
+		if (source instanceof Interface && target instanceof Interface) {
+			result = connectorServices.isConnectable((Element)source, (Element)target);
+		} else {
+			if (source instanceof Interface && sourceView instanceof DNode) {
+				final List<DEdge> dEdges = new ArrayList<DEdge>(((DNode)sourceView).getIncomingEdges());
+				dEdges.addAll(((DNode)sourceView).getOutgoingEdges());
+				for (DEdge dEdge : dEdges) {
+					EObject edgeTarget = dEdge.getTarget();
+					if (edgeTarget instanceof Usage) {
+						// Edge from a required interface to a Port
+						result = connectorServices.isConnectable((Element)target, (Element)source);
+						if (result) {
+							break;
+						}
+					} else if (edgeTarget instanceof InterfaceRealization) {
+						// Edge from a provided interface to a Port
+						result = connectorServices.isConnectable((Element)source, (Element)target);
+						if (result) {
+							break;
+						}
+					}
+				}
+			} else if (target instanceof Interface && targetView instanceof DNode) {
+				final List<DEdge> dEdges = new ArrayList<DEdge>(((DNode)sourceView).getIncomingEdges());
+				dEdges.addAll(((DNode)sourceView).getOutgoingEdges());
+				for (DEdge dEdge : dEdges) {
+					EObject edgeTarget = dEdge.getTarget();
+					if (edgeTarget instanceof Usage) {
+						// Edge from a Port to a required interface
+						result = connectorServices.isConnectable((Element)source, (Element)target);
+						if (result) {
+							break;
+						}
+					} else if (edgeTarget instanceof InterfaceRealization) {
+						// Edge from a Port to a provided interface
+						result = connectorServices.isConnectable((Element)target, (Element)source);
+						if (result) {
+							break;
+						}
+					}
+				}
+			}
+		}
+		return result;
 	}
 }
