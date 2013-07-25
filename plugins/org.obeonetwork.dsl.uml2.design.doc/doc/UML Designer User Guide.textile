@@ -238,11 +238,6 @@ Or directy on the components :
 
 !features/component_pics/exchange through component.jpg!
 
-h3. Package imports
-
-!features/component_pics/package imports.jpg!
-
-
 h2. Use Case Diagram
 
 h3. Introduction
