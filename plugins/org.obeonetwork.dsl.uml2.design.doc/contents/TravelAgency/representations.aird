@@ -3216,7 +3216,7 @@
       <activatedLayers xmi:type="description:OptionalLayer" href="platform:/plugin/org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@optionalLayers[name='Comments']"/>
       <target xmi:type="uml:Model" href="agency.uml#_oRyVocTYEeC0wZa75TykZw"/>
     </ownedRepresentations>
-    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_doj9YPUPEeKlqaVJYxRgMw" name="Composite Structure NEW">
+    <ownedRepresentations xmi:type="viewpoint:DSemanticDiagram" xmi:id="_doj9YPUPEeKlqaVJYxRgMw" name="Composite Structure">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_dpS9MPUPEeKlqaVJYxRgMw" source="GMF_DIAGRAMS">
         <data xmi:type="notation:Diagram" xmi:id="_dpS9MfUPEeKlqaVJYxRgMw" type="Viewpoint" element="_doj9YPUPEeKlqaVJYxRgMw" measurementUnit="Pixel">
           <children xmi:type="notation:Node" xmi:id="_gusn4PUPEeKlqaVJYxRgMw" type="2002" element="_gsHN8PUPEeKlqaVJYxRgMw">
