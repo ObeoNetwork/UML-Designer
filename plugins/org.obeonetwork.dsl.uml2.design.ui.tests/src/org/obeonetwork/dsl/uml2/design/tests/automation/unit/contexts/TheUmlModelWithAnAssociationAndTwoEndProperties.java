@@ -14,15 +14,16 @@ public class TheUmlModelWithAnAssociationAndTwoEndProperties extends Context {
 	private Property firstEnd;
 	private Property secondEnd;
 	private EditLabelSwitch editSwitch = new EditLabelSwitch();
+	private UMLServices umlServices = new UMLServices();
 
 	public void editFirstRole(String string) {
-		Property role = UMLServices.getSource(startAssociation);
+		Property role = umlServices.getSource(startAssociation);
 		editSwitch.setEditedLabelContent(string);
 		editSwitch.caseRole(role);
 	}
 
 	public void editSecondRole(String string) {
-		Property role = UMLServices.getTarget(startAssociation);
+		Property role = umlServices.getTarget(startAssociation);
 		editSwitch.setEditedLabelContent(string);
 		editSwitch.caseRole(role);
 	}
@@ -34,8 +35,8 @@ public class TheUmlModelWithAnAssociationAndTwoEndProperties extends Context {
 		Property anotherEnd = UMLFactory.eINSTANCE.createProperty();
 		startAssociation.getOwnedEnds().add(oneEnd);
 		startAssociation.getOwnedEnds().add(anotherEnd);
-		firstEnd = UMLServices.getSource(startAssociation);
-		secondEnd = UMLServices.getTarget(startAssociation);
+		firstEnd = umlServices.getSource(startAssociation);
+		secondEnd = umlServices.getTarget(startAssociation);
 	}
 
 	@Override

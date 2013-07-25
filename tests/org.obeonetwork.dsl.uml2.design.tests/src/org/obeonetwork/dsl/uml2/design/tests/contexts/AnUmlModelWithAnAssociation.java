@@ -34,6 +34,8 @@ public class AnUmlModelWithAnAssociation extends Context {
 	protected Property secondEnd;
 
 	protected EditLabelSwitch editSwitch = new EditLabelSwitch();
+	
+	private UMLServices umlServices = new UMLServices();
 
 	// End of user code
 
@@ -45,8 +47,8 @@ public class AnUmlModelWithAnAssociation extends Context {
 		Property anotherEnd = UMLFactory.eINSTANCE.createProperty();
 		startAssociation.getOwnedEnds().add(oneEnd);
 		startAssociation.getOwnedEnds().add(anotherEnd);
-		firstEnd = UMLServices.getSource(startAssociation);
-		secondEnd = UMLServices.getTarget(startAssociation);
+		firstEnd = umlServices.getSource(startAssociation);
+		secondEnd = umlServices.getTarget(startAssociation);
 		// End of user code
 	}
 
@@ -157,13 +159,13 @@ public class AnUmlModelWithAnAssociation extends Context {
 
 // Start of user code AnUmlModelWithAnAssociation private methods
 	protected void editFirstRole(Association startAssociation2, String string) {
-		Property role = UMLServices.getSource(startAssociation2);
+		Property role = umlServices.getSource(startAssociation2);
 		editSwitch.setEditedLabelContent(string);
 		editSwitch.caseRole(role);
 	}
 
 	protected void editSecondRole(Association startAssociation2, String string) {
-		Property role = UMLServices.getTarget(startAssociation2);
+		Property role = umlServices.getTarget(startAssociation2);
 		editSwitch.setEditedLabelContent(string);
 		editSwitch.caseRole(role);
 	}
