@@ -39,16 +39,17 @@ import org.obeonetwork.dsl.uml2.design.services.LabelServices;
  */
 public class TableLabelService {
 	private final static String EMPTY = "";
+
 	private EObject source = null;
+
 	private final LabelServices labelServices = new LabelServices();
 
 	public enum TableColumnName {
-		NAME("Name"), TYPE("Type"), DEFAULT_VALUE("Default value"), VISIBILITY(
-				"Visibility"), IS_STATIC("Static"), MULTIPLICITY("Multiplicity"), IS_ABSTRACT(
-				"Abstract"), PARAMETERS("Parameters"), DIRECTION("Direction"), STEREOTYPE(
-				"Stereotype"), PROFILE("Profile"), REQUIRED("Required"), OTHER_RELATED_ELEMENTS(
-				"Other Related Element(s)"), ROLE("Role"), PROPERTY("Property"), NAVIGABILITY(
-				"Navigable"), OWNED("Owned");
+		NAME("Name"), TYPE("Type"), DEFAULT_VALUE("Default value"), VISIBILITY("Visibility"), IS_STATIC(
+				"Static"), MULTIPLICITY("Multiplicity"), IS_ABSTRACT("Abstract"), PARAMETERS("Parameters"), DIRECTION(
+				"Direction"), STEREOTYPE("Stereotype"), PROFILE("Profile"), REQUIRED("Required"), OTHER_RELATED_ELEMENTS(
+				"Other Related Element(s)"), ROLE("Role"), PROPERTY("Property"), NAVIGABILITY("Navigable"), OWNED(
+				"Owned");
 
 		private String label;
 
@@ -83,10 +84,8 @@ public class TableLabelService {
 	}
 
 	public String caseRequired(Object object) {
-		if (object instanceof Stereotype && source != null
-				&& source instanceof Element)
-			return String.valueOf(((Element) source)
-					.isStereotypeRequired((Stereotype) object));
+		if (object instanceof Stereotype && source != null && source instanceof Element)
+			return String.valueOf(((Element) source).isStereotypeRequired((Stereotype) object));
 		throw new IllegalArgumentException();
 	}
 
@@ -98,19 +97,16 @@ public class TableLabelService {
 
 	public String caseParameters(Object object) {
 		if (object instanceof Operation) {
-			List<Parameter> parameters = ((Operation) object)
-					.getOwnedParameters();
+			List<Parameter> parameters = ((Operation) object).getOwnedParameters();
 			StringBuffer ownedParameter = new StringBuffer();
 			for (int i = 0; i < parameters.size(); i++) {
 				Parameter parameter = parameters.get(i);
-				if (!ParameterDirectionKind.RETURN_LITERAL.equals(parameter
-						.getDirection())) {
+				if (!ParameterDirectionKind.RETURN_LITERAL.equals(parameter.getDirection())) {
 					ownedParameter.append(parameter.getName());
 					ownedParameter.append(":");
 					if (parameter.getType() != null)
 						ownedParameter.append(parameter.getType().getName());
-					if ((i == 0 && parameters.size() > 1)
-							|| i < parameters.size() - 1) {
+					if ((i == 0 && parameters.size() > 1) || i < parameters.size() - 1) {
 						ownedParameter.append(" ");
 					}
 				}
@@ -152,7 +148,7 @@ public class TableLabelService {
 	public String caseName(Object object) {
 		if (object instanceof Element) {
 			String label = labelServices.computeUmlLabel((Element) object);
-			if (label != null && !label.isEmpty() && !"null".equals(label))
+			if (label != null && label.length() > 0 && !"null".equals(label))
 				return label;
 			return EMPTY;
 		}
@@ -195,8 +191,7 @@ public class TableLabelService {
 
 	public String caseOtherRelatedElements(Object object) {
 		if (object instanceof Relationship) {
-			List<Element> elements = ((Relationship) object)
-					.getRelatedElements();
+			List<Element> elements = ((Relationship) object).getRelatedElements();
 			List<Element> elementsWithoutSource = new ArrayList<Element>();
 			elementsWithoutSource.addAll(elements);
 			elementsWithoutSource.remove(source);
