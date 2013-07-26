@@ -65,6 +65,7 @@
                 <configuration>
                     <includes>
                         <include>org/obeonetwork/dsl/uml2/design/tests/AllTests.class</include>
+                        <include>org/obeonetwork/dsl/uml2/design/tests/unit/UmlDesignerUnitTests.class</include>
                     </includes>
                     <useUIHarness>true</useUIHarness>
                     <useUIThread>true</useUIThread>

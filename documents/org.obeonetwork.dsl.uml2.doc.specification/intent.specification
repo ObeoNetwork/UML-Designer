@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="ASCII"?>
+<specification:Specification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:specification="http://www.eclipse.org/intent/specification/1.0" name="UML Designer">
+  <features name="Direct edit" stories="//@stories[name='Edit%20labels']"/>
+  <features name="Manage representation" stories="//@stories[name='Create%20a%20new%20representation']"/>
+  <features name="Class diagram" stories="//@stories[name='Create%20a%20type'] //@stories[name='Delete%20a%20type']"/>
+  <roles name="Business analyst"/>
+  <automationLayer basePackage="org.obeonetwork.dsl.uml2.design.tests">
+    <context name="A package selected in the model explorer"/>
+    <context name="A class diagram is opened"/>
+    <context name="An Uml model with an association"/>
+    <context name="The second end is navigable" contexts="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']"/>
+    <context name="None end is navigable" contexts="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']"/>
+    <context name="An Uml model with an operation"/>
+    <context name="An Uml model with a property"/>
+    <actions name="I create a new class diagram"/>
+    <actions name="I select the class creation tool from the palette and I click on the diagram"/>
+    <actions name="I select the enumeration creation tool from the palette and I click on the diagram"/>
+    <actions name="I select the datatype creation tool from the palette"/>
+    <actions name="I click on the diagram"/>
+    <actions name="I select the primitive type creation tool from the palette"/>
+    <actions name="I select the interface creation tool from the palette"/>
+    <actions name="I select the package creation tool from the palette"/>
+    <actions name="I select the delete from model tool in toolbar"/>
+    <actions name="I click on a class in the diagram"/>
+    <actions name="I edit the label of the first role to">
+      <parameters name="I edit the label of the first role to0"/>
+    </actions>
+    <actions name="I edit the label of the second role to">
+      <parameters name="I edit the label of the second role to0"/>
+    </actions>
+    <actions name="I edit the label of the operation to">
+      <parameters name="I edit the label of the operation to0"/>
+    </actions>
+    <actions name="I edit the label of the property to">
+      <parameters name="I edit the label of the property to0"/>
+    </actions>
+    <behaviours name="A class diagram is created and opened"/>
+    <behaviours name="A class is created in the model"/>
+    <behaviours name="A class appears on the diagram"/>
+    <behaviours name="An enumeration is created in the model"/>
+    <behaviours name="An enumeration appears on the diagram"/>
+    <behaviours name="A datatype is created in the model"/>
+    <behaviours name="A datatype appears on the diagram"/>
+    <behaviours name="A primitive type is created in the model"/>
+    <behaviours name="A primitive type appears on the diagram"/>
+    <behaviours name="An interface is created in the model"/>
+    <behaviours name="An interface appears on the diagram"/>
+    <behaviours name="A package is created in the model"/>
+    <behaviours name="A package appears on the diagram"/>
+    <behaviours name="The class is deleted from the model"/>
+    <behaviours name="The class does not appear anymore on the diagram"/>
+    <behaviours name="The first end name equals">
+      <parameters name="The first end name equals0"/>
+    </behaviours>
+    <behaviours name="The second end name equals">
+      <parameters name="The second end name equals0"/>
+    </behaviours>
+    <behaviours name="The first end lower cardinality equals">
+      <parameters name="The first end lower cardinality equals0"/>
+    </behaviours>
+    <behaviours name="The first end upper cardinality equals">
+      <parameters name="The first end upper cardinality equals0"/>
+    </behaviours>
+    <behaviours name="The second end lower cardinality equals">
+      <parameters name="The second end lower cardinality equals0"/>
+    </behaviours>
+    <behaviours name="The second end upper cardinality equals">
+      <parameters name="The second end upper cardinality equals0"/>
+    </behaviours>
+    <behaviours name="The first end is not derived"/>
+    <behaviours name="The second end is not derived"/>
+    <behaviours name="The first end is derived"/>
+    <behaviours name="The second end is derived"/>
+    <behaviours name="The operation name equals">
+      <parameters name="The operation name equals0"/>
+    </behaviours>
+    <behaviours name="The operation type equals">
+      <parameters name="The operation type equals0"/>
+    </behaviours>
+    <behaviours name="The operation return type equals">
+      <parameters name="The operation return type equals0"/>
+    </behaviours>
+    <behaviours name="The first input parameter name and type equals">
+      <parameters name="The first input parameter name and type equals0"/>
+      <parameters name="The first input parameter name and type equals1"/>
+    </behaviours>
+    <behaviours name="The second input parameter name and type equals">
+      <parameters name="The second input parameter name and type equals0"/>
+      <parameters name="The second input parameter name and type equals1"/>
+    </behaviours>
+    <behaviours name="The third input parameter name and type equals">
+      <parameters name="The third input parameter name and type equals0"/>
+      <parameters name="The third input parameter name and type equals1"/>
+    </behaviours>
+    <behaviours name="The number of parameters with the direction is">
+      <parameters name="The number of parameters with the direction is0"/>
+      <parameters name="The number of parameters with the direction is1"/>
+    </behaviours>
+    <behaviours name="The fourth input parameter name and type equals">
+      <parameters name="The fourth input parameter name and type equals0"/>
+      <parameters name="The fourth input parameter name and type equals1"/>
+    </behaviours>
+    <behaviours name="The lower bound of the return parameter equals">
+      <parameters name="The lower bound of the return parameter equals0"/>
+    </behaviours>
+    <behaviours name="The upper bound of the return parameter equals">
+      <parameters name="The upper bound of the return parameter equals0"/>
+    </behaviours>
+    <behaviours name="The lower bound of the first input parameter">
+      <parameters name="The lower bound of the first input parameter0"/>
+      <parameters name="The lower bound of the first input parameter1"/>
+    </behaviours>
+    <behaviours name="The upper bound of the first input parameter">
+      <parameters name="The upper bound of the first input parameter0"/>
+      <parameters name="The upper bound of the first input parameter1"/>
+    </behaviours>
+    <behaviours name="The lower bound of the fourth input parameter">
+      <parameters name="The lower bound of the fourth input parameter0"/>
+      <parameters name="The lower bound of the fourth input parameter1"/>
+    </behaviours>
+    <behaviours name="The upper bound of the fourth input parameter">
+      <parameters name="The upper bound of the fourth input parameter0"/>
+      <parameters name="The upper bound of the fourth input parameter1"/>
+    </behaviours>
+    <behaviours name="The property name equals">
+      <parameters name="The property name equals0"/>
+    </behaviours>
+    <behaviours name="The property type equals">
+      <parameters name="The property type equals0"/>
+    </behaviours>
+    <behaviours name="The property is derived"/>
+    <behaviours name="The property is not derived"/>
+    <behaviours name="The lower bound of the property equals">
+      <parameters name="The lower bound of the property equals0"/>
+    </behaviours>
+    <behaviours name="The upper bound of the property equals">
+      <parameters name="The upper bound of the property equals0"/>
+    </behaviours>
+  </automationLayer>
+  <stories name="Edit labels" As="//@roles[name='Business%20analyst']" soThat="//@benefits[name='I%20could%20update%20the%20elements%20name%20easily']" iWant="//@capabilities[name='to%20edit%20the%20label%20of%20an%20element%20on%20the%20diagram']">
+    <scenarios name="Edit association role" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to'] //@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20name%20equals'] //@automationLayer/@behaviours[name='The%20second%20end%20name%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="firstRole" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
+      <values value="secondRole" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']/@parameters.0"/>
+      <values value="firstRole" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20name%20equals']/@parameters.0"/>
+      <values value="secondRole" parameter="//@automationLayer/@behaviours[name='The%20second%20end%20name%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Class diagram edit roles names" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to'] //@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20name%20equals'] //@automationLayer/@behaviours[name='The%20second%20end%20name%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="firstRole" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
+      <values value="secondRole" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']/@parameters.0"/>
+      <values value="firstRole" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20name%20equals']/@parameters.0"/>
+      <values value="secondRole" parameter="//@automationLayer/@behaviours[name='The%20second%20end%20name%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Class diagram edit roles names and trim spaces" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to'] //@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20name%20equals'] //@automationLayer/@behaviours[name='The%20second%20end%20name%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="  firstRole  " parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
+      <values value="  secondRole " parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']/@parameters.0"/>
+      <values value="firstRole" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20name%20equals']/@parameters.0"/>
+      <values value="secondRole" parameter="//@automationLayer/@behaviours[name='The%20second%20end%20name%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Class diagram edit roles names 2" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to'] //@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20name%20equals'] //@automationLayer/@behaviours[name='The%20second%20end%20name%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="firstRoleRenamed " parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
+      <values value="secondRole" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']/@parameters.0"/>
+      <values value="firstRoleRenamed" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20name%20equals']/@parameters.0"/>
+      <values value="secondRole" parameter="//@automationLayer/@behaviours[name='The%20second%20end%20name%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Class diagram edit roles names second navigable" given="//@automationLayer/@context[name='The%20second%20end%20is%20navigable']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']" then="//@automationLayer/@behaviours[name='The%20second%20end%20name%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="aNavigableProperty" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']/@parameters.0"/>
+      <values value="aNavigableProperty" parameter="//@automationLayer/@behaviours[name='The%20second%20end%20name%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Class diagram edit roles names none navigable" given="//@automationLayer/@context[name='None%20end%20is%20navigable']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20name%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="aNavigableProperty" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
+      <values value="aNavigableProperty" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20name%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Class diagram edit roles names none navigable cardspaces" given="//@automationLayer/@context[name='None%20end%20is%20navigable']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20name%20equals'] //@automationLayer/@behaviours[name='The%20first%20end%20lower%20cardinality%20equals'] //@automationLayer/@behaviours[name='The%20first%20end%20upper%20cardinality%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="aNavigableProperty  [ 2  .. 4  ]" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
+      <values value="aNavigableProperty" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20name%20equals']/@parameters.0"/>
+      <values value="2" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20lower%20cardinality%20equals']/@parameters.0"/>
+      <values value="4" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20upper%20cardinality%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Cardinality" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to'] //@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20lower%20cardinality%20equals'] //@automationLayer/@behaviours[name='The%20first%20end%20upper%20cardinality%20equals'] //@automationLayer/@behaviours[name='The%20second%20end%20lower%20cardinality%20equals'] //@automationLayer/@behaviours[name='The%20second%20end%20upper%20cardinality%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="firstRole[0..1]" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
+      <values value="secondRole[*]" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']/@parameters.0"/>
+      <values value="0" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20lower%20cardinality%20equals']/@parameters.0"/>
+      <values value="1" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20upper%20cardinality%20equals']/@parameters.0"/>
+      <values value="0" parameter="//@automationLayer/@behaviours[name='The%20second%20end%20lower%20cardinality%20equals']/@parameters.0"/>
+      <values value="-1" parameter="//@automationLayer/@behaviours[name='The%20second%20end%20upper%20cardinality%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Cardinality with spaces" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to'] //@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20lower%20cardinality%20equals'] //@automationLayer/@behaviours[name='The%20first%20end%20upper%20cardinality%20equals'] //@automationLayer/@behaviours[name='The%20second%20end%20lower%20cardinality%20equals'] //@automationLayer/@behaviours[name='The%20second%20end%20upper%20cardinality%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="firstRole [ 0 .. 1 ] " parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
+      <values value=" secondRole [ * ]" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']/@parameters.0"/>
+      <values value="0" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20lower%20cardinality%20equals']/@parameters.0"/>
+      <values value="1" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20upper%20cardinality%20equals']/@parameters.0"/>
+      <values value="0" parameter="//@automationLayer/@behaviours[name='The%20second%20end%20lower%20cardinality%20equals']/@parameters.0"/>
+      <values value="-1" parameter="//@automationLayer/@behaviours[name='The%20second%20end%20upper%20cardinality%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Cardinality with spaces 2" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to'] //@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20lower%20cardinality%20equals'] //@automationLayer/@behaviours[name='The%20first%20end%20upper%20cardinality%20equals'] //@automationLayer/@behaviours[name='The%20second%20end%20lower%20cardinality%20equals'] //@automationLayer/@behaviours[name='The%20second%20end%20upper%20cardinality%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="firstRole[5..5] " parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
+      <values value=" secondRole " parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']/@parameters.0"/>
+      <values value="5" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20lower%20cardinality%20equals']/@parameters.0"/>
+      <values value="5" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20upper%20cardinality%20equals']/@parameters.0"/>
+      <values value="1" parameter="//@automationLayer/@behaviours[name='The%20second%20end%20lower%20cardinality%20equals']/@parameters.0"/>
+      <values value="1" parameter="//@automationLayer/@behaviours[name='The%20second%20end%20upper%20cardinality%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Cardinality one end change" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to'] //@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20lower%20cardinality%20equals'] //@automationLayer/@behaviours[name='The%20first%20end%20upper%20cardinality%20equals'] //@automationLayer/@behaviours[name='The%20second%20end%20lower%20cardinality%20equals'] //@automationLayer/@behaviours[name='The%20second%20end%20upper%20cardinality%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="firstRole" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
+      <values value=" secondRole[1..5]" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']/@parameters.0"/>
+      <values value="1" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20lower%20cardinality%20equals']/@parameters.0"/>
+      <values value="1" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20upper%20cardinality%20equals']/@parameters.0"/>
+      <values value="1" parameter="//@automationLayer/@behaviours[name='The%20second%20end%20lower%20cardinality%20equals']/@parameters.0"/>
+      <values value="5" parameter="//@automationLayer/@behaviours[name='The%20second%20end%20upper%20cardinality%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Cardinality one end change 2" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to'] //@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20lower%20cardinality%20equals'] //@automationLayer/@behaviours[name='The%20first%20end%20upper%20cardinality%20equals'] //@automationLayer/@behaviours[name='The%20second%20end%20lower%20cardinality%20equals'] //@automationLayer/@behaviours[name='The%20second%20end%20upper%20cardinality%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="firstRole[*]" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
+      <values value=" secondRole" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']/@parameters.0"/>
+      <values value="0" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20lower%20cardinality%20equals']/@parameters.0"/>
+      <values value="-1" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20upper%20cardinality%20equals']/@parameters.0"/>
+      <values value="1" parameter="//@automationLayer/@behaviours[name='The%20second%20end%20lower%20cardinality%20equals']/@parameters.0"/>
+      <values value="1" parameter="//@automationLayer/@behaviours[name='The%20second%20end%20upper%20cardinality%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Derived none" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to'] //@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20is%20not%20derived'] //@automationLayer/@behaviours[name='The%20second%20end%20is%20not%20derived']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="firstRole[0..1]" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
+      <values value=" secondRole[*]" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Derived first" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to'] //@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20is%20derived'] //@automationLayer/@behaviours[name='The%20second%20end%20is%20not%20derived']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="/firstRole[0..1] " parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
+      <values value=" secondRole[*]" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Derived second" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to'] //@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20is%20not%20derived'] //@automationLayer/@behaviours[name='The%20second%20end%20is%20derived']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="firstRole[0..1]" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
+      <values value=" /secondRole[*]" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Derived both" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to'] //@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20is%20derived'] //@automationLayer/@behaviours[name='The%20second%20end%20is%20derived']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="/firstRole[0..1] " parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
+      <values value=" /secondRole[*]" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Derived both with spaces" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to'] //@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20is%20derived'] //@automationLayer/@behaviours[name='The%20second%20end%20is%20derived']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="/ firstRole " parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
+      <values value=" / secondRole[*] " parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Operation name" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20operation']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20operation%20to']" then="//@automationLayer/@behaviours[name='The%20operation%20name%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value=" toto" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20operation%20to']/@parameters.0"/>
+      <values value="toto" parameter="//@automationLayer/@behaviours[name='The%20operation%20name%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Operation name and return type" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20operation']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20operation%20to']" then="//@automationLayer/@behaviours[name='The%20operation%20name%20equals'] //@automationLayer/@behaviours[name='The%20operation%20type%20equals'] //@automationLayer/@behaviours[name='The%20operation%20return%20type%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value=" toto : Integer " parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20operation%20to']/@parameters.0"/>
+      <values value="toto" parameter="//@automationLayer/@behaviours[name='The%20operation%20name%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20operation%20type%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20operation%20return%20type%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Operation name and return type null" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20operation']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20operation%20to']" then="//@automationLayer/@behaviours[name='The%20operation%20name%20equals'] //@automationLayer/@behaviours[name='The%20operation%20type%20equals'] //@automationLayer/@behaviours[name='The%20operation%20return%20type%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value=" toto : " parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20operation%20to']/@parameters.0"/>
+      <values value="toto" parameter="//@automationLayer/@behaviours[name='The%20operation%20name%20equals']/@parameters.0"/>
+      <values value="null" parameter="//@automationLayer/@behaviours[name='The%20operation%20type%20equals']/@parameters.0"/>
+      <values value="null" parameter="//@automationLayer/@behaviours[name='The%20operation%20return%20type%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Operation with spaces" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20operation']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20operation%20to']" then="//@automationLayer/@behaviours[name='The%20operation%20name%20equals'] //@automationLayer/@behaviours[name='The%20operation%20type%20equals'] //@automationLayer/@behaviours[name='The%20operation%20return%20type%20equals'] //@automationLayer/@behaviours[name='The%20first%20input%20parameter%20name%20and%20type%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value=" an operation (a param : String) : Integer " parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20operation%20to']/@parameters.0"/>
+      <values value="an operation" parameter="//@automationLayer/@behaviours[name='The%20operation%20name%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20operation%20type%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20operation%20return%20type%20equals']/@parameters.0"/>
+      <values value="a param" parameter="//@automationLayer/@behaviours[name='The%20first%20input%20parameter%20name%20and%20type%20equals']/@parameters.0"/>
+      <values value="String" parameter="//@automationLayer/@behaviours[name='The%20first%20input%20parameter%20name%20and%20type%20equals']/@parameters.1"/>
+    </scenarios>
+    <scenarios name="Operation name params and return type" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20operation']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20operation%20to']" then="//@automationLayer/@behaviours[name='The%20operation%20name%20equals'] //@automationLayer/@behaviours[name='The%20operation%20type%20equals'] //@automationLayer/@behaviours[name='The%20operation%20return%20type%20equals'] //@automationLayer/@behaviours[name='The%20first%20input%20parameter%20name%20and%20type%20equals'] //@automationLayer/@behaviours[name='The%20second%20input%20parameter%20name%20and%20type%20equals'] //@automationLayer/@behaviours[name='The%20third%20input%20parameter%20name%20and%20type%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value=" toto ( hello : Integer, hi : Integer, param3 : String ) : Integer " parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20operation%20to']/@parameters.0"/>
+      <values value="toto" parameter="//@automationLayer/@behaviours[name='The%20operation%20name%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20operation%20type%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20operation%20return%20type%20equals']/@parameters.0"/>
+      <values value="hello" parameter="//@automationLayer/@behaviours[name='The%20first%20input%20parameter%20name%20and%20type%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20first%20input%20parameter%20name%20and%20type%20equals']/@parameters.1"/>
+      <values value="hi" parameter="//@automationLayer/@behaviours[name='The%20second%20input%20parameter%20name%20and%20type%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20second%20input%20parameter%20name%20and%20type%20equals']/@parameters.1"/>
+      <values value="param3" parameter="//@automationLayer/@behaviours[name='The%20third%20input%20parameter%20name%20and%20type%20equals']/@parameters.0"/>
+      <values value="String" parameter="//@automationLayer/@behaviours[name='The%20third%20input%20parameter%20name%20and%20type%20equals']/@parameters.1"/>
+    </scenarios>
+    <scenarios name="Operation name params and no return type" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20operation']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20operation%20to']" then="//@automationLayer/@behaviours[name='The%20operation%20name%20equals'] //@automationLayer/@behaviours[name='The%20operation%20type%20equals'] //@automationLayer/@behaviours[name='The%20operation%20return%20type%20equals'] //@automationLayer/@behaviours[name='The%20first%20input%20parameter%20name%20and%20type%20equals'] //@automationLayer/@behaviours[name='The%20second%20input%20parameter%20name%20and%20type%20equals'] //@automationLayer/@behaviours[name='The%20third%20input%20parameter%20name%20and%20type%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value=" toto ( hello : Integer, hi : Integer, param3 : String )" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20operation%20to']/@parameters.0"/>
+      <values value="toto" parameter="//@automationLayer/@behaviours[name='The%20operation%20name%20equals']/@parameters.0"/>
+      <values value="String" parameter="//@automationLayer/@behaviours[name='The%20operation%20type%20equals']/@parameters.0"/>
+      <values value="String" parameter="//@automationLayer/@behaviours[name='The%20operation%20return%20type%20equals']/@parameters.0"/>
+      <values value="hello" parameter="//@automationLayer/@behaviours[name='The%20first%20input%20parameter%20name%20and%20type%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20first%20input%20parameter%20name%20and%20type%20equals']/@parameters.1"/>
+      <values value="hi" parameter="//@automationLayer/@behaviours[name='The%20second%20input%20parameter%20name%20and%20type%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20second%20input%20parameter%20name%20and%20type%20equals']/@parameters.1"/>
+      <values value="param3" parameter="//@automationLayer/@behaviours[name='The%20third%20input%20parameter%20name%20and%20type%20equals']/@parameters.0"/>
+      <values value="String" parameter="//@automationLayer/@behaviours[name='The%20third%20input%20parameter%20name%20and%20type%20equals']/@parameters.1"/>
+    </scenarios>
+    <scenarios name="Operation to string" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20operation']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20operation%20to']" then="//@automationLayer/@behaviours[name='The%20operation%20name%20equals'] //@automationLayer/@behaviours[name='The%20operation%20type%20equals'] //@automationLayer/@behaviours[name='The%20operation%20return%20type%20equals'] //@automationLayer/@behaviours[name='The%20number%20of%20parameters%20with%20the%20direction%20is']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="toString() : Integer" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20operation%20to']/@parameters.0"/>
+      <values value="toString" parameter="//@automationLayer/@behaviours[name='The%20operation%20name%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20operation%20type%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20operation%20return%20type%20equals']/@parameters.0"/>
+      <values value="0" parameter="//@automationLayer/@behaviours[name='The%20number%20of%20parameters%20with%20the%20direction%20is']/@parameters.0"/>
+      <values value="in" parameter="//@automationLayer/@behaviours[name='The%20number%20of%20parameters%20with%20the%20direction%20is']/@parameters.1"/>
+    </scenarios>
+    <scenarios name="Operation to string adding a parameter and changing type" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20operation']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20operation%20to']" then="//@automationLayer/@behaviours[name='The%20operation%20name%20equals'] //@automationLayer/@behaviours[name='The%20operation%20type%20equals'] //@automationLayer/@behaviours[name='The%20operation%20return%20type%20equals'] //@automationLayer/@behaviours[name='The%20number%20of%20parameters%20with%20the%20direction%20is'] //@automationLayer/@behaviours[name='The%20first%20input%20parameter%20name%20and%20type%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="toString(a : Existing) : Integer" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20operation%20to']/@parameters.0"/>
+      <values value="toString" parameter="//@automationLayer/@behaviours[name='The%20operation%20name%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20operation%20type%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20operation%20return%20type%20equals']/@parameters.0"/>
+      <values value="1" parameter="//@automationLayer/@behaviours[name='The%20number%20of%20parameters%20with%20the%20direction%20is']/@parameters.0"/>
+      <values value="in" parameter="//@automationLayer/@behaviours[name='The%20number%20of%20parameters%20with%20the%20direction%20is']/@parameters.1"/>
+      <values value="a" parameter="//@automationLayer/@behaviours[name='The%20first%20input%20parameter%20name%20and%20type%20equals']/@parameters.0"/>
+      <values value="Existing" parameter="//@automationLayer/@behaviours[name='The%20first%20input%20parameter%20name%20and%20type%20equals']/@parameters.1"/>
+    </scenarios>
+    <scenarios name="Operation name no param and return type" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20operation']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20operation%20to']" then="//@automationLayer/@behaviours[name='The%20operation%20name%20equals'] //@automationLayer/@behaviours[name='The%20operation%20type%20equals'] //@automationLayer/@behaviours[name='The%20operation%20return%20type%20equals'] //@automationLayer/@behaviours[name='The%20number%20of%20parameters%20with%20the%20direction%20is']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value=" toto (  ) : Integer " parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20operation%20to']/@parameters.0"/>
+      <values value="toto" parameter="//@automationLayer/@behaviours[name='The%20operation%20name%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20operation%20type%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20operation%20return%20type%20equals']/@parameters.0"/>
+      <values value="0" parameter="//@automationLayer/@behaviours[name='The%20number%20of%20parameters%20with%20the%20direction%20is']/@parameters.0"/>
+      <values value="in" parameter="//@automationLayer/@behaviours[name='The%20number%20of%20parameters%20with%20the%20direction%20is']/@parameters.1"/>
+    </scenarios>
+    <scenarios name="Operation name no param and return type 2" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20operation']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20operation%20to']" then="//@automationLayer/@behaviours[name='The%20operation%20name%20equals'] //@automationLayer/@behaviours[name='The%20operation%20type%20equals'] //@automationLayer/@behaviours[name='The%20operation%20return%20type%20equals'] //@automationLayer/@behaviours[name='The%20number%20of%20parameters%20with%20the%20direction%20is']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value=" oldName  : Integer" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20operation%20to']/@parameters.0"/>
+      <values value="oldName" parameter="//@automationLayer/@behaviours[name='The%20operation%20name%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20operation%20type%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20operation%20return%20type%20equals']/@parameters.0"/>
+      <values value="0" parameter="//@automationLayer/@behaviours[name='The%20number%20of%20parameters%20with%20the%20direction%20is']/@parameters.0"/>
+      <values value="in" parameter="//@automationLayer/@behaviours[name='The%20number%20of%20parameters%20with%20the%20direction%20is']/@parameters.1"/>
+    </scenarios>
+    <scenarios name="Operation existing param change their type and place" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20operation']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20operation%20to']" then="//@automationLayer/@behaviours[name='The%20operation%20name%20equals'] //@automationLayer/@behaviours[name='The%20operation%20type%20equals'] //@automationLayer/@behaviours[name='The%20operation%20return%20type%20equals'] //@automationLayer/@behaviours[name='The%20number%20of%20parameters%20with%20the%20direction%20is'] //@automationLayer/@behaviours[name='The%20first%20input%20parameter%20name%20and%20type%20equals'] //@automationLayer/@behaviours[name='The%20second%20input%20parameter%20name%20and%20type%20equals'] //@automationLayer/@behaviours[name='The%20third%20input%20parameter%20name%20and%20type%20equals'] //@automationLayer/@behaviours[name='The%20fourth%20input%20parameter%20name%20and%20type%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value=" oldName (param1 : Integer , newParam:String, param3 : String, param2:String) : Integer " parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20operation%20to']/@parameters.0"/>
+      <values value="oldName" parameter="//@automationLayer/@behaviours[name='The%20operation%20name%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20operation%20type%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20operation%20return%20type%20equals']/@parameters.0"/>
+      <values value="4" parameter="//@automationLayer/@behaviours[name='The%20number%20of%20parameters%20with%20the%20direction%20is']/@parameters.0"/>
+      <values value="in" parameter="//@automationLayer/@behaviours[name='The%20number%20of%20parameters%20with%20the%20direction%20is']/@parameters.1"/>
+      <values value="param1" parameter="//@automationLayer/@behaviours[name='The%20first%20input%20parameter%20name%20and%20type%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20first%20input%20parameter%20name%20and%20type%20equals']/@parameters.1"/>
+      <values value="newParam" parameter="//@automationLayer/@behaviours[name='The%20second%20input%20parameter%20name%20and%20type%20equals']/@parameters.0"/>
+      <values value="String" parameter="//@automationLayer/@behaviours[name='The%20second%20input%20parameter%20name%20and%20type%20equals']/@parameters.1"/>
+      <values value="param3" parameter="//@automationLayer/@behaviours[name='The%20third%20input%20parameter%20name%20and%20type%20equals']/@parameters.0"/>
+      <values value="String" parameter="//@automationLayer/@behaviours[name='The%20third%20input%20parameter%20name%20and%20type%20equals']/@parameters.1"/>
+      <values value="param2" parameter="//@automationLayer/@behaviours[name='The%20fourth%20input%20parameter%20name%20and%20type%20equals']/@parameters.0"/>
+      <values value="String" parameter="//@automationLayer/@behaviours[name='The%20fourth%20input%20parameter%20name%20and%20type%20equals']/@parameters.1"/>
+    </scenarios>
+    <scenarios name="Operation multiplicity not changed on existing params" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20operation']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20operation%20to']" then="//@automationLayer/@behaviours[name='The%20operation%20name%20equals'] //@automationLayer/@behaviours[name='The%20operation%20type%20equals'] //@automationLayer/@behaviours[name='The%20operation%20return%20type%20equals'] //@automationLayer/@behaviours[name='The%20lower%20bound%20of%20the%20return%20parameter%20equals'] //@automationLayer/@behaviours[name='The%20upper%20bound%20of%20the%20return%20parameter%20equals'] //@automationLayer/@behaviours[name='The%20number%20of%20parameters%20with%20the%20direction%20is'] //@automationLayer/@behaviours[name='The%20first%20input%20parameter%20name%20and%20type%20equals'] //@automationLayer/@behaviours[name='The%20second%20input%20parameter%20name%20and%20type%20equals'] //@automationLayer/@behaviours[name='The%20third%20input%20parameter%20name%20and%20type%20equals'] //@automationLayer/@behaviours[name='The%20fourth%20input%20parameter%20name%20and%20type%20equals'] //@automationLayer/@behaviours[name='The%20lower%20bound%20of%20the%20first%20input%20parameter'] //@automationLayer/@behaviours[name='The%20upper%20bound%20of%20the%20first%20input%20parameter'] //@automationLayer/@behaviours[name='The%20lower%20bound%20of%20the%20fourth%20input%20parameter'] //@automationLayer/@behaviours[name='The%20upper%20bound%20of%20the%20fourth%20input%20parameter']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value=" oldName (param1 : String , param2:integer, param3 : String, new param:string) : String " parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20operation%20to']/@parameters.0"/>
+      <values value="oldName" parameter="//@automationLayer/@behaviours[name='The%20operation%20name%20equals']/@parameters.0"/>
+      <values value="String" parameter="//@automationLayer/@behaviours[name='The%20operation%20type%20equals']/@parameters.0"/>
+      <values value="String" parameter="//@automationLayer/@behaviours[name='The%20operation%20return%20type%20equals']/@parameters.0"/>
+      <values value="0" parameter="//@automationLayer/@behaviours[name='The%20lower%20bound%20of%20the%20return%20parameter%20equals']/@parameters.0"/>
+      <values value="-1" parameter="//@automationLayer/@behaviours[name='The%20upper%20bound%20of%20the%20return%20parameter%20equals']/@parameters.0"/>
+      <values value="4" parameter="//@automationLayer/@behaviours[name='The%20number%20of%20parameters%20with%20the%20direction%20is']/@parameters.0"/>
+      <values value="in" parameter="//@automationLayer/@behaviours[name='The%20number%20of%20parameters%20with%20the%20direction%20is']/@parameters.1"/>
+      <values value="param1" parameter="//@automationLayer/@behaviours[name='The%20first%20input%20parameter%20name%20and%20type%20equals']/@parameters.0"/>
+      <values value="String" parameter="//@automationLayer/@behaviours[name='The%20first%20input%20parameter%20name%20and%20type%20equals']/@parameters.1"/>
+      <values value="param2" parameter="//@automationLayer/@behaviours[name='The%20second%20input%20parameter%20name%20and%20type%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20second%20input%20parameter%20name%20and%20type%20equals']/@parameters.1"/>
+      <values value="param3" parameter="//@automationLayer/@behaviours[name='The%20third%20input%20parameter%20name%20and%20type%20equals']/@parameters.0"/>
+      <values value="String" parameter="//@automationLayer/@behaviours[name='The%20third%20input%20parameter%20name%20and%20type%20equals']/@parameters.1"/>
+      <values value="new param" parameter="//@automationLayer/@behaviours[name='The%20fourth%20input%20parameter%20name%20and%20type%20equals']/@parameters.0"/>
+      <values value="String" parameter="//@automationLayer/@behaviours[name='The%20fourth%20input%20parameter%20name%20and%20type%20equals']/@parameters.1"/>
+      <values value="param1" parameter="//@automationLayer/@behaviours[name='The%20lower%20bound%20of%20the%20first%20input%20parameter']/@parameters.0"/>
+      <values value="0" parameter="//@automationLayer/@behaviours[name='The%20lower%20bound%20of%20the%20first%20input%20parameter']/@parameters.1"/>
+      <values value="param1" parameter="//@automationLayer/@behaviours[name='The%20upper%20bound%20of%20the%20first%20input%20parameter']/@parameters.0"/>
+      <values value="0" parameter="//@automationLayer/@behaviours[name='The%20upper%20bound%20of%20the%20first%20input%20parameter']/@parameters.1"/>
+      <values value="new param" parameter="//@automationLayer/@behaviours[name='The%20lower%20bound%20of%20the%20fourth%20input%20parameter']/@parameters.0"/>
+      <values value="1" parameter="//@automationLayer/@behaviours[name='The%20lower%20bound%20of%20the%20fourth%20input%20parameter']/@parameters.1"/>
+      <values value="new param" parameter="//@automationLayer/@behaviours[name='The%20upper%20bound%20of%20the%20fourth%20input%20parameter']/@parameters.0"/>
+      <values value="1" parameter="//@automationLayer/@behaviours[name='The%20upper%20bound%20of%20the%20fourth%20input%20parameter']/@parameters.1"/>
+    </scenarios>
+    <scenarios name="Property name" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20a%20property']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']" then="//@automationLayer/@behaviours[name='The%20property%20name%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="toto" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']/@parameters.0"/>
+      <values value="toto" parameter="//@automationLayer/@behaviours[name='The%20property%20name%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Property name with whitespaces" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20a%20property']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']" then="//@automationLayer/@behaviours[name='The%20property%20name%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="   &#x9;toto  &#x9;" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']/@parameters.0"/>
+      <values value="toto" parameter="//@automationLayer/@behaviours[name='The%20property%20name%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Property name and type" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20a%20property']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']" then="//@automationLayer/@behaviours[name='The%20property%20name%20equals'] //@automationLayer/@behaviours[name='The%20property%20type%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="toto : Integer" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']/@parameters.0"/>
+      <values value="toto" parameter="//@automationLayer/@behaviours[name='The%20property%20name%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20property%20type%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Property name and not existing type" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20a%20property']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']" then="//@automationLayer/@behaviours[name='The%20property%20name%20equals'] //@automationLayer/@behaviours[name='The%20property%20type%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="toto : NonExistingType" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']/@parameters.0"/>
+      <values value="toto" parameter="//@automationLayer/@behaviours[name='The%20property%20name%20equals']/@parameters.0"/>
+      <values value="String" parameter="//@automationLayer/@behaviours[name='The%20property%20type%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Property type only" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20a%20property']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']" then="//@automationLayer/@behaviours[name='The%20property%20name%20equals'] //@automationLayer/@behaviours[name='The%20property%20type%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value=" : Integer" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']/@parameters.0"/>
+      <values value="" parameter="//@automationLayer/@behaviours[name='The%20property%20name%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20property%20type%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Property is derived and name" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20a%20property']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']" then="//@automationLayer/@behaviours[name='The%20property%20name%20equals'] //@automationLayer/@behaviours[name='The%20property%20type%20equals'] //@automationLayer/@behaviours[name='The%20property%20is%20derived']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="/toto" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']/@parameters.0"/>
+      <values value="toto" parameter="//@automationLayer/@behaviours[name='The%20property%20name%20equals']/@parameters.0"/>
+      <values value="String" parameter="//@automationLayer/@behaviours[name='The%20property%20type%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Property is derived and without name" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20a%20property']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']" then="//@automationLayer/@behaviours[name='The%20property%20name%20equals'] //@automationLayer/@behaviours[name='The%20property%20type%20equals'] //@automationLayer/@behaviours[name='The%20property%20is%20derived']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="/" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']/@parameters.0"/>
+      <values value="" parameter="//@automationLayer/@behaviours[name='The%20property%20name%20equals']/@parameters.0"/>
+      <values value="String" parameter="//@automationLayer/@behaviours[name='The%20property%20type%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Property is derived name and type" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20a%20property']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']" then="//@automationLayer/@behaviours[name='The%20property%20name%20equals'] //@automationLayer/@behaviours[name='The%20property%20type%20equals'] //@automationLayer/@behaviours[name='The%20property%20is%20derived']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="/toto : Integer" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']/@parameters.0"/>
+      <values value="toto" parameter="//@automationLayer/@behaviours[name='The%20property%20name%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20property%20type%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Property is derived name and non existing type" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20a%20property']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']" then="//@automationLayer/@behaviours[name='The%20property%20name%20equals'] //@automationLayer/@behaviours[name='The%20property%20type%20equals'] //@automationLayer/@behaviours[name='The%20property%20is%20derived']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="/toto : NonExistingType" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']/@parameters.0"/>
+      <values value="toto" parameter="//@automationLayer/@behaviours[name='The%20property%20name%20equals']/@parameters.0"/>
+      <values value="String" parameter="//@automationLayer/@behaviours[name='The%20property%20type%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Property not is derived and name" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20a%20property']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']" then="//@automationLayer/@behaviours[name='The%20property%20name%20equals'] //@automationLayer/@behaviours[name='The%20property%20is%20not%20derived']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="toto  " parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']/@parameters.0"/>
+      <values value="toto" parameter="//@automationLayer/@behaviours[name='The%20property%20name%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Property name type and multiplicity using one bound" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20a%20property']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']" then="//@automationLayer/@behaviours[name='The%20property%20name%20equals'] //@automationLayer/@behaviours[name='The%20property%20type%20equals'] //@automationLayer/@behaviours[name='The%20lower%20bound%20of%20the%20property%20equals'] //@automationLayer/@behaviours[name='The%20upper%20bound%20of%20the%20property%20equals'] //@automationLayer/@behaviours[name='The%20property%20is%20not%20derived']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="toto : Integer [1] " parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']/@parameters.0"/>
+      <values value="toto" parameter="//@automationLayer/@behaviours[name='The%20property%20name%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20property%20type%20equals']/@parameters.0"/>
+      <values value="1" parameter="//@automationLayer/@behaviours[name='The%20lower%20bound%20of%20the%20property%20equals']/@parameters.0"/>
+      <values value="1" parameter="//@automationLayer/@behaviours[name='The%20upper%20bound%20of%20the%20property%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Property name type and multiplicity using one bound star" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20a%20property']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']" then="//@automationLayer/@behaviours[name='The%20property%20name%20equals'] //@automationLayer/@behaviours[name='The%20property%20type%20equals'] //@automationLayer/@behaviours[name='The%20lower%20bound%20of%20the%20property%20equals'] //@automationLayer/@behaviours[name='The%20upper%20bound%20of%20the%20property%20equals'] //@automationLayer/@behaviours[name='The%20property%20is%20not%20derived']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="toto : Integer [*] " parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']/@parameters.0"/>
+      <values value="toto" parameter="//@automationLayer/@behaviours[name='The%20property%20name%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20property%20type%20equals']/@parameters.0"/>
+      <values value="0" parameter="//@automationLayer/@behaviours[name='The%20lower%20bound%20of%20the%20property%20equals']/@parameters.0"/>
+      <values value="-1" parameter="//@automationLayer/@behaviours[name='The%20upper%20bound%20of%20the%20property%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Property name type and multiplicity using one bound minus one" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20a%20property']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']" then="//@automationLayer/@behaviours[name='The%20property%20name%20equals'] //@automationLayer/@behaviours[name='The%20property%20type%20equals'] //@automationLayer/@behaviours[name='The%20lower%20bound%20of%20the%20property%20equals'] //@automationLayer/@behaviours[name='The%20upper%20bound%20of%20the%20property%20equals'] //@automationLayer/@behaviours[name='The%20property%20is%20not%20derived']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="toto : Integer [-1] " parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']/@parameters.0"/>
+      <values value="toto" parameter="//@automationLayer/@behaviours[name='The%20property%20name%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20property%20type%20equals']/@parameters.0"/>
+      <values value="0" parameter="//@automationLayer/@behaviours[name='The%20lower%20bound%20of%20the%20property%20equals']/@parameters.0"/>
+      <values value="-1" parameter="//@automationLayer/@behaviours[name='The%20upper%20bound%20of%20the%20property%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Property name type and multiplicity with different bounds" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20a%20property']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']" then="//@automationLayer/@behaviours[name='The%20property%20name%20equals'] //@automationLayer/@behaviours[name='The%20property%20type%20equals'] //@automationLayer/@behaviours[name='The%20lower%20bound%20of%20the%20property%20equals'] //@automationLayer/@behaviours[name='The%20upper%20bound%20of%20the%20property%20equals'] //@automationLayer/@behaviours[name='The%20property%20is%20not%20derived']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="toto : Integer [1..5] " parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']/@parameters.0"/>
+      <values value="toto" parameter="//@automationLayer/@behaviours[name='The%20property%20name%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20property%20type%20equals']/@parameters.0"/>
+      <values value="1" parameter="//@automationLayer/@behaviours[name='The%20lower%20bound%20of%20the%20property%20equals']/@parameters.0"/>
+      <values value="5" parameter="//@automationLayer/@behaviours[name='The%20upper%20bound%20of%20the%20property%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Property name type and multiplicity with different bounds using star" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20a%20property']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']" then="//@automationLayer/@behaviours[name='The%20property%20name%20equals'] //@automationLayer/@behaviours[name='The%20property%20type%20equals'] //@automationLayer/@behaviours[name='The%20lower%20bound%20of%20the%20property%20equals'] //@automationLayer/@behaviours[name='The%20upper%20bound%20of%20the%20property%20equals'] //@automationLayer/@behaviours[name='The%20property%20is%20not%20derived']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="toto : Integer [1..*] " parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']/@parameters.0"/>
+      <values value="toto" parameter="//@automationLayer/@behaviours[name='The%20property%20name%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20property%20type%20equals']/@parameters.0"/>
+      <values value="1" parameter="//@automationLayer/@behaviours[name='The%20lower%20bound%20of%20the%20property%20equals']/@parameters.0"/>
+      <values value="-1" parameter="//@automationLayer/@behaviours[name='The%20upper%20bound%20of%20the%20property%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Property name type and multiplicity with different bounds using minus one" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20a%20property']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']" then="//@automationLayer/@behaviours[name='The%20property%20name%20equals'] //@automationLayer/@behaviours[name='The%20property%20type%20equals'] //@automationLayer/@behaviours[name='The%20lower%20bound%20of%20the%20property%20equals'] //@automationLayer/@behaviours[name='The%20upper%20bound%20of%20the%20property%20equals'] //@automationLayer/@behaviours[name='The%20property%20is%20not%20derived']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="toto : Integer [5..-1] " parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']/@parameters.0"/>
+      <values value="toto" parameter="//@automationLayer/@behaviours[name='The%20property%20name%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20property%20type%20equals']/@parameters.0"/>
+      <values value="5" parameter="//@automationLayer/@behaviours[name='The%20lower%20bound%20of%20the%20property%20equals']/@parameters.0"/>
+      <values value="-1" parameter="//@automationLayer/@behaviours[name='The%20upper%20bound%20of%20the%20property%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Property full with lots of spaces" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20a%20property']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']" then="//@automationLayer/@behaviours[name='The%20property%20name%20equals'] //@automationLayer/@behaviours[name='The%20property%20type%20equals'] //@automationLayer/@behaviours[name='The%20lower%20bound%20of%20the%20property%20equals'] //@automationLayer/@behaviours[name='The%20upper%20bound%20of%20the%20property%20equals'] //@automationLayer/@behaviours[name='The%20property%20is%20derived']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="  /   to   to    :    Integer     [    5    ..   -1   ]    " parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']/@parameters.0"/>
+      <values value="to   to" parameter="//@automationLayer/@behaviours[name='The%20property%20name%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20property%20type%20equals']/@parameters.0"/>
+      <values value="5" parameter="//@automationLayer/@behaviours[name='The%20lower%20bound%20of%20the%20property%20equals']/@parameters.0"/>
+      <values value="-1" parameter="//@automationLayer/@behaviours[name='The%20upper%20bound%20of%20the%20property%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Property name type and multiplicity with incorrect bounds" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20a%20property']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']" then="//@automationLayer/@behaviours[name='The%20property%20name%20equals'] //@automationLayer/@behaviours[name='The%20property%20type%20equals'] //@automationLayer/@behaviours[name='The%20lower%20bound%20of%20the%20property%20equals'] //@automationLayer/@behaviours[name='The%20upper%20bound%20of%20the%20property%20equals'] //@automationLayer/@behaviours[name='The%20property%20is%20not%20derived']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="  toto : Integer [*..*] " parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']/@parameters.0"/>
+      <values value="toto" parameter="//@automationLayer/@behaviours[name='The%20property%20name%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20property%20type%20equals']/@parameters.0"/>
+      <values value="2" parameter="//@automationLayer/@behaviours[name='The%20lower%20bound%20of%20the%20property%20equals']/@parameters.0"/>
+      <values value="4" parameter="//@automationLayer/@behaviours[name='The%20upper%20bound%20of%20the%20property%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Property name type and multiplicity with incorrect bounds 2" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20a%20property']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']" then="//@automationLayer/@behaviours[name='The%20property%20name%20equals'] //@automationLayer/@behaviours[name='The%20property%20type%20equals'] //@automationLayer/@behaviours[name='The%20lower%20bound%20of%20the%20property%20equals'] //@automationLayer/@behaviours[name='The%20upper%20bound%20of%20the%20property%20equals'] //@automationLayer/@behaviours[name='The%20property%20is%20not%20derived']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="  toto : Integer [-1..2] " parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']/@parameters.0"/>
+      <values value="toto" parameter="//@automationLayer/@behaviours[name='The%20property%20name%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20property%20type%20equals']/@parameters.0"/>
+      <values value="2" parameter="//@automationLayer/@behaviours[name='The%20lower%20bound%20of%20the%20property%20equals']/@parameters.0"/>
+      <values value="4" parameter="//@automationLayer/@behaviours[name='The%20upper%20bound%20of%20the%20property%20equals']/@parameters.0"/>
+    </scenarios>
+    <scenarios name="Property name type and multiplicity with incorrect bounds 3" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20a%20property']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']" then="//@automationLayer/@behaviours[name='The%20property%20name%20equals'] //@automationLayer/@behaviours[name='The%20property%20type%20equals'] //@automationLayer/@behaviours[name='The%20lower%20bound%20of%20the%20property%20equals'] //@automationLayer/@behaviours[name='The%20upper%20bound%20of%20the%20property%20equals'] //@automationLayer/@behaviours[name='The%20property%20is%20not%20derived']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="  toto : Integer [5..3] " parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20property%20to']/@parameters.0"/>
+      <values value="toto" parameter="//@automationLayer/@behaviours[name='The%20property%20name%20equals']/@parameters.0"/>
+      <values value="Integer" parameter="//@automationLayer/@behaviours[name='The%20property%20type%20equals']/@parameters.0"/>
+      <values value="2" parameter="//@automationLayer/@behaviours[name='The%20lower%20bound%20of%20the%20property%20equals']/@parameters.0"/>
+      <values value="4" parameter="//@automationLayer/@behaviours[name='The%20upper%20bound%20of%20the%20property%20equals']/@parameters.0"/>
+    </scenarios>
+  </stories>
+  <stories name="Create a new representation" As="//@roles[name='Business%20analyst']" soThat="//@benefits[name='I%20could%20manage%20the%20different%20views%20of%20my%20application']" iWant="//@capabilities[name='to%20create%20a%20representation']">
+    <scenarios name="Create a class diagram from a package in the model explorer" given="//@automationLayer/@context[name='A%20package%20selected%20in%20the%20model%20explorer']" when="//@automationLayer/@actions[name='I%20create%20a%20new%20class%20diagram']" then="//@automationLayer/@behaviours[name='A%20class%20diagram%20is%20created%20and%20opened']">
+      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+    </scenarios>
+  </stories>
+  <stories name="Create a type" As="//@roles[name='Business%20analyst']" soThat="//@benefits[name='I%20could%20manage%20the%20elements%20in%20the%20model']" iWant="//@capabilities[name='to%20create%20a%20type%20in%20the%20class%20diagram']">
+    <scenarios name="Create a class in the class diagram from the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20class%20creation%20tool%20from%20the%20palette%20and%20I%20click%20on%20the%20diagram']" then="//@automationLayer/@behaviours[name='A%20class%20is%20created%20in%20the%20model'] //@automationLayer/@behaviours[name='A%20class%20appears%20on%20the%20diagram']">
+      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+    </scenarios>
+    <scenarios name="Create an enumeration in the class diagram from the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20enumeration%20creation%20tool%20from%20the%20palette%20and%20I%20click%20on%20the%20diagram']" then="//@automationLayer/@behaviours[name='An%20enumeration%20is%20created%20in%20the%20model'] //@automationLayer/@behaviours[name='An%20enumeration%20appears%20on%20the%20diagram']">
+      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+    </scenarios>
+    <scenarios name="Create a datatype in the class diagram from the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20datatype%20creation%20tool%20from%20the%20palette'] //@automationLayer/@actions[name='I%20click%20on%20the%20diagram']" then="//@automationLayer/@behaviours[name='A%20datatype%20is%20created%20in%20the%20model'] //@automationLayer/@behaviours[name='A%20datatype%20appears%20on%20the%20diagram']">
+      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+    </scenarios>
+    <scenarios name="Create a primitive type in the class diagram from the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20primitive%20type%20creation%20tool%20from%20the%20palette'] //@automationLayer/@actions[name='I%20click%20on%20the%20diagram']" then="//@automationLayer/@behaviours[name='A%20primitive%20type%20is%20created%20in%20the%20model'] //@automationLayer/@behaviours[name='A%20primitive%20type%20appears%20on%20the%20diagram']">
+      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+    </scenarios>
+    <scenarios name="Create an interface in the class diagram from the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20interface%20creation%20tool%20from%20the%20palette'] //@automationLayer/@actions[name='I%20click%20on%20the%20diagram']" then="//@automationLayer/@behaviours[name='An%20interface%20is%20created%20in%20the%20model'] //@automationLayer/@behaviours[name='An%20interface%20appears%20on%20the%20diagram']">
+      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+    </scenarios>
+    <scenarios name="Create a package in the class diagram from the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20package%20creation%20tool%20from%20the%20palette'] //@automationLayer/@actions[name='I%20click%20on%20the%20diagram']" then="//@automationLayer/@behaviours[name='A%20package%20is%20created%20in%20the%20model'] //@automationLayer/@behaviours[name='A%20package%20appears%20on%20the%20diagram']">
+      <notes xsi:type="specification:TestGenerationNote"/>
+    </scenarios>
+  </stories>
+  <stories name="Delete a type" As="//@roles[name='Business%20analyst']" soThat="//@benefits[name='I%20could%20manage%20the%20elements%20in%20the%20model']" iWant="//@capabilities[name='to%20delete%20a%20type%20in%20the%20class%20diagram']">
+    <scenarios name="Delete a class in the class diagram from the delete from model tool in the toolbar" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20delete%20from%20model%20tool%20in%20toolbar'] //@automationLayer/@actions[name='I%20click%20on%20a%20class%20in%20the%20diagram']" then="//@automationLayer/@behaviours[name='The%20class%20is%20deleted%20from%20the%20model'] //@automationLayer/@behaviours[name='The%20class%20does%20not%20appear%20anymore%20on%20the%20diagram']">
+      <notes xsi:type="specification:TestGenerationNote"/>
+    </scenarios>
+  </stories>
+  <benefits name="I could update the elements name easily"/>
+  <benefits name="I could manage the different views of my application"/>
+  <benefits name="I could manage the elements in the model"/>
+  <capabilities name="to edit the label of an element on the diagram"/>
+  <capabilities name="to create a representation"/>
+  <capabilities name="to create a type in the class diagram"/>
+  <capabilities name="to delete a type in the class diagram"/>
+</specification:Specification>

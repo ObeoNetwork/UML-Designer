@@ -34,14 +34,14 @@ public class AnUmlModelWithAnAssociationUnitTests {
 	}
 	@Test
 	public void classDiagramEditRolesNamesAndTrimSpaces() throws Exception {
-		context.actionIEditTheLabelOfTheFirstRoleTo("  firstRole");
-		context.actionIEditTheLabelOfTheSecondRoleTo("  secondRole");
+		context.actionIEditTheLabelOfTheFirstRoleTo("  firstRole  ");
+		context.actionIEditTheLabelOfTheSecondRoleTo("  secondRole ");
 		context.assertTheFirstEndNameEquals("firstRole");
 		context.assertTheSecondEndNameEquals("secondRole");
 	}
 	@Test
 	public void classDiagramEditRolesNames2() throws Exception {
-		context.actionIEditTheLabelOfTheFirstRoleTo("firstRoleRenamed");
+		context.actionIEditTheLabelOfTheFirstRoleTo("firstRoleRenamed ");
 		context.actionIEditTheLabelOfTheSecondRoleTo("secondRole");
 		context.assertTheFirstEndNameEquals("firstRoleRenamed");
 		context.assertTheSecondEndNameEquals("secondRole");
@@ -57,7 +57,7 @@ public class AnUmlModelWithAnAssociationUnitTests {
 	}
 	@Test
 	public void cardinalityWithSpaces() throws Exception {
-		context.actionIEditTheLabelOfTheFirstRoleTo("firstRole [ 0 .. 1 ]");
+		context.actionIEditTheLabelOfTheFirstRoleTo("firstRole [ 0 .. 1 ] ");
 		context.actionIEditTheLabelOfTheSecondRoleTo(" secondRole [ * ]");
 		context.assertTheFirstEndLowerCardinalityEquals("0");
 		context.assertTheFirstEndUpperCardinalityEquals("1");
@@ -66,8 +66,8 @@ public class AnUmlModelWithAnAssociationUnitTests {
 	}
 	@Test
 	public void cardinalityWithSpaces2() throws Exception {
-		context.actionIEditTheLabelOfTheFirstRoleTo("firstRole[5..5]");
-		context.actionIEditTheLabelOfTheSecondRoleTo(" secondRole");
+		context.actionIEditTheLabelOfTheFirstRoleTo("firstRole[5..5] ");
+		context.actionIEditTheLabelOfTheSecondRoleTo(" secondRole ");
 		context.assertTheFirstEndLowerCardinalityEquals("5");
 		context.assertTheFirstEndUpperCardinalityEquals("5");
 		context.assertTheSecondEndLowerCardinalityEquals("1");
@@ -100,7 +100,7 @@ public class AnUmlModelWithAnAssociationUnitTests {
 	}
 	@Test
 	public void derivedFirst() throws Exception {
-		context.actionIEditTheLabelOfTheFirstRoleTo("/firstRole[0..1]");
+		context.actionIEditTheLabelOfTheFirstRoleTo("/firstRole[0..1] ");
 		context.actionIEditTheLabelOfTheSecondRoleTo(" secondRole[*]");
 		context.assertTheFirstEndIsDerived();
 		context.assertTheSecondEndIsNotDerived();
@@ -114,15 +114,15 @@ public class AnUmlModelWithAnAssociationUnitTests {
 	}
 	@Test
 	public void derivedBoth() throws Exception {
-		context.actionIEditTheLabelOfTheFirstRoleTo("/firstRole[0..1]");
+		context.actionIEditTheLabelOfTheFirstRoleTo("/firstRole[0..1] ");
 		context.actionIEditTheLabelOfTheSecondRoleTo(" /secondRole[*]");
 		context.assertTheFirstEndIsDerived();
 		context.assertTheSecondEndIsDerived();
 	}
 	@Test
 	public void derivedBothWithSpaces() throws Exception {
-		context.actionIEditTheLabelOfTheFirstRoleTo("/ firstRole");
-		context.actionIEditTheLabelOfTheSecondRoleTo(" / secondRole[*]");
+		context.actionIEditTheLabelOfTheFirstRoleTo("/ firstRole ");
+		context.actionIEditTheLabelOfTheSecondRoleTo(" / secondRole[*] ");
 		context.assertTheFirstEndIsDerived();
 		context.assertTheSecondEndIsDerived();
 	}

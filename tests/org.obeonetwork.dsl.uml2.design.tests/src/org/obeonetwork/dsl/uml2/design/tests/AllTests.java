@@ -18,9 +18,6 @@ import junit.textui.TestRunner;
 import org.obeonetwork.dsl.uml2.design.tests.services.ActivityServicesTests;
 import org.obeonetwork.dsl.uml2.design.tests.services.ConnectorServicesTests;
 import org.obeonetwork.dsl.uml2.design.tests.services.DiagramElementMappingSpecificationTests;
-import org.obeonetwork.dsl.uml2.design.tests.services.EditLabelTests;
-import org.obeonetwork.dsl.uml2.design.tests.services.OperationServicesTest;
-import org.obeonetwork.dsl.uml2.design.tests.services.PropertyServicesTest;
 import org.obeonetwork.dsl.uml2.design.tests.services.SequenceServiceTests;
 import org.obeonetwork.dsl.uml2.design.tests.services.compositestructure.IsRelated4CompositeStructureServicesTests;
 import org.obeonetwork.dsl.uml2.design.tests.services.compositestructure.IsRelated4CompositeStructureServicesWithConnectorTests;
@@ -56,10 +53,7 @@ public final class AllTests {
 	public static Test suite() {
 		final TestSuite suite = new TestSuite("UML Viewpoint tests");
 		suite.addTestSuite(ActivityServicesTests.class);
-		suite.addTestSuite(OperationServicesTest.class);
-		suite.addTestSuite(PropertyServicesTest.class);
 		suite.addTestSuite(SequenceServiceTests.class);
-		suite.addTestSuite(EditLabelTests.class);
 		suite.addTestSuite(IsRelated4CompositeStructureServicesTests.class);
 		suite.addTestSuite(IsRelated4CompositeStructureServicesWithConnectorTests.class);
 		suite.addTestSuite(ConnectorServicesTests.class);

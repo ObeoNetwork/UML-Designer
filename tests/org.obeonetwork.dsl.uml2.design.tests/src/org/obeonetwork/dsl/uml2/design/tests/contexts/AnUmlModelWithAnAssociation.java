@@ -77,35 +77,19 @@ public class AnUmlModelWithAnAssociation extends Context {
 	}
 
 	/**
+	 * Behavior : The second end is derived
+	 */
+	public void assertTheSecondEndIsDerived() {
+		// Start of user code TheSecondEndIsDerived
+		assertEquals(true, secondEnd.isDerived());
+		// End of user code
+	}
+	/**
 	 * Behavior : The first end is derived
 	 */
 	public void assertTheFirstEndIsDerived() {
 		// Start of user code TheFirstEndIsDerived
 		assertEquals(true, firstEnd.isDerived());
-		// End of user code
-	}
-	/**
-	 * Behavior : The second end upper cardinality equals
-	 */
-	public void assertTheSecondEndUpperCardinalityEquals(String theSecondEndUpperCardinalityEquals0) {
-		// Start of user code TheSecondEndUpperCardinalityEquals
-		assertEquals(Integer.parseInt(theSecondEndUpperCardinalityEquals0), secondEnd.getUpper());
-		// End of user code
-	}
-	/**
-	 * Behavior : The first end lower cardinality equals
-	 */
-	public void assertTheFirstEndLowerCardinalityEquals(String theFirstEndLowerCardinalityEquals0) {
-		// Start of user code TheFirstEndLowerCardinalityEquals
-		assertEquals(Integer.parseInt(theFirstEndLowerCardinalityEquals0), firstEnd.getLower());
-		// End of user code
-	}
-	/**
-	 * Behavior : The first end name equals
-	 */
-	public void assertTheFirstEndNameEquals(String theFirstEndNameEquals0) {
-		// Start of user code TheFirstEndNameEquals
-		assertEquals(theFirstEndNameEquals0, firstEnd.getName());
 		// End of user code
 	}
 	/**
@@ -117,27 +101,11 @@ public class AnUmlModelWithAnAssociation extends Context {
 		// End of user code
 	}
 	/**
-	 * Behavior : The first end is not derived
+	 * Behavior : The first end name equals
 	 */
-	public void assertTheFirstEndIsNotDerived() {
-		// Start of user code TheFirstEndIsNotDerived
-		assertEquals(false, firstEnd.isDerived());
-		// End of user code
-	}
-	/**
-	 * Behavior : The second end is derived
-	 */
-	public void assertTheSecondEndIsDerived() {
-		// Start of user code TheSecondEndIsDerived
-		assertEquals(true, secondEnd.isDerived());
-		// End of user code
-	}
-	/**
-	 * Behavior : The second end is not derived
-	 */
-	public void assertTheSecondEndIsNotDerived() {
-		// Start of user code TheSecondEndIsNotDerived
-		assertEquals(false, secondEnd.isDerived());
+	public void assertTheFirstEndNameEquals(String theFirstEndNameEquals0) {
+		// Start of user code TheFirstEndNameEquals
+		assertEquals(theFirstEndNameEquals0, firstEnd.getName());
 		// End of user code
 	}
 	/**
@@ -149,11 +117,43 @@ public class AnUmlModelWithAnAssociation extends Context {
 		// End of user code
 	}
 	/**
+	 * Behavior : The second end is not derived
+	 */
+	public void assertTheSecondEndIsNotDerived() {
+		// Start of user code TheSecondEndIsNotDerived
+		assertEquals(false, secondEnd.isDerived());
+		// End of user code
+	}
+	/**
 	 * Behavior : The second end lower cardinality equals
 	 */
 	public void assertTheSecondEndLowerCardinalityEquals(String theSecondEndLowerCardinalityEquals0) {
 		// Start of user code TheSecondEndLowerCardinalityEquals
 		assertEquals(Integer.parseInt(theSecondEndLowerCardinalityEquals0), secondEnd.getLower());
+		// End of user code
+	}
+	/**
+	 * Behavior : The first end is not derived
+	 */
+	public void assertTheFirstEndIsNotDerived() {
+		// Start of user code TheFirstEndIsNotDerived
+		assertEquals(false, firstEnd.isDerived());
+		// End of user code
+	}
+	/**
+	 * Behavior : The first end lower cardinality equals
+	 */
+	public void assertTheFirstEndLowerCardinalityEquals(String theFirstEndLowerCardinalityEquals0) {
+		// Start of user code TheFirstEndLowerCardinalityEquals
+		assertEquals(Integer.parseInt(theFirstEndLowerCardinalityEquals0), firstEnd.getLower());
+		// End of user code
+	}
+	/**
+	 * Behavior : The second end upper cardinality equals
+	 */
+	public void assertTheSecondEndUpperCardinalityEquals(String theSecondEndUpperCardinalityEquals0) {
+		// Start of user code TheSecondEndUpperCardinalityEquals
+		assertEquals(Integer.parseInt(theSecondEndUpperCardinalityEquals0), secondEnd.getUpper());
 		// End of user code
 	}
 
