@@ -14,10 +14,12 @@ package org.obeonetwork.dsl.uml2.design.tests.unit;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
+import org.obeonetwork.dsl.uml2.design.tests.unit.features.ActivityDiagramUnitTests;
+import org.obeonetwork.dsl.uml2.design.tests.unit.features.DropUnitTests;
 import org.obeonetwork.dsl.uml2.design.tests.unit.features.DirectEditUnitTests;
 
 @RunWith(Suite.class)
-@SuiteClasses({DirectEditUnitTests.class})
+@SuiteClasses({DropUnitTests.class,DirectEditUnitTests.class,ActivityDiagramUnitTests.class})
 /**
  * Testing : UML Designer
  */

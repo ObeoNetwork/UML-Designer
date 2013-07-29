@@ -115,6 +115,14 @@ public class AnUmlModelWithAProperty extends Context {
 	}
 
 	/**
+	 * Behavior : The lower bound of the property equals
+	 */
+	public void assertTheLowerBoundOfThePropertyEquals(String theLowerBoundOfThePropertyEquals0) {
+		// Start of user code TheLowerBoundOfThePropertyEquals
+		assertEquals(Integer.parseInt(theLowerBoundOfThePropertyEquals0), property.getLower());
+		// End of user code
+	}
+	/**
 	 * Behavior : The property name equals
 	 */
 	public void assertThePropertyNameEquals(String thePropertyNameEquals0) {
@@ -128,14 +136,6 @@ public class AnUmlModelWithAProperty extends Context {
 	public void assertThePropertyIsNotDerived() {
 		// Start of user code ThePropertyIsNotDerived
 		assertEquals(false, property.isDerived());
-		// End of user code
-	}
-	/**
-	 * Behavior : The property is derived
-	 */
-	public void assertThePropertyIsDerived() {
-		// Start of user code ThePropertyIsDerived
-		assertEquals(true, property.isDerived());
 		// End of user code
 	}
 	/**
@@ -155,11 +155,11 @@ public class AnUmlModelWithAProperty extends Context {
 		// End of user code
 	}
 	/**
-	 * Behavior : The lower bound of the property equals
+	 * Behavior : The property is derived
 	 */
-	public void assertTheLowerBoundOfThePropertyEquals(String theLowerBoundOfThePropertyEquals0) {
-		// Start of user code TheLowerBoundOfThePropertyEquals
-		assertEquals(Integer.parseInt(theLowerBoundOfThePropertyEquals0), property.getLower());
+	public void assertThePropertyIsDerived() {
+		// Start of user code ThePropertyIsDerived
+		assertEquals(true, property.isDerived());
 		// End of user code
 	}
 

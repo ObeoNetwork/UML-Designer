@@ -213,6 +213,14 @@ Document {
 							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/features/DirectEditUnitTests.java"
 							 
 						M@
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/plugin/stories/EditLabelsPluginTests.java"
+							 
+						M@
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/plugin/features/DirectEditPluginTests.java"
+							 
+						M@
 					}
 				}
 
@@ -937,6 +945,151 @@ Document {
 
 					The user can also *delete an activity element* (
 					@see "Diagram editor" _Editor tab-bar -> Delete element -> from model_).
+
+					Section Test activity services {
+						Story: Manage activity [Activity diagram]
+						As: Business analyst
+						I want: To manage activities
+						So that: I could manage the activities in the model
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/ManageActivityUnitTests.java"
+							 
+						M@
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/features/ActivityDiagramUnitTests.java"
+							 
+						M@
+
+						Scenario: Init activity for an operation [Manage activity]@unit
+						Given: An Uml model with a class and an operation
+						When: I initialize an activity for an operation
+						Then: An activity which referenced the operation is created
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/manageactivity/AnUmlModelWithAClassAndAnOperationUnitTests.java#//@methods[name='initActivityForAnOperation()']"
+							 
+						M@
+
+						Scenario: Get activity partitions [Manage activity]@unit
+						Given: An Uml model with a class and an operation
+						When: I query all the activity partitions of an activity
+						Then: I get all the activity partitions defined for the activity
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/manageactivity/AnUmlModelWithAClassAndAnOperationUnitTests.java#//@methods[name='getActivityPartitions()']"
+							 
+						M@
+
+						Scenario: Find parent activity [Manage activity]@unit
+						Given: An Uml model with a class and an operation
+						When: I query the parent activity of an activity partition
+						Then: I get the parent activity
+
+						Scenario: Get activity nodes [Manage activity]@unit
+						Given: An Uml model with a class and an operation
+						When: I query the activity nodes of an activity
+						Then: I get all the parent activity nodes
+
+						Scenario: Get activity nodes 2 [Manage activity]@unit
+						Given: An Uml model with a class and an operation
+						When: I query the activity nodes of an activity partition
+						Then: I get all the parent activity partition nodes
+
+						Scenario: Create input pin [Manage activity]@unit
+						Given: An Uml model with a class and an operation
+						When: I create an input pin on a call operation action
+						Then: An input pin is created on the call operation action
+
+						Scenario: Create input pin 2 [Manage activity]@unit
+						Given: An Uml model with a class and an operation
+						When: I create an input pin on an opaque action
+						Then: An input pin is created on the opaque action
+
+						Scenario: Create output pin [Manage activity]@unit
+						Given: An Uml model with a class and an operation
+						When: I create an output pin on a call operation action
+						Then: An output pin is created on the call operation action
+
+						Scenario: Create output pin 2 [Manage activity]@unit
+						Given: An Uml model with a class and an operation
+						When: I create an output pin on an opaque action
+						Then: An output pin is created on the opaque action
+
+						Story: Drop element [Drop]
+						As: Business analyst
+						I want: To move an element from a container to a new one
+						So that: I could manage the structure of the model
+
+						Scenario: Drop node [Drop element]@unit
+						Given: An Uml model with a class and an operation
+						When: I drop a node to a partition
+						Then: The partition contains the node
+
+						Scenario: Drop node 2 [Drop element]@unit
+						Given: An Uml model with a class and an operation
+						When: I drop a node to an activity
+						Then: The activity contains the node
+
+						Scenario: Drop node 3 [Drop element]@unit
+						Given: An Uml model with a class and an operation
+						When: I drop a partition to another partition
+						Then: The parent partition contains the dropped partition
+
+						Scenario: Drop node 4 [Drop element]@unit
+						Given: An Uml model with a class and an operation
+						When: I drop a partition to an activity
+						Then: The activity contains the partition
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/manageactivity/AnUmlModelWithAClassAndAnOperationUnitTests.java#//@methods[name='findParentActivity()']"
+							 
+						M@
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/manageactivity/AnUmlModelWithAClassAndAnOperationUnitTests.java#//@methods[name='getActivityNodes()']"
+							 
+						M@
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/manageactivity/AnUmlModelWithAClassAndAnOperationUnitTests.java#//@methods[name='getActivityNodes2()']"
+							 
+						M@
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/manageactivity/AnUmlModelWithAClassAndAnOperationUnitTests.java#//@methods[name='createInputPin()']"
+							 
+						M@
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/manageactivity/AnUmlModelWithAClassAndAnOperationUnitTests.java#//@methods[name='createInputPin2()']"
+							 
+						M@
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/manageactivity/AnUmlModelWithAClassAndAnOperationUnitTests.java#//@methods[name='createOutputPin()']"
+							 
+						M@
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/manageactivity/AnUmlModelWithAClassAndAnOperationUnitTests.java#//@methods[name='createOutputPin2()']"
+							 
+						M@
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/DropElementUnitTests.java"
+							 
+						M@
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/features/DropUnitTests.java"
+							 
+						M@
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/dropelement/AnUmlModelWithAClassAndAnOperationUnitTests.java#//@methods[name='dropNode()']"
+							 
+						M@
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/dropelement/AnUmlModelWithAClassAndAnOperationUnitTests.java#//@methods[name='dropNode2()']"
+							 
+						M@
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/dropelement/AnUmlModelWithAClassAndAnOperationUnitTests.java#//@methods[name='dropNode3()']"
+							 
+						M@
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/dropelement/AnUmlModelWithAClassAndAnOperationUnitTests.java#//@methods[name='dropNode4()']"
+							 
+						M@
+					}
 				}
 
 				Section Manage flows {
@@ -1872,8 +2025,8 @@ Document {
 
 					
 
-					Section Test scenarios {
-						Scenario: Edit association role [Edit labels]@unit
+					Section Unit test scenarios {
+						Scenario: Edit association role [Edit labels, Class diagram]@unit
 						Given: An Uml model with an association
 						When: I edit the label of the first role to $'firstRole'
 						When: I edit the label of the second role to $'secondRole'
@@ -2451,6 +2604,14 @@ Document {
 							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/editlabels/AnUmlModelWithAPropertyUnitTests.java#//@methods[name='propertyNameTypeAndMultiplicityWithIncorrectBounds3()']"
 							 
 						M@
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/classdiagram/AnUmlModelWithAnAssociationUnitTests.java#//@methods[name='editAssociationRole()']"
+							 
+						M@
+						@M
+							@ref "org.obeonetwork.dsl.uml2.design.tests/src/org/obeonetwork/dsl/uml2/design/tests/unit/stories/ClassDiagramUnitTests.java"
+							 
+						M@
 					}
 				}
 			}
@@ -2825,7 +2986,11 @@ Document {
 		}
 
 		Section Design Guidelines {
-			Section {			}
+			Section Sirius mappings guidelines {
+				Each diagram element mapping defines a direct edit tool.
+
+				Each edge mapping defines a reconnect tool.
+			}
 		}
 
 		Section Operational {

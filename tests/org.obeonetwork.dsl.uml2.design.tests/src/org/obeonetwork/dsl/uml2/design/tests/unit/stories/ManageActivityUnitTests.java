@@ -9,19 +9,18 @@
  *     Obeo - initial API and implementation
  *******************************************************************************/
 
-package org.obeonetwork.dsl.uml2.design.tests.ui;
+package org.obeonetwork.dsl.uml2.design.tests.unit.stories;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
-import org.obeonetwork.dsl.uml2.design.tests.ui.features.ClassDiagramUiTests;
-import org.obeonetwork.dsl.uml2.design.tests.ui.features.ManageRepresentationUiTests;
+import org.obeonetwork.dsl.uml2.design.tests.unit.stories.manageactivity.AnUmlModelWithAClassAndAnOperationUnitTests;
 
 @RunWith(Suite.class)
-@SuiteClasses({ManageRepresentationUiTests.class,ClassDiagramUiTests.class})
+@SuiteClasses({AnUmlModelWithAClassAndAnOperationUnitTests.class})
 /**
- * Testing : UML Designer
+ * Testing : Manage activity
  */
-public class UmlDesignerUiTests {
+public class ManageActivityUnitTests {
 
 }

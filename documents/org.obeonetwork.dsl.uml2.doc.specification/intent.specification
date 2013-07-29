@@ -2,10 +2,13 @@
 <specification:Specification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:specification="http://www.eclipse.org/intent/specification/1.0" name="UML Designer">
   <features name="Direct edit" stories="//@stories[name='Edit%20labels']"/>
   <features name="Manage representation" stories="//@stories[name='Create%20a%20new%20representation']"/>
+  <features name="Activity diagram" stories="//@stories[name='Manage%20activity']"/>
+  <features name="Drop" stories="//@stories[name='Drop%20element']"/>
   <features name="Class diagram" stories="//@stories[name='Create%20a%20type'] //@stories[name='Delete%20a%20type']"/>
   <roles name="Business analyst"/>
   <automationLayer basePackage="org.obeonetwork.dsl.uml2.design.tests">
     <context name="A package selected in the model explorer"/>
+    <context name="An Uml model with a class and an operation"/>
     <context name="A class diagram is opened"/>
     <context name="An Uml model with an association"/>
     <context name="The second end is navigable" contexts="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']"/>
@@ -13,6 +16,19 @@
     <context name="An Uml model with an operation"/>
     <context name="An Uml model with a property"/>
     <actions name="I create a new class diagram"/>
+    <actions name="I initialize an activity for an operation"/>
+    <actions name="I query all the activity partitions of an activity"/>
+    <actions name="I query the parent activity of an activity partition"/>
+    <actions name="I query the activity nodes of an activity"/>
+    <actions name="I query the activity nodes of an activity partition"/>
+    <actions name="I create an input pin on a call operation action"/>
+    <actions name="I create an input pin on an opaque action"/>
+    <actions name="I create an output pin on a call operation action"/>
+    <actions name="I create an output pin on an opaque action"/>
+    <actions name="I drop a node to a partition"/>
+    <actions name="I drop a node to an activity"/>
+    <actions name="I drop a partition to another partition"/>
+    <actions name="I drop a partition to an activity"/>
     <actions name="I select the class creation tool from the palette and I click on the diagram"/>
     <actions name="I select the enumeration creation tool from the palette and I click on the diagram"/>
     <actions name="I select the datatype creation tool from the palette"/>
@@ -35,6 +51,19 @@
       <parameters name="I edit the label of the property to0"/>
     </actions>
     <behaviours name="A class diagram is created and opened"/>
+    <behaviours name="An activity which referenced the operation is created"/>
+    <behaviours name="I get all the activity partitions defined for the activity"/>
+    <behaviours name="I get the parent activity"/>
+    <behaviours name="I get all the parent activity nodes"/>
+    <behaviours name="I get all the parent activity partition nodes"/>
+    <behaviours name="An input pin is created on the call operation action"/>
+    <behaviours name="An input pin is created on the opaque action"/>
+    <behaviours name="An output pin is created on the call operation action"/>
+    <behaviours name="An output pin is created on the opaque action"/>
+    <behaviours name="The partition contains the node"/>
+    <behaviours name="The activity contains the node"/>
+    <behaviours name="The parent partition contains the dropped partition"/>
+    <behaviours name="The activity contains the partition"/>
     <behaviours name="A class is created in the model"/>
     <behaviours name="A class appears on the diagram"/>
     <behaviours name="An enumeration is created in the model"/>
@@ -138,13 +167,6 @@
     </behaviours>
   </automationLayer>
   <stories name="Edit labels" As="//@roles[name='Business%20analyst']" soThat="//@benefits[name='I%20could%20update%20the%20elements%20name%20easily']" iWant="//@capabilities[name='to%20edit%20the%20label%20of%20an%20element%20on%20the%20diagram']">
-    <scenarios name="Edit association role" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to'] //@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20name%20equals'] //@automationLayer/@behaviours[name='The%20second%20end%20name%20equals']">
-      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
-      <values value="firstRole" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
-      <values value="secondRole" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']/@parameters.0"/>
-      <values value="firstRole" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20name%20equals']/@parameters.0"/>
-      <values value="secondRole" parameter="//@automationLayer/@behaviours[name='The%20second%20end%20name%20equals']/@parameters.0"/>
-    </scenarios>
     <scenarios name="Class diagram edit roles names" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to'] //@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20name%20equals'] //@automationLayer/@behaviours[name='The%20second%20end%20name%20equals']">
       <notes xsi:type="specification:TestGenerationNote" type="unit"/>
       <values value="firstRole" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
@@ -532,6 +554,49 @@
       <notes xsi:type="specification:TestGenerationNote" type="ui"/>
     </scenarios>
   </stories>
+  <stories name="Manage activity" As="//@roles[name='Business%20analyst']" soThat="//@benefits[name='I%20could%20manage%20the%20activities%20in%20the%20model']" iWant="//@capabilities[name='To%20manage%20activities']">
+    <scenarios name="Init activity for an operation" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20a%20class%20and%20an%20operation']" when="//@automationLayer/@actions[name='I%20initialize%20an%20activity%20for%20an%20operation']" then="//@automationLayer/@behaviours[name='An%20activity%20which%20referenced%20the%20operation%20is%20created']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+    </scenarios>
+    <scenarios name="Get activity partitions" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20a%20class%20and%20an%20operation']" when="//@automationLayer/@actions[name='I%20query%20all%20the%20activity%20partitions%20of%20an%20activity']" then="//@automationLayer/@behaviours[name='I%20get%20all%20the%20activity%20partitions%20defined%20for%20the%20activity']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+    </scenarios>
+    <scenarios name="Find parent activity" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20a%20class%20and%20an%20operation']" when="//@automationLayer/@actions[name='I%20query%20the%20parent%20activity%20of%20an%20activity%20partition']" then="//@automationLayer/@behaviours[name='I%20get%20the%20parent%20activity']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+    </scenarios>
+    <scenarios name="Get activity nodes" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20a%20class%20and%20an%20operation']" when="//@automationLayer/@actions[name='I%20query%20the%20activity%20nodes%20of%20an%20activity']" then="//@automationLayer/@behaviours[name='I%20get%20all%20the%20parent%20activity%20nodes']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+    </scenarios>
+    <scenarios name="Get activity nodes 2" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20a%20class%20and%20an%20operation']" when="//@automationLayer/@actions[name='I%20query%20the%20activity%20nodes%20of%20an%20activity%20partition']" then="//@automationLayer/@behaviours[name='I%20get%20all%20the%20parent%20activity%20partition%20nodes']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+    </scenarios>
+    <scenarios name="Create input pin" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20a%20class%20and%20an%20operation']" when="//@automationLayer/@actions[name='I%20create%20an%20input%20pin%20on%20a%20call%20operation%20action']" then="//@automationLayer/@behaviours[name='An%20input%20pin%20is%20created%20on%20the%20call%20operation%20action']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+    </scenarios>
+    <scenarios name="Create input pin 2" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20a%20class%20and%20an%20operation']" when="//@automationLayer/@actions[name='I%20create%20an%20input%20pin%20on%20an%20opaque%20action']" then="//@automationLayer/@behaviours[name='An%20input%20pin%20is%20created%20on%20the%20opaque%20action']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+    </scenarios>
+    <scenarios name="Create output pin" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20a%20class%20and%20an%20operation']" when="//@automationLayer/@actions[name='I%20create%20an%20output%20pin%20on%20a%20call%20operation%20action']" then="//@automationLayer/@behaviours[name='An%20output%20pin%20is%20created%20on%20the%20call%20operation%20action']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+    </scenarios>
+    <scenarios name="Create output pin 2" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20a%20class%20and%20an%20operation']" when="//@automationLayer/@actions[name='I%20create%20an%20output%20pin%20on%20an%20opaque%20action']" then="//@automationLayer/@behaviours[name='An%20output%20pin%20is%20created%20on%20the%20opaque%20action']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+    </scenarios>
+  </stories>
+  <stories name="Drop element" As="//@roles[name='Business%20analyst']" soThat="//@benefits[name='I%20could%20manage%20the%20structure%20of%20the%20model']" iWant="//@capabilities[name='To%20move%20an%20element%20from%20a%20container%20to%20a%20new%20one']">
+    <scenarios name="Drop node" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20a%20class%20and%20an%20operation']" when="//@automationLayer/@actions[name='I%20drop%20a%20node%20to%20a%20partition']" then="//@automationLayer/@behaviours[name='The%20partition%20contains%20the%20node']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+    </scenarios>
+    <scenarios name="Drop node 2" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20a%20class%20and%20an%20operation']" when="//@automationLayer/@actions[name='I%20drop%20a%20node%20to%20an%20activity']" then="//@automationLayer/@behaviours[name='The%20activity%20contains%20the%20node']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+    </scenarios>
+    <scenarios name="Drop node 3" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20a%20class%20and%20an%20operation']" when="//@automationLayer/@actions[name='I%20drop%20a%20partition%20to%20another%20partition']" then="//@automationLayer/@behaviours[name='The%20parent%20partition%20contains%20the%20dropped%20partition']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+    </scenarios>
+    <scenarios name="Drop node 4" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20a%20class%20and%20an%20operation']" when="//@automationLayer/@actions[name='I%20drop%20a%20partition%20to%20an%20activity']" then="//@automationLayer/@behaviours[name='The%20activity%20contains%20the%20partition']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+    </scenarios>
+  </stories>
   <stories name="Create a type" As="//@roles[name='Business%20analyst']" soThat="//@benefits[name='I%20could%20manage%20the%20elements%20in%20the%20model']" iWant="//@capabilities[name='to%20create%20a%20type%20in%20the%20class%20diagram']">
     <scenarios name="Create a class in the class diagram from the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20class%20creation%20tool%20from%20the%20palette%20and%20I%20click%20on%20the%20diagram']" then="//@automationLayer/@behaviours[name='A%20class%20is%20created%20in%20the%20model'] //@automationLayer/@behaviours[name='A%20class%20appears%20on%20the%20diagram']">
       <notes xsi:type="specification:TestGenerationNote" type="ui"/>
@@ -557,11 +622,24 @@
       <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
   </stories>
+  <stories name="Class diagram">
+    <scenarios name="Edit association role" given="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']" when="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to'] //@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']" then="//@automationLayer/@behaviours[name='The%20first%20end%20name%20equals'] //@automationLayer/@behaviours[name='The%20second%20end%20name%20equals']">
+      <notes xsi:type="specification:TestGenerationNote" type="unit"/>
+      <values value="firstRole" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20first%20role%20to']/@parameters.0"/>
+      <values value="secondRole" parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']/@parameters.0"/>
+      <values value="firstRole" parameter="//@automationLayer/@behaviours[name='The%20first%20end%20name%20equals']/@parameters.0"/>
+      <values value="secondRole" parameter="//@automationLayer/@behaviours[name='The%20second%20end%20name%20equals']/@parameters.0"/>
+    </scenarios>
+  </stories>
   <benefits name="I could update the elements name easily"/>
   <benefits name="I could manage the different views of my application"/>
+  <benefits name="I could manage the activities in the model"/>
+  <benefits name="I could manage the structure of the model"/>
   <benefits name="I could manage the elements in the model"/>
   <capabilities name="to edit the label of an element on the diagram"/>
   <capabilities name="to create a representation"/>
+  <capabilities name="To manage activities"/>
+  <capabilities name="To move an element from a container to a new one"/>
   <capabilities name="to create a type in the class diagram"/>
   <capabilities name="to delete a type in the class diagram"/>
 </specification:Specification>
