@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="UML Designer" uid="org.obeonetwork.dsl.uml2.branding.product" id="org.obeonetwork.dsl.uml2.branding.product" application="org.eclipse.ui.ide.workbench" version="2.3.0.qualifier" useFeatures="true" includeLaunchers="true">
+<product name="UML Designer" uid="org.obeonetwork.dsl.uml2.branding.product" id="org.obeonetwork.dsl.uml2.branding.product" application="org.eclipse.ui.ide.workbench" version="2.3.1.qualifier" useFeatures="true" includeLaunchers="true">
 
    <aboutInfo>
       <image path="icons/about.gif"/>
