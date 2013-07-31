@@ -176,23 +176,40 @@ public class UIServices {
 	}
 
 	/**
-	 * Drop a semantic element and create the corresponding view in the given container
+	 * Check if a semantic element can be represented in a given container view.
 	 * 
 	 * @param container
 	 *            Semantic container
 	 * @param semanticElement
-	 *            Element to drop
+	 *            Element to test
 	 * @param containerView
 	 *            Container view
 	 */
 	public boolean isValidElementForContainerView(final Element container,
 			final NamedElement semanticElement, final DSemanticDecorator containerView) {
-		// Paste the semantic element from the clipboard to the selected container
 		final Session session = SessionManager.INSTANCE.getSession(container);
 
 		// Get all available mappings applicable for the selected element in the current container
 		List<DiagramElementMapping> semanticElementMappings = getMappings(semanticElement, containerView,
 				session);
+
+		return semanticElementMappings.size() > 0;
+	}
+
+	/**
+	 * Check if an element is a container.
+	 * 
+	 * @param container
+	 *            Semantic container
+	 * @param containerView
+	 *            Container view
+	 */
+	public boolean existValidElementsForContainerView(final Element container,
+			final DSemanticDecorator containerView) {
+		final Session session = SessionManager.INSTANCE.getSession(container);
+
+		// Get all available mappings applicable for the selected element in the current container
+		List<DiagramElementMapping> semanticElementMappings = getMappings(containerView, session);
 
 		return semanticElementMappings.size() > 0;
 	}
@@ -323,6 +340,50 @@ public class UIServices {
 				String domainClass = ((AbstractNodeMapping)mapping).getDomainClass();
 				if (modelAccessor.eInstanceOf(semanticElement, domainClass)
 						&& !mapping.isSynchronizationLock()) {
+					mappings.add(mapping);
+				}
+			}
+		}
+		return mappings;
+	}
+
+	/**
+	 * Get mappings available for a given container view.
+	 * 
+	 * @param containerView
+	 *            Container view
+	 * @param session
+	 *            Session
+	 * @return List of mappings which could not be null
+	 */
+	@SuppressWarnings("restriction")
+	private List<DiagramElementMapping> getMappings(final DSemanticDecorator containerView, Session session) {
+		List<DiagramElementMapping> mappings = new ArrayList<DiagramElementMapping>();
+
+		if (containerView instanceof DSemanticDiagram) {
+
+			for (DiagramElementMapping mapping : (((DSemanticDiagram)containerView).getDescription()
+					.getAllContainerMappings())) {
+				if (!mapping.isSynchronizationLock()) {
+					mappings.add(mapping);
+				}
+			}
+			for (DiagramElementMapping mapping : (((DSemanticDiagram)containerView).getDescription()
+					.getAllNodeMappings())) {
+				if (!mapping.isSynchronizationLock()) {
+					mappings.add(mapping);
+				}
+			}
+		} else if (containerView instanceof DNodeContainerSpec) {
+			for (DiagramElementMapping mapping : (((DNodeContainerSpec)containerView).getActualMapping()
+					.getAllContainerMappings())) {
+				if (!mapping.isSynchronizationLock()) {
+					mappings.add(mapping);
+				}
+			}
+			for (DiagramElementMapping mapping : (((DNodeContainerSpec)containerView).getActualMapping()
+					.getAllNodeMappings())) {
+				if (!mapping.isSynchronizationLock()) {
 					mappings.add(mapping);
 				}
 			}

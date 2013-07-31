@@ -107,7 +107,7 @@
             <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$newSemanticContainer.dropFromDiagram($element, $newContainerView)%>"/>
           </initialOperation>
         </ownedTools>
-        <ownedTools xsi:type="tool:SelectionWizardDescription" documentation="Add an existing element to current representation" name="AddExistingElements" label="Add" precondition="&lt;%$container.isValidElementForContainerView(self,$containerView)%>" forceRefresh="true" candidatesExpression="&lt;%self.getValidsForDiagram($containerView)%>" multiple="true" tree="true" rootExpression="&lt;%getAllRootsInSession().filter(&quot;Model&quot;)%>" childrenExpression="&lt;%eContents()%>" iconPath="/org.eclipse.search/icons/full/etool16/search.gif" windowTitle="Select element to add in current representation">
+        <ownedTools xsi:type="tool:SelectionWizardDescription" documentation="Add an existing element to current representation" name="AddExistingElements" label="Add" precondition="&lt;%$container.existValidElementsForContainerView($containerView)%>" forceRefresh="true" candidatesExpression="&lt;%self.getValidsForDiagram($containerView)%>" multiple="true" tree="true" rootExpression="&lt;%getAllRootsInSession().filter(&quot;Model&quot;)%>" childrenExpression="&lt;%eContents()%>" iconPath="/org.eclipse.search/icons/full/etool16/search.gif" windowTitle="Select element to add in current representation">
           <element name="element"/>
           <containerView name="containerView"/>
           <container name="container"/>
@@ -874,7 +874,7 @@
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <toolSections name="CD_ExistingElements" label="Existing Elements" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='AddExistingElements'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='RemoveExistingElements'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Paste'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Drop%20From%20Model'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Drop%20From%20Diagram']">
+        <toolSections name="CD_ExistingElements" label="Existing Elements" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Paste'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Drop%20From%20Model'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='AddExistingElements']">
           <ownedTools xsi:type="tool:OperationAction" name="CD_AddRelatedElements" label="Add Related Elements" forceRefresh="true" icon="/org.eclipse.search/icons/full/etool16/search.gif">
             <view name="views"/>
             <initialOperation>
@@ -4300,39 +4300,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <toolSections name="Existing Elements" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Paste'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Drop%20From%20Model'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Drop%20From%20Diagram']">
-          <ownedTools xsi:type="tool:SelectionWizardDescription" documentation="Add an existing element to current representation" name="UCD_AddExistingElements" label="Add" precondition="&lt;%filter(&quot;Package&quot;)||filter(&quot;Classifier&quot;)%>" forceRefresh="true" candidatesExpression="&lt;%self.getValidsForUseCaseDiagram()%>" multiple="true" tree="true" rootExpression="&lt;%getAllRootsInSession().filter(&quot;Model&quot;)%>" childrenExpression="&lt;%eContents()%>" iconPath="/org.eclipse.search/icons/full/etool16/search.gif" windowTitle="Select element to add in current representation">
-            <element name="element"/>
-            <containerView name="containerView"/>
-            <container name="container"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element%>">
-                <subModelOperations xsi:type="tool:For" expression="&lt;%$element%>" iteratorName="selection">
-                  <subModelOperations xsi:type="tool:Switch">
-                    <cases conditionExpression="&lt;%$selection.filter(&quot;Actor&quot;)%>">
-                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_Actor']" containerViewExpression="&lt;%$containerView%>"/>
-                    </cases>
-                    <cases conditionExpression="&lt;%$selection.filter(&quot;UseCase&quot;)%>">
-                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_UseCase']" containerViewExpression="&lt;%$containerView%>"/>
-                    </cases>
-                    <cases conditionExpression="&lt;%$selection.filter(&quot;Classifier&quot;)%>">
-                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" containerViewExpression="&lt;%$containerView%>"/>
-                    </cases>
-                    <default/>
-                  </subModelOperations>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" name="UCD_RemoveExistingElements" label="Remove" precondition="&lt;%!$containerView.filter(&quot;DDiagram&quot;)%>" forceRefresh="true" iconPath="/org.eclipse.search/icons/full/dtool16/search.gif">
-            <element name="element"/>
-            <elementView name="elementView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$elementView%>">
-                <subModelOperations xsi:type="tool:DeleteView"/>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
+        <toolSections name="Existing Elements" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='AddExistingElements'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='RemoveExistingElements'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Paste'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Drop%20From%20Model'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Drop%20From%20Diagram']">
           <ownedTools xsi:type="tool:OperationAction" name="UCD_AddRelatedElements" label="Add Related Elements" forceRefresh="true" icon="/org.eclipse.search/icons/full/etool16/search.gif">
             <view name="views"/>
             <initialOperation>
