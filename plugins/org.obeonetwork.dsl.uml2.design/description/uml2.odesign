@@ -21,6 +21,24 @@
         </edgeMappings>
       </defaultLayer>
       <toolSection documentation="reused tools" name="reused tools">
+        <ownedTools xsi:type="tool:PopupMenu" name="Move UP/DOWN TO Attributes or Operations" label="Move to">
+          <menuItemDescription xsi:type="tool:OperationAction" name="Move TO Up" label="Up" precondition="&lt;%self.filter(&quot;Property&quot;)+self.filter(&quot;Operation&quot;)%>">
+            <view name="views"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$views.target.filter(&quot;Operation&quot;).moveUpOperations()%>">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$views.target.filter(&quot;Property&quot;).moveUpProperties()%>"/>
+              </firstModelOperations>
+            </initialOperation>
+          </menuItemDescription>
+          <menuItemDescription xsi:type="tool:OperationAction" name="Move TO Down" label="Down" precondition="&lt;%self.filter(&quot;Property&quot;)+self.filter(&quot;Operation&quot;)%>">
+            <view name="views"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$views.target.filter(&quot;Operation&quot;).moveDownOperations()%>">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$views.target.filter(&quot;Property&quot;).moveDownProperties()%>"/>
+              </firstModelOperations>
+            </initialOperation>
+          </menuItemDescription>
+        </ownedTools>
         <ownedTools xsi:type="tool:DirectEditLabel" documentation="A basic Direct Edit tool for NamedElement" name="GenericServiceDirectEdit">
           <mask mask="{0}"/>
           <initialOperation>
@@ -970,7 +988,7 @@
             </tools>
           </ownedTools>
         </toolSections>
-        <toolSections name="Features">
+        <toolSections name="Features" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Move%20UP%2FDOWN%20TO%20Attributes%20or%20Operations']">
           <ownedTools xsi:type="tool:ToolGroup" name="Properties">
             <tools xsi:type="tool:NodeCreationDescription" documentation="Create a new Property" name="Property" nodeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']">
               <variable name="container"/>
@@ -1039,24 +1057,6 @@
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:PopupMenu" name="CD_Move TO Attributes or Operations" label="Move to">
-            <menuItemDescription xsi:type="tool:OperationAction" name="CD_Move TO Up" label="Up" precondition="&lt;%self.filter(&quot;Property&quot;)+self.filter(&quot;Operation&quot;)%>">
-              <view name="views"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$views.target.filter(&quot;Operation&quot;).moveUpOperations()%>">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$views.target.filter(&quot;Property&quot;).moveUpProperties()%>"/>
-                </firstModelOperations>
-              </initialOperation>
-            </menuItemDescription>
-            <menuItemDescription xsi:type="tool:OperationAction" name="CD_Move TO Down" label="Down" precondition="&lt;%self.filter(&quot;Property&quot;)+self.filter(&quot;Operation&quot;)%>">
-              <view name="views"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$views.target.filter(&quot;Operation&quot;).moveDownOperations()%>">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$views.target.filter(&quot;Property&quot;).moveDownProperties()%>"/>
-                </firstModelOperations>
-              </initialOperation>
-            </menuItemDescription>
           </ownedTools>
           <subSections name="navigation">
             <ownedTools xsi:type="tool:DiagramCreationDescription" name="Activity diagram" titleExpression="&lt;%name%> activity diagram" browseExpression="&lt;%method.filter(&quot;Activity&quot;)%>" diagramDescription="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']">
