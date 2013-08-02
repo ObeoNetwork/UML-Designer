@@ -15,8 +15,8 @@ import junit.framework.Test;
 import junit.framework.TestSuite;
 import junit.textui.TestRunner;
 
+import org.obeonetwork.dsl.uml2.design.tests.plugin.manual.DiagramElementMappingSpecificationTests;
 import org.obeonetwork.dsl.uml2.design.tests.services.ConnectorServicesTests;
-import org.obeonetwork.dsl.uml2.design.tests.services.DiagramElementMappingSpecificationTests;
 import org.obeonetwork.dsl.uml2.design.tests.services.SequenceServiceTests;
 import org.obeonetwork.dsl.uml2.design.tests.services.compositestructure.IsRelated4CompositeStructureServicesTests;
 import org.obeonetwork.dsl.uml2.design.tests.services.compositestructure.IsRelated4CompositeStructureServicesWithConnectorTests;

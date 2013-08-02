@@ -15,15 +15,13 @@ import static org.junit.Assert.*;
 	import org.obeonetwork.dsl.uml2.design.tests.automation.Context;
 
 // Start of user code APackageSelectedInTheModelExplorer imports
-import org.obeonetwork.dsl.uml2.design.tests.contexts.UMLDesignerBot;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
-
 // End of user code
 
 /**
  * Context : A package selected in the model explorer
  */
-public class APackageSelectedInTheModelExplorer extends Context {
+public class APackageSelectedInTheModelExplorer extends UnactivateUmlUsage {
 // Start of user code APackageSelectedInTheModelExplorer variables
 	protected UMLDesignerBot bot = new UMLDesignerBot();
 
@@ -31,6 +29,7 @@ public class APackageSelectedInTheModelExplorer extends Context {
 
 	@Override
 	public void setup() {
+		super.setup();
 		// Start of user code APackageSelectedInTheModelExplorer setup
 		bot.importTravelAgencyProject();
 		// End of user code
@@ -38,6 +37,7 @@ public class APackageSelectedInTheModelExplorer extends Context {
 
 	@Override
 	public void tearDown() {
+		super.tearDown();
 		// Start of user code APackageSelectedInTheModelExplorer tear down
 		bot.saveChanges();
 		bot.deleteTravelAgencyProject();
@@ -48,8 +48,7 @@ public class APackageSelectedInTheModelExplorer extends Context {
 	 */
 	public void actionICreateANewClassDiagram() {
 		// Start of user code ICreateANewClassDiagram
-		// TODO Implement action ICreateANewClassDiagram
-		fail("Action ICreateANewClassDiagram not implemented");
+		bot.createAClassDiagram();
 		// End of user code
 	}
 
@@ -58,8 +57,8 @@ public class APackageSelectedInTheModelExplorer extends Context {
 	 */
 	public void assertAClassDiagramIsCreatedAndOpened() {
 		// Start of user code AClassDiagramIsCreatedAndOpened
-		// TODO Implement behavior AClassDiagramIsCreatedAndOpened
-		fail("Behavior AClassDiagramIsCreatedAndOpened not implemented");
+		SWTBotEditor editor = bot.getActiveEditor();
+		assertEquals("Travel Agency Class Diagram", editor.getTitle());
 		// End of user code
 	}
 

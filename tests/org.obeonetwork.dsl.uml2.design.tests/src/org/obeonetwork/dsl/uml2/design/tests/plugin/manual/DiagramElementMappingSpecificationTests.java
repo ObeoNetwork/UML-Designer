@@ -1,4 +1,4 @@
-package org.obeonetwork.dsl.uml2.design.tests.services;
+package org.obeonetwork.dsl.uml2.design.tests.plugin.manual;
 
 import static org.junit.Assert.fail;
 

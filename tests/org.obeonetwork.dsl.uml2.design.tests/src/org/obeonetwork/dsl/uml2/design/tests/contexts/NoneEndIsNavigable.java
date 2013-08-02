@@ -55,11 +55,11 @@ public class NoneEndIsNavigable extends AnUmlModelWithAnAssociation {
 	}
 
 	/**
-	 * Behavior : The first end lower cardinality equals
+	 * Behavior : The first end name equals
 	 */
-	public void assertTheFirstEndLowerCardinalityEquals(String theFirstEndLowerCardinalityEquals0) {
-		// Start of user code TheFirstEndLowerCardinalityEquals
-		assertEquals(Integer.parseInt(theFirstEndLowerCardinalityEquals0), firstEnd.getLower());
+	public void assertTheFirstEndNameEquals(String theFirstEndNameEquals0) {
+		// Start of user code TheFirstEndNameEquals
+		assertEquals(theFirstEndNameEquals0, firstEnd.getName());
 		// End of user code
 	}
 	/**
@@ -71,11 +71,11 @@ public class NoneEndIsNavigable extends AnUmlModelWithAnAssociation {
 		// End of user code
 	}
 	/**
-	 * Behavior : The first end name equals
+	 * Behavior : The first end lower cardinality equals
 	 */
-	public void assertTheFirstEndNameEquals(String theFirstEndNameEquals0) {
-		// Start of user code TheFirstEndNameEquals
-		assertEquals(theFirstEndNameEquals0, firstEnd.getName());
+	public void assertTheFirstEndLowerCardinalityEquals(String theFirstEndLowerCardinalityEquals0) {
+		// Start of user code TheFirstEndLowerCardinalityEquals
+		assertEquals(Integer.parseInt(theFirstEndLowerCardinalityEquals0), firstEnd.getLower());
 		// End of user code
 	}
 

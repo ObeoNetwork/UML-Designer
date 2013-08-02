@@ -25,6 +25,12 @@ public class AClassDiagramIsOpenedUiTests {
 		context.assertAClassAppearsOnTheDiagram();
 	}
 	@Test
+	public void createAClassInTheClassDiagramFromTheTooltipBar() throws Exception {
+		context.actionISelectTheClassCreationToolFromTheTooltipBarWhenTheMouseHoversOverTheDiagram();
+		context.assertAClassIsCreatedInTheModel();
+		context.assertAClassAppearsOnTheDiagram();
+	}
+	@Test
 	public void createAnEnumerationInTheClassDiagramFromThePalette() throws Exception {
 		context.actionISelectTheEnumerationCreationToolFromThePaletteAndIClickOnTheDiagram();
 		context.assertAnEnumerationIsCreatedInTheModel();
@@ -32,30 +38,38 @@ public class AClassDiagramIsOpenedUiTests {
 	}
 	@Test
 	public void createADatatypeInTheClassDiagramFromThePalette() throws Exception {
-		context.actionISelectTheDatatypeCreationToolFromThePalette();
-		context.actionIClickOnTheDiagram();
+		context.actionISelectTheDatatypeCreationToolFromThePaletteAndIClickOnTheDiagram();
 		context.assertADatatypeIsCreatedInTheModel();
 		context.assertADatatypeAppearsOnTheDiagram();
 	}
 	@Test
 	public void createAPrimitiveTypeInTheClassDiagramFromThePalette() throws Exception {
-		context.actionISelectThePrimitiveTypeCreationToolFromThePalette();
-		context.actionIClickOnTheDiagram();
+		context.actionISelectThePrimitiveTypeCreationToolFromThePaletteAndIClickOnTheDiagram();
 		context.assertAPrimitiveTypeIsCreatedInTheModel();
 		context.assertAPrimitiveTypeAppearsOnTheDiagram();
 	}
 	@Test
 	public void createAnInterfaceInTheClassDiagramFromThePalette() throws Exception {
-		context.actionISelectTheInterfaceCreationToolFromThePalette();
-		context.actionIClickOnTheDiagram();
+		context.actionISelectTheInterfaceCreationToolFromThePaletteAndIClickOnTheDiagram();
 		context.assertAnInterfaceIsCreatedInTheModel();
 		context.assertAnInterfaceAppearsOnTheDiagram();
 	}
 	@Test
 	public void createAPackageInTheClassDiagramFromThePalette() throws Exception {
-		context.actionISelectThePackageCreationToolFromThePalette();
-		context.actionIClickOnTheDiagram();
+		context.actionISelectThePackageCreationToolFromThePaletteAndIClickOnTheDiagram();
 		context.assertAPackageIsCreatedInTheModel();
 		context.assertAPackageAppearsOnTheDiagram();
+	}
+	@Test
+	public void createAClassInAPackageInTheClassDiagramFromThePalette() throws Exception {
+		context.actionISelectTheClassCreationToolFromThePaletteAndISelectInTheDiagramAPackageAsContainer();
+		context.assertAClassIsCreatedInTheParentPackage();
+		context.assertAClassAppearsInTheParentPackageOnTheDiagram();
+	}
+	@Test
+	public void createAPackageInAPackageInTheClassDiagramFromThePalette() throws Exception {
+		context.actionISelectThePackageCreationToolFromThePaletteAndISelectInTheDiagramAPackageAsContainer();
+		context.assertAPackageIsCreatedInTheParentPackage();
+		context.assertAPackageAppearsInTheParentPackageOnTheDiagram();
 	}
 }

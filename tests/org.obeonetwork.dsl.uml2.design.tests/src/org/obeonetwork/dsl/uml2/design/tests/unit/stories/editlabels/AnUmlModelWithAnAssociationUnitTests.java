@@ -19,6 +19,13 @@ public class AnUmlModelWithAnAssociationUnitTests {
 	public AnUmlModelWithAnAssociation context = new AnUmlModelWithAnAssociation();
 
 	@Test
+	public void editAssociationRole() throws Exception {
+		context.actionIEditTheLabelOfTheFirstRoleTo("firstRole");
+		context.actionIEditTheLabelOfTheSecondRoleTo("secondRole");
+		context.assertTheFirstEndNameEquals("firstRole");
+		context.assertTheSecondEndNameEquals("secondRole");
+	}
+	@Test
 	public void classDiagramEditRolesNames() throws Exception {
 		context.actionIEditTheLabelOfTheFirstRoleTo("firstRole");
 		context.actionIEditTheLabelOfTheSecondRoleTo("secondRole");

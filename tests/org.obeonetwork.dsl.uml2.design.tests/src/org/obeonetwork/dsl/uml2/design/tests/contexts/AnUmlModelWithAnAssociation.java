@@ -59,6 +59,15 @@ public class AnUmlModelWithAnAssociation extends Context {
 		// End of user code
 	}
 	/**
+	 * Action : I edit the label of the second role to
+	 */
+	public void actionIEditTheLabelOfTheSecondRoleTo(String iEditTheLabelOfTheSecondRoleTo0) {
+		// Start of user code IEditTheLabelOfTheSecondRoleTo
+		editSecondRole(startAssociation, iEditTheLabelOfTheSecondRoleTo0);
+		// End of user code
+	}
+
+	/**
 	 * Action : I edit the label of the first role to
 	 */
 	public void actionIEditTheLabelOfTheFirstRoleTo(String iEditTheLabelOfTheFirstRoleTo0) {
@@ -68,14 +77,45 @@ public class AnUmlModelWithAnAssociation extends Context {
 	}
 
 	/**
-	 * Action : I edit the label of the second role to
+	 * Behavior : The second end is derived
 	 */
-	public void actionIEditTheLabelOfTheSecondRoleTo(String iEditTheLabelOfTheSecondRoleTo0) {
-		// Start of user code IEditTheLabelOfTheSecondRoleTo
-		editSecondRole(startAssociation, iEditTheLabelOfTheSecondRoleTo0);
+	public void assertTheSecondEndIsDerived() {
+		// Start of user code TheSecondEndIsDerived
+		assertEquals(true, secondEnd.isDerived());
 		// End of user code
 	}
-
+	/**
+	 * Behavior : The second end lower cardinality equals
+	 */
+	public void assertTheSecondEndLowerCardinalityEquals(String theSecondEndLowerCardinalityEquals0) {
+		// Start of user code TheSecondEndLowerCardinalityEquals
+		assertEquals(Integer.parseInt(theSecondEndLowerCardinalityEquals0), secondEnd.getLower());
+		// End of user code
+	}
+	/**
+	 * Behavior : The first end is derived
+	 */
+	public void assertTheFirstEndIsDerived() {
+		// Start of user code TheFirstEndIsDerived
+		assertEquals(true, firstEnd.isDerived());
+		// End of user code
+	}
+	/**
+	 * Behavior : The first end upper cardinality equals
+	 */
+	public void assertTheFirstEndUpperCardinalityEquals(String theFirstEndUpperCardinalityEquals0) {
+		// Start of user code TheFirstEndUpperCardinalityEquals
+		assertEquals(Integer.parseInt(theFirstEndUpperCardinalityEquals0), firstEnd.getUpper());
+		// End of user code
+	}
+	/**
+	 * Behavior : The second end upper cardinality equals
+	 */
+	public void assertTheSecondEndUpperCardinalityEquals(String theSecondEndUpperCardinalityEquals0) {
+		// Start of user code TheSecondEndUpperCardinalityEquals
+		assertEquals(Integer.parseInt(theSecondEndUpperCardinalityEquals0), secondEnd.getUpper());
+		// End of user code
+	}
 	/**
 	 * Behavior : The second end is not derived
 	 */
@@ -93,6 +133,14 @@ public class AnUmlModelWithAnAssociation extends Context {
 		// End of user code
 	}
 	/**
+	 * Behavior : The second end name equals
+	 */
+	public void assertTheSecondEndNameEquals(String theSecondEndNameEquals0) {
+		// Start of user code TheSecondEndNameEquals
+		assertEquals(theSecondEndNameEquals0, secondEnd.getName());
+		// End of user code
+	}
+	/**
 	 * Behavior : The first end lower cardinality equals
 	 */
 	public void assertTheFirstEndLowerCardinalityEquals(String theFirstEndLowerCardinalityEquals0) {
@@ -106,54 +154,6 @@ public class AnUmlModelWithAnAssociation extends Context {
 	public void assertTheFirstEndIsNotDerived() {
 		// Start of user code TheFirstEndIsNotDerived
 		assertEquals(false, firstEnd.isDerived());
-		// End of user code
-	}
-	/**
-	 * Behavior : The second end upper cardinality equals
-	 */
-	public void assertTheSecondEndUpperCardinalityEquals(String theSecondEndUpperCardinalityEquals0) {
-		// Start of user code TheSecondEndUpperCardinalityEquals
-		assertEquals(Integer.parseInt(theSecondEndUpperCardinalityEquals0), secondEnd.getUpper());
-		// End of user code
-	}
-	/**
-	 * Behavior : The second end is derived
-	 */
-	public void assertTheSecondEndIsDerived() {
-		// Start of user code TheSecondEndIsDerived
-		assertEquals(true, secondEnd.isDerived());
-		// End of user code
-	}
-	/**
-	 * Behavior : The second end name equals
-	 */
-	public void assertTheSecondEndNameEquals(String theSecondEndNameEquals0) {
-		// Start of user code TheSecondEndNameEquals
-		assertEquals(theSecondEndNameEquals0, secondEnd.getName());
-		// End of user code
-	}
-	/**
-	 * Behavior : The first end upper cardinality equals
-	 */
-	public void assertTheFirstEndUpperCardinalityEquals(String theFirstEndUpperCardinalityEquals0) {
-		// Start of user code TheFirstEndUpperCardinalityEquals
-		assertEquals(Integer.parseInt(theFirstEndUpperCardinalityEquals0), firstEnd.getUpper());
-		// End of user code
-	}
-	/**
-	 * Behavior : The first end is derived
-	 */
-	public void assertTheFirstEndIsDerived() {
-		// Start of user code TheFirstEndIsDerived
-		assertEquals(true, firstEnd.isDerived());
-		// End of user code
-	}
-	/**
-	 * Behavior : The second end lower cardinality equals
-	 */
-	public void assertTheSecondEndLowerCardinalityEquals(String theSecondEndLowerCardinalityEquals0) {
-		// Start of user code TheSecondEndLowerCardinalityEquals
-		assertEquals(Integer.parseInt(theSecondEndLowerCardinalityEquals0), secondEnd.getLower());
 		// End of user code
 	}
 

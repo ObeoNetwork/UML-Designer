@@ -183,7 +183,7 @@ public class UMLDesignerBot {
 		}
 		bot.viewByTitle("Model Explorer").bot().tree()
 				.expandNode("TravelAgency").contextMenu("Delete").click();
-		bot.waitUntil(Conditions.shellIsActive("Delete Resources"),5000);
+		bot.waitUntil(Conditions.shellIsActive("Delete Resources"),25000);
 		bot.button("OK").click();
 	}
 
