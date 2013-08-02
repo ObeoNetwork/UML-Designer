@@ -11,7 +11,6 @@
 package org.obeonetwork.dsl.uml2.design.services;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
@@ -47,46 +46,47 @@ public final class OperationServices {
 		}
 		return operation;
 	}
-	
-	
+
 	/**
 	 * Change properties order in Class and Interface.
+	 * 
 	 * @param operationsToMove
+	 *            operations to move
 	 */
 	public void moveUpOperations(List<Operation> operationsToMove) {
-		
+
 		List<Operation> operationsInRightOrder = retrieveTheRightOrder(operationsToMove);
-		
-		// move all operations contain in operationsInRightOrder (to move in the right order)
-		for (Iterator<Operation> iterator = operationsInRightOrder.iterator(); iterator.hasNext();) {
-			Operation operation = (Operation)iterator.next();
+		while (operationsInRightOrder.iterator().hasNext()) {
+			Operation operation = operationsInRightOrder.iterator().next();
 			moveUpOperation(operation);
 		}
 	}
-	
+
 	/**
 	 * Change properties order in Class and Interface.
+	 * 
 	 * @param operationsToMove
+	 *            operations to move
 	 */
 	public void moveDownOperations(List<Operation> operationsToMove) {
-		
+
 		List<Operation> operationsInRightOrder = retrieveTheRightOrder(operationsToMove);
 		Object[] operationsArray = operationsInRightOrder.toArray();
-		
-		for (int i = operationsArray.length-1; i >=0; i--) {
-			if(operationsArray[i] instanceof Operation) {
+
+		for (int i = operationsArray.length - 1; i >= 0; i--) {
+			if (operationsArray[i] instanceof Operation) {
 				Operation operation = (Operation)operationsArray[i];
-				if(operationsToMove.contains(operation)) {
+				if (operationsToMove.contains(operation)) {
 					moveDownOperation(operation);
 				}
 			}
 		}
 	}
-	
+
 	private void moveUpOperation(Operation operation) {
 
 		EObject eContainer = operation.eContainer();
-		
+
 		if (eContainer instanceof org.eclipse.uml2.uml.Class || eContainer instanceof Interface) {
 			EList<Operation> operations = null;
 			if (eContainer instanceof org.eclipse.uml2.uml.Class) {
@@ -96,19 +96,19 @@ public final class OperationServices {
 				Interface eInterface = (Interface)eContainer;
 				operations = eInterface.getOwnedOperations();
 			}
-			
+
 			int oldIndex = operations.indexOf(operation);
-			int newIndex = oldIndex-1;
-			if(newIndex>=0) {
+			int newIndex = oldIndex - 1;
+			if (newIndex >= 0) {
 				operations.move(newIndex, oldIndex);
 			}
 		}
 	}
-	
+
 	private void moveDownOperation(Operation operation) {
 
 		EObject eContainer = operation.eContainer();
-		
+
 		if (eContainer instanceof org.eclipse.uml2.uml.Class || eContainer instanceof Interface) {
 			EList<Operation> operations = null;
 			if (eContainer instanceof org.eclipse.uml2.uml.Class) {
@@ -118,28 +118,28 @@ public final class OperationServices {
 				Interface eInterface = (Interface)eContainer;
 				operations = eInterface.getOwnedOperations();
 			}
-			
+
 			int oldIndex = operations.indexOf(operation);
-			int newIndex = oldIndex+1;
-			if(newIndex<operations.size()) {
+			int newIndex = oldIndex + 1;
+			if (newIndex < operations.size()) {
 				operations.move(newIndex, oldIndex);
 			}
 		}
 	}
-	
+
 	private List<Operation> retrieveTheRightOrder(List<Operation> operationsInWrongOrder) {
-		
+
 		List<Operation> operationsInRightOrder = new ArrayList<Operation>();
-		
+
 		// retrieve all eContainers (operation could be in different eContainers)
 		List<EObject> eContainers = new ArrayList<EObject>();
 		for (Operation operation : operationsInWrongOrder) {
 			EObject eContainer = operation.eContainer();
-			if(eContainer!=null && !eContainers.contains(eContainer)) {
+			if (eContainer != null && !eContainers.contains(eContainer)) {
 				eContainers.add(eContainer);
 			}
 		}
-		
+
 		// on all eContainers found
 		for (EObject eContainer : eContainers) {
 			if (eContainer instanceof org.eclipse.uml2.uml.Class || eContainer instanceof Interface) {
@@ -152,17 +152,17 @@ public final class OperationServices {
 					Interface eInterface = (Interface)eContainer;
 					operations = eInterface.getOwnedOperations();
 				}
-				
+
 				// add all operations contain in operationsInWrongOrder (to retrieve the right order)
-				for (Iterator<Operation> iterator = operations.iterator(); iterator.hasNext();) {
-					Operation operation = (Operation)iterator.next();
-					if(operationsInWrongOrder.contains(operation)) {
+				while (operations.iterator().hasNext()) {
+					Operation operation = operations.iterator().next();
+					if (operationsInWrongOrder.contains(operation)) {
 						operationsInRightOrder.add(operation);
 					}
 				}
 			}
 		}
-		
+
 		return operationsInRightOrder;
 	}
 }

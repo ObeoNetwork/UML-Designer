@@ -11,7 +11,6 @@
 package org.obeonetwork.dsl.uml2.design.services;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
@@ -28,38 +27,42 @@ public final class PropertyServices {
 
 	/**
 	 * Change properties order in Class and Interface.
+	 * 
 	 * @param propertiesToMove
+	 *            properties to move
 	 */
 	public void moveUpProperties(List<Property> propertiesToMove) {
 
 		List<Property> propertiesInRightOrder = retrieveTheRightOrder(propertiesToMove);
 
 		// move all properties contain in propertiesInRightOrder (to move in the right order)
-		for (Iterator<Property> iterator = propertiesInRightOrder.iterator(); iterator.hasNext();) {
-			Property operation = (Property)iterator.next();
+		while (propertiesInRightOrder.iterator().hasNext()) {
+			Property operation = propertiesInRightOrder.iterator().next();
 			moveUpProperty(operation);
 		}
 	}
-	
+
 	/**
 	 * Change properties order in Class and Interface.
+	 * 
 	 * @param propertiesToMove
+	 *            properties to move
 	 */
 	public void moveDownProperties(List<Property> propertiesToMove) {
-		
+
 		List<Property> propertiesInRightOrder = retrieveTheRightOrder(propertiesToMove);
 		Object[] propertiesArray = propertiesInRightOrder.toArray();
-		
-		for (int i = propertiesArray.length-1; i >=0; i--) {
-			if(propertiesArray[i] instanceof Property) {
+
+		for (int i = propertiesArray.length - 1; i >= 0; i--) {
+			if (propertiesArray[i] instanceof Property) {
 				Property operation = (Property)propertiesArray[i];
-				if(propertiesToMove.contains(operation)) {
+				if (propertiesToMove.contains(operation)) {
 					moveDownProperty(operation);
 				}
 			}
 		}
 	}
-	
+
 	private void moveUpProperty(Property property) {
 		// Create new operation
 		EObject eContainer = property.eContainer();
@@ -75,13 +78,13 @@ public final class PropertyServices {
 			}
 
 			int oldIndex = properties.indexOf(property);
-			int newIndex = oldIndex-1;
-			if(newIndex>=0) {
+			int newIndex = oldIndex - 1;
+			if (newIndex >= 0) {
 				properties.move(newIndex, oldIndex);
 			}
 		}
 	}
-	
+
 	private void moveDownProperty(Property property) {
 		// Create new operation
 		EObject eContainer = property.eContainer();
@@ -97,8 +100,8 @@ public final class PropertyServices {
 			}
 
 			int oldIndex = properties.indexOf(property);
-			int newIndex = oldIndex+1;
-			if(newIndex<properties.size()) {
+			int newIndex = oldIndex + 1;
+			if (newIndex < properties.size()) {
 				properties.move(newIndex, oldIndex);
 			}
 		}
@@ -112,7 +115,7 @@ public final class PropertyServices {
 		List<EObject> eContainers = new ArrayList<EObject>();
 		for (Property property : propertiesInWrongOrder) {
 			EObject eContainer = property.eContainer();
-			if(eContainer!=null && !eContainers.contains(eContainer)) {
+			if (eContainer != null && !eContainers.contains(eContainer)) {
 				eContainers.add(eContainer);
 			}
 		}
@@ -131,9 +134,9 @@ public final class PropertyServices {
 				}
 
 				// add all properties contain in propertiesInWrongOrder (to retrieve the right order)
-				for (Iterator<Property> iterator = properties.iterator(); iterator.hasNext();) {
-					Property property = (Property)iterator.next();
-					if(propertiesInWrongOrder.contains(property)) {
+				while (properties.iterator().hasNext()) {
+					Property property = properties.iterator().next();
+					if (propertiesInWrongOrder.contains(property)) {
 						propertiesInRightOrder.add(property);
 					}
 				}
