@@ -11,12 +11,15 @@
 package org.obeonetwork.dsl.uml2.design.services;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.StructuredClassifier;
+import org.obeonetwork.dsl.uml2.design.services.internal.MoveDownElementSwitch;
+import org.obeonetwork.dsl.uml2.design.services.internal.MoveUpElementSwitch;
 
 /**
  * Utility services to manage property.
@@ -34,11 +37,12 @@ public final class PropertyServices {
 	public void moveUpProperties(List<Property> propertiesToMove) {
 
 		List<Property> propertiesInRightOrder = retrieveTheRightOrder(propertiesToMove);
-
+		MoveUpElementSwitch moveUpElementsSwitch = new MoveUpElementSwitch();
 		// move all properties contain in propertiesInRightOrder (to move in the right order)
-		while (propertiesInRightOrder.iterator().hasNext()) {
-			Property operation = propertiesInRightOrder.iterator().next();
-			moveUpProperty(operation);
+		Iterator<Property> iterator = propertiesInRightOrder.iterator();
+		while (iterator.hasNext()) {
+			Property property = iterator.next();
+			moveUpElementsSwitch.moveUpElement(property);
 		}
 	}
 
@@ -52,57 +56,10 @@ public final class PropertyServices {
 
 		List<Property> propertiesInRightOrder = retrieveTheRightOrder(propertiesToMove);
 		Object[] propertiesArray = propertiesInRightOrder.toArray();
-
+		MoveDownElementSwitch moveDownElementSwitch = new MoveDownElementSwitch();
 		for (int i = propertiesArray.length - 1; i >= 0; i--) {
 			if (propertiesArray[i] instanceof Property) {
-				Property operation = (Property)propertiesArray[i];
-				if (propertiesToMove.contains(operation)) {
-					moveDownProperty(operation);
-				}
-			}
-		}
-	}
-
-	private void moveUpProperty(Property property) {
-		// Create new operation
-		EObject eContainer = property.eContainer();
-
-		if (eContainer instanceof org.eclipse.uml2.uml.Class || eContainer instanceof Interface) {
-			EList<Property> properties = null;
-			if (eContainer instanceof org.eclipse.uml2.uml.Class) {
-				org.eclipse.uml2.uml.Class eclass = (org.eclipse.uml2.uml.Class)eContainer;
-				properties = eclass.getOwnedAttributes();
-			} else {
-				Interface eInterface = (Interface)eContainer;
-				properties = eInterface.getOwnedAttributes();
-			}
-
-			int oldIndex = properties.indexOf(property);
-			int newIndex = oldIndex - 1;
-			if (newIndex >= 0) {
-				properties.move(newIndex, oldIndex);
-			}
-		}
-	}
-
-	private void moveDownProperty(Property property) {
-		// Create new operation
-		EObject eContainer = property.eContainer();
-
-		if (eContainer instanceof org.eclipse.uml2.uml.Class || eContainer instanceof Interface) {
-			EList<Property> properties = null;
-			if (eContainer instanceof org.eclipse.uml2.uml.Class) {
-				org.eclipse.uml2.uml.Class eclass = (org.eclipse.uml2.uml.Class)eContainer;
-				properties = eclass.getOwnedAttributes();
-			} else {
-				Interface eInterface = (Interface)eContainer;
-				properties = eInterface.getOwnedAttributes();
-			}
-
-			int oldIndex = properties.indexOf(property);
-			int newIndex = oldIndex + 1;
-			if (newIndex < properties.size()) {
-				properties.move(newIndex, oldIndex);
+				moveDownElementSwitch.moveDownElement((Property)propertiesArray[i]);
 			}
 		}
 	}
@@ -122,20 +79,14 @@ public final class PropertyServices {
 
 		// on all eContainers found
 		for (EObject eContainer : eContainers) {
-			if (eContainer instanceof org.eclipse.uml2.uml.Class || eContainer instanceof Interface) {
+			if (eContainer instanceof StructuredClassifier) {
 				// get all properties for a specific eContainer
-				EList<Property> properties = null;
-				if (eContainer instanceof org.eclipse.uml2.uml.Class) {
-					org.eclipse.uml2.uml.Class eclass = (org.eclipse.uml2.uml.Class)eContainer;
-					properties = eclass.getOwnedAttributes();
-				} else {
-					Interface eInterface = (Interface)eContainer;
-					properties = eInterface.getOwnedAttributes();
-				}
+				EList<Property> properties = ((StructuredClassifier)eContainer).getOwnedAttributes();
 
 				// add all properties contain in propertiesInWrongOrder (to retrieve the right order)
-				while (properties.iterator().hasNext()) {
-					Property property = properties.iterator().next();
+				Iterator<Property> iterator = properties.iterator();
+				while (iterator.hasNext()) {
+					Property property = iterator.next();
 					if (propertiesInWrongOrder.contains(property)) {
 						propertiesInRightOrder.add(property);
 					}

@@ -11,6 +11,7 @@
 package org.obeonetwork.dsl.uml2.design.services;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
@@ -18,6 +19,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.Operation;
+import org.obeonetwork.dsl.uml2.design.services.internal.MoveDownElementSwitch;
+import org.obeonetwork.dsl.uml2.design.services.internal.MoveUpElementSwitch;
 import org.obeonetwork.dsl.uml2.design.services.internal.NamedElementServices;
 
 /**
@@ -56,9 +59,11 @@ public final class OperationServices {
 	public void moveUpOperations(List<Operation> operationsToMove) {
 
 		List<Operation> operationsInRightOrder = retrieveTheRightOrder(operationsToMove);
-		while (operationsInRightOrder.iterator().hasNext()) {
-			Operation operation = operationsInRightOrder.iterator().next();
-			moveUpOperation(operation);
+		MoveUpElementSwitch moveUpElementsSwitch = new MoveUpElementSwitch();
+		Iterator<Operation> iterator = operationsInRightOrder.iterator();
+		while (iterator.hasNext()) {
+			Operation operation = iterator.next();
+			moveUpElementsSwitch.moveUpElement(operation);
 		}
 	}
 
@@ -72,57 +77,10 @@ public final class OperationServices {
 
 		List<Operation> operationsInRightOrder = retrieveTheRightOrder(operationsToMove);
 		Object[] operationsArray = operationsInRightOrder.toArray();
-
+		MoveDownElementSwitch moveDownElementSwitch = new MoveDownElementSwitch();
 		for (int i = operationsArray.length - 1; i >= 0; i--) {
 			if (operationsArray[i] instanceof Operation) {
-				Operation operation = (Operation)operationsArray[i];
-				if (operationsToMove.contains(operation)) {
-					moveDownOperation(operation);
-				}
-			}
-		}
-	}
-
-	private void moveUpOperation(Operation operation) {
-
-		EObject eContainer = operation.eContainer();
-
-		if (eContainer instanceof org.eclipse.uml2.uml.Class || eContainer instanceof Interface) {
-			EList<Operation> operations = null;
-			if (eContainer instanceof org.eclipse.uml2.uml.Class) {
-				org.eclipse.uml2.uml.Class eclass = (org.eclipse.uml2.uml.Class)eContainer;
-				operations = eclass.getOwnedOperations();
-			} else {
-				Interface eInterface = (Interface)eContainer;
-				operations = eInterface.getOwnedOperations();
-			}
-
-			int oldIndex = operations.indexOf(operation);
-			int newIndex = oldIndex - 1;
-			if (newIndex >= 0) {
-				operations.move(newIndex, oldIndex);
-			}
-		}
-	}
-
-	private void moveDownOperation(Operation operation) {
-
-		EObject eContainer = operation.eContainer();
-
-		if (eContainer instanceof org.eclipse.uml2.uml.Class || eContainer instanceof Interface) {
-			EList<Operation> operations = null;
-			if (eContainer instanceof org.eclipse.uml2.uml.Class) {
-				org.eclipse.uml2.uml.Class eclass = (org.eclipse.uml2.uml.Class)eContainer;
-				operations = eclass.getOwnedOperations();
-			} else {
-				Interface eInterface = (Interface)eContainer;
-				operations = eInterface.getOwnedOperations();
-			}
-
-			int oldIndex = operations.indexOf(operation);
-			int newIndex = oldIndex + 1;
-			if (newIndex < operations.size()) {
-				operations.move(newIndex, oldIndex);
+				moveDownElementSwitch.moveDownElement((Operation)operationsArray[i]);
 			}
 		}
 	}
@@ -154,8 +112,9 @@ public final class OperationServices {
 				}
 
 				// add all operations contain in operationsInWrongOrder (to retrieve the right order)
-				while (operations.iterator().hasNext()) {
-					Operation operation = operations.iterator().next();
+				Iterator<Operation> iterator = operations.iterator();
+				while (iterator.hasNext()) {
+					Operation operation = iterator.next();
 					if (operationsInWrongOrder.contains(operation)) {
 						operationsInRightOrder.add(operation);
 					}
