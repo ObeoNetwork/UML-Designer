@@ -27,7 +27,10 @@ import fr.obeo.dsl.viewpoint.diagram.sequence.description.SequenceDiagramDescrip
 import fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectUIManager;
 
 public class CreateScenario extends AbstractHandler {
-
+	// TODO To remove
+	/**
+	 * {@inheritDoc}
+	 */
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		ISelection selection = HandlerUtil.getCurrentSelection(event);
 

@@ -64,6 +64,22 @@ Contributors:
             id="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.scenario.create"
             name="Create Scenario">
       </command>
+        <command
+              id="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.sequence"
+              name="Create Sequence Diagram">
+        </command>
+        <command
+              id="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.activity"
+              name="Create Activity Diagram">
+        </command>
+        <command
+              id="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.profile"
+              name="Create Profile Diagram">
+        </command>
+        <command
+              id="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.statemachine"
+              name="Create State Machine Diagram">
+        </command>
    </extension>
   
    <extension
@@ -100,6 +116,86 @@ Contributors:
        		</with>
            </enabledWhen>
         </handler>
+         <handler
+               class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.CreateSequenceDiagram"
+               commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.sequence">
+            <enabledWhen>
+               <with
+                     variable="selection">
+                  <iterate
+                        ifEmpty="false"
+                        operator="and">
+                     <instanceof
+                           value="org.eclipse.uml2.uml.Package">
+                     </instanceof>
+                     <test
+                           forcePluginActivation="true"
+                           property="org.obeonetwork.dsl.uml2.design.Behavioral">
+                     </test>
+                  </iterate>
+               </with>
+            </enabledWhen>
+         </handler>
+         <handler
+               class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.CreateActivityDiagram"
+               commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.activity">
+            <enabledWhen>
+               <with
+                     variable="selection">
+                  <iterate
+                        ifEmpty="false"
+                        operator="and">
+                     <instanceof
+                           value="org.eclipse.uml2.uml.Package">
+                     </instanceof>
+                     <test
+                           forcePluginActivation="true"
+                           property="org.obeonetwork.dsl.uml2.design.Behavioral">
+                     </test>
+                  </iterate>
+               </with>
+            </enabledWhen>
+         </handler>
+         <handler
+               class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.CreateProfileDiagram"
+               commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.profile">
+            <enabledWhen>
+               <with
+                     variable="selection">
+                  <iterate
+                        ifEmpty="false"
+                        operator="and">
+                     <instanceof
+                           value="org.eclipse.uml2.uml.Package">
+                     </instanceof>
+                     <test
+                           forcePluginActivation="true"
+                           property="org.obeonetwork.dsl.uml2.design.Behavioral">
+                     </test>
+                  </iterate>
+               </with>
+            </enabledWhen>
+         </handler>
+         <handler
+               class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.CreateStateMachineDiagram"
+               commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.statemachine">
+            <enabledWhen>
+               <with
+                     variable="selection">
+                  <iterate
+                        ifEmpty="false"
+                        operator="and">
+                     <instanceof
+                           value="org.eclipse.uml2.uml.Package">
+                     </instanceof>
+                     <test
+                           forcePluginActivation="true"
+                           property="org.obeonetwork.dsl.uml2.design.Behavioral">
+                     </test>
+                  </iterate>
+               </with>
+            </enabledWhen>
+         </handler>
    </extension>
   
   
@@ -120,6 +216,49 @@ Contributors:
                icon="icons/NewUmlModel.gif"               
                label="Create Scenario"
                commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.scenario.create"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+            </visibleWhen>
+         </command>
+      </menuContribution>
+      <menuContribution
+            locationURI="popup:menu.viewpoint.new.representation">
+         <separator
+               name="org.obeonetwork.dsl.uml2.design.separator1"
+               visible="true">
+         </separator>
+         <command
+               commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.sequence"
+               icon="icons/SequenceDDiagram.gif"
+               label="Sequence Diagram"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+            </visibleWhen>
+         </command>
+         <command
+               commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.activity"
+               icon="icons/DDiagram.gif"
+               label="Activity Diagram"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+            </visibleWhen>
+         </command>
+         <command
+               commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.profile"
+               icon="icons/DDiagram.gif"
+               label="Profile Diagram"
+               style="push">
+            <visibleWhen
+                  checkEnabled="true">
+            </visibleWhen>
+         </command>
+         <command
+               commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.statemachine"
+               icon="icons/DDiagram.gif"
+               label="State Machine Diagram"
                style="push">
             <visibleWhen
                   checkEnabled="true">
