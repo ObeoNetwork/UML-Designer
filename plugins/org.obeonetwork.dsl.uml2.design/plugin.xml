@@ -212,15 +212,6 @@ Contributors:
                   checkEnabled="true">
             </visibleWhen>
          </command>
-          <command
-               icon="icons/NewUmlModel.gif"               
-               label="Create Scenario"
-               commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.scenario.create"
-               style="push">
-            <visibleWhen
-                  checkEnabled="true">
-            </visibleWhen>
-         </command>
       </menuContribution>
       <menuContribution
             locationURI="popup:menu.viewpoint.new.representation">
