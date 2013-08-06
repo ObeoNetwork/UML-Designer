@@ -10,12 +10,12 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.services.internal;
 
-import java.util.List;
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.Operation;
+import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.StructuredClassifier;
 import org.eclipse.uml2.uml.util.UMLSwitch;
@@ -25,14 +25,9 @@ import org.eclipse.uml2.uml.util.UMLSwitch;
  * 
  * @author Hugo Marchadour <a href="mailto:hugo.marchadour@obeo.fr">hugo.marchadour@obeo.fr</a>
  */
-public class MoveUpElementSwitch extends UMLSwitch<List<EObject>> {
+public class MoveUpElementSwitch extends UMLSwitch<Boolean> {
 
-	/**
-	 * The constructor.
-	 */
-	public MoveUpElementSwitch() {
-
-	}
+	private static Boolean success = new Boolean(true);
 
 	/**
 	 * Move up the element position in it feature containment.
@@ -45,18 +40,37 @@ public class MoveUpElementSwitch extends UMLSwitch<List<EObject>> {
 	}
 
 	@Override
-	public List<EObject> caseProperty(Property property) {
+	public Boolean casePackageableElement(PackageableElement packageableElement) {
+
+		EObject eContainer = packageableElement.eContainer();
+
+		if (eContainer instanceof org.eclipse.uml2.uml.Package) {
+			EList<PackageableElement> packageableElements = ((org.eclipse.uml2.uml.Package)eContainer)
+					.getPackagedElements();
+			moveUpList(packageableElements, packageableElement);
+			return success;
+		} else if (eContainer instanceof Component) {
+			EList<PackageableElement> packageableElements = ((Component)eContainer).getPackagedElements();
+			moveUpList(packageableElements, packageableElement);
+			return success;
+		}
+		return super.casePackageableElement(packageableElement);
+	}
+
+	@Override
+	public Boolean caseProperty(Property property) {
 		EObject eContainer = property.eContainer();
 
 		if (eContainer instanceof StructuredClassifier) {
 			EList<Property> properties = ((StructuredClassifier)eContainer).getOwnedAttributes();
 			moveUpList(properties, property);
+			return success;
 		}
 		return super.caseProperty(property);
 	}
 
 	@Override
-	public List<EObject> caseOperation(Operation operation) {
+	public Boolean caseOperation(Operation operation) {
 		EObject eContainer = operation.eContainer();
 
 		if (eContainer instanceof org.eclipse.uml2.uml.Class || eContainer instanceof Interface) {
@@ -67,6 +81,7 @@ public class MoveUpElementSwitch extends UMLSwitch<List<EObject>> {
 				operations = ((Interface)eContainer).getOwnedOperations();
 			}
 			moveUpList(operations, operation);
+			return success;
 		}
 		return super.caseOperation(operation);
 	}

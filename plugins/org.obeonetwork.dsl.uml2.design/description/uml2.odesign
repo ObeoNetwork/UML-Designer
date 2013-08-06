@@ -22,7 +22,7 @@
       </defaultLayer>
       <toolSection documentation="reused tools" name="reused tools">
         <ownedTools xsi:type="tool:PopupMenu" name="Move UP/DOWN TO Attributes or Operations" label="Move to">
-          <menuItemDescription xsi:type="tool:OperationAction" name="Move TO Up" label="Up" precondition="&lt;%self.filter(&quot;Property&quot;)+self.filter(&quot;Operation&quot;)%>">
+          <menuItemDescription xsi:type="tool:OperationAction" name="Move TO Up Properties and Operations" label="Up" precondition="&lt;%self.filter(&quot;Property&quot;)+self.filter(&quot;Operation&quot;)%>">
             <view name="views"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$views.target.filter(&quot;Operation&quot;).moveUpOperations()%>">
@@ -30,10 +30,28 @@
               </firstModelOperations>
             </initialOperation>
           </menuItemDescription>
-          <menuItemDescription xsi:type="tool:OperationAction" name="Move TO Down" label="Down" precondition="&lt;%self.filter(&quot;Property&quot;)+self.filter(&quot;Operation&quot;)%>">
+          <menuItemDescription xsi:type="tool:OperationAction" name="Move TO Down Properties and Operations" label="Down" precondition="&lt;%self.filter(&quot;Property&quot;)+self.filter(&quot;Operation&quot;)%>">
             <view name="views"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$views.target.filter(&quot;Operation&quot;).moveDownOperations()%>">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$views.target.filter(&quot;Property&quot;).moveDownProperties()%>"/>
+              </firstModelOperations>
+            </initialOperation>
+          </menuItemDescription>
+        </ownedTools>
+        <ownedTools xsi:type="tool:PopupMenu" name="Move UP/DOWN TO Elements" label="Move to" precondition="&lt;%filter(&quot;PackageableElement&quot;)%>">
+          <menuItemDescription xsi:type="tool:OperationAction" name="Move TO Up Elements" label="Up" precondition="&lt;%self.filter(&quot;PackageableElement&quot;)%>">
+            <view name="views"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$views.target.filter(&quot;PackageableElement&quot;).moveUpPackageableElements()%>">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$views.target.filter(&quot;Property&quot;).moveUpProperties()%>"/>
+              </firstModelOperations>
+            </initialOperation>
+          </menuItemDescription>
+          <menuItemDescription xsi:type="tool:OperationAction" name="Move TO Down Elements" label="Down" precondition="&lt;%self.filter(&quot;PackageableElement&quot;)%>">
+            <view name="views"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$views.target.filter(&quot;PackageableElement&quot;).moveDownPackageableElements()%>">
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$views.target.filter(&quot;Property&quot;).moveDownProperties()%>"/>
               </firstModelOperations>
             </initialOperation>
@@ -3398,6 +3416,7 @@
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.CompositeStructureServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.UICompositeStructureServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.UIComponentServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.PackageableElementServices"/>
   </ownedViewpoints>
   <ownedViewpoints name="UML Behavioral Modeling" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description:DiagramDescription" name="State Machine Diagram" titleExpression="&lt;%name%> State Machine Diagram" domainClass="uml.StateMachine" enablePopupBars="true">
@@ -5091,7 +5110,7 @@
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <toolSections name="Elements">
+        <toolSections name="Elements" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Move%20UP%2FDOWN%20TO%20Elements']">
           <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="PC_ArrangeContainment" label="Move" forceRefresh="true" iconPath="/org.eclipse.search/icons/full/etool16/search.gif" message="Select elements contained in the current package" choiceOfValuesMessage="Candidate packageable elements" candidatesExpression="&lt;%getRootContainer()+getRootContainer().eAllContents(&quot;PackageableElement&quot;)%>" tree="true" rootExpression="&lt;%getRootContainer()%>" childrenExpression="&lt;%eContents()%>" selectedValuesMessage="Selected packageable elements" preSelectedCandidatesExpression="&lt;%$container.packagedElement%>">
             <element name="elements"/>
             <containerView name="containerView"/>
