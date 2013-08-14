@@ -27,6 +27,9 @@ requires.4.filter=(&(osgi.os=aix) (osgi.arch=ppc64))
 requires.4.range=[1.0.0,1.0.0]
 requires.4.greedy=true
 
+requires.5.namespace=org.eclipse.equinox.p2.iu
+requires.5.name=org.eclipse.ui.views.log
+
 units.1.id=toolingorg.eclipse.configuration.macosx-collab
 units.1.version=1.0.0
 units.1.provides.1.namespace=org.eclipse.equinox.p2.iu
