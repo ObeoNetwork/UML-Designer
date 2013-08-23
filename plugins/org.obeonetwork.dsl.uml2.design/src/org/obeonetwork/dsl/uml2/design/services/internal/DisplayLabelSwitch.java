@@ -11,12 +11,14 @@
 package org.obeonetwork.dsl.uml2.design.services.internal;
 
 import java.util.Iterator;
+import java.util.List;
 
 import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.BehaviorExecutionSpecification;
 import org.eclipse.uml2.uml.CallOperationAction;
+import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.DataStoreNode;
@@ -35,10 +37,15 @@ import org.eclipse.uml2.uml.OpaqueExpression;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Parameter;
 import org.eclipse.uml2.uml.ParameterDirectionKind;
+import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.Pin;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.StructuralFeature;
+import org.eclipse.uml2.uml.TemplateBinding;
+import org.eclipse.uml2.uml.TemplateParameter;
+import org.eclipse.uml2.uml.TemplateParameterSubstitution;
+import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.TypedElement;
 import org.eclipse.uml2.uml.ValueSpecification;
@@ -80,7 +87,7 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 		final ValueSpecification value = object.getGuard();
 
 		if (value instanceof OpaqueExpression) {
-			final String expr = ((OpaqueExpression)value).getBodies().get(0);
+			final String expr = ((OpaqueExpression) value).getBodies().get(0);
 			if (expr != null && !"".equalsIgnoreCase(expr) && !"true".equalsIgnoreCase(expr)
 					&& !"1".equalsIgnoreCase(expr)) {
 				return OPENING_BRACE + expr + CLOSING_BRACE;
@@ -100,7 +107,7 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 			final ValueSpecification value = constraint.getSpecification();
 
 			if (value instanceof OpaqueExpression) {
-				final String expr = ((OpaqueExpression)value).getBodies().get(0);
+				final String expr = ((OpaqueExpression) value).getBodies().get(0);
 				if (expr != null && !"".equalsIgnoreCase(expr) && !"true".equalsIgnoreCase(expr)
 						&& !"1".equalsIgnoreCase(expr)) {
 					return OPENING_BRACE + expr + CLOSING_BRACE;
@@ -165,7 +172,7 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 				label += " = " + object.getDefault();
 			}
 		} else if (object.getDefaultValue() instanceof InstanceValue) {
-			label += " = " + ((InstanceValue)object.getDefaultValue()).getName();
+			label += " = " + ((InstanceValue) object.getDefaultValue()).getName();
 		}
 		return label;
 	}
@@ -257,10 +264,38 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	 * {@inheritDoc}
 	 */
 	@Override
+	public String caseTemplateBinding(TemplateBinding object) {
+		List<TemplateParameterSubstitution> parameterSubstitutions = object.getParameterSubstitutions();
+		StringBuffer binding = new StringBuffer();
+		boolean first = true;
+		for (TemplateParameterSubstitution parameterSubstitution : parameterSubstitutions) {
+			if (first) {
+				first = false;
+			} else {
+				binding.append(", ");
+			}
+			ParameterableElement formal = parameterSubstitution.getFormal().getDefault();
+			if (formal instanceof NamedElement) {
+				binding.append(((NamedElement) formal).getName() + "->");
+				ParameterableElement actual = parameterSubstitution.getActual();
+				if (actual != null && actual instanceof NamedElement) {
+					binding.append(((NamedElement) actual).getName());
+				} else {
+					binding.append("?");
+				}
+			}
+		}
+		return binding.toString();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public String caseActivityPartition(ActivityPartition object) {
 		if (object.getRepresents() instanceof NamedElement) {
 			return caseNamedElement(object) + SPACED_COLUMN
-					+ ((NamedElement)object.getRepresents()).getName();
+					+ ((NamedElement) object.getRepresents()).getName();
 		}
 
 		return null;
@@ -338,6 +373,33 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	 * {@inheritDoc}
 	 */
 	@Override
+	public String caseClass(Class object) {
+		TemplateSignature ownedTemplateSignature = object.getOwnedTemplateSignature();
+		StringBuffer templateParemeters = new StringBuffer();
+		if (ownedTemplateSignature != null) {
+			List<TemplateParameter> ownedTemplateParameters = ownedTemplateSignature.getOwnedParameters();
+			boolean first = true;
+			for (TemplateParameter templateParameter : ownedTemplateParameters) {
+				if (first) {
+					first = false;
+				} else {
+					templateParemeters.append(", ");
+				}
+				ParameterableElement parameterableElement = templateParameter.getOwnedDefault();
+				if (parameterableElement instanceof NamedElement) {
+					NamedElement classTempate = (NamedElement) parameterableElement;
+					templateParemeters.append(computeStereotypes(classTempate) + classTempate.getName());
+				}
+			}
+			return computeStereotypes(object) + object.getName() + " <" + templateParemeters + ">";
+		}
+		return computeStereotypes(object) + object.getName();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public String caseElementImport(ElementImport object) {
 		return object.getName();
 	}
@@ -369,7 +431,7 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 			}
 		} else if (lifeline.getRepresents() instanceof Property) {
 			// label.append(SPACED_COLUMN);
-			label.append(caseProperty((Property)lifeline.getRepresents()));
+			label.append(caseProperty((Property) lifeline.getRepresents()));
 		} else {
 			label.append(caseNamedElement(lifeline));
 		}
@@ -395,9 +457,9 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	@Override
 	public String caseExecutionSpecification(ExecutionSpecification execution) {
 		if (execution instanceof BehaviorExecutionSpecification) {
-			if (((BehaviorExecutionSpecification)execution).getBehavior() != null
-					&& ((BehaviorExecutionSpecification)execution).getBehavior().getSpecification() != null)
-				return caseOperation((Operation)((BehaviorExecutionSpecification)execution).getBehavior()
+			if (((BehaviorExecutionSpecification) execution).getBehavior() != null
+					&& ((BehaviorExecutionSpecification) execution).getBehavior().getSpecification() != null)
+				return caseOperation((Operation) ((BehaviorExecutionSpecification) execution).getBehavior()
 						.getSpecification());
 		}
 		return execution.getLabel();
@@ -438,7 +500,7 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 			label.append(SPACED_COLUMN);
 			final Iterator<Classifier> it = object.getClassifiers().iterator();
 			while (it.hasNext()) {
-				final Classifier classifier = (Classifier)it.next();
+				final Classifier classifier = (Classifier) it.next();
 				label.append(doSwitch(classifier).replace("\n", " "));
 				if (it.hasNext())
 					label.append(SPACED_COMMA);
