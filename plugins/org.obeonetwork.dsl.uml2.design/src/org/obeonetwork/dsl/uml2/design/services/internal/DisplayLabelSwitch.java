@@ -43,7 +43,6 @@ import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.TypedElement;
 import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.util.UMLSwitch;
-import org.obeonetwork.dsl.uml2.design.services.UMLServices;
 
 /**
  * A switch that handle the label computation for each UML types.
@@ -192,8 +191,8 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 		}
 		label.append(")");
 		if (object.getType() != null) {
-			label.append(SPACED_COLUMN);
-			label.append(object.getType().getName());
+			label.append(SPACED_COLUMN + object.getType().getName());
+			label.append(getMultiplicity(object.getLower(), object.getUpper()));
 		}
 		return label.toString();
 	}
@@ -211,21 +210,34 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	 */
 	@Override
 	public String caseMultiplicityElement(MultiplicityElement object) {
-		if (object.getLower() == object.getUpper()) {
+		return getMultiplicity(object.getLower(), object.getUpper());
+	}
+
+	/**
+	 * Get multiplicity.
+	 * 
+	 * @param lower
+	 *            Lower bound
+	 * @param upper
+	 *            Upper bound
+	 * @return Multiplicity
+	 */
+	private String getMultiplicity(int lower, int upper) {
+		StringBuffer label = new StringBuffer();
+		if (lower == upper) {
 			// [1..1]
-			return "[" + object.getLower() + "]";
-		} else if (object.getLower() == 0 && object.getUpper() == -1) {
+		} else if (lower == 0 && upper == -1) {
 			// [0..*]
-			return "[*]";
+			label.append("[*]");
 		} else {
-			String label = OPENING_BRACE + object.getLower() + "..";
-			if (object.getUpper() == -1) {
-				label += "*]";
+			label.append(OPENING_BRACE + lower + "..");
+			if (upper == -1) {
+				label.append("*]");
 			} else {
-				label += object.getUpper() + CLOSING_BRACE;
+				label.append(upper + CLOSING_BRACE);
 			}
-			return label;
 		}
+		return label.toString();
 	}
 
 	/**

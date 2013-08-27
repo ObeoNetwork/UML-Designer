@@ -16,6 +16,7 @@ import java.util.regex.Pattern;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
 import org.obeonetwork.dsl.uml2.design.services.EcoreServices;
+import org.obeonetwork.dsl.uml2.design.services.LabelServices;
 
 /**
  * Utility services to manage edges direct label editoin on properties.
@@ -58,9 +59,9 @@ public final class PropertyServices {
 
 			final String typeInfo = m.group(3).trim();
 			handleTypeAndMultiplicity(property, typeInfo);
-			
+
 			// Use UML api to manage the default value
-			if(m.group(4) != null && !"".equals(m.group(4))) {
+			if (m.group(4) != null && !"".equals(m.group(4))) {
 				String defaultValue = m.group(4).trim();
 				property.setDefault(defaultValue);
 			}
@@ -133,8 +134,8 @@ public final class PropertyServices {
 	 *            the upper bound user content
 	 */
 	private static void handleMultiplicity(Property property, String lowerBound, String upperBound) {
-		final Integer lower = convertBound(lowerBound);
-		final Integer upper = convertBound(upperBound);
+		final Integer lower = LabelServices.convertBound(lowerBound);
+		final Integer upper = LabelServices.convertBound(upperBound);
 
 		if (lower != null && upper != null && (lower <= upper || upper == -1)) {
 			if (lower == -1) {
@@ -143,24 +144,6 @@ public final class PropertyServices {
 				property.setLower(lower);
 			}
 			property.setUpper(upper);
-		}
-	}
-
-	/**
-	 * {@link String} to {@link Integer} bound conversion.
-	 * 
-	 * @param bound
-	 *            string description
-	 * @return converted integer or <code>null</code> in case of {@link NumberFormatException}.
-	 */
-	private static Integer convertBound(String bound) {
-		if ("*".equals(bound)) {
-			return new Integer(-1);
-		}
-		try {
-			return new Integer(bound);
-		} catch (NumberFormatException e) {
-			return null;
 		}
 	}
 }

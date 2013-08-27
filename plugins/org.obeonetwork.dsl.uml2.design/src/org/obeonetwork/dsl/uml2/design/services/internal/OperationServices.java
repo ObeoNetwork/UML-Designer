@@ -22,6 +22,7 @@ import org.eclipse.uml2.uml.ParameterDirectionKind;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.obeonetwork.dsl.uml2.design.services.EcoreServices;
+import org.obeonetwork.dsl.uml2.design.services.LabelServices;
 
 /**
  * Utility services to manage direct label edition on operations.
@@ -67,6 +68,26 @@ public final class OperationServices {
 			name = mtchWithType.group(1).trim();
 			parametersInfo = mtchWithType.group(2).trim();
 			returnType = mtchWithType.group(3).trim();
+			final Pattern ptnTypeInfo = Pattern.compile("^(.*)\\[\\s*((\\S+)\\s*\\.\\.)?\\s*(\\S+)\\s*\\]$");
+			final Matcher mtchTypeInfo = ptnTypeInfo.matcher(returnType);
+
+			if (mtchTypeInfo.find()) {
+				final String lowerBound = mtchTypeInfo.group(3);
+				final String upperBound = mtchTypeInfo.group(4);
+
+				// Checking validity of bounds
+				// "-1" and "*" can't be used as a lower bound
+				// "0" can't be used as a upper bound
+				if ((lowerBound == null || lowerBound.matches("^[0-9]+$"))
+						&& upperBound.matches("^[1-9][0-9]*|\\*|-1$")) {
+					// Handling multiplicity
+					if (lowerBound == null || "".equals(lowerBound)) {
+						handleMultiplicity(operation, upperBound, upperBound);
+					} else {
+						handleMultiplicity(operation, lowerBound, upperBound);
+					}
+				}
+			}
 
 		} else {
 			// The pattern with an explicit return type did not match
@@ -96,12 +117,36 @@ public final class OperationServices {
 	}
 
 	/**
+	 * Update the {@link Operation} multiplicity.
+	 * 
+	 * @param operation
+	 *            the context {@link Operation} object.
+	 * @param lowerBound
+	 *            the lower bound user content
+	 * @param upperBound
+	 *            the upper bound user content
+	 */
+	private static void handleMultiplicity(Operation operation, String lowerBound, String upperBound) {
+		final Integer lower = LabelServices.convertBound(lowerBound);
+		final Integer upper = LabelServices.convertBound(upperBound);
+
+		if (lower != null && upper != null && (lower <= upper || upper == -1)) {
+			if (lower == -1) {
+				operation.setLower(0);
+			} else {
+				operation.setLower(lower);
+			}
+			operation.setUpper(upper);
+		}
+	}
+
+	/**
 	 * Parse the edited label content for parameters part and update the underlying {@link Operation}.
 	 * 
 	 * @param operation
 	 *            the context {@link Operation} object.
 	 * @param parametersInfo
-	 *            the user edited label content for paramters.
+	 *            the user edited label content for parameters.
 	 */
 	private static void handleParameters(Operation operation, String parametersInfo) {
 		// Regexp used to extract name and type from a string as "name : type" or "name" or ":type"

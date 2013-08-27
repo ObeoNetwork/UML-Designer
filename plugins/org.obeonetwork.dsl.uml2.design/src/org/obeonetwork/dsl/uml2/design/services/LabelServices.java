@@ -108,4 +108,22 @@ public class LabelServices {
 	public String getSequenceDiagramName(org.eclipse.uml2.uml.Package pkg) {
 		return NamedElementServices.getNewInteractionName(pkg) + SPACE + SEQUENCE_DIAGRAM_SUFFIX;
 	}
+
+	/**
+	 * {@link String} to {@link Integer} bound conversion.
+	 * 
+	 * @param bound
+	 *            string description
+	 * @return converted integer or <code>null</code> in case of {@link NumberFormatException}.
+	 */
+	public static Integer convertBound(String bound) {
+		if ("*".equals(bound)) {
+			return new Integer(-1);
+		}
+		try {
+			return new Integer(bound);
+		} catch (NumberFormatException e) {
+			return null;
+		}
+	}
 }
