@@ -17,6 +17,7 @@ import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.uml2.uml.Component;
+import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.Operation;
 import org.obeonetwork.dsl.uml2.design.services.internal.MoveDownElementSwitch;
@@ -46,6 +47,8 @@ public final class OperationServices {
 			operation = ((Interface)type).createOwnedOperation(name, null, null, null);
 		} else if (type instanceof Component) {
 			operation = ((Component)type).createOwnedOperation(name, null, null, null);
+		} else if (type instanceof DataType) {
+			operation = ((DataType)type).createOwnedOperation(name, null, null, null);
 		}
 		return operation;
 	}

@@ -15,6 +15,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Component;
+import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Operation;
@@ -72,6 +73,8 @@ public final class NamedElementServices {
 			operations = ((Interface)type).getOperations();
 		else if (type instanceof Component)
 			operations = ((Component)type).getOperations();
+		else if (type instanceof DataType)
+			operations = ((DataType)type).getOperations();
 		if (operations != null)
 			name = OPERATION_PREFIX + (operations.size() + 1);
 		return name;
