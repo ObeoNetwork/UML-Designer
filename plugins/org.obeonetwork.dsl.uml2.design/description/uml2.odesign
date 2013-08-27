@@ -57,7 +57,7 @@
             </initialOperation>
           </menuItemDescription>
         </ownedTools>
-        <ownedTools xsi:type="tool:DirectEditLabel" documentation="A basic Direct Edit tool for NamedElement" name="GenericServiceDirectEdit">
+        <ownedTools xsi:type="tool:DirectEditLabel" documentation="A basic Direct Edit tool for NamedElement" name="GenericServiceDirectEdit" inputLabelExpression="[computeUmlDirectEditLabel()/]">
           <mask mask="{0}"/>
           <initialOperation>
             <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%editUmlLabel($0)%>"/>

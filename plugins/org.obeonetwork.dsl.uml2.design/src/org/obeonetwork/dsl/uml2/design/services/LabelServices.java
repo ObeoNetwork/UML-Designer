@@ -13,6 +13,7 @@ package org.obeonetwork.dsl.uml2.design.services;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.Property;
+import org.obeonetwork.dsl.uml2.design.services.internal.DirectEditLabelSwitch;
 import org.obeonetwork.dsl.uml2.design.services.internal.DisplayLabelSwitch;
 import org.obeonetwork.dsl.uml2.design.services.internal.EditLabelSwitch;
 import org.obeonetwork.dsl.uml2.design.services.internal.NamedElementServices;
@@ -46,6 +47,19 @@ public class LabelServices {
 		final DisplayLabelSwitch displayLabel = new DisplayLabelSwitch();
 
 		return displayLabel.doSwitch(element);
+	}
+
+	/**
+	 * Compute the label of the given element for direct edit.
+	 * 
+	 * @param element
+	 *            the {@link Element} for which to retrieve a label.
+	 * @return the computed label.
+	 */
+	public String computeUmlDirectEditLabel(Element element) {
+		final DirectEditLabelSwitch directEditLabel = new DirectEditLabelSwitch();
+
+		return directEditLabel.doSwitch(element);
 	}
 
 	/**
