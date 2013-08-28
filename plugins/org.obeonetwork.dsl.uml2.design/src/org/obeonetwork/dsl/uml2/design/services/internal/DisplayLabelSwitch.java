@@ -226,6 +226,7 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 		StringBuffer label = new StringBuffer();
 		if (lower == upper) {
 			// [1..1]
+			label.append("[" + lower + "]");
 		} else if (lower == 0 && upper == -1) {
 			// [0..*]
 			label.append("[*]");
