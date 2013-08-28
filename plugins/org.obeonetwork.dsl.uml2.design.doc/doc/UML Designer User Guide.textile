@@ -136,6 +136,34 @@ To edit a property you should then enable the *Semantic* tab :
 
 !using_class_diagram/properties_values.png!
 
+h2. Using UML in colors
+
+"UML in colors":http://en.wikipedia.org/wiki/UML_colors is an object modeling technique proposed by "Peter Coad":http://www.step-10.com/SoftwareDesign/ModellingInColour/index.html, Eric Lefebvre, and Jeff De Luca in a series of articles in 1999.
+!uml_in_colors/example.png!
+An @Archetypes@ layer is available in the UML Designer @class diagram@.
+!uml_in_colors/layer.png!
+
+When the layer is selected, new tools are available in the palette :
+!uml_in_colors/palette.png!
+
+The modeling in color patterns and strategies are built around the idea of class archetypes.
+!http://www.step-10.com/SoftwareDesign/ModellingInColour/images/FourArchetypesWithContentSideBySide.gif!
+It exists four different kind of archetypes :
+* *moment-interval* and *mi-detail* (pink): represents a moment or interval of time, all things that happen in the software.
+* *role* (yellow): represents something/someone who participates to moment-intervals.  
+* *description* (blue): represents a collection of values a kind of catalog.
+* *party, place, or thing* (green): represents someone or something that plays a role.
+
+The Domain Neutral Component (DNC) is the common pattern applied with the UML in colors technique.
+!http://www.step-10.com/SoftwareDesign/ModellingInColour/images/DNC.gif!
+
+To create an archetype in a class diagram just select an archetype from the palette of the tooltip.
+The archetypes are stored in UML model as stereotyped classes.
+To change an existing class to an archetype just selects the tool from the palette and the existing class. The stereotype of the selected archetype is applied on the class which is colored.
+
+UML in colors examples are available from Eclipse menu File > New > Example... > UML > Uml in colors.
+
+For more detailed explanation on UML in colors have a look to "Peter Coad's website":http://www.step-10.com/SoftwareDesign/ModellingInColour/index.html.
 
 h2. Editing Attributes
 
