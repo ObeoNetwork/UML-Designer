@@ -220,6 +220,10 @@ Each party waives its rights to a jury trial in any resulting
 litigation.
    </license>
 
+   <requires>
+      <import feature="fr.obeo.dsl.viewpoint.runtime.ide.eef" version="6.4.0" match="greaterOrEqual"/>
+   </requires>
+
    <plugin
          id="org.obeonetwork.gmf.runtime.diagram.ui.extension"
          download-size="0"
@@ -269,6 +273,13 @@ litigation.
 
    <plugin
          id="org.obeonetwork.dsl.uml2.usage"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.obeonetwork.dsl.uml2.properties"
          download-size="0"
          install-size="0"
          version="0.0.0"

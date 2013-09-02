@@ -238,6 +238,7 @@ litigation.
       <import feature="fr.obeo.dsl.viewpoint.runtime.ide.ui.acceleo" version="6.4.0" match="greaterOrEqual"/>
       <import feature="fr.obeo.dsl.viewpoint.specifier.ide.ui" version="6.4.0" match="greaterOrEqual"/>
       <import feature="fr.obeo.dsl.viewpoint.specifier.ide.ui.acceleo" version="6.4.0" match="greaterOrEqual"/>
+      <import feature="fr.obeo.dsl.viewpoint.runtime.ide.eef" version="6.4.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
@@ -262,6 +263,13 @@ litigation.
 
    <plugin
          id="org.obeonetwork.dsl.uml2.usage"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.obeonetwork.dsl.uml2.properties"
          download-size="0"
          install-size="0"
          version="0.0.0"

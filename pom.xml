@@ -55,9 +55,8 @@ Contributors:
 	<module>plugins/org.obeonetwork.dsl.uml2.usage</module>
 
         <module>tests/org.obeonetwork.dsl.uml2.design.tests</module>
-        <!--
         <module>plugins/org.obeonetwork.dsl.uml2.properties</module>
-        <module>tests/org.obeonetwork.dsl.uml2.properties.tests</module> -->
+        <!--<module>tests/org.obeonetwork.dsl.uml2.properties.tests</module>-->
     </modules>
 
     <repositories>
