@@ -1719,20 +1719,20 @@
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
-          <conditionnalStyles predicateExpression="[(self.eClass().name &lt;> 'Class') and (self.eContainer() &lt;> container) /]">
+          <conditionnalStyles predicateExpression="[(not self.oclIsTypeOf(uml::Class)) and (self.eContainer() &lt;> container) /]">
             <style xsi:type="style:FlatContainerStyleDescription" borderColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='light%20lagune']" labelSize="10" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='light%20lagune']">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="[(self.eClass().name = 'Class') and (self.eContainer() = container) /]">
+          <conditionnalStyles predicateExpression="[(self.oclIsTypeOf(uml::Class)) and (self.eContainer() = container) /]">
             <style xsi:type="style:FlatContainerStyleDescription" labelFormat="bold" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='lighter%20blue']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="[(self.eClass().name = 'Class') and (self.eContainer() &lt;> container) /]">
+          <conditionnalStyles predicateExpression="[(self.oclIsTypeOf(uml::Class)) and (self.eContainer() &lt;> container) /]">
             <style xsi:type="style:FlatContainerStyleDescription" labelFormat="bold" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='lighter%20blue']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
