@@ -415,7 +415,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Package" referenceName="packagedElement">
-                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="New package &lt;%eContainer.eContents.filter(&quot;Package&quot;).nSize%>"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="Package&lt;%eContainer().eContents().filter(&quot;Package&quot;).nSize()%>"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
