@@ -49,66 +49,66 @@ Contributors:
          <propertyTab
                id="General"
                label="General"
-               category="default">
+               category="semantic &amp; extension">
          </propertyTab>
          <propertyTab
                afterTab="General"
-               category="extended"
+               category="semantic &amp; extension"
                id="Literals"
                label="Literals">
          </propertyTab>
          <propertyTab
                afterTab="General"
-               category="extended"
+               category="semantic &amp; extension"
                id="Parameters"
                label="Parameters">
          </propertyTab>
          <propertyTab
                afterTab="General"
-               category="extended"
+               category="semantic &amp; extension"
                id="Profile"
                label="Profile">
          </propertyTab>
          <propertyTab
                afterTab="General"
-               category="extended"
+               category="semantic &amp; extension"
                id="Attributes"
                label="Attributes">
          </propertyTab>
          <propertyTab
                afterTab="Attributes"
-               category="extended"
+               category="semantic &amp; extension"
                id="Operations"
                label="Operations">
          </propertyTab>
          <propertyTab
                afterTab="General"
-               category="extended"
+               category="semantic &amp; extension"
                id="Relationships"
                label="Relationships">
          </propertyTab>
          <propertyTab
                afterTab="General"
-               category="extended"
+               category="semantic &amp; extension"
                id="Stereotypes"
                label="Stereotypes">
          </propertyTab>
          <propertyTab
                afterTab="General"
-               category="extended"
+               category="semantic &amp; extension"
                id="Profiles"
                label="Profiles">
          </propertyTab>
          <propertyTab
                id="Documentation"
                label="Documentation"
-               category="extended"
+               category="semantic &amp; extension"
                afterTab="General">
          </propertyTab>
          <propertyTab
                id="Ends"
                label="Ends"
-               category="extended"
+               category="semantic &amp; extension"
                afterTab="General">
          </propertyTab>
       </propertyTabs>
