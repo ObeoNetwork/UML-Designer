@@ -101,7 +101,7 @@ Contributors:
          </propertyTab>
          <propertyTab
                id="Documentation"
-               label="Documentation"
+               label="Comment"
                category="semantic &amp; extension"
                afterTab="General">
          </propertyTab>
