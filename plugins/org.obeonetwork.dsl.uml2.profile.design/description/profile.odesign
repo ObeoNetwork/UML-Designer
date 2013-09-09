@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.obeo.fr/dsl/viewpoint/description/1.1.0" xmlns:style="http://www.obeo.fr/dsl/viewpoint/description/style/1.1.0" xmlns:tool="http://www.obeo.fr/dsl/viewpoint/description/tool/1.1.0" name="profile" version="6.5.0.201210011230">
-  <ownedViewpoints documentation="UML Profile Editor" name="Profile Design" modelFileExtension="uml">
-    <ownedRepresentations xsi:type="description:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Drop%20From%20Model%20PD'] //@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Drop%20From%20Diagram%20PD']" documentation="Representation to edit profile diagrams" name="UML Profile Diagram" titleExpression="&lt;%name%> UML Profile Diagram" domainClass="uml.Profile" enablePopupBars="true">
+  <ownedViewpoints documentation="UML Profile Editor" name="UML Profile Design" modelFileExtension="uml">
+    <ownedRepresentations xsi:type="description:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Drop%20From%20Model%20PD'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Drop%20From%20Diagram%20PD']" documentation="Representation to edit profile diagrams" name="Profile Diagram" titleExpression="&lt;%name%> UML Profile Diagram" domainClass="uml.Profile" enablePopupBars="true">
       <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML#/"/>
       <defaultLayer name="Profile">
-        <nodeMappings name="PD_ElementImport" deletionDescription="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='PD%20UML%20Element']" semanticCandidatesExpression="&lt;%eContents()%>" domainClass="uml.ElementImport">
+        <nodeMappings name="PD_ElementImport" deletionDescription="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='PD%20UML%20Element']" semanticCandidatesExpression="&lt;%eContents()%>" domainClass="uml.ElementImport">
           <style xsi:type="style:SquareDescription" labelExpression="«Metaclass» &lt;%&quot;\n&quot;+computeUmlLabel()%>" sizeComputationExpression="6" labelPosition="node" resizeKind="NSEW" width="15" height="6">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="PD_Extension" deletionDescription="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='PD%20UML%20Element']" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" targetMapping="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@nodeMappings[name='PD_ElementImport']" targetFinderExpression="&lt;%self.getElementImport()%>" sourceFinderExpression="&lt;%getStereotype()%>" domainClass="uml.Extension" useDomainElement="true" reconnections="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='PD_ReconnectExtension']">
+        <edgeMappings name="PD_Extension" deletionDescription="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='PD%20UML%20Element']" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" targetMapping="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@nodeMappings[name='PD_ElementImport']" targetFinderExpression="&lt;%self.getElementImport()%>" sourceFinderExpression="&lt;%getStereotype()%>" domainClass="uml.Extension" useDomainElement="true" reconnections="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='PD_ReconnectExtension']">
           <style targetArrow="InputFillClosedArrow" sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -19,7 +19,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="PD_Generalization" deletionDescription="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='PD%20UML%20Element']" sourceMapping="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" targetMapping="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" targetFinderExpression="&lt;%general%>" sourceFinderExpression="&lt;%specific%>" domainClass="uml.Generalization" useDomainElement="true">
+        <edgeMappings name="PD_Generalization" deletionDescription="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='PD%20UML%20Element']" sourceMapping="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" targetMapping="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" targetFinderExpression="&lt;%general%>" sourceFinderExpression="&lt;%specific%>" domainClass="uml.Generalization" useDomainElement="true">
           <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
@@ -28,7 +28,7 @@
           </style>
           <reconnections href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='Reconnect']"/>
         </edgeMappings>
-        <edgeMappings name="PD_Association" deletionDescription="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='PD%20UML%20Element']" semanticCandidatesExpression="&lt;%$diagram.getNodeInverseRefs(&quot;Association&quot;)%>" sourceMapping="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" targetMapping="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" targetFinderExpression="&lt;%getTarget.type%>" sourceFinderExpression="&lt;%getSource.type%>" domainClass="uml.Association" useDomainElement="true">
+        <edgeMappings name="PD_Association" deletionDescription="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='PD%20UML%20Element']" semanticCandidatesExpression="&lt;%$diagram.getNodeInverseRefs(&quot;Association&quot;)%>" sourceMapping="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" targetMapping="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" targetFinderExpression="&lt;%getTarget.type%>" sourceFinderExpression="&lt;%getSource.type%>" domainClass="uml.Association" useDomainElement="true">
           <style targetArrow="NoDecoration" sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="&lt;%computeUmlLabel()%>">
@@ -37,7 +37,7 @@
           </style>
           <reconnections href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='Reconnect']"/>
         </edgeMappings>
-        <edgeMappings name="PD_AbstractAssociationStereotype" deletionDescription="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='PD%20UML%20Element']" sourceMapping="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" targetMapping="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" targetFinderExpression="&lt;%getStereotypeTarget%>" sourceFinderExpression="&lt;%getStereotypeSource%>" domainClass="uml.Stereotype" useDomainElement="true">
+        <edgeMappings name="PD_AbstractAssociationStereotype" deletionDescription="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='PD%20UML%20Element']" sourceMapping="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" targetMapping="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" targetFinderExpression="&lt;%getStereotypeTarget%>" sourceFinderExpression="&lt;%getStereotypeSource%>" domainClass="uml.Stereotype" useDomainElement="true">
           <style targetArrow="NoDecoration" sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <beginLabelStyleDescription showIcon="false" labelExpression="&lt;%computeSourceLabel()%>">
@@ -48,7 +48,7 @@
             </endLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="PD_AbstractAssociationStereotypeLink" deletionDescription="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='PD%20UML%20Element']" sourceMapping="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" targetMapping="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_AbstractAssociationStereotype']" targetFinderExpression="&lt;%self%>" sourceFinderExpression="&lt;%self%>" domainClass="uml.Stereotype" useDomainElement="true">
+        <edgeMappings name="PD_AbstractAssociationStereotypeLink" deletionDescription="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='PD%20UML%20Element']" sourceMapping="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" targetMapping="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_AbstractAssociationStereotype']" targetFinderExpression="&lt;%self%>" sourceFinderExpression="&lt;%self%>" domainClass="uml.Stereotype" useDomainElement="true">
           <style targetArrow="NoDecoration" sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription showIcon="false">
@@ -56,9 +56,9 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="PD_Stereotype" deletionDescription="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='PD%20UML%20Element']" semanticCandidatesExpression="&lt;%getOwnedStereotypes%>" domainClass="uml.Stereotype" listContainer="true">
+        <containerMappings name="PD_Stereotype" deletionDescription="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='PD%20UML%20Element']" semanticCandidatesExpression="&lt;%getOwnedStereotypes%>" domainClass="uml.Stereotype" listContainer="true">
           <labelDirectEdit href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']"/>
-          <subNodeMappings name="PD_Property" deletionDescription="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='PD%20UML%20Element']" semanticCandidatesExpression="&lt;%getClassifierAttributes%>" semanticElements="&lt;%self.getSemanticElements()%>" domainClass="uml.Property">
+          <subNodeMappings name="PD_Property" deletionDescription="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='PD%20UML%20Element']" semanticCandidatesExpression="&lt;%getClassifierAttributes%>" semanticElements="&lt;%self.getSemanticElements()%>" domainClass="uml.Property">
             <labelDirectEdit href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']"/>
             <style xsi:type="style:SquareDescription" labelExpression="&lt;%computeUmlLabel()%>" labelAlignment="LEFT" tooltipExpression="&lt;%computeUmlTooltip()%>" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -97,9 +97,9 @@
             </style>
           </conditionnalStyles>
         </containerMappings>
-        <containerMappings name="PD_Enumeration" deletionDescription="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='PD%20UML%20Element']" semanticCandidatesExpression="&lt;%getOwnedTypes.filter(&quot;Enumeration&quot;)%>" domainClass="uml.Enumeration" reusedNodeMappings="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']/@subNodeMappings[name='PD_Property'] //@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Enumeration']/@subNodeMappings[name='PD_EnumerationLiteral']" listContainer="true">
+        <containerMappings name="PD_Enumeration" deletionDescription="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='PD%20UML%20Element']" semanticCandidatesExpression="&lt;%getOwnedTypes.filter(&quot;Enumeration&quot;)%>" domainClass="uml.Enumeration" reusedNodeMappings="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']/@subNodeMappings[name='PD_Property'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Enumeration']/@subNodeMappings[name='PD_EnumerationLiteral']" listContainer="true">
           <labelDirectEdit href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']"/>
-          <subNodeMappings name="PD_EnumerationLiteral" deletionDescription="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='PD%20UML%20Element']" semanticCandidatesExpression="&lt;%ownedLiteral%>" semanticElements="&lt;%self.getSemanticElements()%>" domainClass="uml.EnumerationLiteral">
+          <subNodeMappings name="PD_EnumerationLiteral" deletionDescription="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='PD%20UML%20Element']" semanticCandidatesExpression="&lt;%ownedLiteral%>" semanticElements="&lt;%self.getSemanticElements()%>" domainClass="uml.EnumerationLiteral">
             <labelDirectEdit href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']"/>
             <style xsi:type="style:SquareDescription" labelExpression="&lt;%computeUmlLabel()%>" labelAlignment="LEFT" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='chocolate']"/>
@@ -138,7 +138,7 @@
             </style>
           </conditionnalStyles>
         </containerMappings>
-        <containerMappings name="PD_DataType" preconditionExpression="&lt;%eClass.name==&quot;DataType&quot;%>" deletionDescription="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='PD%20UML%20Element']" semanticCandidatesExpression="&lt;%getOwnedTypes.filter(&quot;DataType&quot;)%>" semanticElements="&lt;%self.getSemanticElements()%>" domainClass="uml.DataType" reusedNodeMappings="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']/@subNodeMappings[name='PD_Property']" listContainer="true">
+        <containerMappings name="PD_DataType" preconditionExpression="&lt;%eClass.name==&quot;DataType&quot;%>" deletionDescription="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='PD%20UML%20Element']" semanticCandidatesExpression="&lt;%getOwnedTypes.filter(&quot;DataType&quot;)%>" semanticElements="&lt;%self.getSemanticElements()%>" domainClass="uml.DataType" reusedNodeMappings="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']/@subNodeMappings[name='PD_Property']" listContainer="true">
           <labelDirectEdit href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']"/>
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelFormat="bold" labelExpression="&lt;%computeUmlLabel()%>" backgroundStyle="Liquid">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
@@ -171,7 +171,7 @@
             </style>
           </conditionnalStyles>
         </containerMappings>
-        <containerMappings name="PD_PrimitiveType" deletionDescription="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='PD%20UML%20Element']" semanticCandidatesExpression="&lt;%getOwnedTypes.filter(&quot;PrimitiveType&quot;)%>" semanticElements="&lt;%self.getSemanticElements()%>" domainClass="uml.PrimitiveType" reusedNodeMappings="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']/@subNodeMappings[name='PD_Property']" listContainer="true">
+        <containerMappings name="PD_PrimitiveType" deletionDescription="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='PD%20UML%20Element']" semanticCandidatesExpression="&lt;%getOwnedTypes.filter(&quot;PrimitiveType&quot;)%>" semanticElements="&lt;%self.getSemanticElements()%>" domainClass="uml.PrimitiveType" reusedNodeMappings="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']/@subNodeMappings[name='PD_Property']" listContainer="true">
           <labelDirectEdit href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='GenericServiceDirectEdit']"/>
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelFormat="bold" labelExpression="&lt;%computeUmlLabel()%>" backgroundStyle="Liquid">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
@@ -204,7 +204,7 @@
             </style>
           </conditionnalStyles>
         </containerMappings>
-        <containerMappings name="PD_Package" preconditionExpression="&lt;%self.filter(&quot;Profile&quot;).nSize()==0%>" createElements="false" semanticElements="&lt;%self.getSemanticElements()%>" domainClass="uml.Package" dropDescriptions="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Drop%20From%20Model%20PD'] //@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Drop%20From%20Diagram%20PD']" reusedContainerMappings="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Package'] //@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype'] //@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Enumeration'] //@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_DataType'] //@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_PrimitiveType'] //@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Profile']">
+        <containerMappings name="PD_Package" preconditionExpression="&lt;%self.filter(&quot;Profile&quot;).nSize()==0%>" createElements="false" semanticElements="&lt;%self.getSemanticElements()%>" domainClass="uml.Package" dropDescriptions="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Drop%20From%20Model%20PD'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Drop%20From%20Diagram%20PD']" reusedContainerMappings="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Package'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Enumeration'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_DataType'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_PrimitiveType'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Profile']">
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='details']/@ownedTools[name='Object%20Diagram']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='navigation']/@ownedTools[name='Activity%20Diagram']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='details']/@ownedTools[name='Deployment%20Diagram']"/>
@@ -229,7 +229,7 @@
             </style>
           </conditionnalStyles>
         </containerMappings>
-        <containerMappings name="PD_Profile" createElements="false" semanticElements="&lt;%self.getSemanticElements()%>" domainClass="uml.Profile" dropDescriptions="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Drop%20From%20Model%20PD'] //@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Drop%20From%20Diagram%20PD']" reusedNodeMappings="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@nodeMappings[name='PD_ElementImport'] //@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']/@subNodeMappings[name='PD_Property'] //@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Enumeration']/@subNodeMappings[name='PD_EnumerationLiteral']" reusedContainerMappings="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Profile'] //@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype'] //@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Enumeration'] //@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_DataType'] //@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_PrimitiveType'] //@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Package']">
+        <containerMappings name="PD_Profile" createElements="false" semanticElements="&lt;%self.getSemanticElements()%>" domainClass="uml.Profile" dropDescriptions="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Drop%20From%20Model%20PD'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Drop%20From%20Diagram%20PD']" reusedNodeMappings="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@nodeMappings[name='PD_ElementImport'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']/@subNodeMappings[name='PD_Property'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Enumeration']/@subNodeMappings[name='PD_EnumerationLiteral']" reusedContainerMappings="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Profile'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Enumeration'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_DataType'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_PrimitiveType'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Package']">
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='details']/@ownedTools[name='Object%20Diagram']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='navigation']/@ownedTools[name='Activity%20Diagram']"/>
           <detailDescriptions xsi:type="tool:DiagramCreationDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='details']/@ownedTools[name='Deployment%20Diagram']"/>
@@ -255,7 +255,7 @@
           </conditionnalStyles>
         </containerMappings>
         <toolSections name="Packages">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a Package" name="Package" containerMappings="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Package']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a Package" name="Package" containerMappings="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Package']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -266,7 +266,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a Profile" name="Profile" containerMappings="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Profile']">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a Profile" name="Profile" containerMappings="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Profile']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -279,7 +279,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Classifiers">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a Stereotype" name="Stereotype" containerMappings="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Stereotype.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a Stereotype" name="Stereotype" containerMappings="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Stereotype.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -290,7 +290,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Import Metaclass" nodeMappings="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@nodeMappings[name='PD_ElementImport']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/ElementImport.gif">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Import Metaclass" nodeMappings="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@nodeMappings[name='PD_ElementImport']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/ElementImport.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -310,7 +310,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="DataTypes">
-            <tools xsi:type="tool:ContainerCreationDescription" name="Enumeration" containerMappings="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Enumeration']">
+            <tools xsi:type="tool:ContainerCreationDescription" name="Enumeration" containerMappings="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Enumeration']">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -321,7 +321,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ContainerCreationDescription" name="PrimitiveType" containerMappings="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_PrimitiveType']">
+            <tools xsi:type="tool:ContainerCreationDescription" name="PrimitiveType" containerMappings="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_PrimitiveType']">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -332,7 +332,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ContainerCreationDescription" name="DataType" containerMappings="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_DataType']">
+            <tools xsi:type="tool:ContainerCreationDescription" name="DataType" containerMappings="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_DataType']">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -346,7 +346,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Features">
-          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Property" name="Property" nodeMappings="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']/@subNodeMappings[name='PD_Property']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create a new Property" name="Property" nodeMappings="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']/@subNodeMappings[name='PD_Property']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -360,7 +360,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="Literal" nodeMappings="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Enumeration']/@subNodeMappings[name='PD_EnumerationLiteral']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Literal" nodeMappings="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Enumeration']/@subNodeMappings[name='PD_EnumerationLiteral']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -377,7 +377,7 @@
           <reusedTools xsi:type="tool:PopupMenu" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Import%20primitive%20types']"/>
         </toolSections>
         <toolSections name="RelationShips">
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Extensions" precondition="&lt;%$preSource.canCreateExtension($preTarget)%>" edgeMappings="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Extension'] //@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Generalization']" iconPath="/org.obeonetwork.dsl.uml2.profile.design/icons/Extensions.gif">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Extensions" precondition="&lt;%$preSource.canCreateExtension($preTarget)%>" edgeMappings="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Extension'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Generalization']" iconPath="/org.obeonetwork.dsl.uml2.profile.design/icons/Extensions.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -386,7 +386,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$source.createExtension($target)%>"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Create a new Association" name="Extra Association" edgeMappings="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Association']" iconPath="/org.obeonetwork.dsl.uml2.profile.design/icons/ExtraAssociation.gif">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Create a new Association" name="Extra Association" edgeMappings="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Association']" iconPath="/org.obeonetwork.dsl.uml2.profile.design/icons/ExtraAssociation.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -435,7 +435,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drop From Model PD" precondition="&lt;%$newContainer.isValidElementForContainerView($element,$newViewContainer)%>" forceRefresh="true" mappings="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Profile'] //@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Package'] //@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drop From Model PD" precondition="&lt;%$newContainer.isValidElementForContainerView($element,$newViewContainer)%>" forceRefresh="true" mappings="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Profile'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Package'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -444,7 +444,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$newSemanticContainer.dropFromModel($element, $newContainerView)%>"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drop From Diagram PD" precondition="&lt;%$newContainer.isValidElementForContainerView($element,$newViewContainer)%>" forceRefresh="true" mappings="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Profile'] //@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Package'] //@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype'] //@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@nodeMappings[name='PD_ElementImport']" moveEdges="true">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drop From Diagram PD" precondition="&lt;%$newContainer.isValidElementForContainerView($element,$newViewContainer)%>" forceRefresh="true" mappings="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Profile'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Package'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@nodeMappings[name='PD_ElementImport']" moveEdges="true">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
@@ -456,10 +456,10 @@
         </toolSections>
         <customization>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="&lt;%getTarget.isNavigable()%>">
-            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Association']/@style" attributeName="targetArrow" value="[EdgeArrows::InputArrow/]"/>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Association']/@style" attributeName="targetArrow" value="[EdgeArrows::InputArrow/]"/>
           </vsmElementCustomizations>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="&lt;%getSource.isNavigable()%>">
-            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Profile%20Design']/@ownedRepresentations[name='UML%20Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Association']/@style" attributeName="sourceArrow" value="[EdgeArrows::InputArrow/]"/>
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Association']/@style" attributeName="sourceArrow" value="[EdgeArrows::InputArrow/]"/>
           </vsmElementCustomizations>
         </customization>
       </defaultLayer>
