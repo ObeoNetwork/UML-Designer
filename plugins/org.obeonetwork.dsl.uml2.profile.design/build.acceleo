@@ -18,7 +18,7 @@
         <acceleoCompiler 
             sourceFolder="${target.folder}"
             outputFolder="${target.folder}"
-            dependencies="${target.folder}/../../org.eclipse.uml2.uml;"
+            dependencies="${target.folder}/../../org.obeonetwork.dsl.uml2.design;${target.folder}/../../fr.obeo.acceleo.gen;${target.folder}/../../org.eclipse.uml2.uml;${target.folder}/../../org.obeonetwork.gmf.runtime.diagram.ui.extension;"
             binaryResource="false"
             packagesToRegister="">
         </acceleoCompiler>

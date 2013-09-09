@@ -15,10 +15,17 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 
+import org.eclipse.emf.common.util.TreeIterator;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Profile;
+import org.eclipse.uml2.uml.ProfileApplication;
 import org.eclipse.uml2.uml.Type;
+import org.eclipse.uml2.uml.UMLPlugin;
+import org.eclipse.uml2.uml.util.UMLSwitch;
 
 import fr.obeo.dsl.viewpoint.business.api.session.Session;
 import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
@@ -102,6 +109,55 @@ public class EcoreServices {
 		if (session != null) {
 			for (Resource childRes : session.getSemanticResources()) {
 				roots.addAll(childRes.getContents());
+			}
+		}
+		return roots;
+	}
+
+	/**
+	 * Retrieves all the possible profiles in the platform for the given context object.
+	 * 
+	 * @param context
+	 *            the context object on which to execute this service.
+	 * @return a {@link Collection} of all the profiles of the current platform.
+	 */
+	static public Collection<EObject> getAllProfilesInPlatform(EObject package_) {
+		final Collection<EObject> roots = new ArrayList<EObject>();
+
+		if (package_ instanceof org.eclipse.uml2.uml.Package) {
+			final org.eclipse.uml2.uml.Package packageUML = (org.eclipse.uml2.uml.Package)package_;
+			ResourceSet resourceSet = packageUML.eResource().getResourceSet();
+
+			for (URI profileURI : UMLPlugin.getEPackageNsURIToProfileLocationMap().values()) {
+				try {
+					resourceSet.getResource(profileURI.trimFragment(), true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+
+			for (Resource resource : resourceSet.getResources()) {
+				TreeIterator<EObject> allContents = resource.getAllContents();
+				while (allContents.hasNext()) {
+					new UMLSwitch<Object>() {
+						@Override
+						public Object caseProfile(Profile profile) {
+							if (profile.isDefined()) {
+								ProfileApplication profileApplication = packageUML
+										.getProfileApplication(profile);
+								// use this condition in order to not add the already applied profiles to the
+								// result list
+								// if (profileApplication == null
+								// || profileApplication.getAppliedDefinition() != profile
+								// .getDefinition()) {
+								// roots.add(profile);
+								// }
+								roots.add(profile);
+							}
+							return profile;
+						}
+					}.doSwitch(allContents.next());
+				}
 			}
 		}
 		return roots;

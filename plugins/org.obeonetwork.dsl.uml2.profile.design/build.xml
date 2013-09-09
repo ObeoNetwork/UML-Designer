@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+                                                             
+     ====================================================================== -->
+<project name="org.eclipse.profile.Test.plugin" default="default">
+	<description>
+            A test build script to execute Profile model generation
+    </description>
+ 
+	<!-- ================================= 
+          target: default              
+         ================================= -->
+	<target name="default" description="A build script to execute Profile model generation">
+		<emf.Ecore2Java 
+			  genModel="model2/test.genmodel"
+			  model="model2/test.ecore"
+			  generatemodelproject="true"
+			  generateeditorproject="true"
+			  generateeditproject="true"
+			  reconcilegenmodel="overwrite"
+			generateJavaCode="true"
+			generateModelProject="true" 
+			generateEditProject="true"
+			generateEditorProject="true"
+			generateTestsProject="false"
+			validateModel="false">
+			<arg line="-modelProject plugin src" />
+			<arg line="-editProject edit src" />
+			<arg line="-editorProject editor src" />
+		</emf.Ecore2Java>
+
+	</target>
+ 
+	<target name="clean" description="A script to remove the src folders">
+		<delete includeemptydirs="true" defaultexcludes="no">
+			<fileset dir="../org.eclipse.profile.Test.plugin" includes="src/" />
+			<fileset dir="../org.eclipse.profile.Test.plugin.edit" includes="src/" />
+			<fileset dir="../org.eclipse.profile.Test.plugin.editor" includes="src/" />
+		</delete>
+	</target>
+</project>
