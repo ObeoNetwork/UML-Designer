@@ -21,10 +21,14 @@ import org.eclipse.uml2.uml.ConnectableElement;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.ElementImport;
+import org.eclipse.uml2.uml.Extension;
+import org.eclipse.uml2.uml.ExtensionEnd;
 import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.InterfaceRealization;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.util.UMLSwitch;
 import org.obeonetwork.dsl.uml2.design.services.UMLServices;
@@ -75,6 +79,7 @@ public class ReconnectSwitch extends UMLSwitch<Element> {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public Element caseGeneralization(Generalization generalization) {
 		if (newPointedElement instanceof Classifier) {
 			if (RECONNECT_SOURCE == reconnectKind) {
@@ -89,6 +94,7 @@ public class ReconnectSwitch extends UMLSwitch<Element> {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public Element caseInterfaceRealization(InterfaceRealization interfaceRealization) {
 		if (RECONNECT_SOURCE == reconnectKind) {
 			if (newPointedElement instanceof Class) {
@@ -107,6 +113,7 @@ public class ReconnectSwitch extends UMLSwitch<Element> {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public Element caseDependency(Dependency dependency) {
 		if (RECONNECT_SOURCE == reconnectKind) {
 			if (newPointedElement instanceof Classifier) {
@@ -125,6 +132,7 @@ public class ReconnectSwitch extends UMLSwitch<Element> {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public Element caseComponentRealization(ComponentRealization cRealization) {
 		if (RECONNECT_SOURCE == reconnectKind) {
 			if (newPointedElement instanceof Classifier) {
@@ -152,6 +160,38 @@ public class ReconnectSwitch extends UMLSwitch<Element> {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
+	public Element caseExtension(Extension extension) {
+		if (RECONNECT_SOURCE == reconnectKind) {
+			if (newPointedElement instanceof Stereotype) {
+				for (int i = 0; i < extension.getMemberEnds().size(); i++) {
+					if (extension.getMemberEnds().get(i) instanceof ExtensionEnd) {
+						((ExtensionEnd)extension.getMemberEnds().get(i)).setType((Type)newPointedElement);
+					} else {
+						((Stereotype)newPointedElement).getOwnedAttributes().add(0,
+								extension.getMemberEnds().get(i));
+					}
+				}
+			}
+		} else {
+			if (newPointedElement instanceof ElementImport) {
+				Property baseProperty = extension.getStereotype().getOwnedAttribute(
+						"base_" + extension.getMetaclass().getName(), extension.getMetaclass());
+				Class newPointedMetaClass = (Class)((ElementImport)newPointedElement).getImportedElement();
+
+				if (baseProperty != null && newPointedMetaClass != null) {
+					baseProperty.setType((Class)((ElementImport)newPointedElement).getImportedElement());
+					baseProperty.setName("base_" + newPointedMetaClass.getName());
+				}
+			}
+		}
+		return extension;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public Element caseAssociation(Association association) {
 		if (RECONNECT_SOURCE == reconnectKind) {
 			if (newPointedElement instanceof Type) {
@@ -170,6 +210,7 @@ public class ReconnectSwitch extends UMLSwitch<Element> {
 	/**
 	 * {@inheritDoc}
 	 */
+	@Override
 	public Element caseConnector(Connector connector) {
 		if (RECONNECT_SOURCE == reconnectKind) {
 			if (newPointedElement instanceof ConnectableElement) {
