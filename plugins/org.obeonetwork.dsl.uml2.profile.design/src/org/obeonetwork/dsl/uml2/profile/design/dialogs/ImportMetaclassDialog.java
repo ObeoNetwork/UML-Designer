@@ -464,7 +464,7 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 	 * @return a classes list of the class in the metaModel.
 	 */
 	public static ArrayList<Class> getUMLMetaClasses(final Model metaModel) {
-		final ArrayList<Class> metaClasses = new ArrayList<>();
+		final ArrayList<Class> metaClasses = new ArrayList();
 
 		for (Element element : metaModel.getOwnedElements()) {
 			if (element instanceof Class)
