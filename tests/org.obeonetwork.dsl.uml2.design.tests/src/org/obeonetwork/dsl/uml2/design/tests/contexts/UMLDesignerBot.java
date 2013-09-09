@@ -50,7 +50,7 @@ public class UMLDesignerBot {
 	private static final String OPEN_PERSPECTIVE = "Open Perspective";
 
 	public UMLDesignerBot openModelingPerspective() {
-		openPerspective(MODELING_PERSPECTIVE_NAME);		
+		openPerspective(MODELING_PERSPECTIVE_NAME);
 		return this;
 	}
 
@@ -62,10 +62,8 @@ public class UMLDesignerBot {
 		if (!currentShellName.startsWith(MODELING_PERSPECTIVE_NAME)) {
 			bot.sleep(1000);
 			bot.menu("Window").menu(OPEN_PERSPECTIVE).menu("Other...").click();
-			bot.waitUntilWidgetAppears(Conditions
-					.shellIsActive(OPEN_PERSPECTIVE));
-			final SWTBotShell openPerspectiveShell = bot
-					.shell(OPEN_PERSPECTIVE);
+			bot.waitUntilWidgetAppears(Conditions.shellIsActive(OPEN_PERSPECTIVE));
+			final SWTBotShell openPerspectiveShell = bot.shell(OPEN_PERSPECTIVE);
 			openPerspectiveShell.activate();
 
 			bot.table().select(perspectiveName);
@@ -74,8 +72,7 @@ public class UMLDesignerBot {
 	}
 
 	public UMLDesignerBot closeWelcome() {
-		Matcher<IWorkbenchPartReference> matcher = WidgetMatcherFactory
-				.withPartName("Welcome");
+		Matcher<IWorkbenchPartReference> matcher = WidgetMatcherFactory.withPartName("Welcome");
 		List<SWTBotView> views = bot.views(matcher);
 		for (SWTBotView swtBotView : views) {
 			swtBotView.close();
@@ -91,52 +88,106 @@ public class UMLDesignerBot {
 		bot.menu("File").menu("New").menu("Example...").click();
 		bot.waitUntil(Conditions.shellIsActive("New Example"));
 
-		bot.shell("New Example").bot().tree().expandNode("UML")
-				.getNode(nameInWizard).select();
+		bot.shell("New Example").bot().tree().expandNode("UML").getNode(nameInWizard).select();
 		bot.button("Next >").click();
 		bot.button("Finish").click();
 		closeWelcome();
-		bot.viewByTitle("Model Explorer").bot().tree()
-				.expandNode("TravelAgency").expandNode("agency.uml");
+		bot.viewByTitle("Model Explorer").bot().tree().expandNode("TravelAgency").expandNode("agency.uml");
 
 		waitForProgressInformationComplete();
 
 		waitForEditor("Package Hierarchy");
-		return new SWTBotDesignerEditor(bot.activeEditor().getReference(),
-				workbench());
+		return new SWTBotDesignerEditor(bot.activeEditor().getReference(), workbench());
 	}
 
 	private void waitForEditor(final String editorName) {
-		bot.waitUntil(
-				Conditions.waitForEditor(new BaseMatcher<IEditorReference>() {
+		bot.waitUntil(Conditions.waitForEditor(new BaseMatcher<IEditorReference>() {
 
-					public boolean matches(Object item) {
-						System.out.println(editorName + " "
-								+ ((EditorReference) item).getName());
-						return editorName.equals(((EditorReference) item)
-								.getName());
-					}
+			public boolean matches(Object item) {
+				System.out.println(editorName + " " + ((EditorReference)item).getName());
+				return editorName.equals(((EditorReference)item).getName());
+			}
 
-					public void describeTo(Description description) {
-					}
+			public void describeTo(Description description) {
+			}
 
-				}), 15000);
+		}), 15000);
 	}
 
 	public SWTBotDesignerEditor openEntitiesClassDiagram() {
 
 		importAndOpenTravelAgency();
 
-		bot.viewByTitle("Model Explorer")
-				.bot()
-				.tree()
-				.expandNode("TravelAgency", "agency.uml",
-						"<Model> Travel Agency", "Entities").doubleClick();
+		bot.viewByTitle("Model Explorer").bot().tree()
+				.expandNode("TravelAgency", "agency.uml", "<Model> Travel Agency", "Entities").doubleClick();
 
 		waitForEditor("Entities");
 
-		return new SWTBotDesignerEditor(bot.activeEditor().getReference(),
-				workbench());
+		return new SWTBotDesignerEditor(bot.activeEditor().getReference(), workbench());
+	}
+
+	public void importAndOpenTestAllMappings() {
+		bot.resetWorkbench();
+		String nameInWizard = "Test All Mappings";
+
+		bot.menu("File").menu("New").menu("Example...").click();
+		bot.waitUntil(Conditions.shellIsActive("New Example"));
+
+		bot.shell("New Example").bot().tree().expandNode("UML").getNode(nameInWizard).select();
+		bot.button("Next >").click();
+		bot.button("Finish").click();
+		closeWelcome();
+		bot.viewByTitle("Model Explorer").bot().tree().expandNode("TestAllMappings").expandNode("model.uml");
+
+		waitForProgressInformationComplete();
+
+		// Open and refresh package hierarchy automatically
+		waitForEditor("Test Package Hierarchy");
+		new SWTBotDesignerEditor(bot.activeEditor().getReference(), workbench()).refresh();
+		// Open class diagram
+		bot.viewByTitle("Model Explorer").bot().tree()
+				.expandNode("TestAllMappings", "model.uml", "<Model> Test", "Test Class Diagram")
+				.doubleClick();
+		waitForEditor("Test Class Diagram");
+		new SWTBotDesignerEditor(bot.activeEditor().getReference(), workbench()).refresh();
+		// Open class diagram archetype
+		bot.viewByTitle("Model Explorer").bot().tree()
+				.expandNode("TestAllMappings", "model.uml", "<Model> Test", "Test Class Diagram Archetypes")
+				.doubleClick();
+		waitForEditor("Test Class Diagram Archetypes");
+		new SWTBotDesignerEditor(bot.activeEditor().getReference(), workbench()).refresh();
+		// Open class diagram edges
+		bot.viewByTitle("Model Explorer").bot().tree()
+				.expandNode("TestAllMappings", "model.uml", "<Model> Test", "Test Class Diagram Edges")
+				.doubleClick();
+		waitForEditor("Test Class Diagram Edges");
+		new SWTBotDesignerEditor(bot.activeEditor().getReference(), workbench()).refresh();
+		// Open component diagram
+		bot.viewByTitle("Model Explorer").bot().tree()
+				.expandNode("TestAllMappings", "model.uml", "<Model> Test", "Test Component Diagram")
+				.doubleClick();
+		waitForEditor("Test Component Diagram");
+		new SWTBotDesignerEditor(bot.activeEditor().getReference(), workbench()).refresh();
+		// Open composite structure diagram
+		bot.viewByTitle("Model Explorer")
+				.bot()
+				.tree()
+				.expandNode("TestAllMappings", "model.uml", "<Model> Test",
+						"Test Composite Structure Diagram").doubleClick();
+		waitForEditor("Test Composite Structure Diagram");
+		new SWTBotDesignerEditor(bot.activeEditor().getReference(), workbench()).refresh();
+		// Open deployment diagram
+		bot.viewByTitle("Model Explorer").bot().tree()
+				.expandNode("TestAllMappings", "model.uml", "<Model> Test", "Test Deployment Diagram")
+				.doubleClick();
+		waitForEditor("Test Deployment Diagram");
+		new SWTBotDesignerEditor(bot.activeEditor().getReference(), workbench()).refresh();
+		// Open use case diagram
+		bot.viewByTitle("Model Explorer").bot().tree()
+				.expandNode("TestAllMappings", "model.uml", "<Model> Test", "Test Use Case Diagram")
+				.doubleClick();
+		waitForEditor("Test Use Case Diagram");
+		new SWTBotDesignerEditor(bot.activeEditor().getReference(), workbench()).refresh();
 	}
 
 	public void createNewUMLProject() {
@@ -181,9 +232,19 @@ public class UMLDesignerBot {
 		for (SWTBotEditor editor : bot.editors()) {
 			editor.close();
 		}
-		bot.viewByTitle("Model Explorer").bot().tree()
-				.expandNode("TravelAgency").contextMenu("Delete").click();
-		bot.waitUntil(Conditions.shellIsActive("Delete Resources"),25000);
+		bot.viewByTitle("Model Explorer").bot().tree().expandNode("TravelAgency").contextMenu("Delete")
+				.click();
+		bot.waitUntil(Conditions.shellIsActive("Delete Resources"), 25000);
+		bot.button("OK").click();
+	}
+
+	public void deleteTestAllMappings() {
+		for (SWTBotEditor editor : bot.editors()) {
+			editor.close();
+		}
+		bot.viewByTitle("Model Explorer").bot().tree().expandNode("TestAllMappings").contextMenu("Delete")
+				.click();
+		bot.waitUntil(Conditions.shellIsActive("Delete Resources"), 25000);
 		bot.button("OK").click();
 	}
 
@@ -192,9 +253,8 @@ public class UMLDesignerBot {
 		bot.viewByTitle("Model Explorer")
 				.bot()
 				.tree()
-				.expandNode("TravelAgency", "agency.uml",
-						"<Model> Travel Agency","<Package> Components", "<Component> Agency  Offers",
-						"<Class> Catalog").select();
+				.expandNode("TravelAgency", "agency.uml", "<Model> Travel Agency", "<Package> Components",
+						"<Component> Agency  Offers", "<Class> Catalog").select();
 		ContextMenuHelper.clickContextMenu(tree, "Delete");
 	}
 
@@ -204,13 +264,9 @@ public class UMLDesignerBot {
 
 	public void createAClassDiagram() {
 		SWTBotTree tree = bot.viewByTitle("Model Explorer").bot().tree();
-		bot.viewByTitle("Model Explorer")
-				.bot()
-				.tree()
-				.expandNode("TravelAgency", "agency.uml",
-						"<Model> Travel Agency").select();
-		ContextMenuHelper.clickContextMenu(tree, "New Representation",
-				"Travel Agency Class Diagram");
+		bot.viewByTitle("Model Explorer").bot().tree()
+				.expandNode("TravelAgency", "agency.uml", "<Model> Travel Agency").select();
+		ContextMenuHelper.clickContextMenu(tree, "New Representation", "Travel Agency Class Diagram");
 
 		bot.button("OK").click();
 	}
@@ -221,10 +277,9 @@ public class UMLDesignerBot {
 
 	public Model getTravelAgencyModel() {
 		String sessionResourceUri = "TravelAgency/representations.aird";
-		Session session = SessionManager.INSTANCE.getSession(URI
-				.createPlatformResourceURI(sessionResourceUri, true));
-		Resource semanticResource = (Resource) session.getSemanticResources()
-				.toArray()[0];
-		return ((Model) semanticResource.getContents().get(0));
+		Session session = SessionManager.INSTANCE.getSession(URI.createPlatformResourceURI(
+				sessionResourceUri, true));
+		Resource semanticResource = (Resource)session.getSemanticResources().toArray()[0];
+		return ((Model)semanticResource.getContents().get(0));
 	}
 }

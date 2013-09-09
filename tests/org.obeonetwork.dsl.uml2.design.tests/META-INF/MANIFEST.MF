@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: UML Designer Tests
-Bundle-SymbolicName: org.obeonetwork.dsl.uml2.design.tests
+Bundle-SymbolicName: org.obeonetwork.dsl.uml2.design.tests;singleton:=true
 Bundle-Version: 2.3.1.qualifier
 Bundle-Activator: org.obeonetwork.dsl.uml2.design.tests.Activator
 Bundle-Vendor: Obeo Network
