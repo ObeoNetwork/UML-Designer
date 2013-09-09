@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2013 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
 package org.obeonetwork.dsl.uml2.profile.design.exportprofile;
 
 import java.util.ArrayList;
@@ -14,12 +24,12 @@ import org.eclipse.uml2.uml.editor.actions.DiagnosticAction;
 import org.eclipse.uml2.uml.util.UMLUtil;
 import org.eclipse.uml2.uml.util.UMLUtil.UML2EcoreConverter;
 
-
 /**
  * This class provides method to create an ecore model from an UML model.
  * 
  * @author Mohamed-Lamine BOUKHANOUFA <a
- *         href="mailto:mohamed-lamine.boukhanoufa@obeo.fr">mohamed-lamine.boukhanoufa@obeo.fr</a>
+ *         href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
+ *         >mohamed-lamine.boukhanoufa@obeo.fr</a>
  */
 public class UmlToEcore extends DiagnosticAction {
 	/**
@@ -60,8 +70,9 @@ public class UmlToEcore extends DiagnosticAction {
 		Resource resource = null;
 		for (EPackage ePackage : ecorePackages) {
 
-			resources.add(resource = resourceSet.createResource(uri.appendSegment(
-					ePackage.getName()).appendFileExtension(ECORE_FILE_EXTENSION)));
+			resources.add(resource = resourceSet.createResource(uri
+					.appendSegment(ePackage.getName()).appendFileExtension(
+							ECORE_FILE_EXTENSION)));
 
 			resource.getContents().add(ePackage);
 		}
@@ -86,37 +97,53 @@ public class UmlToEcore extends DiagnosticAction {
 	protected Map<String, String> initAllOptionsToProcess() {
 		final Map<String, String> options = new HashMap<String, String>();
 
-		options.put(UML2EcoreConverter.OPTION__ECORE_TAGGED_VALUES, UMLUtil.OPTION__PROCESS);
+		options.put(UML2EcoreConverter.OPTION__ECORE_TAGGED_VALUES,
+				UMLUtil.OPTION__PROCESS);
 
-		options.put(UML2EcoreConverter.OPTION__REDEFINING_OPERATIONS, UMLUtil.OPTION__PROCESS);
+		options.put(UML2EcoreConverter.OPTION__REDEFINING_OPERATIONS,
+				UMLUtil.OPTION__PROCESS);
 
-		options.put(UML2EcoreConverter.OPTION__REDEFINING_PROPERTIES, UMLUtil.OPTION__PROCESS);
+		options.put(UML2EcoreConverter.OPTION__REDEFINING_PROPERTIES,
+				UMLUtil.OPTION__PROCESS);
 
-		options.put(UML2EcoreConverter.OPTION__SUBSETTING_PROPERTIES, UMLUtil.OPTION__PROCESS);
+		options.put(UML2EcoreConverter.OPTION__SUBSETTING_PROPERTIES,
+				UMLUtil.OPTION__PROCESS);
 
-		options.put(UML2EcoreConverter.OPTION__UNION_PROPERTIES, UMLUtil.OPTION__PROCESS);
+		options.put(UML2EcoreConverter.OPTION__UNION_PROPERTIES,
+				UMLUtil.OPTION__PROCESS);
 
-		options.put(UML2EcoreConverter.OPTION__DERIVED_FEATURES, UMLUtil.OPTION__PROCESS);
+		options.put(UML2EcoreConverter.OPTION__DERIVED_FEATURES,
+				UMLUtil.OPTION__PROCESS);
 
-		options.put(UML2EcoreConverter.OPTION__DUPLICATE_OPERATIONS, UMLUtil.OPTION__PROCESS);
+		options.put(UML2EcoreConverter.OPTION__DUPLICATE_OPERATIONS,
+				UMLUtil.OPTION__PROCESS);
 
-		options.put(UML2EcoreConverter.OPTION__DUPLICATE_OPERATION_INHERITANCE, UMLUtil.OPTION__PROCESS);
+		options.put(UML2EcoreConverter.OPTION__DUPLICATE_OPERATION_INHERITANCE,
+				UMLUtil.OPTION__PROCESS);
 
-		options.put(UML2EcoreConverter.OPTION__DUPLICATE_FEATURES, UMLUtil.OPTION__PROCESS);
+		options.put(UML2EcoreConverter.OPTION__DUPLICATE_FEATURES,
+				UMLUtil.OPTION__PROCESS);
 
-		options.put(UML2EcoreConverter.OPTION__DUPLICATE_FEATURE_INHERITANCE, UMLUtil.OPTION__PROCESS);
+		options.put(UML2EcoreConverter.OPTION__DUPLICATE_FEATURE_INHERITANCE,
+				UMLUtil.OPTION__PROCESS);
 
-		options.put(UML2EcoreConverter.OPTION__SUPER_CLASS_ORDER, UMLUtil.OPTION__PROCESS);
+		options.put(UML2EcoreConverter.OPTION__SUPER_CLASS_ORDER,
+				UMLUtil.OPTION__PROCESS);
 
-		options.put(UML2EcoreConverter.OPTION__ANNOTATION_DETAILS, UMLUtil.OPTION__PROCESS);
+		options.put(UML2EcoreConverter.OPTION__ANNOTATION_DETAILS,
+				UMLUtil.OPTION__PROCESS);
 
-		options.put(UML2EcoreConverter.OPTION__INVARIANT_CONSTRAINTS, UMLUtil.OPTION__PROCESS);
+		options.put(UML2EcoreConverter.OPTION__INVARIANT_CONSTRAINTS,
+				UMLUtil.OPTION__PROCESS);
 
-		options.put(UML2EcoreConverter.OPTION__OPERATION_BODIES, UMLUtil.OPTION__PROCESS);
+		options.put(UML2EcoreConverter.OPTION__OPERATION_BODIES,
+				UMLUtil.OPTION__PROCESS);
 
-		options.put(UML2EcoreConverter.OPTION__COMMENTS, UMLUtil.OPTION__PROCESS);
+		options.put(UML2EcoreConverter.OPTION__COMMENTS,
+				UMLUtil.OPTION__PROCESS);
 
-		options.put(UML2EcoreConverter.OPTION__CAMEL_CASE_NAMES, UMLUtil.OPTION__IGNORE);
+		options.put(UML2EcoreConverter.OPTION__CAMEL_CASE_NAMES,
+				UMLUtil.OPTION__IGNORE);
 
 		return options;
 	}

@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2013 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
 package org.obeonetwork.dsl.uml2.profile.design.services;
 
 import org.eclipse.emf.common.util.EList;
@@ -10,10 +20,11 @@ import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
 
 /**
- * This class provides methods to delete the Profile element. 
+ * This class provides methods to delete the Profile element.
  * 
  * @author Mohamed-Lamine BOUKHANOUFA <a
- *         href="mailto:mohamed-lamine.boukhanoufa@obeo.fr">mohamed-lamine.boukhanoufa@obeo.fr</a>
+ *         href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
+ *         >mohamed-lamine.boukhanoufa@obeo.fr</a>
  */
 public class DeleteUMLElement {
 
@@ -55,13 +66,15 @@ public class DeleteUMLElement {
 	 */
 	public void deleteExtension(final Extension extension, final Profile profile) {
 		for (Element relatedElement : extension.getRelatedElements()) {
-			if (relatedElement instanceof Stereotype && extension.getMetaclass() != null) {
+			if (relatedElement instanceof Stereotype
+					&& extension.getMetaclass() != null) {
 				final EList<Property> properties = ((Stereotype) relatedElement)
 						.getAttributes();
 				int propertiesSize = properties.size();
 				for (int i = 0; i < propertiesSize; i++) {
 					if (properties.get(i).getAssociation() != null
-							&& properties.get(i).getAssociation().equals(extension)) {
+							&& properties.get(i).getAssociation()
+									.equals(extension)) {
 						properties.get(i).destroy();
 						i--;
 						propertiesSize--;
@@ -88,14 +101,15 @@ public class DeleteUMLElement {
 				final Property baseProperty = extension.getMemberEnd("base_"
 						+ extension.getMetaclass().getName(),
 						extension.getMetaclass());
-				if (baseProperty != null && baseProperty.getOwner().equals(stereotype)) {
+				if (baseProperty != null
+						&& baseProperty.getOwner().equals(stereotype)) {
 					EcoreUtil.delete(extension, true);
 				}
 			}
 		}
 		EcoreUtil.delete(stereotype, true);
 	}
-	
+
 	/**
 	 * deleteElementImport delete an elementImport and all its references (base_
 	 * attributes of the stereotypes).
@@ -109,7 +123,8 @@ public class DeleteUMLElement {
 			final Profile profile) {
 		for (Extension extension : profile.getOwnedExtensions(false)) {
 			if (extension.getMetaclass() != null
-					&& extension.getMetaclass().equals(elementImport.getImportedElement())) {
+					&& extension.getMetaclass().equals(
+							elementImport.getImportedElement())) {
 				deleteExtension(extension, profile);
 			}
 		}

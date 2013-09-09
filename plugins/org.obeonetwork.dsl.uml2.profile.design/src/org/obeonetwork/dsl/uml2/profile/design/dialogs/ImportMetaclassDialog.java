@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2013 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
 package org.obeonetwork.dsl.uml2.profile.design.dialogs;
 
 import java.io.IOException;
@@ -51,7 +61,9 @@ import org.obeonetwork.dsl.uml2.profile.design.Activator;
 /**
  * A selection dialog message which provide a list of metaclass.
  * 
- * @author Mohamed-Lamine BOUKHANOUFA
+ * @author Mohamed-Lamine BOUKHANOUFA <a
+ *         href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
+ *         >mohamed-lamine.boukhanoufa@obeo.fr</a>
  */
 public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 	/**
@@ -281,7 +293,9 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 	/**
 	 * Action to show only the concrete metaclass.
 	 * 
-	 * @author Mohamed-Lamine BOUKHANOUFA
+	 * @author Mohamed-Lamine BOUKHANOUFA <a
+	 *         href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
+	 *         >mohamed-lamine.boukhanoufa@obeo.fr</a>
 	 */
 	private class ShowOnlyConcreteMetaclassAction extends Action {
 		/**
@@ -333,7 +347,9 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 	/**
 	 * Filter to show juste concrete and/or sub metaclass.
 	 * 
-	 * @author Mohamed-Lamine BOUKHANOUFA
+	 * @author Mohamed-Lamine BOUKHANOUFA <a
+	 *         href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
+	 *         >mohamed-lamine.boukhanoufa@obeo.fr</a>
 	 */
 	private class MetaclassFilter extends ItemsFilter {
 		private final boolean concreteMetaclassFilter = ImportMetaclassDialog.this.concrete;

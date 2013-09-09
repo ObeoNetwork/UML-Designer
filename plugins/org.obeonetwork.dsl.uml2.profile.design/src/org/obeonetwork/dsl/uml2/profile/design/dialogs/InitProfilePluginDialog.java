@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2013 Obeo.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ *     Obeo - initial API and implementation
+ *******************************************************************************/
 package org.obeonetwork.dsl.uml2.profile.design.dialogs;
 
 import org.eclipse.jface.dialogs.IDialogConstants;
@@ -16,10 +26,12 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
 /**
- * This class provide an interface to initiate the parameters of profile plug-in creation.
+ * This class provide an interface to initiate the parameters of profile plug-in
+ * creation.
  * 
  * @author Mohamed-Lamine BOUKHANOUFA <a
- *         href="mailto:mohamed-lamine.boukhanoufa@obeo.fr">mohamed-lamine.boukhanoufa@obeo.fr</a>
+ *         href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
+ *         >mohamed-lamine.boukhanoufa@obeo.fr</a>
  */
 public class InitProfilePluginDialog extends TitleAreaDialog {
 
@@ -116,7 +128,8 @@ public class InitProfilePluginDialog extends TitleAreaDialog {
 		group.setLayout(layout);
 
 		// new comment area
-		// commentText = new Text(group, SWT.MULTI | SWT.BORDER | SWT.WRAP | SWT.V_SCROLL);
+		// commentText = new Text(group, SWT.MULTI | SWT.BORDER | SWT.WRAP |
+		// SWT.V_SCROLL);
 		// commentText.setText(oldUMLDesignerProfileVersion.getComment());
 		// GridData gd = new GridData(SWT.FILL, SWT.CENTER, true, true);
 		// gd.heightHint = 60;
@@ -128,11 +141,12 @@ public class InitProfilePluginDialog extends TitleAreaDialog {
 		header2.setText("All text zones must be specified.");
 
 		final Label profileNameLabel = new Label(group, SWT.SEARCH);
-		profileNameLabel.setText("profile name, editable in the profile (model/diagrams):");
+		profileNameLabel
+				.setText("profile name, editable in the profile (model/diagrams):");
 
 		profileNameField = new Text(group, SWT.SINGLE | SWT.BORDER);
 		profileNameField.addModifyListener(new ModifyListener() {
-            @Override
+			@Override
 			public void modifyText(final ModifyEvent e) {
 				if (e.getSource() instanceof Text) {
 					profileName = ((Text) e.getSource()).getText();
@@ -190,11 +204,12 @@ public class InitProfilePluginDialog extends TitleAreaDialog {
 		final Object src = e.getSource();
 		if (src instanceof Text) {
 			final Text txt = (Text) src;
-				return txt.getText().length() != 0 && !txt.getText().isEmpty();
-			}
+			return txt.getText().length() != 0 && !txt.getText().isEmpty();
+		}
 
 		return true;
 	}
+
 	private void applyButtonFilter() {
 		final Control button = getButton(IDialogConstants.OK_ID);
 		if (button != null) {
