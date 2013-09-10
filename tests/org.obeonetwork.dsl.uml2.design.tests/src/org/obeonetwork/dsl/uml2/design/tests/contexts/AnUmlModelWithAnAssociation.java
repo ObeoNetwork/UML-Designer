@@ -59,15 +59,6 @@ public class AnUmlModelWithAnAssociation extends Context {
 		// End of user code
 	}
 	/**
-	 * Action : I edit the label of the second role to
-	 */
-	public void actionIEditTheLabelOfTheSecondRoleTo(String iEditTheLabelOfTheSecondRoleTo0) {
-		// Start of user code IEditTheLabelOfTheSecondRoleTo
-		editSecondRole(startAssociation, iEditTheLabelOfTheSecondRoleTo0);
-		// End of user code
-	}
-
-	/**
 	 * Action : I edit the label of the first role to
 	 */
 	public void actionIEditTheLabelOfTheFirstRoleTo(String iEditTheLabelOfTheFirstRoleTo0) {
@@ -77,21 +68,14 @@ public class AnUmlModelWithAnAssociation extends Context {
 	}
 
 	/**
-	 * Behavior : The second end is derived
+	 * Action : I edit the label of the second role to
 	 */
-	public void assertTheSecondEndIsDerived() {
-		// Start of user code TheSecondEndIsDerived
-		assertEquals(true, secondEnd.isDerived());
+	public void actionIEditTheLabelOfTheSecondRoleTo(String iEditTheLabelOfTheSecondRoleTo0) {
+		// Start of user code IEditTheLabelOfTheSecondRoleTo
+		editSecondRole(startAssociation, iEditTheLabelOfTheSecondRoleTo0);
 		// End of user code
 	}
-	/**
-	 * Behavior : The second end lower cardinality equals
-	 */
-	public void assertTheSecondEndLowerCardinalityEquals(String theSecondEndLowerCardinalityEquals0) {
-		// Start of user code TheSecondEndLowerCardinalityEquals
-		assertEquals(Integer.parseInt(theSecondEndLowerCardinalityEquals0), secondEnd.getLower());
-		// End of user code
-	}
+
 	/**
 	 * Behavior : The first end is derived
 	 */
@@ -109,19 +93,19 @@ public class AnUmlModelWithAnAssociation extends Context {
 		// End of user code
 	}
 	/**
-	 * Behavior : The second end upper cardinality equals
+	 * Behavior : The second end lower cardinality equals
 	 */
-	public void assertTheSecondEndUpperCardinalityEquals(String theSecondEndUpperCardinalityEquals0) {
-		// Start of user code TheSecondEndUpperCardinalityEquals
-		assertEquals(Integer.parseInt(theSecondEndUpperCardinalityEquals0), secondEnd.getUpper());
+	public void assertTheSecondEndLowerCardinalityEquals(String theSecondEndLowerCardinalityEquals0) {
+		// Start of user code TheSecondEndLowerCardinalityEquals
+		assertEquals(Integer.parseInt(theSecondEndLowerCardinalityEquals0), secondEnd.getLower());
 		// End of user code
 	}
 	/**
-	 * Behavior : The second end is not derived
+	 * Behavior : The second end is derived
 	 */
-	public void assertTheSecondEndIsNotDerived() {
-		// Start of user code TheSecondEndIsNotDerived
-		assertEquals(false, secondEnd.isDerived());
+	public void assertTheSecondEndIsDerived() {
+		// Start of user code TheSecondEndIsDerived
+		assertEquals(true, secondEnd.isDerived());
 		// End of user code
 	}
 	/**
@@ -133,11 +117,19 @@ public class AnUmlModelWithAnAssociation extends Context {
 		// End of user code
 	}
 	/**
-	 * Behavior : The second end name equals
+	 * Behavior : The first end is not derived
 	 */
-	public void assertTheSecondEndNameEquals(String theSecondEndNameEquals0) {
-		// Start of user code TheSecondEndNameEquals
-		assertEquals(theSecondEndNameEquals0, secondEnd.getName());
+	public void assertTheFirstEndIsNotDerived() {
+		// Start of user code TheFirstEndIsNotDerived
+		assertEquals(false, firstEnd.isDerived());
+		// End of user code
+	}
+	/**
+	 * Behavior : The second end upper cardinality equals
+	 */
+	public void assertTheSecondEndUpperCardinalityEquals(String theSecondEndUpperCardinalityEquals0) {
+		// Start of user code TheSecondEndUpperCardinalityEquals
+		assertEquals(Integer.parseInt(theSecondEndUpperCardinalityEquals0), secondEnd.getUpper());
 		// End of user code
 	}
 	/**
@@ -149,11 +141,19 @@ public class AnUmlModelWithAnAssociation extends Context {
 		// End of user code
 	}
 	/**
-	 * Behavior : The first end is not derived
+	 * Behavior : The second end is not derived
 	 */
-	public void assertTheFirstEndIsNotDerived() {
-		// Start of user code TheFirstEndIsNotDerived
-		assertEquals(false, firstEnd.isDerived());
+	public void assertTheSecondEndIsNotDerived() {
+		// Start of user code TheSecondEndIsNotDerived
+		assertEquals(false, secondEnd.isDerived());
+		// End of user code
+	}
+	/**
+	 * Behavior : The second end name equals
+	 */
+	public void assertTheSecondEndNameEquals(String theSecondEndNameEquals0) {
+		// Start of user code TheSecondEndNameEquals
+		assertEquals(theSecondEndNameEquals0, secondEnd.getName());
 		// End of user code
 	}
 

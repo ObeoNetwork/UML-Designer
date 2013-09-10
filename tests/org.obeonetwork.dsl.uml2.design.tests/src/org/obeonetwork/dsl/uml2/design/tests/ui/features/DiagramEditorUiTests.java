@@ -9,18 +9,18 @@
  *     Obeo - initial API and implementation
  *******************************************************************************/
 
-package org.obeonetwork.dsl.uml2.design.tests.ui.stories;
+package org.obeonetwork.dsl.uml2.design.tests.ui.features;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
-import org.obeonetwork.dsl.uml2.design.tests.ui.stories.deleteatype.AClassDiagramIsOpenedUiTests;
+import org.obeonetwork.dsl.uml2.design.tests.ui.stories.ShowGraphicalElementsUiTests;
 
 @RunWith(Suite.class)
-@SuiteClasses({AClassDiagramIsOpenedUiTests.class})
+@SuiteClasses({ShowGraphicalElementsUiTests.class})
 /**
- * Testing : Delete a type
+ * Testing : Diagram editor
  */
-public class DeleteATypeUiTests {
+public class DiagramEditorUiTests {
 
 }

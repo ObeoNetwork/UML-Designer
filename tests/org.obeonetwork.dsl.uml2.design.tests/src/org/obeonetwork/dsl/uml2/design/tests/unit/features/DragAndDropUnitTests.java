@@ -9,18 +9,18 @@
  *     Obeo - initial API and implementation
  *******************************************************************************/
 
-package org.obeonetwork.dsl.uml2.design.tests.ui.stories;
+package org.obeonetwork.dsl.uml2.design.tests.unit.features;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
-import org.obeonetwork.dsl.uml2.design.tests.ui.stories.reconnectarelationship.AClassDiagramIsOpenedUiTests;
+import org.obeonetwork.dsl.uml2.design.tests.unit.stories.DropElementUnitTests;
 
 @RunWith(Suite.class)
-@SuiteClasses({AClassDiagramIsOpenedUiTests.class})
+@SuiteClasses({DropElementUnitTests.class})
 /**
- * Testing : Reconnect a relationship
+ * Testing : Drag and drop
  */
-public class ReconnectARelationshipUiTests {
+public class DragAndDropUnitTests {
 
 }

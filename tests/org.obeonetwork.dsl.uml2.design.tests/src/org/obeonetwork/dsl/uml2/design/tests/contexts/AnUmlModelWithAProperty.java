@@ -115,35 +115,11 @@ public class AnUmlModelWithAProperty extends Context {
 	}
 
 	/**
-	 * Behavior : The property is derived
-	 */
-	public void assertThePropertyIsDerived() {
-		// Start of user code ThePropertyIsDerived
-		assertEquals(true, property.isDerived());
-		// End of user code
-	}
-	/**
 	 * Behavior : The upper bound of the property equals
 	 */
 	public void assertTheUpperBoundOfThePropertyEquals(String theUpperBoundOfThePropertyEquals0) {
 		// Start of user code TheUpperBoundOfThePropertyEquals
 		assertEquals(Integer.parseInt(theUpperBoundOfThePropertyEquals0), property.getUpper());
-		// End of user code
-	}
-	/**
-	 * Behavior : The property name equals
-	 */
-	public void assertThePropertyNameEquals(String thePropertyNameEquals0) {
-		// Start of user code ThePropertyNameEquals
-		assertEquals(thePropertyNameEquals0, property.getName());
-		// End of user code
-	}
-	/**
-	 * Behavior : The property type equals
-	 */
-	public void assertThePropertyTypeEquals(String thePropertyTypeEquals0) {
-		// Start of user code ThePropertyTypeEquals
-		assertEquals(thePropertyTypeEquals0, property.getType().getName());
 		// End of user code
 	}
 	/**
@@ -160,6 +136,30 @@ public class AnUmlModelWithAProperty extends Context {
 	public void assertTheLowerBoundOfThePropertyEquals(String theLowerBoundOfThePropertyEquals0) {
 		// Start of user code TheLowerBoundOfThePropertyEquals
 		assertEquals(Integer.parseInt(theLowerBoundOfThePropertyEquals0), property.getLower());
+		// End of user code
+	}
+	/**
+	 * Behavior : The property name equals
+	 */
+	public void assertThePropertyNameEquals(String thePropertyNameEquals0) {
+		// Start of user code ThePropertyNameEquals
+		assertEquals(thePropertyNameEquals0, property.getName());
+		// End of user code
+	}
+	/**
+	 * Behavior : The property is derived
+	 */
+	public void assertThePropertyIsDerived() {
+		// Start of user code ThePropertyIsDerived
+		assertEquals(true, property.isDerived());
+		// End of user code
+	}
+	/**
+	 * Behavior : The property type equals
+	 */
+	public void assertThePropertyTypeEquals(String thePropertyTypeEquals0) {
+		// Start of user code ThePropertyTypeEquals
+		assertEquals(thePropertyTypeEquals0, property.getType().getName());
 		// End of user code
 	}
 

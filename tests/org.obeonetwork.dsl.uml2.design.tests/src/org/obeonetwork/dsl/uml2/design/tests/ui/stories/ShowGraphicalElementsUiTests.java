@@ -14,13 +14,13 @@ package org.obeonetwork.dsl.uml2.design.tests.ui.stories;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
-import org.obeonetwork.dsl.uml2.design.tests.ui.stories.createafeature.AClassDiagramIsOpenedUiTests;
+import org.obeonetwork.dsl.uml2.design.tests.ui.stories.showgraphicalelements.TheTestAllMappingsRepresentationsAreOpenedAndRefreshedUiTests;
 
 @RunWith(Suite.class)
-@SuiteClasses({AClassDiagramIsOpenedUiTests.class})
+@SuiteClasses({TheTestAllMappingsRepresentationsAreOpenedAndRefreshedUiTests.class})
 /**
- * Testing : Create a feature
+ * Testing : Show graphical elements
  */
-public class CreateAFeatureUiTests {
+public class ShowGraphicalElementsUiTests {
 
 }

@@ -105,22 +105,12 @@ public class AnUmlModelWithAClassAndAnOperation extends Context {
 		// End of user code
 	}
 	/**
-	 * Action : I create an output pin on an opaque action
+	 * Action : I drop a node to an activity
 	 */
-	public void actionICreateAnOutputPinOnAnOpaqueAction() {
-		// Start of user code ICreateAnOutputPinOnAnOpaqueAction
-		action = UMLFactory.eINSTANCE.createOpaqueAction();
-		services.createOutputPin(action);
-		// End of user code
-	}
-
-	/**
-	 * Action : I create an output pin on a call operation action
-	 */
-	public void actionICreateAnOutputPinOnACallOperationAction() {
-		// Start of user code ICreateAnOutputPinOnACallOperationAction
-		action = UMLFactory.eINSTANCE.createCallOperationAction();
-		services.createOutputPin(action);
+	public void actionIDropANodeToAnActivity() {
+		// Start of user code IDropANodeToAnActivity
+		node = activityUnderTest.getNode(IN_ACTIVITY_ACTION);
+		services.dropNode(activityUnderTest, node);
 		// End of user code
 	}
 
@@ -135,17 +125,6 @@ public class AnUmlModelWithAClassAndAnOperation extends Context {
 	}
 
 	/**
-	 * Action : I drop a partition to an activity
-	 */
-	public void actionIDropAPartitionToAnActivity() {
-		// Start of user code IDropAPartitionToAnActivity
-		partition = activityUnderTest.getPartition(P1);
-		partition2 = activityUnderTest.getPartition("p2");
-		services.dropNode(activityUnderTest, partition);
-		// End of user code
-	}
-
-	/**
 	 * Action : I query the activity nodes of an activity partition
 	 */
 	public void actionIQueryTheActivityNodesOfAnActivityPartition() {
@@ -156,11 +135,31 @@ public class AnUmlModelWithAClassAndAnOperation extends Context {
 	}
 
 	/**
+	 * Action : I query the activity nodes of an activity
+	 */
+	public void actionIQueryTheActivityNodesOfAnActivity() {
+		// Start of user code IQueryTheActivityNodesOfAnActivity
+		node = activityUnderTest.getNode(IN_ACTIVITY_ACTION);
+		foundNodes = services.getActivityNodes(activityUnderTest);
+		// End of user code
+	}
+
+	/**
 	 * Action : I query all the activity partitions of an activity
 	 */
 	public void actionIQueryAllTheActivityPartitionsOfAnActivity() {
 		// Start of user code IQueryAllTheActivityPartitionsOfAnActivity
 		partition = activityUnderTest.getPartition(P1);
+		// End of user code
+	}
+
+	/**
+	 * Action : I create an input pin on an opaque action
+	 */
+	public void actionICreateAnInputPinOnAnOpaqueAction() {
+		// Start of user code ICreateAnInputPinOnAnOpaqueAction
+		action = UMLFactory.eINSTANCE.createOpaqueAction();
+		services.createInputPin(action);
 		// End of user code
 	}
 
@@ -193,32 +192,21 @@ public class AnUmlModelWithAClassAndAnOperation extends Context {
 	}
 
 	/**
-	 * Action : I drop a node to an activity
+	 * Action : I query the parent activity of an activity partition
 	 */
-	public void actionIDropANodeToAnActivity() {
-		// Start of user code IDropANodeToAnActivity
-		node = activityUnderTest.getNode(IN_ACTIVITY_ACTION);
-		services.dropNode(activityUnderTest, node);
+	public void actionIQueryTheParentActivityOfAnActivityPartition() {
+		// Start of user code IQueryTheParentActivityOfAnActivityPartition
+		partition = activityUnderTest.getPartition(P1).getSubpartition(SUB_P1);
 		// End of user code
 	}
 
 	/**
-	 * Action : I query the activity nodes of an activity
+	 * Action : I create an output pin on a call operation action
 	 */
-	public void actionIQueryTheActivityNodesOfAnActivity() {
-		// Start of user code IQueryTheActivityNodesOfAnActivity
-		node = activityUnderTest.getNode(IN_ACTIVITY_ACTION);
-		foundNodes = services.getActivityNodes(activityUnderTest);
-		// End of user code
-	}
-
-	/**
-	 * Action : I create an input pin on an opaque action
-	 */
-	public void actionICreateAnInputPinOnAnOpaqueAction() {
-		// Start of user code ICreateAnInputPinOnAnOpaqueAction
-		action = UMLFactory.eINSTANCE.createOpaqueAction();
-		services.createInputPin(action);
+	public void actionICreateAnOutputPinOnACallOperationAction() {
+		// Start of user code ICreateAnOutputPinOnACallOperationAction
+		action = UMLFactory.eINSTANCE.createCallOperationAction();
+		services.createOutputPin(action);
 		// End of user code
 	}
 
@@ -235,28 +223,52 @@ public class AnUmlModelWithAClassAndAnOperation extends Context {
 	}
 
 	/**
-	 * Action : I query the parent activity of an activity partition
+	 * Action : I create an output pin on an opaque action
 	 */
-	public void actionIQueryTheParentActivityOfAnActivityPartition() {
-		// Start of user code IQueryTheParentActivityOfAnActivityPartition
-		partition = activityUnderTest.getPartition(P1).getSubpartition(SUB_P1);
+	public void actionICreateAnOutputPinOnAnOpaqueAction() {
+		// Start of user code ICreateAnOutputPinOnAnOpaqueAction
+		action = UMLFactory.eINSTANCE.createOpaqueAction();
+		services.createOutputPin(action);
 		// End of user code
 	}
 
 	/**
-	 * Behavior : An input pin is created on the opaque action
+	 * Action : I drop a partition to an activity
 	 */
-	public void assertAnInputPinIsCreatedOnTheOpaqueAction() {
-		// Start of user code AnInputPinIsCreatedOnTheOpaqueAction
-		assertFalse(((OpaqueAction)action).getInputValues().isEmpty());
+	public void actionIDropAPartitionToAnActivity() {
+		// Start of user code IDropAPartitionToAnActivity
+		partition = activityUnderTest.getPartition(P1);
+		partition2 = activityUnderTest.getPartition("p2");
+		services.dropNode(activityUnderTest, partition);
+		// End of user code
+	}
+
+	/**
+	 * Behavior : I get all the parent activity partition nodes
+	 */
+	public void assertIGetAllTheParentActivityPartitionNodes() {
+		// Start of user code IGetAllTheParentActivityPartitionNodes
+		assertEquals(1, foundNodes.size());
+		assertEquals(node, foundNodes.get(0));
+		
+		assertEquals(Collections.EMPTY_LIST, services.getActivityNodes(UMLFactory.eINSTANCE.createClass()));
 		// End of user code
 	}
 	/**
-	 * Behavior : An input pin is created on the call operation action
+	 * Behavior : An activity which referenced the operation is created
 	 */
-	public void assertAnInputPinIsCreatedOnTheCallOperationAction() {
-		// Start of user code AnInputPinIsCreatedOnTheCallOperationAction
-		assertFalse(((CallOperationAction)action).getArguments().isEmpty());
+	public void assertAnActivityWhichReferencedTheOperationIsCreated() {
+		// Start of user code AnActivityWhichReferencedTheOperationIsCreated
+		assertNotNull(activityUnderTest);
+		assertEquals(activityUnderTest, op.getMethods().get(0));
+		// End of user code
+	}
+	/**
+	 * Behavior : An output pin is created on the call operation action
+	 */
+	public void assertAnOutputPinIsCreatedOnTheCallOperationAction() {
+		// Start of user code AnOutputPinIsCreatedOnTheCallOperationAction
+		assertFalse(((CallOperationAction)action).getResults().isEmpty());
 		// End of user code
 	}
 	/**
@@ -279,6 +291,38 @@ public class AnUmlModelWithAClassAndAnOperation extends Context {
 		// End of user code
 	}
 	/**
+	 * Behavior : The activity contains the node
+	 */
+	public void assertTheActivityContainsTheNode() {
+		// Start of user code TheActivityContainsTheNode
+		assertTrue(node.getInPartitions().isEmpty());
+		// End of user code
+	}
+	/**
+	 * Behavior : An input pin is created on the opaque action
+	 */
+	public void assertAnInputPinIsCreatedOnTheOpaqueAction() {
+		// Start of user code AnInputPinIsCreatedOnTheOpaqueAction
+		assertFalse(((OpaqueAction)action).getInputValues().isEmpty());
+		// End of user code
+	}
+	/**
+	 * Behavior : The partition contains the node
+	 */
+	public void assertThePartitionContainsTheNode() {
+		// Start of user code ThePartitionContainsTheNode
+		assertTrue(partition.getNodes().contains(node));
+		// End of user code
+	}
+	/**
+	 * Behavior : An input pin is created on the call operation action
+	 */
+	public void assertAnInputPinIsCreatedOnTheCallOperationAction() {
+		// Start of user code AnInputPinIsCreatedOnTheCallOperationAction
+		assertFalse(((CallOperationAction)action).getArguments().isEmpty());
+		// End of user code
+	}
+	/**
 	 * Behavior : I get all the parent activity nodes
 	 */
 	public void assertIGetAllTheParentActivityNodes() {
@@ -296,11 +340,13 @@ public class AnUmlModelWithAClassAndAnOperation extends Context {
 		// End of user code
 	}
 	/**
-	 * Behavior : An output pin is created on the call operation action
+	 * Behavior : I get the parent activity
 	 */
-	public void assertAnOutputPinIsCreatedOnTheCallOperationAction() {
-		// Start of user code AnOutputPinIsCreatedOnTheCallOperationAction
-		assertFalse(((CallOperationAction)action).getResults().isEmpty());
+	public void assertIGetTheParentActivity() {
+		// Start of user code IGetTheParentActivity
+		assertEquals(activityUnderTest, services.findParentActivity(partition));
+		
+		assertNull(services.findParentActivity(UMLFactory.eINSTANCE.createClass()));
 		// End of user code
 	}
 	/**
@@ -310,52 +356,6 @@ public class AnUmlModelWithAClassAndAnOperation extends Context {
 		// Start of user code TheParentPartitionContainsTheDroppedPartition
 		assertTrue(partition2.getSubpartitions().contains(partition));
 		assertFalse(activityUnderTest.getPartitions().contains(partition));
-		// End of user code
-	}
-	/**
-	 * Behavior : The activity contains the node
-	 */
-	public void assertTheActivityContainsTheNode() {
-		// Start of user code TheActivityContainsTheNode
-		assertTrue(node.getInPartitions().isEmpty());
-		// End of user code
-	}
-	/**
-	 * Behavior : An activity which referenced the operation is created
-	 */
-	public void assertAnActivityWhichReferencedTheOperationIsCreated() {
-		// Start of user code AnActivityWhichReferencedTheOperationIsCreated
-		assertNotNull(activityUnderTest);
-		assertEquals(activityUnderTest, op.getMethods().get(0));
-		// End of user code
-	}
-	/**
-	 * Behavior : The partition contains the node
-	 */
-	public void assertThePartitionContainsTheNode() {
-		// Start of user code ThePartitionContainsTheNode
-		assertTrue(partition.getNodes().contains(node));
-		// End of user code
-	}
-	/**
-	 * Behavior : I get all the parent activity partition nodes
-	 */
-	public void assertIGetAllTheParentActivityPartitionNodes() {
-		// Start of user code IGetAllTheParentActivityPartitionNodes
-		assertEquals(1, foundNodes.size());
-		assertEquals(node, foundNodes.get(0));
-		
-		assertEquals(Collections.EMPTY_LIST, services.getActivityNodes(UMLFactory.eINSTANCE.createClass()));
-		// End of user code
-	}
-	/**
-	 * Behavior : I get the parent activity
-	 */
-	public void assertIGetTheParentActivity() {
-		// Start of user code IGetTheParentActivity
-		assertEquals(activityUnderTest, services.findParentActivity(partition));
-		
-		assertNull(services.findParentActivity(UMLFactory.eINSTANCE.createClass()));
 		// End of user code
 	}
 

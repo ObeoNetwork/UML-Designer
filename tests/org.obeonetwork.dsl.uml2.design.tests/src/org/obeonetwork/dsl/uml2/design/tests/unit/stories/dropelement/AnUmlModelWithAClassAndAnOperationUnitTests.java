@@ -19,6 +19,51 @@ public class AnUmlModelWithAClassAndAnOperationUnitTests {
 	public AnUmlModelWithAClassAndAnOperation context = new AnUmlModelWithAClassAndAnOperation();
 
 	@Test
+	public void initActivityForAnOperation() throws Exception {
+		context.actionIInitializeAnActivityForAnOperation();
+		context.assertAnActivityWhichReferencedTheOperationIsCreated();
+	}
+	@Test
+	public void getActivityPartitions() throws Exception {
+		context.actionIQueryAllTheActivityPartitionsOfAnActivity();
+		context.assertIGetAllTheActivityPartitionsDefinedForTheActivity();
+	}
+	@Test
+	public void findParentActivity() throws Exception {
+		context.actionIQueryTheParentActivityOfAnActivityPartition();
+		context.assertIGetTheParentActivity();
+	}
+	@Test
+	public void getActivityNodes() throws Exception {
+		context.actionIQueryTheActivityNodesOfAnActivity();
+		context.assertIGetAllTheParentActivityNodes();
+	}
+	@Test
+	public void getActivityNodes2() throws Exception {
+		context.actionIQueryTheActivityNodesOfAnActivityPartition();
+		context.assertIGetAllTheParentActivityPartitionNodes();
+	}
+	@Test
+	public void createInputPin() throws Exception {
+		context.actionICreateAnInputPinOnACallOperationAction();
+		context.assertAnInputPinIsCreatedOnTheCallOperationAction();
+	}
+	@Test
+	public void createInputPin2() throws Exception {
+		context.actionICreateAnInputPinOnAnOpaqueAction();
+		context.assertAnInputPinIsCreatedOnTheOpaqueAction();
+	}
+	@Test
+	public void createOutputPin() throws Exception {
+		context.actionICreateAnOutputPinOnACallOperationAction();
+		context.assertAnOutputPinIsCreatedOnTheCallOperationAction();
+	}
+	@Test
+	public void createOutputPin2() throws Exception {
+		context.actionICreateAnOutputPinOnAnOpaqueAction();
+		context.assertAnOutputPinIsCreatedOnTheOpaqueAction();
+	}
+	@Test
 	public void dropNode() throws Exception {
 		context.actionIDropANodeToAPartition();
 		context.assertThePartitionContainsTheNode();

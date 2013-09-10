@@ -25,12 +25,6 @@ public class AClassDiagramIsOpenedUiTests {
 		context.assertAClassAppearsOnTheDiagram();
 	}
 	@Test
-	public void createAClassInTheClassDiagramFromTheTooltipBar() throws Exception {
-		context.actionISelectTheClassCreationToolFromTheTooltipBarWhenTheMouseHoversOverTheDiagram();
-		context.assertAClassIsCreatedInTheModel();
-		context.assertAClassAppearsOnTheDiagram();
-	}
-	@Test
 	public void createAnEnumerationInTheClassDiagramFromThePalette() throws Exception {
 		context.actionISelectTheEnumerationCreationToolFromThePaletteAndIClickOnTheDiagram();
 		context.assertAnEnumerationIsCreatedInTheModel();
@@ -59,17 +53,5 @@ public class AClassDiagramIsOpenedUiTests {
 		context.actionISelectThePackageCreationToolFromThePaletteAndIClickOnTheDiagram();
 		context.assertAPackageIsCreatedInTheModel();
 		context.assertAPackageAppearsOnTheDiagram();
-	}
-	@Test
-	public void createAClassInAPackageInTheClassDiagramFromThePalette() throws Exception {
-		context.actionISelectTheClassCreationToolFromThePaletteAndISelectInTheDiagramAPackageAsContainer();
-		context.assertAClassIsCreatedInTheParentPackage();
-		context.assertAClassAppearsInTheParentPackageOnTheDiagram();
-	}
-	@Test
-	public void createAPackageInAPackageInTheClassDiagramFromThePalette() throws Exception {
-		context.actionISelectThePackageCreationToolFromThePaletteAndISelectInTheDiagramAPackageAsContainer();
-		context.assertAPackageIsCreatedInTheParentPackage();
-		context.assertAPackageAppearsInTheParentPackageOnTheDiagram();
 	}
 }

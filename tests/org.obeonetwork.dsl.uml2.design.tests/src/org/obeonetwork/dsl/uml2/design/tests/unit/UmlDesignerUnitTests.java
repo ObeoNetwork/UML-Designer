@@ -14,13 +14,13 @@ package org.obeonetwork.dsl.uml2.design.tests.unit;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
-import org.obeonetwork.dsl.uml2.design.tests.unit.features.ClassDiagramUnitTests;
 import org.obeonetwork.dsl.uml2.design.tests.unit.features.DirectEditUnitTests;
+import org.obeonetwork.dsl.uml2.design.tests.unit.features.ClassDiagramUnitTests;
 import org.obeonetwork.dsl.uml2.design.tests.unit.features.ActivityDiagramUnitTests;
-import org.obeonetwork.dsl.uml2.design.tests.unit.features.DropUnitTests;
+import org.obeonetwork.dsl.uml2.design.tests.unit.features.DragAndDropUnitTests;
 
 @RunWith(Suite.class)
-@SuiteClasses({ClassDiagramUnitTests.class,DropUnitTests.class,DirectEditUnitTests.class,ActivityDiagramUnitTests.class})
+@SuiteClasses({DragAndDropUnitTests.class,ClassDiagramUnitTests.class,DirectEditUnitTests.class,ActivityDiagramUnitTests.class})
 /**
  * Testing : UML Designer
  */

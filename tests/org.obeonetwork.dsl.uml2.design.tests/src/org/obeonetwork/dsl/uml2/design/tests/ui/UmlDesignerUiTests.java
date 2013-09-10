@@ -15,10 +15,11 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 import org.obeonetwork.dsl.uml2.design.tests.ui.features.ClassDiagramUiTests;
-import org.obeonetwork.dsl.uml2.design.tests.ui.features.ManageRepresentationUiTests;
+import org.obeonetwork.dsl.uml2.design.tests.ui.features.DiagramEditorUiTests;
+import org.obeonetwork.dsl.uml2.design.tests.ui.features.ManageRepresentationsUiTests;
 
 @RunWith(Suite.class)
-@SuiteClasses({ManageRepresentationUiTests.class,ClassDiagramUiTests.class})
+@SuiteClasses({ManageRepresentationsUiTests.class,ClassDiagramUiTests.class,DiagramEditorUiTests.class})
 /**
  * Testing : UML Designer
  */

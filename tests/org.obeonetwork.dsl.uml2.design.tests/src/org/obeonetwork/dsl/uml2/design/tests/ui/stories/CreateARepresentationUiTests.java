@@ -14,13 +14,13 @@ package org.obeonetwork.dsl.uml2.design.tests.ui.stories;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
-import org.obeonetwork.dsl.uml2.design.tests.ui.stories.createarelationship.AClassDiagramIsOpenedUiTests;
+import org.obeonetwork.dsl.uml2.design.tests.ui.stories.createarepresentation.APackageSelectedInTheModelExplorerUiTests;
 
 @RunWith(Suite.class)
-@SuiteClasses({AClassDiagramIsOpenedUiTests.class})
+@SuiteClasses({APackageSelectedInTheModelExplorerUiTests.class})
 /**
- * Testing : Create a relationship
+ * Testing : Create a representation
  */
-public class CreateARelationshipUiTests {
+public class CreateARepresentationUiTests {
 
 }

@@ -63,4 +63,24 @@ public class AnUmlModelWithAClassAndAnOperationUnitTests {
 		context.actionICreateAnOutputPinOnAnOpaqueAction();
 		context.assertAnOutputPinIsCreatedOnTheOpaqueAction();
 	}
+	@Test
+	public void dropNode() throws Exception {
+		context.actionIDropANodeToAPartition();
+		context.assertThePartitionContainsTheNode();
+	}
+	@Test
+	public void dropNode2() throws Exception {
+		context.actionIDropANodeToAnActivity();
+		context.assertTheActivityContainsTheNode();
+	}
+	@Test
+	public void dropNode3() throws Exception {
+		context.actionIDropAPartitionToAnotherPartition();
+		context.assertTheParentPartitionContainsTheDroppedPartition();
+	}
+	@Test
+	public void dropNode4() throws Exception {
+		context.actionIDropAPartitionToAnActivity();
+		context.assertTheActivityContainsThePartition();
+	}
 }

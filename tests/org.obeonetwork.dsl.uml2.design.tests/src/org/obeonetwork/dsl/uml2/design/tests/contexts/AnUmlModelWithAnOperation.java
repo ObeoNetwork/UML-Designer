@@ -142,12 +142,12 @@ public class AnUmlModelWithAnOperation extends Context {
 	}
 
 	/**
-	 * Behavior : The lower bound of the fourth input parameter
+	 * Behavior : The upper bound of the return parameter equals
 	 */
-	public void assertTheLowerBoundOfTheFourthInputParameter(String theLowerBoundOfTheFourthInputParameter0,String theLowerBoundOfTheFourthInputParameter1) {
-		// Start of user code TheLowerBoundOfTheFourthInputParameter
-		assertEquals(Integer.parseInt(theLowerBoundOfTheFourthInputParameter1),
-				op.getOwnedParameter(theLowerBoundOfTheFourthInputParameter0, stringPrimitiveType).getLower());
+	public void assertTheUpperBoundOfTheReturnParameterEquals(String theUpperBoundOfTheReturnParameterEquals0) {
+		// Start of user code TheUpperBoundOfTheReturnParameterEquals
+		assertEquals(Integer.parseInt(theUpperBoundOfTheReturnParameterEquals0), op.getReturnResult()
+				.getUpper());
 		// End of user code
 	}
 	/**
@@ -160,11 +160,15 @@ public class AnUmlModelWithAnOperation extends Context {
 		// End of user code
 	}
 	/**
-	 * Behavior : The operation name equals
+	 * Behavior : The operation type equals
 	 */
-	public void assertTheOperationNameEquals(String theOperationNameEquals0) {
-		// Start of user code TheOperationNameEquals
-		assertEquals(theOperationNameEquals0, op.getName());
+	public void assertTheOperationTypeEquals(String theOperationTypeEquals0) {
+		// Start of user code TheOperationTypeEquals
+		if ("null".equals(theOperationTypeEquals0)) {
+			assertEquals(null, op.getType());
+		} else {
+			assertEquals(theOperationTypeEquals0, op.getType().getName());
+		}
 		// End of user code
 	}
 	/**
@@ -180,60 +184,21 @@ public class AnUmlModelWithAnOperation extends Context {
 		// End of user code
 	}
 	/**
+	 * Behavior : The lower bound of the first input parameter
+	 */
+	public void assertTheLowerBoundOfTheFirstInputParameter(String theLowerBoundOfTheFirstInputParameter0,String theLowerBoundOfTheFirstInputParameter1) {
+		// Start of user code TheLowerBoundOfTheFirstInputParameter
+		assertEquals(Integer.parseInt(theLowerBoundOfTheFirstInputParameter1),
+				op.getOwnedParameter(theLowerBoundOfTheFirstInputParameter0, stringPrimitiveType).getLower());
+		// End of user code
+	}
+	/**
 	 * Behavior : The second input parameter name and type equals
 	 */
 	public void assertTheSecondInputParameterNameAndTypeEquals(String theSecondInputParameterNameAndTypeEquals0,String theSecondInputParameterNameAndTypeEquals1) {
 		// Start of user code TheSecondInputParameterNameAndTypeEquals
 		checkInputParameter(op, 1, theSecondInputParameterNameAndTypeEquals0,
 				theSecondInputParameterNameAndTypeEquals1);
-		// End of user code
-	}
-	/**
-	 * Behavior : The upper bound of the fourth input parameter
-	 */
-	public void assertTheUpperBoundOfTheFourthInputParameter(String theUpperBoundOfTheFourthInputParameter0,String theUpperBoundOfTheFourthInputParameter1) {
-		// Start of user code TheUpperBoundOfTheFourthInputParameter
-		assertEquals(Integer.parseInt(theUpperBoundOfTheFourthInputParameter1),
-				op.getOwnedParameter(theUpperBoundOfTheFourthInputParameter0, stringPrimitiveType).getLower());
-		// End of user code
-	}
-	/**
-	 * Behavior : The upper bound of the return parameter equals
-	 */
-	public void assertTheUpperBoundOfTheReturnParameterEquals(String theUpperBoundOfTheReturnParameterEquals0) {
-		// Start of user code TheUpperBoundOfTheReturnParameterEquals
-		assertEquals(Integer.parseInt(theUpperBoundOfTheReturnParameterEquals0), op.getReturnResult()
-				.getUpper());
-		// End of user code
-	}
-	/**
-	 * Behavior : The lower bound of the return parameter equals
-	 */
-	public void assertTheLowerBoundOfTheReturnParameterEquals(String theLowerBoundOfTheReturnParameterEquals0) {
-		// Start of user code TheLowerBoundOfTheReturnParameterEquals
-		assertEquals(Integer.parseInt(theLowerBoundOfTheReturnParameterEquals0), op.getReturnResult()
-				.getLower());
-		// End of user code
-	}
-	/**
-	 * Behavior : The upper bound of the first input parameter
-	 */
-	public void assertTheUpperBoundOfTheFirstInputParameter(String theUpperBoundOfTheFirstInputParameter0,String theUpperBoundOfTheFirstInputParameter1) {
-		// Start of user code TheUpperBoundOfTheFirstInputParameter
-		assertEquals(Integer.parseInt(theUpperBoundOfTheFirstInputParameter1),
-				op.getOwnedParameter(theUpperBoundOfTheFirstInputParameter0, stringPrimitiveType).getLower());
-		// End of user code
-	}
-	/**
-	 * Behavior : The operation type equals
-	 */
-	public void assertTheOperationTypeEquals(String theOperationTypeEquals0) {
-		// Start of user code TheOperationTypeEquals
-		if ("null".equals(theOperationTypeEquals0)) {
-			assertEquals(null, op.getType());
-		} else {
-			assertEquals(theOperationTypeEquals0, op.getType().getName());
-		}
 		// End of user code
 	}
 	/**
@@ -255,12 +220,47 @@ public class AnUmlModelWithAnOperation extends Context {
 		// End of user code
 	}
 	/**
-	 * Behavior : The lower bound of the first input parameter
+	 * Behavior : The lower bound of the return parameter equals
 	 */
-	public void assertTheLowerBoundOfTheFirstInputParameter(String theLowerBoundOfTheFirstInputParameter0,String theLowerBoundOfTheFirstInputParameter1) {
-		// Start of user code TheLowerBoundOfTheFirstInputParameter
-		assertEquals(Integer.parseInt(theLowerBoundOfTheFirstInputParameter1),
-				op.getOwnedParameter(theLowerBoundOfTheFirstInputParameter0, stringPrimitiveType).getLower());
+	public void assertTheLowerBoundOfTheReturnParameterEquals(String theLowerBoundOfTheReturnParameterEquals0) {
+		// Start of user code TheLowerBoundOfTheReturnParameterEquals
+		assertEquals(Integer.parseInt(theLowerBoundOfTheReturnParameterEquals0), op.getReturnResult()
+				.getLower());
+		// End of user code
+	}
+	/**
+	 * Behavior : The lower bound of the fourth input parameter
+	 */
+	public void assertTheLowerBoundOfTheFourthInputParameter(String theLowerBoundOfTheFourthInputParameter0,String theLowerBoundOfTheFourthInputParameter1) {
+		// Start of user code TheLowerBoundOfTheFourthInputParameter
+		assertEquals(Integer.parseInt(theLowerBoundOfTheFourthInputParameter1),
+				op.getOwnedParameter(theLowerBoundOfTheFourthInputParameter0, stringPrimitiveType).getLower());
+		// End of user code
+	}
+	/**
+	 * Behavior : The operation name equals
+	 */
+	public void assertTheOperationNameEquals(String theOperationNameEquals0) {
+		// Start of user code TheOperationNameEquals
+		assertEquals(theOperationNameEquals0, op.getName());
+		// End of user code
+	}
+	/**
+	 * Behavior : The upper bound of the first input parameter
+	 */
+	public void assertTheUpperBoundOfTheFirstInputParameter(String theUpperBoundOfTheFirstInputParameter0,String theUpperBoundOfTheFirstInputParameter1) {
+		// Start of user code TheUpperBoundOfTheFirstInputParameter
+		assertEquals(Integer.parseInt(theUpperBoundOfTheFirstInputParameter1),
+				op.getOwnedParameter(theUpperBoundOfTheFirstInputParameter0, stringPrimitiveType).getLower());
+		// End of user code
+	}
+	/**
+	 * Behavior : The upper bound of the fourth input parameter
+	 */
+	public void assertTheUpperBoundOfTheFourthInputParameter(String theUpperBoundOfTheFourthInputParameter0,String theUpperBoundOfTheFourthInputParameter1) {
+		// Start of user code TheUpperBoundOfTheFourthInputParameter
+		assertEquals(Integer.parseInt(theUpperBoundOfTheFourthInputParameter1),
+				op.getOwnedParameter(theUpperBoundOfTheFourthInputParameter0, stringPrimitiveType).getLower());
 		// End of user code
 	}
 	/**

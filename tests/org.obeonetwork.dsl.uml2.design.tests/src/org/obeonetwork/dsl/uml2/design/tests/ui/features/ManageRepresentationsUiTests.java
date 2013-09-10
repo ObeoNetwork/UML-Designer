@@ -9,20 +9,18 @@
  *     Obeo - initial API and implementation
  *******************************************************************************/
 
-package org.obeonetwork.dsl.uml2.design.tests.ui.stories;
+package org.obeonetwork.dsl.uml2.design.tests.ui.features;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
-import org.obeonetwork.dsl.uml2.design.tests.ui.stories.addexistingelement.AClassDiagramIsOpenedUiTests;
-import org.obeonetwork.dsl.uml2.design.tests.ui.stories.addexistingelement.AnEmptyDiagramIsOpenedUiTests;
-import org.obeonetwork.dsl.uml2.design.tests.ui.stories.addexistingelement.AnEmptyClassDiagramIsOpenedUiTests;
+import org.obeonetwork.dsl.uml2.design.tests.ui.stories.CreateARepresentationUiTests;
 
 @RunWith(Suite.class)
-@SuiteClasses({AnEmptyClassDiagramIsOpenedUiTests.class,AClassDiagramIsOpenedUiTests.class,AnEmptyDiagramIsOpenedUiTests.class})
+@SuiteClasses({CreateARepresentationUiTests.class})
 /**
- * Testing : Add existing element
+ * Testing : Manage representations
  */
-public class AddExistingElementUiTests {
+public class ManageRepresentationsUiTests {
 
 }

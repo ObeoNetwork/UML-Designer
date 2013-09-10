@@ -14,14 +14,14 @@ package org.obeonetwork.dsl.uml2.design.tests.unit.stories;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
-import org.obeonetwork.dsl.uml2.design.tests.unit.stories.editlabels.AnUmlModelWithAnOperationUnitTests;
-import org.obeonetwork.dsl.uml2.design.tests.unit.stories.editlabels.NoneEndIsNavigableUnitTests;
-import org.obeonetwork.dsl.uml2.design.tests.unit.stories.editlabels.AnUmlModelWithAPropertyUnitTests;
-import org.obeonetwork.dsl.uml2.design.tests.unit.stories.editlabels.TheSecondEndIsNavigableUnitTests;
 import org.obeonetwork.dsl.uml2.design.tests.unit.stories.editlabels.AnUmlModelWithAnAssociationUnitTests;
+import org.obeonetwork.dsl.uml2.design.tests.unit.stories.editlabels.TheSecondEndIsNavigableUnitTests;
+import org.obeonetwork.dsl.uml2.design.tests.unit.stories.editlabels.AnUmlModelWithAnOperationUnitTests;
+import org.obeonetwork.dsl.uml2.design.tests.unit.stories.editlabels.AnUmlModelWithAPropertyUnitTests;
+import org.obeonetwork.dsl.uml2.design.tests.unit.stories.editlabels.NoneEndIsNavigableUnitTests;
 
 @RunWith(Suite.class)
-@SuiteClasses({TheSecondEndIsNavigableUnitTests.class,AnUmlModelWithAnAssociationUnitTests.class,AnUmlModelWithAPropertyUnitTests.class,NoneEndIsNavigableUnitTests.class,AnUmlModelWithAnOperationUnitTests.class})
+@SuiteClasses({TheSecondEndIsNavigableUnitTests.class,AnUmlModelWithAPropertyUnitTests.class,AnUmlModelWithAnAssociationUnitTests.class,NoneEndIsNavigableUnitTests.class,AnUmlModelWithAnOperationUnitTests.class})
 /**
  * Testing : Edit labels
  */

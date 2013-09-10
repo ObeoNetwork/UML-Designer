@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="ASCII"?>
-<specification:Specification xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:specification="http://www.eclipse.org/intent/specification/1.0" name="UML Designer">
+<specification:Specification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:specification="http://www.eclipse.org/intent/specification/1.0" name="UML Designer">
   <features name="Modeling perspective" refFeatures="//@features[name='Model%20Explorer'] //@features[name='Diagram%20editor'] //@features[name='Outline'] //@features[name='Properties%20view'] //@features[name='Manage%20a%20project'] //@features[name='Manage%20viewpoints'] //@features[name='Manage%20representations'] //@features[name='Manage%20models'] //@features[name='Activity%20diagram'] //@features[name='Class%20diagram']"/>
   <features name="Model Explorer" refFeatures="//@features[name='Link%20with%20Editor'] //@features[name='Filter%20elements'] //@features[name='Drag%20and%20drop']"/>
   <features name="Link with Editor"/>
   <features name="Filter elements"/>
-  <features name="Diagram editor" refFeatures="//@features[name='Palette'] //@features[name='Tabbar'] //@features[name='Direct%20edit'] //@features[name='Tooltip%20tools'] //@features[name='Drag%20and%20drop']"/>
+  <features name="Diagram editor" refFeatures="//@features[name='Palette'] //@features[name='Tabbar'] //@features[name='Direct%20edit'] //@features[name='Tooltip%20tools'] //@features[name='Drag%20and%20drop']" stories="//@stories[name='Show%20graphical%20elements']"/>
   <features name="Palette" refFeatures="//@features[name='Resizing'] //@features[name='Folding'] //@features[name='Moving'] //@features[name='Selection'] //@features[name='Zoom'] //@features[name='Notes%20and%20note%20attachments'] //@features[name='Pin%20Unpin']"/>
   <features name="Tabbar" refFeatures="//@features[name='Selection%20tools'] //@features[name='Refresh'] //@features[name='Layouting%20diagrams'] //@features[name='Copy%20Paste%20of%20layout'] //@features[name='Rulers%20and%20Grid'] //@features[name='Show%20Hide%20Elements'] //@features[name='Show%20Hide%20labels'] //@features[name='Show%20Hide%20icons'] //@features[name='Delete%20element']"/>
   <features name="Resizing"/>
@@ -43,6 +43,7 @@
   <roles name="Business analyst"/>
   <automationLayer basePackage="org.obeonetwork.dsl.uml2.design.tests">
     <context name="Unactivate UML Usage"/>
+    <context name="The test all mappings representations are opened and refreshed" contexts="//@automationLayer/@context[name='Unactivate%20UML%20Usage']"/>
     <context name="A package selected in the model explorer" contexts="//@automationLayer/@context[name='Unactivate%20UML%20Usage']"/>
     <context name="An Uml model with a class and an operation"/>
     <context name="A class diagram is opened" contexts="//@automationLayer/@context[name='Unactivate%20UML%20Usage']"/>
@@ -54,6 +55,7 @@
     <context name="An Uml model with an association"/>
     <context name="The second end is navigable" contexts="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']"/>
     <context name="None end is navigable" contexts="//@automationLayer/@context[name='An%20Uml%20model%20with%20an%20association']"/>
+    <actions name="I have a look to all the diagrams"/>
     <actions name="I create a new class diagram"/>
     <actions name="I initialize an activity for an operation"/>
     <actions name="I query all the activity partitions of an activity"/>
@@ -137,6 +139,7 @@
     <actions name="I edit the label of the second role to">
       <parameters name="I edit the label of the second role to0"/>
     </actions>
+    <behaviours name="All the graphical elements are still visible"/>
     <behaviours name="A class diagram is created and opened"/>
     <behaviours name="An activity which referenced the operation is created"/>
     <behaviours name="I get all the activity partitions defined for the activity"/>
@@ -765,6 +768,11 @@
       <values value=" / secondRole[*] " parameter="//@automationLayer/@actions[name='I%20edit%20the%20label%20of%20the%20second%20role%20to']/@parameters.0"/>
     </scenarios>
   </stories>
+  <stories name="Show graphical elements">
+    <scenarios name="Show all defined mappings" given="//@automationLayer/@context[name='The%20test%20all%20mappings%20representations%20are%20opened%20and%20refreshed']" when="//@automationLayer/@actions[name='I%20have%20a%20look%20to%20all%20the%20diagrams']" then="//@automationLayer/@behaviours[name='All%20the%20graphical%20elements%20are%20still%20visible']">
+      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+    </scenarios>
+  </stories>
   <stories name="Outline mode"/>
   <stories name="Overview mode"/>
   <stories name="General tab"/>
@@ -913,7 +921,7 @@
       <notes xsi:type="specification:TestGenerationNote" type="ui"/>
     </scenarios>
     <scenarios name="Create a class in the class diagram from the tooltip bar" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20class%20creation%20tool%20from%20the%20tooltip%20bar%20when%20the%20mouse%20hovers%20over%20the%20diagram']" then="//@automationLayer/@behaviours[name='A%20class%20is%20created%20in%20the%20model'] //@automationLayer/@behaviours[name='A%20class%20appears%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
     <scenarios name="Create an enumeration in the class diagram from the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20enumeration%20creation%20tool%20from%20the%20palette%20and%20I%20click%20on%20the%20diagram']" then="//@automationLayer/@behaviours[name='An%20enumeration%20is%20created%20in%20the%20model'] //@automationLayer/@behaviours[name='An%20enumeration%20appears%20on%20the%20diagram']">
       <notes xsi:type="specification:TestGenerationNote" type="ui"/>
@@ -931,182 +939,182 @@
       <notes xsi:type="specification:TestGenerationNote" type="ui"/>
     </scenarios>
     <scenarios name="Create a class in a package in the class diagram from the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20class%20creation%20tool%20from%20the%20palette%20and%20I%20select%20in%20the%20diagram%20a%20package%20as%20container']" then="//@automationLayer/@behaviours[name='A%20class%20is%20created%20in%20the%20parent%20package'] //@automationLayer/@behaviours[name='A%20class%20appears%20in%20the%20parent%20package%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
     <scenarios name="Create a package in a package in the class diagram from the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20package%20creation%20tool%20from%20the%20palette%20and%20I%20select%20in%20the%20diagram%20a%20package%20as%20container']" then="//@automationLayer/@behaviours[name='A%20package%20is%20created%20in%20the%20parent%20package'] //@automationLayer/@behaviours[name='A%20package%20appears%20in%20the%20parent%20package%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
   </stories>
   <stories name="Delete a type" As="//@roles[name='Business%20analyst']" soThat="//@benefits[name='I%20could%20manage%20the%20elements%20in%20the%20model']" iWant="//@capabilities[name='to%20delete%20a%20type%20in%20the%20class%20diagram']">
     <scenarios name="Delete a class in the class diagram from the delete from model tool in the toolbar" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20delete%20from%20model%20tool%20in%20toolbar%20and%20I%20click%20on%20a%20class%20in%20the%20diagram']" then="//@automationLayer/@behaviours[name='The%20class%20is%20deleted%20from%20the%20model'] //@automationLayer/@behaviours[name='The%20class%20does%20not%20appear%20anymore%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
   </stories>
   <stories name="Create a feature" As="//@roles[name='Business%20analyst']" soThat="//@benefits[name='I%20could%20manage%20the%20elements%20in%20the%20model']" iWant="//@capabilities[name='to%20create%20a%20feature%20in%20the%20class%20diagram']">
     <scenarios name="Create a property contained in a class in the class diagram from the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20property%20creation%20tool%20from%20the%20palette%20and%20I%20select%20a%20class']" then="//@automationLayer/@behaviours[name='A%20property%20is%20created%20in%20the%20class%20in%20the%20model'] //@automationLayer/@behaviours[name='A%20property%20appears%20in%20the%20class%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
     <scenarios name="Create a property contained in an interface in the class diagram from the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20property%20creation%20tool%20from%20the%20palette%20and%20I%20select%20an%20interface']" then="//@automationLayer/@behaviours[name='A%20property%20is%20created%20in%20the%20interface%20in%20the%20model'] //@automationLayer/@behaviours[name='A%20property%20appears%20in%20the%20interface%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
     <scenarios name="Create a property contained in a datatype in the class diagram from the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20property%20creation%20tool%20from%20the%20palette%20and%20I%20select%20a%20datatype']" then="//@automationLayer/@behaviours[name='A%20property%20is%20created%20in%20the%20datatype%20in%20the%20model'] //@automationLayer/@behaviours[name='A%20property%20appears%20in%20the%20datatype%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
     <scenarios name="Create a property contained in a primitive type in the class diagram from the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20property%20creation%20tool%20from%20the%20palette%20and%20I%20select%20a%20primitive%20type']" then="//@automationLayer/@behaviours[name='A%20property%20is%20created%20in%20the%20primitive%20type%20in%20the%20model'] //@automationLayer/@behaviours[name='A%20property%20appears%20in%20the%20primitive%20type%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
     <scenarios name="Create a typed property contained in a class in the class diagram from the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20typed%20property%20creation%20tool%20from%20the%20palette%20and%20I%20select%20a%20class%20and%20I%20select%20a%20type']" then="//@automationLayer/@behaviours[name='A%20property%20is%20created%20in%20the%20class%20in%20the%20model'] //@automationLayer/@behaviours[name='A%20property%20appears%20in%20the%20class%20on%20the%20diagram'] //@automationLayer/@behaviours[name='The%20property%20types%20equals%20the%20selected%20type']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
     <scenarios name="Create a typed property contained in an interface in the class diagram from the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20typed%20property%20creation%20tool%20from%20the%20palette%20and%20I%20select%20an%20interface%20and%20I%20select%20a%20type']" then="//@automationLayer/@behaviours[name='A%20property%20is%20created%20in%20the%20interface%20in%20the%20model'] //@automationLayer/@behaviours[name='A%20property%20appears%20in%20the%20interface%20on%20the%20diagram'] //@automationLayer/@behaviours[name='The%20property%20types%20equals%20the%20selected%20type']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
     <scenarios name="Create a typed property contained in a primitive type in the class diagram from the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20typed%20property%20creation%20tool%20from%20the%20palette%20and%20I%20select%20a%20primitive%20type%20and%20I%20select%20a%20type']" then="//@automationLayer/@behaviours[name='A%20property%20is%20created%20in%20the%20primitive%20type%20in%20the%20model'] //@automationLayer/@behaviours[name='A%20property%20appears%20in%20the%20primitive%20type%20on%20the%20diagram'] //@automationLayer/@behaviours[name='The%20property%20types%20equals%20the%20selected%20type']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
     <scenarios name="Create a typed property contained in a datatype in the class diagram from the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20typed%20property%20creation%20tool%20from%20the%20palette%20and%20I%20select%20a%20datatype%20and%20I%20select%20a%20type']" then="//@automationLayer/@behaviours[name='A%20property%20is%20created%20in%20the%20datatype%20in%20the%20model'] //@automationLayer/@behaviours[name='A%20property%20appears%20in%20the%20datatype%20on%20the%20diagram'] //@automationLayer/@behaviours[name='The%20property%20types%20equals%20the%20selected%20type']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
     <scenarios name="Create an operation contained in a class in the class diagram from the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20operation%20creation%20tool%20from%20the%20palette%20and%20I%20select%20a%20class']" then="//@automationLayer/@behaviours[name='An%20operation%20is%20created%20in%20the%20class%20in%20the%20model'] //@automationLayer/@behaviours[name='An%20operation%20appears%20in%20the%20class%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
     <scenarios name="Create an operation contained in an interface in the class diagram from the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20operation%20creation%20tool%20from%20the%20palette%20and%20I%20select%20an%20interface']" then="//@automationLayer/@behaviours[name='An%20operation%20is%20created%20in%20the%20interface%20in%20the%20model'] //@automationLayer/@behaviours[name='An%20operation%20appears%20in%20the%20interface%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
     <scenarios name="Create an operation contained in a datatype in the class diagram from the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20operation%20creation%20tool%20from%20the%20palette%20and%20I%20select%20a%20datatype']" then="//@automationLayer/@behaviours[name='An%20operation%20is%20created%20in%20the%20datatype%20in%20the%20model'] //@automationLayer/@behaviours[name='An%20operation%20appears%20in%20the%20datatype%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
     <scenarios name="Create an operation contained in a primitive type in the class diagram from the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20operation%20creation%20tool%20from%20the%20palette%20and%20I%20select%20a%20primitive%20type']" then="//@automationLayer/@behaviours[name='An%20operation%20is%20created%20in%20the%20primitive%20type%20in%20the%20model'] //@automationLayer/@behaviours[name='An%20operation%20appears%20in%20the%20primitive%20type%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
     <scenarios name="Create an operation contained in an enumeration in the class diagram from the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20operation%20creation%20tool%20from%20the%20palette%20and%20I%20select%20an%20enumeration']" then="//@automationLayer/@behaviours[name='An%20operation%20is%20created%20in%20the%20enumeration%20in%20the%20model'] //@automationLayer/@behaviours[name='An%20operation%20appears%20in%20the%20enumeration%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
     <scenarios name="Create a literal contained in an enumeration in the class diagram from the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20literal%20creation%20tool%20from%20the%20palette%20and%20I%20select%20an%20enumeration']" then="//@automationLayer/@behaviours[name='A%20literal%20is%20created%20in%20the%20enumeration%20in%20the%20model'] //@automationLayer/@behaviours[name='A%20literal%20appears%20in%20the%20enumeration%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
   </stories>
   <stories name="Delete a feature" As="//@roles[name='Business%20analyst']" soThat="//@benefits[name='I%20could%20manage%20the%20elements%20in%20the%20model']" iWant="//@capabilities[name='to%20delete%20a%20feature%20in%20the%20class%20diagram']">
     <scenarios name="Delete a property in the class diagram from the delete from model tool in the toolbar" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20delete%20from%20model%20tool%20in%20toolbar%20and%20I%20click%20on%20a%20property%20in%20a%20class%20in%20the%20diagram']" then="//@automationLayer/@behaviours[name='The%20property%20is%20deleted%20from%20the%20model'] //@automationLayer/@behaviours[name='The%20property%20does%20not%20appear%20anymore%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
     <scenarios name="Delete a literal in the class diagram from the delete from model tool in the toolbar" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20delete%20from%20model%20tool%20in%20toolbar%20and%20I%20click%20on%20a%20literal%20in%20a%20class%20in%20the%20diagram']" then="//@automationLayer/@behaviours[name='The%20literal%20is%20deleted%20from%20the%20model'] //@automationLayer/@behaviours[name='The%20literal%20does%20not%20appear%20anymore%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
   </stories>
   <stories name="Create a relationship" As="//@roles[name='Business%20analyst']" soThat="//@benefits[name='I%20could%20manage%20the%20elements%20in%20the%20model']" iWant="//@capabilities[name='to%20create%20a%20relationship%20in%20the%20class%20diagram']">
     <scenarios name="Create an association between two classes in the class diagram from the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20association%20creation%20tool%20from%20the%20palette%20and%20I%20select%20a%20source%20class%20and%20a%20target%20class']" then="//@automationLayer/@behaviours[name='An%20association%20is%20created%20in%20the%20model'] //@automationLayer/@behaviours[name='An%20association%20appears%20between%20the%20classes%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
     <scenarios name="Create a composition between two classes in the class diagram from the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20composition%20creation%20tool%20from%20the%20palette%20and%20I%20select%20a%20source%20class%20and%20a%20target%20class']" then="//@automationLayer/@behaviours[name='A%20composition%20is%20created%20in%20the%20model'] //@automationLayer/@behaviours[name='A%20composition%20appears%20between%20the%20classes%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
     <scenarios name="Create an aggregation between two classes in the class diagram from the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20aggregation%20creation%20tool%20from%20the%20palette%20and%20I%20select%20a%20source%20class%20and%20a%20target%20class']" then="//@automationLayer/@behaviours[name='An%20aggregation%20is%20created%20in%20the%20model'] //@automationLayer/@behaviours[name='An%20aggregation%20appears%20between%20the%20classes%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
     <scenarios name="Create an association class between two classes in the class diagram from the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20association%20class%20creation%20tool%20from%20the%20palette%20and%20I%20select%20a%20source%20class%20and%20a%20target%20class']" then="//@automationLayer/@behaviours[name='An%20association%20class%20is%20created%20in%20the%20model'] //@automationLayer/@behaviours[name='An%20association%20class%20appears%20between%20the%20classes%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
     <scenarios name="Create a generalization between two classes in the class diagram from the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20generalization%20creation%20tool%20from%20the%20palette%20and%20I%20select%20a%20source%20class%20and%20a%20target%20class']" then="//@automationLayer/@behaviours[name='A%20generalization%20is%20created%20in%20the%20model'] //@automationLayer/@behaviours[name='A%20generalization%20appears%20between%20the%20classes%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
     <scenarios name="Create an interface realization in the class diagram from the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20interface%20realization%20creation%20tool%20from%20the%20palette%20and%20I%20select%20a%20source%20class%20and%20a%20target%20interface']" then="//@automationLayer/@behaviours[name='An%20interface%20realization%20is%20created%20in%20the%20model'] //@automationLayer/@behaviours[name='An%20interface%20realization%20appears%20between%20the%20class%20and%20the%20interface%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
     <scenarios name="Create a dependency between two classes in the class diagram from the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20dependency%20creation%20tool%20from%20the%20palette%20and%20I%20select%20a%20source%20class%20and%20a%20target%20class']" then="//@automationLayer/@behaviours[name='A%20dependency%20is%20created%20in%20the%20model'] //@automationLayer/@behaviours[name='A%20dependency%20appears%20between%20the%20classes%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
     <scenarios name="Create a usage between two classes in the class diagram from the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20usage%20creation%20tool%20from%20the%20palette%20and%20I%20select%20a%20source%20class%20and%20a%20target%20class']" then="//@automationLayer/@behaviours[name='A%20usage%20is%20created%20in%20the%20model'] //@automationLayer/@behaviours[name='A%20usage%20appears%20between%20the%20classes%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
     <scenarios name="Create a nest classifier between two classes in the class diagram from the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20classifier%20creation%20tool%20from%20the%20palette%20and%20I%20select%20a%20source%20class%20and%20a%20target%20class']" then="//@automationLayer/@behaviours[name='A%20classifier%20is%20created%20in%20the%20model'] //@automationLayer/@behaviours[name='A%20classifier%20appears%20between%20the%20classes%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
   </stories>
   <stories name="Edit a relationship" As="//@roles[name='Business%20analyst']" soThat="//@benefits[name='I%20could%20manage%20the%20elements%20in%20the%20model']" iWant="//@capabilities[name='to%20edit%20the%20properties%20of%20an%20element%20on%20the%20diagram']">
     <scenarios name="Change the navigability of an association between two classes in the class diagram" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20an%20association%20and%20I%20set%20it%20as%20navigable%20in%20bi%20direction']" then="//@automationLayer/@behaviours[name='The%20association%20is%20bi%20navigable%20in%20the%20model'] //@automationLayer/@behaviours[name='Arrows%20are%20visible%20on%20the%20association%20ends%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
     <scenarios name="Change the navigability of a composition between two classes in the class diagram" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20a%20composition%20and%20I%20set%20it%20as%20navigable%20in%20bi%20direction']" then="//@automationLayer/@behaviours[name='The%20composition%20is%20bi%20navigable%20in%20the%20model'] //@automationLayer/@behaviours[name='Arrows%20are%20visible%20on%20the%20composition%20ends%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
     <scenarios name="Change the navigability of a aggregation between two classes in the class diagram" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20a%20aggregation%20and%20I%20set%20it%20as%20navigable%20in%20bi%20direction']" then="//@automationLayer/@behaviours[name='The%20aggregation%20is%20bi%20navigable%20in%20the%20model'] //@automationLayer/@behaviours[name='Arrows%20are%20visible%20on%20the%20aggregation%20ends%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
   </stories>
   <stories name="Delete a relationship" As="//@roles[name='Business%20analyst']" soThat="//@benefits[name='I%20could%20manage%20the%20elements%20in%20the%20model']" iWant="//@capabilities[name='to%20delete%20a%20relationship%20in%20the%20class%20diagram']">
     <scenarios name="Delete an association in the class diagram from the delete from model tool in the toolbar" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20delete%20from%20model%20tool%20in%20toolbar%20and%20I%20click%20on%20an%20association%20in%20a%20class%20in%20the%20diagram']" then="//@automationLayer/@behaviours[name='The%20association%20is%20deleted%20from%20the%20model'] //@automationLayer/@behaviours[name='The%20association%20does%20not%20appear%20anymore%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
   </stories>
   <stories name="Reconnect a relationship" As="//@roles[name='Business%20analyst']" soThat="//@benefits[name='I%20could%20manage%20the%20elements%20in%20the%20model']" iWant="//@capabilities[name='to%20Reconnect%20a%20relationship%20in%20the%20class%20diagram']">
     <scenarios name="Reconnect an association in the class diagram" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20click%20on%20an%20end%20of%20an%20association%20in%20the%20diagram%20and%20I%20select%20another%20class']" then="//@automationLayer/@behaviours[name='The%20association%20end%20is%20set%20to%20the%20new%20class%20in%20the%20model'] //@automationLayer/@behaviours[name='The%20association%20is%20connected%20to%20the%20new%20class%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
     <scenarios name="Reconnect a composition in the class diagram" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20click%20on%20an%20end%20of%20a%20composition%20in%20the%20diagram%20and%20I%20select%20another%20class']" then="//@automationLayer/@behaviours[name='The%20composition%20end%20is%20set%20to%20the%20new%20class%20in%20the%20model'] //@automationLayer/@behaviours[name='The%20composition%20is%20connected%20to%20the%20new%20class%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
     <scenarios name="Reconnect an aggregation in the class diagram" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20click%20on%20an%20end%20of%20an%20aggregation%20in%20the%20diagram%20and%20I%20select%20another%20class']" then="//@automationLayer/@behaviours[name='The%20aggregation%20end%20is%20set%20to%20the%20new%20class%20in%20the%20model'] //@automationLayer/@behaviours[name='The%20aggregation%20is%20connected%20to%20the%20new%20class%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
     <scenarios name="Reconnect an association class in the class diagram" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20click%20on%20an%20end%20of%20an%20association%20class%20in%20the%20diagram%20and%20I%20select%20another%20class']" then="//@automationLayer/@behaviours[name='The%20association%20class%20end%20is%20set%20to%20the%20new%20class%20in%20the%20model'] //@automationLayer/@behaviours[name='The%20association%20class%20is%20connected%20to%20the%20new%20class%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
     <scenarios name="Reconnect a generalization in the class diagram" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20click%20on%20an%20end%20of%20a%20generalization%20in%20the%20diagram%20and%20I%20select%20another%20class']" then="//@automationLayer/@behaviours[name='The%20generalization%20end%20is%20set%20to%20the%20new%20class%20in%20the%20model'] //@automationLayer/@behaviours[name='The%20generalization%20is%20connected%20to%20the%20new%20class%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
     <scenarios name="Reconnect an interface realization in the class diagram" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20click%20on%20an%20end%20of%20an%20interface%20realization%20in%20the%20diagram%20and%20I%20select%20another%20class']" then="//@automationLayer/@behaviours[name='The%20interface%20realization%20end%20is%20set%20to%20the%20new%20class%20in%20the%20model'] //@automationLayer/@behaviours[name='The%20interface%20realization%20is%20connected%20to%20the%20new%20class%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
   </stories>
   <stories name="Add existing element" As="//@roles[name='Business%20analyst']" soThat="//@benefits[name='I%20could%20manage%20the%20different%20views%20of%20my%20application']" iWant="//@capabilities[name='to%20add%20an%20existing%20element%20in%20the%20class%20diagram']">
     <scenarios name="Add an existing class in the class diagram" given="//@automationLayer/@context[name='An%20empty%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20add%20tool%20from%20the%20palette%20and%20I%20click%20on%20the%20diagram%20and%20I%20select%20an%20existing']" then="//@automationLayer/@behaviours[name='A%20new%20element%20appears%20on%20the%20diagram%20which%20is%20a']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
       <values value="class" parameter="//@automationLayer/@actions[name='I%20select%20the%20add%20tool%20from%20the%20palette%20and%20I%20click%20on%20the%20diagram%20and%20I%20select%20an%20existing']/@parameters.0"/>
       <values value="class" parameter="//@automationLayer/@behaviours[name='A%20new%20element%20appears%20on%20the%20diagram%20which%20is%20a']/@parameters.0"/>
       <values value="class" parameter="//@automationLayer/@actions[name='I%20select%20the%20add%20tool%20from%20the%20palette%20and%20I%20click%20on%20the%20diagram%20and%20I%20select%20an%20existing']/@parameters.0"/>
       <values value="class" parameter="//@automationLayer/@behaviours[name='A%20new%20element%20appears%20on%20the%20diagram%20which%20is%20a']/@parameters.0"/>
     </scenarios>
     <scenarios name="Add an existing interface in the class diagram" given="//@automationLayer/@context[name='An%20empty%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20add%20tool%20from%20the%20palette%20and%20I%20click%20on%20the%20diagram%20and%20I%20select%20an%20existing']" then="//@automationLayer/@behaviours[name='A%20new%20element%20appears%20on%20the%20diagram%20which%20is%20a']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
       <values value="interface" parameter="//@automationLayer/@actions[name='I%20select%20the%20add%20tool%20from%20the%20palette%20and%20I%20click%20on%20the%20diagram%20and%20I%20select%20an%20existing']/@parameters.0"/>
       <values value="interface" parameter="//@automationLayer/@behaviours[name='A%20new%20element%20appears%20on%20the%20diagram%20which%20is%20a']/@parameters.0"/>
     </scenarios>
     <scenarios name="Add an existing package in the class diagram" given="//@automationLayer/@context[name='An%20empty%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20add%20tool%20from%20the%20palette%20and%20I%20click%20on%20the%20diagram%20and%20I%20select%20an%20existing']" then="//@automationLayer/@behaviours[name='A%20new%20element%20appears%20on%20the%20diagram%20which%20is%20a']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
       <values value="package" parameter="//@automationLayer/@actions[name='I%20select%20the%20add%20tool%20from%20the%20palette%20and%20I%20click%20on%20the%20diagram%20and%20I%20select%20an%20existing']/@parameters.0"/>
       <values value="package" parameter="//@automationLayer/@behaviours[name='A%20new%20element%20appears%20on%20the%20diagram%20which%20is%20a']/@parameters.0"/>
     </scenarios>
     <scenarios name="Add an existing datatype in the class diagram" given="//@automationLayer/@context[name='An%20empty%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20add%20tool%20from%20the%20palette%20and%20I%20click%20on%20the%20diagram%20and%20I%20select%20an%20existing']" then="//@automationLayer/@behaviours[name='A%20new%20element%20appears%20on%20the%20diagram%20which%20is%20a']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
       <values value="datatype" parameter="//@automationLayer/@actions[name='I%20select%20the%20add%20tool%20from%20the%20palette%20and%20I%20click%20on%20the%20diagram%20and%20I%20select%20an%20existing']/@parameters.0"/>
       <values value="datatype" parameter="//@automationLayer/@behaviours[name='A%20new%20element%20appears%20on%20the%20diagram%20which%20is%20a']/@parameters.0"/>
     </scenarios>
     <scenarios name="Add an existing primitive type in the class diagram" given="//@automationLayer/@context[name='An%20empty%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20add%20tool%20from%20the%20palette%20and%20I%20click%20on%20the%20diagram%20and%20I%20select%20an%20existing']" then="//@automationLayer/@behaviours[name='A%20new%20element%20appears%20on%20the%20diagram%20which%20is%20a']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
       <values value="primitive type" parameter="//@automationLayer/@actions[name='I%20select%20the%20add%20tool%20from%20the%20palette%20and%20I%20click%20on%20the%20diagram%20and%20I%20select%20an%20existing']/@parameters.0"/>
       <values value="primitive type" parameter="//@automationLayer/@behaviours[name='A%20new%20element%20appears%20on%20the%20diagram%20which%20is%20a']/@parameters.0"/>
     </scenarios>
     <scenarios name="Add an existing enumeration in the class diagram" given="//@automationLayer/@context[name='An%20empty%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20add%20tool%20from%20the%20palette%20and%20I%20click%20on%20the%20diagram%20and%20I%20select%20an%20existing']" then="//@automationLayer/@behaviours[name='A%20new%20element%20appears%20on%20the%20diagram%20which%20is%20a']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
       <values value="enumeration" parameter="//@automationLayer/@actions[name='I%20select%20the%20add%20tool%20from%20the%20palette%20and%20I%20click%20on%20the%20diagram%20and%20I%20select%20an%20existing']/@parameters.0"/>
       <values value="enumeration" parameter="//@automationLayer/@behaviours[name='A%20new%20element%20appears%20on%20the%20diagram%20which%20is%20a']/@parameters.0"/>
     </scenarios>
     <scenarios name="Add an existing component in the class diagram" given="//@automationLayer/@context[name='An%20empty%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20add%20tool%20from%20the%20palette%20and%20I%20click%20on%20the%20diagram%20and%20I%20select%20an%20existing']" then="//@automationLayer/@behaviours[name='A%20new%20element%20appears%20on%20the%20diagram%20which%20is%20a']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
       <values value="component" parameter="//@automationLayer/@actions[name='I%20select%20the%20add%20tool%20from%20the%20palette%20and%20I%20click%20on%20the%20diagram%20and%20I%20select%20an%20existing']/@parameters.0"/>
       <values value="component" parameter="//@automationLayer/@behaviours[name='A%20new%20element%20appears%20on%20the%20diagram%20which%20is%20a']/@parameters.0"/>
     </scenarios>
     <scenarios name="Add an existing class in a package in the class diagram" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20add%20tool%20from%20the%20palette%20and%20I%20click%20on%20a']" then="//@automationLayer/@behaviours[name='A%20new%20element%20appears%20in%20the']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
       <values value="package" parameter="//@automationLayer/@actions[name='I%20select%20the%20add%20tool%20from%20the%20palette%20and%20I%20click%20on%20a']/@parameters.0"/>
       <values value="class" parameter="//@automationLayer/@actions[name='I%20select%20the%20add%20tool%20from%20the%20palette%20and%20I%20click%20on%20a']/@parameters.1"/>
       <values value="package" parameter="//@automationLayer/@behaviours[name='A%20new%20element%20appears%20in%20the']/@parameters.0"/>
       <values value="class" parameter="//@automationLayer/@behaviours[name='A%20new%20element%20appears%20in%20the']/@parameters.1"/>
     </scenarios>
     <scenarios name="Add an existing class in a component in the class diagram" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20add%20tool%20from%20the%20palette%20and%20I%20click%20on%20a']" then="//@automationLayer/@behaviours[name='A%20new%20element%20appears%20in%20the']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
       <values value="component" parameter="//@automationLayer/@actions[name='I%20select%20the%20add%20tool%20from%20the%20palette%20and%20I%20click%20on%20a']/@parameters.0"/>
       <values value="class" parameter="//@automationLayer/@actions[name='I%20select%20the%20add%20tool%20from%20the%20palette%20and%20I%20click%20on%20a']/@parameters.1"/>
       <values value="component" parameter="//@automationLayer/@behaviours[name='A%20new%20element%20appears%20in%20the']/@parameters.0"/>
@@ -1115,10 +1123,10 @@
   </stories>
   <stories name="Remove an existing element" As="//@roles[name='Business%20analyst']" soThat="//@benefits[name='I%20could%20I%20could%20manage%20the%20different%20views%20of%20my%20application']" iWant="//@capabilities[name='to%20remove%20an%20existing%20element%20in%20the%20class%20diagram']">
     <scenarios name="Remove an existing class in the class diagram with the remove tool in the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20remove%20tool%20from%20the%20palette%20and%20I%20click%20on%20a%20class%20in%20the%20class%20diagram']" then="//@automationLayer/@behaviours[name='The%20class%20exists%20in%20the%20model'] //@automationLayer/@behaviours[name='The%20class%20does%20not%20appear%20anymore%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
     <scenarios name="Remove an existing package in the class diagram with the remove tool in the palette" given="//@automationLayer/@context[name='A%20class%20diagram%20is%20opened']" when="//@automationLayer/@actions[name='I%20select%20the%20remove%20tool%20from%20the%20palette%20and%20I%20click%20on%20a%20package%20in%20the%20class%20diagram']" then="//@automationLayer/@behaviours[name='The%20package%20exists%20in%20the%20model'] //@automationLayer/@behaviours[name='The%20package%20does%20not%20appear%20anymore%20on%20the%20diagram']">
-      <notes xsi:type="specification:TestGenerationNote" type="ui"/>
+      <notes xsi:type="specification:TestGenerationNote"/>
     </scenarios>
   </stories>
   <stories name="Add related elements" As="//@roles[name='Business%20analyst']" soThat="//@benefits[name='I%20could%20manage%20the%20different%20views%20of%20my%20application']" iWant="//@capabilities[name='to%20add%20an%20existing%20related%20elements%20in%20the%20class%20diagram']">

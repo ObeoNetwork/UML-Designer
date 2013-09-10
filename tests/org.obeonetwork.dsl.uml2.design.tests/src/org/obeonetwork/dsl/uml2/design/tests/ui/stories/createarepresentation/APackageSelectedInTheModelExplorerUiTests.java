@@ -9,19 +9,18 @@
  *     Obeo - initial API and implementation
  *******************************************************************************/
 
-package org.obeonetwork.dsl.uml2.design.tests.ui.stories.deleteatype;
+package org.obeonetwork.dsl.uml2.design.tests.ui.stories.createarepresentation;
 import org.junit.Rule;
 import org.junit.Test;
-import org.obeonetwork.dsl.uml2.design.tests.contexts.AClassDiagramIsOpened;
+import org.obeonetwork.dsl.uml2.design.tests.contexts.APackageSelectedInTheModelExplorer;
 
-public class AClassDiagramIsOpenedUiTests {
+public class APackageSelectedInTheModelExplorerUiTests {
 	@Rule
-	public AClassDiagramIsOpened context = new AClassDiagramIsOpened();
+	public APackageSelectedInTheModelExplorer context = new APackageSelectedInTheModelExplorer();
 
 	@Test
-	public void deleteAClassInTheClassDiagramFromTheDeleteFromModelToolInTheToolbar() throws Exception {
-		context.actionISelectTheDeleteFromModelToolInToolbarAndIClickOnAClassInTheDiagram();
-		context.assertTheClassIsDeletedFromTheModel();
-		context.assertTheClassDoesNotAppearAnymoreOnTheDiagram();
+	public void createAClassDiagramFromAPackageInTheModelExplorer() throws Exception {
+		context.actionICreateANewClassDiagram();
+		context.assertAClassDiagramIsCreatedAndOpened();
 	}
 }
