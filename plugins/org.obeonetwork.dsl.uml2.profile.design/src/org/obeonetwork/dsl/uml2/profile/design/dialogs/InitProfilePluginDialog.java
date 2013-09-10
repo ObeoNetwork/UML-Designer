@@ -146,7 +146,6 @@ public class InitProfilePluginDialog extends TitleAreaDialog {
 
 		profileNameField = new Text(group, SWT.SINGLE | SWT.BORDER);
 		profileNameField.addModifyListener(new ModifyListener() {
-			@Override
 			public void modifyText(final ModifyEvent e) {
 				if (e.getSource() instanceof Text) {
 					profileName = ((Text) e.getSource()).getText();
@@ -166,7 +165,6 @@ public class InitProfilePluginDialog extends TitleAreaDialog {
 
 		rootProfileURIField = new Text(group, SWT.SINGLE | SWT.BORDER);
 		rootProfileURIField.addModifyListener(new ModifyListener() {
-			@Override
 			public void modifyText(final ModifyEvent e) {
 				if (e.getSource() instanceof Text) {
 					rootProfileURI = ((Text) e.getSource()).getText();
@@ -184,7 +182,6 @@ public class InitProfilePluginDialog extends TitleAreaDialog {
 
 		profilePluginNameField = new Text(group, SWT.SINGLE | SWT.BORDER);
 		profilePluginNameField.addModifyListener(new ModifyListener() {
-			@Override
 			public void modifyText(final ModifyEvent e) {
 				if (e.getSource() instanceof Text) {
 					profilePluginName = ((Text) e.getSource()).getText();

@@ -316,12 +316,10 @@ public class ProfileVersionDialog extends TitleAreaDialog {
 		revisionVersionButton.setLayoutData(gd);
 		revisionVersionButton.setSelection(true);
 		revisionVersionButton.addSelectionListener(new SelectionListener() {
-			@Override
 			public void widgetSelected(final SelectionEvent e) {
 				revisionVersionButtonPressed();
 			}
 
-			@Override
 			public void widgetDefaultSelected(final SelectionEvent e) {
 			}
 		});
@@ -337,12 +335,10 @@ public class ProfileVersionDialog extends TitleAreaDialog {
 		gd = new GridData(SWT.FILL, SWT.CENTER, true, false);
 		minorVersionButton.setLayoutData(gd);
 		minorVersionButton.addSelectionListener(new SelectionListener() {
-			@Override
 			public void widgetSelected(final SelectionEvent e) {
 				minorVersionButtonPressed();
 			}
 
-			@Override
 			public void widgetDefaultSelected(final SelectionEvent e) {
 			}
 		});
@@ -358,12 +354,10 @@ public class ProfileVersionDialog extends TitleAreaDialog {
 		gd = new GridData(SWT.FILL, SWT.CENTER, true, false);
 		majorVersionButton.setLayoutData(gd);
 		majorVersionButton.addSelectionListener(new SelectionListener() {
-			@Override
 			public void widgetSelected(final SelectionEvent e) {
 				majorVersionButtonPressed();
 			}
 
-			@Override
 			public void widgetDefaultSelected(final SelectionEvent e) {
 			}
 		});
@@ -379,12 +373,10 @@ public class ProfileVersionDialog extends TitleAreaDialog {
 		gd = new GridData(SWT.FILL, SWT.CENTER, true, false);
 		customVersionButton.setLayoutData(gd);
 		customVersionButton.addSelectionListener(new SelectionListener() {
-			@Override
 			public void widgetSelected(final SelectionEvent e) {
 				customVersionButtonPressed();
 			}
 
-			@Override
 			public void widgetDefaultSelected(final SelectionEvent e) {
 			}
 		});
@@ -394,12 +386,10 @@ public class ProfileVersionDialog extends TitleAreaDialog {
 		gd = new GridData(SWT.FILL, SWT.CENTER, true, false);
 		customVersionText.setLayoutData(gd);
 		customVersionText.addFocusListener(new FocusListener() {
-			@Override
 			public void focusGained(final FocusEvent e) {
 				customVersionText.setText(customVersionValue.toString());
 			}
 
-			@Override
 			public void focusLost(final FocusEvent e) {
 				try {
 					customVersionValue = Version.parseVersion(customVersionText

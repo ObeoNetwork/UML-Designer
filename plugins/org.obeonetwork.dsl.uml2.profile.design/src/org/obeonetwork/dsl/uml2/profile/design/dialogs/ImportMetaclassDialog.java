@@ -189,11 +189,9 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 		concreteButton = new Button(parent, SWT.CHECK);
 		concreteButton.setText("Only concrete Metaclass"); //$NON-NLS-1$
 		concreteButton.addSelectionListener(new SelectionListener() {
-			@Override
 			public void widgetDefaultSelected(final SelectionEvent e) {
 			}
 
-			@Override
 			public void widgetSelected(final SelectionEvent e) {
 				if (concrete != ((Button) e.widget).getSelection()) {
 					concrete = ((Button) e.widget).getSelection();
@@ -205,11 +203,9 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 		subClassButton = new Button(parent, SWT.CHECK);
 		subClassButton.setText("Only sub classes of:"); //$NON-NLS-1$
 		subClassButton.addSelectionListener(new SelectionListener() {
-			@Override
 			public void widgetDefaultSelected(final SelectionEvent e) {
 			}
 
-			@Override
 			public void widgetSelected(final SelectionEvent e) {
 				if (subClass != ((Button) e.widget).getSelection()) {
 					subClass = ((Button) e.widget).getSelection();
@@ -222,8 +218,6 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 		superClassText = new Text(parent, SWT.SEARCH);
 		superClassText.setEnabled(subClass);
 		superClassText.addModifyListener(new ModifyListener() {
-
-			@Override
 			public void modifyText(final ModifyEvent e) {
 				if (e != null) {
 					final Object src = e.getSource();
@@ -448,7 +442,6 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 	@Override
 	protected Comparator<Object> getItemsComparator() {
 		return new Comparator<Object>() {
-			@Override
 			public int compare(final Object arg0, final Object arg1) {
 				return ((NamedElement) arg0).getName().compareTo(
 						((NamedElement) arg1).getName());
@@ -495,29 +488,23 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 	 * element.
 	 */
 	public class ILabelProviderForMetaclass implements ILabelProvider, IStyledLabelProvider {
-
-		@Override
 		public void addListener(final ILabelProviderListener listener) {
 
 		}
 
-		@Override
 		public void dispose() {
 
 		}
 
-		@Override
 		public boolean isLabelProperty(final Object element,
 				final String property) {
 			return false;
 		}
 
-		@Override
 		public void removeListener(final ILabelProviderListener listener) {
 
 		}
 
-		@Override
 		public Image getImage(final Object element) {
 			if (element != null) {
 				if (element instanceof Classifier) {
@@ -536,7 +523,6 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 			return null;
 		}
 
-		@Override
 		public String getText(final Object element) {
 			if (element != null) {
 				if (element instanceof NamedElement) {
@@ -552,7 +538,6 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 				return "";
 		}
 
-		@Override
 		public StyledString getStyledText(final Object element) {
 			final StyledString styledString = new StyledString();
 			if (element instanceof Class) {

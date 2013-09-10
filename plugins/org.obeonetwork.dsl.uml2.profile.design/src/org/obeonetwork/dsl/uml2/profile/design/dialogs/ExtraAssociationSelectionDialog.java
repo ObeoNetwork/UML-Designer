@@ -162,7 +162,6 @@ public class ExtraAssociationSelectionDialog extends ImportMetaclassDialog {
 		headerLabelAssociationName.setText("Association name:");
 		final Text associationNameMessage = new Text(composite, SWT.SEARCH);
 		associationNameMessage.addModifyListener(new ModifyListener() {
-			@Override
 			public void modifyText(final ModifyEvent e) {
 				if (e != null) {
 					final Object src = e.getSource();
@@ -185,11 +184,9 @@ public class ExtraAssociationSelectionDialog extends ImportMetaclassDialog {
 		checkButtonExtraAsso = new Button(composite, SWT.CHECK);
 		checkButtonExtraAsso.setText("Create an extra association"); //$NON-NLS-1$
 		checkButtonExtraAsso.addSelectionListener(new SelectionListener() {
-			@Override
 			public void widgetDefaultSelected(final SelectionEvent e) {
 			}
 
-			@Override
 			public void widgetSelected(final SelectionEvent e) {
 				if (isExtraAssociation != ((Button) e.widget).getSelection()) {
 					isExtraAssociation = ((Button) e.widget).getSelection();

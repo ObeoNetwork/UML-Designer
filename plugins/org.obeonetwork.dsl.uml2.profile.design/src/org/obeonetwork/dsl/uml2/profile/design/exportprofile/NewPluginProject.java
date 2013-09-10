@@ -359,7 +359,6 @@ public class NewPluginProject {
 	 */
 	public void openFileToEdit(final Shell s, final IFile file) {
 		s.getDisplay().asyncExec(new Runnable() {
-			@Override
 			public void run() {
 				final IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
 						.getActivePage();
