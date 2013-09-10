@@ -38,6 +38,7 @@ import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
+import org.obeonetwork.dsl.uml2.design.services.LogServices;
 
 /**
  * A Generic UML Profile tools.
@@ -198,7 +199,8 @@ public class GenericUMLProfileTools {
 					.getObjectByType(resource.getContents(),
 					UMLPackage.Literals.PACKAGE);
 		} catch (final WrappedException we) {
-			we.printStackTrace();
+			new LogServices().error("load(" + uri.getClass() + ") not handled",
+					we);
 			System.exit(1);
 		}
 
@@ -224,7 +226,9 @@ public class GenericUMLProfileTools {
 			package_ = (EPackage) EcoreUtil.getObjectByType(
 					resource.getContents(), type);
 		} catch (final WrappedException we) {
-			we.printStackTrace();
+			new LogServices().error(
+					"load(" + uri.getClass() + "," + type.getClass()
+							+ ") not handled", we);
 			System.exit(1);
 		}
 
@@ -243,7 +247,8 @@ public class GenericUMLProfileTools {
 			try {
 				resource.save(null);
 			} catch (final IOException ioe) {
-				ioe.printStackTrace();
+				new LogServices().error("save(" + package_.getClass()
+						+ ") not handled", ioe);
 			}
 		}
 	}
@@ -263,7 +268,9 @@ public class GenericUMLProfileTools {
 		try {
 			resource.save(null);
 		} catch (IOException ioe) {
-			ioe.printStackTrace();
+			new LogServices().error(
+					"save(" + package_.getClass() + "," + uri.getClass()
+							+ ") not handled", ioe);
 		}
 	}
 

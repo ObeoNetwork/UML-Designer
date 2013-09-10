@@ -56,6 +56,7 @@ import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.resource.UMLResource;
+import org.obeonetwork.dsl.uml2.design.services.LogServices;
 import org.obeonetwork.dsl.uml2.profile.design.Activator;
 
 /**
@@ -76,7 +77,9 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 					Platform.getBundle("org.eclipse.uml2.uml.edit")
 							.getResource("icons/full/obj16")).getPath();
 		} catch (final IOException e) {
-			e.printStackTrace();
+			new LogServices()
+					.error("FileLocator.toFileURL in ImportMetaclassDialog() not handled",
+							e);
 		}
 	}
 

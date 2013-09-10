@@ -32,6 +32,7 @@ import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.resource.UMLResource;
 import org.obeonetwork.dsl.uml2.design.services.LabelServices;
+import org.obeonetwork.dsl.uml2.design.services.LogServices;
 
 import fr.obeo.dsl.viewpoint.AbstractDNode;
 
@@ -409,6 +410,8 @@ public class UMLServices {
 			try {
 				extension = (Extension) property.getAssociation();
 			} catch (final Exception e) {
+				new LogServices().error("getMetaclass(" + property.getClass()
+						+ ") not handled", e);
 				throw new RuntimeException(e);
 			}
 		}

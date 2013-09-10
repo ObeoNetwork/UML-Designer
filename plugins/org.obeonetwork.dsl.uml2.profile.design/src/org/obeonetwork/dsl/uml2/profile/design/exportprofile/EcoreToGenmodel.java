@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.importer.ecore.EcoreImporter;
+import org.obeonetwork.dsl.uml2.design.services.LogServices;
 import org.obeonetwork.dsl.uml2.profile.design.services.GenericUMLProfileTools;
 
 /**
@@ -67,7 +68,8 @@ public class EcoreToGenmodel {
 		try {
 			modelImporter.computeEPackages(basicMonitor);
 		} catch (Exception e1) {
-			e1.printStackTrace();
+			new LogServices().error("modelImporter.computeEPackages("
+					+ basicMonitor.getClass() + ") not handled", e1);
 		}
 		
 		for (EPackage ePackage : modelImporter.getEPackages()) {
@@ -87,6 +89,8 @@ public class EcoreToGenmodel {
 		try {
 			modelImporter.saveGenModelAndEPackages(basicMonitor);
 		} catch (Exception e) {
+			new LogServices().error("modelImporter.saveGenModelAndEPackages("
+					+ basicMonitor.getClass() + ") not handled", e);
 			e.printStackTrace();
 		}
 		return modelImporter.getGenModel();

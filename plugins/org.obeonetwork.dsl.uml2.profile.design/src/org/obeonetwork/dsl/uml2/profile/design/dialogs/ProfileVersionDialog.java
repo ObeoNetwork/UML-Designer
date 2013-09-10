@@ -31,6 +31,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.uml2.uml.Profile;
+import org.obeonetwork.dsl.uml2.design.services.LogServices;
 import org.obeonetwork.dsl.uml2.profile.design.services.UMLDesignerProfileVersion;
 import org.obeonetwork.dsl.uml2.profile.design.services.Version;
 
@@ -397,8 +398,9 @@ public class ProfileVersionDialog extends TitleAreaDialog {
 					newVersionValue = customVersionValue;
 					setErrorMessage(null);
 				} catch (final IllegalArgumentException iae) {
-					setErrorMessage("Custom version number format should be X.Y.Z, not "
-							+ customVersionText.getText());
+					new LogServices().warning(
+							"Custom version number format should be X.Y.Z, not "
+									+ customVersionText.getText(), iae);
 					customVersionValue = revisionVersionValue; // default value
 					revisionVersionButtonPressed();
 				}
