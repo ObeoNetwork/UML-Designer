@@ -42,6 +42,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
+import org.obeonetwork.dsl.uml2.design.services.LogServices;
 
 /**
  * This class provide some static methods for the creation of plug-in project
@@ -171,6 +172,14 @@ public class NewPluginProject {
 			createManifest(pluginProjectName, requiredBundles, exportedPackages, progressMonitor, project);
 			createBuildProps(progressMonitor, project, srcFolders);
 		} catch (final Exception exception) {
+			new LogServices().error(
+					"createPluginProject(" + pluginProjectName.getClass() + ","
+							+ srcFolders.getClass() + ","
+							+ referencedProjects.getClass() + ","
+							+ requiredBundles.getClass() + ","
+							+ exportedPackages.getClass() + ","
+							+ progressMonitor.getClass() + ","
+							+ theShell.getClass() + ") not handled", exception);
 			exception.printStackTrace();
 		} finally {
 			progressMonitor.done();
@@ -207,6 +216,9 @@ public class NewPluginProject {
 			}
 			stream.close();
 		} catch (final Exception e) {
+			new LogServices().error("createFile(" + name.getClass() + ","
+					+ container.getClass() + "," + content.getClass() + ","
+					+ progressMonitor.getClass() + ") not handled", e);
 			e.printStackTrace();
 		}
 		progressMonitor.worked(1);
@@ -316,13 +328,17 @@ public class NewPluginProject {
 			}
 			inputStream.close();
 		} catch (final Exception e) {
-			e.printStackTrace();
+
+			new LogServices().error("createFile(" + name.getClass() + ","
+					+ container.getClass() + "," + contentUrl.getClass() + ","
+					+ progressMonitor.getClass() + "," + ") not handled", e);
 		} finally {
 			if (null != inputStream) {
 				try {
 					inputStream.close();
 				} catch (final IOException e) {
-					e.printStackTrace();
+					new LogServices().error("inputStream.close() not handled",
+							e);
 				}
 			}
 		}
@@ -341,7 +357,9 @@ public class NewPluginProject {
 					((IFolder) c)
 							.create(false, true, new NullProgressMonitor());
 				} catch (final CoreException e) {
-					e.printStackTrace();
+					new LogServices()
+							.error("create(false, true,NullProgressMonitor) not handled",
+									e);
 				}
 			}
 
@@ -365,7 +383,8 @@ public class NewPluginProject {
 				try {
 					IDE.openEditor(page, file, true);
 				} catch (final PartInitException e) {
-					e.printStackTrace();
+					new LogServices().error("openFileToEdit(" + s.getClass()
+							+ "," + file.getClass() + ") not handled", e);
 				}
 			}
 		});

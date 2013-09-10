@@ -18,6 +18,15 @@ import java.util.HashSet;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.Result;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.TransformerFactoryConfigurationError;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IFolder;
@@ -45,14 +54,12 @@ import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.resource.UMLResource;
+import org.obeonetwork.dsl.uml2.design.services.LogServices;
 import org.obeonetwork.dsl.uml2.profile.design.dialogs.InitProfilePluginDialog;
 import org.obeonetwork.dsl.uml2.profile.design.services.GenericUMLProfileTools;
 import org.obeonetwork.dsl.uml2.profile.design.services.UMLProfileServices;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
-
-import com.sun.org.apache.xml.internal.serialize.OutputFormat;
-import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
 
 public class ExportProfileService {
 
@@ -101,7 +108,9 @@ public class ExportProfileService {
 			try {
 				modelFolder.create(false, true, null);
 			} catch (CoreException e) {
-				e.printStackTrace();
+				new LogServices().error(
+						"exportProfile(" + rootProfile.getClass()
+								+ ") not handled", e);
 			}
 
 			// make a copy of the profile into the new plug-in used for the creation of static profile
@@ -113,7 +122,9 @@ public class ExportProfileService {
 			try {
 				rootProfileIFile.copy(profileCopyIFile.getFullPath(), true, new NullProgressMonitor());
 			} catch (final CoreException e) {
-				e.printStackTrace();
+				new LogServices().error(
+						"exportProfile(" + rootProfile.getClass()
+								+ ") not handled", e);
 			}
 
 			final Resource profileCopyResource = new ResourceSetImpl()
@@ -148,7 +159,9 @@ public class ExportProfileService {
 			try {
 				profilePlugin.build(IncrementalProjectBuilder.FULL_BUILD, new NullProgressMonitor());
 			} catch (final CoreException e) {
-				e.printStackTrace();
+				new LogServices().error(
+						"exportProfile(" + rootProfile.getClass()
+								+ ") not handled", e);
 			}
 			final IWorkbenchWizard wizard = new PluginExportWizard();
 
@@ -264,8 +277,10 @@ public class ExportProfileService {
 	 */
 	public void addProfileExtensions(final IProject profilePlugin,
 			final IFolder modelFolder, final Profile profileCopy) {
+		final String exceptionMsg = "addProfileExtensions("
+				+ profilePlugin.getClass() + "," + modelFolder.getClass() + ","
+				+ profileCopy.getClass() + ") not handled";
 		final IFile pluginXML = profilePlugin.getFile("plugin.xml");
-		pluginXML.getLocation().toFile();
 
 		final DocumentBuilderFactory builderFactory = DocumentBuilderFactory
 				.newInstance();
@@ -273,16 +288,16 @@ public class ExportProfileService {
 		try {
 			builder = builderFactory.newDocumentBuilder();
 		} catch (final ParserConfigurationException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
+			new LogServices().error(exceptionMsg, e);
 		}
 		org.w3c.dom.Document document = null;
 		try {
 			document = builder.parse(pluginXML.getLocation().toFile());
 		} catch (final SAXException e) {
-			e.printStackTrace();
+			new LogServices().error(exceptionMsg, e);
 		} catch (final IOException e) {
-			e.printStackTrace();
+			new LogServices().error(
+exceptionMsg, e);
 		} catch (final Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -337,13 +352,22 @@ public class ExportProfileService {
 
 			racine.appendChild(extensionForUriMapping);
 
+			// serialise the document to an xml file.
+			Transformer transformer = null;
 			try {
-				final XMLSerializer ser = new XMLSerializer(
-						new java.io.FileWriter(pluginXML.getLocation().toFile()), new OutputFormat("xml",
-								"UTF-8", true));
-				ser.serialize(document);
-			} catch (final IOException e) {
-				e.printStackTrace();
+				transformer = TransformerFactory.newInstance().newTransformer();
+			} catch (TransformerConfigurationException e) {
+				new LogServices().error(exceptionMsg, e);
+			} catch (TransformerFactoryConfigurationError e) {
+				new LogServices().error(exceptionMsg, e);
+			}
+			Result output = new StreamResult(pluginXML.getLocation().toFile());
+			Source input = new DOMSource(document);
+
+			try {
+				transformer.transform(input, output);
+			} catch (TransformerException e) {
+				new LogServices().error(exceptionMsg, e);
 			}
 		}
 	}
