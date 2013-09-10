@@ -222,7 +222,7 @@
           </ownedTools>
         </subSections>
         <subSections name="profiles">
-          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="Apply profile" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Profile.gif" windowTitle="Select profiles to apply" candidatesExpression="&lt;%getAllRootsInSession().filter(&quot;Profile&quot;)%>" preSelectedCandidatesExpression="&lt;%eContainer(&quot;Package&quot;).getAllAppliedProfiles()%>">
+          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="Apply profile" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Profile.gif" windowTitle="Select profiles to apply" candidatesExpression="&lt;%$container.eContainer(&quot;Package&quot;).getAllProfilesInPlatform()%>" preSelectedCandidatesExpression="&lt;%eContainer(&quot;Package&quot;).getAllAppliedProfiles()%>">
             <element name="element"/>
             <containerView name="containerView"/>
             <container name="container"/>
