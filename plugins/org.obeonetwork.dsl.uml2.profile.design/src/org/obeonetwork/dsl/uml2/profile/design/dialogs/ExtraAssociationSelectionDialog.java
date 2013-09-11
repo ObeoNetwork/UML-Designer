@@ -171,7 +171,7 @@ public class ExtraAssociationSelectionDialog extends ImportMetaclassDialog {
 						associationName = myText;
 						final Button okButton = getOkButton();
 						if (okButton != null) {
-							okButton.setEnabled(!associationName.isEmpty());
+							okButton.setEnabled(associationName.length() != 0);
 						}
 					}
 				}

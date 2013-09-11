@@ -201,7 +201,7 @@ public class InitProfilePluginDialog extends TitleAreaDialog {
 		final Object src = e.getSource();
 		if (src instanceof Text) {
 			final Text txt = (Text) src;
-			return txt.getText().length() != 0 && !txt.getText().isEmpty();
+			return txt.getText().length() != 0 && txt.getText().length() != 0;
 		}
 
 		return true;

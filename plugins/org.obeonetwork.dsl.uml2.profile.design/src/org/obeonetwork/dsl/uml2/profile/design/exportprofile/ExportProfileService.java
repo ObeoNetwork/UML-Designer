@@ -185,12 +185,12 @@ public class ExportProfileService {
 	 */
 	public Integer initParameters(final Profile profile) {
 
-		if (profile.getName() != null && !profile.getName().isEmpty())
+		if (profile.getName() != null && profile.getName().length() != 0)
 			profileName = profile.getName().toLowerCase();
 		else
 			profileName = defaultProfileName;
 
-		if (profile.getURI() != null && !profile.getURI().isEmpty())
+		if (profile.getURI() != null && profile.getURI().length() != 0)
 			rootProfileURI = profile.getURI() + separator;
 		else
 			rootProfileURI = "http://www.ObeoNetwork.com/" + profileName
@@ -234,7 +234,7 @@ public class ExportProfileService {
 			profile.setValue(ePackage, "nsPrefix", profile.getName());
 			profile.setValue(ePackage, "prefix", profile.getName());
 		}
-		// if (profile.getURI() != null && !profile.getURI().isEmpty())
+		// if (profile.getURI() != null && profile.getURI().length() != 0)
 		// profile.setValue(ePackage, nsURI, profile.getURI());
 		// else {
 		// profile.setValue(ePackage, nsURI, computeURI(profile));
@@ -252,7 +252,8 @@ public class ExportProfileService {
 					ownedPackage.setValue(ePackage, "nsPrefix", ownedPackage.getName());
 					ownedPackage.setValue(ePackage, "prefix", ownedPackage.getName());
 				}
-				if (ownedPackage.getURI() != null && !profile.getURI().isEmpty())
+				if (ownedPackage.getURI() != null
+						&& profile.getURI().length() != 0)
 					ownedPackage.setValue(ePackage, nsURI,
 							ownedPackage.getURI());
 				else {
@@ -382,7 +383,7 @@ exceptionMsg, e);
 	public String computeURI(final NamedElement element) {
 		String uri = null;
 		if (element.getOwner() == null && element.getNearestPackage().getURI() != null
-				&& !element.getNearestPackage().getURI().isEmpty())
+				&& element.getNearestPackage().getURI().length() != 0)
 			uri = element.getNearestPackage().getURI();
 		else if (element.getOwner() != null && element.getOwner().getNearestPackage() != null
 				&& element.getOwner().getNearestPackage().getURI() != null)
