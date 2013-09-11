@@ -170,7 +170,7 @@ Contributors:
                      </instanceof>
                      <test
                            forcePluginActivation="true"
-                           property="org.obeonetwork.dsl.uml2.design.Behavioral">
+                           property="org.obeonetwork.dsl.uml2.design.Profile">
                      </test>
                   </iterate>
                </with>
@@ -263,7 +263,7 @@ Contributors:
              class="org.obeonetwork.dsl.uml2.design.ui.extension.ViewpointEnablementPropertyTester"
              id="org.obeonetwork.dsl.uml2.design.ViewpointEnabled"
              namespace="org.obeonetwork.dsl.uml2.design"
-             properties="Behavioral,Structural"
+             properties="Behavioral,Structural,Profile"
              type="org.eclipse.uml2.uml.Element">
        </propertyTester>
     </extension>
