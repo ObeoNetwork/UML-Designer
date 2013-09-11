@@ -14,9 +14,13 @@ package org.obeonetwork.dsl.uml2.design.tests.plugin.manual;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
+import org.obeonetwork.dsl.uml2.design.tests.plugin.manual.services.ConnectorServicesTests;
+import org.obeonetwork.dsl.uml2.design.tests.plugin.manual.services.SequenceServiceTests;
+import org.obeonetwork.dsl.uml2.design.tests.plugin.manual.services.compositestructure.IsRelated4CompositeStructureServicesTests;
+import org.obeonetwork.dsl.uml2.design.tests.plugin.manual.services.compositestructure.IsRelated4CompositeStructureServicesWithConnectorTests;
 
 @RunWith(Suite.class)
-@SuiteClasses({DiagramElementMappingSpecificationTests.class})
+@SuiteClasses({SequenceServiceTests.class,IsRelated4CompositeStructureServicesTests.class,IsRelated4CompositeStructureServicesWithConnectorTests.class,ConnectorServicesTests.class,DiagramElementMappingSpecificationTests.class})
 /**
  * Testing : Hand written UML Designer plugin tests
  */

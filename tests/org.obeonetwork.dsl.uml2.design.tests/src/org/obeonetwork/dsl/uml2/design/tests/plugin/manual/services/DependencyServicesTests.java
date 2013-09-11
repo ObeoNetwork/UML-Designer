@@ -8,12 +8,12 @@
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
-package org.obeonetwork.dsl.uml2.design.tests.services;
+package org.obeonetwork.dsl.uml2.design.tests.plugin.manual.services;
 
 import org.eclipse.uml2.uml.Dependency;
 import org.obeonetwork.dsl.uml2.design.services.DependencyServices;
 import org.obeonetwork.dsl.uml2.design.tests.Activator;
-import org.obeonetwork.dsl.uml2.design.tests.services.compositestructure.AbstractCompositeStructueTests;
+import org.obeonetwork.dsl.uml2.design.tests.plugin.manual.services.compositestructure.AbstractCompositeStructueTests;
 
 /**
  * Unit tests on Connector services.

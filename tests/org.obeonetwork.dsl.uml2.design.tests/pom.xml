@@ -64,8 +64,9 @@
                 <version>${tycho-version}</version>
                 <configuration>
                     <includes>
-                        <include>org/obeonetwork/dsl/uml2/design/tests/AllTests.class</include>
-                        <include>org/obeonetwork/dsl/uml2/design/tests/unit/UmlDesignerUnitTests.class</include>
+                        <include>org/obeonetwork/dsl/uml2/design/tests/unit/AllUnitTests.class</include>
+                        <include>org/obeonetwork/dsl/uml2/design/tests/plugin/AllPluginTests.class</include>
+                        <include>org/obeonetwork/dsl/uml2/design/tests/ui/AllUiTests.class</include>
                     </includes>
                     <useUIHarness>true</useUIHarness>
                     <useUIThread>true</useUIThread>
