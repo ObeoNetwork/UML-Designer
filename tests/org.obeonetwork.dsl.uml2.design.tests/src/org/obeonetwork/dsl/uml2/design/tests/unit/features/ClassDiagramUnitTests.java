@@ -14,10 +14,9 @@ package org.obeonetwork.dsl.uml2.design.tests.unit.features;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
-import org.obeonetwork.dsl.uml2.design.tests.unit.stories.AddRelatedElementsUnitTests;
 
 @RunWith(Suite.class)
-@SuiteClasses({AddRelatedElementsUnitTests.class})
+@SuiteClasses({})
 /**
  * Testing : Class diagram
  */

@@ -15,8 +15,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 import org.obeonetwork.dsl.uml2.design.tests.ui.features.ClassDiagramUiTests;
-import org.obeonetwork.dsl.uml2.design.tests.ui.features.DiagramEditorUiTests;
 import org.obeonetwork.dsl.uml2.design.tests.ui.features.ManageRepresentationsUiTests;
+import org.obeonetwork.dsl.uml2.design.tests.ui.features.DiagramEditorUiTests;
 
 @RunWith(Suite.class)
 @SuiteClasses({ManageRepresentationsUiTests.class,ClassDiagramUiTests.class,DiagramEditorUiTests.class})

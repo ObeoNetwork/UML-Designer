@@ -294,3 +294,9 @@ Feature : Class diagram
 			When I select the remove tool from the palette and I click on a package in the class diagram
 			Then The package exists in the model
 			Then The package does not appear anymore on the diagram
+	Story : Add related elements
+		Scenario : Add related elements of a class
+			Given An UML model with class diagram elements
+			When I ask for the related elements of
+			Then The number of related elements found is
+			Then The related elements are

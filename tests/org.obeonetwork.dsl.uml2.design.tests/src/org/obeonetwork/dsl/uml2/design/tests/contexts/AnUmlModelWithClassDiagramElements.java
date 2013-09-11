@@ -50,21 +50,21 @@ public class AnUmlModelWithClassDiagramElements extends Context {
 	}
 
 	/**
-	 * Behavior : The number of related elements found is
-	 */
-	public void assertTheNumberOfRelatedElementsFoundIs(String theNumberOfRelatedElementsFoundIs0) {
-		// Start of user code TheNumberOfRelatedElementsFoundIs
-		// TODO Implement behavior TheNumberOfRelatedElementsFoundIs
-		fail("Behavior TheNumberOfRelatedElementsFoundIs not implemented");
-		// End of user code
-	}
-	/**
 	 * Behavior : The related elements are
 	 */
 	public void assertTheRelatedElementsAre(String theRelatedElementsAre0,String theRelatedElementsAre1,String theRelatedElementsAre2) {
 		// Start of user code TheRelatedElementsAre
 		// TODO Implement behavior TheRelatedElementsAre
 		fail("Behavior TheRelatedElementsAre not implemented");
+		// End of user code
+	}
+	/**
+	 * Behavior : The number of related elements found is
+	 */
+	public void assertTheNumberOfRelatedElementsFoundIs(String theNumberOfRelatedElementsFoundIs0) {
+		// Start of user code TheNumberOfRelatedElementsFoundIs
+		// TODO Implement behavior TheNumberOfRelatedElementsFoundIs
+		fail("Behavior TheNumberOfRelatedElementsFoundIs not implemented");
 		// End of user code
 	}
 

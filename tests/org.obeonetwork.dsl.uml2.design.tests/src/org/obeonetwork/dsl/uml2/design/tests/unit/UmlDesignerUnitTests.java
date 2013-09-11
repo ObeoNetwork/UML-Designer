@@ -15,12 +15,11 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 import org.obeonetwork.dsl.uml2.design.tests.unit.features.DirectEditUnitTests;
-import org.obeonetwork.dsl.uml2.design.tests.unit.features.ClassDiagramUnitTests;
-import org.obeonetwork.dsl.uml2.design.tests.unit.features.ActivityDiagramUnitTests;
 import org.obeonetwork.dsl.uml2.design.tests.unit.features.DragAndDropUnitTests;
+import org.obeonetwork.dsl.uml2.design.tests.unit.features.ActivityDiagramUnitTests;
 
 @RunWith(Suite.class)
-@SuiteClasses({DragAndDropUnitTests.class,ClassDiagramUnitTests.class,DirectEditUnitTests.class,ActivityDiagramUnitTests.class})
+@SuiteClasses({DragAndDropUnitTests.class,DirectEditUnitTests.class,ActivityDiagramUnitTests.class})
 /**
  * Testing : UML Designer
  */

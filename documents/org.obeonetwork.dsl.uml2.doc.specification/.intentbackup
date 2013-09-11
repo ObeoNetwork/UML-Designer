@@ -3329,7 +3329,7 @@ Document {
 							 
 						M@
 
-						Scenario: Add related elements of a class [Add related elements]@unit
+						Scenario: Add related elements of a class [Add related elements]
 							Given: An UML model with class diagram elements
 							When: I ask for the related elements of $'Class1'
 							Then: The number of related elements found is $'3'
