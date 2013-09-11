@@ -1684,7 +1684,7 @@
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
           </style>
         </edgeMappings>
-        <edgeMappings name="CO_Dependency" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="[diagram.getNodeInverseRefs('Dependency')->select(dependency|dependency.oclIsTypeOf(uml::Dependency))/]" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="&lt;%client%>" domainClass="uml.Dependency" useDomainElement="true">
+        <edgeMappings name="CO_Dependency" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="[diagram.getNodeInverseRefs('Dependency')->select(dependency|dependency.oclIsTypeOf(uml::Dependency))/]" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']" targetFinderExpression="&lt;%supplier%>" sourceFinderExpression="&lt;%client%>" domainClass="uml.Dependency" useDomainElement="true" reconnections="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect%20Dependency']">
           <style lineStyle="dash" sizeComputationExpression="1" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
             <centerLabelStyleDescription>
@@ -2063,6 +2063,17 @@
             <edgeView name="edgeView"/>
           </ownedTools>
           <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Reconnect ComponentRealization" reconnectionKind="RECONNECT_BOTH">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="&lt;%$element.reconnectEdge($edgeView, $sourceView, $targetView, $source, $target)%>"/>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Reconnect Dependency" reconnectionKind="RECONNECT_BOTH">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
