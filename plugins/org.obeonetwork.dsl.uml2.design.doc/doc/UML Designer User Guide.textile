@@ -89,6 +89,8 @@ Two viewpoints are specified on the UML designer each bringing the following vie
 ** Activity diagram
 ** Use case diagram
 ** Sequence diagram
+* UML Profile Design
+** Profile diagram
 
 You can select either viewpoints or both depending on your use case. Note that the __Package hierarchy diagram__ is the entry point to create new diagrams such as Activity or Sequence diagrams. So it is advised to select at least the __UML Structural modeling__ viewpoint.
 
@@ -198,6 +200,78 @@ h2. Editing labels
 
 We added a few accelerators so that you can quickly edit *labels* on elements or edges just by typing. Typing : 
 * @aNewName@ will update the label.
+
+h1. Using the Profile Diagram
+
+!using_profile_diagram/profile_diagram.png!
+
+h2. Creating a profile
+
+To create a new profile, *right_click* on a model element in the Model Explorer and select the menu _New Representation > Profile Diagram_.
+!using_profile_diagram/new_profile_diagram_menu.png!
+
+Another solution is to *create a new UML model* and select *_Profile_* as root element.
+!using_profile_diagram/new_profile_diagram_model.png!
+
+h2. Creating a stereotype
+
+A tool is available in the palette to create a stereotype. 
+!using_profile_diagram/palette_stereotype.png!
+!using_profile_diagram/stereotype.png!
+
+By default, a stereotype does not extend any metaclass.
+
+h2. Referencing a metaclass
+
+A tool is available in the palette to import a list of metaclass.
+!using_profile_diagram/palette_metaclass.png!
+!using_profile_diagram/metaclass.png!
+
+It opens a wizard which proposes all the available UML metaclass:
+!using_profile_diagram/wizard_metaclass.png!
+
+It is possible to filter the listed metaclass by :
+* Name
+* Only concrete metaclasses
+* Only sub classes of a selected metaclass
+
+h2. Extending a metaclass
+
+A tool is available in the palette to create extensions for a stereotype.
+!using_profile_diagram/palette_extension.png!
+!using_profile_diagram/extension.png!
+According to the context, this tool will create an _Extension_ edge linking _Stereotype_ to an _Element Import_ or a _Generalization_ edge linking two _Stereotypes_. An _Element Import_ is an UML reference to an imported metaclass in a profile.
+!using_profile_diagram/wizard_metaclass.png!
+
+h2. Extra associations
+
+This tool allows the creation of an UML “Association” between two stereotypes. 
+!using_profile_diagram/extra_association.png!
+Furthermore, this tool can suggest to reuse the existing relationship in the metamodel UML, if this relationship can link the metaclass referenced by the target and the source stereotype of the wanted association.
+If the user selects an existing relationship of the UML metamodel, then the tool will import the metaclass of the selected relationship and create a new stereotype that extend this relationship. Besides, the tool link graphically the new created stereotype and the source and target stereotype of the association
+!using_profile_diagram/wizard_extra_association.png!
+
+h2. Defining a profile
+
+The palette provides a tool to *define a profile* in order to be able to apply this one for other UML model in the workspace. This tool add information about the version to the profile as _Ecore Annotation_. Mainly, the information required for the versioning are:
+* Version number
+* Date
+* Author
+* Comment
+* Copyright
+!using_profile_diagram/define_profile.png!
+
+Another tool is available to *undefine a profile*, this tool removes all the _EPackage_ representing the definition from the profile.
+
+h2. Exporting a profile
+
+An _export profile_ tool is available from the palette to export a profile as a jar file. This jar can be added to an eclipse platform to provide a profile as a registered package. The export operation creates an EMF project with an ecore file based on the profile model. Then an extension for the profile is added to the generated project (in “uml.generated_package” and “ecore.uri_mapping”). Finally, the tool builds and exports the created EMF project for the profile as a Deployable plug-in.
+The tool requires some necessary information for the creation of the deployable plug-in:
+* Profile name, which is editable in the profile model.
+* Profile URI.
+* Profile plug-in name.
+* Version information
+!using_profile_diagram/export_profile.png!
 
 h1. Features
 

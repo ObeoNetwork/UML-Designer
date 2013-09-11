@@ -14,11 +14,21 @@
 	<topic href="doc/UML Designer User Guide.html#UsingtheClassDiagram" label="Using the Class Diagram">
 		<topic href="doc/UML Designer User Guide.html#CreatingElements" label="Creating Elements"></topic>
 		<topic href="doc/UML Designer User Guide.html#EditingElements" label="Editing Elements"></topic>
+		<topic href="doc/UML Designer User Guide.html#UsingUMLincolors" label="Using UML in colors"></topic>
 		<topic href="doc/UML Designer User Guide.html#EditingAttributes" label="Editing Attributes"></topic>
 	</topic>
 	<topic href="doc/UML Designer User Guide.html#UsingtheDeploymentDiagram" label="Using the Deployment Diagram">
 		<topic href="doc/UML Designer User Guide.html#CreatingElements2" label="Creating Elements"></topic>
 		<topic href="doc/UML Designer User Guide.html#Editinglabels" label="Editing labels"></topic>
+	</topic>
+	<topic href="doc/UML Designer User Guide.html#UsingtheProfileDiagram" label="Using the Profile Diagram">
+		<topic href="doc/UML Designer User Guide.html#Creatingaprofile" label="Creating a profile"></topic>
+		<topic href="doc/UML Designer User Guide.html#Creatingastereotype" label="Creating a stereotype"></topic>
+		<topic href="doc/UML Designer User Guide.html#Referencingametaclass" label="Referencing a metaclass"></topic>
+		<topic href="doc/UML Designer User Guide.html#Extendingametaclass" label="Extending a metaclass"></topic>
+		<topic href="doc/UML Designer User Guide.html#Extraassociations" label="Extra associations"></topic>
+		<topic href="doc/UML Designer User Guide.html#Definingaprofile" label="Defining a profile"></topic>
+		<topic href="doc/UML Designer User Guide.html#Exportingaprofile" label="Exporting a profile"></topic>
 	</topic>
 	<topic href="doc/UML Designer User Guide.html#Features" label="Features">
 		<topic href="doc/UML Designer User Guide.html#ClassDiagram" label="Class Diagram">
@@ -32,7 +42,6 @@
 			<topic href="doc/UML Designer User Guide.html#CompositeComponents" label="Composite Components"></topic>
 			<topic href="doc/UML Designer User Guide.html#UsingClass" label="Using Class"></topic>
 			<topic href="doc/UML Designer User Guide.html#RequiredandProvidedInterfaces" label="Required and Provided Interfaces"></topic>
-			<topic href="doc/UML Designer User Guide.html#Packageimports" label="Package imports"></topic>
 		</topic>
 		<topic href="doc/UML Designer User Guide.html#UseCaseDiagram" label="Use Case Diagram">
 			<topic href="doc/UML Designer User Guide.html#Introduction3" label="Introduction"></topic>
