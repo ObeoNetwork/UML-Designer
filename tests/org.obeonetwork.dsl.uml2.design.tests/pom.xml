@@ -69,7 +69,7 @@
                         <include>org/obeonetwork/dsl/uml2/design/tests/ui/AllUiTests.class</include>
                     </includes>
                     <useUIHarness>true</useUIHarness>
-                    <useUIThread>true</useUIThread>
+                    <useUIThread>false</useUIThread>
                     <argLine>${ui.test.vmargs}</argLine>
                     <!--
                     <argLine>-Xmx1024m -XX:MaxPermSize=256m</argLine>
