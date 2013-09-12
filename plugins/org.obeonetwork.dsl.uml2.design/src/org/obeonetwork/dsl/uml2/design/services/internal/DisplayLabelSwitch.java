@@ -43,19 +43,20 @@ import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.StructuralFeature;
 import org.eclipse.uml2.uml.TemplateBinding;
-import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateParameterSubstitution;
-import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.TypedElement;
 import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.util.UMLSwitch;
+import org.obeonetwork.dsl.uml2.design.services.LabelServices;
 
 /**
  * A switch that handle the label computation for each UML types.
  * 
- * @author Gonzague Reydet <a href="mailto:gonzague.reydet@obeo.fr">gonzague.reydet@obeo.fr</a>
- * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+ * @author Gonzague Reydet <a
+ *         href="mailto:gonzague.reydet@obeo.fr">gonzague.reydet@obeo.fr</a>
+ * @author Melanie Bats <a
+ *         href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConstants {
 
@@ -80,6 +81,11 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	private static final String OPENING_BRACE = "[";
 
 	/**
+	 * Label services.
+	 */
+	protected LabelServices labelServices = new LabelServices();
+
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override
@@ -88,7 +94,8 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 
 		if (value instanceof OpaqueExpression) {
 			final String expr = ((OpaqueExpression) value).getBodies().get(0);
-			if (expr != null && !"".equalsIgnoreCase(expr) && !"true".equalsIgnoreCase(expr)
+			if (expr != null && !"".equalsIgnoreCase(expr)
+					&& !"true".equalsIgnoreCase(expr)
 					&& !"1".equalsIgnoreCase(expr)) {
 				return OPENING_BRACE + expr + CLOSING_BRACE;
 			}
@@ -107,8 +114,10 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 			final ValueSpecification value = constraint.getSpecification();
 
 			if (value instanceof OpaqueExpression) {
-				final String expr = ((OpaqueExpression) value).getBodies().get(0);
-				if (expr != null && !"".equalsIgnoreCase(expr) && !"true".equalsIgnoreCase(expr)
+				final String expr = ((OpaqueExpression) value).getBodies().get(
+						0);
+				if (expr != null && !"".equalsIgnoreCase(expr)
+						&& !"true".equalsIgnoreCase(expr)
 						&& !"1".equalsIgnoreCase(expr)) {
 					return OPENING_BRACE + expr + CLOSING_BRACE;
 				}
@@ -126,7 +135,8 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	 * @return the {@link Stereotype} label.
 	 */
 	public static String computeStereotypes(Element element) {
-		final Iterator<Stereotype> it = element.getAppliedStereotypes().iterator();
+		final Iterator<Stereotype> it = element.getAppliedStereotypes()
+				.iterator();
 
 		if (!it.hasNext()) {
 			return "";
@@ -164,7 +174,8 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 			label += "/";
 		}
 		label += caseStructuralFeature(object);
-		if (object.getDefault() != null && !"".equals(object.getDefault().trim())) {
+		if (object.getDefault() != null
+				&& !"".equals(object.getDefault().trim())) {
 			// is the label on multiple lines ?
 			if (object.getDefault().contains(NL)) {
 				label += " = ...";
@@ -172,7 +183,8 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 				label += " = " + object.getDefault();
 			}
 		} else if (object.getDefaultValue() instanceof InstanceValue) {
-			label += " = " + ((InstanceValue) object.getDefaultValue()).getName();
+			label += " = "
+					+ ((InstanceValue) object.getDefaultValue()).getName();
 		}
 		return label;
 	}
@@ -187,7 +199,8 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 
 		boolean first = true;
 		for (Parameter parameter : object.getOwnedParameters()) {
-			if (!ParameterDirectionKind.RETURN_LITERAL.equals(parameter.getDirection())) {
+			if (!ParameterDirectionKind.RETURN_LITERAL.equals(parameter
+					.getDirection())) {
 				if (!first) {
 					label.append(", ");
 				} else {
@@ -254,7 +267,8 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	@Override
 	public String caseTypedElement(TypedElement object) {
 		if (object.getType() != null) {
-			return caseNamedElement(object) + SPACED_COLUMN + object.getType().getName();
+			return caseNamedElement(object) + SPACED_COLUMN
+					+ object.getType().getName();
 		} else {
 			return caseNamedElement(object) + SPACED_COLUMN;
 		}
@@ -265,7 +279,8 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	 */
 	@Override
 	public String caseTemplateBinding(TemplateBinding object) {
-		List<TemplateParameterSubstitution> parameterSubstitutions = object.getParameterSubstitutions();
+		List<TemplateParameterSubstitution> parameterSubstitutions = object
+				.getParameterSubstitutions();
 		StringBuffer binding = new StringBuffer();
 		boolean first = true;
 		for (TemplateParameterSubstitution parameterSubstitution : parameterSubstitutions) {
@@ -274,7 +289,8 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 			} else {
 				binding.append(", ");
 			}
-			ParameterableElement formal = parameterSubstitution.getFormal().getDefault();
+			ParameterableElement formal = parameterSubstitution.getFormal()
+					.getDefault();
 			if (formal instanceof NamedElement) {
 				binding.append(((NamedElement) formal).getName() + "->");
 				ParameterableElement actual = parameterSubstitution.getActual();
@@ -332,7 +348,8 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	@Override
 	public String caseCallOperationAction(CallOperationAction object) {
 		if (object.getOperation() != null) {
-			return caseNamedElement(object) + SPACED_COLUMN + object.getOperation().getName();
+			return caseNamedElement(object) + SPACED_COLUMN
+					+ object.getOperation().getName();
 		}
 
 		return null;
@@ -374,25 +391,13 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	 */
 	@Override
 	public String caseClass(Class object) {
-		TemplateSignature ownedTemplateSignature = object.getOwnedTemplateSignature();
-		StringBuffer templateParemeters = new StringBuffer();
-		if (ownedTemplateSignature != null) {
-			List<TemplateParameter> ownedTemplateParameters = ownedTemplateSignature.getOwnedParameters();
-			boolean first = true;
-			for (TemplateParameter templateParameter : ownedTemplateParameters) {
-				if (first) {
-					first = false;
-				} else {
-					templateParemeters.append(", ");
-				}
-				ParameterableElement parameterableElement = templateParameter.getOwnedDefault();
-				if (parameterableElement instanceof NamedElement) {
-					NamedElement classTempate = (NamedElement) parameterableElement;
-					templateParemeters.append(computeStereotypes(classTempate) + classTempate.getName());
-				}
-			}
-			return computeStereotypes(object) + object.getName() + " <" + templateParemeters + ">";
+		String templateParameters = labelServices
+				.getTemplatedParameters(object);
+		if (templateParameters != null) {
+			return computeStereotypes(object) + object.getName() + " <"
+					+ templateParameters + ">";
 		}
+
 		return computeStereotypes(object) + object.getName();
 	}
 
@@ -419,14 +424,17 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	public String caseLifeline(Lifeline lifeline) {
 		final StringBuilder label = new StringBuilder();
 		if (lifeline.getRepresents() != null && isDependencyDescribed(lifeline)) {
-			for (NamedElement context : lifeline.getClientDependencies().get(0).getSuppliers()) {
+			for (NamedElement context : lifeline.getClientDependencies().get(0)
+					.getSuppliers()) {
 				label.append(context.getLabel());
 				label.append(SPACED_COLUMN.trim());
 				label.append(SPACED_COLUMN.trim());
 			}
 			label.append(doSwitch(lifeline.getRepresents()));
-		} else if (lifeline.getRepresents() == null && isDependencyDescribed(lifeline)) {
-			for (NamedElement context : lifeline.getClientDependencies().get(0).getSuppliers()) {
+		} else if (lifeline.getRepresents() == null
+				&& isDependencyDescribed(lifeline)) {
+			for (NamedElement context : lifeline.getClientDependencies().get(0)
+					.getSuppliers()) {
 				label.append(doSwitch(context));
 			}
 		} else if (lifeline.getRepresents() instanceof Property) {
@@ -446,9 +454,11 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	 * @return true if any
 	 */
 	private boolean isDependencyDescribed(Lifeline lifeline) {
-		return lifeline.getClientDependencies() != null && lifeline.getClientDependencies().size() > 0
+		return lifeline.getClientDependencies() != null
+				&& lifeline.getClientDependencies().size() > 0
 				&& lifeline.getClientDependencies().get(0) != null
-				&& lifeline.getClientDependencies().get(0).getSuppliers().size() > 0;
+				&& lifeline.getClientDependencies().get(0).getSuppliers()
+						.size() > 0;
 	}
 
 	/**
@@ -458,9 +468,10 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	public String caseExecutionSpecification(ExecutionSpecification execution) {
 		if (execution instanceof BehaviorExecutionSpecification) {
 			if (((BehaviorExecutionSpecification) execution).getBehavior() != null
-					&& ((BehaviorExecutionSpecification) execution).getBehavior().getSpecification() != null)
-				return caseOperation((Operation) ((BehaviorExecutionSpecification) execution).getBehavior()
-						.getSpecification());
+					&& ((BehaviorExecutionSpecification) execution)
+							.getBehavior().getSpecification() != null)
+				return caseOperation((Operation) ((BehaviorExecutionSpecification) execution)
+						.getBehavior().getSpecification());
 		}
 		return execution.getLabel();
 	}
@@ -496,7 +507,8 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	public String caseInstanceSpecification(InstanceSpecification object) {
 		final StringBuilder label = new StringBuilder(caseNamedElement(object));
 
-		if (object.getClassifiers() != null && object.getClassifiers().size() > 0) {
+		if (object.getClassifiers() != null
+				&& object.getClassifiers().size() > 0) {
 			label.append(SPACED_COLUMN);
 			final Iterator<Classifier> it = object.getClassifiers().iterator();
 			while (it.hasNext()) {

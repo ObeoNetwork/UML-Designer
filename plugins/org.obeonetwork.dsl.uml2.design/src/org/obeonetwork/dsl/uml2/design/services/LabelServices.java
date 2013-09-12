@@ -10,9 +10,16 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.services;
 
+import java.util.List;
+
+import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Interaction;
+import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.TemplateParameter;
+import org.eclipse.uml2.uml.TemplateSignature;
 import org.obeonetwork.dsl.uml2.design.services.internal.DirectEditLabelSwitch;
 import org.obeonetwork.dsl.uml2.design.services.internal.DisplayLabelSwitch;
 import org.obeonetwork.dsl.uml2.design.services.internal.EditLabelSwitch;
@@ -22,8 +29,10 @@ import org.obeonetwork.dsl.uml2.design.services.internal.TooltipLabelSwitch;
 /**
  * Manage the diagram elements' labels.
  * 
- * @author Gonzague Reydet <a href="mailto:gonzague.reydet@obeo.fr">gonzague.reydet@obeo.fr</a>
- * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+ * @author Gonzague Reydet <a
+ *         href="mailto:gonzague.reydet@obeo.fr">gonzague.reydet@obeo.fr</a>
+ * @author Melanie Bats <a
+ *         href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class LabelServices {
 	/**
@@ -75,7 +84,8 @@ public class LabelServices {
 	}
 
 	/**
-	 * Parse the edited label string and update the underlying context {@link Element}.
+	 * Parse the edited label string and update the underlying context
+	 * {@link Element}.
 	 * 
 	 * @param context
 	 *            the context object on which to execute this service.
@@ -120,7 +130,8 @@ public class LabelServices {
 	 * @return Sequence diagram label
 	 */
 	public String getSequenceDiagramName(org.eclipse.uml2.uml.Package pkg) {
-		return NamedElementServices.getNewInteractionName(pkg) + SPACE + SEQUENCE_DIAGRAM_SUFFIX;
+		return NamedElementServices.getNewInteractionName(pkg) + SPACE
+				+ SEQUENCE_DIAGRAM_SUFFIX;
 	}
 
 	/**
@@ -128,7 +139,8 @@ public class LabelServices {
 	 * 
 	 * @param bound
 	 *            string description
-	 * @return converted integer or <code>null</code> in case of {@link NumberFormatException}.
+	 * @return converted integer or <code>null</code> in case of
+	 *         {@link NumberFormatException}.
 	 */
 	public static Integer convertBound(String bound) {
 		if ("*".equals(bound)) {
@@ -139,5 +151,30 @@ public class LabelServices {
 		} catch (NumberFormatException e) {
 			return null;
 		}
+	}
+
+	public String getTemplatedParameters(Class object) {
+		TemplateSignature ownedTemplateSignature = object
+				.getOwnedTemplateSignature();
+		StringBuffer templateParameters = new StringBuffer();
+		if (ownedTemplateSignature != null) {
+			List<TemplateParameter> ownedTemplateParameters = ownedTemplateSignature
+					.getOwnedParameters();
+			boolean first = true;
+			for (TemplateParameter templateParameter : ownedTemplateParameters) {
+				if (first) {
+					first = false;
+				} else {
+					templateParameters.append(", ");
+				}
+				ParameterableElement parameterableElement = templateParameter
+						.getOwnedDefault();
+				if (parameterableElement instanceof NamedElement) {
+					NamedElement classTempate = (NamedElement) parameterableElement;
+				}
+			}
+			return " <" + templateParameters + ">";
+		}
+		return null;
 	}
 }
