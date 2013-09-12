@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-Name: org.obeonetwork.dsl.uml2.profile.design
 Bundle-SymbolicName: org.obeonetwork.dsl.uml2.profile.design;singleton:=true
-Bundle-Version: 2.3.1.qualifier
+Bundle-Version: 2.4.0.qualifier
 Bundle-Activator: org.obeonetwork.dsl.uml2.profile.design.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
