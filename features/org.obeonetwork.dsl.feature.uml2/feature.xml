@@ -12,7 +12,7 @@ Contributors:
 <feature
       id="org.obeonetwork.dsl.feature.uml2"
       label="UML Designer (based on Obeo Designer)"
-      version="2.4.0.qualifier"
+      version="2.4.1.qualifier"
       provider-name="Obeo">
 
    <description url="http://docs.obeonetwork.com/uml">
