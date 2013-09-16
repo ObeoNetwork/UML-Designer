@@ -37,7 +37,7 @@ public class DirectEditLabelSwitch extends DisplayLabelSwitch {
 		String templateParameters = labelServices
 				.getTemplatedParameters(object);
 		if (templateParameters != null) {
-			return object.getName() + " <" + templateParameters + ">";
+			return object.getName() + templateParameters;
 		}
 
 		return object.getName();

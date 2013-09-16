@@ -171,6 +171,7 @@ public class LabelServices {
 						.getOwnedDefault();
 				if (parameterableElement instanceof NamedElement) {
 					NamedElement classTempate = (NamedElement) parameterableElement;
+					templateParameters.append(classTempate.getName());
 				}
 			}
 			return " <" + templateParameters + ">";

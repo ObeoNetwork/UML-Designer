@@ -394,8 +394,8 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 		String templateParameters = labelServices
 				.getTemplatedParameters(object);
 		if (templateParameters != null) {
-			return computeStereotypes(object) + object.getName() + " <"
-					+ templateParameters + ">";
+			return computeStereotypes(object) + object.getName()
+					+ templateParameters;
 		}
 
 		return computeStereotypes(object) + object.getName();
