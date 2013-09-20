@@ -49,7 +49,8 @@ import fr.obeo.mda.ecore.extender.business.api.accessor.exception.MetaClassNotFo
 /**
  * A set of services to handle graphically Component diagram actions and tests.
  * 
- * @author Hugo Marchadour <a href="mailto:hugo.marchadour@obeo.fr">hugo.marchadour@obeo.fr</a>
+ * @author Hugo Marchadour <a
+ *         href="mailto:hugo.marchadour@obeo.fr">hugo.marchadour@obeo.fr</a>
  */
 public class UIComponentServices {
 
@@ -62,10 +63,11 @@ public class UIComponentServices {
 	 *            the component realized
 	 * @return the component realization
 	 */
-	public ComponentRealization createComponentRealization(Classifier realizingClassifier,
-			Component abstraction) {
-		ComponentRealization result = abstraction.createRealization(realizingClassifier.getName() + "To"
-				+ abstraction.getName());
+	public ComponentRealization createComponentRealization(
+			Classifier realizingClassifier, Component abstraction) {
+		ComponentRealization result = abstraction
+				.createRealization(realizingClassifier.getName() + "To"
+						+ abstraction.getName());
 		result.getRealizingClassifiers().add(realizingClassifier);
 		return result;
 	}
@@ -83,8 +85,9 @@ public class UIComponentServices {
 	 *            the diagram
 	 * @return true if valid source
 	 */
-	public boolean createDependencyConnectionStartPrecondition(EObject preSource, EObject preSourceView,
-			EObject container, EObject diagram) {
+	public boolean createDependencyConnectionStartPrecondition(
+			EObject preSource, EObject preSourceView, EObject container,
+			EObject diagram) {
 		boolean fromClassOrPort = preSource instanceof org.eclipse.uml2.uml.Class
 				|| preSource instanceof Port;
 		boolean fromInterface = preSource instanceof org.eclipse.uml2.uml.Interface;
@@ -108,8 +111,9 @@ public class UIComponentServices {
 	 *            the diagram
 	 * @return true if valid source and target
 	 */
-	public boolean createDependencyConnectionCompletePrecondition(EObject preSource, EObject preSourceView,
-			EObject preTarget, EObject preTargetView, EObject container, EObject diagram) {
+	public boolean createDependencyConnectionCompletePrecondition(
+			EObject preSource, EObject preSourceView, EObject preTarget,
+			EObject preTargetView, EObject container, EObject diagram) {
 
 		boolean fromInterfaceToClassOrPort = preSource instanceof org.eclipse.uml2.uml.Interface
 				&& (preTarget instanceof org.eclipse.uml2.uml.Class || preTarget instanceof Port);
@@ -121,7 +125,8 @@ public class UIComponentServices {
 	}
 
 	/**
-	 * Drop a semantic element from a diagram and create the corresponding view in the given container.
+	 * Drop a semantic element from a diagram and create the corresponding view
+	 * in the given container.
 	 * 
 	 * @param newContainer
 	 *            Semantic container
@@ -130,14 +135,17 @@ public class UIComponentServices {
 	 * @param containerView
 	 *            Container view
 	 */
-	public void dropComponentFromDiagram(final Element newContainer, final NamedElement semanticElement,
+	public void dropComponentFromDiagram(final Element newContainer,
+			final NamedElement semanticElement,
 			final DSemanticDecorator containerView) {
-		new UIServices().dropFromDiagram(newContainer, semanticElement, containerView);
+		new UIServices().dropFromDiagram(newContainer, semanticElement,
+				containerView);
 		drop(newContainer, semanticElement, containerView, true);
 	}
 
 	/**
-	 * Drop a semantic element and create the corresponding view in the given container.
+	 * Drop a semantic element and create the corresponding view in the given
+	 * container.
 	 * 
 	 * @param newContainer
 	 *            Semantic container
@@ -147,14 +155,18 @@ public class UIComponentServices {
 	 *            Container view
 	 */
 	@SuppressWarnings("restriction")
-	public void dropComponentFromModel(final Element newContainer, final NamedElement semanticElement,
+	public void dropComponentFromModel(final Element newContainer,
+			final NamedElement semanticElement,
 			final DSemanticDecorator containerView) {
-		new UIServices().dropFromModel(newContainer, semanticElement, containerView);
-		drop(newContainer, semanticElement, containerView, !(containerView instanceof DSemanticDiagramSpec));
+		new UIServices().dropFromModel(newContainer, semanticElement,
+				containerView);
+		drop(newContainer, semanticElement, containerView,
+				!(containerView instanceof DSemanticDiagramSpec));
 	}
 
 	/**
-	 * Drop a semantic element and create the corresponding view in the given container
+	 * Drop a semantic element and create the corresponding view in the given
+	 * container
 	 * 
 	 * @param newContainer
 	 *            Semantic container
@@ -163,13 +175,16 @@ public class UIComponentServices {
 	 * @param containerView
 	 *            Container view
 	 * @param moveSemanticElement
-	 *            True to move the dropped semantic element or false to just show the element on a diagram
+	 *            True to move the dropped semantic element or false to just
+	 *            show the element on a diagram
 	 */
-	private void drop(final Element newContainer, final NamedElement semanticElement,
+	private void drop(final Element newContainer,
+			final NamedElement semanticElement,
 			final DSemanticDecorator containerView, boolean moveSemanticElement) {
 		if (semanticElement instanceof org.eclipse.uml2.uml.Class) {
-			org.eclipse.uml2.uml.Class component = (org.eclipse.uml2.uml.Class)semanticElement;
-			final Session session = SessionManager.INSTANCE.getSession(newContainer);
+			org.eclipse.uml2.uml.Class component = (org.eclipse.uml2.uml.Class) semanticElement;
+			final Session session = SessionManager.INSTANCE
+					.getSession(newContainer);
 			Element oldContainer = component.getOwner();
 			if (moveSemanticElement && oldContainer != newContainer) {
 				// TODO check if something is needed here
@@ -181,11 +196,13 @@ public class UIComponentServices {
 			for (Dependency dependency : availableDependencies) {
 				if (dependency instanceof InterfaceRealization) {
 					for (NamedElement namedElement : dependency.getSuppliers()) {
-						createProvidedInterfaceView(namedElement, containerView, session, "newContainerView");
+						createProvidedInterfaceView(namedElement,
+								containerView, session, "newContainerView");
 					}
 				} else if (dependency instanceof Usage) {
 					for (NamedElement namedElement : dependency.getSuppliers()) {
-						createRequireInterfaceView(namedElement, containerView, session, "newContainerView");
+						createRequireInterfaceView(namedElement, containerView,
+								session, "newContainerView");
 					}
 				}
 			}
@@ -205,13 +222,15 @@ public class UIComponentServices {
 	 *            Name of the container view variable
 	 */
 	private void createProvidedInterfaceView(final EObject semanticElement,
-			final DSemanticDecorator containerView, final Session session, final String containerViewVariable) {
-		// Get all available mappings applicable for the copiedElement in the current container
-		List<DiagramElementMapping> semanticElementMappings = getMappings(semanticElement, containerView,
-				session);
+			final DSemanticDecorator containerView, final Session session,
+			final String containerViewVariable) {
+		// Get all available mappings applicable for the copiedElement in the
+		// current container
+		List<DiagramElementMapping> semanticElementMappings = getMappings(
+				semanticElement, containerView, session);
 		// The mapping position is related to the vsm.
-		createView(semanticElement, semanticElementMappings.get(0), containerView, session,
-				containerViewVariable);
+		createView(semanticElement, semanticElementMappings.get(0),
+				containerView, session, containerViewVariable);
 	}
 
 	/**
@@ -227,13 +246,15 @@ public class UIComponentServices {
 	 *            Name of the container view variable
 	 */
 	private void createRequireInterfaceView(final EObject semanticElement,
-			final DSemanticDecorator containerView, final Session session, final String containerViewVariable) {
-		// Get all available mappings applicable for the copiedElement in the current container
-		List<DiagramElementMapping> semanticElementMappings = getMappings(semanticElement, containerView,
-				session);
+			final DSemanticDecorator containerView, final Session session,
+			final String containerViewVariable) {
+		// Get all available mappings applicable for the copiedElement in the
+		// current container
+		List<DiagramElementMapping> semanticElementMappings = getMappings(
+				semanticElement, containerView, session);
 		// The mapping position is related to the vsm.
-		createView(semanticElement, semanticElementMappings.get(1), containerView, session,
-				containerViewVariable);
+		createView(semanticElement, semanticElementMappings.get(1),
+				containerView, session, containerViewVariable);
 	}
 
 	/**
@@ -248,45 +269,60 @@ public class UIComponentServices {
 	 * @param containerViewVariable
 	 *            Name of the container view variable
 	 */
-	private void createView(final EObject semanticElement, DiagramElementMapping semanticElementMapping,
-			final DSemanticDecorator containerView, final Session session, final String containerViewVariable) {
+	private void createView(final EObject semanticElement,
+			DiagramElementMapping semanticElementMapping,
+			final DSemanticDecorator containerView, final Session session,
+			final String containerViewVariable) {
 		// Build a createView tool
-		final CreateView createViewOp = ToolFactory.eINSTANCE.createCreateView();
+		final CreateView createViewOp = ToolFactory.eINSTANCE
+				.createCreateView();
 		final DiagramElementMapping tmpCopiedElementMapping = semanticElementMapping;
 		createViewOp.setMapping(tmpCopiedElementMapping);
-		final String containerViewExpression = "<%$" + containerViewVariable + "%>";
+		final String containerViewExpression = "<%$" + containerViewVariable
+				+ "%>";
 		createViewOp.setContainerViewExpression(containerViewExpression);
 
-		session.getTransactionalEditingDomain().getCommandStack()
-				.execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+		session.getTransactionalEditingDomain()
+				.getCommandStack()
+				.execute(
+						new RecordingCommand(session
+								.getTransactionalEditingDomain()) {
 
-					@SuppressWarnings("restriction")
-					@Override
-					protected void doExecute() {
-						try {
-							// Get the command context
-							DRepresentation representation = null;
-							if (containerView instanceof DRepresentation) {
-								representation = (DRepresentation)containerView;
-							} else if (containerView instanceof DDiagramElement) {
-								representation = ((DDiagramElement)containerView).getParentDiagram();
+							@SuppressWarnings("restriction")
+							@Override
+							protected void doExecute() {
+								try {
+									// Get the command context
+									DRepresentation representation = null;
+									if (containerView instanceof DRepresentation) {
+										representation = (DRepresentation) containerView;
+									} else if (containerView instanceof DDiagramElement) {
+										representation = ((DDiagramElement) containerView)
+												.getParentDiagram();
+									}
+
+									final CommandContext context = new CommandContext(
+											semanticElement, representation);
+
+									// Execute the create view task
+									new CreateViewTask(context, session
+											.getModelAccessor(), createViewOp,
+											session.getInterpreter()).execute();
+								} catch (MetaClassNotFoundException e) {
+									UMLDesignerPlugin.log(
+											IStatus.ERROR,
+											Messages.bind(
+													Messages.UmlModelWizard_UI_ErrorMsg_BadFileExtension,
+													semanticElement), e);
+								} catch (FeatureNotFoundException e) {
+									UMLDesignerPlugin.log(
+											IStatus.ERROR,
+											Messages.bind(
+													Messages.UmlModelWizard_UI_ErrorMsg_BadFileExtension,
+													semanticElement), e);
+								}
 							}
-
-							final CommandContext context = new CommandContext(semanticElement, representation);
-
-							// Execute the create view task
-							new CreateViewTask(context, session.getModelAccessor(), tmpCopiedElementMapping,
-									containerViewExpression, createViewOp, session.getInterpreter())
-									.execute();
-						} catch (MetaClassNotFoundException e) {
-							UMLDesignerPlugin.log(IStatus.ERROR, Messages.bind(
-									Messages.UmlModelWizard_UI_ErrorMsg_BadFileExtension, semanticElement), e);
-						} catch (FeatureNotFoundException e) {
-							UMLDesignerPlugin.log(IStatus.ERROR, Messages.bind(
-									Messages.UmlModelWizard_UI_ErrorMsg_BadFileExtension, semanticElement), e);
-						}
-					}
-				});
+						});
 	}
 
 	/**
@@ -301,41 +337,46 @@ public class UIComponentServices {
 	 * @return List of mappings which could not be null
 	 */
 	@SuppressWarnings("restriction")
-	private List<DiagramElementMapping> getMappings(final EObject semanticElement,
+	private List<DiagramElementMapping> getMappings(
+			final EObject semanticElement,
 			final DSemanticDecorator containerView, Session session) {
 		ModelAccessor modelAccessor = session.getModelAccessor();
 		List<DiagramElementMapping> mappings = new ArrayList<DiagramElementMapping>();
 
 		if (containerView instanceof DSemanticDiagram) {
 
-			for (DiagramElementMapping mapping : ((DSemanticDiagram)containerView).getDescription()
-					.getAllContainerMappings()) {
-				String domainClass = ((AbstractNodeMapping)mapping).getDomainClass();
+			for (DiagramElementMapping mapping : ((DSemanticDiagram) containerView)
+					.getDescription().getAllContainerMappings()) {
+				String domainClass = ((AbstractNodeMapping) mapping)
+						.getDomainClass();
 				if (modelAccessor.eInstanceOf(semanticElement, domainClass)
 						&& !mapping.isSynchronizationLock()) {
 					mappings.add(mapping);
 				}
 			}
-			for (DiagramElementMapping mapping : ((DSemanticDiagram)containerView).getDescription()
-					.getAllNodeMappings()) {
-				String domainClass = ((AbstractNodeMapping)mapping).getDomainClass();
+			for (DiagramElementMapping mapping : ((DSemanticDiagram) containerView)
+					.getDescription().getAllNodeMappings()) {
+				String domainClass = ((AbstractNodeMapping) mapping)
+						.getDomainClass();
 				if (modelAccessor.eInstanceOf(semanticElement, domainClass)
 						&& !mapping.isSynchronizationLock()) {
 					mappings.add(mapping);
 				}
 			}
 		} else if (containerView instanceof DNodeContainerSpec) {
-			for (DiagramElementMapping mapping : ((DNodeContainerSpec)containerView).getActualMapping()
-					.getAllContainerMappings()) {
-				String domainClass = ((AbstractNodeMapping)mapping).getDomainClass();
+			for (DiagramElementMapping mapping : ((DNodeContainerSpec) containerView)
+					.getActualMapping().getAllContainerMappings()) {
+				String domainClass = ((AbstractNodeMapping) mapping)
+						.getDomainClass();
 				if (modelAccessor.eInstanceOf(semanticElement, domainClass)
 						&& !mapping.isSynchronizationLock()) {
 					mappings.add(mapping);
 				}
 			}
-			for (DiagramElementMapping mapping : ((DNodeContainerSpec)containerView).getActualMapping()
-					.getAllNodeMappings()) {
-				String domainClass = ((AbstractNodeMapping)mapping).getDomainClass();
+			for (DiagramElementMapping mapping : ((DNodeContainerSpec) containerView)
+					.getActualMapping().getAllNodeMappings()) {
+				String domainClass = ((AbstractNodeMapping) mapping)
+						.getDomainClass();
 				if (modelAccessor.eInstanceOf(semanticElement, domainClass)
 						&& !mapping.isSynchronizationLock()) {
 					mappings.add(mapping);
