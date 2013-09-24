@@ -129,6 +129,8 @@ If your pointer is *on a class* the assistant will be :
 
 h2. Editing Elements
 
+h3. Generality
+
 The generic way to edit element values is using the *properties view*. If it is not opened yet
 you can open it clicking on the *Window* menu, then *Show View*  and then *Properties*
 
@@ -137,6 +139,24 @@ you can open it clicking on the *Window* menu, then *Show View*  and then *Prope
 To edit a property you should then enable the *Semantic* tab :
 
 !using_class_diagram/properties_values.png!
+
+h3. Generic Class
+
+To define a Generic Class, use the direct edit tool:
+
+!using_class_diagram/generic_class.png!
+
+To define a Binding, use the create edge tool called "Binding" from a Class to a Generic Class.
+You may notice that "?" refers to an undefined actual type:
+
+!using_class_diagram/binding1_class.png!
+
+To specify the binding association from the formal to the actual type use also the direct edit tool:
+
+!using_class_diagram/binding2_class.png!
+
+
+
 
 h2. Using UML in colors
 
