@@ -1357,7 +1357,7 @@ public class UMLServices {
 		} else if (element instanceof DataType) {
 			predicate = new Predicate<EObject>() {
 				public boolean apply(EObject input) {
-					return input instanceof DataType;
+					return input.getClass().getSimpleName().contains("DataType");
 				}
 			};
 		} else if (element instanceof Property) {

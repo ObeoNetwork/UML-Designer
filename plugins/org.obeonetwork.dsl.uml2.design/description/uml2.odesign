@@ -157,7 +157,7 @@
             <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[containerView.addExistingElements(element)/]"/>
           </initialOperation>
         </ownedTools>
-        <ownedTools xsi:type="tool:ToolDescription" name="RemoveExistingElements" label="Remove" precondition="[not containerView->filter(viewpoint::DDiagram)/]" forceRefresh="true" iconPath="/org.eclipse.search/icons/full/dtool16/search.gif">
+        <ownedTools xsi:type="tool:ToolDescription" name="RemoveExistingElements" label="Remove" precondition="[not containerView.oclIsKindOf(viewpoint::DDiagram)/]" forceRefresh="true" iconPath="/org.eclipse.search/icons/full/dtool16/search.gif">
           <element name="element"/>
           <elementView name="elementView"/>
           <initialOperation>
@@ -3445,7 +3445,7 @@
             </ownedTools>
           </subSections>
           <subSections name="Creation and Navigation">
-            <ownedTools xsi:type="tool:DiagramNavigationDescription" name="state diagram" browseExpression="[self->including(self.eContainer(uml::BehavioredClassifier).eContents->filter(uml::StateMachine)/]" diagramDescription="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']">
+            <ownedTools xsi:type="tool:DiagramNavigationDescription" name="state diagram" browseExpression="[self->including(self.eContainer(uml::BehavioredClassifier).eContents->filter(uml::StateMachine))/]" diagramDescription="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']">
               <containerViewVariable name="containerView"/>
               <containerVariable name="container"/>
               <representationNameVariable name="diagramName"/>
