@@ -56,6 +56,11 @@ public class EcoreServices {
 		return result;
 	}
 
+	public Type getStringType(EObject object) {
+		final Type result = findTypeByName(getAllRootsInResourceSet(object), "String");
+		return result;
+	}
+
 	/**
 	 * Iterate over the given {@link Collection} of root elements to find a {@link Type} element with the
 	 * given name.

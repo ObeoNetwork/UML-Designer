@@ -1385,4 +1385,8 @@ public class UMLServices {
 
 		return name + existingElements.size();
 	}
+
+	public EObject noElements(EObject obj) {
+		return null;
+	}
 }
