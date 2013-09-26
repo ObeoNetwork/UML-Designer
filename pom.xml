@@ -39,7 +39,7 @@ Contributors:
     </licenses>
 
     <properties>
-        <tycho-version>0.14.1</tycho-version>
+        <tycho-version>0.18.1</tycho-version>
         <od-site>http://update.obeo.fr/release/designer/6.2.0/juno3/update/repository</od-site>
     </properties>
 
