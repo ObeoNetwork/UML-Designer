@@ -663,7 +663,7 @@ public class UMLServices {
 	 *            the {@link Association} context
 	 * @return first end of the association
 	 */
-	public Property getSource(Association association) {
+	private Property getSource(Association association) {
 		if (association.getMemberEnds() != null && association.getMemberEnds().size() > 0) {
 			return association.getMemberEnds().get(0);
 		}
@@ -677,7 +677,7 @@ public class UMLServices {
 	 *            the {@link Association} context
 	 * @return second end of the association
 	 */
-	public Property getTarget(Association association) {
+	private Property getTarget(Association association) {
 		if (association.getMemberEnds() != null && association.getMemberEnds().size() > 1) {
 			return association.getMemberEnds().get(1);
 		}
@@ -1384,9 +1384,5 @@ public class UMLServices {
 				element.eContainer().eContents(), predicate));
 
 		return name + existingElements.size();
-	}
-
-	public EObject noElements(EObject obj) {
-		return null;
 	}
 }

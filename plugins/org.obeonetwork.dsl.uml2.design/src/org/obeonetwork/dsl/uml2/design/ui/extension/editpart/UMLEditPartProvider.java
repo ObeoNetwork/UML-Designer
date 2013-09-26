@@ -15,7 +15,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Property;
-import org.obeonetwork.dsl.uml2.design.services.UMLServices;
+import org.obeonetwork.dsl.uml2.design.services.ClassDiagramServices;
 import org.obeonetwork.dsl.uml2.design.services.internal.EditLabelSwitch;
 
 import fr.obeo.dsl.viewpoint.DSemanticDecorator;
@@ -96,7 +96,7 @@ public class UMLEditPartProvider extends AbstractEditPartProvider {
 					if (element instanceof DSemanticDecorator) {
 						EObject target = ((DSemanticDecorator)element).getTarget();
 						if (target instanceof Association) {
-							Property end = new UMLServices().getSource((Association)target);
+							Property end = new ClassDiagramServices().getSource((Association)target);
 							if (end != null) {
 								EditLabelSwitch swch = new EditLabelSwitch();
 								swch.setEditedLabelContent(labelText);
@@ -128,7 +128,7 @@ public class UMLEditPartProvider extends AbstractEditPartProvider {
 					if (element instanceof DSemanticDecorator) {
 						EObject target = ((DSemanticDecorator)element).getTarget();
 						if (target instanceof Association) {
-							Property end = new UMLServices().getTarget((Association)target);
+							Property end = new ClassDiagramServices().getTarget((Association)target);
 							if (end != null) {
 								EditLabelSwitch swch = new EditLabelSwitch();
 								swch.setEditedLabelContent(labelText);

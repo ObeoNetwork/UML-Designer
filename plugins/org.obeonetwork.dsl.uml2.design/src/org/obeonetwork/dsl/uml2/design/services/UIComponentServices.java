@@ -304,25 +304,18 @@ public class UIComponentServices {
 									final CommandContext context = new CommandContext(
 											semanticElement, representation);
 
-									// Execute the create view task
-									new CreateViewTask(context, session
-											.getModelAccessor(), createViewOp,
-											session.getInterpreter()).execute();
-								} catch (MetaClassNotFoundException e) {
-									UMLDesignerPlugin.log(
-											IStatus.ERROR,
-											Messages.bind(
-													Messages.UmlModelWizard_UI_ErrorMsg_BadFileExtension,
-													semanticElement), e);
-								} catch (FeatureNotFoundException e) {
-									UMLDesignerPlugin.log(
-											IStatus.ERROR,
-											Messages.bind(
-													Messages.UmlModelWizard_UI_ErrorMsg_BadFileExtension,
-													semanticElement), e);
-								}
-							}
-						});
+							// Execute the create view task
+							new CreateViewTask(context, session.getModelAccessor(), createViewOp, session
+									.getInterpreter()).execute();
+						} catch (MetaClassNotFoundException e) {
+							UMLDesignerPlugin.log(IStatus.ERROR, Messages.bind(
+									Messages.UmlModelWizard_UI_ErrorMsg_BadFileExtension, semanticElement), e);
+						} catch (FeatureNotFoundException e) {
+							UMLDesignerPlugin.log(IStatus.ERROR, Messages.bind(
+									Messages.UmlModelWizard_UI_ErrorMsg_BadFileExtension, semanticElement), e);
+						}
+					}
+				});
 	}
 
 	/**
