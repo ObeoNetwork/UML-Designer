@@ -105,11 +105,11 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 import fr.obeo.dsl.viewpoint.AbstractDNode;
+import fr.obeo.dsl.viewpoint.DDiagram;
 import fr.obeo.dsl.viewpoint.DDiagramElement;
 import fr.obeo.dsl.viewpoint.DEdge;
 import fr.obeo.dsl.viewpoint.DRepresentation;
 import fr.obeo.dsl.viewpoint.DSemanticDecorator;
-import fr.obeo.dsl.viewpoint.DSemanticDiagram;
 import fr.obeo.dsl.viewpoint.EdgeTarget;
 import fr.obeo.dsl.viewpoint.business.api.session.Session;
 import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
@@ -181,36 +181,39 @@ public class UMLServices {
 	 *            the expected type.
 	 * @return the list of cross reference of the given
 	 */
-	public Collection<EObject> getNodeInverseRefs(DSemanticDiagram diagram, String typeName) {
-		Session sess = SessionManager.INSTANCE.getSession(diagram.getTarget());
+	public Collection<EObject> getNodeInverseRefs(DDiagram diagram, String typeName) {
 		Set<EObject> result = Sets.newLinkedHashSet();
-		Iterator<EObject> it = Iterators.transform(
-				Iterators.filter(diagram.eAllContents(), AbstractDNode.class),
-				new Function<AbstractDNode, EObject>() {
+		if (diagram instanceof DSemanticDecorator) {
+			Session sess = SessionManager.INSTANCE.getSession(((DSemanticDecorator)diagram).getTarget());
 
-					public EObject apply(AbstractDNode input) {
-						return input.getTarget();
-					}
-				});
-		while (it.hasNext()) {
-			EObject displayedAsANode = it.next();
-			for (Setting xRef : sess.getSemanticCrossReferencer().getInverseReferences(displayedAsANode)) {
-				EObject eObject = xRef.getEObject();
-				if (sess.getModelAccessor().eInstanceOf(eObject, typeName)) {
-					result.add(eObject);
-				}
-				/*
-				 * In the case of an association the real interesting object is the association linked to the
-				 * Property and not the direct cross reference.
-				 */
-				if (eObject instanceof Property) {
-					if (((Property)eObject).getAssociation() != null) {
-						if (sess.getModelAccessor().eInstanceOf(((Property)eObject).getAssociation(),
-								typeName)) {
-							result.add(((Property)eObject).getAssociation());
+			Iterator<EObject> it = Iterators.transform(
+					Iterators.filter(diagram.eAllContents(), AbstractDNode.class),
+					new Function<AbstractDNode, EObject>() {
+
+						public EObject apply(AbstractDNode input) {
+							return input.getTarget();
 						}
+					});
+			while (it.hasNext()) {
+				EObject displayedAsANode = it.next();
+				for (Setting xRef : sess.getSemanticCrossReferencer().getInverseReferences(displayedAsANode)) {
+					EObject eObject = xRef.getEObject();
+					if (sess.getModelAccessor().eInstanceOf(eObject, typeName)) {
+						result.add(eObject);
 					}
+					/*
+					 * In the case of an association the real interesting object is the association linked to
+					 * the Property and not the direct cross reference.
+					 */
+					if (eObject instanceof Property) {
+						if (((Property)eObject).getAssociation() != null) {
+							if (sess.getModelAccessor().eInstanceOf(((Property)eObject).getAssociation(),
+									typeName)) {
+								result.add(((Property)eObject).getAssociation());
+							}
+						}
 
+					}
 				}
 			}
 		}

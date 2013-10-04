@@ -24,6 +24,8 @@ import com.google.common.collect.Sets;
 public class ClassDiagramServices {
 	final UMLFactory factory = UMLFactory.eINSTANCE;
 
+	final UMLServices umlServices = new UMLServices();
+
 	/**
 	 * Get the type of the association source end.
 	 * 
@@ -162,5 +164,67 @@ public class ClassDiagramServices {
 		}
 
 		return packages;
+	}
+
+	private boolean isNavigable(Property property) {
+		return property != null && property.isNavigable();
+	}
+
+	private boolean isComposite(Property property) {
+		return property != null && property.isComposite();
+	}
+
+	private boolean isShared(Property property) {
+		return property != null && umlServices.isShared(property);
+	}
+
+	public boolean targetIsNavigable(Association association) {
+		Property target = getTarget(association);
+		return isNavigable(target);
+	}
+
+	public boolean targetIsNavigableAndComposite(Association association) {
+		Property target = getTarget(association);
+		return isNavigable(target) && isComposite(target);
+	}
+
+	public boolean targetIsNavigableAndShared(Association association) {
+		Property target = getTarget(association);
+		return isNavigable(target) && isShared(target);
+	}
+
+	public boolean targetIsComposite(Association association) {
+		Property target = getTarget(association);
+		return isComposite(target);
+	}
+
+	public boolean targetIsShared(Association association) {
+		Property target = getTarget(association);
+		return isShared(target);
+	}
+
+	public boolean sourceIsNavigable(Association association) {
+		Property source = getSource(association);
+		return isNavigable(source);
+	}
+
+	public boolean sourceIsNavigableAndComposite(Association association) {
+		Property source = getSource(association);
+		return isNavigable(source) && isComposite(source);
+	}
+
+	public boolean sourceIsNavigableAndShared(Association association) {
+		Property source = getTarget(association);
+		return isNavigable(source) && isShared(source);
+	}
+
+	public boolean sourceIsComposite(Association association) {
+		Property source = getSource(association);
+		return isComposite(source);
+	}
+
+	public boolean sourceIsShared(Association association) {
+		Property source = getSource(association);
+		return isShared(source);
 	}
 }

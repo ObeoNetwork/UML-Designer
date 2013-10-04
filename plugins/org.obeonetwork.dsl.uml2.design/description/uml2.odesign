@@ -653,6 +653,7 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Drop%20From%20Model'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Drop%20From%20Diagram']" documentation="Representation to edit class diagrams" name="Class Diagram" titleExpression="[name+' Class Diagram'/]" pasteDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Paste']" domainClass="uml.Package" preconditionExpression="" enablePopupBars="true">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
+      <metamodel href="http://www.obeo.fr/dsl/viewpoint/1.1.0#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" documentation="Hides elements (Classes, Interfaces, Associations, ...) not related to the selected (context) Class/Interface." name="Related filter">
         <filters xsi:type="filter:VariableFilter" semanticConditionExpression="[isRelated(context)/]">
           <ownedVariables candidatesExpression="[diagram.ownedDiagramElements.target->select(oclIsTypeOf(uml::Class) or oclIsTypeOf(uml::Interface))/]" message="Select the context" name="context"/>
@@ -1484,34 +1485,34 @@
           </ownedTools>
         </toolSections>
         <customization>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[getTarget().isNavigable()]">
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:targetIsNavigable">
             <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']/@style" attributeName="targetArrow" value="[EdgeArrows::InputArrow/]"/>
           </vsmElementCustomizations>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[getTarget().isComposite()]">
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:targetIsComposite">
             <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']/@style" attributeName="targetArrow" value="[EdgeArrows::FillDiamond/]"/>
           </vsmElementCustomizations>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[getTarget().isShared()]">
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:targetIsShared">
             <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']/@style" attributeName="targetArrow" value="[EdgeArrows::Diamond/]"/>
           </vsmElementCustomizations>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[getTarget().isNavigable() and getTarget().isComposite()]">
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:targetIsNavigableAndComposite">
             <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']/@style" attributeName="targetArrow" value="[EdgeArrows::InputArrowWithFillDiamond/]"/>
           </vsmElementCustomizations>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[getTarget().isNavigable() and getTarget().isShared()]">
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:targetIsNavigableAndShared">
             <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']/@style" attributeName="targetArrow" value="[EdgeArrows::InputArrowWithDiamond/]"/>
           </vsmElementCustomizations>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[getSource().isNavigable()/]">
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:sourceIsNavigable">
             <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']/@style" attributeName="sourceArrow" value="[EdgeArrows::InputArrow/]"/>
           </vsmElementCustomizations>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[getSource().isComposite()/]">
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:sourceIsComposite">
             <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']/@style" attributeName="sourceArrow" value="[EdgeArrows::FillDiamond/]"/>
           </vsmElementCustomizations>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[getSource().isShared()/]">
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:sourceIsShared">
             <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']/@style" attributeName="sourceArrow" value="[EdgeArrows::Diamond/]"/>
           </vsmElementCustomizations>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[getSource().isNavigable() and getSource().isComposite()/]">
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:sourceIsNavigableAndComposite">
             <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']/@style" attributeName="sourceArrow" value="[EdgeArrows::InputArrowWithFillDiamond/]"/>
           </vsmElementCustomizations>
-          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[getSource().isNavigable() and getSource().isShared()/]">
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="service:sourceIsNavigableAndShared">
             <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']/@style" attributeName="sourceArrow" value="[EdgeArrows::InputArrowWithDiamond/]"/>
           </vsmElementCustomizations>
           <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="feature:isAbstract">
