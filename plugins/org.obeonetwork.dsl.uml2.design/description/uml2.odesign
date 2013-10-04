@@ -70,28 +70,28 @@
           </initialOperation>
         </ownedTools>
         <ownedTools xsi:type="tool:PopupMenu" name="Import primitive types">
-          <menuItemDescription xsi:type="tool:OperationAction" name="UML Primitive types" precondition="[getRootContainer()->filter(uml::Package).areUmlPrimitiveTypesImported() = false/]">
+          <menuItemDescription xsi:type="tool:OperationAction" name="UML Primitive types" precondition="[ancestors()->last()->filter(uml::Package).areUmlPrimitiveTypesImported() = false/]">
             <view name="views"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[getRootContainer()->filter(uml::Package).importUmlPrimitiveTypes()/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[ancestors()->last()->filter(uml::Package).importUmlPrimitiveTypes()/]"/>
             </initialOperation>
           </menuItemDescription>
-          <menuItemDescription xsi:type="tool:OperationAction" name="Java Primitive types" precondition="[getRootContainer()->filter(uml::Package).areJavaPrimitiveTypesImported() = false/]">
+          <menuItemDescription xsi:type="tool:OperationAction" name="Java Primitive types" precondition="[ancestors()->last()->filter(uml::Package).areJavaPrimitiveTypesImported() = false/]">
             <view name="views"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[getRootContainer()->filter(uml::Package).importJavaPrimitiveTypes()/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[ancestors()->last()->filter(uml::Package).importJavaPrimitiveTypes()/]"/>
             </initialOperation>
           </menuItemDescription>
-          <menuItemDescription xsi:type="tool:OperationAction" name="Ecore Primitive types" precondition="[getRootContainer()->filter(uml::Package).areEcorePrimitiveTypesImported() = false/]">
+          <menuItemDescription xsi:type="tool:OperationAction" name="Ecore Primitive types" precondition="[ancestors()->last()->filter(uml::Package).areEcorePrimitiveTypesImported() = false/]">
             <view name="views"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[getRootContainer()->filter(uml::Package).importEcorePrimitiveTypes()/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[ancestors()->last()->filter(uml::Package).importEcorePrimitiveTypes()/]"/>
             </initialOperation>
           </menuItemDescription>
-          <menuItemDescription xsi:type="tool:OperationAction" name="XML Primitive types" precondition="[getRootContainer()->filter(uml::Package).areXmlPrimitiveTypesImported() = false/]">
+          <menuItemDescription xsi:type="tool:OperationAction" name="XML Primitive types" precondition="[ancestors()->last()->filter(uml::Package).areXmlPrimitiveTypesImported() = false/]">
             <view name="views"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[getRootContainer()->filter(uml::Package).importXmlPrimitiveTypes()/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[ancestors()->last()->filter(uml::Package).importXmlPrimitiveTypes()/]"/>
             </initialOperation>
           </menuItemDescription>
         </ownedTools>
@@ -4621,7 +4621,7 @@
         <toolSections name="SD_Import" label="Existing Elements">
           <ownedTools xsi:type="tool:NodeCreationDescription" name="CR_ClassLifeline" label="Class" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']">
             <variable name="container">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="property" candidatesExpression="service:getAllClassesAndContainers" tree="true" rootExpression="[getRootContainer()->including(getRootContainer().getImportedPackages())/]" childrenExpression="feature:eContents" message="Select an instance or a property associated to the new lifeline"/>
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="property" candidatesExpression="service:getAllClassesAndContainers" tree="true" rootExpression="[ancestors()->last()->including(ancestors()->last().getImportedPackages())/]" childrenExpression="feature:eContents" message="Select an instance or a property associated to the new lifeline"/>
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -4905,7 +4905,7 @@
           </style>
         </containerMappings>
         <toolSections name="Elements" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Move%20UP%2FDOWN%20TO%20Elements']">
-          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="PC_ArrangeContainment" label="Move" forceRefresh="true" iconPath="/org.eclipse.search/icons/full/etool16/search.gif" message="Select elements contained in the current package" choiceOfValuesMessage="Candidate packageable elements" candidatesExpression="[getRootContainer()->including(getRootContainer().eAllContents(uml::PackageableElement))/]" tree="true" rootExpression="service:getRootContainer" childrenExpression="feature:eContents" selectedValuesMessage="Selected packageable elements" preSelectedCandidatesExpression="[container.packagedElement/]">
+          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="PC_ArrangeContainment" label="Move" forceRefresh="true" iconPath="/org.eclipse.search/icons/full/etool16/search.gif" message="Select elements contained in the current package" choiceOfValuesMessage="Candidate packageable elements" candidatesExpression="[ancestors()->last()->including(ancestors()->last().eAllContents(uml::PackageableElement))/]" tree="true" rootExpression="service:getRootContainer" childrenExpression="feature:eContents" selectedValuesMessage="Selected packageable elements" preSelectedCandidatesExpression="[container.packagedElement/]">
             <element name="elements"/>
             <containerView name="containerView"/>
             <container name="container"/>
