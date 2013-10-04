@@ -71,7 +71,7 @@ public class EcoreServices {
 	 *            the name to match
 	 * @return the found {@link Type} or <code>null</code>
 	 */
-	public Type findTypeByName(Iterable<EObject> roots, String typeName) {
+	public Type findTypeByName(Collection<EObject> roots, String typeName) {
 		for (EObject root : roots) {
 			final Type result = findTypeByNameFrom(root, typeName);
 			if (result != null) {
