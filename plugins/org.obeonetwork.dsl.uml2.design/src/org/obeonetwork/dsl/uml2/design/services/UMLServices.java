@@ -730,6 +730,17 @@ public class UMLServices {
 		return AggregationKind.COMPOSITE_LITERAL.equals(p.getAggregation());
 	}
 
+	public boolean isRelated(EObject toFilter, List<EObject> context) {
+		boolean related = false;
+		for (EObject eObject : context) {
+			related = isRelated(toFilter, eObject);
+			if (related) {
+				break;
+			}
+		}
+		return related;
+	}
+
 	/**
 	 * States if the given object is related to the context {@link Classifier}.
 	 * 
@@ -742,7 +753,9 @@ public class UMLServices {
 	 */
 	public boolean isRelated(EObject toFilter, EObject context) {
 		boolean res = false;
-		if (context instanceof Classifier) {
+		if (toFilter.equals(context)) {
+			res = true;
+		} else if (context instanceof Classifier) {
 			if (toFilter instanceof Generalization) {
 				res = ((Classifier)context).getGeneralizations().contains(toFilter)
 						|| ((Generalization)toFilter).getGeneral() == context;
