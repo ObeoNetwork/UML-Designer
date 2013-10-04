@@ -11,22 +11,24 @@
 
 package org.obeonetwork.dsl.uml2.design.tests.contexts;
 
-import static org.junit.Assert.*;
-	import org.obeonetwork.dsl.uml2.design.tests.automation.Context;
+import static org.junit.Assert.assertEquals;
 
 // Start of user code AnUmlModelWithAnAssociation imports
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.UMLFactory;
+import org.obeonetwork.dsl.uml2.design.services.ClassDiagramServices;
 import org.obeonetwork.dsl.uml2.design.services.UMLServices;
 import org.obeonetwork.dsl.uml2.design.services.internal.EditLabelSwitch;
+
 // End of user code
+import org.obeonetwork.dsl.uml2.design.tests.automation.Context;
 
 /**
  * Context : An Uml model with an association
  */
 public class AnUmlModelWithAnAssociation extends Context {
-// Start of user code AnUmlModelWithAnAssociation variables
+	// Start of user code AnUmlModelWithAnAssociation variables
 	protected Association startAssociation;
 
 	protected Property firstEnd;
@@ -34,8 +36,10 @@ public class AnUmlModelWithAnAssociation extends Context {
 	protected Property secondEnd;
 
 	protected EditLabelSwitch editSwitch = new EditLabelSwitch();
-	
+
 	private UMLServices umlServices = new UMLServices();
+
+	private ClassDiagramServices classDiagramServices = new ClassDiagramServices();
 
 	// End of user code
 
@@ -47,8 +51,8 @@ public class AnUmlModelWithAnAssociation extends Context {
 		Property anotherEnd = UMLFactory.eINSTANCE.createProperty();
 		startAssociation.getOwnedEnds().add(oneEnd);
 		startAssociation.getOwnedEnds().add(anotherEnd);
-		firstEnd = umlServices.getSource(startAssociation);
-		secondEnd = umlServices.getTarget(startAssociation);
+		firstEnd = classDiagramServices.getSource(startAssociation);
+		secondEnd = classDiagramServices.getTarget(startAssociation);
 		// End of user code
 	}
 
@@ -58,6 +62,7 @@ public class AnUmlModelWithAnAssociation extends Context {
 		// Nothing
 		// End of user code
 	}
+
 	/**
 	 * Action : I edit the label of the second role to
 	 */
@@ -84,6 +89,7 @@ public class AnUmlModelWithAnAssociation extends Context {
 		assertEquals(theFirstEndNameEquals0, firstEnd.getName());
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The first end lower cardinality equals
 	 */
@@ -92,6 +98,7 @@ public class AnUmlModelWithAnAssociation extends Context {
 		assertEquals(Integer.parseInt(theFirstEndLowerCardinalityEquals0), firstEnd.getLower());
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The second end is not derived
 	 */
@@ -100,6 +107,7 @@ public class AnUmlModelWithAnAssociation extends Context {
 		assertEquals(false, secondEnd.isDerived());
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The first end upper cardinality equals
 	 */
@@ -108,6 +116,7 @@ public class AnUmlModelWithAnAssociation extends Context {
 		assertEquals(Integer.parseInt(theFirstEndUpperCardinalityEquals0), firstEnd.getUpper());
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The first end is not derived
 	 */
@@ -116,6 +125,7 @@ public class AnUmlModelWithAnAssociation extends Context {
 		assertEquals(false, firstEnd.isDerived());
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The second end upper cardinality equals
 	 */
@@ -124,6 +134,7 @@ public class AnUmlModelWithAnAssociation extends Context {
 		assertEquals(Integer.parseInt(theSecondEndUpperCardinalityEquals0), secondEnd.getUpper());
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The first end is derived
 	 */
@@ -132,6 +143,7 @@ public class AnUmlModelWithAnAssociation extends Context {
 		assertEquals(true, firstEnd.isDerived());
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The second end lower cardinality equals
 	 */
@@ -140,6 +152,7 @@ public class AnUmlModelWithAnAssociation extends Context {
 		assertEquals(Integer.parseInt(theSecondEndLowerCardinalityEquals0), secondEnd.getLower());
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The second end name equals
 	 */
@@ -148,6 +161,7 @@ public class AnUmlModelWithAnAssociation extends Context {
 		assertEquals(theSecondEndNameEquals0, secondEnd.getName());
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The second end is derived
 	 */
@@ -157,15 +171,15 @@ public class AnUmlModelWithAnAssociation extends Context {
 		// End of user code
 	}
 
-// Start of user code AnUmlModelWithAnAssociation private methods
+	// Start of user code AnUmlModelWithAnAssociation private methods
 	protected void editFirstRole(Association startAssociation2, String string) {
-		Property role = umlServices.getSource(startAssociation2);
+		Property role = classDiagramServices.getSource(startAssociation2);
 		editSwitch.setEditedLabelContent(string);
 		editSwitch.caseRole(role);
 	}
 
 	protected void editSecondRole(Association startAssociation2, String string) {
-		Property role = umlServices.getTarget(startAssociation2);
+		Property role = classDiagramServices.getTarget(startAssociation2);
 		editSwitch.setEditedLabelContent(string);
 		editSwitch.caseRole(role);
 	}
