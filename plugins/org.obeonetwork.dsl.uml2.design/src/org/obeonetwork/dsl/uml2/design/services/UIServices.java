@@ -29,7 +29,6 @@ import org.eclipse.uml2.uml.UseCase;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
 import org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel.Messages;
 
-import fr.obeo.acceleo.gen.template.eval.ENodeList;
 import fr.obeo.dsl.viewpoint.DDiagramElement;
 import fr.obeo.dsl.viewpoint.DRepresentation;
 import fr.obeo.dsl.viewpoint.DSemanticDecorator;
@@ -217,18 +216,14 @@ public class UIServices {
 		return semanticElementMappings.size() > 0;
 	}
 
-	public void addExistingElements(final DSemanticDecorator containerView,
-			final ENodeList semanticElementList) {
-		if (semanticElementList.size() == 0)
+	public void addExistingElements(final EObject containerView, final List<EObject> semanticElementList) {
+		if (!(containerView instanceof DSemanticDecorator) || semanticElementList == null
+				|| semanticElementList.isEmpty())
 			return;
-
-		@SuppressWarnings("unchecked")
-		List<EObject> semanticElements = semanticElementList.asList();
-		final Session session = SessionManager.INSTANCE.getSession(semanticElements.get(0));
-
-		for (EObject semanticElement : semanticElements) {
+		final Session session = SessionManager.INSTANCE.getSession(semanticElementList.get(0));
+		for (EObject semanticElement : semanticElementList) {
 			// Create the view for the added element
-			createView(semanticElement, containerView, session, "containerView");
+			createView(semanticElement, (DSemanticDecorator)containerView, session, "containerView");
 		}
 	}
 

@@ -57,16 +57,16 @@
             </initialOperation>
           </menuItemDescription>
         </ownedTools>
-        <ownedTools xsi:type="tool:DirectEditLabel" documentation="A basic Direct Edit tool for NamedElement" name="NamedElementServiceDirectEdit" inputLabelExpression="[computeUmlDirectEditLabel()/]">
+        <ownedTools xsi:type="tool:DirectEditLabel" documentation="A basic Direct Edit tool for NamedElement" name="NamedElementServiceDirectEdit" inputLabelExpression="service:computeUmlDirectEditLabel">
           <mask mask="{0}"/>
           <initialOperation>
-            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[editUmlLabel(0)/]"/>
+            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.editUmlLabel(arg0)/]"/>
           </initialOperation>
         </ownedTools>
         <ownedTools xsi:type="tool:DirectEditLabel" documentation="A basic Direct Edit tool for Association&#xA;Association is a special case of direct edit as there is multiple labels visibled" name="OtherDirectEdit">
           <mask mask="{0}"/>
           <initialOperation>
-            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[editUmlLabel(0)/]"/>
+            <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.editUmlLabel(arg0)/]"/>
           </initialOperation>
         </ownedTools>
         <ownedTools xsi:type="tool:PopupMenu" name="Import primitive types">
@@ -1299,10 +1299,14 @@
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.TemplateBinding" referenceName="templateBinding" variableName="newTemplateBinding">
                   <subModelOperations xsi:type="tool:SetValue" featureName="signature" valueExpression="[target.ownedTemplateSignature/]"/>
                 </subModelOperations>
-                <subModelOperations xsi:type="tool:For" expression="[target.ownedTemplateSignature.ownedParameter/]" iteratorName="ownedParameter">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:newTemplateBinding">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.TemplateParameterSubstitution" referenceName="parameterSubstitution">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="formal" valueExpression="var:ownedParameter"/>
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:ownedTemplateSignature">
+                    <subModelOperations xsi:type="tool:For" expression="feature:ownedParameter" iteratorName="ownedParameter">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:newTemplateBinding">
+                        <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.TemplateParameterSubstitution" referenceName="parameterSubstitution">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="formal" valueExpression="var:ownedParameter"/>
+                        </subModelOperations>
+                      </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
