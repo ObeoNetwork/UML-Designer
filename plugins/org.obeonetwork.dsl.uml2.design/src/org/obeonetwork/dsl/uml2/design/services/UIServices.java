@@ -23,7 +23,6 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.uml2.uml.Element;
-import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UseCase;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
@@ -185,16 +184,19 @@ public class UIServices {
 	 * @param containerView
 	 *            Container view
 	 */
-	public boolean isValidElementForContainerView(final Element container,
-			final NamedElement semanticElement, final DSemanticDecorator containerView) {
-		final Session session = SessionManager.INSTANCE.getSession(container);
+	public boolean isValidElementForContainerView(final EObject container, final EObject semanticElement,
+			final EObject containerView) {
+		if (containerView instanceof DSemanticDecorator) {
+			final Session session = SessionManager.INSTANCE.getSession(container);
 
-		// Get all available mappings applicable for the selected element in the
-		// current container
-		List<DiagramElementMapping> semanticElementMappings = getMappings(semanticElement, containerView,
-				session);
+			// Get all available mappings applicable for the selected element in the
+			// current container
+			List<DiagramElementMapping> semanticElementMappings = getMappings(semanticElement,
+					(DSemanticDecorator)containerView, session);
 
-		return semanticElementMappings.size() > 0;
+			return semanticElementMappings.size() > 0;
+		}
+		return false;
 	}
 
 	/**
@@ -205,15 +207,17 @@ public class UIServices {
 	 * @param containerView
 	 *            Container view
 	 */
-	public boolean existValidElementsForContainerView(final Element container,
-			final DSemanticDecorator containerView) {
-		final Session session = SessionManager.INSTANCE.getSession(container);
+	public boolean existValidElementsForContainerView(final EObject container, final EObject containerView) {
+		if (container instanceof Element && containerView instanceof DSemanticDecorator) {
+			final Session session = SessionManager.INSTANCE.getSession(container);
+			// Get all available mappings applicable for the selected element in the
+			// current container
+			List<DiagramElementMapping> semanticElementMappings = getMappings(
+					(DSemanticDecorator)containerView, session);
 
-		// Get all available mappings applicable for the selected element in the
-		// current container
-		List<DiagramElementMapping> semanticElementMappings = getMappings(containerView, session);
-
-		return semanticElementMappings.size() > 0;
+			return semanticElementMappings.size() > 0;
+		}
+		return false;
 	}
 
 	public void addExistingElements(final EObject containerView, final List<EObject> semanticElementList) {
