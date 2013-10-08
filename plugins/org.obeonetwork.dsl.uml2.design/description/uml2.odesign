@@ -4237,7 +4237,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Tool to create a Generalization" name="Generalization" precondition="[preSource->including(preTarget)->filter(uml::UseCase)->size() = 2/]" edgeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@edgeMappings[name='UCD_Generalization']">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Tool to create a Generalization" name="Generalization" precondition="[preSource->including(preTarget)->filter(uml::Actor)->size() = 2/]" edgeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@edgeMappings[name='UCD_Generalization']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
