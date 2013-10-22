@@ -41,6 +41,7 @@ Contributors:
     <properties>
         <tycho-version>0.18.1</tycho-version>
         <od-site>http://www.obeo.fr/download/release/designer/6.2/latest/juno3/update</od-site>
+        <sysml-site>http://update.obeo.fr/integration/sysml/repository/</sysml-site>
     </properties>
 
     <modules>
@@ -69,7 +70,7 @@ Contributors:
         <repository>
             <id>sysml</id>
             <layout>p2</layout>
-            <url>http://update.obeo.fr/integration/sysml/repository/</url>
+            <url>${sysml-site}</url>
         </repository>
  	<repository>
             <id>Marketplace</id>
