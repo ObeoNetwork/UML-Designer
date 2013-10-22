@@ -2,13 +2,13 @@
 <feature
       id="fr.obeo.dsl.feature.uml2"
       label="UML Designer"
-      version="2.4.1.qualifier"
+      version="3.0.0.qualifier"
       provider-name="Obeo"
       plugin="org.obeonetwork.dsl.uml2.branding">
 
    <description url="http://docs.obeonetwork.com/uml">
       This modeler provides a set of common diagrams to work with
-UML 2.4 models.
+UML 3.0 models.
 Provides same features as org.obeonetwork.dsl.feature.uml2 
 without the dependencies to Obeo Designer.
    </description>
