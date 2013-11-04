@@ -363,6 +363,85 @@ public class UMLServices {
 	}
 
 	/**
+	 * Indicates if a type name is a UML primitive type.
+	 * 
+	 * @param namespace
+	 *            the {@link Namespace} context
+	 * @param typeName
+	 *            Type name
+	 * @return True if type name is a primitive type otherwise false
+	 */
+	public boolean isUmlPrimitiveType(Namespace namespace, String typeName) {
+		return isPrimitiveType(namespace, typeName, UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI);
+	}
+
+	/**
+	 * Indicates if a type name is an Ecore primitive type.
+	 * 
+	 * @param namespace
+	 *            the {@link Namespace} context
+	 * @param typeName
+	 *            Type name
+	 * @return True if type name is a primitive type otherwise false
+	 */
+	public boolean isEcorePrimitiveType(Namespace namespace, String typeName) {
+		return isPrimitiveType(namespace, typeName, UMLResource.ECORE_PRIMITIVE_TYPES_LIBRARY_URI);
+	}
+
+	/**
+	 * Indicates if a type name is a Java primitive type.
+	 * 
+	 * @param namespace
+	 *            the {@link Namespace} context
+	 * @param typeName
+	 *            Type name
+	 * @return True if type name is a primitive type otherwise false
+	 */
+	public boolean isJavaPrimitiveType(Namespace namespace, String typeName) {
+		return isPrimitiveType(namespace, typeName, UMLResource.JAVA_PRIMITIVE_TYPES_LIBRARY_URI);
+	}
+
+	/**
+	 * Indicates if a type name is an XML primitive type.
+	 * 
+	 * @param namespace
+	 *            the {@link Namespace} context
+	 * @param typeName
+	 *            Type name
+	 * @return True if type name is a primitive type otherwise false
+	 */
+	public boolean isXmlPrimitiveType(Namespace namespace, String typeName) {
+		return isPrimitiveType(namespace, typeName, UMLResource.XML_PRIMITIVE_TYPES_LIBRARY_URI);
+	}
+
+	/**
+	 * Indicates if a type name is a primitive type.
+	 * 
+	 * @param namespace
+	 *            the {@link Namespace} context
+	 * @param typeName
+	 *            Type name
+	 * @param libraryUri
+	 *            the URI of the library to load.
+	 * @return True if type name is a primitive type otherwise false
+	 */
+	private boolean isPrimitiveType(Namespace namespace, String typeName, String libraryUri) {
+		final ResourceSet resourceSet = namespace.eResource().getResourceSet();
+		final Resource resource = resourceSet.getResource(URI.createURI(libraryUri), true);
+		// Add the resource to the session's semantic resources
+		final Package root = (Package)EcoreUtil.getObjectByType(resource.getContents(),
+				UMLPackage.Literals.PACKAGE);
+		// Search the type and sets it on the property if found
+		if (typeName != null && !"".equals(typeName)) {
+			final Type foundType = EcoreServices.INSTANCE.findTypeByName(root, typeName);
+			if (foundType != null) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
 	 * Import a package.
 	 * 
 	 * @param model

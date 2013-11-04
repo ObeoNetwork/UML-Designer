@@ -13,10 +13,12 @@ package org.obeonetwork.dsl.uml2.design.services.internal;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
 import org.obeonetwork.dsl.uml2.design.services.EcoreServices;
 import org.obeonetwork.dsl.uml2.design.services.LabelServices;
+import org.obeonetwork.dsl.uml2.design.services.UMLServices;
 
 /**
  * Utility services to manage edges direct label editoin on properties.
@@ -116,7 +118,28 @@ public final class PropertyServices {
 
 		// Search the type and sets it on the property if found
 		if (typeName != null && !"".equals(typeName)) {
-			final Type foundType = EcoreServices.INSTANCE.findTypeByName(property, typeName);
+			Type foundType = EcoreServices.INSTANCE.findTypeByName(property, typeName);
+
+			if (foundType == null) {
+				// Check if type is a primitive type
+				UMLServices umlServices = new UMLServices();
+				Namespace namespace = (Namespace)property.eContainer();
+
+				// Register primitive type
+				if (umlServices.isUmlPrimitiveType(namespace, typeName)) {
+					umlServices.importUmlPrimitiveTypes(namespace);
+				} else if (umlServices.isEcorePrimitiveType(namespace, typeName)) {
+					umlServices.importEcorePrimitiveTypes(namespace);
+				} else if (umlServices.isJavaPrimitiveType(namespace, typeName)) {
+					umlServices.importJavaPrimitiveTypes(namespace);
+				} else if (umlServices.isXmlPrimitiveType(namespace, typeName)) {
+					umlServices.importXmlPrimitiveTypes(namespace);
+				}
+
+				// Get the primitive type
+				foundType = EcoreServices.INSTANCE.findTypeByName(property, typeName);
+			}
+
 			if (foundType != null) {
 				property.setType(foundType);
 			}
