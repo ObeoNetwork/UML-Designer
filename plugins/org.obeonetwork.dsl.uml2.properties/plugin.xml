@@ -184,7 +184,7 @@ Contributors:
       <propertyTabs
             contributorId="fr.obeo.dsl.viewpoint.table.ui.EditorID">
          <propertyTab
-               category="default"
+               category="extended"
                id="General"
                label="General">
          </propertyTab>
@@ -315,5 +315,21 @@ Contributors:
                tab="Ends">
          </propertySection>
       </propertySections>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
+      <propertyContributor
+            contributorId="fr.obeo.dsl.viewpoint.table.ui.EditorID"
+            labelProvider="org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider">
+         <propertyCategory
+               category="default">
+         </propertyCategory>
+         <propertyCategory
+               category="extended">
+         </propertyCategory>
+         <propertyCategory
+               category="advanced">
+         </propertyCategory>
+      </propertyContributor>
    </extension>
     </plugin>
