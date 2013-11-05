@@ -222,8 +222,6 @@ litigation.
 
    <requires>
       <import feature="fr.obeo.dsl.viewpoint.runtime.ide.eef" version="6.8.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.emf.ecore" version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.emf.ecore.feature.patch" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.gmf.runtime.notation" version="0.0.0" match="greaterOrEqual"/>
       <import feature="org.eclipse.gmf.runtime.notation.feature.patch" version="0.0.0" match="greaterOrEqual"/>
    </requires>
