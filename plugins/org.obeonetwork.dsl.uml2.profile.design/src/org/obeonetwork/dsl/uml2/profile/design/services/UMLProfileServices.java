@@ -340,6 +340,9 @@ public class UMLProfileServices {
 	 * @return a list of found attribute.
 	 */
 	public List<Property> getClassifierAttributes(final Classifier classifier) {
+		if (classifier instanceof Profile) {
+			return null;
+		}
 		final List<Property> properties = new ArrayList<Property>();
 		for (Property property : classifier.getAttributes()) {
 			if (property.getAssociation() == null
@@ -347,6 +350,17 @@ public class UMLProfileServices {
 				properties.add(property);
 		}
 		return properties;
+	}
+
+	/**
+	 * Get all owned attributes of the classifier.
+	 * 
+	 * @param classifier
+	 *            to find attribute from.
+	 * @return a list of found attribute.
+	 */
+	public List<Property> getClassifierAttributes(final Profile classifier) {
+		return null;
 	}
 
 	/**
