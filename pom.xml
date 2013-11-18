@@ -40,14 +40,14 @@ Contributors:
 
     <properties>
         <tycho-version>0.18.1</tycho-version>
-        <od-site>http://update.obeo.fr/maintenance/od/6.2/kepler/update/repository</od-site>
-        <sysml-site>http://update.obeo.fr/integration/sysml/repository/</sysml-site>
+		<od-site>http://www.obeo.fr/download/release/designer/6.2/latest/kepler/update</od-site>
+        <!--<sysml-site>http://update.obeo.fr/integration/sysml/repository/</sysml-site>-->
     </properties>
 
     <modules>
 
-        <module>features/fr.obeo.dsl.feature.uml2</module>
-        <module>features/fr.obeo.dsl.uml2.update</module>		
+<!--        <module>features/fr.obeo.dsl.feature.uml2</module>
+        <module>features/fr.obeo.dsl.uml2.update</module>		-->
 
 	<module>plugins/org.obeonetwork.gmf.runtime.diagram.ui.extension</module>
         <module>plugins/org.obeonetwork.dsl.uml2.design</module>
@@ -67,11 +67,11 @@ Contributors:
             <layout>p2</layout>
             <url>${od-site}</url>
         </repository>
-        <repository>
+<!--        <repository>
             <id>sysml</id>
             <layout>p2</layout>
             <url>${sysml-site}</url>
-        </repository>
+        </repository>-->
  	<repository>
             <id>Marketplace</id>
             <layout>p2</layout>

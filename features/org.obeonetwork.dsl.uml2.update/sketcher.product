@@ -119,7 +119,7 @@ The user is not authorized to install or make a technical means to hide within t
    </plugins>
 
    <features>
-      <feature id="fr.obeo.dsl.feature.uml2"/>
+      <feature id="org.obeonetwork.dsl.feature.uml2"/>
       <feature id="fr.obeo.dsl.viewpoint.runtime.acceleo2"/>
       <feature id="fr.obeo.dsl.viewpoint.runtime.acceleo"/>
       <feature id="fr.obeo.dsl.viewpoint.runtime.ide.ui"/>
