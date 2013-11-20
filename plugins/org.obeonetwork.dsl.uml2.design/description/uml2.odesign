@@ -222,12 +222,12 @@
           </ownedTools>
         </subSections>
         <subSections name="profiles">
-          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="Apply profile" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Profile.gif" windowTitle="Select profiles to apply" candidatesExpression="[container.eContainer(uml::Package).getAllProfilesInPlatform()/]" preSelectedCandidatesExpression="[eContainer(uml::Package).getAllAppliedProfiles()/]">
-            <element name="element"/>
+          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="Apply profile" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Profile.gif" windowTitle="Select profiles to apply" choiceOfValuesMessage="Choice of profiles" candidatesExpression="[container.getAllProfilesInPlatform()/]" selectedValuesMessage="Selected profiles" preSelectedCandidatesExpression="[container.oclAsType(uml::Element).getNearestPackage().getAllAppliedProfiles()/]">
+            <element name="profile"/>
             <containerView name="containerView"/>
             <container name="container"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.eContainer(uml::Package).applyAllProfiles(element)/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.oclAsType(uml::Element).getNearestPackage().applyAllProfiles(profile)/]"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="Apply stereotype" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Stereotype.gif" windowTitle="Select stereotypes to apply" candidatesExpression="[getApplicableStereotypes().getProfile()->including(getApplicableStereotypes())/]" tree="true" rootExpression="[getApplicableStereotypes().getProfile()->asOrderedSet()->asSequence()/]" childrenExpression="feature:ownedStereotype" preSelectedCandidatesExpression="service:getAppliedStereotypes">

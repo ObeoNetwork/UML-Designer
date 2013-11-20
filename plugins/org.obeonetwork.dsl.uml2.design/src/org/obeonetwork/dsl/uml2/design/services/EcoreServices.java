@@ -20,6 +20,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.ProfileApplication;
@@ -126,7 +127,9 @@ public class EcoreServices {
 	 *            the context object on which to execute this service.
 	 * @return a {@link Collection} of all the profiles of the current platform.
 	 */
-	static public Collection<EObject> getAllProfilesInPlatform(EObject package_) {
+	static public Collection<EObject> getAllProfilesInPlatform(Element element) {
+		// Get element package container
+		org.eclipse.uml2.uml.Package package_ = element.getNearestPackage();
 		final Collection<EObject> roots = new ArrayList<EObject>();
 
 		if (package_ instanceof org.eclipse.uml2.uml.Package) {
