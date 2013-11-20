@@ -230,12 +230,14 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.oclAsType(uml::Element).getNearestPackage().applyAllProfiles(profile)/]"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="Apply stereotype" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Stereotype.gif" windowTitle="Select stereotypes to apply" candidatesExpression="[getApplicableStereotypes().getProfile()->including(getApplicableStereotypes())/]" tree="true" rootExpression="[getApplicableStereotypes().getProfile()->asOrderedSet()->asSequence()/]" childrenExpression="feature:ownedStereotype" preSelectedCandidatesExpression="service:getAppliedStereotypes">
-            <element name="element"/>
+          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="Apply stereotype" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Stereotype.gif" windowTitle="Select stereotypes to apply" candidatesExpression="[self.oclAsType(uml::Element).getApplicableStereotypes()->union(self.oclAsType(uml::Element).getApplicableStereotypes().getProfile()->asSet())/]" tree="true" rootExpression="[getApplicableStereotypes().getProfile()->asOrderedSet()->asSequence()/]" childrenExpression="feature:ownedStereotype" preSelectedCandidatesExpression="[oclAsType(uml::Element).getAppliedStereotypes()/]">
+            <element name="stereotype"/>
             <containerView name="containerView"/>
             <container name="container"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.applyAllStereotypes(element)/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container/]">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[applyAllStereotypes(stereotype)/]"/>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
         </subSections>
