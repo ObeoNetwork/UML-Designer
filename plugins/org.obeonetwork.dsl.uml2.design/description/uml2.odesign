@@ -273,8 +273,8 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[elementView.sourceNode.target/]">
-                <subModelOperations xsi:type="tool:Unset" featureName="annotatedElement" elementExpression="[elementView.targetNode.target/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[elementView.oclAsType(DEdge).sourceNode.oclAsType(DDiagramElement).target/]">
+                <subModelOperations xsi:type="tool:Unset" featureName="annotatedElement" elementExpression="[elementView.oclAsType(DEdge).targetNode.oclAsType(DDiagramElement).target/]"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
