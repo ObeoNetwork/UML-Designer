@@ -240,7 +240,7 @@
           </ownedTools>
         </subSections>
         <subSections name="Comments">
-          <ownedTools xsi:type="tool:ToolDescription" name="CRE_Comment" label="Comment" precondition="[self->filter(uml::Comment)= null/]" forceRefresh="true" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Comment.gif">
+          <ownedTools xsi:type="tool:ToolDescription" name="CRE_Comment" label="Comment" precondition="[not self.oclIsTypeOf(uml::Comment)/]" forceRefresh="true" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Comment.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
