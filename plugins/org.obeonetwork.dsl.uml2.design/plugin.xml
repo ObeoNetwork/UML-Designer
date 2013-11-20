@@ -165,13 +165,18 @@ Contributors:
                   <iterate
                         ifEmpty="false"
                         operator="and">
-                     <instanceof
-                           value="org.eclipse.uml2.uml.Package">
-                     </instanceof>
                      <test
                            forcePluginActivation="true"
                            property="org.obeonetwork.dsl.uml2.design.Profile">
                      </test>
+                     <instanceof
+                           value="org.eclipse.uml2.uml.Package">
+                     </instanceof>
+                     <not>
+                        <instanceof
+                              value="org.eclipse.uml2.uml.Profile">
+                        </instanceof>
+                     </not>
                   </iterate>
                </with>
             </enabledWhen>
