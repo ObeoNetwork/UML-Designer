@@ -283,7 +283,7 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[element.applyAllStereotypes(null)/]">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[element.oclAsType(uml::Element).applyAllStereotypes(null)/]">
                 <subModelOperations xsi:type="tool:RemoveElement"/>
               </firstModelOperations>
             </initialOperation>
@@ -296,9 +296,9 @@
             <element name="element"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
-                <subModelOperations xsi:type="tool:SetValue" featureName="annotatedElement" valueExpression="[dgeView.targetNode.target/]"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="annotatedElement" valueExpression="[edgeView.oclAsType(DEdge).targetNode.oclAsType(DDiagramElement).target/]"/>
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
-                  <subModelOperations xsi:type="tool:Unset" featureName="annotatedElement" elementExpression="[edgeView.targetNode.target/]"/>
+                  <subModelOperations xsi:type="tool:Unset" featureName="annotatedElement" elementExpression="[edgeView.oclAsType(DEdge).targetNode.oclAsType(DDiagramElement).target/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>

@@ -224,10 +224,15 @@ public class UMLServices {
 		// Unapplying not selected stereotypes
 		List<Stereotype> alreadyAppliedStereotypes = element.getAppliedStereotypes();
 		for (Stereotype alreadyAppliedStereotype : alreadyAppliedStereotypes) {
-			if (!stereotypesToApply.contains(alreadyAppliedStereotype)) {
+			if (stereotypesToApply == null || !stereotypesToApply.contains(alreadyAppliedStereotype)) {
 				element.unapplyStereotype(alreadyAppliedStereotype);
 			}
 		}
+
+		if (stereotypesToApply == null) {
+			return element;
+		}
+
 		// Applying selected stereotypes
 		for (Stereotype stereotypeToApply : stereotypesToApply) {
 			if (!element.isStereotypeApplied(stereotypeToApply)) {
