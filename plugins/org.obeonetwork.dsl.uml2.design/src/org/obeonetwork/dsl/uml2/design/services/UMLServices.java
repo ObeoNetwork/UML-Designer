@@ -286,8 +286,8 @@ public class UMLServices {
 	 * @param namespace
 	 *            Namespace into which importing the types
 	 */
-	public void importUmlPrimitiveTypes(Namespace namespace) {
-		importPrimitiveTypes(namespace, UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI);
+	public void importUmlPrimitiveTypes(Element element) {
+		importPrimitiveTypes(element, UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI);
 	}
 
 	/**
@@ -297,8 +297,8 @@ public class UMLServices {
 	 *            Namespace to be checked
 	 * @return true if the types are already imported, else false
 	 */
-	public boolean areUmlPrimitiveTypesImported(Namespace namespace) {
-		return arePrimitiveTypesImported(namespace, UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI);
+	public boolean areUmlPrimitiveTypesNotImported(Element element) {
+		return !arePrimitiveTypesImported(element, UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI);
 	}
 
 	/**
@@ -307,8 +307,8 @@ public class UMLServices {
 	 * @param namespace
 	 *            Namespace into which importing the types
 	 */
-	public void importJavaPrimitiveTypes(Namespace namespace) {
-		importPrimitiveTypes(namespace, UMLResource.JAVA_PRIMITIVE_TYPES_LIBRARY_URI);
+	public void importJavaPrimitiveTypes(Element element) {
+		importPrimitiveTypes(element, UMLResource.JAVA_PRIMITIVE_TYPES_LIBRARY_URI);
 	}
 
 	/**
@@ -318,8 +318,8 @@ public class UMLServices {
 	 *            Namespace to be checked
 	 * @return true if the types are already imported, else false
 	 */
-	public boolean areJavaPrimitiveTypesImported(Namespace namespace) {
-		return arePrimitiveTypesImported(namespace, UMLResource.JAVA_PRIMITIVE_TYPES_LIBRARY_URI);
+	public boolean areJavaPrimitiveTypesNotImported(Element element) {
+		return !arePrimitiveTypesImported(element, UMLResource.JAVA_PRIMITIVE_TYPES_LIBRARY_URI);
 	}
 
 	/**
@@ -328,8 +328,8 @@ public class UMLServices {
 	 * @param namespace
 	 *            Namespace into which importing the types
 	 */
-	public void importEcorePrimitiveTypes(Namespace namespace) {
-		importPrimitiveTypes(namespace, UMLResource.ECORE_PRIMITIVE_TYPES_LIBRARY_URI);
+	public void importEcorePrimitiveTypes(Element element) {
+		importPrimitiveTypes(element, UMLResource.ECORE_PRIMITIVE_TYPES_LIBRARY_URI);
 	}
 
 	/**
@@ -339,8 +339,8 @@ public class UMLServices {
 	 *            Namespace to be checked
 	 * @return true if the types are already imported, else false
 	 */
-	public boolean areEcorePrimitiveTypesImported(Namespace namespace) {
-		return arePrimitiveTypesImported(namespace, UMLResource.ECORE_PRIMITIVE_TYPES_LIBRARY_URI);
+	public boolean areEcorePrimitiveTypesNotImported(Element element) {
+		return !arePrimitiveTypesImported(element, UMLResource.ECORE_PRIMITIVE_TYPES_LIBRARY_URI);
 	}
 
 	/**
@@ -349,8 +349,8 @@ public class UMLServices {
 	 * @param namespace
 	 *            Namespace into which importing the types
 	 */
-	public void importXmlPrimitiveTypes(Namespace namespace) {
-		importPrimitiveTypes(namespace, UMLResource.XML_PRIMITIVE_TYPES_LIBRARY_URI);
+	public void importXmlPrimitiveTypes(Element element) {
+		importPrimitiveTypes(element, UMLResource.XML_PRIMITIVE_TYPES_LIBRARY_URI);
 	}
 
 	/**
@@ -360,8 +360,8 @@ public class UMLServices {
 	 *            Namespace to be checked
 	 * @return true if the types are already imported, else false
 	 */
-	public boolean areXmlPrimitiveTypesImported(Namespace namespace) {
-		return arePrimitiveTypesImported(namespace, UMLResource.XML_PRIMITIVE_TYPES_LIBRARY_URI);
+	public boolean areXmlPrimitiveTypesNotImported(Element element) {
+		return !arePrimitiveTypesImported(element, UMLResource.XML_PRIMITIVE_TYPES_LIBRARY_URI);
 	}
 
 	/**
@@ -372,19 +372,20 @@ public class UMLServices {
 	 * @param libraryUri
 	 *            the URI of the library to load.
 	 */
-	private void importPrimitiveTypes(Namespace namespace, String libraryUri) {
-		final ResourceSet resourceSet = namespace.eResource().getResourceSet();
+	private void importPrimitiveTypes(Element element, String libraryUri) {
+		Model model = element.getModel();
+		final ResourceSet resourceSet = model.eResource().getResourceSet();
 		final Resource resource = resourceSet.getResource(URI.createURI(libraryUri), true);
 		// Add the resource to the session's semantic resources
-		final Session session = SessionManager.INSTANCE.getSession(namespace);
+		final Session session = SessionManager.INSTANCE.getSession(model);
 		if (session != null) {
 			session.addSemanticResource(resource, false);
 		}
 		final Package root = (Package)EcoreUtil.getObjectByType(resource.getContents(),
 				UMLPackage.Literals.PACKAGE);
 		// We check if a package import already exists
-		if (!namespace.getImportedPackages().contains(root)) {
-			namespace.createPackageImport(root);
+		if (!model.getImportedPackages().contains(root)) {
+			model.createPackageImport(root);
 		}
 	}
 
@@ -655,13 +656,14 @@ public class UMLServices {
 	 *            URI of the library.
 	 * @return <code>true</code> if the library is imported, <code>false</code> otherwise
 	 */
-	private boolean arePrimitiveTypesImported(Namespace namespace, String libraryUri) {
-		final ResourceSet resourceSet = namespace.eResource().getResourceSet();
+	private boolean arePrimitiveTypesImported(Element element, String libraryUri) {
+		Model model = element.getModel();
+		final ResourceSet resourceSet = model.eResource().getResourceSet();
 		final Resource resource = resourceSet.getResource(URI.createURI(libraryUri), true);
 		final Package root = (Package)EcoreUtil.getObjectByType(resource.getContents(),
 				UMLPackage.Literals.PACKAGE);
 		// We check if a package import already exists
-		return namespace.getImportedPackages().contains(root);
+		return model.getImportedPackages().contains(root);
 	}
 
 	/**

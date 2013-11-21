@@ -70,28 +70,28 @@
           </initialOperation>
         </ownedTools>
         <ownedTools xsi:type="tool:PopupMenu" name="Import primitive types">
-          <menuItemDescription xsi:type="tool:OperationAction" name="UML Primitive types" precondition="[ancestors()->last()->filter(uml::Package).areUmlPrimitiveTypesImported() = false/]">
+          <menuItemDescription xsi:type="tool:OperationAction" name="UML Primitive types" precondition="service:areUmlPrimitiveTypesNotImported">
             <view name="views"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[ancestors()->last()->filter(uml::Package).importUmlPrimitiveTypes()/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:importUmlPrimitiveTypes"/>
             </initialOperation>
           </menuItemDescription>
-          <menuItemDescription xsi:type="tool:OperationAction" name="Java Primitive types" precondition="[ancestors()->last()->filter(uml::Package).areJavaPrimitiveTypesImported() = false/]">
+          <menuItemDescription xsi:type="tool:OperationAction" name="Java Primitive types" precondition="service:areJavaPrimitiveTypesNotImported">
             <view name="views"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[ancestors()->last()->filter(uml::Package).importJavaPrimitiveTypes()/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:importJavaPrimitiveTypes"/>
             </initialOperation>
           </menuItemDescription>
-          <menuItemDescription xsi:type="tool:OperationAction" name="Ecore Primitive types" precondition="[ancestors()->last()->filter(uml::Package).areEcorePrimitiveTypesImported() = false/]">
+          <menuItemDescription xsi:type="tool:OperationAction" name="Ecore Primitive types" precondition="service:areEcorePrimitiveTypesNotImported">
             <view name="views"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[ancestors()->last()->filter(uml::Package).importEcorePrimitiveTypes()/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:importEcorePrimitiveTypes"/>
             </initialOperation>
           </menuItemDescription>
-          <menuItemDescription xsi:type="tool:OperationAction" name="XML Primitive types" precondition="[ancestors()->last()->filter(uml::Package).areXmlPrimitiveTypesImported() = false/]">
+          <menuItemDescription xsi:type="tool:OperationAction" name="XML Primitive types" precondition="service:areXmlPrimitiveTypesNotImported">
             <view name="views"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[ancestors()->last()->filter(uml::Package).importXmlPrimitiveTypes()/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:importXmlPrimitiveTypes"/>
             </initialOperation>
           </menuItemDescription>
         </ownedTools>
