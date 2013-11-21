@@ -105,7 +105,7 @@
           </initialOperation>
         </ownedTools>
         <ownedTools xsi:type="tool:PopupMenu" name="EAnnotation">
-          <menuItemDescription xsi:type="tool:OperationAction" name="Create" precondition="[self->filter(ecore::EModelElement)/]">
+          <menuItemDescription xsi:type="tool:OperationAction" name="Create" precondition="[oclIsKindOf(ecore::EModelElement)/]">
             <view name="views"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:CreateInstance" typeName="EAnnotation" referenceName="eAnnotations"/>
@@ -113,7 +113,7 @@
           </menuItemDescription>
           <menuItemDescription xsi:type="tool:OperationAction" name="Delete" precondition="[oclIsKindOf(ecore::EModelElement)/]">
             <view name="views">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="selected" candidatesExpression="[target.eAnnotations()/]" multiple="true" message="Select the EAnnotations to delete."/>
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="selected" candidatesExpression="[target.oclAsType(ecore::EModelElement).eAnnotations/]" multiple="true" message="Select the EAnnotations to delete."/>
             </view>
             <initialOperation>
               <firstModelOperations xsi:type="tool:For" expression="var:selected">
