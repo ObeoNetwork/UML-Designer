@@ -21,38 +21,38 @@
         </edgeMappings>
       </defaultLayer>
       <toolSection documentation="reused tools" name="reused tools">
-        <ownedTools xsi:type="tool:PopupMenu" name="Move UP/DOWN TO Attributes or Operations" label="Move to">
-          <menuItemDescription xsi:type="tool:OperationAction" name="Move TO Up Properties and Operations" label="Up" precondition="[self->filter(uml::Property)->including(self->filter(uml::Operation))/]">
+        <ownedTools xsi:type="tool:PopupMenu" name="Move UP/DOWN TO Attributes or Operations" label="Move to" precondition="[oclIsTypeOf(uml::Property) or oclIsTypeOf(uml::Operation)/]">
+          <menuItemDescription xsi:type="tool:OperationAction" name="Move TO Up Properties and Operations" label="Up">
             <view name="views"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.target->filter(uml::Operation).moveUpOperations()/]">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.target->filter(uml::Property).moveUpProperties()/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.target->filter(uml::Operation).moveUpOperations(views.target->filter(uml::Operation))/]">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.target->filter(uml::Property).moveUpProperties(views.target->filter(uml::Property))/]"/>
               </firstModelOperations>
             </initialOperation>
           </menuItemDescription>
-          <menuItemDescription xsi:type="tool:OperationAction" name="Move TO Down Properties and Operations" label="Down" precondition="[self->filter(uml::Property)->including(self->filter(uml::Operation))/]">
+          <menuItemDescription xsi:type="tool:OperationAction" name="Move TO Down Properties and Operations" label="Down">
             <view name="views"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.target->filter(uml::Operation).moveDownOperations()/]">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.target->filter(uml::Property).moveDownProperties()/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.target->filter(uml::Operation).moveDownOperations(views.target->filter(uml::Operation))/]">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.target->filter(uml::Property).moveDownProperties(views.target->filter(uml::Property))/]"/>
               </firstModelOperations>
             </initialOperation>
           </menuItemDescription>
         </ownedTools>
-        <ownedTools xsi:type="tool:PopupMenu" name="Move UP/DOWN TO Elements" label="Move to" precondition="[oclIsKindOf(uml::PackageableElement)/]">
-          <menuItemDescription xsi:type="tool:OperationAction" name="Move TO Up Elements" label="Up" precondition="[self->filter(uml::PackageableElement)/]">
+        <ownedTools xsi:type="tool:PopupMenu" name="Move UP/DOWN TO Elements" label=" Move to" precondition="[oclIsKindOf(uml::PackageableElement)/]">
+          <menuItemDescription xsi:type="tool:OperationAction" name="Move TO Up Elements" label="Up">
             <view name="views"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.target->filter(uml::PackageableElement).moveUpPackageableElements()/]">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.target->filter(uml::Property).moveUpProperties()/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.target->filter(uml::PackageableElement).moveUpPackageableElements(views.target->filter(uml::PackageableElement))/]">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.target->filter(uml::Property).moveUpProperties(views.target->filter(uml::Property))/]"/>
               </firstModelOperations>
             </initialOperation>
           </menuItemDescription>
-          <menuItemDescription xsi:type="tool:OperationAction" name="Move TO Down Elements" label="Down" precondition="[self->filter(uml::PackageableElement)/]">
+          <menuItemDescription xsi:type="tool:OperationAction" name="Move TO Down Elements" label="Down">
             <view name="views"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.target->filter(uml::PackageableElement).moveDownPackageableElements()/]">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.target->filter(uml::Property).moveDownProperties()/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.target->filter(uml::PackageableElement).moveDownPackageableElements(views.target->filter(uml::PackageableElement))/]">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.target->filter(uml::Property).moveDownProperties(views.target->filter(uml::Property))/]"/>
               </firstModelOperations>
             </initialOperation>
           </menuItemDescription>

@@ -35,8 +35,8 @@ public final class PackageableElementServices {
 	 * @param packageableElementsToMove
 	 *            packageableElements to move
 	 */
-	public void moveUpPackageableElements(List<PackageableElement> packageableElementsToMove) {
-
+	public void moveUpPackageableElements(PackageableElement packageableElement,
+			List<PackageableElement> packageableElementsToMove) {
 		MoveUpElementSwitch moveUpElementsSwitch = new MoveUpElementSwitch();
 		List<PackageableElement> packageableElementsInRightOrder = retrieveTheRightOrder(packageableElementsToMove);
 		Iterator<PackageableElement> iterator = packageableElementsInRightOrder.iterator();
