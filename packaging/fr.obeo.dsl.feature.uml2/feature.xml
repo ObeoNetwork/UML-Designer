@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-Copyright (c) 2009, 2011 Obeo.
-All rights reserved. This program and the accompanying materials
-are made available under the terms of the Eclipse Public License v1.0
-which accompanies this distribution, and is available at
-http://www.eclipse.org/legal/epl-v10.html
-
-Contributors:
-    Obeo - initial API and implementation
--->
 <feature
-      id="org.obeonetwork.dsl.feature.uml2"
-      label="UML Designer (based on Obeo Designer)"
-      version="3.0.0.qualifier"
-      provider-name="Obeo">
+      id="fr.obeo.dsl.feature.uml2"
+      label="UML Designer"
+      version="4.0.0.qualifier"
+      provider-name="Obeo"
+      plugin="org.obeonetwork.dsl.uml2.branding">
 
    <description url="http://docs.obeonetwork.com/uml">
       This modeler provides a set of common diagrams to work with
-UML 3.0 models.
+UML 4.0 models.
+Provides same features as org.obeonetwork.dsl.feature.uml2 
+without the dependencies to Obeo Designer.
    </description>
 
-   <copyright url="http://www.obeo.fr/legal.php?lang=en">
+   <copyright url="http://www.eclipse.org/legal/epl-v10.html">
       Copyright (c) 2009, 2011 Obeo.
 All rights reserved. This program and the accompanying materials
 are made available under the terms of the Eclipse Public License
@@ -230,7 +223,7 @@ litigation.
    <requires>
       <import feature="fr.obeo.dsl.feature.designer.architect" version="6.2.0" match="greaterOrEqual"/>
       <import feature="fr.obeo.dsl.viewpoint.runtime" version="6.8.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.uml2"/>
+      <import feature="org.eclipse.uml2" version="0.0.0" match="greaterOrEqual"/>
       <import feature="fr.obeo.dsl.viewpoint.runtime.acceleo2" version="6.8.0" match="greaterOrEqual"/>
       <import feature="fr.obeo.dsl.viewpoint.runtime.ocl" version="6.8.0" match="greaterOrEqual"/>
       <import feature="fr.obeo.dsl.viewpoint.runtime.acceleo" version="6.8.0" match="greaterOrEqual"/>
@@ -243,7 +236,21 @@ litigation.
    </requires>
 
    <plugin
+         id="org.obeonetwork.gmf.runtime.diagram.ui.extension"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
          id="org.obeonetwork.dsl.uml2.design"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.obeonetwork.dsl.uml2.branding"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -254,13 +261,6 @@ litigation.
          download-size="0"
          install-size="0"
          version="0.0.0"/>
-
-   <plugin
-         id="org.obeonetwork.gmf.runtime.diagram.ui.extension"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
 
    <plugin
          id="org.obeonetwork.dsl.uml2.usage"
@@ -282,7 +282,5 @@ litigation.
          install-size="0"
          version="0.0.0"
          unpack="false"/>
-
-
 
 </feature>
