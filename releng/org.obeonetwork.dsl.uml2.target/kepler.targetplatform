@@ -1,0 +1,65 @@
+target "kepler"
+
+// Eclipse release
+location "http://download.eclipse.org/releases/kepler" {
+	with source, requirements
+	org.eclipse.platform.feature.group
+	org.eclipse.sdk.feature.group
+	org.eclipse.draw2d.sdk.feature.group
+	org.eclipse.emf.sdk.feature.group
+	org.eclipse.emf.transaction.sdk.feature.group
+	org.eclipse.emf.validation.sdk.feature.group
+	org.eclipse.gef.sdk.feature.group
+	org.eclipse.gmf.runtime.notation.sdk.feature.group
+	org.eclipse.gmf.runtime.sdk.feature.group
+	org.eclipse.uml2.sdk.feature.group
+	org.eclipse.epp.mpc.feature.group
+	org.eclipse.equinox.executable.feature.group
+}
+
+// SWTBot
+location "http://download.eclipse.org/technology/swtbot/releases/latest/" {
+	with source
+	org.eclipse.swtbot.forms.feature.group
+	org.eclipse.swtbot.eclipse.feature.group
+	org.eclipse.swtbot.eclipse.gef.feature.group
+	org.eclipse.swtbot.feature.group
+	org.eclipse.swtbot.ide.feature.group
+	org.eclipse.swtbot.eclipse.test.junit.feature.group
+}
+
+// Orbit
+location "http://download.eclipse.org/tools/orbit/downloads/drops/S20130914154012/repository/" {
+	with source, requirements
+	com.google.guava;version="[11.0.2,12.0.0)"
+	org.junit;version="[4.11.0,5.0.0)"
+	org.junit4
+	org.hamcrest.core;version="[1.3.0,2.0.0)"
+	org.hamcrest.library;version="[1.3.0,2.0.0)"
+	org.apache.log4j;version="[1.2.0,1.3.0)"
+}
+
+// Acceleo 3
+location "http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/3.4/" {
+	with source, requirements
+	org.eclipse.acceleo.feature.group
+	org.eclipse.acceleo.runtime.feature.group
+}
+
+// EEF 2
+location "http://download.eclipse.org/modeling/emft/eef/updates/nightly/1.2/" {
+	with source, requirements
+	org.eclipse.emf.eef.runtime
+}
+
+location "http://www.obeo.fr/download/release/designer/6.2/latest/kepler/update" {
+	with source, requirements
+	//runtime
+	fr.obeo.dsl.viewpoint.runtime.feature.group
+	fr.obeo.dsl.viewpoint.runtime.acceleo2.feature.group
+	fr.obeo.dsl.viewpoint.runtime.acceleo.feature.group
+	//IDE
+	fr.obeo.dsl.viewpoint.runtime.ide.eef.feature.group
+	fr.obeo.dsl.viewpoint.runtime.ide.ui.feature.group
+	fr.obeo.dsl.viewpoint.runtime.ide.ui.tests.support.feature.group
+}

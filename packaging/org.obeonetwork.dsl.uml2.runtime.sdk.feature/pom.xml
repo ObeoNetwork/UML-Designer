@@ -21,21 +21,9 @@ Contributors:
     <relativePath>../../releng/org.obeonetwork.dsl.uml2.parent</relativePath>
   </parent>
 
-  <artifactId>org.obeonetwork.dsl.uml2.branding</artifactId>
-  <packaging>eclipse-plugin</packaging>
-  <name>UML Designer Branding</name>
-  
- <build>
-    <plugins>
-      <plugin>
-        <groupId>org.eclipse.tycho</groupId>
-        <artifactId>tycho-source-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-pmd-plugin</artifactId>
-      </plugin>
-    </plugins>
-  </build>
+  <artifactId>org.obeonetwork.dsl.uml2.runtime.sdk.feature</artifactId>
+  <packaging>eclipse-feature</packaging>
+
+  <name>Viewpoint Based Modeler for UML2 Feature</name>
 
 </project>

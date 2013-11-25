@@ -9,9 +9,8 @@ http://www.eclipse.org/legal/epl-v10.html
 Contributors:
     Obeo - initial API and implementation
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
@@ -21,9 +20,20 @@ Contributors:
     <relativePath>../../releng/org.obeonetwork.dsl.uml2.parent</relativePath>
   </parent>
 
-  <artifactId>org.obeonetwork.dsl.feature.uml2</artifactId>
+  <artifactId>org.obeonetwork.dsl.uml2.runtime.feature</artifactId>
   <packaging>eclipse-feature</packaging>
 
-  <name>Viewpoint Based Modeler for UML2 Feature</name>
+  <properties>
+    <sysml-site>http://update.obeo.fr/integration/sysml/repository/</sysml-site>
+  </properties>
+
+  <repositories>
+    <repository>
+      <id>sysml</id>
+      <layout>p2</layout>
+      <url>${sysml-site}</url>
+    </repository>
+  </repositories>
+
 
 </project>

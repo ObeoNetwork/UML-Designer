@@ -15,19 +15,27 @@ Contributors:
 
   <parent>
     <groupId>org.obeonetwork.dsl.uml2</groupId>
-    <artifactId>parent</artifactId>
+    <artifactId>common.parent</artifactId>
     <version>4.0.0-SNAPSHOT</version>
-    <relativePath>../../releng/org.obeonetwork.dsl.uml2.parent</relativePath>
+    <relativePath>../../releng/org.obeonetwork.dsl.uml2.common.parent</relativePath>
   </parent>
+  <groupId>org.obeonetwork.dsl.uml2</groupId>
+  <artifactId>product.parent</artifactId>
+  <packaging>pom</packaging>
 
-  <artifactId>fr.obeo.dsl.feature.uml2</artifactId>
-  <packaging>eclipse-feature</packaging>
+  <name>UML Designer Product Parent</name>
 
   <properties>
+    <uml-site>http://update.obeo.fr/integration/uml/repository/</uml-site>
     <sysml-site>http://update.obeo.fr/integration/sysml/repository/</sysml-site>
   </properties>
 
   <repositories>
+    <repository>
+      <id>uml</id>
+      <layout>p2</layout>
+      <url>${uml-site}</url>
+    </repository>
     <repository>
       <id>sysml</id>
       <layout>p2</layout>
@@ -35,5 +43,9 @@ Contributors:
     </repository>
   </repositories>
 
+  <modules>
+    <!-- Build products -->
+    <module>${root-path}/packaging/org.obeonetwork.dsl.uml2.product</module>
+  </modules>
 
 </project>

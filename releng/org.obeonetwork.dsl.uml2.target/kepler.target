@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?>
+
+<target name="kepler" sequenceNumber="0">
+<locations>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.platform.feature.group" version="4.3.1.v20130911-1000"/>
+<unit id="org.eclipse.sdk.feature.group" version="4.3.1.v20130911-1000"/>
+<unit id="org.eclipse.draw2d.sdk.feature.group" version="3.9.1.201308190730"/>
+<unit id="org.eclipse.emf.sdk.feature.group" version="2.9.1.v20130902-0605"/>
+<unit id="org.eclipse.emf.transaction.sdk.feature.group" version="1.7.0.201306111400"/>
+<unit id="org.eclipse.emf.validation.sdk.feature.group" version="1.7.0.201306111341"/>
+<unit id="org.eclipse.gef.sdk.feature.group" version="3.9.1.201308190730"/>
+<unit id="org.eclipse.gmf.runtime.notation.sdk.feature.group" version="1.7.0.201306101425"/>
+<unit id="org.eclipse.gmf.runtime.sdk.feature.group" version="1.7.0.201306111432"/>
+<unit id="org.eclipse.uml2.sdk.feature.group" version="4.1.1.v20130902-0826"/>
+<unit id="org.eclipse.epp.mpc.feature.group" version="1.2.1.I20130917-2019"/>
+<unit id="org.eclipse.equinox.executable.feature.group" version="3.6.0.v20130807-1835"/>
+<repository location="http://download.eclipse.org/releases/kepler"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.swtbot.forms.feature.group" version="2.1.1.201307101628"/>
+<unit id="org.eclipse.swtbot.eclipse.feature.group" version="2.1.1.201307101628"/>
+<unit id="org.eclipse.swtbot.eclipse.gef.feature.group" version="2.1.1.201307101628"/>
+<unit id="org.eclipse.swtbot.feature.group" version="2.1.1.201307101628"/>
+<unit id="org.eclipse.swtbot.ide.feature.group" version="2.1.1.201307101628"/>
+<unit id="org.eclipse.swtbot.eclipse.test.junit.feature.group" version="2.1.1.201307101628"/>
+<repository location="http://download.eclipse.org/technology/swtbot/releases/latest/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="com.google.guava" version="11.0.2.v201303041551"/>
+<unit id="org.junit" version="4.11.0.v201303080030"/>
+<unit id="org.hamcrest.core" version="1.3.0.v201303031735"/>
+<unit id="org.hamcrest.library" version="1.3.0.v201305281000"/>
+<unit id="org.apache.log4j" version="1.2.15.v201012070815"/>
+<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/S20130914154012/repository/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.acceleo.feature.group" version="3.4.1.201309031307"/>
+<unit id="org.eclipse.acceleo.runtime.feature.group" version="3.4.1.201309031307"/>
+<repository location="http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/3.4/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.emf.eef.runtime" version="1.2.0.201301031409"/>
+<repository location="http://download.eclipse.org/modeling/emft/eef/updates/nightly/1.2/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="fr.obeo.dsl.viewpoint.runtime.feature.group" version="6.8.0.201310170811"/>
+<unit id="fr.obeo.dsl.viewpoint.runtime.acceleo2.feature.group" version="6.8.0.201310170811"/>
+<unit id="fr.obeo.dsl.viewpoint.runtime.acceleo.feature.group" version="6.8.0.201310170811"/>
+<unit id="fr.obeo.dsl.viewpoint.runtime.ide.eef.feature.group" version="6.8.0.201310170811"/>
+<unit id="fr.obeo.dsl.viewpoint.runtime.ide.ui.feature.group" version="6.8.0.201310170811"/>
+<unit id="fr.obeo.dsl.viewpoint.runtime.ide.ui.tests.support.feature.group" version="6.8.0.201310170811"/>
+<unit id="fr.obeo.dsl.feature.designer.architect.feature.group" version="6.2.0.201310170826"/>
+<repository location="http://www.obeo.fr/download/release/designer/6.2/latest/kepler/update"/>
+</location>
+</locations>
+</target>
