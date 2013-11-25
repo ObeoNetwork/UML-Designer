@@ -1443,8 +1443,8 @@
             <menuItemDescription xsi:type="tool:OperationAction" name="Remove" precondition="[oclIsTypeOf(uml::Property) and oclAsType(uml::Property).defaultValue &lt;>null/]">
               <view name="views"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:For" expression="var:views">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[i.target.defaultValue/]">
+                <firstModelOperations xsi:type="tool:For" expression="[views.oclAsType(viewpoint::DDiagramElement).target.oclAsType(uml::Property).defaultValue/]">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:i">
                     <subModelOperations xsi:type="tool:RemoveElement"/>
                   </subModelOperations>
                 </firstModelOperations>
