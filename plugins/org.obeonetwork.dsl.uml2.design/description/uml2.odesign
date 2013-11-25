@@ -21,42 +21,6 @@
         </edgeMappings>
       </defaultLayer>
       <toolSection documentation="reused tools" name="reused tools">
-        <ownedTools xsi:type="tool:PopupMenu" name="Move UP/DOWN TO Attributes or Operations" label="Move to" precondition="[oclIsTypeOf(uml::Property) or oclIsTypeOf(uml::Operation)/]">
-          <menuItemDescription xsi:type="tool:OperationAction" name="Move TO Up Properties and Operations" label="Up">
-            <view name="views"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.target->filter(uml::Operation).moveUpOperations(views.target->filter(uml::Operation))/]">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.target->filter(uml::Property).moveUpProperties(views.target->filter(uml::Property))/]"/>
-              </firstModelOperations>
-            </initialOperation>
-          </menuItemDescription>
-          <menuItemDescription xsi:type="tool:OperationAction" name="Move TO Down Properties and Operations" label="Down">
-            <view name="views"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.target->filter(uml::Operation).moveDownOperations(views.target->filter(uml::Operation))/]">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.target->filter(uml::Property).moveDownProperties(views.target->filter(uml::Property))/]"/>
-              </firstModelOperations>
-            </initialOperation>
-          </menuItemDescription>
-        </ownedTools>
-        <ownedTools xsi:type="tool:PopupMenu" name="Move UP/DOWN TO Elements" label=" Move to" precondition="[oclIsKindOf(uml::PackageableElement)/]">
-          <menuItemDescription xsi:type="tool:OperationAction" name="Move TO Up Elements" label="Up">
-            <view name="views"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.target->filter(uml::PackageableElement).moveUpPackageableElements(views.target->filter(uml::PackageableElement))/]">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.target->filter(uml::Property).moveUpProperties(views.target->filter(uml::Property))/]"/>
-              </firstModelOperations>
-            </initialOperation>
-          </menuItemDescription>
-          <menuItemDescription xsi:type="tool:OperationAction" name="Move TO Down Elements" label="Down">
-            <view name="views"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.target->filter(uml::PackageableElement).moveDownPackageableElements(views.target->filter(uml::PackageableElement))/]">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.target->filter(uml::Property).moveDownProperties(views.target->filter(uml::Property))/]"/>
-              </firstModelOperations>
-            </initialOperation>
-          </menuItemDescription>
-        </ownedTools>
         <ownedTools xsi:type="tool:DirectEditLabel" documentation="A basic Direct Edit tool for NamedElement" name="NamedElementServiceDirectEdit" inputLabelExpression="service:computeUmlDirectEditLabel">
           <mask mask="{0}"/>
           <initialOperation>
@@ -69,32 +33,6 @@
             <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.editUmlLabel(arg0)/]"/>
           </initialOperation>
         </ownedTools>
-        <ownedTools xsi:type="tool:PopupMenu" name="Import primitive types">
-          <menuItemDescription xsi:type="tool:OperationAction" name="UML Primitive types" precondition="service:areUmlPrimitiveTypesNotImported">
-            <view name="views"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:importUmlPrimitiveTypes"/>
-            </initialOperation>
-          </menuItemDescription>
-          <menuItemDescription xsi:type="tool:OperationAction" name="Java Primitive types" precondition="service:areJavaPrimitiveTypesNotImported">
-            <view name="views"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:importJavaPrimitiveTypes"/>
-            </initialOperation>
-          </menuItemDescription>
-          <menuItemDescription xsi:type="tool:OperationAction" name="Ecore Primitive types" precondition="service:areEcorePrimitiveTypesNotImported">
-            <view name="views"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:importEcorePrimitiveTypes"/>
-            </initialOperation>
-          </menuItemDescription>
-          <menuItemDescription xsi:type="tool:OperationAction" name="XML Primitive types" precondition="service:areXmlPrimitiveTypesNotImported">
-            <view name="views"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:importXmlPrimitiveTypes"/>
-            </initialOperation>
-          </menuItemDescription>
-        </ownedTools>
         <ownedTools xsi:type="tool:DoubleClickDescription" name="Open properties wizard" mappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_ControlNode'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_DataStore'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']/@borderedNodeMappings[name='AD_Pin'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@borderedNodeMappings[name='AD_Parameter'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_Partition'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@edgeMappings[name='AD_ControlFlow'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@edgeMappings[name='AD_ObjectFlow'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']/@borderedNodeMappings[name='SD_Execution'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']/@borderedNodeMappings[name='SD_Lifeline%20EOL'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_FinalState'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subContainerMappings[name='SM_State'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@edgeMappings[name='SM_Transition'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@optionalLayers[name='Stereotype']/@edgeMappings[name='stereotypeLink'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@optionalLayers[name='Stereotype']/@nodeMappings[name='TypeStereotypeDescription'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_Actor'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@edgeMappings[name='UCD_Association'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@edgeMappings[name='UCD_Extend'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@edgeMappings[name='UCD_Generalization'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@edgeMappings[name='UCD_Include'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@nodeMappings[name='CD_BrokenAssociation'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_BrokenAssociationToClasses'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Dependency'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration']/@subNodeMappings[name='CD_EnumerationLiteral'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Generalization'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Interface'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_InterfaceRealization'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Package'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Operation'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']/@borderedNodeMappings[name='CO_Port'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_NestedPackage'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_IR_ComponentOrPort2Interface'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_Redefined'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@edgeMappings[name='OD_InstanceSlot'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_InstanceSpecification'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_InstanceSpecification']/@subNodeMappings[name='OD_Slot'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@optionalLayers[name='Type']/@containerMappings[name='OD_Class'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@optionalLayers[name='Type']/@containerMappings[name='OD_Enumeration'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@optionalLayers[name='Type']/@containerMappings[name='OD_Interface'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@optionalLayers[name='Type']/@nodeMappings[name='OD_PrimitiveType'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Containment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Import'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@nodeMappings[name='PH_Package'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@edgeMappings[name='DE_Link'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@edgeMappings[name='DE_Dependency'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@edgeMappings[name='DE_Generalization'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_ProvidedInterface'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_RequiredInterface'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_U_Interface2ComponentOrPort'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_ProvidedInterface2RequiredInterface']">
           <element name="element"/>
           <elementView name="elementView"/>
@@ -103,24 +41,6 @@
               <subModelOperations xsi:type="tool:ExternalJavaAction" name="openPropertiesWizard" id="fr.obeo.dsl.viewpoint.eef.actions.openPropertiesWizard"/>
             </firstModelOperations>
           </initialOperation>
-        </ownedTools>
-        <ownedTools xsi:type="tool:PopupMenu" name="EAnnotation">
-          <menuItemDescription xsi:type="tool:OperationAction" name="Create" precondition="[oclIsKindOf(ecore::EModelElement)/]">
-            <view name="views"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:CreateInstance" typeName="EAnnotation" referenceName="eAnnotations"/>
-            </initialOperation>
-          </menuItemDescription>
-          <menuItemDescription xsi:type="tool:OperationAction" name="Delete" precondition="[oclIsKindOf(ecore::EModelElement)/]">
-            <view name="views">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="selected" candidatesExpression="[target.oclAsType(ecore::EModelElement).eAnnotations/]" multiple="true" message="Select the EAnnotations to delete."/>
-            </view>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:For" expression="var:selected">
-                <subModelOperations xsi:type="tool:RemoveElement"/>
-              </firstModelOperations>
-            </initialOperation>
-          </menuItemDescription>
         </ownedTools>
         <ownedTools xsi:type="tool:PasteDescription" name="Paste" forceRefresh="true">
           <container name="container"/>
@@ -440,6 +360,88 @@
             <edgeView name="edgeView"/>
           </ownedTools>
         </subSections>
+        <subSections name="Popup menu">
+          <ownedTools xsi:type="tool:PopupMenu" name="Import primitive types">
+            <menuItemDescription xsi:type="tool:OperationAction" name="UML Primitive types" precondition="service:areUmlPrimitiveTypesNotImported">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:importUmlPrimitiveTypes"/>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" name="Java Primitive types" precondition="service:areJavaPrimitiveTypesNotImported">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:importJavaPrimitiveTypes"/>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" name="Ecore Primitive types" precondition="service:areEcorePrimitiveTypesNotImported">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:importEcorePrimitiveTypes"/>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" name="XML Primitive types" precondition="service:areXmlPrimitiveTypesNotImported">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:importXmlPrimitiveTypes"/>
+              </initialOperation>
+            </menuItemDescription>
+          </ownedTools>
+          <ownedTools xsi:type="tool:PopupMenu" name="EAnnotation">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Create" precondition="[oclIsKindOf(ecore::EModelElement)/]">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:CreateInstance" typeName="EAnnotation" referenceName="eAnnotations"/>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" name="Delete" precondition="[oclIsKindOf(ecore::EModelElement)/]">
+              <view name="views">
+                <subVariables xsi:type="tool:SelectModelElementVariable" name="selected" candidatesExpression="[target.oclAsType(ecore::EModelElement).eAnnotations/]" multiple="true" message="Select the EAnnotations to delete."/>
+              </view>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:For" expression="var:selected">
+                  <subModelOperations xsi:type="tool:RemoveElement"/>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+          </ownedTools>
+          <ownedTools xsi:type="tool:PopupMenu" name="Move UP/DOWN TO Attributes or Operations" label="Move to" precondition="[oclIsTypeOf(uml::Property) or oclIsTypeOf(uml::Operation)/]">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Move TO Up Properties and Operations" label="Up">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.target->filter(uml::Operation).moveUpOperations(views.target->filter(uml::Operation))/]">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.target->filter(uml::Property).moveUpProperties(views.target->filter(uml::Property))/]"/>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" name="Move TO Down Properties and Operations" label="Down">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.target->filter(uml::Operation).moveDownOperations(views.target->filter(uml::Operation))/]">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.target->filter(uml::Property).moveDownProperties(views.target->filter(uml::Property))/]"/>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+          </ownedTools>
+          <ownedTools xsi:type="tool:PopupMenu" name="Move UP/DOWN TO Elements" label=" Move to" precondition="[oclIsKindOf(uml::PackageableElement)/]">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Move TO Up Elements" label="Up">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.target->filter(uml::PackageableElement).moveUpPackageableElements(views.target->filter(uml::PackageableElement))/]">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.target->filter(uml::Property).moveUpProperties(views.target->filter(uml::Property))/]"/>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool:OperationAction" name="Move TO Down Elements" label="Down">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.target->filter(uml::PackageableElement).moveDownPackageableElements(views.target->filter(uml::PackageableElement))/]">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.target->filter(uml::Property).moveDownProperties(views.target->filter(uml::Property))/]"/>
+                </firstModelOperations>
+              </initialOperation>
+            </menuItemDescription>
+          </ownedTools>
+        </subSections>
       </toolSection>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Drop%20From%20Model'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Drop%20From%20Diagram']" name="Package Hierarchy" titleExpression="[name +' Package Hierarchy'/]" showOnStartup="true" pasteDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Paste']" domainClass="uml.Package" preconditionExpression="[eContainer() = null/]" enablePopupBars="true">
@@ -534,7 +536,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Types" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Import%20primitive%20types']">
+        <toolSections name="Types" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Popup%20menu']/@ownedTools[name='Import%20primitive%20types']">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Without force refresh containment edge is not created" name="Package" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@nodeMappings[name='PH_Package']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -999,7 +1001,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Types" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Import%20primitive%20types']">
+        <toolSections name="Types" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Popup%20menu']/@ownedTools[name='Import%20primitive%20types']">
           <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a Package" name="Package" containerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Package']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -1069,7 +1071,7 @@
             </tools>
           </ownedTools>
         </toolSections>
-        <toolSections name="Features" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Move%20UP%2FDOWN%20TO%20Attributes%20or%20Operations']">
+        <toolSections name="Features" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Popup%20menu']/@ownedTools[name='Move%20UP%2FDOWN%20TO%20Attributes%20or%20Operations']">
           <ownedTools xsi:type="tool:ToolGroup" name="Properties">
             <tools xsi:type="tool:NodeCreationDescription" documentation="Create a new Property" name="Property" nodeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']">
               <variable name="container"/>
@@ -1142,7 +1144,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Relationships" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='EAnnotation']">
+        <toolSections name="Relationships" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Popup%20menu']/@ownedTools[name='EAnnotation']">
           <ownedTools xsi:type="tool:ToolGroup" name="Associations">
             <tools xsi:type="tool:EdgeCreationDescription" documentation="Create a new Association" name="Association" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']" extraSourceMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@nodeMappings[name='CD_BrokenAssociation']">
               <sourceVariable name="source"/>
@@ -1416,17 +1418,17 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:PopupMenu" name="Name Expression">
-            <menuItemDescription xsi:type="tool:OperationAction" name="Add String Expression" precondition="[oclIsTypeOf(uml::Property) and nameExpression = null/]" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/StringExpression.gif">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Add String Expression" precondition="[oclIsTypeOf(uml::Property) and oclAsType(uml::Property).nameExpression = null/]" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/StringExpression.gif">
               <view name="views"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:For" expression="var:views">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[i.target/]">
+                <firstModelOperations xsi:type="tool:For" expression="[views.oclAsType(viewpoint::DDiagramElement).target/]">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:i">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="StringExpression" referenceName="nameExpression"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
             </menuItemDescription>
-            <menuItemDescription xsi:type="tool:OperationAction" name="Remove" precondition="[oclIsTypeOf(uml::Property) and nameExpression &lt;>null/]">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Remove" precondition="[oclIsTypeOf(uml::Property) and oclAsType(uml::Property).nameExpression &lt;> null/]">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:For" expression="var:views">
@@ -2204,7 +2206,7 @@
             <edgeView name="edgeView"/>
           </ownedTools>
         </toolSections>
-        <toolSections name="delete" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='EAnnotation']">
+        <toolSections name="delete" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Popup%20menu']/@ownedTools[name='EAnnotation']">
           <ownedTools xsi:type="tool:DeleteElementDescription" name="CO_Delete Interface View">
             <element name="element"/>
             <elementView name="elementView"/>
@@ -2327,7 +2329,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Object Diagram" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='EAnnotation']">
+        <toolSections name="Object Diagram" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Popup%20menu']/@ownedTools[name='EAnnotation']">
           <ownedTools xsi:type="tool:EdgeCreationDescription" name="CR_InstanceSlot" label="Reference Instance" precondition="[(eContainer(uml::Model).eAllContents(uml::Association).ownedEnd.type->includes(self.classifier) and eContainer(uml::Model).eAllContents(uml::Association).ownedEnd.type->includes(preTarget.classifier))or(classifier.getAllAttributes()->select(type=preTarget.classifier)->size>0)or(classifier.getAllAttributes()->select(type=preTarget.classifier.interfaceRealization.contract)->size>0)/]" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@edgeMappings[name='OD_CompositeSlot'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@edgeMappings[name='OD_InstanceSlot']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Connector.gif">
             <sourceVariable name="source">
               <subVariables xsi:type="tool:SelectModelElementVariable" name="property" candidatesExpression="[source.eContainer(uml::Model).eAllContents(uml::Association).ownedEnd->select(type=target.classifier)->including(source.classifier.getAllAttributes()->select(type=target.classifier))->inlcuding(source.classifier.getAllAttributes()->select(type=target.classifier.interfaceRealization.contract)/]"/>
@@ -3001,7 +3003,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Relationships" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='EAnnotation']">
+        <toolSections name="Relationships" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Popup%20menu']/@ownedTools[name='EAnnotation']">
           <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Create a new Link" name="Link" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@edgeMappings[name='DE_Link']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
@@ -3393,7 +3395,7 @@
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <toolSections name="State Machine" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='EAnnotation']">
+        <toolSections name="State Machine" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Popup%20menu']/@ownedTools[name='EAnnotation']">
           <ownedTools xsi:type="tool:ContainerCreationDescription" name="Region" containerMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -3730,7 +3732,7 @@
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <toolSections name="activity tools" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='EAnnotation']">
+        <toolSections name="activity tools" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Popup%20menu']/@ownedTools[name='EAnnotation']">
           <ownedTools xsi:type="tool:ContainerCreationDescription" name="Partition" containerMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_Partition']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -4183,7 +4185,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="Use Case" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='EAnnotation']">
+        <toolSections name="Use Case" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Popup%20menu']/@ownedTools[name='EAnnotation']">
           <ownedTools xsi:type="tool:NodeCreationDescription" documentation="Create an actor" name="Actor" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_Actor']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -4537,7 +4539,7 @@
             </style>
           </conditionnalStyles>
         </edgeMappings>
-        <toolSections name="Tools" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='EAnnotation']">
+        <toolSections name="Tools" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Popup%20menu']/@ownedTools[name='EAnnotation']">
           <subSections name="edit">
             <ownedTools xsi:type="tool_1:InstanceRoleReorderTool" name="REO_Lifeline" mappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']">
               <predecessorBefore name="predecessorBefore"/>
@@ -4902,7 +4904,7 @@
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <toolSections name="Elements" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Move%20UP%2FDOWN%20TO%20Elements']">
+        <toolSections name="Elements" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Popup%20menu']/@ownedTools[name='Move%20UP%2FDOWN%20TO%20Elements']">
           <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="PC_ArrangeContainment" label="Move" forceRefresh="true" iconPath="/org.eclipse.search/icons/full/etool16/search.gif" message="Select elements contained in the current package" choiceOfValuesMessage="Candidate packageable elements" candidatesExpression="[ancestors()->last()->including(ancestors()->last().eAllContents(uml::PackageableElement))/]" tree="true" rootExpression="service:getRootContainer" childrenExpression="feature:eContents" selectedValuesMessage="Selected packageable elements" preSelectedCandidatesExpression="[container.packagedElement/]">
             <element name="elements"/>
             <containerView name="containerView"/>
