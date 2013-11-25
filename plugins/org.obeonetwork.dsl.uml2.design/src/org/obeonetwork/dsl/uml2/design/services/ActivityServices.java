@@ -15,6 +15,7 @@ import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.uml2.uml.Action;
 import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.ActivityNode;
@@ -24,6 +25,7 @@ import org.eclipse.uml2.uml.CallAction;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.InvocationAction;
+import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.OpaqueAction;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.OutputPin;
@@ -31,14 +33,14 @@ import org.eclipse.uml2.uml.UMLFactory;
 
 /**
  * A set of services to handle the UML Activity diagram.
- *
+ * 
  * @author Gonzague Reydet <a href="mailto:gonzague.reydet@obeo.fr">gonzague.reydet@obeo.fr</a>
  */
 public class ActivityServices {
 
 	/**
-	 * Initializes an activity for an operation to be able to create an activity diagram on it.
-	 * Does nothing if an activity already exists.
+	 * Initializes an activity for an operation to be able to create an activity diagram on it. Does nothing
+	 * if an activity already exists.
 	 * 
 	 * @param op
 	 *            Operation to be associated with the activity
@@ -69,11 +71,62 @@ public class ActivityServices {
 	}
 
 	/**
+	 * Create an activity under a behaviored classifier (class, component, use case).
+	 * 
+	 * @param parent
+	 *            The parent
+	 * @return An activity
+	 */
+	public Activity initActivityForClass(org.eclipse.uml2.uml.BehavioredClassifier parent) {
+		Activity activity = getActivity(parent);
+		parent.getOwnedBehaviors().add(activity);
+		return activity;
+	}
+
+	/**
+	 * Create an activity under a package.
+	 * 
+	 * @param pkg
+	 *            The package
+	 * @return An activity
+	 */
+	public Activity initActivityForPackage(org.eclipse.uml2.uml.Package pkg) {
+		Activity activity = getActivity(pkg);
+		pkg.getPackagedElements().add(activity);
+		return activity;
+	}
+
+	/**
+	 * Get an activity.
+	 * 
+	 * @param parent
+	 *            Parent
+	 * @return Activity
+	 */
+	private Activity getActivity(NamedElement parent) {
+		// Check if an activity already exists
+		if (parent.eContents() != null && parent.eContents().size() > 0) {
+			for (EObject obj : parent.eContents()) {
+				if (obj instanceof Activity) {
+					// There's already an activity
+					// Do nothing
+					return (Activity)obj;
+				}
+			}
+		}
+		Activity activity = UMLFactory.eINSTANCE.createActivity();
+		String activityLabel = parent.getName() + " activity";
+		activity.setName(activityLabel);
+		return activity;
+	}
+
+	/**
 	 * Retrieves the child {@link ActivityPartition} from either {@link Activity} or {@link ActivityPartition}
 	 * context object. This is used has the semantic candidates expression of AD_ActivityPartition container
 	 * mapping.
 	 * 
-	 * @param context the context object on which to execute this service.
+	 * @param context
+	 *            the context object on which to execute this service.
 	 * @return a list of {@link ActivityPartition}
 	 */
 	public EList<ActivityPartition> getActivityPartitions(Element context) {
@@ -92,7 +145,8 @@ public class ActivityServices {
 	 * created within either an {@link Activity} or an {@link ActivityPartition}, but they are always
 	 * contained by the parent {@link Activity}.
 	 * 
-	 * @param context the context object on which to execute this service.
+	 * @param context
+	 *            the context object on which to execute this service.
 	 * @return the parent activity of the context object
 	 */
 	public Activity findParentActivity(Element context) {
@@ -112,7 +166,8 @@ public class ActivityServices {
 	 * semantic candidates of {@link ActivityNode} mappings from the context semantic object which can be
 	 * either the {@link Activity} or an {@link ActivityPartition}.
 	 * 
-	 * @param context the context object on which to execute this service.
+	 * @param context
+	 *            the context object on which to execute this service.
 	 * @return the {@link List} of {@link ActivityNode}
 	 */
 	public List<ActivityNode> getActivityNodes(Element context) {
@@ -138,7 +193,8 @@ public class ActivityServices {
 	/**
 	 * Creates a new {@link InputPin} element in the given context.
 	 * 
-	 * @param context the context object on which to execute this service.
+	 * @param context
+	 *            the context object on which to execute this service.
 	 * @return the new {@link InputPin}
 	 */
 	public InputPin createInputPin(Action context) {
@@ -156,11 +212,12 @@ public class ActivityServices {
 
 		return pin;
 	}
-	
+
 	/**
 	 * Creates a new {@link OutputPin} element in the given context.
 	 * 
-	 * @param context the context object on which to execute this service.
+	 * @param context
+	 *            the context object on which to execute this service.
 	 * @return the new {@link OutputPin}
 	 */
 	public OutputPin createOutputPin(Action context) {
@@ -183,8 +240,10 @@ public class ActivityServices {
 	 * Manages dispatch to corresponding drag&drop services.<br>
 	 * This is needed to workaround polymorphism issue with Java service from a deployed VP.
 	 * 
-	 * @param context the object on which to drop the node.
-	 * @param node the dropped node
+	 * @param context
+	 *            the object on which to drop the node.
+	 * @param node
+	 *            the dropped node
 	 * @return the given node or <code>null</code> if the given node is not of a correct type.
 	 */
 	public Element dropNode(Element context, Element node) {
