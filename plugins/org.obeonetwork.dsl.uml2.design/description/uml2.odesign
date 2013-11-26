@@ -3264,7 +3264,7 @@
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
-            <conditionnalStyles predicateExpression="[kind='exitPoint'/]">
+            <conditionnalStyles predicateExpression="service:isExitPoint">
               <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelAlignment="RIGHT" resizeKind="NSEW" arcWidth="0" arcHeight="0" roundedCorner="true" workspacePath="/org.obeonetwork.dsl.uml2.design/images/FlowNode.png">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -3278,53 +3278,53 @@
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
               </style>
-              <conditionnalStyles predicateExpression="[kind='initial'/]">
+              <conditionnalStyles predicateExpression="service:isInitialState">
                 <style xsi:type="style:WorkspaceImageDescription" showIcon="false" hideLabelByDefault="true" resizeKind="NSEW" arcWidth="0" arcHeight="0" roundedCorner="true" workspacePath="/org.obeonetwork.dsl.uml2.design/images/InitNode.png">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 </style>
               </conditionnalStyles>
-              <conditionnalStyles predicateExpression="[kind='join'/]">
+              <conditionnalStyles predicateExpression="service:isJoinState">
                 <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" showIcon="false" resizeKind="EAST_WEST" width="10" height="1">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
                 </style>
               </conditionnalStyles>
-              <conditionnalStyles predicateExpression="[kind='fork'/]">
+              <conditionnalStyles predicateExpression="service:isForkState">
                 <style xsi:type="style:SquareDescription" showIcon="false" resizeKind="EAST_WEST" width="10" height="1">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
                 </style>
               </conditionnalStyles>
-              <conditionnalStyles predicateExpression="[kind='choice'/]">
+              <conditionnalStyles predicateExpression="service:isChoiceState">
                 <style xsi:type="style:LozengeNodeDescription" showIcon="false">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
                 </style>
               </conditionnalStyles>
-              <conditionnalStyles predicateExpression="[kind='deepHistory'/]">
+              <conditionnalStyles predicateExpression="service:isDeepHistoryState">
                 <style xsi:type="style:WorkspaceImageDescription" showIcon="false" hideLabelByDefault="true" resizeKind="NSEW" arcWidth="0" arcHeight="0" roundedCorner="true" workspacePath="/org.obeonetwork.dsl.uml2.design/images/deepNode.png">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 </style>
               </conditionnalStyles>
-              <conditionnalStyles predicateExpression="[kind='shallowHistory'/]">
+              <conditionnalStyles predicateExpression="service:isShallowHistoryState">
                 <style xsi:type="style:WorkspaceImageDescription" showIcon="false" hideLabelByDefault="true" resizeKind="NSEW" arcWidth="0" arcHeight="0" roundedCorner="true" workspacePath="/org.obeonetwork.dsl.uml2.design/images/shallowNode.png">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 </style>
               </conditionnalStyles>
-              <conditionnalStyles predicateExpression="[kind='junction'/]">
+              <conditionnalStyles predicateExpression="service:isJunctionState">
                 <style xsi:type="style:EllipseNodeDescription" showIcon="false" hideLabelByDefault="true" resizeKind="NSEW">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
                 </style>
               </conditionnalStyles>
-              <conditionnalStyles predicateExpression="[kind='terminate'/]">
+              <conditionnalStyles predicateExpression="service:isTerminateState">
                 <style xsi:type="style:WorkspaceImageDescription" showIcon="false" hideLabelByDefault="true" resizeKind="NSEW" arcWidth="0" arcHeight="0" roundedCorner="true" workspacePath="/org.obeonetwork.dsl.uml2.design/images/TerminateNode.png">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -3460,7 +3460,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="subvertex">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Fork_'+container.subvertex->filter(uml:Pseudostate)->size()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Fork_'+container.oclAsType(uml::Pseudostate).subvertex->filter(uml::Pseudostate)->size()/]"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="fork"/>
                 </firstModelOperations>
               </initialOperation>
@@ -3470,7 +3470,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="subvertex">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Join_'+container.subvertex->filter(uml:Pseudostate)->size()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Join_'+container.oclAsType(uml::Pseudostate).subvertex->filter(uml::Pseudostate)->size()/]"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="join"/>
                 </firstModelOperations>
               </initialOperation>
@@ -3480,7 +3480,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="subvertex">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Choice_'+container.subvertex->filter(uml:Pseudostate)->size()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Choice_'+container.subvertex->filter(uml::Pseudostate)->size()/]"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="choice"/>
                 </firstModelOperations>
               </initialOperation>
@@ -3490,7 +3490,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="subvertex">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Junction_'+container.subvertex->filter(uml:Pseudostate)->size()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Junction_'+container.subvertex->filter(uml::Pseudostate)->size()/]"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="junction"/>
                 </firstModelOperations>
               </initialOperation>
@@ -3500,7 +3500,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="subvertex">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Terminate_'+container.subvertex->filter(uml:Pseudostate)->size()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Terminate_'+container.subvertex->filter(uml::Pseudostate)->size()/]"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="terminate"/>
                 </firstModelOperations>
               </initialOperation>
@@ -3510,7 +3510,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="subvertex">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['ShallowHistory_'+container.subvertex->filter(uml:Pseudostate)->size()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['ShallowHistory_'+container.subvertex->filter(uml::Pseudostate)->size()/]"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="shallowHistory"/>
                 </firstModelOperations>
               </initialOperation>
@@ -3520,7 +3520,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="subvertex">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['DeepHistory_'+container.subvertex->filter(uml:Pseudostate)->size()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['DeepHistory_'+container.subvertex->filter(uml::Pseudostate)->size()/]"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="deepHistory"/>
                 </firstModelOperations>
               </initialOperation>
@@ -3530,7 +3530,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="connectionPoint">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Entry_'+container.subvertex->filter(uml:Pseudostate)->size()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Entry_'+container.oclAsType(uml::StateMachine).eAllContents()->filter(uml::Pseudostate)->size()/]"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="entryPoint"/>
                 </firstModelOperations>
               </initialOperation>
@@ -3540,7 +3540,7 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="connectionPoint">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Exit_'+container.subvertex->filter(uml:Pseudostate)->size()/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Exit_'+container.oclAsType(uml::StateMachine).eAllContents()->filter(uml::Pseudostate)->size()/]"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="exitPoint"/>
                 </firstModelOperations>
               </initialOperation>
