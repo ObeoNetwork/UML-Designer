@@ -1,4 +1,4 @@
-target "kepler"
+target "UmlDesigner-kepler"
 
 // Eclipse release
 location "http://download.eclipse.org/releases/kepler" {
@@ -59,7 +59,10 @@ location "http://www.obeo.fr/download/release/designer/6.2/latest/kepler/update"
 	fr.obeo.dsl.viewpoint.runtime.acceleo2.feature.group
 	fr.obeo.dsl.viewpoint.runtime.acceleo.feature.group
 	//IDE
+	fr.obeo.dsl.viewpoint.runtime.ide.ui.acceleo.feature.group
 	fr.obeo.dsl.viewpoint.runtime.ide.eef.feature.group
 	fr.obeo.dsl.viewpoint.runtime.ide.ui.feature.group
 	fr.obeo.dsl.viewpoint.runtime.ide.ui.tests.support.feature.group
+	fr.obeo.dsl.viewpoint.specifier.ide.ui.feature.group
+	fr.obeo.dsl.viewpoint.specifier.ide.ui.acceleo.feature.group
 }

@@ -91,7 +91,7 @@ Contributors:
                         <groupId>${project.groupId}</groupId>
                         <artifactId>${project.artifactId}</artifactId>
                         <version>${project.version}</version>
-                        <classifier>${root-path}/releng/org.obeonetwork.dsl.uml2.target/${platform-version-name}</classifier>
+                        <classifier>${root-path}/releng/org.obeonetwork.dsl.uml2.target/umldesigner-${platform-version-name}</classifier>
                       </artifact>
                     </target>
                 </configuration>

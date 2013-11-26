@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.8"?>
 
-<target name="kepler" sequenceNumber="0">
+<target name="UmlDesigner-kepler" sequenceNumber="0">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.platform.feature.group" version="4.3.1.v20130911-1000"/>
@@ -45,13 +45,15 @@
 <repository location="http://download.eclipse.org/modeling/emft/eef/updates/nightly/1.2/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="fr.obeo.dsl.viewpoint.runtime.feature.group" version="6.8.0.201310170811"/>
-<unit id="fr.obeo.dsl.viewpoint.runtime.acceleo2.feature.group" version="6.8.0.201310170811"/>
-<unit id="fr.obeo.dsl.viewpoint.runtime.acceleo.feature.group" version="6.8.0.201310170811"/>
-<unit id="fr.obeo.dsl.viewpoint.runtime.ide.eef.feature.group" version="6.8.0.201310170811"/>
-<unit id="fr.obeo.dsl.viewpoint.runtime.ide.ui.feature.group" version="6.8.0.201310170811"/>
-<unit id="fr.obeo.dsl.viewpoint.runtime.ide.ui.tests.support.feature.group" version="6.8.0.201310170811"/>
-<unit id="fr.obeo.dsl.feature.designer.architect.feature.group" version="6.2.0.201310170826"/>
+<unit id="fr.obeo.dsl.viewpoint.runtime.feature.group" version="0.0.0"/>
+<unit id="fr.obeo.dsl.viewpoint.runtime.acceleo2.feature.group" version="0.0.0"/>
+<unit id="fr.obeo.dsl.viewpoint.runtime.acceleo.feature.group" version="0.0.0"/>
+<unit id="fr.obeo.dsl.viewpoint.runtime.ide.ui.acceleo.feature.group" version="0.0.0"/>
+<unit id="fr.obeo.dsl.viewpoint.runtime.ide.eef.feature.group" version="0.0.0"/>
+<unit id="fr.obeo.dsl.viewpoint.runtime.ide.ui.feature.group" version="0.0.0"/>
+<unit id="fr.obeo.dsl.viewpoint.runtime.ide.ui.tests.support.feature.group" version="0.0.0"/>
+<unit id="fr.obeo.dsl.viewpoint.specifier.ide.ui.feature.group" version="0.0.0"/>
+<unit id="fr.obeo.dsl.viewpoint.specifier.ide.ui.acceleo.feature.group" version="0.0.0"/>
 <repository location="http://www.obeo.fr/download/release/designer/6.2/latest/kepler/update"/>
 </location>
 </locations>
