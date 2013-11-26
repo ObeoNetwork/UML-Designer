@@ -1045,8 +1045,8 @@ public class UMLServices {
 	 *            element represented by the edge.
 	 * @return true if no cycle is detected.
 	 */
-	public Boolean reconnectContainmentPrecondition(EObject host, EObject source, EObject target,
-			EObject element) {
+	public Boolean reconnectContainmentPrecondition(Element host, Element source, Element target,
+			Element element) {
 		if (element == target)
 			return false;
 		Iterator<EObject> it = element.eAllContents();

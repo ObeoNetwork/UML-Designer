@@ -563,9 +563,9 @@
             <targetView name="targetView"/>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:MoveElement" newContainerExpression="[edgeView.targetNode.target.eContainer()/]" featureName="packagedElement">
+              <firstModelOperations xsi:type="tool:MoveElement" newContainerExpression="[edgeView.oclAsType(viewpoint::DEdge).targetNode.oclAsType(viewpoint::DDiagramElement).target.eContainer()/]" featureName="packagedElement">
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
-                  <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="[edgeView.targetNode.target/]" featureName="packagedElement"/>
+                  <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="[edgeView.oclAsType(viewpoint::DEdge).targetNode.oclAsType(viewpoint::DDiagramElement).target/]" featureName="packagedElement"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
