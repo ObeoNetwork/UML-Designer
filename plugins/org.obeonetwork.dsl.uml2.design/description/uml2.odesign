@@ -3180,10 +3180,10 @@
               <targetView name="targetView"/>
               <element name="element"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
-                  <subModelOperations xsi:type="tool:Unset" featureName="manifestation" elementExpression="var:element">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="manifestation" valueExpression="var:element"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                  <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="var:target" featureName="manifestation">
+                    <subModelOperations xsi:type="tool:Unset" featureName="client" elementExpression="var:source">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="var:target"/>
                     </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
@@ -3199,7 +3199,11 @@
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
                   <subModelOperations xsi:type="tool:Unset" featureName="utilizedElement" elementExpression="feature:utilizedElement">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="utilizedElement" valueExpression="var:target"/>
+                    <subModelOperations xsi:type="tool:Unset" featureName="supplier" elementExpression="feature:supplier">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="utilizedElement" valueExpression="var:target">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="var:target"/>
+                      </subModelOperations>
+                    </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
