@@ -75,9 +75,9 @@ public class UIConnectorServices {
 	 *            the current view
 	 * @return the container semantic target or null if any.
 	 */
-	protected EObject getViewContainerTarget(DNode view) {
+	protected Element getViewContainerTarget(DNode view) {
 		if (view != null && view.eContainer() instanceof DSemanticDecorator) {
-			return ((DSemanticDecorator)view.eContainer()).getTarget();
+			return (Element)((DSemanticDecorator)view.eContainer()).getTarget();
 		}
 		return null;
 
@@ -92,7 +92,7 @@ public class UIConnectorServices {
 	 *            the semantic target
 	 * @return true is it is the valid part.
 	 */
-	protected boolean isValidPart(ConnectorEnd end, EObject viewSemanticTarget) {
+	protected boolean isValidPart(ConnectorEnd end, Element viewSemanticTarget) {
 		if (end != null && end.getPartWithPort() != null
 				&& !EcoreUtil.equals(viewSemanticTarget, end.getPartWithPort()))
 			return false;
@@ -113,8 +113,8 @@ public class UIConnectorServices {
 	 *            the target view
 	 * @return true if valid to display
 	 */
-	public boolean validSourceTarget4DelegatedConnector(EObject source, EObject sourceView, EObject target,
-			EObject targetView) {
+	public boolean validSourceTarget4DelegatedConnector(Element source, DSemanticDecorator sourceView,
+			Element target, DSemanticDecorator targetView) {
 		boolean result = false;
 
 		if (source instanceof org.eclipse.uml2.uml.Interface) {
@@ -138,8 +138,8 @@ public class UIConnectorServices {
 	 *            the target view
 	 * @return true if valid to display
 	 */
-	public boolean validSourceTarget4Connector(EObject source, EObject sourceView, EObject target,
-			EObject targetView) {
+	public boolean validSourceTarget4Connector(Element source, DSemanticDecorator sourceView, Element target,
+			DSemanticDecorator targetView) {
 		boolean result = false;
 
 		if (source instanceof org.eclipse.uml2.uml.Interface
@@ -460,7 +460,8 @@ public class UIConnectorServices {
 	 *            the target view
 	 * @return true if valid to display
 	 */
-	public boolean isConnectable(EObject source, EObject sourceView, EObject target, EObject targetView) {
+	public boolean isConnectable(Element source, DSemanticDecorator sourceView, Element target,
+			DSemanticDecorator targetView) {
 		boolean result = false;
 		final ConnectorServices connectorServices = new ConnectorServices();
 		if (source instanceof Interface && target instanceof Interface) {
