@@ -1405,14 +1405,22 @@ public class UMLServices {
 		} else if (element instanceof Association) {
 			String end1 = ((Association)element).getOwnedEnds().get(0).getName();
 			String end2 = ((Association)element).getOwnedEnds().get(1).getName();
-			return end1 + "To"
-					+ Character.toUpperCase(end2.charAt(0))
-					+ end2.substring(1);
+			return end1 + "To" + Character.toUpperCase(end2.charAt(0)) + end2.substring(1);
 		}
 
 		List<EObject> existingElements = Lists.newArrayList(Iterables.filter(
 				element.eContainer().eContents(), predicate));
 
 		return name + existingElements.size();
+	}
+
+	public List<Package> getAllAvailableRootPackages(Element element) {
+		// <%script type="uml.Element" name="allAvailableRootPackages"%>
+		// <%(getRootContainer().filter("Package") + rootPackagesFromImportedModel).nMinimize()%>
+		List<Package> packages = Lists.newArrayList();
+		packages.add(element.getModel());
+		packages.addAll(Lists.newArrayList(Iterables.filter(element.getModel().getImportedPackages(),
+				Model.class)));
+		return packages;
 	}
 }

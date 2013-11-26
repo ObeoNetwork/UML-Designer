@@ -3879,18 +3879,20 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:SelectionWizardDescription" name="Call Operation Action" forceRefresh="true" candidatesExpression="[allAvailableRootPackages().eAllContents(uml::Operation)->including(allAvailableRootPackages().eAllContents(uml::Operation).ancestors())/]" tree="true" rootExpression="service:allAvailableRootPackages" childrenExpression="feature:eContents" message="Select the target operation of the call operation action to create" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/CallOperationAction.gif" windowTitle="New Call Operation Action" windowImagePath="">
+            <tools xsi:type="tool:SelectionWizardDescription" name="Call Operation Action" forceRefresh="true" candidatesExpression="[getAllAvailableRootPackages()->union(getAllAvailableRootPackages().eAllContents()->filter(uml::Classifier))->union(getAllAvailableRootPackages().eAllContents()->filter(uml::Operation))/]" tree="true" rootExpression="service:getAllAvailableRootPackages" childrenExpression="feature:eContents" message="Select the target operation of the call operation action to create" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/CallOperationAction.gif" windowTitle="New Call Operation Action" windowImagePath="">
               <element name="element"/>
               <containerView name="containerView"/>
               <container name="container"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
-                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.CallOperationAction" referenceName="ownedNode">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="operation" valueExpression="var:element"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="[element.name+'_call'/]"/>
-                      <subModelOperations xsi:type="tool:If" conditionExpression="[container->filter(uml::ActivityPartition)->size()>0/]">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="[element.oclIsTypeOf(uml::Operation)/]">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.CallOperationAction" referenceName="ownedNode">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="operation" valueExpression="var:element"/>
+                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="[element.name+'_call'/]"/>
+                        <subModelOperations xsi:type="tool:If" conditionExpression="[container->filter(uml::ActivityPartition)->size()>0/]">
+                          <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
+                        </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
