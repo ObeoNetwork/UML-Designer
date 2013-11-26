@@ -352,7 +352,7 @@
             <targetView name="targetView"/>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[edgeView.sourceNode.target/]">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[edgeView.oclAsType(viewpoint::DEdge).sourceNode.oclAsType(viewpoint::DSemanticDecorator).target/]">
                 <subModelOperations xsi:type="tool:Unset" featureName="annotatedElement" elementExpression="var:source"/>
                 <subModelOperations xsi:type="tool:SetValue" featureName="annotatedElement" valueExpression="var:target"/>
               </firstModelOperations>
@@ -2126,9 +2126,9 @@
             <element name="element"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
-                <subModelOperations xsi:type="tool:SetValue" featureName="redefinedPort" valueExpression="[edgeView.targetNode.target/]"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="redefinedPort" valueExpression="[edgeView.oclAsType(viewpoint::DEdge).targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
-                  <subModelOperations xsi:type="tool:Unset" featureName="redefinedPort" elementExpression="[edgeView.targetNode.target/]"/>
+                  <subModelOperations xsi:type="tool:Unset" featureName="redefinedPort" elementExpression="[edgeView.oclAsType(viewpoint::DEdge).targetNode.oclAsType(viewpoint::DSemanticDecorator).target/]"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -2141,7 +2141,7 @@
             <targetView name="targetView"/>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[edgeView.sourceNode.target/]">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[edgeView.oclAsType(viewpoint::DEdge).sourceNode.oclAsType(viewpoint::DSemanticDecorator).target/]">
                 <subModelOperations xsi:type="tool:Unset" featureName="redefinedPort" elementExpression="var:source"/>
                 <subModelOperations xsi:type="tool:SetValue" featureName="redefinedPort" valueExpression="var:target"/>
               </firstModelOperations>
