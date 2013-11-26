@@ -1402,7 +1402,14 @@ public class UMLServices {
 					return input instanceof Class;
 				}
 			};
+		} else if (element instanceof Association) {
+			String end1 = ((Association)element).getOwnedEnds().get(0).getName();
+			String end2 = ((Association)element).getOwnedEnds().get(1).getName();
+			return end1 + "To"
+					+ Character.toUpperCase(end2.charAt(0))
+					+ end2.substring(1);
 		}
+
 		List<EObject> existingElements = Lists.newArrayList(Iterables.filter(
 				element.eContainer().eContents(), predicate));
 
