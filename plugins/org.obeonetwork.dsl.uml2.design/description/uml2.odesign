@@ -2817,7 +2817,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="DE_Dependency" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="[diagram.getNodeInverseRefs('Dependency')->select(d|d.oclIsTypeOf(Dependency) or d.oclIsTypeOf(Manifestation))/]" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" targetFinderExpression="feature:supplier" sourceFinderExpression="feature:client" domainClass="uml.Dependency" useDomainElement="true" reconnections="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Reconnect']/@ownedTools[name='ReconnectDependencySource'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Reconnect']/@ownedTools[name='ReconnectDependencyTarget']">
+        <edgeMappings name="DE_Dependency" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="[diagram.getNodeInverseRefs('Dependency')->select(d|d.oclIsTypeOf(Dependency) or d.oclIsTypeOf(Manifestation))/]" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" targetFinderExpression="feature:supplier" sourceFinderExpression="feature:client" domainClass="uml.Dependency" useDomainElement="true" reconnections="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Reconnect']/@ownedTools[name='ReconnectDependencySource'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Reconnect']/@ownedTools[name='ReconnectDependencyTarget'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Reconnect']/@ownedTools[name='ReconnectManifestationSource'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Reconnect']/@ownedTools[name='ReconnectManifestationTarget']">
           <style lineStyle="dash" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelExpression="feature:name">
@@ -3117,7 +3117,7 @@
               </initialOperation>
               <edgeView name="edgeView"/>
             </ownedTools>
-            <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ReconnectDependencySource" reconnectionKind="RECONNECT_SOURCE">
+            <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ReconnectDependencySource" precondition="[not oclIsTypeOf(uml::Manifestation)/]" reconnectionKind="RECONNECT_SOURCE">
               <source name="source"/>
               <target name="target"/>
               <sourceView name="sourceView"/>
@@ -3132,7 +3132,7 @@
               </initialOperation>
               <edgeView name="edgeView"/>
             </ownedTools>
-            <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ReconnectDependencyTarget">
+            <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ReconnectDependencyTarget" precondition="[not oclIsTypeOf(uml::Manifestation)/]">
               <source name="source"/>
               <target name="target"/>
               <sourceView name="sourceView"/>
@@ -3173,7 +3173,7 @@
               </initialOperation>
               <edgeView name="edgeView"/>
             </ownedTools>
-            <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ReconnectManifestationSource" reconnectionKind="RECONNECT_SOURCE">
+            <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ReconnectManifestationSource" precondition="[oclIsTypeOf(uml::Manifestation)/]" reconnectionKind="RECONNECT_SOURCE">
               <source name="source"/>
               <target name="target"/>
               <sourceView name="sourceView"/>
@@ -3190,7 +3190,7 @@
               </initialOperation>
               <edgeView name="edgeView"/>
             </ownedTools>
-            <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ReconnectManifestationTarget">
+            <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ReconnectManifestationTarget" precondition="[oclIsTypeOf(uml::Manifestation)/]">
               <source name="source"/>
               <target name="target"/>
               <sourceView name="sourceView"/>
