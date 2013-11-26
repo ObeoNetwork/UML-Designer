@@ -4125,7 +4125,7 @@
                         <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_Actor']" containerViewExpression="var:diagram"/>
                       </cases>
                       <cases conditionExpression="[selection.oclIsTypeOf(uml::UseCase)/]">
-                        <subModelOperations xsi:type="tool:If" conditionExpression="[selection->select(subject)->size>0/]">
+                        <subModelOperations xsi:type="tool:If" conditionExpression="[selection.oclAsType(uml::UseCase).subject->size() > 0/]">
                           <subModelOperations xsi:type="tool:If" conditionExpression="[diagram.containers->select(target=selection.subject)/]">
                             <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:selection">
                               <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_UseCase']" containerViewExpression="[diagram.containers->select(target=selection.subject)/]"/>
@@ -4143,7 +4143,7 @@
                             </subModelOperations>
                           </subModelOperations>
                         </subModelOperations>
-                        <subModelOperations xsi:type="tool:If" conditionExpression="[selection->select(subject)->size=0/]">
+                        <subModelOperations xsi:type="tool:If" conditionExpression="[selection.oclAsType(uml::UseCase).subject->size() = 0/]">
                           <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_UseCase']" containerViewExpression="var:diagram"/>
                         </subModelOperations>
                       </cases>
