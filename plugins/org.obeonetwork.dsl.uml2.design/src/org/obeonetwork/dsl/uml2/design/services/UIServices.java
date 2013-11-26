@@ -184,19 +184,16 @@ public class UIServices {
 	 * @param containerView
 	 *            Container view
 	 */
-	public boolean isValidElementForContainerView(final EObject container, final EObject semanticElement,
-			final EObject containerView) {
-		if (containerView instanceof DSemanticDecorator) {
-			final Session session = SessionManager.INSTANCE.getSession(container);
+	public boolean isValidElementForContainerView(final Element container, final Element semanticElement,
+			final DSemanticDecorator containerView) {
+		final Session session = SessionManager.INSTANCE.getSession(container);
 
-			// Get all available mappings applicable for the selected element in the
-			// current container
-			List<DiagramElementMapping> semanticElementMappings = getMappings(semanticElement,
-					(DSemanticDecorator)containerView, session);
+		// Get all available mappings applicable for the selected element in the
+		// current container
+		List<DiagramElementMapping> semanticElementMappings = getMappings(semanticElement,
+				(DSemanticDecorator)containerView, session);
 
-			return semanticElementMappings.size() > 0;
-		}
-		return false;
+		return semanticElementMappings.size() > 0;
 	}
 
 	/**
