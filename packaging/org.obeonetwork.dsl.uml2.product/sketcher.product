@@ -119,11 +119,8 @@ The user is not authorized to install or make a technical means to hide within t
    </plugins>
 
    <features>
+      <feature id="org.obeonetwork.dsl.sysml.runtime.feature"/>
       <feature id="org.obeonetwork.dsl.uml2.runtime.feature"/>
-      <feature id="fr.obeo.dsl.viewpoint.runtime.acceleo2"/>
-      <feature id="fr.obeo.dsl.viewpoint.runtime.acceleo"/>
-      <feature id="fr.obeo.dsl.viewpoint.runtime.ide.ui"/>
-      <feature id="fr.obeo.dsl.viewpoint.runtime"/>
       <feature id="org.eclipse.platform"/>
       <feature id="org.eclipse.epp.mpc"/>
       <feature id="org.eclipse.uml2"/>

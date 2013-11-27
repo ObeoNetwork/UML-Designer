@@ -11,7 +11,7 @@ Contributors:
 -->
 <feature
       id="org.obeonetwork.dsl.uml2.runtime.sdk.feature"
-      label="UML Designer (based on Sirius)"
+      label="UML Designer SDK (based on Sirius)"
       version="4.0.0.qualifier"
       provider-name="Obeo">
 

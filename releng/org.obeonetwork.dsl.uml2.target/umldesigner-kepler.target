@@ -14,6 +14,7 @@
 <unit id="org.eclipse.gmf.runtime.notation.sdk.feature.group" version="1.7.0.201306101425"/>
 <unit id="org.eclipse.gmf.runtime.sdk.feature.group" version="1.7.0.201306111432"/>
 <unit id="org.eclipse.uml2.sdk.feature.group" version="4.1.1.v20130902-0826"/>
+<unit id="org.eclipse.papyrus.sysml.feature.feature.group" version="0.10.1.v201309181302"/>
 <unit id="org.eclipse.epp.mpc.feature.group" version="1.2.1.I20130917-2019"/>
 <unit id="org.eclipse.equinox.executable.feature.group" version="3.6.0.v20130807-1835"/>
 <repository location="http://download.eclipse.org/releases/kepler"/>

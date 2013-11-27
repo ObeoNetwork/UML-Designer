@@ -13,6 +13,7 @@ location "http://download.eclipse.org/releases/kepler" {
 	org.eclipse.gmf.runtime.notation.sdk.feature.group
 	org.eclipse.gmf.runtime.sdk.feature.group
 	org.eclipse.uml2.sdk.feature.group
+	org.eclipse.papyrus.sysml.feature.feature.group
 	org.eclipse.epp.mpc.feature.group
 	org.eclipse.equinox.executable.feature.group
 }
