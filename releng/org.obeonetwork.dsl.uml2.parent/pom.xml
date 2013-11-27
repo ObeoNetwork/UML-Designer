@@ -47,9 +47,4 @@ Contributors:
     <!-- Build update-sites -->
     <module>${root-path}/packaging/org.obeonetwork.dsl.uml2.update</module>
   </modules>
-
-  <build>
-    <plugins>
-    </plugins>
-  </build>
 </project>
