@@ -599,7 +599,7 @@ public class SequenceServices {
 	 *            Operation associated with the message
 	 */
 	public void createSynchronousMessage(Interaction interaction, NamedElement sourceFragment,
-			NamedElement targetFragment, boolean createExecution, NamedElement startingEndPredecessor,
+			NamedElement targetFragment, Boolean createExecution, NamedElement startingEndPredecessor,
 			NamedElement finishingEndPredecessor, Operation operation) {
 		final Lifeline target = getLifeline(targetFragment);
 		final BehaviorExecutionSpecification predecessorExecution = getExecution((InteractionFragment)startingEndPredecessor);
@@ -1997,6 +1997,41 @@ public class SequenceServices {
 	public List<Dependency> getClientDependencies(Lifeline element) {
 		// [lifeline.oclAsType(uml::Lifeline).clientDependencies/]
 		return element.getClientDependencies();
+	}
+
+	public boolean isValidMessageEnd(Element element) {
+		// [preTarget->filter(uml::Lifeline).represents.type<>null or
+		// preTarget->filter(uml::ExecutionSpecification).covered.represents.type<>null or
+		// preTarget->filter(uml::Lifeline).clientDependency.supplier.oclAsType(uml::Property).classifier<>null
+		// or
+		// preTarget->filter(uml::ExecutionSpecification).covered.clientDependency.supplier.classifier<>null/]
+		return (element instanceof Lifeline && ((Lifeline)element).getRepresents() != null)
+				|| (element instanceof ExecutionSpecification && isCoveredTypeSet(((ExecutionSpecification)element)))
+				|| (element instanceof Lifeline && ((Lifeline)element).getRepresents() != null);
+	}
+
+	private boolean isCoveredTypeSet(ExecutionSpecification element) {
+		if (element == null)
+			return false;
+		for (Lifeline covered : element.getCovereds()) {
+			ConnectableElement connectedElement = covered.getRepresents();
+			if (connectedElement.getTemplateParameter() != null)
+				return true;
+		}
+		return false;
+	}
+
+	private boolean isPropertyClassifierSet(Lifeline element) {
+		if (element == null)
+			return false;
+		for (Dependency dependency : element.getClientDependencies()) {
+			for (NamedElement supplier : dependency.getSuppliers()) {
+				if (supplier instanceof Property) {
+					return ((Property)supplier).getClass_() != null;
+				}
+			}
+		}
+		return false;
 	}
 
 }
