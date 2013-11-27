@@ -673,26 +673,26 @@ public class SequenceServices {
 	 *            a model element
 	 * @return all classes and their containers of the UML model
 	 */
-	public Set<EObject> getAllClassesAndContainers(EObject element) {
-		EObject rootContainer = EcoreUtil.getRootContainer(element);
+	public Set<Element> getAllClassesAndContainers(Element element) {
+		Element rootContainer = (Element)EcoreUtil.getRootContainer(element);
 		Iterator<EObject> eObjects = rootContainer.eAllContents();
 
-		Set<EObject> result = new HashSet<EObject>();
+		Set<Element> result = new HashSet<Element>();
 
 		result.add(rootContainer);
 
 		while (eObjects.hasNext()) {
-			EObject eObject = eObjects.next();
+			Element eObject = (Element)eObjects.next();
 			if (eObject instanceof org.eclipse.uml2.uml.Class && !(eObject instanceof OpaqueBehavior)) {
 				result.add(eObject);
-				Set<EObject> containers = getAllContainers(eObject);
+				Set<Element> containers = getAllContainers(eObject);
 				result.addAll(containers);
 			}
 			if (eObject instanceof Property) {
 				Property property = (Property)eObject;
 				if (property.getType() instanceof org.eclipse.uml2.uml.Class) {
 					result.add(property);
-					Set<EObject> containers = getAllContainers(property);
+					Set<Element> containers = getAllContainers(property);
 					result.addAll(containers);
 				}
 			}
@@ -708,26 +708,26 @@ public class SequenceServices {
 	 *            a model element
 	 * @return all actors and their containers of the UML model
 	 */
-	public Set<EObject> getAllActorsAndContainers(EObject element) {
-		EObject rootContainer = EcoreUtil.getRootContainer(element);
+	public Set<Element> getAllActorsAndContainers(EObject element) {
+		Element rootContainer = (Element)EcoreUtil.getRootContainer(element);
 		Iterator<EObject> eObjects = rootContainer.eAllContents();
 
-		Set<EObject> result = new HashSet<EObject>();
+		Set<Element> result = new HashSet<Element>();
 
 		result.add(rootContainer);
 
 		while (eObjects.hasNext()) {
-			EObject eObject = eObjects.next();
+			Element eObject = (Element)eObjects.next();
 			if (eObject instanceof Actor) {
 				result.add(eObject);
-				Set<EObject> containers = getAllContainers(eObject);
+				Set<Element> containers = getAllContainers(eObject);
 				result.addAll(containers);
 			}
 			if (eObject instanceof Property) {
 				Property property = (Property)eObject;
 				if (property.getType() instanceof Actor) {
 					result.add(property);
-					Set<EObject> containers = getAllContainers(property);
+					Set<Element> containers = getAllContainers(property);
 					result.addAll(containers);
 				}
 			}
@@ -743,13 +743,13 @@ public class SequenceServices {
 	 *            an eObject
 	 * @return a list of containers
 	 */
-	private Set<EObject> getAllContainers(EObject eObject) {
-		EObject container = eObject.eContainer();
-		Set<EObject> result = new HashSet<EObject>();
+	private Set<Element> getAllContainers(Element eObject) {
+		Element container = (Element)eObject.eContainer();
+		Set<Element> result = new HashSet<Element>();
 
 		while (container.eContainer() != null) {
 			result.add(container);
-			container = container.eContainer();
+			container = (Element)container.eContainer();
 		}
 
 		return result;
@@ -1987,6 +1987,16 @@ public class SequenceServices {
 		}
 
 		return result;
+	}
+
+	public boolean isRepresentingProperty(Lifeline element) {
+		// [getRepresents()<>null/]
+		return element.getRepresents() != null;
+	}
+
+	public List<Dependency> getClientDependencies(Lifeline element) {
+		// [lifeline.oclAsType(uml::Lifeline).clientDependencies/]
+		return element.getClientDependencies();
 	}
 
 }
