@@ -4775,32 +4775,32 @@
         <defaultBackground>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
         </defaultBackground>
-        <backgroundConditionalStyle predicateExpression="[ownedComment.body=null/]">
+        <backgroundConditionalStyle predicateExpression="service:existComments">
           <style backgroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='lighter%20blue']"/>
         </backgroundConditionalStyle>
-        <ownedSubLines name="DT_ElementLine" reusedSubLines="//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Documentation%20Table']/@ownedLineMappings[name='DT_PackageLine']/@ownedSubLines[name='DT_ElementLine']" reusedInMappings="//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Documentation%20Table']/@ownedLineMappings[name='DT_PackageLine']/@ownedSubLines[name='DT_ElementLine']" domainClass="uml.Element" semanticCandidatesExpression="[eContents()->select(filter(uml::Comment)->size()=0)/]">
+        <ownedSubLines name="DT_ElementLine" reusedSubLines="//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Documentation%20Table']/@ownedLineMappings[name='DT_PackageLine']/@ownedSubLines[name='DT_ElementLine']" reusedInMappings="//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Documentation%20Table']/@ownedLineMappings[name='DT_PackageLine']/@ownedSubLines[name='DT_ElementLine']" domainClass="uml.Element" semanticCandidatesExpression="[eContents()->select(not oclIsTypeOf(uml::Comment))/]">
           <defaultBackground>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </defaultBackground>
-          <backgroundConditionalStyle predicateExpression="[ownedComment.body=null/]">
+          <backgroundConditionalStyle predicateExpression="service:existComments">
             <style backgroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='lighter%20blue']"/>
           </backgroundConditionalStyle>
         </ownedSubLines>
       </ownedLineMappings>
-      <ownedColumnMappings name="DT_CommentColumn" headerLabelExpression="Comments" featureName="ownedComment" labelExpression="[lineSemantic.ownedComment.body->first()/]">
+      <ownedColumnMappings name="DT_CommentColumn" headerLabelExpression="Comments" featureName="ownedComment" labelExpression="[lineSemantic.getComment()/]">
         <directEdit>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
           <variables name="root" documentation="The semantic element of the table."/>
           <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:element">
-            <subModelOperations xsi:type="tool:If" conditionExpression="[ownedComment = null/]">
+            <subModelOperations xsi:type="tool:If" conditionExpression="service:notExistComments">
               <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Comment" referenceName="ownedComment">
                 <subModelOperations xsi:type="tool:SetValue" featureName="body" valueExpression="var:0"/>
                 <subModelOperations xsi:type="tool:SetValue" featureName="annotatedElement" valueExpression="feature:eContainer"/>
               </subModelOperations>
             </subModelOperations>
-            <subModelOperations xsi:type="tool:If" conditionExpression="[ownedComment &lt;> null/]">
-              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[element.ownedComment->first()/]">
+            <subModelOperations xsi:type="tool:If" conditionExpression="service:existComments">
+              <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:getComment">
                 <subModelOperations xsi:type="tool:SetValue" featureName="body" valueExpression="var:0"/>
               </subModelOperations>
             </subModelOperations>
@@ -4945,6 +4945,7 @@
       </optionalLayers>
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.DebugServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.UMLServices"/>
   </ownedViewpoints>
   <userColorsPalettes name="UMLPalette">
     <entries xsi:type="description:UserFixedColor" red="235" green="235" blue="235" name="Nested Package Foreground"/>

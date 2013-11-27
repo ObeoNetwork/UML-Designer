@@ -1423,4 +1423,18 @@ public class UMLServices {
 				Model.class)));
 		return packages;
 	}
+
+	public boolean existComments(Element element) {
+		return element.getOwnedComments() != null && element.getOwnedComments().size() > 0;
+	}
+
+	public boolean notExistComments(Element element) {
+		return !existComments(element);
+	}
+
+	public String getComment(Element element) {
+		if (element.getOwnedComments().size() > 0)
+			return element.getOwnedComments().get(0).getBody();
+		return null;
+	}
 }
