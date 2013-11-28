@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
 <plugin>
-  <extension point="fr.obeo.dsl.viewpoint.componentization">
-    <component class="org.obeonetwork.dsl.uml2.profile.design.Activator"
-               id="org.obeonetwork.dsl.uml2.profile.design"
-	       name="profile">
-    </component>
+  <extension
+        point="org.eclipse.sirius.componentization">
+     <component
+           class="org.obeonetwork.dsl.uml2.profile.design.Activator"
+           id="org.obeonetwork.dsl.uml2.profile.design"
+           name="profile">
+     </component>
   </extension>
   <extension
         point="org.eclipse.emf.validation.constraintProviders">

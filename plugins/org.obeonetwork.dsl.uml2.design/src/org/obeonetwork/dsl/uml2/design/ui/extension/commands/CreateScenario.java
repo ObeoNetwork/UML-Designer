@@ -11,20 +11,19 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription;
+import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.obeonetwork.dsl.uml2.design.services.LabelServices;
 import org.obeonetwork.dsl.uml2.design.services.internal.NamedElementServices;
-
-import fr.obeo.dsl.viewpoint.DRepresentation;
-import fr.obeo.dsl.viewpoint.business.api.dialect.DialectManager;
-import fr.obeo.dsl.viewpoint.business.api.session.Session;
-import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
-import fr.obeo.dsl.viewpoint.description.RepresentationDescription;
-import fr.obeo.dsl.viewpoint.diagram.sequence.description.SequenceDiagramDescription;
-import fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectUIManager;
 
 public class CreateScenario extends AbstractHandler {
 	// TODO To remove
@@ -66,7 +65,7 @@ public class CreateScenario extends AbstractHandler {
 						Interaction interaction) {
 
 					for (RepresentationDescription representation : DialectManager.INSTANCE
-							.getAvailableRepresentationDescriptions(session.getSelectedViewpoints(),
+							.getAvailableRepresentationDescriptions(session.getSelectedViewpoints(false),
 									interaction)) {
 						if ("Sequence Diagram".equals(representation.getName())
 								&& representation instanceof SequenceDiagramDescription)

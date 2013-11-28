@@ -11,10 +11,7 @@
 package org.obeonetwork.dsl.uml2.design.services;
 
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Status;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
-
-import fr.obeo.acceleo.tools.AcceleoToolsPlugin;
 
 /**
  * This service provides methods to log info, warning and errors in the error log view.
@@ -32,8 +29,7 @@ public class LogServices {
 	 *            the stack trace.
 	 */
 	public void error(String s, Throwable t) {
-		final IStatus status = new Status(IStatus.ERROR, UMLDesignerPlugin.PLUGIN_ID, s, t);
-		AcceleoToolsPlugin.getDefault().log(status);
+		UMLDesignerPlugin.log(IStatus.ERROR, s, t);
 	}
 
 	/**
@@ -45,8 +41,7 @@ public class LogServices {
 	 *            the stack trace.
 	 */
 	public void warning(String s, Throwable t) {
-		final IStatus status = new Status(IStatus.WARNING, UMLDesignerPlugin.PLUGIN_ID, s, t);
-		AcceleoToolsPlugin.getDefault().log(status);
+		UMLDesignerPlugin.log(IStatus.WARNING, s, t);
 	}
 
 	/**
@@ -56,8 +51,7 @@ public class LogServices {
 	 *            the message.
 	 */
 	public void info(String s) {
-		final IStatus status = new Status(IStatus.INFO, UMLDesignerPlugin.PLUGIN_ID, s);
-		AcceleoToolsPlugin.getDefault().log(status);
+		UMLDesignerPlugin.log(IStatus.INFO, s, null);
 	}
 
 }

@@ -16,6 +16,23 @@ import java.util.List;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.business.internal.helper.task.operations.CreateViewTask;
+import org.eclipse.sirius.business.internal.metamodel.spec.DNodeContainerSpec;
+import org.eclipse.sirius.business.internal.metamodel.spec.DSemanticDiagramSpec;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
+import org.eclipse.sirius.tools.api.command.CommandContext;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DSemanticDiagram;
+import org.eclipse.sirius.viewpoint.description.AbstractNodeMapping;
+import org.eclipse.sirius.viewpoint.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.description.tool.CreateView;
+import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.ComponentRealization;
@@ -27,24 +44,6 @@ import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Usage;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
 import org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel.Messages;
-
-import fr.obeo.dsl.viewpoint.DDiagramElement;
-import fr.obeo.dsl.viewpoint.DRepresentation;
-import fr.obeo.dsl.viewpoint.DSemanticDecorator;
-import fr.obeo.dsl.viewpoint.DSemanticDiagram;
-import fr.obeo.dsl.viewpoint.business.api.session.Session;
-import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
-import fr.obeo.dsl.viewpoint.business.internal.helper.task.operations.CreateViewTask;
-import fr.obeo.dsl.viewpoint.business.internal.metamodel.spec.DNodeContainerSpec;
-import fr.obeo.dsl.viewpoint.business.internal.metamodel.spec.DSemanticDiagramSpec;
-import fr.obeo.dsl.viewpoint.description.AbstractNodeMapping;
-import fr.obeo.dsl.viewpoint.description.DiagramElementMapping;
-import fr.obeo.dsl.viewpoint.description.tool.CreateView;
-import fr.obeo.dsl.viewpoint.description.tool.ToolFactory;
-import fr.obeo.dsl.viewpoint.tools.api.command.CommandContext;
-import fr.obeo.mda.ecore.extender.business.api.accessor.ModelAccessor;
-import fr.obeo.mda.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
-import fr.obeo.mda.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
 
 /**
  * A set of services to handle graphically Component diagram actions and tests.

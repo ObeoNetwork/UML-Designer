@@ -18,7 +18,7 @@
         <acceleoCompiler 
             sourceFolder="${target.folder}"
             outputFolder="${target.folder}"
-            dependencies="${target.folder}/../../org.eclipse.uml2.uml;"
+            dependencies=""
             binaryResource="false"
             packagesToRegister="">
         </acceleoCompiler>

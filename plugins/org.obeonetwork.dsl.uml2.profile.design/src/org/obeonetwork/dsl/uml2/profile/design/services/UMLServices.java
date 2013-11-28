@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
@@ -33,8 +34,6 @@ import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.resource.UMLResource;
 import org.obeonetwork.dsl.uml2.design.services.LabelServices;
 import org.obeonetwork.dsl.uml2.design.services.LogServices;
-
-import fr.obeo.dsl.viewpoint.AbstractDNode;
 
 /**
  * UML services.
@@ -189,7 +188,7 @@ public class UMLServices {
 		}
 		if (children_p instanceof Classifier) {
 			for (Generalization generalizationInChild : ((Classifier) children_p)
-					.getGeneralizations() ) {
+					.getGeneralizations()) {
 				final Classifier superClass = generalizationInChild
 						.getGeneral();
 				if (isSubClassOf(parent_p, superClass)) {
@@ -268,7 +267,7 @@ public class UMLServices {
 	 */
 	public static Property getAttributeByName(final Class drMetaclassToTest,
 			final String propertyName) {
-		for (Property att : drMetaclassToTest.getAllAttributes() ) {
+		for (Property att : drMetaclassToTest.getAllAttributes()) {
 			if (att.getName().equals(propertyName))
 				return att;
 		}

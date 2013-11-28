@@ -33,6 +33,8 @@ import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
 import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ITableOperations;
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.OperationsTableSettings;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Profile;
@@ -43,9 +45,6 @@ import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
-
-import fr.obeo.dsl.viewpoint.business.api.session.Session;
-import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
 
 /**
  * @author <a href="mailto:melanie.bats@obeo.fr">Melanie Bats</a>

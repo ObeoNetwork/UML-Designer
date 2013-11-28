@@ -4,8 +4,8 @@ Bundle-SymbolicName: org.obeonetwork.gmf.runtime.diagram.ui.extension;singleton=
 Bundle-Version: 4.0.0.qualifier
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- fr.obeo.dsl.viewpoint.diagram,
- fr.obeo.dsl.common.ui,
+ org.eclipse.sirius.diagram,
+ org.eclipse.sirius.common.ui,
  org.eclipse.gmf.runtime.diagram.ui
 Bundle-Activator: org.obeonetwork.gmf.runtime.diagram.ui.extension.ExtensionActivator
 Bundle-Localization: plugin

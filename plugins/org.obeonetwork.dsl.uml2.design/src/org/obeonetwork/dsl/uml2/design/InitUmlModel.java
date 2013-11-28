@@ -14,12 +14,11 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
+import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel.UmlProjectUtils;
-
-import fr.obeo.dsl.common.tools.api.util.Option;
-import fr.obeo.dsl.viewpoint.business.api.modelingproject.ModelingProject;
 
 /**
  * An operation to create and initialize a new session with empty semantic UML model.

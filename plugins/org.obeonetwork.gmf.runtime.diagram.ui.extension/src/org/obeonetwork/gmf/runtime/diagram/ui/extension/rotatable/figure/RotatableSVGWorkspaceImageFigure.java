@@ -13,18 +13,17 @@ package org.obeonetwork.gmf.runtime.diagram.ui.extension.rotatable.figure;
 
 import java.util.Iterator;
 
+import org.eclipse.sirius.diagram.ui.tools.api.figure.SVGWorkspaceImageFigure;
+import org.eclipse.sirius.viewpoint.ContainerStyle;
+import org.eclipse.sirius.viewpoint.CustomStyle;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.eclipse.sirius.viewpoint.WorkspaceImage;
 import org.obeonetwork.gmf.runtime.diagram.ui.extension.ExtensionActivator;
 import org.obeonetwork.gmf.runtime.diagram.ui.extension.rotatable.NodeImageExtension;
 
-import fr.obeo.dsl.viewpoint.ContainerStyle;
-import fr.obeo.dsl.viewpoint.CustomStyle;
-import fr.obeo.dsl.viewpoint.ViewpointFactory;
-import fr.obeo.dsl.viewpoint.WorkspaceImage;
-import fr.obeo.dsl.viewpoint.diagram.ui.tools.api.figure.SVGWorkspaceImageFigure;
-
 /**
- * Rotatable Workspace Image Figure : switch mode ROTATION or IMAGE, rotate the specific image or display four
- * images in North South East and West.
+ * Rotatable Workspace Image Figure : switch mode ROTATION or IMAGE, rotate the
+ * specific image or display four images in North South East and West.
  * 
  * @author nlepine
  * @author hmarchadour
@@ -47,8 +46,8 @@ public class RotatableSVGWorkspaceImageFigure extends SVGWorkspaceImageFigure {
 	 * @param path
 	 *            the path of the top image.
 	 */
-	public RotatableSVGWorkspaceImageFigure(int mode, String topImgPath, String leftImgPath,
-			String bottomImgPath, String rightImgPath) {
+	public RotatableSVGWorkspaceImageFigure(int mode, String topImgPath,
+			String leftImgPath, String bottomImgPath, String rightImgPath) {
 		super();
 
 		this.topImgPath = topImgPath;
@@ -68,10 +67,12 @@ public class RotatableSVGWorkspaceImageFigure extends SVGWorkspaceImageFigure {
 	 */
 	public void refreshFigure(final CustomStyle imageStyle) {
 		boolean found = false;
-		Iterator<NodeImageExtension> iterator = ExtensionActivator.getDefault().getImageExtensions().iterator();
+		Iterator<NodeImageExtension> iterator = ExtensionActivator.getDefault()
+				.getImageExtensions().iterator();
 		while (iterator.hasNext() && !found) {
 			NodeImageExtension desc = (NodeImageExtension) iterator.next();
-			if (imageStyle.getId() != null && imageStyle.getId().equals(desc.getId())) {
+			if (imageStyle.getId() != null
+					&& imageStyle.getId().equals(desc.getId())) {
 				if (currentImgPath != null) {
 					if (currentImgPath.equals(bottomImgPath)) {
 						currentImgPath = desc.getBottomImage();
@@ -97,7 +98,8 @@ public class RotatableSVGWorkspaceImageFigure extends SVGWorkspaceImageFigure {
 	}
 
 	private void refreshFigure() {
-		WorkspaceImage createWorkspaceImage = ViewpointFactory.eINSTANCE.createWorkspaceImage();
+		WorkspaceImage createWorkspaceImage = ViewpointFactory.eINSTANCE
+				.createWorkspaceImage();
 		createWorkspaceImage.setWorkspacePath(currentImgPath);
 		refreshFigure(createWorkspaceImage);
 	}

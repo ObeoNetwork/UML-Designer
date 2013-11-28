@@ -17,17 +17,17 @@ import org.eclipse.gef.Request;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.internal.edit.parts.DNodeEditPart;
+import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
+import org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DStylizable;
 import org.obeonetwork.gmf.runtime.diagram.ui.extension.rotatable.figure.RotatableNodeFigure;
 
-import fr.obeo.dsl.viewpoint.DDiagramElement;
-import fr.obeo.dsl.viewpoint.DStylizable;
-import fr.obeo.dsl.viewpoint.diagram.internal.edit.parts.DNodeEditPart;
-import fr.obeo.dsl.viewpoint.diagram.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
-import fr.obeo.dsl.viewpoint.diagram.tools.api.graphical.edit.styles.StyleConfiguration;
-import fr.obeo.dsl.viewpoint.diagram.ui.tools.api.figure.anchor.AnchorProvider;
-
 /**
- * @author Hugo Marchadour <a href="mailto:hugo.marchadour@obeo.fr">hugo.marchadour@obeo.fr</a>
+ * @author Hugo Marchadour <a
+ *         href="mailto:hugo.marchadour@obeo.fr">hugo.marchadour@obeo.fr</a>
  */
 public class RotatableNodeEditPart extends DNodeEditPart {
 
@@ -52,10 +52,13 @@ public class RotatableNodeEditPart extends DNodeEditPart {
 		if (eObj instanceof DStylizable && eObj instanceof DDiagramElement) {
 			final DStylizable viewNode = (DStylizable) eObj;
 			final StyleConfiguration styleConfiguration = IStyleConfigurationRegistry.INSTANCE
-					.getStyleConfiguration(((DDiagramElement) eObj).getDiagramElementMapping(),
+					.getStyleConfiguration(
+							((DDiagramElement) eObj).getDiagramElementMapping(),
 							viewNode.getStyle());
-			final AnchorProvider anchorProvider = styleConfiguration.getAnchorProvider();
-			result = new RotatableNodeFigure(getMapMode().DPtoLP(5), getMapMode().DPtoLP(5), anchorProvider);
+			final AnchorProvider anchorProvider = styleConfiguration
+					.getAnchorProvider();
+			result = new RotatableNodeFigure(getMapMode().DPtoLP(5),
+					getMapMode().DPtoLP(5), anchorProvider);
 			nodePlate = result;
 		}
 		return result;
@@ -65,7 +68,8 @@ public class RotatableNodeEditPart extends DNodeEditPart {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public ConnectionAnchor getTargetConnectionAnchor(ConnectionEditPart connEditPart) {
+	public ConnectionAnchor getTargetConnectionAnchor(
+			ConnectionEditPart connEditPart) {
 		return nodePlate.getTargetConnectionAnchorAt(null);
 	}
 

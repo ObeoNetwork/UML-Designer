@@ -14,19 +14,18 @@ import org.eclipse.jface.dialogs.InputDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.window.Window;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.sirius.ui.tools.api.Messages;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.obeonetwork.dsl.uml2.design.services.internal.CreateElementLabelFromModelExplorerSwitch;
-
-import fr.obeo.dsl.viewpoint.DRepresentation;
-import fr.obeo.dsl.viewpoint.business.api.dialect.DialectManager;
-import fr.obeo.dsl.viewpoint.business.api.session.Session;
-import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
-import fr.obeo.dsl.viewpoint.description.RepresentationDescription;
-import fr.obeo.dsl.viewpoint.ui.business.api.dialect.DialectUIManager;
-import fr.obeo.dsl.viewpoint.ui.tools.api.Messages;
 
 public abstract class AbstractCreateDiagram<T extends PackageableElement> extends AbstractHandler {
 
@@ -48,7 +47,8 @@ public abstract class AbstractCreateDiagram<T extends PackageableElement> extend
 						// Create activity
 						final T semanticElement = createSemanticObject();
 						pkg.getPackagedElements().add(semanticElement);
-						semanticElement.setName(new CreateElementLabelFromModelExplorerSwitch().getNewLabel(semanticElement));
+						semanticElement.setName(new CreateElementLabelFromModelExplorerSwitch()
+								.getNewLabel(semanticElement));
 
 						// Get sequence diagram representation description
 						final RepresentationDescription description = getDiagramDescription(session,

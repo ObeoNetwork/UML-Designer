@@ -17,13 +17,13 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart;
 import org.eclipse.gmf.runtime.notation.View;
-
-import fr.obeo.dsl.viewpoint.diagram.edit.api.part.IStyleEditPart;
+import org.eclipse.sirius.diagram.edit.api.part.IStyleEditPart;
 
 /**
  * @author hmarchadour
  */
-public class RotatableImageBasedOnFirstSourceConnectionEditPart extends AbstractRotatableImageEditPart implements IStyleEditPart {
+public class RotatableImageBasedOnFirstSourceConnectionEditPart extends
+		AbstractRotatableImageEditPart implements IStyleEditPart {
 
 	private static final int BASE_ANGLE = 45;
 
@@ -45,7 +45,8 @@ public class RotatableImageBasedOnFirstSourceConnectionEditPart extends Abstract
 		EditPart parentEditPart = getParent();
 		if (parentEditPart instanceof GraphicalEditPart) {
 			GraphicalEditPart parentGraphicalEditPart = (GraphicalEditPart) parentEditPart;
-			List sourceConnections = parentGraphicalEditPart.getSourceConnections();
+			List sourceConnections = parentGraphicalEditPart
+					.getSourceConnections();
 			if (sourceConnections.size() > 0) {
 				Object sourceConnection = sourceConnections.get(0);
 				if (sourceConnection instanceof ConnectionNodeEditPart) {
@@ -55,9 +56,11 @@ public class RotatableImageBasedOnFirstSourceConnectionEditPart extends Abstract
 					double angle = getFirstSegmentAngle(polylineConnection);
 					if (angle > BASE_ANGLE && angle <= BASE_ANGLE * 3) {
 						setFigureAtBottom();
-					} else if (angle > BASE_ANGLE * 3 && angle <= BASE_ANGLE * 5) {
+					} else if (angle > BASE_ANGLE * 3
+							&& angle <= BASE_ANGLE * 5) {
 						setFigureAtRight();
-					} else if (angle > BASE_ANGLE * 5 && angle <= BASE_ANGLE * 7) {
+					} else if (angle > BASE_ANGLE * 5
+							&& angle <= BASE_ANGLE * 7) {
 						setFigureAtTop();
 					} else if ((angle > BASE_ANGLE * 7 && angle <= BASE_ANGLE * 8)
 							|| (angle >= 0 && angle <= BASE_ANGLE * 3)) {

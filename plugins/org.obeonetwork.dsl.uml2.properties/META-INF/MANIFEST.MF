@@ -12,7 +12,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.uml2.uml,
  org.eclipse.uml2.uml.edit,
  org.obeonetwork.dsl.uml2.design;bundle-version="2.0.0",
- fr.obeo.dsl.viewpoint,
+ org.eclipse.sirius,
  com.google.guava
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ActivationPolicy: lazy

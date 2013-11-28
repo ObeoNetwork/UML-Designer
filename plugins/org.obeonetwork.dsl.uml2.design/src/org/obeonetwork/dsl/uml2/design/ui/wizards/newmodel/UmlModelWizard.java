@@ -18,11 +18,10 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.common.tools.api.util.Option;
+import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.ui.IWorkbench;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
-
-import fr.obeo.dsl.common.tools.api.util.Option;
-import fr.obeo.dsl.viewpoint.ui.tools.api.project.ModelingProjectManager;
 
 /**
  * The wizard to create a new UML designer model.

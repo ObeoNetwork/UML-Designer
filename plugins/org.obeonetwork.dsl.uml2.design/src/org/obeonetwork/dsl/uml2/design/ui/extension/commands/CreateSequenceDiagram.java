@@ -1,12 +1,11 @@
 package org.obeonetwork.dsl.uml2.design.ui.extension.commands;
 
+import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.UMLFactory;
-
-import fr.obeo.dsl.viewpoint.business.api.dialect.DialectManager;
-import fr.obeo.dsl.viewpoint.business.api.session.Session;
-import fr.obeo.dsl.viewpoint.description.RepresentationDescription;
-import fr.obeo.dsl.viewpoint.diagram.sequence.description.SequenceDiagramDescription;
 
 public class CreateSequenceDiagram extends AbstractCreateDiagram<Interaction> {
 
@@ -32,7 +31,7 @@ public class CreateSequenceDiagram extends AbstractCreateDiagram<Interaction> {
 	@Override
 	protected RepresentationDescription getDiagramDescription(Session session, Interaction interaction) {
 		for (RepresentationDescription representation : DialectManager.INSTANCE
-				.getAvailableRepresentationDescriptions(session.getSelectedViewpoints(), interaction)) {
+				.getAvailableRepresentationDescriptions(session.getSelectedViewpoints(false), interaction)) {
 			if ("Sequence Diagram".equals(representation.getName())
 					&& representation instanceof SequenceDiagramDescription)
 				return representation;

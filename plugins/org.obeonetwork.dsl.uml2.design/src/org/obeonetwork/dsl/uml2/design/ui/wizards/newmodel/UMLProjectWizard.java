@@ -12,10 +12,9 @@ package org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
-
-import fr.obeo.dsl.viewpoint.ui.tools.api.project.ModelingProjectManager;
 
 /**
  * The wizard to create a new UML designer project.

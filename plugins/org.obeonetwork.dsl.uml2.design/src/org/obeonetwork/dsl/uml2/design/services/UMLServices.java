@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
@@ -26,6 +27,17 @@ import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.business.internal.metamodel.spec.DSemanticDiagramSpec;
+import org.eclipse.sirius.viewpoint.AbstractDNode;
+import org.eclipse.sirius.viewpoint.DDiagram;
+import org.eclipse.sirius.viewpoint.DDiagramElement;
+import org.eclipse.sirius.viewpoint.DEdge;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.EdgeTarget;
+import org.eclipse.sirius.viewpoint.description.DiagramDescription;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.ActivityFinalNode;
@@ -103,18 +115,6 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-
-import fr.obeo.dsl.viewpoint.AbstractDNode;
-import fr.obeo.dsl.viewpoint.DDiagram;
-import fr.obeo.dsl.viewpoint.DDiagramElement;
-import fr.obeo.dsl.viewpoint.DEdge;
-import fr.obeo.dsl.viewpoint.DRepresentation;
-import fr.obeo.dsl.viewpoint.DSemanticDecorator;
-import fr.obeo.dsl.viewpoint.EdgeTarget;
-import fr.obeo.dsl.viewpoint.business.api.session.Session;
-import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
-import fr.obeo.dsl.viewpoint.business.internal.metamodel.spec.DSemanticDiagramSpec;
-import fr.obeo.dsl.viewpoint.description.DiagramDescription;
 
 /**
  * Services for UML.
@@ -379,7 +379,7 @@ public class UMLServices {
 		// Add the resource to the session's semantic resources
 		final Session session = SessionManager.INSTANCE.getSession(model);
 		if (session != null) {
-			session.addSemanticResource(resource, false);
+			session.addSemanticResource(resource.getURI(), new NullProgressMonitor());
 		}
 		final Package root = (Package)EcoreUtil.getObjectByType(resource.getContents(),
 				UMLPackage.Literals.PACKAGE);
@@ -481,7 +481,7 @@ public class UMLServices {
 		Resource resource = pkg.eResource();
 		final Session session = SessionManager.INSTANCE.getSession(model);
 		if (session != null) {
-			session.addSemanticResource(resource, false);
+			session.addSemanticResource(resource.getURI(), new NullProgressMonitor());
 		}
 		// We check if a package import already exists
 		if (!model.getImportedPackages().contains(pkg)) {
