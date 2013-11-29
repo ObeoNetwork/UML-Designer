@@ -44,18 +44,14 @@
 <repository location="http://download.eclipse.org/modeling/emft/eef/updates/nightly/1.2/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.sirius.runtime.feature.group" version="0.9.0.201311151146"/>
-<unit id="org.eclipse.sirius.runtime.acceleo.feature.group" version="0.9.0.201311151146"/>
-<unit id="org.eclipse.sirius.runtime.ide.ui.acceleo.feature.group" version="0.9.0.201311151146"/>
-<unit id="org.eclipse.sirius.runtime.ide.eef.feature.group" version="0.9.0.201311151146"/>
-<unit id="org.eclipse.sirius.runtime.ide.ui.feature.group" version="0.9.0.201311151146"/>
-<unit id="org.eclipse.sirius.specifier.ide.ui.feature.group" version="0.9.0.201311151146"/>
-<unit id="org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group" version="0.9.0.201311151146"/>
-<repository location="http://download.eclipse.org/sirius/updates/stable/0.9.0-S20131115-0601/kepler"/>
-</location>
-<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="fr.obeo.dsl.viewpoint.runtime.ide.tests.support.feature.group" version="0.1.0.201311271708"/>
-<repository location="http://update.obeo.fr/integration/viewpoint/master/kepler/repository/"/>
+<unit id="org.eclipse.sirius.runtime.feature.group" version="0.9.0.201311251702"/>
+<unit id="org.eclipse.sirius.runtime.acceleo.feature.group" version="0.9.0.201311251702"/>
+<unit id="org.eclipse.sirius.runtime.ide.ui.acceleo.feature.group" version="0.9.0.201311251702"/>
+<unit id="org.eclipse.sirius.runtime.ide.eef.feature.group" version="0.9.0.201311251702"/>
+<unit id="org.eclipse.sirius.runtime.ide.ui.feature.group" version="0.9.0.201311251702"/>
+<unit id="org.eclipse.sirius.specifier.ide.ui.feature.group" version="0.9.0.201311251702"/>
+<unit id="org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group" version="0.9.0.201311251702"/>
+<repository location="http://download.eclipse.org/sirius/updates/nightly/0.9"/>
 </location>
 </locations>
 </target>
