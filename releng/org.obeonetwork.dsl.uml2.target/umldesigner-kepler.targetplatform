@@ -53,17 +53,22 @@ location "http://download.eclipse.org/modeling/emft/eef/updates/nightly/1.2/" {
 	org.eclipse.emf.eef.runtime
 }
 
-location "http://www.obeo.fr/download/release/designer/6.2/latest/kepler/update" {
+// Sirius
+location "http://download.eclipse.org/sirius/updates/nightly/0.9" {
 	with source, requirements
 	//runtime
-	fr.obeo.dsl.viewpoint.runtime.feature.group
-	fr.obeo.dsl.viewpoint.runtime.acceleo2.feature.group
-	fr.obeo.dsl.viewpoint.runtime.acceleo.feature.group
+	org.eclipse.sirius.runtime.feature.group
+	org.eclipse.sirius.runtime.acceleo.feature.group
 	//IDE
-	fr.obeo.dsl.viewpoint.runtime.ide.ui.acceleo.feature.group
-	fr.obeo.dsl.viewpoint.runtime.ide.eef.feature.group
-	fr.obeo.dsl.viewpoint.runtime.ide.ui.feature.group
-	fr.obeo.dsl.viewpoint.runtime.ide.ui.tests.support.feature.group
-	fr.obeo.dsl.viewpoint.specifier.ide.ui.feature.group
-	fr.obeo.dsl.viewpoint.specifier.ide.ui.acceleo.feature.group
+	org.eclipse.sirius.runtime.ide.ui.acceleo.feature.group
+	org.eclipse.sirius.runtime.ide.eef.feature.group
+	org.eclipse.sirius.runtime.ide.ui.feature.group
+	org.eclipse.sirius.specifier.ide.ui.feature.group
+	org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group
+}
+
+location "http://update.obeo.fr/integration/viewpoint/master/kepler/repository/" {
+	with source, requirements
+	//IDE
+	fr.obeo.dsl.viewpoint.runtime.ide.tests.support.feature.group
 }

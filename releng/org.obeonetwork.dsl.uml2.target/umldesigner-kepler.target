@@ -46,16 +46,18 @@
 <repository location="http://download.eclipse.org/modeling/emft/eef/updates/nightly/1.2/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="fr.obeo.dsl.viewpoint.runtime.feature.group" version="0.0.0"/>
-<unit id="fr.obeo.dsl.viewpoint.runtime.acceleo2.feature.group" version="0.0.0"/>
-<unit id="fr.obeo.dsl.viewpoint.runtime.acceleo.feature.group" version="0.0.0"/>
-<unit id="fr.obeo.dsl.viewpoint.runtime.ide.ui.acceleo.feature.group" version="0.0.0"/>
-<unit id="fr.obeo.dsl.viewpoint.runtime.ide.eef.feature.group" version="0.0.0"/>
-<unit id="fr.obeo.dsl.viewpoint.runtime.ide.ui.feature.group" version="0.0.0"/>
-<unit id="fr.obeo.dsl.viewpoint.runtime.ide.ui.tests.support.feature.group" version="0.0.0"/>
-<unit id="fr.obeo.dsl.viewpoint.specifier.ide.ui.feature.group" version="0.0.0"/>
-<unit id="fr.obeo.dsl.viewpoint.specifier.ide.ui.acceleo.feature.group" version="0.0.0"/>
-<repository location="http://www.obeo.fr/download/release/designer/6.2/latest/kepler/update"/>
+<unit id="org.eclipse.sirius.runtime.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.sirius.runtime.acceleo.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.sirius.runtime.ide.ui.acceleo.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.sirius.runtime.ide.eef.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.sirius.runtime.ide.ui.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.sirius.specifier.ide.ui.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group" version="0.0.0"/>
+<repository location="http://download.eclipse.org/sirius/updates/nightly/0.9"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
+<unit id="fr.obeo.dsl.viewpoint.runtime.ide.tests.support.feature.group" version="0.0.0"/>
+<repository location="http://update.obeo.fr/integration/viewpoint/master/kepler/repository/"/>
 </location>
 </locations>
 </target>
