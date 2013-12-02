@@ -192,7 +192,7 @@ Contributors:
         <profile>
             <id>od-build</id>
             <activation>
-                <activeByDefault>true</activeByDefault>
+                <activeByDefault>false</activeByDefault>
             </activation>
             <modules>
                 <module>features/org.obeonetwork.dsl.feature.uml2</module>
