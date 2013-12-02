@@ -24,6 +24,6 @@ Contributors:
   <artifactId>org.obeonetwork.dsl.uml2.runtime.sdk.feature</artifactId>
   <packaging>eclipse-feature</packaging>
 
-  <name>Viewpoint Based Modeler for UML2 Feature</name>
+  <name>Sirius Based Modeler SDK for UML2 Feature</name>
 
 </project>

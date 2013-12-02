@@ -23,17 +23,6 @@ Contributors:
   <artifactId>org.obeonetwork.dsl.uml2.runtime.feature</artifactId>
   <packaging>eclipse-feature</packaging>
 
-  <properties>
-    <sysml-site>http://update.obeo.fr/integration/sysml/repository/</sysml-site>
-  </properties>
-
-  <repositories>
-    <repository>
-      <id>sysml</id>
-      <layout>p2</layout>
-      <url>${sysml-site}</url>
-    </repository>
-  </repositories>
-
+  <name>Sirius Based Modeler for UML2 Feature</name>
 
 </project>
