@@ -153,17 +153,17 @@
     
      <!-- Viewpoint Specification -->
       <activity
-            id="fr.obeo.dsl.viewpoint.specification.activity"
+            id="org.eclipse.sirius.specification.activity"
             description="Viewpoint specification"
             name="viewpointspecification">
       </activity>
       <activityPatternBinding
-            activityId="fr.obeo.dsl.viewpoint.specification.activity"
-            pattern=".*/fr.obeo.dsl.viewpoint.ui.specificationproject.wizard">
+            activityId="org.eclipse.sirius.specification.activity"
+            pattern=".*/org.eclipse.sirius.ui.specificationproject.wizard">
       </activityPatternBinding>
     
      <categoryActivityBinding
-            activityId="fr.obeo.dsl.viewpoint.specification.activity"
+            activityId="org.eclipse.sirius.specification.activity"
             categoryId="org.eclipse.emf.Category">
       </categoryActivityBinding>
    </extension>

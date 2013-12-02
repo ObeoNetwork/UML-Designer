@@ -24,11 +24,11 @@ Contributors:
      <wizard
            category="org.obeonetwork.dsl.uml2.design.category"
            class="org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel.UmlModelWizard"
-           finalPerspective="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
+           finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
            icon="icons/NewUmlModel.gif"
            id="org.obeonetwork.dsl.uml2.wizard.newUmlModel"
            name="UML Model"
-           preferredPerspectives="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
+           preferredPerspectives="org.eclipse.sirius.ui.tools.perspective.modeling"
            project="false">
      </wizard>
      <category
@@ -38,11 +38,11 @@ Contributors:
      <wizard
            category="org.obeonetwork.dsl.uml2.design.category"
            class="org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel.UMLProjectWizard"
-           finalPerspective="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
+           finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
            icon="icons/NewUmlModel.gif"
            id="org.obeonetwork.dsl.uml2.design.wizard1"
            name="UML Project"
-           preferredPerspectives="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
+           preferredPerspectives="org.eclipse.sirius.ui.tools.perspective.modeling"
            project="true">
      </wizard>
   </extension>
@@ -59,27 +59,27 @@ Contributors:
     <extension
          point="org.eclipse.ui.commands">
       <command
-            id="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.delete"
+            id="org.eclipse.sirius.ui.navigator.actions.uml.delete"
             name="Delete UML Element">
       </command>
         <command
-            id="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.scenario.create"
+            id="org.eclipse.sirius.ui.navigator.actions.uml.scenario.create"
             name="Create Scenario">
       </command>
         <command
-              id="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.sequence"
+              id="org.eclipse.sirius.ui.navigator.actions.uml.create.sequence"
               name="Create Sequence Diagram">
         </command>
         <command
-              id="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.activity"
+              id="org.eclipse.sirius.ui.navigator.actions.uml.create.activity"
               name="Create Activity Diagram">
         </command>
         <command
-              id="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.profile"
+              id="org.eclipse.sirius.ui.navigator.actions.uml.create.profile"
               name="Create Profile Diagram">
         </command>
         <command
-              id="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.statemachine"
+              id="org.eclipse.sirius.ui.navigator.actions.uml.create.statemachine"
               name="Create State Machine Diagram">
         </command>
    </extension>
@@ -88,7 +88,7 @@ Contributors:
          point="org.eclipse.ui.handlers">
         <handler
               class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.DeleteUMLElement"
-              commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.delete">
+              commandId="org.eclipse.sirius.ui.navigator.actions.uml.delete">
            <enabledWhen>
             <with variable="selection">
 		           <iterate
@@ -101,7 +101,7 @@ Contributors:
         </handler>
          <handler
               class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.CreateScenario"
-              commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.scenario.create">
+              commandId="org.eclipse.sirius.ui.navigator.actions.uml.scenario.create">
            <enabledWhen>
             <with variable="selection">
                  <iterate
@@ -120,7 +120,7 @@ Contributors:
         </handler>
          <handler
                class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.CreateSequenceDiagram"
-               commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.sequence">
+               commandId="org.eclipse.sirius.ui.navigator.actions.uml.create.sequence">
             <enabledWhen>
                <with
                      variable="selection">
@@ -140,7 +140,7 @@ Contributors:
          </handler>
          <handler
                class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.CreateActivityDiagram"
-               commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.activity">
+               commandId="org.eclipse.sirius.ui.navigator.actions.uml.create.activity">
             <enabledWhen>
                <with
                      variable="selection">
@@ -160,7 +160,7 @@ Contributors:
          </handler>
          <handler
                class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.CreateProfileDiagram"
-               commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.profile">
+               commandId="org.eclipse.sirius.ui.navigator.actions.uml.create.profile">
             <enabledWhen>
                <with
                      variable="selection">
@@ -185,7 +185,7 @@ Contributors:
          </handler>
          <handler
                class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.CreateStateMachineDiagram"
-               commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.statemachine">
+               commandId="org.eclipse.sirius.ui.navigator.actions.uml.create.statemachine">
             <enabledWhen>
                <with
                      variable="selection">
@@ -213,7 +213,7 @@ Contributors:
          <command
                icon="icons/deleteModel.gif"               
                label="Delete"
-               commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.delete"
+               commandId="org.eclipse.sirius.ui.navigator.actions.uml.delete"
                style="push">
             <visibleWhen
                   checkEnabled="true">
@@ -227,7 +227,7 @@ Contributors:
                visible="true">
          </separator>
          <command
-               commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.sequence"
+               commandId="org.eclipse.sirius.ui.navigator.actions.uml.create.sequence"
                icon="icons/SequenceDDiagram.gif"
                label="Sequence Diagram"
                style="push">
@@ -236,7 +236,7 @@ Contributors:
             </visibleWhen>
          </command>
          <command
-               commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.activity"
+               commandId="org.eclipse.sirius.ui.navigator.actions.uml.create.activity"
                icon="icons/DDiagram.gif"
                label="Activity Diagram"
                style="push">
@@ -245,7 +245,7 @@ Contributors:
             </visibleWhen>
          </command>
          <command
-               commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.profile"
+               commandId="org.eclipse.sirius.ui.navigator.actions.uml.create.profile"
                icon="icons/DDiagram.gif"
                label="Profile Diagram"
                style="push">
@@ -254,7 +254,7 @@ Contributors:
             </visibleWhen>
          </command>
          <command
-               commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.statemachine"
+               commandId="org.eclipse.sirius.ui.navigator.actions.uml.create.statemachine"
                icon="icons/DDiagram.gif"
                label="State Machine Diagram"
                style="push">
@@ -277,7 +277,7 @@ Contributors:
     <extension
           point="org.eclipse.ui.perspectiveExtensions">
        <perspectiveExtension
-             targetID="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling">
+             targetID="org.eclipse.sirius.ui.tools.perspective.modeling">
           <newWizardShortcut
                 id="org.obeonetwork.dsl.uml2.wizard.newUmlModel">
           </newWizardShortcut>

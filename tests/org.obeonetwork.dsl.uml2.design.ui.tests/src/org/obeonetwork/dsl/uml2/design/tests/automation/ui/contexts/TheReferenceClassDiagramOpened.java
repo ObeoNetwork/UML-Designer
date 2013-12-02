@@ -30,7 +30,7 @@ import org.obeonetwork.dsl.uml2.design.tests.automation.contexts.UMLDesignerBot;
 import org.obeonetwork.dsl.uml2.usage.preferences.UsagePreferences;
 
 import fr.obeo.dsl.viewpoint.tests.swtbot.support.api.editor.SWTBotDesignerEditor;
-import fr.obeo.dsl.viewpoint.ui.business.api.session.SessionEditorInput;
+import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 
 public class TheReferenceClassDiagramOpened extends Context {
 	protected UMLDesignerBot bot;

@@ -42,7 +42,7 @@ Contributors:
         <wizard
             category="org.eclipse.ui.Examples/org.obeonetwork.dsl.uml.examples.category"
             class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
-            finalPerspective="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
+            finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
             icon="icons/NewUmlModel.gif"
             id="org.obeonetwork.dsl.uml2.design.doc.TravelAgencyWizard"
             name="Travel Agency UML"
@@ -52,7 +52,7 @@ Contributors:
         <wizard
               category="org.eclipse.ui.Examples/org.obeonetwork.dsl.uml.examples.category"
               class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
-              finalPerspective="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
+              finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
               icon="icons/NewUmlModel.gif"
               id="org.obeonetwork.dsl.uml2.design.doc.UMLInColorsWizard"
               name="UML in colors"

@@ -29,7 +29,7 @@ Contributors:
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
-            contributorId="fr.obeo.dsl.viewpoint.diagram"
+            contributorId="org.eclipse.sirius.diagram"
             labelProvider="org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider">
          <propertyCategory
                category="default">
@@ -45,7 +45,7 @@ Contributors:
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
       <propertyTabs
-            contributorId="fr.obeo.dsl.viewpoint.diagram">
+            contributorId="org.eclipse.sirius.diagram">
          <propertyTab
                id="General"
                label="General"
@@ -116,7 +116,7 @@ Contributors:
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertySections">
       <propertySections
-            contributorId="fr.obeo.dsl.viewpoint.diagram">
+            contributorId="org.eclipse.sirius.diagram">
          <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralCustomPropertiesEditionPartForm"
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.GeneralEditionFilter"
@@ -182,7 +182,7 @@ Contributors:
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
       <propertyTabs
-            contributorId="fr.obeo.dsl.viewpoint.table.ui.EditorID">
+            contributorId="org.eclipse.sirius.table.ui.EditorID">
          <propertyTab
                category="extended"
                id="General"
@@ -253,7 +253,7 @@ Contributors:
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertySections">
       <propertySections
-            contributorId="fr.obeo.dsl.viewpoint.table.ui.EditorID">
+            contributorId="org.eclipse.sirius.table.ui.EditorID">
          <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralCustomPropertiesEditionPartForm"
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.GeneralEditionFilter"
@@ -319,7 +319,7 @@ Contributors:
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
-            contributorId="fr.obeo.dsl.viewpoint.table.ui.EditorID"
+            contributorId="org.eclipse.sirius.table.ui.EditorID"
             labelProvider="org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider">
          <propertyCategory
                category="default">

@@ -38,7 +38,7 @@
           <elementView name="elementView"/>
           <initialOperation>
             <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
-              <subModelOperations xsi:type="tool:ExternalJavaAction" name="openPropertiesWizard" id="fr.obeo.dsl.viewpoint.eef.actions.openPropertiesWizard"/>
+              <subModelOperations xsi:type="tool:ExternalJavaAction" name="openPropertiesWizard" id="org.eclipse.sirius.eef.actions.openPropertiesWizard"/>
             </firstModelOperations>
           </initialOperation>
         </ownedTools>
@@ -4715,7 +4715,7 @@
       <additionalLayers name="Comments" reusedMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='RED_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@edgeMappings[name='RED_CommentLink']">
         <toolSections name="Comments" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_CommentLink']"/>
       </additionalLayers>
-      <additionalLayers name="Informations" icon="/fr.obeo.dsl.viewpoint.ui/icons/full/others/information.gif">
+      <additionalLayers name="Informations" icon="/org.eclipse.sirius.ui/icons/full/others/information.gif">
         <nodeMappings name="LifelineComment" preconditionExpression="[clientDependency->size()>0 or represents.eContainer()->size()>0/]" deletionDescription="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@additionalLayers[name='Informations']/@toolSections.0/@ownedTools[name='LifelineCommentDelete']" labelDirectEdit="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@additionalLayers[name='Informations']/@toolSections.0/@ownedTools[name='LifelineCommentEditLabel']" semanticCandidatesExpression="feature:lifeline" semanticElements="var:self" domainClass="uml.Lifeline">
           <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='InformationBorder']" showIcon="false" labelExpression="['current container : '+represents.eContainer().name/]" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW" width="16" height="5" color="//@userColorsPalettes[name='UMLPalette']/@entries[name='InformationBackground']">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
