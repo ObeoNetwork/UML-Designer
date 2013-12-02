@@ -68,7 +68,7 @@
                         <include>org/obeonetwork/dsl/uml2/design/tests/plugin/AllPluginTests.class</include>
                         <!--include>org/obeonetwork/dsl/uml2/design/tests/ui/AllUiTests.class</include-->
                     </includes>
-                    <useUIHarness>true</useUIHarness>
+                    <useUIHarness>false</useUIHarness>
                     <useUIThread>false</useUIThread>
                     <argLine>${ui.test.vmargs}</argLine>
                     <!--
