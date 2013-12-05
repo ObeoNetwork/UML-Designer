@@ -17,8 +17,8 @@ h2. Download
 h3. Update Sites
 
 Nightly 4.0  (Sirius based) : http://marketplace.obeonetwork.com/updates/nightly/uml/4.0.0/repository
-Release 3.0 (Obeo Designer 6.2 / Kepler) : http://update.obeo.fr/release/uml/3.0.0
-Release 2.4 (Obeo Designer 6.1 / Juno) : http://update.obeo.fr/release/uml/2.4.1
+Release 3.0 (Obeo Designer 6.2 / Kepler) : http://www.obeo.fr/download/release/uml/3.0.0/repository/
+Release 2.4 (Obeo Designer 6.1 / Juno) : http://www.obeo.fr/download/release/uml/2.4.1/repository/
 
 
 h2. Class Diagram
