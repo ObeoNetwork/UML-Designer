@@ -256,7 +256,7 @@ public class UIComponentServices {
 		final CreateView createViewOp = ToolFactory.eINSTANCE.createCreateView();
 		final DiagramElementMapping tmpCopiedElementMapping = semanticElementMapping;
 		createViewOp.setMapping(tmpCopiedElementMapping);
-		final String containerViewExpression = "<%$" + containerViewVariable + "%>";
+		final String containerViewExpression = "var:" + containerViewVariable;
 		createViewOp.setContainerViewExpression(containerViewExpression);
 
 		session.getTransactionalEditingDomain().getCommandStack()

@@ -251,7 +251,7 @@ public class UIServices {
 		for (DiagramElementMapping copiedElementMapping : semanticElementMappings) {
 			final DiagramElementMapping tmpCopiedElementMapping = copiedElementMapping;
 			createViewOp.setMapping(tmpCopiedElementMapping);
-			final String containerViewExpression = "<%$" + containerViewVariable + "%>";
+			final String containerViewExpression = "var:" + containerViewVariable;
 			createViewOp.setContainerViewExpression(containerViewExpression);
 
 			session.getTransactionalEditingDomain().getCommandStack()
