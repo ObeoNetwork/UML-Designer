@@ -305,32 +305,32 @@
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_C4RCwcf_EeCUSo-uQfq_HA" value="*"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_4VAkkMfsEeCBha8FS92Ybw" name="catalogsToTravels" memberEnd="_4VBLoMfsEeCBha8FS92Ybw _4VEO8MfsEeCBha8FS92Ybw" navigableOwnedEnd="_4VBLoMfsEeCBha8FS92Ybw _4VEO8MfsEeCBha8FS92Ybw">
-      <ownedEnd xmi:id="_4VBLoMfsEeCBha8FS92Ybw" name="catalogs" type="_HOkvMMTfEeC0wZa75TykZw" association="_4VAkkMfsEeCBha8FS92Ybw">
+    <packagedElement xmi:type="uml:Association" xmi:id="_4VAkkMfsEeCBha8FS92Ybw" name="catalogsToTravels" memberEnd="_4VBLoMfsEeCBha8FS92Ybw _4VEO8MfsEeCBha8FS92Ybw" navigableOwnedEnd="_4VEO8MfsEeCBha8FS92Ybw">
+      <ownedEnd xmi:id="_4VBLoMfsEeCBha8FS92Ybw" name="catalogs" type="_HOkvMMTfEeC0wZa75TykZw" aggregation="composite" association="_4VAkkMfsEeCBha8FS92Ybw">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4VDA0MfsEeCBha8FS92Ybw"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4VDn4MfsEeCBha8FS92Ybw" value="1"/>
       </ownedEnd>
-      <ownedEnd xmi:id="_4VEO8MfsEeCBha8FS92Ybw" name="travels" type="_F8k70MTfEeC0wZa75TykZw" aggregation="composite" association="_4VAkkMfsEeCBha8FS92Ybw">
+      <ownedEnd xmi:id="_4VEO8MfsEeCBha8FS92Ybw" name="travels" type="_F8k70MTfEeC0wZa75TykZw" association="_4VAkkMfsEeCBha8FS92Ybw">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_4VFdEMfsEeCBha8FS92Ybw"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_4VFdEcfsEeCBha8FS92Ybw" value="*"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_JyKSwMf_EeCUSo-uQfq_HA" name="reservationsToCustomers" memberEnd="_JyK50Mf_EeCUSo-uQfq_HA _JyMvAMf_EeCUSo-uQfq_HA" navigableOwnedEnd="_JyK50Mf_EeCUSo-uQfq_HA _JyMvAMf_EeCUSo-uQfq_HA">
+    <packagedElement xmi:type="uml:Association" xmi:id="_JyKSwMf_EeCUSo-uQfq_HA" name="reservationsToCustomers" memberEnd="_JyK50Mf_EeCUSo-uQfq_HA _JyMvAMf_EeCUSo-uQfq_HA" navigableOwnedEnd="_JyK50Mf_EeCUSo-uQfq_HA">
       <ownedEnd xmi:id="_JyK50Mf_EeCUSo-uQfq_HA" name="reservations" type="_HHf20MTfEeC0wZa75TykZw" association="_JyKSwMf_EeCUSo-uQfq_HA">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JyLg4Mf_EeCUSo-uQfq_HA"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JyMH8Mf_EeCUSo-uQfq_HA" value="*"/>
       </ownedEnd>
-      <ownedEnd xmi:id="_JyMvAMf_EeCUSo-uQfq_HA" name="customer" type="_Hj8iQMTfEeC0wZa75TykZw" association="_JyKSwMf_EeCUSo-uQfq_HA">
+      <ownedEnd xmi:id="_JyMvAMf_EeCUSo-uQfq_HA" name="customer" type="_Hj8iQMTfEeC0wZa75TykZw" aggregation="composite" association="_JyKSwMf_EeCUSo-uQfq_HA">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_JyNWEMf_EeCUSo-uQfq_HA" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_JyN9IMf_EeCUSo-uQfq_HA" value="1"/>
       </ownedEnd>
     </packagedElement>
-    <packagedElement xmi:type="uml:Association" xmi:id="_3_iGAMf7EeCUSo-uQfq_HA" name="agencysToCustomers" memberEnd="_3_itEMf7EeCUSo-uQfq_HA _3_j7MMf7EeCUSo-uQfq_HA" navigableOwnedEnd="_3_itEMf7EeCUSo-uQfq_HA _3_j7MMf7EeCUSo-uQfq_HA">
-      <ownedEnd xmi:id="_3_itEMf7EeCUSo-uQfq_HA" name="mainAgency" type="_2K8ZoMTfEeC0wZa75TykZw" association="_3_iGAMf7EeCUSo-uQfq_HA">
+    <packagedElement xmi:type="uml:Association" xmi:id="_3_iGAMf7EeCUSo-uQfq_HA" name="agencysToCustomers" memberEnd="_3_itEMf7EeCUSo-uQfq_HA _3_j7MMf7EeCUSo-uQfq_HA" navigableOwnedEnd="_3_j7MMf7EeCUSo-uQfq_HA">
+      <ownedEnd xmi:id="_3_itEMf7EeCUSo-uQfq_HA" name="mainAgency" type="_2K8ZoMTfEeC0wZa75TykZw" aggregation="composite" association="_3_iGAMf7EeCUSo-uQfq_HA">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3_jUIMf7EeCUSo-uQfq_HA" value="1"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_3_jUIcf7EeCUSo-uQfq_HA" value="1"/>
       </ownedEnd>
-      <ownedEnd xmi:id="_3_j7MMf7EeCUSo-uQfq_HA" name="customers" type="_Hj8iQMTfEeC0wZa75TykZw" aggregation="composite" association="_3_iGAMf7EeCUSo-uQfq_HA">
+      <ownedEnd xmi:id="_3_j7MMf7EeCUSo-uQfq_HA" name="customers" type="_Hj8iQMTfEeC0wZa75TykZw" association="_3_iGAMf7EeCUSo-uQfq_HA">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_3_kiQMf7EeCUSo-uQfq_HA"/>
         <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_3_kiQcf7EeCUSo-uQfq_HA" value="*"/>
       </ownedEnd>
@@ -638,9 +638,9 @@
       <fragment xmi:type="uml:BehaviorExecutionSpecification" xmi:id="_GeiMsPBWEeGM4vMhC0rGEw" name="confirm" covered="_gCWaoPBVEeGM4vMhC0rGEw" finish="_GehlovBWEeGM4vMhC0rGEw" start="_GehlofBWEeGM4vMhC0rGEw" behavior="_GefwcPBWEeGM4vMhC0rGEw"/>
       <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_GehlovBWEeGM4vMhC0rGEw" name="confirm_reply_sender" covered="_gCWaoPBVEeGM4vMhC0rGEw" message="_GegXgvBWEeGM4vMhC0rGEw" event="_Geg-kPBWEeGM4vMhC0rGEw"/>
       <fragment xmi:type="uml:MessageOccurrenceSpecification" xmi:id="_GeiMsfBWEeGM4vMhC0rGEw" name="confirm_reply_receiver" covered="_o7oIcfBVEeGM4vMhC0rGEw" message="_GegXgvBWEeGM4vMhC0rGEw" event="_Geg-kfBWEeGM4vMhC0rGEw"/>
+      <lifeline xmi:id="_o7oIcfBVEeGM4vMhC0rGEw" clientDependency="_o7oIcPBVEeGM4vMhC0rGEw" name="AgencyApp" coveredBy="_qP07Q_BVEeGM4vMhC0rGEw _qP07R_BVEeGM4vMhC0rGEw _GehloPBWEeGM4vMhC0rGEw _GeiMsfBWEeGM4vMhC0rGEw"/>
       <lifeline xmi:id="_bSxGEPBVEeGM4vMhC0rGEw" clientDependency="_bSwfAPBVEeGM4vMhC0rGEw" name="AgencyOffers  " coveredBy="_qP07RPBVEeGM4vMhC0rGEw _qP07RvBVEeGM4vMhC0rGEw _qP07RfBVEeGM4vMhC0rGEw _AWgegvBWEeGM4vMhC0rGEw _AWhFkvBWEeGM4vMhC0rGEw"/>
       <lifeline xmi:id="_gCWaoPBVEeGM4vMhC0rGEw" clientDependency="_gCVzkPBVEeGM4vMhC0rGEw" name="BookingSystem" coveredBy="_AWgeg_BWEeGM4vMhC0rGEw _AWhFkfBWEeGM4vMhC0rGEw _AWhFkPBWEeGM4vMhC0rGEw _GehlofBWEeGM4vMhC0rGEw _GeiMsPBWEeGM4vMhC0rGEw _GehlovBWEeGM4vMhC0rGEw"/>
-      <lifeline xmi:id="_o7oIcfBVEeGM4vMhC0rGEw" clientDependency="_o7oIcPBVEeGM4vMhC0rGEw" name="AgencyApp" coveredBy="_qP07Q_BVEeGM4vMhC0rGEw _qP07R_BVEeGM4vMhC0rGEw _GehloPBWEeGM4vMhC0rGEw _GeiMsfBWEeGM4vMhC0rGEw"/>
       <message xmi:id="_qP0UMPBVEeGM4vMhC0rGEw" name="findByDestination" receiveEvent="_qP07RPBVEeGM4vMhC0rGEw" sendEvent="_qP07Q_BVEeGM4vMhC0rGEw"/>
       <message xmi:id="_qP07QPBVEeGM4vMhC0rGEw" name="findByDestination_reply" messageSort="reply" receiveEvent="_qP07R_BVEeGM4vMhC0rGEw" sendEvent="_qP07RfBVEeGM4vMhC0rGEw"/>
       <message xmi:id="_AWc0IPBWEeGM4vMhC0rGEw" name="findByTravel" receiveEvent="_AWgeg_BWEeGM4vMhC0rGEw" sendEvent="_AWgegvBWEeGM4vMhC0rGEw"/>
