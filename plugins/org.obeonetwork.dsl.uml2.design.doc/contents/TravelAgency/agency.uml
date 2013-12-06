@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_oRyVocTYEeC0wZa75TykZw" name="Travel Agency">
-  <ownedComment xmi:id="_UYbHYPUSEeKws8cjX5ua6g" annotatedElement="_oRyVocTYEeC0wZa75TykZw _99SVwMT5EeC7sd1uYTaNyA _nbt_MDozEeKHT8Fbj3g8nQ">
-    <body>&lt; Deployed on</body>
+  <ownedComment xmi:id="_EFJdAF6YEeOLjIFPBUiDWw" annotatedElement="_oRyVocTYEeC0wZa75TykZw">
+    <body>Travel agency</body>
   </ownedComment>
   <packagedElement xmi:type="uml:Package" xmi:id="_8cPfMMxNEeKTPenkRLGIBA" clientDependency="_Tsu-YNHZEeKN4_jbmAij1g" name="Components">
+    <ownedComment xmi:id="_KNIu8F6YEeOLjIFPBUiDWw" annotatedElement="_8cPfMMxNEeKTPenkRLGIBA">
+      <body>Contains all the components</body>
+    </ownedComment>
     <packagedElement xmi:type="uml:Component" xmi:id="_8kjoQMT5EeC7sd1uYTaNyA" name="Accounting" useCase="_tyc6IMTeEeC0wZa75TykZw _gauEAMTeEeC0wZa75TykZw">
+      <ownedComment xmi:id="_Mjka0F6YEeOLjIFPBUiDWw" annotatedElement="_8kjoQMT5EeC7sd1uYTaNyA">
+        <body>Manage accounts</body>
+      </ownedComment>
       <packagedElement xmi:type="uml:Class" xmi:id="_HoPzcMTfEeC0wZa75TykZw" name="Invoice">
         <ownedAttribute xmi:id="_pyyRQMfsEeCBha8FS92Ybw" name="id">
           <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
@@ -18,9 +24,15 @@
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Component" xmi:id="_wq-yMMT5EeC7sd1uYTaNyA" name="Supplier Purchasing" useCase="_cSKTMMTeEeC0wZa75TykZw">
+      <ownedComment xmi:id="_SpaXsF6YEeOLjIFPBUiDWw" annotatedElement="_wq-yMMT5EeC7sd1uYTaNyA">
+        <body>Manage supplier purchasing</body>
+      </ownedComment>
       <packagedElement xmi:type="uml:Class" xmi:id="_HbZDMMTfEeC0wZa75TykZw" name="Partner"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Component" xmi:id="_ApIQ8MT6EeC7sd1uYTaNyA" clientDependency="_8DrkMEUUEeKKrffBqFWY_w" name="Internal Authentification">
+      <ownedComment xmi:id="_UjiiEF6YEeOLjIFPBUiDWw" annotatedElement="_ApIQ8MT6EeC7sd1uYTaNyA">
+        <body>Manage authentification</body>
+      </ownedComment>
       <ownedAttribute xmi:type="uml:Port" xmi:id="_6LPNQKBYEeKytpXBok_8qQ" name="authService" type="_ApIQ8MT6EeC7sd1uYTaNyA" aggregation="composite"/>
       <ownedConnector xmi:id="_bjQe8PUpEeKKhJd4Nj7QEg" clientDependency="_id8VYMgSEeCyyts5kz1NCA _8DrkMEUUEeKKrffBqFWY_w _iGeQkMgSEeCyyts5kz1NCA" name="auth_auth_connector">
         <end xmi:id="_bjQe8fUpEeKKhJd4Nj7QEg" role="_kErpEPULEeKlqaVJYxRgMw"/>
@@ -30,6 +42,9 @@
       <interfaceRealization xmi:id="_8DrkMEUUEeKKrffBqFWY_w" name="auth" client="_ApIQ8MT6EeC7sd1uYTaNyA _bjQe8PUpEeKKhJd4Nj7QEg" supplier="_BwTUYMT6EeC7sd1uYTaNyA" contract="_BwTUYMT6EeC7sd1uYTaNyA"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Component" xmi:id="_yS5LMMT5EeC7sd1uYTaNyA" clientDependency="_MbwOYMgDEeC-rqkzDXqbnw _id8VYMgSEeCyyts5kz1NCA _jsGKkMgSEeCyyts5kz1NCA _Ik6qQNJ6EeKjEKyG7M9Ljg" name="Booking System" useCase="_klkX8MgMEeClj_cKl6EI8g">
+      <ownedComment xmi:id="_Whe1cF6YEeOLjIFPBUiDWw" annotatedElement="_yS5LMMT5EeC7sd1uYTaNyA">
+        <body>Booking system</body>
+      </ownedComment>
       <ownedAttribute xmi:type="uml:Port" xmi:id="_kErpEPULEeKlqaVJYxRgMw" name="Booking SystemPort" type="_yS5LMMT5EeC7sd1uYTaNyA"/>
       <ownedConnector xmi:id="_feiH4PUMEeKlqaVJYxRgMw" clientDependency="_Z6tS8PUMEeKlqaVJYxRgMw _Ik6qQNJ6EeKjEKyG7M9Ljg" name="Reservations_Reservations_connector">
         <end xmi:id="_feiH4fUMEeKlqaVJYxRgMw" role="_EgiQYPUMEeKlqaVJYxRgMw"/>
@@ -70,6 +85,9 @@
       </packagedElement>
     </packagedElement>
     <packagedElement xmi:type="uml:Component" xmi:id="_99SVwMT5EeC7sd1uYTaNyA" clientDependency="_RPSO0MgDEeC-rqkzDXqbnw _iGeQkMgSEeCyyts5kz1NCA" name="Agency  Offers" useCase="_dF_j4MTeEeC0wZa75TykZw">
+      <ownedComment xmi:id="_S9zv0F6XEeOLjIFPBUiDWw" annotatedElement="_99SVwMT5EeC7sd1uYTaNyA">
+        <body>Manage agency offers</body>
+      </ownedComment>
       <ownedAttribute xmi:type="uml:Port" xmi:id="_kEsQIfULEeKlqaVJYxRgMw" name="Agency  OffersPort" type="_99SVwMT5EeC7sd1uYTaNyA"/>
       <ownedConnector xmi:id="_kEolwPULEeKlqaVJYxRgMw" clientDependency="_jsGKkMgSEeCyyts5kz1NCA _RPSO0MgDEeC-rqkzDXqbnw" name="Travels_Travels_connector">
         <end xmi:id="_kEsQIPULEeKlqaVJYxRgMw" role="_kErpEPULEeKlqaVJYxRgMw"/>
@@ -138,6 +156,9 @@
     <packagedElement xmi:type="uml:Usage" xmi:id="_afyV8PUMEeKlqaVJYxRgMw" name="ReservationSearchToWebAgencyRequiredPort" client="_Z3sPEMgDEeC-rqkzDXqbnw _EgiQYPUMEeKlqaVJYxRgMw _f38tcPUMEeKlqaVJYxRgMw" supplier="_C1k-UMgDEeC-rqkzDXqbnw"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_iVLaQMxOEeKTPenkRLGIBA" name="Interfaces">
+    <ownedComment xmi:id="_NJgkAF6ZEeOLjIFPBUiDWw" annotatedElement="_iVLaQMxOEeKTPenkRLGIBA">
+      <body>Contains all the interfaces</body>
+    </ownedComment>
     <packagedElement xmi:type="uml:Interface" xmi:id="_BwTUYMT6EeC7sd1uYTaNyA" name="auth">
       <ownedOperation xmi:id="_pC14sMgFEeC-rqkzDXqbnw" name="login">
         <ownedParameter xmi:id="_wKR1cMgFEeC-rqkzDXqbnw" name="agency" type="_2K8ZoMTfEeC0wZa75TykZw"/>
@@ -212,6 +233,9 @@
     </packagedElement>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_793rsMxOEeKTPenkRLGIBA" name="Deployment">
+    <ownedComment xmi:id="_N_JykF6ZEeOLjIFPBUiDWw" annotatedElement="_793rsMxOEeKTPenkRLGIBA">
+      <body>Contains all elements related to deployment</body>
+    </ownedComment>
     <packagedElement xmi:type="uml:Device" xmi:id="_V3O38Do3EeKHT8Fbj3g8nQ" name="Sun SPARC Server">
       <nestedNode xmi:type="uml:ExecutionEnvironment" xmi:id="_ZJ2p0Do4EeKHT8Fbj3g8nQ" name="Oracle 10g"/>
     </packagedElement>
@@ -265,6 +289,9 @@
     </packagedElement>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_TTUIIMxPEeKTPenkRLGIBA" name="Relations">
+    <ownedComment xmi:id="_U3bR8F6ZEeOLjIFPBUiDWw" annotatedElement="_TTUIIMxPEeKTPenkRLGIBA">
+      <body>Contains all the relationships</body>
+    </ownedComment>
     <packagedElement xmi:type="uml:Association" xmi:id="_8ncqIMfsEeCBha8FS92Ybw" name="agenciestoReservations" memberEnd="_8ndRMMfsEeCBha8FS92Ybw _8nfGYMfsEeCBha8FS92Ybw" navigableOwnedEnd="_8ndRMMfsEeCBha8FS92Ybw _8nfGYMfsEeCBha8FS92Ybw">
       <ownedEnd xmi:id="_8ndRMMfsEeCBha8FS92Ybw" name="reservations" type="_HHf20MTfEeC0wZa75TykZw" association="_8ncqIMfsEeCBha8FS92Ybw">
         <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_8nefUMfsEeCBha8FS92Ybw"/>
@@ -341,6 +368,9 @@
     <packagedElement xmi:type="uml:Dependency" xmi:id="_Tsu-YNHZEeKN4_jbmAij1g" name="depends" client="_8cPfMMxNEeKTPenkRLGIBA" supplier="_iVLaQMxOEeKTPenkRLGIBA"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_azCpEMxPEeKTPenkRLGIBA" name="Behaviours">
+    <ownedComment xmi:id="_WYajkF6ZEeOLjIFPBUiDWw" annotatedElement="_azCpEMxPEeKTPenkRLGIBA">
+      <body>Contains all the behaviours</body>
+    </ownedComment>
     <packagedElement xmi:type="uml:Activity" xmi:id="_gPcLoMTfEeC0wZa75TykZw" name="to Pay a Trip" node="_kgct0MTfEeC0wZa75TykZw">
       <node xmi:type="uml:InitialNode" xmi:id="_kgct0MTfEeC0wZa75TykZw" name="Initial_1"/>
     </packagedElement>
@@ -711,6 +741,9 @@
     <packagedElement xmi:type="uml:Activity" xmi:id="_gv3_sPUnEeK25Zs1XL0IGQ" name="New Activity"/>
   </packagedElement>
   <packagedElement xmi:type="uml:Package" xmi:id="_gRTZ0MxVEeKtx71J5LGl-Q" name="Instances">
+    <ownedComment xmi:id="_Xt6W4F6ZEeOLjIFPBUiDWw" annotatedElement="_gRTZ0MxVEeKtx71J5LGl-Q">
+      <body>Contains all the instances</body>
+    </ownedComment>
     <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_XkmLMPBVEeGM4vMhC0rGEw" name="BookingSystem" classifier="_yS5LMMT5EeC7sd1uYTaNyA"/>
     <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_l-YUMPBVEeGM4vMhC0rGEw" name="AgencyApp" classifier="_GT7fEMgEEeC-rqkzDXqbnw"/>
     <packagedElement xmi:type="uml:InstanceSpecification" xmi:id="_2L0zMPBVEeGM4vMhC0rGEw" name="Bob" classifier="_Hj8iQMTfEeC0wZa75TykZw"/>
