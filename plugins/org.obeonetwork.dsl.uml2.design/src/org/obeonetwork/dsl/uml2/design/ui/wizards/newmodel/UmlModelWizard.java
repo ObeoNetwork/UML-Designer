@@ -17,6 +17,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.common.tools.api.util.Option;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
@@ -58,7 +59,7 @@ public class UmlModelWizard extends AbstractNewUmlModelWizard {
 
 			// Convert project to modeling project
 			try {
-				ModelingProjectManager.INSTANCE.convertToModelingProject(project);
+				ModelingProjectManager.INSTANCE.convertToModelingProject(project, new NullProgressMonitor());
 			} catch (CoreException e) {
 				UMLDesignerPlugin.log(IStatus.ERROR, Messages.UmlModelWizard_UI_Error_CreatingUmlModel, e);
 				return false;

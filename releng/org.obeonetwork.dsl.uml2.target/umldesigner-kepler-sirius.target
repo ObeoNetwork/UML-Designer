@@ -44,14 +44,14 @@
 <repository location="http://download.eclipse.org/modeling/emft/eef/updates/nightly/1.2/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.sirius.runtime.feature.group" version="0.9.0.201311251702"/>
-<unit id="org.eclipse.sirius.runtime.acceleo.feature.group" version="0.9.0.201311251702"/>
-<unit id="org.eclipse.sirius.runtime.ide.ui.acceleo.feature.group" version="0.9.0.201311251702"/>
-<unit id="org.eclipse.sirius.runtime.ide.eef.feature.group" version="0.9.0.201311251702"/>
-<unit id="org.eclipse.sirius.runtime.ide.ui.feature.group" version="0.9.0.201311251702"/>
-<unit id="org.eclipse.sirius.specifier.ide.ui.feature.group" version="0.9.0.201311251702"/>
-<unit id="org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group" version="0.9.0.201311251702"/>
-<repository location="http://download.eclipse.org/sirius/updates/nightly/0.9"/>
+<unit id="org.eclipse.sirius.runtime.feature.group" version="1.0.0.201312090818"/>
+<unit id="org.eclipse.sirius.runtime.acceleo.feature.group" version="1.0.0.201312090818"/>
+<unit id="org.eclipse.sirius.runtime.ide.ui.acceleo.feature.group" version="1.0.0.201312090818"/>
+<unit id="org.eclipse.sirius.runtime.ide.eef.feature.group" version="1.0.0.201312090818"/>
+<unit id="org.eclipse.sirius.runtime.ide.ui.feature.group" version="1.0.0.201312090818"/>
+<unit id="org.eclipse.sirius.specifier.ide.ui.feature.group" version="1.0.0.201312090818"/>
+<unit id="org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group" version="1.0.0.201312090818"/>
+<repository location="http://download.eclipse.org/sirius/updates/nightly/latest/kepler"/>
 </location>
 </locations>
 </target>

@@ -12,6 +12,7 @@ package org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.ui.dialogs.WizardNewProjectCreationPage;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
@@ -49,7 +50,8 @@ public class UMLProjectWizard extends AbstractNewUmlModelWizard {
 	public boolean performFinish() {
 		try {
 			project = ModelingProjectManager.INSTANCE.createNewModelingProject(
-					newProjectPage.getProjectName(), newProjectPage.getLocationPath(), true);
+					newProjectPage.getProjectName(), newProjectPage.getLocationPath(), true,
+					new NullProgressMonitor());
 			rootObjectName = modelPage.getInitialObjectName();
 			newUmlModelFileName = modelPage.getInitialObjectName().toLowerCase() + UmlProjectUtils.DOT
 					+ UmlProjectUtils.MODEL_FILE_EXTENSION;
