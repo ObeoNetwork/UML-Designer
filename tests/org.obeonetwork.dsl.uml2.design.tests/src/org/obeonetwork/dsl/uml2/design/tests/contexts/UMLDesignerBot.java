@@ -82,7 +82,9 @@ public class UMLDesignerBot {
 	}
 
 	public SWTBotDesignerEditor importAndOpenTravelAgency() {
+		closeWelcome();
 		bot.resetWorkbench();
+		openModelingPerspective();
 		String nameInWizard = "Travel Agency UML";
 
 		bot.menu("File").menu("New").menu("Example...").click();
@@ -91,7 +93,6 @@ public class UMLDesignerBot {
 		bot.shell("New Example").bot().tree().expandNode("UML").getNode(nameInWizard).select();
 		bot.button("Next >").click();
 		bot.button("Finish").click();
-		closeWelcome();
 		bot.viewByTitle("Model Explorer").bot().tree().expandNode("TravelAgency").expandNode("agency.uml");
 
 		waitForProgressInformationComplete();
@@ -127,7 +128,9 @@ public class UMLDesignerBot {
 	}
 
 	public void importAndOpenTestAllMappings() {
+		closeWelcome();
 		bot.resetWorkbench();
+		openModelingPerspective();
 		String nameInWizard = "Test All Mappings";
 
 		bot.menu("File").menu("New").menu("Example...").click();
@@ -136,7 +139,6 @@ public class UMLDesignerBot {
 		bot.shell("New Example").bot().tree().expandNode("UML").getNode(nameInWizard).select();
 		bot.button("Next >").click();
 		bot.button("Finish").click();
-		closeWelcome();
 		bot.viewByTitle("Model Explorer").bot().tree().expandNode("TestAllMappings").expandNode("model.uml");
 
 		waitForProgressInformationComplete();
