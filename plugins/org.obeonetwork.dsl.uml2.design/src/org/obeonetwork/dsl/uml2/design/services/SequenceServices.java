@@ -33,6 +33,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDi
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.RefreshGraphicalOrderingOperation;
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.RefreshSemanticOrderingsOperation;
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.SynchronizeGraphicalOrderingOperation;
+import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ISequenceEventEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDiagramEditPart;
 import org.eclipse.sirius.diagram.tools.api.editor.DDiagramEditor;
@@ -106,6 +107,14 @@ public class SequenceServices {
 	 * Operation service.
 	 */
 	private OperationServices operationService = new OperationServices();
+
+	public NamedElement findOccurrenceSpecificationContextForSendEvent(Message message) {
+		return findOccurrenceSpecificationContext((OccurrenceSpecification)message.getSendEvent());
+	}
+
+	public NamedElement findOccurrenceSpecificationContextForReceiveEvent(Message message) {
+		return findOccurrenceSpecificationContext((OccurrenceSpecification)message.getReceiveEvent());
+	}
 
 	/**
 	 * Retrieves the context element ({@link Lifeline} or {@link ExecutionSpecification}) of the given
@@ -579,6 +588,22 @@ public class SequenceServices {
 		createExecution(interaction, fragment, null, startingEndPredecessor);
 	}
 
+	public void createSynchronousMessageWithExecution(Interaction interaction, NamedElement sourceFragment,
+			NamedElement targetFragment, EventEnd startingEndPredecessor, EventEnd finishingEndPredecessor,
+			Operation operation) {
+		Element startingEndPredecessorSemanticEnd = null;
+		Element finishingEndPredecessorSemanticEnd = null;
+		if (startingEndPredecessor != null) {
+			startingEndPredecessorSemanticEnd = (Element)startingEndPredecessor.getSemanticEnd();
+		}
+		if (finishingEndPredecessor != null) {
+			finishingEndPredecessorSemanticEnd = (Element)finishingEndPredecessor.getSemanticEnd();
+		}
+
+		createSynchronousMessage(interaction, sourceFragment, targetFragment, true,
+				startingEndPredecessorSemanticEnd, finishingEndPredecessorSemanticEnd, operation);
+	}
+
 	/**
 	 * Create synchronous typed message.
 	 * 
@@ -598,8 +623,8 @@ public class SequenceServices {
 	 *            Operation associated with the message
 	 */
 	public void createSynchronousMessage(Interaction interaction, NamedElement sourceFragment,
-			NamedElement targetFragment, Boolean createExecution, NamedElement startingEndPredecessor,
-			NamedElement finishingEndPredecessor, Operation operation) {
+			NamedElement targetFragment, Boolean createExecution, Element startingEndPredecessor,
+			Element finishingEndPredecessor, Operation operation) {
 		final Lifeline target = getLifeline(targetFragment);
 		final BehaviorExecutionSpecification predecessorExecution = getExecution((InteractionFragment)startingEndPredecessor);
 
@@ -772,8 +797,8 @@ public class SequenceServices {
 	 * @return a synchronous message
 	 */
 	public Message createSynchronousMessage(Interaction interaction, NamedElement sourceFragment,
-			NamedElement targetFragment, NamedElement startingEndPredecessor,
-			NamedElement finishingEndPredecessor, Operation operation) {
+			NamedElement targetFragment, Element startingEndPredecessor, Element finishingEndPredecessor,
+			Operation operation) {
 
 		final UMLFactory factory = UMLFactory.eINSTANCE;
 
@@ -830,8 +855,8 @@ public class SequenceServices {
 	 * @return a reply message
 	 */
 	public Message createReplyMessage(Interaction interaction, NamedElement sourceFragment,
-			NamedElement targetFragment, NamedElement startingEndPredecessor,
-			NamedElement finishingEndPredecessor, Message message) {
+			NamedElement targetFragment, Element startingEndPredecessor, Element finishingEndPredecessor,
+			Message message) {
 
 		final UMLFactory factory = UMLFactory.eINSTANCE;
 
@@ -1361,7 +1386,15 @@ public class SequenceServices {
 	 *            Finish predecessor
 	 */
 	public void createOperationAndAsynchMessage(NamedElement target, NamedElement source,
-			NamedElement startingEndPredecessor, NamedElement finishingEndPredecessor) {
+			EventEnd startingEndPredecessor, EventEnd finishingEndPredecessor) {
+		Element startingEndPredecessorSemanticEnd = null;
+		if (startingEndPredecessor != null) {
+			startingEndPredecessorSemanticEnd = (Element)startingEndPredecessor.getSemanticEnd();
+		}
+		Element finishingEndPredecessorSemanticEnd = null;
+		if (finishingEndPredecessor != null) {
+			finishingEndPredecessorSemanticEnd = (Element)finishingEndPredecessor.getSemanticEnd();
+		}
 		// Get associated class and interaction
 		org.eclipse.uml2.uml.Type type;
 		Interaction interaction;
@@ -1374,8 +1407,8 @@ public class SequenceServices {
 		}
 		final Operation operation = operationService.createOperation(type);
 		// Create message
-		createAsynchronousMessage(interaction, source, target, true, startingEndPredecessor,
-				finishingEndPredecessor, operation);
+		createAsynchronousMessage(interaction, source, target, true, startingEndPredecessorSemanticEnd,
+				finishingEndPredecessorSemanticEnd, operation);
 	}
 
 	/**
@@ -1392,7 +1425,15 @@ public class SequenceServices {
 	 *            Finish predecessor
 	 */
 	public void createOperationAndSynchMessage(NamedElement target, NamedElement source,
-			NamedElement startingEndPredecessor, NamedElement finishingEndPredecessor) {
+			EventEnd startingEndPredecessor, EventEnd finishingEndPredecessor) {
+		Element startingEndPredecessorSemanticEnd = null;
+		if (startingEndPredecessor != null) {
+			startingEndPredecessorSemanticEnd = (Element)startingEndPredecessor.getSemanticEnd();
+		}
+		Element finishingEndPredecessorSemanticEnd = null;
+		if (finishingEndPredecessor != null) {
+			finishingEndPredecessorSemanticEnd = (Element)finishingEndPredecessor.getSemanticEnd();
+		}
 		// Get associated class and interaction
 		org.eclipse.uml2.uml.Type type;
 		Interaction interaction;
@@ -1405,8 +1446,8 @@ public class SequenceServices {
 		}
 		final Operation operation = operationService.createOperation(type);
 		// Create message
-		createSynchronousMessage(interaction, source, target, true, startingEndPredecessor,
-				finishingEndPredecessor, operation);
+		createSynchronousMessage(interaction, source, target, true, startingEndPredecessorSemanticEnd,
+				finishingEndPredecessorSemanticEnd, operation);
 	}
 
 	/**
@@ -1610,6 +1651,22 @@ public class SequenceServices {
 				finishingEndPredecessor, operation);
 	}
 
+	public void createAsynchronousMessageWithExecution(Interaction interaction, NamedElement sourceFragment,
+			NamedElement targetFragment, EventEnd startingEndPredecessor, EventEnd finishingEndPredecessor,
+			Operation operation) {
+		Element startingEndPredecessorSemanticEnd = null;
+		Element finishingEndPredecessorSemanticEnd = null;
+		if (startingEndPredecessor != null) {
+			startingEndPredecessorSemanticEnd = (Element)startingEndPredecessor.getSemanticEnd();
+		}
+		if (finishingEndPredecessor != null) {
+			finishingEndPredecessorSemanticEnd = (Element)finishingEndPredecessor.getSemanticEnd();
+		}
+
+		createAsynchronousMessage(interaction, sourceFragment, targetFragment, true,
+				startingEndPredecessorSemanticEnd, finishingEndPredecessorSemanticEnd, operation);
+	}
+
 	/**
 	 * Create asynchronous typed message.
 	 * 
@@ -1629,8 +1686,8 @@ public class SequenceServices {
 	 *            Operation associated to message
 	 */
 	public void createAsynchronousMessage(Interaction interaction, NamedElement sourceFragment,
-			NamedElement targetFragment, boolean createExecution, NamedElement startingEndPredecessor,
-			NamedElement finishingEndPredecessor, Operation operation) {
+			NamedElement targetFragment, boolean createExecution, Element startingEndPredecessor,
+			Element finishingEndPredecessor, Operation operation) {
 		final Lifeline target = getLifeline(targetFragment);
 
 		final BehaviorExecutionSpecification predecessorExecution = getExecution((InteractionFragment)startingEndPredecessor);
@@ -2033,4 +2090,39 @@ public class SequenceServices {
 		return false;
 	}
 
+	public boolean isValidMessageEnd(EObject preTarget) {
+		if (preTarget == null) {
+			return false;
+		}
+
+		if (preTarget instanceof Lifeline) {
+			return isValidMessageEndForLifeline(preTarget);
+
+		} else if (preTarget instanceof ExecutionSpecification) {
+			for (Lifeline lifeline : ((ExecutionSpecification)preTarget).getCovereds()) {
+				boolean result = isValidMessageEndForLifeline(lifeline);
+				if (result) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	private boolean isValidMessageEndForLifeline(EObject preTarget) {
+		ConnectableElement element = ((Lifeline)preTarget).getRepresents();
+		if (element != null && element.getType() != null) {
+			return true;
+		}
+		List<Dependency> dependencies = ((Lifeline)preTarget).getClientDependencies();
+		for (Dependency dependency : dependencies) {
+			for (NamedElement supplier : dependency.getSuppliers()) {
+				if (supplier.getClass() != null) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 }
