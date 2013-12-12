@@ -2125,4 +2125,16 @@ public class SequenceServices {
 		}
 		return false;
 	}
+
+	public boolean isSynchCall(Message message) {
+		if (message == null)
+			return false;
+		return MessageSort.ASYNCH_CALL_LITERAL.equals(message.getMessageSort());
+	}
+
+	public boolean isReply(Message message) {
+		if (message == null)
+			return false;
+		return MessageSort.REPLY_LITERAL.equals(message.getMessageSort());
+	}
 }

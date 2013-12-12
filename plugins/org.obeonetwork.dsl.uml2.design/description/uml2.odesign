@@ -4495,7 +4495,7 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
-          <conditionnalStyles predicateExpression="[messageSort='synchCall'/]">
+          <conditionnalStyles predicateExpression="service:isSynchCall">
             <style targetArrow="InputFillClosedArrow" sizeComputationExpression="2">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <centerLabelStyleDescription labelExpression="service:computeUmlLabel">
@@ -4503,7 +4503,7 @@
               </centerLabelStyleDescription>
             </style>
           </conditionnalStyles>
-          <conditionnalStyles predicateExpression="[messageSort='reply'/]">
+          <conditionnalStyles predicateExpression="service:isReply">
             <style lineStyle="dash" sizeComputationExpression="2">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <centerLabelStyleDescription labelExpression="service:computeUmlLabel">
