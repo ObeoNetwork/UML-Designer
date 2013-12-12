@@ -1340,6 +1340,18 @@ public class UMLServices {
 					return input instanceof State;
 				}
 			};
+		} else if (element instanceof Stereotype) {
+			predicate = new Predicate<EObject>() {
+				public boolean apply(EObject input) {
+					return input instanceof Stereotype;
+				}
+			};
+		} else if (element instanceof Profile) {
+			predicate = new Predicate<EObject>() {
+				public boolean apply(EObject input) {
+					return input instanceof Profile;
+				}
+			};
 		} else if (element instanceof Package) {
 			predicate = new Predicate<EObject>() {
 				public boolean apply(EObject input) {
