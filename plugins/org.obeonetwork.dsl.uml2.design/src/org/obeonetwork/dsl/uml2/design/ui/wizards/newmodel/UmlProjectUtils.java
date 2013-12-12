@@ -100,7 +100,7 @@ public class UmlProjectUtils {
 							for (Viewpoint vp : ViewpointRegistry.getInstance().getViewpoints()) {
 								for (String viewpoint : viewpointsToActivate) {
 									if (viewpoint.equals(vp.getName()))
-										callback.selectViewpoint(vp, session);
+										callback.selectViewpoint(vp, session, new NullProgressMonitor());
 								}
 							}
 						}

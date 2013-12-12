@@ -12,6 +12,7 @@ package org.obeonetwork.dsl.uml2.design.tests.contexts;
 
 import java.util.List;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.session.Session;
@@ -278,7 +279,7 @@ public class UMLDesignerBot {
 	public Model getTravelAgencyModel() {
 		String sessionResourceUri = "TravelAgency/representations.aird";
 		Session session = SessionManager.INSTANCE.getSession(URI.createPlatformResourceURI(
-				sessionResourceUri, true));
+				sessionResourceUri, true), new NullProgressMonitor());
 		Resource semanticResource = (Resource)session.getSemanticResources().toArray()[0];
 		return ((Model)semanticResource.getContents().get(0));
 	}

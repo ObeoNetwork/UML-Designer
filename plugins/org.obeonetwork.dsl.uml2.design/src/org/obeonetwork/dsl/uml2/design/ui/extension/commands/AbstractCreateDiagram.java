@@ -63,7 +63,7 @@ public abstract class AbstractCreateDiagram<T extends PackageableElement> extend
 											session, new NullProgressMonitor());
 
 							// Open diagram
-							DialectUIManager.INSTANCE.openEditor(session, representation);
+							DialectUIManager.INSTANCE.openEditor(session, representation, new NullProgressMonitor());
 						}
 					}
 				}
