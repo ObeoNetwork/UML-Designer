@@ -45,6 +45,7 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.uml2.uml.Actor;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehaviorExecutionSpecification;
+import org.eclipse.uml2.uml.BehavioralFeature;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.CombinedFragment;
 import org.eclipse.uml2.uml.Comment;
@@ -73,6 +74,8 @@ import org.eclipse.uml2.uml.Signal;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.obeonetwork.dsl.uml2.design.services.internal.NamedElementServices;
+
+import com.google.common.collect.Lists;
 
 /**
  * Utility services to manage sequence diagrams.
@@ -2136,5 +2139,75 @@ public class SequenceServices {
 		if (message == null)
 			return false;
 		return MessageSort.REPLY_LITERAL.equals(message.getMessageSort());
+	}
+
+	public boolean isNotReply(Message message) {
+		return !isReply(message);
+	}
+
+	public List<EObject> getEndsOrdering(Interaction interaction, List eventEnds) {
+		// [self.getEndsOrdering()->union(eventEnds)/]
+		List results = Lists.newArrayList();
+		results.add(getEndsOrdering(interaction));
+		results.add(eventEnds);
+		return results;
+	}
+
+	public void reorderFragment(Element fragment, EventEnd startingEndPredecessorAfter,
+			EventEnd finishingEndPredecessorAfter) {
+		InteractionFragment startingEndPredecessorAfterSemanticEnd = (InteractionFragment)startingEndPredecessorAfter
+				.getSemanticEnd();
+		InteractionFragment finishingEndPredecessorAfterSemanticEnd = (InteractionFragment)finishingEndPredecessorAfter
+				.getSemanticEnd();
+		if (fragment instanceof CombinedFragment) {
+			reorder((CombinedFragment)fragment, startingEndPredecessorAfterSemanticEnd,
+					finishingEndPredecessorAfterSemanticEnd);
+		} else if (fragment instanceof ExecutionSpecification) {
+			reorder((ExecutionSpecification)fragment, startingEndPredecessorAfterSemanticEnd,
+					finishingEndPredecessorAfterSemanticEnd);
+		} else if (fragment instanceof Message) {
+			reorder((Message)fragment, startingEndPredecessorAfterSemanticEnd,
+					finishingEndPredecessorAfterSemanticEnd);
+		}
+	}
+
+	/**
+	 * Retrieve the nearest package associated to a lifeline. Method used to find the class diagram package.
+	 * 
+	 * @param lifeline
+	 *            Lifeline
+	 * @return Class diagram package
+	 */
+	public Package getClassDiagramFromLifeline(Lifeline lifeline) {
+		if (lifeline != null) {
+			ConnectableElement element = lifeline.getRepresents();
+			if (element != null) {
+				Type type = element.getType();
+				if (type != null) {
+					return type.getPackage();
+				}
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Retrieve the nearest package associated to an execution. Method used to find the class diagram package.
+	 * 
+	 * @param execution
+	 *            Execution
+	 * @return Class diagram package
+	 */
+	public Package getClassDiagramFromExecution(BehaviorExecutionSpecification execution) {
+		if (execution != null) {
+			Behavior behavior = execution.getBehavior();
+			if (behavior != null) {
+				BehavioralFeature feature = behavior.getSpecification();
+				if (feature != null) {
+					return feature.getNearestPackage();
+				}
+			}
+		}
+		return null;
 	}
 }

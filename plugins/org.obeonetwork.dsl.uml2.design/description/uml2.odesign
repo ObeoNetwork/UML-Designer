@@ -229,12 +229,12 @@
               <containerVariable name="container"/>
               <representationNameVariable name="diagramName"/>
             </ownedTools>
-            <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Open sequence diagram from lifeline" label="for lifeline" browseExpression="[container.oclAsType(uml::Lifeline).represents.type.eContainer()/]" navigationNameExpression="['Open '+name+' Class Diagram'/]" diagramDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']">
+            <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Open sequence diagram from lifeline" label="for lifeline" browseExpression="service:container.getClassDiagramFromLifeline" navigationNameExpression="['Open '+name+' Class Diagram'/]" diagramDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']">
               <containerViewVariable name="containerView"/>
               <containerVariable name="container"/>
               <representationNameVariable name="diagramName"/>
             </ownedTools>
-            <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Open sequence diagram from execution" label="for execution" browseExpression="[container.behavior.specification.eContainer().eContainer()/]" navigationNameExpression="['Open '+name+' Class Diagram'/]" diagramDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']">
+            <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Open sequence diagram from execution" label="for execution" browseExpression="service:container.getClassDiagramFromExecution" navigationNameExpression="['Open '+name+' Class Diagram'/]" diagramDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']">
               <containerViewVariable name="containerView"/>
               <containerVariable name="container"/>
               <representationNameVariable name="diagramName"/>
@@ -4451,7 +4451,7 @@
         <toolSections name="Comments" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_Comment'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Comments']/@ownedTools[name='CRE_CommentLink']"/>
       </additionalLayers>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:SequenceDiagramDescription" documentation="@generated" name="Sequence Diagram" titleExpression="[getSequenceDiagramName()/]" domainClass="uml.Interaction" enablePopupBars="true" endsOrdering="[self.getEndsOrdering()->union(eventEnds)/]">
+    <ownedRepresentations xsi:type="description_1:SequenceDiagramDescription" documentation="@generated" name="Sequence Diagram" titleExpression="[getSequenceDiagramName()/]" domainClass="uml.Interaction" enablePopupBars="true" endsOrdering="service:getEndsOrdering(self,eventEnds)">
       <defaultLayer name="Default">
         <nodeMappings xsi:type="description_1:InstanceRoleMapping" name="SD_Lifeline Instance Role" navigationDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Sequence%20diagram']/@ownedTools[name='Open%20sequence%20diagram%20from%20lifeline']" deletionDescription="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='edit']/@ownedTools[name='DEL_Lifeline']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="feature:lifeline" semanticElements="service:getClientDependencies" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" documentation="@generated" domainClass="uml.Lifeline">
           <borderedNodeMappings xsi:type="description_1:ExecutionMapping" name="SD_Lifeline Execution" deletionDescription="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='edit']/@ownedTools[name='DEL_Lifeline']" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" documentation="@generated" domainClass="uml.Lifeline" startingEndFinderExpression="var:self" finishingEndFinderExpression="var:self">
@@ -4518,7 +4518,7 @@
               <predecessorBefore name="predecessorBefore"/>
               <predecessorAfter name="predecessorAfter"/>
               <instanceRoleMoved>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[reorderLifeline(predecessorBefore, predecessorAfter)/]"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:reorderLifeline(predecessorBefore, predecessorAfter)"/>
               </instanceRoleMoved>
             </ownedTools>
             <ownedTools xsi:type="tool:DeleteElementDescription" name="DEL_Execution">
@@ -4535,7 +4535,7 @@
               <containerView name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
-                  <subModelOperations xsi:type="tool:If" conditionExpression="[element.messageSort &lt;>'reply'/]">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="service:element.isNotReply">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
                       <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:delete"/>
                     </subModelOperations>
@@ -4547,7 +4547,7 @@
               <startingEndPredecessorAfter name="startingEndPredecessorAfter"/>
               <finishingEndPredecessorAfter name="finishingEndPredecessorAfter"/>
               <onEventMovedOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[reorder(startingEndPredecessorAfter.semanticEnd, finishingEndPredecessorAfter.semanticEnd)/]"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:reorderFragment(startingEndPredecessorAfter,finishingEndPredecessorAfter)"/>
               </onEventMovedOperation>
             </ownedTools>
             <ownedTools xsi:type="tool:DeleteElementDescription" name="DEL_Lifeline">
@@ -4562,27 +4562,22 @@
             </ownedTools>
           </subSections>
           <subSections name="menu">
-            <ownedTools xsi:type="tool:PopupMenu" name="PM_LinkToExecution" label="Link to execution" precondition="[self->filter(uml::Message).hasStartMessage()/]" forceRefresh="true">
-              <menuItemDescription xsi:type="tool:OperationAction" name="AsStart" label="As execution start" forceRefresh="true">
-                <view name="containerView"/>
-                <initialOperation>
-                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[linkToExecutionAsStart(containerView)/]"/>
-                </initialOperation>
-              </menuItemDescription>
-            </ownedTools>
             <ownedTools xsi:type="tool:PopupMenu" name="Context Specification" precondition="[self->filter(uml::Lifeline).represents->filter(uml::Property)->size() >0/]">
               <menuItemDescription xsi:type="tool:OperationAction" name="Select context" forceRefresh="true">
                 <view name="containerView">
                   <subVariables xsi:type="tool:SelectModelElementVariable" name="context" candidatesExpression="service:getInstances" tree="true" rootExpression="service:getAvailablePackages" childrenExpression="feature:eContents" message="Select an instance or a part as the context of the current lifeline"/>
+                  <subVariables xsi:type="tool:AcceleoVariable" name="containerViewTarget" computationExpression="[containerView.target/]"/>
                 </view>
                 <initialOperation>
-                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[containerView.target.addContext(context)/]"/>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:containerViewTarget.addContext(context)"/>
                 </initialOperation>
               </menuItemDescription>
-              <menuItemDescription xsi:type="tool:OperationAction" name="Delete context" precondition="[clientDependency->size() >0/]" forceRefresh="true">
-                <view name="containerView"/>
+              <menuItemDescription xsi:type="tool:OperationAction" name="Delete context" precondition="[clientDependency->size() > 0/]" forceRefresh="true">
+                <view name="containerView">
+                  <subVariables xsi:type="tool:AcceleoVariable" name="containerViewTarget" computationExpression="[containerView.target/]"/>
+                </view>
                 <initialOperation>
-                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[containerView.target.deleteContext()/]"/>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="containerViewTarget.deleteContext"/>
                 </initialOperation>
               </menuItemDescription>
             </ownedTools>
@@ -4595,7 +4590,7 @@
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.createLifeline(property)/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:container.createLifeline(property)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:NodeCreationDescription" name="CR_ActorLifeline" label="Actor" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']">
@@ -4604,7 +4599,7 @@
             </variable>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.createLifeline(property)/]"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:container.createLifeline(property)"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
@@ -4721,7 +4716,7 @@
       </additionalLayers>
       <additionalLayers name="Informations" icon="/org.eclipse.sirius.ui/icons/full/others/information.gif">
         <nodeMappings name="LifelineComment" preconditionExpression="[clientDependency->size()>0 or represents.eContainer()->size()>0/]" deletionDescription="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@additionalLayers[name='Informations']/@toolSections.0/@ownedTools[name='LifelineCommentDelete']" labelDirectEdit="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Sequence%20Diagram']/@additionalLayers[name='Informations']/@toolSections.0/@ownedTools[name='LifelineCommentEditLabel']" semanticCandidatesExpression="feature:lifeline" semanticElements="var:self" domainClass="uml.Lifeline">
-          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='InformationBorder']" showIcon="false" labelExpression="['current container : '+represents.eContainer().name/]" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW" width="16" height="5" color="//@userColorsPalettes[name='UMLPalette']/@entries[name='InformationBackground']">
+          <style xsi:type="style:SquareDescription" borderSizeComputationExpression="1" borderColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='InformationBorder']" showIcon="false" labelExpression="['current container : '+represents.eContainer().oclAsType(uml::NamedElement).name/]" sizeComputationExpression="" labelPosition="node" resizeKind="NSEW" width="16" height="5" color="//@userColorsPalettes[name='UMLPalette']/@entries[name='InformationBackground']">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
           <conditionnalStyles predicateExpression="[represents = null and clientDependency->size()>1/]">
