@@ -65,6 +65,7 @@ location "http://download.eclipse.org/sirius/updates/nightly/latest/kepler" {
 	org.eclipse.sirius.runtime.ide.ui.feature.group
 	org.eclipse.sirius.specifier.ide.ui.feature.group
 	org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group
+	org.eclipse.nebula.widgets.paperclips.feature.feature.group
 }
 
 location "http://update.obeo.fr/integration/viewpoint/master/kepler/repository/" {
