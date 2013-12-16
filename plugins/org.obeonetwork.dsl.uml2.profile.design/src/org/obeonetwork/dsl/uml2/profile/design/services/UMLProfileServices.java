@@ -40,6 +40,9 @@ import org.eclipse.uml2.uml.UMLFactory;
 import org.obeonetwork.dsl.uml2.profile.design.dialogs.ExtraAssociationSelectionDialog;
 import org.obeonetwork.dsl.uml2.profile.design.dialogs.ProfileVersionDialog;
 
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
+
 /**
  * Services for UML Profile.
  * 
@@ -49,13 +52,15 @@ import org.obeonetwork.dsl.uml2.profile.design.dialogs.ProfileVersionDialog;
  */
 public class UMLProfileServices {
 
-	String yes = "Yes";
+	private static String YES = "Yes";
 
-	String no = "No";
+	private static String NO = "No";
 
-	String undefineProfile = "Undefine the Profile";
+	private static String OK = "OK";
 
-	String base = "base_";
+	private static String undefineProfile = "Undefine the Profile";
+
+	private static String base = "base_";
 
 	/**
 	 * Dialog message to define a profile.
@@ -65,12 +70,28 @@ public class UMLProfileServices {
 	 * @param allContentProfile
 	 *            to define
 	 */
-	public void defineProfileDialog(final Profile rootProfile,
+	public void defineProfileDialog(final Profile rootProfile) {
+		List<Profile> allProfiles = Lists.newArrayList(Iterators.filter(
+				rootProfile
+				.getModel().eAllContents(), Profile.class));
+		allProfiles.remove(rootProfile);
+		defineProfileDialog(rootProfile, allProfiles);
+	}
+
+	/**
+	 * Dialog message to define a profile.
+	 * 
+	 * @param rootProfile
+	 *            to define
+	 * @param allContentProfile
+	 *            to define
+	 */
+	private void defineProfileDialog(final Profile rootProfile,
 			final List<Profile> allContentProfile) {
 		boolean result = false;
 
 		// String[] buttonYesNo = {yes, no};
-		final String[] buttonYes = { yes };
+		final String[] buttonYes = { OK };
 		final Shell activeShell = PlatformUI.getWorkbench().getDisplay()
 				.getActiveShell();
 		// MessageDialog msgDialogYesNo = null;
@@ -200,6 +221,21 @@ public class UMLProfileServices {
 	}
 
 	/**
+	 * Dialog message to define a profile.
+	 * 
+	 * @param rootProfile
+	 *            to define
+	 * @param allContentProfile
+	 *            to define
+	 */
+	public void undefineProfile(final Profile rootProfile) {
+		List<Profile> allProfiles = Lists.newArrayList(Iterators.filter(
+				rootProfile
+				.getModel().eAllContents(), Profile.class));
+		undefineProfile(rootProfile, allProfiles);
+	}
+
+	/**
 	 * Undefine the profile.
 	 * 
 	 * @param rootProfile
@@ -207,10 +243,10 @@ public class UMLProfileServices {
 	 * @param allContentProfile
 	 *            the sub profile to undefine
 	 */
-	public void undefineProfile(final Profile rootProfile,
+	private void undefineProfile(final Profile rootProfile,
 			final List<Profile> allContentProfile) {
-		final String[] buttonYesNo = { yes, no };
-		final String[] buttonYes = { yes };
+		final String[] buttonYesNo = { YES, NO };
+		final String[] buttonYes = { OK };
 		final Shell activeShell = PlatformUI.getWorkbench().getDisplay()
 				.getActiveShell();
 		MessageDialog msgDialogYesNo = null;
@@ -284,6 +320,16 @@ public class UMLProfileServices {
 		return false;
 	}
 
+	public boolean canCreateExtension(final Stereotype source,
+			final Stereotype target) {
+		return canCreateExtension((EObject) source, (EObject) target);
+	}
+
+	public boolean canCreateExtension(final Stereotype source,
+			final ElementImport target) {
+		return canCreateExtension((EObject) source, (EObject) target);
+	}
+
 	/**
 	 * Test if is it possible to create an extension from stereotype source to
 	 * the stereotype extension.
@@ -294,7 +340,8 @@ public class UMLProfileServices {
 	 *            stereotype.
 	 * @return true if the extension between source and target is possible.
 	 */
-	public boolean canCreateExtension(final EObject source, final EObject target) {
+	private boolean canCreateExtension(final EObject source,
+			final EObject target) {
 		if (source instanceof Stereotype) {
 			final Stereotype stereotypeSource = (Stereotype) source;
 			if (target instanceof ElementImport) {
@@ -308,7 +355,7 @@ public class UMLProfileServices {
 				if (baseProperty == null)
 					return true;
 				else if (baseProperty instanceof Property) {
-					if (!((Property) baseProperty).getType().equals(metaClass))
+					if (((Property) baseProperty).getType().equals(metaClass))
 						return true;
 				}
 
