@@ -82,6 +82,7 @@ import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Pseudostate;
 import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.StructuredClassifier;
@@ -1225,6 +1226,9 @@ public class UMLServices {
 			name = "Literal";
 		} else if (element instanceof Property) {
 			name = "property";
+		} else if (element instanceof Pseudostate) {
+			String kind = (((Pseudostate)element).getKind()).getLiteral();
+			name = Character.toUpperCase(kind.charAt(0)) + kind.substring(1);
 		} else if (element instanceof Association) {
 			String end1 = ((Association)element).getOwnedEnds().get(0).getName();
 			String end2 = ((Association)element).getOwnedEnds().get(1).getName();

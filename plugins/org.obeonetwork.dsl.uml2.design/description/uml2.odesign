@@ -3337,7 +3337,7 @@
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </subNodeMappings>
-            <subContainerMappings name="SM_State" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="[subvertex->filter(uml::State)/]" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.State">
+            <subContainerMappings name="SM_State" preconditionExpression="[oclIsTypeOf(uml::State)/]" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="[subvertex->filter(uml::State)/]" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.State">
               <style xsi:type="style:FlatContainerStyleDescription" arcWidth="25" arcHeight="25" borderSizeComputationExpression="1" labelSize="9" showIcon="false" labelExpression="service:computeUmlLabel" roundedCorner="true" backgroundStyle="Liquid">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
@@ -3441,8 +3441,8 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="subvertex">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="initial"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
@@ -3460,8 +3460,8 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="subvertex">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Fork_'+container.oclAsType(uml::Pseudostate).subvertex->filter(uml::Pseudostate)->size()/]"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="fork"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
@@ -3470,8 +3470,8 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="subvertex">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Join_'+container.oclAsType(uml::Pseudostate).subvertex->filter(uml::Pseudostate)->size()/]"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="join"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
@@ -3480,8 +3480,8 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="subvertex">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Choice_'+container.subvertex->filter(uml::Pseudostate)->size()/]"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="choice"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
@@ -3490,8 +3490,8 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="subvertex">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Junction_'+container.subvertex->filter(uml::Pseudostate)->size()/]"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="junction"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
@@ -3500,8 +3500,8 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="subvertex">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Terminate_'+container.subvertex->filter(uml::Pseudostate)->size()/]"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="terminate"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
@@ -3510,8 +3510,8 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="subvertex">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['ShallowHistory_'+container.subvertex->filter(uml::Pseudostate)->size()/]"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="shallowHistory"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
@@ -3520,8 +3520,8 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="subvertex">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['DeepHistory_'+container.subvertex->filter(uml::Pseudostate)->size()/]"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="deepHistory"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
@@ -3530,8 +3530,8 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="connectionPoint">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Entry_'+container.oclAsType(uml::StateMachine).eAllContents()->filter(uml::Pseudostate)->size()/]"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="entryPoint"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
@@ -3540,8 +3540,8 @@
               <viewVariable name="containerView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Pseudostate" referenceName="connectionPoint">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Exit_'+container.oclAsType(uml::StateMachine).eAllContents()->filter(uml::Pseudostate)->size()/]"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="kind" valueExpression="exitPoint"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
