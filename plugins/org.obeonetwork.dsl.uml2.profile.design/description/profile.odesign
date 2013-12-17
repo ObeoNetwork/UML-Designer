@@ -410,7 +410,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Tools">
-          <ownedTools xsi:type="tool:ToolDescription" name="Define Profile" iconPath="/org.obeonetwork.dsl.uml2.profile.design/icons/defineProfile.gif">
+          <ownedTools xsi:type="tool:ToolDescription" name="Define Profile" precondition="[self.oclIsTypeOf(uml::Profile)/]" iconPath="/org.obeonetwork.dsl.uml2.profile.design/icons/defineProfile.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -419,7 +419,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" name="Undefine Profile" iconPath="/org.obeonetwork.dsl.uml2.profile.design/icons/undefineProfile.gif">
+          <ownedTools xsi:type="tool:ToolDescription" name="Undefine Profile" precondition="[self.oclIsTypeOf(uml::Profile)/]" iconPath="/org.obeonetwork.dsl.uml2.profile.design/icons/undefineProfile.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -428,13 +428,11 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" name="Export Profile" iconPath="/org.obeonetwork.dsl.uml2.profile.design/icons/ExportProfile.gif">
-            <element name="element">
-              <subVariables xsi:type="tool:AcceleoVariable" name="elementContainer" computationExpression="[element.oclAsType(uml::Element).getModel()/]"/>
-            </element>
+          <ownedTools xsi:type="tool:ToolDescription" name="Export Profile" precondition="[self.oclIsTypeOf(uml::Profile)/]" iconPath="/org.obeonetwork.dsl.uml2.profile.design/icons/ExportProfile.gif">
+            <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:elementContainer">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:exportProfile"/>
               </firstModelOperations>
             </initialOperation>
