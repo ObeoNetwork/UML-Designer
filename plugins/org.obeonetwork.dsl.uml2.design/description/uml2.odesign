@@ -276,7 +276,7 @@
             <containerView name="containerView"/>
             <container name="container"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container/]">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[applyAllStereotypes(stereotype)/]"/>
               </firstModelOperations>
             </initialOperation>
