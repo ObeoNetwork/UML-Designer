@@ -21,6 +21,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
@@ -133,10 +134,10 @@ public class UMLServices {
 				if (!path.toFile().exists()) {
 					PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 					PlatformUI
-							.getWorkbench()
-							.getHelpSystem()
-							.setHelp(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-									contextID);
+					.getWorkbench()
+					.getHelpSystem()
+					.setHelp(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+							contextID);
 					PlatformUI.getWorkbench().getHelpSystem().displayDynamicHelp();
 					path.toFile().createNewFile();
 				}
@@ -726,13 +727,27 @@ public class UMLServices {
 	}
 
 	private List<EObject> getValidsForObjectDiagram(EObject cur) {
-		Predicate<EObject> validForComponentDiagram = new Predicate<EObject>() {
+		Predicate<EObject> validForObjetDiagram = new Predicate<EObject>() {
 
 			public boolean apply(EObject input) {
-				return input instanceof Package || input instanceof InstanceSpecification;
+				boolean result = false;
+				if (input instanceof InstanceSpecification || input instanceof Classifier) {
+					result = true;
+				} else if (input instanceof Package){
+					// A package is interesting only if it contains a Classifier or an InstanceSpecification
+					TreeIterator<EObject> eAllContents = input.eAllContents();
+					while (eAllContents.hasNext()) {
+						EObject eObject = (EObject)eAllContents.next();
+						if (eObject instanceof InstanceSpecification || eObject instanceof Classifier) {
+							result = true;
+							break;
+						}
+					}
+				}
+				return result;
 			}
 		};
-		return allValidSessionElements(cur, validForComponentDiagram);
+		return allValidSessionElements(cur, validForObjetDiagram);
 	}
 
 	public List<EObject> getValidsForCompositeDiagram(EObject cur) {
@@ -1422,12 +1437,45 @@ public class UMLServices {
 			String end1 = ((Association)element).getOwnedEnds().get(0).getName();
 			String end2 = ((Association)element).getOwnedEnds().get(1).getName();
 			return end1 + "To" + Character.toUpperCase(end2.charAt(0)) + end2.substring(1);
-		}
+		} else if (element instanceof InstanceSpecification) {
+			predicate = new Predicate<EObject>() {
+				public boolean apply(EObject input) {
+					return input instanceof InstanceSpecification;
+				}
+			};
+			name = "anObject";
+			List<Classifier> classifiers = ((InstanceSpecification)element).getClassifiers();
+			if(!classifiers.isEmpty()) {
+				String classifierName = classifiers.get(0).getName();
+				if(classifierName!=null && classifierName.length()>0) {
+					if(startWithVowel(classifierName)) {
+						name = "an";
+					} else {
+						name = "a";
+					}
+					name += classifierName;
+				}
+			}
+		} 
 
 		List<EObject> existingElements = Lists.newArrayList(Iterables.filter(
 				element.eContainer().eContents(), predicate));
 
 		return name + existingElements.size();
+	}
+
+	private static boolean startWithVowel(String str) {
+		boolean result = false;
+		if(str!=null && str.length()>0) {
+			char[] vowels = new char[]{'a','e','i','o','u'};
+			for (char vowel : vowels) {
+				if(str.startsWith(Character.toString(vowel)) || str.startsWith(Character.toString(vowel).toUpperCase())) {
+					result = true;
+					break;
+				}
+			}
+		}
+		return result;
 	}
 
 	public List<Package> getAllAvailableRootPackages(Element element) {

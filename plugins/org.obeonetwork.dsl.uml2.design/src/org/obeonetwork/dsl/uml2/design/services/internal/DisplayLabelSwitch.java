@@ -13,6 +13,7 @@ package org.obeonetwork.dsl.uml2.design.services.internal;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Association;
@@ -29,6 +30,9 @@ import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.InstanceSpecification;
 import org.eclipse.uml2.uml.InstanceValue;
 import org.eclipse.uml2.uml.Lifeline;
+import org.eclipse.uml2.uml.LiteralBoolean;
+import org.eclipse.uml2.uml.LiteralInteger;
+import org.eclipse.uml2.uml.LiteralString;
 import org.eclipse.uml2.uml.Message;
 import org.eclipse.uml2.uml.MultiplicityElement;
 import org.eclipse.uml2.uml.NamedElement;
@@ -40,6 +44,7 @@ import org.eclipse.uml2.uml.ParameterDirectionKind;
 import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.Pin;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Slot;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.StructuralFeature;
 import org.eclipse.uml2.uml.TemplateBinding;
@@ -458,7 +463,7 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 				&& lifeline.getClientDependencies().size() > 0
 				&& lifeline.getClientDependencies().get(0) != null
 				&& lifeline.getClientDependencies().get(0).getSuppliers()
-						.size() > 0;
+				.size() > 0;
 	}
 
 	/**
@@ -469,7 +474,7 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 		if (execution instanceof BehaviorExecutionSpecification) {
 			if (((BehaviorExecutionSpecification) execution).getBehavior() != null
 					&& ((BehaviorExecutionSpecification) execution)
-							.getBehavior().getSpecification() != null)
+					.getBehavior().getSpecification() != null)
 				return caseOperation((Operation) ((BehaviorExecutionSpecification) execution)
 						.getBehavior().getSpecification());
 		}
@@ -516,6 +521,42 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 				label.append(doSwitch(classifier).replace("\n", " "));
 				if (it.hasNext())
 					label.append(SPACED_COMMA);
+			}
+		}
+		return label.toString();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String caseSlot(Slot object) {
+
+		final StringBuilder label = new StringBuilder(object.getDefiningFeature().getName());
+		label.append(" = ");
+		List<ValueSpecification> values = object.getValues();
+		boolean first=true;
+		for (ValueSpecification valueSpecification : values) {
+			if(first) {
+				first = false;
+			} else {
+				label.append(SPACED_COMMA);
+			}
+
+			if(valueSpecification instanceof InstanceValue) {
+				InstanceValue anInstanceValue = (InstanceValue)valueSpecification;
+				label.append(anInstanceValue.getInstance().getName());
+			} else if(valueSpecification instanceof LiteralString) {
+				LiteralString aLiteralString = (LiteralString)valueSpecification;
+				label.append(aLiteralString.getValue());
+			} else if(valueSpecification instanceof LiteralInteger) {
+				LiteralInteger aLiteralInteger = (LiteralInteger)valueSpecification;
+				label.append(aLiteralInteger.getValue());
+			} else if(valueSpecification instanceof LiteralBoolean) {
+				LiteralBoolean aLiteralBoolean = (LiteralBoolean)valueSpecification;
+				label.append(aLiteralBoolean.booleanValue());
+			} else {
+				label.append(valueSpecification.getName());
 			}
 		}
 		return label.toString();

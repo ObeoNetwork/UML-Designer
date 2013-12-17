@@ -2215,7 +2215,7 @@
         <filters xsi:type="filter:MappingFilter"/>
       </filters>
       <defaultLayer name="Object Diagram">
-        <edgeMappings name="OD_InstanceSlot" preconditionExpression="[self.definingFeature.aggregation&lt;>'composite'/]" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="service:diagram.getSlotInverseRefs" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" targetFinderExpression="[self->select(definingFeature.aggregation&lt;>'composite').value.instance/]" sourceFinderExpression="feature:eContainer" domainClass="uml.Slot" useDomainElement="true">
+        <edgeMappings name="OD_InstanceSlot" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="[diagram.getNodeInverseRefs('Slot')/]" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_InstanceSpecification']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_InstanceSpecification']" targetFinderExpression="[value->select(value | not (value.owner.oclAsType(uml::Slot).definingFeature.oclAsType(uml::Property).isComposite) )->filter(uml::InstanceValue).instance/]" sourceFinderExpression="feature:eContainer" domainClass="uml.Slot" useDomainElement="true">
           <style targetArrow="NoDecoration" sizeComputationExpression="1" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_purple']"/>
             <centerLabelStyleDescription labelExpression="[definingFeature.name/]">
@@ -2223,7 +2223,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="OD_CompositeSlot" preconditionExpression="[self.definingFeature.aggregation&lt;>'composite'/]" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="service:diagram.getSlotInverseRefs" semanticElements="service:getSemanticElements" targetFinderExpression="[self->select(definingFeature.aggregation='composite').value.instance/]" sourceFinderExpression="feature:eContainer" domainClass="uml.Slot" useDomainElement="true">
+        <edgeMappings name="OD_CompositeSlot" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="[diagram.getNodeInverseRefs('Slot')/]" semanticElements="service:getSemanticElements" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_InstanceSpecification']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_InstanceSpecification']" targetFinderExpression="[value->select(value | value.owner.oclAsType(uml::Slot).definingFeature.oclAsType(uml::Property).isComposite )->filter(uml::InstanceValue).instance/]" sourceFinderExpression="feature:eContainer" domainClass="uml.Slot" useDomainElement="true">
           <style targetArrow="NoDecoration" sizeComputationExpression="1" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
             <centerLabelStyleDescription labelExpression="[definingFeature.name/]">
@@ -2232,49 +2232,21 @@
           </style>
         </edgeMappings>
         <containerMappings xsi:type="description:ContainerMappingImport" name="OD_InstanceSpecification" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementServiceDirectEdit']" createElements="false" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.InstanceSpecification" childrenPresentation="List" hideSubMappings="true">
-          <subNodeMappings name="OD_Slot" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="[slot->select(value.oclIsTypeOf(uml::InstanceValue))->size() = 0 or value->filter(uml::InstanceValue).instance->filter(uml::EnumerationLiteral)->size() > 0 /]" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Slot">
-            <style xsi:type="style:SquareDescription" labelExpression="[definingFeature.name + ' = '+ collect(value.body.toString()->sep(',')) /]">
+          <subNodeMappings name="OD_Slot" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="feature:slot" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Slot">
+            <style xsi:type="style:SquareDescription" labelExpression="service:computeUmlLabel">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
-            <conditionnalStyles predicateExpression="[value->filter(uml::InstanceValue)->size()>0/]">
-              <style xsi:type="style:SquareDescription" labelExpression="service:computeUmlLabel">
-                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-              </style>
-            </conditionnalStyles>
-            <conditionnalStyles predicateExpression="[value->filter(uml::LiteralString)->size()>0/]">
-              <style xsi:type="style:SquareDescription" labelExpression="[definingFeature.name + ' = '+ collect(value->sep(',')) /]">
-                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-              </style>
-            </conditionnalStyles>
-            <conditionnalStyles predicateExpression="[value->filter(uml::LiteralInteger)->size()>0/]">
-              <style xsi:type="style:SquareDescription" labelExpression="service:computeUmlLabel">
-                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-              </style>
-            </conditionnalStyles>
-            <conditionnalStyles predicateExpression="[value->filter(uml::LiteralBoolean)->size()>0/]">
-              <style xsi:type="style:SquareDescription" labelExpression="[definingFeature.name + ' = '+ collect(value.toString()->sep(',')) /]">
-                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-              </style>
-            </conditionnalStyles>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="[definingFeature.name + ' = '+ collect(classifier.name->sep(',')) /]">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="service:computeUmlLabel">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
           <conditionnalStyles predicateExpression="[self.eContainer() &lt;> container/]">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="[name + ' : '+ collect(classifier.name->sep(',')) /]">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelExpression="service:computeUmlLabel">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -2297,9 +2269,37 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Object Diagram" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Popup%20menu']/@ownedTools[name='EAnnotation']">
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="CR_InstanceSlot" label="Reference Instance" precondition="[(eContainer(uml::Model).eAllContents(uml::Association).ownedEnd.type->includes(self.classifier) and eContainer(uml::Model).eAllContents(uml::Association).ownedEnd.type->includes(preTarget.classifier))or(classifier.getAllAttributes()->select(type=preTarget.classifier)->size>0)or(classifier.getAllAttributes()->select(type=preTarget.classifier.interfaceRealization.contract)->size>0)/]" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@edgeMappings[name='OD_CompositeSlot'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@edgeMappings[name='OD_InstanceSlot']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Connector.gif">
+          <ownedTools xsi:type="tool:SelectionWizardDescription" name="CR_InstanceSpecification" label="Instance" precondition="[oclIsKindOf(uml::Package)/]" candidatesExpression="[getValidsForDiagram(diagram)->select( item | item.oclIsKindOf(uml::Classifier) or item.oclIsKindOf(uml::Package))/]" multiple="true" tree="true" rootExpression="[getAllRootsInSession()->filter(uml::Package)/]" childrenExpression="feature:eContents" message="Select a classifier to instanciate" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/InstanceSpecification.gif">
+            <element name="element"/>
+            <containerView name="containerView"/>
+            <container name="container"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:For" expression="[element->filter(uml::Classifier)/]" iteratorName="aClassifier">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="InstanceSpecification" referenceName="packagedElement" variableName="anInstanceSpecification">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="classifier" valueExpression="var:aClassifier"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:anInstanceSpecification">
+                      <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_InstanceSpecification']" containerViewExpression="var:containerView"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:SelectionWizardDescription" name="CR_PrimitiveSlot" label="Property Value" precondition="[oclIsKindOf(uml::InstanceSpecification)/]" candidatesExpression="service:candidatesForSlot" multiple="true" tree="true" rootExpression="feature:classifier" childrenExpression="service:childrenExpressionForSlot" message="Select a property to set" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Slot.gif">
+            <element name="element"/>
+            <containerView name="containerView"/>
+            <container name="container"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:For" expression="[element->filter(uml::Property)/]" iteratorName="aProperty">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.createSlot(aProperty)/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="CR_InstanceSlot" label="Reference Instance" precondition="[preSource.canCreateAnInstanceSlot(preTarget)/]" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@edgeMappings[name='OD_CompositeSlot'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@edgeMappings[name='OD_InstanceSlot']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Connector.gif" connectionStartPrecondition="[preSource.candidatesForSlot()->filter(uml::Property)->size()>0/]">
             <sourceVariable name="source">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="property" candidatesExpression="[source.eContainer(uml::Model).eAllContents(uml::Association).ownedEnd->select(type=target.classifier)->including(source.classifier.getAllAttributes()->select(type=target.classifier))->inlcuding(source.classifier.getAllAttributes()->select(type=target.classifier.interfaceRealization.contract)/]"/>
+              <subVariables xsi:type="tool:SelectModelElementVariable" name="property" candidatesExpression="service:source.candidatesForInstanceSlot(target)"/>
             </sourceVariable>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -2308,32 +2308,9 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:source.createSlot(target,property)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="CR_InstanceSpecification" label="Create Instance" forceRefresh="true" containerMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_InstanceSpecification']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/InstanceSpecification.gif">
-            <variable name="container">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="class" candidatesExpression="service:getProperties" tree="true" rootExpression="service:getAvailablePackages" childrenExpression="feature:eContents" message="Select property to instanciate"/>
-            </variable>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="InstanceSpecification" referenceName="packagedElement">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['new' + class.getName()/]"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="classifier" valueExpression="var:class"/>
-                </subModelOperations>
-              </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="CR_PrimitiveSlot" label="Set Default Value" nodeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Object%20Diagram']/@defaultLayer/@containerMappings[name='OD_InstanceSpecification']/@subNodeMappings[name='OD_Slot']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Slot.gif">
-            <variable name="container">
-              <subVariables xsi:type="tool:SelectModelElementVariable" name="property" candidatesExpression="[container.classifier.getAllAttributes()->select(type->filter(uml::PrimitiveType)->size>0)/]"/>
-            </variable>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:container.createSlot(property)"/>
-            </initialOperation>
-          </ownedTools>
         </toolSections>
       </defaultLayer>
-      <additionalLayers name="Type">
+      <additionalLayers name="Type" label="Type">
         <nodeMappings name="OD_PrimitiveType" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="[self.packagedElement->filter(uml::InstanceSpecification).classifier->asOrderedSet()->asSequence()/]" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.PrimitiveType">
           <style xsi:type="style:BundledImageDescription" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
