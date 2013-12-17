@@ -308,7 +308,7 @@ public class SequenceServiceTests extends TestCase {
 
 	/**
 	 * Test
-	 * {@link SequenceServices#createOperationAndAsynchMessage(NamedElement, NamedElement, NamedElement, NamedElement)
+	 * {@link SequenceServices#createOperationAndAsynchMessage(NamedElement, NamedElement, EventEnd, EventEnd)
 	 * createAsynchronousMessage} service. Create an asynchronous message and a new operation between to empty
 	 * lifelines.
 	 * 
