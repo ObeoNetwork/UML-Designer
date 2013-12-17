@@ -42,7 +42,6 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.ActivityFinalNode;
 import org.eclipse.uml2.uml.ActivityParameterNode;
-import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Actor;
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Artifact;
@@ -56,21 +55,17 @@ import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.ConnectorEnd;
 import org.eclipse.uml2.uml.DataStoreNode;
 import org.eclipse.uml2.uml.DataType;
-import org.eclipse.uml2.uml.DecisionNode;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Deployment;
 import org.eclipse.uml2.uml.Device;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.EncapsulatedClassifier;
-import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.ExecutionEnvironment;
 import org.eclipse.uml2.uml.Feature;
-import org.eclipse.uml2.uml.FinalState;
 import org.eclipse.uml2.uml.FlowFinalNode;
 import org.eclipse.uml2.uml.ForkNode;
 import org.eclipse.uml2.uml.Generalization;
-import org.eclipse.uml2.uml.InitialNode;
 import org.eclipse.uml2.uml.InstanceSpecification;
 import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.Interface;
@@ -81,17 +76,12 @@ import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
 import org.eclipse.uml2.uml.Node;
-import org.eclipse.uml2.uml.OpaqueAction;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.Port;
-import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Property;
-import org.eclipse.uml2.uml.Pseudostate;
-import org.eclipse.uml2.uml.Region;
-import org.eclipse.uml2.uml.State;
 import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.StructuredClassifier;
@@ -1214,206 +1204,27 @@ public class UMLServices {
 		Predicate<EObject> predicate = null;
 		String name = element.getClass().getSimpleName();
 		name = name.substring(0, name.indexOf("Impl"));
-		if (element instanceof Actor) {
-			predicate = new Predicate<EObject>() {
-				public boolean apply(EObject input) {
-					return input instanceof Actor;
-				}
-			};
-		} else if (element instanceof Device) {
-			predicate = new Predicate<EObject>() {
-				public boolean apply(EObject input) {
-					return input instanceof Device;
-				}
-			};
-		} else if (element instanceof ExecutionEnvironment) {
-			predicate = new Predicate<EObject>() {
-				public boolean apply(EObject input) {
-					return input instanceof ExecutionEnvironment;
-				}
-			};
-		} else if (element instanceof Artifact) {
-			predicate = new Predicate<EObject>() {
-				public boolean apply(EObject input) {
-					return input instanceof Artifact;
-				}
-			};
-		} else if (element instanceof Node) {
-			predicate = new Predicate<EObject>() {
-				public boolean apply(EObject input) {
-					return input instanceof Node;
-				}
-			};
-		} else if (element instanceof Port) {
-			predicate = new Predicate<EObject>() {
-				public boolean apply(EObject input) {
-					return input instanceof Port;
-				}
-			};
-		} else if (element instanceof Region) {
-			predicate = new Predicate<EObject>() {
-				public boolean apply(EObject input) {
-					return input instanceof Region;
-				}
-			};
-		} else if (element instanceof FinalState) {
-			predicate = new Predicate<EObject>() {
-				public boolean apply(EObject input) {
-					return input instanceof FinalState;
-				}
-			};
-		} else if (element instanceof ActivityPartition) {
-			predicate = new Predicate<EObject>() {
-				public boolean apply(EObject input) {
-					return input instanceof ActivityPartition;
-				}
-			};
-		} else if (element instanceof ActivityFinalNode) {
-			predicate = new Predicate<EObject>() {
-				public boolean apply(EObject input) {
-					return input instanceof ActivityFinalNode;
-				}
-			};
+		predicate = new Predicate<EObject>() {
+			public boolean apply(EObject input) {
+				return input.getClass().getName().equals(element.getClass().getName());
+			}
+		};
+		if (element instanceof ActivityFinalNode) {
 			name = "ActivityFinal";
-		} else if (element instanceof InitialNode) {
-			predicate = new Predicate<EObject>() {
-				public boolean apply(EObject input) {
-					return input instanceof InitialNode;
-				}
-			};
 		} else if (element instanceof FlowFinalNode) {
-			predicate = new Predicate<EObject>() {
-				public boolean apply(EObject input) {
-					return input instanceof FlowFinalNode;
-				}
-			};
 			name = "FlowFinal";
-		} else if (element instanceof DecisionNode) {
-			predicate = new Predicate<EObject>() {
-				public boolean apply(EObject input) {
-					return input instanceof DecisionNode;
-				}
-			};
 		} else if (element instanceof MergeNode) {
-			predicate = new Predicate<EObject>() {
-				public boolean apply(EObject input) {
-					return input instanceof MergeNode;
-				}
-			};
 			name = "Merge";
 		} else if (element instanceof DataStoreNode) {
-			predicate = new Predicate<EObject>() {
-				public boolean apply(EObject input) {
-					return input instanceof DataStoreNode;
-				}
-			};
 			name = "DataStore";
-		} else if (element instanceof OpaqueAction) {
-			predicate = new Predicate<EObject>() {
-				public boolean apply(EObject input) {
-					return input instanceof OpaqueAction;
-				}
-			};
 		} else if (element instanceof ActivityParameterNode) {
-			predicate = new Predicate<EObject>() {
-				public boolean apply(EObject input) {
-					return input instanceof OpaqueAction;
-				}
-			};
 			name = "Parameter";
 		} else if (element instanceof ForkNode) {
-			predicate = new Predicate<EObject>() {
-				public boolean apply(EObject input) {
-					return input instanceof ForkNode;
-				}
-			};
 			name = "Fork";
-		} else if (element instanceof Pseudostate) {
-			predicate = new Predicate<EObject>() {
-				public boolean apply(EObject input) {
-					return input instanceof Pseudostate;
-				}
-			};
-		} else if (element instanceof State) {
-			predicate = new Predicate<EObject>() {
-				public boolean apply(EObject input) {
-					return input instanceof State;
-				}
-			};
-		} else if (element instanceof Stereotype) {
-			predicate = new Predicate<EObject>() {
-				public boolean apply(EObject input) {
-					return input instanceof Stereotype;
-				}
-			};
-		} else if (element instanceof Profile) {
-			predicate = new Predicate<EObject>() {
-				public boolean apply(EObject input) {
-					return input instanceof Profile;
-				}
-			};
-		} else if (element instanceof Package) {
-			predicate = new Predicate<EObject>() {
-				public boolean apply(EObject input) {
-					return input instanceof Package;
-				}
-			};
-		} else if (element instanceof AssociationClass) {
-			predicate = new Predicate<EObject>() {
-				public boolean apply(EObject input) {
-					return input instanceof AssociationClass;
-				}
-			};
-		} else if (element instanceof Interface) {
-			predicate = new Predicate<EObject>() {
-				public boolean apply(EObject input) {
-					return input instanceof Interface;
-				}
-			};
-		} else if (element instanceof Enumeration) {
-			predicate = new Predicate<EObject>() {
-				public boolean apply(EObject input) {
-					return input instanceof Enumeration;
-				}
-			};
 		} else if (element instanceof EnumerationLiteral) {
-			predicate = new Predicate<EObject>() {
-				public boolean apply(EObject input) {
-					return input instanceof EnumerationLiteral;
-				}
-			};
 			name = "Literal";
-		} else if (element instanceof PrimitiveType) {
-			predicate = new Predicate<EObject>() {
-				public boolean apply(EObject input) {
-					return input instanceof PrimitiveType;
-				}
-			};
-		} else if (element instanceof DataType) {
-			predicate = new Predicate<EObject>() {
-				public boolean apply(EObject input) {
-					return input.getClass().getSimpleName().contains("DataType");
-				}
-			};
 		} else if (element instanceof Property) {
-			predicate = new Predicate<EObject>() {
-				public boolean apply(EObject input) {
-					return input instanceof Property;
-				}
-			};
 			name = "property";
-		} else if (element instanceof Component) {
-			predicate = new Predicate<EObject>() {
-				public boolean apply(EObject input) {
-					return input instanceof Component;
-				}
-			};
-		} else if (element instanceof Class) {
-			predicate = new Predicate<EObject>() {
-				public boolean apply(EObject input) {
-					return input instanceof Class;
-				}
-			};
 		} else if (element instanceof Association) {
 			String end1 = ((Association)element).getOwnedEnds().get(0).getName();
 			String end2 = ((Association)element).getOwnedEnds().get(1).getName();
