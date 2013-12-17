@@ -54,7 +54,7 @@
 <unit id="org.eclipse.sirius.specifier.ide.ui.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group" version="0.0.0"/>
 <unit id="org.eclipse.nebula.widgets.paperclips.feature.feature.group" version="0.0.0"/>
-<repository location="http://download.eclipse.org/sirius/updates/nightly/latest/kepler"/>
+<repository location="http://download.eclipse.org/sirius/updates/milestones/1.0.0M4/kepler"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="fr.obeo.dsl.viewpoint.runtime.ide.tests.support.feature.group" version="0.0.0"/>
