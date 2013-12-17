@@ -75,7 +75,8 @@ import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.obeonetwork.dsl.uml2.design.services.internal.NamedElementServices;
 
-import com.google.common.collect.Lists;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
 
 /**
  * Utility services to manage sequence diagrams.
@@ -2145,12 +2146,11 @@ public class SequenceServices {
 		return !isReply(message);
 	}
 
-	public List<EObject> getEndsOrdering(Interaction interaction, List eventEnds) {
-		// [self.getEndsOrdering()->union(eventEnds)/]
-		List results = Lists.newArrayList();
-		results.add(getEndsOrdering(interaction));
-		results.add(eventEnds);
-		return results;
+	public Set<EObject> getEndsOrdering(Interaction interaction, List<EObject> eventEnds) {
+		Set<EObject> endsOrderingSet = ImmutableSet.copyOf(getEndsOrdering(interaction));
+		Set<EObject> eventEndsSet = ImmutableSet.copyOf(eventEnds);
+		Sets.SetView<EObject> intersection = Sets.intersection(endsOrderingSet, eventEndsSet);
+		return intersection;
 	}
 
 	public void reorderFragment(Element fragment, EventEnd startingEndPredecessorAfter,
