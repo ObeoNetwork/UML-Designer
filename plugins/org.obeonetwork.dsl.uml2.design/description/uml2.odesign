@@ -1073,7 +1073,7 @@
         </toolSections>
         <toolSections name="Features" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Popup%20menu']/@ownedTools[name='Move%20UP%2FDOWN%20TO%20Attributes%20or%20Operations']">
           <ownedTools xsi:type="tool:ToolGroup" name="Properties">
-            <tools xsi:type="tool:NodeCreationDescription" documentation="Create a new Property" name="Property" nodeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']">
+            <tools xsi:type="tool:NodeCreationDescription" documentation="Create a new Property" name="Property" nodeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/PropertyCreation.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
