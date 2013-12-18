@@ -172,7 +172,7 @@ public class UMLServices {
 	 *            the expected type.
 	 * @return the list of cross reference of the given
 	 */
-	public Collection<EObject> getNodeInverseRefs(DDiagram diagram, String typeName) {
+	private Collection<EObject> getNodeInverseRefs(DDiagram diagram, String typeName) {
 		Set<EObject> result = Sets.newLinkedHashSet();
 		if (diagram instanceof DSemanticDecorator) {
 			Session sess = SessionManager.INSTANCE.getSession(((DSemanticDecorator)diagram).getTarget());
@@ -209,6 +209,191 @@ public class UMLServices {
 			}
 		}
 		return result;
+	}
+
+	/**
+	 * Retrieve the cross references of the association of all the UML elements displayed as node in a
+	 * Diagram. Note that a Property cross reference will lead to retrieve the cross references of this
+	 * property.
+	 * 
+	 * @param diagram
+	 *            a diagram.
+	 * @return the list of cross reference of the given
+	 */
+	public Collection<EObject> getAssociationInverseRefs(DDiagram diagram) {
+		return getNodeInverseRefs(diagram, "Association");
+	}
+
+	/**
+	 * Retrieve the cross references of the component realization of all the UML elements displayed as node in
+	 * a Diagram. Note that a Property cross reference will lead to retrieve the cross references of this
+	 * property.
+	 * 
+	 * @param diagram
+	 *            a diagram.
+	 * @return the list of cross reference of the given
+	 */
+	public Collection<EObject> getComponentRealizationInverseRefs(DDiagram diagram) {
+		return getNodeInverseRefs(diagram, "ComponentRealization");
+	}
+
+	/**
+	 * Retrieve the cross references of the connector of all the UML elements displayed as node in a Diagram.
+	 * Note that a Property cross reference will lead to retrieve the cross references of this property.
+	 * 
+	 * @param diagram
+	 *            a diagram.
+	 * @return the list of cross reference of the given
+	 */
+	public Collection<EObject> getConnectorInverseRefs(DDiagram diagram) {
+		return getNodeInverseRefs(diagram, "Connector");
+	}
+
+	/**
+	 * Retrieve the cross references of the dependency of all the UML elements displayed as node in a Diagram.
+	 * Note that a Property cross reference will lead to retrieve the cross references of this property.
+	 * 
+	 * @param diagram
+	 *            a diagram.
+	 * @return the list of cross reference of the given
+	 */
+	public Collection<EObject> getDependencyInverseRefs(DDiagram diagram) {
+		return getNodeInverseRefs(diagram, "Dependency");
+	}
+
+	/**
+	 * Retrieve the cross references of the dependency of all the UML elements displayed as node in a Diagram.
+	 * Note that a Property cross reference will lead to retrieve the cross references of this property.
+	 * 
+	 * @param diagram
+	 *            a diagram.
+	 * @return the list of cross reference of the given
+	 */
+	public Collection<EObject> getDependencyOnlyInverseRefs(DDiagram diagram) {
+		final Predicate<EObject> predicate = new Predicate<EObject>() {
+			public boolean apply(EObject eObj) {
+				String className = eObj.eClass().getName();
+				return "Dependency".equals(className);
+			}
+		};
+		return Collections2.filter(getDependencyInverseRefs(diagram), predicate);
+	}
+
+	/**
+	 * Retrieve the cross references of the dependency of all the UML elements displayed as node in a Diagram.
+	 * Note that a Property cross reference will lead to retrieve the cross references of this property.
+	 * 
+	 * @param diagram
+	 *            a diagram.
+	 * @return the list of cross reference of the given
+	 */
+	public Collection<EObject> getDependencyOrManifestationInverseRefs(DDiagram diagram) {
+		final Predicate<EObject> predicate = new Predicate<EObject>() {
+			public boolean apply(EObject eObj) {
+				String className = eObj.eClass().getName();
+				return "Dependency".equals(className) || "Manifestation".equals(className);
+			}
+		};
+		return Collections2.filter(getDependencyInverseRefs(diagram), predicate);
+	}
+
+	/**
+	 * Retrieve the cross references of the deployment of all the UML elements displayed as node in a Diagram.
+	 * Note that a Property cross reference will lead to retrieve the cross references of this property.
+	 * 
+	 * @param diagram
+	 *            a diagram.
+	 * @return the list of cross reference of the given
+	 */
+	public Collection<EObject> getDeploymentInverseRefs(DDiagram diagram) {
+		return getNodeInverseRefs(diagram, "Deployment");
+	}
+
+	/**
+	 * Retrieve the cross references of the extend of all the UML elements displayed as node in a Diagram.
+	 * Note that a Property cross reference will lead to retrieve the cross references of this property.
+	 * 
+	 * @param diagram
+	 *            a diagram.
+	 * @return the list of cross reference of the given
+	 */
+	public Collection<EObject> getExtendInverseRefs(DDiagram diagram) {
+		return getNodeInverseRefs(diagram, "Extend");
+	}
+
+	/**
+	 * Retrieve the cross references of the generalization of all the UML elements displayed as node in a
+	 * Diagram. Note that a Property cross reference will lead to retrieve the cross references of this
+	 * property.
+	 * 
+	 * @param diagram
+	 *            a diagram.
+	 * @return the list of cross reference of the given
+	 */
+	public Collection<EObject> getGeneralizationInverseRefs(DDiagram diagram) {
+		return getNodeInverseRefs(diagram, "Generalization");
+	}
+
+	/**
+	 * Retrieve the cross references of the include of all the UML elements displayed as node in a Diagram.
+	 * Note that a Property cross reference will lead to retrieve the cross references of this property.
+	 * 
+	 * @param diagram
+	 *            a diagram.
+	 * @return the list of cross reference of the given
+	 */
+	public Collection<EObject> getIncludeInverseRefs(DDiagram diagram) {
+		return getNodeInverseRefs(diagram, "Include");
+	}
+
+	/**
+	 * Retrieve the cross references of the interface realization of all the UML elements displayed as node in
+	 * a Diagram. Note that a Property cross reference will lead to retrieve the cross references of this
+	 * property.
+	 * 
+	 * @param diagram
+	 *            a diagram.
+	 * @return the list of cross reference of the given
+	 */
+	public Collection<EObject> getInterfaceRealizationInverseRefs(DDiagram diagram) {
+		return getNodeInverseRefs(diagram, "InterfaceRealization");
+	}
+
+	/**
+	 * Retrieve the cross references of the slot of all the UML elements displayed as node in a Diagram. Note
+	 * that a Property cross reference will lead to retrieve the cross references of this property.
+	 * 
+	 * @param diagram
+	 *            a diagram.
+	 * @return the list of cross reference of the given
+	 */
+	public Collection<EObject> getSlotInverseRefs(DDiagram diagram) {
+		return getNodeInverseRefs(diagram, "Slot");
+	}
+
+	/**
+	 * Retrieve the cross references of the template binding of all the UML elements displayed as node in a
+	 * Diagram. Note that a Property cross reference will lead to retrieve the cross references of this
+	 * property.
+	 * 
+	 * @param diagram
+	 *            a diagram.
+	 * @return the list of cross reference of the given
+	 */
+	public Collection<EObject> getTemplateBindingInverseRefs(DDiagram diagram) {
+		return getNodeInverseRefs(diagram, "TemplateBinding");
+	}
+
+	/**
+	 * Retrieve the cross references of the usage of all the UML elements displayed as node in a Diagram. Note
+	 * that a Property cross reference will lead to retrieve the cross references of this property.
+	 * 
+	 * @param diagram
+	 *            a diagram.
+	 * @return the list of cross reference of the given
+	 */
+	public Collection<EObject> getUsageInverseRefs(DDiagram diagram) {
+		return getNodeInverseRefs(diagram, "Usage");
 	}
 
 	public Element applyAllStereotypes(Element element, List<Stereotype> stereotypesToApply) {
@@ -726,6 +911,10 @@ public class UMLServices {
 	 */
 	public boolean isComposite(Property p) {
 		return AggregationKind.COMPOSITE_LITERAL.equals(p.getAggregation());
+	}
+
+	public boolean isNotComposite(Property p) {
+		return !isComposite(p);
 	}
 
 	public boolean isRelated(EObject toFilter, List<EObject> context) {
@@ -1263,5 +1452,33 @@ public class UMLServices {
 		if (element.getOwnedComments().size() > 0)
 			return element.getOwnedComments().get(0).getBody();
 		return null;
+	}
+
+	public boolean inactive(Element element) {
+		return false;
+	}
+
+	public boolean active(Element element) {
+		return true;
+	}
+
+	public boolean isNotDiagram(EObject containerView) {
+		return !(containerView instanceof DDiagram);
+	}
+
+	public boolean isComponent(EObject element) {
+		return element instanceof Component;
+	}
+
+	public boolean isClassifier(EObject element) {
+		return element instanceof Classifier;
+	}
+
+	public boolean isPackage(EObject element) {
+		return element instanceof Package;
+	}
+
+	public boolean isTypeOfClass(EObject element) {
+		return "Class".equals(element.eClass().getName());
 	}
 }
