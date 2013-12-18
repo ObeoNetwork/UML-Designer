@@ -1,0 +1,31 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: UML Designer Profile Tests
+Bundle-SymbolicName: org.obeonetwork.dsl.uml2.profile.design.tests;singleton:=true
+Bundle-Version: 4.0.0.qualifier
+Bundle-Activator: org.obeonetwork.dsl.uml2.profile.design.tests.Activator
+Bundle-Vendor: Obeo Network
+Require-Bundle: org.obeonetwork.dsl.uml2.profile.design,
+ org.eclipse.sirius,
+ org.eclipse.uml2.uml,
+ org.junit,
+ org.eclipse.core.resources,
+ org.eclipse.emf.common,
+ org.eclipse.emf.ecore,
+ org.apache.log4j,
+ org.eclipse.swtbot.eclipse.finder,
+ org.eclipse.swtbot.swt.finder,
+ org.eclipse.swtbot.eclipse.gef.finder,
+ fr.obeo.dsl.viewpoint.tests.swtbot.support,
+ org.eclipse.sirius.diagram,
+ org.eclipse.emf.transaction,
+ org.eclipse.emf.common.ui,
+ org.hamcrest.library,
+ org.obeonetwork.dsl.uml2.usage,
+ org.eclipse.gef,
+ com.google.guava,
+ org.eclipse.sirius.ui,
+ org.eclipse.uml2.uml,
+ org.obeonetwork.dsl.uml2.design
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ActivationPolicy: lazy

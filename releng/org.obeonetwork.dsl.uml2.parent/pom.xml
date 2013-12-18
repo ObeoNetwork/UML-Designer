@@ -38,6 +38,7 @@ Contributors:
 
     <!-- Build test plugins -->
     <module>${root-path}/tests/org.obeonetwork.dsl.uml2.design.tests</module>
+    <module>${root-path}/tests/org.obeonetwork.dsl.uml2.profile.design.tests</module>
     <!--<module>tests/org.obeonetwork.dsl.uml2.properties.tests</module> -->
 
     <!-- Build features -->
