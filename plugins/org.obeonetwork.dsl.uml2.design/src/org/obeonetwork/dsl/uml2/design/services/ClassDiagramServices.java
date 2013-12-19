@@ -9,6 +9,7 @@ import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.DataType;
+import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageImport;
@@ -164,6 +165,10 @@ public class ClassDiagramServices {
 		}
 
 		return packages;
+	}
+
+	public boolean isStatic(Feature feature) {
+		return feature != null && feature.isStatic();
 	}
 
 	private boolean isNavigable(Property property) {
