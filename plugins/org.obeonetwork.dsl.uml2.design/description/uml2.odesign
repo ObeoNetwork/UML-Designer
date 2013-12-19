@@ -286,7 +286,10 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[element.oclAsType(uml::Element).applyAllStereotypes(null)/]">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:element.unApplyAllStereotypes">
+                <subModelOperations xsi:type="tool:For" expression="service:element.getAllAssociations">
+                  <subModelOperations xsi:type="tool:RemoveElement"/>
+                </subModelOperations>
                 <subModelOperations xsi:type="tool:RemoveElement"/>
               </firstModelOperations>
             </initialOperation>

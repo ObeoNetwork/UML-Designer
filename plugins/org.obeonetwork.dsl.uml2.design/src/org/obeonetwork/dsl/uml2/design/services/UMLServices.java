@@ -134,10 +134,10 @@ public class UMLServices {
 				if (!path.toFile().exists()) {
 					PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
 					PlatformUI
-					.getWorkbench()
-					.getHelpSystem()
-					.setHelp(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-							contextID);
+							.getWorkbench()
+							.getHelpSystem()
+							.setHelp(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
+									contextID);
 					PlatformUI.getWorkbench().getHelpSystem().displayDynamicHelp();
 					path.toFile().createNewFile();
 				}
@@ -417,6 +417,17 @@ public class UMLServices {
 			}
 		}
 		return element;
+	}
+
+	/**
+	 * Unapply all the stereotypes of a given element.
+	 * 
+	 * @param element
+	 *            Element
+	 * @return Element
+	 */
+	public Element unApplyAllStereotypes(Element element) {
+		return applyAllStereotypes(element, null);
 	}
 
 	/**
@@ -733,7 +744,7 @@ public class UMLServices {
 				boolean result = false;
 				if (input instanceof InstanceSpecification || input instanceof Classifier) {
 					result = true;
-				} else if (input instanceof Package){
+				} else if (input instanceof Package) {
 					// A package is interesting only if it contains a Classifier or an InstanceSpecification
 					TreeIterator<EObject> eAllContents = input.eAllContents();
 					while (eAllContents.hasNext()) {
@@ -1254,6 +1265,23 @@ public class UMLServices {
 	}
 
 	/**
+	 * Get all the associations relative to an element.
+	 * 
+	 * @param container
+	 *            the current container.
+	 * @return a list of association
+	 */
+	public Collection<Association> getAllAssociations(Classifier classifier) {
+		Collection<Association> result = new ArrayList<Association>();
+		for (EObject child : classifier.getRelationships()) {
+			if (child instanceof Association && !(child instanceof AssociationClass)) {
+				result.add((Association)child);
+			}
+		}
+		return result;
+	}
+
+	/**
 	 * @param container
 	 *            the current container.
 	 * @return a list of association which might be considered as "broken", we are not able to display them as
@@ -1445,10 +1473,10 @@ public class UMLServices {
 			};
 			name = "anObject";
 			List<Classifier> classifiers = ((InstanceSpecification)element).getClassifiers();
-			if(!classifiers.isEmpty()) {
+			if (!classifiers.isEmpty()) {
 				String classifierName = classifiers.get(0).getName();
-				if(classifierName!=null && classifierName.length()>0) {
-					if(startWithVowel(classifierName)) {
+				if (classifierName != null && classifierName.length() > 0) {
+					if (startWithVowel(classifierName)) {
 						name = "an";
 					} else {
 						name = "a";
@@ -1456,7 +1484,7 @@ public class UMLServices {
 					name += classifierName;
 				}
 			}
-		} 
+		}
 
 		List<EObject> existingElements = Lists.newArrayList(Iterables.filter(
 				element.eContainer().eContents(), predicate));
@@ -1466,10 +1494,11 @@ public class UMLServices {
 
 	private static boolean startWithVowel(String str) {
 		boolean result = false;
-		if(str!=null && str.length()>0) {
-			char[] vowels = new char[]{'a','e','i','o','u'};
+		if (str != null && str.length() > 0) {
+			char[] vowels = new char[] {'a', 'e', 'i', 'o', 'u'};
 			for (char vowel : vowels) {
-				if(str.startsWith(Character.toString(vowel)) || str.startsWith(Character.toString(vowel).toUpperCase())) {
+				if (str.startsWith(Character.toString(vowel))
+						|| str.startsWith(Character.toString(vowel).toUpperCase())) {
 					result = true;
 					break;
 				}
