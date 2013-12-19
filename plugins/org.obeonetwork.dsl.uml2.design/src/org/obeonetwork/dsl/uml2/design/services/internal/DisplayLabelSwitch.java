@@ -167,22 +167,68 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	 */
 	@Override
 	public String caseProperty(Property object) {
-		String label = "";
+		StringBuilder label = new StringBuilder();
 		if (object.isDerived()) {
-			label += "/";
+			label.append("/");
 		}
-		label += caseStructuralFeature(object);
+		label.append(caseStructuralFeature(object));
 		if (object.getDefault() != null && !"".equals(object.getDefault().trim())) {
 			// is the label on multiple lines ?
 			if (object.getDefault().contains(NL)) {
-				label += " = ...";
+				label.append(" = ...");
 			} else {
-				label += " = " + object.getDefault();
+				label.append(" = " + object.getDefault());
 			}
 		} else if (object.getDefaultValue() instanceof InstanceValue) {
-			label += " = " + ((InstanceValue)object.getDefaultValue()).getName();
+			label.append(" = " + ((InstanceValue)object.getDefaultValue()).getName());
 		}
-		return label;
+
+		final StringBuilder propertyModifier = new StringBuilder();
+		if (object.getRedefinedElements() != null && object.getRedefinedElements().size() > 0
+				&& object.getRedefinedElements().get(0) != null) {
+			propertyModifier.append("redefines " + object.getRedefinedElements().get(0).getName());
+		}
+		if (object.getRedefinedElements() != null && object.getSubsettedProperties().size() > 0
+				&& object.getRedefinedElements().get(0) != null) {
+			propertyModifier.append("subsets " + object.getSubsettedProperties().get(0).getName());
+		}
+		if (object.isID()) {
+			if (propertyModifier.length() > 0) {
+				propertyModifier.append(", ");
+			}
+			propertyModifier.append("id");
+		}
+		if (object.isReadOnly()) {
+			if (propertyModifier.length() > 0) {
+				propertyModifier.append(", ");
+			}
+			propertyModifier.append("readOnly");
+		}
+		// Ordered applies on multivalued multiplicity only
+		if (object.getUpper() != 1 && object.isOrdered()) {
+			if (propertyModifier.length() > 0) {
+				propertyModifier.append(", ");
+			}
+			propertyModifier.append("ordered");
+		}
+		// Unique applies on multivalued multiplicity only
+		if (object.getUpper() != 1 && object.isUnique()) {
+			if (propertyModifier.length() > 0) {
+				propertyModifier.append(", ");
+			}
+			propertyModifier.append("unique");
+		}
+		if (!object.isUnique() && !object.isOrdered()) {
+			if (propertyModifier.length() > 0) {
+				propertyModifier.append(", ");
+			}
+			propertyModifier.append("seq");
+		}
+		if (propertyModifier.length() > 0) {
+			label.append("{" + propertyModifier + "}");
+		}
+
+		return label.toString();
 	}
 
 	/**
@@ -210,7 +256,8 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 			label.append(getMultiplicity(object.getLower(), object.getUpper()));
 		}
 		final StringBuilder operProperties = new StringBuilder();
-		if (object.getRedefinedElements() != null && object.getRedefinedElements().get(0) != null) {
+		if (object.getRedefinedElements() != null && object.getRedefinedElements().size() > 0
+				&& object.getRedefinedElements().get(0) != null) {
 			operProperties.append("redefines " + object.getRedefinedElements().get(0).getName());
 		}
 		if (object.isQuery()) {
@@ -225,11 +272,11 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 			}
 			operProperties.append("ordered");
 		}
-		if (object.isUnique()) {
+		if (!object.isUnique()) {
 			if (operProperties.length() > 0) {
 				operProperties.append(", ");
 			}
-			operProperties.append("unique");
+			operProperties.append("nonunique");
 		}
 		if (operProperties.length() > 0) {
 			label.append("{" + operProperties + "}");
