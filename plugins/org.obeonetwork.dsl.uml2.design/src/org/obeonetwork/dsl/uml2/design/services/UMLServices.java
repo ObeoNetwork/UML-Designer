@@ -188,23 +188,26 @@ public class UMLServices {
 					});
 			while (it.hasNext()) {
 				EObject displayedAsANode = it.next();
-				for (Setting xRef : sess.getSemanticCrossReferencer().getInverseReferences(displayedAsANode)) {
-					EObject eObject = xRef.getEObject();
-					if (sess.getModelAccessor().eInstanceOf(eObject, typeName)) {
-						result.add(eObject);
-					}
-					/*
-					 * In the case of an association the real interesting object is the association linked to
-					 * the Property and not the direct cross reference.
-					 */
-					if (eObject instanceof Property) {
-						if (((Property)eObject).getAssociation() != null) {
-							if (sess.getModelAccessor().eInstanceOf(((Property)eObject).getAssociation(),
-									typeName)) {
-								result.add(((Property)eObject).getAssociation());
-							}
+				if (displayedAsANode != null) {
+					for (Setting xRef : sess.getSemanticCrossReferencer().getInverseReferences(
+							displayedAsANode)) {
+						EObject eObject = xRef.getEObject();
+						if (sess.getModelAccessor().eInstanceOf(eObject, typeName)) {
+							result.add(eObject);
 						}
+						/*
+						 * In the case of an association the real interesting object is the association linked
+						 * to the Property and not the direct cross reference.
+						 */
+						if (eObject instanceof Property) {
+							if (((Property)eObject).getAssociation() != null) {
+								if (sess.getModelAccessor().eInstanceOf(((Property)eObject).getAssociation(),
+										typeName)) {
+									result.add(((Property)eObject).getAssociation());
+								}
+							}
 
+						}
 					}
 				}
 			}
