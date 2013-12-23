@@ -801,9 +801,9 @@
     <ownedRepresentations xsi:type="description:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Drop%20From%20Model'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Drop%20From%20Diagram']" documentation="Representation to edit class diagrams" name="Class Diagram" titleExpression="[name+' Class Diagram'/]" pasteDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Paste']" domainClass="uml.Package" preconditionExpression="" enablePopupBars="true">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
       <metamodel href="http://www.eclipse.org/sirius/1.1.0#/"/>
-      <filters xsi:type="filter:CompositeFilterDescription" documentation="Hides elements (Classes, Interfaces, Associations, ...) not related to the selected (context) Class/Interface." name="Related filter">
+      <filters xsi:type="filter:CompositeFilterDescription" documentation="Hides elements (Classes, Interfaces, Associations, ...) not related to the selected (context) Class/Interface." name="Related Elements">
         <filters xsi:type="filter:VariableFilter" semanticConditionExpression="service:self.isRelated(contextSelection)">
-          <ownedVariables candidatesExpression="[diagram.ownedDiagramElements.target->select(oclIsTypeOf(uml::Class) or oclIsTypeOf(uml::Interface))/]" message="Select the context" name="contextSelection"/>
+          <ownedVariables candidatesExpression="[diagram.ownedDiagramElements.target->select(oclIsTypeOf(uml::Class) or oclIsTypeOf(uml::Interface))/]" message="Select the contextual element. This filter shows only the elements related to the selected context, the other elements will be hidden." name="contextSelection"/>
         </filters>
       </filters>
       <diagramInitialisation>
