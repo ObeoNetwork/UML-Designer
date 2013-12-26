@@ -452,7 +452,7 @@
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:newSemanticContainer.dropFromDiagram(element, newContainerView)"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:newSemanticContainer.dropFromDiagramProfileService(element, newContainerView)"/>
             </initialOperation>
           </ownedTools>
         </toolSections>

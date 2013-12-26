@@ -41,10 +41,9 @@ public class UIServicesForProfile extends UIServices {
 	}
 
 	/**
-	 * {@inheritDoc}
+	 * Drop from diagram.
 	 */
-	@Override
-	public void dropFromDiagram(final Element newContainer,
+	public void dropFromDiagramProfileService(final Element newContainer,
 			final Element semanticElement,
 			final DSemanticDecorator containerView) {
 		final Session session = SessionManager.INSTANCE
@@ -96,11 +95,11 @@ public class UIServicesForProfile extends UIServices {
 												.getMetaclass()) != null) {
 							final ElementImport elementImport = ((Profile) oldContainer)
 									.getElementImport(extension.getMetaclass());
-							dropFromDiagram(newContainer, extension,
-									containerView);
+							dropFromDiagramProfileService(newContainer,
+									extension, containerView);
 							if (elementImport != null)
-								dropFromDiagram(newContainer, elementImport,
-										containerView);
+								dropFromDiagramProfileService(newContainer,
+										elementImport, containerView);
 						}
 					}
 				}
@@ -117,16 +116,6 @@ public class UIServicesForProfile extends UIServices {
 		if (doTheDrop)
 			super.dropFromDiagram(newContainer, semanticElement, containerView);
 
-	}
-
-	/**
-	 * {@inheritDoc}
-	 */
-	@Override
-	public void dropFromModel(final Element newContainer,
-			final Element semanticElement,
-			final DSemanticDecorator containerView) {
-		super.dropFromModel(newContainer, semanticElement, containerView);
 	}
 
 	/**
