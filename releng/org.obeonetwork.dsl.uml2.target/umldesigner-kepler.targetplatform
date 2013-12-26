@@ -71,5 +71,5 @@ location "http://download.eclipse.org/sirius/updates/milestones/1.0.0M4/kepler" 
 location "http://update.obeo.fr/integration/viewpoint/master/kepler/repository/" {
 	with source, requirements
 	//IDE
-	fr.obeo.dsl.viewpoint.runtime.ide.tests.support.feature.group
+	//	fr.obeo.dsl.viewpoint.runtime.ide.tests.support.feature.group
 }

@@ -20,9 +20,6 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -70,27 +67,27 @@ public class TheTestAllMappingsRepresentationsAreOpenedAndRefreshed extends Unac
 
 	// End of user code
 
-	@Override
-	public void setup() {
-		super.setup();
-		// Start of user code TheTestAllMappingsRepresentationsAreOpenedAndRefreshed setup
-		bot = new UMLDesignerBot();
-		ResourceSet rset = new ResourceSetImpl();
-		Resource resource = rset.getResource(URI.createPlatformPluginURI(RESOURCE_URI, true), true);
-		root = ((DAnalysis)resource.getContents().get(0));
-		bot.importAndOpenTestAllMappings();
-		specifiedMappings = getSpecifiedMappings();
-		// End of user code
-	}
-
-	@Override
-	public void tearDown() {
-		super.tearDown();
-		// Start of user code TheTestAllMappingsRepresentationsAreOpenedAndRefreshed tear down
-		bot.saveChanges();
-		bot.deleteTestAllMappings();
-		// End of user code
-	}
+	// @Override
+	// public void setup() {
+	// super.setup();
+	// // Start of user code TheTestAllMappingsRepresentationsAreOpenedAndRefreshed setup
+	// bot = new UMLDesignerBot();
+	// ResourceSet rset = new ResourceSetImpl();
+	// Resource resource = rset.getResource(URI.createPlatformPluginURI(RESOURCE_URI, true), true);
+	// root = ((DAnalysis)resource.getContents().get(0));
+	// bot.importAndOpenTestAllMappings();
+	// specifiedMappings = getSpecifiedMappings();
+	// // End of user code
+	// }
+	//
+	// @Override
+	// public void tearDown() {
+	// super.tearDown();
+	// // Start of user code TheTestAllMappingsRepresentationsAreOpenedAndRefreshed tear down
+	// bot.saveChanges();
+	// bot.deleteTestAllMappings();
+	// // End of user code
+	// }
 
 	/**
 	 * Action : I have a look to all the diagrams
