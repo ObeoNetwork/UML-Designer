@@ -96,7 +96,7 @@ public class ObjectServices {
 
 	public Set<EObject> childrenExpressionForSlot(EObject eObject) {
 		HashSet<EObject> result = new HashSet<EObject>();
-		if(eObject instanceof Classifier) {
+		if (eObject instanceof Classifier) {
 			HashSet<Classifier> classifiers = new HashSet<Classifier>();
 			Classifier aClassifier = (Classifier)eObject;
 			classifiers.add(aClassifier);
@@ -123,7 +123,7 @@ public class ObjectServices {
 		source.getSlots().add(slot);
 
 		// Set value
-		if (((PrimitiveType)property.getType()) instanceof PrimitiveType) {
+		if (property.getType() instanceof PrimitiveType) {
 			final String typeName = ((PrimitiveType)property.getType()).getName();
 			ValueSpecification value = null;
 			if ("Integer".equals(typeName)) {
@@ -157,10 +157,12 @@ public class ObjectServices {
 		// Get session
 		final Session session = SessionManager.INSTANCE.getSession(pkg);
 		// Get representation
-		final DRepresentation diagram = (DRepresentation)DialectManager.INSTANCE.getRepresentations(pkg,
-				session).toArray()[0];
-		// Refresh current sequence diagram
-		DialectManager.INSTANCE.refresh(diagram, new NullProgressMonitor());
+		Object[] representations = DialectManager.INSTANCE.getRepresentations(pkg, session).toArray();
+		if (representations.length > 0) {
+			final DRepresentation diagram = (DRepresentation)representations[0];
+			// Refresh current sequence diagram
+			DialectManager.INSTANCE.refresh(diagram, new NullProgressMonitor());
+		}
 	}
 
 	public boolean canCreateAnInstanceSlot(InstanceSpecification preSource, InstanceSpecification preTarget) {
@@ -193,10 +195,10 @@ public class ObjectServices {
 		for (Association association : associations) {
 			Property sourceAsso = classDiagramServices.getSource(association);
 			Property targetAsso = classDiagramServices.getTarget(association);
-			if(conformTo(source, sourceAsso.getType()) && conformTo(target, targetAsso.getType())){
-				if(association.getNavigableOwnedEnds().contains(sourceAsso)) {
+			if (conformTo(source, sourceAsso.getType()) && conformTo(target, targetAsso.getType())) {
+				if (association.getNavigableOwnedEnds().contains(sourceAsso)) {
 					candidates.add(sourceAsso);
-				} else if(association.getNavigableOwnedEnds().contains(targetAsso)) {
+				} else if (association.getNavigableOwnedEnds().contains(targetAsso)) {
 					candidates.add(targetAsso);
 				}
 			}
@@ -210,24 +212,24 @@ public class ObjectServices {
 
 		Set<Type> allTypes1 = new HashSet<Type>();
 		allTypes1.add(type1);
-		if(type1 instanceof Classifier) {
+		if (type1 instanceof Classifier) {
 			allTypes1.addAll(getSuperTypes((Classifier)type1));
 		}
 
 		Set<Type> allTypes2 = new HashSet<Type>();
 		allTypes2.add(type2);
-		if(type2 instanceof Classifier) {
+		if (type2 instanceof Classifier) {
 			allTypes2.addAll(getSuperTypes((Classifier)type2));
 		}
 
 		for (Type oneOfType1 : allTypes1) {
 			for (Type oneOfType2 : allTypes2) {
-				if(oneOfType1.conformsTo(oneOfType2)) {
+				if (oneOfType1.conformsTo(oneOfType2)) {
 					conform = true;
 					break;
 				}
 			}
-			if(conform) {
+			if (conform) {
 				break;
 			}
 		}
@@ -242,7 +244,7 @@ public class ObjectServices {
 			result.addAll(getSuperTypes(general));
 		}
 		for (Dependency dependency : type.getClientDependencies()) {
-			if(dependency instanceof InterfaceRealization) {
+			if (dependency instanceof InterfaceRealization) {
 				Interface contract = ((InterfaceRealization)dependency).getContract();
 				result.add(contract);
 				result.addAll(getSuperTypes(contract));
