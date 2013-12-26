@@ -49,10 +49,10 @@ public class VsmValidationTests {
 		Diagnostic diagnostic = diagnostician.validate(modeler);
 		switch (diagnostic.getSeverity()) {
 			case Diagnostic.ERROR:
-				fail("The VSM is not valid it has errors");
+				fail("The VSM is not valid it has errors : " + diagnostic);
 				break;
 			case Diagnostic.WARNING:
-				fail("The VSM is not valid it has warnings");
+				fail("The VSM is not valid it has warnings" + diagnostic);
 				break;
 		}
 	}
