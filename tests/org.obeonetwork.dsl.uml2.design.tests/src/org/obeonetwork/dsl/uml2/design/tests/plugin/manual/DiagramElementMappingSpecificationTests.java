@@ -37,7 +37,7 @@ public class DiagramElementMappingSpecificationTests {
 			"CD_BrokenAssociationToClasses", "SD_Lifeline Execution",
 			"CO_C_RequiredInterface2ProvidedInterface", "CO_C_Port2SubProvidedInterface",
 			"CO_C_SubRequiredInterface2Port", "CO_U_ComponentOrPort2Interface",
-			"CO_IR_Interface2ComponentOrPort");
+			"CO_IR_Interface2ComponentOrPort", "CD_ReusedMappingForFeatures");
 
 	private static Set<String> reconnectWhiteList = Sets.newHashSet("CD_BrokenAssociationToClasses",
 			"CD_NestedClass", "CD_BrokenAssociation", "CD_AssociationClassToAssociation", "PD_Extension",
