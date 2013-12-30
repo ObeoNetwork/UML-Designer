@@ -54,7 +54,7 @@ location "http://download.eclipse.org/modeling/emft/eef/updates/nightly/1.2/" {
 }
 
 // Sirius
-location "http://download.eclipse.org/sirius/updates/milestones/1.0.0M4/kepler" {
+location "http://download.eclipse.org/sirius/updates/nightly/latest/kepler" {
 	with source, requirements
 	//runtime
 	org.eclipse.sirius.runtime.feature.group
@@ -71,5 +71,5 @@ location "http://download.eclipse.org/sirius/updates/milestones/1.0.0M4/kepler" 
 location "http://update.obeo.fr/integration/viewpoint/master/kepler/repository/" {
 	with source, requirements
 	//IDE
-	//	fr.obeo.dsl.viewpoint.runtime.ide.tests.support.feature.group
+	fr.obeo.dsl.viewpoint.runtime.ide.tests.support.feature.group
 }
