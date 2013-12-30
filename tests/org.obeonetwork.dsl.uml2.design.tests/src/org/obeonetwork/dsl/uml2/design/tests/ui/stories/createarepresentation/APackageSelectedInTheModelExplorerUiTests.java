@@ -21,7 +21,7 @@ public class APackageSelectedInTheModelExplorerUiTests {
 
 	@Test
 	public void createAClassDiagramFromAPackageInTheModelExplorer() throws Exception {
-		// context.actionICreateANewClassDiagram();
-		// context.assertAClassDiagramIsCreatedAndOpened();
+		context.actionICreateANewClassDiagram();
+		context.assertAClassDiagramIsCreatedAndOpened();
 	}
 }
