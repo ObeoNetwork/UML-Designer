@@ -3286,7 +3286,7 @@
         </firstModelOperations>
       </diagramInitialisation>
       <defaultLayer name="State Machine">
-        <edgeMappings name="SM_Transition" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementServiceDirectEdit']" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" sourceMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subContainerMappings[name='SM_State'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_FinalState'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState']" targetMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subContainerMappings[name='SM_State'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_FinalState']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="uml.Transition" useDomainElement="true" reconnections="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='Relationships']/@ownedTools[name='ReconnectTransitionTarget'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='Relationships']/@ownedTools[name='ReconnectTransitionSource']">
+        <edgeMappings name="SM_Transition" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementServiceDirectEdit']" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" sourceMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subContainerMappings[name='SM_State'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_FinalState'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState']" targetMapping="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subContainerMappings[name='SM_State'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_FinalState']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="uml.Transition" useDomainElement="true" reconnections="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='ReconnectTransitionTarget'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='ReconnectTransitionSource']">
           <style sizeComputationExpression="1" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
             <centerLabelStyleDescription labelFormat="italic" showIcon="false" labelExpression="service:computeUmlLabel">
@@ -3402,7 +3402,7 @@
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </style>
         </containerMappings>
-        <toolSections name="State Machine" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Popup%20menu']/@ownedTools[name='EAnnotation'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Delete']">
+        <toolSections name="Types" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Popup%20menu']/@ownedTools[name='EAnnotation'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Delete']">
           <ownedTools xsi:type="tool:ContainerCreationDescription" name="Region" containerMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
@@ -3432,45 +3432,6 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <subSections name="Relationships">
-            <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ReconnectTransitionSource" reconnectionKind="RECONNECT_SOURCE">
-              <source name="source"/>
-              <target name="target"/>
-              <sourceView name="sourceView"/>
-              <targetView name="targetView"/>
-              <element name="element"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:target"/>
-              </initialOperation>
-              <edgeView name="edgeView"/>
-            </ownedTools>
-            <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ReconnectTransitionTarget">
-              <source name="source"/>
-              <target name="target"/>
-              <sourceView name="sourceView"/>
-              <targetView name="targetView"/>
-              <element name="element"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:target"/>
-              </initialOperation>
-              <edgeView name="edgeView"/>
-            </ownedTools>
-            <ownedTools xsi:type="tool:EdgeCreationDescription" name="Transition" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@edgeMappings[name='SM_Transition']">
-              <sourceVariable name="source"/>
-              <targetVariable name="target"/>
-              <sourceViewVariable name="sourceView"/>
-              <targetViewVariable name="targetView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[source.eContainer(uml::Region)/]">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Transition" referenceName="transition">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Transition_'+source.name+'To'+target.name/]"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:source"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:target"/>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </ownedTools>
-          </subSections>
           <subSections name="Other pseudo states">
             <ownedTools xsi:type="tool:NodeCreationDescription" name="Initial PseudoState" label="Initial" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate.gif">
               <variable name="container"/>
@@ -3582,6 +3543,45 @@
               </initialOperation>
             </ownedTools>
           </subSections>
+        </toolSections>
+        <toolSections name="Relationships">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ReconnectTransitionSource" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:target"/>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ReconnectTransitionTarget">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:target"/>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Transition" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@edgeMappings[name='SM_Transition']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[source.eContainer(uml::Region)/]">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Transition" referenceName="transition">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Transition_'+source.name+'To'+target.name/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:source"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:target"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
         </toolSections>
       </defaultLayer>
       <additionalLayers name="Stereotype">
