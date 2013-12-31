@@ -500,7 +500,7 @@
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Actor"/>
       </bindings>
-      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_zPoEEIdAEeKcacknc_K90g" name="Artifact" views="_Kt6kIFv3EeKZBNASYbV97A">
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_zPoEEIdAEeKcacknc_K90g" name="Artifact" views="_Kt6kIFv3EeKZBNASYbV97A _fgTgsGCnEeKd8d7WgZ31eQ _55BGsF8vEeKd8d7WgZ31eQ">
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_31YHMIdAEeKcacknc_K90g" name="name" views="_3INTYFv3EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
         </properties>
@@ -512,6 +512,12 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_31YHM4dAEeKcacknc_K90g" name="leaf" views="_nujsAFv7EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//RedefinableElement/isLeaf"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_5lyc0HIMEeOTicjdYTBuQw" name="operations" views="_7kJy0F8vEeKd8d7WgZ31eQ">
+          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Artifact/ownedOperation"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Q_ixgHINEeOTicjdYTBuQw" name="attributes" views="_hKXOwGCnEeKd8d7WgZ31eQ">
+          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Artifact/ownedAttribute"/>
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Artifact"/>
       </bindings>
