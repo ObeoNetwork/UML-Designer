@@ -42,7 +42,6 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.uml2.types.TypesPackage;
 
 import org.eclipse.uml2.uml.Pseudostate;
-import org.eclipse.uml2.uml.PseudostateKind;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -96,11 +95,7 @@ public class PseudoStatePropertiesEditionComponent extends SinglePartPropertiesE
 			if (isAccessible(UmlViewsRepository.General.visibility)) {
 				generalPart.initVisibility(EEFUtils.choiceOfValues(pseudostate, UMLPackage.eINSTANCE.getNamedElement_Visibility()), pseudostate.getVisibility());
 			}
-			if (isAccessible(UmlViewsRepository.General.pseudostatekind)) {
-				generalPart.initPseudostatekind(EEFUtils.choiceOfValues(pseudostate, UMLPackage.eINSTANCE.getPseudostate_Kind()), pseudostate.getKind());
-			}
 			// init filters
-			
 			
 			
 			// init values for referenced views
@@ -110,7 +105,6 @@ public class PseudoStatePropertiesEditionComponent extends SinglePartPropertiesE
 		}
 		setInitializing(false);
 	}
-
 
 
 
@@ -126,9 +120,6 @@ public class PseudoStatePropertiesEditionComponent extends SinglePartPropertiesE
 		}
 		if (editorKey == UmlViewsRepository.General.visibility) {
 			return UMLPackage.eINSTANCE.getNamedElement_Visibility();
-		}
-		if (editorKey == UmlViewsRepository.General.pseudostatekind) {
-			return UMLPackage.eINSTANCE.getPseudostate_Kind();
 		}
 		return super.associatedFeature(editorKey);
 	}
@@ -146,9 +137,6 @@ public class PseudoStatePropertiesEditionComponent extends SinglePartPropertiesE
 		}
 		if (UmlViewsRepository.General.visibility == event.getAffectedEditor()) {
 			pseudostate.setVisibility((VisibilityKind)event.getNewValue());
-		}
-		if (UmlViewsRepository.General.pseudostatekind == event.getAffectedEditor()) {
-			pseudostate.setKind((PseudostateKind)event.getNewValue());
 		}
 	}
 
@@ -170,9 +158,6 @@ public class PseudoStatePropertiesEditionComponent extends SinglePartPropertiesE
 			if (UMLPackage.eINSTANCE.getNamedElement_Visibility().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(UmlViewsRepository.General.visibility))
 				generalPart.setVisibility((VisibilityKind)msg.getNewValue());
 			
-			if (UMLPackage.eINSTANCE.getPseudostate_Kind().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(UmlViewsRepository.General.pseudostatekind))
-				generalPart.setPseudostatekind((PseudostateKind)msg.getNewValue());
-			
 			
 		}
 	}
@@ -186,8 +171,7 @@ public class PseudoStatePropertiesEditionComponent extends SinglePartPropertiesE
 	protected NotificationFilter[] getNotificationFilters() {
 		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
 			UMLPackage.eINSTANCE.getNamedElement_Name(),
-			UMLPackage.eINSTANCE.getNamedElement_Visibility(),
-			UMLPackage.eINSTANCE.getPseudostate_Kind()		);
+			UMLPackage.eINSTANCE.getNamedElement_Visibility()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -196,17 +180,7 @@ public class PseudoStatePropertiesEditionComponent extends SinglePartPropertiesE
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#mustBeComposed(java.lang.Object, int)
 	 */
 	public boolean mustBeComposed(Object key, int kind) {
-		return key == UmlViewsRepository.General.name || key == UmlViewsRepository.General.visibility || key == UmlViewsRepository.General.pseudostatekind;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
-	 * @generated
-	 */
-	public boolean isRequired(Object key, int kind) {
-		return key == UmlViewsRepository.General.pseudostatekind;
+		return key == UmlViewsRepository.General.name || key == UmlViewsRepository.General.visibility;
 	}
 
 	/**
@@ -232,13 +206,6 @@ public class PseudoStatePropertiesEditionComponent extends SinglePartPropertiesE
 						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), newValue);
-				}
-				if (UmlViewsRepository.General.pseudostatekind == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getPseudostate_Kind().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getPseudostate_Kind().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

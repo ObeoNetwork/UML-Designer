@@ -254,12 +254,6 @@ public class UmlViewsRepository {
 	 * @generated
 	 */
 	
-	public static String pseudostatekind = "uml::General::pseudostatekind";
-	
-	/**
-	 * @generated
-	 */
-	
 	public static String role = "uml::General::role";
 	
 	/**

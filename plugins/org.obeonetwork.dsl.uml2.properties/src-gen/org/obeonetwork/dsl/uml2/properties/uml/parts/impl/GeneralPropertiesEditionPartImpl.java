@@ -151,7 +151,6 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
 	protected Text body;
 	protected EMFComboViewer extendedCase;
 	protected EMFComboViewer addition;
-	protected EMFComboViewer pseudostatekind;
 	protected EObjectFlatComboViewer role;
 	protected FlatReferencesTable usecase;
 
@@ -229,7 +228,6 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
     generalStep.addStep(UmlViewsRepository.General.body);
     generalStep.addStep(UmlViewsRepository.General.extendedCase);
     generalStep.addStep(UmlViewsRepository.General.addition);
-    generalStep.addStep(UmlViewsRepository.General.pseudostatekind);
     generalStep.addStep(UmlViewsRepository.General.role);
     generalStep.addStep(UmlViewsRepository.General.usecase);
     
@@ -347,9 +345,6 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
         }
         if (key == UmlViewsRepository.General.addition) {
           return createAdditionEMFComboViewer(parent);
-        }
-        if (key == UmlViewsRepository.General.pseudostatekind) {
-          return createPseudostatekindEMFComboViewer(parent);
         }
         if (key == UmlViewsRepository.General.role) {
           return createRoleFlatComboViewer(parent);
@@ -1803,39 +1798,6 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
     EditingUtils.setEEFtype(addition.getCombo(), "eef::Combo"); //$NON-NLS-1$
     SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.addition, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
     // Start of user code for createAdditionEMFComboViewer
-
-    // End of user code
-    return parent;
-  }
-
-	/**
-	 * @generated
-	 */
-	
-	protected Composite createPseudostatekindEMFComboViewer(Composite parent) {
-    createDescription(parent, UmlViewsRepository.General.pseudostatekind, UmlMessages.GeneralPropertiesEditionPart_PseudostatekindLabel);
-    pseudostatekind = new EMFComboViewer(parent);
-    pseudostatekind.setContentProvider(new ArrayContentProvider());
-    pseudostatekind.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
-    GridData pseudostatekindData = new GridData(GridData.FILL_HORIZONTAL);
-    pseudostatekind.getCombo().setLayoutData(pseudostatekindData);
-    pseudostatekind.addSelectionChangedListener(new ISelectionChangedListener() {
-
-      /**
-       * {@inheritDoc}
-       * 
-       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-       * 	@generated
-       */
-      public void selectionChanged(SelectionChangedEvent event) {
-        if (propertiesEditionComponent != null)
-          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartImpl.this, UmlViewsRepository.General.pseudostatekind, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getPseudostatekind()));
-      }
-
-    });
-    pseudostatekind.setID(UmlViewsRepository.General.pseudostatekind);
-    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.pseudostatekind, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-    // Start of user code for createPseudostatekindEMFComboViewer
 
     // End of user code
     return parent;
@@ -3584,53 +3546,6 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
 	 */
 	public void addFilterToAddition(ViewerFilter filter) {
     addition.addFilter(filter);
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getPseudostatekind()
-	 * @generated
-	 */
-	public Enumerator getPseudostatekind() {
-    Enumerator selection = (Enumerator) ((StructuredSelection) pseudostatekind.getSelection()).getFirstElement();
-    return selection;
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#initPseudostatekind(Object input, Enumerator current)
-	 */
-	public void initPseudostatekind(Object input, Enumerator current) {
-		pseudostatekind.setInput(input);
-		pseudostatekind.modelUpdating(new StructuredSelection(current));
-		boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.pseudostatekind);
-		if (eefElementEditorReadOnlyState && pseudostatekind.isEnabled()) {
-			pseudostatekind.setEnabled(false);
-			pseudostatekind.setToolTipText(UmlMessages.General_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !pseudostatekind.isEnabled()) {
-			pseudostatekind.setEnabled(true);
-		}	
-		
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#setPseudostatekind(Enumerator newValue)
-	 * @generated
-	 */
-	public void setPseudostatekind(Enumerator newValue) {
-    pseudostatekind.modelUpdating(new StructuredSelection(newValue));
-    boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.pseudostatekind);
-    if (eefElementEditorReadOnlyState && pseudostatekind.isEnabled()) {
-      pseudostatekind.setEnabled(false);
-      pseudostatekind.setToolTipText(UmlMessages.General_ReadOnly);
-    } else if (!eefElementEditorReadOnlyState && !pseudostatekind.isEnabled()) {
-      pseudostatekind.setEnabled(true);
-    }	
-    
   }
 
 	/**
