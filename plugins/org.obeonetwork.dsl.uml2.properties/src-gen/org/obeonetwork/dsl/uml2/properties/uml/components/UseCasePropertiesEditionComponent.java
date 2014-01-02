@@ -36,11 +36,18 @@ import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 
+import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
+
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.uml2.types.TypesPackage;
 
+import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UseCase;
 import org.eclipse.uml2.uml.VisibilityKind;
@@ -61,6 +68,11 @@ public class UseCasePropertiesEditionComponent extends SinglePartPropertiesEditi
 	
 	public static String GENERAL_PART = "General"; //$NON-NLS-1$
 
+	
+	/**
+	 * Settings for subjects ReferencesTable
+	 */
+	protected ReferencesTableSettings subjectsSettings;
 	
 	
 	/**
@@ -99,11 +111,18 @@ public class UseCasePropertiesEditionComponent extends SinglePartPropertiesEditi
 			
 			generalPart.setLeaf(useCase.isLeaf());
 			
+			if (isAccessible(UmlViewsRepository.General.subjects)) {
+				subjectsSettings = new ReferencesTableSettings(useCase, UMLPackage.eINSTANCE.getUseCase_Subject());
+				generalPart.initSubjects(subjectsSettings);
+			}
 			// init filters
 			
 			
 			
 			
+			if (isAccessible(UmlViewsRepository.General.subjects)) {
+				generalPart.addFilterToSubjects(new EObjectFilter(UMLPackage.Literals.CLASSIFIER));
+			}
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -111,6 +130,7 @@ public class UseCasePropertiesEditionComponent extends SinglePartPropertiesEditi
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -135,6 +155,9 @@ public class UseCasePropertiesEditionComponent extends SinglePartPropertiesEditi
 		if (editorKey == UmlViewsRepository.General.Qualifiers.leaf) {
 			return UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf();
 		}
+		if (editorKey == UmlViewsRepository.General.subjects) {
+			return UMLPackage.eINSTANCE.getUseCase_Subject();
+		}
 		return super.associatedFeature(editorKey);
 	}
 
@@ -157,6 +180,17 @@ public class UseCasePropertiesEditionComponent extends SinglePartPropertiesEditi
 		}
 		if (UmlViewsRepository.General.Qualifiers.leaf == event.getAffectedEditor()) {
 			useCase.setIsLeaf((Boolean)event.getNewValue());
+		}
+		if (UmlViewsRepository.General.subjects == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
+				if (event.getNewValue() instanceof Classifier) {
+					subjectsSettings.addToReference((EObject) event.getNewValue());
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				subjectsSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				subjectsSettings.move(event.getNewIndex(), (Classifier) event.getNewValue());
+			}
 		}
 	}
 
@@ -184,6 +218,8 @@ public class UseCasePropertiesEditionComponent extends SinglePartPropertiesEditi
 			if (UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.Qualifiers.leaf))
 				generalPart.setLeaf((Boolean)msg.getNewValue());
 			
+			if (UMLPackage.eINSTANCE.getUseCase_Subject().equals(msg.getFeature())  && isAccessible(UmlViewsRepository.General.subjects))
+				generalPart.updateSubjects();
 			
 		}
 	}
@@ -199,7 +235,8 @@ public class UseCasePropertiesEditionComponent extends SinglePartPropertiesEditi
 			UMLPackage.eINSTANCE.getNamedElement_Name(),
 			UMLPackage.eINSTANCE.getNamedElement_Visibility(),
 			UMLPackage.eINSTANCE.getClassifier_IsAbstract(),
-			UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf()		);
+			UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf(),
+			UMLPackage.eINSTANCE.getUseCase_Subject()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -208,7 +245,7 @@ public class UseCasePropertiesEditionComponent extends SinglePartPropertiesEditi
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#mustBeComposed(java.lang.Object, int)
 	 */
 	public boolean mustBeComposed(Object key, int kind) {
-		return key == UmlViewsRepository.General.name || key == UmlViewsRepository.General.visibility || key == UmlViewsRepository.General.Qualifiers.abstract_ || key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.Qualifiers.class;
+		return key == UmlViewsRepository.General.name || key == UmlViewsRepository.General.visibility || key == UmlViewsRepository.General.Qualifiers.abstract_ || key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.subjects || key == UmlViewsRepository.General.Qualifiers.class;
 	}
 
 	/**

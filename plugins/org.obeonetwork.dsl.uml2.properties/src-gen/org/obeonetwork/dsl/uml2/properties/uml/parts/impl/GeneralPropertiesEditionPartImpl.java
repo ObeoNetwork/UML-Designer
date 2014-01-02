@@ -153,6 +153,9 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
 	protected EMFComboViewer addition;
 	protected EObjectFlatComboViewer role;
 	protected FlatReferencesTable usecase;
+	protected ReferencesTable subjects;
+	protected List<ViewerFilter> subjectsBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> subjectsFilters = new ArrayList<ViewerFilter>();
 
 
 
@@ -230,6 +233,7 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
     generalStep.addStep(UmlViewsRepository.General.addition);
     generalStep.addStep(UmlViewsRepository.General.role);
     generalStep.addStep(UmlViewsRepository.General.usecase);
+    generalStep.addStep(UmlViewsRepository.General.subjects);
     
     composer = new PartComposer(generalStep) {
 
@@ -351,6 +355,9 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
         }
         if (key == UmlViewsRepository.General.usecase) {
           return createUsecaseFlatReferencesTable(parent);
+        }
+        if (key == UmlViewsRepository.General.subjects) {
+          return createSubjectsAdvancedReferencesTable(parent);
         }
         return parent;
       }
@@ -1855,6 +1862,88 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
     return parent;
   }
 
+
+	/**
+	 * @generated
+	 */
+	protected Composite createSubjectsAdvancedReferencesTable(Composite parent) {
+    String label = getDescription(UmlViewsRepository.General.subjects, UmlMessages.GeneralPropertiesEditionPart_SubjectsLabel);		 
+    this.subjects = new ReferencesTable(label, new ReferencesTableListener() {
+      public void handleAdd() { addSubjects(); }
+      public void handleEdit(EObject element) { editSubjects(element); }
+      public void handleMove(EObject element, int oldIndex, int newIndex) { moveSubjects(element, oldIndex, newIndex); }
+      public void handleRemove(EObject element) { removeFromSubjects(element); }
+      public void navigateTo(EObject element) { }
+    });
+    this.subjects.setHelpText(propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.subjects, UmlViewsRepository.SWT_KIND));
+    this.subjects.createControls(parent);
+    this.subjects.addSelectionListener(new SelectionAdapter() {
+      
+      public void widgetSelected(SelectionEvent e) {
+        if (e.item != null && e.item.getData() instanceof EObject) {
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartImpl.this, UmlViewsRepository.General.subjects, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+        }
+      }
+      
+    });
+    GridData subjectsData = new GridData(GridData.FILL_HORIZONTAL);
+    subjectsData.horizontalSpan = 3;
+    this.subjects.setLayoutData(subjectsData);
+    this.subjects.disableMove();
+    subjects.setID(UmlViewsRepository.General.subjects);
+    subjects.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
+    return parent;
+  }
+
+	/**
+	 * @generated
+	 */
+	protected void addSubjects() {
+    TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(subjects.getInput(), subjectsFilters, subjectsBusinessFilters,
+    "subjects", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
+      @Override
+      public void process(IStructuredSelection selection) {
+        for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
+          EObject elem = (EObject) iter.next();
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartImpl.this, UmlViewsRepository.General.subjects,
+            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+        }
+        subjects.refresh();
+      }
+    };
+    dialog.open();
+  }
+
+	/**
+	 * @generated
+	 */
+	protected void moveSubjects(EObject element, int oldIndex, int newIndex) {
+    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartImpl.this, UmlViewsRepository.General.subjects, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+    subjects.refresh();
+  }
+
+	/**
+	 * @generated
+	 */
+	protected void removeFromSubjects(EObject element) {
+    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartImpl.this, UmlViewsRepository.General.subjects, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+    subjects.refresh();
+  }
+
+	/**
+	 * @generated
+	 */
+	protected void editSubjects(EObject element) {
+    EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
+    PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
+    if (provider != null) {
+      PropertiesEditingPolicy policy = provider.getPolicy(context);
+      if (policy != null) {
+        policy.execute();
+        subjects.refresh();
+      }
+    }
+  }
 
 
 	/**
@@ -3693,6 +3782,69 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
 	 */
 	public boolean isContainedInUsecaseTable(EObject element) {
     return ((ReferencesTableSettings)usecase.getInput()).contains(element);
+  }
+
+
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#initSubjects(org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings)
+	 */
+	public void initSubjects(ReferencesTableSettings settings) {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		subjects.setContentProvider(contentProvider);
+		subjects.setInput(settings);
+		boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.subjects);
+		if (eefElementEditorReadOnlyState && subjects.getTable().isEnabled()) {
+			subjects.setEnabled(false);
+			subjects.setToolTipText(UmlMessages.General_ReadOnly);
+		} else if (!eefElementEditorReadOnlyState && !subjects.getTable().isEnabled()) {
+			subjects.setEnabled(true);
+		}
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#updateSubjects()
+	 * @generated
+	 */
+	public void updateSubjects() {
+  subjects.refresh();
+}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#addFilterSubjects(ViewerFilter filter)
+	 * @generated
+	 */
+	public void addFilterToSubjects(ViewerFilter filter) {
+    subjectsFilters.add(filter);
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#addBusinessFilterSubjects(ViewerFilter filter)
+	 * @generated
+	 */
+	public void addBusinessFilterToSubjects(ViewerFilter filter) {
+    subjectsBusinessFilters.add(filter);
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#isContainedInSubjectsTable(EObject element)
+	 * @generated
+	 */
+	public boolean isContainedInSubjectsTable(EObject element) {
+    return ((ReferencesTableSettings)subjects.getInput()).contains(element);
   }
 
 

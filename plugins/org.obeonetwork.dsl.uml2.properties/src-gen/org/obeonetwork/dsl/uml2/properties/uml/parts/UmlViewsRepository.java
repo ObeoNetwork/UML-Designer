@@ -262,6 +262,12 @@ public class UmlViewsRepository {
 	
 	public static String usecase = "uml::General::usecase";
 	
+	/**
+	 * @generated
+	 */
+	
+	public static String subjects = "uml::General::subjects";
+	
 	}
 
 	/**

@@ -973,6 +973,48 @@ public interface GeneralPropertiesEditionPart {
 
 
 
+	/**
+	 * Init the subjects
+	 * @param settings settings for the subjects ReferencesTable 
+	 */
+	public void initSubjects(ReferencesTableSettings settings);
+
+	/**
+	 * Update the subjects
+	 * @param newValue the subjects to update
+	 * @generated
+	 */
+	public void updateSubjects();
+
+	/**
+	 * Adds the given filter to the subjects edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addFilterToSubjects(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the subjects edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addBusinessFilterToSubjects(ViewerFilter filter);
+
+	/**
+	 * @return true if the given element is contained inside the subjects table
+	 * @generated
+	 */
+	public boolean isContainedInSubjectsTable(EObject element);
+
+
+
+
 
 	/**
 	 * Returns the internationalized title text.

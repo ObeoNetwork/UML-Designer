@@ -696,6 +696,9 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ZiXaQYo2EeKz7Nysxc3j5A" name="leaf" views="_nujsAFv7EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//RedefinableElement/isLeaf"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_YxWeoHOGEeOB9t6Z6-PDag" name="subjects" views="_IzALkHOGEeOB9t6Z6-PDag">
+          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//UseCase/subject"/>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//UseCase"/>
       </bindings>
     </categories>
@@ -822,6 +825,9 @@
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_x4yHgLFyEeKhdLulAmSCrA" name="usecase">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.10"/>
+        </elements>
+        <elements xsi:type="eef-views:ElementEditor" xmi:id="_IzALkHOGEeOB9t6Z6-PDag" name="subjects">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
         </elements>
       </views>
       <views xmi:id="_55BGsF8vEeKd8d7WgZ31eQ" name="Operations">
