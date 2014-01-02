@@ -1445,7 +1445,9 @@ public class UMLServices {
 				return input.getClass().getName().equals(element.getClass().getName());
 			}
 		};
-		if (element instanceof ActivityFinalNode) {
+		if (element instanceof AssociationClass) {
+			name = "AssociationClass";
+		} else if (element instanceof ActivityFinalNode) {
 			name = "ActivityFinal";
 		} else if (element instanceof FlowFinalNode) {
 			name = "FlowFinal";
