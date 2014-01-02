@@ -56,7 +56,6 @@ import org.eclipse.emf.eef.runtime.ui.utils.EditingUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.EObjectFlatComboViewer;
-import org.eclipse.emf.eef.runtime.ui.widgets.FlatReferencesTable;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.HorizontalBox;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
@@ -158,7 +157,9 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	protected EMFComboViewer extendedCase;
 	protected EMFComboViewer addition;
 	protected EObjectFlatComboViewer role;
-	protected FlatReferencesTable usecase;
+	protected ReferencesTable usecase;
+	protected List<ViewerFilter> usecaseBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> usecaseFilters = new ArrayList<ViewerFilter>();
 	protected ReferencesTable subjects;
 	protected List<ViewerFilter> subjectsBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> subjectsFilters = new ArrayList<ViewerFilter>();
@@ -367,7 +368,7 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
           return createRoleFlatComboViewer(parent, widgetFactory);
         }
         if (key == UmlViewsRepository.General.usecase) {
-          return createUsecaseFlatReferencesTable(widgetFactory, parent);
+          return createUsecaseReferencesTable(widgetFactory, parent);
         }
         if (key == UmlViewsRepository.General.subjects) {
           return createSubjectsReferencesTable(widgetFactory, parent);
@@ -1983,31 +1984,88 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
   }
 
 	/**
-	 * @param parent
 	 * @generated
 	 */
-	protected Composite createUsecaseFlatReferencesTable(FormToolkit widgetFactory, Composite parent) {
-    createDescription(parent, UmlViewsRepository.General.usecase, UmlMessages.GeneralPropertiesEditionPart_UsecaseLabel);
-    usecase = new FlatReferencesTable(parent);
-    usecase.setLabelProvider(new AdapterFactoryLabelProvider(adapterFactory));
-    usecase.addSelectionChangedListener(new ISelectionChangedListener() {
-
-      public void selectionChanged(SelectionChangedEvent event) {
-        if (event.getSelection() instanceof StructuredSelection) 
-          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.usecase, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, ((StructuredSelection)event.getSelection()).toList()));
+	protected Composite createUsecaseReferencesTable(FormToolkit widgetFactory, Composite parent) {
+    this.usecase = new ReferencesTable(getDescription(UmlViewsRepository.General.usecase, UmlMessages.GeneralPropertiesEditionPart_UsecaseLabel), new ReferencesTableListener	() {
+      public void handleAdd() { addUsecase(); }
+      public void handleEdit(EObject element) { editUsecase(element); }
+      public void handleMove(EObject element, int oldIndex, int newIndex) { moveUsecase(element, oldIndex, newIndex); }
+      public void handleRemove(EObject element) { removeFromUsecase(element); }
+      public void navigateTo(EObject element) { }
+    });
+    this.usecase.setHelpText(propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.usecase, UmlViewsRepository.FORM_KIND));
+    this.usecase.createControls(parent, widgetFactory);
+    this.usecase.addSelectionListener(new SelectionAdapter() {
+      
+      public void widgetSelected(SelectionEvent e) {
+        if (e.item != null && e.item.getData() instanceof EObject) {
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.usecase, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+        }
       }
-
+      
     });
     GridData usecaseData = new GridData(GridData.FILL_HORIZONTAL);
-    usecase.setLayoutData(usecaseData);
+    usecaseData.horizontalSpan = 3;
+    this.usecase.setLayoutData(usecaseData);
+    this.usecase.disableMove();
     usecase.setID(UmlViewsRepository.General.usecase);
-    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.usecase, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-    // Start of user code for createUsecaseFlatReferencesTable
+    usecase.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
+    // Start of user code for createUsecaseReferencesTable
 
     // End of user code
     return parent;
   }
 
+	/**
+	 * @generated
+	 */
+	protected void addUsecase() {
+    TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(usecase.getInput(), usecaseFilters, usecaseBusinessFilters,
+    "usecase", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
+      @Override
+      public void process(IStructuredSelection selection) {
+        for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
+          EObject elem = (EObject) iter.next();
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.usecase,
+            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+        }
+        usecase.refresh();
+      }
+    };
+    dialog.open();
+  }
+
+	/**
+	 * @generated
+	 */
+	protected void moveUsecase(EObject element, int oldIndex, int newIndex) {
+    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.usecase, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+    usecase.refresh();
+  }
+
+	/**
+	 * @generated
+	 */
+	protected void removeFromUsecase(EObject element) {
+    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.usecase, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+    usecase.refresh();
+  }
+
+	/**
+	 * @generated
+	 */
+	protected void editUsecase(EObject element) {
+    EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
+    PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
+    if (provider != null) {
+      PropertiesEditingPolicy policy = provider.getPolicy(context);
+      if (policy != null) {
+        policy.execute();
+        usecase.refresh();
+      }
+    }
+  }
 
 	/**
 	 * @generated
@@ -3876,19 +3934,21 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#initUsecase(ReferencesTableSettings)
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#initUsecase(org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings)
 	 */
 	public void initUsecase(ReferencesTableSettings settings) {
 		if (current.eResource() != null && current.eResource().getResourceSet() != null)
 			this.resourceSet = current.eResource().getResourceSet();
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		usecase.setContentProvider(contentProvider);
 		usecase.setInput(settings);
 		boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.usecase);
-		if (eefElementEditorReadOnlyState && usecase.isEnabled()) {
+		if (eefElementEditorReadOnlyState && usecase.getTable().isEnabled()) {
 			usecase.setEnabled(false);
 			usecase.setToolTipText(UmlMessages.General_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !usecase.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !usecase.getTable().isEnabled()) {
 			usecase.setEnabled(true);
-		}	
+		}
 		
 	}
 
@@ -3909,7 +3969,7 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	 * @generated
 	 */
 	public void addFilterToUsecase(ViewerFilter filter) {
-    usecase.addFilter(filter);
+    usecaseFilters.add(filter);
   }
 
 	/**
@@ -3919,7 +3979,7 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	 * @generated
 	 */
 	public void addBusinessFilterToUsecase(ViewerFilter filter) {
-    usecase.addBusinessRuleFilter(filter);
+    usecaseBusinessFilters.add(filter);
   }
 
 	/**

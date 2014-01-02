@@ -824,7 +824,7 @@
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_x4yHgLFyEeKhdLulAmSCrA" name="usecase">
-          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.10"/>
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_IzALkHOGEeOB9t6Z6-PDag" name="subjects">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
