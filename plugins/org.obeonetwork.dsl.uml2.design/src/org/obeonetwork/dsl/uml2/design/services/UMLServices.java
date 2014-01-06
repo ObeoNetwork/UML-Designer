@@ -1449,6 +1449,8 @@ public class UMLServices {
 			name = "AssociationClass";
 		} else if (element instanceof ActivityFinalNode) {
 			name = "ActivityFinal";
+		} else if (element instanceof StateMachine) {
+			name = "StateMachine";
 		} else if (element instanceof FlowFinalNode) {
 			name = "FlowFinal";
 		} else if (element instanceof MergeNode) {
