@@ -267,13 +267,7 @@ public class UmlMessages extends NLS {
 	 * @generated
 	 */
 	
-	public static String GeneralPropertiesEditionPart_SourceLabel;
-
-	/**
-	 * @generated
-	 */
-	
-	public static String GeneralPropertiesEditionPart_TargetLabel;
+	public static String GeneralPropertiesEditionPart_TriggerLabel;
 
 	/**
 	 * @generated
@@ -286,6 +280,18 @@ public class UmlMessages extends NLS {
 	 */
 	
 	public static String GeneralPropertiesEditionPart_GuardLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_SourceLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_TargetLabel;
 
 	/**
 	 * @generated

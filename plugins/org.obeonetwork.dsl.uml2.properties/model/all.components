@@ -411,17 +411,20 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_euJlAFwHEeKZBNASYbV97A" name="kind" views="_aI7i0FwGEeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Transition/kind"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_7kxA4HbAEeOwBvC6b4NfOg" name="trigger" views="_4NPrcHbAEeOwBvC6b4NfOg">
+          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Transition/trigger"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_NAPO4F4iEeKttZbtn302Pg" name="guard" views="_metNUF4iEeKttZbtn302Pg">
+          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Transition/guard"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_LyNVgF4iEeKttZbtn302Pg" name="effect" views="_jrp24F4iEeKttZbtn302Pg">
+          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Transition/effect"/>
+        </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_g59VQFwHEeKZBNASYbV97A" name="source" views="_Ir2okF4iEeKttZbtn302Pg">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Transition/source"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_j7RKIFwHEeKZBNASYbV97A" name="target" views="_ic1TUF4iEeKttZbtn302Pg">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Transition/target"/>
-        </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_LyNVgF4iEeKttZbtn302Pg" name="effect" views="_jrp24F4iEeKttZbtn302Pg">
-          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Transition/effect"/>
-        </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_NAPO4F4iEeKttZbtn302Pg" name="guard" views="_metNUF4iEeKttZbtn302Pg">
-          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Transition/guard"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_OVXOwF4iEeKttZbtn302Pg" name="ownedRule" views="_n_DlwF4iEeKttZbtn302Pg">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Namespace/ownedRule"/>
@@ -811,16 +814,19 @@
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_aI7i0FwGEeKZBNASYbV97A" name="kind">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
         </elements>
+        <elements xsi:type="eef-views:ElementEditor" xmi:id="_4NPrcHbAEeOwBvC6b4NfOg" name="trigger">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.9"/>
+        </elements>
+        <elements xsi:type="eef-views:ElementEditor" xmi:id="_jrp24F4iEeKttZbtn302Pg" name="effect">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.9"/>
+        </elements>
+        <elements xsi:type="eef-views:ElementEditor" xmi:id="_metNUF4iEeKttZbtn302Pg" name="guard">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.9"/>
+        </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_Ir2okF4iEeKttZbtn302Pg" name="source">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_ic1TUF4iEeKttZbtn302Pg" name="target">
-          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
-        </elements>
-        <elements xsi:type="eef-views:ElementEditor" xmi:id="_jrp24F4iEeKttZbtn302Pg" name="effect">
-          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
-        </elements>
-        <elements xsi:type="eef-views:ElementEditor" xmi:id="_metNUF4iEeKttZbtn302Pg" name="guard">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_n_DlwF4iEeKttZbtn302Pg" name="ownedRule">

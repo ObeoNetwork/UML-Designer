@@ -556,97 +556,50 @@ public interface GeneralPropertiesEditionPart {
 
 
 	/**
-	 * @return the source
+	 * @return the trigger
 	 * @generated
 	 */
-	public EObject getSource();
+	public EObject getTrigger();
 
 	/**
-	 * Init the source
+	 * Init the trigger
 	 * @param settings the combo setting
 	 */
-	public void initSource(EObjectFlatComboSettings settings);
+	public void initTrigger(EObjectFlatComboSettings settings);
 
 	/**
-	 * Defines a new source
-	 * @param newValue the new source to set
+	 * Defines a new trigger
+	 * @param newValue the new trigger to set
 	 * @generated
 	 */
-	public void setSource(EObject newValue);
+	public void setTrigger(EObject newValue);
 
 	/**
 	 * Defines the button mode
 	 * @param newValue the new mode to set
 	 * @generated
 	 */
-	public void setSourceButtonMode(ButtonsModeEnum newValue);
+	public void setTriggerButtonMode(ButtonsModeEnum newValue);
 
 	/**
-	 * Adds the given filter to the source edition editor.
+	 * Adds the given filter to the trigger edition editor.
 	 * 
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
 	 * @generated
 	 */
-	public void addFilterToSource(ViewerFilter filter);
+	public void addFilterToTrigger(ViewerFilter filter);
 
 	/**
-	 * Adds the given filter to the source edition editor.
+	 * Adds the given filter to the trigger edition editor.
 	 * 
 	 * @param filter
 	 *            a viewer filter
 	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
 	 * @generated
 	 */
-	public void addBusinessFilterToSource(ViewerFilter filter);
-
-
-	/**
-	 * @return the target
-	 * @generated
-	 */
-	public EObject getTarget();
-
-	/**
-	 * Init the target
-	 * @param settings the combo setting
-	 */
-	public void initTarget(EObjectFlatComboSettings settings);
-
-	/**
-	 * Defines a new target
-	 * @param newValue the new target to set
-	 * @generated
-	 */
-	public void setTarget(EObject newValue);
-
-	/**
-	 * Defines the button mode
-	 * @param newValue the new mode to set
-	 * @generated
-	 */
-	public void setTargetButtonMode(ButtonsModeEnum newValue);
-
-	/**
-	 * Adds the given filter to the target edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * @generated
-	 */
-	public void addFilterToTarget(ViewerFilter filter);
-
-	/**
-	 * Adds the given filter to the target edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * @generated
-	 */
-	public void addBusinessFilterToTarget(ViewerFilter filter);
+	public void addBusinessFilterToTrigger(ViewerFilter filter);
 
 
 	/**
@@ -741,6 +694,100 @@ public interface GeneralPropertiesEditionPart {
 	 * @generated
 	 */
 	public void addBusinessFilterToGuard(ViewerFilter filter);
+
+
+	/**
+	 * @return the source
+	 * @generated
+	 */
+	public EObject getSource();
+
+	/**
+	 * Init the source
+	 * @param settings the combo setting
+	 */
+	public void initSource(EObjectFlatComboSettings settings);
+
+	/**
+	 * Defines a new source
+	 * @param newValue the new source to set
+	 * @generated
+	 */
+	public void setSource(EObject newValue);
+
+	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 * @generated
+	 */
+	public void setSourceButtonMode(ButtonsModeEnum newValue);
+
+	/**
+	 * Adds the given filter to the source edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addFilterToSource(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the source edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addBusinessFilterToSource(ViewerFilter filter);
+
+
+	/**
+	 * @return the target
+	 * @generated
+	 */
+	public EObject getTarget();
+
+	/**
+	 * Init the target
+	 * @param settings the combo setting
+	 */
+	public void initTarget(EObjectFlatComboSettings settings);
+
+	/**
+	 * Defines a new target
+	 * @param newValue the new target to set
+	 * @generated
+	 */
+	public void setTarget(EObject newValue);
+
+	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 * @generated
+	 */
+	public void setTargetButtonMode(ButtonsModeEnum newValue);
+
+	/**
+	 * Adds the given filter to the target edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addFilterToTarget(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the target edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addBusinessFilterToTarget(ViewerFilter filter);
 
 
 

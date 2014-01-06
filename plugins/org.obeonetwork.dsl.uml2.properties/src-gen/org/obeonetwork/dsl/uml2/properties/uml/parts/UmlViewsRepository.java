@@ -200,13 +200,7 @@ public class UmlViewsRepository {
 	 * @generated
 	 */
 	
-	public static String source = "uml::General::source";
-	
-	/**
-	 * @generated
-	 */
-	
-	public static String target = "uml::General::target";
+	public static String trigger = "uml::General::trigger";
 	
 	/**
 	 * @generated
@@ -219,6 +213,18 @@ public class UmlViewsRepository {
 	 */
 	
 	public static String guard = "uml::General::guard";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String source = "uml::General::source";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String target = "uml::General::target";
 	
 	/**
 	 * @generated
