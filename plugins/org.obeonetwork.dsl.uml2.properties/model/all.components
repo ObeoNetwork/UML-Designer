@@ -701,6 +701,24 @@
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//UseCase"/>
       </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_MWjroHRnEeO-e7N6WWrcaw" name="State" views="_Kt6kIFv3EeKZBNASYbV97A">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_UpNeUHRnEeO-e7N6WWrcaw" name="name" views="_3INTYFv3EeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_UpOscHRnEeO-e7N6WWrcaw" name="visibility" views="_maltQFv8EeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/visibility"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_UpOscXRnEeO-e7N6WWrcaw" name="entry" views="_DJPngHRnEeO-e7N6WWrcaw">
+          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//State/entry"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_mH1gQHSGEeO-e7N6WWrcaw" name="exit" views="_afbSsHSGEeO-e7N6WWrcaw">
+          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//State/exit"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_nItucHSGEeO-e7N6WWrcaw" name="do" views="_csNTUHSGEeO-e7N6WWrcaw">
+          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//State/doActivity"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//State"/>
+      </bindings>
     </categories>
     <model href="platform:/plugin/org.eclipse.uml2.uml/model/UML.genmodel#//uml"/>
   </eef-components:PropertiesEditionContext>
@@ -828,6 +846,15 @@
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_IzALkHOGEeOB9t6Z6-PDag" name="subjects">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
+        </elements>
+        <elements xsi:type="eef-views:ElementEditor" xmi:id="_DJPngHRnEeO-e7N6WWrcaw" name="entry">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.9"/>
+        </elements>
+        <elements xsi:type="eef-views:ElementEditor" xmi:id="_afbSsHSGEeO-e7N6WWrcaw" name="exit">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.9"/>
+        </elements>
+        <elements xsi:type="eef-views:ElementEditor" xmi:id="_csNTUHSGEeO-e7N6WWrcaw" name="do">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.9"/>
         </elements>
       </views>
       <views xmi:id="_55BGsF8vEeKd8d7WgZ31eQ" name="Operations">

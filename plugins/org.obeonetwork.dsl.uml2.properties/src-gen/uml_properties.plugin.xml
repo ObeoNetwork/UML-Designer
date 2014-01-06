@@ -397,6 +397,12 @@
                id="org.obeonetwork.dsl.uml2.properties.uml.section.UseCase"
                tab="General">
          </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.StatePropertiesEditionProvider$EditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.State"
+               tab="General">
+         </propertySection>
       </propertySections>
    </extension>
  </plugin>

@@ -3373,7 +3373,28 @@
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </subNodeMappings>
-            <subContainerMappings name="SM_State" preconditionExpression="[oclIsTypeOf(uml::State)/]" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="[subvertex->filter(uml::State)/]" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.State">
+            <subContainerMappings name="SM_State" preconditionExpression="[oclIsTypeOf(uml::State)/]" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="[subvertex->filter(uml::State)/]" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.State" childrenPresentation="List">
+              <subNodeMappings name="SM_Entry" semanticCandidatesExpression="feature:entry" domainClass="uml.Behavior">
+                <style xsi:type="style:SquareDescription" labelExpression="['entry/ '+ computeUmlLabel()/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                </style>
+              </subNodeMappings>
+              <subNodeMappings name="SM_Exit" semanticCandidatesExpression="feature:exit" domainClass="uml.Behavior">
+                <style xsi:type="style:SquareDescription" labelExpression="['exit/ '+ computeUmlLabel()/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                </style>
+              </subNodeMappings>
+              <subNodeMappings name="SM_Do" semanticCandidatesExpression="feature:doActivity" domainClass="uml.Behavior">
+                <style xsi:type="style:SquareDescription" labelExpression="['do/ '+ computeUmlLabel()/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                </style>
+              </subNodeMappings>
               <style xsi:type="style:FlatContainerStyleDescription" arcWidth="25" arcHeight="25" borderSizeComputationExpression="1" labelSize="9" showIcon="false" labelExpression="service:computeUmlLabel" roundedCorner="true" backgroundStyle="Liquid">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
@@ -3541,6 +3562,152 @@
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                 </firstModelOperations>
               </initialOperation>
+            </ownedTools>
+          </subSections>
+          <subSections name="Internal activities">
+            <ownedTools xsi:type="tool:PopupMenu" name="Entry">
+              <menuItemDescription xsi:type="tool:OperationAction" name="Activity" precondition="service:hasNoEntry">
+                <view name="views"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Activity" referenceName="entry">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                    </subModelOperations>
+                  </firstModelOperations>
+                </initialOperation>
+              </menuItemDescription>
+              <menuItemDescription xsi:type="tool:OperationAction" name="Opaque Behavior" precondition="service:hasNoEntry">
+                <view name="views"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.OpaqueBehavior" referenceName="entry">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                    </subModelOperations>
+                  </firstModelOperations>
+                </initialOperation>
+              </menuItemDescription>
+              <menuItemDescription xsi:type="tool:OperationAction" name="State Machine" precondition="service:hasNoEntry">
+                <view name="views"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.StateMachine" referenceName="entry">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                    </subModelOperations>
+                  </firstModelOperations>
+                </initialOperation>
+              </menuItemDescription>
+              <menuItemDescription xsi:type="tool:OperationAction" name="Delete from model" precondition="service:hasEntry">
+                <view name="views"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:entry">
+                    <subModelOperations xsi:type="tool:RemoveElement"/>
+                  </firstModelOperations>
+                </initialOperation>
+              </menuItemDescription>
+              <menuItemDescription xsi:type="tool:OperationAction" name="Unset" precondition="service:hasEntry">
+                <view name="views"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                    <subModelOperations xsi:type="tool:Unset" featureName="entry" elementExpression="feature:entry"/>
+                  </firstModelOperations>
+                </initialOperation>
+              </menuItemDescription>
+            </ownedTools>
+            <ownedTools xsi:type="tool:PopupMenu" name="Exit">
+              <menuItemDescription xsi:type="tool:OperationAction" name="Activity" precondition="service:hasNoExit">
+                <view name="views"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Activity" referenceName="exit">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                    </subModelOperations>
+                  </firstModelOperations>
+                </initialOperation>
+              </menuItemDescription>
+              <menuItemDescription xsi:type="tool:OperationAction" name="Opaque Behavior" precondition="service:hasNoExit">
+                <view name="views"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.OpaqueBehavior" referenceName="exit">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                    </subModelOperations>
+                  </firstModelOperations>
+                </initialOperation>
+              </menuItemDescription>
+              <menuItemDescription xsi:type="tool:OperationAction" name="State Machine" precondition="service:hasNoExit">
+                <view name="views"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.StateMachine" referenceName="exit">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                    </subModelOperations>
+                  </firstModelOperations>
+                </initialOperation>
+              </menuItemDescription>
+              <menuItemDescription xsi:type="tool:OperationAction" name="Delete from model" precondition="service:hasExit">
+                <view name="views"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:exit">
+                    <subModelOperations xsi:type="tool:RemoveElement"/>
+                  </firstModelOperations>
+                </initialOperation>
+              </menuItemDescription>
+              <menuItemDescription xsi:type="tool:OperationAction" name="Unset" precondition="service:hasExit">
+                <view name="views"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                    <subModelOperations xsi:type="tool:Unset" featureName="exit" elementExpression="feature:exit"/>
+                  </firstModelOperations>
+                </initialOperation>
+              </menuItemDescription>
+            </ownedTools>
+            <ownedTools xsi:type="tool:PopupMenu" name="Do">
+              <menuItemDescription xsi:type="tool:OperationAction" name="Activity" precondition="service:hasNoDo">
+                <view name="views"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Activity" referenceName="doActivity">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                    </subModelOperations>
+                  </firstModelOperations>
+                </initialOperation>
+              </menuItemDescription>
+              <menuItemDescription xsi:type="tool:OperationAction" name="Opaque Behavior" precondition="service:hasNoDo">
+                <view name="views"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.OpaqueBehavior" referenceName="doActivity">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                    </subModelOperations>
+                  </firstModelOperations>
+                </initialOperation>
+              </menuItemDescription>
+              <menuItemDescription xsi:type="tool:OperationAction" name="State Machine" precondition="service:hasNoDo">
+                <view name="views"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.StateMachine" referenceName="doActivity">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                    </subModelOperations>
+                  </firstModelOperations>
+                </initialOperation>
+              </menuItemDescription>
+              <menuItemDescription xsi:type="tool:OperationAction" name="Delete from model" precondition="service:hasDo">
+                <view name="views"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:doActivity">
+                    <subModelOperations xsi:type="tool:RemoveElement"/>
+                  </firstModelOperations>
+                </initialOperation>
+              </menuItemDescription>
+              <menuItemDescription xsi:type="tool:OperationAction" name="Unset" precondition="service:hasDo">
+                <view name="views"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self">
+                    <subModelOperations xsi:type="tool:Unset" featureName="doActivity" elementExpression="feature:doActivity"/>
+                  </firstModelOperations>
+                </initialOperation>
+              </menuItemDescription>
             </ownedTools>
           </subSections>
         </toolSections>

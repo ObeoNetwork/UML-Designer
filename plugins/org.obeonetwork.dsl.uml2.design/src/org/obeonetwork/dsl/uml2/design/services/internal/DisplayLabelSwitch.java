@@ -16,6 +16,7 @@ import java.util.List;
 import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Association;
+import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehaviorExecutionSpecification;
 import org.eclipse.uml2.uml.CallOperationAction;
 import org.eclipse.uml2.uml.Class;
@@ -609,6 +610,11 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 			}
 		}
 		return label.toString();
+	}
+
+	@Override
+	public String caseBehavior(Behavior object) {
+		return object.getName();
 	}
 
 }

@@ -1013,6 +1013,147 @@ public interface GeneralPropertiesEditionPart {
 	public boolean isContainedInSubjectsTable(EObject element);
 
 
+	/**
+	 * @return the entry
+	 * @generated
+	 */
+	public EObject getEntry();
+
+	/**
+	 * Init the entry
+	 * @param settings the combo setting
+	 */
+	public void initEntry(EObjectFlatComboSettings settings);
+
+	/**
+	 * Defines a new entry
+	 * @param newValue the new entry to set
+	 * @generated
+	 */
+	public void setEntry(EObject newValue);
+
+	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 * @generated
+	 */
+	public void setEntryButtonMode(ButtonsModeEnum newValue);
+
+	/**
+	 * Adds the given filter to the entry edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addFilterToEntry(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the entry edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addBusinessFilterToEntry(ViewerFilter filter);
+
+
+	/**
+	 * @return the exit
+	 * @generated
+	 */
+	public EObject getExit();
+
+	/**
+	 * Init the exit
+	 * @param settings the combo setting
+	 */
+	public void initExit(EObjectFlatComboSettings settings);
+
+	/**
+	 * Defines a new exit
+	 * @param newValue the new exit to set
+	 * @generated
+	 */
+	public void setExit(EObject newValue);
+
+	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 * @generated
+	 */
+	public void setExitButtonMode(ButtonsModeEnum newValue);
+
+	/**
+	 * Adds the given filter to the exit edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addFilterToExit(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the exit edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addBusinessFilterToExit(ViewerFilter filter);
+
+
+	/**
+	 * @return the do
+	 * @generated
+	 */
+	public EObject getDo_();
+
+	/**
+	 * Init the do
+	 * @param settings the combo setting
+	 */
+	public void initDo_(EObjectFlatComboSettings settings);
+
+	/**
+	 * Defines a new do
+	 * @param newValue the new do to set
+	 * @generated
+	 */
+	public void setDo_(EObject newValue);
+
+	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 * @generated
+	 */
+	public void setDo_ButtonMode(ButtonsModeEnum newValue);
+
+	/**
+	 * Adds the given filter to the do edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addFilterToDo_(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the do edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addBusinessFilterToDo_(ViewerFilter filter);
+
+
 
 
 

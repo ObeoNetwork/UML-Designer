@@ -15,6 +15,7 @@ import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Pseudostate;
 import org.eclipse.uml2.uml.PseudostateKind;
 import org.eclipse.uml2.uml.Region;
+import org.eclipse.uml2.uml.State;
 import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.UMLFactory;
 
@@ -111,5 +112,71 @@ public class StatemachineServices {
 
 	public boolean isExitPoint(Pseudostate state) {
 		return state.getKind().equals(PseudostateKind.EXIT_POINT_LITERAL);
+	}
+
+	/**
+	 * Check if a state has an entry defined.
+	 * 
+	 * @param state
+	 *            State
+	 * @return True if an entry is defined
+	 */
+	public boolean hasEntry(State state) {
+		return state.getEntry() != null;
+	}
+
+	/**
+	 * Check if a state has an exit defined.
+	 * 
+	 * @param state
+	 *            State
+	 * @return True if an exit is defined
+	 */
+	public boolean hasExit(State state) {
+		return state.getExit() != null;
+	}
+
+	/**
+	 * Check if a state has a do activity defined.
+	 * 
+	 * @param state
+	 *            State
+	 * @return True if a do activity is defined
+	 */
+	public boolean hasDo(State state) {
+		return state.getDoActivity() != null;
+	}
+
+	/**
+	 * Check if a state has no entry defined.
+	 * 
+	 * @param state
+	 *            State
+	 * @return True if none entry is defined
+	 */
+	public boolean hasNoEntry(State state) {
+		return !hasEntry(state);
+	}
+
+	/**
+	 * Check if a state has no exit defined.
+	 * 
+	 * @param state
+	 *            State
+	 * @return True if none exit is defined
+	 */
+	public boolean hasNoExit(State state) {
+		return !hasExit(state);
+	}
+
+	/**
+	 * Check if a state has no do activity defined.
+	 * 
+	 * @param state
+	 *            State
+	 * @return True if none do activity is defined
+	 */
+	public boolean hasNoDo(State state) {
+		return !hasDo(state);
 	}
 }

@@ -44,6 +44,7 @@ import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Region;
+import org.eclipse.uml2.uml.State;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.UseCase;
@@ -95,7 +96,8 @@ public class GeneralEditionFilter implements IFilter {
 						|| eObj instanceof Include || eObj instanceof Pin
 						|| eObj instanceof OpaqueAction
 						|| eObj instanceof Vertex || eObj instanceof Region
-						|| eObj instanceof UseCase || eObj instanceof ConnectorEnd);
+						|| eObj instanceof UseCase
+						|| eObj instanceof ConnectorEnd || eObj instanceof State);
 	}
 
 }

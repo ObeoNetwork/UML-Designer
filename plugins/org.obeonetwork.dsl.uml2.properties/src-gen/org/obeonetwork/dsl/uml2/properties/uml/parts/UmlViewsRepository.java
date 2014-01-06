@@ -268,6 +268,24 @@ public class UmlViewsRepository {
 	
 	public static String subjects = "uml::General::subjects";
 	
+	/**
+	 * @generated
+	 */
+	
+	public static String entry = "uml::General::entry";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String exit = "uml::General::exit";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String do_ = "uml::General::do";
+	
 	}
 
 	/**
