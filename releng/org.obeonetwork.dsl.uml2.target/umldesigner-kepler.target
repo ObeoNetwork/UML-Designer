@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<?pde version="3.8"?><target name="UmlDesigner-kepler" sequenceNumber="0">
+<?pde version="3.8"?>
+
+<target name="UmlDesigner-kepler" sequenceNumber="0">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.platform.feature.group" version="4.3.1.v20130911-1000"/>
@@ -40,8 +42,8 @@
 <repository location="http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/3.4/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.emf.eef.runtime" version="1.2.0.201301031409"/>
-<repository location="http://download.eclipse.org/modeling/emft/eef/updates/nightly/1.2/"/>
+<unit id="org.eclipse.emf.eef.runtime" version="1.3.0.201311221533"/>
+<repository location="http://download.eclipse.org/modeling/emft/eef/updates/releases/1.3/R201311221533"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
 <unit id="org.eclipse.sirius.runtime.feature.group" version="0.0.0"/>

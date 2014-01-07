@@ -153,7 +153,6 @@ public class PrimitiveTypeOperationsPropertiesEditionComponent extends SinglePar
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		PrimitiveType primitiveType = (PrimitiveType)semanticObject;
-
 		if (UmlViewsRepository.Operations.operations_ == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, operationsSettings, editingContext.getAdapterFactory());
@@ -237,6 +236,8 @@ public class PrimitiveTypeOperationsPropertiesEditionComponent extends SinglePar
 		return ret;
 	}
 
+
+	
 
 	
 

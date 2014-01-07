@@ -40,4 +40,18 @@ public class EEFService {
 		}
 		return comment;
 	}
+
+	/**
+	 * Return the parent package of a state.
+	 * 
+	 * @param semanticObject
+	 *            State
+	 * @return Parent package
+	 */
+	public static org.eclipse.uml2.uml.Package getParent(EObject semanticObject) {
+		if (semanticObject instanceof Element) {
+			return ((Element) semanticObject).getNearestPackage();
+		}
+		return null;
+	}
 }

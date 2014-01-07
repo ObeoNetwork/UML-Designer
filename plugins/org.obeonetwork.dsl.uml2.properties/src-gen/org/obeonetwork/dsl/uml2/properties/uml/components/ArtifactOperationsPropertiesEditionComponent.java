@@ -153,7 +153,6 @@ public class ArtifactOperationsPropertiesEditionComponent extends SinglePartProp
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Artifact artifact = (Artifact)semanticObject;
-
 		if (UmlViewsRepository.Operations.operations_ == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, operationsSettings, editingContext.getAdapterFactory());
@@ -237,6 +236,8 @@ public class ArtifactOperationsPropertiesEditionComponent extends SinglePartProp
 		return ret;
 	}
 
+
+	
 
 	
 

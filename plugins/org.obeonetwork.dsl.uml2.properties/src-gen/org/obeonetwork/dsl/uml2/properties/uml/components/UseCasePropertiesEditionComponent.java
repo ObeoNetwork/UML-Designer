@@ -168,7 +168,6 @@ public class UseCasePropertiesEditionComponent extends SinglePartPropertiesEditi
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		UseCase useCase = (UseCase)semanticObject;
-
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			useCase.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}
@@ -305,6 +304,8 @@ public class UseCasePropertiesEditionComponent extends SinglePartPropertiesEditi
 		return ret;
 	}
 
+
+	
 
 	
 

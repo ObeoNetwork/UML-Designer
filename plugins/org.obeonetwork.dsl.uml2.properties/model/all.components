@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eef-components="http://www.eclipse.org/emf/eef/components/1.0.0" xmlns:eef-views="http://www.eclipse.org/emf/eef/views/1.0.0">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:eef-components="http://www.eclipse.org/emf/eef/components/1.0.0" xmlns:eef-mapping-filters="http://www.eclipse.org/emf/eef/mapping/filters/1.0.0" xmlns:eef-mapping-settings="http://www.eclipse.org/emf/eef/mapping/settings/1.0.0" xmlns:eef-views="http://www.eclipse.org/emf/eef/views/1.0.0">
   <eef-components:PropertiesEditionContext xmi:id="_j_XB4ZabEeCthc_-fH5cSw" documentation="Edition Context for uml GenPackage">
     <categories xmi:id="_SM1vgFsVEeKITrl1rsP4xw" name="uml">
       <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_TjGFoF4nEeKttZbtn302Pg" name="Package" views="_Kt6kIFv3EeKZBNASYbV97A">
@@ -720,6 +720,13 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_nItucHSGEeO-e7N6WWrcaw" name="do" views="_csNTUHSGEeO-e7N6WWrcaw">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//State/doActivity"/>
         </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_AbG-gHeiEeO2VtUtRSrt7Q" name="submachine" views="_G5hzcHeiEeO2VtUtRSrt7Q">
+          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//State/submachine"/>
+          <editorSetting xsi:type="eef-mapping-settings:EReferenceViewerSettings" xmi:id="_Lvx7QHejEeO2VtUtRSrt7Q">
+            <model href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Package/packagedElement"/>
+            <filter xsi:type="eef-mapping-filters:JavaDeclarationStepFilter" xmi:id="__ViWMHekEeO2VtUtRSrt7Q" qualifiedClass="org.obeonetwork.dsl.uml2.properties.service.EEFService" methodName="getParent" staticMethod="true"/>
+          </editorSetting>
+        </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//State"/>
       </bindings>
     </categories>
@@ -785,7 +792,7 @@
           </elements>
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_tYLxgFv8EeKZBNASYbV97A" name="type">
-          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.9"/>
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_N1LWYFv_EeKZBNASYbV97A" name="direction">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
@@ -824,10 +831,10 @@
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.9"/>
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_Ir2okF4iEeKttZbtn302Pg" name="source">
-          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.9"/>
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_ic1TUF4iEeKttZbtn302Pg" name="target">
-          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.9"/>
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_n_DlwF4iEeKttZbtn302Pg" name="ownedRule">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
@@ -845,7 +852,7 @@
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.6"/>
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_wML9cIpPEeKz7Nysxc3j5A" name="role">
-          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.0"/>
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.9"/>
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_x4yHgLFyEeKhdLulAmSCrA" name="usecase">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
@@ -861,6 +868,9 @@
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_csNTUHSGEeO-e7N6WWrcaw" name="do">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.9"/>
+        </elements>
+        <elements xsi:type="eef-views:ElementEditor" xmi:id="_G5hzcHeiEeO2VtUtRSrt7Q" name="submachine">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.16"/>
         </elements>
       </views>
       <views xmi:id="_55BGsF8vEeKd8d7WgZ31eQ" name="Operations">

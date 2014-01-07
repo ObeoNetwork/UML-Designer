@@ -17,6 +17,8 @@ import org.eclipse.uml2.uml.PseudostateKind;
 import org.eclipse.uml2.uml.Region;
 import org.eclipse.uml2.uml.State;
 import org.eclipse.uml2.uml.StateMachine;
+import org.eclipse.uml2.uml.Transition;
+import org.eclipse.uml2.uml.TransitionKind;
 import org.eclipse.uml2.uml.UMLFactory;
 
 /**
@@ -178,5 +180,16 @@ public class StatemachineServices {
 	 */
 	public boolean hasNoDo(State state) {
 		return !hasDo(state);
+	}
+
+	/**
+	 * Check if a transition is an external transition.
+	 * 
+	 * @param transition
+	 *            Transition
+	 * @return True if transition is external or local
+	 */
+	public boolean isExternalTransition(Transition transition) {
+		return !transition.getKind().equals(TransitionKind.INTERNAL_LITERAL);
 	}
 }

@@ -131,7 +131,6 @@ public class PseudoStatePropertiesEditionComponent extends SinglePartPropertiesE
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Pseudostate pseudostate = (Pseudostate)semanticObject;
-
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			pseudostate.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}
@@ -216,6 +215,8 @@ public class PseudoStatePropertiesEditionComponent extends SinglePartPropertiesE
 		return ret;
 	}
 
+
+	
 
 	
 

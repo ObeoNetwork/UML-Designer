@@ -138,7 +138,6 @@ public class ControlNodePropertiesEditionComponent extends SinglePartPropertiesE
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		ControlNode controlNode = (ControlNode)semanticObject;
-
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			controlNode.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}
@@ -247,6 +246,8 @@ public class ControlNodePropertiesEditionComponent extends SinglePartPropertiesE
 		return ret;
 	}
 
+
+	
 
 	
 

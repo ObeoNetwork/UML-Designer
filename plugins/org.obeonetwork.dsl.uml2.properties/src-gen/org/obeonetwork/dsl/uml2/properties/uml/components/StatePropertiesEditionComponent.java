@@ -10,38 +10,41 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.components;
 
+import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.uml2.uml.State;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
+import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.WrappedException;
+
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.VisibilityKind;
 
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.BasicDiagnostic;
-import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.common.util.WrappedException;
-
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import org.eclipse.emf.ecore.util.Diagnostician;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 
-import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
-
-import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-
+import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
 
-import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext.InstanciableTypeFilter;
 
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
-import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
 
@@ -51,16 +54,14 @@ import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 
-import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
-
 import org.eclipse.uml2.types.TypesPackage;
 
 import org.eclipse.uml2.uml.Behavior;
-import org.eclipse.uml2.uml.State;
+import org.eclipse.uml2.uml.StateMachine;
+import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
-import org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 
 
@@ -91,6 +92,16 @@ public class StatePropertiesEditionComponent extends SinglePartPropertiesEditing
 	 * Settings for do EObjectFlatComboViewer
 	 */
 	private EObjectFlatComboSettings do_Settings;
+	
+	/**
+	 * Settings for submachine LinkEReferenceViewer
+	 */
+	private EObjectFlatComboSettings submachineSettings;
+	
+	/**
+	 * Creation Settings for submachine LinkEReferenceViewer
+	 */
+	private ReferencesTableSettings submachineCreateSettings;
 	
 	
 	/**
@@ -146,7 +157,16 @@ public class StatePropertiesEditionComponent extends SinglePartPropertiesEditing
 				// set the button mode
 				generalPart.setDo_ButtonMode(ButtonsModeEnum.CREATE);
 			}
+			if (isAccessible(UmlViewsRepository.General.submachine)) {
+				// init part
+				submachineSettings = new EObjectFlatComboSettings(state, UMLPackage.eINSTANCE.getState_Submachine());
+				submachineCreateSettings = new ReferencesTableSettings(getsubmachineCreateSettingsSource(), UMLPackage.eINSTANCE.getPackage_PackagedElement());
+				generalPart.initSubmachine(submachineSettings);
+				// set the button mode
+				generalPart.setSubmachineButtonMode(ButtonsModeEnum.BROWSE);
+			}
 			// init filters
+			
 			
 			
 			
@@ -159,6 +179,7 @@ public class StatePropertiesEditionComponent extends SinglePartPropertiesEditing
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -187,6 +208,9 @@ public class StatePropertiesEditionComponent extends SinglePartPropertiesEditing
 		if (editorKey == UmlViewsRepository.General.do_) {
 			return UMLPackage.eINSTANCE.getState_DoActivity();
 		}
+		if (editorKey == UmlViewsRepository.General.submachine) {
+			return UMLPackage.eINSTANCE.getState_Submachine();
+		}
 		return super.associatedFeature(editorKey);
 	}
 
@@ -197,7 +221,6 @@ public class StatePropertiesEditionComponent extends SinglePartPropertiesEditing
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		State state = (State)semanticObject;
-
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			state.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}
@@ -246,6 +269,37 @@ public class StatePropertiesEditionComponent extends SinglePartPropertiesEditing
 				}
 			}
 		}
+		if (UmlViewsRepository.General.submachine == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
+				submachineSettings.setToReference((StateMachine)event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+					if (editionPolicy != null) {
+						editionPolicy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
+				StateMachine eObject = UMLFactory.eINSTANCE.createStateMachine();
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, submachineCreateSettings, editingContext.getAdapterFactory());
+				context.addInstanciableTypeFilter(new InstanciableTypeFilter() {
+					public boolean select(EClass instanciableType) {
+						return UMLPackage.Literals.STATE_MACHINE == instanciableType;
+					}
+				});
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy != null) {
+						policy.execute();
+					}
+				}
+				submachineSettings.setToReference(context.getEObject());
+				((GeneralPropertiesEditionPart)editingPart).setSubmachine(context.getEObject());
+			}
+		}
 	}
 
 	/**
@@ -272,6 +326,8 @@ public class StatePropertiesEditionComponent extends SinglePartPropertiesEditing
 				generalPart.setExit((EObject)msg.getNewValue());
 			if (UMLPackage.eINSTANCE.getState_DoActivity().equals(msg.getFeature()) && generalPart != null && isAccessible(UmlViewsRepository.General.do_))
 				generalPart.setDo_((EObject)msg.getNewValue());
+			if (UMLPackage.eINSTANCE.getState_Submachine().equals(msg.getFeature()) && generalPart != null && isAccessible(UmlViewsRepository.General.submachine))
+				generalPart.setSubmachine((EObject)msg.getNewValue());
 			
 		}
 	}
@@ -288,7 +344,8 @@ public class StatePropertiesEditionComponent extends SinglePartPropertiesEditing
 			UMLPackage.eINSTANCE.getNamedElement_Visibility(),
 			UMLPackage.eINSTANCE.getState_Entry(),
 			UMLPackage.eINSTANCE.getState_Exit(),
-			UMLPackage.eINSTANCE.getState_DoActivity()		);
+			UMLPackage.eINSTANCE.getState_DoActivity(),
+			UMLPackage.eINSTANCE.getState_Submachine()		);
 		return new NotificationFilter[] {filter,};
 	}
 
@@ -297,7 +354,7 @@ public class StatePropertiesEditionComponent extends SinglePartPropertiesEditing
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#mustBeComposed(java.lang.Object, int)
 	 */
 	public boolean mustBeComposed(Object key, int kind) {
-		return key == UmlViewsRepository.General.name || key == UmlViewsRepository.General.visibility || key == UmlViewsRepository.General.entry || key == UmlViewsRepository.General.exit || key == UmlViewsRepository.General.do_;
+		return key == UmlViewsRepository.General.name || key == UmlViewsRepository.General.visibility || key == UmlViewsRepository.General.entry || key == UmlViewsRepository.General.exit || key == UmlViewsRepository.General.do_ || key == UmlViewsRepository.General.submachine;
 	}
 
 	/**
@@ -334,6 +391,15 @@ public class StatePropertiesEditionComponent extends SinglePartPropertiesEditing
 	}
 
 
+	
+
+	
+	/**
+	 * @ return source setting for submachineCreateSettings
+	 */
+	public EObject getsubmachineCreateSettingsSource() {
+				return org.obeonetwork.dsl.uml2.properties.service.EEFService.getParent(semanticObject);
+	}	
 	
 
 }

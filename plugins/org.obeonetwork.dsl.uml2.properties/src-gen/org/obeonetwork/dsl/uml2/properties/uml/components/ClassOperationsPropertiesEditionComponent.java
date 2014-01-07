@@ -152,7 +152,6 @@ public class ClassOperationsPropertiesEditionComponent extends SinglePartPropert
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Class class_ = (Class)semanticObject;
-
 		if (UmlViewsRepository.Operations.operations_ == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, operationsSettings, editingContext.getAdapterFactory());
@@ -236,6 +235,8 @@ public class ClassOperationsPropertiesEditionComponent extends SinglePartPropert
 		return ret;
 	}
 
+
+	
 
 	
 

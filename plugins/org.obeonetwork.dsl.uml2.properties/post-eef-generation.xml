@@ -47,5 +47,28 @@ import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.VisibilityKind;]]></replacevalue>
 		</replace>
+		<replace dir="src-gen/org/obeonetwork/dsl/uml2/properties/uml/components">
+		<include name="**/StatePropertiesEditionComponent.java"/>
+	  	<replacetoken><![CDATA[package org.obeonetwork.dsl.uml2.properties.uml.components;]]></replacetoken>
+		<replacevalue><![CDATA[package org.obeonetwork.dsl.uml2.properties.uml.components;
+
+import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.uml2.uml.State;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
+import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.WrappedException;]]></replacevalue>
+		</replace>
 	</target>
 </project>

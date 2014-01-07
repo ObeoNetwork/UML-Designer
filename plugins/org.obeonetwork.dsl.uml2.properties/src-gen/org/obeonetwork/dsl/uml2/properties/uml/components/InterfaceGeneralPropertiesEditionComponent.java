@@ -168,7 +168,6 @@ public class InterfaceGeneralPropertiesEditionComponent extends SinglePartProper
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Interface interface_ = (Interface)semanticObject;
-
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			interface_.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}
@@ -305,6 +304,8 @@ public class InterfaceGeneralPropertiesEditionComponent extends SinglePartProper
 		return ret;
 	}
 
+
+	
 
 	
 

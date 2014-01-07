@@ -159,7 +159,6 @@ public class StateMachinePropertiesEditionComponent extends SinglePartProperties
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		StateMachine stateMachine = (StateMachine)semanticObject;
-
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			stateMachine.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}
@@ -310,6 +309,8 @@ public class StateMachinePropertiesEditionComponent extends SinglePartProperties
 		return ret;
 	}
 
+
+	
 
 	
 

@@ -54,9 +54,6 @@ import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.viewers.ViewerFilter;
-
 import org.eclipse.uml2.types.TypesPackage;
 
 import org.eclipse.uml2.uml.Behavior;
@@ -181,34 +178,8 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 			// FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : trigger, General, Transition.
 			
 			
-			if (isAccessible(UmlViewsRepository.General.source)) {
-				generalPart.addFilterToSource(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof Vertex);
-					}
-					
-				});
-			}
-			if (isAccessible(UmlViewsRepository.General.target)) {
-				generalPart.addFilterToTarget(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof Vertex);
-					}
-					
-				});
-			}
+			
+			
 			// FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : ownedRule, General, Transition.
 			// init values for referenced views
 			
@@ -275,7 +246,6 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Transition transition = (Transition)semanticObject;
-
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			transition.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}
@@ -478,6 +448,8 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 		return ret;
 	}
 
+
+	
 
 	
 

@@ -153,7 +153,6 @@ public class DataTypeAttributesPropertiesEditionComponent extends SinglePartProp
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		DataType dataType = (DataType)semanticObject;
-
 		if (UmlViewsRepository.Attributes.attributes_ == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, attributesSettings, editingContext.getAdapterFactory());
@@ -237,6 +236,8 @@ public class DataTypeAttributesPropertiesEditionComponent extends SinglePartProp
 		return ret;
 	}
 
+
+	
 
 	
 

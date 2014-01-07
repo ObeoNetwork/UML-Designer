@@ -160,6 +160,8 @@ public class ParametersPropertiesEditionPartImpl extends CompositePropertiesEdit
 		GridData parametersData = new GridData(GridData.FILL_HORIZONTAL);
 		parametersData.horizontalSpan = 3;
 		this.parameters.setLayoutData(parametersData);
+		this.parameters.setLowerBound(0);
+		this.parameters.setUpperBound(-1);
 		parameters.setID(UmlViewsRepository.Parameters.parameters_);
 		parameters.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		// Start of user code for createParametersAdvancedTableComposition

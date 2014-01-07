@@ -1201,6 +1201,53 @@ public interface GeneralPropertiesEditionPart {
 	public void addBusinessFilterToDo_(ViewerFilter filter);
 
 
+	/**
+	 * @return the submachine
+	 * @generated
+	 */
+	public EObject getSubmachine();
+
+	/**
+	 * Init the submachine
+	 * @param settings the combo setting
+	 */
+	public void initSubmachine(EObjectFlatComboSettings settings);
+
+	/**
+	 * Defines a new submachine
+	 * @param newValue the new submachine to set
+	 * @generated
+	 */
+	public void setSubmachine(EObject newValue);
+
+	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 * @generated
+	 */
+	public void setSubmachineButtonMode(ButtonsModeEnum newValue);
+
+	/**
+	 * Adds the given filter to the submachine edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addFilterToSubmachine(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the submachine edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addBusinessFilterToSubmachine(ViewerFilter filter);
+
+
 
 
 

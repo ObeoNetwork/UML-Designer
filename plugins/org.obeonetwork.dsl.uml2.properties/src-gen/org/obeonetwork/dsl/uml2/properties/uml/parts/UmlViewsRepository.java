@@ -292,6 +292,12 @@ public class UmlViewsRepository {
 	
 	public static String do_ = "uml::General::do";
 	
+	/**
+	 * @generated
+	 */
+	
+	public static String submachine = "uml::General::submachine";
+	
 	}
 
 	/**

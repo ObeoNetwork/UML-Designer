@@ -53,9 +53,6 @@ import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.viewers.ViewerFilter;
-
 import org.eclipse.uml2.types.TypesPackage;
 
 import org.eclipse.uml2.uml.Pin;
@@ -138,20 +135,7 @@ public class PinPropertiesEditionComponent extends SinglePartPropertiesEditingCo
 			
 			// FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : upperValue, General, Pin.
 			// FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : lowerValue, General, Pin.
-			if (isAccessible(UmlViewsRepository.General.type)) {
-				generalPart.addFilterToType(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof String && element.equals("")) || (element instanceof Type); //$NON-NLS-1$ 
-					}
-					
-				});
-			}
+			
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -205,7 +189,6 @@ public class PinPropertiesEditionComponent extends SinglePartPropertiesEditingCo
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Pin pin = (Pin)semanticObject;
-
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			pin.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}
@@ -349,6 +332,8 @@ public class PinPropertiesEditionComponent extends SinglePartPropertiesEditingCo
 		return ret;
 	}
 
+
+	
 
 	
 

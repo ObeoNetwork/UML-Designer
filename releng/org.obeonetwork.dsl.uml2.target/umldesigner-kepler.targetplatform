@@ -47,8 +47,8 @@ location "http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/3.4/
 	org.eclipse.acceleo.runtime.feature.group
 }
 
-// EEF 2
-location "http://download.eclipse.org/modeling/emft/eef/updates/nightly/1.2/" {
+// EEF 1.3
+location "http://download.eclipse.org/modeling/emft/eef/updates/releases/1.3/R201311221533" {
 	with source, requirements
 	org.eclipse.emf.eef.runtime
 }

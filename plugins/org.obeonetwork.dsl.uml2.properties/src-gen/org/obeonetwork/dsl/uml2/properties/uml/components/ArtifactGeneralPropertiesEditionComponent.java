@@ -145,7 +145,6 @@ public class ArtifactGeneralPropertiesEditionComponent extends SinglePartPropert
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Artifact artifact = (Artifact)semanticObject;
-
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			artifact.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}
@@ -268,6 +267,8 @@ public class ArtifactGeneralPropertiesEditionComponent extends SinglePartPropert
 		return ret;
 	}
 
+
+	
 
 	
 

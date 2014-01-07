@@ -138,7 +138,6 @@ public class OpaqueActionPropertiesEditionComponent extends SinglePartProperties
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		OpaqueAction opaqueAction = (OpaqueAction)semanticObject;
-
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			opaqueAction.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}
@@ -247,6 +246,8 @@ public class OpaqueActionPropertiesEditionComponent extends SinglePartProperties
 		return ret;
 	}
 
+
+	
 
 	
 

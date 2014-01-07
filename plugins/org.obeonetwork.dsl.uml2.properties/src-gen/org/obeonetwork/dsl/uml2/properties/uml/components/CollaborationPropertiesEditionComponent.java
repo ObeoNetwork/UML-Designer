@@ -168,7 +168,6 @@ public class CollaborationPropertiesEditionComponent extends SinglePartPropertie
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Collaboration collaboration = (Collaboration)semanticObject;
-
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			collaboration.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}
@@ -305,6 +304,8 @@ public class CollaborationPropertiesEditionComponent extends SinglePartPropertie
 		return ret;
 	}
 
+
+	
 
 	
 

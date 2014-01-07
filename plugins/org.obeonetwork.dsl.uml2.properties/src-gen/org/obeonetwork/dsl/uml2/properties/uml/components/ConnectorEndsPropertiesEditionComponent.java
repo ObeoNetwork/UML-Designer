@@ -153,7 +153,6 @@ public class ConnectorEndsPropertiesEditionComponent extends SinglePartPropertie
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Connector connector = (Connector)semanticObject;
-
 		if (UmlViewsRepository.Ends.ends_ == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, endsSettings, editingContext.getAdapterFactory());
@@ -237,6 +236,8 @@ public class ConnectorEndsPropertiesEditionComponent extends SinglePartPropertie
 		return ret;
 	}
 
+
+	
 
 	
 
