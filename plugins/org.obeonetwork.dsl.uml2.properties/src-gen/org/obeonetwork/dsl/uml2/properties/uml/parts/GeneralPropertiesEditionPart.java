@@ -555,31 +555,20 @@ public interface GeneralPropertiesEditionPart {
 	public void setKind(Enumerator newValue);
 
 
-	/**
-	 * @return the trigger
-	 * @generated
-	 */
-	public EObject getTrigger();
+
 
 	/**
 	 * Init the trigger
-	 * @param settings the combo setting
+	 * @param settings settings for the trigger ReferencesTable 
 	 */
-	public void initTrigger(EObjectFlatComboSettings settings);
+	public void initTrigger(ReferencesTableSettings settings);
 
 	/**
-	 * Defines a new trigger
-	 * @param newValue the new trigger to set
+	 * Update the trigger
+	 * @param newValue the trigger to update
 	 * @generated
 	 */
-	public void setTrigger(EObject newValue);
-
-	/**
-	 * Defines the button mode
-	 * @param newValue the new mode to set
-	 * @generated
-	 */
-	public void setTriggerButtonMode(ButtonsModeEnum newValue);
+	public void updateTrigger();
 
 	/**
 	 * Adds the given filter to the trigger edition editor.
@@ -600,6 +589,12 @@ public interface GeneralPropertiesEditionPart {
 	 * @generated
 	 */
 	public void addBusinessFilterToTrigger(ViewerFilter filter);
+
+	/**
+	 * @return true if the given element is contained inside the trigger table
+	 * @generated
+	 */
+	public boolean isContainedInTriggerTable(EObject element);
 
 
 	/**

@@ -150,11 +150,12 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	protected List<ViewerFilter> clientBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> clientFilters = new ArrayList<ViewerFilter>();
 	protected EMFComboViewer kind;
-	protected AdvancedEObjectFlatComboViewer trigger;
-	protected ViewerFilter triggerFilter;
+	protected ReferencesTable trigger;
+	protected List<ViewerFilter> triggerBusinessFilters = new ArrayList<ViewerFilter>();
+	protected List<ViewerFilter> triggerFilters = new ArrayList<ViewerFilter>();
 	protected LinkEReferenceViewer effect;
 	protected ViewerFilter effectFilter;
-	protected LinkEObjectFlatComboViewer guard;
+	protected LinkEReferenceViewer guard;
 	protected ViewerFilter guardFilter;
 	protected AdvancedEObjectFlatComboViewer source;
 	protected ViewerFilter sourceFilter;
@@ -363,13 +364,13 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
           return createKindEMFComboViewer(widgetFactory, parent);
         }
         if (key == UmlViewsRepository.General.trigger) {
-          return createTriggerFlatComboViewer(parent, widgetFactory);
+          return createTriggerReferencesTable(widgetFactory, parent);
         }
         if (key == UmlViewsRepository.General.effect) {
           return createEffectLinkEReferenceViewer(parent, widgetFactory);
         }
         if (key == UmlViewsRepository.General.guard) {
-          return createGuardLinkFlatComboViewer(parent, widgetFactory);
+          return createGuardLinkEReferenceViewer(parent, widgetFactory);
         }
         if (key == UmlViewsRepository.General.source) {
           return createSourceFlatComboViewer(parent, widgetFactory);
@@ -1625,42 +1626,88 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
   }
 
 	/**
-	 * @param parent the parent composite
-	 * @param widgetFactory factory to use to instanciante widget of the form
 	 * @generated
 	 */
-	protected Composite createTriggerFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
-    createDescription(parent, UmlViewsRepository.General.trigger, UmlMessages.GeneralPropertiesEditionPart_TriggerLabel);
-    // create callback listener
-    EObjectFlatComboViewerListener listener = new EObjectFlatComboViewerListener(){
-      public void handleSet(EObject element){
-        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.trigger, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, element)); 
+	protected Composite createTriggerReferencesTable(FormToolkit widgetFactory, Composite parent) {
+    this.trigger = new ReferencesTable(getDescription(UmlViewsRepository.General.trigger, UmlMessages.GeneralPropertiesEditionPart_TriggerLabel), new ReferencesTableListener	() {
+      public void handleAdd() { addTrigger(); }
+      public void handleEdit(EObject element) { editTrigger(element); }
+      public void handleMove(EObject element, int oldIndex, int newIndex) { moveTrigger(element, oldIndex, newIndex); }
+      public void handleRemove(EObject element) { removeFromTrigger(element); }
+      public void navigateTo(EObject element) { }
+    });
+    this.trigger.setHelpText(propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.trigger, UmlViewsRepository.FORM_KIND));
+    this.trigger.createControls(parent, widgetFactory);
+    this.trigger.addSelectionListener(new SelectionAdapter() {
+      
+      public void widgetSelected(SelectionEvent e) {
+        if (e.item != null && e.item.getData() instanceof EObject) {
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.trigger, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+        }
       }
-      public void navigateTo(EObject element){ }
-
-      public EObject handleCreate() {
-        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.trigger, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null)); 
-        return getTrigger();
-      }
-
-      public void handleEdit(EObject element) {
-        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.trigger, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element)); 
-      }
-
-    };
-    //create widget
-    trigger = new AdvancedEObjectFlatComboViewer(UmlMessages.GeneralPropertiesEditionPart_TriggerLabel, resourceSet, triggerFilter, propertiesEditionComponent.getEditingContext().getAdapterFactory(), listener);
-    trigger.createControls(parent, widgetFactory);
+      
+    });
     GridData triggerData = new GridData(GridData.FILL_HORIZONTAL);
-    trigger.setLayoutData(triggerData);
+    triggerData.horizontalSpan = 3;
+    this.trigger.setLayoutData(triggerData);
+    this.trigger.disableMove();
     trigger.setID(UmlViewsRepository.General.trigger);
-    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.trigger, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-    // Start of user code for createTriggerFlatComboViewer
+    trigger.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
+    // Start of user code for createTriggerReferencesTable
 
     // End of user code
     return parent;
   }
 
+	/**
+	 * @generated
+	 */
+	protected void addTrigger() {
+    TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(trigger.getInput(), triggerFilters, triggerBusinessFilters,
+    "trigger", propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
+      @Override
+      public void process(IStructuredSelection selection) {
+        for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
+          EObject elem = (EObject) iter.next();
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.trigger,
+            PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+        }
+        trigger.refresh();
+      }
+    };
+    dialog.open();
+  }
+
+	/**
+	 * @generated
+	 */
+	protected void moveTrigger(EObject element, int oldIndex, int newIndex) {
+    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.trigger, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+    trigger.refresh();
+  }
+
+	/**
+	 * @generated
+	 */
+	protected void removeFromTrigger(EObject element) {
+    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.trigger, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+    trigger.refresh();
+  }
+
+	/**
+	 * @generated
+	 */
+	protected void editTrigger(EObject element) {
+    EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
+    PropertiesEditingProvider provider = (PropertiesEditingProvider)adapterFactory.adapt(element, PropertiesEditingProvider.class);
+    if (provider != null) {
+      PropertiesEditingPolicy policy = provider.getPolicy(context);
+      if (policy != null) {
+        policy.execute();
+        trigger.refresh();
+      }
+    }
+  }
 
 	/**
 	 * @param parent the parent composite
@@ -1704,7 +1751,7 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	 * @param widgetFactory factory to use to instanciante widget of the form
 	 * @generated
 	 */
-	protected Composite createGuardLinkFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
+	protected Composite createGuardLinkEReferenceViewer(Composite parent, FormToolkit widgetFactory) {
     createDescription(parent, UmlViewsRepository.General.guard, UmlMessages.GeneralPropertiesEditionPart_GuardLabel);
     // create callback listener
     EObjectFlatComboViewerListener listener = new EObjectFlatComboViewerListener(){
@@ -1723,13 +1770,14 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
       }
     };
     //create widget
-    guard = new LinkEObjectFlatComboViewer(UmlMessages.GeneralPropertiesEditionPart_GuardLabel, resourceSet, guardFilter, propertiesEditionComponent.getEditingContext().getAdapterFactory(), listener);
+    guard = new LinkEReferenceViewer(UmlMessages.GeneralPropertiesEditionPart_GuardLabel, resourceSet, guardFilter, propertiesEditionComponent.getEditingContext().getAdapterFactory(), listener);
     guard.createControls(parent, widgetFactory);
     GridData guardData = new GridData(GridData.FILL_HORIZONTAL);
     guard.setLayoutData(guardData);
     guard.setID(UmlViewsRepository.General.guard);
     FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.guard, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-    // Start of user code for createGuardLinkFlatComboViewer
+
+    // Start of user code for createGuardLinkEReferenceViewer
 
     // End of user code
     return parent;
@@ -3484,66 +3532,38 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
     
   }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getTrigger()
-	 * @generated
-	 */
-	public EObject getTrigger() {
-    return trigger.getSelection();
-  }
+
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#initTrigger(EObjectFlatComboSettings)
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#initTrigger(org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings)
 	 */
-	public void initTrigger(EObjectFlatComboSettings settings) {
+	public void initTrigger(ReferencesTableSettings settings) {
+		if (current.eResource() != null && current.eResource().getResourceSet() != null)
+			this.resourceSet = current.eResource().getResourceSet();
+		ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+		trigger.setContentProvider(contentProvider);
 		trigger.setInput(settings);
-		if (current != null) {
-			trigger.setSelection(new StructuredSelection(settings.getValue()));
-		}
 		boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.trigger);
-		if (eefElementEditorReadOnlyState && trigger.isEnabled()) {
+		if (eefElementEditorReadOnlyState && trigger.getTable().isEnabled()) {
 			trigger.setEnabled(false);
 			trigger.setToolTipText(UmlMessages.General_ReadOnly);
-		} else if (!eefElementEditorReadOnlyState && !trigger.isEnabled()) {
+		} else if (!eefElementEditorReadOnlyState && !trigger.getTable().isEnabled()) {
 			trigger.setEnabled(true);
-		}	
+		}
 		
 	}
 
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#setTrigger(EObject newValue)
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#updateTrigger()
 	 * @generated
 	 */
-	public void setTrigger(EObject newValue) {
-    if (newValue != null) {
-      trigger.setSelection(new StructuredSelection(newValue));
-    } else {
-      trigger.setSelection(new StructuredSelection()); //$NON-NLS-1$
-    }
-    boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.trigger);
-    if (eefElementEditorReadOnlyState && trigger.isEnabled()) {
-      trigger.setEnabled(false);
-      trigger.setToolTipText(UmlMessages.General_ReadOnly);
-    } else if (!eefElementEditorReadOnlyState && !trigger.isEnabled()) {
-      trigger.setEnabled(true);
-    }	
-    
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#setTriggerButtonMode(ButtonsModeEnum newValue)
-	 */
-	public void setTriggerButtonMode(ButtonsModeEnum newValue) {
-		trigger.setButtonMode(newValue);
-	}
+	public void updateTrigger() {
+  trigger.refresh();
+}
 
 	/**
 	 * {@inheritDoc}
@@ -3552,7 +3572,7 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	 * @generated
 	 */
 	public void addFilterToTrigger(ViewerFilter filter) {
-    trigger.addFilter(filter);
+    triggerFilters.add(filter);
   }
 
 	/**
@@ -3562,7 +3582,17 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	 * @generated
 	 */
 	public void addBusinessFilterToTrigger(ViewerFilter filter) {
-    trigger.addBusinessRuleFilter(filter);
+    triggerBusinessFilters.add(filter);
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#isContainedInTriggerTable(EObject element)
+	 * @generated
+	 */
+	public boolean isContainedInTriggerTable(EObject element) {
+    return ((ReferencesTableSettings)trigger.getInput()).contains(element);
   }
 
 	/**

@@ -416,6 +416,10 @@
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_NAPO4F4iEeKttZbtn302Pg" name="guard" views="_metNUF4iEeKttZbtn302Pg">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Transition/guard"/>
+          <editorSetting xsi:type="eef-mapping-settings:EReferenceViewerSettings" xmi:id="_MlHsEHlJEeOG3PmnrBdBZA">
+            <model href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Namespace/ownedRule"/>
+            <filter xsi:type="eef-mapping-filters:JavaDeclarationStepFilter" xmi:id="_MlHsEXlJEeOG3PmnrBdBZA" qualifiedClass="org.obeonetwork.dsl.uml2.properties.service.EEFService" methodName="getParent" staticMethod="true"/>
+          </editorSetting>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_LyNVgF4iEeKttZbtn302Pg" name="effect" views="_jrp24F4iEeKttZbtn302Pg">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Transition/effect"/>
@@ -822,13 +826,13 @@
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_4NPrcHbAEeOwBvC6b4NfOg" name="trigger">
-          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.9"/>
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_jrp24F4iEeKttZbtn302Pg" name="effect">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.16"/>
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_metNUF4iEeKttZbtn302Pg" name="guard">
-          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.15"/>
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.16"/>
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_Ir2okF4iEeKttZbtn302Pg" name="source">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.9"/>

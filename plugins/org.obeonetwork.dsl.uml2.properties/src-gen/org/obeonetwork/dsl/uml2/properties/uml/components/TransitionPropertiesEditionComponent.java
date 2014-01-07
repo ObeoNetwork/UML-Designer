@@ -10,39 +10,41 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.components;
 
+import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.uml2.uml.Transition;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
+import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.WrappedException;
+
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.VisibilityKind;
 
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.BasicDiagnostic;
-import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.common.util.WrappedException;
-
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import org.eclipse.emf.ecore.util.Diagnostician;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
-
-import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
 
-import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext.InstanciableTypeFilter;
 
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
-import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
 
@@ -52,22 +54,16 @@ import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 
-import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
-
-import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
-
 import org.eclipse.uml2.types.TypesPackage;
 
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Constraint;
-import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.TransitionKind;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.Vertex;
 import org.eclipse.uml2.uml.VisibilityKind;
 
-import org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 
 
@@ -85,9 +81,14 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 
 	
 	/**
-	 * Settings for guard LinkEObjectFlatComboViewer
+	 * Settings for guard LinkEReferenceViewer
 	 */
 	private EObjectFlatComboSettings guardSettings;
+	
+	/**
+	 * Creation Settings for guard LinkEReferenceViewer
+	 */
+	private ReferencesTableSettings guardCreateSettings;
 	
 	/**
 	 * Settings for effect LinkEReferenceViewer
@@ -151,6 +152,7 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 			if (isAccessible(UmlViewsRepository.General.guard)) {
 				// init part
 				guardSettings = new EObjectFlatComboSettings(transition, UMLPackage.eINSTANCE.getTransition_Guard());
+				guardCreateSettings = new ReferencesTableSettings(getguardCreateSettingsSource(), UMLPackage.eINSTANCE.getNamespace_OwnedRule());
 				generalPart.initGuard(guardSettings);
 				// set the button mode
 				generalPart.setGuardButtonMode(ButtonsModeEnum.BROWSE);
@@ -282,7 +284,12 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 				}
 			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				Constraint eObject = UMLFactory.eINSTANCE.createConstraint();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, guardCreateSettings, editingContext.getAdapterFactory());
+				context.addInstanciableTypeFilter(new InstanciableTypeFilter() {
+					public boolean select(EClass instanciableType) {
+						return UMLPackage.Literals.CONSTRAINT == instanciableType;
+					}
+				});
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -290,7 +297,8 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 						policy.execute();
 					}
 				}
-				guardSettings.setToReference(eObject);
+				guardSettings.setToReference(context.getEObject());
+				((GeneralPropertiesEditionPart)editingPart).setGuard(context.getEObject());
 			}
 		}
 		if (UmlViewsRepository.General.effect == event.getAffectedEditor()) {
@@ -476,6 +484,13 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 
 	
 
+	
+	/**
+	 * @ return source setting for guardCreateSettings
+	 */
+	public EObject getguardCreateSettingsSource() {
+				return org.obeonetwork.dsl.uml2.properties.service.EEFService.getParent(semanticObject);
+	}	
 	
 
 }

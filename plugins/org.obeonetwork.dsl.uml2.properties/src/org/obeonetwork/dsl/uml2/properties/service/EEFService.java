@@ -13,6 +13,7 @@ package org.obeonetwork.dsl.uml2.properties.service;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.UMLFactory;
 
 /**
@@ -48,7 +49,10 @@ public class EEFService {
 	 *            State
 	 * @return Parent package
 	 */
-	public static org.eclipse.uml2.uml.Package getParent(EObject semanticObject) {
+	public static Element getParent(EObject semanticObject) {
+		if (semanticObject instanceof Transition) {
+			return ((Transition) semanticObject);
+		}
 		if (semanticObject instanceof Element) {
 			return ((Element) semanticObject).getNearestPackage();
 		}
