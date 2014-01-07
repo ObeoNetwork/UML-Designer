@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.services;
 
+import java.util.List;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Pseudostate;
@@ -20,6 +22,8 @@ import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.TransitionKind;
 import org.eclipse.uml2.uml.UMLFactory;
+
+import com.google.common.collect.Lists;
 
 /**
  * A set of services to handle the UML Statemachine diagram.
@@ -190,6 +194,32 @@ public class StatemachineServices {
 	 * @return True if transition is external or local
 	 */
 	public boolean isExternalTransition(Transition transition) {
-		return !transition.getKind().equals(TransitionKind.INTERNAL_LITERAL);
+		return !TransitionKind.INTERNAL_LITERAL.equals(transition.getKind());
+	}
+
+	/**
+	 * Get all internal transitions of a state.
+	 * 
+	 * @param state
+	 *            State
+	 * @return Internal transitions
+	 */
+	public List<Transition> getInternalTransitions(State state) {
+		List<Transition> result = Lists.newArrayList();
+		List<Transition> incomings = state.getIncomings();
+		if (incomings == null)
+			return result;
+
+		List<Transition> outgoings = state.getOutgoings();
+		if (outgoings == null)
+			return result;
+
+		incomings.retainAll(outgoings);
+		for (Transition transition : incomings) {
+			if (TransitionKind.INTERNAL_LITERAL.equals(transition.getKind())) {
+				result.add(transition);
+			}
+		}
+		return result;
 	}
 }

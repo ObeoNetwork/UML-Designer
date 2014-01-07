@@ -825,10 +825,10 @@
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.9"/>
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_jrp24F4iEeKttZbtn302Pg" name="effect">
-          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.9"/>
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.16"/>
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_metNUF4iEeKttZbtn302Pg" name="guard">
-          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.9"/>
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.15"/>
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_Ir2okF4iEeKttZbtn302Pg" name="source">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.9"/>

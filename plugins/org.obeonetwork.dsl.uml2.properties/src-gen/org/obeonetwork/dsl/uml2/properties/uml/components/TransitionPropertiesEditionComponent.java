@@ -54,6 +54,8 @@ import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.uml2.types.TypesPackage;
 
 import org.eclipse.uml2.uml.Behavior;
@@ -83,14 +85,19 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 
 	
 	/**
-	 * Settings for guard EObjectFlatComboViewer
+	 * Settings for guard LinkEObjectFlatComboViewer
 	 */
 	private EObjectFlatComboSettings guardSettings;
 	
 	/**
-	 * Settings for effect EObjectFlatComboViewer
+	 * Settings for effect LinkEReferenceViewer
 	 */
 	private EObjectFlatComboSettings effectSettings;
+	
+	/**
+	 * Creation Settings for effect LinkEReferenceViewer
+	 */
+	private ReferencesTableSettings effectCreateSettings;
 	
 	/**
 	 * Settings for source EObjectFlatComboViewer
@@ -264,6 +271,15 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 		if (UmlViewsRepository.General.guard == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET) {
 				guardSettings.setToReference((Constraint)event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+					if (editionPolicy != null) {
+						editionPolicy.execute();
+					}
+				}
 			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				Constraint eObject = UMLFactory.eINSTANCE.createConstraint();
 				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
@@ -280,6 +296,15 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 		if (UmlViewsRepository.General.effect == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET) {
 				effectSettings.setToReference((Behavior)event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+					if (editionPolicy != null) {
+						editionPolicy.execute();
+					}
+				}
 			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, effectSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);

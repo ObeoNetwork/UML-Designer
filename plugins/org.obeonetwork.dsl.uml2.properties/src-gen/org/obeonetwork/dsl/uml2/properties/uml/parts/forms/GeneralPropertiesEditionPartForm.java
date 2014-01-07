@@ -60,6 +60,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.HorizontalBox;
+import org.eclipse.emf.eef.runtime.ui.widgets.LinkEObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.LinkEReferenceViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
 
@@ -151,9 +152,9 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	protected EMFComboViewer kind;
 	protected AdvancedEObjectFlatComboViewer trigger;
 	protected ViewerFilter triggerFilter;
-	protected AdvancedEObjectFlatComboViewer effect;
+	protected LinkEReferenceViewer effect;
 	protected ViewerFilter effectFilter;
-	protected AdvancedEObjectFlatComboViewer guard;
+	protected LinkEObjectFlatComboViewer guard;
 	protected ViewerFilter guardFilter;
 	protected AdvancedEObjectFlatComboViewer source;
 	protected ViewerFilter sourceFilter;
@@ -365,10 +366,10 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
           return createTriggerFlatComboViewer(parent, widgetFactory);
         }
         if (key == UmlViewsRepository.General.effect) {
-          return createEffectFlatComboViewer(parent, widgetFactory);
+          return createEffectLinkEReferenceViewer(parent, widgetFactory);
         }
         if (key == UmlViewsRepository.General.guard) {
-          return createGuardFlatComboViewer(parent, widgetFactory);
+          return createGuardLinkFlatComboViewer(parent, widgetFactory);
         }
         if (key == UmlViewsRepository.General.source) {
           return createSourceFlatComboViewer(parent, widgetFactory);
@@ -1666,7 +1667,7 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	 * @param widgetFactory factory to use to instanciante widget of the form
 	 * @generated
 	 */
-	protected Composite createEffectFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
+	protected Composite createEffectLinkEReferenceViewer(Composite parent, FormToolkit widgetFactory) {
     createDescription(parent, UmlViewsRepository.General.effect, UmlMessages.GeneralPropertiesEditionPart_EffectLabel);
     // create callback listener
     EObjectFlatComboViewerListener listener = new EObjectFlatComboViewerListener(){
@@ -1683,16 +1684,15 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
       public void handleEdit(EObject element) {
         propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.effect, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element)); 
       }
-
     };
     //create widget
-    effect = new AdvancedEObjectFlatComboViewer(UmlMessages.GeneralPropertiesEditionPart_EffectLabel, resourceSet, effectFilter, propertiesEditionComponent.getEditingContext().getAdapterFactory(), listener);
+    effect = new LinkEReferenceViewer(UmlMessages.GeneralPropertiesEditionPart_EffectLabel, resourceSet, effectFilter, propertiesEditionComponent.getEditingContext().getAdapterFactory(), listener);
     effect.createControls(parent, widgetFactory);
     GridData effectData = new GridData(GridData.FILL_HORIZONTAL);
     effect.setLayoutData(effectData);
     effect.setID(UmlViewsRepository.General.effect);
     FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.effect, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-    // Start of user code for createEffectFlatComboViewer
+    // Start of user code for createEffectLinkEReferenceViewer
 
     // End of user code
     return parent;
@@ -1704,7 +1704,7 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	 * @param widgetFactory factory to use to instanciante widget of the form
 	 * @generated
 	 */
-	protected Composite createGuardFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
+	protected Composite createGuardLinkFlatComboViewer(Composite parent, FormToolkit widgetFactory) {
     createDescription(parent, UmlViewsRepository.General.guard, UmlMessages.GeneralPropertiesEditionPart_GuardLabel);
     // create callback listener
     EObjectFlatComboViewerListener listener = new EObjectFlatComboViewerListener(){
@@ -1721,16 +1721,15 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
       public void handleEdit(EObject element) {
         propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.guard, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element)); 
       }
-
     };
     //create widget
-    guard = new AdvancedEObjectFlatComboViewer(UmlMessages.GeneralPropertiesEditionPart_GuardLabel, resourceSet, guardFilter, propertiesEditionComponent.getEditingContext().getAdapterFactory(), listener);
+    guard = new LinkEObjectFlatComboViewer(UmlMessages.GeneralPropertiesEditionPart_GuardLabel, resourceSet, guardFilter, propertiesEditionComponent.getEditingContext().getAdapterFactory(), listener);
     guard.createControls(parent, widgetFactory);
     GridData guardData = new GridData(GridData.FILL_HORIZONTAL);
     guard.setLayoutData(guardData);
     guard.setID(UmlViewsRepository.General.guard);
     FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.guard, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-    // Start of user code for createGuardFlatComboViewer
+    // Start of user code for createGuardLinkFlatComboViewer
 
     // End of user code
     return parent;

@@ -57,6 +57,7 @@ import org.eclipse.emf.eef.runtime.ui.widgets.AdvancedEObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.HorizontalBox;
+import org.eclipse.emf.eef.runtime.ui.widgets.LinkEObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.LinkEReferenceViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
 
@@ -145,9 +146,9 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
 	protected EMFComboViewer kind;
 	private AdvancedEObjectFlatComboViewer trigger;
 	protected ViewerFilter triggerFilter;
-	private AdvancedEObjectFlatComboViewer effect;
+	private LinkEReferenceViewer effect;
 	protected ViewerFilter effectFilter;
-	private AdvancedEObjectFlatComboViewer guard;
+	private LinkEObjectFlatComboViewer guard;
 	protected ViewerFilter guardFilter;
 	private AdvancedEObjectFlatComboViewer source;
 	protected ViewerFilter sourceFilter;
@@ -352,10 +353,10 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
           return createTriggerAdvancedFlatComboViewer(parent);
         }
         if (key == UmlViewsRepository.General.effect) {
-          return createEffectAdvancedFlatComboViewer(parent);
+          return createEffectLinkEReferenceViewer(parent);
         }
         if (key == UmlViewsRepository.General.guard) {
-          return createGuardAdvancedFlatComboViewer(parent);
+          return createGuardLinkFlatComboViewer(parent);
         }
         if (key == UmlViewsRepository.General.source) {
           return createSourceAdvancedFlatComboViewer(parent);
@@ -1579,7 +1580,7 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
 	 * @param parent the parent composite
 	 * @generated
 	 */
-	protected Composite createEffectAdvancedFlatComboViewer(Composite parent) {
+	protected Composite createEffectLinkEReferenceViewer(Composite parent) {
     createDescription(parent, UmlViewsRepository.General.effect, UmlMessages.GeneralPropertiesEditionPart_EffectLabel);
     // create callback listener
     EObjectFlatComboViewerListener listener = new EObjectFlatComboViewerListener(){
@@ -1598,13 +1599,13 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
       }
     };
     //create widget
-    effect = new AdvancedEObjectFlatComboViewer(getDescription(UmlViewsRepository.General.effect, UmlMessages.GeneralPropertiesEditionPart_EffectLabel), resourceSet, effectFilter, propertiesEditionComponent.getEditingContext().getAdapterFactory(), listener);
+    effect = new LinkEReferenceViewer(getDescription(UmlViewsRepository.General.effect, UmlMessages.GeneralPropertiesEditionPart_EffectLabel), resourceSet, effectFilter, propertiesEditionComponent.getEditingContext().getAdapterFactory(), listener);
     effect.createControls(parent);
     GridData effectData = new GridData(GridData.FILL_HORIZONTAL);
     effect.setLayoutData(effectData);
     effect.setID(UmlViewsRepository.General.effect);
     SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.effect, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-    // Start of user code for createEffectAdvancedFlatComboViewer
+    // Start of user code for createEffectLinkEReferenceViewer
 
     // End of user code
     return parent;
@@ -1614,7 +1615,7 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
 	 * @param parent the parent composite
 	 * @generated
 	 */
-	protected Composite createGuardAdvancedFlatComboViewer(Composite parent) {
+	protected Composite createGuardLinkFlatComboViewer(Composite parent) {
     createDescription(parent, UmlViewsRepository.General.guard, UmlMessages.GeneralPropertiesEditionPart_GuardLabel);
     // create callback listener
     EObjectFlatComboViewerListener listener = new EObjectFlatComboViewerListener(){
@@ -1633,13 +1634,13 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
       }
     };
     //create widget
-    guard = new AdvancedEObjectFlatComboViewer(getDescription(UmlViewsRepository.General.guard, UmlMessages.GeneralPropertiesEditionPart_GuardLabel), resourceSet, guardFilter, propertiesEditionComponent.getEditingContext().getAdapterFactory(), listener);
+    guard = new LinkEObjectFlatComboViewer(getDescription(UmlViewsRepository.General.guard, UmlMessages.GeneralPropertiesEditionPart_GuardLabel), resourceSet, guardFilter, propertiesEditionComponent.getEditingContext().getAdapterFactory(), listener);
     guard.createControls(parent);
     GridData guardData = new GridData(GridData.FILL_HORIZONTAL);
     guard.setLayoutData(guardData);
     guard.setID(UmlViewsRepository.General.guard);
     SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.guard, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-    // Start of user code for createGuardAdvancedFlatComboViewer
+    // Start of user code for createGuardLinkFlatComboViewer
 
     // End of user code
     return parent;

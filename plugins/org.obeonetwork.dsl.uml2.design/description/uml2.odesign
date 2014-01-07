@@ -3405,6 +3405,13 @@
                   <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
                 </style>
               </subNodeMappings>
+              <subNodeMappings name="SM_InternalTransition" semanticCandidatesExpression="service:getInternalTransitions" domainClass="uml.Transition">
+                <style xsi:type="style:SquareDescription" labelExpression="[self.trigger.oclAsType(uml::Trigger).event.oclAsType(uml::Event).name+'/ '+ computeUmlLabel()/]" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+                </style>
+              </subNodeMappings>
               <style xsi:type="style:FlatContainerStyleDescription" arcWidth="25" arcHeight="25" borderSizeComputationExpression="1" labelSize="9" showIcon="false" labelExpression="service:computeUmlLabel" roundedCorner="true" backgroundStyle="Liquid">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
