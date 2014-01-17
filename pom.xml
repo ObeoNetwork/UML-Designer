@@ -40,7 +40,7 @@ Contributors:
 
     <properties>
         <tycho-version>0.18.1</tycho-version>
-        <od-site>http://update.obeo.fr/maintenance/od/6.2/kepler/update/repository/</od-site>
+        <od-site>http://update.obeo.fr/release/designer/6.2.1/kepler/update/repository/</od-site>
         <sysml-site>http://update.obeo.fr/integration/sysml/repository/</sysml-site>
     </properties>
 
