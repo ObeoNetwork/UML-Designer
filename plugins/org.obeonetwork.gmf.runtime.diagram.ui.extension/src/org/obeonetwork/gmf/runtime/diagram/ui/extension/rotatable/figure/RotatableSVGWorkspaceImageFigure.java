@@ -13,11 +13,11 @@ package org.obeonetwork.gmf.runtime.diagram.ui.extension.rotatable.figure;
 
 import java.util.Iterator;
 
+import org.eclipse.sirius.diagram.ContainerStyle;
+import org.eclipse.sirius.diagram.CustomStyle;
+import org.eclipse.sirius.diagram.DiagramFactory;
+import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SVGWorkspaceImageFigure;
-import org.eclipse.sirius.viewpoint.ContainerStyle;
-import org.eclipse.sirius.viewpoint.CustomStyle;
-import org.eclipse.sirius.viewpoint.ViewpointFactory;
-import org.eclipse.sirius.viewpoint.WorkspaceImage;
 import org.obeonetwork.gmf.runtime.diagram.ui.extension.ExtensionActivator;
 import org.obeonetwork.gmf.runtime.diagram.ui.extension.rotatable.NodeImageExtension;
 
@@ -98,7 +98,7 @@ public class RotatableSVGWorkspaceImageFigure extends SVGWorkspaceImageFigure {
 	}
 
 	private void refreshFigure() {
-		WorkspaceImage createWorkspaceImage = ViewpointFactory.eINSTANCE
+		WorkspaceImage createWorkspaceImage = DiagramFactory.eINSTANCE
 				.createWorkspaceImage();
 		createWorkspaceImage.setWorkspacePath(currentImgPath);
 		refreshFigure(createWorkspaceImage);

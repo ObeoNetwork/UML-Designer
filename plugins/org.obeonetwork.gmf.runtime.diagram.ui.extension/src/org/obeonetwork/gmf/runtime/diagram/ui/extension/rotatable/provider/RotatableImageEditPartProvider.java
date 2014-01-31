@@ -18,7 +18,7 @@ import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.diagram.ui.services.editpart.AbstractEditPartProvider;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.viewpoint.CustomStyle;
+import org.eclipse.sirius.diagram.CustomStyle;
 import org.obeonetwork.gmf.runtime.diagram.ui.extension.ExtensionActivator;
 import org.obeonetwork.gmf.runtime.diagram.ui.extension.rotatable.NodeImageExtension;
 import org.obeonetwork.gmf.runtime.diagram.ui.extension.rotatable.editPart.RotatableImageBasedOnFirstSourceConnectionEditPart;
