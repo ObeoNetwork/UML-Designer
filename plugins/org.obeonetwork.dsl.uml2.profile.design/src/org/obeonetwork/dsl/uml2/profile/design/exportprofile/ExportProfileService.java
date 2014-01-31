@@ -63,6 +63,10 @@ import org.xml.sax.SAXException;
 
 public class ExportProfileService {
 
+	String obeoNetworkPluginName = "org.obeonetwork";
+
+	String obeoNetworkURI = "http://www.obeonetwork.org/";
+
 	String profileName = "";
 
 	String defaultProfileName = "profile";
@@ -190,15 +194,17 @@ public class ExportProfileService {
 		else
 			profileName = defaultProfileName;
 
-		if (profile.getURI() != null && profile.getURI().length() != 0)
+		if (profile.getURI() != null && profile.getURI().length() != 0) {
 			rootProfileURI = profile.getURI() + separator;
-		else
-			rootProfileURI = "http://www.ObeoNetwork.com/" + profileName
-					+ separator;
+			profilePluginName = rootProfileURI.replace("http://", "").replace(
+					separator, ".")
+					+ "plugin";
+		} else {
+			rootProfileURI = obeoNetworkURI + profileName + separator;
+			profilePluginName = obeoNetworkPluginName + "." + profileName + "."
+					+ "plugin";
+		}
 
-		profilePluginName = rootProfileURI.replace("http://", "").replace(
-				separator, ".")
-				+ "plugin";
 
 		final InitProfilePluginDialog dialog = new InitProfilePluginDialog(
 				profileName, rootProfileURI,
