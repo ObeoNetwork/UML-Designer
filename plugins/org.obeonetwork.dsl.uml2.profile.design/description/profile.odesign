@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" documentation="Copyright (c) 2013 Obeo.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;&#xA;Contributors:&#xA;     Obeo - initial API and implementation" name="profile" version="7.0.0">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" documentation="Copyright (c) 2013 Obeo.&#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v1.0&#xA;which accompanies this distribution, and is available at&#xA;http://www.eclipse.org/legal/epl-v10.html&#xA;&#xA;Contributors:&#xA;     Obeo - initial API and implementation" name="profile" version="8.0.0">
   <ownedViewpoints documentation="UML Profile Editor" name="UML Profile Design" modelFileExtension="uml">
-    <ownedRepresentations xsi:type="description:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Drop%20From%20Model%20PD'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Drop%20From%20Diagram%20PD']" documentation="Representation to edit profile diagrams" name="Profile Diagram" titleExpression="[name+' UML Profile Diagram'/]" domainClass="uml.Profile" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Drop%20From%20Model%20PD'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='Drop%20From%20Diagram%20PD']" documentation="Representation to edit profile diagrams" name="Profile Diagram" titleExpression="[name+' UML Profile Diagram'/]" domainClass="uml.Profile" enablePopupBars="true">
       <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML#/"/>
       <defaultLayer name="Profile">
         <nodeMappings name="PD_ElementImport" deletionDescription="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='PD%20UML%20Element']" semanticCandidatesExpression="feature:eContents" domainClass="uml.ElementImport">
@@ -11,8 +11,8 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="PD_Extension" deletionDescription="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='PD%20UML%20Element']" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" targetMapping="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@nodeMappings[name='PD_ElementImport']" targetFinderExpression="service:self.getElementImport" sourceFinderExpression="service:self.getStereotype" domainClass="uml.Extension" useDomainElement="true" reconnections="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='PD_ReconnectExtension']">
-          <style targetArrow="InputFillClosedArrow" sizeComputationExpression="2">
+        <edgeMappings name="PD_Extension" deletionDescription="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='PD%20UML%20Element']" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" targetMapping="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@nodeMappings[name='PD_ElementImport']" targetFinderExpression="service:self.getElementImport" sourceFinderExpression="[self.getStereotype()/]" domainClass="uml.Extension" useDomainElement="true" reconnections="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='PD_ReconnectExtension']">
+          <style targetArrow="InputFillClosedArrow" sizeComputationExpression="2" routingStyle="tree">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -20,7 +20,7 @@
           </style>
         </edgeMappings>
         <edgeMappings name="PD_Generalization" deletionDescription="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='PD%20UML%20Element']" sourceMapping="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" targetMapping="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" targetFinderExpression="feature:general" sourceFinderExpression="feature:specific" domainClass="uml.Generalization" useDomainElement="true">
-          <style targetArrow="InputClosedArrow" sizeComputationExpression="2">
+          <style targetArrow="InputClosedArrow" sizeComputationExpression="2" routingStyle="tree">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -259,9 +259,9 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Package" referenceName="packagedElement">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="uml.Package" referenceName="packagedElement">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -270,9 +270,9 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Profile" referenceName="packagedElement">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="uml.Profile" referenceName="packagedElement">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -283,9 +283,9 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Stereotype" referenceName="ownedStereotype">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="uml.Stereotype" referenceName="ownedStereotype">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -294,8 +294,8 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:importMetaclass"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:importMetaclass"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -304,8 +304,8 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[deleteUMLElement(element.eContainer(uml::Profile))/]"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[deleteUMLElement(element.eContainer(uml::Profile))/]"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -314,9 +314,9 @@
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Enumeration" referenceName="packagedElement">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="uml.Enumeration" referenceName="packagedElement">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -325,9 +325,9 @@
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.PrimitiveType" referenceName="packagedElement">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="uml.PrimitiveType" referenceName="packagedElement">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -336,9 +336,9 @@
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.DataType" referenceName="packagedElement">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="uml.DataType" referenceName="packagedElement">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
@@ -350,12 +350,12 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedAttribute">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="[self.findTypeByName('String')/]"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="1"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="uml.Property" referenceName="ownedAttribute">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="type" valueExpression="[self.findTypeByName('String')/]"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="lower" valueExpression="0"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="upper" valueExpression="1"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -364,17 +364,17 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.EnumerationLiteral" referenceName="ownedLiteral">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.LiteralInteger" referenceName="specification">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="value" valueExpression="[eContainer().eContainer().eAllContents(uml::EnumerationLiteral)->size() - 1/]"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="uml.EnumerationLiteral" referenceName="ownedLiteral">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="uml.LiteralInteger" referenceName="specification">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="value" valueExpression="[eContainer().eContainer().eAllContents(uml::EnumerationLiteral)->size() - 1/]"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <reusedTools xsi:type="tool:PopupMenu" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Import%20primitive%20types']"/>
+          <reusedTools xsi:type="tool_1:PopupMenu" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Import%20primitive%20types']"/>
         </toolSections>
         <toolSections name="RelationShips">
           <ownedTools xsi:type="tool:EdgeCreationDescription" name="Extensions" precondition="service:preSource.canCreateExtension(preTarget)" edgeMappings="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Extension'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Generalization']" iconPath="/org.obeonetwork.dsl.uml2.profile.design/icons/Extensions.gif">
@@ -383,18 +383,18 @@
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:source.createExtension(target)"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:source.createExtension(target)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Create a new Association" name="Extra Association" edgeMappings="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Association']" iconPath="/org.obeonetwork.dsl.uml2.profile.design/icons/ExtraAssociation.gif">
             <sourceVariable name="source">
-              <subVariables xsi:type="tool:AcceleoVariable" name="sourceContainer" computationExpression="[source.eContainer(uml::Package)/]"/>
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="sourceContainer" computationExpression="[source.eContainer(uml::Package)/]"/>
             </sourceVariable>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:source.createExtraAssociationDialog(target,sourceContainer)"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:source.createExtraAssociationDialog(target,sourceContainer)"/>
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="PD_ReconnectExtension" precondition="service:element.canReconnectExtension(target)" forceRefresh="true" reconnectionKind="RECONNECT_BOTH">
@@ -404,55 +404,55 @@
             <targetView name="targetView"/>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:element.reconnectEdge(edgeView, sourceView, targetView, source, target)"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:element.reconnectEdge(edgeView, sourceView, targetView, source, target)"/>
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
         </toolSections>
         <toolSections name="Tools">
-          <ownedTools xsi:type="tool:ToolDescription" name="Define Profile" precondition="[self.oclIsTypeOf(uml::Profile)/]" iconPath="/org.obeonetwork.dsl.uml2.profile.design/icons/defineProfile.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Define Profile" precondition="[self.oclIsTypeOf(uml::Profile)/]" iconPath="/org.obeonetwork.dsl.uml2.profile.design/icons/defineProfile.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:defineProfileDialog"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:defineProfileDialog"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" name="Undefine Profile" precondition="[self.oclIsTypeOf(uml::Profile)/]" iconPath="/org.obeonetwork.dsl.uml2.profile.design/icons/undefineProfile.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Undefine Profile" precondition="[self.oclIsTypeOf(uml::Profile)/]" iconPath="/org.obeonetwork.dsl.uml2.profile.design/icons/undefineProfile.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:undefineProfile"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:undefineProfile"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" name="Export Profile" precondition="[self.oclIsTypeOf(uml::Profile)/]" iconPath="/org.obeonetwork.dsl.uml2.profile.design/icons/ExportProfile.gif">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="Export Profile" precondition="[self.oclIsTypeOf(uml::Profile)/]" iconPath="/org.obeonetwork.dsl.uml2.profile.design/icons/ExportProfile.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:exportProfile"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:exportProfile"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drop From Model PD" precondition="service:newContainer.isValidElementForContainerView(element,newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Profile'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Package'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" dragSource="PROJECT_EXPLORER">
+          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="Drop From Model PD" precondition="service:newContainer.isValidElementForContainerView(element,newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Profile'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Package'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" dragSource="PROJECT_EXPLORER">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:newSemanticContainer.dropFromModel(element, newContainerView)"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:newSemanticContainer.dropFromModel(element, newContainerView)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ContainerDropDescription" name="Drop From Diagram PD" precondition="service:newContainer.isValidElementForContainerView(element,newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Profile'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Package'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@nodeMappings[name='PD_ElementImport']" moveEdges="true">
+          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="Drop From Diagram PD" precondition="service:newContainer.isValidElementForContainerView(element,newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Profile'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Package'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@nodeMappings[name='PD_ElementImport']" moveEdges="true">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="element"/>
             <newViewContainer name="newContainerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:newSemanticContainer.dropFromDiagramProfileService(element, newContainerView)"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:newSemanticContainer.dropFromDiagramProfileService(element, newContainerView)"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
