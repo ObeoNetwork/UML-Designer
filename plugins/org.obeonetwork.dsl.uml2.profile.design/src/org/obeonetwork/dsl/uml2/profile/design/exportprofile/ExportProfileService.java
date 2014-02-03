@@ -40,6 +40,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.jface.dialogs.IDialogConstants;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.pde.internal.ui.PDEPlugin;
@@ -58,6 +59,7 @@ import org.obeonetwork.dsl.uml2.design.services.LogServices;
 import org.obeonetwork.dsl.uml2.profile.design.dialogs.InitProfilePluginDialog;
 import org.obeonetwork.dsl.uml2.profile.design.services.GenericUMLProfileTools;
 import org.obeonetwork.dsl.uml2.profile.design.services.UMLProfileServices;
+import org.obeonetwork.dsl.uml2.profile.design.services.ValidateUMLModel;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
@@ -93,7 +95,8 @@ public class ExportProfileService {
 
 	@SuppressWarnings("restriction")
 	public void exportProfile(final Profile rootProfile) {
-		if (initParameters(rootProfile) == IDialogConstants.OK_ID
+		if (validateProfile(rootProfile)
+				&& initParameters(rootProfile) == IDialogConstants.OK_ID
 				&& UMLProfileServices.defineAllProfiles(rootProfile)) {
 
 			final Shell activeShell = PlatformUI.getWorkbench().getDisplay()
@@ -178,6 +181,22 @@ public class ExportProfileService {
 			wd.open();
 
 		}
+	}
+
+	public boolean validateProfile(final Profile profile) {
+		final Shell activeShell = PlatformUI.getWorkbench().getDisplay()
+				.getActiveShell();
+
+		boolean result = MessageDialog
+				.openConfirm(
+						activeShell,
+						"Validate Profile",
+						"The validation of profile is recommended before exporting in order to avoid the code generation and compilation errors");
+		if (result) {
+			ValidateUMLModel umlValidator = new ValidateUMLModel();
+			umlValidator.validateUMLmodel(profile);
+		}
+		return result;
 	}
 
 	/**
