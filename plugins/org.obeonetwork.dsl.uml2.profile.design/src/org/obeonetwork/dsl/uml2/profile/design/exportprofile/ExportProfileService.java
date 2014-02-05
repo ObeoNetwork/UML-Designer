@@ -11,6 +11,7 @@
 package org.obeonetwork.dsl.uml2.profile.design.exportprofile;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -33,14 +34,20 @@ import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.codegen.ecore.genmodel.GenModel;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.edit.ui.EMFEditUIPlugin;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.jface.dialogs.ProgressMonitorDialog;
+import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.pde.internal.ui.PDEPlugin;
@@ -59,7 +66,8 @@ import org.obeonetwork.dsl.uml2.design.services.LogServices;
 import org.obeonetwork.dsl.uml2.profile.design.dialogs.InitProfilePluginDialog;
 import org.obeonetwork.dsl.uml2.profile.design.services.GenericUMLProfileTools;
 import org.obeonetwork.dsl.uml2.profile.design.services.UMLProfileServices;
-import org.obeonetwork.dsl.uml2.profile.design.services.ValidateUMLModel;
+import org.obeonetwork.dsl.uml2.profile.design.services.ValidateEmfElement;
+import org.obeonetwork.dsl.uml2.profile.design.services.ValidateUMLElement;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
@@ -95,108 +103,198 @@ public class ExportProfileService {
 
 	@SuppressWarnings("restriction")
 	public void exportProfile(final Profile rootProfile) {
-		if (validateProfile(rootProfile)
-				&& initParameters(rootProfile) == IDialogConstants.OK_ID
-				&& UMLProfileServices.defineAllProfiles(rootProfile)) {
-
-			final Shell activeShell = PlatformUI.getWorkbench().getDisplay()
-					.getActiveShell();
-			NewPluginProject newPluginProject = new NewPluginProject();
-			final IProject profilePlugin = newPluginProject
-					.createPluginProject(
-							profilePluginName,
-					new ArrayList<String>(Arrays.asList("src")), new ArrayList<IProject>(),
-					new HashSet<String>(),
-					new ArrayList<String>(Arrays.asList("org.eclipse.ui", "org.eclipse.core.runtime")),
-					new NullProgressMonitor(), activeShell);
-
-			// the following code is OK.
-			final IFolder modelFolder = profilePlugin.getFolder("model");
-			try {
-				modelFolder.create(false, true, null);
-			} catch (CoreException e) {
-				new LogServices().error(
-						"exportProfile(" + rootProfile.getClass()
-								+ ") not handled", e);
-			}
-
-			// make a copy of the profile into the new plug-in used for the creation of static profile
-			final IFile profileCopyIFile = modelFolder.getFile(profileName
-					+ "." + UMLResource.FILE_EXTENSION);
-
-			final IFile rootProfileIFile = GenericUMLProfileTools
-					.resourceToIFile(rootProfile.eResource());
-			try {
-				rootProfileIFile.copy(profileCopyIFile.getFullPath(), true, new NullProgressMonitor());
-			} catch (final CoreException e) {
-				new LogServices().error(
-						"exportProfile(" + rootProfile.getClass()
-								+ ") not handled", e);
-			}
-
-			final Resource profileCopyResource = new ResourceSetImpl()
-					.createResource(URI
-					.createURI(profileCopyIFile.getFullPath().toString()));
-
-			final Profile profileCopy = (Profile) GenericUMLProfileTools
-					.load(profileCopyResource.getURI());
-
-			initEPackageStereotype(profileCopy);
-
-			final UmlToEcore umlToEcore = new UmlToEcore();
-			final Resource profileEcoreResource = umlToEcore
-					.umlToEcore(profileCopy);
-
-			final EcoreToGenmodel ecoreToGenmodel = new EcoreToGenmodel();
-			final GenModel genModel = ecoreToGenmodel
-					.ecoreToGenmodel(profileEcoreResource);
-
-			final GenerateModelCode generateModelCode = new GenerateModelCode();
-			generateModelCode.generateModelCode(genModel);
-
-			addProfileExtensions(profilePlugin, modelFolder, profileCopy);
-
-			// the following code is OK.
-			// IFolder targetBuild = profilePlugin.getFolder("targetBuild");
-			// try {
-			// targetBuild.create(false, true, null);
-			// } catch (CoreException e) {
-			// e.printStackTrace();
-			// }
-			try {
-				profilePlugin.build(IncrementalProjectBuilder.FULL_BUILD, new NullProgressMonitor());
-			} catch (final CoreException e) {
-				new LogServices().error(
-						"exportProfile(" + rootProfile.getClass()
-								+ ") not handled", e);
-			}
-			final IWorkbenchWizard wizard = new PluginExportWizard();
-
-			final StructuredSelection selection = new StructuredSelection(
-					profilePlugin);
-			wizard.init(PlatformUI.getWorkbench(), selection);
-			final WizardDialog wd = new ResizableWizardDialog(
-					PDEPlugin.getActiveWorkbenchShell(), wizard);
-			wd.create();
-			wd.open();
-
-		}
-	}
-
-	public boolean validateProfile(final Profile profile) {
 		final Shell activeShell = PlatformUI.getWorkbench().getDisplay()
 				.getActiveShell();
 
-		boolean result = MessageDialog
+		boolean canValidateProfile = MessageDialog
 				.openConfirm(
 						activeShell,
 						"Validate Profile",
-						"The validation of profile is recommended before exporting in order to avoid the code generation and compilation errors");
-		if (result) {
-			ValidateUMLModel umlValidator = new ValidateUMLModel();
-			umlValidator.validateUMLmodel(profile);
+						"The validation of profile is necessary before exporting in order to avoid the code generation and compilation errors");
+
+		if (canValidateProfile) {
+			if (validateUmlElementWithProgress(rootProfile)) {
+
+				if (initParameters(rootProfile) == IDialogConstants.OK_ID
+						&& UMLProfileServices.defineAllProfiles(rootProfile)) {
+					final IProject profilePlugin = createPluginProjectWithProgress(profilePluginName);
+
+					// the following code is OK.
+					final IFolder modelFolder = profilePlugin
+							.getFolder("model");
+					try {
+						modelFolder.create(false, true, null);
+					} catch (CoreException e) {
+						new LogServices().error(
+								"exportProfile(" + rootProfile.getClass()
+										+ ") not handled", e);
+					}
+
+					// make a copy of the profile into the new plug-in used for
+					// the
+					// creation of static profile
+					final IFile profileCopyIFile = modelFolder
+							.getFile(profileName + "."
+									+ UMLResource.FILE_EXTENSION);
+
+					final IFile rootProfileIFile = GenericUMLProfileTools
+							.resourceToIFile(rootProfile.eResource());
+					try {
+						rootProfileIFile.copy(profileCopyIFile.getFullPath(),
+								true, new NullProgressMonitor());
+					} catch (final CoreException e) {
+						new LogServices().error(
+								"exportProfile(" + rootProfile.getClass()
+										+ ") not handled", e);
+					}
+
+					final Resource profileCopyResource = new ResourceSetImpl()
+							.createResource(URI.createURI(profileCopyIFile
+									.getFullPath().toString()));
+
+					final Profile profileCopy = (Profile) GenericUMLProfileTools
+							.load(profileCopyResource.getURI());
+
+					initEPackageStereotype(profileCopy);
+
+					final UmlToEcore umlToEcore = new UmlToEcore();
+					final Resource profileEcoreResource = umlToEcore
+							.umlToEcore(profileCopy);
+
+					if (validateEObjectWithProgress(profileEcoreResource
+							.getContents().get(0))) {
+
+						final EcoreToGenmodel ecoreToGenmodel = new EcoreToGenmodel();
+						final GenModel genModel = ecoreToGenmodel
+								.ecoreToGenmodel(profileEcoreResource);
+
+						final GenerateModelCode generateModelCode = new GenerateModelCode();
+						generateModelCode.generateModelCode(genModel);
+
+						addProfileExtensions(profilePlugin, modelFolder,
+								profileCopy);
+
+						// the following code is OK.
+						// IFolder targetBuild =
+						// profilePlugin.getFolder("targetBuild");
+						// try {
+						// targetBuild.create(false, true, null);
+						// } catch (CoreException e) {
+						// e.printStackTrace();
+						// }
+						try {
+							profilePlugin.build(
+									IncrementalProjectBuilder.FULL_BUILD,
+									new NullProgressMonitor());
+						} catch (final CoreException e) {
+							new LogServices().error("exportProfile("
+									+ rootProfile.getClass() + ") not handled",
+									e);
+						}
+						final IWorkbenchWizard wizard = new PluginExportWizard();
+
+						final StructuredSelection selection = new StructuredSelection(
+								profilePlugin);
+						wizard.init(PlatformUI.getWorkbench(), selection);
+						final WizardDialog wd = new ResizableWizardDialog(
+								PDEPlugin.getActiveWorkbenchShell(), wizard);
+						wd.create();
+						wd.open();
+					} else {
+						MessageDialog
+								.openError(activeShell, "Exportation error",
+										"Due to the error, the exportation will be stopped.");
+					}
+
+				} else {
+					MessageDialog.openInformation(activeShell,
+							"Exportation canceled",
+							"Exportation canceled by user.");
+				}
+			} else {
+				MessageDialog.openError(activeShell, "Exportation error",
+						"Due to the error, the exportation will be stopped.");
+			}
+		} else {
+			MessageDialog
+					.openError(activeShell, "Exportation error",
+							"Cannot proceed to exportation without profile validation.");
 		}
-		return result;
+	}
+
+	/**
+	 * Create a new plug-in project with progress bar. see
+	 * {@link createPluginProject}
+	 * 
+	 * @param pluginName
+	 * @return
+	 */
+	public IProject createPluginProjectWithProgress(final String pluginName) {
+		final Shell shell = PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow().getShell();
+		final NewPluginProject newPluginProject = new NewPluginProject();
+		final IProject[] profilePlugin = new IProject[1];
+
+		IRunnableWithProgress validationRunnable = new IRunnableWithProgress() {
+			public void run(final IProgressMonitor progressMonitor)
+					throws InvocationTargetException, InterruptedException {
+				try {
+					profilePlugin[0] = newPluginProject.createPluginProject(
+							pluginName,
+							new ArrayList<String>(Arrays.asList("src")),
+							new ArrayList<IProject>(),
+							new HashSet<String>(),
+							new ArrayList<String>(Arrays.asList(
+									"org.eclipse.ui",
+									"org.eclipse.core.runtime")),
+							new NullProgressMonitor(), shell);
+
+				} finally {
+					progressMonitor.done();
+				}
+			}
+		};
+
+		try {
+			new ProgressMonitorDialog(shell)
+					.run(true, true, validationRunnable);
+		} catch (Exception exception) {
+			EMFEditUIPlugin.INSTANCE.log(exception);
+		}
+
+		return profilePlugin[0];
+	}
+
+	/**
+	 * Validate an UML Element using the UML validator.
+	 * 
+	 * @param element
+	 *            the EObject
+	 * @return true if no error or warning in the EObject otherwise return
+	 *         false.
+	 */
+	public boolean validateUmlElementWithProgress(final Element element) {
+		ValidateUMLElement umlValidator = new ValidateUMLElement();
+		umlValidator.validateUMLmodel(element);
+		return umlValidator.getDiagnisticResult();
+	}
+
+	/**
+	 * Validate an EObject using the emf validator.
+	 * 
+	 * @param eObject
+	 *            the EObject
+	 * @return true if no error or warning in the EObject otherwise return
+	 *         false.
+	 */
+	public boolean validateEObjectWithProgress(final EObject eObject) {
+		ValidateEmfElement validateAction = new ValidateEmfElement();
+		IStructuredSelection selection = new StructuredSelection(eObject);
+		validateAction.updateSelection(selection);
+		validateAction.setActiveWorkbenchPart(PlatformUI.getWorkbench()
+				.getActiveWorkbenchWindow().getActivePage().getActiveEditor());
+		validateAction.run();
+		return validateAction.getDiagnisticResult();
 	}
 
 	/**
@@ -224,10 +322,8 @@ public class ExportProfileService {
 					+ "plugin";
 		}
 
-
 		final InitProfilePluginDialog dialog = new InitProfilePluginDialog(
-				profileName, rootProfileURI,
-				profilePluginName);
+				profileName, rootProfileURI, profilePluginName);
 
 		dialog.open();
 		if (dialog.getReturnCode() == IDialogConstants.OK_ID) {
@@ -273,9 +369,12 @@ public class ExportProfileService {
 				final Package ownedPackage = (Package) ownedPackageElement;
 				ownedPackage.applyStereotype(ePackage);
 				if (ownedPackage.getName() != null) {
-					ownedPackage.setValue(ePackage, "packageName", ownedPackage.getName());
-					ownedPackage.setValue(ePackage, "nsPrefix", ownedPackage.getName());
-					ownedPackage.setValue(ePackage, "prefix", ownedPackage.getName());
+					ownedPackage.setValue(ePackage, "packageName",
+							ownedPackage.getName());
+					ownedPackage.setValue(ePackage, "nsPrefix",
+							ownedPackage.getName());
+					ownedPackage.setValue(ePackage, "prefix",
+							ownedPackage.getName());
 				}
 				if (ownedPackage.getURI() != null
 						&& profile.getURI().length() != 0)
@@ -322,8 +421,7 @@ public class ExportProfileService {
 		} catch (final SAXException e) {
 			new LogServices().error(exceptionMsg, e);
 		} catch (final IOException e) {
-			new LogServices().error(
-exceptionMsg, e);
+			new LogServices().error(exceptionMsg, e);
 		} catch (final Exception e) {
 			throw new RuntimeException(e);
 		}
@@ -338,8 +436,7 @@ exceptionMsg, e);
 			org.w3c.dom.Element profile = document
 					.createElement(defaultProfileName);
 			profile.setAttribute("location", platformPlugin
-					+ profileCopy.eResource().getURI() + "#"
-					+ xmiIdProfileCopy);
+					+ profileCopy.eResource().getURI() + "#" + xmiIdProfileCopy);
 			profile.setAttribute("uri", profileCopy.getURI());
 			extensionForGeneratedPackage.appendChild(profile);
 			racine.appendChild(extensionForGeneratedPackage);
@@ -357,8 +454,8 @@ exceptionMsg, e);
 							"org.eclipse.uml2.uml.generated_package");
 					profile = document.createElement(defaultProfileName);
 					profile.setAttribute("location", platformPlugin
-							+ ownedProfile.eResource().getURI()
-							+ "#" + xmiIdownedPackage);
+							+ ownedProfile.eResource().getURI() + "#"
+							+ xmiIdownedPackage);
 					profile.setAttribute("uri", ownedProfile.getURI());
 					extensionForGeneratedPackage.appendChild(profile);
 					racine.appendChild(extensionForGeneratedPackage);
@@ -407,10 +504,12 @@ exceptionMsg, e);
 	 */
 	public String computeURI(final NamedElement element) {
 		String uri = null;
-		if (element.getOwner() == null && element.getNearestPackage().getURI() != null
+		if (element.getOwner() == null
+				&& element.getNearestPackage().getURI() != null
 				&& element.getNearestPackage().getURI().length() != 0)
 			uri = element.getNearestPackage().getURI();
-		else if (element.getOwner() != null && element.getOwner().getNearestPackage() != null
+		else if (element.getOwner() != null
+				&& element.getOwner().getNearestPackage() != null
 				&& element.getOwner().getNearestPackage().getURI() != null)
 			uri = element.getOwner().getNearestPackage().getURI()
 					+ element.getName() + separator;
