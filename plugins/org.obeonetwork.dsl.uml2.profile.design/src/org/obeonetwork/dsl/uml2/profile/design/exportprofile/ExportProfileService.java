@@ -73,27 +73,27 @@ import org.xml.sax.SAXException;
 
 public class ExportProfileService {
 
-	String obeoNetworkPluginName = "org.obeonetwork";
+	String obeoNetworkPluginName = new String("org.obeonetwork");
 
-	String obeoNetworkURI = "http://www.obeonetwork.org/";
+	String obeoNetworkURI = new String("http://www.obeonetwork.org/");
 
-	String profileName = "";
+	String profileName = new String();
 
-	String defaultProfileName = "profile";
+	String defaultProfileName = new String("profile");
 
-	String profilePluginName = "";
+	String profilePluginName = new String();
 
-	String rootProfileURI = "";
+	String rootProfileURI = new String();
 
-	String separator = "/";
+	String separator = new String("/");
 
-	String nsURI = "nsURI";
+	String nsURI = new String("nsURI");
 
-	String extension = "extension";
+	String extension = new String("extension");
 
-	String point = "point";
+	String point = new String("point");
 
-	String platformPlugin = "platform:/plugin";
+	String platformPlugin = new String("platform:/plugin");
 
 	/**
 	 * Create an instance of this class.

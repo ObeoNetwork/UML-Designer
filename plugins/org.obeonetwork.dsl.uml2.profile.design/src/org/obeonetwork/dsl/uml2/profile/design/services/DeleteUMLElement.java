@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.Extension;
+import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
@@ -33,6 +34,16 @@ public class DeleteUMLElement {
 	 */
 	public DeleteUMLElement() {
 		super();
+	}
+
+	/**
+	 * Delete an UML Package.
+	 * 
+	 * @param package_
+	 *            the package
+	 */
+	public void deleteUMLPackage(final Package package_) {
+		EcoreUtil.delete(package_, true);
 	}
 
 	/**
