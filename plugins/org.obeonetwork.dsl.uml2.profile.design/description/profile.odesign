@@ -395,7 +395,18 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:source.createExtension(target)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Create a new Association" name="Extra Association" edgeMappings="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Association']" iconPath="/org.obeonetwork.dsl.uml2.profile.design/icons/ExtraAssociation.gif">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Create a new Association" name="Association" edgeMappings="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Association']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Association.gif">
+            <sourceVariable name="source">
+              <subVariables xsi:type="tool_1:AcceleoVariable" name="sourceContainer" computationExpression="[source.eContainer(uml::Package)/]"/>
+            </sourceVariable>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:source.createAssociation(target)"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" documentation="Create a new Association" name="Extend existing RelationShip" edgeMappings="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Association']" iconPath="/org.obeonetwork.dsl.uml2.profile.design/icons/ExtraAssociation.gif">
             <sourceVariable name="source">
               <subVariables xsi:type="tool_1:AcceleoVariable" name="sourceContainer" computationExpression="[source.eContainer(uml::Package)/]"/>
             </sourceVariable>

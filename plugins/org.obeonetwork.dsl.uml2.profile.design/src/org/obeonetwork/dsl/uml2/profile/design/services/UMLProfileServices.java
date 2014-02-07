@@ -433,14 +433,9 @@ public class UMLProfileServices {
 		if (dialog.getResult() != null) {
 			if (targetElement instanceof Stereotype) {
 				final Stereotype stereotypeTarget = (Stereotype) targetElement;
-				if (dialog.isExtraAssociation()) {
 					createExtraAssociation(stereotypeSource, stereotypeTarget,
 							dialog.getAssociationName(), dialog.getResult(),
 							profile);
-				} else {
-					createAssociation(stereotypeSource, stereotypeTarget,
-							dialog.getAssociationName());
-				}
 			}
 		}
 	}
@@ -527,6 +522,20 @@ public class UMLProfileServices {
 		return association;
 	}
 
+	/**
+	 * Create an UML Association between the stereotypes source and target.
+	 * 
+	 * @param stereotypeSource
+	 *            stereotype source.
+	 * @param stereotypeTarget
+	 *            stereotype target.
+	 * @return the created association.
+	 */
+	public Association createAssociation(final Stereotype stereotypeSource,
+			final Stereotype stereotypeTarget) {
+		return createAssociation(stereotypeSource, stereotypeTarget,
+				stereotypeSource.getName() + "To" + stereotypeTarget.getName());
+	}
 	/**
 	 * Create an UML Extension between the stereotype source and the target
 	 * element.
