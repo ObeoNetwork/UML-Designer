@@ -28,6 +28,7 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IMenuManager;
+import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.IStyledLabelProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -41,11 +42,13 @@ import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.FilteredItemsSelectionDialog;
@@ -124,6 +127,16 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 	private String superClassName = "";
 
 	/**
+	 * The header message composite of the Dialog.
+	 */
+	private Composite compositeHeaderMessage;
+
+	/**
+	 * The header message of the Dialog.
+	 */
+	private String headerMessageText = "Message.";
+
+	/**
 	 * resource set .
 	 */
 	private final ResourceSet resourceSet = new ResourceSetImpl();
@@ -149,6 +162,30 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 	private final Action showOnlyConcreteMetaclassAction = new ShowOnlyConcreteMetaclassAction();
 
 	private final ILabelProviderForMetaclass labelProviderForMetaclass = new ILabelProviderForMetaclass();
+
+	/**
+	 * @return
+	 */
+	public Composite getCompositeHeaderMessage() {
+		return compositeHeaderMessage;
+	}
+
+
+	/**
+	 * @return the header message.
+	 */
+	public String getHeaderMessageText() {
+		return headerMessageText;
+	}
+
+	/**
+	 * Set the header message.
+	 * 
+	 * @param headerMessage
+	 */
+	public void setHeaderMessageText(String headerMessage) {
+		this.headerMessageText = headerMessage;
+	}
 
 	/**
 	 * create an instance of this class.
@@ -183,6 +220,34 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 		setInitialPattern("?");
 		setListLabelProvider(labelProviderForMetaclass);
 		// setSelectionHistory(new ResourceSelectionHistory());
+	}
+
+	@Override
+	protected Control createDialogArea(final Composite parent) {
+
+		compositeHeaderMessage = new Composite(parent, SWT.NONE);
+
+		GridLayout layout = new GridLayout(1, false);
+		layout.marginHeight = convertVerticalDLUsToPixels(IDialogConstants.VERTICAL_MARGIN);
+		layout.marginWidth = convertHorizontalDLUsToPixels(IDialogConstants.HORIZONTAL_MARGIN);
+		layout.verticalSpacing = convertVerticalDLUsToPixels(IDialogConstants.VERTICAL_SPACING);
+		layout.horizontalSpacing = convertHorizontalDLUsToPixels(IDialogConstants.HORIZONTAL_SPACING);
+
+		compositeHeaderMessage.setLayout(layout);
+		Label headerMessage = new Label(compositeHeaderMessage, SWT.NONE);
+
+		headerMessage.setText(headerMessageText);
+		GridData gridData = new GridData();
+		gridData.horizontalAlignment = GridData.FILL;
+		gridData.horizontalSpan = 2;
+		headerMessage.setLayoutData(gridData);
+
+		final Control dialogArea = super.createDialogArea(parent);
+		dialogArea.setEnabled(true);
+		parent.getParent().getShell().setMinimumSize(600, 700);
+		applyFilter();
+
+		return dialogArea;
 	}
 
 	@Override

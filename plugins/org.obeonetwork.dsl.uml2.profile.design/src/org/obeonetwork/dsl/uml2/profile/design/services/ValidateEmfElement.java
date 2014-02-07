@@ -10,34 +10,34 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.profile.design.services;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.uml2.uml.editor.presentation.UMLActionBarContributor;
+import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.edit.ui.action.ValidateAction;
 
 /**
- * Used to invoke UML validator from UMLActionBarContributor.
+ * Used to invoke EMF validator.
  * 
  * @author Mohamed-Lamine BOUKHANOUFA <a
  *         href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
  *         >mohamed-lamine.boukhanoufa@obeo.fr</a>
  */
-public class ValidateUMLModel extends UMLActionBarContributor {
+public class ValidateEmfElement extends ValidateAction {
+	boolean diagnosticResult = false;
 
 	/**
 	 * 
 	 */
-	public ValidateUMLModel() {
+	public ValidateEmfElement() {
+		// TODO Auto-generated constructor stub
 	}
 
-	public void validateUMLmodel(EObject model) {
-		model.eResource();
-		IStructuredSelection selection = new StructuredSelection(model);
-		validateAction.updateSelection(selection);
-		validateAction.setActiveWorkbenchPart(PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow().getActivePage().getActiveEditor());
-		validateAction.run();
+	@Override
+	protected void handleDiagnostic(Diagnostic diagnostic) {
+		// TODO Auto-generated method stub
+		super.handleDiagnostic(diagnostic);
+		diagnosticResult = diagnostic.getSeverity() == Diagnostic.OK;
+	}
+
+	public boolean getDiagnisticResult() {
+		return diagnosticResult;
 	}
 }
-

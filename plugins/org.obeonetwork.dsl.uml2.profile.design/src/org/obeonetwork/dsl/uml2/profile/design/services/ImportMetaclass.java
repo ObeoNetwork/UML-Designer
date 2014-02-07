@@ -44,6 +44,7 @@ public class ImportMetaclass {
 		final ImportMetaclassDialog dialog = new ImportMetaclassDialog(
 				PlatformUI.getWorkbench().getDisplay().getActiveShell(),
 				profile, true);
+		dialog.setHeaderMessageText("Select the UML Metaclasses to import.");
 		dialog.open();
 
 		if (dialog.getResult() != null) {

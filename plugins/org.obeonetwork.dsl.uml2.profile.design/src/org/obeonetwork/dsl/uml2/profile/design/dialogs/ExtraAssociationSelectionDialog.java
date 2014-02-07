@@ -17,12 +17,9 @@ import java.util.List;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
-import org.eclipse.swt.events.SelectionEvent;
-import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
@@ -52,11 +49,6 @@ import org.obeonetwork.dsl.uml2.profile.design.services.UMLServices;
 public class ExtraAssociationSelectionDialog extends ImportMetaclassDialog {
 
 	/**
-	 * Boolean to test if the ExtraAssociation is selected.
-	 */
-	private boolean isExtraAssociation;
-
-	/**
 	 * The source of the association.
 	 */
 	private final Element source;
@@ -76,11 +68,6 @@ public class ExtraAssociationSelectionDialog extends ImportMetaclassDialog {
 	 * source and target.
 	 */
 	private final ArrayList<EObject> possibleMetaClassRelationShip;
-
-	/**
-	 * a check button to active the extra association creation.
-	 */
-	private Button checkButtonExtraAsso;
 
 	/**
 	 * A constructor for this class.
@@ -118,10 +105,9 @@ public class ExtraAssociationSelectionDialog extends ImportMetaclassDialog {
 			final Profile profile, final Element source, final Element target,
 			final boolean multi) {
 		super(shell, profile, multi);
-		isExtraAssociation = false; // default value
 		this.source = source;
 		this.target = target;
-		setTitle("Create an association or an extra association");
+		setTitle("Extend existing RelationShip");
 		refresh();
 		possibleMetaClassRelationShip = (ArrayList<EObject>) getAllPossibleMetaclassRelationShip(
 				(Class) source, (Class) target);
@@ -136,31 +122,25 @@ public class ExtraAssociationSelectionDialog extends ImportMetaclassDialog {
 		return associationName;
 	}
 
-	/**
-	 * return the state of the variable isExtraAssociation.
-	 * 
-	 * @return true if the extra association will be created, else return false.
-	 */
-	public final boolean isExtraAssociation() {
-		return isExtraAssociation;
-	}
-
 	@Override
 	protected Control createDialogArea(final Composite parent) {
-		final GridData gd = new GridData(GridData.FILL_HORIZONTAL);
+		this.setHeaderMessageText("Give a name to the stereotype and select the relationship metaclass that will be extended by this stereotype.");
+		Composite dialogArea = (Composite) super.createDialogArea(parent);
 
-		final Composite composite = new Composite(parent, SWT.NONE);
-		final GridLayout layout = new GridLayout();
-		layout.marginHeight = convertVerticalDLUsToPixels(IDialogConstants.VERTICAL_MARGIN);
-		layout.marginWidth = convertHorizontalDLUsToPixels(IDialogConstants.HORIZONTAL_MARGIN);
-		layout.verticalSpacing = convertVerticalDLUsToPixels(IDialogConstants.VERTICAL_SPACING);
-		layout.horizontalSpacing = convertHorizontalDLUsToPixels(IDialogConstants.HORIZONTAL_SPACING);
-		composite.setLayout(layout);
-		// composite.setLayoutData(new GridData(GridData.FILL_BOTH));
+		Composite compositeHeaderMessage = this.getCompositeHeaderMessage();
 
-		final Label headerLabelAssociationName = new Label(composite, SWT.NONE);
-		headerLabelAssociationName.setText("Association name:");
-		final Text associationNameMessage = new Text(composite, SWT.SEARCH);
+		GridLayout layout = (GridLayout) compositeHeaderMessage.getLayout();
+		layout.numColumns = 2;
+
+		compositeHeaderMessage.setLayout(layout);
+
+		final Label headerLabelAssociationName = new Label(
+				compositeHeaderMessage, SWT.NONE);
+
+		headerLabelAssociationName.setText("Stereotype name:");
+
+		final Text associationNameMessage = new Text(compositeHeaderMessage,
+				SWT.SEARCH);
 		associationNameMessage.addModifyListener(new ModifyListener() {
 			public void modifyText(final ModifyEvent e) {
 				if (e != null) {
@@ -177,31 +157,15 @@ public class ExtraAssociationSelectionDialog extends ImportMetaclassDialog {
 				}
 			}
 		});
+		GridData gridData = new GridData();
+		gridData.horizontalAlignment = SWT.FILL;
+		gridData.grabExcessHorizontalSpace = true;
+		associationNameMessage.setLayoutData(gridData);
+		compositeHeaderMessage.setLayoutData(gridData);
 
 		associationNameMessage.setText(basicAssociationName(source, target));
-		associationNameMessage.setLayoutData(gd);
-
-		checkButtonExtraAsso = new Button(composite, SWT.CHECK);
-		checkButtonExtraAsso.setText("Create an extra association"); //$NON-NLS-1$
-		checkButtonExtraAsso.addSelectionListener(new SelectionListener() {
-			public void widgetDefaultSelected(final SelectionEvent e) {
-			}
-
-			public void widgetSelected(final SelectionEvent e) {
-				if (isExtraAssociation != ((Button) e.widget).getSelection()) {
-					isExtraAssociation = ((Button) e.widget).getSelection();
-					getDialogArea().setEnabled(isExtraAssociation);
-					final Button okButton = getOkButton();
-					okButton.setEnabled(!isExtraAssociation);
-					applyFilter();
-				}
-			}
-		});
-		final Control dialogArea = super.createDialogArea(parent);
-		checkButtonExtraAsso.setSelection(isExtraAssociation);
-		dialogArea.setEnabled(isExtraAssociation);
+		parent.getParent().getShell().setMinimumSize(710, 700);
 		applyFilter();
-
 		return dialogArea;
 	}
 
@@ -240,7 +204,7 @@ public class ExtraAssociationSelectionDialog extends ImportMetaclassDialog {
 			progressMonitor.beginTask(
 					"Searching", possibleMetaClassRelationShip.size()); //$NON-NLS-1$
 			for (final Iterator<EObject> iter = possibleMetaClassRelationShip
-					.iterator(); iter.hasNext(); ) {
+					.iterator(); iter.hasNext();) {
 				contentProvider.add(iter.next(), itemsFilter);
 				progressMonitor.worked(1);
 			}

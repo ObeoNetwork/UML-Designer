@@ -31,6 +31,7 @@ import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.ExtensionEnd;
 import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Property;
@@ -432,14 +433,9 @@ public class UMLProfileServices {
 		if (dialog.getResult() != null) {
 			if (targetElement instanceof Stereotype) {
 				final Stereotype stereotypeTarget = (Stereotype) targetElement;
-				if (dialog.isExtraAssociation()) {
 					createExtraAssociation(stereotypeSource, stereotypeTarget,
 							dialog.getAssociationName(), dialog.getResult(),
 							profile);
-				} else {
-					createAssociation(stereotypeSource, stereotypeTarget,
-							dialog.getAssociationName());
-				}
 			}
 		}
 	}
@@ -526,6 +522,20 @@ public class UMLProfileServices {
 		return association;
 	}
 
+	/**
+	 * Create an UML Association between the stereotypes source and target.
+	 * 
+	 * @param stereotypeSource
+	 *            stereotype source.
+	 * @param stereotypeTarget
+	 *            stereotype target.
+	 * @return the created association.
+	 */
+	public Association createAssociation(final Stereotype stereotypeSource,
+			final Stereotype stereotypeTarget) {
+		return createAssociation(stereotypeSource, stereotypeTarget,
+				stereotypeSource.getName() + "To" + stereotypeTarget.getName());
+	}
 	/**
 	 * Create an UML Extension between the stereotype source and the target
 	 * element.
@@ -625,6 +635,85 @@ public class UMLProfileServices {
 		}
 
 		return extension;
+	}
+
+	/**
+	 * Create a new {@link Stereotype} in the profile.
+	 * 
+	 * @param profile
+	 *            the profile.
+	 * @return a new stereotype.
+	 */
+	public Stereotype createStereotype(Profile profile) {
+		Stereotype newStereotype = UMLFactory.eINSTANCE.createStereotype();
+		profile.getOwnedStereotypes().add(newStereotype);
+		return newStereotype;
+	}
+
+	/**
+	 * Create a new {@link Stereotype} in the profile that directly or
+	 * indirectly contains the package_ in parameter.
+	 * 
+	 * @param package_
+	 *            the package_.
+	 * @return a new stereotype.
+	 */
+	public Stereotype createStereotype(Package package_) {
+		Stereotype newStereotype = UMLFactory.eINSTANCE.createStereotype();
+		package_.getOwnedStereotypes().add(
+					newStereotype);
+		return newStereotype;
+	}
+
+	/**
+	 * Create a new {@link Stereotype} in the profile that directly or
+	 * indirectly contains the stereotype in parameter and create a
+	 * generalization to this stereotype from the new created stereotype.
+	 * 
+	 * @param stereotype
+	 *            the stereotype.
+	 * @return a new stereotype.
+	 */
+	public Stereotype createStereotype(Stereotype stereotype) {
+		Stereotype newStereotype = UMLFactory.eINSTANCE.createStereotype();
+		if (stereotype.getOwner() instanceof Package) {
+			((Package) stereotype.getOwner()).getOwnedStereotypes().add(
+					newStereotype);
+		}
+		createGeneralization(newStereotype, stereotype);
+		return newStereotype;
+	}
+
+	/**
+	 * Create a new {@link Stereotype} in the profile that directly or
+	 * indirectly contains the elementImport in parameter and create a extension
+	 * to this elementImport from the new created stereotype.
+	 * 
+	 * @param elementImport
+	 *            the elementImport.
+	 * @return a new stereotype.
+	 */
+	public Stereotype createStereotype(ElementImport elementImport) {
+		Stereotype newStereotype = UMLFactory.eINSTANCE.createStereotype();
+		getProfileOwner(elementImport).getOwnedStereotypes().add(
+					newStereotype);
+		createMetaclassExtension(newStereotype, elementImport);
+		return newStereotype;
+	}
+
+	/**
+	 * Get the profile owner of this element.
+	 * 
+	 * @param umlElement
+	 *            the element
+	 * @return the profile
+	 */
+	public static Profile getProfileOwner(final Element umlElement) {
+
+		if (umlElement.getOwner() instanceof Profile)
+			return (Profile) umlElement.getOwner();
+		else
+			return getProfileOwner(umlElement.getOwner());
 	}
 
 	/**

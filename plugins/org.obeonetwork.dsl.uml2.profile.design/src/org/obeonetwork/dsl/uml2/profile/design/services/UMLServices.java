@@ -22,7 +22,6 @@ import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
-import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.Generalization;
@@ -100,26 +99,12 @@ public class UMLServices {
 	 * @return The found element import.
 	 */
 	public ElementImport getElementImport(final Extension extension) {
-		final Profile profileOwner = getProfileOwner(extension);
+		final Profile profileOwner = UMLProfileServices
+				.getProfileOwner(extension);
 		if (profileOwner.getMetaclassReference(extension.getMetaclass()) != null)
 			return profileOwner.getMetaclassReference(extension.getMetaclass());
 
 		return null;
-	}
-
-	/**
-	 * Get the profile owner of this element.
-	 * 
-	 * @param umlElement
-	 *            the element
-	 * @return the profile
-	 */
-	public Profile getProfileOwner(final Element umlElement) {
-
-		if (umlElement.getOwner() instanceof Profile)
-			return (Profile) umlElement.getOwner();
-		else
-			return getProfileOwner(umlElement.getOwner());
 	}
 
 	/**
