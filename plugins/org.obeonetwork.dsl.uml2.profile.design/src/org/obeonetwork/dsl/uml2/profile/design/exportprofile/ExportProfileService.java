@@ -273,7 +273,7 @@ public class ExportProfileService {
 	 * @return true if no error or warning in the EObject otherwise return
 	 *         false.
 	 */
-	public boolean validateUmlElementWithProgress(final Element element) {
+	public boolean validateUmlElementWithProgress(final Profile element) {
 		ValidateUMLElement umlValidator = new ValidateUMLElement();
 		umlValidator.validateUMLmodel(element);
 		return umlValidator.getDiagnisticResult();
