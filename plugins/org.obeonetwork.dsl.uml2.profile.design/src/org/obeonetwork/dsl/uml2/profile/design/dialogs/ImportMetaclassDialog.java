@@ -30,9 +30,12 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.IDialogSettings;
+import org.eclipse.jface.fieldassist.AutoCompleteField;
+import org.eclipse.jface.fieldassist.ComboContentAdapter;
 import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.IStyledLabelProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;
+import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.jface.viewers.StyledString;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
@@ -50,10 +53,10 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.FilteredItemsSelectionDialog;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.NamedElement;
@@ -111,10 +114,6 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 	 */
 	private Button subClassButton;
 
-	/**
-	 * the text of the class to use in the filter subClass.
-	 */
-	private Text superClassText;
 
 	/**
 	 * a combo to purpose all possible metaclass in UML.
@@ -246,15 +245,44 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 		dialogArea.setEnabled(true);
 		parent.getParent().getShell().setMinimumSize(600, 700);
 		applyFilter();
-
+		this.setDetailsLabelProvider(new LabelProvider() {
+			@Override
+			public String getText(Object element) {
+				String text = new String();
+				if (element instanceof Class) {
+					Class myClass = (Class) element;
+					for (Comment comment : myClass.getOwnedComments()) {
+						if (text.isEmpty())
+							text = text + comment.getBody();
+						else
+							text = text + " " + comment.getBody();
+					}
+				}
+				return text;
+			}
+		});
 		return dialogArea;
 	}
 
 	@Override
 	protected Control createExtendedContentArea(final Composite parent) {
-		final GridData gd = new GridData(GridData.FILL_HORIZONTAL);
 
-		concreteButton = new Button(parent, SWT.CHECK);
+		Composite subClassButtonComposite = new Composite(parent, SWT.BORDER);
+		GridLayout layout = new GridLayout(2, false);
+		layout.numColumns = 2;
+
+		GridData gridData = new GridData();
+		gridData.horizontalAlignment = SWT.FILL;
+		gridData.grabExcessHorizontalSpace = true;
+
+		subClassButtonComposite.setLayoutData(gridData);
+
+		subClassButtonComposite.setLayout(layout);
+
+		final GridData gd = new GridData(GridData.FILL_HORIZONTAL);
+		gd.horizontalSpan = 2;
+
+		concreteButton = new Button(subClassButtonComposite, SWT.CHECK);
 		concreteButton.setText("Only concrete Metaclass"); //$NON-NLS-1$
 		concreteButton.addSelectionListener(new SelectionListener() {
 			public void widgetDefaultSelected(final SelectionEvent e) {
@@ -268,7 +296,9 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 			}
 		});
 
-		subClassButton = new Button(parent, SWT.CHECK);
+		concreteButton.setLayoutData(gd);
+
+		subClassButton = new Button(subClassButtonComposite, SWT.CHECK);
 		subClassButton.setText("Only sub classes of:"); //$NON-NLS-1$
 		subClassButton.addSelectionListener(new SelectionListener() {
 			public void widgetDefaultSelected(final SelectionEvent e) {
@@ -277,31 +307,14 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 			public void widgetSelected(final SelectionEvent e) {
 				if (subClass != ((Button) e.widget).getSelection()) {
 					subClass = ((Button) e.widget).getSelection();
-					superClassText.setEnabled(subClass);
 					combo.setEnabled(subClass);
 					applyFilter();
 				}
 			}
 		});
-		superClassText = new Text(parent, SWT.SEARCH);
-		superClassText.setEnabled(subClass);
-		superClassText.addModifyListener(new ModifyListener() {
-			public void modifyText(final ModifyEvent e) {
-				if (e != null) {
-					final Object src = e.getSource();
-					if (src instanceof Text) {
-						final Text txt = (Text) src;
-						final String myText = txt.getText();
-						superClassName = myText;
-					} else {
-						superClassName = "";
-					}
-				}
-				applyFilter();
-			}
-		});
-		superClassText.setLayoutData(gd);
-		combo = new Combo(parent, SWT.READ_ONLY);
+
+		
+		combo = new Combo(subClassButtonComposite, SWT.DROP_DOWN);
 		combo.setEnabled(subClass);
 		combo.setItems(getMetaclassesNames());
 		combo.addSelectionListener(new SelectionAdapter() {
@@ -312,16 +325,45 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 					if (src instanceof Combo) {
 						final Combo comboEvent = (Combo) src;
 						superClassName = comboEvent.getText();
-						superClassText.setText(superClassName);
+					}
+				}
+				applyFilter();
+			}
+
+		});
+		combo.addModifyListener(new ModifyListener() {
+
+			public void modifyText(ModifyEvent e) {
+				if (e != null) {
+					final Object src = e.getSource();
+					if (src instanceof Combo) {
+						final Combo myCombo = (Combo) src;
+						String myText = myCombo.getText();
+						for (int i = 0; i < myCombo.getItemCount(); i++) {
+							String item = myCombo.getItem(i);
+							if (myText != null && !myText.isEmpty()
+									&& item.equalsIgnoreCase(myText)) {
+								superClassName = myText;
+								break;
+							} else if (myText.isEmpty()) {
+								superClassName = "";
+							}
+						}
+					} else {
+						superClassName = "";
 					}
 				}
 				applyFilter();
 			}
 		});
-		combo.setLayoutData(gd);
 
-		return superClassText;
+		new AutoCompleteField(combo, new ComboContentAdapter(),
+				combo.getItems());
+		combo.setLayoutData(gridData);
+
+		return parent;
 	}
+
 
 	/**
 	 * Return the UML metamodel model.
