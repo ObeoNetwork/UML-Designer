@@ -2,28 +2,28 @@
 <?pde version="3.8"?><target name="UmlDesigner-kepler" sequenceNumber="0">
 <locations>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.platform.feature.group" version="4.3.1.v20130911-1000"/>
-<unit id="org.eclipse.sdk.feature.group" version="4.3.1.v20130911-1000"/>
+<unit id="org.eclipse.platform.feature.group" version="4.3.2.v20140221-1852"/>
+<unit id="org.eclipse.sdk.feature.group" version="4.3.2.v20140221-1852"/>
 <unit id="org.eclipse.draw2d.sdk.feature.group" version="3.9.1.201308190730"/>
-<unit id="org.eclipse.emf.sdk.feature.group" version="2.9.1.v20130902-0605"/>
+<unit id="org.eclipse.emf.sdk.feature.group" version="2.9.2.v20140203-1126"/>
 <unit id="org.eclipse.emf.transaction.sdk.feature.group" version="1.7.0.201306111400"/>
 <unit id="org.eclipse.emf.validation.sdk.feature.group" version="1.7.0.201306111341"/>
 <unit id="org.eclipse.gef.sdk.feature.group" version="3.9.1.201308190730"/>
 <unit id="org.eclipse.gmf.runtime.notation.sdk.feature.group" version="1.7.0.201306101425"/>
 <unit id="org.eclipse.gmf.runtime.sdk.feature.group" version="1.7.0.201306111432"/>
-<unit id="org.eclipse.uml2.sdk.feature.group" version="4.1.1.v20130902-0826"/>
-<unit id="org.eclipse.papyrus.sysml.feature.feature.group" version="0.10.1.v201309181302"/>
-<unit id="org.eclipse.epp.mpc.feature.group" version="1.2.1.I20130917-2019"/>
-<unit id="org.eclipse.equinox.executable.feature.group" version="3.6.0.v20130807-1835"/>
+<unit id="org.eclipse.uml2.sdk.feature.group" version="4.1.2.v20140202-2055"/>
+<unit id="org.eclipse.papyrus.sysml.feature.feature.group" version="0.10.2.v201402191554"/>
+<unit id="org.eclipse.epp.mpc.feature.group" version="1.2.1.v20140219-1000"/>
+<unit id="org.eclipse.equinox.executable.feature.group" version="3.6.0.v20140117-1004"/>
 <repository location="http://download.eclipse.org/releases/kepler"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="org.eclipse.swtbot.forms.feature.group" version="2.2.0.201401081015"/>
-<unit id="org.eclipse.swtbot.eclipse.feature.group" version="2.2.0.201401081015"/>
-<unit id="org.eclipse.swtbot.eclipse.gef.feature.group" version="2.2.0.201401081015"/>
-<unit id="org.eclipse.swtbot.feature.group" version="2.2.0.201401081015"/>
-<unit id="org.eclipse.swtbot.ide.feature.group" version="2.2.0.201401081015"/>
-<unit id="org.eclipse.swtbot.eclipse.test.junit.feature.group" version="2.2.0.201401081015"/>
+<unit id="org.eclipse.swtbot.forms.feature.group" version="2.2.1.201402241301"/>
+<unit id="org.eclipse.swtbot.eclipse.feature.group" version="2.2.1.201402241301"/>
+<unit id="org.eclipse.swtbot.eclipse.gef.feature.group" version="2.2.1.201402241301"/>
+<unit id="org.eclipse.swtbot.feature.group" version="2.2.1.201402241301"/>
+<unit id="org.eclipse.swtbot.ide.feature.group" version="2.2.1.201402241301"/>
+<unit id="org.eclipse.swtbot.eclipse.test.junit.feature.group" version="2.2.1.201402241301"/>
 <repository location="http://download.eclipse.org/technology/swtbot/releases/latest/"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
@@ -55,7 +55,6 @@
 <repository location="http://download.eclipse.org/sirius/updates/milestones/1.0.0M5/kepler"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<unit id="fr.obeo.dsl.viewpoint.runtime.ide.tests.support.feature.group" version="0.0.0"/>
 <repository location="http://update.obeo.fr/integration/viewpoint/master/kepler/repository/"/>
 </location>
 </locations>
