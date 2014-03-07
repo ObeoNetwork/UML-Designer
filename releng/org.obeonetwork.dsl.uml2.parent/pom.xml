@@ -43,6 +43,7 @@ Contributors:
 
     <!-- Build features -->
     <module>${root-path}/packaging/org.obeonetwork.dsl.uml2.runtime.feature</module>
+    <module>${root-path}/packaging/org.obeonetwork.dsl.uml2.runtime.product.feature</module>
     <module>${root-path}/packaging/org.obeonetwork.dsl.uml2.runtime.sdk.feature</module>
 
     <!-- Build update-sites -->
