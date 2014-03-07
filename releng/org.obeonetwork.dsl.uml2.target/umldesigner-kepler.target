@@ -55,7 +55,8 @@
 <repository location="http://download.eclipse.org/sirius/updates/milestones/1.0.0M5/kepler"/>
 </location>
 <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
-<repository location="http://update.obeo.fr/integration/viewpoint/master/kepler/repository/"/>
+<unit id="fr.obeo.dsl.viewpoint.runtime.ide.tests.support.feature.group" version="0.0.0"/>
+<repository location="http://update.obeo.fr/release/viewpoint/sirius-1.0.0M5/kepler/"/>
 </location>
 </locations>
 </target>

@@ -68,7 +68,7 @@ location "http://download.eclipse.org/sirius/updates/milestones/1.0.0M5/kepler" 
 	org.eclipse.nebula.widgets.paperclips.feature.feature.group
 }
 
-location "http://update.obeo.fr/integration/viewpoint/master/kepler/repository/" {
+location "http://update.obeo.fr/release/viewpoint/sirius-1.0.0M5/kepler/" {
 	with source, requirements
 	//IDE
 	fr.obeo.dsl.viewpoint.runtime.ide.tests.support.feature.group
