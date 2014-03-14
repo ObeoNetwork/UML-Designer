@@ -106,13 +106,6 @@ public class ExportProfileService {
 		final Shell activeShell = PlatformUI.getWorkbench().getDisplay()
 				.getActiveShell();
 
-		boolean canValidateProfile = MessageDialog
-				.openConfirm(
-						activeShell,
-						"Validate Profile",
-						"The validation of profile is necessary before exporting in order to avoid the code generation and compilation errors");
-
-		if (canValidateProfile) {
 			if (validateUmlElementWithProgress(rootProfile)) {
 
 				if (initParameters(rootProfile) == IDialogConstants.OK_ID
@@ -215,11 +208,7 @@ public class ExportProfileService {
 				MessageDialog.openError(activeShell, "Exportation error",
 						"Due to the error, the exportation will be stopped.");
 			}
-		} else {
-			MessageDialog
-					.openError(activeShell, "Exportation error",
-							"Cannot proceed to exportation without profile validation.");
-		}
+
 	}
 
 	/**
