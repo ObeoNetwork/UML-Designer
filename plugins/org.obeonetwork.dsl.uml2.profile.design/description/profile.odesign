@@ -386,7 +386,16 @@
           <reusedTools xsi:type="tool_1:PopupMenu" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Import%20primitive%20types']"/>
         </toolSections>
         <toolSections name="RelationShips">
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Extensions" precondition="service:preSource.canCreateExtension(preTarget)" edgeMappings="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Extension'] //@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Generalization']" iconPath="/org.obeonetwork.dsl.uml2.profile.design/icons/Extensions.gif">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Extension" precondition="service:preSource.canCreateExtension(preTarget)" edgeMappings="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Extension']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Extension.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:source.createExtension(target)"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Generalization" precondition="service:preSource.canCreateExtension(preTarget)" edgeMappings="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Generalization']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Generalization.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
