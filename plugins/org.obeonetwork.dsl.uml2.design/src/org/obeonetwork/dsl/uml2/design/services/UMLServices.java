@@ -819,7 +819,7 @@ public class UMLServices {
 		if (representation instanceof DSemanticDiagramSpec) {
 			DiagramDescription description = ((DSemanticDiagramSpec)representation).getDescription();
 
-			if ("Class Diagram".equals(description.getName())) {
+			if ("Class Diagram".equals(description.getName()) || "Profile Diagram".equals(description.getName())) {
 				results = service.getValidsForClassDiagram(element);
 			} else if ("Component Diagram".equals(description.getName())) {
 				results = service.getValidsForComponentDiagram(element);
