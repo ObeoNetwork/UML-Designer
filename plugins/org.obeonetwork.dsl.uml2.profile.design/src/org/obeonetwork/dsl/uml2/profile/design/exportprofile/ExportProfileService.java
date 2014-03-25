@@ -42,6 +42,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.ui.EMFEditUIPlugin;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -71,6 +72,13 @@ import org.obeonetwork.dsl.uml2.profile.design.services.ValidateUMLElement;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
+/**
+ * This class provide methods for the creation of a static profile.
+ * 
+ * @author Mohamed-Lamine BOUKHANOUFA <a
+ *         href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
+ *         >mohamed-lamine.boukhanoufa@obeo.fr</a>
+ */
 public class ExportProfileService {
 
 	String obeoNetworkPluginName = new String("org.obeonetwork");
@@ -105,11 +113,13 @@ public class ExportProfileService {
 	public void exportProfile(final Profile rootProfile) {
 		final Shell activeShell = PlatformUI.getWorkbench().getDisplay()
 				.getActiveShell();
-
-			if (validateUmlElementWithProgress(rootProfile)) {
+			
+		boolean isProfile = isProfileRoot(rootProfile);
+			if (isProfile && validateUmlElementWithProgress(rootProfile)) {
 
 				if (initParameters(rootProfile) == IDialogConstants.OK_ID
 						&& UMLProfileServices.defineAllProfiles(rootProfile)) {
+					GenericUMLProfileTools.save(rootProfile);
 					final IProject profilePlugin = createPluginProjectWithProgress(profilePluginName);
 
 					// the following code is OK.
@@ -205,12 +215,30 @@ public class ExportProfileService {
 							"Exportation canceled by user.");
 				}
 			} else {
+				if (!isProfile){
+					MessageDialog.openError(activeShell, "Exportation error",
+							"The root element of this model is not a profile. Due to the error, the exportation will be stopped.");
+				}else
 				MessageDialog.openError(activeShell, "Exportation error",
 						"Due to the error, the exportation will be stopped.");
 			}
 
 	}
 
+	/**
+	 * Verify if the model root is a Profile or not of a given profile.
+	 * 
+	 * @param rootProfile
+	 *            the given profile
+	 * @return true if the model root is a profile else false
+	 */
+	public boolean isProfileRoot(final Profile rootProfile) {
+		EObject rootContainer = EcoreUtil.getRootContainer(rootProfile);
+		if (rootContainer != null && rootContainer instanceof Profile) {
+			return true;
+		}
+		return false;
+	}
 	/**
 	 * Create a new plug-in project with progress bar. see
 	 * {@link createPluginProject}

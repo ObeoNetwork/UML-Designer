@@ -448,7 +448,7 @@
             <elementView name="elementView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:defineProfileDialog"/>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[defineProfileDialog()/]"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
@@ -457,7 +457,7 @@
             <elementView name="elementView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
-                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:undefineProfile"/>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[undefineProfileDialog()/]"/>
               </firstModelOperations>
             </initialOperation>
           </ownedTools>

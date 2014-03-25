@@ -20,7 +20,7 @@ import org.eclipse.emf.codegen.util.CodeGenUtil;
 import org.obeonetwork.dsl.uml2.design.services.LogServices;
 
 /**
- * his class provide a method to generate a Mode Code from a genmodel.
+ * This class provide a method to generate a Mode Code from a genmodel.
  * 
  * @author Mohamed-Lamine BOUKHANOUFA <a
  *         href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
