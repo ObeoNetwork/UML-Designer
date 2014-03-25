@@ -13,7 +13,6 @@ package org.obeonetwork.dsl.uml2.profile.design.services;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -68,15 +67,9 @@ public class UMLProfileServices {
 	 * 
 	 * @param rootProfile
 	 *            to define
-	 * @param allContentProfile
-	 *            to define
 	 */
 	public void defineProfileDialog(final Profile rootProfile) {
-		List<Profile> allProfiles = Lists.newArrayList(Iterators.filter(
-				rootProfile
-				.getModel().eAllContents(), Profile.class));
-		allProfiles.remove(rootProfile);
-		defineProfileDialog(rootProfile, allProfiles);
+		defineProfileDialog(rootProfile, getAllSubProfiles(rootProfile));
 	}
 
 	/**
@@ -91,21 +84,11 @@ public class UMLProfileServices {
 			final List<Profile> allContentProfile) {
 		boolean result = false;
 
-		// String[] buttonYesNo = {yes, no};
 		final String[] buttonYes = { OK };
 		final Shell activeShell = PlatformUI.getWorkbench().getDisplay()
 				.getActiveShell();
-		// MessageDialog msgDialogYesNo = null;
 		MessageDialog msgDialogYes = null;
-		//
-		// msgDialogYesNo = new MessageDialog(activeShell, "Define the Profile",
-		// null,
-		// "Would you like to define this profile in order to apply it ?",
-		// MessageDialog.QUESTION,
-		// buttonYesNo, 1);
-		// int diagResult = msgDialogYesNo.open();
-		//
-		// if (diagResult == IDialogConstants.OK_ID) {
+
 		result = defineProfile(rootProfile, allContentProfile);
 
 		if (result) {
@@ -114,13 +97,6 @@ public class UMLProfileServices {
 					buttonYes, 0);
 			msgDialogYes.open();
 		}
-		// else {
-		// msgDialogYes = new MessageDialog(activeShell, "Define the Profile",
-		// null,
-		// "The profile isn't defined", MessageDialog.WARNING, buttonYes, 0);
-		// msgDialogYes.open();
-		// }
-		// }
 	}
 
 	/**
@@ -145,11 +121,15 @@ public class UMLProfileServices {
 			final UMLDesignerProfileVersion uMLDesignerProfileVersion = versionDialog
 					.getUMLDesignerProfileVersion();
 
+			// Remove the oldest definitions of the profile and all sub profiles
+			// then redefine
+			// the whole
+			undefineProfile(rootProfile);
+
 			result = defineAndAnnotateProfile(rootProfile,
 					uMLDesignerProfileVersion);
 
-			// Remove the oldest definitions of the sub profiles then redefine
-			// the whole
+
 			for (Profile profile : allContentProfile) {
 
 				result = defineAndAnnotateProfile(profile,
@@ -207,45 +187,31 @@ public class UMLProfileServices {
 	 * @return true if defined, else false.
 	 */
 	public static boolean defineAllProfiles(final Profile rootProfile) {
-
-		final List<Profile> allContentProfile = new ArrayList<Profile>();
-
-		for (TreeIterator<EObject> eObjects = rootProfile.eAllContents(); eObjects
-				.hasNext();) {
-			final EObject eObject = eObjects.next();
-			if (eObject instanceof Profile) {
-				final Profile profile = (Profile) eObject;
-				allContentProfile.add(profile);
-			}
-		}
-		return defineProfile(rootProfile, allContentProfile);
+		return defineProfile(rootProfile, getAllSubProfiles(rootProfile));
 	}
 
 	/**
-	 * Dialog message to define a profile.
+	 * Find all the sub profile of a given root profile.
 	 * 
 	 * @param rootProfile
-	 *            to define
-	 * @param allContentProfile
-	 *            to define
+	 *            the root profile
+	 * @return a list all sub profile.
 	 */
-	public void undefineProfile(final Profile rootProfile) {
-		List<Profile> allProfiles = Lists.newArrayList(Iterators.filter(
-				rootProfile
-				.getModel().eAllContents(), Profile.class));
-		undefineProfile(rootProfile, allProfiles);
+	public static List<Profile> getAllSubProfiles(final Profile rootProfile) {
+		final List<Profile> allSubProfiles = Lists.newArrayList(Iterators
+				.filter(rootProfile.eAllContents(), Profile.class));
+		allSubProfiles.remove(rootProfile);
+
+		return allSubProfiles;
 	}
 
 	/**
-	 * Undefine the profile.
+	 * Dialog message to undefine the profile.
 	 * 
 	 * @param rootProfile
 	 *            to undefine
-	 * @param allContentProfile
-	 *            the sub profile to undefine
 	 */
-	private void undefineProfile(final Profile rootProfile,
-			final List<Profile> allContentProfile) {
+	public static void undefineProfileDialog(final Profile rootProfile) {
 		final String[] buttonYesNo = { YES, NO };
 		final String[] buttonYes = { OK };
 		final Shell activeShell = PlatformUI.getWorkbench().getDisplay()
@@ -258,14 +224,7 @@ public class UMLProfileServices {
 					MessageDialog.QUESTION, buttonYesNo, 1);
 			final int diagResult = msgDialogYesNo.open();
 			if (diagResult == 0) {
-				rootProfile.getEAnnotations().remove(
-						rootProfile.getDefinition().eContainer());
-				for (Profile profile : allContentProfile) {
-					if (profile.getDefinition() != null) {
-						profile.getEAnnotations().remove(
-								profile.getDefinition().eContainer());
-					}
-				}
+				undefineProfile(rootProfile);
 				msgDialogYes = new MessageDialog(activeShell, undefineProfile,
 						null, "The profile is undefined",
 						MessageDialog.INFORMATION, buttonYes, 0);
@@ -276,6 +235,26 @@ public class UMLProfileServices {
 					null, "The profile is not defined !",
 					MessageDialog.WARNING, buttonYes, 0);
 			msgDialogYes.open();
+		}
+	}
+
+	/**
+	 * Undefine the profile.
+	 * 
+	 * @param rootProfile
+	 *            to undefine
+	 */
+	public static void undefineProfile(final Profile rootProfile) {
+		if (rootProfile.getDefinition() != null) {
+			List<Profile> allContentProfile = getAllSubProfiles(rootProfile);
+			rootProfile.getEAnnotations().remove(
+					rootProfile.getDefinition().eContainer());
+			for (Profile profile : allContentProfile) {
+				if (profile.getDefinition() != null) {
+					profile.getEAnnotations().remove(
+							profile.getDefinition().eContainer());
+				}
+			}
 		}
 	}
 
