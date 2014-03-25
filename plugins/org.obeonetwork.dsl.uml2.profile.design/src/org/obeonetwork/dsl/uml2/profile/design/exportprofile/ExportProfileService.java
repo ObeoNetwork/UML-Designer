@@ -203,6 +203,14 @@ public class ExportProfileService {
 								PDEPlugin.getActiveWorkbenchShell(), wizard);
 						wd.create();
 						wd.open();
+
+					// Close the generated plugin, it contains uml.ecore and
+					// ecore.ecore that confused Acceleo in the VP.
+					try {
+						profilePlugin.close(new NullProgressMonitor());
+					} catch (CoreException e) {
+						e.printStackTrace();
+					}
 					} else {
 						MessageDialog
 								.openError(activeShell, "Exportation error",
