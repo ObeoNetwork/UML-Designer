@@ -21,13 +21,12 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotDesignerEditor;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.obeonetwork.dsl.uml2.design.tests.common.EObjects;
 import org.obeonetwork.dsl.uml2.design.tests.common.ModelChangeRecorder;
-
-import fr.obeo.dsl.viewpoint.tests.swtbot.support.api.editor.SWTBotDesignerEditor;
 
 // End of user code
 

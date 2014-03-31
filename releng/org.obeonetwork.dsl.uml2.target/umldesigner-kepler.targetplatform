@@ -1,8 +1,8 @@
 target "UmlDesigner-kepler"
 
-// Eclipse release
+with source, requirements
+
 location "http://download.eclipse.org/releases/kepler" {
-	with source, requirements
 	org.eclipse.platform.feature.group
 	org.eclipse.sdk.feature.group
 	org.eclipse.draw2d.sdk.feature.group
@@ -20,7 +20,6 @@ location "http://download.eclipse.org/releases/kepler" {
 
 // SWTBot
 location "http://download.eclipse.org/technology/swtbot/releases/latest/" {
-	with source
 	org.eclipse.swtbot.forms.feature.group
 	org.eclipse.swtbot.eclipse.feature.group
 	org.eclipse.swtbot.eclipse.gef.feature.group
@@ -31,10 +30,9 @@ location "http://download.eclipse.org/technology/swtbot/releases/latest/" {
 
 // Orbit
 location "http://download.eclipse.org/tools/orbit/downloads/drops/S20130914154012/repository/" {
-	with source, requirements
 	com.google.guava;version="[11.0.2,12.0.0)"
 	org.junit;version="[4.11.0,5.0.0)"
-	org.junit4
+//	org.junit4
 	org.hamcrest.core;version="[1.3.0,2.0.0)"
 	org.hamcrest.library;version="[1.3.0,2.0.0)"
 	org.apache.log4j;version="[1.2.0,1.3.0)"
@@ -42,34 +40,25 @@ location "http://download.eclipse.org/tools/orbit/downloads/drops/S2013091415401
 
 // Acceleo 3
 location "http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/3.4/" {
-	with source, requirements
 	org.eclipse.acceleo.feature.group
 	org.eclipse.acceleo.runtime.feature.group
 }
 
 // EEF 1.3
 location "http://download.eclipse.org/modeling/emft/eef/updates/releases/1.3/R201311221533" {
-	with source, requirements
 	org.eclipse.emf.eef.runtime
 }
 
 // Sirius
-location "http://download.eclipse.org/sirius/updates/milestones/1.0.0M5/kepler" {
-	with source, requirements
-	//runtime
-	org.eclipse.sirius.runtime.feature.group
-	org.eclipse.sirius.runtime.acceleo.feature.group
+location "http://download.eclipse.org/sirius/updates/milestones/1.0.0M6/kepler" {
+	org.eclipse.sirius.runtime.feature.group;version=lazy
+	org.eclipse.sirius.runtime.acceleo.feature.group;version=lazy
 	//IDE
-	org.eclipse.sirius.runtime.ide.ui.acceleo.feature.group
-	org.eclipse.sirius.runtime.ide.eef.feature.group
-	org.eclipse.sirius.runtime.ide.ui.feature.group
-	org.eclipse.sirius.specifier.ide.ui.feature.group
-	org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group
-	org.eclipse.nebula.widgets.paperclips.feature.feature.group
-}
-
-location "http://update.obeo.fr/release/viewpoint/sirius-1.0.0M5/kepler/" {
-	with source, requirements
-	//IDE
-	fr.obeo.dsl.viewpoint.runtime.ide.tests.support.feature.group
+	org.eclipse.sirius.runtime.ide.ui.acceleo.feature.group;version=lazy
+	org.eclipse.sirius.runtime.ide.eef.feature.group;version=lazy
+	org.eclipse.sirius.runtime.ide.ui.feature.group;version=lazy
+	org.eclipse.sirius.specifier.ide.ui.feature.group;version=lazy
+	org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group;version=lazy
+	org.eclipse.nebula.widgets.paperclips.feature.feature.group;version=lazy
+	org.eclipse.sirius.tests.feature.group;version=lazy
 }
