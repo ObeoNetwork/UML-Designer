@@ -34,6 +34,7 @@ Contributors:
     <module>${root-path}/plugins/org.obeonetwork.dsl.uml2.design.doc</module>
     <module>${root-path}/plugins/org.obeonetwork.dsl.uml2.usage</module>
     <module>${root-path}/plugins/org.obeonetwork.dsl.uml2.properties</module>
+    <module>${root-path}/plugins/org.obeonetwork.dsl.uml2.navigator</module>
 
 
     <!-- Build test plugins -->
