@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: UML Designer Navigator
+Bundle-SymbolicName: org.obeonetwork.dsl.uml2.navigator;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.obeonetwork.dsl.uml2.navigator.Activator
+Bundle-Vendor: Obeo Network
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.ui.navigator,
+ org.eclipse.emf.transaction,
+ org.eclipse.emf.edit.ui,
+ org.eclipse.uml2.uml,
+ org.eclipse.uml2.uml.editor
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ActivationPolicy: lazy

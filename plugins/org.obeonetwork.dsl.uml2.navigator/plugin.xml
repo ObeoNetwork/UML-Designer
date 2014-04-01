@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+ <extension
+        point="org.eclipse.ui.navigator.navigatorContent">
+     <actionProvider
+           class="org.obeonetwork.dsl.uml2.editor.internal.UmlCommonActionProvider"
+           id="org.obeonetwork.dsl.uml2.editor.internal.CommonActionProvider1">
+        <enablement>
+           <instanceof
+                 value="org.eclipse.emf.ecore.EObject">
+           </instanceof>
+        </enablement>
+     </actionProvider>
+  </extension>
+  <extension
+        point="org.eclipse.ui.navigator.viewer">
+     <viewerActionBinding
+           viewerId="org.eclipse.sirius.ui.tools.views.model.explorer">
+        <includes>
+           <actionExtension
+                 pattern="org.obeonetwork.dsl.uml2.editor.*">
+           </actionExtension>
+        </includes>
+     </viewerActionBinding>
+     <viewerContentBinding
+           viewerId="org.eclipse.sirius.ui.tools.views.model.explorer">
+        <includes>
+           <contentExtension
+                 pattern="org.obeonetwork.dsl.uml2.editor.*">
+           </contentExtension>
+        </includes>
+     </viewerContentBinding>
+     <dragAssistant
+            class="org.obeonetwork.dsl.uml2.editor.internal.UmlCommonDragAdapterAssistant"
+            viewerId="org.eclipse.sirius.ui.tools.views.model.explorer">
+      </dragAssistant>
+  </extension>
+  <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <navigatorContent
+            activeByDefault="true"
+            appearsBefore="org.eclipse.sirius.ui.resource.content.session"
+            contentProvider="org.obeonetwork.dsl.uml2.editor.internal.DummyContentProvider"
+            id="org.obeonetwork.dsl.uml2.editor.DndProvider"
+            labelProvider="org.obeonetwork.dsl.uml2.editor.internal.DummyLabelProvider"
+            name="Uml Designer Drag n Drop Support"
+            priority="higher"
+            providesSaveables="false">
+             <enablement>
+               <instanceof
+                     value="org.eclipse.emf.ecore.EObject">
+               </instanceof>
+            </enablement>
+         <dropAssistant
+               class="org.obeonetwork.dsl.uml2.editor.internal.UmlCommonDropAdapterAssistant"
+               id="org.obeonetwork.dsl.uml2.editor.DropAssistant">
+            <possibleDropTargets>
+               <instanceof
+                     value="org.eclipse.emf.ecore.EObject">
+               </instanceof>
+            </possibleDropTargets>
+         </dropAssistant>
+      </navigatorContent>
+   </extension>
+
+</plugin>
