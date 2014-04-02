@@ -477,7 +477,7 @@ public class UMLServices {
 	 * @param namespace
 	 *            Namespace into which importing the types
 	 */
-	public void importUmlPrimitiveTypes(Element element) {
+	public void importUmlPrimitiveTypes(NamedElement element) {
 		importPrimitiveTypes(element, UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI);
 	}
 
@@ -488,7 +488,7 @@ public class UMLServices {
 	 *            Namespace to be checked
 	 * @return true if the types are already imported, else false
 	 */
-	public boolean areUmlPrimitiveTypesNotImported(Element element) {
+	public boolean areUmlPrimitiveTypesNotImported(NamedElement element) {
 		return !arePrimitiveTypesImported(element, UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI);
 	}
 
@@ -498,7 +498,7 @@ public class UMLServices {
 	 * @param namespace
 	 *            Namespace into which importing the types
 	 */
-	public void importJavaPrimitiveTypes(Element element) {
+	public void importJavaPrimitiveTypes(NamedElement element) {
 		importPrimitiveTypes(element, UMLResource.JAVA_PRIMITIVE_TYPES_LIBRARY_URI);
 	}
 
@@ -509,7 +509,7 @@ public class UMLServices {
 	 *            Namespace to be checked
 	 * @return true if the types are already imported, else false
 	 */
-	public boolean areJavaPrimitiveTypesNotImported(Element element) {
+	public boolean areJavaPrimitiveTypesNotImported(NamedElement element) {
 		return !arePrimitiveTypesImported(element, UMLResource.JAVA_PRIMITIVE_TYPES_LIBRARY_URI);
 	}
 
@@ -519,7 +519,7 @@ public class UMLServices {
 	 * @param namespace
 	 *            Namespace into which importing the types
 	 */
-	public void importEcorePrimitiveTypes(Element element) {
+	public void importEcorePrimitiveTypes(NamedElement element) {
 		importPrimitiveTypes(element, UMLResource.ECORE_PRIMITIVE_TYPES_LIBRARY_URI);
 	}
 
@@ -530,7 +530,7 @@ public class UMLServices {
 	 *            Namespace to be checked
 	 * @return true if the types are already imported, else false
 	 */
-	public boolean areEcorePrimitiveTypesNotImported(Element element) {
+	public boolean areEcorePrimitiveTypesNotImported(NamedElement element) {
 		return !arePrimitiveTypesImported(element, UMLResource.ECORE_PRIMITIVE_TYPES_LIBRARY_URI);
 	}
 
@@ -540,7 +540,7 @@ public class UMLServices {
 	 * @param namespace
 	 *            Namespace into which importing the types
 	 */
-	public void importXmlPrimitiveTypes(Element element) {
+	public void importXmlPrimitiveTypes(NamedElement element) {
 		importPrimitiveTypes(element, UMLResource.XML_PRIMITIVE_TYPES_LIBRARY_URI);
 	}
 
@@ -551,7 +551,7 @@ public class UMLServices {
 	 *            Namespace to be checked
 	 * @return true if the types are already imported, else false
 	 */
-	public boolean areXmlPrimitiveTypesNotImported(Element element) {
+	public boolean areXmlPrimitiveTypesNotImported(NamedElement element) {
 		return !arePrimitiveTypesImported(element, UMLResource.XML_PRIMITIVE_TYPES_LIBRARY_URI);
 	}
 
@@ -563,20 +563,20 @@ public class UMLServices {
 	 * @param libraryUri
 	 *            the URI of the library to load.
 	 */
-	private void importPrimitiveTypes(Element element, String libraryUri) {
-		Model model = element.getModel();
-		final ResourceSet resourceSet = model.eResource().getResourceSet();
+	private void importPrimitiveTypes(NamedElement element, String libraryUri) {
+		Namespace namespace = getNamespace(element);
+		final ResourceSet resourceSet = namespace.eResource().getResourceSet();
 		final Resource resource = resourceSet.getResource(URI.createURI(libraryUri), true);
 		// Add the resource to the session's semantic resources
-		final Session session = SessionManager.INSTANCE.getSession(model);
+		final Session session = SessionManager.INSTANCE.getSession(namespace);
 		if (session != null) {
 			session.addSemanticResource(resource.getURI(), new NullProgressMonitor());
 		}
 		final Package root = (Package)EcoreUtil.getObjectByType(resource.getContents(),
 				UMLPackage.Literals.PACKAGE);
 		// We check if a package import already exists
-		if (!model.getImportedPackages().contains(root)) {
-			model.createPackageImport(root);
+		if (!namespace.getImportedPackages().contains(root)) {
+			namespace.createPackageImport(root);
 		}
 	}
 
@@ -819,7 +819,8 @@ public class UMLServices {
 		if (representation instanceof DSemanticDiagramSpec) {
 			DiagramDescription description = ((DSemanticDiagramSpec)representation).getDescription();
 
-			if ("Class Diagram".equals(description.getName()) || "Profile Diagram".equals(description.getName())) {
+			if ("Class Diagram".equals(description.getName())
+					|| "Profile Diagram".equals(description.getName())) {
 				results = service.getValidsForClassDiagram(element);
 			} else if ("Component Diagram".equals(description.getName())) {
 				results = service.getValidsForComponentDiagram(element);
@@ -861,14 +862,28 @@ public class UMLServices {
 	 *            URI of the library.
 	 * @return <code>true</code> if the library is imported, <code>false</code> otherwise
 	 */
-	private boolean arePrimitiveTypesImported(Element element, String libraryUri) {
-		Model model = element.getModel();
-		final ResourceSet resourceSet = model.eResource().getResourceSet();
+	private boolean arePrimitiveTypesImported(NamedElement element, String libraryUri) {
+		Namespace namespace = getNamespace(element);
+		final ResourceSet resourceSet = namespace.eResource().getResourceSet();
 		final Resource resource = resourceSet.getResource(URI.createURI(libraryUri), true);
 		final Package root = (Package)EcoreUtil.getObjectByType(resource.getContents(),
 				UMLPackage.Literals.PACKAGE);
 		// We check if a package import already exists
-		return model.getImportedPackages().contains(root);
+		return namespace.getImportedPackages().contains(root);
+	}
+
+	/**
+	 * Get the namespace associated to a named element.
+	 * 
+	 * @param element
+	 *            Named element
+	 * @return Namespace, if the element is a model or a profile the namespace is itself
+	 */
+	private Namespace getNamespace(NamedElement element) {
+		if (element instanceof Model || element instanceof Profile) {
+			return (Namespace)element;
+		}
+		return element.getNamespace();
 	}
 
 	/**

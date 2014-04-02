@@ -256,6 +256,7 @@
         <toolSections name="PD_ExistingElements" label="Existing Elements">
           <reusedTools xsi:type="tool_1:SelectionWizardDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='AddExistingElements']"/>
           <reusedTools xsi:type="tool_1:ToolDescription" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='RemoveExistingElements']"/>
+          <reusedTools xsi:type="tool_1:PopupMenu" href="../../org.obeonetwork.dsl.uml2.design/description/uml2.odesign#//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='Popup%20menu']/@ownedTools[name='Import%20primitive%20types']"/>
         </toolSections>
         <toolSections name="Packages">
           <ownedTools xsi:type="tool:ContainerCreationDescription" documentation="Create a Package" name="Package" containerMappings="//@ownedViewpoints[name='UML%20Profile%20Design']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Package']">
