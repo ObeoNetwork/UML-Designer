@@ -16,7 +16,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({})
+@SuiteClasses({SmartEditPropertyUnitTests.class})
 /**
  * Testing : Hand written UML Designer unit tests
  */
