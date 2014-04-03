@@ -206,11 +206,11 @@ public class StatemachineServices {
 	 */
 	public List<Transition> getInternalTransitions(State state) {
 		List<Transition> result = Lists.newArrayList();
-		List<Transition> incomings = state.getIncomings();
+		List<Transition> incomings = Lists.newArrayList(state.getIncomings());
 		if (incomings == null)
 			return result;
 
-		List<Transition> outgoings = state.getOutgoings();
+		List<Transition> outgoings = Lists.newArrayList(state.getOutgoings());
 		if (outgoings == null)
 			return result;
 
