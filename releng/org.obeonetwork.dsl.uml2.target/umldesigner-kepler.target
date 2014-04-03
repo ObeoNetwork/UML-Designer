@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="UmlDesigner-kepler" sequenceNumber="1396270937">
+<target name="UmlDesigner-kepler" sequenceNumber="1396526315">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.platform.feature.group" version="4.3.2.v20140221-1852"/>
@@ -56,6 +56,14 @@
       <unit id="org.eclipse.nebula.widgets.paperclips.feature.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.sirius.tests.feature.group" version="0.0.0"/>
       <repository location="http://download.eclipse.org/sirius/updates/milestones/1.0.0M6/kepler"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.emf.compare.diagram.gmf.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.compare.ide.ui.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.compare.rcp.ui.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.compare.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.compare.uml2.feature.group" version="0.0.0"/>
+      <repository location="http://download.eclipse.org/modeling/emf/compare/updates/milestones/2.2"/>
     </location>
   </locations>
 </target>

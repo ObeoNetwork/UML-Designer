@@ -62,3 +62,12 @@ location "http://download.eclipse.org/sirius/updates/milestones/1.0.0M6/kepler" 
 	org.eclipse.nebula.widgets.paperclips.feature.feature.group;version=lazy
 	org.eclipse.sirius.tests.feature.group;version=lazy
 }
+
+// UML compare
+location "http://download.eclipse.org/modeling/emf/compare/updates/milestones/2.2" {
+	org.eclipse.emf.compare.diagram.gmf.feature.group;version=lazy
+	org.eclipse.emf.compare.ide.ui.feature.group;version=lazy
+	org.eclipse.emf.compare.rcp.ui.feature.group;version=lazy
+	org.eclipse.emf.compare.feature.group;version=lazy
+	org.eclipse.emf.compare.uml2.feature.group;version=lazy
+}
