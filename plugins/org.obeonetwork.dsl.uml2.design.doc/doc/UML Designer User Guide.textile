@@ -1,8 +1,8 @@
 
 __(c) Obeo 2011 -  All rights reserved. This program and the accompanying materials are made available under the terms of the Eclipse Public License v1.0__
 
-@Authors@ Gonzague Reydet / Cédric Brun / Yvan Lussaud
-@Contact@ cedric.brun@obeo.fr / yvan.lussaud@obeo.fr
+@Authors@ Mélanie Bats/ Gonzague Reydet / Cédric Brun / Yvan Lussaud
+@Contact@ melanie.bats@obeo.fr / cedric.brun@obeo.fr / yvan.lussaud@obeo.fr
 
 
 
@@ -111,6 +111,19 @@ h2. Creating a Deployment Diagram
 To create a deployment diagram you should *right-click* on your model or on a package and pick @navigate@ and then @new Deployment Diagram@.
 
 h1. Using the Class Diagram
+
+h2. Importing primitive types
+
+The contextual menu @Import primitive types@ can import predefined types libraries from a *right-click* on the background of a class diagram. This menu allows to import primitives for :
+* UML 
+* Java
+* XML
+* Ecore
+
+Then, the imported types can be used in the property's definition.
+
+Another way to import primitive types is just by editing a property on a class (by typing directly on the selected property or by hitting F2) and type the wanted datatype. If it's a known type, as String for example, the corresponding library is automatically imported : this library is visible in the model explorer when the project dependencies entry is expanded.
+The case is not taken into account, so it is possible to type "string" and the "String" datatype of UML Primitive types library will be used.
 
 h2. Creating Elements
 
