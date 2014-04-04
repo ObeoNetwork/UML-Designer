@@ -37,6 +37,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.ui.navigator.CommonActionProvider;
 import org.eclipse.ui.navigator.ICommonActionExtensionSite;
 import org.eclipse.ui.navigator.ICommonViewerWorkbenchSite;
+import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.editor.UMLEditorPlugin;
 import org.eclipse.uml2.uml.editor.presentation.UMLActionBarContributor;
@@ -114,9 +115,18 @@ public class UmlCommonActionProvider extends CommonActionProvider {
 							createChildMenuManager.update(true);
 						}
 					}
+					if (isRenamableUmlModelElement(eObject)) {
+						menuManager.add(new RenameUmlModelElementAction(domain,
+								eObject));
+					}
 				}
 			}
 		}
+	}
+
+	private boolean isRenamableUmlModelElement(EObject selection) {
+		boolean isRenamableUmlModelElement = selection instanceof NamedElement;
+		return isRenamableUmlModelElement;
 	}
 
 	/**
