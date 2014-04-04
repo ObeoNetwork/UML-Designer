@@ -13,7 +13,7 @@ package org.obeonetwork.dsl.uml2.design.services.internal;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.Interaction;
-import org.eclipse.uml2.uml.PackageableElement;
+import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.util.UMLSwitch;
@@ -73,10 +73,10 @@ public class CreateElementLabelFromModelExplorerSwitch extends UMLSwitch<String>
 
 	@Override
 	public String caseProfile(Profile object) {
-		return genName(object.getModel(), PROFILE_PREFIX);
+		return genName(object.getNestingPackage(), PROFILE_PREFIX);
 	}
 
-	private static String genName(PackageableElement context, String prefix) {
+	private static String genName(NamedElement context, String prefix) {
 		final StringBuffer result = new StringBuffer(prefix);
 		result.append(context.getLabel());
 		return result.toString();
