@@ -72,7 +72,7 @@ public class UseCasePropertiesEditionComponent extends SinglePartPropertiesEditi
 	/**
 	 * Settings for subjects ReferencesTable
 	 */
-	protected ReferencesTableSettings subjectsSettings;
+	private ReferencesTableSettings subjectsSettings;
 	
 	
 	/**

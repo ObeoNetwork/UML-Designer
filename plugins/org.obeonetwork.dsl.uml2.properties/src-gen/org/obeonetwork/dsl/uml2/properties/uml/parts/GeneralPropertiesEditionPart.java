@@ -367,20 +367,6 @@ public interface GeneralPropertiesEditionPart {
 
 
 	/**
-	 * @return the upperValue
-	 * @generated
-	 */
-	public String getUpperValue();
-
-	/**
-	 * Defines a new upperValue
-	 * @param newValue the new upperValue to set
-	 * @generated
-	 */
-	public void setUpperValue(String newValue);
-
-
-	/**
 	 * @return the lowerValue
 	 * @generated
 	 */
@@ -392,6 +378,20 @@ public interface GeneralPropertiesEditionPart {
 	 * @generated
 	 */
 	public void setLowerValue(String newValue);
+
+
+	/**
+	 * @return the upperValue
+	 * @generated
+	 */
+	public String getUpperValue();
+
+	/**
+	 * Defines a new upperValue
+	 * @param newValue the new upperValue to set
+	 * @generated
+	 */
+	public void setUpperValue(String newValue);
 
 
 	/**

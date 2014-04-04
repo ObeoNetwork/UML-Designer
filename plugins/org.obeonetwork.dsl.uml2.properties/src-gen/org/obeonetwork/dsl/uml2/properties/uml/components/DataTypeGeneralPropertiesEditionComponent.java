@@ -72,7 +72,7 @@ public class DataTypeGeneralPropertiesEditionComponent extends SinglePartPropert
 	/**
 	 * Settings for usecase ReferencesTable
 	 */
-	protected ReferencesTableSettings usecaseSettings;
+	private ReferencesTableSettings usecaseSettings;
 	
 	
 	/**

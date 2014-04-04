@@ -158,13 +158,13 @@ public class UmlViewsRepository {
 	 * @generated
 	 */
 	
-	public static String upperValue = "uml::General::upperValue";
+	public static String lowerValue = "uml::General::lowerValue";
 	
 	/**
 	 * @generated
 	 */
 	
-	public static String lowerValue = "uml::General::lowerValue";
+	public static String upperValue = "uml::General::upperValue";
 	
 	/**
 	 * @generated

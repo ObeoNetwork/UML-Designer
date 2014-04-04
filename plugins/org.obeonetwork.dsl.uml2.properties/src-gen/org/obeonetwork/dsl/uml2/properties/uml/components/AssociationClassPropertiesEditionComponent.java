@@ -72,7 +72,7 @@ public class AssociationClassPropertiesEditionComponent extends SinglePartProper
 	/**
 	 * Settings for memberEnd ReferencesTable
 	 */
-	protected ReferencesTableSettings memberEndSettings;
+	private ReferencesTableSettings memberEndSettings;
 	
 	
 	/**

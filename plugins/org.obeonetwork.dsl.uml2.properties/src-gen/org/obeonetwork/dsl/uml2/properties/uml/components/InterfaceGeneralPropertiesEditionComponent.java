@@ -72,7 +72,7 @@ public class InterfaceGeneralPropertiesEditionComponent extends SinglePartProper
 	/**
 	 * Settings for usecase ReferencesTable
 	 */
-	protected ReferencesTableSettings usecaseSettings;
+	private ReferencesTableSettings usecaseSettings;
 	
 	
 	/**

@@ -72,7 +72,7 @@ public class CollaborationPropertiesEditionComponent extends SinglePartPropertie
 	/**
 	 * Settings for usecase ReferencesTable
 	 */
-	protected ReferencesTableSettings usecaseSettings;
+	private ReferencesTableSettings usecaseSettings;
 	
 	
 	/**

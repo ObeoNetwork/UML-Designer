@@ -24,4 +24,9 @@ public class CustomUmlEEFAdapterFactory extends UmlEEFAdapterFactory {
 	public Adapter createAssociationAdapter() {
 		return new AssociationCustomPropertiesEditionProvider();
 	}
+
+	@Override
+	public Adapter createPinAdapter() {
+		return new PinCustomPropertiesEditionProvider();
+	}
 }

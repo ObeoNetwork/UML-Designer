@@ -71,7 +71,7 @@ public class ClassGeneralPropertiesEditionComponent extends SinglePartProperties
 	/**
 	 * Settings for usecase ReferencesTable
 	 */
-	protected ReferencesTableSettings usecaseSettings;
+	private ReferencesTableSettings usecaseSettings;
 	
 	
 	/**

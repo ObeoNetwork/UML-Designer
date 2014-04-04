@@ -72,7 +72,7 @@ public class ComponentPropertiesEditionComponent extends SinglePartPropertiesEdi
 	/**
 	 * Settings for usecase ReferencesTable
 	 */
-	protected ReferencesTableSettings usecaseSettings;
+	private ReferencesTableSettings usecaseSettings;
 	
 	
 	/**

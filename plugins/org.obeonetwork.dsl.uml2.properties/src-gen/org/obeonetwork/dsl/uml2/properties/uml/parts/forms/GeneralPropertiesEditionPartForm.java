@@ -60,7 +60,6 @@ import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 import org.eclipse.emf.eef.runtime.ui.widgets.EMFComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.FormUtils;
 import org.eclipse.emf.eef.runtime.ui.widgets.HorizontalBox;
-import org.eclipse.emf.eef.runtime.ui.widgets.LinkEObjectFlatComboViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.LinkEReferenceViewer;
 import org.eclipse.emf.eef.runtime.ui.widgets.ReferencesTable;
 
@@ -137,8 +136,8 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	protected ViewerFilter typeFilter;
 	protected EMFComboViewer direction;
 	protected EMFComboViewer aggregation;
-	protected Text upperValue;
 	protected Text lowerValue;
+	protected Text upperValue;
 	protected Text defaultValue;
 	protected ReferencesTable memberEnd;
 	protected List<ViewerFilter> memberEndBusinessFilters = new ArrayList<ViewerFilter>();
@@ -250,8 +249,8 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
     generalStep.addStep(UmlViewsRepository.General.type);
     generalStep.addStep(UmlViewsRepository.General.direction);
     generalStep.addStep(UmlViewsRepository.General.aggregation);
-    generalStep.addStep(UmlViewsRepository.General.upperValue);
     generalStep.addStep(UmlViewsRepository.General.lowerValue);
+    generalStep.addStep(UmlViewsRepository.General.upperValue);
     generalStep.addStep(UmlViewsRepository.General.defaultValue);
     generalStep.addStep(UmlViewsRepository.General.memberEnd);
     generalStep.addStep(UmlViewsRepository.General.supplier);
@@ -342,11 +341,11 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
         if (key == UmlViewsRepository.General.aggregation) {
           return createAggregationEMFComboViewer(widgetFactory, parent);
         }
-        if (key == UmlViewsRepository.General.upperValue) {
-          return createUpperValueText(widgetFactory, parent);
-        }
         if (key == UmlViewsRepository.General.lowerValue) {
           return createLowerValueText(widgetFactory, parent);
+        }
+        if (key == UmlViewsRepository.General.upperValue) {
+          return createUpperValueText(widgetFactory, parent);
         }
         if (key == UmlViewsRepository.General.defaultValue) {
           return createDefaultValueText(widgetFactory, parent);
@@ -1131,77 +1130,6 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	 * @generated
 	 */
 	
-	protected Composite createUpperValueText(FormToolkit widgetFactory, Composite parent) {
-    createDescription(parent, UmlViewsRepository.General.upperValue, UmlMessages.GeneralPropertiesEditionPart_UpperValueLabel);
-    upperValue = widgetFactory.createText(parent, ""); //$NON-NLS-1$
-    upperValue.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
-    widgetFactory.paintBordersFor(parent);
-    GridData upperValueData = new GridData(GridData.FILL_HORIZONTAL);
-    upperValue.setLayoutData(upperValueData);
-    upperValue.addFocusListener(new FocusAdapter() {
-      /**
-       * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-       * @generated
-       */
-      @Override
-      @SuppressWarnings("synthetic-access")
-      public void focusLost(FocusEvent e) {
-        if (propertiesEditionComponent != null) {
-          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
-              GeneralPropertiesEditionPartForm.this,
-              UmlViewsRepository.General.upperValue,
-              PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, upperValue.getText()));
-          propertiesEditionComponent
-              .firePropertiesChanged(new PropertiesEditionEvent(
-                  GeneralPropertiesEditionPartForm.this,
-                  UmlViewsRepository.General.upperValue,
-                  PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
-                  null, upperValue.getText()));
-        }
-      }
-
-      /**
-       * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
-       */
-      @Override
-      public void focusGained(FocusEvent e) {
-        if (propertiesEditionComponent != null) {
-          propertiesEditionComponent
-              .firePropertiesChanged(new PropertiesEditionEvent(
-                  GeneralPropertiesEditionPartForm.this,
-                  null,
-                  PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
-                  null, null));
-        }
-      }
-    });
-    upperValue.addKeyListener(new KeyAdapter() {
-      /**
-       * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-       * @generated
-       */
-      @Override
-      @SuppressWarnings("synthetic-access")
-      public void keyPressed(KeyEvent e) {
-        if (e.character == SWT.CR) {
-          if (propertiesEditionComponent != null)
-            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.upperValue, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, upperValue.getText()));
-        }
-      }
-    });
-    EditingUtils.setID(upperValue, UmlViewsRepository.General.upperValue);
-    EditingUtils.setEEFtype(upperValue, "eef::Text"); //$NON-NLS-1$
-    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.upperValue, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-    // Start of user code for createUpperValueText
-
-    // End of user code
-    return parent;
-  }
-
-	/**
-	 * @generated
-	 */
-	
 	protected Composite createLowerValueText(FormToolkit widgetFactory, Composite parent) {
     createDescription(parent, UmlViewsRepository.General.lowerValue, UmlMessages.GeneralPropertiesEditionPart_LowerValueLabel);
     lowerValue = widgetFactory.createText(parent, ""); //$NON-NLS-1$
@@ -1264,6 +1192,77 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
     EditingUtils.setEEFtype(lowerValue, "eef::Text"); //$NON-NLS-1$
     FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.lowerValue, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
     // Start of user code for createLowerValueText
+
+    // End of user code
+    return parent;
+  }
+
+	/**
+	 * @generated
+	 */
+	
+	protected Composite createUpperValueText(FormToolkit widgetFactory, Composite parent) {
+    createDescription(parent, UmlViewsRepository.General.upperValue, UmlMessages.GeneralPropertiesEditionPart_UpperValueLabel);
+    upperValue = widgetFactory.createText(parent, ""); //$NON-NLS-1$
+    upperValue.setData(FormToolkit.KEY_DRAW_BORDER, FormToolkit.TEXT_BORDER);
+    widgetFactory.paintBordersFor(parent);
+    GridData upperValueData = new GridData(GridData.FILL_HORIZONTAL);
+    upperValue.setLayoutData(upperValueData);
+    upperValue.addFocusListener(new FocusAdapter() {
+      /**
+       * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+       * @generated
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void focusLost(FocusEvent e) {
+        if (propertiesEditionComponent != null) {
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(
+              GeneralPropertiesEditionPartForm.this,
+              UmlViewsRepository.General.upperValue,
+              PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, upperValue.getText()));
+          propertiesEditionComponent
+              .firePropertiesChanged(new PropertiesEditionEvent(
+                  GeneralPropertiesEditionPartForm.this,
+                  UmlViewsRepository.General.upperValue,
+                  PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_LOST,
+                  null, upperValue.getText()));
+        }
+      }
+
+      /**
+       * @see org.eclipse.swt.events.FocusAdapter#focusGained(org.eclipse.swt.events.FocusEvent)
+       */
+      @Override
+      public void focusGained(FocusEvent e) {
+        if (propertiesEditionComponent != null) {
+          propertiesEditionComponent
+              .firePropertiesChanged(new PropertiesEditionEvent(
+                  GeneralPropertiesEditionPartForm.this,
+                  null,
+                  PropertiesEditionEvent.FOCUS_CHANGED, PropertiesEditionEvent.FOCUS_GAINED,
+                  null, null));
+        }
+      }
+    });
+    upperValue.addKeyListener(new KeyAdapter() {
+      /**
+       * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+       * @generated
+       */
+      @Override
+      @SuppressWarnings("synthetic-access")
+      public void keyPressed(KeyEvent e) {
+        if (e.character == SWT.CR) {
+          if (propertiesEditionComponent != null)
+            propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartForm.this, UmlViewsRepository.General.upperValue, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, upperValue.getText()));
+        }
+      }
+    });
+    EditingUtils.setID(upperValue, UmlViewsRepository.General.upperValue);
+    EditingUtils.setEEFtype(upperValue, "eef::Text"); //$NON-NLS-1$
+    FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.upperValue, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+    // Start of user code for createUpperValueText
 
     // End of user code
     return parent;
@@ -1776,7 +1775,6 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
     guard.setLayoutData(guardData);
     guard.setID(UmlViewsRepository.General.guard);
     FormUtils.createHelpButton(widgetFactory, parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.guard, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-
     // Start of user code for createGuardLinkEReferenceViewer
 
     // End of user code
@@ -3203,38 +3201,6 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getUpperValue()
-	 * @generated
-	 */
-	public String getUpperValue() {
-    return upperValue.getText();
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#setUpperValue(String newValue)
-	 * @generated
-	 */
-	public void setUpperValue(String newValue) {
-    if (newValue != null) {
-      upperValue.setText(newValue);
-    } else {
-      upperValue.setText(""); //$NON-NLS-1$
-    }
-    boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.upperValue);
-    if (eefElementEditorReadOnlyState && upperValue.isEnabled()) {
-      upperValue.setEnabled(false);
-      upperValue.setToolTipText(UmlMessages.General_ReadOnly);
-    } else if (!eefElementEditorReadOnlyState && !upperValue.isEnabled()) {
-      upperValue.setEnabled(true);
-    }	
-    
-  }
-
-	/**
-	 * {@inheritDoc}
-	 * 
 	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getLowerValue()
 	 * @generated
 	 */
@@ -3260,6 +3226,38 @@ public class GeneralPropertiesEditionPartForm extends SectionPropertiesEditingPa
       lowerValue.setToolTipText(UmlMessages.General_ReadOnly);
     } else if (!eefElementEditorReadOnlyState && !lowerValue.isEnabled()) {
       lowerValue.setEnabled(true);
+    }	
+    
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getUpperValue()
+	 * @generated
+	 */
+	public String getUpperValue() {
+    return upperValue.getText();
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#setUpperValue(String newValue)
+	 * @generated
+	 */
+	public void setUpperValue(String newValue) {
+    if (newValue != null) {
+      upperValue.setText(newValue);
+    } else {
+      upperValue.setText(""); //$NON-NLS-1$
+    }
+    boolean eefElementEditorReadOnlyState = isReadOnly(UmlViewsRepository.General.upperValue);
+    if (eefElementEditorReadOnlyState && upperValue.isEnabled()) {
+      upperValue.setEnabled(false);
+      upperValue.setToolTipText(UmlMessages.General_ReadOnly);
+    } else if (!eefElementEditorReadOnlyState && !upperValue.isEnabled()) {
+      upperValue.setEnabled(true);
     }	
     
   }

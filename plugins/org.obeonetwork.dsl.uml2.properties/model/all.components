@@ -649,11 +649,11 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ZaEwYYgGEeKvVepkggHJ6w" name="unique" views="_7zTMsFv7EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Operation/isUnique.1"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ZaEwY4gGEeKvVepkggHJ6w" name="upperValue" views="_DxkG8FwAEeKZBNASYbV97A">
-          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//MultiplicityElement/upperValue"/>
-        </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ZaEwZIgGEeKvVepkggHJ6w" name="lowerValue" views="_FkJe4FwAEeKZBNASYbV97A">
-          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//MultiplicityElement/lowerValue"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//MultiplicityElement/lower"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ZaEwY4gGEeKvVepkggHJ6w" name="upperValue" views="_DxkG8FwAEeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//MultiplicityElement/upper"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_kv6DYIgKEeKvVepkggHJ6w" name="type" views="_tYLxgFv8EeKZBNASYbV97A">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//TypedElement/type"/>
@@ -804,10 +804,10 @@
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_Afmm8FwAEeKZBNASYbV97A" name="aggregation">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
         </elements>
-        <elements xsi:type="eef-views:ElementEditor" xmi:id="_DxkG8FwAEeKZBNASYbV97A" name="upperValue">
+        <elements xsi:type="eef-views:ElementEditor" xmi:id="_FkJe4FwAEeKZBNASYbV97A" name="lowerValue">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
         </elements>
-        <elements xsi:type="eef-views:ElementEditor" xmi:id="_FkJe4FwAEeKZBNASYbV97A" name="lowerValue">
+        <elements xsi:type="eef-views:ElementEditor" xmi:id="_DxkG8FwAEeKZBNASYbV97A" name="upperValue">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_GfgT4FwAEeKZBNASYbV97A" name="defaultValue">

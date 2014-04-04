@@ -225,13 +225,13 @@ public class UmlMessages extends NLS {
 	 * @generated
 	 */
 	
-	public static String GeneralPropertiesEditionPart_UpperValueLabel;
+	public static String GeneralPropertiesEditionPart_LowerValueLabel;
 
 	/**
 	 * @generated
 	 */
 	
-	public static String GeneralPropertiesEditionPart_LowerValueLabel;
+	public static String GeneralPropertiesEditionPart_UpperValueLabel;
 
 	/**
 	 * @generated

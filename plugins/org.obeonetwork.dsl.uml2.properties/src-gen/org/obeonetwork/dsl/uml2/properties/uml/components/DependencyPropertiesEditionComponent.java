@@ -72,12 +72,12 @@ public class DependencyPropertiesEditionComponent extends SinglePartPropertiesEd
 	/**
 	 * Settings for supplier ReferencesTable
 	 */
-	protected ReferencesTableSettings supplierSettings;
+	private ReferencesTableSettings supplierSettings;
 	
 	/**
 	 * Settings for client ReferencesTable
 	 */
-	protected ReferencesTableSettings clientSettings;
+	private ReferencesTableSettings clientSettings;
 	
 	
 	/**
