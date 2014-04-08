@@ -2,12 +2,6 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         point="org.eclipse.ui.startup">
-      <startup
-            class="org.obeonetwork.dsl.uml2.usage.analytics.UsageStartup">
-      </startup>
-   </extension>
-   <extension
          point="org.eclipse.ui.preferencePages">
       <page
             category="org.eclipse.sirius.ui.page"
@@ -21,6 +15,12 @@
       <initializer
             class="org.obeonetwork.dsl.uml2.usage.preferences.UsagePreferenceInitializer">
       </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.sirius.sessionManagerListener">
+      <listener
+            class="org.obeonetwork.dsl.uml2.usage.analytics.UsageStartup">
+      </listener>
    </extension>
 
 </plugin>
