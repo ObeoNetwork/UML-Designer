@@ -19,6 +19,9 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionListener;
+import org.eclipse.sirius.business.api.session.SessionManagerListener.Stub;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
@@ -28,9 +31,11 @@ import org.eclipse.ui.IPartListener2;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.ui.PlatformUI;
+import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
 import org.obeonetwork.dsl.uml2.usage.UsageActivator;
 import org.obeonetwork.dsl.uml2.usage.dialog.UsageDialog;
 import org.obeonetwork.dsl.uml2.usage.preferences.UsagePreferences;
+import org.osgi.framework.Version;
 
 import com.dmurph.tracking.AnalyticsConfigData;
 import com.dmurph.tracking.JGoogleAnalyticsTracker;
@@ -45,13 +50,14 @@ import com.google.common.io.Files;
  * @author Melanie Bats <a
  *         href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
-public class SiriusEditorsListener implements IPartListener2 {
+public class SiriusEditorsListener extends Stub implements IPartListener2 {
 
 	private static final String ANALYTICS_ID = UsageMessages.Usage_GoogleAnalytics;
 	private JGoogleAnalyticsTracker tracker;
 	private EclipseUserAgent eclipseUserAgent;
 	private String hostname;
 	private UsagePreferences preferences = new UsagePreferences();
+	private String bundleVersion = "";
 
 	public SiriusEditorsListener() {
 		AnalyticsConfigData config = new AnalyticsConfigData(ANALYTICS_ID);
@@ -61,6 +67,18 @@ public class SiriusEditorsListener implements IPartListener2 {
 		tracker = new JGoogleAnalyticsTracker(config,
 				GoogleAnalyticsVersion.V_4_7_2);
 		hostname = getOrCreateHostname();
+		bundleVersion = readableVersion();
+	}
+
+	private String readableVersion() {
+		Version v = UMLDesignerPlugin.getDefault().getBundle().getVersion();
+		StringBuffer result = new StringBuffer(10);
+		result.append(v.getMajor());
+		result.append('.');
+		result.append(v.getMinor());
+		result.append('.');
+		result.append(v.getMicro());
+		return result.toString();
 	}
 
 	private String getOrCreateHostname() {
@@ -171,10 +189,24 @@ public class SiriusEditorsListener implements IPartListener2 {
 		// Send to google analytics information of usage report activation
 		if (preferences.isEnabled()) {
 			tracker.trackPageViewFromReferrer(
-					UsageMessages.Usage_ActivationPageURL,
+					UsageMessages.Usage_ActivationPageURL + "/" + bundleVersion,
 					UsageMessages.Usage_ActivationPageTitle, hostname,
 					eclipseUserAgent.getApplicationName() + ":"
 							+ eclipseUserAgent.getApplicationVersion(), "");
+		}
+	}
+
+	@Override
+	public void notify(Session updated, int notification) {
+		if (notification == SessionListener.OPENED) {
+			if (preferences.isEnabled()) {
+				tracker.trackPageViewFromReferrer(
+						UsageMessages.Usage_OpenPageURL + "/" + bundleVersion,
+						UsageMessages.Usage_OpenPageTitle, hostname,
+						eclipseUserAgent.getApplicationName() + ":"
+								+ eclipseUserAgent.getApplicationVersion(), "");
+			}
+
 		}
 	}
 

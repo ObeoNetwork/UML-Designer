@@ -11,6 +11,7 @@
 package org.obeonetwork.dsl.uml2.usage.analytics;
 
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener.Stub;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.IWindowListener;
@@ -60,10 +61,13 @@ public class UsageStartup extends Stub {
 							&& PlatformUI.getWorkbench() != null
 							&& PlatformUI.getWorkbench()
 									.getActiveWorkbenchWindow() != null) {
+						
 						usageListener = new SiriusEditorsListener();
+						
+						SessionManager.INSTANCE.addSessionsListener(usageListener);
 						PlatformUI.getWorkbench().getActiveWorkbenchWindow()
-								.getPartService()
-								.addPartListener(usageListener);
+						.getPartService()
+						.addPartListener(usageListener);
 						/*
 						 * a Dialect editor might be opened before arriving
 						 * here, for instance if Eclipse was restarted with an
