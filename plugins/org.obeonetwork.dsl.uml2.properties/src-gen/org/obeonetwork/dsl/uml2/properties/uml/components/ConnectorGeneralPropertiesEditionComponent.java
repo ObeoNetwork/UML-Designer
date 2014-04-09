@@ -98,8 +98,8 @@ public class ConnectorGeneralPropertiesEditionComponent extends SinglePartProper
 			}
 			generalPart.setLeaf(connector.isLeaf());
 			
-			if (isAccessible(UmlViewsRepository.General.kind)) {
-				generalPart.initKind(EEFUtils.choiceOfValues(connector, UMLPackage.eINSTANCE.getConnector_Kind()), connector.getKind());
+			if (isAccessible(UmlViewsRepository.General.kind_readonly)) {
+				generalPart.initKind_readonly(EEFUtils.choiceOfValues(connector, UMLPackage.eINSTANCE.getConnector_Kind()), connector.getKind());
 			}
 			generalPart.setStatic_(connector.isStatic());
 			
@@ -138,7 +138,7 @@ public class ConnectorGeneralPropertiesEditionComponent extends SinglePartProper
 		if (editorKey == UmlViewsRepository.General.Qualifiers.leaf) {
 			return UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf();
 		}
-		if (editorKey == UmlViewsRepository.General.kind) {
+		if (editorKey == UmlViewsRepository.General.kind_readonly) {
 			return UMLPackage.eINSTANCE.getConnector_Kind();
 		}
 		if (editorKey == UmlViewsRepository.General.Qualifiers.static_) {
@@ -189,8 +189,8 @@ public class ConnectorGeneralPropertiesEditionComponent extends SinglePartProper
 			if (UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.Qualifiers.leaf))
 				generalPart.setLeaf((Boolean)msg.getNewValue());
 			
-			if (UMLPackage.eINSTANCE.getConnector_Kind().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(UmlViewsRepository.General.kind))
-				generalPart.setKind((ConnectorKind)msg.getNewValue());
+			if (UMLPackage.eINSTANCE.getConnector_Kind().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(UmlViewsRepository.General.kind_readonly))
+				generalPart.setKind_readonly((ConnectorKind)msg.getNewValue());
 			
 			if (UMLPackage.eINSTANCE.getFeature_IsStatic().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.Qualifiers.static_))
 				generalPart.setStatic_((Boolean)msg.getNewValue());
@@ -220,7 +220,7 @@ public class ConnectorGeneralPropertiesEditionComponent extends SinglePartProper
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#mustBeComposed(java.lang.Object, int)
 	 */
 	public boolean mustBeComposed(Object key, int kind) {
-		return key == UmlViewsRepository.General.name || key == UmlViewsRepository.General.visibility || key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.kind || key == UmlViewsRepository.General.Qualifiers.static_ || key == UmlViewsRepository.General.Qualifiers.class;
+		return key == UmlViewsRepository.General.name || key == UmlViewsRepository.General.visibility || key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.kind_readonly || key == UmlViewsRepository.General.Qualifiers.static_ || key == UmlViewsRepository.General.Qualifiers.class;
 	}
 
 	/**
@@ -230,7 +230,7 @@ public class ConnectorGeneralPropertiesEditionComponent extends SinglePartProper
 	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.kind || key == UmlViewsRepository.General.Qualifiers.static_ || key == UmlViewsRepository.Ends.ends_;
+		return key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.kind_readonly || key == UmlViewsRepository.General.Qualifiers.static_ || key == UmlViewsRepository.Ends.ends_;
 	}
 
 	/**
@@ -264,7 +264,7 @@ public class ConnectorGeneralPropertiesEditionComponent extends SinglePartProper
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), newValue);
 				}
-				if (UmlViewsRepository.General.kind == event.getAffectedEditor()) {
+				if (UmlViewsRepository.General.kind_readonly == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
 					if (newValue instanceof String) {
 						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getConnector_Kind().getEAttributeType(), (String)newValue);

@@ -324,7 +324,7 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Mfht5FwGEeKZBNASYbV97A" name="leaf" views="_nujsAFv7EeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//RedefinableElement/isLeaf"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_RQlpIFwGEeKZBNASYbV97A" name="kind" views="_aI7i0FwGEeKZBNASYbV97A">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_RQlpIFwGEeKZBNASYbV97A" name="kind" views="_-Sk5sL_4EeOrofMqOn37iw">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Connector/kind"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_VWOo0FwGEeKZBNASYbV97A" name="static" views="_0YtDYFv7EeKZBNASYbV97A">
@@ -823,6 +823,9 @@
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_aI7i0FwGEeKZBNASYbV97A" name="kind">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
+        </elements>
+        <elements xsi:type="eef-views:ElementEditor" xmi:id="_-Sk5sL_4EeOrofMqOn37iw" name="kind_readonly" readOnly="true">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.2"/>
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_4NPrcHbAEeOwBvC6b4NfOg" name="trigger">

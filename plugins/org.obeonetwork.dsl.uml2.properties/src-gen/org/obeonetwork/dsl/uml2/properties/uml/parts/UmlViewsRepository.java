@@ -200,6 +200,12 @@ public class UmlViewsRepository {
 	 * @generated
 	 */
 	
+	public static String kind_readonly = "uml::General::kind_readonly";
+	
+	/**
+	 * @generated
+	 */
+	
 	public static String trigger = "uml::General::trigger";
 	
 	/**

@@ -143,6 +143,7 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
 	protected List<ViewerFilter> clientBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> clientFilters = new ArrayList<ViewerFilter>();
 	protected EMFComboViewer kind;
+	protected EMFComboViewer kind_readonly;
 	protected ReferencesTable trigger;
 	protected List<ViewerFilter> triggerBusinessFilters = new ArrayList<ViewerFilter>();
 	protected List<ViewerFilter> triggerFilters = new ArrayList<ViewerFilter>();
@@ -243,6 +244,7 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
     generalStep.addStep(UmlViewsRepository.General.supplier);
     generalStep.addStep(UmlViewsRepository.General.client);
     generalStep.addStep(UmlViewsRepository.General.kind);
+    generalStep.addStep(UmlViewsRepository.General.kind_readonly);
     generalStep.addStep(UmlViewsRepository.General.trigger);
     generalStep.addStep(UmlViewsRepository.General.effect);
     generalStep.addStep(UmlViewsRepository.General.guard);
@@ -348,6 +350,9 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
         }
         if (key == UmlViewsRepository.General.kind) {
           return createKindEMFComboViewer(parent);
+        }
+        if (key == UmlViewsRepository.General.kind_readonly) {
+          return createKind_readonlyEMFComboViewer(parent);
         }
         if (key == UmlViewsRepository.General.trigger) {
           return createTriggerAdvancedReferencesTable(parent);
@@ -1536,6 +1541,39 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
     kind.setID(UmlViewsRepository.General.kind);
     SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.kind, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
     // Start of user code for createKindEMFComboViewer
+
+    // End of user code
+    return parent;
+  }
+
+	/**
+	 * @generated
+	 */
+	
+	protected Composite createKind_readonlyEMFComboViewer(Composite parent) {
+    createDescription(parent, UmlViewsRepository.General.kind_readonly, UmlMessages.GeneralPropertiesEditionPart_Kind_readonlyLabel);
+    kind_readonly = new EMFComboViewer(parent);
+    kind_readonly.setContentProvider(new ArrayContentProvider());
+    kind_readonly.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+    GridData kind_readonlyData = new GridData(GridData.FILL_HORIZONTAL);
+    kind_readonly.getCombo().setLayoutData(kind_readonlyData);
+    kind_readonly.addSelectionChangedListener(new ISelectionChangedListener() {
+
+      /**
+       * {@inheritDoc}
+       * 
+       * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+       * 	@generated
+       */
+      public void selectionChanged(SelectionChangedEvent event) {
+        if (propertiesEditionComponent != null)
+          propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(GeneralPropertiesEditionPartImpl.this, UmlViewsRepository.General.kind_readonly, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getKind_readonly()));
+      }
+
+    });
+    kind_readonly.setID(UmlViewsRepository.General.kind_readonly);
+    SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(UmlViewsRepository.General.kind_readonly, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+    // Start of user code for createKind_readonlyEMFComboViewer
 
     // End of user code
     return parent;
@@ -3390,6 +3428,43 @@ public class GeneralPropertiesEditionPartImpl extends CompositePropertiesEdition
     } else if (!eefElementEditorReadOnlyState && !kind.isEnabled()) {
       kind.setEnabled(true);
     }	
+    
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#getKind_readonly()
+	 * @generated
+	 */
+	public Enumerator getKind_readonly() {
+    Enumerator selection = (Enumerator) ((StructuredSelection) kind_readonly.getSelection()).getFirstElement();
+    return selection;
+  }
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#initKind_readonly(Object input, Enumerator current)
+	 */
+	public void initKind_readonly(Object input, Enumerator current) {
+		kind_readonly.setInput(input);
+		kind_readonly.modelUpdating(new StructuredSelection(current));
+		kind_readonly.setEnabled(false);
+		kind_readonly.setToolTipText(UmlMessages.General_ReadOnly);
+		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart#setKind_readonly(Enumerator newValue)
+	 * @generated
+	 */
+	public void setKind_readonly(Enumerator newValue) {
+    kind_readonly.modelUpdating(new StructuredSelection(newValue));
+    kind_readonly.setEnabled(false);
+    kind_readonly.setToolTipText(UmlMessages.General_ReadOnly);
     
   }
 

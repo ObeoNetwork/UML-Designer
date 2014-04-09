@@ -267,6 +267,12 @@ public class UmlMessages extends NLS {
 	 * @generated
 	 */
 	
+	public static String GeneralPropertiesEditionPart_Kind_readonlyLabel;
+
+	/**
+	 * @generated
+	 */
+	
 	public static String GeneralPropertiesEditionPart_TriggerLabel;
 
 	/**

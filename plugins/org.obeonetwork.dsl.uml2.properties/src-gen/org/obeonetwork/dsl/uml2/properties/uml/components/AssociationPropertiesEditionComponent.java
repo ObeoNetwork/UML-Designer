@@ -10,6 +10,10 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.components;
 
+import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Package;
+import org.eclipse.uml2.uml.VisibilityKind;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;

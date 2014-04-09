@@ -555,6 +555,27 @@ public interface GeneralPropertiesEditionPart {
 	public void setKind(Enumerator newValue);
 
 
+	/**
+	 * @return the kind_readonly
+	 * @generated
+	 */
+	public Enumerator getKind_readonly();
+
+	/**
+	 * Init the kind_readonly
+	 * @param input the viewer input
+	 * @param current the current value
+	 */
+	public void initKind_readonly(Object input, Enumerator current);
+
+	/**
+	 * Defines a new kind_readonly
+	 * @param newValue the new kind_readonly to set
+	 * @generated
+	 */
+	public void setKind_readonly(Enumerator newValue);
+
+
 
 
 	/**

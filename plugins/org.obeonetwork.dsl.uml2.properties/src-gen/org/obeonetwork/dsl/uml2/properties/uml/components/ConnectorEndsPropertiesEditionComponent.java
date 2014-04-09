@@ -214,7 +214,7 @@ public class ConnectorEndsPropertiesEditionComponent extends SinglePartPropertie
 	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.kind || key == UmlViewsRepository.General.Qualifiers.static_ || key == UmlViewsRepository.Ends.ends_;
+		return key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.kind_readonly || key == UmlViewsRepository.General.Qualifiers.static_ || key == UmlViewsRepository.Ends.ends_;
 	}
 
 	/**
