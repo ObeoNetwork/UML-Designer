@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_oRyVocTYEeC0wZa75TykZw" name="Travel Agency">
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_oRyVocTYEeC0wZa75TykZw" name="Travel Agency">
   <ownedComment xmi:id="_EFJdAF6YEeOLjIFPBUiDWw" annotatedElement="_oRyVocTYEeC0wZa75TykZw">
     <body>Travel agency</body>
   </ownedComment>

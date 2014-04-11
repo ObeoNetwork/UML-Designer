@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_9lCPUdfqEeK8Hvme-uzzvQ" name="allConnectorCaseUnitTesting">
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_9lCPUdfqEeK8Hvme-uzzvQ" name="allConnectorCaseUnitTesting">
   <packagedElement xmi:type="uml:Package" xmi:id="_IOao0NfrEeK8Hvme-uzzvQ" name="caseABCD Classifier with Classifier">
     <packagedElement xmi:type="uml:Interface" xmi:id="_UXR4ENfrEeK8Hvme-uzzvQ" name="A"/>
     <packagedElement xmi:type="uml:Interface" xmi:id="_VQew8NfrEeK8Hvme-uzzvQ" name="B"/>

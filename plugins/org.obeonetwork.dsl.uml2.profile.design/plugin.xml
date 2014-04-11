@@ -18,10 +18,10 @@
      <constraintProvider
            cache="true">
         <package
-              namespaceUri="http://www.eclipse.org/uml2/4.0.0/UML">
+              namespaceUri="http://www.eclipse.org/uml2/5.0.0/UML">
         </package>
         <constraints
-              categories="http://www.eclipse.org/uml2/4.0.0/UML/Stereotype">
+              categories="http://www.eclipse.org/uml2/5.0.0/UML/Stereotype">
            <constraint
                  class="org.obeonetwork.dsl.uml2.profile.design.constraints.CheckStereotypeExtension"
                  id="org.obeonetwork.dsl.uml2.profile.design.stereotype.constraint1"

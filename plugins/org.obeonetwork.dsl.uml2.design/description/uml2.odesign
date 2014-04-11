@@ -2877,7 +2877,7 @@
       </additionalLayers>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Drop%20From%20Model'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Drop%20From%20Diagram']" name="Deployment Diagram" titleExpression="[name +' Deployment Diagram'/]" pasteDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Paste']" domainClass="uml.Package" enablePopupBars="true">
-      <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML#/"/>
+      <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
       <defaultLayer name="Deployment diagram">
         <edgeMappings name="DE_Link" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="service:diagram.getAssociationInverseRefs" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" targetFinderExpression="service:getTargetType" sourceFinderExpression="service:getSourceType" targetExpression="[self->including(getSource())->including(getTarget())/]" domainClass="uml.Association" useDomainElement="true" reconnections="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Reconnect']/@ownedTools[name='ReconnectLinkSource'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Reconnect']/@ownedTools[name='ReconnectLinkTarget']">
           <style targetArrow="NoDecoration" sizeComputationExpression="1" routingStyle="manhattan">
@@ -5062,7 +5062,7 @@
   </ownedViewpoints>
   <ownedViewpoints name="UML Extensions" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description_3:EditionTableDescription" name="Documentation Table" titleExpression="[name+' Documentation Table'/]" domainClass="uml.Package">
-      <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML#/"/>
+      <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
       <ownedLineMappings name="DT_PackageLine" domainClass="uml.Package" semanticCandidatesExpression="var:self">
         <defaultBackground>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -5102,7 +5102,7 @@
       </ownedColumnMappings>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_3:CrossTableDescription" name="Use Case Cross Table" titleExpression="[name+' Use Case Cross Table'/]" domainClass="uml.Model" initialHeaderColumnWidth="50">
-      <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML#/"/>
+      <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
       <ownedLineMappings name="UCT_ClassifierLine" domainClass="uml.Classifier">
         <defaultBackground>
           <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -5142,7 +5142,7 @@
       </intersection>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Package Containment" titleExpression="[name+ ' Package Containment'/]" domainClass="uml.Package" enablePopupBars="true">
-      <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML#/"/>
+      <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="Containment">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='UML%20Extensions']/@ownedRepresentations[name='Package%20Containment']/@defaultLayer/@edgeMappings[name='PC_Containment']"/>
       </filters>

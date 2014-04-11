@@ -6,7 +6,7 @@ Bundle-Activator: org.obeonetwork.dsl.uml2.profile.design.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.sirius;bundle-version="[1.0.0,2.0.0)",
- org.eclipse.uml2.uml;bundle-version="[4.0.0,5.0.0)",
+ org.eclipse.uml2.uml;bundle-version="[5.0.0,6.0.0)",
  org.obeonetwork.dsl.uml2.design;bundle-version="2.3.1",
  org.eclipse.emf.transaction,
  org.eclipse.emf.codegen.ecore,

@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="UmlDesigner-kepler" sequenceNumber="1396526315">
+<target name="UmlDesigner-kepler" sequenceNumber="1397208383">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.platform.feature.group" version="4.3.2.v20140221-1852"/>
       <unit id="org.eclipse.sdk.feature.group" version="4.3.2.v20140221-1852"/>
-      <unit id="org.eclipse.draw2d.sdk.feature.group" version="3.9.1.201308190730"/>
-      <unit id="org.eclipse.emf.sdk.feature.group" version="2.9.2.v20140203-1126"/>
-      <unit id="org.eclipse.emf.transaction.sdk.feature.group" version="1.7.0.201306111400"/>
-      <unit id="org.eclipse.emf.validation.sdk.feature.group" version="1.7.0.201306111341"/>
-      <unit id="org.eclipse.gef.sdk.feature.group" version="3.9.1.201308190730"/>
-      <unit id="org.eclipse.gmf.runtime.notation.sdk.feature.group" version="1.7.0.201306101425"/>
-      <unit id="org.eclipse.gmf.runtime.sdk.feature.group" version="1.7.0.201306111432"/>
-      <unit id="org.eclipse.uml2.sdk.feature.group" version="4.1.2.v20140202-2055"/>
-      <unit id="org.eclipse.papyrus.sysml.feature.feature.group" version="0.10.2.v201402191554"/>
       <unit id="org.eclipse.epp.mpc.feature.group" version="1.2.1.v20140219-1000"/>
       <unit id="org.eclipse.equinox.executable.feature.group" version="3.6.0.v20140117-1004"/>
       <repository location="http://download.eclipse.org/releases/kepler"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.emf.edit.feature.group" version="2.10.0.v20140407-1058"/>
+      <repository location="http://download.eclipse.org/modeling/emf/emf/updates/warmup/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.uml2.uml.feature.group" version="5.0.0.v20140310-0733"/>
+      <unit id="org.eclipse.uml2.uml.edit.feature.group" version="5.0.0.v20140310-0733"/>
+      <unit id="org.eclipse.uml2.feature.group" version="5.0.0.v20140310-0733"/>
+      <repository location="http://download.eclipse.org/modeling/mdt/uml2/updates/5.0milestones"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.swtbot.forms.feature.group" version="2.2.1.201402241301"/>
