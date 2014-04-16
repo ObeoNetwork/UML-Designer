@@ -133,8 +133,14 @@ public class PropertyPropertiesEditionComponent extends SinglePartPropertiesEdit
 			if (isAccessible(UmlViewsRepository.General.aggregation)) {
 				generalPart.initAggregation(EEFUtils.choiceOfValues(property, UMLPackage.eINSTANCE.getProperty_Aggregation()), property.getAggregation());
 			}
-			// FIXME NO VALID CASE INTO template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : upperValue, General, Property.
-			// FIXME NO VALID CASE INTO template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : lowerValue, General, Property.
+			if (isAccessible(UmlViewsRepository.General.lowerValue)) {
+				generalPart.setLowerValue(EEFConverterUtil.convertToString(TypesPackage.Literals.INTEGER, property.getLower()));
+			}
+			
+			if (isAccessible(UmlViewsRepository.General.upperValue)) {
+				generalPart.setUpperValue(EEFConverterUtil.convertToString(TypesPackage.Literals.UNLIMITED_NATURAL, property.getUpper()));
+			}
+			
 			if (isAccessible(UmlViewsRepository.General.defaultValue))
 				generalPart.setDefaultValue(EEFConverterUtil.convertToString(TypesPackage.Literals.STRING, property.getDefault()));
 			
@@ -156,8 +162,8 @@ public class PropertyPropertiesEditionComponent extends SinglePartPropertiesEdit
 			
 			
 			
-			// FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : upperValue, General, Property.
-			// FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : lowerValue, General, Property.
+			
+			
 			
 			
 			// init values for referenced views
@@ -219,11 +225,11 @@ public class PropertyPropertiesEditionComponent extends SinglePartPropertiesEdit
 		if (editorKey == UmlViewsRepository.General.aggregation) {
 			return UMLPackage.eINSTANCE.getProperty_Aggregation();
 		}
-		if (editorKey == UmlViewsRepository.General.upperValue) {
-			return UMLPackage.eINSTANCE.getMultiplicityElement_UpperValue();
-		}
 		if (editorKey == UmlViewsRepository.General.lowerValue) {
-			return UMLPackage.eINSTANCE.getMultiplicityElement_LowerValue();
+			return UMLPackage.eINSTANCE.getMultiplicityElement_Lower();
+		}
+		if (editorKey == UmlViewsRepository.General.upperValue) {
+			return UMLPackage.eINSTANCE.getMultiplicityElement_Upper();
 		}
 		if (editorKey == UmlViewsRepository.General.defaultValue) {
 			return UMLPackage.eINSTANCE.getProperty_Default();
@@ -265,11 +271,11 @@ public class PropertyPropertiesEditionComponent extends SinglePartPropertiesEdit
 		if (UmlViewsRepository.General.aggregation == event.getAffectedEditor()) {
 			property.setAggregation((AggregationKind)event.getNewValue());
 		}
-		if (UmlViewsRepository.General.upperValue == event.getAffectedEditor()) {
-			// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : upperValue, General, Property.
-		}
 		if (UmlViewsRepository.General.lowerValue == event.getAffectedEditor()) {
-			// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : lowerValue, General, Property.
+			property.setLower((EEFConverterUtil.createIntFromString(TypesPackage.Literals.INTEGER, (String)event.getNewValue())));
+		}
+		if (UmlViewsRepository.General.upperValue == event.getAffectedEditor()) {
+			property.setUpper((EEFConverterUtil.createIntFromString(TypesPackage.Literals.UNLIMITED_NATURAL, (String)event.getNewValue())));
 		}
 		if (UmlViewsRepository.General.defaultValue == event.getAffectedEditor()) {
 			property.setDefault((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
@@ -332,8 +338,20 @@ public class PropertyPropertiesEditionComponent extends SinglePartPropertiesEdit
 			if (UMLPackage.eINSTANCE.getProperty_Aggregation().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(UmlViewsRepository.General.aggregation))
 				generalPart.setAggregation((AggregationKind)msg.getNewValue());
 			
-			// FIXME INVALID CASE INTO template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : upperValue, General, Property.
-			// FIXME INVALID CASE INTO template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : lowerValue, General, Property.
+			if (UMLPackage.eINSTANCE.getMultiplicityElement_Lower().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.lowerValue)) {
+				if (msg.getNewValue() != null) {
+					generalPart.setLowerValue(EcoreUtil.convertToString(TypesPackage.Literals.INTEGER, msg.getNewValue()));
+				} else {
+					generalPart.setLowerValue("");
+				}
+			}
+			if (UMLPackage.eINSTANCE.getMultiplicityElement_Upper().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.upperValue)) {
+				if (msg.getNewValue() != null) {
+					generalPart.setUpperValue(EcoreUtil.convertToString(TypesPackage.Literals.UNLIMITED_NATURAL, msg.getNewValue()));
+				} else {
+					generalPart.setUpperValue("");
+				}
+			}
 			if (UMLPackage.eINSTANCE.getProperty_Default().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.defaultValue)) {
 				if (msg.getNewValue() != null) {
 					generalPart.setDefaultValue(EcoreUtil.convertToString(TypesPackage.Literals.STRING, msg.getNewValue()));
@@ -365,8 +383,8 @@ public class PropertyPropertiesEditionComponent extends SinglePartPropertiesEdit
 			UMLPackage.eINSTANCE.getProperty_IsDerived(),
 			UMLPackage.eINSTANCE.getProperty_IsDerivedUnion(),
 			UMLPackage.eINSTANCE.getProperty_Aggregation(),
-			UMLPackage.eINSTANCE.getMultiplicityElement_UpperValue(),
-			UMLPackage.eINSTANCE.getMultiplicityElement_LowerValue(),
+			UMLPackage.eINSTANCE.getMultiplicityElement_Lower(),
+			UMLPackage.eINSTANCE.getMultiplicityElement_Upper(),
 			UMLPackage.eINSTANCE.getProperty_Default(),
 			UMLPackage.eINSTANCE.getTypedElement_Type()		);
 		return new NotificationFilter[] {filter,};
@@ -377,7 +395,7 @@ public class PropertyPropertiesEditionComponent extends SinglePartPropertiesEdit
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#mustBeComposed(java.lang.Object, int)
 	 */
 	public boolean mustBeComposed(Object key, int kind) {
-		return key == UmlViewsRepository.General.name || key == UmlViewsRepository.General.visibility || key == UmlViewsRepository.General.Qualifiers.static_ || key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.Qualifiers.ordered || key == UmlViewsRepository.General.Qualifiers.unique || key == UmlViewsRepository.General.Qualifiers.readOnly || key == UmlViewsRepository.General.Qualifiers.derived || key == UmlViewsRepository.General.Qualifiers.derivedUnion || key == UmlViewsRepository.General.aggregation || key == UmlViewsRepository.General.upperValue || key == UmlViewsRepository.General.lowerValue || key == UmlViewsRepository.General.defaultValue || key == UmlViewsRepository.General.type || key == UmlViewsRepository.General.Qualifiers.class;
+		return key == UmlViewsRepository.General.name || key == UmlViewsRepository.General.visibility || key == UmlViewsRepository.General.Qualifiers.static_ || key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.Qualifiers.ordered || key == UmlViewsRepository.General.Qualifiers.unique || key == UmlViewsRepository.General.Qualifiers.readOnly || key == UmlViewsRepository.General.Qualifiers.derived || key == UmlViewsRepository.General.Qualifiers.derivedUnion || key == UmlViewsRepository.General.aggregation || key == UmlViewsRepository.General.lowerValue || key == UmlViewsRepository.General.upperValue || key == UmlViewsRepository.General.defaultValue || key == UmlViewsRepository.General.type || key == UmlViewsRepository.General.Qualifiers.class;
 	}
 
 	/**
@@ -469,6 +487,20 @@ public class PropertyPropertiesEditionComponent extends SinglePartPropertiesEdit
 						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getProperty_Aggregation().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getProperty_Aggregation().getEAttributeType(), newValue);
+				}
+				if (UmlViewsRepository.General.lowerValue == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getMultiplicityElement_Lower().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getMultiplicityElement_Lower().getEAttributeType(), newValue);
+				}
+				if (UmlViewsRepository.General.upperValue == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getMultiplicityElement_Upper().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getMultiplicityElement_Upper().getEAttributeType(), newValue);
 				}
 				if (UmlViewsRepository.General.defaultValue == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();

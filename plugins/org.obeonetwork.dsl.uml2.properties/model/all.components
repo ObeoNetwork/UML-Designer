@@ -213,11 +213,11 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_nh7BYFv_EeKZBNASYbV97A" name="aggregation" views="_Afmm8FwAEeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Property/aggregation"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rw3HAFv_EeKZBNASYbV97A" name="upperValue" views="_DxkG8FwAEeKZBNASYbV97A">
-          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//MultiplicityElement/upperValue"/>
-        </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_uCzUcFv_EeKZBNASYbV97A" name="lowerValue" views="_FkJe4FwAEeKZBNASYbV97A">
-          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//MultiplicityElement/lowerValue"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//MultiplicityElement/lower"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_rw3HAFv_EeKZBNASYbV97A" name="upperValue" views="_DxkG8FwAEeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//MultiplicityElement/upper"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_wZBk8Fv_EeKZBNASYbV97A" name="defaultValue" views="_GfgT4FwAEeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Property/default"/>
@@ -381,14 +381,14 @@
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ts0ZOlwGEeKZBNASYbV97A" name="type" views="_tYLxgFv8EeKZBNASYbV97A">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//TypedElement/type"/>
         </properties>
-        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ts0ZO1wGEeKZBNASYbV97A" name="upperValue" views="_DxkG8FwAEeKZBNASYbV97A">
-          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//MultiplicityElement/upperValue"/>
-        </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ts0ZPFwGEeKZBNASYbV97A" name="lowerValue" views="_FkJe4FwAEeKZBNASYbV97A">
-          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//MultiplicityElement/lowerValue"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//MultiplicityElement/lower"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ts0ZO1wGEeKZBNASYbV97A" name="upperValue" views="_DxkG8FwAEeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//MultiplicityElement/upper"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_ts0ZPVwGEeKZBNASYbV97A" name="defaultValue" views="_GfgT4FwAEeKZBNASYbV97A">
-          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Property/defaultValue"/>
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Property/default"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_JZ0EsFwHEeKZBNASYbV97A" name="behavior" views="_PvtPwFwHEeKZBNASYbV97A">
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Port/isBehavior"/>

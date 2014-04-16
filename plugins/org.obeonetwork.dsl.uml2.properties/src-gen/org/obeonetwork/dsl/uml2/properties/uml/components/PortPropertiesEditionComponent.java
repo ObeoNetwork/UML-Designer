@@ -140,9 +140,17 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 				// set the button mode
 				generalPart.setTypeButtonMode(ButtonsModeEnum.BROWSE);
 			}
-			// FIXME NO VALID CASE INTO template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : upperValue, General, Port.
-			// FIXME NO VALID CASE INTO template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : lowerValue, General, Port.
-			// FIXME NO VALID CASE INTO template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : defaultValue, General, Port.
+			if (isAccessible(UmlViewsRepository.General.lowerValue)) {
+				generalPart.setLowerValue(EEFConverterUtil.convertToString(TypesPackage.Literals.INTEGER, port.getLower()));
+			}
+			
+			if (isAccessible(UmlViewsRepository.General.upperValue)) {
+				generalPart.setUpperValue(EEFConverterUtil.convertToString(TypesPackage.Literals.UNLIMITED_NATURAL, port.getUpper()));
+			}
+			
+			if (isAccessible(UmlViewsRepository.General.defaultValue))
+				generalPart.setDefaultValue(EEFConverterUtil.convertToString(TypesPackage.Literals.STRING, port.getDefault()));
+			
 			generalPart.setBehavior(port.isBehavior());
 			
 			generalPart.setService(port.isService());
@@ -159,9 +167,9 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			
 			
 			
-			// FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : upperValue, General, Port.
-			// FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : lowerValue, General, Port.
-			// FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : defaultValue, General, Port.
+			
+			
+			
 			
 			
 			// init values for referenced views
@@ -228,14 +236,14 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 		if (editorKey == UmlViewsRepository.General.type) {
 			return UMLPackage.eINSTANCE.getTypedElement_Type();
 		}
-		if (editorKey == UmlViewsRepository.General.upperValue) {
-			return UMLPackage.eINSTANCE.getMultiplicityElement_UpperValue();
-		}
 		if (editorKey == UmlViewsRepository.General.lowerValue) {
-			return UMLPackage.eINSTANCE.getMultiplicityElement_LowerValue();
+			return UMLPackage.eINSTANCE.getMultiplicityElement_Lower();
+		}
+		if (editorKey == UmlViewsRepository.General.upperValue) {
+			return UMLPackage.eINSTANCE.getMultiplicityElement_Upper();
 		}
 		if (editorKey == UmlViewsRepository.General.defaultValue) {
-			return UMLPackage.eINSTANCE.getProperty_DefaultValue();
+			return UMLPackage.eINSTANCE.getProperty_Default();
 		}
 		if (editorKey == UmlViewsRepository.General.Qualifiers.behavior) {
 			return UMLPackage.eINSTANCE.getPort_IsBehavior();
@@ -291,14 +299,14 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 				}
 			}
 		}
-		if (UmlViewsRepository.General.upperValue == event.getAffectedEditor()) {
-			// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : upperValue, General, Port.
-		}
 		if (UmlViewsRepository.General.lowerValue == event.getAffectedEditor()) {
-			// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : lowerValue, General, Port.
+			port.setLower((EEFConverterUtil.createIntFromString(TypesPackage.Literals.INTEGER, (String)event.getNewValue())));
+		}
+		if (UmlViewsRepository.General.upperValue == event.getAffectedEditor()) {
+			port.setUpper((EEFConverterUtil.createIntFromString(TypesPackage.Literals.UNLIMITED_NATURAL, (String)event.getNewValue())));
 		}
 		if (UmlViewsRepository.General.defaultValue == event.getAffectedEditor()) {
-			// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : defaultValue, General, Port.
+			port.setDefault((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}
 		if (UmlViewsRepository.General.Qualifiers.behavior == event.getAffectedEditor()) {
 			port.setIsBehavior((Boolean)event.getNewValue());
@@ -352,9 +360,27 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			
 			if (UMLPackage.eINSTANCE.getTypedElement_Type().equals(msg.getFeature()) && generalPart != null && isAccessible(UmlViewsRepository.General.type))
 				generalPart.setType((EObject)msg.getNewValue());
-			// FIXME INVALID CASE INTO template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : upperValue, General, Port.
-			// FIXME INVALID CASE INTO template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : lowerValue, General, Port.
-			// FIXME INVALID CASE INTO template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : defaultValue, General, Port.
+			if (UMLPackage.eINSTANCE.getMultiplicityElement_Lower().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.lowerValue)) {
+				if (msg.getNewValue() != null) {
+					generalPart.setLowerValue(EcoreUtil.convertToString(TypesPackage.Literals.INTEGER, msg.getNewValue()));
+				} else {
+					generalPart.setLowerValue("");
+				}
+			}
+			if (UMLPackage.eINSTANCE.getMultiplicityElement_Upper().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.upperValue)) {
+				if (msg.getNewValue() != null) {
+					generalPart.setUpperValue(EcoreUtil.convertToString(TypesPackage.Literals.UNLIMITED_NATURAL, msg.getNewValue()));
+				} else {
+					generalPart.setUpperValue("");
+				}
+			}
+			if (UMLPackage.eINSTANCE.getProperty_Default().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.defaultValue)) {
+				if (msg.getNewValue() != null) {
+					generalPart.setDefaultValue(EcoreUtil.convertToString(TypesPackage.Literals.STRING, msg.getNewValue()));
+				} else {
+					generalPart.setDefaultValue("");
+				}
+			}
 			if (UMLPackage.eINSTANCE.getPort_IsBehavior().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.Qualifiers.behavior))
 				generalPart.setBehavior((Boolean)msg.getNewValue());
 			
@@ -384,9 +410,9 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			UMLPackage.eINSTANCE.getProperty_IsDerivedUnion(),
 			UMLPackage.eINSTANCE.getProperty_Aggregation(),
 			UMLPackage.eINSTANCE.getTypedElement_Type(),
-			UMLPackage.eINSTANCE.getMultiplicityElement_UpperValue(),
-			UMLPackage.eINSTANCE.getMultiplicityElement_LowerValue(),
-			UMLPackage.eINSTANCE.getProperty_DefaultValue(),
+			UMLPackage.eINSTANCE.getMultiplicityElement_Lower(),
+			UMLPackage.eINSTANCE.getMultiplicityElement_Upper(),
+			UMLPackage.eINSTANCE.getProperty_Default(),
 			UMLPackage.eINSTANCE.getPort_IsBehavior(),
 			UMLPackage.eINSTANCE.getPort_IsService()		);
 		return new NotificationFilter[] {filter,};
@@ -397,7 +423,7 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#mustBeComposed(java.lang.Object, int)
 	 */
 	public boolean mustBeComposed(Object key, int kind) {
-		return key == UmlViewsRepository.General.name || key == UmlViewsRepository.General.visibility || key == UmlViewsRepository.General.Qualifiers.static_ || key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.Qualifiers.ordered || key == UmlViewsRepository.General.Qualifiers.unique || key == UmlViewsRepository.General.Qualifiers.readOnly || key == UmlViewsRepository.General.Qualifiers.derived || key == UmlViewsRepository.General.Qualifiers.derivedUnion || key == UmlViewsRepository.General.aggregation || key == UmlViewsRepository.General.type || key == UmlViewsRepository.General.upperValue || key == UmlViewsRepository.General.lowerValue || key == UmlViewsRepository.General.defaultValue || key == UmlViewsRepository.General.Qualifiers.behavior || key == UmlViewsRepository.General.Qualifiers.service || key == UmlViewsRepository.General.Qualifiers.class;
+		return key == UmlViewsRepository.General.name || key == UmlViewsRepository.General.visibility || key == UmlViewsRepository.General.Qualifiers.static_ || key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.Qualifiers.ordered || key == UmlViewsRepository.General.Qualifiers.unique || key == UmlViewsRepository.General.Qualifiers.readOnly || key == UmlViewsRepository.General.Qualifiers.derived || key == UmlViewsRepository.General.Qualifiers.derivedUnion || key == UmlViewsRepository.General.aggregation || key == UmlViewsRepository.General.type || key == UmlViewsRepository.General.lowerValue || key == UmlViewsRepository.General.upperValue || key == UmlViewsRepository.General.defaultValue || key == UmlViewsRepository.General.Qualifiers.behavior || key == UmlViewsRepository.General.Qualifiers.service || key == UmlViewsRepository.General.Qualifiers.class;
 	}
 
 	/**
@@ -489,6 +515,27 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getProperty_Aggregation().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getProperty_Aggregation().getEAttributeType(), newValue);
+				}
+				if (UmlViewsRepository.General.lowerValue == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getMultiplicityElement_Lower().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getMultiplicityElement_Lower().getEAttributeType(), newValue);
+				}
+				if (UmlViewsRepository.General.upperValue == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getMultiplicityElement_Upper().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getMultiplicityElement_Upper().getEAttributeType(), newValue);
+				}
+				if (UmlViewsRepository.General.defaultValue == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getProperty_Default().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getProperty_Default().getEAttributeType(), newValue);
 				}
 				if (UmlViewsRepository.General.Qualifiers.behavior == event.getAffectedEditor()) {
 					Object newValue = event.getNewValue();
