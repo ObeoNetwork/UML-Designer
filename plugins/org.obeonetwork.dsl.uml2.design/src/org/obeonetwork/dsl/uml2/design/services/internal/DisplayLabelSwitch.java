@@ -413,6 +413,11 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	@Override
 	public String caseCallOperationAction(CallOperationAction object) {
 		if (object.getOperation() != null) {
+			String callOperationName = caseNamedElement(object);
+			String operationName = object.getOperation().getName();
+			if (callOperationName != null && callOperationName.equals(operationName)) {
+				return callOperationName;
+			}
 			return caseNamedElement(object) + SPACED_COLUMN + object.getOperation().getName();
 		}
 
