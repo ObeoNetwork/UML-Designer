@@ -17,7 +17,7 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.edit.api.part.IStyleEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IStyleEditPart;
 
 /**
  * @author hmarchadour

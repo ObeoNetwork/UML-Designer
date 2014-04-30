@@ -6,7 +6,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.sirius.diagram,
  org.eclipse.sirius.common.ui,
- org.eclipse.gmf.runtime.diagram.ui
+ org.eclipse.gmf.runtime.diagram.ui,
+ org.eclipse.sirius.diagram.ui
 Bundle-Activator: org.obeonetwork.gmf.runtime.diagram.ui.extension.ExtensionActivator
 Bundle-Localization: plugin
 Bundle-Vendor: Obeo Network

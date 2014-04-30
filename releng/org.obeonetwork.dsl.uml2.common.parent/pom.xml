@@ -40,7 +40,7 @@ Contributors:
   <properties>
     <tycho-version>0.19.0</tycho-version>
     <root-path>../..</root-path>
-    <platform-version-name>kepler</platform-version-name>
+    <platform-version-name>luna</platform-version-name>
   </properties>
 
   <build>

@@ -37,7 +37,8 @@ Require-Bundle: org.eclipse.ui,
  org.obeonetwork.gmf.runtime.diagram.ui.extension,
  org.eclipse.sirius.ecore.extender,
  org.eclipse.sirius.ext.base,
- com.google.guava
+ com.google.guava,
+ org.eclipse.sirius.diagram.ui
 Bundle-ActivationPolicy: lazy
 Export-Package: org.obeonetwork.dsl.uml2.design,
  org.obeonetwork.dsl.uml2.design.services,
