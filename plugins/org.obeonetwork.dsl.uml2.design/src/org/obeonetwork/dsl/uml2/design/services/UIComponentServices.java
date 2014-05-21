@@ -22,7 +22,6 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.business.internal.helper.task.operations.CreateViewTask;
 import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeContainerSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DSemanticDiagramSpec;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.tool.CreateView;
@@ -150,7 +149,7 @@ public class UIComponentServices {
 	public void dropComponentFromModel(final Element newContainer, final NamedElement semanticElement,
 			final DSemanticDecorator containerView) {
 		new UIServices().dropFromModel(newContainer, semanticElement, containerView);
-		drop(newContainer, semanticElement, containerView, !(containerView instanceof DSemanticDiagramSpec));
+		drop(newContainer, semanticElement, containerView, !(containerView instanceof DSemanticDiagram));
 	}
 
 	/**

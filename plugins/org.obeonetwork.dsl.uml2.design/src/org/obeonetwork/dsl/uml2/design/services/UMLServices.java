@@ -34,8 +34,8 @@ import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.EdgeTarget;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DSemanticDiagramSpec;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -816,8 +816,8 @@ public class UMLServices {
 		}
 		UMLServices service = new UMLServices();
 		List<EObject> results = null;
-		if (representation instanceof DSemanticDiagramSpec) {
-			DiagramDescription description = ((DSemanticDiagramSpec)representation).getDescription();
+		if (representation instanceof DSemanticDiagram) {
+			DiagramDescription description = ((DSemanticDiagram)representation).getDescription();
 
 			if ("Class Diagram".equals(description.getName())
 					|| "Profile Diagram".equals(description.getName())) {
