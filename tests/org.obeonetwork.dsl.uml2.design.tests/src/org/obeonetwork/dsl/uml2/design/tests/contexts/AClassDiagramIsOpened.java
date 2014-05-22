@@ -21,7 +21,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotDesignerEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -37,7 +37,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 	// Start of user code AClassDiagramIsOpened variables
 	protected UMLDesignerBot bot;
 
-	SWTBotDesignerEditor classDiagram;
+	SWTBotSiriusDiagramEditor classDiagram;
 
 	public ModelChangeRecorder recorder;
 
