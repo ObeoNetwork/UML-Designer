@@ -18,18 +18,22 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.uml2.uml.Action;
 import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.ActivityGroup;
 import org.eclipse.uml2.uml.ActivityNode;
 import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.CallAction;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.InputPin;
+import org.eclipse.uml2.uml.InterruptibleActivityRegion;
 import org.eclipse.uml2.uml.InvocationAction;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.OpaqueAction;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.OutputPin;
 import org.eclipse.uml2.uml.UMLFactory;
+
+import com.google.common.collect.Lists;
 
 /**
  * A set of services to handle the UML Activity diagram.
@@ -140,6 +144,28 @@ public class ActivityServices {
 	}
 
 	/**
+	 * Retrieves the child {@link InterruptibleActivityRegion} from either {@link Activity} or
+	 * {@link InterruptibleActivityRegion} context object. This is used has the semantic candidates expression
+	 * of AD_InterruptibleActivityRegion container mapping.
+	 * 
+	 * @param context
+	 *            the context object on which to execute this service.
+	 * @return a list of {@link InterruptibleActivityRegion}
+	 */
+	public List<InterruptibleActivityRegion> getInterruptibleActivityRegions(Element context) {
+		List<InterruptibleActivityRegion> interruptibleRegions = Lists.newArrayList();
+		if (context instanceof Activity) {
+			for (ActivityGroup group : ((Activity)context).getOwnedGroups()) {
+				if (group instanceof InterruptibleActivityRegion) {
+					interruptibleRegions.add((InterruptibleActivityRegion)group);
+				}
+			}
+		}
+
+		return interruptibleRegions;
+	}
+
+	/**
 	 * Return the given context object if it's an {@link Activity} or find it into the parent elements.<br>
 	 * This is used to compute the context of Activity diagram creation tools. Activity Nodes & Actions can be
 	 * created within either an {@link Activity} or an {@link ActivityPartition}, but they are always
@@ -178,11 +204,22 @@ public class ActivityServices {
 			childNodes = new ArrayList<ActivityNode>(allActivityNodes);
 
 			for (ActivityNode activityNode : allActivityNodes) {
-				if (activityNode.getInPartitions().size() > 0)
-					childNodes.remove(activityNode);
+				if (activityNode.getInPartitions().size() > 0) {
+					for (ActivityPartition partition : activityNode.getInPartitions()) {
+						childNodes.removeAll(partition.getNodes());
+					}
+				}
+				if (activityNode.getInInterruptibleRegions().size() > 0) {
+					for (InterruptibleActivityRegion interruptRegion : activityNode
+							.getInInterruptibleRegions()) {
+						childNodes.removeAll(interruptRegion.getNodes());
+					}
+				}
 			}
 		} else if (context instanceof ActivityPartition) {
 			childNodes = ((ActivityPartition)context).getNodes();
+		} else if (context instanceof InterruptibleActivityRegion) {
+			childNodes = ((InterruptibleActivityRegion)context).getNodes();
 		} else {
 			childNodes = Collections.emptyList();
 		}
@@ -246,11 +283,13 @@ public class ActivityServices {
 	 *            the dropped node
 	 * @return the given node or <code>null</code> if the given node is not of a correct type.
 	 */
-	public Element dropNode(Element context, Element node) {
+	public Element dropNode(Element context, Element node, Element oldContext) {
 		if (node instanceof ActivityNode) {
-			return dropNode(context, (ActivityNode)node);
+			return dropNode(context, (ActivityNode)node, oldContext);
 		} else if (node instanceof ActivityPartition) {
-			return dropNode(context, (ActivityPartition)node);
+			return dropNode(context, (ActivityPartition)node, oldContext);
+		} else if (node instanceof InterruptibleActivityRegion) {
+			return dropNode(context, (InterruptibleActivityRegion)node, oldContext);
 		}
 
 		return null;
@@ -265,11 +304,16 @@ public class ActivityServices {
 	 *            the node to drop
 	 * @return the given node object
 	 */
-	private ActivityNode dropNode(Element context, ActivityNode node) {
-		node.getInPartitions().clear();
-
+	private ActivityNode dropNode(Element context, ActivityNode node, Element oldContext) {
+		if (oldContext instanceof ActivityPartition) {
+			node.getInPartitions().remove((ActivityPartition)oldContext);
+		} else if (oldContext instanceof InterruptibleActivityRegion) {
+			node.getInInterruptibleRegions().remove((InterruptibleActivityRegion)oldContext);
+		}
 		if (context instanceof ActivityPartition) {
 			node.getInPartitions().add((ActivityPartition)context);
+		} else if (context instanceof InterruptibleActivityRegion) {
+			node.getInInterruptibleRegions().add((InterruptibleActivityRegion)context);
 		}
 
 		return node;
@@ -284,12 +328,40 @@ public class ActivityServices {
 	 *            the partition to drop
 	 * @return the given partition object
 	 */
-	private ActivityPartition dropNode(Element context, ActivityPartition partition) {
+	private ActivityPartition dropNode(Element context, ActivityPartition partition, Element oldContext) {
 		if (context instanceof Activity) {
 			((Activity)context).getPartitions().add(partition);
 		} else if (context instanceof ActivityPartition) {
 			((ActivityPartition)context).getSubpartitions().add(partition);
 		}
 		return partition;
+	}
+
+	/**
+	 * Manages the drag & drop of {@link InterruptibleActivityRegion}.
+	 * 
+	 * @param context
+	 *            object ({@link Activity} or {@link InterruptibleActivityRegion}) on which to drop the node
+	 * @param interruptRegion
+	 *            the partition to drop
+	 * @return the given partition object
+	 */
+	private InterruptibleActivityRegion dropNode(Element context,
+			InterruptibleActivityRegion interruptRegion, Element oldContext) {
+		if (context instanceof Activity) {
+			((Activity)context).getOwnedGroups().add(interruptRegion);
+		}
+		return interruptRegion;
+	}
+
+	/**
+	 * Get the interruptible region associated to an activity node.
+	 * 
+	 * @param node
+	 *            Activity node
+	 * @return Interruptible region
+	 */
+	public InterruptibleActivityRegion getInterruptibleRegion(ActivityNode node) {
+		return node.getInInterruptibleRegions().get(0);
 	}
 }
