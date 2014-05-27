@@ -3897,8 +3897,8 @@
           <conditionnalStyles predicateExpression="[self.interrupts->size()>0/]">
             <style sizeComputationExpression="1" routingStyle="manhattan">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
-              <centerLabelStyleDescription labelExpression="interrupt" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/InterruptibleActivityRegion.gif">
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <centerLabelStyleDescription labelExpression="." iconPath="/org.obeonetwork.dsl.uml2.design/icons/InterruptibleEdgeIcon.png">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
               </centerLabelStyleDescription>
             </style>
           </conditionnalStyles>
@@ -4374,7 +4374,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Interrupting Edge" edgeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@edgeMappings[name='AD_ControlFlow']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/InterruptibleActivityRegion.gif" connectionStartPrecondition="[preSource.oclAsType(uml::ActivityNode).inInterruptibleRegion->size()>0/]">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Interrupting Edge" precondition="service:preTarget.isValidInterruptingEdgeEnd(preSource)" edgeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@edgeMappings[name='AD_ControlFlow']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/InterruptibleActivityRegion.gif" connectionStartPrecondition="[preSource.oclAsType(uml::ActivityNode).inInterruptibleRegion->size()>0/]">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>

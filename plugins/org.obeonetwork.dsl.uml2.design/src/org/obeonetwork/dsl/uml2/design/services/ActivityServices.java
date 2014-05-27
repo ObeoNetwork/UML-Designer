@@ -364,4 +364,26 @@ public class ActivityServices {
 	public InterruptibleActivityRegion getInterruptibleRegion(ActivityNode node) {
 		return node.getInInterruptibleRegions().get(0);
 	}
+
+	/**
+	 * Check if the selected opaque action is not in the same interrupted region than the selected source of
+	 * the interrupting edge.
+	 * 
+	 * @param preTarget
+	 *            Pre selected target for the interrupting edge
+	 * @param source
+	 *            Selected source element of the interrupting edge
+	 * @return True the target element is valid else false
+	 */
+	public boolean isValidInterruptingEdgeEnd(OpaqueAction preTarget, OpaqueAction source) {
+		List<InterruptibleActivityRegion> preTargetRegions = preTarget.getInInterruptibleRegions();
+		if (preTargetRegions != null) {
+			for (InterruptibleActivityRegion sourceRegion : source.getInInterruptibleRegions()) {
+				if (preTargetRegions.contains(sourceRegion)) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
 }

@@ -11,8 +11,15 @@
 
 package org.obeonetwork.dsl.uml2.design.tests.contexts;
 
-import static org.junit.Assert.*;
-	import org.obeonetwork.dsl.uml2.design.tests.automation.Context;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
+import java.util.Collections;
+import java.util.List;
+// End of user code
 
 // Start of user code AnUmlModelWithAClassAndAnOperation imports
 import org.eclipse.uml2.uml.Action;
@@ -25,16 +32,13 @@ import org.eclipse.uml2.uml.OpaqueAction;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.obeonetwork.dsl.uml2.design.services.ActivityServices;
-
-import java.util.Collections;
-import java.util.List;
-// End of user code
+import org.obeonetwork.dsl.uml2.design.tests.automation.Context;
 
 /**
  * Context : An Uml model with a class and an operation
  */
 public class AnUmlModelWithAClassAndAnOperation extends Context {
-// Start of user code AnUmlModelWithAClassAndAnOperation variables
+	// Start of user code AnUmlModelWithAClassAndAnOperation variables
 	/**
 	 * The services to test.
 	 */
@@ -69,21 +73,24 @@ public class AnUmlModelWithAClassAndAnOperation extends Context {
 	 * The partitions.
 	 */
 	ActivityPartition partition;
+
 	ActivityPartition partition2;
-	
+
 	/**
 	 * Activity node.
 	 */
 	ActivityNode node;
+
 	/**
 	 * Found nodes.
 	 */
 	List<ActivityNode> foundNodes;
-	
+
 	/**
 	 * Action.
 	 */
 	Action action;
+
 	// End of user code
 
 	@Override
@@ -104,6 +111,7 @@ public class AnUmlModelWithAClassAndAnOperation extends Context {
 		// Nothing
 		// End of user code
 	}
+
 	/**
 	 * Action : I create an output pin on a call operation action
 	 */
@@ -121,8 +129,8 @@ public class AnUmlModelWithAClassAndAnOperation extends Context {
 		// Start of user code IDropANodeToAPartition
 		node = activityUnderTest.getNode(IN_ACTIVITY_ACTION);
 		partition = activityUnderTest.getPartition(P1);
-		
-		services.dropNode(partition, node);
+
+		services.dropNode(partition, node, activityUnderTest);
 		// End of user code
 	}
 
@@ -153,7 +161,7 @@ public class AnUmlModelWithAClassAndAnOperation extends Context {
 		// Start of user code IDropAPartitionToAnotherPartition
 		partition = activityUnderTest.getPartition(P1);
 		partition2 = activityUnderTest.getPartition("p2");
-		services.dropNode(partition2, partition);		// End of user code
+		services.dropNode(partition2, partition, activityUnderTest); // End of user code
 	}
 
 	/**
@@ -163,7 +171,7 @@ public class AnUmlModelWithAClassAndAnOperation extends Context {
 		// Start of user code IDropAPartitionToAnActivity
 		partition = activityUnderTest.getPartition(P1);
 		partition2 = activityUnderTest.getPartition("p2");
-		services.dropNode(activityUnderTest, partition);
+		services.dropNode(activityUnderTest, partition, activityUnderTest);
 		// End of user code
 	}
 
@@ -229,7 +237,7 @@ public class AnUmlModelWithAClassAndAnOperation extends Context {
 	public void actionIDropANodeToAnActivity() {
 		// Start of user code IDropANodeToAnActivity
 		node = activityUnderTest.getNode(IN_ACTIVITY_ACTION);
-		services.dropNode(activityUnderTest, node);
+		services.dropNode(activityUnderTest, node, activityUnderTest);
 		// End of user code
 	}
 
@@ -252,6 +260,7 @@ public class AnUmlModelWithAClassAndAnOperation extends Context {
 		assertTrue(activityUnderTest.getPartitions().contains(partition));
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The parent partition contains the dropped partition
 	 */
@@ -261,16 +270,18 @@ public class AnUmlModelWithAClassAndAnOperation extends Context {
 		assertFalse(activityUnderTest.getPartitions().contains(partition));
 		// End of user code
 	}
+
 	/**
 	 * Behavior : I get the parent activity
 	 */
 	public void assertIGetTheParentActivity() {
 		// Start of user code IGetTheParentActivity
 		assertEquals(activityUnderTest, services.findParentActivity(partition));
-		
+
 		assertNull(services.findParentActivity(UMLFactory.eINSTANCE.createClass()));
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The activity contains the node
 	 */
@@ -279,6 +290,7 @@ public class AnUmlModelWithAClassAndAnOperation extends Context {
 		assertTrue(node.getInPartitions().isEmpty());
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The partition contains the node
 	 */
@@ -287,6 +299,7 @@ public class AnUmlModelWithAClassAndAnOperation extends Context {
 		assertTrue(partition.getNodes().contains(node));
 		// End of user code
 	}
+
 	/**
 	 * Behavior : An activity which referenced the operation is created
 	 */
@@ -296,6 +309,7 @@ public class AnUmlModelWithAClassAndAnOperation extends Context {
 		assertEquals(activityUnderTest, op.getMethods().get(0));
 		// End of user code
 	}
+
 	/**
 	 * Behavior : I get all the parent activity partition nodes
 	 */
@@ -303,10 +317,11 @@ public class AnUmlModelWithAClassAndAnOperation extends Context {
 		// Start of user code IGetAllTheParentActivityPartitionNodes
 		assertEquals(1, foundNodes.size());
 		assertEquals(node, foundNodes.get(0));
-		
+
 		assertEquals(Collections.EMPTY_LIST, services.getActivityNodes(UMLFactory.eINSTANCE.createClass()));
 		// End of user code
 	}
+
 	/**
 	 * Behavior : I get all the activity partitions defined for the activity
 	 */
@@ -317,6 +332,7 @@ public class AnUmlModelWithAClassAndAnOperation extends Context {
 		assertNull(services.getActivityPartitions(UMLFactory.eINSTANCE.createClass()));
 		// End of user code
 	}
+
 	/**
 	 * Behavior : An input pin is created on the opaque action
 	 */
@@ -325,6 +341,7 @@ public class AnUmlModelWithAClassAndAnOperation extends Context {
 		assertFalse(((OpaqueAction)action).getInputValues().isEmpty());
 		// End of user code
 	}
+
 	/**
 	 * Behavior : An input pin is created on the call operation action
 	 */
@@ -333,6 +350,7 @@ public class AnUmlModelWithAClassAndAnOperation extends Context {
 		assertFalse(((CallOperationAction)action).getArguments().isEmpty());
 		// End of user code
 	}
+
 	/**
 	 * Behavior : An output pin is created on the call operation action
 	 */
@@ -341,6 +359,7 @@ public class AnUmlModelWithAClassAndAnOperation extends Context {
 		assertFalse(((CallOperationAction)action).getResults().isEmpty());
 		// End of user code
 	}
+
 	/**
 	 * Behavior : An output pin is created on the opaque action
 	 */
@@ -349,6 +368,7 @@ public class AnUmlModelWithAClassAndAnOperation extends Context {
 		assertFalse(((OpaqueAction)action).getOutputValues().isEmpty());
 		// End of user code
 	}
+
 	/**
 	 * Behavior : I get all the parent activity nodes
 	 */
@@ -359,7 +379,7 @@ public class AnUmlModelWithAClassAndAnOperation extends Context {
 		// End of user code
 	}
 
-// Start of user code AnUmlModelWithAClassAndAnOperation private methods
+	// Start of user code AnUmlModelWithAClassAndAnOperation private methods
 	/**
 	 * Initialize a mock {@link Activity} used for testing purpose.
 	 * 
