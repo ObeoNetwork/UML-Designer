@@ -18,16 +18,25 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.uml2.uml.Action;
 import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.ActivityGroup;
 import org.eclipse.uml2.uml.ActivityNode;
 import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.CallAction;
+import org.eclipse.uml2.uml.ControlFlow;
+import org.eclipse.uml2.uml.DecisionNode;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.FinalNode;
+import org.eclipse.uml2.uml.ForkNode;
+import org.eclipse.uml2.uml.InitialNode;
 import org.eclipse.uml2.uml.InputPin;
 import org.eclipse.uml2.uml.InterruptibleActivityRegion;
 import org.eclipse.uml2.uml.InvocationAction;
+import org.eclipse.uml2.uml.JoinNode;
+import org.eclipse.uml2.uml.MergeNode;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.ObjectFlow;
 import org.eclipse.uml2.uml.OpaqueAction;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.OutputPin;
@@ -39,6 +48,7 @@ import com.google.common.collect.Lists;
  * A set of services to handle the UML Activity diagram.
  * 
  * @author Gonzague Reydet <a href="mailto:gonzague.reydet@obeo.fr">gonzague.reydet@obeo.fr</a>
+ * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class ActivityServices {
 
@@ -384,6 +394,88 @@ public class ActivityServices {
 				}
 			}
 		}
+		return true;
+	}
+
+	public boolean isValidActivityEdgeEnd(Element preTarget) {
+		return isValidFlowEnd(preTarget);
+	}
+
+	private boolean isValidFlowEnd(Element preTarget) {
+		// InitialNode shall not have any incoming ActivityEdges
+		if (preTarget instanceof InitialNode) {
+			return false;
+		}
+
+		// A ForkNode shall have exactly one incoming ActivityEdge, though it may have multiple outgoing
+		// ActivityEdges.
+		if (preTarget instanceof ForkNode) {
+			List<ActivityEdge> incomings = ((ForkNode)preTarget).getIncomings();
+			if (incomings != null && incomings.size() == 1) {
+				return false;
+			}
+		}
+
+		// A DecisionNode shall have at least one and at most two incoming ActivityEdges
+		if (preTarget instanceof DecisionNode) {
+			List<ActivityEdge> incomings = ((DecisionNode)preTarget).getIncomings();
+			if (incomings != null && incomings.size() == 2) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	public boolean isValidObjectFlowStart(Element preSource) {
+		// The outgoing ActivityEdges of an InitialNode must all be ControlFlows
+		if (preSource instanceof InitialNode) {
+			return false;
+		}
+
+		// ForkNode, JoinNode, MergeNode, DecisionNode : if the incoming edge is an ObjectFlow, then all
+		// outgoing edges shall be ObjectFlows
+		if (preSource instanceof ActivityNode) {
+			for (ActivityEdge incoming : ((ActivityNode)preSource).getIncomings()) {
+				if (incoming instanceof ControlFlow) {
+					return false;
+				}
+			}
+		}
+
+		return isValidFlowStart(preSource);
+	}
+
+	public boolean isValidControlFlowStart(Element preSource) {
+		// ForkNode, JoinNode, MergeNode, DecisionNode : if the incoming edge is a ControlFlow, then all
+		// outgoing edges shall be ControlFlows
+		if (preSource instanceof ActivityNode) {
+			for (ActivityEdge incoming : ((ActivityNode)preSource).getIncomings()) {
+				if (incoming instanceof ObjectFlow) {
+					return false;
+				}
+			}
+		}
+
+		return isValidFlowStart(preSource);
+	}
+
+	private boolean isValidFlowStart(Element preSource) {
+		// A FinalNode shall not have outgoing ActivityEdges
+		if (preSource instanceof FinalNode) {
+			return false;
+		}
+
+		// A JoinNode/MergeNode/DecisionNode shall have exactly one outgoing ActivityEdge but may have
+		// multiple incoming ActivityEdges.
+		if (preSource instanceof JoinNode || preSource instanceof MergeNode
+				|| preSource instanceof DecisionNode) {
+			List<ActivityEdge> outgoing = ((ActivityNode)preSource).getOutgoings();
+			if (outgoing != null && outgoing.size() == 1) {
+				return false;
+			}
+		}
+
 		return true;
 	}
 }
