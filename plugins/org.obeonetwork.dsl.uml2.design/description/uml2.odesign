@@ -4231,25 +4231,6 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ContainerCreationDescription" name="Activity State" containerMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/OpaqueAction.gif">
-              <variable name="container"/>
-              <viewVariable name="containerView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
-                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:findParentActivity">
-                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="uml.OpaqueAction" referenceName="ownedNode">
-                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="[container->filter(uml::ActivityPartition)->size()>0/]">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="inPartition" valueExpression="var:container"/>
-                      </subModelOperations>
-                      <subModelOperations xsi:type="tool_1:If" conditionExpression="[container->filter(uml::InterruptibleActivityRegion)->size()>0/]">
-                        <subModelOperations xsi:type="tool_1:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
-                      </subModelOperations>
-                    </subModelOperations>
-                  </subModelOperations>
-                </firstModelOperations>
-              </initialOperation>
-            </tools>
             <tools xsi:type="tool_1:SelectionWizardDescription" name="Call Operation Action" forceRefresh="true" candidatesExpression="[getAllAvailableRootPackages()->union(getAllAvailableRootPackages().eAllContents()->filter(uml::Classifier))->union(getAllAvailableRootPackages().eAllContents()->filter(uml::Operation))/]" tree="true" rootExpression="service:getAllAvailableRootPackages" childrenExpression="feature:eContents" message="Select the target operation of the call operation action to create" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/CallOperationAction.gif" windowTitle="New Call Operation Action" windowImagePath="">
               <element name="element"/>
               <containerView name="containerView"/>
