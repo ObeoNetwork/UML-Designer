@@ -17,7 +17,7 @@ cd p2
 git config user.email "melanie.bats@obeo.fr"
 git config user.name "Mélanie Bats"
 git remote rm origin
-git remote add origin https://uml-designer:$GITHUB_TOKEN@github.com/UML-Designer/p2.git
+git remote add origin https://UML-Designer:$GITHUB_TOKEN@github.com/UML-Designer/p2.git
 git add -A
 git commit -m "Promoting a new nightly build for https://github.com/UML-Designer/UML-Designer/commit/$TRAVIS_COMMIT [$TRAVIS_BRANCH]"
 git push origin gh-pages --quiet &>/dev/null
