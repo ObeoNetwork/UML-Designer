@@ -1,0 +1,12 @@
+language: java
+before_script:
+- cd plugins/org.obeonetwork.dsl.uml2.design.doc
+- npm install -g bower
+- bower install
+- cd ../../
+script: mvn clean verify
+after_script:
+- ls
+- chmod a+x travis-promote.sh
+- ./travis-promote.sh
+jdk: oraclejdk7
