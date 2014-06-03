@@ -1,4 +1,5 @@
 language: java
+install: echo "Install phase"
 before_script:
 - cd plugins/org.obeonetwork.dsl.uml2.design.doc
 - npm install -g bower
