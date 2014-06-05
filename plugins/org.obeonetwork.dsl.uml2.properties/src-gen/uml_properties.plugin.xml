@@ -6,7 +6,7 @@
   <!-- EEF extensions -->
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
-            uri="http://www.eclipse.org/uml2/4.0.0/UML"
+            uri="http://www.eclipse.org/uml2/5.0.0/UML"
             class="org.obeonetwork.dsl.uml2.properties.uml.providers.UmlEEFAdapterFactory"
             supportedTypes="org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider"/>
    </extension>
@@ -401,6 +401,42 @@
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.StatePropertiesEditionProvider$EditionFilter"
                id="org.obeonetwork.dsl.uml2.properties.uml.section.State"
+               tab="General">
+         </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.ConstraintPropertiesEditionProvider$EditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Constraint"
+               tab="General">
+         </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.DurationPropertiesEditionProvider$EditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Duration"
+               tab="General">
+         </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.IntervalPropertiesEditionProvider$EditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Interval"
+               tab="General">
+         </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.ExpressionPropertiesEditionProvider$EditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Expression"
+               tab="General">
+         </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.InstanceValuePropertiesEditionProvider$EditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.InstanceValue"
+               tab="General">
+         </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.InstanceSpecificationPropertiesEditionProvider$EditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.InstanceSpecification"
                tab="General">
          </propertySection>
       </propertySections>

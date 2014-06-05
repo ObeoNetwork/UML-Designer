@@ -26,11 +26,11 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createDependencyAdapter()
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createClassAdapter()
 	 * @generated
 	 */
-	public Adapter createDependencyAdapter() {
-		return new DependencyPropertiesEditionProvider();
+	public Adapter createClassAdapter() {
+		return new Class_PropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}
@@ -39,14 +39,6 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	 */
 	public Adapter createCommentAdapter() {
 		return new CommentPropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createClassAdapter()
-	 * @generated
-	 */
-	public Adapter createClassAdapter() {
-		return new Class_PropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}
@@ -90,6 +82,22 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createValueSpecificationAdapter()
+	 * @generated
+	 */
+	public Adapter createValueSpecificationAdapter() {
+		return new ValueSpecificationPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createDependencyAdapter()
+	 * @generated
+	 */
+	public Adapter createDependencyAdapter() {
+		return new DependencyPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createArtifactAdapter()
 	 * @generated
 	 */
@@ -98,11 +106,35 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createParameterAdapter()
+	 * @generated
+	 */
+	public Adapter createParameterAdapter() {
+		return new ParameterPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createOperationAdapter()
 	 * @generated
 	 */
 	public Adapter createOperationAdapter() {
 		return new OperationPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createConstraintAdapter()
+	 * @generated
+	 */
+	public Adapter createConstraintAdapter() {
+		return new ConstraintPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createDataTypeAdapter()
+	 * @generated
+	 */
+	public Adapter createDataTypeAdapter() {
+		return new DataTypePropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}
@@ -170,27 +202,19 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createParameterAdapter()
-	 * @generated
-	 */
-	public Adapter createParameterAdapter() {
-		return new ParameterPropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createDataTypeAdapter()
-	 * @generated
-	 */
-	public Adapter createDataTypeAdapter() {
-		return new DataTypePropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
 	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createEnumerationAdapter()
 	 * @generated
 	 */
 	public Adapter createEnumerationAdapter() {
 		return new EnumerationPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createInstanceSpecificationAdapter()
+	 * @generated
+	 */
+	public Adapter createInstanceSpecificationAdapter() {
+		return new InstanceSpecificationPropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}
@@ -210,11 +234,27 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createExpressionAdapter()
+	 * @generated
+	 */
+	public Adapter createExpressionAdapter() {
+		return new ExpressionPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createCollaborationAdapter()
 	 * @generated
 	 */
 	public Adapter createCollaborationAdapter() {
 		return new CollaborationPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createConnectorAdapter()
+	 * @generated
+	 */
+	public Adapter createConnectorAdapter() {
+		return new ConnectorPropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}
@@ -250,14 +290,6 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createConnectorAdapter()
-	 * @generated
-	 */
-	public Adapter createConnectorAdapter() {
-		return new ConnectorPropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
 	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createActivityEdgeAdapter()
 	 * @generated
 	 */
@@ -274,30 +306,6 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createControlNodeAdapter()
-	 * @generated
-	 */
-	public Adapter createControlNodeAdapter() {
-		return new ControlNodePropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createActorAdapter()
-	 * @generated
-	 */
-	public Adapter createActorAdapter() {
-		return new ActorPropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createAssociationClassAdapter()
-	 * @generated
-	 */
-	public Adapter createAssociationClassAdapter() {
-		return new AssociationClassPropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
 	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createCallOperationActionAdapter()
 	 * @generated
 	 */
@@ -306,11 +314,19 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createComponentAdapter()
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createOpaqueActionAdapter()
 	 * @generated
 	 */
-	public Adapter createComponentAdapter() {
-		return new ComponentPropertiesEditionProvider();
+	public Adapter createOpaqueActionAdapter() {
+		return new OpaqueActionPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createControlNodeAdapter()
+	 * @generated
+	 */
+	public Adapter createControlNodeAdapter() {
+		return new ControlNodePropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}
@@ -322,6 +338,14 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createInstanceValueAdapter()
+	 * @generated
+	 */
+	public Adapter createInstanceValueAdapter() {
+		return new InstanceValuePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createFinalStateAdapter()
 	 * @generated
 	 */
@@ -330,11 +354,51 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createOpaqueActionAdapter()
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createAssociationClassAdapter()
 	 * @generated
 	 */
-	public Adapter createOpaqueActionAdapter() {
-		return new OpaqueActionPropertiesEditionProvider();
+	public Adapter createAssociationClassAdapter() {
+		return new AssociationClassPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createComponentAdapter()
+	 * @generated
+	 */
+	public Adapter createComponentAdapter() {
+		return new ComponentPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createActorAdapter()
+	 * @generated
+	 */
+	public Adapter createActorAdapter() {
+		return new ActorPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createDurationAdapter()
+	 * @generated
+	 */
+	public Adapter createDurationAdapter() {
+		return new DurationPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createIntervalAdapter()
+	 * @generated
+	 */
+	public Adapter createIntervalAdapter() {
+		return new IntervalPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createLiteralSpecificationAdapter()
+	 * @generated
+	 */
+	public Adapter createLiteralSpecificationAdapter() {
+		return new LiteralSpecificationPropertiesEditionProvider();
 	}
 
 }

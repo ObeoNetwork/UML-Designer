@@ -637,33 +637,6 @@ public interface GeneralPropertiesEditionPart {
 	 */
 	public void setEffect(EObject newValue);
 
-	/**
-	 * Defines the button mode
-	 * @param newValue the new mode to set
-	 * @generated
-	 */
-	public void setEffectButtonMode(ButtonsModeEnum newValue);
-
-	/**
-	 * Adds the given filter to the effect edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * @generated
-	 */
-	public void addFilterToEffect(ViewerFilter filter);
-
-	/**
-	 * Adds the given filter to the effect edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 * @generated
-	 */
-	public void addBusinessFilterToEffect(ViewerFilter filter);
-
 
 	/**
 	 * @return the guard
@@ -1262,6 +1235,214 @@ public interface GeneralPropertiesEditionPart {
 	 * @generated
 	 */
 	public void addBusinessFilterToSubmachine(ViewerFilter filter);
+
+
+	/**
+	 * @return the specification
+	 * @generated
+	 */
+	public EObject getSpecification();
+
+	/**
+	 * Init the specification
+	 * @param settings the combo setting
+	 */
+	public void initSpecification(EObjectFlatComboSettings settings);
+
+	/**
+	 * Defines a new specification
+	 * @param newValue the new specification to set
+	 * @generated
+	 */
+	public void setSpecification(EObject newValue);
+
+
+	/**
+	 * @return the instanceValue
+	 * @generated
+	 */
+	public EObject getInstanceValue();
+
+	/**
+	 * Init the instanceValue
+	 * @param settings the combo setting
+	 */
+	public void initInstanceValue(EObjectFlatComboSettings settings);
+
+	/**
+	 * Defines a new instanceValue
+	 * @param newValue the new instanceValue to set
+	 * @generated
+	 */
+	public void setInstanceValue(EObject newValue);
+
+	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 * @generated
+	 */
+	public void setInstanceValueButtonMode(ButtonsModeEnum newValue);
+
+	/**
+	 * Adds the given filter to the instanceValue edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addFilterToInstanceValue(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the instanceValue edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addBusinessFilterToInstanceValue(ViewerFilter filter);
+
+
+	/**
+	 * @return the min
+	 * @generated
+	 */
+	public EObject getMin();
+
+	/**
+	 * Init the min
+	 * @param settings the combo setting
+	 */
+	public void initMin(EObjectFlatComboSettings settings);
+
+	/**
+	 * Defines a new min
+	 * @param newValue the new min to set
+	 * @generated
+	 */
+	public void setMin(EObject newValue);
+
+	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 * @generated
+	 */
+	public void setMinButtonMode(ButtonsModeEnum newValue);
+
+	/**
+	 * Adds the given filter to the min edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addFilterToMin(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the min edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addBusinessFilterToMin(ViewerFilter filter);
+
+
+	/**
+	 * @return the instance
+	 * @generated
+	 */
+	public EObject getInstance();
+
+	/**
+	 * Init the instance
+	 * @param settings the combo setting
+	 */
+	public void initInstance(EObjectFlatComboSettings settings);
+
+	/**
+	 * Defines a new instance
+	 * @param newValue the new instance to set
+	 * @generated
+	 */
+	public void setInstance(EObject newValue);
+
+	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 * @generated
+	 */
+	public void setInstanceButtonMode(ButtonsModeEnum newValue);
+
+	/**
+	 * Adds the given filter to the instance edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addFilterToInstance(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the instance edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addBusinessFilterToInstance(ViewerFilter filter);
+
+
+	/**
+	 * @return the max
+	 * @generated
+	 */
+	public EObject getMax();
+
+	/**
+	 * Init the max
+	 * @param settings the combo setting
+	 */
+	public void initMax(EObjectFlatComboSettings settings);
+
+	/**
+	 * Defines a new max
+	 * @param newValue the new max to set
+	 * @generated
+	 */
+	public void setMax(EObject newValue);
+
+	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 * @generated
+	 */
+	public void setMaxButtonMode(ButtonsModeEnum newValue);
+
+	/**
+	 * Adds the given filter to the max edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addFilterToMax(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the max edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addBusinessFilterToMax(ViewerFilter filter);
 
 
 

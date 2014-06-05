@@ -56,7 +56,6 @@ import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 
 import org.eclipse.uml2.types.TypesPackage;
 
-import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.TransitionKind;
 import org.eclipse.uml2.uml.UMLFactory;
@@ -91,14 +90,9 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 	private ReferencesTableSettings guardCreateSettings;
 	
 	/**
-	 * Settings for effect LinkEReferenceViewer
+	 * Settings for effect SingleCompositionEditor
 	 */
 	private EObjectFlatComboSettings effectSettings;
-	
-	/**
-	 * Creation Settings for effect LinkEReferenceViewer
-	 */
-	private ReferencesTableSettings effectCreateSettings;
 	
 	/**
 	 * Settings for source EObjectFlatComboViewer
@@ -161,8 +155,6 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 				// init part
 				effectSettings = new EObjectFlatComboSettings(transition, UMLPackage.eINSTANCE.getTransition_Effect());
 				generalPart.initEffect(effectSettings);
-				// set the button mode
-				generalPart.setEffectButtonMode(ButtonsModeEnum.CREATE);
 			}
 			if (isAccessible(UmlViewsRepository.General.source)) {
 				// init part
@@ -302,27 +294,35 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 			}
 		}
 		if (UmlViewsRepository.General.effect == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				effectSettings.setToReference((Behavior)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
-					if (editionPolicy != null) {
-						editionPolicy.execute();
+			if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				if (effectSettings.getValue() == "") {
+					EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, effectSettings, editingContext.getAdapterFactory());
+					PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(editingContext.getEObject(), PropertiesEditingProvider.class);
+					Object result = null;
+					if (provider != null) {
+						PropertiesEditingPolicy policy = provider.getPolicy(context);
+						if (policy instanceof CreateEditingPolicy) {
+							policy.execute();
+							result = ((CreateEditingPolicy) policy).getResult();
+						}
+					}
+					if (result != null) {
+						effectSettings.setToReference(result);
+					}
+				} else {
+					EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) effectSettings.getValue(), editingContext.getAdapterFactory());
+					PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(effectSettings.getValue(), PropertiesEditingProvider.class);
+					if (provider != null) {
+						PropertiesEditingPolicy policy = provider.getPolicy(context);
+						if (policy != null) {
+							policy.execute();
+						}
 					}
 				}
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, effectSettings, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy instanceof CreateEditingPolicy) {
-						policy.execute();
-					}
-				}
+			} else if (event.getKind() == PropertiesEditionEvent.UNSET) {
+				effectSettings.setToReference(null);
 			}
+			
 		}
 		if (UmlViewsRepository.General.source == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET) {

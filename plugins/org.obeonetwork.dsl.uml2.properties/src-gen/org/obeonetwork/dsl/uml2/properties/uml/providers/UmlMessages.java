@@ -375,6 +375,36 @@ public class UmlMessages extends NLS {
 	 * @generated
 	 */
 	
+	public static String GeneralPropertiesEditionPart_SpecificationLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_InstanceValueLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_MinLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_InstanceLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_MaxLabel;
+
+	/**
+	 * @generated
+	 */
+	
 	public static String OperationsPropertiesEditionPart_OperationsLabel;
 
 	/**

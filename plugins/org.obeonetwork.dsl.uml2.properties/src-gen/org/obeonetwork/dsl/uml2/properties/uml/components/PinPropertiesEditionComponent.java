@@ -300,7 +300,7 @@ public class PinPropertiesEditionComponent extends SinglePartPropertiesEditingCo
 	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == UmlViewsRepository.General.Qualifiers.ordered || key == UmlViewsRepository.General.Qualifiers.unique;
+		return key == UmlViewsRepository.General.Qualifiers.ordered || key == UmlViewsRepository.General.Qualifiers.unique || key == UmlViewsRepository.General.upperValue;
 	}
 
 	/**

@@ -304,6 +304,36 @@ public class UmlViewsRepository {
 	
 	public static String submachine = "uml::General::submachine";
 	
+	/**
+	 * @generated
+	 */
+	
+	public static String specification = "uml::General::specification";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String instanceValue = "uml::General::instanceValue";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String min = "uml::General::min";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String instance = "uml::General::instance";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String max = "uml::General::max";
+	
 	}
 
 	/**

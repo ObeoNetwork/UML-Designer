@@ -733,6 +733,90 @@
         </properties>
         <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//State"/>
       </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_Pr0qMOv7EeOuBM2957Fbdw" name="Constraint" views="_Kt6kIFv3EeKZBNASYbV97A">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_yI_pAOv7EeOuBM2957Fbdw" name="name" views="_3INTYFv3EeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_5vA4wOy3EeO9o70QGkwz0g" name="visibility" views="_maltQFv8EeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/visibility"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_fBFoIOy4EeO9o70QGkwz0g" name="specification" views="_k68XcOy4EeO9o70QGkwz0g">
+          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Constraint/specification"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Constraint"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_xpBzoOy4EeO9o70QGkwz0g" name="Duration" views="_Kt6kIFv3EeKZBNASYbV97A">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_7REr8Oy4EeO9o70QGkwz0g" name="name" views="_3INTYFv3EeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_tMDqUOy-EeO9o70QGkwz0g" name="visibility" views="_maltQFv8EeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/visibility"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Duration"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_WDuAUOy_EeO9o70QGkwz0g" name="Interval" views="_Kt6kIFv3EeKZBNASYbV97A">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_WDuAUey_EeO9o70QGkwz0g" name="name" views="_3INTYFv3EeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_WDuAUuy_EeO9o70QGkwz0g" name="visibility" views="_maltQFv8EeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/visibility"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_2wxkAOzNEeO9o70QGkwz0g" name="min" views="_UgSg4OzOEeO9o70QGkwz0g">
+          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Interval/min"/>
+          <editorSetting xsi:type="eef-mapping-settings:EReferenceViewerSettings" xmi:id="_cAC3AOzOEeO9o70QGkwz0g">
+            <model href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Package/packagedElement"/>
+            <filter xsi:type="eef-mapping-filters:JavaDeclarationStepFilter" xmi:id="_iV6M4OzOEeO9o70QGkwz0g" qualifiedClass="org.obeonetwork.dsl.uml2.properties.service.EEFService" methodName="getParent" staticMethod="true"/>
+          </editorSetting>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_TfNjUO1bEeO9o70QGkwz0g" name="max" views="_xAQNEO1gEeOsAO0KFddLnQ">
+          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Interval/max"/>
+          <editorSetting xsi:type="eef-mapping-settings:EReferenceViewerSettings" xmi:id="_TfNjUe1bEeO9o70QGkwz0g">
+            <model href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Package/packagedElement"/>
+            <filter xsi:type="eef-mapping-filters:JavaDeclarationStepFilter" xmi:id="_TfNjUu1bEeO9o70QGkwz0g" qualifiedClass="org.obeonetwork.dsl.uml2.properties.service.EEFService" methodName="getParent" staticMethod="true"/>
+          </editorSetting>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Interval"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_59SrsOy_EeO9o70QGkwz0g" name="Expression" views="_Kt6kIFv3EeKZBNASYbV97A">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_59Srsey_EeO9o70QGkwz0g" name="name" views="_3INTYFv3EeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_59Srsuy_EeO9o70QGkwz0g" name="visibility" views="_maltQFv8EeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/visibility"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Expression"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_Yu0ToOzKEeO9o70QGkwz0g" name="InstanceValue" views="_Kt6kIFv3EeKZBNASYbV97A">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Yu0ToezKEeO9o70QGkwz0g" name="name" views="_3INTYFv3EeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_Yu0TouzKEeO9o70QGkwz0g" name="visibility" views="_maltQFv8EeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/visibility"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_TH7CgO1MEeO9o70QGkwz0g" name="instance" views="_EDwqUO1NEeO9o70QGkwz0g">
+          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//InstanceValue/instance"/>
+          <editorSetting xsi:type="eef-mapping-settings:EReferenceViewerSettings" xmi:id="_mzcx8O1MEeO9o70QGkwz0g">
+            <model href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Package/packagedElement"/>
+            <filter xsi:type="eef-mapping-filters:JavaDeclarationStepFilter" xmi:id="_mzcx8e1MEeO9o70QGkwz0g" qualifiedClass="org.obeonetwork.dsl.uml2.properties.service.EEFService" methodName="getParent" staticMethod="true"/>
+          </editorSetting>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//InstanceValue"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_y-ucAO1MEeO9o70QGkwz0g" name="LiteralSpecification" views="_Kt6kIFv3EeKZBNASYbV97A">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_y-ucAe1MEeO9o70QGkwz0g" name="name" views="_3INTYFv3EeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
+        </properties>
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_y-ucAu1MEeO9o70QGkwz0g" name="visibility" views="_maltQFv8EeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/visibility"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//LiteralSpecification"/>
+      </bindings>
+      <bindings xsi:type="eef-components:PropertiesEditionComponent" xmi:id="_RDbLcO1dEeO-3694Y-R6GQ" name="InstanceSpecification" views="_Kt6kIFv3EeKZBNASYbV97A">
+        <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_TXITcO1dEeO-3694Y-R6GQ" name="name" views="_3INTYFv3EeKZBNASYbV97A">
+          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//NamedElement/name"/>
+        </properties>
+        <model xsi:type="ecore:EClass" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//InstanceSpecification"/>
+      </bindings>
     </categories>
     <model href="platform:/plugin/org.eclipse.uml2.uml/model/UML.genmodel#//uml"/>
   </eef-components:PropertiesEditionContext>
@@ -832,7 +916,7 @@
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_jrp24F4iEeKttZbtn302Pg" name="effect">
-          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.16"/>
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.14"/>
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_metNUF4iEeKttZbtn302Pg" name="guard">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.16"/>
@@ -877,6 +961,21 @@
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.9"/>
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_G5hzcHeiEeO2VtUtRSrt7Q" name="submachine">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.16"/>
+        </elements>
+        <elements xsi:type="eef-views:ElementEditor" xmi:id="_k68XcOy4EeO9o70QGkwz0g" name="specification">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.14"/>
+        </elements>
+        <elements xsi:type="eef-views:ElementEditor" xmi:id="_gn9aIOzKEeO9o70QGkwz0g" name="instanceValue">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.16"/>
+        </elements>
+        <elements xsi:type="eef-views:ElementEditor" xmi:id="_UgSg4OzOEeO9o70QGkwz0g" name="min">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.16"/>
+        </elements>
+        <elements xsi:type="eef-views:ElementEditor" xmi:id="_EDwqUO1NEeO9o70QGkwz0g" name="instance">
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.16"/>
+        </elements>
+        <elements xsi:type="eef-views:ElementEditor" xmi:id="_xAQNEO1gEeOsAO0KFddLnQ" name="max">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.16"/>
         </elements>
       </views>

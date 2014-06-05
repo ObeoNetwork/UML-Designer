@@ -433,7 +433,19 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == UmlViewsRepository.General.Qualifiers.static_ || key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.Qualifiers.ordered || key == UmlViewsRepository.General.Qualifiers.unique || key == UmlViewsRepository.General.Qualifiers.readOnly || key == UmlViewsRepository.General.Qualifiers.derived || key == UmlViewsRepository.General.Qualifiers.derivedUnion || key == UmlViewsRepository.General.aggregation || key == UmlViewsRepository.General.Qualifiers.behavior || key == UmlViewsRepository.General.Qualifiers.service;
+		return key == UmlViewsRepository.General.Qualifiers.static_ || key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.Qualifiers.ordered || key == UmlViewsRepository.General.Qualifiers.unique || key == UmlViewsRepository.General.Qualifiers.readOnly || key == UmlViewsRepository.General.Qualifiers.derived || key == UmlViewsRepository.General.Qualifiers.derivedUnion || key == UmlViewsRepository.General.aggregation || key == UmlViewsRepository.General.upperValue || key == UmlViewsRepository.General.Qualifiers.behavior || key == UmlViewsRepository.General.Qualifiers.service;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.Object, int)
+	 * @generated
+	 */
+	public String getHelpContent(Object key, int kind) {
+		if (key == UmlViewsRepository.General.defaultValue)
+			return "invalid"; //$NON-NLS-1$
+		return super.getHelpContent(key, kind);
 	}
 
 	/**
