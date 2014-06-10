@@ -36,7 +36,9 @@ Contributors:
     <module>../../plugins/org.obeonetwork.dsl.uml2.navigator</module>
     <module>../../plugins/org.obeonetwork.dsl.uml2.migration</module>
     <module>../../plugins/org.obeonetwork.dsl.uml2.discovery</module>
-
+    <module>../../plugins/org.obeonetwork.dsl.sirius.gendoc.wizard</module>
+    <module>../../plugins/org.obeonetwork.dsl.sirius.gendoc.services</module>
+    <module>../../plugins/org.obeonetwork.dsl.uml2.gendoc.travelagency</module>
 
     <!-- Build test plugins -->
     <module>../../tests/org.obeonetwork.dsl.uml2.design.tests</module>
