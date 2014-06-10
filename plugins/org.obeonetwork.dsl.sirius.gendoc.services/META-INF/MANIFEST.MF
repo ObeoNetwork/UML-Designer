@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Sirius Gendoc Services
 Bundle-SymbolicName: org.obeonetwork.dsl.sirius.gendoc.services;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 4.0.0.qualifier
 Bundle-Activator: org.obeonetwork.dsl.sirius.gendoc.services.Activator
 Bundle-Vendor: Obeo Network
 Require-Bundle: org.eclipse.core.runtime,
