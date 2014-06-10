@@ -54,6 +54,11 @@ location "http://download.eclipse.org/modeling/emft/eef/updates/releases/1.3/R20
 	org.eclipse.emf.eef.runtime
 }
 
+//Gendoc 1.9
+location "http://topcased-gendoc.gforge.enseeiht.fr/releases/1.9.0/indigo/" {
+	org.topcased.gendoc2.standalone.feature.feature.group;version=lazy
+}
+
 // Sirius
 location "http://download.eclipse.org/sirius/updates/milestones/1.0.0rc1/luna" {
 	org.eclipse.sirius.runtime.feature.group;version=lazy
