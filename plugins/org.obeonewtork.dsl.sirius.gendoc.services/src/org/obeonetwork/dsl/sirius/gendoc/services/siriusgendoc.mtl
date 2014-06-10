@@ -1,0 +1,20 @@
+[comment encoding = UTF-8 /]
+[module siriusgendoc('http://www.eclipse.org/sirius/1.1.0', 'http://www.eclipse.org/emf/2002/Ecore')]
+
+
+[comment - Get the diagram image path corresponding to the given diagram name for the given element/]
+[query public getDiagramWithName(arg0 : EObject, arg1 : String) : String
+	= invoke('org.obeonewtork.dsl.sirius.gendoc.services.SiriusServices', 'getDiagramWithName(org.eclipse.emf.ecore.EObject, java.lang.String)', Sequence{arg0, arg1}) /]
+
+[comment - Get the diagram image path corresponding to the given diagram representation name for the given element/]
+[query public getDiagramWithRepresentationName(arg0 : EObject, arg1 : String) : String
+ = arg0.getDiagramsWithRepresentationName(arg1)->first()/]
+
+[comment - Get all diagram images paths corresponding to the given diagram representation name for the given element/]
+[query public getDiagramsWithRepresentationName(arg0 : EObject, arg1 : String) : Sequence(String)
+	= invoke('org.obeonewtork.dsl.sirius.gendoc.services.SiriusServices', 'getDiagramsWithRepresentationName(org.eclipse.emf.ecore.EObject, java.lang.String)', Sequence{arg0, arg1}) /]
+
+[comment - Get all diagram images paths associated to the given element/]
+[query public getDiagrams(arg0 : EObject) :  Sequence(String)
+	= invoke('org.obeonewtork.dsl.sirius.gendoc.services.SiriusServices', 'getDiagrams(org.eclipse.emf.ecore.EObject)', Sequence{arg0}) /]
+

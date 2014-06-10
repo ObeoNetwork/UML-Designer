@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<!--
+Copyright (c) 2014 Obeo.
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+
+Contributors:
+    Obeo - initial API and implementation
+-->
+<plugin>
+	<extension-point id="runner" name="Sirius Gendoc Wizard" schema="schema/org.obeonetwork.dsl.sirius.gendoc.wizard.runner.exsd"/>
+ <extension
+       point="org.eclipse.ui.commands">
+    <command
+          defaultHandler="org.obeonetwork.dsl.sirius.gendoc.wizard.popup.actions.GenerateDocumentationHandler"
+          description="generates the documentation"
+          id="org.obeonetwork.dsl.sirius.gendoc.wizard.generatedoc"
+          name="Generate Documentation">
+    </command>
+ </extension>
+ <extension
+       point="org.eclipse.ui.menus">
+    <menuContribution
+          allPopups="false"
+          locationURI="popup:org.eclipse.ui.popup.any">
+       <command
+             commandId="org.obeonetwork.dsl.sirius.gendoc.wizard.generatedoc"
+             label="Generate Documentation"
+             style="push"
+             tooltip="Generate Documentation">
+          <visibleWhen
+                checkEnabled="false">
+             <iterate
+                   ifEmpty="false">
+                <adapt
+                      type="org.eclipse.core.resources.IFile">
+                   <test
+                         forcePluginActivation="true"
+                         property="org.obeonetwork.dsl.sirius.gendoc.wizard.isEnabled">
+                   </test>
+                </adapt>
+             </iterate>
+          </visibleWhen>
+       </command>
+    </menuContribution>
+ </extension>
+ <extension
+       point="org.eclipse.core.expressions.propertyTesters">
+    <propertyTester
+          class="org.obeonetwork.dsl.sirius.gendoc.wizard.WizardPropertyTester"
+          id="org.obeonetwork.dsl.sirius.gendoc.wizard.propertyTester"
+          namespace="org.obeonetwork.dsl.sirius.gendoc.wizard"
+          properties="isEnabled"
+          type="org.eclipse.core.resources.IFile">
+    </propertyTester>
+ </extension>
+</plugin>
