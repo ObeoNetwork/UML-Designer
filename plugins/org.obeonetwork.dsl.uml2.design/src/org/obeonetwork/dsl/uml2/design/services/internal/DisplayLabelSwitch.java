@@ -129,14 +129,12 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 		// Triggers
 		String triggersLabel = null;
 		if (object.getTriggers() != null && object.getTriggers().size() > 0) {
-			triggersLabel += "{";
 			for (Trigger trigger : object.getTriggers()) {
 				if (triggersLabel != null) {
 					triggersLabel += ",";
 				}
 				triggersLabel = labelServices.computeUmlLabel(trigger);
 			}
-			triggersLabel += "}";
 		}
 		// Guard
 		String guardLabel = null;
@@ -163,13 +161,13 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 		}
 
 		StringBuffer transitionLabel = new StringBuffer();
-		if (triggersLabel != null) {
+		if (triggersLabel != null && triggersLabel.length() > 0) {
 			transitionLabel.append(triggersLabel);
 		}
-		if (guardLabel != null) {
+		if (guardLabel != null && guardLabel.length() > 0) {
 			transitionLabel.append(guardLabel);
 		}
-		if (effectLabel != null) {
+		if (effectLabel != null && effectLabel.length() > 0) {
 			transitionLabel.append(effectLabel);
 		}
 
