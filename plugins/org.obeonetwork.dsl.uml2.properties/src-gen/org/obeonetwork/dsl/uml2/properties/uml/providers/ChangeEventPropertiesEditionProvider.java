@@ -28,23 +28,23 @@ import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
 import org.eclipse.jface.viewers.IFilter;
 
+import org.eclipse.uml2.uml.ChangeEvent;
 import org.eclipse.uml2.uml.UMLPackage;
-import org.eclipse.uml2.uml.ValueSpecification;
 
 import org.obeonetwork.dsl.uml2.properties.providers.UmlPropertiesEditionProvider;
 
-import org.obeonetwork.dsl.uml2.properties.uml.components.ValueSpecificationPropertiesEditionComponent;
+import org.obeonetwork.dsl.uml2.properties.uml.components.ChangeEventPropertiesEditionComponent;
 
 /**
  * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
  * @generated
  */
-public class ValueSpecificationPropertiesEditionProvider extends UmlPropertiesEditionProvider {
+public class ChangeEventPropertiesEditionProvider extends UmlPropertiesEditionProvider {
 
 	/**
 	 * Constructor without provider for super types.
 	 */
-	public ValueSpecificationPropertiesEditionProvider() {
+	public ChangeEventPropertiesEditionProvider() {
 		super();
 	}
 
@@ -52,7 +52,7 @@ public class ValueSpecificationPropertiesEditionProvider extends UmlPropertiesEd
 	 * Constructor with providers for super types.
 	 * @param superProviders providers to use for super types.
 	 */
-	public ValueSpecificationPropertiesEditionProvider(List<PropertiesEditingProvider> superProviders) {
+	public ChangeEventPropertiesEditionProvider(List<PropertiesEditingProvider> superProviders) {
 		super(superProviders);
 	}
 
@@ -62,8 +62,8 @@ public class ValueSpecificationPropertiesEditionProvider extends UmlPropertiesEd
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof ValueSpecification) 
-					&& (UMLPackage.Literals.VALUE_SPECIFICATION == editingContext.getEObject().eClass());
+		return (editingContext.getEObject() instanceof ChangeEvent) 
+					&& (UMLPackage.Literals.CHANGE_EVENT == editingContext.getEObject().eClass());
 	}
 
 	/**
@@ -72,7 +72,7 @@ public class ValueSpecificationPropertiesEditionProvider extends UmlPropertiesEd
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof ValueSpecification) && (ValueSpecificationPropertiesEditionComponent.GENERAL_PART.equals(part));
+		return (editingContext.getEObject() instanceof ChangeEvent) && (ChangeEventPropertiesEditionComponent.GENERAL_PART.equals(part));
 	}
 
 	/**
@@ -82,7 +82,7 @@ public class ValueSpecificationPropertiesEditionProvider extends UmlPropertiesEd
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ValueSpecification) && (refinement == ValueSpecificationPropertiesEditionComponent.class);
+		return (editingContext.getEObject() instanceof ChangeEvent) && (refinement == ChangeEventPropertiesEditionComponent.class);
 	}
 
 	/**
@@ -92,7 +92,7 @@ public class ValueSpecificationPropertiesEditionProvider extends UmlPropertiesEd
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof ValueSpecification) && ((ValueSpecificationPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == ValueSpecificationPropertiesEditionComponent.class));
+		return (editingContext.getEObject() instanceof ChangeEvent) && ((ChangeEventPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == ChangeEventPropertiesEditionComponent.class));
 	}
 
 	/**
@@ -101,8 +101,8 @@ public class ValueSpecificationPropertiesEditionProvider extends UmlPropertiesEd
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof ValueSpecification) {
-			return new ValueSpecificationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		if (editingContext.getEObject() instanceof ChangeEvent) {
+			return new ChangeEventPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode);
 	}
@@ -113,9 +113,9 @@ public class ValueSpecificationPropertiesEditionProvider extends UmlPropertiesEd
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof ValueSpecification) {
-			if (ValueSpecificationPropertiesEditionComponent.GENERAL_PART.equals(part))
-				return new ValueSpecificationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		if (editingContext.getEObject() instanceof ChangeEvent) {
+			if (ChangeEventPropertiesEditionComponent.GENERAL_PART.equals(part))
+				return new ChangeEventPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part);
 	}
@@ -126,10 +126,10 @@ public class ValueSpecificationPropertiesEditionProvider extends UmlPropertiesEd
 	 */
 	@SuppressWarnings("rawtypes")
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
-		if (editingContext.getEObject() instanceof ValueSpecification) {
-			if (ValueSpecificationPropertiesEditionComponent.GENERAL_PART.equals(part)
-				&& refinement == ValueSpecificationPropertiesEditionComponent.class)
-				return new ValueSpecificationPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		if (editingContext.getEObject() instanceof ChangeEvent) {
+			if (ChangeEventPropertiesEditionComponent.GENERAL_PART.equals(part)
+				&& refinement == ChangeEventPropertiesEditionComponent.class)
+				return new ChangeEventPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}
@@ -146,7 +146,7 @@ public class ValueSpecificationPropertiesEditionProvider extends UmlPropertiesEd
 		 */
 		public boolean select(Object toTest) {
 			EObject eObj = EEFUtils.resolveSemanticObject(toTest);
-			return eObj != null && UMLPackage.Literals.VALUE_SPECIFICATION == eObj.eClass();
+			return eObj != null && UMLPackage.Literals.CHANGE_EVENT == eObj.eClass();
 		}
 		
 	}

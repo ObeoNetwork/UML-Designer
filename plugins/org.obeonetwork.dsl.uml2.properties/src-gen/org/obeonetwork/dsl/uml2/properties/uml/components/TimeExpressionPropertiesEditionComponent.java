@@ -40,8 +40,8 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 
 import org.eclipse.uml2.types.TypesPackage;
 
+import org.eclipse.uml2.uml.TimeExpression;
 import org.eclipse.uml2.uml.UMLPackage;
-import org.eclipse.uml2.uml.ValueSpecification;
 
 import org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
@@ -51,7 +51,7 @@ import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
  * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
  * @generated
  */
-public class ValueSpecificationPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
+public class TimeExpressionPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
 	/**
 	 * @generated
@@ -65,8 +65,8 @@ public class ValueSpecificationPropertiesEditionComponent extends SinglePartProp
 	 * Default constructor
 	 * @generated
 	 */
-	public ValueSpecificationPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject valueSpecification, String editing_mode) {
-		super(editingContext, valueSpecification, editing_mode);
+	public TimeExpressionPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject timeExpression, String editing_mode) {
+		super(editingContext, timeExpression, editing_mode);
 		parts = new String[] { GENERAL_PART };
 		repositoryKey = UmlViewsRepository.class;
 		partKey = UmlViewsRepository.General.class;
@@ -84,11 +84,11 @@ public class ValueSpecificationPropertiesEditionComponent extends SinglePartProp
 		if (editingPart != null && key == partKey) {
 			editingPart.setContext(elt, allResource);
 			
-			final ValueSpecification valueSpecification = (ValueSpecification)elt;
+			final TimeExpression timeExpression = (TimeExpression)elt;
 			final GeneralPropertiesEditionPart generalPart = (GeneralPropertiesEditionPart)editingPart;
 			// init values
 			if (isAccessible(UmlViewsRepository.General.name))
-				generalPart.setName(EEFConverterUtil.convertToString(TypesPackage.Literals.STRING, valueSpecification.getName()));
+				generalPart.setName(EEFConverterUtil.convertToString(TypesPackage.Literals.STRING, timeExpression.getName()));
 			
 			// init filters
 			
@@ -120,9 +120,9 @@ public class ValueSpecificationPropertiesEditionComponent extends SinglePartProp
 	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		ValueSpecification valueSpecification = (ValueSpecification)semanticObject;
+		TimeExpression timeExpression = (TimeExpression)semanticObject;
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
-			valueSpecification.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
+			timeExpression.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}
 	}
 

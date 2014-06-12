@@ -580,7 +580,9 @@ public interface GeneralPropertiesEditionPart {
 
 	/**
 	 * Init the trigger
-	 * @param settings settings for the trigger ReferencesTable 
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
 	 */
 	public void initTrigger(ReferencesTableSettings settings);
 
@@ -783,7 +785,9 @@ public interface GeneralPropertiesEditionPart {
 
 	/**
 	 * Init the ownedRule
-	 * @param settings settings for the ownedRule ReferencesTable 
+	 * @param current the current value
+	 * @param containgFeature the feature where to navigate if necessary
+	 * @param feature the feature to manage
 	 */
 	public void initOwnedRule(ReferencesTableSettings settings);
 
@@ -1443,6 +1447,93 @@ public interface GeneralPropertiesEditionPart {
 	 * @generated
 	 */
 	public void addBusinessFilterToMax(ViewerFilter filter);
+
+
+	/**
+	 * @return the event
+	 * @generated
+	 */
+	public EObject getEvent();
+
+	/**
+	 * Init the event
+	 * @param settings the combo setting
+	 */
+	public void initEvent(EObjectFlatComboSettings settings);
+
+	/**
+	 * Defines a new event
+	 * @param newValue the new event to set
+	 * @generated
+	 */
+	public void setEvent(EObject newValue);
+
+	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 * @generated
+	 */
+	public void setEventButtonMode(ButtonsModeEnum newValue);
+
+	/**
+	 * Adds the given filter to the event edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addFilterToEvent(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the event edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addBusinessFilterToEvent(ViewerFilter filter);
+
+
+	/**
+	 * @return the when
+	 * @generated
+	 */
+	public EObject getWhen();
+
+	/**
+	 * Init the when
+	 * @param settings the combo setting
+	 */
+	public void initWhen(EObjectFlatComboSettings settings);
+
+	/**
+	 * Defines a new when
+	 * @param newValue the new when to set
+	 * @generated
+	 */
+	public void setWhen(EObject newValue);
+
+
+	/**
+	 * @return the changeExpression
+	 * @generated
+	 */
+	public EObject getChangeExpression();
+
+	/**
+	 * Init the changeExpression
+	 * @param settings the combo setting
+	 */
+	public void initChangeExpression(EObjectFlatComboSettings settings);
+
+	/**
+	 * Defines a new changeExpression
+	 * @param newValue the new changeExpression to set
+	 * @generated
+	 */
+	public void setChangeExpression(EObject newValue);
 
 
 

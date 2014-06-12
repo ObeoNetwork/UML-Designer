@@ -13,6 +13,7 @@ package org.obeonetwork.dsl.uml2.design.services.internal;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Association;
@@ -23,20 +24,29 @@ import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.DataStoreNode;
+import org.eclipse.uml2.uml.Duration;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.ExecutionSpecification;
+import org.eclipse.uml2.uml.Expression;
 import org.eclipse.uml2.uml.Feature;
+import org.eclipse.uml2.uml.FunctionBehavior;
 import org.eclipse.uml2.uml.InstanceSpecification;
 import org.eclipse.uml2.uml.InstanceValue;
+import org.eclipse.uml2.uml.Interaction;
+import org.eclipse.uml2.uml.Interval;
 import org.eclipse.uml2.uml.Lifeline;
 import org.eclipse.uml2.uml.LiteralBoolean;
 import org.eclipse.uml2.uml.LiteralInteger;
+import org.eclipse.uml2.uml.LiteralNull;
+import org.eclipse.uml2.uml.LiteralReal;
 import org.eclipse.uml2.uml.LiteralString;
+import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
 import org.eclipse.uml2.uml.Message;
 import org.eclipse.uml2.uml.MultiplicityElement;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.OpaqueAction;
+import org.eclipse.uml2.uml.OpaqueBehavior;
 import org.eclipse.uml2.uml.OpaqueExpression;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Parameter;
@@ -44,12 +54,16 @@ import org.eclipse.uml2.uml.ParameterDirectionKind;
 import org.eclipse.uml2.uml.ParameterableElement;
 import org.eclipse.uml2.uml.Pin;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.ProtocolStateMachine;
 import org.eclipse.uml2.uml.Slot;
+import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.StructuralFeature;
 import org.eclipse.uml2.uml.TemplateBinding;
 import org.eclipse.uml2.uml.TemplateParameterSubstitution;
+import org.eclipse.uml2.uml.TimeExpression;
 import org.eclipse.uml2.uml.Transition;
+import org.eclipse.uml2.uml.Trigger;
 import org.eclipse.uml2.uml.TypedElement;
 import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.util.UMLSwitch;
@@ -111,20 +125,209 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	 */
 	@Override
 	public String caseTransition(Transition object) {
+		// {trigger ','}* [guard] /behavior_spec
+		// Triggers
+		String triggersLabel = null;
+		if (object.getTriggers() != null && object.getTriggers().size() > 0) {
+			triggersLabel += "{";
+			for (Trigger trigger : object.getTriggers()) {
+				if (triggersLabel != null) {
+					triggersLabel += ",";
+				}
+				triggersLabel = labelServices.computeUmlLabel(trigger);
+			}
+			triggersLabel += "}";
+		}
+		// Guard
+		String guardLabel = null;
 		final Constraint constraint = object.getGuard();
 		if (constraint != null) {
-			final ValueSpecification value = constraint.getSpecification();
+			final ValueSpecification specification = constraint.getSpecification();
 
-			if (value instanceof OpaqueExpression) {
-				final String expr = ((OpaqueExpression)value).getBodies().get(0);
-				if (expr != null && !"".equalsIgnoreCase(expr) && !"true".equalsIgnoreCase(expr)
-						&& !"1".equalsIgnoreCase(expr)) {
-					return OPENING_BRACE + expr + CLOSING_BRACE;
+			if (specification != null) {
+				String specificationLabel = labelServices.computeUmlLabel(specification);
+				if (specificationLabel != null && specificationLabel.length() > 0) {
+					guardLabel = OPENING_BRACE + specificationLabel + CLOSING_BRACE;
 				}
 			}
 		}
 
+		// Behavior spec
+		String effectLabel = null;
+		Behavior effect = object.getEffect();
+		if (effect != null) {
+			String behaviorLabel = labelServices.computeUmlLabel(effect);
+			if (behaviorLabel != null) {
+				effectLabel = "/" + behaviorLabel;
+			}
+		}
+
+		StringBuffer transitionLabel = new StringBuffer();
+		if (triggersLabel != null) {
+			transitionLabel.append(triggersLabel);
+		}
+		if (guardLabel != null) {
+			transitionLabel.append(guardLabel);
+		}
+		if (effectLabel != null) {
+			transitionLabel.append(effectLabel);
+		}
+
+		return transitionLabel.toString();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String caseActivity(Activity object) {
+		return object.getName();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String caseStateMachine(StateMachine object) {
+		return object.getName();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String caseProtocolStateMachine(ProtocolStateMachine object) {
+		return object.getName();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String caseOpaqueBehavior(OpaqueBehavior object) {
+		return object.getName();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String caseFunctionBehavior(FunctionBehavior object) {
+		return object.getName();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String caseInteraction(Interaction object) {
+		return object.getName();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String caseDuration(Duration object) {
+		return object.getName();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String caseExpression(Expression object) {
+		return object.getName();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String caseInstanceValue(InstanceValue object) {
+		return labelServices.computeUmlLabel(object.getInstance());
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String caseInterval(Interval object) {
+		String minLabel = labelServices.computeUmlLabel(object.getMin());
+		String maxLabel = labelServices.computeUmlLabel(object.getMax());
+		if (minLabel != null && minLabel.length() > 0 && maxLabel != null && maxLabel.length() > 0) {
+			return OPENING_BRACE + minLabel + " " + maxLabel + CLOSING_BRACE;
+		}
 		return "";
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String caseLiteralBoolean(LiteralBoolean object) {
+		return object.stringValue();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String caseLiteralInteger(LiteralInteger object) {
+		return object.stringValue();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String caseLiteralNull(LiteralNull object) {
+		return "null";
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String caseLiteralReal(LiteralReal object) {
+		return object.stringValue();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String caseLiteralString(LiteralString object) {
+		return object.stringValue();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String caseLiteralUnlimitedNatural(LiteralUnlimitedNatural object) {
+		return object.stringValue();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String caseOpaqueExpression(OpaqueExpression object) {
+		final String expr = object.getBodies().get(0);
+		if (expr != null && !"".equalsIgnoreCase(expr) && !"true".equalsIgnoreCase(expr)
+				&& !"1".equalsIgnoreCase(expr)) {
+			return expr;
+		}
+		return "";
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String caseTimeExpression(TimeExpression object) {
+		return object.stringValue();
 	}
 
 	/**

@@ -82,14 +82,6 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
-	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createValueSpecificationAdapter()
-	 * @generated
-	 */
-	public Adapter createValueSpecificationAdapter() {
-		return new ValueSpecificationPropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
 	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createDependencyAdapter()
 	 * @generated
 	 */
@@ -183,6 +175,14 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	 */
 	public Adapter createStateAdapter() {
 		return new StatePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createTriggerAdapter()
+	 * @generated
+	 */
+	public Adapter createTriggerAdapter() {
+		return new TriggerPropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}
@@ -343,6 +343,38 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	 */
 	public Adapter createInstanceValueAdapter() {
 		return new InstanceValuePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createMessageEventAdapter()
+	 * @generated
+	 */
+	public Adapter createMessageEventAdapter() {
+		return new MessageEventPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createChangeEventAdapter()
+	 * @generated
+	 */
+	public Adapter createChangeEventAdapter() {
+		return new ChangeEventPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createTimeEventAdapter()
+	 * @generated
+	 */
+	public Adapter createTimeEventAdapter() {
+		return new TimeEventPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createTimeExpressionAdapter()
+	 * @generated
+	 */
+	public Adapter createTimeExpressionAdapter() {
+		return new TimeExpressionPropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}

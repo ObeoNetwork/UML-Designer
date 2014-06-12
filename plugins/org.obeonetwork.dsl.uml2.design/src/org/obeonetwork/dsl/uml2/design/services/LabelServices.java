@@ -29,10 +29,8 @@ import org.obeonetwork.dsl.uml2.design.services.internal.TooltipLabelSwitch;
 /**
  * Manage the diagram elements' labels.
  * 
- * @author Gonzague Reydet <a
- *         href="mailto:gonzague.reydet@obeo.fr">gonzague.reydet@obeo.fr</a>
- * @author Melanie Bats <a
- *         href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+ * @author Gonzague Reydet <a href="mailto:gonzague.reydet@obeo.fr">gonzague.reydet@obeo.fr</a>
+ * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class LabelServices {
 	/**
@@ -54,8 +52,10 @@ public class LabelServices {
 	 */
 	public String computeUmlLabel(Element element) {
 		final DisplayLabelSwitch displayLabel = new DisplayLabelSwitch();
-
-		return displayLabel.doSwitch(element);
+		if (element != null) {
+			return displayLabel.doSwitch(element);
+		}
+		return "";
 	}
 
 	/**
@@ -84,8 +84,7 @@ public class LabelServices {
 	}
 
 	/**
-	 * Parse the edited label string and update the underlying context
-	 * {@link Element}.
+	 * Parse the edited label string and update the underlying context {@link Element}.
 	 * 
 	 * @param context
 	 *            the context object on which to execute this service.
@@ -130,8 +129,7 @@ public class LabelServices {
 	 * @return Sequence diagram label
 	 */
 	public String getSequenceDiagramName(org.eclipse.uml2.uml.Package pkg) {
-		return NamedElementServices.getNewInteractionName(pkg) + SPACE
-				+ SEQUENCE_DIAGRAM_SUFFIX;
+		return NamedElementServices.getNewInteractionName(pkg) + SPACE + SEQUENCE_DIAGRAM_SUFFIX;
 	}
 
 	/**
@@ -139,8 +137,7 @@ public class LabelServices {
 	 * 
 	 * @param bound
 	 *            string description
-	 * @return converted integer or <code>null</code> in case of
-	 *         {@link NumberFormatException}.
+	 * @return converted integer or <code>null</code> in case of {@link NumberFormatException}.
 	 */
 	public static Integer convertBound(String bound) {
 		if ("*".equals(bound)) {
@@ -154,12 +151,10 @@ public class LabelServices {
 	}
 
 	public String getTemplatedParameters(Class object) {
-		TemplateSignature ownedTemplateSignature = object
-				.getOwnedTemplateSignature();
+		TemplateSignature ownedTemplateSignature = object.getOwnedTemplateSignature();
 		StringBuffer templateParameters = new StringBuffer();
 		if (ownedTemplateSignature != null) {
-			List<TemplateParameter> ownedTemplateParameters = ownedTemplateSignature
-					.getOwnedParameters();
+			List<TemplateParameter> ownedTemplateParameters = ownedTemplateSignature.getOwnedParameters();
 			boolean first = true;
 			for (TemplateParameter templateParameter : ownedTemplateParameters) {
 				if (first) {
@@ -167,10 +162,9 @@ public class LabelServices {
 				} else {
 					templateParameters.append(", ");
 				}
-				ParameterableElement parameterableElement = templateParameter
-						.getOwnedDefault();
+				ParameterableElement parameterableElement = templateParameter.getOwnedDefault();
 				if (parameterableElement instanceof NamedElement) {
-					NamedElement classTempate = (NamedElement) parameterableElement;
+					NamedElement classTempate = (NamedElement)parameterableElement;
 					templateParameters.append(classTempate.getName());
 				}
 			}

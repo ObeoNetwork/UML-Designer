@@ -334,6 +334,24 @@ public class UmlViewsRepository {
 	
 	public static String max = "uml::General::max";
 	
+	/**
+	 * @generated
+	 */
+	
+	public static String event = "uml::General::event";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String when = "uml::General::when";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String changeExpression = "uml::General::changeExpression";
+	
 	}
 
 	/**

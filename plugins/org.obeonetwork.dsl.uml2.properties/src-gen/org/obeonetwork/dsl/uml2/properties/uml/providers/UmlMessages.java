@@ -405,6 +405,24 @@ public class UmlMessages extends NLS {
 	 * @generated
 	 */
 	
+	public static String GeneralPropertiesEditionPart_EventLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_WhenLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_ChangeExpressionLabel;
+
+	/**
+	 * @generated
+	 */
+	
 	public static String OperationsPropertiesEditionPart_OperationsLabel;
 
 	/**
