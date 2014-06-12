@@ -179,6 +179,10 @@
       <property name="startupMessageRect" value="3,300,495,15"/>
       <property name="startupProgressRect" value="3,315,495,15"/>
       <property name="preferenceCustomization" value="plugin_customization.ini"/>
+      <property
+            name="cssTheme"
+            value="org.eclipse.e4.ui.css.theme.e4_default">
+      </property>
     </product>
   </extension>
    <extension
