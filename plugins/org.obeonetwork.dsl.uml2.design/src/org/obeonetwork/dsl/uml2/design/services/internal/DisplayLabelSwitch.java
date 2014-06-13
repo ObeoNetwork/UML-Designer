@@ -19,6 +19,7 @@ import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehaviorExecutionSpecification;
+import org.eclipse.uml2.uml.CallBehaviorAction;
 import org.eclipse.uml2.uml.CallOperationAction;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
@@ -612,7 +613,35 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	 * {@inheritDoc}
 	 */
 	@Override
+	public String caseCallBehaviorAction(CallBehaviorAction object) {
+		// A CallBehaviorAction shall be notated as an Action with the name of the invoked Behavior placed
+		// inside the Action symbol. If the name of the Action is non-empty and different than the Behavior
+		// name, then the Action name shall appear in the symbol instead.
+		String actionName = object.getName();
+
+		if (object.getBehavior() != null) {
+			String behaviorName = object.getBehavior().getName();
+
+			if (actionName != null && actionName.length() > 0 && !actionName.equals(behaviorName)) {
+				return actionName;
+			}
+			return behaviorName;
+		}
+
+		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public String caseCallOperationAction(CallOperationAction object) {
+		// A CallOperationAction is notated as an Action with the name of the invoked Operation placed inside
+		// the Action symbol. If the name of the Action is non-empty and different than the Operation name,
+		// then the Action name shall appear in the symbol instead. The name of the owner of the Operation may
+		// optionally appear below the name of the Operation, in parentheses post fixed by double colon. If
+		// the Action name is shown instead of the Operation name, then the Operation name may be shown after
+		// the double colon.
 		if (object.getOperation() != null) {
 			String callOperationName = caseNamedElement(object);
 			String operationName = object.getOperation().getName();

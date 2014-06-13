@@ -28,23 +28,23 @@ import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
 import org.eclipse.jface.viewers.IFilter;
 
-import org.eclipse.uml2.uml.Region;
+import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.UMLPackage;
 
 import org.obeonetwork.dsl.uml2.properties.providers.UmlPropertiesEditionProvider;
 
-import org.obeonetwork.dsl.uml2.properties.uml.components.RegionPropertiesEditionComponent;
+import org.obeonetwork.dsl.uml2.properties.uml.components.InteractionPropertiesEditionComponent;
 
 /**
  * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
  * @generated
  */
-public class RegionPropertiesEditionProvider extends UmlPropertiesEditionProvider {
+public class InteractionPropertiesEditionProvider extends UmlPropertiesEditionProvider {
 
 	/**
 	 * Constructor without provider for super types.
 	 */
-	public RegionPropertiesEditionProvider() {
+	public InteractionPropertiesEditionProvider() {
 		super();
 	}
 
@@ -52,7 +52,7 @@ public class RegionPropertiesEditionProvider extends UmlPropertiesEditionProvide
 	 * Constructor with providers for super types.
 	 * @param superProviders providers to use for super types.
 	 */
-	public RegionPropertiesEditionProvider(List<PropertiesEditingProvider> superProviders) {
+	public InteractionPropertiesEditionProvider(List<PropertiesEditingProvider> superProviders) {
 		super(superProviders);
 	}
 
@@ -62,9 +62,9 @@ public class RegionPropertiesEditionProvider extends UmlPropertiesEditionProvide
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-    return (editingContext.getEObject() instanceof Region) 
-          && (UMLPackage.Literals.REGION == editingContext.getEObject().eClass());
-  }
+		return (editingContext.getEObject() instanceof Interaction) 
+					&& (UMLPackage.Literals.INTERACTION == editingContext.getEObject().eClass());
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -72,8 +72,8 @@ public class RegionPropertiesEditionProvider extends UmlPropertiesEditionProvide
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-    return (editingContext.getEObject() instanceof Region) && (RegionPropertiesEditionComponent.GENERAL_PART.equals(part));
-  }
+		return (editingContext.getEObject() instanceof Interaction) && (InteractionPropertiesEditionComponent.GENERAL_PART.equals(part));
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -82,8 +82,8 @@ public class RegionPropertiesEditionProvider extends UmlPropertiesEditionProvide
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-    return (editingContext.getEObject() instanceof Region) && (refinement == RegionPropertiesEditionComponent.class);
-  }
+		return (editingContext.getEObject() instanceof Interaction) && (refinement == InteractionPropertiesEditionComponent.class);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -92,8 +92,8 @@ public class RegionPropertiesEditionProvider extends UmlPropertiesEditionProvide
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-    return (editingContext.getEObject() instanceof Region) && ((RegionPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == RegionPropertiesEditionComponent.class));
-  }
+		return (editingContext.getEObject() instanceof Interaction) && ((InteractionPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == InteractionPropertiesEditionComponent.class));
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -101,11 +101,11 @@ public class RegionPropertiesEditionProvider extends UmlPropertiesEditionProvide
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-    if (editingContext.getEObject() instanceof Region) {
-      return new RegionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-    }
-    return super.getPropertiesEditingComponent(editingContext, mode);
-  }
+		if (editingContext.getEObject() instanceof Interaction) {
+			return new InteractionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		}
+		return super.getPropertiesEditingComponent(editingContext, mode);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -113,12 +113,12 @@ public class RegionPropertiesEditionProvider extends UmlPropertiesEditionProvide
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-    if (editingContext.getEObject() instanceof Region) {
-      if (RegionPropertiesEditionComponent.GENERAL_PART.equals(part))
-        return new RegionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-    }
-    return super.getPropertiesEditingComponent(editingContext, mode, part);
-  }
+		if (editingContext.getEObject() instanceof Interaction) {
+			if (InteractionPropertiesEditionComponent.GENERAL_PART.equals(part))
+				return new InteractionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		}
+		return super.getPropertiesEditingComponent(editingContext, mode, part);
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -126,10 +126,10 @@ public class RegionPropertiesEditionProvider extends UmlPropertiesEditionProvide
 	 */
 	@SuppressWarnings("rawtypes")
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
-		if (editingContext.getEObject() instanceof Region) {
-			if (RegionPropertiesEditionComponent.GENERAL_PART.equals(part)
-				&& refinement == RegionPropertiesEditionComponent.class)
-				return new RegionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+		if (editingContext.getEObject() instanceof Interaction) {
+			if (InteractionPropertiesEditionComponent.GENERAL_PART.equals(part)
+				&& refinement == InteractionPropertiesEditionComponent.class)
+				return new InteractionPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
 		}
 		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
 	}
@@ -146,7 +146,7 @@ public class RegionPropertiesEditionProvider extends UmlPropertiesEditionProvide
 		 */
 		public boolean select(Object toTest) {
 			EObject eObj = EEFUtils.resolveSemanticObject(toTest);
-			return eObj != null && UMLPackage.Literals.REGION == eObj.eClass();
+			return eObj != null && UMLPackage.Literals.INTERACTION == eObj.eClass();
 		}
 		
 	}

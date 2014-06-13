@@ -34,6 +34,14 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createActivityAdapter()
+	 * @generated
+	 */
+	public Adapter createActivityAdapter() {
+		return new ActivityPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createCommentAdapter()
 	 * @generated
 	 */
@@ -306,6 +314,14 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createCallBehaviorActionAdapter()
+	 * @generated
+	 */
+	public Adapter createCallBehaviorActionAdapter() {
+		return new CallBehaviorActionPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createCallOperationActionAdapter()
 	 * @generated
 	 */
@@ -362,6 +378,14 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createOpaqueBehaviorAdapter()
+	 * @generated
+	 */
+	public Adapter createOpaqueBehaviorAdapter() {
+		return new OpaqueBehaviorPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createTimeEventAdapter()
 	 * @generated
 	 */
@@ -375,6 +399,14 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	 */
 	public Adapter createTimeExpressionAdapter() {
 		return new TimeExpressionPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createInteractionAdapter()
+	 * @generated
+	 */
+	public Adapter createInteractionAdapter() {
+		return new InteractionPropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}

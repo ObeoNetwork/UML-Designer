@@ -3993,7 +3993,7 @@
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </subContainerMappings>
-          <subContainerMappings name="AD_ExecutableNode" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="service:getActivityNodes" semanticElements="[self->including(self.getStereotypeApplications())/]" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.ExecutableNode">
+          <subContainerMappings name="AD_ExecutableNode" detailDescriptions="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='navigate']/@ownedTools[name='CR_ActivityDiagramFromCallBehaviorAction'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='navigate']/@ownedTools[name='CR_StateMachineDiagramFromCallBehaviorAction']" navigationDescriptions="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='navigate']/@ownedTools[name='Open%20Activity%20Diagram'] //@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@toolSections.0/@subSections[name='navigate']/@ownedTools[name='Open%20State%20Machine%20Diagram']" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="service:getActivityNodes" semanticElements="[self->including(self.getStereotypeApplications())/]" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.ExecutableNode">
             <borderedNodeMappings name="AD_Pin" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="feature:ownedElement" doubleClickDescription="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Pin">
               <style xsi:type="style:SquareDescription" labelExpression="service:computeUmlLabel" sizeComputationExpression="2">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
@@ -4019,6 +4019,14 @@
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_orange']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              </style>
+            </conditionnalStyles>
+            <conditionnalStyles predicateExpression="[oclIsTypeOf(uml::CallBehaviorAction)/]">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="25" arcHeight="25" borderSizeComputationExpression="1" labelFormat="bold" showIcon="false" labelExpression="service:computeUmlLabel" roundedCorner="true" backgroundStyle="Liquid">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_orange']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_yellow']"/>
               </style>
             </conditionnalStyles>
           </subContainerMappings>
@@ -4267,6 +4275,26 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
+            <tools xsi:type="tool_1:SelectionWizardDescription" name="Call Behavior Action" forceRefresh="true" candidatesExpression="[getAllAvailableRootPackages()->union(getAllAvailableRootPackages().eAllContents()->filter(uml::Classifier))->union(getAllAvailableRootPackages().eAllContents()->filter(uml::Behavior))/]" tree="true" rootExpression="service:getAllAvailableRootPackages" childrenExpression="feature:eContents" message="Select the target behavior of the call behavior action to create" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/CallOperationAction.gif" windowTitle="New Call Operation Action" windowImagePath="">
+              <element name="element"/>
+              <containerView name="containerView"/>
+              <container name="container"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:findParentActivity">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="uml.CallBehaviorAction" referenceName="ownedNode" variableName="action">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="behavior" valueExpression="var:element"/>
+                      <subModelOperations xsi:type="tool_1:If" conditionExpression="[container->filter(uml::ActivityPartition)->size()>0/]">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="inPartition" valueExpression="var:container"/>
+                      </subModelOperations>
+                      <subModelOperations xsi:type="tool_1:If" conditionExpression="[container->filter(uml::InterruptibleActivityRegion)->size()>0/]">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="inInterruptibleRegion" valueExpression="var:container"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
           </ownedTools>
           <ownedTools xsi:type="tool:ToolGroup" name="Object">
             <tools xsi:type="tool:NodeCreationDescription" name="Activity Parameter" nodeMappings="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@borderedNodeMappings[name='AD_Parameter']">
@@ -4453,7 +4481,33 @@
               <edgeView name="edgeView"/>
             </ownedTools>
           </subSections>
+          <subSections name="navigate">
+            <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Open Activity Diagram" label="Activity diagram" precondition="[oclIsTypeOf(uml::CallBehaviorAction) and self.oclAsType(uml::CallBehaviorAction).behavior.oclIsTypeOf(uml::Activity)/]" browseExpression="[self.oclAsType(uml::CallBehaviorAction).behavior/]" diagramDescription="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']">
+              <containerViewVariable name="containerView"/>
+              <containerVariable name="container"/>
+              <representationNameVariable name="diagramName"/>
+            </ownedTools>
+            <ownedTools xsi:type="tool:DiagramCreationDescription" name="CR_ActivityDiagramFromCallBehaviorAction" label="Create Activity diagram" precondition="[oclIsTypeOf(uml::CallBehaviorAction) and self.oclAsType(uml::CallBehaviorAction).behavior.oclIsTypeOf(uml::Activity)/]" titleExpression="[self.oclAsType(uml::CallBehaviorAction).behavior.name +' Activity Diagram'/]" browseExpression="[self.oclAsType(uml::CallBehaviorAction).behavior/]" diagramDescription="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='Activity%20Diagram']">
+              <initialOperation/>
+              <containerViewVariable name="containerView"/>
+              <representationNameVariable name="diagramName"/>
+            </ownedTools>
+            <ownedTools xsi:type="tool:DiagramNavigationDescription" name="Open State Machine Diagram" label="State machine diagram" precondition="[oclIsTypeOf(uml::CallBehaviorAction) and self.oclAsType(uml::CallBehaviorAction).behavior.oclIsTypeOf(uml::StateMachine)/]" browseExpression="[self.oclAsType(uml::CallBehaviorAction).behavior/]" diagramDescription="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']">
+              <containerViewVariable name="containerView"/>
+              <containerVariable name="container"/>
+              <representationNameVariable name="diagramName"/>
+            </ownedTools>
+            <ownedTools xsi:type="tool:DiagramCreationDescription" name="CR_StateMachineDiagramFromCallBehaviorAction" label="Create StateMachine diagram" precondition="[oclIsTypeOf(uml::CallBehaviorAction) and self.oclAsType(uml::CallBehaviorAction).behavior.oclIsTypeOf(uml::StateMachine)/]" titleExpression="[self.oclAsType(uml::CallBehaviorAction).behavior.name +' State Machine Diagram'/]" browseExpression="[self.oclAsType(uml::CallBehaviorAction).behavior/]" diagramDescription="//@ownedViewpoints[name='UML%20Behavioral%20Modeling']/@ownedRepresentations[name='State%20Machine%20Diagram']">
+              <initialOperation/>
+              <containerViewVariable name="containerView"/>
+              <representationNameVariable name="diagramName"/>
+            </ownedTools>
+          </subSections>
         </toolSections>
+        <decorationDescriptionsSet>
+          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="Activity" position="NORTH_EAST" decoratorPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Activity.gif" preconditionExpression="[self.behavior.oclIsTypeOf(uml::Activity)/]" domainClass="CallBehaviorAction"/>
+          <decorationDescriptions xsi:type="description:SemanticBasedDecoration" name="StateMachine" position="NORTH_EAST" decoratorPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/StateMachine.gif" preconditionExpression="[self.behavior.oclIsTypeOf(uml::StateMachine)/]" domainClass="CallBehaviorAction"/>
+        </decorationDescriptionsSet>
       </defaultLayer>
       <additionalLayers name="Profiles">
         <toolSections name="Profiles" reusedTools="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Apply%20profile'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Apply%20stereotype']"/>

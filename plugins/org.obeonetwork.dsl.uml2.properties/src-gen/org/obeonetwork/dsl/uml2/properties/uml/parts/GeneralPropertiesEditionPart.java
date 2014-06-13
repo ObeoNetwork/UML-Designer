@@ -1536,6 +1536,73 @@ public interface GeneralPropertiesEditionPart {
 	public void setChangeExpression(EObject newValue);
 
 
+	/**
+	 * @return the region
+	 * @generated
+	 */
+	public EObject getRegion();
+
+	/**
+	 * Init the region
+	 * @param settings the combo setting
+	 */
+	public void initRegion(EObjectFlatComboSettings settings);
+
+	/**
+	 * Defines a new region
+	 * @param newValue the new region to set
+	 * @generated
+	 */
+	public void setRegion(EObject newValue);
+
+
+	/**
+	 * @return the behaviour
+	 * @generated
+	 */
+	public EObject getBehaviour();
+
+	/**
+	 * Init the behaviour
+	 * @param settings the combo setting
+	 */
+	public void initBehaviour(EObjectFlatComboSettings settings);
+
+	/**
+	 * Defines a new behaviour
+	 * @param newValue the new behaviour to set
+	 * @generated
+	 */
+	public void setBehaviour(EObject newValue);
+
+	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 * @generated
+	 */
+	public void setBehaviourButtonMode(ButtonsModeEnum newValue);
+
+	/**
+	 * Adds the given filter to the behaviour edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addFilterToBehaviour(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the behaviour edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addBusinessFilterToBehaviour(ViewerFilter filter);
+
+
 
 
 

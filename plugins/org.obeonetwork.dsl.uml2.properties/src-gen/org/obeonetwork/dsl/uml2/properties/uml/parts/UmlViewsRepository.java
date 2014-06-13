@@ -352,6 +352,18 @@ public class UmlViewsRepository {
 	
 	public static String changeExpression = "uml::General::changeExpression";
 	
+	/**
+	 * @generated
+	 */
+	
+	public static String region = "uml::General::region";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String behaviour = "uml::General::behaviour";
+	
 	}
 
 	/**
