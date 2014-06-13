@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="UmlDesigner-kepler" sequenceNumber="1401805374">
+<target name="UmlDesigner-kepler" sequenceNumber="1402644994">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.platform.feature.group" version="4.3.2.v20140221-1852"/>
@@ -11,8 +11,9 @@
       <repository location="http://download.eclipse.org/releases/kepler"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.emf.edit.feature.group" version="2.10.0.v20140407-1058"/>
-      <repository location="http://download.eclipse.org/modeling/emf/emf/updates/warmup/"/>
+      <unit id="org.eclipse.emf.edit.feature.group" version="2.10.0.v20140519-0339"/>
+      <unit id="org.eclipse.emf.mapping.ecore.feature.group" version="2.8.0.v20140519-0339"/>
+      <repository location="http://download.eclipse.org/modeling/emf/emf/updates/milestones/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.uml2.uml.feature.group" version="5.0.0.v20140602-0749"/>
@@ -54,9 +55,8 @@
       <unit id="org.eclipse.sirius.runtime.ide.ui.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.sirius.specifier.ide.ui.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.nebula.widgets.paperclips.feature.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.sirius.tests.feature.group" version="0.0.0"/>
-      <repository location="http://download.eclipse.org/sirius/updates/milestones/1.0.0M6/kepler"/>
+      <repository location="http://download.eclipse.org/sirius/updates/milestones/1.0.0rc3/luna"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.compare.diagram.gmf.feature.group" version="0.0.0"/>
@@ -64,7 +64,7 @@
       <unit id="org.eclipse.emf.compare.rcp.ui.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.compare.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.compare.uml2.feature.group" version="0.0.0"/>
-      <repository location="http://download.eclipse.org/modeling/emf/compare/updates/milestones/2.2"/>
+      <repository location="http://download.eclipse.org/modeling/emf/compare/updates/milestones/3.0/S201406111328"/>
     </location>
   </locations>
 </target>

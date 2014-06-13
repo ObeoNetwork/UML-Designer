@@ -55,7 +55,7 @@ location "http://download.eclipse.org/modeling/emft/eef/updates/releases/1.3/R20
 }
 
 // Sirius
-location "http://download.eclipse.org/sirius/updates/milestones/1.0.0rc1/luna" {
+location "http://download.eclipse.org/sirius/updates/milestones/1.0.0rc3/luna" {
 	org.eclipse.sirius.runtime.feature.group;version=lazy
 	org.eclipse.sirius.runtime.acceleo.feature.group;version=lazy
 	//IDE
@@ -68,7 +68,7 @@ location "http://download.eclipse.org/sirius/updates/milestones/1.0.0rc1/luna" {
 }
 
 // UML compare
-location "http://download.eclipse.org/modeling/emf/compare/updates/milestones/2.2" {
+location "http://download.eclipse.org/modeling/emf/compare/updates/milestones/3.0/S201406111328" {
 	org.eclipse.emf.compare.diagram.gmf.feature.group;version=lazy
 	org.eclipse.emf.compare.ide.ui.feature.group;version=lazy
 	org.eclipse.emf.compare.rcp.ui.feature.group;version=lazy
