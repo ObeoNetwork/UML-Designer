@@ -297,5 +297,32 @@ Contributors:
             right="/org.obeonetwork.dsl.uml2.design/images/required-right.svg"
             top="/org.obeonetwork.dsl.uml2.design/images/required-top.svg">
       </image>
+   </extension>
+   <extension point="org.eclipse.ui.popupMenus" id="init-diagram-action">
+      <?gmfgen generated="true"?>
+      <objectContribution
+            id="org.obeonetwork.dsl.uml2.design.action.InitDiagramOnUml"
+            nameFilter="*.uml"
+            objectClass="org.eclipse.core.resources.IFile">
+         <action
+               label="%initDiagramActionLabel"
+               class="org.obeonetwork.dsl.uml2.design.ui.extension.actions.UmlInitDiagramFileAction"
+               menubarPath="additions"
+               enablesFor="1"
+               id="org.obeonetwork.dsl.uml2.diagram.InitDiagramAction">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="org.obeonetwork.dsl.uml2.design.action.InitDiagramOnAird"
+            nameFilter="*.aird"
+            objectClass="org.eclipse.core.resources.IFile">
+         <action
+               class="org.obeonetwork.dsl.uml2.design.ui.extension.actions.UmlInitDiagramFileAction"
+               enablesFor="1"
+               id="org.obeonetwork.dsl.uml2.diagram.InitDiagramAction"
+               label="%initDiagramActionLabel"
+               menubarPath="additions">
+         </action>
+      </objectContribution>
    </extension>     
 </plugin>
