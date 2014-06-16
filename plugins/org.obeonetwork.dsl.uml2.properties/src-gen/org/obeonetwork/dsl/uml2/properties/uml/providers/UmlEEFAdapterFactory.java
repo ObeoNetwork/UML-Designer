@@ -314,6 +314,14 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createAcceptEventActionAdapter()
+	 * @generated
+	 */
+	public Adapter createAcceptEventActionAdapter() {
+		return new AcceptEventActionPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createCallBehaviorActionAdapter()
 	 * @generated
 	 */
@@ -370,6 +378,14 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createCallEventAdapter()
+	 * @generated
+	 */
+	public Adapter createCallEventAdapter() {
+		return new CallEventPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createChangeEventAdapter()
 	 * @generated
 	 */
@@ -383,6 +399,14 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	 */
 	public Adapter createOpaqueBehaviorAdapter() {
 		return new OpaqueBehaviorPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createSignalEventAdapter()
+	 * @generated
+	 */
+	public Adapter createSignalEventAdapter() {
+		return new SignalEventPropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}

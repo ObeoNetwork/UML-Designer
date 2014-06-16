@@ -1603,6 +1603,114 @@ public interface GeneralPropertiesEditionPart {
 	public void addBusinessFilterToBehaviour(ViewerFilter filter);
 
 
+	/**
+	 * @return the unmarshall
+	 * @generated
+	 */
+	public Boolean getUnmarshall();
+
+	/**
+	 * Defines a new unmarshall
+	 * @param newValue the new unmarshall to set
+	 * @generated
+	 */
+	public void setUnmarshall(Boolean newValue);
+
+
+	/**
+	 * @return the operation
+	 * @generated
+	 */
+	public EObject getOperation();
+
+	/**
+	 * Init the operation
+	 * @param settings the combo setting
+	 */
+	public void initOperation(EObjectFlatComboSettings settings);
+
+	/**
+	 * Defines a new operation
+	 * @param newValue the new operation to set
+	 * @generated
+	 */
+	public void setOperation(EObject newValue);
+
+	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 * @generated
+	 */
+	public void setOperationButtonMode(ButtonsModeEnum newValue);
+
+	/**
+	 * Adds the given filter to the operation edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addFilterToOperation(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the operation edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addBusinessFilterToOperation(ViewerFilter filter);
+
+
+	/**
+	 * @return the signal
+	 * @generated
+	 */
+	public EObject getSignal();
+
+	/**
+	 * Init the signal
+	 * @param settings the combo setting
+	 */
+	public void initSignal(EObjectFlatComboSettings settings);
+
+	/**
+	 * Defines a new signal
+	 * @param newValue the new signal to set
+	 * @generated
+	 */
+	public void setSignal(EObject newValue);
+
+	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 * @generated
+	 */
+	public void setSignalButtonMode(ButtonsModeEnum newValue);
+
+	/**
+	 * Adds the given filter to the signal edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addFilterToSignal(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the signal edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addBusinessFilterToSignal(ViewerFilter filter);
+
+
 
 
 

@@ -16,6 +16,10 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.uml2.uml.AcceptEventAction;
 import org.eclipse.uml2.uml.Action;
 import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.ActivityEdge;
@@ -24,9 +28,11 @@ import org.eclipse.uml2.uml.ActivityNode;
 import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.CallAction;
+import org.eclipse.uml2.uml.CallEvent;
 import org.eclipse.uml2.uml.ControlFlow;
 import org.eclipse.uml2.uml.DecisionNode;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.ExecutableNode;
 import org.eclipse.uml2.uml.FinalNode;
 import org.eclipse.uml2.uml.ForkNode;
 import org.eclipse.uml2.uml.InitialNode;
@@ -40,8 +46,15 @@ import org.eclipse.uml2.uml.ObjectFlow;
 import org.eclipse.uml2.uml.OpaqueAction;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.OutputPin;
+import org.eclipse.uml2.uml.Signal;
+import org.eclipse.uml2.uml.SignalEvent;
+import org.eclipse.uml2.uml.TimeEvent;
+import org.eclipse.uml2.uml.Trigger;
 import org.eclipse.uml2.uml.UMLFactory;
 
+import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
+import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 
 /**
@@ -198,6 +211,44 @@ public class ActivityServices {
 	}
 
 	/**
+	 * Get the {@link ExecutableNode} elements for the given context.
+	 * 
+	 * @param context
+	 *            the context object on which to execute this service.
+	 * @return the {@link List} of {@link ExecutableNode}
+	 */
+	public List<ActivityNode> getExecutableNodes(Element context) {
+		final List<ActivityNode> allActivityNodes = getActivityNodes(context);
+		List<ActivityNode> childNodes = new ArrayList<ActivityNode>(allActivityNodes);
+		for (ActivityNode activityNode : allActivityNodes) {
+			if (activityNode instanceof AcceptEventAction) {
+				childNodes.remove(activityNode);
+			}
+		}
+
+		return childNodes;
+	}
+
+	/**
+	 * Get the {@link AcceptEventAction} elements for the given context.
+	 * 
+	 * @param context
+	 *            the context object on which to execute this service.
+	 * @return the {@link List} of {@link AcceptEventAction}
+	 */
+	public List<ActivityNode> getAcceptEventActions(Element context) {
+		final List<ActivityNode> allActivityNodes = getActivityNodes(context);
+		List<ActivityNode> childNodes = new ArrayList<ActivityNode>(allActivityNodes);
+		for (ActivityNode activityNode : allActivityNodes) {
+			if (!(activityNode instanceof AcceptEventAction)) {
+				childNodes.remove(activityNode);
+			}
+		}
+
+		return childNodes;
+	}
+
+	/**
 	 * Get the child {@link ActivityNode} elements for the given context. This is used to retrieve the
 	 * semantic candidates of {@link ActivityNode} mappings from the context semantic object which can be
 	 * either the {@link Activity} or an {@link ActivityPartition}.
@@ -210,7 +261,7 @@ public class ActivityServices {
 		List<ActivityNode> childNodes;
 
 		if (context instanceof Activity) {
-			final EList<ActivityNode> allActivityNodes = ((Activity)context).getOwnedNodes();
+			final List<ActivityNode> allActivityNodes = ((Activity)context).getOwnedNodes();
 			childNodes = new ArrayList<ActivityNode>(allActivityNodes);
 
 			for (ActivityNode activityNode : allActivityNodes) {
@@ -477,5 +528,98 @@ public class ActivityServices {
 		}
 
 		return true;
+	}
+
+	/**
+	 * Check if an accept event action is a wait time action.
+	 * 
+	 * @param action
+	 *            Action
+	 * @return True if it is a wait time action otherwise false
+	 */
+	public boolean isWaitTimeAction(AcceptEventAction action) {
+		if (action != null && action.getTriggers() != null && action.getTriggers().size() == 1) {
+			Trigger trigger = action.getTriggers().get(0);
+			if (trigger.getEvent() != null && trigger.getEvent() instanceof TimeEvent) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Check if an accept event action is an accept signal action.
+	 * 
+	 * @param action
+	 *            Action
+	 * @return True if it is a accept signal action otherwise false
+	 */
+	public boolean isAcceptSignalAction(AcceptEventAction action) {
+		if (action != null && action.getTriggers() != null && action.getTriggers().size() == 1) {
+			Trigger trigger = action.getTriggers().get(0);
+			if (trigger.getEvent() != null && trigger.getEvent() instanceof SignalEvent) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Check if an accept event action is an accept call action.
+	 * 
+	 * @param action
+	 *            Action
+	 * @return True if it is a accept call action otherwise false
+	 */
+	public boolean isAcceptCallAction(AcceptEventAction action) {
+		if (action != null && action.getTriggers() != null && action.getTriggers().size() == 1) {
+			Trigger trigger = action.getTriggers().get(0);
+			if (trigger.getEvent() != null && trigger.getEvent() instanceof CallEvent) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
+	 * Get all the operations available in the semantic resources.
+	 * 
+	 * @param eObj
+	 *            Semantic element
+	 * @return All the operations
+	 */
+	public List<EObject> getAllOperations(EObject eObj) {
+		List<EObject> operations = Lists.newArrayList();
+		final Session session = SessionManager.INSTANCE.getSession(eObj);
+		for (Resource resource : session.getSemanticResources()) {
+			final Predicate<EObject> predicate = new Predicate<EObject>() {
+				public boolean apply(EObject eObj) {
+					return eObj instanceof Operation
+							&& (((Operation)eObj).getMethods() == null || ((Operation)eObj).getMethods()
+									.size() == 0);
+				}
+			};
+			Iterators.addAll(operations, Iterators.filter(resource.getAllContents(), predicate));
+		}
+
+		return operations;
+	}
+
+	/**
+	 * Get all the signals available in the semantic resources.
+	 * 
+	 * @param eObj
+	 *            Semantic element
+	 * @return All the signals
+	 */
+	public List<EObject> getAllSignals(EObject eObj) {
+		List<EObject> signals = Lists.newArrayList();
+		final Session session = SessionManager.INSTANCE.getSession(eObj);
+		for (Resource resource : session.getSemanticResources()) {
+			Iterators.addAll(signals,
+					Iterators.filter(resource.getAllContents(), Predicates.instanceOf(Signal.class)));
+		}
+
+		return signals;
 	}
 }

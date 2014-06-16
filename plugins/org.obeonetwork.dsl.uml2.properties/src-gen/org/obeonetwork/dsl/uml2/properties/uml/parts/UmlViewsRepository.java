@@ -364,6 +364,24 @@ public class UmlViewsRepository {
 	
 	public static String behaviour = "uml::General::behaviour";
 	
+	/**
+	 * @generated
+	 */
+	
+	public static String unmarshall = "uml::General::unmarshall";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String operation = "uml::General::operation";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String signal = "uml::General::signal";
+	
 	}
 
 	/**

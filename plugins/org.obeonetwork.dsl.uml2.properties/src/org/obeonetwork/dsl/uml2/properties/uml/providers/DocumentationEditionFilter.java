@@ -13,6 +13,7 @@ package org.obeonetwork.dsl.uml2.properties.uml.providers;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.jface.viewers.IFilter;
+import org.eclipse.uml2.uml.AcceptEventAction;
 import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.Actor;
@@ -123,6 +124,7 @@ public class DocumentationEditionFilter implements IFilter {
 						|| eObj instanceof StateMachine
 						|| eObj instanceof Region
 						|| eObj instanceof Interaction
-						|| eObj instanceof OpaqueBehavior || eObj instanceof Activity);
+						|| eObj instanceof OpaqueBehavior
+						|| eObj instanceof Activity || eObj instanceof AcceptEventAction);
 	}
 }
