@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="UmlDesigner-luna" sequenceNumber="1402585905">
+<target name="UmlDesigner-luna" sequenceNumber="1403275490">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.platform.feature.group" version="4.4.0.v20140528-2014"/>
-      <unit id="org.eclipse.sdk.feature.group" version="4.4.0.v20140528-2221"/>
+      <unit id="org.eclipse.platform.feature.group" version="4.4.0.v20140606-1558"/>
+      <unit id="org.eclipse.sdk.feature.group" version="4.4.0.v20140606-1558"/>
       <unit id="org.eclipse.epp.mpc.feature.group" version="1.3.0.v20140529-2031"/>
-      <unit id="org.eclipse.equinox.executable.feature.group" version="3.6.100.v20140521-1744"/>
-      <repository location="http://download.eclipse.org/releases/luna"/>
+      <unit id="org.eclipse.equinox.executable.feature.group" version="3.6.100.v20140603-1326"/>
+      <repository location="http://download.eclipse.org/releases/staging"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.edit.feature.group" version="2.10.0.v20140519-0339"/>
@@ -31,7 +31,7 @@
       <repository location="http://download.eclipse.org/technology/swtbot/releases/latest/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="com.google.guava" version="11.0.2.v201303041551"/>
+      <unit id="com.google.guava" version="15.0.0.v201403281430"/>
       <unit id="org.junit" version="4.11.0.v201303080030"/>
       <unit id="org.hamcrest.core" version="1.3.0.v201303031735"/>
       <unit id="org.hamcrest.library" version="1.3.0.v201305281000"/>
@@ -39,24 +39,24 @@
       <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.acceleo.feature.group" version="3.4.1.201309031307"/>
-      <unit id="org.eclipse.acceleo.runtime.feature.group" version="3.4.1.201309031307"/>
-      <repository location="http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/3.4/"/>
+      <unit id="org.eclipse.acceleo.feature.group" version="3.5.0.201406101309"/>
+      <unit id="org.eclipse.acceleo.runtime.feature.group" version="3.5.0.201406101309"/>
+      <repository location="http://download.eclipse.org/acceleo/updates/milestones/3.5/S201406101309"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.eef.runtime" version="1.3.0.201311221533"/>
       <repository location="http://download.eclipse.org/modeling/emft/eef/updates/releases/1.3/R201311221533"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.sirius.runtime.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.sirius.runtime.acceleo.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.sirius.runtime.ide.ui.acceleo.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.sirius.runtime.ide.eef.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.sirius.runtime.ide.ui.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.sirius.specifier.ide.ui.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.sirius.tests.feature.group" version="0.0.0"/>
-      <repository location="http://download.eclipse.org/sirius/updates/milestones/1.0.0rc3/luna"/>
+      <unit id="org.eclipse.sirius.runtime.feature.group" version="1.0.0.201406040902"/>
+      <unit id="org.eclipse.sirius.runtime.acceleo.feature.group" version="1.0.0.201406040902"/>
+      <unit id="org.eclipse.sirius.runtime.ide.ui.acceleo.feature.group" version="1.0.0.201406040902"/>
+      <unit id="org.eclipse.sirius.runtime.ide.eef.feature.group" version="1.0.0.201406040902"/>
+      <unit id="org.eclipse.sirius.runtime.ide.ui.feature.group" version="1.0.0.201406040902"/>
+      <unit id="org.eclipse.sirius.specifier.ide.ui.feature.group" version="1.0.0.201406040902"/>
+      <unit id="org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group" version="1.0.0.201406040902"/>
+      <unit id="org.eclipse.sirius.tests.feature.group" version="1.0.0.201406040902"/>
+      <repository location="http://download.eclipse.org/sirius/updates/releases/1.0.0/luna"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.compare.diagram.gmf.feature.group" version="0.0.0"/>
