@@ -7,9 +7,9 @@
 
    <description url="http://docs.obeonetwork.com/uml">
       This modeler provides a set of common diagrams to work with
-UML 4.0 models.
-Provides same features as org.obeonetwork.dsl.uml2.runtime.sdk.feature 
-without the dependencies to Obeo Designer.
+UML 5.0 models.
+Provides same features as org.obeonetwork.dsl.uml2.runtime.sdk.feature
+without the dependencies to Sirius.
    </description>
 
    <copyright url="http://www.eclipse.org/legal/epl-v10.html">

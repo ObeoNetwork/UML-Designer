@@ -11,13 +11,13 @@ Contributors:
 -->
 <feature
       id="org.obeonetwork.dsl.uml2.runtime.sdk.feature"
-      label="UML Designer SDK (based on Sirius)"
+      label="UML Designer SDK"
       version="4.0.0.qualifier"
       provider-name="Obeo">
 
    <description url="http://docs.obeonetwork.com/uml">
       This modeler provides a set of common diagrams to work with
-UML 4.0 models.
+UML 5.0 models.
    </description>
 
    <copyright url="http://www.obeo.fr/legal.php?lang=en">
@@ -232,8 +232,8 @@ litigation.
          version="0.0.0"/>
 
    <requires>
-      <import feature="org.eclipse.sirius.specifier.ide.ui"  version="0.0.0" match="greaterOrEqual"/>
-      <import feature="org.eclipse.sirius.specifier.ide.ui.acceleo"  version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.specifier.ide.ui" version="0.0.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.sirius.specifier.ide.ui.acceleo" version="0.0.0" match="greaterOrEqual"/>
    </requires>
 
 </feature>
