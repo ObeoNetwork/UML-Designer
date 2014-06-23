@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
@@ -26,9 +27,12 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.ProfileApplication;
+import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.util.UMLSwitch;
+
+import com.google.common.collect.Lists;
 
 /**
  * Utility services to manage Ecore UML resources.
@@ -119,6 +123,38 @@ public class EcoreServices {
 		return roots;
 	}
 
+	public List<EObject> getAllStereotypesAndProfiles(Element element) {
+		List<EObject> stereotypesAndProfiles = Lists.newArrayList();
+		Collection<Profile> profiles = getAllProfilesInPlatform(element);
+		// Get all stereotypes
+		stereotypesAndProfiles.addAll(getAllStereotypes(element, profiles));
+		// Get all profiles
+		stereotypesAndProfiles.addAll(profiles);
+		return stereotypesAndProfiles;
+	}
+
+	private List<Stereotype> getAllStereotypes(Element element, Collection<Profile> profiles) {
+		List<Stereotype> stereotypes = Lists.newArrayList();
+		for (Profile profile : profiles) {
+			org.eclipse.uml2.uml.Package pkg = element.getNearestPackage();
+			boolean isProfileApplied = false;
+			if (pkg.isProfileApplied(profile)) {
+				isProfileApplied = true;
+			}
+
+			if (!isProfileApplied) {
+				pkg.applyProfile(profile);
+			}
+			stereotypes.addAll(element.getApplicableStereotypes());
+
+			if (!isProfileApplied) {
+				pkg.unapplyProfile(profile);
+			}
+		}
+
+		return stereotypes;
+	}
+
 	/**
 	 * Retrieves all the possible profiles in the platform for the given context object.
 	 * 
@@ -126,10 +162,10 @@ public class EcoreServices {
 	 *            the context object on which to execute this service.
 	 * @return a {@link Collection} of all the profiles of the current platform.
 	 */
-	static public Collection<EObject> getAllProfilesInPlatform(Element element) {
+	static public Collection<Profile> getAllProfilesInPlatform(Element element) {
 		// Get element package container
 		org.eclipse.uml2.uml.Package package_ = element.getNearestPackage();
-		final Collection<EObject> roots = new ArrayList<EObject>();
+		final List<Profile> roots = Lists.newArrayList();
 
 		if (package_ instanceof org.eclipse.uml2.uml.Package) {
 			final org.eclipse.uml2.uml.Package packageUML = (org.eclipse.uml2.uml.Package)package_;

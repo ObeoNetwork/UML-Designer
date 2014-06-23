@@ -415,6 +415,12 @@ public class UMLServices {
 
 		// Applying selected stereotypes
 		for (Stereotype stereotypeToApply : stereotypesToApply) {
+			Profile profile = stereotypeToApply.getProfile();
+			Package pkg = element.getNearestPackage();
+			if (!pkg.isProfileApplied(profile)) {
+				pkg.applyProfile(profile);
+			}
+
 			if (!element.isStereotypeApplied(stereotypeToApply)) {
 				element.applyStereotype(stereotypeToApply);
 			}
