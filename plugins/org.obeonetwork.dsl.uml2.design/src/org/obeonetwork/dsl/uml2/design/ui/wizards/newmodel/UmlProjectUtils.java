@@ -13,7 +13,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.transaction.RecordingCommand;
-import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ext.base.Option;
@@ -23,6 +22,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
+import org.obeonetwork.dsl.uml2.design.ui.extension.editor.UmlViewpoints;
 
 import com.google.common.collect.Maps;
 
@@ -85,24 +85,22 @@ public class UmlProjectUtils {
 	}
 
 	public static void enableUMLViewpoints(final Session session) {
-		final String[] viewpointsToActivate = {UML_STRUCTURAL_VP, UML_BEHAVIORAL_VP, UML_EXTENSIONS_VP};
-		enableViewpoints(session, viewpointsToActivate);
-	}
-
-	public static void enableViewpoints(final Session session, final String... viewpointsToActivate) {
 		if (session != null) {
 			session.getTransactionalEditingDomain().getCommandStack()
 					.execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
 						@Override
 						protected void doExecute() {
-							ViewpointSelectionCallback callback = new ViewpointSelectionCallback();
-
-							for (Viewpoint vp : ViewpointRegistry.getInstance().getViewpoints()) {
-								for (String viewpoint : viewpointsToActivate) {
-									if (viewpoint.equals(vp.getName()))
-										callback.selectViewpoint(vp, session, new NullProgressMonitor());
-								}
+							ViewpointSelectionCallback selection = new ViewpointSelectionCallback();
+							for (Viewpoint previouslySelected : session.getSelectedViewpoints(false)) {
+								selection.deselectViewpoint(previouslySelected, session,
+										new NullProgressMonitor());
 							}
+							selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().structural(),
+									session, new NullProgressMonitor());
+							selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().behavioral(),
+									session, new NullProgressMonitor());
+							selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().extensions(),
+									session, new NullProgressMonitor());
 						}
 					});
 		}
