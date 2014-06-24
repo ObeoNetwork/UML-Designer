@@ -87,6 +87,8 @@ public class UIServices {
 		if (cmd.canExecute()) {
 			cmd.execute();
 		}
+		// Mark for auto size
+		markForAutosize(semanticElement);
 		// Create the view for the pasted element
 		createView(semanticElement, containerView, session, "containerView");
 	}
@@ -221,6 +223,9 @@ public class UIServices {
 			return;
 		final Session session = SessionManager.INSTANCE.getSession(semanticElementList.get(0));
 		for (EObject semanticElement : semanticElementList) {
+			// Mark for auto-size
+			markForAutosize(semanticElement);
+
 			// Create the view for the added element
 			createView(semanticElement, (DSemanticDecorator)containerView, session, "containerView");
 		}
@@ -386,5 +391,20 @@ public class UIServices {
 			}
 		}
 		return mappings;
+	}
+
+	public EObject markForAutosize(EObject any) {
+		if (any != null) {
+			any.eAdapters().add(AutosizeTrigger.AUTO_SIZE_MARKER);
+		}
+		return any;
+	}
+
+	public int defaultHeight(EObject any) {
+		return 10;
+	}
+
+	public int defaultWidth(EObject any) {
+		return 12;
 	}
 }
