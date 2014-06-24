@@ -487,6 +487,12 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 		return label.toString();
 	}
 
+	@Override
+	public String caseParameter(Parameter object) {
+		final StringBuilder label = new StringBuilder(caseNamedElement(object));
+		return label.toString();
+	}
+
 	/**
 	 * {@inheritDoc}
 	 */
