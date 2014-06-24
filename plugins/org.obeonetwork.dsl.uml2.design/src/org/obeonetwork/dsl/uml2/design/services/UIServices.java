@@ -25,8 +25,11 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.HideFilterHelper;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.internal.helper.task.operations.CreateViewTask;
 import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeContainerSpec;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
@@ -44,6 +47,8 @@ import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UseCase;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
 import org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel.Messages;
+
+import com.google.common.collect.Lists;
 
 /**
  * Services to handle UI concerns.
@@ -139,8 +144,85 @@ public class UIServices {
 			}
 		}
 
-		// Create the view for the dropped element
-		createView(semanticElement, containerView, session, "newContainerView");
+		// Show the semantic element on the diagram
+		showView(semanticElement, containerView, session);
+	}
+
+	/**
+	 * Show the given semantic element on the diagram. If the element already exists but is hidden juste
+	 * reveal it, otherwise create a new view.
+	 * 
+	 * @param semanticElement
+	 *            Semantic element
+	 * @param containerView
+	 *            Container view
+	 * @param session
+	 *            Session
+	 */
+	private void showView(final EObject semanticElement, final DSemanticDecorator containerView,
+			final Session session) {
+		// Check if the dropped element already exists in the diagram but is hidden
+		List<DDiagramElement> hiddenDiagramElements = getHiddenExistingDiagramElements(semanticElement,
+				containerView);
+		if (!hiddenDiagramElements.isEmpty()) {
+			// Just reveal the elements
+			for (DDiagramElement existingDiagramElement : hiddenDiagramElements) {
+				HideFilterHelper.INSTANCE.reveal(existingDiagramElement);
+			}
+		} else {
+			// Else create a new element
+			// Create the view for the dropped element
+			createView(semanticElement, containerView, session, "newContainerView");
+		}
+	}
+
+	/**
+	 * Get all the hidden existing diagram elements related to a semantic element.
+	 * 
+	 * @param semanticElement
+	 *            Semantic element
+	 * @param containerView
+	 *            Container view
+	 * @return List of all existing diagram elements for the given semantic element which are currently hidden
+	 *         in the diagram
+	 */
+	private List<DDiagramElement> getHiddenExistingDiagramElements(EObject semanticElement,
+			DSemanticDecorator containerView) {
+		List<DDiagramElement> existingDiagramElements = Lists.newArrayList();
+		if (containerView instanceof DSemanticDiagram) {
+			for (DDiagramElement element : ((DSemanticDiagram)containerView).getDiagramElements()) {
+				if (semanticElement.equals(element.getTarget())) {
+					DDiagramElementQuery query = new DDiagramElementQuery(element);
+					if (query.isHidden()) {
+						existingDiagramElements.add(element);
+					}
+					// Get the hidden parent container of the element to reveal, in order to reveal all the
+					// hierarchy
+					existingDiagramElements.addAll(getHiddenParentContainerViews(element));
+				}
+			}
+		}
+		return existingDiagramElements;
+	}
+
+	/**
+	 * Get all the hidden diagram element in the hierarchy of a given diagram element.
+	 * 
+	 * @param diagramElement
+	 *            Diagram element
+	 * @return List of all the hidden parent container element
+	 */
+	private List<DDiagramElement> getHiddenParentContainerViews(DDiagramElement diagramElement) {
+		List<DDiagramElement> containerViews = Lists.newArrayList();
+		EObject containerView = diagramElement.eContainer();
+		while (!(containerView instanceof DDiagram) && containerView instanceof DDiagramElement) {
+			DDiagramElementQuery query = new DDiagramElementQuery((DDiagramElement)containerView);
+			if (query.isHidden()) {
+				containerViews.add((DDiagramElement)containerView);
+			}
+			containerView = containerView.eContainer();
+		}
+		return containerViews;
 	}
 
 	/**
@@ -168,7 +250,6 @@ public class UIServices {
 	 * @param containerView
 	 *            Container view
 	 */
-	@SuppressWarnings("restriction")
 	public void dropFromModel(final Element newContainer, final Element semanticElement,
 			final DSemanticDecorator containerView) {
 		drop(newContainer, semanticElement, containerView, !(containerView instanceof DSemanticDiagram));
@@ -226,8 +307,8 @@ public class UIServices {
 			// Mark for auto-size
 			markForAutosize(semanticElement);
 
-			// Create the view for the added element
-			createView(semanticElement, (DSemanticDecorator)containerView, session, "containerView");
+			// Show the added element on the diagram
+			showView(semanticElement, (DSemanticDecorator)containerView, session);
 		}
 	}
 
@@ -277,8 +358,16 @@ public class UIServices {
 										representation);
 
 								// Execute the create view task
-								new CreateViewTask(context, session.getModelAccessor(), createViewOp, session
-										.getInterpreter()).execute();
+								CreateViewTask task = new CreateViewTask(context, session.getModelAccessor(),
+										createViewOp, session.getInterpreter());
+								task.execute();
+
+								Object createdView = session.getInterpreter().getVariable(
+										createViewOp.getVariableName());
+								if (createdView instanceof DDiagramElement) {
+									DDiagramElement element = (DDiagramElement)createdView;
+									HideFilterHelper.INSTANCE.reveal(element);
+								}
 							} catch (MetaClassNotFoundException e) {
 								UMLDesignerPlugin.log(IStatus.ERROR, Messages
 										.bind(Messages.UmlModelWizard_UI_ErrorMsg_BadFileExtension,
