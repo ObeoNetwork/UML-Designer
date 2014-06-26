@@ -1107,11 +1107,12 @@ public class SequenceServices {
 	 * @param pkg
 	 *            Package containing new interaction.
 	 */
-	public void createInteraction(EObject pkg) {
+	public Interaction createInteraction(EObject pkg) {
 		final UMLFactory factory = UMLFactory.eINSTANCE;
 		final Interaction interaction = factory.createInteraction();
 		interaction.setName(NamedElementServices.getNewInteractionName((Package)pkg));
 		((Package)pkg).getPackagedElements().add(interaction);
+		return interaction;
 	}
 
 	/**

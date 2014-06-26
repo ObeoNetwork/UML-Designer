@@ -37,6 +37,11 @@ public class UmlViewpoints {
 				.createURI("viewpoint:/org.obeonetwork.dsl.uml2.design/UML Extensions"));
 	}
 
+	public Viewpoint dashboard() {
+		return registry.getViewpoint(URI
+				.createURI("viewpoint:/org.obeonetwork.dsl.uml2.design/UML Dashboard"));
+	}
+
 	public Viewpoint profile() {
 		return registry.getViewpoint(URI
 				.createURI("viewpoint:/org.obeonetwork.dsl.uml2.profile.design/UML Profile Design"));

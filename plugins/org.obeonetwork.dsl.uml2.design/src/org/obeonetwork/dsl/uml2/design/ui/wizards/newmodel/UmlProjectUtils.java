@@ -101,6 +101,8 @@ public class UmlProjectUtils {
 									session, new NullProgressMonitor());
 							selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().extensions(),
 									session, new NullProgressMonitor());
+							selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().dashboard(),
+									session, new NullProgressMonitor());
 						}
 					});
 		}

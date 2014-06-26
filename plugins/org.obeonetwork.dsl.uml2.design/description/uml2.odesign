@@ -517,7 +517,7 @@
         </subSections>
       </toolSection>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram']" name="Package Hierarchy" titleExpression="[name +' Package Hierarchy'/]" showOnStartup="true" pasteDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste']" domainClass="uml.Package" enablePopupBars="true">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram']" name="Package Hierarchy" titleExpression="[name +' Package Hierarchy'/]" pasteDescriptions="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste']" domainClass="uml.Package" enablePopupBars="true">
       <metamodel href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide containment">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Containment']"/>
@@ -5571,6 +5571,356 @@
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.DebugServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.UMLServices"/>
+  </ownedViewpoints>
+  <ownedViewpoints name="UML Dashboard" modelFileExtension="uml">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Dashboard" titleExpression="Dashboard" initialisation="true" showOnStartup="true" domainClass="uml.Model" preconditionExpression="service:doesDashboardNotExist">
+      <defaultLayer name="Default">
+        <containerMappings name="DA_Dashboard" semanticCandidatesExpression="var:self" domainClass="uml.Model" childrenPresentation="HorizontalStack">
+          <subContainerMappings name="DA_Create" semanticCandidatesExpression="var:self" domainClass="uml.Model" childrenPresentation="VerticalStack">
+            <subContainerMappings name="DA_Structure" semanticCandidatesExpression="var:self" domainClass="uml.Model" childrenPresentation="List">
+              <subNodeMappings name="DA_PackageDiagram" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@toolSections.0/@subSections[name='Create']/@subSections[name='Structure']/@ownedTools[name='DA_CreatePackageDiagram']" domainClass="uml.Model">
+                <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="Package diagram" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Package.gif" labelAlignment="LEFT" tooltipExpression="Double click to create a new package diagram" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <subNodeMappings name="DA_ClassDiagram" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@toolSections.0/@subSections[name='Create']/@subSections[name='Structure']/@ownedTools[name='DA_CreateClassDiagram']" domainClass="uml.Model">
+                <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="Class diagram" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Class.gif" labelAlignment="LEFT" tooltipExpression="Double click to create a new class diagram" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <subNodeMappings name="DA_ComponentDiagram" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@toolSections.0/@subSections[name='Create']/@subSections[name='Structure']/@ownedTools[name='DA_CreateComponentDiagram']" domainClass="uml.Model">
+                <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="Component diagram" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Component.gif" labelAlignment="LEFT" tooltipExpression="Double click to create a new component diagram" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <subNodeMappings name="DA_CompositeStructureDiagram" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@toolSections.0/@subSections[name='Create']/@subSections[name='Structure']/@ownedTools[name='DA_CreateCompositeStructureDiagram']" domainClass="uml.Model">
+                <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="Composite Structure diagram" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/InterfaceRealization.gif" labelAlignment="LEFT" tooltipExpression="Double click to create a new composite structure diagram" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <subNodeMappings name="DA_DeploymentDiagram" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@toolSections.0/@subSections[name='Create']/@subSections[name='Structure']/@ownedTools[name='DA_CreateDeploymentDiagram']" domainClass="uml.Model">
+                <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="Deployment diagram" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Deployment.gif" labelAlignment="LEFT" tooltipExpression="Double click to create a new deployment diagram" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="10" arcHeight="10" borderColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='dark%20lagune']" labelSize="12" labelFormat="bold" showIcon="false" labelExpression="Structure" tooltipExpression="Create new structural diagrams" roundedCorner="true" widthComputationExpression="15" heightComputationExpression="13" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='light%20lagune']" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='light%20lagune']">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </subContainerMappings>
+            <subContainerMappings name="DA_Behavior" semanticCandidatesExpression="var:self" domainClass="uml.Model" childrenPresentation="List">
+              <subNodeMappings name="DA_StateMachineDiagram" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@toolSections.0/@subSections[name='Create']/@subSections[name='Behavior']/@ownedTools[name='DA_CreateStateMachineDiagram']" domainClass="uml.Model">
+                <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="State Machine diagram" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/StateMachine.gif" labelAlignment="LEFT" tooltipExpression="Double click to create a new state machine diagram" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <subNodeMappings name="DA_ActivityDiagram" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@toolSections.0/@subSections[name='Create']/@subSections[name='Behavior']/@ownedTools[name='DA_CreateActivityDiagram']" domainClass="uml.Model">
+                <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="Activity diagram" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Activity.gif" labelAlignment="LEFT" tooltipExpression="Double click to create a new activity diagram" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <subNodeMappings name="DA_UseCaseDiagram" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@toolSections.0/@subSections[name='Create']/@subSections[name='Behavior']/@ownedTools[name='DA_CreateUseCaseDiagram']" domainClass="uml.Model">
+                <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="Use Case diagram" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/UseCase.gif" labelAlignment="LEFT" tooltipExpression="Double click to create a new use case diagram" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <subNodeMappings name="DA_SequenceDiagram" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@toolSections.0/@subSections[name='Create']/@subSections[name='Behavior']/@ownedTools[name='DA_CreateSequenceDiagram']" domainClass="uml.Model">
+                <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="Sequence diagram" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Lifeline.gif" labelAlignment="LEFT" tooltipExpression="Double click to create a new sequence diagram" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="10" arcHeight="10" borderColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='dark%20lagune']" labelSize="12" labelFormat="bold" showIcon="false" labelExpression="Behavior" tooltipExpression="Create new behavioral diagrams" roundedCorner="true" widthComputationExpression="15" heightComputationExpression="13" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='light%20lagune']" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='light%20lagune']">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </subContainerMappings>
+            <subContainerMappings name="DA_Extension" semanticCandidatesExpression="var:self" domainClass="uml.Model" childrenPresentation="List">
+              <subNodeMappings name="DA_DocumentationTable" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@toolSections.0/@subSections[name='Create']/@subSections[name='Extension']/@ownedTools[name='DA_CreateDocumentationTable']" domainClass="uml.Model">
+                <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="Documentation table" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Package.gif" labelAlignment="LEFT" tooltipExpression="Double click to create a new documentation table" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <subNodeMappings name="DA_UseCaseCrossTable" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@toolSections.0/@subSections[name='Create']/@subSections[name='Extension']/@ownedTools[name='DA_CreateUseCaseCrossTable']" domainClass="uml.Model">
+                <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="Use Case cross table" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Class.gif" labelAlignment="LEFT" tooltipExpression="Double click to create a new use case cross table" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <subNodeMappings name="DA_PackageContainment" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@toolSections.0/@subSections[name='Create']/@subSections[name='Extension']/@ownedTools[name='DA_CreatePackageContainmentDiagram']" domainClass="uml.Model">
+                <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="Package containment diagram" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Component.gif" labelAlignment="LEFT" tooltipExpression="Double click to create a new package containment diagram" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="10" arcHeight="10" borderColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='dark%20lagune']" labelSize="12" labelFormat="bold" showIcon="false" labelExpression="Extension" tooltipExpression="Create new extension diagrams" roundedCorner="true" widthComputationExpression="15" heightComputationExpression="13" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='light%20lagune']" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='light%20lagune']">
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </subContainerMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="10" arcHeight="10" borderColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='dark%20lagune']" labelSize="12" labelFormat="bold" showIcon="false" labelExpression="Create" tooltipExpression="Create new  diagrams" roundedCorner="true" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='light%20lagune']" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='light%20lagune']">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subContainerMappings>
+          <subContainerMappings name="DA_Navigate" semanticCandidatesExpression="var:self" domainClass="uml.Model" childrenPresentation="List">
+            <subNodeMappings name="DA_Representation" semanticCandidatesExpression="service:getAllRepresentations" doubleClickDescription="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@toolSections.0/@subSections[name='Navigate']/@ownedTools[name='DA_NavigateToExistingRepresentation']" domainClass="viewpoint.DRepresentation">
+              <style xsi:type="style:BundledImageDescription" labelSize="10" labelAlignment="LEFT" tooltipExpression="Double click to open the current diagram" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="10" arcHeight="10" borderColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='dark%20lagune']" labelSize="12" labelFormat="bold" showIcon="false" labelExpression="Navigate" tooltipExpression="Open existing diagrams" roundedCorner="true" widthComputationExpression="15" heightComputationExpression="17" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='light%20lagune']" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='light%20lagune']">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subContainerMappings>
+          <subContainerMappings name="DA_Help" semanticCandidatesExpression="var:self" domainClass="uml.Model" childrenPresentation="List">
+            <subNodeMappings name="DA_GettingStarted" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@toolSections.0/@subSections[name='Help']/@ownedTools[name='DA_OpenGettingStarted']" domainClass="uml.Model">
+              <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="Getting started" labelAlignment="LEFT" tooltipExpression="Double click to get started" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="DA_ReferenceDocumentation" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@toolSections.0/@subSections[name='Help']/@ownedTools[name='DA_OpenReferenceDocumentation']" domainClass="uml.Model">
+              <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="Reference Documentation" labelAlignment="LEFT" tooltipExpression="Double click to open the reference documentation" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="DA_UserGuide" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@toolSections.0/@subSections[name='Help']/@ownedTools[name='DA_OpenUserGuide']" domainClass="uml.Model">
+              <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="User Guide" labelAlignment="LEFT" tooltipExpression="Double click to open the user guide" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="DA_DeveloperGuide" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@toolSections.0/@subSections[name='Help']/@ownedTools[name='DA_OpenDeveloperGuide']" domainClass="uml.Model">
+              <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="Developer Guide" labelAlignment="LEFT" tooltipExpression="Double click to open the developer guide" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="DA_Support" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@toolSections.0/@subSections[name='Help']/@ownedTools[name='DA_OpenSupport']" domainClass="uml.Model">
+              <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="Support" labelAlignment="LEFT" tooltipExpression="Double click to find support" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="10" arcHeight="10" borderColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='dark%20lagune']" labelSize="12" labelFormat="bold" showIcon="false" labelExpression="Help" tooltipExpression="Find help" roundedCorner="true" widthComputationExpression="15" heightComputationExpression="13" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='light%20lagune']" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='light%20lagune']">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="10" arcHeight="10" borderColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='dark%20lagune']" labelSize="12" labelFormat="bold" labelExpression="Dashboard" iconPath="/org.obeonetwork.dsl.uml2.design/icons/Dashboard.gif" tooltipExpression="Dashboard" roundedCorner="true" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='light%20lagune']" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='light%20lagune']">
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="tools">
+          <subSections name="Create">
+            <subSections name="Structure">
+              <ownedTools xsi:type="tool_1:DoubleClickDescription" name="DA_CreatePackageDiagram" mappings="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Create']/@subContainerMappings[name='DA_Structure']/@subNodeMappings[name='DA_PackageDiagram']">
+                <element name="element"/>
+                <elementView name="elementView"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createPackageDiagram"/>
+                  </firstModelOperations>
+                </initialOperation>
+              </ownedTools>
+              <ownedTools xsi:type="tool_1:DoubleClickDescription" name="DA_CreateClassDiagram" mappings="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Create']/@subContainerMappings[name='DA_Structure']/@subNodeMappings[name='DA_ClassDiagram']">
+                <element name="element"/>
+                <elementView name="elementView"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createClassDiagram"/>
+                  </firstModelOperations>
+                </initialOperation>
+              </ownedTools>
+              <ownedTools xsi:type="tool_1:DoubleClickDescription" name="DA_CreateComponentDiagram" mappings="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Create']/@subContainerMappings[name='DA_Structure']/@subNodeMappings[name='DA_ComponentDiagram']">
+                <element name="element"/>
+                <elementView name="elementView"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createComponentDiagram"/>
+                  </firstModelOperations>
+                </initialOperation>
+              </ownedTools>
+              <ownedTools xsi:type="tool_1:DoubleClickDescription" name="DA_CreateCompositeStructureDiagram" mappings="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Create']/@subContainerMappings[name='DA_Structure']/@subNodeMappings[name='DA_CompositeStructureDiagram']">
+                <element name="element"/>
+                <elementView name="elementView"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createCompositeStructureDiagram"/>
+                  </firstModelOperations>
+                </initialOperation>
+              </ownedTools>
+              <ownedTools xsi:type="tool_1:DoubleClickDescription" name="DA_CreateDeploymentDiagram" mappings="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Create']/@subContainerMappings[name='DA_Structure']/@subNodeMappings[name='DA_DeploymentDiagram']">
+                <element name="element"/>
+                <elementView name="elementView"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createDeploymentDiagram"/>
+                  </firstModelOperations>
+                </initialOperation>
+              </ownedTools>
+            </subSections>
+            <subSections name="Behavior">
+              <ownedTools xsi:type="tool_1:DoubleClickDescription" name="DA_CreateStateMachineDiagram" mappings="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Create']/@subContainerMappings[name='DA_Behavior']/@subNodeMappings[name='DA_StateMachineDiagram']">
+                <element name="element"/>
+                <elementView name="elementView"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:initStatemachineForPackage">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createStateMachineDiagram"/>
+                    </subModelOperations>
+                  </firstModelOperations>
+                </initialOperation>
+              </ownedTools>
+              <ownedTools xsi:type="tool_1:DoubleClickDescription" name="DA_CreateActivityDiagram" mappings="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Create']/@subContainerMappings[name='DA_Behavior']/@subNodeMappings[name='DA_ActivityDiagram']">
+                <element name="element"/>
+                <elementView name="elementView"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:initActivityForPackage">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createActivityDiagram"/>
+                    </subModelOperations>
+                  </firstModelOperations>
+                </initialOperation>
+              </ownedTools>
+              <ownedTools xsi:type="tool_1:DoubleClickDescription" name="DA_CreateUseCaseDiagram" mappings="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Create']/@subContainerMappings[name='DA_Behavior']/@subNodeMappings[name='DA_UseCaseDiagram']">
+                <element name="element"/>
+                <elementView name="elementView"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createUseCaseDiagram"/>
+                  </firstModelOperations>
+                </initialOperation>
+              </ownedTools>
+              <ownedTools xsi:type="tool_1:DoubleClickDescription" name="DA_CreateSequenceDiagram" mappings="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Create']/@subContainerMappings[name='DA_Behavior']/@subNodeMappings[name='DA_SequenceDiagram']">
+                <element name="element"/>
+                <elementView name="elementView"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createInteraction">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createSequenceDiagram"/>
+                    </subModelOperations>
+                  </firstModelOperations>
+                </initialOperation>
+              </ownedTools>
+            </subSections>
+            <subSections name="Extension">
+              <ownedTools xsi:type="tool_1:DoubleClickDescription" name="DA_CreateDocumentationTable" mappings="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Create']/@subContainerMappings[name='DA_Extension']/@subNodeMappings[name='DA_DocumentationTable']">
+                <element name="element"/>
+                <elementView name="elementView"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createDocumentationTable"/>
+                  </firstModelOperations>
+                </initialOperation>
+              </ownedTools>
+              <ownedTools xsi:type="tool_1:DoubleClickDescription" name="DA_CreateUseCaseCrossTable" mappings="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Create']/@subContainerMappings[name='DA_Extension']/@subNodeMappings[name='DA_UseCaseCrossTable']">
+                <element name="element"/>
+                <elementView name="elementView"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createUseCaseCrossTable"/>
+                  </firstModelOperations>
+                </initialOperation>
+              </ownedTools>
+              <ownedTools xsi:type="tool_1:DoubleClickDescription" name="DA_CreatePackageContainmentDiagram" mappings="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Create']/@subContainerMappings[name='DA_Extension']/@subNodeMappings[name='DA_PackageContainment']">
+                <element name="element"/>
+                <elementView name="elementView"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createPackageContainment"/>
+                  </firstModelOperations>
+                </initialOperation>
+              </ownedTools>
+            </subSections>
+          </subSections>
+          <subSections name="Navigate">
+            <ownedTools xsi:type="tool_1:DoubleClickDescription" name="DA_NavigateToExistingRepresentation" mappings="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Navigate']/@subNodeMappings[name='DA_Representation']">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:openRepresentation"/>
+                </firstModelOperations>
+              </initialOperation>
+            </ownedTools>
+          </subSections>
+          <subSections name="Help">
+            <ownedTools xsi:type="tool_1:DoubleClickDescription" name="DA_OpenGettingStarted" mappings="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Help']/@subNodeMappings[name='DA_GettingStarted']">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[openContextHelp('org.obeonetwork.dsl.uml2.design.doc.GettingStarted')/]"/>
+                </firstModelOperations>
+              </initialOperation>
+            </ownedTools>
+            <ownedTools xsi:type="tool_1:DoubleClickDescription" name="DA_OpenReferenceDocumentation" mappings="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Help']/@subNodeMappings[name='DA_ReferenceDocumentation']">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[openContextHelp('org.obeonetwork.dsl.uml2.design.doc.ReferenceDocumentation')/]"/>
+                </firstModelOperations>
+              </initialOperation>
+            </ownedTools>
+            <ownedTools xsi:type="tool_1:DoubleClickDescription" name="DA_OpenUserGuide" mappings="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Help']/@subNodeMappings[name='DA_UserGuide']">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[openContextHelp('org.obeonetwork.dsl.uml2.design.doc.UserGuide')/]"/>
+                </firstModelOperations>
+              </initialOperation>
+            </ownedTools>
+            <ownedTools xsi:type="tool_1:DoubleClickDescription" name="DA_OpenDeveloperGuide" mappings="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Help']/@subNodeMappings[name='DA_DeveloperGuide']">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[openContextHelp('org.obeonetwork.dsl.uml2.design.doc.DeveloperGuide')/]"/>
+                </firstModelOperations>
+              </initialOperation>
+            </ownedTools>
+            <ownedTools xsi:type="tool_1:DoubleClickDescription" name="DA_OpenSupport" mappings="//@ownedViewpoints[name='UML%20Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Help']/@subNodeMappings[name='DA_Support']">
+              <element name="element"/>
+              <elementView name="elementView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[openContextHelp('org.obeonetwork.dsl.uml2.design.doc.Support')/]"/>
+                </firstModelOperations>
+              </initialOperation>
+            </ownedTools>
+          </subSections>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.DashboardServices"/>
   </ownedViewpoints>
   <userColorsPalettes name="UMLPalette">
     <entries xsi:type="description:UserFixedColor" red="235" green="235" blue="235" name="Nested Package Foreground"/>
