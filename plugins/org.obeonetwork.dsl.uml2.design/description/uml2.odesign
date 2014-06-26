@@ -2935,7 +2935,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="DE_Deployment" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="service:diagram.getDeploymentInverseRefs" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="uml.Deployment" useDomainElement="true" reconnections="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Reconnect']/@ownedTools[name='ReconnectDeploymentSource'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Reconnect']/@ownedTools[name='ReconnectDeploymentTarget']">
+        <edgeMappings name="DE_Deployment" labelDirectEdit="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="service:diagram.getDeploymentInverseRefs" sourceMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" targetMapping="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" targetFinderExpression="feature:client" sourceFinderExpression="feature:deployedArtifact" domainClass="uml.Deployment" useDomainElement="true" reconnections="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Reconnect']/@ownedTools[name='ReconnectDeploymentSource'] //@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Reconnect']/@ownedTools[name='ReconnectDeploymentTarget']">
           <style lineStyle="dash" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelExpression="['&lt;&lt;'+name+'>>'/]">
@@ -3133,7 +3133,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new Deployment" name="Deployment" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@edgeMappings[name='DE_Deployment']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new Deployment" name="Deployment" precondition="[preTarget.isDeploymentTarget()/]" edgeMappings="//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@edgeMappings[name='DE_Deployment']" connectionStartPrecondition="[preSource.oclIsTypeOf(uml::Artifact)/]">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -3341,6 +3341,7 @@
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.UIComponentServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.PackageableElementServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.ClassDiagramServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.DeploymentServices"/>
   </ownedViewpoints>
   <ownedViewpoints name="UML Behavioral Modeling" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="State Machine Diagram" titleExpression="[name +' State Machine Diagram'/]" domainClass="uml.StateMachine" enablePopupBars="true">
