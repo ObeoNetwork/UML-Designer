@@ -63,7 +63,8 @@ public class DependencyServices {
 	public List<Dependency> getAvailableDependencies(StructuredClassifier structuredClassifier) {
 		List<Dependency> result = new ArrayList<Dependency>();
 		// find interesting dependencies
-		List<Dependency> clientDependencies = structuredClassifier.getClientDependencies();
+		List<Dependency> clientDependencies = Lists
+				.newArrayList(structuredClassifier.getClientDependencies());
 		List<Property> ownedAttributes = structuredClassifier.getOwnedAttributes();
 		for (Property property : ownedAttributes) {
 			if (property instanceof Port) {

@@ -396,7 +396,6 @@ public class UIConnectorServices {
 	 *            graphical edges than can map dependencies
 	 */
 	protected void addConnectorEndsAndClientDependencies(Connector connector, Set<DEdge> edges) {
-		final List<Dependency> clientDependencies = connector.getClientDependencies();
 		for (DEdge dEdge : edges) {
 			EObject target = dEdge.getTarget();
 			if (target instanceof Dependency) {
@@ -419,7 +418,9 @@ public class UIConnectorServices {
 					}
 
 					// Add this dependency on the connector clientDependencies
-					clientDependencies.add(dependency);
+					// Since UML 2.5 clientDependencies is derived so we have to add the connector as client
+					// and automatically it will be calculated as client dependency
+					dependency.getClients().add(connector);
 
 				} else if (dependency instanceof InterfaceRealization) {
 					// handle connectorEnd
@@ -440,7 +441,9 @@ public class UIConnectorServices {
 					}
 
 					// Add this dependency on the connector clientDependencies
-					clientDependencies.add(dependency);
+					// Since UML 2.5 clientDependencies is derived so we have to add the connector as client
+					// and automatically it will be calculated as client dependency
+					dependency.getClients().add(connector);
 				}
 			}
 		}

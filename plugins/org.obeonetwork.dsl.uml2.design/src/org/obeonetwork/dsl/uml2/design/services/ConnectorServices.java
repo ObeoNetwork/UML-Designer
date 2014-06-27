@@ -27,6 +27,8 @@ import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.StructuredClassifier;
 import org.eclipse.uml2.uml.Usage;
 
+import com.google.common.collect.Lists;
+
 /**
  * A set of services to handle connector actions and tests.
  * 
@@ -165,7 +167,7 @@ public final class ConnectorServices {
 	protected boolean isConnectable(Interface source, Port target) {
 
 		boolean res = false;
-		List<Dependency> clientDependencies = target.getClientDependencies();
+		List<Dependency> clientDependencies = Lists.newArrayList(target.getClientDependencies());
 
 		if (target.getType() instanceof EncapsulatedClassifier) {
 			clientDependencies.addAll(target.getType().getClientDependencies());
@@ -204,7 +206,7 @@ public final class ConnectorServices {
 
 		boolean res = false;
 
-		List<Dependency> clientDependencies = source.getClientDependencies();
+		List<Dependency> clientDependencies = Lists.newArrayList(source.getClientDependencies());
 		if (source.getType() instanceof EncapsulatedClassifier) {
 			clientDependencies.addAll(source.getType().getClientDependencies());
 		}
