@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="UmlDesigner-luna" sequenceNumber="1403275490">
+<target name="UmlDesigner-luna" sequenceNumber="1403801854">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.platform.feature.group" version="4.4.0.v20140606-1558"/>
       <unit id="org.eclipse.sdk.feature.group" version="4.4.0.v20140606-1558"/>
       <unit id="org.eclipse.epp.mpc.feature.group" version="1.3.0.v20140529-2031"/>
       <unit id="org.eclipse.equinox.executable.feature.group" version="3.6.100.v20140603-1326"/>
-      <repository location="http://download.eclipse.org/releases/staging"/>
+      <repository location="http://download.eclipse.org/releases/luna"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.edit.feature.group" version="2.10.0.v20140519-0339"/>
@@ -19,16 +19,16 @@
       <unit id="org.eclipse.uml2.uml.feature.group" version="5.0.0.v20140602-0749"/>
       <unit id="org.eclipse.uml2.uml.edit.feature.group" version="5.0.0.v20140602-0749"/>
       <unit id="org.eclipse.uml2.feature.group" version="5.0.0.v20140602-0749"/>
-      <repository location="http://download.eclipse.org/modeling/mdt/uml2/updates/5.0milestones"/>
+      <repository location="http://download.eclipse.org/modeling/mdt/uml2/updates/5.0"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.swtbot.forms.feature.group" version="2.2.1.201402241301"/>
-      <unit id="org.eclipse.swtbot.eclipse.feature.group" version="2.2.1.201402241301"/>
-      <unit id="org.eclipse.swtbot.eclipse.gef.feature.group" version="2.2.1.201402241301"/>
-      <unit id="org.eclipse.swtbot.feature.group" version="2.2.1.201402241301"/>
-      <unit id="org.eclipse.swtbot.ide.feature.group" version="2.2.1.201402241301"/>
-      <unit id="org.eclipse.swtbot.eclipse.test.junit.feature.group" version="2.2.1.201402241301"/>
-      <repository location="http://download.eclipse.org/technology/swtbot/releases/latest/"/>
+      <unit id="org.eclipse.swtbot.forms.feature.group" version="2.1.1.201307101628"/>
+      <unit id="org.eclipse.swtbot.eclipse.feature.group" version="2.1.1.201307101628"/>
+      <unit id="org.eclipse.swtbot.eclipse.gef.feature.group" version="2.1.1.201307101628"/>
+      <unit id="org.eclipse.swtbot.feature.group" version="2.1.1.201307101628"/>
+      <unit id="org.eclipse.swtbot.ide.feature.group" version="2.1.1.201307101628"/>
+      <unit id="org.eclipse.swtbot.eclipse.test.junit.feature.group" version="2.1.1.201307101628"/>
+      <repository location="http://download.eclipse.org/technology/swtbot/releases/2.1.1/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="com.google.guava" version="15.0.0.v201403281430"/>
@@ -64,7 +64,7 @@
       <unit id="org.eclipse.emf.compare.rcp.ui.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.compare.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.compare.uml2.feature.group" version="0.0.0"/>
-      <repository location="http://download.eclipse.org/modeling/emf/compare/updates/milestones/3.0/S201406111328"/>
+      <repository location="http://download.eclipse.org/modeling/emf/compare/updates/releases/3.0"/>
     </location>
   </locations>
 </target>
