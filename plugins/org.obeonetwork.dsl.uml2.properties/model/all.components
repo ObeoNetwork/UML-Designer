@@ -220,7 +220,11 @@
           <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//MultiplicityElement/upper"/>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_wZBk8Fv_EeKZBNASYbV97A" name="defaultValue" views="_GfgT4FwAEeKZBNASYbV97A">
-          <model xsi:type="ecore:EAttribute" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Property/default"/>
+          <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Property/defaultValue"/>
+          <editorSetting xsi:type="eef-mapping-settings:EReferenceViewerSettings" xmi:id="_2GnxkP3VEeOx08nAaun9_Q">
+            <model href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//Artifact/ownedAttribute"/>
+            <filter xsi:type="eef-mapping-filters:JavaDeclarationStepFilter" xmi:id="_2Gnxkf3VEeOx08nAaun9_Q" qualifiedClass="org.obeonetwork.dsl.uml2.properties.service.EEFService" methodName="getParent" staticMethod="true"/>
+          </editorSetting>
         </properties>
         <properties xsi:type="eef-components:PropertiesEditionElement" xmi:id="_byCH0F7pEeKd8d7WgZ31eQ" name="type" views="_tYLxgFv8EeKZBNASYbV97A">
           <model xsi:type="ecore:EReference" href="platform:/plugin/org.eclipse.uml2.uml/model/UML.ecore#//TypedElement/type"/>
@@ -1010,7 +1014,7 @@
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_GfgT4FwAEeKZBNASYbV97A" name="defaultValue">
-          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/SWT.toolkits#//@widgets.0"/>
+          <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.16"/>
         </elements>
         <elements xsi:type="eef-views:ElementEditor" xmi:id="_0d7ykFwEEeKZBNASYbV97A" name="memberEnd">
           <representation href="platform:/plugin/org.eclipse.emf.eef.views/std/EMFProperties.toolkits#//@widgets.8"/>

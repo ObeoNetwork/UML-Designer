@@ -398,14 +398,47 @@ public interface GeneralPropertiesEditionPart {
 	 * @return the defaultValue
 	 * @generated
 	 */
-	public String getDefaultValue();
+	public EObject getDefaultValue();
+
+	/**
+	 * Init the defaultValue
+	 * @param settings the combo setting
+	 */
+	public void initDefaultValue(EObjectFlatComboSettings settings);
 
 	/**
 	 * Defines a new defaultValue
 	 * @param newValue the new defaultValue to set
 	 * @generated
 	 */
-	public void setDefaultValue(String newValue);
+	public void setDefaultValue(EObject newValue);
+
+	/**
+	 * Defines the button mode
+	 * @param newValue the new mode to set
+	 * @generated
+	 */
+	public void setDefaultValueButtonMode(ButtonsModeEnum newValue);
+
+	/**
+	 * Adds the given filter to the defaultValue edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addFilterToDefaultValue(ViewerFilter filter);
+
+	/**
+	 * Adds the given filter to the defaultValue edition editor.
+	 * 
+	 * @param filter
+	 *            a viewer filter
+	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+	 * @generated
+	 */
+	public void addBusinessFilterToDefaultValue(ViewerFilter filter);
 
 
 
