@@ -78,7 +78,7 @@ public class DashboardServices {
 	/**
 	 * ID the dashboard viewpoint defined in the odesign.
 	 */
-	public static final String DASHBOARD_VP = "UML Dashboard";
+	public static final String DASHBOARD_VP = "Dashboard";
 
 	/**
 	 * Check if the dashboard representation already exists.

@@ -135,7 +135,7 @@ Contributors:
                   </instanceof>
 		          <test
                      forcePluginActivation="true"
-                     property="org.obeonetwork.dsl.uml2.design.Behavioral">
+                     property="org.obeonetwork.dsl.uml2.design.Design">
                   </test>
                </iterate>		           
        		</with>
@@ -155,7 +155,7 @@ Contributors:
                      </instanceof>
                      <test
                            forcePluginActivation="true"
-                           property="org.obeonetwork.dsl.uml2.design.Behavioral">
+                           property="org.obeonetwork.dsl.uml2.design.Design">
                      </test>
                   </iterate>
                </with>
@@ -175,7 +175,7 @@ Contributors:
                      </instanceof>
                      <test
                            forcePluginActivation="true"
-                           property="org.obeonetwork.dsl.uml2.design.Behavioral">
+                           property="org.obeonetwork.dsl.uml2.design.Design">
                      </test>
                   </iterate>
                </with>
@@ -220,7 +220,7 @@ Contributors:
                      </instanceof>
                      <test
                            forcePluginActivation="true"
-                           property="org.obeonetwork.dsl.uml2.design.Behavioral">
+                           property="org.obeonetwork.dsl.uml2.design.Design">
                      </test>
                   </iterate>
                </with>
@@ -381,7 +381,7 @@ Contributors:
              class="org.obeonetwork.dsl.uml2.design.ui.extension.ViewpointEnablementPropertyTester"
              id="org.obeonetwork.dsl.uml2.design.ViewpointEnabled"
              namespace="org.obeonetwork.dsl.uml2.design"
-             properties="Behavioral,Structural,Profile"
+             properties="Capture,Design,Review,Extend"
              type="org.eclipse.uml2.uml.Element">
        </propertyTester>
        <propertyTester

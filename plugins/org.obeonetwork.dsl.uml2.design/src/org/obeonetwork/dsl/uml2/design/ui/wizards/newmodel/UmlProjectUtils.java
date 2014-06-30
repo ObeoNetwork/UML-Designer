@@ -38,21 +38,6 @@ public class UmlProjectUtils {
 	public static final String MODEL_FILE_EXTENSION = "uml"; //$NON-NLS-1$
 
 	/**
-	 * UML structural viewpoint name defined in odesign.
-	 */
-	public static final String UML_STRUCTURAL_VP = "UML Structural Modeling";
-
-	/**
-	 * UML behavioral viewpoint name defined in odesign.
-	 */
-	public static final String UML_BEHAVIORAL_VP = "UML Behavioral Modeling";
-
-	/**
-	 * UML extensions viewpoint name defined in odesign.
-	 */
-	public static final String UML_EXTENSIONS_VP = "UML Extensions";
-
-	/**
 	 * The type name of an uml.Model element.
 	 */
 	public static final String MODEL_OBJECT = "Model"; //$NON-NLS-1$
@@ -95,11 +80,11 @@ public class UmlProjectUtils {
 								selection.deselectViewpoint(previouslySelected, session,
 										new NullProgressMonitor());
 							}
-							selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().structural(),
+							selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().capture(),
 									session, new NullProgressMonitor());
-							selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().behavioral(),
+							selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().design(),
 									session, new NullProgressMonitor());
-							selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().extensions(),
+							selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().review(),
 									session, new NullProgressMonitor());
 							selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().dashboard(),
 									session, new NullProgressMonitor());

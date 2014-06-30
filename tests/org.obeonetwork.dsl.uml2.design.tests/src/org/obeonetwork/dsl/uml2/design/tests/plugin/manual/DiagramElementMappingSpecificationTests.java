@@ -8,8 +8,6 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
@@ -23,6 +21,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
+import org.obeonetwork.dsl.uml2.design.ui.extension.editor.UmlViewpoints;
 
 import com.google.common.base.Strings;
 import com.google.common.collect.Iterators;
@@ -64,13 +63,14 @@ public class DiagramElementMappingSpecificationTests {
 	@Parameters
 	public static Collection<Object[]> data() {
 		List<Object[]> parameters = Lists.newArrayList();
-		Viewpoint structural = ViewpointRegistry.getInstance().getViewpoint(
-				URI.createURI("viewpoint:/org.obeonetwork.dsl.uml2.design/UML Structural Modeling"));
-		collectMappingsFromViewpoint(parameters, structural);
-
-		Viewpoint behavior = ViewpointRegistry.getInstance().getViewpoint(
-				URI.createURI("viewpoint:/org.obeonetwork.dsl.uml2.design/UML Behavioral Modeling"));
-		collectMappingsFromViewpoint(parameters, behavior);
+		Viewpoint capture = UmlViewpoints.fromViewpointRegistry().capture();
+		collectMappingsFromViewpoint(parameters, capture);
+		Viewpoint design = UmlViewpoints.fromViewpointRegistry().design();
+		collectMappingsFromViewpoint(parameters, design);
+		Viewpoint review = UmlViewpoints.fromViewpointRegistry().review();
+		collectMappingsFromViewpoint(parameters, review);
+		Viewpoint extend = UmlViewpoints.fromViewpointRegistry().extend();
+		collectMappingsFromViewpoint(parameters, extend);
 		return parameters;
 	}
 

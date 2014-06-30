@@ -148,13 +148,21 @@ public class TheTestAllMappingsRepresentationsAreOpenedAndRefreshed extends Unac
 	// Start of user code TheTestAllMappingsRepresentationsAreOpenedAndRefreshed private methods
 	private Collection<String> getSpecifiedMappings() {
 		List<String> parameters = Lists.newArrayList();
-		Viewpoint structural = ViewpointRegistry.getInstance().getViewpoint(
-				URI.createURI("viewpoint:/org.obeonetwork.dsl.uml2.design/UML Structural Modeling"));
-		collectMappingsFromViewpoint(parameters, structural);
+		Viewpoint capture = ViewpointRegistry.getInstance().getViewpoint(
+				URI.createURI("viewpoint:/org.obeonetwork.dsl.uml2.design/Capture"));
+		collectMappingsFromViewpoint(parameters, capture);
 
-		Viewpoint behavior = ViewpointRegistry.getInstance().getViewpoint(
-				URI.createURI("viewpoint:/org.obeonetwork.dsl.uml2.design/UML Behavioral Modeling"));
-		collectMappingsFromViewpoint(parameters, behavior);
+		Viewpoint design = ViewpointRegistry.getInstance().getViewpoint(
+				URI.createURI("viewpoint:/org.obeonetwork.dsl.uml2.design/Design"));
+		collectMappingsFromViewpoint(parameters, design);
+
+		Viewpoint review = ViewpointRegistry.getInstance().getViewpoint(
+				URI.createURI("viewpoint:/org.obeonetwork.dsl.uml2.design/Review"));
+		collectMappingsFromViewpoint(parameters, review);
+
+		Viewpoint extend = ViewpointRegistry.getInstance().getViewpoint(
+				URI.createURI("viewpoint:/org.obeonetwork.dsl.uml2.design/Extend"));
+		collectMappingsFromViewpoint(parameters, extend);
 		return parameters;
 	}
 
