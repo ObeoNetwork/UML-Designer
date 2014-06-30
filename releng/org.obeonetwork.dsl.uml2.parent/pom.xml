@@ -29,7 +29,6 @@ Contributors:
     <!-- Build plugins -->
     <module>${root-path}/plugins/org.obeonetwork.gmf.runtime.diagram.ui.extension</module>
     <module>${root-path}/plugins/org.obeonetwork.dsl.uml2.design</module>
-    <module>${root-path}/plugins/org.obeonetwork.dsl.uml2.profile.design</module>
     <module>${root-path}/plugins/org.obeonetwork.dsl.uml2.branding</module>
     <module>${root-path}/plugins/org.obeonetwork.dsl.uml2.design.doc</module>
     <module>${root-path}/plugins/org.obeonetwork.dsl.uml2.usage</module>
@@ -39,7 +38,6 @@ Contributors:
 
     <!-- Build test plugins -->
     <module>${root-path}/tests/org.obeonetwork.dsl.uml2.design.tests</module>
-    <module>${root-path}/tests/org.obeonetwork.dsl.uml2.profile.design.tests</module>
     <!--<module>tests/org.obeonetwork.dsl.uml2.properties.tests</module> -->
 
     <!-- Build features -->

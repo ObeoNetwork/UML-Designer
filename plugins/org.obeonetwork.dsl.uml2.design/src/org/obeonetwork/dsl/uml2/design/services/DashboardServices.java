@@ -33,6 +33,7 @@ import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.StateMachine;
 
 import com.google.common.collect.Lists;
@@ -59,6 +60,8 @@ public class DashboardServices {
 	private static final String STATEMACHINE_DIAGRAM = "State Machine Diagram";
 
 	private static final String ACTIVITY_DIAGRAM = "Activity Diagram";
+
+	private static final String PROFILE_DIAGRAM = "Profile Diagram";
 
 	private static final String USECASE_DIAGRAM = "Use Case Diagram";
 
@@ -217,6 +220,10 @@ public class DashboardServices {
 
 	public void createActivityDiagram(Activity element) {
 		createRepresentation(element, ACTIVITY_DIAGRAM);
+	}
+
+	public void createProfileDiagram(Profile element) {
+		createRepresentation(element, PROFILE_DIAGRAM);
 	}
 
 	public void createUseCaseDiagram(Model element) {

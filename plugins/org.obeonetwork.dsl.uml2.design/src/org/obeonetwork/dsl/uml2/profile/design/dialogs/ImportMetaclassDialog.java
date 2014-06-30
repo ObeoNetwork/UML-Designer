@@ -62,14 +62,13 @@ import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.resource.UMLResource;
+import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
 import org.obeonetwork.dsl.uml2.design.services.LogServices;
-import org.obeonetwork.dsl.uml2.profile.design.Activator;
 
 /**
  * A selection dialog message which provide a list of metaclass.
  * 
- * @author Mohamed-Lamine BOUKHANOUFA <a
- *         href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
+ * @author Mohamed-Lamine BOUKHANOUFA <a href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
  *         >mohamed-lamine.boukhanoufa@obeo.fr</a>
  */
 public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
@@ -80,12 +79,10 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 	static {
 		try {
 			umlIconPath = FileLocator.toFileURL(
-					Platform.getBundle("org.eclipse.uml2.uml.edit")
-							.getResource("icons/full/obj16")).getPath();
+					Platform.getBundle("org.eclipse.uml2.uml.edit").getResource("icons/full/obj16"))
+					.getPath();
 		} catch (final IOException e) {
-			new LogServices()
-					.error("FileLocator.toFileURL in ImportMetaclassDialog() not handled",
-							e);
+			new LogServices().error("FileLocator.toFileURL in ImportMetaclassDialog() not handled", e);
 		}
 	}
 
@@ -113,7 +110,6 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 	 * a button to to change the value of subClass.
 	 */
 	private Button subClassButton;
-
 
 	/**
 	 * a combo to purpose all possible metaclass in UML.
@@ -143,13 +139,13 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 	/**
 	 * resource.
 	 */
-	private final Resource resource = resourceSet.getResource(
-			URI.createURI(UMLResource.UML_METAMODEL_URI), true);
+	private final Resource resource = resourceSet.getResource(URI.createURI(UMLResource.UML_METAMODEL_URI),
+			true);
 
 	/**
 	 * the UML metamodel model.
 	 */
-	private final Model umlMetamodel = (Model) resource.getContents().get(0);
+	private final Model umlMetamodel = (Model)resource.getContents().get(0);
 
 	/**
 	 * a list of all class of the metaclass UML.
@@ -168,7 +164,6 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 	public Composite getCompositeHeaderMessage() {
 		return compositeHeaderMessage;
 	}
-
 
 	/**
 	 * @return the header message.
@@ -206,11 +201,9 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 	 * @param profile
 	 *            in which the the metaclass will be imported.
 	 * @param multi
-	 *            indicates whether dialog allows to select more than one
-	 *            position in its list of items
+	 *            indicates whether dialog allows to select more than one position in its list of items
 	 */
-	public ImportMetaclassDialog(final Shell shell, final Profile profile,
-			final boolean multi) {
+	public ImportMetaclassDialog(final Shell shell, final Profile profile, final boolean multi) {
 		super(shell, multi);
 		this.profile = profile;
 		concrete = false; // default value
@@ -250,7 +243,7 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 			public String getText(Object element) {
 				String text = new String();
 				if (element instanceof Class) {
-					Class myClass = (Class) element;
+					Class myClass = (Class)element;
 					for (Comment comment : myClass.getOwnedComments()) {
 						if (text.isEmpty())
 							text = text + comment.getBody();
@@ -289,8 +282,8 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 			}
 
 			public void widgetSelected(final SelectionEvent e) {
-				if (concrete != ((Button) e.widget).getSelection()) {
-					concrete = ((Button) e.widget).getSelection();
+				if (concrete != ((Button)e.widget).getSelection()) {
+					concrete = ((Button)e.widget).getSelection();
 					applyFilter();
 				}
 			}
@@ -305,15 +298,14 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 			}
 
 			public void widgetSelected(final SelectionEvent e) {
-				if (subClass != ((Button) e.widget).getSelection()) {
-					subClass = ((Button) e.widget).getSelection();
+				if (subClass != ((Button)e.widget).getSelection()) {
+					subClass = ((Button)e.widget).getSelection();
 					combo.setEnabled(subClass);
 					applyFilter();
 				}
 			}
 		});
 
-		
 		combo = new Combo(subClassButtonComposite, SWT.DROP_DOWN);
 		combo.setEnabled(subClass);
 		combo.setItems(getMetaclassesNames());
@@ -323,7 +315,7 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 				if (e != null) {
 					final Object src = e.getSource();
 					if (src instanceof Combo) {
-						final Combo comboEvent = (Combo) src;
+						final Combo comboEvent = (Combo)src;
 						superClassName = comboEvent.getText();
 					}
 				}
@@ -337,12 +329,11 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 				if (e != null) {
 					final Object src = e.getSource();
 					if (src instanceof Combo) {
-						final Combo myCombo = (Combo) src;
+						final Combo myCombo = (Combo)src;
 						String myText = myCombo.getText();
 						for (int i = 0; i < myCombo.getItemCount(); i++) {
 							String item = myCombo.getItem(i);
-							if (myText != null && !myText.isEmpty()
-									&& item.equalsIgnoreCase(myText)) {
+							if (myText != null && !myText.isEmpty() && item.equalsIgnoreCase(myText)) {
 								superClassName = myText;
 								break;
 							} else if (myText.isEmpty()) {
@@ -357,13 +348,11 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 			}
 		});
 
-		new AutoCompleteField(combo, new ComboContentAdapter(),
-				combo.getItems());
+		new AutoCompleteField(combo, new ComboContentAdapter(), combo.getItems());
 		combo.setLayoutData(gridData);
 
 		return parent;
 	}
-
 
 	/**
 	 * Return the UML metamodel model.
@@ -388,8 +377,7 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 		for (Class metaclass : umlMetaclasses) {
 			metaclassesNames.add(metaclass.getName());
 		}
-		final String[] metaclassesNamesArray = new String[metaclassesNames
-				.size()];
+		final String[] metaclassesNamesArray = new String[metaclassesNames.size()];
 		metaclassesNames.toArray(metaclassesNamesArray);
 		return metaclassesNamesArray;
 	}
@@ -397,8 +385,7 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 	/**
 	 * Action to show only the concrete metaclass.
 	 * 
-	 * @author Mohamed-Lamine BOUKHANOUFA <a
-	 *         href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
+	 * @author Mohamed-Lamine BOUKHANOUFA <a href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
 	 *         >mohamed-lamine.boukhanoufa@obeo.fr</a>
 	 */
 	private class ShowOnlyConcreteMetaclassAction extends Action {
@@ -434,11 +421,10 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 
 	@Override
 	protected IDialogSettings getDialogSettings() {
-		IDialogSettings settings = Activator.getDefault().getDialogSettings()
+		IDialogSettings settings = UMLDesignerPlugin.getDefault().getDialogSettings()
 				.getSection(DIALOG_SETTINGS);
 		if (settings == null) {
-			settings = Activator.getDefault().getDialogSettings()
-					.addNewSection(DIALOG_SETTINGS);
+			settings = UMLDesignerPlugin.getDefault().getDialogSettings().addNewSection(DIALOG_SETTINGS);
 		}
 		return settings;
 	}
@@ -451,8 +437,7 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 	/**
 	 * Filter to show juste concrete and/or sub metaclass.
 	 * 
-	 * @author Mohamed-Lamine BOUKHANOUFA <a
-	 *         href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
+	 * @author Mohamed-Lamine BOUKHANOUFA <a href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
 	 *         >mohamed-lamine.boukhanoufa@obeo.fr</a>
 	 */
 	private class MetaclassFilter extends ItemsFilter {
@@ -465,18 +450,15 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 		@Override
 		public boolean matchItem(final Object item) {
 			if (item instanceof Classifier) {
-				final Classifier namedItem = (Classifier) item;
+				final Classifier namedItem = (Classifier)item;
 
 				if (concrete && subClass) {
-					return (!namedItem.isAbstract())
-							&& (isSubClassOfSuperClassName((Class) item))
+					return (!namedItem.isAbstract()) && (isSubClassOfSuperClassName((Class)item))
 							&& (matches(namedItem.getName()));
 				} else if (subClass) {
-					return isSubClassOfSuperClassName((Class) item)
-							&& matches(namedItem.getName());
+					return isSubClassOfSuperClassName((Class)item) && matches(namedItem.getName());
 				} else if (concrete) {
-					return !namedItem.isAbstract()
-							&& matches(namedItem.getName());
+					return !namedItem.isAbstract() && matches(namedItem.getName());
 				}
 				return matches(namedItem.getName());
 			}
@@ -485,22 +467,20 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 
 		@Override
 		public boolean equalsFilter(final ItemsFilter filter) {
-			final MetaclassFilter resourceFilter = (MetaclassFilter) filter;
+			final MetaclassFilter resourceFilter = (MetaclassFilter)filter;
 			if ((concreteMetaclassFilter != resourceFilter.concreteMetaclassFilter)
 					|| (subClassMetaclassFilter != resourceFilter.subClassMetaclassFilter)
-					|| (!superClassTextMetaclassFilter
-							.equals(resourceFilter.superClassTextMetaclassFilter)))
+					|| (!superClassTextMetaclassFilter.equals(resourceFilter.superClassTextMetaclassFilter)))
 				return false;
 			return super.equalsFilter(filter);
 		}
 
 		@Override
 		public boolean isSubFilter(final ItemsFilter filter) {
-			final MetaclassFilter resourceFilter = (MetaclassFilter) filter;
+			final MetaclassFilter resourceFilter = (MetaclassFilter)filter;
 			if ((concreteMetaclassFilter != resourceFilter.concreteMetaclassFilter)
 					|| (subClassMetaclassFilter != resourceFilter.subClassMetaclassFilter)
-					|| (!superClassTextMetaclassFilter
-							.equals(resourceFilter.superClassTextMetaclassFilter)))
+					|| (!superClassTextMetaclassFilter.equals(resourceFilter.superClassTextMetaclassFilter)))
 				return false;
 			return super.isSubFilter(filter);
 		}
@@ -520,13 +500,11 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 		if (item.getName().equalsIgnoreCase(superClassName))
 			return true;
 		else if (isMetaclass(superClassName)) {
-			final Class superClass = (Class) umlMetamodel.getMember(
-					superClassName, true, null);
+			final Class superClass = (Class)umlMetamodel.getMember(superClassName, true, null);
 			for (Class superClassOfItem : item.getSuperClasses()) {
 				if (superClassOfItem.equals(superClass))
 					return true;
-				else if (!superClassOfItem.getName()
-						.equalsIgnoreCase("Element")
+				else if (!superClassOfItem.getName().equalsIgnoreCase("Element")
 						&& isSubClassOfSuperClassName(superClassOfItem)) {
 					return true;
 				}
@@ -553,17 +531,14 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 	protected Comparator<Object> getItemsComparator() {
 		return new Comparator<Object>() {
 			public int compare(final Object arg0, final Object arg1) {
-				return ((NamedElement) arg0).getName().compareTo(
-						((NamedElement) arg1).getName());
+				return ((NamedElement)arg0).getName().compareTo(((NamedElement)arg1).getName());
 			}
 		};
 	}
 
 	@Override
-	protected void fillContentProvider(
-			final AbstractContentProvider contentProvider,
-			final ItemsFilter itemsFilter,
-			final IProgressMonitor progressMonitor) throws CoreException {
+	protected void fillContentProvider(final AbstractContentProvider contentProvider,
+			final ItemsFilter itemsFilter, final IProgressMonitor progressMonitor) throws CoreException {
 		progressMonitor.beginTask("Searching", umlMetaclasses.size()); //$NON-NLS-1$
 		for (Iterator<Class> iter = umlMetaclasses.iterator(); iter.hasNext();) {
 			contentProvider.add(iter.next(), itemsFilter);
@@ -574,7 +549,7 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 
 	@Override
 	public String getElementName(final Object item) {
-		return ((NamedElement) item).getName();
+		return ((NamedElement)item).getName();
 	}
 
 	/**
@@ -587,15 +562,14 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 
 		for (Element element : metaModel.getOwnedElements()) {
 			if (element instanceof Class)
-				metaClasses.add((Class) element);
+				metaClasses.add((Class)element);
 		}
 		return metaClasses;
 	}
 
 	/**
-	 * Class marking a label provider that provides styled text labels and
-	 * images. It provides the text and/or image for the label of a given
-	 * element.
+	 * Class marking a label provider that provides styled text labels and images. It provides the text and/or
+	 * image for the label of a given element.
 	 */
 	public class ILabelProviderForMetaclass implements ILabelProvider, IStyledLabelProvider {
 		public void addListener(final ILabelProviderListener listener) {
@@ -606,8 +580,7 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 
 		}
 
-		public boolean isLabelProperty(final Object element,
-				final String property) {
+		public boolean isLabelProperty(final Object element, final String property) {
 			return false;
 		}
 
@@ -618,11 +591,10 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 		public Image getImage(final Object element) {
 			if (element != null) {
 				if (element instanceof Classifier) {
-					final Classifier classifier = (Classifier) element;
+					final Classifier classifier = (Classifier)element;
 					if (!classifier.isAbstract()) {
-						final Image image = new Image(Display.getCurrent(),
-								umlIconPath + ((Classifier) element).getName()
-										+ ".gif");
+						final Image image = new Image(Display.getCurrent(), umlIconPath
+								+ ((Classifier)element).getName() + ".gif");
 						return image;
 					} else {
 						return null;
@@ -636,7 +608,7 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 		public String getText(final Object element) {
 			if (element != null) {
 				if (element instanceof NamedElement) {
-					final NamedElement namedElement = (NamedElement) element;
+					final NamedElement namedElement = (NamedElement)element;
 					if (profile.getImportedMember(namedElement.getName()) != null) {
 						return namedElement.getName() + ", already imported.";
 					} else {
@@ -651,13 +623,11 @@ public class ImportMetaclassDialog extends FilteredItemsSelectionDialog {
 		public StyledString getStyledText(final Object element) {
 			final StyledString styledString = new StyledString();
 			if (element instanceof Class) {
-				final Class metaclass = (Class) element;
+				final Class metaclass = (Class)element;
 				if (metaclass.isAbstract()) {
-					styledString.append(metaclass.getName(),
-							StyledString.DECORATIONS_STYLER);
+					styledString.append(metaclass.getName(), StyledString.DECORATIONS_STYLER);
 				} else if (profile.getImportedMember(metaclass.getName()) != null) {
-					styledString.append(metaclass.getName(),
-							StyledString.QUALIFIER_STYLER);
+					styledString.append(metaclass.getName(), StyledString.QUALIFIER_STYLER);
 				} else {
 					styledString.append(metaclass.getName());
 				}

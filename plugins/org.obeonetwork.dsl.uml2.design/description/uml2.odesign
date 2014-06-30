@@ -5420,8 +5420,483 @@
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.UMLServices"/>
   </ownedViewpoints>
   <ownedViewpoints endUserDocumentation="To extend the UML standard for example by defining profile." name="Extend" label="Extend" modelFileExtension="uml">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='Drop%20From%20Model%20PD'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='Drop%20From%20Diagram%20PD']" documentation="Representation to edit profile diagrams" name="Profile Diagram" titleExpression="[name+' Profile Diagram'/]" domainClass="uml.Profile" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
+      <defaultLayer name="Profile">
+        <edgeMappings name="PD_Extension" deletionDescription="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='PD%20UML%20Element']" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" targetMapping="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_ElementImport']" targetFinderExpression="service:self.getElementImport" sourceFinderExpression="[self.getStereotype()/]" domainClass="uml.Extension" useDomainElement="true" reconnections="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='PD_ReconnectExtension']">
+          <style targetArrow="InputFillClosedArrow" sizeComputationExpression="2" routingStyle="tree">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="PD_Generalization" deletionDescription="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='PD%20UML%20Element']" sourceMapping="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" targetMapping="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" targetFinderExpression="feature:general" sourceFinderExpression="feature:specific" domainClass="uml.Generalization" useDomainElement="true" reconnections="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='PD_ReconnectExtension']">
+          <style targetArrow="InputClosedArrow" sizeComputationExpression="2" routingStyle="tree">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="PD_Association" deletionDescription="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='PD%20UML%20Element']" semanticCandidatesExpression="service:diagram.getAssociationInverseRefs" sourceMapping="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" targetMapping="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" targetFinderExpression="[getTarget().type/]" sourceFinderExpression="[getSource().type/]" domainClass="uml.Association" useDomainElement="true" reconnections="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='PD_ReconnectExtension']">
+          <style targetArrow="NoDecoration" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="service:computeUmlLabel">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="PD_AbstractAssociationStereotype" deletionDescription="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='PD%20UML%20Element']" sourceMapping="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" targetMapping="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" targetFinderExpression="service:getStereotypeTarget" sourceFinderExpression="service:getStereotypeSource" domainClass="uml.Stereotype" useDomainElement="true">
+          <style targetArrow="NoDecoration" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <beginLabelStyleDescription showIcon="false" labelExpression="service:computeSourceLabel">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </beginLabelStyleDescription>
+            <endLabelStyleDescription showIcon="false" labelExpression="service:computeTargetLabel">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </endLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="PD_AbstractAssociationStereotypeLink" deletionDescription="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='PD%20UML%20Element']" sourceMapping="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" targetMapping="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_AbstractAssociationStereotype']" targetFinderExpression="var:self" sourceFinderExpression="var:self" domainClass="uml.Stereotype" useDomainElement="true">
+          <style targetArrow="NoDecoration" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="PD_Stereotype" deletionDescription="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='PD%20UML%20Element']" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="[oclAsType(uml::Package).getOwnedStereotypes()->select(oclIsTypeOf(uml::Stereotype))/]" domainClass="uml.Stereotype" childrenPresentation="List">
+          <subNodeMappings name="PD_Property" deletionDescription="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='PD%20UML%20Element']" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="service:getClassifierAttributes" semanticElements="service:getSemanticElements" domainClass="uml.Property">
+            <style xsi:type="style:SquareDescription" labelExpression="service:computeUmlLabel" labelAlignment="LEFT" sizeComputationExpression="1">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" labelExpression="['&#xab;Stereotype&#xbb; \n'+computeUmlLabel()/]" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_orange']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+          </style>
+          <conditionnalStyles predicateExpression="[not(self.isAbstract) and (self.eContainer() &lt;> container)/]">
+            <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" labelExpression="['&#xab;Stereotype&#xbb; \n'+computeUmlLabel()/]" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='lighter%20orange']">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="[self.isAbstract and (self.eContainer() = container)/]">
+            <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" labelFormat="italic" labelExpression="['&#xab;Stereotype&#xbb; \n'+computeUmlLabel()/]" backgroundStyle="Liquid">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_orange']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="[self.isAbstract and (self.eContainer() &lt;> container/)]">
+            <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" labelFormat="italic" labelExpression="['&#xab;Stereotype&#xbb; \n'+computeUmlLabel()/]" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='lighter%20orange']">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+        </containerMappings>
+        <containerMappings name="PD_Enumeration" deletionDescription="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='PD%20UML%20Element']" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="[getOwnedTypes()->filter(uml::Enumeration)/]" domainClass="uml.Enumeration" reusedNodeMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']/@subNodeMappings[name='PD_Property'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Enumeration']/@subNodeMappings[name='PD_EnumerationLiteral']" childrenPresentation="List">
+          <subNodeMappings name="PD_EnumerationLiteral" deletionDescription="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='PD%20UML%20Element']" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="[oclAsType(uml::Enumeration).ownedLiteral/]" semanticElements="service:getSemanticElements" domainClass="uml.EnumerationLiteral">
+            <style xsi:type="style:SquareDescription" labelExpression="service:computeUmlLabel" labelAlignment="LEFT" sizeComputationExpression="1">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='chocolate']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_chocolate']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelFormat="bold" labelExpression="service:computeUmlLabel">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+          <conditionnalStyles predicateExpression="[not(self.isAbstract) and (self.eContainer() &lt;> container)/]">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelFormat="bold" labelExpression="service:computeUmlLabel">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="[self.isAbstract and (self.eContainer() = container)/]">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelFormat="bold_italic" labelExpression="service:computeUmlLabel">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="[self.isAbstract and (self.eContainer() &lt;> container/)]">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelFormat="bold_italic" labelExpression="service:computeUmlLabel">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+        </containerMappings>
+        <containerMappings name="PD_DataType" preconditionExpression="[oclIsTypeOf(uml::DataType)/]" deletionDescription="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='PD%20UML%20Element']" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="[getOwnedTypes()->filter(uml::DataType)/]" semanticElements="service:getSemanticElements" domainClass="uml.DataType" reusedNodeMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']/@subNodeMappings[name='PD_Property']" childrenPresentation="List">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelFormat="bold" labelExpression="service:computeUmlLabel" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='lighter%20green']">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+          <conditionnalStyles predicateExpression="[not(self.isAbstract) and (self.eContainer() &lt;> container)/]">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelFormat="bold" labelExpression="service:computeUmlLabel" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='lighter%20green']">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="[self.isAbstract and (self.eContainer() = container)/]">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelFormat="bold_italic" labelExpression="service:computeUmlLabel" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='lighter%20green']">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="[self.isAbstract and (self.eContainer() &lt;> container/)]">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelFormat="bold_italic" labelExpression="service:computeUmlLabel" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='lighter%20green']">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+        </containerMappings>
+        <containerMappings name="PD_PrimitiveType" deletionDescription="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='PD%20UML%20Element']" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="[getOwnedTypes()->filter(uml::PrimitiveType)/]" semanticElements="service:getSemanticElements" domainClass="uml.PrimitiveType" reusedNodeMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']/@subNodeMappings[name='PD_Property']" childrenPresentation="List">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelFormat="bold" labelExpression="service:computeUmlLabel" backgroundStyle="Liquid">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+          <conditionnalStyles predicateExpression="[not(self.isAbstract) and (self.eContainer() &lt;> container)/]">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelFormat="bold" labelExpression="service:computeUmlLabel" backgroundStyle="Liquid">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="[self.isAbstract and (self.eContainer() = container)/]">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelFormat="bold_italic" labelExpression="service:computeUmlLabel">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            </style>
+          </conditionnalStyles>
+          <conditionnalStyles predicateExpression="[self.isAbstract and (self.eContainer() &lt;> container/)]">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelFormat="bold_italic" labelExpression="service:computeUmlLabel">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            </style>
+          </conditionnalStyles>
+        </containerMappings>
+        <containerMappings name="PD_Package" preconditionExpression="[not oclIsTypeOf(uml::Profile)/]" deletionDescription="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='PD%20UML%20Package']" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" createElements="false" semanticElements="service:getSemanticElements" domainClass="uml.Package" dropDescriptions="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='Drop%20From%20Model%20PD'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='Drop%20From%20Diagram%20PD']" reusedContainerMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Package'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Enumeration'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_DataType'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_PrimitiveType'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Profile']">
+          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" labelExpression="service:computeUmlLabel" labelAlignment="LEFT" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
+          </style>
+          <conditionnalStyles predicateExpression="[self.eContainer() &lt;> container/]">
+            <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" labelExpression="service:computeUmlLabel" labelAlignment="LEFT" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
+            </style>
+          </conditionnalStyles>
+        </containerMappings>
+        <containerMappings name="PD_Profile" deletionDescription="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='PD%20UML%20Package']" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" createElements="false" semanticElements="service:getSemanticElements" domainClass="uml.Profile" dropDescriptions="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='Drop%20From%20Model%20PD'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='Drop%20From%20Diagram%20PD']" reusedNodeMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']/@subNodeMappings[name='PD_Property'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Enumeration']/@subNodeMappings[name='PD_EnumerationLiteral']" reusedContainerMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Profile'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Enumeration'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_DataType'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_PrimitiveType'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Package'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_ElementImport']">
+          <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" labelExpression="['&#xab;Profile&#xbb; \n'+computeUmlLabel()/]" labelAlignment="LEFT" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
+          </style>
+          <conditionnalStyles predicateExpression="[self.eContainer() &lt;> container/]">
+            <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" labelExpression="['&#xab;Profile&#xbb; \n'+computeUmlLabel()/]" labelAlignment="LEFT" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='chocolate']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.0"/>
+            </style>
+          </conditionnalStyles>
+        </containerMappings>
+        <containerMappings name="PD_ElementImport" deletionDescription="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='PD%20UML%20Element']" semanticCandidatesExpression="feature:eContents" domainClass="uml.ElementImport">
+          <style xsi:type="style:FlatContainerStyleDescription" labelExpression="['&#xab;Metaclass&#xbb;\n'+computeUmlLabel()/]">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="PD_ExistingElements" label="Existing Elements" reusedTools="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='AddExistingElements'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='RemoveExistingElements'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='Delete']"/>
+        <toolSections name="Packages">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a Package" name="Package" containerMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Package']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Package" referenceName="packagedElement">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a Profile" name="Profile" containerMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Profile']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Profile" referenceName="packagedElement">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Classifiers">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a Stereotype" name="Stereotype" containerMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Stereotype.gif" extraMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_ElementImport']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:self.createStereotype">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Import Metaclass" containerMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_ElementImport']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/ElementImport.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:importMetaclass"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="PD UML Element" forceRefresh="true">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[deleteUMLElement(element.eContainer(uml::Profile))/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ToolGroup" name="DataTypes">
+            <tools xsi:type="tool_1:ContainerCreationDescription" name="Enumeration" containerMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Enumeration']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Enumeration" referenceName="packagedElement">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool_1:ContainerCreationDescription" name="PrimitiveType" containerMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_PrimitiveType']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.PrimitiveType" referenceName="packagedElement">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+            <tools xsi:type="tool_1:ContainerCreationDescription" name="DataType" containerMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_DataType']">
+              <variable name="container"/>
+              <viewVariable name="containerView"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.DataType" referenceName="packagedElement">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                  </subModelOperations>
+                </firstModelOperations>
+              </initialOperation>
+            </tools>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="PD UML Package" forceRefresh="true">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:self.deleteUMLPackage"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Features" reusedTools="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='Move%20UP%2FDOWN%20TO%20Attributes%20or%20Operations'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='Move%20UP%2FDOWN%20TO%20Elements']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Property" name="Property" nodeMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']/@subNodeMappings[name='PD_Property']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedAttribute">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="[self.findTypeByName('String')/]"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="1"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Literal" nodeMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Enumeration']/@subNodeMappings[name='PD_EnumerationLiteral']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.EnumerationLiteral" referenceName="ownedLiteral">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.LiteralInteger" referenceName="specification">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="value" valueExpression="[eContainer().eContainer().eAllContents(uml::EnumerationLiteral)->size() - 1/]"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="RelationShips">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Extension" precondition="service:preSource.canCreateExtension(preTarget)" edgeMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Extension']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Extension.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:source.createExtension(target)"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Generalization" precondition="service:preSource.canCreateExtension(preTarget)" edgeMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Generalization']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Generalization.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:source.createExtension(target)"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new Association" name="Association" edgeMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Association']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Association.gif">
+            <sourceVariable name="source">
+              <subVariables xsi:type="tool:AcceleoVariable" name="sourceContainer" computationExpression="[source.eContainer(uml::Package)/]"/>
+            </sourceVariable>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:source.createAssociation(target)"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new Association" name="Extend existing RelationShip" edgeMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Association']" iconPath="/org.obeonetwork.dsl.uml2.profile.design/icons/ExtraAssociation.gif">
+            <sourceVariable name="source">
+              <subVariables xsi:type="tool:AcceleoVariable" name="sourceContainer" computationExpression="[source.eContainer(uml::Package)/]"/>
+            </sourceVariable>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:source.createExtraAssociationDialog(target,sourceContainer)"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="PD_ReconnectExtension" precondition="service:element.canReconnectExtension(target)" forceRefresh="true" reconnectionKind="RECONNECT_BOTH">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:element.reconnectEdge(edgeView, sourceView, targetView, source, target)"/>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Tools">
+          <ownedTools xsi:type="tool:ToolDescription" name="Define Profile" precondition="[self.oclIsTypeOf(uml::Profile)/]" iconPath="/org.obeonetwork.dsl.uml2.profile.design/icons/defineProfile.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[defineProfileDialog()/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" name="Undefine Profile" precondition="[self.oclIsTypeOf(uml::Profile)/]" iconPath="/org.obeonetwork.dsl.uml2.profile.design/icons/undefineProfile.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[undefineProfileDialog()/]"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ToolDescription" name="Export Profile" precondition="[self.oclIsTypeOf(uml::Profile)/]" iconPath="/org.obeonetwork.dsl.uml2.profile.design/icons/ExportProfile.gif">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:exportProfile"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="Drop From Model PD" precondition="service:newContainer.isValidElementForContainerView(element,newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Profile'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Package'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" dragSource="PROJECT_EXPLORER">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:newSemanticContainer.dropFromModel(element, newContainerView)"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="Drop From Diagram PD" precondition="service:newContainer.isValidElementForContainerView(element,newViewContainer)" forceRefresh="true" mappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Profile'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Package'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_ElementImport']" moveEdges="true">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:newSemanticContainer.dropFromDiagramProfileService(element, newContainerView)"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <customization>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[getTarget().isNavigable()/]">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Association']/@style" attributeName="targetArrow" value="[EdgeArrows::InputArrow/]"/>
+          </vsmElementCustomizations>
+          <vsmElementCustomizations xsi:type="description:VSMElementCustomization" predicateExpression="[getSource().isNavigable()/]">
+            <featureCustomizations xsi:type="description:EAttributeCustomization" appliedOn="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Association']/@style" attributeName="sourceArrow" value="[EdgeArrows::InputArrow/]"/>
+          </vsmElementCustomizations>
+        </customization>
+      </defaultLayer>
+    </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.DebugServices"/>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.services.UMLServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.profile.design.services.UMLProfileServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.profile.design.services.ImportMetaclass"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.profile.design.services.DeleteUMLElement"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.profile.design.services.UMLServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.profile.design.services.UIServicesForProfile"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.profile.design.exportprofile.ExportProfileService"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.profile.design.services.ProfileServices"/>
   </ownedViewpoints>
   <ownedViewpoints endUserDocumentation="To guide the user to get started and get an overview of which representations are available." name="Dashboard" label="Dashboard" modelFileExtension="uml">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Dashboard" titleExpression="Dashboard" initialisation="true" showOnStartup="true" domainClass="uml.Model" preconditionExpression="service:doesDashboardNotExist">
@@ -5528,6 +6003,13 @@
               </style>
             </subContainerMappings>
             <subContainerMappings name="DA_Extend" semanticCandidatesExpression="var:self" domainClass="uml.Model" childrenPresentation="List">
+              <subNodeMappings name="DA_ProfileDiagram" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@toolSections.0/@subSections[name='Create']/@subSections[name='Extend']/@ownedTools[name='DA_CreateProfileDiagram']" domainClass="uml.Model">
+                <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="Profile diagram" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Profile.gif" labelAlignment="LEFT" tooltipExpression="Double click to create a new profile diagram" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
               <style xsi:type="style:FlatContainerStyleDescription" arcWidth="10" arcHeight="10" borderColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='dark%20lagune']" labelSize="12" labelFormat="bold" showIcon="false" labelExpression="Extend" tooltipExpression="Create new diagrams to  extend the UML standard" roundedCorner="true" widthComputationExpression="15" heightComputationExpression="6" backgroundStyle="Liquid" backgroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='light%20lagune']" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='light%20lagune']">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
@@ -5714,7 +6196,19 @@
                 </initialOperation>
               </ownedTools>
             </subSections>
-            <subSections name="Extend"/>
+            <subSections name="Extend">
+              <ownedTools xsi:type="tool_1:DoubleClickDescription" name="DA_CreateProfileDiagram" mappings="//@ownedViewpoints[name='Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Create']/@subContainerMappings[name='DA_Extend']/@subNodeMappings[name='DA_ProfileDiagram']">
+                <element name="element"/>
+                <elementView name="elementView"/>
+                <initialOperation>
+                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:initProfileForPackage">
+                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:createProfileDiagram"/>
+                    </subModelOperations>
+                  </firstModelOperations>
+                </initialOperation>
+              </ownedTools>
+            </subSections>
           </subSections>
           <subSections name="Navigate">
             <ownedTools xsi:type="tool_1:DoubleClickDescription" name="DA_NavigateToExistingRepresentation" mappings="//@ownedViewpoints[name='Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@containerMappings[name='DA_Dashboard']/@subContainerMappings[name='DA_Navigate']/@subNodeMappings[name='DA_Representation']">
