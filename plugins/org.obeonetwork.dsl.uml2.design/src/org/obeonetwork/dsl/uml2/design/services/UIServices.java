@@ -145,7 +145,7 @@ public class UIServices {
 		}
 
 		// Show the semantic element on the diagram
-		showView(semanticElement, containerView, session);
+		showView(semanticElement, containerView, session, "newContainerView");
 	}
 
 	/**
@@ -160,7 +160,7 @@ public class UIServices {
 	 *            Session
 	 */
 	private void showView(final EObject semanticElement, final DSemanticDecorator containerView,
-			final Session session) {
+			final Session session, String containerViewVariable) {
 		// Check if the dropped element already exists in the diagram but is hidden
 		List<DDiagramElement> hiddenDiagramElements = getHiddenExistingDiagramElements(semanticElement,
 				containerView);
@@ -172,7 +172,7 @@ public class UIServices {
 		} else {
 			// Else create a new element
 			// Create the view for the dropped element
-			createView(semanticElement, containerView, session, "newContainerView");
+			createView(semanticElement, containerView, session, containerViewVariable);
 		}
 	}
 
@@ -308,7 +308,7 @@ public class UIServices {
 			markForAutosize(semanticElement);
 
 			// Show the added element on the diagram
-			showView(semanticElement, (DSemanticDecorator)containerView, session);
+			showView(semanticElement, (DSemanticDecorator)containerView, session, "containerView");
 		}
 	}
 
