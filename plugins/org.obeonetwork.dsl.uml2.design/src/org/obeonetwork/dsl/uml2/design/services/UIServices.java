@@ -404,16 +404,14 @@ public class UIServices {
 			for (DiagramElementMapping mapping : (((DSemanticDiagram)containerView).getDescription()
 					.getAllContainerMappings())) {
 				String domainClass = ((AbstractNodeMapping)mapping).getDomainClass();
-				if (modelAccessor.eInstanceOf(semanticElement, domainClass)
-						&& !mapping.isSynchronizationLock()) {
+				if (modelAccessor.eInstanceOf(semanticElement, domainClass) && !mapping.isCreateElements()) {
 					mappings.add(mapping);
 				}
 			}
 			for (DiagramElementMapping mapping : (((DSemanticDiagram)containerView).getDescription()
 					.getAllNodeMappings())) {
 				String domainClass = ((AbstractNodeMapping)mapping).getDomainClass();
-				if (modelAccessor.eInstanceOf(semanticElement, domainClass)
-						&& !mapping.isSynchronizationLock()) {
+				if (modelAccessor.eInstanceOf(semanticElement, domainClass) && !mapping.isCreateElements()) {
 					mappings.add(mapping);
 				}
 			}
@@ -421,16 +419,14 @@ public class UIServices {
 			for (DiagramElementMapping mapping : (((DNodeContainerSpec)containerView).getActualMapping()
 					.getAllContainerMappings())) {
 				String domainClass = ((AbstractNodeMapping)mapping).getDomainClass();
-				if (modelAccessor.eInstanceOf(semanticElement, domainClass)
-						&& !mapping.isSynchronizationLock()) {
+				if (modelAccessor.eInstanceOf(semanticElement, domainClass) && !mapping.isCreateElements()) {
 					mappings.add(mapping);
 				}
 			}
 			for (DiagramElementMapping mapping : (((DNodeContainerSpec)containerView).getActualMapping()
 					.getAllNodeMappings())) {
 				String domainClass = ((AbstractNodeMapping)mapping).getDomainClass();
-				if (modelAccessor.eInstanceOf(semanticElement, domainClass)
-						&& !mapping.isSynchronizationLock()) {
+				if (modelAccessor.eInstanceOf(semanticElement, domainClass) && !mapping.isCreateElements()) {
 					mappings.add(mapping);
 				}
 			}
@@ -455,26 +451,26 @@ public class UIServices {
 
 			for (DiagramElementMapping mapping : (((DSemanticDiagram)containerView).getDescription()
 					.getAllContainerMappings())) {
-				if (!mapping.isSynchronizationLock()) {
+				if (!mapping.isCreateElements()) {
 					mappings.add(mapping);
 				}
 			}
 			for (DiagramElementMapping mapping : (((DSemanticDiagram)containerView).getDescription()
 					.getAllNodeMappings())) {
-				if (!mapping.isSynchronizationLock()) {
+				if (!mapping.isCreateElements()) {
 					mappings.add(mapping);
 				}
 			}
 		} else if (containerView instanceof DNodeContainerSpec) {
 			for (DiagramElementMapping mapping : (((DNodeContainerSpec)containerView).getActualMapping()
 					.getAllContainerMappings())) {
-				if (!mapping.isSynchronizationLock()) {
+				if (!mapping.isCreateElements()) {
 					mappings.add(mapping);
 				}
 			}
 			for (DiagramElementMapping mapping : (((DNodeContainerSpec)containerView).getActualMapping()
 					.getAllNodeMappings())) {
-				if (!mapping.isSynchronizationLock()) {
+				if (!mapping.isCreateElements()) {
 					mappings.add(mapping);
 				}
 			}
