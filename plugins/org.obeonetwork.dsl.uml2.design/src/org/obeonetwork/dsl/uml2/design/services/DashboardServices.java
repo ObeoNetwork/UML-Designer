@@ -246,7 +246,7 @@ public class DashboardServices {
 		createRepresentation(element, PACKAGE_CONTAINMENT);
 	}
 
-	private void createRepresentation(NamedElement namedElement, String representationId) {
+	protected void createRepresentation(NamedElement namedElement, String representationId) {
 		Session session = SessionManager.INSTANCE.getSession(namedElement);
 		RepresentationDescription representationDescription = getRepresentationDescription(namedElement,
 				session, representationId);
