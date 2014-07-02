@@ -45,7 +45,6 @@ public class UmlProjectMigrationOperation extends WorkspaceModifyOperation {
 		page = window.getActivePage();
 	}
 
-	@Override
 	protected void execute(IProgressMonitor monitor) throws CoreException,
 			InvocationTargetException, InterruptedException {
 		try {

@@ -29,12 +29,10 @@ public class UmlDesignerRepresentationsFileMigrationParticipant extends
 	 */
 	private static final Version MIGRATION_VERSION = new Version("8.1.0");
 
-	@Override
 	public Version getMigrationVersion() {
 		return MIGRATION_VERSION;
 	}
 
-	@Override
 	public Option<String> getNewFragment(String uriFragment) {
 		if (uriFragment
 				.contains("//@ownedViewpoints[name='UML%20Structural%20Modeling']/@ownedRepresentations[name='Reused%20Description']")) {
