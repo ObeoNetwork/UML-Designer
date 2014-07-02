@@ -15,6 +15,13 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.osgi.framework.Version;
 
+/**
+ * Use the Sirius migration framework to migrate UML Designer 3.0 aird to UML
+ * Designer 4.0. The viewpoints were renamed and the representation reordered.
+ * 
+ * @author Melanie Bats <a
+ *         href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+ */
 public class UmlDesignerRepresentationsFileMigrationParticipant extends
 		AbstractRepresentationsFileMigrationParticipant {
 	/**

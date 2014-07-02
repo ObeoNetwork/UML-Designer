@@ -26,6 +26,14 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel.UmlProjectUtils;
 
+/**
+ * UML Designer 3.0 to UML Designer 4.0 migration operation. It converts the
+ * existing project to a sirius modeling project, activates all the new
+ * viewpoints.
+ * 
+ * @author Melanie Bats <a
+ *         href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+ */
 public class UmlProjectMigrationOperation extends WorkspaceModifyOperation {
 	private IProject project;
 	private IWorkbenchPage page;
@@ -44,38 +52,33 @@ public class UmlProjectMigrationOperation extends WorkspaceModifyOperation {
 			monitor.beginTask("Migrate the project : ", 100);
 			// Convert to modeling project
 			monitor.subTask("Convert to modeling project...");
-			System.out.println("Convert");
 			Option<ModelingProject> modelingProject = convertToModelingProject(monitor);
 			monitor.worked(25);
 			// Close all existing open editors
-			System.out.println("Close editors");
 			monitor.subTask("Close all opened editors...");
-			closeOpenEditors();
+			closeOpenedEditors();
 			monitor.worked(25);
 
 			if (modelingProject.some()) {
 				monitor.subTask("Activate UML viewpoints...");
 				Session session = modelingProject.get().getSession();
 				// Activate viewpoints
-				System.out.println("Enable vp");
 				UmlProjectUtils.enableUMLViewpoints(session);
 				monitor.worked(25);
 			}
 			// Save migrated project
-			System.out.println("Close");
 			monitor.subTask("Close the project...");
 			project.close(monitor);
 			monitor.subTask("Re-open the project...");
 			project.open(monitor);
 			monitor.worked(25);
-			System.out.println("Re-open the project");
 			// close and reopened it
 		} finally {
 			monitor.done();
 		}
 	}
 
-	public Option<ModelingProject> convertToModelingProject(
+	private Option<ModelingProject> convertToModelingProject(
 			IProgressMonitor monitor) {
 		/* Convert the existing UML project to a modeling project. */
 		try {
@@ -92,7 +95,7 @@ public class UmlProjectMigrationOperation extends WorkspaceModifyOperation {
 		return Options.newNone();
 	}
 
-	public void closeOpenEditors() {
+	private void closeOpenedEditors() {
 		page.closeAllEditors(false);
 	}
 }

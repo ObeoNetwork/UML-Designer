@@ -24,9 +24,14 @@ import org.eclipse.ui.handlers.HandlerUtil;
 
 import com.google.common.collect.Lists;
 
+/**
+ * Handle the migrate project action.
+ * 
+ * @author Melanie Bats <a
+ *         href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
+ */
 public class MigrateUMLProject extends AbstractHandler {
 
-	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		ISelection selection = HandlerUtil.getCurrentSelection(event);
 		List<IProject> projectsToMigrate = Lists.newArrayList();
