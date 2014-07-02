@@ -1,0 +1,41 @@
+---
+layout: page
+title: FAQ
+---
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">FAQ <small>Frequently Asked Questions</small></h1>
+
+      <ol class="breadcrumb">
+        <li><a href="{{ site.baseurl }}/index.html">Home</a></li>
+        <li class="active">FAQ</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="panel-group" id="accordion">   
+        {% for section in site.data.faq %}
+        <div class="panel panel-default"><!-- .panel -->
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse{{ forloop.index }}">
+                {{ section.question }}
+              </a>
+            </h4>
+          </div>
+          <div id="collapse{{ forloop.index }}" class="panel-collapse collapse">
+            <div class="panel-body">
+              {{ section.answer }}
+            </div>
+          </div>
+        </div><!-- /.panel -->
+
+        {% endfor %}
+
+      </div>
+    </div>
+  </div>
+</div><!-- /.container -->

@@ -1,0 +1,35 @@
+---
+layout: page
+---
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">{{ page.title }} <small>{{ page.subtitle }}</small></h1>
+      
+      <ol class="breadcrumb">
+        <li><a href="{{ site.baseurl }}/index.html">Home</a></li>
+        <li class="active">{{ page.title }}</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <img class="img-responsive" src="{{ site.baseurl }}/{{ page.image }}">
+    </div>
+    
+    <div class="col-md-4">
+      <h3>Description</h3>
+      <p>{{ page.description }}</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="col-lg-12">
+      {{ content }}
+    </div>
+  </div>
+  
+</div><!-- /.container -->

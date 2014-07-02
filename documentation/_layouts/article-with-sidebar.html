@@ -1,0 +1,30 @@
+---
+layout: page
+---
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 col-sm-4 sidebar">
+      <ul class="nav nav-stacked nav-pills">
+      {% for section in site.data.pages %}
+        {% if section.category == page.category %}
+          {% for page in section.pages %}
+        <li><a href="{{ site.baseurl }}/{{ page.file }}.html">{{ page.title }}</a></li>
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+      </ul>
+    </div>
+    
+    <div class="col-md-9 col-sm-8">
+      <h1 class="page-header">{{ page.title }} <small>{{ page.subtitle }}</small></h1>
+      
+      <ol class="breadcrumb">
+        <li><a href="{{ site.baseurl }}/index.html">Home</a></li>
+        <li class="active">{{ page.title }}</li>
+      </ol>
+      
+      {{ content }}
+    </div>
+
+  </div><!-- /.row -->
+</div><!-- /.container -->
