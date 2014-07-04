@@ -12,6 +12,8 @@
 		<topic href="doc/UML Designer User Guide.html#CreatingaDeploymentDiagram" label="Creating a Deployment Diagram"></topic>
 	</topic>
 	<topic href="doc/UML Designer User Guide.html#UsingtheClassDiagram" label="Using the Class Diagram">
+    <topic href="doc/UML Designer User Guide.html#Importingprimitivetypes" label="Import primitive types">
+    </topic>
 		<topic href="doc/UML Designer User Guide.html#CreatingElements" label="Creating Elements"></topic>
 		<topic href="doc/UML Designer User Guide.html#EditingElements" label="Editing Elements"></topic>
 		<topic href="doc/UML Designer User Guide.html#UsingUMLincolors" label="Using UML in colors"></topic>

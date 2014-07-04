@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<toc topic="html/documentation/index.html" label="UML Designer">
+	<topic href="html/documentation/overview/index.html" label="Overview"></topic>
+ <topic href="html/documentation/download/index.html" label="Download">
+ </topic>
+ <topic label="Tutorials">
+    <topic href="html/documentation/tutorials/tuto-getting-started.html" label="Getting started">
+    </topic>
+    <topic href="html/documentation/tutorials/tuto-create-project.html" label="Create project">
+    </topic>
+    <topic href="html/documentation/tutorials/tuto-create-representation.html" label="Create representation">
+    </topic>
+    <topic href="html/documentation/tutorials/tuto-import-model.html" label="Import model">
+    </topic>
+    <topic href="html/documentation/tutorials/ tuto-start-example.html" label="Open example">
+    </topic>
+ </topic>
+ <topic label="User Guide">
+    <topic href="html/documentation/user-guide/dashboard.html" label="Dashboard">
+    </topic>
+    <topic href="html/documentation/user-guide/activity-diagram.html" label="Activity diagram">
+    </topic>
+    <topic href="html/documentation/user-guide/class-diagram.html" label="Class diagram">
+    </topic>
+    <topic href="html/documentation/user-guide/component-diagram.html" label="Component diagram">
+    </topic>
+    <topic href="html/documentation/user-guide/deployment-diagram.html" label="Deployment diagram">
+    </topic>
+    <topic href="html/documentation/user-guide/package-diagram.html" label="Package diagram">
+    </topic>
+    <topic href="html/documentation/user-guide/profile-diagram.html" label="Profile diagram">
+    </topic>
+    <topic href="html/documentation/user-guide/sequence-diagram.html" label="Sequence diagram">
+    </topic>
+    <topic href="html/documentation/user-guide/state-machine-diagram.html" label="State Machine diagram">
+    </topic>
+    <topic href="html/documentation/user-guide/use-case-diagram.html" label="Use Case diagram">
+    </topic>
+ </topic>
+ <topic label="Developer Guide">
+    <topic href="html/documentation/developer-guide/contribute.html" label="Contribute">
+    </topic>
+    <topic href="html/documentation/developer-guide/build.html" label="Build">
+    </topic>
+    <topic href="html/documentation/developer-guide/continuous-integration.html" label="Continuous Integration">
+    </topic>
+ </topic>
+  <topic label="Reference Documentation">
+    <topic href="html/documentation/ref-doc/presentation.html" label="Presentation">
+    </topic>
+    <topic href="html/documentation/ref-doc/define-the-system.html" label="Define the system">
+    </topic>
+    <topic href="html/documentation/ref-doc/define-the-application.html" label="Define the application">
+    </topic>
+    <topic href="html/documentation/ref-doc/implement-the-application.html" label="Implement the application">
+    </topic>
+    <topic href="html/documentation/ref-doc/write-the-application-documentation.html" label="Write the application documentation">
+    </topic>
+    <topic href="html/documentation/ref-doc/refactor-an-aplpication.html" label="Refactor an application">
+    </topic>
+    <topic href="html/documentation/ref-doc/validate-an-application.html" label="Validate an application">
+    </topic>
+    <topic href="html/documentation/ref-doc/non-goals.html" label="Non goals">
+    </topic>
+ </topic>
+</toc>

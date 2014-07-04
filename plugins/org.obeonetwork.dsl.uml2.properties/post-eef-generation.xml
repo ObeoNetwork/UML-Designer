@@ -47,5 +47,178 @@ import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.VisibilityKind;]]></replacevalue>
 		</replace>
+		<replace dir="src-gen/org/obeonetwork/dsl/uml2/properties/uml/components">
+		<include name="**/StatePropertiesEditionComponent.java"/>
+	  	<replacetoken><![CDATA[package org.obeonetwork.dsl.uml2.properties.uml.components;]]></replacetoken>
+		<replacevalue><![CDATA[package org.obeonetwork.dsl.uml2.properties.uml.components;
+
+import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.uml2.uml.State;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
+import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.WrappedException;]]></replacevalue>
+		</replace>
+		<replace dir="src-gen/org/obeonetwork/dsl/uml2/properties/uml/components">
+		<include name="**/TransitionPropertiesEditionComponent.java"/>
+	  	<replacetoken><![CDATA[package org.obeonetwork.dsl.uml2.properties.uml.components;]]></replacetoken>
+		<replacevalue><![CDATA[package org.obeonetwork.dsl.uml2.properties.uml.components;
+
+import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.uml2.uml.Transition;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
+import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.WrappedException;]]></replacevalue>
+		</replace>
+		<replace dir="src-gen/org/obeonetwork/dsl/uml2/properties/uml/components">
+				<include name="**/IntervalPropertiesEditionComponent.java"/>
+			  	<replacetoken><![CDATA[package org.obeonetwork.dsl.uml2.properties.uml.components;]]></replacetoken>
+				<replacevalue><![CDATA[package org.obeonetwork.dsl.uml2.properties.uml.components;
+
+		import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+		import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+		import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+		import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+		import org.eclipse.emf.ecore.resource.ResourceSet;
+		import org.eclipse.uml2.uml.Interval;
+		import org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart;
+		import org.eclipse.emf.common.notify.Notification;
+		import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+		import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+		import org.eclipse.emf.ecore.EStructuralFeature;
+		import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+		import org.eclipse.emf.ecore.util.EcoreUtil;
+		import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
+		import org.eclipse.emf.common.util.Diagnostic;
+		import org.eclipse.emf.common.util.BasicDiagnostic;
+		import org.eclipse.emf.common.util.WrappedException;]]></replacevalue>
+		</replace>
+		<replace dir="src-gen/org/obeonetwork/dsl/uml2/properties/uml/components">
+						<include name="**/InstanceValuePropertiesEditionComponent.java"/>
+					  	<replacetoken><![CDATA[package org.obeonetwork.dsl.uml2.properties.uml.components;]]></replacetoken>
+						<replacevalue><![CDATA[package org.obeonetwork.dsl.uml2.properties.uml.components;
+
+				import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+				import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+				import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+				import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+				import org.eclipse.emf.ecore.resource.ResourceSet;
+				import org.eclipse.uml2.uml.InstanceValue;
+				import org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart;
+				import org.eclipse.emf.common.notify.Notification;
+				import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+				import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+				import org.eclipse.emf.ecore.EStructuralFeature;
+				import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+				import org.eclipse.emf.ecore.util.EcoreUtil;
+				import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
+				import org.eclipse.emf.common.util.Diagnostic;
+				import org.eclipse.emf.common.util.BasicDiagnostic;
+				import org.eclipse.emf.common.util.WrappedException;]]></replacevalue>
+		</replace>
+		<replace dir="src-gen/org/obeonetwork/dsl/uml2/properties/uml/components">
+								<include name="**/AssociationPropertiesEditionComponent.java"/>
+							  	<replacetoken><![CDATA[private ReferencesTableSettings memberEndSettings;]]></replacetoken>
+								<replacevalue><![CDATA[protected ReferencesTableSettings memberEndSettings;]]></replacevalue>
+		</replace>
+		<replace dir="src-gen/org/obeonetwork/dsl/uml2/properties/uml/parts/forms">
+						<include name="**/GeneralPropertiesEditionPartForm.java"/>
+					  	<replacetoken><![CDATA[this.trigger.setLowerBound(invalid);]]></replacetoken>
+						<replacevalue><![CDATA[this.trigger.setLowerBound(0);]]></replacevalue>
+		</replace>
+		<replace dir="src-gen/org/obeonetwork/dsl/uml2/properties/uml/parts/forms">
+								<include name="**/GeneralPropertiesEditionPartForm.java"/>
+							  	<replacetoken><![CDATA[this.ownedRule.setLowerBound(invalid);]]></replacetoken>
+								<replacevalue><![CDATA[this.ownedRule.setLowerBound(0);]]></replacevalue>
+		</replace>
+		<replace dir="src-gen/org/obeonetwork/dsl/uml2/properties/uml/parts/forms">
+								<include name="**/GeneralPropertiesEditionPartForm.java"/>
+							  	<replacetoken><![CDATA[this.trigger.setUpperBound(invalid);]]></replacetoken>
+								<replacevalue><![CDATA[this.trigger.setUpperBound(-1);]]></replacevalue>
+		</replace>
+		<replace dir="src-gen/org/obeonetwork/dsl/uml2/properties/uml/parts/forms">
+										<include name="**/GeneralPropertiesEditionPartForm.java"/>
+									  	<replacetoken><![CDATA[this.ownedRule.setUpperBound(invalid);]]></replacetoken>
+										<replacevalue><![CDATA[this.ownedRule.setUpperBound(-1);]]></replacevalue>
+		</replace>
+		<replace dir="src-gen/org/obeonetwork/dsl/uml2/properties/uml/parts/impl">
+								<include name="**/GeneralPropertiesEditionPartImpl.java"/>
+							  	<replacetoken><![CDATA[this.trigger.setLowerBound(invalid);]]></replacetoken>
+								<replacevalue><![CDATA[this.trigger.setLowerBound(0);]]></replacevalue>
+		</replace>
+		<replace dir="src-gen/org/obeonetwork/dsl/uml2/properties/uml/parts/impl">
+								<include name="**/GeneralPropertiesEditionPartImpl.java"/>
+								<replacetoken><![CDATA[this.ownedRule.setLowerBound(invalid);]]></replacetoken>
+								<replacevalue><![CDATA[this.ownedRule.setLowerBound(0);]]></replacevalue>
+		</replace>
+		<replace dir="src-gen/org/obeonetwork/dsl/uml2/properties/uml/parts/impl">
+								<include name="**/GeneralPropertiesEditionPartImpl.java"/>
+								<replacetoken><![CDATA[this.trigger.setUpperBound(invalid);]]></replacetoken>
+								<replacevalue><![CDATA[this.trigger.setUpperBound(-1);]]></replacevalue>
+		</replace>
+		<replace dir="src-gen/org/obeonetwork/dsl/uml2/properties/uml/parts/impl">
+								<include name="**/GeneralPropertiesEditionPartImpl.java"/>
+								<replacetoken><![CDATA[this.ownedRule.setUpperBound(invalid);]]></replacetoken>
+								<replacevalue><![CDATA[this.ownedRule.setUpperBound(-1);]]></replacevalue>
+		</replace>
+		<replace dir="src-gen/org/obeonetwork/dsl/uml2/properties/uml/components">
+								<include name="**/TriggerPropertiesEditionComponent.java"/>
+							  	<replacetoken><![CDATA[package org.obeonetwork.dsl.uml2.properties.uml.components;]]></replacetoken>
+								<replacevalue><![CDATA[package org.obeonetwork.dsl.uml2.properties.uml.components;
+
+									import org.eclipse.emf.common.notify.Notification;
+									import org.eclipse.emf.common.util.BasicDiagnostic;
+									import org.eclipse.emf.common.util.Diagnostic;
+									import org.eclipse.emf.common.util.WrappedException;
+									import org.eclipse.emf.ecore.EObject;
+									import org.eclipse.emf.ecore.EStructuralFeature;
+									import org.eclipse.emf.ecore.resource.ResourceSet;
+									import org.eclipse.emf.ecore.util.Diagnostician;
+									import org.eclipse.emf.ecore.util.EcoreUtil;
+									import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
+									import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+									import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+									import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+									import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
+									import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
+									import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+									import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+									import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+									import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
+									import org.eclipse.emf.eef.runtime.policies.impl.CreateEditingPolicy;
+									import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+									import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
+									import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+									import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+									import org.eclipse.uml2.types.TypesPackage;
+									import org.eclipse.uml2.uml.Event;
+									import org.eclipse.uml2.uml.Trigger;
+									import org.eclipse.uml2.uml.UMLPackage;
+									import org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart;
+									import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;]]></replacevalue>
+		</replace>
 	</target>
 </project>

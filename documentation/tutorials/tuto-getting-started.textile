@@ -1,0 +1,81 @@
+---
+layout: article-with-sidebar
+title: Getting started
+subtitle: Tutorial
+category: Tutorials
+relativePath: ..
+---
+
+This section describes how to start using the UML designer either from existing UML models or by creating a new one.
+
+h1. Starting from the Travel Agency example
+
+Import the TravelAgency project using the menu @File/New/Example...@.
+
+!{{ page.relativePath }}/images/gettingStarted/example-1-menu.png!
+
+Pick the *Travel Agency UML* wizard and click on @Next@ and then @Finish@.
+
+!{{ page.relativePath }}/images/gettingStarted/example-2-wizard.png!
+
+Click Finish on the wizard and a *TravelAgency* project appears in your workspace. 
+
+!{{ page.relativePath }}/images/gettingStarted/example-3-workspace.png!
+
+When the project gets opened,  you will be greeted with the main package hierarchy diagram.
+
+!{{ page.relativePath }}/images/gettingStarted/example-4-maindiag.png!
+
+From here you can navigate to existing diagrams by right clicking on the *Model*.
+
+
+h1. Create a new UML model & UML project
+
+To create a new UML project , enable the Modeling Perspective.
+
+!{{ page.relativePath }}/images/gettingStarted/perspective.png!
+
+Then click on the wizard shortcuts at the top-right of the Eclipse Workbench. Select  __New UML Project.__ 
+
+!{{ page.relativePath }}/images/gettingStarted/newUMLModel.png!
+
+You can choose specific name for the project and the root element for the project on the next pages.
+
+!{{ page.relativePath }}/images/gettingStarted/newUMLProject.png!
+
+When you press the __Finish__ button, the projects gets created and automatically enabled the UML viewpoints.
+
+!{{ page.relativePath }}/images/gettingStarted/new-workspace.png!
+
+Now you can right click on the displayed package to create all the available diagrams or use the palette to create the package structure that fits to your needs. You can also open the Package hierarchy diagram and starts from here:
+
+!{{ page.relativePath }}/images/gettingStarted/new-maindiag.png!
+
+
+h1. Display & edit an existing UML model
+
+To create a new UML design on existing UML models, simply drag & drop the models in the Project or use the __Add Model__ action available on the __Project Dependencies__ item.
+
+!{{ page.relativePath }}/images/gettingStarted/new-add-dependency.png!
+
+h1(#vpselection). UML designer viewpoints
+
+Five viewpoints are specified on the UML designer each bringing the following views:
+* Dashboard
+** Dashboard
+* Capture
+** Package hierarchy diagram
+** Use case diagram
+* Design
+** Class diagram
+** Component diagram
+** Composite diagram
+** Deployment diagram
+** State machine diagram
+** Activity diagram
+** Sequence diagram
+* Review
+* Extend
+** Profile diagram
+
+You can select either viewpoints or all depending on your use case. Note that the __Dashboard__ is the entry point to create new diagrams. So it is advised to select at least the __Dashboard__, __Capture__ and __Design__ viewpoints.

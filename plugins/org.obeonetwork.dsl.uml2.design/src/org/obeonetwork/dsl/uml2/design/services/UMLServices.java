@@ -18,16 +18,31 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IPath;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.ActivityFinalNode;
+import org.eclipse.uml2.uml.ActivityParameterNode;
 import org.eclipse.uml2.uml.Actor;
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Artifact;
@@ -39,20 +54,25 @@ import org.eclipse.uml2.uml.Collaboration;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.ConnectorEnd;
+import org.eclipse.uml2.uml.DataStoreNode;
 import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Deployment;
 import org.eclipse.uml2.uml.Device;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.EncapsulatedClassifier;
+import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.ExecutionEnvironment;
 import org.eclipse.uml2.uml.Feature;
+import org.eclipse.uml2.uml.FlowFinalNode;
+import org.eclipse.uml2.uml.ForkNode;
 import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.InstanceSpecification;
 import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.InterfaceRealization;
 import org.eclipse.uml2.uml.Manifestation;
+import org.eclipse.uml2.uml.MergeNode;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
@@ -63,6 +83,7 @@ import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Pseudostate;
 import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.StructuredClassifier;
@@ -87,23 +108,12 @@ import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
-import fr.obeo.dsl.viewpoint.AbstractDNode;
-import fr.obeo.dsl.viewpoint.DDiagramElement;
-import fr.obeo.dsl.viewpoint.DEdge;
-import fr.obeo.dsl.viewpoint.DRepresentation;
-import fr.obeo.dsl.viewpoint.DSemanticDecorator;
-import fr.obeo.dsl.viewpoint.DSemanticDiagram;
-import fr.obeo.dsl.viewpoint.EdgeTarget;
-import fr.obeo.dsl.viewpoint.business.api.session.Session;
-import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
-import fr.obeo.dsl.viewpoint.business.internal.metamodel.spec.DSemanticDiagramSpec;
-import fr.obeo.dsl.viewpoint.description.DiagramDescription;
-
 /**
  * Services for UML.
  * 
  * @author Cedric Brun <a href="mailto:cedric.brun@obeo.fr">cedric.brun@obeo.fr</a>
- * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
+ * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane .thibaudeau@obeo.fr</a>
+ * @author Melanie Bats<a href="mailto:melanie.bats@obeo.fr">melanie .bats@obeo.fr</a>
  */
 public class UMLServices {
 
@@ -163,57 +173,270 @@ public class UMLServices {
 	 *            the expected type.
 	 * @return the list of cross reference of the given
 	 */
-	public Collection<EObject> getNodeInverseRefs(DSemanticDiagram diagram, String typeName) {
-		Session sess = SessionManager.INSTANCE.getSession(diagram.getTarget());
+	private Collection<EObject> getNodeInverseRefs(DDiagram diagram, String typeName) {
 		Set<EObject> result = Sets.newLinkedHashSet();
-		Iterator<EObject> it = Iterators.transform(
-				Iterators.filter(diagram.eAllContents(), AbstractDNode.class),
-				new Function<AbstractDNode, EObject>() {
+		if (diagram instanceof DSemanticDecorator) {
+			Session sess = SessionManager.INSTANCE.getSession(((DSemanticDecorator)diagram).getTarget());
 
-					public EObject apply(AbstractDNode input) {
-						return input.getTarget();
-					}
-				});
-		while (it.hasNext()) {
-			EObject displayedAsANode = it.next();
-			for (Setting xRef : sess.getSemanticCrossReferencer().getInverseReferences(displayedAsANode)) {
-				EObject eObject = xRef.getEObject();
-				if (sess.getModelAccessor().eInstanceOf(eObject, typeName)) {
-					result.add(eObject);
-				}
-				/*
-				 * In the case of an association the real interesting object is the association linked to the
-				 * Property and not the direct cross reference.
-				 */
-				if (eObject instanceof Property) {
-					if (((Property)eObject).getAssociation() != null) {
-						if (sess.getModelAccessor().eInstanceOf(((Property)eObject).getAssociation(),
-								typeName)) {
-							result.add(((Property)eObject).getAssociation());
+			Iterator<EObject> it = Iterators.transform(
+					Iterators.filter(diagram.eAllContents(), AbstractDNode.class),
+					new Function<AbstractDNode, EObject>() {
+
+						public EObject apply(AbstractDNode input) {
+							return input.getTarget();
+						}
+					});
+			while (it.hasNext()) {
+				EObject displayedAsANode = it.next();
+				if (displayedAsANode != null) {
+					for (Setting xRef : sess.getSemanticCrossReferencer().getInverseReferences(
+							displayedAsANode)) {
+						EObject eObject = xRef.getEObject();
+						if (sess.getModelAccessor().eInstanceOf(eObject, typeName)) {
+							result.add(eObject);
+						}
+						/*
+						 * In the case of an association the real interesting object is the association linked
+						 * to the Property and not the direct cross reference.
+						 */
+						if (eObject instanceof Property) {
+							if (((Property)eObject).getAssociation() != null) {
+								if (sess.getModelAccessor().eInstanceOf(((Property)eObject).getAssociation(),
+										typeName)) {
+									result.add(((Property)eObject).getAssociation());
+								}
+							}
+
 						}
 					}
-
 				}
 			}
 		}
 		return result;
 	}
 
+	/**
+	 * Retrieve the cross references of the association of all the UML elements displayed as node in a
+	 * Diagram. Note that a Property cross reference will lead to retrieve the cross references of this
+	 * property.
+	 * 
+	 * @param diagram
+	 *            a diagram.
+	 * @return the list of cross reference of the given
+	 */
+	public Collection<EObject> getAssociationInverseRefs(DDiagram diagram) {
+		return getNodeInverseRefs(diagram, "Association");
+	}
+
+	/**
+	 * Retrieve the cross references of the component realization of all the UML elements displayed as node in
+	 * a Diagram. Note that a Property cross reference will lead to retrieve the cross references of this
+	 * property.
+	 * 
+	 * @param diagram
+	 *            a diagram.
+	 * @return the list of cross reference of the given
+	 */
+	public Collection<EObject> getComponentRealizationInverseRefs(DDiagram diagram) {
+		return getNodeInverseRefs(diagram, "ComponentRealization");
+	}
+
+	/**
+	 * Retrieve the cross references of the connector of all the UML elements displayed as node in a Diagram.
+	 * Note that a Property cross reference will lead to retrieve the cross references of this property.
+	 * 
+	 * @param diagram
+	 *            a diagram.
+	 * @return the list of cross reference of the given
+	 */
+	public Collection<EObject> getConnectorInverseRefs(DDiagram diagram) {
+		return getNodeInverseRefs(diagram, "Connector");
+	}
+
+	/**
+	 * Retrieve the cross references of the dependency of all the UML elements displayed as node in a Diagram.
+	 * Note that a Property cross reference will lead to retrieve the cross references of this property.
+	 * 
+	 * @param diagram
+	 *            a diagram.
+	 * @return the list of cross reference of the given
+	 */
+	public Collection<EObject> getDependencyInverseRefs(DDiagram diagram) {
+		return getNodeInverseRefs(diagram, "Dependency");
+	}
+
+	/**
+	 * Retrieve the cross references of the dependency of all the UML elements displayed as node in a Diagram.
+	 * Note that a Property cross reference will lead to retrieve the cross references of this property.
+	 * 
+	 * @param diagram
+	 *            a diagram.
+	 * @return the list of cross reference of the given
+	 */
+	public Collection<EObject> getDependencyOnlyInverseRefs(DDiagram diagram) {
+		final Predicate<EObject> predicate = new Predicate<EObject>() {
+			public boolean apply(EObject eObj) {
+				String className = eObj.eClass().getName();
+				return "Dependency".equals(className);
+			}
+		};
+		return Collections2.filter(getDependencyInverseRefs(diagram), predicate);
+	}
+
+	/**
+	 * Retrieve the cross references of the dependency of all the UML elements displayed as node in a Diagram.
+	 * Note that a Property cross reference will lead to retrieve the cross references of this property.
+	 * 
+	 * @param diagram
+	 *            a diagram.
+	 * @return the list of cross reference of the given
+	 */
+	public Collection<EObject> getDependencyOrManifestationInverseRefs(DDiagram diagram) {
+		final Predicate<EObject> predicate = new Predicate<EObject>() {
+			public boolean apply(EObject eObj) {
+				String className = eObj.eClass().getName();
+				return "Dependency".equals(className) || "Manifestation".equals(className);
+			}
+		};
+		return Collections2.filter(getDependencyInverseRefs(diagram), predicate);
+	}
+
+	/**
+	 * Retrieve the cross references of the deployment of all the UML elements displayed as node in a Diagram.
+	 * Note that a Property cross reference will lead to retrieve the cross references of this property.
+	 * 
+	 * @param diagram
+	 *            a diagram.
+	 * @return the list of cross reference of the given
+	 */
+	public Collection<EObject> getDeploymentInverseRefs(DDiagram diagram) {
+		return getNodeInverseRefs(diagram, "Deployment");
+	}
+
+	/**
+	 * Retrieve the cross references of the extend of all the UML elements displayed as node in a Diagram.
+	 * Note that a Property cross reference will lead to retrieve the cross references of this property.
+	 * 
+	 * @param diagram
+	 *            a diagram.
+	 * @return the list of cross reference of the given
+	 */
+	public Collection<EObject> getExtendInverseRefs(DDiagram diagram) {
+		return getNodeInverseRefs(diagram, "Extend");
+	}
+
+	/**
+	 * Retrieve the cross references of the generalization of all the UML elements displayed as node in a
+	 * Diagram. Note that a Property cross reference will lead to retrieve the cross references of this
+	 * property.
+	 * 
+	 * @param diagram
+	 *            a diagram.
+	 * @return the list of cross reference of the given
+	 */
+	public Collection<EObject> getGeneralizationInverseRefs(DDiagram diagram) {
+		return getNodeInverseRefs(diagram, "Generalization");
+	}
+
+	/**
+	 * Retrieve the cross references of the include of all the UML elements displayed as node in a Diagram.
+	 * Note that a Property cross reference will lead to retrieve the cross references of this property.
+	 * 
+	 * @param diagram
+	 *            a diagram.
+	 * @return the list of cross reference of the given
+	 */
+	public Collection<EObject> getIncludeInverseRefs(DDiagram diagram) {
+		return getNodeInverseRefs(diagram, "Include");
+	}
+
+	/**
+	 * Retrieve the cross references of the interface realization of all the UML elements displayed as node in
+	 * a Diagram. Note that a Property cross reference will lead to retrieve the cross references of this
+	 * property.
+	 * 
+	 * @param diagram
+	 *            a diagram.
+	 * @return the list of cross reference of the given
+	 */
+	public Collection<EObject> getInterfaceRealizationInverseRefs(DDiagram diagram) {
+		return getNodeInverseRefs(diagram, "InterfaceRealization");
+	}
+
+	/**
+	 * Retrieve the cross references of the slot of all the UML elements displayed as node in a Diagram. Note
+	 * that a Property cross reference will lead to retrieve the cross references of this property.
+	 * 
+	 * @param diagram
+	 *            a diagram.
+	 * @return the list of cross reference of the given
+	 */
+	public Collection<EObject> getSlotInverseRefs(DDiagram diagram) {
+		return getNodeInverseRefs(diagram, "Slot");
+	}
+
+	/**
+	 * Retrieve the cross references of the template binding of all the UML elements displayed as node in a
+	 * Diagram. Note that a Property cross reference will lead to retrieve the cross references of this
+	 * property.
+	 * 
+	 * @param diagram
+	 *            a diagram.
+	 * @return the list of cross reference of the given
+	 */
+	public Collection<EObject> getTemplateBindingInverseRefs(DDiagram diagram) {
+		return getNodeInverseRefs(diagram, "TemplateBinding");
+	}
+
+	/**
+	 * Retrieve the cross references of the usage of all the UML elements displayed as node in a Diagram. Note
+	 * that a Property cross reference will lead to retrieve the cross references of this property.
+	 * 
+	 * @param diagram
+	 *            a diagram.
+	 * @return the list of cross reference of the given
+	 */
+	public Collection<EObject> getUsageInverseRefs(DDiagram diagram) {
+		return getNodeInverseRefs(diagram, "Usage");
+	}
+
 	public Element applyAllStereotypes(Element element, List<Stereotype> stereotypesToApply) {
 		// Unapplying not selected stereotypes
 		List<Stereotype> alreadyAppliedStereotypes = element.getAppliedStereotypes();
 		for (Stereotype alreadyAppliedStereotype : alreadyAppliedStereotypes) {
-			if (!stereotypesToApply.contains(alreadyAppliedStereotype)) {
+			if (stereotypesToApply == null || !stereotypesToApply.contains(alreadyAppliedStereotype)) {
 				element.unapplyStereotype(alreadyAppliedStereotype);
 			}
 		}
+
+		if (stereotypesToApply == null) {
+			return element;
+		}
+
 		// Applying selected stereotypes
 		for (Stereotype stereotypeToApply : stereotypesToApply) {
+			Profile profile = stereotypeToApply.getProfile();
+			Package pkg = element.getNearestPackage();
+			if (!pkg.isProfileApplied(profile)) {
+				pkg.applyProfile(profile);
+			}
+
 			if (!element.isStereotypeApplied(stereotypeToApply)) {
 				element.applyStereotype(stereotypeToApply);
 			}
 		}
 		return element;
+	}
+
+	/**
+	 * Unapply all the stereotypes of a given element.
+	 * 
+	 * @param element
+	 *            Element
+	 * @return Element
+	 */
+	public Element unApplyAllStereotypes(Element element) {
+		return applyAllStereotypes(element, null);
 	}
 
 	/**
@@ -260,8 +483,8 @@ public class UMLServices {
 	 * @param namespace
 	 *            Namespace into which importing the types
 	 */
-	public void importUmlPrimitiveTypes(Namespace namespace) {
-		importPrimitiveTypes(namespace, UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI);
+	public void importUmlPrimitiveTypes(NamedElement element) {
+		importPrimitiveTypes(element, UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI);
 	}
 
 	/**
@@ -271,8 +494,8 @@ public class UMLServices {
 	 *            Namespace to be checked
 	 * @return true if the types are already imported, else false
 	 */
-	public boolean areUmlPrimitiveTypesImported(Namespace namespace) {
-		return arePrimitiveTypesImported(namespace, UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI);
+	public boolean areUmlPrimitiveTypesNotImported(NamedElement element) {
+		return !arePrimitiveTypesImported(element, UMLResource.UML_PRIMITIVE_TYPES_LIBRARY_URI);
 	}
 
 	/**
@@ -281,8 +504,8 @@ public class UMLServices {
 	 * @param namespace
 	 *            Namespace into which importing the types
 	 */
-	public void importJavaPrimitiveTypes(Namespace namespace) {
-		importPrimitiveTypes(namespace, UMLResource.JAVA_PRIMITIVE_TYPES_LIBRARY_URI);
+	public void importJavaPrimitiveTypes(NamedElement element) {
+		importPrimitiveTypes(element, UMLResource.JAVA_PRIMITIVE_TYPES_LIBRARY_URI);
 	}
 
 	/**
@@ -292,8 +515,8 @@ public class UMLServices {
 	 *            Namespace to be checked
 	 * @return true if the types are already imported, else false
 	 */
-	public boolean areJavaPrimitiveTypesImported(Namespace namespace) {
-		return arePrimitiveTypesImported(namespace, UMLResource.JAVA_PRIMITIVE_TYPES_LIBRARY_URI);
+	public boolean areJavaPrimitiveTypesNotImported(NamedElement element) {
+		return !arePrimitiveTypesImported(element, UMLResource.JAVA_PRIMITIVE_TYPES_LIBRARY_URI);
 	}
 
 	/**
@@ -302,8 +525,8 @@ public class UMLServices {
 	 * @param namespace
 	 *            Namespace into which importing the types
 	 */
-	public void importEcorePrimitiveTypes(Namespace namespace) {
-		importPrimitiveTypes(namespace, UMLResource.ECORE_PRIMITIVE_TYPES_LIBRARY_URI);
+	public void importEcorePrimitiveTypes(NamedElement element) {
+		importPrimitiveTypes(element, UMLResource.ECORE_PRIMITIVE_TYPES_LIBRARY_URI);
 	}
 
 	/**
@@ -313,8 +536,8 @@ public class UMLServices {
 	 *            Namespace to be checked
 	 * @return true if the types are already imported, else false
 	 */
-	public boolean areEcorePrimitiveTypesImported(Namespace namespace) {
-		return arePrimitiveTypesImported(namespace, UMLResource.ECORE_PRIMITIVE_TYPES_LIBRARY_URI);
+	public boolean areEcorePrimitiveTypesNotImported(NamedElement element) {
+		return !arePrimitiveTypesImported(element, UMLResource.ECORE_PRIMITIVE_TYPES_LIBRARY_URI);
 	}
 
 	/**
@@ -323,8 +546,8 @@ public class UMLServices {
 	 * @param namespace
 	 *            Namespace into which importing the types
 	 */
-	public void importXmlPrimitiveTypes(Namespace namespace) {
-		importPrimitiveTypes(namespace, UMLResource.XML_PRIMITIVE_TYPES_LIBRARY_URI);
+	public void importXmlPrimitiveTypes(NamedElement element) {
+		importPrimitiveTypes(element, UMLResource.XML_PRIMITIVE_TYPES_LIBRARY_URI);
 	}
 
 	/**
@@ -334,8 +557,8 @@ public class UMLServices {
 	 *            Namespace to be checked
 	 * @return true if the types are already imported, else false
 	 */
-	public boolean areXmlPrimitiveTypesImported(Namespace namespace) {
-		return arePrimitiveTypesImported(namespace, UMLResource.XML_PRIMITIVE_TYPES_LIBRARY_URI);
+	public boolean areXmlPrimitiveTypesNotImported(NamedElement element) {
+		return !arePrimitiveTypesImported(element, UMLResource.XML_PRIMITIVE_TYPES_LIBRARY_URI);
 	}
 
 	/**
@@ -346,13 +569,14 @@ public class UMLServices {
 	 * @param libraryUri
 	 *            the URI of the library to load.
 	 */
-	private void importPrimitiveTypes(Namespace namespace, String libraryUri) {
+	private void importPrimitiveTypes(NamedElement element, String libraryUri) {
+		Namespace namespace = getNamespace(element);
 		final ResourceSet resourceSet = namespace.eResource().getResourceSet();
 		final Resource resource = resourceSet.getResource(URI.createURI(libraryUri), true);
 		// Add the resource to the session's semantic resources
 		final Session session = SessionManager.INSTANCE.getSession(namespace);
 		if (session != null) {
-			session.addSemanticResource(resource, false);
+			session.addSemanticResource(resource.getURI(), new NullProgressMonitor());
 		}
 		final Package root = (Package)EcoreUtil.getObjectByType(resource.getContents(),
 				UMLPackage.Literals.PACKAGE);
@@ -454,7 +678,7 @@ public class UMLServices {
 		Resource resource = pkg.eResource();
 		final Session session = SessionManager.INSTANCE.getSession(model);
 		if (session != null) {
-			session.addSemanticResource(resource, false);
+			session.addSemanticResource(resource.getURI(), new NullProgressMonitor());
 		}
 		// We check if a package import already exists
 		if (!model.getImportedPackages().contains(pkg)) {
@@ -523,13 +747,27 @@ public class UMLServices {
 	}
 
 	private List<EObject> getValidsForObjectDiagram(EObject cur) {
-		Predicate<EObject> validForComponentDiagram = new Predicate<EObject>() {
+		Predicate<EObject> validForObjetDiagram = new Predicate<EObject>() {
 
 			public boolean apply(EObject input) {
-				return input instanceof Package || input instanceof InstanceSpecification;
+				boolean result = false;
+				if (input instanceof InstanceSpecification || input instanceof Classifier) {
+					result = true;
+				} else if (input instanceof Package) {
+					// A package is interesting only if it contains a Classifier or an InstanceSpecification
+					TreeIterator<EObject> eAllContents = input.eAllContents();
+					while (eAllContents.hasNext()) {
+						EObject eObject = (EObject)eAllContents.next();
+						if (eObject instanceof InstanceSpecification || eObject instanceof Classifier) {
+							result = true;
+							break;
+						}
+					}
+				}
+				return result;
 			}
 		};
-		return allValidSessionElements(cur, validForComponentDiagram);
+		return allValidSessionElements(cur, validForObjetDiagram);
 	}
 
 	public List<EObject> getValidsForCompositeDiagram(EObject cur) {
@@ -584,10 +822,11 @@ public class UMLServices {
 		}
 		UMLServices service = new UMLServices();
 		List<EObject> results = null;
-		if (representation instanceof DSemanticDiagramSpec) {
-			DiagramDescription description = ((DSemanticDiagramSpec)representation).getDescription();
+		if (representation instanceof DSemanticDiagram) {
+			DiagramDescription description = ((DSemanticDiagram)representation).getDescription();
 
-			if ("Class Diagram".equals(description.getName())) {
+			if ("Class Diagram".equals(description.getName())
+					|| "Profile Diagram".equals(description.getName())) {
 				results = service.getValidsForClassDiagram(element);
 			} else if ("Component Diagram".equals(description.getName())) {
 				results = service.getValidsForComponentDiagram(element);
@@ -629,7 +868,8 @@ public class UMLServices {
 	 *            URI of the library.
 	 * @return <code>true</code> if the library is imported, <code>false</code> otherwise
 	 */
-	private boolean arePrimitiveTypesImported(Namespace namespace, String libraryUri) {
+	private boolean arePrimitiveTypesImported(NamedElement element, String libraryUri) {
+		Namespace namespace = getNamespace(element);
 		final ResourceSet resourceSet = namespace.eResource().getResourceSet();
 		final Resource resource = resourceSet.getResource(URI.createURI(libraryUri), true);
 		final Package root = (Package)EcoreUtil.getObjectByType(resource.getContents(),
@@ -639,13 +879,27 @@ public class UMLServices {
 	}
 
 	/**
+	 * Get the namespace associated to a named element.
+	 * 
+	 * @param element
+	 *            Named element
+	 * @return Namespace, if the element is a model or a profile the namespace is itself
+	 */
+	private Namespace getNamespace(NamedElement element) {
+		if (element instanceof Model || element instanceof Profile) {
+			return (Namespace)element;
+		}
+		return element.getNamespace();
+	}
+
+	/**
 	 * Return the source of an association.
 	 * 
 	 * @param association
 	 *            the {@link Association} context
 	 * @return first end of the association
 	 */
-	public Property getSource(Association association) {
+	private Property getSource(Association association) {
 		if (association.getMemberEnds() != null && association.getMemberEnds().size() > 0) {
 			return association.getMemberEnds().get(0);
 		}
@@ -659,7 +913,7 @@ public class UMLServices {
 	 *            the {@link Association} context
 	 * @return second end of the association
 	 */
-	public Property getTarget(Association association) {
+	private Property getTarget(Association association) {
 		if (association.getMemberEnds() != null && association.getMemberEnds().size() > 1) {
 			return association.getMemberEnds().get(1);
 		}
@@ -709,6 +963,21 @@ public class UMLServices {
 		return AggregationKind.COMPOSITE_LITERAL.equals(p.getAggregation());
 	}
 
+	public boolean isNotComposite(Property p) {
+		return !isComposite(p);
+	}
+
+	public boolean isRelated(EObject toFilter, List<EObject> context) {
+		boolean related = false;
+		for (EObject eObject : context) {
+			related = isRelated(toFilter, eObject);
+			if (related) {
+				break;
+			}
+		}
+		return related;
+	}
+
 	/**
 	 * States if the given object is related to the context {@link Classifier}.
 	 * 
@@ -721,7 +990,9 @@ public class UMLServices {
 	 */
 	public boolean isRelated(EObject toFilter, EObject context) {
 		boolean res = false;
-		if (context instanceof Classifier) {
+		if (toFilter.equals(context)) {
+			res = true;
+		} else if (context instanceof Classifier) {
 			if (toFilter instanceof Generalization) {
 				res = ((Classifier)context).getGeneralizations().contains(toFilter)
 						|| ((Generalization)toFilter).getGeneral() == context;
@@ -1004,8 +1275,8 @@ public class UMLServices {
 	 *            element represented by the edge.
 	 * @return true if no cycle is detected.
 	 */
-	public Boolean reconnectContainmentPrecondition(EObject host, EObject source, EObject target,
-			EObject element) {
+	public Boolean reconnectContainmentPrecondition(Element host, Element source, Element target,
+			Element element) {
 		if (element == target)
 			return false;
 		Iterator<EObject> it = element.eAllContents();
@@ -1015,6 +1286,23 @@ public class UMLServices {
 				return false;
 		}
 		return true;
+	}
+
+	/**
+	 * Get all the associations relative to an element.
+	 * 
+	 * @param container
+	 *            the current container.
+	 * @return a list of association
+	 */
+	public Collection<Association> getAllAssociations(Classifier classifier) {
+		Collection<Association> result = new ArrayList<Association>();
+		for (EObject child : classifier.getRelationships()) {
+			if (child instanceof Association && !(child instanceof AssociationClass)) {
+				result.add((Association)child);
+			}
+		}
+		return result;
 	}
 
 	/**
@@ -1159,5 +1447,143 @@ public class UMLServices {
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * Compute default name.
+	 * 
+	 * @param element
+	 *            New element
+	 * @return Name for the new element, he name will looks like 'ElementType'+total of existing elements of
+	 *         the same type.
+	 */
+	public String computeDefaultName(final EObject element) {
+		Predicate<EObject> predicate = null;
+		String name = element.getClass().getSimpleName();
+		name = name.substring(0, name.indexOf("Impl"));
+		predicate = new Predicate<EObject>() {
+			public boolean apply(EObject input) {
+				return input.getClass().getName().equals(element.getClass().getName());
+			}
+		};
+		if (element instanceof AssociationClass) {
+			name = "AssociationClass";
+		} else if (element instanceof ActivityFinalNode) {
+			name = "ActivityFinal";
+		} else if (element instanceof StateMachine) {
+			name = "StateMachine";
+		} else if (element instanceof FlowFinalNode) {
+			name = "FlowFinal";
+		} else if (element instanceof MergeNode) {
+			name = "Merge";
+		} else if (element instanceof DataStoreNode) {
+			name = "DataStore";
+		} else if (element instanceof ActivityParameterNode) {
+			name = "Parameter";
+		} else if (element instanceof ForkNode) {
+			name = "Fork";
+		} else if (element instanceof EnumerationLiteral) {
+			name = "Literal";
+		} else if (element instanceof Property) {
+			name = "property";
+		} else if (element instanceof Pseudostate) {
+			String kind = (((Pseudostate)element).getKind()).getLiteral();
+			name = Character.toUpperCase(kind.charAt(0)) + kind.substring(1);
+		} else if (element instanceof Association) {
+			String end1 = ((Association)element).getOwnedEnds().get(0).getName();
+			String end2 = ((Association)element).getOwnedEnds().get(1).getName();
+			return end1 + "To" + Character.toUpperCase(end2.charAt(0)) + end2.substring(1);
+		} else if (element instanceof InstanceSpecification) {
+			predicate = new Predicate<EObject>() {
+				public boolean apply(EObject input) {
+					return input instanceof InstanceSpecification;
+				}
+			};
+			name = "anObject";
+			List<Classifier> classifiers = ((InstanceSpecification)element).getClassifiers();
+			if (!classifiers.isEmpty()) {
+				String classifierName = classifiers.get(0).getName();
+				if (classifierName != null && classifierName.length() > 0) {
+					if (startWithVowel(classifierName)) {
+						name = "an";
+					} else {
+						name = "a";
+					}
+					name += classifierName;
+				}
+			}
+		}
+
+		List<EObject> existingElements = Lists.newArrayList(Iterables.filter(
+				element.eContainer().eContents(), predicate));
+
+		return name + existingElements.size();
+	}
+
+	private static boolean startWithVowel(String str) {
+		boolean result = false;
+		if (str != null && str.length() > 0) {
+			char[] vowels = new char[] {'a', 'e', 'i', 'o', 'u'};
+			for (char vowel : vowels) {
+				if (str.startsWith(Character.toString(vowel))
+						|| str.startsWith(Character.toString(vowel).toUpperCase())) {
+					result = true;
+					break;
+				}
+			}
+		}
+		return result;
+	}
+
+	public List<Package> getAllAvailableRootPackages(Element element) {
+		// <%script type="uml.Element" name="allAvailableRootPackages"%>
+		// <%(getRootContainer().filter("Package") + rootPackagesFromImportedModel).nMinimize()%>
+		List<Package> packages = Lists.newArrayList();
+		packages.add(element.getModel());
+		packages.addAll(Lists.newArrayList(Iterables.filter(element.getModel().getImportedPackages(),
+				Model.class)));
+		return packages;
+	}
+
+	public boolean existComments(Element element) {
+		return element.getOwnedComments() != null && element.getOwnedComments().size() > 0;
+	}
+
+	public boolean notExistComments(Element element) {
+		return !existComments(element);
+	}
+
+	public String getComment(Element element) {
+		if (element.getOwnedComments().size() > 0)
+			return element.getOwnedComments().get(0).getBody();
+		return null;
+	}
+
+	public boolean inactive(Element element) {
+		return false;
+	}
+
+	public boolean active(Element element) {
+		return true;
+	}
+
+	public boolean isNotDiagram(EObject containerView) {
+		return !(containerView instanceof DDiagram);
+	}
+
+	public boolean isComponent(EObject element) {
+		return element instanceof Component;
+	}
+
+	public boolean isClassifier(EObject element) {
+		return element instanceof Classifier;
+	}
+
+	public boolean isPackage(EObject element) {
+		return element instanceof Package;
+	}
+
+	public boolean isTypeOfClass(EObject element) {
+		return "Class".equals(element.eClass().getName());
 	}
 }

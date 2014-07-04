@@ -16,6 +16,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
@@ -24,6 +25,8 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Element;
@@ -39,9 +42,6 @@ import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.resource.UMLResource;
-
-import fr.obeo.dsl.viewpoint.business.api.session.Session;
-import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
 
 /**
  * A set of Java services for UML profiled models.
@@ -71,7 +71,7 @@ public class UMLProfileServices {
 			// Put UML.metamodel.uml in semantic resources
 			ResourceSet resourceSet = profile.eResource().getResourceSet();
 			Resource resource = resourceSet.getResource(URI.createURI(UMLResource.UML_METAMODEL_URI), true);
-			session.addSemanticResource(resource, false);
+			session.addSemanticResource(resource.getURI(), new NullProgressMonitor());
 			return getAllMetaclasses(resource);
 		}
 		return new ArrayList<Class>();

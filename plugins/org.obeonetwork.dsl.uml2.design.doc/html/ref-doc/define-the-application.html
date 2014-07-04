@@ -1,0 +1,1008 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="UML Designer documentation">
+  <meta name="author" content="Mt&eacute;lanie Bats">
+  
+  <title>Define the application</title>
+  
+  <!-- Bootstrap core CSS -->
+  <link href="../css/bootstrap.css" rel="stylesheet">
+  
+  <!-- Pygments CSS -->
+  <link href="../css/pygments.css" rel="stylesheet">
+
+  <!-- Add custom CSS here -->
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+      <a class="navbar-brand" href="../index.html">UML Designer</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav navbar-right">     
+      
+        
+        <li><a href="../overview/index.html">Overview</a></li>
+        
+      
+        
+        <li><a href="../download/index.html">Download</a></li>
+        
+      
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            
+      	    	<li><a href="../tutorials/tuto-getting-started.html">Getting started</a></li>
+            
+      	    	<li><a href="../tutorials/tuto-create-project.html">Create project</a></li>
+            
+      	    	<li><a href="../tutorials/tuto-create-representation.html">Create representation</a></li>
+            
+      	    	<li><a href="../tutorials/tuto-import-model.html">Import model</a></li>
+            
+      	    	<li><a href="../tutorials/tuto-start-example.html">Open example</a></li>
+            
+          </ul>
+        </li>
+        
+      
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">User Guide <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            
+      	    	<li><a href="../user-guide/dashboard.html">Dashboard</a></li>
+            
+      	    	<li><a href="../user-guide/activity-diagram.html">Activity Diagram</a></li>
+            
+      	    	<li><a href="../user-guide/class-diagram.html">Class Diagram</a></li>
+            
+      	    	<li><a href="../user-guide/component-diagram.html">Component Diagram</a></li>
+            
+      	    	<li><a href="../user-guide/deployment-diagram.html">Deployment Diagram</a></li>
+            
+      	    	<li><a href="../user-guide/package-diagram.html">Package Diagram</a></li>
+            
+      	    	<li><a href="../user-guide/profile-diagram.html">Profile Diagram</a></li>
+            
+      	    	<li><a href="../user-guide/sequence-diagram.html">Sequence Diagram</a></li>
+            
+      	    	<li><a href="../user-guide/state-machine-diagram.html">State Machine Diagram</a></li>
+            
+      	    	<li><a href="../user-guide/use-case-diagram.html">Use Case Diagram</a></li>
+            
+          </ul>
+        </li>
+        
+      
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Developer Guide <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            
+      	    	<li><a href="../developer-guide/contribute.html">Contribute</a></li>
+            
+      	    	<li><a href="../developer-guide/build.html">Build</a></li>
+            
+      	    	<li><a href="../developer-guide/continuous-integration.html">Continuous Integration</a></li>
+            
+          </ul>
+        </li>
+        
+      
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            
+      	    	<li><a href="../ref-doc/presentation.html">Presentation</a></li>
+            
+      	    	<li><a href="../ref-doc/define-the-system.html">Define the system</a></li>
+            
+      	    	<li><a href="../ref-doc/define-the-application.html">Define the application</a></li>
+            
+      	    	<li><a href="../ref-doc/implement-the-application.html">Implement the application</a></li>
+            
+      	    	<li><a href="../ref-doc/write-the-application-documentation.html">Write the application documentation</a></li>
+            
+      	    	<li><a href="../ref-doc/refactor-an-application.html">Refactor an application</a></li>
+            
+      	    	<li><a href="../ref-doc/validate-an-application.html">Validate an application</a></li>
+            
+      	    	<li><a href="../ref-doc/non-goals.html">Non Goals</a></li>
+            
+          </ul>
+        </li>
+        
+      
+        
+        <li><a href="../faq/index.html">FAQ</a></li>
+        
+      
+
+      </ul>
+    </div><!-- /.navbar-header -->
+  </div><!-- /.container -->
+</nav>
+
+
+  <div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Define the application <small>Reference Documentation</small></h1>
+      
+      <ol class="breadcrumb">
+        <li><a href="../index.html">Home</a></li>
+        <li class="active">Define the application</li>
+      </ol>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-lg-12">
+      <p>The first questions John has to answer are :<br />
+What the application is supposed to be?<br />
+and<br />
+What the application is supposed to do?</p>
+<h1>What the application is supposed to be ?</h1>
+<p>First, John tries to get a feel for the bigger picture of its application. The purpose is to get an overall understanding of the system. He wants to catch the business process and checks if there is a precedent for this application.<br />
+To do so <span class="caps">UML</span> propose a very useful diagram : the <strong>activity diagram</strong>.<br />
+The activity diagram is part of the behavioral diagrams in <span class="caps">UML</span> Standard, it is used to represent workflows of stepwise activities.<br />
+<img src="../images/ActivityDiagram.png" alt="" /></p>
+<p>The activity diagram is a synchronized diagram which means that any elements existing under an activity in the <span class="caps">UML</span> model will be visible automatically in the activity diagram.</p>
+<h2>Manage activities</h2>
+<p>It is possible to <strong>create activity elements</strong> by selecting the creation tools from the palette and then clicking on the diagram or an element. <br />
+<img src="../images/ActivityDiagramPalette.png" alt="" /></p>
+<p>A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the <span class="caps">UML</span> model. If the user selects a container, the element will be created under the corresponding semantic element in the <span class="caps">UML</span> model. <br />
+Tooltip tools are also available to create any kind of elements :<br />
+<img src="../images/ActivityDiagramTooltips.png" alt="" /></p>
+<p>Creation tools are available in the activity diagram for the following types :</p>
+<table>
+	<tr>
+		<th>Element            </th>
+		<th>Representation                                               </th>
+		<th>Comments</th>
+	</tr>
+	<tr>
+		<td>Partition             </td>
+		<td><img src="../images/ActivityDiagramPartition.png" alt="" />          </td>
+		<td>Organizes a flow by grouping elements</td>
+	</tr>
+	<tr>
+		<td>Initial Node          </td>
+		<td><img src="../images/ActivityDiagramInitialNode.png" alt="" />        </td>
+		<td>Start of a flow</td>
+	</tr>
+	<tr>
+		<td>Activity Final Node   </td>
+		<td><img src="../images/ActivityDiagramActivityFinalNode.png" alt="" />  </td>
+		<td>End of a flow</td>
+	</tr>
+	<tr>
+		<td>Flow Final Node       </td>
+		<td><img src="../images/ActivityDiagramFlowFinalNode.png" alt="" />      </td>
+		<td>Exit from the system</td>
+	</tr>
+	<tr>
+		<td>Decision Node         </td>
+		<td><img src="../images/ActivityDiagramDecisionNode.png" alt="" />       </td>
+		<td>Point of conditional progression</td>
+	</tr>
+	<tr>
+		<td>Merge Node            </td>
+		<td><img src="../images/ActivityDiagramMergeNode.png" alt="" />          </td>
+		<td>Brings together a number of alternative flow paths</td>
+	</tr>
+	<tr>
+		<td>Fork Node             </td>
+		<td><img src="../images/ActivityDiagramForkNode.png" alt="" />           </td>
+		<td>Split the flow into concurrent flows</td>
+	</tr>
+	<tr>
+		<td>Join Node             </td>
+		<td><img src="../images/ActivityDiagramJoinNode.png" alt="" />           </td>
+		<td>Join the flow of concurrent flows</td>
+	</tr>
+	<tr>
+		<td>Opaque Action         </td>
+		<td><img src="../images/ActivityDiagramOpaqueAction.png" alt="" />       </td>
+		<td>Describes a basic process</td>
+	</tr>
+	<tr>
+		<td>Activity state        </td>
+		<td><img src="../images/ActivityDiagramActivityState.png" alt="" />      </td>
+		<td>Describes a sub activity</td>
+	</tr>
+	<tr>
+		<td>Call Operation action </td>
+		<td><img src="../images/ActivityDiagramCallOperationAction.png" alt="" /></td>
+		<td>Describes a call to a defined operation</td>
+	</tr>
+	<tr>
+		<td>Activity parameter    </td>
+		<td><img src="../images/ActivityDiagramActivityParameter.png" alt="" />  </td>
+		<td>Defines parameters for the activity</td>
+	</tr>
+	<tr>
+		<td>Data store            </td>
+		<td><img src="../images/ActivityDiagramDataStore.png" alt="" />          </td>
+		<td>Define permanently stored data</td>
+	</tr>
+	<tr>
+		<td>Input pin             </td>
+		<td><img src="../images/ActivityDiagramInputPin.png" alt="" />           </td>
+		<td>Activity input</td>
+	</tr>
+	<tr>
+		<td>Output pin            </td>
+		<td><img src="../images/ActivityDiagramOutputPin.png" alt="" />          </td>
+		<td>Activity output</td>
+	</tr>
+</table>
+<p>When the <em>Call Operation action</em> tool is selected, a selection wizard is opened to ask the user to select an existing operation in the <span class="caps">UML</span> model :<br />
+<img src="../images/ActivityDiagramCallOperationActionWizard.png" alt="" /></p>
+<p>The user can also <strong>delete an activity element</strong> (see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
+<h2>Manage flows</h2>
+<p>It is possible to <strong>create a flow</strong> by selecting the edge creation tool from the palette and then clicking on a source element and a target element.</p>
+<p>The following edge creation tools exist in the palette :</p>
+<table>
+	<tr>
+		<th>Element   </th>
+		<th>Representation</th>
+		<th>Comments</th>
+	</tr>
+	<tr>
+		<td>Control flow </td>
+		<td><img src="../images/ActivityDiagramControlFlow.png" alt="" /></td>
+		<td>Connect two nodes</td>
+	</tr>
+	<tr>
+		<td>Object flow </td>
+		<td><img src="../images/ActivityDiagramObjectFlow.png" alt="" /></td>
+		<td>Connect two ports exchanging data</td>
+	</tr>
+</table>
+<p>The user can also <strong>delete a flow</strong> (see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
+<p>And finally, he can <strong>reconnect flows</strong>. It is possible to reconnect the source and the target of any kind of edge in the activity diagram :</p>
+<ul>
+	<li>control flows</li>
+	<li>object flows</li>
+</ul>
+<h2>Edit labels</h2>
+<p>In the use case diagram, it is possible to edit the elements labels  (see <a href="../ref-doc/define-the-system.html#Direct_edit">Diagram editor/Editor main graphical area/Direct edit</a>).<br />
+This actions allows to edit :</p>
+<ul>
+	<li>actor, subject (component,  artifact, datatype, interface, collaboration, class), use case labels</li>
+	<li>relationships labels</li>
+</ul>
+<h1>What the application is supposed to do ?</h1>
+<h2>Capture the use cases</h2>
+<p>The next step for John is to capture the different requirements. He knows what he wants, what the other stakeholders want and so he needs to document this. He has already started catching the requirements on post-it notes and pieces of paper during meetings, he has also used his whiteboard for some sketching.<br />
+When he recovered all his requirements, he starts to sort them by subject in order to see who is going to use the application. He needs now to capture the different users of the system. John creates a <span class="caps">UML</span> <strong>Use Case diagram</strong> to specify the different subjects and the roles played by users and other systems that interact.<br />
+The use case diagram is used to describe the interaction of the user and other applications with the specified system.<br />
+<img src="../images/UseCaseDiagram.png" alt="" /></p>
+<p>The use case diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.</p>
+<h3>Manage use cases</h3>
+<p>It is possible in the use case diagram to <strong>create an element</strong> by selecting the creation tool from the palette and then clicking on the diagram or an element. A diagram is associated to a package and in this case the element is created under the corresponding package in the <span class="caps">UML</span> model. <br />
+<img src="../images/UseCaseDiagramPalette.png" alt="" /></p>
+<p>Tooltip tools are also available to create any kind of elements.</p>
+<p>The available elements in the use case diagram are :</p>
+<table>
+	<tr>
+		<th>Element    </th>
+		<th>Representation       </th>
+		<th>Comments</th>
+	</tr>
+	<tr>
+		<td>Actor         </td>
+		<td><img src="../images/UseCaseDiagramActor.png" alt="" />        </td>
+		<td>User of the system</td>
+	</tr>
+	<tr>
+		<td>UseCase       </td>
+		<td><img src="../images/UseCaseDiagramUseCase.png" alt="" />      </td>
+		<td>Describes how a user interacts with the system</td>
+	</tr>
+	<tr>
+		<td>Collaboration </td>
+		<td><span class="caps">TBD</span></td>
+		<td>Set of cooperating roles</td>
+	</tr>
+	<tr>
+		<td>Subject       </td>
+		<td><img src="../images/UseCaseDiagramSubject.png" alt="" />      </td>
+		<td>Group logically related elements</td>
+	</tr>
+</table>
+<p>A subject could be a :</p>
+<ul>
+	<li>Component</li>
+	<li>Class</li>
+	<li>Artifact</li>
+	<li>DataType</li>
+	<li>Interface</li>
+</ul>
+<p>The user can also <strong>delete an element</strong> (see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
+<h3>Manage relationships</h3>
+<p>It is possible to <strong>create a relationship</strong> by selecting the edge creation tool from the palette and then clicking on a source element and a target element. <br />
+The following edge creation tools exist in the palette :</p>
+<table>
+	<tr>
+		<th>Element     </th>
+		<th>Representation    </th>
+		<th>Comments</th>
+	</tr>
+	<tr>
+		<td>Association    </td>
+		<td><img src="../images/UseCaseDiagramAssociation.png" alt="" />  </td>
+		<td>General relationship type between elements</td>
+	</tr>
+	<tr>
+		<td>Extend         </td>
+		<td><img src="../images/UseCaseDiagramExtend.png" alt="" />       </td>
+		<td>Indicate that an element extends the behavior of another</td>
+	</tr>
+	<tr>
+		<td>Include        </td>
+		<td><img src="../images/UseCaseDiagramInclude.png" alt="" />      </td>
+		<td>Indicates that the source element includes the functionality of the target element</td>
+	</tr>
+	<tr>
+		<td>Generalization </td>
+		<td><img src="../images/UseCaseDiagramGeneralization.png" alt="" /></td>
+		<td>Indicate inheritance</td>
+	</tr>
+</table>
+<p>The user can also <strong>delete a relationship</strong> (see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
+<p>And finally, he can <strong>reconnect relationships</strong>. It is possible to reconnect the source and the target of any kind of edge in the use case diagram :</p>
+<ul>
+	<li>association</li>
+	<li>extend</li>
+	<li>include</li>
+	<li>generalization</li>
+</ul>
+<h3>Manage existing elements</h3>
+<p>As the diagram is unsynchronized, the user needs to add manually the elements already existing in the semantic model that should appear on the representation.<br />
+It is possible to <strong>add existing elements</strong> in the use case diagram by :</p>
+<ul>
+	<li>selecting the add tool from the palette or the tooltip and then clicking on the diagram or an element. The add tool opens a selection wizard.</li>
+	<li>drag and droping an element from the model explorer.</li>
+</ul>
+<p>The following elements can be added on a component diagram :</p>
+<table>
+	<tr>
+		<th>Element </th>
+		<th>Representation </th>
+	</tr>
+	<tr>
+		<td>Use case </td>
+		<td><img src="../images/UseCaseDiagramUseCase.png" alt="" /></td>
+	</tr>
+	<tr>
+		<td>Use case into a subject</td>
+		<td><img src="../images/UseCaseDiagramSubject.png" alt="" /></td>
+	</tr>
+	<tr>
+		<td>Subject (component,  artifact, datatype, interface, collaboration, class)</td>
+		<td><img src="../images/UseCaseDiagramSubject.png" alt="" /></td>
+	</tr>
+	<tr>
+		<td>Actor</td>
+		<td><img src="../images/UseCaseDiagramActor.png" alt="" /></td>
+	</tr>
+	<tr>
+		<td>Package</td>
+		<td>Add all the elements which could be visible on the diagram</td>
+	</tr>
+</table>
+<p>The user can see that an element is not coming from the current package :</p>
+<ul>
+	<li>the element border is lighter than the element border of elements defined in the current package</li>
+	<li>a tooltip shows the container package of the element if the element is not contained by the current package</li>
+</ul>
+<p>And finally, he can <strong>remove an existing element</strong> from a diagram. In this case the element is only deleted from the representation but it is not removed from the <span class="caps">UML</span> model. This <em>Remove</em> tool exists in the <em>Existing elements</em> section in the palette (see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
+<h3>Add related elements</h3>
+<p>In the use case diagram a contextual action is available to show on the diagram the element related to the selection.</p>
+<p>The <strong>Add related elements</strong> action is available from :</p>
+<ul>
+	<li>a subject, a use case, an actor : shows all the elements that define a relationship (dependency, include, association&#8230;) with the selected element</li>
+	<li>a use case diagram : shows all the elements contained in the package associated to the diagram.</li>
+</ul>
+<h3>Edit labels</h3>
+<p>In the use case diagram, it is possible to edit the elements labels  (see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>). This actions allows to edit :</p>
+<ul>
+	<li>actor, collaboration, subject, use case labels</li>
+	<li>relationships labels</li>
+</ul>
+<h2>Define the package system structure</h2>
+<p>At this step, John knows who will use its application and what they are able todo with it. It is time to define the components, the interfaces and the relationships that would be seen and experienced by the application user. The purpose is to detail the available objects in the user&#8217;s universe and how they can use them to accomplish certain tasks.<br />
+John defines the big structure of the system thanks to the <strong>Package diagram</strong>.<br />
+The package diagram is used to describe the structure of the system by showing the packages and their dependencies.<br />
+<img src="../images/PackageDiagram.png" alt="" /></p>
+<p>The package diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.<br />
+The package diagram is used to describe the structure of the system by showing the packages and their dependencies.<br />
+<img src="../images/PackageDiagram.png" alt="" /></p>
+<h3>Manage packages</h3>
+<p><img src="../images/PackageDiagramPaletteTypes.png" alt="" /></p>
+<p>It is possible to <strong>create activities elements</strong> by selecting the creation tools from the palette and then clicking on the diagram or an element. A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the <span class="caps">UML</span> model. If the user selects a container, the element will be created under the corresponding semantic element in the <span class="caps">UML</span> model.</p>
+<p>A creation tool is available in the package diagram for the package : <img src="../images/PackageDiagramPackage.png" alt="" /></p>
+<p>The user can also <strong>delete an element</strong> (see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
+<h3>Manage relationships</h3>
+<p>It is possible to <strong>create a relationship</strong> by selecting the edge creation tool from the palette and then clicking on a source element and a target element.<br />
+<img src="../images/PackageDiagramPaletteRelationships.png" alt="" /></p>
+<p>The following edge creation tools exist in the palette :</p>
+<table>
+	<tr>
+		<th>Element     </th>
+		<th>Representation </th>
+		<th>Comments</th>
+	</tr>
+	<tr>
+		<td>Contained in </td>
+		<td><img src="../images/PackageDiagramContainedIn.png" alt="" /></td>
+		<td>Defines that a package that is made up of smaller packages</td>
+	</tr>
+	<tr>
+		<td>Import </td>
+		<td><img src="../images/PackageDiagramImport.png" alt="" /></td>
+		<td>Show that the package content is imported</td>
+	</tr>
+	<tr>
+		<td>Usage </td>
+		<td><img src="../images/PackageDiagramUsage.png" alt="" /></td>
+		<td>Shows that a package uses another package </td>
+	</tr>
+	<tr>
+		<td>Dependency </td>
+		<td><img src="../images/PackageDiagramDependency.png" alt="" /></td>
+		<td>Traces a dependency between packages</td>
+	</tr>
+	<tr>
+		<td>Merge </td>
+		<td><img src="../images/PackageDiagramMerge.png" alt="" /></td>
+		<td>The contents of the target package are merged with those of the source package</td>
+	</tr>
+</table>
+<p>The user can also <strong>delete a relationship</strong> (see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
+<p>And finally, he can <strong>reconnect relationships</strong>. It is possible to reconnect the source and the target of any kind of edge in the use case diagram :</p>
+<ul>
+	<li>contained in</li>
+	<li>dependency</li>
+	<li>usage</li>
+	<li>import</li>
+	<li>merge</li>
+</ul>
+<h3>Manage existing elements</h3>
+<p>As the diagram is unsynchronized, the user needs to add manually the elements already existing in the semantic model that should appear on the representation.<br />
+It is possible to <strong>add existing elements</strong> by :</p>
+<ul>
+	<li>selecting the add tool from the palette and then clicking on the diagram or an element : <img src="../images/PackageDiagramPaletteExistingElements.png" alt="" /></li>
+	<li>drag and droping a package from the model explorer : <img src="../images/PackageDiagramDragAndDropExistingElements.png" alt="" /></li>
+</ul>
+<p>The user can see that an element is not coming from the current package :</p>
+<ul>
+	<li>the element border is lighter than the element border of elements defined in the current package</li>
+	<li>a tooltip shows the container package of the element if the element is not contained by the current package</li>
+</ul>
+<p>And finally, he can <strong>remove an existing element</strong> from a diagram. In this case the element is only deleted from the representation but it is not removed from the <span class="caps">UML</span> model. This <em>Remove</em> tool exists in the <em>Existing elements</em> section in the palette (see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
+<h3>Add related elements</h3>
+<p>In the package diagram a contextual action is available to show on the diagram the element related to the selection. <br />
+<img src="../images/PackageDiagramAddRelatedElements.png" alt="" /></p>
+<p>The <strong>add related elements</strong> action is available from :</p>
+<ul>
+	<li>a package : shows all the packages that define a relationship (containment, dependency, usage..) with the selected package</li>
+	<li>a package diagram : shows all the elements contained in the package associated to the diagram.</li>
+</ul>
+<h3>Edit labels</h3>
+<p>In the package diagram, it is possible to edit the elements labels  (see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>). This actions allows to edit :</p>
+<ul>
+	<li>package labels</li>
+	<li>relationships labels</li>
+</ul>
+<h2>Define the components</h2>
+<p>It is the moment for John to split the system in multiple components and to describe how all these elements are linked together in a <strong>component diagram</strong>.<br />
+	The component diagram is used to describe the structure of the system by showing the components and their connectors.<br />
+	<img src="../images/ComponentDiagram.png" alt="" /></p>
+<p>The component diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.</p>
+<h3>Manage nodes</h3>
+<p>It is possible to <strong>create nodes</strong> by selecting the creation tools from the palette and then clicking on the diagram or an element. A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the <span class="caps">UML</span> model.<br />
+If the user selects a container, the element will be created under the corresponding semantic element in the <span class="caps">UML</span> model.<br />
+<img src="../images/ComponentDiagramPalette.png" alt="" /></p>
+<p>Tooltip tools are also available to create any kind of elements.</p>
+<p>Creation tools are available in the component diagram for the following types :</p>
+<table>
+	<tr>
+		<th>Element     </th>
+		<th>Representation </th>
+		<th>Comments</th>
+	</tr>
+	<tr>
+		<td>Component </td>
+		<td><img src="../images/ComponentDiagramComponent.png" alt="" /></td>
+		<td>A modular part of a system</td>
+	</tr>
+	<tr>
+		<td>Component into a component</td>
+		<td><img src="../images/CompositeStructureDiagramSubComponent.png" alt="" /> </td>
+		<td>A sub part of a component</td>
+	</tr>
+	<tr>
+		<td>Class </td>
+		<td><img src="../images/ComponentDiagramClass.png" alt="" /></td>
+		<td>A representation of objects</td>
+	</tr>
+	<tr>
+		<td>Class into a component</td>
+		<td><img src="../images/CompositeStructureDiagramSubClass.png" alt="" /></td>
+		<td>A representation of objects</td>
+	</tr>
+	<tr>
+		<td>Port on a component</td>
+		<td><img src="../images/ComponentDiagramPort.png" alt="" /></td>
+		<td>Define the interaction between a component and its environment</td>
+	</tr>
+	<tr>
+		<td>Port on a class</td>
+		<td><img src="../images/CompositeStructureDiagramPort.png" alt="" /></td>
+		<td>Define the interaction between a class and its environment</td>
+	</tr>
+	<tr>
+		<td>Interface </td>
+		<td><img src="../images/ComponentDiagramInterface.png" alt="" /></td>
+		<td>A contract that implementers agree to meet</td>
+	</tr>
+</table>
+<p>The user can also <strong>delete an element</strong> (see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>.<br />
+	}</p>
+<h3>Manage relationships</h3>
+<p>It is possible to <strong>create a relationship</strong> by selecting the edge creation tool from the palette and then clicking on a source element and a target element.<br />
+The following edge creation tools exist in the palette :</p>
+<table>
+	<tr>
+		<th>Element     </th>
+		<th>Representation </th>
+		<th>Comments</th>
+	</tr>
+	<tr>
+		<td>Usage </td>
+		<td><img src="../images/ComponentDiagramUsage.png" alt="" /></td>
+		<td>Source component uses target component</td>
+	</tr>
+	<tr>
+		<td>Dependency </td>
+		<td><img src="../images/ComponentDiagramDependency.png" alt="" /></td>
+		<td>Source component depends on target component</td>
+	</tr>
+	<tr>
+		<td>Component Realization</td>
+		<td><img src="../images/ComponentDiagramComponentRealization.png" alt="" /></td>
+		<td>Source component realizes target component</td>
+	</tr>
+	<tr>
+		<td>Generalization </td>
+		<td><img src="../images/CompositeStructureDiagramGeneralization.png" alt="" /></td>
+		<td>Source component generalizes target component</td>
+	</tr>
+	<tr>
+		<td>Interface Realization </td>
+		<td><img src="../images/ComponentDiagramInterfaceRealization.png" alt="" /></td>
+		<td>Component realizes interface</td>
+	</tr>
+	<tr>
+		<td>Redefined </td>
+		<td><img src="../images/ComponentDiagramRedefined.png" alt="" /></td>
+		<td>Source port redefined target port</td>
+	</tr>
+	<tr>
+		<td>Connector </td>
+		<td>Represented by a solid link between two ports</td>
+		<td>Source port is connected to target port</td>
+	</tr>
+</table>
+<p>The user can also <strong>delete a relationship</strong> (see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
+<p>And finally, he can <strong>reconnect relationships</strong>. It is possible to reconnect the source and the target of any kind of edge in the use case diagram :</p>
+<ul>
+	<li>usage</li>
+	<li>dependency</li>
+	<li>component realization</li>
+	<li>interface realization</li>
+	<li>redefined</li>
+	<li>connector</li>
+</ul>
+<h3>Manage existing elements</h3>
+<p>As the diagram is unsynchronized, the user needs to add manually the elements already existing in the semantic model that should appear on the representation.<br />
+It is possible to <strong>add existing elements</strong> by :</p>
+<ul>
+	<li>selecting the add tool from the palette or the tooltip and then clicking on the diagram or an element. The add tool opens a selection wizard.</li>
+	<li>drag and droping an element from the model explorer.</li>
+</ul>
+<p>The following elements can be added on a component diagram :</p>
+<ul>
+	<li>component</li>
+	<li>component into an existing component</li>
+	<li>class</li>
+	<li>class into an existing component</li>
+	<li>interface</li>
+	<li>package</li>
+</ul>
+<p>The user can see that an element is not coming from the current package :</p>
+<ul>
+	<li>the element border is lighter than the element border of elements defined in the current package</li>
+	<li>a tooltip shows the container package of the element if the element is not contained by the current package</li>
+</ul>
+<p>And finally, he can <strong>remove an existing element</strong> from a diagram. In this case the element is only deleted from the representation but it is not removed from the <span class="caps">UML</span> model. This <em>Remove</em> tool exists in the <em>Existing elements</em> section in the palette (see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
+<h3>Add related elements</h3>
+<p>In the component diagram a contextual action is available to show on the diagram the element related to the selection.</p>
+<p>The <strong>add related elements</strong> action is available from :</p>
+<ul>
+	<li>a component ,  a class, an interface, a port : shows all the elements that define a relationship (dependency, component realization, interface realization&#8230;) with the selected element</li>
+	<li>a component diagram : shows all the elements contained in the package associated to the diagram.</li>
+</ul>
+<h3>Edit labels</h3>
+<p>In the package diagram, it is possible to edit the elements labels  (see <a href="../ref-doc/define-the-system.html#Direct_edit">Diagram editor/Editor main graphical area/Direct edit</a>). <br />
+This actions allows to edit :</p>
+<ul>
+	<li>component, class, interface, port labels</li>
+	<li>relationships labels</li>
+</ul>
+<h2>Define the information flow</h2>
+<p>By creating links between the components, John defines the flow followed by the data in the system.<br />
+To get details on how to manage the information flows,<br />
+	@see &#8220;What the application is supposed to be ?&#8221; <em>Define components &#8594; Manage relationships</em>.</p>
+<h2>Diagram the organization of the information</h2>
+<p>He provides a detailed organization of the information by creating a new kind of activity diagram. This diagram shows how the information goes through the different components of the system. Previously in the process, John used an activity diagram to describe the global business process of the specified application, here the activity diagram is used again but for providing low level information.<br />
+To get details on activity diagram,<a href="../define-the-application.html">What the application is supposed to be ?</a>.</p>
+<h2>Define the system interfaces</h2>
+<p>Then for each component, John details the internal structure of a component thanks to <strong>Composite structure diagrams</strong>.</p>
+<p>The composite structure diagram is used to describe the structure of the system by showing the internal structure of classes and the interfaces they used to collaborate.</p>
+<p><img src="../images/CompositeStructureDiagram.png" alt="" /></p>
+<p>The component diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.</p>
+<h3>Manage nodes</h3>
+<p>It is possible to <strong>create a type</strong> by selecting the type creation tool from the palette and then clicking on the diagram or an element. <br />
+A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the <span class="caps">UML</span> model.<br />
+If the user selects a container, the element will be created under the corresponding semantic element in the <span class="caps">UML</span> model.<br />
+<img src="../images/CompositeStructureDiagramPalette.png" alt="" /></p>
+<p>Tooltip tools are also available to create any kind of elements.</p>
+<p>Creation tools are available in the composite structure diagram for the following types :</p>
+<p></p>
+<table>
+	<tr>
+		<th>Element     </th>
+		<th>Representation </th>
+		<th>Comments</th>
+	</tr>
+	<tr>
+		<td>Component</td>
+		<td><img src="../images/ComponentDiagramComponent.png" alt="" /></td>
+		<td>A modular part of a system</td>
+	</tr>
+	<tr>
+		<td>Component into a component</td>
+		<td><img src="../images/CompositeStructureDiagramSubComponent.png" alt="" /></td>
+		<td>A sub part of a component</td>
+	</tr>
+	<tr>
+		<td>Class</td>
+		<td><img src="../images/ComponentDiagramClass.png" alt="" /></td>
+		<td>A representation of objects</td>
+	</tr>
+	<tr>
+		<td>Class into a component</td>
+		<td><img src="../images/CompositeStructureDiagramSubClass.png" alt="" /></td>
+		<td>A representation of objects</td>
+	</tr>
+	<tr>
+		<td>Part</td>
+		<td><img src="../images/CompositeStructurePart.png" alt="" /></td>
+		<td>Runtime instances of classes or interfaces</td>
+	</tr>
+	<tr>
+		<td>Property</td>
+		<td><img src="../images/CompositeStructureProperty.png" alt="" /></td>
+		<td>Reference a property</td>
+	</tr>
+	<tr>
+		<td>Port on a component</td>
+		<td><img src="../images/ComponentDiagramPort.png" alt="" /></td>
+		<td>Interaction between a component and its environment</td>
+	</tr>
+	<tr>
+		<td>Port on a class</td>
+		<td><img src="../images/CompositeStructureDiagramPort.png" alt="" /></td>
+		<td>Interaction between a class and its environment</td>
+	</tr>
+</table>
+<p>The user can also <strong>delete an element</strong> (see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
+<h3>Manage edges</h3>
+<p>It is possible to create a relationship by selecting the edge creation tool from the palette and then clicking on a source element and a target element.</p>
+<p>The following edge creation tools exist in the palette :</p>
+<p></p>
+<table>
+	<tr>
+		<th>Element     </th>
+		<th>Representation </th>
+		<th>Comments</th>
+	</tr>
+	<tr>
+		<td>Connector </td>
+		<td><img src="../images/CompositeStructureConnector.png" alt="" /></td>
+		<td>Illustrate communication links between elements</td>
+	</tr>
+	<tr>
+		<td>Usage </td>
+		<td><img src="../images/ComponentDiagramUsage.png" alt="" /></td>
+		<td>Element uses another element</td>
+	</tr>
+	<tr>
+		<td>Generalization </td>
+		<td><img src="../images/CompositeStructureDiagramGeneralization.png" alt="" /></td>
+		<td>Indicates inheritance</td>
+	</tr>
+	<tr>
+		<td>Redefined </td>
+		<td><img src="../images/ComponentDiagramRedefined.png" alt="" /></td>
+		<td>Indicates that a port redefined another port</td>
+	</tr>
+</table>
+<p>The user can also <strong>delete an activity element</strong> (see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
+<p>And finally, he can <strong>reconnect relationships</strong>. It is possible to reconnect the source and the target of any kind of edge in the use case diagram :</p>
+<ul>
+	<li>usage</li>
+	<li>dependency</li>
+	<li>component realization</li>
+	<li>interface realization</li>
+	<li>redefined</li>
+	<li>connector</li>
+</ul>
+<h3>Manage existing elements</h3>
+<p>As the diagram is unsynchronized, the user needs to add manually the elements already existing in the semantic model that should appear on the representation.<br />
+It is possible to <strong>add existing elements</strong> by :</p>
+<ul>
+	<li>selecting the add tool from the palette or the tooltip and then clicking on the diagram or an element. The add tool opens a selection wizard.</li>
+	<li>drag and droping an element from the model explorer.</li>
+</ul>
+<p>The following elements can be added on a component diagram :</p>
+<ul>
+	<li>component : the component and all its parts, properties and sub components will be visible</li>
+	<li>component into an existing component : the component and all its parts, properties and sub components will be visible</li>
+	<li>class : the class and all its ports will be visible</li>
+	<li>class into an existing component  : the class and all its ports will be visible</li>
+	<li>part</li>
+	<li>property</li>
+	<li>required service : when the <em>Required Service</em> tool is selected from the palette, a selection wizard asks the user to select the required interfaces.</li>
+</ul>
+<p><img src="../images/CompositeStructureDiagramRequiredServiceWizard.png" alt="" /></p>
+<p>The required services are represented as following:<br />
+<img src="../images/CompositeStructureDiagramRequiredService.png" alt="" /></p>
+<ul>
+	<li>provided service : when the <em>Provided Service</em> tool is selected from the palette, a selection wizard asks the user to select the required interfaces. <br />
+<img src="../images/CompositeStructureDiagramProvidedServiceWizard.png" alt="" /></li>
+</ul>
+<p>The provided services are represented as following: <br />
+<img src="../images/CompositeStructureDiagramProvidedServiceWizard.png" alt="" /></p>
+<ul>
+	<li>package : the package will not be visible on the diagram but all the sub elements will be added</li>
+</ul>
+<p>The user can see that an element is not coming from the current package :</p>
+<ul>
+	<li>the element border is lighter than the element border of elements defined in the current package</li>
+	<li>a tooltip shows the container package of the element if the element is not contained by the current package</li>
+</ul>
+<p>And finally, he can <strong>remove an existing element</strong> from a diagram. In this case the element is only deleted from the representation but it is not removed from the <span class="caps">UML</span> model. This <em>Remove</em> tool exists in the <em>Existing elements</em> section in the palette (see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
+<h3>Add related elements</h3>
+<p>In the composite structure diagram a contextual action is available to show on the diagram the element related to the selection.</p>
+<p>The <strong>add related elements</strong> action is available from :</p>
+<ul>
+	<li>a component ,  a class, an interface, a port : shows all the elements that define a relationship (dependency, component realization, interface realization&#8230;) with the selected element</li>
+	<li>a composite structure diagram : shows all the elements contained in the package associated to the diagram.</li>
+</ul>
+<h3>Edit labels</h3>
+<p>In the composite structure diagram, it is possible to edit the elements labels  (see <a href="../ref-doc/define-the-system.html#Direct_edit">Diagram editor/Editor main graphical area/Direct edit</a>). This actions allows to edit :</p>
+<ul>
+	<li>component, class, interface, port labels</li>
+	<li>relationships labels</li>
+</ul>
+<h2>Define the system environment</h2>
+<p>Then, John defines the system environment thanks to a <strong>Deployment diagram</strong>, and how the software is deployed on the infrastructure. This diagram describes the current technological limitations and constraints.</p>
+<p>The deployment diagram is used to describe the structure of the system by showing the physical deployment of artifacts on nodes.<br />
+<img src="../images/DeploymentDiagram.png" alt="" /></p>
+<p>The deployment diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.</p>
+<h3>Manage nodes</h3>
+<p>It is possible to create a type by selecting the type creation tool from the palette and then clicking on the diagram or an element. <br />
+A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the <span class="caps">UML</span> model.<br />
+If the user selects a container, the element will be created under the corresponding semantic element in the <span class="caps">UML</span> model.<br />
+<img src="../images/DeploymentDiagramPalette.png" alt="" /></p>
+<p>Tooltip tools are also available to create any kind of elements.</p>
+<p>Creation tools are available in the deployment diagram for the following types :</p>
+<table>
+	<tr>
+		<th>Element     </th>
+		<th>Representation </th>
+		<th>Comments</th>
+	</tr>
+	<tr>
+		<td>Node</td>
+		<td><img src="../images/DeploymentDiagramNode.png" alt="" /></td>
+		<td>Physical element on whic the system is deployed</td>
+	</tr>
+	<tr>
+		<td>Device</td>
+		<td><img src="../images/DeploymentDiagramDevice.png" alt="" /></td>
+		<td>Physical electronic resource with processing capability</td>
+	</tr>
+	<tr>
+		<td>Execution environment</td>
+		<td><img src="../images/DeploymentDiagramExecutionEnvironment.png" alt="" /></td>
+		<td>Specific node where artifacts are deployed</td>
+	</tr>
+	<tr>
+		<td>Artifact</td>
+		<td><img src="../images/DeploymentDiagramArtifact.png" alt="" /></td>
+		<td>Physical piece of information used or produced by a system</td>
+	</tr>
+</table>
+<p>The user can also <strong>delete an activity element</strong> (see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
+<h3>Manage relationships</h3>
+<p>It is possible to <strong>create a relationship</strong> by selecting the edge creation tool from the palette and then clicking on a source element and a target element.<br />
+The following edge creation tools exist in the palette :</p>
+<table>
+	<tr>
+		<th>Element     </th>
+		<th>Representation </th>
+		<th>Comments</th>
+	</tr>
+	<tr>
+		<td>Link </td>
+		<td><img src="../images/DeploymentDiagramLink.png" alt="" /></td>
+		<td>General relationship</td>
+	</tr>
+	<tr>
+		<td>Dependency </td>
+		<td><img src="../images/DeploymentDiagramDependency.png" alt="" /></td>
+		<td>Dependency between elements</td>
+	</tr>
+	<tr>
+		<td>Generalization</td>
+		<td><img src="../images/DeploymentDiagramGeneralization.png" alt="" /></td>
+		<td>Indicates inheritance</td>
+	</tr>
+	<tr>
+		<td>Deployment</td>
+		<td><img src="../images/DeploymentDiagramDeployment.png" alt="" /></td>
+		<td>Indicates the deployment of an artifact on a node</td>
+	</tr>
+	<tr>
+		<td>Manifestation </td>
+		<td><img src="../images/DeploymentDiagramManifestation.png" alt="" /></td>
+		<td>An artifact embodies or manifests a number of model elements</td>
+	</tr>
+</table>
+<p>The user can also <strong>delete a flow</strong> (see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
+<p>And finally, he can <strong>reconnect flows</strong>. It is possible to reconnect the source and the target of any kind of edge in the activity diagram :</p>
+<ul>
+	<li>link</li>
+	<li>dependency</li>
+	<li>generalization</li>
+	<li>deployment</li>
+	<li>manifestation</li>
+</ul>
+<h3>Manage existing elements</h3>
+<p>As the diagram is unsynchronized, the user needs to add manually the elements already existing in the semantic model that should appear on the representation.<br />
+It is possible to <strong>add existing elements</strong> by :</p>
+<ul>
+	<li>selecting the add tool from the palette or the tooltip and then clicking on the diagram or an element. The add tool opens a selection wizard.</li>
+	<li>drag and droping an element from the model explorer.</li>
+</ul>
+<p>The following elements can be added on a component diagram :</p>
+<ul>
+	<li>node</li>
+	<li>node into a node</li>
+	<li>device</li>
+	<li>device into a node</li>
+	<li>execution environment</li>
+	<li>execution environment into a node</li>
+	<li>artifact</li>
+	<li>artifact into a node</li>
+	<li>component</li>
+	<li>package</li>
+</ul>
+<p>The user can see that an element is not coming from the current package :</p>
+<ul>
+	<li>the element border is lighter than the element border of elements defined in the current package</li>
+	<li>a tooltip shows the container package of the element if the element is not contained by the current package</li>
+</ul>
+<p>And finally, he can <strong>remove an existing element</strong> from a diagram. In this case the element is only deleted from the representation but it is not removed from the <span class="caps">UML</span> model. This <em>Remove</em> tool exists in the <em>Existing elements</em> section in the palette (see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
+<h3>Add related elements</h3>
+<p>In the deployment diagram a contextual action is available to show on the diagram the element related to the selection.</p>
+<p>The <strong>add related elements</strong> action is available from :</p>
+<ul>
+	<li>a component ,  a node, a device, an execution  environment, an artifact : shows all the elements that define a relationship (dependency, deployment, manifestation&#8230;) with the selected element</li>
+	<li>a deployment diagram : shows all the elements contained in the package associated to the diagram.</li>
+</ul>
+<h3>Edit labels</h3>
+<p>In the package diagram, it is possible to edit the elements labels  (<br />
+		see <a href="../ref-doc/define-the-system.html#Direct_edit">Diagram editor/Editor main graphical area/Direct edit</a>). This actions allows to edit :</p>
+<ul>
+	<li>component, node, device, execution environment, artifact labels</li>
+	<li>relationships labels</li>
+</ul>
+<h2>Extend <span class="caps">UML</span> standard</h2>
+<h3>Define extensions</h3>
+<p>Sometimes, the <span class="caps">UML</span> standard does not provide all the concepts expected by John. Thanks to the <strong>Profile diagram</strong>, it is possible to extend the standard to add new concepts or to adapt existing ones.</p>
+<p>The profile diagram operates at the metamodel level to provide new stereotypes and profiles.<br />
+<img src="../images/ProfileDiagram.png" alt="" /></p>
+<p>To create a new profile, the user creates a new <span class="caps">UML</span> model and selects as root element a <strong>Profile</strong> element.<br />
+Then on the newly created <span class="caps">UML</span> model, it is possible to create a new <em>Profile diagram</em>.</p>
+<p>The main feature is to create and delete stereotypes in the profile diagram. <br />
+A stereotype can be created by selecting the stereotype creation tool from the palette and then clicking on the diagram. A diagram is associated to a package and in this case the element is created under the corresponding package in the <span class="caps">UML</span> model. Tooltip tools are also available to create any kind of elements.</p>
+<p>The palette defines the following tools :</p>
+<ul>
+	<li><em><strong>Stereotype</strong></em> : Create a new stereotype. The user selects the tool in the palette or the tooltip and selects the diagram background. A new stereotype looks like a <span class="caps">UML</span> class and contains in its label the keyword <em>stereotype</em>. By default a stereotype does not extend any metaclass. But when the user validates the <span class="caps">UML</span> profile, a warning is thrown when a stereotype does not extend, directly or indirectly, a metaclass.</li>
+	<li><em><strong>MetaClass</strong></em> : Reference an existing metaclass. This tool opens a wizard which lists the <span class="caps">UML</span> metaclasses not already referenced in this profile. This wizard provides filters in order to show only the concretes classes or a sub part of the metamodel.</li>
+	<li><em><strong>Attribute</strong></em> : Add a new property in a stereotype. After stereotype application, this property will be available in the property box.</li>
+	<li><em><strong>Extension</strong></em> : Create an extension between a stereotype and a metaclass or create a generalization between to stereotypes, depending on the clicked elements. This tool also creates the base <span class="caps">XXXX</span> attributes which must not be visible on the diagram.</li>
+	<li><em><strong>Association</strong></em> : Create an association between two stereotypes or a stereotype and a referenced metaclass. In the <span class="caps">UML</span> model, this tool creates a property in the stereotype and a navigable association to the target. This tool opens a wizard which also allows create a new association at <span class="caps">UML</span> level. This tool can also propose an existing directed relationship from <span class="caps">UML</span>, between these elements. If the user selects it, it will import the directed relationship into the profile and create a new stereotype extending it. The tool will display the association between source and target element, and link this new stereotype to it.</li>
+	<li><em><strong>Enumeration</strong></em> : Create an enumeration within the profile. The user can also create enumeration literal in it afterwards.</li>
+	<li><em><strong>Define</strong></em> : Generate complementary information within the profile in order to apply it dynamically in the current workspace. It mainly contains the <span class="caps">UML</span> annotation.</li>
+	<li><em><strong>Undefine</strong></em> : Delete from the profile complementary information generated by the define command.</li>
+	<li><em><strong>Export</strong></em> : Create or update an eclipse plugin in order to deploy the edited profile in an Eclipse installation. This plugin must contain the profile, all its generated code and populate extensions to register itself to the platform.</li>
+</ul>
+<h3>Manage profiles and stereotypes</h3>
+<p>In <span class="caps">UML</span> Designer, a <em>Profile</em> layer is available on all the diagrams. To describe his application John opens the existing diagrams and activates the profile layer.<br />
+<img src="../images/ProfileLayer.png" alt="" /></p>
+<p>This layer provides a new section in the palette.<br />
+<img src="../images/ProfileLayerPalette.png" alt="" /></p>
+<p>The following tools are available :</p>
+<ul>
+	<li><em><strong>apply a profile</strong></em>  : the user selects the <em>Apply profile</em> tool in the palette and clicks on the diagram, a wizards opens which shows the applicable and already applied profiles.</li>
+</ul>
+<p><img src="../images/ApplyProfile.png" alt="" /></p>
+<ul>
+	<li><em><strong>apply stereotype</strong></em> : the user selects the <em>Apply stereotype</em> tool in the palette and selects an element in the diagram, a wizards opens which shows the applicable and already applied stereotypes according to the activated profiles. When a stereotype is applied on an element, a keyword representing the name of the stereotype is added before the label of the element :</li>
+</ul>
+<p><img src="../images/ApplyStereotype.png" alt="" /></p>
+<p>If the profile defines some properties on the stereotypes, these properties are available in the property box, after canonical properties of the element. Here is a sample with a Stereotype adding a “tagged value” on a package:</p>
+<p><img src="../images/ProfileDiagramTaggedValue.png" alt="" /></p>
+    </div>
+  </div>
+</div><!-- /.container -->
+
+
+  <div class="container">
+  <hr>
+  <footer>
+    <div class="row">
+      <div class="col-lg-12">
+        <p>Made with &#10084; Copyright &copy; <a href="http://www.obeo.fr">Obeo</a>, All Rights Reserved 2014</p>
+      </div>
+    </div>
+  </footer>
+</div><!-- /.container -->
+
+<!-- JavaScript -->
+<script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/modern-business.js"></script>
+
+</body>
+</html>

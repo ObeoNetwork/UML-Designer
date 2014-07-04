@@ -1,0 +1,77 @@
+target "UmlDesigner-kepler"
+
+with source, requirements
+
+// Eclipse
+location "http://download.eclipse.org/releases/kepler" {
+	org.eclipse.platform.feature.group
+	org.eclipse.sdk.feature.group
+	org.eclipse.epp.mpc.feature.group
+	org.eclipse.equinox.executable.feature.group
+}
+
+// EMF
+location "http://download.eclipse.org/modeling/emf/emf/updates/milestones/" {
+	org.eclipse.emf.edit.feature.group
+	org.eclipse.emf.mapping.ecore.feature.group
+}
+
+// UML
+location "http://download.eclipse.org/modeling/mdt/uml2/updates/5.0milestones" {
+	org.eclipse.uml2.uml.feature.group
+	org.eclipse.uml2.uml.edit.feature.group
+	org.eclipse.uml2.feature.group
+}
+
+// SWTBot
+location "http://download.eclipse.org/technology/swtbot/releases/latest/" {
+	org.eclipse.swtbot.forms.feature.group
+	org.eclipse.swtbot.eclipse.feature.group
+	org.eclipse.swtbot.eclipse.gef.feature.group
+	org.eclipse.swtbot.feature.group
+	org.eclipse.swtbot.ide.feature.group
+	org.eclipse.swtbot.eclipse.test.junit.feature.group
+}
+
+// Orbit
+location "http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/" {
+	com.google.guava;version=[11.0.2,12.0.0)
+	org.junit;version=[4.11.0,5.0.0)
+	//	org.junit4
+	org.hamcrest.core;version=[1.3.0,2.0.0)
+	org.hamcrest.library;version=[1.3.0,2.0.0)
+	org.apache.log4j;version=[1.2.0,1.3.0)
+}
+
+// Acceleo 3
+location "http://download.eclipse.org/modeling/m2t/acceleo/updates/releases/3.4/" {
+	org.eclipse.acceleo.feature.group
+	org.eclipse.acceleo.runtime.feature.group
+}
+
+// EEF 1.3
+location "http://download.eclipse.org/modeling/emft/eef/updates/releases/1.3/R201311221533" {
+	org.eclipse.emf.eef.runtime
+}
+
+// Sirius
+location "http://download.eclipse.org/sirius/updates/milestones/1.0.0rc3/luna" {
+	org.eclipse.sirius.runtime.feature.group;version=lazy
+	org.eclipse.sirius.runtime.acceleo.feature.group;version=lazy
+	//IDE
+	org.eclipse.sirius.runtime.ide.ui.acceleo.feature.group;version=lazy
+	org.eclipse.sirius.runtime.ide.eef.feature.group;version=lazy
+	org.eclipse.sirius.runtime.ide.ui.feature.group;version=lazy
+	org.eclipse.sirius.specifier.ide.ui.feature.group;version=lazy
+	org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group;version=lazy
+	org.eclipse.sirius.tests.feature.group;version=lazy
+}
+
+// UML compare
+location "http://download.eclipse.org/modeling/emf/compare/updates/milestones/3.0/S201406111328" {
+	org.eclipse.emf.compare.diagram.gmf.feature.group;version=lazy
+	org.eclipse.emf.compare.ide.ui.feature.group;version=lazy
+	org.eclipse.emf.compare.rcp.ui.feature.group;version=lazy
+	org.eclipse.emf.compare.feature.group;version=lazy
+	org.eclipse.emf.compare.uml2.feature.group;version=lazy
+}

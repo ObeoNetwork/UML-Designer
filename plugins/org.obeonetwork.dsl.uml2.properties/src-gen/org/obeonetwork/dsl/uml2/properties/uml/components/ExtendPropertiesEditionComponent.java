@@ -140,7 +140,6 @@ public class ExtendPropertiesEditionComponent extends SinglePartPropertiesEditin
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Extend extend = (Extend)semanticObject;
-
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			extend.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}
@@ -241,6 +240,8 @@ public class ExtendPropertiesEditionComponent extends SinglePartPropertiesEditin
 		return ret;
 	}
 
+
+	
 
 	
 

@@ -14,8 +14,6 @@ import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.VisibilityKind;
 
-import java.util.List;
-
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.BasicDiagnostic;
@@ -38,7 +36,7 @@ import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 
-import org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter;
+import org.eclipse.emf.eef.runtime.impl.filters.EObjectFilter;
 
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 
@@ -47,13 +45,11 @@ import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.viewers.ViewerFilter;
-
 import org.eclipse.uml2.types.TypesPackage;
 
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.UseCase;
 import org.eclipse.uml2.uml.VisibilityKind;
 
 import org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart;
@@ -77,6 +73,7 @@ public class InterfaceGeneralPropertiesEditionComponent extends SinglePartProper
 	 * Settings for usecase ReferencesTable
 	 */
 	private ReferencesTableSettings usecaseSettings;
+	
 	
 	/**
 	 * Default constructor
@@ -124,21 +121,7 @@ public class InterfaceGeneralPropertiesEditionComponent extends SinglePartProper
 			
 			
 			if (isAccessible(UmlViewsRepository.General.usecase)) {
-				generalPart.addFilterToUsecase(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						if (element instanceof EObject)
-							return (!generalPart.isContainedInUsecaseTable((EObject)element));
-						return element instanceof String && element.equals("");
-					}
-				
-				});
-				generalPart.addFilterToUsecase(new EObjectStrictFilter(UMLPackage.Literals.USE_CASE));
+				generalPart.addFilterToUsecase(new EObjectFilter(UMLPackage.Literals.USE_CASE));
 			}
 			// init values for referenced views
 			
@@ -185,7 +168,6 @@ public class InterfaceGeneralPropertiesEditionComponent extends SinglePartProper
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Interface interface_ = (Interface)semanticObject;
-
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			interface_.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}
@@ -199,8 +181,15 @@ public class InterfaceGeneralPropertiesEditionComponent extends SinglePartProper
 			interface_.setIsLeaf((Boolean)event.getNewValue());
 		}
 		if (UmlViewsRepository.General.usecase == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET)
-				usecaseSettings.setToReference((List<EObject>) event.getNewValue());
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
+				if (event.getNewValue() instanceof UseCase) {
+					usecaseSettings.addToReference((EObject) event.getNewValue());
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				usecaseSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				usecaseSettings.move(event.getNewIndex(), (UseCase) event.getNewValue());
+			}
 		}
 	}
 
@@ -228,7 +217,7 @@ public class InterfaceGeneralPropertiesEditionComponent extends SinglePartProper
 			if (UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.Qualifiers.leaf))
 				generalPart.setLeaf((Boolean)msg.getNewValue());
 			
-			if (UMLPackage.eINSTANCE.getClassifier_UseCase().equals(msg.getFeature()) && isAccessible(UmlViewsRepository.General.usecase))
+			if (UMLPackage.eINSTANCE.getClassifier_UseCase().equals(msg.getFeature())  && isAccessible(UmlViewsRepository.General.usecase))
 				generalPart.updateUsecase();
 			
 		}
@@ -315,6 +304,8 @@ public class InterfaceGeneralPropertiesEditionComponent extends SinglePartProper
 		return ret;
 	}
 
+
+	
 
 	
 

@@ -13,7 +13,9 @@ package org.obeonetwork.dsl.uml2.properties.service;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.UMLFactory;
+import org.eclipse.uml2.uml.ValueSpecification;
 
 /**
  * Contains all the Java services called by a Java Declaration Step in the
@@ -39,5 +41,25 @@ public class EEFService {
 			comment.getAnnotatedElements().add((Element) ownerElement);
 		}
 		return comment;
+	}
+
+	/**
+	 * Return the parent package of a state.
+	 * 
+	 * @param semanticObject
+	 *            State
+	 * @return Parent package
+	 */
+	public static Element getParent(EObject semanticObject) {
+		if (semanticObject instanceof Transition) {
+			return ((Transition) semanticObject);
+		}
+		if (semanticObject instanceof ValueSpecification) {
+			return ((ValueSpecification) semanticObject).getOwner();
+		}
+		if (semanticObject instanceof Element) {
+			return ((Element) semanticObject).getNearestPackage();
+		}
+		return null;
 	}
 }

@@ -17,12 +17,12 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.ui.IWorkbench;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
-
-import fr.obeo.dsl.common.tools.api.util.Option;
-import fr.obeo.dsl.viewpoint.ui.tools.api.project.ModelingProjectManager;
 
 /**
  * The wizard to create a new UML designer model.
@@ -59,7 +59,7 @@ public class UmlModelWizard extends AbstractNewUmlModelWizard {
 
 			// Convert project to modeling project
 			try {
-				ModelingProjectManager.INSTANCE.convertToModelingProject(project);
+				ModelingProjectManager.INSTANCE.convertToModelingProject(project, new NullProgressMonitor());
 			} catch (CoreException e) {
 				UMLDesignerPlugin.log(IStatus.ERROR, Messages.UmlModelWizard_UI_Error_CreatingUmlModel, e);
 				return false;

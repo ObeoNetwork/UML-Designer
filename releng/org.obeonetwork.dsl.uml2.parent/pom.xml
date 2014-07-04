@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2013 Obeo.
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+
+Contributors:
+    Obeo - initial API and implementation
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.obeonetwork.dsl.uml2</groupId>
+    <artifactId>common.parent</artifactId>
+    <version>4.0.0-SNAPSHOT</version>
+    <relativePath>../../releng/org.obeonetwork.dsl.uml2.common.parent</relativePath>
+  </parent>
+  <groupId>org.obeonetwork.dsl.uml2</groupId>
+  <artifactId>parent</artifactId>
+  <packaging>pom</packaging>
+
+  <name>UML Designer Parent</name>
+
+  <modules>
+    <!-- Build plugins -->
+    <module>${root-path}/plugins/org.obeonetwork.gmf.runtime.diagram.ui.extension</module>
+    <module>${root-path}/plugins/org.obeonetwork.dsl.uml2.design</module>
+    <module>${root-path}/plugins/org.obeonetwork.dsl.uml2.branding</module>
+    <module>${root-path}/plugins/org.obeonetwork.dsl.uml2.design.doc</module>
+    <module>${root-path}/plugins/org.obeonetwork.dsl.uml2.usage</module>
+    <module>${root-path}/plugins/org.obeonetwork.dsl.uml2.properties</module>
+    <module>${root-path}/plugins/org.obeonetwork.dsl.uml2.navigator</module>
+    <module>${root-path}/plugins/org.obeonetwork.dsl.uml2.migration</module>
+
+
+    <!-- Build test plugins -->
+    <module>${root-path}/tests/org.obeonetwork.dsl.uml2.design.tests</module>
+    <!--<module>tests/org.obeonetwork.dsl.uml2.properties.tests</module> -->
+
+    <!-- Build features -->
+    <module>${root-path}/packaging/org.obeonetwork.dsl.uml2.runtime.feature</module>
+    <module>${root-path}/packaging/org.obeonetwork.dsl.uml2.runtime.product.feature</module>
+    <module>${root-path}/packaging/org.obeonetwork.dsl.uml2.runtime.sdk.feature</module>
+
+    <!-- Build update-sites -->
+    <module>${root-path}/packaging/org.obeonetwork.dsl.uml2.update</module>
+  </modules>
+</project>

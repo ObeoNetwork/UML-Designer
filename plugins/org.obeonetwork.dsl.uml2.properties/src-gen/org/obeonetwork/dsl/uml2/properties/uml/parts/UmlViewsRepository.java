@@ -158,13 +158,13 @@ public class UmlViewsRepository {
 	 * @generated
 	 */
 	
-	public static String upperValue = "uml::General::upperValue";
+	public static String lowerValue = "uml::General::lowerValue";
 	
 	/**
 	 * @generated
 	 */
 	
-	public static String lowerValue = "uml::General::lowerValue";
+	public static String upperValue = "uml::General::upperValue";
 	
 	/**
 	 * @generated
@@ -200,13 +200,13 @@ public class UmlViewsRepository {
 	 * @generated
 	 */
 	
-	public static String source = "uml::General::source";
+	public static String kind_readonly = "uml::General::kind_readonly";
 	
 	/**
 	 * @generated
 	 */
 	
-	public static String target = "uml::General::target";
+	public static String trigger = "uml::General::trigger";
 	
 	/**
 	 * @generated
@@ -219,6 +219,18 @@ public class UmlViewsRepository {
 	 */
 	
 	public static String guard = "uml::General::guard";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String source = "uml::General::source";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String target = "uml::General::target";
 	
 	/**
 	 * @generated
@@ -254,12 +266,6 @@ public class UmlViewsRepository {
 	 * @generated
 	 */
 	
-	public static String pseudostatekind = "uml::General::pseudostatekind";
-	
-	/**
-	 * @generated
-	 */
-	
 	public static String role = "uml::General::role";
 	
 	/**
@@ -267,6 +273,114 @@ public class UmlViewsRepository {
 	 */
 	
 	public static String usecase = "uml::General::usecase";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String subjects = "uml::General::subjects";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String entry = "uml::General::entry";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String exit = "uml::General::exit";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String do_ = "uml::General::do";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String submachine = "uml::General::submachine";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String specification = "uml::General::specification";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String instanceValue = "uml::General::instanceValue";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String min = "uml::General::min";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String instance = "uml::General::instance";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String max = "uml::General::max";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String event = "uml::General::event";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String when = "uml::General::when";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String changeExpression = "uml::General::changeExpression";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String region = "uml::General::region";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String behaviour = "uml::General::behaviour";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String unmarshall = "uml::General::unmarshall";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String operation = "uml::General::operation";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String signal = "uml::General::signal";
 	
 	}
 

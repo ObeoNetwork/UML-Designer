@@ -52,9 +52,6 @@ import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.viewers.ViewerFilter;
-
 import org.eclipse.uml2.uml.ConnectableElement;
 import org.eclipse.uml2.uml.ConnectorEnd;
 import org.eclipse.uml2.uml.UMLPackage;
@@ -152,7 +149,6 @@ public class ConnectorEndPropertiesEditionComponent extends SinglePartProperties
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
     ConnectorEnd connectorEnd = (ConnectorEnd)semanticObject;
-
     if (UmlViewsRepository.General.Qualifiers.ordered == event.getAffectedEditor()) {
       connectorEnd.setIsOrdered((Boolean)event.getNewValue());
     }
@@ -246,6 +242,8 @@ public class ConnectorEndPropertiesEditionComponent extends SinglePartProperties
     return ret;
   }
 
+
+	
 
 	
 

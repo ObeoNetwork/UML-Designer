@@ -153,7 +153,6 @@ public class StereotypeOperationsPropertiesEditionComponent extends SinglePartPr
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Stereotype stereotype = (Stereotype)semanticObject;
-
 		if (UmlViewsRepository.Operations.operations_ == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, operationsSettings, editingContext.getAdapterFactory());
@@ -237,6 +236,8 @@ public class StereotypeOperationsPropertiesEditionComponent extends SinglePartPr
 		return ret;
 	}
 
+
+	
 
 	
 

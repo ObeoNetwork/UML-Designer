@@ -175,7 +175,6 @@ public class AssociationPropertiesEditionComponent extends SinglePartPropertiesE
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Association association = (Association)semanticObject;
-
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			association.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}
@@ -326,6 +325,8 @@ public class AssociationPropertiesEditionComponent extends SinglePartPropertiesE
 		return ret;
 	}
 
+
+	
 
 	
 

@@ -153,7 +153,6 @@ public class ConnectorEndsPropertiesEditionComponent extends SinglePartPropertie
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Connector connector = (Connector)semanticObject;
-
 		if (UmlViewsRepository.Ends.ends_ == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.ADD) {
 				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, endsSettings, editingContext.getAdapterFactory());
@@ -215,7 +214,7 @@ public class ConnectorEndsPropertiesEditionComponent extends SinglePartPropertie
 	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.kind || key == UmlViewsRepository.General.Qualifiers.static_ || key == UmlViewsRepository.Ends.ends_;
+		return key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.kind_readonly || key == UmlViewsRepository.General.Qualifiers.static_ || key == UmlViewsRepository.Ends.ends_;
 	}
 
 	/**
@@ -237,6 +236,8 @@ public class ConnectorEndsPropertiesEditionComponent extends SinglePartPropertie
 		return ret;
 	}
 
+
+	
 
 	
 

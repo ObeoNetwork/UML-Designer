@@ -121,7 +121,6 @@ public class ActivityEdgePropertiesEditionComponent extends SinglePartProperties
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		ActivityEdge activityEdge = (ActivityEdge)semanticObject;
-
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			activityEdge.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}
@@ -192,6 +191,8 @@ public class ActivityEdgePropertiesEditionComponent extends SinglePartProperties
 		return ret;
 	}
 
+
+	
 
 	
 

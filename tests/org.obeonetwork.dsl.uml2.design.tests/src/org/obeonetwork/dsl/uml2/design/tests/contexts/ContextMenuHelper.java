@@ -12,8 +12,8 @@
 package org.obeonetwork.dsl.uml2.design.tests.contexts;
 
 import static org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory.withMnemonic;
-import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.instanceOf;
+import static org.hamcrest.core.AllOf.allOf;
+import static org.hamcrest.core.IsInstanceOf.instanceOf;
 
 import java.util.Arrays;
 
@@ -125,4 +125,3 @@ public class ContextMenuHelper {
 	}
 
 }
-

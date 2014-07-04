@@ -11,43 +11,49 @@
 
 package org.obeonetwork.dsl.uml2.design.tests.contexts;
 
-import static org.junit.Assert.*;
-	import org.obeonetwork.dsl.uml2.design.tests.automation.Context;
-
 // Start of user code AClassDiagramIsOpened imports
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.fail;
+
 import java.util.List;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.obeonetwork.dsl.uml2.design.tests.common.EObjects;
 import org.obeonetwork.dsl.uml2.design.tests.common.ModelChangeRecorder;
-import org.obeonetwork.dsl.uml2.design.tests.contexts.UMLDesignerBot;
-import fr.obeo.dsl.viewpoint.tests.swtbot.support.api.editor.SWTBotDesignerEditor;
-import fr.obeo.dsl.viewpoint.ui.business.api.session.SessionEditorInput;
+
 // End of user code
 
 /**
  * Context : A class diagram is opened
  */
 public class AClassDiagramIsOpened extends UnactivateUmlUsage {
-// Start of user code AClassDiagramIsOpened variables
+	// Start of user code AClassDiagramIsOpened variables
 	protected UMLDesignerBot bot;
-	SWTBotDesignerEditor classDiagram;
+
+	SWTBotSiriusDiagramEditor classDiagram;
 
 	public ModelChangeRecorder recorder;
-// End of user code
+
+	// End of user code
 
 	@Override
 	public void setup() {
 		super.setup();
 		// Start of user code AClassDiagramIsOpened setup
-		recorder = new ModelChangeRecorder(); 
+		recorder = new ModelChangeRecorder();
 		bot = new UMLDesignerBot();
 		classDiagram = bot.openEntitiesClassDiagram();
-		SessionEditorInput input = (SessionEditorInput)classDiagram.getReference().getEditor(false).getEditorInput();
+		SessionEditorInput input = (SessionEditorInput)classDiagram.getReference().getEditor(false)
+				.getEditorInput();
 		recorder.startRecording(input.getSession().getTransactionalEditingDomain());
-		
+
 		// End of user code
 	}
 
@@ -55,12 +61,14 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 	public void tearDown() {
 		super.tearDown();
 		// Start of user code AClassDiagramIsOpened tear down
-		SessionEditorInput input = (SessionEditorInput)classDiagram.getReference().getEditor(false).getEditorInput();
+		SessionEditorInput input = (SessionEditorInput)classDiagram.getReference().getEditor(false)
+				.getEditorInput();
 		recorder.stopRecording(input.getSession().getTransactionalEditingDomain());
 		bot.saveChanges();
 		bot.deleteTravelAgencyProject();
 		// End of user code
 	}
+
 	/**
 	 * Action : I click on an end of a composition in the diagram and I select another class
 	 */
@@ -72,11 +80,14 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 	}
 
 	/**
-	 * Action : I select the interface realization creation tool from the palette and I select a source class and a target interface
+	 * Action : I select the interface realization creation tool from the palette and I select a source class
+	 * and a target interface
 	 */
 	public void actionISelectTheInterfaceRealizationCreationToolFromThePaletteAndISelectASourceClassAndATargetInterface() {
-		// Start of user code ISelectTheInterfaceRealizationCreationToolFromThePaletteAndISelectASourceClassAndATargetInterface
-		// TODO Implement action ISelectTheInterfaceRealizationCreationToolFromThePaletteAndISelectASourceClassAndATargetInterface
+		// Start of user code
+		// ISelectTheInterfaceRealizationCreationToolFromThePaletteAndISelectASourceClassAndATargetInterface
+		// TODO Implement action
+		// ISelectTheInterfaceRealizationCreationToolFromThePaletteAndISelectASourceClassAndATargetInterface
 		fail("Action ISelectTheInterfaceRealizationCreationToolFromThePaletteAndISelectASourceClassAndATargetInterface not implemented");
 		// End of user code
 	}
@@ -112,11 +123,14 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 	}
 
 	/**
-	 * Action : I select the association class creation tool from the palette and I select a source class and a target class
+	 * Action : I select the association class creation tool from the palette and I select a source class and
+	 * a target class
 	 */
 	public void actionISelectTheAssociationClassCreationToolFromThePaletteAndISelectASourceClassAndATargetClass() {
-		// Start of user code ISelectTheAssociationClassCreationToolFromThePaletteAndISelectASourceClassAndATargetClass
-		// TODO Implement action ISelectTheAssociationClassCreationToolFromThePaletteAndISelectASourceClassAndATargetClass
+		// Start of user code
+		// ISelectTheAssociationClassCreationToolFromThePaletteAndISelectASourceClassAndATargetClass
+		// TODO Implement action
+		// ISelectTheAssociationClassCreationToolFromThePaletteAndISelectASourceClassAndATargetClass
 		fail("Action ISelectTheAssociationClassCreationToolFromThePaletteAndISelectASourceClassAndATargetClass not implemented");
 		// End of user code
 	}
@@ -162,11 +176,14 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 	}
 
 	/**
-	 * Action : I select the package creation tool from the palette and I select in the diagram a package as container
+	 * Action : I select the package creation tool from the palette and I select in the diagram a package as
+	 * container
 	 */
 	public void actionISelectThePackageCreationToolFromThePaletteAndISelectInTheDiagramAPackageAsContainer() {
-		// Start of user code ISelectThePackageCreationToolFromThePaletteAndISelectInTheDiagramAPackageAsContainer
-		// TODO Implement action ISelectThePackageCreationToolFromThePaletteAndISelectInTheDiagramAPackageAsContainer
+		// Start of user code
+		// ISelectThePackageCreationToolFromThePaletteAndISelectInTheDiagramAPackageAsContainer
+		// TODO Implement action
+		// ISelectThePackageCreationToolFromThePaletteAndISelectInTheDiagramAPackageAsContainer
 		fail("Action ISelectThePackageCreationToolFromThePaletteAndISelectInTheDiagramAPackageAsContainer not implemented");
 		// End of user code
 	}
@@ -201,11 +218,14 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 	}
 
 	/**
-	 * Action : I select the typed property creation tool from the palette and I select an interface and I select a type
+	 * Action : I select the typed property creation tool from the palette and I select an interface and I
+	 * select a type
 	 */
 	public void actionISelectTheTypedPropertyCreationToolFromThePaletteAndISelectAnInterfaceAndISelectAType() {
-		// Start of user code ISelectTheTypedPropertyCreationToolFromThePaletteAndISelectAnInterfaceAndISelectAType
-		// TODO Implement action ISelectTheTypedPropertyCreationToolFromThePaletteAndISelectAnInterfaceAndISelectAType
+		// Start of user code
+		// ISelectTheTypedPropertyCreationToolFromThePaletteAndISelectAnInterfaceAndISelectAType
+		// TODO Implement action
+		// ISelectTheTypedPropertyCreationToolFromThePaletteAndISelectAnInterfaceAndISelectAType
 		fail("Action ISelectTheTypedPropertyCreationToolFromThePaletteAndISelectAnInterfaceAndISelectAType not implemented");
 		// End of user code
 	}
@@ -231,11 +251,13 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 	}
 
 	/**
-	 * Action : I select the usage creation tool from the palette and I select a source class and a target class
+	 * Action : I select the usage creation tool from the palette and I select a source class and a target
+	 * class
 	 */
 	public void actionISelectTheUsageCreationToolFromThePaletteAndISelectASourceClassAndATargetClass() {
 		// Start of user code ISelectTheUsageCreationToolFromThePaletteAndISelectASourceClassAndATargetClass
-		// TODO Implement action ISelectTheUsageCreationToolFromThePaletteAndISelectASourceClassAndATargetClass
+		// TODO Implement action
+		// ISelectTheUsageCreationToolFromThePaletteAndISelectASourceClassAndATargetClass
 		fail("Action ISelectTheUsageCreationToolFromThePaletteAndISelectASourceClassAndATargetClass not implemented");
 		// End of user code
 	}
@@ -250,31 +272,40 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 	}
 
 	/**
-	 * Action : I select the composition creation tool from the palette and I select a source class and a target class
+	 * Action : I select the composition creation tool from the palette and I select a source class and a
+	 * target class
 	 */
 	public void actionISelectTheCompositionCreationToolFromThePaletteAndISelectASourceClassAndATargetClass() {
-		// Start of user code ISelectTheCompositionCreationToolFromThePaletteAndISelectASourceClassAndATargetClass
-		// TODO Implement action ISelectTheCompositionCreationToolFromThePaletteAndISelectASourceClassAndATargetClass
+		// Start of user code
+		// ISelectTheCompositionCreationToolFromThePaletteAndISelectASourceClassAndATargetClass
+		// TODO Implement action
+		// ISelectTheCompositionCreationToolFromThePaletteAndISelectASourceClassAndATargetClass
 		fail("Action ISelectTheCompositionCreationToolFromThePaletteAndISelectASourceClassAndATargetClass not implemented");
 		// End of user code
 	}
 
 	/**
-	 * Action : I select the delete from model tool in toolbar and I click on an association in a class in the diagram
+	 * Action : I select the delete from model tool in toolbar and I click on an association in a class in the
+	 * diagram
 	 */
 	public void actionISelectTheDeleteFromModelToolInToolbarAndIClickOnAnAssociationInAClassInTheDiagram() {
-		// Start of user code ISelectTheDeleteFromModelToolInToolbarAndIClickOnAnAssociationInAClassInTheDiagram
-		// TODO Implement action ISelectTheDeleteFromModelToolInToolbarAndIClickOnAnAssociationInAClassInTheDiagram
+		// Start of user code
+		// ISelectTheDeleteFromModelToolInToolbarAndIClickOnAnAssociationInAClassInTheDiagram
+		// TODO Implement action
+		// ISelectTheDeleteFromModelToolInToolbarAndIClickOnAnAssociationInAClassInTheDiagram
 		fail("Action ISelectTheDeleteFromModelToolInToolbarAndIClickOnAnAssociationInAClassInTheDiagram not implemented");
 		// End of user code
 	}
 
 	/**
-	 * Action : I select the association creation tool from the palette and I select a source class and a target class
+	 * Action : I select the association creation tool from the palette and I select a source class and a
+	 * target class
 	 */
 	public void actionISelectTheAssociationCreationToolFromThePaletteAndISelectASourceClassAndATargetClass() {
-		// Start of user code ISelectTheAssociationCreationToolFromThePaletteAndISelectASourceClassAndATargetClass
-		// TODO Implement action ISelectTheAssociationCreationToolFromThePaletteAndISelectASourceClassAndATargetClass
+		// Start of user code
+		// ISelectTheAssociationCreationToolFromThePaletteAndISelectASourceClassAndATargetClass
+		// TODO Implement action
+		// ISelectTheAssociationCreationToolFromThePaletteAndISelectASourceClassAndATargetClass
 		fail("Action ISelectTheAssociationCreationToolFromThePaletteAndISelectASourceClassAndATargetClass not implemented");
 		// End of user code
 	}
@@ -302,7 +333,9 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 	/**
 	 * Action : I select the add tool from the palette and I click on a
 	 */
-	public void actionISelectTheAddToolFromThePaletteAndIClickOnA(String iSelectTheAddToolFromThePaletteAndIClickOnA0,String iSelectTheAddToolFromThePaletteAndIClickOnA1) {
+	public void actionISelectTheAddToolFromThePaletteAndIClickOnA(
+			String iSelectTheAddToolFromThePaletteAndIClickOnA0,
+			String iSelectTheAddToolFromThePaletteAndIClickOnA1) {
 		// Start of user code ISelectTheAddToolFromThePaletteAndIClickOnA
 		// TODO Implement action ISelectTheAddToolFromThePaletteAndIClickOnA
 		fail("Action ISelectTheAddToolFromThePaletteAndIClickOnA not implemented");
@@ -310,11 +343,14 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 	}
 
 	/**
-	 * Action : I select the generalization creation tool from the palette and I select a source class and a target class
+	 * Action : I select the generalization creation tool from the palette and I select a source class and a
+	 * target class
 	 */
 	public void actionISelectTheGeneralizationCreationToolFromThePaletteAndISelectASourceClassAndATargetClass() {
-		// Start of user code ISelectTheGeneralizationCreationToolFromThePaletteAndISelectASourceClassAndATargetClass
-		// TODO Implement action ISelectTheGeneralizationCreationToolFromThePaletteAndISelectASourceClassAndATargetClass
+		// Start of user code
+		// ISelectTheGeneralizationCreationToolFromThePaletteAndISelectASourceClassAndATargetClass
+		// TODO Implement action
+		// ISelectTheGeneralizationCreationToolFromThePaletteAndISelectASourceClassAndATargetClass
 		fail("Action ISelectTheGeneralizationCreationToolFromThePaletteAndISelectASourceClassAndATargetClass not implemented");
 		// End of user code
 	}
@@ -339,31 +375,38 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 	}
 
 	/**
-	 * Action : I select the typed property creation tool from the palette and I select a class and I select a type
+	 * Action : I select the typed property creation tool from the palette and I select a class and I select a
+	 * type
 	 */
 	public void actionISelectTheTypedPropertyCreationToolFromThePaletteAndISelectAClassAndISelectAType() {
 		// Start of user code ISelectTheTypedPropertyCreationToolFromThePaletteAndISelectAClassAndISelectAType
-		// TODO Implement action ISelectTheTypedPropertyCreationToolFromThePaletteAndISelectAClassAndISelectAType
+		// TODO Implement action
+		// ISelectTheTypedPropertyCreationToolFromThePaletteAndISelectAClassAndISelectAType
 		fail("Action ISelectTheTypedPropertyCreationToolFromThePaletteAndISelectAClassAndISelectAType not implemented");
 		// End of user code
 	}
 
 	/**
-	 * Action : I select the dependency creation tool from the palette and I select a source class and a target class
+	 * Action : I select the dependency creation tool from the palette and I select a source class and a
+	 * target class
 	 */
 	public void actionISelectTheDependencyCreationToolFromThePaletteAndISelectASourceClassAndATargetClass() {
-		// Start of user code ISelectTheDependencyCreationToolFromThePaletteAndISelectASourceClassAndATargetClass
-		// TODO Implement action ISelectTheDependencyCreationToolFromThePaletteAndISelectASourceClassAndATargetClass
+		// Start of user code
+		// ISelectTheDependencyCreationToolFromThePaletteAndISelectASourceClassAndATargetClass
+		// TODO Implement action
+		// ISelectTheDependencyCreationToolFromThePaletteAndISelectASourceClassAndATargetClass
 		fail("Action ISelectTheDependencyCreationToolFromThePaletteAndISelectASourceClassAndATargetClass not implemented");
 		// End of user code
 	}
 
 	/**
-	 * Action : I select the delete from model tool in toolbar and I click on a property in a class in the diagram
+	 * Action : I select the delete from model tool in toolbar and I click on a property in a class in the
+	 * diagram
 	 */
 	public void actionISelectTheDeleteFromModelToolInToolbarAndIClickOnAPropertyInAClassInTheDiagram() {
 		// Start of user code ISelectTheDeleteFromModelToolInToolbarAndIClickOnAPropertyInAClassInTheDiagram
-		// TODO Implement action ISelectTheDeleteFromModelToolInToolbarAndIClickOnAPropertyInAClassInTheDiagram
+		// TODO Implement action
+		// ISelectTheDeleteFromModelToolInToolbarAndIClickOnAPropertyInAClassInTheDiagram
 		fail("Action ISelectTheDeleteFromModelToolInToolbarAndIClickOnAPropertyInAClassInTheDiagram not implemented");
 		// End of user code
 	}
@@ -399,11 +442,14 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 	}
 
 	/**
-	 * Action : I select the classifier creation tool from the palette and I select a source class and a target class
+	 * Action : I select the classifier creation tool from the palette and I select a source class and a
+	 * target class
 	 */
 	public void actionISelectTheClassifierCreationToolFromThePaletteAndISelectASourceClassAndATargetClass() {
-		// Start of user code ISelectTheClassifierCreationToolFromThePaletteAndISelectASourceClassAndATargetClass
-		// TODO Implement action ISelectTheClassifierCreationToolFromThePaletteAndISelectASourceClassAndATargetClass
+		// Start of user code
+		// ISelectTheClassifierCreationToolFromThePaletteAndISelectASourceClassAndATargetClass
+		// TODO Implement action
+		// ISelectTheClassifierCreationToolFromThePaletteAndISelectASourceClassAndATargetClass
 		fail("Action ISelectTheClassifierCreationToolFromThePaletteAndISelectASourceClassAndATargetClass not implemented");
 		// End of user code
 	}
@@ -429,7 +475,8 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 	}
 
 	/**
-	 * Action : I select the delete from model tool in toolbar and I click on a literal in a class in the diagram
+	 * Action : I select the delete from model tool in toolbar and I click on a literal in a class in the
+	 * diagram
 	 */
 	public void actionISelectTheDeleteFromModelToolInToolbarAndIClickOnALiteralInAClassInTheDiagram() {
 		// Start of user code ISelectTheDeleteFromModelToolInToolbarAndIClickOnALiteralInAClassInTheDiagram
@@ -439,11 +486,14 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 	}
 
 	/**
-	 * Action : I select the typed property creation tool from the palette and I select a datatype and I select a type
+	 * Action : I select the typed property creation tool from the palette and I select a datatype and I
+	 * select a type
 	 */
 	public void actionISelectTheTypedPropertyCreationToolFromThePaletteAndISelectADatatypeAndISelectAType() {
-		// Start of user code ISelectTheTypedPropertyCreationToolFromThePaletteAndISelectADatatypeAndISelectAType
-		// TODO Implement action ISelectTheTypedPropertyCreationToolFromThePaletteAndISelectADatatypeAndISelectAType
+		// Start of user code
+		// ISelectTheTypedPropertyCreationToolFromThePaletteAndISelectADatatypeAndISelectAType
+		// TODO Implement action
+		// ISelectTheTypedPropertyCreationToolFromThePaletteAndISelectADatatypeAndISelectAType
 		fail("Action ISelectTheTypedPropertyCreationToolFromThePaletteAndISelectADatatypeAndISelectAType not implemented");
 		// End of user code
 	}
@@ -469,11 +519,14 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 	}
 
 	/**
-	 * Action : I select the aggregation creation tool from the palette and I select a source class and a target class
+	 * Action : I select the aggregation creation tool from the palette and I select a source class and a
+	 * target class
 	 */
 	public void actionISelectTheAggregationCreationToolFromThePaletteAndISelectASourceClassAndATargetClass() {
-		// Start of user code ISelectTheAggregationCreationToolFromThePaletteAndISelectASourceClassAndATargetClass
-		// TODO Implement action ISelectTheAggregationCreationToolFromThePaletteAndISelectASourceClassAndATargetClass
+		// Start of user code
+		// ISelectTheAggregationCreationToolFromThePaletteAndISelectASourceClassAndATargetClass
+		// TODO Implement action
+		// ISelectTheAggregationCreationToolFromThePaletteAndISelectASourceClassAndATargetClass
 		fail("Action ISelectTheAggregationCreationToolFromThePaletteAndISelectASourceClassAndATargetClass not implemented");
 		// End of user code
 	}
@@ -516,21 +569,27 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 	}
 
 	/**
-	 * Action : I select the typed property creation tool from the palette and I select a primitive type and I select a type
+	 * Action : I select the typed property creation tool from the palette and I select a primitive type and I
+	 * select a type
 	 */
 	public void actionISelectTheTypedPropertyCreationToolFromThePaletteAndISelectAPrimitiveTypeAndISelectAType() {
-		// Start of user code ISelectTheTypedPropertyCreationToolFromThePaletteAndISelectAPrimitiveTypeAndISelectAType
-		// TODO Implement action ISelectTheTypedPropertyCreationToolFromThePaletteAndISelectAPrimitiveTypeAndISelectAType
+		// Start of user code
+		// ISelectTheTypedPropertyCreationToolFromThePaletteAndISelectAPrimitiveTypeAndISelectAType
+		// TODO Implement action
+		// ISelectTheTypedPropertyCreationToolFromThePaletteAndISelectAPrimitiveTypeAndISelectAType
 		fail("Action ISelectTheTypedPropertyCreationToolFromThePaletteAndISelectAPrimitiveTypeAndISelectAType not implemented");
 		// End of user code
 	}
 
 	/**
-	 * Action : I select the class creation tool from the palette and I select in the diagram a package as container
+	 * Action : I select the class creation tool from the palette and I select in the diagram a package as
+	 * container
 	 */
 	public void actionISelectTheClassCreationToolFromThePaletteAndISelectInTheDiagramAPackageAsContainer() {
-		// Start of user code ISelectTheClassCreationToolFromThePaletteAndISelectInTheDiagramAPackageAsContainer
-		// TODO Implement action ISelectTheClassCreationToolFromThePaletteAndISelectInTheDiagramAPackageAsContainer
+		// Start of user code
+		// ISelectTheClassCreationToolFromThePaletteAndISelectInTheDiagramAPackageAsContainer
+		// TODO Implement action
+		// ISelectTheClassCreationToolFromThePaletteAndISelectInTheDiagramAPackageAsContainer
 		fail("Action ISelectTheClassCreationToolFromThePaletteAndISelectInTheDiagramAPackageAsContainer not implemented");
 		// End of user code
 	}
@@ -544,6 +603,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior TheClassExistsInTheModel not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The association is bi navigable in the model
 	 */
@@ -553,6 +613,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior TheAssociationIsBiNavigableInTheModel not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The property does not appear anymore on the diagram
 	 */
@@ -562,6 +623,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior ThePropertyDoesNotAppearAnymoreOnTheDiagram not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : Arrows are visible on the aggregation ends on the diagram
 	 */
@@ -571,6 +633,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior ArrowsAreVisibleOnTheAggregationEndsOnTheDiagram not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The package does not appear anymore on the diagram
 	 */
@@ -580,6 +643,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior ThePackageDoesNotAppearAnymoreOnTheDiagram not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : A property appears in the interface on the diagram
 	 */
@@ -589,6 +653,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior APropertyAppearsInTheInterfaceOnTheDiagram not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The class does not appear anymore on the diagram
 	 */
@@ -597,6 +662,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		actionCreateAType("Enumeration");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : A dependency is created in the model
 	 */
@@ -606,6 +672,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior ADependencyIsCreatedInTheModel not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : A generalization is created in the model
 	 */
@@ -615,6 +682,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior AGeneralizationIsCreatedInTheModel not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : Arrows are visible on the composition ends on the diagram
 	 */
@@ -624,6 +692,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior ArrowsAreVisibleOnTheCompositionEndsOnTheDiagram not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : An association class appears between the classes on the diagram
 	 */
@@ -633,6 +702,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior AnAssociationClassAppearsBetweenTheClassesOnTheDiagram not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The association class is connected to the new class on the diagram
 	 */
@@ -642,6 +712,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior TheAssociationClassIsConnectedToTheNewClassOnTheDiagram not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : A package appears in the parent package on the diagram
 	 */
@@ -651,6 +722,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior APackageAppearsInTheParentPackageOnTheDiagram not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The class is deleted from the model
 	 */
@@ -660,6 +732,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior TheClassIsDeletedFromTheModel not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : A package appears on the diagram
 	 */
@@ -668,6 +741,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		assertElementAppearsOnTheDiagram("Package7");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : A literal appears in the enumeration on the diagram
 	 */
@@ -677,6 +751,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior ALiteralAppearsInTheEnumerationOnTheDiagram not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : An operation is created in the class in the model
 	 */
@@ -686,6 +761,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior AnOperationIsCreatedInTheClassInTheModel not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : A composition appears between the classes on the diagram
 	 */
@@ -695,6 +771,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior ACompositionAppearsBetweenTheClassesOnTheDiagram not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : An aggregation appears between the classes on the diagram
 	 */
@@ -704,6 +781,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior AnAggregationAppearsBetweenTheClassesOnTheDiagram not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : An operation is created in the primitive type in the model
 	 */
@@ -713,6 +791,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior AnOperationIsCreatedInThePrimitiveTypeInTheModel not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : A property appears in the class on the diagram
 	 */
@@ -722,6 +801,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior APropertyAppearsInTheClassOnTheDiagram not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : An operation is created in the enumeration in the model
 	 */
@@ -731,6 +811,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior AnOperationIsCreatedInTheEnumerationInTheModel not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The package exists in the model
 	 */
@@ -740,6 +821,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior ThePackageExistsInTheModel not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : An operation is created in the datatype in the model
 	 */
@@ -749,6 +831,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior AnOperationIsCreatedInTheDatatypeInTheModel not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : A classifier is created in the model
 	 */
@@ -758,6 +841,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior AClassifierIsCreatedInTheModel not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The association is deleted from the model
 	 */
@@ -767,6 +851,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior TheAssociationIsDeletedFromTheModel not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : An operation is created in the interface in the model
 	 */
@@ -776,14 +861,16 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior AnOperationIsCreatedInTheInterfaceInTheModel not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : A primitive type appears on the diagram
 	 */
 	public void assertAPrimitiveTypeAppearsOnTheDiagram() {
 		// Start of user code APrimitiveTypeAppearsOnTheDiagram
-		assertElementCreatedInUmlModel("PrimitiveType0",UMLPackage.eINSTANCE.getPrimitiveType());
+		assertElementCreatedInUmlModel("PrimitiveType0", UMLPackage.eINSTANCE.getPrimitiveType());
 		// End of user code
 	}
+
 	/**
 	 * Behavior : A literal is created in the enumeration in the model
 	 */
@@ -793,6 +880,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior ALiteralIsCreatedInTheEnumerationInTheModel not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : An interface realization appears between the class and the interface on the diagram
 	 */
@@ -802,6 +890,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior AnInterfaceRealizationAppearsBetweenTheClassAndTheInterfaceOnTheDiagram not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : An enumeration appears on the diagram
 	 */
@@ -810,6 +899,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		assertElementAppearsOnTheDiagram("Enumeration0");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : A property is created in the class in the model
 	 */
@@ -819,6 +909,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior APropertyIsCreatedInTheClassInTheModel not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : A datatype appears on the diagram
 	 */
@@ -827,6 +918,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		assertElementAppearsOnTheDiagram("DataType0");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The generalization end is set to the new class in the model
 	 */
@@ -836,6 +928,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior TheGeneralizationEndIsSetToTheNewClassInTheModel not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : A class appears in the parent package on the diagram
 	 */
@@ -845,23 +938,26 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior AClassAppearsInTheParentPackageOnTheDiagram not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : An interface is created in the model
 	 */
 	public void assertAnInterfaceIsCreatedInTheModel() {
 		// Start of user code AnInterfaceIsCreatedInTheModel
-		assertElementCreatedInUmlModel("Interface1",UMLPackage.eINSTANCE.getInterface());		
+		assertElementCreatedInUmlModel("Interface1", UMLPackage.eINSTANCE.getInterface());
 		// End of user code
 	}
+
 	/**
 	 * Behavior : A new element appears in the
 	 */
-	public void assertANewElementAppearsInThe(String aNewElementAppearsInThe0,String aNewElementAppearsInThe1) {
+	public void assertANewElementAppearsInThe(String aNewElementAppearsInThe0, String aNewElementAppearsInThe1) {
 		// Start of user code ANewElementAppearsInThe
 		// TODO Implement behavior ANewElementAppearsInThe
 		fail("Behavior ANewElementAppearsInThe not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The property is deleted from the model
 	 */
@@ -871,6 +967,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior ThePropertyIsDeletedFromTheModel not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : A dependency appears between the classes on the diagram
 	 */
@@ -880,6 +977,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior ADependencyAppearsBetweenTheClassesOnTheDiagram not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The aggregation is bi navigable in the model
 	 */
@@ -889,6 +987,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior TheAggregationIsBiNavigableInTheModel not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The association end is set to the new class in the model
 	 */
@@ -898,6 +997,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior TheAssociationEndIsSetToTheNewClassInTheModel not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : An operation appears in the interface on the diagram
 	 */
@@ -907,6 +1007,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior AnOperationAppearsInTheInterfaceOnTheDiagram not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : Arrows are visible on the association ends on the diagram
 	 */
@@ -916,14 +1017,16 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior ArrowsAreVisibleOnTheAssociationEndsOnTheDiagram not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : A package is created in the model
 	 */
 	public void assertAPackageIsCreatedInTheModel() {
 		// Start of user code APackageIsCreatedInTheModel
-		assertElementCreatedInUmlModel("Package7",UMLPackage.eINSTANCE.getPackage());		
+		assertElementCreatedInUmlModel("Package7", UMLPackage.eINSTANCE.getPackage());
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The aggregation end is set to the new class in the model
 	 */
@@ -933,6 +1036,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior TheAggregationEndIsSetToTheNewClassInTheModel not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The literal does not appear anymore on the diagram
 	 */
@@ -942,14 +1046,16 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior TheLiteralDoesNotAppearAnymoreOnTheDiagram not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : A datatype is created in the model
 	 */
 	public void assertADatatypeIsCreatedInTheModel() {
 		// Start of user code ADatatypeIsCreatedInTheModel
-		assertElementCreatedInUmlModel("DataType0",UMLPackage.eINSTANCE.getDataType());	
+		assertElementCreatedInUmlModel("DataType0", UMLPackage.eINSTANCE.getDataType());
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The interface realization end is set to the new class in the model
 	 */
@@ -959,6 +1065,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior TheInterfaceRealizationEndIsSetToTheNewClassInTheModel not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : An operation appears in the datatype on the diagram
 	 */
@@ -968,6 +1075,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior AnOperationAppearsInTheDatatypeOnTheDiagram not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The property types equals the selected type
 	 */
@@ -977,6 +1085,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior ThePropertyTypesEqualsTheSelectedType not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : An operation appears in the enumeration on the diagram
 	 */
@@ -986,6 +1095,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior AnOperationAppearsInTheEnumerationOnTheDiagram not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : A usage appears between the classes on the diagram
 	 */
@@ -995,14 +1105,16 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior AUsageAppearsBetweenTheClassesOnTheDiagram not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : An enumeration is created in the model
 	 */
 	public void assertAnEnumerationIsCreatedInTheModel() {
 		// Start of user code AnEnumerationIsCreatedInTheModel
-		assertElementCreatedInUmlModel("Enumeration0",UMLPackage.eINSTANCE.getEnumeration());			
+		assertElementCreatedInUmlModel("Enumeration0", UMLPackage.eINSTANCE.getEnumeration());
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The composition end is set to the new class in the model
 	 */
@@ -1012,6 +1124,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior TheCompositionEndIsSetToTheNewClassInTheModel not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : A usage is created in the model
 	 */
@@ -1021,6 +1134,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior AUsageIsCreatedInTheModel not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : An association class is created in the model
 	 */
@@ -1030,6 +1144,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior AnAssociationClassIsCreatedInTheModel not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The association does not appear anymore on the diagram
 	 */
@@ -1039,6 +1154,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior TheAssociationDoesNotAppearAnymoreOnTheDiagram not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : A composition is created in the model
 	 */
@@ -1048,6 +1164,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior ACompositionIsCreatedInTheModel not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : A property is created in the primitive type in the model
 	 */
@@ -1057,14 +1174,16 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior APropertyIsCreatedInThePrimitiveTypeInTheModel not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : A primitive type is created in the model
 	 */
 	public void assertAPrimitiveTypeIsCreatedInTheModel() {
 		// Start of user code APrimitiveTypeIsCreatedInTheModel
-		assertElementCreatedInUmlModel("PrimitiveType0",UMLPackage.eINSTANCE.getPrimitiveType());	
+		assertElementCreatedInUmlModel("PrimitiveType0", UMLPackage.eINSTANCE.getPrimitiveType());
 		// End of user code
 	}
+
 	/**
 	 * Behavior : A class is created in the parent package
 	 */
@@ -1074,6 +1193,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior AClassIsCreatedInTheParentPackage not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : An association is created in the model
 	 */
@@ -1083,6 +1203,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior AnAssociationIsCreatedInTheModel not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : An operation appears in the primitive type on the diagram
 	 */
@@ -1092,14 +1213,16 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior AnOperationAppearsInThePrimitiveTypeOnTheDiagram not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : A class is created in the model
 	 */
 	public void assertAClassIsCreatedInTheModel() {
 		// Start of user code AClassIsCreatedInTheModel
-		assertElementCreatedInUmlModel("Class1",UMLPackage.eINSTANCE.getClass_());
+		assertElementCreatedInUmlModel("Class1", UMLPackage.eINSTANCE.getClass_());
 		// End of user code
 	}
+
 	/**
 	 * Behavior : A classifier appears between the classes on the diagram
 	 */
@@ -1109,6 +1232,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior AClassifierAppearsBetweenTheClassesOnTheDiagram not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : A package is created in the parent package
 	 */
@@ -1118,6 +1242,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior APackageIsCreatedInTheParentPackage not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : A property is created in the interface in the model
 	 */
@@ -1127,6 +1252,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior APropertyIsCreatedInTheInterfaceInTheModel not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : An association appears between the classes on the diagram
 	 */
@@ -1136,6 +1262,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior AnAssociationAppearsBetweenTheClassesOnTheDiagram not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The interface realization is connected to the new class on the diagram
 	 */
@@ -1145,6 +1272,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior TheInterfaceRealizationIsConnectedToTheNewClassOnTheDiagram not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The association class end is set to the new class in the model
 	 */
@@ -1154,6 +1282,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior TheAssociationClassEndIsSetToTheNewClassInTheModel not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : An operation appears in the class on the diagram
 	 */
@@ -1163,6 +1292,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior AnOperationAppearsInTheClassOnTheDiagram not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : An aggregation is created in the model
 	 */
@@ -1172,6 +1302,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior AnAggregationIsCreatedInTheModel not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : A property is created in the datatype in the model
 	 */
@@ -1181,6 +1312,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior APropertyIsCreatedInTheDatatypeInTheModel not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The composition is bi navigable in the model
 	 */
@@ -1190,6 +1322,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior TheCompositionIsBiNavigableInTheModel not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The aggregation is connected to the new class on the diagram
 	 */
@@ -1199,6 +1332,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior TheAggregationIsConnectedToTheNewClassOnTheDiagram not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : A generalization appears between the classes on the diagram
 	 */
@@ -1208,6 +1342,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior AGeneralizationAppearsBetweenTheClassesOnTheDiagram not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The generalization is connected to the new class on the diagram
 	 */
@@ -1217,6 +1352,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior TheGeneralizationIsConnectedToTheNewClassOnTheDiagram not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The literal is deleted from the model
 	 */
@@ -1226,6 +1362,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior TheLiteralIsDeletedFromTheModel not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : A property appears in the primitive type on the diagram
 	 */
@@ -1235,6 +1372,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior APropertyAppearsInThePrimitiveTypeOnTheDiagram not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The composition is connected to the new class on the diagram
 	 */
@@ -1244,6 +1382,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior TheCompositionIsConnectedToTheNewClassOnTheDiagram not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : An interface realization is created in the model
 	 */
@@ -1253,6 +1392,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior AnInterfaceRealizationIsCreatedInTheModel not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : The association is connected to the new class on the diagram
 	 */
@@ -1262,6 +1402,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		fail("Behavior TheAssociationIsConnectedToTheNewClassOnTheDiagram not implemented");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : A class appears on the diagram
 	 */
@@ -1270,6 +1411,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		assertElementAppearsOnTheDiagram("Class1");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : An interface appears on the diagram
 	 */
@@ -1278,6 +1420,7 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		assertElementAppearsOnTheDiagram("Interface1");
 		// End of user code
 	}
+
 	/**
 	 * Behavior : A property appears in the datatype on the diagram
 	 */
@@ -1288,22 +1431,22 @@ public class AClassDiagramIsOpened extends UnactivateUmlUsage {
 		// End of user code
 	}
 
-// Start of user code AClassDiagramIsOpened private methods
+	// Start of user code AClassDiagramIsOpened private methods
 	private void actionCreateAType(String toolName) {
 		classDiagram.activateTool(toolName);
 		classDiagram.click(10, 150);
 		classDiagram.save();
 	}
-	
+
 	private void assertElementCreatedInUmlModel(String elementName, EClass eClass) {
 		List<EObject> createdClasses = EObjects.perType(recorder.attachedObjects()).get(eClass);
-		assertEquals(createdClasses.size(),1);
-		assertEquals(elementName, ((NamedElement) createdClasses.get(0)).getName());
+		assertEquals(createdClasses.size(), 1);
+		assertEquals(elementName, ((NamedElement)createdClasses.get(0)).getName());
 	}
 
 	// @Behaviour("ElementExistsInTheReferenceClassDiagram")
 	private void assertElementAppearsOnTheDiagram(String elementName) {
 		assertNotNull(classDiagram.getEditPart(elementName));
 	}
-// End of user code
+	// End of user code
 }

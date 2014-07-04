@@ -1,0 +1,10 @@
+---
+layout: article
+title: Activity Diagram
+subtitle: user guide
+relativePath: ..
+---
+
+h1. Introduction
+
+!{{ page.relativePath }}/images/features/agency_pics/to_reserve_a_trip.jpg!

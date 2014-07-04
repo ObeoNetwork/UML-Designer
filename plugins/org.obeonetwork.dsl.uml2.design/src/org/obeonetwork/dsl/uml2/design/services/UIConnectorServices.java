@@ -17,6 +17,11 @@ import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.uml2.uml.ConnectableElement;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.ConnectorEnd;
@@ -29,12 +34,6 @@ import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.StructuredClassifier;
 import org.eclipse.uml2.uml.Usage;
-
-import fr.obeo.dsl.viewpoint.AbstractDNode;
-import fr.obeo.dsl.viewpoint.DEdge;
-import fr.obeo.dsl.viewpoint.DNode;
-import fr.obeo.dsl.viewpoint.DSemanticDecorator;
-import fr.obeo.dsl.viewpoint.EdgeTarget;
 
 /**
  * A set of services to handle graphically Connector actions and tests.
@@ -75,9 +74,9 @@ public class UIConnectorServices {
 	 *            the current view
 	 * @return the container semantic target or null if any.
 	 */
-	protected EObject getViewContainerTarget(DNode view) {
+	protected Element getViewContainerTarget(DNode view) {
 		if (view != null && view.eContainer() instanceof DSemanticDecorator) {
-			return ((DSemanticDecorator)view.eContainer()).getTarget();
+			return (Element)((DSemanticDecorator)view.eContainer()).getTarget();
 		}
 		return null;
 
@@ -92,7 +91,7 @@ public class UIConnectorServices {
 	 *            the semantic target
 	 * @return true is it is the valid part.
 	 */
-	protected boolean isValidPart(ConnectorEnd end, EObject viewSemanticTarget) {
+	protected boolean isValidPart(ConnectorEnd end, Element viewSemanticTarget) {
 		if (end != null && end.getPartWithPort() != null
 				&& !EcoreUtil.equals(viewSemanticTarget, end.getPartWithPort()))
 			return false;
@@ -113,8 +112,8 @@ public class UIConnectorServices {
 	 *            the target view
 	 * @return true if valid to display
 	 */
-	public boolean validSourceTarget4DelegatedConnector(EObject source, EObject sourceView, EObject target,
-			EObject targetView) {
+	public boolean validSourceTarget4DelegatedConnector(Element source, DSemanticDecorator sourceView,
+			Element target, DSemanticDecorator targetView) {
 		boolean result = false;
 
 		if (source instanceof org.eclipse.uml2.uml.Interface) {
@@ -138,8 +137,8 @@ public class UIConnectorServices {
 	 *            the target view
 	 * @return true if valid to display
 	 */
-	public boolean validSourceTarget4Connector(EObject source, EObject sourceView, EObject target,
-			EObject targetView) {
+	public boolean validSourceTarget4Connector(Element source, DSemanticDecorator sourceView, Element target,
+			DSemanticDecorator targetView) {
 		boolean result = false;
 
 		if (source instanceof org.eclipse.uml2.uml.Interface
@@ -397,7 +396,6 @@ public class UIConnectorServices {
 	 *            graphical edges than can map dependencies
 	 */
 	protected void addConnectorEndsAndClientDependencies(Connector connector, Set<DEdge> edges) {
-		final List<Dependency> clientDependencies = connector.getClientDependencies();
 		for (DEdge dEdge : edges) {
 			EObject target = dEdge.getTarget();
 			if (target instanceof Dependency) {
@@ -420,7 +418,9 @@ public class UIConnectorServices {
 					}
 
 					// Add this dependency on the connector clientDependencies
-					clientDependencies.add(dependency);
+					// Since UML 2.5 clientDependencies is derived so we have to add the connector as client
+					// and automatically it will be calculated as client dependency
+					dependency.getClients().add(connector);
 
 				} else if (dependency instanceof InterfaceRealization) {
 					// handle connectorEnd
@@ -441,7 +441,9 @@ public class UIConnectorServices {
 					}
 
 					// Add this dependency on the connector clientDependencies
-					clientDependencies.add(dependency);
+					// Since UML 2.5 clientDependencies is derived so we have to add the connector as client
+					// and automatically it will be calculated as client dependency
+					dependency.getClients().add(connector);
 				}
 			}
 		}
@@ -460,7 +462,8 @@ public class UIConnectorServices {
 	 *            the target view
 	 * @return true if valid to display
 	 */
-	public boolean isConnectable(EObject source, EObject sourceView, EObject target, EObject targetView) {
+	public boolean isConnectable(Element source, DSemanticDecorator sourceView, Element target,
+			DSemanticDecorator targetView) {
 		boolean result = false;
 		final ConnectorServices connectorServices = new ConnectorServices();
 		if (source instanceof Interface && target instanceof Interface) {

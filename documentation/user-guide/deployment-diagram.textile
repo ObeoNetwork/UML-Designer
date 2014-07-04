@@ -1,0 +1,53 @@
+---
+layout: article
+title: Deployment Diagram
+subtitle: user guide
+relativePath: ..
+---
+
+!{{ page.relativePath }}/images/features/agency_pics/deployment.png!
+
+h1. Creating Elements
+
+All the elements you can create in a deployment diagram are available through the *palette*.
+
+!{{ page.relativePath }}/images/using_deployment_diagram/palette.png!
+
+You also have the ability to create elements in a contextual way related to the currently selected elements.
+If your pointer is on the diagram background, after a few seconds you should see the following assistant :
+
+!{{ page.relativePath }}/images/using_deployment_diagram/assistant.png!
+
+If your pointer is *on a node* the assistant will be : 
+
+!{{ page.relativePath }}/images/using_deployment_diagram/assistant_node.png!
+
+In deed, a node is a composite element.
+
+h1. Editing labels
+
+We added a few accelerators so that you can quickly edit *labels* on elements or edges just by typing. Typing : 
+* @aNewName@ will update the label.
+
+h1. Artifact dependency and generalization
+
+!{{ page.relativePath }}/images/features/deployment_pics/artifact_dependency_generalization.png!
+
+h1. Artifact manifestation of packageable elements
+
+!{{ page.relativePath }}/images/features/deployment_pics/artifact_manifestation_component_package.png!
+
+h1. Artifact deployment
+
+!{{ page.relativePath }}/images/features/deployment_pics/artifact_deployment.png!
+We have two way to deploy an artifact:
+* Deployment could be shown as a deploy dependency that is drawn from the artifact to the deployment target.
+* Deployment could also be shown with deployed artifacts contained by a deployment target.
+
+h1. Device, Execution Environment, Node and links.
+
+!{{ page.relativePath }}/images/features/deployment_pics/links_between_nodes.png!
+
+h1. Composite Nodes
+
+!{{ page.relativePath }}/images/features/deployment_pics/composition.png!

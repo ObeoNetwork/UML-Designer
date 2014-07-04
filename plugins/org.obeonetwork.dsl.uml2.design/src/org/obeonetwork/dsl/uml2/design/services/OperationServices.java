@@ -59,7 +59,7 @@ public final class OperationServices {
 	 * @param operationsToMove
 	 *            operations to move
 	 */
-	public void moveUpOperations(List<Operation> operationsToMove) {
+	public void moveUpOperations(Operation currentOperation, List<Operation> operationsToMove) {
 
 		List<Operation> operationsInRightOrder = retrieveTheRightOrder(operationsToMove);
 		MoveUpElementSwitch moveUpElementsSwitch = new MoveUpElementSwitch();
@@ -76,8 +76,7 @@ public final class OperationServices {
 	 * @param operationsToMove
 	 *            operations to move
 	 */
-	public void moveDownOperations(List<Operation> operationsToMove) {
-
+	public void moveDownOperations(Operation currentOperation, List<Operation> operationsToMove) {
 		List<Operation> operationsInRightOrder = retrieveTheRightOrder(operationsToMove);
 		Object[] operationsArray = operationsInRightOrder.toArray();
 		MoveDownElementSwitch moveDownElementSwitch = new MoveDownElementSwitch();

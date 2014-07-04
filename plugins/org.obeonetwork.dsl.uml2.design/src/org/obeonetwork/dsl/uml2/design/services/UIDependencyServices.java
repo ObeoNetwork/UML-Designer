@@ -14,16 +14,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.uml2.uml.Dependency;
+import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.StructuredClassifier;
-
-import fr.obeo.dsl.viewpoint.AbstractDNode;
-import fr.obeo.dsl.viewpoint.DDiagram;
-import fr.obeo.dsl.viewpoint.DDiagramElement;
-import fr.obeo.dsl.viewpoint.DDiagramElementContainer;
-import fr.obeo.dsl.viewpoint.DNodeContainer;
 
 /**
  * A set of services to handle graphically Dependency actions and tests.
@@ -102,8 +103,8 @@ public class UIDependencyServices {
 	 *            the target view
 	 * @return true if valid to display
 	 */
-	public boolean validSourceTarget4Dependency(EObject source, EObject sourceView, EObject target,
-			EObject targetView) {
+	public boolean validSourceTarget4Dependency(Element source, DSemanticDecorator sourceView,
+			Element target, DSemanticDecorator targetView) {
 		boolean result = false;
 
 		if (source instanceof org.eclipse.uml2.uml.Class) {

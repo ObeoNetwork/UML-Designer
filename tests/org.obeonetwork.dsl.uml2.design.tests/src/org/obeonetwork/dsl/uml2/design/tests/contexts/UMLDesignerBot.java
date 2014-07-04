@@ -12,8 +12,12 @@ package org.obeonetwork.dsl.uml2.design.tests.contexts;
 
 import java.util.List;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
 import org.eclipse.swtbot.eclipse.finder.matchers.WidgetMatcherFactory;
 import org.eclipse.swtbot.eclipse.finder.waits.Conditions;
@@ -28,10 +32,6 @@ import org.eclipse.uml2.uml.Model;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
-
-import fr.obeo.dsl.viewpoint.business.api.session.Session;
-import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
-import fr.obeo.dsl.viewpoint.tests.swtbot.support.api.editor.SWTBotDesignerEditor;
 
 public class UMLDesignerBot {
 
@@ -81,8 +81,7 @@ public class UMLDesignerBot {
 		return this;
 	}
 
-	public SWTBotDesignerEditor importAndOpenTravelAgency() {
-		closeWelcome();
+	public SWTBotSiriusDiagramEditor importAndOpenTravelAgency() {
 		bot.resetWorkbench();
 		openModelingPerspective();
 		String nameInWizard = "Travel Agency UML";
@@ -98,7 +97,7 @@ public class UMLDesignerBot {
 		waitForProgressInformationComplete();
 
 		waitForEditor("Package Hierarchy");
-		return new SWTBotDesignerEditor(bot.activeEditor().getReference(), workbench());
+		return new SWTBotSiriusDiagramEditor(bot.activeEditor().getReference(), workbench());
 	}
 
 	private void waitForEditor(final String editorName) {
@@ -115,7 +114,7 @@ public class UMLDesignerBot {
 		}), 15000);
 	}
 
-	public SWTBotDesignerEditor openEntitiesClassDiagram() {
+	public SWTBotSiriusDiagramEditor openEntitiesClassDiagram() {
 
 		importAndOpenTravelAgency();
 
@@ -124,7 +123,7 @@ public class UMLDesignerBot {
 
 		waitForEditor("Entities");
 
-		return new SWTBotDesignerEditor(bot.activeEditor().getReference(), workbench());
+		return new SWTBotSiriusDiagramEditor(bot.activeEditor().getReference(), workbench());
 	}
 
 	public void importAndOpenTestAllMappings() {
@@ -145,31 +144,31 @@ public class UMLDesignerBot {
 
 		// Open and refresh package hierarchy automatically
 		waitForEditor("Test Package Hierarchy");
-		new SWTBotDesignerEditor(bot.activeEditor().getReference(), workbench()).refresh();
+		new SWTBotSiriusDiagramEditor(bot.activeEditor().getReference(), workbench()).refresh();
 		// Open class diagram
 		bot.viewByTitle("Model Explorer").bot().tree()
 				.expandNode("TestAllMappings", "model.uml", "<Model> Test", "Test Class Diagram")
 				.doubleClick();
 		waitForEditor("Test Class Diagram");
-		new SWTBotDesignerEditor(bot.activeEditor().getReference(), workbench()).refresh();
+		new SWTBotSiriusDiagramEditor(bot.activeEditor().getReference(), workbench()).refresh();
 		// Open class diagram archetype
 		bot.viewByTitle("Model Explorer").bot().tree()
 				.expandNode("TestAllMappings", "model.uml", "<Model> Test", "Test Class Diagram Archetypes")
 				.doubleClick();
 		waitForEditor("Test Class Diagram Archetypes");
-		new SWTBotDesignerEditor(bot.activeEditor().getReference(), workbench()).refresh();
+		new SWTBotSiriusDiagramEditor(bot.activeEditor().getReference(), workbench()).refresh();
 		// Open class diagram edges
 		bot.viewByTitle("Model Explorer").bot().tree()
 				.expandNode("TestAllMappings", "model.uml", "<Model> Test", "Test Class Diagram Edges")
 				.doubleClick();
 		waitForEditor("Test Class Diagram Edges");
-		new SWTBotDesignerEditor(bot.activeEditor().getReference(), workbench()).refresh();
+		new SWTBotSiriusDiagramEditor(bot.activeEditor().getReference(), workbench()).refresh();
 		// Open component diagram
 		bot.viewByTitle("Model Explorer").bot().tree()
 				.expandNode("TestAllMappings", "model.uml", "<Model> Test", "Test Component Diagram")
 				.doubleClick();
 		waitForEditor("Test Component Diagram");
-		new SWTBotDesignerEditor(bot.activeEditor().getReference(), workbench()).refresh();
+		new SWTBotSiriusDiagramEditor(bot.activeEditor().getReference(), workbench()).refresh();
 		// Open composite structure diagram
 		bot.viewByTitle("Model Explorer")
 				.bot()
@@ -177,19 +176,19 @@ public class UMLDesignerBot {
 				.expandNode("TestAllMappings", "model.uml", "<Model> Test",
 						"Test Composite Structure Diagram").doubleClick();
 		waitForEditor("Test Composite Structure Diagram");
-		new SWTBotDesignerEditor(bot.activeEditor().getReference(), workbench()).refresh();
+		new SWTBotSiriusDiagramEditor(bot.activeEditor().getReference(), workbench()).refresh();
 		// Open deployment diagram
 		bot.viewByTitle("Model Explorer").bot().tree()
 				.expandNode("TestAllMappings", "model.uml", "<Model> Test", "Test Deployment Diagram")
 				.doubleClick();
 		waitForEditor("Test Deployment Diagram");
-		new SWTBotDesignerEditor(bot.activeEditor().getReference(), workbench()).refresh();
+		new SWTBotSiriusDiagramEditor(bot.activeEditor().getReference(), workbench()).refresh();
 		// Open use case diagram
 		bot.viewByTitle("Model Explorer").bot().tree()
 				.expandNode("TestAllMappings", "model.uml", "<Model> Test", "Test Use Case Diagram")
 				.doubleClick();
 		waitForEditor("Test Use Case Diagram");
-		new SWTBotDesignerEditor(bot.activeEditor().getReference(), workbench()).refresh();
+		new SWTBotSiriusDiagramEditor(bot.activeEditor().getReference(), workbench()).refresh();
 	}
 
 	public void createNewUMLProject() {
@@ -260,7 +259,7 @@ public class UMLDesignerBot {
 		ContextMenuHelper.clickContextMenu(tree, "Delete");
 	}
 
-	public SWTBotDesignerEditor importTravelAgencyProject() {
+	public SWTBotSiriusDiagramEditor importTravelAgencyProject() {
 		return importAndOpenTravelAgency();
 	}
 
@@ -279,8 +278,8 @@ public class UMLDesignerBot {
 
 	public Model getTravelAgencyModel() {
 		String sessionResourceUri = "TravelAgency/representations.aird";
-		Session session = SessionManager.INSTANCE.getSession(URI.createPlatformResourceURI(
-				sessionResourceUri, true));
+		Session session = SessionManager.INSTANCE.getSession(
+				URI.createPlatformResourceURI(sessionResourceUri, true), new NullProgressMonitor());
 		Resource semanticResource = (Resource)session.getSemanticResources().toArray()[0];
 		return ((Model)semanticResource.getContents().get(0));
 	}

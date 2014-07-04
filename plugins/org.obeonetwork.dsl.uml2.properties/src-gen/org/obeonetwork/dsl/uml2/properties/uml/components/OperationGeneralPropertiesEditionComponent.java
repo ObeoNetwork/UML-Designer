@@ -166,7 +166,6 @@ public class OperationGeneralPropertiesEditionComponent extends SinglePartProper
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Operation operation = (Operation)semanticObject;
-
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			operation.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}
@@ -328,6 +327,8 @@ public class OperationGeneralPropertiesEditionComponent extends SinglePartProper
 		return ret;
 	}
 
+
+	
 
 	
 

@@ -140,7 +140,6 @@ public class IncludePropertiesEditionComponent extends SinglePartPropertiesEditi
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Include include = (Include)semanticObject;
-
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			include.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}
@@ -241,6 +240,8 @@ public class IncludePropertiesEditionComponent extends SinglePartPropertiesEditi
 		return ret;
 	}
 
+
+	
 
 	
 

@@ -225,13 +225,13 @@ public class UmlMessages extends NLS {
 	 * @generated
 	 */
 	
-	public static String GeneralPropertiesEditionPart_UpperValueLabel;
+	public static String GeneralPropertiesEditionPart_LowerValueLabel;
 
 	/**
 	 * @generated
 	 */
 	
-	public static String GeneralPropertiesEditionPart_LowerValueLabel;
+	public static String GeneralPropertiesEditionPart_UpperValueLabel;
 
 	/**
 	 * @generated
@@ -267,13 +267,13 @@ public class UmlMessages extends NLS {
 	 * @generated
 	 */
 	
-	public static String GeneralPropertiesEditionPart_SourceLabel;
+	public static String GeneralPropertiesEditionPart_Kind_readonlyLabel;
 
 	/**
 	 * @generated
 	 */
 	
-	public static String GeneralPropertiesEditionPart_TargetLabel;
+	public static String GeneralPropertiesEditionPart_TriggerLabel;
 
 	/**
 	 * @generated
@@ -286,6 +286,18 @@ public class UmlMessages extends NLS {
 	 */
 	
 	public static String GeneralPropertiesEditionPart_GuardLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_SourceLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_TargetLabel;
 
 	/**
 	 * @generated
@@ -321,12 +333,6 @@ public class UmlMessages extends NLS {
 	 * @generated
 	 */
 	
-	public static String GeneralPropertiesEditionPart_PseudostatekindLabel;
-
-	/**
-	 * @generated
-	 */
-	
 	public static String GeneralPropertiesEditionPart_RoleLabel;
 
 	/**
@@ -334,6 +340,114 @@ public class UmlMessages extends NLS {
 	 */
 	
 	public static String GeneralPropertiesEditionPart_UsecaseLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_SubjectsLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_EntryLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_ExitLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_Do_Label;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_SubmachineLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_SpecificationLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_InstanceValueLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_MinLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_InstanceLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_MaxLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_EventLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_WhenLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_ChangeExpressionLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_RegionLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_BehaviourLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_UnmarshallLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_OperationLabel;
+
+	/**
+	 * @generated
+	 */
+	
+	public static String GeneralPropertiesEditionPart_SignalLabel;
 
 	/**
 	 * @generated

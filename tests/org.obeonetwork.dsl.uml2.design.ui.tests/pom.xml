@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2013 Obeo.
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+
+Contributors:
+    Obeo - initial API and implementation
+-->
+<project
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+  xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.obeonetwork.dsl.uml2</groupId>
+    <artifactId>parent</artifactId>
+    <version>4.0.0-SNAPSHOT</version>
+    <relativePath>../../releng/org.obeonetwork.dsl.uml2.parent</relativePath>
+  </parent>
+  
+  <groupId>org.obeonetwork.dsl.uml2</groupId>
+  <artifactId>org.obeonetwork.dsl.uml2.design.ui.tests</artifactId>
+  <packaging>eclipse-test-plugin</packaging>
+
+  <properties>
+    <ui.test.vmargs>-Xmx512m -XX:MaxPermSize=256m</ui.test.vmargs>
+  </properties>
+
+  <build>
+    <resources>
+      <resource>
+        <directory>src</directory>
+        <excludes>
+          <exclude>**/*.java</exclude>
+        </excludes>
+      </resource>
+    </resources>
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-surefire-plugin</artifactId>
+        <version>${tycho-version}</version>
+        <configuration>
+          <includes>
+            <include>org/obeonetwork/dsl/uml2/design/ui/tests/unit/ClassDiagramTest.class</include>
+          </includes>
+          <useUIHarness>true</useUIHarness>
+          <useUIThread>false</useUIThread>
+          <appArgLine>${ui.test.vmargs}</appArgLine>
+          <testFailureIgnore>true</testFailureIgnore>
+          <application>org.eclipse.ui.ide.workbench</application>
+          <dependencies>
+            <dependency>
+              <type>p2-installable-unit</type>
+              <artifactId>org.obeonetwork.dsl.feature.uml2.feature.group</artifactId>
+            </dependency>
+          </dependencies>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

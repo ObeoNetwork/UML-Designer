@@ -27,10 +27,25 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
+import org.eclipse.sirius.diagram.sequence.business.internal.operation.RefreshGraphicalOrderingOperation;
+import org.eclipse.sirius.diagram.sequence.business.internal.operation.RefreshSemanticOrderingsOperation;
+import org.eclipse.sirius.diagram.sequence.business.internal.operation.SynchronizeGraphicalOrderingOperation;
+import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ISequenceEventEditPart;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.uml2.uml.Actor;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehaviorExecutionSpecification;
+import org.eclipse.uml2.uml.BehavioralFeature;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.CombinedFragment;
 import org.eclipse.uml2.uml.Comment;
@@ -60,19 +75,8 @@ import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.obeonetwork.dsl.uml2.design.services.internal.NamedElementServices;
 
-import fr.obeo.dsl.common.ui.tools.api.util.EclipseUIUtil;
-import fr.obeo.dsl.viewpoint.DDiagram;
-import fr.obeo.dsl.viewpoint.DDiagramElement;
-import fr.obeo.dsl.viewpoint.DEdge;
-import fr.obeo.dsl.viewpoint.DNode;
-import fr.obeo.dsl.viewpoint.diagram.sequence.business.internal.elements.ISequenceEvent;
-import fr.obeo.dsl.viewpoint.diagram.sequence.business.internal.elements.SequenceDiagram;
-import fr.obeo.dsl.viewpoint.diagram.sequence.business.internal.operation.RefreshGraphicalOrderingOperation;
-import fr.obeo.dsl.viewpoint.diagram.sequence.business.internal.operation.RefreshSemanticOrderingsOperation;
-import fr.obeo.dsl.viewpoint.diagram.sequence.business.internal.operation.SynchronizeGraphicalOrderingOperation;
-import fr.obeo.dsl.viewpoint.diagram.sequence.ui.tool.internal.edit.part.ISequenceEventEditPart;
-import fr.obeo.dsl.viewpoint.diagram.sequence.ui.tool.internal.edit.part.SequenceDiagramEditPart;
-import fr.obeo.dsl.viewpoint.diagram.tools.api.editor.DDiagramEditor;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Sets;
 
 /**
  * Utility services to manage sequence diagrams.
@@ -107,6 +111,14 @@ public class SequenceServices {
 	 * Operation service.
 	 */
 	private OperationServices operationService = new OperationServices();
+
+	public NamedElement findOccurrenceSpecificationContextForSendEvent(Message message) {
+		return findOccurrenceSpecificationContext((OccurrenceSpecification)message.getSendEvent());
+	}
+
+	public NamedElement findOccurrenceSpecificationContextForReceiveEvent(Message message) {
+		return findOccurrenceSpecificationContext((OccurrenceSpecification)message.getReceiveEvent());
+	}
 
 	/**
 	 * Retrieves the context element ({@link Lifeline} or {@link ExecutionSpecification}) of the given
@@ -580,6 +592,22 @@ public class SequenceServices {
 		createExecution(interaction, fragment, null, startingEndPredecessor);
 	}
 
+	public void createSynchronousMessageWithExecution(Interaction interaction, NamedElement sourceFragment,
+			NamedElement targetFragment, EventEnd startingEndPredecessor, EventEnd finishingEndPredecessor,
+			Operation operation) {
+		Element startingEndPredecessorSemanticEnd = null;
+		Element finishingEndPredecessorSemanticEnd = null;
+		if (startingEndPredecessor != null) {
+			startingEndPredecessorSemanticEnd = (Element)startingEndPredecessor.getSemanticEnd();
+		}
+		if (finishingEndPredecessor != null) {
+			finishingEndPredecessorSemanticEnd = (Element)finishingEndPredecessor.getSemanticEnd();
+		}
+
+		createSynchronousMessage(interaction, sourceFragment, targetFragment, true,
+				startingEndPredecessorSemanticEnd, finishingEndPredecessorSemanticEnd, operation);
+	}
+
 	/**
 	 * Create synchronous typed message.
 	 * 
@@ -599,8 +627,8 @@ public class SequenceServices {
 	 *            Operation associated with the message
 	 */
 	public void createSynchronousMessage(Interaction interaction, NamedElement sourceFragment,
-			NamedElement targetFragment, boolean createExecution, NamedElement startingEndPredecessor,
-			NamedElement finishingEndPredecessor, Operation operation) {
+			NamedElement targetFragment, Boolean createExecution, Element startingEndPredecessor,
+			Element finishingEndPredecessor, Operation operation) {
 		final Lifeline target = getLifeline(targetFragment);
 		final BehaviorExecutionSpecification predecessorExecution = getExecution((InteractionFragment)startingEndPredecessor);
 
@@ -673,26 +701,26 @@ public class SequenceServices {
 	 *            a model element
 	 * @return all classes and their containers of the UML model
 	 */
-	public Set<EObject> getAllClassesAndContainers(EObject element) {
-		EObject rootContainer = EcoreUtil.getRootContainer(element);
+	public Set<Element> getAllClassesAndContainers(Element element) {
+		Element rootContainer = (Element)EcoreUtil.getRootContainer(element);
 		Iterator<EObject> eObjects = rootContainer.eAllContents();
 
-		Set<EObject> result = new HashSet<EObject>();
+		Set<Element> result = new HashSet<Element>();
 
 		result.add(rootContainer);
 
 		while (eObjects.hasNext()) {
-			EObject eObject = eObjects.next();
+			Element eObject = (Element)eObjects.next();
 			if (eObject instanceof org.eclipse.uml2.uml.Class && !(eObject instanceof OpaqueBehavior)) {
 				result.add(eObject);
-				Set<EObject> containers = getAllContainers(eObject);
+				Set<Element> containers = getAllContainers(eObject);
 				result.addAll(containers);
 			}
 			if (eObject instanceof Property) {
 				Property property = (Property)eObject;
 				if (property.getType() instanceof org.eclipse.uml2.uml.Class) {
 					result.add(property);
-					Set<EObject> containers = getAllContainers(property);
+					Set<Element> containers = getAllContainers(property);
 					result.addAll(containers);
 				}
 			}
@@ -708,26 +736,26 @@ public class SequenceServices {
 	 *            a model element
 	 * @return all actors and their containers of the UML model
 	 */
-	public Set<EObject> getAllActorsAndContainers(EObject element) {
-		EObject rootContainer = EcoreUtil.getRootContainer(element);
+	public Set<Element> getAllActorsAndContainers(EObject element) {
+		Element rootContainer = (Element)EcoreUtil.getRootContainer(element);
 		Iterator<EObject> eObjects = rootContainer.eAllContents();
 
-		Set<EObject> result = new HashSet<EObject>();
+		Set<Element> result = new HashSet<Element>();
 
 		result.add(rootContainer);
 
 		while (eObjects.hasNext()) {
-			EObject eObject = eObjects.next();
+			Element eObject = (Element)eObjects.next();
 			if (eObject instanceof Actor) {
 				result.add(eObject);
-				Set<EObject> containers = getAllContainers(eObject);
+				Set<Element> containers = getAllContainers(eObject);
 				result.addAll(containers);
 			}
 			if (eObject instanceof Property) {
 				Property property = (Property)eObject;
 				if (property.getType() instanceof Actor) {
 					result.add(property);
-					Set<EObject> containers = getAllContainers(property);
+					Set<Element> containers = getAllContainers(property);
 					result.addAll(containers);
 				}
 			}
@@ -743,13 +771,13 @@ public class SequenceServices {
 	 *            an eObject
 	 * @return a list of containers
 	 */
-	private Set<EObject> getAllContainers(EObject eObject) {
-		EObject container = eObject.eContainer();
-		Set<EObject> result = new HashSet<EObject>();
+	private Set<Element> getAllContainers(Element eObject) {
+		Element container = (Element)eObject.eContainer();
+		Set<Element> result = new HashSet<Element>();
 
 		while (container.eContainer() != null) {
 			result.add(container);
-			container = container.eContainer();
+			container = (Element)container.eContainer();
 		}
 
 		return result;
@@ -773,8 +801,8 @@ public class SequenceServices {
 	 * @return a synchronous message
 	 */
 	public Message createSynchronousMessage(Interaction interaction, NamedElement sourceFragment,
-			NamedElement targetFragment, NamedElement startingEndPredecessor,
-			NamedElement finishingEndPredecessor, Operation operation) {
+			NamedElement targetFragment, Element startingEndPredecessor, Element finishingEndPredecessor,
+			Operation operation) {
 
 		final UMLFactory factory = UMLFactory.eINSTANCE;
 
@@ -831,8 +859,8 @@ public class SequenceServices {
 	 * @return a reply message
 	 */
 	public Message createReplyMessage(Interaction interaction, NamedElement sourceFragment,
-			NamedElement targetFragment, NamedElement startingEndPredecessor,
-			NamedElement finishingEndPredecessor, Message message) {
+			NamedElement targetFragment, Element startingEndPredecessor, Element finishingEndPredecessor,
+			Message message) {
 
 		final UMLFactory factory = UMLFactory.eINSTANCE;
 
@@ -1079,11 +1107,12 @@ public class SequenceServices {
 	 * @param pkg
 	 *            Package containing new interaction.
 	 */
-	public void createInteraction(EObject pkg) {
+	public Interaction createInteraction(EObject pkg) {
 		final UMLFactory factory = UMLFactory.eINSTANCE;
 		final Interaction interaction = factory.createInteraction();
 		interaction.setName(NamedElementServices.getNewInteractionName((Package)pkg));
 		((Package)pkg).getPackagedElements().add(interaction);
+		return interaction;
 	}
 
 	/**
@@ -1362,7 +1391,15 @@ public class SequenceServices {
 	 *            Finish predecessor
 	 */
 	public void createOperationAndAsynchMessage(NamedElement target, NamedElement source,
-			NamedElement startingEndPredecessor, NamedElement finishingEndPredecessor) {
+			EventEnd startingEndPredecessor, EventEnd finishingEndPredecessor) {
+		Element startingEndPredecessorSemanticEnd = null;
+		if (startingEndPredecessor != null) {
+			startingEndPredecessorSemanticEnd = (Element)startingEndPredecessor.getSemanticEnd();
+		}
+		Element finishingEndPredecessorSemanticEnd = null;
+		if (finishingEndPredecessor != null) {
+			finishingEndPredecessorSemanticEnd = (Element)finishingEndPredecessor.getSemanticEnd();
+		}
 		// Get associated class and interaction
 		org.eclipse.uml2.uml.Type type;
 		Interaction interaction;
@@ -1375,8 +1412,8 @@ public class SequenceServices {
 		}
 		final Operation operation = operationService.createOperation(type);
 		// Create message
-		createAsynchronousMessage(interaction, source, target, true, startingEndPredecessor,
-				finishingEndPredecessor, operation);
+		createAsynchronousMessage(interaction, source, target, true, startingEndPredecessorSemanticEnd,
+				finishingEndPredecessorSemanticEnd, operation);
 	}
 
 	/**
@@ -1393,7 +1430,15 @@ public class SequenceServices {
 	 *            Finish predecessor
 	 */
 	public void createOperationAndSynchMessage(NamedElement target, NamedElement source,
-			NamedElement startingEndPredecessor, NamedElement finishingEndPredecessor) {
+			EventEnd startingEndPredecessor, EventEnd finishingEndPredecessor) {
+		Element startingEndPredecessorSemanticEnd = null;
+		if (startingEndPredecessor != null) {
+			startingEndPredecessorSemanticEnd = (Element)startingEndPredecessor.getSemanticEnd();
+		}
+		Element finishingEndPredecessorSemanticEnd = null;
+		if (finishingEndPredecessor != null) {
+			finishingEndPredecessorSemanticEnd = (Element)finishingEndPredecessor.getSemanticEnd();
+		}
 		// Get associated class and interaction
 		org.eclipse.uml2.uml.Type type;
 		Interaction interaction;
@@ -1406,8 +1451,8 @@ public class SequenceServices {
 		}
 		final Operation operation = operationService.createOperation(type);
 		// Create message
-		createSynchronousMessage(interaction, source, target, true, startingEndPredecessor,
-				finishingEndPredecessor, operation);
+		createSynchronousMessage(interaction, source, target, true, startingEndPredecessorSemanticEnd,
+				finishingEndPredecessorSemanticEnd, operation);
 	}
 
 	/**
@@ -1611,6 +1656,22 @@ public class SequenceServices {
 				finishingEndPredecessor, operation);
 	}
 
+	public void createAsynchronousMessageWithExecution(Interaction interaction, NamedElement sourceFragment,
+			NamedElement targetFragment, EventEnd startingEndPredecessor, EventEnd finishingEndPredecessor,
+			Operation operation) {
+		Element startingEndPredecessorSemanticEnd = null;
+		Element finishingEndPredecessorSemanticEnd = null;
+		if (startingEndPredecessor != null) {
+			startingEndPredecessorSemanticEnd = (Element)startingEndPredecessor.getSemanticEnd();
+		}
+		if (finishingEndPredecessor != null) {
+			finishingEndPredecessorSemanticEnd = (Element)finishingEndPredecessor.getSemanticEnd();
+		}
+
+		createAsynchronousMessage(interaction, sourceFragment, targetFragment, true,
+				startingEndPredecessorSemanticEnd, finishingEndPredecessorSemanticEnd, operation);
+	}
+
 	/**
 	 * Create asynchronous typed message.
 	 * 
@@ -1630,8 +1691,8 @@ public class SequenceServices {
 	 *            Operation associated to message
 	 */
 	public void createAsynchronousMessage(Interaction interaction, NamedElement sourceFragment,
-			NamedElement targetFragment, boolean createExecution, NamedElement startingEndPredecessor,
-			NamedElement finishingEndPredecessor, Operation operation) {
+			NamedElement targetFragment, boolean createExecution, Element startingEndPredecessor,
+			Element finishingEndPredecessor, Operation operation) {
 		final Lifeline target = getLifeline(targetFragment);
 
 		final BehaviorExecutionSpecification predecessorExecution = getExecution((InteractionFragment)startingEndPredecessor);
@@ -1989,4 +2050,165 @@ public class SequenceServices {
 		return result;
 	}
 
+	public boolean isRepresentingProperty(Lifeline element) {
+		// [getRepresents()<>null/]
+		return element.getRepresents() != null;
+	}
+
+	public List<Dependency> getClientDependencies(Lifeline element) {
+		// [lifeline.oclAsType(uml::Lifeline).clientDependencies/]
+		return element.getClientDependencies();
+	}
+
+	public boolean isValidMessageEnd(Element element) {
+		// [preTarget->filter(uml::Lifeline).represents.type<>null or
+		// preTarget->filter(uml::ExecutionSpecification).covered.represents.type<>null or
+		// preTarget->filter(uml::Lifeline).clientDependency.supplier.oclAsType(uml::Property).classifier<>null
+		// or
+		// preTarget->filter(uml::ExecutionSpecification).covered.clientDependency.supplier.classifier<>null/]
+		return (element instanceof Lifeline && ((Lifeline)element).getRepresents() != null)
+				|| (element instanceof ExecutionSpecification && isCoveredTypeSet(((ExecutionSpecification)element)))
+				|| (element instanceof Lifeline && ((Lifeline)element).getRepresents() != null);
+	}
+
+	private boolean isCoveredTypeSet(ExecutionSpecification element) {
+		if (element == null)
+			return false;
+		for (Lifeline covered : element.getCovereds()) {
+			ConnectableElement connectedElement = covered.getRepresents();
+			if (connectedElement.getTemplateParameter() != null)
+				return true;
+		}
+		return false;
+	}
+
+	private boolean isPropertyClassifierSet(Lifeline element) {
+		if (element == null)
+			return false;
+		for (Dependency dependency : element.getClientDependencies()) {
+			for (NamedElement supplier : dependency.getSuppliers()) {
+				if (supplier instanceof Property) {
+					return ((Property)supplier).getClass_() != null;
+				}
+			}
+		}
+		return false;
+	}
+
+	public boolean isValidMessageEnd(EObject preTarget) {
+		if (preTarget == null) {
+			return false;
+		}
+
+		if (preTarget instanceof Lifeline) {
+			return isValidMessageEndForLifeline(preTarget);
+
+		} else if (preTarget instanceof ExecutionSpecification) {
+			for (Lifeline lifeline : ((ExecutionSpecification)preTarget).getCovereds()) {
+				boolean result = isValidMessageEndForLifeline(lifeline);
+				if (result) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	private boolean isValidMessageEndForLifeline(EObject preTarget) {
+		ConnectableElement element = ((Lifeline)preTarget).getRepresents();
+		if (element != null && element.getType() != null) {
+			return true;
+		}
+		List<Dependency> dependencies = ((Lifeline)preTarget).getClientDependencies();
+		for (Dependency dependency : dependencies) {
+			for (NamedElement supplier : dependency.getSuppliers()) {
+				if (supplier.getClass() != null) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	public boolean isSynchCall(Message message) {
+		if (message == null)
+			return false;
+		return MessageSort.ASYNCH_CALL_LITERAL.equals(message.getMessageSort());
+	}
+
+	public boolean isReply(Message message) {
+		if (message == null)
+			return false;
+		return MessageSort.REPLY_LITERAL.equals(message.getMessageSort());
+	}
+
+	public boolean isNotReply(Message message) {
+		return !isReply(message);
+	}
+
+	public Set<EObject> getEndsOrdering(Interaction interaction, List<EObject> eventEnds) {
+		Set<EObject> endsOrderingSet = ImmutableSet.copyOf(getEndsOrdering(interaction));
+		Set<EObject> eventEndsSet = ImmutableSet.copyOf(eventEnds);
+		Sets.SetView<EObject> intersection = Sets.intersection(endsOrderingSet, eventEndsSet);
+		return intersection;
+	}
+
+	public void reorderFragment(Element fragment, EventEnd startingEndPredecessorAfter,
+			EventEnd finishingEndPredecessorAfter) {
+		InteractionFragment startingEndPredecessorAfterSemanticEnd = (InteractionFragment)startingEndPredecessorAfter
+				.getSemanticEnd();
+		InteractionFragment finishingEndPredecessorAfterSemanticEnd = (InteractionFragment)finishingEndPredecessorAfter
+				.getSemanticEnd();
+		if (fragment instanceof CombinedFragment) {
+			reorder((CombinedFragment)fragment, startingEndPredecessorAfterSemanticEnd,
+					finishingEndPredecessorAfterSemanticEnd);
+		} else if (fragment instanceof ExecutionSpecification) {
+			reorder((ExecutionSpecification)fragment, startingEndPredecessorAfterSemanticEnd,
+					finishingEndPredecessorAfterSemanticEnd);
+		} else if (fragment instanceof Message) {
+			reorder((Message)fragment, startingEndPredecessorAfterSemanticEnd,
+					finishingEndPredecessorAfterSemanticEnd);
+		}
+	}
+
+	/**
+	 * Retrieve the nearest package associated to a lifeline. Method used to find the class diagram package.
+	 * 
+	 * @param lifeline
+	 *            Lifeline
+	 * @return Class diagram package
+	 */
+	public Package getClassDiagramFromLifeline(Lifeline lifeline) {
+		if (lifeline != null) {
+			ConnectableElement element = lifeline.getRepresents();
+			if (element != null) {
+				Type type = element.getType();
+				if (type != null) {
+					return type.getPackage();
+				}
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Retrieve the nearest package associated to an execution. Method used to find the class diagram package.
+	 * 
+	 * @param execution
+	 *            Execution
+	 * @return Class diagram package
+	 */
+	public Package getClassDiagramFromExecution(BehaviorExecutionSpecification execution) {
+		if (execution != null) {
+			Behavior behavior = execution.getBehavior();
+			if (behavior != null) {
+				BehavioralFeature feature = behavior.getSpecification();
+				if (feature != null) {
+					return feature.getNearestPackage();
+				}
+			}
+		}
+		return null;
+	}
 }

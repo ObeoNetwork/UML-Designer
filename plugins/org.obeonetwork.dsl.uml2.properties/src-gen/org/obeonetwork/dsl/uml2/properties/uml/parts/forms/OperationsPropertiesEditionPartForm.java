@@ -168,6 +168,8 @@ public class OperationsPropertiesEditionPartForm extends SectionPropertiesEditin
     GridData operationsData = new GridData(GridData.FILL_HORIZONTAL);
     operationsData.horizontalSpan = 3;
     this.operations.setLayoutData(operationsData);
+    this.operations.setLowerBound(0);
+    this.operations.setUpperBound(-1);
     operations.setID(UmlViewsRepository.Operations.operations_);
     operations.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
     // Start of user code for createOperationsTableComposition

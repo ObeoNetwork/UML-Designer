@@ -11,18 +11,18 @@
 
 package org.obeonetwork.dsl.uml2.design.tests.contexts;
 
-import static org.junit.Assert.*;
-	import org.obeonetwork.dsl.uml2.design.tests.automation.Context;
+import static org.junit.Assert.assertEquals;
+
+import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 
 // Start of user code APackageSelectedInTheModelExplorer imports
-import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 // End of user code
 
 /**
  * Context : A package selected in the model explorer
  */
 public class APackageSelectedInTheModelExplorer extends UnactivateUmlUsage {
-// Start of user code APackageSelectedInTheModelExplorer variables
+	// Start of user code APackageSelectedInTheModelExplorer variables
 	protected UMLDesignerBot bot = new UMLDesignerBot();
 
 	// End of user code
@@ -43,6 +43,7 @@ public class APackageSelectedInTheModelExplorer extends UnactivateUmlUsage {
 		bot.deleteTravelAgencyProject();
 		// End of user code
 	}
+
 	/**
 	 * Action : I create a new class diagram
 	 */
@@ -62,7 +63,7 @@ public class APackageSelectedInTheModelExplorer extends UnactivateUmlUsage {
 		// End of user code
 	}
 
-// Start of user code APackageSelectedInTheModelExplorer private methods
+	// Start of user code APackageSelectedInTheModelExplorer private methods
 	// Nothing
 	// End of user code
 }

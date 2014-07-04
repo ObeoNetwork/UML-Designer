@@ -1,0 +1,13 @@
+---
+layout: article
+title: Validate an application
+subtitle: Reference Documentation
+relativePath: ..
+---
+
+UML Designer provides a mean to evaluate and ensure the well-formedness of the UML model. On any diagram a tool is available to launch diagram validation.
+!{{ page.relativePath }}/images/ValidateDiagram.png!
+			
+
+The validation errors and warnings are listed in the problem view and decorators are positioned on the invalid elements in the diagrams.
+!{{ page.relativePath }}/images/ValidationReport.png!

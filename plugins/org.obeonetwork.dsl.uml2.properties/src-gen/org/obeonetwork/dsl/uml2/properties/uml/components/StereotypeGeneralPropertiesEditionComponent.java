@@ -158,7 +158,6 @@ public class StereotypeGeneralPropertiesEditionComponent extends SinglePartPrope
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Stereotype stereotype = (Stereotype)semanticObject;
-
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			stereotype.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}
@@ -300,6 +299,8 @@ public class StereotypeGeneralPropertiesEditionComponent extends SinglePartPrope
 		return ret;
 	}
 
+
+	
 
 	
 

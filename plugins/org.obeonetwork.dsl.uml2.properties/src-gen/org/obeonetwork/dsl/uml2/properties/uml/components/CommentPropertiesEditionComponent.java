@@ -120,7 +120,6 @@ public class CommentPropertiesEditionComponent extends SinglePartPropertiesEditi
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Comment comment = (Comment)semanticObject;
-
 		if (UmlViewsRepository.General.body == event.getAffectedEditor()) {
 			comment.setBody((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}
@@ -191,6 +190,8 @@ public class CommentPropertiesEditionComponent extends SinglePartPropertiesEditi
 		return ret;
 	}
 
+
+	
 
 	
 

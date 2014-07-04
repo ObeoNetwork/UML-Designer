@@ -24,6 +24,8 @@ public class UsageMessages extends NLS {
 	public static String Usage_GoogleAnalytics;
 	public static String Usage_ActivationPageURL;
 	public static String Usage_ActivationPageTitle;
+	public static String Usage_OpenPageURL;
+	public static String Usage_OpenPageTitle;
 
 	public static String Error_CreatingGoogleAnalyticsConfig;
 	public static String Error_OpeningUsageHyperlink;

@@ -153,17 +153,17 @@
     
      <!-- Viewpoint Specification -->
       <activity
-            id="fr.obeo.dsl.viewpoint.specification.activity"
+            id="org.eclipse.sirius.specification.activity"
             description="Viewpoint specification"
             name="viewpointspecification">
       </activity>
       <activityPatternBinding
-            activityId="fr.obeo.dsl.viewpoint.specification.activity"
-            pattern=".*/fr.obeo.dsl.viewpoint.ui.specificationproject.wizard">
+            activityId="org.eclipse.sirius.specification.activity"
+            pattern=".*/org.eclipse.sirius.ui.specificationproject.wizard">
       </activityPatternBinding>
     
      <categoryActivityBinding
-            activityId="fr.obeo.dsl.viewpoint.specification.activity"
+            activityId="org.eclipse.sirius.specification.activity"
             categoryId="org.eclipse.emf.Category">
       </categoryActivityBinding>
    </extension>
@@ -174,11 +174,15 @@
       <property name="windowImages" value="icons/logo_16.gif,icons/logo_32.gif,icons/logo_64.gif"/>
       <property name="appName" value="UML Designer"/>
       <property name="aboutImage" value="icons/about.gif"/>
-      <property name="aboutText" value="UML Designer &#x0A;&#x0A;Version  3.0.0&#x0A;&#x0A;&#x0A;(c) Copyright (c) 2005-2013 Obeo. All Rights Reserved.&#x0A;Viewpoint Specification : (c) Copyright (c) 2005-2013 Thales.&#x0A;&#x0A;Visit http://www.obeo.fr"/>
+      <property name="aboutText" value="UML Designer &#x0A;&#x0A;Version  4.0.0&#x0A;&#x0A;&#x0A;(c) Copyright (c) 2005-2013 Obeo. All Rights Reserved.&#x0A;Viewpoint Specification : (c) Copyright (c) 2005-2013 Thales.&#x0A;&#x0A;Visit http://www.obeo.fr"/>
       <property name="startupForegroundColor" value="000000"/>
       <property name="startupMessageRect" value="3,300,495,15"/>
       <property name="startupProgressRect" value="3,315,495,15"/>
       <property name="preferenceCustomization" value="plugin_customization.ini"/>
+      <property
+            name="cssTheme"
+            value="org.eclipse.e4.ui.css.theme.e4_default">
+      </property>
     </product>
   </extension>
    <extension

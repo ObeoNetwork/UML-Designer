@@ -12,17 +12,16 @@ import org.eclipse.gmf.runtime.diagram.ui.services.editpart.AbstractEditPartProv
 import org.eclipse.gmf.runtime.diagram.ui.services.editpart.CreateGraphicEditPartOperation;
 import org.eclipse.gmf.runtime.diagram.ui.services.editpart.IEditPartOperation;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
+import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Property;
-import org.obeonetwork.dsl.uml2.design.services.UMLServices;
+import org.obeonetwork.dsl.uml2.design.services.ClassDiagramServices;
 import org.obeonetwork.dsl.uml2.design.services.internal.EditLabelSwitch;
-
-import fr.obeo.dsl.viewpoint.DSemanticDecorator;
-import fr.obeo.dsl.viewpoint.diagram.internal.edit.parts.DEdgeBeginNameEditPart;
-import fr.obeo.dsl.viewpoint.diagram.internal.edit.parts.DEdgeEndNameEditPart;
-import fr.obeo.dsl.viewpoint.diagram.part.ViewpointVisualIDRegistry;
-import fr.obeo.dsl.viewpoint.diagram.tools.api.command.GMFCommandWrapper;
 
 public class UMLEditPartProvider extends AbstractEditPartProvider {
 
@@ -30,7 +29,7 @@ public class UMLEditPartProvider extends AbstractEditPartProvider {
 	 * @generated
 	 */
 	public synchronized IGraphicalEditPart createGraphicEditPart(View view) {
-		switch (ViewpointVisualIDRegistry.getVisualID(view)) {
+		switch (SiriusVisualIDRegistry.getVisualID(view)) {
 
 			case DEdgeBeginNameEditPart.VISUAL_ID:
 				DEdgeBeginNameEditPart dEdgePart = new DEdgeBeginNameEditPart(view) {
@@ -66,7 +65,7 @@ public class UMLEditPartProvider extends AbstractEditPartProvider {
 			View view = ((IEditPartOperation)operation).getView();
 			if (view.getElement() instanceof DSemanticDecorator) {
 				if (((DSemanticDecorator)view.getElement()).getTarget() instanceof Element) {
-					switch (ViewpointVisualIDRegistry.getVisualID(view)) {
+					switch (SiriusVisualIDRegistry.getVisualID(view)) {
 
 						case DEdgeBeginNameEditPart.VISUAL_ID:
 							return true;
@@ -96,7 +95,7 @@ public class UMLEditPartProvider extends AbstractEditPartProvider {
 					if (element instanceof DSemanticDecorator) {
 						EObject target = ((DSemanticDecorator)element).getTarget();
 						if (target instanceof Association) {
-							Property end = new UMLServices().getSource((Association)target);
+							Property end = new ClassDiagramServices().getSource((Association)target);
 							if (end != null) {
 								EditLabelSwitch swch = new EditLabelSwitch();
 								swch.setEditedLabelContent(labelText);
@@ -128,7 +127,7 @@ public class UMLEditPartProvider extends AbstractEditPartProvider {
 					if (element instanceof DSemanticDecorator) {
 						EObject target = ((DSemanticDecorator)element).getTarget();
 						if (target instanceof Association) {
-							Property end = new UMLServices().getTarget((Association)target);
+							Property end = new ClassDiagramServices().getTarget((Association)target);
 							if (end != null) {
 								EditLabelSwitch swch = new EditLabelSwitch();
 								swch.setEditedLabelContent(labelText);

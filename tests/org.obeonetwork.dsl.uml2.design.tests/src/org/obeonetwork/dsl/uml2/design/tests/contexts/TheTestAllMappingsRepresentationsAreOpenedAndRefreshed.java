@@ -11,8 +11,7 @@
 
 package org.obeonetwork.dsl.uml2.design.tests.contexts;
 
-import static org.junit.Assert.*;
-	import org.obeonetwork.dsl.uml2.design.tests.automation.Context;
+import static org.junit.Assert.assertTrue;
 
 // Start of user code TheTestAllMappingsRepresentationsAreOpenedAndRefreshed imports
 import java.util.Collection;
@@ -24,28 +23,28 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
+import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.obeonetwork.dsl.uml2.design.tests.Activator;
 
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
-import fr.obeo.dsl.viewpoint.DAnalysis;
-import fr.obeo.dsl.viewpoint.DRepresentation;
-import fr.obeo.dsl.viewpoint.DRepresentationElement;
-import fr.obeo.dsl.viewpoint.DView;
-import fr.obeo.dsl.viewpoint.business.api.componentization.ViewpointRegistry;
-import fr.obeo.dsl.viewpoint.business.api.session.Session;
-import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
-import fr.obeo.dsl.viewpoint.description.DiagramElementMapping;
-import fr.obeo.dsl.viewpoint.description.Viewpoint;
 // End of user code
 
 /**
  * Context : The test all mappings representations are opened and refreshed
  */
 public class TheTestAllMappingsRepresentationsAreOpenedAndRefreshed extends UnactivateUmlUsage {
-// Start of user code TheTestAllMappingsRepresentationsAreOpenedAndRefreshed variables
+	// Start of user code TheTestAllMappingsRepresentationsAreOpenedAndRefreshed variables
 	protected UMLDesignerBot bot;
 
 	Collection<DiagramElementMapping> mappings;
@@ -92,6 +91,7 @@ public class TheTestAllMappingsRepresentationsAreOpenedAndRefreshed extends Unac
 		bot.deleteTestAllMappings();
 		// End of user code
 	}
+
 	/**
 	 * Action : I have a look to all the diagrams
 	 */
@@ -145,16 +145,24 @@ public class TheTestAllMappingsRepresentationsAreOpenedAndRefreshed extends Unac
 		// End of user code
 	}
 
-// Start of user code TheTestAllMappingsRepresentationsAreOpenedAndRefreshed private methods
+	// Start of user code TheTestAllMappingsRepresentationsAreOpenedAndRefreshed private methods
 	private Collection<String> getSpecifiedMappings() {
 		List<String> parameters = Lists.newArrayList();
-		Viewpoint structural = ViewpointRegistry.getInstance().getViewpoint(
-				URI.createURI("viewpoint:/org.obeonetwork.dsl.uml2.design/UML Structural Modeling"));
-		collectMappingsFromViewpoint(parameters, structural);
+		Viewpoint capture = ViewpointRegistry.getInstance().getViewpoint(
+				URI.createURI("viewpoint:/org.obeonetwork.dsl.uml2.design/Capture"));
+		collectMappingsFromViewpoint(parameters, capture);
 
-		Viewpoint behavior = ViewpointRegistry.getInstance().getViewpoint(
-				URI.createURI("viewpoint:/org.obeonetwork.dsl.uml2.design/UML Behavioral Modeling"));
-		collectMappingsFromViewpoint(parameters, behavior);
+		Viewpoint design = ViewpointRegistry.getInstance().getViewpoint(
+				URI.createURI("viewpoint:/org.obeonetwork.dsl.uml2.design/Design"));
+		collectMappingsFromViewpoint(parameters, design);
+
+		Viewpoint review = ViewpointRegistry.getInstance().getViewpoint(
+				URI.createURI("viewpoint:/org.obeonetwork.dsl.uml2.design/Review"));
+		collectMappingsFromViewpoint(parameters, review);
+
+		Viewpoint extend = ViewpointRegistry.getInstance().getViewpoint(
+				URI.createURI("viewpoint:/org.obeonetwork.dsl.uml2.design/Extend"));
+		collectMappingsFromViewpoint(parameters, extend);
 		return parameters;
 	}
 

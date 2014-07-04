@@ -11,22 +11,24 @@ Contributors:
     Obeo - initial API and implementation
 -->
 <plugin>
-		<extension
-				point="fr.obeo.dsl.viewpoint.componentization">
-		<component
-				class="org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin" id="org.obeonetwork.dsl.uml2.design" name="uml2">
-		</component>
-		</extension>
+  <extension
+        point="org.eclipse.sirius.componentization">
+     <component
+           class="org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin"
+           id="org.obeonetwork.dsl.uml2.design"
+           name="uml2">
+     </component>
+  </extension>
   <extension
         point="org.eclipse.ui.newWizards">
      <wizard
            category="org.obeonetwork.dsl.uml2.design.category"
            class="org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel.UmlModelWizard"
-           finalPerspective="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
+           finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
            icon="icons/NewUmlModel.gif"
            id="org.obeonetwork.dsl.uml2.wizard.newUmlModel"
            name="UML Model"
-           preferredPerspectives="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
+           preferredPerspectives="org.eclipse.sirius.ui.tools.perspective.modeling"
            project="false">
      </wizard>
      <category
@@ -36,11 +38,11 @@ Contributors:
      <wizard
            category="org.obeonetwork.dsl.uml2.design.category"
            class="org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel.UMLProjectWizard"
-           finalPerspective="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
+           finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
            icon="icons/NewUmlModel.gif"
            id="org.obeonetwork.dsl.uml2.design.wizard1"
            name="UML Project"
-           preferredPerspectives="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
+           preferredPerspectives="org.eclipse.sirius.ui.tools.perspective.modeling"
            project="true">
      </wizard>
   </extension>
@@ -57,36 +59,59 @@ Contributors:
     <extension
          point="org.eclipse.ui.commands">
       <command
-            id="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.delete"
+            id="org.eclipse.sirius.ui.navigator.actions.uml.delete"
             name="Delete UML Element">
       </command>
         <command
-            id="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.scenario.create"
+            id="org.eclipse.sirius.ui.navigator.actions.uml.scenario.create"
             name="Create Scenario">
       </command>
         <command
-              id="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.sequence"
+              id="org.eclipse.sirius.ui.navigator.actions.uml.create.sequence"
               name="Create Sequence Diagram">
         </command>
         <command
-              id="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.activity"
+              id="org.eclipse.sirius.ui.navigator.actions.uml.create.activity"
               name="Create Activity Diagram">
         </command>
         <command
-              id="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.profile"
+              id="org.eclipse.sirius.ui.navigator.actions.uml.create.profile"
               name="Create Profile Diagram">
         </command>
         <command
-              id="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.statemachine"
+              id="org.eclipse.sirius.ui.navigator.actions.uml.create.statemachine"
               name="Create State Machine Diagram">
         </command>
+        <command
+              id="org.obeonetwork.dsl.uml2.actions.openDashboard"
+              name="Open Dashboard">
+           <commandParameter
+                 id="org.obeonetwork.dsl.uml2.actions.openDashboard.param.model"
+                 name="model"
+                 optional="true"
+                 typeId="org.obeonetwork.dsl.uml2.actions.openDashboard.param.modelType">
+           </commandParameter>
+        </command>
+        <command
+              id="org.obeonetwork.dsl.uml2.actions.newUmlProject"
+              name="New UML Project">
+        </command>
+        <command
+              id="org.obeonetwork.dsl.uml2.actions.newUmlModel"
+              name="New UML Model">
+        </command>
+        <commandParameterType
+              converter="org.obeonetwork.dsl.uml2.design.ui.extension.commands.UmlElementConverter"
+              id="org.obeonetwork.dsl.uml2.actions.openDashboard.param.modelType"
+              type="org.eclipse.uml2.uml.Model">
+        </commandParameterType>
    </extension>
   
    <extension
          point="org.eclipse.ui.handlers">
         <handler
               class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.DeleteUMLElement"
-              commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.delete">
+              commandId="org.eclipse.sirius.ui.navigator.actions.uml.delete">
            <enabledWhen>
             <with variable="selection">
 		           <iterate
@@ -99,7 +124,7 @@ Contributors:
         </handler>
          <handler
               class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.CreateScenario"
-              commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.scenario.create">
+              commandId="org.eclipse.sirius.ui.navigator.actions.uml.scenario.create">
            <enabledWhen>
             <with variable="selection">
                  <iterate
@@ -110,7 +135,7 @@ Contributors:
                   </instanceof>
 		          <test
                      forcePluginActivation="true"
-                     property="org.obeonetwork.dsl.uml2.design.Behavioral">
+                     property="org.obeonetwork.dsl.uml2.design.Design">
                   </test>
                </iterate>		           
        		</with>
@@ -118,7 +143,7 @@ Contributors:
         </handler>
          <handler
                class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.CreateSequenceDiagram"
-               commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.sequence">
+               commandId="org.eclipse.sirius.ui.navigator.actions.uml.create.sequence">
             <enabledWhen>
                <with
                      variable="selection">
@@ -130,7 +155,7 @@ Contributors:
                      </instanceof>
                      <test
                            forcePluginActivation="true"
-                           property="org.obeonetwork.dsl.uml2.design.Behavioral">
+                           property="org.obeonetwork.dsl.uml2.design.Design">
                      </test>
                   </iterate>
                </with>
@@ -138,7 +163,7 @@ Contributors:
          </handler>
          <handler
                class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.CreateActivityDiagram"
-               commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.activity">
+               commandId="org.eclipse.sirius.ui.navigator.actions.uml.create.activity">
             <enabledWhen>
                <with
                      variable="selection">
@@ -150,7 +175,7 @@ Contributors:
                      </instanceof>
                      <test
                            forcePluginActivation="true"
-                           property="org.obeonetwork.dsl.uml2.design.Behavioral">
+                           property="org.obeonetwork.dsl.uml2.design.Design">
                      </test>
                   </iterate>
                </with>
@@ -158,7 +183,7 @@ Contributors:
          </handler>
          <handler
                class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.CreateProfileDiagram"
-               commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.profile">
+               commandId="org.eclipse.sirius.ui.navigator.actions.uml.create.profile">
             <enabledWhen>
                <with
                      variable="selection">
@@ -167,7 +192,7 @@ Contributors:
                         operator="and">
                      <test
                            forcePluginActivation="true"
-                           property="org.obeonetwork.dsl.uml2.design.Profile">
+                           property="org.obeonetwork.dsl.uml2.design.Extend">
                      </test>
                      <instanceof
                            value="org.eclipse.uml2.uml.Package">
@@ -183,7 +208,7 @@ Contributors:
          </handler>
          <handler
                class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.CreateStateMachineDiagram"
-               commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.statemachine">
+               commandId="org.eclipse.sirius.ui.navigator.actions.uml.create.statemachine">
             <enabledWhen>
                <with
                      variable="selection">
@@ -195,11 +220,28 @@ Contributors:
                      </instanceof>
                      <test
                            forcePluginActivation="true"
-                           property="org.obeonetwork.dsl.uml2.design.Behavioral">
+                           property="org.obeonetwork.dsl.uml2.design.Design">
                      </test>
                   </iterate>
                </with>
             </enabledWhen>
+         </handler>
+         <handler
+               class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.OpenDashboard"
+               commandId="org.obeonetwork.dsl.uml2.actions.openDashboard">
+            <enabledWhen>
+               <reference
+                     definitionId="org.obeonetwork.dsl.uml2.design.DashboardsExistDefinition">
+               </reference>
+            </enabledWhen>
+         </handler>
+         <handler
+               class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.NewUmlProject"
+               commandId="org.obeonetwork.dsl.uml2.actions.newUmlProject">
+         </handler>
+         <handler
+               class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.NewUmlModel"
+               commandId="org.obeonetwork.dsl.uml2.actions.newUmlModel">
          </handler>
    </extension>
   
@@ -211,7 +253,7 @@ Contributors:
          <command
                icon="icons/deleteModel.gif"               
                label="Delete"
-               commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.delete"
+               commandId="org.eclipse.sirius.ui.navigator.actions.uml.delete"
                style="push">
             <visibleWhen
                   checkEnabled="true">
@@ -225,7 +267,7 @@ Contributors:
                visible="true">
          </separator>
          <command
-               commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.sequence"
+               commandId="org.eclipse.sirius.ui.navigator.actions.uml.create.sequence"
                icon="icons/SequenceDDiagram.gif"
                label="Sequence Diagram"
                style="push">
@@ -234,7 +276,7 @@ Contributors:
             </visibleWhen>
          </command>
          <command
-               commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.activity"
+               commandId="org.eclipse.sirius.ui.navigator.actions.uml.create.activity"
                icon="icons/DDiagram.gif"
                label="Activity Diagram"
                style="push">
@@ -243,7 +285,7 @@ Contributors:
             </visibleWhen>
          </command>
          <command
-               commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.profile"
+               commandId="org.eclipse.sirius.ui.navigator.actions.uml.create.profile"
                icon="icons/DDiagram.gif"
                label="Profile Diagram"
                style="push">
@@ -252,7 +294,7 @@ Contributors:
             </visibleWhen>
          </command>
          <command
-               commandId="fr.obeo.dsl.viewpoint.ui.navigator.actions.uml.create.statemachine"
+               commandId="org.eclipse.sirius.ui.navigator.actions.uml.create.statemachine"
                icon="icons/DDiagram.gif"
                label="State Machine Diagram"
                style="push">
@@ -261,6 +303,77 @@ Contributors:
             </visibleWhen>
          </command>
       </menuContribution>
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="org.obeonetwork.dsl.uml2.toolbar.newUmlProject"
+               label="New UML Project">
+            <command
+                  commandId="org.obeonetwork.dsl.uml2.actions.newUmlProject"
+                  icon="icons/NewUmlProject.gif"
+                  label="New UML Project"
+                  style="push"
+                  tooltip="Create a new UML Project">
+               <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="activeWorkbenchWindow.activePerspective">
+                     <equals
+                           value="org.eclipse.sirius.ui.tools.perspective.modeling">
+                     </equals>
+                  </with>
+               </visibleWhen>
+            </command>
+         </toolbar>
+         <toolbar
+               id="org.obeonetwork.dsl.uml2.toolbar.newUmlModel"
+               label="New UML Model">
+            <command
+                  commandId="org.obeonetwork.dsl.uml2.actions.newUmlModel"
+                  icon="icons/NewUmlModel.gif"
+                  label="New UML Model"
+                  style="push"
+                  tooltip="Create a new UML Model">
+               <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="activeWorkbenchWindow.activePerspective">
+                     <equals
+                           value="org.eclipse.sirius.ui.tools.perspective.modeling">
+                     </equals>
+                  </with>
+               </visibleWhen>
+            </command>
+         </toolbar>
+         <toolbar
+               id="org.obeonetwork.dsl.uml2.toolbar.openDashboard"
+               label="Dashboard">
+            <command
+                  commandId="org.obeonetwork.dsl.uml2.actions.openDashboard"
+                  icon="icons/Dashboard.gif"
+                  label="Dashboard"
+                  style="pulldown"
+                  tooltip="Open UML Designer Dashboard">
+               <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="activeWorkbenchWindow.activePerspective">
+                     <equals
+                           value="org.eclipse.sirius.ui.tools.perspective.modeling">
+                     </equals>
+                  </with>
+               </visibleWhen>
+            </command>
+         </toolbar>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:org.obeonetwork.dsl.uml2.actions.openDashboard">
+         <dynamic
+               class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.DashboardContributionItems"
+               id="org.obeonetwork.dsl.uml2.design.dynamicDashboard">
+         </dynamic>
+      </menuContribution>
    </extension>
     <extension
           point="org.eclipse.core.expressions.propertyTesters">
@@ -268,14 +381,21 @@ Contributors:
              class="org.obeonetwork.dsl.uml2.design.ui.extension.ViewpointEnablementPropertyTester"
              id="org.obeonetwork.dsl.uml2.design.ViewpointEnabled"
              namespace="org.obeonetwork.dsl.uml2.design"
-             properties="Behavioral,Structural,Profile"
+             properties="Capture,Design,Review,Extend"
              type="org.eclipse.uml2.uml.Element">
+       </propertyTester>
+       <propertyTester
+             class="org.obeonetwork.dsl.uml2.design.ui.extension.DashboardPropertyTester"
+             id="org.obeonetwork.dsl.uml2.design.DashboardsExist"
+             namespace="org.obeonetwork.dsl.uml2.design"
+             properties="dashboardsExist"
+             type="java.lang.Object">
        </propertyTester>
     </extension>
     <extension
           point="org.eclipse.ui.perspectiveExtensions">
        <perspectiveExtension
-             targetID="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling">
+             targetID="org.eclipse.sirius.ui.tools.perspective.modeling">
           <newWizardShortcut
                 id="org.obeonetwork.dsl.uml2.wizard.newUmlModel">
           </newWizardShortcut>
@@ -283,9 +403,6 @@ Contributors:
                 id="org.obeonetwork.dsl.uml2.design.wizard1">
           </newWizardShortcut>
        </perspectiveExtension>
-    </extension>
-    <extension point="fr.obeo.oo15oo.oo19oo.obeolicense">
-      <entry key="bfbdf44c41c82a940cfe96d29f086a511dcb979777526dae13eeee9ca03658e7a6cb55b95ae01121f5ff6720a1976f9e0eeda38dbe7eeecce10ea6916396458c17e28e45790a86b77d8692869360d52609358931fba04569e45f65ac52a9b6c16aa3e1fa5a46c469e0892b2ee32520f564561dba85c0f55c3d8baf2a2b50a45b77a153342d5b8c433bd207cc6df4da61c64cf6ee2decac6623274109c8b30f956db81f6b1aff8b6018cb088a98c795cce33c561e64e15bf270907e7782b5a065f7d90835c3e501b41f45273efd3d17aa58b03f3c541b3d740413828f22b64ffdc19f1ea6236b8834212a714fc73bc4092216d3c565749eae7cbfd25d757e73fd5b7981cfa1d9a7e2c625924d745a97c2fbf5fbf9dc01ea18c6f226ab4ab314f7fb65ef95f43d9573e873757cdd60eb94760a4aa4986a1f7b90b5a828b5d7ef1a18070a27f48f9cf61ebe834687107a4aa7a2a299d6be6a98df0a0e4430a4a600cb910ffa194f8596d4a181555785eb02438ae5d4c664f985eff3993e1f055465544e35368714af724ef16212c479ba1d1bfefd8dc03ca4a160e233417b11c8e37bf10eb7b1241fecad631651239ee843bbf165bd14d9c8196fd2f2710b7b465e6075cdc387854ae7e4872aec2b0a66f0bf42d4e00b6da5ef5951b4b44437e1d6932ed69f3a00743f1c3ed0f2b7913aea478ba5dc3fd624da41788ebaad608565c637629e450332eec7c89bf2ce5413d2ae3db034915922385a8c6dcc422dc421b7b779de29b46e37c8a27ee715df37beb903666181ef6db387ca2d078430769ae55681204ff1f1175b8e635545db1487a689c5c74ced0040328d7730fd8a7fa654e7430bc9ffae22e2e38308419d48ab31fd80af32a47426434ba8e907399332eeec0bd2e7ddc943d418ac9206c2370ef90c3d58838a39a5896269d5c93c570912da5f8b6023d10859566c6d9ea56b5250e14bbba4d7a6da419548d85d1daa3b11bc43d47049cc5446a58a3f43da77ac0d95598fa4eaf6f92a5959c2dbb148a6768bb82eb0226059b6b0e0d154bdeef4902e0202af5872ebc8f1100acb0d530e84872a4fac7d9963e45b028d6fb47578f1bcf92ce39544e0d502e5a47c37478321ad1a07f62e4307af636619b9bce5e2d112cec2b86292f8ec24434173a3cdb6d97a7fd68a77931b0de85df90fc7c7368ac6deeec72366d9f1174351ca5c842e9bf769a73f8dec1be9613faa79e0aee4085fd12f2b5a462f8a970f0bd5399d36be906c2c8affd974ceb8f539fe81b49d93496ffc4bdfe27bb867a2c6db15d6eaaca854f1e68286eba750d441b0d11ec5b28694058d5fdf76fe690646411800dee004474f5d47a57760b0184f44968a1f8a9039f6c49b07fea6c33c283187dc152a7a2be39550d326e1232be8cf04ba6d93e940d13556793698f83f9c17da061f47170f7b26b9d840fa412dd2328d7f8ba60efa5dd106db03bfad9a77074457116d2854160d5b3fffaec8354745d536ade93770b2a4e5226e146c8b155411321d08169dea1b7011871a5b84612bd36edc878f955d79cf53745c1c2a27f30469642dd1d536a11335c04ae926886d2d6aa605cbd94e964de10d1afdf0edcff1fcf97c9bdaef5c11fe627afd2ad28634c24824a2ce23f11faac7add3aae0860de67d8962fac03b967334796e9f809b01cb0aee425ba315b9fe1df83b94178f428d4995ab277a123d77b2b5d0a2cdd79363317e1b5b95bc01253160389fbb137fc26c922b8897b0338b898306a781bd1d133911592877d77ee8c927b371144fcb6dc5bc974dd4b497420e40b87be2a093be93a1b94c1a3c778a54a44087ec32eda08279edcd7596a7846eb0ec30eeafc98dc8ea8f4a101024f83a385b8318ddf4842ed7626e49d2d4e248b8f166224577ac9b9d1d314f8bc14e978637a253a1c2748292bf05c88f398d91ebd1faf18b0c3a202705aced58c9500caf9a3ee84e17b36e45bbb9c91be68bbf58282551044ffa5ecdbffd24183a92e961100da906d1ad1913c36460c261e454bbb975698f6e59db8da3c529f8eb5025e9b9225fcc52a2ced0480acf15ff2122bff490698658e38a7881a314c03b625c0c08cd557339dd654b0e7b308625b450f605416daff9f3e658e6915b92026ac4efddbd9e3a4fb16387177af7d4598a19868d1a89eccd5566cfc7f712f746a9100f90a33b9a19704f27ee0dd3102efa4e92a597dfec90a2c9486a6dc9f73d332401204de700a8bde5cba0f3996e49eee13e3f97addeba6beab319dfff210900ef73e4b0a4fe1ab81c74ece92885701be706b37d82ce0acb46437d5e325e7190e6c37a289f0cb5bbf829a90274d0b3f0eb9c13410267d977a2f34f9d71ad073b7b100c802c181bf4ad3f27077633ccdf61d75471e39d3ac67ad795ecbafa988b7d0e20437e0bfa0f9d4f4b1e2b2933cb6096128c263c0436e91de69849cd531a395864e41cfa4011114ea8cd6e4ccd237dae2ea743e41e09663ee43c31258ba2c11ffe71a61f26f94432a49296763d0711bbebfba3279e51ba215982bbbe625a0b285d10608ba15b5a29622db325ecfceb06899480be9b8a161224fc72a610d25b107d500afc457dba73caa51a0ac8a060fec19571782cd030cf376f237ec97dbd02f734c0b3383b6712e96e83c74d6a2e0eaa322c49fed9cdf8e807b4ab4f035355d82aca46aeede8244b9490b662feb8c2e64d86243fcb2fefec8c45f692ca4c6f86c5251cd98a54ea81cf80edc6cbd401b7a6f01cba38c41159dc206fed3d95f8946fd66d2419902fc24cd352c7d3980102f65ff02c6b17323d967dcc18b7ad63368e65da6fb862e7920fd11d07c783cafbc77a82a3b24aa9b58330813b7a94d09486c6c95e2a907ec27d6d46435e2da5f9a755cfe8d9787b93b3a93eb910315314dc5c15cf322e472d92b1eb6ea015caa5c22b89417dd112faad934a77f4e0ac5bbd56decbc1365304a8b623999a3d335b5e184b6556484f1416f679b887e80eab207c0943544128c93e527adda8864c72e98cb462c03dcb531e76f5096c276d37f8d7f30d3d36495dec1a9d7acc43f9e0a7e39e5e2d5528a6ae81a143d1e9b33a6cb6f8171e6b16c329c9b06241d5ab440606e1089f0a25867a9642c068364671107695091240e0c664ed11831e7886f77443178881fb6184ecc42bbd7f0eea2f39d9714d777c3b615991739b6ba15a253b0bc20ec7008c18a7c5db982fabd83c490ba3927ad2b66731ca13f04258841bd9da21edce23577ca10dce5f3492ec6ef069ce85c2dd2b10693dcfd78a85f1a934dc9bdb6444c9694a7548438e5dde59b2e72f42f1d64b37e65f76d4c22147d7fcd0ef837166cbe873684a21765ba7180fdef524dc61cb0602c4e1699d0fd13b3ff8186c50d928c7e0dd8e01691521ccd7e2c306cb6324ba9c8e2c272a93cde3eacb0828305cb85ae0f9d3a5931914182c885c26ef04f3c8c5a5643c117434ff71b8ec66be3c54dab7df8659e7f1ce2b5542391fd51ecf37a162ceb4b7f8ff8efc73553ef2e8572aa1b9f88c21e5e1adc08cffa892ecc9740cb7f42dd9b4166c2bc7f58153cd6d60d49558195f2992cbefd5a1050bb8d711dc5146e00c00232634253f61518284c5fdce15cc51409febdaa999406d8434eef2aa329defa260b72a8d9ee0f10b8324789e08a74641688294105d36b76f876642adc816f34e2a6219521a9c9fd75eb2d6eaee799e0f7c3110b41f9b3155fe5266d7d47e30b7d01d576f2182447952a8517ee2503bf2fec480facf6c3db5e7104e07542f0e66f9127f8934cfe03cb4a19469f1447f7755e2369705d30631137296324344519a6cd97e7d3cc91ae0f2becf972b1c1ac7a435074dca89c00aba1f5ea009f01d75dce89d3c4199130ffc8d3acf57512dee43ab2c8d2d8276009c95936e4b51955eebf358f190788f8c403a2a9fb604afa2bc35f043ee4a408c4a049194b49b79332cf8be20d129552fb93337061c5880c8f6f465f57734ca056d78ad3ebe833488bd0801b7bcc4350cb78c1d6ed5f531717fd40a05a1594d25f1a568e507e40a7c51cabd552fb1afd311834a7e7c8269f1b3aa9cc13a8fd8ac4bf0fdb07ffb9922862b50d34b7136b4fc92bca4c56ac4e23f3cc7ae62076eae0ff5e527ec48370502a5d9aa826c1669db990f3140dfe8c3f8fc1db70e501395d7e4c89d3d1d3f2b5202309fb7471f5245e9e697d89bb51b9254b7d4802ea58a639a2f923a2b7dda034585384ff3b4fcf719aea07449b36182974a65ba099c1fbbf1745bb4198715bc694d101157971bcb6a90b74617d4afc6b6bc6ca58a795dc24a7abab0ff2e6703e5a084ac03dd1293cbb06cb560ca7a6b0c2e072fe90c7b770644b8683613207fddf921da5f4948bddee78e7f742f787b24d6d19094f09804b04d75b5f20224e5b2d847ba265ab29706ea315af151ffe1c52fa0f65f0f9a7cf42ae2ced0dc868dd9dc97d436ab829d0c707e54153460c397e6993669872d5032d2116d64f1a4f52f46d40d4544b3ae6650a8c08bd623b77f99e146d123576b1a2cf1e7262604c13cdf0cc1c26589baaec259c79ce529f87de7188998d603bb82a20bd5be7bcde04efc1def0be36c1344f82b14310f02a3a95fb6549c736c84dbba56b5ca48260702cb1e471588c7dd7d7d783a156e627e7dc0fe1ee6ec78542ee3bcd390357b4fd10152b5866aaa606ea4eb31da95c0c7a8f74854d1bbe72b037af4e06ce1b003ac014bea0b8c7b64852e9837dc6fc8137211a8d3bb0491d5f6f45a2c4ee9a0dc84eaeed35a1b7d2887e456b2d1267764714db62c90ab700224131fb9ce2e7be2f841ce19e0ca2590679e0a73ba1124daf6647256fae8031b6dbec11a5d0509c45960d4d2f782dfe16ac3b03273234ea17c5e96e14c62643bd89f1e5f93427a16d3d2efed373b577503ed31aa779542342ed414ed5290f0bc4156c2301d5c049f334a5bf088d8af84824acbda57a0f47e829ba31a4003d20180018758b7efbe7ed64a8e2776903354c8da3304b54446654b79afe46f6611e054936814bc4289369d0246d3d65fc79bdefb5437f7e4e9323f8fa820a2dc0af844a936470a8539c73522d5a9c4e5038cb12156fc4f6471f2f5badc9b5dfcb12c2951a8fde7469ae14695f14a597a857e49910eea38878dc7f627cd1ee9f7bb2c4aaa2950162143a41d21cac86b35bd63e7637ada69abcd7407d60321df6e94d686ccea4e13817b7f60424e7b0c06d3699e8b14acedfb91e08f1451b2c3c41aa70547e8fdeaa26116e3c062a8a2bf48fa0e6f0840c07baabb5718d015e2f8d71991af1b4e32fa8c5315ec672a86d51539345c2252deaec1ae1895ed2380c10d7f2f11686c7a4bf92ce410bedff748f9626fb278273af8ee2f84afdb81a6d28b71be174e1e91edb1500b2fae180494dfe1bd2c8fa35c6474557b4c873a1ee6d4f706dec55acb356d07e7ed874346bee9917a8a3dae85b6fe592603fe51af18485b798d235d4ae7fd76591e7bc57b8151a57e6b1cd21b6d2bd4be4997c28ce6d3a3c304149bb207821934354008c4578bac759395a3bb8e5c82cbad7164d6bcf66f5054cc7ee4ed6dd336823cab8ab2d463d5f3dfd8b25e253a4c694497bbebe8d45f4e4a23e4f35ad2fc2691e577e19021051c8db3da36715779d5683bf3229e736f3e2359b76c037a511d2bd2f080fe744a7c24cc981d904d3651389e6c3bdbcf34eff682bc9d5241ebf0ebd0ef4e982d172a68206a6acd0459213a07b681402938065a3d6b7a3aa10fa232de228b2a861e12565afdefbedaef6f2c7a81e4589b5f269867f47e309b3471e2c891a96e39a8c64424d00b1c05938ceba89ec4e504d3c799a054d3d1b2a29ed6c515836297e7786df15be56cce900b8d84d61a5510c4dadf70e3043fe567970d4e828db3b250bf656e660a38831b07c351ff6fa0868e6d634b05436bbd01aae34c83493a2bdeb74362330daab23f6d6a0b33b3fb5fa805013e1669905c8c826d7f20d053c2c333a647f09d40eee94eaf45367f5efaecd2180ab93584395f120676dc6ce5e418a1682d88b54220ca53842d4c8d063a8c9f24647a59a8b1fb87c5690f3234f1f253532a786ee5335d98449d002c069001e22f8d934efc9b8b1e77d1b07a1e14bdffc76f46941eb4b7ed87d3d07f723dfc6760b644c3dfad98a085f36c7db3abb93722381e3c40c54fb212a7cebf2ed0386dc899b074d54fc3a6d47306b5b2d318f793f12524a71db99f86b7db20b005819c5f5150e2a34c9bda895a7c6e990f95e6975e899a9899134e87bf6a05fc7b644c824652e3f093d5f240782b98448d3bb2c23e09985c9cd66f1436c4ae28e66750e4de31049c635d124860249195e7bd066ef9a5e751b3cfb5ab524d7c6dad100ed1c99552f8e86cd103bee8bdf188040d6754da0213fe3d8c86616d042f0ab5ba93de4061b5738c9ae1a1db350ba04221f1e5fc38487bf33ada22545c9f9d8b7d3e25c6bede8da5f317fa98977790845aab7fd00cbf75058dbd59c7b22aae1f37b25917caa4d2f5c3dbde30d2e9ab049915600b8df3b4d7ce393a5e12b850694de06ca8549958e1f227f4bf96ca85259ad6334656ae3f800185a371caf50caa33a07ea5ae26439ec6b1335cba72f99c6be6d2301326cfb29ac2f54a829a1eacb95912fd0dcb725657f43fe5c449089c50886f718e0ea5c89f52127f9c5f0a9ce4697de7136f8cf068f1013c6d9f0290e9c1b835ee03088bda791e29bab9005a72f785fb923975828a4f49c7ec1faa99526f1b67867677d211c8310773a01ccb46192c7058834a75a4919ef07db6fdeac24640be1cc447532a3f637cda5b7deaedf75d04335ccd1d84b65e96af0f17daf53693fc7fddb0d59ad6a09361c2f77b569e2df499f942e13747e1482c4c261be3c0c15204bd46a15b4e1d449ab6e68036f66ee1eb00df085f7fdfb3263a68fab940c80bdc78a3a5b3ab3182a8e7058ce71c7a6b15f4f9ec05f12b75dba2e9dbb723f158d7cd43a8a5e60e26a0b0381ac053e80f0e103fb9a0779b76e45caf71fbace2287fa758ff51f8084a216ceeb8a831eae365d5c06a7c9a644843e594e6272f59d4f8c4af93c416fa0e55490be26291ddab62d8e720e4d0cadbdd6d0c141b48217018bed899f12b4dc86a1051cab6f25534469b4d421257b9914f63a5b8bb6c31180c416b5377f17af5b657f6dcdcd303d06b499e3ee68025ce03ce4fe9d76a8b280401784be01d8ad6010764b9f50a4b7bec4ae97eb7b753ae94252c2a00281996a001988450d228fda713b5084ecd78745ce97e19a488e7e19bfd0356b1a27648c9967b234132eeb15be00e687f285eb652fc1fa436c54d20093edf8766d7c23bb735867bf65c80d225ff91e11c48116ce43d266bb03fd0e0c3e0150fde6a4a24c21478ef35f805907431e080f2238a0fbc396444e0d384f9d82f10ddb954fc691d3ac0dbc659bf7c039f353880d29022942e3536e927fb4d99208fb7bc8784f550d0512fea8f27ebbfecdead1ce1d19ec2f9f886f61518dcd01a0505ee3a268a869851244dd3e06cdfcc7af9fbfc90e064e12b48fbe4062e171aba79da1aa40a8c921a81d52067893caf48473994d746237042d543f1318d93ab4317fdeffbcb8b71eabeca3d1c6588095628a1012a17a51e3ab92c381d8111cb6722b151e1d198556b355b20b2dbb84993caef01df6298f19f2a7b7705771f6ad69449c6821e215437bd46024de259ec368267028a950e2884ef5f0df04dbdec92a9d8b1373c117dbcc2292938895d347b0f1c86dda76dfdf5900c5875012b8e7459a167c85049e1330d3d2e91142e8057b6b6245179d7d36122426f700394340ca8dcf459c6f6f207c1d1d77861216b836f8ad565507422fdf74f8a99c431cc6a1ec3c5174f3e948493c76a68a3ac7cac37d21087998bd953b9d3a776563779f638c6a7f9a47e3bcb4c41210a62aff52c78ab2c0343f2d1df3f3a36c2dac865a50076df9d39aa55b86401e0edaab25af3a4baf409817223a5d9227296c50a0393b298101141b61a91c88d4b571025a1a4ade862adba18e4ac954992874bc1e33a4b348833b4873b59659758332cff0dc3f7789ef7b947e9a3d9d2e5ec04b4e4e92313a1a6ff2a9b22e1c0e4b58efba0edaa3a15bddbcf5e4c75e2e38079da476445221502b0292cef2200239921a81617fcf9eae43db3832c95921424b0d2492f638fc53a3a924196a02abedd4f13cce740c0a43d99a3cd816d64dcf5e478fbc5e815851268189213b7330e6151f210875993b35d7b4c98d6c91484b831880a4cf739bcac2f1506d84c5a33cff276046a76fe795ed3aa668c180dfe8974fad294621cbb8645a711a047b231459a7eb50431714ae34a685b2accecbfce673c3a1f79c7a2b64c25b36c579873a1b6e490b831cd3f58baf4727f732228812d67af6c58e78626784cdd8175f6118b04070abb40a861ecfa3e4697f8e36599781d2e45daced941da445fec03e1f1e94b644f1f744c1c43cb578e81483a8323c803bd584ca2ee92e3033570d07e87ecc5fa7096588d544e4ba72a1eccd0e076cb93c7b409dd315d60b4d0ea38cf59b9cc4068510ae6aa5362ec0391e19857ad409495b3fd6221e5fac5661c60bc17ba658833dc8c800dfe79ffa358493a56b34fef6fb5ef89323685e72b80e1dc381b83c67a2070f97aebcada078df54891e62f573cb56bdb7aa536a696471730ede31ea5fc854600e1f5ef78ae8eaac082c742e57cdf0afe2e602cc9eb1de03cc7a2703fd5dcdaa4a95ea9654c6e71fb129651dc169f7210f618fe2047911a8567d53993d80f9160d9036bc8eab8d63fd2540e1ddd65b8eb1ea3b562c9dab0f01743a3c494d990e2b6dc03683fb8a9929457e59350b33070185776895909f627f14def0d017af7e5f1a0adaa8c903ccb644a943d5f48e2ae0694394979fa18417a64e94b73e41f7d34bef6fa9b4e95fc4897d2f28a1c2bc3e14fdd21759acdc811d368c40859abedd2111c974ad43c2521bd5c3527c51654768a700e941635b3d51f2879c2760e3a3bda10959ed5898f66abd77ac7dfb056e4877ff59e0ea175098c95b1e15850d776ed2232a1ae1cb7afd035f9ba8d44027e8c7dae62e646e2e1e3207182da3fe0be1379710c653244f457f48904fd300dae130072fff8289d947432194f8ef859e2fc6d798e9ba2042bca329a15d0577d94f80293259cb23a439bd2a71f48da24487ec883303ebfcaa7b96114bd167747e85b4e13e48a44d89e1c1b4f9dc517f386bebd78dc3cb177cdbbd4f8c1c57ed61c21aa8e2eb14bd7d573e5897b155fc12f6f0ea939a8266ba799cf52691371d10f9da9f7dcad12cefbe79bea8609a6d142c934fda6de5af6d127cc365cb33cd7345ab3686a22e31fadcdc193749f186c1a6fe991e8b2b1cb45ed81575832b2989156e8ec7cf988d5c02f91792a93ec22f90dcb53f430f1ddbb63c7fe7f15e30e8a180277c0394743065ad68eb44d057e9dceec375334f35955e52ef0331941cd0860e9701967e6a644edaf0ac0c02cd5c238dcde2e35875a680fe10b274e9b8d3a83c5a10568d6ea73376d9668d1d9bfd1a1c07ab9afaeacc9235ebb0f75852befa87917e639f6418669f6c220ead85613bc5b7e8940c60bcdd88ba0d8d14a7e018c95c5129d523fe891ad444ac3db5909ae9cb7c201c57b557ce713b1caed80fc3c14ef2821647b396eec404b428893f8198ee78ed72ed8f3a53647c2ab9be3ef407ed0ecb531916fd8f53f5f7d85564b6d3f8f2a14dfb6d942c591723ae534ba82bc8162a1097ed6c7bce175bf795fd12de4f70a70d71a679f1d1720517490d322ef244ed4c1a85a8e8ce264a2bd888a1c9c62560c7e75c66416f3a20404222ac91ff97fc5a966a52f293d5f1c511d073ebc6767f1f8072bc075f0a1d261d4b45d1dd8023c33f5635e644cf390ba5490f1d87c1a98bceaa066fa399128eac65d1dab22fe091fbaee1d61de24f9318bb3a10d3c3da2eaef75a68d21ee9afa085171eb1cee329413dae4b319f355244e8c94d0e44d39bafd2b551ef7c17c3ea2d9d47e2f81d9561e81287ab16ba9bc325c26815c80b5077f5a9e5ed33d61223f6730b4d7005a3ccb544f50f83b581143e301713d1b18e89f07bbb990d6e4ead558eb87158b345b93e5465cacac7de106285235a803d79a065de07d64ea0e6db93e813da74158475ec1b388e1854cca2a32221be386c633f1d3de768e74bebdfa469839af66b250cbacaf8b8b582be516ea46964ac66967748f2a41d0cd7cb489ff883f8b0a31e7ef6cdf637032c7f0d16d3d41fef41970c759e0ee9e555c1807d5c7ba9975104a6cc6c693e78e36e28ccc7976c32ba356a5f7e6845e66349da641f4de1ff44f287198109f29d1118942d41e949690e7b1b74baeee7a4f14995343107a1258867075e931d9dcd3a3aeee69329c255345b7fdb6aefde5ec606233ca5433fbae2818990aac9a3e562fc67635930cc2aefc27b5c03544b4e844fb63efff69f666eceed32ebf1104e33cc5ebd635324dcfeb373fbebc50a1668e79af6cca6c42a79fd668ad103f87247c2883f602943c2c8a2ae1ccd85f55288f68aa57ad9558766d32dcbb36aaef04a6931ed35eb3bc986b4a0eb6fb7acab4ef6ac17e6213144243114ca5ade075df30152c554f55a92f8e433b07f95313eed601976a0fe0cbb939ca83d57f84409113ef1fd19375ab5fa7a5d177b209297ee87d396bb8ae9bb952be3d5f614febe62f7deec8d9952cb538a469144ab576f906ffc8e87f68caa87fb22f828f8de3329f60af3008ba9e9a6512ac258577a750417bff0eb2a9aa0656fadfae99ed98639ee8062036d34c8c261517708d5e4ce6271b546a2c4593b5e308f640b0c7ffbcd57a778f766f6b15943f860b00597a5df2ff3b63091034df3178c35e2cf20799e575b0c73eb73ab22ee720201385cf2861d390d9f91abd521819fe6a22f941ae05d1729f729065bb3550f8b0cabbcb4d86e638b64819529eef984be72bed348ded59afff7d1cbf68be52e63589d124f28501342fdf44942c26c3d3471ea3a2c78487b81b9080bf74e214f2c1279a49454ef860ed32183536a491ce19ffea16494741e177dd140fb0fbfe996c6d3fe1abe2a67b361f1abbe74961c23fb770deef5a425ef74c07f5bdb41d50fcbf4bd65a530a48cccb08f8dbc088ca6822dcde36d935bd619fb685a3434bc994fa7893a18b96fc4650b837d4ec6277fc78006e0601d685f287b644da90d97c004e741b59c3e4cdf7e7b36c18f6e5ca073a779be8f4a2ebfdf634ac52e5ed78eb395a34ecd1d6412b381998e06c6ced3e77f73e6dbdb8422493cbc522a3b6bca37305e3f0f28a23169d743256bf297c8b9b44b2006c5a3bf9272d80df6da286ac4525c466cd17211d2c6a9ffc285a8dd745d6b28dbd23fe3740eb2a1e52ff4f775c0421b21d5e98b8ed72d512b3b49f39fe3ab952bbf4a14022391ef0e6776ae99a5009f584c439e8e8a318d7b2f0f6cf0bd2a21b9c00493e8a70a1341d618a51a559aa64901a53d1738f41079181db0c8d570d8fd70e341d8578b76367f7630928c686a615d23a4aebe2d99087f40c9342a7758c13cd29c12a3270308d32bc11eeaab6383e6f0b9906763fab4dac93f914ed01106ffcbf740e752987b306324c59433a9b44028608630efcfca93e9972ebff71ac33ce8331b69b641f8aa3eaec0883d1ba07e0ab9b3fa997e20ffabfcd4888f02db337e46b4e651e68c385716294ef85fa89aca0af5c0614fc0a9dec4509f6745ea30b46c140d6d25636cca48b9ba78359f7bf805fce4ad7e2e9a6d37a25ba5e1a56f30dffac51e09a38779f39f02f88dd6ad2dffb99046aa9392a078a9b651a5fc512ccb1937da6a9e294543663c428cdf98b3d7a23242ee54edb85ac8eaf0137f8d2fc47c32fb06af80a359038a45df46f66f0a6f444038fb862966079f9ef42505a652df778b6093e6e32fc1da83fb2055be80cabfa48b1569aae9a666cfdf7d92dd5e51264faa874a392af9cbbfe237a3e636c9b7c35bdc6eab67faf34bfd16cdeb1991f30de95a58b74e4483a1c8439562e7b51aadd41bd000f34145530e534c4fb6fbb64ed6beb79a44afa15d77be98a4a88c83342fa3868f72be3f97cbcdaaa45354ad98da0c309d4364ee80f42c18f862cce9c7c3c5f8e073f49cdd8626d4fc3a8a2546fd2308684411898464f17cddbe7f136ab1b4c11e585c8b06e62885954b8e600dfea21984404c8db29f1dbaed325c0dbc359c6aae65f6919c46d5cb1b4a10f357f33edce5ad4758805f37d34eb49b209e86d0cdc3271c0400cc26bf983c20288e8981e911bd2eccd7d2c5fa1e08a09ffde05f744cdcb27cc899ff9b16a59c37ca5bc7de569e8c191cb327f05c3648d1543b57be5da4d78429e167fd50f8921f8ae6aaf305443bf9e30027728d6ec159eac4cdb331aa73c69b13c836884034d9f67da95afb6c8b2bec41430b2563b6c6ab1cd9eb08808388fc364c49cb14b86f5e019e3970b58ceb9e75733c0e75a6655888e53454c3cc70cff478a44cccd56c7eb1afbf086541916f4892457291bc1d204573d8d98e1b40a0ba4051d4390ca72b28ded93869087183a71a79b7e3fd4d3b651664b5dbcb9cc17a7c3093ebac3df225d750625e82df80c2ac446b242130f8b16b102de4435b9fff713b35ddf09fcae64e2c39c3b59754568d6b7dc624297f3eed012cc694c57ed242e673369c0453ca08251810e519b8fa5eacb4d0ef768b55a73b34deabe37a31e44cd05ad539b03255c112cfe2adbc68e3f282358496fe39d38cedf9cac4722919165e64f049c9d75b07a2746ad58934b5a19e88f1b60ca9784c5268c801947732eeb17c8fd3f3244bd44c3667e8b4d889237c580e4ef753b7ed6e337a0473d126313781a8f0406dec99246a9fbf62d385147089858f561c216f0724ec4186bbe09f01d6cf0a50ac61945eba79685e50118f4914522eb98aaeea7d4f631d9c96e0e6b64447b44db63713ef19a88a21b622b7ed6270f57e922b298aed6c11fd181c4d3d5fb26dff406af6da685636d9edda1d6f25152a56ba3961af2b4afb80d4c38585a632d2f6a829d761a552f02e4ed84b2df01745b07d8c8b06f1d2bbe388af26339a1e4f8fc494af64e7c867fd11465b9e1b4b2acb9376a7144cfdf9f574da0ce118f668f2347befcb261160c501d45d3c846daecd3f8d0bd84f1cbb24237d9bac0f52ef43ed4afd9c573769f6962505932db6fb9aa04ef1902ba3a5b6caf536597a305b7408f80cd2d115ca10dda3721f10d85b1af31f55349e76b9cc37e196c36e673da1c87351e01c5908a8e605091c0b57365b35689fb8ddc15705f6bab34aadf7e0f57b175760b33e7a5bd5f44c751516d02c298b1c4da136e2b8da58fa83edf4687b4879245fb264c9ef6b66859678a5b9ed0417d8cca1161a8faf54da98c50d2c28fbe369c26736b29f511937a2ea9954f663c545590386d76eaf6f02742f03da872b77ff651825790b0e7a2d44a00335748f9cb77d1025f29e1d68bd051548091ab83fb7969f99cae14d3066c5257086cf4fd24c84ffa1b70db37438afd579cccec5dbb10a7cd288e3efc3f48218a570fa6f682c4a3940175770f85ebcf3d4b9c5b5b5faaad88d393fb00e9d01c9061a830ac29c3b602d702d497906400d5f1efea32a6ce4ccafe11aa9a8f0a0c647e4cb49c4d58b08ba3e13690ef5e898b619318f4941e3d84b054ff5fd2d351a24e49c1bafd9a1f7c6a245637fd60da265a4a5a28a87f1495cfedcb9fb863554aed16b1645d6507bcf913805eeb4035aa3f91641446eea0723efe2b05d669560fbe4287ea84ae8bce93fc2a7d0f575dbc3d19df1a70056c06bd96db5b9cd4eb2a46a778749ff23e16b6b8f2a6a61f60320cb0abd5f6528aadf298dd3323c5034bf1f6d483a2789133e3515fc9902fca67faafb62c8d4e3402d7a6193282bf00a4eb60dd3f244e374b6c97804ec4b2427834aee36c43660cd157079dafbf8ed446ea41cdcc28c23b19d605c139472fd8220814d4dc3bd6f32c3e43eb2e0ca7b12e46d522a329f0a56a561de5a72ab08648da85917fcd1d6144bb330a72e0141b446779dcc9a7e0df99eca7604258d3cdf2e37c7562f528025bd98a057e76381bce698a07a4782740d491fc5aaf00f4359bb04aea1f506dca79831d52021241d42c70c4856a26b4a7f80e7d2c04dcf965cffe17c66d93afc373a381cdfbded53841c10021a4050e323a50f989bea9292578c58ba47a6d0d2191512f1df57f6da406439f580b71c2050c08eb65531ba1a4e19cd19f4131bf3e311b2ae382232524d637cb0aba0222cc0916b2de0dc1544590e4b3646747a9edd6227f1c8e8de8f2c6bcb2bb2deac4432449bf9664cbc8b9f702ccadcdcb1a3421fcb2d8b3d908db7da72156eb1fa294b7dff33d6da96d20042bb164d3198abd75a2eba13f16e8055414a38bf24e359794b89f50cae19ffc968fecb48d6ec49b3f771206fde2d47e48dc2409c28d3e3e42372eb58479ea6351f71019123bbfa1079dc9b6c6dea1b15c435bd50cdfc803e79ea1a8233ece1e9746c597cd8cbdf2686d25b80221991cf16fbdce240a1c12998053a71a50a19f165c6c3f81ab449fc08a2a9178a7a4fa64152893d56c640b7595fc35515e50b0255f58cfbf7743e045883b2b17e2d7bbb815048a474fd521aef33b5999432a655e0f1975ab9e9e31a2ac92395decaa946bfe06237ac77b6d91e155540581ff8bd98f72ac2ecdfa4f45ff712efa16b91d5a2eadab75ab0aee03c5c06fcd602f29b5fbf563fd8b5e56d042ea030f7af7e5f1a0adaa8c14d778cd4671ac9acef284750fe236cd6c1a4545757f7fbc4637f78841f0cb5e6f7abfc738f127cd6e94e966c4d42a3c707d1731ff11d284fc6f52d52d738be5b30681eef4ca10654191a7f8ef27b91178e565588db1c56bfa1ffc6dca60ab4bf64049b56cad16f67d368a336bcd2d5d6fc3878747fadb24fadef02ca4e09868576d2c0cb86baa6dadfa6d8a659192b4f78ff788af2ff46f6df7972506daa99aa000fcabf38963685bc2c99accd5ee6ce8f39442f208a33abc429c44a44ea0d93b95c3b78a879f8b2c1bb218e8d7393ca2dd111764cd36419189fa2ec57f2e10998dd409a0aa8c87b14fb998ac563948150085b7e07fc23ea0a810b8d4dfa262e82eb9484aeb0a0b2737891805dd043b4c9954870f1f4bc6a8aaa4ba1305f880bb3a21be0a22637ef250cbb52496f25983402feba4678996ac1a47a168a918158bb93c2592c433b1a9691b720d5514c76af003b766b7da9f75ea7e7d38580bce6f9f5e960f9301af1e4a63045a1a77ff26437e6c4d997714e4ad60bd15394fa14bb431d1705934355f234957fcc0e7968850f544095048554ffb99340da7b2d505bb588fe4738bc53b72d7e3f9e86ba981042c3ffa2c89de4a22f13b284d069e075abb51977d947657b8afbc72e4e19a6fba11be86e26f53422f1c03eba2476f72a536e11a185353988cef5fbd60f4104f4a2a54f63b5393fa68a647518847a4f01a2f95f2c4238cffba5ab59fafd6786c4fc4e711da02df71566573cfdd0eb273e18dab4d0f86a7dfb54fdb20675475299769b288707d0ca19829ae99c958e9bf7604b7a622cb3c009ae8030f26abbec3a58578ce45c76d0b53223738d59f67424dabf074cf6d7c1ae7d0ad809d251f688732fad4fbfb494d494ebea95519bf0b6e00af951567549cfca67f51b961f3e16a238a1f1cb008fe4b72f7f12d6196ecd0f3e814ff09eb7089fb1132e68a5f8bf3a15fd335bf828d0b2c7212bea5fcbf2a5569cf78a5b927433f751942fd2cc6293fe815d3a09125cf8c15fe8de68e5e262c2ca9805b7c31d279aba2d6eaf6881ae7286700a8b7f27f0064040c85e8402e11b194dadb3a4e4c7200d963c6b75c035e5f57955369581fefb9ef752ef27fa2a98abc5d68af219ede9b68dea1173d65643967ddbce882c6698fb8e69a0dc9ce1138464e8055b5cb07eefbd8bb02de2bf1b211ca3c5fa73e3879573a84fd78f123fc7260f0e8ebcc1449050d3a99fafe5960e6c1c1631f4acbf3c057580296fcf22dc5c68b93e007f21eae200f16c73758f5276180ad05bbf76508c9843facd806a3bb1e3593d43853123ca6f17e583a48a38efa11a23d00664aadaaf8ae60a60a2c22bb67d3d28842a968b0646719aabe58e6a2b3ebe9eb371510d2080859a30ed60f60d502a7f5e8bcbcf6c0995801f6b0e131b32c96a85af45d543454db7856eda9cf0e4a76be161ffa531d6bcb0d84f6f606dabc9b8a9d66ddf8e1ee0b723a7df6c9eb341d9a884e2b9a0dc48c3e10accc842dd0d59e29f58c6b75af2003b34835699a960c98e3dc32cc5bf225b7e231f0a1eda3c8a9f73df41ed9d64b62e650d0aecc184fb3ffd487b6796f2ee47fd4d5b71b7515616eddf74afe91044a5870f7444e8cbd4df2036bedab9d0363b095d9a768d46d01959e4c398c562ef619b9817554cf7d55df62f4ab928ce7323aedef3674ee77854220aebed7cea115924f15bd29de1bb10438938f02457dc5388da5f51ae81ffce8592434efcd8c55fa2c7a0f8ead22756c6747762b1a6af36631e7b987d11f359d2f190860d460fa461127f8a75fd422ed3e63fcedcae51e3c2d5801d73f32e075595a71a18296b6d2628ea642ac1dd37066fb7aa415e7fe1d87c6d152ece3f09dac9d352a4801037bfe86c68550ff1b1455b8d0c6ba55246fb464c962f629c2e515c8181b36409aface4949c3c5d3318af3e63b1dd70b12825de6d3efff7c15b87358df265a15a28ec7efa65f5a65f684d5c3abe9f8ef2876e4ee488c1b79029ab5bb84a78fe45eba21376618601c191db9ee68b9212d381240532c2eb98b1f55d8f0549637a7e438f53a34fd2bc454521afa2970be67ce562368f6258dd3211b8b5947ffafae47d5832a1a130e46e16df127a233e7d585501b61bca2c935b2cbdc3ad2ebede7ed61a5df8ae06edfc6cca3d48e0022a36c0e8b67337b228443f18bb08b19aee062e88311d06c62d385b25b7efe0e9ecfd53c8c82f7e54572de1f089c45ea3a073c50053d0e48c5aa772a86acf6710866234ad1b6d5029930d1d5adc6a1bae7665b3eb69f9f3ee4a66a6d007a7d056661a0153a267e589d"/>
     </extension>
 
    <extension
@@ -298,5 +415,77 @@ Contributors:
             right="/org.obeonetwork.dsl.uml2.design/images/required-right.svg"
             top="/org.obeonetwork.dsl.uml2.design/images/required-top.svg">
       </image>
-   </extension>     
+   </extension>
+   <extension point="org.eclipse.ui.popupMenus" id="init-diagram-action">
+      <?gmfgen generated="true"?>
+      <objectContribution
+            id="org.obeonetwork.dsl.uml2.design.action.InitDiagramOnUml"
+            nameFilter="*.uml"
+            objectClass="org.eclipse.core.resources.IFile">
+         <action
+               label="%initDiagramActionLabel"
+               class="org.obeonetwork.dsl.uml2.design.ui.extension.actions.UmlInitDiagramFileAction"
+               menubarPath="additions"
+               enablesFor="1"
+               id="org.obeonetwork.dsl.uml2.diagram.InitDiagramAction">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="org.obeonetwork.dsl.uml2.design.action.InitDiagramOnAird"
+            nameFilter="*.aird"
+            objectClass="org.eclipse.core.resources.IFile">
+         <action
+               class="org.obeonetwork.dsl.uml2.design.ui.extension.actions.UmlInitDiagramFileAction"
+               enablesFor="1"
+               id="org.obeonetwork.dsl.uml2.diagram.InitDiagramAction"
+               label="%initDiagramActionLabel"
+               menubarPath="additions">
+         </action>
+      </objectContribution>
+   </extension>
+   <extension
+         point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="org.obeonetwork.dsl.uml2.design.DashboardsExistDefinition">
+         <test
+               forcePluginActivation="true"
+               property="org.obeonetwork.dsl.uml2.design.dashboardsExist">
+         </test>
+      </definition>
+   </extension>
+   <extension
+        point="org.eclipse.emf.validation.constraintProviders">
+     <category
+           id="org.obeonetwork.dsl.uml2.profile.design.constraint.stereotype.extension"
+           name="Stereotype extension constraint">
+     </category>
+     <constraintProvider
+           cache="true">
+        <package
+              namespaceUri="http://www.eclipse.org/uml2/5.0.0/UML">
+        </package>
+        <constraints
+              categories="http://www.eclipse.org/uml2/5.0.0/UML/Stereotype">
+           <constraint
+                 class="org.obeonetwork.dsl.uml2.profile.design.constraints.CheckStereotypeExtension"
+                 id="org.obeonetwork.dsl.uml2.profile.design.stereotype.constraint1"
+                 isEnabledByDefault="true"
+                 lang="Java"
+                 mode="Batch"
+                 name="No extension for the Stereotype"
+                 severity="WARNING"
+                 statusCode="1">
+              <message>
+                 The stereotype {0} must extend a meta class or another stereotype
+              </message>
+              <description>
+                 All Stereotypes, should extend a meta class or another stereotype
+              </description>
+              <target
+                    class="Stereotype">
+              </target>
+           </constraint>
+        </constraints>
+     </constraintProvider>
+  </extension>
 </plugin>

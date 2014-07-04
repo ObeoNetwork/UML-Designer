@@ -10,39 +10,41 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.components;
 
+import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.uml2.uml.Transition;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
+import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.WrappedException;
+
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.VisibilityKind;
 
-import org.eclipse.emf.common.notify.Notification;
-
-import org.eclipse.emf.common.util.BasicDiagnostic;
-import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.common.util.WrappedException;
-
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
-
-import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import org.eclipse.emf.ecore.util.Diagnostician;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-
-import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
-
-import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
 
-import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext.InstanciableTypeFilter;
 
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
-import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
 
@@ -52,23 +54,19 @@ import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 
-import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
-
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 
 import org.eclipse.uml2.types.TypesPackage;
 
-import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Constraint;
-import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.TransitionKind;
+import org.eclipse.uml2.uml.Trigger;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.Vertex;
 import org.eclipse.uml2.uml.VisibilityKind;
 
-import org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 
 
@@ -86,6 +84,26 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 
 	
 	/**
+	 * Settings for trigger ReferencesTable
+	 */
+	protected ReferencesTableSettings triggerSettings;
+	
+	/**
+	 * Settings for guard LinkEReferenceViewer
+	 */
+	private EObjectFlatComboSettings guardSettings;
+	
+	/**
+	 * Creation Settings for guard LinkEReferenceViewer
+	 */
+	private ReferencesTableSettings guardCreateSettings;
+	
+	/**
+	 * Settings for effect SingleCompositionEditor
+	 */
+	private EObjectFlatComboSettings effectSettings;
+	
+	/**
 	 * Settings for source EObjectFlatComboViewer
 	 */
 	private EObjectFlatComboSettings sourceSettings;
@@ -96,14 +114,9 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 	private EObjectFlatComboSettings targetSettings;
 	
 	/**
-	 * Settings for effect EObjectFlatComboViewer
+	 * Settings for ownedRule ReferencesTable
 	 */
-	private EObjectFlatComboSettings effectSettings;
-	
-	/**
-	 * Settings for guard EObjectFlatComboViewer
-	 */
-	private EObjectFlatComboSettings guardSettings;
+	protected ReferencesTableSettings ownedRuleSettings;
 	
 	
 	/**
@@ -143,6 +156,23 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 			if (isAccessible(UmlViewsRepository.General.kind)) {
 				generalPart.initKind(EEFUtils.choiceOfValues(transition, UMLPackage.eINSTANCE.getTransition_Kind()), transition.getKind());
 			}
+			if (isAccessible(UmlViewsRepository.General.trigger)) {
+				triggerSettings = new ReferencesTableSettings(transition, UMLPackage.eINSTANCE.getTransition_Trigger());
+				generalPart.initTrigger(triggerSettings);
+			}
+			if (isAccessible(UmlViewsRepository.General.guard)) {
+				// init part
+				guardSettings = new EObjectFlatComboSettings(transition, UMLPackage.eINSTANCE.getTransition_Guard());
+				guardCreateSettings = new ReferencesTableSettings(getguardCreateSettingsSource(), UMLPackage.eINSTANCE.getNamespace_OwnedRule());
+				generalPart.initGuard(guardSettings);
+				// set the button mode
+				generalPart.setGuardButtonMode(ButtonsModeEnum.BROWSE);
+			}
+			if (isAccessible(UmlViewsRepository.General.effect)) {
+				// init part
+				effectSettings = new EObjectFlatComboSettings(transition, UMLPackage.eINSTANCE.getTransition_Effect());
+				generalPart.initEffect(effectSettings);
+			}
 			if (isAccessible(UmlViewsRepository.General.source)) {
 				// init part
 				sourceSettings = new EObjectFlatComboSettings(transition, UMLPackage.eINSTANCE.getTransition_Source());
@@ -157,58 +187,34 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 				// set the button mode
 				generalPart.setTargetButtonMode(ButtonsModeEnum.BROWSE);
 			}
-			if (isAccessible(UmlViewsRepository.General.effect)) {
-				// init part
-				effectSettings = new EObjectFlatComboSettings(transition, UMLPackage.eINSTANCE.getTransition_Effect());
-				generalPart.initEffect(effectSettings);
-				// set the button mode
-				generalPart.setEffectButtonMode(ButtonsModeEnum.CREATE);
+			if (isAccessible(UmlViewsRepository.General.ownedRule)) {
+				ownedRuleSettings = new ReferencesTableSettings(transition, UMLPackage.eINSTANCE.getNamespace_OwnedRule());
+				generalPart.initOwnedRule(ownedRuleSettings);
 			}
-			if (isAccessible(UmlViewsRepository.General.guard)) {
-				// init part
-				guardSettings = new EObjectFlatComboSettings(transition, UMLPackage.eINSTANCE.getTransition_Guard());
-				generalPart.initGuard(guardSettings);
-				// set the button mode
-				generalPart.setGuardButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			// FIXME NO VALID CASE INTO template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : ownedRule, General, Transition.
 			// init filters
 			
 			
 			
 			
-			if (isAccessible(UmlViewsRepository.General.source)) {
-				generalPart.addFilterToSource(new ViewerFilter() {
-				
+			if (isAccessible(UmlViewsRepository.General.trigger)) {
+				generalPart.addFilterToTrigger(new ViewerFilter() {
 					/**
 					 * {@inheritDoc}
 					 * 
 					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
 					 */
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof Vertex);
+						return (element instanceof String && element.equals("")) || (element instanceof Trigger); //$NON-NLS-1$ 
 					}
-					
-				});
-			}
-			if (isAccessible(UmlViewsRepository.General.target)) {
-				generalPart.addFilterToTarget(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof Vertex);
-					}
-					
+			
 				});
 			}
 			
-			if (isAccessible(UmlViewsRepository.General.guard)) {
-				generalPart.addFilterToGuard(new ViewerFilter() {
-				
+			
+			
+			
+			if (isAccessible(UmlViewsRepository.General.ownedRule)) {
+				generalPart.addFilterToOwnedRule(new ViewerFilter() {
 					/**
 					 * {@inheritDoc}
 					 * 
@@ -217,10 +223,9 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 					public boolean select(Viewer viewer, Object parentElement, Object element) {
 						return (element instanceof String && element.equals("")) || (element instanceof Constraint); //$NON-NLS-1$ 
 					}
-					
+			
 				});
 			}
-			// FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : ownedRule, General, Transition.
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -228,6 +233,7 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 		}
 		setInitializing(false);
 	}
+
 
 
 
@@ -257,17 +263,20 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 		if (editorKey == UmlViewsRepository.General.kind) {
 			return UMLPackage.eINSTANCE.getTransition_Kind();
 		}
+		if (editorKey == UmlViewsRepository.General.trigger) {
+			return UMLPackage.eINSTANCE.getTransition_Trigger();
+		}
+		if (editorKey == UmlViewsRepository.General.guard) {
+			return UMLPackage.eINSTANCE.getTransition_Guard();
+		}
+		if (editorKey == UmlViewsRepository.General.effect) {
+			return UMLPackage.eINSTANCE.getTransition_Effect();
+		}
 		if (editorKey == UmlViewsRepository.General.source) {
 			return UMLPackage.eINSTANCE.getTransition_Source();
 		}
 		if (editorKey == UmlViewsRepository.General.target) {
 			return UMLPackage.eINSTANCE.getTransition_Target();
-		}
-		if (editorKey == UmlViewsRepository.General.effect) {
-			return UMLPackage.eINSTANCE.getTransition_Effect();
-		}
-		if (editorKey == UmlViewsRepository.General.guard) {
-			return UMLPackage.eINSTANCE.getTransition_Guard();
 		}
 		if (editorKey == UmlViewsRepository.General.ownedRule) {
 			return UMLPackage.eINSTANCE.getNamespace_OwnedRule();
@@ -282,7 +291,6 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Transition transition = (Transition)semanticObject;
-
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			transition.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}
@@ -294,6 +302,93 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 		}
 		if (UmlViewsRepository.General.kind == event.getAffectedEditor()) {
 			transition.setKind((TransitionKind)event.getNewValue());
+		}
+		if (UmlViewsRepository.General.trigger == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, triggerSettings, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy instanceof CreateEditingPolicy) {
+						policy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+					if (editionPolicy != null) {
+						editionPolicy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				triggerSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				triggerSettings.move(event.getNewIndex(), (Trigger) event.getNewValue());
+			}
+		}
+		if (UmlViewsRepository.General.guard == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.SET) {
+				guardSettings.setToReference((Constraint)event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+					if (editionPolicy != null) {
+						editionPolicy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
+				Constraint eObject = UMLFactory.eINSTANCE.createConstraint();
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, guardCreateSettings, editingContext.getAdapterFactory());
+				context.addInstanciableTypeFilter(new InstanciableTypeFilter() {
+					public boolean select(EClass instanciableType) {
+						return UMLPackage.Literals.CONSTRAINT == instanciableType;
+					}
+				});
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy != null) {
+						policy.execute();
+					}
+				}
+				guardSettings.setToReference(context.getEObject());
+				((GeneralPropertiesEditionPart)editingPart).setGuard(context.getEObject());
+			}
+		}
+		if (UmlViewsRepository.General.effect == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				if (effectSettings.getValue() == "") {
+					EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, effectSettings, editingContext.getAdapterFactory());
+					PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(editingContext.getEObject(), PropertiesEditingProvider.class);
+					Object result = null;
+					if (provider != null) {
+						PropertiesEditingPolicy policy = provider.getPolicy(context);
+						if (policy instanceof CreateEditingPolicy) {
+							policy.execute();
+							result = ((CreateEditingPolicy) policy).getResult();
+						}
+					}
+					if (result != null) {
+						effectSettings.setToReference(result);
+					}
+				} else {
+					EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) effectSettings.getValue(), editingContext.getAdapterFactory());
+					PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(effectSettings.getValue(), PropertiesEditingProvider.class);
+					if (provider != null) {
+						PropertiesEditingPolicy policy = provider.getPolicy(context);
+						if (policy != null) {
+							policy.execute();
+						}
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.UNSET) {
+				effectSettings.setToReference(null);
+			}
+			
 		}
 		if (UmlViewsRepository.General.source == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET) {
@@ -323,11 +418,9 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 				}
 			}
 		}
-		if (UmlViewsRepository.General.effect == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				effectSettings.setToReference((Behavior)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, effectSettings, editingContext.getAdapterFactory());
+		if (UmlViewsRepository.General.ownedRule == event.getAffectedEditor()) {
+			if (event.getKind() == PropertiesEditionEvent.ADD) {
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, ownedRuleSettings, editingContext.getAdapterFactory());
 				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
 				if (provider != null) {
 					PropertiesEditingPolicy policy = provider.getPolicy(context);
@@ -335,26 +428,20 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 						policy.execute();
 					}
 				}
-			}
-		}
-		if (UmlViewsRepository.General.guard == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				guardSettings.setToReference((Constraint)event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
-				Constraint eObject = UMLFactory.eINSTANCE.createConstraint();
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
 				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy != null) {
-						policy.execute();
+					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+					if (editionPolicy != null) {
+						editionPolicy.execute();
 					}
 				}
-				guardSettings.setToReference(eObject);
+			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+				ownedRuleSettings.removeFromReference((EObject) event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+				ownedRuleSettings.move(event.getNewIndex(), (Constraint) event.getNewValue());
 			}
-		}
-		if (UmlViewsRepository.General.ownedRule == event.getAffectedEditor()) {
-			// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : ownedRule, General, Transition.
 		}
 	}
 
@@ -382,15 +469,18 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 			if (UMLPackage.eINSTANCE.getTransition_Kind().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(UmlViewsRepository.General.kind))
 				generalPart.setKind((TransitionKind)msg.getNewValue());
 			
+			if (UMLPackage.eINSTANCE.getTransition_Trigger().equals(msg.getFeature()) && isAccessible(UmlViewsRepository.General.trigger))
+				generalPart.updateTrigger();
+			if (UMLPackage.eINSTANCE.getTransition_Guard().equals(msg.getFeature()) && generalPart != null && isAccessible(UmlViewsRepository.General.guard))
+				generalPart.setGuard((EObject)msg.getNewValue());
+			if (UMLPackage.eINSTANCE.getTransition_Effect().equals(msg.getFeature()) && generalPart != null && isAccessible(UmlViewsRepository.General.effect))
+				generalPart.setEffect((EObject)msg.getNewValue());
 			if (UMLPackage.eINSTANCE.getTransition_Source().equals(msg.getFeature()) && generalPart != null && isAccessible(UmlViewsRepository.General.source))
 				generalPart.setSource((EObject)msg.getNewValue());
 			if (UMLPackage.eINSTANCE.getTransition_Target().equals(msg.getFeature()) && generalPart != null && isAccessible(UmlViewsRepository.General.target))
 				generalPart.setTarget((EObject)msg.getNewValue());
-			if (UMLPackage.eINSTANCE.getTransition_Effect().equals(msg.getFeature()) && generalPart != null && isAccessible(UmlViewsRepository.General.effect))
-				generalPart.setEffect((EObject)msg.getNewValue());
-			if (UMLPackage.eINSTANCE.getTransition_Guard().equals(msg.getFeature()) && generalPart != null && isAccessible(UmlViewsRepository.General.guard))
-				generalPart.setGuard((EObject)msg.getNewValue());
-			// FIXME INVALID CASE INTO template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : ownedRule, General, Transition.
+			if (UMLPackage.eINSTANCE.getNamespace_OwnedRule().equals(msg.getFeature()) && isAccessible(UmlViewsRepository.General.ownedRule))
+				generalPart.updateOwnedRule();
 			
 		}
 	}
@@ -407,10 +497,11 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 			UMLPackage.eINSTANCE.getNamedElement_Visibility(),
 			UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf(),
 			UMLPackage.eINSTANCE.getTransition_Kind(),
+			UMLPackage.eINSTANCE.getTransition_Trigger(),
+			UMLPackage.eINSTANCE.getTransition_Guard(),
+			UMLPackage.eINSTANCE.getTransition_Effect(),
 			UMLPackage.eINSTANCE.getTransition_Source(),
 			UMLPackage.eINSTANCE.getTransition_Target(),
-			UMLPackage.eINSTANCE.getTransition_Effect(),
-			UMLPackage.eINSTANCE.getTransition_Guard(),
 			UMLPackage.eINSTANCE.getNamespace_OwnedRule()		);
 		return new NotificationFilter[] {filter,};
 	}
@@ -420,7 +511,7 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#mustBeComposed(java.lang.Object, int)
 	 */
 	public boolean mustBeComposed(Object key, int kind) {
-		return key == UmlViewsRepository.General.name || key == UmlViewsRepository.General.visibility || key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.kind || key == UmlViewsRepository.General.source || key == UmlViewsRepository.General.target || key == UmlViewsRepository.General.effect || key == UmlViewsRepository.General.guard || key == UmlViewsRepository.General.ownedRule || key == UmlViewsRepository.General.Qualifiers.class;
+		return key == UmlViewsRepository.General.name || key == UmlViewsRepository.General.visibility || key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.kind || key == UmlViewsRepository.General.trigger || key == UmlViewsRepository.General.guard || key == UmlViewsRepository.General.effect || key == UmlViewsRepository.General.source || key == UmlViewsRepository.General.target || key == UmlViewsRepository.General.ownedRule || key == UmlViewsRepository.General.Qualifiers.class;
 	}
 
 	/**
@@ -481,6 +572,15 @@ public class TransitionPropertiesEditionComponent extends SinglePartPropertiesEd
 	}
 
 
+	
+
+	
+	/**
+	 * @ return source setting for guardCreateSettings
+	 */
+	public EObject getguardCreateSettingsSource() {
+				return org.obeonetwork.dsl.uml2.properties.service.EEFService.getParent(semanticObject);
+	}	
 	
 
 }

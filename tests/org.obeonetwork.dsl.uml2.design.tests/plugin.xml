@@ -16,7 +16,7 @@
       <wizard
             category="org.eclipse.ui.Examples/org.obeonetwork.dsl.uml.examples.category"
             class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
-            finalPerspective="fr.obeo.dsl.viewpoint.ui.tools.perspective.modeling"
+            finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
             id="org.obeonetwork.dsl.uml2.design.tests.TestAllMappingsWizard"
             name="Test All Mappings"
             project="true">

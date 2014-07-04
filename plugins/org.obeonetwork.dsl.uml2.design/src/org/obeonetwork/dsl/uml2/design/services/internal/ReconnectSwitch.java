@@ -40,8 +40,8 @@ import org.eclipse.uml2.uml.TemplateableElement;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.util.UMLSwitch;
+import org.obeonetwork.dsl.uml2.design.services.ClassDiagramServices;
 import org.obeonetwork.dsl.uml2.design.services.LogServices;
-import org.obeonetwork.dsl.uml2.design.services.UMLServices;
 
 /**
  * A switch that handle the edge reconnections for each UML types.
@@ -206,12 +206,12 @@ public class ReconnectSwitch extends UMLSwitch<Element> {
 	public Element caseAssociation(Association association) {
 		if (RECONNECT_SOURCE == reconnectKind) {
 			if (newPointedElement instanceof Type) {
-				final Property source = new UMLServices().getSource(association);
+				final Property source = new ClassDiagramServices().getSource(association);
 				source.setType((Type)newPointedElement);
 			}
 		} else {
 			if (newPointedElement instanceof Type) {
-				final Property target = new UMLServices().getTarget(association);
+				final Property target = new ClassDiagramServices().getTarget(association);
 				target.setType((Type)newPointedElement);
 			}
 		}

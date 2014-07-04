@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <description url="http://www.obeo.fr">
+      Viewpoint
+   </description>
+   <feature id="org.obeonetwork.dsl.uml2.runtime.feature" version="0.0.0">
+      <category name="Obeo Network"/>
+   </feature>
+   <feature id="org.obeonetwork.dsl.sysml.runtime.feature" version="0.0.0">
+      <category name="Obeo Network"/>
+   </feature>
+   <feature url="features/org.obeonetwork.dsl.sysml.runtime.feature_4.0.0.qualifier.jar" id="org.obeonetwork.dsl.sysml.runtime.feature" version="4.0.0.qualifier">
+      <category name="Obeo Network"/>
+   </feature>
+   <feature url="features/org.obeonetwork.dsl.sysml.runtime.sdk.feature_4.0.0.qualifier.jar" id="org.obeonetwork.dsl.sysml.runtime.sdk.feature" version="4.0.0.qualifier">
+      <category name="Obeo Network"/>
+   </feature>
+   <feature url="features/org.obeonetwork.dsl.uml2.runtime.feature_4.0.0.qualifier.jar" id="org.obeonetwork.dsl.uml2.runtime.feature" version="4.0.0.qualifier">
+      <category name="Obeo Network"/>
+   </feature>
+   <feature url="features/org.obeonetwork.dsl.uml2.runtime.feature_4.0.0.qualifier.jar" id="org.obeonetwork.dsl.uml2.runtime.feature" version="4.0.0.qualifier">
+      <category name="Obeo Network"/>
+   </feature>
+   <feature url="features/org.obeonetwork.dsl.uml2.runtime.product.feature_4.0.0.qualifier.jar" id="org.obeonetwork.dsl.uml2.runtime.product.feature" version="4.0.0.qualifier">
+      <category name="Obeo Network"/>
+   </feature>
+   <feature url="features/org.obeonetwork.dsl.uml2.runtime.sdk.feature_4.0.0.qualifier.jar" id="org.obeonetwork.dsl.uml2.runtime.sdk.feature" version="4.0.0.qualifier">
+      <category name="Obeo Network"/>
+   </feature>
+   <category-def name="Obeo Network" label="Obeo Network">
+      <description>
+         The Obeo Network.
+      </description>
+   </category-def>
+</site>

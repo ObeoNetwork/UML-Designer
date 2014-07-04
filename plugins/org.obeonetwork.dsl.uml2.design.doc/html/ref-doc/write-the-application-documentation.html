@@ -1,0 +1,216 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="UML Designer documentation">
+  <meta name="author" content="Mt&eacute;lanie Bats">
+  
+  <title>Write the application documentation</title>
+  
+  <!-- Bootstrap core CSS -->
+  <link href="../css/bootstrap.css" rel="stylesheet">
+  
+  <!-- Pygments CSS -->
+  <link href="../css/pygments.css" rel="stylesheet">
+
+  <!-- Add custom CSS here -->
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+      <a class="navbar-brand" href="../index.html">UML Designer</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav navbar-right">     
+      
+        
+        <li><a href="../overview/index.html">Overview</a></li>
+        
+      
+        
+        <li><a href="../download/index.html">Download</a></li>
+        
+      
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            
+      	    	<li><a href="../tutorials/tuto-getting-started.html">Getting started</a></li>
+            
+      	    	<li><a href="../tutorials/tuto-create-project.html">Create project</a></li>
+            
+      	    	<li><a href="../tutorials/tuto-create-representation.html">Create representation</a></li>
+            
+      	    	<li><a href="../tutorials/tuto-import-model.html">Import model</a></li>
+            
+      	    	<li><a href="../tutorials/tuto-start-example.html">Open example</a></li>
+            
+          </ul>
+        </li>
+        
+      
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">User Guide <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            
+      	    	<li><a href="../user-guide/dashboard.html">Dashboard</a></li>
+            
+      	    	<li><a href="../user-guide/activity-diagram.html">Activity Diagram</a></li>
+            
+      	    	<li><a href="../user-guide/class-diagram.html">Class Diagram</a></li>
+            
+      	    	<li><a href="../user-guide/component-diagram.html">Component Diagram</a></li>
+            
+      	    	<li><a href="../user-guide/deployment-diagram.html">Deployment Diagram</a></li>
+            
+      	    	<li><a href="../user-guide/package-diagram.html">Package Diagram</a></li>
+            
+      	    	<li><a href="../user-guide/profile-diagram.html">Profile Diagram</a></li>
+            
+      	    	<li><a href="../user-guide/sequence-diagram.html">Sequence Diagram</a></li>
+            
+      	    	<li><a href="../user-guide/state-machine-diagram.html">State Machine Diagram</a></li>
+            
+      	    	<li><a href="../user-guide/use-case-diagram.html">Use Case Diagram</a></li>
+            
+          </ul>
+        </li>
+        
+      
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Developer Guide <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            
+      	    	<li><a href="../developer-guide/contribute.html">Contribute</a></li>
+            
+      	    	<li><a href="../developer-guide/build.html">Build</a></li>
+            
+      	    	<li><a href="../developer-guide/continuous-integration.html">Continuous Integration</a></li>
+            
+          </ul>
+        </li>
+        
+      
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            
+      	    	<li><a href="../ref-doc/presentation.html">Presentation</a></li>
+            
+      	    	<li><a href="../ref-doc/define-the-system.html">Define the system</a></li>
+            
+      	    	<li><a href="../ref-doc/define-the-application.html">Define the application</a></li>
+            
+      	    	<li><a href="../ref-doc/implement-the-application.html">Implement the application</a></li>
+            
+      	    	<li><a href="../ref-doc/write-the-application-documentation.html">Write the application documentation</a></li>
+            
+      	    	<li><a href="../ref-doc/refactor-an-application.html">Refactor an application</a></li>
+            
+      	    	<li><a href="../ref-doc/validate-an-application.html">Validate an application</a></li>
+            
+      	    	<li><a href="../ref-doc/non-goals.html">Non Goals</a></li>
+            
+          </ul>
+        </li>
+        
+      
+        
+        <li><a href="../faq/index.html">FAQ</a></li>
+        
+      
+
+      </ul>
+    </div><!-- /.navbar-header -->
+  </div><!-- /.container -->
+</nav>
+
+
+  <div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Write the application documentation <small>Reference Documentation</small></h1>
+      
+      <ol class="breadcrumb">
+        <li><a href="../index.html">Home</a></li>
+        <li class="active">Write the application documentation</li>
+      </ol>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-lg-12">
+      <p>Kevin wants to use <span class="caps">UML</span> Designer to document its application. It exists mainly two features to help him in this tasks :</p>
+<ul>
+	<li>Documentation table from the <span class="caps">UML</span> Extensions viewpoint,</li>
+	<li>Export to <span class="caps">HTML</span> site or to images.</li>
+</ul>
+<h1>Manage comments in diagram</h1>
+<p>In <span class="caps">UML</span> Designer, a <em>Comments</em> layer is available on all the diagrams. To document his application Kevin opens the existing diagrams and activates the comments layer.<br />
+<img src="../images/CommentsLayer.png" alt="" /></p>
+<p>This layer provides a new section in the palette. <br />
+<img src="../images/CommentsLayerPalette.png" alt="" /></p>
+<p>The following tools are available :</p>
+<ul>
+	<li><strong>create a comment</strong>  : the user selects the <em>Comment</em> tool in the palette and clicks on the diagram, a new <span class="caps">UML</span> comment is created attached to the package associated to the diagram. If the user selects an element on the diagram, the comment will be attached to the selected element. The comments are represented on the diagram as following :<br />
+<img src="../images/CommentsLayerComment.png" alt="" /></li>
+	<li><strong>link a comment to a semantic element</strong> : the user selects the <em>Link comment</em> tool in the palette and selects as source a comment and as target an element. Thias action attached the comment to the selected element. The link is represented on the diagram by a doted link :<br />
+<img src="../images/CommentsLayerLink.png" alt="" /></li>
+</ul>
+<p>When the layer is activated the comments are visible on the diagram.</p>
+<p>The user can remove the comment (see <a href="../ref-doc/define-the-system.html#Direct_edit">Diagram editor/Editor main graphical area/Direct edit</a>).</p>
+<h1>Comments table</h1>
+<p>Thanks to the <strong>documentation table</strong> available in <span class="caps">UML</span> Extensions viewpoint, a user can add and review comment on each model element easily. This representation is a table which lists all the elements available in the model sub tree and their related comment.<br />
+The first column show the element name and the second column the associated comment.<br />
+The elements should be ordered using a tree in order to get the possibility to expand and collapse some sub elements.</p>
+<h1>Export</h1>
+<p><span class="caps">UML</span> Designer allows to export the defined diagrams.</p>
+<h2><span class="caps">HTML</span> export</h2>
+<p>This feature allows to export all the models with their representations into an <span class="caps">HTML</span> site. The site displays the model explorer on the left with the model elements and their corresponding clickable representations. When selecting a model element on a representation, the site displays its properties. All the pages are generated with Acceleo templates and can easily be adapted. This features is only available in Obeo Designer and not with the Sirius based product.</p>
+<h2>Export diagrams as images</h2>
+<p>It is possible to export a diagram to an image file. To do that right-click on the diagram and choose the menu <em>Export diagram as image</em> or select the corresponding icon in the diagram tab-bar. After selecting the file path, the user can choose the image format and he wants to overwrite an existing file without warning. On the first export of diagram as image the name is set by default with the representation name. After there is an history to select the last export. If you do not specify the file extension, the extension is determined from the selected image format. You can choose the directory in which to create the file using the Browse button.</p>
+<p>It is possible to export all diagram of a representations file at once. To do that, select the representations file (.aird file) and right-click on it. Then choose the menu Export diagrams as image&#8230;. On the opened pop-up select the path of the folder where the images will be exported.<br />
+The same functionality is available on every semantic elements which has representations from the Model Explorer view. In this case, only the diagrams of the selected element will be exported.</p>
+    </div>
+  </div>
+</div><!-- /.container -->
+
+
+  <div class="container">
+  <hr>
+  <footer>
+    <div class="row">
+      <div class="col-lg-12">
+        <p>Made with &#10084; Copyright &copy; <a href="http://www.obeo.fr">Obeo</a>, All Rights Reserved 2014</p>
+      </div>
+    </div>
+  </footer>
+</div><!-- /.container -->
+
+<!-- JavaScript -->
+<script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/modern-business.js"></script>
+
+</body>
+</html>

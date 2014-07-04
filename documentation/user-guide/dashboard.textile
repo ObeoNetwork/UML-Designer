@@ -1,0 +1,7 @@
+---
+layout: article
+title: Dashboard
+subtitle: user guide
+relativePath: ..
+---
+

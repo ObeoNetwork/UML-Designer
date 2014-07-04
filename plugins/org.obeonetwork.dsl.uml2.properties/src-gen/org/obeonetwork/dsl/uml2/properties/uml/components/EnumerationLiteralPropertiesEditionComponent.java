@@ -131,7 +131,6 @@ public class EnumerationLiteralPropertiesEditionComponent extends SinglePartProp
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		EnumerationLiteral enumerationLiteral = (EnumerationLiteral)semanticObject;
-
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			enumerationLiteral.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}
@@ -216,6 +215,8 @@ public class EnumerationLiteralPropertiesEditionComponent extends SinglePartProp
 		return ret;
 	}
 
+
+	
 
 	
 

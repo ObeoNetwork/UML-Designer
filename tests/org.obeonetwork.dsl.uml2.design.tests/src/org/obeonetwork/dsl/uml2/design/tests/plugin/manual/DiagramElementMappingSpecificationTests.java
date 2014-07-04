@@ -8,25 +8,25 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.URI;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.description.EdgeMapping;
+import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription;
+import org.eclipse.sirius.diagram.description.tool.ReconnectionKind;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
+import org.eclipse.sirius.viewpoint.description.util.DescriptionSwitch;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
+import org.obeonetwork.dsl.uml2.design.ui.extension.editor.UmlViewpoints;
 
 import com.google.common.base.Strings;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-
-import fr.obeo.dsl.viewpoint.business.api.componentization.ViewpointRegistry;
-import fr.obeo.dsl.viewpoint.description.DiagramElementMapping;
-import fr.obeo.dsl.viewpoint.description.EdgeMapping;
-import fr.obeo.dsl.viewpoint.description.Viewpoint;
-import fr.obeo.dsl.viewpoint.description.style.BasicLabelStyleDescription;
-import fr.obeo.dsl.viewpoint.description.tool.ReconnectEdgeDescription;
-import fr.obeo.dsl.viewpoint.description.tool.ReconnectionKind;
-import fr.obeo.dsl.viewpoint.description.util.DescriptionSwitch;
 
 @RunWith(value = Parameterized.class)
 public class DiagramElementMappingSpecificationTests {
@@ -36,7 +36,7 @@ public class DiagramElementMappingSpecificationTests {
 			"CD_BrokenAssociationToClasses", "SD_Lifeline Execution",
 			"CO_C_RequiredInterface2ProvidedInterface", "CO_C_Port2SubProvidedInterface",
 			"CO_C_SubRequiredInterface2Port", "CO_U_ComponentOrPort2Interface",
-			"CO_IR_Interface2ComponentOrPort");
+			"CO_IR_Interface2ComponentOrPort", "CD_ReusedMappingForFeatures");
 
 	private static Set<String> reconnectWhiteList = Sets.newHashSet("CD_BrokenAssociationToClasses",
 			"CD_NestedClass", "CD_BrokenAssociation", "CD_AssociationClassToAssociation", "PD_Extension",
@@ -63,13 +63,14 @@ public class DiagramElementMappingSpecificationTests {
 	@Parameters
 	public static Collection<Object[]> data() {
 		List<Object[]> parameters = Lists.newArrayList();
-		Viewpoint structural = ViewpointRegistry.getInstance().getViewpoint(
-				URI.createURI("viewpoint:/org.obeonetwork.dsl.uml2.design/UML Structural Modeling"));
-		collectMappingsFromViewpoint(parameters, structural);
-
-		Viewpoint behavior = ViewpointRegistry.getInstance().getViewpoint(
-				URI.createURI("viewpoint:/org.obeonetwork.dsl.uml2.design/UML Behavioral Modeling"));
-		collectMappingsFromViewpoint(parameters, behavior);
+		Viewpoint capture = UmlViewpoints.fromViewpointRegistry().capture();
+		collectMappingsFromViewpoint(parameters, capture);
+		Viewpoint design = UmlViewpoints.fromViewpointRegistry().design();
+		collectMappingsFromViewpoint(parameters, design);
+		Viewpoint review = UmlViewpoints.fromViewpointRegistry().review();
+		collectMappingsFromViewpoint(parameters, review);
+		Viewpoint extend = UmlViewpoints.fromViewpointRegistry().extend();
+		collectMappingsFromViewpoint(parameters, extend);
 		return parameters;
 	}
 
@@ -130,18 +131,15 @@ public class DiagramElementMappingSpecificationTests {
 	private boolean isDisplayingALabel(DiagramElementMapping underTest) {
 		BasicLabelStyleDescription labelDescription = new DescriptionSwitch<BasicLabelStyleDescription>() {
 
-			public BasicLabelStyleDescription caseNodeMapping(
-					fr.obeo.dsl.viewpoint.description.NodeMapping object) {
+			public BasicLabelStyleDescription caseNodeMapping(NodeMapping object) {
 				return object.getStyle();
 			};
 
-			public BasicLabelStyleDescription caseEdgeMapping(
-					fr.obeo.dsl.viewpoint.description.EdgeMapping object) {
+			public BasicLabelStyleDescription caseEdgeMapping(EdgeMapping object) {
 				return object.getStyle().getCenterLabelStyleDescription();
 			};
 
-			public BasicLabelStyleDescription caseContainerMapping(
-					fr.obeo.dsl.viewpoint.description.ContainerMapping object) {
+			public BasicLabelStyleDescription caseContainerMapping(ContainerMapping object) {
 				return object.getStyle();
 			};
 

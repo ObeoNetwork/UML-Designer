@@ -10,9 +10,12 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.tests.plugin.manual.services;
 
+import java.util.List;
+
 import junit.framework.TestCase;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
@@ -37,7 +40,7 @@ public class IsRelatedServiceTests extends TestCase {
 	 * The test resource URI.
 	 */
 	private static final String RESOURCE_URI = Activator.PLUGIN_ID + "/resources/Test.uml";
-	
+
 	/**
 	 * Instance of the services class used during tests.
 	 */
@@ -67,13 +70,15 @@ public class IsRelatedServiceTests extends TestCase {
 		final Class contextCls = (Class)subPackage1.getOwnedMember("ContextClass");
 
 		try {
-			assertFalse(services.isRelated(null, null));
+			List<EObject> nullList = null;
+			assertFalse(services.isRelated(null, nullList));
 		} catch (Exception e) {
 			fail("isRelated(null, null) should not raises an exception : " + e.getMessage());
 		}
 
 		try {
-			services.isRelated(contextCls, null);
+			List<EObject> nullList = null;
+			services.isRelated(contextCls, nullList);
 			fail("isRelated(contextCls, null) should raises a null pointer exception.");
 		} catch (Exception e) {
 			// OK

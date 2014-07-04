@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="439.36438"
+   height="89.966537"
+   id="svg2"
+   viewBox="0 0 439.36438 89.966537"
+   preserveAspectRatio="none"
+   version="1.1"
+   inkscape:version="0.48.3.1 r9886"
+   sodipodi:docname="empty.svg">
+  <defs
+     id="defs4">
+    <linearGradient
+       id="linearGradient3755">
+      <stop
+         style="stop-color:#d4e0ee;stop-opacity:1;"
+         offset="0"
+         id="stop3757" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="1"
+         id="stop3759" />
+    </linearGradient>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="72.889889"
+     inkscape:cy="43.656623"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1360"
+     inkscape:window-height="714"
+     inkscape:window-x="0"
+     inkscape:window-y="329"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-10.43791,-19.205974)">
+    <text
+       xml:space="preserve"
+       style="font-size:11.90476894px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#4f4f4f;fill-opacity:1;stroke:none;font-family:Sans"
+       x="26.194057"
+       y="30.271114"
+       id="text2987"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan2989"
+         x="26.194057"
+         y="30.271114"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#4f4f4f;fill-opacity:1;font-family:Roboto;-inkscape-font-specification:Roboto">Your diagram is empty. You can either :</tspan><tspan
+         sodipodi:role="line"
+         x="26.194057"
+         y="45.152073"
+         id="tspan2991"
+         style="font-size:11.90476894px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#4f4f4f;fill-opacity:1;font-family:Roboto;-inkscape-font-specification:Roboto">- create new element using the palette on the right.</tspan><tspan
+         sodipodi:role="line"
+         x="26.194057"
+         y="60.033039"
+         id="tspan3769"
+         style="font-size:11.90476894px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#4f4f4f;fill-opacity:1;font-family:Roboto;-inkscape-font-specification:Roboto">- add existing elements using :</tspan><tspan
+         sodipodi:role="line"
+         x="26.194057"
+         y="74.913994"
+         style="font-size:11.90476894px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#4f4f4f;fill-opacity:1;font-family:Roboto;-inkscape-font-specification:Roboto"
+         id="tspan2992">  * &quot;Add...&quot; in the palette.</tspan><tspan
+         sodipodi:role="line"
+         x="26.194057"
+         y="89.79496"
+         style="font-size:11.90476894px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#4f4f4f;fill-opacity:1;font-family:Roboto;-inkscape-font-specification:Roboto"
+         id="tspan2994">  * or the &quot;Add Related Elements&quot; action available using right click.</tspan><tspan
+         sodipodi:role="line"
+         x="26.194057"
+         y="104.67592"
+         id="tspan2995"
+         style="font-size:11.90476894px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#4f4f4f;fill-opacity:1;font-family:Roboto;-inkscape-font-specification:Roboto">- Drag&amp;Drop elements from the Model Explorer View into the diagram.</tspan><tspan
+         sodipodi:role="line"
+         x="26.194057"
+         y="119.55688"
+         id="tspan2997"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#4f4f4f;fill-opacity:1;font-family:Roboto;-inkscape-font-specification:Roboto" /><tspan
+         sodipodi:role="line"
+         x="26.194057"
+         y="134.43785"
+         id="tspan2999"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#4f4f4f;fill-opacity:1;font-family:Roboto;-inkscape-font-specification:Roboto" /></text>
+  </g>
+</svg>

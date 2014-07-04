@@ -72,12 +72,12 @@ public class DependencyPropertiesEditionComponent extends SinglePartPropertiesEd
 	/**
 	 * Settings for supplier ReferencesTable
 	 */
-	protected ReferencesTableSettings supplierSettings;
+	private ReferencesTableSettings supplierSettings;
 	
 	/**
 	 * Settings for client ReferencesTable
 	 */
-	protected ReferencesTableSettings clientSettings;
+	private ReferencesTableSettings clientSettings;
 	
 	
 	/**
@@ -170,7 +170,6 @@ public class DependencyPropertiesEditionComponent extends SinglePartPropertiesEd
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Dependency dependency = (Dependency)semanticObject;
-
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			dependency.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}
@@ -293,6 +292,8 @@ public class DependencyPropertiesEditionComponent extends SinglePartPropertiesEd
 		return ret;
 	}
 
+
+	
 
 	
 

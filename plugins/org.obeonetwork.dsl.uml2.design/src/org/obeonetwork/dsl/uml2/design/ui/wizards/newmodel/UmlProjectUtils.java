@@ -6,25 +6,25 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
+import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
+import org.obeonetwork.dsl.uml2.design.ui.extension.editor.UmlViewpoints;
 
 import com.google.common.collect.Maps;
-
-import fr.obeo.dsl.common.tools.api.util.Option;
-import fr.obeo.dsl.common.tools.api.util.Options;
-import fr.obeo.dsl.viewpoint.business.api.componentization.ViewpointRegistry;
-import fr.obeo.dsl.viewpoint.business.api.modelingproject.ModelingProject;
-import fr.obeo.dsl.viewpoint.business.api.session.Session;
-import fr.obeo.dsl.viewpoint.description.Viewpoint;
-import fr.obeo.dsl.viewpoint.ui.business.api.viewpoint.ViewpointSelectionCallback;
 
 public class UmlProjectUtils {
 	/**
@@ -36,21 +36,6 @@ public class UmlProjectUtils {
 	 * The UML file extension.
 	 */
 	public static final String MODEL_FILE_EXTENSION = "uml"; //$NON-NLS-1$
-
-	/**
-	 * UML structural viewpoint name defined in odesign.
-	 */
-	public static final String UML_STRUCTURAL_VP = "UML Structural Modeling";
-
-	/**
-	 * UML behavioral viewpoint name defined in odesign.
-	 */
-	public static final String UML_BEHAVIORAL_VP = "UML Behavioral Modeling";
-
-	/**
-	 * UML extensions viewpoint name defined in odesign.
-	 */
-	public static final String UML_EXTENSIONS_VP = "UML Extensions";
 
 	/**
 	 * The type name of an uml.Model element.
@@ -85,24 +70,26 @@ public class UmlProjectUtils {
 	}
 
 	public static void enableUMLViewpoints(final Session session) {
-		final String[] viewpointsToActivate = {UML_STRUCTURAL_VP, UML_BEHAVIORAL_VP, UML_EXTENSIONS_VP};
-		enableViewpoints(session, viewpointsToActivate);
-	}
-
-	public static void enableViewpoints(final Session session, final String... viewpointsToActivate) {
 		if (session != null) {
 			session.getTransactionalEditingDomain().getCommandStack()
 					.execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
 						@Override
 						protected void doExecute() {
-							ViewpointSelectionCallback callback = new ViewpointSelectionCallback();
-
-							for (Viewpoint vp : ViewpointRegistry.getInstance().getViewpoints()) {
-								for (String viewpoint : viewpointsToActivate) {
-									if (viewpoint.equals(vp.getName()))
-										callback.selectViewpoint(vp, session);
-								}
+							ViewpointSelectionCallback selection = new ViewpointSelectionCallback();
+							for (Viewpoint previouslySelected : session.getSelectedViewpoints(false)) {
+								selection.deselectViewpoint(previouslySelected, session,
+										new NullProgressMonitor());
 							}
+							selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().capture(),
+									session, new NullProgressMonitor());
+							selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().design(),
+									session, new NullProgressMonitor());
+							selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().review(),
+									session, new NullProgressMonitor());
+							selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().dashboard(),
+									session, new NullProgressMonitor());
+							selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().extend(),
+									session, new NullProgressMonitor());
 						}
 					});
 		}
@@ -144,9 +131,9 @@ public class UmlProjectUtils {
 									Messages.UmlModelWizard_UI_Error_CreatingUmlModel, e);
 						}
 
-						session.addSemanticResource(semanticModelURI, true);
+						session.addSemanticResource(semanticModelURI, new NullProgressMonitor());
 
-						session.save();
+						session.save(new NullProgressMonitor());
 					}
 				});
 		return Options.newSome(ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(platformPath)));

@@ -14,6 +14,8 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.ClassifierTemplateParameter;
 import org.eclipse.uml2.uml.NamedElement;
@@ -24,9 +26,6 @@ import org.eclipse.uml2.uml.TemplateParameterSubstitution;
 import org.eclipse.uml2.uml.TemplateSignature;
 import org.eclipse.uml2.uml.TemplateableElement;
 import org.eclipse.uml2.uml.UMLFactory;
-
-import fr.obeo.dsl.viewpoint.business.api.session.Session;
-import fr.obeo.dsl.viewpoint.business.api.session.SessionManager;
 
 /**
  * Utility services to manage label edition on classes.
@@ -74,7 +73,7 @@ public final class ClassServices {
 					try {
 						TemplateParameter templateParameter = templateParameters.get(i);
 						if (templateParameter.getParameteredElement() instanceof NamedElement) {
-							((NamedElement) templateParameter.getParameteredElement())
+							((NamedElement)templateParameter.getParameteredElement())
 									.setName(templateParamLabel);
 						}
 					} catch (IndexOutOfBoundsException e) {
@@ -86,7 +85,7 @@ public final class ClassServices {
 								.getInverseReferences(templateSignature);
 						for (Setting setting : inverseReferences) {
 							if (setting.getEObject() instanceof TemplateBinding) {
-								TemplateBinding templateBinding = (TemplateBinding) setting.getEObject();
+								TemplateBinding templateBinding = (TemplateBinding)setting.getEObject();
 								TemplateParameterSubstitution templateParameterSubstitution = templateBinding
 										.createParameterSubstitution();
 								templateParameterSubstitution.setFormal(createNewClassifierTemplateParameter);
@@ -103,7 +102,7 @@ public final class ClassServices {
 							.getInverseReferences(templateParameterToRemove);
 					for (Setting setting : inverseReferences) {
 						if (setting.getEObject() instanceof TemplateParameterSubstitution) {
-							TemplateParameterSubstitution templateParameterSubstitution = (TemplateParameterSubstitution) setting
+							TemplateParameterSubstitution templateParameterSubstitution = (TemplateParameterSubstitution)setting
 									.getEObject();
 							TemplateBinding templateBinding = templateParameterSubstitution
 									.getTemplateBinding();
@@ -123,7 +122,7 @@ public final class ClassServices {
 							.getInverseReferences(templateSignature);
 					for (Setting setting : inverseReferences) {
 						if (setting.getEObject() instanceof TemplateBinding) {
-							TemplateBinding templateBinding = (TemplateBinding) setting.getEObject();
+							TemplateBinding templateBinding = (TemplateBinding)setting.getEObject();
 							templateBinding.getParameterSubstitutions().clear();
 							templateBinding.setSignature(null);
 							TemplateableElement boundElement = templateBinding.getBoundElement();

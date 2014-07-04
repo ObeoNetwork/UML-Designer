@@ -10,6 +10,7 @@
  *******************************************************************************/
 
 package org.obeonetwork.dsl.uml2.design.tests.ui.stories.createarepresentation;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.obeonetwork.dsl.uml2.design.tests.contexts.APackageSelectedInTheModelExplorer;

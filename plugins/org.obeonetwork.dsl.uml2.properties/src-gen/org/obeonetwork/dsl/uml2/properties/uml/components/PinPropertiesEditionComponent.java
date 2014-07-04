@@ -53,9 +53,6 @@ import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 
-import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.jface.viewers.ViewerFilter;
-
 import org.eclipse.uml2.types.TypesPackage;
 
 import org.eclipse.uml2.uml.Pin;
@@ -122,8 +119,14 @@ public class PinPropertiesEditionComponent extends SinglePartPropertiesEditingCo
 			
 			generalPart.setUnique(pin.isUnique());
 			
-			// FIXME NO VALID CASE INTO template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : upperValue, General, Pin.
-			// FIXME NO VALID CASE INTO template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : lowerValue, General, Pin.
+			if (isAccessible(UmlViewsRepository.General.lowerValue)) {
+				generalPart.setLowerValue(EEFConverterUtil.convertToString(TypesPackage.Literals.INTEGER, pin.getLower()));
+			}
+			
+			if (isAccessible(UmlViewsRepository.General.upperValue)) {
+				generalPart.setUpperValue(EEFConverterUtil.convertToString(TypesPackage.Literals.UNLIMITED_NATURAL, pin.getUpper()));
+			}
+			
 			if (isAccessible(UmlViewsRepository.General.type)) {
 				// init part
 				typeSettings = new EObjectFlatComboSettings(pin, UMLPackage.eINSTANCE.getTypedElement_Type());
@@ -136,22 +139,9 @@ public class PinPropertiesEditionComponent extends SinglePartPropertiesEditingCo
 			
 			
 			
-			// FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : upperValue, General, Pin.
-			// FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : lowerValue, General, Pin.
-			if (isAccessible(UmlViewsRepository.General.type)) {
-				generalPart.addFilterToType(new ViewerFilter() {
-				
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof String && element.equals("")) || (element instanceof Type); //$NON-NLS-1$ 
-					}
-					
-				});
-			}
+			
+			
+			
 			// init values for referenced views
 			
 			// init filters for referenced views
@@ -186,11 +176,11 @@ public class PinPropertiesEditionComponent extends SinglePartPropertiesEditingCo
 		if (editorKey == UmlViewsRepository.General.Qualifiers.unique) {
 			return UMLPackage.eINSTANCE.getOperation_IsUnique();
 		}
-		if (editorKey == UmlViewsRepository.General.upperValue) {
-			return UMLPackage.eINSTANCE.getMultiplicityElement_UpperValue();
-		}
 		if (editorKey == UmlViewsRepository.General.lowerValue) {
-			return UMLPackage.eINSTANCE.getMultiplicityElement_LowerValue();
+			return UMLPackage.eINSTANCE.getMultiplicityElement_Lower();
+		}
+		if (editorKey == UmlViewsRepository.General.upperValue) {
+			return UMLPackage.eINSTANCE.getMultiplicityElement_Upper();
 		}
 		if (editorKey == UmlViewsRepository.General.type) {
 			return UMLPackage.eINSTANCE.getTypedElement_Type();
@@ -205,18 +195,17 @@ public class PinPropertiesEditionComponent extends SinglePartPropertiesEditingCo
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
 		Pin pin = (Pin)semanticObject;
-
 		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
 			pin.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
 		}
 		if (UmlViewsRepository.General.visibility == event.getAffectedEditor()) {
 			pin.setVisibility((VisibilityKind)event.getNewValue());
 		}
-		if (UmlViewsRepository.General.upperValue == event.getAffectedEditor()) {
-			// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : upperValue, General, Pin.
-		}
 		if (UmlViewsRepository.General.lowerValue == event.getAffectedEditor()) {
-			// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : lowerValue, General, Pin.
+			pin.setLower((EEFConverterUtil.createIntFromString(TypesPackage.Literals.INTEGER, (String)event.getNewValue())));
+		}
+		if (UmlViewsRepository.General.upperValue == event.getAffectedEditor()) {
+			pin.setUpper((EEFConverterUtil.createIntFromString(TypesPackage.Literals.UNLIMITED_NATURAL, (String)event.getNewValue())));
 		}
 		if (UmlViewsRepository.General.type == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET) {
@@ -258,8 +247,20 @@ public class PinPropertiesEditionComponent extends SinglePartPropertiesEditingCo
 			if (UMLPackage.eINSTANCE.getOperation_IsUnique().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.Qualifiers.unique))
 				generalPart.setUnique((Boolean)msg.getNewValue());
 			
-			// FIXME INVALID CASE INTO template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : upperValue, General, Pin.
-			// FIXME INVALID CASE INTO template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : lowerValue, General, Pin.
+			if (UMLPackage.eINSTANCE.getMultiplicityElement_Lower().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.lowerValue)) {
+				if (msg.getNewValue() != null) {
+					generalPart.setLowerValue(EcoreUtil.convertToString(TypesPackage.Literals.INTEGER, msg.getNewValue()));
+				} else {
+					generalPart.setLowerValue("");
+				}
+			}
+			if (UMLPackage.eINSTANCE.getMultiplicityElement_Upper().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.upperValue)) {
+				if (msg.getNewValue() != null) {
+					generalPart.setUpperValue(EcoreUtil.convertToString(TypesPackage.Literals.UNLIMITED_NATURAL, msg.getNewValue()));
+				} else {
+					generalPart.setUpperValue("");
+				}
+			}
 			if (UMLPackage.eINSTANCE.getTypedElement_Type().equals(msg.getFeature()) && generalPart != null && isAccessible(UmlViewsRepository.General.type))
 				generalPart.setType((EObject)msg.getNewValue());
 			
@@ -278,8 +279,8 @@ public class PinPropertiesEditionComponent extends SinglePartPropertiesEditingCo
 			UMLPackage.eINSTANCE.getNamedElement_Visibility(),
 			UMLPackage.eINSTANCE.getOperation_IsOrdered(),
 			UMLPackage.eINSTANCE.getOperation_IsUnique(),
-			UMLPackage.eINSTANCE.getMultiplicityElement_UpperValue(),
-			UMLPackage.eINSTANCE.getMultiplicityElement_LowerValue(),
+			UMLPackage.eINSTANCE.getMultiplicityElement_Lower(),
+			UMLPackage.eINSTANCE.getMultiplicityElement_Upper(),
 			UMLPackage.eINSTANCE.getTypedElement_Type()		);
 		return new NotificationFilter[] {filter,};
 	}
@@ -289,7 +290,7 @@ public class PinPropertiesEditionComponent extends SinglePartPropertiesEditingCo
 	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#mustBeComposed(java.lang.Object, int)
 	 */
 	public boolean mustBeComposed(Object key, int kind) {
-		return key == UmlViewsRepository.General.name || key == UmlViewsRepository.General.visibility || key == UmlViewsRepository.General.Qualifiers.ordered || key == UmlViewsRepository.General.Qualifiers.unique || key == UmlViewsRepository.General.upperValue || key == UmlViewsRepository.General.lowerValue || key == UmlViewsRepository.General.type || key == UmlViewsRepository.General.Qualifiers.class;
+		return key == UmlViewsRepository.General.name || key == UmlViewsRepository.General.visibility || key == UmlViewsRepository.General.Qualifiers.ordered || key == UmlViewsRepository.General.Qualifiers.unique || key == UmlViewsRepository.General.lowerValue || key == UmlViewsRepository.General.upperValue || key == UmlViewsRepository.General.type || key == UmlViewsRepository.General.Qualifiers.class;
 	}
 
 	/**
@@ -299,7 +300,7 @@ public class PinPropertiesEditionComponent extends SinglePartPropertiesEditingCo
 	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == UmlViewsRepository.General.Qualifiers.ordered || key == UmlViewsRepository.General.Qualifiers.unique;
+		return key == UmlViewsRepository.General.Qualifiers.ordered || key == UmlViewsRepository.General.Qualifiers.unique || key == UmlViewsRepository.General.upperValue;
 	}
 
 	/**
@@ -340,6 +341,20 @@ public class PinPropertiesEditionComponent extends SinglePartPropertiesEditingCo
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getOperation_IsUnique().getEAttributeType(), newValue);
 				}
+				if (UmlViewsRepository.General.lowerValue == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getMultiplicityElement_Lower().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getMultiplicityElement_Lower().getEAttributeType(), newValue);
+				}
+				if (UmlViewsRepository.General.upperValue == event.getAffectedEditor()) {
+					Object newValue = event.getNewValue();
+					if (newValue instanceof String) {
+						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getMultiplicityElement_Upper().getEAttributeType(), (String)newValue);
+					}
+					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getMultiplicityElement_Upper().getEAttributeType(), newValue);
+				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);
 			} catch (WrappedException we) {
@@ -349,6 +364,8 @@ public class PinPropertiesEditionComponent extends SinglePartPropertiesEditingCo
 		return ret;
 	}
 
+
+	
 
 	
 

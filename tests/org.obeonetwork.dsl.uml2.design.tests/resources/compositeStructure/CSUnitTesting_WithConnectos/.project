@@ -7,6 +7,6 @@
 	<buildSpec>
 	</buildSpec>
 	<natures>
-		<nature>fr.obeo.dsl.viewpoint.nature.modelingproject</nature>
+		<nature>org.eclipse.sirius.nature.modelingproject</nature>
 	</natures>
 </projectDescription>

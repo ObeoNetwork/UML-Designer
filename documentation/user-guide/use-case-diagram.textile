@@ -1,0 +1,17 @@
+---
+layout: article
+title: Use Case Diagram
+subtitle: user guide
+relativePath: ..
+---
+
+h1. Introduction
+
+!{{ page.relativePath }}/images/features/agency_pics/system_use_cases.jpg!
+
+h1. Use cases with or without subjects
+
+The *Use Case Diagram* will display any @UseCase@ not being affected to a subject on the canvas. If a subject is affected, then the use case
+will be displayed directly within this subject.
+
+Dragging a use case from a subject to the canvas (and the other way around) will set or unset the subject accordingly.

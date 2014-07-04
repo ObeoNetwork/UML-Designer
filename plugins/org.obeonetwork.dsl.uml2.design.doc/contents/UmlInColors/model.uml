@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_ePQfIA8oEeOqyfmc9MlXRQ" name="NewModel">
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_ePQfIA8oEeOqyfmc9MlXRQ" name="NewModel">
   <packagedElement xmi:type="uml:Package" xmi:id="_YqFUcA8qEeOFadoVRfRLpg" name="Airports">
     <ownedComment xmi:id="_8JmPIA8sEeODypIGG89Q7w" annotatedElement="_YqFUcA8qEeOFadoVRfRLpg">
       <body>Example from : 

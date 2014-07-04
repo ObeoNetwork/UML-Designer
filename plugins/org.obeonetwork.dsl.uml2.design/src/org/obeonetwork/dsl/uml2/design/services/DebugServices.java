@@ -10,12 +10,6 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.services;
 
-import org.eclipse.emf.ecore.EObject;
-
-import fr.obeo.acceleo.gen.template.eval.ENode;
-import fr.obeo.acceleo.gen.template.eval.ENodeCastException;
-import fr.obeo.dsl.common.tools.api.interpreter.IInterpreter;
-import fr.obeo.dsl.viewpoint.tools.api.interpreter.InterpreterUtil;
 
 /**
  * Class used to debug
@@ -24,63 +18,63 @@ import fr.obeo.dsl.viewpoint.tools.api.interpreter.InterpreterUtil;
  */
 public class DebugServices {
 
-	/**
-	 * Outputs information on the parameter and acceleo variables available
-	 * 
-	 * @param context
-	 *            Object we wish to debug
-	 * @return The unmodified parameter
-	 */
-	public ENode traceWithVariables(ENode context) {
-		System.out.println("$self : " + context);
-		EObject interpreterContext = getAnEObjectFrom(context);
-		if (interpreterContext != null) {
-			IInterpreter interpreter = InterpreterUtil.getInterpreter(interpreterContext);
-			for (String variableName : interpreter.getVariables().keySet()) {
-				System.out.println("$" + variableName + " : " + interpreter.getVariables().get(variableName));
-			}
-		}
-		System.out.println("--------------------");
-		return context;
-	}
-
-	/**
-	 * Extracts an EObject from an ENode instance
-	 * 
-	 * @param context
-	 *            ENode instance
-	 * @return an EObject if one has been found
-	 */
-	private EObject getAnEObjectFrom(ENode context) {
-		EObject result = null;
-		try {
-			if (context.isEObject()) {
-				return context.getEObject();
-			} else if (context.isList() && context.getList().size() > 0) {
-				// We search into the list elements
-				for (Object elem : context.getList().asList()) {
-					if (elem instanceof ENode) {
-						ENode enode = (ENode)elem;
-						if (enode.isEObject()) {
-							return enode.getEObject();
-						}
-					}
-				}
-				// If we have found nothing, we search if some elements of the list are a list themselves
-				for (Object elem : context.getList().asList()) {
-					if (elem instanceof ENode) {
-						ENode enode = (ENode)elem;
-						if (enode.isList()) {
-							EObject tempResult = getAnEObjectFrom(enode);
-							if (tempResult != null) {
-								return tempResult;
-							}
-						}
-					}
-				}
-			}
-		} catch (ENodeCastException e) {
-		}
-		return result;
-	}
+	// /**
+	// * Outputs information on the parameter and acceleo variables available
+	// *
+	// * @param context
+	// * Object we wish to debug
+	// * @return The unmodified parameter
+	// */
+	// public Element traceWithVariables(ENode context) {
+	// System.out.println("$self : " + context);
+	// EObject interpreterContext = getAnEObjectFrom(context);
+	// if (interpreterContext != null) {
+	// IInterpreter interpreter = InterpreterUtil.getInterpreter(interpreterContext);
+	// for (String variableName : interpreter.getVariables().keySet()) {
+	// System.out.println("$" + variableName + " : " + interpreter.getVariables().get(variableName));
+	// }
+	// }
+	// System.out.println("--------------------");
+	// return context;
+	// }
+	//
+	// /**
+	// * Extracts an EObject from an ENode instance
+	// *
+	// * @param context
+	// * ENode instance
+	// * @return an EObject if one has been found
+	// */
+	// private EObject getAnEObjectFrom(ENode context) {
+	// EObject result = null;
+	// try {
+	// if (context.isEObject()) {
+	// return context.getEObject();
+	// } else if (context.isList() && context.getList().size() > 0) {
+	// // We search into the list elements
+	// for (Object elem : context.getList().asList()) {
+	// if (elem instanceof ENode) {
+	// ENode enode = (ENode)elem;
+	// if (enode.isEObject()) {
+	// return enode.getEObject();
+	// }
+	// }
+	// }
+	// // If we have found nothing, we search if some elements of the list are a list themselves
+	// for (Object elem : context.getList().asList()) {
+	// if (elem instanceof ENode) {
+	// ENode enode = (ENode)elem;
+	// if (enode.isList()) {
+	// EObject tempResult = getAnEObjectFrom(enode);
+	// if (tempResult != null) {
+	// return tempResult;
+	// }
+	// }
+	// }
+	// }
+	// }
+	// } catch (ENodeCastException e) {
+	// }
+	// return result;
+	// }
 }

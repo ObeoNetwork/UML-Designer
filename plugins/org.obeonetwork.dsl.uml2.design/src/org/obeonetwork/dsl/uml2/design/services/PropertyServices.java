@@ -34,7 +34,7 @@ public final class PropertyServices {
 	 * @param propertiesToMove
 	 *            properties to move
 	 */
-	public void moveUpProperties(List<Property> propertiesToMove) {
+	public void moveUpProperties(Property currentProperty, List<Property> propertiesToMove) {
 
 		List<Property> propertiesInRightOrder = retrieveTheRightOrder(propertiesToMove);
 		MoveUpElementSwitch moveUpElementsSwitch = new MoveUpElementSwitch();
@@ -52,7 +52,7 @@ public final class PropertyServices {
 	 * @param propertiesToMove
 	 *            properties to move
 	 */
-	public void moveDownProperties(List<Property> propertiesToMove) {
+	public void moveDownProperties(Property currentProperty, List<Property> propertiesToMove) {
 
 		List<Property> propertiesInRightOrder = retrieveTheRightOrder(propertiesToMove);
 		Object[] propertiesArray = propertiesInRightOrder.toArray();

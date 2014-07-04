@@ -1,0 +1,45 @@
+---
+layout: article
+title: Contribute
+subtitle: developer guide
+relativePath: ..
+---
+
+h1. Get the source code
+
+This UML modeling environment is based on the "Sirius":https://www.eclipse.org/sirius. It is under an
+Open Source license (*EPL*) and the source code is hosted on "github":https://github.com/ObeoNetwork/UML-Designer. 
+It is intended to cover most use cases behind the usage of UML, and more importantly to be reused when you apply a 
+model driven approach which uses both *UML and some DSL*. Everything should integrate seamlessly  in the same environment.
+
+To get the code just "clone":https://help.github.com/articles/which-remote-url-should-i-use the repository : 
+* SSH : "git@github.com:ObeoNetwork/UML-Designer.git":git@github.com:ObeoNetwork/UML-Designer.git
+* HTTPS : "https://github.com/ObeoNetwork/UML-Designer/tree/master#":https://github.com/ObeoNetwork/UML-Designer/tree/master#
+
+h1. Contribute
+
+Feel free to fork the code, adapt it to your need and trigger a "pull request":https://help.github.com/articles/using-pull-requests.
+
+h1. Providing Feedback
+
+We're constantly looking for feedback about this modeler, if you think something is missing, some behavior is weird or even just to tell us you are happy with it in its current state, *please come and exchange*.
+
+h2. Bug tracker
+
+The *bug tracker* is available on github : "https://github.com/ObeoNetwork/UML-Designer/issues":https://github.com/ObeoNetwork/UML-Designer/issues. 
+We are using the github "integrated issue tracker":https://guides.github.com/features/issues/.
+
+To enter a *new issue* you just need to "create a github account":https://help.github.com/articles/signing-up-for-a-new-github-account. 
+
+To *search for issues*, have a look to the github help page to learn the "searching issue syntax":https://help.github.com/articles/searching-issues.
+
+You can visualize also on which issues we are working on thanks to our *card wall*: "https://waffle.io/obeonetwork/uml-designer":https://waffle.io/obeonetwork/uml-designer
+
+h2. Forum
+ 
+If you have any *question*, do not hesitate ask a question on the "Obeo Network":http://www.obeonetwork.com/group/uml-designer.
+
+h2. Survey
+
+Give us feedback by filling in our "survey":http://bit.ly/UMLDesignerSurvey!
+

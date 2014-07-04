@@ -160,6 +160,8 @@ public class EndsPropertiesEditionPartImpl extends CompositePropertiesEditionPar
 		GridData endsData = new GridData(GridData.FILL_HORIZONTAL);
 		endsData.horizontalSpan = 3;
 		this.ends.setLayoutData(endsData);
+		this.ends.setLowerBound(2);
+		this.ends.setUpperBound(-1);
 		ends.setID(UmlViewsRepository.Ends.ends_);
 		ends.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		// Start of user code for createEndsAdvancedTableComposition

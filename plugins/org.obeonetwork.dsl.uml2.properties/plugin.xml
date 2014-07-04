@@ -14,7 +14,7 @@ Contributors:
  <!-- EEF extensions -->
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
-            uri="http://www.eclipse.org/uml2/4.0.0/UML"
+            uri="http://www.eclipse.org/uml2/5.0.0/UML"
             class="org.obeonetwork.dsl.uml2.properties.providers.CustomUmlEEFAdapterFactory"
             supportedTypes="org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider"/>
    </extension>
@@ -29,7 +29,7 @@ Contributors:
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
-            contributorId="fr.obeo.dsl.viewpoint.diagram"
+            contributorId="org.eclipse.sirius.diagram.ui"
             labelProvider="org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider">
          <propertyCategory
                category="default">
@@ -45,7 +45,7 @@ Contributors:
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
       <propertyTabs
-            contributorId="fr.obeo.dsl.viewpoint.diagram">
+            contributorId="org.eclipse.sirius.diagram.ui">
          <propertyTab
                id="General"
                label="General"
@@ -116,7 +116,7 @@ Contributors:
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertySections">
       <propertySections
-            contributorId="fr.obeo.dsl.viewpoint.diagram">
+            contributorId="org.eclipse.sirius.diagram.ui">
          <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralCustomPropertiesEditionPartForm"
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.GeneralEditionFilter"
@@ -182,7 +182,7 @@ Contributors:
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
       <propertyTabs
-            contributorId="fr.obeo.dsl.viewpoint.table.ui.EditorID">
+            contributorId="org.eclipse.sirius.table.ui.EditorID">
          <propertyTab
                category="extended"
                id="General"
@@ -253,7 +253,7 @@ Contributors:
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertySections">
       <propertySections
-            contributorId="fr.obeo.dsl.viewpoint.table.ui.EditorID">
+            contributorId="org.eclipse.sirius.table.ui.EditorID">
          <propertySection
                class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralCustomPropertiesEditionPartForm"
                filter="org.obeonetwork.dsl.uml2.properties.uml.providers.GeneralEditionFilter"
@@ -319,7 +319,7 @@ Contributors:
    <extension
          point="org.eclipse.ui.views.properties.tabbed.propertyContributor">
       <propertyContributor
-            contributorId="fr.obeo.dsl.viewpoint.table.ui.EditorID"
+            contributorId="org.eclipse.sirius.table.ui.EditorID"
             labelProvider="org.eclipse.emf.eef.runtime.ui.utils.EEFLabelProvider">
          <propertyCategory
                category="default">
@@ -331,5 +331,142 @@ Contributors:
                category="advanced">
          </propertyCategory>
       </propertyContributor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertyTabs">
+      <propertyTabs
+            contributorId="org.eclipse.sirius.ui.tools.views.model.explorer">
+         <propertyTab
+               id="General"
+               label="General"
+               category="default">
+         </propertyTab>
+         <propertyTab
+               afterTab="General"
+               category="default"
+               id="Literals"
+               label="Literals">
+         </propertyTab>
+         <propertyTab
+               afterTab="General"
+               category="default"
+               id="Parameters"
+               label="Parameters">
+         </propertyTab>
+         <propertyTab
+               afterTab="General"
+               category="default"
+               id="Profile"
+               label="Profile">
+         </propertyTab>
+         <propertyTab
+               afterTab="General"
+               category="default"
+               id="Attributes"
+               label="Attributes">
+         </propertyTab>
+         <propertyTab
+               afterTab="Attributes"
+               category="default"
+               id="Operations"
+               label="Operations">
+         </propertyTab>
+         <propertyTab
+               afterTab="General"
+               category="default"
+               id="Relationships"
+               label="Relationships">
+         </propertyTab>
+         <propertyTab
+               afterTab="General"
+               category="default"
+               id="Stereotypes"
+               label="Stereotypes">
+         </propertyTab>
+         <propertyTab
+               afterTab="General"
+               category="default"
+               id="Profiles"
+               label="Profiles">
+         </propertyTab>
+         <propertyTab
+               id="Documentation"
+               label="Comment"
+               category="default"
+               afterTab="General">
+         </propertyTab>
+         <propertyTab
+               id="Ends"
+               label="Ends"
+               category="default"
+               afterTab="General">
+         </propertyTab>
+      </propertyTabs>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views.properties.tabbed.propertySections">
+      <propertySections
+            contributorId="org.eclipse.sirius.ui.tools.views.model.explorer">
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.GeneralCustomPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.GeneralEditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.General"
+               tab="General">
+         </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.DocumentationPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.DocumentationEditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Documentation"
+               tab="Documentation">
+         </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.OperationsCustomPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.OperationsEditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Operations"
+               tab="Operations">
+         </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.AttributesCustomPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.AttributesEditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Attributes"
+               tab="Attributes">
+         </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.RelationshipsPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.RelationshipsEditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Relationships"
+               tab="Relationships">
+         </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.StereotypesPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.StereotypesEditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Stereotypes"
+               tab="Stereotypes">
+         </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.ProfilesPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.ProfilesEditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Profiles"
+               tab="Profiles">
+         </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.ParametersCustomPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.OperationPropertiesEditionProvider$EditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Operation"
+               tab="Parameters">
+         </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.LiteralsPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.EnumerationPropertiesEditionProvider$EditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Enumeration"
+               tab="Literals">
+         </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.EndsCustomPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.ConnectorPropertiesEditionProvider$EditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.Connector"
+               tab="Ends">
+         </propertySection>
+      </propertySections>
    </extension>
     </plugin>

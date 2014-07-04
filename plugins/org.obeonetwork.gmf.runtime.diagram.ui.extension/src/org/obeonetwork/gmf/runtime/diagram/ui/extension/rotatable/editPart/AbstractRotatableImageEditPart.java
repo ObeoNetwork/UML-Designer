@@ -34,25 +34,25 @@ import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.CustomStyle;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractNotSelectableShapeNodeEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IStyleEditPart;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.AirStyleDefaultSizeNodeFigure;
 import org.obeonetwork.gmf.runtime.diagram.ui.extension.ExtensionActivator;
 import org.obeonetwork.gmf.runtime.diagram.ui.extension.rotatable.NodeImageExtension;
 import org.obeonetwork.gmf.runtime.diagram.ui.extension.rotatable.editPart.listener.PropagateFigureListenerAtConnectionFigure;
 import org.obeonetwork.gmf.runtime.diagram.ui.extension.rotatable.figure.RotatableSVGWorkspaceImageFigure;
 import org.obeonetwork.gmf.runtime.diagram.ui.extension.rotatable.figure.listener.RotatableImageListener;
 
-import fr.obeo.dsl.viewpoint.CustomStyle;
-import fr.obeo.dsl.viewpoint.diagram.edit.api.part.AbstractNotSelectableShapeNodeEditPart;
-import fr.obeo.dsl.viewpoint.diagram.edit.api.part.IStyleEditPart;
-import fr.obeo.dsl.viewpoint.diagram.ui.tools.api.figure.AirStyleDefaultSizeNodeFigure;
-
 /**
- * Edit Part for rotatable image : switch mode ROTATION or IMAGE, rotate the specific image or display four
- * images in North South East and West.
+ * Edit Part for rotatable image : switch mode ROTATION or IMAGE, rotate the
+ * specific image or display four images in North South East and West.
  * 
  * @author nlepine
  * @author hmarchadour
  */
-public abstract class AbstractRotatableImageEditPart extends AbstractNotSelectableShapeNodeEditPart implements IStyleEditPart {
+public abstract class AbstractRotatableImageEditPart extends
+		AbstractNotSelectableShapeNodeEditPart implements IStyleEditPart {
 
 	/**
 	 * @generated
@@ -120,8 +120,11 @@ public abstract class AbstractRotatableImageEditPart extends AbstractNotSelectab
 		if (element instanceof CustomStyle) {
 			CustomStyle imageStyle = (CustomStyle) element;
 			figure.refreshFigure(imageStyle);
-			((GraphicalEditPart) this.getParent()).setLayoutConstraint(this, this.getFigure(), new Rectangle(
-					0, 0, figure.getPreferredSize().width, figure.getPreferredSize().height));
+			((GraphicalEditPart) this.getParent()).setLayoutConstraint(
+					this,
+					this.getFigure(),
+					new Rectangle(0, 0, figure.getPreferredSize().width, figure
+							.getPreferredSize().height));
 		}
 	}
 
@@ -132,7 +135,8 @@ public abstract class AbstractRotatableImageEditPart extends AbstractNotSelectab
 		LayoutEditPolicy lep = new LayoutEditPolicy() {
 
 			protected EditPolicy createChildEditPolicy(EditPart child) {
-				EditPolicy result = child.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
+				EditPolicy result = child
+						.getEditPolicy(EditPolicy.PRIMARY_DRAG_ROLE);
 				if (result == null) {
 					result = new NonResizableEditPolicy();
 				}
@@ -156,10 +160,12 @@ public abstract class AbstractRotatableImageEditPart extends AbstractNotSelectab
 	protected IFigure createNodeShape() {
 		CustomStyle imageStyle = (CustomStyle) resolveSemanticElement();
 
-		NodeImageExtension imageExtension = ExtensionActivator.getDefault().getBestImageExtension(imageStyle.getId());
+		NodeImageExtension imageExtension = ExtensionActivator.getDefault()
+				.getBestImageExtension(imageStyle.getId());
 
-		primaryShape = new RotatableSVGWorkspaceImageFigure(imageExtension.getMode(),
-				imageExtension.getTopImage(), imageExtension.getLeftImage(), imageExtension.getBottomImage(),
+		primaryShape = new RotatableSVGWorkspaceImageFigure(
+				imageExtension.getMode(), imageExtension.getTopImage(),
+				imageExtension.getLeftImage(), imageExtension.getBottomImage(),
 				imageExtension.getRightImage());
 
 		listener = new RotatableImageListener(this);
@@ -168,7 +174,8 @@ public abstract class AbstractRotatableImageEditPart extends AbstractNotSelectab
 		EditPart parentEditPart = getParent();
 		if (parentEditPart instanceof GraphicalEditPart) {
 			GraphicalEditPart parentGraphicalEditPart = (GraphicalEditPart) parentEditPart;
-			NodeListener dEdgeEditPartListener = new PropagateFigureListenerAtConnectionFigure(listener);
+			NodeListener dEdgeEditPartListener = new PropagateFigureListenerAtConnectionFigure(
+					listener);
 			parentGraphicalEditPart.addNodeListener(dEdgeEditPartListener);
 		}
 
@@ -198,8 +205,8 @@ public abstract class AbstractRotatableImageEditPart extends AbstractNotSelectab
 	 * @generated.
 	 */
 	protected NodeFigure createNodePlate() {
-		DefaultSizeNodeFigure result = new AirStyleDefaultSizeNodeFigure(getMapMode().DPtoLP(40),
-				getMapMode().DPtoLP(40));
+		DefaultSizeNodeFigure result = new AirStyleDefaultSizeNodeFigure(
+				getMapMode().DPtoLP(40), getMapMode().DPtoLP(40));
 		return result;
 	}
 
@@ -216,8 +223,9 @@ public abstract class AbstractRotatableImageEditPart extends AbstractNotSelectab
 	}
 
 	/**
-	 * Creates figure for this edit part. Body of this method does not depend on settings in generation model
-	 * so you may safely remove <i>generated</i> tag and modify it.
+	 * Creates figure for this edit part. Body of this method does not depend on
+	 * settings in generation model so you may safely remove <i>generated</i>
+	 * tag and modify it.
 	 * 
 	 * @generated
 	 */
@@ -231,8 +239,8 @@ public abstract class AbstractRotatableImageEditPart extends AbstractNotSelectab
 	}
 
 	/**
-	 * Default implementation treats passed figure as content pane. Respects layout one may have set for
-	 * generated figure.
+	 * Default implementation treats passed figure as content pane. Respects
+	 * layout one may have set for generated figure.
 	 * 
 	 * @param nodeShape
 	 *            instance of generated figure class
@@ -281,7 +289,8 @@ public abstract class AbstractRotatableImageEditPart extends AbstractNotSelectab
 	 * @param polylineConnection
 	 * @return the angle in degrees.
 	 */
-	public static double getFirstSegmentAngle(PolylineConnection polylineConnection) {
+	public static double getFirstSegmentAngle(
+			PolylineConnection polylineConnection) {
 
 		PointList points = polylineConnection.getPoints();
 		PrecisionPoint firstPoint = new PrecisionPoint(points.getFirstPoint());

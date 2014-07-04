@@ -160,6 +160,8 @@ public class LiteralsPropertiesEditionPartImpl extends CompositePropertiesEditio
 		GridData literalsData = new GridData(GridData.FILL_HORIZONTAL);
 		literalsData.horizontalSpan = 3;
 		this.literals.setLayoutData(literalsData);
+		this.literals.setLowerBound(0);
+		this.literals.setUpperBound(-1);
 		literals.setID(UmlViewsRepository.Literals.literals_);
 		literals.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 		// Start of user code for createLiteralsAdvancedTableComposition

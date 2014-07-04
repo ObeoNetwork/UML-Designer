@@ -10,6 +10,7 @@
  *******************************************************************************/
 
 package org.obeonetwork.dsl.uml2.design.tests.ui.stories.createatype;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.obeonetwork.dsl.uml2.design.tests.contexts.AClassDiagramIsOpened;
@@ -24,30 +25,35 @@ public class AClassDiagramIsOpenedUiTests {
 		context.assertAClassIsCreatedInTheModel();
 		context.assertAClassAppearsOnTheDiagram();
 	}
+
 	@Test
 	public void createAnEnumerationInTheClassDiagramFromThePalette() throws Exception {
 		context.actionISelectTheEnumerationCreationToolFromThePaletteAndIClickOnTheDiagram();
 		context.assertAnEnumerationIsCreatedInTheModel();
 		context.assertAnEnumerationAppearsOnTheDiagram();
 	}
+
 	@Test
 	public void createADatatypeInTheClassDiagramFromThePalette() throws Exception {
 		context.actionISelectTheDatatypeCreationToolFromThePaletteAndIClickOnTheDiagram();
 		context.assertADatatypeIsCreatedInTheModel();
 		context.assertADatatypeAppearsOnTheDiagram();
 	}
+
 	@Test
 	public void createAPrimitiveTypeInTheClassDiagramFromThePalette() throws Exception {
 		context.actionISelectThePrimitiveTypeCreationToolFromThePaletteAndIClickOnTheDiagram();
 		context.assertAPrimitiveTypeIsCreatedInTheModel();
 		context.assertAPrimitiveTypeAppearsOnTheDiagram();
 	}
+
 	@Test
 	public void createAnInterfaceInTheClassDiagramFromThePalette() throws Exception {
 		context.actionISelectTheInterfaceCreationToolFromThePaletteAndIClickOnTheDiagram();
 		context.assertAnInterfaceIsCreatedInTheModel();
 		context.assertAnInterfaceAppearsOnTheDiagram();
 	}
+
 	@Test
 	public void createAPackageInTheClassDiagramFromThePalette() throws Exception {
 		context.actionISelectThePackageCreationToolFromThePaletteAndIClickOnTheDiagram();

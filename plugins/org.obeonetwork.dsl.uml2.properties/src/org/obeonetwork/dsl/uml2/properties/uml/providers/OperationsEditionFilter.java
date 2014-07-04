@@ -13,6 +13,7 @@ package org.obeonetwork.dsl.uml2.properties.uml.providers;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 import org.eclipse.jface.viewers.IFilter;
+import org.eclipse.uml2.uml.Artifact;
 import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.Interface;
@@ -40,6 +41,7 @@ public class OperationsEditionFilter implements IFilter {
 						|| eObj instanceof Interface
 						|| eObj instanceof Enumeration
 						|| eObj instanceof PrimitiveType
-						|| eObj instanceof DataType || eObj instanceof Stereotype);
+						|| eObj instanceof DataType
+						|| eObj instanceof Stereotype || eObj instanceof Artifact);
 	}
 }

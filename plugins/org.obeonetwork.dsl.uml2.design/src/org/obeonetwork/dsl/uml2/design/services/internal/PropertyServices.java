@@ -21,10 +21,11 @@ import org.obeonetwork.dsl.uml2.design.services.LabelServices;
 import org.obeonetwork.dsl.uml2.design.services.UMLServices;
 
 /**
- * Utility services to manage edges direct label editoin on properties.
+ * Utility services to manage edges direct label edition on properties.
  * 
  * @author Stephane Thibaudeau <a href="mailto:stephane.thibaudeau@obeo.fr">stephane.thibaudeau@obeo.fr</a>
  * @author Hugo Marchadour <a href="mailto:hugo.marchadour@obeo.fr">hugo.marchadour@obeo.fr</a>
+ * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public final class PropertyServices {
 
@@ -44,32 +45,59 @@ public final class PropertyServices {
 	 * @return Property name
 	 */
 	public static String parseInputLabel(Property property, String inputLabel) {
-		// The discriminating parts in the label are :
-		// - a "/" at the beginning for a derived property
-		// - a ":" between the name and the type
-		// - a "=" preceding the default value
-		// Between these signs who all are optional one can find any character
-		final Pattern p = Pattern.compile("^(/?)([^:]*):?([^=]*)=?(.*)$");
-		final Matcher m = p.matcher(inputLabel.trim());
-
-		if (m.find()) {
-			final boolean isDerived = m.group(1) != null && !"".equals(m.group(1));
-			property.setIsDerived(isDerived);
-
-			final String name = m.group(2).trim();
-			property.setName(name);
-
-			final String typeInfo = m.group(3).trim();
-			handleTypeAndMultiplicity(property, typeInfo);
-
-			// Use UML api to manage the default value
-			if (m.group(4) != null && !"".equals(m.group(4))) {
-				String defaultValue = m.group(4).trim();
-				property.setDefault(defaultValue);
+		// Smart edit multiplicity : x, x y, x..y, [x], [x y], [x..y], x..*, [x..*], *, [*], -1, [-1]
+		Pattern p = Pattern.compile("\\[?([0-9]*)[ .]*(([0-9 \\* \\-1]*)?)\\]?");
+		Matcher m = p.matcher(inputLabel.trim());
+		if (m.find() && (m.group(1) != null && m.group(1).length() > 0)
+				|| (m.group(2) != null && m.group(2).length() > 0)) {
+			final String lower = m.group(1).trim();
+			final String upper = m.group(2).trim();
+			if (upper != null && upper.length() > 0) {
+				if ("*".equals(upper) || "-1".equals(upper)) {
+					property.setUpper(-1);
+					property.setLower(0);
+				} else {
+					property.setUpper(Integer.parseInt(upper));
+				}
+			} else if (lower != null && lower.length() > 0) {
+				property.setUpper(Integer.parseInt(lower));
 			}
-			return name;
+
+			if (lower != null && lower.length() > 0) {
+				property.setLower(Integer.parseInt(lower));
+			}
 		}
-		return null;
+		// Other cases
+		else {
+			// The discriminating parts in the label are :
+			// - a "/" at the beginning for a derived property
+			// - a ":" between the name and the type
+			// - a "=" preceding the default value
+			// Between these signs who all are optional one can find any character
+			p = Pattern.compile("^(/?)([^:]*):?([^=]*)=?(.*)$");
+			m = p.matcher(inputLabel.trim());
+
+			if (m.find()) {
+				final boolean isDerived = m.group(1) != null && !"".equals(m.group(1));
+				property.setIsDerived(isDerived);
+
+				final String name = m.group(2).trim();
+				if (name != null && name.length() > 0) {
+					property.setName(name);
+				}
+
+				final String typeInfo = m.group(3).trim();
+				handleTypeAndMultiplicity(property, typeInfo);
+
+				// Use UML api to manage the default value
+				if (m.group(4) != null && !"".equals(m.group(4))) {
+					String defaultValue = m.group(4).trim();
+					property.setDefault(defaultValue);
+				}
+				return name;
+			}
+		}
+		return property.getName();
 	}
 
 	/**

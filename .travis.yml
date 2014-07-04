@@ -1,0 +1,16 @@
+language: java
+env:
+  global:
+    secure: "kDF+4UokupJ8N+5fRTygdDbQEm1R7aSEReJS2FLIwDb7kp0jZBJZRAtw8Zfs3aPPBV+vItsLcDi5Qbq6iV5yyKoHuQZDdY9ntOS7WUa2XyPwJQ3/ZcX3lif+bP4GeI7pcYGaBwgKlpgXVBslACShpaSfuqYPfpZ6QXyarvGB5KE="
+install: echo "Install phase"
+before_script:
+- cd plugins/org.obeonetwork.dsl.uml2.design.doc
+- npm install -g bower
+- bower install
+- cd ../../
+script: mvn clean verify
+after_script:
+- ls
+- chmod a+x travis-promote.sh
+- ./travis-promote.sh
+jdk: oraclejdk7
