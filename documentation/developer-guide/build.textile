@@ -1,0 +1,26 @@
+---
+layout: article
+title: Build
+subtitle: developer guide
+relativePath: ..
+---
+
+h1. Building UML Designer
+
+You’ll need Apache Maven 3 to be installed on your computer.
+To launch the build, go to the root of your git repository and type :
+
+@mvn clean package@
+
+Maven will bootstrap itself, download all the dependencies and build UML Designer. The output of the build is a p2 repository (an update site) generated here :
+
+@features/org.obeonetwork.dsl.uml2.update/target/repository@
+
+To install it in an Eclipse installation use Help/Install New Software and point to this location.
+
+Launching the test is not harder, just type :
+
+@mvn clean verify@
+
+Maven will launch the tests and give you the result. 
+Code coverage is captured thanks to Jacoco.

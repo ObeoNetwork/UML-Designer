@@ -1,0 +1,10 @@
+---
+layout: article
+title: State Machine Diagram
+subtitle: user guide
+relativePath: ..
+---
+
+h1. Introduction
+
+!{{ page.relativePath }}/images/features/agency_pics/state_machine.png!

@@ -1,26 +1,73 @@
 - title: Overview
   file: overview
 
+
+- title: Download
+  file: download
+
+- category: Tutorials
+  pages:
+  - title: Getting started
+    file: tutorials/tuto-getting-started
+  - title: Create project
+    file: tutorials/tuto-create-project
+  - title: Create representation
+    file: tutorials/tuto-create-representation
+  - title: Import model
+    file: tutorials/tuto-import-model
+  - title: Open example
+    file: tutorials/tuto-start-example
+
 - category: User Guide
   pages:
-  - title: Migrate
-    file: user-guide/migrate
+  - title: Dashboard
+    file: user-guide/dashboard
+  - title: Activity Diagram
+    file: user-guide/activity-diagram
+  - title: Class Diagram
+    file: user-guide/class-diagram
+  - title: Component Diagram
+    file: user-guide/component-diagram
+  - title: Deployment Diagram
+    file: user-guide/deployment-diagram
+  - title: Package Diagram
+    file: user-guide/package-diagram
+  - title: Profile Diagram
+    file: user-guide/profile-diagram
+  - title: Sequence Diagram
+    file: user-guide/sequence-diagram
+  - title: State Machine Diagram
+    file: user-guide/state-machine-diagram
+  - title: Use Case Diagram
+    file: user-guide/use-case-diagram
 
 - category: Developer Guide
   pages:
   - title: Contribute
     file: developer-guide/contribute
+  - title: Build
+    file: developer-guide/build
+  - title: Continuous Integration
+    file: developer-guide/continuous-integration
 
-- category: Ref Doc
+- category: Documentation
   pages:
   - title: Presentation
     file: ref-doc/presentation
-    
-- title: Support
-  file: support
-  
-- title: Download
-  file: download
+  - title: Define the system
+    file: ref-doc/define-the-system
+  - title: Define the application
+    file: ref-doc/define-the-application
+  - title: Implement the application
+    file: ref-doc/implement-the-application
+  - title: Write the application documentation
+    file: ref-doc/write-the-application-documentation
+  - title: Refactor an application
+    file: ref-doc/refactor-an-application
+  - title: Validate an application
+    file: ref-doc/validate-an-application
+  - title: Non Goals
+    file: ref-doc/non-goals
 
 - title: FAQ
   file: faq

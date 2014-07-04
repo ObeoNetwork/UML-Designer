@@ -7,8 +7,8 @@ layout: page
       <ul class="nav nav-stacked nav-pills">
       {% for section in site.data.pages %}
         {% if section.category == page.category %}
-          {% for page in section.pages %}
-        <li><a href="{{ site.baseurl }}/{{ page.file }}.html">{{ page.title }}</a></li>
+          {% for subPage in section.pages %}
+        <li><a href="{{ page.relativePath }}/{{ subPage.file }}.html">{{ subPage.title }}</a></li>
           {% endfor %}
         {% endif %}
       {% endfor %}
@@ -19,7 +19,7 @@ layout: page
       <h1 class="page-header">{{ page.title }} <small>{{ page.subtitle }}</small></h1>
       
       <ol class="breadcrumb">
-        <li><a href="{{ site.baseurl }}/index.html">Home</a></li>
+        <li><a href="{{ page.relativePath }}/index.html">Home</a></li>
         <li class="active">{{ page.title }}</li>
       </ol>
       

@@ -1,2 +1,4 @@
-- question: How can I contribute to this documentation?
-  answer: Read the contribution guide accessible from the navigation bar on top.
+- question: Where can I download UML Designer?
+  answer: Bundles and update sites are provided, read the "Download" section accessible from the navigation bar on top to find them.
+- question: How can I contribute to UML Designer?
+  answer: Read the contribution guide accessible from the navigation bar on top "Developer Guide/Contribute".

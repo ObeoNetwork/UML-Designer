@@ -2,9 +2,33 @@
 layout: article
 title: Download
 subtitle: Get UML Designer
+relativePath: ..
 ---
 
+h1. Bundles
 
-h1. Download
+The bundles corresponding to the last release are available on the Obeo "marketplace":http://marketplace.obeonetwork.com/module/uml/download : 
+* "Windows 32bits":http://www.obeo.fr/download/release/uml/latest/UMLDesigner-win32.win32.x86.zip
+* "Windows 64bits":http://www.obeo.fr/download/release/uml/latest/UMLDesigner-win32.win32.x86_64.zip
+* "Linux 32bits":http://www.obeo.fr/download/release/uml/latest/UMLDesigner-linux.gtk.x86.zip
+* "Linux 64bits":http://www.obeo.fr/download/release/uml/latest/UMLDesigner-linux.gtk.x86_64.zip
+* "MacOs 64bits":http://www.obeo.fr/download/release/uml/latest/UMLDesigner-macosx.cocoa.x86_64.zip
 
+h1. Update Sites
 
+The following update-site provides a p2 repository for UML Designer :
+Nightly (Sirius based) : http://marketplace.obeonetwork.com/updates/nightly/uml/repository
+Release 4.0 (Sirius / Luna) : http://www.obeo.fr/download/release/uml/4.0.0/repository/
+Release 3.0 (Obeo Designer 6.2 / Kepler) : http://www.obeo.fr/download/release/uml/3.0.0/repository/
+Release 2.4 (Obeo Designer 6.1 / Juno) : http://www.obeo.fr/download/release/uml/2.4.1/repository/
+
+Don't know how to install a module from an Update Site ? Have a look to our "video":http://www.youtube.com/watch?v=qYTrO7THer0 or to the full "procedure":http://marketplace.eclipse.org/updatesite/help?url=http%3A//marketplace.obeonetwork.com/updates/od61/ description. 
+
+h1. Releases
+
+All the releases and the corresponding code and issues are listed on the release page : 
+"https://github.com/ObeoNetwork/UML-Designer/releases":https://github.com/ObeoNetwork/UML-Designer/releases
+
+h1. Milestones
+
+To see the roadmap and the next available releases, you can have a look to the milestone page : "https://github.com/ObeoNetwork/UML-Designer/issues/milestones":https://github.com/ObeoNetwork/UML-Designer/issues/milestones

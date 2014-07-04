@@ -1,9 +1,7 @@
 ---
 layout: article
-title: Migrate
+title: Dashboard
 subtitle: user guide
+relativePath: ..
 ---
-
-
-h1. Migrate
 

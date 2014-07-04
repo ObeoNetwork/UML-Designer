@@ -7,8 +7,8 @@ layout: page
       <h1 class="page-header">{{ page.title }}</h1>
       
       <ol class="breadcrumb">
-        <li><a href="{{ site.baseurl }}/index.html">Home</a></li>
-        <li><a href="{{ site.baseurl }}/blog/index.html">Blog</a></li>
+        <li><a href="{{ page.relativePath }}/index.html">Home</a></li>
+        <li><a href="{{ page.relativePath }}/blog/index.html">Blog</a></li>
         <li class="active">{{ page.title }}</li>
       </ol>
     </div>
@@ -19,7 +19,7 @@ layout: page
       <!-- the actual blog post: title/author/date/content -->
       <p><i class="fa fa-clock-o"></i> Posted on {{ page.date | date_to_string }} by {{ page.author }}</p>
       <hr>
-      <img src="{{ site.baseurl }}/{{ page.image }}" class="img-responsive">
+      <img src="{{ page.relativePath }}/{{ page.image }}" class="img-responsive">
       <hr>
 
       {% if page.lead != null %}

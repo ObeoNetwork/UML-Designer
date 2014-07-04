@@ -1,68 +1,66 @@
 <?xml version='1.0' encoding='utf-8' ?>
-<toc topic="doc/UML Designer User Guide.html" label="UML Designer User Guide">
-	<topic href="doc/UML Designer User Guide.html" label="Providing Feedback"></topic>
-	<topic href="doc/UML Designer User Guide.html#GettingStarted" label="Getting Started">
-		<topic href="doc/UML Designer User Guide.html#StartingfromtheTravelAgencyexample" label="Starting from the Travel Agency example"></topic>
-		<topic href="doc/UML Designer User Guide.html#CreateanewUMLmodelUMLproject" label="Create a new UML model &amp; UML project"></topic>
-		<topic href="doc/UML Designer User Guide.html#DisplayeditanexistingUMLmodel" label="Display &amp; edit an existing UML model"></topic>
-		<topic href="doc/UML Designer User Guide.html#vpselection" label="UML designer viewpoints"></topic>
-	</topic>
-	<topic href="doc/UML Designer User Guide.html#UsingthePackageHierarchyDiagram" label="Using the Package Hierarchy Diagram">
-		<topic href="doc/UML Designer User Guide.html#CreatingaClassDiagram" label="Creating a Class Diagram"></topic>
-		<topic href="doc/UML Designer User Guide.html#CreatingaDeploymentDiagram" label="Creating a Deployment Diagram"></topic>
-	</topic>
-	<topic href="doc/UML Designer User Guide.html#UsingtheClassDiagram" label="Using the Class Diagram">
-    <topic href="doc/UML Designer User Guide.html#Importingprimitivetypes" label="Import primitive types">
+<toc topic="html/documentation/index.html" label="UML Designer">
+	<topic href="html/documentation/overview/index.html" label="Overview"></topic>
+ <topic href="html/documentation/download/index.html" label="Download">
+ </topic>
+ <topic label="Tutorials">
+    <topic href="html/documentation/tutorials/tuto-getting-started.html" label="Getting started">
     </topic>
-		<topic href="doc/UML Designer User Guide.html#CreatingElements" label="Creating Elements"></topic>
-		<topic href="doc/UML Designer User Guide.html#EditingElements" label="Editing Elements"></topic>
-		<topic href="doc/UML Designer User Guide.html#UsingUMLincolors" label="Using UML in colors"></topic>
-		<topic href="doc/UML Designer User Guide.html#EditingAttributes" label="Editing Attributes"></topic>
-	</topic>
-	<topic href="doc/UML Designer User Guide.html#UsingtheDeploymentDiagram" label="Using the Deployment Diagram">
-		<topic href="doc/UML Designer User Guide.html#CreatingElements2" label="Creating Elements"></topic>
-		<topic href="doc/UML Designer User Guide.html#Editinglabels" label="Editing labels"></topic>
-	</topic>
-	<topic href="doc/UML Designer User Guide.html#UsingtheProfileDiagram" label="Using the Profile Diagram">
-		<topic href="doc/UML Designer User Guide.html#Creatingaprofile" label="Creating a profile"></topic>
-		<topic href="doc/UML Designer User Guide.html#Creatingastereotype" label="Creating a stereotype"></topic>
-		<topic href="doc/UML Designer User Guide.html#Referencingametaclass" label="Referencing a metaclass"></topic>
-		<topic href="doc/UML Designer User Guide.html#Extendingametaclass" label="Extending a metaclass"></topic>
-		<topic href="doc/UML Designer User Guide.html#Extraassociations" label="Extra associations"></topic>
-		<topic href="doc/UML Designer User Guide.html#Definingaprofile" label="Defining a profile"></topic>
-		<topic href="doc/UML Designer User Guide.html#Exportingaprofile" label="Exporting a profile"></topic>
-	</topic>
-	<topic href="doc/UML Designer User Guide.html#Features" label="Features">
-		<topic href="doc/UML Designer User Guide.html#ClassDiagram" label="Class Diagram">
-			<topic href="doc/UML Designer User Guide.html#Introduction" label="Introduction"></topic>
-			<topic href="doc/UML Designer User Guide.html#SupportforBrokenAssociations" label="Support for Broken Associations"></topic>
-			<topic href="doc/UML Designer User Guide.html#ClassesinSubComponents" label="Classes in SubComponents"></topic>
-		</topic>
-		<topic href="doc/UML Designer User Guide.html#ComponentDiagram" label="Component Diagram">
-			<topic href="doc/UML Designer User Guide.html#Introduction2" label="Introduction"></topic>
-			<topic href="doc/UML Designer User Guide.html#Connector" label="Connector"></topic>
-			<topic href="doc/UML Designer User Guide.html#CompositeComponents" label="Composite Components"></topic>
-			<topic href="doc/UML Designer User Guide.html#UsingClass" label="Using Class"></topic>
-			<topic href="doc/UML Designer User Guide.html#RequiredandProvidedInterfaces" label="Required and Provided Interfaces"></topic>
-		</topic>
-		<topic href="doc/UML Designer User Guide.html#UseCaseDiagram" label="Use Case Diagram">
-			<topic href="doc/UML Designer User Guide.html#Introduction3" label="Introduction"></topic>
-			<topic href="doc/UML Designer User Guide.html#Usecaseswithorwithoutsubjects" label="Use cases with or without subjects"></topic>
-		</topic>
-		<topic href="doc/UML Designer User Guide.html#ActivityDiagram" label="Activity Diagram">
-			<topic href="doc/UML Designer User Guide.html#Introduction4" label="Introduction"></topic>
-		</topic>
-		<topic href="doc/UML Designer User Guide.html#StateMachineDiagram" label="State Machine Diagram">
-			<topic href="doc/UML Designer User Guide.html#Introduction5" label="Introduction"></topic>
-		</topic>
-		<topic href="doc/UML Designer User Guide.html#SequenceDiagram" label="Sequence Diagram"></topic>
-		<topic href="doc/UML Designer User Guide.html#DeploymentDiagram" label="Deployment Diagram">
-			<topic href="doc/UML Designer User Guide.html#Introduction6" label="Introduction"></topic>
-			<topic href="doc/UML Designer User Guide.html#Artifactdependencyandgeneralization" label="Artifact dependency and generalization"></topic>
-			<topic href="doc/UML Designer User Guide.html#Artifactmanifestationofpackageableelements" label="Artifact manifestation of packageable elements"></topic>
-			<topic href="doc/UML Designer User Guide.html#Artifactdeployment" label="Artifact deployment"></topic>
-			<topic href="doc/UML Designer User Guide.html#DeviceExecutionEnvironmentNodeandlinks." label="Device, Execution Environment, Node and links."></topic>
-			<topic href="doc/UML Designer User Guide.html#CompositeNodes" label="Composite Nodes"></topic>
-		</topic>
-	</topic>
+    <topic href="html/documentation/tutorials/tuto-create-project.html" label="Create project">
+    </topic>
+    <topic href="html/documentation/tutorials/tuto-create-representation.html" label="Create representation">
+    </topic>
+    <topic href="html/documentation/tutorials/tuto-import-model.html" label="Import model">
+    </topic>
+    <topic href="html/documentation/tutorials/ tuto-start-example.html" label="Open example">
+    </topic>
+ </topic>
+ <topic label="User Guide">
+    <topic href="html/documentation/user-guide/dashboard.html" label="Dashboard">
+    </topic>
+    <topic href="html/documentation/user-guide/activity-diagram.html" label="Activity diagram">
+    </topic>
+    <topic href="html/documentation/user-guide/class-diagram.html" label="Class diagram">
+    </topic>
+    <topic href="html/documentation/user-guide/component-diagram.html" label="Component diagram">
+    </topic>
+    <topic href="html/documentation/user-guide/deployment-diagram.html" label="Deployment diagram">
+    </topic>
+    <topic href="html/documentation/user-guide/package-diagram.html" label="Package diagram">
+    </topic>
+    <topic href="html/documentation/user-guide/profile-diagram.html" label="Profile diagram">
+    </topic>
+    <topic href="html/documentation/user-guide/sequence-diagram.html" label="Sequence diagram">
+    </topic>
+    <topic href="html/documentation/user-guide/state-machine-diagram.html" label="State Machine diagram">
+    </topic>
+    <topic href="html/documentation/user-guide/use-case-diagram.html" label="Use Case diagram">
+    </topic>
+ </topic>
+ <topic label="Developer Guide">
+    <topic href="html/documentation/developer-guide/contribute.html" label="Contribute">
+    </topic>
+    <topic href="html/documentation/developer-guide/build.html" label="Build">
+    </topic>
+    <topic href="html/documentation/developer-guide/continuous-integration.html" label="Continuous Integration">
+    </topic>
+ </topic>
+  <topic label="Reference Documentation">
+    <topic href="html/documentation/ref-doc/presentation.html" label="Presentation">
+    </topic>
+    <topic href="html/documentation/ref-doc/define-the-system.html" label="Define the system">
+    </topic>
+    <topic href="html/documentation/ref-doc/define-the-application.html" label="Define the application">
+    </topic>
+    <topic href="html/documentation/ref-doc/implement-the-application.html" label="Implement the application">
+    </topic>
+    <topic href="html/documentation/ref-doc/write-the-application-documentation.html" label="Write the application documentation">
+    </topic>
+    <topic href="html/documentation/ref-doc/refactor-an-aplpication.html" label="Refactor an application">
+    </topic>
+    <topic href="html/documentation/ref-doc/validate-an-application.html" label="Validate an application">
+    </topic>
+    <topic href="html/documentation/ref-doc/non-goals.html" label="Non goals">
+    </topic>
+ </topic>
 </toc>

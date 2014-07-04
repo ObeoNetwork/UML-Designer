@@ -8,8 +8,8 @@ echo "Create temp folder"
 mkdir temp
 echo "Move to temp folder"
 cd temp
-echo "Clone UML Designer repo and checkout gh-pages branch"
-git clone https://$GITHUB_TOKEN@github.com/ObeoNetwork/UML-Designer.git -b gh-pages --quiet
+echo "Clone documentation repo and checkout gh-pages branch"
+git clone https://$GITHUB_TOKEN@github.com/UML-Designer/documentation.git -b gh-pages --quiet
 ls
 echo "Move into new cloned gh-pages branch of the repo"
 cd documentation/
@@ -29,8 +29,8 @@ echo "Push new documentation web site content on gh-pages branch"
 git config user.email "melanie.bats@obeo.fr"
 git config user.name "Mélanie Bats"
 git remote rm origin
-git remote add origin https://ObeoNetwork:$GITHUB_TOKEN@github.com/UML-Designer.git
+git remote add origin https://UML-Designer:$GITHUB_TOKEN@github.com/UML-Designer/documentation.git
 git add -A
-git commit -m "Promoting a new documentation web site for https://github.com/ObeoNetwork/UML-Designer/commit/$TRAVIS_COMMIT [$TRAVIS_BRANCH]"
+git commit -m "Promoting a new documentation web site for https://github.com/UML-Designer/documentation/commit/$TRAVIS_COMMIT [$TRAVIS_BRANCH]"
 git push origin gh-pages --quiet &>/dev/null
 echo "Site promoted."
