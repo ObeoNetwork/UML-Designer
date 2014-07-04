@@ -1,0 +1,461 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="UML Designer documentation">
+  <meta name="author" content="Mt&eacute;lanie Bats">
+  
+  <title>Implement the application</title>
+  
+  <!-- Bootstrap core CSS -->
+  <link href="../css/bootstrap.css" rel="stylesheet">
+  
+  <!-- Pygments CSS -->
+  <link href="../css/pygments.css" rel="stylesheet">
+
+  <!-- Add custom CSS here -->
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+      <a class="navbar-brand" href="../index.html">UML Designer</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav navbar-right">     
+      
+        
+        <li><a href="../overview/index.html">Overview</a></li>
+        
+      
+        
+        <li><a href="../download/index.html">Download</a></li>
+        
+      
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            
+      	    	<li><a href="../tutorials/tuto-getting-started.html">Getting started</a></li>
+            
+      	    	<li><a href="../tutorials/tuto-create-project.html">Create project</a></li>
+            
+      	    	<li><a href="../tutorials/tuto-create-representation.html">Create representation</a></li>
+            
+      	    	<li><a href="../tutorials/tuto-import-model.html">Import model</a></li>
+            
+      	    	<li><a href="../tutorials/tuto-start-example.html">Open example</a></li>
+            
+          </ul>
+        </li>
+        
+      
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">User Guide <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            
+      	    	<li><a href="../user-guide/dashboard.html">Dashboard</a></li>
+            
+      	    	<li><a href="../user-guide/activity-diagram.html">Activity Diagram</a></li>
+            
+      	    	<li><a href="../user-guide/class-diagram.html">Class Diagram</a></li>
+            
+      	    	<li><a href="../user-guide/component-diagram.html">Component Diagram</a></li>
+            
+      	    	<li><a href="../user-guide/deployment-diagram.html">Deployment Diagram</a></li>
+            
+      	    	<li><a href="../user-guide/package-diagram.html">Package Diagram</a></li>
+            
+      	    	<li><a href="../user-guide/profile-diagram.html">Profile Diagram</a></li>
+            
+      	    	<li><a href="../user-guide/sequence-diagram.html">Sequence Diagram</a></li>
+            
+      	    	<li><a href="../user-guide/state-machine-diagram.html">State Machine Diagram</a></li>
+            
+      	    	<li><a href="../user-guide/use-case-diagram.html">Use Case Diagram</a></li>
+            
+          </ul>
+        </li>
+        
+      
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Developer Guide <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            
+      	    	<li><a href="../developer-guide/contribute.html">Contribute</a></li>
+            
+      	    	<li><a href="../developer-guide/build.html">Build</a></li>
+            
+      	    	<li><a href="../developer-guide/continuous-integration.html">Continuous Integration</a></li>
+            
+          </ul>
+        </li>
+        
+      
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            
+      	    	<li><a href="../ref-doc/presentation.html">Presentation</a></li>
+            
+      	    	<li><a href="../ref-doc/define-the-system.html">Define the system</a></li>
+            
+      	    	<li><a href="../ref-doc/define-the-application.html">Define the application</a></li>
+            
+      	    	<li><a href="../ref-doc/implement-the-application.html">Implement the application</a></li>
+            
+      	    	<li><a href="../ref-doc/write-the-application-documentation.html">Write the application documentation</a></li>
+            
+      	    	<li><a href="../ref-doc/refactor-an-application.html">Refactor an application</a></li>
+            
+      	    	<li><a href="../ref-doc/validate-an-application.html">Validate an application</a></li>
+            
+      	    	<li><a href="../ref-doc/non-goals.html">Non Goals</a></li>
+            
+          </ul>
+        </li>
+        
+      
+        
+        <li><a href="../faq/index.html">FAQ</a></li>
+        
+      
+
+      </ul>
+    </div><!-- /.navbar-header -->
+  </div><!-- /.container -->
+</nav>
+
+
+  <div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Implement the application <small>specification</small></h1>
+      
+      <ol class="breadcrumb">
+        <li><a href="../index.html">Home</a></li>
+        <li class="active">Implement the application</li>
+      </ol>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-lg-12">
+      <p>When John has finished the specification of the application, he gives it to Bob. From the existing application <span class="caps">UML</span> definition, Bob defines the application at a lower level.<br />
+At this point, Bob breaks the components out into classes and objects.</p>
+<h1>Define the implementation structure</h1>
+<p>The <strong>class diagram</strong> is used to describe the structure of the system by showing the classes, the interfaces, their attributes, their operations and their relationships.</p>
+<p><img src="platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ClassDiagram.png" alt="" /></p>
+<p>The class diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.</p>
+<h2>Manage types</h2>
+<p>It is possible to <strong>create a type</strong> by selecting the type creation tool from the palette and then clicking on the diagram or an element. <br />
+A diagram is associated to a package and when the user clicks on the diagram background the element is created under the corresponding package in the <span class="caps">UML</span> model.<br />
+If the user selects a container, the element will be created under the corresponding semantic element in the <span class="caps">UML</span> model.<br />
+<img src="platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ClassDiagramPalette.png" alt="" /></p>
+<p>Tooltip tools are also available to create any kind of elements.</p>
+<p>Creation tools are available in the class diagram for the following types :</p>
+<table>
+	<tr>
+		<th>Element     </th>
+		<th>Representation </th>
+		<th>Comments</th>
+	</tr>
+	<tr>
+		<td>Class </td>
+		<td><img src="platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ClassDiagramClass.png" alt="" /></td>
+		<td>Representation of objects</td>
+	</tr>
+	<tr>
+		<td>Enumeration </td>
+		<td><img src="platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ClassDiagramEnumeration.png" alt="" /></td>
+		<td>A data type set of values</td>
+	</tr>
+	<tr>
+		<td>Interface </td>
+		<td><img src="platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ClassDiagramInterface.png" alt="" /></td>
+		<td>Contract that implementers agree to meet</td>
+	</tr>
+	<tr>
+		<td>Datatype</td>
+		<td><img src="platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ClassDiagramDataType.png" alt="" /></td>
+		<td>All copies of an instance of a data type are considered as same instance</td>
+	</tr>
+	<tr>
+		<td>Primitive type </td>
+		<td><img src="platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ClassDiagramPrimitiveType.png" alt="" /></td>
+		<td>Default data type</td>
+	</tr>
+	<tr>
+		<td>Package </td>
+		<td><img src="platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ClassDiagramPackage.png" alt="" /></td>
+		<td>Organize the model content</td>
+	</tr>
+</table>
+<p>The user can also <strong>delete a type</strong> (<br />
+see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
+<h2>Manage features</h2>
+<p>It is possible to <strong>create a feature</strong> by selecting the feature creation tool from the palette and then clicking on the diagram or an element.<br />
+If the user selects a container, the feature will be created under the corresponding semantic element in the <span class="caps">UML</span> model.</p>
+<p>Tooltip tools are also available to create any kind of features.<br />
+Creation tools are available in the class diagram for the following features :</p>
+<ul>
+	<li>property : Can be created under classes, interfaces, datatypes, primitive types, enumerations.</li>
+	<li>typed property : Can be created under classes, interfaces, datatypes, primitive types, enumerations. When the user selects a container, a wizard is open which list all the available types existing in thee modeling project in order that the user selects a type for the property to create.</li>
+	<li>operation : Can be created under classes, interfaces, datatypes, primitive types, enumerations.</li>
+	<li>literal:Can be created under enumerations.</li>
+</ul>
+<p>It is possible to add and edit :</p>
+<ul>
+	<li>the property type :
+	<ul>
+		<li>thanks to direct edit by specifying the type as : <em>myProperty:PropertyType</em></li>
+		<li>from the General tab of the properties view</li>
+	</ul></li>
+	<li>the parameters of an operation :
+	<ul>
+		<li>thanks to direct edit by specifying the parameter as : <em>myOperation(param1:Param1Type, param2:Param2Type)</em></li>
+		<li>from Parameters tab of the properties view</li>
+	</ul></li>
+</ul>
+<p>The user can also <strong>delete a feature</strong> (<br />
+see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
+<h2>Manage relationships</h2>
+<p>It is possible to <strong>create a relationship</strong> by selecting the edge creation tool from the palette and then clicking on a source element and a target element.<br />
+The following edge creation tools exist in the palette :</p>
+<ul>
+	<li>association : is represented by a solid link with start and end labels and can be created between two classes. According to the association navigability an arrow will be visible at the start or end of the link.</li>
+	<li>reference : is represented by a solid link with start and end labels and can be created between two classes. According to the reference navigability an arrow will be visible at the start or end of the link.</li>
+	<li>composition : is represented by a solid edge with fill diamond decorator and with start and end labels, it can be created between two classes. According to the composition navigability an arrow will be visible at the start or end of the link.</li>
+	<li>aggregation : is represented by a solid edge with diamond decorator and with start and end labels, it can be created between two classes. According to the aggregation navigability an arrow will be visible at the start or end of the link.</li>
+	<li>association class : is represented by a dashed edge with start and end labels and a class linked to the dashed edge, it can be created between two classes.</li>
+	<li>generalization : is represented by a solid edge without label, it can be created between two classifiers (class, interface, datatype, enumeration&#8230;).</li>
+	<li>interface realization : is represented by a dashed edge without label, it can be created between a class and an interface.</li>
+	<li>dependency : is represented by a dashed edge without label, it can be created between any classifiers.</li>
+	<li>usage : is represented by a dashed edge with <em>use</em> as label, it can be created between any classifiers.</li>
+	<li>nest classifier : is represented by a solid edge with an output fill closed arrow at start, it can be created between any classifiers.</li>
+</ul>
+<p>And finally, he can <strong>reconnect relationships</strong>. It is possible to reconnect the source and the target of any kind of edge in the activity diagram :</p>
+<ul>
+	<li>association</li>
+	<li>composition</li>
+	<li>aggregation</li>
+	<li>association class</li>
+	<li>generalization</li>
+	<li>interface realization</li>
+	<li>dependency</li>
+	<li>usage</li>
+	<li>nest classifier</li>
+</ul>
+<h2>Manage existing elements</h2>
+<p>As the diagram is unsynchronized, the user needs to add manually the elements already existing in the semantic model that should appear on the representation.<br />
+It is possible to add existing elements by :</p>
+<ul>
+	<li>selecting the add tool from the palette or the tooltip and then clicking on the diagram or an element. The add tool opens a selection wizard.</li>
+	<li>drag and droping an element from the model explorer.</li>
+</ul>
+<p>The following elements can be added on a class diagram :</p>
+<ul>
+	<li>class</li>
+	<li>package</li>
+	<li>interface</li>
+	<li>data type</li>
+	<li>primitive type</li>
+	<li>enumeration</li>
+	<li>component</li>
+</ul>
+<p>The user can see that an element is not coming from the current package :</p>
+<ul>
+	<li>the element border is lighter than the element border of elements defined in the current package</li>
+	<li>a tooltip shows the container package of the element if the element is not contained by the current package</li>
+</ul>
+<p>And finally, he can <strong>remove an existing element</strong> from a diagram. In this case the element is only deleted from the representation but it is not removed from the <span class="caps">UML</span> model. This <em>Remove</em> tool exists in the <em>Existing elements</em> section in the palette (<br />
+see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
+<h2>Add related elements</h2>
+<p>In the class diagram a contextual action is available to show on the diagram the element related to the selection.<br />
+The <strong>add related elements</strong> action is available from :</p>
+<ul>
+	<li>a class, an interface, a package, an enumeration, a datatype, a primitive type : shows all the elements that define a relationship (dependency, association, composition&#8230;) with the selected element</li>
+	<li>a class diagram : shows all the elements contained in the package associated to the diagram.</li>
+</ul>
+<h2>Edit labels</h2>
+<p>In the class diagram, it is possible to edit the elements labels  (<br />
+			see <a href="../ref-doc/define-the-system.html#Direct_edit">Diagram editor/Editor main graphical area/Direct edit</a>). This actions allows to edit :</p>
+<ul>
+	<li>class, interface, package, enumeration, datatype, primitive type labels</li>
+	<li>relationships labels</li>
+</ul>
+<h2>Instanciate the application</h2>
+<p>The object diagram is used to describe the structure of the system by showing the objects at a specific time.</p>
+<p><img src="platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ObjectDiagram.png" alt="" /></p>
+<p>The object diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.</p>
+<h3>Manage instances</h3>
+<p>It is possible to create and delete instances in the object diagram.<br />
+<img src="platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/ObjectDiagramPalette.png" alt="" /></p>
+<h4>Create an instance</h4>
+<p>It is possible to create an instance by selecting the creation tool from the palette and then clicking on the diagram or an element. 	A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the <span class="caps">UML</span> model.<br />
+If the user selects a container, the element will be created under the corresponding semantic element in the <span class="caps">UML</span> model.<br />
+Tooltip tools are also available to create instances.</p>
+<h4>Set default value</h4>
+<p>It is possible to set a default value to an instance property by selecting the tool from the palette and then clicking on an instance. This tool opens a wizard to ask the user to select a property of the selected instance type.</p>
+<h4>Manage existing elements</h4>
+<p>As the diagram is unsynchronized, the user needs to add manually the elements already existing in the semantic model that should appear on the representation.<br />
+It is possible to add existing elements by :</p>
+<ul>
+	<li>selecting the add tool from the palette or the tooltip and then clicking on the diagram or an element. The add tool opens a selection wizard.</li>
+	<li>drag and droping an element from the model explorer.</li>
+</ul>
+<p>Only instances can be added on an object diagram.</p>
+<p>The user can see that an element is not coming from the current package :</p>
+<ul>
+	<li>the element border is lighter than the element border of elements defined in the current package</li>
+	<li>a tooltip shows the container package of the element if the element is not contained by the current package</li>
+</ul>
+<p>The user can also <strong>delete an instance</strong> (<br />
+			see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
+<h4>Add related elements</h4>
+<p>In the class diagram a contextual action is available to show on the diagram the element related to the selection.</p>
+<p>The <strong>Add related elements</strong> action is available from :</p>
+<ul>
+	<li>an instance : shows all the elements that define a relationship (dependency, association, composition&#8230;) with the selected element</li>
+	<li>an object diagram : shows all the elements contained in the package associated to the diagram.</li>
+</ul>
+<h4>Edit labels</h4>
+<p>In the class diagram, it is possible to edit the elements labels  (<br />
+see <a href="../ref-doc/define-the-system.html#Direct_edit">Diagram editor/Editor main graphical area/Direct edit</a>). This actions allows to edit :</p>
+<ul>
+	<li>class, interface, package, enumeration, datatype, primitive type labels</li>
+	<li>relationships labels</li>
+</ul>
+<h2>Define the application behavior</h2>
+<p>Bob describes the application behavior thanks to <strong>Statemachine diagrams</strong> and <strong>Sequence diagrams</strong>.</p>
+<h3>Statemachines</h3>
+<p>The <strong>statemachine diagram</strong> is used to represent the different states and transitions of a system.<br />
+<img src="platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/StatemachineDiagram.png" alt="" /></p>
+<p>The statemachine diagram is a synchronized diagram which means that any elements existing under a statemachine in the <span class="caps">UML</span> model will be visible automatically in the statemachine diagram.</p>
+<h4>Manage statemachines</h4>
+<p>It is possible to <strong>create statemachine elements</strong> by selecting the creation tools from the palette and then clicking on the diagram or an element. A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the <span class="caps">UML</span> model.<br />
+If the user selects a container, the element will be created under the corresponding semantic element in the <span class="caps">UML</span> model.<br />
+<img src="platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/StatemachineDiagramPalette.png" alt="" /></p>
+<p>Tooltip tools are also available to create any kind of elements.</p>
+<p>Creation tools are available in the statemachine diagram for the following types :</p>
+<ul>
+	<li>Region = Group logical states;</li>
+	<li>State = Describes the elements condition at a specific moment;</li>
+	<li>Initial =  The start of a flow;</li>
+	<li>Final =  Indicates the completion of a flow;</li>
+	<li>Fork = Split the flow into a number of concurrent flows;</li>
+	<li>Join = Join the flow from a number of concurrent flows to one flow;</li>
+	<li>Choice = Compose complex flows according to a runtime condition;</li>
+	<li>Junction = Merge multiple flows;</li>
+	<li>Terminate = Indicates execution end;</li>
+	<li>Shallow history = Represents the most recent active substate of its containing state;</li>
+	<li>Deep history =Represents the most recent active configuration of the composite state that directly contains this pseudostate;</li>
+	<li>Entry point = Defines the beginning of a State Machine;</li>
+	<li>Exit point = State machine exit.</li>
+</ul>
+<p>The user can also <strong>delete a statemachine element</strong> (<br />
+see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
+<h4>Manage transitions</h4>
+<p>It is possible to :</p>
+<ul>
+	<li><strong>create a transition</strong> : by selecting the edge creation tool from the palette and then clicking on a source element and a target element.</li>
+	<li><strong>delete a transition</strong> : by selecting the edge in the diagram or in the Model explorer view and then selecting the delete tool. This tool deletes the semantic element. If a representation is open, the view corresponding to the deleted flow is not anymore visible after the delete action (<br />
+see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</li>
+	<li><strong>reconnect transitions</strong> : to reconnect the source and the target of a transition in the statemachine diagram.</li>
+</ul>
+<h4>Edit labels</h4>
+<p>In the statemachine diagram, it is possible to edit the elements labels  (<br />
+see <a href="../ref-doc/define-the-system.html#Direct_edit">Diagram editor/Editor main graphical area/Direct edit</a>). This actions allows to edit any statemachine elements labels.</p>
+<h3>Sequences</h3>
+<p>The <strong>sequence diagram</strong> is used to show how processes operate with one another and in what order.<br />
+<img src="platform:/resource/org.obeonetwork.dsl.uml2.doc.specification/images/SequenceDiagram.png" alt="" /></p>
+<p>The sequence diagram is a synchronized diagram which means that any elements existing under an interaction in the <span class="caps">UML</span> model will be visible automatically in the sequence diagram.</p>
+<h4>Manage interaction elements</h4>
+<p>It is possible to create:</p>
+<ul>
+	<li>lifeline : is an individual participant in an interaction
+	<ul>
+		<li>associated to a class</li>
+		<li>associated to an actor</li>
+		<li>destruction</li>
+		<li>creation</li>
+	</ul></li>
+	<li>message : indicates a flow of information between elements
+	<ul>
+		<li>synchronous</li>
+		<li>asynchronous</li>
+		<li>lost</li>
+		<li>found</li>
+	</ul></li>
+	<li>execution</li>
+	<li>state invariant : condition applied to a lifeline</li>
+	<li>interaction use : call another interaction</li>
+	<li>combined fragments : defines an expression of interaction fragments
+	<ul>
+		<li>alternatives</li>
+		<li>option</li>
+		<li>iteration</li>
+		<li>break</li>
+		<li>parallel</li>
+		<li>strict sequencing</li>
+		<li>critical region</li>
+		<li>ignore</li>
+		<li>consider</li>
+		<li>assertion</li>
+		<li>negative</li>
+	</ul></li>
+</ul>
+<p>The user can also <strong>delete an element</strong> (<br />
+see <a href="../ref-doc/define-the-system.html#Delete_element_from_model">Diagram editor/Editor tab-bar/Delete element/from model</a>).</p>
+<h4>Reorder an interaction element</h4>
+<p>It is possible to reorder the interaction elements :</p>
+<ul>
+	<li>lifeline can be reorder horizontally</li>
+	<li>other elements (execution, messages&#8230;) can be reordered vertically</li>
+</ul>
+<p>This tool updates the semantic element positioned in the interaction fragments list. If a representation is open, the view corresponding to the moved element is automatically updated.</p>
+<h4>Edit labels</h4>
+<p>In the sequence diagram, it is possible to edit the elements labels  (<br />
+				see <a href="../ref-doc/define-the-system.html#Direct_edit">Diagram editor/Editor main graphical area/Direct edit</a>). This actions allows to edit any interaction elements labels.</p>
+    </div>
+  </div>
+</div><!-- /.container -->
+
+
+  <div class="container">
+  <hr>
+  <footer>
+    <div class="row">
+      <div class="col-lg-12">
+        <p>Made with &#10084; Copyright &copy; <a href="http://www.obeo.fr">Obeo</a>, All Rights Reserved 2014</p>
+      </div>
+    </div>
+  </footer>
+</div><!-- /.container -->
+
+<!-- JavaScript -->
+<script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/modern-business.js"></script>
+
+</body>
+</html>

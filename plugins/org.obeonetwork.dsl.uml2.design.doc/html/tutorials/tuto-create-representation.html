@@ -1,0 +1,227 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="UML Designer documentation">
+  <meta name="author" content="Mt&eacute;lanie Bats">
+  
+  <title>Create a representation</title>
+  
+  <!-- Bootstrap core CSS -->
+  <link href="../css/bootstrap.css" rel="stylesheet">
+  
+  <!-- Pygments CSS -->
+  <link href="../css/pygments.css" rel="stylesheet">
+
+  <!-- Add custom CSS here -->
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+      <a class="navbar-brand" href="../index.html">UML Designer</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav navbar-right">     
+      
+        
+        <li><a href="../overview/index.html">Overview</a></li>
+        
+      
+        
+        <li><a href="../download/index.html">Download</a></li>
+        
+      
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tutorials <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            
+      	    	<li><a href="../tutorials/tuto-getting-started.html">Getting started</a></li>
+            
+      	    	<li><a href="../tutorials/tuto-create-project.html">Create project</a></li>
+            
+      	    	<li><a href="../tutorials/tuto-create-representation.html">Create representation</a></li>
+            
+      	    	<li><a href="../tutorials/tuto-import-model.html">Import model</a></li>
+            
+      	    	<li><a href="../tutorials/tuto-start-example.html">Open example</a></li>
+            
+          </ul>
+        </li>
+        
+      
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">User Guide <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            
+      	    	<li><a href="../user-guide/dashboard.html">Dashboard</a></li>
+            
+      	    	<li><a href="../user-guide/activity-diagram.html">Activity Diagram</a></li>
+            
+      	    	<li><a href="../user-guide/class-diagram.html">Class Diagram</a></li>
+            
+      	    	<li><a href="../user-guide/component-diagram.html">Component Diagram</a></li>
+            
+      	    	<li><a href="../user-guide/deployment-diagram.html">Deployment Diagram</a></li>
+            
+      	    	<li><a href="../user-guide/package-diagram.html">Package Diagram</a></li>
+            
+      	    	<li><a href="../user-guide/profile-diagram.html">Profile Diagram</a></li>
+            
+      	    	<li><a href="../user-guide/sequence-diagram.html">Sequence Diagram</a></li>
+            
+      	    	<li><a href="../user-guide/state-machine-diagram.html">State Machine Diagram</a></li>
+            
+      	    	<li><a href="../user-guide/use-case-diagram.html">Use Case Diagram</a></li>
+            
+          </ul>
+        </li>
+        
+      
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Developer Guide <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            
+      	    	<li><a href="../developer-guide/contribute.html">Contribute</a></li>
+            
+      	    	<li><a href="../developer-guide/build.html">Build</a></li>
+            
+      	    	<li><a href="../developer-guide/continuous-integration.html">Continuous Integration</a></li>
+            
+          </ul>
+        </li>
+        
+      
+        
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documentation <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            
+      	    	<li><a href="../ref-doc/presentation.html">Presentation</a></li>
+            
+      	    	<li><a href="../ref-doc/define-the-system.html">Define the system</a></li>
+            
+      	    	<li><a href="../ref-doc/define-the-application.html">Define the application</a></li>
+            
+      	    	<li><a href="../ref-doc/implement-the-application.html">Implement the application</a></li>
+            
+      	    	<li><a href="../ref-doc/write-the-application-documentation.html">Write the application documentation</a></li>
+            
+      	    	<li><a href="../ref-doc/refactor-an-application.html">Refactor an application</a></li>
+            
+      	    	<li><a href="../ref-doc/validate-an-application.html">Validate an application</a></li>
+            
+      	    	<li><a href="../ref-doc/non-goals.html">Non Goals</a></li>
+            
+          </ul>
+        </li>
+        
+      
+        
+        <li><a href="../faq/index.html">FAQ</a></li>
+        
+      
+
+      </ul>
+    </div><!-- /.navbar-header -->
+  </div><!-- /.container -->
+</nav>
+
+
+  <div class="container">
+  <div class="row">
+    <div class="col-md-3 col-sm-4 sidebar">
+      <ul class="nav nav-stacked nav-pills">
+      
+        
+      
+        
+      
+        
+          
+        <li><a href="../tutorials/tuto-getting-started.html">Getting started</a></li>
+          
+        <li><a href="../tutorials/tuto-create-project.html">Create project</a></li>
+          
+        <li><a href="../tutorials/tuto-create-representation.html">Create representation</a></li>
+          
+        <li><a href="../tutorials/tuto-import-model.html">Import model</a></li>
+          
+        <li><a href="../tutorials/tuto-start-example.html">Open example</a></li>
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+      </ul>
+    </div>
+    
+    <div class="col-md-9 col-sm-8">
+      <h1 class="page-header">Create a representation <small>Tutorial</small></h1>
+      
+      <ol class="breadcrumb">
+        <li><a href="../index.html">Home</a></li>
+        <li class="active">Create a representation</li>
+      </ol>
+      
+      <p>Learn how to create your first <span class="caps">UML</span> diagram. This tutorial will guide you through the creation of an <span class="caps">UML</span> diagram.</p>
+<h1>Create a class diagram</h1>
+<p>To create your first diagram:</p>
+<ul>
+	<li>In the &#8216;Model Explorer&#8217; view, select an <span class="caps">UML</span> project. If no project exists have a look to the corresponding cheatsheet in the Welcome page &gt; Getting Started &gt; First steps &gt; Create a new project.</li>
+	<li>Right-click on the project and select &#8216;Create Representation&#8217;</li>
+	<li>In the wizard, expand &#8216;<span class="caps">UML</span> Structural Modeling&#8217;, select &#8216;Class Diagram&#8217; and then &#8216;Next&#8217;.</li>
+	<li>On the next page, select &#8216;Model&#8217; as semantic element to which the diagram will be attached.  In our example the new class diagram will be attached to the root element of the <span class="caps">UML</span> model.</li>
+</ul>
+<h1>Set the name of the representation</h1>
+<p>Give a name to the new class diagram.</p>
+<h1>New class diagram is opened</h1>
+<p>A new class diagram editor is opened, you can use the tools in the palette to create new elements. Have a look to the <span class="caps">UML</span> Designer User Guide for more detailed information on tools.</p>
+    </div>
+
+  </div><!-- /.row -->
+</div><!-- /.container -->
+
+
+  <div class="container">
+  <hr>
+  <footer>
+    <div class="row">
+      <div class="col-lg-12">
+        <p>Made with &#10084; Copyright &copy; <a href="http://www.obeo.fr">Obeo</a>, All Rights Reserved 2014</p>
+      </div>
+    </div>
+  </footer>
+</div><!-- /.container -->
+
+<!-- JavaScript -->
+<script src="../js/jquery-1.10.2.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/modern-business.js"></script>
+
+</body>
+</html>
