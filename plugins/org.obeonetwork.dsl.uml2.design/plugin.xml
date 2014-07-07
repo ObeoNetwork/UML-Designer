@@ -488,4 +488,10 @@ Contributors:
         </constraints>
      </constraintProvider>
   </extension>
+   <extension
+         point="org.eclipse.sirius.sessionManagerListener">
+      <listener
+            class="org.obeonetwork.dsl.uml2.design.UmlDesignerSessionManagerListener">
+      </listener>
+   </extension>
 </plugin>

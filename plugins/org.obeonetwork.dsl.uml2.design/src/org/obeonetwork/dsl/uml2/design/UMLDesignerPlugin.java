@@ -15,12 +15,8 @@ import java.util.Set;
 
 import org.eclipse.core.runtime.Status;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
-import org.obeonetwork.dsl.uml2.design.services.AutosizeTrigger;
 import org.osgi.framework.BundleContext;
 
 /**
@@ -45,8 +41,6 @@ public class UMLDesignerPlugin extends AbstractUIPlugin {
 	 */
 	private static Set<Viewpoint> viewpoints;
 
-	private SessionManagerListener notifWhenSessionAreCreated;
-
 	/**
 	 * The constructor.
 	 */
@@ -62,14 +56,6 @@ public class UMLDesignerPlugin extends AbstractUIPlugin {
 		viewpoints = new HashSet<Viewpoint>();
 		viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin(
 				PLUGIN_ID + "/description/uml2.odesign"));
-		notifWhenSessionAreCreated = new SessionManagerListener.Stub() {
-			@Override
-			public void notifyAddSession(Session newSession) {
-				newSession.getEventBroker().addLocalTrigger(AutosizeTrigger.IS_GMF_NODE_ATTACHMENT,
-						new AutosizeTrigger(newSession.getTransactionalEditingDomain()));
-			}
-		};
-		SessionManager.INSTANCE.addSessionsListener(notifWhenSessionAreCreated);
 	}
 
 	/**
