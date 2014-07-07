@@ -5802,7 +5802,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:source.createAssociation(target)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new Association" name="Extend existing RelationShip" edgeMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Association']" iconPath="/org.obeonetwork.dsl.uml2.profile.design/icons/ExtraAssociation.gif">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new Association" name="Extend existing RelationShip" edgeMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Association']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/profile/ExtraAssociation.gif">
             <sourceVariable name="source">
               <subVariables xsi:type="tool:AcceleoVariable" name="sourceContainer" computationExpression="[source.eContainer(uml::Package)/]"/>
             </sourceVariable>
@@ -5826,7 +5826,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Tools">
-          <ownedTools xsi:type="tool:ToolDescription" name="Define Profile" precondition="[self.oclIsTypeOf(uml::Profile)/]" iconPath="/org.obeonetwork.dsl.uml2.profile.design/icons/defineProfile.gif">
+          <ownedTools xsi:type="tool:ToolDescription" name="Define Profile" precondition="[self.oclIsTypeOf(uml::Profile)/]" iconPath="/org.obeonetwork.dsl.uml2.design/icons/profile/defineProfile.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -5835,7 +5835,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" name="Undefine Profile" precondition="[self.oclIsTypeOf(uml::Profile)/]" iconPath="/org.obeonetwork.dsl.uml2.profile.design/icons/undefineProfile.gif">
+          <ownedTools xsi:type="tool:ToolDescription" name="Undefine Profile" precondition="[self.oclIsTypeOf(uml::Profile)/]" iconPath="/org.obeonetwork.dsl.uml2.design/icons/profile/undefineProfile.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -5844,7 +5844,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" name="Export Profile" precondition="[self.oclIsTypeOf(uml::Profile)/]" iconPath="/org.obeonetwork.dsl.uml2.profile.design/icons/ExportProfile.gif">
+          <ownedTools xsi:type="tool:ToolDescription" name="Export Profile" precondition="[self.oclIsTypeOf(uml::Profile)/]" iconPath="/org.obeonetwork.dsl.uml2.design/icons/profile/ExportProfile.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
