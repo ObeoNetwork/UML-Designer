@@ -25,7 +25,8 @@
   - title: Activity Diagram
     file: user-guide/activity-diagram
   - title: Class Diagram
-    file: user-guide/class-diagram
+    file: ref-doc/implement-the-application
+    anchor: Class_Diagram
   - title: Component Diagram
     file: user-guide/component-diagram
   - title: Deployment Diagram

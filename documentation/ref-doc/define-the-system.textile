@@ -166,6 +166,11 @@ The outline view has two display modes that the user can select in its upper too
 
 h2. Properties view
 
+The generic way to edit element values is using the *properties view*. If it is not opened yet
+you can open it clicking on the *Window* menu, then *Show View*  and then *Properties*
+
+!{{ page.relativePath }}/images/using_class_diagram/properties.png!
+
 In the properties view, the user finds several tabs which will not be the same if an element is selected on the diagram or not. 
 If an element is selected on the diagram, he has on the properties view the following generic tabs:
 * General : contains a set of the most used properties;
@@ -173,6 +178,7 @@ If an element is selected on the diagram, he has on the properties view the foll
 * Relationships : shows the relations of the selected element;
 * Documentation : shows the comment associated to the UML element;
 * Semantic : This tab shows the properties of the semantic element selected. You will find the same informations as in the properties view of an Ecore editor.
+!{{ page.relativePath }}/images/using_class_diagram/properties_values.png!
 * Style : This tab presents the properties about the graphical representation of the element. You will find informations like label size and format, shape of the graphical object, background and foreground colors...
 * Appearance : This tab allows to choose the style and size of text fields contained by the element.
 

@@ -21,7 +21,11 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ section.category }} <b class="caret"></b></a>
           <ul class="dropdown-menu">
             {% for subPage in section.pages %}
+            	{% if subPage.anchor != null %}
+            	<li><a href="{{ page.relativePath }}/{{ subPage.file }}.html#{{subPage.anchor}}">{{ subPage.title }}</a></li>
+            	{% else %}
       	    	<li><a href="{{ page.relativePath }}/{{ subPage.file }}.html">{{ subPage.title }}</a></li>
+      	    	{% endif %}
             {% endfor %}
           </ul>
         </li>
