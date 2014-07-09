@@ -10,7 +10,7 @@ What the application is supposed to be?
 and
 What the application is supposed to do?
 
-h1. What the application is supposed to be ?
+h1(#Activity_Diagram). What the application is supposed to be ?
 
 First, John tries to get a feel for the bigger picture of its application. The purpose is to get an overall understanding of the system. He wants to catch the business process and checks if there is a precedent for this application.
 To do so UML propose a very useful diagram : the *activity diagram*.

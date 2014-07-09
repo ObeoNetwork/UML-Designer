@@ -23,7 +23,8 @@
   - title: Dashboard
     file: user-guide/dashboard
   - title: Activity Diagram
-    file: user-guide/activity-diagram
+    file: ref-doc/define-the-application
+    anchor: Activity_Diagram
   - title: Class Diagram
     file: ref-doc/implement-the-application
     anchor: Class_Diagram
