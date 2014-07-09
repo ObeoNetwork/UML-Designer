@@ -6,7 +6,7 @@
   <meta name="description" content="UML Designer documentation">
   <meta name="author" content="Mt&eacute;lanie Bats">
   
-  <title>Dashboard</title>
+  <title>Usage</title>
   
   <!-- Bootstrap core CSS -->
   <link href="../css/bootstrap.css" rel="stylesheet">
@@ -153,18 +153,38 @@
   <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Dashboard <small>user guide</small></h1>
+      <h1 class="page-header">Usage <small>Reference Documentation</small></h1>
       
       <ol class="breadcrumb">
         <li><a href="../index.html">Home</a></li>
-        <li class="active">Dashboard</li>
+        <li class="active">Usage</li>
       </ol>
     </div>
   </div>
   
   <div class="row">
     <div class="col-lg-12">
-      
+      <p><span class="caps">UML</span> Designer provides a <em>Usage</em> plugin which when installed and enabled will help us gather anonymous statistics about how the <span class="caps">UML</span> Designer is being used.</p>
+<p>All the data is gathered anonymously and can at any time be disabled if you wish.</p>
+<h1>What will we use the data for ?</h1>
+<p>With this enabled we can start seeing better how and where <span class="caps">UML</span> Designer is being used; we are especially currently interested in seeing what OS&#8217;s are being used, which type of diagrams are used.</p>
+<p>Over time we hope to learn more to help continuously improve <span class="caps">UML</span> Designer.</p>
+<h1>How to enable/disable usage tracking ?</h1>
+<p>If you have the plugin installed, then on the first start of this Eclipse a dialog will pop up asking you to send anonymous usage statistics.<br />
+<img src="../images/UMLDesignerUsageDialog.png" alt="" /></p>
+<p>If you do not want to send anonymous usage statistics, click on <em>No</em> button in dialog.<br />
+If you close the dialog, no usage statistics will be collected but the dialog will ask again on next startup.<br />
+If you just press <em>Yes</em> then usage statistics for <span class="caps">UML</span> Designer is enabled.</p>
+<p>If you later on decide to not send statistics anymore or want to enable it, simply goto the <em>Preferences &gt; Viewpoint &gt; Usage</em> Preferences.<br />
+<img src="../images/UMLDesignerUsagePreferences.png" alt="" /></p>
+<h1>How it works ?</h1>
+<p>When the user has enabled reporting anonymous statistics the plugin uses Google Analytics to track data as though you visited a page under https://github.com/ObeoNetwork/<span class="caps">UML</span>-Modeling/wiki/usage/.</p>
+<p>The information collected is similar/equal to what is possible to collect when you visit a website, including your IP address, and may be transferred to the United States and other countries.</p>
+<p>We do tweak a few things to track more Eclipse oriented things; i.e. instead of Browser name we use the Eclipse product ID and instead of Browser version we use the version of Eclipse core runtime plugin.</p>
+<p>We also generate a random id for the installation so multiple startups from the same eclipse only count as one usage.</p>
+<p>Currently the only tracking we do is when a <span class="caps">UML</span> Designer editor is opened with the plugin installed. We might add more reporting in the future, if so this page will be updated with details.</p>
+<p>If you want to inspect the source code for all of the above it can be found on the <a href="https://github.com/ObeoNetwork/UML-Modeling">Obeonetwork github</a>.<br />
+The <span class="caps">UML</span> Designer Usage plugin is based on the <a href="https://github.com/jbosstools/jbosstools-base/tree/master/usage">JBoss Tools Usage</a> plugin.</p>
     </div>
   </div>
 </div><!-- /.container -->

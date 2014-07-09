@@ -62,5 +62,9 @@
     </topic>
     <topic href="html/ref-doc/non-goals.html" label="Non goals">
     </topic>
+    <topic href="html/ref-doc/usage.html" label="Usage">
+    </topic>
+    <topic href="html/ref-doc/migration.html" label="Migration">
+    </topic>
  </topic>
 </toc>

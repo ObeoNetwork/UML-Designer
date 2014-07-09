@@ -68,6 +68,10 @@
     file: ref-doc/validate-an-application
   - title: Non Goals
     file: ref-doc/non-goals
+  - title: Usage
+    file: ref-doc/usage
+  - title: Migration
+    file: ref-doc/migration
 
 - title: FAQ
   file: faq
