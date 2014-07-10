@@ -8,6 +8,13 @@ relativePath: ..
 
 This section describes how to start using the UML designer either from existing UML models or by creating a new one.
 
+After installing UML Designer, cheatsheets are available in your Eclipse installation which explain how to :
+* Create a new project
+* Create a new diagram
+* Import an existing model
+* Start with the sample model
+Open the "welcome page":http://help.eclipse.org/luna/index.jsp?topic=%2Forg.eclipse.platform.doc.user%2Fconcepts%2Fwelcome.htm to get direct links to these cheatsheets.
+
 h1. Starting from the Travel Agency example
 
 Import the TravelAgency project using the menu @File/New/Example...@.

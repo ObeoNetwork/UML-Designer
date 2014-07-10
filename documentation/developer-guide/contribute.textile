@@ -18,7 +18,14 @@ To get the code just "clone":https://help.github.com/articles/which-remote-url-s
 
 h1. Contribute
 
-Feel free to fork the code, adapt it to your need and trigger a "pull request":https://help.github.com/articles/using-pull-requests.
+h2. Contribute to the code
+
+UML Designer's code is hosted on Github. It's easy to get the code and build UML Designer from source. Just clone our repository, make your changes, adapt it to your need and trigger a "pull request":https://help.github.com/articles/using-pull-requests.
+
+h2. Contribute to the documentation
+
+Found an error in this web-site or in the documentation? Please help us and contribute.
+UML Designer's documentation is hosted on Github: "https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation":https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation. Just clone our repository, update the documentation and trigger a "pull request":https://help.github.com/articles/using-pull-requests. The documentation is written with the "textile":http://en.wikipedia.org/wiki/Textile_(markup_language) syntax, so it is really easy to contribute. Have a look to the "Documentation":{{ page.relativePath }}/developer-guide/documentation.html section in the developer guide to learn more about how we build the UML Designer documentation.
 
 h1. Providing Feedback
 

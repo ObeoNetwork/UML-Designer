@@ -7,7 +7,7 @@ relativePath: ..
 
 h1. Bundles
 
-The bundles corresponding to the last release are available on the Obeo "marketplace":http://marketplace.obeonetwork.com/module/uml/download : 
+The bundles corresponding to the last release are available on the "Obeo marketplace":http://marketplace.obeonetwork.com/module/uml/download : 
 * "Windows 32bits":http://www.obeo.fr/download/release/uml/latest/UMLDesigner-win32.win32.x86.zip
 * "Windows 64bits":http://www.obeo.fr/download/release/uml/latest/UMLDesigner-win32.win32.x86_64.zip
 * "Linux 32bits":http://www.obeo.fr/download/release/uml/latest/UMLDesigner-linux.gtk.x86.zip
