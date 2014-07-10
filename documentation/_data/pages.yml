@@ -41,7 +41,8 @@
     file: ref-doc/define-the-application
     anchor: Profile_Diagram
   - title: Sequence Diagram
-    file: user-guide/sequence-diagram
+    file: ref-doc/implement-the-application
+    anchor: Sequence_Diagram
   - title: State Machine Diagram
     file: user-guide/state-machine-diagram
   - title: Use Case Diagram
