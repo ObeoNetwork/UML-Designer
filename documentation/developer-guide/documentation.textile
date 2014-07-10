@@ -1,0 +1,89 @@
+---
+layout: article
+title: Documentation
+subtitle: developer guide
+relativePath: ..
+---
+
+h2. Environment
+
+The UML Designer's documentation is hosted on Github: "https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation":https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation.
+
+The documentation is built with "Jekyll":http://jekyllrb.com/.
+
+All the documentation is written with the "textile":http://en.wikipedia.org/wiki/Textile_(markup_language) syntax, in order that it is really easy to contribute.
+
+h2. Global structure
+
+The documentation structure is defined in the "pages.yml":https://github.com/ObeoNetwork/UML-Designer/blob/master/documentation/_data/pages.yml file.
+
+{% highlight YAML %}
+- title: Overview
+  file: overview
+
+- title: Download
+  file: download
+
+- category: Tutorials
+  pages:
+  - title: Getting started
+    file: tutorials/tuto-getting-started
+  - title: Create project
+    file: tutorials/tuto-create-project
+...
+{% endhighlight %}
+
+@- title: xxx@ and  @- category: xxx@ generate a menu in the main web site navbar.
+
+To create a menu which reference an anchor in an existing page use the syntax :
+{% highlight YAML %}
+- category: MyCategory
+  pages:
+  - title: MyTitle
+    file: path/filename
+    anchor: MyAnchor
+{% endhighlight %}
+
+Have a look the section below to see how to define an anchor in a page.
+
+h2. Page
+
+Each defined page starts with : 
+{% highlight YAML %}
+---
+layout: article
+title: MyTitle
+subtitle: MySubTitle
+relativePath: ..
+---
+{% endhighlight %}
+
+This allows to set the different variables. 
+All the pages reused the same includes : "https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation/_includes":https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation/_includes
+And the available layouts are defined in the _layouts folder: "https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation/_layouts":https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation/_layouts
+
+The rest of the page, defines the main content. To edit the page content use the "textile":http://en.wikipedia.org/wiki/Textile_(markup_language) syntax. 
+
+Use the following syntax to :
+* Define an anchor in the page named _MyPage_ and defined in the folder _path_ : @h1(#MyAnchor). My title@
+* Reference an anchor : @{{ page.relativePath }}/path/MyPage.html#MyAnchor@
+
+h2. Build the documentation
+
+_The documentation is build manually but in the future all this will be done automatically by the continuous integration build._
+
+h3. Build the web-site
+
+Go to @UML-Designer/documentation@ folder in your local repo.
+And launch : @jekyll build@
+This operation will generate a new @_site@ folder containing all the @.html@ files generated from the textile files.
+
+To update the online web-site, just copy/paste manually the sontent of the _site folder to the gh-pages branch on your repo. Commit and push the new version of the web-site.
+
+The new web site will be available immediately on : "http://obeonetwork.github.io/UML-Designer/":http://obeonetwork.github.io/UML-Designer/
+
+h3. Integrate the documentation to Eclipse
+
+We integrate the web site inside Eclipse as embedded documentation for UML Designer. We just defined an Eclipse specific "toc.xml":https://github.com/ObeoNetwork/UML-Designer/blob/master/documentation/toc.xml file which will be used to integrate the website content into the Eclipse Help Content.
+
+When the textile files have been updated, the web-site must be re-generated as presented in the previous section. Then update the @toc.xml@ and copy the content of the @_site@ folder to @UML-Designer/plugins/org.obeonetwork.dsl.uml2.design.doc/html@.
