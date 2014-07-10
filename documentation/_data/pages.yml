@@ -38,7 +38,8 @@
     file: ref-doc/define-the-application
     anchor: Package_Diagram
   - title: Profile Diagram
-    file: user-guide/profile-diagram
+    file: ref-doc/define-the-application
+    anchor: Profile_Diagram
   - title: Sequence Diagram
     file: user-guide/sequence-diagram
   - title: State Machine Diagram

@@ -598,9 +598,9 @@ We added a few accelerators so that you can quickly edit *labels* on elements or
 
 h2. Extend UML standard
 
-h3. Define extensions
+h3(#Profile_Diagram). Define extensions
 
-Sometimes, the UML standard does not provide all the concepts expected by John. Thanks to the *Profile diagram*, it is possible to extend the standard to add new concepts or to adapt existing ones.
+Sometimes, the UML standard does not provide all the concepts expected by John. Thanks to the *profile diagram*, it is possible to extend the standard to add new concepts or to adapt existing ones. To use the profile diagram, the user must activate the @Extend@ viewpoint.
 
 The profile diagram operates at the metamodel level to provide new stereotypes and profiles.
 !{{ page.relativePath }}/images/ProfileDiagram.png!
@@ -608,9 +608,42 @@ The profile diagram operates at the metamodel level to provide new stereotypes a
 
 To create a new profile, the user creates a new UML model and selects as root element a *Profile* element.
 Then on the newly created UML model, it is possible to create a new _Profile diagram_.
+!{{ page.relativePath }}/images/using_profile_diagram/new_profile_diagram_model.png!
+
+Another solution is to *right_click* on a model element in the Model Explorer and select the menu _New Representation > Profile Diagram_.
+!{{ page.relativePath }}/images/using_profile_diagram/new_profile_diagram_menu.png!
 
 The main feature is to create and delete stereotypes in the profile diagram. 
-A stereotype can be created by selecting the stereotype creation tool from the palette and then clicking on the diagram. A diagram is associated to a package and in this case the element is created under the corresponding package in the UML model. Tooltip tools are also available to create any kind of elements.
+A stereotype can be created by selecting the stereotype creation tool from the palette and then clicking on the diagram. A diagram is associated to a package and in this case the element is created under the corresponding package in the UML model.
+A tool is available in the palette to *create a stereotype*. 
+!{{ page.relativePath }}/images/using_profile_diagram/palette_stereotype.png!
+!{{ page.relativePath }}/images/using_profile_diagram/stereotype.png!
+
+By default, a stereotype does not extend any metaclass.
+
+A tool is available in the palette to *reference a metaclass*.
+!{{ page.relativePath }}/images/using_profile_diagram/palette_metaclass.png!
+!{{ page.relativePath }}/images/using_profile_diagram/metaclass.png!
+It opens a wizard which proposes all the available UML metaclass:
+!{{ page.relativePath }}/images/using_profile_diagram/wizard_metaclass.png!
+It is possible to filter the listed metaclass by :
+* Name
+* Only concrete metaclasses
+* Only sub classes of a selected metaclass
+
+A tool is available in the palette to *create extensions* for a stereotype.
+!{{ page.relativePath }}/images/using_profile_diagram/palette_extension.png!
+!{{ page.relativePath }}/images/using_profile_diagram/extension.png!
+According to the context, this tool will create an _Extension_ edge linking _Stereotype_ to an _Element Import_ or a _Generalization_ edge linking two _Stereotypes_. An _Element Import_ is an UML reference to an imported metaclass in a profile.
+!{{ page.relativePath }}/images/using_profile_diagram/wizard_metaclass.png!
+
+Another tool allows the *creation of an UML “Association”* between two stereotypes. 
+!{{ page.relativePath }}/images/using_profile_diagram/extra_association.png!
+Furthermore, this tool can suggest to reuse the existing relationship in the metamodel UML, if this relationship can link the metaclass referenced by the target and the source stereotype of the wanted association.
+If the user selects an existing relationship of the UML metamodel, then the tool will import the metaclass of the selected relationship and create a new stereotype that extend this relationship. Besides, the tool link graphically the new created stereotype and the source and target stereotype of the association
+!{{ page.relativePath }}/images/using_profile_diagram/wizard_extra_association.png!
+
+Tooltip tools are also available to create any kind of elements.
 
 The palette defines the following tools :
 * _*Stereotype*_ : Create a new stereotype. The user selects the tool in the palette or the tooltip and selects the diagram background. A new stereotype looks like a UML class and contains in its label the keyword _stereotype_. By default a stereotype does not extend any metaclass. But when the user validates the UML profile, a warning is thrown when a stereotype does not extend, directly or indirectly, a metaclass.
@@ -622,6 +655,28 @@ The palette defines the following tools :
 * _*Define*_ : Generate complementary information within the profile in order to apply it dynamically in the current workspace. It mainly contains the UML annotation.
 * _*Undefine*_ : Delete from the profile complementary information generated by the define command.
 * _*Export*_ : Create or update an eclipse plugin in order to deploy the edited profile in an Eclipse installation. This plugin must contain the profile, all its generated code and populate extensions to register itself to the platform.
+
+h3. Defining a profile
+
+The palette provides a tool to *define a profile* in order to be able to apply this one for other UML model in the workspace. This tool add information about the version to the profile as _Ecore Annotation_. Mainly, the information required for the versioning are:
+* Version number
+* Date
+* Author
+* Comment
+* Copyright
+!{{ page.relativePath }}/images/using_profile_diagram/define_profile.png!
+
+Another tool is available to *undefine a profile*, this tool removes all the _EPackage_ representing the definition from the profile.
+
+h3. Exporting a profile
+
+An _export profile_ tool is available from the palette to export a profile as a jar file. This jar can be added to an eclipse platform to provide a profile as a registered package. The export operation creates an EMF project with an ecore file based on the profile model. Then an extension for the profile is added to the generated project (in “uml.generated_package” and “ecore.uri_mapping”). Finally, the tool builds and exports the created EMF project for the profile as a Deployable plug-in.
+The tool requires some necessary information for the creation of the deployable plug-in:
+* Profile name, which is editable in the profile model.
+* Profile URI.
+* Profile plug-in name.
+* Version information
+!{{ page.relativePath }}/images/using_profile_diagram/export_profile.png!
 
 h3. Manage profiles and stereotypes
 
