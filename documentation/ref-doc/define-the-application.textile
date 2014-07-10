@@ -246,7 +246,7 @@ In the package diagram, it is possible to edit the elements labels  (see "Diagra
 * package labels
 * relationships labels
 
-h2. Define the components
+h2(#Component_Diagram). Define the components
 
 It is the moment for John to split the system in multiple components and to describe how all these elements are linked together in a *component diagram*.
 	The component diagram is used to describe the structure of the system by showing the components and their connectors.
@@ -274,10 +274,20 @@ Creation tools are available in the component diagram for the following types :
 |Port on a class|!{{ page.relativePath }}/images/CompositeStructureDiagramPort.png!|Define the interaction between a class and its environment|
 |Interface |!{{ page.relativePath }}/images/ComponentDiagramInterface.png!|A contract that implementers agree to meet|
 
-The user can also *delete an element* (see "Diagram editor/Editor tab-bar/Delete element/from model":{{ page.relativePath }}/ref-doc/define-the-system.html#Delete_element_from_model.
-	}
+A class can be used as a component :
+!{{ page.relativePath }}/images/features/component_pics/class_as_component.jpg!
+or in a component :
+!{{ page.relativePath }}/images/features/component_pics/implementation_classes_in_component.jpg!
 
-h3. Manage relationships
+Required and Provided Interfaces can be defined:
+* using ports :
+!{{ page.relativePath }}/images/features/component_pics/exchange_through_ports.jpg!
+* or directly on the components :
+!{{ page.relativePath }}/images/features/component_pics/exchange_through_component.jpg!
+
+The user can also *delete an element* (see "Diagram editor/Editor tab-bar/Delete element/from model":{{ page.relativePath }}/ref-doc/define-the-system.html#Delete_element_from_model.
+
+h3(#Manage_relationships). Manage relationships
 
 It is possible to *create a relationship* by selecting the edge creation tool from the palette and then clicking on a source element and a target element.
 The following edge creation tools exist in the palette :
@@ -290,6 +300,16 @@ The following edge creation tools exist in the palette :
 |Interface Realization |!{{ page.relativePath }}/images/ComponentDiagramInterfaceRealization.png!|Component realizes interface|
 |Redefined |!{{ page.relativePath }}/images/ComponentDiagramRedefined.png!|Source port redefined target port|
 |Connector |Represented by a solid link between two ports|Source port is connected to target port|
+
+You can link two ports using assembly or delegation connectors.
+
+Assembly Connector :
+
+!{{ page.relativePath }}/images/features/component_pics/assembly_connector.jpg!
+
+Delegation Connector :
+
+!{{ page.relativePath }}/images/features/component_pics/delegation_connector.jpg!
 
 The user can also *delete a relationship* (see "Diagram editor/Editor tab-bar/Delete element/from model":{{ page.relativePath }}/ref-doc/define-the-system.html#Delete_element_from_model).
 
@@ -340,8 +360,7 @@ This actions allows to edit :
 h2. Define the information flow 
 
 By creating links between the components, John defines the flow followed by the data in the system.
-To get details on how to manage the information flows,
-	@see "What the application is supposed to be ?" _Define components -> Manage relationships_.
+To get details on how to manage the information flows (see "What the application is supposed to be?/Define components/Manage relationships":{{ page.relativePath }}/ref-doc/define-the-application.html#Manage_relationships).
 	
 h2. Diagram the organization of the information
 

@@ -29,7 +29,8 @@
     file: ref-doc/implement-the-application
     anchor: Class_Diagram
   - title: Component Diagram
-    file: user-guide/component-diagram
+    file: ref-doc/define-the-application
+    anchor: Component_Diagram
   - title: Deployment Diagram
     file: user-guide/deployment-diagram
   - title: Package Diagram
