@@ -44,9 +44,11 @@
     file: ref-doc/implement-the-application
     anchor: Sequence_Diagram
   - title: State Machine Diagram
-    file: user-guide/state-machine-diagram
+    file: ref-doc/implement-the-application
+    anchor: State_Machine_Diagram
   - title: Use Case Diagram
-    file: user-guide/use-case-diagram
+    file: ref-doc/define-the-application
+    anchor: Use_Case_Diagram
 
 - category: Developer Guide
   pages:

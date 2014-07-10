@@ -81,14 +81,13 @@ This actions allows to edit :
 
 h1. What the application is supposed to do ? 
 
-h2. Capture the use cases
+h2(#Use_Case_Diagram). Capture the use cases
 
 The next step for John is to capture the different requirements. He knows what he wants, what the other stakeholders want and so he needs to document this. He has already started catching the requirements on post-it notes and pieces of paper during meetings, he has also used his whiteboard for some sketching.
 When he recovered all his requirements, he starts to sort them by subject in order to see who is going to use the application. He needs now to capture the different users of the system. John creates a UML *Use Case diagram* to specify the different subjects and the roles played by users and other systems that interact.
 The use case diagram is used to describe the interaction of the user and other applications with the specified system.
 !{{ page.relativePath }}/images/UseCaseDiagram.png!
 					
-
 The use case diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.
 
 h3. Manage use cases
@@ -112,6 +111,9 @@ A subject could be a :
 * Artifact
 * DataType
 * Interface
+
+The *Use Case Diagram* will display any @UseCase@ not being affected to a subject on the canvas. If a subject is affected, then the use case
+will be displayed directly within this subject.
 
 The user can also *delete an element* (see "Diagram editor/Editor tab-bar/Delete element/from model":{{ page.relativePath }}/ref-doc/define-the-system.html#Delete_element_from_model).
 
@@ -140,9 +142,10 @@ As the diagram is unsynchronized, the user needs to add manually the elements al
 It is possible to *add existing elements* in the use case diagram by :
 * selecting the add tool from the palette or the tooltip and then clicking on the diagram or an element. The add tool opens a selection wizard.
 * drag and droping an element from the model explorer. 
-						
 
-The following elements can be added on a component diagram :
+Dragging a use case from a subject to the canvas (and the other way around) will set or unset the subject accordingly.
+
+The following elements can be added on a use case diagram :
 						
 |_. Element |_. Representation |
 |Use case |!{{ page.relativePath }}/images/UseCaseDiagramUseCase.png!|
