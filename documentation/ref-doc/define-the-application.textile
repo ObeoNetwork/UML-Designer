@@ -172,17 +172,14 @@ In the use case diagram, it is possible to edit the elements labels  (see "Diagr
 * actor, collaboration, subject, use case labels
 * relationships labels
 
-h2. Define the package system structure
+h2(#Package_Diagram). Define the package system structure
 
 At this step, John knows who will use its application and what they are able todo with it. It is time to define the components, the interfaces and the relationships that would be seen and experienced by the application user. The purpose is to detail the available objects in the user's universe and how they can use them to accomplish certain tasks.
-John defines the big structure of the system thanks to the *Package diagram*.
+John defines the big structure of the system thanks to the *package diagram*.
 The package diagram is used to describe the structure of the system by showing the packages and their dependencies.
 !{{ page.relativePath }}/images/PackageDiagram.png!
 	
 The package diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.
-The package diagram is used to describe the structure of the system by showing the packages and their dependencies.
-!{{ page.relativePath }}/images/PackageDiagram.png!
-	
 
 h3. Manage packages
 

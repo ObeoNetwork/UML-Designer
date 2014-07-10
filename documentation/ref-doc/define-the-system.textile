@@ -285,6 +285,9 @@ Example : When a _Class_ is selected in a diagram or the model explorer, it is p
 * a Composite structure diagram
 * an Activity diagram
 * a Statemachine diagram
+
+For example on a package in the package diagram, to create a class diagram you should *right-click* on your model or on a package and pick @navigate@ and then @new Class Diagram@.
+!{{ page.relativePath }}/images/using_package_hierarchy/create_classdiag.png!
 				
 Note that the set of diagrams the user can create will depend both on the type of the selected element and on the set of viewpoints which are currently enabled.
 

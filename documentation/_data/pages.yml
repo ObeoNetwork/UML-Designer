@@ -35,7 +35,8 @@
     file: ref-doc/define-the-application
     anchor: Deployment_Diagram
   - title: Package Diagram
-    file: user-guide/package-diagram
+    file: ref-doc/define-the-application
+    anchor: Package_Diagram
   - title: Profile Diagram
     file: user-guide/profile-diagram
   - title: Sequence Diagram
