@@ -32,7 +32,8 @@
     file: ref-doc/define-the-application
     anchor: Component_Diagram
   - title: Deployment Diagram
-    file: user-guide/deployment-diagram
+    file: ref-doc/define-the-application
+    anchor: Deployment_Diagram
   - title: Package Diagram
     file: user-guide/package-diagram
   - title: Profile Diagram

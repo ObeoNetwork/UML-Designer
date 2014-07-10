@@ -481,9 +481,9 @@ In the composite structure diagram, it is possible to edit the elements labels  
 * component, class, interface, port labels
 * relationships labels
 
-h2. Define the system environment
+h2(#Deployment_Diagram). Define the system environment
 
-Then, John defines the system environment thanks to a *Deployment diagram*, and how the software is deployed on the infrastructure. This diagram describes the current technological limitations and constraints.
+Then, John defines the system environment thanks to a *deployment diagram*, and how the software is deployed on the infrastructure. This diagram describes the current technological limitations and constraints.
 
 The deployment diagram is used to describe the structure of the system by showing the physical deployment of artifacts on nodes.
 !{{ page.relativePath }}/images/DeploymentDiagram.png!
@@ -498,7 +498,13 @@ A diagram is associated to a package and when the user click on the diagram back
 If the user selects a container, the element will be created under the corresponding semantic element in the UML model.
 !{{ page.relativePath }}/images/DeploymentDiagramPalette.png!
 		
-Tooltip tools are also available to create any kind of elements.
+Tooltip tools are also available to create any kind of elements. You have the ability to create elements in a contextual way related to the currently selected elements.
+If your pointer is on the diagram background, after a few seconds you should see the following assistant :
+!{{ page.relativePath }}/images/using_deployment_diagram/assistant.png!
+If your pointer is *on a node* the assistant will be : 
+!{{ page.relativePath }}/images/using_deployment_diagram/assistant_node.png!
+
+Indeed, a node is a composite element.
 
 Creation tools are available in the deployment diagram for the following types :		
 		
@@ -507,6 +513,12 @@ Creation tools are available in the deployment diagram for the following types :
 |Device|!{{ page.relativePath }}/images/DeploymentDiagramDevice.png!|Physical electronic resource with processing capability|
 |Execution environment|!{{ page.relativePath }}/images/DeploymentDiagramExecutionEnvironment.png!|Specific node where artifacts are deployed|
 |Artifact|!{{ page.relativePath }}/images/DeploymentDiagramArtifact.png!|Physical piece of information used or produced by a system|
+
+So, the user can create deployment diagram defining : 
+* Device, Execution Environment, Node and links :
+!{{ page.relativePath }}/images/features/deployment_pics/links_between_nodes.png!
+* Composite nodes :
+!{{ page.relativePath }}/images/features/deployment_pics/composition.png!
 
 The user can also *delete an activity element* (see "Diagram editor/Editor tab-bar/Delete element/from model":{{ page.relativePath }}/ref-doc/define-the-system.html#Delete_element_from_model).
 
@@ -521,6 +533,17 @@ The following edge creation tools exist in the palette :
 |Generalization|!{{ page.relativePath }}/images/DeploymentDiagramGeneralization.png!|Indicates inheritance|
 |Deployment|!{{ page.relativePath }}/images/DeploymentDiagramDeployment.png!|Indicates the deployment of an artifact on a node|
 |Manifestation |!{{ page.relativePath }}/images/DeploymentDiagramManifestation.png!|An artifact embodies or manifests a number of model elements|
+
+The user can create : 
+* artifact dependencies and generalization:
+!{{ page.relativePath }}/images/features/deployment_pics/artifact_dependency_generalization.png!
+* artifact manifestation of packageable elements:
+!{{ page.relativePath }}/images/features/deployment_pics/artifact_manifestation_component_package.png!
+* artifact deployment :
+!{{ page.relativePath }}/images/features/deployment_pics/artifact_deployment.png!
+We have two way to deploy an artifact:
+* Deployment could be shown as a deploy dependency that is drawn from the artifact to the deployment target.
+* Deployment could also be shown with deployed artifacts contained by a deployment target.
 
 The user can also *delete a flow* (see "Diagram editor/Editor tab-bar/Delete element/from model":{{ page.relativePath }}/ref-doc/define-the-system.html#Delete_element_from_model).
 
@@ -569,10 +592,12 @@ The *add related elements* action is available from :
 
 h3. Edit labels
 
-In the package diagram, it is possible to edit the elements labels  (
-		see "Diagram editor/Editor main graphical area/Direct edit":{{ page.relativePath }}/ref-doc/define-the-system.html#Direct_edit). This actions allows to edit :
+In the package diagram, it is possible to edit the elements labels  (see "Diagram editor/Editor main graphical area/Direct edit":{{ page.relativePath }}/ref-doc/define-the-system.html#Direct_edit). This actions allows to edit :
 * component, node, device, execution environment, artifact labels
 * relationships labels
+
+We added a few accelerators so that you can quickly edit *labels* on elements or edges just by typing. Typing : 
+* @aNewName@ will update the label.
 
 h2. Extend UML standard
 
