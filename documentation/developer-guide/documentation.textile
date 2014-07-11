@@ -70,7 +70,22 @@ Use the following syntax to :
 
 h2. Build the documentation
 
-_The documentation is build manually but in the future all this will be done automatically by the continuous integration build._
+To build the documentation, commit the changes in the Eclipse Help content and update the web-site a shell script is available in :
+@documentation/gen-doc.sh@
+
+When you want to update the documentation :
+* Update the textile files
+* Launch the script from the git repository root :
+./documentation/gen-doc.sh "My commit message"
+
+The script automatically:
+* generate the static web-site
+* copy the result into the Eclipse help content
+* copy the result into the gh-pages
+
+_In the future all this actions will be done automatically by the continuous integration build._
+
+The different steps done by the script are explained below.
 
 h3. Build the web-site
 
@@ -78,7 +93,7 @@ Go to @UML-Designer/documentation@ folder in your local repo.
 And launch : @jekyll build@
 This operation will generate a new @_site@ folder containing all the @.html@ files generated from the textile files.
 
-To update the online web-site, just copy/paste manually the sontent of the _site folder to the gh-pages branch on your repo. Commit and push the new version of the web-site.
+To update the online web-site, just copy/paste the content of the _site folder to the gh-pages branch on the repo. Commit and push the new version of the web-site.
 
 The new web site will be available immediately on : "http://obeonetwork.github.io/UML-Designer/":http://obeonetwork.github.io/UML-Designer/
 

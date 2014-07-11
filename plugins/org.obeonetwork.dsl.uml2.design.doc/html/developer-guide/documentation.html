@@ -272,12 +272,27 @@ And the available layouts are defined in the <em>layouts folder: <a href="https:
 	<li>Reference an anchor : <code>../path/MyPage.html#MyAnchor</code></li>
 </ul>
 <h2>Build the documentation</h2>
-<p><em>The documentation is build manually but in the future all this will be done automatically by the continuous integration build.</em></p>
+<p>To build the documentation, commit the changes in the Eclipse Help content and update the web-site a shell script is available in :<br />
+<code>documentation/gen-doc.sh</code></p>
+<p>When you want to update the documentation :</p>
+<ul>
+	<li>Update the textile files</li>
+	<li>Launch the script from the git repository root :<br />
+./documentation/gen-doc.sh &#8220;My commit message&#8221;</li>
+</ul>
+<p>The script automatically:</p>
+<ul>
+	<li>generate the static web-site</li>
+	<li>copy the result into the Eclipse help content</li>
+	<li>copy the result into the gh-pages</li>
+</ul>
+<p><em>In the future all this actions will be done automatically by the continuous integration build.</em></p>
+<p>The different steps done by the script are explained below.</p>
 <h3>Build the web-site</h3>
 <p>Go to <code>UML-Designer/documentation</code> folder in your local repo.<br />
 And launch : <code>jekyll build</code><br />
 This operation will generate a new <code>_site</code> folder containing all the <code>.html</code> files generated from the textile files.</p>
-<p>To update the online web-site, just copy/paste manually the sontent of the _site folder to the gh-pages branch on your repo. Commit and push the new version of the web-site.</p>
+<p>To update the online web-site, just copy/paste the content of the _site folder to the gh-pages branch on the repo. Commit and push the new version of the web-site.</p>
 <p>The new web site will be available immediately on : <a href="http://obeonetwork.github.io/UML-Designer/">http://obeonetwork.github.io/<span class="caps">UML</span>-Designer/</a></p>
 <h3>Integrate the documentation to Eclipse</h3>
 <p>We integrate the web site inside Eclipse as embedded documentation for <span class="caps">UML</span> Designer. We just defined an Eclipse specific <a href="https://github.com/ObeoNetwork/UML-Designer/blob/master/documentation/toc.xml">toc.xml</a> file which will be used to integrate the website content into the Eclipse Help Content.</p>
