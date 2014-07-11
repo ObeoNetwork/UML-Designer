@@ -6,7 +6,7 @@
   <meta name="description" content="UML Designer documentation">
   <meta name="author" content="Mt&eacute;lanie Bats">
   
-  <title>Write the application documentation</title>
+  <title>Documentation</title>
   
   <!-- Bootstrap core CSS -->
   <link href="../css/bootstrap.css" rel="stylesheet">
@@ -217,48 +217,71 @@
   <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Write the application documentation <small>Reference Documentation</small></h1>
+      <h1 class="page-header">Documentation <small>developer guide</small></h1>
       
       <ol class="breadcrumb">
         <li><a href="../index.html">Home</a></li>
-        <li class="active">Write the application documentation</li>
+        <li class="active">Documentation</li>
       </ol>
     </div>
   </div>
   
   <div class="row">
     <div class="col-lg-12">
-      <p>Kevin wants to use <span class="caps">UML</span> Designer to document its application. It exists mainly two features to help him in this tasks :</p>
+      <h2>Environment</h2>
+<p>The <span class="caps">UML</span> Designer&#8217;s documentation is hosted on Github: <a href="https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation">https://github.com/ObeoNetwork/<span class="caps">UML</span>-Designer/tree/master/documentation</a>.</p>
+<p>The documentation is built with <a href="http://jekyllrb.com/">Jekyll</a>.</p>
+<p>All the documentation is written with the <a href="http://en.wikipedia.org/wiki/Textile_(markup_language)">textile</a> syntax, in order that it is really easy to contribute.</p>
+<h2>Global structure</h2>
+<p>The documentation structure is defined in the <a href="https://github.com/ObeoNetwork/UML-Designer/blob/master/documentation/_data/pages.yml">pages.yml</a> file.</p>
+<div class="highlight"><pre><code class="yaml"><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Overview</span>
+  <span class="l-Scalar-Plain">file</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">overview</span>
+
+<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Download</span>
+  <span class="l-Scalar-Plain">file</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">download</span>
+
+<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">category</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Tutorials</span>
+  <span class="l-Scalar-Plain">pages</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Getting started</span>
+    <span class="l-Scalar-Plain">file</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">tutorials/tuto-getting-started</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Create project</span>
+    <span class="l-Scalar-Plain">file</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">tutorials/tuto-create-project</span>
+<span class="nn">...</span></code></pre></div><p><code>- title: xxx</code> and  <code>- category: xxx</code> generate a menu in the main web site navbar.</p>
+<p>To create a menu which reference an anchor in an existing page use the syntax :<br />
+<div class="highlight"><pre><code class="yaml"><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">category</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">MyCategory</span>
+  <span class="l-Scalar-Plain">pages</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">MyTitle</span>
+    <span class="l-Scalar-Plain">file</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">path/filename</span>
+    <span class="l-Scalar-Plain">anchor</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">MyAnchor</span></code></pre></div></p>
+<p>Have a look the section below to see how to define an anchor in a page.</p>
+<h2>Page</h2>
+<p>Each defined page starts with : <br />
+<div class="highlight"><pre><code class="yaml"><span class="nn">---</span>
+<span class="l-Scalar-Plain">layout</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">article</span>
+<span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">MyTitle</span>
+<span class="l-Scalar-Plain">subtitle</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">MySubTitle</span>
+<span class="l-Scalar-Plain">relativePath</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">..</span>
+<span class="nn">---</span></code></pre></div></p>
+<p>This allows to set the different variables. <br />
+All the pages reused the same includes : <a href="https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation/_includes">https://github.com/ObeoNetwork/<span class="caps">UML</span>-Designer/tree/master/documentation/_includes</a><br />
+And the available layouts are defined in the <em>layouts folder: <a href="https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation/">https://github.com/ObeoNetwork/<span class="caps">UML</span>-Designer/tree/master/documentation/_layouts</a></em>layouts</p>
+<p>The rest of the page, defines the main content. To edit the page content use the <a href="http://en.wikipedia.org/wiki/Textile_(markup_language)">textile</a> syntax.</p>
+<p>Use the following syntax to :</p>
 <ul>
-	<li>Documentation table from the <span class="caps">UML</span> Extensions viewpoint,</li>
-	<li>Export to <span class="caps">HTML</span> site or to images.</li>
+	<li>Define an anchor in the page named <em>MyPage</em> and defined in the folder <em>path</em> : <code>h1(#MyAnchor). My title</code></li>
+	<li>Reference an anchor : <code>../path/MyPage.html#MyAnchor</code></li>
 </ul>
-<h1>Manage comments in diagram</h1>
-<p>In <span class="caps">UML</span> Designer, a <em>Comments</em> layer is available on all the diagrams. To document his application Kevin opens the existing diagrams and activates the comments layer.<br />
-<img src="../images/CommentsLayer.png" alt="" /></p>
-<p>This layer provides a new section in the palette. <br />
-<img src="../images/CommentsLayerPalette.png" alt="" /></p>
-<p>The following tools are available :</p>
-<ul>
-	<li><strong>create a comment</strong>  : the user selects the <em>Comment</em> tool in the palette and clicks on the diagram, a new <span class="caps">UML</span> comment is created attached to the package associated to the diagram. If the user selects an element on the diagram, the comment will be attached to the selected element. The comments are represented on the diagram as following :<br />
-<img src="../images/CommentsLayerComment.png" alt="" /></li>
-	<li><strong>link a comment to a semantic element</strong> : the user selects the <em>Link comment</em> tool in the palette and selects as source a comment and as target an element. Thias action attached the comment to the selected element. The link is represented on the diagram by a doted link :<br />
-<img src="../images/CommentsLayerLink.png" alt="" /></li>
-</ul>
-<p>When the layer is activated the comments are visible on the diagram.</p>
-<p>The user can remove the comment (see <a href="../ref-doc/define-the-system.html#Direct_edit">Diagram editor/Editor main graphical area/Direct edit</a>).</p>
-<h1>Comments table</h1>
-<p>Thanks to the <strong>documentation table</strong> available in <span class="caps">UML</span> Extensions viewpoint, a user can add and review comment on each model element easily. This representation is a table which lists all the elements available in the model sub tree and their related comment.<br />
-The first column show the element name and the second column the associated comment.<br />
-The elements should be ordered using a tree in order to get the possibility to expand and collapse some sub elements.</p>
-<h1>Export</h1>
-<p><span class="caps">UML</span> Designer allows to export the defined diagrams.</p>
-<h2><span class="caps">HTML</span> export</h2>
-<p>This feature allows to export all the models with their representations into an <span class="caps">HTML</span> site. The site displays the model explorer on the left with the model elements and their corresponding clickable representations. When selecting a model element on a representation, the site displays its properties. All the pages are generated with Acceleo templates and can easily be adapted. This features is only available in Obeo Designer and not with the Sirius based product.</p>
-<h2>Export diagrams as images</h2>
-<p>It is possible to export a diagram to an image file. To do that right-click on the diagram and choose the menu <em>Export diagram as image</em> or select the corresponding icon in the diagram tab-bar. After selecting the file path, the user can choose the image format and he wants to overwrite an existing file without warning. On the first export of diagram as image the name is set by default with the representation name. After there is an history to select the last export. If you do not specify the file extension, the extension is determined from the selected image format. You can choose the directory in which to create the file using the Browse button.</p>
-<p>It is possible to export all diagram of a representations file at once. To do that, select the representations file (.aird file) and right-click on it. Then choose the menu Export diagrams as image&#8230;. On the opened pop-up select the path of the folder where the images will be exported.<br />
-The same functionality is available on every semantic elements which has representations from the Model Explorer view. In this case, only the diagrams of the selected element will be exported.</p>
+<h2>Build the documentation</h2>
+<p><em>The documentation is build manually but in the future all this will be done automatically by the continuous integration build.</em></p>
+<h3>Build the web-site</h3>
+<p>Go to <code>UML-Designer/documentation</code> folder in your local repo.<br />
+And launch : <code>jekyll build</code><br />
+This operation will generate a new <code>_site</code> folder containing all the <code>.html</code> files generated from the textile files.</p>
+<p>To update the online web-site, just copy/paste manually the sontent of the _site folder to the gh-pages branch on your repo. Commit and push the new version of the web-site.</p>
+<p>The new web site will be available immediately on : <a href="http://obeonetwork.github.io/UML-Designer/">http://obeonetwork.github.io/<span class="caps">UML</span>-Designer/</a></p>
+<h3>Integrate the documentation to Eclipse</h3>
+<p>We integrate the web site inside Eclipse as embedded documentation for <span class="caps">UML</span> Designer. We just defined an Eclipse specific <a href="https://github.com/ObeoNetwork/UML-Designer/blob/master/documentation/toc.xml">toc.xml</a> file which will be used to integrate the website content into the Eclipse Help Content.</p>
+<p>When the textile files have been updated, the web-site must be re-generated as presented in the previous section. Then update the <code>toc.xml</code> and copy the content of the <code>_site</code> folder to <code>UML-Designer/plugins/org.obeonetwork.dsl.uml2.design.doc/html</code>.</p>
     </div>
   </div>
 </div><!-- /.container -->
