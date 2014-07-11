@@ -63,3 +63,8 @@ h2(#Survey). Survey
 
 Give us feedback by filling in our "survey":http://bit.ly/UMLDesignerSurvey!
 
+h1. Get the developer environment
+
+In UML Designer, we use target-platforms to define explicitly plugins and features available in the build context. We use it also to work on UML Designer in our Eclipse IDE.
+
+bq. To use it, you should import the releng/org.obeonetwork.dsl.uml2.target project in your own IDE and set the ".target" as target-platform.
