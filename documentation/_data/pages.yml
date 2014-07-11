@@ -84,5 +84,8 @@
   - title: Migration
     file: ref-doc/migration
 
+- title: Support
+  file: support
+
 - title: FAQ
   file: faq

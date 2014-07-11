@@ -1,0 +1,13 @@
+---
+layout: article
+title: Support
+relativePath: ..
+---
+
+h1. Community support
+
+The "obeonetwork":http://www.obeonetwork.com/ is where the UML Designer community meets. Asking and answering questions on the forum is a great way to share knowledge about UML Designer.
+
+h1. Professional support
+
+Contact us at "Obeo":http://www.obeo.fr/index.php?lang=&lang=en to get a professional support.
