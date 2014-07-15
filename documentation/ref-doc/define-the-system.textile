@@ -191,7 +191,7 @@ If the user does not select an element, he has in the properties view the proper
 * Rulers & Grid : Allow the user to display vertical and horizontal rulers and also a grid on the diagram. He can choose how is displayed the grid (Solid style, Dash style, Dot style...).
 * Appearance : This tab allows to choose the style and size of text fields of every elements of diagram which have not been specifically set on the Representation Diagram.
 
-h2. Create a project
+h2(#Create_A_Project). Create a project
 
 Alfred starts by creating a new SysML project. From the _Modeling_ perspective, he creates a new SysML project through the Eclipse main menus (File->New->SysML Project) or from the toolbar (New->SysML Project).
 
@@ -222,26 +222,28 @@ The viewpoints are defined according to the representation separation defined by
 * structural diagrams
 * behavioural diagrams
 
-The _UML Structural Modeling_ viewpoint is used by the users who are focused on system structures. For users interested in the modelization of behaviours, they have to activate the _UML Behavioural Modeling_ viewpoints. These two viewpoints contain only standard UML representations.
+The _Capture_ viewpoint is used by the users who are focused on system structures. For users interested in the modelization of behaviours, they have to activate the _Design_ viewpoints. These two viewpoints contain only standard UML representations.
 A third viewpoint is defined to contain non standard representations.
 
-Each UML project provides three viewpoints :
-* UML Structural Modeling : enables all the structural diagrams
-** Class diagram
+Each UML project provides five viewpoints :
+* Dashboard : To guide the user to get started and get an overview of which representations are available.
+* Capture : To capture the actors and their interactions with the application and define the main structure of the application.
 ** Package hierarchy
+** Use case diagram
+* Design : To work on the fine grained structure and the behaviours of the application.
+** Class diagram
 ** Component diagram
 ** Composite structure diagram
 ** Deployment diagram
-** Object diagram
-* UML Behavioural Modeling : enables all the behavioral diagrams
-** Use case diagram
 ** Sequence diagram
 ** Statemachine diagram
 ** Activity diagram
-* UML Extensions : enables non standard representations
+* Review : To document, get some overview and metrics of the application (non standard representations).
 ** Documentation table
 ** Package containment
 ** UseCase/Element matrix
+* Extend : To extend the UML standard for example by defining profile.
+** Profile diagram
 				
 This controls what kind of representations can be created on the semantic models inside the project. The set of viewpoints which are available to the user depends on what plug-ins are installed, and on the type of semantic models which are inside the modeling projects. For example, even if the user has installed the UML Designer, he will only be able to enable to corresponding viewpoints if the project contains UML models (.uml files).
 To select which viewpoints are enable on a project, he simply uses the Viewpoint Selection action in the context menu of the project itself. A dialog box opens which shows all the viewpoints which are compatible with the project (depending on the kind of models it contains). The user can check or un-check each viewpoint individually to enable or disable it, and clicks OK to validate his choice.
@@ -251,6 +253,29 @@ Another viewpoint is created to contain all the SysML specific representations.
 Each SysML project provides the following viewpoints :
 * SysML : provides all the SysML diagrams
 * UML Designer viewpoints
+
+h1(#Dashboard). Dashboard
+
+The *dashboard* is a diagram which is created automatically by the "project creation":{{ page.relativePath }}/define-the-system.html#Create_A_Project action. Only one dashboard exists per project.
+
+!{{ page.relativePath }}/images/Dashboard.png!
+
+The dashboard is composed by three main regions : Create, Navigate, Help
+
+h2. Create
+
+The *Create* section lists all the representations that could be created ordered by viewpoints : Capture (Package hierarchy, Use case diagram...), Design (Class diagram, Activity diagram,...).
+To *create a new representation* the user just needs to *double click* on the representation name. The new representation is created under the root model element in the semantic model and the corresponding editor opens.
+
+h2. Navigate
+
+The *Navigate* section lists all the existing representations.
+To *navigate* to a representation the user just needs to *double click* on the representation name. The representation editor is opened.
+
+h2. Help
+
+The *Help* section lists some documentation entry points.
+To *open the help*, the user just needs to *double click* on the help section title. The contextual help content is opened on the expected section.
 
 h1. Manage representations
 

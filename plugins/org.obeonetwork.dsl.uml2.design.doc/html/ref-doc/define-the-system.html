@@ -82,8 +82,8 @@
           <ul class="dropdown-menu">
             
             	
-      	    	<li><a href="../user-guide/dashboard.html">Dashboard</a></li>
-      	    	
+            	<li><a href="../ref-doc/define-the-system.html#Dashboard">Dashboard</a></li>
+            	
             
             	
             	<li><a href="../ref-doc/define-the-application.html#Activity_Diagram">Activity Diagram</a></li>
@@ -398,7 +398,7 @@ If an element is selected on the diagram, he has on the properties view the foll
 	<li>Rulers &amp; Grid : Allow the user to display vertical and horizontal rulers and also a grid on the diagram. He can choose how is displayed the grid (Solid style, Dash style, Dot style&#8230;).</li>
 	<li>Appearance : This tab allows to choose the style and size of text fields of every elements of diagram which have not been specifically set on the Representation Diagram.</li>
 </ul>
-<h2>Create a project</h2>
+<h2 id="Create_A_Project">Create a project</h2>
 <p>Alfred starts by creating a new SysML project. From the <em>Modeling</em> perspective, he creates a new SysML project through the Eclipse main menus (File&#8594;New&#8594;SysML Project) or from the toolbar (New&#8594;SysML Project).</p>
 <p>John starts by creating a new <span class="caps">UML</span> project. From the <em>Modeling</em> perspective, he creates a new <span class="caps">UML</span> project through the Eclipse main menus (File&#8594;New&#8594;<span class="caps">UML</span> Project) or from the toolbar (New&#8594;<span class="caps">UML</span> Project).</p>
 <p>In each case a wizard opens, asking for a mandatory project name. Entering an invalid project name will result in an error message. By default, the modeling project will be created in the workspace’s location, but this can be changed: just uncheck «Use default location» and enter the path to the location where you want your modeling project to be created.</p>
@@ -424,31 +424,35 @@ These actions are available from the Eclipse <em>File</em> menu or from the <em>
 	<li>structural diagrams</li>
 	<li>behavioural diagrams</li>
 </ul>
-<p>The <em><span class="caps">UML</span> Structural Modeling</em> viewpoint is used by the users who are focused on system structures. For users interested in the modelization of behaviours, they have to activate the <em><span class="caps">UML</span> Behavioural Modeling</em> viewpoints. These two viewpoints contain only standard <span class="caps">UML</span> representations.<br />
+<p>The <em>Capture</em> viewpoint is used by the users who are focused on system structures. For users interested in the modelization of behaviours, they have to activate the <em>Design</em> viewpoints. These two viewpoints contain only standard <span class="caps">UML</span> representations.<br />
 A third viewpoint is defined to contain non standard representations.</p>
-<p>Each <span class="caps">UML</span> project provides three viewpoints :</p>
+<p>Each <span class="caps">UML</span> project provides five viewpoints :</p>
 <ul>
-	<li><span class="caps">UML</span> Structural Modeling : enables all the structural diagrams
+	<li>Dashboard : To guide the user to get started and get an overview of which representations are available.</li>
+	<li>Capture : To capture the actors and their interactions with the application and define the main structure of the application.
+	<ul>
+		<li>Package hierarchy</li>
+		<li>Use case diagram</li>
+	</ul></li>
+	<li>Design : To work on the fine grained structure and the behaviours of the application.
 	<ul>
 		<li>Class diagram</li>
-		<li>Package hierarchy</li>
 		<li>Component diagram</li>
 		<li>Composite structure diagram</li>
 		<li>Deployment diagram</li>
-		<li>Object diagram</li>
-	</ul></li>
-	<li><span class="caps">UML</span> Behavioural Modeling : enables all the behavioral diagrams
-	<ul>
-		<li>Use case diagram</li>
 		<li>Sequence diagram</li>
 		<li>Statemachine diagram</li>
 		<li>Activity diagram</li>
 	</ul></li>
-	<li><span class="caps">UML</span> Extensions : enables non standard representations
+	<li>Review : To document, get some overview and metrics of the application (non standard representations).
 	<ul>
 		<li>Documentation table</li>
 		<li>Package containment</li>
 		<li>UseCase/Element matrix</li>
+	</ul></li>
+	<li>Extend : To extend the <span class="caps">UML</span> standard for example by defining profile.
+	<ul>
+		<li>Profile diagram</li>
 	</ul></li>
 </ul>
 <p>This controls what kind of representations can be created on the semantic models inside the project. The set of viewpoints which are available to the user depends on what plug-ins are installed, and on the type of semantic models which are inside the modeling projects. For example, even if the user has installed the <span class="caps">UML</span> Designer, he will only be able to enable to corresponding viewpoints if the project contains <span class="caps">UML</span> models (.uml files).<br />
@@ -459,6 +463,19 @@ To select which viewpoints are enable on a project, he simply uses the Viewpoint
 	<li>SysML : provides all the SysML diagrams</li>
 	<li><span class="caps">UML</span> Designer viewpoints</li>
 </ul>
+<h1 id="Dashboard">Dashboard</h1>
+<p>The <strong>dashboard</strong> is a diagram which is created automatically by the <a href="../define-the-system.html#Create_A_Project">project creation</a> action. Only one dashboard exists per project.</p>
+<p><img src="../images/Dashboard.png" alt="" /></p>
+<p>The dashboard is composed by three main regions : Create, Navigate, Help</p>
+<h2>Create</h2>
+<p>The <strong>Create</strong> section lists all the representations that could be created ordered by viewpoints : Capture (Package hierarchy, Use case diagram&#8230;), Design (Class diagram, Activity diagram,&#8230;).<br />
+To <strong>create a new representation</strong> the user just needs to <strong>double click</strong> on the representation name. The new representation is created under the root model element in the semantic model and the corresponding editor opens.</p>
+<h2>Navigate</h2>
+<p>The <strong>Navigate</strong> section lists all the existing representations.<br />
+To <strong>navigate</strong> to a representation the user just needs to <strong>double click</strong> on the representation name. The representation editor is opened.</p>
+<h2>Help</h2>
+<p>The <strong>Help</strong> section lists some documentation entry points.<br />
+To <strong>open the help</strong>, the user just needs to <strong>double click</strong> on the help section title. The contextual help content is opened on the expected section.</p>
 <h1>Manage representations</h1>
 <p>In <span class="caps">UML</span> Designer, the user manages representations. A representation is a diagram (class diagram, use case diagram&#8230;) or a table/cross-table (as in SysML Designer the requirements table).</p>
 <p>It is possible for the user to :</p>

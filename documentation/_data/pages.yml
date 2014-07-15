@@ -21,7 +21,8 @@
 - category: User Guide
   pages:
   - title: Dashboard
-    file: user-guide/dashboard
+    file: ref-doc/define-the-system
+    anchor: Dashboard
   - title: Activity Diagram
     file: ref-doc/define-the-application
     anchor: Activity_Diagram
