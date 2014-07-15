@@ -77,8 +77,8 @@ Contributors:
     <extension
         point="org.eclipse.help.contexts">
         <contexts
-            file="doc/contexts.xml"
-            plugin="org.obeonetwork.dsl.uml2.design">
+            file="html/contexts.xml"
+            plugin="org.obeonetwork.dsl.uml2.design.doc">
         </contexts>
     </extension>
     <extension

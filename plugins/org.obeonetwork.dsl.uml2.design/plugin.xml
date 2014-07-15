@@ -493,5 +493,8 @@ Contributors:
       <listener
             class="org.obeonetwork.dsl.uml2.design.UmlDesignerSessionManagerListener">
       </listener>
+      <listener
+            class="org.obeonetwork.dsl.uml2.design.OpenHelpContextListener">
+      </listener>
    </extension>
 </plugin>

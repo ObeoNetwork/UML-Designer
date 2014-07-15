@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<contexts>
+   <context id="Dashboard" title="Using the Dashboard">
+      <description>Welcome in UML Designer. This is the Dashboard : the starting point of your modeling task. It shows you the different kind of representations you can create or navigate.
+
+You might want to have a look on the following help topics :</description>
+      <topic href="html/user-guide/dashboard.html" label="Dashboard"/>
+      <topic href="html/tutorials/tuto-getting-started.html" label="Getting started"/>
+      <topic href="html/tutorials/tuto-create-project.html" label="Create project"/>
+      <topic href="html/tutorials/tuto-create-representation.html" label="Create representation"/>
+      <topic href="html/tutorials/tuto-import-model.html" label="Import model"/>
+      <topic href="html/tutorials/tuto-start-example.html" label="Open example"/>
+   </context>
+   <context id="Activity Diagram" title="Using the Activity Diagram">
+      <description>You might want to have a look on a few help topics regarding the activity diagram :</description>
+      <topic href="html/ref-doc/define-the-application.html#Activity_Diagram" label="Using the Activity Diagram"/>
+   </context>
+   <context id="Class Diagram" title="Using the Class Diagram">
+      <description>You might want to have a look on a few help topics regarding the class diagram :</description>
+      <topic href="html/ref-doc/implement-the-application.html#Class_Diagram" label="Using the Class Diagram"/>
+   </context>
+   <context id="Component Diagram" title="Using the Component Diagram">
+      <description>You might want to have a look on a few help topics regarding the component diagram :</description>
+      <topic href="html/ref-doc/define-the-application.html#Component_Diagram" label="Using the Component Diagram"/>
+   </context>
+   <context id="Composite structure Diagram" title="Using the Composite Structure Diagram">
+      <description>You might want to have a look on a few help topics regarding the composite structure diagram :</description>
+      <topic href="html/ref-doc/define-the-application.html#Composite_Structure_Diagram" label="Using the Composite Structure Diagram"/>
+   </context>
+   <context id="Deployment Diagram" title="Using the Deployment Diagram">
+      <description>You might want to have a look on a few help topics regarding the deployment diagram :</description>
+      <topic href="html/ref-doc/define-the-application.html#Deployment_Diagram" label="Using the Deployment Diagram"/>
+   </context>
+   <context id="Package Diagram" title="Using the Package Diagram">
+      <description>You might want to have a look on a few help topics regarding the package diagram :</description>
+      <topic href="html/ref-doc/define-the-application.html#Package_Diagram" label="Using the Package Diagram"/>
+   </context>
+   <context id="Profile Diagram" title="Using the Profile Diagram">
+      <description>You might want to have a look on a few help topics regarding the profile diagram :</description>
+      <topic href="html/ref-doc/define-the-application.html#Profile_Diagram" label="Using the Profile Diagram"/>
+   </context>
+   <context id="Sequence Diagram" title="Using the Sequence Diagram">
+      <description>You might want to have a look on a few help topics regarding the sequence diagram :</description>
+      <topic href="html/ref-doc/implement-the-application.html#Sequence_Diagram" label="Using the Sequence Diagram"/>
+   </context>
+   <context id="State Machine Diagram" title="Using the State Machine Diagram">
+      <description>You might want to have a look on a few help topics regarding the state machine diagram :</description>
+      <topic href="html/ref-doc/implement-the-application.html#State_Machine_Diagram" label="Using the State Machine Diagram"/>
+   </context>
+   <context id="Use Case Diagram" title="Using the Use Case Diagram">
+      <description>You might want to have a look on a few help topics regarding the use case diagram :</description>
+      <topic href="html/ref-doc/define-the-application.html#Use_Case_Diagram" label="Using the Use Case Diagram"/>
+   </context>
+</contexts>

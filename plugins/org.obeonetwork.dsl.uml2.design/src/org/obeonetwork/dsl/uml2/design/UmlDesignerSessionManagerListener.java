@@ -13,6 +13,7 @@ package org.obeonetwork.dsl.uml2.design;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.ui.PlatformUI;
 import org.obeonetwork.dsl.uml2.design.services.AutosizeTrigger;
 
 /**
@@ -22,13 +23,18 @@ import org.obeonetwork.dsl.uml2.design.services.AutosizeTrigger;
  */
 public class UmlDesignerSessionManagerListener implements SessionManagerListener {
 
+	private final OpenHelpContextListener openedEditorListener = new OpenHelpContextListener();
+
 	public void notifyAddSession(Session newSession) {
 		newSession.getEventBroker().addLocalTrigger(AutosizeTrigger.IS_GMF_NODE_ATTACHMENT,
 				new AutosizeTrigger(newSession.getTransactionalEditingDomain()));
+		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPartService()
+				.addPartListener(openedEditorListener);
 	}
 
 	public void notifyRemoveSession(Session removedSession) {
-		// Nothing
+		PlatformUI.getWorkbench().getActiveWorkbenchWindow().getPartService()
+				.removePartListener(openedEditorListener);
 	}
 
 	public void viewpointSelected(Viewpoint selectedSirius) {
