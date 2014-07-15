@@ -31,6 +31,9 @@
   - title: Component Diagram
     file: ref-doc/define-the-application
     anchor: Component_Diagram
+  - title: Composite Structure Diagram
+    file: ref-doc/define-the-application
+    anchor: Composite_Structure_Diagram
   - title: Deployment Diagram
     file: ref-doc/define-the-application
     anchor: Deployment_Diagram

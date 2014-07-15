@@ -367,7 +367,7 @@ h2. Diagram the organization of the information
 He provides a detailed organization of the information by creating a new kind of activity diagram. This diagram shows how the information goes through the different components of the system. Previously in the process, John used an activity diagram to describe the global business process of the specified application, here the activity diagram is used again but for providing low level information.
 To get details on activity diagram,"What the application is supposed to be ?":{{ page.relativePath }}/define-the-application.html.
 
-h2. Define the system interfaces
+h2(#Composite_Structure_Diagram). Define the system interfaces
 
 Then for each component, John details the internal structure of a component thanks to *Composite structure diagrams*.
 
@@ -376,7 +376,7 @@ The composite structure diagram is used to describe the structure of the system 
 !{{ page.relativePath }}/images/CompositeStructureDiagram.png!
 	
 
-The component diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.
+The composite structure diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.
 
 h3. Manage nodes
 
@@ -389,8 +389,6 @@ If the user selects a container, the element will be created under the correspon
 Tooltip tools are also available to create any kind of elements.
 
 Creation tools are available in the composite structure diagram for the following types :
-
-		
 		
 |_. Element     |_. Representation |_. Comments|
 |Component|!{{ page.relativePath }}/images/ComponentDiagramComponent.png!|A modular part of a system|

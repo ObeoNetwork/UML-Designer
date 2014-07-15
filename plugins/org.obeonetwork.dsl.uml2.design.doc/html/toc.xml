@@ -12,29 +12,31 @@
     </topic>
     <topic href="html/tutorials/tuto-import-model.html" label="Import model">
     </topic>
-    <topic href="html/tutorials/ tuto-start-example.html" label="Open example">
+    <topic href="html/tutorials/tuto-start-example.html" label="Open example">
     </topic>
  </topic>
  <topic label="User Guide">
     <topic href="html/user-guide/dashboard.html" label="Dashboard">
     </topic>
-    <topic href="html/user-guide/activity-diagram.html" label="Activity diagram">
+    <topic href="html/ref-doc/define-the-application.html#Activity_Diagram" label="Activity diagram">
     </topic>
-    <topic href="html/user-guide/class-diagram.html" label="Class diagram">
+    <topic href="html/ref-doc/implement-the-application.html#Class_Diagram" label="Class diagram">
     </topic>
-    <topic href="html/user-guide/component-diagram.html" label="Component diagram">
+    <topic href="html/ref-doc/define-the-application.html#Component_Diagram" label="Component diagram">
     </topic>
-    <topic href="html/user-guide/deployment-diagram.html" label="Deployment diagram">
+    <topic href="html/ref-doc/define-the-application.html#Composite_Structure_Diagram" label="Composite Structure diagram">
     </topic>
-    <topic href="html/user-guide/package-diagram.html" label="Package diagram">
+    <topic href="html/ref-doc/define-the-application.html#Deployment_Diagram" label="Deployment diagram">
     </topic>
-    <topic href="html/user-guide/profile-diagram.html" label="Profile diagram">
+    <topic href="html/ref-doc/define-the-application.html#Package_Diagram" label="Package diagram">
     </topic>
-    <topic href="html/user-guide/sequence-diagram.html" label="Sequence diagram">
+    <topic href="html/ref-doc/define-the-application.html#Profile_Diagram" label="Profile diagram">
     </topic>
-    <topic href="html/user-guide/state-machine-diagram.html" label="State Machine diagram">
+    <topic href="html/ref-doc/implement-the-application.html#Sequence_Diagram" label="Sequence diagram">
     </topic>
-    <topic href="html/user-guide/use-case-diagram.html" label="Use Case diagram">
+    <topic href="html/ref-doc/implement-the-application.html#State_Machine_Diagram" label="State Machine diagram">
+    </topic>
+    <topic href="html/ref-doc/define-the-application.html#Use_Case_Diagram" label="Use Case diagram">
     </topic>
  </topic>
  <topic label="Developer Guide">
@@ -43,6 +45,8 @@
     <topic href="html/developer-guide/build.html" label="Build">
     </topic>
     <topic href="html/developer-guide/continuous-integration.html" label="Continuous Integration">
+    </topic>
+    <topic href="html/developer-guide/documentation.html" label="Build documentation">
     </topic>
  </topic>
   <topic label="Reference Documentation">
@@ -67,4 +71,8 @@
     <topic href="html/ref-doc/migration.html" label="Migration">
     </topic>
  </topic>
+  <topic href="html/support/index.html" label="Support">
+  </topic>
+  <topic href="html/faq/index.html" label="FAQ">
+  </topic>
 </toc>
