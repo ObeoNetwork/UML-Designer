@@ -256,7 +256,7 @@ Each SysML project provides the following viewpoints :
 
 h1(#Dashboard). Dashboard
 
-The *dashboard* is a diagram which is created automatically by the "project creation":{{ page.relativePath }}/define-the-system.html#Create_A_Project action. Only one dashboard exists per project.
+The *dashboard* is a diagram which is created automatically by the "project creation":{{ page.relativePath }}/ref-doc/define-the-system.html#Create_A_Project action. Only one dashboard exists per project.
 
 !{{ page.relativePath }}/images/Dashboard.png!
 
