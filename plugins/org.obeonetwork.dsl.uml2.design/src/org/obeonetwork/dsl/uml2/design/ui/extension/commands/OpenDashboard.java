@@ -35,7 +35,7 @@ import org.obeonetwork.dsl.uml2.design.services.LogServices;
 public class OpenDashboard extends AbstractHandler {
 
 	public Object execute(ExecutionEvent event) throws ExecutionException {
-		// Get for which project we should open the dashboard representaion
+		// Get for which project we should open the dashboard representation
 		String paramModel = event.getParameter(DashboardContributionItems.OPEN_DASHBOARD_CMD_PARAM_MODEL_KEY);
 		UmlElementConverter converter = new UmlElementConverter();
 		try {
