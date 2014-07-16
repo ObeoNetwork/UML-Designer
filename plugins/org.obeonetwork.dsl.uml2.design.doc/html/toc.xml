@@ -16,7 +16,7 @@
     </topic>
  </topic>
  <topic label="User Guide">
-    <topic href="html/user-guide/dashboard.html" label="Dashboard">
+    <topic href="html/ref-doc/define-the-system.html#Dashboard" label="Dashboard">
     </topic>
     <topic href="html/ref-doc/define-the-application.html#Activity_Diagram" label="Activity diagram">
     </topic>

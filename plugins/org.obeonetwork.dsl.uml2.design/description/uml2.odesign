@@ -6221,7 +6221,7 @@
               <elementView name="elementView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[openContextHelp('org.obeonetwork.dsl.uml2.design.doc.GettingStarted')/]"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[openContextHelp('GettingStarted')/]"/>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
@@ -6230,7 +6230,7 @@
               <elementView name="elementView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[openContextHelp('org.obeonetwork.dsl.uml2.design.doc.ReferenceDocumentation')/]"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[openContextHelp('ReferenceDocumentation')/]"/>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
@@ -6239,7 +6239,7 @@
               <elementView name="elementView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[openContextHelp('org.obeonetwork.dsl.uml2.design.doc.UserGuide')/]"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[openContextHelp('UserGuide')/]"/>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
@@ -6248,7 +6248,7 @@
               <elementView name="elementView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[openContextHelp('org.obeonetwork.dsl.uml2.design.doc.DeveloperGuide')/]"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[openContextHelp('DeveloperGuide')/]"/>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
@@ -6257,7 +6257,7 @@
               <elementView name="elementView"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
-                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[openContextHelp('org.obeonetwork.dsl.uml2.design.doc.Support')/]"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[openContextHelp('Support')/]"/>
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>

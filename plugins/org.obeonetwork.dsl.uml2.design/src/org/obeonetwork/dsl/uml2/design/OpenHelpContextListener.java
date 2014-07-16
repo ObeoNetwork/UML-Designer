@@ -59,8 +59,6 @@ public class OpenHelpContextListener implements IPartListener2 {
 				// description.
 				String contextId = "org.obeonetwork.dsl.uml2.design.doc." + representationId;
 
-				System.out.println("Open help context : " + contextId);
-
 				PlatformUI.getWorkbench().getHelpSystem()
 						.setHelp(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), contextId);
 				PlatformUI.getWorkbench().getHelpSystem().displayDynamicHelp();

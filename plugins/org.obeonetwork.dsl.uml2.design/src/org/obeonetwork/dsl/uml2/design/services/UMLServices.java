@@ -17,9 +17,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
@@ -93,7 +91,6 @@ import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UseCase;
 import org.eclipse.uml2.uml.VisibilityKind;
 import org.eclipse.uml2.uml.resource.UMLResource;
-import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
 import org.obeonetwork.dsl.uml2.design.services.internal.ReconnectSwitch;
 import org.obeonetwork.dsl.uml2.design.services.internal.RelatedCompositeStructureElementsSwitch;
 import org.obeonetwork.dsl.uml2.design.services.internal.RelatedElementsSwitch;
@@ -128,20 +125,14 @@ public class UMLServices {
 	public void openContextHelp(EObject any, String contextID) throws IOException {
 		if (PlatformUI.getWorkbench() != null && PlatformUI.getWorkbench().getActiveWorkbenchWindow() != null
 				&& PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell() != null) {
-			IPath path = Platform.getStateLocation(UMLDesignerPlugin.getDefault().getBundle());
-			if (path != null) {
-				path = path.append(contextID);
-				if (!path.toFile().exists()) {
-					PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell();
-					PlatformUI
-							.getWorkbench()
-							.getHelpSystem()
-							.setHelp(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(),
-									contextID);
-					PlatformUI.getWorkbench().getHelpSystem().displayDynamicHelp();
-					path.toFile().createNewFile();
-				}
-			}
+
+			// Context ids are defined in the html/contexts.xml file in
+			// org.obeonetwork.dsl.uml2.design.doc project.
+			String contextId = "org.obeonetwork.dsl.uml2.design.doc." + contextID;
+
+			PlatformUI.getWorkbench().getHelpSystem()
+					.setHelp(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), contextId);
+			PlatformUI.getWorkbench().getHelpSystem().displayDynamicHelp();
 
 		}
 	}
