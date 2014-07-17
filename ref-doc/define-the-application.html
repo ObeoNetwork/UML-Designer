@@ -1130,20 +1130,22 @@ The tool requires some necessary information for the creation of the deployable 
 	<li>Version information<br />
 <img src="../images/using_profile_diagram/export_profile.png" alt="" /></li>
 </ul>
-<h3>Manage profiles and stereotypes</h3>
-<p>In <span class="caps">UML</span> Designer, a <em>Profile</em> layer is available on all the diagrams. To describe his application John opens the existing diagrams and activates the profile layer.<br />
+<h3 id="Manage_profiles_and_stereotypes">Manage profiles and stereotypes</h3>
+<p>In <span class="caps">UML</span> Designer, a <em>Profiles</em> layer is available on all the diagrams. To describe his application John opens the existing diagrams and activates the profiles layer.<br />
 <img src="../images/ProfileLayer.png" alt="" /></p>
 <p>This layer provides a new section in the palette.<br />
 <img src="../images/ProfileLayerPalette.png" alt="" /></p>
-<p>The following tools are available :</p>
+<p>A new tool <em><strong>Stereotypes</strong></em> is available. Then, the user selects the <em>Stereotypes</em> tool in the palette and selects an element in the diagram, a wizards opens which shows the applicable and already applied stereotypes according to the available profiles. The stereotypes wizard lists all the stereotypes even if the profile was not applied before on the parent package. The tool will automatically applies the profiles before applying the selected stereotypes.</p>
+<p><img src="../images/ProfileLayerStereotypesWizard.png" alt="" /></p>
+<p>When a stereotype is applied on an element, a keyword representing the name of the stereotype is added before the label of the element :</p>
+<p><img src="../images/ClassWithStereotype.png" alt="" /></p>
+<p>It is also possible to manage from the property view :</p>
 <ul>
-	<li><em><strong>apply a profile</strong></em>  : the user selects the <em>Apply profile</em> tool in the palette and clicks on the diagram, a wizards opens which shows the applicable and already applied profiles.</li>
+	<li>the stereotypes in the <strong>Stereotypes</strong> tab. For example if the user selects a class, he will see:<br />
+<img src="../images/ManageStereotypesFromPropertyView.png" alt="" /></li>
+	<li>the profiles in the <strong>Profiles</strong> tab available on <em>Package</em> elements. For example if the user selects a package (or the background of a class diagram as usually it is associated to a package) :<br />
+<img src="../images/ManageProfilesFromPropertyView.png" alt="" /></li>
 </ul>
-<p><img src="../images/ApplyProfile.png" alt="" /></p>
-<ul>
-	<li><em><strong>apply stereotype</strong></em> : the user selects the <em>Apply stereotype</em> tool in the palette and selects an element in the diagram, a wizards opens which shows the applicable and already applied stereotypes according to the activated profiles. When a stereotype is applied on an element, a keyword representing the name of the stereotype is added before the label of the element :</li>
-</ul>
-<p><img src="../images/ApplyStereotype.png" alt="" /></p>
 <p>If the profile defines some properties on the stereotypes, these properties are available in the property box, after canonical properties of the element. Here is a sample with a Stereotype adding a “tagged value” on a package:</p>
 <p><img src="../images/ProfileDiagramTaggedValue.png" alt="" /></p>
     </div>
