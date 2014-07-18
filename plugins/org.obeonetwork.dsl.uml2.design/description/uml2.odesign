@@ -5281,7 +5281,7 @@
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Package%20Containment']/@defaultLayer/@edgeMappings[name='PC_Containment']"/>
       </filters>
       <defaultLayer name="Default">
-        <edgeMappings name="PC_Containment" sourceMapping="//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Package%20Containment']/@defaultLayer/@containerMappings[name='PC_Package'] //@ownedViewpoints[name='Review']/@ownedRepresentations[name='Package%20Containment']/@additionalLayers[name='Components']/@containerMappings[name='PC_Component']" targetMapping="//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Package%20Containment']/@defaultLayer/@containerMappings[name='PC_Package'] //@ownedViewpoints[name='Review']/@ownedRepresentations[name='Package%20Containment']/@additionalLayers[name='Components']/@containerMappings[name='PC_Component']" targetFinderExpression="feature:eContainer">
+        <edgeMappings name="PC_Containment" sourceMapping="//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Package%20Containment']/@defaultLayer/@containerMappings[name='PC_Package'] //@ownedViewpoints[name='Review']/@ownedRepresentations[name='Package%20Containment']/@additionalLayers[name='Components']/@containerMappings[name='PC_Component']" targetMapping="//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Package%20Containment']/@defaultLayer/@containerMappings[name='PC_Package'] //@ownedViewpoints[name='Review']/@ownedRepresentations[name='Package%20Containment']/@additionalLayers[name='Components']/@containerMappings[name='PC_Component']" targetFinderExpression="feature:eContainer" reconnections="//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Package%20Containment']/@defaultLayer/@toolSections.0/@ownedTools[name='Reconnect']">
           <style sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription>
@@ -5340,6 +5340,17 @@
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="Reconnect" reconnectionKind="RECONNECT_BOTH">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:element.reconnectEdge(edgeView, sourceView, targetView, source, target)"/>
+            </initialOperation>
+            <edgeView name="edgeView"/>
           </ownedTools>
         </toolSections>
       </defaultLayer>

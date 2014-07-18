@@ -52,7 +52,7 @@ public class DiagramElementMappingSpecificationTests {
 			"CS_C_SubProvidedInterface2Port", "CS_C_ProvidedInterface2Port", "CS_C_RequiredInterface2Port",
 			"CS_C_ProvidedInterface2RequiredInterface", "CS_C_Property2Property",
 			"CS_C_Port2SubRequiredInterface", "CS_C_SubProvidedInterface2SubRequiredInterface",
-			"stereotypeLink");
+			"stereotypeLink", "PD_AbstractAssociationStereotypeLink", "PD_AbstractAssociationStereotype");
 
 	private DiagramElementMapping underTest;
 
