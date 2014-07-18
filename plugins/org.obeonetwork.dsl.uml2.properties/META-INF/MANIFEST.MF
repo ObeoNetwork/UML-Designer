@@ -13,7 +13,11 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.uml2.uml.edit,
  org.obeonetwork.dsl.uml2.design;bundle-version="2.0.0",
  org.eclipse.sirius,
- com.google.guava
+ com.google.guava,
+ org.eclipse.emf.transaction,
+ org.eclipse.sirius.ui,
+ org.eclipse.sirius.common.ui,
+ org.eclipse.ui.navigator
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ActivationPolicy: lazy
 Export-Package: org.obeonetwork.dsl.uml2.properties,

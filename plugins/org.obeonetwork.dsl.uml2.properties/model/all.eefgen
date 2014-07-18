@@ -3,7 +3,7 @@
   <editionContexts basePackage="org.obeonetwork.dsl.uml2.properties" descriptorsContributorID="org.eclipse.sirius.diagram.ui" descriptorsGenericPropertiesViews="true" propertiesEditingProvidersSuperClass="org.obeonetwork.dsl.uml2.properties.providers.UmlPropertiesEditionProvider">
     <PropertiesEditionContext href="all.components#_j_XB4ZabEeCthc_-fH5cSw"/>
   </editionContexts>
-  <viewsRepositories basePackage="org.obeonetwork.dsl.uml2.properties.uml" swtViews="true" formViews="true" helpStrategy="ECOREMODEL">
+  <viewsRepositories basePackage="org.obeonetwork.dsl.uml2.properties.uml" swtViews="true" formViews="true" helpStrategy="ECOREMODEL" formsSuperClass="org.obeonetwork.dsl.uml2.properties.parts.CustomSectionPropertiesEditingPart">
     <viewsRepository href="all.components#_j_3YUpabEeCthc_-fH5cSw"/>
   </viewsRepositories>
 </eef-gen:EEFGenModel>
