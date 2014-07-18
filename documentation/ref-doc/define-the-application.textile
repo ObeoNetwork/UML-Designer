@@ -608,11 +608,12 @@ The profile diagram operates at the metamodel level to provide new stereotypes a
 		
 
 To create a new profile, the user creates a new UML model and selects as root element a *Profile* element.
-Then on the newly created UML model, it is possible to create a new _Profile diagram_.
+Then on the newly created UML model, it is possible to create a *new Profile diagram*.
 !{{ page.relativePath }}/images/using_profile_diagram/new_profile_diagram_model.png!
 
-Another solution is to *right_click* on a model element in the Model Explorer and select the menu _New Representation > Profile Diagram_.
+Another solution is to *right_click* on a model element in the Model Explorer and select the menu @New Representation > Profile Diagram@.
 !{{ page.relativePath }}/images/using_profile_diagram/new_profile_diagram_menu.png!
+
 
 The main feature is to create and delete stereotypes in the profile diagram. 
 A stereotype can be created by selecting the stereotype creation tool from the palette and then clicking on the diagram. A diagram is associated to a package and in this case the element is created under the corresponding package in the UML model.
