@@ -5,7 +5,7 @@ subtitle: Reference Documentation
 relativePath: ..
 ---
 
-The *UML Discovery* component provides an easy way to discover UML technologies. In a nutshell this project provides an easy one click discover and install wizard to extend UML Designer with other UML based technologies.
+The _UML Discovery_ component provides an easy way to discover UML technologies. In a nutshell this project provides an easy one click discover and install wizard to extend UML Designer with other UML based technologies.
 
 We provide new menus to ease the installation of UML Components :
 * in the @toolbar@
@@ -16,7 +16,7 @@ We provide new menus to ease the installation of UML Components :
 !{{ page.relativePath }}/images/UmlDiscoveryWelcome.png!
 
 Clicking on one of these actions opens the following wizard :
-{{ page.relativePath }}/images/UmlDiscoveryWizard.png!
+!{{ page.relativePath }}/images/UmlDiscoveryWizard.png!
 
 Then you just have to select which components you want to install.
 
