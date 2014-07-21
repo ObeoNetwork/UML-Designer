@@ -9,6 +9,7 @@ location "http://download.eclipse.org/releases/luna" {
 	org.eclipse.sdk.feature.group
 	org.eclipse.epp.mpc.feature.group
 	org.eclipse.equinox.executable.feature.group
+	org.eclipse.amalgam.discovery.feature.group
 }
 
 // EMF
