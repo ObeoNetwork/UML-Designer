@@ -27,7 +27,7 @@ Contributors:
 
   <properties>
     <uml-site>http://marketplace.obeonetwork.com/updates/nightly/uml/repository</uml-site>
-    <sysml-site>http://marketplace.obeonetwork.com/updates/nightly/sysml/repository</sysml-site>
+    <!--sysml-site>http://marketplace.obeonetwork.com/updates/nightly/sysml/repository</sysml-site -->
   </properties>
 
   <repositories>
@@ -36,11 +36,11 @@ Contributors:
       <layout>p2</layout>
       <url>${uml-site}</url>
     </repository>
-    <repository>
+    <!-- repository>
       <id>sysml</id>
       <layout>p2</layout>
       <url>${sysml-site}</url>
-    </repository>
+    </repository -->
   </repositories>
 
   <modules>

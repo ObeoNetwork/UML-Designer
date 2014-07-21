@@ -6,15 +6,6 @@
    <feature id="org.obeonetwork.dsl.uml2.runtime.feature" version="0.0.0">
       <category name="Obeo Network"/>
    </feature>
-   <feature id="org.obeonetwork.dsl.sysml.runtime.feature" version="0.0.0">
-      <category name="Obeo Network"/>
-   </feature>
-   <feature url="features/org.obeonetwork.dsl.sysml.runtime.feature_4.0.0.qualifier.jar" id="org.obeonetwork.dsl.sysml.runtime.feature" version="4.0.0.qualifier">
-      <category name="Obeo Network"/>
-   </feature>
-   <feature url="features/org.obeonetwork.dsl.sysml.runtime.sdk.feature_4.0.0.qualifier.jar" id="org.obeonetwork.dsl.sysml.runtime.sdk.feature" version="4.0.0.qualifier">
-      <category name="Obeo Network"/>
-   </feature>
    <feature url="features/org.obeonetwork.dsl.uml2.runtime.feature_4.0.0.qualifier.jar" id="org.obeonetwork.dsl.uml2.runtime.feature" version="4.0.0.qualifier">
       <category name="Obeo Network"/>
    </feature>
