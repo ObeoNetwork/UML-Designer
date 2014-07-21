@@ -31,7 +31,7 @@ The SysML Designer is a graphical designer compatible with the "SysML specificat
 SysML has 8 types of diagrams divided into three categories:
 !{{ page.relativePath }}/images/SysML-Diagram-Taxonomy.png!
 
-It is released as Eclipse plugins under the EPL License and is part of the UML Designer standalone product.
+It is released as Eclipse plugins under the EPL License and is part of the "UML Discovery catalog":{{ page.relativePath }}/ref-doc/discovery.html, see how to install it in the UML Designer product.
 
 h1. System purpose
 
