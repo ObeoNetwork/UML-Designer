@@ -6,7 +6,7 @@
   <meta name="description" content="UML Designer documentation">
   <meta name="author" content="Mt&eacute;lanie Bats">
   
-  <title>Documentation</title>
+  <title>Install UML Components</title>
   
   <!-- Bootstrap core CSS -->
   <link href="../css/bootstrap.css" rel="stylesheet">
@@ -225,86 +225,31 @@
   <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h1 class="page-header">Documentation <small>developer guide</small></h1>
+      <h1 class="page-header">Install UML Components <small>Reference Documentation</small></h1>
       
       <ol class="breadcrumb">
         <li><a href="../index.html">Home</a></li>
-        <li class="active">Documentation</li>
+        <li class="active">Install UML Components</li>
       </ol>
     </div>
   </div>
   
   <div class="row">
     <div class="col-lg-12">
-      <h2>Environment</h2>
-<p>The <span class="caps">UML</span> Designer&#8217;s documentation is hosted on Github: <a href="https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation">https://github.com/ObeoNetwork/<span class="caps">UML</span>-Designer/tree/master/documentation</a>.</p>
-<p>The documentation is built with <a href="http://jekyllrb.com/">Jekyll</a>.</p>
-<p>All the documentation is written with the <a href="http://en.wikipedia.org/wiki/Textile_(markup_language)">textile</a> syntax, in order that it is really easy to contribute.</p>
-<h2>Global structure</h2>
-<p>The documentation structure is defined in the <a href="https://github.com/ObeoNetwork/UML-Designer/blob/master/documentation/_data/pages.yml">pages.yml</a> file.</p>
-<div class="highlight"><pre><code class="yaml"><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Overview</span>
-  <span class="l-Scalar-Plain">file</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">overview</span>
-
-<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Download</span>
-  <span class="l-Scalar-Plain">file</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">download</span>
-
-<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">category</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Tutorials</span>
-  <span class="l-Scalar-Plain">pages</span><span class="p-Indicator">:</span>
-  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Getting started</span>
-    <span class="l-Scalar-Plain">file</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">tutorials/tuto-getting-started</span>
-  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Create project</span>
-    <span class="l-Scalar-Plain">file</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">tutorials/tuto-create-project</span>
-<span class="nn">...</span></code></pre></div><p><code>- title: xxx</code> and  <code>- category: xxx</code> generate a menu in the main web site navbar.</p>
-<p>To create a menu which reference an anchor in an existing page use the syntax :<br />
-<div class="highlight"><pre><code class="yaml"><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">category</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">MyCategory</span>
-  <span class="l-Scalar-Plain">pages</span><span class="p-Indicator">:</span>
-  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">MyTitle</span>
-    <span class="l-Scalar-Plain">file</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">path/filename</span>
-    <span class="l-Scalar-Plain">anchor</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">MyAnchor</span></code></pre></div></p>
-<p>Have a look the section below to see how to define an anchor in a page.</p>
-<h2>Page</h2>
-<p>Each defined page starts with : <br />
-<div class="highlight"><pre><code class="yaml"><span class="nn">---</span>
-<span class="l-Scalar-Plain">layout</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">article</span>
-<span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">MyTitle</span>
-<span class="l-Scalar-Plain">subtitle</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">MySubTitle</span>
-<span class="l-Scalar-Plain">relativePath</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">..</span>
-<span class="nn">---</span></code></pre></div></p>
-<p>This allows to set the different variables. <br />
-All the pages reused the same includes : <a href="https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation/_includes">https://github.com/ObeoNetwork/<span class="caps">UML</span>-Designer/tree/master/documentation/_includes</a><br />
-And the available layouts are defined in the <em>layouts folder: <a href="https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation/">https://github.com/ObeoNetwork/<span class="caps">UML</span>-Designer/tree/master/documentation/_layouts</a></em>layouts</p>
-<p>The rest of the page, defines the main content. To edit the page content use the <a href="http://en.wikipedia.org/wiki/Textile_(markup_language)">textile</a> syntax.</p>
-<p>Use the following syntax to :</p>
+      <p>The <strong><span class="caps">UML</span> Discovery</strong> component provides an easy way to discover <span class="caps">UML</span> technologies. In a nutshell this project provides an easy one click discover and install wizard to extend <span class="caps">UML</span> Designer with other <span class="caps">UML</span> based technologies.</p>
+<p>We provide new menus to ease the installation of <span class="caps">UML</span> Components :</p>
 <ul>
-	<li>Define an anchor in the page named <em>MyPage</em> and defined in the folder <em>path</em> : <code>h1(#MyAnchor). My title</code></li>
-	<li>Reference an anchor : <code>../path/MyPage.html#MyAnchor</code></li>
+	<li>in the <code>toolbar</code><br />
+<img src="../images/UmlDiscoveryToolbar.png" alt="" /></li>
+	<li>in the <code>Help -&gt; Install UML components</code> menu<br />
+<img src="../images/UmlDiscoveryHelpMenu.png" alt="" /></li>
+	<li>in the <code>welcome page</code><br />
+<img src="../images/UmlDiscoveryWelcome.png" alt="" /></li>
 </ul>
-<h2>Build the documentation</h2>
-<p>To build the documentation, commit the changes in the Eclipse Help content and update the web-site a shell script is available in :<br />
-<code>documentation/gen-doc.sh</code></p>
-<p>When you want to update the documentation :</p>
-<ul>
-	<li>Update the textile files</li>
-	<li>Launch the script from the git repository root :<br />
-./documentation/gen-doc.sh &#8220;My commit message&#8221;</li>
-</ul>
-<p>The script automatically:</p>
-<ul>
-	<li>generate the static web-site</li>
-	<li>copy the result into the Eclipse help content</li>
-	<li>copy the result into the gh-pages</li>
-</ul>
-<p><em>In the future all this actions will be done automatically by the continuous integration build.</em></p>
-<p>The different steps done by the script are explained below.</p>
-<h3>Build the web-site</h3>
-<p>Go to <code>UML-Designer/documentation</code> folder in your local repo.<br />
-And launch : <code>jekyll build</code><br />
-This operation will generate a new <code>_site</code> folder containing all the <code>.html</code> files generated from the textile files.</p>
-<p>To update the online web-site, just copy/paste the content of the _site folder to the gh-pages branch on the repo. Commit and push the new version of the web-site.</p>
-<p>The new web site will be available immediately on : <a href="http://obeonetwork.github.io/UML-Designer/">http://obeonetwork.github.io/<span class="caps">UML</span>-Designer/</a></p>
-<h3>Integrate the documentation to Eclipse</h3>
-<p>We integrate the web site inside Eclipse as embedded documentation for <span class="caps">UML</span> Designer. We just defined an Eclipse specific <a href="https://github.com/ObeoNetwork/UML-Designer/blob/master/documentation/toc.xml">toc.xml</a> file which will be used to integrate the website content into the Eclipse Help Content.</p>
-<p>When the textile files have been updated, the web-site must be re-generated as presented in the previous section. Then update the <code>toc.xml</code> and copy the content of the <code>_site</code> folder to <code>UML-Designer/plugins/org.obeonetwork.dsl.uml2.design.doc/html</code>.</p>
+<p>Clicking on one of these actions opens the following wizard :<br />
+../images/UmlDiscoveryWizard.png!</p>
+<p>Then you just have to select which components you want to install.</p>
+<p>This module is inspired and based on the <a href="https://www.eclipse.org/modeling/amalgam/">Modeling Amalgamation</a> project.</p>
     </div>
   </div>
 </div><!-- /.container -->
