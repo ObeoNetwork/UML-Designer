@@ -18,7 +18,6 @@ import org.eclipse.ui.handlers.HandlerUtil;
 
 public class UmlDiscoveryHandler extends AbstractHandler {
 
-	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		final IWorkbenchWindow window = HandlerUtil
 				.getActiveWorkbenchWindowChecked(event);
