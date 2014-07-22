@@ -606,6 +606,29 @@ public class ActivityServices {
 	}
 
 	/**
+	 * Get all the behaviors available in the semantic resources.
+	 * 
+	 * @param eObj
+	 *            Semantic element
+	 * @return All the behaviors
+	 */
+	public List<EObject> getAllBehaviors(Element element) {
+		List<EObject> behaviors = Lists.newArrayList();
+		UMLServices umlServices = new UMLServices();
+		List<org.eclipse.uml2.uml.Package> rootPkgs = umlServices.getAllAvailableRootPackages(element);
+		final Predicate<EObject> predicate = new Predicate<EObject>() {
+			public boolean apply(EObject eObj) {
+				return eObj instanceof Behavior;
+			}
+		};
+		for (org.eclipse.uml2.uml.Package pkg : rootPkgs) {
+			Iterators.addAll(behaviors, Iterators.filter(pkg.eAllContents(), predicate));
+		}
+
+		return behaviors;
+	}
+
+	/**
 	 * Get all the operations available in the semantic resources.
 	 * 
 	 * @param eObj
@@ -622,6 +645,27 @@ public class ActivityServices {
 			}
 		}
 		results.addAll(operations);
+
+		return results;
+	}
+
+	/**
+	 * Get all the operations available in the semantic resources.
+	 * 
+	 * @param element
+	 *            Semantic element
+	 * @return All the behaviors
+	 */
+	public List<EObject> getAllBehaviorsAndPackages(Element element) {
+		List<EObject> results = Lists.newArrayList();
+		List<EObject> behaviors = getAllBehaviors(element);
+		for (EObject eObject : behaviors) {
+			while (eObject.eContainer() != null) {
+				results.add(eObject.eContainer());
+				eObject = eObject.eContainer();
+			}
+		}
+		results.addAll(behaviors);
 
 		return results;
 	}
