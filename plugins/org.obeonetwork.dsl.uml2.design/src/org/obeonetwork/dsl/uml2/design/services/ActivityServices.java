@@ -588,21 +588,42 @@ public class ActivityServices {
 	 *            Semantic element
 	 * @return All the operations
 	 */
-	public List<EObject> getAllOperations(EObject eObj) {
+	public List<EObject> getAllOperations(Element element) {
 		List<EObject> operations = Lists.newArrayList();
-		final Session session = SessionManager.INSTANCE.getSession(eObj);
-		for (Resource resource : session.getSemanticResources()) {
-			final Predicate<EObject> predicate = new Predicate<EObject>() {
-				public boolean apply(EObject eObj) {
-					return eObj instanceof Operation
-							&& (((Operation)eObj).getMethods() == null || ((Operation)eObj).getMethods()
-									.size() == 0);
-				}
-			};
-			Iterators.addAll(operations, Iterators.filter(resource.getAllContents(), predicate));
+		UMLServices umlServices = new UMLServices();
+		List<org.eclipse.uml2.uml.Package> rootPkgs = umlServices.getAllAvailableRootPackages(element);
+		final Predicate<EObject> predicate = new Predicate<EObject>() {
+			public boolean apply(EObject eObj) {
+				return eObj instanceof Operation
+						&& (((Operation)eObj).getMethods() == null || ((Operation)eObj).getMethods().size() == 0);
+			}
+		};
+		for (org.eclipse.uml2.uml.Package pkg : rootPkgs) {
+			Iterators.addAll(operations, Iterators.filter(pkg.eAllContents(), predicate));
 		}
 
 		return operations;
+	}
+
+	/**
+	 * Get all the operations available in the semantic resources.
+	 * 
+	 * @param eObj
+	 *            Semantic element
+	 * @return All the operations
+	 */
+	public List<EObject> getAllOperationsAndPackages(Element eObj) {
+		List<EObject> results = Lists.newArrayList();
+		List<EObject> operations = getAllOperations(eObj);
+		for (EObject eObject : operations) {
+			while (eObject.eContainer() != null) {
+				results.add(eObject.eContainer());
+				eObject = eObject.eContainer();
+			}
+		}
+		results.addAll(operations);
+
+		return results;
 	}
 
 	/**
