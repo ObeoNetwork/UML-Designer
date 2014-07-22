@@ -16,9 +16,6 @@ import java.util.List;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.uml2.uml.AcceptEventAction;
 import org.eclipse.uml2.uml.Action;
 import org.eclipse.uml2.uml.Activity;
@@ -616,13 +613,9 @@ public class ActivityServices {
 		List<EObject> behaviors = Lists.newArrayList();
 		UMLServices umlServices = new UMLServices();
 		List<org.eclipse.uml2.uml.Package> rootPkgs = umlServices.getAllAvailableRootPackages(element);
-		final Predicate<EObject> predicate = new Predicate<EObject>() {
-			public boolean apply(EObject eObj) {
-				return eObj instanceof Behavior;
-			}
-		};
 		for (org.eclipse.uml2.uml.Package pkg : rootPkgs) {
-			Iterators.addAll(behaviors, Iterators.filter(pkg.eAllContents(), predicate));
+			Iterators.addAll(behaviors,
+					Iterators.filter(pkg.eAllContents(), Predicates.instanceOf(Behavior.class)));
 		}
 
 		return behaviors;
@@ -677,12 +670,13 @@ public class ActivityServices {
 	 *            Semantic element
 	 * @return All the signals
 	 */
-	public List<EObject> getAllSignals(EObject eObj) {
+	public List<EObject> getAllSignals(Element element) {
 		List<EObject> signals = Lists.newArrayList();
-		final Session session = SessionManager.INSTANCE.getSession(eObj);
-		for (Resource resource : session.getSemanticResources()) {
+		UMLServices umlServices = new UMLServices();
+		List<org.eclipse.uml2.uml.Package> rootPkgs = umlServices.getAllAvailableRootPackages(element);
+		for (org.eclipse.uml2.uml.Package pkg : rootPkgs) {
 			Iterators.addAll(signals,
-					Iterators.filter(resource.getAllContents(), Predicates.instanceOf(Signal.class)));
+					Iterators.filter(pkg.eAllContents(), Predicates.instanceOf(Signal.class)));
 		}
 
 		return signals;
