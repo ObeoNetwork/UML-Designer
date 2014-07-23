@@ -15,6 +15,7 @@ import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.IPartService;
 import org.eclipse.ui.PlatformUI;
+import org.obeonetwork.dsl.uml2.design.listeners.CallActionPinListener;
 import org.obeonetwork.dsl.uml2.design.services.AutosizeTrigger;
 
 /**
@@ -29,14 +30,18 @@ public class UmlDesignerSessionManagerListener implements SessionManagerListener
 
 	private final OpenHelpContextListener openedEditorListener = new OpenHelpContextListener();
 
+	private final CallActionPinListener callActionPinListener = new CallActionPinListener();
+
 	public void notifyAddSession(Session newSession) {
 		newSession.getEventBroker().addLocalTrigger(AutosizeTrigger.IS_GMF_NODE_ATTACHMENT,
 				new AutosizeTrigger(newSession.getTransactionalEditingDomain()));
 		partService.addPartListener(openedEditorListener);
+		newSession.getTransactionalEditingDomain().addResourceSetListener(callActionPinListener);
 	}
 
 	public void notifyRemoveSession(Session removedSession) {
 		partService.removePartListener(openedEditorListener);
+		removedSession.getTransactionalEditingDomain().removeResourceSetListener(callActionPinListener);
 	}
 
 	public void viewpointSelected(Viewpoint selectedSirius) {

@@ -49,6 +49,12 @@ public class Messages extends NLS {
 	public static String UmlModelWizardInitModelPage_XmlEncodingLabel;
 
 	public static String UmlModelWizardInitModelPage_XmlEncodings;
+
+	public static String UmlValidationErrorOnCallOperationAction;
+
+	public static String UmlValidationErrorOnCallOperationAction2;
+
+	public static String UmlValidationErrorOnCallOperationActionPin;
 	static {
 		// initialize resource bundle
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);

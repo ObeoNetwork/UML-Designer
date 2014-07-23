@@ -26,6 +26,7 @@ import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.CallAction;
 import org.eclipse.uml2.uml.CallEvent;
+import org.eclipse.uml2.uml.CallOperationAction;
 import org.eclipse.uml2.uml.ControlFlow;
 import org.eclipse.uml2.uml.DecisionNode;
 import org.eclipse.uml2.uml.Element;
@@ -43,11 +44,16 @@ import org.eclipse.uml2.uml.ObjectFlow;
 import org.eclipse.uml2.uml.OpaqueAction;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.OutputPin;
+import org.eclipse.uml2.uml.Parameter;
+import org.eclipse.uml2.uml.ParameterDirectionKind;
+import org.eclipse.uml2.uml.Pin;
 import org.eclipse.uml2.uml.Signal;
 import org.eclipse.uml2.uml.SignalEvent;
 import org.eclipse.uml2.uml.TimeEvent;
 import org.eclipse.uml2.uml.Trigger;
+import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
+import org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel.Messages;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
@@ -680,5 +686,137 @@ public class ActivityServices {
 		}
 
 		return signals;
+	}
+
+	public List<Parameter> getInputParameters(Operation operation) {
+		return operation.inputParameters();
+	}
+
+	public List<Parameter> getOutputParameters(Operation operation) {
+		return operation.outputParameters();
+	}
+
+	public Pin createInputPinFromParameter(CallAction action, Parameter parameter) {
+		final InputPin pin = UMLFactory.eINSTANCE.createInputPin();
+		action.getArguments().add(pin);
+		setPinAttributes(parameter, pin);
+		return null;
+	}
+
+	public Pin createOutputPinFromParameter(CallAction action, Parameter parameter) {
+		final OutputPin pin = UMLFactory.eINSTANCE.createOutputPin();
+		action.getResults().add(pin);
+		setPinAttributes(parameter, pin);
+		return null;
+	}
+
+	private void setPinAttributes(Parameter parameter, final Pin pin) {
+		pin.setName(parameter.getName());
+		pin.setIsOrdered(parameter.isOrdered());
+		pin.setType(parameter.getType());
+		pin.setLowerValue(parameter.getLowerValue());
+		pin.setUpperValue(parameter.getUpperValue());
+	}
+
+	public boolean isConsistent(Pin pin) {
+		return !isNotConsistent(pin);
+	}
+
+	public boolean isConsistent(CallOperationAction callOperationAction) {
+		return !isNotConsistent(callOperationAction);
+	}
+
+	public boolean isNotConsistent(Pin pin) {
+		return getCallOperationPinConsistencyErrorMessage(pin).length() > 0;
+	}
+
+	public boolean isNotConsistent(CallOperationAction callOperationAction) {
+		return getCallOperationConsistencyErrorMessage(callOperationAction).length() > 0;
+	}
+
+	public String getCallOperationPinConsistencyErrorMessage(Pin pin) {
+		String message = "";
+		String pinName = pin.getName();
+		Type pinType = pin.getType();
+
+		CallAction callAction = (CallAction)pin.eContainer();
+		if (callAction instanceof CallOperationAction) {
+			CallOperationAction callOperationAction = (CallOperationAction)callAction;
+			Operation operation = callOperationAction.getOperation();
+			// Find parameter associated to the pin thanks to the name and type
+			final org.eclipse.uml2.uml.Parameter param = operation.getOwnedParameter(pinName, pinType);
+			if (param == null && !("target".equals(pinName))) {
+				// Can't find a param associated to the current pin we ignore the target pin
+				Object[] params = new Object[] {callAction.getQualifiedName(), pinName,
+						operation.getQualifiedName()};
+				message = Messages.bind(Messages.UmlValidationErrorOnCallOperationAction, params);
+			} else if (param != null) {
+				if (!param.getName().equals(pin.getName())) {
+					Object[] params = new Object[] {callAction.getQualifiedName(), pinName, "name"};
+					message = Messages.bind(Messages.UmlValidationErrorOnCallOperationActionPin, params);
+				} else if (!param.getType().equals(pin.getType())) {
+					Object[] params = new Object[] {callAction.getQualifiedName(), pinName, "type"};
+					message = Messages.bind(Messages.UmlValidationErrorOnCallOperationActionPin, params);
+				} else if (param.isOrdered() != pin.isOrdered()) {
+					Object[] params = new Object[] {callAction.getQualifiedName(), pinName, "ordered"};
+					message = Messages.bind(Messages.UmlValidationErrorOnCallOperationActionPin, params);
+				} else if ((param.getLowerValue() == null && pin.getLowerValue() != null)
+						|| (param.getLowerValue() != null && pin.getLowerValue() == null)
+						|| !((param.getLowerValue() == null && pin.getLowerValue() == null) || param
+								.getLowerValue().stringValue().equals(pin.getLowerValue().stringValue()))) {
+					Object[] params = new Object[] {callAction.getQualifiedName(), pinName, "lower value"};
+					message = Messages.bind(Messages.UmlValidationErrorOnCallOperationActionPin, params);
+				} else if ((param.getUpperValue() == null && pin.getUpperValue() != null)
+						|| (param.getUpperValue() != null && pin.getUpperValue() == null)
+						|| !((param.getUpperValue() == null && pin.getUpperValue() == null) || param
+								.getUpperValue().stringValue().equals(pin.getUpperValue().stringValue()))) {
+					Object[] params = new Object[] {callAction.getQualifiedName(), pinName, "upper value"};
+					message = Messages.bind(Messages.UmlValidationErrorOnCallOperationActionPin, params);
+				}
+			}
+		}
+		return message;
+	}
+
+	public String getCallOperationConsistencyErrorMessage(CallOperationAction callOperationAction) {
+		String message = "";
+		Operation operation = callOperationAction.getOperation();
+		for (Parameter param : operation.getOwnedParameters()) {
+			if (ParameterDirectionKind.IN_LITERAL.equals(param.getDirection())) {
+				Pin pin = callOperationAction.getArgument(param.getName(), param.getType());
+				if (pin == null) {
+					// Can't find a param associated to the current pin we ignore the target pin
+					Object[] params = new Object[] {callOperationAction.getQualifiedName(), param.getName(),
+							operation.getQualifiedName()};
+					message = Messages.bind(Messages.UmlValidationErrorOnCallOperationAction2, params);
+				}
+			} else if (ParameterDirectionKind.OUT_LITERAL.equals(param.getDirection())
+					|| ParameterDirectionKind.RETURN_LITERAL.equals(param.getDirection())) {
+				Pin pin = callOperationAction.getResult(param.getName(), param.getType());
+				if (pin == null) {
+					// Can't find a param associated to the current pin we ignore the target pin
+					Object[] params = new Object[] {callOperationAction.getQualifiedName(), param.getName(),
+							operation.getQualifiedName()};
+					message = Messages.bind(Messages.UmlValidationErrorOnCallOperationAction2, params);
+				}
+			} else {
+				Pin inputPin = callOperationAction.getArgument(param.getName(), param.getType());
+				if (inputPin == null) {
+					// Can't find a param associated to the current pin we ignore the target pin
+					Object[] params = new Object[] {callOperationAction.getQualifiedName(), param.getName(),
+							operation.getQualifiedName()};
+					message = Messages.bind(Messages.UmlValidationErrorOnCallOperationAction2, params);
+				}
+				Pin outputPin = callOperationAction.getResult(param.getName(), param.getType());
+				if (outputPin == null) {
+					// Can't find a param associated to the current pin we ignore the target pin
+					Object[] params = new Object[] {callOperationAction.getQualifiedName(), param.getName(),
+							operation.getQualifiedName()};
+					message = Messages.bind(Messages.UmlValidationErrorOnCallOperationAction2, params);
+				}
+			}
+		}
+
+		return message;
 	}
 }
