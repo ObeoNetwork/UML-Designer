@@ -18,6 +18,8 @@ public class Messages extends NLS {
 
 	public static String UIServices_UI_Error_PastingElement;
 
+	public static String UmlExampleWizard_UI_Error_Open;
+
 	public static String UmlModelWizard_DefaultModelName;
 
 	public static String UmlModelWizard_DefaultPackageName;

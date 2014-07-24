@@ -32,37 +32,6 @@ Contributors:
            </projectDescriptor>
         </example>
     </extension>
-
-    <extension point="org.eclipse.ui.newWizards">
-        <category
-            id="org.obeonetwork.dsl.uml.examples.category"
-            name="UML"
-            parentCategory="org.eclipse.ui.Examples">
-        </category>
-        <wizard
-            category="org.eclipse.ui.Examples/org.obeonetwork.dsl.uml.examples.category"
-            class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
-            finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
-            icon="icons/NewUmlModel.gif"
-            id="org.obeonetwork.dsl.uml2.design.doc.TravelAgencyWizard"
-            name="Travel Agency UML"
-            project="true">
-            <description>An UML model for a travel agency business leveraging class, components, use case, activity and states diagrams.</description>
-        </wizard>
-        <wizard
-              category="org.eclipse.ui.Examples/org.obeonetwork.dsl.uml.examples.category"
-              class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
-              finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
-              icon="icons/NewUmlModel.gif"
-              id="org.obeonetwork.dsl.uml2.design.doc.UMLInColorsWizard"
-              name="UML in colors"
-              project="true">
-           <description>
-              An UML model for a UML in colors class diagrams.
-           </description>
-        </wizard>
-    </extension>
-
     <extension
         point="org.eclipse.ui.intro.configExtension">
         <configExtension
