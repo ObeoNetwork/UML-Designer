@@ -1586,4 +1586,12 @@ public class UMLServices {
 	public boolean isTypeOfClass(EObject element) {
 		return "Class".equals(element.eClass().getName());
 	}
+
+	public void editAssociatedUseCase(Classifier element, UseCase useCase, String param) {
+		if (param != null && param.length() > 0) {
+			element.getUseCases().add(useCase);
+		} else {
+			element.getUseCases().remove(useCase);
+		}
+	}
 }

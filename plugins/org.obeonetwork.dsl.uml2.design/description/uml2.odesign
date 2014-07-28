@@ -5405,12 +5405,7 @@
           <variables name="columnSemantic" documentation="The semantic element corresponding to the column (only available for Intersection Mapping)."/>
           <variables name="root" documentation="The semantic element of the table."/>
           <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:lineSemantic">
-            <subModelOperations xsi:type="tool:If" conditionExpression="[0&lt;>null/]">
-              <subModelOperations xsi:type="tool:SetValue" featureName="useCase" valueExpression="var:columnSemantic"/>
-            </subModelOperations>
-            <subModelOperations xsi:type="tool:If" conditionExpression="[0=null/]">
-              <subModelOperations xsi:type="tool:Unset" featureName="useCase" elementExpression="var:columnSemantic"/>
-            </subModelOperations>
+            <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:editAssociatedUseCase(columnSemantic,arg0)"/>
           </firstModelOperation>
           <mask mask="{0}"/>
         </directEdit>
