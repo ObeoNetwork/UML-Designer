@@ -5032,27 +5032,6 @@
               </initialOperation>
             </ownedTools>
           </subSections>
-          <subSections name="menu">
-            <ownedTools xsi:type="tool:PopupMenu" name="Context Specification" precondition="[self->filter(uml::Lifeline).represents->filter(uml::Property)->size() >0/]">
-              <menuItemDescription xsi:type="tool:OperationAction" name="Select context" forceRefresh="true">
-                <view name="containerView">
-                  <subVariables xsi:type="tool:SelectModelElementVariable" name="context" candidatesExpression="service:getInstances" tree="true" rootExpression="service:getAvailablePackages" childrenExpression="feature:eContents" message="Select an instance or a part as the context of the current lifeline"/>
-                  <subVariables xsi:type="tool:AcceleoVariable" name="containerViewTarget" computationExpression="[containerView.target/]"/>
-                </view>
-                <initialOperation>
-                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:containerViewTarget.addContext(context)"/>
-                </initialOperation>
-              </menuItemDescription>
-              <menuItemDescription xsi:type="tool:OperationAction" name="Delete context" precondition="[clientDependency->size() > 0/]" forceRefresh="true">
-                <view name="containerView">
-                  <subVariables xsi:type="tool:AcceleoVariable" name="containerViewTarget" computationExpression="[containerView.target/]"/>
-                </view>
-                <initialOperation>
-                  <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="containerViewTarget.deleteContext"/>
-                </initialOperation>
-              </menuItemDescription>
-            </ownedTools>
-          </subSections>
         </toolSections>
         <toolSections name="SD_Import" label="Existing Elements" reusedTools="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='Delete']">
           <ownedTools xsi:type="tool_1:NodeCreationDescription" name="CR_ClassLifeline" label="Class" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']">
