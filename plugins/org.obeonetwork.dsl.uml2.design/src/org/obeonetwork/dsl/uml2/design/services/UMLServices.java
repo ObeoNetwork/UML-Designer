@@ -49,6 +49,7 @@ import org.eclipse.uml2.uml.AssociationClass;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Collaboration;
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.ConnectorEnd;
@@ -1544,9 +1545,17 @@ public class UMLServices {
 		return !existComments(element);
 	}
 
-	public String getComment(Element element) {
+	public String getCommentBody(Element element) {
+		Comment comment = getComment(element);
+		if (comment != null) {
+			return comment.getBody();
+		}
+		return null;
+	}
+
+	public Comment getComment(Element element) {
 		if (element.getOwnedComments().size() > 0)
-			return element.getOwnedComments().get(0).getBody();
+			return element.getOwnedComments().get(0);
 		return null;
 	}
 

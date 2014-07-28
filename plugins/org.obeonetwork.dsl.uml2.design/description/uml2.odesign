@@ -5258,7 +5258,7 @@
           </backgroundConditionalStyle>
         </ownedSubLines>
       </ownedLineMappings>
-      <ownedColumnMappings name="DT_CommentColumn" headerLabelExpression="Comments" featureName="ownedComment" labelExpression="[lineSemantic.getComment()/]">
+      <ownedColumnMappings name="DT_CommentColumn" headerLabelExpression="Comments" featureName="ownedComment" labelExpression="[lineSemantic.getCommentBody()/]">
         <directEdit>
           <variables name="element" documentation="The currently edited element."/>
           <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
