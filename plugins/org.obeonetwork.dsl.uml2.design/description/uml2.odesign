@@ -3440,8 +3440,7 @@
               <element name="element"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
-                  <subModelOperations xsi:type="tool:Unset" featureName="deployedArtifact" elementExpression="var:source"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="deployedArtifact" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:reconnectEdge(edgeView, sourceView, targetView, source, target)"/>
                 </firstModelOperations>
               </initialOperation>
               <edgeView name="edgeView"/>
@@ -3453,12 +3452,8 @@
               <targetView name="targetView"/>
               <element name="element"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
-                  <subModelOperations xsi:type="tool:Unset" featureName="deployment" elementExpression="var:element">
-                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="deployment" valueExpression="var:element"/>
-                    </subModelOperations>
-                  </subModelOperations>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:reconnectEdge(edgeView, sourceView, targetView, source, target)"/>
                 </firstModelOperations>
               </initialOperation>
               <edgeView name="edgeView"/>
