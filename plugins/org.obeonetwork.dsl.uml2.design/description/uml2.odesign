@@ -5059,19 +5059,21 @@
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:getNearestPackage">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="packagedElement" variableName="class">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName">
-                      <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
-                        <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Lifeline" referenceName="lifeline" variableName="lifeline">
-                          <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="[class.name/]"/>
-                        </subModelOperations>
-                        <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedAttribute" variableName="property">
-                          <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="[class.name/]"/>
-                          <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="var:class"/>
-                        </subModelOperations>
-                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:lifeline">
-                          <subModelOperations xsi:type="tool:SetValue" featureName="represents" valueExpression="var:property"/>
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.getNearestPackage()/]">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Class" referenceName="packagedElement" variableName="class">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName">
+                        <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                          <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Lifeline" referenceName="lifeline" variableName="lifeline">
+                            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="[class.name/]"/>
+                          </subModelOperations>
+                          <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedAttribute" variableName="property">
+                            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="[class.name/]"/>
+                            <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="var:class"/>
+                          </subModelOperations>
+                          <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:lifeline">
+                            <subModelOperations xsi:type="tool:SetValue" featureName="represents" valueExpression="var:property"/>
+                          </subModelOperations>
                         </subModelOperations>
                       </subModelOperations>
                     </subModelOperations>
@@ -5083,7 +5085,7 @@
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:getNearestPackage">
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.getNearestPackage()/]">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Actor" referenceName="packagedElement" variableName="actor">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
