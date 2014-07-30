@@ -5309,7 +5309,7 @@
           </style>
         </containerMappings>
         <toolSections name="Elements" reusedTools="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='Move%20UP%2FDOWN%20TO%20Elements']">
-          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="PC_ArrangeContainment" label="Move" forceRefresh="true" iconPath="/org.eclipse.search/icons/full/etool16/search.gif" message="Select elements contained in the current package" choiceOfValuesMessage="Candidate packageable elements" candidatesExpression="[ancestors()->last()->including(ancestors()->last().eAllContents(uml::PackageableElement))/]" tree="true" rootExpression="service:getRootContainer" childrenExpression="feature:eContents" selectedValuesMessage="Selected packageable elements" preSelectedCandidatesExpression="[container.packagedElement/]">
+          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="PC_ArrangeContainment" label="Move" forceRefresh="true" iconPath="/org.eclipse.search/icons/full/etool16/search.gif" message="Select elements contained in the current package" choiceOfValuesMessage="Candidate packageable elements" candidatesExpression="service:getAllPackageableElements" tree="true" rootExpression="service:getAllAvailableRootPackages" childrenExpression="feature:eContents" selectedValuesMessage="Selected packageable elements" preSelectedCandidatesExpression="[container.packagedElement/]">
             <element name="elements"/>
             <containerView name="containerView"/>
             <container name="container"/>
@@ -5321,7 +5321,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="PC_Drop" precondition="[oclAsType(uml::Element)/]" forceRefresh="true" mappings="//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Package%20Containment']/@defaultLayer/@containerMappings[name='PC_Package']/@subNodeMappings[name='PC_PackageableElement']" dragSource="BOTH">
+          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="PC_Drop" forceRefresh="true" mappings="//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Package%20Containment']/@defaultLayer/@containerMappings[name='PC_Package']/@subNodeMappings[name='PC_PackageableElement']" dragSource="BOTH">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="elements"/>

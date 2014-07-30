@@ -99,6 +99,7 @@ import org.obeonetwork.dsl.uml2.design.services.internal.SemanticElementsSwitch;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Iterables;
@@ -1593,5 +1594,28 @@ public class UMLServices {
 		} else {
 			element.getUseCases().remove(useCase);
 		}
+	}
+
+	/**
+	 * Get all the packageable elements available in the semantic resources.
+	 * 
+	 * @param eObj
+	 *            Semantic element
+	 * @return All the packageable elements
+	 */
+	public List<EObject> getAllPackageableElements(Element element) {
+		List<EObject> result = Lists.newArrayList();
+		UMLServices umlServices = new UMLServices();
+		List<org.eclipse.uml2.uml.Package> rootPkgs = umlServices.getAllAvailableRootPackages(element);
+		result.addAll(rootPkgs);
+		for (org.eclipse.uml2.uml.Package pkg : rootPkgs) {
+			Iterators.addAll(result,
+					Iterators.filter(pkg.eAllContents(), Predicates.instanceOf(PackageableElement.class)));
+		}
+		if (element instanceof Package) {
+			result.removeAll(((Package)element).getPackagedElements());
+		}
+
+		return result;
 	}
 }
