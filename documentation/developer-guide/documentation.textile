@@ -5,9 +5,14 @@ subtitle: developer guide
 relativePath: ..
 ---
 
-h2. Environment
+The UML Designer's web site is hosted on Github: "http://obeonetwork.github.io/UML-Designer/":http://obeonetwork.github.io/UML-Designer/
 
-The UML Designer's documentation is hosted on Github: "https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation":https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation.
+The documentation source code is available on :
+"https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation":https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation.
+
+The documentation build is on "Travis":https://travis-ci.org/ObeoNetwork/UML-Designer/
+
+h2. Environment
 
 The documentation is built with "Jekyll":http://jekyllrb.com/.
 
@@ -70,35 +75,26 @@ Use the following syntax to :
 
 h2. Build the documentation
 
-To build the documentation, commit the changes in the Eclipse Help content and update the web-site a shell script is available in :
-@documentation/gen-doc.sh@
+To build the documentation, commit and push the changes on the ObeoNetwork/UML-Designer @master@ branch.
+The "Travis build":https://travis-ci.org/ObeoNetwork/UML-Designer/ is launched, it generates the documentation and updates the gh-pages. Consequently, the web site is updated automatically.
+The "Hudson build": https://build.obeonetwork.com/hudson/job/UML--master/ is in charge of the integration of the web site inside the Eclipse Help Content.
 
-When you want to update the documentation :
-* Update the textile files
-* Launch the script from the git repository root :
-./documentation/gen-doc.sh "My commit message"
-
-The script automatically:
-* generate the static web-site
-* copy the result into the Eclipse help content
-* copy the result into the gh-pages
-
-_In the future all this actions will be done automatically by the continuous integration build._
-
-The different steps done by the script are explained below.
+The different steps done by the builds are explained below.
 
 h3. Build the web-site
 
-Go to @UML-Designer/documentation@ folder in your local repo.
-And launch : @jekyll build@
+The Travis build : 
+* Go to @UML-Designer/documentation@ folder in your local repo.
+* And launch : @jekyll build@
 This operation will generate a new @_site@ folder containing all the @.html@ files generated from the textile files.
-
-To update the online web-site, just copy/paste the content of the _site folder to the gh-pages branch on the repo. Commit and push the new version of the web-site.
+* To update the online web-site, just copy/paste the content of the _site folder to the gh-pages branch on the repo. Commit and push the new version of the web-site.
 
 The new web site will be available immediately on : "http://obeonetwork.github.io/UML-Designer/":http://obeonetwork.github.io/UML-Designer/
 
 h3. Integrate the documentation to Eclipse
 
-We integrate the web site inside Eclipse as embedded documentation for UML Designer. We just defined an Eclipse specific "toc.xml":https://github.com/ObeoNetwork/UML-Designer/blob/master/documentation/toc.xml file which will be used to integrate the website content into the Eclipse Help Content.
+The web site is integrated inside Eclipse as embedded documentation for UML Designer. This is done by the "Hudson build": https://build.obeonetwork.com/hudson/job/UML--master/ which takes the gh-pages content and integrates it into the Eclipse Help Content. The content of the @gh-pages@ is just copied to @UML-Designer/plugins/org.obeonetwork.dsl.uml2.design.doc/html@.
 
-When the textile files have been updated, the web-site must be re-generated as presented in the previous section. Then update the @toc.xml@ and copy the content of the @_site@ folder to @UML-Designer/plugins/org.obeonetwork.dsl.uml2.design.doc/html@.
+Pay attention when you update the documentation structure to update also the Eclipse toc. We defined an Eclipse specific "toc.xml":https://github.com/ObeoNetwork/UML-Designer/blob/master/documentation/toc.xml file which is used to integrate the web site content into the Eclipse Help Content table of content.
+
+When a change is done in the documentation, the Travis build runs after the commit of the change. If you want to see this documentation update also in the Eclipse documentation, the Hudson build must be run manually after the end of the Travis build.
