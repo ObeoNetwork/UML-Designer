@@ -254,13 +254,15 @@
     <span class="l-Scalar-Plain">file</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">tutorials/tuto-getting-started</span>
   <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Create project</span>
     <span class="l-Scalar-Plain">file</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">tutorials/tuto-create-project</span>
-<span class="nn">...</span></code></pre></div><p><code>- title: xxx</code> and  <code>- category: xxx</code> generate a menu in the main web site navbar.</p>
+<span class="nn">...</span>
+</code></pre></div><p><code>- title: xxx</code> and  <code>- category: xxx</code> generate a menu in the main web site navbar.</p>
 <p>To create a menu which reference an anchor in an existing page use the syntax :<br />
 <div class="highlight"><pre><code class="yaml"><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">category</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">MyCategory</span>
   <span class="l-Scalar-Plain">pages</span><span class="p-Indicator">:</span>
   <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">MyTitle</span>
     <span class="l-Scalar-Plain">file</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">path/filename</span>
-    <span class="l-Scalar-Plain">anchor</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">MyAnchor</span></code></pre></div></p>
+    <span class="l-Scalar-Plain">anchor</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">MyAnchor</span>
+</code></pre></div></p>
 <p>Have a look the section below to see how to define an anchor in a page.</p>
 <h2>Page</h2>
 <p>Each defined page starts with : <br />
@@ -269,7 +271,8 @@
 <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">MyTitle</span>
 <span class="l-Scalar-Plain">subtitle</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">MySubTitle</span>
 <span class="l-Scalar-Plain">relativePath</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">..</span>
-<span class="nn">---</span></code></pre></div></p>
+<span class="nn">---</span>
+</code></pre></div></p>
 <p>This allows to set the different variables. <br />
 All the pages reused the same includes : <a href="https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation/_includes">https://github.com/ObeoNetwork/<span class="caps">UML</span>-Designer/tree/master/documentation/_includes</a><br />
 And the available layouts are defined in the <em>layouts folder: <a href="https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation/">https://github.com/ObeoNetwork/<span class="caps">UML</span>-Designer/tree/master/documentation/_layouts</a></em>layouts</p>

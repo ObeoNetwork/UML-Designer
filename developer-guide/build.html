@@ -271,9 +271,10 @@ Code coverage is captured thanks to Jacoco.</p>
 All <span class="caps">UML</span> designer plugins/features/update-sites refers to a dedicated parent:<br />
 <img src="../images/UMLDesignerMavenStructure.png" alt="" /></p>
 <p>For example, to add a new plugin org.obeonetwork.dsl.uml2.myplugin, add a<br />
-<div class="highlight"><pre><code class="xml"><span class="nt">&lt;module&gt;</span>${root-path}/plugins/org.obeonetwork.dsl.uml2.myplugin<span class="nt">&lt;module&gt;</span></code></pre></div></p>
+<div class="highlight"><pre><code class="xml">    <span class="nt">&lt;module&gt;</span>${root-path}/plugins/org.obeonetwork.dsl.uml2.myplugin<span class="nt">&lt;module&gt;</span>
+</code></pre></div></p>
 <p>in org.obeonetwork.dsl.uml2.parent and add a `pom.xml` in your plugin with the following header:<br />
-<div class="highlight"><pre><code class="xml"><span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0&quot;</span>
+<div class="highlight"><pre><code class="xml">    <span class="nt">&lt;project</span> <span class="na">xmlns=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0&quot;</span>
     <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
     <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd&quot;</span><span class="nt">&gt;</span>
         <span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
@@ -286,7 +287,8 @@ All <span class="caps">UML</span> designer plugins/features/update-sites refers 
         <span class="nt">&lt;artifactId&gt;</span>org.obeonetwork.dsl.uml2.myplugin<span class="nt">&lt;/artifactId&gt;</span>
         <span class="nt">&lt;packaging&gt;</span>eclipse-plugin<span class="nt">&lt;/packaging&gt;</span>
         ...
-    <span class="nt">&lt;/project&gt;</span></code></pre></div></p>
+    <span class="nt">&lt;/project&gt;</span>
+</code></pre></div></p>
     </div>
   </div>
 </div><!-- /.container -->
