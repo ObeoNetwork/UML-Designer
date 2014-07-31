@@ -2,6 +2,6 @@
   "name": "umldesignerdoc",
   "version": "4.0.0",
   "dependencies": {
-    "documentation": "https://github.com/UML-Designer/documentation.git#gh-pages"
+    "html": "https://github.com/ObeoNetwork/UML-Designer.git#gh-pages"
   }
 }
