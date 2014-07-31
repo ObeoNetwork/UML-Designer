@@ -175,6 +175,10 @@ In the use case diagram, it is possible to edit the elements labels  (see "Diagr
 * actor, collaboration, subject, use case labels
 * relationships labels
 
+h3(#Use_Case_Cross_Table). Use case cross table
+
+Another representation allows the user to see which use cases are associated to which elements in the model. The *use case cross table* represents on lines all the model elements and in the columns the existing use cases. To associate a use case to an element just check the corresponding cell.
+
 h2(#Package_Diagram). Define the package system structure
 
 At this step, John knows who will use its application and what they are able todo with it. It is time to define the components, the interfaces and the relationships that would be seen and experienced by the application user. The purpose is to detail the available objects in the user's universe and how they can use them to accomplish certain tasks.

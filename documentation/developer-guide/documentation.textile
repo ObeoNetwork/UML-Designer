@@ -137,7 +137,7 @@ The new web site will be available immediately on : "http://obeonetwork.github.i
 
 h3. Integrate the documentation to Eclipse
 
-The web site is integrated inside Eclipse as embedded documentation for UML Designer. This is done by the "Hudson build": https://build.obeonetwork.com/hudson/job/UML--master/ which takes the gh-pages content and integrates it into the Eclipse Help Content. The content of the @gh-pages@ is just copied to @UML-Designer/plugins/org.obeonetwork.dsl.uml2.design.doc/html@.
+The web site is integrated inside Eclipse as embedded documentation for UML Designer. This is done by the "Hudson build":https://build.obeonetwork.com/hudson/job/UML--master/ which takes the gh-pages content and integrates it into the Eclipse Help Content. The content of the @gh-pages@ is just copied to @UML-Designer/plugins/org.obeonetwork.dsl.uml2.design.doc/html@.
 
 Pay attention when you update the documentation structure to update also the Eclipse toc. We defined an Eclipse specific "toc.xml":https://github.com/ObeoNetwork/UML-Designer/blob/master/documentation/toc.xml file which is used to integrate the web site content into the Eclipse Help Content table of content.
 

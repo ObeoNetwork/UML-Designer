@@ -6,7 +6,7 @@ relativePath: ..
 ---
 
 Kevin wants to use UML Designer to document its application. It exists mainly two features to help him in this tasks :
-* Documentation table from the UML Extensions viewpoint,
+* Documentation table from the Review viewpoint,
 * Export to HTML site or to images.
 
 h1. Manage comments in diagram
@@ -27,7 +27,7 @@ When the layer is activated the comments are visible on the diagram.
 
 The user can remove the comment (see "Diagram editor/Editor main graphical area/Direct edit":{{ page.relativePath }}/ref-doc/define-the-system.html#Direct_edit).
 			
-h1. Comments table
+h1(#Documentation_Table). Comments table
 			
 Thanks to the *documentation table* available in UML Extensions viewpoint, a user can add and review comment on each model element easily. This representation is a table which lists all the elements available in the model sub tree and their related comment.
 The first column show the element name and the second column the associated comment.

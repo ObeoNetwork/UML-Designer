@@ -51,6 +51,18 @@ You might want to have a look on the following help topics :</description>
       <description>You might want to have a look on a few help topics regarding the use case diagram :</description>
       <topic href="html/ref-doc/define-the-application.html#Use_Case_Diagram" label="Using the Use Case Diagram"/>
    </context>
+   <context id="Use Case Cross Table" title="Using the Use Case Cross Table">
+      <description>You might want to have a look on a few help topics regarding the use case cross table :</description>
+      <topic href="html/ref-doc/define-the-application.html#Use_Case_Cross_Table" label="Using the Use Case Cross Table"/>
+   </context>
+   <context id="Package Containment" title="Using the Package Containment Diagram">
+      <description>You might want to have a look on a few help topics regarding the package containment diagram :</description>
+      <topic href="html/ref-doc/define-the-application.html#Package_Containment_Diagram" label="Using the Package Containment Diagram"/>
+   </context>
+   <context id="Documentation Table" title="Using the Documentation Table">
+      <description>You might want to have a look on a few help topics regarding the documentation table:</description>
+      <topic href="html/ref-doc/define-the-application.html#Documentation_Table" label="Using the Documentation Table"/>
+   </context>
    <context id="GettingStarted" title="Getting started">
       <description>You might want to have a look on a few help topics regarding UML Designer :</description>
       <topic href="html/tutorials/tuto-getting-started.html" label="Getting started"/>
