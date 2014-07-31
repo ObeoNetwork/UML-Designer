@@ -62,7 +62,7 @@
     file: developer-guide/build
   - title: Continuous Integration
     file: developer-guide/continuous-integration
-  - title: Build documentation
+  - title: Documentation
     file: developer-guide/documentation
 
 - category: Documentation
