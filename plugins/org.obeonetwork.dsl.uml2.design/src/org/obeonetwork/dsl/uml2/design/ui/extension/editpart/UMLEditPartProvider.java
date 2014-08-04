@@ -14,11 +14,13 @@ import org.eclipse.gmf.runtime.diagram.ui.services.editpart.IEditPartOperation;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Property;
 import org.obeonetwork.dsl.uml2.design.services.ClassDiagramServices;
 import org.obeonetwork.dsl.uml2.design.services.internal.EditLabelSwitch;
@@ -32,7 +34,7 @@ public class UMLEditPartProvider extends AbstractEditPartProvider {
 		switch (SiriusVisualIDRegistry.getVisualID(view)) {
 
 			case DEdgeBeginNameEditPart.VISUAL_ID:
-				DEdgeBeginNameEditPart dEdgePart = new DEdgeBeginNameEditPart(view) {
+				DEdgeBeginNameEditPart dEdgeBeginPart = new DEdgeBeginNameEditPart(view) {
 
 					@Override
 					protected boolean isDirectEditEnabled() {
@@ -40,9 +42,9 @@ public class UMLEditPartProvider extends AbstractEditPartProvider {
 					}
 
 				};
-				dEdgePart.installEditPolicy(org.eclipse.gef.RequestConstants.REQ_DIRECT_EDIT,
+				dEdgeBeginPart.installEditPolicy(org.eclipse.gef.RequestConstants.REQ_DIRECT_EDIT,
 						new UMLDirectEditForBeginRole());
-				return dEdgePart;
+				return dEdgeBeginPart;
 
 			case DEdgeEndNameEditPart.VISUAL_ID:
 				DEdgeEndNameEditPart dEdgeEndPart = new DEdgeEndNameEditPart(view) {
@@ -55,6 +57,18 @@ public class UMLEditPartProvider extends AbstractEditPartProvider {
 				dEdgeEndPart.installEditPolicy(org.eclipse.gef.RequestConstants.REQ_DIRECT_EDIT,
 						new UMLDirectEditForEndRole());
 				return dEdgeEndPart;
+
+			case DEdgeNameEditPart.VISUAL_ID:
+				DEdgeNameEditPart dEdgePart = new DEdgeNameEditPart(view) {
+					@Override
+					protected boolean isDirectEditEnabled() {
+						return true;
+					}
+
+				};
+				dEdgePart.installEditPolicy(org.eclipse.gef.RequestConstants.REQ_DIRECT_EDIT,
+						new UMLDirectEditForLabel());
+				return dEdgePart;
 		}
 		return null;
 	}
@@ -72,12 +86,41 @@ public class UMLEditPartProvider extends AbstractEditPartProvider {
 
 						case DEdgeEndNameEditPart.VISUAL_ID:
 							return true;
+
+						case DEdgeNameEditPart.VISUAL_ID:
+							return true;
 					}
 				}
 			}
 
 		}
 		return false;
+	}
+
+	class UMLDirectEditForLabel extends LabelDirectEditPolicy {
+
+		protected org.eclipse.gef.commands.Command getDirectEditCommand(
+				org.eclipse.gef.requests.DirectEditRequest edit) {
+			final EObject element = ((org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart)getHost())
+					.resolveSemanticElement();
+			final TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(element);
+			final String labelText = (String)edit.getCellEditor().getValue();
+			RecordingCommand cmd = new RecordingCommand(domain) {
+
+				@Override
+				protected void doExecute() {
+					if (element instanceof DSemanticDecorator) {
+						EObject target = ((DSemanticDecorator)element).getTarget();
+						if (target instanceof Association) {
+							((NamedElement)target).setName(labelText);
+						}
+					}
+				}
+			};
+			return new ICommandProxy(new GMFCommandWrapper(domain, cmd));
+
+		};
+
 	}
 
 	class UMLDirectEditForBeginRole extends LabelDirectEditPolicy {

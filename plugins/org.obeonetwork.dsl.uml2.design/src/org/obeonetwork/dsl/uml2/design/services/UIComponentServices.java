@@ -62,8 +62,8 @@ public class UIComponentServices {
 	 */
 	public ComponentRealization createComponentRealization(Classifier realizingClassifier,
 			Component abstraction) {
-		ComponentRealization result = abstraction.createRealization(realizingClassifier.getName() + "To"
-				+ abstraction.getName());
+		// The name is computed by the item provider.
+		ComponentRealization result = abstraction.createRealization(null);
 		result.getRealizingClassifiers().add(realizingClassifier);
 		return result;
 	}

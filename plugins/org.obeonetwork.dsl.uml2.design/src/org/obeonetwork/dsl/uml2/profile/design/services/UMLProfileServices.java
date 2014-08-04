@@ -46,8 +46,7 @@ import com.google.common.collect.Lists;
 /**
  * Services for UML Profile.
  * 
- * @author Mohamed-Lamine BOUKHANOUFA <a
- *         href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
+ * @author Mohamed-Lamine BOUKHANOUFA <a href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
  *         >mohamed-lamine.boukhanoufa@obeo.fr</a>
  */
 public class UMLProfileServices {
@@ -80,21 +79,18 @@ public class UMLProfileServices {
 	 * @param allContentProfile
 	 *            to define
 	 */
-	private void defineProfileDialog(final Profile rootProfile,
-			final List<Profile> allContentProfile) {
+	private void defineProfileDialog(final Profile rootProfile, final List<Profile> allContentProfile) {
 		boolean result = false;
 
-		final String[] buttonYes = { OK };
-		final Shell activeShell = PlatformUI.getWorkbench().getDisplay()
-				.getActiveShell();
+		final String[] buttonYes = {OK};
+		final Shell activeShell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
 		MessageDialog msgDialogYes = null;
 
 		result = defineProfile(rootProfile, allContentProfile);
 
 		if (result) {
-			msgDialogYes = new MessageDialog(activeShell, "Define the Profile",
-					null, "The profile is defined", MessageDialog.INFORMATION,
-					buttonYes, 0);
+			msgDialogYes = new MessageDialog(activeShell, "Define the Profile", null,
+					"The profile is defined", MessageDialog.INFORMATION, buttonYes, 0);
 			msgDialogYes.open();
 		}
 	}
@@ -108,13 +104,11 @@ public class UMLProfileServices {
 	 *            to define.
 	 * @return true if defined, else false.
 	 */
-	public static boolean defineProfile(final Profile rootProfile,
-			final List<Profile> allContentProfile) {
+	public static boolean defineProfile(final Profile rootProfile, final List<Profile> allContentProfile) {
 		boolean result = false;
 
-		final ProfileVersionDialog versionDialog = new ProfileVersionDialog(
-				PlatformUI.getWorkbench().getDisplay().getActiveShell(),
-				rootProfile);
+		final ProfileVersionDialog versionDialog = new ProfileVersionDialog(PlatformUI.getWorkbench()
+				.getDisplay().getActiveShell(), rootProfile);
 		versionDialog.open();
 
 		if (versionDialog.getReturnCode() == IDialogConstants.OK_ID) {
@@ -126,22 +120,18 @@ public class UMLProfileServices {
 			// the whole
 			undefineProfile(rootProfile);
 
-			result = defineAndAnnotateProfile(rootProfile,
-					uMLDesignerProfileVersion);
-
+			result = defineAndAnnotateProfile(rootProfile, uMLDesignerProfileVersion);
 
 			for (Profile profile : allContentProfile) {
 
-				result = defineAndAnnotateProfile(profile,
-						uMLDesignerProfileVersion);
+				result = defineAndAnnotateProfile(profile, uMLDesignerProfileVersion);
 			}
 		}
 		return result;
 	}
 
 	/**
-	 * Define and annotate the profile with the version
-	 * profileVersionAnnotation.
+	 * Define and annotate the profile with the version profileVersionAnnotation.
 	 * 
 	 * @param profile
 	 *            to define.
@@ -168,11 +158,9 @@ public class UMLProfileServices {
 			// .getEAnnotation(UMLDesignerProfileVersion.UML_DESIGNER_PROFILE_EANNOTATION_SOURCE)
 			// ==
 			// null) {
-			final EAnnotation eAnnotation = EcoreFactory.eINSTANCE
-					.createEAnnotation();
+			final EAnnotation eAnnotation = EcoreFactory.eINSTANCE.createEAnnotation();
 			final UMLDesignerProfileVersion umlDesignerProfileVersion = new UMLDesignerProfileVersion();
-			umlDesignerProfileVersion.initEAnnotationVersion(eAnnotation,
-					profileVersionAnnotation);
+			umlDesignerProfileVersion.initEAnnotationVersion(eAnnotation, profileVersionAnnotation);
 			rootProfileDefinition.getEAnnotations().add(eAnnotation);
 			// }
 		}
@@ -198,8 +186,8 @@ public class UMLProfileServices {
 	 * @return a list all sub profile.
 	 */
 	public static List<Profile> getAllSubProfiles(final Profile rootProfile) {
-		final List<Profile> allSubProfiles = Lists.newArrayList(Iterators
-				.filter(rootProfile.eAllContents(), Profile.class));
+		final List<Profile> allSubProfiles = Lists.newArrayList(Iterators.filter(rootProfile.eAllContents(),
+				Profile.class));
 		allSubProfiles.remove(rootProfile);
 
 		return allSubProfiles;
@@ -212,28 +200,24 @@ public class UMLProfileServices {
 	 *            to undefine
 	 */
 	public static void undefineProfileDialog(final Profile rootProfile) {
-		final String[] buttonYesNo = { YES, NO };
-		final String[] buttonYes = { OK };
-		final Shell activeShell = PlatformUI.getWorkbench().getDisplay()
-				.getActiveShell();
+		final String[] buttonYesNo = {YES, NO};
+		final String[] buttonYes = {OK};
+		final Shell activeShell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
 		MessageDialog msgDialogYesNo = null;
 		MessageDialog msgDialogYes = null;
 		if (rootProfile.getDefinition() != null) {
-			msgDialogYesNo = new MessageDialog(activeShell, undefineProfile,
-					null, "Would you like to undefine this profile ?",
-					MessageDialog.QUESTION, buttonYesNo, 1);
+			msgDialogYesNo = new MessageDialog(activeShell, undefineProfile, null,
+					"Would you like to undefine this profile ?", MessageDialog.QUESTION, buttonYesNo, 1);
 			final int diagResult = msgDialogYesNo.open();
 			if (diagResult == 0) {
 				undefineProfile(rootProfile);
-				msgDialogYes = new MessageDialog(activeShell, undefineProfile,
-						null, "The profile is undefined",
-						MessageDialog.INFORMATION, buttonYes, 0);
+				msgDialogYes = new MessageDialog(activeShell, undefineProfile, null,
+						"The profile is undefined", MessageDialog.INFORMATION, buttonYes, 0);
 				msgDialogYes.open();
 			}
 		} else {
-			msgDialogYes = new MessageDialog(activeShell, undefineProfile,
-					null, "The profile is not defined !",
-					MessageDialog.WARNING, buttonYes, 0);
+			msgDialogYes = new MessageDialog(activeShell, undefineProfile, null,
+					"The profile is not defined !", MessageDialog.WARNING, buttonYes, 0);
 			msgDialogYes.open();
 		}
 	}
@@ -247,12 +231,10 @@ public class UMLProfileServices {
 	public static void undefineProfile(final Profile rootProfile) {
 		if (rootProfile.getDefinition() != null) {
 			List<Profile> allContentProfile = getAllSubProfiles(rootProfile);
-			rootProfile.getEAnnotations().remove(
-					rootProfile.getDefinition().eContainer());
+			rootProfile.getEAnnotations().remove(rootProfile.getDefinition().eContainer());
 			for (Profile profile : allContentProfile) {
 				if (profile.getDefinition() != null) {
-					profile.getEAnnotations().remove(
-							profile.getDefinition().eContainer());
+					profile.getEAnnotations().remove(profile.getDefinition().eContainer());
 				}
 			}
 		}
@@ -267,32 +249,28 @@ public class UMLProfileServices {
 	 *            of the reconnection.
 	 * @return true if the reconnection is possible, else false.
 	 */
-	public boolean canReconnectExtension(final EObject element,
-			final EObject target) {
+	public boolean canReconnectExtension(final EObject element, final EObject target) {
 		if (element instanceof Extension) {
-			final Extension extension = (Extension) element;
+			final Extension extension = (Extension)element;
 			if (target instanceof ElementImport) {
-				final Class newPointedMetaClass = (Class) ((ElementImport) target)
-						.getImportedElement();
+				final Class newPointedMetaClass = (Class)((ElementImport)target).getImportedElement();
 
-				final NamedElement baseProperty = extension.getStereotype()
-						.getMember(base + newPointedMetaClass.getName());
+				final NamedElement baseProperty = extension.getStereotype().getMember(
+						base + newPointedMetaClass.getName());
 				if (baseProperty == null)
 					return true;
 				else if (baseProperty instanceof Property) {
-					if (!((Property) baseProperty).getType().equals(
-							newPointedMetaClass))
+					if (!((Property)baseProperty).getType().equals(newPointedMetaClass))
 						return true;
 				}
 			}
 			if (target instanceof Stereotype) {
-				final NamedElement baseProperty = ((Stereotype) target)
-						.getMember(base + extension.getMetaclass().getName());
+				final NamedElement baseProperty = ((Stereotype)target).getMember(base
+						+ extension.getMetaclass().getName());
 				if (baseProperty == null)
 					return true;
 				else if (baseProperty instanceof Property) {
-					if (!((Property) baseProperty).getType().equals(
-							extension.getMetaclass()))
+					if (!((Property)baseProperty).getType().equals(extension.getMetaclass()))
 						return true;
 				}
 			}
@@ -300,19 +278,16 @@ public class UMLProfileServices {
 		return false;
 	}
 
-	public boolean canCreateExtension(final Stereotype source,
-			final Stereotype target) {
-		return canCreateExtension((EObject) source, (EObject) target);
+	public boolean canCreateExtension(final Stereotype source, final Stereotype target) {
+		return canCreateExtension((EObject)source, (EObject)target);
 	}
 
-	public boolean canCreateExtension(final Stereotype source,
-			final ElementImport target) {
-		return canCreateExtension((EObject) source, (EObject) target);
+	public boolean canCreateExtension(final Stereotype source, final ElementImport target) {
+		return canCreateExtension((EObject)source, (EObject)target);
 	}
 
 	/**
-	 * Test if is it possible to create an extension from stereotype source to
-	 * the stereotype extension.
+	 * Test if is it possible to create an extension from stereotype source to the stereotype extension.
 	 * 
 	 * @param source
 	 *            stereotype.
@@ -320,22 +295,19 @@ public class UMLProfileServices {
 	 *            stereotype.
 	 * @return true if the extension between source and target is possible.
 	 */
-	private boolean canCreateExtension(final EObject source,
-			final EObject target) {
+	private boolean canCreateExtension(final EObject source, final EObject target) {
 		if (source instanceof Stereotype) {
-			final Stereotype stereotypeSource = (Stereotype) source;
+			final Stereotype stereotypeSource = (Stereotype)source;
 			if (target instanceof ElementImport) {
-				final ElementImport elementImport = (ElementImport) target;
-				final NamedElement metaClass = elementImport
-						.getImportedElement();
+				final ElementImport elementImport = (ElementImport)target;
+				final NamedElement metaClass = elementImport.getImportedElement();
 
 				// this code find all extension including inherited.
-				final NamedElement baseProperty = stereotypeSource
-						.getMember(base + metaClass.getName());
+				final NamedElement baseProperty = stereotypeSource.getMember(base + metaClass.getName());
 				if (baseProperty == null)
 					return true;
 				else if (baseProperty instanceof Property) {
-					if (((Property) baseProperty).getType().equals(metaClass))
+					if (((Property)baseProperty).getType().equals(metaClass))
 						return true;
 				}
 
@@ -350,7 +322,7 @@ public class UMLProfileServices {
 			}
 			if (target instanceof Stereotype && !source.equals(target)) {
 
-				final Stereotype stereotypeTarget = (Stereotype) target;
+				final Stereotype stereotypeTarget = (Stereotype)target;
 				if (stereotypeSource.getGeneralization(stereotypeTarget) == null
 						&& stereotypeTarget.getGeneralization(stereotypeSource) == null)
 					return true;
@@ -372,8 +344,7 @@ public class UMLProfileServices {
 		}
 		final List<Property> properties = new ArrayList<Property>();
 		for (Property property : classifier.getAttributes()) {
-			if (property.getAssociation() == null
-					|| !(property.getAssociation() instanceof Extension))
+			if (property.getAssociation() == null || !(property.getAssociation() instanceof Extension))
 				properties.add(property);
 		}
 		return properties;
@@ -391,9 +362,8 @@ public class UMLProfileServices {
 	}
 
 	/**
-	 * A message dialog for the creation of an extra association between the
-	 * stereotype source 'stereotypeSource' and the the stereotype target
-	 * 'targetElement'.
+	 * A message dialog for the creation of an extra association between the stereotype source
+	 * 'stereotypeSource' and the the stereotype target 'targetElement'.
 	 * 
 	 * @param stereotypeSource
 	 *            stereotype source.
@@ -402,27 +372,25 @@ public class UMLProfileServices {
 	 * @param profile
 	 *            owner of the stereotypes.
 	 */
-	public void createExtraAssociationDialog(final Stereotype stereotypeSource,
-			final Element targetElement, final Profile profile) {
+	public void createExtraAssociationDialog(final Stereotype stereotypeSource, final Element targetElement,
+			final Profile profile) {
 
-		final ExtraAssociationSelectionDialog dialog = new ExtraAssociationSelectionDialog(
-				PlatformUI.getWorkbench().getDisplay().getActiveShell(),
-				profile, stereotypeSource, targetElement, false);
+		final ExtraAssociationSelectionDialog dialog = new ExtraAssociationSelectionDialog(PlatformUI
+				.getWorkbench().getDisplay().getActiveShell(), profile, stereotypeSource, targetElement,
+				false);
 		dialog.open();
 		if (dialog.getResult() != null) {
 			if (targetElement instanceof Stereotype) {
-				final Stereotype stereotypeTarget = (Stereotype) targetElement;
-					createExtraAssociation(stereotypeSource, stereotypeTarget,
-							dialog.getAssociationName(), dialog.getResult(),
-							profile);
+				final Stereotype stereotypeTarget = (Stereotype)targetElement;
+				createExtraAssociation(stereotypeSource, stereotypeTarget, dialog.getAssociationName(),
+						dialog.getResult(), profile);
 			}
 		}
 	}
 
 	/**
-	 * Create an extra association between the stereotype source
-	 * 'stereotypeSource' and the the stereotype target 'stereotypeTarget'. the
-	 * result stereotype is named 'stereotypName'.
+	 * Create an extra association between the stereotype source 'stereotypeSource' and the the stereotype
+	 * target 'stereotypeTarget'. the result stereotype is named 'stereotypName'.
 	 * 
 	 * @param stereotypeSource
 	 *            the stereotype source.
@@ -431,21 +399,19 @@ public class UMLProfileServices {
 	 * @param stereotypName
 	 *            the stereotype name.
 	 * @param result
-	 *            the metaclass selected for of the creation of the extra
-	 *            association.
+	 *            the metaclass selected for of the creation of the extra association.
 	 * @param profile
 	 *            owner of the stereotypes.
 	 * @return the new stereotype of the extra association.
 	 */
 	public Stereotype createExtraAssociation(final Stereotype stereotypeSource,
-			final Stereotype stereotypeTarget, final String stereotypName,
-			final Object[] result, final Profile profile) {
+			final Stereotype stereotypeTarget, final String stereotypName, final Object[] result,
+			final Profile profile) {
 		ElementImport metaClass = null;
 		Stereotype newStereotype = null;
 		if (result != null && result[0] instanceof Class) {
-			final Class selectedMetaclass = (Class) result[0];
-			final PackageableElement importedMember = profile
-					.getImportedMember(selectedMetaclass.getName());
+			final Class selectedMetaclass = (Class)result[0];
+			final PackageableElement importedMember = profile.getImportedMember(selectedMetaclass.getName());
 			if (importedMember == null) {
 				metaClass = profile.createMetaclassReference(selectedMetaclass);
 			} else {
@@ -457,8 +423,7 @@ public class UMLProfileServices {
 			newStereotype.setName(stereotypName);
 			profile.getOwnedStereotypes().add(newStereotype);
 			createMetaclassExtension(newStereotype, metaClass);
-			createStereotypeAssociation(newStereotype, metaClass,
-					stereotypeSource, stereotypeTarget);
+			createStereotypeAssociation(newStereotype, metaClass, stereotypeSource, stereotypeTarget);
 		}
 		return newStereotype;
 	}
@@ -476,20 +441,18 @@ public class UMLProfileServices {
 	 */
 	public Association createAssociation(final Stereotype stereotypeSource,
 			final Stereotype stereotypeTarget, final String associationName) {
-		final Association association = UMLFactory.eINSTANCE
-				.createAssociation();
-		association.setName(associationName);
+		final Association association = UMLFactory.eINSTANCE.createAssociation();
+		
+		// The name is provided by the item provider
 
-		final Property sourceStereoProperty = UMLFactory.eINSTANCE
-				.createProperty();
+		final Property sourceStereoProperty = UMLFactory.eINSTANCE.createProperty();
 		sourceStereoProperty.setName(stereotypeSource.getName() + "s");
 		sourceStereoProperty.setType(stereotypeSource);
 		sourceStereoProperty.setLower(0);
 		sourceStereoProperty.setUpper(-1);
 		association.getOwnedEnds().add(sourceStereoProperty);
 
-		final Property targetStereoProperty = UMLFactory.eINSTANCE
-				.createProperty();
+		final Property targetStereoProperty = UMLFactory.eINSTANCE.createProperty();
 		targetStereoProperty.setName(stereotypeTarget.getName() + "s");
 		targetStereoProperty.setType(stereotypeTarget);
 		targetStereoProperty.setLower(0);
@@ -510,26 +473,24 @@ public class UMLProfileServices {
 	 *            stereotype target.
 	 * @return the created association.
 	 */
-	public Association createAssociation(final Stereotype stereotypeSource,
-			final Stereotype stereotypeTarget) {
-		return createAssociation(stereotypeSource, stereotypeTarget,
-				stereotypeSource.getName() + "To" + stereotypeTarget.getName());
+	public Association createAssociation(final Stereotype stereotypeSource, final Stereotype stereotypeTarget) {
+		return createAssociation(stereotypeSource, stereotypeTarget, stereotypeSource.getName() + "To"
+				+ stereotypeTarget.getName());
 	}
+
 	/**
-	 * Create an UML Extension between the stereotype source and the target
-	 * element.
+	 * Create an UML Extension between the stereotype source and the target element.
 	 * 
 	 * @param stereotype
 	 *            source.
 	 * @param targetElement
 	 *            the target.
 	 */
-	public void createExtension(final Stereotype stereotype,
-			final Element targetElement) {
+	public void createExtension(final Stereotype stereotype, final Element targetElement) {
 		if (targetElement instanceof ElementImport) {
-			createMetaclassExtension(stereotype, (ElementImport) targetElement);
+			createMetaclassExtension(stereotype, (ElementImport)targetElement);
 		} else if (targetElement instanceof Stereotype) {
-			createGeneralization(stereotype, (Stereotype) targetElement);
+			createGeneralization(stereotype, (Stereotype)targetElement);
 		}
 	}
 
@@ -541,11 +502,9 @@ public class UMLProfileServices {
 	 * @param stereotypeTarget
 	 *            of the generalisation.
 	 */
-	public void createGeneralization(final Stereotype stereotypeSource,
-			final Stereotype stereotypeTarget) {
+	public void createGeneralization(final Stereotype stereotypeSource, final Stereotype stereotypeTarget) {
 		if (!isGeneraleFor(stereotypeTarget, stereotypeSource)) {
-			final Generalization generalization = UMLFactory.eINSTANCE
-					.createGeneralization();
+			final Generalization generalization = UMLFactory.eINSTANCE.createGeneralization();
 			generalization.setGeneral(stereotypeTarget);
 			generalization.setSpecific(stereotypeSource);
 			stereotypeSource.getGeneralizations().add(generalization);
@@ -553,20 +512,16 @@ public class UMLProfileServices {
 	}
 
 	/**
-	 * Test if the stereotype target is a generalisation of the stereotype
-	 * source.
+	 * Test if the stereotype target is a generalisation of the stereotype source.
 	 * 
 	 * @param stereotypeTarget
 	 *            of the generalisation.
 	 * @param stereotypeSource
 	 *            of the generalisation.
-	 * @return true if the stereotype target is a generalisation of the
-	 *         stereotype source.
+	 * @return true if the stereotype target is a generalisation of the stereotype source.
 	 */
-	public boolean isGeneraleFor(final Stereotype stereotypeTarget,
-			final Stereotype stereotypeSource) {
-		for (Generalization generalization : stereotypeSource
-				.getGeneralizations()) {
+	public boolean isGeneraleFor(final Stereotype stereotypeTarget, final Stereotype stereotypeSource) {
+		for (Generalization generalization : stereotypeSource.getGeneralizations()) {
 			if (generalization.getGeneral().equals(stereotypeTarget)) {
 				return true;
 			}
@@ -584,30 +539,25 @@ public class UMLProfileServices {
 	 *            of the extension.
 	 * @return new extension.
 	 */
-	public Extension createMetaclassExtension(final Stereotype stereotype,
-			final ElementImport elementImport) {
+	public Extension createMetaclassExtension(final Stereotype stereotype, final ElementImport elementImport) {
 		Extension extension = null;
-		final PackageableElement importedElement = elementImport
-				.getImportedElement();
+		final PackageableElement importedElement = elementImport.getImportedElement();
 		if (importedElement != null && importedElement instanceof Type
-				&& !isExtentedBy((Type) importedElement, stereotype)) {
+				&& !isExtentedBy((Type)importedElement, stereotype)) {
 
-			final Type metaclass = (Type) importedElement;
-			final Property baseMetaclass = UMLFactory.eINSTANCE
-					.createProperty();
+			final Type metaclass = (Type)importedElement;
+			final Property baseMetaclass = UMLFactory.eINSTANCE.createProperty();
 			baseMetaclass.setName(base + metaclass.getName());
 			baseMetaclass.setType(metaclass);
 			stereotype.getOwnedAttributes().add(baseMetaclass);
 
-			final ExtensionEnd extensionEnd = UMLFactory.eINSTANCE
-					.createExtensionEnd();
+			final ExtensionEnd extensionEnd = UMLFactory.eINSTANCE.createExtensionEnd();
 			extensionEnd.setName("extension_" + stereotype.getName());
 			extensionEnd.setType(stereotype);
 
 			extension = UMLFactory.eINSTANCE.createExtension();
 			extension.getOwnedEnds().add(extensionEnd);
-			extension.setName(stereotype.getName() + "Extend"
-					+ metaclass.getName());
+			// No needs to set the name as it is provided by the item provider
 			extension.getMemberEnds().add(baseMetaclass);
 
 			stereotype.getProfile().getPackagedElements().add(extension);
@@ -630,8 +580,8 @@ public class UMLProfileServices {
 	}
 
 	/**
-	 * Create a new {@link Stereotype} in the profile that directly or
-	 * indirectly contains the package_ in parameter.
+	 * Create a new {@link Stereotype} in the profile that directly or indirectly contains the package_ in
+	 * parameter.
 	 * 
 	 * @param package_
 	 *            the package_.
@@ -639,15 +589,13 @@ public class UMLProfileServices {
 	 */
 	public Stereotype createStereotype(Package package_) {
 		Stereotype newStereotype = UMLFactory.eINSTANCE.createStereotype();
-		package_.getOwnedStereotypes().add(
-					newStereotype);
+		package_.getOwnedStereotypes().add(newStereotype);
 		return newStereotype;
 	}
 
 	/**
-	 * Create a new {@link Stereotype} in the profile that directly or
-	 * indirectly contains the stereotype in parameter and create a
-	 * generalization to this stereotype from the new created stereotype.
+	 * Create a new {@link Stereotype} in the profile that directly or indirectly contains the stereotype in
+	 * parameter and create a generalization to this stereotype from the new created stereotype.
 	 * 
 	 * @param stereotype
 	 *            the stereotype.
@@ -656,17 +604,15 @@ public class UMLProfileServices {
 	public Stereotype createStereotype(Stereotype stereotype) {
 		Stereotype newStereotype = UMLFactory.eINSTANCE.createStereotype();
 		if (stereotype.getOwner() instanceof Package) {
-			((Package) stereotype.getOwner()).getOwnedStereotypes().add(
-					newStereotype);
+			((Package)stereotype.getOwner()).getOwnedStereotypes().add(newStereotype);
 		}
 		createGeneralization(newStereotype, stereotype);
 		return newStereotype;
 	}
 
 	/**
-	 * Create a new {@link Stereotype} in the profile that directly or
-	 * indirectly contains the elementImport in parameter and create a extension
-	 * to this elementImport from the new created stereotype.
+	 * Create a new {@link Stereotype} in the profile that directly or indirectly contains the elementImport
+	 * in parameter and create a extension to this elementImport from the new created stereotype.
 	 * 
 	 * @param elementImport
 	 *            the elementImport.
@@ -674,8 +620,7 @@ public class UMLProfileServices {
 	 */
 	public Stereotype createStereotype(ElementImport elementImport) {
 		Stereotype newStereotype = UMLFactory.eINSTANCE.createStereotype();
-		getProfileOwner(elementImport).getOwnedStereotypes().add(
-					newStereotype);
+		getProfileOwner(elementImport).getOwnedStereotypes().add(newStereotype);
 		createMetaclassExtension(newStereotype, elementImport);
 		return newStereotype;
 	}
@@ -690,7 +635,7 @@ public class UMLProfileServices {
 	public static Profile getProfileOwner(final Element umlElement) {
 
 		if (umlElement.getOwner() instanceof Profile)
-			return (Profile) umlElement.getOwner();
+			return (Profile)umlElement.getOwner();
 		else
 			return getProfileOwner(umlElement.getOwner());
 	}
@@ -707,34 +652,28 @@ public class UMLProfileServices {
 	 * @param stereotypeTarget
 	 *            of the extra Association
 	 */
-	public void createStereotypeAssociation(final Stereotype stereotype,
-			final ElementImport elementImport,
+	public void createStereotypeAssociation(final Stereotype stereotype, final ElementImport elementImport,
 			final Stereotype stereotypeSource, final Stereotype stereotypeTarget) {
-		final PackageableElement importedElement = elementImport
-				.getImportedElement();
+		final PackageableElement importedElement = elementImport.getImportedElement();
 
 		if (importedElement != null && importedElement instanceof Type
-				&& isExtentedBy((Type) importedElement, stereotype)) {
+				&& isExtentedBy((Type)importedElement, stereotype)) {
 
-			final Type metaclass = (Type) importedElement;
-			final Class metaclassClass = (Class) importedElement;
+			final Type metaclass = (Type)importedElement;
+			final Class metaclassClass = (Class)importedElement;
 			final ArrayList<Property> properties = UMLServices
 					.getRelationShipSourceTargetPeroperties(metaclassClass);
 			final Property sourceProperty = properties.get(0);
 			final Property targetProperty = properties.get(1);
 			metaclassClass.getAttributes();
 
-			final Property associationSourceEnd = UMLFactory.eINSTANCE
-					.createProperty();
-			associationSourceEnd.setName("sourceRole_"
-					+ sourceProperty.getName());
+			final Property associationSourceEnd = UMLFactory.eINSTANCE.createProperty();
+			associationSourceEnd.setName("sourceRole_" + sourceProperty.getName());
 			associationSourceEnd.setType(stereotypeSource);
 			stereotype.getOwnedAttributes().add(associationSourceEnd);
 
-			final Property associationTargetEnd = UMLFactory.eINSTANCE
-					.createProperty();
-			associationTargetEnd.setName("targetRole_"
-					+ targetProperty.getName());
+			final Property associationTargetEnd = UMLFactory.eINSTANCE.createProperty();
+			associationTargetEnd.setName("targetRole_" + targetProperty.getName());
 			associationTargetEnd.setType(stereotypeTarget);
 			stereotype.getOwnedAttributes().add(associationTargetEnd);
 
@@ -754,13 +693,10 @@ public class UMLProfileServices {
 	 *            of the extension.
 	 * @return the found extension, or null.
 	 */
-	public Extension getExtenstion(final Stereotype stereotype,
-			final Type metaclass) {
-		for (Extension extention : stereotype.getProfile().getOwnedExtensions(
-				false)) {
+	public Extension getExtenstion(final Stereotype stereotype, final Type metaclass) {
+		for (Extension extention : stereotype.getProfile().getOwnedExtensions(false)) {
 			if (extention.getName() != null) {
-				if (extention.getName().equals(
-						stereotype.getName() + "Extend" + metaclass.getName())) {
+				if (extention.getName().equals(stereotype.getName() + "Extend" + metaclass.getName())) {
 					return extention;
 				}
 			}
@@ -778,9 +714,7 @@ public class UMLProfileServices {
 	 *            of extension.
 	 * @return true if the metaclass is extended by the stereotype.
 	 */
-	public boolean isExtentedBy(final Type metaclassType,
-			final Stereotype stereotype) {
-		return !(stereotype.getOwnedAttribute(base + metaclassType.getName(),
-				metaclassType) == null);
+	public boolean isExtentedBy(final Type metaclassType, final Stereotype stereotype) {
+		return !(stereotype.getOwnedAttribute(base + metaclassType.getName(), metaclassType) == null);
 	}
 }
