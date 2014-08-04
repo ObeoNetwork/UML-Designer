@@ -27,27 +27,27 @@ Contributors:
 
   <modules>
     <!-- Build plugins -->
-    <module>${root-path}/plugins/org.obeonetwork.gmf.runtime.diagram.ui.extension</module>
-    <module>${root-path}/plugins/org.obeonetwork.dsl.uml2.design</module>
-    <module>${root-path}/plugins/org.obeonetwork.dsl.uml2.branding</module>
-    <module>${root-path}/plugins/org.obeonetwork.dsl.uml2.design.doc</module>
-    <module>${root-path}/plugins/org.obeonetwork.dsl.uml2.usage</module>
-    <module>${root-path}/plugins/org.obeonetwork.dsl.uml2.properties</module>
-    <module>${root-path}/plugins/org.obeonetwork.dsl.uml2.navigator</module>
-    <module>${root-path}/plugins/org.obeonetwork.dsl.uml2.migration</module>
-    <module>${root-path}/plugins/org.obeonetwork.dsl.uml2.discovery</module>
+    <module>../../plugins/org.obeonetwork.gmf.runtime.diagram.ui.extension</module>
+    <module>../../plugins/org.obeonetwork.dsl.uml2.design</module>
+    <module>../../plugins/org.obeonetwork.dsl.uml2.branding</module>
+    <module>../../plugins/org.obeonetwork.dsl.uml2.design.doc</module>
+    <module>../../plugins/org.obeonetwork.dsl.uml2.usage</module>
+    <module>../../plugins/org.obeonetwork.dsl.uml2.properties</module>
+    <module>../../plugins/org.obeonetwork.dsl.uml2.navigator</module>
+    <module>../../plugins/org.obeonetwork.dsl.uml2.migration</module>
+    <module>../../plugins/org.obeonetwork.dsl.uml2.discovery</module>
 
 
     <!-- Build test plugins -->
-    <module>${root-path}/tests/org.obeonetwork.dsl.uml2.design.tests</module>
+    <module>../../tests/org.obeonetwork.dsl.uml2.design.tests</module>
     <!--<module>tests/org.obeonetwork.dsl.uml2.properties.tests</module> -->
 
     <!-- Build features -->
-    <module>${root-path}/packaging/org.obeonetwork.dsl.uml2.runtime.feature</module>
-    <module>${root-path}/packaging/org.obeonetwork.dsl.uml2.runtime.product.feature</module>
-    <module>${root-path}/packaging/org.obeonetwork.dsl.uml2.runtime.sdk.feature</module>
+    <module>../../packaging/org.obeonetwork.dsl.uml2.runtime.feature</module>
+    <module>../../packaging/org.obeonetwork.dsl.uml2.runtime.product.feature</module>
+    <module>../../packaging/org.obeonetwork.dsl.uml2.runtime.sdk.feature</module>
 
     <!-- Build update-sites -->
-    <module>${root-path}/packaging/org.obeonetwork.dsl.uml2.update</module>
+    <module>../../packaging/org.obeonetwork.dsl.uml2.update</module>
   </modules>
 </project>
