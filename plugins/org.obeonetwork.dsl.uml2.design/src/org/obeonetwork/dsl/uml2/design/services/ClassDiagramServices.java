@@ -7,7 +7,6 @@ import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Class;
-import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.Interface;
@@ -60,10 +59,6 @@ public class ClassDiagramServices {
 		types.add(getSourceType(association));
 		types.add(getTargetType(association));
 		return types;
-	}
-
-	public void createAssociation(Package pkg, Classifier source, Classifier target) {
-		System.out.println("Create asso");
 	}
 
 	public List<Property> getMemberEnds(Association association) {

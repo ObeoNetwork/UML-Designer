@@ -120,8 +120,8 @@ public class DependencyServices {
 				if (type instanceof BehavioredClassifier) {
 					isPortWithValidType = true;
 					BehavioredClassifier behavioredClassifier = (BehavioredClassifier)type;
-					result = behavioredClassifier.createInterfaceRealization(
-							genDependencyName(behavioredClassifier, contract), contract);
+					// The name is provided by the item provider.
+					result = behavioredClassifier.createInterfaceRealization(null, contract);
 					result.getClients().add(port);
 				}
 			}
@@ -129,15 +129,15 @@ public class DependencyServices {
 				EObject eContainer = context.eContainer();
 				if (eContainer instanceof BehavioredClassifier) {
 					BehavioredClassifier behavioredClassifier = (BehavioredClassifier)eContainer;
-					result = behavioredClassifier.createInterfaceRealization(
-							genDependencyName(property, contract), contract);
+					// The name is provided by the item provider.
+					result = behavioredClassifier.createInterfaceRealization(null, contract);
 					result.getClients().add(property);
 				}
 			}
 		} else if (context instanceof BehavioredClassifier) {
 			BehavioredClassifier behavioredClassifier = (BehavioredClassifier)context;
-			result = behavioredClassifier.createInterfaceRealization(
-					genDependencyName(behavioredClassifier, contract), contract);
+			// The name is computed by the item provider.
+			result = behavioredClassifier.createInterfaceRealization(null, contract);
 		} else {
 			new LogServices().error(
 					"CompositeStructureServices.createInterfaceRealization(" + context.getClass()
@@ -169,7 +169,7 @@ public class DependencyServices {
 					isPortWithValidType = true;
 					NamedElement namedElement = (NamedElement)type;
 					result = namedElement.createUsage(contract);
-					result.setName(new DependencyServices().genDependencyName(contract, namedElement));
+					// The name is provided by the item provider.
 					result.getClients().add(port);
 				}
 			}
@@ -178,14 +178,14 @@ public class DependencyServices {
 				if (eContainer instanceof NamedElement) {
 					NamedElement namedElement = (NamedElement)eContainer;
 					result = namedElement.createUsage(contract);
-					result.setName(new DependencyServices().genDependencyName(contract, property));
+					// The name is provided by the item provider.
 					result.getClients().add(property);
 				}
 			}
 		} else if (context instanceof NamedElement) {
 			NamedElement namedElement = (NamedElement)context;
 			result = namedElement.createUsage(contract);
-			result.setName(new DependencyServices().genDependencyName(contract, namedElement));
+			// The name is provided by the item provider.
 		} else {
 			new LogServices().error("CompositeStructureServices.createUsage(" + context.getClass()
 					+ ") not handled", null);

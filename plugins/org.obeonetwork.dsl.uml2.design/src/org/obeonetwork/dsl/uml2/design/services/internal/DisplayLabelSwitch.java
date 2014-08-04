@@ -13,6 +13,7 @@ package org.obeonetwork.dsl.uml2.design.services.internal;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.ui.navigator.ICommonLabelProvider;
 import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.ActivityPartition;
@@ -25,6 +26,7 @@ import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Constraint;
 import org.eclipse.uml2.uml.DataStoreNode;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Duration;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
@@ -43,6 +45,7 @@ import org.eclipse.uml2.uml.LiteralNull;
 import org.eclipse.uml2.uml.LiteralReal;
 import org.eclipse.uml2.uml.LiteralString;
 import org.eclipse.uml2.uml.LiteralUnlimitedNatural;
+import org.eclipse.uml2.uml.Manifestation;
 import org.eclipse.uml2.uml.Message;
 import org.eclipse.uml2.uml.MultiplicityElement;
 import org.eclipse.uml2.uml.NamedElement;
@@ -68,6 +71,7 @@ import org.eclipse.uml2.uml.Trigger;
 import org.eclipse.uml2.uml.TypedElement;
 import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.util.UMLSwitch;
+import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
 import org.obeonetwork.dsl.uml2.design.services.LabelServices;
 
 /**
@@ -102,6 +106,11 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	 * Label services.
 	 */
 	protected LabelServices labelServices = new LabelServices();
+
+	/**
+	 * Label provider.
+	 */
+	ICommonLabelProvider labelProvider = UMLDesignerPlugin.getDefault().getLabelProvider();
 
 	/**
 	 * {@inheritDoc}
@@ -687,6 +696,94 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	 * {@inheritDoc}
 	 */
 	@Override
+	public String caseDependency(Dependency object) {
+		return "";
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String caseManifestation(Manifestation object) {
+		return "<<manifest>>";
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String caseComponentRealization(org.eclipse.uml2.uml.ComponentRealization object) {
+		return "";
+	};
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String caseInterfaceRealization(org.eclipse.uml2.uml.InterfaceRealization object) {
+		return "";
+	};
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String caseDeployment(org.eclipse.uml2.uml.Deployment object) {
+		return "<<deploy>>";
+	};
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String caseUsage(org.eclipse.uml2.uml.Usage object) {
+		return "<<use>>";
+	};
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String caseExtend(org.eclipse.uml2.uml.Extend object) {
+		String labelToDisplay = labelProvider.getText(object);
+		labelToDisplay = labelToDisplay.replace("<Extend> ", "");
+		return labelToDisplay;
+	};
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String caseInclude(org.eclipse.uml2.uml.Include object) {
+		String labelToDisplay = labelProvider.getText(object);
+		labelToDisplay = labelToDisplay.replace("<Include> ", "");
+		return labelToDisplay;
+	};
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String caseControlFlow(org.eclipse.uml2.uml.ControlFlow object) {
+		String labelToDisplay = labelProvider.getText(object);
+		labelToDisplay = labelToDisplay.replace("<ControlFlow> ", "");
+		return labelToDisplay;
+	};
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String caseObjectFlow(org.eclipse.uml2.uml.ObjectFlow object) {
+		String labelToDisplay = labelProvider.getText(object);
+		labelToDisplay = labelToDisplay.replace("<ObjectFlow> ", "");
+		return labelToDisplay;
+	};
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	public String caseNamedElement(NamedElement object) {
 		return computeStereotypes(object) + object.getName();
 	}
@@ -717,7 +814,9 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	 */
 	@Override
 	public String caseAssociation(Association object) {
-		return object.getName();
+		String labelToDisplay = labelProvider.getText(object);
+		labelToDisplay = labelToDisplay.replace("<Association> ", "");
+		return labelToDisplay;
 	}
 
 	/**

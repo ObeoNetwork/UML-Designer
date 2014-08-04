@@ -1337,15 +1337,11 @@ public class UMLServices {
 	private void fixAssociation(Association a, Type b) {
 		Property target = getTarget(a);
 		Property source = getSource(a);
-		String name = "";
 		Property newOne = UMLFactory.eINSTANCE.createProperty();
-		newOne.setName(name);
 		newOne.setUpper(-1);
 		newOne.setUpper(0);
 		newOne.setType(b);
-		if (a.getName() != null) {
-			name = a.getName().toLowerCase();
-		}
+		// The name is computed by the item provider.
 		if (target == null) {
 			a.getOwnedEnds().add(newOne);
 		} else if (source == null) {

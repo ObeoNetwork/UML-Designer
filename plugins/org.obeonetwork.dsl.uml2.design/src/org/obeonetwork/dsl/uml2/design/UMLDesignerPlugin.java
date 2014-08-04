@@ -15,7 +15,9 @@ import java.util.Set;
 
 import org.eclipse.core.runtime.Status;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonLabelProvider;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.ui.navigator.ICommonLabelProvider;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
@@ -40,6 +42,11 @@ public class UMLDesignerPlugin extends AbstractUIPlugin {
 	 * The {@link Viewpoint}s registered in this plug-in.
 	 */
 	private static Set<Viewpoint> viewpoints;
+
+	/**
+	 * Label provider.
+	 */
+	private ICommonLabelProvider labelProvider = null;
 
 	/**
 	 * The constructor.
@@ -94,5 +101,18 @@ public class UMLDesignerPlugin extends AbstractUIPlugin {
 	 */
 	public static void log(int severity, String message, Throwable exception) {
 		getDefault().getLog().log(new Status(severity, PLUGIN_ID, message, exception));
+	}
+
+	/**
+	 * Returns the label provider to use for displaying locked elements.
+	 * 
+	 * @return the label provider to use for displaying locked elements.
+	 */
+	@SuppressWarnings("restriction")
+	public ICommonLabelProvider getLabelProvider() {
+		if (labelProvider == null) {
+			labelProvider = new SiriusCommonLabelProvider();
+		}
+		return labelProvider;
 	}
 }

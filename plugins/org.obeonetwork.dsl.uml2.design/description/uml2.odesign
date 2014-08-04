@@ -559,14 +559,14 @@
         <edgeMappings name="PH_Dependency" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticElements="service:getSemanticElements" sourceMapping="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@nodeMappings[name='PH_Package']" targetMapping="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@nodeMappings[name='PH_Package']" targetFinderExpression="feature:supplier" sourceFinderExpression="feature:client" domainClass="uml.Dependency" useDomainElement="true" reconnections="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect%20package%20dependency%20target'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect%20package%20dependency%20source']">
           <style lineStyle="dash" sizeComputationExpression="1" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription labelExpression="feature:name">
+            <centerLabelStyleDescription labelExpression="service:computeUmlLabel">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
           <conditionnalStyles predicateExpression="[oclIsTypeOf(uml::Usage)/]">
             <style lineStyle="dash" sizeComputationExpression="1" routingStyle="manhattan">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
-              <centerLabelStyleDescription showIcon="false" labelExpression="['&lt;&lt;use>> '+name/]">
+              <centerLabelStyleDescription showIcon="false" labelExpression="service:computeUmlLabel">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </centerLabelStyleDescription>
             </style>
@@ -976,7 +976,6 @@
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedEnd">
                     <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="var:target"/>
                   </subModelOperations>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -1273,6 +1272,9 @@
             <beginLabelStyleDescription showIcon="false" labelExpression="[getSource().computeAssociationEndLabel()/]">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </beginLabelStyleDescription>
+            <centerLabelStyleDescription showIcon="false" labelExpression="service:computeUmlLabel">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
             <endLabelStyleDescription showIcon="false" labelExpression="[getTarget().computeAssociationEndLabel()/]">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </endLabelStyleDescription>
@@ -1281,7 +1283,7 @@
         <edgeMappings name="CD_Dependency" preconditionExpression="[not oclIsKindOf(uml::InterfaceRealization)/]" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="service:diagram.getDependencyInverseRefs" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Interface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Package'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_DataType'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_PrimitiveType']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Interface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Package'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_DataType'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_PrimitiveType']" targetFinderExpression="feature:supplier" sourceFinderExpression="feature:client" targetExpression="var:self" domainClass="uml.Dependency" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='Reconnect']">
           <style lineStyle="dash" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription showIcon="false" labelExpression="feature:name">
+            <centerLabelStyleDescription showIcon="false" labelExpression="service:computeUmlLabel">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
@@ -1305,7 +1307,7 @@
         <edgeMappings name="CD_InterfaceRealization" semanticCandidatesExpression="service:diagram.getInterfaceRealizationInverseRefs" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Interface']" targetFinderExpression="feature:supplier" sourceFinderExpression="feature:client" targetExpression="var:self" domainClass="uml.InterfaceRealization" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='Reconnect']">
           <style lineStyle="dash" targetArrow="InputClosedArrow" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription showIcon="false">
+            <centerLabelStyleDescription showIcon="false" labelExpression="service:computeUmlLabel">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
@@ -1673,7 +1675,6 @@
                           <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="-1"/>
                         </subModelOperations>
                         <subModelOperations xsi:type="tool:SetValue" featureName="navigableOwnedEnd" valueExpression="service:getNavigableOwnedEnds"/>
-                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="[end1.name+'To'+end2.name.toUpperFirst()/]"/>
                       </subModelOperations>
                     </subModelOperations>
                   </subModelOperations>
@@ -2294,6 +2295,9 @@
         <edgeMappings name="CO_ComponentRealization" semanticCandidatesExpression="service:diagram.getComponentRealizationInverseRefs" semanticElements="service:getSemanticElements" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']" targetFinderExpression="feature:abstraction" sourceFinderExpression="feature:realizingClassifier" domainClass="uml.ComponentRealization" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect%20ComponentRealization']">
           <style lineStyle="dash" targetArrow="InputClosedArrow" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="service:computeUmlLabel">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
           </style>
         </edgeMappings>
         <edgeMappings name="CO_Redefined" deletionDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='CO_Delete%20Redefined']" semanticCandidatesExpression="feature:eAllContents" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']/@borderedNodeMappings[name='CO_Port']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']/@borderedNodeMappings[name='CO_Port']" targetFinderExpression="feature:redefinedPort" sourceFinderExpression="var:self" domainClass="uml.Port" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect%20Redefined%20source'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect%20Redefined%20target']">
@@ -2337,14 +2341,14 @@
         <edgeMappings name="CO_Dependency" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="service:diagram.getDependencyOnlyInverseRefs" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']" targetFinderExpression="feature:supplier" sourceFinderExpression="feature:client" domainClass="uml.Dependency" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect%20Dependency']">
           <style lineStyle="dash" sizeComputationExpression="1" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
-            <centerLabelStyleDescription>
+            <centerLabelStyleDescription labelExpression="service:computeUmlLabel">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
           <conditionnalStyles predicateExpression="[oclIsTypeOf(uml::Usage)/]">
             <style sizeComputationExpression="2" routingStyle="manhattan">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
-              <centerLabelStyleDescription>
+              <centerLabelStyleDescription labelExpression="service:computeUmlLabel">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </centerLabelStyleDescription>
             </style>
@@ -2548,7 +2552,6 @@
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Dependency" referenceName="packagedElement">
                     <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="var:target"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="var:source"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="&lt;&lt;dependency>>"/>
                   </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
@@ -3165,7 +3168,7 @@
         <edgeMappings name="DE_Dependency" preconditionExpression="[not oclIsTypeOf(uml::Manifestation)/]" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="service:diagram.getDependencyOrManifestationInverseRefs" doubleClickDescription="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" targetFinderExpression="feature:supplier" sourceFinderExpression="feature:client" domainClass="uml.Dependency" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Reconnect']/@ownedTools[name='ReconnectDependencyTarget'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Reconnect']/@ownedTools[name='ReconnectDependencySource']">
           <style lineStyle="dash" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription labelExpression="feature:name">
+            <centerLabelStyleDescription labelExpression="service:computeUmlLabel">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
@@ -3181,7 +3184,7 @@
         <edgeMappings name="DE_Deployment" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="service:diagram.getDeploymentInverseRefs" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" targetFinderExpression="feature:client" sourceFinderExpression="feature:deployedArtifact" domainClass="uml.Deployment" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Reconnect']/@ownedTools[name='ReconnectDeploymentSource'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Reconnect']/@ownedTools[name='ReconnectDeploymentTarget']">
           <style lineStyle="dash" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription labelExpression="['&lt;&lt;'+name+'>>'/]">
+            <centerLabelStyleDescription labelExpression="service:computeUmlLabel">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
@@ -3189,7 +3192,7 @@
         <edgeMappings name="DE_Manifestation" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="service:diagram.getDependencyOrManifestationInverseRefs" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" targetFinderExpression="feature:supplier" sourceFinderExpression="feature:client" domainClass="uml.Manifestation" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Reconnect']/@ownedTools[name='ReconnectManifestationTarget'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Reconnect']/@ownedTools[name='ReconnectManifestationSource']">
           <style lineStyle="dash" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <centerLabelStyleDescription labelExpression="['&lt;&lt;'+name+'>>'/]">
+            <centerLabelStyleDescription labelExpression="service:computeUmlLabel">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
@@ -3342,7 +3345,6 @@
                         <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="-1"/>
                       </subModelOperations>
                       <subModelOperations xsi:type="tool:SetValue" featureName="navigableOwnedEnd" valueExpression="service:getNavigableOwnedEnds"/>
-                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
@@ -3385,7 +3387,6 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Deployment" referenceName="deployment">
                   <subModelOperations xsi:type="tool:SetValue" featureName="deployedArtifact" valueExpression="var:source"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="deploy"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -3399,7 +3400,6 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Manifestation" referenceName="manifestation">
                   <subModelOperations xsi:type="tool:SetValue" featureName="utilizedElement" valueExpression="var:target"/>
-                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="manifest"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="var:source"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -4085,7 +4085,6 @@
                       <subModelOperations xsi:type="tool:If" conditionExpression="[not eContainer().oclIsTypeOf(uml::StateMachine)/]">
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[eContainer(uml::Region)/]">
                           <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Transition" referenceName="transition">
-                            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Transition_'+source.name+'To'+target.name/]"/>
                             <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:source"/>
                             <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:target"/>
                           </subModelOperations>
@@ -4096,7 +4095,6 @@
                   <subModelOperations xsi:type="tool:If" conditionExpression="[not eContainer().oclIsTypeOf(uml::StateMachine)/]">
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[eContainer(uml::Region)/]">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Transition" referenceName="transition">
-                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Transition_'+source.name+'To'+target.name/]"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:source"/>
                         <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:target"/>
                       </subModelOperations>
@@ -4764,7 +4762,6 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:eContainer">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ControlFlow" referenceName="edge">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="[source.name+'_To_'+target.name/]"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:source"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:target"/>
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.LiteralBoolean" referenceName="guard" variableName="guard">
@@ -4788,7 +4785,6 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ObjectFlow" referenceName="edge">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="[source.name+'_To_'+target.name+'_ObjectFlow'/]"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:source"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:target"/>
                   </subModelOperations>
@@ -4805,7 +4801,6 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.eContainer(uml::Activity)/]">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.ControlFlow" referenceName="edge" variableName="flow">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="[source.name+'_To_'+target.name/]"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="source" valueExpression="var:source"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="target" valueExpression="var:target"/>
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.LiteralBoolean" referenceName="guard" variableName="guard">
