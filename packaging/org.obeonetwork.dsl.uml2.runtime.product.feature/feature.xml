@@ -2,7 +2,7 @@
 <feature
       id="org.obeonetwork.dsl.uml2.runtime.product.feature"
       label="UML Designer with Product Specific Branding"
-      version="4.0.0.qualifier"
+      version="4.0.1.qualifier"
       provider-name="Obeo"
       plugin="org.obeonetwork.dsl.uml2.branding">
 
