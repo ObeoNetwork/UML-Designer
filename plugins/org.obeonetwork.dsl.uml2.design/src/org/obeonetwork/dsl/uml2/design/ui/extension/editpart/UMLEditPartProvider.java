@@ -23,7 +23,7 @@ import org.eclipse.uml2.uml.Property;
 import org.obeonetwork.dsl.uml2.design.services.ClassDiagramServices;
 import org.obeonetwork.dsl.uml2.design.services.internal.EditLabelSwitch;
 
-public class UMLEditPartProvider extends /*AbstractEditPartProvider */AbstractUMLEditPartProvider {
+public class UMLEditPartProvider extends /*AbstractEditPartProvider*/AbstractUMLEditPartProvider {
 
 	/**
 	 * @generated
