@@ -1574,7 +1574,7 @@
           <ownedTools xsi:type="tool_1:DirectEditLabel">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[self/]"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
