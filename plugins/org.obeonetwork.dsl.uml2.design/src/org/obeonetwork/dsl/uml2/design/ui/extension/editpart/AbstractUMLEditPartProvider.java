@@ -35,6 +35,7 @@ import com.google.common.collect.Lists;
  * In fine, org.eclipse.emf.ecoretools should probably be included in UML Designer or EcoreToolsSpecificEditPartProvider should be abstracted in a shared component. 
  * 
  * @author Christophe Boudjennah <a href="mailto:emailadress">christophe.boudjennah@obeo.fr</a>
+ * 
  *
  * @see AbstractEditPartProvider
  * @see UMLEditPartProvider
