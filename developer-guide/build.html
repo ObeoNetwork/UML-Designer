@@ -143,10 +143,6 @@
       	    	
             
             	
-      	    	<li><a href="../developer-guide/continuous-integration.html">Continuous Integration</a></li>
-      	    	
-            
-            	
       	    	<li><a href="../developer-guide/documentation.html">Documentation</a></li>
       	    	
             
@@ -238,7 +234,7 @@
     <div class="col-lg-12">
       <h1>Building <span class="caps">UML</span> Designer update-site</h1>
 <p><strong><a href="https://github.com/ObeoNetwork/SysML-Designer">SysML Designer</a></strong> extends <strong><span class="caps">UML</span> Designer</strong> and deals with systems engineering applications.<br />
-<span class="caps">UML</span> Designer and SysML Designer are both provided in the <strong><span class="caps">UML</span> Designer Product</strong>.</p>
+<span class="caps">UML</span> Designer and SysML Designer are both provided as Eclipse plugins but only <span class="caps">UML</span> Designer is included in the <strong><span class="caps">UML</span> Designer Product</strong>.</p>
 <p>The schema below explains dependencies:</p>
 <p><img src="../images/UmlProductDependencies.png" alt="" /></p>
 <p>You’ll need Apache Maven 3 to be installed on your computer and you must have <a href="../developer-guide/contribute.html#Get_source_code">cloned the <span class="caps">UML</span> Designer github repository</a> on your computer.<br />
@@ -254,7 +250,7 @@ Code coverage is captured thanks to Jacoco.</p>
 <p>This command build:</p>
 <p><img src="../images/UMLDesignerBuildPlugins.png" alt="" /></p>
 <h1>Build a product</h1>
-<p>We have a dedicated command for the product because it requires <a href="https://github.com/ObeoNetwork/SysML-Designer">SysML Designer</a> that we could want to rebuild.</p>
+<p>We have a dedicated command for the product.</p>
 <p><code>mvn clean package -f releng/org.obeonetwork.dsl.uml2.product.parent/pom.xml</code></p>
 <blockquote>
 <p>You will retrieve product in: <strong>packaging/org.obeonetwork.dsl.uml2.product/target/products/</strong></p>
@@ -263,8 +259,6 @@ Code coverage is captured thanks to Jacoco.</p>
 <p><img src="../images/UMLDesignerBuildProduct.png" alt="" /></p>
 <p>We can specify the previous <span class="caps">UML</span> Designer update-site:<br />
 <code>... -Duml-site=file:./packaging/org.obeonetwork.dsl.uml2.update/target/repository</code></p>
-<p>With the same logic, we can specify a custom Sysml Designer:<br />
-<code>... -Dsysml-site=file:../SysML-Designer/packaging/org.obeonetwork.dsl.sysml.update/target/repository</code></p>
 <h1>Maven Tycho</h1>
 <p>Technically, we use Maven Tycho (0.19.0) to build these Eclipse artifacts.</p>
 <p>To reuse a maximum of properties and maven configurations, we have a hierarchy of parents.<br />
@@ -289,6 +283,14 @@ All <span class="caps">UML</span> designer plugins/features/update-sites refers 
         ...
     <span class="nt">&lt;/project&gt;</span>
 </code></pre></div></p>
+<h1>Continuous integration</h1>
+<p>Four continuous integration builds exist to build <span class="caps">UML</span>/SysML Designer.</p>
+<ul>
+	<li>The <a href="https://travis-ci.org/ObeoNetwork/UML-Designer/">Travis build</a> is used to generate the documentation and update the gh-pages.</li>
+	<li>The <a href="https://build.obeonetwork.com/hudson/job/UML—master/">Hudson build <span class="caps">UML</span> master</a> is in charge of the creation of the <span class="caps">UML</span> Designer Update site.</li>
+	<li>The <a href="https://build.obeonetwork.com/hudson/job/UMLProduct--master/">Hudson build <span class="caps">UML</span> product master</a> is in charge of the creation of the <span class="caps">UML</span> Designer Product.</li>
+	<li>The <a href="https://build.obeonetwork.com/hudson/job/SysML--master/">Hudson build SysML master</a> is in charge of the creation of the SysML Designer Update site.</li>
+</ul>
     </div>
   </div>
 </div><!-- /.container -->

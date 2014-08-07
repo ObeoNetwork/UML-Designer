@@ -143,10 +143,6 @@
       	    	
             
             	
-      	    	<li><a href="../developer-guide/continuous-integration.html">Continuous Integration</a></li>
-      	    	
-            
-            	
       	    	<li><a href="../developer-guide/documentation.html">Documentation</a></li>
       	    	
             
@@ -241,7 +237,7 @@ The <span class="caps">UML</span> standard is used for modeling business process
 <p>Following we are describing the key functions provided by <span class="caps">UML</span>/SysML Designer to its different users. To describe the features available in <span class="caps">UML</span>/SyML Designer, we are detailing the process followed by Alfred to define an heterogeneous system. First, he defines its system by writing the different requirements and from that he describes the system structure. Then, he refines the structure by defining the internal structure of each part of the system. When he finishes, Alfred gives the system description to the software architects in order that they specified the application. For specifying the software parts, the <span class="caps">UML</span> standard is used by John to define a software application, by Bob to implement the application, by Kevin to document it and finally by Alice to get an overview of a build application.</p>
 <p>Alfred uses SysML to describe its system.</p>
 <h1>Manage SysML/<span class="caps">UML</span> projects</h1>
-<p>To start, Alfred has to create a new SysML project.<br />
+<p>To start, Alfred has to create a new SysML project with <a href="../ref-doc/presentation.html#SysML_Designer">SysML Designer</a>.<br />
 As SysML Designer is based on <span class="caps">UML</span> Designer, a SysML project is also a <em><span class="caps">UML</span> project</em>.</p>
 <p>John also uses <span class="caps">UML</span> to describe its application. In <span class="caps">UML</span> Designer, a <span class="caps">UML</span> project is a <em>Modeling project</em> used to organize and manage the models and their representations (diagrams, tables, etc.). <br />
 Modeling projects are responsible for storing the representation data (diagrams, tables, etc.) in special representation files with the extension <em>.aird</em>.</p>
@@ -686,7 +682,7 @@ To <strong>open the help</strong>, the user just needs to <strong>double click</
 <p>The user can :</p>
 <ul>
 	<li><strong>Create a new <span class="caps">UML</span> model</strong> from the Eclipse menus (File&#8594;New&#8594;<span class="caps">UML</span> model) or from the toolbar (New&#8594;<span class="caps">UML</span> model).</li>
-	<li><strong>Delete a <span class="caps">UML</span> model</strong> : From the Model Explorer view rigth-clicks on the <span class="caps">UML</span> file to remove and select Delete.</li>
+	<li><strong>Delete a <span class="caps">UML</span> model</strong> : From the Model Explorer view right-clicks on the <span class="caps">UML</span> file to remove and select Delete.</li>
 	<li>Manage referenced models :
 	<ul>
 		<li><strong>Reference an existing <span class="caps">UML</span> model</strong> from the Project Dependencies in the Model Explorer view. A modeling project has always an element called Project Dependencies available. This is used to import external models, which are stored outside of the modeling project but used in it. To use a semantic model stored outside of the current modeling project, it must be added to the project dependencies. That does not change its location but simply allows access to its content. To add an external model to a modeling project, right-click on Project Dependencies then select Add Model. A wizard page opens, allowing the user to enter the <span class="caps">URI</span> of the model to add. If the model is in the workspace, the Browse Workspace button can be used to look for it. If the model is in the file system, the Browse File System button must be used to find it. Otherwise, the user must enter the model’s <span class="caps">URI</span> manually. Project dependencies can contain both semantic models and graphical models ( i.e. representations files).</li>
@@ -694,7 +690,7 @@ To <strong>open the help</strong>, the user just needs to <strong>double click</
 	</ul></li>
 </ul>
 <h1>Define the requirements</h1>
-<p>The first step for Alfred is to capture all the requirements for the system do defined. The SysML standard provides a new kind of diagram : the <strong>requirement diagram</strong>.<br />
+<p>The first step for Alfred is to capture all the requirements for the system do defined. The SysML standard provides a new kind of diagram : the <strong>requirement diagram</strong>. This diagram is available in <a href="../ref-doc/presentation.html#SysML_Designer">SysML Designer</a>.<br />
 This diagram is used to capture functional, performance, and interface requirements.<br />
 <img src="../images/RequirementDiagram.png" alt="" /></p>
 <p>The requirement diagram is an unsynchronized diagram which means that the user has to explicitly add existing elements on the diagram to see them. <br />
@@ -796,7 +792,7 @@ The <strong>add related elements</strong> action is available from :</p>
 </ul>
 <h1>Define the system structure</h1>
 <p>At this step, Alfred knows who will use its application and what they should be able to do with it. It is time to define the blocks and their relationships to describe the system structure.<br />
-Alfred defines the big structure of the system thanks to the <strong>Block Definition diagram</strong>.<br />
+Alfred defines the big structure of the system thanks to the <strong>Block Definition diagram</strong>.  This diagram is available in <a href="../ref-doc/presentation.html#SysML_Designer">SysML Designer</a>.<br />
 <img src="../images/BlockDefinitionDiagram.png" alt="" /></p>
 <p>The block definition diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.</p>
 <h2>Manage blocks</h2>
@@ -1019,7 +1015,7 @@ The <strong>add related elements</strong> action is available from :</p>
 	<li>relationships labels</li>
 </ul>
 <h1>Define the internal system structure</h1>
-<p>Next step for Alfred is to detail the internal structure of its system. He uses the <strong>Internal Block Definition diagram</strong> for this.<br />
+<p>Next step for Alfred is to detail the internal structure of its system. He uses the <strong>Internal Block Definition diagram</strong> for this.  This diagram is available in <a href="../ref-doc/presentation.html#SysML_Designer">SysML Designer</a>.<br />
 <img src="../images/InternalBlockDefinitionDiagram.png" alt="" /></p>
 <p>The internal block definition diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.</p>
 <h2>Manage internal blocks</h2>
@@ -1088,7 +1084,7 @@ The <strong>add related elements</strong> action is available from :</p>
 	<li>flows labels</li>
 </ul>
 <h1>Capture performance and quantitative constraints</h1>
-<p>Final step for Alfred, he has to precisely define performance and quantitative constraints for its system. The standard way for this is to use the <strong>Parametric diagram</strong>. Parametric diagrams show mathematical relationships among the system blocks. They are created using constraint blocks that define mathematical formulas.<br />
+<p>Final step for Alfred, he has to precisely define performance and quantitative constraints for its system. The standard way for this is to use the <strong>Parametric diagram</strong>.  This diagram is available in <a href="../ref-doc/presentation.html#SysML_Designer">SysML Designer</a>. Parametric diagrams show mathematical relationships among the system blocks. They are created using constraint blocks that define mathematical formulas.<br />
 <img src="../images/ParametricDiagram.png" alt="" /></p>
 <h2>Manage constraint blocks</h2>
 <p>It is possible to <strong>create constraint blocks</strong> that describe the function of a constraint.<br />
@@ -1168,7 +1164,7 @@ The <strong>add related elements</strong> action is available from :</p>
 	<li>connections labels</li>
 </ul>
 <h1>Allocate the system</h1>
-<p>SysML provides allocation tables that support requirements allocation, functional allocation and structural allocation.<br />
+<p>SysML provides allocation tables that support requirements allocation, functional allocation and structural allocation.  These representation are available in <a href="../ref-doc/presentation.html#SysML_Designer">SysML Designer</a>.<br />
 <img src="../images/RequirementAllocationTable.png" alt="" /></p>
     </div>
   </div>
