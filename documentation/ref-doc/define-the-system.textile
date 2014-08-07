@@ -14,7 +14,7 @@ Alfred uses SysML to describe its system.
 
 h1. Manage SysML/UML projects
 
-To start, Alfred has to create a new SysML project.
+To start, Alfred has to create a new SysML project with "SysML Designer":{{ page.relativePath }}/ref-doc/presentation.html#SysML_Designer.
 As SysML Designer is based on UML Designer, a SysML project is also a _UML project_.
 
 John also uses UML to describe its application. In UML Designer, a UML project is a _Modeling project_ used to organize and manage the models and their representations (diagrams, tables, etc.). 
@@ -329,14 +329,14 @@ A UML project can contain multiple UML models.
 
 The user can :
 * *Create a new UML model* from the Eclipse menus (File->New->UML model) or from the toolbar (New->UML model).
-* *Delete a UML model* : From the Model Explorer view rigth-clicks on the UML file to remove and select Delete. 
+* *Delete a UML model* : From the Model Explorer view right-clicks on the UML file to remove and select Delete. 
 * Manage referenced models :
 ** *Reference an existing UML model* from the Project Dependencies in the Model Explorer view. A modeling project has always an element called Project Dependencies available. This is used to import external models, which are stored outside of the modeling project but used in it. To use a semantic model stored outside of the current modeling project, it must be added to the project dependencies. That does not change its location but simply allows access to its content. To add an external model to a modeling project, right-click on Project Dependencies then select Add Model. A wizard page opens, allowing the user to enter the URI of the model to add. If the model is in the workspace, the Browse Workspace button can be used to look for it. If the model is in the file system, the Browse File System button must be used to find it. Otherwise, the user must enter the model’s URI manually. Project dependencies can contain both semantic models and graphical models ( i.e. representations files).
 ** *Remove a referenced model* : Referenced models can be removed if they are not used, just right-click on the model in the Model Dependencies and select Remove. This action does not delete the model itself but only the reference to it.
 
 h1. Define the requirements
 
-The first step for Alfred is to capture all the requirements for the system do defined. The SysML standard provides a new kind of diagram : the *requirement diagram*.
+The first step for Alfred is to capture all the requirements for the system do defined. The SysML standard provides a new kind of diagram : the *requirement diagram*. This diagram is available in "SysML Designer":{{ page.relativePath }}/ref-doc/presentation.html#SysML_Designer.
 This diagram is used to capture functional, performance, and interface requirements.
 !{{ page.relativePath }}/images/RequirementDiagram.png!
 				
@@ -431,7 +431,7 @@ In the requirement diagram, it is possible to edit the elements labels  (see "Di
 h1. Define the system structure
 
 At this step, Alfred knows who will use its application and what they should be able to do with it. It is time to define the blocks and their relationships to describe the system structure.
-Alfred defines the big structure of the system thanks to the *Block Definition diagram*.
+Alfred defines the big structure of the system thanks to the *Block Definition diagram*.  This diagram is available in "SysML Designer":{{ page.relativePath }}/ref-doc/presentation.html#SysML_Designer.
 !{{ page.relativePath }}/images/BlockDefinitionDiagram.png!
 				
 
@@ -560,7 +560,7 @@ In the block definition diagram, it is possible to edit the elements labels("Dia
 
 h1. Define the internal system structure
 
-Next step for Alfred is to detail the internal structure of its system. He uses the *Internal Block Definition diagram* for this.
+Next step for Alfred is to detail the internal structure of its system. He uses the *Internal Block Definition diagram* for this.  This diagram is available in "SysML Designer":{{ page.relativePath }}/ref-doc/presentation.html#SysML_Designer.
 !{{ page.relativePath }}/images/InternalBlockDefinitionDiagram.png!
 				
 
@@ -628,7 +628,7 @@ In the internal block definition diagram, it is possible to edit the elements la
 
 h1. Capture performance and quantitative constraints
 
-Final step for Alfred, he has to precisely define performance and quantitative constraints for its system. The standard way for this is to use the *Parametric diagram*. Parametric diagrams show mathematical relationships among the system blocks. They are created using constraint blocks that define mathematical formulas.
+Final step for Alfred, he has to precisely define performance and quantitative constraints for its system. The standard way for this is to use the *Parametric diagram*.  This diagram is available in "SysML Designer":{{ page.relativePath }}/ref-doc/presentation.html#SysML_Designer. Parametric diagrams show mathematical relationships among the system blocks. They are created using constraint blocks that define mathematical formulas.
 !{{ page.relativePath }}/images/ParametricDiagram.png!
 				
 
@@ -693,5 +693,5 @@ In the parametric diagram, it is possible to edit the elements labels  (see "Dia
 
 h1. Allocate the system
 
-SysML provides allocation tables that support requirements allocation, functional allocation and structural allocation.
+SysML provides allocation tables that support requirements allocation, functional allocation and structural allocation.  These representation are available in "SysML Designer":{{ page.relativePath }}/ref-doc/presentation.html#SysML_Designer.
 !{{ page.relativePath }}/images/RequirementAllocationTable.png!

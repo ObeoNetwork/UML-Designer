@@ -121,7 +121,7 @@ h2. Continuous integration
 
 To build the documentation, commit and push the changes on the ObeoNetwork/UML-Designer @master@ branch.
 The "Travis build":https://travis-ci.org/ObeoNetwork/UML-Designer/ is launched, it generates the documentation and updates the gh-pages. Consequently, the web site is updated automatically.
-The "Hudson build": https://build.obeonetwork.com/hudson/job/UML--master/ is in charge of the integration of the web site inside the Eclipse Help Content.
+The "Hudson build":https://build.obeonetwork.com/hudson/job/UML--master/ is in charge of the integration of the web site inside the Eclipse Help Content.
 
 The different steps done by the builds are explained below.
 

@@ -8,7 +8,7 @@ relativePath: ..
 h1. Building UML Designer update-site
 
 *"SysML Designer":https://github.com/ObeoNetwork/SysML-Designer* extends *UML Designer* and deals with systems engineering applications.
-UML Designer and SysML Designer are both provided in the *UML Designer Product*.
+UML Designer and SysML Designer are both provided as Eclipse plugins but only UML Designer is included in the *UML Designer Product*.
 
 The schema below explains dependencies:
 
@@ -38,7 +38,7 @@ This command build:
 
 h1. Build a product
 
-We have a dedicated command for the product because it requires "SysML Designer":https://github.com/ObeoNetwork/SysML-Designer that we could want to rebuild.
+We have a dedicated command for the product.
 
 @mvn clean package -f releng/org.obeonetwork.dsl.uml2.product.parent/pom.xml@
 
@@ -51,9 +51,6 @@ This command build:
 
 We can specify the previous UML Designer update-site:
 @... -Duml-site=file:./packaging/org.obeonetwork.dsl.uml2.update/target/repository@
-
-With the same logic, we can specify a custom Sysml Designer:
-@... -Dsysml-site=file:../SysML-Designer/packaging/org.obeonetwork.dsl.sysml.update/target/repository@
 
 h1. Maven Tycho
 
@@ -85,3 +82,11 @@ in org.obeonetwork.dsl.uml2.parent and add a `pom.xml` in your plugin with the f
         ...
     </project>
 {% endhighlight %}
+
+h1. Continuous integration
+
+Four continuous integration builds exist to build UML/SysML Designer.
+* The "Travis build":https://travis-ci.org/ObeoNetwork/UML-Designer/ is used to generate the documentation and update the gh-pages.
+* The "Hudson build UML master":https://build.obeonetwork.com/hudson/job/UML—master/ is in charge of the creation of the UML Designer Update site.
+* The "Hudson build UML product master":https://build.obeonetwork.com/hudson/job/UMLProduct--master/ is in charge of the creation of the UML Designer Product.
+* The "Hudson build SysML master":https://build.obeonetwork.com/hudson/job/SysML--master/ is in charge of the creation of the SysML Designer Update site.

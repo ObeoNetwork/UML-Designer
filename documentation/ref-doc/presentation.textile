@@ -11,9 +11,7 @@ h1. Context
 
 Today, it exists many proprietary UML modelers available on the market. Some of them are supporting the SysML standard. A large part of these tools are not completely compliant with the UML standard. None of them are providing viewpoint extensions. The purpose of UML Designer is to provide an industrial UML/SysML viewpoint based designers compliant with the standards.    
 
-The UML Designer product is composed by two different designers :
-* a UML Designer;
-* and a SysML Designer.
+The UML Designer product is composed by one designer : a UML Designer. We provide a second designer to work with the SysML standard : SysML Designer.
 
 
 h2. UML Designer
@@ -25,13 +23,13 @@ UML 2.5 has 23 types of diagrams divided into two categories:
 
 It is released as Eclipse plugins under the EPL License and a standalone product is also built.
 
-h2. SysML Designer
+h2(#SysML_Designer). SysML Designer
 
 The SysML Designer is a graphical designer compatible with the "SysML specification":http://www.omg.org/spec/SysML/1.3/ and based on "UML Designer":http://marketplace.obeonetwork.com/module/uml and "Sirius":http://eclipse.org/sirius.
 SysML has 8 types of diagrams divided into three categories:
 !{{ page.relativePath }}/images/SysML-Diagram-Taxonomy.png!
 
-It is released as Eclipse plugins under the EPL License and is part of the "UML Discovery catalog":{{ page.relativePath }}/ref-doc/discovery.html, see how to install it in the UML Designer product.
+It is released as Eclipse plugins under the EPL License and is part of the "UML Discovery catalog":{{ page.relativePath }}/ref-doc/discovery.html, have a look to the discovery feature to learn how to install SysML Designer in the UML Designer product.
 
 h1. System purpose
 

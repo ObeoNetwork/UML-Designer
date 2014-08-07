@@ -39,7 +39,7 @@ UML Designer allows to export the defined diagrams.
 
 h2. HTML export
 					
-This feature allows to export all the models with their representations into an HTML site. The site displays the model explorer on the left with the model elements and their corresponding clickable representations. When selecting a model element on a representation, the site displays its properties. All the pages are generated with Acceleo templates and can easily be adapted. This features is only available in Obeo Designer and not with the Sirius based product.
+This feature allows to export all the models with their representations into an HTML site. The site displays the model explorer on the left with the model elements and their corresponding clickable representations. When selecting a model element on a representation, the site displays its properties. All the pages are generated with Acceleo templates and can easily be adapted. This features is only available in "Obeo Designer":http://www.obeodesigner.com/ and not with the Sirius based product.
 				
 h2. Export diagrams as images
 					
