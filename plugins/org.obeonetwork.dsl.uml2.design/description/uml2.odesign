@@ -2354,6 +2354,14 @@
             </style>
           </conditionnalStyles>
         </edgeMappings>
+        <edgeMappings name="CO_Generalization" semanticCandidatesExpression="service:diagram.getGeneralizationInverseRefs" semanticElements="service:getSemanticElements" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']" targetFinderExpression="feature:general" sourceFinderExpression="feature:owner" targetExpression="var:self" domainClass="uml.Generalization" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@toolSections.3/@ownedTools[name='Reconnect'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect%20Generalization']">
+          <style targetArrow="InputClosedArrow" sizeComputationExpression="1" routingStyle="tree">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
         <containerMappings name="CO_Component" detailDescriptions="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Activity%20diagram']/@ownedTools[name='Create%20activity%20diagram'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Composite%20structure%20diagram']/@ownedTools[name='Create%20Composite%20Structure%20Diagram'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Class%20diagram']/@ownedTools[name='Create%20class%20diagram%20from%20component'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='State%20Machine%20diagram']/@ownedTools[name='Create%20statemachine%20diagram'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Use%20case%20diagram']/@ownedTools[name='Create%20Use%20Case%20Diagram%20from%20component']" navigationDescriptions="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Activity%20diagram']/@ownedTools[name='Open%20activity%20diagram%20from%20classifier'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Class%20diagram']/@ownedTools[name='Open%20a%20class%20diagram%20from%20component'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='State%20Machine%20diagram']/@ownedTools[name='Open%20statemachine%20diagram']" pasteDescriptions="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste']" preconditionExpression="[oclIsTypeOf(uml::Component) or oclIsTypeOf(uml::Class)/]" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" createElements="false" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Class" dropDescriptions="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram']" reusedNodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_ProvidedInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_RequiredInterface']" reusedContainerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']">
           <borderedNodeMappings name="CO_Port" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="[oclAsType(uml::StructuredClassifier).ownedAttribute->filter(uml::Port)->select(type &lt;> self)/]" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Port">
             <style xsi:type="style:BundledImageDescription" labelFormat="italic" showIcon="false" sizeComputationExpression="2" resizeKind="EAST_WEST">
@@ -2686,6 +2694,30 @@
             <edgeView name="edgeView"/>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="Reconnect Dependency" reconnectionKind="RECONNECT_BOTH">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:element.reconnectEdge(edgeView, sourceView, targetView, source, target)"/>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Generalization" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_Generalization']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Generalization.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Generalization" referenceName="generalization">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="general" valueExpression="var:target"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="Reconnect Generalization" forceRefresh="true" reconnectionKind="RECONNECT_BOTH">
             <source name="source"/>
             <target name="target"/>
             <sourceView name="sourceView"/>
