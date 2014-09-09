@@ -220,6 +220,19 @@ public class UMLServices {
 	public Collection<EObject> getAssociationInverseRefs(DDiagram diagram) {
 		return getNodeInverseRefs(diagram, "Association");
 	}
+	
+	/**
+	 * Retrieve the cross references of the abstraction of all the UML elements displayed as node in a
+	 * Diagram. Note that a Property cross reference will lead to retrieve the cross references of this
+	 * property.
+	 * 
+	 * @param diagram
+	 *            a diagram.
+	 * @return the list of cross reference of the given
+	 */
+	public Collection<EObject> getAbstractionInverseRefs(DDiagram diagram) {
+		return getNodeInverseRefs(diagram, "Abstraction");
+	}
 
 	/**
 	 * Retrieve the cross references of the component realization of all the UML elements displayed as node in
