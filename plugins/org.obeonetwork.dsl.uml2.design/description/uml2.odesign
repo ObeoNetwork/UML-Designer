@@ -952,7 +952,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[container.eContainer(uml::Package)/]">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.UseCase" referenceName="packagedElement">
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                   <subModelOperations xsi:type="tool:If" conditionExpression="service:container.isClassifier">
