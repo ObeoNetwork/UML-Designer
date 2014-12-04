@@ -16,7 +16,7 @@ Contributors:
   <parent>
     <groupId>org.obeonetwork.dsl.uml2</groupId>
     <artifactId>product.parent</artifactId>
-    <version>4.0.1-SNAPSHOT</version>
+    <version>5.0.0-SNAPSHOT</version>
     <relativePath>../../releng/org.obeonetwork.dsl.uml2.product.parent</relativePath>
   </parent>
 
