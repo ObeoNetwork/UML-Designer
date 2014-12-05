@@ -2211,4 +2211,66 @@ public class SequenceServices {
 		}
 		return null;
 	}
+
+	/**
+	 * Compute lifeline comment label.
+	 * 
+	 * @param lifeline
+	 *            Lifeline
+	 * @return LAbel
+	 */
+	public String computeLifelineCommentLabel(Lifeline lifeline) {
+		ConnectableElement represent = lifeline.getRepresents();
+		// ['current container :
+		// '+self.oclAsType(uml::Lifeline).represents.eContainer().oclAsType(uml::NamedElement).name/]
+		EList<Dependency> dependencies = lifeline.getClientDependencies();
+
+		if (represent != null) {
+			EObject container = represent.eContainer();
+			if (dependencies.size() == 0) {
+				if (container != null && container instanceof NamedElement) {
+					return "current container : " + ((NamedElement)container).getName();
+				}
+			} else {
+				// ['current container : '+self.oclAsType(uml::Lifeline).represents.eContainer().name+'\n
+				// context dependency:
+				// '+self.oclAsType(uml::Lifeline).clientDependency.supplier.name->sep('::')/]
+				if (container != null && container instanceof NamedElement) {
+					EList<NamedElement> suppliers = dependencies.get(0).getSuppliers();
+					if (suppliers != null && suppliers.size() > 0) {
+						EObject supplier = suppliers.get(0);
+						if (supplier != null && supplier instanceof NamedElement)
+							return "current container : " + ((NamedElement)container).getName()
+									+ " context dependency: " + ((NamedElement)supplier).getName();
+					}
+				}
+			}
+		} else {
+			if (dependencies != null) {
+				EList<NamedElement> suppliers = dependencies.get(0).getSuppliers();
+				if (dependencies.size() > 1) {
+					// ['context dependency:
+					// '+self.oclAsType(uml::Lifeline).clientDependency.supplier.name->sep('::')/]
+					if (suppliers != null && suppliers.size() > 0) {
+						EObject supplier = suppliers.get(0);
+						if (supplier != null && supplier instanceof NamedElement)
+							return "context dependency: " + ((NamedElement)supplier).getName();
+					}
+				} else if (dependencies.size() == 1) {
+					// ['current container :
+					// '+self.oclAsType(uml::Lifeline).clientDependency.supplier.eContainer().name/]
+					if (suppliers != null && suppliers.size() > 0) {
+						EObject supplier = suppliers.get(0);
+						if (supplier != null) {
+							EObject container = supplier.eContainer();
+							if (container != null && container instanceof NamedElement) {
+								return "current container : " + ((NamedElement)container).getName();
+							}
+						}
+					}
+				}
+			}
+		}
+		return null;
+	}
 }

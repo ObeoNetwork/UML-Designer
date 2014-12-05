@@ -13,6 +13,7 @@ package org.obeonetwork.dsl.uml2.design.services;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Pseudostate;
 import org.eclipse.uml2.uml.PseudostateKind;
@@ -31,6 +32,11 @@ import com.google.common.collect.Lists;
  * @author Mélanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class StatemachineServices {
+	/**
+	 * Label service.
+	 */
+	private LabelServices labelService = new LabelServices();
+	
 	/**
 	 * Create an statemachine under a behaviored classifier (class, component, use case).
 	 * 
@@ -221,5 +227,32 @@ public class StatemachineServices {
 			}
 		}
 		return result;
+	}
+	
+	/**
+	 * Get label for the 'do' instruction.
+	 * @param element Element
+	 * @return Label
+	 */
+	public String computeDoLabel(Element element){
+		return "do " + labelService.computeUmlLabel(element);
+	}
+	
+	/**
+	 * Get label for the 'entry' instruction.
+	 * @param element Element
+	 * @return Label
+	 */
+	public String computeEntryLabel(Element element){
+		return "entry " + labelService.computeUmlLabel(element);
+	}
+	
+	/**
+	 * Get label for the 'entry' instruction.
+	 * @param element Element
+	 * @return Label
+	 */
+	public String computeExitLabel(Element element){
+		return "exit " + labelService.computeUmlLabel(element);
 	}
 }

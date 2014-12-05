@@ -58,6 +58,11 @@ public class UMLProfileServices {
 	 */
 	private static final String SEPARATOR = ",";
 
+	/**
+	 * Label service.
+	 */
+	private LabelServices labelService = new LabelServices();
+
 	public List<Class> getAllMetaclasses(Profile profile) {
 		// Look if UML.metamodel.uml is accessible
 		Session session = SessionManager.INSTANCE.getSession(profile);
@@ -305,5 +310,41 @@ public class UMLProfileServices {
 		}
 		// Otherwise return false -> the stereotype is not applied or the elt is not referenced
 		return isReferenced;
+	}
+
+	/**
+	 * Compute element import label.
+	 * 
+	 * @param element
+	 *            Element import
+	 * @return Label
+	 */
+	public String computeElementImportLabel(ElementImport element) {
+		// ['«Metaclass»\n'+self.oclAsType(uml::Element).computeUmlLabel()/]
+		return "«Metaclass»\n" + labelService.computeUmlLabel(element);
+	}
+	
+	/**
+	 * Compute profile label.
+	 * 
+	 * @param element
+	 *            Profile
+	 * @return Label
+	 */
+	public String computeProfileLabel(Profile element) {
+		// ['«Profile» \n'+self.oclAsType(uml::Element).computeUmlLabel()/]
+		return "«Profile» \n" + labelService.computeUmlLabel(element);
+	}
+	
+	/**
+	 * Compute stereotype label.
+	 * 
+	 * @param element
+	 *            Stereotype
+	 * @return Label
+	 */
+	public String computeStereotypeLabel(Stereotype element) {
+		// ['«Stereotype» \n'+self.oclAsType(uml::Element).computeUmlLabel()/]
+		return "«Stereotype» \n" + labelService.computeUmlLabel(element);
 	}
 }

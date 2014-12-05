@@ -1376,9 +1376,22 @@ public class UMLServices {
 		return sourceView != targetView;
 	}
 
-	public void addArchetypeKeyword(Class clazz, String archetype) {
+	private void addArchetypeKeyword(Class clazz, String archetype) {
 		clearArchetypesKeywords(clazz);
 		clazz.addKeyword(archetype);
+	}
+	
+	public void addArchetypeDescriptionKeyword(Class clazz) {
+		addArchetypeKeyword(clazz,"Description");
+	}
+	public void addArchetypeMomentIntervalKeyword(Class clazz) {
+		addArchetypeKeyword(clazz,"MomentInterval");
+	}
+	public void addArchetypeRoleKeyword(Class clazz) {
+		addArchetypeKeyword(clazz,"Role");
+	}
+	public void addArchetypeThingKeyword(Class clazz) {
+		addArchetypeKeyword(clazz,"Thing");
 	}
 
 	private void clearArchetypesKeywords(Class clazz) {
