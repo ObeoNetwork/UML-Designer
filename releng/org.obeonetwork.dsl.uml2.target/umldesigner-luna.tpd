@@ -5,6 +5,8 @@ with source requirements
 // Eclipse
 location "http://download.eclipse.org/releases/luna" {
 	org.eclipse.platform.sdk lazy
+	org.eclipse.equinox.executable.feature.group lazy
+	org.eclipse.epp.mpc.feature.group lazy
 	org.eclipse.amalgam.discovery.feature.group lazy
 	org.eclipse.emf.edit.feature.group[2.10.0,2.11.0)
 	org.eclipse.emf.mapping.ecore.feature.group lazy
