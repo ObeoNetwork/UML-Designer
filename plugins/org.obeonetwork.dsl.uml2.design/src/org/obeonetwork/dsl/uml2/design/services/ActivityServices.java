@@ -520,10 +520,9 @@ public class ActivityServices {
 			return false;
 		}
 
-		// A JoinNode/MergeNode/DecisionNode shall have exactly one outgoing ActivityEdge but may have
+		// A JoinNode/MergeNode shall have exactly one outgoing ActivityEdge but may have
 		// multiple incoming ActivityEdges.
-		if (preSource instanceof JoinNode || preSource instanceof MergeNode
-				|| preSource instanceof DecisionNode) {
+		if (preSource instanceof JoinNode || preSource instanceof MergeNode) {
 			List<ActivityEdge> outgoing = ((ActivityNode)preSource).getOutgoings();
 			if (outgoing != null && outgoing.size() == 1) {
 				return false;
