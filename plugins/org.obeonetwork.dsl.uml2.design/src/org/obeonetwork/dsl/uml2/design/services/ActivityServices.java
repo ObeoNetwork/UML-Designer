@@ -738,39 +738,42 @@ public class ActivityServices {
 		String pinName = pin.getName();
 		Type pinType = pin.getType();
 
-		CallAction callAction = (CallAction)pin.eContainer();
-		if (callAction instanceof CallOperationAction) {
-			CallOperationAction callOperationAction = (CallOperationAction)callAction;
-			Operation operation = callOperationAction.getOperation();
-			// Find parameter associated to the pin thanks to the name and type
-			final org.eclipse.uml2.uml.Parameter param = operation.getOwnedParameter(pinName, pinType);
-			if (param == null && !("target".equals(pinName))) {
-				// Can't find a param associated to the current pin we ignore the target pin
-				Object[] params = new Object[] {callAction.getQualifiedName(), pinName,
-						operation.getQualifiedName()};
-				message = Messages.bind(Messages.UmlValidationErrorOnCallOperationAction, params);
-			} else if (param != null) {
-				if (!param.getName().equals(pin.getName())) {
-					Object[] params = new Object[] {callAction.getQualifiedName(), pinName, "name"};
-					message = Messages.bind(Messages.UmlValidationErrorOnCallOperationActionPin, params);
-				} else if (!param.getType().equals(pin.getType())) {
-					Object[] params = new Object[] {callAction.getQualifiedName(), pinName, "type"};
-					message = Messages.bind(Messages.UmlValidationErrorOnCallOperationActionPin, params);
-				} else if (param.isOrdered() != pin.isOrdered()) {
-					Object[] params = new Object[] {callAction.getQualifiedName(), pinName, "ordered"};
-					message = Messages.bind(Messages.UmlValidationErrorOnCallOperationActionPin, params);
-				} else if ((param.getLowerValue() == null && pin.getLowerValue() != null)
-						|| (param.getLowerValue() != null && pin.getLowerValue() == null)
-						|| !((param.getLowerValue() == null && pin.getLowerValue() == null) || param
-								.getLowerValue().stringValue().equals(pin.getLowerValue().stringValue()))) {
-					Object[] params = new Object[] {callAction.getQualifiedName(), pinName, "lower value"};
-					message = Messages.bind(Messages.UmlValidationErrorOnCallOperationActionPin, params);
-				} else if ((param.getUpperValue() == null && pin.getUpperValue() != null)
-						|| (param.getUpperValue() != null && pin.getUpperValue() == null)
-						|| !((param.getUpperValue() == null && pin.getUpperValue() == null) || param
-								.getUpperValue().stringValue().equals(pin.getUpperValue().stringValue()))) {
-					Object[] params = new Object[] {callAction.getQualifiedName(), pinName, "upper value"};
-					message = Messages.bind(Messages.UmlValidationErrorOnCallOperationActionPin, params);
+		EObject container = pin.eContainer();
+		if (container instanceof CallAction) {
+			CallAction callAction = (CallAction)container;
+			if (callAction instanceof CallOperationAction) {
+				CallOperationAction callOperationAction = (CallOperationAction)callAction;
+				Operation operation = callOperationAction.getOperation();
+				// Find parameter associated to the pin thanks to the name and type
+				final org.eclipse.uml2.uml.Parameter param = operation.getOwnedParameter(pinName, pinType);
+				if (param == null && !("target".equals(pinName))) {
+					// Can't find a param associated to the current pin we ignore the target pin
+					Object[] params = new Object[] {callAction.getQualifiedName(), pinName,
+							operation.getQualifiedName()};
+					message = Messages.bind(Messages.UmlValidationErrorOnCallOperationAction, params);
+				} else if (param != null) {
+					if (!param.getName().equals(pin.getName())) {
+						Object[] params = new Object[] {callAction.getQualifiedName(), pinName, "name"};
+						message = Messages.bind(Messages.UmlValidationErrorOnCallOperationActionPin, params);
+					} else if (!param.getType().equals(pin.getType())) {
+						Object[] params = new Object[] {callAction.getQualifiedName(), pinName, "type"};
+						message = Messages.bind(Messages.UmlValidationErrorOnCallOperationActionPin, params);
+					} else if (param.isOrdered() != pin.isOrdered()) {
+						Object[] params = new Object[] {callAction.getQualifiedName(), pinName, "ordered"};
+						message = Messages.bind(Messages.UmlValidationErrorOnCallOperationActionPin, params);
+					} else if ((param.getLowerValue() == null && pin.getLowerValue() != null)
+							|| (param.getLowerValue() != null && pin.getLowerValue() == null)
+							|| !((param.getLowerValue() == null && pin.getLowerValue() == null) || param
+									.getLowerValue().stringValue().equals(pin.getLowerValue().stringValue()))) {
+						Object[] params = new Object[] {callAction.getQualifiedName(), pinName, "lower value"};
+						message = Messages.bind(Messages.UmlValidationErrorOnCallOperationActionPin, params);
+					} else if ((param.getUpperValue() == null && pin.getUpperValue() != null)
+							|| (param.getUpperValue() != null && pin.getUpperValue() == null)
+							|| !((param.getUpperValue() == null && pin.getUpperValue() == null) || param
+									.getUpperValue().stringValue().equals(pin.getUpperValue().stringValue()))) {
+						Object[] params = new Object[] {callAction.getQualifiedName(), pinName, "upper value"};
+						message = Messages.bind(Messages.UmlValidationErrorOnCallOperationActionPin, params);
+					}
 				}
 			}
 		}
