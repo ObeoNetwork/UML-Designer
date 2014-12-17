@@ -32,12 +32,15 @@ import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.uml2.common.util.DerivedEObjectEList;
+import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.ActivityFinalNode;
 import org.eclipse.uml2.uml.ActivityParameterNode;
@@ -166,6 +169,7 @@ public class UMLServices {
 	 *            the expected type.
 	 * @return the list of cross reference of the given
 	 */
+	@SuppressWarnings("unchecked")
 	private Collection<EObject> getNodeInverseRefs(DDiagram diagram, String typeName) {
 		Set<EObject> result = Sets.newLinkedHashSet();
 		if (diagram instanceof DSemanticDecorator) {
@@ -185,6 +189,14 @@ public class UMLServices {
 					for (Setting xRef : sess.getSemanticCrossReferencer().getInverseReferences(
 							displayedAsANode)) {
 						EObject eObject = xRef.getEObject();
+
+						if(xRef instanceof DerivedUnionEObjectEList){
+							for (EObject eObject2 : ((List<EObject>)xRef)) {
+								if (sess.getModelAccessor().eInstanceOf(eObject2, typeName)) {
+									result.add(eObject2);
+								}
+							}
+						}
 						if (sess.getModelAccessor().eInstanceOf(eObject, typeName)) {
 							result.add(eObject);
 						}
@@ -198,13 +210,61 @@ public class UMLServices {
 										typeName)) {
 									result.add(((Property)eObject).getAssociation());
 								}
-							}
-
-						}
+							}						}
 					}
 				}
 			}
 		}
+		return result;
+	}
+
+	/**
+	 * Retrieve the cross references of the given type of all the UML elements displayed as node in a Diagram.
+	 * Note that a Property cross reference will lead to retrieve the cross references of this property.
+	 * 
+	 * @param containerView
+	 *            a diagram.
+	 * @param typeName
+	 *            the expected type.
+	 * @return the list of cross reference of the given
+	 */
+	private Collection<EObject> getNodeInverseRefs(DDiagramElement containerView, String typeName) {
+		Set<EObject> result = Sets.newLinkedHashSet();
+		Session sess = SessionManager.INSTANCE.getSession(containerView.getTarget());
+
+		Iterator<EObject> it = Iterators.transform(
+				Iterators.filter(containerView.eAllContents(), AbstractDNode.class),
+				new Function<AbstractDNode, EObject>() {
+
+					public EObject apply(AbstractDNode input) {
+						return input.getTarget();
+					}
+				});
+		while (it.hasNext()) {
+			EObject displayedAsANode = it.next();
+			if (displayedAsANode != null) {
+				for (Setting xRef : sess.getSemanticCrossReferencer().getInverseReferences(displayedAsANode)) {
+					EObject eObject = xRef.getEObject();
+					if (sess.getModelAccessor().eInstanceOf(eObject, typeName)) {
+						result.add(eObject);
+					}
+					/*
+					 * In the case of an association the real interesting object is the association linked to
+					 * the Property and not the direct cross reference.
+					 */
+					if (eObject instanceof Property) {
+						if (((Property)eObject).getAssociation() != null) {
+							if (sess.getModelAccessor().eInstanceOf(((Property)eObject).getAssociation(),
+									typeName)) {
+								result.add(((Property)eObject).getAssociation());
+							}
+						}
+
+					}
+				}
+			}
+		}
+
 		return result;
 	}
 
@@ -220,7 +280,7 @@ public class UMLServices {
 	public Collection<EObject> getAssociationInverseRefs(DDiagram diagram) {
 		return getNodeInverseRefs(diagram, "Association");
 	}
-	
+
 	/**
 	 * Retrieve the cross references of the abstraction of all the UML elements displayed as node in a
 	 * Diagram. Note that a Property cross reference will lead to retrieve the cross references of this
@@ -257,6 +317,18 @@ public class UMLServices {
 	 */
 	public Collection<EObject> getConnectorInverseRefs(DDiagram diagram) {
 		return getNodeInverseRefs(diagram, "Connector");
+	}
+
+	/**
+	 * Retrieve the cross references of the connector of all the UML elements displayed as node in a Diagram.
+	 * Note that a Property cross reference will lead to retrieve the cross references of this property.
+	 * 
+	 * @param diagram
+	 *            a diagram.
+	 * @return the list of cross reference of the given
+	 */
+	public Collection<EObject> getConnectorInverseRefs(DDiagramElement containerView) {
+		return getNodeInverseRefs(containerView, "Connector");
 	}
 
 	/**
@@ -1380,18 +1452,21 @@ public class UMLServices {
 		clearArchetypesKeywords(clazz);
 		clazz.addKeyword(archetype);
 	}
-	
+
 	public void addArchetypeDescriptionKeyword(Class clazz) {
-		addArchetypeKeyword(clazz,"Description");
+		addArchetypeKeyword(clazz, "Description");
 	}
+
 	public void addArchetypeMomentIntervalKeyword(Class clazz) {
-		addArchetypeKeyword(clazz,"MomentInterval");
+		addArchetypeKeyword(clazz, "MomentInterval");
 	}
+
 	public void addArchetypeRoleKeyword(Class clazz) {
-		addArchetypeKeyword(clazz,"Role");
+		addArchetypeKeyword(clazz, "Role");
 	}
+
 	public void addArchetypeThingKeyword(Class clazz) {
-		addArchetypeKeyword(clazz,"Thing");
+		addArchetypeKeyword(clazz, "Thing");
 	}
 
 	private void clearArchetypesKeywords(Class clazz) {
@@ -1499,6 +1574,8 @@ public class UMLServices {
 			name = "Fork";
 		} else if (element instanceof EnumerationLiteral) {
 			name = "Literal";
+		} else if (element instanceof Port) {
+			name = "port";
 		} else if (element instanceof Property) {
 			name = "property";
 		} else if (element instanceof Pseudostate) {
@@ -1638,6 +1715,74 @@ public class UMLServices {
 			result.removeAll(((Package)element).getPackagedElements());
 		}
 
+		return result;
+	}
+
+	public Collection<EObject> getPortUsage(DDiagram diagram) {
+		Set<EObject> result = Sets.newLinkedHashSet();
+		if (diagram instanceof DSemanticDecorator) {
+			Session sess = SessionManager.INSTANCE.getSession(((DSemanticDecorator)diagram).getTarget());
+
+			Iterator<EObject> it = Iterators.transform(
+					Iterators.filter(diagram.eAllContents(), AbstractDNode.class),
+					new Function<AbstractDNode, EObject>() {
+
+						public EObject apply(AbstractDNode input) {
+							return input.getTarget();
+						}
+					});
+			while (it.hasNext()) {
+				EObject displayedAsANode = it.next();
+				if (displayedAsANode != null) {
+					for (Setting xRef : sess.getSemanticCrossReferencer().getInverseReferences(
+							displayedAsANode)) {
+						EObject eObject = xRef.getEObject();
+						if(eObject instanceof DNode){
+							eObject = ((DNode)eObject).getTarget();
+						}
+						if (sess.getModelAccessor().eInstanceOf(eObject, "Port")) {
+							Port port = (Port)eObject;
+							if (port.getRequireds().size() > 0) {
+								result.add(port);
+							}
+						}
+					}
+				}
+			}
+		}
+		return result;
+	}
+
+	public Collection<EObject> getPortInterfaceRealization(DDiagram diagram) {
+		Set<EObject> result = Sets.newLinkedHashSet();
+		if (diagram instanceof DSemanticDecorator) {
+			Session sess = SessionManager.INSTANCE.getSession(((DSemanticDecorator)diagram).getTarget());
+
+			Iterator<EObject> it = Iterators.transform(
+					Iterators.filter(diagram.eAllContents(), AbstractDNode.class),
+					new Function<AbstractDNode, EObject>() {
+
+						public EObject apply(AbstractDNode input) {
+							return input.getTarget();
+						}
+					});
+			while (it.hasNext()) {
+				EObject displayedAsANode = it.next();
+				if (displayedAsANode != null) {
+					for (Setting xRef : sess.getSemanticCrossReferencer().getInverseReferences(
+							displayedAsANode)) {
+						EObject eObject = xRef.getEObject();
+						if(eObject instanceof DNode){
+							eObject = ((DNode)eObject).getTarget();
+						}
+						if (sess.getModelAccessor().eInstanceOf(eObject, "Port")) {
+							Port port = (Port)eObject;
+							result.addAll(port.getProvideds());
+						}
+					}
+				}
+			}
+		}
 		return result;
 	}
 }

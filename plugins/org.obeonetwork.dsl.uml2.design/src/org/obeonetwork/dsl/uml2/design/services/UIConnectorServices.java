@@ -17,10 +17,19 @@ import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.description.Layer;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.uml2.uml.ConnectableElement;
 import org.eclipse.uml2.uml.Connector;
@@ -54,15 +63,62 @@ public class UIConnectorServices {
 	 * @return true if the connector must be displayed.
 	 */
 	public boolean isValidConnector(org.eclipse.uml2.uml.Connector self, DNode sourceView, DNode targetView) {
-		if (self.getEnds().size() == 2) {
-			boolean ret = true;
+		if (sourceView != targetView && self.getEnds().size() >0) {
 			final ConnectorEnd connectorSource = self.getEnds().get(0);
-			if (!isValidPart(connectorSource, getViewContainerTarget(sourceView)))
-				ret = false;
+//			if (!isValidPart(connectorSource, getViewContainerTarget(sourceView)))
+//				return false;
 			final ConnectorEnd connectorTarget = self.getEnds().get(1);
-			if (!isValidPart(connectorTarget, getViewContainerTarget(targetView)))
-				ret = false;
-			return ret;
+//			if (!isValidPart(connectorTarget, getViewContainerTarget(targetView)))
+//				return false;
+
+			Element source = (Element)sourceView.getTarget();
+			Element target = (Element)targetView.getTarget();
+			if (isInterfacesLayerActive(sourceView)) {
+				if (source instanceof Interface && target instanceof Interface) {
+					List<ConnectorEnd> ends = self.getEnds();
+					ConnectorEnd end1 = ends.get(0);
+					ConnectorEnd end2 = ends.get(1);
+					ConnectableElement role1 = end1.getRole();
+					ConnectableElement role2 = end2.getRole();
+					if (role1 instanceof Port && role2 instanceof Port) {
+						Port port1 = (Port)role1;
+						List<Interface> port1Provideds = port1.getProvideds();
+						List<Interface> port1Requireds = port1.getRequireds();
+						Port port2 = (Port)role2;
+						List<Interface> port2Provideds = port2.getProvideds();
+						List<Interface> port2Requireds = port2.getRequireds();
+						if (port1Provideds != null && port1Requireds != null && port2Provideds != null
+								&& port2Requireds != null) {
+							// port1 provided && port2 required
+							if ((port1Provideds.contains(source) && port2Requireds.contains(target))
+									|| (port1Provideds.contains(target) && port2Requireds.contains(source))
+									|| (port2Provideds.contains(source) && port1Requireds.contains(target))
+									|| (port2Provideds.contains(target) && port1Requireds.contains(source))) {
+								return true;
+							}
+						}
+					}
+				} else if (source instanceof Port && target instanceof Port) {
+					Port port1 = (Port)source;
+					Port port2 = (Port)target;
+					return ((port1.getProvideds().size()==0 && port2.getRequireds().size()==0)
+							&& (port2.getProvideds().size()==0 && port1.getRequireds().size()==0));
+				}
+			}
+		}
+		return true;
+	}
+	
+	public boolean isValidConnector(org.eclipse.uml2.uml.Connector self, DNodeContainer sourceView, DNodeContainer targetView) {
+		return sourceView.getTarget() instanceof Property && targetView.getTarget() instanceof Property;
+	}
+
+	public static boolean isInterfacesLayerActive(DDiagramElement diagramElement) {
+		DDiagram diagram = diagramElement.getParentDiagram();
+		for (Layer activeLayer : diagram.getActivatedLayers()) {
+			if("Interfaces".equals(activeLayer.getName())){
+				return true;
+			}
 		}
 		return false;
 	}
@@ -180,7 +236,7 @@ public class UIConnectorServices {
 						connectInterface2Interface((DNode)sourceView, (Interface)source, (DNode)targetView,
 								(Interface)target);
 						break;
-					}
+					} 
 				}
 
 			} else if (target instanceof Port) {
@@ -226,7 +282,8 @@ public class UIConnectorServices {
 			}
 		} else if (source instanceof Property && target instanceof Property) {
 			// Make a new connector From Port to Interface
-			new ConnectorServices().connectProperty2Property((Property)source, (Property)target);
+			new ConnectorServices().connectProperty2Property(sourceView, (Property)source, targetView,
+					(Property)target);
 		} else {
 			new LogServices().error(
 					"ConnectorServices.createConnector(" + source.getClass() + ", " + target.getClass()
@@ -445,6 +502,14 @@ public class UIConnectorServices {
 					// and automatically it will be calculated as client dependency
 					dependency.getClients().add(connector);
 				}
+			} else if (target instanceof Port) {
+				final ConnectorEnd connectorEnd = connector.createEnd();
+				connectorEnd.setRole((ConnectableElement)target);
+			}else if(target instanceof Interface){
+				final ConnectorEnd connectorEnd = connector.createEnd();
+				final AbstractDNode targetNode = (AbstractDNode)dEdge.getTargetNode();
+				final EObject model = targetNode.getTarget();
+				connectorEnd.setRole((ConnectableElement)model);
 			}
 		}
 	}
@@ -510,5 +575,25 @@ public class UIConnectorServices {
 			}
 		}
 		return result;
+	}
+
+	protected Connector connectPortInterface2PortInterface(DNode sourceView, Interface iSource,
+			DNode targetView, Interface iTarget) {
+
+		final StructuredClassifier structuredClassifier = getStructuredClassifierRelated2InterfaceView(targetView);
+		final Connector connector = new ConnectorServices().createConnector(structuredClassifier, iTarget,
+				iSource);
+
+		// add ConnectorEnds and clientDependencies
+		final Set<DEdge> edges = new HashSet<DEdge>();
+		edges.addAll(sourceView.getIncomingEdges());
+		edges.addAll(targetView.getIncomingEdges());
+		edges.addAll(targetView.getOutgoingEdges());
+		edges.addAll(sourceView.getOutgoingEdges());
+
+		// add ConnectorEnds and clientDependencies
+		addConnectorEndsAndClientDependencies(connector, edges);
+
+		return connector;
 	}
 }

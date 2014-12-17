@@ -135,7 +135,7 @@ public class UICompositeStructureServices {
 				if (target instanceof StructuredClassifier) {
 					List<Connector> ownedConnectors = ((StructuredClassifier)target).getOwnedConnectors();
 					for (Connector connector : ownedConnectors) {
-						if (connector.getClientDependencies().isEmpty() && connector.getEnds().size() == 2) {
+						if (connector.getClientDependencies().isEmpty() && connector.getEnds().size() >0) {
 							List<ConnectorEnd> ends = connector.getEnds();
 							if (!result.contains(connector)
 									&& isExaclyInstanceOfProperty(ends.get(0).getRole())

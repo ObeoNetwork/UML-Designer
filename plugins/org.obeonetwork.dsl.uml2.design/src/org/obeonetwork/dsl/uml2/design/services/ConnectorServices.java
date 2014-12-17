@@ -13,6 +13,11 @@ package org.obeonetwork.dsl.uml2.design.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.ConnectorEnd;
 import org.eclipse.uml2.uml.Dependency;
@@ -110,7 +115,7 @@ public final class ConnectorServices {
 			if (target instanceof Interface) {
 				result = isConnectable((Port)source, (Interface)target);
 			} else if (target instanceof Port) {
-				result = false;
+				result = isConnectable((Port)source, (Port)target);
 			} else if (target instanceof Property) {
 				result = isConnectable((Port)source, (Property)target);
 			}
@@ -253,6 +258,24 @@ public final class ConnectorServices {
 	}
 
 	/**
+	 * check that source and target are connectable. We explore recursively source generalizations to handle
+	 * super type cases.
+	 * 
+	 * @param source
+	 *            the source element
+	 * @param target
+	 *            the target element
+	 * @return true if connectable
+	 */
+	protected boolean isConnectable(Port source, Port target) {
+		boolean res = true;
+		if (source.getType() != null && target.getType() != null) {
+			res = source.getType().isCompatibleWith(target.getType());
+		}
+		return res;
+	}
+
+	/**
 	 * We have not handle this case. We have not any case with this scenario.
 	 * 
 	 * @param source
@@ -307,23 +330,37 @@ public final class ConnectorServices {
 	/**
 	 * Create a connector between two properties.
 	 * 
-	 * @param pSource
+	 * @param sourceView
+	 * @param source
 	 *            the property source view
-	 * @param pTarget
+	 * @param targetView
+	 * @param target
 	 *            the property target
 	 * @return the new connector
 	 */
-	public Connector connectProperty2Property(Property pSource, Property pTarget) {
+	public Connector connectProperty2Property(DDiagramElement sourceView, Property source, DDiagramElement targetView,
+			Property target) {
 
-		final StructuredClassifier structuredClassifier = (StructuredClassifier)pSource.eContainer();
+		final StructuredClassifier sourceContainer = (StructuredClassifier)source.eContainer();
 
-		final Connector connector = createConnector(structuredClassifier, pSource, pTarget);
+		final Connector connector = createConnector(sourceContainer, source, target);
 
-		final ConnectorEnd iSourceConnectorEnd = connector.createEnd();
-		final ConnectorEnd iTargetConnectorEnd = connector.createEnd();
+		final ConnectorEnd sourceConnectorEnd = connector.createEnd();
+		final ConnectorEnd targetConnectorEnd = connector.createEnd();
 
-		iSourceConnectorEnd.setRole(pSource);
-		iTargetConnectorEnd.setRole(pTarget);
+		sourceConnectorEnd.setRole(source);
+		targetConnectorEnd.setRole(target);
+
+		EObject sourcePart = ((DNodeContainer)sourceView.eContainer()).getTarget();
+		if (source instanceof Port
+				&& sourcePart instanceof Property) {
+			sourceConnectorEnd.setPartWithPort((Property)sourcePart);
+		}
+		EObject targetPart = ((DNodeContainer)targetView.eContainer()).getTarget();
+		if (target instanceof Port
+				&& targetPart instanceof Property) {
+			targetConnectorEnd.setPartWithPort((Property)targetPart);
+		}
 
 		return connector;
 	}
