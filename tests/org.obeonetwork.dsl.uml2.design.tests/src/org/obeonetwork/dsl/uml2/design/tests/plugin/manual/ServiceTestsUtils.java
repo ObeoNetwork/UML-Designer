@@ -27,7 +27,6 @@ import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.JavaExtension;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-import org.eclipse.uml2.uml.resource.UMLResource;
 
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterators;
@@ -71,8 +70,11 @@ public class ServiceTestsUtils {
 			for (EAttribute attr : underTest.eClass().getEAllAttributes()) {
 				if (attr.getEType() == DescriptionPackage.eINSTANCE.getInterpretedExpression()) {
 					Object expr = underTest.eGet(attr);
-					if (expr instanceof String && ((String)expr).length() > 0 && isService(((String)expr))) {
-						allExpressions.add(new InterpretedExpression((String)expr, underTest, attr));
+
+					if (expr instanceof String && ((String)expr).length() > 0) {
+						System.out.println(expr + " : " + isService(((String)expr)));
+						if (isService(((String)expr)))
+							allExpressions.add(new InterpretedExpression((String)expr, underTest, attr));
 					}
 				}
 			}
@@ -91,7 +93,7 @@ public class ServiceTestsUtils {
 			String[] splitExpr = expr.split("\\.");
 			for (String exprPart : splitExpr) {
 				if (exprPart.matches("\\w+ *\\([^\\)]*\\).*") && !exprPart.startsWith("ocl")
-						&& !containsAcceleoKeywords(exprPart) && !containsUmlOperations(exprPart)) {
+						&& !containsAcceleoKeywords(exprPart) && !containsUmlOperations(getServiceName(exprPart))) {
 					return getServiceName(exprPart);
 				}
 			}
@@ -109,7 +111,7 @@ public class ServiceTestsUtils {
 
 	private static boolean containsUmlOperations(String expression) {
 		for (String keywords : umlWhiteList) {
-			if (expression.contains(keywords))
+			if (expression.equals(keywords))
 				return true;
 		}
 		return false;
@@ -194,15 +196,16 @@ public class ServiceTestsUtils {
 	private static List<String> getAllUmlOperations() {
 		// Obtain a new resource set
 		ResourceSet resSet = new ResourceSetImpl();
-		
+
 		// Create a resource
-		Resource res=resSet.getResource(URI.createURI("http://www.eclipse.org/uml2/2.0.0/UML"),true);
+		Resource res = resSet.getResource(URI.createURI("http://www.eclipse.org/uml2/2.0.0/UML"), true);
 		EObject root = res.getContents().get(0);
-		
+
 		// Get all eOperations
 		List<EObject> umlOperations = Lists.newArrayList();
-		Iterators.addAll(umlOperations, Iterators.filter(root.eAllContents(), Predicates.instanceOf(EOperation.class)));
-		
+		Iterators.addAll(umlOperations,
+				Iterators.filter(root.eAllContents(), Predicates.instanceOf(EOperation.class)));
+
 		// Get eOperation names
 		List<String> result = Lists.newArrayList();
 		for (EObject umlOperation : umlOperations) {
