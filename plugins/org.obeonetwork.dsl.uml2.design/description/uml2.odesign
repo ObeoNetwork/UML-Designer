@@ -4703,7 +4703,7 @@
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.LiteralInteger" referenceName="weight" variableName="weight">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="[source.oclAsType(uml::NamedElement).name+'_To_'+target.oclAsType(uml::NamedElement).name+'_weight'/]"/>
                     </subModelOperations>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="interrupts" valueExpression="service:get"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="interrupts" valueExpression="service:source.getInterruptibleRegion"/>
                     <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:source.getInterruptibleRegion">
                       <subModelOperations xsi:type="tool:SetValue" featureName="interruptingEdge" valueExpression="var:flow"/>
                     </subModelOperations>
@@ -5317,7 +5317,7 @@
       <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
       <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#/"/>
       <defaultLayer name="Profile">
-        <edgeMappings name="PD_Extension" deletionDescription="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='PD%20UML%20Element']" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" targetMapping="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_ElementImport']" targetFinderExpression="service:self.getElementImport" sourceFinderExpression="[self.getStereotype()/]" domainClass="uml.Extension" useDomainElement="true" reconnections="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='PD_ReconnectExtension']">
+        <edgeMappings name="PD_Extension" deletionDescription="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='PD%20UML%20Element']" synchronizationLock="true" sourceMapping="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" targetMapping="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_ElementImport']" targetFinderExpression="service:self.getElementImport" sourceFinderExpression="[self.oclAsType(uml::Extension).getStereotype()/]" domainClass="uml.Extension" useDomainElement="true" reconnections="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.4/@ownedTools[name='PD_ReconnectExtension']">
           <style targetArrow="InputFillClosedArrow" sizeComputationExpression="2" routingStyle="tree">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription>
