@@ -245,12 +245,12 @@
               <containerVariable name="container"/>
               <representationNameVariable name="diagramName"/>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:DiagramNavigationDescription" name="Open sequence diagram from operation" label="for operation" browseExpression="service:getInteractions" navigationNameExpression="['Open '+self.oclAsType(uml::NamedElement).name+' Sequence Diagram'/]" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']">
+            <ownedTools xsi:type="tool_1:DiagramNavigationDescription" name="Open sequence diagram from operation" label="for operation" browseExpression="[container.eInverse()->select(oclIsTypeOf(uml::Message)).oclAsType(uml::Message).interaction/]" navigationNameExpression="['Open '+self.oclAsType(uml::NamedElement).name+' Sequence Diagram'/]" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']">
               <containerViewVariable name="containerView"/>
               <containerVariable name="container"/>
               <representationNameVariable name="diagramName"/>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:DiagramNavigationDescription" name="Open sequence diagram from class" label="for class" browseExpression="service:getInteractions" navigationNameExpression="['Open '+self.oclAsType(uml::NamedElement).name+' Sequence Diagram'/]" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']">
+            <ownedTools xsi:type="tool_1:DiagramNavigationDescription" name="Open sequence diagram from class" label="for class" browseExpression="[container.eInverse()->select(oclIsTypeOf(uml::Property)).oclAsType(uml::Property).eInverse()->select(oclIsTypeOf(uml::Lifeline)).oclAsType(uml::Lifeline).interaction/]" navigationNameExpression="['Open '+self.oclAsType(uml::NamedElement).name+' Sequence Diagram'/]" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']">
               <containerViewVariable name="containerView"/>
               <containerVariable name="container"/>
               <representationNameVariable name="diagramName"/>
