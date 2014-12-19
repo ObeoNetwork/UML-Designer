@@ -13,24 +13,32 @@ package org.obeonetwork.dsl.uml2.design.tests.plugin.manual;
 import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EOperation;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.JavaExtension;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.uml2.uml.resource.UMLResource;
 
+import com.google.common.base.Predicates;
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 public class ServiceTestsUtils {
 	private static Set<String> acceleoWhiteList = Sets.newHashSet("->", "eContainer", "toLowerFirst",
 			"toUpperFirst", "not ", "eClass");
 
-	private static Set<String> umlWhiteList = Sets.newHashSet("getStereotypeApplications",
-			"getNearestPackage", "getStereotype","getAppliedStereotypes");
+	private static Set<String> umlWhiteList = Sets.newHashSet(getAllUmlOperations());
 
 	public static void collectDeclaredServicesFromUmlDesignerViewpoints(Set<Method> allDeclaredServices) {
 		Set<JavaExtension> allExtensions = new HashSet<JavaExtension>();
@@ -181,5 +189,25 @@ public class ServiceTestsUtils {
 	private static void collectJavaExtensionsFromViewpoint(Viewpoint structural,
 			Set<JavaExtension> allExtensions) {
 		allExtensions.addAll(structural.getOwnedJavaExtensions());
+	}
+
+	private static List<String> getAllUmlOperations() {
+		// Obtain a new resource set
+		ResourceSet resSet = new ResourceSetImpl();
+		
+		// Create a resource
+		Resource res=resSet.getResource(URI.createURI("http://www.eclipse.org/uml2/2.0.0/UML"),true);
+		EObject root = res.getContents().get(0);
+		
+		// Get all eOperations
+		List<EObject> umlOperations = Lists.newArrayList();
+		Iterators.addAll(umlOperations, Iterators.filter(root.eAllContents(), Predicates.instanceOf(EOperation.class)));
+		
+		// Get eOperation names
+		List<String> result = Lists.newArrayList();
+		for (EObject umlOperation : umlOperations) {
+			result.add(((EOperation)umlOperation).getName());
+		}
+		return result;
 	}
 }
