@@ -11,6 +11,7 @@
 package org.obeonetwork.dsl.uml2.design.tests.plugin.manual;
 
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -34,20 +35,43 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 public class ServiceTestsUtils {
+	private static final String VP_EXTEND = "Extend";
+
+	private static final String VP_REVIEW = "Review";
+
+	private static final String VP_DESIGN = "Design";
+
+	private static final String VP_CAPTURE = "Capture";
+
+	private static final String UML_VP_URI = "viewpoint:/org.obeonetwork.dsl.uml2.design/";
+
 	private static Set<String> acceleoWhiteList = Sets.newHashSet("->", "eContainer", "toLowerFirst",
-			"toUpperFirst", "not ", "eClass");
+			"toUpperFirst", "not ", "eClass", "eAllContents", "eContents", "equalsIgnoreCase");
 
 	private static Set<String> umlWhiteList = Sets.newHashSet(getAllUmlOperations());
 
+	private static Set<String> siriusWhiteList = Sets.newHashSet("getTarget");
+
 	public static void collectDeclaredServicesFromUmlDesignerViewpoints(Set<Method> allDeclaredServices) {
+		collectDeclaredServicesFromDesignerViewpoints(allDeclaredServices, UML_VP_URI, VP_CAPTURE);
+		collectDeclaredServicesFromDesignerViewpoints(allDeclaredServices, UML_VP_URI, VP_DESIGN);
+		collectDeclaredServicesFromDesignerViewpoints(allDeclaredServices, UML_VP_URI, VP_REVIEW);
+		collectDeclaredServicesFromDesignerViewpoints(allDeclaredServices, UML_VP_URI, VP_EXTEND);
+	}
+
+	public static void collectDeclaredServicesFromDesignerViewpoints(Set<Method> allDeclaredServices,
+			String vpUri, String vpName) {
 		Set<JavaExtension> allExtensions = new HashSet<JavaExtension>();
-		collectJavaExtensionsFromUmlDesignerViewpoints(allExtensions);
+		collectJavaExtensionsFromDesignerViewpoints(vpUri, vpName, allExtensions);
 		for (JavaExtension extension : allExtensions) {
 			try {
 				@SuppressWarnings("rawtypes")
 				Class clazz = Class.forName(extension.getQualifiedClassName());
 				for (Method method : clazz.getDeclaredMethods()) {
-					allDeclaredServices.add(method);
+					if (method.getModifiers() == Modifier.PUBLIC) {
+						allDeclaredServices.add(method);
+					}
+
 				}
 			} catch (ClassNotFoundException e) {
 				// Nothing to do, this is checked by the {@link JavaExtensionTests}
@@ -55,11 +79,60 @@ public class ServiceTestsUtils {
 		}
 	}
 
+	public static void collectDeclaredServicesFromUmlDesignerViewpoint(Set<Method> allDeclaredServices,
+			String viewpointName) {
+		Set<JavaExtension> allExtensions = new HashSet<JavaExtension>();
+		collectJavaExtensionsFromUmlDesignerViewpoint(allExtensions, viewpointName);
+		for (JavaExtension extension : allExtensions) {
+			try {
+				@SuppressWarnings("rawtypes")
+				Class clazz = Class.forName(extension.getQualifiedClassName());
+				for (Method method : clazz.getDeclaredMethods()) {
+					if (method.getModifiers() == Modifier.PUBLIC) {
+						allDeclaredServices.add(method);
+					}
+				}
+			} catch (ClassNotFoundException e) {
+				// Nothing to do, this is checked by the {@link JavaExtensionTests}
+			}
+		}
+	}
+
+	public static void collectServicesFromDesignerViewpoint(Set<Method> allServices, String vpName,
+			String vpUri) {
+		Set<JavaExtension> allExtensions = new HashSet<JavaExtension>();
+		collectJavaExtensionsFromDesignerViewpoints(vpUri, vpName, allExtensions);
+		for (JavaExtension extension : allExtensions) {
+			try {
+				@SuppressWarnings("rawtypes")
+				Class clazz = Class.forName(extension.getQualifiedClassName());
+				for (Method method : clazz.getMethods()) {
+					if (method.getModifiers() == Modifier.PUBLIC) {
+						allServices.add(method);
+					}
+				}
+			} catch (ClassNotFoundException e) {
+				// Nothing to do, this is checked by the {@link JavaExtensionTests}
+			}
+		}
+	}
+
+	public static void collectServicesFromUmlDesignerViewpoint(Set<Method> allServices, String viewpointName) {
+		collectServicesFromDesignerViewpoint(allServices, VP_CAPTURE, UML_VP_URI);
+		collectServicesFromDesignerViewpoint(allServices, VP_DESIGN, UML_VP_URI);
+		collectServicesFromDesignerViewpoint(allServices, VP_REVIEW, UML_VP_URI);
+		collectServicesFromDesignerViewpoint(allServices, VP_EXTEND, UML_VP_URI);
+	}
+
+	protected static void collectServiceExpressionFromDesignerViewpoints(
+			Set<InterpretedExpression> allExpressions, String vpUri, String vpName) {
+		Viewpoint structural = ViewpointRegistry.getInstance().getViewpoint(URI.createURI(vpUri + vpName));
+		collectServiceExpressionsFromViewpoint(structural, allExpressions);
+	}
+
 	private static void collectServiceExpressionFromUmlDesignerViewpoints(
 			Set<InterpretedExpression> allExpressions, String vpName) {
-		Viewpoint structural = ViewpointRegistry.getInstance().getViewpoint(
-				URI.createURI("viewpoint:/org.obeonetwork.dsl.uml2.design/" + vpName));
-		collectServiceExpressionsFromViewpoint(structural, allExpressions);
+		collectServiceExpressionFromDesignerViewpoints(allExpressions, UML_VP_URI, vpName);
 	}
 
 	private static void collectServiceExpressionsFromViewpoint(Viewpoint structural,
@@ -92,8 +165,10 @@ public class ServiceTestsUtils {
 		if (expr.startsWith("[") && expr.endsWith("/]")) {
 			String[] splitExpr = expr.split("\\.");
 			for (String exprPart : splitExpr) {
-				if (exprPart.matches("\\w+ *\\([^\\)]*\\).*") && !exprPart.startsWith("ocl")
-						&& !containsAcceleoKeywords(exprPart) && !containsUmlOperations(getServiceName(exprPart))) {
+				if (exprPart.matches("\\w+ *\\(.*") && !exprPart.startsWith("ocl")
+						&& !containsAcceleoKeywords(exprPart)
+						&& !containsUmlOperations(getServiceName(exprPart))
+						&& !containsSiriusOperations(exprPart)) {
 					return getServiceName(exprPart);
 				}
 			}
@@ -111,6 +186,14 @@ public class ServiceTestsUtils {
 
 	private static boolean containsUmlOperations(String expression) {
 		for (String keywords : umlWhiteList) {
+			if (expression.equals(keywords))
+				return true;
+		}
+		return false;
+	}
+
+	private static boolean containsSiriusOperations(String expression) {
+		for (String keywords : siriusWhiteList) {
 			if (expression.equals(keywords))
 				return true;
 		}
@@ -142,17 +225,17 @@ public class ServiceTestsUtils {
 				String[] splitExpr = expr.split("\\.");
 				for (String exprPart : splitExpr) {
 					String service = getServiceName(exprPart);
-					if (!service.equals(exprPart) && !containsUmlOperations(service)) {
+					if (!service.equals(exprPart) && !containsUmlOperations(service)
+							&& !containsSiriusOperations(service)) {
 						return service;
 					}
 				}
 
-				if (!containsUmlOperations(splitExpr[splitExpr.length - 1])) {
-					return getServiceName(splitExpr[splitExpr.length - 1]);
+				String service = splitExpr[splitExpr.length - 1];
+				if (!containsUmlOperations(service) && !containsSiriusOperations(service)) {
+					return getServiceName(service);
 				}
-			}
-
-			if (!containsUmlOperations(expr)) {
+			} else if (!containsUmlOperations(expr) && !containsSiriusOperations(expr)) {
 				return getServiceName(expr);
 			}
 		}
@@ -160,7 +243,7 @@ public class ServiceTestsUtils {
 	}
 
 	private static String getServiceName(String expr) {
-		if (expr.contains("(") && expr.contains(")")) {
+		if (expr.contains("(")) {
 			return expr.substring(0, expr.indexOf("("));
 		}
 		return expr;
@@ -168,23 +251,37 @@ public class ServiceTestsUtils {
 
 	public static void collectServiceExpressionFromUmlDesignerViewpoints(
 			Set<InterpretedExpression> allServiceExpressions) {
-		collectServiceExpressionFromUmlDesignerViewpoints(allServiceExpressions, "Capture");
-		collectServiceExpressionFromUmlDesignerViewpoints(allServiceExpressions, "Design");
-		collectServiceExpressionFromUmlDesignerViewpoints(allServiceExpressions, "Review");
-		collectServiceExpressionFromUmlDesignerViewpoints(allServiceExpressions, "Extend");
+		collectServiceExpressionFromUmlDesignerViewpoints(allServiceExpressions, VP_CAPTURE);
+		collectServiceExpressionFromUmlDesignerViewpoints(allServiceExpressions, VP_DESIGN);
+		collectServiceExpressionFromUmlDesignerViewpoints(allServiceExpressions, VP_REVIEW);
+		collectServiceExpressionFromUmlDesignerViewpoints(allServiceExpressions, VP_EXTEND);
+	}
+
+	public static void collectServiceExpressionFromUmlDesignerViewpoint(
+			Set<InterpretedExpression> allServiceExpressions, String viewpointName) {
+		collectServiceExpressionFromUmlDesignerViewpoints(allServiceExpressions, viewpointName);
 	}
 
 	public static void collectJavaExtensionsFromUmlDesignerViewpoints(Set<JavaExtension> allExtensions) {
-		collectJavaExtensionsFromUmlDesignerViewpoints("Capture", allExtensions);
-		collectJavaExtensionsFromUmlDesignerViewpoints("Design", allExtensions);
-		collectJavaExtensionsFromUmlDesignerViewpoints("Review", allExtensions);
-		collectJavaExtensionsFromUmlDesignerViewpoints("Extend", allExtensions);
+		collectJavaExtensionsFromUmlDesignerViewpoints(VP_CAPTURE, allExtensions);
+		collectJavaExtensionsFromUmlDesignerViewpoints(VP_DESIGN, allExtensions);
+		collectJavaExtensionsFromUmlDesignerViewpoints(VP_REVIEW, allExtensions);
+		collectJavaExtensionsFromUmlDesignerViewpoints(VP_EXTEND, allExtensions);
+	}
+
+	public static void collectJavaExtensionsFromUmlDesignerViewpoint(Set<JavaExtension> allExtensions,
+			String viewpointName) {
+		collectJavaExtensionsFromUmlDesignerViewpoints(viewpointName, allExtensions);
 	}
 
 	private static void collectJavaExtensionsFromUmlDesignerViewpoints(String vpName,
 			Set<JavaExtension> allExtensions) {
-		Viewpoint structural = ViewpointRegistry.getInstance().getViewpoint(
-				URI.createURI("viewpoint:/org.obeonetwork.dsl.uml2.design/" + vpName));
+		collectJavaExtensionsFromDesignerViewpoints(UML_VP_URI, vpName, allExtensions);
+	}
+
+	protected static void collectJavaExtensionsFromDesignerViewpoints(String vpUri, String vpName,
+			Set<JavaExtension> allExtensions) {
+		Viewpoint structural = ViewpointRegistry.getInstance().getViewpoint(URI.createURI(vpUri + vpName));
 		collectJavaExtensionsFromViewpoint(structural, allExtensions);
 	}
 

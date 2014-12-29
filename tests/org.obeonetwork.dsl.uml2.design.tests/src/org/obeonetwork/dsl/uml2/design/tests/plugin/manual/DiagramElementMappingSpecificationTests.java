@@ -21,7 +21,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
-import org.obeonetwork.dsl.uml2.design.ui.extension.editor.UmlViewpoints;
+import org.obeonetwork.dsl.uml2.design.api.utils.UmlViewpoints;
 
 import com.google.common.base.Strings;
 import com.google.common.collect.Iterators;
@@ -131,14 +131,17 @@ public class DiagramElementMappingSpecificationTests {
 	private boolean isDisplayingALabel(DiagramElementMapping underTest) {
 		BasicLabelStyleDescription labelDescription = new DescriptionSwitch<BasicLabelStyleDescription>() {
 
+			@SuppressWarnings("unused")
 			public BasicLabelStyleDescription caseNodeMapping(NodeMapping object) {
 				return object.getStyle();
 			};
 
+			@SuppressWarnings("unused")
 			public BasicLabelStyleDescription caseEdgeMapping(EdgeMapping object) {
 				return object.getStyle().getCenterLabelStyleDescription();
 			};
 
+			@SuppressWarnings("unused")
 			public BasicLabelStyleDescription caseContainerMapping(ContainerMapping object) {
 				return object.getStyle();
 			};

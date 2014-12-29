@@ -49,14 +49,11 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.emf.edit.ui,
  org.eclipse.uml2.uml.editor
 Bundle-ActivationPolicy: lazy
-Export-Package: org.obeonetwork.dsl.uml2.design,
- org.obeonetwork.dsl.uml2.design.services,
- org.obeonetwork.dsl.uml2.design.services.internal,
- org.obeonetwork.dsl.uml2.design.ui.extension,
- org.obeonetwork.dsl.uml2.design.ui.extension.editor,
- org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel,
- org.obeonetwork.dsl.uml2.profile.design.exportprofile,
- org.obeonetwork.dsl.uml2.profile.design.services
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-Localization: plugin
 Bundle-Vendor: Obeo Network
+Export-Package: org.obeonetwork.dsl.uml2.design;x-friends:="org.obeonetwork.dsl.uml2.usage",
+ org.obeonetwork.dsl.uml2.design.api.services,
+ org.obeonetwork.dsl.uml2.design.api.utils,
+ org.obeonetwork.dsl.uml2.design.api.wizards,
+ org.obeonetwork.dsl.uml2.design.internal.services;x-friends:="org.obeonetwork.dsl.uml2.design.tests"

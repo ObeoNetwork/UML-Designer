@@ -13,14 +13,16 @@ package org.obeonetwork.dsl.uml2.design.tests.contexts;
 
 import static org.junit.Assert.assertEquals;
 
+
+
+
 // Start of user code AnUmlModelWithAnAssociation imports
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.UMLFactory;
-import org.obeonetwork.dsl.uml2.design.services.ClassDiagramServices;
-import org.obeonetwork.dsl.uml2.design.services.UMLServices;
-import org.obeonetwork.dsl.uml2.design.services.internal.EditLabelSwitch;
-
+import org.obeonetwork.dsl.uml2.design.api.services.ClassDiagramServices;
+import org.obeonetwork.dsl.uml2.design.internal.services.AssociationServices;
+import org.obeonetwork.dsl.uml2.design.internal.services.EditLabelSwitch;
 // End of user code
 import org.obeonetwork.dsl.uml2.design.tests.automation.Context;
 
@@ -37,8 +39,6 @@ public class AnUmlModelWithAnAssociation extends Context {
 
 	protected EditLabelSwitch editSwitch = new EditLabelSwitch();
 
-	private UMLServices umlServices = new UMLServices();
-
 	private ClassDiagramServices classDiagramServices = new ClassDiagramServices();
 
 	// End of user code
@@ -51,8 +51,8 @@ public class AnUmlModelWithAnAssociation extends Context {
 		Property anotherEnd = UMLFactory.eINSTANCE.createProperty();
 		startAssociation.getOwnedEnds().add(oneEnd);
 		startAssociation.getOwnedEnds().add(anotherEnd);
-		firstEnd = classDiagramServices.getSource(startAssociation);
-		secondEnd = classDiagramServices.getTarget(startAssociation);
+		firstEnd = AssociationServices.INSTANCE.getSource(startAssociation);
+		secondEnd = AssociationServices.INSTANCE.getTarget(startAssociation);
 		// End of user code
 	}
 
@@ -173,13 +173,13 @@ public class AnUmlModelWithAnAssociation extends Context {
 
 	// Start of user code AnUmlModelWithAnAssociation private methods
 	protected void editFirstRole(Association startAssociation2, String string) {
-		Property role = classDiagramServices.getSource(startAssociation2);
+		Property role = AssociationServices.INSTANCE.getSource(startAssociation2);
 		editSwitch.setEditedLabelContent(string);
 		editSwitch.caseRole(role);
 	}
 
 	protected void editSecondRole(Association startAssociation2, String string) {
-		Property role = classDiagramServices.getTarget(startAssociation2);
+		Property role = AssociationServices.INSTANCE.getTarget(startAssociation2);
 		editSwitch.setEditedLabelContent(string);
 		editSwitch.caseRole(role);
 	}

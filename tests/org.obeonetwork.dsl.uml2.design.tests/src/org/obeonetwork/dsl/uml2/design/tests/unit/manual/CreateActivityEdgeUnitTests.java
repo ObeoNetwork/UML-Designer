@@ -24,11 +24,11 @@ import org.eclipse.uml2.uml.MergeNode;
 import org.eclipse.uml2.uml.ObjectFlow;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.junit.Test;
-import org.obeonetwork.dsl.uml2.design.services.ActivityServices;
+import org.obeonetwork.dsl.uml2.design.api.services.ActivityDiagramServices;
 
 public class CreateActivityEdgeUnitTests {
 
-	ActivityServices services = new ActivityServices();
+	ActivityDiagramServices services = new ActivityDiagramServices();
 
 	/**
 	 * Initial node shall not have any incoming activity edge which means it should not be selectable as

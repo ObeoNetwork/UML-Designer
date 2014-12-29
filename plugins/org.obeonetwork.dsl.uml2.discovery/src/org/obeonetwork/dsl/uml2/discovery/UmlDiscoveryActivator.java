@@ -36,13 +36,13 @@ public class UmlDiscoveryActivator extends AbstractUIPlugin {
 	// The shared instance
 	private static UmlDiscoveryActivator plugin;
 
-	private final ServiceTracker proxyTracker;
+	private final ServiceTracker<?, ?> proxyTracker;
 
 	/**
 	 * The constructor
 	 */
 	public UmlDiscoveryActivator() {
-		proxyTracker = new ServiceTracker(FrameworkUtil.getBundle(
+		proxyTracker = new ServiceTracker<Object, Object>(FrameworkUtil.getBundle(
 				this.getClass()).getBundleContext(),
 				IProxyService.class.getName(), null);
 		proxyTracker.open();

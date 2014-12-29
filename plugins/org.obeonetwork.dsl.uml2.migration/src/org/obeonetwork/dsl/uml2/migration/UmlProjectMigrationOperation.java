@@ -24,7 +24,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
-import org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel.UmlProjectUtils;
+import org.obeonetwork.dsl.uml2.design.api.utils.UmlViewpoints;
 
 /**
  * UML Designer 3.0 to UML Designer 4.0 migration operation. It converts the
@@ -62,7 +62,7 @@ public class UmlProjectMigrationOperation extends WorkspaceModifyOperation {
 				monitor.subTask("Activate UML viewpoints...");
 				Session session = modelingProject.get().getSession();
 				// Activate viewpoints
-				UmlProjectUtils.enableUMLViewpoints(session);
+				UmlViewpoints.enable(session);
 				monitor.worked(25);
 			}
 			// Save migrated project

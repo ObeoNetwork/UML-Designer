@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehaviorExecutionSpecification;
 import org.eclipse.uml2.uml.Class;
@@ -36,7 +37,8 @@ import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.OccurrenceSpecification;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Package;
-import org.obeonetwork.dsl.uml2.design.services.SequenceServices;
+import org.obeonetwork.dsl.uml2.design.api.services.SequenceDiagramServices;
+import org.obeonetwork.dsl.uml2.design.internal.services.SequenceServices;
 import org.obeonetwork.dsl.uml2.design.tests.Activator;
 
 /**
@@ -54,7 +56,12 @@ public class SequenceServiceTests extends TestCase {
 	/**
 	 * The sequence services instance.
 	 */
-	private SequenceServices sequenceServices;
+	private SequenceDiagramServices sequenceServices = new SequenceDiagramServices();
+	
+	/**
+	 * The sequence services instance.
+	 */
+	private SequenceServices internalSequenceServices = new SequenceServices();
 
 	/**
 	 * Get interaction defined in a resource.
@@ -94,8 +101,6 @@ public class SequenceServiceTests extends TestCase {
 	@Override
 	protected void setUp() throws Exception {
 		super.setUp();
-
-		sequenceServices = new SequenceServices();
 	}
 
 	/**
@@ -147,31 +152,31 @@ public class SequenceServiceTests extends TestCase {
 		OccurrenceSpecification executionOccurrence;
 		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_6");
 		executionOccurrence = (OccurrenceSpecification)interaction.getFragment("compute_start");
-		assertEquals("consumers", sequenceServices.findOccurrenceSpecificationContext(executionOccurrence)
+		assertEquals("consumers", internalSequenceServices.findOccurrenceSpecificationContext(executionOccurrence)
 				.getName());
 		executionOccurrence = (OccurrenceSpecification)interaction.getFragment("compute_finish");
-		assertEquals("consumers", sequenceServices.findOccurrenceSpecificationContext(executionOccurrence)
+		assertEquals("consumers", internalSequenceServices.findOccurrenceSpecificationContext(executionOccurrence)
 				.getName());
 
 		executionOccurrence = (OccurrenceSpecification)interaction.getFragment("get_receiver");
-		assertEquals("get", sequenceServices.findOccurrenceSpecificationContext(executionOccurrence)
+		assertEquals("get", internalSequenceServices.findOccurrenceSpecificationContext(executionOccurrence)
 				.getName());
 
 		executionOccurrence = (OccurrenceSpecification)interaction.getFragment("get_reply_sender");
-		assertEquals("get", sequenceServices.findOccurrenceSpecificationContext(executionOccurrence)
+		assertEquals("get", internalSequenceServices.findOccurrenceSpecificationContext(executionOccurrence)
 				.getName());
 
 		executionOccurrence = (OccurrenceSpecification)interaction.getFragment("get_reply_receiver");
-		assertEquals("compute", sequenceServices.findOccurrenceSpecificationContext(executionOccurrence)
+		assertEquals("compute", internalSequenceServices.findOccurrenceSpecificationContext(executionOccurrence)
 				.getName());
 
 		executionOccurrence = (OccurrenceSpecification)interaction.getFragment("BehaviorExecution_3_start");
-		assertEquals("compute", sequenceServices.findOccurrenceSpecificationContext(executionOccurrence)
+		assertEquals("compute", internalSequenceServices.findOccurrenceSpecificationContext(executionOccurrence)
 				.getName());
 
 		executionOccurrence = (OccurrenceSpecification)interaction.getFragment("produce_sender");
 		assertEquals("BehaviorExecution_3",
-				sequenceServices.findOccurrenceSpecificationContext(executionOccurrence).getName());
+				internalSequenceServices.findOccurrenceSpecificationContext(executionOccurrence).getName());
 	}
 
 	/**
@@ -184,7 +189,7 @@ public class SequenceServiceTests extends TestCase {
 	public void testCreateExecution() throws Exception {
 		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_0");
 		final Lifeline lifeline = interaction.getLifeline("consumers");
-		sequenceServices.createExecution(interaction, lifeline, null);
+		internalSequenceServices.createExecution(interaction, lifeline, null);
 
 		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(3, fragments.size());
@@ -214,7 +219,7 @@ public class SequenceServiceTests extends TestCase {
 		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_0");
 		final Lifeline lifeline = interaction.getLifeline("consumers");
 		final Operation operation = (Operation)lifeline.getRepresents().getType().getOwnedElements().get(0);
-		sequenceServices.createExecution(interaction, lifeline, operation, null);
+		internalSequenceServices.createExecution(interaction, lifeline, operation, null);
 
 		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(3, fragments.size());
@@ -244,7 +249,7 @@ public class SequenceServiceTests extends TestCase {
 		final Interaction interaction = getInteraction(RESOURCE_URI, "Scenario_1");
 		final Lifeline lifeline = interaction.getLifeline("consumers");
 		final ExecutionSpecification execution = (ExecutionSpecification)interaction.getFragment("compute");
-		sequenceServices.createExecution(interaction, lifeline, execution);
+		internalSequenceServices.createExecution(interaction, lifeline, execution);
 
 		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(6, fragments.size());
@@ -278,7 +283,7 @@ public class SequenceServiceTests extends TestCase {
 		final Lifeline target = interaction.getLifeline("producers");
 		final Operation operation = (Operation)target.getRepresents().getType().getOwnedElements().get(0);
 
-		sequenceServices.createAsynchronousMessage(interaction, source, target, true, null, null, operation);
+		internalSequenceServices.createAsynchronousMessage(interaction, source, target, true, null, null, operation);
 
 		final List<InteractionFragment> fragments = interaction.getFragments();
 		final List<Behavior> behaviors = interaction.getOwnedBehaviors();
@@ -367,7 +372,7 @@ public class SequenceServiceTests extends TestCase {
 		final Lifeline target = interaction.getLifeline("producers");
 		final Operation operation = (Operation)target.getRepresents().getType().getOwnedElements().get(0);
 
-		sequenceServices.createSynchronousMessage(interaction, source, target, true, null, null, operation);
+		internalSequenceServices.createSynchronousMessage(interaction, source, target, true, null, null, operation);
 
 		final List<InteractionFragment> fragments = interaction.getFragments();
 		final List<Behavior> behaviors = interaction.getOwnedBehaviors();
@@ -483,7 +488,7 @@ public class SequenceServiceTests extends TestCase {
 		final ExecutionOccurrenceSpecification finishingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
 				.getFragment("produce_start");
 
-		sequenceServices.reorder(execution, startingEndPredecessorAfter, finishingEndPredecessorAfter);
+		internalSequenceServices.reorder(execution, startingEndPredecessorAfter, finishingEndPredecessorAfter);
 
 		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(12, fragments.size());
@@ -547,7 +552,7 @@ public class SequenceServiceTests extends TestCase {
 		final ExecutionOccurrenceSpecification finishingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
 				.getFragment("BehaviorExecution_2_start");
 
-		sequenceServices.reorder(execution, startingEndPredecessorAfter, finishingEndPredecessorAfter);
+		internalSequenceServices.reorder(execution, startingEndPredecessorAfter, finishingEndPredecessorAfter);
 
 		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(12, fragments.size());
@@ -628,7 +633,7 @@ public class SequenceServiceTests extends TestCase {
 		final ExecutionOccurrenceSpecification finishingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
 				.getFragment("produce_start");
 
-		sequenceServices.reorder(execution, startingEndPredecessorAfter, finishingEndPredecessorAfter);
+		internalSequenceServices.reorder(execution, startingEndPredecessorAfter, finishingEndPredecessorAfter);
 
 		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(12, fragments.size());
@@ -727,7 +732,7 @@ public class SequenceServiceTests extends TestCase {
 		final ExecutionOccurrenceSpecification finishingEndPredecessorAfter = (ExecutionOccurrenceSpecification)interaction
 				.getFragment("A_finish");
 
-		sequenceServices.reorder(execution, startingEndPredecessorAfter, finishingEndPredecessorAfter);
+		internalSequenceServices.reorder(execution, startingEndPredecessorAfter, finishingEndPredecessorAfter);
 
 		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(6, fragments.size());
@@ -790,7 +795,7 @@ public class SequenceServiceTests extends TestCase {
 		final MessageOccurrenceSpecification finishingEndPredecessorAfter = (MessageOccurrenceSpecification)interaction
 				.getFragment("Message_1_sender");
 
-		sequenceServices.reorder(message, startingEndPredecessorAfter, finishingEndPredecessorAfter);
+		internalSequenceServices.reorder(message, startingEndPredecessorAfter, finishingEndPredecessorAfter);
 
 		final List<InteractionFragment> fragments = interaction.getFragments();
 		assertEquals(5, fragments.size());
@@ -991,4 +996,6 @@ public class SequenceServiceTests extends TestCase {
 		final List<Element> elements = ((Package)interaction.eContainer()).getOwnedElements();
 		assertEquals(1, elements.size());
 	}
+	
+	
 }

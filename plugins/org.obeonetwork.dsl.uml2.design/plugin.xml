@@ -23,7 +23,7 @@ Contributors:
         point="org.eclipse.ui.newWizards">
      <wizard
            category="org.obeonetwork.dsl.uml2.design.category"
-           class="org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel.UmlModelWizard"
+           class="org.obeonetwork.dsl.uml2.design.internal.wizards.newmodel.UmlModelWizard"
            finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
            icon="icons/NewUmlModel.gif"
            id="org.obeonetwork.dsl.uml2.wizard.newUmlModel"
@@ -37,7 +37,7 @@ Contributors:
      </category>
      <wizard
            category="org.obeonetwork.dsl.uml2.design.category"
-           class="org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel.UMLProjectWizard"
+           class="org.obeonetwork.dsl.uml2.design.internal.wizards.newproject.UMLProjectWizard"
            finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
            icon="icons/NewUmlModel.gif"
            id="org.obeonetwork.dsl.uml2.design.wizard1"
@@ -52,7 +52,7 @@ Contributors:
         </category>
         <wizard
               category="org.eclipse.ui.Examples/org.obeonetwork.dsl.uml.examples.category"
-              class="org.obeonetwork.dsl.uml2.design.ui.wizards.UmlExampleWizard"
+              class="org.obeonetwork.dsl.uml2.design.internal.wizards.example.UmlExampleWizard"
               finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
               icon="icons/NewUmlModel.gif"
               id="org.obeonetwork.dsl.uml2.design.doc.TravelAgencyWizard"
@@ -63,7 +63,7 @@ Contributors:
         </wizard>
         <wizard
               category="org.eclipse.ui.Examples/org.obeonetwork.dsl.uml.examples.category"
-              class="org.obeonetwork.dsl.uml2.design.ui.wizards.UmlExampleWizard"
+              class="org.obeonetwork.dsl.uml2.design.internal.wizards.example.UmlExampleWizard"
               finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
               icon="icons/NewUmlModel.gif"
               id="org.obeonetwork.dsl.uml2.design.doc.UMLInColorsWizard"
@@ -78,7 +78,7 @@ Contributors:
 
   
 	   <extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
-	      <editpartProvider class="org.obeonetwork.dsl.uml2.design.ui.extension.editpart.UMLEditPartProvider">
+	      <editpartProvider class="org.obeonetwork.dsl.uml2.design.internal.editpart.UMLEditPartProvider">
 	         <Priority name="High"/>
 	      </editpartProvider>
 	   </extension>
@@ -130,7 +130,7 @@ Contributors:
               name="New UML Model">
         </command>
         <commandParameterType
-              converter="org.obeonetwork.dsl.uml2.design.ui.extension.commands.UmlElementConverter"
+              converter="org.obeonetwork.dsl.uml2.design.internal.commands.UmlElementConverter"
               id="org.obeonetwork.dsl.uml2.actions.openDashboard.param.modelType"
               type="org.eclipse.uml2.uml.Model">
         </commandParameterType>
@@ -139,7 +139,7 @@ Contributors:
    <extension
          point="org.eclipse.ui.handlers">
         <handler
-              class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.DeleteUMLElement"
+              class="org.obeonetwork.dsl.uml2.design.internal.commands.DeleteUMLElement"
               commandId="org.eclipse.sirius.ui.navigator.actions.uml.delete">
            <enabledWhen>
             <with variable="selection">
@@ -152,7 +152,7 @@ Contributors:
            </enabledWhen>
         </handler>
          <handler
-              class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.CreateScenario"
+              class="org.obeonetwork.dsl.uml2.design.internal.commands.CreateScenario"
               commandId="org.eclipse.sirius.ui.navigator.actions.uml.scenario.create">
            <enabledWhen>
             <with variable="selection">
@@ -171,7 +171,7 @@ Contributors:
            </enabledWhen>
         </handler>
          <handler
-               class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.CreateSequenceDiagram"
+               class="org.obeonetwork.dsl.uml2.design.internal.commands.CreateSequenceDiagram"
                commandId="org.eclipse.sirius.ui.navigator.actions.uml.create.sequence">
             <enabledWhen>
                <with
@@ -191,7 +191,7 @@ Contributors:
             </enabledWhen>
          </handler>
          <handler
-               class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.CreateActivityDiagram"
+               class="org.obeonetwork.dsl.uml2.design.internal.commands.CreateActivityDiagram"
                commandId="org.eclipse.sirius.ui.navigator.actions.uml.create.activity">
             <enabledWhen>
                <with
@@ -211,7 +211,7 @@ Contributors:
             </enabledWhen>
          </handler>
          <handler
-               class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.CreateProfileDiagram"
+               class="org.obeonetwork.dsl.uml2.design.internal.commands.CreateProfileDiagram"
                commandId="org.eclipse.sirius.ui.navigator.actions.uml.create.profile">
             <enabledWhen>
                <with
@@ -236,7 +236,7 @@ Contributors:
             </enabledWhen>
          </handler>
          <handler
-               class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.CreateStateMachineDiagram"
+               class="org.obeonetwork.dsl.uml2.design.internal.commands.CreateStateMachineDiagram"
                commandId="org.eclipse.sirius.ui.navigator.actions.uml.create.statemachine">
             <enabledWhen>
                <with
@@ -256,7 +256,7 @@ Contributors:
             </enabledWhen>
          </handler>
          <handler
-               class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.OpenDashboard"
+               class="org.obeonetwork.dsl.uml2.design.internal.commands.OpenDashboard"
                commandId="org.obeonetwork.dsl.uml2.actions.openDashboard">
             <enabledWhen>
                <reference
@@ -265,11 +265,11 @@ Contributors:
             </enabledWhen>
          </handler>
          <handler
-               class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.NewUmlProject"
+               class="org.obeonetwork.dsl.uml2.design.internal.commands.NewUmlProject"
                commandId="org.obeonetwork.dsl.uml2.actions.newUmlProject">
          </handler>
          <handler
-               class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.NewUmlModel"
+               class="org.obeonetwork.dsl.uml2.design.internal.commands.NewUmlModel"
                commandId="org.obeonetwork.dsl.uml2.actions.newUmlModel">
          </handler>
    </extension>
@@ -399,7 +399,7 @@ Contributors:
             allPopups="false"
             locationURI="menu:org.obeonetwork.dsl.uml2.actions.openDashboard">
          <dynamic
-               class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.DashboardContributionItems"
+               class="org.obeonetwork.dsl.uml2.design.internal.commands.DashboardContributionItems"
                id="org.obeonetwork.dsl.uml2.design.dynamicDashboard">
          </dynamic>
       </menuContribution>
@@ -407,14 +407,14 @@ Contributors:
     <extension
           point="org.eclipse.core.expressions.propertyTesters">
        <propertyTester
-             class="org.obeonetwork.dsl.uml2.design.ui.extension.ViewpointEnablementPropertyTester"
+             class="org.obeonetwork.dsl.uml2.design.internal.testers.ViewpointEnablementPropertyTester"
              id="org.obeonetwork.dsl.uml2.design.ViewpointEnabled"
              namespace="org.obeonetwork.dsl.uml2.design"
              properties="Capture,Design,Review,Extend"
              type="org.eclipse.uml2.uml.Element">
        </propertyTester>
        <propertyTester
-             class="org.obeonetwork.dsl.uml2.design.ui.extension.DashboardPropertyTester"
+             class="org.obeonetwork.dsl.uml2.design.internal.testers.DashboardPropertyTester"
              id="org.obeonetwork.dsl.uml2.design.DashboardsExist"
              namespace="org.obeonetwork.dsl.uml2.design"
              properties="dashboardsExist"
@@ -453,7 +453,7 @@ Contributors:
             objectClass="org.eclipse.core.resources.IFile">
          <action
                label="%initDiagramActionLabel"
-               class="org.obeonetwork.dsl.uml2.design.ui.extension.actions.UmlInitDiagramFileAction"
+               class="org.obeonetwork.dsl.uml2.design.internal.actions.UmlInitDiagramFileAction"
                menubarPath="additions"
                enablesFor="1"
                id="org.obeonetwork.dsl.uml2.diagram.InitDiagramAction">
@@ -464,7 +464,7 @@ Contributors:
             nameFilter="*.aird"
             objectClass="org.eclipse.core.resources.IFile">
          <action
-               class="org.obeonetwork.dsl.uml2.design.ui.extension.actions.UmlInitDiagramFileAction"
+               class="org.obeonetwork.dsl.uml2.design.internal.actions.UmlInitDiagramFileAction"
                enablesFor="1"
                id="org.obeonetwork.dsl.uml2.diagram.InitDiagramAction"
                label="%initDiagramActionLabel"
@@ -496,7 +496,7 @@ Contributors:
         <constraints
               categories="http://www.eclipse.org/uml2/5.0.0/UML/Stereotype">
            <constraint
-                 class="org.obeonetwork.dsl.uml2.profile.design.constraints.CheckStereotypeExtension"
+                 class="org.obeonetwork.dsl.uml2.design.internal.constraints.CheckStereotypeExtension"
                  id="org.obeonetwork.dsl.uml2.profile.design.stereotype.constraint1"
                  isEnabledByDefault="true"
                  lang="Java"
@@ -520,10 +520,10 @@ Contributors:
    <extension
          point="org.eclipse.sirius.sessionManagerListener">
       <listener
-            class="org.obeonetwork.dsl.uml2.design.UmlDesignerSessionManagerListener">
+            class="org.obeonetwork.dsl.uml2.design.internal.listeners.UmlDesignerSessionManagerListener">
       </listener>
       <listener
-            class="org.obeonetwork.dsl.uml2.design.OpenHelpContextListener">
+            class="org.obeonetwork.dsl.uml2.design.internal.listeners.OpenHelpContextListener">
       </listener>
    </extension>
 </plugin>
