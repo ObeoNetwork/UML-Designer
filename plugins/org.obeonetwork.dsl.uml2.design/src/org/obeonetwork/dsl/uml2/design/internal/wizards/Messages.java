@@ -18,7 +18,7 @@ import org.eclipse.osgi.util.NLS;
  * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class Messages extends NLS {
-	private static final String BUNDLE_NAME = "org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel.messages"; //$NON-NLS-1$
+	private static final String BUNDLE_NAME = "org.obeonetwork.dsl.uml2.design.internal.wizards.messages"; //$NON-NLS-1$
 
 	/**
 	 * Pasting error.
