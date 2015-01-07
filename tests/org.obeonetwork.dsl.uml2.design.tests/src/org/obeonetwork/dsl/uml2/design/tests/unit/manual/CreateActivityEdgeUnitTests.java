@@ -38,7 +38,7 @@ public class CreateActivityEdgeUnitTests {
 	public void initialNodeNotHaveAnyIncomingActivityEdge() throws Exception {
 		InitialNode node = UMLFactory.eINSTANCE.createInitialNode();
 
-		assertFalse(services.isValidActivityEdgeEnd(node));
+		assertFalse(services.isValidActivityEdgeEnd(null, node));
 	}
 
 	/**
@@ -51,7 +51,7 @@ public class CreateActivityEdgeUnitTests {
 		ControlFlow flow = UMLFactory.eINSTANCE.createControlFlow();
 		node.getIncomings().add(flow);
 
-		assertFalse(services.isValidActivityEdgeEnd(node));
+		assertFalse(services.isValidActivityEdgeEnd(null, node));
 	}
 
 	/**
@@ -64,7 +64,7 @@ public class CreateActivityEdgeUnitTests {
 		ObjectFlow flow = UMLFactory.eINSTANCE.createObjectFlow();
 		node.getIncomings().add(flow);
 
-		assertFalse(services.isValidActivityEdgeEnd(node));
+		assertFalse(services.isValidActivityEdgeEnd(null, node));
 	}
 
 	/**
@@ -76,12 +76,12 @@ public class CreateActivityEdgeUnitTests {
 		ObjectFlow flow = UMLFactory.eINSTANCE.createObjectFlow();
 		node.getIncomings().add(flow);
 
-		assertTrue(services.isValidActivityEdgeEnd(node));
+		assertTrue(services.isValidActivityEdgeEnd(null, node));
 
 		ObjectFlow flow2 = UMLFactory.eINSTANCE.createObjectFlow();
 		node.getIncomings().add(flow2);
 
-		assertFalse(services.isValidActivityEdgeEnd(node));
+		assertFalse(services.isValidActivityEdgeEnd(null, node));
 	}
 
 	/**
@@ -93,12 +93,12 @@ public class CreateActivityEdgeUnitTests {
 		ControlFlow flow = UMLFactory.eINSTANCE.createControlFlow();
 		node.getIncomings().add(flow);
 
-		assertTrue(services.isValidActivityEdgeEnd(node));
+		assertTrue(services.isValidActivityEdgeEnd(null, node));
 
 		ControlFlow flow2 = UMLFactory.eINSTANCE.createControlFlow();
 		node.getIncomings().add(flow2);
 
-		assertFalse(services.isValidActivityEdgeEnd(node));
+		assertFalse(services.isValidActivityEdgeEnd(null, node));
 	}
 
 	/**

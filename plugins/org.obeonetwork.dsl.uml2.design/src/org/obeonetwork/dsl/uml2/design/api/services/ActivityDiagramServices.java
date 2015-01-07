@@ -23,12 +23,14 @@ import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.ActivityEdge;
 import org.eclipse.uml2.uml.ActivityGroup;
 import org.eclipse.uml2.uml.ActivityNode;
+import org.eclipse.uml2.uml.ActivityParameterNode;
 import org.eclipse.uml2.uml.ActivityPartition;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.CallAction;
 import org.eclipse.uml2.uml.CallEvent;
 import org.eclipse.uml2.uml.CallOperationAction;
 import org.eclipse.uml2.uml.ControlFlow;
+import org.eclipse.uml2.uml.DataStoreNode;
 import org.eclipse.uml2.uml.DecisionNode;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ExecutableNode;
@@ -698,12 +700,14 @@ public class ActivityDiagramServices extends AbstractDiagramServices {
 	/**
 	 * Check if is a valid activity edge end.
 	 *
+	 * @param source
+	 *            Edge source
 	 * @param preTarget
 	 *            Element
 	 * @return True if element is a valid activity edge end
 	 */
-	public boolean isValidActivityEdgeEnd(Element preTarget) {
-		return isValidFlowEnd(preTarget);
+	public boolean isValidActivityEdgeEnd(Element source, Element preTarget) {
+		return isValidFlowEnd(source, preTarget);
 	}
 
 	/**
@@ -727,7 +731,20 @@ public class ActivityDiagramServices extends AbstractDiagramServices {
 		return isValidFlowStart(preSource);
 	}
 
-	private boolean isValidFlowEnd(Element preTarget) {
+	private boolean isValidFlowEnd(Element source, Element preTarget) {
+		if (source instanceof InputPin) {
+			return false;
+		}
+		if (source instanceof OutputPin && preTarget instanceof OutputPin) {
+			return false;
+		}
+		if (source instanceof ActivityParameterNode && preTarget instanceof OutputPin) {
+			return false;
+		}
+		if (source instanceof DataStoreNode && preTarget instanceof OutputPin) {
+			return false;
+		}
+
 		// InitialNode shall not have any incoming ActivityEdges
 		if (preTarget instanceof InitialNode) {
 			return false;
