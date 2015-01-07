@@ -94,7 +94,7 @@
             </ownedTools>
             <ownedTools xsi:type="tool_1:DiagramCreationDescription" documentation="Create a new Class Diagram" name="Create class diagram from component" label="Class diagram" precondition="service:isComponent" titleExpression="[self.oclAsType(uml::NamedElement).name+ ' Class Diagram'/]" browseExpression="[self.oclAsType(uml::Component).packagedElement->filter(uml::Package)->asSequence()->first()/]" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']">
               <initialOperation>
-                <firstModelOperations xsi:type="tool:If" conditionExpression="[self.oclAsType(uml::Component).packagedElement->select(oclIsTypeOf(uml::Package))->size()=0/]">
+                <firstModelOperations xsi:type="tool:If" conditionExpression="[self.oclAsType(uml::Component).packagedElement->select(elt | elt.oclIsTypeOf(uml::Package))->size()=0/]">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Package" referenceName="packagedElement" variableName="newPackage">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="[containerView.oclAsType(diagram::DDiagramElement).target.oclAsType(uml::Component).name/]"/>
                   </subModelOperations>
@@ -128,7 +128,7 @@
             </ownedTools>
             <ownedTools xsi:type="tool_1:DiagramCreationDescription" documentation="Create a use case diagram" name="Create Use Case Diagram from component" label="Use case diagram" titleExpression="[self.oclAsType(uml::NamedElement).name+' Use Case Diagram'/]" browseExpression="[self.oclAsType(uml::Component).packagedElement->filter(uml::Package)->asSequence()->first()/]" diagramDescription="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']">
               <initialOperation>
-                <firstModelOperations xsi:type="tool:If" conditionExpression="[self.oclAsType(uml::Component).packagedElement->select(oclIsTypeOf(uml::Package))->size()=0/]">
+                <firstModelOperations xsi:type="tool:If" conditionExpression="[self.oclAsType(uml::Component).packagedElement->select(elt | elt.oclIsTypeOf(uml::Package))->size()=0/]">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Package" referenceName="packagedElement" variableName="newPackage">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="[containerView.oclAsType(diagram::DDiagramElement).target.oclAsType(uml::Component).name/]"/>
                   </subModelOperations>
@@ -245,12 +245,12 @@
               <containerVariable name="container"/>
               <representationNameVariable name="diagramName"/>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:DiagramNavigationDescription" name="Open sequence diagram from operation" label="for operation" browseExpression="[container.eInverse()->select(oclIsTypeOf(uml::Message)).oclAsType(uml::Message).interaction/]" navigationNameExpression="['Open '+self.oclAsType(uml::NamedElement).name+' Sequence Diagram'/]" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']">
+            <ownedTools xsi:type="tool_1:DiagramNavigationDescription" name="Open sequence diagram from operation" label="for operation" browseExpression="[container.eInverse()->select(elt | elt.oclIsTypeOf(uml::Message)).oclAsType(uml::Message).interaction/]" navigationNameExpression="['Open '+self.oclAsType(uml::NamedElement).name+' Sequence Diagram'/]" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']">
               <containerViewVariable name="containerView"/>
               <containerVariable name="container"/>
               <representationNameVariable name="diagramName"/>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:DiagramNavigationDescription" name="Open sequence diagram from class" label="for class" browseExpression="[container.eInverse()->select(oclIsTypeOf(uml::Property)).oclAsType(uml::Property).eInverse()->select(oclIsTypeOf(uml::Lifeline)).oclAsType(uml::Lifeline).interaction/]" navigationNameExpression="['Open '+self.oclAsType(uml::NamedElement).name+' Sequence Diagram'/]" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']">
+            <ownedTools xsi:type="tool_1:DiagramNavigationDescription" name="Open sequence diagram from class" label="for class" browseExpression="[container.eInverse()->select(elt | elt.oclIsTypeOf(uml::Property)).oclAsType(uml::Property).eInverse()->select(elt | elt.oclIsTypeOf(uml::Lifeline)).oclAsType(uml::Lifeline).interaction/]" navigationNameExpression="['Open '+self.oclAsType(uml::NamedElement).name+' Sequence Diagram'/]" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']">
               <containerViewVariable name="containerView"/>
               <containerVariable name="container"/>
               <representationNameVariable name="diagramName"/>
@@ -432,7 +432,7 @@
               </initialOperation>
             </menuItemDescription>
           </ownedTools>
-          <ownedTools xsi:type="tool:PopupMenu" name="Move UP/DOWN TO Attributes or Operations" label="Move to" precondition="[self.oclIsTypeOf(uml::Property) or oclIsTypeOf(uml::Operation)/]">
+          <ownedTools xsi:type="tool:PopupMenu" name="Move UP/DOWN TO Attributes or Operations" label="Move to" precondition="[self.oclIsTypeOf(uml::Property) or self.oclIsTypeOf(uml::Operation)/]">
             <menuItemDescription xsi:type="tool:OperationAction" name="Move TO Up Properties and Operations" label="Up">
               <view name="views"/>
               <initialOperation>
@@ -883,7 +883,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="UCD_Subject" pasteDescriptions="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste']" preconditionExpression="[not oclIsTypeOf(uml::Actor) and not oclIsTypeOf(uml::UseCase)/]" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" createElements="false" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" documentation="Display subjects of this diagram." domainClass="uml.Classifier" dropDescriptions="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView']" reusedNodeMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_UseCase']">
+        <containerMappings name="UCD_Subject" pasteDescriptions="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste']" preconditionExpression="[not self.oclIsTypeOf(uml::Actor) and not self.oclIsTypeOf(uml::UseCase)/]" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" createElements="false" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" documentation="Display subjects of this diagram." domainClass="uml.Classifier" dropDescriptions="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView']" reusedNodeMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_UseCase']">
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="25" arcHeight="25" borderSizeComputationExpression="2" borderColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='dark%20lagune']" labelFormat="bold" roundedCorner="true" widthComputationExpression="service:defaultWidth" heightComputationExpression="service:defaultHeight" backgroundStyle="Liquid">
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -904,12 +904,12 @@
                         </cases>
                         <cases conditionExpression="[selection.oclIsTypeOf(uml::UseCase)/]">
                           <subModelOperations xsi:type="tool:If" conditionExpression="[selection.oclAsType(uml::UseCase).subject->size() > 0/]">
-                            <subModelOperations xsi:type="tool:If" conditionExpression="[diagram.containers->select(self.target=selection.subject)/]">
+                            <subModelOperations xsi:type="tool:If" conditionExpression="[diagram.containers->select(elt | elt.target=selection.subject)/]">
                               <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:selection">
-                                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_UseCase']" containerViewExpression="[diagram.containers->select(self.target=selection.subject)/]"/>
+                                <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_UseCase']" containerViewExpression="[diagram.containers->select(elt | elt.target=selection.subject)/]"/>
                               </subModelOperations>
                             </subModelOperations>
-                            <subModelOperations xsi:type="tool:If" conditionExpression="[not diagram.containers->select(self.target=selection.subject)/]">
+                            <subModelOperations xsi:type="tool:If" conditionExpression="[not diagram.containers->select(elt | elt.target=selection.subject)/]">
                               <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:selection">
                                 <subModelOperations xsi:type="tool:ChangeContext" browseExpression="feature:subject">
                                   <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" containerViewExpression="var:diagram" variableName="newView">
@@ -1240,7 +1240,7 @@
       <metamodel href="http://www.eclipse.org/sirius/diagram/1.1.0#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" documentation="Hides elements (Classes, Interfaces, Associations, ...) not related to the selected (context) Class/Interface." name="Related Elements">
         <filters xsi:type="filter:VariableFilter" semanticConditionExpression="service:self.isRelated(contextSelection)">
-          <ownedVariables candidatesExpression="[diagram.ownedDiagramElements.target->select(oclIsTypeOf(uml::Class) or oclIsTypeOf(uml::Interface))/]" message="Select the contextual element. This filter shows only the elements related to the selected context, the other elements will be hidden." name="contextSelection"/>
+          <ownedVariables candidatesExpression="[diagram.ownedDiagramElements.target->select(elt | elt.oclIsTypeOf(uml::Class) or elt.oclIsTypeOf(uml::Interface))/]" message="Select the contextual element. This filter shows only the elements related to the selected context, the other elements will be hidden." name="contextSelection"/>
         </filters>
       </filters>
       <defaultLayer name="Class" reusedMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='Empty%20Diagram']">
@@ -1941,7 +1941,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool:PopupMenu" name="Name Expression">
-            <menuItemDescription xsi:type="tool:OperationAction" name="Add String Expression" precondition="[self.oclIsTypeOf(uml::Property) and oclAsType(uml::Property).nameExpression = null/]" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/StringExpression.gif">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Add String Expression" precondition="[self.oclIsTypeOf(uml::Property) and self.oclAsType(uml::Property).nameExpression = null/]" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/StringExpression.gif">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:For" expression="[views.oclAsType(diagram::DDiagramElement).target/]">
@@ -1951,7 +1951,7 @@
                 </firstModelOperations>
               </initialOperation>
             </menuItemDescription>
-            <menuItemDescription xsi:type="tool:OperationAction" name="Remove" precondition="[self.oclIsTypeOf(uml::Property) and oclAsType(uml::Property).nameExpression &lt;> null/]">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Remove" precondition="[self.oclIsTypeOf(uml::Property) and self.oclAsType(uml::Property).nameExpression &lt;> null/]">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:For" expression="var:views">
@@ -1963,7 +1963,7 @@
             </menuItemDescription>
           </ownedTools>
           <ownedTools xsi:type="tool:PopupMenu" name="Default Value">
-            <menuItemDescription xsi:type="tool:OperationAction" name="Remove" precondition="[self.oclIsTypeOf(uml::Property) and oclAsType(uml::Property).defaultValue &lt;>null/]">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Remove" precondition="[self.oclIsTypeOf(uml::Property) and self.oclAsType(uml::Property).defaultValue &lt;>null/]">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:For" expression="[views.oclAsType(diagram::DDiagramElement).target.oclAsType(uml::Property).defaultValue/]">
@@ -1973,7 +1973,7 @@
                 </firstModelOperations>
               </initialOperation>
             </menuItemDescription>
-            <menuItemDescription xsi:type="tool:OperationAction" name="Add Duration" precondition="[self.oclIsTypeOf(uml::Property) and oclAsType(uml::Property).defaultValue = null/]" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/Duration.gif">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Add Duration" precondition="[self.oclIsTypeOf(uml::Property) and self.oclAsType(uml::Property).defaultValue = null/]" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/Duration.gif">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:For" expression="var:views">
@@ -1983,7 +1983,7 @@
                 </firstModelOperations>
               </initialOperation>
             </menuItemDescription>
-            <menuItemDescription xsi:type="tool:OperationAction" name="Add Duration Interval" precondition="[self.oclIsTypeOf(uml::Property) and oclAsType(uml::Property).defaultValue =null/]" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/DurationInterval.gif">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Add Duration Interval" precondition="[self.oclIsTypeOf(uml::Property) and self.oclAsType(uml::Property).defaultValue =null/]" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/DurationInterval.gif">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:For" expression="var:views">
@@ -1993,7 +1993,7 @@
                 </firstModelOperations>
               </initialOperation>
             </menuItemDescription>
-            <menuItemDescription xsi:type="tool:OperationAction" name="Add Expression" precondition="[self.oclIsTypeOf(uml::Property) and oclAsType(uml::Property).defaultValue =null/]" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/Expression.gif">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Add Expression" precondition="[self.oclIsTypeOf(uml::Property) and self.oclAsType(uml::Property).defaultValue =null/]" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/Expression.gif">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:For" expression="var:views">
@@ -2003,7 +2003,7 @@
                 </firstModelOperations>
               </initialOperation>
             </menuItemDescription>
-            <menuItemDescription xsi:type="tool:OperationAction" name="Add Instance Value" precondition="[self.oclIsTypeOf(uml::Property) and oclAsType(uml::Property).defaultValue =null/]" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/InstanceValue.gif">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Add Instance Value" precondition="[self.oclIsTypeOf(uml::Property) and self.oclAsType(uml::Property).defaultValue =null/]" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/InstanceValue.gif">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:For" expression="var:views">
@@ -2013,7 +2013,7 @@
                 </firstModelOperations>
               </initialOperation>
             </menuItemDescription>
-            <menuItemDescription xsi:type="tool:OperationAction" name="Add Interval" precondition="[self.oclIsTypeOf(uml::Property) and oclAsType(uml::Property).defaultValue =null/]" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/Interval.gif">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Add Interval" precondition="[self.oclIsTypeOf(uml::Property) and self.oclAsType(uml::Property).defaultValue =null/]" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/Interval.gif">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:For" expression="var:views">
@@ -2023,7 +2023,7 @@
                 </firstModelOperations>
               </initialOperation>
             </menuItemDescription>
-            <menuItemDescription xsi:type="tool:OperationAction" name="Add Literal Boolean" precondition="[self.oclIsTypeOf(uml::Property) and oclAsType(uml::Property).defaultValue =null/]" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/LiteralBoolean.gif">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Add Literal Boolean" precondition="[self.oclIsTypeOf(uml::Property) and self.oclAsType(uml::Property).defaultValue =null/]" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/LiteralBoolean.gif">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:For" expression="var:views">
@@ -2033,7 +2033,7 @@
                 </firstModelOperations>
               </initialOperation>
             </menuItemDescription>
-            <menuItemDescription xsi:type="tool:OperationAction" name="Add Literal Integer" precondition="[self.oclIsTypeOf(uml::Property) and oclAsType(uml::Property).defaultValue =null/]" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/LiteralInteger.gif">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Add Literal Integer" precondition="[self.oclIsTypeOf(uml::Property) and self.oclAsType(uml::Property).defaultValue =null/]" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/LiteralInteger.gif">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:For" expression="var:views">
@@ -2043,7 +2043,7 @@
                 </firstModelOperations>
               </initialOperation>
             </menuItemDescription>
-            <menuItemDescription xsi:type="tool:OperationAction" name="Add Literal Null" precondition="[self.oclIsTypeOf(uml::Property) and oclAsType(uml::Property).defaultValue =null/]" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/LiteralNull.gif">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Add Literal Null" precondition="[self.oclIsTypeOf(uml::Property) and self.oclAsType(uml::Property).defaultValue =null/]" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/LiteralNull.gif">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:For" expression="var:views">
@@ -2053,7 +2053,7 @@
                 </firstModelOperations>
               </initialOperation>
             </menuItemDescription>
-            <menuItemDescription xsi:type="tool:OperationAction" name="Add Literal String" precondition="[self.oclIsTypeOf(uml::Property) and oclAsType(uml::Property).defaultValue =null/]" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/LiteralString.gif">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Add Literal String" precondition="[self.oclIsTypeOf(uml::Property) and self.oclAsType(uml::Property).defaultValue =null/]" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/LiteralString.gif">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:For" expression="var:views">
@@ -2063,7 +2063,7 @@
                 </firstModelOperations>
               </initialOperation>
             </menuItemDescription>
-            <menuItemDescription xsi:type="tool:OperationAction" name="Add Literal Unlimited Natural" precondition="[self.oclIsTypeOf(uml::Property) and oclAsType(uml::Property).defaultValue =null/]" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/LiteralUnlimitedNatural.gif">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Add Literal Unlimited Natural" precondition="[self.oclIsTypeOf(uml::Property) and self.oclAsType(uml::Property).defaultValue =null/]" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/LiteralUnlimitedNatural.gif">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:For" expression="var:views">
@@ -2073,7 +2073,7 @@
                 </firstModelOperations>
               </initialOperation>
             </menuItemDescription>
-            <menuItemDescription xsi:type="tool:OperationAction" name="Add Opaque Expression" precondition="[self.oclIsTypeOf(uml::Property) and oclAsType(uml::Property).defaultValue =null/]" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/OpaqueExpression.gif">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Add Opaque Expression" precondition="[self.oclIsTypeOf(uml::Property) and self.oclAsType(uml::Property).defaultValue =null/]" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/OpaqueExpression.gif">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:For" expression="var:views">
@@ -2083,7 +2083,7 @@
                 </firstModelOperations>
               </initialOperation>
             </menuItemDescription>
-            <menuItemDescription xsi:type="tool:OperationAction" name="Add String Expression" precondition="[self.oclIsTypeOf(uml::Property) and oclAsType(uml::Property).defaultValue =null/]" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/StringExpression.gif">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Add String Expression" precondition="[self.oclIsTypeOf(uml::Property) and self.oclAsType(uml::Property).defaultValue =null/]" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/StringExpression.gif">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:For" expression="var:views">
@@ -2093,7 +2093,7 @@
                 </firstModelOperations>
               </initialOperation>
             </menuItemDescription>
-            <menuItemDescription xsi:type="tool:OperationAction" name="Add Time Interval" precondition="[self.oclIsTypeOf(uml::Property) and oclAsType(uml::Property).defaultValue =null/]" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/TimeInterval.gif">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Add Time Interval" precondition="[self.oclIsTypeOf(uml::Property) and self.oclAsType(uml::Property).defaultValue =null/]" icon="/org.eclipse.uml2.uml.edit/icons/full/obj16/TimeInterval.gif">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:For" expression="var:views">
@@ -2255,8 +2255,8 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="CS_StructuredClassifier" detailDescriptions="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Composite%20structure%20diagram']/@ownedTools[name='Create%20Composite%20Structure%20Diagram'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Class%20diagram']/@ownedTools[name='Create%20class%20diagram%20from%20component']" navigationDescriptions="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Class%20diagram']/@ownedTools[name='Open%20a%20class%20diagram%20from%20component']" pasteDescriptions="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste']" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="[self.eContents()->select(oclIsKindOf(uml::StructuredClassifier))/]" createElements="false" doubleClickDescription="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.StructuredClassifier" dropDescriptions="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView']" reusedContainerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']">
-          <borderedNodeMappings name="CS_StructuredClassifier_Port" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="[self.oclAsType(uml::StructuredClassifier).ownedAttribute->filter(uml::Port)->select(type &lt;> self)/]" domainClass="uml.Port">
+        <containerMappings name="CS_StructuredClassifier" detailDescriptions="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Composite%20structure%20diagram']/@ownedTools[name='Create%20Composite%20Structure%20Diagram'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Class%20diagram']/@ownedTools[name='Create%20class%20diagram%20from%20component']" navigationDescriptions="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Class%20diagram']/@ownedTools[name='Open%20a%20class%20diagram%20from%20component']" pasteDescriptions="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste']" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="[self.eContents()->select(elt | elt.oclIsKindOf(uml::StructuredClassifier))/]" createElements="false" doubleClickDescription="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.StructuredClassifier" dropDescriptions="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView']" reusedContainerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']">
+          <borderedNodeMappings name="CS_StructuredClassifier_Port" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="[self.oclAsType(uml::StructuredClassifier).ownedAttribute->filter(uml::Port)->select(elt | elt.type &lt;> self)/]" domainClass="uml.Port">
             <style xsi:type="style:BundledImageDescription" labelFormat="italic" showIcon="false" sizeComputationExpression="2">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -2264,7 +2264,7 @@
             </style>
           </borderedNodeMappings>
           <subContainerMappings name="CS_Part" preconditionExpression="[self.oclIsTypeOf(uml::Property) and self.oclAsType(uml::Property).isComposite()/]" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="feature:ownedAttribute" createElements="false" domainClass="uml.Property" dropDescriptions="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram']">
-            <borderedNodeMappings name="CS_Part_Port" semanticCandidatesExpression="[self.oclAsType(uml::Property).type.oclAsType(uml::StructuredClassifier).ownedAttribute->select(oclIsTypeOf(uml::Port))/]" domainClass="uml.Port">
+            <borderedNodeMappings name="CS_Part_Port" semanticCandidatesExpression="[self.oclAsType(uml::Property).type.oclAsType(uml::StructuredClassifier).ownedAttribute->select(elt | elt.oclIsTypeOf(uml::Port))/]" domainClass="uml.Port">
               <style xsi:type="style:BundledImageDescription" labelFormat="italic" showIcon="false" sizeComputationExpression="2">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -2329,7 +2329,7 @@
           </conditionnalStyles>
         </containerMappings>
         <toolSections name="CS_ExistingElements" label="Existing Elements" reusedTools="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='AddExistingElements'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='RemoveExistingElements'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='Delete']">
-          <ownedTools xsi:type="tool:OperationAction" name="CS_AddRelatedElements" label="Add Related Elements" precondition="[self.oclIsKindOf(uml::Interface) or oclIsKindOf(uml::Port) or oclIsKindOf(uml::EncapsulatedClassifier) or oclIsKindOf(uml::PackageableElement)/]" forceRefresh="true" icon="/org.eclipse.search/icons/full/etool16/search.gif">
+          <ownedTools xsi:type="tool:OperationAction" name="CS_AddRelatedElements" label="Add Related Elements" precondition="[self.oclIsKindOf(uml::Interface) or self.oclIsKindOf(uml::Port) or self.oclIsKindOf(uml::EncapsulatedClassifier) or self.oclIsKindOf(uml::PackageableElement)/]" forceRefresh="true" icon="/org.eclipse.search/icons/full/etool16/search.gif">
             <view name="views"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:For" expression="service:handleUnmeaningViews(views)" iteratorName="view">
@@ -2402,7 +2402,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedAttribute">
-                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Part'+eContainer().eContents()->filter(uml::Property)->size()/]"/>
+                <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="['Part'+self.eContainer().eContents()->filter(uml::Property)->size()/]"/>
                 <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="[uml::AggregationKind::composite/]"/>
               </firstModelOperations>
             </initialOperation>
@@ -2643,8 +2643,8 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="CO_Component" detailDescriptions="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Activity%20diagram']/@ownedTools[name='Create%20activity%20diagram'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Composite%20structure%20diagram']/@ownedTools[name='Create%20Composite%20Structure%20Diagram'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Class%20diagram']/@ownedTools[name='Create%20class%20diagram%20from%20component'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='State%20Machine%20diagram']/@ownedTools[name='Create%20statemachine%20diagram'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Use%20case%20diagram']/@ownedTools[name='Create%20Use%20Case%20Diagram%20from%20component']" navigationDescriptions="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Activity%20diagram']/@ownedTools[name='Open%20activity%20diagram%20from%20classifier'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Class%20diagram']/@ownedTools[name='Open%20a%20class%20diagram%20from%20component'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='State%20Machine%20diagram']/@ownedTools[name='Open%20statemachine%20diagram']" pasteDescriptions="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste']" preconditionExpression="[self.oclIsTypeOf(uml::Component) or oclIsTypeOf(uml::Class)/]" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" createElements="false" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Class" dropDescriptions="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView']" reusedNodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_ProvidedInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_RequiredInterface']" reusedContainerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']">
-          <borderedNodeMappings name="CO_Port" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="[self.oclAsType(uml::StructuredClassifier).ownedAttribute->filter(uml::Port)->select(type &lt;> self)/]" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Port">
+        <containerMappings name="CO_Component" detailDescriptions="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Activity%20diagram']/@ownedTools[name='Create%20activity%20diagram'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Composite%20structure%20diagram']/@ownedTools[name='Create%20Composite%20Structure%20Diagram'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Class%20diagram']/@ownedTools[name='Create%20class%20diagram%20from%20component'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='State%20Machine%20diagram']/@ownedTools[name='Create%20statemachine%20diagram'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Use%20case%20diagram']/@ownedTools[name='Create%20Use%20Case%20Diagram%20from%20component']" navigationDescriptions="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Activity%20diagram']/@ownedTools[name='Open%20activity%20diagram%20from%20classifier'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Class%20diagram']/@ownedTools[name='Open%20a%20class%20diagram%20from%20component'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='State%20Machine%20diagram']/@ownedTools[name='Open%20statemachine%20diagram']" pasteDescriptions="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste']" preconditionExpression="[self.oclIsTypeOf(uml::Component) or self.oclIsTypeOf(uml::Class)/]" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" createElements="false" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Class" dropDescriptions="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView']" reusedNodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_ProvidedInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_RequiredInterface']" reusedContainerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']">
+          <borderedNodeMappings name="CO_Port" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="[self.oclAsType(uml::StructuredClassifier).ownedAttribute->filter(uml::Port)->select(elt | elt.type &lt;> self)/]" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" domainClass="uml.Port">
             <style xsi:type="style:BundledImageDescription" labelFormat="italic" showIcon="false" sizeComputationExpression="2" resizeKind="EAST_WEST">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -3049,7 +3049,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" dropDescriptions="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView']" name="Deployment Diagram" titleExpression="[self.oclAsType(uml::NamedElement).name +' Deployment Diagram'/]" pasteDescriptions="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste']" domainClass="uml.Package" enablePopupBars="true">
       <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
       <defaultLayer name="Deployment diagram" reusedMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='Empty%20Diagram']">
-        <edgeMappings name="DE_Link" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="service:diagram.getAssociationInverseRefs" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" targetFinderExpression="service:getTargetType" sourceFinderExpression="service:getSourceType" targetExpression="[self->including(getSource())->including(getTarget())/]" domainClass="uml.Association" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Reconnect']/@ownedTools[name='ReconnectLinkSource'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Reconnect']/@ownedTools[name='ReconnectLinkTarget']">
+        <edgeMappings name="DE_Link" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="service:diagram.getAssociationInverseRefs" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" targetFinderExpression="service:getTargetType" sourceFinderExpression="service:getSourceType" targetExpression="[self->including(elt | elt.getSource())->including(elt | elt.getTarget())/]" domainClass="uml.Association" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Reconnect']/@ownedTools[name='ReconnectLinkSource'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Reconnect']/@ownedTools[name='ReconnectLinkTarget']">
           <style targetArrow="NoDecoration" sizeComputationExpression="1" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription labelExpression="feature:name">
@@ -3057,7 +3057,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="DE_Dependency" preconditionExpression="[not oclIsTypeOf(uml::Manifestation)/]" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="service:diagram.getDependencyOrManifestationInverseRefs" doubleClickDescription="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" targetFinderExpression="feature:supplier" sourceFinderExpression="feature:client" domainClass="uml.Dependency" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Reconnect']/@ownedTools[name='ReconnectDependencyTarget'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Reconnect']/@ownedTools[name='ReconnectDependencySource']">
+        <edgeMappings name="DE_Dependency" preconditionExpression="[not self.oclIsTypeOf(uml::Manifestation)/]" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="service:diagram.getDependencyOrManifestationInverseRefs" doubleClickDescription="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" targetFinderExpression="feature:supplier" sourceFinderExpression="feature:client" domainClass="uml.Dependency" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Reconnect']/@ownedTools[name='ReconnectDependencyTarget'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@toolSections.2/@subSections[name='Reconnect']/@ownedTools[name='ReconnectDependencySource']">
           <style lineStyle="dash" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelExpression="service:computeUmlLabel">
@@ -3127,7 +3127,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:views.getTarget">
                 <subModelOperations xsi:type="tool:For" expression="service:getRelated">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:markForAutosize">
-                    <subModelOperations xsi:type="tool:If" conditionExpression="[self.oclIsTypeOf(uml::Package) or oclIsTypeOf(uml::Component) or oclIsTypeOf(uml::ExecutionEnvironment) or oclIsTypeOf(uml::Node) or oclIsTypeOf(uml::Device) or oclIsTypeOf(uml::Artifact)/]">
+                    <subModelOperations xsi:type="tool:If" conditionExpression="[self.oclIsTypeOf(uml::Package) or self.oclIsTypeOf(uml::Component) or self.oclIsTypeOf(uml::ExecutionEnvironment) or self.oclIsTypeOf(uml::Node) or self.oclIsTypeOf(uml::Device) or self.oclIsTypeOf(uml::Artifact)/]">
                       <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" containerViewExpression="var:diagram"/>
                     </subModelOperations>
                   </subModelOperations>
@@ -3137,7 +3137,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Types">
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a Node" name="Create Node" label="Node" precondition="[self.oclIsKindOf(uml::Node) or oclIsKindOf(uml::Package)/]" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" iconPath="org.eclipse.uml2.uml.edit/icons/full/obj16/Node.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a Node" name="Create Node" label="Node" precondition="[self.oclIsKindOf(uml::Node) or self.oclIsKindOf(uml::Package)/]" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" iconPath="org.eclipse.uml2.uml.edit/icons/full/obj16/Node.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -3155,7 +3155,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a Device Node" name="Create Device" label="Device" precondition="[self.oclIsKindOf(uml::Node) or oclIsKindOf(uml::Package)/]" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" iconPath="org.eclipse.uml2.uml.edit/icons/full/obj16/Device.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a Device Node" name="Create Device" label="Device" precondition="[self.oclIsKindOf(uml::Node) or self.oclIsKindOf(uml::Package)/]" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" iconPath="org.eclipse.uml2.uml.edit/icons/full/obj16/Device.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -3173,7 +3173,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create an Execution Environment Node" name="Create Execution Environment" label="Execution Environment" precondition="[self.oclIsKindOf(uml::Node) or oclIsKindOf(uml::Package)/]" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" iconPath="org.eclipse.uml2.uml.edit/icons/full/obj16/ExecutionEnvironment.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create an Execution Environment Node" name="Create Execution Environment" label="Execution Environment" precondition="[self.oclIsKindOf(uml::Node) or self.oclIsKindOf(uml::Package)/]" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" iconPath="org.eclipse.uml2.uml.edit/icons/full/obj16/ExecutionEnvironment.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -3191,7 +3191,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create an Artifact" name="Create Artifact" label="Artifact" precondition="[self.oclIsKindOf(uml::Node) or oclIsKindOf(uml::Package)/]" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" iconPath="org.eclipse.uml2.uml.edit/icons/full/obj16/Artifact.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create an Artifact" name="Create Artifact" label="Artifact" precondition="[self.oclIsKindOf(uml::Node) or self.oclIsKindOf(uml::Package)/]" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" iconPath="org.eclipse.uml2.uml.edit/icons/full/obj16/Artifact.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -5119,7 +5119,7 @@
         <backgroundConditionalStyle predicateExpression="service:existComments">
           <style backgroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='lighter%20blue']"/>
         </backgroundConditionalStyle>
-        <ownedSubLines name="DT_ElementLine" reusedSubLines="//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Documentation%20Table']/@ownedLineMappings[name='DT_PackageLine']/@ownedSubLines[name='DT_ElementLine']" reusedInMappings="//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Documentation%20Table']/@ownedLineMappings[name='DT_PackageLine']/@ownedSubLines[name='DT_ElementLine']" domainClass="uml.Element" semanticCandidatesExpression="[self.eContents()->select(not oclIsTypeOf(uml::Comment))/]">
+        <ownedSubLines name="DT_ElementLine" reusedSubLines="//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Documentation%20Table']/@ownedLineMappings[name='DT_PackageLine']/@ownedSubLines[name='DT_ElementLine']" reusedInMappings="//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Documentation%20Table']/@ownedLineMappings[name='DT_PackageLine']/@ownedSubLines[name='DT_ElementLine']" domainClass="uml.Element" semanticCandidatesExpression="[self.eContents()->select(elt | not elt.oclIsTypeOf(uml::Comment))/]">
           <defaultBackground>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
           </defaultBackground>
@@ -5233,7 +5233,7 @@
             <newViewContainer name="newContainerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:elements">
-                <subModelOperations xsi:type="tool:For" expression="[if (list.oclIsUndefined())][Sequence{}/][else][elements->excluding(newSemanticContainer)/->excluding(newSemanticContainer.ancestors())][/if]" iteratorName="element">
+                <subModelOperations xsi:type="tool:For" expression="[if (list.oclIsUndefined())][Sequence{}/][else][elements->excluding(newSemanticContainer)->excluding(newSemanticContainer.ancestors())][/if]" iteratorName="element">
                   <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="packagedElement"/>
                 </subModelOperations>
               </firstModelOperations>
@@ -5343,7 +5343,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="PD_Stereotype" deletionDescription="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='PD%20UML%20Element']" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="[self.oclAsType(uml::Package).getOwnedStereotypes()->select(oclIsTypeOf(uml::Stereotype))/]" domainClass="uml.Stereotype" childrenPresentation="List">
+        <containerMappings name="PD_Stereotype" deletionDescription="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='PD%20UML%20Element']" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="[self.oclAsType(uml::Package).getOwnedStereotypes()->select(elt | elt.oclIsTypeOf(uml::Stereotype))/]" domainClass="uml.Stereotype" childrenPresentation="List">
           <subNodeMappings name="PD_Property" deletionDescription="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='PD%20UML%20Element']" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="service:getClassifierAttributes" semanticElements="service:getSemanticElements" domainClass="uml.Property">
             <style xsi:type="style:SquareDescription" labelExpression="service:computeUmlLabel" labelAlignment="LEFT" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -5479,7 +5479,7 @@
             </style>
           </conditionnalStyles>
         </containerMappings>
-        <containerMappings name="PD_Package" preconditionExpression="[not oclIsTypeOf(uml::Profile)/]" deletionDescription="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='PD%20UML%20Package']" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" createElements="false" semanticElements="service:getSemanticElements" domainClass="uml.Package" dropDescriptions="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='Drop%20From%20Model%20PD'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='Drop%20From%20Diagram%20PD']" reusedContainerMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Package'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Enumeration'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_DataType'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_PrimitiveType'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Profile']">
+        <containerMappings name="PD_Package" preconditionExpression="[not self.oclIsTypeOf(uml::Profile)/]" deletionDescription="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='PD%20UML%20Package']" labelDirectEdit="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" createElements="false" semanticElements="service:getSemanticElements" domainClass="uml.Package" dropDescriptions="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='Drop%20From%20Model%20PD'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@toolSections.5/@ownedTools[name='Drop%20From%20Diagram%20PD']" reusedContainerMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Package'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Enumeration'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_DataType'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_PrimitiveType'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Profile']">
           <style xsi:type="style:FlatContainerStyleDescription" labelSize="10" labelExpression="service:computeUmlLabel" labelAlignment="LEFT" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
