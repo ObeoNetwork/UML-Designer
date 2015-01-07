@@ -5226,7 +5226,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="PC_Drop" precondition="[self.oclIsTypeOf(uml::Package) or self.oclIsTypeOf(uml::Component)/]" forceRefresh="true" mappings="//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Package%20Containment']/@defaultLayer/@containerMappings[name='PC_Package']/@subNodeMappings[name='PC_PackageableElement']" dragSource="BOTH">
+          <ownedTools xsi:type="tool_1:ContainerDropDescription" name="PC_Drop" forceRefresh="true" mappings="//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Package%20Containment']/@defaultLayer/@containerMappings[name='PC_Package']/@subNodeMappings[name='PC_PackageableElement']" dragSource="BOTH">
             <oldContainer name="oldSemanticContainer"/>
             <newContainer name="newSemanticContainer"/>
             <element name="elements"/>
