@@ -34,6 +34,12 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.gendoc.GendocProcess;
+import org.eclipse.gendoc.services.GendocServices;
+import org.eclipse.gendoc.services.IGendocDiagnostician;
+import org.eclipse.gendoc.services.IProgressMonitorService;
+import org.eclipse.gendoc.services.exception.GenDocException;
+import org.eclipse.gendoc.tags.handlers.IConfigurationService;
 import org.eclipse.jface.dialogs.ErrorDialog;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
@@ -41,12 +47,6 @@ import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.jface.wizard.WizardPage;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
-import org.topcased.gendoc2.GendocProcess;
-import org.topcased.gendoc2.services.GendocServices;
-import org.topcased.gendoc2.services.IGendocDiagnostician;
-import org.topcased.gendoc2.services.IProgressMonitorService;
-import org.topcased.gendoc2.services.exception.GenDocException;
-import org.topcased.gendoc2.tags.handlers.IConfigurationService;
 
 /**
  * The Class Gendoc2Wizard. This class comes from :pserver:cvs.gforge.enseeiht.fr:/cvsroot/topcased-gendoc

@@ -70,3 +70,7 @@ location "http://download.eclipse.org/modeling/emf/compare/updates/releases/3.0"
 	org.eclipse.emf.compare.feature.group lazy
 	org.eclipse.emf.compare.uml2.feature.group lazy
 }
+// Temp update site for Gendoc
+location "http://adaussy.github.io/gh-pages-template/"  {
+	org.eclipse.gendoc.feature.feature.group lazy
+}
