@@ -12,7 +12,9 @@
 package org.obeonetwork.dsl.uml2.design.tests.contexts;
 
 import static org.junit.Assert.*;
-	import org.obeonetwork.dsl.uml2.design.tests.automation.Context;
+
+import org.obeonetwork.dsl.uml2.design.tests.automation.Context;
+
 
 // Start of user code AnUmlModelWithAnOperation imports
 import java.util.ArrayList;
@@ -33,8 +35,7 @@ import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.resource.UMLResource;
-import org.obeonetwork.dsl.uml2.design.services.internal.OperationServices;
-// End of user code
+import org.obeonetwork.dsl.uml2.design.internal.services.OperationServices;
 
 /**
  * Context : An Uml model with an operation
@@ -137,7 +138,7 @@ public class AnUmlModelWithAnOperation extends Context {
 	 */
 	public void actionIEditTheLabelOfTheOperationTo(String iEditTheLabelOfTheOperationTo0) {
 		// Start of user code IEditTheLabelOfTheOperationTo
-		OperationServices.parseInputLabel(op, iEditTheLabelOfTheOperationTo0);
+		OperationServices.INSTANCE.parseInputLabel(op, iEditTheLabelOfTheOperationTo0);
 		// End of user code
 	}
 

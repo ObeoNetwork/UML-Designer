@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Sirius Gendoc Wizard
 Bundle-SymbolicName: org.obeonetwork.dsl.sirius.gendoc.wizard;singleton:=true
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 5.0.0.qualifier
 Bundle-Activator: org.obeonetwork.dsl.sirius.gendoc.wizard.Activator
 Bundle-Vendor: Obeo Network
 Require-Bundle: org.eclipse.core.runtime,
@@ -14,8 +14,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.common,
  org.eclipse.emf.common.ui,
  org.eclipse.sirius.common.ui,
- org.topcased.gendoc2;bundle-version="1.9.0",
- org.topcased.gendoc2.tags.handlers;bundle-version="1.9.0"
+ org.eclipse.gendoc;bundle-version="0.5.0",
+ org.eclipse.gendoc.tags.handlers;bundle-version="0.5.0"
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ActivationPolicy: lazy
 Export-Package: org.obeonetwork.dsl.sirius.gendoc.wizard

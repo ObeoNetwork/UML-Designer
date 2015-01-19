@@ -12,7 +12,7 @@ Contributors:
 -->
 <plugin>
    <extension
-         point="org.topcased.gendoc2.script.acceleo.services">
+         point="org.eclipse.gendoc.script.acceleo.services">
       <service
             emtl="bin/org/obeonetwork/dsl/sirius/gendoc/services/siriusgendoc.emtl"
             importedByDefault="false"

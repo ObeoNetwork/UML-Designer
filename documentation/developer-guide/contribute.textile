@@ -1,0 +1,70 @@
+---
+layout: article
+title: Contribute
+subtitle: developer guide
+relativePath: ..
+---
+
+h1. How you can help
+
+UML Designer is an open source project and everyone is encouraged to get involved! There are lots of ways you can contribute:
+* join our "forum":{{ page.relativePath }}/developer-guide/contribute.html#Forum on the "obeonetwork":http://www.obeonetwork.com/
+* find and "report bugs":{{ page.relativePath }}/developer-guide/contribute.html#Report_bugs
+* write tests for bugs
+* "improve the documentation":{{ page.relativePath }}/developer-guide/contribute.html#Contribute_to_doc
+* "add new features":{{ page.relativePath }}/developer-guide/contribute.html#Contribute_to_code
+* "fix bugs":{{ page.relativePath }}/developer-guide/contribute.html#Contribute_to_code
+* fill our "survey":http://bit.ly/UMLDesignerSurvey.
+
+h1(#Get_source_code). Get the source code
+
+This UML modeling environment is based on the "Sirius":https://www.eclipse.org/sirius. It is under an
+Open Source license (*EPL*) and the source code is hosted on "github":https://github.com/ObeoNetwork/UML-Designer. 
+It is intended to cover most use cases behind the usage of UML, and more importantly to be reused when you apply a 
+model driven approach which uses both *UML and some DSL*. Everything should integrate seamlessly  in the same environment.
+
+To get the code just "clone":https://help.github.com/articles/which-remote-url-should-i-use the repository : 
+* SSH : "git@github.com:ObeoNetwork/UML-Designer.git":git@github.com:ObeoNetwork/UML-Designer.git
+* HTTPS : "https://github.com/ObeoNetwork/UML-Designer/tree/master#":https://github.com/ObeoNetwork/UML-Designer/tree/master#
+
+h1. Contribute
+
+h2(#Contribute_to_code). Contribute to the code
+
+UML Designer's code is hosted on Github. It's easy to get the code and build UML Designer from source. Just clone our repository, make your changes, adapt it to your need and trigger a "pull request":https://help.github.com/articles/using-pull-requests.
+
+h2(#Contribute_to_doc). Contribute to the documentation
+
+Found an error in this web-site or in the documentation? Please help us and contribute.
+UML Designer's documentation is hosted on Github: "https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation":https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation. Just clone our repository, update the documentation and trigger a "pull request":https://help.github.com/articles/using-pull-requests. The documentation is written with the "textile":http://en.wikipedia.org/wiki/Textile_(markup_language) syntax, so it is really easy to contribute. Have a look to the "Documentation":{{ page.relativePath }}/developer-guide/documentation.html section in the developer guide to learn more about how we build the UML Designer documentation.
+
+h1. Providing Feedback
+
+We're constantly looking for feedback about this modeler, if you think something is missing, some behavior is weird or even just to tell us you are happy with it in its current state, *please come and exchange*.
+
+h2(#Report_bugs). Report bugs
+
+Bug reports are really important, so please report any issues you have. When you report bugs, make sure you include lots of detail, reproducible tests, example code or anything else you think might help!
+
+The *bug tracker* is available on github : "https://github.com/ObeoNetwork/UML-Designer/issues":https://github.com/ObeoNetwork/UML-Designer/issues. 
+We are using the github "integrated issue tracker":https://guides.github.com/features/issues/.
+
+To enter a *new issue* you just need to "create a github account":https://help.github.com/articles/signing-up-for-a-new-github-account. 
+
+To *search for issues*, have a look to the github help page to learn the "searching issue syntax":https://help.github.com/articles/searching-issues.
+
+You can visualize also on which issues we are working on thanks to our *card wall*: "https://waffle.io/obeonetwork/uml-designer":https://waffle.io/obeonetwork/uml-designer
+
+h2(#Forum). Forum
+ 
+If you have any *question*, do not hesitate ask a question on the "Obeo Network":http://www.obeonetwork.com/group/uml-designer.
+
+h2(#Survey). Survey
+
+Give us feedback by filling in our "survey":http://bit.ly/UMLDesignerSurvey!
+
+h1. Get the developer environment
+
+In UML Designer, we use target-platforms to define explicitly plugins and features available in the build context. We use it also to work on UML Designer in our Eclipse IDE.
+
+bq. To use it, you should import the releng/org.obeonetwork.dsl.uml2.target project in your own IDE and set the ".target" as target-platform.

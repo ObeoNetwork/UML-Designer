@@ -8,8 +8,6 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
@@ -23,6 +21,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
+import org.obeonetwork.dsl.uml2.design.api.utils.UmlViewpoints;
 
 import com.google.common.base.Strings;
 import com.google.common.collect.Iterators;
@@ -53,7 +52,7 @@ public class DiagramElementMappingSpecificationTests {
 			"CS_C_SubProvidedInterface2Port", "CS_C_ProvidedInterface2Port", "CS_C_RequiredInterface2Port",
 			"CS_C_ProvidedInterface2RequiredInterface", "CS_C_Property2Property",
 			"CS_C_Port2SubRequiredInterface", "CS_C_SubProvidedInterface2SubRequiredInterface",
-			"stereotypeLink");
+			"stereotypeLink", "PD_AbstractAssociationStereotypeLink", "PD_AbstractAssociationStereotype");
 
 	private DiagramElementMapping underTest;
 
@@ -64,13 +63,14 @@ public class DiagramElementMappingSpecificationTests {
 	@Parameters
 	public static Collection<Object[]> data() {
 		List<Object[]> parameters = Lists.newArrayList();
-		Viewpoint structural = ViewpointRegistry.getInstance().getViewpoint(
-				URI.createURI("viewpoint:/org.obeonetwork.dsl.uml2.design/UML Structural Modeling"));
-		collectMappingsFromViewpoint(parameters, structural);
-
-		Viewpoint behavior = ViewpointRegistry.getInstance().getViewpoint(
-				URI.createURI("viewpoint:/org.obeonetwork.dsl.uml2.design/UML Behavioral Modeling"));
-		collectMappingsFromViewpoint(parameters, behavior);
+		Viewpoint capture = UmlViewpoints.fromViewpointRegistry().capture();
+		collectMappingsFromViewpoint(parameters, capture);
+		Viewpoint design = UmlViewpoints.fromViewpointRegistry().design();
+		collectMappingsFromViewpoint(parameters, design);
+		Viewpoint review = UmlViewpoints.fromViewpointRegistry().review();
+		collectMappingsFromViewpoint(parameters, review);
+		Viewpoint extend = UmlViewpoints.fromViewpointRegistry().extend();
+		collectMappingsFromViewpoint(parameters, extend);
 		return parameters;
 	}
 
@@ -131,14 +131,17 @@ public class DiagramElementMappingSpecificationTests {
 	private boolean isDisplayingALabel(DiagramElementMapping underTest) {
 		BasicLabelStyleDescription labelDescription = new DescriptionSwitch<BasicLabelStyleDescription>() {
 
+			@SuppressWarnings("unused")
 			public BasicLabelStyleDescription caseNodeMapping(NodeMapping object) {
 				return object.getStyle();
 			};
 
+			@SuppressWarnings("unused")
 			public BasicLabelStyleDescription caseEdgeMapping(EdgeMapping object) {
 				return object.getStyle().getCenterLabelStyleDescription();
 			};
 
+			@SuppressWarnings("unused")
 			public BasicLabelStyleDescription caseContainerMapping(ContainerMapping object) {
 				return object.getStyle();
 			};

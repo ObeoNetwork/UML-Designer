@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: UML Designer Discovery UI
+Bundle-SymbolicName: org.obeonetwork.dsl.uml2.discovery;singleton:=true
+Bundle-Version: 5.0.0.qualifier
+Bundle-Activator: org.obeonetwork.dsl.uml2.discovery.UmlDiscoveryActivator
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.ui,
+ org.eclipse.amalgam.discovery.ui,
+ org.eclipse.core.net,
+ org.eclipse.ui.intro
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ActivationPolicy: lazy
+Bundle-Vendor: Obeo Network

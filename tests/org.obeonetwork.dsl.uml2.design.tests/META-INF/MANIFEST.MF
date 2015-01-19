@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: UML Designer Tests
 Bundle-SymbolicName: org.obeonetwork.dsl.uml2.design.tests;singleton:=true
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 5.0.0.qualifier
 Bundle-Activator: org.obeonetwork.dsl.uml2.design.tests.Activator
 Bundle-Vendor: Obeo Network
 Require-Bundle: org.eclipse.core.runtime,
@@ -29,7 +29,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.obeonetwork.dsl.uml2.design,
  org.eclipse.sirius.diagram.sequence,
  org.eclipse.sirius.ecore.extender,
- org.eclipse.sirius.tests.support,
  org.eclipse.sirius.tests.swtbot.support
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ActivationPolicy: lazy
+Export-Package: org.obeonetwork.dsl.uml2.design.tests.plugin.manual

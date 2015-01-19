@@ -196,7 +196,7 @@ public class IsRelated4CompositeStructureServicesTests extends AbstractComposite
 	}
 
 	private void allRelated(EObject context, EObject[] toFind) {
-		Collection toFindCollection = Arrays.asList(toFind);
+		Collection<EObject> toFindCollection = Arrays.asList(toFind);
 		Collection<EObject> related = services.getRelatedForCompositeStructure(context);
 
 		for (EObject item : AllItems) {

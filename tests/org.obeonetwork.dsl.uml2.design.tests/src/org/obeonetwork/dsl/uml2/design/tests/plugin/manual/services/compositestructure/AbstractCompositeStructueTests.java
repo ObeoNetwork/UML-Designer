@@ -31,9 +31,8 @@ import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Property;
-import org.eclipse.uml2.uml.StructuredClassifier;
 import org.eclipse.uml2.uml.Usage;
-import org.obeonetwork.dsl.uml2.design.services.UMLServices;
+import org.obeonetwork.dsl.uml2.design.api.services.CompositeStructureDiagramServices;
 
 /**
  * Abstract Unit tests facilities to read the UML resource test.
@@ -46,11 +45,8 @@ public abstract class AbstractCompositeStructueTests extends TestCase {
 	 */
 	protected static final String UPPER_PACKAGE_OPOSITE_GENERALIZATION_RELATED_CLASS = "CompositeStructureRelatedElement";
 
-	/**
-	 * Instance of the services class used during tests.
-	 */
-	protected final UMLServices services = new UMLServices();
-
+	
+	protected CompositeStructureDiagramServices services = new CompositeStructureDiagramServices();
 	/**
 	 * The root package of the semantic resource.
 	 */

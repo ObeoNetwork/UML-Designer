@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Property;
-import org.obeonetwork.dsl.uml2.design.services.ConnectorServices;
+import org.obeonetwork.dsl.uml2.design.internal.services.ConnectorServices;
 import org.obeonetwork.dsl.uml2.design.tests.Activator;
 import org.obeonetwork.dsl.uml2.design.tests.plugin.manual.services.compositestructure.AbstractCompositeStructueTests;
 
@@ -34,13 +34,12 @@ public class ConnectorServicesTests extends AbstractCompositeStructueTests {
 	private static final String RESOURCE_URI = Activator.PLUGIN_ID
 			+ "/resources/compositeStructure/CSRelatedElements/compositeStructure_relatedElements.uml";
 
-	private ConnectorServices connectorServices;
+	private ConnectorServices connectorServices = ConnectorServices.INSTANCE;
 
 	/**
 	 * Constructor.
 	 */
 	public ConnectorServicesTests() {
-		connectorServices = new ConnectorServices();
 	}
 
 	@Override
@@ -51,66 +50,6 @@ public class ConnectorServicesTests extends AbstractCompositeStructueTests {
 	@Override
 	public String getRessourceURI() {
 		return RESOURCE_URI;
-	}
-
-	public void testIsRequiredInterface() {
-		assertFalse(connectorServices.isRequiredInterface(I1, Ap));
-		assertFalse(connectorServices.isRequiredInterface(I1, Aap));
-		assertFalse(connectorServices.isRequiredInterface(I1, Abp));
-		assertFalse(connectorServices.isRequiredInterface(I1, Acp));
-		assertTrue(connectorServices.isRequiredInterface(I1, Bp));
-		assertFalse(connectorServices.isRequiredInterface(I1, Cp));
-
-		assertTrue(connectorServices.isRequiredInterface(I2, Ap));
-		assertFalse(connectorServices.isRequiredInterface(I2, Aap));
-		assertFalse(connectorServices.isRequiredInterface(I2, Abp));
-		assertTrue(connectorServices.isRequiredInterface(I2, Acp));
-		assertFalse(connectorServices.isRequiredInterface(I2, Bp));
-		assertFalse(connectorServices.isRequiredInterface(I2, Cp));
-
-		assertFalse(connectorServices.isRequiredInterface(I3, Ap));
-		assertFalse(connectorServices.isRequiredInterface(I3, Aap));
-		assertTrue(connectorServices.isRequiredInterface(I3, Abp));
-		assertFalse(connectorServices.isRequiredInterface(I3, Acp));
-		assertFalse(connectorServices.isRequiredInterface(I3, Bp));
-		assertFalse(connectorServices.isRequiredInterface(I3, Cp));
-
-		assertFalse(connectorServices.isRequiredInterface(I4, Ap));
-		assertTrue(connectorServices.isRequiredInterface(I4, Aap));
-		assertFalse(connectorServices.isRequiredInterface(I4, Abp));
-		assertFalse(connectorServices.isRequiredInterface(I4, Acp));
-		assertFalse(connectorServices.isRequiredInterface(I4, Bp));
-		assertFalse(connectorServices.isRequiredInterface(I4, Cp));
-	}
-
-	public void testIsProvidedInterface() {
-		assertTrue(connectorServices.isProvidedInterface(I1, Ap));
-		assertTrue(connectorServices.isProvidedInterface(I1, Aap));
-		assertFalse(connectorServices.isProvidedInterface(I1, Abp));
-		assertFalse(connectorServices.isProvidedInterface(I1, Acp));
-		assertFalse(connectorServices.isProvidedInterface(I1, Bp));
-		assertFalse(connectorServices.isProvidedInterface(I1, Cp));
-
-		assertFalse(connectorServices.isProvidedInterface(I2, Ap));
-		assertFalse(connectorServices.isProvidedInterface(I2, Aap));
-		assertFalse(connectorServices.isProvidedInterface(I2, Abp));
-		assertFalse(connectorServices.isProvidedInterface(I2, Acp));
-		assertFalse(connectorServices.isProvidedInterface(I2, Bp));
-		assertTrue(connectorServices.isProvidedInterface(I2, Cp));
-
-		assertFalse(connectorServices.isProvidedInterface(I3, Ap));
-		assertFalse(connectorServices.isProvidedInterface(I3, Aap));
-		assertFalse(connectorServices.isProvidedInterface(I3, Abp));
-		assertTrue(connectorServices.isProvidedInterface(I3, Acp));
-		assertFalse(connectorServices.isProvidedInterface(I3, Bp));
-		assertFalse(connectorServices.isProvidedInterface(I3, Cp));
-
-		assertFalse(connectorServices.isProvidedInterface(I4, Ap));
-		assertFalse(connectorServices.isProvidedInterface(I4, Aap));
-		assertTrue(connectorServices.isProvidedInterface(I4, Abp));
-		assertFalse(connectorServices.isProvidedInterface(I4, Acp));
-		assertFalse(connectorServices.isProvidedInterface(I4, Bp));
-		assertFalse(connectorServices.isProvidedInterface(I4, Cp));
 	}
 
 	public void testIsConnectableInterface2Interface_I1() {
@@ -211,18 +150,6 @@ public class ConnectorServicesTests extends AbstractCompositeStructueTests {
 		assertTrue(connectorServices.isConnectable(Aap, I4));
 		assertFalse(connectorServices.isConnectable(Abp, I4));
 		assertFalse(connectorServices.isConnectable(Acp, I4));
-	}
-
-	/**
-	 * A port is not directly connectable with another kind of element as an interface.
-	 */
-	public void testIsConnectablePort2Other() {
-		for (EObject item : AllItems) {
-			for (Port port : AllPorts) {
-				assertFalse(connectorServices.isConnectable(port, (Element)item));
-				assertFalse(connectorServices.isConnectable((Element)item, port));
-			}
-		}
 	}
 
 	public void testIsConnectableProperty2Property_AProp1() {
@@ -327,41 +254,6 @@ public class ConnectorServicesTests extends AbstractCompositeStructueTests {
 					assertFalse(connectorServices.isConnectable((Element)item, property));
 				}
 			}
-		}
-	}
-
-	public void testGetStructuredClassifierPublicPort_A() {
-		Port newPort = connectorServices.getStructuredClassifierPublicPort(A);
-		for (Port port : AllPorts) {
-			assertNotSame(port, newPort);
-		}
-	}
-
-	public void testGetStructuredClassifierPublicPort_B() {
-		Port newPort = connectorServices.getStructuredClassifierPublicPort(B);
-		for (Port port : AllPorts) {
-			assertNotSame(port, newPort);
-		}
-	}
-
-	public void testGetStructuredClassifierPublicPort_C() {
-		Port newPort = connectorServices.getStructuredClassifierPublicPort(C);
-		for (Port port : AllPorts) {
-			assertNotSame(port, newPort);
-		}
-	}
-
-	public void testGetStructuredClassifierPublicPort_Aa() {
-		Port newPort = connectorServices.getStructuredClassifierPublicPort(Aa);
-		for (Port port : AllPorts) {
-			assertNotSame(port, newPort);
-		}
-	}
-
-	public void testGetStructuredClassifierPublicPort_Ab() {
-		Port newPort = connectorServices.getStructuredClassifierPublicPort(Ab);
-		for (Port port : AllPorts) {
-			assertNotSame(port, newPort);
 		}
 	}
 }

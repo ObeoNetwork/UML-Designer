@@ -1,0 +1,70 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_7Bw4YIBXEeS4X6G9cD21hw
+Element-Name: CreateUMLProject
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _ob37UIBXEeS4X6G9cD21hw
+Runtime-Version: 2.0.0.201412081054
+Save-Time: 12/10/14 11:49 AM
+Testcase-Type: ecl
+Verifications: _OtN54IBZEeS4X6G9cD21hw
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Test:
+From Resource perspective, File > New Project > UML Project.
+
+Result:
+Switch to modeling perspective, activate uml viewpoints and create a modeling project with an uml model and a default dashboard representation.
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Create new UML project
+get-menu "File/New/Project..." | click
+with [get-window "New Project"] {
+    get-tree | select "UML Designer/UML Project"
+    get-button "Next >" | click
+    get-editbox -after [get-label "Project name:"] | set-text test
+    get-button "Next >" | click
+    get-button Finish | click
+}
+
+
+// Check Modeling perspective is active
+get-window "Open Associated Perspective?" | get-button Yes | click
+with [get-button Modeling] {
+    get-property "isEnabled()" | equals true | verify-true
+    get-property "getText()" | equals Modeling | verify-true
+}
+
+// Check dashboard diagram is opened automatically
+get-editor Dashboard | get-diagram -index 1 | get-edit-part -name Dashboard | get-property "diagram.element.name" 
+    | equals Dashboard | verify-true
+
+// Check UML viewpoints are enabled
+get-view "Model Explorer" | get-tree | select test | get-menu "Viewpoints Selection" | click
+get-window "Viewpoints Selection" | get-table | select Capture
+with [get-window "Viewpoints Selection" | get-table] {
+    get-property "getItemCount()" | equals 5 | verify-true
+    get-property "getItems().TableItem[0].getText()" | equals Capture | verify-true
+    get-property "getItems().TableItem[0].getChecked()" | equals true | verify-true
+    get-property "getItems().TableItem[1].getText()" | equals Dashboard | verify-true
+    get-property "getItems().TableItem[1].getChecked()" | equals true | verify-true
+    get-property "getItems().TableItem[2].getText()" | equals Design | verify-true
+    get-property "getItems().TableItem[2].getChecked()" | equals true | verify-true
+    get-property "getItems().TableItem[3].getText()" | equals Extend | verify-true
+    get-property "getItems().TableItem[3].getChecked()" | equals true | verify-true
+    get-property "getItems().TableItem[4].getText()" | equals Review | verify-true
+    get-property "getItems().TableItem[4].getChecked()" | equals true | verify-true
+}
+get-window "Viewpoints Selection" | get-button OK | click
+
+// Check new UML project content
+get-view "Model Explorer" | get-tree | expand-all
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

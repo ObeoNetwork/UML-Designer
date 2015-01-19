@@ -1,0 +1,95 @@
+- title: Overview
+  file: overview
+
+
+- title: Download
+  file: download
+
+- category: Tutorials
+  pages:
+  - title: Getting started
+    file: tutorials/tuto-getting-started
+  - title: Create project
+    file: tutorials/tuto-create-project
+  - title: Create representation
+    file: tutorials/tuto-create-representation
+  - title: Import model
+    file: tutorials/tuto-import-model
+  - title: Open example
+    file: tutorials/tuto-start-example
+
+- category: User Guide
+  pages:
+  - title: Dashboard
+    file: ref-doc/define-the-system
+    anchor: Dashboard
+  - title: Activity Diagram
+    file: ref-doc/define-the-application
+    anchor: Activity_Diagram
+  - title: Class Diagram
+    file: ref-doc/implement-the-application
+    anchor: Class_Diagram
+  - title: Component Diagram
+    file: ref-doc/define-the-application
+    anchor: Component_Diagram
+  - title: Composite Structure Diagram
+    file: ref-doc/define-the-application
+    anchor: Composite_Structure_Diagram
+  - title: Deployment Diagram
+    file: ref-doc/define-the-application
+    anchor: Deployment_Diagram
+  - title: Package Diagram
+    file: ref-doc/define-the-application
+    anchor: Package_Diagram
+  - title: Profile Diagram
+    file: ref-doc/define-the-application
+    anchor: Profile_Diagram
+  - title: Sequence Diagram
+    file: ref-doc/implement-the-application
+    anchor: Sequence_Diagram
+  - title: State Machine Diagram
+    file: ref-doc/implement-the-application
+    anchor: State_Machine_Diagram
+  - title: Use Case Diagram
+    file: ref-doc/define-the-application
+    anchor: Use_Case_Diagram
+
+- category: Developer Guide
+  pages:
+  - title: Contribute
+    file: developer-guide/contribute
+  - title: Build
+    file: developer-guide/build
+  - title: Documentation
+    file: developer-guide/documentation
+
+- category: Documentation
+  pages:
+  - title: Presentation
+    file: ref-doc/presentation
+  - title: Define the system
+    file: ref-doc/define-the-system
+  - title: Define the application
+    file: ref-doc/define-the-application
+  - title: Implement the application
+    file: ref-doc/implement-the-application
+  - title: Write the application documentation
+    file: ref-doc/write-the-application-documentation
+  - title: Refactor an application
+    file: ref-doc/refactor-an-application
+  - title: Validate an application
+    file: ref-doc/validate-an-application
+  - title: Non Goals
+    file: ref-doc/non-goals
+  - title: Usage
+    file: ref-doc/usage
+  - title: Migration
+    file: ref-doc/migration
+  - title: Install UML components
+    file: ref-doc/discovery
+
+- title: Support
+  file: support
+
+- title: FAQ
+  file: faq

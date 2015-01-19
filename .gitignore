@@ -1,2 +1,8 @@
+# Ignore
 bin
 target
+documentation/_site
+plugins/org.obeonetwork.dsl.uml2.design.doc/html/*
+
+# But not ...
+!plugins/org.obeonetwork.dsl.uml2.design.doc/html/README

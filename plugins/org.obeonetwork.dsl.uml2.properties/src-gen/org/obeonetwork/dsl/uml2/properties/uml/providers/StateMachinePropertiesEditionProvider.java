@@ -62,9 +62,9 @@ public class StateMachinePropertiesEditionProvider extends UmlPropertiesEditionP
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof StateMachine) 
-					&& (UMLPackage.Literals.STATE_MACHINE == editingContext.getEObject().eClass());
-	}
+    return (editingContext.getEObject() instanceof StateMachine) 
+          && (UMLPackage.Literals.STATE_MACHINE == editingContext.getEObject().eClass());
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -72,8 +72,8 @@ public class StateMachinePropertiesEditionProvider extends UmlPropertiesEditionP
 	 * @generated
 	 */
 	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof StateMachine) && (StateMachinePropertiesEditionComponent.GENERAL_PART.equals(part));
-	}
+    return (editingContext.getEObject() instanceof StateMachine) && (StateMachinePropertiesEditionComponent.GENERAL_PART.equals(part));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -82,8 +82,8 @@ public class StateMachinePropertiesEditionProvider extends UmlPropertiesEditionP
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof StateMachine) && (refinement == StateMachinePropertiesEditionComponent.class);
-	}
+    return (editingContext.getEObject() instanceof StateMachine) && (refinement == StateMachinePropertiesEditionComponent.class);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -92,8 +92,8 @@ public class StateMachinePropertiesEditionProvider extends UmlPropertiesEditionP
 	 */
 	@SuppressWarnings("rawtypes")
 	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof StateMachine) && ((StateMachinePropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == StateMachinePropertiesEditionComponent.class));
-	}
+    return (editingContext.getEObject() instanceof StateMachine) && ((StateMachinePropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == StateMachinePropertiesEditionComponent.class));
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -101,11 +101,11 @@ public class StateMachinePropertiesEditionProvider extends UmlPropertiesEditionP
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof StateMachine) {
-			return new StateMachinePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    if (editingContext.getEObject() instanceof StateMachine) {
+      return new StateMachinePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode);
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -113,12 +113,12 @@ public class StateMachinePropertiesEditionProvider extends UmlPropertiesEditionP
 	 * @generated
 	 */
 	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof StateMachine) {
-			if (StateMachinePropertiesEditionComponent.GENERAL_PART.equals(part))
-				return new StateMachinePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    if (editingContext.getEObject() instanceof StateMachine) {
+      if (StateMachinePropertiesEditionComponent.GENERAL_PART.equals(part))
+        return new StateMachinePropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+    }
+    return super.getPropertiesEditingComponent(editingContext, mode, part);
+  }
 
 	/**
 	 * {@inheritDoc}

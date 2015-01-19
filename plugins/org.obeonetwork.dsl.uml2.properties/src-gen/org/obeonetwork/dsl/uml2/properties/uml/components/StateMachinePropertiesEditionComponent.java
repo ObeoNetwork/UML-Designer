@@ -68,11 +68,11 @@ public class StateMachinePropertiesEditionComponent extends SinglePartProperties
 	 * @generated
 	 */
 	public StateMachinePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject stateMachine, String editing_mode) {
-		super(editingContext, stateMachine, editing_mode);
-		parts = new String[] { GENERAL_PART };
-		repositoryKey = UmlViewsRepository.class;
-		partKey = UmlViewsRepository.General.class;
-	}
+    super(editingContext, stateMachine, editing_mode);
+    parts = new String[] { GENERAL_PART };
+    repositoryKey = UmlViewsRepository.class;
+    partKey = UmlViewsRepository.General.class;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -82,41 +82,27 @@ public class StateMachinePropertiesEditionComponent extends SinglePartProperties
 	 * @generated
 	 */
 	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			
-			final StateMachine stateMachine = (StateMachine)elt;
-			final GeneralPropertiesEditionPart generalPart = (GeneralPropertiesEditionPart)editingPart;
-			// init values
-			if (isAccessible(UmlViewsRepository.General.name))
-				generalPart.setName(EEFConverterUtil.convertToString(TypesPackage.Literals.STRING, stateMachine.getName()));
-			
-			if (isAccessible(UmlViewsRepository.General.visibility)) {
-				generalPart.initVisibility(EEFUtils.choiceOfValues(stateMachine, UMLPackage.eINSTANCE.getNamedElement_Visibility()), stateMachine.getVisibility());
-			}
-			generalPart.setAbstract_(stateMachine.isAbstract());
-			
-			generalPart.setLeaf(stateMachine.isLeaf());
-			
-			generalPart.setActive(stateMachine.isActive());
-			
-			generalPart.setReentrant(stateMachine.isReentrant());
-			
-			// init filters
-			
-			
-			
-			
-			
-			
-			// init values for referenced views
-			
-			// init filters for referenced views
-			
-		}
-		setInitializing(false);
-	}
+    setInitializing(true);
+    if (editingPart != null && key == partKey) {
+      editingPart.setContext(elt, allResource);
+      
+      final StateMachine stateMachine = (StateMachine)elt;
+      final GeneralPropertiesEditionPart generalPart = (GeneralPropertiesEditionPart)editingPart;
+      // init values
+      if (isAccessible(UmlViewsRepository.General.name))
+        generalPart.setName(EEFConverterUtil.convertToString(TypesPackage.Literals.STRING, stateMachine.getName()));
+      
+      // FIXME NO VALID CASE INTO template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : region, General, StateMachine.
+      // init filters
+      
+      // FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : region, General, StateMachine.
+      // init values for referenced views
+      
+      // init filters for referenced views
+      
+    }
+    setInitializing(false);
+  }
 
 
 
@@ -158,26 +144,14 @@ public class StateMachinePropertiesEditionComponent extends SinglePartProperties
 	 * @generated
 	 */
 	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		StateMachine stateMachine = (StateMachine)semanticObject;
-		if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
-			stateMachine.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
-		}
-		if (UmlViewsRepository.General.visibility == event.getAffectedEditor()) {
-			stateMachine.setVisibility((VisibilityKind)event.getNewValue());
-		}
-		if (UmlViewsRepository.General.Qualifiers.abstract_ == event.getAffectedEditor()) {
-			stateMachine.setIsAbstract((Boolean)event.getNewValue());
-		}
-		if (UmlViewsRepository.General.Qualifiers.leaf == event.getAffectedEditor()) {
-			stateMachine.setIsLeaf((Boolean)event.getNewValue());
-		}
-		if (UmlViewsRepository.General.Qualifiers.active == event.getAffectedEditor()) {
-			stateMachine.setIsActive((Boolean)event.getNewValue());
-		}
-		if (UmlViewsRepository.General.Qualifiers.reentrant == event.getAffectedEditor()) {
-			stateMachine.setIsReentrant((Boolean)event.getNewValue());
-		}
-	}
+    StateMachine stateMachine = (StateMachine)semanticObject;
+    if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
+      stateMachine.setName((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
+    }
+    if (UmlViewsRepository.General.region == event.getAffectedEditor()) {
+      // FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : region, General, StateMachine.
+    }
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -245,8 +219,8 @@ public class StateMachinePropertiesEditionComponent extends SinglePartProperties
 	 * @generated
 	 */
 	public boolean isRequired(Object key, int kind) {
-		return key == UmlViewsRepository.General.Qualifiers.abstract_ || key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.Qualifiers.active;
-	}
+    return key == UmlViewsRepository.General.region;
+  }
 
 	/**
 	 * {@inheritDoc}
@@ -255,59 +229,24 @@ public class StateMachinePropertiesEditionComponent extends SinglePartProperties
 	 * @generated
 	 */
 	public Diagnostic validateValue(IPropertiesEditionEvent event) {
-		Diagnostic ret = Diagnostic.OK_INSTANCE;
-		if (event.getNewValue() != null) {
-			try {
-				if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newValue);
-				}
-				if (UmlViewsRepository.General.visibility == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), newValue);
-				}
-				if (UmlViewsRepository.General.Qualifiers.abstract_ == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getClassifier_IsAbstract().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getClassifier_IsAbstract().getEAttributeType(), newValue);
-				}
-				if (UmlViewsRepository.General.Qualifiers.leaf == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getRedefinableElement_IsLeaf().getEAttributeType(), newValue);
-				}
-				if (UmlViewsRepository.General.Qualifiers.active == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getClass_IsActive().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getClass_IsActive().getEAttributeType(), newValue);
-				}
-				if (UmlViewsRepository.General.Qualifiers.reentrant == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getBehavior_IsReentrant().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getBehavior_IsReentrant().getEAttributeType(), newValue);
-				}
-			} catch (IllegalArgumentException iae) {
-				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
-				ret = BasicDiagnostic.toDiagnostic(we);
-			}
-		}
-		return ret;
-	}
+    Diagnostic ret = Diagnostic.OK_INSTANCE;
+    if (event.getNewValue() != null) {
+      try {
+        if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
+          Object newValue = event.getNewValue();
+          if (newValue instanceof String) {
+            newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), (String)newValue);
+          }
+          ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Name().getEAttributeType(), newValue);
+        }
+      } catch (IllegalArgumentException iae) {
+        ret = BasicDiagnostic.toDiagnostic(iae);
+      } catch (WrappedException we) {
+        ret = BasicDiagnostic.toDiagnostic(we);
+      }
+    }
+    return ret;
+  }
 
 
 	

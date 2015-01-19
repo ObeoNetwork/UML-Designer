@@ -2,11 +2,11 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: UML Designer
 Bundle-SymbolicName: org.obeonetwork.dsl.uml2.design;singleton:=true
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 5.0.0.qualifier
 Bundle-Activator: org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.eclipse.sirius;bundle-version="[1.0.0,2.0.0)",
+ org.eclipse.sirius;bundle-version="[2.0.0,3.0.0)",
  org.eclipse.uml2.uml;bundle-version="[5.0.0,6.0.0)",
  org.eclipse.uml2.uml.edit,
  org.eclipse.sirius.common,
@@ -38,13 +38,22 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius.ecore.extender,
  org.eclipse.sirius.ext.base,
  com.google.guava,
- org.eclipse.sirius.diagram.ui
+ org.eclipse.sirius.diagram.ui,
+ org.eclipse.emf.codegen.ecore,
+ org.eclipse.emf.importer.ecore,
+ org.eclipse.emf.importer,
+ org.eclipse.jdt.core,
+ org.eclipse.pde.ui,
+ org.eclipse.emf.transaction,
+ org.apache.xml.serializer,
+ org.eclipse.emf.edit.ui,
+ org.eclipse.uml2.uml.editor
 Bundle-ActivationPolicy: lazy
-Export-Package: org.obeonetwork.dsl.uml2.design,
- org.obeonetwork.dsl.uml2.design.services,
- org.obeonetwork.dsl.uml2.design.services.internal,
- org.obeonetwork.dsl.uml2.design.ui.extension,
- org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-Localization: plugin
 Bundle-Vendor: Obeo Network
+Export-Package: org.obeonetwork.dsl.uml2.design;x-friends:="org.obeonetwork.dsl.uml2.usage",
+ org.obeonetwork.dsl.uml2.design.api.services,
+ org.obeonetwork.dsl.uml2.design.api.utils,
+ org.obeonetwork.dsl.uml2.design.api.wizards,
+ org.obeonetwork.dsl.uml2.design.internal.services;x-friends:="org.obeonetwork.dsl.uml2.design.tests"

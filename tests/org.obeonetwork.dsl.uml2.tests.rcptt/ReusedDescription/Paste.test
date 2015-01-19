@@ -1,0 +1,57 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_PbyVcIBsEeS4X6G9cD21hw
+Element-Name: Paste
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _0zp14ICPEeS4X6G9cD21hw
+Runtime-Version: 2.0.0.201412081054
+Save-Time: 12/10/14 6:32 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Test :
+In the travel agency example, open the class diagram, Ctrl-C Ctrl-V.
+
+Result:
+Check a copy of the selected class is created under the selected container.
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Model Explorer" | get-tree | select "TravelAgency/agency.uml/<Model> Travel Agency/Entities" | double-click
+with [get-editor Entities] {
+    with [get-diagram -index 1] {
+        with [get-edit-part -name Entities] {
+            with [get-edit-part -name Catalog | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+                mouse-press 89 6 button1 -height 34 -width 179
+                mouse-release 89 6 button1 524288 -height 34 -width 179
+            }
+        }
+        key-type "M1+c"
+        with [get-edit-part -name Entities] {
+            get-edit-part -name Catalog | get-edit-part -className DNodeListViewNodeListCompartment2EditPart 
+                | mouse-hover 92 2 -mask CTRL -height 34 -width 179
+            mouse-move 741 98 button1 -height 778 -width 3425
+            mouse-press 741 98 button1 -height 778 -width 3425
+        }
+        get-figure "0/1/0/0" | mouse-release 741 142 button1 524288 -height 778 -width 3425
+        with [get-edit-part -name Entities] {
+            mouse-move 659 96 -height 778 -width 3425
+            mouse-hover 659 96 -mask CTRL -height 778 -width 3425
+        }
+        key-type "M1+v"
+    }
+    with [get-diagram -index 1] {
+        mouse-hover 661 139 -height 778 -width 3425
+        get-edit-part -name Entities | mouse-move 570 93 -height 778 -width 3425
+    }
+}
+get-editor Entities | get-diagram -index 1 | get-edit-part -name Entities | get-edit-part -name Catalog -index 1 
+    | get-edit-part -className DNodeListNameEditPart | get-property "element.name" | equals Catalog | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

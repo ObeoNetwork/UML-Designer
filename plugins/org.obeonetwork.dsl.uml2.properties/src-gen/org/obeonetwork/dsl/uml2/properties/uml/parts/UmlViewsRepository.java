@@ -334,6 +334,54 @@ public class UmlViewsRepository {
 	
 	public static String max = "uml::General::max";
 	
+	/**
+	 * @generated
+	 */
+	
+	public static String event = "uml::General::event";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String when = "uml::General::when";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String changeExpression = "uml::General::changeExpression";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String region = "uml::General::region";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String behaviour = "uml::General::behaviour";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String unmarshall = "uml::General::unmarshall";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String operation = "uml::General::operation";
+	
+	/**
+	 * @generated
+	 */
+	
+	public static String signal = "uml::General::signal";
+	
 	}
 
 	/**

@@ -34,16 +34,6 @@ public class AnUmlModelWithAClassAndAnOperationUnitTests {
 		context.assertIGetTheParentActivity();
 	}
 	@Test
-	public void getActivityNodes() throws Exception {
-		context.actionIQueryTheActivityNodesOfAnActivity();
-		context.assertIGetAllTheParentActivityNodes();
-	}
-	@Test
-	public void getActivityNodes2() throws Exception {
-		context.actionIQueryTheActivityNodesOfAnActivityPartition();
-		context.assertIGetAllTheParentActivityPartitionNodes();
-	}
-	@Test
 	public void createInputPin() throws Exception {
 		context.actionICreateAnInputPinOnACallOperationAction();
 		context.assertAnInputPinIsCreatedOnTheCallOperationAction();
