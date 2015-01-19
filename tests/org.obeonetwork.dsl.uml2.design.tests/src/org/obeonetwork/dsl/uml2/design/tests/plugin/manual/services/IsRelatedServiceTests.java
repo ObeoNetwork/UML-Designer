@@ -22,7 +22,8 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.Package;
-import org.obeonetwork.dsl.uml2.design.services.UMLServices;
+import org.obeonetwork.dsl.uml2.design.api.services.AbstractDiagramServices;
+import org.obeonetwork.dsl.uml2.design.api.services.ClassDiagramServices;
 import org.obeonetwork.dsl.uml2.design.tests.Activator;
 
 /**
@@ -42,14 +43,11 @@ public class IsRelatedServiceTests extends TestCase {
 	private static final String RESOURCE_URI = Activator.PLUGIN_ID + "/resources/Test.uml";
 
 	/**
-	 * Instance of the services class used during tests.
-	 */
-	private final UMLServices services = new UMLServices();
-
-	/**
 	 * The root package of the semantic resource.
 	 */
 	private Package rootPackage;
+
+	private AbstractDiagramServices services = new ClassDiagramServices();
 
 	/**
 	 * Constructor.
@@ -71,7 +69,7 @@ public class IsRelatedServiceTests extends TestCase {
 
 		try {
 			List<EObject> nullList = null;
-			assertFalse(services.isRelated(null, nullList));
+			assertFalse(services .isRelated(null, nullList));
 		} catch (Exception e) {
 			fail("isRelated(null, null) should not raises an exception : " + e.getMessage());
 		}

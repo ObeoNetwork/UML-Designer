@@ -54,6 +54,8 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 
+import org.obeonetwork.dsl.uml2.properties.parts.CustomSectionPropertiesEditingPart;
+
 import org.obeonetwork.dsl.uml2.properties.uml.parts.OperationsPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 
@@ -64,7 +66,7 @@ import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
  * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
  * @generated
  */
-public class OperationsPropertiesEditionPartForm extends SectionPropertiesEditingPart implements IFormPropertiesEditionPart, OperationsPropertiesEditionPart {
+public class OperationsPropertiesEditionPartForm extends CustomSectionPropertiesEditingPart implements IFormPropertiesEditionPart, OperationsPropertiesEditionPart {
 
 	protected ReferencesTable operations;
 	protected List<ViewerFilter> operationsBusinessFilters = new ArrayList<ViewerFilter>();

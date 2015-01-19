@@ -21,6 +21,9 @@ import java.util.Collections;
 import java.util.List;
 // End of user code
 
+
+
+
 // Start of user code AnUmlModelWithAClassAndAnOperation imports
 import org.eclipse.uml2.uml.Action;
 import org.eclipse.uml2.uml.Activity;
@@ -31,7 +34,8 @@ import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.OpaqueAction;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.UMLFactory;
-import org.obeonetwork.dsl.uml2.design.services.ActivityServices;
+import org.obeonetwork.dsl.uml2.design.api.services.ActivityDiagramServices;
+import org.obeonetwork.dsl.uml2.design.api.services.ReusedDescriptionServices;
 import org.obeonetwork.dsl.uml2.design.tests.automation.Context;
 
 /**
@@ -42,7 +46,7 @@ public class AnUmlModelWithAClassAndAnOperation extends Context {
 	/**
 	 * The services to test.
 	 */
-	private ActivityServices services;
+	private ActivityDiagramServices services;
 
 	/**
 	 * The activity used as test input.
@@ -96,7 +100,7 @@ public class AnUmlModelWithAClassAndAnOperation extends Context {
 	@Override
 	public void setup() {
 		// Start of user code AnUmlModelWithAClassAndAnOperation setup
-		services = new ActivityServices();
+		services = new ActivityDiagramServices();
 		activityUnderTest = initMockActivityModel();
 		final Class aClass = UMLFactory.eINSTANCE.createClass();
 		op = UMLFactory.eINSTANCE.createOperation();
@@ -145,16 +149,6 @@ public class AnUmlModelWithAClassAndAnOperation extends Context {
 	}
 
 	/**
-	 * Action : I query the activity nodes of an activity partition
-	 */
-	public void actionIQueryTheActivityNodesOfAnActivityPartition() {
-		// Start of user code IQueryTheActivityNodesOfAnActivityPartition
-		node = activityUnderTest.getNode("InPartition1");
-		foundNodes = services.getActivityNodes(activityUnderTest.getPartition(P1));
-		// End of user code
-	}
-
-	/**
 	 * Action : I drop a partition to another partition
 	 */
 	public void actionIDropAPartitionToAnotherPartition() {
@@ -180,7 +174,7 @@ public class AnUmlModelWithAClassAndAnOperation extends Context {
 	 */
 	public void actionIInitializeAnActivityForAnOperation() {
 		// Start of user code IInitializeAnActivityForAnOperation
-		activityUnderTest = services.initActivityForOperation(op);
+		activityUnderTest = new ReusedDescriptionServices().initActivityForOperation(op);
 	}
 
 	/**
@@ -238,16 +232,6 @@ public class AnUmlModelWithAClassAndAnOperation extends Context {
 		// Start of user code IDropANodeToAnActivity
 		node = activityUnderTest.getNode(IN_ACTIVITY_ACTION);
 		services.dropNode(activityUnderTest, node, activityUnderTest);
-		// End of user code
-	}
-
-	/**
-	 * Action : I query the activity nodes of an activity
-	 */
-	public void actionIQueryTheActivityNodesOfAnActivity() {
-		// Start of user code IQueryTheActivityNodesOfAnActivity
-		node = activityUnderTest.getNode(IN_ACTIVITY_ACTION);
-		foundNodes = services.getActivityNodes(activityUnderTest);
 		// End of user code
 	}
 
@@ -310,17 +294,6 @@ public class AnUmlModelWithAClassAndAnOperation extends Context {
 		// End of user code
 	}
 
-	/**
-	 * Behavior : I get all the parent activity partition nodes
-	 */
-	public void assertIGetAllTheParentActivityPartitionNodes() {
-		// Start of user code IGetAllTheParentActivityPartitionNodes
-		assertEquals(1, foundNodes.size());
-		assertEquals(node, foundNodes.get(0));
-
-		assertEquals(Collections.EMPTY_LIST, services.getActivityNodes(UMLFactory.eINSTANCE.createClass()));
-		// End of user code
-	}
 
 	/**
 	 * Behavior : I get all the activity partitions defined for the activity

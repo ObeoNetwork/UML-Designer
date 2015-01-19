@@ -1,0 +1,66 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: EmptyStateMachineDiagram
+Element-Type: context
+Element-Version: 2.0
+Id: _nFts0H-rEeS4X6G9cD21hw
+Runtime-Version: 2.0.0.201412081054
+Save-Time: 12/9/14 2:59 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+get-view "Model Explorer" | get-tree | select "test/model.uml/<Model> NewModel" 
+    | get-menu "New Representation/State Machine Diagram" | click
+get-window "New Representation" | get-button OK | click
+with [get-editor "NewModel State Machine Diagram"] {
+    with [get-diagram -index 1] {
+        with [get-edit-part -name "NewModel State Machine Diagram"] {
+            with [get-edit-part -name NewModel | get-edit-part 
+                -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+                mouse-move 187 106 button1 -height 111 -width 191
+                mouse-press 187 106 button1 -height 111 -width 191
+                mouse-release 187 106 button1 524288 -height 111 -width 191
+            }
+            mouse-move 199 120 -height 553 -width 865
+            mouse-hover 199 120 -height 553 -width 865
+        }
+        with [get-figure "0/1/0/0"] {
+            mouse-move 197 119 button1 -height 553 -width 865
+            mouse-press 197 119 button1 -height 553 -width 865
+        }
+        with [get-edit-part -name "NewModel State Machine Diagram"] {
+            mouse-drag 850 537 button1 524288 -height 553 -width 865
+            mouse-release 850 537 button1 524288 -height 553 -width 865
+            with [get-edit-part -name NewModel | get-edit-part 
+                -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+                mouse-move 186 92 -height 531 -width 846
+                with [get-edit-part -name Region1] {
+                    with [get-edit-part -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+                        mouse-move 106 34 button1 -height 68 -width 148
+                        mouse-press 106 34 button1 -height 68 -width 148
+                        mouse-release 110 38 button1 524288 -height 68 -width 148
+                    }
+                    with [get-handle ResizeHandle -index 4] {
+                        mouse-move 1 2 button1 -height 7 -width 7
+                        mouse-press 1 2 button1 -height 7 -width 7
+                        mouse-hover 1 2 -mask 524288 -height 7 -width 7
+                    }
+                }
+            }
+            mouse-drag 820 514 button1 524288 -height 549 -width 861
+            mouse-release 820 514 button1 524288 -height 549 -width 861
+            with [get-edit-part -name NewModel | get-edit-part 
+                -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name Region1] {
+                get-handle ResizeHandle -index 4 | mouse-hover 3 2 -height 7 -width 7
+                with [get-edit-part -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+                    mouse-move 687 315 -height 481 -width 786
+                    mouse-hover 687 315 -height 481 -width 786
+                }
+            }
+        }
+    }
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

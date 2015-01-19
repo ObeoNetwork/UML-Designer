@@ -1,0 +1,4 @@
+A test file must define :
+* A preference context to set all the default preferences
+* A workbench context to open all the useful views and the perspective
+* A workspace context to set the projects that must be opened...

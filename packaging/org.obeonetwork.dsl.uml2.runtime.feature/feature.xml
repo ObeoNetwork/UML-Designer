@@ -2,14 +2,14 @@
 <feature
       id="org.obeonetwork.dsl.uml2.runtime.feature"
       label="UML Designer"
-      version="4.0.0.qualifier"
+      version="5.0.0.qualifier"
       provider-name="Obeo">
 
    <description url="http://docs.obeonetwork.com/uml">
       This modeler provides a set of common diagrams to work with
-UML 4.0 models.
-Provides same features as org.obeonetwork.dsl.uml2.runtime.sdk.feature 
-without the dependencies to Obeo Designer.
+UML 5.0 models.
+Provides same features as org.obeonetwork.dsl.uml2.runtime.sdk.feature
+without the dependencies to Sirius.
    </description>
 
    <copyright url="http://www.eclipse.org/legal/epl-v10.html">
@@ -264,14 +264,21 @@ litigation.
          unpack="false"/>
 
    <plugin
-         id="org.obeonetwork.dsl.uml2.profile.design"
+         id="org.obeonetwork.dsl.uml2.navigator"
          download-size="0"
          install-size="0"
          version="0.0.0"
          unpack="false"/>
 
    <plugin
-         id="org.obeonetwork.dsl.uml2.navigator"
+         id="org.obeonetwork.dsl.uml2.migration"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.obeonetwork.dsl.uml2.discovery"
          download-size="0"
          install-size="0"
          version="0.0.0"

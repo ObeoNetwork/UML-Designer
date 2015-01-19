@@ -1,0 +1,36 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Element-Name: All
+Element-Type: testsuite
+Element-Version: 2.0
+Id: _cTWEgJWmEeSFgY1mGxkuMg
+Runtime-Version: 2.0.0.201412081054
+Save-Time: 1/6/15 2:56 PM
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Launch all the UML Designer RCPTT tests
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
+Content-Type: text/testcase
+Entry-Name: testcase-items
+
+_6K0twJWqEeSFgY1mGxkuMg	//
+_CQvsAJWrEeSFgY1mGxkuMg	//
+_OxGOMJWrEeSFgY1mGxkuMg	//
+_SkCUUJWrEeSFgY1mGxkuMg	//
+_UOz0EJWrEeSFgY1mGxkuMg	//
+_VbVRkJWrEeSFgY1mGxkuMg	//
+_W-S5IJWrEeSFgY1mGxkuMg	//
+_X7KxEJWrEeSFgY1mGxkuMg	//
+_YoejAJWrEeSFgY1mGxkuMg	//
+_ZWWVoJWrEeSFgY1mGxkuMg	//
+_aht8kJWrEeSFgY1mGxkuMg	//
+_bld4kJWrEeSFgY1mGxkuMg	//
+_cfJSkJWrEeSFgY1mGxkuMg	//
+_eagMAJWrEeSFgY1mGxkuMg	//
+_f9KRkJWrEeSFgY1mGxkuMg	//
+
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--

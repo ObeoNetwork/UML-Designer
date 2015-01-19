@@ -11,19 +11,18 @@
 
 package org.obeonetwork.dsl.uml2.design.tests.contexts;
 
-import static org.junit.Assert.*;
-	import org.obeonetwork.dsl.uml2.design.tests.automation.Context;
-
 // Start of user code UnactivateUmlUsage imports
 import org.eclipse.jface.dialogs.IDialogConstants;
+import org.obeonetwork.dsl.uml2.design.tests.automation.Context;
 import org.obeonetwork.dsl.uml2.usage.preferences.UsagePreferences;
+
 // End of user code
 
 /**
  * Context : Unactivate UML Usage
  */
 public class UnactivateUmlUsage extends Context {
-// Start of user code UnactivateUmlUsage variables
+	// Start of user code UnactivateUmlUsage variables
 	// Nothing
 	// End of user code
 
@@ -43,7 +42,7 @@ public class UnactivateUmlUsage extends Context {
 		// End of user code
 	}
 
-// Start of user code UnactivateUmlUsage private methods
+	// Start of user code UnactivateUmlUsage private methods
 	// Nothing
 	// End of user code
 }

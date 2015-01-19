@@ -34,6 +34,14 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createActivityAdapter()
+	 * @generated
+	 */
+	public Adapter createActivityAdapter() {
+		return new ActivityPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createCommentAdapter()
 	 * @generated
 	 */
@@ -79,14 +87,6 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	 */
 	public Adapter createConnectorEndAdapter() {
 		return new ConnectorEndPropertiesEditionProvider();
-	}
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createValueSpecificationAdapter()
-	 * @generated
-	 */
-	public Adapter createValueSpecificationAdapter() {
-		return new ValueSpecificationPropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}
@@ -183,6 +183,14 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	 */
 	public Adapter createStateAdapter() {
 		return new StatePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createTriggerAdapter()
+	 * @generated
+	 */
+	public Adapter createTriggerAdapter() {
+		return new TriggerPropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}
@@ -306,6 +314,22 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	}
 	/**
 	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createAcceptEventActionAdapter()
+	 * @generated
+	 */
+	public Adapter createAcceptEventActionAdapter() {
+		return new AcceptEventActionPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createCallBehaviorActionAdapter()
+	 * @generated
+	 */
+	public Adapter createCallBehaviorActionAdapter() {
+		return new CallBehaviorActionPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
 	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createCallOperationActionAdapter()
 	 * @generated
 	 */
@@ -343,6 +367,70 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
 	 */
 	public Adapter createInstanceValueAdapter() {
 		return new InstanceValuePropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createMessageEventAdapter()
+	 * @generated
+	 */
+	public Adapter createMessageEventAdapter() {
+		return new MessageEventPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createCallEventAdapter()
+	 * @generated
+	 */
+	public Adapter createCallEventAdapter() {
+		return new CallEventPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createChangeEventAdapter()
+	 * @generated
+	 */
+	public Adapter createChangeEventAdapter() {
+		return new ChangeEventPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createOpaqueBehaviorAdapter()
+	 * @generated
+	 */
+	public Adapter createOpaqueBehaviorAdapter() {
+		return new OpaqueBehaviorPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createSignalEventAdapter()
+	 * @generated
+	 */
+	public Adapter createSignalEventAdapter() {
+		return new SignalEventPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createTimeEventAdapter()
+	 * @generated
+	 */
+	public Adapter createTimeEventAdapter() {
+		return new TimeEventPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createTimeExpressionAdapter()
+	 * @generated
+	 */
+	public Adapter createTimeExpressionAdapter() {
+		return new TimeExpressionPropertiesEditionProvider();
+	}
+	/**
+	 * {@inheritDoc}
+	 * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createInteractionAdapter()
+	 * @generated
+	 */
+	public Adapter createInteractionAdapter() {
+		return new InteractionPropertiesEditionProvider();
 	}
 	/**
 	 * {@inheritDoc}

@@ -2,14 +2,15 @@
 <feature
       id="org.obeonetwork.dsl.uml2.runtime.product.feature"
       label="UML Designer with Product Specific Branding"
-      version="4.0.0.qualifier"
+      version="5.0.0.qualifier"
       provider-name="Obeo"
       plugin="org.obeonetwork.dsl.uml2.branding">
 
    <description url="http://docs.obeonetwork.com/uml">
       This modeler provides a set of common diagrams to work with
-UML 4.0 models.
-Provides same features as org.obeonetwork.dsl.uml2.runtime.feature but product specific branding.
+UML 5.0 models.
+Provides same features as org.obeonetwork.dsl.uml2.runtime.feature
+but product specific branding.
    </description>
 
    <copyright url="http://www.eclipse.org/legal/epl-v10.html">
@@ -271,13 +272,6 @@ litigation.
          unpack="false"/>
 
    <plugin
-         id="org.obeonetwork.dsl.uml2.profile.design"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.obeonetwork.dsl.uml2.navigator"
          download-size="0"
          install-size="0"
@@ -377,6 +371,20 @@ litigation.
 
    <plugin
          id="org.eclipse.emf.compare.uml2.rcp.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.obeonetwork.dsl.uml2.migration"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.obeonetwork.dsl.uml2.discovery"
          download-size="0"
          install-size="0"
          version="0.0.0"

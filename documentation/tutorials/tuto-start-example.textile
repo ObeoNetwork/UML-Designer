@@ -1,0 +1,17 @@
+---
+layout: article-with-sidebar
+title: Starting from the Travel Agency example
+subtitle: Tutorial
+category: Tutorials
+relativePath: ..
+---
+
+Learn how to import the Travel Agency project provided with UML Designer as example.
+
+h1. Import the Travel Agency project
+
+Click in the title bar and select File > New > Example > UML > Travel Agency UML. Click on 'Next ' and then 'Finish'.
+
+h1. Navigate through the example project
+
+The TravelAgency project appears in the 'Model Explorer' view. You can navigate to the existing diagrams by selecting items under the 'representations.aird' file. For example if you double-click on representations.aird > UML Structural Modeling > Class Diagram > entities, the example class diagram will be opened in a new editor.

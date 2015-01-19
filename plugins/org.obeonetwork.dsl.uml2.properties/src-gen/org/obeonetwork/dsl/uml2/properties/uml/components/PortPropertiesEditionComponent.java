@@ -148,9 +148,7 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 				generalPart.setUpperValue(EEFConverterUtil.convertToString(TypesPackage.Literals.UNLIMITED_NATURAL, port.getUpper()));
 			}
 			
-			if (isAccessible(UmlViewsRepository.General.defaultValue))
-				generalPart.setDefaultValue(EEFConverterUtil.convertToString(TypesPackage.Literals.STRING, port.getDefault()));
-			
+			// FIXME NO VALID CASE INTO template public updater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : defaultValue, General, Port.
 			generalPart.setBehavior(port.isBehavior());
 			
 			generalPart.setService(port.isService());
@@ -169,7 +167,7 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			
 			
 			
-			
+			// FIXME NO VALID CASE INTO template public filterUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : defaultValue, General, Port.
 			
 			
 			// init values for referenced views
@@ -306,7 +304,7 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 			port.setUpper((EEFConverterUtil.createIntFromString(TypesPackage.Literals.UNLIMITED_NATURAL, (String)event.getNewValue())));
 		}
 		if (UmlViewsRepository.General.defaultValue == event.getAffectedEditor()) {
-			port.setDefault((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
+			// FIXME INVALID CASE you must override the template 'declareEObjectUpdater' for the case : defaultValue, General, Port.
 		}
 		if (UmlViewsRepository.General.Qualifiers.behavior == event.getAffectedEditor()) {
 			port.setIsBehavior((Boolean)event.getNewValue());
@@ -374,13 +372,7 @@ public class PortPropertiesEditionComponent extends SinglePartPropertiesEditingC
 					generalPart.setUpperValue("");
 				}
 			}
-			if (UMLPackage.eINSTANCE.getProperty_Default().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.defaultValue)) {
-				if (msg.getNewValue() != null) {
-					generalPart.setDefaultValue(EcoreUtil.convertToString(TypesPackage.Literals.STRING, msg.getNewValue()));
-				} else {
-					generalPart.setDefaultValue("");
-				}
-			}
+			// FIXME INVALID CASE INTO template public liveUpdater(editionElement : PropertiesEditionElement, view : View, pec : PropertiesEditionComponent) in widgetControl.mtl module, with the values : defaultValue, General, Port.
 			if (UMLPackage.eINSTANCE.getPort_IsBehavior().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.Qualifiers.behavior))
 				generalPart.setBehavior((Boolean)msg.getNewValue());
 			

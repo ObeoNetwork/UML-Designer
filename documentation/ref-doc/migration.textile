@@ -1,0 +1,12 @@
+---
+layout: article
+title: Migration
+subtitle: Reference Documentation
+relativePath: ..
+---
+
+Before version 4.0, UML Designer was based on "Obeo Designer":http://www.obeodesigner.com/. In order to help the users to migrate there existing projects from UML Designer 3.0 to 4.0, a new pop up menu is provided on the projects :
+!{{ page.relativePath }}/images/MigrateMenu.png!
+
+This action will convert the existing old Viewpoint Modeling Project to the new Sirius Modeling Project nature and reordered all the existing representations according to the new viewpoints definition available in UML Designer 4.0.
+!{{ page.relativePath }}/images/MigratedProject.png!

@@ -4,13 +4,16 @@
   <extensionContent id="org.eclipse.jdt" name="UML Designer" alt-style="css/umldesigner.properties" style="css/umldesigner.css" path="overview/@">
     <group id="jdt" style-id="content-group">
     	<group label="UML Designer" style-id="content-group">
+    		<link style-id="content-link" label="Visit UML Designer web site!" url="http://obeonetwork.github.io/UML-Designer" id="umldesigner">
+    			<text>Find last news, documentation and support!</text>
+    		</link>
     		<link style-id="content-link" label="Getting started" url="http://org.eclipse.ui.intro/showPage?id=tutorials" id="umldesigner">
     			<text>Learn how to use UML Designer by completing the tutorials.</text>
     		</link>
-    		<link style-id="content-link" label="Find Help" url="http://org.eclipse.ui.intro/showHelpTopic?id=/org.obeonetwork.dsl.uml2.design.doc/doc/UML%20Designer%20User%20Guide.html" id="umldesigner">
-    			<text>See the guide to discover UML Designer features.</text>
+    		<link style-id="content-link" label="Find Help" url="http://org.eclipse.ui.intro/showHelpTopic?id=/org.obeonetwork.dsl.uml2.design.doc/html/support/index.html" id="umldesigner">
+    			<text>Discover community and professional support.</text>
     		</link>
-    		<link style-id="content-link" label="Get Involved" url="http://www.obeonetwork.com/group/uml-designer" id="umldesigner">
+    		<link style-id="content-link" label="Get Involved" url="http://org.eclipse.ui.intro/showHelpTopic?id=/org.obeonetwork.dsl.uml2.design.doc/html/developer-guide/contribute.html" id="umldesigner">
     			<text>The best ways to contribute are by finding, reporting bugs and helping us to improve the documentation.</text>
     		</link>
     		<link style-id="content-link" label="Fill in our survey!" url="http://bit.ly/UMLDesignerSurvey" id="umldesigner">
@@ -48,7 +51,7 @@
     <!-- Extension to the SDK What's New Page. -->
   <extensionContent id="org.eclipse.jdt" name="UML Designer" alt-style="css/umldesigner.properties" style="css/umldesigner.css" path="whatsnew/@">
     <group id="jdt" style-id="content-group">
-       <link label="UML Designer" url="http://marketplace.obeonetwork.com/module/uml#release-notes" id="umldesigner" style-id="content-link">
+       <link label="UML Designer" url="http://obeonetwork.github.io/UML-Designer/download/index.html" id="umldesigner" style-id="content-link">
           <text>Discover the latest features available in this release of UML Designer. (Internet connection required).</text>
        </link>
     </group>

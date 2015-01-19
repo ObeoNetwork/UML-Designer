@@ -23,7 +23,7 @@ Contributors:
         point="org.eclipse.ui.newWizards">
      <wizard
            category="org.obeonetwork.dsl.uml2.design.category"
-           class="org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel.UmlModelWizard"
+           class="org.obeonetwork.dsl.uml2.design.internal.wizards.newmodel.UmlModelWizard"
            finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
            icon="icons/NewUmlModel.gif"
            id="org.obeonetwork.dsl.uml2.wizard.newUmlModel"
@@ -37,7 +37,7 @@ Contributors:
      </category>
      <wizard
            category="org.obeonetwork.dsl.uml2.design.category"
-           class="org.obeonetwork.dsl.uml2.design.ui.wizards.newmodel.UMLProjectWizard"
+           class="org.obeonetwork.dsl.uml2.design.internal.wizards.newproject.UMLProjectWizard"
            finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
            icon="icons/NewUmlModel.gif"
            id="org.obeonetwork.dsl.uml2.design.wizard1"
@@ -45,11 +45,40 @@ Contributors:
            preferredPerspectives="org.eclipse.sirius.ui.tools.perspective.modeling"
            project="true">
      </wizard>
+     <category
+            id="org.obeonetwork.dsl.uml.examples.category"
+            name="UML Designer"
+            parentCategory="org.eclipse.ui.Examples">
+        </category>
+        <wizard
+              category="org.eclipse.ui.Examples/org.obeonetwork.dsl.uml.examples.category"
+              class="org.obeonetwork.dsl.uml2.design.internal.wizards.example.UmlExampleWizard"
+              finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
+              icon="icons/NewUmlModel.gif"
+              id="org.obeonetwork.dsl.uml2.design.doc.TravelAgencyWizard"
+              name="Travel Agency UML"
+              preferredPerspectives="org.eclipse.sirius.ui.tools.perspective.modeling"
+              project="true">
+            <description>An UML model for a travel agency business leveraging class, components, use case, activity and states diagrams.</description>
+        </wizard>
+        <wizard
+              category="org.eclipse.ui.Examples/org.obeonetwork.dsl.uml.examples.category"
+              class="org.obeonetwork.dsl.uml2.design.internal.wizards.example.UmlExampleWizard"
+              finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
+              icon="icons/NewUmlModel.gif"
+              id="org.obeonetwork.dsl.uml2.design.doc.UMLInColorsWizard"
+              name="UML in colors"
+              preferredPerspectives="org.eclipse.sirius.ui.tools.perspective.modeling"
+              project="true">
+           <description>
+              An UML model for a UML in colors class diagrams.
+           </description>
+        </wizard>
   </extension>
-  
+
   
 	   <extension point="org.eclipse.gmf.runtime.diagram.ui.editpartProviders">
-	      <editpartProvider class="org.obeonetwork.dsl.uml2.design.ui.extension.editpart.UMLEditPartProvider">
+	      <editpartProvider class="org.obeonetwork.dsl.uml2.design.internal.editpart.UMLEditPartProvider">
 	         <Priority name="High"/>
 	      </editpartProvider>
 	   </extension>
@@ -82,12 +111,35 @@ Contributors:
               id="org.eclipse.sirius.ui.navigator.actions.uml.create.statemachine"
               name="Create State Machine Diagram">
         </command>
+        <command
+              id="org.obeonetwork.dsl.uml2.actions.openDashboard"
+              name="Open Dashboard">
+           <commandParameter
+                 id="org.obeonetwork.dsl.uml2.actions.openDashboard.param.model"
+                 name="model"
+                 optional="true"
+                 typeId="org.obeonetwork.dsl.uml2.actions.openDashboard.param.modelType">
+           </commandParameter>
+        </command>
+        <command
+              id="org.obeonetwork.dsl.uml2.actions.newUmlProject"
+              name="New UML Project">
+        </command>
+        <command
+              id="org.obeonetwork.dsl.uml2.actions.newUmlModel"
+              name="New UML Model">
+        </command>
+        <commandParameterType
+              converter="org.obeonetwork.dsl.uml2.design.internal.commands.UmlElementConverter"
+              id="org.obeonetwork.dsl.uml2.actions.openDashboard.param.modelType"
+              type="org.eclipse.uml2.uml.Model">
+        </commandParameterType>
    </extension>
   
    <extension
          point="org.eclipse.ui.handlers">
         <handler
-              class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.DeleteUMLElement"
+              class="org.obeonetwork.dsl.uml2.design.internal.commands.DeleteUMLElement"
               commandId="org.eclipse.sirius.ui.navigator.actions.uml.delete">
            <enabledWhen>
             <with variable="selection">
@@ -100,7 +152,7 @@ Contributors:
            </enabledWhen>
         </handler>
          <handler
-              class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.CreateScenario"
+              class="org.obeonetwork.dsl.uml2.design.internal.commands.CreateScenario"
               commandId="org.eclipse.sirius.ui.navigator.actions.uml.scenario.create">
            <enabledWhen>
             <with variable="selection">
@@ -112,14 +164,14 @@ Contributors:
                   </instanceof>
 		          <test
                      forcePluginActivation="true"
-                     property="org.obeonetwork.dsl.uml2.design.Behavioral">
+                     property="org.obeonetwork.dsl.uml2.design.Design">
                   </test>
                </iterate>		           
        		</with>
            </enabledWhen>
         </handler>
          <handler
-               class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.CreateSequenceDiagram"
+               class="org.obeonetwork.dsl.uml2.design.internal.commands.CreateSequenceDiagram"
                commandId="org.eclipse.sirius.ui.navigator.actions.uml.create.sequence">
             <enabledWhen>
                <with
@@ -132,14 +184,14 @@ Contributors:
                      </instanceof>
                      <test
                            forcePluginActivation="true"
-                           property="org.obeonetwork.dsl.uml2.design.Behavioral">
+                           property="org.obeonetwork.dsl.uml2.design.Design">
                      </test>
                   </iterate>
                </with>
             </enabledWhen>
          </handler>
          <handler
-               class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.CreateActivityDiagram"
+               class="org.obeonetwork.dsl.uml2.design.internal.commands.CreateActivityDiagram"
                commandId="org.eclipse.sirius.ui.navigator.actions.uml.create.activity">
             <enabledWhen>
                <with
@@ -152,14 +204,14 @@ Contributors:
                      </instanceof>
                      <test
                            forcePluginActivation="true"
-                           property="org.obeonetwork.dsl.uml2.design.Behavioral">
+                           property="org.obeonetwork.dsl.uml2.design.Design">
                      </test>
                   </iterate>
                </with>
             </enabledWhen>
          </handler>
          <handler
-               class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.CreateProfileDiagram"
+               class="org.obeonetwork.dsl.uml2.design.internal.commands.CreateProfileDiagram"
                commandId="org.eclipse.sirius.ui.navigator.actions.uml.create.profile">
             <enabledWhen>
                <with
@@ -169,7 +221,7 @@ Contributors:
                         operator="and">
                      <test
                            forcePluginActivation="true"
-                           property="org.obeonetwork.dsl.uml2.design.Profile">
+                           property="org.obeonetwork.dsl.uml2.design.Extend">
                      </test>
                      <instanceof
                            value="org.eclipse.uml2.uml.Package">
@@ -184,7 +236,7 @@ Contributors:
             </enabledWhen>
          </handler>
          <handler
-               class="org.obeonetwork.dsl.uml2.design.ui.extension.commands.CreateStateMachineDiagram"
+               class="org.obeonetwork.dsl.uml2.design.internal.commands.CreateStateMachineDiagram"
                commandId="org.eclipse.sirius.ui.navigator.actions.uml.create.statemachine">
             <enabledWhen>
                <with
@@ -197,11 +249,28 @@ Contributors:
                      </instanceof>
                      <test
                            forcePluginActivation="true"
-                           property="org.obeonetwork.dsl.uml2.design.Behavioral">
+                           property="org.obeonetwork.dsl.uml2.design.Design">
                      </test>
                   </iterate>
                </with>
             </enabledWhen>
+         </handler>
+         <handler
+               class="org.obeonetwork.dsl.uml2.design.internal.commands.OpenDashboard"
+               commandId="org.obeonetwork.dsl.uml2.actions.openDashboard">
+            <enabledWhen>
+               <reference
+                     definitionId="org.obeonetwork.dsl.uml2.design.DashboardsExistDefinition">
+               </reference>
+            </enabledWhen>
+         </handler>
+         <handler
+               class="org.obeonetwork.dsl.uml2.design.internal.commands.NewUmlProject"
+               commandId="org.obeonetwork.dsl.uml2.actions.newUmlProject">
+         </handler>
+         <handler
+               class="org.obeonetwork.dsl.uml2.design.internal.commands.NewUmlModel"
+               commandId="org.obeonetwork.dsl.uml2.actions.newUmlModel">
          </handler>
    </extension>
   
@@ -263,15 +332,93 @@ Contributors:
             </visibleWhen>
          </command>
       </menuContribution>
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="org.obeonetwork.dsl.uml2.toolbar.newUmlProject"
+               label="New UML Project">
+            <command
+                  commandId="org.obeonetwork.dsl.uml2.actions.newUmlProject"
+                  icon="icons/NewUmlProject.gif"
+                  label="New UML Project"
+                  style="push"
+                  tooltip="Create a new UML Project">
+               <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="activeWorkbenchWindow.activePerspective">
+                     <equals
+                           value="org.eclipse.sirius.ui.tools.perspective.modeling">
+                     </equals>
+                  </with>
+               </visibleWhen>
+            </command>
+         </toolbar>
+         <toolbar
+               id="org.obeonetwork.dsl.uml2.toolbar.newUmlModel"
+               label="New UML Model">
+            <command
+                  commandId="org.obeonetwork.dsl.uml2.actions.newUmlModel"
+                  icon="icons/NewUmlModel.gif"
+                  label="New UML Model"
+                  style="push"
+                  tooltip="Create a new UML Model">
+               <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="activeWorkbenchWindow.activePerspective">
+                     <equals
+                           value="org.eclipse.sirius.ui.tools.perspective.modeling">
+                     </equals>
+                  </with>
+               </visibleWhen>
+            </command>
+         </toolbar>
+         <toolbar
+               id="org.obeonetwork.dsl.uml2.toolbar.openDashboard"
+               label="Dashboard">
+            <command
+                  commandId="org.obeonetwork.dsl.uml2.actions.openDashboard"
+                  icon="icons/Dashboard.gif"
+                  label="Dashboard"
+                  style="pulldown"
+                  tooltip="Open UML Designer Dashboard">
+               <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="activeWorkbenchWindow.activePerspective">
+                     <equals
+                           value="org.eclipse.sirius.ui.tools.perspective.modeling">
+                     </equals>
+                  </with>
+               </visibleWhen>
+            </command>
+         </toolbar>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:org.obeonetwork.dsl.uml2.actions.openDashboard">
+         <dynamic
+               class="org.obeonetwork.dsl.uml2.design.internal.commands.DashboardContributionItems"
+               id="org.obeonetwork.dsl.uml2.design.dynamicDashboard">
+         </dynamic>
+      </menuContribution>
    </extension>
     <extension
           point="org.eclipse.core.expressions.propertyTesters">
        <propertyTester
-             class="org.obeonetwork.dsl.uml2.design.ui.extension.ViewpointEnablementPropertyTester"
+             class="org.obeonetwork.dsl.uml2.design.internal.testers.ViewpointEnablementPropertyTester"
              id="org.obeonetwork.dsl.uml2.design.ViewpointEnabled"
              namespace="org.obeonetwork.dsl.uml2.design"
-             properties="Behavioral,Structural,Profile"
+             properties="Capture,Design,Review,Extend"
              type="org.eclipse.uml2.uml.Element">
+       </propertyTester>
+       <propertyTester
+             class="org.obeonetwork.dsl.uml2.design.internal.testers.DashboardPropertyTester"
+             id="org.obeonetwork.dsl.uml2.design.DashboardsExist"
+             namespace="org.obeonetwork.dsl.uml2.design"
+             properties="dashboardsExist"
+             type="java.lang.Object">
        </propertyTester>
     </extension>
     <extension
@@ -297,5 +444,86 @@ Contributors:
             right="/org.obeonetwork.dsl.uml2.design/images/required-right.svg"
             top="/org.obeonetwork.dsl.uml2.design/images/required-top.svg">
       </image>
-   </extension>     
+   </extension>
+   <extension point="org.eclipse.ui.popupMenus" id="init-diagram-action">
+      <?gmfgen generated="true"?>
+      <objectContribution
+            id="org.obeonetwork.dsl.uml2.design.action.InitDiagramOnUml"
+            nameFilter="*.uml"
+            objectClass="org.eclipse.core.resources.IFile">
+         <action
+               label="%initDiagramActionLabel"
+               class="org.obeonetwork.dsl.uml2.design.internal.actions.UmlInitDiagramFileAction"
+               menubarPath="additions"
+               enablesFor="1"
+               id="org.obeonetwork.dsl.uml2.diagram.InitDiagramAction">
+         </action>
+      </objectContribution>
+      <objectContribution
+            id="org.obeonetwork.dsl.uml2.design.action.InitDiagramOnAird"
+            nameFilter="*.aird"
+            objectClass="org.eclipse.core.resources.IFile">
+         <action
+               class="org.obeonetwork.dsl.uml2.design.internal.actions.UmlInitDiagramFileAction"
+               enablesFor="1"
+               id="org.obeonetwork.dsl.uml2.diagram.InitDiagramAction"
+               label="%initDiagramActionLabel"
+               menubarPath="additions">
+         </action>
+      </objectContribution>
+   </extension>
+   <extension
+         point="org.eclipse.core.expressions.definitions">
+      <definition
+            id="org.obeonetwork.dsl.uml2.design.DashboardsExistDefinition">
+         <test
+               forcePluginActivation="true"
+               property="org.obeonetwork.dsl.uml2.design.dashboardsExist">
+         </test>
+      </definition>
+   </extension>
+   <extension
+        point="org.eclipse.emf.validation.constraintProviders">
+     <category
+           id="org.obeonetwork.dsl.uml2.profile.design.constraint.stereotype.extension"
+           name="Stereotype extension constraint">
+     </category>
+     <constraintProvider
+           cache="true">
+        <package
+              namespaceUri="http://www.eclipse.org/uml2/5.0.0/UML">
+        </package>
+        <constraints
+              categories="http://www.eclipse.org/uml2/5.0.0/UML/Stereotype">
+           <constraint
+                 class="org.obeonetwork.dsl.uml2.design.internal.constraints.CheckStereotypeExtension"
+                 id="org.obeonetwork.dsl.uml2.profile.design.stereotype.constraint1"
+                 isEnabledByDefault="true"
+                 lang="Java"
+                 mode="Batch"
+                 name="No extension for the Stereotype"
+                 severity="WARNING"
+                 statusCode="1">
+              <message>
+                 The stereotype {0} must extend a meta class or another stereotype
+              </message>
+              <description>
+                 All Stereotypes, should extend a meta class or another stereotype
+              </description>
+              <target
+                    class="Stereotype">
+              </target>
+           </constraint>
+        </constraints>
+     </constraintProvider>
+  </extension>
+   <extension
+         point="org.eclipse.sirius.sessionManagerListener">
+      <listener
+            class="org.obeonetwork.dsl.uml2.design.internal.listeners.UmlDesignerSessionManagerListener">
+      </listener>
+      <listener
+            class="org.obeonetwork.dsl.uml2.design.internal.listeners.OpenHelpContextListener">
+      </listener>
+   </extension>
 </plugin>

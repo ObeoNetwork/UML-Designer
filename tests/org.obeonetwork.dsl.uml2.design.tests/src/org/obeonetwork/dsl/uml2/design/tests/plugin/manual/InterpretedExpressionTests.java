@@ -45,9 +45,10 @@ public class InterpretedExpressionTests {
 	public static Collection<Object[]> data() {
 		List<Object[]> parameters = Lists.newArrayList();
 		SortedMultiset<String> allExpressions = TreeMultiset.create();
-		collectExpressionFromUmlDesignerViewpoints(parameters, allExpressions, "UML Structural Modeling");
-		collectExpressionFromUmlDesignerViewpoints(parameters, allExpressions, "UML Behavioral Modeling");
-		collectExpressionFromUmlDesignerViewpoints(parameters, allExpressions, "UML Extensions");
+		collectExpressionFromUmlDesignerViewpoints(parameters, allExpressions, "Capture");
+		collectExpressionFromUmlDesignerViewpoints(parameters, allExpressions, "Design");
+		collectExpressionFromUmlDesignerViewpoints(parameters, allExpressions, "Review");
+		collectExpressionFromUmlDesignerViewpoints(parameters, allExpressions, "Extend");
 		for (String expr : allExpressions.elementSet()) {
 			System.out.println(allExpressions.count(expr) + " : " + expr);
 		}

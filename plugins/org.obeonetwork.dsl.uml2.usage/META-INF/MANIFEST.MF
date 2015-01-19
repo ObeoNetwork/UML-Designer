@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: UML Designer Usage Stats collector
 Bundle-SymbolicName: org.obeonetwork.dsl.uml2.usage;singleton:=true
-Bundle-Version: 4.0.0.qualifier
+Bundle-Version: 5.0.0.qualifier
 Bundle-Activator: org.obeonetwork.dsl.uml2.usage.UsageActivator
 Bundle-Vendor: Obeo Network
 Require-Bundle: org.eclipse.core.runtime,

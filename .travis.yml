@@ -1,16 +1,15 @@
-language: java
+language: ruby
 env:
   global:
-    secure: "kDF+4UokupJ8N+5fRTygdDbQEm1R7aSEReJS2FLIwDb7kp0jZBJZRAtw8Zfs3aPPBV+vItsLcDi5Qbq6iV5yyKoHuQZDdY9ntOS7WUa2XyPwJQ3/ZcX3lif+bP4GeI7pcYGaBwgKlpgXVBslACShpaSfuqYPfpZ6QXyarvGB5KE="
-install: echo "Install phase"
+    secure: "KpzAMqnf5+K5PNmZbcoiaSjWS//sVkPlbjrpb662rrkQcZHslqnAVmy2h+OsSaA6pefhRpzrSmys9vu7Ou4ZPNOBgxlmePOUl+MfEXOe+9EO3G6GLooyvzzk/9rsOYuHMiM6hrJZsPWF2NyIibElqE/l6YKuTUH9XOWnVbGZ+oY="
 before_script:
-- cd plugins/org.obeonetwork.dsl.uml2.design.doc
-- npm install -g bower
-- bower install
-- cd ../../
-script: mvn clean verify
+- gem install jekyll --version '= 1.5.1'
+- gem install RedCloth
+script:
+- cd documentation
+- jekyll build
 after_script:
 - ls
+- cd ../
 - chmod a+x travis-promote.sh
 - ./travis-promote.sh
-jdk: oraclejdk7

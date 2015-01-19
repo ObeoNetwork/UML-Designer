@@ -34,6 +34,7 @@ import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 
+import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
 
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
@@ -53,12 +54,15 @@ import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
 
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
 import org.eclipse.uml2.types.TypesPackage;
 
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.VisibilityKind;
 
 import org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart;
@@ -77,6 +81,16 @@ public class PropertyPropertiesEditionComponent extends SinglePartPropertiesEdit
 	
 	public static String GENERAL_PART = "General"; //$NON-NLS-1$
 
+	
+	/**
+	 * Settings for defaultValue LinkEReferenceViewer
+	 */
+	private EObjectFlatComboSettings defaultValueSettings;
+	
+	/**
+	 * Creation Settings for defaultValue LinkEReferenceViewer
+	 */
+	private ReferencesTableSettings defaultValueCreateSettings;
 	
 	/**
 	 * Settings for type EObjectFlatComboViewer
@@ -141,9 +155,13 @@ public class PropertyPropertiesEditionComponent extends SinglePartPropertiesEdit
 				generalPart.setUpperValue(EEFConverterUtil.convertToString(TypesPackage.Literals.UNLIMITED_NATURAL, property.getUpper()));
 			}
 			
-			if (isAccessible(UmlViewsRepository.General.defaultValue))
-				generalPart.setDefaultValue(EEFConverterUtil.convertToString(TypesPackage.Literals.STRING, property.getDefault()));
-			
+			if (isAccessible(UmlViewsRepository.General.defaultValue)) {
+				// init part
+				defaultValueSettings = new EObjectFlatComboSettings(property, UMLPackage.eINSTANCE.getProperty_DefaultValue());
+				generalPart.initDefaultValue(defaultValueSettings);
+				// set the button mode
+				generalPart.setDefaultValueButtonMode(ButtonsModeEnum.CREATE);
+			}
 			if (isAccessible(UmlViewsRepository.General.type)) {
 				// init part
 				typeSettings = new EObjectFlatComboSettings(property, UMLPackage.eINSTANCE.getTypedElement_Type());
@@ -232,7 +250,7 @@ public class PropertyPropertiesEditionComponent extends SinglePartPropertiesEdit
 			return UMLPackage.eINSTANCE.getMultiplicityElement_Upper();
 		}
 		if (editorKey == UmlViewsRepository.General.defaultValue) {
-			return UMLPackage.eINSTANCE.getProperty_Default();
+			return UMLPackage.eINSTANCE.getProperty_DefaultValue();
 		}
 		if (editorKey == UmlViewsRepository.General.type) {
 			return UMLPackage.eINSTANCE.getTypedElement_Type();
@@ -278,7 +296,27 @@ public class PropertyPropertiesEditionComponent extends SinglePartPropertiesEdit
 			property.setUpper((EEFConverterUtil.createIntFromString(TypesPackage.Literals.UNLIMITED_NATURAL, (String)event.getNewValue())));
 		}
 		if (UmlViewsRepository.General.defaultValue == event.getAffectedEditor()) {
-			property.setDefault((java.lang.String)EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String)event.getNewValue()));
+			if (event.getKind() == PropertiesEditionEvent.SET) {
+				defaultValueSettings.setToReference((ValueSpecification)event.getNewValue());
+			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+					if (editionPolicy != null) {
+						editionPolicy.execute();
+					}
+				}
+			} else if (event.getKind() == PropertiesEditionEvent.ADD) {
+				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, defaultValueSettings, editingContext.getAdapterFactory());
+				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+				if (provider != null) {
+					PropertiesEditingPolicy policy = provider.getPolicy(context);
+					if (policy instanceof CreateEditingPolicy) {
+						policy.execute();
+					}
+				}
+			}
 		}
 		if (UmlViewsRepository.General.type == event.getAffectedEditor()) {
 			if (event.getKind() == PropertiesEditionEvent.SET) {
@@ -352,13 +390,8 @@ public class PropertyPropertiesEditionComponent extends SinglePartPropertiesEdit
 					generalPart.setUpperValue("");
 				}
 			}
-			if (UMLPackage.eINSTANCE.getProperty_Default().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.defaultValue)) {
-				if (msg.getNewValue() != null) {
-					generalPart.setDefaultValue(EcoreUtil.convertToString(TypesPackage.Literals.STRING, msg.getNewValue()));
-				} else {
-					generalPart.setDefaultValue("");
-				}
-			}
+			if (UMLPackage.eINSTANCE.getProperty_DefaultValue().equals(msg.getFeature()) && generalPart != null && isAccessible(UmlViewsRepository.General.defaultValue))
+				generalPart.setDefaultValue((EObject)msg.getNewValue());
 			if (UMLPackage.eINSTANCE.getTypedElement_Type().equals(msg.getFeature()) && generalPart != null && isAccessible(UmlViewsRepository.General.type))
 				generalPart.setType((EObject)msg.getNewValue());
 			
@@ -385,7 +418,7 @@ public class PropertyPropertiesEditionComponent extends SinglePartPropertiesEdit
 			UMLPackage.eINSTANCE.getProperty_Aggregation(),
 			UMLPackage.eINSTANCE.getMultiplicityElement_Lower(),
 			UMLPackage.eINSTANCE.getMultiplicityElement_Upper(),
-			UMLPackage.eINSTANCE.getProperty_Default(),
+			UMLPackage.eINSTANCE.getProperty_DefaultValue(),
 			UMLPackage.eINSTANCE.getTypedElement_Type()		);
 		return new NotificationFilter[] {filter,};
 	}
@@ -406,18 +439,6 @@ public class PropertyPropertiesEditionComponent extends SinglePartPropertiesEdit
 	 */
 	public boolean isRequired(Object key, int kind) {
 		return key == UmlViewsRepository.General.Qualifiers.static_ || key == UmlViewsRepository.General.Qualifiers.leaf || key == UmlViewsRepository.General.Qualifiers.ordered || key == UmlViewsRepository.General.Qualifiers.unique || key == UmlViewsRepository.General.Qualifiers.readOnly || key == UmlViewsRepository.General.Qualifiers.derived || key == UmlViewsRepository.General.Qualifiers.derivedUnion || key == UmlViewsRepository.General.aggregation || key == UmlViewsRepository.General.upperValue;
-	}
-
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getHelpContent(java.lang.Object, int)
-	 * @generated
-	 */
-	public String getHelpContent(Object key, int kind) {
-		if (key == UmlViewsRepository.General.defaultValue)
-			return "invalid"; //$NON-NLS-1$
-		return super.getHelpContent(key, kind);
 	}
 
 	/**
@@ -513,13 +534,6 @@ public class PropertyPropertiesEditionComponent extends SinglePartPropertiesEdit
 						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getMultiplicityElement_Upper().getEAttributeType(), (String)newValue);
 					}
 					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getMultiplicityElement_Upper().getEAttributeType(), newValue);
-				}
-				if (UmlViewsRepository.General.defaultValue == event.getAffectedEditor()) {
-					Object newValue = event.getNewValue();
-					if (newValue instanceof String) {
-						newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getProperty_Default().getEAttributeType(), (String)newValue);
-					}
-					ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getProperty_Default().getEAttributeType(), newValue);
 				}
 			} catch (IllegalArgumentException iae) {
 				ret = BasicDiagnostic.toDiagnostic(iae);

@@ -1,0 +1,150 @@
+---
+layout: article
+title: Documentation
+subtitle: developer guide
+relativePath: ..
+---
+
+The UML Designer's *web site* is hosted on Github: 
+"http://obeonetwork.github.io/UML-Designer/":http://obeonetwork.github.io/UML-Designer/
+
+The documentation *source* code is available on :
+"https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation":https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation
+
+The documentation *build* is on Travis :
+"https://travis-ci.org/ObeoNetwork/UML-Designer/":https://travis-ci.org/ObeoNetwork/UML-Designer/
+
+h1. Environment
+
+The documentation is built with "Jekyll":http://jekyllrb.com/.
+
+All the documentation is written with the "textile":http://en.wikipedia.org/wiki/Textile_(markup_language) syntax, in order that it is really easy to contribute.
+
+h1. Structure of the documentation
+
+In a Jekyll-powered website, there are two basic kinds of resources, pages and posts. Both of those resources can be made visible on the navigation bar by modifying the file in "_data/pages.yml":https://github.com/ObeoNetwork/UML-Designer/blob/master/documentation/_data/pages.yml. If you want to create a top level link, add a "page" with the path of its "file" (without the extension). If you want to add a top level menu with submenus, add a "category" and child "pages" with their "title" and "file". Then you just have to create your file in textile.
+
+{% highlight YAML %}
+- title: Overview
+  file: overview
+
+- title: Download
+  file: download
+
+- category: Tutorials
+  pages:
+  - title: Getting started
+    file: tutorials/tuto-getting-started
+  - title: Create project
+    file: tutorials/tuto-create-project
+...
+{% endhighlight %}
+
+@- title: xxx@ and  @- category: xxx@ generate a menu in the main web site navbar.
+
+To create a menu which reference an anchor in an existing page use the syntax :
+{% highlight YAML %}
+- category: MyCategory
+  pages:
+  - title: MyTitle
+    file: path/filename
+    anchor: MyAnchor
+{% endhighlight %}
+
+Have a look the section below to see how to define an anchor in a page.
+
+h2. Page
+
+When you create a page, you don't need to create the whole file manually, you can just reuse existing components automatically. For example, in order to create a very basic page, 
+* Modify the file pages.yml to add the following content: @- title: New Page file: newpage@
+* Use the following piece of code in a file named newpage.textile at the root of the documentation project:
+{% highlight YAML %}
+---
+layout: page
+title: New Page
+subtitle:  New Sub Title
+relativePath: ..
+---
+Hello World in textile
+{% endhighlight %}
+
+This allows to set the different variables. 
+All the pages reused the same includes : "https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation/_includes":https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation/_includes
+
+The rest of the page, defines the main content. 
+
+This textile page will be converted automatically in html. By indicating that you want to reuse the page layout, you will also have a header, a footer, the navigation bar etc. You only have to worry about your content.
+
+To edit the page content use the "textile":http://en.wikipedia.org/wiki/Textile_(markup_language) syntax. 
+
+Use the following syntax to :
+* Define an anchor in the page named _MyPage_ and defined in the folder _path_ : @h1(#MyAnchor). My title@
+* Reference an anchor : @{{ page.relativePath }}/path/MyPage.html#MyAnchor@
+
+h2. Layouts
+
+The available layouts are defined in the "_layouts":https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation/_layouts folder.
+
+There are several layout already available for the documentation. Those layouts may contain variables used to display some content in the page.
+* _page_, a basic page with the navigation bar, header, footer.
+** title: the title of the page
+* article, a full width article with its breadcrumb (it extends the page layout)
+** subtitle: subtitle
+* _article-with-image_, an article with an image (it extends the page layout)
+** image: A large image (750x500 px) illustrating the article
+** description: Description of the image
+* _article-with-sidebar_, used for tutorials (it extends the page layout)
+** category: the name of the category of elements from the navigation bar to display in the sidebar
+* _blog-post_, used for blog posts (it extends the page layout)
+** author: The author of the post
+** date: The date of the post, using the following format: YYYY-MM-DD HH:MM:SS
+** image (optional): A wide image (900x300 pixel) illustrating the post
+** excerpt (optional): A paragraph describing the article. It will be used in the page listing all the posts instead of the whole content of the post.
+** lead (optional): An introduction paragraph which will be highlighted at the top of the post.
+
+h1. Build the documentation
+
+h2. Locally
+
+To test and generate the documentation locally, go to the folder containing the documentation content @UML-Designer/documentation@ in the git repository.
+Then launch :
+
+@jekyll build@ 
+
+and the Jekyll server to see the result of your contribution
+
+@jekyll serve@
+
+The documentation will be available at @localhost:4000/index.html@. Use a web browser and go to this URL to browse the documentation. If you want to iterate and try new changes, modify the documentation then stop the @jekyll serve@ by using @Ctrl+C@ and relaunch it using @jekyll serve@.
+
+h2. Continuous integration
+
+To build the documentation, commit and push the changes on the ObeoNetwork/UML-Designer @master@ branch.
+The "Travis build":https://travis-ci.org/ObeoNetwork/UML-Designer/ is launched, it generates the documentation and updates the gh-pages. Consequently, the web site is updated automatically.
+The "Hudson build":https://build.obeonetwork.com/hudson/job/UML--master/ is in charge of the integration of the web site inside the Eclipse Help Content.
+
+The different steps done by the builds are explained below.
+
+h3. Build the web-site
+
+The Travis build : 
+* Go to @UML-Designer/documentation@ folder in your local repo.
+* And launch : @jekyll build@
+This operation will generate a new @_site@ folder containing all the @.html@ files generated from the textile files.
+* To update the online web-site, just copy/paste the content of the _site folder to the gh-pages branch on the repo. Commit and push the new version of the web-site.
+
+The new web site will be available immediately on : "http://obeonetwork.github.io/UML-Designer/":http://obeonetwork.github.io/UML-Designer/
+
+h3. Integrate the documentation to Eclipse
+
+The web site is integrated inside Eclipse as embedded documentation for UML Designer. This is done by the "Hudson build":https://build.obeonetwork.com/hudson/job/UML--master/ which takes the gh-pages content and integrates it into the Eclipse Help Content. The content of the @gh-pages@ is just copied to @UML-Designer/plugins/org.obeonetwork.dsl.uml2.design.doc/html@.
+
+Pay attention when you update the documentation structure to update also the Eclipse toc. We defined an Eclipse specific "toc.xml":https://github.com/ObeoNetwork/UML-Designer/blob/master/documentation/toc.xml file which is used to integrate the web site content into the Eclipse Help Content table of content.
+
+When a change is done in the documentation, the Travis build runs after the commit of the change. If you want to see this documentation update also in the Eclipse documentation, the Hudson build must be run manually after the end of the Travis build.
+
+To test the Eclipse documentation integration locally : 
+* go to  @UML-Modeling/plugins/org.obeonetwork.dsl.uml2.design.doc@
+* launch @bower install@
+
+This action uses the bower.json and .bowerrc files defined in the org.obeonetwork.dsl.uml2.design.doc to retrieve the documentation content from the online gh-pages to the local html folder.
