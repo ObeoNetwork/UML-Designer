@@ -171,13 +171,15 @@
     
    <extension point="org.eclipse.core.runtime.products" id="product">
     <product name="UML Designer" application="org.eclipse.ui.ide.workbench">
-      <property name="windowImages" value="icons/logo_16.gif,icons/logo_32.gif,icons/logo_64.gif"/>
+      <property name="windowImages" value="icons/logo_16.png,icons/logo_32.png,icons/logo_48.png,icons/logo_64.png,icons/logo_128.png"/>
       <property name="appName" value="UML Designer"/>
       <property name="aboutImage" value="icons/about.gif"/>
-      <property name="aboutText" value="UML Designer &#x0A;&#x0A;Version  5.0.0&#x0A;&#x0A;&#x0A;(c) Copyright (c) 2005-2014 Obeo. All Rights Reserved.&#x0A;Visit http://www.obeo.fr"/>
+      <property
+            name="aboutText"
+            value="UML Designer&#x0A;&#x0A;Version  5.0.0&#x0A;&#x0A;&#x0A;Copyright (c) 2005-2014 Obeo. All Rights Reserved.&#x0A;&#x0A;Visit http://www.obeo.fr"/>
       <property name="startupForegroundColor" value="000000"/>
-      <property name="startupMessageRect" value="3,300,495,15"/>
-      <property name="startupProgressRect" value="3,315,495,15"/>
+      <property name="startupMessageRect" value="7,308,458,18"/>
+      <property name="startupProgressRect" value="0,328,458,18"/>
       <property name="preferenceCustomization" value="plugin_customization.ini"/>
       <property
             name="cssTheme"

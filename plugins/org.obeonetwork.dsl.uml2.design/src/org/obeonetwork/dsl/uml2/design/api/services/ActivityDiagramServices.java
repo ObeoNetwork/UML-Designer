@@ -527,7 +527,7 @@ public class ActivityDiagramServices extends AbstractDiagramServices {
 							|| !(param.getLowerValue() == null && pin.getLowerValue() == null || param
 							.getLowerValue().stringValue().equals(pin.getLowerValue().stringValue()))) {
 						final Object[] params = new Object[] {callAction.getQualifiedName(), pinName,
-						"lower value"}; //$NON-NLS-1$
+								"lower value"}; //$NON-NLS-1$
 						message = NLS.bind(Messages.UmlValidationErrorOnCallOperationActionPin, params);
 					} else if (param.getUpperValue() == null
 							&& pin.getUpperValue() != null
@@ -536,7 +536,7 @@ public class ActivityDiagramServices extends AbstractDiagramServices {
 							|| !(param.getUpperValue() == null && pin.getUpperValue() == null || param
 							.getUpperValue().stringValue().equals(pin.getUpperValue().stringValue()))) {
 						final Object[] params = new Object[] {callAction.getQualifiedName(), pinName,
-						"upper value"}; //$NON-NLS-1$
+								"upper value"}; //$NON-NLS-1$
 						message = NLS.bind(Messages.UmlValidationErrorOnCallOperationActionPin, params);
 					}
 				}
@@ -572,7 +572,14 @@ public class ActivityDiagramServices extends AbstractDiagramServices {
 	 * @return Input parameters
 	 */
 	public List<Parameter> getInputParameters(Operation operation) {
-		return operation.inputParameters();
+		final List<Parameter> inputParams = Lists.newArrayList();
+		for (final Parameter param : operation.getOwnedParameters()) {
+			if (ParameterDirectionKind.IN_LITERAL.equals(param.getDirection())
+					|| ParameterDirectionKind.INOUT_LITERAL.equals(param.getDirection())) {
+				inputParams.add(param);
+			}
+		}
+		return inputParams;
 	}
 
 	/**
@@ -616,7 +623,14 @@ public class ActivityDiagramServices extends AbstractDiagramServices {
 	 * @return Output parameters
 	 */
 	public List<Parameter> getOutputParameters(Operation operation) {
-		return operation.outputParameters();
+		final List<Parameter> outputParams = Lists.newArrayList();
+		for (final Parameter param : operation.getOwnedParameters()) {
+			if (ParameterDirectionKind.OUT_LITERAL.equals(param.getDirection())
+					|| ParameterDirectionKind.INOUT_LITERAL.equals(param.getDirection())) {
+				outputParams.add(param);
+			}
+		}
+		return outputParams;
 	}
 
 	/**

@@ -10,32 +10,23 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.internal.services;
 
-import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.ui.PlatformUI;
 import org.eclipse.uml2.uml.editor.presentation.UMLActionBarContributor;
+import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
 
 /**
  * Used to invoke UML validator from UMLActionBarContributor.
  *
- * @author Mohamed-Lamine BOUKHANOUFA <a
- *         href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
+ * @author Mohamed-Lamine BOUKHANOUFA <a href="mailto:mohamed-lamine.boukhanoufa@obeo.fr"
  *         >mohamed-lamine.boukhanoufa@obeo.fr</a>
  */
 public class ValidateUMLElement extends UMLActionBarContributor {
-	protected static class UMLValidateActionWithResult extends UMLValidateAction {
+	protected static class UMLValidateActionWithResult {
 		boolean diagnosticResult = false;
 
 		public boolean getDiagnosticResult() {
 			return diagnosticResult;
-		}
-
-		@Override
-		protected void handleDiagnostic(Diagnostic diagnostic) {
-			super.handleDiagnostic(diagnostic);
-			diagnosticResult = diagnostic.getSeverity() == Diagnostic.OK;
 		}
 
 	}
@@ -47,7 +38,6 @@ public class ValidateUMLElement extends UMLActionBarContributor {
 	 */
 	public ValidateUMLElement() {
 		super();
-		validateAction = new UMLValidateActionWithResult();
 
 	}
 
@@ -67,13 +57,7 @@ public class ValidateUMLElement extends UMLActionBarContributor {
 	 *            the EObject
 	 */
 	public void validateUMLmodel(EObject model) {
-		final IStructuredSelection selection = new StructuredSelection(model);
-		validateAction.updateSelection(selection);
-		validateAction.setActiveWorkbenchPart(PlatformUI.getWorkbench()
-				.getActiveWorkbenchWindow().getActivePage().getActiveEditor());
-		validateAction.run();
-		diagnosticResult = ((UMLValidateActionWithResult)validateAction).getDiagnosticResult();
+		UMLDesignerPlugin.log(IStatus.WARNING, "The UML model is not validated", null); //$NON-NLS-1$
 	}
 
 }
-

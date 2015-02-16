@@ -32,7 +32,7 @@ public class UmlDiscoveryAction extends Action {
 
 		final IWorkbenchWindow window = PlatformUI.getWorkbench()
 				.getActiveWorkbenchWindow();
-		UmlDiscovery.openUmlDiscoveryWizard(window);
+//		UmlDiscovery.openUmlDiscoveryWizard(window);
 
 	}
 }
