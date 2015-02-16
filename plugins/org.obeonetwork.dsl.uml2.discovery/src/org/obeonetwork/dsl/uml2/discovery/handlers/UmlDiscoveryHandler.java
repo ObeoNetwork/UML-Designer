@@ -21,7 +21,7 @@ public class UmlDiscoveryHandler extends AbstractHandler {
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		final IWorkbenchWindow window = HandlerUtil
 				.getActiveWorkbenchWindowChecked(event);
-		UmlDiscovery.openUmlDiscoveryWizard(window);
+//		UmlDiscovery.openUmlDiscoveryWizard(window);
 		return null;
 	}
 

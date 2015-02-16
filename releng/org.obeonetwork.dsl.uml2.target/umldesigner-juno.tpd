@@ -1,0 +1,62 @@
+target "UML Designer Juno" with source requirements
+
+// Eclipse
+
+// EMF
+
+location "http://www.obeo.fr/download/eclipse/juno-3.8/" {
+	org.eclipse.platform.sdk lazy
+	org.eclipse.equinox.executable.feature.group lazy
+	org.eclipse.epp.mpc.feature.group lazy
+	org.eclipse.amalgam.discovery.feature.group lazy
+	org.eclipse.emf.edit.feature.group lazy
+	org.eclipse.emf.mapping.ecore.feature.group lazy
+}
+
+// UML
+
+location "http://download.eclipse.org/modeling/mdt/uml2/updates/4.0" {
+	org.eclipse.uml2.uml [4.0.0,4.1.0)
+	org.eclipse.uml2.uml.edit [4.0.0,4.1.0)
+	org.eclipse.uml2 [4.0.0,4.1.0)
+	org.eclipse.uml2.uml.resources [4.0.0,4.1.0)
+	org.eclipse.uml2.uml.editor [4.0.0,4.1.0)
+}
+
+// SWTBot
+
+location "http://download.eclipse.org/technology/swtbot/releases/2.1.1/" {
+	org.eclipse.swtbot.forms.feature.group lazy
+	org.eclipse.swtbot.eclipse.feature.group lazy
+	org.eclipse.swtbot.eclipse.gef.feature.group lazy
+	org.eclipse.swtbot.feature.group lazy
+	org.eclipse.swtbot.ide.feature.group lazy
+	org.eclipse.swtbot.eclipse.test.junit.feature.group lazy
+}
+
+// Acceleo 3
+
+location "http://download.eclipse.org/acceleo/updates/milestones/3.5/S201406101309" {
+	org.eclipse.acceleo.feature.group lazy
+	org.eclipse.acceleo.runtime.feature.group lazy
+}
+
+// EEF 1.3
+
+location "http://download.eclipse.org/modeling/emft/eef/updates/releases/1.3/R201311221533" {
+	org.eclipse.emf.eef.runtime lazy
+}
+
+// Sirius
+
+location "http://download.eclipse.org/sirius/updates/releases/2.0.0/juno" {
+	org.eclipse.sirius.runtime.feature.group lazy
+	org.eclipse.sirius.runtime.acceleo.feature.group lazy
+	//IDE
+	org.eclipse.sirius.runtime.ide.ui.acceleo.feature.group lazy
+	org.eclipse.sirius.runtime.ide.eef.feature.group lazy
+	org.eclipse.sirius.runtime.ide.ui.feature.group lazy
+	org.eclipse.sirius.specifier.ide.ui.feature.group lazy
+	org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group lazy
+	org.eclipse.sirius.tests.support.feature.group lazy
+}
