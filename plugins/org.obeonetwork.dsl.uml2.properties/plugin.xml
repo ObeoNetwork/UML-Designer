@@ -14,7 +14,7 @@ Contributors:
  <!-- EEF extensions -->
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
       <factory
-            uri="http://www.eclipse.org/uml2/5.0.0/UML"
+            uri="http://www.eclipse.org/uml2/4.0.0/UML"
             class="org.obeonetwork.dsl.uml2.properties.providers.CustomUmlEEFAdapterFactory"
             supportedTypes="org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider"/>
    </extension>
