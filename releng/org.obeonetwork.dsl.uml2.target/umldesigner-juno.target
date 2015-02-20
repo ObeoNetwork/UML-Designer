@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="UML Designer Juno" sequenceNumber="1423838203">
+<target name="UML Designer Juno" sequenceNumber="1424425011">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.platform.sdk" version="0.0.0"/>
-      <unit id="org.eclipse.equinox.executable.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.epp.mpc.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.amalgam.discovery.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.edit.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.mapping.ecore.feature.group" version="0.0.0"/>
       <repository location="http://www.obeo.fr/download/eclipse/juno-3.8/"/>
@@ -47,7 +44,7 @@
       <unit id="org.eclipse.sirius.specifier.ide.ui.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.sirius.tests.support.feature.group" version="0.0.0"/>
-      <repository location="http://download.eclipse.org/sirius/updates/releases/2.0.0/juno"/>
+      <repository location="http://download.eclipse.org/sirius/updates/releases/2.0.4/juno"/>
     </location>
   </locations>
 </target>
