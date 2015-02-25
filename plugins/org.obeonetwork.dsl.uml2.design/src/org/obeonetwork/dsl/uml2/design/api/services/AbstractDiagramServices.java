@@ -73,6 +73,7 @@ import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UseCase;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
+import org.obeonetwork.dsl.uml2.design.api.utils.UmlUtils;
 import org.obeonetwork.dsl.uml2.design.internal.services.LabelServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.ReconnectSwitch;
 import org.obeonetwork.dsl.uml2.design.internal.services.RelatedServices;
@@ -203,6 +204,16 @@ public abstract class AbstractDiagramServices {
 	 */
 	public int defaultWidth(EObject any) {
 		return UIServices.INSTANCE.defaultWidth();
+	}
+
+	/**
+	 * Destroy a semantic element and all its references.
+	 *
+	 * @param semanticElement
+	 *            Element to destroy
+	 */
+	public void destroy(EObject semanticElement) {
+		UmlUtils.INSTANCE.destroy(semanticElement);
 	}
 
 	/**

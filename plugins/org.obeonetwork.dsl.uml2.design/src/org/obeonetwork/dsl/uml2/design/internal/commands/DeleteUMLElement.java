@@ -29,6 +29,7 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.uml2.uml.Element;
+import org.obeonetwork.dsl.uml2.design.api.utils.UmlUtils;
 
 /**
  * Delete UML Element.
@@ -69,7 +70,7 @@ public class DeleteUMLElement extends AbstractHandler {
 				protected void doExecute() {
 
 					for (final Element element : selected) {
-						element.destroy();
+						UmlUtils.INSTANCE.destroy(element);
 					}
 
 					// Refresh all diagrams
