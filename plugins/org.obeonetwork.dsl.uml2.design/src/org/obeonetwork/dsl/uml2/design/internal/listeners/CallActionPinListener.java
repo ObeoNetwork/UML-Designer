@@ -67,6 +67,9 @@ public class CallActionPinListener extends ResourceSetListenerImpl {
 						if (callAction instanceof CallOperationAction) {
 							final CallOperationAction callOperationAction = (CallOperationAction)callAction;
 							final Operation operation = callOperationAction.getOperation();
+							if (operation == null) {
+								return null;
+							}
 							String pinName = updatedPin.getName();
 							Type pinType = updatedPin.getType();
 							if ("name".equals(feature.getName())) { //$NON-NLS-1$
@@ -106,6 +109,9 @@ public class CallActionPinListener extends ResourceSetListenerImpl {
 					if (container instanceof Operation) {
 						final Operation operation = (Operation)container;
 						final Session sess = SessionManager.INSTANCE.getSession(operation);
+						if (sess == null) {
+							return null;
+						}
 						final Collection<Setting> inverseReferences = sess.getSemanticCrossReferencer()
 								.getInverseReferences(operation);
 						for (final Setting setting : inverseReferences) {
