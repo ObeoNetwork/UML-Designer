@@ -28,10 +28,9 @@ Contributors:
   <properties>
     <uml-site>file:${basedir}/../org.obeonetwork.dsl.uml2.update/target/repository</uml-site>
   </properties>
-
   <repositories>
     <repository>
-      <id>uml</id>
+      <id>uml-juno3.8</id>
       <layout>p2</layout>
       <url>${uml-site}</url>
     </repository>

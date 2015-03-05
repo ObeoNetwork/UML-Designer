@@ -6,12 +6,6 @@
    <feature id="org.obeonetwork.dsl.uml2.runtime.feature" version="0.0.0">
       <category name="Obeo Network"/>
    </feature>
-   <feature id="org.obeonetwork.dsl.uml2.runtime.feature" version="5.0.0.qualifier">
-      <category name="Obeo Network"/>
-   </feature>
-   <feature id="org.obeonetwork.dsl.uml2.runtime.feature" version="5.0.0.qualifier">
-      <category name="Obeo Network"/>
-   </feature>
    <feature id="org.obeonetwork.dsl.uml2.runtime.product.feature" version="5.0.0.qualifier">
       <category name="Obeo Network"/>
    </feature>

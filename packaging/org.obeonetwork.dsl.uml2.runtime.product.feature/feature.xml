@@ -262,13 +262,6 @@ litigation.
          version="0.0.0"/>
 
    <plugin
-         id="org.obeonetwork.dsl.uml2.usage"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.obeonetwork.dsl.uml2.properties"
          download-size="0"
          install-size="0"
@@ -284,13 +277,6 @@ litigation.
 
    <plugin
          id="org.obeonetwork.dsl.uml2.migration"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="org.obeonetwork.dsl.uml2.discovery"
          download-size="0"
          install-size="0"
          version="0.0.0"

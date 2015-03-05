@@ -6,6 +6,12 @@
    <feature id="org.obeonetwork.dsl.uml2.runtime.feature" version="0.0.0">
       <category name="Obeo Network"/>
    </feature>
+   <feature id="org.obeonetwork.dsl.uml2.runtime.sdk.feature" version="0.0.0">
+      <category name="Obeo Network"/>
+   </feature>
+   <feature id="org.obeonetwork.dsl.uml2.runtime.product.feature" version="0.0.0">
+      <category name="Obeo Network"/>
+   </feature>
    <category-def name="Obeo Network" label="Obeo Network">
       <description>
          The Obeo Network.

@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="UML Designer Juno" sequenceNumber="1424425011">
+<target name="UML Designer Juno" sequenceNumber="1425554192">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.platform.sdk" version="0.0.0"/>
+      <unit id="org.eclipse.equinox.executable.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.edit.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.mapping.ecore.feature.group" version="0.0.0"/>
       <repository location="http://www.obeo.fr/download/eclipse/juno-3.8/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.uml2.feature.group" version="4.0.2.v20130114-0902"/>
       <unit id="org.eclipse.uml2.uml" version="4.0.2.v20130114-0902"/>
       <unit id="org.eclipse.uml2.uml.edit" version="4.0.2.v20130114-0902"/>
       <unit id="org.eclipse.uml2" version="4.0.2.v20130114-0902"/>

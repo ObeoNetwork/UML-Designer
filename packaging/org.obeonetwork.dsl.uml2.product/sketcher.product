@@ -139,7 +139,6 @@ This Agreement is governed by the laws of the State of New York and the intellec
    <features>
       <feature id="org.obeonetwork.dsl.uml2.runtime.product.feature"/>
       <feature id="org.eclipse.platform"/>
-      <feature id="org.eclipse.epp.mpc"/>
       <feature id="org.eclipse.uml2"/>
    </features>
 
