@@ -29,23 +29,18 @@ Contributors:
     <!-- Build plugins -->
     <module>../../plugins/org.obeonetwork.gmf.runtime.diagram.ui.extension</module>
     <module>../../plugins/org.obeonetwork.dsl.uml2.design</module>
-    <!-- <module>../../plugins/org.obeonetwork.dsl.uml2.branding</module> -->
+    <module>../../plugins/org.obeonetwork.dsl.uml2.branding</module>
     <module>../../plugins/org.obeonetwork.dsl.uml2.design.doc</module>
-    <!-- <module>../../plugins/org.obeonetwork.dsl.uml2.usage</module> -->
     <module>../../plugins/org.obeonetwork.dsl.uml2.properties</module>
     <module>../../plugins/org.obeonetwork.dsl.uml2.navigator</module>
     <module>../../plugins/org.obeonetwork.dsl.uml2.migration</module>
-    <!-- <module>../../plugins/org.obeonetwork.dsl.uml2.discovery</module> -->
-
 
     <!-- Build test plugins -->
-    <!--<module>../../tests/org.obeonetwork.dsl.uml2.design.tests</module> -->
-    <!--<module>tests/org.obeonetwork.dsl.uml2.properties.tests</module> -->
 
     <!-- Build features -->
     <module>../../packaging/org.obeonetwork.dsl.uml2.runtime.feature</module>
-    <!-- <module>../../packaging/org.obeonetwork.dsl.uml2.runtime.product.feature</module> -->
-    <!-- <module>../../packaging/org.obeonetwork.dsl.uml2.runtime.sdk.feature</module> -->
+    <module>../../packaging/org.obeonetwork.dsl.uml2.runtime.product.feature</module>
+    <module>../../packaging/org.obeonetwork.dsl.uml2.runtime.sdk.feature</module>
 
     <!-- Build update-sites -->
     <module>../../packaging/org.obeonetwork.dsl.uml2.update</module>

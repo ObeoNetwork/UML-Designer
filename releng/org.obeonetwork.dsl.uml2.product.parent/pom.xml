@@ -27,21 +27,15 @@ Contributors:
 
   <properties>
     <!--uml-site-local>file:${basedir}/../org.obeonetwork.dsl.uml2.update/target/repository</uml-site-local-->
-    <uml-site>http://marketplace.obeonetwork.com/updates/nightly/uml/repository</uml-site>
-    <!--sysml-site>http://marketplace.obeonetwork.com/updates/nightly/sysml/repository</sysml-site -->
-  </properties>
+    <uml-site>http://marketplace.obeonetwork.com/updates/nightly/uml-juno3.8/repository</uml-site>
+   </properties>
 
   <repositories>
     <repository>
-      <id>uml</id>
+      <id>uml-juno3.8</id>
       <layout>p2</layout>
       <url>${uml-site}</url>
     </repository>
-    <!-- repository>
-      <id>sysml</id>
-      <layout>p2</layout>
-      <url>${sysml-site}</url>
-    </repository -->
   </repositories>
 
   <modules>
