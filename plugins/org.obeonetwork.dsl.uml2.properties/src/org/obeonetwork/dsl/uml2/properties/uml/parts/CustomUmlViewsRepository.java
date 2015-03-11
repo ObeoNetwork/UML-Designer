@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 Obeo.
+ * Copyright (c) 2013, 2015 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,22 @@ public class CustomUmlViewsRepository extends UmlViewsRepository {
 	 */
 	public static class Stereotypes {
 		public static String appliedStereotypes = "uml::Stereotypes::appliedStereotypes";
+
+	}
+	
+	/**
+	 * Stereotype Applications view descriptor
+	 */
+	public static class StereotypeApplications {
+		public static String stereotypeApplications = "uml::Stereotypes::stereotypeApplications";
+
+	}
+	
+	/**
+	 * Stereotype Application Property view descriptor
+	 */
+	public static class SAProperty {
+		public static String stereotypeApplicationProperty = "uml::Stereotypes::stereotypeApplicationProperty";
 
 	}
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 Obeo.
+ * Copyright (c) 2013, 2015 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@ package org.obeonetwork.dsl.uml2.properties.providers;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
@@ -26,6 +27,8 @@ import org.obeonetwork.dsl.uml2.properties.uml.components.ElementDocumentationPr
 import org.obeonetwork.dsl.uml2.properties.uml.components.NamedElementRelationshipsPropertiesEditionComponent;
 import org.obeonetwork.dsl.uml2.properties.uml.components.NamedElementStereotypesPropertiesEditionComponent;
 import org.obeonetwork.dsl.uml2.properties.uml.components.PackageProfilesPropertiesEditionComponent;
+import org.obeonetwork.dsl.uml2.properties.uml.components.SAPropertyPropertiesEditionComponent;
+import org.obeonetwork.dsl.uml2.properties.uml.components.StereotypeApplicationsPropertiesEditionComponent;
 
 /**
  * @author <a href="mailto:melanie.bats@obeo.fr">Melanie Bats</a>
@@ -135,12 +138,24 @@ public class UmlPropertiesEditionProvider extends PropertiesEditingProviderImpl 
 					.equals(part))
 				return new NamedElementRelationshipsPropertiesEditionComponent(
 						editingContext, editingContext.getEObject(), mode);
+			if (StereotypeApplicationsPropertiesEditionComponent.STEREOTYPE_APPLICATIONS_PART
+					.equals(part))
+				return new StereotypeApplicationsPropertiesEditionComponent(
+						editingContext, editingContext.getEObject(), mode);
 		}
 
 		if (editingContext.getEObject() instanceof Element) {
 			if (ElementDocumentationPropertiesEditionComponent.DOCUMENTATION_PART
 					.equals(part))
 				return new ElementDocumentationPropertiesEditionComponent(
+						editingContext, editingContext.getEObject(), mode);
+
+		}
+		
+		if (isStereotypeApplication(editingContext.getEObject())) {
+			if (SAPropertyPropertiesEditionComponent.SA_PROPERTY_PART
+					.equals(part))
+				return new SAPropertyPropertiesEditionComponent(
 						editingContext, editingContext.getEObject(), mode);
 
 		}
@@ -208,6 +223,15 @@ public class UmlPropertiesEditionProvider extends PropertiesEditingProviderImpl 
 							.eClass());
 		}
 
+	}
+	
+	private boolean isStereotypeApplication(EObject obj) {
+		for (EReference ref : obj.eClass().getEAllReferences()){
+			if (ref.getName().startsWith("base_")) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }
