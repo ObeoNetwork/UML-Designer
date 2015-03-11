@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2012 Obeo.
+ * Copyright (c) 2009, 2015 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,10 @@
 package org.obeonetwork.dsl.uml2.properties.providers;
 
 import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EcorePackage;
+import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
+import org.obeonetwork.dsl.uml2.properties.uml.providers.SAPropertyPropertiesEditionProvider;
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlEEFAdapterFactory;
 
 public class CustomUmlEEFAdapterFactory extends UmlEEFAdapterFactory {
@@ -29,4 +33,16 @@ public class CustomUmlEEFAdapterFactory extends UmlEEFAdapterFactory {
 	public Adapter createPinAdapter() {
 		return new PinCustomPropertiesEditionProvider();
 	}
+	
+	@Override
+	public Adapter createEObjectAdapter() {
+		return new SAPropertyPropertiesEditionProvider();
+	}
+	
+	@Override
+	public boolean isFactoryForType(Object object) {
+		return (object instanceof EObject && ((EObject) object).eClass().getEPackage() == EcorePackage.eINSTANCE || object == PropertiesEditingProvider.class)
+				|| super.isFactoryForType(object);
+	}
+	
 }

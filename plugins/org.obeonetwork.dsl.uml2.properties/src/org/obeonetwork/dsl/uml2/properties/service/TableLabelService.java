@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 Obeo.
+ * Copyright (c) 2013, 2015 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edit.provider.AdapterFactoryItemDelegator;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.BehavioralFeature;
 import org.eclipse.uml2.uml.Classifier;
@@ -33,6 +37,7 @@ import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.TypedElement;
 import org.obeonetwork.dsl.uml2.design.api.utils.PropertiesViewUtils;
+import org.obeonetwork.dsl.uml2.properties.uml.components.StereotypeApplicationsPropertiesEditionComponent.StereotypeApplication.StereotypeApplicationProperty;
 
 /**
  * @author <a href="mailto:melanie.bats@obeo.fr">Melanie Bats</a>
@@ -48,7 +53,7 @@ public class TableLabelService {
 				"Abstract"), PARAMETERS("Parameters"), DIRECTION("Direction"), STEREOTYPE(
 				"Stereotype"), PROFILE("Profile"), REQUIRED("Required"), OTHER_RELATED_ELEMENTS(
 				"Other Related Element(s)"), ROLE("Role"), PROPERTY("Property"), NAVIGABILITY(
-				"Navigable"), OWNED("Owned");
+				"Navigable"), OWNED("Owned"), ESTRUCTURAL_FEATURE("Feature"), VALUE("Value");
 
 		private String label;
 
@@ -72,6 +77,32 @@ public class TableLabelService {
 		if (object instanceof Stereotype)
 			return ((Stereotype) object).getName();
 		throw new IllegalArgumentException();
+	}
+	
+	public String caseEStructuralFeature(Object object) {
+		if (object instanceof EStructuralFeature)
+			return ((EStructuralFeature) object).getName();
+		throw new IllegalArgumentException();
+	}
+	
+	public String caseStereotypeApplicationPropertyValue(StereotypeApplicationProperty property, AdapterFactoryLabelProvider factory) {
+		IItemLabelProvider itemProvider = (IItemLabelProvider) factory.getAdapterFactory().adapt(property.getValue(), IItemLabelProvider.class);
+		if (itemProvider != null) {
+			return itemProvider.getText(property.getValue());
+		} else {
+			AdapterFactoryItemDelegator provider = new AdapterFactoryItemDelegator(factory.getAdapterFactory());
+			return provider.getText(property.getValue());
+		}
+	}
+	
+	public String test(StereotypeApplicationProperty property, AdapterFactoryLabelProvider factory) {
+		IItemLabelProvider itemProvider = (IItemLabelProvider) factory.getAdapterFactory().adapt(property.getValue(), IItemLabelProvider.class);
+		if (itemProvider != null) {
+			return itemProvider.getText(property.getFeature());
+		} else {
+			AdapterFactoryItemDelegator provider = new AdapterFactoryItemDelegator(factory.getAdapterFactory());
+			return provider.getText(property.getFeature());
+		}
 	}
 
 	public String caseProfile(Object object) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 Obeo.
+ * Copyright (c) 2013, 2015 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,7 +21,10 @@ import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.OperationsCustomPrope
 import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.ParametersCustomPropertiesEditionPartForm;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.ProfilesPropertiesEditionPartForm;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.RelationshipsPropertiesEditionPartForm;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.StereotypeApplicationsPropertiesEditionPartForm;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.forms.StereotypesPropertiesEditionPartForm;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.impl.GeneralPropertiesEditionPartImpl;
+import org.obeonetwork.dsl.uml2.properties.uml.parts.impl.SAPropertyPropertiesEditionPartImpl;
 import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlPropertiesEditionPartProvider;
 
 /**
@@ -48,6 +51,16 @@ public class UmlCustomPropertiesEditionPartProvider extends
 		if (key == CustomUmlViewsRepository.Stereotypes.class) {
 			if (kind == UmlViewsRepository.FORM_KIND)
 				return new StereotypesPropertiesEditionPartForm(component);
+		}
+		
+		if (key == CustomUmlViewsRepository.StereotypeApplications.class) {
+			if (kind == UmlViewsRepository.FORM_KIND)
+				return new StereotypeApplicationsPropertiesEditionPartForm(component);
+		}
+		
+		if (key == CustomUmlViewsRepository.SAProperty.class) {
+			if (kind == UmlViewsRepository.SWT_KIND)
+				return new SAPropertyPropertiesEditionPartImpl(component);
 		}
 
 		if (key == CustomUmlViewsRepository.Profiles.class) {
