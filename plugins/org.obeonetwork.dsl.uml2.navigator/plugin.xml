@@ -12,6 +12,14 @@
            </instanceof>
         </enablement>
      </actionProvider>
+     <commonFilter
+           activeByDefault="true"
+           class="org.obeonetwork.dsl.uml2.editor.internal.UMLStereotypeApplicationFilter"
+           description="Hides Stereotype applications"
+           id="org.obeonetwork.dsl.uml2.navigator.commonFilter.stereotypeapplication"
+           name="UML Stereotype applications"
+           visibleInUI="true">
+     </commonFilter>
   </extension>
   <extension
         point="org.eclipse.ui.navigator.viewer">
@@ -28,6 +36,9 @@
         <includes>
            <contentExtension
                  pattern="org.obeonetwork.dsl.uml2.editor.*">
+           </contentExtension>
+           <contentExtension
+                 pattern="org.obeonetwork.dsl.uml2.navigator.commonFilter.*">
            </contentExtension>
         </includes>
      </viewerContentBinding>
