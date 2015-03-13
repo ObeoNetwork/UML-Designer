@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 Obeo.
+ * Copyright (c) 2009, 2015 Obeo.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -46,6 +46,7 @@ import org.eclipse.uml2.uml.BehavioralFeature;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Collaboration;
+import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.ConnectableElement;
 import org.eclipse.uml2.uml.DataType;
@@ -458,7 +459,35 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 		return null;
 	}
 
+	/**
+	 * Get the list of comments to display on the given DDiagram.<br>
+	 * <br>
+	 * This gets only the comments attached to the current visible diagram elements.<br>
+	 * This query is equivalent to:<br>
+	 * <code>[self.oclAsType(Element).ownedComments->union(diagram.ownedDiagramElements->select(elt : DDiagramElement | elt.visible = true and elt.target.oclAsType(Element).ownedComment->notEmpty()).target.oclAsType(Element).ownedComment)/]</code>
+	 *
+	 * @param diagram
+	 *            The diagram representation
+	 * @return the list of comments to display.
+	 */
+	public List<Comment> getCommentsOnVisibleGraphicalElements(DDiagram diagram) {
+		final List<Comment> result = new ArrayList<Comment>();
 
+		if (diagram instanceof DSemanticDecorator) {
+			final EObject target = ((DSemanticDecorator)diagram).getTarget();
+			if (target instanceof Element) {
+				result.addAll(((Element)target).getOwnedComments());
+			}
+		}
+
+		for (final DDiagramElement elt : diagram.getOwnedDiagramElements()) {
+			if (elt.isVisible() && elt.getTarget() instanceof Element && !((Element)elt.getTarget()).getOwnedComments().isEmpty()) {
+				result.addAll(((Element)elt.getTarget()).getOwnedComments());
+			}
+		}
+
+		return result;
+	}
 
 	/**
 	 * Get an statemachine.
