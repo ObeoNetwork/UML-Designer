@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="UML Designer Luna" sequenceNumber="1418123545">
+<target name="UML Designer Luna" sequenceNumber="1426494763">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.platform.sdk" version="0.0.0"/>
       <unit id="org.eclipse.equinox.executable.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.epp.mpc.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.amalgam.discovery.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.emf.edit.feature.group" version="2.10.1.v20140901-1055"/>
+      <unit id="org.eclipse.emf.edit.feature.group" version="2.10.1.v20150123-0452"/>
       <unit id="org.eclipse.emf.mapping.ecore.feature.group" version="0.0.0"/>
       <repository location="http://download.eclipse.org/releases/luna"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.uml2.uml.feature.group" version="5.0.1.v20140910-1354"/>
-      <unit id="org.eclipse.uml2.uml.edit.feature.group" version="5.0.0.v20140910-1354"/>
-      <unit id="org.eclipse.uml2.feature.group" version="5.0.0.v20140910-1354"/>
+      <unit id="org.eclipse.uml2.uml.feature.group" version="5.0.2.v20150202-0947"/>
+      <unit id="org.eclipse.uml2.uml.edit.feature.group" version="5.0.2.v20150202-0947"/>
+      <unit id="org.eclipse.uml2.feature.group" version="5.0.2.v20150202-0947"/>
       <repository location="http://download.eclipse.org/modeling/mdt/uml2/updates/5.0"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
@@ -53,7 +53,7 @@
       <unit id="org.eclipse.sirius.specifier.ide.ui.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.sirius.tests.support.feature.group" version="0.0.0"/>
-      <repository location="http://download.eclipse.org/sirius/updates/releases/2.0.0/luna"/>
+      <repository location="http://download.eclipse.org/sirius/updates/releases/2.0.4/luna"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.compare.diagram.gmf.feature.group" version="0.0.0"/>

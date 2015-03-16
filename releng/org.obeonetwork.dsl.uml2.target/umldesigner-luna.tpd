@@ -50,7 +50,7 @@ location "http://download.eclipse.org/modeling/emft/eef/updates/releases/1.3/R20
 }
 
 // Sirius
-location "http://download.eclipse.org/sirius/updates/releases/2.0.0/luna" {
+location "http://download.eclipse.org/sirius/updates/releases/2.0.4/luna" {
 	org.eclipse.sirius.runtime.feature.group lazy
 	org.eclipse.sirius.runtime.acceleo.feature.group lazy
 	//IDE
