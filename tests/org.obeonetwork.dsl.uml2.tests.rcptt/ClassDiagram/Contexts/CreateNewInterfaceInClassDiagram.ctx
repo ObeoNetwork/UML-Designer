@@ -1,0 +1,27 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: CreateNewInterfaceInClassDiagram
+Element-Type: context
+Element-Version: 2.0
+Id: _ogZrUM2NEeSHkpcdtO-QuQ
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 3/18/15 5:41 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+with [get-palette] {
+    with [get-palette-entry Interface] {
+        mouse-move 49 7 button1 -height 23 -width 135
+        mouse-press 49 7 button1 -height 23 -width 135
+        mouse-release 49 7 button1 524288 -height 23 -width 135
+    }
+}
+with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+    mouse-move 438 286 button1 -height 338 -width 856
+    mouse-press 438 286 button1 -height 338 -width 856
+    mouse-release 438 286 button1 524288 -height 338 -width 856
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

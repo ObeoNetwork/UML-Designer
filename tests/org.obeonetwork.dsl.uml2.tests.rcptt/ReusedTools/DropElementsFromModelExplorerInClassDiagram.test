@@ -1,0 +1,405 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_p5zq0M4oEeS8M6MvytM1MA,_nN0RgM7fEeSz9_HNAw245A
+Element-Name: DropElementsFromModelExplorerInClassDiagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _wUNpAM5VEeS8M6MvytM1MA
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/15/15 10:20 AM
+Testcase-Type: ecl
+Verifications: _qasmwM7rEeSz9_HNAw245A
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Drop existing elements to Class Diagram from Model explorer
+
+Test:
+Drop existing elements:
+	- Class
+	- Package
+	- Interface
+	- Datat type
+	- Primitive type
+	- Enumeration
+	- Component
+
+Try to drop others element which will not be added to diagram:
+	- Device
+	- Activity
+	- State Machine
+	- Interaction
+	- ClassDiagram
+	- Comment
+	- Association
+	- Dependency
+	- Usage
+	- Actor
+	- UseCase
+	- Artifact
+	- Instance
+
+
+
+Result:
+- Only authorized elements appear in diagram
+- no new elements appear in model explorer
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Initialise Model
+with [get-view "Model Explorer" | get-tree] {
+    select "AllMappings/model.uml" | double-click
+}
+
+// ------- Drop Class from model explorer ----------------------------------------------
+// Select element in model
+get-view "Model Explorer" | get-tree | select "AllMappings/model.uml/<Model> Test/<Class> DefaultClass" | drag-start 16 4
+// Drop element in diagram
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" | drop 131 146 -detail move
+    -detail move
+// Check element Was created in diagram
+with [get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" | get-edit-part 
+    -name DefaultClass] {
+    // Check name
+    get-edit-part -className DNodeListNameEditPart | get-property "getFigure().getText()" | equals DefaultClass 
+        | verify-true
+    // Check Position
+    with [get-figure "0/0"] {
+        get-property x | equals 131 | verify-true
+        get-property y | equals 146 | verify-true
+    }
+}
+// Check attributs are present
+with [get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" | get-edit-part 
+    -name DefaultClass | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+    get-edit-part -name "property1 : String [0..1]" | get-property "getFigure().getText()" 
+        | equals "property1 : String [0..1]" | verify-true
+    get-edit-part -name "Port1 :  [1]" | get-property "getFigure().getText()" | equals "Port1 :  [1]" | verify-true
+    get-edit-part -name "property3 : String [0..1] = test" | get-property "getFigure().getText()" 
+        | equals "property3 : String [0..1] = test" | verify-true
+    get-edit-part -name "DefaultClassPort : DefaultClass [1]" | get-property "getFigure().getText()" 
+        | equals "DefaultClassPort : DefaultClass [1]" | verify-true
+    get-edit-part -name "Operation_1()" | get-property "getFigure().getText()" | equals "Operation_1()" | verify-true
+}
+
+// ------- Drop Package from model explorer ----------------------------------------------
+// Select element in model
+with [get-view "Model Explorer" | get-tree] {
+    select "AllMappings/model.uml/<Model> Test/<Package> New package 1"
+    get-item "AllMappings/model.uml/<Model> Test/<Package> New package 1" | drag-start 136 11
+}
+// Drop element in diagram
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" | drop 476 156 -detail move
+// Check element was created in diagram
+    // Check name
+    // Check Position
+with [get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" | get-edit-part 
+    -name "New package 1" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+    | get-figure 1] {
+    get-property x | equals 476 | verify-true
+    get-property y | equals 157 | verify-true
+}
+
+// ------- Drop Interface from model explorer ----------------------------------------------
+// Select element in model
+with [get-view "Model Explorer" | get-tree] {
+    select "AllMappings/model.uml/<Model> Test/<Interface> Default Interface"
+    get-item "AllMappings/model.uml/<Model> Test/<Interface> Default Interface" | drag-start 132 8
+}
+// Drop element in diagram
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" | drop 282 309 -detail move
+// Check element was created in diagram
+// Check name
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" | get-edit-part 
+    -name "Default Interface" | get-edit-part -className DNodeListNameEditPart | get-property "getFigure().getText()" 
+    | equals "Default Interface" | verify-true
+// Check Position
+with [get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" | get-edit-part 
+    -name "Default Interface"] {
+    with [get-figure "0/0"] {
+        get-property x | equals 282 | verify-true
+        get-property y | equals 309 | verify-true
+    }
+}
+
+// -------  Drop DataType from model explorer ----------------------------------------------
+// Select element in model
+with [get-view "Model Explorer" | get-tree] {
+    select "AllMappings/model.uml/<Model> Test/<Data Type> Default DataType"
+    get-item "AllMappings/model.uml/<Model> Test/<Data Type> Default DataType" | drag-start 142 6
+}
+// Drop element in diagram
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" | drop 483 24 
+    -detail move
+// Check element was created in diagram
+with [get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram"] {
+    with [get-edit-part -name "Default DataType"] {
+    	// Check name
+        get-edit-part -className DNodeListNameEditPart | get-property "getFigure().getText()" 
+            | equals "Default DataType" | verify-true
+        // Check Position
+        with [get-figure "0/0"] {
+            get-property x | equals 483 | verify-true
+            get-property y | equals 24 | verify-true
+        }
+    }
+}
+
+// -------  Drop PrimitiveType from model explorer ----------------------------------------------
+// Select element in model
+with [get-view "Model Explorer" | get-tree] {
+    select "AllMappings/model.uml/<Model> Test/<Primitive Type> Default PrimitiveType"
+    get-item "AllMappings/model.uml/<Model> Test/<Primitive Type> Default PrimitiveType" | drag-start 177 10
+}
+// Drop element in diagram
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" | drop 642 25 
+    -detail move
+// Check element was created in diagram
+with [get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram"] {
+    with [get-edit-part -name "Default PrimitiveType"] {
+        // Check name
+        get-edit-part -className DNodeListNameEditPart | get-property "getFigure().getText()" 
+            | equals "Default PrimitiveType" | verify-true
+        // Check Position
+        with [get-figure "0/0"] {
+            get-property x | equals 642 | verify-true
+            get-property y | equals 25 | verify-true
+        }
+    }
+}
+
+// -------  Drop Enumeration from model explorer ----------------------------------------------
+// Select element in model
+with [get-view "Model Explorer" | get-tree] {
+    select "AllMappings/model.uml/<Model> Test/<Enumeration> Default Enumeration"
+    get-item "AllMappings/model.uml/<Model> Test/<Enumeration> Default Enumeration" | drag-start 185 11
+}
+// Drop element in diagram
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" | drop 643 164 
+    -detail move
+// Check element was created in diagram
+with [get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram"] {
+    with [get-edit-part -name "Default Enumeration"] {
+        // Check name
+        get-edit-part -className DNodeListNameEditPart | get-property "getFigure().getText()" 
+            | equals "Default Enumeration" | verify-true
+        // Check Position
+        with [get-figure "0/0"] {
+            get-property x | equals 643 | verify-true
+            get-property y | equals 164 | verify-true
+        }
+        // Check Features
+        get-edit-part -className DNodeListViewNodeListCompartment2EditPart | get-edit-part 
+            -name "Literal1 : Default Enumeration" | get-property "getFigure().getText()" 
+            | equals "Literal1 : Default Enumeration" | verify-true
+    }
+}
+
+// -------  Drop Component from model explorer ----------------------------------------------
+// Select element in model
+with [get-view "Model Explorer" | get-tree] {
+    select "AllMappings/model.uml/<Model> Test/<Component> Component"
+    get-item "AllMappings/model.uml/<Model> Test/<Component> Component" | drag-start 145 7
+}
+// Drop element in diagram
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
+    | get-figure "3/0/1/1" | drop 3 119 -detail move
+// Check element was created in diagram
+with [get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
+    | get-edit-part -name Component] {
+    // Check name
+    get-edit-part -className DNodeListNameEditPart | get-property "getFigure().getText()" | equals Component 
+        | verify-true
+    // Check Position
+    with [get-figure "0/0"] {
+        get-property x | equals 479 | verify-true
+        get-property y | equals 276 | verify-true
+    }
+    // Check Features
+    with [get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+        get-edit-part -name "Port1 :  [1]" | get-property "getFigure().getText()" | equals "Port1 :  [1]" | verify-true
+        get-edit-part -name "ComponentPort : Component [1]" | get-property "getFigure().getText()" 
+            | equals "ComponentPort : Component [1]" | verify-true
+    }
+}
+
+// ------- Try to Drop Device from model explorer ----------------------------------------------
+// Select element in model
+with [get-view "Model Explorer" | get-tree] {
+    select "AllMappings/model.uml/<Model> Test/<Device> Device"
+    get-item "AllMappings/model.uml/<Model> Test/<Device> Device" | drag-start 40 8
+}
+// Drop element in diagram
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" | drop 676 274 
+    -detail move
+// Check element was Not created in diagram
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
+    |  verify-error{get-edit-part -name Device}
+
+// -------  Try Drop Activity from model explorer ----------------------------------------------
+// Select element in model
+with [get-view "Model Explorer" | get-tree] {
+    select "AllMappings/model.uml/<Model> Test/<Activity> Test"
+    get-item "AllMappings/model.uml/<Model> Test/<Activity> Test" | drag-start "-11" 4
+}
+// Drop element in diagram
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" | drop 16 305 
+    -detail move
+// Check element was Not created in diagram
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
+    |   verify-error{get-edit-part -name "Test"}
+// -------  Try to drop State Machine from model explorer ----------------------------------------------
+// Select element in model
+with [get-view "Model Explorer" | get-tree] {
+    select "AllMappings/model.uml/<Model> Test/<State Machine> Test"
+    get-item "AllMappings/model.uml/<Model> Test/<State Machine> Test" | drag-start 35 9
+}
+// Drop element in diagram
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" | drop 11 84 
+    -detail move
+// Check element was NOTcreated in diagram
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
+    | verify-error{get-edit-part -name "Test"}
+
+// -------  Try to drop Interaction from model explorer ----------------------------------------------
+// Select element in model
+with [get-view "Model Explorer" | get-tree] {
+    select "AllMappings/model.uml/<Model> Test/<Interaction> Scenario_0"
+    get-item "AllMappings/model.uml/<Model> Test/<Interaction> Scenario_0" | drag-start 112 11
+}
+// Drop element in diagram
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" | drop 291 36 
+    -detail move
+// Check element was NOT created in diagram
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
+    | verify-error{get-edit-part -name "Scenario_0"}
+
+// -------  Try to drop ClassDiagram from model explorer ----------------------------------------------
+// Select element in model
+with [get-view "Model Explorer" | get-tree] {
+    select "AllMappings/model.uml/<Model> Test/Test Class Diagram"
+    get-item "AllMappings/model.uml/<Model> Test/Test Class Diagram" | drag-start 89 10
+}
+// Drop element in diagram
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
+    | drop 812 23 -detail move
+// Check element was NOT created in diagram
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
+    | verify-error{get-edit-part -name "Test Class Diagram"}
+    
+// -------  Try to drop Comment from model explorer ----------------------------------------------
+// Select element in model
+with [get-view "Model Explorer" | get-tree] {
+    select "AllMappings/model.uml/<Model> Test/<Comment> Test comment"
+    get-item "AllMappings/model.uml/<Model> Test/<Comment> Test comment" | drag-start 10 11
+}
+// Drop element in diagram
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
+    | drop 8 137 -detail move
+// Check element was NOT created in diagram
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
+    | verify-error{get-edit-part -name "Test comment"}
+
+// -------  Try to drop Association from model explorer ----------------------------------------------
+// Select element in model
+with [get-view "Model Explorer" | get-tree] {
+    select "AllMappings/model.uml/<Model> Test/<Association> defaultClasssToNonNavigable"
+    get-item "AllMappings/model.uml/<Model> Test/<Association> defaultClasssToNonNavigable" | drag-start 17 10
+}
+// Drop element in diagram
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
+    | drop 53 163 -detail move
+// Check element was NOT created in diagram
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
+    | verify-error{get-edit-part -name "defaultClasssToNonNavigable"}
+    
+// -------  Try to drop Dependency from model explorer -----------------------------------------------
+// Select element in model
+with [get-view "Model Explorer" | get-tree] {
+    select "AllMappings/model.uml/<Model> Test/<Dependency> New package 6"
+    get-item "AllMappings/model.uml/<Model> Test/<Dependency> New package 6" | drag-start 65 7
+}
+// Drop element in diagram
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
+    | drop 35 214 -detail move
+// Check element was NOT created in diagram
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
+    | verify-error{get-edit-part -name "New package 6"}
+    
+// -------  Try to drop Usage from model explorer ----------------------------------------------------
+// Select element in model
+with [get-view "Model Explorer" | get-tree] {
+    select "AllMappings/model.uml/<Model> Test/<Usage> Usage"
+    get-item "AllMappings/model.uml/<Model> Test/<Usage> Usage" | drag-start 66 10
+}
+// Drop element in diagram
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
+    | drop 58 175 -detail move
+// Check element was NOT created in diagram
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
+    | verify-error{get-edit-part -name "Usage"}
+
+// -------  Try to drop Actor from model explorer ----------------------------------------------------
+// Select element in model
+with [get-view "Model Explorer" | get-tree] {
+    select "AllMappings/model.uml/<Model> Test/<Actor> Actor1"
+    get-item "AllMappings/model.uml/<Model> Test/<Actor> Actor1" | drag-start 36 12
+}
+// Drop element in diagram
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
+    | drop 50 160 -detail move
+// Check element was NOT created in diagram
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
+    | verify-error{get-edit-part -name "Actor1"}
+
+// -------  Try to drop UseCase from model explorer --------------------------------------------------
+// Select element in model
+with [get-view "Model Explorer" | get-tree] {
+    select "AllMappings/model.uml/<Model> Test/<Use Case> UseCaseTest1"
+    get-item "AllMappings/model.uml/<Model> Test/<Use Case> UseCaseTest1" | drag-start "-4" 12
+}
+// Drop element in diagram
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
+    | drop 81 175 -detail move
+// Check element was NOT created in diagram
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
+    | verify-error{get-edit-part -name "UseCaseTest1"}
+    
+// -------  Try to drop Artifact from model explorer -------------------------------------------------
+with [get-view "Model Explorer" | get-tree] {
+    select "AllMappings/model.uml/<Model> Test/<Artifact> Test Subject"
+    get-item "AllMappings/model.uml/<Model> Test/<Artifact> Test Subject" | drag-start 90 15
+}
+// Drop element in diagram
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
+    | get-figure "1/0/0/1/1/0/0" | drop 2 139 -detail move
+// Check element was NOT created in diagram
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
+    | verify-error{get-edit-part -name "Test Subject"}
+    
+// -------  Try to drop Instance spécification from model explorer ----------------------------------
+// Select element in model
+with [get-view "Model Explorer" | get-tree] {
+    select [get-item "AllMappings/model.uml/<Model> Test" | get-item "<Instance Specification> newDefaultClass" 
+        -index 1]
+    get-item "AllMappings/model.uml/<Model> Test" | get-item "<Instance Specification> newDefaultClass" -index 1 
+        | drag-start 55 9
+}
+// Drop element in diagram
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
+    | get-figure "12/0/0/1/1/0/0" | drop 91 113 -detail move
+// Check element was NOT created in diagram
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
+    | verify-error{get-edit-part -name "newDefaultClass"}
+
+// Check number of elements in diagram
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
+    | get-property childrenCount | equals 9 | verify-true
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

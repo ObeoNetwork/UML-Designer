@@ -1,0 +1,70 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: ContextForMessagesAndOperationCreationInSequenceDiagramInTestProject
+Element-Type: context
+Element-Version: 2.0
+Id: _X4ZsIOG2EeS3L8OLI5YuWw
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/13/15 11:22 AM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+//Create two classes and two actors in an empty sequencce diagram in test project
+with [get-editor "Test Sequence Diagram"] {
+    with [get-palette | get-palette-entry Class -index 1] {
+        mouse-move 30 9 button1 -height 23 -width 154
+        mouse-press 30 9 button1 -height 23 -width 154
+        mouse-release 30 9 button1 524288 -height 23 -width 154
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram"] {
+        mouse-move 32 42 button1 -height 500 -width 773
+        mouse-press 32 42 button1 -height 500 -width 773
+        mouse-release 32 42 button1 524288 -height 500 -width 773
+    }  
+    with [get-palette | get-palette-entry Class -index 1] {
+        mouse-move 19 7 button1 -height 23 -width 154
+        mouse-press 19 7 button1 -height 23 -width 154
+        mouse-release 19 7 button1 524288 -height 23 -width 154
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram"] {
+        mouse-move 260 50 button1 -height 500 -width 773
+        mouse-press 260 50 button1 -height 500 -width 773
+        mouse-release 260 50 button1 524288 -height 500 -width 773
+    }
+    with [get-palette] {
+        with [get-palette-entry Lifeline] {
+            mouse-move 7 11 button1 -height 23 -width 154
+            mouse-press 7 11 button1 -height 23 -width 154
+            mouse-release 7 11 button1 524288 -height 23 -width 154
+        }
+        with [get-palette-entry Actor -index 1] {
+            mouse-move 26 9 button1 -height 23 -width 154
+            mouse-press 26 9 button1 -height 23 -width 154
+            mouse-release 26 9 button1 524288 -height 23 -width 154
+        }
+    }
+    with [get-palette | get-palette-entry Lifeline] {
+        mouse-move 9 12 button1 -height 23 -width 154
+        mouse-press 9 12 button1 -height 23 -width 154
+        mouse-release 9 12 button1 524288 -height 23 -width 154
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram"] {
+            mouse-move 460 49 -height 500 -width 773
+            mouse-press 460 49 button1 -height 40 -width 130
+            mouse-release 460 49 button1 524288 -height 40 -width 130
+    }
+    with [get-palette | get-palette-entry Actor -index 1] {
+        mouse-move 33 5 button1 -height 23 -width 136
+        mouse-press 33 5 button1 -height 23 -width 136
+        mouse-release 33 5 button1 524288 -height 23 -width 136
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram"] {
+        mouse-move 650 51 button1 -height 500 -width 773
+        mouse-press 650 51 button1 -height 500 -width 773
+        mouse-release 650 51 button1 524288 -height 500 -width 773
+    }
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

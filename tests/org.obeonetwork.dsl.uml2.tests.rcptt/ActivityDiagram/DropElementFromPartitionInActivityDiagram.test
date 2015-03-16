@@ -1,0 +1,61 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_PbyVcIBsEeS4X6G9cD21hw,_k1QyAN3CEeS8j822Nc50oQ
+Element-Name: DropElementFromPartitionInActivityDiagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _2M0wMN3BEeS8j822Nc50oQ
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/8/15 10:34 AM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Open Travel agency project Sales Activity diagram
+
+Test:
+
+Drag and drop "Compile Additional information" from "Proposal Owner" partition to "Quote Owner" partition.
+
+Result:
+- element is moved to Quote Owner partition
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Drop an opaque action from "Proposal Owner" partition to "Quote Owner" partition
+with [get-editor "Sales Activity" | get-diagram -index 1 | get-edit-part -name "Sales Activity" | get-edit-part 
+    -name Sales | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+    with [get-edit-part -name "Proposal Owner" | get-edit-part 
+        -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+        with [get-edit-part -name "Compile additional information" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+            mouse-move 153 17 button1 -height 47 -width 196
+            mouse-press 153 17 button1 -height 47 -width 196
+        }
+    }
+    with [get-edit-part -name "Quote Owner" | get-edit-part 
+        -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+        mouse-drag 141 450 button1 524288 -height 675 -width 185
+        mouse-release 141 450 button1 524288 -height 675 -width 185
+    }
+}
+// Check diagram
+get-editor "Sales Activity" | get-diagram -index 1 | get-edit-part -name "Sales Activity" | get-edit-part -name Sales 
+    | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name "Quote Owner" 
+    | get-edit-part -className DNodeContainerViewNodeContainerCompartment2EditPart 
+    | get-property childrenCount | equals 2 | verify-true
+
+// Check model
+with [get-editor "Sales Activity" | get-diagram -index 1 | get-edit-part -name "Sales Activity" | get-edit-part 
+    -name Sales | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part 
+    -name "Quote Owner" | get-edit-part -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+    get-property "element.semanticElements.ActivityPartition[0].containedNode.size" | equals 2 | verify-true
+    get-property "element.semanticElements.ActivityPartition[0].containedNode.OpaqueAction[1].name" 
+        | equals "Compile additional information" | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

@@ -1,0 +1,72 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_PbyVcIBsEeS4X6G9cD21hw,_3PCqIN-NEeSEJ-mMQXHd1A
+Element-Name: CreateNewActorLifeLineWithPaletteToolInSequenceDiagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _mHUIoN-XEeSEJ-mMQXHd1A
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/10/15 5:45 PM
+Testcase-Type: ecl
+Verifications: _dAsF4N-YEeSEJ-mMQXHd1A
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Create a New semantic element in Sequence Diagram: Actor
+
+Test:
+- with Palette tool : Actor create new in Sequence diagram.
+
+Result:
+- new element appears in diagram
+- new element appears in model explorer
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Create new Actor lifeLine with palette tool
+with [get-editor "Test Sequence Diagram"] {
+	// Select tool
+     with [get-palette] {
+        with [get-palette-entry Lifeline] {
+            mouse-move 7 8 button1 -height 23 -width 134
+            mouse-press 7 8 button1 -height 23 -width 134
+            mouse-release 7 8 button1 524288 -height 23 -width 134
+        }
+        with [get-palette-entry Actor -index 1] {
+            mouse-move 38 6 button1 -height 23 -width 134
+            mouse-press 38 6 button1 -height 23 -width 134
+            mouse-release 38 6 button1 524288 -height 23 -width 134
+        }
+    }
+    // Click in sequence diagram area
+    with [get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram"] {
+        mouse-move 96 31 button1 -height 500 -width 793
+        mouse-press 96 31 button1 -height 500 -width 793
+        mouse-release 96 31 button1 524288 -height 500 -width 793
+    }
+}
+// Check diagram 
+// Check label in top of diagram
+with [get-editor "Test Sequence Diagram" | get-label "Actor1 : Actor1 [1]"] {
+    get-property "getText()" | equals "Actor1 : Actor1 [1]" | verify-true
+    get-property "isVisible()" | equals true | verify-true
+}
+// Check Label in diagram area
+with [get-editor "Test Sequence Diagram" | get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram" 
+    | get-edit-part -name "Actor1 : Actor1 [1]"] {
+    get-edit-part -className SquareEditPart | get-figure "0/0" | get-property "getText()" 
+        | equals "Actor1 : Actor1 [1]" | verify-true
+}
+// Check Lifeline in diagram area
+with [get-editor "Test Sequence Diagram" | get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram" 
+    | get-edit-part -name "Actor1 : Actor1 [1]"] {
+    get-edit-part -name Actor1 | get-edit-part -className SquareEditPart | get-figure "0/0" 
+        | get-property "isVisible()" | equals true | verify-true
+}
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

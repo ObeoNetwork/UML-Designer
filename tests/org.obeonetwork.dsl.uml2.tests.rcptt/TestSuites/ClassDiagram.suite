@@ -4,6 +4,44 @@ Element-Name: ClassDiagram
 Element-Type: testsuite
 Element-Version: 2.0
 Id: _OxGOMJWrEeSFgY1mGxkuMg
-Runtime-Version: 2.0.0.201412081054
-Save-Time: 1/6/15 2:52 PM
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/17/15 3:52 PM
 
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
+Content-Type: text/testcase
+Entry-Name: testcase-items
+
+_NsYwwMyREeSmqoI7c5i_uw	// kind: 'test' name: 'CreateNewClassDiagramFromDashBoard' path: '../ClassDiagram/CreateNewClassDiagramFromDashBoard.test'
+_2UcAkM1ZEeSHkpcdtO-QuQ	// kind: 'test' name: 'CreateNewRelationshipsAssociationWithPaletteToolInClassDiagram' path: '../ClassDiagram/CreateNewRelationshipsAssociationWithPaletteToolInClassDiagram.test'
+_8MibANH8EeSJr768y9jiXA	// kind: 'test' name: 'DropAnAttributeFromAnOtherClassifierInClassDiagram' path: '../ClassDiagram/DropAnAttributeFromAnOtherClassifierInClassDiagram.test'
+_lRQQ0MyzEeSmqoI7c5i_uw	// kind: 'test' name: 'CreateNewTypesPackageWithPaletteToolInClassDiagram' path: '../ClassDiagram/CreateNewTypesPackageWithPaletteToolInClassDiagram.test'
+_dS1QkM2WEeSHkpcdtO-QuQ	// kind: 'test' name: 'CreateNewRelationshipsUsageWithPaletteToolInClassDiagram' path: '../ClassDiagram/CreateNewRelationshipsUsageWithPaletteToolInClassDiagram.test'
+_wbk6gM1_EeSHkpcdtO-QuQ	// kind: 'test' name: 'CreateNewRelationshipsCompositionWithPaletteToolInClassDiagram' path: '../ClassDiagram/CreateNewRelationshipsCompositionWithPaletteToolInClassDiagram.test'
+_AMqcMM1VEeSHkpcdtO-QuQ	// kind: 'test' name: 'CreateNewTypesDataTypeWithPaletteToolInClassDiagram' path: '../ClassDiagram/CreateNewTypesDataTypeWithPaletteToolInClassDiagram.test'
+_MKRTYMy1EeSmqoI7c5i_uw	// kind: 'test' name: 'CreateNewTypesInterfaceWithPaletteToolinClassDiagram' path: '../ClassDiagram/CreateNewTypesInterfaceWithPaletteToolinClassDiagram.test'
+_xSarcM1JEeSHkpcdtO-QuQ	// kind: 'test' name: 'CreateNewFeaturesPropertyWithPaletteToolInClassDiagram' path: '../ClassDiagram/CreateNewFeaturesPropertyWithPaletteToolInClassDiagram.test'
+_CWp6oM1tEeSHkpcdtO-QuQ	// kind: 'test' name: 'CreateNewRelationshipsGeneralizationWithPaletteToolInClassDiagram' path: '../ClassDiagram/CreateNewRelationshipsGeneralizationWithPaletteToolInClassDiagram.test'
+_OyJAMNIpEeSzLt1JkYCXlg	// kind: 'test' name: 'ReconnectUsageSourceAndTargetInClassDiagram' path: '../ClassDiagram/ReconnectUsageSourceAndTargetInClassDiagram.test'
+_3KqiMM7_EeSz9_HNAw245A	// kind: 'test' name: 'ShowAllMappingsInClassDiagram' path: '../ClassDiagram/ShowAllMappingsInClassDiagram.test'
+_Ph-MwNJMEeSzLt1JkYCXlg	// kind: 'test' name: 'ReconnectInterfaceRealizationClassSourceAndTargetInClassDiagram' path: '../ClassDiagram/ReconnectInterfaceRealizationClassSourceAndTargetInClassDiagram.test'
+_4WbFoM2JEeSHkpcdtO-QuQ	// kind: 'test' name: 'CreateNewRelationshipsAssociationClassWithPaletteToolInClassDiagram' path: '../ClassDiagram/CreateNewRelationshipsAssociationClassWithPaletteToolInClassDiagram.test'
+_NAwIEMy4EeSmqoI7c5i_uw	// kind: 'test' name: 'CreateNewTypesEnumerationWithPaletteToolInClassDiagram' path: '../ClassDiagram/CreateNewTypesEnumerationWithPaletteToolInClassDiagram.test'
+_VapUsM2IEeSHkpcdtO-QuQ	// kind: 'test' name: 'CreateNewRelationshipsAggregationWithPaletteToolInClassDiagram' path: '../ClassDiagram/CreateNewRelationshipsAggregationWithPaletteToolInClassDiagram.test'
+__595EMvoEeSu594eI49JZA	// kind: 'test' name: 'CreateNewClassDiagramFromModelInModelExplorer' path: '../ClassDiagram/CreateNewClassDiagramFromModelInModelExplorer.test'
+_ZnxcgMzEEeSmqoI7c5i_uw	// kind: 'test' name: 'CreateNewFeaturesOperationWithPaletteToolInClassDiagram' path: '../ClassDiagram/CreateNewFeaturesOperationWithPaletteToolInClassDiagram.test'
+_RJW4wM1TEeSHkpcdtO-QuQ	// kind: 'test' name: 'CreateNewFeaturesTypedPropertyWithPaletteToolInClassDiagram' path: '../ClassDiagram/CreateNewFeaturesTypedPropertyWithPaletteToolInClassDiagram.test'
+_kCSgQM2YEeSHkpcdtO-QuQ	// kind: 'test' name: 'CreateNewRelationshipsAbstractionWithPaletteToolInClassDiagram' path: '../ClassDiagram/CreateNewRelationshipsAbstractionWithPaletteToolInClassDiagram.test'
+_qB940M2aEeSHkpcdtO-QuQ	// kind: 'test' name: 'CreateNewRelationshipsBindingWithPaletteToolInClassDiagram' path: '../ClassDiagram/CreateNewRelationshipsBindingWithPaletteToolInClassDiagram.test'
+_Tc1SENJHEeSzLt1JkYCXlg	// kind: 'test' name: 'ReconnectGeneralizationSourceAndTargetInClassDiagram' path: '../ClassDiagram/ReconnectGeneralizationSourceAndTargetInClassDiagram.test'
+__bSEwNJFEeSzLt1JkYCXlg	// kind: 'test' name: 'ReconnectDependencySourceAndTargetInClassDiagram' path: '../ClassDiagram/ReconnectDependencySourceAndTargetInClassDiagram.test'
+_bVUkcMy5EeSmqoI7c5i_uw	// kind: 'test' name: 'CreateNewTypesPrimitiveTypeWithPaletteToolInClassDiagram' path: '../ClassDiagram/CreateNewTypesPrimitiveTypeWithPaletteToolInClassDiagram.test'
+_PlOaQM1YEeSHkpcdtO-QuQ	// kind: 'test' name: 'CreateNewFeaturesLiteralWithPaletteToolInClassDiagram' path: '../ClassDiagram/CreateNewFeaturesLiteralWithPaletteToolInClassDiagram.test'
+_svjhcM2PEeSHkpcdtO-QuQ	// kind: 'test' name: 'CreateNewRelationshipsDependencyWithPaletteToolInClassDiagram' path: '../ClassDiagram/CreateNewRelationshipsDependencyWithPaletteToolInClassDiagram.test'
+_FSeOwMytEeSmqoI7c5i_uw	// kind: 'test' name: 'CreateNewTypesClassWithPaletteToolInClassDiagram' path: '../ClassDiagram/CreateNewTypesClassWithPaletteToolInClassDiagram.test'
+_BzkXgM10EeSHkpcdtO-QuQ	// kind: 'test' name: 'CreateNewRelationshipsReferenceWithPaletteToolInClassDiagram' path: '../ClassDiagram/CreateNewRelationshipsReferenceWithPaletteToolInClassDiagram.test'
+_O98moMyOEeSmqoI7c5i_uw	// kind: 'test' name: 'CreateNewClassDiagramFromProjectInModelExplorer' path: '../ClassDiagram/CreateNewClassDiagramFromProjectInModelExplorer.test'
+_Nb2o4NIMEeSzLt1JkYCXlg	// kind: 'test' name: 'AddRelatedElementsInClassDiagram' path: '../ClassDiagram/AddRelatedElementsInClassDiagram.test'
+_DHTG4M2NEeSHkpcdtO-QuQ	// kind: 'test' name: 'CreateNewRelationshipsInterfaceRealizationWithPaletteToolInClassDiagram' path: '../ClassDiagram/CreateNewRelationshipsInterfaceRealizationWithPaletteToolInClassDiagram.test'
+_gQqI4M1wEeSHkpcdtO-QuQ	// kind: 'test' name: 'CreateNewRelationshipsNestClassifierWithPaletteToolInClassDiagram' path: '../ClassDiagram/CreateNewRelationshipsNestClassifierWithPaletteToolInClassDiagram.test'
+
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--

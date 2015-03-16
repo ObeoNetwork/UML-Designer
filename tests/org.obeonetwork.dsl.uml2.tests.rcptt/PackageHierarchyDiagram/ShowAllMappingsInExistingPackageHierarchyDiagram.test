@@ -1,0 +1,79 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_p5zq0M4oEeS8M6MvytM1MA,_hu8vMN6wEeS6weNBnDaFmQ
+Element-Name: ShowAllMappingsInExistingPackageHierarchyDiagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _8UTSoN6vEeS6weNBnDaFmQ
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/10/15 11:44 AM
+Testcase-Type: ecl
+Verifications: _GU_SMM5OEeS8M6MvytM1MA
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Open an existing Class diagram which contains all available mappings and verify they are displayed.
+
+Test:
+- Open an existing diagram
+
+Result:
+- Verify All elements appear
+
+TODO: this test only verify number of elements but not styles of the elements
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+
+// Check Package
+get-editor "Test Package Hierarchy" | get-diagram -index 1 | get-edit-part -name "Test Package Hierarchy" 
+    | get-edit-part -name "New package 2" | get-edit-part -className WorkspaceImageEditPart | get-figure "0/0" 
+    | get-property "getText()" | equals "New package 2" | verify-true
+
+// Check Import connection
+get-editor "Test Package Hierarchy" | get-diagram -index 1 | get-edit-part -name "Test Package Hierarchy" 
+    | get-edit-part -name "New package 2" | get-target-connection 0 | get-property "getFigure().isVisible()" 
+    | equals true | verify-true
+get-editor "Test Package Hierarchy" | get-diagram -index 1 | get-edit-part -name "Test Package Hierarchy" 
+    | get-edit-part -name "New package 2" | get-target-connection 0 | get-edit-part -className "" 
+    | get-property "getFigure().getText()" | equals "<<import>>" | verify-true
+    
+// Check usage connection
+ get-editor "Test Package Hierarchy" | get-diagram -index 1 | get-edit-part -name "Test Package Hierarchy" 
+     | get-edit-part -name "New package 5" | get-target-connection 0 | get-property "getFigure().isVisible()" 
+     | equals true | verify-true
+ get-editor "Test Package Hierarchy" | get-diagram -index 1 | get-edit-part -name "Test Package Hierarchy" 
+     | get-edit-part -name "New package 5" | get-target-connection 0 | get-edit-part -className "" 
+     | get-property "getFigure().getText()" | equals "<<use>>" | verify-true
+
+// Check merge connection
+   get-editor "Test Package Hierarchy" | get-diagram -index 1 | get-edit-part -name "Test Package Hierarchy"
+       | get-edit-part -name "New package 6" | get-target-connection 0| get-property "getFigure().isVisible()" 
+       | equals true | verify-true
+   get-editor "Test Package Hierarchy" | get-diagram -index 1 | get-edit-part -name "Test Package Hierarchy"
+       | get-edit-part -name "New package 6" | get-target-connection 0 | get-edit-part -className "" 
+       | get-property "getFigure().getText()" | equals "<<merge>>" | verify-true
+
+// Check Dependency connection
+get-editor "Test Package Hierarchy" | get-diagram -index 1 | get-edit-part -name "Test Package Hierarchy" 
+    | get-edit-part -name "New package 4" | get-target-connection 0 | get-property "getFigure().isVisible()" 
+    | equals true | verify-true
+
+//Check Contained In connection
+get-editor "Test Package Hierarchy" | get-diagram -index 1 | get-edit-part -name "Test Package Hierarchy" 
+    | get-edit-part -name "New package 1" | get-target-connection 0 | get-property "getFigure().isVisible()" 
+    | equals true | verify-true
+
+// Check not Public Import
+get-editor "Test Package Hierarchy" | get-diagram -index 1 | get-edit-part -name "Test Package Hierarchy"
+    | get-edit-part -name "New package 6" -index 1 | get-target-connection 0 | get-property "getFigure().isVisible()" 
+    | equals true | verify-true
+get-editor "Test Package Hierarchy" | get-diagram -index 1 | get-edit-part -name "Test Package Hierarchy"
+    | get-edit-part -name "New package 6" -index 1 | get-target-connection 0 | get-edit-part -className "" 
+    | get-property "getFigure().getText()" | equals "<<access>>" | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

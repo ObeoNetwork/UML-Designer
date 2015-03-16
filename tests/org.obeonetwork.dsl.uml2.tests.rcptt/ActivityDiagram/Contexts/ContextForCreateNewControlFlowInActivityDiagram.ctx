@@ -1,0 +1,85 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: ContextForCreateNewControlFlowInActivityDiagram
+Element-Type: context
+Element-Version: 2.0
+Id: _t-4bcN0eEeS8j822Nc50oQ
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/7/15 2:52 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+// Create Opaque Actions
+with [get-editor "NewModel Activity Diagram"] {
+    // Create OpaqueAction1
+    with [get-palette] {
+        with [get-palette-entry "Opaque Action"] {
+            mouse-move 25 13 button1 -height 24 -width 125
+            mouse-press 25 13 button1 -height 24 -width 125
+            mouse-release 24 13 button1 524288 -height 24 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram" | get-edit-part -name NewModel 
+        | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        mouse-move 90 93 button1 -height 326 -width 586
+        mouse-press 90 93 button1 -height 326 -width 586
+        mouse-release 90 93 button1 524288 -height 326 -width 586
+    }
+    
+    // Create OpaqueAction2
+    with [get-palette] {
+        with [get-palette-entry "Opaque Action"] {
+            mouse-move 63 18 button1 -height 24 -width 125
+            mouse-press 63 18 button1 -height 24 -width 125
+            mouse-release 63 18 button1 524288 -height 24 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram" | get-edit-part -name NewModel 
+        | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        mouse-move 82 257 button1 -height 326 -width 586
+        mouse-press 82 257 button1 -height 326 -width 586
+        mouse-release 82 257 button1 524288 -height 326 -width 586
+    }
+    
+    // Create OpaqueAction3
+    with [get-palette | get-palette-entry "Opaque Action"] {
+        mouse-move 45 9 button1 -height 23 -width 134
+        mouse-press 45 9 button1 -height 23 -width 134
+        mouse-release 45 9 button1 524288 -height 23 -width 134
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram" | get-edit-part -name NewModel 
+        | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        mouse-move 383 257 button1 -height 511 -width 546
+        mouse-press 383 257 button1 -height 511 -width 546
+        mouse-release 383 257 button1 524288 -height 511 -width 546
+    }
+}
+
+// Create decision node
+with [get-editor "NewModel Activity Diagram"] {
+    with [get-palette] {
+        with [get-palette-entry "Control Node"] {
+            mouse-move 9 8 button1 -height 23 -width 134
+            mouse-press 9 8 button1 -height 23 -width 134
+            mouse-release 9 8 button1 524288 -height 23 -width 134
+        }
+        with [get-palette-entry "Decision Node"] {
+            mouse-move 34 6 button1 -height 23 -width 134
+            mouse-press 34 6 button1 -height 23 -width 134
+            mouse-release 34 6 button1 524288 -height 23 -width 134
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram"] {
+        with [get-edit-part -name NewModel | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 308 209 button1 -height 511 -width 546
+            mouse-press 308 209 button1 -height 511 -width 546
+            mouse-release 308 209 button1 524288 -height 511 -width 546
+        }
+    }
+}
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

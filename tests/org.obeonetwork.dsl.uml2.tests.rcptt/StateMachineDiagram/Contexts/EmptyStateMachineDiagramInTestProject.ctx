@@ -1,0 +1,40 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: EmptyStateMachineDiagramInTestProject
+Element-Type: context
+Element-Version: 2.0
+Id: _Erm0gN3vEeS32_At8WTqBw
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/13/15 6:43 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+// Create state machine diagram in project test
+get-view "Model Explorer" | get-tree | select "test/model.uml/<Model> NewModel" 
+    | get-menu "New Representation/State Machine Diagram" | click
+get-window "New Representation" | get-button OK | click
+
+// Enlarge State Machine
+with [get-editor "NewModel State Machine Diagram" | get-diagram -index 1] {
+    with [get-edit-part -name "NewModel State Machine Diagram"] {
+       with [get-edit-part -name NewModel | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 187 15 button1 -height 111 -width 191
+            mouse-press 187 15 button1 -height 111 -width 191
+            mouse-release 187 15 button1 524288 -height 111 -width 191
+        }
+    }
+    with [get-figure "0/1/0/0"] {
+        mouse-move 198 120 button1 -height 528 -width 984
+        mouse-press 198 120 button1 -height 528 -width 984
+    }
+    with [get-edit-part -name "NewModel State Machine Diagram"] {
+        mouse-move 196 119 -mask 524288 -height 528 -width 984
+        mouse-drag 918 525 button1 524288 -height 528 -width 984
+        mouse-release 918 525 button1 524288 -height 528 -width 984
+    }
+ }
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

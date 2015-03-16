@@ -1,0 +1,125 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_p5zq0M4oEeS8M6MvytM1MA,_yiBa4N6cEeS6weNBnDaFmQ
+Element-Name: ShowAllMappingsInExistingStateMachine
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _crw5QN6cEeS6weNBnDaFmQ
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/17/15 12:29 PM
+Testcase-Type: ecl
+Verifications: _GU_SMM5OEeS8M6MvytM1MA
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Open an existing Class diagram which contains all available mappings and verify they are displayed.
+
+Test:
+- Open an existing diagram
+
+Result:
+- Verify first level element number
+- Verify second level element number
+
+TODO: this test only verify number of elements but not the types and styles of the elements
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Check Entry point
+with [get-editor "Test State Machine Diagram" | get-diagram -index 1 | get-edit-part -name "Test State Machine Diagram" 
+    | get-edit-part -name Test | get-edit-part -name "Entry_0"] {
+     get-edit-part -className WorkspaceImageEditPart | get-figure 0 | get-property "isVisible()" | equals true 
+         | verify-true
+     get-edit-part -name "Entry_0" | get-property "getFigure().getText()" | equals "Entry_0" | verify-true
+}
+    
+// Check Exit point
+with [get-editor "Test State Machine Diagram" | get-diagram -index 1 | get-edit-part -name "Test State Machine Diagram" 
+    | get-edit-part -name Test | get-edit-part -name "Exit_2"] {
+    get-edit-part -className WorkspaceImageEditPart | get-figure 0 | get-property "isVisible()" | equals true 
+        | verify-true
+    get-edit-part -name "Exit_2" | get-property "getFigure().getText()" | equals "Exit_2" | verify-true
+}
+
+// Check State Machine
+get-editor "Test State Machine Diagram" | get-diagram -index 1 
+    | get-edit-part -name "Test State Machine Diagram" 
+    | get-edit-part -name Test | get-property "getFigure().isVisible()" | equals true | verify-true
+
+// Check region
+get-editor "Test State Machine Diagram" | get-diagram -index 1 
+    | get-edit-part -name "Test State Machine Diagram" 
+    | get-edit-part -name Test | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart
+    |get-edit-part -name "new Region 1" | get-edit-part -className DNodeContainerViewNodeContainerCompartment2EditPart
+    | get-property "getFigure().isVisible()" | equals true | verify-true
+
+// Check elements in region
+with [get-editor "Test State Machine Diagram" | get-diagram -index 1 | get-edit-part -name "Test State Machine Diagram" 
+    | get-edit-part -name Test | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+    | get-edit-part -name "new Region 1" | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+    
+    // Check Initial State Node
+    get-edit-part -name "PseudoState_1" | get-edit-part -className WorkspaceImageEditPart 
+        | get-property "getFigure().isVisible()" | equals true | verify-true
+        
+    // Check Final State Node
+    get-edit-part -name "" | get-edit-part -className WorkspaceImageEditPart | get-property "getFigure().isVisible()" 
+        | equals true | verify-true
+    
+    // Check Fork
+    with [get-edit-part -name "Fork_2"] {
+        get-edit-part -className SquareEditPart | get-property "getFigure().isVisible()" | equals true | verify-true
+        get-edit-part -name "Fork_2" | get-property "getFigure().getText()" | equals "Fork_2" | verify-true
+    }
+    
+    // Check Join
+    with [get-edit-part -name "Join_3"] {
+        get-edit-part -className SquareEditPart | get-property "getFigure().isVisible()" | equals true | verify-true
+        get-edit-part -name "Join_3" | get-property "getFigure().getText()" | equals "Join_3" | verify-true
+    }
+    
+    // Check Deep History
+    get-edit-part -name "DeepHistory_8" | get-edit-part -className WorkspaceImageEditPart 
+        | get-property "getFigure().isVisible()" | equals true | verify-true
+
+    // Check Shallow History
+    get-edit-part -name "ShallowHistory_7" | get-edit-part -className WorkspaceImageEditPart 
+        | get-property "getFigure().isVisible()" | equals true | verify-true
+
+    // Check Junction
+    get-edit-part -name "Junction_5" | get-edit-part -className EllipseEditPart 
+        | get-property "getFigure().isVisible()" | equals true | verify-true
+    
+    // Check Choice
+    with [get-edit-part -name "Choice_4"] {
+        get-edit-part -className LozengeEditPart | get-property "getFigure().isVisible()" | equals true | verify-true
+        get-edit-part -name "Choice_4" | get-property "getFigure().getText()" | equals "Choice_4" | verify-true
+    }
+    
+    // Check Terminal State
+    get-edit-part -name "Terminate_6" | get-edit-part -className WorkspaceImageEditPart 
+        | get-property "getFigure().isVisible()" | equals true | verify-true
+    
+    // Check State
+    with [get-edit-part -name "State_2"] {
+        get-property "getFigure().isVisible()" | equals true | verify-true
+        get-edit-part -className DNodeListName2EditPart | get-property "getFigure().getText()" | equals "State_2" 
+            | verify-true
+    }
+    
+    // Check Transition
+     get-edit-part -name "State_2" | get-target-connection 0 | get-property "getFigure().isVisible()" | equals true 
+         | verify-true
+    
+    // Check Submachine
+    get-edit-part -name StateMachine2 | get-edit-part -className DNodeContainerViewNodeContainerCompartment2EditPart 
+        | get-property "getFigure().isVisible()" | equals true | verify-true
+}
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

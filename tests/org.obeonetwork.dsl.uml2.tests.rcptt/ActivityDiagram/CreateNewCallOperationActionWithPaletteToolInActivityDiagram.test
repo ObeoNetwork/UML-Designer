@@ -1,0 +1,93 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_X-rQgH-QEeS4X6G9cD21hw,_p-v3gMyvEeSmqoI7c5i_uw,_GPp1oNkXEeSn969efLWPgA,_w18PUNz2EeS8j822Nc50oQ,_--8QENhxEeSGfIdQZmgChQ
+Element-Name: CreateNewCallOperationActionWithPaletteToolInActivityDiagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _ZpjUcNkVEeSn969efLWPgA
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/7/15 9:35 AM
+Testcase-Type: ecl
+Verifications: _R9jqYNkbEeSn969efLWPgA
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Open a Test project 
+open a class diagram, create a class with operation
+Open empty  activity diagram
+
+Test:
+- create a Call Operation action node with palette tool
+
+Result:
+Element is added in activity element.
+- check diagram
+- chec model
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Create Call Operation Action
+with [get-editor "NewModel Activity Diagram"] {
+    with [get-palette] {
+        with [get-palette-entry Action] {
+            mouse-move 7 10 button1 -height 23 -width 214
+            mouse-press 7 10 button1 -height 23 -width 214
+            mouse-release 7 10 button1 524288 -height 23 -width 214
+        }
+        with [get-palette-entry "Call Operation Action"] {
+            mouse-move 49 15 button1 -height 23 -width 214
+            mouse-press 49 15 button1 -height 23 -width 214
+            mouse-release 49 15 button1 524288 -height 23 -width 214
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram" | get-edit-part 
+        -name "NewModel" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        mouse-move 48 64 button1 -height 322 -width 542
+        mouse-press 48 64 button1 -height 322 -width 542
+        mouse-release 48 64 button1 524288 -height 322 -width 542
+    }
+}
+// Select Class1 Operation1
+with [get-window "New Call Operation Action"] {
+    get-tree | select "<Model> NewModel/<Class> Class1/<Operation> Operation_1 \\(\\)"
+    get-button Finish | click
+}
+
+// Check diagram
+with [get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Activity Diagram"] {
+    with [get-edit-part -name "NewModel" | get-edit-part 
+        -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part 
+        -name "Operation_1_call : Operation_1" | get-edit-part 
+        -className DNodeContainerViewNodeContainerCompartment2EditPart | get-figure "1/0"] {
+        get-property "getLocation().x" | equals 50 | verify-true
+        get-property "getLocation().y" | equals 65 | verify-true
+        get-property "isVisible()" | equals true | verify-true
+    }
+}
+// Check port is present
+with [get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Activity Diagram" | get-edit-part -name "NewModel " | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part 
+    -name "Operation_1_call : Operation_1" | get-edit-part -name "target : [1]"] {
+    get-edit-part -className SquareEditPart | get-figure 0 | get-property "isVisible()" | equals true | verify-true
+    get-edit-part -name "target : [1]" | get-property "getFigure().getText()" | equals "target : [1]" | verify-true
+}
+
+// Check model
+with [get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Activity Diagram"] {
+    get-property "element.target.ownedElement.size" | equals 1 | verify-true
+    get-property "element.target.ownedElement.CallOperationAction[0].ownedElement.size" | equals 1 | verify-true
+    get-property "element.target.ownedElement.CallOperationAction[0].ownedElement.InputPin[0].name" | equals target 
+        | verify-true
+    get-property "element.target.ownedElement.CallOperationAction[0].name" | equals "Operation_1_call" | verify-true
+    get-property "element.target.ownedElement.CallOperationAction[0].operation.qualifiedName" 
+    | equals "NewModel::Class1::Operation_1" | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

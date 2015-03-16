@@ -1,0 +1,29 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: CreateArtifact3InDeploymentDiagramITestProject
+Element-Type: context
+Element-Version: 2.0
+Id: _i58foNhCEeSpqsLTetvOvg
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/1/15 9:42 AM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+// Create Artifact3 in Deployment diagram in Test Project
+with [get-editor "NewModel Deployment Diagram"] {
+    get-diagram -index 1 | get-edit-part -name "NewModel Deployment Diagram" | mouse-move 575 1 -height 494 -width 701
+    with [get-palette | get-palette-entry Artifact] {
+        mouse-move 75 10 button1 -height 23 -width 214
+        mouse-press 75 10 button1 -height 23 -width 214
+        mouse-release 75 10 button1 524288 -height 23 -width 214
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Deployment Diagram"] {
+        mouse-move 487 250 button1 -height 494 -width 701
+        mouse-press 487 250 button1 -height 494 -width 701
+        mouse-release 487 250 button1 524288 -height 494 -width 701
+    }
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

@@ -4,6 +4,37 @@ Element-Name: PackageHierarchy
 Element-Type: testsuite
 Element-Version: 2.0
 Id: _bld4kJWrEeSFgY1mGxkuMg
-Runtime-Version: 2.0.0.201412081054
-Save-Time: 1/6/15 2:53 PM
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/17/15 4:46 PM
 
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
+Content-Type: text/testcase
+Entry-Name: testcase-items
+
+_YyHwkN7QEeS6weNBnDaFmQ	// kind: 'test' name: 'ReconnectContainedInTargetInPackageHierarchyDiagram' path: '../PackageHierarchyDiagram/ReconnectContainedInTargetInPackageHierarchyDiagram.test'
+_tKrAEN66EeS6weNBnDaFmQ	// kind: 'test' name: 'CreateNewImportWithPaletteToolInPackageHierarchyDiagram' path: '../PackageHierarchyDiagram/CreateNewImportWithPaletteToolInPackageHierarchyDiagram.test'
+_QgcH4N7IEeS6weNBnDaFmQ	// kind: 'test' name: 'ReconnectImportSourceInPackageHierarchyDiagram' path: '../PackageHierarchyDiagram/ReconnectImportSourceInPackageHierarchyDiagram.test'
+_JemoUN-CEeSEJ-mMQXHd1A	// kind: 'test' name: 'HideContainmentWithFilterInPackageHierarchyDiagram' path: '../PackageHierarchyDiagram/HideContainmentWithFilterInPackageHierarchyDiagram.test'
+_t7w3EN7AEeS6weNBnDaFmQ	// kind: 'test' name: 'ReconnectDependencySourceInPackageHierarchyDiagram' path: '../PackageHierarchyDiagram/ReconnectDependencySourceInPackageHierarchyDiagram.test'
+_JGwJEN6-EeS6weNBnDaFmQ	// kind: 'test' name: 'CreateNewDependencyWithPaletteToolInPackageHierarchyDiagram' path: '../PackageHierarchyDiagram/CreateNewDependencyWithPaletteToolInPackageHierarchyDiagram.test'
+_OcQ-wN7KEeS6weNBnDaFmQ	// kind: 'test' name: 'ReconnectImportTargetInPackageHierarchyDiagram' path: '../PackageHierarchyDiagram/ReconnectImportTargetInPackageHierarchyDiagram.test'
+_As4ywN7MEeS6weNBnDaFmQ	// kind: 'test' name: 'ReconnectMergeSourceInPackageHierarchyDiagram' path: '../PackageHierarchyDiagram/ReconnectMergeSourceInPackageHierarchyDiagram.test'
+_T3HmQN68EeS6weNBnDaFmQ	// kind: 'test' name: 'CreateNewMergeWithPaletteToolInPackageHierarchyDiagram' path: '../PackageHierarchyDiagram/CreateNewMergeWithPaletteToolInPackageHierarchyDiagram.test'
+_8UTSoN6vEeS6weNBnDaFmQ	// kind: 'test' name: 'ShowAllMappingsInExistingPackageHierarchyDiagram' path: '../PackageHierarchyDiagram/ShowAllMappingsInExistingPackageHierarchyDiagram.test'
+_oVhYkN7GEeS6weNBnDaFmQ	// kind: 'test' name: 'ReconnectDependencyTargetInPackageHierarchyDiagram' path: '../PackageHierarchyDiagram/ReconnectDependencyTargetInPackageHierarchyDiagram.test'
+_3Nm20N95EeSEJ-mMQXHd1A	// kind: 'test' name: 'RemoveExistingElementsWithPaletteToolInPackageHierarchyDiagram' path: '../PackageHierarchyDiagram/RemoveExistingElementsWithPaletteToolInPackageHierarchyDiagram.test'
+_E9YWYN6yEeS6weNBnDaFmQ	// kind: 'test' name: 'CreateNewPackageWithPaletteToolInPackageHierarchyDiagram' path: '../PackageHierarchyDiagram/CreateNewPackageWithPaletteToolInPackageHierarchyDiagram.test'
+_H5BLYN9SEeSEJ-mMQXHd1A	// kind: 'test' name: 'DeleteMergeInPackageHierarchyDiagram' path: '../PackageHierarchyDiagram/DeleteMergeInPackageHierarchyDiagram.test'
+_J0lVoN9REeSEJ-mMQXHd1A	// kind: 'test' name: 'DeleteDependencyInPackageHierarchyDiagram' path: '../PackageHierarchyDiagram/DeleteDependencyInPackageHierarchyDiagram.test'
+_-g-zUN60EeS6weNBnDaFmQ	// kind: 'test' name: 'CreateNewContainedInWithPaletteToolInPackageHierarchyDiagram' path: '../PackageHierarchyDiagram/CreateNewContainedInWithPaletteToolInPackageHierarchyDiagram.test'
+_K9elcN9TEeSEJ-mMQXHd1A	// kind: 'test' name: 'DeletePackageInPackageHierarchyDiagram' path: '../PackageHierarchyDiagram/DeletePackageInPackageHierarchyDiagram.test'
+_MGw7cN7UEeS6weNBnDaFmQ	// kind: 'test' name: 'DeleteContainedInInPackageHierarchyDiagram' path: '../PackageHierarchyDiagram/DeleteContainedInInPackageHierarchyDiagram.test'
+_sn5ywN7REeS6weNBnDaFmQ	// kind: 'test' name: 'ReconnectContainedInSourceInPackageHierarchyDiagram' path: '../PackageHierarchyDiagram/ReconnectContainedInSourceInPackageHierarchyDiagram.test'
+_Gyxm8d9QEeSEJ-mMQXHd1A	// kind: 'test' name: 'DeleteImportInPackageHierarchyDiagram' path: '../PackageHierarchyDiagram/DeleteImportInPackageHierarchyDiagram.test'
+_3QvSEN9zEeSEJ-mMQXHd1A	// kind: 'test' name: 'AddRelatedElementsInPackageHierarchyDiagram' path: '../PackageHierarchyDiagram/AddRelatedElementsInPackageHierarchyDiagram.test'
+_CNfDwN-FEeSEJ-mMQXHd1A	// kind: 'test' name: 'CreateNewPackageHierarchyDiagramFromModelExplorer' path: '../PackageHierarchyDiagram/CreateNewPackageHierarchyDiagramFromModelExplorer.test'
+_I-pycN69EeS6weNBnDaFmQ	// kind: 'test' name: 'CreateNewUsageWithPaletteToolInPackageHierarchyDiagram' path: '../PackageHierarchyDiagram/CreateNewUsageWithPaletteToolInPackageHierarchyDiagram.test'
+_isCt8N7OEeS6weNBnDaFmQ	// kind: 'test' name: 'ReconnectMergeTargetInPackageHierarchyDiagram' path: '../PackageHierarchyDiagram/ReconnectMergeTargetInPackageHierarchyDiagram.test'
+_2BohAN97EeSEJ-mMQXHd1A	// kind: 'test' name: 'AddExistingElementWithPaletteToolInPackageHierarchyDiagram' path: '../PackageHierarchyDiagram/AddExistingElementWithPaletteToolInPackageHierarchyDiagram2.test'
+
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--

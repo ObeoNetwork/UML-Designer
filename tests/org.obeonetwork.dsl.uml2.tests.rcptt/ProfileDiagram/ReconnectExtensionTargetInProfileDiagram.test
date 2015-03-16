@@ -1,0 +1,92 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_X-rQgH-QEeS4X6G9cD21hw,_od2e4OOMEeSBWuBfnG9TPA,_fQXpIOQwEeSOosy0KaL0vQ
+Element-Name: ReconnectExtensionTargetInProfileDiagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _3aEiIOQyEeSOosy0KaL0vQ
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/16/15 4:27 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Reconnect Extension source
+
+Test:
+- Reconnect ExtensionSource
+
+Result:
+- Source is reconnected
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Reconnect target
+with [get-editor "Test Profile Diagram"] {
+    with [get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
+        with [get-edit-part -name "«Metaclass»\n"
+            + "Class" | get-target-connection 0 | get-handle SiriusConnectionEndPointHandle -index 1] {
+            mouse-move 2 4 button1 -height 7 -width 7
+            mouse-press 2 4 button1 -height 7 -width 7
+        }
+        with [get-edit-part -name "«Metaclass»\n"
+            + "Actor" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart]{
+            mouse-drag 1 1 button1 524288 -height 524 -width 646
+            mouse-release 1 1 button1 524288 -height 524 -width 646
+        }
+    }
+}
+// Check previous connection is removed
+with [get-editor "Test Profile Diagram" | get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
+    get-edit-part -name "«Metaclass»\n"
+        + "Class" | verify-error {get-target-connection 0}
+}
+// Check diagram
+with [get-editor "Test Profile Diagram" | get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
+    with [get-edit-part -name "«Metaclass»\n"
+        + "Actor" | get-target-connection 0] {
+        get-property "element.sourceNode.name" | equals "«Stereotype» \n"
+            + "Stereotype1" | verify-true
+        get-property "element.targetNode.name" | equals "«Metaclass»\n"
+            + "Actor" | verify-true
+        get-property "getFigure().isVisible()" | equals true | verify-true
+    }
+}
+
+// Try to reconnect target to a Stereotype (Invalid Action)
+with [get-editor "Test Profile Diagram"] {
+    with [get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
+        with [get-edit-part -name "«Metaclass»\n"
+            + "Actor" | get-target-connection 0] {
+            mouse-move 190 34 button1 -height 188 -width 349
+            mouse-press 190 34 button1 -height 188 -width 349
+            mouse-release 192 36 button1 524288 -height 192 -width 352
+        }
+        with [get-edit-part -name "«Metaclass»\n"
+            + "Actor" | get-target-connection 0 | get-handle SiriusConnectionEndPointHandle -index 1] {
+            mouse-move 3 1 button1 -height 7 -width 7
+            mouse-press 3 1 button1 -height 7 -width 7
+        }
+        with [get-edit-part -name "«Stereotype» \n"
+            + "Stereotype2" | get-edit-part -className DNodeListNameEditPart]{
+            mouse-drag 1 1 button1 524288 -height 524 -width 646
+            mouse-release 1 1 button1 524288 -height 524 -width 646
+        }
+    }
+}
+
+with [get-editor "Test Profile Diagram" | get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
+    // Check connection is not changed
+    get-edit-part -name "«Stereotype» \n"
+        + "Stereotype2" | verify-error {get-target-connection 0}
+    // Check previous connection is not changed
+    get-edit-part -name "«Metaclass»\n"
+        + "Actor" | get-target-connection 0 | get-property "element.targetNode.name" | equals "«Metaclass»\n"
+        + "Actor" | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

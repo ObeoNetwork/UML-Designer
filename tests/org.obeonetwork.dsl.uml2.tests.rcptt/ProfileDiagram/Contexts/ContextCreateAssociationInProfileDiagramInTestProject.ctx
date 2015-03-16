@@ -1,0 +1,42 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: ContextCreateAssociationInProfileDiagramInTestProject
+Element-Type: context
+Element-Version: 2.0
+Id: _XNK-AORMEeSmuofwxhKK3A
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/16/15 5:22 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+// To be add after ContextForGeneralizationAssociationReconnectioniProfilDiagramInTestProject
+// Create a Generalization between two Stereotypes
+with [get-editor "Test Profile Diagram"] {
+    with [get-palette | get-palette-entry Association] {
+        mouse-move 19 8 button1 -height 23 -width 182
+        mouse-press 19 8 button1 -height 23 -width 182
+        mouse-release 19 8 button1 524288 -height 23 -width 182
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
+       with [get-edit-part -name "«Stereotype» \n"
+            + "Stereotype1" | get-edit-part -className DNodeListNameEditPart] {
+            mouse-move 87 29 button1 -height 34 -width 100
+            mouse-press 87 29 button1 -height 34 -width 100
+            mouse-release 87 29 button1 524288 -height 34 -width 100
+        }
+        with [get-edit-part -name "«Stereotype» \n"
+            + "Stereotype2" | get-edit-part -className DNodeListNameEditPart] {
+            mouse-move 76 15 button1 -height 34 -width 100
+            mouse-press 76 15 button1 -height 34 -width 100
+            mouse-hover 76 15 -height 34 -width 100
+        }
+    }
+}
+// Check context
+get-editor "Test Profile Diagram" | get-diagram -index 1 | get-edit-part -name "Test Profile Diagram" | get-edit-part 
+    -name "«Stereotype» \n"
+    + "Stereotype2" | get-target-connection 0
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

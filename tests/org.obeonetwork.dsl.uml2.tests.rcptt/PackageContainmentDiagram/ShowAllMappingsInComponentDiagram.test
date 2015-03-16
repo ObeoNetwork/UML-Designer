@@ -1,0 +1,145 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_p5zq0M4oEeS8M6MvytM1MA,_SRs8UNRjEeSQYq5tjqphxg
+Element-Name: ShowAllMappingsInComponentDiagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _TyV_AOdDEeSXar-HajHJtg
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/20/15 11:55 AM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Open all mappings project and component diagram
+
+Test:
+- With the filter hide connectors
+- with the filter show connectors
+
+Result:
+- check diagram
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Check global number of elements
+get-editor "Test Component Diagram" | get-diagram -index 1 | get-edit-part -name "Test Component Diagram" 
+    | get-property childrenCount | equals 12 | verify-true
+get-editor "Test Component Diagram" | get-diagram -index 1 | get-edit-part -name "Test Component Diagram" 
+    | get-property "getConnections().size()" | equals 17 | verify-true
+  
+// Provided and required interface
+with [get-editor "Test Component Diagram" | get-diagram -index 1 | get-edit-part -name "Test Component Diagram"] {
+    get-edit-part -name "Default Interface" | get-edit-part -className BundledImageEditPart 
+        | get-property "getFigure().isVisible()" | equals true | verify-true
+    get-edit-part -name "Default Interface" -index 1 | get-edit-part 
+        -className RotatableImageBasedOnFirstSourceConnectionEditPart | get-property "getFigure().isVisible()" 
+        | equals true | verify-true
+}
+
+// Provided and required interface from other package
+with [get-editor "Test Component Diagram" | get-diagram -index 1 | get-edit-part -name "Test Component Diagram"] {
+    get-edit-part -name "Interface From Other Package" | get-edit-part -className BundledImageEditPart 
+        | get-property "getFigure().isVisible()" | equals true | verify-true
+    get-edit-part -name "Interface From Other Package" -index 1 | get-edit-part 
+        -className RotatableImageBasedOnFirstSourceConnectionEditPart | get-property "getFigure().isVisible()" 
+        | equals true | verify-true
+}
+
+// Usage Interface to component or port
+// Usage Component or port to interface
+with [get-editor "Test Component Diagram" | get-diagram -index 1 | get-edit-part -name "Test Component Diagram" 
+    | get-edit-part -name Component] {
+    get-target-connection 0 | get-property "getFigure().isVisible()" | equals true | verify-true
+    get-edit-part -name Port1 | get-target-connection 0 | get-property "getFigure().isVisible()" | equals true 
+        | verify-true
+}
+
+// Interface realization Interface to component or port
+// Interface realization Component or port to interface
+with [get-editor "Test Component Diagram" | get-diagram -index 1 | get-edit-part -name "Test Component Diagram"] {
+    get-edit-part -name Component2 | get-edit-part -name Port2 | get-target-connection 0 
+        | get-property "getFigure().isVisible()" | equals true | verify-true
+    get-edit-part -name DefaultClass | get-target-connection 0 | get-property "getFigure().isVisible()" | equals true 
+        | verify-true
+    with [get-edit-part -name "Default Interface"] {
+        get-target-connection 0 | get-property "getFigure().isVisible()" | equals true | verify-true
+        get-target-connection 1 | get-property "getFigure().isVisible()" | equals true | verify-true
+    }
+    get-edit-part -name "Interface From Other Package" | get-target-connection 1 
+        | get-property "getFigure().isVisible()" | equals true | verify-true
+}
+
+// Component realization
+with [get-editor "Test Component Diagram" | get-diagram -index 1 | get-edit-part -name "Test Component Diagram"] {
+    get-edit-part -name "Component From Other Package" | get-target-connection 0 
+        | get-property "getFigure().isVisible()" | equals true | verify-true
+}
+
+// Redefined
+get-editor "Test Component Diagram" | get-diagram -index 1 | get-edit-part -name "Test Component Diagram"
+    | get-edit-part -name DefaultClass | get-edit-part -name Port1 | get-target-connection 0 
+    | get-property "getFigure().isVisible()" | equals true | verify-true
+
+
+// Connectors
+with [get-editor "Test Component Diagram" | get-diagram -index 1 | get-edit-part -name "Test Component Diagram"] {
+    with [get-edit-part -name "Default Interface" -index 1 | get-target-connection 0] {
+        get-property "getFigure().isVisible()" | equals true | verify-true
+    }
+    get-edit-part -name "Interface From Other Package" -index 1 | get-target-connection 0 
+        | get-property "getFigure().isVisible()" | equals true | verify-true
+}
+// Dependency
+get-editor "Test Component Diagram" | get-diagram -index 1 | get-edit-part -name "Test Component Diagram" 
+    | get-edit-part -name Component | get-target-connection 1 | get-property "getFigure().isVisible()" | equals true //
+    | verify-true
+    
+// Component
+with [get-editor "Test Component Diagram" | get-diagram -index 1 | get-edit-part -name "Test Component Diagram" 
+    | get-edit-part -name Component] {
+    get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+        | get-property "getFigure().isVisible()" | equals true | verify-true
+    
+}
+// Component Port
+get-editor "Test Component Diagram" | get-diagram -index 1 | get-edit-part -name "Test Component Diagram" 
+    | get-edit-part -name Component | get-edit-part -name Port1 | get-edit-part -className BundledImageEditPart 
+    | get-property "getFigure().isVisible()" | equals true | verify-true
+
+// Class
+get-editor "Test Component Diagram" | get-diagram -index 1 | get-edit-part -name "Test Component Diagram" 
+    | get-edit-part -name DefaultClass | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartmentEditPart 
+    | get-property "getFigure().isVisible()" | equals true | verify-true
+
+// Class Port
+get-editor "Test Component Diagram" | get-diagram -index 1 | get-edit-part -name "Test Component Diagram" 
+    | get-edit-part -name DefaultClass | get-edit-part -name Port1 | get-edit-part 
+    -className BundledImageEditPart | get-property "getFigure().isVisible()" | equals true | verify-true
+
+// Class From Other package
+get-editor "Test Component Diagram" | get-diagram -index 1 | get-edit-part -name "Test Component Diagram" 
+    | get-edit-part -name "Class From Other Package" | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartmentEditPart | get-property "getFigure().isVisible()" 
+    | equals true | verify-true
+// Component
+with [get-editor "Test Component Diagram" | get-diagram -index 1 | get-edit-part -name "Test Component Diagram"] {
+    mouse-move 268 246 -height 600 -width 800
+    get-edit-part -name Component | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+        | mouse-move 247 70 -height 184 -width 251
+}
+//Package from other package
+get-editor "Test Component Diagram" | get-diagram -index 1 | get-edit-part -name "Test Component Diagram" 
+    | get-edit-part -name "New package 2" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+    | get-property "getFigure().isVisible()" | equals true | verify-true
+// Package
+get-editor "Test Component Diagram" | get-diagram -index 1 | get-edit-part -name "Test Component Diagram" 
+    | get-edit-part -name "New package 6" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+    | get-property "getFigure().isVisible()" | equals true | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

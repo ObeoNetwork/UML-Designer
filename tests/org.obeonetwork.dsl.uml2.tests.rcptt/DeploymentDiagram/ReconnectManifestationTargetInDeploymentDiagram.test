@@ -1,0 +1,63 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_X-rQgH-QEeS4X6G9cD21hw,_3scNgNeaEeSVyY6xGIhNLA,_DuQ_oNemEeSVyY6xGIhNLA,_NoZtgNemEeSVyY6xGIhNLA,_Bh6RQNewEeSVyY6xGIhNLA,_qbGi8NhNEeSpqsLTetvOvg
+Element-Name: ReconnectManifestationTargetInDeploymentDiagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _NZK9cNhQEeSpqsLTetvOvg
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/14/15 3:12 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Open a Test project 
+Open Deployment diagram which contain two artifacts, a component
+and a Manifestation between Artifact1 and Component
+
+Test:
+- reconnect Manifestation target from Component1 to Artifact2
+
+Result:
+Target is reconnected to Component2
+- check diagram
+- chec model
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Reconnect target from Component1 to Artifact2
+with [get-editor "NewModel Deployment Diagram"] {
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Deployment Diagram"] {
+        with [get-edit-part -name Component1] {
+            get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart | mouse-move 69 3 -height 38 
+                -width 118
+            with [get-target-connection 0 | get-handle SiriusConnectionEndPointHandle] {
+                mouse-move 5 141 button1 -height 7 -width 7
+                mouse-press 5 141 button1 -height 7 -width 7
+                mouse-move 5 142 -mask 524288 -height 7 -width 7
+            }
+        }
+        mouse-drag 320 282 button1 524288 -height 465 -width 701
+        mouse-release 320 282 button1 524288 -height 465 -width 701
+    }
+    get-diagram -index 1 | get-edit-part -name "NewModel Deployment Diagram" | mouse-move 11 340 -height 465 -width 701
+}
+
+// Check diagram and Model
+with [get-editor "NewModel Deployment Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Deployment Diagram" | get-edit-part -name Component1 | get-target-connection 0] {
+    get-property "element.target.source.size" | equals 1 | verify-true
+    get-property "element.target.source.Artifact[0].name" | equals Artifact2 | verify-true
+    get-property "element.target.target.size" | equals 1 | verify-true
+    get-property "element.target.target.Artifact[0].name" | equals Component1 | verify-true
+    get-property "element.sourceNode.name" | equals Artifact2 | verify-true
+    get-property "element.targetNode.name" | equals Component1 | verify-true
+    get-property "getFigure().isVisible()" | equals true | verify-true
+}
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

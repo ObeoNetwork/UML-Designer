@@ -4,6 +4,38 @@ Element-Name: ComponentDiagram
 Element-Type: testsuite
 Element-Version: 2.0
 Id: _SkCUUJWrEeSFgY1mGxkuMg
-Runtime-Version: 2.0.0.201412081054
-Save-Time: 1/6/15 2:52 PM
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/17/15 3:50 PM
 
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
+Content-Type: text/testcase
+Entry-Name: testcase-items
+
+_IKlJENRoEeSQYq5tjqphxg	// kind: 'test' name: 'CreateNewInterfaceWithPaletteToolInComponentDiagram' path: '../ComponentDiagram/CreateNewInterfaceWithPaletteToolInComponentDiagram.test'
+_7IuHMNRlEeSQYq5tjqphxg	// kind: 'test' name: 'CreateNewComponentWithPaletteToolInComponentDiagram' path: '../ComponentDiagram/CreateNewComponentWithPaletteToolInComponentDiagram.test'
+_vXdzwNbjEeSrE7oyAIQ47g	// kind: 'test' name: 'ReconnectComponentRealizationTargetInComponentDiagram' path: '../ComponentDiagram/ReconnectComponentRealizationTargetInComponentDiagram.test'
+_S5Du4NbiEeSrE7oyAIQ47g	// kind: 'test' name: 'ReconnectInterfaceRealizationTargetInComponentDiagram' path: '../ComponentDiagram/ReconnectInterfaceRealizationTargetInComponentDiagram.test'
+_FlAUUNbhEeSrE7oyAIQ47g	// kind: 'test' name: 'ReconnectInterfaceRealizationSourceInComponentDiagram' path: '../ComponentDiagram/ReconnectInterfaceRealizationSourceInComponentDiagram.test'
+_mu9yQNb2EeSrE7oyAIQ47g	// kind: 'test' name: 'DeleteUsageInComponentDiagram' path: '../ComponentDiagram/DeleteUsageInComponentDiagram.test'
+_4w9MINa2EeScE-aTfGIfZQ	// kind: 'test' name: 'CreateNewDependencyWithPaletteToolInComponentDiagram' path: '../ComponentDiagram/CreateNewDependencyWithPaletteToolInComponentDiagram.test'
+_NCu1cNd2EeSrE7oyAIQ47g	// kind: 'test' name: 'AddRelatedElementsInComponentDiagram' path: '../ComponentDiagram/AddRelatedElementsInComponentDiagram.test'
+_-TmPUNb4EeSrE7oyAIQ47g	// kind: 'test' name: 'ShowAllMappingsInComponentDiagram' path: '../ComponentDiagram/ShowAllMappingsInComponentDiagram.test'
+_vQpvMNblEeSrE7oyAIQ47g	// kind: 'test' name: 'ReconnectComponentRealizationSourceInComponentDiagram' path: '../ComponentDiagram/ReconnectComponentRealizationSourceInComponentDiagram.test'
+_m36k0Nb0EeSrE7oyAIQ47g	// kind: 'test' name: 'DeleteRedefinedInComponentDiagram' path: '../ComponentDiagram/DeleteRedefinedInComponentDiagram.test'
+_8umesNa8EeScE-aTfGIfZQ	// kind: 'test' name: 'ReconnectUsageTargetInComponentDiagram' path: '../ComponentDiagram/ReconnectUsageTargetInComponentDiagram.test'
+_85Bb0NSUEeSda_OhYkGJCQ	// kind: 'test' name: 'CreateNewInterfaceRealizationWithPaletteToolInComponentDiagram' path: '../ComponentDiagram/CreateNewInterfaceRealizationWithPaletteToolInComponentDiagram.test'
+_SjWMUNbcEeSrE7oyAIQ47g	// kind: 'test' name: 'ReconnectRedefinedTargetInComponentDiagram' path: '../ComponentDiagram/ReconnectRedefinedTargetInComponentDiagram.test'
+_V-fzoNRiEeSQYq5tjqphxg	// kind: 'test' name: 'HideConnectorsInComponentDiagram' path: '../ComponentDiagram/HideConnectorsInComponentDiagram.test'
+_JfO1YNa5EeScE-aTfGIfZQ	// kind: 'test' name: 'CreateNewRedefinedWithPaletteToolInComponentDiagram' path: '../ComponentDiagram/CreateNewRedefinedWithPaletteToolInComponentDiagram.test'
+_WDAyUNSFEeSda_OhYkGJCQ	// kind: 'test' name: 'CreateNewUsageWithPaletteToolInComponentDiagram' path: '../ComponentDiagram/CreateNewUsageWithPaletteToolInComponentDiagram.test'
+_5XWqsNbrEeSrE7oyAIQ47g	// kind: 'test' name: 'DeleteInterfaceInComponentDiagram' path: '../ComponentDiagram/DeleteInterfaceInComponentDiagram.test'
+_uXsUoNbqEeSrE7oyAIQ47g	// kind: 'test' name: 'ReconnectDependencyTargetInComponentDiagram' path: '../ComponentDiagram/ReconnectDependencyTargetInComponentDiagram.test'
+_dwdTENRtEeSda_OhYkGJCQ	// kind: 'test' name: 'CreateNewPortWithPaletteToolInComponentDiagram' path: '../ComponentDiagram/CreateNewPortWithPaletteToolInComponentDiagram.test'
+_UVL6MNbYEeSrE7oyAIQ47g	// kind: 'test' name: 'ReconnectUsageSourceInComponentDiagram' path: '../ComponentDiagram/ReconnectUsageSourceInComponentDiagram.test'
+_UiJHYNSDEeSda_OhYkGJCQ	// kind: 'test' name: 'DropComponentFromModelInComponentDiagram' path: '../ComponentDiagram/DropComponentFromModelInComponentDiagram.test'
+_teUHgNboEeSrE7oyAIQ47g	// kind: 'test' name: 'ReconnectDependencySourceInComponentDiagram' path: '../ComponentDiagram/ReconnectDependencySourceInComponentDiagram.test'
+_56NMANbeEeSrE7oyAIQ47g	// kind: 'test' name: 'ReconnectRedefinedSourceInComponentDiagram' path: '../ComponentDiagram/ReconnectRedefinedSourceInComponentDiagram.test'
+_oR4KwNRqEeSda_OhYkGJCQ	// kind: 'test' name: 'CreateNewClassWithPaletteToolInComponentDiagram' path: '../ComponentDiagram/CreateNewClassWithPaletteToolInComponentDiagram.test'
+_v62GcNSaEeSda_OhYkGJCQ	// kind: 'test' name: 'CreateNewComponentRealizationWithPaletteToolInComponentDiagram' path: '../ComponentDiagram/CreateNewComponentRealizationWithPaletteToolInComponentDiagram.test'
+
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--

@@ -1,0 +1,254 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_X-rQgH-QEeS4X6G9cD21hw,_XEsC0NRmEeSQYq5tjqphxg,_0gdt4NRyEeSda_OhYkGJCQ,_RrpfwNShEeSda_OhYkGJCQ,__rI2kNRyEeSda_OhYkGJCQ,_o3iXkNShEeSda_OhYkGJCQ
+Element-Name: CreateNewDependencyWithPaletteToolInComponentDiagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _4w9MINa2EeScE-aTfGIfZQ
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/14/15 12:07 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Open an empty component diagram, and create a dependency
+
+Test:
+- Create a dependecy with palette tool 
+
+Result:
+- check diagram
+- check model
+
+TODO: Tests from Class
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+
+// Create dependency between Conponent1 and Conponent2
+with [get-editor "NewModel Component Diagram"] {
+    with [get-palette | get-palette-entry Dependency] {
+        mouse-move 43 8 button1 -height 23 -width 270
+        mouse-press 43 8 button1 -height 23 -width 270
+        mouse-release 43 8 button1 524288 -height 23 -width 270
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Component Diagram"] {
+        with [get-edit-part -name Component1 | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 74 27 button1 -height 98 -width 118
+            mouse-press 74 27 button1 -height 98 -width 118
+            mouse-release 74 27 button1 524288 -height 98 -width 118
+        }
+        with [get-edit-part -name Component2 | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 25 53 button1 -height 98 -width 118
+            mouse-press 25 53 button1 -height 98 -width 118
+            mouse-release 25 53 button1 524288 -height 98 -width 118
+        }
+    }
+ }
+ // Check Diagram
+ with [get-editor "NewModel Component Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Component Diagram"] {
+    with [get-edit-part -name Component2 | get-target-connection 0] {
+        get-property "element.visible" | equals true | verify-true
+        get-property "element.ownedStyle.customFeatures" | equals "[]" | verify-true
+        get-property "element.ownedStyle.lineStyle" | equals dash | verify-true
+        get-property "element.ownedStyle.sourceArrow" | equals NoDecoration | verify-true
+        get-property "element.ownedStyle.targetArrow" | equals InputArrow | verify-true
+        get-property "element.ownedStyle.foldingStyle" | equals NONE | verify-true
+        get-property "element.ownedStyle.size" | equals 1 | verify-true
+        get-property "element.ownedStyle.routingStyle" | equals manhattan | verify-true
+        //get-property "element.ownedStyle.beginLabelStyle" | equals null | verify-true
+        //get-property "element.ownedStyle.endLabelStyle" | equals null | verify-true
+        get-property "element.ownedStyle.centered" | equals None | verify-true  
+    }
+}
+//Check model
+with [get-editor "NewModel Component Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Component Diagram"] {
+    with [get-edit-part -name Component2 | get-target-connection 0] {
+        get-property "element.sourceNode.name" | equals Component1 | verify-true
+        get-property "element.targetNode.name" | equals Component2 | verify-true
+    }
+    with [get-edit-part -name Component1 | get-edit-part 
+        -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        get-property "element.target.clientDependency.Dependency[0].source.Component[0].name" | equals Component1 
+            | verify-true
+        get-property "element.target.clientDependency.Dependency[0].target.Component[0].name" 
+            | equals Component2 | verify-true
+    }
+}
+// Create dependency Between component1 and Class1
+with [get-editor "NewModel Component Diagram"] {
+    with [get-palette] {
+        with [get-palette-entry Dependency] {
+            mouse-move 39 12 button1 -height 23 -width 270
+            mouse-press 39 12 button1 -height 23 -width 270
+            mouse-release 39 12 button1 524288 -height 23 -width 270
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Component Diagram"] {
+        with [get-edit-part -name Component1 | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 73 55 button1 -height 98 -width 118
+            mouse-press 73 55 button1 -height 98 -width 118
+            mouse-release 73 55 button1 524288 -height 98 -width 118
+        }
+        mouse-move 84 257 -height 524 -width 657
+        with [get-edit-part -name Class1 | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 50 44 button1 -height 98 -width 118
+            mouse-press 50 44 button1 -height 98 -width 118
+            mouse-release 50 44 button1 524288 
+            -height 98 -width 118
+        }
+    }
+}
+// Check Diagram
+ with [get-editor "NewModel Component Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Component Diagram"] {
+    with [get-edit-part -name Class1 | get-target-connection 0] {
+        get-property "element.visible" | equals true | verify-true
+        get-property "element.ownedStyle.customFeatures" | equals "[]" | verify-true
+        get-property "element.ownedStyle.lineStyle" | equals dash | verify-true
+        get-property "element.ownedStyle.sourceArrow" | equals NoDecoration | verify-true
+        get-property "element.ownedStyle.targetArrow" | equals InputArrow | verify-true
+        get-property "element.ownedStyle.foldingStyle" | equals NONE | verify-true
+        get-property "element.ownedStyle.size" | equals 1 | verify-true
+        get-property "element.ownedStyle.routingStyle" | equals manhattan | verify-true
+        //get-property "element.ownedStyle.beginLabelStyle" | equals null | verify-true
+        //get-property "element.ownedStyle.endLabelStyle" | equals null | verify-true
+        get-property "element.ownedStyle.centered" | equals None | verify-true  
+    }
+}
+//Check model
+with [get-editor "NewModel Component Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Component Diagram"] {
+    with [get-edit-part -name Class1 | get-target-connection 0] {
+        get-property "element.sourceNode.name" | equals Component1 | verify-true
+        get-property "element.targetNode.name" | equals Class1 | verify-true
+    }
+    with [get-edit-part -name Component1 | get-edit-part 
+        -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        get-property "element.target.clientDependency.Dependency[1].source.Component[0].name" | equals Component1 
+            | verify-true
+        get-property "element.target.clientDependency.Dependency[1].target.Component[0].name" 
+            | equals Class1 | verify-true
+    }
+}
+// Create dependency  between Class1 and Component1
+with [get-editor "NewModel Component Diagram"] {
+    with [get-palette | get-palette-entry Dependency] {
+        mouse-move 34 12 button1 -height 23 -width 270
+        mouse-press 34 12 button1 -height 23 -width 270
+        mouse-release 34 12 button1 524288 -height 23 -width 270
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Component Diagram"] {
+        with [get-edit-part -name Class1 | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 29 49 button1 -height 98 -width 118
+            mouse-press 29 49 button1 -height 98 -width 118
+            mouse-release 29 49 button1 524288 -height 98 -width 118
+        }
+        with [get-edit-part -name Component1 | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 42 46 button1 -height 98 -width 118
+            mouse-press 42 46 button1 -height 98 -width 118
+            mouse-release 42 46 button1 524288 -height 98 -width 118
+        }
+    }
+}
+// Check Diagram
+ with [get-editor "NewModel Component Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Component Diagram"] {
+    with [get-edit-part -name Component1 | get-target-connection 0] {
+        get-property "element.visible" | equals true | verify-true
+        get-property "element.ownedStyle.customFeatures" | equals "[]" | verify-true
+        get-property "element.ownedStyle.lineStyle" | equals dash | verify-true
+        get-property "element.ownedStyle.sourceArrow" | equals NoDecoration | verify-true
+        get-property "element.ownedStyle.targetArrow" | equals InputArrow | verify-true
+        get-property "element.ownedStyle.foldingStyle" | equals NONE | verify-true
+        get-property "element.ownedStyle.size" | equals 1 | verify-true
+        get-property "element.ownedStyle.routingStyle" | equals manhattan | verify-true
+        //get-property "element.ownedStyle.beginLabelStyle" | equals null | verify-true
+        //get-property "element.ownedStyle.endLabelStyle" | equals null | verify-true
+        get-property "element.ownedStyle.centered" | equals None | verify-true  
+    }
+}
+//Check model
+with [get-editor "NewModel Component Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Component Diagram"] {
+    with [get-edit-part -name Component1 | get-target-connection 0] {
+        get-property "element.sourceNode.name" | equals Component1 | verify-true
+        get-property "element.targetNode.name" | equals Class1 | verify-true
+    }
+    with [get-edit-part -name Component1 | get-edit-part 
+        -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        get-property "element.target.clientDependency.Dependency[0].source.Component[0].name" | equals Class1 
+            | verify-true
+        get-property "element.target.clientDependency.Dependency[0].target.Component[0].name" 
+            | equals Component1 | verify-true
+    }
+}
+// Create dependency Class1 and Class2
+with [get-editor "NewModel Component Diagram"] {
+    with [get-palette | get-palette-entry Dependency] {
+        mouse-move 44 4 button1 -height 23 -width 270
+        mouse-press 44 4 button1 -height 23 -width 270
+        mouse-release 44 4 button1 524288 -height 23 -width 270
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Component Diagram"] {
+        with [get-edit-part -name Class1 | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 56 58 button1 -height 98 -width 118
+            mouse-press 56 58 button1 -height 98 -width 118
+            mouse-release 56 58 button1 524288 -height 98 -width 118
+        }
+        with [get-edit-part -name Class2 | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 65 50 button1 -height 98 -width 118
+            mouse-press 65 50 button1 -height 98 -width 118
+            mouse-release 65 50 button1 524288 -height 98 -width 118
+        }
+    }
+}
+// Check Diagram
+ with [get-editor "NewModel Component Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Component Diagram"] {
+    with [get-edit-part -name Class2 | get-target-connection 0] {
+        get-property "element.visible" | equals true | verify-true
+        get-property "element.ownedStyle.customFeatures" | equals "[]" | verify-true
+        get-property "element.ownedStyle.lineStyle" | equals dash | verify-true
+        get-property "element.ownedStyle.sourceArrow" | equals NoDecoration | verify-true
+        get-property "element.ownedStyle.targetArrow" | equals InputArrow | verify-true
+        get-property "element.ownedStyle.foldingStyle" | equals NONE | verify-true
+        get-property "element.ownedStyle.size" | equals 1 | verify-true
+        get-property "element.ownedStyle.routingStyle" | equals manhattan | verify-true
+        //get-property "element.ownedStyle.beginLabelStyle" | equals null | verify-true
+        //get-property "element.ownedStyle.endLabelStyle" | equals null | verify-true
+        get-property "element.ownedStyle.centered" | equals None | verify-true  
+    }
+}
+//Check model
+with [get-editor "NewModel Component Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Component Diagram"] {
+    with [get-edit-part -name Class2 | get-target-connection 0] {
+        get-property "element.sourceNode.name" | equals Class1 | verify-true
+        get-property "element.targetNode.name" | equals Class2 | verify-true
+    }
+    with [get-edit-part -name Class1 | get-edit-part 
+        -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        get-property "element.target.clientDependency.Dependency[1].source.Component[0].name" | equals Class1 
+            | verify-true
+        get-property "element.target.clientDependency.Dependency[1].target.Component[0].name" | equals Class2
+            | verify-true
+    }
+}
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

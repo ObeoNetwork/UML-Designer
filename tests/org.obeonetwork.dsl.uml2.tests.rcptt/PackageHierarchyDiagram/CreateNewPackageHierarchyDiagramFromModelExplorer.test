@@ -1,0 +1,51 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_X-rQgH-QEeS4X6G9cD21hw
+Element-Name: CreateNewPackageHierarchyDiagramFromModelExplorer
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _CNfDwN-FEeSEJ-mMQXHd1A
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/10/15 3:30 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Create a New Package hierarchy diagram
+
+Test:
+- From model explorer create a New Package hierarchy diagram
+
+Result:
+- check diagram
+- new diagram appear in model
+
+TODO: Due to Model Explorer refresh problem, Verification in model is done in test not by verifying Model Explorer tree. 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// In Test project create a new package hierarchy diagram: "NewModel Package Hierarchy"
+with [get-view "Model Explorer" | get-tree] {
+    select "test/model.uml/<Model> NewModel" | double-click
+    select "test/model.uml/<Model> NewModel" | get-menu "New Representation/NewModel Package Hierarchy" | click
+}
+
+with [get-window "New Representation"] {
+    with [get-editbox -after [get-label "Representation name:"]] {
+        set-text "test NewModel Package Hierarchy"
+    }
+    get-button OK | click
+}
+// Check diagram
+get-editor "test NewModel Package Hierarchy" | get-diagram -index 1 | get-edit-part 
+    -name "test NewModel Package Hierarchy"
+// Check model
+get-editor "test NewModel Package Hierarchy" | get-diagram -index 1 | get-edit-part 
+    -name "test NewModel Package Hierarchy" | get-property "getModel().getElement().getName()" 
+    | equals "test NewModel Package Hierarchy" | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

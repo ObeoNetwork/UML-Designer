@@ -1,0 +1,36 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: CreateGeneralizationInDeploymentDiagramInTestProject
+Element-Type: context
+Element-Version: 2.0
+Id: _eMGwINhFEeSpqsLTetvOvg
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/1/15 10:02 AM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+// Create Generalization between Device1 and Node1 in deployment diagram in test project
+with [get-editor "NewModel Deployment Diagram"] {
+    with [get-palette | get-palette-entry Generalization] {
+        mouse-move 43 7 button1 -height 23 -width 214
+        mouse-press 43 7 button1 -height 23 -width 214
+        mouse-release 43 7 button1 524288 -height 23 -width 214
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Deployment Diagram"] {
+        with [get-edit-part -name Device1 | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 31 22 button1 -height 40 -width 67
+            mouse-press 31 22 button1 -height 40 -width 67
+            mouse-release 31 22 button1 524288 -height 40 -width 67
+        }
+        with [get-edit-part -name Node1 | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 42 18 button1 -height 40 -width 58
+            mouse-press 42 18 button1 -height 40 -width 58
+            mouse-release 42 18 button1 524288 -height 40 -width 58
+        }
+    }
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

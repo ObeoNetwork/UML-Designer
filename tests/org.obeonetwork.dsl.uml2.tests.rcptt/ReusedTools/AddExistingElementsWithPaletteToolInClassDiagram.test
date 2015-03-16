@@ -1,0 +1,315 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_p5zq0M4oEeS8M6MvytM1MA
+Element-Name: AddExistingElementsWithPaletteToolInClassDiagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _9wKRkc4lEeSp07cw9_mFYw
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/15/15 10:16 AM
+Testcase-Type: ecl
+Verifications: _vYbQ0M5CEeS8M6MvytM1MA
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Addining existing elements to Class Diagram with palette tool: Add
+
+Test:
+- with Palette tool : Add
+			Add existing elements:
+				- Class
+				- Package
+				- Interface
+				- Datattype
+				- Primitive type
+				- Enum
+				- Component
+
+Result:
+- Element appear in diagram
+- no new elements appear in model explorer
+
+TODO : Verify the position of the element after it was added to diagram
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Initialise Model
+with [get-view "Model Explorer" | get-tree] {
+    select "AllMappings/model.uml" | double-click
+}
+// Create New ClassDiagram
+with [get-view "Model Explorer" | get-tree] {
+    select "AllMappings/model.uml/<Model> Test" | get-menu "New Representation/Test Class Diagram" | click
+}
+with [get-window "New Representation"] {
+    with [get-editbox -after [get-label "Representation name:"]] {
+       set-text "RcpTT Test Class Diagram"
+    }
+    get-button OK | click
+}
+// ------ Test : Add an existing Class ------------------------------------------------------------
+// Select tool Add
+with [get-editor "RcpTT Test Class Diagram"] {
+    with [get-palette | get-palette-entry Add] {
+        mouse-move 41 8 button1 -height 23 -width 135
+        mouse-press 41 8 button1 -height 23 -width 135
+        mouse-release 41 8 button1 524288 -height 23 -width 135
+    }
+    with [get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram"] {
+        mouse-move 448 85 button1 -height 328 -width 780
+        mouse-press 448 85 button1 -height 328 -width 780
+        mouse-release 448 85 button1 524288 -height 328 -width 780
+    }
+}
+// Add Class
+with [get-window "Select element to add in current representation"] {
+    get-tree | select "<Model> Test/<Class> DefaultClass"
+    get-button Finish | click
+}
+// Check graphical Element was added
+with [get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
+    | get-edit-part -name DefaultClass ]{
+    get-edit-part -className DNodeListNameEditPart | get-property "getFigure().getText()" | equals DefaultClass | verify-true
+    with [ get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+        get-edit-part -name "property1 : String [0..1]" | get-property "getFigure().getText()" 
+            | equals "property1 : String [0..1]" | verify-true
+        get-edit-part -name "Port1 :  [1]" | get-property "getFigure().getText()" | equals "Port1 :  [1]" | verify-true
+        get-edit-part -name "property3 : String [0..1] = test" | get-property "getFigure().getText()" 
+            | equals "property3 : String [0..1] = test" | verify-true
+        get-edit-part -name "DefaultClassPort : DefaultClass [1]" | get-property "getFigure().getText()" 
+            | equals "DefaultClassPort : DefaultClass [1]" | verify-true
+        get-edit-part -name "Operation_1()" | get-property "getFigure().getText()" | equals "Operation_1()" | verify-true
+    }
+}
+
+// ------ Test : Add an existing Package ------------------------------------------------------------
+// Select  tool Add
+with [get-editor "RcpTT Test Class Diagram"] {
+    with [get-palette | get-palette-entry Add] {
+        mouse-move 69 7 button1 -height 23 -width 135
+        mouse-press 69 7 button1 -height 23 -width 135
+        mouse-release 69 7 button1 524288 -height 23 -width 135
+    }
+    with [get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram"] {
+        mouse-move 1172 229 button1 -height 332 -width 1309
+        mouse-press 1172 229 button1 -height 332 -width 1309
+        mouse-release 1172 229 button1 524288 -height 332 -width 1309
+    }
+}
+// Add Package
+with [get-window "Select element to add in current representation"] {
+    get-tree | select "<Model> Test/<Package> New package 1"
+    get-button Finish | click
+}
+
+// Check graphical element was added
+with [get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
+    | get-edit-part -name "New package 1" | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+    get-property "element.name" | equals "New package 1" | verify-true
+}
+
+// ------ Test : Add an existing Interface ------------------------------------------------------------
+// Select  tool Add
+with [get-editor "RcpTT Test Class Diagram"] {
+    with [get-palette | get-palette-entry Add] {
+        mouse-move 38 10 button1 -height 23 -width 135
+        mouse-press 38 10 button1 -height 23 -width 135
+        mouse-release 38 10 button1 524288 -height 23 -width 135
+    }
+    with [get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram"] {
+        mouse-move 894 30 button1 -height 332 -width 1139
+        mouse-press 894 30 button1 -height 332 -width 1139
+        mouse-release 894 30 button1 524288 -height 332 -width 1139
+    }
+}
+// Add Interface
+with [get-window "Select element to add in current representation"] {
+    get-tree | select "<Model> Test/<Interface> Default Interface"
+    get-button Finish | click
+}
+// Check graphical element was added
+with [get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
+    | get-edit-part -name "Default Interface"] {
+    get-edit-part -className DNodeListNameEditPart | get-property "getFigure().getText()" | equals "Default Interface" 
+        | verify-true
+    get-target-connection 0 | get-edit-part -className "" | get-property "getFigure().getText()" | equals "<<use>>" 
+        | verify-true
+    with [get-target-connection 0] {
+        get-property "element.ownedStyle.customFeatures" | equals "[]" | verify-true
+        get-property "element.ownedStyle.lineStyle" | equals dash | verify-true
+        get-property "element.ownedStyle.sourceArrow" | equals NoDecoration | verify-true
+        get-property "element.ownedStyle.targetArrow" | equals InputArrow | verify-true
+        get-property "element.ownedStyle.foldingStyle" | equals NONE | verify-true
+        get-property "element.ownedStyle.size" | equals 1 | verify-true
+        get-property "element.ownedStyle.routingStyle" | equals straight | verify-true
+        //get-property "element.ownedStyle.beginLabelStyle" | equals null | verify-true
+        //get-property "element.ownedStyle.endLabelStyle" | equals null | verify-true
+        get-property "element.ownedStyle.centered" | equals None | verify-true
+    }
+    with [get-target-connection 1] {
+        get-property "element.ownedStyle.customFeatures" | equals "[]" | verify-true
+        get-property "element.ownedStyle.lineStyle" | equals dash | verify-true
+        get-property "element.ownedStyle.sourceArrow" | equals NoDecoration | verify-true
+        get-property "element.ownedStyle.targetArrow" | equals InputClosedArrow | verify-true
+        get-property "element.ownedStyle.foldingStyle" | equals NONE | verify-true
+        get-property "element.ownedStyle.size" | equals 1 | verify-true
+        get-property "element.ownedStyle.routingStyle" | equals straight | verify-true
+        //get-property "element.ownedStyle.beginLabelStyle" | equals null | verify-true
+        //get-property "element.ownedStyle.endLabelStyle" | equals null | verify-true
+        get-property "element.ownedStyle.centered" | equals None | verify-true
+    }
+}
+
+// ------ Test : Add an existing DataType ------------------------------------------------------------
+// Select  tool Add
+with [get-editor "RcpTT Test Class Diagram"] {
+    with [get-palette | get-palette-entry Add] {
+        mouse-move 28 13 button1 -height 23 -width 135
+        mouse-press 28 13 button1 -height 23 -width 135
+        mouse-release 28 13 button1 524288 -height 23 -width 135
+    }
+    with [get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram"] {
+        mouse-move 562 139 button1 -height 328 -width 780
+        mouse-press 562 139 button1 -height 328 -width 780
+        mouse-release 562 139 button1 524288 -height 328 -width 780
+    }
+}
+
+// Add DataType
+with [get-window "Select element to add in current representation"] {
+    get-tree | select "<Model> Test/<Data Type> Default DataType"
+    get-button Finish | click
+}
+
+// Check graphical element was added
+with [get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram"] {
+    get-edit-part -name "Default DataType" | get-edit-part -className DNodeListNameEditPart 
+        | get-property "getFigure().getText()" | equals "Default DataType" | verify-true
+}
+
+// ------ Test : Add an existing Primitive Type ------------------------------------------------------------
+// Select  tool Add
+with [get-editor "RcpTT Test Class Diagram"] {
+    with [get-palette | get-palette-entry Add] {
+        mouse-move 31 10 button1 -height 23 -width 135
+        mouse-press 31 10 button1 -height 23 -width 135
+        mouse-release 31 10 button1 524288 -height 23 -width 135
+    }
+    with [get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram"] {
+        mouse-move 929 59 button1 -height 328 -width 1130
+        mouse-press 929 59 button1 -height 328 -width 1130
+        mouse-release 929 59 button1 524288 -height 328 -width 1130
+    }
+}
+// Add Primitive Type
+with [get-window "Select element to add in current representation"] {
+    get-tree | select "<Model> Test/<Primitive Type> Default PrimitiveType"
+    get-button Finish | click
+}
+
+// Check graphical element was added
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
+    | get-edit-part -name "Default PrimitiveType" | get-edit-part -className DNodeListNameEditPart 
+    | get-property "getFigure().getText()" | equals "Default PrimitiveType" | verify-true
+    
+// ------ Test : Add an existing Enumeration ------------------------------------------------------------
+// Select  tool Add
+with [get-editor "RcpTT Test Class Diagram"] {
+    with [get-palette | get-palette-entry Add] {
+        mouse-move 28 13 button1 -height 23 -width 135
+        mouse-press 28 13 button1 -height 23 -width 135
+        mouse-release 28 13 button1 524288 -height 23 -width 135
+    }
+    with [get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram"] {
+        mouse-move 562 139 button1 -height 328 -width 780
+        mouse-press 562 139 button1 -height 328 -width 780
+        mouse-release 562 139 button1 524288 -height 328 -width 780
+    }
+}
+// Add Enumeration
+with [get-window "Select element to add in current representation"] {
+    get-tree | select "<Model> Test/<Enumeration> Default Enumeration"
+    get-button Finish | click
+}
+// Check graphical element was added
+with [get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram"] {
+    with [get-edit-part -name "Default Enumeration"] {
+        with [get-edit-part -className DNodeListNameEditPart] {
+            get-property "getFigure().getText()" | equals "Default Enumeration" | verify-true
+        }
+        get-edit-part -className DNodeListViewNodeListCompartment2EditPart | get-edit-part 
+            -name "Literal1 : Default Enumeration" | get-property "getFigure().getText()" 
+            | equals "Literal1 : Default Enumeration" | verify-true
+    }
+}
+
+// ------ Test : Add an existing Component ------------------------------------------------------------
+// Select  tool Add
+with [get-editor "RcpTT Test Class Diagram"] {
+    get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" | mouse-move 1433 177 -height 332 -width 1459
+   with [get-palette] {
+        with [get-palette-entry Add] {
+            mouse-move 47 13 button1 -height 23 -width 135
+            mouse-press 47 13 button1 -height 23 -width 135
+            mouse-release 47 13 button1 524288 -height 23 -width 135
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram"] {
+        mouse-move 974 311 button1 -height 332 -width 1459
+        mouse-press 974 311 button1 -height 332 -width 1459
+        mouse-release 974 311 button1 524288 -height 332 -width 1459
+    }
+}
+// Add Component
+with [get-window "Select element to add in current representation"] {
+    get-tree | select "<Model> Test/<Component> Component"
+    get-button Finish | click
+}
+
+// Check graphical element was added
+with [get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram"] {
+    with [get-edit-part -name Component] {
+        get-edit-part -className DNodeListNameEditPart | get-property "getFigure().getText()" | equals Component 
+            | verify-true
+        with [get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            get-edit-part -name "Port1 :  [1]" | get-property "getFigure().getText()" | equals "Port1 :  [1]" 
+                | verify-true
+            get-edit-part -name "ComponentPort : Component [1]" | get-property "getFigure().getText()" 
+                | equals "ComponentPort : Component [1]" | verify-true
+        }
+    }
+    with [get-edit-part -name "Default Interface"] {
+        with [get-target-connection 2] {
+            get-edit-part -className "" | get-property "getFigure().getText()" | equals "<<use>>" | verify-true
+            get-property "element.ownedStyle.customFeatures" | equals "[]" | verify-true
+            get-property "element.ownedStyle.lineStyle" | equals dash | verify-true
+            get-property "element.ownedStyle.sourceArrow" | equals NoDecoration | verify-true
+            get-property "element.ownedStyle.targetArrow" | equals InputArrow | verify-true
+            get-property "element.ownedStyle.foldingStyle" | equals NONE | verify-true
+            get-property "element.ownedStyle.size" | equals 1 | verify-true
+            get-property "element.ownedStyle.routingStyle" | equals straight | verify-true
+            //get-property "element.ownedStyle.beginLabelStyle" | equals null | verify-true
+           // get-property "element.ownedStyle.endLabelStyle" | equals null | verify-true
+            get-property "element.ownedStyle.centered" | equals None | verify-true
+        }
+        with [get-target-connection 3] {
+            get-property "element.ownedStyle.customFeatures" | equals "[]" | verify-true
+            get-property "element.ownedStyle.lineStyle" | equals dash | verify-true
+            get-property "element.ownedStyle.sourceArrow" | equals NoDecoration | verify-true
+            get-property "element.ownedStyle.targetArrow" | equals InputClosedArrow | verify-true
+            get-property "element.ownedStyle.foldingStyle" | equals NONE | verify-true
+            get-property "element.ownedStyle.size" | equals 1 | verify-true
+            get-property "element.ownedStyle.routingStyle" | equals straight | verify-true
+            //get-property "element.ownedStyle.beginLabelStyle" | equals null | verify-true
+            //get-property "element.ownedStyle.endLabelStyle" | equals null | verify-true
+            get-property "element.ownedStyle.centered" | equals None | verify-true
+        }
+    }
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

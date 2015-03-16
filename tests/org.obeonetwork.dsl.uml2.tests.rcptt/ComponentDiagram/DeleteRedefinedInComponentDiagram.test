@@ -1,0 +1,47 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_X-rQgH-QEeS4X6G9cD21hw,_XEsC0NRmEeSQYq5tjqphxg,_0gdt4NRyEeSda_OhYkGJCQ,_RrpfwNShEeSda_OhYkGJCQ,_C3JgYNa0EeScE-aTfGIfZQ,_TAnaINa7EeScE-aTfGIfZQ,_cnkYYNbeEeSrE7oyAIQ47g
+Element-Name: DeleteRedefinedInComponentDiagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _m36k0Nb0EeSrE7oyAIQ47g
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 3/30/15 6:02 PM
+Testcase-Type: ecl
+Verifications: _5FYlYNb1EeSrE7oyAIQ47g
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Open test Project /component diagram which contain 2 components, and a redefined relationship.
+
+Test:
+Move  Component1 side from port 1 to Port2
+
+Result:
+usage is reconnected to Component 1 Port2
+- check diagram
+- check model
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Delete a redefined between component1 port1 and component2 port1
+with [get-editor "NewModel Component Diagram"] {
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Component Diagram"] {
+        with [get-edit-part -name Component2 | get-edit-part -name port1 | get-target-connection 0] {
+            mouse-move 78 17 button1 -height 35 -width 114
+            mouse-press 78 17 button1 -height 35 -width 114
+            mouse-release 78 17 button1 524288 -height 35 -width 114
+        }
+    }
+    get-button "Delete from Model" | click
+}
+// Check diagram
+get-editor "NewModel Component Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Component Diagram" 
+    | get-edit-part -name Component2 | get-edit-part -name port1 | Verify-error{ get-target-connection 0 }
+    
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

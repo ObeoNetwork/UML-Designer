@@ -1,0 +1,178 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_X-rQgH-QEeS4X6G9cD21hw,_od2e4OOMEeSBWuBfnG9TPA,_XD79kOQMEeSOosy0KaL0vQ
+Element-Name: CreateNewLiteralWithPaletteToolInProfileDiagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _fLCOQOQREeSOosy0KaL0vQ
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/16/15 10:58 AM
+Testcase-Type: ecl
+Verifications: _Z6mSkOQVEeSOosy0KaL0vQ
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Create a New semantic element in profile diagram: Literal
+
+Test
+With Palette tool : Literal
+-  create new element in Enumeration
+-  try to create new element in Data type
+-  try to create new element in Primitive type
+-  try to create new element in Stereotype
+-  try to create new element in MetaClass
+-  try to create new element in Package
+-  try to create new element in Profile
+-  try to create new element in diagram
+
+Result:
+-  new element is created in Enumeration
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Create a property in an Enumeration
+with [get-editor "Test Profile Diagram"] {
+    with [get-palette | get-palette-entry Literal] {
+        mouse-move 21 16 button1 -height 23 -width 182
+        mouse-press 21 16 button1 -height 23 -width 182
+        mouse-release 21 16 button1 524288 -height 23 -width 182
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Test Profile Diagram" | get-edit-part -name Enumeration1 
+        | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+        mouse-move 37 2 button1 -height 12 -width 105
+        mouse-press 37 2 button1 -height 12 -width 105
+        mouse-release 37 2 button1 524288 -height 12 -width 105
+    }
+}
+
+with [get-editor "Test Profile Diagram" | get-diagram -index 1 | get-edit-part -name "Test Profile Diagram" 
+    | get-edit-part -name Enumeration1] {
+    get-edit-part -className DNodeListViewNodeListCompartment2EditPart | get-edit-part -name "Literal1 : Enumeration1" 
+        | get-property "getFigure().getText()" | equals "Literal1 : Enumeration1" | verify-true
+    get-edit-part -className DNodeListNameEditPart | get-property "element.target.member.EnumerationLiteral[0].name" 
+        | equals Literal1 | verify-true
+}
+
+// Try ot create a property in a Datatype
+with [get-editor "Test Profile Diagram"] {
+    with [get-palette | get-palette-entry Literal] {
+        mouse-move 21 16 button1 -height 23 -width 182
+        mouse-press 21 16 button1 -height 23 -width 182
+        mouse-release 21 16 button1 524288 -height 23 -width 182
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
+        mouse-move 514 190 -height 524 -width 646
+        with [get-edit-part -name DataType1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 42 3 button1 -height 12 -width 85
+            mouse-press 42 3 button1 -height 12 -width 85
+            mouse-release 42 3 button1 524288 -height 12 -width 85
+        }
+    }
+}
+
+// try to create a property in a Primitive type
+with [get-editor "Test Profile Diagram"] {
+    with [get-palette | get-palette-entry Literal] {
+        mouse-move 21 16 button1 -height 23 -width 182
+        mouse-press 21 16 button1 -height 23 -width 182
+        mouse-release 21 16 button1 524288 -height 23 -width 182
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Test Profile Diagram" | get-edit-part -name PrimitiveType1] {
+        with [get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 72 1 button1 -height 12 -width 112
+            mouse-press 72 1 button1 -height 12 -width 112
+            mouse-release 72 1 button1 524288 -height 12 -width 112
+        }
+    }
+}
+
+// Try to Create a Property in a Stereotype
+with [get-editor "Test Profile Diagram"] {
+    with [get-palette | get-palette-entry Literal] {
+        mouse-move 21 16 button1 -height 23 -width 182
+        mouse-press 21 16 button1 -height 23 -width 182
+        mouse-release 21 16 button1 524288 -height 23 -width 182
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
+        with [get-edit-part -name "«Stereotype» \n"
+            + "Stereotype1"] {
+            with [get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+                 mouse-move 82 4 button1 -height 12 -width 100
+                mouse-press 82 4 button1 -height 12 -width 100
+                mouse-release 82 4 button1 524288 -height 12 -width 100
+            }
+        }
+    }
+}
+
+// Try to create a property in a Metaclass
+with [get-editor "Test Profile Diagram"] {
+    with [get-palette | get-palette-entry Literal] {
+        mouse-move 21 16 button1 -height 23 -width 182
+        mouse-press 21 16 button1 -height 23 -width 182
+        mouse-release 21 16 button1 524288 -height 23 -width 182
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
+       with [get-edit-part -name "«Metaclass»\n"
+            + "Class" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 69 46 button1 -height 68 -width 148
+            mouse-press 69 46 button1 -height 68 -width 148
+            mouse-release 69 46 button1 524288 -height 68 -width 148
+        }
+    }
+}
+
+// Try to create a property in a Package
+with [get-editor "Test Profile Diagram"] {
+    with [get-palette | get-palette-entry Literal] {
+        mouse-move 21 16 button1 -height 23 -width 182
+        mouse-press 21 16 button1 -height 23 -width 182
+        mouse-release 21 16 button1 524288 -height 23 -width 182
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
+        with [get-edit-part -name Package1] {
+            with [get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+                mouse-move 71 40 button1 -height 68 -width 148
+                mouse-press 71 40 button1 -height 68 -width 148
+               mouse-release 71 40 button1 524288 -height 68 -width 148
+            }
+        }
+    }
+}
+// Try to create a property in a Profile
+with [get-editor "Test Profile Diagram"] {
+    with [get-palette | get-palette-entry Literal] {
+        mouse-move 21 16 button1 -height 23 -width 182
+        mouse-press 21 16 button1 -height 23 -width 182
+        mouse-release 21 16 button1 524288 -height 23 -width 182
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
+        with [get-edit-part -name "«Profile» \n"
+            + "Profile1" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 135 55 button1 -height 68 -width 148
+            mouse-press 135 55 button1 -height 68 -width 148
+            mouse-release 135 55 button1 524288 -height 68 -width 148
+        }
+    }
+}
+// Try to create a property in diagram
+with [get-editor "Test Profile Diagram"] {
+   with [get-palette | get-palette-entry Literal] {
+        mouse-move 21 16 button1 -height 23 -width 182
+        mouse-press 21 16 button1 -height 23 -width 182
+        mouse-release 21 16 button1 524288 -height 23 -width 182
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
+        mouse-move 1 1 button1 -height 68 -width 148
+        mouse-press 1 1 button1 -height 68 -width 148
+        mouse-release 1 1 button1 524288 -height 68 -width 148
+    }
+}
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

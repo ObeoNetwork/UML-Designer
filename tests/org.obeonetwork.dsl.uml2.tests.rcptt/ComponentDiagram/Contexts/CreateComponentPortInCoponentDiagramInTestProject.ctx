@@ -1,0 +1,34 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: CreateComponentPortInCoponentDiagramInTestProject
+Element-Type: context
+Element-Version: 2.0
+Id: _C3JgYNa0EeScE-aTfGIfZQ
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 3/30/15 10:09 AM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+
+// create a Port
+with [get-editor "NewModel Component Diagram"] {
+    get-diagram -index 1 | get-edit-part -name "NewModel Component Diagram" | mouse-move 708 146 -height 280 -width 709
+    with [get-palette | get-palette-entry Port] {
+        mouse-move 24 10 button1 -height 23 -width 270
+        mouse-press 24 10 button1 -height 23 -width 270
+        mouse-release 24 10 button1 524288 -height 23 -width 270
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Component Diagram"] {
+        mouse-move 168 133 -height 280 -width 709
+        with [get-edit-part -name Component1 | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 114 67 button1 -height 98 -width 118
+            mouse-press 114 67 button1 -height 98 -width 118
+            mouse-release 114 67 button1 524288 -height 98 -width 118
+        }
+    }
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

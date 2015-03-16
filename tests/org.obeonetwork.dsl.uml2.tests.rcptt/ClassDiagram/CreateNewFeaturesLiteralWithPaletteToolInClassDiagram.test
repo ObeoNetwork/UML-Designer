@@ -1,0 +1,52 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_X-rQgH-QEeS4X6G9cD21hw,_p-v3gMyvEeSmqoI7c5i_uw,_7DkUEM1XEeSHkpcdtO-QuQ
+Element-Name: CreateNewFeaturesLiteralWithPaletteToolInClassDiagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _PlOaQM1YEeSHkpcdtO-QuQ
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/15/15 12:14 PM
+Testcase-Type: ecl
+Verifications: _G1kGAM1ZEeSHkpcdtO-QuQ
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Create a New semantic element in class diagram: Literal
+
+Test:
+- with Palette tool : Literal create new element in existing Enumeration.
+
+Result:
+- new element appears in Enumeration1
+- new element appear in model explorer under NewModel
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Create new semantic element using palette tool : Package
+with [get-editor "test Class Diagram"] {
+    with [get-palette | get-palette-entry Literal] {
+        mouse-move 71 12 button1 -height 23 -width 135
+        mouse-press 71 12 button1 -height 23 -width 135
+        mouse-release 71 12 button1 524288 -height 23 -width 135
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        mouse-move 437 146 -height 338 -width 712
+        with [get-edit-part -name Enumeration1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 73 28 button1 -height 71 -width 116
+            mouse-press 73 28 button1 -height 71 -width 116
+            mouse-release 73 28 button1 524288 -height 71 -width 116
+        }
+    }
+}
+
+// Verify Graphical element is created
+get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name Enumeration1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | get-edit-part 
+    -name "Literal1 : Enumeration1" | get-property "getEditText()" | equals "Literal1 : Enumeration1" | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

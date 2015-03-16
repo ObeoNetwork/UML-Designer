@@ -1,0 +1,45 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_PbyVcIBsEeS4X6G9cD21hw
+Element-Name: DirectEditNamedElementInClassDiagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _fu3AsIB_EeS4X6G9cD21hw
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/15/15 10:21 AM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Test:
+In the travel agency example, open the class diagram, select a class, direct edit its name.
+
+Result:
+Element name is updated.
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+get-view "Model Explorer" | get-tree | select "TravelAgency/agency.uml/<Model> Travel Agency/Entities" | double-click
+with [get-editor Entities] {
+    with [get-diagram -index 1] {
+        key-type "M2+u"
+        get-edit-part -name Entities | get-edit-part -name Catalog | get-edit-part -className DNodeListNameEditPart 
+            | activate-direct-edit
+    }
+    with [get-editbox] {
+        set-text UpdatedName
+        key-type Enter
+    }
+    with [get-diagram -index 1] {
+        commit-direct-edit
+        key-type Enter
+    }
+}
+get-editor Entities | get-diagram -index 1 | get-edit-part -name Entities | get-edit-part -name UpdatedName 
+    | get-figure "0/0" | get-property "getLabelFigure().getText()" | equals UpdatedName | verify-true
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

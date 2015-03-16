@@ -1,0 +1,19 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: LoadContainmentPackageDiagramFomTravelAgencyProject
+Element-Type: context
+Element-Version: 2.0
+Id: _ZInrsOc5EeSXar-HajHJtg
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/20/15 10:44 AM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+// Open package containment
+get-view "Model Explorer" | get-tree | select "TravelAgency/agency.uml/<Model> Travel Agency/Package Containment" 
+    | double-click
+get-view Properties | minimize
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

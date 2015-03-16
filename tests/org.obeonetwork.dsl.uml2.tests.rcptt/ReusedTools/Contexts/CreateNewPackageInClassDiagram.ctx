@@ -1,0 +1,29 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: CreateNewPackageInClassDiagram
+Element-Type: context
+Element-Version: 2.0
+Id: _VMRmkNFvEeSZY9TTmtin1Q
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 3/23/15 5:00 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+// Create Package in class diagram
+with [get-editor "test Class Diagram"] {
+    get-diagram -index 1 | get-edit-part -name "test Class Diagram" | mouse-move 537 273 -height 278 -width 780
+    with [get-palette | get-palette-entry Package] {
+        mouse-move 56 7 button1 -height 23 -width 135
+        mouse-press 56 7 button1 -height 23 -width 135
+        mouse-release 56 7 button1 524288 -height 23 -width 135
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        mouse-move 230 136 button1 -height 412 -width 780
+        mouse-press 230 136 button1 -height 412 -width 780
+        mouse-release 230 136 button1 524288 -height 412 -width 780
+    }
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

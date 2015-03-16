@@ -1,0 +1,98 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _X-rQgH-QEeS4X6G9cD21hw,_Erm0gN3vEeS32_At8WTqBw,_a6UsUOJ3EeSa1-TOz3bdSg
+Element-Name: CreateNewInitialStateNodeInStateMachineDiagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _k_G0QN3zEeS32_At8WTqBw
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/14/15 9:36 AM
+Testcase-Type: ecl
+Verifications: _bsnN0N32EeS32_At8WTqBw
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Test:
+In an empty State Machine diagram, select in palette Initial and click on Region1
+
+Result:
+- Initial1 is created in Region1
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Create new initial state in Region1 
+with [get-editor "NewModel State Machine Diagram"] {
+    with [get-palette | get-palette-entry Initial] {
+        mouse-move 38 4 button1 -height 23 -width 134
+        mouse-press 38 4 button1 -height 23 -width 134
+        mouse-release 38 4 button1 524288 -height 23 -width 134
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel State Machine Diagram" | get-edit-part -name NewModel 
+        | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        with [get-edit-part -name Region1 | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+            mouse-move 37 54 button1 -height 481 -width 571
+            mouse-press 37 54 button1 -height 481 -width 571
+            mouse-release 37 54 button1 524288 -height 481 -width 571
+        }
+    }
+}
+
+// Check Diagram
+with [get-editor "NewModel State Machine Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel State Machine Diagram" | get-edit-part -name NewModel | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name Region1 | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+    with [get-edit-part -name InitialState1] {
+        get-property "getFigure().isVisible()" | equals true | verify-true
+    }
+}
+// Check model
+with [get-editor "NewModel State Machine Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel State Machine Diagram" | get-edit-part -name NewModel | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name Region1 | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartment2EditPart | get-edit-part -name InitialState1 | get-edit-part 
+    -className WorkspaceImageEditPart] {
+    get-property "getModel().getDiagram().getElement().getNodes().DNodeSpec[0].getTarget().getKind().getName()" 
+        | equals initial | verify-true
+    get-property "getModel().getDiagram().getElement().getNodes().DNodeSpec[0].getTarget().getContainer().getName()" 
+        | equals Region1 | verify-true
+    get-property "getModel().getDiagram().getElement().getNodes().DNodeSpec[0].getTarget().getName()" | equals InitialState1 
+        | verify-true
+    get-property "getModel().getDiagram().getElement().getNodes().DNodeSpec[0].getSemanticElements().PseudostateImpl[0].getKind().getName()" 
+        | equals initial | verify-true
+}
+// Try to create initial state outside of region in state machine (invalid action)
+with [get-editor "NewModel State Machine Diagram"] {
+    with [get-palette | get-palette-entry Initial] {
+        mouse-move 41 7 button1 -height 23 -width 134
+        mouse-press 41 7 button1 -height 23 -width 134
+        mouse-release 41 7 button1 524288 -height 23 -width 134
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel State Machine Diagram" | get-edit-part -name NewModel 
+        | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        mouse-move 725 99 button1 -height 517 -width 817
+        mouse-press 725 99 button1 -height 517 -width 817
+        mouse-release 725 99 button1 524288 -height 517 -width 817
+    }
+}
+
+// Try to create initial state outside of state machine (invalid action)
+with [get-editor "NewModel State Machine Diagram"] {
+    with [get-palette | get-palette-entry Initial] {
+        mouse-move 31 18 button1 -height 23 -width 134
+        mouse-press 31 18 button1 -height 23 -width 134
+        mouse-release 31 18 button1 524288 -height 23 -width 134
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel State Machine Diagram"] {
+        mouse-move 823 168 button1 -height 524 -width 824
+        mouse-press 823 168 button1 -height 524 -width 824
+        mouse-release 823 168 button1 524288 -height 524 -width 824
+    }
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

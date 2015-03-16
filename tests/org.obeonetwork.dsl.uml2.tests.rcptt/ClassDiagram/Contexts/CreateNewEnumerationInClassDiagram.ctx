@@ -1,0 +1,26 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: CreateNewEnumerationInClassDiagram
+Element-Type: context
+Element-Version: 2.0
+Id: _7DkUEM1XEeSHkpcdtO-QuQ
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 3/18/15 11:18 AM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+// Create new semantic element using palette tool : Package
+with [get-editor "test Class Diagram"] {
+    with [get-palette | get-palette-entry Enumeration] {
+        mouse-press 81 12 button1 -height 23 -width 152
+        get-figure 0 | drag-start 81 12
+    }
+ 	  get-palette | drag-set-data
+    get-diagram -index 1 | get-edit-part -name "test Class Diagram" | drop 317 89 -detail copy
+    get-palette | drag-end -detail move
+}
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--
