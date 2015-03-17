@@ -18,7 +18,8 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({JavaExtensionTests.class, DeclaredServiceTests.class,
 		ServiceExpressionCaptureViewpointTests.class, ServiceExpressionDesignViewpointTests.class,
-		ServiceExpressionExtendViewpointTests.class, ServiceExpressionReviewViewpointTests.class})
+		ServiceExpressionExtendViewpointTests.class, ServiceExpressionReviewViewpointTests.class,
+		ServiceExpressionDashboardViewpointTests.class})
 /**
  * Testing : Hand written UML Designer plugin tests
  */

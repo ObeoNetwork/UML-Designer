@@ -481,12 +481,27 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 		}
 
 		for (final DDiagramElement elt : diagram.getOwnedDiagramElements()) {
-			if (elt.isVisible() && elt.getTarget() instanceof Element && !((Element)elt.getTarget()).getOwnedComments().isEmpty()) {
+			if (elt.isVisible() && elt.getTarget() instanceof Element
+					&& !((Element)elt.getTarget()).getOwnedComments().isEmpty()) {
 				result.addAll(((Element)elt.getTarget()).getOwnedComments());
 			}
 		}
 
 		return result;
+	}
+
+	/**
+	 * Get a profile.
+	 *
+	 * @param parent
+	 *            Parent
+	 * @return Profile
+	 */
+	private Profile getProfile(NamedElement parent) {
+		final Profile profile = UMLFactory.eINSTANCE.createProfile();
+		final String profileLabel = parent.getName() + " profile"; //$NON-NLS-1$
+		profile.setName(profileLabel);
+		return profile;
 	}
 
 	/**
@@ -735,6 +750,19 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 		final Activity activity = getActivity(pkg);
 		pkg.getPackagedElements().add(activity);
 		return activity;
+	}
+
+	/**
+	 * Create a profile under a package.
+	 *
+	 * @param pkg
+	 *            The package
+	 * @return A profile
+	 */
+	public Profile initProfileForPackage(org.eclipse.uml2.uml.Package pkg) {
+		final Profile profile = getProfile(pkg);
+		pkg.getPackagedElements().add(profile);
+		return profile;
 	}
 
 	/**

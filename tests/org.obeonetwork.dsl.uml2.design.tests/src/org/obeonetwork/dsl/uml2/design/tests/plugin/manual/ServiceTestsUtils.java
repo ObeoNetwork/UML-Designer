@@ -43,20 +43,23 @@ public class ServiceTestsUtils {
 
 	private static final String VP_CAPTURE = "Capture";
 
+	private static final String VP_DASHBOARD = "Dashboard";
+
 	private static final String UML_VP_URI = "viewpoint:/org.obeonetwork.dsl.uml2.design/";
 
-	private static Set<String> acceleoWhiteList = Sets.newHashSet("->", "eContainer", "toLowerFirst",
-			"toUpperFirst", "not ", "eClass", "eAllContents", "eContents", "equalsIgnoreCase");
+	public static Set<String> acceleoWhiteList = Sets.newHashSet("->", "eContainer", "toLowerFirst",
+			"toUpperFirst", "not", "eClass", "eAllContents", "eContents", "equalsIgnoreCase");
 
-	private static Set<String> umlWhiteList = Sets.newHashSet(getAllUmlOperations());
+	public static Set<String> umlWhiteList = Sets.newHashSet(getAllUmlOperations());
 
-	private static Set<String> siriusWhiteList = Sets.newHashSet("getTarget");
+	public static Set<String> siriusWhiteList = Sets.newHashSet("getTarget");
 
 	public static void collectDeclaredServicesFromUmlDesignerViewpoints(Set<Method> allDeclaredServices) {
 		collectDeclaredServicesFromDesignerViewpoints(allDeclaredServices, UML_VP_URI, VP_CAPTURE);
 		collectDeclaredServicesFromDesignerViewpoints(allDeclaredServices, UML_VP_URI, VP_DESIGN);
 		collectDeclaredServicesFromDesignerViewpoints(allDeclaredServices, UML_VP_URI, VP_REVIEW);
 		collectDeclaredServicesFromDesignerViewpoints(allDeclaredServices, UML_VP_URI, VP_EXTEND);
+		collectDeclaredServicesFromDesignerViewpoints(allDeclaredServices, UML_VP_URI, VP_DASHBOARD);
 	}
 
 	public static void collectDeclaredServicesFromDesignerViewpoints(Set<Method> allDeclaredServices,
@@ -118,10 +121,7 @@ public class ServiceTestsUtils {
 	}
 
 	public static void collectServicesFromUmlDesignerViewpoint(Set<Method> allServices, String viewpointName) {
-		collectServicesFromDesignerViewpoint(allServices, VP_CAPTURE, UML_VP_URI);
-		collectServicesFromDesignerViewpoint(allServices, VP_DESIGN, UML_VP_URI);
-		collectServicesFromDesignerViewpoint(allServices, VP_REVIEW, UML_VP_URI);
-		collectServicesFromDesignerViewpoint(allServices, VP_EXTEND, UML_VP_URI);
+		collectServicesFromDesignerViewpoint(allServices, viewpointName, UML_VP_URI);
 	}
 
 	protected static void collectServiceExpressionFromDesignerViewpoints(
@@ -163,12 +163,12 @@ public class ServiceTestsUtils {
 
 	private static String getAcceleoServiceCall(String expr) {
 		if (expr.startsWith("[") && expr.endsWith("/]")) {
-			String[] splitExpr = expr.split("\\.");
+			String[] splitExpr = expr.replace("[", "").replace("/]", "").split("\\.");
 			for (String exprPart : splitExpr) {
 				if (exprPart.matches("\\w+ *\\(.*") && !exprPart.startsWith("ocl")
 						&& !containsAcceleoKeywords(exprPart)
 						&& !containsUmlOperations(getServiceName(exprPart))
-						&& !containsSiriusOperations(exprPart)) {
+						&& !containsSiriusOperations(getServiceName(exprPart))) {
 					return getServiceName(exprPart);
 				}
 			}
@@ -255,6 +255,7 @@ public class ServiceTestsUtils {
 		collectServiceExpressionFromUmlDesignerViewpoints(allServiceExpressions, VP_DESIGN);
 		collectServiceExpressionFromUmlDesignerViewpoints(allServiceExpressions, VP_REVIEW);
 		collectServiceExpressionFromUmlDesignerViewpoints(allServiceExpressions, VP_EXTEND);
+		collectServiceExpressionFromUmlDesignerViewpoints(allServiceExpressions, VP_DASHBOARD);
 	}
 
 	public static void collectServiceExpressionFromUmlDesignerViewpoint(
@@ -267,6 +268,7 @@ public class ServiceTestsUtils {
 		collectJavaExtensionsFromUmlDesignerViewpoints(VP_DESIGN, allExtensions);
 		collectJavaExtensionsFromUmlDesignerViewpoints(VP_REVIEW, allExtensions);
 		collectJavaExtensionsFromUmlDesignerViewpoints(VP_EXTEND, allExtensions);
+		collectJavaExtensionsFromUmlDesignerViewpoints(VP_DASHBOARD, allExtensions);
 	}
 
 	public static void collectJavaExtensionsFromUmlDesignerViewpoint(Set<JavaExtension> allExtensions,

@@ -53,6 +53,9 @@ public class DeclaredServiceTests {
 		for (InterpretedExpression serviceExpression : allServiceExpressions) {
 			allServiceCalls.add(ServiceTestsUtils.getServiceCall(serviceExpression.getExpression()));
 		}
+		allServiceCalls.addAll(ServiceTestsUtils.siriusWhiteList);
+		allServiceCalls.addAll(ServiceTestsUtils.acceleoWhiteList);
+		allServiceCalls.addAll(ServiceTestsUtils.umlWhiteList);
 
 		for (Method method : allDeclaredServices) {
 			parameters.add(new Object[] {method});
