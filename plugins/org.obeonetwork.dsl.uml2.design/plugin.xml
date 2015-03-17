@@ -74,6 +74,19 @@ Contributors:
               An UML model for a UML in colors class diagrams.
            </description>
         </wizard>
+        <wizard
+              category="org.eclipse.ui.Examples/org.obeonetwork.dsl.uml.examples.category"
+              class="org.obeonetwork.dsl.uml2.design.internal.wizards.example.UmlExampleWizard"
+              finalPerspective="org.eclipse.sirius.ui.tools.perspective.modeling"
+              icon="icons/NewUmlModel.gif"
+              id="org.obeonetwork.dsl.uml2.design.doc.AllMappingsWizard"
+              name="All mappings"
+              preferredPerspectives="org.eclipse.sirius.ui.tools.perspective.modeling"
+              project="true">
+           <description>
+              An UML model for showing all possible diagrams and mappings available in UML Designer.
+           </description>
+        </wizard>
   </extension>
 
   

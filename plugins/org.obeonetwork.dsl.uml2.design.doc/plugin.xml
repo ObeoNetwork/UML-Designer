@@ -31,6 +31,13 @@ Contributors:
                  name="UMLInColors">
            </projectDescriptor>
         </example>
+        <example
+              wizardID="org.obeonetwork.dsl.uml2.design.doc.AllMappingsWizard">
+           <projectDescriptor
+                 contentURI="contents/AllMappings/"
+                 name="AllMappings">
+           </projectDescriptor>
+        </example>
     </extension>
     <extension
         point="org.eclipse.ui.intro.configExtension">
