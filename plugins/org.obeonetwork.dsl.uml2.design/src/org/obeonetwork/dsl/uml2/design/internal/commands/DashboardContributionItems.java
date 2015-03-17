@@ -23,7 +23,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.CompoundContributionItem;
 import org.eclipse.ui.menus.CommandContributionItem;
 import org.eclipse.ui.menus.CommandContributionItemParameter;
-import org.obeonetwork.dsl.uml2.design.api.services.DashboardServices;
+import org.obeonetwork.dsl.uml2.design.internal.services.DashboardServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.LogServices;
 
 import com.google.common.collect.Lists;
@@ -64,8 +64,7 @@ public class DashboardContributionItems extends CompoundContributionItem {
 	protected IContributionItem[] getContributionItems() {
 		final List<IContributionItem> menuItems = Lists.newArrayList();
 		// Get all available dashboards
-		final DashboardServices service = new DashboardServices();
-		final List<EObject> umlModelRoots = service.getUmlModelsWithDashboard();
+		final List<EObject> umlModelRoots = DashboardServices.INSTANCE.getUmlModelsWithDashboard();
 		for (final EObject eObject : umlModelRoots) {
 			// Get the project name
 			final IFile resourceFile = ResourcesPlugin.getWorkspace().getRoot()

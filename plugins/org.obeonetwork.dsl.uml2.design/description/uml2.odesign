@@ -6137,6 +6137,7 @@
       </defaultLayer>
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.api.services.DashboardServices"/>
+    <ownedJavaExtensions qualifiedClassName="org.obeonetwork.dsl.uml2.design.api.services.ReusedDescriptionServices"/>
   </ownedViewpoints>
   <userColorsPalettes name="UMLPalette">
     <entries xsi:type="description:UserFixedColor" red="235" green="235" blue="235" name="Nested Package Foreground"/>

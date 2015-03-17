@@ -12,7 +12,6 @@ package org.obeonetwork.dsl.uml2.design.api.services;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -27,14 +26,16 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.StateMachine;
+import org.eclipse.uml2.uml.UMLFactory;
+import org.obeonetwork.dsl.uml2.design.internal.services.ElementServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.LogServices;
 
 import com.google.common.collect.Lists;
@@ -84,7 +85,8 @@ public class DashboardServices {
 	/**
 	 * Create activity diagram.
 	 *
-	 * @param element Model
+	 * @param element
+	 *            Model
 	 */
 	public void createActivityDiagram(Activity element) {
 		createRepresentation(element, ACTIVITY_DIAGRAM);
@@ -93,7 +95,8 @@ public class DashboardServices {
 	/**
 	 * Create class diagram.
 	 *
-	 * @param element Model
+	 * @param element
+	 *            Model
 	 */
 	public void createClassDiagram(Model element) {
 		createRepresentation(element, CLASS_DIAGRAM);
@@ -102,7 +105,8 @@ public class DashboardServices {
 	/**
 	 * Create component diagram.
 	 *
-	 * @param element Model
+	 * @param element
+	 *            Model
 	 */
 	public void createComponentDiagram(Model element) {
 		createRepresentation(element, COMPONENT_DIAGRAM);
@@ -111,7 +115,8 @@ public class DashboardServices {
 	/**
 	 * Create composite structure diagram.
 	 *
-	 * @param element Model
+	 * @param element
+	 *            Model
 	 */
 	public void createCompositeStructureDiagram(Model element) {
 		createRepresentation(element, COMPOSITE_STRUCTURE_DIAGRAM);
@@ -120,7 +125,8 @@ public class DashboardServices {
 	/**
 	 * Create deployment diagram.
 	 *
-	 * @param element Model
+	 * @param element
+	 *            Model
 	 */
 	public void createDeploymentDiagram(Model element) {
 		createRepresentation(element, DEPLOYMENT_DIAGRAM);
@@ -129,16 +135,33 @@ public class DashboardServices {
 	/**
 	 * Create documentation table.
 	 *
-	 * @param element Model
+	 * @param element
+	 *            Model
 	 */
 	public void createDocumentationTable(Model element) {
 		createRepresentation(element, DOCUMENTATION_TABLE);
 	}
 
 	/**
+	 * Create interaction a new interaction in package.
+	 *
+	 * @param pkg
+	 *            Package containing new interaction.
+	 * @return Interaction
+	 */
+	public Interaction createInteraction(EObject pkg) {
+		final UMLFactory factory = UMLFactory.eINSTANCE;
+		final Interaction interaction = factory.createInteraction();
+		interaction.setName(ElementServices.INSTANCE.getNewInteractionName(pkg));
+		((Package)pkg).getPackagedElements().add(interaction);
+		return interaction;
+	}
+
+	/**
 	 * Create package containment diagram.
 	 *
-	 * @param element Model
+	 * @param element
+	 *            Model
 	 */
 	public void createPackageContainment(Model element) {
 		createRepresentation(element, PACKAGE_CONTAINMENT);
@@ -147,7 +170,8 @@ public class DashboardServices {
 	/**
 	 * Create package diagram.
 	 *
-	 * @param element Model
+	 * @param element
+	 *            Model
 	 */
 	public void createPackageDiagram(Model element) {
 		createRepresentation(element, PACKAGE_HIERARCHY);
@@ -156,7 +180,8 @@ public class DashboardServices {
 	/**
 	 * Create profile diagram.
 	 *
-	 * @param element Model
+	 * @param element
+	 *            Model
 	 */
 	public void createProfileDiagram(Profile element) {
 		createRepresentation(element, PROFILE_DIAGRAM);
@@ -175,15 +200,15 @@ public class DashboardServices {
 	private void createRepresentation(final EObject eObject, final String representationName,
 			final RepresentationDescription representationDescription) {
 		final Session session = SessionManager.INSTANCE.getSession(eObject);
-		final DRepresentation representation = DialectManager.INSTANCE.createRepresentation(representationName,
-				eObject, representationDescription, session, new NullProgressMonitor());
+		final DRepresentation representation = DialectManager.INSTANCE.createRepresentation(
+				representationName, eObject, representationDescription, session, new NullProgressMonitor());
 		openRepresentation(representation);
 	}
 
 	protected void createRepresentation(NamedElement namedElement, String representationId) {
 		final Session session = SessionManager.INSTANCE.getSession(namedElement);
-		final RepresentationDescription representationDescription = getRepresentationDescription(namedElement,
-				session, representationId);
+		final RepresentationDescription representationDescription = getRepresentationDescription(
+				namedElement, session, representationId);
 		createRepresentation(namedElement, namedElement.getName() + " " + representationId, //$NON-NLS-1$
 				representationDescription);
 	}
@@ -191,7 +216,8 @@ public class DashboardServices {
 	/**
 	 * Create sequence diagram.
 	 *
-	 * @param element Model
+	 * @param element
+	 *            Model
 	 */
 	public void createSequenceDiagram(Interaction element) {
 		createRepresentation(element, SEQUENCE_DIAGRAM);
@@ -200,7 +226,8 @@ public class DashboardServices {
 	/**
 	 * Create statemachine diagram.
 	 *
-	 * @param element Model
+	 * @param element
+	 *            Model
 	 */
 	public void createStateMachineDiagram(StateMachine element) {
 		createRepresentation(element, STATEMACHINE_DIAGRAM);
@@ -209,7 +236,8 @@ public class DashboardServices {
 	/**
 	 * Create use case cross table.
 	 *
-	 * @param element Model
+	 * @param element
+	 *            Model
 	 */
 	public void createUseCaseCrossTable(Model element) {
 		createRepresentation(element, USECASE_CROSS_TABLE);
@@ -218,7 +246,8 @@ public class DashboardServices {
 	/**
 	 * Create use case diagram.
 	 *
-	 * @param element Model
+	 * @param element
+	 *            Model
 	 */
 	public void createUseCaseDiagram(Model element) {
 		createRepresentation(element, USECASE_DIAGRAM);
@@ -233,7 +262,8 @@ public class DashboardServices {
 	 */
 	public boolean doesDashboardNotExist(EObject any) {
 		final Session session = SessionManager.INSTANCE.getSession(any);
-		final Collection<DRepresentation> representations = DialectManager.INSTANCE.getAllRepresentations(session);
+		final Collection<DRepresentation> representations = DialectManager.INSTANCE
+				.getAllRepresentations(session);
 		for (final DRepresentation representation : representations) {
 			if (representation instanceof DSemanticDiagram) {
 				final DSemanticDiagram diagram = (DSemanticDiagram)representation;
@@ -254,7 +284,8 @@ public class DashboardServices {
 	 */
 	public Collection<DRepresentation> getAllRepresentations(EObject any) {
 		final Session session = SessionManager.INSTANCE.getSession(any);
-		final Collection<DRepresentation> representations = DialectManager.INSTANCE.getAllRepresentations(session);
+		final Collection<DRepresentation> representations = DialectManager.INSTANCE
+				.getAllRepresentations(session);
 		final List<DRepresentation> result = Lists.newArrayList(representations);
 		for (final DRepresentation representation : representations) {
 			if (representation instanceof DSemanticDiagram) {
@@ -292,44 +323,26 @@ public class DashboardServices {
 	}
 
 	/**
-	 * Get all the root uml model elements which define a dashboard.
+	 * Open contextual help.
 	 *
-	 * @return List of model eleemnts.
+	 * @param any
+	 *            Semantic element
+	 * @param contextID
+	 *            Context ids are defined in the html/contexts.xml file in org.obeonetwork.dsl.uml2.design.doc
+	 *            project.
 	 */
-	public List<EObject> getUmlModelsWithDashboard() {
-		final List<EObject> results = Lists.newArrayList();
-		// Get all available dashboards
-		final Collection<Session> sessions = SessionManager.INSTANCE.getSessions();
-		for (final Session session : sessions) {
-			// Check if the dashboard viewpoint is active for the current session
-			final Collection<Viewpoint> selectedViewpoints = session.getSelectedViewpoints(false);
-			boolean isDashboardViewpointActive = false;
-			for (final Viewpoint viewpoint : selectedViewpoints) {
-				if (DASHBOARD_VP.equals(viewpoint.getName())) {
-					isDashboardViewpointActive = true;
-				}
-			}
-			if (isDashboardViewpointActive) {
-				// Check if a dashboard representation exists for the current session
-				final Collection<DRepresentation> representations = DialectManager.INSTANCE
-						.getAllRepresentations(session);
-				final Iterator<DRepresentation> iterator = representations.iterator();
-				boolean findDashboard = false;
-				while (iterator.hasNext() && !findDashboard) {
-					final DRepresentation representation = iterator.next();
-					if (representation instanceof DSemanticDiagram) {
-						final DSemanticDiagram diagram = (DSemanticDiagram)representation;
-						if (DashboardServices.DASHBOARD_DIAGRAM_DESCRIPTION_ID.equals(diagram
-								.getDescription().getName())) {
-							final EObject target = ((DSemanticDiagram)representation).getTarget();
-							results.add(target);
-							findDashboard = true;
-						}
-					}
-				}
-			}
+	public void openContextHelp(EObject any, String contextID) {
+		if (PlatformUI.getWorkbench() != null && PlatformUI.getWorkbench().getActiveWorkbenchWindow() != null
+				&& PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell() != null) {
+
+			// Context ids are defined in the html/contexts.xml file in
+			// org.obeonetwork.dsl.uml2.design.doc project.
+			final String contextId = "org.obeonetwork.dsl.uml2.design.doc." + contextID; //$NON-NLS-1$
+
+			PlatformUI.getWorkbench().getHelpSystem()
+			.setHelp(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), contextId);
+			PlatformUI.getWorkbench().getHelpSystem().displayDynamicHelp();
 		}
-		return results;
 	}
 
 	/**
