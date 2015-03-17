@@ -1,0 +1,40 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: CreateNewClassDiagram
+Element-Type: context
+Element-Version: 2.0
+Id: _p-v3gMyvEeSmqoI7c5i_uw
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 3/17/15 3:14 PM
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Create a new class diagram in NewModel : test Class Diagram
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+with [get-view "Model Explorer" | get-tree] {
+    select test | double-click
+    select test | get-menu "Create Representation" | click
+}
+with [get-window "Create Representation Wizard"] {
+    get-tree | select "Design/Class Diagram" | double-click
+    get-button "Next >" | click
+}
+with [get-window "Create Representation"] {
+    get-tree | select "platform:\\/resource\\/test\\/model.uml/<Model> NewModel"
+    get-button Finish | click
+    with [get-window "New Representation"] {
+        get-editbox -after [get-label "Representation name:"] | set-text "test Class Diagram"
+        get-button OK | click
+    }
+}
+get-editor "test Class Diagram" | get-diagram | get-edit-part -name "test Class Diagram" | mouse-move 146 13 
+    -height 338 -width 837
+get-button "Save (M1+S)" | click
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--
