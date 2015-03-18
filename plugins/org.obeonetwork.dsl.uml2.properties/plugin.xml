@@ -485,6 +485,12 @@ Contributors:
                id="org.obeonetwork.dsl.uml2.properties.uml.section.Connector"
                tab="Ends">
          </propertySection>
+         <propertySection
+               class="org.obeonetwork.dsl.uml2.properties.uml.parts.forms.StereotypeApplicationsPropertiesEditionPartForm"
+               filter="org.obeonetwork.dsl.uml2.properties.uml.providers.TaggedValuesEditionFilter"
+               id="org.obeonetwork.dsl.uml2.properties.uml.section.TaggedValues"
+               tab="TaggedValues">
+         </propertySection>
       </propertySections>
    </extension>
     </plugin>

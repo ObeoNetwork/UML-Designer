@@ -14,7 +14,6 @@ import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
@@ -32,6 +31,7 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.views.properties.tabbed.ISection;
+import org.obeonetwork.dsl.uml2.properties.parts.CustomSectionPropertiesEditingPart;
 import org.obeonetwork.dsl.uml2.properties.uml.components.ElementDocumentationPropertiesEditionComponent;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.CustomUmlViewsRepository;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.DocumentationPropertiesEditionPart;
@@ -43,8 +43,8 @@ import org.obeonetwork.dsl.uml2.properties.uml.providers.CustomUmlMessages;
  * @generated
  */
 public class DocumentationPropertiesEditionPartForm extends
-		SectionPropertiesEditingPart implements IFormPropertiesEditionPart,
-		DocumentationPropertiesEditionPart {
+		CustomSectionPropertiesEditingPart implements
+		IFormPropertiesEditionPart, DocumentationPropertiesEditionPart {
 
 	protected Text comment;
 

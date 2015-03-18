@@ -20,7 +20,6 @@ import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
@@ -45,6 +44,7 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.views.properties.tabbed.ISection;
 import org.eclipse.uml2.uml.Stereotype;
+import org.obeonetwork.dsl.uml2.properties.parts.CustomSectionPropertiesEditingPart;
 import org.obeonetwork.dsl.uml2.properties.service.TableColumnService;
 import org.obeonetwork.dsl.uml2.properties.service.TableLabelService;
 import org.obeonetwork.dsl.uml2.properties.service.TableLabelService.TableColumnName;
@@ -57,8 +57,8 @@ import org.obeonetwork.dsl.uml2.properties.uml.providers.CustomUmlMessages;
  * @author <a href="mailto:melanie.bats@obeo.fr">Melanie Bats</a>
  */
 public class StereotypesPropertiesEditionPartForm extends
-		SectionPropertiesEditingPart implements IFormPropertiesEditionPart,
-		StereotypesPropertiesEditionPart {
+		CustomSectionPropertiesEditingPart implements
+		IFormPropertiesEditionPart, StereotypesPropertiesEditionPart {
 
 	protected ReferencesTable appliedStereotypes;
 	protected List<ViewerFilter> appliedStereotypesBusinessFilters = new ArrayList<ViewerFilter>();

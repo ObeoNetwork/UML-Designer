@@ -16,7 +16,6 @@ import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
 import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
 import org.eclipse.emf.eef.runtime.api.parts.IFormPropertiesEditionPart;
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
-import org.eclipse.emf.eef.runtime.part.impl.SectionPropertiesEditingPart;
 import org.eclipse.emf.eef.runtime.ui.parts.PartComposer;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.BindingCompositionSequence;
 import org.eclipse.emf.eef.runtime.ui.parts.sequence.CompositionSequence;
@@ -40,6 +39,7 @@ import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 import org.eclipse.ui.views.properties.tabbed.ISection;
+import org.obeonetwork.dsl.uml2.properties.parts.CustomSectionPropertiesEditingPart;
 import org.obeonetwork.dsl.uml2.properties.service.TableColumnService;
 import org.obeonetwork.dsl.uml2.properties.service.TableLabelService;
 import org.obeonetwork.dsl.uml2.properties.service.TableLabelService.TableColumnName;
@@ -53,8 +53,8 @@ import org.obeonetwork.dsl.uml2.properties.uml.providers.CustomUmlMessages;
  * @author <a href="mailto:cedric.notot@obeo.fr">Cédric Notot</a>
  */
 public class StereotypeApplicationsPropertiesEditionPartForm extends
-		SectionPropertiesEditingPart implements IFormPropertiesEditionPart,
-		StereotypeApplicationsPropertiesEditionPart {
+		CustomSectionPropertiesEditingPart implements
+		IFormPropertiesEditionPart, StereotypeApplicationsPropertiesEditionPart {
 
 	protected ReferencesTable stereotypeApplications;
 	private TableLabelService labelService;
@@ -133,7 +133,7 @@ public class StereotypeApplicationsPropertiesEditionPartForm extends
 			FormToolkit widgetFactory, Composite parent) {
 
 		final ReferencesTableListener referencesTableListener = new ReferencesTableListener() {
-			
+
 			public void handleEdit(EObject element) {
 				editStereotypeApplication(element);
 			}
@@ -143,17 +143,17 @@ public class StereotypeApplicationsPropertiesEditionPartForm extends
 
 			public void handleAdd() {
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			public void handleRemove(EObject element) {
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			public void handleMove(EObject element, int oldIndex, int newIndex) {
 				// TODO Auto-generated method stub
-				
+
 			}
 
 		};
@@ -193,8 +193,12 @@ public class StereotypeApplicationsPropertiesEditionPartForm extends
 												.getFeature());
 							}
 							if (columnIndex == tableColumnService
-									.indexOf(TableColumnName.VALUE)) {							
-								return labelService.caseStereotypeApplicationPropertyValue(property, new AdapterFactoryLabelProvider(adapterFactory));
+									.indexOf(TableColumnName.VALUE)) {
+								return labelService
+										.caseStereotypeApplicationPropertyValue(
+												property,
+												new AdapterFactoryLabelProvider(
+														adapterFactory));
 							}
 						}
 						return "";
@@ -230,14 +234,15 @@ public class StereotypeApplicationsPropertiesEditionPartForm extends
 					}
 
 				});
-		GridData stereotypeApplicationsData = new GridData(GridData.FILL_HORIZONTAL);
+		GridData stereotypeApplicationsData = new GridData(
+				GridData.FILL_HORIZONTAL);
 		stereotypeApplicationsData.horizontalSpan = 3;
 		this.stereotypeApplications.setLayoutData(stereotypeApplicationsData);
 		this.stereotypeApplications.disableMove();
 		stereotypeApplications
 				.setID(CustomUmlViewsRepository.StereotypeApplications.stereotypeApplications);
 		stereotypeApplications.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
-		
+
 		final Table table = stereotypeApplications.getTable();
 		TableColumn[] columns = table.getColumns();
 		// dispose
@@ -291,7 +296,6 @@ public class StereotypeApplicationsPropertiesEditionPartForm extends
 	public void firePropertiesChanged(IPropertiesEditionEvent event) {
 	}
 
-	
 	/**
 	 * {@inheritDoc}
 	 * 
@@ -336,7 +340,8 @@ public class StereotypeApplicationsPropertiesEditionPartForm extends
 	/**
 	 * {@inheritDoc}
 	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart#getDescription(java.lang.Object, java.lang.String)
+	 * @see org.eclipse.emf.eef.runtime.impl.parts.CompositePropertiesEditionPart#getDescription(java.lang.Object,
+	 *      java.lang.String)
 	 */
 	@Override
 	protected String getDescription(Object editor, String alternate) {
