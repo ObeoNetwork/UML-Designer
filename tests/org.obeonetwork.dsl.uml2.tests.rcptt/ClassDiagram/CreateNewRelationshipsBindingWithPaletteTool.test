@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _qB940M2aEeSHkpcdtO-QuQ
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 3/19/15 10:04 AM
+Save-Time: 3/19/15 11:58 AM
 Testcase-Type: ecl
 Verifications: _y7NfEM4WEeSHkpcdtO-QuQ
 
@@ -15,13 +15,15 @@ Verifications: _y7NfEM4WEeSHkpcdtO-QuQ
 Content-Type: text/plain
 Entry-Name: .description
 
-Create a New semantic element in class diagram: AgssociationClass
+Create a New semantic element in class diagram: Binding
 Test:
-- with Palette tool : AgssociationClass create new element between Class1 and Class2 and a new association class.
+- with Palette tool : Bindings create new element between Class1 and Class2 and a new association class.
+- specify the binding association from the formal to the actual type use also the direct edit tool
+- specify the binding with an invalid value
 
 Result:
-- new connection appears in diagram, and new association class element appears in diagram
-- new connection appear in model explorer under NewModel
+- new connection appears in diagram
+- new connection appear in model explorer
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
 Content-Type: text/ecl
