@@ -1,0 +1,89 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_X-rQgH-QEeS4X6G9cD21hw,_p-v3gMyvEeSmqoI7c5i_uw,_7lkXsMzEEeSmqoI7c5i_uw,_ogZrUM2NEeSHkpcdtO-QuQ
+Element-Name: CreateNewRelationshipsUsageWithPaletteTool
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _dS1QkM2WEeSHkpcdtO-QuQ
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 3/18/15 6:58 PM
+Testcase-Type: ecl
+Verifications: _P8MUsM2YEeSHkpcdtO-QuQ
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Create a New semantic element in class diagram to a Class: Usage
+
+Test:
+- with Palette tool Usage: create new element between Clas1 and Interface1.
+
+Result:
+- new element appears in diagram
+- new element appear in model explorer
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Create new Usage between Class1 and Interface1
+with [get-editor "test Class Diagram"] {
+    maximize
+    get-diagram -index 1 | get-edit-part -name "test Class Diagram" | mouse-move 1152 407 -height 562 -width 1153
+    with [get-palette] {
+        with [get-palette-entry Dependencies] {
+            mouse-move 12 23 button1 -height 37 -width 135
+            mouse-press 12 23 button1 -height 37 -width 135
+            mouse-release 12 23 button1 524288 -height 37 -width 135
+        }
+        with [get-palette-entry Usage] {
+            mouse-move 37 15 button1 -height 23 -width 135
+            mouse-press 37 15 button1 -height 23 -width 135
+            mouse-release 37 15 button1 524288 -height 23 -width 135
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name Class1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 75 17 button1 -height 71 -width 116
+            mouse-press 75 17 button1 -height 71 -width 116
+            mouse-release 75 17 button1 524288 -height 71 -width 116
+        }
+        with [get-edit-part -name Interface1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 61 20 button1 -height 71 -width 116
+            mouse-press 61 20 button1 -height 71 -width 116
+            mouse-release 61 20 button1 524288 -height 71 -width 116
+        }
+    }
+}
+
+// Check Graphical element is created
+// Check Source and target
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name Interface1 | get-target-connection 0] {
+    get-property "getTarget().getPrimaryFigure().getLabelFigure().getText()" | equals Interface1 | verify-true
+    get-property "getSource().getPrimaryFigure().getLabelFigure().getText()" | equals Class1 | verify-true
+}
+
+// Check Graphical element is created
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name Interface1 | get-target-connection 0] {
+    get-edit-part -className "" | get-property "getFigure().getText()" | equals "<<use>>" | verify-true
+}
+
+// Check connection style
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name Interface1 | get-target-connection 0] {
+    get-property "element.ownedStyle.customFeatures" | equals "[]" | verify-true
+    get-property "element.ownedStyle.lineStyle" | equals dash | verify-true
+    get-property "element.ownedStyle.sourceArrow" | equals NoDecoration | verify-true
+    get-property "element.ownedStyle.targetArrow" | equals InputArrow | verify-true
+    get-property "element.ownedStyle.foldingStyle" | equals NONE | verify-true
+    get-property "element.ownedStyle.size" | equals 1 | verify-true
+    get-property "element.ownedStyle.routingStyle" | equals straight | verify-true
+    //get-property "element.ownedStyle.beginLabelStyle" | equals null | verify-true
+    //get-property "element.ownedStyle.endLabelStyle" | equals null | verify-true
+    get-property "element.ownedStyle.centered" | equals None | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

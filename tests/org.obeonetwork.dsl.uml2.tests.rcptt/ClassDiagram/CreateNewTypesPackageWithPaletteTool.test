@@ -1,13 +1,13 @@
 --- RCPTT testcase ---
 Format-Version: 1.0
 Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_X-rQgH-QEeS4X6G9cD21hw,_p-v3gMyvEeSmqoI7c5i_uw
-Element-Name: CreateSemanticElementPackageWithPaletteTool
+Element-Name: CreateNewTypesPackageWithPaletteTool
 Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _lRQQ0MyzEeSmqoI7c5i_uw
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 3/17/15 3:47 PM
+Save-Time: 3/18/15 11:33 AM
 Testcase-Type: ecl
 Verifications: _s1JVgMyyEeSmqoI7c5i_uw
 
@@ -38,9 +38,6 @@ with [get-editor "test Class Diagram"] {
     get-diagram -index 1 | get-edit-part -name "test Class Diagram" | drop 317 89 -detail copy
     get-palette | drag-end -detail move
 }
-
-// Save
-get-button "Save (M1+S)" | click
 
 // Verify Graphical element is created
 get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part -name Package1 
