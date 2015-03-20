@@ -505,6 +505,38 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	}
 
 	/**
+	 * Get selection wizard roots available according to the kind of diagram.
+	 *
+	 * @param element
+	 *            Semantic element
+	 * @param containerView
+	 *            Diagram
+	 * @return List of roots usable by the selection wizard add existing elements tool
+	 */
+	public Collection<EObject> getRootsForDiagram(final EObject element,
+			final DSemanticDecorator containerView) {
+		// Get representation
+		DRepresentation representation = null;
+		if (containerView instanceof DRepresentation) {
+			representation = (DRepresentation)containerView;
+		} else if (containerView instanceof DDiagramElement) {
+			representation = ((DDiagramElement)containerView).getParentDiagram();
+		}
+		Collection<EObject> results = null;
+		if (representation instanceof DSemanticDiagram) {
+			final DiagramDescription description = ((DSemanticDiagram)representation).getDescription();
+
+			if ("Composite Structure Diagram".equals(description.getName())) { //$NON-NLS-1$
+				results = new ArrayList<EObject>();
+				results.add(element);
+			} else {
+				results = getAllRootsInSession(element);
+			}
+		}
+		return results;
+	}
+
+	/**
 	 * Get an statemachine.
 	 *
 	 * @param parent

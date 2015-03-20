@@ -65,7 +65,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:SelectionWizardDescription" documentation="Add an existing element to current representation" name="AddExistingElements" label="Add" precondition="service:container.existValidElementsForContainerView(containerView)" forceRefresh="true" candidatesExpression="service:self.getValidsForDiagram(containerView)" multiple="true" tree="true" rootExpression="service:getAllRootsInSession" childrenExpression="feature:eContents" iconPath="/org.eclipse.search/icons/full/etool16/search.gif" windowTitle="Select element to add in current representation">
+          <ownedTools xsi:type="tool:SelectionWizardDescription" documentation="Add an existing element to current representation" name="AddExistingElements" label="Add" precondition="service:container.existValidElementsForContainerView(containerView)" forceRefresh="true" candidatesExpression="service:self.getValidsForDiagram(containerView)" multiple="true" tree="true" rootExpression="service:getRootsForDiagram(containerView)" childrenExpression="feature:eContents" iconPath="/org.eclipse.search/icons/full/etool16/search.gif" windowTitle="Select element to add in current representation">
             <element name="element"/>
             <containerView name="containerView"/>
             <container name="container"/>
