@@ -1,0 +1,68 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_p5zq0M4oEeS8M6MvytM1MA,_dPl7wM8JEeSz9_HNAw245A,_q6tA4M8JEeSz9_HNAw245A
+Element-Name: ShowAllMappingsInExistingClassDiagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _3KqiMM7_EeSz9_HNAw245A
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 3/20/15 3:02 PM
+Testcase-Type: ecl
+Verifications: _GU_SMM5OEeS8M6MvytM1MA
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Open an existing Class diagram which contains all available mappings and verify they are displayed.
+
+Test:
+- Open an existing diagram
+
+Result:
+- Verify first level element number
+- Verify second level element number
+
+TODO: this test only verify number of elements but not the types and styles of the elements
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Open "Test Class Diagram" class diagram to test containers
+// Open "Test Class Diagram Edges" class diagram to test connections
+
+// Verify number of elements in Diagram
+// Check number of containers
+get-editor "Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "Test Class Diagram" 
+    | get-property childrenCount | equals 24 | verify-true
+// Check number of connections
+get-editor "Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "Test Class Diagram" 
+    | get-property "getConnections().size()" | equals 10 | verify-true
+
+// Verify number of second level elements
+// Verify "New package 1" packageable elements number
+get-editor "Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "Test Class Diagram" 
+    | get-edit-part -name "New package 1" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+    | get-property childrenCount | equals 6 | verify-true
+// Verify "Default Enumeration" enum literal elements number
+get-editor "Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "Test Class Diagram" 
+    | get-edit-part -name "Default Enumeration" | get-edit-part -className DNodeListViewNodeListCompartment2EditPart 
+    | get-property childrenCount | equals 1 | verify-true
+// Verify features elements number
+get-editor "Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "Test Class Diagram" | get-edit-part 
+    -name DefaultClass | get-edit-part -className DNodeListViewNodeListCompartment2EditPart 
+    | get-property childrenCount | equals 5 | verify-true
+with [get-editor "Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "Test Class Diagram"] {
+    mouse-move 36 299 -height 776 -width 843
+    mouse-move 0 155 -height 776 -width 843
+}
+
+
+// Verify number of elements in Diagram
+//Verify the number of relations
+with [get-editor "Test Class Diagram Edges" | get-diagram -index 1 | get-edit-part -name "Test Class Diagram Edges"] {
+    get-property childrenCount | equals 15 | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
