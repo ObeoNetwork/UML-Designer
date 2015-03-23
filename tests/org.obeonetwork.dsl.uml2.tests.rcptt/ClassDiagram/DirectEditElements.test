@@ -1,0 +1,84 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_PbyVcIBsEeS4X6G9cD21hw,_Xlv3AM8MEeSz9_HNAw245A
+Element-Name: DirectEditElements
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _y7CXsM8NEeSz9_HNAw245A
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 3/20/15 5:48 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Open Example TravelAgency and Entities class diagram
+
+Test:
+- Direct edit a comment
+
+Result:
+- Verify figure comment is updated
+
+- Verify model is modified
+ents but not the types and styles of the elements
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// ----- DirectEdit a comment --------------------------------------------------------------------------------
+// Activate Direct Edit for a class name
+get-editor Entities | get-diagram -index 1 | get-edit-part -name Entities | get-edit-part -name "Travel agency" 
+    | activate-direct-edit
+
+// Change Class name
+with [get-editor Entities] {
+    with [get-editbox] {
+        set-text "My Travel agency"
+    }
+    with [get-diagram -index 1] {
+        commit-direct-edit
+    }
+}
+
+// Verify figure description was changed
+get-editor Entities | get-diagram -index 1 | get-edit-part -name Entities | get-edit-part -name "My Travel agency" 
+    | get-edit-part -className SquareEditPart 
+    | get-property "getFigure().getChildren().SquareFigure[0].getChildren().SiriusWrapLabel[0].getText()" 
+    | equals "My Travel agency" | verify-true
+
+// Verify Model
+get-editor Entities | get-diagram -index 1 | get-edit-part -name Entities | get-edit-part -name "My Travel agency" 
+    | get-edit-part -className SquareEditPart | get-property "diagram.element.target.ownedComment.Comment[0].body" 
+    | equals "My Travel agency" | verify-true
+    
+// ----- Direct Edit an End association --------------------------------------------------------------------------------
+// Activate Direct Edit
+get-editor Entities|get-diagram -index 1 | get-edit-part -name Entities|get-edit-part -name Availability 
+    | get-target-connection 0 | get-edit-part -className "" -index 4 | activate-direct-edit
+
+// Change Class name
+with [get-editor Entities] {
+    with [get-editbox] {
+        set-text "My availabilityRanges[0..5]"
+    }
+    with [get-diagram -index 1] {
+        commit-direct-edit
+    }
+}
+// Verify figure
+get-editor Entities | get-diagram -index 1 | get-edit-part -name Entities | get-edit-part -name Availability 
+    | get-target-connection 0 | get-edit-part -className "" -index 4 | get-property "getFigure().getText()" 
+    | equals "My availabilityRanges[0..5]" | verify-true
+
+// Verify Model
+with [get-editor Entities | get-diagram -index 1 | get-edit-part -name Entities | get-edit-part -name Availability 
+    | get-target-connection 0] {
+    get-property "element.semanticElements.Property[1].name" | equals "My availabilityRanges" | verify-true
+    get-property "element.semanticElements.Property[1].lower" | equals 0 | verify-true
+    get-property "element.semanticElements.Property[1].upper" | equals 5 | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
