@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.Command;
@@ -34,6 +35,8 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.uml2.uml.Activity;
@@ -63,6 +66,7 @@ import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.Profile;
+import org.eclipse.uml2.uml.ProfileApplication;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Region;
 import org.eclipse.uml2.uml.StateMachine;
@@ -84,6 +88,7 @@ import org.obeonetwork.dsl.uml2.design.internal.services.MoveUpElementSwitch;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 /**
  * A set of services to handle the Reused Description diagram.
@@ -138,11 +143,13 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	 * @return The element on which stereotypes are applied
 	 */
 	public Element applyAllStereotypes(Element element, List<Stereotype> stereotypesToApply) {
+		final Session session = SessionManager.INSTANCE.getSession(element);
 		// Unapplying not selected stereotypes
 		final List<Stereotype> alreadyAppliedStereotypes = element.getAppliedStereotypes();
 		for (final Stereotype alreadyAppliedStereotype : alreadyAppliedStereotypes) {
 			if (stereotypesToApply == null || !stereotypesToApply.contains(alreadyAppliedStereotype)) {
 				element.unapplyStereotype(alreadyAppliedStereotype);
+				unapplyProfile(element, alreadyAppliedStereotype);
 			}
 		}
 
@@ -156,6 +163,14 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 			final Package pkg = element.getNearestPackage();
 			if (!pkg.isProfileApplied(profile)) {
 				pkg.applyProfile(profile);
+
+				// Register metamodel
+				for (final ProfileApplication profileApplication : profile.getAllProfileApplications()) {
+					final Set<MetamodelDescriptor> descriptorsForInterpreter = Sets.newLinkedHashSet();
+					descriptorsForInterpreter.add(new EcoreMetamodelDescriptor(profileApplication
+							.getAppliedDefinition()));
+					session.getInterpreter().activateMetamodels(descriptorsForInterpreter);
+				}
 			}
 
 			if (!element.isStereotypeApplied(stereotypeToApply)) {
@@ -417,6 +432,11 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 		// Get all profiles
 		stereotypesAndProfiles.addAll(profiles);
 		return stereotypesAndProfiles;
+	}
+
+	public Element getBaseClass(EObject stereotypeApplication) {
+		return (Element)stereotypeApplication.eGet(stereotypeApplication.eClass().getEStructuralFeature(
+				"base_Class"));
 	}
 
 	/**
@@ -1126,5 +1146,42 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	 */
 	public Element unApplyAllStereotypes(Element element) {
 		return applyAllStereotypes(element, null);
+	}
+
+	private void unapplyProfile(Element element, final Stereotype alreadyAppliedStereotype) {
+		// If no other stereotype is used, unapply the profile
+		final Profile profile = alreadyAppliedStereotype.getProfile();
+		final Package pkg = element.getNearestPackage();
+		final List<EObject> stereotypeApplications = Lists.newArrayList();
+
+		// for (final Element subElement : pkg.getOwnedElements()) {
+		final Iterator<Element> it = Iterators.filter(EcoreUtil.getAllProperContents(pkg, true),
+				Element.class);
+		while (it.hasNext()) {
+			final Element cur = it.next();
+			System.out.println(cur);
+			stereotypeApplications.addAll(cur.getStereotypeApplications());
+		}
+		// }
+
+		// for (final Element subElement : pkg.getOwnedElements()) {
+		// stereotypeApplications.addAll(subElement.getStereotypeApplications());
+		// }
+		for (final EObject stereotypeApplication : stereotypeApplications) {
+			// Get base class
+			final Element baseClass = getBaseClass(stereotypeApplication);
+			// Get all applied stereotypes
+			for (final Stereotype stereotype : baseClass.getAppliedStereotypes()) {
+				// if (stereotype.getName().equals(stereotypeApplication.eClass().getName())) {
+				// Get profile
+				if (stereotype.getProfile().equals(profile)) {
+					// If stereotypes are still applied return else unapply profile on package
+					return;
+				}
+			}
+			// }
+		}
+		System.out.println("Unapply profile : " + profile.getName() + " on pkg : " + pkg.getName());
+		pkg.unapplyProfile(profile);
 	}
 }

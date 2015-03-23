@@ -17,12 +17,16 @@ import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.AssociationClass;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.DataType;
+import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.Operation;
@@ -137,6 +141,24 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 		} else if (b instanceof Association && a instanceof Type) {
 			fixAssociation((Association)b, (Type)a);
 		}
+	}
+
+	/**
+	 * Get all the stereotype applications according to the selected diagram.
+	 *
+	 * @param diagram
+	 *            Current diagram
+	 * @return Stereotype applications
+	 */
+	public Collection<Object> getAllStereotypeApplications(DDiagram diagram) {
+		final Collection<Object> results = Lists.newArrayList();
+		for (final DDiagramElementContainer container : diagram.getContainers()) {
+			final EObject target = container.getTarget();
+			if (target instanceof Element) {
+				results.addAll(((Element)target).getStereotypeApplications());
+			}
+		}
+		return results;
 	}
 
 	/**
@@ -285,6 +307,51 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	 */
 	public Type getSourceType(Association association) {
 		return AssociationServices.INSTANCE.getSourceType(association);
+	}
+
+	/**
+	 * Get stereotype application label.
+	 *
+	 * @param stereotypeApplication
+	 *            Stereotype application
+	 * @return The stereotype name.
+	 */
+	public String getStereotypeApplicationLabel(EObject stereotypeApplication) {
+		return stereotypeApplication.eClass().getName();
+	}
+
+	/**
+	 * Get tagged value label.
+	 *
+	 * @param feature
+	 *            Feature
+	 * @param view
+	 *            Stereotype application view
+	 * @return Tagged value label featureName = value
+	 */
+	public String getTaggedValueLabel(EStructuralFeature feature, DDiagramElement view) {
+		final DDiagramElement stereotypeApplicationView = (DDiagramElement)view.eContainer();
+		final EObject stereotypeApplication = stereotypeApplicationView.getTarget();
+
+		return feature.getName() + "=" + stereotypeApplication.eGet(feature); //$NON-NLS-1$
+	}
+
+	/**
+	 * Get tagged values.
+	 *
+	 * @param stereotypeApplication
+	 *            Container
+	 * @return Collection of tagged values
+	 */
+	public Collection<Object> getTaggedValues(EObject stereotypeApplication) {
+		final Collection<Object> results = Lists.newArrayList();
+		for (final EStructuralFeature feature : stereotypeApplication.eClass().getEAllStructuralFeatures()) {
+			if (!feature.getName().startsWith("base_")) { //$NON-NLS-1$
+				results.add(feature);
+			}
+		}
+
+		return results;
 	}
 
 	/**

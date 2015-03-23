@@ -319,7 +319,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="Stereotypes" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Stereotype.gif" windowTitle="Select stereotypes to apply" message="Select stereotypes to apply" choiceOfValuesMessage="Applicable stereotypes" candidatesExpression="service:self.getAllStereotypesAndProfiles" tree="true" rootExpression="service:self.getAllProfilesInPlatform" childrenExpression="feature:ownedStereotype" selectedValuesMessage="Stereotypes to apply" preSelectedCandidatesExpression="[self.oclAsType(uml::Element).getAppliedStereotypes()/]">
+          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="Stereotype" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Stereotype.gif" windowTitle="Select stereotypes to apply" message="Select stereotypes to apply" choiceOfValuesMessage="Applicable stereotypes" candidatesExpression="service:self.getAllStereotypesAndProfiles" tree="true" rootExpression="service:self.getAllProfilesInPlatform" childrenExpression="feature:ownedStereotype" selectedValuesMessage="Stereotypes to apply" preSelectedCandidatesExpression="[self.oclAsType(uml::Element).getAppliedStereotypes()/]">
             <element name="stereotype"/>
             <containerView name="containerView"/>
             <container name="container"/>
@@ -839,7 +839,7 @@
         </toolSections>
       </defaultLayer>
       <additionalLayers name="Profiles">
-        <toolSections name="Profiles" reusedTools="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Stereotypes']"/>
+        <toolSections name="Profiles" reusedTools="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Stereotype']"/>
       </additionalLayers>
       <additionalLayers name="Comments" reusedMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='RED_Comment'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@edgeMappings[name='RED_CommentLink']">
         <toolSections name="Comments" reusedTools="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='comments']/@ownedTools[name='CRE_Comment'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='comments']/@ownedTools[name='CRE_CommentLink']"/>
@@ -1234,7 +1234,7 @@
         </toolSections>
       </defaultLayer>
       <additionalLayers name="Profiles">
-        <toolSections name="Profiles" reusedTools="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Stereotypes']"/>
+        <toolSections name="Profiles" reusedTools="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Stereotype']"/>
       </additionalLayers>
       <additionalLayers name="Comments" reusedMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='RED_Comment'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@edgeMappings[name='RED_CommentLink']">
         <toolSections name="Comments" reusedTools="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='comments']/@ownedTools[name='CRE_Comment'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='comments']/@ownedTools[name='CRE_CommentLink']"/>
@@ -2153,8 +2153,30 @@
           </vsmElementCustomizations>
         </customization>
       </defaultLayer>
-      <additionalLayers name="Profiles">
-        <toolSections name="Profiles" reusedTools="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Stereotypes']"/>
+      <additionalLayers name="Stereotypes">
+        <edgeMappings name="CD_StereotypeApplicationLink" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@additionalLayers[name='Stereotypes']/@containerMappings[name='CD_StereotypeApplication']" targetFinderExpression="[self.getStereotypeApplications()/]">
+          <style lineStyle="dot" targetArrow="NoDecoration" sizeComputationExpression="1">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="CD_StereotypeApplication" semanticCandidatesExpression="[diagram.getAllStereotypeApplications()/]" semanticElements="service:getBaseClass" domainClass="EObject" childrenPresentation="List">
+          <subNodeMappings name="CD_TaggedValue" semanticCandidatesExpression="service:getTaggedValues" domainClass="EObject">
+            <style xsi:type="style:BundledImageDescription" labelExpression="service:getTaggedValueLabel(view)" labelAlignment="LEFT" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="0" arcHeight="0" labelSize="9" labelFormat="bold" labelExpression="service:getStereotypeApplicationLabel" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Stereotype.gif" tooltipExpression="Stereotype Application" widthComputationExpression="service:defaultWidth" heightComputationExpression="service:defaultHeight" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='lighter%20green']">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Stereotypes" reusedTools="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Stereotype']"/>
       </additionalLayers>
       <additionalLayers name="Comments" reusedMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='RED_Comment'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@edgeMappings[name='RED_CommentLink']">
         <toolSections name="Comments" reusedTools="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='comments']/@ownedTools[name='CRE_Comment'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='comments']/@ownedTools[name='CRE_CommentLink']"/>
@@ -2470,7 +2492,7 @@
         </toolSections>
       </defaultLayer>
       <additionalLayers name="Profiles">
-        <toolSections name="Profiles" reusedTools="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Stereotypes']"/>
+        <toolSections name="Profiles" reusedTools="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Stereotype']"/>
       </additionalLayers>
       <additionalLayers name="Comments" reusedMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='RED_Comment'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@edgeMappings[name='RED_CommentLink']">
         <toolSections name="Comments" reusedTools="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='comments']/@ownedTools[name='CRE_Comment'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='comments']/@ownedTools[name='CRE_CommentLink']"/>
@@ -3051,7 +3073,7 @@
         </toolSections>
       </defaultLayer>
       <additionalLayers name="Profiles">
-        <toolSections name="Profiles" reusedTools="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Stereotypes']"/>
+        <toolSections name="Profiles" reusedTools="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Stereotype']"/>
       </additionalLayers>
       <additionalLayers name="Comments" reusedMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='RED_Comment'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@edgeMappings[name='RED_CommentLink']">
         <toolSections name="Comments" reusedTools="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='comments']/@ownedTools[name='CRE_Comment'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='comments']/@ownedTools[name='CRE_CommentLink']"/>
@@ -3457,7 +3479,7 @@
         </toolSections>
       </defaultLayer>
       <additionalLayers name="Profiles" activeByDefault="true">
-        <toolSections name="Profiles" reusedTools="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Stereotypes']"/>
+        <toolSections name="Profiles" reusedTools="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Stereotype']"/>
       </additionalLayers>
       <additionalLayers name="Comments" reusedMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='RED_Comment'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@edgeMappings[name='RED_CommentLink']">
         <toolSections name="Comments" reusedTools="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='comments']/@ownedTools[name='CRE_Comment'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='comments']/@ownedTools[name='CRE_CommentLink']"/>
@@ -4261,7 +4283,7 @@
         </decorationDescriptionsSet>
       </defaultLayer>
       <additionalLayers name="Profiles">
-        <toolSections name="Profiles" reusedTools="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Stereotypes']"/>
+        <toolSections name="Profiles" reusedTools="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Stereotype']"/>
       </additionalLayers>
       <additionalLayers name="Comments" reusedMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='RED_Comment'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@edgeMappings[name='RED_CommentLink']">
         <toolSections name="Comments" reusedTools="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='comments']/@ownedTools[name='CRE_Comment'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='comments']/@ownedTools[name='CRE_CommentLink']"/>
@@ -4814,7 +4836,7 @@
         </toolSections>
       </defaultLayer>
       <additionalLayers name="Profiles">
-        <toolSections name="Profiles" reusedTools="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Stereotypes']"/>
+        <toolSections name="Profiles" reusedTools="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='profiles']/@ownedTools[name='Stereotype']"/>
       </additionalLayers>
       <additionalLayers name="Comments" reusedMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='RED_Comment'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@edgeMappings[name='RED_CommentLink']">
         <toolSections name="Comments" reusedTools="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='comments']/@ownedTools[name='CRE_Comment'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='comments']/@ownedTools[name='CRE_CommentLink']"/>

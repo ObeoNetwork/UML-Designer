@@ -4,22 +4,35 @@
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
- * 
+ *
  * Contributors:
  *     Obeo - initial API and implementation
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.internal.listeners;
 
+import java.util.Iterator;
+import java.util.Set;
+
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
+import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.IPartService;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.uml2.uml.ProfileApplication;
 import org.obeonetwork.dsl.uml2.design.internal.triggers.AutosizeTrigger;
+
+import com.google.common.collect.Iterators;
+import com.google.common.collect.Sets;
 
 /**
  * Session listener.
- * 
+ *
  * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class UmlDesignerSessionManagerListener implements SessionManagerListener {
@@ -30,6 +43,32 @@ public class UmlDesignerSessionManagerListener implements SessionManagerListener
 	private final OpenHelpContextListener openedEditorListener = new OpenHelpContextListener();
 
 	private final CallActionPinListener callActionPinListener = new CallActionPinListener();
+
+	public void notify(Session updated, int notification) {
+		// Nothing
+		if (notification == SessionListener.OPENED) {
+
+			final Set<EPackage> profileEPackages = Sets.newLinkedHashSet();
+
+			for (final Resource semResources : updated.getSemanticResources()) {
+				final Iterator<ProfileApplication> it = Iterators.filter(
+						EcoreUtil.getAllProperContents(semResources, true), ProfileApplication.class);
+				while (it.hasNext()) {
+					final ProfileApplication cur = it.next();
+					final EPackage found = cur.getAppliedDefinition();
+					if (found != null) {
+						profileEPackages.add(found);
+					}
+				}
+			}
+			final Set<MetamodelDescriptor> descriptorsForInterpreter = Sets.newLinkedHashSet();
+			for (final EPackage pak : profileEPackages) {
+				descriptorsForInterpreter.add(new EcoreMetamodelDescriptor(pak));
+			}
+			updated.getInterpreter().activateMetamodels(descriptorsForInterpreter);
+
+		}
+	}
 
 	public void notifyAddSession(Session newSession) {
 		newSession.getEventBroker().addLocalTrigger(AutosizeTrigger.IS_GMF_NODE_ATTACHMENT,
@@ -43,15 +82,11 @@ public class UmlDesignerSessionManagerListener implements SessionManagerListener
 		removedSession.getTransactionalEditingDomain().removeResourceSetListener(callActionPinListener);
 	}
 
-	public void viewpointSelected(Viewpoint selectedSirius) {
-		// Nothing
-	}
-
 	public void viewpointDeselected(Viewpoint deselectedSirius) {
 		// Nothing
 	}
 
-	public void notify(Session updated, int notification) {
+	public void viewpointSelected(Viewpoint selectedSirius) {
 		// Nothing
 	}
 
