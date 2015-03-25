@@ -1,0 +1,39 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: CreateTwoClassesInTestClassDiagramEdges
+Element-Type: context
+Element-Version: 2.0
+Id: _CnA2YNJFEeSzLt1JkYCXlg
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 3/24/15 5:44 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+// Create two classes to move start and end points
+with [get-editor "Test Class Diagram Edges"] {
+    with [get-palette | get-palette-entry Class] {
+        mouse-move 27 14 button1 -height 23 -width 146
+        mouse-press 27 14 button1 -height 23 -width 146
+        mouse-release 27 14 button1 524288 -height 23 -width 146
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Test Class Diagram Edges"] {
+        mouse-move 19 172 button1 -height 537 -width 1057
+        mouse-press 19 172 button1 -height 537 -width 1057
+        mouse-release 19 172 button1 524288 -height 537 -width 1057
+    }
+
+    with [get-palette | get-palette-entry Class] {
+        mouse-move 85 9 button1 -height 23 -width 146
+        mouse-press 85 9 button1 -height 23 -width 146
+        mouse-release 85 9 button1 524288 -height 23 -width 146
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Test Class Diagram Edges"] {
+        mouse-move 249 178 button1 -height 537 -width 1057
+        mouse-press 249 178 button1 -height 537 -width 1057
+        mouse-release 249 178 button1 524288 -height 537 -width 1057
+    }
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--
