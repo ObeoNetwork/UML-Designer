@@ -1,0 +1,31 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: CreateAComponentInComponentDiagramInTestProject
+Element-Type: context
+Element-Version: 2.0
+Id: _0gdt4NRyEeSda_OhYkGJCQ
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 3/27/15 12:17 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+// create a component
+with [get-editor "NewModel Component Diagram"] {
+    with [get-palette] {
+       with [get-palette-entry Component -index 1] {
+            mouse-move 61 13 button1 -height 23 -width 146
+            mouse-press 61 13 button1 -height 23 -width 146
+            mouse-release 61 13 button1 524288 -height 23 -width 146
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Component Diagram"] {
+        mouse-move 45 39 button1 -height 524 -width 781
+        mouse-press 45 39 button1 -height 524 -width 781
+        mouse-release 45 39 button1 524288 -height 524 -width 781
+    }
+ 
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--
