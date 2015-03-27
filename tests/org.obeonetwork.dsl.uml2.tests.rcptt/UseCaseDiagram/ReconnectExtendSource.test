@@ -1,0 +1,99 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_p5zq0M4oEeS8M6MvytM1MA,_nGeWoNMBEeSJ-bRbIBdx3w
+Element-Name: ReconnectExtendSource
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _6IUO0NPQEeSQYq5tjqphxg
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 3/26/15 5:42 PM
+Testcase-Type: ecl
+Verifications: _c1ls4NPWEeSQYq5tjqphxg
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Open an existing Use case diagram which contains all available mappings and reconnect Extend source
+
+Test:
+- reconnect Extend source to an other use case
+- try to reconnect Extend source to an actor (invalid)
+
+Result:
+- check diagram
+- check model
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Reconnect Extend source to an other Use Case
+with [get-editor "Test Use Case Diagram"] {
+   
+    with [get-diagram -index 1] {
+        with [get-edit-part -name "Test Use Case Diagram"] {
+            with [get-edit-part -name UseCaseTest1 | get-target-connection 0] {
+                with [get-figure 3] {
+                    mouse-move 4 2 button1 -height 8 -width 7
+                    mouse-press 4 2 button1 -height 8 -width 7
+                }
+                get-handle SiriusConnectionEndPointHandle -index 1 | mouse-release 4 5 button1 524288 -height 7 -width 7
+            }
+            with [get-edit-part -name UseCaseTest1 | get-target-connection 0 
+                | get-handle SiriusConnectionEndPointHandle] {
+                mouse-move 4 2 button1 -height 7 -width 7
+                mouse-press 4 2 button1 -height 7 -width 7
+            }
+            mouse-drag 470 311 button1 524288 -height 524 -width 893
+            mouse-release 470 311 button1 524288 -height 524 -width 893
+        }
+    }
+}
+// Check diagram
+with [get-editor "Test Use Case Diagram" | get-diagram -index 1 | get-edit-part -name "Test Use Case Diagram" 
+    | get-edit-part -name UseCaseTest1 | get-target-connection 0] {
+   	get-property "getFigure().getEnd().x" | equals 455 | verify-true
+    get-property "getFigure().getEnd().y" | equals 157 | verify-true
+    get-property "getFigure().getStart().x" | equals 455 | verify-true
+    get-property "getFigure().getStart().y" | equals 290 | verify-true
+}
+// Check model
+with [get-editor "Test Use Case Diagram" | get-diagram -index 1 | get-edit-part -name "Test Use Case Diagram" 
+    | get-edit-part -name UseCaseTest1 | get-target-connection 0] {
+    get-property "element.sourceNode.name" | equals UseCaseTest3 | verify-true
+    get-property "element.targetNode.name" | equals UseCaseTest1 | verify-true
+}
+
+// Try to connect to source to an actor (invalid case)
+with [get-editor "Test Use Case Diagram" | get-diagram -index 1 | get-edit-part -name "Test Use Case Diagram"] {
+    mouse-move 451 183 -height 524 -width 893
+    with [get-edit-part -name UseCaseTest1 | get-target-connection 0] {
+        mouse-move 53 35 button1 -height 160 -width 87
+        mouse-press 53 35 button1 -height 160 -width 87
+        mouse-release 54 37 button1 524288 -height 164 -width 89
+    }
+    with [get-edit-part -name UseCaseTest1 | get-target-connection 0 | get-handle SiriusConnectionEndPointHandle] {
+        mouse-move 3 3 button1 -height 7 -width 7
+        mouse-press 3 3 button1 -height 7 -width 7
+        mouse-move 2 3 -mask 524288 -height 7 -width 7
+    }
+    mouse-drag 111 277 button1 524288 -height 524 -width 893
+    mouse-release 111 277 button1 524288 -height 524 -width 893
+}
+// Check diagram
+with [get-editor "Test Use Case Diagram" | get-diagram -index 1 | get-edit-part -name "Test Use Case Diagram" 
+    | get-edit-part -name UseCaseTest1 | get-target-connection 0] {
+   	get-property "getFigure().getEnd().x" | equals 455 | verify-true
+    get-property "getFigure().getEnd().y" | equals 157 | verify-true
+    get-property "getFigure().getStart().x" | equals 455 | verify-true
+    get-property "getFigure().getStart().y" | equals 290 | verify-true
+}
+// Check model
+with [get-editor "Test Use Case Diagram" | get-diagram -index 1 | get-edit-part -name "Test Use Case Diagram" 
+    | get-edit-part -name UseCaseTest1 | get-target-connection 0] {
+    get-property "element.sourceNode.name" | equals UseCaseTest3 | verify-true
+    get-property "element.targetNode.name" | equals UseCaseTest1 | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

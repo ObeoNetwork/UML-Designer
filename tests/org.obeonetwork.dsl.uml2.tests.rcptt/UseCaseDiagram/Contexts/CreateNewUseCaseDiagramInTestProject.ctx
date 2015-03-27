@@ -1,0 +1,36 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: CreateNewUseCaseDiagramInTestProject
+Element-Type: context
+Element-Version: 2.0
+Id: _74q1YNMQEeSYFrQZGshlCQ
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 3/25/15 6:21 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+get-view "Model Explorer" | get-tree | select test | double-click
+
+// Create new Use Case Diagram
+with [get-editor Dashboard | get-diagram -index 1 | get-edit-part -name Dashboard | get-edit-part -name Dashboard 
+    | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+    mouse-move 442 401 -height 402 -width 486
+    get-edit-part -name Help | mouse-move 0 190 -height 375 -width 177
+    with [get-edit-part -name Create | get-edit-part -className DNodeContainerViewNodeContainerCompartment2EditPart 
+        | get-edit-part -name Capture | get-edit-part -className DNodeListViewNodeListCompartmentEditPart] {
+        mouse-move 130 24 -height 34 -width 201
+        with [get-edit-part -name "Use Case diagram"] {
+            mouse-move 111 7 button1 -height 16 -width 126
+            mouse-press 111 7 button1 -height 16 -width 126
+            mouse-release 111 7 button1 524288 -height 16 -width 126
+            mouse-press 111 7 button1 -height 16 -width 126
+            mouse-double-click 111 7 button1 -height 16 -width 126
+            mouse-release 111 7 button1 524288 -height 16 -width 126
+        }
+    }
+}
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

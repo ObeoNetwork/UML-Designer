@@ -1,0 +1,74 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_p5zq0M4oEeS8M6MvytM1MA,_nGeWoNMBEeSJ-bRbIBdx3w
+Element-Name: ReconnectAssociationTarget
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _gWlS8NPMEeSQYq5tjqphxg
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 3/26/15 4:40 PM
+Testcase-Type: ecl
+Verifications: _Xq1_8NPOEeSQYq5tjqphxg
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Open an existing Use case diagram which contains all available mappings and reconnect Association target
+
+Test:
+- reconnect Association target
+
+Result:
+- check diagram
+- check model
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Reconnect association target
+with [get-editor "Test Use Case Diagram"] {
+    with [get-diagram -index 1 | get-edit-part -name "Test Use Case Diagram"] {
+        mouse-move 171 135 -height 524 -width 893
+        with [get-edit-part -name Actor1 | get-target-connection 0] {
+            mouse-move 20 13 button1 -height 27 -width 289
+            mouse-press 20 13 button1 -height 27 -width 289
+            mouse-release 22 15 button1 524288 -height 31 -width 293
+            with [get-handle SiriusConnectionEndPointHandle -index 1] {
+                mouse-hover 3 4 -height 7 -width 7
+                mouse-move 3 4 button1 -height 7 -width 7
+                mouse-press 3 4 button1 -height 7 -width 7
+                mouse-move 3 5 -mask 524288 -height 7 -width 7
+            }
+        }
+        mouse-drag 122 286 button1 524288 -height 524 -width 893
+        mouse-release 122 286 button1 524288 -height 524 -width 893
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Test Use Case Diagram"] {
+        get-edit-part -name Actor2 | get-edit-part -className WorkspaceImageEditPart | mouse-hover 24 28 -height 52 
+            -width 30
+        mouse-move 125 390 -height 524 -width 893
+        mouse-hover 125 390 -height 524 -width 893
+        mouse-move 92 383 -height 524 -width 893
+        mouse-hover 92 383 -height 524 -width 893
+        mouse-move 5 376 -height 524 -width 893
+    }
+}
+// Check diagram
+with [get-editor "Test Use Case Diagram" | get-diagram -index 1 | get-edit-part -name "Test Use Case Diagram" 
+    | get-edit-part -name Actor2 | get-target-connection 0] {
+    get-property "getFigure().getEnd().x" | equals 128 | verify-true
+    get-property "getFigure().getEnd().y" | equals 282 | verify-true
+    get-property "getFigure().getStart().x" | equals 402 | verify-true
+    get-property "getFigure().getStart().y" | equals 157 | verify-true
+}
+// Check model
+with [get-editor "Test Use Case Diagram" | get-diagram -index 1 | get-edit-part -name "Test Use Case Diagram" 
+    | get-edit-part -name Actor2 | get-target-connection 0] {
+    get-property "element.targetNode.target.name" | equals Actor2 | verify-true
+    get-property "element.sourceNode.name" | equals UseCaseTest1 | verify-true
+  
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
