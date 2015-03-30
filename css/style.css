@@ -1,8 +1,8 @@
-/* 
+/*
 Custom CSS for...
 'Modern Business' HTML Theme by Start Bootstrap
 
-All Start Bootstrap themes are licensed under Apache 2.0. 
+All Start Bootstrap themes are licensed under Apache 2.0.
 For more info and more free Bootstrap 3 HTML themes, visit http://startbootstrap.com!
 */
 
@@ -148,16 +148,18 @@ footer p {
 
 .title {
   padding-top: 60px;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
+  text-align: center;
 }
 
 .title h1 {
-  font-size: 180px;
+  font-size: 160px;
   line-height: 1;
   letter-spacing: -2px;
   font-weight: bold;
   color: #1594B4;
   text-align: center;
+  margin-bottom: 30px;
 }
 
 .title p {
@@ -166,4 +168,9 @@ footer p {
   font-weight: 200;
   line-height: 1.25;
   color: #1594B4;
+  margin-bottom: 40px;
+}
+
+.center {
+  text-align: center;
 }
