@@ -9,13 +9,13 @@ h1. Download & Install
 
 To install UML Designer, it is possible to:
 * download a "bundle":{{page.relativePath}}/download/index.html#Bundles, in this case UML designer is already installed, just unzip and run the @umldesigner@ executable.
-* get UML Designer in an existing Eclipse from the "marketplace":{{page.relativePath}}/download/index.html#Marketplace or from an "update-site":{{page.relativePath}}/download/index.html#Update_Sites. If you decide to install it like this, during the installation if you get the security warning saying that the authenticity or validity of the software can't be established, just click @OK@.
-!{{page.relativePath}}/images/SecurityWarning.png!
+* get UML Designer in an existing Eclipse from the "marketplace":{{page.relativePath}}/download/index.html#Marketplace or from an "update-site":{{page.relativePath}}/download/index.html#Update_Sites. If you decide to install it like this, during the installation if you get the security warning saying that the authenticity or validity of the software can't be established, just click "OK":{{page.relativePath}}/images/SecurityWarning.png.
+
 
 
 h2(#Bundles). Bundles
 
-The bundles corresponding to the last release are available on the "Obeo marketplace":http://marketplace.obeonetwork.com/module/uml/download : 
+The bundles corresponding to the last release are available on the "Obeo marketplace":http://marketplace.obeonetwork.com/module/uml/download :
 * "Windows 32bits":http://www.obeo.fr/download/release/uml/latest/UMLDesigner-win32.win32.x86.zip
 * "Windows 64bits":http://www.obeo.fr/download/release/uml/latest/UMLDesigner-win32.win32.x86_64.zip
 * "Linux 32bits":http://www.obeo.fr/download/release/uml/latest/UMLDesigner-linux.gtk.x86.zip
@@ -39,7 +39,7 @@ Don't know how to install a module from an Update Site ? Have a look to our "vid
 
 h1. Releases
 
-All the releases and the corresponding code and issues are listed on the release page : 
+All the releases and the corresponding code and issues are listed on the release page :
 "https://github.com/ObeoNetwork/UML-Designer/releases":https://github.com/ObeoNetwork/UML-Designer/releases
 
 h1. Milestones

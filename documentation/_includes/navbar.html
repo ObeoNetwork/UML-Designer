@@ -7,14 +7,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      
+
       <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
-      <a class="navbar-brand" href="{{ page.relativePath }}/index.html">UML Designer</a>
+      <a class="navbar-brand" href="{{ page.relativePath }}">UML Designer</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
-      <ul class="nav navbar-nav navbar-right">     
+      <ul class="nav navbar-nav navbar-right">
       {% for section in site.data.pages %}
         {% if section.category != null %}
         <li class="dropdown">
@@ -30,7 +30,7 @@
           </ul>
         </li>
         {% else %}
-        <li><a href="{{ page.relativePath }}/{{ section.file }}/index.html">{{ section.title }}</a></li>
+        <li><a href="{{ page.relativePath }}/{{ section.file }}">{{ section.title }}</a></li>
         {% endif %}
       {% endfor %}
 
