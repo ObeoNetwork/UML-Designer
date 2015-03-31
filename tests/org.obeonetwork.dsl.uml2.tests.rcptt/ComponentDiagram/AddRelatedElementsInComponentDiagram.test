@@ -1,0 +1,59 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_p5zq0M4oEeS8M6MvytM1MA
+Element-Name: AddRelatedElementsInComponentDiagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _NCu1cNd2EeSrE7oyAIQ47g
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 3/31/15 10:18 AM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Open all mappings project and component diagram
+
+Test:
+- With the filter hide connectors
+- with the filter show connectors
+
+Result:
+- check diagram
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// CreateNew component diagram
+get-view "Model Explorer" | get-tree | select "AllMappings/model.uml/<Model> Test" 
+    | get-menu "New Representation/Test Component Diagram" | click
+with [get-window "New Representation"] {
+    with [get-editbox -after [get-label "Representation name:"]] {
+        set-text "Add*RelatedElementsInComponentDiagram"
+    }
+    get-button OK | click
+}
+// With contextual menu on diagram: add related Elements
+with [get-editor "Add*RelatedElementsInComponentDiagram"] {
+    with [get-diagram -index 1] {
+        with [get-edit-part -name "Add*RelatedElementsInComponentDiagram"] {
+            mouse-move 328 278 button3 -height 514 -width 645
+            mouse-press 328 278 button3 -height 514 -width 645
+            mouse-release 328 278 button3 2097152 -height 514 -width 645
+        }
+        get-menu "Add Related Elements" | click
+    }
+}
+//Check diagram
+with [get-editor "Add*RelatedElementsInComponentDiagram" | get-diagram -index 1 | get-edit-part 
+    -name "Add*RelatedElementsInComponentDiagram"] {
+    get-property "getConnections().size()" | equals 10 | verify-true
+    get-property "getFigure().getChildren().size()" | equals 26 | verify-true
+}
+
+// TODO: Test add Related elements for an interface
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

@@ -1,0 +1,57 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_X-rQgH-QEeS4X6G9cD21hw,_XEsC0NRmEeSQYq5tjqphxg,_0gdt4NRyEeSda_OhYkGJCQ,_RrpfwNShEeSda_OhYkGJCQ,_C3JgYNa0EeScE-aTfGIfZQ,_TAnaINa7EeScE-aTfGIfZQ,_SPFhoNbeEeSrE7oyAIQ47g,_cnkYYNbeEeSrE7oyAIQ47g
+Element-Name: ReconnectRedefinedSourceInComponentDiagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _56NMANbeEeSrE7oyAIQ47g
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 3/30/15 5:51 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Open test Project /component diagram which contain 2 components, and a redefined relationship.
+
+Test:
+Move  Component1 side from port 1 to Port2
+
+Result:
+usage is reconnected to Component 1 Port2
+- check diagram
+- check model
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Move Redefined target from Port1 to Port2
+with [get-editor "NewModel Component Diagram"] {
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Component Diagram"] {
+        with [get-edit-part -name Component2 | get-edit-part -name port1 | get-target-connection 0] {
+            mouse-move 68 15 button1 -height 33 -width 110
+            mouse-press 68 15 button1 -height 33 -width 110
+            mouse-release 70 16 button1 524288 -height 35 -width 114
+            with [get-handle SiriusConnectionEndPointHandle -index 1] {
+                mouse-move 5 4 button1 -height 7 -width 7
+                mouse-press 5 4 button1 -height 7 -width 7
+            }
+        }
+        mouse-drag 271 74 button1 524288 -height 524 -width 657
+        mouse-release 271 74 button1 524288 -height 524 -width 657
+    }
+}
+
+// Check diagram and model are changed
+get-editor "NewModel Component Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Component Diagram" 
+    | get-edit-part -name Component2 | get-edit-part -name port1 | verify-error{get-target-connection 0}
+    
+with [get-editor "NewModel Component Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Component Diagram" 
+    | get-edit-part -name Component2 | get-edit-part -name port2 | get-target-connection 0] {
+    get-property "source.element.target.qualifiedName" | equals "NewModel::Component1::port1" | verify-true
+    get-property "target.element.target.qualifiedName" | equals "NewModel::Component2::port2" | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

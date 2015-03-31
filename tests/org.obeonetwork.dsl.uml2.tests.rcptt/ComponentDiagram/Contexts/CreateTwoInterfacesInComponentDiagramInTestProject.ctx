@@ -1,0 +1,40 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: CreateTwoInterfacesInComponentDiagramInTestProject
+Element-Type: context
+Element-Version: 2.0
+Id: _ByYYQNbWEeSrE7oyAIQ47g
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 3/30/15 2:12 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+// Create Interfaces
+with [get-editor "NewModel Component Diagram"] {
+    get-diagram -index 1 | get-edit-part -name "NewModel Component Diagram" | mouse-move 697 354 -height 509 -width 709
+    with [get-palette |get-palette-entry Interface] {
+        mouse-move 61 9 button1 -height 23 -width 270
+        mouse-press 61 9 button1 -height 23 -width 270
+        mouse-release 61 9 button1 524288 -height 23 -width 270
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Component Diagram"] {
+        mouse-move 136 270 button1 -height 509 -width 709
+        mouse-press 136 270 button1 -height 509 -width 709
+        mouse-release 136 270 button1 524288 -height 509 -width 709
+    }
+    with [get-palette | get-palette-entry Interface] {
+        mouse-move 80 15 button1 -height 23 -width 270
+        mouse-press 80 15 button1 -height 23 -width 270
+        mouse-release 80 15 button1 524288 -height 23 -width 270
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Component Diagram"] {
+        mouse-move 352 280 button1 -height 509 -width 709
+        mouse-press 352 280 button1 -height 509 -width 709
+        mouse-release 352 280 button1 524288 -height 509 -width 709
+    }
+}
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

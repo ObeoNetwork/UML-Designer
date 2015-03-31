@@ -1,0 +1,54 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_X-rQgH-QEeS4X6G9cD21hw,_XEsC0NRmEeSQYq5tjqphxg,_0gdt4NRyEeSda_OhYkGJCQ,_RrpfwNShEeSda_OhYkGJCQ,_C3JgYNa0EeScE-aTfGIfZQ,_TAnaINa7EeScE-aTfGIfZQ,_ByYYQNbWEeSrE7oyAIQ47g,_EtUB4NbiEeSrE7oyAIQ47g
+Element-Name: ReconnectInterfaceRealizationTargetInComponentDiagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _S5Du4NbiEeSrE7oyAIQ47g
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 3/30/15 3:44 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Open test Project /component diagram which contain 2 components, to interfaces and a usage relationship.
+
+Test:
+Move component side of usage from Component 1 to Component2
+
+Result:
+usage is reconnected to Component 2
+- check diagram
+- check model
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Reconnect target from Interface1 to Interface2
+with [get-editor "NewModel Component Diagram"] {
+    with [get-diagram -index 1] {
+        with [get-edit-part -name "NewModel Component Diagram"|get-edit-part -name Interface1 -index 1 
+            | get-target-connection 0|get-handle SiriusConnectionEndPointHandle -index 1] {
+            mouse-move 5 3 button1 -height 7 -width 7
+            mouse-press 5 3 button1 -height 7 -width 7
+        }
+        mouse-drag 185 307 -mask 524288 -height 524 -width 657
+        with [get-edit-part -name "NewModel Component Diagram" | get-edit-part -name Interface2 -index 1 
+            | get-edit-part -className BundledImageEditPart] {
+            mouse-drag 19 8 button1 524288 -height 20 -width 20
+            mouse-release 19 8 button1 524288 -height 20 -width 20
+        }
+    }
+}
+// Check Diagram and model
+with [get-editor "NewModel Component Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Component Diagram" 
+    | get-edit-part -name Interface2 -index 1 | get-target-connection 0] {
+    get-property "source.element.name" | equals Component1 | verify-true
+    get-property "target.element.name" | equals Interface2 | verify-true
+    get-property "getFigure().isVisible()" | equals true | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
