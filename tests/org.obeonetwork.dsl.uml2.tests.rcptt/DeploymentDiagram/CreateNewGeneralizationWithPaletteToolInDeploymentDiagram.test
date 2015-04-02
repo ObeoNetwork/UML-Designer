@@ -1,0 +1,85 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_X-rQgH-QEeS4X6G9cD21hw,_3scNgNeaEeSVyY6xGIhNLA,_U2pkQNejEeSVyY6xGIhNLA,_cOPc4NejEeSVyY6xGIhNLA
+Element-Name: CreateNewGeneralizationWithPaletteToolInDeploymentDiagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _G3e94NenEeSVyY6xGIhNLA
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 3/31/15 4:46 PM
+Testcase-Type: ecl
+Verifications: _qnxegNe0EeSVyY6xGIhNLA
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Open a Test project 
+Open Deployment diagram which contain a node and a device
+
+Test:
+- create a Generalisation between Device1 and Node1  with palette tool
+
+Result:
+- check diagram
+- chec model
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Create Link
+with [get-editor "NewModel Deployment Diagram"] {
+    with [get-palette | get-palette-entry Generalization] {
+        mouse-move 43 7 button1 -height 23 -width 214
+        mouse-press 43 7 button1 -height 23 -width 214
+        mouse-release 43 7 button1 524288 -height 23 -width 214
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Deployment Diagram"] {
+        with [get-edit-part -name Device1 | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 31 22 button1 -height 40 -width 67
+            mouse-press 31 22 button1 -height 40 -width 67
+            mouse-release 31 22 button1 524288 -height 40 -width 67
+        }
+        with [get-edit-part -name Node1 | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 42 18 button1 -height 40 -width 58
+            mouse-press 42 18 button1 -height 40 -width 58
+            mouse-release 42 18 button1 524288 -height 40 -width 58
+        }
+    }
+}
+
+// Check Diagram
+get-editor "NewModel Deployment Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Deployment Diagram" 
+    | get-edit-part -name Node1 | get-target-connection 0 | get-property "getFigure().isVisible()" | equals true 
+    | verify-true
+
+with [get-editor "NewModel Deployment Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Deployment Diagram"] {
+    get-property "getFigure().getChildren().size()" | equals 2 | verify-true
+    get-property "getConnections().size()" | equals 1 | verify-true
+}
+with [get-editor "NewModel Deployment Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Deployment Diagram" | get-edit-part -name Node1 | get-target-connection 0] {
+    get-property "element.ownedStyle.customFeatures" | equals "[]" | verify-true
+    get-property "element.ownedStyle.lineStyle" | equals solid | verify-true
+    get-property "element.ownedStyle.sourceArrow" | equals NoDecoration | verify-true
+    get-property "element.ownedStyle.targetArrow" | equals InputClosedArrow | verify-true
+    get-property "element.ownedStyle.foldingStyle" | equals NONE | verify-true
+    get-property "element.ownedStyle.size" | equals 1 | verify-true
+    get-property "element.ownedStyle.routingStyle" | equals straight | verify-true
+    //get-property "element.ownedStyle.beginLabelStyle" | equals null | verify-true
+    //get-property "element.ownedStyle.endLabelStyle" | equals null | verify-true
+    get-property "element.ownedStyle.centered" | equals None | verify-true
+}
+// Check Model
+with [get-editor "NewModel Deployment Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Deployment Diagram"] {
+    get-property "element.ownedDiagramElements.DEdge[2].name" | equals "" | verify-true
+    get-property "element.ownedDiagramElements.DEdge[2].sourceNode.name" | equals Device1 | verify-true
+    get-property "element.ownedDiagramElements.DEdge[2].targetNode.name" | equals Node1 | verify-true
+}
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

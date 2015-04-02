@@ -1,0 +1,32 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: CreateDevice2InDeploymentDiagramInTestProject
+Element-Type: context
+Element-Version: 2.0
+Id: _XQQ6cNe4EeSVyY6xGIhNLA
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 3/31/15 5:12 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+// Create Device2
+with [get-editor "NewModel Deployment Diagram"] {
+    with [get-palette | get-palette-entry Device] {
+            mouse-move 34 17 button1 -height 23 -width 214
+            mouse-press 34 17 button1 -height 23 -width 214
+            mouse-release 34 17 button1 524288 -height 23 -width 214
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Deployment Diagram"] {
+        mouse-move 276 144 button1 -height 524 -width 713
+        mouse-press 276 144 button1 -height 524 -width 713
+        mouse-release 276 144 button1 524288 -height 524 -width 713
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Deployment Diagram"] {
+        get-edit-part -name Device2 | get-handle ResizeHandle -index 6 | mouse-hover 5 3 -height 7 -width 7
+        mouse-move 194 52 -height 524 -width 713
+    }
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--
