@@ -251,11 +251,11 @@ public class StereotypeApplicationsPropertiesEditionPartForm extends
 		}
 
 		table.setHeaderVisible(true);
-		tableColumnService
-				.createMediumColumn(table, TableColumnName.STEREOTYPE);
 		tableColumnService.createMediumColumn(table,
 				TableColumnName.ESTRUCTURAL_FEATURE);
 		tableColumnService.createMediumColumn(table, TableColumnName.VALUE);
+		tableColumnService
+				.createMediumColumn(table, TableColumnName.STEREOTYPE);
 
 		table.addListener(SWT.MouseDoubleClick, new Listener() {
 			/**
