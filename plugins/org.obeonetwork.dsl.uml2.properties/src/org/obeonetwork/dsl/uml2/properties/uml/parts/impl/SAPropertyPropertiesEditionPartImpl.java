@@ -14,12 +14,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.Enumerator;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EEnumLiteral;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
 import org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent;
@@ -65,6 +67,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.uml2.uml.edit.providers.UMLItemProviderAdapterFactory;
 import org.obeonetwork.dsl.uml2.properties.uml.components.StereotypeApplicationsPropertiesEditionComponent.SAPropertyContext;
 import org.obeonetwork.dsl.uml2.properties.uml.components.StereotypeApplicationsPropertiesEditionComponent.StereotypeApplication.StereotypeApplicationProperty;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.CustomUmlViewsRepository;
@@ -378,12 +381,23 @@ public class SAPropertyPropertiesEditionPartImpl extends
 			}
 		};
 		// create widget
+
+		AdapterFactory adapterFactory = propertiesEditionComponent
+				.getEditingContext().getAdapterFactory();
+		if (adapterFactory instanceof ComposedAdapterFactory) {
+			// ((ComposedAdapterFactory) adapterFactory)
+			// .addAdapterFactory(new UMLResourceItemProviderAdapterFactory());
+			((ComposedAdapterFactory) adapterFactory)
+					.addAdapterFactory(new UMLItemProviderAdapterFactory());
+			// ((ComposedAdapterFactory) adapterFactory)
+			// .addAdapterFactory(new EcoreItemProviderAdapterFactory());
+		}
+
 		singleReferenceValue = new AdvancedEObjectFlatComboViewer(
 				getDescription(
 						CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty,
 						property.getFeature().getName()), resourceSet,
-				singleReferenceValueFilter, propertiesEditionComponent
-						.getEditingContext().getAdapterFactory(), listener);
+				singleReferenceValueFilter, adapterFactory, listener);
 		singleReferenceValue.createControls(parent);
 		GridData typeData = new GridData(GridData.FILL_HORIZONTAL);
 		singleReferenceValue.setLayoutData(typeData);
