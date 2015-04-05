@@ -44,7 +44,7 @@ First, you need to create an UML Project.
          skip="true">
    </subitem>
    <subitem
-  Refer to the UML Designer User Guide to learn how to create elements and representations or open the cheatsheet named &quot;Creating your first UML Diagram&quot; from the welcome page.presentations."
+         label="Refer to the UML Designer User Guide to learn how to create elements and representations or open the cheatsheet named &quot;Creating your first UML Diagram&quot; from the welcome page.presentations."
          skip="true">
    </subitem>
 </item>
