@@ -1,0 +1,21 @@
+This project contains a UML model for presenting all the available elements 
+and diagrams existing in UML Designer.
+
+First make sure you are in the 'Modeling' perspective.
+If the 'Modeling' perspective is not active, in the title bar select Window > 
+Open Perspective > Other > Modeling.
+
+The All Mappings project appears in the 'Model Explorer' view.  With UML 
+Designer, models are stored in a Modeling Project and composed of at least two
+files:
+ * the data: contains the non-graphical definition of the model elements, it is 
+the model.uml file;
+ * the representations: contains the graphical representations of the model 
+elements, it is the representations.aird file.
+
+You can navigate to the existing diagrams by selecting items under the 
+'representations.aird' file.
+
+For example if you double-click on representations.aird > UML Structural 
+Modeling > Class Diagram > entities, the example class diagram will be opened in
+a new editor.
