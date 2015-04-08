@@ -1,0 +1,39 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_PbyVcIBsEeS4X6G9cD21hw,_Xlv3AM8MEeSz9_HNAw245A
+Element-Name: CreateNewAcceptSignalActionWithPaletteToolInActivityDiagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _8xd5kNk6EeS7gLNKVfblRg
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/2/15 3:25 PM
+Testcase-Type: ecl
+Verifications: _u9xWoNkuEeSn969efLWPgA
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Open Travel agency project 
+Open  activity diagram
+
+Test:
+- create an Accept Signal Action in activity element with palette tool
+
+Result:
+Element is created
+- check diagram
+- chec model
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Create an Accept Sinal Action in Activity Element
+
+// Check diagram
+
+// Check model
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

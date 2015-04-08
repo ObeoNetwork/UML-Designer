@@ -1,0 +1,20 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: LoadTravelAgencySalesActivitydiagram
+Element-Type: context
+Element-Version: 2.0
+Id: _k1QyAN3CEeS8j822Nc50oQ
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/8/15 9:40 AM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+with [get-view "Model Explorer" | get-tree] {
+    select "TravelAgency/representations.aird/Design" | double-click
+    select "TravelAgency/representations.aird/Design/Activity Diagram" | double-click
+    select "TravelAgency/representations.aird/Design/Activity Diagram/Sales Activity" | double-click
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

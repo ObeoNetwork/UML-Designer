@@ -1,0 +1,67 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_X-rQgH-QEeS4X6G9cD21hw,_w18PUNz2EeS8j822Nc50oQ,_--8QENhxEeSGfIdQZmgChQ
+Element-Name: CreateNewParameterWithPaletteToolInActivityDiagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _GDELUNk8EeS7gLNKVfblRg
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/7/15 10:04 AM
+Testcase-Type: ecl
+Verifications: _y8MysNk8EeS7gLNKVfblRg
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Open a Test project 
+Open empty  activity diagram
+
+Test:
+- create a Parameter in activity element with palette tool
+
+Result:
+Element is created
+- check diagram
+- chec model
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Create a Wait Time Action in Activity Element
+with [get-editor "NewModel Activity Diagram"] {
+    get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram" | mouse-move 775 194 -height 342 
+        -width 781
+    with [get-palette | get-palette-entry "Activity Parameter"] {
+            mouse-move 28 4 button1 -height 23 -width 214
+            mouse-press 28 4 button1 -height 23 -width 214
+            mouse-release 28 4 button1 524288 -height 23 -width 214
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram" | get-edit-part 
+        -name "NewModel" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        mouse-move 109 170 button1 -height 332 -width 542
+        mouse-press 109 170 button1 -height 332 -width 542
+        mouse-release 109 170 button1 524288 -height 332 -width 542
+    }
+}
+// Check diagram
+with [get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Activity Diagram" | get-edit-part -name "NewModel" | get-edit-part 
+    -name "Parameter1 : "] {
+    get-edit-part -className SquareEditPart | get-figure 0 | get-property "isVisible()" | equals true | verify-true
+    with [get-edit-part -name "Parameter1 : "] {
+        get-property "getFigure().getText()" | equals "Parameter1 :" | verify-true
+    }
+}
+// Check model
+with [get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Activity Diagram" | get-edit-part -name "NewModel" | get-edit-part 
+    -name "Parameter1 : "] {
+    with [get-edit-part -name "Parameter1 : "] {
+        get-property "element.target.name" | equals Parameter1 | verify-true
+    }
+}
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

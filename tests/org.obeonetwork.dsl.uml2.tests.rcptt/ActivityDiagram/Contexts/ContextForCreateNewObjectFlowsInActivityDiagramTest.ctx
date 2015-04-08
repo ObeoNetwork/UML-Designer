@@ -1,0 +1,167 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: ContextForCreateNewObjectFlowsInActivityDiagramTest
+Element-Type: context
+Element-Version: 2.0
+Id: _n-0AIN0CEeS8j822Nc50oQ
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/7/15 6:40 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+// Create activity parameters
+with [get-editor "NewModel Activity Diagram"] {
+    with [get-palette] {
+        with [get-palette-entry "Activity Parameter"] {
+            mouse-move 58 13 button1 -height 41 -width 125
+            mouse-press 58 13 button1 -height 41 -width 125
+            mouse-release 58 13 button1 524288 -height 41 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram" | get-edit-part -name NewModel] {
+        with [get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 18 169 button1 -height 326 -width 586
+            mouse-press 18 169 button1 -height 326 -width 586
+            mouse-release 18 168 button1 524288 -height 326 -width 586
+        }
+    }
+
+    with [get-palette | get-palette-entry "Activity Parameter"] {
+        mouse-move 34 15 button1 -height 41 -width 125
+        mouse-press 34 15 button1 -height 41 -width 125
+        mouse-release 34 15 button1 524288 -height 41 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram" | get-edit-part -name NewModel 
+        | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        mouse-move 536 154 button1 -height 326 -width 586
+        mouse-press 536 154 button1 -height 326 -width 586
+        mouse-release 536 154 button1 524288 -height 326 -width 586
+    }
+}
+
+// Create opaque actions
+with [get-editor "NewModel Activity Diagram"] {
+    with [get-palette] {
+        with [get-palette-entry "Opaque Action"] {
+            mouse-move 38 10 button1 -height 24 -width 145
+            mouse-press 38 10 button1 -height 24 -width 145
+            mouse-release 38 10 button1 524288 -height 24 -width 145
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram"] {
+        with [get-edit-part -name NewModel | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 242 105 button1 CTRL -height 326 -width 586
+            mouse-press 242 105 button1 CTRL -height 326 -width 586
+            mouse-release 242 105 button1 786432 -height 326 -width 586
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram" | get-edit-part -name NewModel 
+        | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        mouse-move 294 227 button1 CTRL -height 326 -width 586
+        mouse-press 294 227 button1 CTRL -height 326 -width 586
+        mouse-release 294 227 button1 786432 -height 326 -width 586
+    }
+}
+
+// Create Input pins
+with [get-editor "NewModel Activity Diagram"] {
+    with [get-palette] {
+        with [get-palette-entry Object] {
+            mouse-move 6 15 button1 -height 24 -width 145
+            mouse-press 6 15 button1 -height 24 -width 145
+            mouse-release 1 11 button1 524288 -height 24 -width 145
+        }
+        with [get-palette-entry "Input Pin"] {
+            mouse-move 32 13 button1 -height 24 -width 145
+            mouse-press 32 13 button1 -height 24 -width 145
+            mouse-release 32 13 button1 524288 -height 24 -width 145
+        }
+    }
+    // Create input pin on OpaqueAction1
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram" 
+        | get-edit-part -name NewModel | get-edit-part 
+        -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        with [get-edit-part -name "OpaqueAction1\n\n"
+            + "// TODO body of OpaqueAction1" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+            mouse-move 13 37 button1 CTRL -height 68 -width 162
+            mouse-press 13 37 button1 CTRL -height 68 -width 162
+            mouse-release 13 37 button1 786432 -height 68 -width 162
+        }
+    }
+    // Create input pin on OpaqueAction2
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram" | get-edit-part -name NewModel 
+        | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        with [get-edit-part -name "OpaqueAction2\n\n"
+            + "// TODO body of OpaqueAction2" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+            mouse-move 24 41 button1 CTRL -height 68 -width 162
+            mouse-press 24 41 button1 CTRL -height 68 -width 162
+            mouse-release 24 41 button1 786432 -height 68 -width 162
+        }
+    }
+}    
+
+// Create output pins
+with [get-editor "NewModel Activity Diagram"] {
+    with [get-palette] {
+        with [get-palette-entry Object] {
+            mouse-move 10 10 button1 -height 24 -width 125
+            mouse-press 10 10 button1 -height 24 -width 125
+            mouse-release 11 9 button1 524288 -height 24 -width 125
+        }
+         with [get-palette-entry "Output Pin"] {
+            mouse-move 39 6 button1 -height 24 -width 145
+            mouse-press 39 6 button1 -height 24 -width 145
+            mouse-release 39 6 button1 524288 -height 24 -width 145
+        }
+    }
+    // Create Output Pin on OpaqueAction2
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram" | get-edit-part -name NewModel 
+        | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part 
+        -name "OpaqueAction2\n\n"
+        + "// TODO body of OpaqueAction2"] {
+        with [get-edit-part -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+            mouse-move 141 42 button1 CTRL -height 68 -width 162
+            mouse-press 141 42 button1 CTRL -height 68 -width 162
+            mouse-release 142 42 button1 786432 -height 70 -width 164 
+        }
+    }
+    // Create Output Pin on OpaqueAction1
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram" | get-edit-part -name NewModel 
+        | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part 
+        -name "OpaqueAction1\n\n"
+        + "// TODO body of OpaqueAction1" | get-edit-part 
+        -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+        mouse-move 128 44 button1 CTRL -height 68 -width 162
+        mouse-press 128 44 button1 CTRL -height 68 -width 162
+        mouse-release 128 44 button1 786432 -height 68 -width 162
+    }
+}
+
+// Create Datastore  
+with [get-editor "NewModel Activity Diagram"] {  
+    with [get-palette] {
+        with [get-palette-entry Object] {
+            mouse-move 11 7 button1 -height 24 -width 125
+            mouse-press 11 7 button1 -height 24 -width 125
+            mouse-release 11 7 button1 524288 -height 24 -width 125
+        }
+        with [get-palette-entry "Data store"] {
+            mouse-move 43 13 button1 -height 24 -width 145
+            mouse-press 43 13 button1 -height 24 -width 145
+            mouse-release 43 13 button1 524288 -height 24 -width 145
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram" | get-edit-part -name NewModel 
+        | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        mouse-move 40 41 button1 -height 326 -width 586
+        mouse-press 40 41 button1 -height 326 -width 586
+        mouse-release 40 41 button1 524288 -height 326 -width 586
+    }
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--
