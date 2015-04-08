@@ -4,4 +4,4 @@ UML Designer provides a set of common diagrams to work with UML 2.5 models. The 
 
 These plugins are released under the EPL Open-Source License.
 
-Visit our web site : "http://obeonetwork.github.io/UML-Designer":http://obeonetwork.github.io/UML-Designer
+Visit our web site : "http://www.umldesigner.org":http://www.umldesigner.org
