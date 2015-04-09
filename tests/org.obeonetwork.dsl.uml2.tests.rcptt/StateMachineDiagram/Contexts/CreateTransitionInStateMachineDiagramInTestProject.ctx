@@ -1,0 +1,46 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: CreateTransitionInStateMachineDiagramInTestProject
+Element-Type: context
+Element-Version: 2.0
+Id: _UqxuEN6LEeS6weNBnDaFmQ
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/9/15 9:38 AM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+//Create new transition
+with [get-editor "NewModel State Machine Diagram"] {
+    with [get-palette | get-palette-entry Transition] {
+        mouse-move 64 10 button1 -height 23 -width 134
+        mouse-press 64 10 button1 -height 23 -width 134
+        mouse-release 64 10 button1 524288 -height 23 -width 134
+    }
+} 
+with [get-editor "NewModel State Machine Diagram"] {
+    with [get-diagram -index 1 | get-edit-part -name "NewModel State Machine Diagram" | get-edit-part -name NewModel 
+        | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        // Select Initial state node as source
+        with [get-edit-part -name Region1 | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+            with [get-edit-part -name Initial1 | get-edit-part -className WorkspaceImageEditPart] {
+                mouse-move 17 23 button1 -height 30 -width 30
+                mouse-press 17 23 button1 -height 30 -width 30
+                mouse-release 17 23 button1 524288 -height 30 -width 30
+            }
+        }
+        // Select State1 node as target
+        with [get-edit-part -name Region1 | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+            with [get-edit-part -name State1] {
+                mouse-move 25 22 button1 -height 40 -width 40
+                mouse-press 25 22 button1 -height 40 -width 40
+                mouse-release 25 22 button1 524288 -height 40 -width 40
+            }
+        }
+    }
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--
