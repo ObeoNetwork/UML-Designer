@@ -1,0 +1,52 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_PbyVcIBsEeS4X6G9cD21hw,_25HwYN-AEeSEJ-mMQXHd1A
+Element-Name: HideContainmentWithFilterInPackageHierarchyDiagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _JemoUN-CEeSEJ-mMQXHd1A
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/10/15 3:11 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Open Example TravelAgency
+
+Test:
+- with palette tool Remove an existing element to diagram which is connected to an other package
+- try to remove a connection
+
+Results:
+- selected package and connection are removed from diagram
+- connection is  already displayed in model
+- model is not modified
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// With filter in tool bar hide Containment
+get-editor "Package Hierarchy" | get-button Filters | click -arrow
+get-menu "Hide containment" | click
+get-editor "Package Hierarchy" | get-diagram -index 1 | get-edit-part -name "Package Hierarchy" | mouse-move 30 36 
+    -height 524 -width 793
+    
+// Check only "Contained in" connection are hide   
+with [get-editor "Package Hierarchy" | get-diagram -index 1 | get-edit-part -name "Package Hierarchy"] {
+    // Check "ContainedIn" connections are hide
+    with [get-edit-part -name Behaviours] {
+       get-target-connection 0 | get-property "getFigure().isVisible()" | equals true | verify-false
+       get-target-connection 1 | get-property "getFigure().isVisible()" | equals true | verify-false
+    }
+    // Check other connections are visible
+    get-edit-part -name Actors | get-target-connection 0 | get-property "getFigure().isVisible()" | equals true 
+        | verify-true
+    get-edit-part -name Interfaces | get-target-connection 0 | get-property "getFigure().isVisible()" | equals true 
+        | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

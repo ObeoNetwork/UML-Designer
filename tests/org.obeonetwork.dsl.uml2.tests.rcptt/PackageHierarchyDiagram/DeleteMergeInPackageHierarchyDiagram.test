@@ -1,0 +1,59 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_X-rQgH-QEeS4X6G9cD21hw,_d_d60N6yEeS6weNBnDaFmQ,_e8uF4N61EeS6weNBnDaFmQ,_TlScIN7MEeS6weNBnDaFmQ
+Element-Name: DeleteMergeInPackageHierarchyDiagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _H5BLYN9SEeSEJ-mMQXHd1A
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/10/15 9:24 AM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Delete from model Merge from a package to an other package
+
+Test:
+Delete from model Merge from Package1 to Package2
+
+Result:
+- Merge is deleted from diagram and from model
+
+TODO: Due to Model Explorer refresh problem, Verification in model is done in test not by verifying Model Explorer tree. 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Delete Merge existing connection from Package1 to Package2
+with [get-editor "NewModel Package Hierarchy"] {
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Package Hierarchy"] {
+        mouse-move 233 183 -height 524 -width 793
+        with [get-edit-part -name Package2 | get-target-connection 0] {
+            mouse-move 28 100 button1 -height 181 -width 59
+            mouse-press 28 100 button1 -height 181 -width 59
+            mouse-release 28 100 button1 524288 -height 181 -width 59
+        }
+    }
+    get-button "Delete from Model" | click
+}
+
+// Check Diagram and model
+get-editor "NewModel Package Hierarchy" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Package Hierarchy" | get-edit-part -name Package2 
+    | verify-error {get-target-connection 0}
+
+// Check Model to verify connection between Package1 and Package2
+with [get-editor "NewModel Package Hierarchy" | get-diagram -index 1 | get-edit-part  
+    -name "NewModel Package Hierarchy"] {
+    
+    verify-error {get-property "element.target.member.Package[3].ownedElement.PackageMerge[0].source.Package[0].name" 
+        | equals Package1 | verify-true}
+    verify-error {get-property "element.target.member.Package[3].ownedElement.PackageMerge[0].target.Package[0].name" 
+        | equals Package2 | verify-true}
+    
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

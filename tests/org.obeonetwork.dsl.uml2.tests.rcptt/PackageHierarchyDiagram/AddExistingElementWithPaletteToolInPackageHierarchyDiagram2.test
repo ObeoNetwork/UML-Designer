@@ -1,0 +1,77 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_PbyVcIBsEeS4X6G9cD21hw,_bVjx4N95EeSEJ-mMQXHd1A
+Element-Name: AddExistingElementWithPaletteToolInPackageHierarchyDiagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _2BohAN97EeSEJ-mMQXHd1A
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/10/15 3:02 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Open Example TravelAgency
+
+Test:
+- create a new PackageHierarchy diagram, AddExisting component with palette tool 
+- add second existing element connected to element already display
+
+Result:
+- check packages are visible
+- check connections are visible
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+//Add existing element with palette tool
+with [get-editor "Test Travel Agency Package Hierarchy"] {
+    with [get-palette | get-palette-entry Add] {
+        mouse-move 43 14 button1 -height 23 -width 134
+        mouse-press 43 14 button1 -height 23 -width 134
+        mouse-release 43 14 button1 524288 -height 23 -width 134
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Test Travel Agency Package Hierarchy"] {
+        mouse-move 70 89 button1 -height 524 -width 793
+        mouse-press 70 89 button1 -height 524 -width 793
+        mouse-release 70 89 button1 524288 -height 524 -width 793
+    }
+}
+with [get-window "Select element to add in current representation"] {
+    get-tree | select "<Model> Travel Agency/<Package> Components"
+    get-button Finish | click
+}
+// Add a second existing element which is connected to ellement already displayed
+with [get-editor "Test Travel Agency Package Hierarchy"] {
+    with [get-palette | get-palette-entry Add] {
+        mouse-move 28 19 button1 -height 23 -width 134
+        mouse-press 28 19 button1 -height 23 -width 134
+        mouse-release 28 19 button1 524288 -height 23 -width 134
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Test Travel Agency Package Hierarchy"] {
+        mouse-move 72 207 button1 -height 524 -width 793
+        mouse-press 72 207 button1 -height 524 -width 793
+        mouse-release 72 207 button1 524288 -height 524 -width 793
+    }
+}
+// Check packages are displayed and connection is visible in diagram
+with [get-window "Select element to add in current representation"] {
+    get-tree | select "<Model> Travel Agency/<Package> Interfaces" | double-click
+    get-button Finish | click
+}
+with [get-editor "Test Travel Agency Package Hierarchy" | get-diagram -index 1 | get-edit-part 
+    -name "Test Travel Agency Package Hierarchy"] {
+    get-edit-part -name Components | get-edit-part -className WorkspaceImageEditPart | get-figure "0/0" 
+        | get-property "isVisible()" | equals true | verify-true
+    with [get-edit-part -name Interfaces] {
+        get-target-connection 0 | get-property "getFigure().isVisible()" | equals true | verify-true
+        get-edit-part -className WorkspaceImageEditPart | get-figure "0/0" | get-property "isVisible()" | equals true 
+            | verify-true
+    }
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

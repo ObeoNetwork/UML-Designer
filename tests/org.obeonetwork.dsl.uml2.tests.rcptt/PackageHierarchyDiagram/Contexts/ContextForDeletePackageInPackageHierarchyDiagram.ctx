@@ -1,0 +1,137 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: ContextForDeletePackageInPackageHierarchyDiagram
+Element-Type: context
+Element-Version: 2.0
+Id: _sv0zsN9VEeSEJ-mMQXHd1A
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/10/15 10:56 AM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+//context with 9 packages, 2 "contained iné connections, 2 "import" connections
+with [get-editor "NewModel Package Hierarchy"] {
+    //Create Packages
+    with [get-palette | get-palette-entry Package] {
+        mouse-move 26 6 button1 -height 23 -width 134
+        mouse-press 26 6 button1 -height 23 -width 134
+        mouse-release 26 6 button1 524288 -height 23 -width 134
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Package Hierarchy"] {
+        mouse-move 23 43 button1 CTRL -height 524 -width 793
+        mouse-press 23 43 button1 CTRL -height 524 -width 793
+        mouse-release 23 43 button1 786432 -height 524 -width 793
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Package Hierarchy"] {
+        mouse-move 148 46 button1 CTRL -height 524 -width 793
+        mouse-press 148 46 button1 CTRL -height 524 -width 793
+        mouse-release 148 46 button1 786432 -height 524 -width 793
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Package Hierarchy"] {
+        mouse-move 268 45 button1 CTRL -height 524 -width 793
+        mouse-press 268 45 button1 CTRL -height 524 -width 793
+        mouse-release 268 45 button1 786432 -height 524 -width 793
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Package Hierarchy"] {
+        mouse-move 392 46 button1 CTRL -height 524 -width 793
+        mouse-press 392 46 button1 CTRL -height 524 -width 793
+        mouse-release 392 46 button1 786432 -height 524 -width 793
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Package Hierarchy"] {
+        mouse-move 511 44 button1 CTRL -height 524 -width 793
+        mouse-press 511 44 button1 CTRL -height 524 -width 793
+        mouse-release 511 44 button1 786432 -height 524 -width 793
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Package Hierarchy"] {
+        mouse-move 149 178 button1 CTRL -height 524 -width 793
+        mouse-press 149 178 button1 CTRL -height 524 -width 793
+        mouse-release 149 178 button1 786432 -height 524 -width 793
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Package Hierarchy"] {
+        mouse-move 271 180 button1 CTRL -height 524 -width 793
+        mouse-press 271 180 button1 CTRL -height 524 -width 793
+        mouse-release 271 180 button1 786432 -height 524 -width 793
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Package Hierarchy"] {
+        mouse-move 393 179 button1 CTRL -height 524 -width 793
+        mouse-press 393 179 button1 CTRL -height 524 -width 793
+        mouse-release 393 179 button1 786432 -height 524 -width 793
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Package Hierarchy"] {
+        mouse-move 515 180 button1 CTRL -height 524 -width 793
+        mouse-press 515 180 button1 CTRL -height 524 -width 793
+        mouse-release 515 180 button1 786432 -height 524 -width 793
+    }
+    // Create Contained in connections
+    with [get-palette | get-palette-entry "Contained in"] {
+        mouse-move 69 12 button1 -height 23 -width 134
+        mouse-press 69 12 button1 -height 23 -width 134
+        mouse-release 69 12 button1 524288 -height 23 -width 134
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Package Hierarchy"] {
+        with [get-edit-part -name Package2 | get-edit-part -className WorkspaceImageEditPart] {
+            mouse-move 46 36 button1 -height 50 -width 80
+            mouse-press 46 36 button1 -height 50 -width 80
+            mouse-release 46 36 button1 524288 -height 50 -width 80
+        }
+        with [get-edit-part -name Package6 | get-edit-part -className WorkspaceImageEditPart] {
+            mouse-move 40 22 button1 CTRL -height 50 -width 80
+            mouse-press 40 22 button1 CTRL -height 50 -width 80
+            mouse-release 40 22 button1 786432 -height 50 -width 80
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Package Hierarchy"] {
+        with [get-edit-part -name Package3 | get-edit-part -className WorkspaceImageEditPart] {
+            mouse-move 39 15 button1 -height 50 -width 80
+            mouse-press 39 15 button1 -height 50 -width 80
+            mouse-release 39 15 button1 524288 -height 50 -width 80
+        }
+        with [get-edit-part -name Package7 | get-edit-part -className WorkspaceImageEditPart] {
+            mouse-move 27 27 button1 CTRL -height 50 -width 80
+            mouse-press 27 27 button1 CTRL -height 50 -width 80
+            mouse-release 27 27 button1 786432 -height 50 -width 80
+        }
+    }
+   // Create Imports
+    with [get-palette | get-palette-entry Import] {
+        mouse-move 53 13 button1 -height 23 -width 134
+        mouse-press 53 13 button1 -height 23 -width 134
+        mouse-release 53 13 button1 524288 -height 23 -width 134
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Package Hierarchy"] {
+        with [get-edit-part -name Package4 | get-edit-part -className WorkspaceImageEditPart] {
+            mouse-move 50 36 button1 -height 50 -width 80
+            mouse-press 50 36 button1 -height 50 -width 80
+            mouse-release 50 36 button1 524288 -height 50 -width 80
+        }
+        with [get-edit-part -name Package8 | get-edit-part -className WorkspaceImageEditPart] {
+            mouse-move 35 35 button1 CTRL -height 50 -width 80
+            mouse-press 35 35 button1 CTRL -height 50 -width 80
+            mouse-release 35 35 button1 786432 -height 50 -width 80
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Package Hierarchy"] {
+        with [get-edit-part -name Package5 | get-edit-part -className WorkspaceImageEditPart] {
+            mouse-move 20 30 button1 -height 50 -width 80
+            mouse-press 20 30 button1 -height 50 -width 80
+            mouse-release 20 30 button1 524288 -height 50 -width 80
+        }
+        with [get-edit-part -name Package9 | get-edit-part -className WorkspaceImageEditPart] {
+            mouse-move 30 14 button1  -height 50 -width 80
+            mouse-press 30 14 button1  -height 50 -width 80
+            mouse-release 30 14 button1 786432 -height 50 -width 80
+        }
+    }
+}
+with [get-editor "NewModel Package Hierarchy"] {
+    with [get-palette | get-palette-entry Select] {
+        mouse-move 8 6 button1 -height 19 -width 19
+        mouse-press 8 6 button1 -height 19 -width 19
+        mouse-release 8 6 button1 524288 -height 19 -width 19
+    }
+}
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

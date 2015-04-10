@@ -1,0 +1,21 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: CreateNewPackageHierarchyDiagramInTestProject
+Element-Type: context
+Element-Version: 2.0
+Id: _d_d60N6yEeS6weNBnDaFmQ
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/9/15 2:19 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+// In Test project create a new package hierarchy diagram: "NewModel Package Hierarchy"
+with [get-view "Model Explorer" | get-tree] {
+    select "test/model.uml/<Model> NewModel" | double-click
+    select "test/model.uml/<Model> NewModel" | get-menu "New Representation/NewModel Package Hierarchy" | click
+}
+get-window "New Representation" | get-button OK | click
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--
