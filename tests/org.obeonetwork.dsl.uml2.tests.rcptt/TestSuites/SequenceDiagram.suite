@@ -4,6 +4,28 @@ Element-Name: SequenceDiagram
 Element-Type: testsuite
 Element-Version: 2.0
 Id: _eagMAJWrEeSFgY1mGxkuMg
-Runtime-Version: 2.0.0.201412081054
-Save-Time: 1/6/15 2:54 PM
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/13/15 5:14 PM
 
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Lanch all tests for sequence diagram
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
+Content-Type: text/testcase
+Entry-Name: testcase-items
+
+_mHUIoN-XEeSEJ-mMQXHd1A	// kind: 'test' name: 'CreateNewActorLifeLineWithPaletteToolInSequenceDiagram' path: '../SequenceDiagram/CreateNewActorLifeLineWithPaletteToolInSequenceDiagram.test'
+_Kw84QOG3EeS3L8OLI5YuWw	// kind: 'test' name: 'CreateNewAsynchronousMessageAndOperationWithPaletteToolInSequenceDiagram' path: '../SequenceDiagram/CreateNewAsynchronousMessageAndOperationWithPaletteToolInSequenceDiagram.test'
+_FBK1sOHdEeS3L8OLI5YuWw	// kind: 'test' name: 'DeleteFromModelLifeLineInSequenceDiagram' path: '../SequenceDiagram/DeleteFromModelLifeLineInSequenceDiagram.test'
+_HfjyoN-LEeSEJ-mMQXHd1A	// kind: 'test' name: 'ShowAllMappingsInExistingSequenceDiagram' path: '../SequenceDiagram/ShowAllMappingsInExistingSequenceDiagram.test'
+_4_fwkN-MEeSEJ-mMQXHd1A	// kind: 'test' name: 'CreateNewClassLifeLineWithPaletteToolInSequenceDiagram' path: '../SequenceDiagram/CreateNewClassLifeLineWithPaletteToolInSequenceDiagram.test'
+_QhkNAOGsEeS3L8OLI5YuWw	// kind: 'test' name: 'CreateNewSynchronousMessageAndOperationWithPaletteToolInSequenceDiagram' path: '../SequenceDiagram/CreateNewSynchronousMessageAndOperationWithPaletteToolInSequenceDiagram.test'
+_5ZaAMN-eEeSEJ-mMQXHd1A	// kind: 'test' name: 'AddExisitingElementsActorWithPaletteToolInSequenceDiagram' path: '../SequenceDiagram/AddExisitingElementsActorWithPaletteToolInSequenceDiagram.test'
+_a26OkN-bEeSEJ-mMQXHd1A	// kind: 'test' name: 'AddExisitingElementsClassWithPaletteToolInSequenceDiagram' path: '../SequenceDiagram/AddExisitingElementsClassWithPaletteToolInSequenceDiagram.test'
+_66jEoOHUEeS3L8OLI5YuWw	// kind: 'test' name: 'DeleteFromModelSynchronousMessageAndOperationInSequenceDiagram' path: '../SequenceDiagram/DeleteFromModelSynchronousMessageAndOperationInSequenceDiagram.test'
+_nyrYsOHQEeS3L8OLI5YuWw	// kind: 'test' name: 'DeleteFromModelAsynchronousMessageAndOperationInSequenceDiagram' path: '../SequenceDiagram/DeleteFromModelAsynchronousMessageAndOperationInSequenceDiagram.test'
+
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--

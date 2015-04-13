@@ -1,19 +1,19 @@
 --- RCPTT testcase ---
 Format-Version: 1.0
 Context-Type: org.eclipse.rcptt.ctx.ecl
-Element-Name: CreateNewSequenceDiagramInTravelAgencyProject
+Element-Name: EmptySequenceDiagramInTestProject
 Element-Type: context
 Element-Version: 2.0
-Id: _3PCqIN-NEeSEJ-mMQXHd1A
+Id: _Bfja0OG2EeS3L8OLI5YuWw
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/10/15 5:17 PM
+Save-Time: 4/13/15 6:16 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
 Entry-Name: .ecl.context
 
-// Create a new empty sequence diuagram in TravelAgency project
-get-view "Model Explorer" | get-tree | select "TravelAgency/agency.uml/<Model> Travel Agency" 
+// Create a new empty representation : sequence diagram in test project
+get-view "Model Explorer" | get-tree | select "test/model.uml/<Model> NewModel" 
     | get-menu "New Representation/Sequence Diagram" | click
 with [get-window "New Representation"] {
     with [get-editbox -after [get-label "Representation name:"]] {
