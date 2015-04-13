@@ -1,0 +1,75 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: ContextForDeleteAsynchronousOperationAnMessage
+Element-Type: context
+Element-Version: 2.0
+Id: _8ahmcOHQEeS3L8OLI5YuWw
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/13/15 3:08 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+// Create an Asynchronous Operation From Class1 to Class2 
+with [get-editor "Test Sequence Diagram"] {
+    with [get-palette] {
+        with [get-palette-entry "CR_Asynch_Message"] {
+            mouse-move 9 19 button1 -height 37 -width 154
+            mouse-press 9 19 button1 -height 37 -width 154
+            mouse-release 9 19 button1 524288 -height 37 -width 154
+        }
+        with [get-palette-entry "Asynchronous Message and Operation Creation"] {
+            mouse-move 43 23 button1 -height 52 -width 154
+            mouse-press 43 23 button1 -height 52 -width 154
+            mouse-release 43 23 button1 524288 -height 52 -width 154
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram"] {
+        with [get-edit-part -name "Class1 : Class1 [1]" | get-edit-part -name Class1 | get-edit-part 
+            -className SquareEditPart] {
+            mouse-move 7 58 button1 -height 400 -width 10
+            mouse-press 7 58 button1 -height 400 -width 10
+            mouse-release 7 58 button1 524288 -height 400 -width 10
+        }
+         with [get-edit-part -name "Class2 : Class2 [1]" | get-edit-part -name Class2 | get-edit-part 
+            -className SquareEditPart] {
+            mouse-move 6 58 button1 -height 400 -width 10
+            mouse-press 6 58 button1 -height 400 -width 10
+            mouse-release 6 58 button1 524288 -height 400 -width 10
+        }
+    }
+}
+// Create an Asynchronous Message From Actor1 to Actor2 
+with [get-editor "Test Sequence Diagram"] {
+    with [get-palette | get-palette-entry "Asynchronous Message and Operation Creation"] {
+        mouse-move 86 19 button1 -height 37 -width 288
+        mouse-press 86 19 button1 -height 37 -width 288
+        mouse-release 86 19 button1 524288 -height 37 -width 288
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram"] {
+        with [get-edit-part -name "Actor1 : Actor1 [1]" | get-edit-part -name Actor1 | get-edit-part 
+            -className SquareEditPart] {
+            mouse-move 5 20 button1 -height 400 -width 10
+            mouse-press 5 20 button1 -height 400 -width 10
+            mouse-release 5 20 button1 524288 -height 400 -width 10
+        }
+        mouse-move 705 122 -height 500 -width 750
+        with [get-edit-part -name "Actor2 : Actor2 [1]" | get-edit-part -name Actor2 | get-edit-part 
+            -className SquareEditPart] {
+            mouse-hover 6 17 -height 400 -width 10
+            mouse-move 6 17 button1 -height 400 -width 10
+            mouse-press 6 17 button1 -height 400 -width 10
+            mouse-release 6 17 button1 524288 -height 400 -width 10
+        }
+    }  
+}
+with [get-editor "Test Sequence Diagram"] {
+    with [get-palette | get-palette-entry Select] {
+        mouse-move 9 7 button1 -height 19 -width 19
+        mouse-press 9 7 button1 -height 19 -width 19
+        mouse-release 9 7 button1 524288 -height 19 -width 19
+    }
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

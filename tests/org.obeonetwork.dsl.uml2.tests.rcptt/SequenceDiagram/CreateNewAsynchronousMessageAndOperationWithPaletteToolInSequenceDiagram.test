@@ -1,0 +1,160 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_X-rQgH-QEeS4X6G9cD21hw,_Bfja0OG2EeS3L8OLI5YuWw,_X4ZsIOG2EeS3L8OLI5YuWw
+Element-Name: CreateNewAsynchronousMessageAndOperationWithPaletteToolInSequenceDiagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _Kw84QOG3EeS3L8OLI5YuWw
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/13/15 11:24 AM
+Testcase-Type: ecl
+Verifications: _h67PEOG4EeS3L8OLI5YuWw
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Create a New semantic element in Sequence Diagram: Asynchronous Operation between two classes, Asynchronous Message between two actors. 
+
+Test:
+- with Palette tool : "Asynchronous message and operation creation" create new element in Sequence diagram from Class1 to Actor2 Life lines.
+Result:
+- new element appears in diagram
+- new element appears in model
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Create an Asynchronous Operation From Class1 to Class2 
+with [get-editor "Test Sequence Diagram"] {
+    with [get-palette] {
+        with [get-palette-entry "CR_Asynch_Message"] {
+            mouse-move 9 19 button1 -height 37 -width 154
+            mouse-press 9 19 button1 -height 37 -width 154
+            mouse-release 9 19 button1 524288 -height 37 -width 154
+        }
+        with [get-palette-entry "Asynchronous Message and Operation Creation"] {
+            mouse-move 43 23 button1 -height 52 -width 154
+            mouse-press 43 23 button1 -height 52 -width 154
+            mouse-release 43 23 button1 524288 -height 52 -width 154
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram"] {
+        with [get-edit-part -name "Class1 : Class1 [1]" | get-edit-part -name Class1 | get-edit-part 
+            -className SquareEditPart] {
+            mouse-move 7 58 button1 -height 400 -width 10
+            mouse-press 7 58 button1 -height 400 -width 10
+            mouse-release 7 58 button1 524288 -height 400 -width 10
+        }
+         with [get-edit-part -name "Class2 : Class2 [1]" | get-edit-part -name Class2 | get-edit-part 
+            -className SquareEditPart] {
+            mouse-move 6 58 button1 -height 400 -width 10
+            mouse-press 6 58 button1 -height 400 -width 10
+            mouse-release 6 58 button1 524288 -height 400 -width 10
+        }
+    }
+}
+
+// Check Arrow from Class1 to Class2 
+with [get-editor "Test Sequence Diagram" | get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram" 
+    | get-edit-part -name "Class2 : Class2 [1]" | get-edit-part -name Class2 | get-edit-part -name "Operation_1" 
+    | get-target-connection 0 | get-edit-part -className ""] {
+    get-property "getFigure().getText()" | equals "Operation_1" | verify-true
+    get-property "getFigure().isVisible()" | equals true | verify-true
+}
+with [get-editor "Test Sequence Diagram" | get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram" 
+    | get-edit-part -name "Class2 : Class2 [1]" | get-edit-part -name Class2 | get-edit-part -name "Operation_1" 
+    | get-target-connection 0] {
+    get-property "element.ownedStyle.customFeatures" | equals "[]" | verify-true
+    get-property "element.ownedStyle.lineStyle" | equals solid | verify-true
+    get-property "element.ownedStyle.sourceArrow" | equals NoDecoration | verify-true
+    get-property "element.ownedStyle.targetArrow" | equals InputFillClosedArrow | verify-true
+    get-property "element.ownedStyle.foldingStyle" | equals NONE | verify-true
+    get-property "element.ownedStyle.size" | equals 2 | verify-true
+    get-property "element.ownedStyle.routingStyle" | equals straight | verify-true
+    //get-property "element.ownedStyle.beginLabelStyle" | equals null | verify-true
+    //get-property "element.ownedStyle.endLabelStyle" | equals null | verify-true
+    get-property "element.ownedStyle.centered" | equals None | verify-true
+}
+
+// Check Operation
+with [get-editor "Test Sequence Diagram" | get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram"] {
+    with [get-edit-part -name "Class2 : Class2 [1]" | get-edit-part -name Class2 | get-edit-part -name "Operation_1"] {
+                get-edit-part -className SquareEditPart | get-property "getFigure().isVisible()" | equals true | verify-true
+    }
+}
+        
+// Check model
+with [get-editor "Test Sequence Diagram" | get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram"] {
+    get-edit-part -name "Class2 : Class2 [1]" | get-edit-part -name Class2 | get-edit-part -name "Operation_1" 
+        | get-target-connection 0 | get-property "element.target.name" | equals "Operation_1" | verify-true
+    with [get-edit-part -name "Class2 : Class2 [1]" | get-edit-part -name Class2 | get-edit-part -name "Operation_1" 
+        | get-target-connection 0] {
+        get-property "source.element.target.name" | equals Class1 | verify-true
+        get-property "target.element.target.name" | equals "Operation_1" | verify-true
+        get-property "element.semanticElements.Message[0].name" | equals "Operation_1" | verify-true
+        get-property "element.semanticElements.Message[0].messageSort" | equals asynchCall | verify-true
+    }
+}
+
+
+// Create an Asynchronous Message From Actor1 to Actor2 
+with [get-editor "Test Sequence Diagram"] {
+    with [get-palette | get-palette-entry "Asynchronous Message and Operation Creation"] {
+        mouse-move 74 12 button1 -height 37 -width 288
+        mouse-press 74 12 button1 -height 37 -width 288
+        mouse-release 74 12 button1 524288 -height 37 -width 288
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram"] {
+        with [get-edit-part -name "Actor1 : Actor1 [1]" | get-edit-part -name Actor1 | get-edit-part 
+            -className SquareEditPart] {
+            mouse-move 6 41 button1 -height 400 -width 10
+            mouse-press 6 41 button1 -height 400 -width 10
+            mouse-release 6 41 button1 524288 -height 400 -width 10
+        }
+        with [get-edit-part -name "Actor2 : Actor2 [1]" | get-edit-part -name Actor2 | get-edit-part 
+            -className SquareEditPart] {
+            mouse-move 8 39 button1 -height 400 -width 10
+            mouse-press 8 39 button1 -height 400 -width 10
+            mouse-release 8 39 button1 524288 -height 400 -width 10
+        }
+    }
+}
+// Check diagram
+with [get-editor "Test Sequence Diagram" | get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram" 
+    | get-edit-part -name "Actor2 : Actor2 [1]" | get-edit-part -name Actor2 | get-edit-part -name "Message_1"] {
+    with [get-target-connection 0] {
+    	// Arrow label
+        with [get-edit-part -className ""] {
+            get-property "getFigure().getText()" | equals "Message_1" | verify-true
+            get-property "getFigure().isVisible()" | equals true | verify-true
+        }
+        // Arrow style
+        get-property "element.ownedStyle.customFeatures" | equals "[]" | verify-true
+        get-property "element.ownedStyle.lineStyle" | equals solid | verify-true
+        get-property "element.ownedStyle.sourceArrow" | equals NoDecoration | verify-true
+        get-property "element.ownedStyle.targetArrow" | equals InputFillClosedArrow | verify-true
+        get-property "element.ownedStyle.foldingStyle" | equals NONE | verify-true
+        get-property "element.ownedStyle.size" | equals 2 | verify-true
+        get-property "element.ownedStyle.routingStyle" | equals straight | verify-true
+        //get-property "element.ownedStyle.beginLabelStyle" | equals null | verify-true
+        //get-property "element.ownedStyle.endLabelStyle" | equals null | verify-true
+        get-property "element.ownedStyle.centered" | equals None | verify-true
+    }
+    // Message
+    get-edit-part -className SquareEditPart | get-figure 0 | get-property "isVisible()" | equals true | verify-true
+    get-edit-part -name "Message_1" | get-property "getFigure().getText()" | equals "Message_1" | verify-true
+}
+// Check Model
+with [get-editor "Test Sequence Diagram" | get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram" 
+    | get-edit-part -name "Actor2 : Actor2 [1]" | get-edit-part -name Actor2 | get-edit-part -name "Message_1"] {
+    with [get-target-connection 0] {
+        get-property "element.target.name" | equals "Message_1" | verify-true
+        get-property "element.target.messageSort" | equals asynchCall | verify-true
+        get-property "source.element.target.name" | equals Actor1 | verify-true
+        get-property "target.element.target.name" | equals "Message_1" | verify-true
+    }
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
