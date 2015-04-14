@@ -19,7 +19,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.edit.command.SetCommand;
@@ -74,6 +73,7 @@ import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UseCase;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
 import org.obeonetwork.dsl.uml2.design.api.utils.UmlUtils;
+import org.obeonetwork.dsl.uml2.design.internal.services.ElementServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.LabelServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.ReconnectSwitch;
 import org.obeonetwork.dsl.uml2.design.internal.services.RelatedServices;
@@ -321,14 +321,7 @@ public abstract class AbstractDiagramServices {
 	 * @return root elements
 	 */
 	public Collection<EObject> getAllRootsInSession(EObject any) {
-		final Session session = SessionManager.INSTANCE.getSession(any);
-		final Collection<EObject> roots = new ArrayList<EObject>();
-		if (session != null) {
-			for (final Resource childRes : session.getSemanticResources()) {
-				roots.addAll(childRes.getContents());
-			}
-		}
-		return roots;
+		return ElementServices.INSTANCE.getAllRootsInSession(any);
 	}
 
 	/**

@@ -145,6 +145,24 @@ public class ElementServices {
 	}
 
 	/**
+	 * Get all root elements of the current session.
+	 *
+	 * @param any
+	 *            The element to retrieve a session
+	 * @return root elements
+	 */
+	public Collection<EObject> getAllRootsInSession(EObject any) {
+		final Session session = SessionManager.INSTANCE.getSession(any);
+		final Collection<EObject> roots = new ArrayList<EObject>();
+		if (session != null) {
+			for (final Resource childRes : session.getSemanticResources()) {
+				roots.addAll(childRes.getContents());
+			}
+		}
+		return roots;
+	}
+
+	/**
 	 * Get the namespace associated to a named element.
 	 *
 	 * @param element

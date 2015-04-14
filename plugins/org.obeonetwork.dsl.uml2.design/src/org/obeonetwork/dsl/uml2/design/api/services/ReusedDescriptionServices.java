@@ -39,6 +39,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDes
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.uml2.uml.Activity;
 import org.eclipse.uml2.uml.Artifact;
 import org.eclipse.uml2.uml.Association;
@@ -79,13 +80,16 @@ import org.eclipse.uml2.uml.UMLPlugin;
 import org.eclipse.uml2.uml.UseCase;
 import org.eclipse.uml2.uml.resource.UMLResource;
 import org.eclipse.uml2.uml.util.UMLSwitch;
+import org.obeonetwork.dsl.uml2.design.api.wizards.ModelElementsSelectionDialog;
 import org.obeonetwork.dsl.uml2.design.internal.services.DirectEditLabelSwitch;
 import org.obeonetwork.dsl.uml2.design.internal.services.ElementServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.LabelServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.MoveDownElementSwitch;
 import org.obeonetwork.dsl.uml2.design.internal.services.MoveUpElementSwitch;
+import org.obeonetwork.dsl.uml2.design.internal.services.UIServices;
 
 import com.google.common.base.Predicate;
+import com.google.common.base.Predicates;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
@@ -105,7 +109,7 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	 * @param semanticElementList
 	 *            Semantic elements
 	 */
-	public void addExistingElements(final EObject containerView, final List<EObject> semanticElementList) {
+	private void addExistingElements(final EObject containerView, final List<EObject> semanticElementList) {
 		if (!(containerView instanceof DSemanticDecorator) || semanticElementList == null
 				|| semanticElementList.isEmpty()) {
 			return;
@@ -116,7 +120,7 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 			markForAutosize(semanticElement);
 
 			// Show the added element on the diagram
-			showView(semanticElement, (DSemanticDecorator)containerView, session, "containerView"); //$NON-NLS-1$
+			showView(semanticElement, (DSemanticDecorator)containerView, session, "elementView"); //$NON-NLS-1$
 		}
 	}
 
@@ -434,9 +438,16 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 		return stereotypesAndProfiles;
 	}
 
+	/**
+	 * Get base class associated to a stereotype application.
+	 *
+	 * @param stereotypeApplication
+	 *            Stereotype application
+	 * @return Base class
+	 */
 	public Element getBaseClass(EObject stereotypeApplication) {
 		return (Element)stereotypeApplication.eGet(stereotypeApplication.eClass().getEStructuralFeature(
-				"base_Class"));
+				"base_Class")); //$NON-NLS-1$
 	}
 
 	/**
@@ -508,6 +519,37 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 		}
 
 		return result;
+	}
+
+	/**
+	 * Get displayable elements according to diagram kind.
+	 *
+	 * @param selectedContainer
+	 *            Selected container
+	 * @param diagram
+	 *            Diagram
+	 * @return Predicate to select only displayable element according to diagram kind
+	 */
+	@SuppressWarnings("rawtypes")
+	private Predicate getDisplayablePredicate(final EObject selectedContainer, final DDiagram diagram) {
+		return new Predicate<Object>() {
+			public boolean apply(Object input) {
+				return isOrHasDescendant((EObject)input,
+						Predicates.in(getValidsForDiagram(selectedContainer, (DSemanticDecorator)diagram)));
+			}
+		};
+	}
+
+	/**
+	 * Get non selectable elements. Those elements are already displayed in the diagram.
+	 *
+	 * @param diagram
+	 *            Diagram
+	 * @return Already displayed nodes in diagram
+	 */
+	@SuppressWarnings("rawtypes")
+	private Predicate getNonSelectablePredicate(DDiagram diagram) {
+		return Predicates.in(UIServices.INSTANCE.getDisplayedNodes(diagram));
 	}
 
 	/**
@@ -623,12 +665,24 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 		return allValidSessionElements(cur, validForCompositeDiagram);
 	}
 
+	private List<EObject> getValidsForCompositeStructureDiagram(EObject cur, final EObject container) {
+		final Predicate<EObject> validForCompositeDiagram = new Predicate<EObject>() {
+
+			public boolean apply(EObject input) {
+				return "Property".equals(input.eClass().getName()) && container.equals(input.eContainer()); //$NON-NLS-1$
+
+			}
+		};
+		return allValidSessionElements(cur, validForCompositeDiagram);
+	}
+
 	private List<EObject> getValidsForDeploymentDiagram(EObject cur) {
 		final Predicate<EObject> validForDeploymentDiagram = new Predicate<EObject>() {
 
 			public boolean apply(EObject input) {
-				return input instanceof Package || input instanceof ExecutionEnvironment
-						|| input instanceof Node || input instanceof Artifact || input instanceof Device;
+				return input instanceof Package && !(input instanceof Profile)
+						|| input instanceof ExecutionEnvironment || input instanceof Node
+						|| input instanceof Artifact || input instanceof Device;
 			}
 		};
 		return allValidSessionElements(cur, validForDeploymentDiagram);
@@ -660,13 +714,13 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 				results = getValidsForClassDiagram(element);
 			} else if ("Component Diagram".equals(description.getName())) { //$NON-NLS-1$
 				results = getValidsForComponentDiagram(element);
-			} else if ("Composite Structure Diagram".equals(description.getName())) { //$NON-NLS-1$
+			} else if ("Composite Diagram".equals(description.getName())) { //$NON-NLS-1$
 				results = getValidsForCompositeDiagram(element);
 			} else if ("Composite Structure Diagram".equals(description.getName())) { //$NON-NLS-1$
-				results = getValidsForCompositeDiagram(element);
+				results = getValidsForCompositeStructureDiagram(element, containerView.getTarget());
 			} else if ("Deployment Diagram".equals(description.getName())) { //$NON-NLS-1$
 				results = getValidsForDeploymentDiagram(element);
-			} else if ("Package Diagram".equals(description.getName())) { //$NON-NLS-1$
+			} else if ("Package Hierarchy".equals(description.getName())) { //$NON-NLS-1$
 				results = getValidsForPackageDiagram(element);
 			} else if ("Use Case Diagram".equals(description.getName())) { //$NON-NLS-1$
 				results = getValidsForUseCaseDiagram(element);
@@ -866,6 +920,28 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	}
 
 	/**
+	 * Indicates if the given element or at least one of its children checks the given predicate.
+	 *
+	 * @param input
+	 *            the element to check
+	 * @param predicate
+	 *            the predicate to use
+	 * @return true if the given element or at least one of its children checks the given predicate, false
+	 *         otherwise
+	 */
+	private boolean isOrHasDescendant(EObject element, final Predicate<EObject> predicate) {
+		final boolean matches = predicate.apply(element);
+		if (matches) {
+			return true;
+		}
+		return Iterators.any(element.eAllContents(), new Predicate<Object>() {
+			public boolean apply(Object input) {
+				return isOrHasDescendant((EObject)input, predicate);
+			}
+		});
+	}
+
+	/**
 	 * Change properties order in Class and Interface.
 	 *
 	 * @param currentOperation
@@ -978,6 +1054,28 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 			final Property property = iterator.next();
 			moveUpElementsSwitch.moveUpElement(property);
 		}
+	}
+
+	/**
+	 * Open the select existing element dialog.
+	 *
+	 * @param selectedContainer
+	 *            Selected element
+	 * @param diagram
+	 *            Current diagram
+	 */
+	@SuppressWarnings("unchecked")
+	public void openSelectExistingElementsDialog(EObject selectedContainer,
+			DSemanticDecorator selectedContainerView,
+			DDiagram diagram) {
+		final ModelElementsSelectionDialog dlg = new ModelElementsSelectionDialog("Add existing elements", //$NON-NLS-1$
+				"Select elements to add in current representation."); //$NON-NLS-1$
+		dlg.setGrayedPredicate(getNonSelectablePredicate(diagram));
+		dlg.setSelectablePredicate(getDisplayablePredicate(selectedContainer, diagram));
+		@SuppressWarnings("rawtypes")
+		final List elementsToAdd = dlg.open(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
+				selectedContainer, diagram, true);
+		addExistingElements(selectedContainerView, elementsToAdd);
 	}
 
 	/**
@@ -1154,7 +1252,6 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 		final Package pkg = element.getNearestPackage();
 		final List<EObject> stereotypeApplications = Lists.newArrayList();
 
-		// for (final Element subElement : pkg.getOwnedElements()) {
 		final Iterator<Element> it = Iterators.filter(EcoreUtil.getAllProperContents(pkg, true),
 				Element.class);
 		while (it.hasNext()) {
@@ -1162,26 +1259,19 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 			System.out.println(cur);
 			stereotypeApplications.addAll(cur.getStereotypeApplications());
 		}
-		// }
 
-		// for (final Element subElement : pkg.getOwnedElements()) {
-		// stereotypeApplications.addAll(subElement.getStereotypeApplications());
-		// }
 		for (final EObject stereotypeApplication : stereotypeApplications) {
 			// Get base class
 			final Element baseClass = getBaseClass(stereotypeApplication);
 			// Get all applied stereotypes
 			for (final Stereotype stereotype : baseClass.getAppliedStereotypes()) {
-				// if (stereotype.getName().equals(stereotypeApplication.eClass().getName())) {
 				// Get profile
 				if (stereotype.getProfile().equals(profile)) {
 					// If stereotypes are still applied return else unapply profile on package
 					return;
 				}
 			}
-			// }
 		}
-		System.out.println("Unapply profile : " + profile.getName() + " on pkg : " + pkg.getName());
 		pkg.unapplyProfile(profile);
 	}
 }

@@ -53,6 +53,7 @@ import com.google.common.collect.Sets;
  */
 public class ClassDiagramServices extends AbstractDiagramServices {
 
+
 	/**
 	 * Compute the label of the given association.
 	 *
@@ -298,6 +299,8 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 		return ends;
 	}
 
+
+
 	/**
 	 * Get the type of the association source end.
 	 *
@@ -444,6 +447,8 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	public boolean isTypeOfClass(EObject element) {
 		return "Class".equals(element.eClass().getName()); //$NON-NLS-1$
 	}
+
+
 
 	/**
 	 * Check is an association source is composite.
