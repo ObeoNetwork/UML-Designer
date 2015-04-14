@@ -1,12 +1,12 @@
 --- RCPTT testcase ---
 Format-Version: 1.0
 Context-Type: org.eclipse.rcptt.ctx.ecl
-Element-Name: CreateActivityDiagramInTestsProject
+Element-Name: EmptyActivityDiagramInTestsProject
 Element-Type: context
 Element-Version: 2.0
 Id: _w18PUNz2EeS8j822Nc50oQ
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/7/15 10:12 AM
+Save-Time: 4/14/15 10:55 AM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl

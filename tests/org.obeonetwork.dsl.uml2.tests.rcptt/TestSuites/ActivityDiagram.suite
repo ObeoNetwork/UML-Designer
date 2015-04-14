@@ -4,15 +4,39 @@ Element-Name: ActivityDiagram
 Element-Type: testsuite
 Element-Version: 2.0
 Id: _6K0twJWqEeSFgY1mGxkuMg
-Runtime-Version: 2.0.0.201412081054
-Save-Time: 1/7/15 6:02 PM
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/14/15 9:07 AM
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
 Content-Type: text/testcase
 Entry-Name: testcase-items
 
-_D14oMH-OEeS4X6G9cD21hw	// kind: 'test' name: 'ConnectDecisionNode' path: '../ActivityDiagram/ConnectDecisionNode.test'
-_8L6K0H-oEeS4X6G9cD21hw	// kind: 'test' name: 'CreateOpaqueAction' path: '../ActivityDiagram/CreateOpaqueAction.test'
-_OzZEcJaAEeSnkN__j1IQWA	// kind: 'test' name: 'CreateObjectFlows' path: '../ActivityDiagram/CreateObjectFlows.test'
+_8L6K0H-oEeS4X6G9cD21hw	// kind: 'test' name: 'CreateNewOpaqueActionWithPaletteToolInActivityDiagram' path: '../ActivityDiagram/CreateNewOpaqueActionWithPaletteToolInActivityDiagram.test'
+_1xhU4NiKEeSGfIdQZmgChQ	// kind: 'test' name: 'CreateNewActivityFinalNodeWithPaletteToolInActivityDiagram' path: '../ActivityDiagram/CreateNewActivityFinalNodeWithPaletteToolInActivityDiagram.test'
+_ZpjUcNkVEeSn969efLWPgA	// kind: 'test' name: 'CreateNewCallOperationActionWithPaletteToolInActivityDiagram' path: '../ActivityDiagram/CreateNewCallOperationActionWithPaletteToolInActivityDiagram.test'
+_lgENgNhnEeSpqsLTetvOvg	// kind: 'test' name: 'ShowAllMappingsInActivityDiagram' path: '../ActivityDiagram/ShowAllMappingsInActivityDiagram.test'
+_yqL60NkqEeSn969efLWPgA	// kind: 'test' name: 'CreateNewAcceptEventActionWithPaletteToolInActivityDiagram' path: '../ActivityDiagram/CreateNewAcceptEventActionWithPaletteToolInActivityDiagram.test'
+_tBSLINiGEeSGfIdQZmgChQ	// kind: 'test' name: 'CreateNewInterruptibleActivityRegionWithPaletteToolInActivityDiagram' path: '../ActivityDiagram/CreateNewInterruptibleActivityRegionWithPaletteToolInActivityDiagram.test'
+_im4tANh_EeSGfIdQZmgChQ	// kind: 'test' name: 'CreateNewInitialNodeWithPaletteToolInActivityDiagram' path: '../ActivityDiagram/CreateNewInitialNodeWithPaletteToolInActivityDiagram.test'
+_8xd5kNk6EeS7gLNKVfblRg	// kind: 'test' name: 'CreateNewAcceptSignalActionWithPaletteToolInActivityDiagram' path: '../ActivityDiagram/CreateNewAcceptSignalActionWithPaletteToolInActivityDiagram.test'
+_tjBjENiCEeSGfIdQZmgChQ	// kind: 'test' name: 'CreateNewFlowFinalNodeWithPaletteToolInActivityDiagram' path: '../ActivityDiagram/CreateNewFlowFinalNodeWithPaletteToolInActivityDiagram.test'
+_ZfmesNlLEeS7gLNKVfblRg	// kind: 'test' name: 'CreateNewOutputPinWithPaletteToolInActivityDiagram' path: '../ActivityDiagram/CreateNewOutputPinWithPaletteToolInActivityDiagram.test'
+_ChBMgdhuEeSGfIdQZmgChQ	// kind: 'test' name: 'CreateNewPartitionWithPaletteToolInActivityDiagram' path: '../ActivityDiagram/CreateNewPartitionWithPaletteToolInActivityDiagram.test'
+_2M0wMN3BEeS8j822Nc50oQ	// kind: 'test' name: 'DropElementFromPartitionInActivityDiagram' path: '../ActivityDiagram/DropElementFromPartitionInActivityDiagram.test'
+_JmL1YNiPEeSGfIdQZmgChQ	// kind: 'test' name: 'CreateNewMergeNodeWithPaletteToolInActivityDiagram' path: '../ActivityDiagram/CreateNewMergeNodeWithPaletteToolInActivityDiagram.test'
+_OzZEcJaAEeSnkN__j1IQWA	// kind: 'test' name: 'CreateNewObjectFlowsWithPaletteToolInActivityDiagram' path: '../ActivityDiagram/CreateNewObjectFlowsWithPaletteToolInActivityDiagram.test'
+_zOEAwNkmEeSn969efLWPgA	// kind: 'test' name: 'CreateNewCallBehaviorActionWithPaletteToolInActivityDiagram' path: '../ActivityDiagram/CreateNewCallBehaviorActionWithPaletteToolInActivityDiagram.test'
+_W3YQkNiNEeSGfIdQZmgChQ	// kind: 'test' name: 'CreateNewDecisionNodeWithPaletteToolInActivityDiagram' path: '../ActivityDiagram/CreateNewDecisionNodeWithPaletteToolInActivityDiagram.test'
+_ObfpAN0lEeS8j822Nc50oQ	// kind: 'test' name: 'ReconnectControlFlowSourceInActivityDiagram' path: '../ActivityDiagram/ReconnectControlFlowSourceInActivityDiagram.test'
+_ZqWdgNlIEeS7gLNKVfblRg	// kind: 'test' name: 'CreateNewInputPinWithPaletteToolInActivityDiagram' path: '../ActivityDiagram/CreateNewInputPinWithPaletteToolInActivityDiagram.test'
+_iaacoNiSEeSGfIdQZmgChQ	// kind: 'test' name: 'CreateNewJoinNodeWithPaletteToolInActivityDiagram' path: '../ActivityDiagram/CreateNewJoinNodeWithPaletteToolInActivityDiagram.test'
+_D14oMH-OEeS4X6G9cD21hw	// kind: 'test' name: 'CreateNewControlFlowWithPaletteToolInActivityDiagram' path: '../ActivityDiagram/CreateNewControlFlowWithPaletteToolInActivityDiagram.test'
+_GDELUNk8EeS7gLNKVfblRg	// kind: 'test' name: 'CreateNewParameterWithPaletteToolInActivityDiagram' path: '../ActivityDiagram/CreateNewParameterWithPaletteToolInActivityDiagram.test'
+_6oVEENiQEeSGfIdQZmgChQ	// kind: 'test' name: 'CreateNewForkNodeWithPaletteToolInActivityDiagram' path: '../ActivityDiagram/CreateNewForkNodeWithPaletteToolInActivityDiagram.test'
+_L2-1QNk9EeS7gLNKVfblRg	// kind: 'test' name: 'CreateNewDataStoreWithPaletteToolInActivityDiagram' path: '../ActivityDiagram/CreateNewDataStoreWithPaletteToolInActivityDiagram.test'
+_GvIk8NktEeSn969efLWPgA	// kind: 'test' name: 'CreateNewWaitTimeActionWithPaletteToolInActivityDiagram' path: '../ActivityDiagram/CreateNewWaitTimeActionWithPaletteToolInActivityDiagram.test'
+_1TfwMN0sEeS8j822Nc50oQ	// kind: 'test' name: 'ReconnectObjectFlowsTargetInActivityDiagram' path: '../ActivityDiagram/ReconnectObjectFlowsTargetInActivityDiagram.test'
+_0ccJMN0oEeS8j822Nc50oQ	// kind: 'test' name: 'ReconnectControlFlowTargetInActivityDiagram' path: '../ActivityDiagram/ReconnectControlFlowTargetInActivityDiagram.test'
+_GzJqsN09EeS8j822Nc50oQ	// kind: 'test' name: 'ReconnectObjectFlowsSourceInActivityDiagram' path: '../ActivityDiagram/ReconnectObjectFlowsSourceInActivityDiagram.test'
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--
