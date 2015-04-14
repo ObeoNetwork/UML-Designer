@@ -1,0 +1,33 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: EnlargeRegionInStateMachineDiagramInTestProject
+Element-Type: context
+Element-Version: 2.0
+Id: _a6UsUOJ3EeSa1-TOz3bdSg
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/14/15 9:33 AM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+with [get-editor "NewModel State Machine Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel State Machine Diagram" | get-edit-part -name NewModel] {
+    with [get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        with [get-edit-part -name Region1] {
+            with [get-edit-part -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+                mouse-move 118 54 button1 -height 68 -width 148
+                mouse-press 118 54 button1 -height 68 -width 148
+                mouse-release 118 54 button1 524288 -height 68 -width 148
+            }
+            with [get-handle ResizeHandle -index 4] {
+                mouse-move 6 5 button1 -height 7 -width 7
+                mouse-press 6 5 button1 -height 7 -width 7
+            }
+        }
+    }
+    mouse-drag 520 514 button1 524288 -height 519 -width 739
+    mouse-release 520 514 button1 524288 -height 519 -width 739
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--
