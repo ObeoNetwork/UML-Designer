@@ -1,12 +1,12 @@
 --- RCPTT testcase ---
 Format-Version: 1.0
 Context-Type: org.eclipse.rcptt.ctx.ecl
-Element-Name: CreateNewDeploymentDiagramInTestProject
+Element-Name: EmptyDeploymentDiagramInTestProject
 Element-Type: context
 Element-Version: 2.0
 Id: _3scNgNeaEeSVyY6xGIhNLA
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 3/31/15 1:41 PM
+Save-Time: 4/14/15 3:23 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl

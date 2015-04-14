@@ -1,13 +1,13 @@
 --- RCPTT testcase ---
 Format-Version: 1.0
 Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_X-rQgH-QEeS4X6G9cD21hw,_3scNgNeaEeSVyY6xGIhNLA
-Element-Name: CreateNewArtifactWithPaletteToolInComponentDiagram
+Element-Name: CreateNewArtifactWithPaletteToolInDeploymentDiagram
 Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _j-0sANedEeSVyY6xGIhNLA
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 3/31/15 4:32 PM
+Save-Time: 4/14/15 2:57 PM
 Testcase-Type: ecl
 Verifications: _xRPXwNeyEeSVyY6xGIhNLA
 
