@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _UiJHYNSDEeSda_OhYkGJCQ
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 3/27/15 2:27 PM
+Save-Time: 4/14/15 12:13 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -36,9 +36,7 @@ get-editor "Test Component Diagram2" | get-diagram -index 1 | get-edit-part -nam
 with [get-editor "Test Component Diagram2" | get-diagram -index 1 | get-edit-part -name "Test Component Diagram2" 
     | get-edit-part -name Component | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
     | get-figure "1/0"] {
-    get-property "getLocation().x" | equals 157 | verify-true
-    get-property "getLocation().y" | equals 72 | verify-true
-    get-property "isVisible()" | equals true | verify-true
+   get-property "isVisible()" | equals true | verify-true
 }
 
 

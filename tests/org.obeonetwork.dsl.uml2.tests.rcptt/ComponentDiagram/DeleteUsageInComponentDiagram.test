@@ -1,13 +1,13 @@
 --- RCPTT testcase ---
 Format-Version: 1.0
 Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_X-rQgH-QEeS4X6G9cD21hw,_XEsC0NRmEeSQYq5tjqphxg,_0gdt4NRyEeSda_OhYkGJCQ,_RrpfwNShEeSda_OhYkGJCQ,_C3JgYNa0EeScE-aTfGIfZQ,_TAnaINa7EeScE-aTfGIfZQ,_ByYYQNbWEeSrE7oyAIQ47g,_RadgYNbWEeSrE7oyAIQ47g
-Element-Name: DeletUsageInComponentDiagram
+Element-Name: DeleteUsageInComponentDiagram
 Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _mu9yQNb2EeSrE7oyAIQ47g
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 3/30/15 6:15 PM
+Save-Time: 4/14/15 12:07 PM
 Testcase-Type: ecl
 Verifications: _5ts3sNb3EeSrE7oyAIQ47g
 
