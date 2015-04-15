@@ -1,0 +1,23 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: EmptyUseCaseDiagramInAllMappingsProject
+Element-Type: context
+Element-Version: 2.0
+Id: _4sv_kNRbEeSQYq5tjqphxg
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/14/15 4:11 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+with [get-view "Model Explorer" | get-tree] {
+    select AllMappings | double-click
+    select "AllMappings/model.uml/<Model> Test" | get-menu "New Representation/Test Use Case Diagram" | click
+}
+with [get-window "New Representation"] {
+    get-editbox -after [get-label "Representation name:"] | set-text "Test Use Case Diagram2"
+    get-button OK | click
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

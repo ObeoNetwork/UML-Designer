@@ -1,0 +1,39 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Element-Name: UseCaseDiagram
+Element-Type: testsuite
+Element-Version: 2.0
+Id: _rRa48OKrEeStQIBK62bviw
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/14/15 5:45 PM
+
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
+Content-Type: text/testcase
+Entry-Name: testcase-items
+
+_zRI8oNPFEeSQYq5tjqphxg	// kind: 'test' name: 'DeleteIncludeFromModelInUseCaseDiagram' path: '../UseCaseDiagram/DeleteIncludeFromModelInUseCaseDiagram.test'
+_UNKcUNPHEeSQYq5tjqphxg	// kind: 'test' name: 'DeleteExtendFromModelInUseCaseDiagram' path: '../UseCaseDiagram/DeleteExtendFromModelInUseCaseDiagram.test'
+_Hl-YgNOqEeSYFrQZGshlCQ	// kind: 'test' name: 'CreateNewDataTypeWithPaletteToolInUseCaseDiagram' path: '../UseCaseDiagram/CreateNewDataTypeWithPaletteToolInUseCaseDiagram.test'
+_D-hwsNOqEeSYFrQZGshlCQ	// kind: 'test' name: 'CreateNewArtifactWithPaletteToolInUseCaseDiagram' path: '../UseCaseDiagram/CreateNewArtifactWithPaletteToolInUseCaseDiagram.test'
+_xy1RANMUEeSYFrQZGshlCQ	// kind: 'test' name: 'CreateNewAssociationWithPaletteToolInUseCaseDiagram' path: '../UseCaseDiagram/CreateNewAssociationWithPaletteToolInUseCaseDiagram.test'
+_41zxENL_EeSJ-bRbIBdx3w	// kind: 'test' name: 'ShowAllMappingsInUseCaseDiagram' path: '../UseCaseDiagram/ShowAllMappingsInUseCaseDiagram.test'
+_AGveoNPdEeSQYq5tjqphxg	// kind: 'test' name: 'ReconnectIncludeTargetInUseCaseDiagram' path: '../UseCaseDiagram/ReconnectIncludeTargetInUseCaseDiagram.test'
+_C762oNPKEeSQYq5tjqphxg	// kind: 'test' name: 'ReconnectAssociationSourceInUseCaseDiagram' path: '../UseCaseDiagram/ReconnectAssociationSourceInUseCaseDiagram.test'
+_zazFkNPeEeSQYq5tjqphxg	// kind: 'test' name: 'ReconnectGeneralizationSourceInUseCaseDiagram' path: '../UseCaseDiagram/ReconnectGeneralizationSourceInUseCaseDiagram.test'
+_xfesoNMTEeSYFrQZGshlCQ	// kind: 'test' name: 'CreateNewActorWithPaletteToolInUseCaseDiagram' path: '../UseCaseDiagram/CreateNewActorWithPaletteToolInUseCaseDiagram.test'
+_HhUBgNPXEeSQYq5tjqphxg	// kind: 'test' name: 'ReconnectExtendTargetInUseCaseDiagram' path: '../UseCaseDiagram/ReconnectExtendTargetInUseCaseDiagram.test'
+_gWlS8NPMEeSQYq5tjqphxg	// kind: 'test' name: 'ReconnectAssociationTargetInUseCaseDiagram' path: '../UseCaseDiagram/ReconnectAssociationTargetInUseCaseDiagram.test'
+_Hqs5ANMREeSYFrQZGshlCQ	// kind: 'test' name: 'CreateNewUseCaseWithPaletteToolInUseCaseDiagram' path: '../UseCaseDiagram/CreateNewUseCaseWithPaletteToolInUseCaseDiagram.test'
+_9GMvUNObEeSYFrQZGshlCQ	// kind: 'test' name: 'CreateNewIncludeWithPaletteToolInUseCaseDiagram' path: '../UseCaseDiagram/CreateNewIncludeWithPaletteToolInUseCaseDiagram.test'
+_KRhYwNOqEeSYFrQZGshlCQ	// kind: 'test' name: 'CreateNewInterfaceWithPaletteToolInUseCaseDiagram' path: '../UseCaseDiagram/CreateNewInterfaceWithPaletteToolInUseCaseDiagram.test'
+_OhjMQNPmEeSQYq5tjqphxg	// kind: 'test' name: 'AddRelatedElementsInUseCaseDiagram' path: '../UseCaseDiagram/AddRelatedElementsInUseCaseDiagram.test'
+_P0XWQNOqEeSYFrQZGshlCQ	// kind: 'test' name: 'CreateNewClassWithPaletteToolInUseCaseDiagram' path: '../UseCaseDiagram/CreateNewClassWithPaletteToolInUseCaseDiagram.test'
+_6IUO0NPQEeSQYq5tjqphxg	// kind: 'test' name: 'ReconnectExtendSourceInUseCaseDiagram' path: '../UseCaseDiagram/ReconnectExtendSourceInUseCaseDiagram.test'
+_84d-4NOnEeSYFrQZGshlCQ	// kind: 'test' name: 'CreateNewComponentWithPaletteToolInUseCaseDiagram' path: '../UseCaseDiagram/CreateNewComponentWithPaletteToolInUseCaseDiagram.test'
+_ZFOi0NOYEeSYFrQZGshlCQ	// kind: 'test' name: 'CreateNewExtendWithPaletteToolInUseCaseDiagram' path: '../UseCaseDiagram/CreateNewExtendWithPaletteToolInUseCaseDiagram.test'
+_OEf7INOqEeSYFrQZGshlCQ	// kind: 'test' name: 'CreateNewCollaborationWithPaletteToolInUseCaseDiagram' path: '../UseCaseDiagram/CreateNewCollaborationWithPaletteToolInUseCaseDiagram.test'
+_mqBq8NOgEeSYFrQZGshlCQ	// kind: 'test' name: 'CreateNewGeneralizationWithPaletteToolInUseCaseDiagram' path: '../UseCaseDiagram/CreateNewGeneralizationWithPaletteToolInUseCaseDiagram.test'
+_YiDvMNSnEeSda_OhYkGJCQ	// kind: 'test' name: 'ReconnectGeneralizationTargetInUseCaseDiagram' path: '../UseCaseDiagram/ReconnectGeneralizationTargetInUseCaseDiagram.test'
+_ofwtoNPZEeSQYq5tjqphxg	// kind: 'test' name: 'ReconnectIncludeSourceInUseCaseDiagram' path: '../UseCaseDiagram/ReconnectIncludeSourceInUseCaseDiagram.test'
+
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--

@@ -1,0 +1,70 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_p5zq0M4oEeS8M6MvytM1MA,_4sv_kNRbEeSQYq5tjqphxg
+Element-Name: AddRelatedElementsInUseCaseDiagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _OhjMQNPmEeSQYq5tjqphxg
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/14/15 4:50 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Create a Use case diagram in AllMappings and add related element to the diagram
+
+Test:
+- Add Related elements with contextual menu
+Result:
+- check diagram
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Open contextual menu Add Related Elements
+with [get-editor "Test Use Case Diagram2"] {
+    with [get-diagram -index 1] {
+        with [get-edit-part -name "Test Use Case Diagram2"] {
+            mouse-move 273 135 button3 -height 328 -width 769
+            mouse-press 273 135 button3 -height 328 -width 769
+            mouse-release 273 135 button3 2097152 -height 328 -width 769
+        }
+        get-menu "Add Related Elements" | click
+    }
+}
+
+// Check elements added to diagram
+with [get-editor "Test Use Case Diagram2" | get-diagram -index 1 | get-edit-part -name "Test Use Case Diagram2"] {
+    // Check number of Elements
+    get-property childrenCount | equals 5 | verify-true
+    get-property "getConnections().size()" | equals 4 | verify-true
+    get-property "getChildrenAffectingZoom().size()" | equals 5 | verify-true
+    get-property "getFigure().getChildren().size()" | equals 5 | verify-true
+   
+    // Check elements are presents in diagram
+    // Check connections
+    get-edit-part -name Actor1 | get-target-connection 1|get-property "getFigure().isVisible()" | equals true 
+        | verify-true
+    get-edit-part -name Actor1 | get-target-connection 0 | get-property "getFigure().isVisible()" | equals true 
+        | verify-true
+    get-edit-part -name UseCaseTest1 | get-target-connection 0 | get-property "getFigure().isVisible()" | equals true 
+        | verify-true
+    get-edit-part -name UseCaseTest2 | get-target-connection 0 | get-property "getFigure().isVisible()" | equals true 
+        | verify-true
+    // Check elements    
+    get-edit-part -name Actor1 | get-edit-part -className WorkspaceImageEditPart | get-figure 0 
+        | get-property "isVisible()" | equals true | verify-true
+    get-edit-part -name Actor2 | get-edit-part -className WorkspaceImageEditPart | get-figure 0 
+        | get-property "isVisible()" | equals true | verify-true
+    get-edit-part -name UseCaseTest1 | get-edit-part -className WorkspaceImageEditPart | get-figure "0/0" 
+        | get-property "isVisible()" | equals true | verify-true
+    get-edit-part -name UseCaseTest2 | get-edit-part -className WorkspaceImageEditPart | get-figure "0/0" 
+        | get-property "isVisible()" | equals true | verify-true
+    get-edit-part -name UseCaseTest3 | get-edit-part -className WorkspaceImageEditPart | get-figure "0/0" 
+        | get-property "isVisible()" | equals true | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
