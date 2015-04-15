@@ -1,0 +1,30 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Element-Name: ReusedTools
+Element-Type: testsuite
+Element-Version: 2.0
+Id: _CQvsAJWrEeSFgY1mGxkuMg
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/15/15 3:30 PM
+
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
+Content-Type: text/testcase
+Entry-Name: testcase-items
+
+_9wKRkc4lEeSp07cw9_mFYw	// kind: 'test' name: 'AddExistingElementsWithPaletteToolInClassDiagram' path: '../ReusedTools/AddExistingElementsWithPaletteToolInClassDiagram.test'
+_g8YCQNFIEeSZY9TTmtin1Q	// kind: 'test' name: 'DeleteClassWithStereotypeInClassDiagram' path: '../ReusedTools/DeleteClassWithStereotypeInClassDiagram.test'
+_U29fgIB-EeS4X6G9cD21hw	// kind: 'test' name: 'PopUpMoveToDownElements' path: '../ReusedTools/PopUpMoveToDownElements.test'
+_R5n5EONBEeSAvcsZzi27Rg	// kind: 'test' name: 'OpenEditPropertiesElementsWizard' path: '../ReusedTools/OpenEditPropertiesElementsWizard.test'
+_KJlrINFBEeSZY9TTmtin1Q	// kind: 'test' name: 'ApplyStereotypeInClassDiagram' path: '../ReusedTools/ApplyStereotypeInClassDiagram.test'
+_E5N4wM5DEeS8M6MvytM1MA	// kind: 'test' name: 'RemoveExistingElementsWithPaletteToolInClassDiagram' path: '../ReusedTools/RemoveExistingElementsWithPaletteToolInClassDiagram.test'
+_fu3AsIB_EeS4X6G9cD21hw	// kind: 'test' name: 'DirectEditNamedElementInClassDiagram' path: '../ReusedTools/DirectEditNamedElementInClassDiagram.test'
+_rlfT0dE5EeSZY9TTmtin1Q	// kind: 'test' name: 'PasteClassFromDiagramInClassDiagram' path: '../ReusedTools/PasteClassFromDiagramInClassDiagram.test'
+_AIC-0NFvEeSZY9TTmtin1Q	// kind: 'test' name: 'OpenClassDiagramFromPackageInClassDiagram' path: '../ReusedTools/OpenClassDiagramFromPackageInClassDiagram.test'
+_xR2VoONAEeSAvcsZzi27Rg	// kind: 'test' name: 'DirectEditElementsInClassDiagram' path: '../ReusedTools/DirectEditElementsInClassDiagram.test'
+_mVSh8IBaEeS4X6G9cD21hw	// kind: 'test' name: 'Comment' path: '../ReusedTools/Comment.test'
+_wUNpAM5VEeS8M6MvytM1MA	// kind: 'test' name: 'DropElementsFromModelExplorerInClassDiagram' path: '../ReusedTools/DropElementsFromModelExplorerInClassDiagram.test'
+_FdonoMyGEeSmqoI7c5i_uw	// kind: 'test' name: 'CreateNewClassDiagramFromPackageHierarchyInModelExplorer' path: '../ReusedTools/CreateNewClassDiagramFromPackageHierarchyInModelExplorer.test'
+_H0f0gMyKEeSmqoI7c5i_uw	// kind: 'test' name: 'CreateNewClassDiagramFromPackageHierarchyInDiagram' path: '../ReusedTools/CreateNewClassDiagramFromPackageHierarchyInDiagram.test'
+_m39pQNLwEeSJ-bRbIBdx3w	// kind: 'test' name: 'DropClassFromPackageInClassDiagram' path: '../ReusedTools/DropClassFromPackageInClassDiagram.test'
+
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--

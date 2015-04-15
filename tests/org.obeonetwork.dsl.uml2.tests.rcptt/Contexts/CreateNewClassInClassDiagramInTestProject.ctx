@@ -1,0 +1,33 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: CreateNewClassInClassDiagramInTestProject
+Element-Type: context
+Element-Version: 2.0
+Id: _7lkXsMzEEeSmqoI7c5i_uw
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/15/15 10:13 AM
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Create a new Class in a ClassDiagram.
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+get-editor "test Class Diagram"
+with [get-palette] {
+    with [get-palette-entry Class] {
+        mouse-press 74 11 button1 -height 23 -width 152
+        mouse-release 74 11 button1 524288 -height 23 -width 152
+    }
+}
+with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+    mouse-move 434 108 button1 -height 338 -width 695
+    mouse-press 434 108 button1 -height 338 -width 695
+    mouse-release 434 108 button1 524288 -height 338 -width 695
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--
