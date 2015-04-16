@@ -1,0 +1,134 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: ContextForFeaturesCreationInProfileDiagramInTestProject
+Element-Type: context
+Element-Version: 2.0
+Id: _XD79kOQMEeSOosy0KaL0vQ
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/16/15 9:44 AM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+// Create Enumeration in Profile diagram
+with [get-editor "Test Profile Diagram"] {
+    with [get-palette | get-palette-entry Enumeration] {
+        mouse-move 50 5 button1 -height 23 -width 182
+        mouse-press 50 5 button1 -height 23 -width 182
+        mouse-release 50 5 button1 524288 -height 23 -width 182
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
+        mouse-move 78 85 button1 -height 524 -width 646
+        mouse-press 78 85 button1 -height 524 -width 646
+        mouse-release 78 85 button1 524288 -height 524 -width 646
+    }
+}
+
+// Create package
+with [get-editor "Test Profile Diagram"] {
+    with [get-palette | get-palette-entry Package] {
+        mouse-move 24 10 button1 -height 23 -width 182
+        mouse-press 24 10 button1 -height 23 -width 182
+        mouse-release 24 10 button1 524288 -height 23 -width 182
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
+        mouse-move 79 5 button1 -height 524 -width 646
+        mouse-press 79 5 button1 -height 524 -width 646
+        mouse-release 79 5 button1 524288 -height 524 -width 646
+    }
+}
+// Create a profile
+with [get-editor "Test Profile Diagram"] {
+  with [get-palette | get-palette-entry Profile] {
+        mouse-move 41 11 button1 -height 23 -width 182
+        mouse-press 41 11 button1 -height 23 -width 182
+        mouse-release 41 11 button1 524288 -height 23 -width 182
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
+        mouse-move 426 5 button1 -height 524 -width 646
+        mouse-press 426 5 button1 -height 524 -width 646
+        mouse-release 426 5 button1 524288 -height 524 -width 646
+    }
+}
+
+// Create an ImportMetaclass
+with [get-editor "Test Profile Diagram"] {
+    with [get-palette] {
+        with [get-palette-entry "Import Metaclass"] {
+            mouse-move 64 6 button1 -height 23 -width 182
+            mouse-press 64 6 button1 -height 23 -width 182
+            mouse-release 64 6 button1 524288 -height 23 -width 182
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
+        mouse-move 80 150 button1 -height 524 -width 646
+        mouse-press 80 150 button1 -height 524 -width 646
+        mouse-release 80 150 button1 524288 -height 524 -width 646
+    }
+}
+with [get-window "Import UML Metaclasses"] {
+    get-table | select Class
+    get-button OK | click
+}
+
+//Create a Stereotype
+with [get-editor "Test Profile Diagram"] {
+    with [get-palette] {
+        with [get-palette-entry Stereotype] {
+            mouse-move 67 5 button1 -height 23 -width 182
+            mouse-press 67 5 button1 -height 23 -width 182
+            mouse-release 67 5 button1 524288 -height 23 -width 182
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
+        mouse-move 428 86 button1 -height 524 -width 646
+        mouse-press 428 86 button1 -height 524 -width 646
+        mouse-release 428 86 button1 524288 -height 524 -width 646
+    }
+}
+
+// Create a Datat type
+with [get-editor "Test Profile Diagram"] {
+    with [get-palette] {
+        with [get-palette-entry DataTypes] {
+            mouse-move 8 5 button1 -height 23 -width 182
+            mouse-press 8 5 button1 -height 23 -width 182
+            mouse-release 8 5 button1 524288 -height 23 -width 182
+        }
+        with [get-palette-entry DataType] {
+            mouse-move 39 12 button1 -height 23 -width 182
+            mouse-press 39 12 button1 -height 23 -width 182
+            mouse-release 39 12 button1 524288 -height 23 -width 182
+        }
+    }
+}
+with [get-editor "Test Profile Diagram"] {
+    with [get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
+        mouse-move 426 154 button1 -height 524 -width 646
+        mouse-press 426 154 button1 -height 524 -width 646
+        mouse-release 426 154 button1 524288 -height 524 -width 646
+    }
+}
+// Create a Primitive Type
+with [get-editor "Test Profile Diagram"] {
+    with [get-palette] {
+        with [get-palette-entry DataTypes] {
+            mouse-move 12 10 button1 -height 23 -width 182
+            mouse-press 12 10 button1 -height 23 -width 182
+            mouse-release 12 10 button1 524288 -height 23 -width 182
+        }
+        with [get-palette-entry PrimitiveType] {
+            mouse-move 28 4 button1 -height 23 -width 182
+            mouse-press 28 4 button1 -height 23 -width 182
+            mouse-release 28 4 button1 524288 -height 23 -width 182
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
+        mouse-move 424 213 button1 -height 524 -width 646
+        mouse-press 424 213 button1 -height 524 -width 646
+        mouse-release 424 213 button1 524288 -height 524 -width 646
+    }
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

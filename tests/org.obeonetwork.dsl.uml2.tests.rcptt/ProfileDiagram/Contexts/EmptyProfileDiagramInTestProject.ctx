@@ -1,0 +1,22 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: EmptyProfileDiagramInTestProject
+Element-Type: context
+Element-Version: 2.0
+Id: _od2e4OOMEeSBWuBfnG9TPA
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/15/15 6:30 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+//Create a new profile diagram in test project from model explorer
+get-view "Model Explorer" | get-tree | select "test/model.uml/<Model> NewModel" 
+    | get-menu "New Representation/Profile Diagram" | click
+with [get-window "New Representation"] {
+    get-editbox -after [get-label "Representation name:"] | set-text "Test Profile Diagram"
+    get-button OK | click
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

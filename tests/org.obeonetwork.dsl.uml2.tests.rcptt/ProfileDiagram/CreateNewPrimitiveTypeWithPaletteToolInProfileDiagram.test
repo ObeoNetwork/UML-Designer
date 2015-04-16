@@ -1,0 +1,61 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_X-rQgH-QEeS4X6G9cD21hw,_od2e4OOMEeSBWuBfnG9TPA
+Element-Name: CreateNewPrimitiveTypeWithPaletteToolInProfileDiagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _yk2nQOOQEeSBWuBfnG9TPA
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/15/15 7:04 PM
+Testcase-Type: ecl
+Verifications: _an5CYOOREeSBWuBfnG9TPA
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Create a New semantic element in profile diagram: PrimitiveType
+
+Test:
+- with Palette tool : Primitive Type create new element in diagram.
+
+Result:
+- new element appears in diagram
+- new element appear in model explorer
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Create new PrimitiveType Profile diagram
+with [get-editor "Test Profile Diagram"] {
+    with [get-palette] {
+        with [get-palette-entry DataTypes] {
+            mouse-move 9 6 button1 -height 23 -width 182
+            mouse-press 9 6 button1 -height 23 -width 182
+            mouse-release 9 6 button1 524288 -height 23 -width 182
+        }
+        with [get-palette-entry PrimitiveType] {
+            mouse-move 30 9 button1 -height 23 -width 182
+            mouse-press 30 9 button1 -height 23 -width 182
+            mouse-release 30 9 button1 524288 -height 23 -width 182
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
+        mouse-move 78 85 button1 -height 524 -width 646
+        mouse-press 78 85 button1 -height 524 -width 646
+        mouse-release 78 85 button1 524288 -height 524 -width 646
+    }
+}
+// Check Diagram
+with [get-editor "Test Profile Diagram" | get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
+    get-edit-part -name PrimitiveType1 | get-edit-part -className DNodeListNameEditPart 
+        | get-property "getFigure().getText()" | equals PrimitiveType1 | verify-true
+}
+
+// Check model
+with [get-editor "Test Profile Diagram" | get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
+    get-property "element.target.member.PrimitiveType[0].name" | equals PrimitiveType1 | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
