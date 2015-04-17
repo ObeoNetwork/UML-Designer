@@ -5,9 +5,9 @@ Element-Name: CreateNewProfileDiagramInTravelAgencyProject
 Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
-Id: _Nb2o4NIMEeSzLt1JkYCXlg
+Id: _mfgvIeTaEeSGy8vHn8hTyw
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/15/15 6:06 PM
+Save-Time: 4/17/15 10:21 AM
 Testcase-Type: ecl
 Verifications: _VUqu4OOJEeSBWuBfnG9TPA
 
@@ -15,13 +15,7 @@ Verifications: _VUqu4OOJEeSBWuBfnG9TPA
 Content-Type: text/plain
 Entry-Name: .description
 
-Open Example TravelAgency
-
-Test:
-- create a new Profile Diagram in Travel Agency project
-
-Result:
-
+Create a Profile Diagram in Travel Agency project
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
 Content-Type: text/ecl

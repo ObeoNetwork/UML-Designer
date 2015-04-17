@@ -5,7 +5,7 @@ Element-Type: testsuite
 Element-Version: 2.0
 Id: _W-S5IJWrEeSFgY1mGxkuMg
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/14/15 2:56 PM
+Save-Time: 4/17/15 3:50 PM
 
 ------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
 Content-Type: text/testcase
@@ -22,12 +22,12 @@ _-scXoNe9EeSVyY6xGIhNLA	// kind: 'test' name: 'ReconnectDeploymentSourceInDeploy
 _-w-3ANeJEeSrE7oyAIQ47g	// kind: 'test' name: 'AddRelatedElementsInDeploymentDiagram' path: '../DeploymentDiagram/AddRelatedElementsInDeploymentDiagram.test'
 _NUlrUNhDEeSpqsLTetvOvg	// kind: 'test' name: 'ReconnectDependencyTargetInDeploymentDiagram' path: '../DeploymentDiagram/ReconnectDependencyTargetInDeploymentDiagram.test'
 _pNCgQdhAEeSpqsLTetvOvg	// kind: 'test' name: 'ReconnectDependencySourceInDeploymentDiagram' path: '../DeploymentDiagram/ReconnectDependencySourceInDeploymentDiagram.test'
+_j-0sANedEeSVyY6xGIhNLA	// kind: 'test' name: 'CreateNewArtifactWithPaletteToolInDeploymentDiagram' path: '../DeploymentDiagram/CreateNewArtifactWithPaletteToolInDeploymentDiagram.test'
 _htYQANesEeSVyY6xGIhNLA	// kind: 'test' name: 'CreateNewManifestationWithPaletteToolInDeploymentDiagram' path: '../DeploymentDiagram/CreateNewManifestationWithPaletteToolInDeploymentDiagram.test'
 _G3e94NenEeSVyY6xGIhNLA	// kind: 'test' name: 'CreateNewGeneralizationWithPaletteToolInDeploymentDiagram' path: '../DeploymentDiagram/CreateNewGeneralizationWithPaletteToolInDeploymentDiagram.test'
 _Se6_QNegEeSVyY6xGIhNLA	// kind: 'test' name: 'CreateNewLinkWithPaletteToolInDeploymentDiagram' path: '../DeploymentDiagram/CreateNewLinkWithPaletteToolInDeploymentDiagram.test'
 _3iUz8Ne1EeSVyY6xGIhNLA	// kind: 'test' name: 'ReconnectLinkSourceInDeploymentDiagram' path: '../DeploymentDiagram/ReconnectLinkSourceInDeploymentDiagram.test'
 _NZK9cNhQEeSpqsLTetvOvg	// kind: 'test' name: 'ReconnectManifestationTargetInDeploymentDiagram' path: '../DeploymentDiagram/ReconnectManifestationTargetInDeploymentDiagram.test'
-_j-0sANedEeSVyY6xGIhNLA	// kind: 'test' name: 'CreateNewArtifactWithPaletteToolInComponentDiagram' path: '../DeploymentDiagram/CreateNewArtifactWithPaletteToolInComponentDiagram.test'
 _y2ZGgNhIEeSpqsLTetvOvg	// kind: 'test' name: 'ReconnectManifestationSourceInDeploymentDiagram' path: '../DeploymentDiagram/ReconnectManifestationSourceInDeploymentDiagram.test'
 _9R8A8NebEeSVyY6xGIhNLA	// kind: 'test' name: 'CreateNewDeviceWithPaletteToolInDeploymentDiagram' path: '../DeploymentDiagram/CreateNewDeviceWithPaletteToolInDeploymentDiagram.test'
 _Min0MNeFEeSrE7oyAIQ47g	// kind: 'test' name: 'ShowAllMappingsInDeploymentDiagram' path: '../DeploymentDiagram/ShowAllMappingsInDeploymentDiagram.test'

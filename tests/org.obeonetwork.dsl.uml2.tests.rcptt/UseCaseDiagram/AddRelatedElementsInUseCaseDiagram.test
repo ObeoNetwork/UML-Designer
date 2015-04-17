@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _OhjMQNPmEeSQYq5tjqphxg
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/14/15 4:50 PM
+Save-Time: 4/17/15 2:03 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -40,10 +40,9 @@ with [get-editor "Test Use Case Diagram2"] {
 // Check elements added to diagram
 with [get-editor "Test Use Case Diagram2" | get-diagram -index 1 | get-edit-part -name "Test Use Case Diagram2"] {
     // Check number of Elements
-    get-property childrenCount | equals 5 | verify-true
+    get-property childrenCount | equals 7 | verify-true
     get-property "getConnections().size()" | equals 4 | verify-true
-    get-property "getChildrenAffectingZoom().size()" | equals 5 | verify-true
-    get-property "getFigure().getChildren().size()" | equals 5 | verify-true
+    get-property "getFigure().getChildren().size()" | equals 7 | verify-true
    
     // Check elements are presents in diagram
     // Check connections
@@ -59,6 +58,10 @@ with [get-editor "Test Use Case Diagram2" | get-diagram -index 1 | get-edit-part
     get-edit-part -name Actor1 | get-edit-part -className WorkspaceImageEditPart | get-figure 0 
         | get-property "isVisible()" | equals true | verify-true
     get-edit-part -name Actor2 | get-edit-part -className WorkspaceImageEditPart | get-figure 0 
+        | get-property "isVisible()" | equals true | verify-true
+    get-edit-part -name Actor3 | get-edit-part -className WorkspaceImageEditPart | get-figure 0 
+        | get-property "isVisible()" | equals true | verify-true
+    get-edit-part -name Actor4 | get-edit-part -className WorkspaceImageEditPart | get-figure 0 
         | get-property "isVisible()" | equals true | verify-true
     get-edit-part -name UseCaseTest1 | get-edit-part -className WorkspaceImageEditPart | get-figure "0/0" 
         | get-property "isVisible()" | equals true | verify-true
