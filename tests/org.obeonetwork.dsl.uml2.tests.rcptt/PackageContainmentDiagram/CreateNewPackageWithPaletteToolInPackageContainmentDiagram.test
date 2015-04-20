@@ -1,0 +1,101 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_X-rQgH-QEeS4X6G9cD21hw,_Yk1UEOc3EeSXar-HajHJtg
+Element-Name: CreateNewPackageWithPaletteToolInPackageContainmentDiagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _sBmyoOczEeSXar-HajHJtg
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/20/15 11:24 AM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Create New Package in Containment diagrama with palette tool: Package
+
+Test:
+- Create a new package  by clicking in diagram
+- Create a new package by clicking on previous Package
+
+Results:
+- First created package appears in diagram and arrow from Package1 to NewModel package is visible
+- Second created package appears in diagram and arrow from Package2 to Package1 is visible
+Check diagram and check model.
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Create a new Package under model
+with [get-editor "test Package Containment"] {
+    with [get-palette | get-palette-entry Package] {
+        mouse-move 95 8 button1 -height 23 -width 182
+        mouse-press 95 8 button1 -height 23 -width 182
+        mouse-release 95 8 button1 524288 -height 23 -width 182
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Package Containment"] {
+        mouse-move 259 16 button1 -height 524 -width 646
+        mouse-press 259 16 button1 -height 524 -width 646
+        mouse-release 259 16 button1 524288 -height 524 -width 646
+    }
+}
+// Check diagram
+with [get-editor "test Package Containment" | get-diagram -index 1 | get-edit-part -name "test Package Containment"] {
+    get-edit-part -name Package1 | get-edit-part -className DNodeListNameEditPart 
+        | get-property "getFigure().getText()" | equals Package1 | verify-true
+}
+get-editor "test Package Containment" | get-diagram -index 1 | get-edit-part -name "test Package Containment" 
+    | get-edit-part -name NewModel | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | get-edit-part 
+    -name Package1 | get-property "getFigure().getText()" | equals Package1 | verify-true
+// Check model
+with [get-editor "test Package Containment" | get-diagram -index 1 | get-edit-part -name "test Package Containment"] {
+    get-property "element.target.member.size" | equals 1 | verify-true
+    get-property "element.target.member.Package[0].name" | equals Package1 | verify-true
+    get-edit-part -name Package1 | get-edit-part -className DNodeListNameEditPart 
+        | get-property "element.target.owner.name" | equals NewModel | verify-true
+}
+// Check containment arrow is present in model (Filter Containment is unactive)
+with [get-editor "test Package Containment" | get-diagram -index 1 | get-edit-part -name "test Package Containment" 
+    | get-edit-part -name NewModel | get-target-connection 0] {
+    get-property "getFigure().isVisible()" | equals true | verify-true
+    get-property "source.element.name" | equals Package1 | verify-true
+    get-property "target.element.name" | equals NewModel | verify-true
+}
+
+
+// Create a new Package under model
+with [get-editor "test Package Containment"] {
+    with [get-palette | get-palette-entry Package] {
+         mouse-move 77 9 button1 -height 23 -width 182
+         mouse-press 77 9 button1 -height 23 -width 182
+         mouse-release 77 9 button1 524288 -height 23 -width 182
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Package Containment"] {
+        with [get-edit-part -name Package1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 43 16 button1 -height 71 -width 116
+            mouse-press 43 16 button1 -height 71 -width 116
+            mouse-release 43 16 button1 524288 -height 71 -width 116
+        }
+    }
+}
+// Check Diagram
+with [get-editor "test Package Containment" | get-diagram -index 1 | get-edit-part -name "test Package Containment"] {
+    get-edit-part -name Package2 | get-edit-part -className DNodeListNameEditPart 
+        | get-property "getFigure().getText()" | equals Package2 | verify-true
+}
+// Check Model
+with [get-editor "test Package Containment" | get-diagram -index 1 | get-edit-part -name "test Package Containment"] {
+    get-edit-part -name Package2 | get-edit-part -className DNodeListNameEditPart 
+        | get-property "element.target.owner.name" | equals Package1 | verify-true
+}
+with [get-editor "test Package Containment" | get-diagram -index 1 | get-edit-part -name "test Package Containment" 
+    | get-edit-part -name Package1 | get-target-connection 0] {
+    get-property "getFigure().isVisible()" | equals true | verify-true
+    get-property "source.element.name" | equals Package2 | verify-true
+    get-property "target.element.name" | equals Package1 | verify-true
+}
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

@@ -1,13 +1,13 @@
 --- RCPTT testcase ---
 Format-Version: 1.0
-Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_PbyVcIBsEeS4X6G9cD21hw
-Element-Name: RefactorUsingMoveTool
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_PbyVcIBsEeS4X6G9cD21hw,_ZInrsOc5EeSXar-HajHJtg
+Element-Name: RefactorUsingMoveToolInContainmentDiagram
 Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _7G5y4JZXEeSnkN__j1IQWA
-Runtime-Version: 2.0.0.201412081054
-Save-Time: 1/7/15 11:54 AM
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/20/15 11:52 AM
 Testcase-Type: ecl
 Verifications: _fnMx8JZWEeSnkN__j1IQWA
 
@@ -24,11 +24,6 @@ Check that the moved elements are now under the new package in the semantic mode
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
 Content-Type: text/ecl
 Entry-Name: .content
-
-// Open package containment
-get-view "Model Explorer" | get-tree | select "TravelAgency/agency.uml/<Model> Travel Agency/Package Containment" 
-    | double-click
-get-view Properties | minimize
 
 // Create new package
 with [get-editor "Package Containment"] {
