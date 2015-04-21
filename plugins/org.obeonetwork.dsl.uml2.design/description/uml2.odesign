@@ -3946,7 +3946,6 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.AcceptEventAction" referenceName="ownedNode">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Trigger" referenceName="trigger" variableName="trigger">
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.eContainer(uml::Package)/]">
@@ -3958,6 +3957,7 @@
                           </subModelOperations>
                         </subModelOperations>
                       </subModelOperations>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                       <subModelOperations xsi:type="tool:If" conditionExpression="[container->filter(uml::ActivityPartition)->size()>0/]">
                         <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
                       </subModelOperations>
@@ -3976,7 +3976,6 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.AcceptEventAction" referenceName="ownedNode" variableName="action">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Trigger" referenceName="trigger" variableName="trigger">
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.eContainer(uml::Package)/]">
@@ -3988,6 +3987,7 @@
                           </subModelOperations>
                         </subModelOperations>
                       </subModelOperations>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                       <subModelOperations xsi:type="tool:If" conditionExpression="[container->filter(uml::ActivityPartition)->size()>0/]">
                         <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
                       </subModelOperations>
@@ -4008,7 +4008,6 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.AcceptEventAction" referenceName="ownedNode">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Trigger" referenceName="trigger" variableName="trigger">
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.eContainer(uml::Package)/]">
@@ -4021,6 +4020,7 @@
                           </subModelOperations>
                         </subModelOperations>
                       </subModelOperations>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                       <subModelOperations xsi:type="tool:If" conditionExpression="[container->filter(uml::ActivityPartition)->size()>0/]">
                         <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
                       </subModelOperations>
@@ -4041,7 +4041,6 @@
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                   <subModelOperations xsi:type="tool:ChangeContext" browseExpression="service:findParentActivity">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.AcceptEventAction" referenceName="ownedNode">
-                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Trigger" referenceName="trigger" variableName="trigger">
                         <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                         <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.eContainer(uml::Package)/]">
@@ -4054,6 +4053,7 @@
                           </subModelOperations>
                         </subModelOperations>
                       </subModelOperations>
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                       <subModelOperations xsi:type="tool:If" conditionExpression="[container->filter(uml::ActivityPartition)->size()>0/]">
                         <subModelOperations xsi:type="tool:SetValue" featureName="inPartition" valueExpression="var:container"/>
                       </subModelOperations>
@@ -4115,7 +4115,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" name="Ouput Pin" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']/@borderedNodeMappings[name='AD_InputPin']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/OutputPin.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" name="Output Pin" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']/@borderedNodeMappings[name='AD_InputPin']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/OutputPin.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
