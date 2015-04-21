@@ -12,17 +12,23 @@ package org.obeonetwork.dsl.uml2.design.internal.services;
 
 import java.util.List;
 
+import javax.swing.event.ChangeEvent;
+
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.uml2.uml.AcceptEventAction;
 import org.eclipse.uml2.uml.ActivityFinalNode;
 import org.eclipse.uml2.uml.ActivityParameterNode;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.AssociationClass;
+import org.eclipse.uml2.uml.CallEvent;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.DataStoreNode;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.EnumerationLiteral;
+import org.eclipse.uml2.uml.Event;
 import org.eclipse.uml2.uml.FlowFinalNode;
 import org.eclipse.uml2.uml.ForkNode;
 import org.eclipse.uml2.uml.InstanceSpecification;
@@ -34,10 +40,13 @@ import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Pseudostate;
+import org.eclipse.uml2.uml.SignalEvent;
 import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
+import org.eclipse.uml2.uml.TimeEvent;
+import org.eclipse.uml2.uml.Trigger;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -170,7 +179,26 @@ public class LabelServices {
 					name += classifierName;
 				}
 			}
+		} else if (element instanceof AcceptEventAction) {
+			final AcceptEventAction acceptEventAction = (AcceptEventAction)element;
+			final EList<Trigger> triggerList = acceptEventAction.getTriggers();
+			if (triggerList.size() == 1) {
+				final Trigger trigger = triggerList.get(0);
+				final Event event = trigger.getEvent();
+				if (event instanceof TimeEvent) {
+					name = "TimeEventAction"; //$NON-NLS-1$
+				} else if (event instanceof SignalEvent) {
+					name = "SignalEventAction"; //$NON-NLS-1$
+				} else if (event instanceof CallEvent) {
+					name = "CallEventAction"; //$NON-NLS-1$
+				} else if (event instanceof ChangeEvent) {
+					name = "AcceptEventAction"; //$NON-NLS-1$
+				}
+			} else {
+				// nothing to do name is set to type
+			}
 		}
+
 
 		final List<EObject> existingElements = Lists.newArrayList(Iterables.filter(element.eContainer()
 				.eContents(), predicate));
