@@ -3912,7 +3912,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:SelectionWizardDescription" name="Call Behavior Action" forceRefresh="true" candidatesExpression="service:getAllBehaviorsAndPackages" tree="true" rootExpression="service:getAllAvailableRootPackages" childrenExpression="feature:eContents" message="Select the target behavior of the call behavior action to create" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/CallBehaviorAction.gif" windowTitle="New Call Operation Action" windowImagePath="">
+            <tools xsi:type="tool:SelectionWizardDescription" name="Call Behavior Action" forceRefresh="true" candidatesExpression="service:getAllBehaviorsAndPackages" tree="true" rootExpression="service:getAllAvailableRootPackages" childrenExpression="feature:eContents" message="Select the target behavior of the call behavior action to create" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/CallBehaviorAction.gif" windowTitle="New Call Behavior Action" windowImagePath="">
               <element name="element"/>
               <containerView name="containerView"/>
               <container name="container"/>
