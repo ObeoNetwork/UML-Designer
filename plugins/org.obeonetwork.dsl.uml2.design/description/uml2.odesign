@@ -4115,7 +4115,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" name="Ouput Pin" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']/@borderedNodeMappings[name='AD_InputPin']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/OutputPin.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" name="Output Pin" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']/@borderedNodeMappings[name='AD_InputPin']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/OutputPin.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
