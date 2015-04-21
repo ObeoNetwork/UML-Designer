@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _ObfpAN0lEeS8j822Nc50oQ
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/8/15 9:06 AM
+Save-Time: 4/21/15 4:23 PM
 Testcase-Type: ecl
 Verifications: _JcmlwN0oEeS8j822Nc50oQ
 
@@ -60,7 +60,7 @@ get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-part -n
 with [get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram" 
     | get-edit-part -name NewModel | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
     | get-edit-part -name "" | get-target-connection 0] {
-    get-property "element.target.target.name" | equals DecisionNode1 | verify-true
+    get-property "element.target.target.name" | equals Decision1 | verify-true
     get-property "element.target.source.name" | equals OpaqueAction2 | verify-true
 }
 

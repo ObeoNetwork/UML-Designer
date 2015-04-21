@@ -24,14 +24,17 @@ import org.eclipse.uml2.uml.CallEvent;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.DataStoreNode;
+import org.eclipse.uml2.uml.DecisionNode;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.Event;
 import org.eclipse.uml2.uml.FlowFinalNode;
 import org.eclipse.uml2.uml.ForkNode;
+import org.eclipse.uml2.uml.InitialNode;
 import org.eclipse.uml2.uml.InstanceSpecification;
 import org.eclipse.uml2.uml.Interaction;
+import org.eclipse.uml2.uml.JoinNode;
 import org.eclipse.uml2.uml.MergeNode;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.ParameterableElement;
@@ -132,6 +135,10 @@ public class LabelServices {
 		};
 		if (element instanceof AssociationClass) {
 			name = "AssociationClass"; //$NON-NLS-1$
+		} else if (element instanceof InitialNode) {
+			name = "Initial"; //$NON-NLS-1$
+		} else if (element instanceof DecisionNode) {
+			name = "Decision"; //$NON-NLS-1$
 		} else if (element instanceof ActivityFinalNode) {
 			name = "ActivityFinal"; //$NON-NLS-1$
 		} else if (element instanceof StateMachine) {
@@ -140,6 +147,8 @@ public class LabelServices {
 			name = "FlowFinal"; //$NON-NLS-1$
 		} else if (element instanceof MergeNode) {
 			name = "Merge"; //$NON-NLS-1$
+		} else if (element instanceof JoinNode) {
+			name = "Join"; //$NON-NLS-1$
 		} else if (element instanceof DataStoreNode) {
 			name = "DataStore"; //$NON-NLS-1$
 		} else if (element instanceof ActivityParameterNode) {
