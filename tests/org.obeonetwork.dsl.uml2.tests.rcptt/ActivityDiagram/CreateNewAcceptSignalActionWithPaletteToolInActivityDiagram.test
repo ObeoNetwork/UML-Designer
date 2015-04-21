@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _8xd5kNk6EeS7gLNKVfblRg
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/14/15 10:13 AM
+Save-Time: 4/21/15 1:59 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -66,10 +66,10 @@ with [get-window "Selection Wizard"] {
 // check diagram and model
 with [get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram"] {
     get-edit-part -name NewModel | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
-        | get-edit-part -name AcceptEventAction1 | get-edit-part -className WorkspaceImageEditPart | get-figure "0/0" 
-        | get-property "getText()" | equals AcceptEventAction1 | verify-true
+        | get-edit-part -name SignalEventAction1 | get-edit-part -className WorkspaceImageEditPart | get-figure "0/0" 
+        | get-property "getText()" | equals SignalEventAction1 | verify-true
     get-property "element.target.member.Signal[0].name" | equals "" | verify-true
-    get-property "element.target.ownedNode.AcceptEventAction[0].name" | equals AcceptEventAction1 | verify-true
+    get-property "element.target.ownedNode.AcceptEventAction[0].name" | equals SignalEventAction1 | verify-true
     get-property "element.target.ownedNode.AcceptEventAction[0].trigger.Trigger[0].event.signal.name" | equals "" 
         | verify-true
 }
