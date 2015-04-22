@@ -40,6 +40,7 @@ import org.obeonetwork.dsl.uml2.design.internal.services.ElementServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.LabelServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.NodeInverseRefsServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.OperationServices;
+import org.obeonetwork.dsl.uml2.design.internal.services.StereotypeServices;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -52,7 +53,6 @@ import com.google.common.collect.Sets;
  * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class ClassDiagramServices extends AbstractDiagramServices {
-
 
 	/**
 	 * Compute the label of the given association.
@@ -222,6 +222,17 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	}
 
 	/**
+	 * Get base class associated to a stereotype application.
+	 *
+	 * @param stereotypeApplication
+	 *            Stereotype application
+	 * @return Base class
+	 */
+	public Element getBaseClass(EObject stereotypeApplication) {
+		return StereotypeServices.INSTANCE.getBaseClass(stereotypeApplication);
+	}
+
+	/**
 	 * Get broken associations.
 	 *
 	 * @param container
@@ -298,8 +309,6 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 		}
 		return ends;
 	}
-
-
 
 	/**
 	 * Get the type of the association source end.
@@ -447,8 +456,6 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	public boolean isTypeOfClass(EObject element) {
 		return "Class".equals(element.eClass().getName()); //$NON-NLS-1$
 	}
-
-
 
 	/**
 	 * Check is an association source is composite.

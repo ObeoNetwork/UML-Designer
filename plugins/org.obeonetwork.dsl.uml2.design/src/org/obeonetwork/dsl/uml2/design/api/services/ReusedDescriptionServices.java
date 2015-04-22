@@ -35,7 +35,6 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
-import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -87,6 +86,7 @@ import org.obeonetwork.dsl.uml2.design.internal.services.ElementServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.LabelServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.MoveDownElementSwitch;
 import org.obeonetwork.dsl.uml2.design.internal.services.MoveUpElementSwitch;
+import org.obeonetwork.dsl.uml2.design.internal.services.StereotypeServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.UIServices;
 
 import com.google.common.base.Predicate;
@@ -307,28 +307,6 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	}
 
 	/**
-	 * Check if an element is a container.
-	 *
-	 * @param container
-	 *            Semantic container
-	 * @param containerView
-	 *            Container view
-	 * @return True if element is valid for the given container view
-	 */
-	public boolean existValidElementsForContainerView(final EObject container, final EObject containerView) {
-		if (container instanceof Element && containerView instanceof DSemanticDecorator) {
-			final Session session = SessionManager.INSTANCE.getSession(container);
-			// Get all available mappings applicable for the selected element in the
-			// current container
-			final List<DiagramElementMapping> semanticElementMappings = getMappings(
-					(DSemanticDecorator)containerView, session);
-
-			return semanticElementMappings.size() > 0;
-		}
-		return false;
-	}
-
-	/**
 	 * Get an activity.
 	 *
 	 * @param parent
@@ -457,18 +435,6 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	}
 
 	/**
-	 * Get base class associated to a stereotype application.
-	 *
-	 * @param stereotypeApplication
-	 *            Stereotype application
-	 * @return Base class
-	 */
-	public Element getBaseClass(EObject stereotypeApplication) {
-		return (Element)stereotypeApplication.eGet(stereotypeApplication.eClass().getEStructuralFeature(
-				"base_Class")); //$NON-NLS-1$
-	}
-
-	/**
 	 * Retrieve the nearest package associated to an execution. Method used to find the class diagram package.
 	 *
 	 * @param execution
@@ -585,38 +551,6 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	}
 
 	/**
-	 * Get selection wizard roots available according to the kind of diagram.
-	 *
-	 * @param element
-	 *            Semantic element
-	 * @param containerView
-	 *            Diagram
-	 * @return List of roots usable by the selection wizard add existing elements tool
-	 */
-	public Collection<EObject> getRootsForDiagram(final EObject element,
-			final DSemanticDecorator containerView) {
-		// Get representation
-		DRepresentation representation = null;
-		if (containerView instanceof DRepresentation) {
-			representation = (DRepresentation)containerView;
-		} else if (containerView instanceof DDiagramElement) {
-			representation = ((DDiagramElement)containerView).getParentDiagram();
-		}
-		Collection<EObject> results = null;
-		if (representation instanceof DSemanticDiagram) {
-			final DiagramDescription description = ((DSemanticDiagram)representation).getDescription();
-
-			if ("Composite Structure Diagram".equals(description.getName())) { //$NON-NLS-1$
-				results = new ArrayList<EObject>();
-				results.add(element);
-			} else {
-				results = getAllRootsInSession(element);
-			}
-		}
-		return results;
-	}
-
-	/**
 	 * Get an statemachine.
 	 *
 	 * @param parent
@@ -715,7 +649,7 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	 *            Container view
 	 * @return List of valid elements for the current representation
 	 */
-	public List<EObject> getValidsForDiagram(final EObject element, final DSemanticDecorator containerView) {
+	private List<EObject> getValidsForDiagram(final EObject element, final DSemanticDecorator containerView) {
 		// Get representation
 		DRepresentation representation = null;
 		if (containerView instanceof DRepresentation) {
@@ -755,7 +689,7 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	 *            Element
 	 * @return List of valid elements for the current representation
 	 */
-	public List<EObject> getValidsForPackageDiagram(EObject cur) {
+	private List<EObject> getValidsForPackageDiagram(EObject cur) {
 		final Predicate<EObject> validForPackageDiagram = new Predicate<EObject>() {
 
 			public boolean apply(EObject input) {
@@ -1284,7 +1218,7 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 
 		for (final EObject stereotypeApplication : stereotypeApplications) {
 			// Get base class
-			final Element baseClass = getBaseClass(stereotypeApplication);
+			final Element baseClass = StereotypeServices.INSTANCE.getBaseClass(stereotypeApplication);
 			// Get all applied stereotypes
 			for (final Stereotype stereotype : baseClass.getAppliedStereotypes()) {
 				// Get profile
