@@ -32,6 +32,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
@@ -102,14 +103,31 @@ import com.google.common.collect.Sets;
 public class ReusedDescriptionServices extends AbstractDiagramServices {
 
 	/**
+	 * Add direct children of the given diagram root.
+	 *
+	 * @param root
+	 *            Diagram root
+	 * @param rootView
+	 *            Empty diagram DNode
+	 */
+	public void addDirectChildren(Element root, DNode rootView) {
+		final List<Element> semanticElements = root.getOwnedElements();
+		final DDiagram diagram = rootView.getParentDiagram();
+		addExistingElements(diagram, semanticElements, "[elementView.oclAsType(DNode).getParentDiagram()/]"); //$NON-NLS-1$
+	}
+
+	/**
 	 * Add existing elements.
 	 *
 	 * @param containerView
 	 *            Container
 	 * @param semanticElementList
 	 *            Semantic elements
+	 * @param containerViewExpression
+	 *            Container view expression
 	 */
-	private void addExistingElements(final EObject containerView, final List<EObject> semanticElementList) {
+	private void addExistingElements(final EObject containerView, final List<Element> semanticElementList,
+			final String containerViewExpression) {
 		if (!(containerView instanceof DSemanticDecorator) || semanticElementList == null
 				|| semanticElementList.isEmpty()) {
 			return;
@@ -120,7 +138,7 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 			markForAutosize(semanticElement);
 
 			// Show the added element on the diagram
-			showView(semanticElement, (DSemanticDecorator)containerView, session, "elementView"); //$NON-NLS-1$
+			showView(semanticElement, (DSemanticDecorator)containerView, session, containerViewExpression);
 		}
 	}
 
@@ -1061,13 +1079,13 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	 *
 	 * @param selectedContainer
 	 *            Selected element
+	 * @param selectedContainerView
 	 * @param diagram
 	 *            Current diagram
 	 */
 	@SuppressWarnings("unchecked")
 	public void openSelectExistingElementsDialog(EObject selectedContainer,
-			DSemanticDecorator selectedContainerView,
-			DDiagram diagram) {
+			DSemanticDecorator selectedContainerView, DDiagram diagram) {
 		final ModelElementsSelectionDialog dlg = new ModelElementsSelectionDialog("Add existing elements", //$NON-NLS-1$
 				"Select elements to add in current representation."); //$NON-NLS-1$
 		dlg.setGrayedPredicate(getNonSelectablePredicate(diagram));
@@ -1075,7 +1093,7 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 		@SuppressWarnings("rawtypes")
 		final List elementsToAdd = dlg.open(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
 				selectedContainer, diagram, true);
-		addExistingElements(selectedContainerView, elementsToAdd);
+		addExistingElements(selectedContainerView, elementsToAdd, "var:elementView"); //$NON-NLS-1$
 	}
 
 	/**
@@ -1104,7 +1122,7 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 		// Mark for auto size
 		markForAutosize(semanticElement);
 		// Create the view for the pasted element
-		createView(semanticElement, containerView, session, "containerView"); //$NON-NLS-1$
+		createView(semanticElement, containerView, session, "var:containerView"); //$NON-NLS-1$
 	}
 
 	/**

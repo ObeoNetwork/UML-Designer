@@ -128,7 +128,7 @@ public abstract class AbstractDiagramServices {
 	 *            Name of the container view variable
 	 */
 	protected void createView(final EObject semanticElement, final DSemanticDecorator containerView,
-			final Session session, final String containerViewVariable) {
+			final Session session, final String containerViewExpression) {
 		// Get all available mappings applicable for the copiedElement in the
 		// current container
 		final List<DiagramElementMapping> semanticElementMappings = getMappings(semanticElement,
@@ -139,7 +139,6 @@ public abstract class AbstractDiagramServices {
 		for (final DiagramElementMapping copiedElementMapping : semanticElementMappings) {
 			final DiagramElementMapping tmpCopiedElementMapping = copiedElementMapping;
 			createViewOp.setMapping(tmpCopiedElementMapping);
-			final String containerViewExpression = "var:" + containerViewVariable; //$NON-NLS-1$
 			createViewOp.setContainerViewExpression(containerViewExpression);
 
 			session.getTransactionalEditingDomain().getCommandStack()
@@ -263,7 +262,7 @@ public abstract class AbstractDiagramServices {
 		}
 
 		// Show the semantic element on the diagram
-		showView(semanticElement, containerView, session, "newContainerView"); //$NON-NLS-1$
+		showView(semanticElement, containerView, session, "var:newContainerView"); //$NON-NLS-1$
 	}
 
 	/**
@@ -818,7 +817,7 @@ public abstract class AbstractDiagramServices {
 	 *            Session
 	 */
 	protected void showView(final EObject semanticElement, final DSemanticDecorator containerView,
-			final Session session, String containerViewVariable) {
+			final Session session, String containerViewExpression) {
 		// Check if the dropped element already exists in the diagram but is hidden
 		final List<DDiagramElement> hiddenDiagramElements = getHiddenExistingDiagramElements(semanticElement,
 				containerView);
@@ -830,7 +829,7 @@ public abstract class AbstractDiagramServices {
 		} else {
 			// Else create a new element
 			// Create the view for the dropped element
-			createView(semanticElement, containerView, session, containerViewVariable);
+			createView(semanticElement, containerView, session, containerViewExpression);
 		}
 	}
 }

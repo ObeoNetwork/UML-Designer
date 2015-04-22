@@ -9,13 +9,13 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="439.36438"
-   height="89.966537"
+   width="480.85999"
+   height="105.61"
    id="svg2"
-   viewBox="0 0 439.36438 89.966537"
+   viewBox="0 0 480.85998 105.61"
    preserveAspectRatio="none"
    version="1.1"
-   inkscape:version="0.48.3.1 r9886"
+   inkscape:version="0.48.4 r9939"
    sodipodi:docname="empty.svg">
   <defs
      id="defs4">
@@ -39,20 +39,20 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.98994949"
-     inkscape:cx="72.889889"
-     inkscape:cy="43.656623"
+     inkscape:cx="55.277296"
+     inkscape:cy="54.917278"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     fit-margin-top="0"
-     fit-margin-left="0"
-     fit-margin-right="0"
-     fit-margin-bottom="0"
-     inkscape:window-width="1360"
-     inkscape:window-height="714"
-     inkscape:window-x="0"
-     inkscape:window-y="329"
-     inkscape:window-maximized="0" />
+     fit-margin-top="0.4"
+     fit-margin-left="0.1"
+     fit-margin-right="0.1"
+     fit-margin-bottom="0.4"
+     inkscape:window-width="1680"
+     inkscape:window-height="1026"
+     inkscape:window-x="1920"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -69,53 +69,84 @@
      inkscape:label="Calque 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-10.43791,-19.205974)">
+     transform="translate(-30.070806,-14.823174)">
     <text
        xml:space="preserve"
        style="font-size:11.90476894px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#4f4f4f;fill-opacity:1;stroke:none;font-family:Sans"
-       x="26.194057"
-       y="30.271114"
+       x="32.194057"
+       y="26.271114"
        id="text2987"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan2989"
-         x="26.194057"
-         y="30.271114"
+         x="32.194057"
+         y="26.271114"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#4f4f4f;fill-opacity:1;font-family:Roboto;-inkscape-font-specification:Roboto">Your diagram is empty. You can either :</tspan><tspan
          sodipodi:role="line"
-         x="26.194057"
-         y="45.152073"
+         x="32.194057"
+         y="41.152077"
          id="tspan2991"
          style="font-size:11.90476894px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#4f4f4f;fill-opacity:1;font-family:Roboto;-inkscape-font-specification:Roboto">- create new element using the palette on the right.</tspan><tspan
          sodipodi:role="line"
-         x="26.194057"
-         y="60.033039"
+         x="32.194057"
+         y="56.033035"
+         style="font-size:11.90476894px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#4f4f4f;fill-opacity:1;font-family:Roboto;-inkscape-font-specification:Roboto"
+         id="tspan2996">- double click <tspan
+   style="fill:#0000ff"
+   id="tspan3015">here</tspan> to import the direct children of the current container.</tspan><tspan
+         sodipodi:role="line"
+         x="32.194057"
+         y="70.914001"
          id="tspan3769"
          style="font-size:11.90476894px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#4f4f4f;fill-opacity:1;font-family:Roboto;-inkscape-font-specification:Roboto">- add existing elements using :</tspan><tspan
          sodipodi:role="line"
-         x="26.194057"
-         y="74.913994"
+         x="32.194057"
+         y="85.79496"
          style="font-size:11.90476894px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#4f4f4f;fill-opacity:1;font-family:Roboto;-inkscape-font-specification:Roboto"
          id="tspan2992">  * &quot;Add...&quot; in the palette.</tspan><tspan
          sodipodi:role="line"
-         x="26.194057"
-         y="89.79496"
+         x="32.194057"
+         y="100.67592"
          style="font-size:11.90476894px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#4f4f4f;fill-opacity:1;font-family:Roboto;-inkscape-font-specification:Roboto"
          id="tspan2994">  * or the &quot;Add Related Elements&quot; action available using right click.</tspan><tspan
          sodipodi:role="line"
-         x="26.194057"
-         y="104.67592"
+         x="32.194057"
+         y="115.55688"
          id="tspan2995"
-         style="font-size:11.90476894px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#4f4f4f;fill-opacity:1;font-family:Roboto;-inkscape-font-specification:Roboto">- Drag&amp;Drop elements from the Model Explorer View into the diagram.</tspan><tspan
+         style="font-size:11.90476894px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:justify;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#4f4f4f;fill-opacity:1;font-family:Roboto;-inkscape-font-specification:Roboto">- drag&amp;drop elements from the Model Explorer View into the diagram.</tspan><tspan
          sodipodi:role="line"
-         x="26.194057"
-         y="119.55688"
+         x="32.194057"
+         y="130.43784"
          id="tspan2997"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#4f4f4f;fill-opacity:1;font-family:Roboto;-inkscape-font-specification:Roboto" /><tspan
          sodipodi:role="line"
-         x="26.194057"
-         y="134.43785"
+         x="32.194057"
+         y="145.3188"
          id="tspan2999"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#4f4f4f;fill-opacity:1;font-family:Roboto;-inkscape-font-specification:Roboto" /></text>
+    <g
+       transform="matrix(2.8303572,0,0,2.8303572,-2038.7564,-2478.4706)"
+       id="g5768">
+      <path
+         style="fill:#8ba5ce"
+         d="m 891.74107,905.29972 -8,0 0,-4 0,-4 2.10841,0 2.10841,0 -0.62746,2.5 -0.62746,2.5 5.0381,0 5.0381,0 -0.62746,-2.5 -0.62746,-2.5 2.10841,0 2.10841,0 0,4 0,4 -8,0 z m -0.059,-5 -2.05901,0 0.66825,-1.08126 0.66826,-1.08126 -2.85924,-3.16874 -2.85924,-3.16874 3.16874,2.85924 3.16874,2.85924 1.08126,-0.66826 1.08126,-0.66825 0,2.05901 0,2.05902 -2.05902,0 z"
+         id="path5694"
+         inkscape:connector-curvature="0" />
+      <path
+         style="fill:#6581ae"
+         d="m 891.74107,905.29972 -8,0 0,-4 0,-4 2.10841,0 2.10841,0 -0.62746,2.5 -0.62746,2.5 5.0381,0 5.0381,0 -0.62746,-2.5 -0.62746,-2.5 2.10841,0 2.10841,0 0,4 0,4 -8,0 z m 0,-1 7,0 0,-3 0,-3 -0.86133,0 -0.86133,0 0.47791,2.5 0.4779,2.5 -6.23315,0 -6.23315,0 0.4779,-2.5 0.47791,-2.5 -0.86133,0 -0.86133,0 0,3 0,3 7,0 z m -0.059,-4 -2.05901,0 0.66825,-1.08126 0.66826,-1.08126 -2.85924,-3.16874 -2.85924,-3.16874 3.16874,2.85924 3.16874,2.85924 1.08126,-0.66826 1.08126,-0.66825 0,2.05901 0,2.05902 -2.05902,0 z"
+         id="path5692"
+         inkscape:connector-curvature="0" />
+      <path
+         style="fill:#5672a2"
+         d="m 891.74107,905.29972 -8,0 0.116,-2.25 0.116,-2.25 0.45733,1.75 0.45732,1.75 6.85335,0 6.85335,0 0.45732,-1.75 0.45733,-1.75 0.116,2.25 0.116,2.25 -8,0 z m 0,-2 -6,0 0,-0.75 0,-0.75 6,0 6,0 0,0.75 0,0.75 -6,0 z m -0.059,-3 -2.05901,0 0.66825,-1.08126 0.66826,-1.08126 -2.85924,-3.16874 -2.85924,-3.16874 3.16874,2.85924 3.16874,2.85924 1.08126,-0.66826 1.08126,-0.66825 0,2.05901 0,2.05902 -2.05902,0 z"
+         id="path5690"
+         inkscape:connector-curvature="0" />
+      <path
+         style="fill:#29679f"
+         d="m 892.0744,900.29972 -1.66666,0 0.68425,-0.68425 0.68425,-0.68425 -3.26759,-3.56575 -3.26758,-3.56575 3.56575,3.26758 3.56575,3.26759 0.68425,-0.68425 0.68425,-0.68425 0,1.66666 0,1.66667 -1.66667,0 z"
+         id="path5688"
+         inkscape:connector-curvature="0" />
+    </g>
   </g>
 </svg>

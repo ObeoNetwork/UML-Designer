@@ -13,7 +13,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
           </style>
         </nodeMappings>
-        <nodeMappings name="Empty Diagram" preconditionExpression="[containerView.oclAsType(diagram::DDiagram).ownedDiagramElements.oclAsType(diagram::DDiagramElement).target->excluding(containerView.oclAsType(diagram::DDiagramElement).target)->size() = 0/]" semanticCandidatesExpression="var:self" domainClass="uml.PackageableElement">
+        <nodeMappings name="Empty Diagram" preconditionExpression="[containerView.oclAsType(diagram::DDiagram).ownedDiagramElements.target->excluding(containerView.oclAsType(diagram::DSemanticDiagram).target)->size() = 0/]" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Add%20direct%20children']" domainClass="uml.Element">
           <style xsi:type="style:WorkspaceImageDescription" showIcon="false" labelExpression="" sizeComputationExpression="-1" labelPosition="node" resizeKind="NSEW" workspacePath="/org.obeonetwork.dsl.uml2.design/icons/empty.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -99,6 +99,15 @@
             <containerView name="containerView"/>
             <container name="container"/>
             <initialOperation/>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="Add direct children" mappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='Empty%20Diagram']">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.addDirectChildren(elementView)/]"/>
+              </firstModelOperations>
+            </initialOperation>
           </ownedTools>
         </subSections>
         <subSections name="navigations">
