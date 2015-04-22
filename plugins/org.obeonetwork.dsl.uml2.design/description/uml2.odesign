@@ -94,12 +94,6 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription">
-            <element name="element"/>
-            <containerView name="containerView"/>
-            <container name="container"/>
-            <initialOperation/>
-          </ownedTools>
           <ownedTools xsi:type="tool_1:DoubleClickDescription" name="Add direct children" mappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='Empty%20Diagram']">
             <element name="element"/>
             <elementView name="elementView"/>
