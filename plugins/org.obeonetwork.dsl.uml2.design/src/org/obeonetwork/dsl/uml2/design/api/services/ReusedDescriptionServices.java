@@ -934,6 +934,10 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	 * @return True if element is not a diagram
 	 */
 	public boolean isNotDiagram(EObject containerView) {
+		if (containerView instanceof DNode) {
+			final DNode dnode = (DNode)containerView;
+			return !"Empty Diagram".equals(dnode.getActualMapping().getName()); //$NON-NLS-1$
+		}
 		return !(containerView instanceof DDiagram);
 	}
 
