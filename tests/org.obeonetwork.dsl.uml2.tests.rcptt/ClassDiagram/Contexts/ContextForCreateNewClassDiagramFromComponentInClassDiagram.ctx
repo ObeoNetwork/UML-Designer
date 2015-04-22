@@ -1,0 +1,36 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: ContextForCreateNewClassDiagramFromComponentInClassDiagram
+Element-Type: context
+Element-Version: 2.0
+Id: _enz-sOjuEeSbrNfps6-q5Q
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/22/15 2:53 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+//Create a Compent in test project
+get-view "Model Explorer" | get-tree | select "test/model.uml/<Model> NewModel" 
+    | get-menu "New Child/Owned Type/Component" | click
+get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | mouse-move 7 311 
+    -height 524 -width 698
+// Drop component to Class Diagram
+with [get-view "Model Explorer" | get-tree] {
+    select "test/model.uml/<Model> NewModel/<Component>"
+    get-item "test/model.uml/<Model> NewModel/<Component>" | drag-start 53 6
+}
+get-view "Model Explorer" | get-tree | drag-set-data
+get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | drop 124 94 
+    -detail move
+get-view "Model Explorer" | get-tree | drag-end -detail move
+
+//Check Diagram
+
+get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name null | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | get-figure "1/0/0" 
+    | get-property "isVisible()" | equals true | verify-true
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--
