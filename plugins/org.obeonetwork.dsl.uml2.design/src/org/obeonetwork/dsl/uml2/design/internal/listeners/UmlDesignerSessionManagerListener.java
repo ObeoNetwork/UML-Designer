@@ -44,6 +44,8 @@ public class UmlDesignerSessionManagerListener implements SessionManagerListener
 
 	private final CallActionPinListener callActionPinListener = new CallActionPinListener();
 
+	private final CreateNewChildListener createNewChildListener = new CreateNewChildListener();
+
 	public void notify(Session updated, int notification) {
 		// Nothing
 		if (notification == SessionListener.OPENED) {
@@ -75,11 +77,15 @@ public class UmlDesignerSessionManagerListener implements SessionManagerListener
 				new AutosizeTrigger(newSession.getTransactionalEditingDomain()));
 		partService.addPartListener(openedEditorListener);
 		newSession.getTransactionalEditingDomain().addResourceSetListener(callActionPinListener);
+		newSession.getTransactionalEditingDomain().getCommandStack()
+				.addCommandStackListener(createNewChildListener);
 	}
 
 	public void notifyRemoveSession(Session removedSession) {
 		partService.removePartListener(openedEditorListener);
 		removedSession.getTransactionalEditingDomain().removeResourceSetListener(callActionPinListener);
+		removedSession.getTransactionalEditingDomain().getCommandStack()
+				.removeCommandStackListener(createNewChildListener);
 	}
 
 	public void viewpointDeselected(Viewpoint deselectedSirius) {
