@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.EventObject;
 import java.util.Iterator;
 
+import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.command.CommandStackListener;
@@ -11,9 +12,16 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.edit.command.CreateChildCommand;
 import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.ModelExplorerView;
+import org.eclipse.ui.IViewPart;
+import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.UMLPackage;
+import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
 import org.obeonetwork.dsl.uml2.design.internal.services.LabelServices;
 
 import com.google.common.base.Strings;
@@ -49,6 +57,19 @@ public class CreateNewChildListener implements CommandStackListener {
 						setName((NamedElement)object, newName);
 					}
 				}
+			}
+
+			// Add selection to created element
+			IViewPart view = null;
+			try {
+				view = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+						.showView("org.eclipse.sirius.ui.tools.views.model.explorer");
+				final ModelExplorerView modelExplorer = (ModelExplorerView)view;
+				modelExplorer.selectReveal(new StructuredSelection(affectedObjects.iterator().next()));
+
+			} catch (final PartInitException e) {
+				UMLDesignerPlugin.log(IStatus.ERROR,
+						NLS.bind(Messages.UmlModelExplorer_UI_ErrorMsg_NotFound, view), e);
 			}
 		}
 	}
