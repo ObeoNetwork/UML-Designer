@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: https://github.com/ObeoNetwork/UML-Designer/issues/561
 Id: _9wKRkc4lEeSp07cw9_mFYw
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/21/15 12:43 PM
+Save-Time: 4/24/15 4:38 PM
 Testcase-Type: ecl
 Verifications: _vYbQ0M5CEeS8M6MvytM1MA
 
@@ -321,5 +321,45 @@ with [get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-pa
         get-edit-part -name "ComponentPort : Component [1]" | get-property "getFigure().getText()" 
             | equals "ComponentPort : Component [1]" | verify-true
     }
+}
+
+// ------ Test : Add an existing Component ------------------------------------------------------------
+// Select  tool Add
+with [get-editor "RcpTT Test Class Diagram"] {
+    get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" | mouse-move 1433 177 -height 332 -width 1459
+   with [get-palette] {
+        with [get-palette-entry Add] {
+            mouse-move 47 13 button1 -height 23 -width 135
+            mouse-press 47 13 button1 -height 23 -width 135
+            mouse-release 47 13 button1 524288 -height 23 -width 135
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram"] {
+        mouse-move 974 311 button1 -height 332 -width 1459
+        mouse-press 974 311 button1 -height 332 -width 1459
+        mouse-release 974 311 button1 524288 -height 332 -width 1459
+    }
+}
+
+// Add Package with sub element
+with [get-window "Add existing elements"] {
+get-button "Uncheck All" | click
+with [get-tree] {
+        get-item "<Model> Test/<Package> New package 1/<Package> New package 2" | check
+        select "<Model> Test/<Package> New package 1/<Package> New package 2"
+        get-item "<Model> Test/<Package> New package 1/<Package> New package 2/<Component> Component From Other Package" | check
+        select "<Model> Test/<Package> New package 1/<Package> New package 2/<Component> Component From Other Package"
+    }
+    get-button OK | click
+}
+
+// Check graphical element was added
+with [get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
+    | get-edit-part -name "New package 1" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+    | get-edit-part -name "New package 2" | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+    get-property childrenCount | equals 1 | verify-true
+    get-property "children.Node[0].element.name" | equals "Component From Other Package" | verify-true
+    get-property "element.name" | equals "New package 2" | verify-true
 }
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

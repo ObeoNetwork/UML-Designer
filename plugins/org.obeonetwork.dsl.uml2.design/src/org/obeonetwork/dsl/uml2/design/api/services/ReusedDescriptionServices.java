@@ -13,6 +13,7 @@ package org.obeonetwork.dsl.uml2.design.api.services;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -30,8 +31,10 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.diagram.ContainerLayout;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -121,19 +124,19 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	 *
 	 * @param containerView
 	 *            Container
-	 * @param semanticElementList
+	 * @param semanticElements
 	 *            Semantic elements
 	 * @param containerViewExpression
 	 *            Container view expression
 	 */
-	private void addExistingElements(final EObject containerView, final List<Element> semanticElementList,
+	private void addExistingElements(final EObject containerView, final List<Element> semanticElements,
 			final String containerViewExpression) {
-		if (!(containerView instanceof DSemanticDecorator) || semanticElementList == null
-				|| semanticElementList.isEmpty()) {
+		if (!(containerView instanceof DSemanticDecorator) || semanticElements == null
+				|| semanticElements.isEmpty()) {
 			return;
 		}
-		final Session session = SessionManager.INSTANCE.getSession(semanticElementList.get(0));
-		for (final EObject semanticElement : semanticElementList) {
+		final Session session = SessionManager.INSTANCE.getSession(semanticElements.get(0));
+		for (final EObject semanticElement : orderParentFirst(semanticElements)) {
 			// Mark for auto-size
 			markForAutosize(semanticElement);
 
@@ -503,6 +506,69 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 		}
 
 		return result;
+	}
+
+	/**
+	 * Retrieve the container view for the given semantic element.
+	 *
+	 * @param semanticElement
+	 *            Semantic element
+	 * @param elementView
+	 *            Element view
+	 * @return Container view
+	 */
+	public DSemanticDecorator getContainerView(Element semanticElement, DDiagramElement elementView) {
+		final DSemanticDecorator diagram = (DSemanticDecorator)elementView.getParentDiagram();
+		return getContainerView(semanticElement, diagram);
+	}
+
+	/**
+	 * Retrieve the container view for the given semantic element.
+	 *
+	 * @param semanticElement
+	 *            Semantic element
+	 * @param elementView
+	 *            Element view
+	 * @return Container view
+	 */
+	public DSemanticDecorator getContainerView(Element semanticElement, DDiagramElementContainer elementView) {
+		final DSemanticDecorator diagram = (DSemanticDecorator)elementView.getParentDiagram();
+		return getContainerView(semanticElement, diagram);
+	}
+
+	/**
+	 * Retrieve the container view for the given semantic element.
+	 *
+	 * @param semanticElement
+	 *            Semantic element
+	 * @param elementView
+	 *            Element view
+	 * @return Container view
+	 */
+	private DSemanticDecorator getContainerView(Element semanticElement, final DSemanticDecorator diagram) {
+		final List<DDiagramElementContainer> containerViews = ((DDiagram)diagram).getContainers();
+		for (final DDiagramElementContainer containerView : containerViews) {
+			if (containerView.getTarget().equals(semanticElement.getOwner())
+					&& !ContainerLayout.LIST.equals(containerView.getActualMapping()
+							.getChildrenPresentation())) {
+				return containerView;
+			}
+		}
+		return diagram;
+	}
+
+	/**
+	 * Retrieve the container view for the given semantic element.
+	 *
+	 * @param semanticElement
+	 *            Semantic element
+	 * @param elementView
+	 *            Element view
+	 * @return Container view
+	 */
+	public DSemanticDecorator getContainerView(Element semanticElement, DSemanticDiagram elementView) {
+		final DSemanticDecorator diagram = elementView;
+		return getContainerView(semanticElement, diagram);
 	}
 
 	/**
@@ -898,6 +964,24 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	}
 
 	/**
+	 * Check if a selected element could be a valid container view.
+	 *
+	 * @param containerView
+	 *            Container view
+	 * @return True if element is a container which is not a list container otherwise false.
+	 */
+	public boolean isValidContainerMapping(EObject containerView) {
+		if (containerView instanceof DDiagramElementContainer) {
+			return !ContainerLayout.LIST.equals(((DDiagramElementContainer)containerView).getActualMapping()
+					.getChildrenPresentation());
+		}
+		if (containerView instanceof DDiagram) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
 	 * Change properties order in Class and Interface.
 	 *
 	 * @param currentOperation
@@ -1031,7 +1115,21 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 		@SuppressWarnings("rawtypes")
 		final List elementsToAdd = dlg.open(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
 				selectedContainer, diagram, true);
-		addExistingElements(selectedContainerView, elementsToAdd, "var:elementView"); //$NON-NLS-1$
+		if (elementsToAdd.size() > 0) {
+			addExistingElements(selectedContainerView, elementsToAdd, "[self.getContainerView(elementView)/]"); //$NON-NLS-1$
+		}
+	}
+
+	private List<Element> orderParentFirst(List<Element> semanticElements) {
+		final LinkedList<Element> orderedElements = Lists.newLinkedList();
+		for (final Element element : semanticElements) {
+			if (orderedElements.contains(element.getOwner())) {
+				orderedElements.add(orderedElements.indexOf(element.getOwner()), element);
+			} else {
+				orderedElements.addLast(element);
+			}
+		}
+		return Lists.reverse(orderedElements);
 	}
 
 	/**

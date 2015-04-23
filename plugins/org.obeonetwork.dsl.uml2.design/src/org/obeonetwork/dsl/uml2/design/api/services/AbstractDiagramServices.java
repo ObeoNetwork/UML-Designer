@@ -129,16 +129,16 @@ public abstract class AbstractDiagramServices {
 	 */
 	protected void createView(final EObject semanticElement, final DSemanticDecorator containerView,
 			final Session session, final String containerViewExpression) {
-		// Get all available mappings applicable for the copiedElement in the
+		// Get all available mappings applicable for the semantic element in the
 		// current container
 		final List<DiagramElementMapping> semanticElementMappings = getMappings(semanticElement,
 				containerView, session);
 
 		// Build a createView tool
 		final CreateView createViewOp = ToolFactory.eINSTANCE.createCreateView();
-		for (final DiagramElementMapping copiedElementMapping : semanticElementMappings) {
-			final DiagramElementMapping tmpCopiedElementMapping = copiedElementMapping;
-			createViewOp.setMapping(tmpCopiedElementMapping);
+		for (final DiagramElementMapping semanticElementMapping : semanticElementMappings) {
+			final DiagramElementMapping tmpSemanticElementMapping = semanticElementMapping;
+			createViewOp.setMapping(tmpSemanticElementMapping);
 			createViewOp.setContainerViewExpression(containerViewExpression);
 
 			session.getTransactionalEditingDomain().getCommandStack()
@@ -262,7 +262,7 @@ public abstract class AbstractDiagramServices {
 		}
 
 		// Show the semantic element on the diagram
-		showView(semanticElement, containerView, session, "var:newContainerView"); //$NON-NLS-1$
+		showView(semanticElement, containerView, session, "[self.getContainerView(newContainerView)/]"); //$NON-NLS-1$
 	}
 
 	/**

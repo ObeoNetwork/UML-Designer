@@ -30,7 +30,7 @@
       </defaultLayer>
       <toolSection documentation="reused tools" name="reused tools">
         <subSections name="existingElements">
-          <ownedTools xsi:type="tool:ToolDescription" name="AddExistingElements" label="Add" iconPath="/org.eclipse.search/icons/full/etool16/search.gif">
+          <ownedTools xsi:type="tool:ToolDescription" name="AddExistingElements" label="Add" precondition="service:containerView.isValidContainerMapping" iconPath="/org.eclipse.search/icons/full/etool16/search.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
