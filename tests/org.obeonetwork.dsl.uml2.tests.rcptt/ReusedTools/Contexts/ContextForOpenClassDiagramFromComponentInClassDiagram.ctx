@@ -1,0 +1,72 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: ContextForOpenClassDiagramFromComponentInClassDiagram
+Element-Type: context
+Element-Version: 2.0
+Id: _3K-BwOpqEeSF3IIPVxcnCQ
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 4/24/15 12:19 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+// Create a component diagram
+get-view "Model Explorer" | get-tree | select "test/model.uml/<Model> NewModel" 
+    | get-menu "New Representation/NewModel Component Diagram" | click
+get-window "New Representation" | get-button OK | click
+
+// Create a component
+with [get-editor "NewModel Component Diagram"] {  
+    with [get-palette | get-palette-entry Component -index 1] {
+        mouse-move 69 16 button1 -height 23 -width 130
+        mouse-press 69 16 button1 -height 23 -width 130
+        mouse-release 69 16 button1 524288 -height 23 -width 130
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Component Diagram"] {
+        mouse-move 62 118 button1 -height 524 -width 698
+        mouse-press 62 118 button1 -height 524 -width 698
+        mouse-release 62 118 button1 524288 -height 524 -width 698
+    }
+}
+// Create new cLass diagram from component
+with [get-editor "NewModel Component Diagram"] {  
+    with [get-diagram -index 1] {
+        with [get-edit-part -name "NewModel Component Diagram"] {
+            with [get-edit-part -name Component1 | get-edit-part 
+                -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+                mouse-move 55 59 button3 -height 98 -width 118
+                mouse-press 55 59 button3 -height 98 -width 118
+                mouse-release 55 59 button3 2097152 -height 98 -width 118
+            }
+        }
+        get-menu "New/Class diagram" | click
+    }
+}
+get-window "New Representation" | get-button OK | click
+
+// Close new class diagram
+get-editor "Component1 Class Diagram" | get-diagram -index 1 | get-edit-part -name "Component1 Class Diagram" 
+get-menu "File/Close" | click
+get-window Save | get-button No | click
+
+// Create a new Class diagram from model
+get-view "Model Explorer" | get-tree | select "test/model.uml/<Model> NewModel" 
+    | get-menu "New Representation/NewModel Class Diagram" | click
+get-window "New Representation" | get-button OK | click
+//Drop component in class diagram
+with [get-view "Model Explorer" | get-tree] {
+    select "test/model.uml/<Model> NewModel/<Component> Component1"
+    get-item "test/model.uml/<Model> NewModel/<Component> Component1" | drag-start 2 6
+}
+get-view "Model Explorer" | get-tree | drag-set-data
+get-editor "NewModel Class Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Class Diagram" 
+    | drop 187 140 -detail move
+get-view "Model Explorer" | get-tree | drag-end -detail move
+
+// Check component is present in class diagram
+get-editor "NewModel Class Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Class Diagram" 
+    | get-edit-part -name Component1 | get-edit-part -className DNodeListNameEditPart 
+    | get-property "getFigure().getText()" | equals Component1 | verify-true
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--
