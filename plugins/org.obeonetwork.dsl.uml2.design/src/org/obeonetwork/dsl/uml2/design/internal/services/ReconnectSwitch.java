@@ -178,15 +178,13 @@ public class ReconnectSwitch extends UMLSwitch<Element> {
 	 */
 	@Override
 	public Element caseDependency(Dependency dependency) {
-		if (RECONNECT_SOURCE == reconnectKind) {
-			if (newPointedElement instanceof Classifier) {
+		if (newPointedElement instanceof NamedElement) {
+			if (RECONNECT_SOURCE == reconnectKind) {
 				dependency.getClients().clear();
-				((Classifier)newPointedElement).getClientDependencies().add(dependency);
-			}
-		} else {
-			if (newPointedElement instanceof Classifier) {
+				dependency.getClients().add((NamedElement)newPointedElement);
+			} else {
 				dependency.getSuppliers().clear();
-				dependency.getSuppliers().add((Classifier)newPointedElement);
+				dependency.getSuppliers().add((NamedElement)newPointedElement);
 			}
 		}
 		return dependency;
@@ -234,7 +232,8 @@ public class ReconnectSwitch extends UMLSwitch<Element> {
 			if (newPointedElement instanceof ElementImport) {
 				final Property baseProperty = extension.getStereotype().getOwnedAttribute(
 						"base_" + extension.getMetaclass().getName(), extension.getMetaclass()); //$NON-NLS-1$
-				final Class newPointedMetaClass = (Class)((ElementImport)newPointedElement).getImportedElement();
+				final Class newPointedMetaClass = (Class)((ElementImport)newPointedElement)
+						.getImportedElement();
 
 				if (baseProperty != null && newPointedMetaClass != null) {
 					baseProperty.setType((Class)((ElementImport)newPointedElement).getImportedElement());
@@ -355,7 +354,8 @@ public class ReconnectSwitch extends UMLSwitch<Element> {
 			TemplateableElement newTmplElement) {
 		final TemplateSignature templateSignature = newTmplElement.createOwnedTemplateSignature();
 		tmplBinding.setSignature(templateSignature);
-		final List<TemplateParameter> oldParams = oldTmplElement.getOwnedTemplateSignature().getOwnedParameters();
+		final List<TemplateParameter> oldParams = oldTmplElement.getOwnedTemplateSignature()
+				.getOwnedParameters();
 		for (final TemplateParameter templateParameter : oldParams) {
 			final ClassifierTemplateParameter newTemplateClassifier = UMLFactory.eINSTANCE
 					.createClassifierTemplateParameter();
@@ -444,7 +444,8 @@ public class ReconnectSwitch extends UMLSwitch<Element> {
 	private void handleSameTmplParamCardinality(TemplateBinding tmplBinding) {
 		// Adapt the binding association with the newParams
 		final TemplateSignature newTmplSignature = tmplBinding.getSignature();
-		final List<TemplateParameterSubstitution> parameterSubstitutions = tmplBinding.getParameterSubstitutions();
+		final List<TemplateParameterSubstitution> parameterSubstitutions = tmplBinding
+				.getParameterSubstitutions();
 		int i = 0;
 		for (final TemplateParameterSubstitution templateParameterSubstitution : parameterSubstitutions) {
 			if (i < newTmplSignature.getOwnedParameters().size()) {
@@ -461,7 +462,9 @@ public class ReconnectSwitch extends UMLSwitch<Element> {
 
 	/**
 	 * Set new pointed element.
-	 * @param newPointedElement New pointed element
+	 *
+	 * @param newPointedElement
+	 *            New pointed element
 	 */
 	public void setNewPointedElement(Element newPointedElement) {
 		this.newPointedElement = newPointedElement;
@@ -469,7 +472,9 @@ public class ReconnectSwitch extends UMLSwitch<Element> {
 
 	/**
 	 * Set old pointed element.
-	 * @param oldPointedElement Old pointed element
+	 *
+	 * @param oldPointedElement
+	 *            Old pointed element
 	 */
 	public void setOldPointedElement(Element oldPointedElement) {
 		this.oldPointedElement = oldPointedElement;
@@ -477,7 +482,9 @@ public class ReconnectSwitch extends UMLSwitch<Element> {
 
 	/**
 	 * Set reconnect kind.
-	 * @param reconnectKind Reconnect kind
+	 *
+	 * @param reconnectKind
+	 *            Reconnect kind
 	 */
 	public void setReconnectKind(int reconnectKind) {
 		this.reconnectKind = reconnectKind;
