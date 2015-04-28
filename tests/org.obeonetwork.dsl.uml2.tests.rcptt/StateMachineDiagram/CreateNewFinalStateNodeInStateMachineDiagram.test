@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _ua7uIN32EeS32_At8WTqBw
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/14/15 9:35 AM
+Save-Time: 4/28/15 11:28 AM
 Testcase-Type: ecl
 Verifications: _xrw60N34EeS32_At8WTqBw
 
@@ -59,7 +59,7 @@ with [get-editor "NewModel State Machine Diagram" | get-diagram -index 1 | get-e
     -className DNodeContainerViewNodeContainerCompartment2EditPart | get-edit-part -name "" | get-edit-part 
     -className WorkspaceImageEditPart] {
     get-property "getModel().getDiagram().getElement().getNodes().DNodeSpec[0].getTarget().getName()" 
-        | equals FinalState1 | verify-true
+        | equals Final1 | verify-true
     get-property "getModel().getDiagram().getElement().getNodes().DNodeSpec[0].getTarget().getOwner().getName()" 
         | equals Region1 | verify-true
 }

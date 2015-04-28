@@ -29,6 +29,7 @@ import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.Event;
+import org.eclipse.uml2.uml.FinalState;
 import org.eclipse.uml2.uml.FlowFinalNode;
 import org.eclipse.uml2.uml.ForkNode;
 import org.eclipse.uml2.uml.InitialNode;
@@ -161,6 +162,8 @@ public class LabelServices {
 			name = "port"; //$NON-NLS-1$
 		} else if (element instanceof Property) {
 			name = "property"; //$NON-NLS-1$
+		} else if (element instanceof FinalState) {
+			name = "Final"; //$NON-NLS-1$
 		} else if (element instanceof Pseudostate) {
 			final String kind = ((Pseudostate)element).getKind().getLiteral();
 			name = Character.toUpperCase(kind.charAt(0)) + kind.substring(1);
