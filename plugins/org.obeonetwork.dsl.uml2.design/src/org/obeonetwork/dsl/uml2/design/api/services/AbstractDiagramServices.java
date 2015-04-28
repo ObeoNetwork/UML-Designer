@@ -705,6 +705,19 @@ public abstract class AbstractDiagramServices {
 	}
 
 	/**
+	 * Compare two Objects types.
+	 *
+	 * @param source
+	 *            EObject
+	 * @param target
+	 *            EObject
+	 * @return true if objects have the same type (eClass)
+	 */
+	public boolean isSameType(final EObject source, final EObject target) {
+		return source.eClass().equals(target.eClass());
+	}
+
+	/**
 	 * Check if a semantic element can be represented in a given container view.
 	 *
 	 * @param container
