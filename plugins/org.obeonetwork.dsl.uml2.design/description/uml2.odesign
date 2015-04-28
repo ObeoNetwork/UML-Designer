@@ -1026,7 +1026,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Tool to create a Generalization" name="Generalization" precondition="[preSource->including(preTarget)->filter(uml::Actor)->size() = 2 or preSource->including(preTarget)->filter(uml::UseCase)->size() = 2/]" edgeMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@edgeMappings[name='UCD_Generalization']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Tool to create a Generalization" name="Generalization" precondition="service:preSource.isSameType(preTarget)" edgeMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@edgeMappings[name='UCD_Generalization']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -1136,7 +1136,7 @@
               </initialOperation>
               <edgeView name="edgeView"/>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="UCD_ReconnectGeneralizationSource" reconnectionKind="RECONNECT_SOURCE">
+            <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="UCD_ReconnectGeneralizationSource" precondition="service:source.isSameType(target)" reconnectionKind="RECONNECT_SOURCE">
               <source name="source"/>
               <target name="target"/>
               <sourceView name="sourceView"/>
@@ -1149,7 +1149,7 @@
               </initialOperation>
               <edgeView name="edgeView"/>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="UCD_ReconnectGeneralizationTarget">
+            <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="UCD_ReconnectGeneralizationTarget" precondition="service:source.isSameType(target)">
               <source name="source"/>
               <target name="target"/>
               <sourceView name="sourceView"/>
