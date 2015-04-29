@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _xy1RANMUEeSYFrQZGshlCQ
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/14/15 5:03 PM
+Save-Time: 4/29/15 10:07 AM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -66,11 +66,6 @@ with [get-editor "NewModel Use Case Diagram" | get-diagram -index 1 | get-edit-p
     //get-property "element.ownedStyle.endLabelStyle" | equals null | verify-true
     get-property "element.ownedStyle.centered" | equals None | verify-true
 
-    get-property "getFigure().getEnd().x" | equals 90 | verify-true
-    get-property "getFigure().getEnd().y" | equals 126 | verify-true
-    get-property "getFigure().getStart().x" | equals 350 | verify-true
-    get-property "getFigure().getStart().y" | equals 126 | verify-true
-
     get-property "getFigure().isVisible()" | equals true | verify-true
 }
 
@@ -122,10 +117,8 @@ with [get-editor "NewModel Use Case Diagram" | get-diagram -index 1 | get-edit-p
     //get-property "element.ownedStyle.beginLabelStyle" | equals null | verify-true
     //get-property "element.ownedStyle.endLabelStyle" | equals null | verify-true
     get-property "element.ownedStyle.centered" | equals None | verify-true
-    get-property "getFigure().getEnd().x" | equals 350 | verify-true
-    get-property "getFigure().getEnd().y" | equals 123 | verify-true
-    get-property "getFigure().getStart().x" | equals 90 | verify-true
-    get-property "getFigure().getStart().y" | equals 123 | verify-true
+
+    get-property "getFigure().isVisible()" | equals true | verify-true
 }
 // Check model
 with [get-editor "NewModel Use Case Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Use Case Diagram" 
@@ -134,7 +127,7 @@ with [get-editor "NewModel Use Case Diagram" | get-diagram -index 1 | get-edit-p
     get-property "element.target.endType.Actor[1].name" | equals Actor1 | verify-true
 }
 
- // Try to create an association between UseCase1 and UseCase2
+ // Create an association between UseCase1 and UseCase2
  with [get-editor "NewModel Use Case Diagram"] {
     with [get-palette | get-palette-entry Association] {
             mouse-move 37 5 button1 -height 23 -width 146
@@ -158,13 +151,10 @@ with [get-editor "NewModel Use Case Diagram" | get-diagram -index 1 | get-edit-p
     }
 }
 // Check Diagram
-verify-error {get-editor "NewModel Use Case Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Use Case Diagram" 
-    | get-edit-part -name UseCase1 | get-target-connection 1 }
-// Check model
 get-editor "NewModel Use Case Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Use Case Diagram" 
-    | get-property "element.target.member.size" | equals 8 | verify-true
+    | get-edit-part -name UseCase1 | get-target-connection 1
 
-// Try to create an association between Actor2 and Actors1
+// Create an association between Actor2 and Actors1
  with [get-editor "NewModel Use Case Diagram"] {
     with [get-palette | get-palette-entry Association] {
         mouse-move 49 13 button1 -height 23 -width 146
@@ -189,10 +179,7 @@ get-editor "NewModel Use Case Diagram" | get-diagram -index 1 | get-edit-part -n
     }
 } 
 // Check Diagram
-verify-error {get-editor "NewModel Use Case Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Use Case Diagram" 
-    | get-edit-part -name Actor2 | get-target-connection 0}
-
-// Check model
 get-editor "NewModel Use Case Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Use Case Diagram" 
-    | get-property "element.target.member.size" | equals 6 | verify-true
+    | get-edit-part -name Actor2 | get-target-connection 0
+
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
