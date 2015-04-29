@@ -705,11 +705,11 @@
             <targetView name="targetView"/>
             <element name="element"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:target">
-                <subModelOperations xsi:type="tool:SetValue" featureName="clientDependency" valueExpression="var:element"/>
-                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
-                  <subModelOperations xsi:type="tool:Unset" featureName="clientDependency" elementExpression="var:element"/>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:Unset" featureName="client" elementExpression="var:source">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="var:target"/>
                 </subModelOperations>
+                <subModelOperations xsi:type="tool:MoveElement" newContainerExpression="var:target" featureName="packagedElement"/>
               </firstModelOperations>
             </initialOperation>
             <edgeView name="edgeView"/>
