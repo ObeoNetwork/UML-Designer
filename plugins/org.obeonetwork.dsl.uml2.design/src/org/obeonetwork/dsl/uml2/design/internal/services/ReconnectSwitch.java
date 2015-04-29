@@ -15,6 +15,8 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.uml2.uml.Association;
+import org.eclipse.uml2.uml.AssociationClass;
+import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.ClassifierTemplateParameter;
@@ -22,21 +24,25 @@ import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.ComponentRealization;
 import org.eclipse.uml2.uml.ConnectableElement;
 import org.eclipse.uml2.uml.Connector;
+import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.DeployedArtifact;
 import org.eclipse.uml2.uml.Deployment;
 import org.eclipse.uml2.uml.DeploymentTarget;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
+import org.eclipse.uml2.uml.Enumeration;
 import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.ExtensionEnd;
 import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.InterfaceRealization;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Node;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.ParameterableElement;
+import org.eclipse.uml2.uml.PrimitiveType;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.TemplateBinding;
@@ -178,15 +184,28 @@ public class ReconnectSwitch extends UMLSwitch<Element> {
 	 */
 	@Override
 	public Element caseDependency(Dependency dependency) {
+
+		final boolean isAClass = newPointedElement instanceof Class
+				&& !(newPointedElement instanceof Component || newPointedElement instanceof AssociationClass
+						|| newPointedElement instanceof Behavior || newPointedElement instanceof Component
+						|| newPointedElement instanceof Node || newPointedElement instanceof Stereotype);
+
+		final boolean authorizedRSourceElement = newPointedElement instanceof NamedElement
+				&& (newPointedElement instanceof Enumeration || newPointedElement instanceof Interface
+						|| newPointedElement instanceof Package || newPointedElement instanceof DataType
+						|| newPointedElement instanceof PrimitiveType || isAClass);
+
+		final boolean authorizedRTargetElement = authorizedRSourceElement;
+
 		if (RECONNECT_SOURCE == reconnectKind) {
-			if (newPointedElement instanceof Classifier) {
+			if (authorizedRSourceElement) {
 				dependency.getClients().clear();
-				((Classifier)newPointedElement).getClientDependencies().add(dependency);
+				dependency.getClients().add((NamedElement)newPointedElement);
 			}
 		} else {
-			if (newPointedElement instanceof Classifier) {
+			if (authorizedRTargetElement) {
 				dependency.getSuppliers().clear();
-				dependency.getSuppliers().add((Classifier)newPointedElement);
+				dependency.getSuppliers().add((NamedElement)newPointedElement);
 			}
 		}
 		return dependency;
