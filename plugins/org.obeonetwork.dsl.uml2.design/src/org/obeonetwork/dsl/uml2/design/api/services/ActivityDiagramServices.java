@@ -822,7 +822,9 @@ public class ActivityDiagramServices extends AbstractDiagramServices {
 		if (preSource instanceof InitialNode) {
 			return false;
 		}
-
+		if (preSource instanceof InputPin) {
+			return false;
+		}
 		// ForkNode, JoinNode, MergeNode, DecisionNode : if the incoming edge is an ObjectFlow, then all
 		// outgoing edges shall be ObjectFlows
 		if (preSource instanceof ActivityNode) {
