@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _t7w3EN7AEeS6weNBnDaFmQ
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/9/15 5:36 PM
+Save-Time: 4/28/15 7:09 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -61,7 +61,7 @@ with [get-editor "NewModel Package Hierarchy" | get-diagram -index 1 | get-edit-
     with [get-edit-part -name Package2 | get-target-connection 0] {
     	get-property "element.target.source.Package[0].name" | equals Package4 | verify-true
     	get-property "element.target.target.Package[0].name" | equals Package2 | verify-true  
-        get-property "element.semanticElements.Dependency[0].owner.name" | equals Package1 | verify-true
+        get-property "element.semanticElements.Dependency[0].owner.name" | equals Package4 | verify-true
         get-property "element.semanticElements.Dependency[0].source.Package[0].name" | equals Package4 | verify-true
         get-property "element.semanticElements.Dependency[0].target.Package[0].name" | equals Package2 | verify-true
     }
