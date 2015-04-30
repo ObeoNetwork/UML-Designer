@@ -4236,7 +4236,7 @@
               </initialOperation>
               <edgeView name="edgeView"/>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="AD_ReconnectObjectFlowTarget">
+            <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="AD_ReconnectObjectFlowTarget" precondition="[self.source.isValidActivityEdgeEnd(target)/]">
               <source name="source"/>
               <target name="target"/>
               <sourceView name="sourceView"/>
