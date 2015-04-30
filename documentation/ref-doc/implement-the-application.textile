@@ -291,6 +291,7 @@ Tooltip tools are also available to create any kind of elements.
 Creation tools are available in the statemachine diagram for the following types :
 * Region = Group logical states;
 * State = Describes the elements condition at a specific moment;
+* Submachine = Represents a sub state machine;
 * Initial =  The start of a flow;
 * Final =  Indicates the completion of a flow;
 * Fork = Split the flow into a number of concurrent flows;
