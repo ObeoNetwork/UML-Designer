@@ -858,7 +858,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="UCD_Extend" deletionDescription="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@toolSections.1/@subSections[name='delete']/@ownedTools[name='Extends']" semanticCandidatesExpression="service:diagram.getExtendInverseRefs" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" documentation="Mapping to create Extends" sourceMapping="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_UseCase']" targetMapping="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_UseCase']" targetFinderExpression="feature:extendedCase" sourceFinderExpression="feature:extension" targetExpression="var:self" domainClass="uml.Extend" useDomainElement="true" reconnections="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@toolSections.1/@subSections[name='reconnect']/@ownedTools[name='UCD_ReconnectExtendSource'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@toolSections.1/@subSections[name='reconnect']/@ownedTools[name='UCD_ReconnectExtendTarget']" pathExpression="">
+        <edgeMappings name="UCD_Extend" deletionDescription="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" semanticCandidatesExpression="service:diagram.getExtendInverseRefs" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" documentation="Mapping to create Extends" sourceMapping="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_UseCase']" targetMapping="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_UseCase']" targetFinderExpression="feature:extendedCase" sourceFinderExpression="feature:extension" targetExpression="var:self" domainClass="uml.Extend" useDomainElement="true" reconnections="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@toolSections.1/@subSections[name='reconnect']/@ownedTools[name='UCD_ReconnectExtendSource'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@toolSections.1/@subSections[name='reconnect']/@ownedTools[name='UCD_ReconnectExtendTarget']" pathExpression="">
           <style lineStyle="dash" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription labelSize="10" showIcon="false" labelExpression="&#xab; extend &#xbb;">
@@ -866,7 +866,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="UCD_Include" deletionDescription="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@toolSections.1/@subSections[name='delete']/@ownedTools[name='Include']" semanticCandidatesExpression="service:diagram.getIncludeInverseRefs" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" documentation="Mapping to create includes" sourceMapping="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_UseCase']" targetMapping="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_UseCase']" targetFinderExpression="feature:addition" sourceFinderExpression="feature:includingCase" targetExpression="var:self" domainClass="uml.Include" useDomainElement="true" reconnections="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@toolSections.1/@subSections[name='reconnect']/@ownedTools[name='UCD_ReconnectIncludeSource'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@toolSections.1/@subSections[name='reconnect']/@ownedTools[name='UCD_ReconnectIncludeTarget']">
+        <edgeMappings name="UCD_Include" deletionDescription="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" semanticCandidatesExpression="service:diagram.getIncludeInverseRefs" semanticElements="service:getSemanticElements" doubleClickDescription="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='properties']/@ownedTools[name='Open%20properties%20wizard']" documentation="Mapping to create includes" sourceMapping="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_UseCase']" targetMapping="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_UseCase']" targetFinderExpression="feature:addition" sourceFinderExpression="feature:includingCase" targetExpression="var:self" domainClass="uml.Include" useDomainElement="true" reconnections="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@toolSections.1/@subSections[name='reconnect']/@ownedTools[name='UCD_ReconnectIncludeSource'] //@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@toolSections.1/@subSections[name='reconnect']/@ownedTools[name='UCD_ReconnectIncludeTarget']">
           <style lineStyle="dash" sizeComputationExpression="1">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription labelSize="10" showIcon="false" labelExpression="&#xab; include &#xbb;">
@@ -1021,28 +1021,6 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <subSections name="delete">
-            <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Include">
-              <element name="element"/>
-              <elementView name="elementView"/>
-              <containerView name="containerView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
-                  <subModelOperations xsi:type="tool:RemoveElement"/>
-                </firstModelOperations>
-              </initialOperation>
-            </ownedTools>
-            <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Extends">
-              <element name="element"/>
-              <elementView name="elementView"/>
-              <containerView name="containerView"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
-                  <subModelOperations xsi:type="tool:RemoveElement"/>
-                </firstModelOperations>
-              </initialOperation>
-            </ownedTools>
-          </subSections>
           <subSections name="reconnect">
             <ownedTools xsi:type="tool_1:ReconnectEdgeDescription" name="UCD_ReconnectAssociationSource" reconnectionKind="RECONNECT_SOURCE">
               <source name="source"/>
