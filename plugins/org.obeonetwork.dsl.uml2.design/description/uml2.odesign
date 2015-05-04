@@ -5679,7 +5679,7 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
-        <toolSections name="RelationShips">
+        <toolSections name="Relationships">
           <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Extension" precondition="service:preSource.canCreateExtension(preTarget)" edgeMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Extension']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Extension.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
