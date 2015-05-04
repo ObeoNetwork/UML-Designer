@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _K9elcN9TEeSEJ-mMQXHd1A
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/10/15 10:56 AM
+Save-Time: 5/4/15 11:44 AM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -149,19 +149,19 @@ with [get-editor "NewModel Package Hierarchy" | get-diagram -index 1 | get-edit-
     get-property "element.target.member.Package[2].name" | equals Package8 | verify-true
 }
 
+
 with [get-editor "NewModel Package Hierarchy" | get-diagram -index 1 | get-edit-part 
     -name "NewModel Package Hierarchy"] {
-    // Check ContainedIn connection from Package2 to Package6
-    verify-error {get-property "element.diagramElements.DEdge[0].target.qualifiedName" 
-        | equals "NewModel::Package6::Package2" | verify-true}
-    // Check ContainedIn connection from Package3 to Package7 
-    verify-error {get-property "element.diagramElements.DEdge[1].target.qualifiedName" 
-        | equals "NewModel::Package7::Package3" | verify-true}
-    // Check Import connection from Package4 to Package8 
-    verify-error {get-property "element.diagramElements.DEdge[2].target.visibility" 
-        | equals public | verify-true}
-    // Check Import connection from Package5 to Package9 
-    verify-error {get-property "element.diagramElements.DEdge[3].target.visibility" 
-        | equals public | verify-true}
+    get-property "diagram.element.diagramElements.size" | equals 3 | verify-true
+    get-property "diagram.element.diagramElements.DNode[0].name" | equals Package5 | verify-true
+    get-property "diagram.element.diagramElements.DNode[0].outgoingEdges.size" | equals 0 | verify-true
+    get-property "diagram.element.diagramElements.DNode[0].incomingEdges.size" | equals 0 | verify-true
+    get-property "diagram.element.diagramElements.DNode[1].name" | equals Package6 | verify-true
+    get-property "diagram.element.diagramElements.DNode[1].outgoingEdges.size" | equals 0 | verify-true
+    get-property "diagram.element.diagramElements.DNode[1].incomingEdges.size" | equals 0 | verify-true
+    get-property "diagram.element.diagramElements.DNode[2].name" | equals Package8 | verify-true
+    get-property "diagram.element.diagramElements.DNode[2].outgoingEdges.size" | equals 0 | verify-true
+    get-property "diagram.element.diagramElements.DNode[2].incomingEdges.size" | equals 0 | verify-true
+    get-property "diagram.element.edges.size" | equals 0 | verify-true
 }
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

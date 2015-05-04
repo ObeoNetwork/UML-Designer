@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Relationship;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.internal.operations.ElementOperations;
 import org.obeonetwork.dsl.uml2.design.internal.services.ElementServices;
@@ -137,6 +138,9 @@ public class UmlUtils {
 					&& (ancestorEObject == null || !EcoreUtil.isAncestor(ancestorEObject,
 							inverseReference.getEObject()))) {
 				EcoreUtil.remove(inverseReference, eObject);
+				if (inverseReference.getEObject() instanceof Relationship) {
+					destroy(inverseReference.getEObject());
+				}
 			}
 		}
 
