@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -84,6 +85,7 @@ import org.eclipse.uml2.uml.UseCase;
 import org.eclipse.uml2.uml.resource.UMLResource;
 import org.eclipse.uml2.uml.util.UMLSwitch;
 import org.obeonetwork.dsl.uml2.design.api.wizards.ModelElementsSelectionDialog;
+import org.obeonetwork.dsl.uml2.design.internal.listeners.UmlDesignerSessionManagerListener;
 import org.obeonetwork.dsl.uml2.design.internal.services.DirectEditLabelSwitch;
 import org.obeonetwork.dsl.uml2.design.internal.services.ElementServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.LabelServices;
@@ -104,6 +106,8 @@ import com.google.common.collect.Sets;
  * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class ReusedDescriptionServices extends AbstractDiagramServices {
+	final Map<EObject, Boolean> isOrHasDescendantCache = UmlDesignerSessionManagerListener
+			.getDescendantCache();
 
 	/**
 	 * Add direct children of the given diagram root.
@@ -584,8 +588,11 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	private Predicate getDisplayablePredicate(final EObject selectedContainer, final DDiagram diagram) {
 		return new Predicate<Object>() {
 			public boolean apply(Object input) {
-				return isOrHasDescendant((EObject)input,
-						Predicates.in(getValidsForDiagram(selectedContainer, (DSemanticDecorator)diagram)));
+				if (input instanceof Element) {
+					return isOrHasDescendant((Element)input, Predicates.in(getValidsForDiagram(
+							selectedContainer, (DSemanticDecorator)diagram)));
+				}
+				return false;
 			}
 		};
 	}
@@ -951,16 +958,27 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	 * @return true if the given element or at least one of its children checks the given predicate, false
 	 *         otherwise
 	 */
-	private boolean isOrHasDescendant(EObject element, final Predicate<EObject> predicate) {
-		final boolean matches = predicate.apply(element);
-		if (matches) {
+	@SuppressWarnings("boxing")
+	private boolean isOrHasDescendant(Element element, final Predicate<EObject> predicate) {
+		if (isOrHasDescendantCache.containsKey(element)) {
+			return isOrHasDescendantCache.get(element);
+		}
+
+		if (predicate.apply(element)) {
+			isOrHasDescendantCache.put(element, true);
 			return true;
 		}
-		return Iterators.any(element.eAllContents(), new Predicate<Object>() {
-			public boolean apply(Object input) {
-				return isOrHasDescendant((EObject)input, predicate);
+
+		final List<Element> elements = element.getOwnedElements();
+		for (final Element ownedElement : elements) {
+			if (predicate.apply(ownedElement)) {
+				isOrHasDescendantCache.put(element, true);
+				return true;
 			}
-		});
+			isOrHasDescendantCache.put(element, false);
+		}
+
+		return false;
 	}
 
 	/**
@@ -1310,7 +1328,6 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 				Element.class);
 		while (it.hasNext()) {
 			final Element cur = it.next();
-			System.out.println(cur);
 			stereotypeApplications.addAll(cur.getStereotypeApplications());
 		}
 

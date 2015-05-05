@@ -11,8 +11,10 @@
 package org.obeonetwork.dsl.uml2.design.internal.listeners;
 
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -28,6 +30,7 @@ import org.eclipse.uml2.uml.ProfileApplication;
 import org.obeonetwork.dsl.uml2.design.internal.triggers.AutosizeTrigger;
 
 import com.google.common.collect.Iterators;
+import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
 
 /**
@@ -37,6 +40,15 @@ import com.google.common.collect.Sets;
  */
 public class UmlDesignerSessionManagerListener implements SessionManagerListener {
 
+	/**
+	 * Cache to keep if an element has a descendant.
+	 *
+	 * @return Map
+	 */
+	public static Map<EObject, Boolean> getDescendantCache() {
+		return descendantCache;
+	}
+
 	private final IPartService partService = PlatformUI.getWorkbench().getWorkbenchWindows()[0]
 			.getPartService();
 
@@ -45,6 +57,10 @@ public class UmlDesignerSessionManagerListener implements SessionManagerListener
 	private final CallActionPinListener callActionPinListener = new CallActionPinListener();
 
 	private final CreateNewChildListener createNewChildListener = new CreateNewChildListener();
+
+	private final DescendantCacheListener descendantCacheListener = new DescendantCacheListener();
+
+	private final static Map<EObject, Boolean> descendantCache = Maps.newHashMap();
 
 	public void notify(Session updated, int notification) {
 		// Nothing
@@ -78,14 +94,16 @@ public class UmlDesignerSessionManagerListener implements SessionManagerListener
 		partService.addPartListener(openedEditorListener);
 		newSession.getTransactionalEditingDomain().addResourceSetListener(callActionPinListener);
 		newSession.getTransactionalEditingDomain().getCommandStack()
-				.addCommandStackListener(createNewChildListener);
+		.addCommandStackListener(createNewChildListener);
+		newSession.getTransactionalEditingDomain().addResourceSetListener(descendantCacheListener);
 	}
 
 	public void notifyRemoveSession(Session removedSession) {
 		partService.removePartListener(openedEditorListener);
 		removedSession.getTransactionalEditingDomain().removeResourceSetListener(callActionPinListener);
 		removedSession.getTransactionalEditingDomain().getCommandStack()
-				.removeCommandStackListener(createNewChildListener);
+		.removeCommandStackListener(createNewChildListener);
+		removedSession.getTransactionalEditingDomain().removeResourceSetListener(descendantCacheListener);
 	}
 
 	public void viewpointDeselected(Viewpoint deselectedSirius) {
