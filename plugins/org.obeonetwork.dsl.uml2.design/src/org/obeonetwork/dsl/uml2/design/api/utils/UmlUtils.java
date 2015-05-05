@@ -23,7 +23,9 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.uml2.common.util.UML2Util;
+import org.eclipse.uml2.uml.AssociationClass;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Relationship;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.internal.operations.ElementOperations;
@@ -140,6 +142,9 @@ public class UmlUtils {
 				EcoreUtil.remove(inverseReference, eObject);
 				if (inverseReference.getEObject() instanceof Relationship) {
 					destroy(inverseReference.getEObject());
+				} else if (inverseReference.getEObject() instanceof Property
+						&& inverseReference.getEObject().eContainer() instanceof AssociationClass) {
+					destroy(inverseReference.getEObject().eContainer());
 				}
 			}
 		}
