@@ -11,18 +11,14 @@
 package org.obeonetwork.dsl.uml2.design.internal.services;
 
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramQuery;
 import org.obeonetwork.dsl.uml2.design.internal.triggers.AutosizeTrigger;
 
-import com.google.common.base.Function;
-import com.google.common.collect.Iterators;
 import com.google.common.collect.Sets;
 
 /**
@@ -63,26 +59,16 @@ public class UIServices {
 
 	/**
 	 * Get displayed node in a diagram
-	 * @param diagram Diagram
+	 *
+	 * @param diagram
+	 *            Diagram
 	 * @return List of displayed semantic objects.
 	 */
 	public Collection<EObject> getDisplayedNodes(DDiagram diagram) {
 		final Set<EObject> result = Sets.newLinkedHashSet();
-		if (diagram instanceof DSemanticDecorator) {
-			SessionManager.INSTANCE.getSession(((DSemanticDecorator)diagram).getTarget());
-
-			final Iterator<EObject> it = Iterators.transform(
-					Iterators.filter(diagram.eAllContents(), AbstractDNode.class),
-					new Function<AbstractDNode, EObject>() {
-
-						public EObject apply(AbstractDNode input) {
-							return input.getTarget();
-						}
-					});
-			while (it.hasNext()) {
-				final EObject displayedAsANode = it.next();
-				result.add(displayedAsANode);
-			}
+		final DDiagramQuery query = new DDiagramQuery(diagram);
+		for (final DDiagramElement diagramElement : query.getAllDiagramElements()) {
+			result.add(diagramElement.getTarget());
 		}
 		return result;
 	}
