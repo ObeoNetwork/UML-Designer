@@ -101,6 +101,20 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 		return ElementServices.INSTANCE.findTypeByName(roots, typeName);
 	}
 
+	/**
+	 * With the given {@link EObject} iterate over root elements to find a {@link Type} element with the given
+	 * name.
+	 *
+	 * @param object
+	 *            the elements to inspect
+	 * @param typeName
+	 *            the name to match
+	 * @return the found {@link Type} or <code>null</code>
+	 */
+	public Type findTypeByName(EObject object, String typeName) {
+		return ElementServices.INSTANCE.findTypeByName(object, typeName);
+	}
+
 	private void fixAssociation(Association a, Type b) {
 		final Property target = AssociationServices.INSTANCE.getTarget(a);
 		final Property source = AssociationServices.INSTANCE.getSource(a);
