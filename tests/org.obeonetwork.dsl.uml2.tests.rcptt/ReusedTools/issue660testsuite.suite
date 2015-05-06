@@ -1,0 +1,21 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Element-Name: issue660testsuite
+Element-Type: testsuite
+Element-Version: 2.0
+Id: _0JkPgPMsEeSJppkJ7ssP0Q
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 5/5/15 6:08 PM
+
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
+Content-Type: text/testcase
+Entry-Name: testcase-items
+
+_K9elcN9TEeSEJ-mMQXHd1A	// kind: 'test' name: 'DeletePackageInPackageHierarchyDiagram' path: '../PackageHierarchyDiagram/DeletePackageInPackageHierarchyDiagram.test'
+_J0lVoN9REeSEJ-mMQXHd1A	// kind: 'test' name: 'DeleteDependencyInPackageHierarchyDiagram' path: '../PackageHierarchyDiagram/DeleteDependencyInPackageHierarchyDiagram.test'
+_Gyxm8d9QEeSEJ-mMQXHd1A	// kind: 'test' name: 'DeleteImportInPackageHierarchyDiagram' path: '../PackageHierarchyDiagram/DeleteImportInPackageHierarchyDiagram.test'
+_H5BLYN9SEeSEJ-mMQXHd1A	// kind: 'test' name: 'DeleteMergeInPackageHierarchyDiagram' path: '../PackageHierarchyDiagram/DeleteMergeInPackageHierarchyDiagram.test'
+_aIHDUPMtEeSJppkJ7ssP0Q	// kind: 'test' name: 'DeleteAssociationClassInClassDiagram' path: '../ClassDiagram/DeleteAssociationClassInClassDiagram.test'
+_DZ9vEPM7EeSJppkJ7ssP0Q	// kind: 'test' name: 'DeleteInterfaceRealizationInClassDiagram' path: '../ClassDiagram/DeleteInterfaceRealizationInClassDiagram.test'
+
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--

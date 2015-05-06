@@ -1,0 +1,147 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_X-rQgH-QEeS4X6G9cD21hw,_p-v3gMyvEeSmqoI7c5i_uw,_--vM0PMtEeSJppkJ7ssP0Q,_H8jl8PM6EeSJppkJ7ssP0Q
+Element-Name: DeleteAssociationClassInClassDiagram
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _aIHDUPMtEeSJppkJ7ssP0Q
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 5/5/15 5:25 PM
+Testcase-Type: ecl
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Delete association class in class diagram
+tests
+- Delete associaton Class1 from click on (associationClass1 container)
+- Delete association class by selecting Link between Class1 and Class2
+- Delete association class3 by selecting dashed link
+- Delete a Class which have an Association Class
+
+Results
+1-3 Association class is removed from diagram and model
+4- Select class and linked association class are removed.
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Delete associaton Class1 from click on (associationClass1 container)
+with [get-editor "test Class Diagram"] {
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name AssociationClass1 | get-edit-part 
+            -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 47 54 button1 -height 71 -width 116
+            mouse-press 47 54 button1 -height 71 -width 116
+            mouse-release 47 54 button1 524288 -height 71 -width 116
+        }
+    }
+    get-button "Delete from Model" | click
+}
+// Check diagram
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+    verify-error{get-edit-part -name AssociationClass1}
+    get-edit-part -name Class1 | verify-error{get-target-connection 0}
+}
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+    get-property "element.target.member.size" | equals 9 | verify-true
+    get-property "element.target.member.Class[0].name" | equals Class1 | verify-true
+    get-property "element.target.member.Class[1].name" | equals Class2 | verify-true
+    get-property "element.target.member.Class[2].name" | equals Class3 | verify-true
+    get-property "element.target.member.Class[3].name" | equals Class4 | verify-true
+    get-property "element.target.member.Class[4].name" | equals Class5 | verify-true
+    get-property "element.target.member.Interface[5].name" | equals Interface1 | verify-true
+    get-property "element.target.member.AssociationClass[6].name" | equals AssociationClass2 | verify-true
+    get-property "element.target.member.AssociationClass[7].name" | equals AssociationClass3 | verify-true
+    get-property "element.target.member.AssociationClass[8].name" | equals AssociationClass4 | verify-true
+}
+
+
+// Delete association class by selecting Link between Class1 and Class2
+with [get-editor "test Class Diagram"] {
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        mouse-move 503 186 -height 550 -width 970
+        with [get-edit-part -name Class2 | get-target-connection 0] {
+            mouse-move 84 28 button1 -height 64 -width 209
+            mouse-press 84 28 button1 -height 64 -width 209
+            mouse-release 86 29 button1 524288 -height 66 -width 213
+        }
+    }
+    get-button "Delete from Model" | click
+    get-diagram -index 1 | get-edit-part -name "test Class Diagram" | mouse-move 3 72 -height 550 -width 970
+}
+// Check diagram
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+    get-edit-part -name Class2 |verify-error{ get-target-connection 0}
+    verify-error{get-edit-part -name AssociationClass2}
+}
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+    get-property "element.target.member.size" | equals 8 | verify-true
+    get-property "element.target.member.Class[0].name" | equals Class1 | verify-true
+    get-property "element.target.member.Class[1].name" | equals Class2 | verify-true
+    get-property "element.target.member.Class[2].name" | equals Class3 | verify-true
+    get-property "element.target.member.Class[3].name" | equals Class4 | verify-true
+    get-property "element.target.member.Class[4].name" | equals Class5 | verify-true
+    get-property "element.target.member.Interface[5].name" | equals Interface1 | verify-true
+    get-property "element.target.member.AssociationClass[6].name" | equals AssociationClass3 | verify-true
+    get-property "element.target.member.AssociationClass[7].name" | equals AssociationClass4 | verify-true
+}
+
+// Delete association class3 by selecting dashed link between AssociationClass3 and Link between Class1 and Class2
+with [get-editor "test Class Diagram"] {
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name Class4 | get-target-connection 0 | get-target-connection 0] {
+            mouse-move 339 41 button1 -height 115 -width 496
+            mouse-press 339 41 button1 -height 115 -width 496
+            mouse-release 341 43 button1 524288 -height 119 -width 500
+        }
+    }
+    get-button "Delete from Model" | click
+}
+// Check diagram
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+    get-edit-part -name Class4 |verify-error{ get-target-connection 0}
+    verify-error{get-edit-part -name AssociationClass3}
+}
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+    get-property "element.target.member.size" | equals 7 | verify-true
+    get-property "element.target.member.Class[0].name" | equals Class1 | verify-true
+    get-property "element.target.member.Class[1].name" | equals Class2 | verify-true
+    get-property "element.target.member.Class[2].name" | equals Class3 | verify-true
+    get-property "element.target.member.Class[3].name" | equals Class4 | verify-true
+    get-property "element.target.member.Class[4].name" | equals Class5 | verify-true
+    get-property "element.target.member.Interface[5].name" | equals Interface1 | verify-true
+    get-property "element.target.member.AssociationClass[6].name" | equals AssociationClass4 | verify-true
+}
+
+// Delete a Class which have an Association Class
+with [get-editor "test Class Diagram"] {
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name Class4 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 89 26 button1 -height 71 -width 116
+            mouse-press 89 26 button1 -height 71 -width 116
+            mouse-release 89 26 button1 524288 -height 71 -width 116
+        }
+    }
+    get-button "Delete from Model" | click
+}
+// Check diagram
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram"]{
+    get-edit-part -name Class3 |verify-error{ get-target-connection 0}
+    verify-error{get-edit-part -name AssociationClass4}
+    verify-error{get-edit-part -name Class4}
+}
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+    get-property "element.target.member.size" | equals 5 | verify-true
+    get-property "element.target.member.Class[0].name" | equals Class1 | verify-true
+    get-property "element.target.member.Class[1].name" | equals Class2 | verify-true
+    get-property "element.target.member.Class[2].name" | equals Class3 | verify-true
+    get-property "element.target.member.Class[3].name" | equals Class5 | verify-true
+    get-property "element.target.member.Interface[4].name" | equals Interface1 | verify-true
+}
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

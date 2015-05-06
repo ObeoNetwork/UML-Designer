@@ -1,0 +1,85 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: ContextForInterfaceRealizationDeletionInClassDiagram
+Element-Type: context
+Element-Version: 2.0
+Id: _hGqPMPNAEeSJppkJ7ssP0Q
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 5/5/15 6:05 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+// Create Interface realizations
+with [get-editor "test Class Diagram"] {
+    with [get-palette | get-palette-entry "Interface Realization"] {
+        mouse-move 44 19 button1 -height 37 -width 130
+        mouse-press 44 19 button1 -height 37 -width 130
+        mouse-release 44 19 button1 524288 -height 37 -width 130
+    }
+    // InterfaceRealization1
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name Class1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 37 19 button1 CTRL -height 71 -width 116
+            mouse-press 37 19 button1 CTRL -height 71 -width 116
+            mouse-release 37 19 button1 786432 -height 71 -width 116
+        }
+        with [get-edit-part -name Interface1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 49 7 button1 CTRL -height 71 -width 116
+            mouse-press 49 7 button1 CTRL -height 71 -width 116
+            mouse-release 49 7 button1 786432 -height 71 -width 116
+        }
+    }
+    // InterfaceRealization2
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name Class5 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 48 3 button1 CTRL -height 71 -width 116
+            mouse-press 48 3 button1 CTRL -height 71 -width 116
+            mouse-release 48 3 button1 -mask 786432 -height 71 -width 116
+        }
+        with [get-edit-part -name Interface1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 53 45 button1 CTRL -height 71 -width 116
+            mouse-press 53 45 button1 CTRL -height 71 -width 116
+            mouse-release 55 71 button1 786432 -height 100 -width 120
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name Class4 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 65 31 button1 -height 71 -width 116
+            mouse-press 65 31 button1 -height 71 -width 116
+            mouse-release 65 67 button1 786432 -height 71 -width 116
+        }
+        with [get-edit-part -name Interface1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 79 18 button1  -height 71 -width 116
+            mouse-press 79 18 button1  -height 71 -width 116
+            mouse-release 79 18 button1 786432 -height 71 -width 116
+        }
+        key-type ESC
+    }
+    
+}
+// Check context
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+    get-property "element.edges.size" | equals 3 | verify-true
+    get-property "element.edges.DEdge[0].semanticElements.InterfaceRealization[0].source.Class[0].name" | equals Class1 
+        | verify-true
+    get-property "element.edges.DEdge[0].semanticElements.InterfaceRealization[0].target.Interface[0].name" 
+        | equals Interface1 | verify-true
+    get-property "element.edges.DEdge[1].semanticElements.InterfaceRealization[0].source.Class[0].name" | equals Class5 
+        | verify-true
+    get-property "element.edges.DEdge[1].semanticElements.InterfaceRealization[0].target.Interface[0].name" 
+        | equals Interface1 | verify-true
+    get-property "element.edges.DEdge[2].semanticElements.InterfaceRealization[0].source.Class[0].name" | equals Class4 
+        | verify-true
+    get-property "element.edges.DEdge[2].semanticElements.InterfaceRealization[0].target.Interface[0].name" 
+        | equals Interface1 | verify-true
+    get-property "element.target.ownedMember.Class[0].interfaceRealization.InterfaceRealization[0].target.Interface[0].name" 
+        | equals Interface1 | verify-true
+    get-property "element.target.ownedMember.Class[3].interfaceRealization.InterfaceRealization[0].target.Interface[0].name" 
+        | equals Interface1 | verify-true
+    get-property "element.target.ownedMember.Class[4].interfaceRealization.InterfaceRealization[0].target.Interface[0].name" 
+        | equals Interface1 | verify-true
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--
