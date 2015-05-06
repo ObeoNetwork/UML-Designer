@@ -1,0 +1,306 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_X-rQgH-QEeS4X6G9cD21hw,_p-v3gMyvEeSmqoI7c5i_uw,_vOHMMM1bEeSHkpcdtO-QuQ,_ogZrUM2NEeSHkpcdtO-QuQ,_KkniYPQAEeSjv4S5w5DgJg
+Element-Name: Issue514Test
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _YYgKAfP1EeSjv4S5w5DgJg
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 5/6/15 5:11 PM
+Testcase-Type: ecl
+Verifications: _Gq3XsPQCEeSjv4S5w5DgJg
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+In a class diagram with class, association clas and interface, create connections from association classand to association class
+
+Test:
+- Create an Association from Class1 to AssociationClass
+- Create an association from AssociationClass to Class1
+- Create a Generalization from AssociationClass to Class
+- Create a Generalization from Class to AssociationClass
+- Create an Interface realization
+- Create a Binding
+- Create a nest classifier from AssociaitonClass to CLass5
+- Create a nest classifier from Class4 to AssociaitonClass
+- Delete from model association class
+
+Result:
+- new connections appear in diagram
+- last test : Association class and all connections are removed from diagram and from model
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Create an association from Class1 to AssociationClass
+with [get-editor "test Class Diagram"] {
+    with [get-palette] {
+        with [get-palette-entry Associations] {
+            mouse-move 5 17 button1 -height 37 -width 125
+            mouse-press 5 17 button1 -height 37 -width 125
+            mouse-release 5 17 button1 524288 -height 37 -width 125
+        }
+        with [get-palette-entry Association] {
+            mouse-move 38 7 button1 -height 23 -width 125
+            mouse-press 38 7 button1 -height 23 -width 125
+            mouse-release 38 7 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name Class1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 100 17 button1 -height 71 -width 116
+            mouse-press 100 17 button1 -height 71 -width 116
+            mouse-release 100 17 button1 524288 -height 71 -width 116
+        }
+        with [get-edit-part -name AssociationClass1 | get-edit-part 
+            -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 12 14 button1 -height 71 -width 116
+            mouse-press 12 14 button1 -height 71 -width 116
+            mouse-release 12 14 button1 524288 -height 71 -width 116
+        }
+    }
+}
+
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name AssociationClass1 | get-target-connection 0] {
+    get-property visible | equals true | verify-true
+    get-property "element.target.relatedElement.size" | equals 2 | verify-true
+    get-property "element.target.relatedElement.Class[0].name" | equals Class1 | verify-true
+    get-property "element.target.relatedElement.AssociationClass[1].name" | equals AssociationClass1 | verify-true
+}
+// Create an association from AssociationClass to Class1
+with [get-editor "test Class Diagram"] {
+    with [get-palette] {
+        with [get-palette-entry Associations] {
+            mouse-move 12 11 button1 -height 23 -width 125
+            mouse-press 12 11 button1 -height 23 -width 125
+            mouse-release 12 11 button1 524288 -height 23 -width 125
+        }
+        with [get-palette-entry Association] {
+            mouse-move 21 12 button1 -height 23 -width 107
+            mouse-press 21 12 button1 -height 23 -width 107
+            mouse-release 21 12 button1 524288 -height 23 -width 107
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name AssociationClass1 | get-edit-part 
+            -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 85 43 button1 -height 71 -width 116
+            mouse-press 85 43 button1 -height 71 -width 116
+            mouse-release 110 43 button1 524288 -height 71 -width 116
+        }
+        with [get-edit-part -name Class1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 97 46 button1 -height 71 -width 116
+            mouse-press 97 46 button1 -height 71 -width 116
+            mouse-release 97 46 button1 524288 -height 71 -width 116
+        }
+    }
+}
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name Class1 | get-target-connection 0] {
+    get-property "element.target.relatedElement.size" | equals 2 | verify-true
+    get-property "element.target.relatedElement.AssociationClass[0].name" | equals AssociationClass1 | verify-true
+    get-property "element.target.relatedElement.Class[1].name" | equals Class1 | verify-true
+    get-property "element.name" | equals "A_associationClass1s_class1s" | verify-true
+}
+
+// Create a Generalization from AssociationClass to Class
+with [get-editor "test Class Diagram"] {
+    with [get-palette | get-palette-entry Generalization] {
+        mouse-move 91 3 button1 -height 23 -width 125
+        mouse-press 91 3 button1 -height 23 -width 125
+        mouse-release 91 3 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name AssociationClass1 | get-edit-part 
+            -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 37 25 button1 -height 71 -width 116
+            mouse-press 37 25 button1 -height 71 -width 116
+            mouse-release 37 25 button1 524288 -height 71 -width 116
+        }
+        with [get-edit-part -name Class3 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 82 13 button1 -height 71 -width 116
+            mouse-press 82 13 button1 -height 71 -width 116
+            mouse-release 82 13 button1 524288 -height 71 
+        }
+    }
+}
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name Class3 | get-target-connection 0] {
+    get-property visible | equals true | verify-true
+    get-property "element.target.source.AssociationClass[0].name" | equals AssociationClass1 | verify-true
+    get-property "element.target.target.Class[0].name" | equals Class3 | verify-true
+}
+
+// Create a Generalization from Class to AssociationClass
+with [get-editor "test Class Diagram"] {
+    with [get-palette | get-palette-entry Generalization] {
+        mouse-move 28 9 button1 -height 23 -width 125
+        mouse-press 28 9 button1 -height 23 -width 125
+        mouse-release 28 9 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name Class3] {
+            mouse-move 102 19 button1 -height 100 -width 120
+            mouse-press 102 19 button1 -height 100 -width 120
+            mouse-release 102 19 button1 524288 -height 100 -width 120
+        }
+        with [get-edit-part -name AssociationClass1 | get-edit-part 
+            -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 60 15 button1 -height 71 -width 116
+            mouse-press 60 15 button1 -height 71 -width 116
+            mouse-release 60 15 button1 524288 -height 71 -width 116
+        }
+    }
+}
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name AssociationClass1 | get-target-connection 1] {
+    get-property "element.target.source.Class[0].name" | equals Class3 | verify-true
+    get-property "element.target.target.AssociationClass[0].name" | equals AssociationClass1 | verify-true
+    get-property "element.visible" | equals true | verify-true
+}
+
+// Create an Interface realization
+with [get-editor "test Class Diagram"] {
+    with [get-palette] {
+        with [get-palette-entry "Interface Realization"] {
+            mouse-move 54 18 button1 -height 37 -width 125
+            mouse-press 54 18 button1 -height 37 -width 125
+            mouse-release 54 18 button1 524288 -height 37 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name AssociationClass1 | get-edit-part 
+            -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 83 12 button1 -height 71 -width 116
+            mouse-press 83 12 button1 -height 71 -width 116
+            mouse-release 83 12 button1 524288 -height 71 -width 116
+        }
+        with [get-edit-part -name Interface1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 74 25 button1 -height 71 -width 116
+            mouse-press 74 25 button1 -height 71 -width 116
+             mouse-release 74 25 button1 524288 -height 71 -width 116
+        }
+    }
+}
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name Interface1 | get-target-connection 0] {
+    get-property "element.target.source.AssociationClass[0].name" | equals AssociationClass1 | verify-true
+    get-property "element.target.target.Interface[0].name" | equals Interface1 | verify-true
+    get-property "element.visible" | equals true | verify-true
+}
+
+//  Create a Binding
+with [get-editor "test Class Diagram"] {
+    with [get-palette] {
+        with [get-palette-entry Binding] {
+            mouse-move 60 17 button1 -height 23 -width 142
+            mouse-press 60 17 button1 -height 23 -width 142
+            mouse-release 60 17 button1 524288 -height 23 -width 142
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name AssociationClass1] {
+            with [get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+                mouse-move 75 41 button1 -height 71 -width 116
+                mouse-press 75 41 button1 -height 71 -width 116
+                mouse-release 75 41 button1 524288 -height 71 -width 116
+            }
+        }
+        with [get-edit-part -name "myClass4 <T>" | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 61 15 button1 -height 71 -width 116
+            mouse-press 61 15 button1 -height 71 -width 116
+            mouse-release 61 15 button1 524288 -height 71 -width 116
+        }
+    }
+}
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name "myClass4 <T>" | get-target-connection 0] {
+    get-property "element.target.source.AssociationClass[0].name" | equals AssociationClass1 | verify-true
+    get-property "element.target.target.RedefinableTemplateSignature[0].name" | equals "" | verify-true
+    get-property "element.visible" | equals true | verify-true
+}
+
+// create a nest classifier from AssociaitonClass to CLass5
+with [get-editor "test Class Diagram"] {
+    with [get-palette | get-palette-entry "Nest Classifier"] {
+        mouse-move 109 13 button1 -height 23 -width 142
+        mouse-press 109 13 button1 -height 23 -width 142
+        mouse-release 109 13 button1 524288 -height 23 -width 142
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name AssociationClass1 | get-edit-part 
+            -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 92 44 button1 -height 71 -width 116
+            mouse-press 92 44 button1 -height 71 -width 116
+            mouse-release 92 44 button1 524288 -height 71 -width 116
+        }
+        with [get-edit-part -name Class5 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 66 32 button1 -height 71 -width 116
+            mouse-press 66 32 button1 -height 71 -width 116
+            mouse-release 66 32 button1 524288 -height 71 -width 116
+        }
+    }
+}
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name Class5 | get-target-connection 0] {
+    get-property "element.sourceNode.name" | equals AssociationClass1 | verify-true
+    get-property "element.targetNode.name" | equals Class5 | verify-true
+}
+
+// create a nest classifier from Class4 to AssociaitonClass
+with [get-editor "test Class Diagram"] {    
+    with [get-palette | get-palette-entry "Nest Classifier"] {
+        mouse-move 77 19 button1 -height 23 -width 142
+        mouse-press 77 19 button1 -height 23 -width 142
+        mouse-release 77 19 button1 524288 -height 23 -width 142
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        mouse-move 626 80 -height 524 -width 725
+        with [get-edit-part -name "myClass4 <T>" | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 109 42 button1 -height 71 -width 116
+            mouse-press 109 42 button1 -height 71 -width 116
+            mouse-release 109 42 button1 524288 -height 71 -width 116
+        }
+        with [get-edit-part -name AssociationClass1 | get-edit-part 
+            -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 75 20 button1 -height 71 -width 116
+            mouse-press 75 20 button1 -height 71 -width 116
+            mouse-release 75 20 button1 524288 -height 71 -width 116
+        }
+    }
+}
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+    with [get-edit-part -name Class5 | get-target-connection 0] {
+        get-property "element.target.nestedClassifier.Class[0].name" | equals myClass4 | verify-true
+    }
+}
+
+// Delete from model association class
+with [get-editor "test Class Diagram"] {
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name AssociationClass1 | get-edit-part 
+            -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 84 52 button1 -height 71 -width 116
+            mouse-press 84 52 button1 -height 71 -width 116
+            mouse-release 84 52 button1 524288 -height 71 -width 116
+        }
+    }
+    get-button "Delete from Model" | click
+}
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+    get-property "element.diagramElements.size" | equals 5 | verify-true
+    get-property "element.diagramElements.DNodeList[0].name" | equals Class1 | verify-true
+    get-property "element.diagramElements.DNodeList[1].name" | equals Class2 | verify-true
+    get-property "element.diagramElements.DNodeList[2].name" | equals Interface1 | verify-true
+    get-property "element.diagramElements.DNodeList[2].ownedElements.size" | equals 0 | verify-true
+    get-property "element.diagramElements.DNodeList[3].target.generalization.size" | equals 0 | verify-true
+    get-property "element.diagramElements.DNodeList[3].name" | equals Class3 | verify-true
+    get-property "element.diagramElements.DNodeList[4].name" | equals Class5 | verify-true
+    get-property "element.edges.size" | equals 0 | verify-true
+}
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
