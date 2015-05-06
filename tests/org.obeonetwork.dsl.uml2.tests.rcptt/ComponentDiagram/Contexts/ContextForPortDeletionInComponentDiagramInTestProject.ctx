@@ -1,0 +1,126 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: ContextForPortDeletionInComponentDiagramInTestProject
+Element-Type: context
+Element-Version: 2.0
+Id: _lpWfYPPREeSNxvhm9gIftQ
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 5/6/15 11:24 AM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+// Context for Component Port deletion
+with [get-editor "NewModel Component Diagram"] {
+   // Add a usage from port to delete
+   with [get-palette | get-palette-entry Usage] {
+        mouse-move 60 13 button1 -height 23 -width 130
+        mouse-press 60 13 button1 -height 23 -width 130
+        mouse-release 60 13 button1 524288 -height 23 -width 130
+    }
+    
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Component Diagram"] {
+        with [get-edit-part -name Component1 | get-edit-part -name port1] {
+            with [get-edit-part -className BundledImageEditPart] {
+                mouse-move 7 4 button1 -height 20 -width 20
+                mouse-press 7 4 button1 -height 20 -width 20
+                mouse-release 7 4 button1 524288 -height 20 -width 20
+            }
+        }
+        with [get-edit-part -name Interface1 | get-edit-part 
+            -className RotatableImageBasedOnFirstSourceConnectionEditPart] {
+            mouse-move 19 6 button1 -height 30 -width 30
+            mouse-press 19 6 button1 -height 30 -width 30
+               mouse-release 19 6 button1 524288 -height 30 -width 30
+         
+        }
+    }
+    // Add an Interface realization
+    with [get-palette | get-palette-entry "Interface Realization"] {
+        mouse-move 73 20 button1 -height 37 -width 130
+        mouse-press 73 20 button1 -height 37 -width 130
+        mouse-release 73 20 button1 524288 -height 37 -width 130
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Component Diagram"] {
+        with [get-edit-part -name Component1 | get-edit-part -name port1 | get-edit-part 
+            -className BundledImageEditPart] {
+            mouse-move 11 1 button1 -height 20 -width 20
+            mouse-press 11 1 button1 -height 20 -width 20
+            mouse-release 11 1 button1 524288 -height 20 -width 20
+        }
+        with [get-edit-part -name Interface2 -index 1 | get-edit-part -className BundledImageEditPart] {
+            mouse-move 6 3 button1 -height 20 -width 20
+            mouse-press 6 3 button1 -height 20 -width 20
+            mouse-release 6 3 button1 524288 -height 20 -width 20
+        }
+    }
+    // Add a Redefined from the port to delete
+    with [get-palette | get-palette-entry Redefined] {
+            mouse-move 43 6 button1 -height 23 -width 130
+            mouse-press 43 6 button1 -height 23 -width 130
+            mouse-release 43 6 button1 524288 -height 23 -width 130
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Component Diagram"] {
+       with [get-edit-part -name Component1 | get-edit-part -name port1 | get-edit-part 
+            -className BundledImageEditPart] {
+            mouse-move 8 12 button1 -height 20 -width 20
+            mouse-press 8 12 button1 -height 20 -width 20
+            mouse-release 8 12 button1 524288 -height 20 -width 20
+        }
+        with [get-edit-part -name Component2] {
+            with [get-edit-part -name port1 | get-edit-part -className BundledImageEditPart] {
+                mouse-move 9 6 button1 -height 20 -width 20
+                mouse-press 9 6 button1 -height 20 -width 20
+                mouse-release 9 6 button1 524288 -height 20 -width 20
+            }
+        }
+    }
+    // Add a Redefined to the port to delete
+    with [get-palette | get-palette-entry Redefined] {
+        mouse-move 62 4 button1 -height 23 -width 130
+        mouse-press 62 4 button1 -height 23 -width 130
+        mouse-release 62 4 button1 524288 -height 23 -width 130
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Component Diagram"] {
+        with [get-edit-part -name Component2 | get-edit-part -name port1] {
+            with [get-edit-part -className BundledImageEditPart] {
+                mouse-move 15 10 button1 -height 20 -width 20
+                mouse-press 15 10 button1 -height 20 -width 20
+                mouse-release 15 10 button1 524288 -height 20 -width 20
+            }
+        }
+        with [get-edit-part -name Component1 | get-edit-part -name port1 | get-edit-part 
+            -className BundledImageEditPart] {
+            mouse-move 15 7 button1 -height 20 -width 20
+            mouse-press 15 7 button1 -height 20 -width 20
+            mouse-release 15 7 button1 524288 -height 20 -width 20
+        }
+        key-type ESC
+    }
+}
+// Check context
+with [get-editor "NewModel Component Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Component Diagram"] {
+    get-property "children.size" | equals 6 | verify-true
+    get-property "children.Node[0].element.name" | equals Component1 | verify-true
+    get-property "children.Node[1].element.name" | equals Component2 | verify-true
+    get-property "children.Node[2].element.name" | equals Interface1 | verify-true
+    get-property "children.Node[3].element.name" | equals Interface1 | verify-true
+    get-property "children.Node[4].element.name" | equals Interface2 | verify-true
+    get-property "children.Node[5].element.name" | equals Interface2 | verify-true
+    get-property "edges.size" | equals 4 | verify-true
+    with [get-edit-part -name Component1 | get-edit-part -name port1 | get-target-connection 1] {
+        get-property visible | equals true | verify-true
+        get-property visible | equals true | verify-true
+        get-figure 3 | get-property "isVisible()" | equals true | verify-true
+    }
+    get-edit-part -name Component2 | get-edit-part -name port1 | get-target-connection 0 | get-figure 3 
+        | get-property "isVisible()" | equals true | verify-true
+    get-edit-part -name Interface2 -index 1 | get-target-connection 0 | get-property visible | equals true | verify-true
+    get-property visible | equals true | verify-true
+    get-edit-part -name Component1 | get-edit-part -name port1 | get-target-connection 0 | get-property visible 
+        | equals true | verify-true
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--
