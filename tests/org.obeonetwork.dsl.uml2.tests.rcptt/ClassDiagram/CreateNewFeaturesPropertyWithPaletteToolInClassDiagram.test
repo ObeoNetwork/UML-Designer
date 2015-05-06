@@ -1,15 +1,15 @@
 --- RCPTT testcase ---
 Format-Version: 1.0
-Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_X-rQgH-QEeS4X6G9cD21hw,_p-v3gMyvEeSmqoI7c5i_uw,_7lkXsMzEEeSmqoI7c5i_uw
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_oz0jMM8lEeSz9_HNAw245A,_gd8LcM8nEeSz9_HNAw245A,_bKL_sH-PEeS4X6G9cD21hw,_X-rQgH-QEeS4X6G9cD21hw,_p-v3gMyvEeSmqoI7c5i_uw,_7lkXsMzEEeSmqoI7c5i_uw
 Element-Name: CreateNewFeaturesPropertyWithPaletteToolInClassDiagram
 Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _xSarcM1JEeSHkpcdtO-QuQ
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/15/15 12:06 PM
+Save-Time: 5/6/15 10:34 AM
 Testcase-Type: ecl
-Verifications: _0-9fkM1SEeSHkpcdtO-QuQ
+Verifications: _0-9fkM1SEeSHkpcdtO-QuQ,_zjs7YM8nEeSz9_HNAw245A
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
 Content-Type: text/plain
