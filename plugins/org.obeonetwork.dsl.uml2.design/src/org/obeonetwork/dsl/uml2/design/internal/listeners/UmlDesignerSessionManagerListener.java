@@ -28,6 +28,7 @@ import org.eclipse.ui.IPartService;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.uml2.uml.ProfileApplication;
 import org.obeonetwork.dsl.uml2.design.internal.triggers.AutosizeTrigger;
+import org.obeonetwork.dsl.uml2.design.internal.triggers.ConfirmDeletionTrigger;
 
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Maps;
@@ -91,10 +92,14 @@ public class UmlDesignerSessionManagerListener implements SessionManagerListener
 	public void notifyAddSession(Session newSession) {
 		newSession.getEventBroker().addLocalTrigger(AutosizeTrigger.IS_GMF_NODE_ATTACHMENT,
 				new AutosizeTrigger(newSession.getTransactionalEditingDomain()));
+		newSession.getEventBroker().addLocalTrigger(
+				ConfirmDeletionTrigger.IS_IMPACTING,
+				new ConfirmDeletionTrigger(newSession.getTransactionalEditingDomain(),
+						newSession.getModelAccessor(), newSession.getSemanticCrossReferencer()));
 		partService.addPartListener(openedEditorListener);
 		newSession.getTransactionalEditingDomain().addResourceSetListener(callActionPinListener);
 		newSession.getTransactionalEditingDomain().getCommandStack()
-		.addCommandStackListener(createNewChildListener);
+				.addCommandStackListener(createNewChildListener);
 		newSession.getTransactionalEditingDomain().addResourceSetListener(descendantCacheListener);
 	}
 
@@ -102,7 +107,7 @@ public class UmlDesignerSessionManagerListener implements SessionManagerListener
 		partService.removePartListener(openedEditorListener);
 		removedSession.getTransactionalEditingDomain().removeResourceSetListener(callActionPinListener);
 		removedSession.getTransactionalEditingDomain().getCommandStack()
-		.removeCommandStackListener(createNewChildListener);
+				.removeCommandStackListener(createNewChildListener);
 		removedSession.getTransactionalEditingDomain().removeResourceSetListener(descendantCacheListener);
 	}
 

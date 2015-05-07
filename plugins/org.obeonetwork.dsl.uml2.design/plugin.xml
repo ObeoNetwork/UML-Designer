@@ -539,4 +539,19 @@ Contributors:
             class="org.obeonetwork.dsl.uml2.design.internal.listeners.OpenHelpContextListener">
       </listener>
    </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            category="org.eclipse.sirius.ui.page"
+            class="org.obeonetwork.dsl.uml2.design.preferences.UmlDesignerPreferencePage"
+            id="org.obeonetwork.dsl.uml2.design"
+            name="UML Designer">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.obeonetwork.dsl.uml2.design.preferences.UmlDesignerPreferenceInitializer">
+      </initializer>
+   </extension>
 </plugin>
