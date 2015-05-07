@@ -28,6 +28,7 @@ import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.JavaExtension;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.obeonetwork.dsl.uml2.design.api.services.ReusedDescriptionServices;
 
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterators;
@@ -53,6 +54,15 @@ public class ServiceTestsUtils {
 	public static Set<String> umlWhiteList = Sets.newHashSet(getAllUmlOperations());
 
 	public static Set<String> siriusWhiteList = Sets.newHashSet("getTarget");
+	
+	/**
+	 * Services declared in the java code but not used in the odesign. These services are used by java code
+	 * declaring at runtime new sirius tools.
+	 * @see ReusedDescriptionServices#getContainerView(org.eclipse.uml2.uml.Element, org.eclipse.sirius.diagram.DDiagramElement)
+	 * @see ReusedDescriptionServices#getContainerView(org.eclipse.uml2.uml.Element, org.eclipse.sirius.diagram.DDiagramElementContainer)
+	 * @see ReusedDescriptionServices#getContainerView(org.eclipse.uml2.uml.Element, org.eclipse.sirius.diagram.DSemanticDiagram)
+	 */
+	public static Set<String> runtimeWhiteList = Sets.newHashSet("getContainerView");
 
 	public static void collectDeclaredServicesFromUmlDesignerViewpoints(Set<Method> allDeclaredServices) {
 		collectDeclaredServicesFromDesignerViewpoints(allDeclaredServices, UML_VP_URI, VP_CAPTURE);

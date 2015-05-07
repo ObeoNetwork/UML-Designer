@@ -54,6 +54,7 @@ public class DeclaredServiceTests {
 			allServiceCalls.add(ServiceTestsUtils.getServiceCall(serviceExpression.getExpression()));
 		}
 		allServiceCalls.addAll(ServiceTestsUtils.siriusWhiteList);
+		allServiceCalls.addAll(ServiceTestsUtils.runtimeWhiteList);
 		allServiceCalls.addAll(ServiceTestsUtils.acceleoWhiteList);
 		allServiceCalls.addAll(ServiceTestsUtils.umlWhiteList);
 
