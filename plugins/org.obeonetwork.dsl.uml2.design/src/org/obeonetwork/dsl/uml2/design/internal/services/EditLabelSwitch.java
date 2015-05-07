@@ -117,7 +117,7 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 			((OpaqueExpression)expr).getBodies().add(editedLabelContent);
 		}
 
-		return object;
+		return caseNamedElement(object);
 	}
 
 	/**
