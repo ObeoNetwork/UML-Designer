@@ -319,7 +319,7 @@ public abstract class AbstractDiagramServices {
 	 *            The element to retrieve a session
 	 * @return root elements
 	 */
-	public Collection<EObject> getAllRootsInSession(EObject any) {
+	public Collection<Element> getAllRootsInSession(EObject any) {
 		return ElementServices.INSTANCE.getAllRootsInSession(any);
 	}
 

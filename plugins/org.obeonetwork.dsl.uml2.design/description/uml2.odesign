@@ -1610,18 +1610,20 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:SelectionWizardDescription" name="Typed Property" precondition="[self.oclIsKindOf(uml::Type)/]" forceRefresh="true" candidatesExpression="[container.eContainer(uml::Package).getAvailableTypes()/]" message="Please select a type for the new property" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Property.gif" windowTitle="New property type selection">
+            <tools xsi:type="tool:ToolDescription" name="Typed Property" precondition="[self.oclIsKindOf(uml::Classifier)/]" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Property.gif">
               <element name="element"/>
-              <containerView name="containerView"/>
-              <container name="container"/>
+              <elementView name="elementView"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
+                <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:element">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Property" referenceName="ownedAttribute">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="var:element"/>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="service:openSelectTypeDialog"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="lower" valueExpression="0"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="1"/>
                     <subModelOperations xsi:type="tool:SetValue" featureName="aggregation" valueExpression="composite"/>
+                    <subModelOperations xsi:type="tool:If" conditionExpression="[self.oclAsType(uml::Property).type = null/]">
+                      <subModelOperations xsi:type="tool:RemoveElement"/>
+                    </subModelOperations>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>

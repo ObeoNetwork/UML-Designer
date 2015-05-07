@@ -18,6 +18,7 @@ import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
@@ -33,8 +34,10 @@ import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
+import org.obeonetwork.dsl.uml2.design.internal.dialogs.ModelElementSelectionDialog;
 import org.obeonetwork.dsl.uml2.design.internal.services.AssociationServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.ElementServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.LabelServices;
@@ -415,6 +418,36 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 		return AssociationServices.INSTANCE.getTypes(association);
 	}
 
+	/**
+	 * Get all types and their parent's elements.
+	 *
+	 * @param element
+	 *            Element
+	 * @return List of all types and their parents.
+	 */
+	public List<EObject> getTypes(Element element) {
+		final List<EObject> result = Lists.newArrayList();
+		final Collection<Element> roots = getAllRootsInSession(element);
+		for (final Element root : roots) {
+			for (final Element subElement : root.getOwnedElements()) {
+				result.addAll(getTypesAndParents(subElement));
+			}
+		}
+		return result;
+	}
+
+	private Collection<? extends EObject> getTypesAndParents(Element element) {
+		final List<EObject> result = Lists.newArrayList();
+		if (element instanceof Type && !(element instanceof Association)) {
+			result.add(element);
+			result.add(element.getOwner());
+		}
+		for (final Element subElement : element.getOwnedElements()) {
+			result.addAll(getTypesAndParents(subElement));
+		}
+		return result;
+	}
+
 	private boolean isBroken(Association child) {
 		final Property target = AssociationServices.INSTANCE.getTarget(child);
 		final Property source = AssociationServices.INSTANCE.getSource(child);
@@ -469,6 +502,26 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	 */
 	public boolean isTypeOfClass(EObject element) {
 		return "Class".equals(element.eClass().getName()); //$NON-NLS-1$
+	}
+
+	public Element openSelectTypeDialog(Element element) {
+		final ModelElementSelectionDialog dlg = new ModelElementSelectionDialog();
+		dlg.setTitle("New typed property selection"); //$NON-NLS-1$
+		dlg.setMessage("Please select a type for the new property :"); //$NON-NLS-1$
+		dlg.setSelectablePredicate(new Predicate<Object>() {
+			public boolean apply(Object input) {
+				return !(input instanceof Stereotype)
+						&& (input instanceof Class || input instanceof Interface || input instanceof DataType);
+			}
+		});
+		final int status = dlg.open();
+		if (status == Window.OK) {
+			final Object[] results = dlg.getResult();
+			if (results != null && results.length > 0) {
+				return (Element)results[0];
+			}
+		}
+		return null;
 	}
 
 	/**

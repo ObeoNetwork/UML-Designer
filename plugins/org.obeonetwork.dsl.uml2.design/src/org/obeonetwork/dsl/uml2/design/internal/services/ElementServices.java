@@ -27,6 +27,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.DataType;
+import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.Model;
 import org.eclipse.uml2.uml.NamedElement;
@@ -37,6 +38,8 @@ import org.eclipse.uml2.uml.Profile;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.resource.UMLResource;
+
+import com.google.common.collect.Lists;
 
 /**
  * Services to handle typed Element concerns.
@@ -151,12 +154,16 @@ public class ElementServices {
 	 *            The element to retrieve a session
 	 * @return root elements
 	 */
-	public Collection<EObject> getAllRootsInSession(EObject any) {
+	public Collection<Element> getAllRootsInSession(EObject any) {
 		final Session session = SessionManager.INSTANCE.getSession(any);
-		final Collection<EObject> roots = new ArrayList<EObject>();
+		final Collection<Element> roots = Lists.newArrayList();
 		if (session != null) {
 			for (final Resource childRes : session.getSemanticResources()) {
-				roots.addAll(childRes.getContents());
+				for (final EObject root : childRes.getContents()) {
+					if (root instanceof Element) {
+						roots.add((Element)root);
+					}
+				}
 			}
 		}
 		return roots;

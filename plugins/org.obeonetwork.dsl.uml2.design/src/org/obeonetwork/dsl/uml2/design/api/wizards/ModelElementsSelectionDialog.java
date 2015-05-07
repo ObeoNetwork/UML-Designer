@@ -914,7 +914,7 @@ public class ModelElementsSelectionDialog {
 			msg = sb.toString();
 		}
 		dialog.setMessage(msg);
-		final Collection<EObject> roots = ElementServices.INSTANCE.getAllRootsInSession(eObject);
+		final Collection<Element> roots = ElementServices.INSTANCE.getAllRootsInSession(eObject);
 
 		dialog.setInput(roots);
 		dialog.addFilter(new ModeFilter());
