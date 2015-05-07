@@ -12,7 +12,9 @@ package org.obeonetwork.dsl.uml2.design.api.services;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -41,6 +43,7 @@ import org.obeonetwork.dsl.uml2.design.internal.services.LabelServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.NodeInverseRefsServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.OperationServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.StereotypeServices;
+import org.obeonetwork.dsl.uml2.design.internal.services.UIServices;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Lists;
@@ -395,6 +398,32 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 			result.addAll(getTypesAndParents(subElement));
 		}
 		return result;
+	}
+
+	/**
+	 * Return collection of visible association class in a diagram.
+	 *
+	 * @param diagram
+	 *            Diagram
+	 * @return Set of visible association Classes or empty collection
+	 */
+	public Collection<EObject> getVisibleAssociationClass(DDiagram diagram) {
+		final Set<EObject> associationClasses = new HashSet<EObject>();
+		final Collection<EObject> displayedNodes = UIServices.INSTANCE.getDisplayedNodes(diagram);
+		final Collection<EObject> associations = getAssociationInverseRefs(diagram);
+		for (final EObject association : associations) {
+			if (association instanceof AssociationClass) {
+				final Property source = AssociationServices.INSTANCE.getSource((AssociationClass)association);
+				final Property target = AssociationServices.INSTANCE.getTarget((AssociationClass)association);
+				final Type sourceType = source.getType();
+				final Type targetType = target.getType();
+				if (sourceType != null && displayedNodes.contains(sourceType) && targetType != null
+						&& displayedNodes.contains(targetType)) {
+					associationClasses.add(association);
+				}
+			}
+		}
+		return associationClasses;
 	}
 
 	private boolean isBroken(Association child) {

@@ -1,0 +1,126 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: ContextForIssue552
+Element-Type: context
+Element-Version: 2.0
+Id: _lNWwwPSeEeSeqvjegvAmiQ
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 5/7/15 11:51 AM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+with [get-editor "test Class Diagram"] {
+    with [get-palette] {
+        get-palette-entry Package | mouse-move 108 22 -height 23 -width 135
+        with [get-palette-entry Class] {
+            mouse-move 63 11 button1 -height 23 -width 135
+            mouse-press 63 11 button1 -height 23 -width 135
+            mouse-release 63 11 button1 524288 -height 23 -width 135
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        mouse-move 166 143 button1 -height 338 -width 712
+        mouse-press 166 143 button1 -height 338 -width 712
+        mouse-release 166 143 button1 524288 -height 338 -width 712
+    }
+}
+with [get-editor "test Class Diagram"] {
+    with [get-palette] {
+        get-palette-entry Package | mouse-move 108 22 -height 23 -width 135
+        with [get-palette-entry Class] {
+            mouse-move 63 11 button1 -height 23 -width 135
+            mouse-press 63 11 button1 -height 23 -width 135
+            mouse-release 63 11 button1 524288 -height 23 -width 135
+        }
+    }
+with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+       mouse-move 167 308 button1 -height 338 -width 712
+        mouse-press 167 308 button1 -height 338 -width 712
+        mouse-release 167 308 button1 524288 -height 338 -width 712
+    }
+  
+}
+
+// Create a new Association Class between Class1 and Class2
+with [get-editor "test Class Diagram"] {
+    maximize
+    with [get-palette] {
+        with [get-palette-entry Associations] {
+            mouse-move 6 13 button1 -height 23 -width 135
+            mouse-press 6 13 button1 -height 23 -width 135
+            mouse-release 6 13 button1 524288 -height 23 -width 135
+         }
+         with [get-palette-entry "Association Class"] {
+            mouse-move 30 7 button1 -height 23 -width 135
+            mouse-press 30 7 button1 -height 23 -width 135
+            mouse-release 30 7 button1 524288 -height 23 -width 135
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name Class1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 54 32 button1 -height 71 -width 116
+            mouse-press 54 32 button1 -height 71 -width 116
+            mouse-release 54 32 button1 524288 -height 71 -width 116
+        }
+        with [get-edit-part -name Class2 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 60 27 button1 -height 71 -width 116
+            mouse-press 60 27 button1 -height 71 -width 116
+            mouse-release 60 27 button1 524288 -height 71 -width 116
+        }
+    }
+}
+
+// Check Graphical element is created
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name Class2 | get-target-connection 0] {
+    get-edit-part -className "" -index 1 | get-property "getFigure().getText()" | equals "class1s[*]" | verify-true
+    get-edit-part -className "" -index 2 | get-property "getFigure().getText()" | equals "class2s[*]" | verify-true
+}
+
+// Check Source and target
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name Class2 | get-target-connection 0] {
+    get-property "getTarget().getPrimaryFigure().getLabelFigure().getText()" | equals Class2 | verify-true
+    get-property "getSource().getPrimaryFigure().getLabelFigure().getText()" | equals Class1 | verify-true
+    get-edit-part -className "" | get-property "getFigure().getText()" | equals "AssociationClass1" | verify-true
+}
+
+// Check style connection style between Class1 and Class2
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+    with [get-edit-part -name Class2 | get-target-connection 0] {
+        get-property "element.ownedStyle.customFeatures" | equals "[]" | verify-true
+        get-property "element.ownedStyle.lineStyle" | equals solid | verify-true
+        get-property "element.ownedStyle.sourceArrow" | equals InputArrow | verify-true
+        get-property "element.ownedStyle.targetArrow" | equals InputArrow | verify-true
+        get-property "element.ownedStyle.foldingStyle" | equals NONE | verify-true
+        get-property "element.ownedStyle.size" | equals 1 | verify-true
+        get-property "element.ownedStyle.routingStyle" | equals straight | verify-true
+        get-property "element.ownedStyle.centered" | equals None | verify-true
+    }
+}
+// Check Association Class was created
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+    get-edit-part -name AssociationClass1 | get-edit-part -className DNodeListNameEditPart 
+        | get-property "getFigure().getText()" | equals AssociationClass1 | verify-true
+}
+
+// Check style connection style between Class1 and Class2 and AssociationClass1
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+    with [get-edit-part -name Class2 | get-target-connection 0 | get-target-connection 0] {
+        get-property "element.ownedStyle.customFeatures" | equals "[]" | verify-true
+        get-property "element.ownedStyle.lineStyle" | equals dash | verify-true
+        get-property "element.ownedStyle.sourceArrow" | equals NoDecoration | verify-true
+        get-property "element.ownedStyle.targetArrow" | equals NoDecoration | verify-true
+        get-property "element.ownedStyle.foldingStyle" | equals NONE | verify-true
+        get-property "element.ownedStyle.size" | equals 1 | verify-true
+        get-property "element.ownedStyle.routingStyle" | equals straight | verify-true
+        //get-property "element.ownedStyle.beginLabelStyle" | equals null | verify-true
+        //get-property "element.ownedStyle.endLabelStyle" | equals null | verify-true
+        get-property "element.ownedStyle.centered" | equals None | verify-true
+    }
+}
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--
