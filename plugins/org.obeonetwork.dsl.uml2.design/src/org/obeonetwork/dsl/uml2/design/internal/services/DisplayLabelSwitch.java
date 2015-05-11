@@ -30,6 +30,7 @@ import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Duration;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
+import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.ExecutionSpecification;
 import org.eclipse.uml2.uml.Expression;
 import org.eclipse.uml2.uml.Feature;
@@ -316,6 +317,14 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	@Override
 	public String caseElementImport(ElementImport object) {
 		return object.getName();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String caseEnumerationLiteral(EnumerationLiteral object) {
+		return object.getLabel();
 	}
 
 	/**

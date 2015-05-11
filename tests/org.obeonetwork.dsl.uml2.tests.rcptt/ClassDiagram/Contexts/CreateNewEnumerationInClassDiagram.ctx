@@ -6,7 +6,7 @@ Element-Type: context
 Element-Version: 2.0
 Id: _7DkUEM1XEeSHkpcdtO-QuQ
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 3/18/15 11:18 AM
+Save-Time: 5/11/15 1:56 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -14,13 +14,21 @@ Entry-Name: .ecl.context
 
 // Create new semantic element using palette tool : Package
 with [get-editor "test Class Diagram"] {
-    with [get-palette | get-palette-entry Enumeration] {
-        mouse-press 81 12 button1 -height 23 -width 152
-        get-figure 0 | drag-start 81 12
+    with [get-palette |get-palette-entry Enumeration] {
+        mouse-move 73 12 button1 -height 23 -width 107
+        mouse-press 73 12 button1 -height 23 -width 107
+        mouse-release 73 12 button1 524288 -height 23 -width 107
     }
- 	  get-palette | drag-set-data
-    get-diagram -index 1 | get-edit-part -name "test Class Diagram" | drop 317 89 -detail copy
-    get-palette | drag-end -detail move
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        mouse-move 253 221 button1 -height 328 -width 721
+        mouse-press 253 221 button1 -height 328 -width 721
+        mouse-release 253 221 button1 524288 -height 328 -width 721
+    }
 }
+// Check context
+get-editor "test Class Diagram" | get-diagram -index 1 
+    | get-edit-part -name "test Class Diagram"
+    | get-edit-part -name Enumeration1 
+
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--
