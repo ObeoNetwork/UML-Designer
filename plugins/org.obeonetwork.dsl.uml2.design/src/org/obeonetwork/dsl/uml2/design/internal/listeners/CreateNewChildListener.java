@@ -56,7 +56,7 @@ public class CreateNewChildListener implements CommandStackListener {
 		final Collection<?> affectedObjects = mostRecentCommand.getAffectedObjects();
 
 		// Check command is a create new Child command
-		if (mostRecentCommand instanceof CreateChildCommand) {
+		if (mostRecentCommand != null && mostRecentCommand instanceof CreateChildCommand) {
 			final Iterator<?> iterator = affectedObjects.iterator();
 			while (iterator.hasNext()) {
 				final Object object = iterator.next();
