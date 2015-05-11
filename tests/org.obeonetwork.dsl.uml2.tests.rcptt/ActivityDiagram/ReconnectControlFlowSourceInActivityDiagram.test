@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _ObfpAN0lEeS8j822Nc50oQ
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/21/15 4:23 PM
+Save-Time: 5/11/15 3:40 PM
 Testcase-Type: ecl
 Verifications: _JcmlwN0oEeS8j822Nc50oQ
 
@@ -34,7 +34,7 @@ with [get-editor "NewModel Activity Diagram"] {
     with [get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram"] {
         with [get-edit-part -name NewModel | get-edit-part 
             -className DNodeContainerViewNodeContainerCompartmentEditPart] {
-            with [get-edit-part -name "" | get-target-connection 0 | get-handle SiriusConnectionEndPointHandle] {
+            with [get-edit-part -name "Decision1" | get-target-connection 0 | get-handle SiriusConnectionEndPointHandle] {
                 mouse-move 4 1 button1 -height 7 -width 7
                 mouse-press 4 1 button1 -height 7 -width 7
             }
@@ -54,12 +54,12 @@ with [get-editor "NewModel Activity Diagram"] {
 //Check Diagram
 get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram" 
     | get-edit-part -name NewModel | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
-    | get-edit-part -name "" | get-target-connection 0 | get-property "getFigure().isVisible()" | equals true 
+    | get-edit-part -name "Decision1" | get-target-connection 0 | get-property "getFigure().isVisible()" | equals true 
     | verify-true
 //Check Model
 with [get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram" 
     | get-edit-part -name NewModel | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
-    | get-edit-part -name "" | get-target-connection 0] {
+    | get-edit-part -name "Decision1" | get-target-connection 0] {
     get-property "element.target.target.name" | equals Decision1 | verify-true
     get-property "element.target.source.name" | equals OpaqueAction2 | verify-true
 }

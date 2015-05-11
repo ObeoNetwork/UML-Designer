@@ -6,7 +6,7 @@ Element-Type: context
 Element-Version: 2.0
 Id: _t-4bcN0eEeS8j822Nc50oQ
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/7/15 2:52 PM
+Save-Time: 5/11/15 4:04 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -81,5 +81,24 @@ with [get-editor "NewModel Activity Diagram"] {
         }
     }
 }
-
+// Check diagram
+get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram"
+    | get-edit-part -name NewModel | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart
+    |  get-edit-part -name "OpaqueAction1\r\n"
+            + "\r\n"
+            + "// TODO body of OpaqueAction1"
+get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram"
+    | get-edit-part -name NewModel | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart
+    | get-edit-part -name "OpaqueAction2\r\n"
+            + "\r\n"
+            + "// TODO body of OpaqueAction2"
+get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram"
+    | get-edit-part -name NewModel | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart
+    | get-edit-part -name "OpaqueAction3\r\n"
+            + "\r\n"
+            + "// TODO body of OpaqueAction3"
+    
+get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram"
+    | get-edit-part -name NewModel | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart
+    | get-edit-part -name Decision1
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

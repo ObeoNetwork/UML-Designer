@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _im4tANh_EeSGfIdQZmgChQ
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/21/15 4:17 PM
+Save-Time: 5/11/15 3:09 PM
 Testcase-Type: ecl
 Verifications: _XUNM8NiBEeSGfIdQZmgChQ
 
@@ -52,9 +52,9 @@ with [get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-p
     -name "NewModel Activity Diagram"] {
     with [get-edit-part -name "NewModel" | get-edit-part 
         -className DNodeContainerViewNodeContainerCompartmentEditPart] {
-        get-edit-part -name "" | get-edit-part -className WorkspaceImageEditPart | get-figure 0 
+        get-edit-part -name "Initial1" | get-edit-part -className WorkspaceImageEditPart | get-figure 0 
             | get-property "isVisible()" | equals true | verify-true
-        with [get-edit-part -name "" | get-edit-part -className WorkspaceImageEditPart | get-figure 0] {
+        with [get-edit-part -name "Initial1" | get-edit-part -className WorkspaceImageEditPart | get-figure 0] {
             get-property "getLocation().x" | equals 105 | verify-true
             get-property "getLocation().y" | equals 69 | verify-true
         }

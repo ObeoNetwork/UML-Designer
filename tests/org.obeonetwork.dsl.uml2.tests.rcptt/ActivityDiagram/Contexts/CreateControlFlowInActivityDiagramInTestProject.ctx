@@ -6,7 +6,7 @@ Element-Type: context
 Element-Version: 2.0
 Id: _WWV_sN0lEeS8j822Nc50oQ
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/7/15 2:55 PM
+Save-Time: 5/11/15 4:04 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -28,11 +28,15 @@ with [get-editor "NewModel Activity Diagram"] {
             mouse-press 139 38 button1 -height 68 -width 162
             mouse-release 139 38 button1 524288 -height 68 -width 162
         }
-        with [get-edit-part -name "" | get-edit-part -className LozengeEditPart] {
+        with [get-edit-part -name "Decision1" | get-edit-part -className LozengeEditPart] {
             mouse-move 16 12 button1 -height 30 -width 30
             mouse-press 16 12 button1 -height 30 -width 30
             mouse-release 16 12 button1 524288 -height 30 -width 30
         }
     }
 }
+// Check diagram
+get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram"
+    | get-edit-part -name NewModel | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart
+    | get-edit-part -name Decision1 | get-target-connection 0 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--
