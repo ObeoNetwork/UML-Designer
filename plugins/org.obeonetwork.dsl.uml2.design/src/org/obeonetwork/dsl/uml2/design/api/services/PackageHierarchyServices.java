@@ -10,15 +10,10 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.api.services;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.uml2.uml.Element;
-import org.eclipse.uml2.uml.Model;
-import org.eclipse.uml2.uml.Package;
-import org.eclipse.uml2.uml.PackageImport;
 
 /**
  * A set of services to handle the Package Hierarchy diagram.
@@ -26,27 +21,6 @@ import org.eclipse.uml2.uml.PackageImport;
  * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class PackageHierarchyServices extends AbstractDiagramServices {
-
-	/**
-	 * Delete package.
-	 *
-	 * @param model
-	 *            Model
-	 * @param pkg
-	 *            Package to delete
-	 */
-	public void deletePackage(Model model, Package pkg) {
-		// Check if package is an imported package
-		final List<PackageImport> copy = new ArrayList<PackageImport>();
-		copy.addAll(model.getPackageImports());
-		for (final PackageImport pkgImport : copy) {
-			if (pkg.equals(pkgImport.getImportedPackage())) {
-				model.getPackageImports().remove(pkgImport);
-				return;
-			}
-		}
-		pkg.destroy();
-	}
 
 	/**
 	 * Check if a reconnect is possible and is not involving creating a cycle in the model.

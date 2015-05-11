@@ -12,9 +12,7 @@ package org.obeonetwork.dsl.uml2.design.api.services;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
@@ -32,7 +30,6 @@ import org.eclipse.uml2.uml.Feature;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Package;
-import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.Type;
@@ -46,9 +43,7 @@ import org.obeonetwork.dsl.uml2.design.internal.services.OperationServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.StereotypeServices;
 
 import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 
 /**
  * A set of services to handle the Class diagram.
@@ -190,52 +185,6 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	 */
 	public Collection<EObject> getAssociationInverseRefs(DDiagram diagram) {
 		return NodeInverseRefsServices.INSTANCE.getAssociationInverseRefs(diagram);
-	}
-
-	/**
-	 * Get all available packages in model.
-	 *
-	 * @param pkg
-	 *            Package
-	 * @return All the available packages
-	 */
-	private Set<Package> getAvailablePackages(Package pkg) {
-		final Set<Package> packages = Sets.newHashSet();
-		packages.add(pkg);
-		for (final Iterator<EObject> iterator = pkg.getModel().eAllContents(); iterator.hasNext();) {
-			final EObject eObject = iterator.next();
-			if (eObject instanceof Package) {
-				packages.add((Package)eObject);
-				for (final PackageImport packageImport : pkg.getPackageImports()) {
-					packages.add(packageImport.getImportedPackage());
-				}
-			}
-		}
-
-		return packages;
-	}
-
-	/**
-	 * Get all available types in model.
-	 *
-	 * @param pkg
-	 *            Package
-	 * @return All the available types
-	 */
-	public Set<Type> getAvailableTypes(Package pkg) {
-		final Set<Type> availableTypes = Sets.newHashSet();
-		final Set<Package> availablePackages = getAvailablePackages(pkg);
-		for (final Package availablePackage : availablePackages) {
-			final Set<Type> types = Sets.newHashSet(Iterables.filter(availablePackage.getOwnedTypes(),
-					new Predicate<EObject>() {
-				public boolean apply(EObject input) {
-					return input instanceof Class || input instanceof Interface
-							|| input instanceof DataType;
-				}
-			}));
-			availableTypes.addAll(types);
-		}
-		return availableTypes;
 	}
 
 	/**
@@ -504,6 +453,13 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 		return "Class".equals(element.eClass().getName()); //$NON-NLS-1$
 	}
 
+	/**
+	 * Open type selection dialog.
+	 *
+	 * @param element
+	 *            Element
+	 * @return Selected element
+	 */
 	public Element openSelectTypeDialog(Element element) {
 		final ModelElementSelectionDialog dlg = new ModelElementSelectionDialog();
 		dlg.setTitle("New typed property selection"); //$NON-NLS-1$
