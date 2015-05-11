@@ -50,15 +50,18 @@ public class DescendantCacheListener extends ResourceSetListenerImpl {
 				if (notification.getFeature() instanceof EStructuralFeature) {
 					notification.getFeature();
 					final Session session = SessionManager.INSTANCE.getSession(updatedElement);
-					final TransactionalEditingDomain editingDomain = session.getTransactionalEditingDomain();
-					return new RecordingCommand(editingDomain) {
+					if (session != null) {
+						final TransactionalEditingDomain editingDomain = session
+								.getTransactionalEditingDomain();
+						return new RecordingCommand(editingDomain) {
 
-						@Override
-						protected void doExecute() {
-							// Clear cache
-							UmlDesignerSessionManagerListener.getDescendantCache().clear();
-						}
-					};
+							@Override
+							protected void doExecute() {
+								// Clear cache
+								UmlDesignerSessionManagerListener.getDescendantCache().clear();
+							}
+						};
+					}
 				}
 			}
 		}
