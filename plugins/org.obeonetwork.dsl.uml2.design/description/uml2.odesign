@@ -1716,7 +1716,6 @@
                           <subModelOperations xsi:type="tool:SetValue" featureName="upper" valueExpression="-1"/>
                           <subModelOperations xsi:type="tool:ChangeContext" browseExpression="var:instance">
                             <subModelOperations xsi:type="tool:SetValue" featureName="navigableOwnedEnd" valueExpression="var:end2"/>
-                            <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="[self.oclAsType(uml::Association).end1.name.toUpperFirst()/]"/>
                           </subModelOperations>
                         </subModelOperations>
                       </subModelOperations>
