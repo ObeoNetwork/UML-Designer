@@ -38,7 +38,9 @@ import org.eclipse.uml2.uml.UMLFactory;
 import org.obeonetwork.dsl.uml2.design.internal.services.ElementServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.LogServices;
 
+import com.google.common.base.Function;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Ordering;
 
 /**
  * A set of services to handle the Dashboard.
@@ -320,6 +322,24 @@ public class DashboardServices {
 			}
 		}
 		return null;
+	}
+
+	/**
+	 * Get the all representations except the dashboard sorted by name.
+	 *
+	 * @param any
+	 *            Semantic element
+	 * @return All the representations available in the session except the dashboard.
+	 */
+	public Collection<DRepresentation> getRepresentationsSortedByName(EObject any) {
+		final Collection<DRepresentation> representations = getAllRepresentations(any);
+		final Function<DRepresentation, String> getNameFunction = new Function<DRepresentation, String>() {
+			public String apply(DRepresentation from) {
+				return from.getName().toLowerCase();
+			}
+		};
+		final Ordering<DRepresentation> nameOrdering = Ordering.natural().onResultOf(getNameFunction);
+		return nameOrdering.immutableSortedCopy(representations);
 	}
 
 	/**
