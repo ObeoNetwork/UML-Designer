@@ -5816,6 +5816,13 @@
               </style>
             </subContainerMappings>
             <subContainerMappings name="DA_Design" semanticCandidatesExpression="var:self" domainClass="uml.Model" childrenPresentation="List">
+              <subNodeMappings name="DA_ActivityDiagram" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@toolSections.0/@subSections[name='Create']/@subSections[name='Design']/@ownedTools[name='DA_CreateActivityDiagram']" domainClass="uml.Model">
+                <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="Activity diagram" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Activity.gif" labelAlignment="LEFT" tooltipExpression="Double click to create a new activity diagram" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
               <subNodeMappings name="DA_ClassDiagram" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@toolSections.0/@subSections[name='Create']/@subSections[name='Design']/@ownedTools[name='DA_CreateClassDiagram']" domainClass="uml.Model">
                 <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="Class diagram" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Class.gif" labelAlignment="LEFT" tooltipExpression="Double click to create a new class diagram" resizeKind="NSEW">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -5844,22 +5851,15 @@
                   <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 </style>
               </subNodeMappings>
-              <subNodeMappings name="DA_StateMachineDiagram" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@toolSections.0/@subSections[name='Create']/@subSections[name='Design']/@ownedTools[name='DA_CreateStateMachineDiagram']" domainClass="uml.Model">
-                <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="State Machine diagram" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/StateMachine.gif" labelAlignment="LEFT" tooltipExpression="Double click to create a new state machine diagram" resizeKind="NSEW">
-                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                </style>
-              </subNodeMappings>
-              <subNodeMappings name="DA_ActivityDiagram" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@toolSections.0/@subSections[name='Create']/@subSections[name='Design']/@ownedTools[name='DA_CreateActivityDiagram']" domainClass="uml.Model">
-                <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="Activity diagram" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Activity.gif" labelAlignment="LEFT" tooltipExpression="Double click to create a new activity diagram" resizeKind="NSEW">
-                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                </style>
-              </subNodeMappings>
               <subNodeMappings name="DA_SequenceDiagram" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@toolSections.0/@subSections[name='Create']/@subSections[name='Design']/@ownedTools[name='DA_CreateSequenceDiagram']" domainClass="uml.Model">
                 <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="Sequence diagram" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Lifeline.gif" labelAlignment="LEFT" tooltipExpression="Double click to create a new sequence diagram" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subNodeMappings>
+              <subNodeMappings name="DA_StateMachineDiagram" semanticCandidatesExpression="var:self" doubleClickDescription="//@ownedViewpoints[name='Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@toolSections.0/@subSections[name='Create']/@subSections[name='Design']/@ownedTools[name='DA_CreateStateMachineDiagram']" domainClass="uml.Model">
+                <style xsi:type="style:BundledImageDescription" labelSize="10" labelExpression="State Machine diagram" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/StateMachine.gif" labelAlignment="LEFT" tooltipExpression="Double click to create a new state machine diagram" resizeKind="NSEW">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -5912,7 +5912,7 @@
             </style>
           </subContainerMappings>
           <subContainerMappings name="DA_Navigate" semanticCandidatesExpression="var:self" domainClass="uml.Model" childrenPresentation="List">
-            <subNodeMappings name="DA_Representation" semanticCandidatesExpression="service:getAllRepresentations" doubleClickDescription="//@ownedViewpoints[name='Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@toolSections.0/@subSections[name='Navigate']/@ownedTools[name='DA_NavigateToExistingRepresentation']" domainClass="viewpoint.DRepresentation">
+            <subNodeMappings name="DA_Representation" semanticCandidatesExpression="service:getRepresentationsSortedByName" doubleClickDescription="//@ownedViewpoints[name='Dashboard']/@ownedRepresentations[name='Dashboard']/@defaultLayer/@toolSections.0/@subSections[name='Navigate']/@ownedTools[name='DA_NavigateToExistingRepresentation']" domainClass="viewpoint.DRepresentation">
               <style xsi:type="style:BundledImageDescription" labelSize="10" labelAlignment="LEFT" tooltipExpression="Double click to open the current diagram" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
