@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _xfesoNMTEeSYFrQZGshlCQ
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/14/15 5:00 PM
+Save-Time: 7/27/15 3:03 PM
 Testcase-Type: ecl
 Verifications: _xFd6MOK2EeSFPdaYdu2lXQ
 
@@ -46,10 +46,35 @@ with [get-editor "NewModel Use Case Diagram" | get-diagram -index 1 | get-edit-p
     | get-edit-part -name Actor1] {
     get-edit-part -name Actor1 | get-property "getFigure().getText()" | equals Actor1 | verify-true
 }
+with [get-editor "NewModel Use Case Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Use Case Diagram"] {
+    get-edit-part -name Actor1 | get-edit-part -className WorkspaceImageEditPart | get-figure 0 
+        | get-property "getClassName()" 
+        | equals "org.eclipse.sirius.diagram.ui.tools.api.figure.SVGWorkspaceImageFigure" | verify-true
+}
 
 // Check Model
 with [get-editor "NewModel Use Case Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Use Case Diagram" 
     | get-edit-part -name Actor1] {
         get-property "element.target.name" | equals Actor1 | verify-true
+}
+
+// Create non human actor
+with [get-editor "NewModel Use Case Diagram"] {
+    with [get-palette | get-palette-entry "Non Human Actor"] {
+        mouse-move 132 9 button1 -height 23 -width 339
+        mouse-press 132 9 button1 -height 23 -width 339
+        mouse-release 132 9 button1 524288 -height 23 -width 339
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Use Case Diagram"] {
+        mouse-move 335 118 button1 -height 338 -width 652
+        mouse-press 335 118 button1 -height 338 -width 652
+        mouse-release 335 118 button1 524288 -height 338 -width 652
+    }
+}
+
+// Check diagram
+with [get-editor "NewModel Use Case Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Use Case Diagram"] {
+    get-edit-part -name Actor2 | get-edit-part -className SquareEditPart | get-figure 0 | get-property "getClassName()" 
+        | equals "org.eclipse.sirius.diagram.ui.internal.edit.parts.SquareEditPart$SquareFigure" | verify-true
 }
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
