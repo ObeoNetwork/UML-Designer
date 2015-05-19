@@ -472,7 +472,7 @@
             </menuItemDescription>
           </ownedTools>
           <ownedTools xsi:type="tool:PopupMenu" name="Move UP/DOWN TO Elements" label=" Move to" precondition="[self.oclIsKindOf(uml::PackageableElement)/]">
-            <menuItemDescription xsi:type="tool:OperationAction" name="Move TO Up Elements" label="Up">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Move TO Up Elements" label="Up" precondition="[views->filter(diagram::DNodeListElement )->size() = views->size()/]">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.oclAsType(diagram::DDiagramElement).target->filter(uml::PackageableElement).moveUpPackageableElements(views.oclAsType(diagram::DDiagramElement).target->filter(uml::PackageableElement))/]">
@@ -480,7 +480,7 @@
                 </firstModelOperations>
               </initialOperation>
             </menuItemDescription>
-            <menuItemDescription xsi:type="tool:OperationAction" name="Move TO Down Elements" label="Down">
+            <menuItemDescription xsi:type="tool:OperationAction" name="Move TO Down Elements" label="Down" precondition="[views->filter(diagram::DNodeListElement )->size() = views->size()/]">
               <view name="views"/>
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[views.oclAsType(diagram::DDiagramElement).target->filter(uml::PackageableElement).moveDownPackageableElements(views.oclAsType(diagram::DDiagramElement).target->filter(uml::PackageableElement))/]">
