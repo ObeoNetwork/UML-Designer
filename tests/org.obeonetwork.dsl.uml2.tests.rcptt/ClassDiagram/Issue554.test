@@ -1,0 +1,76 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Contexts: _MWdYgIBGEeS4X6G9cD21hw,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_X-rQgH-QEeS4X6G9cD21hw,_p-v3gMyvEeSmqoI7c5i_uw,_qjgwIP7xEeS7OLGvKiovtw
+Element-Name: Issue554
+Element-Type: testcase
+Element-Version: 3.0
+External-Reference: 
+Id: _RFH8If7vEeS7OLGvKiovtw
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 5/20/15 3:28 PM
+Testcase-Type: ecl
+Verifications: _5paYQP7xEeS7OLGvKiovtw
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Create a New semantic element in class diagram: AssociationClass in a package
+Test:
+- with Palette tool : AssociationClass 
+create new element between Class1 and Class2 in a package.
+
+Result:
+- new connection appears in diagram, and new association class element appears in diagram
+- new connection appear in model explorer under package
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
+Content-Type: text/ecl
+Entry-Name: .content
+
+// Create association class between two clases in a package
+with [get-editor "test Class Diagram"] {
+    with [get-palette | get-palette-entry Associations] {
+        mouse-move 5 11 button1 -height 23 -width 125
+        mouse-press 5 11 button1 -height 23 -width 125
+        mouse-release 5 11 button1 524288 -height 23 -width 125
+    }
+    get-diagram -index 1 | get-edit-part -name "test Class Diagram" | mouse-move 760 233 -height 338 -width 761
+    with [get-palette | get-palette-entry "Association Class"] {
+        mouse-move 37 15 button1 -height 37 -width 125
+        mouse-press 37 15 button1 -height 37 -width 125
+        mouse-release 37 15 button1 524288 -height 37 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part -name Package1] {
+        mouse-move 599 139 -height 196 -width 601
+        with [get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            with [get-edit-part -name Class1 | get-edit-part -className DNodeListViewNodeListCompartmentEditPart] {
+                mouse-move 73 39 button1 -height 71 -width 116
+                mouse-press 73 39 button1 -height 71 -width 116
+                mouse-release 73 39 button1 524288 -height 71 -width 116
+            }
+            with [get-edit-part -name Class2 | get-edit-part -className DNodeListViewNodeListCompartmentEditPart] {
+                mouse-move 58 51 button1 -height 71 -width 116
+                mouse-press 58 51 button1 -height 71 -width 116
+            }
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        get-edit-part -name Package1 | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+            | get-edit-part -name Class2 | get-edit-part -className DNodeListViewNodeListCompartmentEditPart 
+            | mouse-release 58 51 button1 524288 -height 71 -width 116
+        mouse-move 494 336 -height 338 -width 761
+    }
+}
+// Check diagram
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name Package1 | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+    get-edit-part -name Class2 | get-target-connection 0 | get-property "getFigure().isVisible()" | equals true 
+        | verify-true
+    get-edit-part -name AssociationClass1 | get-edit-part -className DNodeListViewNodeListCompartmentEditPart 
+        | get-property "getFigure().isVisible()" | equals true | verify-true
+    get-edit-part -name Class2 | get-target-connection 0 | get-target-connection 0 
+        | get-property "getFigure().isVisible()" | equals true | verify-true
+}
+
+------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
