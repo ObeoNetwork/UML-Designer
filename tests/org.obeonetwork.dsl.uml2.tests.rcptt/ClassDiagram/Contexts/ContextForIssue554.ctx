@@ -1,0 +1,67 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: ContextForIssue554
+Element-Type: context
+Element-Version: 2.0
+Id: _qjgwIP7xEeS7OLGvKiovtw
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 5/20/15 3:11 PM
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Create two classes in a package
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+with [get-editor "test Class Diagram"] {
+	// Create a Package
+    with [get-palette | get-palette-entry Package] {
+        mouse-move 34 10 button1 -height 23 -width 125
+        mouse-press 34 10 button1 -height 23 -width 125
+        mouse-release 34 10 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        mouse-move 45 128 button1 -height 319 -width 655
+        mouse-press 45 128 button1 -height 319 -width 655
+        mouse-move 48 128 -mask 524288 -height 319 -width 655
+        mouse-drag 645 326 button1 524288 -height 326 -width 655
+        mouse-release 645 326 button1 524288 -height 326 -width 655
+    }
+    // Create Class1 in package1
+    with [get-palette | get-palette-entry Class] {
+        mouse-press 43 13 button1 -height 23 -width 125
+        mouse-release 43 13 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part -name Package1 
+        | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        mouse-move 32 50 button1 -height 194 -width 599
+        mouse-press 32 50 button1 -height 194 -width 599
+        mouse-release 32 50 button1 524288 -height 194 -width 599
+    }
+    // Creat Class2 in package1
+    with [get-palette] {
+        with [get-palette-entry Class] {
+            mouse-press 58 7 button1 -height 23 -width 125
+            mouse-release 58 7 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part -name Package1 
+        | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        mouse-move 424 54 button1 -height 194 -width 599
+        mouse-press 424 54 button1 -height 194 -width 599
+        mouse-release 424 54 button1 524288 -height 194 -width 599
+    }
+}
+// Check context
+get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name Package1 
+get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name Package1 | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name Class1
+get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part 
+    -name Package1 | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name Class2
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--
