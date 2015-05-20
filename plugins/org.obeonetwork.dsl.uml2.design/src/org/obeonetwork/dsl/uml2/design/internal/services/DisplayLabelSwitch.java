@@ -269,7 +269,7 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	@Override
 	public String caseControlFlow(org.eclipse.uml2.uml.ControlFlow object) {
 		String labelToDisplay = labelProvider.getText(object);
-		labelToDisplay = labelToDisplay.replace("<ControlFlow> ", ""); //$NON-NLS-1$ //$NON-NLS-2$
+		labelToDisplay = labelToDisplay.replace("<Control Flow> ", ""); //$NON-NLS-1$ //$NON-NLS-2$
 		return labelToDisplay;
 	}
 
@@ -548,7 +548,7 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	@Override
 	public String caseObjectFlow(org.eclipse.uml2.uml.ObjectFlow object) {
 		String labelToDisplay = labelProvider.getText(object);
-		labelToDisplay = labelToDisplay.replace("<ObjectFlow> ", ""); //$NON-NLS-1$ //$NON-NLS-2$
+		labelToDisplay = labelToDisplay.replace("<Object Flow> ", ""); //$NON-NLS-1$ //$NON-NLS-2$
 		return labelToDisplay;
 	}
 
