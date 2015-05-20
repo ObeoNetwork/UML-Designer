@@ -405,9 +405,11 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	 *
 	 * @param diagram
 	 *            Diagram
+	 * @param container
+	 *            Container of the associationClass
 	 * @return Set of visible association Classes or empty collection
 	 */
-	public Collection<EObject> getVisibleAssociationClass(DDiagram diagram) {
+	public Collection<EObject> getVisibleAssociationClass(DDiagram diagram, EObject container) {
 		final Set<EObject> associationClasses = new HashSet<EObject>();
 		final Collection<EObject> displayedNodes = UIServices.INSTANCE.getDisplayedNodes(diagram);
 		final Collection<EObject> associations = getAssociationInverseRefs(diagram);
@@ -419,7 +421,9 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 				final Type targetType = target.getType();
 				if (sourceType != null && displayedNodes.contains(sourceType) && targetType != null
 						&& displayedNodes.contains(targetType)) {
-					associationClasses.add(association);
+					if (container == association.eContainer()) {
+						associationClasses.add(association);
+					}
 				}
 			}
 		}
