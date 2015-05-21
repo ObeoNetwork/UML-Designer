@@ -174,3 +174,14 @@ footer p {
 .center {
   text-align: center;
 }
+
+table {
+  width: 100%;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+td, th {
+  padding: 5px;
+  border: 1px solid #ddd;
+}
