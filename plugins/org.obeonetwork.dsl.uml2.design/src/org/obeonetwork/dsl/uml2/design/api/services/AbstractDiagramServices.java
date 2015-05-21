@@ -75,6 +75,7 @@ import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
 import org.obeonetwork.dsl.uml2.design.api.utils.UmlUtils;
 import org.obeonetwork.dsl.uml2.design.internal.services.ElementServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.LabelServices;
+import org.obeonetwork.dsl.uml2.design.internal.services.ReconnectPreconditionSwitch;
 import org.obeonetwork.dsl.uml2.design.internal.services.ReconnectSwitch;
 import org.obeonetwork.dsl.uml2.design.internal.services.RelatedServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.SemanticElementsSwitch;
@@ -816,6 +817,45 @@ public abstract class AbstractDiagramServices {
 		reconnectService.setOldPointedElement(source);
 		reconnectService.setNewPointedElement(target);
 		return reconnectService.doSwitch(context);
+	}
+
+
+	/**
+	 * Generic service used to determine is select edge's source could be reconnected to an element.
+	 * 
+	 * @param context
+	 *            Element attached to the existing edge
+	 * @param source
+	 *            Represents the semantic element pointed by the edge before reconnecting
+	 * @param target
+	 *            Represents the semantic element pointed by the edge after reconnecting
+	 * @return true if the edge could be reconnected
+	 */
+	public boolean reconnectSourcePrecondition(Element context, Element source, Element target) {
+		final ReconnectPreconditionSwitch reconnectPreconditionService = new ReconnectPreconditionSwitch();
+		reconnectPreconditionService.setReconnectKind(ReconnectPreconditionSwitch.RECONNECT_SOURCE);
+		reconnectPreconditionService.setNewPointedElement(target);
+		reconnectPreconditionService.setOldPointedElement(source);
+		return reconnectPreconditionService.isReconnectable(context);
+	}
+
+	/**
+	 * Generic service used to determine is select edge's target could be reconnected to an element.
+	 * 
+	 * @param context
+	 *            Element attached to the existing edge
+	 * @param source
+	 *            Represents the semantic element pointed by the edge before reconnecting
+	 * @param target
+	 *            Represents the semantic element pointed by the edge after reconnecting
+	 * @return true if the edge could be reconnected
+	 */
+	public boolean reconnectTargetPrecondition(Element context, Element source, Element target) {
+		final ReconnectPreconditionSwitch reconnectPreconditionService = new ReconnectPreconditionSwitch();
+		reconnectPreconditionService.setReconnectKind(ReconnectPreconditionSwitch.RECONNECT_TARGET);
+		reconnectPreconditionService.setNewPointedElement(target);
+		reconnectPreconditionService.setOldPointedElement(source);
+		return reconnectPreconditionService.isReconnectable(context);
 	}
 
 	/**
