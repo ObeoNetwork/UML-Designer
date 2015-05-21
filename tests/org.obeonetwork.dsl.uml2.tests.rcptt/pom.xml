@@ -19,10 +19,7 @@ Contributors:
 
     <properties>
         <ci4rcptt-maven-version>1.5.6-SNAPSHOT</ci4rcptt-maven-version>
-        <base-aut>http://marketplace.obeonetwork.com/updates/nightly/uml/UMLDesigner-linux.gtk.x86_64.zip</base-aut>
-        <!--
-        <base-aut>/home/melanie/Obeo/dev/programs/uml/UMLDesigner-linux.gtk.x86_64.zip</base-aut>
-		-->
+        <base-aut>${aut}</base-aut>
     </properties> 
 
     <build>
@@ -38,12 +35,7 @@ Contributors:
     </aut>	  
     <runner>
         <!-- version of RCPTT Runner -->
-
-        <explicit>http://download.eclipse.org/rcptt/nightly/2.0.0/latest/runner/rcptt.runner-incubation-2.0.0-nightly.zip</explicit>
-        <!--
-        <explicit>/home/melanie/Obeo/dev/programs/rcptt/rcptt.runner-incubation-2.0.0-nightly.zip</explicit>
-		-->
-
+        <explicit>${rcpttrunner}</explicit>
     </runner>
     <suites>
         <suite>All</suite>
