@@ -42,6 +42,8 @@ public class UmlViewpoints {
 						selection.deselectViewpoint(previouslySelected, session,
 								new NullProgressMonitor());
 					}
+					selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().reused(),
+							session, new NullProgressMonitor());
 					selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().capture(),
 							session, new NullProgressMonitor());
 					selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().design(),
@@ -51,6 +53,32 @@ public class UmlViewpoints {
 					selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().dashboard(),
 							session, new NullProgressMonitor());
 					selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().extend(),
+							session, new NullProgressMonitor());
+				}
+			});
+		}
+	}
+
+	/**
+	 * Enable the UML Reused viewpoint.
+	 *
+	 * @param session
+	 *            Session
+	 */
+	public static void enableReused(final Session session) {
+		if (session != null) {
+			session.getTransactionalEditingDomain().getCommandStack()
+			.execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+				@Override
+				protected void doExecute() {
+					final ViewpointSelectionCallback selection = new ViewpointSelectionCallback();
+					final Viewpoint reused = UmlViewpoints.fromViewpointRegistry().reused();
+					for (final Viewpoint previouslySelected : session.getSelectedViewpoints(false)) {
+						if (previouslySelected.equals(reused)) {
+							return;
+						}
+					}
+					selection.selectViewpoint(UmlViewpoints.fromViewpointRegistry().reused(),
 							session, new NullProgressMonitor());
 				}
 			});
@@ -112,6 +140,15 @@ public class UmlViewpoints {
 	 */
 	public Viewpoint extend() {
 		return registry.getViewpoint(URI.createURI("viewpoint:/org.obeonetwork.dsl.uml2.design/Extend")); //$NON-NLS-1$
+	}
+
+	/**
+	 * Reused.
+	 *
+	 * @return viewpoint
+	 */
+	public Viewpoint reused() {
+		return registry.getViewpoint(URI.createURI("viewpoint:/org.obeonetwork.dsl.uml2.design/Reused")); //$NON-NLS-1$
 	}
 
 	/**

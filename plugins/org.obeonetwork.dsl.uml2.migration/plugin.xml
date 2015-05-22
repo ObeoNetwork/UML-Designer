@@ -45,7 +45,11 @@
    <extension
          point="org.eclipse.sirius.migrationParticipant">
       <participant
-            class="org.obeonetwork.dsl.uml2.migration.UmlDesignerRepresentationsFileMigrationParticipant"
+            class="org.obeonetwork.dsl.uml2.migration.UmlDesigner4To5RepresentationsFileMigrationParticipant"
+            kind="VSM">
+      </participant>
+      <participant
+            class="org.obeonetwork.dsl.uml2.migration.UmlDesigner4To5RepresentationsFileMigrationParticipant"
             kind="VSM">
       </participant>
    </extension>

@@ -22,7 +22,7 @@ import org.osgi.framework.Version;
  * @author Melanie Bats <a
  *         href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
-public class UmlDesignerRepresentationsFileMigrationParticipant extends
+public class UmlDesigner3To4RepresentationsFileMigrationParticipant extends
 		AbstractRepresentationsFileMigrationParticipant {
 	/**
 	 * The VP version for which this migration is added.

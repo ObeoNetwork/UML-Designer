@@ -23,15 +23,12 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelectionCallback;
 import org.eclipse.sirius.ui.tools.internal.wizards.CreateRepresentationWizard;
 import org.eclipse.sirius.ui.tools.internal.wizards.CreateSessionResourceWizard;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
-import org.obeonetwork.dsl.uml2.design.api.utils.UmlViewpoints;
 
 /**
  * Init diagram actions.
@@ -79,29 +76,6 @@ public class UmlInitDiagramFileAction implements IObjectActionDelegate {
 	}
 
 	protected void openCreateRepresentationWizard(final Session existingSession) {
-
-		existingSession.getTransactionalEditingDomain().getCommandStack()
-		.execute(new RecordingCommand(existingSession.getTransactionalEditingDomain()) {
-
-			@Override
-			protected void doExecute() {
-				final ViewpointSelectionCallback selectionCallback = new ViewpointSelectionCallback();
-				for (final Viewpoint previouslySelected : existingSession
-						.getSelectedViewpoints(false)) {
-					selectionCallback.deselectViewpoint(previouslySelected, existingSession,
-							new NullProgressMonitor());
-				}
-				selectionCallback.selectViewpoint(UmlViewpoints.fromViewpointRegistry().capture(),
-						existingSession, new NullProgressMonitor());
-				selectionCallback.selectViewpoint(UmlViewpoints.fromViewpointRegistry().design(),
-						existingSession, new NullProgressMonitor());
-				selectionCallback.selectViewpoint(UmlViewpoints.fromViewpointRegistry().review(),
-						existingSession, new NullProgressMonitor());
-				selectionCallback.selectViewpoint(UmlViewpoints.fromViewpointRegistry().extend(),
-						existingSession, new NullProgressMonitor());
-			}
-		});
-
 		final CreateRepresentationWizard wizard = new CreateRepresentationWizard(existingSession);
 		wizard.init();
 		final WizardDialog dialog = new WizardDialog(getShell(), wizard);
