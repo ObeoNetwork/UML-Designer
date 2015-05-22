@@ -30,7 +30,7 @@
       </defaultLayer>
       <toolSection documentation="reused tools" name="reused tools">
         <subSections name="existingElements">
-          <ownedTools xsi:type="tool:ToolDescription" name="AddExistingElements" label="Add" precondition="service:containerView.isValidContainerMapping" iconPath="/org.eclipse.search/icons/full/etool16/search.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Add existing elements to the diagram" name="AddExistingElements" label="Add" precondition="service:containerView.isValidContainerMapping" iconPath="/org.eclipse.search/icons/full/etool16/search.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -74,7 +74,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" name="RemoveExistingElements" label="Remove" precondition="service:containerView.isNotDiagram" forceRefresh="true" iconPath="/org.eclipse.search/icons/full/dtool16/search.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Remove an existing element from the diagram" name="RemoveExistingElements" label="Remove" precondition="service:containerView.isNotDiagram" forceRefresh="true" iconPath="/org.eclipse.search/icons/full/dtool16/search.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -999,7 +999,7 @@
           </style>
         </edgeMappings>
         <toolSections name="PH_ExistingElements" label="Existing Elements" reusedTools="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='AddExistingElements'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='RemoveExistingElements'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='Delete']">
-          <ownedTools xsi:type="tool:OperationAction" name="PH_AddRelatedElements" label="Add Related Elements" forceRefresh="true" icon="/org.eclipse.search/icons/full/etool16/search.gif">
+          <ownedTools xsi:type="tool:OperationAction" documentation="Add related elements to the diagram" name="PH_AddRelatedElements" label="Add Related Elements" forceRefresh="true" icon="/org.eclipse.search/icons/full/etool16/search.gif">
             <view name="views"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:views.getTarget">
@@ -1015,7 +1015,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Types" reusedTools="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='Import%20primitive%20types']">
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Without force refresh containment edge is not created" name="Package" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@nodeMappings[name='PH_Package']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new package" name="Package" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@nodeMappings[name='PH_Package']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -1131,7 +1131,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Contained in" precondition="[preSourceView.target &lt;> preTargetView.target/]" edgeMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Containment']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Association.gif">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new contained in link from contained element to container element" name="Contained in" precondition="[preSourceView.target &lt;> preTargetView.target/]" edgeMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Containment']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Association.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -1142,7 +1142,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Import" edgeMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Import']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new import" name="Import" edgeMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Import']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -1155,7 +1155,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Merge" edgeMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Merge']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new merge" name="Merge" edgeMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Merge']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -1168,7 +1168,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Usage" edgeMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Dependency']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Usage.gif">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new usage" name="Usage" edgeMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Dependency']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Usage.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -1184,7 +1184,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Dependency" edgeMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Dependency']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new dependency" name="Dependency" edgeMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Dependency']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -1286,7 +1286,7 @@
           </style>
         </containerMappings>
         <toolSections name="Existing Elements" reusedTools="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='AddExistingElements'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='RemoveExistingElements'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='Delete']">
-          <ownedTools xsi:type="tool:OperationAction" name="UCD_AddRelatedElements" label="Add Related Elements" forceRefresh="true" icon="/org.eclipse.search/icons/full/etool16/search.gif">
+          <ownedTools xsi:type="tool:OperationAction" documentation="Add related elements to diagram" name="UCD_AddRelatedElements" label="Add Related Elements" forceRefresh="true" icon="/org.eclipse.search/icons/full/etool16/search.gif">
             <view name="views"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:views">
@@ -1333,7 +1333,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Use Case" reusedTools="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='EAnnotation']">
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create an actor" name="Actor" nodeMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_Actor']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new actor" name="Actor" nodeMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_Actor']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -1344,7 +1344,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Use Case" name="Use Case" nodeMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_UseCase']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new use case" name="Use Case" nodeMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@nodeMappings[name='UCD_UseCase']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -1358,7 +1358,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new Association" name="Association" edgeMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@edgeMappings[name='UCD_Association']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new association" name="Association" edgeMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@edgeMappings[name='UCD_Association']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -1376,7 +1376,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create an Extend" name="Extend" precondition="[preSource->including(preTarget)->filter(uml::UseCase)->size() = 2/]" edgeMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@edgeMappings[name='UCD_Extend']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new extend" name="Extend" precondition="[preSource->including(preTarget)->filter(uml::UseCase)->size() = 2/]" edgeMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@edgeMappings[name='UCD_Extend']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -1390,7 +1390,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create an Include" name="Include" precondition="[preSource->including(preTarget)->filter(uml::UseCase)->size() = 2/]" edgeMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@edgeMappings[name='UCD_Include']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new include" name="Include" precondition="[preSource->including(preTarget)->filter(uml::UseCase)->size() = 2/]" edgeMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@edgeMappings[name='UCD_Include']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -1404,7 +1404,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Tool to create a Generalization" name="Generalization" precondition="service:preSource.isSameType(preTarget)" edgeMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@edgeMappings[name='UCD_Generalization']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new generalization" name="Generalization" precondition="service:preSource.isSameType(preTarget)" edgeMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@edgeMappings[name='UCD_Generalization']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -1543,7 +1543,7 @@
           </subSections>
         </toolSections>
         <toolSections name="Subjects">
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new Subject" name="Component" containerMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Component.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new component" name="Component" containerMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Component.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -1555,7 +1555,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new Subject" name="Artifact" containerMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Artifact.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new artifact" name="Artifact" containerMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Artifact.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -1567,7 +1567,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new Subject" name="DataType" containerMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/DataType.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new dataType" name="DataType" containerMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/DataType.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -1579,7 +1579,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new Subject" name="Interface" containerMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Interface.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new interface" name="Interface" containerMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Interface.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -1591,7 +1591,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new Subject" name="Collaboration" containerMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Collaboration.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new collaboration" name="Collaboration" containerMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Collaboration.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -1603,7 +1603,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new Subject" name="Class" containerMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Class.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new class" name="Class" containerMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Use%20Case%20Diagram']/@defaultLayer/@containerMappings[name='UCD_Subject']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Class.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -1872,7 +1872,7 @@
           </style>
         </containerMappings>
         <toolSections name="CD_ExistingElements" label="Existing Elements" reusedTools="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='AddExistingElements'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='RemoveExistingElements'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='Delete']">
-          <ownedTools xsi:type="tool:OperationAction" name="CD_AddRelatedElements" label="Add Related Elements" forceRefresh="true" icon="/org.eclipse.search/icons/full/etool16/search.gif">
+          <ownedTools xsi:type="tool:OperationAction" documentation="Add related elements" name="CD_AddRelatedElements" label="Add Related Elements" forceRefresh="true" icon="/org.eclipse.search/icons/full/etool16/search.gif">
             <view name="views"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:views.getTarget">
@@ -1900,7 +1900,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Types" reusedTools="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='Import%20primitive%20types']">
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a Package" name="Package" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Package']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new package" name="Package" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Package']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -1911,7 +1911,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a Class" name="Class" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Class.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new class" name="Class" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Class.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -1922,7 +1922,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new Interface" name="Interface" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Interface']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new interface" name="Interface" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Interface']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -1934,7 +1934,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="DataTypes">
-            <tools xsi:type="tool_1:ContainerCreationDescription" name="Enumeration" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration']">
+            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new enumeration" name="Enumeration" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration']">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -1945,7 +1945,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ContainerCreationDescription" name="PrimitiveType" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_PrimitiveType']">
+            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new primitiveType" name="PrimitiveType" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_PrimitiveType']">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -1956,7 +1956,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ContainerCreationDescription" name="DataType" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_DataType']">
+            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new dataType" name="DataType" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_DataType']">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -1971,7 +1971,7 @@
         </toolSections>
         <toolSections name="Features" reusedTools="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='Move%20UP%2FDOWN%20TO%20Attributes%20or%20Operations']">
           <ownedTools xsi:type="tool_1:ToolGroup" name="Properties">
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Property" name="Property" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/PropertyCreation.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new property" name="Property" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Property']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/PropertyCreation.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -1987,7 +1987,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:ToolDescription" name="Typed Property" precondition="[self.oclIsKindOf(uml::Classifier)/]" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Property.gif">
+            <tools xsi:type="tool:ToolDescription" documentation="Create a new typed property" name="Typed Property" precondition="[self.oclIsKindOf(uml::Classifier)/]" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Property.gif">
               <element name="element"/>
               <elementView name="elementView"/>
               <initialOperation>
@@ -2006,14 +2006,14 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Operation" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Operation']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new operation" name="Operation" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_ReusedMappingForFeatures']/@subNodeMappings[name='CD_Operation']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:container.createOperation"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Literal" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration']/@subNodeMappings[name='CD_EnumerationLiteral']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new literal" name="Literal" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Enumeration']/@subNodeMappings[name='CD_EnumerationLiteral']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -2046,7 +2046,7 @@
         </toolSections>
         <toolSections name="Relationships" reusedTools="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='EAnnotation']">
           <ownedTools xsi:type="tool_1:ToolGroup" name="Associations">
-            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new Association" name="Association" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']" extraSourceMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@nodeMappings[name='CD_BrokenAssociation']">
+            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new association" name="Association" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']" extraSourceMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@nodeMappings[name='CD_BrokenAssociation']">
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
               <sourceViewVariable name="sourceView"/>
@@ -2078,7 +2078,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new Association" name="Reference" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']" extraSourceMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@nodeMappings[name='CD_BrokenAssociation']">
+            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new reference" name="Reference" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']" extraSourceMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@nodeMappings[name='CD_BrokenAssociation']">
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
               <sourceViewVariable name="sourceView"/>
@@ -2112,7 +2112,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new Association" name="Composition" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Association_composite.gif" extraSourceMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@nodeMappings[name='CD_BrokenAssociation']">
+            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new composition" name="Composition" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Association_composite.gif" extraSourceMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@nodeMappings[name='CD_BrokenAssociation']">
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
               <sourceViewVariable name="sourceView"/>
@@ -2146,7 +2146,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new Association" name="Aggregation" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Association_shared.gif" extraSourceMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@nodeMappings[name='CD_BrokenAssociation']">
+            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new aggregation" name="Aggregation" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Association_shared.gif" extraSourceMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@nodeMappings[name='CD_BrokenAssociation']">
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
               <sourceViewVariable name="sourceView"/>
@@ -2180,7 +2180,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:EdgeCreationDescription" name="Association Class" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_AssociationClassToAssociation']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/AssociationClass.gif">
+            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new association class" name="Association Class" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Association'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_AssociationClassToAssociation']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/AssociationClass.gif">
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
               <sourceViewVariable name="sourceView"/>
@@ -2207,7 +2207,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Generalization" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Generalization']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Generalization.gif">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new generalization" name="Generalization" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Generalization']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Generalization.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -2221,7 +2221,7 @@
             </initialOperation>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="Dependencies">
-            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new Interface Realization" name="Interface Realization" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_InterfaceRealization']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/InterfaceRealization.gif">
+            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new interface realization" name="Interface Realization" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_InterfaceRealization']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/InterfaceRealization.gif">
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
               <sourceViewVariable name="sourceView"/>
@@ -2234,7 +2234,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new Dependency" name="Dependency" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Dependency']">
+            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new dependency" name="Dependency" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Dependency']">
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
               <sourceViewVariable name="sourceView"/>
@@ -2248,7 +2248,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new Interface Realization" name="Usage" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Dependency']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Usage.gif">
+            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new usage" name="Usage" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Dependency']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Usage.gif">
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
               <sourceViewVariable name="sourceView"/>
@@ -2262,7 +2262,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new Dependency" name="Abstraction" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Dependency']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Abstraction.gif">
+            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new abstraction" name="Abstraction" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Dependency']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Abstraction.gif">
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
               <sourceViewVariable name="sourceView"/>
@@ -2288,7 +2288,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Nest Classifier" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_NestedClass']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Connector.gif">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new nest classifier" name="Nest Classifier" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_NestedClass']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Connector.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -2301,7 +2301,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Binding" precondition="[preTarget->filter(uml::TemplateableElement).ownedTemplateSignature.ownedParameter&lt;>null/]" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_TemplateBinding']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new binding" name="Binding" precondition="[preTarget->filter(uml::TemplateableElement).ownedTemplateSignature.ownedParameter&lt;>null/]" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_TemplateBinding']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -2746,7 +2746,7 @@
           </conditionnalStyles>
         </containerMappings>
         <toolSections name="CS_ExistingElements" label="Existing Elements" reusedTools="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='AddExistingElements'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='RemoveExistingElements'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='Delete']">
-          <ownedTools xsi:type="tool:OperationAction" name="CS_AddRelatedElements" label="Add Related Elements" precondition="[self.oclIsKindOf(uml::Interface) or self.oclIsKindOf(uml::Port) or self.oclIsKindOf(uml::EncapsulatedClassifier) or self.oclIsKindOf(uml::PackageableElement)/]" forceRefresh="true" icon="/org.eclipse.search/icons/full/etool16/search.gif">
+          <ownedTools xsi:type="tool:OperationAction" documentation="Add related elements to the diagram" name="CS_AddRelatedElements" label="Add Related Elements" precondition="[self.oclIsKindOf(uml::Interface) or self.oclIsKindOf(uml::Port) or self.oclIsKindOf(uml::EncapsulatedClassifier) or self.oclIsKindOf(uml::PackageableElement)/]" forceRefresh="true" icon="/org.eclipse.search/icons/full/etool16/search.gif">
             <view name="views"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:For" expression="service:handleUnmeaningViews(views)" iteratorName="view">
@@ -2814,7 +2814,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Node">
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="CS_Create_Part" label="Part" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Part']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new part" name="CS_Create_Part" label="Part" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Part']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -2824,7 +2824,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="CS_Add_Port" label="Port" precondition="service:isValidPortContainer" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@borderedNodeMappings[name='CS_StructuredClassifier_Port'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Part']/@borderedNodeMappings[name='CS_Part_Port']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Port" name="CS_Add_Port" label="Port" precondition="service:isValidPortContainer" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@borderedNodeMappings[name='CS_StructuredClassifier_Port'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@containerMappings[name='CS_StructuredClassifier']/@subContainerMappings[name='CS_Part']/@borderedNodeMappings[name='CS_Part_Port']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -2853,7 +2853,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Edge">
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Create Connector" label="Connector" precondition="service:preSource.isConnectable(preTarget)" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@edgeMappings[name='CS_Connector']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new connector" name="Create Connector" label="Connector" precondition="service:preSource.isConnectable(preTarget)" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Composite%20Structure%20Diagram']/@defaultLayer/@edgeMappings[name='CS_Connector']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -3117,7 +3117,7 @@
           </conditionnalStyles>
         </containerMappings>
         <toolSections name="CO_ExistingElements" label="Existing Elements" reusedTools="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='AddExistingElements'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='RemoveExistingElements'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='Delete']">
-          <ownedTools xsi:type="tool:OperationAction" name="CO_AddRelatedElements" label="Add Related Elements" forceRefresh="true" icon="/org.eclipse.search/icons/full/etool16/search.gif">
+          <ownedTools xsi:type="tool:OperationAction" documentation="Add related elements to the diagram" name="CO_AddRelatedElements" label="Add Related Elements" forceRefresh="true" icon="/org.eclipse.search/icons/full/etool16/search.gif">
             <view name="views"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:views.getTarget">
@@ -3138,7 +3138,7 @@
         </toolSections>
         <toolSections name="Node">
           <ownedTools xsi:type="tool_1:ToolGroup" name="Component">
-            <tools xsi:type="tool_1:ContainerCreationDescription" name="Component" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']">
+            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new component" name="Component" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -3147,7 +3147,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ContainerCreationDescription" name="Class" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']">
+            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new class" name="Class" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -3166,7 +3166,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Port" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']/@borderedNodeMappings[name='CO_Port']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new port" name="Port" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']/@borderedNodeMappings[name='CO_Port']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -3176,7 +3176,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:SelectionWizardDescription" name="CS_Add_TypedPort" label="Typed Port" precondition="[self.oclIsKindOf(uml::StructuredClassifier)/]" candidatesExpression="[self.getValidsForComponentDiagram()->select(eObject | eObject.oclIsKindOf(uml::Class) or eObject.oclIsKindOf(uml::Component) or eObject.oclIsKindOf(uml::Package))/]" tree="true" rootExpression="service:getAllRootsInSession" childrenExpression="[self.eContents()->select(eObject | eObject.oclIsKindOf(uml::Class) or eObject.oclIsKindOf(uml::Component) or eObject.oclIsKindOf(uml::Package))/]" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Port.gif" windowTitle="Select the port type">
+          <ownedTools xsi:type="tool:SelectionWizardDescription" documentation="Create a new typed port" name="CS_Add_TypedPort" label="Typed Port" precondition="[self.oclIsKindOf(uml::StructuredClassifier)/]" candidatesExpression="[self.getValidsForComponentDiagram()->select(eObject | eObject.oclIsKindOf(uml::Class) or eObject.oclIsKindOf(uml::Component) or eObject.oclIsKindOf(uml::Package))/]" tree="true" rootExpression="service:getAllRootsInSession" childrenExpression="[self.eContents()->select(eObject | eObject.oclIsKindOf(uml::Class) or eObject.oclIsKindOf(uml::Component) or eObject.oclIsKindOf(uml::Package))/]" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Port.gif" windowTitle="Select the port type">
             <element name="element"/>
             <containerView name="containerView"/>
             <container name="container"/>
@@ -3189,7 +3189,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Interface" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_ProvidedInterface']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new interface" name="Interface" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@nodeMappings[name='CO_ProvidedInterface']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -3204,7 +3204,7 @@
           <subSections name="edit" reusedTools="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView']"/>
         </toolSections>
         <toolSections name="Edge">
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Usage" precondition="[preSource.createDependencyConnectionCompletePrecondition(preSourceView, preTarget, preTargetView, container, diagram)/]" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_U_Interface2ComponentOrPort'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_U_ComponentOrPort2Interface']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Usage.gif" connectionStartPrecondition="[preSource.createDependencyConnectionStartPrecondition(preSourceView, container, diagram)/]">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new usage" name="Usage" precondition="[preSource.createDependencyConnectionCompletePrecondition(preSourceView, preTarget, preTargetView, container, diagram)/]" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_U_Interface2ComponentOrPort'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_U_ComponentOrPort2Interface']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Usage.gif" connectionStartPrecondition="[preSource.createDependencyConnectionStartPrecondition(preSourceView, container, diagram)/]">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -3220,7 +3220,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Interface Realization" precondition="[preSource.createDependencyConnectionCompletePrecondition(preSourceView, preTarget, preTargetView, container, diagram)/]" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_IR_ComponentOrPort2Interface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_IR_Interface2ComponentOrPort']" connectionStartPrecondition="[preSource.createDependencyConnectionStartPrecondition(preSourceView, container, diagram)/]">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new interface realization" name="Interface Realization" precondition="[preSource.createDependencyConnectionCompletePrecondition(preSourceView, preTarget, preTargetView, container, diagram)/]" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_IR_ComponentOrPort2Interface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_IR_Interface2ComponentOrPort']" connectionStartPrecondition="[preSource.createDependencyConnectionStartPrecondition(preSourceView, container, diagram)/]">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -3236,7 +3236,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Connector" label="Connector" precondition="[preSource.isConnectable(preSourceView, preTarget, preTargetView)/]" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_ProvidedInterface2RequiredInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_RequiredInterface2ProvidedInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_SubProvidedInterface2Port'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_Port2SubProvidedInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_Port2SubRequiredInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_SubRequiredInterface2Port']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new connector" name="Connector" label="Connector" precondition="[preSource.isConnectable(preSourceView, preTarget, preTargetView)/]" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_ProvidedInterface2RequiredInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_RequiredInterface2ProvidedInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_SubProvidedInterface2Port'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_Port2SubProvidedInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_Port2SubRequiredInterface'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_C_SubRequiredInterface2Port']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -3245,7 +3245,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[sourceView.oclAsType(diagram::AbstractDNode).createConnector(targetView)/]"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Dependency" precondition="[preTarget.oclIsKindOf(uml::Classifier)/]" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_Dependency']" connectionStartPrecondition="[preSource.oclIsKindOf(uml::Classifier)/]">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new dependency" name="Dependency" precondition="[preTarget.oclIsKindOf(uml::Classifier)/]" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_Dependency']" connectionStartPrecondition="[preSource.oclIsKindOf(uml::Classifier)/]">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -3261,7 +3261,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Component Realization" precondition="[preTarget.oclIsKindOf(uml::Component)/]" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_ComponentRealization']" connectionStartPrecondition="[preSource.oclIsKindOf(uml::Classifier)/]">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new component realization" name="Component Realization" precondition="[preTarget.oclIsKindOf(uml::Component)/]" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_ComponentRealization']" connectionStartPrecondition="[preSource.oclIsKindOf(uml::Classifier)/]">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -3272,7 +3272,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Redefined" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_Redefined']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Association.gif">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new redefined" name="Redefined" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_Redefined']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Association.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -3400,7 +3400,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Generalization" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_Generalization']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Generalization.gif">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new generalization" name="Generalization" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_Generalization']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Generalization.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -3538,7 +3538,7 @@
           </conditionnalStyles>
         </containerMappings>
         <toolSections name="DE_ExistingElements" label="Existing Elements" reusedTools="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='AddExistingElements'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='RemoveExistingElements'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='Delete']">
-          <ownedTools xsi:type="tool:OperationAction" name="DE_AddRelatedElements" label="Add Related Elements" forceRefresh="true" icon="/org.eclipse.search/icons/full/etool16/search.gif">
+          <ownedTools xsi:type="tool:OperationAction" documentation="Add related elements to the diagram" name="DE_AddRelatedElements" label="Add Related Elements" forceRefresh="true" icon="/org.eclipse.search/icons/full/etool16/search.gif">
             <view name="views"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:views.getTarget">
@@ -3554,7 +3554,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Types">
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a Node" name="Create Node" label="Node" precondition="[self.oclIsKindOf(uml::Node) or self.oclIsKindOf(uml::Package)/]" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" iconPath="org.eclipse.uml2.uml.edit/icons/full/obj16/Node.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new node" name="Create Node" label="Node" precondition="[self.oclIsKindOf(uml::Node) or self.oclIsKindOf(uml::Package)/]" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" iconPath="org.eclipse.uml2.uml.edit/icons/full/obj16/Node.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -3572,7 +3572,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a Device Node" name="Create Device" label="Device" precondition="[self.oclIsKindOf(uml::Node) or self.oclIsKindOf(uml::Package)/]" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" iconPath="org.eclipse.uml2.uml.edit/icons/full/obj16/Device.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new device node" name="Create Device" label="Device" precondition="[self.oclIsKindOf(uml::Node) or self.oclIsKindOf(uml::Package)/]" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" iconPath="org.eclipse.uml2.uml.edit/icons/full/obj16/Device.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -3590,7 +3590,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create an Execution Environment Node" name="Create Execution Environment" label="Execution Environment" precondition="[self.oclIsKindOf(uml::Node) or self.oclIsKindOf(uml::Package)/]" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" iconPath="org.eclipse.uml2.uml.edit/icons/full/obj16/ExecutionEnvironment.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new execution environment node" name="Create Execution Environment" label="Execution Environment" precondition="[self.oclIsKindOf(uml::Node) or self.oclIsKindOf(uml::Package)/]" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" iconPath="org.eclipse.uml2.uml.edit/icons/full/obj16/ExecutionEnvironment.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -3608,7 +3608,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create an Artifact" name="Create Artifact" label="Artifact" precondition="[self.oclIsKindOf(uml::Node) or self.oclIsKindOf(uml::Package)/]" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" iconPath="org.eclipse.uml2.uml.edit/icons/full/obj16/Artifact.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new artifact" name="Create Artifact" label="Artifact" precondition="[self.oclIsKindOf(uml::Node) or self.oclIsKindOf(uml::Package)/]" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@containerMappings[name='DE_PackageableElement']" iconPath="org.eclipse.uml2.uml.edit/icons/full/obj16/Artifact.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -3628,7 +3628,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Relationships" reusedTools="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='EAnnotation']">
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new Link" name="Link" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@edgeMappings[name='DE_Link']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new link" name="Link" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@edgeMappings[name='DE_Link']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -3660,7 +3660,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new Dependency" name="Dependency" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@edgeMappings[name='DE_Dependency']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new dependency" name="Dependency" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@edgeMappings[name='DE_Dependency']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -3674,7 +3674,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new Generalization" name="Generalization" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@edgeMappings[name='DE_Generalization']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Generalization.gif">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new generalization" name="Generalization" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@edgeMappings[name='DE_Generalization']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Generalization.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -3687,7 +3687,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new Deployment" name="Deployment" precondition="[preTarget.isDeploymentTarget()/]" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@edgeMappings[name='DE_Deployment']" connectionStartPrecondition="[preSource.oclIsTypeOf(uml::Artifact)/]">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new deployment" name="Deployment" precondition="[preTarget.isDeploymentTarget()/]" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@edgeMappings[name='DE_Deployment']" connectionStartPrecondition="[preSource.oclIsTypeOf(uml::Artifact)/]">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -3700,7 +3700,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new Manifestation" name="Manifestation" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@edgeMappings[name='DE_Manifestation']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Manifestation.gif" connectionStartPrecondition="[preSource.oclIsTypeOf(uml::Artifact)/]">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new manifestation" name="Manifestation" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@edgeMappings[name='DE_Manifestation']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Manifestation.gif" connectionStartPrecondition="[preSource.oclIsTypeOf(uml::Artifact)/]">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -4065,7 +4065,7 @@
         </containerMappings>
         <toolSections name="activity tools" reusedTools="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='EAnnotation'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='Delete']">
           <ownedTools xsi:type="tool_1:ToolGroup" name="Group">
-            <tools xsi:type="tool_1:ContainerCreationDescription" name="Partition" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_Partition']">
+            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new partition" name="Partition" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_Partition']">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4087,7 +4087,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ContainerCreationDescription" name="InterruptibleActivityRegion" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_InterruptibleActivityRegion']">
+            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new interruptible activity region" name="InterruptibleActivityRegion" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_InterruptibleActivityRegion']">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4104,7 +4104,7 @@
             </tools>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="Control Node">
-            <tools xsi:type="tool_1:NodeCreationDescription" name="Initial Node" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_ControlNode']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/InitialNode.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new initial node" name="Initial Node" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_ControlNode']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/InitialNode.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4123,7 +4123,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" name="Activity Final Node" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_ControlNode']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/ActivityFinalNode.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new activity final node" name="Activity Final Node" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_ControlNode']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/ActivityFinalNode.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4142,7 +4142,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" name="Flow Final Node" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_ControlNode']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/FlowFinalNode.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new flow final node" name="Flow Final Node" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_ControlNode']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/FlowFinalNode.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4161,7 +4161,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" name="Decision Node" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_ControlNode']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/DecisionNode.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new decision node" name="Decision Node" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_ControlNode']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/DecisionNode.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4180,7 +4180,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" name="Merge Node" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_ControlNode']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/MergeNode.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new merge node" name="Merge Node" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_ControlNode']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/MergeNode.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4199,7 +4199,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" name="Fork Node" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_ControlNode']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/ForkNode.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new fork node" name="Fork Node" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_ControlNode']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/ForkNode.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4218,7 +4218,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" name="Join Node" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_ControlNode']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/JoinNode.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new join node" name="Join Node" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_ControlNode']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/JoinNode.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4243,7 +4243,7 @@
             </tools>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="Action">
-            <tools xsi:type="tool_1:ContainerCreationDescription" name="Opaque Action" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/OpaqueAction.gif">
+            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new opaque action" name="Opaque Action" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/OpaqueAction.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4263,7 +4263,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:SelectionWizardDescription" name="Call Operation Action" forceRefresh="true" candidatesExpression="service:getAllOperationsAndPackages" tree="true" rootExpression="service:getAllAvailableRootPackages" childrenExpression="feature:eContents" message="Select the target operation of the call operation action to create" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/CallOperationAction.gif" windowTitle="New Call Operation Action" windowImagePath="">
+            <tools xsi:type="tool:SelectionWizardDescription" documentation="Create a new call operation action" name="Call Operation Action" forceRefresh="true" candidatesExpression="service:getAllOperationsAndPackages" tree="true" rootExpression="service:getAllAvailableRootPackages" childrenExpression="feature:eContents" message="Select the target operation of the call operation action to create" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/CallOperationAction.gif" windowTitle="New Call Operation Action" windowImagePath="">
               <element name="element"/>
               <containerView name="containerView"/>
               <container name="container"/>
@@ -4303,7 +4303,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool:SelectionWizardDescription" name="Call Behavior Action" forceRefresh="true" candidatesExpression="service:getAllBehaviorsAndPackages" tree="true" rootExpression="service:getAllAvailableRootPackages" childrenExpression="feature:eContents" message="Select the target behavior of the call behavior action to create" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/CallBehaviorAction.gif" windowTitle="New Call Behavior Action" windowImagePath="">
+            <tools xsi:type="tool:SelectionWizardDescription" documentation="Create a new call behavior action" name="Call Behavior Action" forceRefresh="true" candidatesExpression="service:getAllBehaviorsAndPackages" tree="true" rootExpression="service:getAllAvailableRootPackages" childrenExpression="feature:eContents" message="Select the target behavior of the call behavior action to create" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/CallBehaviorAction.gif" windowTitle="New Call Behavior Action" windowImagePath="">
               <element name="element"/>
               <containerView name="containerView"/>
               <container name="container"/>
@@ -4323,7 +4323,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" name="Accept Event Action" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_AcceptEventAction']">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new accept event action" name="Accept Event Action" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_AcceptEventAction']">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4353,7 +4353,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" name="Wait Time Action" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_AcceptEventAction']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/TimeEvent.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new wait time action" name="Wait Time Action" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_AcceptEventAction']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/TimeEvent.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4383,7 +4383,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" name="Accept Signal Action" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_AcceptEventAction']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/SignalEvent.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new accept signal action" name="Accept Signal Action" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_AcceptEventAction']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/SignalEvent.gif">
               <variable name="container">
                 <subVariables xsi:type="tool:SelectModelElementVariable" name="signal" candidatesExpression="service:getAllSignals" message="Select the signal associated to the accept signal action"/>
               </variable>
@@ -4416,7 +4416,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" name="Accept Call Action" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_AcceptEventAction']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/CallEvent.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new accept call action" name="Accept Call Action" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subNodeMappings[name='AD_AcceptEventAction']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/CallEvent.gif">
               <variable name="container">
                 <subVariables xsi:type="tool:SelectModelElementVariable" name="operation" candidatesExpression="service:getAllOperations" message="Select the operation associated to the accept call action"/>
               </variable>
@@ -4451,7 +4451,7 @@
             </tools>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="Object">
-            <tools xsi:type="tool_1:NodeCreationDescription" name="Activity Parameter" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@borderedNodeMappings[name='AD_Parameter']">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new activity parameter" name="Activity Parameter" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@borderedNodeMappings[name='AD_Parameter']">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4471,7 +4471,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:ContainerCreationDescription" name="Data store" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_DataStore']">
+            <tools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new datastore" name="Data store" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_DataStore']">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4490,7 +4490,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" name="Input Pin" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']/@borderedNodeMappings[name='AD_InputPin']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/InputPin.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new input pin" name="Input Pin" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']/@borderedNodeMappings[name='AD_InputPin']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/InputPin.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4499,7 +4499,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" name="Output Pin" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']/@borderedNodeMappings[name='AD_OutputPin']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/OutputPin.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new output pin" name="Output Pin" forceRefresh="true" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@containerMappings[name='AD_Activity']/@subContainerMappings[name='AD_ExecutableNode']/@borderedNodeMappings[name='AD_OutputPin']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/OutputPin.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4509,7 +4509,7 @@
               </initialOperation>
             </tools>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Control Flow" precondition="[preSource.isValidActivityEdgeEnd(preTarget)/]" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@edgeMappings[name='AD_ControlFlow']" connectionStartPrecondition="service:preSource.isValidControlFlowStart">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new control flow" name="Control Flow" precondition="[preSource.isValidActivityEdgeEnd(preTarget)/]" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@edgeMappings[name='AD_ControlFlow']" connectionStartPrecondition="service:preSource.isValidControlFlowStart">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -4532,7 +4532,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Object Flow" precondition="[preSource.isValidActivityEdgeEnd(preTarget)/]" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@edgeMappings[name='AD_ObjectFlow']" connectionStartPrecondition="service:preSource.isValidObjectFlowStart">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new object flow" name="Object Flow" precondition="[preSource.isValidActivityEdgeEnd(preTarget)/]" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@edgeMappings[name='AD_ObjectFlow']" connectionStartPrecondition="service:preSource.isValidObjectFlowStart">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -4548,7 +4548,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Interrupting Edge" precondition="service:preTarget.isValidInterruptingEdgeEnd(preSource)" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@edgeMappings[name='AD_ControlFlow']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/InterruptibleActivityRegion.gif" connectionStartPrecondition="[preSource.oclAsType(uml::ActivityNode).inInterruptibleRegion->size()>0/]">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new interrupting edge" name="Interrupting Edge" precondition="service:preTarget.isValidInterruptingEdgeEnd(preSource)" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']/@defaultLayer/@edgeMappings[name='AD_ControlFlow']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/InterruptibleActivityRegion.gif" connectionStartPrecondition="[preSource.oclAsType(uml::ActivityNode).inInterruptibleRegion->size()>0/]">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -4633,24 +4633,24 @@
             </ownedTools>
           </subSections>
           <subSections name="navigate">
-            <ownedTools xsi:type="tool_1:DiagramNavigationDescription" name="Open Activity Diagram" label="Activity diagram" precondition="[self.oclIsTypeOf(uml::CallBehaviorAction) and self.oclAsType(uml::CallBehaviorAction).behavior.oclIsTypeOf(uml::Activity)/]" browseExpression="[self.oclAsType(uml::CallBehaviorAction).behavior/]" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']">
+            <ownedTools xsi:type="tool_1:DiagramNavigationDescription" documentation="Open an activity diagram" name="Open Activity Diagram" label="Activity diagram" precondition="[self.oclIsTypeOf(uml::CallBehaviorAction) and self.oclAsType(uml::CallBehaviorAction).behavior.oclIsTypeOf(uml::Activity)/]" browseExpression="[self.oclAsType(uml::CallBehaviorAction).behavior/]" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']">
               <containerViewVariable name="containerView"/>
               <containerVariable name="container"/>
               <representationNameVariable name="diagramName"/>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="CR_ActivityDiagramFromCallBehaviorAction" label="Create Activity diagram" precondition="[self.oclIsTypeOf(uml::CallBehaviorAction) and self.oclAsType(uml::CallBehaviorAction).behavior.oclIsTypeOf(uml::Activity)/]" titleExpression="[self.oclAsType(uml::CallBehaviorAction).behavior.name +' Activity Diagram'/]" browseExpression="[self.oclAsType(uml::CallBehaviorAction).behavior/]" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']">
+            <ownedTools xsi:type="tool_1:DiagramCreationDescription" documentation="Create a new activity diagram" name="CR_ActivityDiagramFromCallBehaviorAction" label="Create Activity diagram" precondition="[self.oclIsTypeOf(uml::CallBehaviorAction) and self.oclAsType(uml::CallBehaviorAction).behavior.oclIsTypeOf(uml::Activity)/]" titleExpression="[self.oclAsType(uml::CallBehaviorAction).behavior.name +' Activity Diagram'/]" browseExpression="[self.oclAsType(uml::CallBehaviorAction).behavior/]" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Activity%20Diagram']">
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
               </initialOperation>
               <containerViewVariable name="containerView"/>
               <representationNameVariable name="diagramName"/>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:DiagramNavigationDescription" name="Open State Machine Diagram" label="State machine diagram" precondition="[self.oclIsTypeOf(uml::CallBehaviorAction) and self.oclAsType(uml::CallBehaviorAction).behavior.oclIsTypeOf(uml::StateMachine)/]" browseExpression="[self.oclAsType(uml::CallBehaviorAction).behavior/]" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']">
+            <ownedTools xsi:type="tool_1:DiagramNavigationDescription" documentation="Open a statemachine diagram" name="Open State Machine Diagram" label="State machine diagram" precondition="[self.oclIsTypeOf(uml::CallBehaviorAction) and self.oclAsType(uml::CallBehaviorAction).behavior.oclIsTypeOf(uml::StateMachine)/]" browseExpression="[self.oclAsType(uml::CallBehaviorAction).behavior/]" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']">
               <containerViewVariable name="containerView"/>
               <containerVariable name="container"/>
               <representationNameVariable name="diagramName"/>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="CR_StateMachineDiagramFromCallBehaviorAction" label="Create StateMachine diagram" precondition="[self.oclIsTypeOf(uml::CallBehaviorAction) and self.oclAsType(uml::CallBehaviorAction).behavior.oclIsTypeOf(uml::StateMachine)/]" titleExpression="[self.oclAsType(uml::CallBehaviorAction).behavior.name +' State Machine Diagram'/]" browseExpression="[self.oclAsType(uml::CallBehaviorAction).behavior/]" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']">
+            <ownedTools xsi:type="tool_1:DiagramCreationDescription" documentation="Create a new statemachine diagram" name="CR_StateMachineDiagramFromCallBehaviorAction" label="Create StateMachine diagram" precondition="[self.oclIsTypeOf(uml::CallBehaviorAction) and self.oclAsType(uml::CallBehaviorAction).behavior.oclIsTypeOf(uml::StateMachine)/]" titleExpression="[self.oclAsType(uml::CallBehaviorAction).behavior.name +' State Machine Diagram'/]" browseExpression="[self.oclAsType(uml::CallBehaviorAction).behavior/]" diagramDescription="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']">
               <initialOperation>
                 <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:self"/>
               </initialOperation>
@@ -4858,7 +4858,7 @@
           </style>
         </containerMappings>
         <toolSections name="Types" reusedTools="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='EAnnotation'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='Delete']">
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Region" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new region" name="Region" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -4867,7 +4867,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="State" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subContainerMappings[name='SM_SimpleState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/State.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new state" name="State" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subContainerMappings[name='SM_SimpleState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/State.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -4876,7 +4876,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Submachine" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subContainerMappings[name='SM_SimpleState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/StateMachine.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new sub state machine" name="Submachine" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subContainerMappings[name='SM_SimpleState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/StateMachine.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -4905,7 +4905,7 @@
             </initialOperation>
           </ownedTools>
           <subSections name="Other pseudo states">
-            <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Initial PseudoState" label="Initial" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate.gif">
+            <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new initial state" name="Initial PseudoState" label="Initial" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4915,7 +4915,7 @@
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Final State Node" label="Final" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_FinalState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/FinalState.gif">
+            <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new final state" name="Final State Node" label="Final" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_FinalState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/FinalState.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4924,7 +4924,7 @@
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Fork State Node" label="Fork" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_fork.gif">
+            <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new fork" name="Fork State Node" label="Fork" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_fork.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4934,7 +4934,7 @@
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Join State Node" label="Join" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_join.gif">
+            <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new join" name="Join State Node" label="Join" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_join.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4944,7 +4944,7 @@
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Choice State Node" label="Choice" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_choice.gif">
+            <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new choice" name="Choice State Node" label="Choice" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_choice.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4954,7 +4954,7 @@
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Junction State Node" label="Junction" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_junction.gif">
+            <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new junction" name="Junction State Node" label="Junction" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_junction.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4964,7 +4964,7 @@
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Terminate State Node" label="Terminate" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_terminate.gif">
+            <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new terminate state" name="Terminate State Node" label="Terminate" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_terminate.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4974,7 +4974,7 @@
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Shallow History State Node" label="Shallow History" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_deepHistory.gif">
+            <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="create a new shallow history state" name="Shallow History State Node" label="Shallow History" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_deepHistory.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4984,7 +4984,7 @@
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Deep History State Node" label="Deep History" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_deepHistory.gif">
+            <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new deep history state" name="Deep History State Node" label="Deep History" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@subContainerMappings[name='SM_Region']/@subNodeMappings[name='SM_PseudoState']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_deepHistory.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -4994,7 +4994,7 @@
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Entry Point State Node" label="Entry Point" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@borderedNodeMappings[name='SM_Connection']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_entryPoint.gif">
+            <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new entry point" name="Entry Point State Node" label="Entry Point" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@borderedNodeMappings[name='SM_Connection']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_entryPoint.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -5004,7 +5004,7 @@
                 </firstModelOperations>
               </initialOperation>
             </ownedTools>
-            <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Exit Point State Node" label="Exit Point" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@borderedNodeMappings[name='SM_Connection']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_exitPoint.gif">
+            <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new exit point" name="Exit Point State Node" label="Exit Point" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@containerMappings[name='SM_StateMachine']/@borderedNodeMappings[name='SM_Connection']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Pseudostate_exitPoint.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -5185,7 +5185,7 @@
             </initialOperation>
             <edgeView name="edgeView"/>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Transition" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@edgeMappings[name='SM_Transition']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new transition" name="Transition" forceRefresh="true" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='State%20Machine%20Diagram']/@defaultLayer/@edgeMappings[name='SM_Transition']">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -5338,7 +5338,7 @@
           </subSections>
         </toolSections>
         <toolSections name="SD_Import" label="Existing Elements" reusedTools="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='Delete']">
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="CR_ClassLifeline" label="Class" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Add an existing class to the diagram" name="CR_ClassLifeline" label="Class" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']">
             <variable name="container">
               <subVariables xsi:type="tool:SelectModelElementVariable" name="property" candidatesExpression="service:getAllClassesAndContainers" tree="true" rootExpression="service:getAllAvailableRootPackages" childrenExpression="feature:eContents" message="Select an instance or a property associated to the new lifeline"/>
             </variable>
@@ -5347,7 +5347,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:container.createLifeline(property)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="CR_ActorLifeline" label="Actor" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Add an existing actor to the diagram" name="CR_ActorLifeline" label="Actor" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']">
             <variable name="container">
               <subVariables xsi:type="tool:SelectModelElementVariable" name="property" candidatesExpression="service:getAllActorsAndContainers" tree="true" rootExpression="service:getAllAvailableRootPackages" childrenExpression="feature:eContents" message="Select an instance or a property associated to the new lifeline"/>
             </variable>
@@ -5359,7 +5359,7 @@
         </toolSections>
         <toolSections name="SD_Create" label="Interaction">
           <ownedTools xsi:type="tool_1:ToolGroup" name="Lifeline">
-            <tools xsi:type="tool_1:NodeCreationDescription" name="CR_Lifeline" label="Class" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/LifelineCreation.gif">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new class" name="CR_Lifeline" label="Class" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/LifelineCreation.gif">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -5385,7 +5385,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create an actor" name="CR_Actor" label="Actor" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']">
+            <tools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new actor" name="CR_Actor" label="Actor" nodeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']">
               <variable name="container"/>
               <viewVariable name="containerView"/>
               <initialOperation>
@@ -5410,7 +5410,7 @@
             </tools>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="CR_Synch_Message">
-            <tools xsi:type="tool_2:MessageCreationTool" name="CR_SynchronousMessage" label="Synchronous Message" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/MessageSynchCallCreation.gif" extraSourceMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
+            <tools xsi:type="tool_2:MessageCreationTool" documentation="Create a new synchronous message" name="CR_SynchronousMessage" label="Synchronous Message" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/MessageSynchCallCreation.gif" extraSourceMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
               <sourceVariable name="source">
                 <subVariables xsi:type="tool:AcceleoVariable" name="sourceContainer" computationExpression="[source.eContainer(uml::Interaction)/]"/>
               </sourceVariable>
@@ -5425,7 +5425,7 @@
               <startingEndPredecessor name="startingEndPredecessor"/>
               <finishingEndPredecessor name="finishingEndPredecessor"/>
             </tools>
-            <tools xsi:type="tool_2:MessageCreationTool" name="CR_Synchronous_Operation" label="Synchronous Message and Operation Creation" precondition="service:preTarget.isValidMessageEnd" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Operation.gif" extraSourceMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
+            <tools xsi:type="tool_2:MessageCreationTool" documentation="Create a new synchronous operation" name="CR_Synchronous_Operation" label="Synchronous Message and Operation Creation" precondition="service:preTarget.isValidMessageEnd" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Operation.gif" extraSourceMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
               <sourceViewVariable name="sourceView"/>
@@ -5438,7 +5438,7 @@
             </tools>
           </ownedTools>
           <ownedTools xsi:type="tool_1:ToolGroup" name="CR_Asynch_Message">
-            <tools xsi:type="tool_2:MessageCreationTool" name="CR_AsynchronousMessage" label="Asynchronous Message" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/MessageAsynchCallCreation.gif" extraSourceMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
+            <tools xsi:type="tool_2:MessageCreationTool" documentation="Create a new asynchronus message" name="CR_AsynchronousMessage" label="Asynchronous Message" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/MessageAsynchCallCreation.gif" extraSourceMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
               <sourceVariable name="source">
                 <subVariables xsi:type="tool:AcceleoVariable" name="sourceContainer" computationExpression="[source.eContainer(uml::Interaction)/]"/>
               </sourceVariable>
@@ -5453,7 +5453,7 @@
               <startingEndPredecessor name="startingEndPredecessor"/>
               <finishingEndPredecessor name="finishingEndPredecessor"/>
             </tools>
-            <tools xsi:type="tool_2:MessageCreationTool" name="CR_Asynchronous_Operation" label="Asynchronous Message and Operation Creation" precondition="service:preTarget.isValidMessageEnd" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Operation.gif" extraSourceMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
+            <tools xsi:type="tool_2:MessageCreationTool" documentation="Create a new asynchronous operation" name="CR_Asynchronous_Operation" label="Asynchronous Message and Operation Creation" precondition="service:preTarget.isValidMessageEnd" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@edgeMappings[name='SD_Message']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Operation.gif" extraSourceMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']" extraTargetMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Sequence%20Diagram']/@defaultLayer/@nodeMappings[name='SD_Lifeline%20Instance%20Role']/@borderedNodeMappings[name='SD_Lifeline%20Execution']">
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
               <sourceViewVariable name="sourceView"/>
@@ -5616,7 +5616,7 @@
           </style>
         </containerMappings>
         <toolSections name="Elements" reusedTools="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='Move%20UP%2FDOWN%20TO%20Elements']">
-          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" name="PC_ArrangeContainment" label="Move" forceRefresh="true" iconPath="/org.eclipse.search/icons/full/etool16/search.gif" message="Select elements contained in the current package" choiceOfValuesMessage="Candidate packageable elements" candidatesExpression="service:getAllPackageableElements" tree="true" rootExpression="service:getAllAvailableRootPackages" childrenExpression="feature:eContents" selectedValuesMessage="Selected packageable elements" preSelectedCandidatesExpression="[container.oclAsType(uml::Package).packagedElement/]">
+          <ownedTools xsi:type="tool:PaneBasedSelectionWizardDescription" documentation="Move an element" name="PC_ArrangeContainment" label="Move" forceRefresh="true" iconPath="/org.eclipse.search/icons/full/etool16/search.gif" message="Select elements contained in the current package" choiceOfValuesMessage="Candidate packageable elements" candidatesExpression="service:getAllPackageableElements" tree="true" rootExpression="service:getAllAvailableRootPackages" childrenExpression="feature:eContents" selectedValuesMessage="Selected packageable elements" preSelectedCandidatesExpression="[container.oclAsType(uml::Package).packagedElement/]">
             <element name="elements"/>
             <containerView name="containerView"/>
             <container name="container"/>
@@ -5641,7 +5641,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:ToolDescription" name="Package" precondition="[self.oclIsKindOf(uml::Package)/]" forceRefresh="true" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Package.gif">
+          <ownedTools xsi:type="tool:ToolDescription" documentation="Create a new package" name="Package" precondition="[self.oclIsKindOf(uml::Package)/]" forceRefresh="true" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Package.gif">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -5666,7 +5666,7 @@
           </ownedTools>
         </toolSections>
       </defaultLayer>
-      <additionalLayers name="Components">
+      <additionalLayers documentation="Create a new component" name="Components">
         <containerMappings name="PC_Component" detailDescriptions="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='navigations']/@subSections[name='Use%20case%20diagram']/@ownedTools[name='Create%20Use%20Case%20Diagram%20from%20component']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="feature:eAllContents" domainClass="uml.Component" dropDescriptions="//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Package%20Containment']/@defaultLayer/@toolSections.0/@ownedTools[name='PC_Drop']" reusedNodeMappings="//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Package%20Containment']/@defaultLayer/@containerMappings[name='PC_Package']/@subNodeMappings[name='PC_PackageableElement']" childrenPresentation="List">
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="5" arcHeight="5" labelSize="9" labelFormat="bold" roundedCorner="true" widthComputationExpression="service:defaultWidth" heightComputationExpression="service:defaultHeight" backgroundStyle="GradientTopToBottom" foregroundColor="//@userColorsPalettes[name='UMLPalette']/@entries[name='very%20light%20gray']">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
@@ -5689,7 +5689,7 @@
           </ownedTools>
         </toolSections>
       </additionalLayers>
-      <additionalLayers name="Comments" reusedMappings="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='RED_Comment'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@edgeMappings[name='RED_CommentLink']">
+      <additionalLayers documentation="Create a new comment" name="Comments" reusedMappings="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@nodeMappings[name='RED_Comment'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@defaultLayer/@edgeMappings[name='RED_CommentLink']">
         <toolSections name="Comments" reusedTools="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='comments']/@ownedTools[name='CRE_Comment'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='comments']/@ownedTools[name='CRE_CommentLink']"/>
       </additionalLayers>
     </ownedRepresentations>
@@ -5927,7 +5927,7 @@
         </containerMappings>
         <toolSections name="PD_ExistingElements" label="Existing Elements" reusedTools="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Paste'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20Diagram'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='Drop%20From%20TreeView'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='RemoveExistingElements'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='Delete']"/>
         <toolSections name="Packages">
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a Package" name="Package" containerMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Package']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new package" name="Package" containerMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Package']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -5938,7 +5938,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a Profile" name="Profile" containerMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Profile']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new profile" name="Profile" containerMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Profile']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -5951,7 +5951,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Classifiers">
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a Stereotype" name="Stereotype" containerMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Stereotype.gif" extraMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_ElementImport']">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new stereotype" name="Stereotype" containerMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Stereotype.gif" extraMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype'] //@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_ElementImport']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -5962,7 +5962,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Import Metaclass" containerMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_ElementImport']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/ElementImport.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new import metaclass" name="Import Metaclass" containerMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_ElementImport']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/ElementImport.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -6028,7 +6028,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Features" reusedTools="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='Move%20UP%2FDOWN%20TO%20Attributes%20or%20Operations'] //@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='popup%20menu']/@ownedTools[name='Move%20UP%2FDOWN%20TO%20Elements']">
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new Property" name="Property" nodeMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']/@subNodeMappings[name='PD_Property']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new property" name="Property" nodeMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Stereotype']/@subNodeMappings[name='PD_Property']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -6042,7 +6042,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Literal" nodeMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Enumeration']/@subNodeMappings[name='PD_EnumerationLiteral']">
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" documentation="Create a new literal" name="Literal" nodeMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@containerMappings[name='PD_Enumeration']/@subNodeMappings[name='PD_EnumerationLiteral']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -6058,7 +6058,7 @@
           </ownedTools>
         </toolSections>
         <toolSections name="Relationships">
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Extension" precondition="service:preSource.canCreateExtension(preTarget)" edgeMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Extension']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Extension.gif">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new extension" name="Extension" precondition="service:preSource.canCreateExtension(preTarget)" edgeMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Extension']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Extension.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -6067,7 +6067,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:source.createExtension(target)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Generalization" precondition="service:preSource.canCreateExtension(preTarget)" edgeMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Generalization']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Generalization.gif">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new generalization" name="Generalization" precondition="service:preSource.canCreateExtension(preTarget)" edgeMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Generalization']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Generalization.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -6076,7 +6076,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:source.createExtension(target)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new Association" name="Association" edgeMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Association']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Association.gif">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new association" name="Association" edgeMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Association']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Association.gif">
             <sourceVariable name="source">
               <subVariables xsi:type="tool:AcceleoVariable" name="sourceContainer" computationExpression="[source.eContainer(uml::Package)/]"/>
             </sourceVariable>
@@ -6087,7 +6087,7 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="service:source.createAssociation(target)"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new Association" name="Extend existing RelationShip" edgeMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Association']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/profile/ExtraAssociation.gif">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new extra association" name="Extend existing RelationShip" edgeMappings="//@ownedViewpoints[name='Extend']/@ownedRepresentations[name='Profile%20Diagram']/@defaultLayer/@edgeMappings[name='PD_Association']" iconPath="/org.obeonetwork.dsl.uml2.design/icons/profile/ExtraAssociation.gif">
             <sourceVariable name="source">
               <subVariables xsi:type="tool:AcceleoVariable" name="sourceContainer" computationExpression="[source.eContainer(uml::Package)/]"/>
             </sourceVariable>
