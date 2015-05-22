@@ -371,36 +371,6 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	}
 
 	/**
-	 * Get all types and their parent's elements.
-	 *
-	 * @param element
-	 *            Element
-	 * @return List of all types and their parents.
-	 */
-	public List<EObject> getTypes(Element element) {
-		final List<EObject> result = Lists.newArrayList();
-		final Collection<Element> roots = getAllRootsInSession(element);
-		for (final Element root : roots) {
-			for (final Element subElement : root.getOwnedElements()) {
-				result.addAll(getTypesAndParents(subElement));
-			}
-		}
-		return result;
-	}
-
-	private Collection<? extends EObject> getTypesAndParents(Element element) {
-		final List<EObject> result = Lists.newArrayList();
-		if (element instanceof Type && !(element instanceof Association)) {
-			result.add(element);
-			result.add(element.getOwner());
-		}
-		for (final Element subElement : element.getOwnedElements()) {
-			result.addAll(getTypesAndParents(subElement));
-		}
-		return result;
-	}
-
-	/**
 	 * Return collection of visible association class in a diagram.
 	 *
 	 * @param diagram
