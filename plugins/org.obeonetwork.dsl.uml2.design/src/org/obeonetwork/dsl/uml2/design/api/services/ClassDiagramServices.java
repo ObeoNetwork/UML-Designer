@@ -22,6 +22,8 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.AssociationClass;
@@ -400,6 +402,17 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 		return associationClasses;
 	}
 
+	private boolean isArchetypesLayerActive(DDiagramElement diagramElement) {
+		final DDiagram diagram = diagramElement.getParentDiagram();
+		for (final Layer activeLayer : diagram.getActivatedLayers()) {
+			if ("Archetypes".equals(activeLayer.getName())) { //$NON-NLS-1$
+				return true;
+			}
+		}
+		return false;
+	}
+
+
 	private boolean isBroken(Association child) {
 		final Property target = AssociationServices.INSTANCE.getTarget(child);
 		final Property source = AssociationServices.INSTANCE.getSource(child);
@@ -411,12 +424,50 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 		return true;
 	}
 
+	/**
+	 * Check if element class tool could be used on an element.
+	 *
+	 * @param diagramElement
+	 *            element under mouse
+	 * @return return true if tool could be used on element
+	 */
+	public boolean isClassCreationPrediction(DDiagramElement diagramElement) {
+		if (isTypeOfClass(diagramElement.getTarget()) && isArchetypesLayerActive(diagramElement)) {
+			return true;
+		} else if (diagramElement.getTarget() instanceof Package && !isArchetypesLayerActive(diagramElement)) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Check if class creation tool could be used.
+	 *
+	 * @param diagram
+	 *            element under mouse
+	 * @return always true for diagram
+	 */
+	public boolean isClassCreationPrediction(DSemanticDiagram diagram) {
+		return true;
+	}
+
 	private boolean isComposite(Property property) {
 		return property != null && property.isComposite();
 	}
 
 	private boolean isNavigable(Property property) {
 		return property != null && property.isNavigable();
+	}
+
+	/**
+	 * Check an element is not a Class.
+	 *
+	 * @param element
+	 *            Element
+	 * @return return true if the element is not a Class
+	 */
+	public boolean isNotTypeOfClass(EObject element) {
+		return !isTypeOfClass(element);
 	}
 
 	/**
@@ -455,7 +506,6 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	public boolean isTypeOfClass(EObject element) {
 		return "Class".equals(element.eClass().getName()); //$NON-NLS-1$
 	}
-
 	/**
 	 * Open type selection dialog.
 	 *
@@ -602,4 +652,5 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 		final Property target = AssociationServices.INSTANCE.getTarget(association);
 		return isShared(target);
 	}
+
 }

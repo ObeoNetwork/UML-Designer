@@ -97,7 +97,13 @@ public class ArchetypeServices {
 		addArchetypeKeyword(clazz, ArchetypeServices.THING);
 	}
 
-	private void clearArchetypesKeywords(Class clazz) {
+	/**
+	 * Clear Archetype for a class
+	 * 
+	 * @param clazz
+	 *            Class to clear
+	 */
+	public void clearArchetypesKeywords(Class clazz) {
 		clazz.removeKeyword(MOMENT_INTERVAL);
 		clazz.removeKeyword(DESCRIPTION);
 		clazz.removeKeyword(THING);
