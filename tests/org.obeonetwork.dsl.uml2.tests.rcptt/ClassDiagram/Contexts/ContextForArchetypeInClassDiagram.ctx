@@ -1,0 +1,84 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: ContextForArchetypeInClassDiagram
+Element-Type: context
+Element-Version: 2.0
+Id: _joJv4AN4EeWhi5BJGob5aQ
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 5/26/15 9:33 AM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+// Create a package
+with [get-editor "test Class Diagram"] {
+    with [get-palette] {
+        with [get-palette-entry Package] {
+            mouse-move 30 9 button1 -height 23 -width 125
+            mouse-press 30 9 button1 -height 23 -width 125
+            mouse-release 30 9 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        mouse-move 84 140 button1 -height 338 -width 761
+        mouse-press 84 140 button1 -height 338 -width 761
+        mouse-move 87 144 -mask 524288 -height 338 -width 761
+        mouse-drag 343 321 button1 524288 -height 338 -width 761
+        mouse-release 343 321 button1 524288 -height 338 -width 761
+    }
+}
+// Create a Class1 in a package
+with [get-editor "test Class Diagram"] {
+    with [get-palette | get-palette-entry Class] {
+        mouse-move 23 2 button1 -height 23 -width 125
+        mouse-press 23 2 button1 -height 23 -width 125
+        mouse-release 23 2 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name Package1 | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 62 63 button1 -height 179 -width 259
+            mouse-press 62 63 button1 -height 179 -width 259
+            mouse-release 62 63 button1 524288 -height 179 -width 259
+        }
+    }
+}
+// Create a Class2 in diagram
+with [get-editor "test Class Diagram"] {
+    with [get-palette | get-palette-entry Class] {
+        mouse-move 23 8 button1 -height 23 -width 125
+        mouse-press 23 8 button1 -height 23 -width 125
+        mouse-release 23 8 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        mouse-move 500 173 button1 -height 338 -width 761
+        mouse-press 500 173 button1 -height 338 -width 761
+        mouse-release 500 173 button1 524288 -height 338 -width 761
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part -name Class1] {
+        with [get-edit-part -className DNodeListNameEditPart] {
+            mouse-move 40 10 button1 -height 16 -width 52
+            mouse-press 40 10 button1 -height 16 -width 52
+            mouse-release 40 10 button1 524288 -height 16 -width 52
+            mouse-press 40 10 button1 -height 16 -width 52
+            mouse-double-click 40 10 button1 -height 16 -width 52
+        }
+    }
+}
+with [get-window Class] {
+    get-editbox -after [get-label "Name:"] | set-text Class2
+    get-button Finish | click
+}
+
+// Check context
+get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram"
+    | get-edit-part -name Package1 | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+    | get-edit-part -name Class1 | get-edit-part -className DNodeListName2EditPart
+    | get-property "getFigure().getParent().getGradientColor()" | equals "#E8EFF7" | verify-true
+    
+get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram"
+    | get-edit-part -name Class2 | get-edit-part -className DNodeListNameEditPart
+    | get-property "getFigure().getParent().getGradientColor()" | equals "#E8EFF7" | verify-true
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--
