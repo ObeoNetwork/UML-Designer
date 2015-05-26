@@ -38,35 +38,27 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.uml2.uml.Activity;
-import org.eclipse.uml2.uml.Artifact;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.AssociationClass;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehaviorExecutionSpecification;
 import org.eclipse.uml2.uml.BehavioralFeature;
-import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
-import org.eclipse.uml2.uml.Collaboration;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.ConnectableElement;
-import org.eclipse.uml2.uml.DataType;
-import org.eclipse.uml2.uml.Device;
 import org.eclipse.uml2.uml.Element;
-import org.eclipse.uml2.uml.ExecutionEnvironment;
 import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.Lifeline;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Namespace;
-import org.eclipse.uml2.uml.Node;
 import org.eclipse.uml2.uml.Operation;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageableElement;
@@ -81,7 +73,6 @@ import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UMLPlugin;
-import org.eclipse.uml2.uml.UseCase;
 import org.eclipse.uml2.uml.resource.UMLResource;
 import org.eclipse.uml2.uml.util.UMLSwitch;
 import org.obeonetwork.dsl.uml2.design.api.wizards.ModelElementsSelectionDialog;
@@ -147,19 +138,6 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 			// Show the added element on the diagram
 			showView(semanticElement, (DSemanticDecorator)containerView, session, containerViewExpression);
 		}
-	}
-
-	private List<EObject> allValidSessionElements(EObject cur, Predicate<EObject> validForClassDiagram) {
-		final Session found = SessionManager.INSTANCE.getSession(cur);
-		final List<EObject> result = Lists.newArrayList();
-		if (found != null) {
-			for (final Resource res : found.getSemanticResources()) {
-				if (res.getURI().isPlatformResource() || res.getURI().isPlatformPlugin()) {
-					Iterators.addAll(result, Iterators.filter(res.getAllContents(), validForClassDiagram));
-				}
-			}
-		}
-		return result;
 	}
 
 	/**
@@ -576,28 +554,6 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	}
 
 	/**
-	 * Get displayable elements according to diagram kind.
-	 *
-	 * @param selectedContainer
-	 *            Selected container
-	 * @param diagram
-	 *            Diagram
-	 * @return Predicate to select only displayable element according to diagram kind
-	 */
-	@SuppressWarnings("rawtypes")
-	private Predicate getDisplayablePredicate(final EObject selectedContainer, final DDiagram diagram) {
-		return new Predicate<Object>() {
-			public boolean apply(Object input) {
-				if (input instanceof Element) {
-					return isOrHasDescendant((Element)input, Predicates.in(getValidsForDiagram(
-							selectedContainer, (DSemanticDecorator)diagram)));
-				}
-				return false;
-			}
-		};
-	}
-
-	/**
 	 * Get non selectable elements. Those elements are already displayed in the diagram.
 	 *
 	 * @param diagram
@@ -648,141 +604,6 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 		statemachine.getRegions().add(region);
 		statemachine.setName(statemachineLabel);
 		return statemachine;
-	}
-
-	private List<EObject> getValidsForClassDiagram(EObject cur) {
-		final Predicate<EObject> validForClassDiagram = new Predicate<EObject>() {
-
-			public boolean apply(EObject input) {
-				return input instanceof Package || input instanceof Interface || input instanceof DataType
-						|| "Class".equals(input.eClass().getName()) //$NON-NLS-1$
-						|| "Component".equals(input.eClass().getName()); //$NON-NLS-1$
-			}
-		};
-		return allValidSessionElements(cur, validForClassDiagram);
-	}
-
-	private List<EObject> getValidsForComponentDiagram(EObject cur) {
-		final Predicate<EObject> validForComponentDiagram = new Predicate<EObject>() {
-
-			public boolean apply(EObject input) {
-				return input instanceof Package || input instanceof Interface
-						|| "Class".equals(input.eClass().getName()) //$NON-NLS-1$
-						|| "Component".equals(input.eClass().getName()); //$NON-NLS-1$
-			}
-		};
-		return allValidSessionElements(cur, validForComponentDiagram);
-	}
-
-	private List<EObject> getValidsForCompositeDiagram(EObject cur) {
-		final Predicate<EObject> validForCompositeDiagram = new Predicate<EObject>() {
-
-			public boolean apply(EObject input) {
-				if (input instanceof StructuredClassifier) {
-					return !(input instanceof Interaction || input instanceof StateMachine || input instanceof Activity);
-				}
-				return input instanceof Package || input instanceof Interface
-						|| "Port".equals(input.eClass().getName()) //$NON-NLS-1$
-						|| "Property".equals(input.eClass().getName()); //$NON-NLS-1$
-
-			}
-		};
-		return allValidSessionElements(cur, validForCompositeDiagram);
-	}
-
-	private List<EObject> getValidsForCompositeStructureDiagram(EObject cur, final EObject container) {
-		final Predicate<EObject> validForCompositeDiagram = new Predicate<EObject>() {
-
-			public boolean apply(EObject input) {
-				return "Property".equals(input.eClass().getName()) && container.equals(input.eContainer()); //$NON-NLS-1$
-
-			}
-		};
-		return allValidSessionElements(cur, validForCompositeDiagram);
-	}
-
-	private List<EObject> getValidsForDeploymentDiagram(EObject cur) {
-		final Predicate<EObject> validForDeploymentDiagram = new Predicate<EObject>() {
-
-			public boolean apply(EObject input) {
-				return input instanceof Package && !(input instanceof Profile)
-						|| input instanceof ExecutionEnvironment || input instanceof Node
-						|| input instanceof Artifact || input instanceof Device;
-			}
-		};
-		return allValidSessionElements(cur, validForDeploymentDiagram);
-	}
-
-	/**
-	 * Get valid elements for a diagram.
-	 *
-	 * @param element
-	 *            Element
-	 * @param containerView
-	 *            Container view
-	 * @return List of valid elements for the current representation
-	 */
-	private List<EObject> getValidsForDiagram(final EObject element, final DSemanticDecorator containerView) {
-		// Get representation
-		DRepresentation representation = null;
-		if (containerView instanceof DRepresentation) {
-			representation = (DRepresentation)containerView;
-		} else if (containerView instanceof DDiagramElement) {
-			representation = ((DDiagramElement)containerView).getParentDiagram();
-		}
-		List<EObject> results = null;
-		if (representation instanceof DSemanticDiagram) {
-			final DiagramDescription description = ((DSemanticDiagram)representation).getDescription();
-
-			if ("Class Diagram".equals(description.getName()) //$NON-NLS-1$
-					|| "Profile Diagram".equals(description.getName())) { //$NON-NLS-1$
-				results = getValidsForClassDiagram(element);
-			} else if ("Component Diagram".equals(description.getName())) { //$NON-NLS-1$
-				results = getValidsForComponentDiagram(element);
-			} else if ("Composite Diagram".equals(description.getName())) { //$NON-NLS-1$
-				results = getValidsForCompositeDiagram(element);
-			} else if ("Composite Structure Diagram".equals(description.getName())) { //$NON-NLS-1$
-				results = getValidsForCompositeStructureDiagram(element, containerView.getTarget());
-			} else if ("Deployment Diagram".equals(description.getName())) { //$NON-NLS-1$
-				results = getValidsForDeploymentDiagram(element);
-			} else if ("Package Hierarchy".equals(description.getName())) { //$NON-NLS-1$
-				results = getValidsForPackageDiagram(element);
-			} else if ("Use Case Diagram".equals(description.getName())) { //$NON-NLS-1$
-				results = getValidsForUseCaseDiagram(element);
-			}
-		}
-
-		return results;
-	}
-
-	/**
-	 * Get valid elements for a diagram.
-	 *
-	 * @param cur
-	 *            Element
-	 * @return List of valid elements for the current representation
-	 */
-	private List<EObject> getValidsForPackageDiagram(EObject cur) {
-		final Predicate<EObject> validForPackageDiagram = new Predicate<EObject>() {
-
-			public boolean apply(EObject input) {
-				return input instanceof Package;
-			}
-		};
-		return allValidSessionElements(cur, validForPackageDiagram);
-	}
-
-	private List<EObject> getValidsForUseCaseDiagram(EObject cur) {
-		final Predicate<EObject> validForUseCaseDiagram = new Predicate<EObject>() {
-
-			public boolean apply(EObject input) {
-				return input instanceof Package || input instanceof Class || input instanceof Component
-						|| input instanceof Artifact || input instanceof DataType
-						|| input instanceof Interface || input instanceof Collaboration
-						|| input instanceof UseCase;
-			}
-		};
-		return allValidSessionElements(cur, validForUseCaseDiagram);
 	}
 
 	/**
@@ -949,39 +770,6 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	}
 
 	/**
-	 * Indicates if the given element or at least one of its children checks the given predicate.
-	 *
-	 * @param input
-	 *            the element to check
-	 * @param predicate
-	 *            the predicate to use
-	 * @return true if the given element or at least one of its children checks the given predicate, false
-	 *         otherwise
-	 */
-	@SuppressWarnings("boxing")
-	private boolean isOrHasDescendant(Element element, final Predicate<EObject> predicate) {
-		if (isOrHasDescendantCache.containsKey(element)) {
-			return isOrHasDescendantCache.get(element);
-		}
-
-		if (predicate.apply(element)) {
-			isOrHasDescendantCache.put(element, true);
-			return true;
-		}
-
-		final List<Element> elements = element.getOwnedElements();
-		for (final Element ownedElement : elements) {
-			if (predicate.apply(ownedElement)) {
-				isOrHasDescendantCache.put(element, true);
-				return true;
-			}
-			isOrHasDescendantCache.put(element, false);
-		}
-
-		return false;
-	}
-
-	/**
 	 * Check if a selected element could be a valid container view.
 	 *
 	 * @param containerView
@@ -1129,7 +917,6 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 		final ModelElementsSelectionDialog dlg = new ModelElementsSelectionDialog("Add existing elements", //$NON-NLS-1$
 				"Select elements to add in current representation."); //$NON-NLS-1$
 		dlg.setGrayedPredicate(getNonSelectablePredicate(diagram));
-		dlg.setSelectablePredicate(getDisplayablePredicate(selectedContainer, diagram));
 		@SuppressWarnings("rawtypes")
 		final List elementsToAdd = dlg.open(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
 				selectedContainer, diagram, true);

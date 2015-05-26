@@ -21,7 +21,7 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Lists;
 
 /**
- * Filtered tree content provider used by the mosel semantic selaction dialog tree viewer. Derived from @see
+ * Filtered tree content provider used by the model semantic selection dialog tree viewer. Derived from @see
  * FilteredTreeContentProvider.
  *
  * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>

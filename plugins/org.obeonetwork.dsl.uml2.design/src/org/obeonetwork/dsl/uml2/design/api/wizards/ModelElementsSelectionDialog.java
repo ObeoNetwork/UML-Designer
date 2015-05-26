@@ -17,6 +17,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -34,6 +35,8 @@ import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.ext.base.Option;
@@ -60,8 +63,25 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.CheckedTreeSelectionDialog;
+import org.eclipse.uml2.uml.Activity;
+import org.eclipse.uml2.uml.Artifact;
+import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Collaboration;
+import org.eclipse.uml2.uml.Component;
+import org.eclipse.uml2.uml.DataType;
+import org.eclipse.uml2.uml.Device;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.ExecutionEnvironment;
+import org.eclipse.uml2.uml.Interaction;
+import org.eclipse.uml2.uml.Interface;
+import org.eclipse.uml2.uml.Node;
+import org.eclipse.uml2.uml.Package;
+import org.eclipse.uml2.uml.Profile;
+import org.eclipse.uml2.uml.StateMachine;
+import org.eclipse.uml2.uml.StructuredClassifier;
+import org.eclipse.uml2.uml.UseCase;
 import org.eclipse.uml2.uml.edit.providers.UMLItemProviderAdapterFactory;
+import org.obeonetwork.dsl.uml2.design.internal.listeners.UmlDesignerSessionManagerListener;
 import org.obeonetwork.dsl.uml2.design.internal.services.ElementServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.UIServices;
 
@@ -196,7 +216,7 @@ public class ModelElementsSelectionDialog {
 					}
 				}
 			});
-			getTreeViewer().expandAll();
+			getTreeViewer().expandToLevel(2);
 			return result;
 		}
 
@@ -590,7 +610,7 @@ public class ModelElementsSelectionDialog {
 			refresh();
 			// We expand the tree so that all elements matching the regular
 			// expression (i.e. all visible leafs) are correctly shown
-			getTreeViewer().expandAll();
+			getTreeViewer().expandToLevel(2);
 			getTreeViewer().setAllChecked(false);
 			for (final Object element : checkedElements) {
 				getTreeViewer().setChecked(element, true);
@@ -677,6 +697,9 @@ public class ModelElementsSelectionDialog {
 		}
 	}
 
+	final Map<EObject, Boolean> isOrHasDescendantCache = UmlDesignerSessionManagerListener
+			.getDescendantCache();
+
 	private static final Function<Object, Void> DO_NOTHING = new Function<Object, Void>() {
 		public Void apply(Object from) {
 			return null;
@@ -706,8 +729,6 @@ public class ModelElementsSelectionDialog {
 	private final String title;
 
 	private final String message;
-
-	private Predicate<Object> isSelectable = Predicates.alwaysTrue();
 
 	// Grayed elements will not be selectable.
 	private Predicate<Object> isGrayed = Predicates.alwaysFalse();
@@ -800,8 +821,27 @@ public class ModelElementsSelectionDialog {
 	 */
 	protected Set<Object> getAllSelectedElements() {
 		final Set<Object> treeElements = getAllChildren(eObject);
-		return Sets.newHashSet(Iterators.filter(treeElements.iterator(),
-				Predicates.and(isSelectable, Predicates.not(isGrayed))));
+		return Sets.newHashSet(Iterators.filter(treeElements.iterator(), Predicates.not(isGrayed)));
+	}
+
+	/**
+	 * Get displayable elements according to diagram kind.
+	 *
+	 * @param selectedContainer
+	 *            Selected container
+	 * @param diagram
+	 *            Diagram
+	 * @return Predicate to select only displayable element according to diagram kind
+	 */
+	private Predicate<Object> getDisplayablePredicate() {
+		return new Predicate<Object>() {
+			public boolean apply(Object input) {
+				if (input instanceof Element) {
+					return isOrHasDescendant((Element)input, isValidForDiagram());
+				}
+				return false;
+			}
+		};
 	}
 
 	/**
@@ -817,6 +857,99 @@ public class ModelElementsSelectionDialog {
 		return selectedElements;
 	}
 
+	private Predicate<Object> getValidsForClassDiagram() {
+		final Predicate<Object> validForClassDiagram = new Predicate<Object>() {
+
+			public boolean apply(Object input) {
+				return input instanceof Package || input instanceof Interface || input instanceof DataType
+						|| "Class".equals(((EObject)input).eClass().getName()) //$NON-NLS-1$
+						|| "Component".equals(((EObject)input).eClass().getName()); //$NON-NLS-1$
+			}
+		};
+		return validForClassDiagram;
+	}
+
+	private Predicate<Object> getValidsForComponentDiagram() {
+		final Predicate<Object> validForComponentDiagram = new Predicate<Object>() {
+
+			public boolean apply(Object input) {
+				return input instanceof Package || input instanceof Interface
+						|| "Class".equals(((EObject)input).eClass().getName()) //$NON-NLS-1$
+						|| "Component".equals(((EObject)input).eClass().getName()); //$NON-NLS-1$
+			}
+		};
+		return validForComponentDiagram;
+	}
+
+	private Predicate<Object> getValidsForCompositeDiagram() {
+		final Predicate<Object> validForCompositeDiagram = new Predicate<Object>() {
+
+			public boolean apply(Object input) {
+				if (input instanceof StructuredClassifier) {
+					return !(input instanceof Interaction || input instanceof StateMachine || input instanceof Activity);
+				}
+				return input instanceof Package || input instanceof Interface
+						|| "Port".equals(((EObject)input).eClass().getName()) //$NON-NLS-1$
+						|| "Property".equals(((EObject)input).eClass().getName()); //$NON-NLS-1$
+
+			}
+		};
+		return validForCompositeDiagram;
+	}
+
+	private Predicate<Object> getValidsForCompositeStructureDiagram(final EObject container) {
+		final Predicate<Object> validForCompositeDiagram = new Predicate<Object>() {
+
+			public boolean apply(Object input) {
+				return "Property".equals(((EObject)input).eClass().getName()) && container.equals(((EObject)input).eContainer()); //$NON-NLS-1$
+
+			}
+		};
+		return validForCompositeDiagram;
+	}
+
+	private Predicate<Object> getValidsForDeploymentDiagram() {
+		final Predicate<Object> validForDeploymentDiagram = new Predicate<Object>() {
+
+			public boolean apply(Object input) {
+				return input instanceof Package && !(input instanceof Profile)
+						|| input instanceof ExecutionEnvironment || input instanceof Node
+						|| input instanceof Artifact || input instanceof Device;
+			}
+		};
+		return validForDeploymentDiagram;
+	}
+
+	/**
+	 * Get valid elements for a diagram.
+	 *
+	 * @param cur
+	 *            Element
+	 * @return List of valid elements for the current representation
+	 */
+	private Predicate<Object> getValidsForPackageDiagram() {
+		final Predicate<Object> validForPackageDiagram = new Predicate<Object>() {
+
+			public boolean apply(Object input) {
+				return input instanceof Package;
+			}
+		};
+		return validForPackageDiagram;
+	}
+
+	private Predicate<Object> getValidsForUseCaseDiagram() {
+		final Predicate<Object> validForUseCaseDiagram = new Predicate<Object>() {
+
+			public boolean apply(Object input) {
+				return input instanceof Package || input instanceof Class || input instanceof Component
+						|| input instanceof Artifact || input instanceof DataType
+						|| input instanceof Interface || input instanceof Collaboration
+						|| input instanceof UseCase;
+			}
+		};
+		return validForUseCaseDiagram;
+	}
+
 	/**
 	 * Init the content provider.
 	 *
@@ -825,7 +958,75 @@ public class ModelElementsSelectionDialog {
 	 */
 	protected void initContentProvider() {
 		final AdapterFactory adapterFactory = getAdapterFactory();
-		contentProvider = new ModelFilteredTreeContentProvider(adapterFactory, isSelectable);
+		contentProvider = new ModelFilteredTreeContentProvider(adapterFactory, getDisplayablePredicate());
+	}
+
+	/**
+	 * Indicates if the given element or at least one of its children checks the given predicate.
+	 *
+	 * @param input
+	 *            the element to check
+	 * @param predicate
+	 *            the predicate to use
+	 * @return true if the given element or at least one of its children checks the given predicate, false
+	 *         otherwise
+	 */
+	@SuppressWarnings("boxing")
+	private boolean isOrHasDescendant(Element element, final Predicate<Object> predicate) {
+		if (isOrHasDescendantCache.containsKey(element)) {
+			return isOrHasDescendantCache.get(element);
+		}
+
+		if (predicate.apply(element)) {
+			isOrHasDescendantCache.put(element, true);
+			return true;
+		}
+
+		final List<Element> elements = element.getOwnedElements();
+		for (final Element ownedElement : elements) {
+			if (predicate.apply(ownedElement)) {
+				isOrHasDescendantCache.put(element, true);
+				return true;
+			}
+			isOrHasDescendantCache.put(element, false);
+		}
+
+		return false;
+	}
+
+	/**
+	 * Get valid elements for a diagram.
+	 *
+	 * @param element
+	 *            Element
+	 * @param containerView
+	 *            Container view
+	 * @return List of valid elements for the current representation
+	 */
+	private Predicate<Object> isValidForDiagram() {
+		Predicate<Object> results = Predicates.alwaysTrue();
+		if (diagram instanceof DSemanticDiagram) {
+			final DiagramDescription description = ((DSemanticDiagram)diagram).getDescription();
+
+			if ("Class Diagram".equals(description.getName()) //$NON-NLS-1$
+					|| "Profile Diagram".equals(description.getName())) { //$NON-NLS-1$
+				results = getValidsForClassDiagram();
+			} else if ("Component Diagram".equals(description.getName())) { //$NON-NLS-1$
+				results = getValidsForComponentDiagram();
+			} else if ("Composite Diagram".equals(description.getName())) { //$NON-NLS-1$
+				results = getValidsForCompositeDiagram();
+			} else if ("Composite Structure Diagram".equals(description.getName())) { //$NON-NLS-1$
+				results = getValidsForCompositeStructureDiagram(((DSemanticDiagram)diagram).getTarget());
+			} else if ("Deployment Diagram".equals(description.getName())) { //$NON-NLS-1$
+				results = getValidsForDeploymentDiagram();
+			} else if ("Package Hierarchy".equals(description.getName())) { //$NON-NLS-1$
+				results = getValidsForPackageDiagram();
+			} else if ("Use Case Diagram".equals(description.getName())) { //$NON-NLS-1$
+				results = getValidsForUseCaseDiagram();
+			}
+		}
+
+		return results;
 	}
 
 	/**
@@ -869,18 +1070,10 @@ public class ModelElementsSelectionDialog {
 	 * @param isGrayedPredicate
 	 *            the predicate to used to detect selected elements of the diagram.
 	 */
-	public void setGrayedPredicate(Predicate<Object> isGrayedPredicate) {
-		isGrayed = isGrayedPredicate != null ? isGrayedPredicate : Predicates.alwaysFalse();
-	}
-
-	/**
-	 * Sets the predicate to use to detect which elements can be selectable according to the diagram.
-	 *
-	 * @param isSelectablePredicate
-	 *            the predicate to used to detect selectable elements of the diagram.
-	 */
-	public void setSelectablePredicate(Predicate<Object> isSelectablePredicate) {
-		isSelectable = isSelectablePredicate;
+	@SuppressWarnings("unchecked")
+	public void setGrayedPredicate(Predicate<EObject> isGrayedPredicate) {
+		isGrayed = Predicates.and((Predicate<? super Object>)(isGrayedPredicate != null ? isGrayedPredicate
+				: Predicates.alwaysFalse()), isValidForDiagram());
 	}
 
 	/**
