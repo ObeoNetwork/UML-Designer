@@ -31,18 +31,19 @@ Contributors:
                 <extensions>true</extensions>
                 <configuration>
                     <aut>    
-        <explicit>${base-aut}</explicit>           
-    </aut>	  
-    <runner>
-        <!-- version of RCPTT Runner -->
-        <explicit>${rcpttrunner}</explicit>
-    </runner>
-    <suites>
-        <suite>All</suite>
-    </suites>
-</configuration>
-      </plugin>
-  </plugins>
+        				<explicit>${base-aut}</explicit>           
+    				</aut>
+    				<timeout>7200</timeout>	  
+    				<runner>
+       					<!-- version of RCPTT Runner -->
+        				<explicit>${rcpttrunner}</explicit>
+   					</runner>
+    				<suites>
+        				<suite>All</suite>
+    				</suites>
+				</configuration>
+      		</plugin>
+  		</plugins>
   </build>
 
   <pluginRepositories>
