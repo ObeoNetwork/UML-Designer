@@ -32,8 +32,7 @@ Contributors:
                 <configuration>
                     <aut>    
         				<explicit>${base-aut}</explicit>           
-    				</aut>
-    				<timeout>7200</timeout>	  
+    				</aut>  
     				<runner>
        					<!-- version of RCPTT Runner -->
         				<explicit>${rcpttrunner}</explicit>
@@ -41,6 +40,10 @@ Contributors:
     				<suites>
         				<suite>All</suite>
     				</suites>
+    				<testOptions>
+    					<execTimeout>7200</execTimeout>
+    					<testExecTimeout>5min</testExecTimeout>
+					</testOptions>
 				</configuration>
       		</plugin>
   		</plugins>
