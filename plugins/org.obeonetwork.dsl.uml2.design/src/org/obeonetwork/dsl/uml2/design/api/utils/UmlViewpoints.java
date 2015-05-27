@@ -74,7 +74,7 @@ public class UmlViewpoints {
 					final ViewpointSelectionCallback selection = new ViewpointSelectionCallback();
 					final Viewpoint reused = UmlViewpoints.fromViewpointRegistry().reused();
 					for (final Viewpoint previouslySelected : session.getSelectedViewpoints(false)) {
-						if (previouslySelected.equals(reused)) {
+								if (previouslySelected.getName().equals(reused.getName())) {
 							return;
 						}
 					}
