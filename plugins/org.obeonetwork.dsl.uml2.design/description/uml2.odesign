@@ -1184,7 +1184,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Dependency" edgeMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Dependency']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Dependency" precondition="service:preTarget.dependencyCreationCompletePrecondition" edgeMappings="//@ownedViewpoints[name='Capture']/@ownedRepresentations[name='Package%20Hierarchy']/@defaultLayer/@edgeMappings[name='PH_Dependency']" connectionStartPrecondition="service:preSource.dependencyCreationStartPrecondition">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
@@ -2234,7 +2234,7 @@
                 </firstModelOperations>
               </initialOperation>
             </tools>
-            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new Dependency" name="Dependency" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Dependency']">
+            <tools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new Dependency" name="Dependency" precondition="service:preTarget.dependencyCreationCompletePrecondition" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@edgeMappings[name='CD_Dependency']" connectionStartPrecondition="service:preSource.dependencyCreationStartPrecondition">
               <sourceVariable name="source"/>
               <targetVariable name="target"/>
               <sourceViewVariable name="sourceView"/>
@@ -3036,7 +3036,7 @@
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_gray']"/>
           </style>
         </edgeMappings>
-        <edgeMappings name="CO_Dependency" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="service:diagram.getDependencyOnlyInverseRefs" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component']" targetFinderExpression="feature:supplier" sourceFinderExpression="feature:client" domainClass="uml.Dependency" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect%20Dependency']">
+        <edgeMappings name="CO_Dependency" deletionDescription="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='existingElements']/@ownedTools[name='DEL_DeleteFromModel']" labelDirectEdit="//@ownedViewpoints[name='Reused']/@ownedRepresentations[name='Reused%20Description']/@toolSection/@subSections[name='directEdit']/@ownedTools[name='NamedElementServiceDirectEdit']" semanticCandidatesExpression="service:diagram.getDependencyOnlyInverseRefs" sourceMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_NestedPackage']" targetMapping="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_Component'] //@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@containerMappings[name='CO_NestedPackage']" targetFinderExpression="feature:supplier" sourceFinderExpression="feature:client" domainClass="uml.Dependency" useDomainElement="true" reconnections="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@toolSections.2/@ownedTools[name='Reconnect%20Dependency']">
           <style lineStyle="dash" sizeComputationExpression="1" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
             <centerLabelStyleDescription labelExpression="service:computeUmlLabel">
@@ -3245,18 +3245,16 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[sourceView.oclAsType(diagram::AbstractDNode).createConnector(targetView)/]"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Dependency" precondition="[preTarget.oclIsKindOf(uml::Classifier)/]" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_Dependency']" connectionStartPrecondition="[preSource.oclIsKindOf(uml::Classifier)/]">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Dependency" precondition="service:preTarget.dependencyCreationCompletePrecondition" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Component%20Diagram']/@defaultLayer/@edgeMappings[name='CO_Dependency']" connectionStartPrecondition="service:preSource.dependencyCreationStartPrecondition">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:source">
-                <subModelOperations xsi:type="tool:If" conditionExpression="service:isComponent">
-                  <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Dependency" referenceName="packagedElement">
-                    <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="var:target"/>
-                    <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="var:source"/>
-                  </subModelOperations>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[source.eContainer(uml::Package)/]">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Dependency" referenceName="packagedElement">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="client" valueExpression="var:source"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="supplier" valueExpression="var:target"/>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -3660,7 +3658,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new Dependency" name="Dependency" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@edgeMappings[name='DE_Dependency']">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new Dependency" name="Dependency" precondition="service:preTarget.dependencyCreationCompletePrecondition" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@edgeMappings[name='DE_Dependency']" connectionStartPrecondition="service:preTarget.dependencyCreationCompletePrecondition">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
