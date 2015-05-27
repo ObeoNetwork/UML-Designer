@@ -207,6 +207,28 @@ public abstract class AbstractDiagramServices {
 	}
 
 	/**
+	 * Precondition for Dependency creation.
+	 *
+	 * @param preTarget
+	 *            target element
+	 * @return true if target element is a NamedElement
+	 */
+	public boolean dependencyCreationCompletePrecondition(Element preTarget) {
+		return preTarget instanceof NamedElement;
+	}
+
+	/**
+	 * Precondition for dependency creation.
+	 *
+	 * @param preSource
+	 *            source element
+	 * @return true if source is a NamedElement
+	 */
+	public boolean dependencyCreationStartPrecondition (Element preSource){
+		return preSource instanceof NamedElement;
+	}
+
+	/**
 	 * Destroy a semantic element and all its references.
 	 *
 	 * @param semanticElement
