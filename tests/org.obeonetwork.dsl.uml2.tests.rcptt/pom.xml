@@ -42,7 +42,7 @@ Contributors:
     				</suites>
     				<testOptions>
     					<execTimeout>7200</execTimeout>
-    					<testExecTimeout>5min</testExecTimeout>
+    					<testExecTimeout>300</testExecTimeout>
 					</testOptions>
 				</configuration>
       		</plugin>
