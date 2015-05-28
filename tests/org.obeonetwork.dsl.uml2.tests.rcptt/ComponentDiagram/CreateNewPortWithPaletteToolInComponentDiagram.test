@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _dwdTENRtEeSda_OhYkGJCQ
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 3/27/15 12:23 PM
+Save-Time: 5/28/15 5:11 PM
 Testcase-Type: ecl
 Verifications: _QZHPwNRzEeSda_OhYkGJCQ
 
@@ -55,8 +55,6 @@ with [get-editor "NewModel Component Diagram" | get-diagram -index 1 | get-edit-
     -name "NewModel Component Diagram"] {
     with [get-edit-part -name Component1 | get-edit-part -name port1] {
         with [get-edit-part -className BundledImageEditPart | get-figure 0] {
-            get-property x | equals 155 | verify-true
-            get-property y | equals 60 | verify-true
             get-property "isVisible()" | equals true | verify-true
         }
         with [get-edit-part -name port1] {
@@ -92,8 +90,6 @@ with [get-editor "NewModel Component Diagram" | get-diagram -index 1 | get-edit-
     -name "NewModel Component Diagram"] {
     with [get-edit-part -name Class1 | get-edit-part -name port1] {
         with [get-edit-part -className BundledImageEditPart | get-figure 0] {
-            get-property "getLocation().x" | equals 155 | verify-true
-            get-property "getLocation().y" | equals 280 | verify-true
             get-property "isVisible()" | equals true | verify-true
         }
         with [get-edit-part -name port1] {
