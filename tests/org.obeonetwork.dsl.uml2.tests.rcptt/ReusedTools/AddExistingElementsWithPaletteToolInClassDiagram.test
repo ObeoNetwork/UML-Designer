@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: https://github.com/ObeoNetwork/UML-Designer/issues/561
 Id: _9wKRkc4lEeSp07cw9_mFYw
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/24/15 4:38 PM
+Save-Time: 5/28/15 11:00 AM
 Testcase-Type: ecl
 Verifications: _vYbQ0M5CEeS8M6MvytM1MA
 
@@ -266,11 +266,11 @@ with [get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-pa
         with [get-edit-part -className DNodeListNameEditPart] {
             get-property "getFigure().getText()" | equals "Default Enumeration" | verify-true
         }
-        get-edit-part -className DNodeListViewNodeListCompartment2EditPart | get-edit-part 
-            -name "Literal1 : Default Enumeration" | get-property "getFigure().getText()" 
-            | equals "Literal1 : Default Enumeration" | verify-true
     }
 }
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
+    | get-edit-part -name "Default Enumeration" | get-edit-part -className DNodeListViewNodeListCompartment2EditPart 
+    | get-edit-part -name Literal1 | get-property "getFigure().getText()" | equals Literal1 | verify-true
 
 // ------ Test : Add an existing Component ------------------------------------------------------------
 // Select  tool Add
