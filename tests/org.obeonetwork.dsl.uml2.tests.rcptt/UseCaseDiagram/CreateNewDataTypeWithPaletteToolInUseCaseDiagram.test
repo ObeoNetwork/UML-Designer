@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _Hl-YgNOqEeSYFrQZGshlCQ
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/14/15 3:43 PM
+Save-Time: 5/28/15 6:28 PM
 Testcase-Type: ecl
 Verifications: _0WLacNO3EeSYFrQZGshlCQ
 
@@ -46,8 +46,6 @@ with [get-editor "NewModel Use Case Diagram"] {
 with [get-editor "NewModel Use Case Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Use Case Diagram" 
     | get-edit-part -name "NewModel Subject" | get-edit-part 
     -className DNodeContainerViewNodeContainerCompartmentEditPart | get-figure "1/0"] {
-    get-property "getLocation().x" | equals 601 | verify-true
-    get-property "getLocation().y" | equals 197 | verify-true
     get-property "isVisible()" | equals true | verify-true
 }
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
