@@ -1,0 +1,29 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.preferences
+Element-Name: DeletionWizardDisable
+Element-Type: context
+Element-Version: 2.0
+Id: _j5GvUAUgEeWu0eW6YYFvkg
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 5/28/15 2:05 PM
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Disable the deletion wizard. The Deletion window will not be opened
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.q7.content-3d2e0690-ce48-3609-83e0-c704d49f1eaf
+Content-Type: q7/binary
+Entry-Name: .q7.content
+
+UEsDBBQACAgIAAAAIQAAAAAAAAAAAAAAAAAIAAAALmNvbnRlbnSdUtFKwzAUfRf8h5D3Jd1EkbI6xKkI
+CsIYc08ja267uDQtSdpufr23XVv1RcG3JPece865N9PZIdOkAutUbiI6ZgElYOJcKpNGtPTJ6JrObs7P
+prlNGcRaFQ6YjQvvWewPrLCQgEUCuPD163yXGw8HTw6ZCofek6Y3qhkX4ntEd94XIed1XbM8SxkK8LeX
+pwHifkLqixYxCYIxwp4X8Q4yMVLGeYGKPetPl0PPHtU0bZEckfwbkhIjMojoHDR4DLBSH8LKuXJiq1FP
+yYhu3i8fq+XtMr2HVRnA6mq9fqj2KcV5ETKNmyEY37UZnLbFprxTWrqu2vjOt5Ab8HVu90w6zcpMT5gE
+p1LTk5AmhRcEhxP6Y9ERf1/LwlvcZbOcOVIp2cMxorILtUGTibKZaC9gmmxy80WnpBK6RJ1EaAeU9+b5
+yf0pKO+SNt+E/+efIPETUEsHCE3u92tRAQAAiAIAAFBLAQIUABQACAgIAAAAIQBN7vdrUQEAAIgCAAAI
+AAAAAAAAAAAAAAAAAAAAAAAuY29udGVudFBLBQYAAAAAAQABADYAAACHAQAAAAA=
+------=_.q7.content-3d2e0690-ce48-3609-83e0-c704d49f1eaf--
