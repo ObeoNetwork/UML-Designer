@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _8xd5kNk6EeS7gLNKVfblRg
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/21/15 1:59 PM
+Save-Time: 5/28/15 3:38 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -59,7 +59,7 @@ with [get-editor "NewModel Activity Diagram"] {
 }
 // complete wizard
 with [get-window "Selection Wizard"] {
-    get-tree | select "<Signal>"
+    get-tree | select "<Signal> Signal1"
     get-button Finish | click
 }
 
@@ -68,9 +68,9 @@ with [get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-p
     get-edit-part -name NewModel | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
         | get-edit-part -name SignalEventAction1 | get-edit-part -className WorkspaceImageEditPart | get-figure "0/0" 
         | get-property "getText()" | equals SignalEventAction1 | verify-true
-    get-property "element.target.member.Signal[0].name" | equals "" | verify-true
+    get-property "element.target.member.Signal[0].name" | equals "Signal1" | verify-true
     get-property "element.target.ownedNode.AcceptEventAction[0].name" | equals SignalEventAction1 | verify-true
-    get-property "element.target.ownedNode.AcceptEventAction[0].trigger.Trigger[0].event.signal.name" | equals "" 
+    get-property "element.target.ownedNode.AcceptEventAction[0].trigger.Trigger[0].event.signal.name" | equals "Signal1" 
         | verify-true
 }
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
