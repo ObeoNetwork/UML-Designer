@@ -1,0 +1,90 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: ContextForRemoveArchetypeInClassDiagram
+Element-Type: context
+Element-Version: 2.0
+Id: _9W5JgAN5EeWhi5BJGob5aQ
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 5/26/15 9:37 AM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+// Activate Archetype layer
+// Select diagram
+with [get-editor "test Class Diagram"] {
+    with [get-diagram -index 1] {
+        with [get-edit-part -name "test Class Diagram"] {
+            mouse-move 39 49 button1 -height 338 -width 761
+            mouse-press 39 49 button1 -height 338 -width 761
+            mouse-release 0 30 button1 524288 -height 40 -width 220
+        }
+    }
+}
+get-editor "test Class Diagram" | get-button Layers | click -arrow
+get-menu Archetypes | click
+
+// Set an Archetype for Class1
+with [get-editor "test Class Diagram"] {
+    with [get-palette | get-palette-entry MomentInterval] {
+        mouse-move 34 10 button1 -height 23 -width 125
+        mouse-press 34 10 button1 -height 23 -width 125
+        mouse-release 34 10 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name Package1 | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            with [get-edit-part -name Class1 | get-edit-part -className DNodeListViewNodeListCompartmentEditPart] {
+                mouse-move 72 34 button1 -height 71 -width 116
+                mouse-press 72 34 button1 -height 71 -width 116
+                mouse-release 72 34 button1 524288 -height 71 -width 116
+            }
+        }
+    }
+}
+// Set an Archetype for Class2
+with [get-editor "test Class Diagram"] {
+    with [get-palette] {
+        with [get-palette-entry Description] {
+            mouse-move 61 7 button1 -height 23 -width 125
+            mouse-press 61 7 button1 -height 23 -width 125
+            mouse-release 61 7 button1 524288 -height 23 -width 125
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        with [get-edit-part -name Class2 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
+            mouse-move 71 11 button1 -height 71 -width 116
+            mouse-press 71 11 button1 -height 71 -width 116
+            mouse-release 71 11 button1 524288 -height 71 -width 116
+        }
+    }
+}
+// Check diagram
+get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" 
+    | get-edit-part -name Package1
+get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram" 
+    | get-edit-part -name Package1 | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+    | get-edit-part -name Class1
+get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram"
+    | get-edit-part -name Class2 
+// Check Class Archetype
+with [get-editor "test Class Diagram" | get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+    with [get-edit-part -name Package1 | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+        | get-edit-part -name Class1 | get-edit-part -className DNodeListName2EditPart] {
+        get-property "getFigure().getText()" | equals Class1 | verify-true
+        get-property "getFigure().getParent().getGradientColor()" | equals "#FABEBE" | verify-true
+    }
+    with [get-edit-part -name Class2 | get-edit-part -className DNodeListNameEditPart] {
+        get-property "getFigure().getText()" | equals Class2 | verify-true
+        get-property "getFigure().getParent().getGradientColor()" | equals "#B4C8D2" | verify-true
+    }
+}
+// Unactivate Archetype layer
+with [get-editor "test Class Diagram"] {
+    get-diagram -index 1 | get-edit-part -name "test Class Diagram" | mouse-move 142 1 -height 338 -width 761
+    get-button Layers | click -arrow
+}
+get-menu Archetypes | click
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--
