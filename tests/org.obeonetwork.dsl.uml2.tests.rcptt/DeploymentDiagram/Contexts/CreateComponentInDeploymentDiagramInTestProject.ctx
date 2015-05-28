@@ -6,7 +6,7 @@ Element-Type: context
 Element-Version: 2.0
 Id: _Bh6RQNewEeSVyY6xGIhNLA
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/1/15 11:23 AM
+Save-Time: 5/28/15 5:23 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -17,8 +17,8 @@ get-view "Model Explorer" | get-tree | select "test/model.uml/<Model> NewModel"
     | get-menu "New Child/Owned Type/Component" | click
 
 with [get-view "Model Explorer" | get-tree] {
-    select "test/model.uml/<Model> NewModel/<Component>"
-    get-item "test/model.uml/<Model> NewModel/<Component>" | drag-start 3 9
+    select "test/model.uml/<Model> NewModel/<Component> Component1"
+    get-item "test/model.uml/<Model> NewModel/<Component> Component1" | drag-start 3 9
 }
 with [get-editor "NewModel Deployment Diagram" | get-diagram -index 1 | get-edit-part 
     -name "NewModel Deployment Diagram"] {
@@ -28,10 +28,10 @@ get-view "Model Explorer" | get-tree | drag-set-data
 get-editor "NewModel Deployment Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Deployment Diagram" 
     | drop 31 425 -detail move
 // Rename created component from model explorer
-get-view "Model Explorer" | get-tree | select "test/model.uml/<Model> NewModel/<Component>" | get-menu Rename | click
+get-view "Model Explorer" | get-tree | select "test/model.uml/<Model> NewModel/<Component> Component1" | get-menu Rename | click
 with [get-window "Rename representation"] {
     with [get-editbox -after [get-label "Enter new name (case sensitive):"]] {
-        set-text Component1
+        set-text NewComponentName
     }
     get-button OK | click
 }
