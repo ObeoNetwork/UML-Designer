@@ -85,13 +85,11 @@ public class ReconnectSwitch extends UMLSwitch<Element> {
 	 */
 	@Override
 	public Element caseAssociation(Association association) {
-		if (RECONNECT_SOURCE == reconnectKind) {
-			if (newPointedElement instanceof Type) {
+		if (isReconnectable(association)) {
+			if (RECONNECT_SOURCE == reconnectKind) {
 				final Property source = AssociationServices.INSTANCE.getSource(association);
 				source.setType((Type)newPointedElement);
-			}
-		} else {
-			if (newPointedElement instanceof Type) {
+			} else {
 				final Property target = AssociationServices.INSTANCE.getTarget(association);
 				target.setType((Type)newPointedElement);
 			}
@@ -178,7 +176,7 @@ public class ReconnectSwitch extends UMLSwitch<Element> {
 	 */
 	@Override
 	public Element caseDependency(Dependency dependency) {
-		if (newPointedElement instanceof NamedElement) {
+		if (isReconnectable(dependency)) {
 			if (RECONNECT_SOURCE == reconnectKind) {
 				dependency.getClients().clear();
 				dependency.getClients().add((NamedElement)newPointedElement);
@@ -249,7 +247,7 @@ public class ReconnectSwitch extends UMLSwitch<Element> {
 	 */
 	@Override
 	public Element caseGeneralization(Generalization generalization) {
-		if (newPointedElement instanceof Classifier) {
+		if (isReconnectable(generalization)) {
 			if (RECONNECT_SOURCE == reconnectKind) {
 				generalization.setSpecific((Classifier)newPointedElement);
 			} else {
@@ -264,13 +262,11 @@ public class ReconnectSwitch extends UMLSwitch<Element> {
 	 */
 	@Override
 	public Element caseInterfaceRealization(InterfaceRealization interfaceRealization) {
-		if (RECONNECT_SOURCE == reconnectKind) {
-			if (newPointedElement instanceof Class) {
+		if (isReconnectable(interfaceRealization)) {
+			if (RECONNECT_SOURCE == reconnectKind) {
 				interfaceRealization.getClients().clear();
 				((Class)newPointedElement).getInterfaceRealizations().add(interfaceRealization);
-			}
-		} else {
-			if (newPointedElement instanceof Interface) {
+			} else {
 				interfaceRealization.getSuppliers().clear();
 				interfaceRealization.getSuppliers().add((Interface)newPointedElement);
 			}
@@ -312,8 +308,7 @@ public class ReconnectSwitch extends UMLSwitch<Element> {
 	 */
 	@Override
 	public Element caseTemplateBinding(TemplateBinding tmplBinding) {
-		if (newPointedElement instanceof TemplateableElement
-				&& oldPointedElement instanceof TemplateableElement) {
+		if (isReconnectable(tmplBinding)) {
 			if (RECONNECT_SOURCE == reconnectKind) {
 				final TemplateableElement templateableElement = (TemplateableElement)newPointedElement;
 				tmplBinding.setBoundElement(templateableElement);
@@ -458,6 +453,14 @@ public class ReconnectSwitch extends UMLSwitch<Element> {
 			}
 			i++;
 		}
+	}
+
+	private boolean isReconnectable(Element element){
+		final ReconnectPreconditionSwitch reconnectPreconditionService = new ReconnectPreconditionSwitch();
+		reconnectPreconditionService.setReconnectKind(reconnectKind);
+		reconnectPreconditionService.setNewPointedElement(newPointedElement);
+		reconnectPreconditionService.setOldPointedElement(oldPointedElement);
+		return reconnectPreconditionService.isReconnectable(element);
 	}
 
 	/**
