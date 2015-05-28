@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _Kw84QOG3EeS3L8OLI5YuWw
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/13/15 5:41 PM
+Save-Time: 5/28/15 4:21 PM
 Testcase-Type: ecl
 Verifications: _h67PEOG4EeS3L8OLI5YuWw
 
@@ -58,11 +58,10 @@ with [get-editor "Test Sequence Diagram"] {
 }
 
 // Check Arrow from Class1 to Class2 
-with [get-editor "Test Sequence Diagram" | get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram" 
-    | get-edit-part -name "Class2 : Class2 [1]" | get-edit-part -name Class2 | get-edit-part -name "Operation_1" 
-    | get-target-connection 0 | get-edit-part -className SequenceMessageNameEditPart] {
-    get-property "getFigure().getText()" | equals "Operation_1" | verify-true
-    get-property "getFigure().isVisible()" | equals true | verify-true
+with [get-editor "Test Sequence Diagram" | get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram"] {
+    get-edit-part -name "Class2 : Class2 [1]" | get-edit-part -name Class2 | get-edit-part -name "Operation_1" 
+        | get-target-connection 0 | get-edit-part -className "" | get-property "getFigure().getText()" 
+        | equals "Operation_1" | verify-true
 }
 with [get-editor "Test Sequence Diagram" | get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram" 
     | get-edit-part -name "Class2 : Class2 [1]" | get-edit-part -name Class2 | get-edit-part -name "Operation_1" 
@@ -78,54 +77,7 @@ with [get-editor "Test Sequence Diagram" | get-diagram -index 1 | get-edit-part 
     //get-property "element.ownedStyle.endLabelStyle" | equals null | verify-true
     get-property "element.ownedStyle.centered" | equals None | verify-true
 }
-
-// Check Operation
-with [get-editor "Test Sequence Diagram" | get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram"] {
-    with [get-edit-part -name "Class2 : Class2 [1]" | get-edit-part -name Class2 | get-edit-part -name "Operation_1"] {
-                get-edit-part -className SquareEditPart | get-property "getFigure().isVisible()" | equals true | verify-true
-    }
-}
-        
-// Check model
-with [get-editor "Test Sequence Diagram" | get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram"] {
-    get-edit-part -name "Class2 : Class2 [1]" | get-edit-part -name Class2 | get-edit-part -name "Operation_1" 
-        | get-target-connection 0 | get-property "element.target.name" | equals "Operation_1" | verify-true
-    with [get-edit-part -name "Class2 : Class2 [1]" | get-edit-part -name Class2 | get-edit-part -name "Operation_1" 
-        | get-target-connection 0] {
-        get-property "source.element.target.name" | equals Class1 | verify-true
-        get-property "target.element.target.name" | equals "Operation_1" | verify-true
-        get-property "element.semanticElements.Message[0].name" | equals "Operation_1" | verify-true
-        get-property "element.semanticElements.Message[0].messageSort" | equals asynchCall | verify-true
-    }
-}
-
-
-
-
-
-
 // Create an Asynchronous Message From Actor1 to Actor2 
-/*with [get-editor "Test Sequence Diagram"] {
-    with [get-palette | get-palette-entry "Asynchronous Message and Operation Creation"] {
-        mouse-move 74 12 button1 -height 37 -width 288
-        mouse-press 74 12 button1 -height 37 -width 288
-        mouse-release 74 12 button1 524288 -height 37 -width 288
-    }
-    with [get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram"] {
-        with [get-edit-part -name "Actor1 : Actor1 [1]" | get-edit-part -name Actor1 | get-edit-part 
-            -className SquareEditPart] {
-            mouse-move 6 41 button1 -height 400 -width 10
-            mouse-press 6 41 button1 -height 400 -width 10
-            mouse-release 6 41 button1 524288 -height 400 -width 10
-        }
-        with [get-edit-part -name "Actor2 : Actor2 [1]" | get-edit-part -name Actor2 | get-edit-part 
-            -className SquareEditPart] {
-            mouse-move 8 39 button1 -height 400 -width 10
-            mouse-press 8 39 button1 -height 400 -width 10
-            mouse-release 8 39 button1 524288 -height 400 -width 10
-        }
-    }
-}*/
 with [get-editor "Test Sequence Diagram"] {
      with [get-palette | get-palette-entry "Asynchronous Message and Operation Creation"] {
         mouse-move 47 14 button1 -height 37 -width 288
@@ -151,11 +103,10 @@ with [get-editor "Test Sequence Diagram"] {
 }
 // Check diagram
 // Check arrow label
-with [get-editor "Test Sequence Diagram" | get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram" 
-    | get-edit-part -name "Actor2 : Actor2 [1]" | get-edit-part -name Actor2 | get-edit-part -name "Message_1" 
-    | get-target-connection 0 | get-edit-part -className SequenceMessageNameEditPart] {
-    get-property "getFigure().getText()" | equals "Message_1" | verify-true
-    get-property "getFigure().isVisible()" | equals true | verify-true
+with [get-editor "Test Sequence Diagram" | get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram"] {
+    get-edit-part -name "Actor2 : Actor2 [1]" | get-edit-part -name Actor2 | get-edit-part -name "Message_1" 
+        | get-target-connection 0 | get-edit-part -className "" | get-property "getFigure().getText()" 
+        | equals "Message_1" | verify-true
 }
 with [get-editor "Test Sequence Diagram" | get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram" 
     | get-edit-part -name "Actor2 : Actor2 [1]" | get-edit-part -name Actor2 | get-edit-part -name "Message_1"] {
@@ -186,6 +137,4 @@ with [get-editor "Test Sequence Diagram" | get-diagram -index 1 | get-edit-part 
         get-property "target.element.target.name" | equals "Message_1" | verify-true
     }
 }
-
-
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
