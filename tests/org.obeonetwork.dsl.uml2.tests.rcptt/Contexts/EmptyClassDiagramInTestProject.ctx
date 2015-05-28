@@ -6,7 +6,7 @@ Element-Type: context
 Element-Version: 2.0
 Id: _p-v3gMyvEeSmqoI7c5i_uw
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/15/15 10:12 AM
+Save-Time: 5/28/15 4:40 PM
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
 Content-Type: text/plain
@@ -34,7 +34,5 @@ with [get-window "Create Representation"] {
         get-button OK | click
     }
 }
-get-editor "test Class Diagram" | get-diagram | get-edit-part -name "test Class Diagram" | mouse-move 146 13 
-    -height 338 -width 837
-get-button "Save (M1+S)" | click
+get-editor "test Class Diagram" | get-diagram | get-edit-part -name "test Class Diagram"
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

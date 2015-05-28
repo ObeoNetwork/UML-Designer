@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _FSeOwMytEeSmqoI7c5i_uw
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/15/15 11:43 AM
+Save-Time: 5/28/15 4:56 PM
 Testcase-Type: ecl
 Verifications: _r8JwoMy1EeSmqoI7c5i_uw
 
@@ -28,19 +28,26 @@ Result:
 Content-Type: text/ecl
 Entry-Name: .content
 
-// Create new semantic element using palette tool : Package
+// Create new semantic element using palette tool : Class
 with [get-editor "test Class Diagram"] {
-    with [get-palette | get-palette-entry Class] {
-        mouse-press 81 12 button1 -height 23 -width 152
-        get-figure 0 | drag-start 81 12
+
+    with [get-palette] {
+        with [get-palette-entry Class] {
+            mouse-move 58 11 button1 -height 24 -width 125
+            mouse-press 58 11 button1 -height 24 -width 125
+            mouse-release 58 11 button1 524288 -height 24 -width 125
+        }
     }
- 	get-palette | drag-set-data
-    get-diagram -index 1 | get-edit-part -name "test Class Diagram" | drop 317 89 -detail copy
-    get-palette | drag-end -detail move
+    with [get-diagram -index 1 | get-edit-part -name "test Class Diagram"] {
+        mouse-move 375 162 button1 -height 343 -width 607
+        mouse-press 375 162 button1 -height 343 -width 607
+        mouse-hover 375 162 -mask 524288 -height 343 -width 607
+        mouse-release 375 162 button1 524288 -height 343 -width 607
+    }
+}
 
 // Verify Graphical element is created in diagram
 get-diagram -index 1 | get-edit-part -name "test Class Diagram" | get-edit-part -name Class1 
     | get-figure "0/0" | get-property "getLabelFigure().getText()" | equals "Class1" | verify-true
-}
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

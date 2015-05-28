@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _mHUIoN-XEeSEJ-mMQXHd1A
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/10/15 5:45 PM
+Save-Time: 5/28/15 4:27 PM
 Testcase-Type: ecl
 Verifications: _dAsF4N-YEeSEJ-mMQXHd1A
 
@@ -52,7 +52,7 @@ with [get-editor "Test Sequence Diagram"] {
 }
 // Check diagram 
 // Check label in top of diagram
-with [get-editor "Test Sequence Diagram" | get-label "Actor1 : Actor1 [1]"] {
+with [get-editor "Test Sequence Diagram" | get-label "Actor1 : Actor..."] {
     get-property "getText()" | equals "Actor1 : Actor1 [1]" | verify-true
     get-property "isVisible()" | equals true | verify-true
 }
