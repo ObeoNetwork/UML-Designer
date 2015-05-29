@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _QhkNAOGsEeS3L8OLI5YuWw
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/13/15 6:10 PM
+Save-Time: 5/29/15 3:17 PM
 Testcase-Type: ecl
 Verifications: _7rUV4OG2EeS3L8OLI5YuWw
 
@@ -77,17 +77,16 @@ with [get-editor "Test Sequence Diagram" | get-diagram -index 1 | get-edit-part 
     }
 }
 // Check arrow label
-with [get-editor "Test Sequence Diagram" | get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram"] {
-    get-edit-part -name "Class2 : Class2 [1]" | get-edit-part -name Class2 | get-edit-part -name "Operation_1" 
-        | get-target-connection 0 | get-edit-part -className SequenceMessageNameEditPart 
-        | get-property "getFigure().getText()" | equals "Operation_1" | verify-true
+with [get-editor "Test Sequence Diagram" | get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram" 
+    | get-edit-part -name "Class2 : Class2 [1]" | get-edit-part -name Class2 | get-edit-part -name "Operation_1"] {
+    get-target-connection 0 | get-edit-part -className "" | get-property "getFigure().getText()" | equals "Operation_1" 
+        | verify-true
 }
 
 // Check operation execution
-with [get-editor "Test Sequence Diagram" | get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram"] {
-    with [get-edit-part -name "Class2 : Class2 [1]" | get-edit-part -name Class2 | get-edit-part -name "Operation_1"] {
-        get-edit-part -className SquareEditPart | get-property "getFigure().isVisible()" | equals true | verify-true
-    }
+with [get-editor "Test Sequence Diagram" | get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram" 
+    | get-edit-part -name "Class2 : Class2 [1]" | get-edit-part -name Class2 | get-edit-part -name "Operation_1"] {
+    get-edit-part -className SquareEditPart | get-property "getFigure().isVisible()" | equals true | verify-true
 }
         
 // Check Arrow from class2 to Class1
@@ -129,7 +128,7 @@ with [get-editor "Test Sequence Diagram" | get-diagram -index 1 | get-edit-part 
 // Check reply arrow label
 with [get-editor "Test Sequence Diagram" | get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram"] {
     get-edit-part -name "Class1 : Class1 [1]" | get-edit-part -name Class1 | get-target-connection 0 | get-edit-part 
-        -className SequenceMessageNameEditPart | get-property "getFigure().getText()" | equals "Operation_1_reply" 
+        -className "" | get-property "getFigure().getText()" | equals "Operation_1_reply" 
         | verify-true
 }
 
@@ -167,12 +166,12 @@ with [get-editor "Test Sequence Diagram"] {
 // Check diagram
 with [get-editor "Test Sequence Diagram" | get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram"] {
     get-edit-part -name "Actor2 : Actor2 [1]" | get-edit-part -name Actor2 | get-edit-part -name "Message_2" 
-        | get-target-connection 0 | get-edit-part -className SequenceMessageNameEditPart 
+        | get-target-connection 0 | get-edit-part -className "" 
         | get-property "getFigure().getText()" | equals "Message_2" | verify-true
 }
 with [get-editor "Test Sequence Diagram" | get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram"] {
     get-edit-part -name "Actor1 : Actor1 [1]" | get-edit-part -name Actor1 | get-target-connection 0 | get-edit-part 
-        -className SequenceMessageNameEditPart | get-property "getFigure().getText()" | equals "Message_2_reply" 
+        -className "" | get-property "getFigure().getText()" | equals "Message_2_reply" 
         | verify-true
 }
 with [get-editor "Test Sequence Diagram" | get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram"] {
@@ -228,4 +227,5 @@ with [get-editor "Test Sequence Diagram" | get-diagram -index 1 | get-edit-part 
         get-property "element.targetNode.name" | equals Actor1 | verify-true
     }
 }
+
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
