@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _wUNpAM5VEeS8M6MvytM1MA
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/15/15 10:20 AM
+Save-Time: 5/29/15 11:21 AM
 Testcase-Type: ecl
 Verifications: _qasmwM7rEeSz9_HNAw245A
 
@@ -69,11 +69,6 @@ with [get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-pa
     // Check name
     get-edit-part -className DNodeListNameEditPart | get-property "getFigure().getText()" | equals DefaultClass 
         | verify-true
-    // Check Position
-    with [get-figure "0/0"] {
-        get-property x | equals 131 | verify-true
-        get-property y | equals 146 | verify-true
-    }
 }
 // Check attributs are present
 with [get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" | get-edit-part 
@@ -98,13 +93,9 @@ with [get-view "Model Explorer" | get-tree] {
 get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" | drop 476 156 -detail move
 // Check element was created in diagram
     // Check name
-    // Check Position
-with [get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" | get-edit-part 
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" | get-edit-part 
     -name "New package 1" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
-    | get-figure 1] {
-    get-property x | equals 476 | verify-true
-    get-property y | equals 157 | verify-true
-}
+    | get-figure 1
 
 // ------- Drop Interface from model explorer ----------------------------------------------
 // Select element in model
@@ -119,14 +110,6 @@ get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -na
 get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" | get-edit-part 
     -name "Default Interface" | get-edit-part -className DNodeListNameEditPart | get-property "getFigure().getText()" 
     | equals "Default Interface" | verify-true
-// Check Position
-with [get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" | get-edit-part 
-    -name "Default Interface"] {
-    with [get-figure "0/0"] {
-        get-property x | equals 282 | verify-true
-        get-property y | equals 309 | verify-true
-    }
-}
 
 // -------  Drop DataType from model explorer ----------------------------------------------
 // Select element in model
@@ -143,11 +126,6 @@ with [get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-pa
     	// Check name
         get-edit-part -className DNodeListNameEditPart | get-property "getFigure().getText()" 
             | equals "Default DataType" | verify-true
-        // Check Position
-        with [get-figure "0/0"] {
-            get-property x | equals 483 | verify-true
-            get-property y | equals 24 | verify-true
-        }
     }
 }
 
@@ -166,11 +144,6 @@ with [get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-pa
         // Check name
         get-edit-part -className DNodeListNameEditPart | get-property "getFigure().getText()" 
             | equals "Default PrimitiveType" | verify-true
-        // Check Position
-        with [get-figure "0/0"] {
-            get-property x | equals 642 | verify-true
-            get-property y | equals 25 | verify-true
-        }
     }
 }
 
@@ -189,17 +162,12 @@ with [get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-pa
         // Check name
         get-edit-part -className DNodeListNameEditPart | get-property "getFigure().getText()" 
             | equals "Default Enumeration" | verify-true
-        // Check Position
-        with [get-figure "0/0"] {
-            get-property x | equals 643 | verify-true
-            get-property y | equals 164 | verify-true
-        }
-        // Check Features
-        get-edit-part -className DNodeListViewNodeListCompartment2EditPart | get-edit-part 
-            -name "Literal1 : Default Enumeration" | get-property "getFigure().getText()" 
-            | equals "Literal1 : Default Enumeration" | verify-true
     }
 }
+// Check Features
+get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
+    | get-edit-part -name "Default Enumeration" | get-edit-part -className DNodeListViewNodeListCompartment2EditPart 
+    | get-edit-part -name Literal1 | get-property "getFigure().getText()" | equals Literal1 | verify-true
 
 // -------  Drop Component from model explorer ----------------------------------------------
 // Select element in model
@@ -209,18 +177,13 @@ with [get-view "Model Explorer" | get-tree] {
 }
 // Drop element in diagram
 get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
-    | get-figure "3/0/1/1" | drop 3 119 -detail move
+     | drop 3 119 -detail move
 // Check element was created in diagram
 with [get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
     | get-edit-part -name Component] {
     // Check name
     get-edit-part -className DNodeListNameEditPart | get-property "getFigure().getText()" | equals Component 
         | verify-true
-    // Check Position
-    with [get-figure "0/0"] {
-        get-property x | equals 479 | verify-true
-        get-property y | equals 276 | verify-true
-    }
     // Check Features
     with [get-edit-part -className DNodeListViewNodeListCompartment2EditPart] {
         get-edit-part -name "Port1 :  [1]" | get-property "getFigure().getText()" | equals "Port1 :  [1]" | verify-true
