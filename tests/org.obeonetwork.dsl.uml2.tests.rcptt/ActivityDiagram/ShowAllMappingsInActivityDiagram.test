@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _lgENgNhnEeSpqsLTetvOvg
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/17/15 11:45 AM
+Save-Time: 5/29/15 10:56 AM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -33,37 +33,37 @@ get-editor "Test Activity Diagram" | get-diagram -index 1 | get-edit-part -name 
 // Check Initial node
 get-editor "Test Activity Diagram" | get-diagram -index 1 | get-edit-part -name "Test Activity Diagram" 
     | get-edit-part -name Test | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart
-    | get-edit-part -name "" | get-edit-part -className WorkspaceImageEditPart | get-property "getFigure().isVisible()" 
+    | get-edit-part -name "Initial_1" | get-edit-part -className WorkspaceImageEditPart | get-property "getFigure().isVisible()" 
         | equals true | verify-true
 // Check Activity final Node
 get-editor "Test Activity Diagram" | get-diagram -index 1 | get-edit-part -name "Test Activity Diagram" 
     | get-edit-part -name Test | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart
-    | get-edit-part -name "" -index 3 | get-edit-part -className WorkspaceImageEditPart 
+    | get-edit-part -name "ActivityFinal_1"| get-edit-part -className WorkspaceImageEditPart 
         | get-property "getFigure().isVisible()" | equals true | verify-true
 // Check Flow Final Node
 get-editor "Test Activity Diagram" | get-diagram -index 1 | get-edit-part -name "Test Activity Diagram" 
     | get-edit-part -name Test | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart
-    | get-edit-part -name "" -index 6 | get-edit-part -className WorkspaceImageEditPart 
+    | get-edit-part -name "flowFinal_1" | get-edit-part -className WorkspaceImageEditPart 
         | get-property "getFigure().isVisible()" | equals true | verify-true
 // Check Decision Node
 get-editor "Test Activity Diagram" | get-diagram -index 1 | get-edit-part -name "Test Activity Diagram" 
     | get-edit-part -name Test | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart
-    | get-edit-part -name "" -index 5 | get-edit-part -className LozengeEditPart | get-property "getFigure().isVisible()" 
+    | get-edit-part -name "Decision_1" | get-edit-part -className LozengeEditPart | get-property "getFigure().isVisible()" 
         | equals true | verify-true
 // Check Merge Node
 get-editor "Test Activity Diagram" | get-diagram -index 1 | get-edit-part -name "Test Activity Diagram" 
     | get-edit-part -name Test | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart
-    | get-edit-part -name "" -index 4 | get-edit-part -className LozengeEditPart | get-property "getFigure().isVisible()" 
+    | get-edit-part -name "Merge_1"| get-edit-part -className LozengeEditPart | get-property "getFigure().isVisible()" 
         | equals true | verify-true
 // Check Fork Node
 get-editor "Test Activity Diagram" | get-diagram -index 1 | get-edit-part -name "Test Activity Diagram" 
     | get-edit-part -name Test | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart
-    | get-edit-part -name "" -index 1 | get-edit-part -className SquareEditPart | get-property "getFigure().isVisible()" 
+    | get-edit-part -name "Fork_1"| get-edit-part -className SquareEditPart | get-property "getFigure().isVisible()" 
         | equals true | verify-true
 // Check Join Node
 get-editor "Test Activity Diagram" | get-diagram -index 1 | get-edit-part -name "Test Activity Diagram" 
     | get-edit-part -name Test | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart
-    | get-edit-part -name "" -index 2 | get-edit-part -className SquareEditPart | get-property "getFigure().isVisible()" 
+    | get-edit-part -name "Join_1" | get-edit-part -className SquareEditPart | get-property "getFigure().isVisible()" 
         | equals true | verify-true
 // Check Opaque Action
 with [get-editor "Test Activity Diagram" | get-diagram -index 1 | get-edit-part -name "Test Activity Diagram" 
@@ -108,7 +108,7 @@ with [get-editor "Test Activity Diagram" | get-diagram -index 1 | get-edit-part 
     | get-edit-part -name Test | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
     with [get-edit-part -name "Operation_1_call : Operation_1" | get-target-connection 0] {
         get-edit-part -className "" | get-property "getFigure().getText()" 
-            | equals "<Control Flow> Activity State 2_To_Operation_1_call" | verify-true
+            | equals "Activity State 2_To_Operation_1_call" | verify-true
         get-property "getFigure().isVisible()" | equals true | verify-true
     }
 }
@@ -118,7 +118,7 @@ with [get-editor "Test Activity Diagram" | get-diagram -index 1 | get-edit-part 
     with [get-edit-part -name "«Datastore»\r\n"
         + "DataStore_1" | get-target-connection 0] {
         get-edit-part -className "" | get-property "getFigure().getText()" 
-            | equals "<Object Flow> Parameter_1_To_DataStore_1_ObjectFlow" | verify-true
+            | equals "Parameter_1_To_DataStore_1_ObjectFlow" | verify-true
         get-property "getFigure().isVisible()" | equals true | verify-true
     }
 }
