@@ -6,7 +6,7 @@ Element-Type: context
 Element-Version: 2.0
 Id: _UeMqUNFIEeSZY9TTmtin1Q
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 3/23/15 11:35 AM
+Save-Time: 5/29/15 10:28 AM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -14,11 +14,11 @@ Entry-Name: .ecl.context
 
 // Activate Profiles layer
 get-editor Entities|get-button Layers | click -arrow
-get-menu Profiles | click
+get-menu Stereotypes | click
 
 // Select Profiles/Stereotypes palette tool
 with [get-editor Entities] {
-   with [get-palette | get-palette-entry Stereotypes] {
+   with [get-palette | get-palette-entry Stereotype] {
         mouse-move 40 10 button1 -height 23 -width 135
         mouse-press 40 10 button1 -height 23 -width 135
         mouse-release 40 10 button1 524288 -height 23 -width 135
