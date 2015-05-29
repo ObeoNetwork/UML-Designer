@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _3KqiMM7_EeSz9_HNAw245A
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/17/15 11:33 AM
+Save-Time: 5/29/15 10:48 AM
 Testcase-Type: ecl
 Verifications: _GU_SMM5OEeS8M6MvytM1MA
 
@@ -36,7 +36,7 @@ Entry-Name: .content
 // Verify number of elements in Diagram
 // Check number of containers
 get-editor "Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "Test Class Diagram" 
-    | get-property childrenCount | equals 24 | verify-true
+    | get-property childrenCount | equals 23 | verify-true
 // Check number of connections
 get-editor "Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "Test Class Diagram" 
     | get-property "getConnections().size()" | equals 10 | verify-true
