@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _E5N4wM5DEeS8M6MvytM1MA
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/15/15 10:26 AM
+Save-Time: 5/29/15 11:12 AM
 Testcase-Type: ecl
 Verifications: _GU_SMM5OEeS8M6MvytM1MA
 
@@ -154,9 +154,9 @@ with [get-editor "Test Class Diagram" | get-diagram -index 1 | get-edit-part -na
     mouse-press 88 222 button1 -height 776 -width 843
     mouse-release 88 222 button1 524288 -height 776 -width 843
 }
-with [get-window "Select element to add in current representation"] {
+with [get-window "Add existing elements"] {
     get-tree | select "<Model> Test/<Component> Component"
-    get-button Finish | click
+    get-button OK | click
 }
 
 // Remove component from diagram
