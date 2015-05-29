@@ -6,10 +6,9 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: __Ht98IBTEeS4X6G9cD21hw
-Runtime-Version: 2.0.0.201412081054
-Save-Time: 12/10/14 1:59 PM
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 5/29/15 12:05 PM
 Testcase-Type: ecl
-Verifications: _gbLtQIBVEeS4X6G9cD21hw
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
 Content-Type: text/plain
@@ -26,7 +25,7 @@ Content-Type: text/ecl
 Entry-Name: .content
 
 get-view "Model Explorer" | get-tree | select "TravelAgency/agency.uml/<Model> Travel Agency/Entities" | double-click
-get-editor Entities | get-diagram -index 1 | get-edit-part -name Entities | get-property childrenCount | equals 30 
+get-editor Entities | get-diagram -index 1 | get-edit-part -name Entities | get-property childrenCount | equals 16
     | verify-true
     
 get-view "Model Explorer" | get-tree | select "TravelAgency/agency.uml/<Model> Travel Agency/Component Architecture" 
@@ -37,7 +36,7 @@ get-editor "Component Architecture" | get-diagram -index 1 | get-edit-part -name
 get-view "Model Explorer" | get-tree | select "TravelAgency/agency.uml/<Model> Travel Agency/Composite Structure" 
     | double-click
 get-editor "Composite Structure" | get-diagram -index 1 | get-edit-part -name "Composite Structure" 
-    | get-property childrenCount | equals 16 | verify-true
+    | get-property childrenCount | equals 0 | verify-true
 
 get-view "Model Explorer" | get-tree | select "TravelAgency/agency.uml/<Model> Travel Agency/Dashboard" | double-click
 get-editor Dashboard | get-diagram -index 1 | get-edit-part -name Dashboard | get-property childrenCount | equals 1 
