@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _NZK9cNhQEeSpqsLTetvOvg
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/14/15 3:12 PM
+Save-Time: 5/29/15 11:23 AM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -33,7 +33,7 @@ Entry-Name: .content
 // Reconnect target from Component1 to Artifact2
 with [get-editor "NewModel Deployment Diagram"] {
     with [get-diagram -index 1 | get-edit-part -name "NewModel Deployment Diagram"] {
-        with [get-edit-part -name Component1] {
+        with [get-edit-part -name NewComponentName] {
             get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart | mouse-move 69 3 -height 38 
                 -width 118
             with [get-target-connection 0 | get-handle SiriusConnectionEndPointHandle] {
@@ -50,13 +50,13 @@ with [get-editor "NewModel Deployment Diagram"] {
 
 // Check diagram and Model
 with [get-editor "NewModel Deployment Diagram" | get-diagram -index 1 | get-edit-part 
-    -name "NewModel Deployment Diagram" | get-edit-part -name Component1 | get-target-connection 0] {
+    -name "NewModel Deployment Diagram" | get-edit-part -name NewComponentName | get-target-connection 0] {
     get-property "element.target.source.size" | equals 1 | verify-true
     get-property "element.target.source.Artifact[0].name" | equals Artifact2 | verify-true
     get-property "element.target.target.size" | equals 1 | verify-true
-    get-property "element.target.target.Artifact[0].name" | equals Component1 | verify-true
+    get-property "element.target.target.Artifact[0].name" | equals NewComponentName | verify-true
     get-property "element.sourceNode.name" | equals Artifact2 | verify-true
-    get-property "element.targetNode.name" | equals Component1 | verify-true
+    get-property "element.targetNode.name" | equals NewComponentName | verify-true
     get-property "getFigure().isVisible()" | equals true | verify-true
 }
 
