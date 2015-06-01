@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _mHUIoN-XEeSEJ-mMQXHd1A
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 5/28/15 4:27 PM
+Save-Time: 5/29/15 2:51 PM
 Testcase-Type: ecl
 Verifications: _dAsF4N-YEeSEJ-mMQXHd1A
 
@@ -30,29 +30,31 @@ Entry-Name: .content
 
 // Create new Actor lifeLine with palette tool
 with [get-editor "Test Sequence Diagram"] {
-	// Select tool
-     with [get-palette] {
+    with [get-palette] {
+    	// Select tool
         with [get-palette-entry Lifeline] {
-            mouse-move 7 8 button1 -height 23 -width 134
-            mouse-press 7 8 button1 -height 23 -width 134
-            mouse-release 7 8 button1 524288 -height 23 -width 134
+            mouse-move 10 10 button1 -height 23 -width 125
+            mouse-press 10 10 button1 -height 23 -width 125
+            mouse-release 10 10 button1 524288 -height 23 -width 125
         }
-        with [get-palette-entry Actor -index 1] {
-            mouse-move 38 6 button1 -height 23 -width 134
-            mouse-press 38 6 button1 -height 23 -width 134
-            mouse-release 38 6 button1 524288 -height 23 -width 134
+       with [get-palette-entry Actor -index 1] {
+            mouse-move 29 7 button1 -height 23 -width 125
+            mouse-press 29 7 button1 -height 23 -width 125
+            mouse-release 29 7 button1 524288 -height 23 -width 125
         }
     }
-    // Click in sequence diagram area
+    // Click in sequence diagram area create a large element to display the entire label
     with [get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram"] {
-        mouse-move 96 31 button1 -height 500 -width 793
-        mouse-press 96 31 button1 -height 500 -width 793
-        mouse-release 96 31 button1 524288 -height 500 -width 793
+        mouse-move 71 126 button1 -height 304 -width 751
+        mouse-press 71 126 button1 -height 304 -width 751
+        mouse-move 71 125 -mask 524288 -height 304 -width 751
+        mouse-drag 629 176 button1 524288 -height 304 -width 751
+        mouse-release 629 176 button1 524288 -height 304 -width 751
     }
 }
 // Check diagram 
 // Check label in top of diagram
-with [get-editor "Test Sequence Diagram" | get-label "Actor1 : Actor..."] {
+with [get-editor "Test Sequence Diagram" | get-label "Actor1 : Actor1 [1]"] {
     get-property "getText()" | equals "Actor1 : Actor1 [1]" | verify-true
     get-property "isVisible()" | equals true | verify-true
 }
@@ -68,5 +70,4 @@ with [get-editor "Test Sequence Diagram" | get-diagram -index 1 | get-edit-part 
     get-edit-part -name Actor1 | get-edit-part -className SquareEditPart | get-figure "0/0" 
         | get-property "isVisible()" | equals true | verify-true
 }
-
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
