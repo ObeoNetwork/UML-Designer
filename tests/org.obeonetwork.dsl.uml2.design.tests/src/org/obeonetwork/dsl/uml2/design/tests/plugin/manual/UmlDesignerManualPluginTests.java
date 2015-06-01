@@ -21,9 +21,10 @@ import org.obeonetwork.dsl.uml2.design.tests.plugin.manual.services.compositestr
 
 @RunWith(Suite.class)
 @SuiteClasses({SequenceServiceTests.class, IsRelated4CompositeStructureServicesTests.class,
-		IsRelated4CompositeStructureServicesWithConnectorTests.class, ConnectorServicesTests.class,
-		DiagramElementMappingSpecificationTests.class, InterpretedExpressionTests.class,
-		VsmValidationTests.class, JavaExtensionTests.class, AllServicesTests.class})
+	IsRelated4CompositeStructureServicesWithConnectorTests.class, ConnectorServicesTests.class,
+	DiagramElementMappingSpecificationTests.class, InterpretedExpressionTests.class,
+	// VsmValidationTests.class,
+	JavaExtensionTests.class, AllServicesTests.class})
 /**
  * Testing : Hand written UML Designer plugin tests
  */

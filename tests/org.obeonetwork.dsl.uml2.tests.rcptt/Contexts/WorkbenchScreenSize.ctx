@@ -6,7 +6,7 @@ Element-Type: context
 Element-Version: 2.0
 Id: _xUmjgA-GEeWqyPO4VW22gA
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 6/10/15 5:40 PM
+Save-Time: 6/11/15 5:09 PM
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
 Content-Type: text/plain
@@ -19,6 +19,4 @@ Content-Type: text/ecl
 Entry-Name: .ecl.context
 
 get-eclipse-window | get-object | invoke setSize 1440 900
-get-menu "Window/Reset Perspective..." | click
-get-window "Reset Perspective" | get-button Yes | click
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

@@ -53,11 +53,15 @@
       xsi:type="setup:VariableTask"
       id="umldesigner.target.platform"
       name="umldesigner.target.platform"
-      defaultValue="UML Designer Luna"
+      value=""
+      defaultValue="UML Designer Mars"
       label="Target Platform - Uml Designer">
     <choice
+        value="UML Designer Mars"
+        label="umldesigner-mars"/>
+    <choice
         value="UML Designer Luna"
-        label="UML Designer Luna"/>
+        label="umldesigner-luna"/>
     <choice
         value="No"
         label="No target plaform"/>
@@ -112,12 +116,46 @@
         name="org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group"/>
     <requirement
         name="org.eclipse.sirius.specifier.ide.ui.acceleo.source.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.runtime.aql.feature.group"/>
+    <requirement
+        name="org.eclipse.sirius.aql.feature.group"/>
+    <requirement
+        name="org.eclipse.pde.feature.group"/>
+    <requirement
+        name="org.eclipse.jdt.feature.group"/>
+    <requirement
+        name="org.eclipse.uml2.uml.feature.group"/>
+    <requirement
+        name="org.eclipse.uml2.uml.edit.feature.group"/>
+    <requirement
+        name="org.eclipse.uml2.feature.group"/>
+    <requirement
+        name="org.eclipse.rcptt.core.feature.group"/>
+    <requirement
+        name="org.eclipse.rcptt.ecl.core.feature.group"/>
+    <requirement
+        name="org.eclipse.rcptt.ecl.ide.feature.group"/>
+    <requirement
+        name="org.eclipse.rcptt.ecl.platform.feature.group"/>
+    <requirement
+        name="org.eclipse.rcptt.ecl.platform.ui.feature.group"/>
+    <requirement
+        name="org.eclipse.rcptt.launching.feature.group"/>
+    <requirement
+        name="org.eclipse.rcptt.platform.feature.group"/>
+    <requirement
+        name="org.eclipse.rcptt.tesla.ecl.feature.group"/>
+    <requirement
+        name="org.eclipse.rcptt.tesla.feature.group"/>
     <repository
         url="http://mbarbero.github.io/fr.obeo.releng.targetplatform/p2/"/>
     <repository
-        url="http://download.eclipse.org/sirius/updates/releases/2.0.4/luna"/>
+        url="http://download.eclipse.org/sirius/updates/releases/3.0.0/mars"/>
     <repository
         url="http://download.eclipse.org/technology/swtbot/releases/2.1.1"/>
+    <repository
+        url="http://download.eclipse.org/rcptt/release/2.0.0/repository/"/>
     <description>Install the tools needed in the IDE to work with the source code for ${scope.project.label}</description>
   </setupTask>
   <setupTask
@@ -125,7 +163,9 @@
     <sourceLocator
         rootFolder="${git.clone.umldesigner.location/packaging}"/>
     <sourceLocator
-        rootFolder="${git.clone.umldesigner.location/plugins}"/>
+        rootFolder="${git.clone.umldesigner.location/plugins}">
+      <excludedPath>org.eclipse.emf.eef.codegen.uml</excludedPath>
+    </sourceLocator>
     <sourceLocator
         rootFolder="${git.clone.umldesigner.location/releng}"/>
     <sourceLocator
@@ -171,6 +211,9 @@
         <operand
             xsi:type="predicates:NamePredicate"
             pattern="org.obeonetwork.dsl.uml2.update"/>
+        <operand
+            xsi:type="predicates:NamePredicate"
+            pattern="org.obeonetwork.dsl.uml2.settings"/>
       </predicate>
     </workingSet>
     <workingSet
@@ -238,6 +281,9 @@
         <operand
             xsi:type="predicates:NamePredicate"
             pattern="org.obeonetwork.dsl.uml2.tests.rcptt"/>
+        <operand
+            xsi:type="predicates:NamePredicate"
+            pattern="org.obeonetwork.dsl.uml2.design.ui.tests"/>
       </predicate>
     </workingSet>
     <workingSet

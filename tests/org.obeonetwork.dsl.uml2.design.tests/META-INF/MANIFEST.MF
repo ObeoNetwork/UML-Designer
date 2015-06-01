@@ -29,7 +29,9 @@ Require-Bundle: org.eclipse.core.runtime,
  org.obeonetwork.dsl.uml2.design,
  org.eclipse.sirius.diagram.sequence,
  org.eclipse.sirius.ecore.extender,
- org.eclipse.sirius.tests.swtbot.support
+ org.eclipse.sirius.tests.swtbot.support,
+ org.eclipse.sirius.table,
+ org.eclipse.sirius.tree
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Bundle-ActivationPolicy: lazy
 Export-Package: org.obeonetwork.dsl.uml2.design.tests.plugin.manual

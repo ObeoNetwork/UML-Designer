@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde?>
+<!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
+<target name="UML Designer Mars" sequenceNumber="1435670392">
+  <locations>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="com.google.guava" version="11.0.2.v201303041551"/>
+      <unit id="org.junit" version="4.12.0.v201504281640"/>
+      <unit id="org.hamcrest.core" version="1.3.0.v201303031735"/>
+      <unit id="org.hamcrest.library" version="1.3.0.v201505072020"/>
+      <unit id="org.apache.log4j" version="1.2.15.v201012070815"/>
+      <repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20150519210750/repository/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.swtbot.forms.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.swtbot.eclipse.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.swtbot.eclipse.gef.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.swtbot.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.swtbot.ide.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.swtbot.eclipse.test.junit.feature.group" version="0.0.0"/>
+      <repository location="http://download.eclipse.org/technology/swtbot/releases/2.1.1/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.emf.eef.runtime" version="0.0.0"/>
+      <unit id="org.eclipse.acceleo.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.uml2.uml.feature.group" version="5.1.0.v20150601-0733"/>
+      <unit id="org.eclipse.uml2.uml.edit.feature.group" version="5.1.0.v20150601-0733"/>
+      <unit id="org.eclipse.uml2.feature.group" version="5.1.0.v20150601-0733"/>
+      <unit id="org.eclipse.platform.sdk" version="0.0.0"/>
+      <unit id="org.eclipse.equinox.executable.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.epp.mpc.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.amalgam.discovery.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.edit.feature.group" version="2.11.0.v20150601-0402"/>
+      <unit id="org.eclipse.emf.mapping.ecore.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.importer.ecore" version="0.0.0"/>
+      <repository location="http://download.eclipse.org/releases/mars/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.sirius.runtime.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.sirius.runtime.acceleo.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.sirius.runtime.aql.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.sirius.runtime.ide.ui.acceleo.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.sirius.runtime.ide.eef.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.sirius.runtime.ide.ui.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.sirius.specifier.ide.ui.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.sirius.specifier.ide.ui.acceleo.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.sirius.tests.support.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.sirius.aql.feature.group" version="0.0.0"/>
+      <repository location="http://download.eclipse.org/sirius/updates/releases/3.0.0/mars"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.emf.compare.diagram.gmf.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.compare.ide.ui.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.compare.rcp.ui.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.compare.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.emf.compare.uml2.feature.group" version="0.0.0"/>
+      <repository location="http://download.eclipse.org/modeling/emf/compare/updates/releases/3.0"/>
+    </location>
+  </locations>
+</target>

@@ -41,6 +41,8 @@ import com.google.common.collect.Sets;
  */
 public class UmlDesignerSessionManagerListener implements SessionManagerListener {
 
+	private final static Map<EObject, Boolean> descendantCache = Maps.newHashMap();
+
 	/**
 	 * Cache to keep if an element has a descendant.
 	 *
@@ -63,8 +65,6 @@ public class UmlDesignerSessionManagerListener implements SessionManagerListener
 
 	private final DescendantCacheListener descendantCacheListener = new DescendantCacheListener();
 
-	private final static Map<EObject, Boolean> descendantCache = Maps.newHashMap();
-
 	public void notify(Session updated, int notification) {
 		// Nothing
 		if (notification == SessionListener.OPENED) {
@@ -72,8 +72,8 @@ public class UmlDesignerSessionManagerListener implements SessionManagerListener
 			final Set<EPackage> profileEPackages = Sets.newLinkedHashSet();
 
 			for (final Resource semResources : updated.getSemanticResources()) {
-				final Iterator<ProfileApplication> it = Iterators.filter(
-						EcoreUtil.getAllProperContents(semResources, true), ProfileApplication.class);
+				final Iterator<ProfileApplication> it = Iterators
+						.filter(EcoreUtil.getAllProperContents(semResources, true), ProfileApplication.class);
 				while (it.hasNext()) {
 					final ProfileApplication cur = it.next();
 					final EPackage found = cur.getAppliedDefinition();
@@ -94,10 +94,8 @@ public class UmlDesignerSessionManagerListener implements SessionManagerListener
 	public void notifyAddSession(Session newSession) {
 		newSession.getEventBroker().addLocalTrigger(AutosizeTrigger.IS_GMF_NODE_ATTACHMENT,
 				new AutosizeTrigger(newSession.getTransactionalEditingDomain()));
-		newSession.getEventBroker().addLocalTrigger(
-				ConfirmDeletionTrigger.IS_IMPACTING,
-				new ConfirmDeletionTrigger(newSession.getTransactionalEditingDomain(), newSession
-						.getModelAccessor(), newSession.getSemanticCrossReferencer()));
+		newSession.getEventBroker().addLocalTrigger(ConfirmDeletionTrigger.IS_IMPACTING,
+				new ConfirmDeletionTrigger(newSession));
 		partService.addPartListener(openedEditorListener);
 		newSession.getTransactionalEditingDomain().addResourceSetListener(callActionPinListener);
 		newSession.getTransactionalEditingDomain().getCommandStack()

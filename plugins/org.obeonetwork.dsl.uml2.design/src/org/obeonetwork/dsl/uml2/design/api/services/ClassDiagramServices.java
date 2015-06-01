@@ -25,6 +25,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.description.Layer;
+import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.AssociationClass;
@@ -107,8 +108,8 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	}
 
 	/**
-	 * With the given {@link EObject} iterate over root elements to find a {@link Type} element with the given
-	 * name.
+	 * With the given {@link EObject} iterate over root elements to find a {@link Type} element with the
+	 * given name.
 	 *
 	 * @param object
 	 *            the elements to inspect
@@ -164,6 +165,18 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	}
 
 	/**
+	 * Get abstract label format.
+	 *
+	 * @param object
+	 *            EObject
+	 * @return Abstract label format
+	 */
+	public FontFormat getAbstractBoldLabelFormat(EObject object) {
+	// Fix to return bold/italic when bug will be fixed on sirius
+		return FontFormat.BOLD_LITERAL;
+	}
+
+	/**
 	 * Get all the stereotype applications according to the selected diagram.
 	 *
 	 * @param diagram
@@ -210,8 +223,8 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	 *
 	 * @param container
 	 *            the current container.
-	 * @return a list of association which might be considered as "broken", we are not able to display them as
-	 *         edges.
+	 * @return a list of association which might be considered as "broken", we are not able to display
+	 *         them as edges.
 	 */
 	public Collection<Association> getBrokenAssociations(EObject container) {
 		final Collection<Association> result = new ArrayList<Association>();
@@ -226,8 +239,9 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	}
 
 	/**
-	 * Retrieve the cross references of the dependency of all the UML elements displayed as node in a Diagram.
-	 * Note that a Property cross reference will lead to retrieve the cross references of this property.
+	 * Retrieve the cross references of the dependency of all the UML elements displayed as node in a
+	 * Diagram. Note that a Property cross reference will lead to retrieve the cross references of this
+	 * property.
 	 *
 	 * @param diagram
 	 *            a diagram.
@@ -251,9 +265,9 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	}
 
 	/**
-	 * Retrieve the cross references of the interface realization of all the UML elements displayed as node in
-	 * a Diagram. Note that a Property cross reference will lead to retrieve the cross references of this
-	 * property.
+	 * Retrieve the cross references of the interface realization of all the UML elements displayed as
+	 * node in a Diagram. Note that a Property cross reference will lead to retrieve the cross references
+	 * of this property.
 	 *
 	 * @param diagram
 	 *            a diagram.
@@ -370,8 +384,8 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	}
 
 	/**
-	 * Retrieve the cross references of the template binding of all the UML elements displayed as node in a
-	 * Diagram. Note that a Property cross reference will lead to retrieve the cross references of this
+	 * Retrieve the cross references of the template binding of all the UML elements displayed as node in
+	 * a Diagram. Note that a Property cross reference will lead to retrieve the cross references of this
 	 * property.
 	 *
 	 * @param diagram
@@ -433,7 +447,6 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 		return false;
 	}
 
-
 	private boolean isBroken(Association child) {
 		final Property target = AssociationServices.INSTANCE.getTarget(child);
 		final Property source = AssociationServices.INSTANCE.getSource(child);
@@ -455,7 +468,8 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	public boolean isClassCreationPrediction(DDiagramElement diagramElement) {
 		if (isTypeOfClass(diagramElement.getTarget()) && isArchetypesLayerActive(diagramElement)) {
 			return true;
-		} else if (diagramElement.getTarget() instanceof Package && !isArchetypesLayerActive(diagramElement)) {
+		} else if (diagramElement.getTarget() instanceof Package
+				&& !isArchetypesLayerActive(diagramElement)) {
 			return true;
 		}
 		return false;
@@ -527,6 +541,7 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 	public boolean isTypeOfClass(EObject element) {
 		return "Class".equals(element.eClass().getName()); //$NON-NLS-1$
 	}
+
 	/**
 	 * Open type selection dialog.
 	 *
@@ -540,8 +555,8 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 		dlg.setMessage("Please select a type for the new property :"); //$NON-NLS-1$
 		dlg.setSelectablePredicate(new Predicate<Object>() {
 			public boolean apply(Object input) {
-				return !(input instanceof Stereotype)
-						&& (input instanceof Class || input instanceof Interface || input instanceof DataType);
+				return !(input instanceof Stereotype) && (input instanceof Class || input instanceof Interface
+						|| input instanceof DataType);
 			}
 		});
 		final int status = dlg.open();

@@ -36,38 +36,38 @@ public class DeclaredServiceTests {
 	private static Set<String> allServiceCalls = new HashSet<String>();
 
 	public DeclaredServiceTests(Method method) {
-		this.underTest = method;
+	this.underTest = method;
 	}
 
 	@Parameters
 	public static Collection<Object[]> data() {
-		List<Object[]> parameters = Lists.newArrayList();
+	List<Object[]> parameters = Lists.newArrayList();
 
-		// Get all declared services
-		Set<Method> allDeclaredServices = new HashSet<Method>();
-		ServiceTestsUtils.collectDeclaredServicesFromUmlDesignerViewpoints(allDeclaredServices);
+	// Get all declared services
+	Set<Method> allDeclaredServices = new HashSet<Method>();
+	ServiceTestsUtils.collectDeclaredServicesFromUmlDesignerViewpoints(allDeclaredServices);
 
-		// Get all services called from interpreted expressions
-		Set<InterpretedExpression> allServiceExpressions = new HashSet<InterpretedExpression>();
-		ServiceTestsUtils.collectServiceExpressionFromUmlDesignerViewpoints(allServiceExpressions);
-		for (InterpretedExpression serviceExpression : allServiceExpressions) {
-			allServiceCalls.add(ServiceTestsUtils.getServiceCall(serviceExpression.getExpression()));
-		}
-		allServiceCalls.addAll(ServiceTestsUtils.siriusWhiteList);
-		allServiceCalls.addAll(ServiceTestsUtils.runtimeWhiteList);
-		allServiceCalls.addAll(ServiceTestsUtils.acceleoWhiteList);
-		allServiceCalls.addAll(ServiceTestsUtils.umlWhiteList);
+	// Get all services called from interpreted expressions
+	Set<InterpretedExpression> allServiceExpressions = new HashSet<InterpretedExpression>();
+	ServiceTestsUtils.collectServiceExpressionFromUmlDesignerViewpoints(allServiceExpressions);
+	for (InterpretedExpression serviceExpression : allServiceExpressions) {
+		allServiceCalls.add(ServiceTestsUtils.getServiceCall(serviceExpression.getExpression()));
+	}
+	allServiceCalls.addAll(ServiceTestsUtils.siriusWhiteList);
+	allServiceCalls.addAll(ServiceTestsUtils.runtimeWhiteList);
+	allServiceCalls.addAll(ServiceTestsUtils.acceleoWhiteList);
+	allServiceCalls.addAll(ServiceTestsUtils.umlWhiteList);
 
-		for (Method method : allDeclaredServices) {
-			parameters.add(new Object[] {method});
-		}
-		return parameters;
+	for (Method method : allDeclaredServices) {
+		parameters.add(new Object[] {method});
+	}
+	return parameters;
 	}
 
 	@Test
 	public void isUnusedDeclaredService() {
-		if (!allServiceCalls.contains(underTest.getName())) {
-			fail("Declared service " + underTest + " is not referenced by the odesign");
-		}
+	if (!allServiceCalls.contains(underTest.getName())) {
+		fail("Declared service " + underTest + " is not referenced by the odesign");
+	}
 	}
 }

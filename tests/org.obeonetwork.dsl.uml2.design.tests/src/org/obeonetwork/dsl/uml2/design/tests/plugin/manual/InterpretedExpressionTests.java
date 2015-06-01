@@ -38,66 +38,66 @@ public class InterpretedExpressionTests {
 	private InterpretedExpression underTest;
 
 	public InterpretedExpressionTests(InterpretedExpression expression) {
-		this.underTest = expression;
+	this.underTest = expression;
 	}
 
 	@Parameters
 	public static Collection<Object[]> data() {
-		List<Object[]> parameters = Lists.newArrayList();
-		SortedMultiset<String> allExpressions = TreeMultiset.create();
-		collectExpressionFromUmlDesignerViewpoints(parameters, allExpressions, "Capture");
-		collectExpressionFromUmlDesignerViewpoints(parameters, allExpressions, "Design");
-		collectExpressionFromUmlDesignerViewpoints(parameters, allExpressions, "Review");
-		collectExpressionFromUmlDesignerViewpoints(parameters, allExpressions, "Extend");
-		collectExpressionFromUmlDesignerViewpoints(parameters, allExpressions, "Dashboard");
-		for (String expr : allExpressions.elementSet()) {
-			System.out.println(allExpressions.count(expr) + " : " + expr);
-		}
-		return parameters;
+	List<Object[]> parameters = Lists.newArrayList();
+	SortedMultiset<String> allExpressions = TreeMultiset.create();
+	collectExpressionFromUmlDesignerViewpoints(parameters, allExpressions, "Capture");
+	collectExpressionFromUmlDesignerViewpoints(parameters, allExpressions, "Design");
+	collectExpressionFromUmlDesignerViewpoints(parameters, allExpressions, "Review");
+	collectExpressionFromUmlDesignerViewpoints(parameters, allExpressions, "Extend");
+	collectExpressionFromUmlDesignerViewpoints(parameters, allExpressions, "Dashboard");
+	collectExpressionFromUmlDesignerViewpoints(parameters, allExpressions, "Reused");
+	for (String expr : allExpressions.elementSet()) {
+		System.out.println(allExpressions.count(expr) + " : " + expr);
+	}
+	return parameters;
 	}
 
 	private static void collectExpressionFromUmlDesignerViewpoints(List<Object[]> parameters,
-			SortedMultiset<String> allExpressions, String vpName) {
-		Viewpoint structural = ViewpointRegistry.getInstance().getViewpoint(
-				URI.createURI("viewpoint:/org.obeonetwork.dsl.uml2.design/" + vpName));
-		collectExpressionsFromViewpoint(parameters, structural, allExpressions);
+		SortedMultiset<String> allExpressions, String vpName) {
+	Viewpoint structural = ViewpointRegistry.getInstance()
+		.getViewpoint(URI.createURI("viewpoint:/org.obeonetwork.dsl.uml2.design/" + vpName));
+	collectExpressionsFromViewpoint(parameters, structural, allExpressions);
 	}
 
 	private static void collectExpressionsFromViewpoint(List<Object[]> parameters, Viewpoint structural,
-			SortedMultiset<String> allExpressions) {
-		Iterator<EObject> it = structural.eAllContents();
-		while (it.hasNext()) {
-			EObject underTest = it.next();
-			for (EAttribute attr : underTest.eClass().getEAllAttributes()) {
-				if (attr.getEType() == DescriptionPackage.eINSTANCE.getInterpretedExpression()) {
-					Object expr = underTest.eGet(attr);
-					if (expr instanceof String && ((String)expr).length() > 0) {
-						parameters
-								.add(new Object[] {new InterpretedExpression((String)expr, underTest, attr)});
-						allExpressions.add((String)expr);
-					}
-				}
+		SortedMultiset<String> allExpressions) {
+	Iterator<EObject> it = structural.eAllContents();
+	while (it.hasNext()) {
+		EObject underTest = it.next();
+		for (EAttribute attr : underTest.eClass().getEAllAttributes()) {
+		if (attr.getEType() == DescriptionPackage.eINSTANCE.getInterpretedExpression()) {
+			Object expr = underTest.eGet(attr);
+			if (expr instanceof String && ((String)expr).length() > 0) {
+			parameters
+				.add(new Object[] {new InterpretedExpression((String)expr, underTest, attr)});
+			allExpressions.add((String)expr);
 			}
 		}
+		}
+	}
 	}
 
 	@Test
 	public void isNotAcceleo2() {
-		if (underTest.getExpression().indexOf("<%") > -1) {
-			fail("Expression : " + underTest.getExpression() + " is Acceleo2, on attribute :"
-					+ underTest.getFeature().getName() + " of object "
-					+ EcoreUtil.getURI(underTest.getDeclaration()));
-		}
+	if (underTest.getExpression().indexOf("<%") > -1) {
+		fail("Expression : " + underTest.getExpression() + " is Acceleo2, on attribute :"
+			+ underTest.getFeature().getName() + " of object "
+			+ EcoreUtil.getURI(underTest.getDeclaration()));
+	}
 	}
 
-	// Acceleo3 expressions are allowed in UML Designer
-	// @Test
-	public void isNotAcceleo3() {
-		if (underTest.getExpression().indexOf("[") > -1) {
-			fail("Expression : " + underTest.getExpression() + " is Acceleo, on attribute :"
-					+ underTest.getFeature().getName() + " of object "
-					+ EcoreUtil.getURI(underTest.getDeclaration()));
-		}
+	@Test
+	public void isNotMTL() {
+	if (underTest.getExpression().indexOf("[") > -1) {
+		fail("Expression : " + underTest.getExpression() + " is MTL, on attribute :"
+			+ underTest.getFeature().getName() + " of object "
+			+ EcoreUtil.getURI(underTest.getDeclaration()));
+	}
 	}
 
 }
