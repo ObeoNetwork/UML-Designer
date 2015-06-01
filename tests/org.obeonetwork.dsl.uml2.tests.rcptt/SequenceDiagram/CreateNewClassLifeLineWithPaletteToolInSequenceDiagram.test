@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _4_fwkN-MEeSEJ-mMQXHd1A
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 5/29/15 2:09 PM
+Save-Time: 5/29/15 3:29 PM
 Testcase-Type: ecl
 Verifications: _OnPwkN-XEeSEJ-mMQXHd1A
 
@@ -30,22 +30,32 @@ Entry-Name: .content
 
 // Create new Class lifeLine with palette tool
 with [get-editor "Test Sequence Diagram"] {
-	// Select tool
-    with [get-palette | get-palette-entry Class -index 1] {
-            mouse-move 56 9 button1 -height 23 -width 134
-            mouse-press 56 9 button1 -height 23 -width 134
-            mouse-release 56 9 button1 524288 -height 23 -width 134
+    get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram" | mouse-move 616 92 -height 304 -width 623
+    with [get-palette] {
+    // Select tool
+        with [get-palette-entry Lifeline] {
+            mouse-move 10 8 button1 -height 23 -width 253
+            mouse-press 10 8 button1 -height 23 -width 253
+            mouse-release 10 8 button1 524288 -height 23 -width 253
+        }
+        with [get-palette-entry Class -index 1] {
+            mouse-move 37 10 button1 -height 23 -width 235
+            mouse-press 37 10 button1 -height 23 -width 235
+            mouse-release 37 10 button1 524288 -height 23 -width 235
+        }
     }
-    // Click in sequence diagram area
+    // Create a large element to display the full label
     with [get-diagram -index 1 | get-edit-part -name "Test Sequence Diagram"] {
-        mouse-move 96 31 button1 -height 500 -width 793
-        mouse-press 96 31 button1 -height 500 -width 793
-        mouse-release 96 31 button1 524288 -height 500 -width 793
+        mouse-move 77 153 button1 -height 304 -width 623
+        mouse-press 77 153 button1 -height 304 -width 623
+        mouse-move 80 155 -mask 524288 -height 304 -width 623
+        mouse-drag 441 203 button1 524288 -height 304 -width 623
+        mouse-release 441 203 button1 524288 -height 304 -width 623
     }
 }
 // Check diagram 
 // Check label in top of diagram
-with [get-editor "Test Sequence Diagram" | get-label "Class1 : Cla..."] {
+with [get-editor "Test Sequence Diagram" | get-label "Class1 : Class1 [1]"] {
     get-property "getText()" | contains "Class1 :" | verify-true
     get-property "isVisible()" | equals true | verify-true
 }
@@ -61,4 +71,5 @@ with [get-editor "Test Sequence Diagram" | get-diagram -index 1 | get-edit-part 
     get-edit-part -name Class1 | get-edit-part -className SquareEditPart | get-figure "0/0" 
         | get-property "isVisible()" | equals true | verify-true
 }
+
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
