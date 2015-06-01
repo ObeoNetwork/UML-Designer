@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _sBmyoOczEeSXar-HajHJtg
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/20/15 11:24 AM
+Save-Time: 6/1/15 3:52 PM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -83,19 +83,20 @@ with [get-editor "test Package Containment"] {
 }
 // Check Diagram
 with [get-editor "test Package Containment" | get-diagram -index 1 | get-edit-part -name "test Package Containment"] {
-    get-edit-part -name Package2 | get-edit-part -className DNodeListNameEditPart 
-        | get-property "getFigure().getText()" | equals Package2 | verify-true
+    get-edit-part -name Package1 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | get-edit-part 
+        -name Package1 | get-property "getFigure().getText()" | equals Package1 | verify-true
+    get-edit-part -name Package1 -index 1 | get-edit-part -className DNodeListNameEditPart 
+        | get-property "getFigure().getText()" | equals Package1 | verify-true
+    get-edit-part -name Package1 | get-target-connection 0 | get-property "getFigure().isVisible()" | equals true 
+        | verify-true
 }
 // Check Model
 with [get-editor "test Package Containment" | get-diagram -index 1 | get-edit-part -name "test Package Containment"] {
-    get-edit-part -name Package2 | get-edit-part -className DNodeListNameEditPart 
-        | get-property "element.target.owner.name" | equals Package1 | verify-true
+    get-edit-part -name Package1 -index 1 | get-edit-part -className DNodeListNameEditPart 
+        | get-property "element.target.name" | equals Package1 | verify-true
+    with [get-edit-part -name Package1 | get-edit-part -className DNodeListNameEditPart] {
+        get-property "element.target.name" | equals Package1 | verify-true
+        get-property "element.target.ownedMember.Package[0].name" | equals Package1 | verify-true
+    }
 }
-with [get-editor "test Package Containment" | get-diagram -index 1 | get-edit-part -name "test Package Containment" 
-    | get-edit-part -name Package1 | get-target-connection 0] {
-    get-property "getFigure().isVisible()" | equals true | verify-true
-    get-property "source.element.name" | equals Package2 | verify-true
-    get-property "target.element.name" | equals Package1 | verify-true
-}
-
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

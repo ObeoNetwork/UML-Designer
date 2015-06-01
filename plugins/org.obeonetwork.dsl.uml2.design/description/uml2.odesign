@@ -5659,7 +5659,7 @@
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="[self.eContainer(uml::Package)/]">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="uml.Package" referenceName="packagedElement">
                   <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="service:computeDefaultName"/>
                   <subModelOperations xsi:type="tool_1:CreateView" mapping="//@ownedViewpoints[name='Review']/@ownedRepresentations[name='Package%20Containment']/@defaultLayer/@containerMappings[name='PC_Package']" containerViewExpression="[elementView.eContainer(diagram::DDiagram)/]"/>
