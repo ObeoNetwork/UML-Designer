@@ -1911,7 +1911,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new class" name="Class"  precondition="[containerView.isClassCreationPrediction()/]" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Class.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new class" name="Class" precondition="[containerView.isClassCreationPrediction()/]" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Class.gif">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
@@ -3674,7 +3674,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new dependency" name="Dependency" precondition="service:preTarget.dependencyCreationCompletePrecondition" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@edgeMappings[name='DE_Dependency']" connectionStartPrecondition="service:preTarget.dependencyCreationCompletePrecondition">
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" documentation="Create a new dependency" name="Dependency" precondition="service:preTarget.dependencyCreationCompletePrecondition" edgeMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Deployment%20Diagram']/@defaultLayer/@edgeMappings[name='DE_Dependency']" connectionStartPrecondition="service:preSource.dependencyCreationStartPrecondition">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
