@@ -284,7 +284,7 @@ public class DashboardServices {
 	 *            Semantic element
 	 * @return All the representations available in the session except the dashboard.
 	 */
-	public Collection<DRepresentation> getAllRepresentations(EObject any) {
+	private Collection<DRepresentation> getAllRepresentations(EObject any) {
 		final Session session = SessionManager.INSTANCE.getSession(any);
 		final Collection<DRepresentation> representations = DialectManager.INSTANCE
 				.getAllRepresentations(session);

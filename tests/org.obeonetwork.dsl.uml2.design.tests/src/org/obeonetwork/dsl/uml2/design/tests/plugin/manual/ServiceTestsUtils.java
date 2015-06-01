@@ -38,6 +38,8 @@ import com.google.common.collect.Sets;
 public class ServiceTestsUtils {
 	private static final String VP_EXTEND = "Extend";
 
+	private static final String VP_REUSED = "Reused";
+
 	private static final String VP_REVIEW = "Review";
 
 	private static final String VP_DESIGN = "Design";
@@ -69,6 +71,7 @@ public class ServiceTestsUtils {
 		collectDeclaredServicesFromDesignerViewpoints(allDeclaredServices, UML_VP_URI, VP_DESIGN);
 		collectDeclaredServicesFromDesignerViewpoints(allDeclaredServices, UML_VP_URI, VP_REVIEW);
 		collectDeclaredServicesFromDesignerViewpoints(allDeclaredServices, UML_VP_URI, VP_EXTEND);
+		collectDeclaredServicesFromDesignerViewpoints(allDeclaredServices, UML_VP_URI, VP_REUSED);
 		collectDeclaredServicesFromDesignerViewpoints(allDeclaredServices, UML_VP_URI, VP_DASHBOARD);
 	}
 
@@ -265,6 +268,7 @@ public class ServiceTestsUtils {
 		collectServiceExpressionFromUmlDesignerViewpoints(allServiceExpressions, VP_DESIGN);
 		collectServiceExpressionFromUmlDesignerViewpoints(allServiceExpressions, VP_REVIEW);
 		collectServiceExpressionFromUmlDesignerViewpoints(allServiceExpressions, VP_EXTEND);
+		collectServiceExpressionFromUmlDesignerViewpoints(allServiceExpressions, VP_REUSED);
 		collectServiceExpressionFromUmlDesignerViewpoints(allServiceExpressions, VP_DASHBOARD);
 	}
 
@@ -278,6 +282,7 @@ public class ServiceTestsUtils {
 		collectJavaExtensionsFromUmlDesignerViewpoints(VP_DESIGN, allExtensions);
 		collectJavaExtensionsFromUmlDesignerViewpoints(VP_REVIEW, allExtensions);
 		collectJavaExtensionsFromUmlDesignerViewpoints(VP_EXTEND, allExtensions);
+		collectJavaExtensionsFromUmlDesignerViewpoints(VP_REUSED, allExtensions);
 		collectJavaExtensionsFromUmlDesignerViewpoints(VP_DASHBOARD, allExtensions);
 	}
 
