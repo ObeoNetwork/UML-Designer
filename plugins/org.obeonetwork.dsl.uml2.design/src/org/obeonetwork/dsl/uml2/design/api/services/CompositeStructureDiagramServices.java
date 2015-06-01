@@ -27,6 +27,7 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.ConnectableElement;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.ConnectorEnd;
@@ -68,9 +69,22 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 			NamedElement elem2) {
 		return ConnectorServices.INSTANCE.createConnector(structuredClassifier, elem1, elem2);
 	}
+
 	/**
-	 * Retrieve the cross references of the connector of all the UML elements displayed as node in a Diagram.
-	 * Note that a Property cross reference will lead to retrieve the cross references of this property.
+	 * Get aggregation kind composite.
+	 *
+	 * @param object
+	 *            Object
+	 * @return Composite
+	 */
+	public AggregationKind getAggregationKindComposite(EObject object) {
+		return AggregationKind.COMPOSITE_LITERAL;
+	}
+
+	/**
+	 * Retrieve the cross references of the connector of all the UML elements displayed as node in a
+	 * Diagram. Note that a Property cross reference will lead to retrieve the cross references of this
+	 * property.
 	 *
 	 * @param diagram
 	 *            a diagram.
@@ -174,8 +188,8 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 			while (it.hasNext()) {
 				final EObject displayedAsANode = it.next();
 				if (displayedAsANode != null) {
-					for (final Setting xRef : sess.getSemanticCrossReferencer().getInverseReferences(
-							displayedAsANode)) {
+					for (final Setting xRef : sess.getSemanticCrossReferencer()
+							.getInverseReferences(displayedAsANode)) {
 						EObject eObject = xRef.getEObject();
 						if (eObject instanceof DNode) {
 							eObject = ((DNode)eObject).getTarget();
@@ -215,8 +229,8 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 			while (it.hasNext()) {
 				final EObject displayedAsANode = it.next();
 				if (displayedAsANode != null) {
-					for (final Setting xRef : sess.getSemanticCrossReferencer().getInverseReferences(
-							displayedAsANode)) {
+					for (final Setting xRef : sess.getSemanticCrossReferencer()
+							.getInverseReferences(displayedAsANode)) {
 						EObject eObject = xRef.getEObject();
 						if (eObject instanceof DNode) {
 							eObject = ((DNode)eObject).getTarget();
@@ -265,8 +279,8 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 	}
 
 	/**
-	 * Retrieve the cross references of the usage of all the UML elements displayed as node in a Diagram. Note
-	 * that a Property cross reference will lead to retrieve the cross references of this property.
+	 * Retrieve the cross references of the usage of all the UML elements displayed as node in a Diagram.
+	 * Note that a Property cross reference will lead to retrieve the cross references of this property.
 	 *
 	 * @param diagram
 	 *            a diagram.
@@ -307,8 +321,8 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 	}
 
 	/**
-	 * Check that source and target are connectable. We explore recursively source generalizations to handle
-	 * super type cases.
+	 * Check that source and target are connectable. We explore recursively source generalizations to
+	 * handle super type cases.
 	 *
 	 * @param source
 	 *            the source element
@@ -360,7 +374,8 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 	 *            the target view
 	 * @return true if the connector must be displayed.
 	 */
-	public boolean isValidConnector(org.eclipse.uml2.uml.Connector self, DNode sourceView, DNode targetView) {
+	public boolean isValidConnector(org.eclipse.uml2.uml.Connector self, DNode sourceView,
+			DNode targetView) {
 		if (sourceView != targetView && self.getEnds().size() > 0) {
 			self.getEnds().get(0);
 			self.getEnds().get(1);
@@ -387,7 +402,8 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 							if (port1Provideds.contains(source) && port2Requireds.contains(target)
 									|| port1Provideds.contains(target) && port2Requireds.contains(source)
 									|| port2Provideds.contains(source) && port1Requireds.contains(target)
-									|| port2Provideds.contains(target) && port1Requireds.contains(source)) {
+									|| port2Provideds.contains(target)
+									&& port1Requireds.contains(source)) {
 								return true;
 							}
 						}
@@ -441,5 +457,4 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 		return target.getRequireds() != null && target.getRequireds().size() > 0
 				&& target.getRequireds().contains(source);
 	}
-
 }

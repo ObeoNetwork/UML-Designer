@@ -14,6 +14,8 @@ import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.PackageImport;
+import org.eclipse.uml2.uml.VisibilityKind;
 
 /**
  * A set of services to handle the Package Hierarchy diagram.
@@ -21,6 +23,17 @@ import org.eclipse.uml2.uml.Element;
  * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class PackageHierarchyServices extends AbstractDiagramServices {
+
+	/**
+	 * Check if a package import is public.
+	 *
+	 * @param pkgImport
+	 *            Package import
+	 * @return True if is public otherwise false
+	 */
+	public boolean isNotPublic(PackageImport pkgImport) {
+		return !pkgImport.getVisibility().equals(VisibilityKind.PUBLIC_LITERAL);
+	}
 
 	/**
 	 * Check if a reconnect is possible and is not involving creating a cycle in the model.
@@ -49,4 +62,5 @@ public class PackageHierarchyServices extends AbstractDiagramServices {
 		}
 		return true;
 	}
+
 }

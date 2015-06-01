@@ -33,9 +33,9 @@ public class VsmValidationTests {
 
 	@Before
 	public void setup() throws Exception {
-		ResourceSet set = new ResourceSetImpl();
-		modeler = (Group)ModelUtils.load(URI.createPlatformPluginURI(
-				"/org.obeonetwork.dsl.uml2.design/description/uml2.odesign", true), set);
+	ResourceSet set = new ResourceSetImpl();
+	modeler = (Group)ModelUtils.load(URI.createPlatformPluginURI(
+		"/org.obeonetwork.dsl.uml2.design/description/uml2.odesign", true), set);
 
 	}
 
@@ -44,16 +44,16 @@ public class VsmValidationTests {
 	 */
 	@Test
 	public void isValid() {
-		// Test that the modeler is valid.
-		Diagnostician diagnostician = new Diagnostician();
-		Diagnostic diagnostic = diagnostician.validate(modeler);
-		switch (diagnostic.getSeverity()) {
-			case Diagnostic.ERROR:
-				fail("The VSM is not valid it has errors : " + diagnostic);
-				break;
-			case Diagnostic.WARNING:
-				fail("The VSM is not valid it has warnings" + diagnostic);
-				break;
-		}
+	// Test that the modeler is valid.
+	Diagnostician diagnostician = new Diagnostician();
+	Diagnostic diagnostic = diagnostician.validate(modeler);
+	switch (diagnostic.getSeverity()) {
+		case Diagnostic.ERROR:
+		fail("The VSM is not valid it has errors : " + diagnostic);
+		break;
+		case Diagnostic.WARNING:
+		fail("The VSM is not valid it has warnings" + diagnostic);
+		break;
+	}
 	}
 }

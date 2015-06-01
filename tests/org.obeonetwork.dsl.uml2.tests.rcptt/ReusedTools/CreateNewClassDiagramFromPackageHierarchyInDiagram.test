@@ -6,8 +6,8 @@ Element-Type: testcase
 Element-Version: 3.0
 External-Reference: 
 Id: _H0f0gMyKEeSmqoI7c5i_uw
-Runtime-Version: 1.5.5.201503020312
-Save-Time: 3/18/15 10:28 AM
+Runtime-Version: 2.0.0.201506120617
+Save-Time: 7/3/15 10:59 AM
 Testcase-Type: ecl
 Verifications: _MFPtcMyJEeSmqoI7c5i_uw
 
@@ -45,12 +45,18 @@ get-window "New Representation" | get-button OK | click
 // Create a new Package
 with [get-editor "NewModel Package Hierarchy"] {
     with [get-palette | get-palette-entry Package] {
-        mouse-press 77 9 button1 -height 23 -width 153
-        get-figure 0 | drag-start 77 9
+        mouse-move 61 14 button1 -height 24 -width 125
+        mouse-press 61 14 button1 -height 24 -width 125
+        mouse-release 61 14 button1 524288 -height 24 -width 125
+        mouse-move 28 15 -height 24 -width 125
     }
-    get-diagram -index 1 | get-edit-part -name "NewModel Package Hierarchy" | drop 445 120 -detail copy
-    get-palette | drag-end -detail move
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Package Hierarchy"] {
+        mouse-move 785 130 button1 -height 397 -width 920
+        mouse-press 785 130 button1 -height 397 -width 920
+        mouse-release 785 130 button1 524288 -height 397 -width 920
+    }
 }
+
 
 // Create a new Class Diagram on Package element in diagram click OK
 with [get-editor "NewModel Package Hierarchy" | get-diagram -index 1] {

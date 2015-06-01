@@ -9,3 +9,6 @@ Pay attention in tests:
 * To not use Drag & Drop from the palette
 * To not use Click on a tool in the palette + CTRL
 * To call the object name and its container figure : get-edit-part -name "xxxObjectName" | get-edit-part -className SquareEditPart
+
+Warning : remove the target folder after running the tests locally with maven 
+else RCPTT complains about "duplicate IDs" and it would be impossible to relaunch tests suites.
