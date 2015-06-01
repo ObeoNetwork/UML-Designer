@@ -41,7 +41,7 @@ Contributors:
         				<suite>All</suite>
     				</suites>
     				<testOptions>
-    					<execTimeout>7200</execTimeout>
+    					<execTimeout>10800</execTimeout>
     					<testExecTimeout>300</testExecTimeout>
 					</testOptions>
 				</configuration>
