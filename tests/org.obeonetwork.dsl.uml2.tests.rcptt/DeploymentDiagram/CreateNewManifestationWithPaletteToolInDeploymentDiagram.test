@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _htYQANesEeSVyY6xGIhNLA
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 5/28/15 5:22 PM
+Save-Time: 6/2/15 3:58 PM
 Testcase-Type: ecl
 Verifications: _WoSjMNeyEeSVyY6xGIhNLA
 
@@ -43,7 +43,7 @@ with [get-editor "NewModel Deployment Diagram"] {
             mouse-press 69 17 button1 -height 38 -width 118
             mouse-release 69 17 button1 524288 -height 38 -width 118
         }
-        with [get-edit-part -name "NewComponentName" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        with [get-edit-part -name "Component1" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
             mouse-move 74 14 button1 -height 38 -width 118
             mouse-press 74 14 button1 -height 38 -width 118
             mouse-release 74 14 button1 524288 -height 38 -width 118
@@ -54,7 +54,7 @@ with [get-editor "NewModel Deployment Diagram"] {
 // Check diagram
 with [get-editor "NewModel Deployment Diagram" | get-diagram -index 1 | get-edit-part 
     -name "NewModel Deployment Diagram"] {
-    with [get-edit-part -name "NewComponentName" | get-target-connection 0] {
+    with [get-edit-part -name "Component1" | get-target-connection 0] {
     	//Check is visible
         get-property visible | equals true | verify-true
         // Check style
@@ -69,7 +69,7 @@ with [get-editor "NewModel Deployment Diagram" | get-diagram -index 1 | get-edit
         //get-property "element.ownedStyle.endLabelStyle" | equals null | verify-true
         get-property "element.ownedStyle.centered" | equals None | verify-true
         get-property "source.element.name" | equals Artifact1 | verify-true
-        get-property "target.element.name" | equals NewComponentName | verify-true
+        get-property "target.element.name" | equals Component1 | verify-true
         // Check label
         get-edit-part -className "" | get-property "getFigure().getText()" | equals "<<manifest>>" | verify-true
     }
@@ -80,7 +80,7 @@ with [get-editor "NewModel Deployment Diagram" | get-diagram -index 1 | get-edit
     -name "NewModel Deployment Diagram"] {
     get-property "element.edges.DEdge[0].semanticElements.Manifestation[0].source.Artifact[0].name" | equals Artifact1 
         | verify-true
-    get-property "element.edges.DEdge[0].semanticElements.Manifestation[0].target.Component[0].name" | equals NewComponentName 
+    get-property "element.edges.DEdge[0].semanticElements.Manifestation[0].target.Component[0].name" | equals Component1 
         | verify-true
 }
 

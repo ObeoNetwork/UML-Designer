@@ -6,7 +6,7 @@ Element-Type: context
 Element-Version: 2.0
 Id: _qbGi8NhNEeSpqsLTetvOvg
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 5/29/15 11:22 AM
+Save-Time: 6/2/15 4:07 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -26,11 +26,14 @@ with [get-editor "NewModel Deployment Diagram"] {
             mouse-press 69 17 button1 -height 38 -width 118
             mouse-release 69 17 button1 524288 -height 38 -width 118
         }
-        with [get-edit-part -name "NewComponentName" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        with [get-edit-part -name "Component1" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
             mouse-move 74 14 button1 -height 38 -width 118
             mouse-press 74 14 button1 -height 38 -width 118
             mouse-release 74 14 button1 524288 -height 38 -width 118
         }
     }
 }
+// Check context
+get-editor "NewModel Deployment Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Deployment Diagram" 
+    | get-edit-part -name Component1 | get-target-connection 0
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

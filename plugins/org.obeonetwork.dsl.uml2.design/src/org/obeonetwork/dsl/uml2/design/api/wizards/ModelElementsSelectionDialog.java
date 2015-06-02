@@ -914,7 +914,7 @@ public class ModelElementsSelectionDialog {
 			public boolean apply(Object input) {
 				return input instanceof Package && !(input instanceof Profile)
 						|| input instanceof ExecutionEnvironment || input instanceof Node
-						|| input instanceof Artifact || input instanceof Device;
+						|| input instanceof Artifact || input instanceof Device || input instanceof Component;
 			}
 		};
 		return validForDeploymentDiagram;
