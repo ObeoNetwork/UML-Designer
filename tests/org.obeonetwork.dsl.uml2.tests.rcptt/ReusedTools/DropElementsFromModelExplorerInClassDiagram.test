@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _wUNpAM5VEeS8M6MvytM1MA
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 5/29/15 11:21 AM
+Save-Time: 6/2/15 11:09 AM
 Testcase-Type: ecl
 Verifications: _qasmwM7rEeSz9_HNAw245A
 
@@ -356,13 +356,13 @@ with [get-view "Model Explorer" | get-tree] {
 }
 // Drop element in diagram
 get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
-    | get-figure "12/0/0/1/1/0/0" | drop 91 113 -detail move
+    | drop 143 464 -detail move
+get-view "Model Explorer" | get-tree | drag-end
 // Check element was NOT created in diagram
 get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
     | verify-error{get-edit-part -name "newDefaultClass"}
 
 // Check number of elements in diagram
 get-editor "RcpTT Test Class Diagram" | get-diagram -index 1 | get-edit-part -name "RcpTT Test Class Diagram" 
-    | get-property childrenCount | equals 9 | verify-true
-
+    | get-property childrenCount | equals 8 | verify-true
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--

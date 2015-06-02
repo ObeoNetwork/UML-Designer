@@ -16,6 +16,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.jface.window.Window;
@@ -28,6 +29,7 @@ import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.AssociationClass;
 import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.DataType;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Feature;
@@ -279,6 +281,25 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 			ends.add(target);
 		}
 		return ends;
+	}
+
+	/**
+	 * Return a set of classes from model.
+	 *
+	 * @param element
+	 *            an element in model
+	 * @return set of classes or empty collection
+	 */
+	public Collection<Class> getSemanticCandidatesClasses(Element element) {
+		final Set<Class> classes = new HashSet<Class>();
+		final TreeIterator<EObject> iterator = element.getModel().eAllContents();
+		while (iterator.hasNext()) {
+			final EObject object = iterator.next();
+			if (isTypeOfClass(object) || object instanceof Component) {
+				classes.add((Class)object);
+			}
+		}
+		return classes;
 	}
 
 	/**
