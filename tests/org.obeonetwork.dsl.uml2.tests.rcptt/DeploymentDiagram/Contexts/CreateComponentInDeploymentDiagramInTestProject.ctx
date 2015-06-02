@@ -6,7 +6,7 @@ Element-Type: context
 Element-Version: 2.0
 Id: _Bh6RQNewEeSVyY6xGIhNLA
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 5/28/15 5:23 PM
+Save-Time: 6/2/15 3:47 PM
 
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
 Content-Type: text/ecl
@@ -16,23 +16,29 @@ Entry-Name: .ecl.context
 get-view "Model Explorer" | get-tree | select "test/model.uml/<Model> NewModel" 
     | get-menu "New Child/Owned Type/Component" | click
 
-with [get-view "Model Explorer" | get-tree] {
-    select "test/model.uml/<Model> NewModel/<Component> Component1"
-    get-item "test/model.uml/<Model> NewModel/<Component> Component1" | drag-start 3 9
-}
-with [get-editor "NewModel Deployment Diagram" | get-diagram -index 1 | get-edit-part 
-    -name "NewModel Deployment Diagram"] {
-    drag-enter 31 309 -detail move
-}
-get-view "Model Explorer" | get-tree | drag-set-data
-get-editor "NewModel Deployment Diagram" | get-diagram -index 1 | get-edit-part -name "NewModel Deployment Diagram" 
-    | drop 31 425 -detail move
-// Rename created component from model explorer
-get-view "Model Explorer" | get-tree | select "test/model.uml/<Model> NewModel/<Component> Component1" | get-menu Rename | click
-with [get-window "Rename representation"] {
-    with [get-editbox -after [get-label "Enter new name (case sensitive):"]] {
-        set-text NewComponentName
+//Add Component to diagram
+with [get-editor "NewModel Deployment Diagram"] {
+    with [get-palette | get-palette-entry Add] {
+        mouse-move 47 11 button1 -height 23 -width 125
+        mouse-press 47 11 button1 -height 23 -width 125
+        mouse-release 47 11 button1 524288 -height 23 -width 125
     }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Deployment Diagram"] {
+        mouse-move 95 91 button1 -height 524 -width 703
+        mouse-press 95 91 button1 -height 524 -width 703
+        mouse-move 96 91 -mask 524288 -height 524 -width 703
+        mouse-drag 96 91 button1 524288 -height 524 -width 703
+        mouse-release 96 91 button1 524288 -height 524 -width 703
+    }
+}
+with [get-window "Add existing elements"] {
+    get-tree | select "<Model> NewModel/<Component> Component1"
     get-button OK | click
+}
+// Check context
+with [get-editor "NewModel Deployment Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Deployment Diagram" | get-edit-part -name Component1 | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartmentEditPart | get-figure "1/0"] {
+    get-property "isVisible()" | equals true | verify-true
 }
 ------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--
