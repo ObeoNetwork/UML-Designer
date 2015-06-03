@@ -224,7 +224,7 @@ public abstract class AbstractDiagramServices {
 	 *            source element
 	 * @return true if source is a NamedElement
 	 */
-	public boolean dependencyCreationStartPrecondition (Element preSource){
+	public boolean dependencyCreationStartPrecondition(Element preSource) {
 		return preSource instanceof NamedElement;
 	}
 
@@ -807,7 +807,7 @@ public abstract class AbstractDiagramServices {
 	}
 
 	/**
-	 * Generic service used to process treatments on a reconnect The processing has to be defined by
+	 * Generic service used to process treatments on a reconnect. The processing has to be defined by
 	 * overriding the corresponding caseXXX.
 	 *
 	 * @param context
@@ -841,10 +841,9 @@ public abstract class AbstractDiagramServices {
 		return reconnectService.doSwitch(context);
 	}
 
-
 	/**
-	 * Generic service used to determine is select edge's source could be reconnected to an element.
-	 * 
+	 * Generic service used to determine if the selected edge source could be reconnected to an element.
+	 *
 	 * @param context
 	 *            Element attached to the existing edge
 	 * @param source
@@ -863,7 +862,7 @@ public abstract class AbstractDiagramServices {
 
 	/**
 	 * Generic service used to determine is select edge's target could be reconnected to an element.
-	 * 
+	 *
 	 * @param context
 	 *            Element attached to the existing edge
 	 * @param source

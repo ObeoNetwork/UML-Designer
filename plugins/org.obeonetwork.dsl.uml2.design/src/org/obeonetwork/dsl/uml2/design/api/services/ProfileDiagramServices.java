@@ -72,8 +72,6 @@ import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.ElementImport;
 import org.eclipse.uml2.uml.Extension;
-import org.eclipse.uml2.uml.ExtensionEnd;
-import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageableElement;
@@ -90,6 +88,7 @@ import org.obeonetwork.dsl.uml2.design.internal.dialogs.InitProfilePluginDialog;
 import org.obeonetwork.dsl.uml2.design.internal.services.AssociationServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.EcoreToGenmodel;
 import org.obeonetwork.dsl.uml2.design.internal.services.ElementServices;
+import org.obeonetwork.dsl.uml2.design.internal.services.ExtensionServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.GenerateModelCode;
 import org.obeonetwork.dsl.uml2.design.internal.services.GenericUMLProfileTools;
 import org.obeonetwork.dsl.uml2.design.internal.services.LabelServices;
@@ -112,8 +111,6 @@ import org.xml.sax.SAXException;
  */
 @SuppressWarnings("restriction")
 public class ProfileDiagramServices extends AbstractDiagramServices {
-
-	private static final String BASE = "base_"; //$NON-NLS-1$
 
 	private static final String YES = "Yes"; //$NON-NLS-1$
 
@@ -244,53 +241,6 @@ public class ProfileDiagramServices extends AbstractDiagramServices {
 	}
 
 	/**
-	 * Test if is it possible to create an extension from stereotype source to the stereotype extension.
-	 *
-	 * @param source
-	 *            stereotype.
-	 * @param target
-	 *            stereotype.
-	 * @return true if the extension between source and target is possible.
-	 */
-	private boolean canCreateExtension(final EObject source, final EObject target) {
-		if (source instanceof Stereotype) {
-			final Stereotype stereotypeSource = (Stereotype)source;
-			if (target instanceof ElementImport) {
-				final ElementImport elementImport = (ElementImport)target;
-				final NamedElement metaClass = elementImport.getImportedElement();
-
-				// this code find all extension including inherited.
-				final NamedElement baseProperty = stereotypeSource.getMember(BASE + metaClass.getName());
-				if (baseProperty == null) {
-					return true;
-				} else if (baseProperty instanceof Property) {
-					if (((Property)baseProperty).getType().equals(metaClass)) {
-						return true;
-					}
-				}
-
-				// this code find local extension.
-				// if (stereotypeSource.getAttribute(base +
-				// metaClass.getName(), (Type)metaClass) == null
-				// || stereotypeSource.getAttribute(base +
-				// metaClass.getName(), (Type)metaClass)
-				// .getAssociation() == null) {
-				// return true;
-				// }
-			}
-			if (target instanceof Stereotype && !source.equals(target)) {
-
-				final Stereotype stereotypeTarget = (Stereotype)target;
-				if (stereotypeSource.getGeneralization(stereotypeTarget) == null
-						&& stereotypeTarget.getGeneralization(stereotypeSource) == null) {
-					return true;
-				}
-			}
-		}
-		return false;
-	}
-
-	/**
 	 * Can create extension.
 	 *
 	 * @param source
@@ -300,7 +250,7 @@ public class ProfileDiagramServices extends AbstractDiagramServices {
 	 * @return True if extension can be created between source and target
 	 */
 	public boolean canCreateExtension(final Stereotype source, final ElementImport target) {
-		return canCreateExtension((EObject)source, (EObject)target);
+		return ExtensionServices.INSTANCE.canCreateExtension(source, target);
 	}
 
 	/**
@@ -313,7 +263,7 @@ public class ProfileDiagramServices extends AbstractDiagramServices {
 	 * @return True if extension can be created between source and target
 	 */
 	public boolean canCreateExtension(final Stereotype source, final Stereotype target) {
-		return canCreateExtension((EObject)source, (EObject)target);
+		return ExtensionServices.INSTANCE.canCreateExtension(source, target);
 	}
 
 	/**
@@ -336,46 +286,6 @@ public class ProfileDiagramServices extends AbstractDiagramServices {
 			}
 		}
 		return true;
-	}
-
-	/**
-	 * Test if is it possible to reconnect an uml Extension.
-	 *
-	 * @param element
-	 *            is the extension to reconnect.
-	 * @param target
-	 *            of the reconnection.
-	 * @return true if the reconnection is possible, else false.
-	 */
-	public boolean canReconnectExtension(final EObject element, final EObject target) {
-		if (element instanceof Extension) {
-			final Extension extension = (Extension)element;
-			if (target instanceof ElementImport) {
-				final Class newPointedMetaClass = (Class)((ElementImport)target).getImportedElement();
-
-				final NamedElement baseProperty = extension.getStereotype().getMember(
-						BASE + newPointedMetaClass.getName());
-				if (baseProperty == null) {
-					return true;
-				} else if (baseProperty instanceof Property) {
-					if (!((Property)baseProperty).getType().equals(newPointedMetaClass)) {
-						return true;
-					}
-				}
-			}
-			if (target instanceof Stereotype) {
-				final NamedElement baseProperty = ((Stereotype)target).getMember(BASE
-						+ extension.getMetaclass().getName());
-				if (baseProperty == null) {
-					return true;
-				} else if (baseProperty instanceof Property) {
-					if (!((Property)baseProperty).getType().equals(extension.getMetaclass())) {
-						return true;
-					}
-				}
-			}
-		}
-		return false;
 	}
 
 	/**
@@ -520,11 +430,7 @@ public class ProfileDiagramServices extends AbstractDiagramServices {
 	 *            the target.
 	 */
 	public void createExtension(final Stereotype stereotype, final Element targetElement) {
-		if (targetElement instanceof ElementImport) {
-			createMetaclassExtension(stereotype, (ElementImport)targetElement);
-		} else if (targetElement instanceof Stereotype) {
-			createGeneralization(stereotype, (Stereotype)targetElement);
-		}
+		ExtensionServices.INSTANCE.createExtension(stereotype, targetElement);
 	}
 
 	/**
@@ -561,7 +467,7 @@ public class ProfileDiagramServices extends AbstractDiagramServices {
 			newStereotype = UMLFactory.eINSTANCE.createStereotype();
 			newStereotype.setName(stereotypName);
 			profile.getOwnedStereotypes().add(newStereotype);
-			createMetaclassExtension(newStereotype, metaClass);
+			ExtensionServices.INSTANCE.createMetaclassExtension(newStereotype, metaClass);
 			createStereotypeAssociation(newStereotype, metaClass, stereotypeSource, stereotypeTarget);
 		}
 		return newStereotype;
@@ -592,59 +498,6 @@ public class ProfileDiagramServices extends AbstractDiagramServices {
 						dialog.getResult(), profile);
 			}
 		}
-	}
-
-	/**
-	 * Create an UML Generalisation between the stereotypes source and target.
-	 *
-	 * @param stereotypeSource
-	 *            of the generalisation.
-	 * @param stereotypeTarget
-	 *            of the generalisation.
-	 */
-	private void createGeneralization(final Stereotype stereotypeSource, final Stereotype stereotypeTarget) {
-		if (!isGeneraleFor(stereotypeTarget, stereotypeSource)) {
-			final Generalization generalization = UMLFactory.eINSTANCE.createGeneralization();
-			generalization.setGeneral(stereotypeTarget);
-			generalization.setSpecific(stereotypeSource);
-			stereotypeSource.getGeneralizations().add(generalization);
-		}
-	}
-
-	/**
-	 * Create an extension from stereotype to the imported element.
-	 *
-	 * @param stereotype
-	 *            of the extension.
-	 * @param elementImport
-	 *            of the extension.
-	 * @return new extension.
-	 */
-	private Extension createMetaclassExtension(final Stereotype stereotype, final ElementImport elementImport) {
-		Extension extension = null;
-		final PackageableElement importedElement = elementImport.getImportedElement();
-		if (importedElement != null && importedElement instanceof Type
-				&& !isExtendedBy((Type)importedElement, stereotype)) {
-
-			final Type metaclass = (Type)importedElement;
-			final Property baseMetaclass = UMLFactory.eINSTANCE.createProperty();
-			baseMetaclass.setName(BASE + metaclass.getName());
-			baseMetaclass.setType(metaclass);
-			stereotype.getOwnedAttributes().add(baseMetaclass);
-
-			final ExtensionEnd extensionEnd = UMLFactory.eINSTANCE.createExtensionEnd();
-			extensionEnd.setName("extension_" + stereotype.getName()); //$NON-NLS-1$
-			extensionEnd.setType(stereotype);
-
-			extension = UMLFactory.eINSTANCE.createExtension();
-			extension.getOwnedEnds().add(extensionEnd);
-			// No needs to set the name as it is provided by the item provider
-			extension.getMemberEnds().add(baseMetaclass);
-
-			stereotype.getProfile().getPackagedElements().add(extension);
-		}
-
-		return extension;
 	}
 
 	/**
@@ -695,8 +548,8 @@ public class ProfileDiagramServices extends AbstractDiagramServices {
 	 */
 	public Stereotype createStereotype(ElementImport elementImport) {
 		final Stereotype newStereotype = UMLFactory.eINSTANCE.createStereotype();
-		getProfileOwner(elementImport).getOwnedStereotypes().add(newStereotype);
-		createMetaclassExtension(newStereotype, elementImport);
+		ExtensionServices.INSTANCE.getProfileOwner(elementImport).getOwnedStereotypes().add(newStereotype);
+		ExtensionServices.INSTANCE.createMetaclassExtension(newStereotype, elementImport);
 		return newStereotype;
 	}
 
@@ -740,7 +593,7 @@ public class ProfileDiagramServices extends AbstractDiagramServices {
 		if (stereotype.getOwner() instanceof Package) {
 			((Package)stereotype.getOwner()).getOwnedStereotypes().add(newStereotype);
 		}
-		createGeneralization(newStereotype, stereotype);
+		ExtensionServices.INSTANCE.createGeneralization(newStereotype, stereotype);
 		return newStereotype;
 	}
 
@@ -761,7 +614,7 @@ public class ProfileDiagramServices extends AbstractDiagramServices {
 		final PackageableElement importedElement = elementImport.getImportedElement();
 
 		if (importedElement != null && importedElement instanceof Type
-				&& isExtendedBy((Type)importedElement, stereotype)) {
+				&& ExtensionServices.INSTANCE.isExtendedBy((Type)importedElement, stereotype)) {
 
 			final Type metaclass = (Type)importedElement;
 			final Class metaclassClass = (Class)importedElement;
@@ -781,7 +634,7 @@ public class ProfileDiagramServices extends AbstractDiagramServices {
 			associationTargetEnd.setType(stereotypeTarget);
 			stereotype.getOwnedAttributes().add(associationTargetEnd);
 
-			final Extension extension = getExtension(stereotype, metaclass);
+			final Extension extension = ExtensionServices.INSTANCE.getExtension(stereotype, metaclass);
 
 			extension.getMemberEnds().add(associationSourceEnd);
 			extension.getMemberEnds().add(associationTargetEnd);
@@ -1169,33 +1022,7 @@ public class ProfileDiagramServices extends AbstractDiagramServices {
 	 * @return The found element import.
 	 */
 	public ElementImport getElementImport(final Extension extension) {
-		final Profile profileOwner = getProfileOwner(extension);
-		if (profileOwner.getMetaclassReference(extension.getMetaclass()) != null) {
-			return profileOwner.getMetaclassReference(extension.getMetaclass());
-		}
-
-		return null;
-	}
-
-	/**
-	 * Find the Extension of stereotype to metacalss.
-	 *
-	 * @param stereotype
-	 *            of the extension.
-	 * @param metaclass
-	 *            of the extension.
-	 * @return the found extension, or null.
-	 */
-	private Extension getExtension(final Stereotype stereotype, final Type metaclass) {
-		for (final Extension extention : stereotype.getProfile().getOwnedExtensions(false)) {
-			if (extention.getName() != null) {
-				if (extention.getName().equals(stereotype.getName() + "Extend" + metaclass.getName())) { //$NON-NLS-1$
-					return extention;
-				}
-			}
-		}
-
-		return null;
+		return ExtensionServices.INSTANCE.getElementImport(extension);
 	}
 
 	/**
@@ -1216,21 +1043,6 @@ public class ProfileDiagramServices extends AbstractDiagramServices {
 			}
 		}
 		return extension != null ? extension.getMetaclass() : null;
-	}
-
-	/**
-	 * Get the profile owner of this element.
-	 *
-	 * @param umlElement
-	 *            the element
-	 * @return the profile
-	 */
-	private Profile getProfileOwner(final Element umlElement) {
-
-		if (umlElement.getOwner() instanceof Profile) {
-			return (Profile)umlElement.getOwner();
-		}
-		return getProfileOwner(umlElement.getOwner());
 	}
 
 	/**
@@ -1413,38 +1225,6 @@ public class ProfileDiagramServices extends AbstractDiagramServices {
 			return IDialogConstants.OK_ID;
 		}
 		return IDialogConstants.CANCEL_ID;
-	}
-
-	/**
-	 * Test if the metaclass is extended by the stereotype.
-	 *
-	 * @param metaclassType
-	 *            of extension
-	 * @param stereotype
-	 *            of extension.
-	 * @return true if the metaclass is extended by the stereotype.
-	 */
-	private boolean isExtendedBy(final Type metaclassType, final Stereotype stereotype) {
-		return !(stereotype.getOwnedAttribute(BASE + metaclassType.getName(), metaclassType) == null);
-	}
-
-	/**
-	 * Test if the stereotype target is a generalisation of the stereotype source.
-	 *
-	 * @param stereotypeTarget
-	 *            of the generalisation.
-	 * @param stereotypeSource
-	 *            of the generalisation.
-	 * @return true if the stereotype target is a generalisation of the stereotype source.
-	 */
-	private boolean isGeneraleFor(final Stereotype stereotypeTarget, final Stereotype stereotypeSource) {
-		for (final Generalization generalization : stereotypeSource.getGeneralizations()) {
-			if (generalization.getGeneral().equals(stereotypeTarget)) {
-				return true;
-			}
-		}
-		return false;
-
 	}
 
 	/**
