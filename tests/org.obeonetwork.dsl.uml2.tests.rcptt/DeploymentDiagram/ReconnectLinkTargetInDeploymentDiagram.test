@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _aQopQNe6EeSVyY6xGIhNLA
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 3/31/15 5:51 PM
+Save-Time: 6/4/15 9:35 AM
 Testcase-Type: ecl
 Verifications: _LH9SkNe9EeSVyY6xGIhNLA
 
@@ -44,18 +44,18 @@ with [get-editor "NewModel Deployment Diagram"] {
                 }
                 // move target side
                 with [get-target-connection 0 | get-handle SiriusConnectionEndPointHandle -index 1] {
-                    mouse-move 2 4 button1 -height 7 -width 7
-                    mouse-press 2 4 button1 -height 7 -width 7
+                    mouse-move 1 1 button1 -height 7 -width 7
+                    mouse-press 1 1 button1 -height 7 -width 7
                 }
             }
         }
         // drop on Device2
-        with [get-edit-part -name "NewModel Deployment Diagram" | get-edit-part -name Device2]{ 
-            mouse-drag 308 164 button1 524288 -height 524 -width 713
-            mouse-release 308 164 button1 524288 -height 524 -width 713
+        with [get-edit-part -name "NewModel Deployment Diagram" | get-edit-part -name Device2
+            | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart]{ 
+            mouse-drag 1 1 button1 524288 -height 524 -width 713
+            mouse-release 1 1 button1 524288 -height 524 -width 713
         }
     }
-
 }
 // Check Diagram
 with [get-editor "NewModel Deployment Diagram" | get-diagram -index 1 | get-edit-part 
