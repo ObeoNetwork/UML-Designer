@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _0AOmUOdEEeSXar-HajHJtg
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/20/15 2:05 PM
+Save-Time: 6/4/15 11:43 AM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -48,8 +48,13 @@ with [get-view "Model Explorer" | get-tree] {
         | drag-start 17 6
 }
 get-editor "Package Containment" | get-diagram -index 1 | get-edit-part -name "Package Containment" | get-edit-part 
-    -name Package7 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | drop 56 14 -detail move
+    -name Package7 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | drop 1 1 -detail move
 get-view "Model Explorer" | get-tree | drag-end -detail move
+
+// Check diagram
+get-editor "Package Containment" | get-diagram -index 1 | get-edit-part -name "Package Containment"
+    | get-edit-part -name "Web Agent" | get-edit-part -className DNodeListViewNodeListCompartment2EditPart 
+    | verify-error {get-edit-part -name "Agency App"}
 
 // Drag/Drop Catalog
 with [get-view "Model Explorer" | get-tree] {
@@ -58,16 +63,26 @@ with [get-view "Model Explorer" | get-tree] {
         | drag-start 13 13
 }
 get-editor "Package Containment" | get-diagram -index 1 | get-edit-part -name "Package Containment" | get-edit-part 
-    -name Package7 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | drop 58 36 -detail move
+    -name Package7 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | drop 1 1 -detail move
 get-view "Model Explorer" | get-tree | drag-end -detail move
+// Check diagram
+get-editor "Package Containment" | get-diagram -index 1 | get-edit-part -name "Package Containment"
+    | get-edit-part -name "Agency  Offers" | get-edit-part -className DNodeListViewNodeListCompartment2EditPart 
+    | verify-error {get-edit-part -name Catalog}
+
 // Drag/Drop Auth
 with [get-view "Model Explorer" | get-tree] {
     select "TravelAgency/agency.uml/<Model> Travel Agency/<Package> Interfaces/<Interface> auth"
     get-item "TravelAgency/agency.uml/<Model> Travel Agency/<Package> Interfaces/<Interface> auth" | drag-start "-6" 5
 }
 get-editor "Package Containment" | get-diagram -index 1 | get-edit-part -name "Package Containment" | get-edit-part 
-    -name Package7 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | drop 58 36 -detail move
+    -name Package7 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | drop 1 1 -detail move
 get-view "Model Explorer" | get-tree | drag-end -detail move
+// Check diagram
+get-editor "Package Containment" | get-diagram -index 1 | get-edit-part -name "Package Containment"
+    | get-edit-part -name Interfaces | get-edit-part -className DNodeListViewNodeListCompartment2EditPart 
+    | verify-error {get-edit-part -name auth}
+
 
 // Drag/Drop Customer
 with [get-view "Model Explorer" | get-tree] {
@@ -77,8 +92,12 @@ with [get-view "Model Explorer" | get-tree] {
 }
 get-view "Model Explorer" | get-tree | drag-set-data
 get-editor "Package Containment" | get-diagram -index 1 | get-edit-part -name "Package Containment" | get-edit-part 
-    -name Package7 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | drop 118 94 -detail move
+    -name Package7 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | drop 1 1 -detail move
 get-view "Model Explorer" | get-tree | drag-end -detail move
+// Check diagram
+get-editor "Package Containment" | get-diagram -index 1 | get-edit-part -name "Package Containment"
+    | get-edit-part -name Actors | get-edit-part -className DNodeListViewNodeListCompartment2EditPart 
+    | verify-error {get-edit-part -name Customer}
 
 // Drag/Drop Travels
 with [get-view "Model Explorer" | get-tree] {
@@ -87,8 +106,12 @@ with [get-view "Model Explorer" | get-tree] {
 }
 get-view "Model Explorer" | get-tree | drag-set-data
 get-editor "Package Containment" | get-diagram -index 1 | get-edit-part -name "Package Containment" | get-edit-part 
-    -name Package7 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | drop 75 139 -detail move
+    -name Package7 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | drop 1 1 -detail move
 get-view "Model Explorer" | get-tree | drag-end -detail move
+// Check diagram
+get-editor "Package Containment" | get-diagram -index 1 | get-edit-part -name "Package Containment"
+    | get-edit-part -name Interfaces | get-edit-part -className DNodeListViewNodeListCompartment2EditPart 
+    | verify-error {get-edit-part -name Travels}
 
 // Drag/Drop Component
 with [get-view "Model Explorer" | get-tree] {
@@ -97,25 +120,10 @@ with [get-view "Model Explorer" | get-tree] {
 }
 get-view "Model Explorer" | get-tree | drag-set-data
 get-editor "Package Containment" | get-diagram -index 1 | get-edit-part -name "Package Containment" | get-edit-part 
-    -name Package7 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | drop 93 136 -detail move
+    -name Package7 | get-edit-part -className DNodeListViewNodeListCompartment2EditPart | drop 1 1 -detail move
 get-view "Model Explorer" | get-tree | drag-end -detail move
 
 // Check diagram
-get-editor "Package Containment" | get-diagram -index 1 | get-edit-part -name "Package Containment"
-    | get-edit-part -name "Web Agent" | get-edit-part -className DNodeListViewNodeListCompartment2EditPart 
-    | verify-error {get-edit-part -name "Agency App"}
-get-editor "Package Containment" | get-diagram -index 1 | get-edit-part -name "Package Containment"
-    | get-edit-part -name Interfaces | get-edit-part -className DNodeListViewNodeListCompartment2EditPart 
-    | verify-error {get-edit-part -name auth}
-get-editor "Package Containment" | get-diagram -index 1 | get-edit-part -name "Package Containment"
-    | get-edit-part -name Actors | get-edit-part -className DNodeListViewNodeListCompartment2EditPart 
-    | verify-error {get-edit-part -name Customer}
-get-editor "Package Containment" | get-diagram -index 1 | get-edit-part -name "Package Containment"
-    | get-edit-part -name Interfaces | get-edit-part -className DNodeListViewNodeListCompartment2EditPart 
-    | verify-error {get-edit-part -name Travels}
-get-editor "Package Containment" | get-diagram -index 1 | get-edit-part -name "Package Containment"
-    | get-edit-part -name "Agency  Offers" | get-edit-part -className DNodeListViewNodeListCompartment2EditPart 
-    | verify-error {get-edit-part -name Catalog}
 get-editor "Package Containment" | get-diagram -index 1 | get-edit-part -name "Package Containment" | get-edit-part 
     -name "Travel Agency" | get-edit-part -className DNodeListViewNodeListCompartment2EditPart 
     | verify-error {get-edit-part -name Components}
