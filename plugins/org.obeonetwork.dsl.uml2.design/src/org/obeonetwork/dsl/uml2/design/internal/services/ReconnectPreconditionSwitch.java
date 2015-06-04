@@ -15,10 +15,13 @@ import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.ElementImport;
+import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.InterfaceRealization;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.TemplateBinding;
 import org.eclipse.uml2.uml.TemplateableElement;
 import org.eclipse.uml2.uml.Type;
@@ -60,8 +63,24 @@ public class ReconnectPreconditionSwitch extends UMLSwitch<Element> {
 	 */
 	@Override
 	public Element caseAssociation(Association association) {
+		if (association instanceof Extension) {
+			return null;
+		}
 		if (newPointedElement instanceof Type) {
 			return association;
+		}
+		return null;
+	}
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public Element caseDependency(Dependency dependency) {
+		if (dependency instanceof InterfaceRealization) {
+			return null;
+		}
+		if (newPointedElement instanceof NamedElement) {
+			return dependency;
 		}
 		return null;
 	}
@@ -70,11 +89,19 @@ public class ReconnectPreconditionSwitch extends UMLSwitch<Element> {
 	 * {@inheritDoc}
 	 */
 	@Override
-	public Element caseDependency(Dependency dependency) {
-		if (newPointedElement instanceof NamedElement) {
-			return null;
+	public Element caseExtension(Extension extension) {
+		if (RECONNECT_SOURCE == reconnectKind) {
+			final ElementImport target = ExtensionServices.INSTANCE.getElementImport(extension);
+			if (ExtensionServices.INSTANCE.canCreateExtension(newPointedElement, target)) {
+				return extension;
+			}
+		} else {
+			final Stereotype source = extension.getStereotype();
+			if (ExtensionServices.INSTANCE.canCreateExtension(source, newPointedElement)) {
+				return extension;
+			}
 		}
-		return dependency;
+		return null;
 	}
 
 	/**
@@ -83,9 +110,9 @@ public class ReconnectPreconditionSwitch extends UMLSwitch<Element> {
 	@Override
 	public Element caseGeneralization(Generalization generalization) {
 		if (newPointedElement instanceof Classifier) {
-			return null;
+			return generalization;
 		}
-		return generalization;
+		return null;
 	}
 
 	/**
@@ -95,14 +122,14 @@ public class ReconnectPreconditionSwitch extends UMLSwitch<Element> {
 	public Element caseInterfaceRealization(InterfaceRealization interfaceRealization) {
 		if (RECONNECT_SOURCE == reconnectKind) {
 			if (newPointedElement instanceof Class) {
-				return null;
+				return interfaceRealization;
 			}
 		} else {
 			if (newPointedElement instanceof Interface) {
-				return null;
+				return interfaceRealization;
 			}
 		}
-		return interfaceRealization;
+		return null;
 	}
 
 	/**
@@ -112,9 +139,9 @@ public class ReconnectPreconditionSwitch extends UMLSwitch<Element> {
 	public Element caseTemplateBinding(TemplateBinding tmplBinding) {
 		if (newPointedElement instanceof TemplateableElement
 				&& oldPointedElement instanceof TemplateableElement) {
-			return null;
+			return tmplBinding;
 		}
-		return tmplBinding;
+		return null;
 	}
 
 	/**
@@ -125,7 +152,8 @@ public class ReconnectPreconditionSwitch extends UMLSwitch<Element> {
 	 * @return true if Select end could be reconnected to new end
 	 */
 	public boolean isReconnectable(Element context) {
-		return doSwitch(context) == null;
+		doSwitch(context);
+		return doSwitch(context) != null;
 	}
 
 	/**

@@ -844,7 +844,7 @@ public abstract class AbstractDiagramServices {
 
 	/**
 	 * Generic service used to determine is select edge's source could be reconnected to an element.
-	 * 
+	 *
 	 * @param context
 	 *            Element attached to the existing edge
 	 * @param source
@@ -863,7 +863,7 @@ public abstract class AbstractDiagramServices {
 
 	/**
 	 * Generic service used to determine is select edge's target could be reconnected to an element.
-	 * 
+	 *
 	 * @param context
 	 *            Element attached to the existing edge
 	 * @param source
