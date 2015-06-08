@@ -2,3 +2,9 @@ A test file must define :
 * A preference context to set all the default preferences
 * A workbench context to open all the useful views and the perspective
 * A workspace context to set the projects that must be opened...
+
+Pay attention in tests:
+* To not use coordinates check
+* To not use Drag & Drop from the palette
+* To not use Click on a tool in the palette + CTRL
+* To call the object name and its container figure : get-edit-part -name "xxxObjectName" | get-edit-part -className SquareEditPart
