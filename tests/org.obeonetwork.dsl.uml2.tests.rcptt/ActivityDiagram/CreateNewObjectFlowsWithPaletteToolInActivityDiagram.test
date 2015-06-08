@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _OzZEcJaAEeSnkN__j1IQWA
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 5/28/15 5:17 PM
+Save-Time: 6/8/15 11:21 AM
 Testcase-Type: ecl
 Verifications: _IcJ_IJaMEeSTQJ5Qk_tNWg
 
@@ -54,7 +54,6 @@ Entry-Name: .content
 with [get-editor "NewModel Activity Diagram"] {
     get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram" | mouse-move 1102 374 -height 530 -width 1116
     with [get-palette] {
-        get-palette-entry "Interrupting Edge" | mouse-move 117 0 -height 24 -width 145
         with [get-palette-entry "Object Flow"] {
             mouse-move 95 7 button1 -height 24 -width 145
             mouse-press 95 7 button1 -height 24 -width 145
@@ -66,16 +65,16 @@ with [get-editor "NewModel Activity Diagram"] {
     with [get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram"] {
         with [get-edit-part -name NewModel] {
             with [get-edit-part -name "Parameter1 : " | get-edit-part -className SquareEditPart] {
-                mouse-move 16 11 button1 CTRL -height 20 -width 20
-                mouse-press 16 11 button1 CTRL -height 20 -width 20
+                mouse-move 16 11 button1 -height 20 -width 20
+                mouse-press 16 11 button1 -height 20 -width 20
                 mouse-release 6 11 button1 786432 -height 20 -width 20
             }
             with [get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
                 | get-edit-part -name "OpaqueAction1\n\n" + "// TODO body of OpaqueAction1" 
                 | get-edit-part -name "Input_0 : [1]" | get-edit-part 
                 -className SquareEditPart] {
-                mouse-move 13 6 button1 CTRL -height 20 -width 20
-                mouse-press 13 6 button1 CTRL -height 20 -width 20
+                mouse-move 13 6 button1 -height 20 -width 20
+                mouse-press 13 6 button1 -height 20 -width 20
                 mouse-release 13 6 button1 786432 -height 20 -width 20
             }
         }
@@ -105,17 +104,24 @@ with [get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-p
 
 // Create object flow from Parameter1 to DataStore1
 with [get-editor "NewModel Activity Diagram"] {
+with [get-palette] {
+        with [get-palette-entry "Object Flow"] {
+            mouse-move 95 7 button1 -height 24 -width 145
+            mouse-press 95 7 button1 -height 24 -width 145
+            mouse-release 93 7 button1 524288 -height 24 -width 145
+        }
+    }
     with [get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram" | get-edit-part -name NewModel] {
         with [get-edit-part -name "Parameter1 : " | get-edit-part -className SquareEditPart] {
-            mouse-move 5 6 button1 CTRL -height 20 -width 20
-            mouse-press 5 6 button1 CTRL -height 20 -width 20
+            mouse-move 5 6 button1 -height 20 -width 20
+            mouse-press 5 6 button1 -height 20 -width 20
             mouse-release 1 6 button1 786432 -height 20 -width 20
         }
         with [get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
             with [get-edit-part -name "«Datastore»\n"
                 + "DataStore1" | get-edit-part -className DNodeContainerViewNodeContainerCompartment2EditPart] {
-                mouse-move 73 38 button1 CTRL -height 68 -width 148
-                mouse-press 73 38 button1 CTRL -height 68 -width 148
+                mouse-move 73 38 button1 -height 68 -width 148
+                mouse-press 73 38 button1 -height 68 -width 148
                 mouse-release 73 38 button1 786432 -height 68 -width 148
             }
         }
@@ -133,23 +139,30 @@ with [get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-p
 }
 
 // Create object flow from OpaqueAction1 Output_0 to Parameter2       
-with [get-editor "NewModel Activity Diagram"] {    
+with [get-editor "NewModel Activity Diagram"] { 
+with [get-palette] {
+        with [get-palette-entry "Object Flow"] {
+            mouse-move 95 7 button1 -height 24 -width 145
+            mouse-press 95 7 button1 -height 24 -width 145
+            mouse-release 93 7 button1 524288 -height 24 -width 145
+        }
+    }   
     with [get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram"] {    
         with [get-edit-part -name NewModel] {
             with [get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part 
                 -name "OpaqueAction1\n\n"
                 + "// TODO body of OpaqueAction1"] {
                 with [get-edit-part -name "Output_0 : [1]" | get-edit-part -className SquareEditPart] {
-                    mouse-move 12 3 button1 CTRL -height 20 -width 20
-                    mouse-press 12 3 button1 CTRL -height 20 -width 20
+                    mouse-move 12 3 button1 -height 20 -width 20
+                    mouse-press 12 3 button1 -height 20 -width 20
                     mouse-release 12 3 button1 786432 -height 20 -width 20
                 }
             }
         }
         with [get-edit-part -name NewModel] {
             with [get-edit-part -name "Parameter2 : " | get-edit-part -className SquareEditPart] {
-                mouse-move 14 8 button1 CTRL -height 20 -width 20
-                mouse-press 14 8 button1 CTRL -height 20 -width 20
+                mouse-move 14 8 button1 -height 20 -width 20
+                mouse-press 14 8 button1 -height 20 -width 20
                 mouse-release 14 8 button1 786432 -height 20 -width 20
             }
         }
@@ -164,21 +177,28 @@ with [get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-p
 }
 
 // Create object flow from OpaqueAction1 Output_0 to OpaqueAction2 Input_0 
-with [get-editor "NewModel Activity Diagram"] {    
+with [get-editor "NewModel Activity Diagram"] { 
+with [get-palette] {
+        with [get-palette-entry "Object Flow"] {
+            mouse-move 95 7 button1 -height 24 -width 145
+            mouse-press 95 7 button1 -height 24 -width 145
+            mouse-release 93 7 button1 524288 -height 24 -width 145
+        }
+    }   
     with [get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram" | get-edit-part -name NewModel] {
         with [get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
             with [get-edit-part -name "OpaqueAction1\n\n"
                 + "// TODO body of OpaqueAction1" | get-edit-part -name "Output_0 : [1]" | get-edit-part 
                 -className SquareEditPart] {
-                mouse-move 8 12 button1 CTRL -height 20 -width 20
-                mouse-press 8 12 button1 CTRL -height 20 -width 20
+                mouse-move 8 12 button1 -height 20 -width 20
+                mouse-press 8 12 button1 -height 20 -width 20
                 mouse-release 8 12 button1 786432 -height 20 -width 20
             }
             with [get-edit-part -name "OpaqueAction2\n\n"
                 + "// TODO body of OpaqueAction2"] {
                 with [get-edit-part -name "Input_0 : [1]" | get-edit-part -className SquareEditPart] {
-                    mouse-move 9 4 button1 CTRL -height 20 -width 20
-                    mouse-press 9 4 button1 CTRL -height 20 -width 20
+                    mouse-move 9 4 button1 -height 20 -width 20
+                    mouse-press 9 4 button1 -height 20 -width 20
                     mouse-release 9 4 button1 786432 -height 20 -width 20
                 }
             }
@@ -197,20 +217,27 @@ with [get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-p
 }
 
 // Create object flow from OpaqueAction1 Output_0 to Datastore
-with [get-editor "NewModel Activity Diagram"] {    
+with [get-editor "NewModel Activity Diagram"] {   
+with [get-palette] {
+        with [get-palette-entry "Object Flow"] {
+            mouse-move 95 7 button1 -height 24 -width 145
+            mouse-press 95 7 button1 -height 24 -width 145
+            mouse-release 93 7 button1 524288 -height 24 -width 145
+        }
+    } 
     with [get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram" | get-edit-part -name NewModel 
         | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
         with [get-edit-part -name "OpaqueAction1\n\n"
             + "// TODO body of OpaqueAction1" | get-edit-part -name "Output_0 : [1]" | get-edit-part 
             -className SquareEditPart] {
-            mouse-move 7 5 button1 CTRL -height 20 -width 20
-            mouse-press 7 5 button1 CTRL -height 20 -width 20
+            mouse-move 7 5 button1 -height 20 -width 20
+            mouse-press 7 5 button1 -height 20 -width 20
             mouse-release 7 5 button1 786432 -height 20 -width 20
         }
         with [get-edit-part -name "«Datastore»\n"
             + "DataStore1" | get-edit-part -className DNodeContainerViewNodeContainerCompartment2EditPart] {
-            mouse-move 101 34 button1 CTRL -height 68 -width 148
-            mouse-press 101 34 button1 CTRL -height 68 -width 148
+            mouse-move 101 34 button1 -height 68 -width 148
+            mouse-press 101 34 button1 -height 68 -width 148
             mouse-release 101 34 button1 786432 -height 68 -width 148
         }
     }
@@ -227,22 +254,29 @@ with [get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-p
 }
 
 // Create object flow from Datastore to OpaqueAction1 Input_0
-with [get-editor "NewModel Activity Diagram"] {    
+with [get-editor "NewModel Activity Diagram"] { 
+with [get-palette] {
+        with [get-palette-entry "Object Flow"] {
+            mouse-move 95 7 button1 -height 24 -width 145
+            mouse-press 95 7 button1 -height 24 -width 145
+            mouse-release 93 7 button1 524288 -height 24 -width 145
+        }
+    }   
     with [get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram" | get-edit-part -name NewModel 
         | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
         with [get-edit-part -name "«Datastore»\n"
             + "DataStore1"] {
             with [get-edit-part -className DNodeContainerViewNodeContainerCompartment2EditPart] {
-                mouse-move 122 48 button1 CTRL -height 68 -width 148
-                mouse-press 122 48 button1 CTRL -height 68 -width 148
-                mouse-release 122 48 button1 CTRL -height 68 -width 148
+                mouse-move 122 48 button1 -height 68 -width 148
+                mouse-press 122 48 button1 -height 68 -width 148
+                mouse-release 122 48 button1 -height 68 -width 148
             }
         }
         with [get-edit-part -name "OpaqueAction1\n\n"
             + "// TODO body of OpaqueAction1" | get-edit-part -name "Input_0 : [1]" | get-edit-part 
             -className SquareEditPart] {
-            mouse-move 14 13 button1 CTRL -height 20 -width 20
-            mouse-press 14 13 button1 CTRL -height 20 -width 20
+            mouse-move 14 13 button1 -height 20 -width 20
+            mouse-press 14 13 button1 -height 20 -width 20
             mouse-release 13 13 button1 786432 -height 20 -width 20
         }
     }
@@ -261,19 +295,26 @@ with [get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-p
 
 // Invalid Cases
 // Try to create From Parameter1 to OpaqueAction1 Ouput_0 (invalid)   
-with [get-editor "NewModel Activity Diagram"] {    
+with [get-editor "NewModel Activity Diagram"] {  
+with [get-palette] {
+        with [get-palette-entry "Object Flow"] {
+            mouse-move 95 7 button1 -height 24 -width 145
+            mouse-press 95 7 button1 -height 24 -width 145
+            mouse-release 93 7 button1 524288 -height 24 -width 145
+        }
+    }  
     with [get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram" | get-edit-part -name NewModel] {
         with [get-edit-part -name "Parameter1 : " | get-edit-part -className SquareEditPart] {
-            mouse-move 9 5 button1 CTRL -height 20 -width 20
-            mouse-press 9 5 button1 CTRL -height 20 -width 20
+            mouse-move 9 5 button1 -height 20 -width 20
+            mouse-press 9 5 button1 -height 20 -width 20
             mouse-release 9 5 button1 786432 -height 20 -width 20
         }
         with [get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part 
             -name "OpaqueAction1\n\n"
             + "// TODO body of OpaqueAction1"] {
             with [get-edit-part -name "Output_0 : [1]" | get-edit-part -className SquareEditPart] {
-                mouse-move 13 3 button1 CTRL -height 20 -width 20
-                mouse-press 13 3 button1 CTRL -height 20 -width 20
+                mouse-move 13 3 button1 -height 20 -width 20
+                mouse-press 13 3 button1 -height 20 -width 20
                 mouse-release 13 4 button1 786432 -height 20 -width 20
             }
         }
@@ -281,20 +322,27 @@ with [get-editor "NewModel Activity Diagram"] {
     key-type ESC
 }
 // Try to create object flow from Parameter1 to OpaqueAction1 (invalid)
-with [get-editor "NewModel Activity Diagram"] {    
+with [get-editor "NewModel Activity Diagram"] {   
+with [get-palette] {
+        with [get-palette-entry "Object Flow"] {
+            mouse-move 95 7 button1 -height 24 -width 145
+            mouse-press 95 7 button1 -height 24 -width 145
+            mouse-release 93 7 button1 524288 -height 24 -width 145
+        }
+    } 
     with [get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram"] {
         with [get-edit-part -name NewModel] {
             with [get-edit-part -name "Parameter1 : " | get-edit-part -className SquareEditPart] {
-                mouse-move 11 7 button1 CTRL -height 20 -width 20
-                mouse-press 11 7 button1 CTRL -height 20 -width 20
+                mouse-move 11 7 button1 -height 20 -width 20
+                mouse-press 11 7 button1 -height 20 -width 20
                 mouse-release 3 7 button1 786432 -height 20 -width 20
             }
             with [get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
                 with [get-edit-part -name "OpaqueAction1\n\n"
                     + "// TODO body of OpaqueAction1" | get-edit-part 
                     -className DNodeContainerViewNodeContainerCompartment2EditPart] {
-                    mouse-move 18 31 button1 CTRL -height 68 -width 162
-                    mouse-press 18 31 button1 CTRL -height 68 -width 162
+                    mouse-move 18 31 button1 -height 68 -width 162
+                    mouse-press 18 31 button1 -height 68 -width 162
                     mouse-release 18 31 button1 786432 -height 68 -width 162
                 }
             }
@@ -304,22 +352,29 @@ with [get-editor "NewModel Activity Diagram"] {
 }        
 // Try to create object flow from OpaqueAction1 Input_0 to OpaqueAction2 Input_0 (invalid)
 with [get-editor "NewModel Activity Diagram"] {
+with [get-palette] {
+        with [get-palette-entry "Object Flow"] {
+            mouse-move 95 7 button1 -height 24 -width 145
+            mouse-press 95 7 button1 -height 24 -width 145
+            mouse-release 93 7 button1 524288 -height 24 -width 145
+        }
+    }
     with [get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram"] {
         with [get-edit-part -name NewModel] {
             with [get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
                 with [get-edit-part -name "OpaqueAction1\n\n"
                     + "// TODO body of OpaqueAction1"] {
                     with [get-edit-part -name "Input_0 : [1]" | get-edit-part -className SquareEditPart] {
-                        mouse-move 11 4 button1 CTRL -height 20 -width 20
-                        mouse-press 11 4 button1 CTRL -height 20 -width 20
+                        mouse-move 11 4 button1 -height 20 -width 20
+                        mouse-press 11 4 button1 -height 20 -width 20
                         mouse-release 11 4 button1 786432 -height 20 -width 20
                     }
                 }
                 with [get-edit-part -name "OpaqueAction2\n\n"
                     + "// TODO body of OpaqueAction2"] {
                     with [get-edit-part -name "Input_0 : [1]" | get-edit-part -className SquareEditPart] {
-                        mouse-move 10 7 button1 CTRL -height 20 -width 20
-                        mouse-press 10 7 button1 CTRL -height 20 -width 20
+                        mouse-move 10 7 button1 -height 20 -width 20
+                        mouse-press 10 7 button1 -height 20 -width 20
                         mouse-release 10 7 button1 786432 -height 20 -width 20
                     }
                 }
@@ -329,22 +384,29 @@ with [get-editor "NewModel Activity Diagram"] {
     key-type ESC
 }
 // Try to create object flow from OpaqueAction1 Input_0 to OpaqueAction2 Output_0 (invalid)
-with [get-editor "NewModel Activity Diagram"] {    
+with [get-editor "NewModel Activity Diagram"] { 
+with [get-palette] {
+        with [get-palette-entry "Object Flow"] {
+            mouse-move 95 7 button1 -height 24 -width 145
+            mouse-press 95 7 button1 -height 24 -width 145
+            mouse-release 93 7 button1 524288 -height 24 -width 145
+        }
+    }   
     with [get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram"] {
         with [get-edit-part -name NewModel] {
             with [get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
                 with [get-edit-part -name "OpaqueAction1\n\n"
                     + "// TODO body of OpaqueAction1" | get-edit-part -name "Input_0 : [1]" | get-edit-part 
                     -className SquareEditPart] {
-                    mouse-move 7 5 button1 CTRL -height 20 -width 20
-                    mouse-press 7 5 button1 CTRL -height 20 -width 20
+                    mouse-move 7 5 button1 -height 20 -width 20
+                    mouse-press 7 5 button1 -height 20 -width 20
                     mouse-release 7 5 button1 786432 -height 20 -width 20
                 }
                 with [get-edit-part -name "OpaqueAction2\n\n"
                     + "// TODO body of OpaqueAction2"] {
                     with [get-edit-part -name "Output_0 : [1]" | get-edit-part -className SquareEditPart] {
-                        mouse-move 11 11 button1 CTRL -height 20 -width 20
-                        mouse-press 11 11 button1 CTRL -height 20 -width 20
+                        mouse-move 11 11 button1 -height 20 -width 20
+                        mouse-press 11 11 button1 -height 20 -width 20
                         mouse-release 11 11 button1 786432 -height 20 -width 20
                     }
                 }
@@ -355,14 +417,21 @@ with [get-editor "NewModel Activity Diagram"] {
 }
 // Try to create object flow from OpaqueAction1 Input_0 to Parameter2 (invalid)            
 with [get-editor "NewModel Activity Diagram"] {    
+with [get-palette] {
+        with [get-palette-entry "Object Flow"] {
+            mouse-move 95 7 button1 -height 24 -width 145
+            mouse-press 95 7 button1 -height 24 -width 145
+            mouse-release 93 7 button1 524288 -height 24 -width 145
+        }
+    }
     with [get-diagram -index 1 | get-edit-part -name "NewModel Activity Diagram"] {
         with [get-edit-part -name NewModel] {
             with [get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
                 with [get-edit-part -name "OpaqueAction1\n\n"
                     + "// TODO body of OpaqueAction1"] {
                     with [get-edit-part -name "Input_0 : [1]" | get-edit-part -className SquareEditPart] {
-                        mouse-move 7 5 button1 CTRL -height 20 -width 20
-                        mouse-press 7 5 button1 CTRL -height 20 -width 20
+                        mouse-move 7 5 button1 -height 20 -width 20
+                        mouse-press 7 5 button1 -height 20 -width 20
                         mouse-release 7 5 button1 786432 -height 20 -width 20
                     }
                 }
@@ -370,8 +439,8 @@ with [get-editor "NewModel Activity Diagram"] {
         }     
         with [get-edit-part -name NewModel] {
             with [get-edit-part -name "Parameter2 : " | get-edit-part -className SquareEditPart] {
-                mouse-move 9 9 button1 CTRL -height 20 -width 20
-                mouse-press 9 9 button1 CTRL -height 20 -width 20
+                mouse-move 9 9 button1 -height 20 -width 20
+                mouse-press 9 9 button1 -height 20 -width 20
                 mouse-release 9 9 button1 786432 -height 20 -width 20
             }
         }
@@ -385,16 +454,16 @@ with [get-editor "NewModel Activity Diagram"] {
         with [get-edit-part -name "OpaqueAction1\n\n"
             + "// TODO body of OpaqueAction1"] {
             with [get-edit-part -name "Input_0 : [1]" | get-edit-part -className SquareEditPart] {
-                mouse-move 12 8 button1 CTRL -height 20 -width 20
-                mouse-press 12 8 button1 CTRL -height 20 -width 20
+                mouse-move 12 8 button1 -height 20 -width 20
+                mouse-press 12 8 button1 -height 20 -width 20
                 mouse-release 12 8 button1 786432 -height 20 -width 20
             }
         }
           with [get-edit-part -name "«Datastore»\n"
             + "DataStore1"] {
             with [get-edit-part -className DNodeContainerViewNodeContainerCompartment2EditPart] {
-                mouse-move 129 46 button1 CTRL -height 68 -width 148
-                mouse-press 129 46 button1 CTRL -height 68 -width 148
+                mouse-move 129 46 button1 -height 68 -width 148
+                mouse-press 129 46 button1 -height 68 -width 148
                 mouse-release 129 46 button1 786432 -height 68 -width 148
             }
         }
