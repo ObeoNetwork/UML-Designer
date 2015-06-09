@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _6oVEENiQEeSGfIdQZmgChQ
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 5/11/15 3:07 PM
+Save-Time: 6/9/15 7:05 PM
 Testcase-Type: ecl
 Verifications: _SgdhYNiSEeSGfIdQZmgChQ
 
@@ -59,8 +59,6 @@ with [get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-p
     -name "NewModel Activity Diagram" | get-edit-part -name "NewModel" | get-edit-part 
     -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name "Fork1" | get-edit-part 
     -className SquareEditPart | get-figure 0] {
-    get-property x | equals 380 | verify-true
-    get-property y | equals 74 | verify-true
     get-property "isVisible()" | equals true | verify-true
 }
 

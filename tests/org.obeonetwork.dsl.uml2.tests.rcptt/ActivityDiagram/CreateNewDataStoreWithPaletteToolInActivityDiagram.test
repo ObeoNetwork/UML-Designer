@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _L2-1QNk9EeS7gLNKVfblRg
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/7/15 9:37 AM
+Save-Time: 6/9/15 7:07 PM
 Testcase-Type: ecl
 Verifications: _X--sYNk-EeS7gLNKVfblRg
 
@@ -63,8 +63,6 @@ with [get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-p
     -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name "«Datastore»\r\n"
     + "DataStore1" | get-edit-part -className DNodeContainerViewNodeContainerCompartment2EditPart] {
     with [get-figure "1/0"] {
-        get-property x | equals 215 | verify-true
-        get-property y | equals 130 | verify-true
     }
     get-property "getFigure().isVisible()" | equals true | verify-true
 }
