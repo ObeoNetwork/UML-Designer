@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _Ph-MwNJMEeSzLt1JkYCXlg
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/15/15 2:56 PM
+Save-Time: 6/9/15 9:38 AM
 Testcase-Type: ecl
 
 ------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
@@ -48,11 +48,9 @@ with [get-editor "Test Class Diagram Edges"] {
         with [get-edit-part -name "Test Class Diagram Edges"] {
             mouse-move 439 143 -height 537 -width 1057
             with [get-edit-part -name "Default Interface" | get-target-connection 0] {
-                with [get-figure 3] {
-                    mouse-move 6 3 button1 -height 9 -width 10
-                    mouse-press 6 3 button1 -height 9 -width 10
-                    mouse-release 6 3 button1 524288 -height 9 -width 10
-                }
+                mouse-move 6 3 button1 -height 9 -width 10
+                mouse-press 6 3 button1 -height 9 -width 10
+                mouse-release 6 3 button1 524288 -height 9 -width 10
                 with [get-handle SiriusConnectionEndPointHandle -index 1] {
                     mouse-move 3 4 button1 -height 7 -width 7
                     mouse-press 3 4 button1 -height 7 -width 7
