@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _1xhU4NiKEeSGfIdQZmgChQ
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 5/11/15 3:15 PM
+Save-Time: 6/9/15 11:47 AM
 Testcase-Type: ecl
 Verifications: _lxH98NiLEeSGfIdQZmgChQ
 
@@ -61,8 +61,6 @@ with [get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-p
         get-edit-part -name "ActivityFinal1" | get-edit-part -className WorkspaceImageEditPart | get-figure 0 
             | get-property "isVisible()" | equals true | verify-true
         with [get-edit-part -name "ActivityFinal1" | get-edit-part -className WorkspaceImageEditPart | get-figure 0] {
-            get-property "getLocation().x" | equals 380 | verify-true
-            get-property "getLocation().y" | equals 74 | verify-true
         }
         get-figure "1/0" | get-property "getChildren().size()" | equals 1 | verify-true
         

@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _j-0sANedEeSVyY6xGIhNLA
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/14/15 2:57 PM
+Save-Time: 6/9/15 11:51 AM
 Testcase-Type: ecl
 Verifications: _xRPXwNeyEeSVyY6xGIhNLA
 
@@ -47,8 +47,6 @@ with [get-editor "NewModel Deployment Diagram"] {
 with [get-editor "NewModel Deployment Diagram" | get-diagram -index 1 | get-edit-part 
     -name "NewModel Deployment Diagram" | get-edit-part -name Artifact1 | get-edit-part 
     -className DNodeContainerViewNodeContainerCompartmentEditPart | get-figure "1/0"] {
-    get-property "getLocation().x" | equals 335 | verify-true
-    get-property "getLocation().y" | equals 166 | verify-true
     get-property "isVisible()" | equals true | verify-true
 }
 

@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _ChBMgdhuEeSGfIdQZmgChQ
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/7/15 10:07 AM
+Save-Time: 6/9/15 11:32 AM
 Testcase-Type: ecl
 Verifications: _Ql8skNh-EeSGfIdQZmgChQ
 
@@ -59,8 +59,6 @@ with [get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-p
     with [get-edit-part -name "NewModel" | get-edit-part 
         -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name ActivityPartition1 
         | get-edit-part -className DNodeContainerViewNodeContainerCompartment2EditPart | get-figure 1] {
-        get-property "getLocation().x" | equals 30 | verify-true
-        get-property "getLocation().y" | equals 75 | verify-true
     }
 }
 

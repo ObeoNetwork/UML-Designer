@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _ofwtoNPZEeSQYq5tjqphxg
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/14/15 3:45 PM
+Save-Time: 6/9/15 11:55 AM
 Testcase-Type: ecl
 Verifications: _1BihQNPbEeSQYq5tjqphxg
 
@@ -49,10 +49,6 @@ with [get-editor "Test Use Case Diagram"] {
 // Check diagram
 with [get-editor "Test Use Case Diagram" | get-diagram -index 1 | get-edit-part -name "Test Use Case Diagram" 
     | get-edit-part -name UseCaseTest2 | get-target-connection 0] {
-    get-property "getFigure().getEnd().x" | equals 455 | verify-true
-    get-property "getFigure().getEnd().y" | equals 195 | verify-true
-    get-property "getFigure().getStart().x" | equals 455 | verify-true
-    get-property "getFigure().getStart().y" | equals 157 | verify-true
 }
 // Check model
 with [get-editor "Test Use Case Diagram" | get-diagram -index 1 | get-edit-part -name "Test Use Case Diagram" 
@@ -81,10 +77,6 @@ with [get-editor "Test Use Case Diagram" | get-diagram -index 1 | get-edit-part 
 // Check diagram
 with [get-editor "Test Use Case Diagram" | get-diagram -index 1 | get-edit-part -name "Test Use Case Diagram" 
     | get-edit-part -name UseCaseTest2 | get-target-connection 0] {
-    get-property "getFigure().getEnd().x" | equals 455 | verify-true
-    get-property "getFigure().getEnd().y" | equals 195 | verify-true
-    get-property "getFigure().getStart().x" | equals 455 | verify-true
-    get-property "getFigure().getStart().y" | equals 157 | verify-true
 }
 // Check model
 with [get-editor "Test Use Case Diagram" | get-diagram -index 1 | get-edit-part -name "Test Use Case Diagram" 

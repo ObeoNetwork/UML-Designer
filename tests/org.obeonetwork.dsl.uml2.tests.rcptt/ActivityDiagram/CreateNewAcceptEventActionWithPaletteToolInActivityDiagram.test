@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _yqL60NkqEeSn969efLWPgA
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/7/15 9:26 AM
+Save-Time: 6/9/15 11:46 AM
 Testcase-Type: ecl
 Verifications: _UfZsUNksEeSn969efLWPgA
 
@@ -58,8 +58,6 @@ with [get-editor "NewModel Activity Diagram" | get-diagram -index 1 | get-edit-p
         -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name AcceptEventAction1 
         | get-edit-part -className WorkspaceImageEditPart | get-figure "0/0"] {
         get-property "getText()" | equals AcceptEventAction1 | verify-true
-        get-property "getLocation().x" | equals 215 | verify-true
-        get-property "getLocation().y" | equals 119 | verify-true
         get-property "isVisible()" | equals true | verify-true
     }
 }
