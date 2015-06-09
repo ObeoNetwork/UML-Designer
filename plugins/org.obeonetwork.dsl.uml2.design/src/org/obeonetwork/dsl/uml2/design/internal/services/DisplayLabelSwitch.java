@@ -66,6 +66,7 @@ import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.StructuralFeature;
 import org.eclipse.uml2.uml.TemplateBinding;
 import org.eclipse.uml2.uml.TemplateParameterSubstitution;
+import org.eclipse.uml2.uml.TemplateableElement;
 import org.eclipse.uml2.uml.TimeExpression;
 import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.Trigger;
@@ -254,14 +255,8 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	 */
 	@Override
 	public String caseClass(Class object) {
-		final String templateParameters = LabelServices.INSTANCE.getTemplatedParameters(object);
-		if (templateParameters != null) {
-			return computeStereotypes(object) + object.getName() + templateParameters;
-		}
-
-		return computeStereotypes(object) + object.getName();
+		return caseTemplateableElement(object);
 	}
-
 	/**
 	 * {@inheritDoc}
 	 */
@@ -269,7 +264,6 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	public String caseComponentRealization(org.eclipse.uml2.uml.ComponentRealization object) {
 		return ""; //$NON-NLS-1$
 	}
-
 	/**
 	 * {@inheritDoc}
 	 */
@@ -800,6 +794,15 @@ public class DisplayLabelSwitch extends UMLSwitch<String> implements ILabelConst
 	@Override
 	public String caseStructuralFeature(StructuralFeature object) {
 		return caseTypedElement(object) + " " + caseMultiplicityElement(object); //$NON-NLS-1$
+	}
+
+	@Override
+	public String caseTemplateableElement(TemplateableElement object) {
+		final String templateParameters = LabelServices.INSTANCE.getTemplatedParameters(object);
+		if (templateParameters != null) {
+			return computeStereotypes(object) + caseNamedElement((NamedElement)object) + templateParameters;
+		}
+		return computeStereotypes(object) + caseNamedElement((NamedElement)object);
 	}
 
 	/**

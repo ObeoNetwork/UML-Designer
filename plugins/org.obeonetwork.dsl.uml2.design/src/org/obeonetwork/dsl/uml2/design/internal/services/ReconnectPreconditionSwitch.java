@@ -138,8 +138,9 @@ public class ReconnectPreconditionSwitch extends UMLSwitch<Element> {
 	 */
 	@Override
 	public Element caseTemplateBinding(TemplateBinding tmplBinding) {
-		if (newPointedElement instanceof TemplateableElement
-				&& oldPointedElement instanceof TemplateableElement) {
+		if (newPointedElement instanceof TemplateableElement && newPointedElement instanceof Classifier
+				&& oldPointedElement instanceof TemplateableElement
+				&& oldPointedElement instanceof Classifier) {
 			return tmplBinding;
 		}
 		return null;

@@ -21,7 +21,6 @@ import org.eclipse.uml2.uml.ActivityParameterNode;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.AssociationClass;
 import org.eclipse.uml2.uml.CallEvent;
-import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.DataStoreNode;
 import org.eclipse.uml2.uml.DecisionNode;
@@ -48,6 +47,7 @@ import org.eclipse.uml2.uml.StateMachine;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.TemplateParameter;
 import org.eclipse.uml2.uml.TemplateSignature;
+import org.eclipse.uml2.uml.TemplateableElement;
 import org.eclipse.uml2.uml.TimeEvent;
 import org.eclipse.uml2.uml.Trigger;
 
@@ -324,10 +324,10 @@ public class LabelServices {
 	 * Get templated parameters.
 	 *
 	 * @param object
-	 *            Class
+	 *            TemplateableElement
 	 * @return Templated parameter
 	 */
-	public String getTemplatedParameters(Class object) {
+	public String getTemplatedParameters(TemplateableElement object) {
 		final TemplateSignature ownedTemplateSignature = object.getOwnedTemplateSignature();
 		final StringBuffer templateParameters = new StringBuffer();
 		if (ownedTemplateSignature != null) {

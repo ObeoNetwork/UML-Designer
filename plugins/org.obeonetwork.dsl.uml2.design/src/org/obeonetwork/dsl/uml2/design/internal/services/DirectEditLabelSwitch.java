@@ -12,6 +12,7 @@ package org.obeonetwork.dsl.uml2.design.internal.services;
 
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.TemplateableElement;
 
 /**
  * A switch that handle the label computation for each UML types for direct edit operation.
@@ -37,6 +38,13 @@ public class DirectEditLabelSwitch extends DisplayLabelSwitch {
 	 */
 	@Override
 	public String caseNamedElement(NamedElement object) {
+		if (object instanceof TemplateableElement){
+			final String templateParameters = LabelServices.INSTANCE
+					.getTemplatedParameters((TemplateableElement)object);
+			if (templateParameters != null) {
+				return object.getName() + templateParameters;
+			}
+		}
 		return object.getName();
 	}
 }

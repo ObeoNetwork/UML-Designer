@@ -24,6 +24,7 @@ import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Behavior;
 import org.eclipse.uml2.uml.BehaviorExecutionSpecification;
 import org.eclipse.uml2.uml.Class;
+import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.ClassifierTemplateParameter;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Constraint;
@@ -79,7 +80,7 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 	 * @return New Classifier template parameter
 	 */
 	private static ClassifierTemplateParameter createNewClassifierTemplateParameter(
-			ParameterableElement context, TemplateSignature templateSignature, String newTemplateClassName) {
+			TemplateSignature templateSignature, String newTemplateClassName) {
 		final ClassifierTemplateParameter result = UMLFactory.eINSTANCE.createClassifierTemplateParameter();
 		final Class newGenericClass = UMLFactory.eINSTANCE.createClass();
 		newGenericClass.setName(newTemplateClassName);
@@ -156,7 +157,6 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 		editedLabelContent = parseInputLabel(object, editedLabelContent);
 		return caseNamedElement(object);
 	}
-
 	/**
 	 * {@inheritDoc}
 	 */
@@ -419,6 +419,12 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 		return slot;
 	}
 
+	@Override
+	public Element caseTemplateableElement(TemplateableElement object) {
+		editedLabelContent = parseInputLabel(object, editedLabelContent);
+		return super.caseTemplateableElement(object);
+	}
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -483,29 +489,29 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 	/**
 	 * Parse the edited label content and update the underlying {@link Class}.
 	 *
-	 * @param aClass
+	 * @param aTemplateableElement
 	 *            the context {@link Class} object.
 	 * @param inputLabel
 	 *            the user edited label content.
 	 * @return Class name
 	 */
-	private String parseInputLabel(org.eclipse.uml2.uml.Class aClass, String inputLabel) {
+	private String parseInputLabel(org.eclipse.uml2.uml.TemplateableElement aTemplateableElement, String inputLabel) {
 		String result = inputLabel;
 		final String validLabel = "[a-zA-Z_0-9]+((\\s)*<[a-zA-Z_0-9]+(,(\\s)*[a-zA-Z_0-9]+)*>)?"; //$NON-NLS-1$
 		final String templatedLabel = "[a-zA-Z_0-9]+((\\s)*<[a-zA-Z_0-9]+(,(\\s)*[a-zA-Z_0-9]+)*>)"; //$NON-NLS-1$
 
 		if (inputLabel.matches(validLabel)) {
-			if (inputLabel.matches(templatedLabel)) {
+			if (inputLabel.matches(templatedLabel) && aTemplateableElement instanceof Classifier) {
 				final String[] splittedLabel = inputLabel.split("(\\s)*<"); //$NON-NLS-1$
 				result = splittedLabel[0].trim();
 
 				// rename the template parameter
 				final String templateSignatureLabel = splittedLabel[1].replace(">", ""); //$NON-NLS-1$ //$NON-NLS-2$
 				final String[] templateParamLabels = templateSignatureLabel.split(",(\\s)*"); //$NON-NLS-1$
-				TemplateSignature templateSignature = aClass.getOwnedTemplateSignature();
+				TemplateSignature templateSignature = aTemplateableElement.getOwnedTemplateSignature();
 				if (templateSignature == null) {
 					// create a template signature
-					templateSignature = aClass.createOwnedTemplateSignature();
+					templateSignature = aTemplateableElement.createOwnedTemplateSignature();
 				}
 				final List<TemplateParameter> templateParameters = templateSignature.getOwnedParameters();
 				for (int i = 0; i < templateParamLabels.length; i++) {
@@ -517,9 +523,9 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 									.setName(templateParamLabel);
 						}
 					} catch (final IndexOutOfBoundsException e) {
-						final ClassifierTemplateParameter createNewClassifierTemplateParameter = createNewClassifierTemplateParameter(
-								aClass, templateSignature, templateParamLabel);
-
+						final TemplateParameter createNewClassifierTemplateParameter;
+						createNewClassifierTemplateParameter = createNewClassifierTemplateParameter(
+								templateSignature, templateParamLabel);
 						final Session sess = SessionManager.INSTANCE.getSession(templateSignature);
 						final Collection<Setting> inverseReferences = sess.getSemanticCrossReferencer()
 								.getInverseReferences(templateSignature);
@@ -553,7 +559,7 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 					templateSignature.getParameters().remove(templateParameterToRemove);
 				}
 			} else {
-				final TemplateSignature templateSignature = aClass.getOwnedTemplateSignature();
+				final TemplateSignature templateSignature = aTemplateableElement.getOwnedTemplateSignature();
 				if (templateSignature != null) {
 
 					// delete templateBinding
@@ -574,8 +580,8 @@ public class EditLabelSwitch extends UMLSwitch<Element> implements ILabelConstan
 					// delete templateSignature and templateParameter
 					templateSignature.getParameters().clear();
 					templateSignature.getOwnedParameters().clear();
-					aClass.setTemplateParameter(null);
-					aClass.setOwnedTemplateSignature(null);
+					((ParameterableElement)aTemplateableElement).setTemplateParameter(null);
+					aTemplateableElement.setOwnedTemplateSignature(null);
 				}
 			}
 		}
