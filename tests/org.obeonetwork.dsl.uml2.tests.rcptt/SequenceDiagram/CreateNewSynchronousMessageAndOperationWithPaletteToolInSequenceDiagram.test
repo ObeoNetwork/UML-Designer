@@ -1,6 +1,6 @@
 --- RCPTT testcase ---
 Format-Version: 1.0
-Contexts: _MWdYgIBGEeS4X6G9cD21hw,_j5GvUAUgEeWu0eW6YYFvkg,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_X-rQgH-QEeS4X6G9cD21hw,_Bfja0OG2EeS3L8OLI5YuWw,_X4ZsIOG2EeS3L8OLI5YuWw
+Contexts: _xUmjgA-GEeWqyPO4VW22gA,_MWdYgIBGEeS4X6G9cD21hw,_j5GvUAUgEeWu0eW6YYFvkg,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_X-rQgH-QEeS4X6G9cD21hw,_Bfja0OG2EeS3L8OLI5YuWw,_X4ZsIOG2EeS3L8OLI5YuWw
 Element-Name: CreateNewSynchronousMessageAndOperationWithPaletteToolInSequenceDiagram
 Element-Type: testcase
 Element-Version: 3.0
