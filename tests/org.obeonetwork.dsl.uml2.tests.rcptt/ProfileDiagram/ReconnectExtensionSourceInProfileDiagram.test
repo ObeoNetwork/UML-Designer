@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _dwxbcOQsEeSOosy0KaL0vQ
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 6/10/15 2:22 PM
+Save-Time: 6/10/15 4:44 PM
 Tags: skipExecution
 Testcase-Type: ecl
 Verifications: _JneGsOQzEeSOosy0KaL0vQ
@@ -41,7 +41,6 @@ with [get-editor "Test Profile Diagram"] {
             + "Class" | get-target-connection 0 | get-handle SiriusConnectionEndPointHandle] {
             mouse-move 1 4 button1 -height 7 -width 7
             mouse-press 1 4 button1 -height 7 -width 7
-            mouse-move 3 4 -mask 524288 -height 7 -width 7
         }
          with [get-edit-part  -name "«Stereotype» \n"
         + "Stereotype2"]{
@@ -68,10 +67,9 @@ with [get-editor "Test Profile Diagram" | get-diagram -index 1 | get-edit-part -
 // Try to reconnect Source to a metaclass (invalid action)
 with [get-editor "Test Profile Diagram" | get-diagram -index 1 | get-edit-part -name "Test Profile Diagram"] {
     with [get-edit-part -name "«Metaclass»\n"
-        + "Class" | get-target-connection 1] {
+        + "Class" | get-target-connection 0] {
         mouse-move 347 139 button1 -height 192 -width 369
         mouse-press 347 139 button1 -height 192 -width 369
-        mouse-release 347 139 button1 524288 -height 192 -width 369
     }
      with [get-edit-part --name "«Metaclass»\n"
         + "Actor" | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
@@ -82,7 +80,7 @@ with [get-editor "Test Profile Diagram" | get-diagram -index 1 | get-edit-part -
 // Check Reconnection source is NOT done
 with [get-editor "Test Profile Diagram" | get-diagram -index 1 | get-edit-part -name "Test Profile Diagram" 
     | get-edit-part -name "«Metaclass»\n"
-    + "Class" | get-target-connection 1] {
+    + "Class" | get-target-connection 0] {
     get-property "element.sourceNode.name" | equals "«Stereotype» \n"
         + "Stereotype2" | verify-true
     get-property "element.targetNode.name" | equals "«Metaclass»\n"
