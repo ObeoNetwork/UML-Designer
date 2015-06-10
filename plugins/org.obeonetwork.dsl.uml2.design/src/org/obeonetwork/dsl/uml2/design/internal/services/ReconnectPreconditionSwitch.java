@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.design.internal.services;
 
+import org.eclipse.uml2.uml.Actor;
 import org.eclipse.uml2.uml.Association;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
@@ -20,11 +21,14 @@ import org.eclipse.uml2.uml.Extension;
 import org.eclipse.uml2.uml.Generalization;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.InterfaceRealization;
+import org.eclipse.uml2.uml.Manifestation;
 import org.eclipse.uml2.uml.NamedElement;
+import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.TemplateBinding;
 import org.eclipse.uml2.uml.TemplateableElement;
 import org.eclipse.uml2.uml.Type;
+import org.eclipse.uml2.uml.UseCase;
 import org.eclipse.uml2.uml.util.UMLSwitch;
 
 /**
@@ -79,6 +83,9 @@ public class ReconnectPreconditionSwitch extends UMLSwitch<Element> {
 		if (dependency instanceof InterfaceRealization) {
 			return null;
 		}
+		if (dependency instanceof Manifestation) {
+			return null;
+		}
 		if (newPointedElement instanceof NamedElement) {
 			return dependency;
 		}
@@ -109,7 +116,14 @@ public class ReconnectPreconditionSwitch extends UMLSwitch<Element> {
 	 */
 	@Override
 	public Element caseGeneralization(Generalization generalization) {
-		if (newPointedElement instanceof Classifier) {
+		// specific case for usecase diagram
+		if (newPointedElement instanceof Actor
+				&& newPointedElement.eClass().equals(oldPointedElement.eClass())
+				|| newPointedElement instanceof UseCase
+				&& newPointedElement.eClass().equals(oldPointedElement.eClass())) {
+			return generalization;
+		} else if (newPointedElement instanceof Classifier && !(newPointedElement instanceof Actor)
+				&& !(newPointedElement instanceof UseCase)) {
 			return generalization;
 		}
 		return null;
@@ -121,7 +135,7 @@ public class ReconnectPreconditionSwitch extends UMLSwitch<Element> {
 	@Override
 	public Element caseInterfaceRealization(InterfaceRealization interfaceRealization) {
 		if (RECONNECT_SOURCE == reconnectKind) {
-			if (newPointedElement instanceof Class) {
+			if (newPointedElement instanceof Class || newPointedElement instanceof Port) {
 				return interfaceRealization;
 			}
 		} else {
