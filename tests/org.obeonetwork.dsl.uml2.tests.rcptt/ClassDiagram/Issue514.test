@@ -1,13 +1,13 @@
 --- RCPTT testcase ---
 Format-Version: 1.0
 Contexts: _MWdYgIBGEeS4X6G9cD21hw,_j5GvUAUgEeWu0eW6YYFvkg,_he-_gIBIEeS4X6G9cD21hw,_bKL_sH-PEeS4X6G9cD21hw,_X-rQgH-QEeS4X6G9cD21hw,_p-v3gMyvEeSmqoI7c5i_uw,_vOHMMM1bEeSHkpcdtO-QuQ,_ogZrUM2NEeSHkpcdtO-QuQ,_KkniYPQAEeSjv4S5w5DgJg
-Element-Name: Issue514Test
+Element-Name: Issue514
 Element-Type: testcase
 Element-Version: 3.0
-External-Reference: 
+External-Reference: https://github.com/ObeoNetwork/UML-Designer/issues/514
 Id: _YYgKAfP1EeSjv4S5w5DgJg
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 5/6/15 5:11 PM
+Save-Time: 6/10/15 11:48 AM
 Testcase-Type: ecl
 Verifications: _Gq3XsPQCEeSjv4S5w5DgJg
 

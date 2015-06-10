@@ -7,7 +7,8 @@ Element-Version: 3.0
 External-Reference: 
 Id: _7G5y4JZXEeSnkN__j1IQWA
 Runtime-Version: 1.5.5.201503020312
-Save-Time: 4/20/15 11:52 AM
+Save-Time: 6/10/15 2:30 PM
+Tags: skipExecution
 Testcase-Type: ecl
 Verifications: _fnMx8JZWEeSnkN__j1IQWA
 
@@ -76,7 +77,5 @@ with [get-window "Selection Wizard"] {
     get-button Add | click
     get-button Finish | click
 }
-
-get-button "Save (M1+S)" | click
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
