@@ -22,7 +22,6 @@ import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.ModelChangeTrigger;
 import org.eclipse.sirius.business.internal.session.danalysis.DanglingRefRemovalTrigger;
-import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -93,12 +92,9 @@ public class ConfirmDeletionTrigger extends DanglingRefRemovalTrigger {
 		final Map<EObject, Object> detachedEObjects = Maps.newHashMap();
 		for (final Notification notification : notifications) {
 			if (notification.getNotifier() instanceof EObject) {
-				for (EObject root : getNotificationValues(notification)) {
+				for (final EObject root : getNotificationValues(notification)) {
 					// Add the element and all its contents to the
 					// detachedEObjects set only once.
-					if (root instanceof DSemanticDiagram) {
-						root = ((DSemanticDiagram)root).getTarget();
-					}
 					if (!detachedEObjects.containsKey(root) && root instanceof Element) {
 						detachedEObjects.put(root, notification);
 						final TreeIterator<EObject> iter = root.eAllContents();
