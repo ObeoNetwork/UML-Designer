@@ -11,7 +11,9 @@
 package org.obeonetwork.dsl.uml2.design.internal.triggers;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.Notification;
@@ -20,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.sirius.business.api.session.ModelChangeTrigger;
 import org.eclipse.sirius.business.internal.session.danalysis.DanglingRefRemovalTrigger;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
@@ -78,6 +81,27 @@ public class ConfirmDeletionTrigger extends DanglingRefRemovalTrigger {
 		super(domain, accessor, xRef);
 	}
 
+	private String areRepresentationsToDelete(Collection<Notification> notifications) {
+		final Set<String> diagramSet = new HashSet<String>();
+		for (final Notification notification : notifications) {
+			if (notification.getNotifier() instanceof EObject) {
+				for (final EObject root : getNotificationValues(notification)) {
+					if (root instanceof DSemanticDiagram) {
+						diagramSet.add(((DSemanticDiagram)root).getName());
+					}
+				}
+			}
+		}
+		String message = null;
+		if (diagramSet.size() > 0) {
+			message = "You are about to delete diagram(s): " + System.getProperty("line.separator"); //$NON-NLS-1$//$NON-NLS-2$
+			for (final String diagram : diagramSet) {
+				message = message + diagram + System.getProperty("line.separator"); //$NON-NLS-1$
+			}
+		}
+		return message;
+	}
+
 	/**
 	 * Return the EObjects which have been detached by the given notifications and their children.
 	 *
@@ -114,6 +138,16 @@ public class ConfirmDeletionTrigger extends DanglingRefRemovalTrigger {
 		if (!preferences.isDeletionConfirmationEnabled()) {
 			return Options.newNone();
 		}
+		// look if user want to delete representations
+		final String message = areRepresentationsToDelete(notifications);
+		if (message != null) {
+			if (!MessageDialog.openConfirm(null, "Delete Operation", message)) { //$NON-NLS-1$
+				// Cancel operation
+				throw new CancelOperationException("Deletion operation canceled"); //$NON-NLS-1$
+			}
+			return Options.newNone();
+		}
+
 		final Map<EObject, Object> allDetachedObjects = getDetachedEObjectsAndChildren(Iterables.filter(
 				notifications, IS_DETACHMENT));
 		if (allDetachedObjects.size() > 0) {
