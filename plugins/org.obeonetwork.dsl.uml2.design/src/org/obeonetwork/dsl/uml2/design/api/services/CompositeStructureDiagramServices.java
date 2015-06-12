@@ -54,6 +54,19 @@ import com.google.common.collect.Sets;
  */
 public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 	/**
+	 * Connect two elements with a connector. Enable features : From Interface to Interface From Property to
+	 * Property From Interface to Port (Delegation)
+	 *
+	 * @param sourceView
+	 *            the current source view
+	 * @param targetView
+	 *            the current target view
+	 */
+	public void createConnector(AbstractDNode sourceView, AbstractDNode targetView) {
+		ConnectorServices.INSTANCE.createConnector(sourceView, targetView);
+	}
+
+	/**
 	 * Create a new named connector.
 	 *
 	 * @param structuredClassifier
@@ -360,7 +373,8 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 	 *            the target view
 	 * @return true if the connector must be displayed.
 	 */
-	public boolean isValidConnector(org.eclipse.uml2.uml.Connector self, DNode sourceView, DNode targetView) {
+	public boolean isValidConnector(org.eclipse.uml2.uml.Connector self, AbstractDNode sourceView,
+			AbstractDNode targetView) {
 		if (sourceView != targetView && self.getEnds().size() > 0) {
 			self.getEnds().get(0);
 			self.getEnds().get(1);
@@ -402,6 +416,7 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 		}
 		return true;
 	}
+
 
 	/**
 	 * Check if the selected element is a valid port container.
