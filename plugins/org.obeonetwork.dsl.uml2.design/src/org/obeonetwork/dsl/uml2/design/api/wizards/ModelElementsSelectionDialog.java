@@ -23,6 +23,7 @@ import java.util.Set;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.provider.EcoreItemProviderAdapterFactory;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.edit.provider.ReflectiveItemProviderAdapterFactory;
 import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory;
@@ -901,8 +902,10 @@ public class ModelElementsSelectionDialog {
 		final Predicate<Object> validForCompositeDiagram = new Predicate<Object>() {
 
 			public boolean apply(Object input) {
-				return "Property".equals(((EObject)input).eClass().getName()) && container.equals(((EObject)input).eContainer()); //$NON-NLS-1$
-
+				if (input instanceof StructuredClassifier && container instanceof StructuredClassifier) {
+					return EcoreUtil.isAncestor(container, (EObject)input);
+				}
+				return input instanceof StructuredClassifier;
 			}
 		};
 		return validForCompositeDiagram;

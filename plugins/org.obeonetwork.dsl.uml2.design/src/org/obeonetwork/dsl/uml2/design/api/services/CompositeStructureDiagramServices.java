@@ -12,12 +12,15 @@ package org.obeonetwork.dsl.uml2.design.api.services;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.AbstractDNode;
@@ -25,12 +28,15 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.AggregationKind;
 import org.eclipse.uml2.uml.ConnectableElement;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.ConnectorEnd;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.InterfaceRealization;
@@ -41,6 +47,7 @@ import org.eclipse.uml2.uml.StructuredClassifier;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.Usage;
 import org.obeonetwork.dsl.uml2.design.internal.services.ConnectorServices;
+import org.obeonetwork.dsl.uml2.design.internal.services.DependencyServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.NodeInverseRefsServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.RelatedCompositeStructureElementsSwitch;
 
@@ -54,6 +61,20 @@ import com.google.common.collect.Sets;
  * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class CompositeStructureDiagramServices extends AbstractDiagramServices {
+
+	/**
+	 * Connect two elements with a connector. Enable features : From Interface to Interface From Property to
+	 * Property From Interface to Port (Delegation)
+	 *
+	 * @param sourceView
+	 *            the current source view
+	 * @param targetView
+	 *            the current target view
+	 */
+	public void createConnector(AbstractDNode sourceView, AbstractDNode targetView) {
+		ConnectorServices.INSTANCE.createConnector(sourceView, targetView);
+	}
+
 	/**
 	 * Create a new named connector.
 	 *
@@ -82,9 +103,21 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 	}
 
 	/**
-	 * Retrieve the cross references of the connector of all the UML elements displayed as node in a
-	 * Diagram. Note that a Property cross reference will lead to retrieve the cross references of this
-	 * property.
+	 * To avoid duplicate case Port to interface and Class/Component to interface we provide this service that
+	 * return only the required client to ui needs.
+	 *
+	 * @param dependency
+	 *            the dependency context
+	 * @return needed clients to handle is the diagram ui
+	 */
+	public List<NamedElement> getClient(Dependency dependency) {
+
+		return DependencyServices.INSTANCE.getClient(dependency);
+	}
+
+	/**
+	 * Retrieve the cross references of the connector of all the UML elements displayed as node in a Diagram.
+	 * Note that a Property cross reference will lead to retrieve the cross references of this property.
 	 *
 	 * @param diagram
 	 *            a diagram.
@@ -109,23 +142,63 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 		if (connectorEnds != null && connectorEnds.size() > 0) {
 			final ConnectorEnd connectorEnd = connectorEnds.get(0);
 			final ConnectableElement role = connectorEnd.getRole();
-			final ConnectorEnd connectorEnd2 = connectorEnds.get(1);
-			final ConnectableElement role2 = connectorEnd2.getRole();
 			// Interfaces layer
 			if (isInterfacesLayerActive(diagram.getOwnedDiagramElements().get(0))) {
-				if (role instanceof Port && ((Port)role).getProvideds().size() > 0) {
-					connectableElements.addAll(((Port)role).getProvideds());
-				} else if (role2 instanceof Port && ((Port)role2).getProvideds().size() > 0) {
-					connectableElements.addAll(((Port)role2).getProvideds());
+				if (connector.getClientDependencies().size() > 0) {
+					// check if connector is between interface.
+					for (final Dependency dependency : connector.getClientDependencies()) {
+						if (dependency instanceof InterfaceRealization || dependency instanceof Usage) {
+							final List<NamedElement> suppliers = dependency.getSuppliers();
+							for (final NamedElement supplier : suppliers) {
+								if (supplier instanceof Interface) {
+									connectableElements.add(supplier);
+								}
+							}
+						}
+					}
+				} else {
+					connectableElements.add(role);
 				}
-				if (connectableElements.size() != 0) {
-					return connectableElements;
+			} else {
+				// Interface layer is inactive provide connector between ports, parts, and components
+				/*
+				 * A connector could be connect to a port or to an interface. An interface could be connect to
+				 * a component throw a port or directly. In this case a "public" port was created but is not
+				 * displayed. We have to return the component
+				 */
+				/*
+				 * If several components have usage or interface realization link to the same interface in
+				 * this case the connector will have several ends.
+				 */
+				final List<NamedElement> listOfInterfaceRealization = new ArrayList<NamedElement>();
+				for (final Dependency dependency : connector.getClientDependencies()) {
+					if (dependency instanceof InterfaceRealization) {
+						for (final NamedElement elem : getClient(dependency)) {
+							if (elem instanceof Port || elem instanceof StructuredClassifier) {
+								listOfInterfaceRealization.add(elem);
+							}
+						}
+					}
 				}
-			}
-			// Default layer or no interfaces defined
-			connectableElements.add(role);
-		}
+				if (listOfInterfaceRealization.size() > 0) {
+					for (final ConnectorEnd locConnectorEnd : connectorEnds) {
+						if (locConnectorEnd.getRole() instanceof Port
+								&& locConnectorEnd.getRole().getType() instanceof StructuredClassifier) {
+							if (listOfInterfaceRealization
+									.contains(locConnectorEnd.getRole().getOwner())) {
+								connectableElements.add(locConnectorEnd.getRole().getOwner());
+							} else {
+								connectableElements.add(locConnectorEnd.getOwner());
+							}
+						} else if (listOfInterfaceRealization.contains(locConnectorEnd.getRole())) {
+							connectableElements.add(locConnectorEnd.getRole());
+						}
+					}
+				}
+				connectableElements.add(role);
 
+			}
+		}
 		return connectableElements;
 	}
 
@@ -142,26 +215,104 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 		final List<Element> connectableElements = new ArrayList<Element>();
 		final List<ConnectorEnd> connectorEnds = connector.getEnds();
 		if (connectorEnds != null && connectorEnds.size() > 0) {
-			final ConnectorEnd connectorEnd = connectorEnds.get(0);
-			final ConnectableElement role = connectorEnd.getRole();
 			final ConnectorEnd connectorEnd2 = connectorEnds.get(1);
 			final ConnectableElement role2 = connectorEnd2.getRole();
 			// Interfaces layer
 			if (isInterfacesLayerActive(diagram.getOwnedDiagramElements().get(0))) {
-				if (role instanceof Port && ((Port)role).getRequireds().size() > 0) {
-					connectableElements.addAll(((Port)role).getRequireds());
-				} else if (role2 instanceof Port && ((Port)role2).getRequireds().size() > 0) {
-					connectableElements.addAll(((Port)role2).getRequireds());
+				if (connector.getClientDependencies().size() > 0) {
+					// check if connector is between interface.
+					for (final Dependency dependency : connector.getClientDependencies()) {
+						if (dependency instanceof Usage || dependency instanceof InterfaceRealization) {
+							final List<NamedElement> suppliers = dependency.getSuppliers();
+							for (final NamedElement supplier : suppliers) {
+								if (supplier instanceof Interface) {
+									// result.add(supplier);
+									connectableElements.add(supplier);
+								}
+							}
+						}
+					}
+				} else {
+					connectableElements.add(role2);
 				}
-				if (connectableElements.size() != 0) {
-					return connectableElements;
+			} else {
+				// Interface layer is inactive provide connector between ports, parts, and components
+				/*
+				 * A connector could be connect to a port or to an interface. An interface could be connect to
+				 * a component throw a port or directly. In this case a "public" port was created but is not
+				 * displayed. We have to return the component
+				 */
+				/*
+				 * If several components have usage or interface realization link to the same interface in
+				 * this case the connector will have several ends.
+				 */
+		final List<NamedElement> listOfUsage = new ArrayList<NamedElement>();
+				for (final Dependency dependency : connector.getClientDependencies()) {
+					if (dependency instanceof Usage) {
+						for (final NamedElement elem : getClient(dependency)) {
+							if (elem instanceof Port || elem instanceof StructuredClassifier) {
+				listOfUsage.add(elem);
+							}
+						}
+					}
+				}
+		if (listOfUsage.size() > 0) {
+					for (final ConnectorEnd locConnectorEnd : connectorEnds) {
+						if (locConnectorEnd.getRole() instanceof Port
+								&& locConnectorEnd.getRole().getType() instanceof StructuredClassifier) {
+				if (listOfUsage.contains(locConnectorEnd.getRole().getOwner())) {
+								connectableElements.add(locConnectorEnd.getRole().getOwner());
+							} else {
+								connectableElements.add(locConnectorEnd.getOwner());
+							}
+			} else if (listOfUsage.contains(locConnectorEnd.getRole())) {
+							connectableElements.add(locConnectorEnd.getRole());
+						}
+					}
+				}
+				connectableElements.add(role2);
+
+			}
+		}
+		return connectableElements;
+	}
+
+	/**
+	 * Return a set of StructuredClassifier according to the parent diagram.
+	 *
+	 * @param diagram
+	 *            current diagram
+	 * @param element
+	 *            element
+	 * @param containerView
+	 *            container
+	 * @return Set of StructuredClassifier could be empty not null.
+	 */
+	public Set<EObject> getMappingForStructuredClassifier(DSemanticDiagram diagram, Element element,
+			DSemanticDecorator containerView) {
+		final Set<EObject> returnList = new HashSet<EObject>();
+		if (diagram.getTarget() instanceof StructuredClassifier) {
+			// this case is for diagram create under a StructuredClassifier
+			if (EcoreUtil.isAncestor(diagram.getTarget(), element) && element instanceof StructuredClassifier) {
+				// only children of the Structured Classifier could be displayed
+				final TreeIterator<Object> iterator = EcoreUtil.getAllContents(diagram.getTarget(), true);
+				while (iterator.hasNext()) {
+					final EObject object = (EObject)iterator.next();
+					if (object instanceof StructuredClassifier && containerView != diagram) {
+						returnList.add(object);
+					}
 				}
 			}
-			// Default layer or no interfaces defined
-			connectableElements.add(role2);
+		} else {
+			final TreeIterator<Object> iterator = UML2Util.getAllContents(element.getModel(), false, false);
+			while (iterator.hasNext()) {
+				final EObject object = (EObject)iterator.next();
+				if (object instanceof StructuredClassifier) {
+					returnList.add(object);
+				}
+			}
 		}
-
-		return connectableElements;
+		return returnList;
 	}
 
 	/**
@@ -374,8 +525,8 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 	 *            the target view
 	 * @return true if the connector must be displayed.
 	 */
-	public boolean isValidConnector(org.eclipse.uml2.uml.Connector self, DNode sourceView,
-			DNode targetView) {
+	public boolean isValidConnector(org.eclipse.uml2.uml.Connector self, AbstractDNode sourceView,
+			AbstractDNode targetView) {
 		if (sourceView != targetView && self.getEnds().size() > 0) {
 			self.getEnds().get(0);
 			self.getEnds().get(1);
@@ -418,6 +569,7 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 		}
 		return true;
 	}
+
 
 	/**
 	 * Check if the selected element is a valid port container.

@@ -36,6 +36,7 @@ import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.HideFilte
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.internal.helper.task.operations.CreateViewTask;
 import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeContainerSpec;
+import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeSpec;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.tool.CreateView;
@@ -534,6 +535,35 @@ public abstract class AbstractDiagramServices {
 	 * @return Just always return false
 	 */
 	public boolean inactive(Element element) {
+		return false;
+	}
+
+	/**
+	 * Check if a diagram is empty.
+	 *
+	 * @param diagram
+	 *            diagram to check
+	 * @return true if no element is present in diagram
+	 */
+	public boolean isDiagramEmpty(DDiagram diagram) {
+		final List<EObject> elements = new ArrayList<EObject>();
+		for (final EObject object : diagram.getDiagramElements()) {
+			if (!(object instanceof DSemanticDiagram)){
+				if (object instanceof DNodeSpec){
+					// ignore empty diagram image
+					if (!((DNodeSpec)object).getActualMapping().getName()
+							.equals("Empty Diagram")) { //$NON-NLS-1$
+						elements.add(object);
+					}
+				}else{
+					elements.add(object);
+				}
+			}
+		}
+
+		if (elements.size() == 0) {
+			return true;
+		}
 		return false;
 	}
 
