@@ -12,12 +12,15 @@ package org.obeonetwork.dsl.uml2.design.api.services;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.AbstractDNode;
@@ -25,8 +28,10 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.ConnectableElement;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.ConnectorEnd;
@@ -65,7 +70,6 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 	public void createConnector(AbstractDNode sourceView, AbstractDNode targetView) {
 		ConnectorServices.INSTANCE.createConnector(sourceView, targetView);
 	}
-
 	/**
 	 * Create a new named connector.
 	 *
@@ -81,6 +85,7 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 			NamedElement elem2) {
 		return ConnectorServices.INSTANCE.createConnector(structuredClassifier, elem1, elem2);
 	}
+
 	/**
 	 * Retrieve the cross references of the connector of all the UML elements displayed as node in a Diagram.
 	 * Note that a Property cross reference will lead to retrieve the cross references of this property.
@@ -161,6 +166,37 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 		}
 
 		return connectableElements;
+	}
+
+
+	/**
+	 * Return a set of StructuredClassifier according to the parent diagram.
+	 *
+	 * @param diagram
+	 * @return Set of StructuredClassifier could be empty not null.
+	 */
+	public Set<EObject> getMappingForStructuredClassifier(DSemanticDiagram diagram, Element element) {
+		final Set<EObject> returnList = new HashSet<EObject>();
+		if (diagram.getTarget() instanceof StructuredClassifier) {
+			if (EcoreUtil.isAncestor(diagram.getTarget(), element) && element instanceof StructuredClassifier) {
+				final TreeIterator<Object> iterator = EcoreUtil.getAllContents(diagram.getTarget(), true);
+				while (iterator.hasNext()) {
+					final EObject object = (EObject)iterator.next();
+					if (object instanceof StructuredClassifier) {
+						returnList.add(object);
+					}
+				}
+			}
+		} else {
+			final TreeIterator<Object> iterator = UML2Util.getAllContents(element.getModel(), false, false);
+			while (iterator.hasNext()) {
+				final EObject object = (EObject)iterator.next();
+				if (object instanceof StructuredClassifier) {
+					returnList.add(object);
+				}
+			}
+		}
+		return returnList;
 	}
 
 	/**
@@ -362,6 +398,7 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 				&& ((DNode)view).getTarget() instanceof Interface;
 	}
 
+
 	/**
 	 * Test if a given connector should be displayed from the given ports.
 	 *
@@ -417,7 +454,6 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 		return true;
 	}
 
-
 	/**
 	 * Check if the selected element is a valid port container.
 	 *
@@ -456,5 +492,4 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 		return target.getRequireds() != null && target.getRequireds().size() > 0
 				&& target.getRequireds().contains(source);
 	}
-
 }
