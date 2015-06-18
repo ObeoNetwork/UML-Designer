@@ -35,6 +35,7 @@ import org.eclipse.uml2.common.util.UML2Util;
 import org.eclipse.uml2.uml.ConnectableElement;
 import org.eclipse.uml2.uml.Connector;
 import org.eclipse.uml2.uml.ConnectorEnd;
+import org.eclipse.uml2.uml.Dependency;
 import org.eclipse.uml2.uml.Element;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.InterfaceRealization;
@@ -45,6 +46,7 @@ import org.eclipse.uml2.uml.StructuredClassifier;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.Usage;
 import org.obeonetwork.dsl.uml2.design.internal.services.ConnectorServices;
+import org.obeonetwork.dsl.uml2.design.internal.services.DependencyServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.NodeInverseRefsServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.RelatedCompositeStructureElementsSwitch;
 
@@ -84,6 +86,19 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 	public Connector createConnector(StructuredClassifier structuredClassifier, NamedElement elem1,
 			NamedElement elem2) {
 		return ConnectorServices.INSTANCE.createConnector(structuredClassifier, elem1, elem2);
+	}
+
+	/**
+	 * To avoid duplicate case Port to interface and Class/Component to interface we provide this service that
+	 * return only the required client to ui needs.
+	 *
+	 * @param dependency
+	 *            the dependency context
+	 * @return needed clients to handle is the diagram ui
+	 */
+	public List<NamedElement> getClient(Dependency dependency) {
+
+		return DependencyServices.INSTANCE.getClient(dependency);
 	}
 
 	/**

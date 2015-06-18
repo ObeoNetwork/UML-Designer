@@ -35,13 +35,10 @@ import org.eclipse.uml2.uml.StructuredClassifier;
 import org.eclipse.uml2.uml.Type;
 import org.eclipse.uml2.uml.Usage;
 import org.obeonetwork.dsl.uml2.design.internal.services.ConnectorServices;
+import org.obeonetwork.dsl.uml2.design.internal.services.DependencyServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.ElementServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.LogServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.NodeInverseRefsServices;
-
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * A set of services to handle the Component diagram.
@@ -237,46 +234,8 @@ public class ComponentDiagramServices extends AbstractDiagramServices {
 	 * @return needed clients to handle is the diagram ui
 	 */
 	public List<NamedElement> getClient(Dependency dependency) {
-		final List<NamedElement> result = new ArrayList<NamedElement>();
-		final List<NamedElement> clients = Lists.newArrayList(Iterables.filter(dependency.getClients(),
-				new Predicate<EObject>() {
-			public boolean apply(EObject input) {
-				return !(input instanceof Connector);
-			}
-		}));
-		if (clients.size() == 1) {
-			result.addAll(clients);
-			return result;
-		}
-		for (final NamedElement client : clients) {
-			if (client instanceof Property) {
-				final Property property = (Property)client;
-				if (property instanceof Port) {
-					final Port port = (Port)property;
-					if (port.getType() != null) {
-						if (port.eContainer() instanceof StructuredClassifier
-								&& port.getType().equals(port.eContainer())) {
-							// when the port type is the container type, add directly the container.
-							result.add(port.getType());
-						} else if (port.isConjugated()) {
-							// if conjugated add the port type and the port.
-							result.add(port);
-							result.add(port.getType());
-						} else {
-							// Else add the port
-							result.add(port);
-						}
-					} else {
-						// Else add the port
-						result.add(port);
-					}
-				} else {
-					// Else add the property
-					result.add(property);
-				}
-			}
-		}
-		return result;
+
+		return DependencyServices.INSTANCE.getClient(dependency);
 	}
 
 	/**
