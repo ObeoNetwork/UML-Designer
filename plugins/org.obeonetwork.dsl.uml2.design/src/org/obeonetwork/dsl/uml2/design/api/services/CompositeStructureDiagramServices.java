@@ -183,21 +183,23 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 		return connectableElements;
 	}
 
-
 	/**
 	 * Return a set of StructuredClassifier according to the parent diagram.
 	 *
 	 * @param diagram
 	 * @return Set of StructuredClassifier could be empty not null.
 	 */
-	public Set<EObject> getMappingForStructuredClassifier(DSemanticDiagram diagram, Element element) {
+	public Set<EObject> getMappingForStructuredClassifier(DSemanticDiagram diagram, Element element,
+			DSemanticDecorator containerView) {
 		final Set<EObject> returnList = new HashSet<EObject>();
 		if (diagram.getTarget() instanceof StructuredClassifier) {
+			// this case is for diagram create under a StructuredClassifier
 			if (EcoreUtil.isAncestor(diagram.getTarget(), element) && element instanceof StructuredClassifier) {
+				// only children of the Structured Classifier could be displayed
 				final TreeIterator<Object> iterator = EcoreUtil.getAllContents(diagram.getTarget(), true);
 				while (iterator.hasNext()) {
 					final EObject object = (EObject)iterator.next();
-					if (object instanceof StructuredClassifier) {
+					if (object instanceof StructuredClassifier && containerView != diagram) {
 						returnList.add(object);
 					}
 				}
