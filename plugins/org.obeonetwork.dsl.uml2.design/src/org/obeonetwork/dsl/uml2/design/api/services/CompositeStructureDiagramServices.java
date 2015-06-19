@@ -187,6 +187,11 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 	 * Return a set of StructuredClassifier according to the parent diagram.
 	 *
 	 * @param diagram
+	 *            current diagram
+	 * @param element
+	 *            element
+	 * @param containerView
+	 *            container
 	 * @return Set of StructuredClassifier could be empty not null.
 	 */
 	public Set<EObject> getMappingForStructuredClassifier(DSemanticDiagram diagram, Element element,
