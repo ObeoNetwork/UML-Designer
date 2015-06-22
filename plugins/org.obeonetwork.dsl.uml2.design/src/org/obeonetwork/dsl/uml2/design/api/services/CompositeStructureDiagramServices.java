@@ -60,6 +60,7 @@ import com.google.common.collect.Sets;
  * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class CompositeStructureDiagramServices extends AbstractDiagramServices {
+
 	/**
 	 * Connect two elements with a connector. Enable features : From Interface to Interface From Property to
 	 * Property From Interface to Port (Delegation)
@@ -72,6 +73,7 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 	public void createConnector(AbstractDNode sourceView, AbstractDNode targetView) {
 		ConnectorServices.INSTANCE.createConnector(sourceView, targetView);
 	}
+
 	/**
 	 * Create a new named connector.
 	 *
@@ -129,17 +131,32 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 			final ConnectorEnd connectorEnd = connectorEnds.get(0);
 			final ConnectableElement role = connectorEnd.getRole();
 			final ConnectorEnd connectorEnd2 = connectorEnds.get(1);
-			final ConnectableElement role2 = connectorEnd2.getRole();
+			connectorEnd2.getRole();
 			// Interfaces layer
 			if (isInterfacesLayerActive(diagram.getOwnedDiagramElements().get(0))) {
-				if (role instanceof Port && ((Port)role).getProvideds().size() > 0) {
-					connectableElements.addAll(((Port)role).getProvideds());
-				} else if (role2 instanceof Port && ((Port)role2).getProvideds().size() > 0) {
-					connectableElements.addAll(((Port)role2).getProvideds());
+				final List<Element> result = new ArrayList<Element>();
+				for (final Dependency dependency : connector.getClientDependencies()) {
+					if (dependency instanceof InterfaceRealization) {
+						final List<NamedElement> suppliers = dependency.getSuppliers();
+						for (final NamedElement supplier : suppliers) {
+							if (supplier instanceof Interface) {
+								result.add(supplier);
+							}
+						}
+					} else if (dependency instanceof Usage) {
+						final List<NamedElement> suppliers = dependency.getSuppliers();
+						for (final NamedElement supplier : suppliers) {
+							if (supplier instanceof Interface) {
+								result.add(supplier);
+							}
+						}
+					}
 				}
-				if (connectableElements.size() != 0) {
-					return connectableElements;
+				if (result.size()>0){
+					return result;
 				}
+				// Default layer or no interfaces defined
+				connectableElements.add(role);
 			}
 			// Default layer or no interfaces defined
 			connectableElements.add(role);
@@ -162,19 +179,37 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 		final List<ConnectorEnd> connectorEnds = connector.getEnds();
 		if (connectorEnds != null && connectorEnds.size() > 0) {
 			final ConnectorEnd connectorEnd = connectorEnds.get(0);
-			final ConnectableElement role = connectorEnd.getRole();
+			connectorEnd.getRole();
 			final ConnectorEnd connectorEnd2 = connectorEnds.get(1);
 			final ConnectableElement role2 = connectorEnd2.getRole();
 			// Interfaces layer
 			if (isInterfacesLayerActive(diagram.getOwnedDiagramElements().get(0))) {
-				if (role instanceof Port && ((Port)role).getRequireds().size() > 0) {
-					connectableElements.addAll(((Port)role).getRequireds());
-				} else if (role2 instanceof Port && ((Port)role2).getRequireds().size() > 0) {
-					connectableElements.addAll(((Port)role2).getRequireds());
+				final List<Element> result = new ArrayList<Element>();
+				for (final Dependency dependency : connector.getClientDependencies()) {
+					if (dependency instanceof Usage) {
+						final List<NamedElement> suppliers = dependency.getSuppliers();
+						for (final NamedElement supplier : suppliers) {
+							if (supplier instanceof Interface) {
+								result.add(supplier);
+							}
+						}
+					} else if (dependency instanceof InterfaceRealization) {
+						final List<NamedElement> suppliers = dependency.getSuppliers();
+						for (final NamedElement supplier : suppliers) {
+							if (supplier instanceof Interface) {
+								result.add(supplier);
+							}
+						}
+					}
+					if (result.size()>0){
+						return result;
+					}
+					// Default layer or no interfaces defined
+					connectableElements.add(role2);
 				}
-				if (connectableElements.size() != 0) {
-					return connectableElements;
-				}
+				// Default layer or no interfaces defined
+				connectableElements.add(role2);
+
 			}
 			// Default layer or no interfaces defined
 			connectableElements.add(role2);
@@ -420,7 +455,6 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 				&& ((DNode)view).getTarget() instanceof Interface;
 	}
 
-
 	/**
 	 * Test if a given connector should be displayed from the given ports.
 	 *
@@ -475,6 +509,7 @@ public class CompositeStructureDiagramServices extends AbstractDiagramServices {
 		}
 		return true;
 	}
+
 
 	/**
 	 * Check if the selected element is a valid port container.
