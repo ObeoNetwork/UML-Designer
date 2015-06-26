@@ -493,4 +493,10 @@ Contributors:
          </propertySection>
       </propertySections>
    </extension>
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="org.obeonetwork.dsl.uml2.properties.UmlEarlyStartup">
+      </startup>
+   </extension>
     </plugin>
