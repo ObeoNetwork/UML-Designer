@@ -493,4 +493,9 @@ Contributors:
          </propertySection>
       </propertySections>
    </extension>
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup>
+      </startup>
+   </extension>
     </plugin>
