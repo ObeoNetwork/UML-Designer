@@ -69,6 +69,7 @@ import org.eclipse.uml2.uml.PackageImport;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Property;
+import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.UseCase;
 import org.obeonetwork.dsl.uml2.design.UMLDesignerPlugin;
@@ -79,6 +80,7 @@ import org.obeonetwork.dsl.uml2.design.internal.services.ReconnectPreconditionSw
 import org.obeonetwork.dsl.uml2.design.internal.services.ReconnectSwitch;
 import org.obeonetwork.dsl.uml2.design.internal.services.RelatedServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.SemanticElementsSwitch;
+import org.obeonetwork.dsl.uml2.design.internal.services.StereotypeServices;
 import org.obeonetwork.dsl.uml2.design.internal.services.UIServices;
 import org.obeonetwork.dsl.uml2.design.internal.wizards.Messages;
 
@@ -255,6 +257,12 @@ public abstract class AbstractDiagramServices {
 		final Session session = SessionManager.INSTANCE.getSession(newContainer);
 		final Element oldContainer = semanticElement.getOwner();
 		if (moveSemanticElement && oldContainer != newContainer) {
+			// Manage stereotypes and profiles
+			final List<Stereotype> stereotypesToApply = Lists.newArrayList();
+			for (final Stereotype stereotype : semanticElement.getAppliedStereotypes()) {
+				stereotypesToApply.add(stereotype);
+			}
+
 			// Move the semantic element to the selected container
 			final TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
 			// The feature is set to null because the domain will deduce it
@@ -281,6 +289,13 @@ public abstract class AbstractDiagramServices {
 				if (cmd.canExecute()) {
 					cmd.execute();
 				}
+			}
+			// Apply stereotypes on dropped element and apply the necessary profiles automatically
+			StereotypeServices.INSTANCE.applyAllStereotypes(semanticElement, stereotypesToApply);
+
+			// Check if profile should be unapplied
+			for (final Stereotype stereotype : stereotypesToApply) {
+				StereotypeServices.INSTANCE.unapplyProfile(oldContainer, stereotype);
 			}
 		}
 

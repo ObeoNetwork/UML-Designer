@@ -68,6 +68,7 @@ public class SemanticElementsSwitch extends UMLSwitch<Object> {
 	@Override
 	public Object caseElement(Element object) {
 		semantics.addAll(object.getStereotypeApplications());
+		semantics.addAll(object.getAppliedStereotypes());
 		return super.caseElement(object);
 	}
 
