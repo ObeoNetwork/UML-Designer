@@ -22,8 +22,7 @@ location "http://download.eclipse.org/releases/mars/" {
 
 // Orbit
 location "http://download.eclipse.org/tools/orbit/downloads/drops/R20150519210750/repository/" {
-	com.google.guava [11.0.2,11.0.3)
-	org.junit [4,5)
+	com.google.guava [15.0.0,16.0.0)
 	org.hamcrest.core[1.3.0,2.0.0)
 	org.hamcrest.library[1.3.0,2.0.0)
 	org.apache.log4j[1.2.0,1.3.0)
