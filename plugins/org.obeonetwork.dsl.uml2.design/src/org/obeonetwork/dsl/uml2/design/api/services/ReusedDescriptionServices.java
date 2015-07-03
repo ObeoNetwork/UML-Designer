@@ -773,7 +773,8 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	 * @param packageableElementsToMove
 	 *            packageableElements to move
 	 */
-	public void moveDownPackageableElements(List<PackageableElement> packageableElementsToMove) {
+	public void moveDownPackageableElements(PackageableElement packageableElement,
+		List<PackageableElement> packageableElementsToMove) {
 
 		final MoveDownElementSwitch moveDownElementSwitch = new MoveDownElementSwitch();
 		final List<PackageableElement> packageableElementsInRightOrder = retrieveTheRightOrderForPackageableElement(packageableElementsToMove);
