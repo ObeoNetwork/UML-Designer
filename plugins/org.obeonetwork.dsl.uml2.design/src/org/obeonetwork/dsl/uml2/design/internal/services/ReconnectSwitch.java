@@ -15,6 +15,7 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.uml2.uml.Association;
+import org.eclipse.uml2.uml.BehavioredClassifier;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Classifier;
 import org.eclipse.uml2.uml.ClassifierTemplateParameter;
@@ -37,6 +38,7 @@ import org.eclipse.uml2.uml.NamedElement;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.PackageableElement;
 import org.eclipse.uml2.uml.ParameterableElement;
+import org.eclipse.uml2.uml.Port;
 import org.eclipse.uml2.uml.Property;
 import org.eclipse.uml2.uml.Stereotype;
 import org.eclipse.uml2.uml.TemplateBinding;
@@ -264,8 +266,34 @@ public class ReconnectSwitch extends UMLSwitch<Element> {
 	public Element caseInterfaceRealization(InterfaceRealization interfaceRealization) {
 		if (isReconnectable(interfaceRealization)) {
 			if (RECONNECT_SOURCE == reconnectKind) {
-				interfaceRealization.getClients().clear();
-				((Class)newPointedElement).getInterfaceRealizations().add(interfaceRealization);
+				if (newPointedElement instanceof Property) {
+					final Property property = (Property)newPointedElement;
+					boolean isPortWithValidType = false;
+					if (newPointedElement instanceof Port && ((Port)newPointedElement).isConjugated()) {
+						final Port port = (Port)property;
+						// create InterfaceRealization on the type
+						final Type type = port.getType();
+						if (type instanceof BehavioredClassifier) {
+							isPortWithValidType = true;
+							final BehavioredClassifier behavioredClassifier = (BehavioredClassifier)type;
+							interfaceRealization.getClients().clear();
+							interfaceRealization.setImplementingClassifier(behavioredClassifier);
+							interfaceRealization.getClients().add(port);
+						}
+					}
+					if (!isPortWithValidType) {
+						final EObject eContainer = newPointedElement.eContainer();
+						if (eContainer instanceof BehavioredClassifier) {
+							interfaceRealization.getClients().clear();
+							interfaceRealization.setImplementingClassifier((BehavioredClassifier)eContainer);
+							interfaceRealization.getClients().add(property);
+						}
+					}
+				} else if (newPointedElement instanceof BehavioredClassifier) {
+					interfaceRealization.getClients().clear();
+					interfaceRealization.setImplementingClassifier((BehavioredClassifier)newPointedElement);
+				}
+
 			} else {
 				interfaceRealization.getSuppliers().clear();
 				interfaceRealization.getSuppliers().add((Interface)newPointedElement);
@@ -336,6 +364,7 @@ public class ReconnectSwitch extends UMLSwitch<Element> {
 		}
 		return tmplBinding;
 	}
+
 
 	/**
 	 * The new TemplateableElement hasn't a template signature. We need to create with the same signature as
