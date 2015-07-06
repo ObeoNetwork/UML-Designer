@@ -26,9 +26,7 @@ Contributors:
   <name>UML Designer Product Parent</name>
 
   <properties>
-    <!--uml-site-local>file:${basedir}/../org.obeonetwork.dsl.uml2.update/target/repository</uml-site-local-->
-    <uml-site>http://marketplace.obeonetwork.com/updates/nightly/uml/repository</uml-site>
-    <!--sysml-site>http://marketplace.obeonetwork.com/updates/nightly/sysml/repository</sysml-site -->
+    <uml-site>file:${basedir}/../org.obeonetwork.dsl.uml2.update/target/repository</uml-site>
   </properties>
 
   <repositories>
@@ -37,11 +35,6 @@ Contributors:
       <layout>p2</layout>
       <url>${uml-site}</url>
     </repository>
-    <!-- repository>
-      <id>sysml</id>
-      <layout>p2</layout>
-      <url>${sysml-site}</url>
-    </repository -->
   </repositories>
 
   <modules>
