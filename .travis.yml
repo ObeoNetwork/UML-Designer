@@ -2,14 +2,66 @@ language: ruby
 env:
   global:
     secure: "KpzAMqnf5+K5PNmZbcoiaSjWS//sVkPlbjrpb662rrkQcZHslqnAVmy2h+OsSaA6pefhRpzrSmys9vu7Ou4ZPNOBgxlmePOUl+MfEXOe+9EO3G6GLooyvzzk/9rsOYuHMiM6hrJZsPWF2NyIibElqE/l6YKuTUH9XOWnVbGZ+oY="
+
 before_script:
 - gem install jekyll --version '= 1.5.1'
 - gem install RedCloth
+- sudo apt-get install -y s3cmd
+
 script:
+# Build documentation web site
 - cd documentation
 - jekyll build
-after_script:
-- ls
 - cd ../
+- rm -rf plugins/org.obeonetwork.dsl.uml2.design.doc/html
+- cp -r documentation/ plugins/org.obeonetwork.dsl.uml2.design.doc/html
+# Build uml designer
+- mvn clean verify
+# Build uml designer products
+- mvn clean package -f releng/org.obeonetwork.dsl.uml2.product.parent/pom.xml
+# Prepare local dirs to deploy: copy repository, bundles and tp
+- chmod a+x prepare-deploy-local-dir.sh
+- echo "$TRAVIS_TAG"
+# Prepare tag dir if it is a tagged build
+- if [[ "$TRAVIS_TAG" != "" ]]; then ./prepare-deploy-local-dir.sh $TRAVIS_BUILD_DIR/$TRAVIS_TAG; fi
+# Rename the zipped update site to nightly
+- mv packaging/org.obeonetwork.dsl.uml2.update/target/org.obeonetwork.dsl.uml2.update-*-SNAPSHOT.zip packaging/org.obeonetwork.dsl.uml2.update/target/org.obeonetwork.dsl.uml2.update-nightly.zip
+# Prepare the nightly dir
+- ./prepare-deploy-local-dir.sh $TRAVIS_BUILD_DIR/nightly
+
+after_script:
+# Promote web site on gh-pages
 - chmod a+x travis-promote.sh
 - ./travis-promote.sh
+
+deploy:
+# Deploy nightly on s3
+  - provider: s3
+    access_key_id: AKIAJBMGYTQSRYMJHQKQ
+    secret_access_key:
+      secure: e7nTVGAnegvoba6ucXEJwJnub8oeWSUVOShQ2XBpxr45/mIPLmF+HtTPN9JpZyG6hK2E5IqQ1bHndjPT9E7blXQKEHPYVzeJd7XBHyzEnS3LMMWeI/TxO73hxScereW/OHYalgTHJK6wynUyqvCf/uO7dqTvpd059Q9DILC6qTI=
+    bucket: uml-designer
+    local-dir: "${TRAVIS_BUILD_DIR}/nightly"
+    acl: public_read
+    skip_cleanup: true
+    region: eu-central-1
+    upload-dir: "nightly"
+    on:
+      branch: master 
+# Deploy release on s3
+  - provider: s3
+    access_key_id: AKIAJBMGYTQSRYMJHQKQ
+    secret_access_key:
+      secure: e7nTVGAnegvoba6ucXEJwJnub8oeWSUVOShQ2XBpxr45/mIPLmF+HtTPN9JpZyG6hK2E5IqQ1bHndjPT9E7blXQKEHPYVzeJd7XBHyzEnS3LMMWeI/TxO73hxScereW/OHYalgTHJK6wynUyqvCf/uO7dqTvpd059Q9DILC6qTI=
+    bucket: uml-designer
+    local-dir: "${TRAVIS_BUILD_DIR}/${TRAVIS_TAG}"
+    acl: public_read
+    skip_cleanup: true
+    region: eu-central-1
+    upload-dir: "release/${TRAVIS_TAG}"
+    on:
+      tags: true
+      all_branches: true
+      repo: ObeoNetwork/UML-Designer
+dd:
+  secure: SVW8lL8L5J7f/AgTRm69vYlOVx+U/grtQM52Ue/ZaHtNhZEuXbz2FmPhMzK3k7Adlqw2vbrzmBe78svbHvMLOuqWGPfcmYlBLeSDQPp8VI6KLpGt+y2UltoSdLKjnXyn6KCerXYm4FTdqxtZDuso52THGNC0Enn3kHv6d9tR4qw=
