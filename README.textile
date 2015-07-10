@@ -1,3 +1,5 @@
+This is a second test!
+
 h1. Welcome to UML Modeling by Obeo Network
 
 UML Designer provides a set of common diagrams to work with UML 2.5 models. The intent is to provide an easy way to make the transition from UML to domain specific modeling. This way users can continue to manipulate legacy UML models and start working with DSL. Users can even re-use the provided representations and work in a total transparence on both UML and DSL models at the same time.
