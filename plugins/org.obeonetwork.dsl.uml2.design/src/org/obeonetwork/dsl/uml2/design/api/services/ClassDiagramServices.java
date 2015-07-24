@@ -422,18 +422,6 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 		}
 		return associationClasses;
 	}
-
-	private boolean isArchetypesLayerActive(DDiagramElement diagramElement) {
-		final DDiagram diagram = diagramElement.getParentDiagram();
-		for (final Layer activeLayer : diagram.getActivatedLayers()) {
-			if ("Archetypes".equals(activeLayer.getName())) { //$NON-NLS-1$
-				return true;
-			}
-		}
-		return false;
-	}
-
-
 	private boolean isBroken(Association child) {
 		final Property target = AssociationServices.INSTANCE.getTarget(child);
 		final Property source = AssociationServices.INSTANCE.getSource(child);
@@ -442,33 +430,6 @@ public class ClassDiagramServices extends AbstractDiagramServices {
 				return false;
 			}
 		}
-		return true;
-	}
-
-	/**
-	 * Check if element class tool could be used on an element.
-	 *
-	 * @param diagramElement
-	 *            element under mouse
-	 * @return return true if tool could be used on element
-	 */
-	public boolean isClassCreationPrediction(DDiagramElement diagramElement) {
-		if (isTypeOfClass(diagramElement.getTarget()) && isArchetypesLayerActive(diagramElement)) {
-			return true;
-		} else if (diagramElement.getTarget() instanceof Package && !isArchetypesLayerActive(diagramElement)) {
-			return true;
-		}
-		return false;
-	}
-
-	/**
-	 * Check if class creation tool could be used.
-	 *
-	 * @param diagram
-	 *            element under mouse
-	 * @return always true for diagram
-	 */
-	public boolean isClassCreationPrediction(DSemanticDiagram diagram) {
 		return true;
 	}
 

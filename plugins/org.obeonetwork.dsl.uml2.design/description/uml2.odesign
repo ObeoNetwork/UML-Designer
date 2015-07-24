@@ -1911,7 +1911,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new class" name="Class" precondition="[containerView.isClassCreationPrediction()/]" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Class.gif">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" documentation="Create a new class" name="Class" containerMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']" iconPath="/org.eclipse.uml2.uml.edit/icons/full/obj16/Class.gif" extraMappings="//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Class%20Diagram']/@defaultLayer/@containerMappings[name='CD_Class']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
