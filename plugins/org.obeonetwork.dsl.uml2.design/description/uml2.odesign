@@ -1988,6 +1988,7 @@
                     <subModelOperations xsi:type="tool:If" conditionExpression="[aProperty.findTypeByName('String')&lt;>null/]">
                       <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="[self.findTypeByName('String')/]"/>
                     </subModelOperations>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="visibility" valueExpression="public"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
