@@ -4,6 +4,16 @@ Element-Name: CompositeStructureDiagram
 Element-Type: testsuite
 Element-Version: 2.0
 Id: _UOz0EJWrEeSFgY1mGxkuMg
-Runtime-Version: 2.0.0.201412081054
-Save-Time: 1/6/15 2:52 PM
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 7/24/15 11:53 AM
 
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8
+Content-Type: text/testcase
+Entry-Name: testcase-items
+
+_368sMDFCEeWkXJykQ54L0A	// kind: 'test' name: 'CreatePartWithPaletteToolInCompositeStructureDiagram' path: '../CompositeStructureDiagram/CreatePartWithPaletteToolInCompositeStructureDiagram.test'
+_US_boDFKEeWkXJykQ54L0A	// kind: 'test' name: 'CreateConnectorWithPaletteToolInCompositeStructureDiagram' path: '../CompositeStructureDiagram/CreateConnectorWithPaletteToolInCompositeStructureDiagram.test'
+_hWPsADFJEeWkXJykQ54L0A	// kind: 'test' name: 'CreatePortWithPaletteToolInCompositeStructureDiagram' path: '../CompositeStructureDiagram/CreatePortWithPaletteToolInCompositeStructureDiagram.test'
+_l0lCEBjrEeWZ6p0pDDYb5A	// kind: 'test' name: 'AddExisitngElementsWithPaletteToolInCompositeStructureDiagram' path: '../CompositeStructureDiagram/AddExisitngElementsWithPaletteToolInCompositeStructureDiagram.test'
+
+------=_testcase-items-62c497da-4241-31f4-811a-6b453a3ecff8--

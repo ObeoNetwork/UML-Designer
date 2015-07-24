@@ -1,0 +1,56 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: FillCompositStructureDiagram
+Element-Type: context
+Element-Version: 2.0
+Id: _dvrx0DFFEeWkXJykQ54L0A
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 7/23/15 4:41 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+with [get-editor "NewModel Composite Structure Diagram"] {
+    with [get-palette] {
+        with [get-palette-entry Add] {
+           mouse-move 31 5 button1 -height 23 -width 339
+            mouse-press 31 5 button1 -height 23 -width 339
+            mouse-release 31 5 button1 524288 -height 23 -width 339
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Composite Structure Diagram"] {
+        mouse-move 173 221 button1 -height 529 -width 588
+        mouse-press 173 221 button1 -height 529 -width 588
+        mouse-release 172 221 button1 524288 -height 524 -width 588
+    }
+}
+get-window "Add existing elements" | get-button OK | click
+with [get-editor "NewModel Composite Structure Diagram"] {
+    with [get-diagram -index 1 | get-edit-part -name "NewModel Composite Structure Diagram"] {
+        with [get-edit-part -name Component3 | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 4 133 -height 142 -width 311
+            get-edit-part -name "Component_31" | get-edit-part 
+                -className DNodeContainerViewNodeContainerCompartment2EditPart | mouse-move 46 92 -height 98 -width 118
+        }
+    }
+}
+// check context
+with [get-editor "NewModel Composite Structure Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Composite Structure Diagram"] {
+    get-edit-part -name Component2 | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+        | get-figure "1/0"
+    get-edit-part -name Component1 | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart 
+        | get-figure "1/0"
+    with [get-edit-part -name Component3 | get-edit-part 
+        -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        get-figure "1/0"
+        get-edit-part -name "Component_32" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartment2EditPart
+        get-edit-part -name "Component_31" | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartment2EditPart
+    }
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

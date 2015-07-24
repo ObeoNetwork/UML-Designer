@@ -1,0 +1,203 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: CompositeStructureDiagramAddPortAndEdges
+Element-Type: context
+Element-Version: 2.0
+Id: _uyuicDFNEeWkXJykQ54L0A
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 7/23/15 5:16 PM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+//Create ports on components
+with [get-editor "test Component Diagram"] {
+    with [get-palette] {
+        get-palette-entry "Typed Port" | mouse-move 49 0 -height 23 -width 339
+        with [get-palette-entry Port] {
+            mouse-move 49 13 button1 -height 23 -width 339
+            mouse-press 49 13 button1 -height 23 -width 339
+            mouse-release 49 13 button1 524288 -height 23 -width 339
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Component Diagram"] {
+         with [get-edit-part -name Component3 | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name "Component_31" 
+            | get-edit-part -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+            mouse-move 54 72 button1 -height 98 -width 118
+            mouse-press 54 72 button1 -height 98 -width 118
+            mouse-release 54 72 button1 524288 -height 98 -width 118
+        }
+    }
+
+    with [get-palette] {
+        with [get-palette-entry Port] {
+            mouse-move 60 8 button1 -height 23 -width 339
+            mouse-press 60 8 button1 -height 23 -width 339
+            mouse-release 60 8 button1 524288 -height 23 -width 339
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Component Diagram" | get-edit-part -name Component3 
+        | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part 
+        -name "Component_32" | get-edit-part -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+        mouse-move 73 79 button1 -height 98 -width 118
+        mouse-press 73 79 button1 -height 98 -width 118
+        mouse-release 73 79 button1 524288 -height 98 -width 118
+    }
+  
+    with [get-palette] {
+        get-palette-entry Component -index 1 | mouse-move 72 22 -height 23 -width 339
+        with [get-palette-entry Port] {
+            mouse-move 40 13 button1 -height 23 -width 339
+            mouse-press 40 13 button1 -height 23 -width 339
+            mouse-release 40 13 button1 524288 -height 23 -width 339
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Component Diagram"] {
+        with [get-edit-part -name Component1] {
+            with [get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+                mouse-move 60 62 button1 -height 98 -width 118
+                mouse-press 60 62 button1 -height 98 -width 118
+                mouse-release 60 62 button1 524288 -height 98 -width 118
+            }   
+        }
+    }
+   
+    with [get-palette] {
+        with [get-palette-entry Port] {
+            mouse-move 29 6 button1 -height 23 -width 339
+            mouse-press 29 6 button1 -height 23 -width 339
+            mouse-release 29 6 button1 524288 -height 23 -width 339
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Component Diagram" | get-edit-part -name Component2] {
+        with [get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 31 58 button1 -height 98 -width 118
+            mouse-press 31 58 button1 -height 98 -width 118
+            mouse-release 31 63 button1 524288 -height 100 -width 120          
+        }
+    }
+    
+    with [get-palette | get-palette-entry Port] {
+        mouse-move 41 4 button1 -height 23 -width 339
+        mouse-press 41 4 button1 -height 23 -width 339
+        mouse-release 41 4 button1 524288 -height 23 -width 339
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Component Diagram"] {
+        with [get-edit-part -name Component3 | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 211 118 button1 -height 149 -width 489
+            mouse-press 211 118 button1 -height 149 -width 489
+            mouse-release 211 118 button1 524288 -height 149 -width 489
+        }
+    }
+}
+//create edges between port and interface
+with [get-editor "test Component Diagram"] {
+    with [get-palette | get-palette-entry "Interface Realization"] {
+        mouse-move 36 10 button1 -height 23 -width 339
+        mouse-press 36 10 button1 -height 23 -width 339
+        mouse-release 36 10 button1 524288 -height 23 -width 339
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Component Diagram"] {
+        with [get-edit-part -name Component1 | get-edit-part -name port1 | get-edit-part 
+            -className BundledImageEditPart] {
+            mouse-move 15 9 button1 -height 20 -width 20
+            mouse-press 15 9 button1 -height 20 -width 20
+            mouse-release 15 9 button1 524288 -height 20 -width 20
+        }
+        with [get-edit-part -name Interface1 -index 1 | get-edit-part -className BundledImageEditPart] {
+            mouse-hover 12 8 -height 20 -width 20
+            mouse-move 12 8 button1 -height 20 -width 20
+            mouse-press 12 8 button1 -height 20 -width 20
+        }
+    }
+    
+    with [get-palette | get-palette-entry "Interface Realization"] {
+            mouse-move 35 11 button1 -height 23 -width 339
+            mouse-press 35 11 button1 -height 23 -width 339
+            mouse-release 35 11 button1 524288 -height 23 -width 339
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Component Diagram"] {
+        with [get-edit-part -name Component3 | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            with [get-edit-part -name "Component_31" | get-edit-part -name port1 | get-edit-part 
+                -className BundledImageEditPart] {
+                mouse-move 15 2 button1 -height 20 -width 20
+                mouse-press 15 2 button1 -height 20 -width 20
+                mouse-release 15 2 button1 524288 -height 20 -width 20
+            }
+            with [get-edit-part -name Interface1 -index 1 | get-edit-part -className BundledImageEditPart] {
+                mouse-move 11 13 button1 -height 20 -width 20
+                mouse-press 11 13 button1 -height 20 -width 20
+                mouse-release 11 13 button1 524288 -height 20 -width 20
+            }
+        }
+    }
+    
+    with [get-palette] {
+        with [get-palette-entry Usage] {
+            mouse-move 49 13 button1 -height 23 -width 339
+            mouse-press 49 13 button1 -height 23 -width 339
+            mouse-release 49 13 button1 524288 -height 23 -width 339
+        }
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Component Diagram" | get-edit-part -name Component3 
+        | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        with [get-edit-part -name "Component_32" | get-edit-part -name port1 | get-edit-part 
+            -className BundledImageEditPart] {
+            mouse-move 14 5 button1 -height 20 -width 20
+            mouse-press 14 5 button1 -height 20 -width 20
+            mouse-release 14 5 button1 524288 -height 20 -width 20
+        }
+        with [get-edit-part -name Interface1 | get-edit-part 
+            -className RotatableImageBasedOnFirstSourceConnectionEditPart] {
+            mouse-move 9 19 button1 -height 30 -width 30
+            mouse-press 9 19 button1 -height 30 -width 30
+            mouse-release 9 19 button1 524288 
+                -height 30 -width 30
+        }
+    }
+    
+    with [get-palette | get-palette-entry Usage] {
+        mouse-move 51 9 button1 -height 23 -width 339
+        mouse-press 51 9 button1 -height 23 -width 339
+        mouse-release 51 9 button1 524288 -height 23 -width 339
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Component Diagram"] {
+        with [get-edit-part -name Component2 | get-edit-part -name port1 | get-edit-part 
+            -className BundledImageEditPart] {
+            mouse-move 6 3 button1 -height 20 -width 20
+            mouse-press 6 3 button1 -height 20 -width 20
+            mouse-release 6 3 button1 524288 -height 20 -width 20
+        }
+        with [get-edit-part -name Interface1 | get-edit-part 
+            -className RotatableImageBasedOnFirstSourceConnectionEditPart] {
+            mouse-move 23 17 button1 -height 30 -width 30
+            mouse-press 23 17 button1 -height 30 -width 30
+            mouse-release 23 17 button1 524288 -height 30 -width 30
+        }
+    }
+}
+//check context
+with [get-editor "test Component Diagram" | get-diagram -index 1 | get-edit-part -name "test Component Diagram"] {
+    with [get-edit-part -name Component3] {
+        with [get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            get-edit-part -name "Component_31" | get-edit-part -name port1
+            get-edit-part -name "Component_32" | get-edit-part -name port1
+        }
+        get-edit-part -name port1
+    }
+    get-edit-part -name Component1 | get-edit-part -name port1
+    get-edit-part -name Component2 | get-edit-part -name port1
+    with [get-edit-part -name Component3 | get-edit-part 
+        -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        get-edit-part -name Interface1 -index 1 | get-target-connection 0
+        get-edit-part -name "Component_32" | get-edit-part -name port1 | get-target-connection 0
+    }
+    get-edit-part -name Interface1 -index 1 | get-target-connection 0
+    get-edit-part -name Component2 | get-edit-part -name port1 | get-target-connection 0
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

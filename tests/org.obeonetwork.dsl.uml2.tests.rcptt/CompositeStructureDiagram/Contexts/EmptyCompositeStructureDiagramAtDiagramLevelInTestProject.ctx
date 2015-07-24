@@ -1,0 +1,31 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: EmptyCompositeStructureDiagramAtDiagramLevelInTestProject
+Element-Type: context
+Element-Version: 2.0
+Id: _9zajUBj3EeWZ6p0pDDYb5A
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 7/23/15 5:16 PM
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+Create an empty composite diagram at root model level
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+// Create new diagram
+get-view "Model Explorer" | get-tree | select "test/model.uml/<Model> NewModel" 
+    | get-menu "New Representation/NewModel Composite Structure Diagram" | click
+get-window "New Representation" | get-button OK | click
+
+
+// Check empty image is displayed
+get-editor "NewModel Composite Structure Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Composite Structure Diagram" | get-edit-part -name "" | get-edit-part 
+    -className WorkspaceImageEditPart | get-figure "0/0" | get-property "isVisible()" | equals true | verify-true
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

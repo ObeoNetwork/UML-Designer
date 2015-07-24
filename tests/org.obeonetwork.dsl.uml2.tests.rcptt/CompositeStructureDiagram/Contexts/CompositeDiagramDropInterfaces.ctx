@@ -1,0 +1,61 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: CompositeDiagramDropInterfaces
+Element-Type: context
+Element-Version: 2.0
+Id: _PvtGIDHYEeWkXJykQ54L0A
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 7/24/15 9:47 AM
+
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+// drop interfaces from model explorer
+with [get-view "Model Explorer" | get-tree] {
+    select "test/model.uml/<Model> NewModel/<Interface> Interface1"
+    get-item "test/model.uml/<Model> NewModel/<Interface> Interface1" | drag-start 5 7
+}
+get-editor "NewModel Composite Structure Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Composite Structure Diagram" | drop 346 284 -detail move
+get-view "Model Explorer" | get-tree | drag-end -detail move
+
+
+with [get-view "Model Explorer" | get-tree] {
+    select "test/model.uml/<Model> NewModel/<Component> Component3/<Interface> Interface1"
+    get-item "test/model.uml/<Model> NewModel/<Component> Component3/<Interface> Interface1" | drag-start 7 1
+}
+get-editor "NewModel Composite Structure Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Composite Structure Diagram" | get-edit-part -name Component3 | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartmentEditPart | get-figure 1 | drop 167 132 -detail move
+get-view "Model Explorer" | get-tree | drag-end -detail move
+
+// Check context
+with [get-editor "NewModel Composite Structure Diagram" | get-diagram -index 1] {
+    key-type ESC
+}
+with [get-editor "NewModel Composite Structure Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Composite Structure Diagram" | get-edit-part -name Component3 | get-edit-part 
+    -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+    get-edit-part -name Interface1 -index 1 | get-edit-part 
+        -className RotatableImageBasedOnFirstSourceConnectionEditPart | get-figure 0 | get-property "isVisible()" 
+        | equals true | verify-true
+    get-edit-part -name Interface1 | get-edit-part -className BundledImageEditPart | get-property visible | equals true 
+        | verify-true
+    get-edit-part -name "Component_32" | get-edit-part -name port1 | get-target-connection 0 | get-property visible 
+        | equals true | verify-true
+    get-edit-part -name Interface1 | get-target-connection 0 | get-property visible | equals true | verify-true
+}
+with [get-editor "NewModel Composite Structure Diagram" | get-diagram -index 1 | get-edit-part 
+    -name "NewModel Composite Structure Diagram"] {
+    get-edit-part -name Interface1 | get-edit-part -className BundledImageEditPart | get-figure 0 
+        | get-property "isVisible()" | equals true | verify-true
+    get-edit-part -name Interface1 -index 1 | get-edit-part 
+        -className RotatableImageBasedOnFirstSourceConnectionEditPart | get-figure 0 | get-property "isVisible()" 
+        | equals true | verify-true
+    get-edit-part -name Interface1 | get-target-connection 0 | get-property visible | equals true | verify-true
+    get-edit-part -name Component2 | get-edit-part -name port1 | get-target-connection 0 | get-property visible 
+        | equals true | verify-true
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--

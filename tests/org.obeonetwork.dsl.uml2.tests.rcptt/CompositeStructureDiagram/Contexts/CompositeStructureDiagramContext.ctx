@@ -1,0 +1,210 @@
+--- RCPTT testcase ---
+Format-Version: 1.0
+Context-Type: org.eclipse.rcptt.ctx.ecl
+Element-Name: CompositeStructureDiagramContext
+Element-Type: context
+Element-Version: 2.0
+Id: _YoI18BjrEeWZ6p0pDDYb5A
+Runtime-Version: 1.5.5.201503020312
+Save-Time: 6/22/15 6:00 PM
+
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa
+Content-Type: text/plain
+Entry-Name: .description
+
+In a component diagram create
+- interface1
+- component1
+- component2
+- component3
+- component_31 under component3
+- component_32 under component3
+- interface1 under component3
+------=_.description-216f885c-d591-38ce-8ea2-e4f8cb4d6ffa--
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998
+Content-Type: text/ecl
+Entry-Name: .ecl.context
+
+// Create a component diagram
+get-view "Model Explorer" | get-tree | select "test/model.uml/<Model> NewModel" 
+    | get-menu "New Representation/NewModel Component Diagram" | click
+with [get-window "New Representation"] {
+    get-editbox -after [get-label "Representation name:"] | set-text "test Component Diagram"
+    get-button OK | click
+}
+
+// Create three components in the diagram
+with [get-editor "test Component Diagram"] {
+   // Create component1
+   with [get-palette | get-palette-entry Component -index 1] {
+        mouse-move 22 17 button1 -height 23 -width 125
+        mouse-press 22 17 button1 -height 23 -width 125
+        mouse-release 22 17 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Component Diagram"] {
+        mouse-move 137 174 button1 -height 338 -width 866
+        mouse-press 137 174 button1 -height 338 -width 866
+        mouse-release 137 174 button1 524288 -height 338 -width 866
+    }
+}
+
+// Create component2
+with [get-editor "test Component Diagram"] {
+    with [get-palette | get-palette-entry Component -index 1] {
+        mouse-move 39 10 button1 -height 23 -width 125
+        mouse-press 39 10 button1 -height 23 -width 125
+        mouse-release 39 10 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Component Diagram"] {
+        mouse-move 384 174 button1 -height 338 -width 866
+        mouse-press 384 174 button1 -height 338 -width 866
+        mouse-release 384 174 button1 524288 -height 338 -width 866
+    }
+}
+
+// Create component3
+with [get-editor "test Component Diagram"] {    
+    with [get-palette | get-palette-entry Component -index 1] {
+        mouse-move 78 19 button1 -height 23 -width 125
+        mouse-press 78 19 button1 -height 23 -width 125
+        mouse-release 78 19 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Component Diagram"] {
+        mouse-move 122 1 button1 -height 338 -width 866
+        mouse-press 122 1 button1 -height 338 -width 866
+        mouse-drag 612 149 button1 524288 -height 338 -width 866
+        mouse-release 612 149 button1 524288 -height 338 -width 866
+    }
+}
+
+// Create Component_31 under Component3
+with [get-editor "test Component Diagram"] {    
+    with [get-palette | get-palette-entry Component -index 1] {
+        mouse-move 38 15 button1 -height 23 -width 125
+        mouse-press 38 15 button1 -height 23 -width 125
+        mouse-release 38 15 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Component Diagram"] {
+        with [get-edit-part -name Component3 | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            mouse-move 40 46 button1 -height 144 -width 489
+            mouse-press 40 46 button1 -height 144 -width 489
+            mouse-release 40 46 button1 524288 -height 144 -width 489
+        }
+    }
+}
+with [get-editor "test Component Diagram"] {
+    with [get-diagram -index 1] {
+        with [get-edit-part -name "test Component Diagram"] {
+            with [get-edit-part -name Component3 | get-edit-part 
+                -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+                with [get-edit-part -name Component1 | get-edit-part 
+                    -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+                    mouse-move 67 27 button1 -height 98 -width 118
+                    mouse-press 67 27 button1 -height 98 -width 118
+                    mouse-release 67 27 button1 524288 -height 40 -width 220
+                }
+            }
+        }
+        key-type F2
+        get-edit-part -name "test Component Diagram" | get-edit-part -name Component3 | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name Component1 
+            | get-edit-part -className DNodeContainerName2EditPart | activate-direct-edit
+    }
+    with [get-editbox] {
+        key-type Right
+        set-text "Component_31"
+        key-type "NUMPAD_ENTER" "\\u000D"
+    }
+    with [get-diagram -index 1] {
+        commit-direct-edit
+    }
+}
+
+
+// Create Component_32 under Component3
+with [get-editor "test Component Diagram"] {    
+    with [get-palette | get-palette-entry Component -index 1] {
+        mouse-move 41 14 button1 -height 23 -width 125
+        mouse-press 41 14 button1 -height 23 -width 125
+        mouse-release 41 14 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Component Diagram" | get-edit-part -name Component3 
+        | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        mouse-move 331 49 button1 -height 144 -width 489
+        mouse-press 331 49 button1 -height 144 -width 489
+        mouse-release 331 49 button1 524288 -height 144 -width 489
+    }
+}
+with [get-editor "test Component Diagram"] {
+    with [get-diagram -index 1] {
+        with [get-edit-part -name "test Component Diagram" | get-edit-part -name Component3 | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            with [get-edit-part -name Component2 | get-edit-part 
+                -className DNodeContainerViewNodeContainerCompartment2EditPart] {
+                mouse-move 30 25 button1 -height 98 -width 118
+                mouse-press 30 25 button1 -height 98 -width 118
+                mouse-release 30 25 button1 524288 -height 98 -width 118
+            }
+        }
+        key-type F2
+        get-edit-part -name "test Component Diagram" | get-edit-part -name Component3 | get-edit-part 
+            -className DNodeContainerViewNodeContainerCompartmentEditPart | get-edit-part -name Component2 
+            | get-edit-part -className DNodeContainerName2EditPart | activate-direct-edit
+    }
+    with [get-editbox] {
+        key-type Right
+        set-text "Component_32"
+            key-type "NUMPAD_ENTER" "\\u000D"
+    }
+    with [get-diagram -index 1] {
+        commit-direct-edit
+    }
+}
+
+// Create Interface in component
+with [get-editor "test Component Diagram"] {
+    with [get-palette | get-palette-entry Interface] {
+        mouse-move 67 21 button1 -height 23 -width 125
+        mouse-press 67 21 button1 -height 23 -width 125
+        mouse-release 67 21 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Component Diagram" | get-edit-part -name Component3 
+        | get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+        mouse-move 241 38 button1 -height 144 -width 489
+        mouse-press 241 38 button1 -height 144 -width 489
+        mouse-release 241 38 button1 524288 -height 144 -width 489
+    }
+}
+
+//Create interface in diagram
+with [get-editor "test Component Diagram"] {
+    with [get-palette | get-palette-entry Interface] {
+        mouse-move 47 14 button1 -height 23 -width 125
+        mouse-press 47 14 button1 -height 23 -width 125
+        mouse-release 47 14 button1 524288 -height 23 -width 125
+    }
+    with [get-diagram -index 1 | get-edit-part -name "test Component Diagram"] {
+        mouse-move 309 272 button1 -height 338 -width 866
+        mouse-press 309 272 button1 -height 338 -width 866
+        mouse-release 309 272 button1 524288 -height 338 -width 866
+    }
+
+}
+get-button "Save All (M1+M2+S)" | click
+// Check context
+with [get-editor "test Component Diagram" | get-diagram -index 1 | get-edit-part -name "test Component Diagram"] {
+    get-edit-part -name Component1
+    get-edit-part -name Component2
+    with [get-edit-part -name Component3] {
+        with [get-edit-part -className DNodeContainerViewNodeContainerCompartmentEditPart] {
+            get-edit-part -name "Component_31"
+            get-edit-part -name "Component_32"
+            get-edit-part -name Interface1
+            get-edit-part -name Interface1 -index 1 
+        }
+    }
+    get-edit-part -name Interface1
+    get-edit-part -name Interface1 -index 1
+}
+------=_.ecl.context-718f04b4-ed39-33e3-af62-0995e4561998--
