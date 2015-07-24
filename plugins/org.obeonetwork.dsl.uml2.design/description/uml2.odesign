@@ -3936,7 +3936,7 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
-          <conditionnalStyles predicateExpression="aql:self.interrupts->size() > 0">
+          <conditionnalStyles predicateExpression="aql:self.interrupts->filter(EObject)->size() > 0">
             <style routingStyle="manhattan">
               <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
               <centerLabelStyleDescription labelExpression="." iconPath="/org.obeonetwork.dsl.uml2.design/icons/InterruptibleEdgeIcon.png">
