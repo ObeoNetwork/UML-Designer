@@ -2011,6 +2011,7 @@
                     <subModelOperations xsi:type="tool:If" conditionExpression="aql:aProperty.findTypeByName('String') &lt;> null">
                       <subModelOperations xsi:type="tool:SetValue" featureName="type" valueExpression="aql:self.findTypeByName('String')"/>
                     </subModelOperations>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="visibility" valueExpression="public"/>
                   </subModelOperations>
                 </firstModelOperations>
               </initialOperation>
