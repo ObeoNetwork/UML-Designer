@@ -32,6 +32,38 @@ import com.google.common.collect.Iterables;
  */
 public class UseCaseDiagramServices extends AbstractDiagramServices {
 	/**
+	 * Human Actor.
+	 */
+	public static final String HUMAN = "Human"; //$NON-NLS-1$
+
+	/**
+	 * Set as a Human.
+	 *
+	 * @param actor
+	 *            Actor to set
+	 */
+	public void addActorHumanKeyword(Actor actor) {
+		addActorKeyword(actor, UseCaseDiagramServices.HUMAN);
+	}
+
+	/**
+	 * Add an actor keyword.
+	 *
+	 * @param actor
+	 *            Actor
+	 * @param type
+	 *            Keyword
+	 */
+	private void addActorKeyword(Actor actor, String type) {
+		clearActorKeywords(actor);
+		actor.addKeyword(type);
+	}
+
+	private void clearActorKeywords(Actor actor) {
+		actor.removeKeyword(HUMAN);
+	}
+
+	/**
 	 * Retrieve the cross references of the association of all the UML elements displayed as node in a
 	 * Diagram. Note that a Property cross reference will lead to retrieve the cross references of this
 	 * property.
@@ -102,6 +134,25 @@ public class UseCaseDiagramServices extends AbstractDiagramServices {
 		return RelatedServices.INSTANCE.getRelated(cur);
 	}
 
+	private boolean hasKeyword(EObject actor, String keyword) {
+		if (actor instanceof Actor) {
+			return ((Actor)actor).getKeywords().contains(keyword);
+		}
+		return false;
+	}
+
+	/**
+	 * Check if an object is an Actor.
+	 *
+	 * @param actor
+	 *            actor
+	 * @return True if element is an actor
+	 */
+	public boolean isActor(EObject actor) {
+
+		return actor instanceof Actor;
+	}
+
 	/**
 	 * Check if an element is a classifier.
 	 *
@@ -111,5 +162,51 @@ public class UseCaseDiagramServices extends AbstractDiagramServices {
 	 */
 	public boolean isClassifier(EObject element) {
 		return element instanceof Classifier;
+	}
+
+	/**
+	 * Check if an actor is a human.
+	 *
+	 * @param actor
+	 *            actor
+	 * @return True if element is a human
+	 */
+	public boolean isHumanActor(EObject actor) {
+		return hasKeyword(actor, HUMAN);
+	}
+
+	/**
+	 * Check if an object is not an Actor.
+	 *
+	 * @param actor
+	 *            actor
+	 * @return True if element is not an actor
+	 */
+	public boolean isNotAnActor(EObject actor) {
+
+		return !isActor(actor);
+	}
+
+	/**
+	 * Check if an actor is not a human.
+	 *
+	 * @param actor
+	 *            actor
+	 * @return True if element is not a human
+	 */
+	public boolean isNotHumanActor(EObject actor) {
+		return !isHumanActor(actor);
+	}
+
+	/**
+	 * Set as a non Human.
+	 *
+	 * @param actor
+	 *            Actor to set
+	 */
+	public void removeActorHumanKeyword(Actor actor) {
+		if (isHumanActor(actor)) {
+			clearActorKeywords(actor);
+		}
 	}
 }
