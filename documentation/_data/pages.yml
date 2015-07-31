@@ -60,6 +60,10 @@
     file: developer-guide/contribute
   - title: Build
     file: developer-guide/build
+  - title: Test
+    file: developer-guide/build
+  - title: Release
+    file: developer-guide/release
   - title: Documentation
     file: developer-guide/documentation
 

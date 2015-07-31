@@ -7,12 +7,7 @@ relativePath: ..
 
 h1. Building UML Designer update-site
 
-*"SysML Designer":https://github.com/ObeoNetwork/SysML-Designer* extends *UML Designer* and deals with systems engineering applications.
 UML Designer and SysML Designer are both provided as Eclipse plugins but only UML Designer is included in the *UML Designer Product*.
-
-The schema below explains dependencies:
-
-!{{page.relativePath}}/images/UmlProductDependencies.png!
 
 You’ll need Apache Maven 3 to be installed on your computer and you must have "cloned the UML Designer github repository":{{page.relativePath}}/developer-guide/contribute.html#Get_source_code on your computer.
 To launch the build, go to the root of the git repository and type :
@@ -32,11 +27,11 @@ Launching the test is not harder, just type :
 Maven will launch the tests and give you the result. 
 Code coverage is captured thanks to Jacoco.
 
-This command build:
+This command builds:
 
 !{{page.relativePath}}/images/UMLDesignerBuildPlugins.png!
 
-h1. Build a product
+h1. Building UML Designer product
 
 We have a dedicated command for the product.
 
@@ -49,12 +44,9 @@ This command build:
 
 !{{page.relativePath}}/images/UMLDesignerBuildProduct.png!
 
-We can specify the previous UML Designer update-site:
-@... -Duml-site=file:./packaging/org.obeonetwork.dsl.uml2.update/target/repository@
-
 h1. Maven Tycho
 
-Technically, we use Maven Tycho (0.19.0) to build these Eclipse artifacts.
+Technically, we use Maven Tycho to build these Eclipse artifacts.
 
 To reuse a maximum of properties and maven configurations, we have a hierarchy of parents.
 All UML designer plugins/features/update-sites refers to a dedicated parent:
@@ -85,8 +77,40 @@ in org.obeonetwork.dsl.uml2.parent and add a `pom.xml` in your plugin with the f
 
 h1. Continuous integration
 
-Four continuous integration builds exist to build UML/SysML Designer.
-* The "Travis build":https://travis-ci.org/ObeoNetwork/UML-Designer/ is used to generate the documentation and update the gh-pages.
-* The "Hudson build UML master":https://build.obeonetwork.com/hudson/job/UML—master/ is in charge of the creation of the UML Designer Update site.
-* The "Hudson build UML product master":https://build.obeonetwork.com/hudson/job/UMLProduct--master/ is in charge of the creation of the UML Designer Product.
-* The "Hudson build SysML master":https://build.obeonetwork.com/hudson/job/SysML--master/ is in charge of the creation of the SysML Designer Update site.
+Two continuous integration builds exist to build UML Designer. These builds run on "Travis-ci":https://travis-ci.org/.
+
+h2(#Build). UML-Designer build
+
+h3. Building branches
+
+This Travis "build": https://travis-ci.org/ObeoNetwork/UML-Designer/ is used to :
+* generate the documentation, 
+* update the gh-pages (umldesigner.org web site), 
+* create the UML Designer update site and products. 
+
+This build deploys automatically the build artifacts on "S3":http://aws.amazon.com/fr/s3/ : "http://umldesigner.s3.amazonaws.com":http://umldesigner.s3.amazonaws.co
+
+The build is configured thanks to the "@.travis.yml@":https://github.com/ObeoNetwork/UML-Designer/blob/master/.travis.yml file.
+
+Each time a commit is integrated on the github repository a nightly build is executed and the resulting update-site and products are deployed on s3:
+http://s3.amazonaws.com/umldesigner/nightly/$BRANCH_NAME.
+
+The build deploys in S3 @umldesigner@ bucket:
+* the @repository@ folder: the UML Designer nightly update site.
+* the @org.obeonetwork.dsl.uml2.update-nightly.zip@ : a zip of the nightly update site.
+* the @bundles@ folder: the nightly products.
+* the @umldesigner-xxx.tpd@: the target platform used to build the update site and products.
+
+The deploy phase is active only for specific branches: "@master@":https://github.com/ObeoNetwork/UML-Designer/tree/master, "@5.0.x@":https://github.com/ObeoNetwork/UML-Designer/tree/5.0.x.
+
+The "umldesigner.org":http://www.umldesigner.org web site is also updated and deployed thanks to this build. For more details about the web site have a look to the "documentation section":{{page.relativePath}}/developer-guide/documentation.html of the developer guide.
+
+h3. Pull-requests
+
+When a pull request is sent, a build is automatically launched. In this case, the deploy phase and the web site updates phases are not performed. The pull request build results is directly "visible in the github interface":http://blog.travis-ci.com/2012-09-04-pull-requests-just-got-even-more-awesome/.
+
+h2(#UI_Tests_build). UML-Designer-UI-Tests build
+
+The Travis "UI tests build": https://travis-ci.org/ObeoNetwork/UML-Designer-UI-Tests is used to launch the UI tests.
+This build deploys the tests results on S3: 
+http://s3.amazonaws.com/umldesigner/nightly/$BRANCH_NAME/test-results/$JOB_NUMBER.
