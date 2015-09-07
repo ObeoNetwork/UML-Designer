@@ -148,6 +148,10 @@
         name="org.eclipse.rcptt.tesla.ecl.feature.group"/>
     <requirement
         name="org.eclipse.rcptt.tesla.feature.group"/>
+    <requirement
+        name="org.eclipse.mylyn.wikitext_feature.feature.group"/>
+    <requirement
+        name="org.eclipse.emf.eef.sdk-feature.feature.group"/>
     <repository
         url="http://mbarbero.github.io/fr.obeo.releng.targetplatform/p2/"/>
     <repository
