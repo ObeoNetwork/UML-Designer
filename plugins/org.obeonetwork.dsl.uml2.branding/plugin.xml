@@ -49,10 +49,6 @@
             pattern="org\.eclipse\.emf\.mapping\.ecore2xml\.ui/.*">
       </activityPatternBinding>
       <!-- Validation -->
-      <activityPatternBinding
-            activityId="org.eclipse.emf.activity"
-            pattern="org\.eclipse\.emf\.validation\.ui/.*">
-      </activityPatternBinding>      
 
       <!-- Reflective Editors -->
       <activity
