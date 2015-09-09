@@ -1,5 +1,5 @@
 ---
-layout: article-with-sidebar
+layout: article
 title: Create a representation
 subtitle: Tutorial
 category: Tutorials
@@ -8,7 +8,7 @@ relativePath: ..
 
 Learn how to create your first UML diagram. This tutorial will guide you through the creation of an UML diagram.
 
-h1. Create a class diagram
+h2. Create a class diagram
 
 To create your first diagram:
 * In the 'Model Explorer' view, select an UML project. If no project exists have a look to the corresponding cheatsheet in the Welcome page > Getting Started > First steps > Create a new project.
@@ -16,10 +16,10 @@ To create your first diagram:
 * In the wizard, expand 'UML Structural Modeling', select 'Class Diagram' and then 'Next'.
 * On the next page, select 'Model' as semantic element to which the diagram will be attached.  In our example the new class diagram will be attached to the root element of the UML model.
 
-h1. Set the name of the representation
+h2. Set the name of the representation
 
 Give a name to the new class diagram.
 
-h1. New class diagram is opened
+h2. New class diagram is opened
 
 A new class diagram editor is opened, you can use the tools in the palette to create new elements. Have a look to the UML Designer User Guide for more detailed information on tools.

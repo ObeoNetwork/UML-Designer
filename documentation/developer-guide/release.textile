@@ -7,7 +7,7 @@ relativePath: ..
 
 This table lists all the steps to follow to release a new UML Designer version.
 
-h1. Prepare/validate nightly
+h2. Prepare/validate nightly
 
 |Action                                                                    |         v6.0.0|
 |"Release 0":{{ page.relativePath }}/developer-guide/release.html#release0 |    In progress|
@@ -30,13 +30,13 @@ h1. Deploy on umldesigner.org
 |"Release 13":{{ page.relativePath }}/developer-guide/release.html#release13 |    KO|
 |"Release 14":{{ page.relativePath }}/developer-guide/release.html#release14 |    KO|
 
-h1. Deploy on Eclipse marketplace
+h2. Deploy on Eclipse marketplace
 
 |Action                                                                      |v6.0.0|
 |"Release 15":{{ page.relativePath }}/developer-guide/release.html#release15 |    KO|
 |"Release 16":{{ page.relativePath }}/developer-guide/release.html#release16 |    KO| 
 
-h1. Deploy on the obeonetwork
+h2. Deploy on the obeonetwork
 
 |Action                                                                      |v6.0.0|
 |"Release 17":{{ page.relativePath }}/developer-guide/release.html#release17 |    KO|
@@ -46,7 +46,7 @@ h1. Deploy on the obeonetwork
 |"Release 21":{{ page.relativePath }}/developer-guide/release.html#release21 |    KO| 
 |"Release 22":{{ page.relativePath }}/developer-guide/release.html#release22 |    KO|
 
-h1. Spread the world
+h2. Spread the world
 
 |Action                                                                      |v6.0.0|
 |"Release 23":{{ page.relativePath }}/developer-guide/release.html#release23 |    KO|
@@ -56,56 +56,56 @@ h1. Spread the world
 |"Release 27":{{ page.relativePath }}/developer-guide/release.html#release27 |    KO|
 |"Release 28":{{ page.relativePath }}/developer-guide/release.html#release28 |    KO|
 
-h1. Actions details
+h2. Actions details
 
-h2(#release0). Release 0
+h3(#release0). Release 0
 
 Update the "release checklist" page:{{ page.relativePath }}.
 
-h2(#release1). Release 1
+h3(#release1). Release 1
 
 Bump plugins version numbers in git: In UML Designer all the org.obeonetwork.dsl.uml2.xxx plugins are synchronized to the same version.
 
-h2(#release2). Release 2
+h3(#release2). Release 2
 
 Bump UML product version: 
 * "sketcher.product":https://github.com/ObeoNetwork/UML-Designer/blob/master/packaging/org.obeonetwork.dsl.uml2.product/sketcher.product
 * "branding/plugin.xml":https://github.com/ObeoNetwork/UML-Designer/blob/master/plugins/org.obeonetwork.dsl.uml2.branding/plugin.xml the @aboutText@.
 * and for _major_ version update also the "splash screen (bmp, png)":https://github.com/ObeoNetwork/UML-Designer/blob/master/plugins/org.obeonetwork.dsl.uml2.branding/
 
-h2(#release3). Release 3
+h3(#release3). Release 3
 
 Prepare the draft release notes in github: "https://github.com/ObeoNetwork/UML-Designer/releases":https://github.com/ObeoNetwork/UML-Designer/releases
 
-h2(#release4). Release 4
+h3(#release4). Release 4
 
 Update umldesigner.org "download":http://www.umldesigner.org/download/ page to add the new release.
 To do this, update in the documentation the "download page":https://github.com/ObeoNetwork/UML-Designer/blob/master/documentation/download/index.textile.
 
-h2(#release1). Release 5
+h3(#release1). Release 5
 
 Build and deploy the UML Designer nightly update site and products: The "build":https://travis-ci.org/ObeoNetwork/UML-Designer/ is automatically launched when a commit is pushed on the "github repository":https://github.com/ObeoNetwork/UML-Designer.
 The nightly build results are available on S3: "http://umldesigner.s3.amazonaws.com/nightly/master/bundles/UMLDesigner-linux.gtk.x86_64.zip":http://umldesigner.s3.amazonaws.com/nightly/master/bundles/UMLDesigner-linux.gtk.x86_64.zip
 For more details about the build, have a look to the "build section":{{ page.relativePath }}/developer-guide/build.html of the developer guide.
 
-h2(#release6). Release 6
+h3(#release6). Release 6
 
 Validate the unit tests: Check the results of the unit test in the nightly build: "https://travis-ci.org/ObeoNetwork/UML-Designer/builds":https://travis-ci.org/ObeoNetwork/UML-Designer/builds.
 
-h2(#release7). Release 7
+h3(#release7). Release 7
 
 Validate the product: Relaunch the "UI tests build":https://travis-ci.org/ObeoNetwork/UML-Designer-UI-Tests for the branch which must be validated. A _re-launch_ button is available on the build/job page. The tests results are available on S3: https://s3-eu-west-1.amazonaws.com/umldesigner/nightly/${BRANCH_NAME}/test-results/${JOB_NUMBER}/rcpttTests.html:https://s3-eu-west-1.amazonaws.com/umldesigner/nightly/master/test-results/28.13/rcpttTests.html
 
-h2(#release8). Release 8
+h3(#release8). Release 8
 
 Test install from jee (using nightly build update-site) : Download an Eclipse JEE and try to install the nightly build update-site.
 
-h2(#release9). Release 9
+h3(#release9). Release 9
 
 Tag UML Designer version in git : 
 @git tag x.x.x@ 
 
-h2(#release10). Release 10
+h3(#release10). Release 10
 
 "Release":https://github.com/ObeoNetwork/UML-Designer/releases the version in github.
 Build and deploy the UML Designer released update site and products: The "build":https://travis-ci.org/ObeoNetwork/UML-Designer/ is automatically launched when a tag is pushed on the "github repository":https://github.com/ObeoNetwork/UML-Designer.
@@ -114,79 +114,79 @@ Build and deploy the UML Designer released update site and products: The "build"
 The build results are available on S3: http://umldesigner.s3.amazonaws.com/x.x.x/
 For more details about the build, have a look to the "build section":{{ page.relativePath }}/developer-guide/build.html of the developer guide.
 
-h2(#release11). Release 11
+h3(#release11). Release 11
 
 Test check for updates from previous version. From a previous installed version of the UML Designer product, try to use check for updates to upadte to the new released version.
 
-h2(#release12). Release 12
+h3(#release12). Release 12
 
 Close all the related "issues":https://github.com/ObeoNetwork/UML-Designer/issues in github.
 
-h2(#release13). Release 13
+h3(#release13). Release 13
 
 Close all the related "milestones":https://github.com/ObeoNetwork/UML-Designer/milestones in github.
 
-h2(#release14). Release 14
+h3(#release14). Release 14
 
 Test install from umldesigner.org "download":http://www.umldesigner.org/download/ page :
 * Install product
 * Install update-site
 
-h2(#release22). Release 15
+h3(#release22). Release 15
 
 "Download":http://www.umldesigner.org/download/ the update site zip and test to install it locally.
 
-h2(#release15). Release 16
+h3(#release15). Release 16
 
 Update UML Designer description on the "Eclipse marketplace:http://marketplace.eclipse.org"
 
-h2(#release16). Release 17
+h3(#release16). Release 17
 
 Test install from "Eclipse marketplace":https://marketplace.eclipse.org/content/uml-designer-eclipse-luna-version.
 
-h2(#release17). Release 18
+h3(#release17). Release 18
 
 Modify aggregation network :
 @git repo https://github.com/ObeoNetwork/Aggregation sirius_2_0 branch@
 
-h2(#release18). Release 19
+h3(#release18). Release 19
 
 Launch aggregation build : https://travis-ci.org/ObeoNetwork/Aggregation
 Just push the updates on the repo. The build is launched automatically.
 
-h2(#release19). Release 20
+h3(#release19). Release 20
 
 Synchronize the "obeonetwork marketplace":http://marketplace.obeonetwork.com/admin
 
-h2(#release20). Release 21
+h3(#release20). Release 21
 
 Synchronize the "obeonetwork jira":http://marketplace.obeonetwork.com/admin
 
-h2(#release21). Release 22
+h3(#release21). Release 22
 
 Test install from "Obeo marketplace":http://marketplace.obeonetwork.com/module/uml/download using the update site.
 
-h2(#release23). Release 23
+h3(#release23). Release 23
 
 Send mail to Obeo.
 
-h2(#release24). Release 24
+h3(#release24). Release 24
 
 Post message on "obeonetwork UML Designer forum":http://www.obeonetwork.com/group/uml-designer/forum/.
 
-h2(#release25). Release 25
+h3(#release25). Release 25
 
 Post message on "G+":https://plus.google.com.
 
-h2(#release26). Release 26
+h3(#release26). Release 26
 
 Post message on "twitter":https://twitter.com/.
 
-h2(#release27). Release 27
+h3(#release27). Release 27
 
 Create "google analytics":https://www.google.com/analytics annotation for the web site and the usage plugin.
 
-h2(#release28). Release 28
+h3(#release28). Release 28
 
 Update wikipedia pages: 
 * "Comparaison des logiciels d'UML":http://fr.wikipedia.org/w/index.php?title=Comparaison_des_logiciels_d%27UML&veaction=edit&vesection=1, 

@@ -7,3 +7,6 @@ $('.carousel').carousel({
 $('.tooltip-social').tooltip({
   selector: "a[data-toggle=tooltip]"
 })
+
+// Display current year
+$("#year").text( (new Date).getFullYear() );

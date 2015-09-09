@@ -8,7 +8,7 @@ relativePath: ..
 When John has finished the specification of the application, he gives it to Bob. From the existing application UML definition, Bob defines the application at a lower level.
 At this point, Bob breaks the components out into classes and objects.
 
-h1(#Class_Diagram). Define the implementation structure
+h2(#Class_Diagram). Define the implementation structure
 
 The *class diagram* is used to describe the structure of the system by showing the classes, the interfaces, their attributes, their operations and their relationships.
 
@@ -17,9 +17,9 @@ The *class diagram* is used to describe the structure of the system by showing t
 
 The class diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.
 
-h2. Manage elements
+h3. Manage elements
 
-h3. Create element
+h4. Create element
 
 It is possible to *create an element* by selecting the type creation tool from the palette and then clicking on the diagram or an element.
 !{{ page.relativePath }}/images/ClassDiagramPalette.png!
@@ -45,7 +45,7 @@ Creation tools are available in the class diagram for the following types :
 |Primitive type |!{{ page.relativePath }}/images/ClassDiagramPrimitiveType.png!|Default data type|
 |Package |!{{ page.relativePath }}/images/ClassDiagramPackage.png!|Organize the model content|
 
-h4. Generic Class
+h5. Generic Class
 
 To define a Generic Class, use the direct edit tool:
 
@@ -60,11 +60,11 @@ To specify the binding association from the formal to the actual type use also t
 
 !{{ page.relativePath }}/images/using_class_diagram/binding2_class.png!
 
-h3. Delete element
+h4. Delete element
 
 The user can also *delete an element* (see "Diagram editor/Editor tab-bar/Delete element/from model":{{ page.relativePath }}/ref-doc/define-the-system.html#Delete_element_from_model).
 
-h3. Importing primitive types
+h4. Importing primitive types
 
 The contextual menu @Import primitive types@ can import predefined types libraries from a *right-click* on the background of a class diagram. This menu allows to import primitives for :
 * UML 
@@ -77,7 +77,7 @@ Then, the imported types can be used in the property's definition.
 Another way to import primitive types is just by editing a property on a class (by typing directly on the selected property or by hitting F2) and type the wanted datatype. If it's a known type, as String for example, the corresponding library is automatically imported : this library is visible in the model explorer when the project dependencies entry is expanded.
 The case is not taken into account, so it is possible to type "string" and the "String" datatype of UML Primitive types library will be used.
 
-h2. Manage features
+h3. Manage features
 
 It is possible to *create a feature* by selecting the feature creation tool from the palette and then clicking on the diagram or an element.
 If the user selects a container, the feature will be created under the corresponding semantic element in the UML model.
@@ -105,9 +105,9 @@ It is possible to add and edit :
 
 The user can also *delete a feature* (see "Diagram editor/Editor tab-bar/Delete element/from model":{{ page.relativePath }}/ref-doc/define-the-system.html#Delete_element_from_model).
 
-h2. Manage relationships
+h3. Manage relationships
 
-h3. Create relationships
+h4. Create relationships
 
 It is possible to *create a relationship* by selecting the edge creation tool from the palette and then clicking on a source element and a target element.
 The following edge creation tools exist in the palette :
@@ -122,7 +122,7 @@ The following edge creation tools exist in the palette :
 * usage : is represented by a dashed edge with _use_ as label, it can be created between any classifiers.
 * nest classifier : is represented by a solid edge with an output fill closed arrow at start, it can be created between any classifiers.
 			
-h3. Reconnect relationships
+h4. Reconnect relationships
 
 And finally, he can *reconnect relationships*. It is possible to reconnect the source and the target of any kind of edge in the activity diagram :
 * association
@@ -135,7 +135,7 @@ And finally, he can *reconnect relationships*. It is possible to reconnect the s
 * usage
 * nest classifier
 
-h3. Support for Broken Associations
+h4. Support for Broken Associations
 
 It might happen that for some reason you have an *Association* instance in your package which doesn't have the proper *ends*. In that case
 the class diagram will show the broken associations as nodes :
@@ -144,7 +144,7 @@ the class diagram will show the broken associations as nodes :
 
 You can use the *Association* tools in the palette __(Association, Reference, Composition and Aggregation)__ to re-attach the Association to a classifier.
 
-h2. Manage existing elements
+h3. Manage existing elements
 
 As the diagram is unsynchronized, the user needs to add manually the elements already existing in the semantic model that should appear on the representation.
 It is possible to add existing elements by :
@@ -167,21 +167,21 @@ The user can see that an element is not coming from the current package :
 And finally, he can *remove an existing element* from a diagram. In this case the element is only deleted from the representation but it is not removed from the UML model. This _Remove_ tool exists in the _Existing elements_ section in the palette (
 see "Diagram editor/Editor tab-bar/Delete element/from model":{{ page.relativePath }}/ref-doc/define-the-system.html#Delete_element_from_model).
 
-h2. Add related elements
+h3. Add related elements
 
 In the class diagram a contextual action is available to show on the diagram the element related to the selection.
 The *add related elements* action is available from :
 *  a class, an interface, a package, an enumeration, a datatype, a primitive type : shows all the elements that define a relationship (dependency, association, composition...) with the selected element
 *  a class diagram : shows all the elements contained in the package associated to the diagram.
 
-h2. Edit labels
+h3. Edit labels
 
 In the class diagram, it is possible to edit the elements labels  (
 			see "Diagram editor/Editor main graphical area/Direct edit":{{ page.relativePath }}/ref-doc/define-the-system.html#Direct_edit). This actions allows to edit :
 * class, interface, package, enumeration, datatype, primitive type labels
 * relationships labels
 
-h2. Using UML in colors
+h3. Using UML in colors
 
 "UML in colors":http://en.wikipedia.org/wiki/UML_colors is an object modeling technique proposed by "Peter Coad":http://www.step-10.com/SoftwareDesign/ModellingInColour/index.html, Eric Lefebvre, and Jeff De Luca in a series of articles in 1999.
 !{{ page.relativePath }}/images/uml_in_colors/example.png!
@@ -210,7 +210,7 @@ UML in colors examples are available from Eclipse menu File > New > Example... >
 
 For more detailed explanation on UML in colors have a look to "Peter Coad's website":http://www.step-10.com/SoftwareDesign/ModellingInColour/index.html.
 
-h1(#Object_Diagram). Instanciate the application
+h2(#Object_Diagram). Instanciate the application
 
 __This diagram is not yet implemented.__ 
 
@@ -221,22 +221,22 @@ The *object diagram* is used to describe the structure of the system by showing 
 
 The object diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.
 
-h2. Manage instances
+h3. Manage instances
 
 It is possible to create and delete instances in the object diagram.
 !{{ page.relativePath }}/images/ObjectDiagramPalette.png!
 			
-h3. Create an instance
+h4. Create an instance
 
 It is possible to create an instance by selecting the creation tool from the palette and then clicking on the diagram or an element. 	A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the UML model.
 If the user selects a container, the element will be created under the corresponding semantic element in the UML model.
 Tooltip tools are also available to create instances.
 
-h3. Set default value
+h4. Set default value
 
 It is possible to set a default value to an instance property by selecting the tool from the palette and then clicking on an instance. This tool opens a wizard to ask the user to select a property of the selected instance type.
 
-h3. Manage existing elements
+h4. Manage existing elements
 
 As the diagram is unsynchronized, the user needs to add manually the elements already existing in the semantic model that should appear on the representation.
 It is possible to add existing elements by :
@@ -253,7 +253,7 @@ The user can see that an element is not coming from the current package :
 The user can also *delete an instance* (see "Diagram editor/Editor tab-bar/Delete element/from model":{{ page.relativePath }}/ref-doc/define-the-system.html#Delete_element_from_model).
 
 
-h3. Add related elements
+h4. Add related elements
 
 In the class diagram a contextual action is available to show on the diagram the element related to the selection. 
 
@@ -261,25 +261,25 @@ The *Add related elements* action is available from :
 *  an instance : shows all the elements that define a relationship (dependency, association, composition...) with the selected element
 *  an object diagram : shows all the elements contained in the package associated to the diagram.
 
-h3. Edit labels
+h4. Edit labels
 
 In the class diagram, it is possible to edit the elements labels (see "Diagram editor/Editor main graphical area/Direct edit":{{ page.relativePath }}/ref-doc/define-the-system.html#Direct_edit). This actions allows to edit :
 * class, interface, package, enumeration, datatype, primitive type labels
 * relationships labels
 
 
-h1. Define the application behavior
+h2. Define the application behavior
 
 Bob describes the application behavior thanks to *Statemachine diagrams* and *Sequence diagrams*.
 
-h2(#State_Machine_Diagram). Statemachines
+h3(#State_Machine_Diagram). Statemachines
 
 The *statemachine diagram* is used to represent the different states and transitions of a system.
 !{{ page.relativePath }}/images/StatemachineDiagram.png!
 			
 The statemachine diagram is a synchronized diagram which means that any elements existing under a statemachine in the UML model will be visible automatically in the statemachine diagram.
 
-h3. Manage statemachines
+h4. Manage statemachines
 
 It is possible to *create statemachine elements* by selecting the creation tools from the palette and then clicking on the diagram or an element. A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the UML model.
 If the user selects a container, the element will be created under the corresponding semantic element in the UML model.
@@ -306,25 +306,25 @@ Creation tools are available in the statemachine diagram for the following types
 				
 The user can also *delete a statemachine element* (see "Diagram editor/Editor tab-bar/Delete element/from model":{{ page.relativePath }}/ref-doc/define-the-system.html#Delete_element_from_model).
 
-h3. Manage transitions
+h4. Manage transitions
 
 It is possible to :
 * *create a transition* : by selecting the edge creation tool from the palette and then clicking on a source element and a target element.
 * *delete a transition* : by selecting the edge in the diagram or in the Model explorer view and then selecting the delete tool. This tool deletes the semantic element. If a representation is open, the view corresponding to the deleted flow is not anymore visible after the delete action (see "Diagram editor/Editor tab-bar/Delete element/from model":{{ page.relativePath }}/ref-doc/define-the-system.html#Delete_element_from_model).
 * *reconnect transitions* : to reconnect the source and the target of a transition in the statemachine diagram.
 
-h3. Edit labels
+h4. Edit labels
 
 In the statemachine diagram, it is possible to edit the elements labels (see "Diagram editor/Editor main graphical area/Direct edit":{{ page.relativePath }}/ref-doc/define-the-system.html#Direct_edit). This actions allows to edit any statemachine elements labels.
 
-h2(#Sequence_Diagram). Sequences
+h3(#Sequence_Diagram). Sequences
 
 The *sequence diagram* is used to show how processes operate with one another and in what order.
 !{{ page.relativePath }}/images/SequenceDiagram.png!
 			
 The sequence diagram is a synchronized diagram which means that any elements existing under an interaction in the UML model will be visible automatically in the sequence diagram.
 
-h3. Manage interaction elements
+h4. Manage interaction elements
 
 It is possible to create:
 * lifeline : is an individual participant in an interaction
@@ -356,7 +356,7 @@ It is possible to create:
 
 The user can also *delete an element* (see "Diagram editor/Editor tab-bar/Delete element/from model":{{ page.relativePath }}/ref-doc/define-the-system.html#Delete_element_from_model).
 
-h3. Reorder an interaction element
+h4. Reorder an interaction element
 
 It is possible to reorder the interaction elements : 
 * lifeline can be reorder horizontally
@@ -364,6 +364,6 @@ It is possible to reorder the interaction elements :
 				
 This tool updates the semantic element positioned in the interaction fragments list. If a representation is open, the view corresponding to the moved element is automatically updated.
 
-h3. Edit labels
+h4. Edit labels
 
 In the sequence diagram, it is possible to edit the elements labels  (see "Diagram editor/Editor main graphical area/Direct edit":{{ page.relativePath }}/ref-doc/define-the-system.html#Direct_edit). This actions allows to edit any interaction elements labels.

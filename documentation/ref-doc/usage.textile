@@ -9,13 +9,13 @@ UML Designer provides a _Usage_ plugin which when installed and enabled will hel
 
 All the data is gathered anonymously and can at any time be disabled if you wish.
 
-h1. What will we use the data for ?
+h2. What will we use the data for ?
 
 With this enabled we can start seeing better how and where UML Designer is being used; we are especially currently interested in seeing what OS's are being used, which type of diagrams are used.
 
 Over time we hope to learn more to help continuously improve UML Designer.
 
-h1. How to enable/disable usage tracking ?
+h2. How to enable/disable usage tracking ?
 
 If you have the plugin installed, then on the first start of this Eclipse a dialog will pop up asking you to send anonymous usage statistics.
 !{{ page.relativePath }}/images/UMLDesignerUsageDialog.png!
@@ -27,7 +27,7 @@ If you just press _Yes_ then usage statistics for UML Designer is enabled.
 If you later on decide to not send statistics anymore or want to enable it, simply goto the _Preferences > Viewpoint > Usage_ Preferences.
 !{{ page.relativePath }}/images/UMLDesignerUsagePreferences.png!
 
-h1. How it works ?
+h2. How it works ?
 
 When the user has enabled reporting anonymous statistics the plugin uses Google Analytics to track data as though you visited a page under https://github.com/ObeoNetwork/UML-Modeling/wiki/usage/.
 

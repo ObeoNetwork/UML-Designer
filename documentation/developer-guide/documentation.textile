@@ -14,13 +14,13 @@ The documentation *source* code is available on :
 The documentation *build* is on Travis :
 "https://travis-ci.org/ObeoNetwork/UML-Designer/":https://travis-ci.org/ObeoNetwork/UML-Designer/
 
-h1. Environment
+h2. Environment
 
 The documentation is built with "Jekyll":http://jekyllrb.com/.
 
 All the documentation is written with the "textile":http://en.wikipedia.org/wiki/Textile_(markup_language) syntax, in order that it is really easy to contribute.
 
-h1. Structure of the documentation
+h2. Structure of the documentation
 
 In a Jekyll-powered website, there are two basic kinds of resources, pages and posts. Both of those resources can be made visible on the navigation bar by modifying the file in "_data/pages.yml":https://github.com/ObeoNetwork/UML-Designer/blob/master/documentation/_data/pages.yml. If you want to create a top level link, add a "page" with the path of its "file" (without the extension). If you want to add a top level menu with submenus, add a "category" and child "pages" with their "title" and "file". Then you just have to create your file in textile.
 
@@ -53,7 +53,7 @@ To create a menu which reference an anchor in an existing page use the syntax :
 
 Have a look the section below to see how to define an anchor in a page.
 
-h2. Page
+h3. Page
 
 When you create a page, you don't need to create the whole file manually, you can just reuse existing components automatically. For example, in order to create a very basic page, 
 * Modify the file pages.yml to add the following content: @- title: New Page file: newpage@
@@ -81,7 +81,7 @@ Use the following syntax to :
 * Define an anchor in the page named _MyPage_ and defined in the folder _path_ : @h1(#MyAnchor). My title@
 * Reference an anchor : @{{ page.relativePath }}/path/MyPage.html#MyAnchor@
 
-h2. Layouts
+h3. Layouts
 
 The available layouts are defined in the "_layouts":https://github.com/ObeoNetwork/UML-Designer/tree/master/documentation/_layouts folder.
 
@@ -102,9 +102,9 @@ There are several layout already available for the documentation. Those layouts 
 ** excerpt (optional): A paragraph describing the article. It will be used in the page listing all the posts instead of the whole content of the post.
 ** lead (optional): An introduction paragraph which will be highlighted at the top of the post.
 
-h1. Build the documentation
+h2. Build the documentation
 
-h2. Locally
+h3. Locally
 
 To test and generate the documentation locally, go to the folder containing the documentation content @UML-Designer/documentation@ in the git repository.
 Then launch :
@@ -117,7 +117,7 @@ and the Jekyll server to see the result of your contribution
 
 The documentation will be available at @localhost:4000/index.html@. Use a web browser and go to this URL to browse the documentation. If you want to iterate and try new changes, modify the documentation then stop the @jekyll serve@ by using @Ctrl+C@ and relaunch it using @jekyll serve@.
 
-h2. Continuous integration
+h3. Continuous integration
 
 To build the documentation, commit and push the changes on the ObeoNetwork/UML-Designer @master@ branch.
 The "Travis build":https://travis-ci.org/ObeoNetwork/UML-Designer/ is launched, it generates the documentation and updates the gh-pages. Consequently, the web site is updated automatically.
@@ -125,7 +125,7 @@ The "Hudson build":https://build.obeonetwork.com/hudson/job/UML--master/ is in c
 
 The different steps done by the builds are explained below.
 
-h3. Build the web-site
+h4. Build the web-site
 
 The Travis build : 
 * Go to @UML-Designer/documentation@ folder in your local repo.
@@ -135,7 +135,7 @@ This operation will generate a new @_site@ folder containing all the @.html@ fil
 
 The new web site will be available immediately on : "http://obeonetwork.github.io/UML-Designer/":http://obeonetwork.github.io/UML-Designer/
 
-h3. Integrate the documentation to Eclipse
+h4. Integrate the documentation to Eclipse
 
 The web site is integrated inside Eclipse as embedded documentation for UML Designer. This is done by the "Hudson build":https://build.obeonetwork.com/hudson/job/UML--master/ which takes the gh-pages content and integrates it into the Eclipse Help Content. The content of the @gh-pages@ is just copied to @UML-Designer/plugins/org.obeonetwork.dsl.uml2.design.doc/html@.
 
