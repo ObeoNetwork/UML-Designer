@@ -1,5 +1,5 @@
 ---
-layout: article-with-sidebar
+layout: article
 title: Importing an UML model
 subtitle: Tutorial
 category: Tutorials
@@ -8,12 +8,12 @@ relativePath: ..
 
 Learn how to import an existing UML model in UML Designer to create new representations.
 
-h1. Go to the 'Modeling' perspective
+h2. Go to the 'Modeling' perspective
 
 First make sure you are in the 'Modeling' perspective.
 If the 'Modeling'perspective is not active, in the title bar select Window > Open Perspective > Other > Modeling
 
-h1. Create the project
+h2. Create the project
 
 First, you need to create an UML Project.
 
@@ -21,7 +21,7 @@ In the title bar, select File > New > UML Project.
 Enter the name of the new project and hit 'Next'.
 On the next page, select 'Model' as type for the UML model root element, and then 'Finish'.
 
-h1. Import the existing UML model
+h2. Import the existing UML model
 
 In the 'Model Explorer' view a new project was created. To create a new representations for existing UML model, you can :
 * Simply drag & drop the models in the Project.

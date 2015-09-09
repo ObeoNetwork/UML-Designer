@@ -1,5 +1,5 @@
 ---
-layout: article-with-sidebar
+layout: article
 title: Getting started
 subtitle: Tutorial
 category: Tutorials
@@ -18,7 +18,7 @@ Open the "welcome page":http://help.eclipse.org/luna/index.jsp?topic=%2Forg.ecli
 You can also have a look also to the _Getting started_ video :
 {% youtube kbHKcSNlr5I %}
 
-h1. Starting from the Travel Agency example
+h2. Starting from the Travel Agency example
 
 Import the TravelAgency project using the menu @File/New/Example...@.
 
@@ -39,7 +39,7 @@ When the project gets opened,  you will be greeted with the main package hierarc
 From here you can navigate to existing diagrams by right clicking on the *Model*.
 
 
-h1. Create a new UML model & UML project
+h2. Create a new UML model & UML project
 
 To create a new UML project , enable the Modeling Perspective.
 
@@ -62,13 +62,13 @@ Now you can right click on the displayed package to create all the available dia
 !{{ page.relativePath }}/images/gettingStarted/new-maindiag.png!
 
 
-h1. Display & edit an existing UML model
+h2. Display & edit an existing UML model
 
 To create a new UML design on existing UML models, simply drag & drop the models in the Project or use the __Add Model__ action available on the __Project Dependencies__ item.
 
 !{{ page.relativePath }}/images/gettingStarted/new-add-dependency.png!
 
-h1(#vpselection). UML designer viewpoints
+h3(#vpselection). UML designer viewpoints
 
 Five viewpoints are specified on the UML designer each bringing the following views:
 * Dashboard

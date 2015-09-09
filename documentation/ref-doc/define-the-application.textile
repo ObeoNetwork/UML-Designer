@@ -10,7 +10,7 @@ What the application is supposed to be?
 and
 What the application is supposed to do?
 
-h1(#Activity_Diagram). What the application is supposed to be ?
+h2(#Activity_Diagram). What the application is supposed to be ?
 
 First, John tries to get a feel for the bigger picture of its application. The purpose is to get an overall understanding of the system. He wants to catch the business process and checks if there is a precedent for this application.
 To do so UML propose a very useful diagram : the *activity diagram*.
@@ -19,7 +19,7 @@ The activity diagram is part of the behavioral diagrams in UML Standard, it is u
 				
 The activity diagram is a synchronized diagram which means that any elements existing under an activity in the UML model will be visible automatically in the activity diagram.
 
-h2. Manage activities
+h3. Manage activities
 
 It is possible to *create activity elements* by selecting the creation tools from the palette and then clicking on the diagram or an element. 
 !{{ page.relativePath }}/images/ActivityDiagramPalette.png!
@@ -56,7 +56,7 @@ When the _Call Operation action_ tool is selected, a selection wizard is opened 
 The user can also *delete an activity element* (see "Diagram editor/Editor tab-bar/Delete element/from model":{{ page.relativePath }}/ref-doc/define-the-system.html#Delete_element_from_model).
 
 
-h2. Manage flows
+h3. Manage flows
 
 It is possible to *create a flow* by selecting the edge creation tool from the palette and then clicking on a source element and a target element.			
 
@@ -72,16 +72,16 @@ And finally, he can *reconnect flows*. It is possible to reconnect the source an
 * control flows
 * object flows
 
-h2. Edit labels
+h3. Edit labels
 
 In the use case diagram, it is possible to edit the elements labels  (see "Diagram editor/Editor main graphical area/Direct edit":{{ page.relativePath }}/ref-doc/define-the-system.html#Direct_edit).
 This actions allows to edit :
 * actor, subject (component,  artifact, datatype, interface, collaboration, class), use case labels
 * relationships labels
 
-h1. What the application is supposed to do ? 
+h2. What the application is supposed to do ? 
 
-h2(#Use_Case_Diagram). Capture the use cases
+h3(#Use_Case_Diagram). Capture the use cases
 
 The next step for John is to capture the different requirements. He knows what he wants, what the other stakeholders want and so he needs to document this. He has already started catching the requirements on post-it notes and pieces of paper during meetings, he has also used his whiteboard for some sketching.
 When he recovered all his requirements, he starts to sort them by subject in order to see who is going to use the application. He needs now to capture the different users of the system. John creates a UML *Use Case diagram* to specify the different subjects and the roles played by users and other systems that interact.
@@ -90,7 +90,7 @@ The use case diagram is used to describe the interaction of the user and other a
 					
 The use case diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.
 
-h3. Manage use cases
+h4. Manage use cases
 
 It is possible in the use case diagram to *create an element* by selecting the creation tool from the palette and then clicking on the diagram or an element. A diagram is associated to a package and in this case the element is created under the corresponding package in the UML model. 
 !{{ page.relativePath }}/images/UseCaseDiagramPalette.png!
@@ -117,7 +117,7 @@ will be displayed directly within this subject.
 
 The user can also *delete an element* (see "Diagram editor/Editor tab-bar/Delete element/from model":{{ page.relativePath }}/ref-doc/define-the-system.html#Delete_element_from_model).
 
-h3. Manage relationships
+h4. Manage relationships
 
 It is possible to *create a relationship* by selecting the edge creation tool from the palette and then clicking on a source element and a target element. 
 The following edge creation tools exist in the palette :
@@ -136,7 +136,7 @@ And finally, he can *reconnect relationships*. It is possible to reconnect the s
 * include
 * generalization
 
-h3. Manage existing elements
+h4. Manage existing elements
 
 As the diagram is unsynchronized, the user needs to add manually the elements already existing in the semantic model that should appear on the representation.
 It is possible to *add existing elements* in the use case diagram by :
@@ -161,7 +161,7 @@ The user can see that an element is not coming from the current package :
 
 And finally, he can *remove an existing element* from a diagram. In this case the element is only deleted from the representation but it is not removed from the UML model. This _Remove_ tool exists in the _Existing elements_ section in the palette (see "Diagram editor/Editor tab-bar/Delete element/from model":{{ page.relativePath }}/ref-doc/define-the-system.html#Delete_element_from_model).
 
-h3. Add related elements
+h4. Add related elements
 
 In the use case diagram a contextual action is available to show on the diagram the element related to the selection. 
 
@@ -169,17 +169,17 @@ The *Add related elements* action is available from :
 *  a subject, a use case, an actor : shows all the elements that define a relationship (dependency, include, association...) with the selected element
 *  a use case diagram : shows all the elements contained in the package associated to the diagram.						
 
-h3. Edit labels
+h4. Edit labels
 
 In the use case diagram, it is possible to edit the elements labels  (see "Diagram editor/Editor tab-bar/Delete element/from model":{{ page.relativePath }}/ref-doc/define-the-system.html#Delete_element_from_model). This actions allows to edit :
 * actor, collaboration, subject, use case labels
 * relationships labels
 
-h3(#Use_Case_Cross_Table). Use case cross table
+h4(#Use_Case_Cross_Table). Use case cross table
 
 Another representation allows the user to see which use cases are associated to which elements in the model. The *use case cross table* represents on lines all the model elements and in the columns the existing use cases. To associate a use case to an element just check the corresponding cell.
 
-h2(#Package_Diagram). Define the package system structure
+h3(#Package_Diagram). Define the package system structure
 
 At this step, John knows who will use its application and what they are able todo with it. It is time to define the components, the interfaces and the relationships that would be seen and experienced by the application user. The purpose is to detail the available objects in the user's universe and how they can use them to accomplish certain tasks.
 John defines the big structure of the system thanks to the *package diagram*.
@@ -188,7 +188,7 @@ The package diagram is used to describe the structure of the system by showing t
 	
 The package diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.
 
-h3. Manage packages
+h4. Manage packages
 
 !{{ page.relativePath }}/images/PackageDiagramPaletteTypes.png!
 		
@@ -199,7 +199,7 @@ A creation tool is available in the package diagram for the package : !{{ page.r
 
 The user can also *delete an element* (see "Diagram editor/Editor tab-bar/Delete element/from model":{{ page.relativePath }}/ref-doc/define-the-system.html#Delete_element_from_model).
 
-h3. Manage relationships
+h4. Manage relationships
 
 It is possible to *create a relationship* by selecting the edge creation tool from the palette and then clicking on a source element and a target element.
 !{{ page.relativePath }}/images/PackageDiagramPaletteRelationships.png!
@@ -222,7 +222,7 @@ And finally, he can *reconnect relationships*. It is possible to reconnect the s
 * import
 * merge
 
-h3. Manage existing elements
+h4. Manage existing elements
 
 As the diagram is unsynchronized, the user needs to add manually the elements already existing in the semantic model that should appear on the representation.
 It is possible to *add existing elements* by :
@@ -235,7 +235,7 @@ The user can see that an element is not coming from the current package :
 		
 And finally, he can *remove an existing element* from a diagram. In this case the element is only deleted from the representation but it is not removed from the UML model. This _Remove_ tool exists in the _Existing elements_ section in the palette (see "Diagram editor/Editor tab-bar/Delete element/from model":{{ page.relativePath }}/ref-doc/define-the-system.html#Delete_element_from_model).
 
-h3. Add related elements
+h4. Add related elements
 
 In the package diagram a contextual action is available to show on the diagram the element related to the selection. 
 !{{ page.relativePath }}/images/PackageDiagramAddRelatedElements.png!
@@ -244,13 +244,13 @@ The *add related elements* action is available from :
 *  a package : shows all the packages that define a relationship (containment, dependency, usage..) with the selected package
 *  a package diagram : shows all the elements contained in the package associated to the diagram.
 
-h3. Edit labels
+h4. Edit labels
 
 In the package diagram, it is possible to edit the elements labels  (see "Diagram editor/Editor tab-bar/Delete element/from model":{{ page.relativePath }}/ref-doc/define-the-system.html#Delete_element_from_model). This actions allows to edit :
 * package labels
 * relationships labels
 
-h2(#Component_Diagram). Define the components
+h3(#Component_Diagram). Define the components
 
 It is the moment for John to split the system in multiple components and to describe how all these elements are linked together in a *component diagram*.
 	The component diagram is used to describe the structure of the system by showing the components and their connectors.
@@ -258,7 +258,7 @@ It is the moment for John to split the system in multiple components and to desc
 	
 	The component diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.
 
-h3. Manage nodes
+h4. Manage nodes
 
 It is possible to *create nodes* by selecting the creation tools from the palette and then clicking on the diagram or an element. A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the UML model.
 If the user selects a container, the element will be created under the corresponding semantic element in the UML model.
@@ -291,7 +291,7 @@ Required and Provided Interfaces can be defined:
 
 The user can also *delete an element* (see "Diagram editor/Editor tab-bar/Delete element/from model":{{ page.relativePath }}/ref-doc/define-the-system.html#Delete_element_from_model.
 
-h3(#Manage_relationships). Manage relationships
+h4(#Manage_relationships). Manage relationships
 
 It is possible to *create a relationship* by selecting the edge creation tool from the palette and then clicking on a source element and a target element.
 The following edge creation tools exist in the palette :
@@ -325,7 +325,7 @@ And finally, he can *reconnect relationships*. It is possible to reconnect the s
 * redefined
 * connector
 
-h3. Manage existing elements
+h4. Manage existing elements
 
 As the diagram is unsynchronized, the user needs to add manually the elements already existing in the semantic model that should appear on the representation.
 It is possible to *add existing elements* by :
@@ -346,7 +346,7 @@ The user can see that an element is not coming from the current package :
 		
 And finally, he can *remove an existing element* from a diagram. In this case the element is only deleted from the representation but it is not removed from the UML model. This _Remove_ tool exists in the _Existing elements_ section in the palette (see "Diagram editor/Editor tab-bar/Delete element/from model":{{ page.relativePath }}/ref-doc/define-the-system.html#Delete_element_from_model).
 
-h3. Add related elements
+h4. Add related elements
 
 In the component diagram a contextual action is available to show on the diagram the element related to the selection. 
 
@@ -354,24 +354,24 @@ The *add related elements* action is available from :
 *  a component ,  a class, an interface, a port : shows all the elements that define a relationship (dependency, component realization, interface realization...) with the selected element
 *  a component diagram : shows all the elements contained in the package associated to the diagram.
 
-h3. Edit labels
+h4. Edit labels
 
 In the package diagram, it is possible to edit the elements labels  (see "Diagram editor/Editor main graphical area/Direct edit":{{ page.relativePath }}/ref-doc/define-the-system.html#Direct_edit). 
 This actions allows to edit :
 * component, class, interface, port labels
 * relationships labels
 
-h2. Define the information flow 
+h3. Define the information flow 
 
 By creating links between the components, John defines the flow followed by the data in the system.
 To get details on how to manage the information flows (see "What the application is supposed to be?/Define components/Manage relationships":{{ page.relativePath }}/ref-doc/define-the-application.html#Manage_relationships).
 	
-h2. Diagram the organization of the information
+h3. Diagram the organization of the information
 
 He provides a detailed organization of the information by creating a new kind of activity diagram. This diagram shows how the information goes through the different components of the system. Previously in the process, John used an activity diagram to describe the global business process of the specified application, here the activity diagram is used again but for providing low level information.
 To get details on activity diagram,"What the application is supposed to be ?":{{ page.relativePath }}/define-the-application.html.
 
-h2(#Composite_Structure_Diagram). Define the system interfaces
+h3(#Composite_Structure_Diagram). Define the system interfaces
 
 Then for each component, John details the internal structure of a component thanks to *Composite structure diagrams*.
 
@@ -382,7 +382,7 @@ The composite structure diagram is used to describe the structure of the system 
 
 The composite structure diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.
 
-h3. Manage nodes
+h4. Manage nodes
 
 It is possible to *create a type* by selecting the type creation tool from the palette and then clicking on the diagram or an element. 
 A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the UML model.
@@ -406,7 +406,7 @@ Creation tools are available in the composite structure diagram for the followin
 
 The user can also *delete an element* (see "Diagram editor/Editor tab-bar/Delete element/from model":{{ page.relativePath }}/ref-doc/define-the-system.html#Delete_element_from_model).
 
-h3. Manage edges
+h4. Manage edges
 
 It is possible to create a relationship by selecting the edge creation tool from the palette and then clicking on a source element and a target element.
 
@@ -431,7 +431,7 @@ And finally, he can *reconnect relationships*. It is possible to reconnect the s
 * connector
 
 
-h3. Manage existing elements
+h4. Manage existing elements
 
 As the diagram is unsynchronized, the user needs to add manually the elements already existing in the semantic model that should appear on the representation.
 It is possible to *add existing elements* by :
@@ -469,7 +469,7 @@ The user can see that an element is not coming from the current package :
 
 And finally, he can *remove an existing element* from a diagram. In this case the element is only deleted from the representation but it is not removed from the UML model. This _Remove_ tool exists in the _Existing elements_ section in the palette (see "Diagram editor/Editor tab-bar/Delete element/from model":{{ page.relativePath }}/ref-doc/define-the-system.html#Delete_element_from_model).
 
-h3. Add related elements
+h4. Add related elements
 
 In the composite structure diagram a contextual action is available to show on the diagram the element related to the selection. 
 
@@ -477,13 +477,13 @@ The *add related elements* action is available from :
 *  a component ,  a class, an interface, a port : shows all the elements that define a relationship (dependency, component realization, interface realization...) with the selected element
 *  a composite structure diagram : shows all the elements contained in the package associated to the diagram.
 
-h3. Edit labels
+h4. Edit labels
 
 In the composite structure diagram, it is possible to edit the elements labels  (see "Diagram editor/Editor main graphical area/Direct edit":{{ page.relativePath }}/ref-doc/define-the-system.html#Direct_edit). This actions allows to edit :
 * component, class, interface, port labels
 * relationships labels
 
-h2(#Deployment_Diagram). Define the system environment
+h3(#Deployment_Diagram). Define the system environment
 
 Then, John defines the system environment thanks to a *deployment diagram*, and how the software is deployed on the infrastructure. This diagram describes the current technological limitations and constraints.
 
@@ -493,7 +493,7 @@ The deployment diagram is used to describe the structure of the system by showin
 
 The deployment diagram is an unsynchronized diagram which means that the user has to add existing elements manually on the diagram to see them.
 
-h3. Manage nodes
+h4. Manage nodes
 
 It is possible to create a type by selecting the type creation tool from the palette and then clicking on the diagram or an element. 
 A diagram is associated to a package and when the user click on the diagram background the element is created under the corresponding package in the UML model.
@@ -524,7 +524,7 @@ So, the user can create deployment diagram defining :
 
 The user can also *delete an activity element* (see "Diagram editor/Editor tab-bar/Delete element/from model":{{ page.relativePath }}/ref-doc/define-the-system.html#Delete_element_from_model).
 
-h3. Manage relationships
+h4. Manage relationships
 
 It is possible to *create a relationship* by selecting the edge creation tool from the palette and then clicking on a source element and a target element.
 The following edge creation tools exist in the palette :
@@ -556,7 +556,7 @@ And finally, he can *reconnect flows*. It is possible to reconnect the source an
 * deployment
 * manifestation
 
-h3. Manage existing elements
+h4. Manage existing elements
 
 As the diagram is unsynchronized, the user needs to add manually the elements already existing in the semantic model that should appear on the representation.
 It is possible to *add existing elements* by :
@@ -584,7 +584,7 @@ The user can see that an element is not coming from the current package :
 And finally, he can *remove an existing element* from a diagram. In this case the element is only deleted from the representation but it is not removed from the UML model. This _Remove_ tool exists in the _Existing elements_ section in the palette (see "Diagram editor/Editor tab-bar/Delete element/from model":{{ page.relativePath }}/ref-doc/define-the-system.html#Delete_element_from_model).
 
 
-h3. Add related elements
+h4. Add related elements
 
 In the deployment diagram a contextual action is available to show on the diagram the element related to the selection.
 
@@ -592,7 +592,7 @@ The *add related elements* action is available from :
 *  a component ,  a node, a device, an execution  environment, an artifact : shows all the elements that define a relationship (dependency, deployment, manifestation...) with the selected element
 *  a deployment diagram : shows all the elements contained in the package associated to the diagram.
 
-h3. Edit labels
+h4. Edit labels
 
 In the package diagram, it is possible to edit the elements labels  (see "Diagram editor/Editor main graphical area/Direct edit":{{ page.relativePath }}/ref-doc/define-the-system.html#Direct_edit). This actions allows to edit :
 * component, node, device, execution environment, artifact labels
@@ -601,9 +601,9 @@ In the package diagram, it is possible to edit the elements labels  (see "Diagra
 We added a few accelerators so that you can quickly edit *labels* on elements or edges just by typing. Typing : 
 * @aNewName@ will update the label.
 
-h2. Extend UML standard
+h3. Extend UML standard
 
-h3(#Profile_Diagram). Define extensions
+h4(#Profile_Diagram). Define extensions
 
 Sometimes, the UML standard does not provide all the concepts expected by John. Thanks to the *profile diagram*, it is possible to extend the standard to add new concepts or to adapt existing ones. To use the profile diagram, the user must activate the @Extend@ viewpoint.
 
@@ -662,7 +662,7 @@ The palette defines the following tools :
 * _*Undefine*_ : Delete from the profile complementary information generated by the define command.
 * _*Export*_ : Create or update an eclipse plugin in order to deploy the edited profile in an Eclipse installation. This plugin must contain the profile, all its generated code and populate extensions to register itself to the platform.
 
-h3. Defining a profile
+h4. Defining a profile
 
 The palette provides a tool to *define a profile* in order to be able to apply this one for other UML model in the workspace. This tool add information about the version to the profile as _Ecore Annotation_. Mainly, the information required for the versioning are:
 * Version number
@@ -674,7 +674,7 @@ The palette provides a tool to *define a profile* in order to be able to apply t
 
 Another tool is available to *undefine a profile*, this tool removes all the _EPackage_ representing the definition from the profile.
 
-h3. Exporting a profile
+h4. Exporting a profile
 
 An _export profile_ tool is available from the palette to export a profile as a jar file. This jar can be added to an eclipse platform to provide a profile as a registered package. The export operation creates an EMF project with an ecore file based on the profile model. Then an extension for the profile is added to the generated project (in “uml.generated_package” and “ecore.uri_mapping”). Finally, the tool builds and exports the created EMF project for the profile as a Deployable plug-in.
 The tool requires some necessary information for the creation of the deployable plug-in:
@@ -684,7 +684,7 @@ The tool requires some necessary information for the creation of the deployable 
 * Version information
 !{{ page.relativePath }}/images/using_profile_diagram/export_profile.png!
 
-h3(#Manage_profiles_and_stereotypes). Manage profiles and stereotypes
+h4(#Manage_profiles_and_stereotypes). Manage profiles and stereotypes
 
 In UML Designer, a _Profiles_ layer is available on all the diagrams. To describe his application John opens the existing diagrams and activates the profiles layer.
 !{{ page.relativePath }}/images/ProfileLayer.png!

@@ -10,30 +10,176 @@ For more info and more free Bootstrap 3 HTML themes, visit http://startbootstrap
 
 html, body {
   height: 100%;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  /*font-family: Cambria, Georgia, Palatino, Times New Roman, serif;*/
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-weight: 100;
+  color: #676767;
 }
 
-body {
-  padding-top: 50px;
- /* body padding for fixed top nav */
+#mainbody {
+	padding-top: 80px;
 }
 
-.navbar-inverse {
-  background-color: #1594B4;
-  color: #fff;
-  border-color: #1594B4;
+#mainbody .container {
+	padding-bottom: 50px;
+}
+
+img {
+	margin: 15px 0;
+}
+
+a, .first_section h3 a:hover, .section h3 a:hover, .section-colored h3 a:hover {
+	color: #faa542;
+	font-weight: 600;
+}
+
+a:hover, a:focus {
+    color: #292929;
+    text-decoration: none;
+}
+
+h2 {
+	text-transform: uppercase;
+    letter-spacing: 0.02em;
+}
+
+h2, h3 {
+	font-family: "Open Sans Condensed",sans-serif;
+    font-weight: 600;
+}
+
+h4 {
+    color: #faa542;
+}
+
+h2, h3, h4, h5 {
+    margin-top: 40px;
+}
+
+h5, .h5 {
+	font-weight: 600;
+}
+
+.section h2, .section h3, .section-colored  h2{
+	margin-bottom: 30px;
+}
+
+.btn-default {
+	border: 2px solid #faa542;
+    background: transparent;
+    color: #faa542;
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open .dropdown-toggle.btn-default{
+	color: #fff;
+	background-color: #faa542;
+	border: 2px solid #faa542;
+}
+	
+.btn-lg {
+	border-radius: 0;
+	padding: 10px 45px;
+}
+
+.page-masthead {
+	color: #fff;
+	margin-bottom: 20px;
+}
+
+.page-header {
+	border: none;
+	padding: 0;
+}
+
+#mainbody .page-masthead .container {
+	padding-bottom: 20px;
+}
+
+.on_dark_bg {
+    border: 2px solid #5ec7bc;
+    background: transparent;
+    color: #5ec7bc;
+}
+
+.on_dark_bg:hover {
+    color: #fff;
+    background-color: #5ec7bc;
+    border: 2px solid #5ec7bc;
+}
+
+.bg_green1 {
+    background: #15ad9e;
+}
+
+.bg_green2, .navbar-inverse .navbar-toggle .icon-bar {
+    background: #0d7374;
+}
+
+.bg_green3 {
+    background: #3c535c;
+}
+
+.green1 {
+    color: #15ad9e;
+}
+
+.green2 {
+    color: #0d7374;
+}
+
+.green3, h2, h3, h5, .h5, .first_section h3 a, .section h3 a, .section-colored h3 a, .navbar-inverse .navbar-nav > li > a  {
+    color: #3c535c;
+}
+
+.nav > li > a {
+    padding: 15px 0 5px 0;
+    margin-left: 25px;
+}
+
+.navbar {
+	min-height: 75px;
+	clear: both;
+}
+
+.navbar-brand {
+    height: auto;
+    padding: 0;
+}	
+	
+.navbar-nav {
+    margin: 15px 0;
+}
+
+.navbar-inverse, .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+  background-color: white;
+  color: #3c535c;
+ }
+
+.navbar-inverse{
+	border-bottom: 1px solid #5ec7bc;
 }
 
 .navbar-inverse .navbar-brand {
-  color: #fff;
+  color: #676767;
 }
 
 .navbar-inverse .navbar-text {
-  color: #fff;
+  color: #676767;
 }
 .navbar-inverse .navbar-nav > li > a {
-  color: #fff;
+  border-bottom: 3px solid white;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+	border-bottom: 3px solid #5ec7bc;
+    color: #292929;
+}
+
+.navbar-toggle {
+	border: none;
+}
+
+.navbar-toggle .icon-bar {
+	height: 4px;
 }
 
 .img-home-portfolio,
@@ -54,8 +200,7 @@ body {
 
 .section-colored {
   /* change this to change the background color of a colored section */
-  background-color: #1594B4;
-  color: #fff;
+  background-color: #eee;
 }
 
 .sidebar {
@@ -139,17 +284,17 @@ body {
 
 /* Footer Styles */
 footer {
-  margin: 50px 0;
-}
-
-footer p {
-  text-align: center;
+  padding: 30px 0 5px 0;
+  font-size: 14px;
+  font-family: "Open Sans Condensed",sans-serif;
+  color: #ffffff;
 }
 
 .title {
   padding-top: 60px;
   padding-bottom: 10px;
   text-align: center;
+   color: #fff;
 }
 
 .title h1 {
@@ -157,7 +302,6 @@ footer p {
   line-height: 1;
   letter-spacing: -2px;
   font-weight: bold;
-  color: #1594B4;
   text-align: center;
   margin-bottom: 30px;
 }
@@ -167,7 +311,6 @@ footer p {
   font-size: 40px;
   font-weight: 200;
   line-height: 1.25;
-  color: #1594B4;
   margin-bottom: 40px;
 }
 
@@ -184,4 +327,16 @@ table {
 td, th {
   padding: 5px;
   border: 1px solid #ddd;
+}
+
+/* Responsive Settings */
+@media (min-width: 768px) {
+.navbar-toggle .icon-bar {
+	
+}
+
+.navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
+	margin-left: 0;
+}
+
 }

@@ -5,7 +5,7 @@ subtitle: Reference Documentation
 relativePath: ..
 ---
 
-h1(#Package_Containment_Diagram). Refactor an application
+h2(#Package_Containment_Diagram). Refactor an application
 
 Frequently, when John or Bob are working on an application, they change their mind and need to re-structure the application.
 The idea is to get a representation that represents the structure map of the application. The UML standard does not provide such kind of representation. The package hierarchy shows all the packages as a different element which could became really unreadable on big system.

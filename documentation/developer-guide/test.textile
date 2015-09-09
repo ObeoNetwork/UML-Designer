@@ -5,12 +5,12 @@ subtitle: developer guide
 relativePath: ..
 ---
 
-h1. Unit tests
+h2. Unit tests
 
 The unit and plugin tests are defined in the "org.obeonetwork.dsl.uml2.design.tests project":https://github.com/ObeoNetwork/UML-Designer/tree/master/tests/org.obeonetwork.dsl.uml2.design.tests.
 These tests are run automatically by the "build":{{page.relativePath}}/developer-guide/build.html#Build.
 
-h2. UI tests
+h3. UI tests
 
 The UI tests are defined thanks to "RCPTT":https://www.eclipse.org/rcptt/.
 The tests are available on another github repository : "https://github.com/ObeoNetwork/UML-Designer-UI-Tests":https://github.com/ObeoNetwork/UML-Designer-UI-Tests

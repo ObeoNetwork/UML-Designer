@@ -9,7 +9,7 @@ Kevin wants to use UML Designer to document its application. It exists mainly tw
 * Documentation table from the Review viewpoint,
 * Export to HTML site or to images.
 
-h1. Manage comments in diagram
+h2. Manage comments in diagram
 			
 In UML Designer, a _Comments_ layer is available on all the diagrams. To document his application Kevin opens the existing diagrams and activates the comments layer.
 !{{ page.relativePath }}/images/CommentsLayer.png!
@@ -27,21 +27,21 @@ When the layer is activated the comments are visible on the diagram.
 
 The user can remove the comment (see "Diagram editor/Editor main graphical area/Direct edit":{{ page.relativePath }}/ref-doc/define-the-system.html#Direct_edit).
 			
-h1(#Documentation_Table). Comments table
+h2(#Documentation_Table). Comments table
 			
 Thanks to the *documentation table* available in UML Extensions viewpoint, a user can add and review comment on each model element easily. This representation is a table which lists all the elements available in the model sub tree and their related comment.
 The first column show the element name and the second column the associated comment.
 The elements should be ordered using a tree in order to get the possibility to expand and collapse some sub elements.
 
-h1. Export 
+h2. Export 
 			
 UML Designer allows to export the defined diagrams.
 
-h2. HTML export
+h3. HTML export
 					
 This feature allows to export all the models with their representations into an HTML site. The site displays the model explorer on the left with the model elements and their corresponding clickable representations. When selecting a model element on a representation, the site displays its properties. All the pages are generated with Acceleo templates and can easily be adapted. This features is only available in "Obeo Designer":http://www.obeodesigner.com/ and not with the Sirius based product.
 				
-h2. Export diagrams as images
+h3. Export diagrams as images
 					
 It is possible to export a diagram to an image file. To do that right-click on the diagram and choose the menu _Export diagram as image_ or select the corresponding icon in the diagram tab-bar. After selecting the file path, the user can choose the image format and he wants to overwrite an existing file without warning. On the first export of diagram as image the name is set by default with the representation name. After there is an history to select the last export. If you do not specify the file extension, the extension is determined from the selected image format. You can choose the directory in which to create the file using the Browse button.
 

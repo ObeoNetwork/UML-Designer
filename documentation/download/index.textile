@@ -5,9 +5,9 @@ subtitle: Get UML Designer
 relativePath: ..
 ---
 
-h1. Download & Install
+h2. Download & Install
 
-|_. Version |_. "Release notes":https://github.com/ObeoNetwork/UML-Designer/releases/ |_. "Bundles":{{page.relativePath}}/download/index.html#Bundles |_. "Source code":https://github.com/ObeoNetwork/UML-Designer|_. "Update site":{{page.relativePath}}/download/index.html#Update_Sites |
+|_. Version |_. Release notes |_. Bundles |_. Source code |_. Update site |
 | _Nightly_|"_Sirius 3.0 / Mars_":https://github.com/ObeoNetwork/UML-Designer/milestones| "_Win32_":http://umldesigner.s3.amazonaws.com/nightly/master/bundles/UMLDesigner-win32.win32.x86.zip, "_Win64_":http://umldesigner.s3.amazonaws.com/nightly/master/bundles/UMLDesigner-win32.win32.x86_64.zip, "_Linux32_":http://umldesigner.s3.amazonaws.com/nightly/master/bundles/UMLDesigner-linux.gtk.x86.zip, "_Linux64_":http://umldesigner.s3.amazonaws.com/nightly/master/bundles/UMLDesigner-linux.gtk.x86_64.zip, "_MacOs64_":http://umldesigner.s3.amazonaws.com/nightly/master/bundles/UMLDesigner-macosx.cocoa.x86_64.zip|"_master_":https://github.com/ObeoNetwork/UML-Designer/tree/master|"_http://umldesigner.s3.amazonaws.com/nightly/master/repository_":{{page.relativePath}}/download/index.html#Update_Sites, "_zip_":http://umldesigner.s3.amazonaws.com/nightly/master/org.obeonetwork.dsl.uml2.update-nightly.zip |
 | 5.0.0|"Sirius 2.0 / Luna":https://github.com/ObeoNetwork/UML-Designer/releases/tag/5.0.0| "Win32":http://www.obeo.fr/download/release/uml/5.0.0/UMLDesigner-win32.win32.x86.zip, "Win64":http://www.obeo.fr/download/release/uml/5.0.0/UMLDesigner-win32.win32.x86_64.zip, "Linux32":http://www.obeo.fr/download/release/uml/5.0.0/UMLDesigner-linux.gtk.x86.zip, "Linux64":http://www.obeo.fr/download/release/uml/5.0.0/UMLDesigner-linux.gtk.x86_64.zip, "MacOs64":http://www.obeo.fr/download/release/uml/5.0.0/UMLDesigner-macosx.cocoa.x86_64.zip| "5.0.0 tag":https://github.com/ObeoNetwork/UML-Designer/tree/5.0.0|"http://www.obeo.fr/download/release/uml/5.0.0/repository/":{{page.relativePath}}/download/index.html#Update_Sites, "zip":http://www.obeo.fr/download/release/uml/5.0.0/org.obeonetwork.dsl.uml2.product-5.0.0-SNAPSHOT.zip|
 | 4.0.1|"Sirius 1.0 / Luna":https://github.com/ObeoNetwork/UML-Designer/releases/tag/4.0.1| "Win32":http://www.obeo.fr/download/release/uml/4.0.1/UMLDesigner-win32.win32.x86.zip, "Win64":http://www.obeo.fr/download/release/uml/4.0.1/UMLDesigner-win32.win32.x86_64.zip, "Linux32":http://www.obeo.fr/download/release/uml/4.0.1/UMLDesigner-linux.gtk.x86.zip, "Linux64":http://www.obeo.fr/download/release/uml/4.0.1/UMLDesigner-linux.gtk.x86_64.zip, "MacOs64":http://www.obeo.fr/download/release/uml/4.0.1/UMLDesigner-macosx.cocoa.x86_64.zip| "4.0.1 tag":https://github.com/ObeoNetwork/UML-Designer/tree/4.0.1|"http://www.obeo.fr/download/release/uml/4.0.1/repository/":{{page.relativePath}}/download/index.html#Update_Sites, "zip":http://www.obeo.fr/download/release/uml/4.0.1/org.obeonetwork.dsl.uml2.product-4.0.1-SNAPSHOT.zip|
@@ -20,28 +20,20 @@ To install UML Designer, it is possible to:
 
 _Pay attention that the nightly build is unstable, this build is for testing purposes only._
 
-h2(#Bundles). Bundles
 
-The bundles corresponding to the last release are available on the "Obeo marketplace":http://marketplace.obeonetwork.com/module/uml/download :
-* "Windows 32bits":http://www.obeo.fr/download/release/uml/latest/UMLDesigner-win32.win32.x86.zip
-* "Windows 64bits":http://www.obeo.fr/download/release/uml/latest/UMLDesigner-win32.win32.x86_64.zip
-* "Linux 32bits":http://www.obeo.fr/download/release/uml/latest/UMLDesigner-linux.gtk.x86.zip
-* "Linux 64bits":http://www.obeo.fr/download/release/uml/latest/UMLDesigner-linux.gtk.x86_64.zip
-* "MacOs 64bits":http://www.obeo.fr/download/release/uml/latest/UMLDesigner-macosx.cocoa.x86_64.zip
+h3(#Marketplace). Marketplace
 
-h2(#Marketplace). Marketplace
+It is also possible to install UML Designer from the "Eclipse marketplace":http://marketplace.eclipse.org/search/site/UML%2520Designer or the "Obeo marketplace":http://marketplace.obeonetwork.com/module/uml/download. Don't know how to install a module from the marketplace ? Have a look to the "marketplace client introduction":http://marketplace.eclipse.org/marketplace-client-intro.
 
-It is also possible to install UML Designer from the "Eclipse marketplace":http://marketplace.eclipse.org/search/site/UML%2520Designer or the Obeo marketplace "Obeo marketplace":http://marketplace.obeonetwork.com/module/uml/download. Don't know how to install a module from the marketplace ? Have a look to the "marketplace client introduction":http://marketplace.eclipse.org/marketplace-client-intro.
-
-h2(#Update_Sites). Update Sites
+h3(#Update_Sites). Update Sites
 
 The update-sites provide a p2 repository for UML Designer. Don't know how to install a module from an Update Site ? Have a look to our "video":http://www.youtube.com/watch?v=qYTrO7THer0 or to the full "procedure":http://marketplace.eclipse.org/updatesite/help?url=http%3A//marketplace.obeonetwork.com/updates/od61/ description.
 
-h1. Releases
+h2. Releases
 
 All the releases and the corresponding code and issues are listed on the release page :
 "https://github.com/ObeoNetwork/UML-Designer/releases":https://github.com/ObeoNetwork/UML-Designer/releases
 
-h1. Roadmap
+h2. Roadmap
 
 To see the roadmap and the next available releases, you can have a look to the milestone page : "https://github.com/ObeoNetwork/UML-Designer/milestones":https://github.com/ObeoNetwork/UML-Designer/milestones
