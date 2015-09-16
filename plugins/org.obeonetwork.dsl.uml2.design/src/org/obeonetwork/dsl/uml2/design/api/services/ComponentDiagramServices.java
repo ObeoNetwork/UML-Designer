@@ -15,6 +15,7 @@ import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -61,6 +62,19 @@ public class ComponentDiagramServices extends AbstractDiagramServices {
 		final ComponentRealization result = abstraction.createRealization(null);
 		result.getRealizingClassifiers().add(realizingClassifier);
 		return result;
+	}
+
+	/**
+	 * Connect two elements with a connector. Enable features : From Interface to Interface From Property to
+	 * Property From Interface to Port (Delegation)
+	 *
+	 * @param sourceView
+	 *            the current source view
+	 * @param targetView
+	 *            the current target view
+	 */
+	public void createConnector(AbstractDNode sourceView, AbstractDNode targetView) {
+		ConnectorServices.INSTANCE.createConnector(sourceView, targetView);
 	}
 
 	/**
@@ -173,8 +187,8 @@ public class ComponentDiagramServices extends AbstractDiagramServices {
 			result = behavioredClassifier.createInterfaceRealization(null, contract);
 		} else {
 			LogServices.INSTANCE
-					.error("CompositeStructureServices.createInterfaceRealization(" + context.getClass() //$NON-NLS-1$
-							+ ") not handled", null); //$NON-NLS-1$
+			.error("CompositeStructureServices.createInterfaceRealization(" + context.getClass() //$NON-NLS-1$
+			+ ") not handled", null); //$NON-NLS-1$
 		}
 
 		return result;
@@ -219,7 +233,7 @@ public class ComponentDiagramServices extends AbstractDiagramServices {
 			// The name is provided by the item provider.
 		} else {
 			LogServices.INSTANCE.error("CompositeStructureServices.createUsage(" + context.getClass() //$NON-NLS-1$
-					+ ") not handled", null); //$NON-NLS-1$
+			+ ") not handled", null); //$NON-NLS-1$
 		}
 
 		return result;
@@ -455,6 +469,24 @@ public class ComponentDiagramServices extends AbstractDiagramServices {
 	 */
 	public boolean isComponent(EObject element) {
 		return ElementServices.INSTANCE.isComponent(element);
+	}
+
+	/**
+	 * Test if a given couple of source/target is valid to display for a connector.
+	 *
+	 * @param source
+	 *            the source
+	 * @param sourceView
+	 *            the source view
+	 * @param target
+	 *            the target
+	 * @param targetView
+	 *            the target view
+	 * @return true if it is valid
+	 */
+	public boolean isConnectable(Element source, DSemanticDecorator sourceView, Element target,
+			DSemanticDecorator targetView) {
+		return ConnectorServices.INSTANCE.isConnectable(source, sourceView, target, targetView);
 	}
 
 	/**
