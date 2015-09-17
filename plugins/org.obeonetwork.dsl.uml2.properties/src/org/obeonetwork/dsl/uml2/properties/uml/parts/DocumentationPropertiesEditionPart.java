@@ -13,39 +13,33 @@ package org.obeonetwork.dsl.uml2.properties.uml.parts;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Package;
 
-
-
-
 /**
  * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
  * @generated
  */
 public interface DocumentationPropertiesEditionPart {
 
-	/**
-	 * @return the comment
-	 * @generated
-	 */
-	public String getComment();
+    /**
+     * @return the comment
+     * @generated
+     */
+    public String getComment();
 
-	/**
-	 * Defines a new comment
-	 * @param newValue the new comment to set
-	 * @generated
-	 */
-	public void setComment(String newValue);
+    /**
+     * Defines a new comment
+     * 
+     * @param newValue
+     *            the new comment to set
+     * @generated
+     */
+    public void setComment(String newValue);
 
-
-
-
-
-	/**
-	 * Returns the internationalized title text.
-	 * 
-	 * @return the internationalized title text.
-	 * @generated
-	 */
-	public String getTitle();
-
+    /**
+     * Returns the internationalized title text.
+     * 
+     * @return the internationalized title text.
+     * @generated
+     */
+    public String getTitle();
 
 }

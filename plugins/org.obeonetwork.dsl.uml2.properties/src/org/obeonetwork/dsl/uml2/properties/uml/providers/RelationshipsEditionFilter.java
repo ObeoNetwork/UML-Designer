@@ -45,31 +45,18 @@ import org.obeonetwork.dsl.uml2.properties.uml.parts.RelationshipsPropertiesEdit
  */
 public class RelationshipsEditionFilter implements IFilter {
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
-	 */
-	public boolean select(Object toTest) {
-		EObject eObj = EEFUtils.resolveSemanticObject(toTest);
-		return eObj != null
-				&& (eObj instanceof org.eclipse.uml2.uml.Package
-						|| eObj instanceof Class || eObj instanceof Interface
-						|| eObj instanceof DataType
-						|| eObj instanceof PrimitiveType
-						|| eObj instanceof Enumeration
-						|| eObj instanceof Operation
-						|| eObj instanceof Parameter
-						|| eObj instanceof Property
-						|| eObj instanceof Component || eObj instanceof Port
-						|| eObj instanceof Actor || eObj instanceof Artifact
-						|| eObj instanceof CallOperationAction
-						|| eObj instanceof Collaboration
-						|| eObj instanceof DataStoreNode
-						|| eObj instanceof ControlNode
-						|| eObj instanceof FinalState || eObj instanceof Pin
-						|| eObj instanceof OpaqueAction
-						|| eObj instanceof Vertex || eObj instanceof Region || eObj instanceof UseCase);
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
+     */
+    public boolean select(Object toTest) {
+        EObject eObj = EEFUtils.resolveSemanticObject(toTest);
+        return eObj != null
+                && (eObj instanceof org.eclipse.uml2.uml.Package || eObj instanceof Class || eObj instanceof Interface || eObj instanceof DataType || eObj instanceof PrimitiveType
+                        || eObj instanceof Enumeration || eObj instanceof Operation || eObj instanceof Parameter || eObj instanceof Property || eObj instanceof Component || eObj instanceof Port
+                        || eObj instanceof Actor || eObj instanceof Artifact || eObj instanceof CallOperationAction || eObj instanceof Collaboration || eObj instanceof DataStoreNode
+                        || eObj instanceof ControlNode || eObj instanceof FinalState || eObj instanceof Pin || eObj instanceof OpaqueAction || eObj instanceof Vertex || eObj instanceof Region || eObj instanceof UseCase);
+    }
 
 }

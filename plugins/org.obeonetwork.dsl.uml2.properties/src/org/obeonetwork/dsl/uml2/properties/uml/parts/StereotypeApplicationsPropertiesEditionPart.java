@@ -17,26 +17,26 @@ import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.OperationsTableSet
  */
 public interface StereotypeApplicationsPropertiesEditionPart {
 
-	/**
-	 * Init the stereotypeApplications applications
-	 * 
-	 * @param settings
-	 *            settings for the stereotypeApplications ReferencesTable
-	 */
-	public void initStereotypeApplications(OperationsTableSettings settings);
+    /**
+     * Init the stereotypeApplications applications
+     * 
+     * @param settings
+     *            settings for the stereotypeApplications ReferencesTable
+     */
+    public void initStereotypeApplications(OperationsTableSettings settings);
 
-	/**
-	 * Update the stereotypeApplications
-	 * 
-	 * @param newValue
-	 *            the stereotypeApplications to update
-	 */
-	public void updateStereotypeApplications();
+    /**
+     * Update the stereotypeApplications
+     * 
+     * @param newValue
+     *            the stereotypeApplications to update
+     */
+    public void updateStereotypeApplications();
 
-	/**
-	 * Returns the internationalized title text.
-	 * 
-	 * @return the internationalized title text.
-	 */
-	public String getTitle();
+    /**
+     * Returns the internationalized title text.
+     * 
+     * @return the internationalized title text.
+     */
+    public String getTitle();
 }

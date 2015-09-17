@@ -20,37 +20,32 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.ModelExplorerView;
 import org.eclipse.ui.IWorkbenchPart;
 
-public abstract class CustomSectionPropertiesEditingPart extends
-		SectionPropertiesEditingPart {
+public abstract class CustomSectionPropertiesEditingPart extends SectionPropertiesEditingPart {
 
-	public CustomSectionPropertiesEditingPart() {
-		super();
-	}
+    public CustomSectionPropertiesEditingPart() {
+        super();
+    }
 
-	public CustomSectionPropertiesEditingPart(
-			IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+    public CustomSectionPropertiesEditingPart(IPropertiesEditionComponent editionComponent) {
+        super(editionComponent);
+    }
 
-	@Override
-	protected void initializeEditingDomain(IWorkbenchPart part,
-			ISelection selection) {
-		super.initializeEditingDomain(part, selection);
-		if (getEditingDomain() == null) {
-			if (part instanceof ModelExplorerView) {
-				if (selection instanceof StructuredSelection) {
-					Object firstElement = ((StructuredSelection) selection)
-							.getFirstElement();
-					if (firstElement instanceof EObject) {
-						TransactionalEditingDomain siriusEditingDomain = TransactionUtil
-								.getEditingDomain((EObject) firstElement);
-						if (siriusEditingDomain != null) {
-							setEditingDomain(siriusEditingDomain);
-						}
-					}
-				}
-			}
-		}
-	}
+    @Override
+    protected void initializeEditingDomain(IWorkbenchPart part, ISelection selection) {
+        super.initializeEditingDomain(part, selection);
+        if (getEditingDomain() == null) {
+            if (part instanceof ModelExplorerView) {
+                if (selection instanceof StructuredSelection) {
+                    Object firstElement = ((StructuredSelection) selection).getFirstElement();
+                    if (firstElement instanceof EObject) {
+                        TransactionalEditingDomain siriusEditingDomain = TransactionUtil.getEditingDomain((EObject) firstElement);
+                        if (siriusEditingDomain != null) {
+                            setEditingDomain(siriusEditingDomain);
+                        }
+                    }
+                }
+            }
+        }
+    }
 
 }

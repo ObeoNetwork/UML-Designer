@@ -17,41 +17,31 @@ import org.obeonetwork.dsl.uml2.properties.components.PinCustomPropertiesEdition
 import org.obeonetwork.dsl.uml2.properties.uml.components.PinPropertiesEditionComponent;
 import org.obeonetwork.dsl.uml2.properties.uml.providers.PinPropertiesEditionProvider;
 
-public class PinCustomPropertiesEditionProvider extends
-		PinPropertiesEditionProvider {
-	@Override
-	public IPropertiesEditionComponent getPropertiesEditingComponent(
-			PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof Pin) {
-			return new PinCustomPropertiesEditionComponent(editingContext,
-					editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+public class PinCustomPropertiesEditionProvider extends PinPropertiesEditionProvider {
+    @Override
+    public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
+        if (editingContext.getEObject() instanceof Pin) {
+            return new PinCustomPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+        }
+        return super.getPropertiesEditingComponent(editingContext, mode);
+    }
 
-	@Override
-	public IPropertiesEditionComponent getPropertiesEditingComponent(
-			PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof Pin) {
-			if (PinPropertiesEditionComponent.GENERAL_PART.equals(part))
-				return new PinCustomPropertiesEditionComponent(editingContext,
-						editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    @Override
+    public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
+        if (editingContext.getEObject() instanceof Pin) {
+            if (PinPropertiesEditionComponent.GENERAL_PART.equals(part))
+                return new PinCustomPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+        }
+        return super.getPropertiesEditingComponent(editingContext, mode, part);
+    }
 
-	@Override
-	@SuppressWarnings("rawtypes")
-	public IPropertiesEditionComponent getPropertiesEditingComponent(
-			PropertiesEditingContext editingContext, String mode, String part,
-			java.lang.Class refinement) {
-		if (editingContext.getEObject() instanceof Pin) {
-			if (PinPropertiesEditionComponent.GENERAL_PART.equals(part)
-					&& refinement == PinPropertiesEditionComponent.class)
-				return new PinCustomPropertiesEditionComponent(editingContext,
-						editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part,
-				refinement);
-	}
+    @Override
+    @SuppressWarnings("rawtypes")
+    public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
+        if (editingContext.getEObject() instanceof Pin) {
+            if (PinPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == PinPropertiesEditionComponent.class)
+                return new PinCustomPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+        }
+        return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
+    }
 }

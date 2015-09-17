@@ -25,41 +25,41 @@ import org.eclipse.uml2.uml.ValueSpecification;
  */
 public class EEFService {
 
-	/**
-	 * Create a comment. EEF will be in charge of adding the comment to the
-	 * parent element, so the function just as to create the new Comment and
-	 * return it.
-	 * 
-	 * @param ownerElement
-	 *            UML element
-	 * @return New comment
-	 */
-	public static Comment createComment(EObject ownerElement) {
-		Comment comment = null;
-		if (ownerElement instanceof Element) {
-			comment = UMLFactory.eINSTANCE.createComment();
-			comment.getAnnotatedElements().add((Element) ownerElement);
-		}
-		return comment;
-	}
+    /**
+     * Create a comment. EEF will be in charge of adding the comment to the
+     * parent element, so the function just as to create the new Comment and
+     * return it.
+     * 
+     * @param ownerElement
+     *            UML element
+     * @return New comment
+     */
+    public static Comment createComment(EObject ownerElement) {
+        Comment comment = null;
+        if (ownerElement instanceof Element) {
+            comment = UMLFactory.eINSTANCE.createComment();
+            comment.getAnnotatedElements().add((Element) ownerElement);
+        }
+        return comment;
+    }
 
-	/**
-	 * Return the parent package of a state.
-	 * 
-	 * @param semanticObject
-	 *            State
-	 * @return Parent package
-	 */
-	public static Element getParent(EObject semanticObject) {
-		if (semanticObject instanceof Transition) {
-			return ((Transition) semanticObject);
-		}
-		if (semanticObject instanceof ValueSpecification) {
-			return ((ValueSpecification) semanticObject).getOwner();
-		}
-		if (semanticObject instanceof Element) {
-			return ((Element) semanticObject).getNearestPackage();
-		}
-		return null;
-	}
+    /**
+     * Return the parent package of a state.
+     * 
+     * @param semanticObject
+     *            State
+     * @return Parent package
+     */
+    public static Element getParent(EObject semanticObject) {
+        if (semanticObject instanceof Transition) {
+            return ((Transition) semanticObject);
+        }
+        if (semanticObject instanceof ValueSpecification) {
+            return ((ValueSpecification) semanticObject).getOwner();
+        }
+        if (semanticObject instanceof Element) {
+            return ((Element) semanticObject).getNearestPackage();
+        }
+        return null;
+    }
 }

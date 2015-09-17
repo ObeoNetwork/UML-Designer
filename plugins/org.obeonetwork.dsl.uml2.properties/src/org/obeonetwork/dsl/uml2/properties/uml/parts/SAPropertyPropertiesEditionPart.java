@@ -10,15 +10,14 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.parts;
 
-
 /**
  * @author <a href="mailto:cedric.notot@obeo.fr">Cédric Notot</a>
  */
 public interface SAPropertyPropertiesEditionPart {
 
-	/**
-	 * @param value
-	 */
-	void setValue(Object value);
-	
+    /**
+     * @param value
+     */
+    void setValue(Object value);
+
 }

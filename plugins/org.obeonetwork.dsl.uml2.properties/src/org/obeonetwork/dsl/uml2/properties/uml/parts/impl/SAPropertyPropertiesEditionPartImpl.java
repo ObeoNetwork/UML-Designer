@@ -79,779 +79,617 @@ import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
 /**
  * @author <a href="mailto:cedric.notot@obeo.fr">Cédric Notot</a>
  */
-public class SAPropertyPropertiesEditionPartImpl extends
-		CompositePropertiesEditionPart implements ISWTPropertiesEditionPart,
-		SAPropertyPropertiesEditionPart {
+public class SAPropertyPropertiesEditionPartImpl extends CompositePropertiesEditionPart implements ISWTPropertiesEditionPart, SAPropertyPropertiesEditionPart {
 
-	private StereotypeApplicationProperty property;
-	private KindValue kind = null;
+    private StereotypeApplicationProperty property;
 
-	private Text textValue;
-	// private FeatureEditorDialog manyTextValue;
-	private LinkEReferenceViewer singleContainmentValue;
-	private ViewerFilter singleContainmentValueFilter;
-	private AdvancedEObjectFlatComboViewer singleReferenceValue;
-	private ViewerFilter singleReferenceValueFilter;
-	private ReferencesTable manyReferenceOrContainmentValue;
-	private List<ViewerFilter> manyReferenceOrContainmentValueBusinessFilters = new ArrayList<ViewerFilter>();
-	private List<ViewerFilter> manyReferenceOrContainmentValueFilters = new ArrayList<ViewerFilter>();
-	protected EMFComboViewer enumValue;
-	private Button buttonValue;
+    private KindValue kind = null;
 
-	/**
-	 * Constructor.
-	 * 
-	 * @param editionComponent
-	 */
-	public SAPropertyPropertiesEditionPartImpl(
-			IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-		PropertiesEditingContext context = propertiesEditionComponent
-				.getEditingContext().getParentContext();
-		if (context instanceof SAPropertyContext) {
-			property = ((SAPropertyContext) context)
-					.getStereotypeApplicationProperty();
-			setKindValue(property);
-		}
-	}
+    private Text textValue;
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#createFigure(org.eclipse.swt.widgets.Composite)
-	 */
-	public Composite createFigure(final Composite parent) {
-		view = new Composite(parent, SWT.NONE);
-		GridLayout layout = new GridLayout();
-		layout.numColumns = 3;
-		view.setLayout(layout);
-		createControls(view);
-		return view;
-	}
+    // private FeatureEditorDialog manyTextValue;
+    private LinkEReferenceViewer singleContainmentValue;
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#createControls(org.eclipse.swt.widgets.Composite)
-	 */
-	public void createControls(Composite view) {
-		CompositionSequence attributesStep = new BindingCompositionSequence(
-				propertiesEditionComponent);
-		attributesStep
-				.addStep(CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty);
+    private ViewerFilter singleContainmentValueFilter;
 
-		composer = new PartComposer(attributesStep) {
+    private AdvancedEObjectFlatComboViewer singleReferenceValue;
 
-			@Override
-			public Composite addToPart(Composite parent, Object key) {
-				if (key == CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty) {
-					return createPropertyField(parent);
-				}
-				return parent;
-			}
-		};
-		composer.compose(view);
-	}
+    private ViewerFilter singleReferenceValueFilter;
 
-	/**
-	 * @param parent
-	 * @return
-	 */
-	protected Composite createPropertyField(Composite parent) {
-		if (getKindValue() == KindValue.BooleanField) {
-			return createCheckbox(parent);
-		} else if (getKindValue() == KindValue.EnumField) {
-			return createEnumEMFComboViewer(parent);
-		} else if (getKindValue() == KindValue.StringField) {
-			return createTextValue(parent);
-		} else if (getKindValue() == KindValue.SingleReferenceField) {
-			return createSingleReferenceValueAdvancedFlatComboViewer(parent);
-		} else if (getKindValue() == KindValue.ManyReferenceField
-				|| getKindValue() == KindValue.ManyContainmentField) {
-			return createManyReferenceValueAdvancedReferencesTable(parent);
-		} else if (getKindValue() == KindValue.SingleContainmentField) {
-			return createSingleContainmentValueLinkEReferenceViewer(parent);
-		}/*
-		 * else if (getKindValue() == KindValue.ManyStringField) { return
-		 * createManyTextValue(parent); }
-		 */
-		return parent;
-	}
+    private ReferencesTable manyReferenceOrContainmentValue;
 
-	// TODO
-	// protected Composite createManyTextValue(Composite parent) {
-	// createDescription(
-	// parent,
-	// CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty,
-	// property.getFeature().getName());
-	// manyTextValue = new FeatureEditorDialog(
-	// parent.getShell(),
-	// new UMLItemDelegator(adapterFactory, null),
-	// property.getContainer(),
-	// property.getFeature().getEType(),
-	// (List<?>)property.getValue(),
-	// property.getFeature().getName(),
-	// null,
-	// true,
-	// false,
-	// property.getFeature().isUnique());
-	//
-	// manyTextValue.create();
-	// return parent;
-	// }
+    private List<ViewerFilter> manyReferenceOrContainmentValueBusinessFilters = new ArrayList<ViewerFilter>();
 
-	/**
-	 * @param parent
-	 * @return
-	 */
-	protected Composite createTextValue(Composite parent) {
-		createDescription(
-				parent,
-				CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty,
-				property.getFeature().getName());
-		textValue = SWTUtils.createScrollableText(parent, SWT.BORDER);
-		GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
-		textValue.setLayoutData(nameData);
-		textValue.addFocusListener(new FocusAdapter() {
+    private List<ViewerFilter> manyReferenceOrContainmentValueFilters = new ArrayList<ViewerFilter>();
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void focusLost(FocusEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									SAPropertyPropertiesEditionPartImpl.this,
-									CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty,
-									PropertiesEditionEvent.COMMIT,
-									PropertiesEditionEvent.SET, null, textValue
-											.getText()));
-			}
+    protected EMFComboViewer enumValue;
 
-		});
-		textValue.addKeyListener(new KeyAdapter() {
+    private Button buttonValue;
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
-			 */
-			@Override
-			@SuppressWarnings("synthetic-access")
-			public void keyPressed(KeyEvent e) {
-				if (e.character == SWT.CR) {
-					if (propertiesEditionComponent != null)
-						propertiesEditionComponent
-								.firePropertiesChanged(new PropertiesEditionEvent(
-										SAPropertyPropertiesEditionPartImpl.this,
-										CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty,
-										PropertiesEditionEvent.COMMIT,
-										PropertiesEditionEvent.SET, null,
-										textValue.getText()));
-				}
-			}
+    /**
+     * Constructor.
+     * 
+     * @param editionComponent
+     */
+    public SAPropertyPropertiesEditionPartImpl(IPropertiesEditionComponent editionComponent) {
+        super(editionComponent);
+        PropertiesEditingContext context = propertiesEditionComponent.getEditingContext().getParentContext();
+        if (context instanceof SAPropertyContext) {
+            property = ((SAPropertyContext) context).getStereotypeApplicationProperty();
+            setKindValue(property);
+        }
+    }
 
-		});
-		EditingUtils.setID(textValue, UmlViewsRepository.General.name);
-		EditingUtils.setEEFtype(textValue, "eef::Text"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(
-				parent,
-				propertiesEditionComponent
-						.getHelpContent(
-								CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty,
-								UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#createFigure(org.eclipse.swt.widgets.Composite)
+     */
+    public Composite createFigure(final Composite parent) {
+        view = new Composite(parent, SWT.NONE);
+        GridLayout layout = new GridLayout();
+        layout.numColumns = 3;
+        view.setLayout(layout);
+        createControls(view);
+        return view;
+    }
 
-	/**
-	 * @param parent
-	 * @return
-	 */
-	protected Composite createSingleContainmentValueLinkEReferenceViewer(
-			Composite parent) {
-		createDescription(
-				parent,
-				CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty,
-				property.getFeature().getName());
-		// create callback listener
-		EObjectFlatComboViewerListener listener = new EObjectFlatComboViewerListener() {
-			public void handleSet(EObject element) {
-				propertiesEditionComponent
-						.firePropertiesChanged(new PropertiesEditionEvent(
-								SAPropertyPropertiesEditionPartImpl.this,
-								CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty,
-								PropertiesEditionEvent.COMMIT,
-								PropertiesEditionEvent.SET, null, element));
-			}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.parts.ISWTPropertiesEditionPart#createControls(org.eclipse.swt.widgets.Composite)
+     */
+    public void createControls(Composite view) {
+        CompositionSequence attributesStep = new BindingCompositionSequence(propertiesEditionComponent);
+        attributesStep.addStep(CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty);
 
-			public void navigateTo(EObject element) {
-			}
+        composer = new PartComposer(attributesStep) {
 
-			public EObject handleCreate() {
-				propertiesEditionComponent
-						.firePropertiesChanged(new PropertiesEditionEvent(
-								SAPropertyPropertiesEditionPartImpl.this,
-								CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty,
-								PropertiesEditionEvent.COMMIT,
-								PropertiesEditionEvent.ADD, null, null));
-				singleContainmentValue.setInput(property.getValue());
-				singleContainmentValue.setSelection((EObject) property
-						.getValue());
-				return getContainmentValue();
-			}
+            @Override
+            public Composite addToPart(Composite parent, Object key) {
+                if (key == CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty) {
+                    return createPropertyField(parent);
+                }
+                return parent;
+            }
+        };
+        composer.compose(view);
+    }
 
-			public void handleEdit(EObject element) {
-				editValue(element);
-				singleContainmentValue.setInput(element);
-			}
-		};
-		// create widget
-		singleContainmentValue = new LinkEReferenceViewer(
-				getDescription(
-						CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty,
-						property.getFeature().getName()), resourceSet,
-				singleContainmentValueFilter, propertiesEditionComponent
-						.getEditingContext().getAdapterFactory(), listener) {
-			@Override
-			protected void createButton() {
-				super.createButton();
-				browseButton.setVisible(false);
-			}
-		};
-		singleContainmentValue.createControls(parent);
-		GridData defaultValueData = new GridData(GridData.FILL_HORIZONTAL);
-		singleContainmentValue.setLayoutData(defaultValueData);
-		singleContainmentValue
-				.setID(CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty);
-		SWTUtils.createHelpButton(
-				parent,
-				propertiesEditionComponent
-						.getHelpContent(
-								CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty,
-								UmlViewsRepository.SWT_KIND), null);
-		singleContainmentValue.setButtonMode(ButtonsModeEnum.CREATE);
-		return parent;
-	}
+    /**
+     * @param parent
+     * @return
+     */
+    protected Composite createPropertyField(Composite parent) {
+        if (getKindValue() == KindValue.BooleanField) {
+            return createCheckbox(parent);
+        } else if (getKindValue() == KindValue.EnumField) {
+            return createEnumEMFComboViewer(parent);
+        } else if (getKindValue() == KindValue.StringField) {
+            return createTextValue(parent);
+        } else if (getKindValue() == KindValue.SingleReferenceField) {
+            return createSingleReferenceValueAdvancedFlatComboViewer(parent);
+        } else if (getKindValue() == KindValue.ManyReferenceField || getKindValue() == KindValue.ManyContainmentField) {
+            return createManyReferenceValueAdvancedReferencesTable(parent);
+        } else if (getKindValue() == KindValue.SingleContainmentField) {
+            return createSingleContainmentValueLinkEReferenceViewer(parent);
+        }/*
+          * else if (getKindValue() == KindValue.ManyStringField) { return
+          * createManyTextValue(parent); }
+          */
+        return parent;
+    }
 
-	/**
-	 * @param parent
-	 * @return
-	 */
-	protected Composite createSingleReferenceValueAdvancedFlatComboViewer(
-			Composite parent) {
-		createDescription(
-				parent,
-				CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty,
-				property.getFeature().getName());
-		// create callback listener
-		EObjectFlatComboViewerListener listener = new EObjectFlatComboViewerListener() {
-			public void handleSet(EObject element) {
-				propertiesEditionComponent
-						.firePropertiesChanged(new PropertiesEditionEvent(
-								SAPropertyPropertiesEditionPartImpl.this,
-								CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty,
-								PropertiesEditionEvent.COMMIT,
-								PropertiesEditionEvent.SET, null, element));
-			}
+    // TODO
+    // protected Composite createManyTextValue(Composite parent) {
+    // createDescription(
+    // parent,
+    // CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty,
+    // property.getFeature().getName());
+    // manyTextValue = new FeatureEditorDialog(
+    // parent.getShell(),
+    // new UMLItemDelegator(adapterFactory, null),
+    // property.getContainer(),
+    // property.getFeature().getEType(),
+    // (List<?>)property.getValue(),
+    // property.getFeature().getName(),
+    // null,
+    // true,
+    // false,
+    // property.getFeature().isUnique());
+    //
+    // manyTextValue.create();
+    // return parent;
+    // }
 
-			public void navigateTo(EObject element) {
-			}
+    /**
+     * @param parent
+     * @return
+     */
+    protected Composite createTextValue(Composite parent) {
+        createDescription(parent, CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty, property.getFeature().getName());
+        textValue = SWTUtils.createScrollableText(parent, SWT.BORDER);
+        GridData nameData = new GridData(GridData.FILL_HORIZONTAL);
+        textValue.setLayoutData(nameData);
+        textValue.addFocusListener(new FocusAdapter() {
 
-			public EObject handleCreate() {
-				propertiesEditionComponent
-						.firePropertiesChanged(new PropertiesEditionEvent(
-								SAPropertyPropertiesEditionPartImpl.this,
-								CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty,
-								PropertiesEditionEvent.COMMIT,
-								PropertiesEditionEvent.ADD, null, null));
-				return getReferenceValue();
-			}
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.swt.events.FocusAdapter#focusLost(org.eclipse.swt.events.FocusEvent)
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void focusLost(FocusEvent e) {
+                if (propertiesEditionComponent != null)
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SAPropertyPropertiesEditionPartImpl.this,
+                            CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, textValue.getText()));
+            }
 
-			public void handleEdit(EObject element) {
-				propertiesEditionComponent
-						.firePropertiesChanged(new PropertiesEditionEvent(
-								SAPropertyPropertiesEditionPartImpl.this,
-								CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty,
-								PropertiesEditionEvent.COMMIT,
-								PropertiesEditionEvent.EDIT, null, element));
-			}
-		};
-		// create widget
+        });
+        textValue.addKeyListener(new KeyAdapter() {
 
-		AdapterFactory adapterFactory = propertiesEditionComponent
-				.getEditingContext().getAdapterFactory();
-		if (adapterFactory instanceof ComposedAdapterFactory) {
-			// ((ComposedAdapterFactory) adapterFactory)
-			// .addAdapterFactory(new UMLResourceItemProviderAdapterFactory());
-			((ComposedAdapterFactory) adapterFactory)
-					.addAdapterFactory(new UMLItemProviderAdapterFactory());
-			// ((ComposedAdapterFactory) adapterFactory)
-			// .addAdapterFactory(new EcoreItemProviderAdapterFactory());
-		}
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.swt.events.KeyAdapter#keyPressed(org.eclipse.swt.events.KeyEvent)
+             */
+            @Override
+            @SuppressWarnings("synthetic-access")
+            public void keyPressed(KeyEvent e) {
+                if (e.character == SWT.CR) {
+                    if (propertiesEditionComponent != null)
+                        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SAPropertyPropertiesEditionPartImpl.this,
+                                CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, textValue.getText()));
+                }
+            }
 
-		singleReferenceValue = new AdvancedEObjectFlatComboViewer(
-				getDescription(
-						CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty,
-						property.getFeature().getName()), resourceSet,
-				singleReferenceValueFilter, adapterFactory, listener);
-		singleReferenceValue.createControls(parent);
-		GridData typeData = new GridData(GridData.FILL_HORIZONTAL);
-		singleReferenceValue.setLayoutData(typeData);
-		singleReferenceValue
-				.setID(CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty);
-		SWTUtils.createHelpButton(
-				parent,
-				propertiesEditionComponent
-						.getHelpContent(
-								CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty,
-								UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		return parent;
-	}
+        });
+        EditingUtils.setID(textValue, UmlViewsRepository.General.name);
+        EditingUtils.setEEFtype(textValue, "eef::Text"); //$NON-NLS-1$
+        SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+        return parent;
+    }
 
-	/**
-	 * @return
-	 */
-	public EObject getReferenceValue() {
-		return singleReferenceValue.getSelection();
-	}
+    /**
+     * @param parent
+     * @return
+     */
+    protected Composite createSingleContainmentValueLinkEReferenceViewer(Composite parent) {
+        createDescription(parent, CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty, property.getFeature().getName());
+        // create callback listener
+        EObjectFlatComboViewerListener listener = new EObjectFlatComboViewerListener() {
+            public void handleSet(EObject element) {
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SAPropertyPropertiesEditionPartImpl.this,
+                        CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, element));
+            }
 
-	/**
-	 * @return
-	 */
-	public EObject getContainmentValue() {
-		return singleContainmentValue.getSelection();
-	}
+            public void navigateTo(EObject element) {
+            }
 
-	/**
-	 * @param parent
-	 * @return
-	 */
-	protected Composite createManyReferenceValueAdvancedReferencesTable(
-			Composite parent) {
-		String label = getDescription(
-				CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty,
-				property.getFeature().getName());
-		this.manyReferenceOrContainmentValue = new ReferencesTable(label,
-				new ReferencesTableListener() {
-					public void handleAdd() {
-						if (getKindValue() == KindValue.ManyReferenceField) {
-							addReferenceValue();
-						} else {
-							propertiesEditionComponent
-									.firePropertiesChanged(new PropertiesEditionEvent(
-											SAPropertyPropertiesEditionPartImpl.this,
-											CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty,
-											PropertiesEditionEvent.COMMIT,
-											PropertiesEditionEvent.ADD, null,
-											null));
-							manyReferenceOrContainmentValue.refresh();
-						}
-					}
+            public EObject handleCreate() {
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SAPropertyPropertiesEditionPartImpl.this,
+                        CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+                singleContainmentValue.setInput(property.getValue());
+                singleContainmentValue.setSelection((EObject) property.getValue());
+                return getContainmentValue();
+            }
 
-					public void handleEdit(EObject element) {
-						editValue(element);
-						manyReferenceOrContainmentValue.refresh();
-					}
+            public void handleEdit(EObject element) {
+                editValue(element);
+                singleContainmentValue.setInput(element);
+            }
+        };
+        // create widget
+        singleContainmentValue = new LinkEReferenceViewer(getDescription(CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty, property.getFeature().getName()), resourceSet,
+                singleContainmentValueFilter, propertiesEditionComponent.getEditingContext().getAdapterFactory(), listener) {
+            @Override
+            protected void createButton() {
+                super.createButton();
+                browseButton.setVisible(false);
+            }
+        };
+        singleContainmentValue.createControls(parent);
+        GridData defaultValueData = new GridData(GridData.FILL_HORIZONTAL);
+        singleContainmentValue.setLayoutData(defaultValueData);
+        singleContainmentValue.setID(CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty);
+        SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty, UmlViewsRepository.SWT_KIND), null);
+        singleContainmentValue.setButtonMode(ButtonsModeEnum.CREATE);
+        return parent;
+    }
 
-					public void handleMove(EObject element, int oldIndex,
-							int newIndex) {
-						moveReferenceValue(element, oldIndex, newIndex);
-					}
+    /**
+     * @param parent
+     * @return
+     */
+    protected Composite createSingleReferenceValueAdvancedFlatComboViewer(Composite parent) {
+        createDescription(parent, CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty, property.getFeature().getName());
+        // create callback listener
+        EObjectFlatComboViewerListener listener = new EObjectFlatComboViewerListener() {
+            public void handleSet(EObject element) {
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SAPropertyPropertiesEditionPartImpl.this,
+                        CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, element));
+            }
 
-					public void handleRemove(EObject element) {
-						removeReferenceValue(element);
-					}
+            public void navigateTo(EObject element) {
+            }
 
-					public void navigateTo(EObject element) {
-					}
-				});
-		for (ViewerFilter filter : this.manyReferenceOrContainmentValueFilters) {
-			this.manyReferenceOrContainmentValue.addFilter(filter);
-		}
-		this.manyReferenceOrContainmentValue
-				.setHelpText(propertiesEditionComponent
-						.getHelpContent(
-								CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty,
-								UmlViewsRepository.SWT_KIND));
-		this.manyReferenceOrContainmentValue.createControls(parent);
-		this.manyReferenceOrContainmentValue
-				.addSelectionListener(new SelectionAdapter() {
+            public EObject handleCreate() {
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SAPropertyPropertiesEditionPartImpl.this,
+                        CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+                return getReferenceValue();
+            }
 
-					public void widgetSelected(SelectionEvent e) {
-						if (e.item != null
-								&& e.item.getData() instanceof EObject) {
-							propertiesEditionComponent
-									.firePropertiesChanged(new PropertiesEditionEvent(
-											SAPropertyPropertiesEditionPartImpl.this,
-											CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty,
-											PropertiesEditionEvent.CHANGE,
-											PropertiesEditionEvent.SELECTION_CHANGED,
-											null, e.item.getData()));
-						}
-					}
+            public void handleEdit(EObject element) {
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SAPropertyPropertiesEditionPartImpl.this,
+                        CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+            }
+        };
+        // create widget
 
-				});
-		GridData usecaseData = new GridData(GridData.FILL_HORIZONTAL);
-		usecaseData.horizontalSpan = 3;
-		this.manyReferenceOrContainmentValue.setLayoutData(usecaseData);
-		this.manyReferenceOrContainmentValue.disableMove();
-		manyReferenceOrContainmentValue
-				.setID(CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty);
-		manyReferenceOrContainmentValue
-				.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
-		return parent;
-	}
+        AdapterFactory adapterFactory = propertiesEditionComponent.getEditingContext().getAdapterFactory();
+        if (adapterFactory instanceof ComposedAdapterFactory) {
+            // ((ComposedAdapterFactory) adapterFactory)
+            // .addAdapterFactory(new UMLResourceItemProviderAdapterFactory());
+            ((ComposedAdapterFactory) adapterFactory).addAdapterFactory(new UMLItemProviderAdapterFactory());
+            // ((ComposedAdapterFactory) adapterFactory)
+            // .addAdapterFactory(new EcoreItemProviderAdapterFactory());
+        }
 
-	protected Composite createEnumEMFComboViewer(Composite parent) {
-		createDescription(
-				parent,
-				CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty,
-				property.getFeature().getName());
-		enumValue = new EMFComboViewer(parent);
-		enumValue.setContentProvider(new ArrayContentProvider());
-		enumValue.setLabelProvider(new AdapterFactoryLabelProvider(
-				EEFRuntimePlugin.getDefault().getAdapterFactory()));
-		GridData enumValueData = new GridData(GridData.FILL_HORIZONTAL);
-		enumValue.getCombo().setLayoutData(enumValueData);
-		enumValue.addSelectionChangedListener(new ISelectionChangedListener() {
+        singleReferenceValue = new AdvancedEObjectFlatComboViewer(getDescription(CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty, property.getFeature().getName()), resourceSet,
+                singleReferenceValueFilter, adapterFactory, listener);
+        singleReferenceValue.createControls(parent);
+        GridData typeData = new GridData(GridData.FILL_HORIZONTAL);
+        singleReferenceValue.setLayoutData(typeData);
+        singleReferenceValue.setID(CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty);
+        SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+        return parent;
+    }
 
-			/**
-			 * {@inheritDoc}
-			 * 
-			 * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
-			 * @generated
-			 */
-			public void selectionChanged(SelectionChangedEvent event) {
-				if (propertiesEditionComponent != null)
+    /**
+     * @return
+     */
+    public EObject getReferenceValue() {
+        return singleReferenceValue.getSelection();
+    }
 
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									SAPropertyPropertiesEditionPartImpl.this,
-									CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty,
-									PropertiesEditionEvent.COMMIT,
-									PropertiesEditionEvent.SET, null,
-									getEnumValue()));
-			}
+    /**
+     * @return
+     */
+    public EObject getContainmentValue() {
+        return singleContainmentValue.getSelection();
+    }
 
-		});
+    /**
+     * @param parent
+     * @return
+     */
+    protected Composite createManyReferenceValueAdvancedReferencesTable(Composite parent) {
+        String label = getDescription(CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty, property.getFeature().getName());
+        this.manyReferenceOrContainmentValue = new ReferencesTable(label, new ReferencesTableListener() {
+            public void handleAdd() {
+                if (getKindValue() == KindValue.ManyReferenceField) {
+                    addReferenceValue();
+                } else {
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SAPropertyPropertiesEditionPartImpl.this,
+                            CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+                    manyReferenceOrContainmentValue.refresh();
+                }
+            }
 
-		enumValue
-				.setID(CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty);
-		SWTUtils.createHelpButton(
-				parent,
-				propertiesEditionComponent
-						.getHelpContent(
-								CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty,
-								UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
-		// Start of user code for createVisibilityEMFComboViewer
+            public void handleEdit(EObject element) {
+                editValue(element);
+                manyReferenceOrContainmentValue.refresh();
+            }
 
-		// End of user code
-		return parent;
-	}
+            public void handleMove(EObject element, int oldIndex, int newIndex) {
+                moveReferenceValue(element, oldIndex, newIndex);
+            }
 
-	protected Composite createCheckbox(Composite parent) {
-		buttonValue = new Button(parent, SWT.CHECK | SWT.FLAT);
-		if (getDescription(
-				CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty,
-				property.getFeature().getName()) != null)
-			buttonValue
-					.setText(getDescription(
-							CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty,
-							property.getFeature().getName()));
+            public void handleRemove(EObject element) {
+                removeReferenceValue(element);
+            }
 
-		buttonValue.addSelectionListener(new SelectionAdapter() {
+            public void navigateTo(EObject element) {
+            }
+        });
+        for (ViewerFilter filter : this.manyReferenceOrContainmentValueFilters) {
+            this.manyReferenceOrContainmentValue.addFilter(filter);
+        }
+        this.manyReferenceOrContainmentValue.setHelpText(propertiesEditionComponent.getHelpContent(CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty, UmlViewsRepository.SWT_KIND));
+        this.manyReferenceOrContainmentValue.createControls(parent);
+        this.manyReferenceOrContainmentValue.addSelectionListener(new SelectionAdapter() {
 
-			/**
-			 * {@inheritDoc}
-			 *
-			 * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
-			 * @generated
-			 */
-			public void widgetSelected(SelectionEvent e) {
-				if (propertiesEditionComponent != null)
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									SAPropertyPropertiesEditionPartImpl.this,
-									CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty,
-									PropertiesEditionEvent.COMMIT,
-									PropertiesEditionEvent.SET, null,
-									new Boolean(buttonValue.getSelection())));
-			}
+            public void widgetSelected(SelectionEvent e) {
+                if (e.item != null && e.item.getData() instanceof EObject) {
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SAPropertyPropertiesEditionPartImpl.this,
+                            CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty, PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+                }
+            }
 
-		});
-		GridData orderedData = new GridData(GridData.FILL_HORIZONTAL);
-		orderedData.horizontalSpan = 2;
-		buttonValue.setLayoutData(orderedData);
-		EditingUtils.setID(buttonValue,
-				UmlViewsRepository.General.Qualifiers.ordered);
-		EditingUtils.setEEFtype(buttonValue, "eef::Checkbox"); //$NON-NLS-1$
-		SWTUtils.createHelpButton(
-				parent,
-				propertiesEditionComponent
-						.getHelpContent(
-								CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty,
-								UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
-		// Start of user code for createOrderedCheckbox
+        });
+        GridData usecaseData = new GridData(GridData.FILL_HORIZONTAL);
+        usecaseData.horizontalSpan = 3;
+        this.manyReferenceOrContainmentValue.setLayoutData(usecaseData);
+        this.manyReferenceOrContainmentValue.disableMove();
+        manyReferenceOrContainmentValue.setID(CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty);
+        manyReferenceOrContainmentValue.setEEFType("eef::AdvancedReferencesTable"); //$NON-NLS-1$
+        return parent;
+    }
 
-		// End of user code
-		return parent;
-	}
+    protected Composite createEnumEMFComboViewer(Composite parent) {
+        createDescription(parent, CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty, property.getFeature().getName());
+        enumValue = new EMFComboViewer(parent);
+        enumValue.setContentProvider(new ArrayContentProvider());
+        enumValue.setLabelProvider(new AdapterFactoryLabelProvider(EEFRuntimePlugin.getDefault().getAdapterFactory()));
+        GridData enumValueData = new GridData(GridData.FILL_HORIZONTAL);
+        enumValue.getCombo().setLayoutData(enumValueData);
+        enumValue.addSelectionChangedListener(new ISelectionChangedListener() {
 
-	protected Object getEnumValue() {
-		Enumerator selection = (Enumerator) ((StructuredSelection) enumValue
-				.getSelection()).getFirstElement();
-		return selection;
-	}
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.eclipse.jface.viewers.ISelectionChangedListener#selectionChanged(org.eclipse.jface.viewers.SelectionChangedEvent)
+             * @generated
+             */
+            public void selectionChanged(SelectionChangedEvent event) {
+                if (propertiesEditionComponent != null)
 
-	/**
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SAPropertyPropertiesEditionPartImpl.this,
+                            CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, getEnumValue()));
+            }
+
+        });
+
+        enumValue.setID(CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty);
+        SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty, UmlViewsRepository.SWT_KIND), null); //$NON-NLS-1$
+        // Start of user code for createVisibilityEMFComboViewer
+
+        // End of user code
+        return parent;
+    }
+
+    protected Composite createCheckbox(Composite parent) {
+        buttonValue = new Button(parent, SWT.CHECK | SWT.FLAT);
+        if (getDescription(CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty, property.getFeature().getName()) != null)
+            buttonValue.setText(getDescription(CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty, property.getFeature().getName()));
+
+        buttonValue.addSelectionListener(new SelectionAdapter() {
+
+            /**
+             * {@inheritDoc}
+             *
+             * @see org.eclipse.swt.events.SelectionAdapter#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+             * @generated
+             */
+            public void widgetSelected(SelectionEvent e) {
+                if (propertiesEditionComponent != null)
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SAPropertyPropertiesEditionPartImpl.this,
+                            CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.SET, null, new Boolean(buttonValue.getSelection())));
+            }
+
+        });
+        GridData orderedData = new GridData(GridData.FILL_HORIZONTAL);
+        orderedData.horizontalSpan = 2;
+        buttonValue.setLayoutData(orderedData);
+        EditingUtils.setID(buttonValue, UmlViewsRepository.General.Qualifiers.ordered);
+        EditingUtils.setEEFtype(buttonValue, "eef::Checkbox"); //$NON-NLS-1$
+        SWTUtils.createHelpButton(parent, propertiesEditionComponent.getHelpContent(CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty, UmlViewsRepository.FORM_KIND), null); //$NON-NLS-1$
+        // Start of user code for createOrderedCheckbox
+
+        // End of user code
+        return parent;
+    }
+
+    protected Object getEnumValue() {
+        Enumerator selection = (Enumerator) ((StructuredSelection) enumValue.getSelection()).getFirstElement();
+        return selection;
+    }
+
+    /**
 	 * 
 	 */
-	protected void addReferenceValue() {
-		TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(
-				manyReferenceOrContainmentValue.getInput(),
-				manyReferenceOrContainmentValueFilters,
-				manyReferenceOrContainmentValueBusinessFilters, property
-						.getFeature().getName(), propertiesEditionComponent
-						.getEditingContext().getAdapterFactory(),
-				current.eResource()) {
-			@Override
-			public void process(IStructuredSelection selection) {
-				for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
-					EObject elem = (EObject) iter.next();
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									SAPropertyPropertiesEditionPartImpl.this,
-									CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty,
-									PropertiesEditionEvent.COMMIT,
-									PropertiesEditionEvent.ADD, null, elem));
-				}
-				manyReferenceOrContainmentValue.refresh();
-			}
-		};
-		dialog.open();
-	}
+    protected void addReferenceValue() {
+        TabElementTreeSelectionDialog dialog = new TabElementTreeSelectionDialog(manyReferenceOrContainmentValue.getInput(), manyReferenceOrContainmentValueFilters,
+                manyReferenceOrContainmentValueBusinessFilters, property.getFeature().getName(), propertiesEditionComponent.getEditingContext().getAdapterFactory(), current.eResource()) {
+            @Override
+            public void process(IStructuredSelection selection) {
+                for (Iterator<?> iter = selection.iterator(); iter.hasNext();) {
+                    EObject elem = (EObject) iter.next();
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SAPropertyPropertiesEditionPartImpl.this,
+                            CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty, PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, elem));
+                }
+                manyReferenceOrContainmentValue.refresh();
+            }
+        };
+        dialog.open();
+    }
 
-	/**
-	 * @param element
-	 * @param oldIndex
-	 * @param newIndex
-	 */
-	protected void moveReferenceValue(EObject element, int oldIndex,
-			int newIndex) {
-		propertiesEditionComponent
-				.firePropertiesChanged(new PropertiesEditionEvent(
-						SAPropertyPropertiesEditionPartImpl.this,
-						CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty,
-						PropertiesEditionEvent.COMMIT,
-						PropertiesEditionEvent.MOVE, element, newIndex));
-		manyReferenceOrContainmentValue.refresh();
-	}
+    /**
+     * @param element
+     * @param oldIndex
+     * @param newIndex
+     */
+    protected void moveReferenceValue(EObject element, int oldIndex, int newIndex) {
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SAPropertyPropertiesEditionPartImpl.this, CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty,
+                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+        manyReferenceOrContainmentValue.refresh();
+    }
 
-	/**
-	 * @param element
-	 */
-	protected void removeReferenceValue(EObject element) {
-		propertiesEditionComponent
-				.firePropertiesChanged(new PropertiesEditionEvent(
-						SAPropertyPropertiesEditionPartImpl.this,
-						CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty,
-						PropertiesEditionEvent.COMMIT,
-						PropertiesEditionEvent.REMOVE, null, element));
-		manyReferenceOrContainmentValue.refresh();
-	}
+    /**
+     * @param element
+     */
+    protected void removeReferenceValue(EObject element) {
+        propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(SAPropertyPropertiesEditionPartImpl.this, CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty,
+                PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+        manyReferenceOrContainmentValue.refresh();
+    }
 
-	/**
-	 * @param element
-	 */
-	protected void editValue(EObject element) {
-		EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(
-				propertiesEditionComponent.getEditingContext(),
-				propertiesEditionComponent, element, adapterFactory);
-		PropertiesEditingProvider provider = (PropertiesEditingProvider) adapterFactory
-				.adapt(element, PropertiesEditingProvider.class);
-		if (provider != null) {
-			PropertiesEditingPolicy policy = provider.getPolicy(context);
-			if (policy != null) {
-				policy.execute();
-			}
-		}
-	}
+    /**
+     * @param element
+     */
+    protected void editValue(EObject element) {
+        EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(propertiesEditionComponent.getEditingContext(), propertiesEditionComponent, element, adapterFactory);
+        PropertiesEditingProvider provider = (PropertiesEditingProvider) adapterFactory.adapt(element, PropertiesEditingProvider.class);
+        if (provider != null) {
+            PropertiesEditingPolicy policy = provider.getPolicy(context);
+            if (policy != null) {
+                policy.execute();
+            }
+        }
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 */
-	public void firePropertiesChanged(IPropertiesEditionEvent event) {
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionListener#firePropertiesChanged(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+     */
+    public void firePropertiesChanged(IPropertiesEditionEvent event) {
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
-	 */
-	public String getTitle() {
-		return CustomUmlMessages.StereotypeApplicationProperty_Part_Title;
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.parts.IPropertiesEditionPart#getTitle()
+     */
+    public String getTitle() {
+        return CustomUmlMessages.StereotypeApplicationProperty_Part_Title;
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.obeonetwork.dsl.uml2.properties.uml.parts.SAPropertyPropertiesEditionPart#setValue(java.lang.Object)
-	 */
-	public void setValue(Object value) {
-		if (getKindValue() == KindValue.BooleanField) {
-			if (value != null) {
-				buttonValue.setSelection(((Boolean) value).booleanValue());
-			} else {
-				buttonValue.setSelection(false);
-			}
-			boolean eefElementEditorReadOnlyState = isReadOnly(CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty);
-			if (eefElementEditorReadOnlyState && buttonValue.isEnabled()) {
-				buttonValue.setEnabled(false);
-				buttonValue.setToolTipText(UmlMessages.General_ReadOnly);
-			} else if (!eefElementEditorReadOnlyState
-					&& !buttonValue.isEnabled()) {
-				buttonValue.setEnabled(true);
-			}
-		} else if (getKindValue() == KindValue.EnumField) {
-			enumValue.setInput((Object) ((EEnumLiteral) property.getValue())
-					.getEEnum().getELiterals());
-			enumValue.modelUpdating(new StructuredSelection(value));
-			boolean eefElementEditorReadOnlyState = isReadOnly(CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty);
-			if (eefElementEditorReadOnlyState && enumValue.isEnabled()) {
-				enumValue.setEnabled(false);
-				enumValue.setToolTipText(UmlMessages.General_ReadOnly);
-			} else if (!eefElementEditorReadOnlyState && !enumValue.isEnabled()) {
-				enumValue.setEnabled(true);
-			}
-		} else if (getKindValue() == KindValue.SingleReferenceField) {
-			EObjectFlatComboSettings referenceSettings = new EObjectFlatComboSettings(
-					property.getContainer(), (EReference) property.getFeature());
-			singleReferenceValue.setInput(referenceSettings);
-			if (current != null) {
-				singleReferenceValue.setSelection(new StructuredSelection(
-						referenceSettings.getValue()));
-			}
-			boolean eefElementEditorReadOnlyState = isReadOnly(CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty);
-			if (eefElementEditorReadOnlyState
-					&& singleReferenceValue.isEnabled()) {
-				singleReferenceValue.setEnabled(false);
-				singleReferenceValue
-						.setToolTipText(UmlMessages.General_ReadOnly);
-			} else if (!eefElementEditorReadOnlyState
-					&& !singleReferenceValue.isEnabled()) {
-				singleReferenceValue.setEnabled(true);
-			}
-		} else if (getKindValue() == KindValue.ManyReferenceField
-				|| getKindValue() == KindValue.ManyContainmentField) {
-			if (current.eResource() != null
-					&& current.eResource().getResourceSet() != null)
-				this.resourceSet = current.eResource().getResourceSet();
-			ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
-			manyReferenceOrContainmentValue.setContentProvider(contentProvider);
-			ReferencesTableSettings settings = new ReferencesTableSettings(
-					property.getContainer(), (EReference) property.getFeature());
-			manyReferenceOrContainmentValue.setInput(settings);
-			boolean eefElementEditorReadOnlyState = isReadOnly(CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty);
-			if (eefElementEditorReadOnlyState
-					&& manyReferenceOrContainmentValue.getTable().isEnabled()) {
-				manyReferenceOrContainmentValue.setEnabled(false);
-				manyReferenceOrContainmentValue
-						.setToolTipText(UmlMessages.General_ReadOnly);
-			} else if (!eefElementEditorReadOnlyState
-					&& !manyReferenceOrContainmentValue.getTable().isEnabled()) {
-				manyReferenceOrContainmentValue.setEnabled(true);
-			}
-		} else if (getKindValue() == KindValue.SingleContainmentField) {
-			EObjectFlatComboSettings settings = new EObjectFlatComboSettings(
-					property.getContainer(), (EReference) property.getFeature());
-			singleContainmentValue.setInput(settings);
-			if (current != null) {
-				singleContainmentValue.setSelection(new StructuredSelection(
-						settings.getValue()));
-			}
-			boolean eefElementEditorReadOnlyState = isReadOnly(CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty);
-			if (eefElementEditorReadOnlyState
-					&& singleContainmentValue.isEnabled()) {
-				singleContainmentValue.setEnabled(false);
-				singleContainmentValue
-						.setToolTipText(UmlMessages.General_ReadOnly);
-			} else if (!eefElementEditorReadOnlyState
-					&& !singleContainmentValue.isEnabled()) {
-				singleContainmentValue.setEnabled(true);
-			}
-		} else {
-			if (value != null) {
-				// TODO: Use a multi evaluated widget instead of it.
-				if (value instanceof List) {
-					String result = "";
-					for (Object val : (List<Object>) value) {
-						result += (" " + getStringValue(val));
-					}
-					result = result.replaceFirst(" ", "");
-					textValue.setText(result);
-				} else {
-					textValue.setText(getStringValue(value));
-				}
-			} else {
-				textValue.setText(""); //$NON-NLS-1$
-			}
-		}
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.obeonetwork.dsl.uml2.properties.uml.parts.SAPropertyPropertiesEditionPart#setValue(java.lang.Object)
+     */
+    public void setValue(Object value) {
+        if (getKindValue() == KindValue.BooleanField) {
+            if (value != null) {
+                buttonValue.setSelection(((Boolean) value).booleanValue());
+            } else {
+                buttonValue.setSelection(false);
+            }
+            boolean eefElementEditorReadOnlyState = isReadOnly(CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty);
+            if (eefElementEditorReadOnlyState && buttonValue.isEnabled()) {
+                buttonValue.setEnabled(false);
+                buttonValue.setToolTipText(UmlMessages.General_ReadOnly);
+            } else if (!eefElementEditorReadOnlyState && !buttonValue.isEnabled()) {
+                buttonValue.setEnabled(true);
+            }
+        } else if (getKindValue() == KindValue.EnumField) {
+            enumValue.setInput((Object) ((EEnumLiteral) property.getValue()).getEEnum().getELiterals());
+            enumValue.modelUpdating(new StructuredSelection(value));
+            boolean eefElementEditorReadOnlyState = isReadOnly(CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty);
+            if (eefElementEditorReadOnlyState && enumValue.isEnabled()) {
+                enumValue.setEnabled(false);
+                enumValue.setToolTipText(UmlMessages.General_ReadOnly);
+            } else if (!eefElementEditorReadOnlyState && !enumValue.isEnabled()) {
+                enumValue.setEnabled(true);
+            }
+        } else if (getKindValue() == KindValue.SingleReferenceField) {
+            EObjectFlatComboSettings referenceSettings = new EObjectFlatComboSettings(property.getContainer(), (EReference) property.getFeature());
+            singleReferenceValue.setInput(referenceSettings);
+            if (current != null) {
+                singleReferenceValue.setSelection(new StructuredSelection(referenceSettings.getValue()));
+            }
+            boolean eefElementEditorReadOnlyState = isReadOnly(CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty);
+            if (eefElementEditorReadOnlyState && singleReferenceValue.isEnabled()) {
+                singleReferenceValue.setEnabled(false);
+                singleReferenceValue.setToolTipText(UmlMessages.General_ReadOnly);
+            } else if (!eefElementEditorReadOnlyState && !singleReferenceValue.isEnabled()) {
+                singleReferenceValue.setEnabled(true);
+            }
+        } else if (getKindValue() == KindValue.ManyReferenceField || getKindValue() == KindValue.ManyContainmentField) {
+            if (current.eResource() != null && current.eResource().getResourceSet() != null)
+                this.resourceSet = current.eResource().getResourceSet();
+            ReferencesTableContentProvider contentProvider = new ReferencesTableContentProvider();
+            manyReferenceOrContainmentValue.setContentProvider(contentProvider);
+            ReferencesTableSettings settings = new ReferencesTableSettings(property.getContainer(), (EReference) property.getFeature());
+            manyReferenceOrContainmentValue.setInput(settings);
+            boolean eefElementEditorReadOnlyState = isReadOnly(CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty);
+            if (eefElementEditorReadOnlyState && manyReferenceOrContainmentValue.getTable().isEnabled()) {
+                manyReferenceOrContainmentValue.setEnabled(false);
+                manyReferenceOrContainmentValue.setToolTipText(UmlMessages.General_ReadOnly);
+            } else if (!eefElementEditorReadOnlyState && !manyReferenceOrContainmentValue.getTable().isEnabled()) {
+                manyReferenceOrContainmentValue.setEnabled(true);
+            }
+        } else if (getKindValue() == KindValue.SingleContainmentField) {
+            EObjectFlatComboSettings settings = new EObjectFlatComboSettings(property.getContainer(), (EReference) property.getFeature());
+            singleContainmentValue.setInput(settings);
+            if (current != null) {
+                singleContainmentValue.setSelection(new StructuredSelection(settings.getValue()));
+            }
+            boolean eefElementEditorReadOnlyState = isReadOnly(CustomUmlViewsRepository.SAProperty.stereotypeApplicationProperty);
+            if (eefElementEditorReadOnlyState && singleContainmentValue.isEnabled()) {
+                singleContainmentValue.setEnabled(false);
+                singleContainmentValue.setToolTipText(UmlMessages.General_ReadOnly);
+            } else if (!eefElementEditorReadOnlyState && !singleContainmentValue.isEnabled()) {
+                singleContainmentValue.setEnabled(true);
+            }
+        } else {
+            if (value != null) {
+                // TODO: Use a multi evaluated widget instead of it.
+                if (value instanceof List) {
+                    String result = "";
+                    for (Object val : (List<Object>) value) {
+                        result += (" " + getStringValue(val));
+                    }
+                    result = result.replaceFirst(" ", "");
+                    textValue.setText(result);
+                } else {
+                    textValue.setText(getStringValue(value));
+                }
+            } else {
+                textValue.setText(""); //$NON-NLS-1$
+            }
+        }
+    }
 
-	/**
-	 * @param object
-	 * @return
-	 */
-	private String getStringValue(Object object) {
-		return object.toString();
-	}
+    /**
+     * @param object
+     * @return
+     */
+    private String getStringValue(Object object) {
+        return object.toString();
+    }
 
-	/**
-	 * @param property
-	 */
-	private void setKindValue(StereotypeApplicationProperty property) {
-		EStructuralFeature feature = property.getFeature();
-		if (feature instanceof EAttribute
-				&& property.getValue() instanceof EEnumLiteral) {
-			kind = KindValue.EnumField;
-		} else if (feature instanceof EAttribute
-				&& property.getValue() instanceof Boolean) {
-			kind = KindValue.BooleanField;
-		} else if (feature instanceof EAttribute) {
-			kind = KindValue.StringField;
-		} else if (feature instanceof EReference && !feature.isMany()) {
-			if (!((EReference) feature).isContainment()) {
-				kind = KindValue.SingleReferenceField;
-			} else {
-				kind = KindValue.SingleContainmentField;
-			}
-		} else if (feature instanceof EReference && feature.isMany()) {
-			if (!((EReference) feature).isContainment()) {
-				kind = KindValue.ManyReferenceField;
-			} else {
-				kind = KindValue.ManyContainmentField;
-			}
-		}
-	}
+    /**
+     * @param property
+     */
+    private void setKindValue(StereotypeApplicationProperty property) {
+        EStructuralFeature feature = property.getFeature();
+        if (feature instanceof EAttribute && property.getValue() instanceof EEnumLiteral) {
+            kind = KindValue.EnumField;
+        } else if (feature instanceof EAttribute && property.getValue() instanceof Boolean) {
+            kind = KindValue.BooleanField;
+        } else if (feature instanceof EAttribute) {
+            kind = KindValue.StringField;
+        } else if (feature instanceof EReference && !feature.isMany()) {
+            if (!((EReference) feature).isContainment()) {
+                kind = KindValue.SingleReferenceField;
+            } else {
+                kind = KindValue.SingleContainmentField;
+            }
+        } else if (feature instanceof EReference && feature.isMany()) {
+            if (!((EReference) feature).isContainment()) {
+                kind = KindValue.ManyReferenceField;
+            } else {
+                kind = KindValue.ManyContainmentField;
+            }
+        }
+    }
 
-	/**
-	 * @return
-	 */
-	private KindValue getKindValue() {
-		return kind;
-	}
+    /**
+     * @return
+     */
+    private KindValue getKindValue() {
+        return kind;
+    }
 
-	/**
-	 * @author <a href="mailto:cedric.notot@obeo.fr">Cédric Notot</a>
-	 *
-	 */
-	private enum KindValue {
-		StringField, /* ManyStringField, */SingleReferenceField, ManyReferenceField, SingleContainmentField, ManyContainmentField, EnumField, BooleanField
-	}
+    /**
+     * @author <a href="mailto:cedric.notot@obeo.fr">Cédric Notot</a>
+     *
+     */
+    private enum KindValue {
+        StringField, /* ManyStringField, */SingleReferenceField, ManyReferenceField, SingleContainmentField, ManyContainmentField, EnumField, BooleanField
+    }
 }

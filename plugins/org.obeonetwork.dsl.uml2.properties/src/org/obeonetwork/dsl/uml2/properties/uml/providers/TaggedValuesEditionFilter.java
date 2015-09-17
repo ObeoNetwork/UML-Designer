@@ -78,15 +78,14 @@ import org.eclipse.uml2.uml.util.UMLUtil;
  */
 public class TaggedValuesEditionFilter implements IFilter {
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
-	 */
-	public boolean select(Object toTest) {
-		EObject eObj = EEFUtils.resolveSemanticObject(toTest);
-		return eObj instanceof Element
-				&& ((Element)eObj).getAppliedStereotypes().size() > 0;
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
+     */
+    public boolean select(Object toTest) {
+        EObject eObj = EEFUtils.resolveSemanticObject(toTest);
+        return eObj instanceof Element && ((Element) eObj).getAppliedStereotypes().size() > 0;
+    }
 
 }

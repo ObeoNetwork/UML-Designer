@@ -17,40 +17,30 @@ import org.obeonetwork.dsl.uml2.properties.uml.components.AssociationCustomPrope
 import org.obeonetwork.dsl.uml2.properties.uml.components.AssociationPropertiesEditionComponent;
 import org.obeonetwork.dsl.uml2.properties.uml.providers.AssociationPropertiesEditionProvider;
 
-public class AssociationCustomPropertiesEditionProvider extends
-		AssociationPropertiesEditionProvider {
-	@Override
-	public IPropertiesEditionComponent getPropertiesEditingComponent(
-			PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof Association) {
-			return new AssociationCustomPropertiesEditionComponent(
-					editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+public class AssociationCustomPropertiesEditionProvider extends AssociationPropertiesEditionProvider {
+    @Override
+    public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
+        if (editingContext.getEObject() instanceof Association) {
+            return new AssociationCustomPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+        }
+        return super.getPropertiesEditingComponent(editingContext, mode);
+    }
 
-	@Override
-	public IPropertiesEditionComponent getPropertiesEditingComponent(
-			PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof Association) {
-			if (AssociationPropertiesEditionComponent.GENERAL_PART.equals(part))
-				return new AssociationCustomPropertiesEditionComponent(
-						editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    @Override
+    public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
+        if (editingContext.getEObject() instanceof Association) {
+            if (AssociationPropertiesEditionComponent.GENERAL_PART.equals(part))
+                return new AssociationCustomPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+        }
+        return super.getPropertiesEditingComponent(editingContext, mode, part);
+    }
 
-	@Override
-	public IPropertiesEditionComponent getPropertiesEditingComponent(
-			PropertiesEditingContext editingContext, String mode, String part,
-			java.lang.Class refinement) {
-		if (editingContext.getEObject() instanceof Association) {
-			if (AssociationPropertiesEditionComponent.GENERAL_PART.equals(part)
-					&& refinement == AssociationPropertiesEditionComponent.class)
-				return new AssociationCustomPropertiesEditionComponent(
-						editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part,
-				refinement);
-	}
+    @Override
+    public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
+        if (editingContext.getEObject() instanceof Association) {
+            if (AssociationPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == AssociationPropertiesEditionComponent.class)
+                return new AssociationCustomPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+        }
+        return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
+    }
 }

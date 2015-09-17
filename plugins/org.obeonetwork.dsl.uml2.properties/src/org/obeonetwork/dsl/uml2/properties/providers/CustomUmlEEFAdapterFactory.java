@@ -19,30 +19,29 @@ import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlEEFAdapterFactory;
 
 public class CustomUmlEEFAdapterFactory extends UmlEEFAdapterFactory {
 
-	@Override
-	public Adapter createConnectorEndAdapter() {
-		return new ConnectorEndCustomPropertiesEditionProvider();
-	}
+    @Override
+    public Adapter createConnectorEndAdapter() {
+        return new ConnectorEndCustomPropertiesEditionProvider();
+    }
 
-	@Override
-	public Adapter createAssociationAdapter() {
-		return new AssociationCustomPropertiesEditionProvider();
-	}
+    @Override
+    public Adapter createAssociationAdapter() {
+        return new AssociationCustomPropertiesEditionProvider();
+    }
 
-	@Override
-	public Adapter createPinAdapter() {
-		return new PinCustomPropertiesEditionProvider();
-	}
-	
-	@Override
-	public Adapter createEObjectAdapter() {
-		return new SAPropertyPropertiesEditionProvider();
-	}
-	
-	@Override
-	public boolean isFactoryForType(Object object) {
-		return (object instanceof EObject && ((EObject) object).eClass().getEPackage() == EcorePackage.eINSTANCE || object == PropertiesEditingProvider.class)
-				|| super.isFactoryForType(object);
-	}
-	
+    @Override
+    public Adapter createPinAdapter() {
+        return new PinCustomPropertiesEditionProvider();
+    }
+
+    @Override
+    public Adapter createEObjectAdapter() {
+        return new SAPropertyPropertiesEditionProvider();
+    }
+
+    @Override
+    public boolean isFactoryForType(Object object) {
+        return (object instanceof EObject && ((EObject) object).eClass().getEPackage() == EcorePackage.eINSTANCE || object == PropertiesEditingProvider.class) || super.isFactoryForType(object);
+    }
+
 }

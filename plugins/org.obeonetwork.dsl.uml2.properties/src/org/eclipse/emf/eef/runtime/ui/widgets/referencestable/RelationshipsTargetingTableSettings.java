@@ -25,40 +25,37 @@ import org.eclipse.uml2.uml.Relationship;
  */
 public class RelationshipsTargetingTableSettings implements ITableOperations {
 
-	private NamedElement source;
+    private NamedElement source;
 
-	public RelationshipsTargetingTableSettings(EObject source) {
-		this.source = (NamedElement) source;
-	}
+    public RelationshipsTargetingTableSettings(EObject source) {
+        this.source = (NamedElement) source;
+    }
 
-	public Object[] getValues() {
-		List<Relationship> list = source.getRelationships();
-		List<Relationship> result = new ArrayList<Relationship>();
-		for (Relationship relationship : list) {
-			if (relationship instanceof DirectedRelationship
-					&& ((DirectedRelationship) relationship).getTargets()
-							.contains(source))
-				result.add(relationship);
-			else if (relationship instanceof Association) {
-				Property target = ((Association) relationship).getMemberEnds()
-						.get(1);
-				if (source.equals(target.getType()))
-					result.add(relationship);
-			}
-		}
-		return result.isEmpty() ? new Object[] { result } : result.toArray();
+    public Object[] getValues() {
+        List<Relationship> list = source.getRelationships();
+        List<Relationship> result = new ArrayList<Relationship>();
+        for (Relationship relationship : list) {
+            if (relationship instanceof DirectedRelationship && ((DirectedRelationship) relationship).getTargets().contains(source))
+                result.add(relationship);
+            else if (relationship instanceof Association) {
+                Property target = ((Association) relationship).getMemberEnds().get(1);
+                if (source.equals(target.getType()))
+                    result.add(relationship);
+            }
+        }
+        return result.isEmpty() ? new Object[] { result } : result.toArray();
 
-	}
+    }
 
-	public void add(EObject newValue) {
-		throw new UnsupportedOperationException();
-	}
+    public void add(EObject newValue) {
+        throw new UnsupportedOperationException();
+    }
 
-	public void remove(EObject valueToRemove) {
-		throw new UnsupportedOperationException();
-	}
+    public void remove(EObject valueToRemove) {
+        throw new UnsupportedOperationException();
+    }
 
-	public Object choiceOfValues() {
-		throw new UnsupportedOperationException();
-	}
+    public Object choiceOfValues() {
+        throw new UnsupportedOperationException();
+    }
 }

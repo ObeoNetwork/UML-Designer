@@ -29,58 +29,49 @@ import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
  * @author Melanie Bats <a
  *         href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
-public class PinCustomPropertiesEditionComponent extends
-		PinPropertiesEditionComponent {
+public class PinCustomPropertiesEditionComponent extends PinPropertiesEditionComponent {
 
-	public PinCustomPropertiesEditionComponent(
-			PropertiesEditingContext editingContext, EObject pin,
-			String editing_mode) {
-		super(editingContext, pin, editing_mode);
-	}
+    public PinCustomPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject pin, String editing_mode) {
+        super(editingContext, pin, editing_mode);
+    }
 
-	@Override
-	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		Pin pin = (Pin) semanticObject;
-		if (UmlViewsRepository.General.lowerValue == event.getAffectedEditor()) {
-			ValueSpecification lower = pin.getLowerValue();
-			LiteralInteger lowerValue = null;
-			if (lower == null) {
-				lowerValue = UMLFactory.eINSTANCE.createLiteralInteger();
-			} else {
-				if (lower instanceof LiteralInteger) {
-					lowerValue = (LiteralInteger) lower;
-				}
-			}
-			if (lowerValue != null) {
-				lowerValue.setValue((EEFConverterUtil.createIntFromString(
-						TypesPackage.Literals.INTEGER,
-						(String) event.getNewValue())));
-				pin.setLowerValue(lowerValue);
-				pin.setLower(lowerValue.getValue());
-			}
-		} else if (UmlViewsRepository.General.upperValue == event
-				.getAffectedEditor()) {
-			ValueSpecification upper = pin.getUpperValue();
-			LiteralUnlimitedNatural upperValue = null;
-			if (upper == null) {
-				upperValue = UMLFactory.eINSTANCE
-						.createLiteralUnlimitedNatural();
-			} else {
-				if (upper instanceof LiteralUnlimitedNatural) {
-					upperValue = (LiteralUnlimitedNatural) upper;
-				}
-			}
-			if (upperValue != null) {
-				upperValue.setValue((EEFConverterUtil.createIntFromString(
-						TypesPackage.Literals.UNLIMITED_NATURAL,
-						(String) event.getNewValue())));
-				pin.setUpperValue(upperValue);
-				pin.setUpperBound(upperValue);
-				pin.setUpper(upperValue.getValue());
-			}
-		} else {
-			super.updateSemanticModel(event);
-		}
-	}
+    @Override
+    public void updateSemanticModel(final IPropertiesEditionEvent event) {
+        Pin pin = (Pin) semanticObject;
+        if (UmlViewsRepository.General.lowerValue == event.getAffectedEditor()) {
+            ValueSpecification lower = pin.getLowerValue();
+            LiteralInteger lowerValue = null;
+            if (lower == null) {
+                lowerValue = UMLFactory.eINSTANCE.createLiteralInteger();
+            } else {
+                if (lower instanceof LiteralInteger) {
+                    lowerValue = (LiteralInteger) lower;
+                }
+            }
+            if (lowerValue != null) {
+                lowerValue.setValue((EEFConverterUtil.createIntFromString(TypesPackage.Literals.INTEGER, (String) event.getNewValue())));
+                pin.setLowerValue(lowerValue);
+                pin.setLower(lowerValue.getValue());
+            }
+        } else if (UmlViewsRepository.General.upperValue == event.getAffectedEditor()) {
+            ValueSpecification upper = pin.getUpperValue();
+            LiteralUnlimitedNatural upperValue = null;
+            if (upper == null) {
+                upperValue = UMLFactory.eINSTANCE.createLiteralUnlimitedNatural();
+            } else {
+                if (upper instanceof LiteralUnlimitedNatural) {
+                    upperValue = (LiteralUnlimitedNatural) upper;
+                }
+            }
+            if (upperValue != null) {
+                upperValue.setValue((EEFConverterUtil.createIntFromString(TypesPackage.Literals.UNLIMITED_NATURAL, (String) event.getNewValue())));
+                pin.setUpperValue(upperValue);
+                pin.setUpperBound(upperValue);
+                pin.setUpper(upperValue.getValue());
+            }
+        } else {
+            super.updateSemanticModel(event);
+        }
+    }
 
 }

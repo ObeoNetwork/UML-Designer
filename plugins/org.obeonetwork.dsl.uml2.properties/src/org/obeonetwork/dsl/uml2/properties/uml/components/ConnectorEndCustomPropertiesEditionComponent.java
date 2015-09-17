@@ -20,45 +20,39 @@ import org.eclipse.uml2.uml.UMLPackage;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 
-public class ConnectorEndCustomPropertiesEditionComponent extends
-		ConnectorEndPropertiesEditionComponent {
+public class ConnectorEndCustomPropertiesEditionComponent extends ConnectorEndPropertiesEditionComponent {
 
-	public ConnectorEndCustomPropertiesEditionComponent(
-			PropertiesEditingContext editingContext, EObject connectorEnd,
-			String editing_mode) {
-		super(editingContext, connectorEnd, editing_mode);
-	}
+    public ConnectorEndCustomPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject connectorEnd, String editing_mode) {
+        super(editingContext, connectorEnd, editing_mode);
+    }
 
-	@Override
-	public void initPart(Object key, int kind, EObject elt,
-			ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
+    @Override
+    public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
+        setInitializing(true);
+        if (editingPart != null && key == partKey) {
+            editingPart.setContext(elt, allResource);
 
-			final ConnectorEnd connectorEnd = (ConnectorEnd) elt;
-			final GeneralPropertiesEditionPart generalPart = (GeneralPropertiesEditionPart) editingPart;
-			// init values
-			generalPart.setOrdered(connectorEnd.isOrdered());
+            final ConnectorEnd connectorEnd = (ConnectorEnd) elt;
+            final GeneralPropertiesEditionPart generalPart = (GeneralPropertiesEditionPart) editingPart;
+            // init values
+            generalPart.setOrdered(connectorEnd.isOrdered());
 
-			generalPart.setUnique(connectorEnd.isUnique());
+            generalPart.setUnique(connectorEnd.isUnique());
 
-			if (isAccessible(UmlViewsRepository.General.role)) {
-				// init part
-				EObjectFlatComboSettings roleSettings = new EObjectFlatComboSettings(
-						connectorEnd,
-						UMLPackage.eINSTANCE.getConnectorEnd_Role());
-				generalPart.initRole(roleSettings);
-				// set the button mode
-				generalPart.setRoleButtonMode(ButtonsModeEnum.BROWSE);
-			}
-			// init filters
+            if (isAccessible(UmlViewsRepository.General.role)) {
+                // init part
+                EObjectFlatComboSettings roleSettings = new EObjectFlatComboSettings(connectorEnd, UMLPackage.eINSTANCE.getConnectorEnd_Role());
+                generalPart.initRole(roleSettings);
+                // set the button mode
+                generalPart.setRoleButtonMode(ButtonsModeEnum.BROWSE);
+            }
+            // init filters
 
-			// init values for referenced views
+            // init values for referenced views
 
-			// init filters for referenced views
+            // init filters for referenced views
 
-		}
-		setInitializing(false);
-	}
+        }
+        setInitializing(false);
+    }
 }

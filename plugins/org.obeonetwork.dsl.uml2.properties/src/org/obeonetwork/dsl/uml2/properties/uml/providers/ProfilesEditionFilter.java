@@ -23,14 +23,14 @@ import org.obeonetwork.dsl.uml2.properties.uml.parts.ProfilesPropertiesEditionPa
  */
 public class ProfilesEditionFilter implements IFilter {
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
-	 */
-	public boolean select(Object toTest) {
-		EObject eObj = EEFUtils.resolveSemanticObject(toTest);
-		return eObj != null && (eObj instanceof org.eclipse.uml2.uml.Package);
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
+     */
+    public boolean select(Object toTest) {
+        EObject eObj = EEFUtils.resolveSemanticObject(toTest);
+        return eObj != null && (eObj instanceof org.eclipse.uml2.uml.Package);
+    }
 
 }

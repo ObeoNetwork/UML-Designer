@@ -19,50 +19,50 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface ProfilesPropertiesEditionPart {
 
-	/**
-	 * Init the appliedProfiles
-	 * 
-	 * @param settings
-	 *            settings for the appliedProfiles ReferencesTable
-	 */
-	public void initAppliedProfiles(OperationsTableSettings settings);
+    /**
+     * Init the appliedProfiles
+     * 
+     * @param settings
+     *            settings for the appliedProfiles ReferencesTable
+     */
+    public void initAppliedProfiles(OperationsTableSettings settings);
 
-	/**
-	 * Update the appliedProfiles
-	 * 
-	 * @param newValue
-	 *            the appliedProfiles to update
-	 */
-	public void updateAppliedProfiles();
+    /**
+     * Update the appliedProfiles
+     * 
+     * @param newValue
+     *            the appliedProfiles to update
+     */
+    public void updateAppliedProfiles();
 
-	/**
-	 * Adds the given filter to the appliedProfiles edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 */
-	public void addFilterToAppliedProfiles(ViewerFilter filter);
+    /**
+     * Adds the given filter to the appliedProfiles edition editor.
+     * 
+     * @param filter
+     *            a viewer filter
+     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+     */
+    public void addFilterToAppliedProfiles(ViewerFilter filter);
 
-	/**
-	 * Adds the given filter to the appliedProfiles edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 */
-	public void addBusinessFilterToAppliedProfiles(ViewerFilter filter);
+    /**
+     * Adds the given filter to the appliedProfiles edition editor.
+     * 
+     * @param filter
+     *            a viewer filter
+     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+     */
+    public void addBusinessFilterToAppliedProfiles(ViewerFilter filter);
 
-	/**
-	 * @return true if the given element is contained inside the
-	 *         appliedProfiles table
-	 */
-	public boolean isContainedInAppliedProfilesTable(EObject element);
+    /**
+     * @return true if the given element is contained inside the appliedProfiles
+     *         table
+     */
+    public boolean isContainedInAppliedProfilesTable(EObject element);
 
-	/**
-	 * Returns the internationalized title text.
-	 * 
-	 * @return the internationalized title text.
-	 */
-	public String getTitle();
+    /**
+     * Returns the internationalized title text.
+     * 
+     * @return the internationalized title text.
+     */
+    public String getTitle();
 }

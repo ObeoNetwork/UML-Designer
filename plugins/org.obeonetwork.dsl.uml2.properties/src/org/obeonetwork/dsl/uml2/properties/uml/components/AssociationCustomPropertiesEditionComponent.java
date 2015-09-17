@@ -19,57 +19,51 @@ import org.eclipse.uml2.uml.Property;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.CustomUmlViewsRepository;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 
-public class AssociationCustomPropertiesEditionComponent extends
-		AssociationPropertiesEditionComponent {
+public class AssociationCustomPropertiesEditionComponent extends AssociationPropertiesEditionComponent {
 
-	public AssociationCustomPropertiesEditionComponent(
-			PropertiesEditingContext editingContext, EObject association,
-			String editing_mode) {
-		super(editingContext, association, editing_mode);
-	}
+    public AssociationCustomPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject association, String editing_mode) {
+        super(editingContext, association, editing_mode);
+    }
 
-	@Override
-	public void updateSemanticModel(IPropertiesEditionEvent event) {
-		super.updateSemanticModel(event);
-		if (UmlViewsRepository.General.memberEnd == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.SET) {
-				memberEndSettings.addToReference((EObject) event.getNewValue());
-			}
-		}
-		if (event.getKind() == PropertiesEditionEvent.EDIT) {
-			if (CustomUmlViewsRepository.General.memberEndNavigable == event
-					.getAffectedEditor()) {
-				boolean wasNavigable = (Boolean) event.getOldValue();
+    @Override
+    public void updateSemanticModel(IPropertiesEditionEvent event) {
+        super.updateSemanticModel(event);
+        if (UmlViewsRepository.General.memberEnd == event.getAffectedEditor()) {
+            if (event.getKind() == PropertiesEditionEvent.SET) {
+                memberEndSettings.addToReference((EObject) event.getNewValue());
+            }
+        }
+        if (event.getKind() == PropertiesEditionEvent.EDIT) {
+            if (CustomUmlViewsRepository.General.memberEndNavigable == event.getAffectedEditor()) {
+                boolean wasNavigable = (Boolean) event.getOldValue();
 
-				Property property = (Property) event.getNewValue();
-				Association association = property.getAssociation();
-				if (wasNavigable) {
-					if (association.getNavigableOwnedEnds().contains(property)) {
-						association.getNavigableOwnedEnds().remove(property);
-						// As the property was navigable, the owned checkbox is
-						// checked by default
-						association.getOwnedEnds().add(property);
-					}
-					property.setIsNavigable(false);
-				} else {
-					association.getNavigableOwnedEnds().add(property);
-					property.setIsNavigable(true);
-				}
+                Property property = (Property) event.getNewValue();
+                Association association = property.getAssociation();
+                if (wasNavigable) {
+                    if (association.getNavigableOwnedEnds().contains(property)) {
+                        association.getNavigableOwnedEnds().remove(property);
+                        // As the property was navigable, the owned checkbox is
+                        // checked by default
+                        association.getOwnedEnds().add(property);
+                    }
+                    property.setIsNavigable(false);
+                } else {
+                    association.getNavigableOwnedEnds().add(property);
+                    property.setIsNavigable(true);
+                }
 
-			}
-			if (CustomUmlViewsRepository.General.memberEndOwned == event
-					.getAffectedEditor()) {
-				boolean wasOwned = (Boolean) event.getOldValue();
+            }
+            if (CustomUmlViewsRepository.General.memberEndOwned == event.getAffectedEditor()) {
+                boolean wasOwned = (Boolean) event.getOldValue();
 
-				Property property = (Property) event.getNewValue();
-				Association association = property.getAssociation();
-				if (wasOwned) {
-					((org.eclipse.uml2.uml.Class) property.getType())
-							.getOwnedAttributes().add(property);
-				} else {
-					association.getOwnedEnds().add(property);
-				}
-			}
-		}
-	}
+                Property property = (Property) event.getNewValue();
+                Association association = property.getAssociation();
+                if (wasOwned) {
+                    ((org.eclipse.uml2.uml.Class) property.getType()).getOwnedAttributes().add(property);
+                } else {
+                    association.getOwnedEnds().add(property);
+                }
+            }
+        }
+    }
 }

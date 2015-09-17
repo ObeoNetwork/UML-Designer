@@ -39,181 +39,141 @@ import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlMessages;
  * 
  * @author <a href="mailto:melanie.bats@obeo.fr">Melanie Bats</a>
  */
-public class OperationsCustomPropertiesEditionPartForm extends
-		OperationsPropertiesEditionPartForm {
-	final TableLabelService labelService = new TableLabelService();
-	final TableColumnService tableColumnService = new TableColumnService();
+public class OperationsCustomPropertiesEditionPartForm extends OperationsPropertiesEditionPartForm {
+    final TableLabelService labelService = new TableLabelService();
 
-	public OperationsCustomPropertiesEditionPartForm() {
-		super();
-	}
+    final TableColumnService tableColumnService = new TableColumnService();
 
-	public OperationsCustomPropertiesEditionPartForm(
-			IPropertiesEditionComponent editionComponent) {
-		super(editionComponent);
-	}
+    public OperationsCustomPropertiesEditionPartForm() {
+        super();
+    }
 
-	// Part of this code was just copied from the generated class in order to
-	// override the label provider
-	@Override
-	protected Composite createOperationsTableComposition(
-			FormToolkit widgetFactory, Composite parent) {
-		this.operations = new ReferencesTable(getDescription(
-				UmlViewsRepository.Operations.operations_,
-				UmlMessages.OperationsPropertiesEditionPart_OperationsLabel),
-				new ReferencesTableListener() {
-					public void handleAdd() {
-						propertiesEditionComponent
-								.firePropertiesChanged(new PropertiesEditionEvent(
-										OperationsCustomPropertiesEditionPartForm.this,
-										UmlViewsRepository.Operations.operations_,
-										PropertiesEditionEvent.COMMIT,
-										PropertiesEditionEvent.ADD, null, null));
-						operations.refresh();
-					}
+    public OperationsCustomPropertiesEditionPartForm(IPropertiesEditionComponent editionComponent) {
+        super(editionComponent);
+    }
 
-					public void handleEdit(EObject element) {
-						propertiesEditionComponent
-								.firePropertiesChanged(new PropertiesEditionEvent(
-										OperationsCustomPropertiesEditionPartForm.this,
-										UmlViewsRepository.Operations.operations_,
-										PropertiesEditionEvent.COMMIT,
-										PropertiesEditionEvent.EDIT, null,
-										element));
-						operations.refresh();
-					}
+    // Part of this code was just copied from the generated class in order to
+    // override the label provider
+    @Override
+    protected Composite createOperationsTableComposition(FormToolkit widgetFactory, Composite parent) {
+        this.operations = new ReferencesTable(getDescription(UmlViewsRepository.Operations.operations_, UmlMessages.OperationsPropertiesEditionPart_OperationsLabel), new ReferencesTableListener() {
+            public void handleAdd() {
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OperationsCustomPropertiesEditionPartForm.this, UmlViewsRepository.Operations.operations_,
+                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.ADD, null, null));
+                operations.refresh();
+            }
 
-					public void handleMove(EObject element, int oldIndex,
-							int newIndex) {
-						propertiesEditionComponent
-								.firePropertiesChanged(new PropertiesEditionEvent(
-										OperationsCustomPropertiesEditionPartForm.this,
-										UmlViewsRepository.Operations.operations_,
-										PropertiesEditionEvent.COMMIT,
-										PropertiesEditionEvent.MOVE, element,
-										newIndex));
-						operations.refresh();
-					}
+            public void handleEdit(EObject element) {
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OperationsCustomPropertiesEditionPartForm.this, UmlViewsRepository.Operations.operations_,
+                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.EDIT, null, element));
+                operations.refresh();
+            }
 
-					public void handleRemove(EObject element) {
-						propertiesEditionComponent
-								.firePropertiesChanged(new PropertiesEditionEvent(
-										OperationsCustomPropertiesEditionPartForm.this,
-										UmlViewsRepository.Operations.operations_,
-										PropertiesEditionEvent.COMMIT,
-										PropertiesEditionEvent.REMOVE, null,
-										element));
-						operations.refresh();
-					}
+            public void handleMove(EObject element, int oldIndex, int newIndex) {
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OperationsCustomPropertiesEditionPartForm.this, UmlViewsRepository.Operations.operations_,
+                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.MOVE, element, newIndex));
+                operations.refresh();
+            }
 
-					public void navigateTo(EObject element) {
-					}
+            public void handleRemove(EObject element) {
+                propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OperationsCustomPropertiesEditionPartForm.this, UmlViewsRepository.Operations.operations_,
+                        PropertiesEditionEvent.COMMIT, PropertiesEditionEvent.REMOVE, null, element));
+                operations.refresh();
+            }
 
-				}) {
+            public void navigateTo(EObject element) {
+            }
 
-			@Override
-			public AdapterFactoryLabelProvider getLabelProvider() {
-				return new AdapterFactoryLabelProvider(adapterFactory) {
+        }) {
 
-					@Override
-					public String getColumnText(Object object, int columnIndex) {
-						if (object instanceof Operation) {
-							Operation operation = (Operation) object;
-							if (columnIndex == tableColumnService
-									.indexOf(TableColumnName.NAME)) {
-								return labelService.caseName(operation);
-							}
-							if (columnIndex == tableColumnService
-									.indexOf(TableColumnName.VISIBILITY)) {
-								return labelService.caseVisibility(operation);
-							}
-							if (columnIndex == tableColumnService
-									.indexOf(TableColumnName.IS_STATIC)) {
-								return labelService.caseIsStatic(operation);
-							}
-							if (columnIndex == tableColumnService
-									.indexOf(TableColumnName.IS_ABSTRACT)) {
-								return labelService.caseIsAbstract(operation);
-							}
-							if (columnIndex == tableColumnService
-									.indexOf(TableColumnName.TYPE)) {
-								return labelService.caseType(operation);
-							}
-							if (columnIndex == tableColumnService
-									.indexOf(TableColumnName.PARAMETERS)) {
-								return labelService.caseParameters(operation);
-							}
-						}
-						return super.getColumnText(object, columnIndex);
-					}
+            @Override
+            public AdapterFactoryLabelProvider getLabelProvider() {
+                return new AdapterFactoryLabelProvider(adapterFactory) {
 
-					@Override
-					public Image getColumnImage(Object object, int columnIndex) {
-						if (object instanceof Operation) {
-							if (columnIndex == tableColumnService
-									.indexOf(TableColumnName.NAME)) {
-								return super
-										.getColumnImage(object, columnIndex);
-							}
-							return null;
-						}
-						return super.getColumnImage(object, columnIndex);
-					}
+                    @Override
+                    public String getColumnText(Object object, int columnIndex) {
+                        if (object instanceof Operation) {
+                            Operation operation = (Operation) object;
+                            if (columnIndex == tableColumnService.indexOf(TableColumnName.NAME)) {
+                                return labelService.caseName(operation);
+                            }
+                            if (columnIndex == tableColumnService.indexOf(TableColumnName.VISIBILITY)) {
+                                return labelService.caseVisibility(operation);
+                            }
+                            if (columnIndex == tableColumnService.indexOf(TableColumnName.IS_STATIC)) {
+                                return labelService.caseIsStatic(operation);
+                            }
+                            if (columnIndex == tableColumnService.indexOf(TableColumnName.IS_ABSTRACT)) {
+                                return labelService.caseIsAbstract(operation);
+                            }
+                            if (columnIndex == tableColumnService.indexOf(TableColumnName.TYPE)) {
+                                return labelService.caseType(operation);
+                            }
+                            if (columnIndex == tableColumnService.indexOf(TableColumnName.PARAMETERS)) {
+                                return labelService.caseParameters(operation);
+                            }
+                        }
+                        return super.getColumnText(object, columnIndex);
+                    }
 
-				};
-			}
+                    @Override
+                    public Image getColumnImage(Object object, int columnIndex) {
+                        if (object instanceof Operation) {
+                            if (columnIndex == tableColumnService.indexOf(TableColumnName.NAME)) {
+                                return super.getColumnImage(object, columnIndex);
+                            }
+                            return null;
+                        }
+                        return super.getColumnImage(object, columnIndex);
+                    }
 
-		};
+                };
+            }
 
-		for (ViewerFilter filter : this.operationsFilters) {
-			this.operations.addFilter(filter);
-		}
-		this.operations.setHelpText(propertiesEditionComponent.getHelpContent(
-				UmlViewsRepository.Operations.operations_,
-				UmlViewsRepository.FORM_KIND));
-		this.operations.createControls(parent, widgetFactory);
-		this.operations.addSelectionListener(new SelectionAdapter() {
+        };
 
-			public void widgetSelected(SelectionEvent e) {
-				if (e.item != null && e.item.getData() instanceof EObject) {
-					propertiesEditionComponent
-							.firePropertiesChanged(new PropertiesEditionEvent(
-									OperationsCustomPropertiesEditionPartForm.this,
-									UmlViewsRepository.Operations.operations_,
-									PropertiesEditionEvent.CHANGE,
-									PropertiesEditionEvent.SELECTION_CHANGED,
-									null, e.item.getData()));
-				}
-			}
+        for (ViewerFilter filter : this.operationsFilters) {
+            this.operations.addFilter(filter);
+        }
+        this.operations.setHelpText(propertiesEditionComponent.getHelpContent(UmlViewsRepository.Operations.operations_, UmlViewsRepository.FORM_KIND));
+        this.operations.createControls(parent, widgetFactory);
+        this.operations.addSelectionListener(new SelectionAdapter() {
 
-		});
-		GridData operationsData = new GridData(GridData.FILL_HORIZONTAL);
-		operationsData.horizontalSpan = 3;
-		this.operations.setLayoutData(operationsData);
-		this.operations.setLowerBound(0);
-		this.operations.setUpperBound(-1);
-		operations.setID(UmlViewsRepository.Operations.operations_);
-		operations.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
+            public void widgetSelected(SelectionEvent e) {
+                if (e.item != null && e.item.getData() instanceof EObject) {
+                    propertiesEditionComponent.firePropertiesChanged(new PropertiesEditionEvent(OperationsCustomPropertiesEditionPartForm.this, UmlViewsRepository.Operations.operations_,
+                            PropertiesEditionEvent.CHANGE, PropertiesEditionEvent.SELECTION_CHANGED, null, e.item.getData()));
+                }
+            }
 
-		// Start of user code for createOperationsTableComposition
-		Table table = operations.getTable();
-		TableColumn[] columns = table.getColumns();
-		// dispose
-		for (TableColumn tableColumn : columns) {
-			tableColumn.dispose();
-		}
+        });
+        GridData operationsData = new GridData(GridData.FILL_HORIZONTAL);
+        operationsData.horizontalSpan = 3;
+        this.operations.setLayoutData(operationsData);
+        this.operations.setLowerBound(0);
+        this.operations.setUpperBound(-1);
+        operations.setID(UmlViewsRepository.Operations.operations_);
+        operations.setEEFType("eef::AdvancedTableComposition"); //$NON-NLS-1$
 
-		table.setHeaderVisible(true);
-		tableColumnService.createMediumColumn(table, TableColumnName.NAME);
-		tableColumnService.createMediumColumn(table, TableColumnName.VISIBILITY);
-		tableColumnService.createSmallColumn(table, TableColumnName.IS_STATIC);
-		tableColumnService.createSmallColumn(table, TableColumnName.IS_ABSTRACT);
-		tableColumnService.createMediumColumn(table, TableColumnName.TYPE);
-		tableColumnService.createLargeColumn(table, TableColumnName.PARAMETERS);
+        // Start of user code for createOperationsTableComposition
+        Table table = operations.getTable();
+        TableColumn[] columns = table.getColumns();
+        // dispose
+        for (TableColumn tableColumn : columns) {
+            tableColumn.dispose();
+        }
 
-		// End of user code
+        table.setHeaderVisible(true);
+        tableColumnService.createMediumColumn(table, TableColumnName.NAME);
+        tableColumnService.createMediumColumn(table, TableColumnName.VISIBILITY);
+        tableColumnService.createSmallColumn(table, TableColumnName.IS_STATIC);
+        tableColumnService.createSmallColumn(table, TableColumnName.IS_ABSTRACT);
+        tableColumnService.createMediumColumn(table, TableColumnName.TYPE);
+        tableColumnService.createLargeColumn(table, TableColumnName.PARAMETERS);
 
-		return parent;
-	}
+        // End of user code
+
+        return parent;
+    }
 
 }

@@ -22,58 +22,59 @@ import org.eclipse.uml2.uml.Operation;
  * @author <a href="mailto:melanie.bats@obeo.fr">Melanie Bats</a>
  */
 public class OperationsTableSettings extends ReferencesTableSettings {
-	protected EObject source;
-	private ITableOperations operations;
+    protected EObject source;
 
-	public OperationsTableSettings(EObject source, ITableOperations operations) {
-		super(source, null);
-		this.source = source;
-		this.operations = operations;
-	}
+    private ITableOperations operations;
 
-	public Object[] getValue() {
-		return operations.getValues();
-	}
+    public OperationsTableSettings(EObject source, ITableOperations operations) {
+        super(source, null);
+        this.source = source;
+        this.operations = operations;
+    }
 
-	public Object choiceOfValues(AdapterFactory adapterFactory) {
-		return operations.choiceOfValues();
-	}
+    public Object[] getValue() {
+        return operations.getValues();
+    }
 
-	public boolean isAffectingFeature(EStructuralFeature feature) {
-		throw new UnsupportedOperationException();
-	}
+    public Object choiceOfValues(AdapterFactory adapterFactory) {
+        return operations.choiceOfValues();
+    }
 
-	public boolean isAffectingEvent(Notification notification) {
-		return true;
-	}
+    public boolean isAffectingFeature(EStructuralFeature feature) {
+        throw new UnsupportedOperationException();
+    }
 
-	public EObject getSource() {
-		return source;
-	}
+    public boolean isAffectingEvent(Notification notification) {
+        return true;
+    }
 
-	public EClassifier getEType() {
-		throw new UnsupportedOperationException();
-	}
+    public EObject getSource() {
+        return source;
+    }
 
-	public EReference getLastReference() {
-		throw new UnsupportedOperationException();
-	}
+    public EClassifier getEType() {
+        throw new UnsupportedOperationException();
+    }
 
-	public void move(int newIndex, Operation newValue) {
-		throw new UnsupportedOperationException();
-	}
+    public EReference getLastReference() {
+        throw new UnsupportedOperationException();
+    }
 
-	@Override
-	public void removeFromReference(EObject parameter) {
-		operations.remove(parameter);
-	}
+    public void move(int newIndex, Operation newValue) {
+        throw new UnsupportedOperationException();
+    }
 
-	public void addToReference(EObject newValue) {
-		operations.add(newValue);
-	}
+    @Override
+    public void removeFromReference(EObject parameter) {
+        operations.remove(parameter);
+    }
 
-	@Override
-	public boolean contains(EObject toCheck) {
-		return false;
-	}
+    public void addToReference(EObject newValue) {
+        operations.add(newValue);
+    }
+
+    @Override
+    public boolean contains(EObject toCheck) {
+        return false;
+    }
 }

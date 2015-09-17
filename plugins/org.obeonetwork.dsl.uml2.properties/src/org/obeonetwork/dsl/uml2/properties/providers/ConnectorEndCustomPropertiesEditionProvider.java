@@ -17,42 +17,30 @@ import org.obeonetwork.dsl.uml2.properties.uml.components.ConnectorEndCustomProp
 import org.obeonetwork.dsl.uml2.properties.uml.components.ConnectorEndPropertiesEditionComponent;
 import org.obeonetwork.dsl.uml2.properties.uml.providers.ConnectorEndPropertiesEditionProvider;
 
-public class ConnectorEndCustomPropertiesEditionProvider extends
-		ConnectorEndPropertiesEditionProvider {
-	@Override
-	public IPropertiesEditionComponent getPropertiesEditingComponent(
-			PropertiesEditingContext editingContext, String mode, String part,
-			java.lang.Class refinement) {
-		if (editingContext.getEObject() instanceof ConnectorEnd) {
-			if (ConnectorEndPropertiesEditionComponent.GENERAL_PART
-					.equals(part)
-					&& refinement == ConnectorEndPropertiesEditionComponent.class)
-				return new ConnectorEndCustomPropertiesEditionComponent(
-						editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part,
-				refinement);
-	}
+public class ConnectorEndCustomPropertiesEditionProvider extends ConnectorEndPropertiesEditionProvider {
+    @Override
+    public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
+        if (editingContext.getEObject() instanceof ConnectorEnd) {
+            if (ConnectorEndPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == ConnectorEndPropertiesEditionComponent.class)
+                return new ConnectorEndCustomPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+        }
+        return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
+    }
 
-	@Override
-	public IPropertiesEditionComponent getPropertiesEditingComponent(
-			PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof ConnectorEnd) {
-			if (ConnectorEndPropertiesEditionComponent.GENERAL_PART
-					.equals(part))
-				return new ConnectorEndCustomPropertiesEditionComponent(
-						editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    @Override
+    public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
+        if (editingContext.getEObject() instanceof ConnectorEnd) {
+            if (ConnectorEndPropertiesEditionComponent.GENERAL_PART.equals(part))
+                return new ConnectorEndCustomPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+        }
+        return super.getPropertiesEditingComponent(editingContext, mode, part);
+    }
 
-	@Override
-	public IPropertiesEditionComponent getPropertiesEditingComponent(
-			PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof ConnectorEnd) {
-			return new ConnectorEndCustomPropertiesEditionComponent(
-					editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    @Override
+    public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
+        if (editingContext.getEObject() instanceof ConnectorEnd) {
+            return new ConnectorEndCustomPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+        }
+        return super.getPropertiesEditingComponent(editingContext, mode);
+    }
 }

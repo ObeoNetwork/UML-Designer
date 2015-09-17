@@ -21,35 +21,32 @@ import org.eclipse.emf.eef.runtime.EEFRuntimePlugin;
  * 
  * @author <a href="mailto:melanie.bats@obeo.fr">Melanie Bats</a>
  */
-public class OperationsTableContentProvider extends
-		AdapterFactoryContentProvider {
-	public static final int CURRENT_VALUES_KIND = 0;
+public class OperationsTableContentProvider extends AdapterFactoryContentProvider {
+    public static final int CURRENT_VALUES_KIND = 0;
 
-	public static final int MATCHING_VALUES_KIND = 1;
+    public static final int MATCHING_VALUES_KIND = 1;
 
-	public int kind = CURRENT_VALUES_KIND;
+    public int kind = CURRENT_VALUES_KIND;
 
-	public OperationsTableContentProvider() {
-		super(EEFRuntimePlugin.getDefault().getAdapterFactory());
-	}
+    public OperationsTableContentProvider() {
+        super(EEFRuntimePlugin.getDefault().getAdapterFactory());
+    }
 
-	public OperationsTableContentProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+    public OperationsTableContentProvider(AdapterFactory adapterFactory) {
+        super(adapterFactory);
+    }
 
-	@Override
-	public Object[] getElements(Object inputElement) {
-		if (inputElement instanceof OperationsTableSettings) {
-			if (kind == CURRENT_VALUES_KIND)
-				return ((OperationsTableSettings) inputElement).getValue();
-			else if (kind == MATCHING_VALUES_KIND) {
-				Object choiceOfValues = ((OperationsTableSettings) inputElement)
-						.choiceOfValues(adapterFactory);
-				return choiceOfValues instanceof List ? ((List<?>) choiceOfValues)
-						.toArray() : new Object[] { choiceOfValues };
-			}
-		}
-		return super.getElements(inputElement);
-	}
+    @Override
+    public Object[] getElements(Object inputElement) {
+        if (inputElement instanceof OperationsTableSettings) {
+            if (kind == CURRENT_VALUES_KIND)
+                return ((OperationsTableSettings) inputElement).getValue();
+            else if (kind == MATCHING_VALUES_KIND) {
+                Object choiceOfValues = ((OperationsTableSettings) inputElement).choiceOfValues(adapterFactory);
+                return choiceOfValues instanceof List ? ((List<?>) choiceOfValues).toArray() : new Object[] { choiceOfValues };
+            }
+        }
+        return super.getElements(inputElement);
+    }
 
 }

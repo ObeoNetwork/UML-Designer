@@ -19,90 +19,90 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface RelationshipsPropertiesEditionPart {
 
-	/**
-	 * Init the relationships
-	 * 
-	 * @param settings
-	 *            settings for the relationships ReferencesTable
-	 */
-	public void initRelationshipsOriginating(OperationsTableSettings settings);
+    /**
+     * Init the relationships
+     * 
+     * @param settings
+     *            settings for the relationships ReferencesTable
+     */
+    public void initRelationshipsOriginating(OperationsTableSettings settings);
 
-	/**
-	 * Update the relationships
-	 * 
-	 * @param newValue
-	 *            the relationships to update
-	 */
-	public void updateRelationshipsOriginating();
+    /**
+     * Update the relationships
+     * 
+     * @param newValue
+     *            the relationships to update
+     */
+    public void updateRelationshipsOriginating();
 
-	/**
-	 * Adds the given filter to the relationships edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 */
-	public void addFilterToRelationshipsOriginating(ViewerFilter filter);
+    /**
+     * Adds the given filter to the relationships edition editor.
+     * 
+     * @param filter
+     *            a viewer filter
+     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+     */
+    public void addFilterToRelationshipsOriginating(ViewerFilter filter);
 
-	/**
-	 * Adds the given filter to the relationships edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 */
-	public void addBusinessFilterToRelationshipsOriginating(ViewerFilter filter);
+    /**
+     * Adds the given filter to the relationships edition editor.
+     * 
+     * @param filter
+     *            a viewer filter
+     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+     */
+    public void addBusinessFilterToRelationshipsOriginating(ViewerFilter filter);
 
-	/**
-	 * @return true if the given element is contained inside the relationships
-	 *         table
-	 */
-	public boolean isContainedInRelationshipsOriginatingTable(EObject element);
+    /**
+     * @return true if the given element is contained inside the relationships
+     *         table
+     */
+    public boolean isContainedInRelationshipsOriginatingTable(EObject element);
 
-	/**
-	 * Init the relationshipsTargeting
-	 * 
-	 * @param settings
-	 *            settings for the relationshipsTargeting ReferencesTable
-	 */
-	public void initRelationshipsTargeting(OperationsTableSettings settings);
+    /**
+     * Init the relationshipsTargeting
+     * 
+     * @param settings
+     *            settings for the relationshipsTargeting ReferencesTable
+     */
+    public void initRelationshipsTargeting(OperationsTableSettings settings);
 
-	/**
-	 * Update the relationshipsTargeting
-	 * 
-	 * @param newValue
-	 *            the relationshipsTargeting to update
-	 */
-	public void updateRelationshipsTargeting();
+    /**
+     * Update the relationshipsTargeting
+     * 
+     * @param newValue
+     *            the relationshipsTargeting to update
+     */
+    public void updateRelationshipsTargeting();
 
-	/**
-	 * Adds the given filter to the relationshipsTargeting edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 */
-	public void addFilterToRelationshipsTargeting(ViewerFilter filter);
+    /**
+     * Adds the given filter to the relationshipsTargeting edition editor.
+     * 
+     * @param filter
+     *            a viewer filter
+     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+     */
+    public void addFilterToRelationshipsTargeting(ViewerFilter filter);
 
-	/**
-	 * Adds the given filter to the relationshipsTargeting edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 */
-	public void addBusinessFilterToRelationshipsTargeting(ViewerFilter filter);
+    /**
+     * Adds the given filter to the relationshipsTargeting edition editor.
+     * 
+     * @param filter
+     *            a viewer filter
+     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+     */
+    public void addBusinessFilterToRelationshipsTargeting(ViewerFilter filter);
 
-	/**
-	 * @return true if the given element is contained inside the
-	 *         relationshipsTargeting table
-	 */
-	public boolean isContainedInRelationshipsTargetingTable(EObject element);
+    /**
+     * @return true if the given element is contained inside the
+     *         relationshipsTargeting table
+     */
+    public boolean isContainedInRelationshipsTargetingTable(EObject element);
 
-	/**
-	 * Returns the internationalized title text.
-	 * 
-	 * @return the internationalized title text.
-	 */
-	public String getTitle();
+    /**
+     * Returns the internationalized title text.
+     * 
+     * @return the internationalized title text.
+     */
+    public String getTitle();
 }

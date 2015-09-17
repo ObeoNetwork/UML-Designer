@@ -23,34 +23,34 @@ import org.obeonetwork.dsl.uml2.properties.service.TableLabelService.TableColumn
  * @author <a href="mailto:melanie.bats@obeo.fr">Melanie Bats</a>
  */
 public class TableColumnService {
-	/**
-	 * List of all the created columns.
-	 */
-	private ArrayList<TableColumnName> columns = new ArrayList<TableColumnName>();
+    /**
+     * List of all the created columns.
+     */
+    private ArrayList<TableColumnName> columns = new ArrayList<TableColumnName>();
 
-	private TableColumn createColumn(Table table, TableColumnName columnName) {
-		TableColumn column = new TableColumn(table, SWT.NONE);
-		column.setText(columnName.label());
-		columns.add(columnName);
-		return column;
-	}
+    private TableColumn createColumn(Table table, TableColumnName columnName) {
+        TableColumn column = new TableColumn(table, SWT.NONE);
+        column.setText(columnName.label());
+        columns.add(columnName);
+        return column;
+    }
 
-	public void createSmallColumn(Table table, TableColumnName columnName) {
-		TableColumn column = createColumn(table, columnName);
-		column.setWidth(75);
-	}
+    public void createSmallColumn(Table table, TableColumnName columnName) {
+        TableColumn column = createColumn(table, columnName);
+        column.setWidth(75);
+    }
 
-	public void createMediumColumn(Table table, TableColumnName columnName) {
-		TableColumn column = createColumn(table, columnName);
-		column.setWidth(150);
-	}
+    public void createMediumColumn(Table table, TableColumnName columnName) {
+        TableColumn column = createColumn(table, columnName);
+        column.setWidth(150);
+    }
 
-	public void createLargeColumn(Table table, TableColumnName columnName) {
-		TableColumn column = createColumn(table, columnName);
-		column.setWidth(250);
-	}
+    public void createLargeColumn(Table table, TableColumnName columnName) {
+        TableColumn column = createColumn(table, columnName);
+        column.setWidth(250);
+    }
 
-	public int indexOf(TableColumnName columnName) {
-		return columns.indexOf(columnName);
-	}
+    public int indexOf(TableColumnName columnName) {
+        return columns.indexOf(columnName);
+    }
 }

@@ -29,19 +29,15 @@ import org.obeonetwork.dsl.uml2.properties.uml.parts.AttributesPropertiesEdition
  */
 public class AttributesEditionFilter implements IFilter {
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
-	 */
-	public boolean select(Object toTest) {
-		EObject eObj = EEFUtils.resolveSemanticObject(toTest);
-		return eObj != null
-				&& ("Class".equals(eObj.eClass().getName())
-						|| eObj instanceof Interface
-						|| eObj instanceof Enumeration
-						|| eObj instanceof PrimitiveType
-						|| eObj instanceof DataType
-						|| eObj instanceof Stereotype || eObj instanceof Artifact);
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
+     */
+    public boolean select(Object toTest) {
+        EObject eObj = EEFUtils.resolveSemanticObject(toTest);
+        return eObj != null
+                && ("Class".equals(eObj.eClass().getName()) || eObj instanceof Interface || eObj instanceof Enumeration || eObj instanceof PrimitiveType || eObj instanceof DataType
+                        || eObj instanceof Stereotype || eObj instanceof Artifact);
+    }
 }

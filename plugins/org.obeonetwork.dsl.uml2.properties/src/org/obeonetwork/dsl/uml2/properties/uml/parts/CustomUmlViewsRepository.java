@@ -15,60 +15,62 @@ package org.obeonetwork.dsl.uml2.properties.uml.parts;
  */
 public class CustomUmlViewsRepository extends UmlViewsRepository {
 
-	/**
-	 * Stereotypes view descriptor
-	 */
-	public static class Stereotypes {
-		public static String appliedStereotypes = "uml::Stereotypes::appliedStereotypes";
+    /**
+     * Stereotypes view descriptor
+     */
+    public static class Stereotypes {
+        public static String appliedStereotypes = "uml::Stereotypes::appliedStereotypes";
 
-	}
-	
-	/**
-	 * Stereotype Applications view descriptor
-	 */
-	public static class StereotypeApplications {
-		public static String stereotypeApplications = "uml::Stereotypes::stereotypeApplications";
+    }
 
-	}
-	
-	/**
-	 * Stereotype Application Property view descriptor
-	 */
-	public static class SAProperty {
-		public static String stereotypeApplicationProperty = "uml::Stereotypes::stereotypeApplicationProperty";
+    /**
+     * Stereotype Applications view descriptor
+     */
+    public static class StereotypeApplications {
+        public static String stereotypeApplications = "uml::Stereotypes::stereotypeApplications";
 
-	}
+    }
 
-	/**
-	 * Profiles view descriptor
-	 */
-	public static class Profiles {
-		public static String appliedProfiles = "uml::Profiles::appliedProfiles";
+    /**
+     * Stereotype Application Property view descriptor
+     */
+    public static class SAProperty {
+        public static String stereotypeApplicationProperty = "uml::Stereotypes::stereotypeApplicationProperty";
 
-	}
+    }
 
-	/**
-	 * Relationships view descriptor
-	 */
-	public static class Relationships {
-		public static String relationshipsOriginating = "uml::Relationships::relationshipsOriginating";
-		public static String relationshipsTargeting = "uml::Relationships::relationshipsTargeting";
+    /**
+     * Profiles view descriptor
+     */
+    public static class Profiles {
+        public static String appliedProfiles = "uml::Profiles::appliedProfiles";
 
-	}
+    }
 
-	/**
-	 * Documentation view descriptor
-	 */
-	public static class Documentation {
-		public static String comment = "uml::Documentation::comment";
-	}
+    /**
+     * Relationships view descriptor
+     */
+    public static class Relationships {
+        public static String relationshipsOriginating = "uml::Relationships::relationshipsOriginating";
 
-	/**
-	 * General custom view descriptor
-	 */
-	public static class General {
-		public static String memberEndOwned = "uml::General::memberEnd::owned";
-		public static String memberEndNavigable = "uml::General::memberEnd::navigable";
-	}
+        public static String relationshipsTargeting = "uml::Relationships::relationshipsTargeting";
+
+    }
+
+    /**
+     * Documentation view descriptor
+     */
+    public static class Documentation {
+        public static String comment = "uml::Documentation::comment";
+    }
+
+    /**
+     * General custom view descriptor
+     */
+    public static class General {
+        public static String memberEndOwned = "uml::General::memberEnd::owned";
+
+        public static String memberEndNavigable = "uml::General::memberEnd::navigable";
+    }
 
 }

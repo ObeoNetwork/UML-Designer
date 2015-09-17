@@ -74,57 +74,23 @@ import org.obeonetwork.dsl.uml2.properties.uml.parts.DocumentationPropertiesEdit
  */
 public class DocumentationEditionFilter implements IFilter {
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
-	 */
-	public boolean select(Object toTest) {
-		EObject eObj = EEFUtils.resolveSemanticObject(toTest);
-		return eObj != null
-				&& (eObj instanceof org.eclipse.uml2.uml.Package
-						|| eObj instanceof Class || eObj instanceof Interface
-						|| eObj instanceof DataType
-						|| eObj instanceof PrimitiveType
-						|| eObj instanceof Enumeration
-						|| eObj instanceof EnumerationLiteral
-						|| eObj instanceof Operation
-						|| eObj instanceof Parameter
-						|| eObj instanceof Property
-						|| eObj instanceof Generalization
-						|| eObj instanceof Association
-						|| eObj instanceof AssociationClass
-						|| eObj instanceof Dependency
-						|| eObj instanceof Component
-						|| eObj instanceof Connector || eObj instanceof Port
-						|| eObj instanceof Transition
-						|| eObj instanceof Stereotype || eObj instanceof Actor
-						|| eObj instanceof Artifact
-						|| eObj instanceof CallOperationAction
-						|| eObj instanceof Collaboration
-						|| eObj instanceof ActivityEdge
-						|| eObj instanceof DataStoreNode
-						|| eObj instanceof ControlNode
-						|| eObj instanceof Extend || eObj instanceof FinalState
-						|| eObj instanceof Include || eObj instanceof Pin
-						|| eObj instanceof OpaqueAction
-						|| eObj instanceof Vertex || eObj instanceof Region
-						|| eObj instanceof UseCase
-						|| eObj instanceof Constraint
-						|| eObj instanceof Duration || eObj instanceof Interval
-						|| eObj instanceof Expression
-						|| eObj instanceof InstanceValue
-						|| eObj instanceof LiteralSpecification
-						|| eObj instanceof InstanceSpecification
-						|| eObj instanceof Trigger || eObj instanceof TimeEvent
-						|| eObj instanceof ChangeEvent
-						|| eObj instanceof TimeExpression
-						|| eObj instanceof MessageEvent
-						|| eObj instanceof CallBehaviorAction
-						|| eObj instanceof StateMachine
-						|| eObj instanceof Region
-						|| eObj instanceof Interaction
-						|| eObj instanceof OpaqueBehavior
-						|| eObj instanceof Activity || eObj instanceof AcceptEventAction);
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
+     */
+    public boolean select(Object toTest) {
+        EObject eObj = EEFUtils.resolveSemanticObject(toTest);
+        return eObj != null
+                && (eObj instanceof org.eclipse.uml2.uml.Package || eObj instanceof Class || eObj instanceof Interface || eObj instanceof DataType || eObj instanceof PrimitiveType
+                        || eObj instanceof Enumeration || eObj instanceof EnumerationLiteral || eObj instanceof Operation || eObj instanceof Parameter || eObj instanceof Property
+                        || eObj instanceof Generalization || eObj instanceof Association || eObj instanceof AssociationClass || eObj instanceof Dependency || eObj instanceof Component
+                        || eObj instanceof Connector || eObj instanceof Port || eObj instanceof Transition || eObj instanceof Stereotype || eObj instanceof Actor || eObj instanceof Artifact
+                        || eObj instanceof CallOperationAction || eObj instanceof Collaboration || eObj instanceof ActivityEdge || eObj instanceof DataStoreNode || eObj instanceof ControlNode
+                        || eObj instanceof Extend || eObj instanceof FinalState || eObj instanceof Include || eObj instanceof Pin || eObj instanceof OpaqueAction || eObj instanceof Vertex
+                        || eObj instanceof Region || eObj instanceof UseCase || eObj instanceof Constraint || eObj instanceof Duration || eObj instanceof Interval || eObj instanceof Expression
+                        || eObj instanceof InstanceValue || eObj instanceof LiteralSpecification || eObj instanceof InstanceSpecification || eObj instanceof Trigger || eObj instanceof TimeEvent
+                        || eObj instanceof ChangeEvent || eObj instanceof TimeExpression || eObj instanceof MessageEvent || eObj instanceof CallBehaviorAction || eObj instanceof StateMachine
+                        || eObj instanceof Region || eObj instanceof Interaction || eObj instanceof OpaqueBehavior || eObj instanceof Activity || eObj instanceof AcceptEventAction);
+    }
 }

@@ -30,64 +30,62 @@ import org.obeonetwork.dsl.uml2.properties.uml.providers.UmlPropertiesEditionPar
 /**
  * @author <a href="mailto:melanie.bats@obeo.fr">Melanie Bats</a>
  */
-public class UmlCustomPropertiesEditionPartProvider extends
-		UmlPropertiesEditionPartProvider {
-	@Override
-	public IPropertiesEditionPart getPropertiesEditionPart(Object key,
-			int kind, IPropertiesEditionComponent component) {
-		if (key == UmlViewsRepository.Operations.class) {
-			if (kind == UmlViewsRepository.FORM_KIND)
-				return new OperationsCustomPropertiesEditionPartForm(component);
-		}
-		if (key == UmlViewsRepository.Parameters.class) {
-			if (kind == UmlViewsRepository.FORM_KIND)
-				return new ParametersCustomPropertiesEditionPartForm(component);
-		}
-		if (key == UmlViewsRepository.Attributes.class) {
-			if (kind == UmlViewsRepository.FORM_KIND)
-				return new AttributesCustomPropertiesEditionPartForm(component);
-		}
+public class UmlCustomPropertiesEditionPartProvider extends UmlPropertiesEditionPartProvider {
+    @Override
+    public IPropertiesEditionPart getPropertiesEditionPart(Object key, int kind, IPropertiesEditionComponent component) {
+        if (key == UmlViewsRepository.Operations.class) {
+            if (kind == UmlViewsRepository.FORM_KIND)
+                return new OperationsCustomPropertiesEditionPartForm(component);
+        }
+        if (key == UmlViewsRepository.Parameters.class) {
+            if (kind == UmlViewsRepository.FORM_KIND)
+                return new ParametersCustomPropertiesEditionPartForm(component);
+        }
+        if (key == UmlViewsRepository.Attributes.class) {
+            if (kind == UmlViewsRepository.FORM_KIND)
+                return new AttributesCustomPropertiesEditionPartForm(component);
+        }
 
-		if (key == CustomUmlViewsRepository.Stereotypes.class) {
-			if (kind == UmlViewsRepository.FORM_KIND)
-				return new StereotypesPropertiesEditionPartForm(component);
-		}
-		
-		if (key == CustomUmlViewsRepository.StereotypeApplications.class) {
-			if (kind == UmlViewsRepository.FORM_KIND)
-				return new StereotypeApplicationsPropertiesEditionPartForm(component);
-		}
-		
-		if (key == CustomUmlViewsRepository.SAProperty.class) {
-			if (kind == UmlViewsRepository.SWT_KIND)
-				return new SAPropertyPropertiesEditionPartImpl(component);
-		}
+        if (key == CustomUmlViewsRepository.Stereotypes.class) {
+            if (kind == UmlViewsRepository.FORM_KIND)
+                return new StereotypesPropertiesEditionPartForm(component);
+        }
 
-		if (key == CustomUmlViewsRepository.Profiles.class) {
-			if (kind == UmlViewsRepository.FORM_KIND)
-				return new ProfilesPropertiesEditionPartForm(component);
-		}
+        if (key == CustomUmlViewsRepository.StereotypeApplications.class) {
+            if (kind == UmlViewsRepository.FORM_KIND)
+                return new StereotypeApplicationsPropertiesEditionPartForm(component);
+        }
 
-		if (key == CustomUmlViewsRepository.Relationships.class) {
-			if (kind == UmlViewsRepository.FORM_KIND)
-				return new RelationshipsPropertiesEditionPartForm(component);
-		}
+        if (key == CustomUmlViewsRepository.SAProperty.class) {
+            if (kind == UmlViewsRepository.SWT_KIND)
+                return new SAPropertyPropertiesEditionPartImpl(component);
+        }
 
-		if (key == CustomUmlViewsRepository.Documentation.class) {
-			if (kind == UmlViewsRepository.FORM_KIND)
-				return new RelationshipsPropertiesEditionPartForm(component);
-		}
+        if (key == CustomUmlViewsRepository.Profiles.class) {
+            if (kind == UmlViewsRepository.FORM_KIND)
+                return new ProfilesPropertiesEditionPartForm(component);
+        }
 
-		if (key == UmlViewsRepository.Ends.class) {
-			if (kind == UmlViewsRepository.FORM_KIND)
-				return new EndsCustomPropertiesEditionPartForm(component);
-		}
+        if (key == CustomUmlViewsRepository.Relationships.class) {
+            if (kind == UmlViewsRepository.FORM_KIND)
+                return new RelationshipsPropertiesEditionPartForm(component);
+        }
 
-		if (key == UmlViewsRepository.General.class) {
-			if (kind == UmlViewsRepository.FORM_KIND)
-				return new GeneralCustomPropertiesEditionPartForm(component);
-		}
+        if (key == CustomUmlViewsRepository.Documentation.class) {
+            if (kind == UmlViewsRepository.FORM_KIND)
+                return new RelationshipsPropertiesEditionPartForm(component);
+        }
 
-		return super.getPropertiesEditionPart(key, kind, component);
-	}
+        if (key == UmlViewsRepository.Ends.class) {
+            if (kind == UmlViewsRepository.FORM_KIND)
+                return new EndsCustomPropertiesEditionPartForm(component);
+        }
+
+        if (key == UmlViewsRepository.General.class) {
+            if (kind == UmlViewsRepository.FORM_KIND)
+                return new GeneralCustomPropertiesEditionPartForm(component);
+        }
+
+        return super.getPropertiesEditionPart(key, kind, component);
+    }
 }

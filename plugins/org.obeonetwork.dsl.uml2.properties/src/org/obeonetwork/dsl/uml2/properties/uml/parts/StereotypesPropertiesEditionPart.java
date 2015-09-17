@@ -19,50 +19,50 @@ import org.eclipse.jface.viewers.ViewerFilter;
  */
 public interface StereotypesPropertiesEditionPart {
 
-	/**
-	 * Init the appliedStereotypes
-	 * 
-	 * @param settings
-	 *            settings for the appliedStereotypes ReferencesTable
-	 */
-	public void initAppliedStereotypes(OperationsTableSettings settings);
+    /**
+     * Init the appliedStereotypes
+     * 
+     * @param settings
+     *            settings for the appliedStereotypes ReferencesTable
+     */
+    public void initAppliedStereotypes(OperationsTableSettings settings);
 
-	/**
-	 * Update the appliedStereotypes
-	 * 
-	 * @param newValue
-	 *            the appliedStereotypes to update
-	 */
-	public void updateAppliedStereotypes();
+    /**
+     * Update the appliedStereotypes
+     * 
+     * @param newValue
+     *            the appliedStereotypes to update
+     */
+    public void updateAppliedStereotypes();
 
-	/**
-	 * Adds the given filter to the appliedStereotypes edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 */
-	public void addFilterToAppliedStereotypes(ViewerFilter filter);
+    /**
+     * Adds the given filter to the appliedStereotypes edition editor.
+     * 
+     * @param filter
+     *            a viewer filter
+     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+     */
+    public void addFilterToAppliedStereotypes(ViewerFilter filter);
 
-	/**
-	 * Adds the given filter to the appliedStereotypes edition editor.
-	 * 
-	 * @param filter
-	 *            a viewer filter
-	 * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
-	 */
-	public void addBusinessFilterToAppliedStereotypes(ViewerFilter filter);
+    /**
+     * Adds the given filter to the appliedStereotypes edition editor.
+     * 
+     * @param filter
+     *            a viewer filter
+     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+     */
+    public void addBusinessFilterToAppliedStereotypes(ViewerFilter filter);
 
-	/**
-	 * @return true if the given element is contained inside the
-	 *         appliedStereotypes table
-	 */
-	public boolean isContainedInAppliedStereotypesTable(EObject element);
+    /**
+     * @return true if the given element is contained inside the
+     *         appliedStereotypes table
+     */
+    public boolean isContainedInAppliedStereotypesTable(EObject element);
 
-	/**
-	 * Returns the internationalized title text.
-	 * 
-	 * @return the internationalized title text.
-	 */
-	public String getTitle();
+    /**
+     * Returns the internationalized title text.
+     * 
+     * @return the internationalized title text.
+     */
+    public String getTitle();
 }
