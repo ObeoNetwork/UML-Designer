@@ -12,10 +12,11 @@ package org.obeonetwork.dsl.uml2.design.api.services;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.Command;
@@ -94,11 +95,16 @@ import com.google.common.collect.Lists;
  * @author Melanie Bats <a href="mailto:melanie.bats@obeo.fr">melanie.bats@obeo.fr</a>
  */
 public class ReusedDescriptionServices extends AbstractDiagramServices {
+	/**
+	 * Elements relation.
+	 */
+	enum Relation{NONE, CHILD, PARENT}
+
 	final Map<EObject, Boolean> isOrHasDescendantCache = UmlDesignerSessionManagerListener
 			.getDescendantCache();
 
 	/**
-	 * Add direct children of the given diagram root.
+	 * Add direct children of the given diagram root using double click on the "empty diagram message".
 	 *
 	 * @param root
 	 *            Diagram root
@@ -108,11 +114,18 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	public void addDirectChildren(Element root, DNode rootView) {
 		final List<Element> semanticElements = root.getOwnedElements();
 		final DDiagram diagram = rootView.getParentDiagram();
-		addExistingElements(diagram, semanticElements, "[elementView.oclAsType(DNode).getParentDiagram()/]"); //$NON-NLS-1$
+		final Session session = SessionManager.INSTANCE.getSession(semanticElements.get(0));
+		for (final EObject semanticElement : orderParentFirst(semanticElements)) {
+			// Mark for auto-size
+			markForAutosize(semanticElement);
+			// add to diagram
+			showView(semanticElement, (DSemanticDecorator)diagram, session,
+					"[elementView.oclAsType(DNode).getParentDiagram()/]"); //$NON-NLS-1$
+		}
 	}
 
 	/**
-	 * Add existing elements.
+	 * Add existing elements selected in dialog.
 	 *
 	 * @param containerView
 	 *            Container
@@ -121,19 +134,27 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	 * @param containerViewExpression
 	 *            Container view expression
 	 */
-	private void addExistingElements(final EObject containerView, final List<Element> semanticElements,
-			final String containerViewExpression) {
+	private void addExistingElements(final EObject containerView, final List<Element> semanticElements) {
 		if (!(containerView instanceof DSemanticDecorator) || semanticElements == null
 				|| semanticElements.isEmpty()) {
 			return;
 		}
 		final Session session = SessionManager.INSTANCE.getSession(semanticElements.get(0));
+		final Set<Element> lastShownElements = new HashSet<Element>();
 		for (final EObject semanticElement : orderParentFirst(semanticElements)) {
 			// Mark for auto-size
 			markForAutosize(semanticElement);
-
-			// Show the added element on the diagram
-			showView(semanticElement, (DSemanticDecorator)containerView, session, containerViewExpression);
+			// Add to diagram
+			String containerViewExpression = "";//$NON-NLS-1$
+			if (lastShownElements.contains(semanticElement.eContainer())) {
+				// The user want to add list of Hierarchical elements
+				containerViewExpression = "[self.getHierarchicalContainerView(elementView)/]"; //$NON-NLS-1$
+			} else {
+				// The user want to add an element not a hierarchy
+				containerViewExpression = "[self.getContainerView(elementView)/]"; //$NON-NLS-1$
+			}
+			showView(semanticElement, (DSemanticDecorator)containerView, session, containerViewExpression); // $NON-NLS-1$
+			lastShownElements.add((Element)semanticElement);
 		}
 	}
 
@@ -465,8 +486,7 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	 * @return Container view
 	 */
 	public DSemanticDecorator getContainerView(Element semanticElement, DDiagramElement elementView) {
-		final DSemanticDecorator diagram = (DSemanticDecorator)elementView.getParentDiagram();
-		return getContainerView(semanticElement, diagram);
+		return getContainerView(semanticElement, (DSemanticDecorator)elementView);
 	}
 
 	/**
@@ -480,12 +500,11 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	 */
 	public DSemanticDecorator getContainerView(Element semanticElement,
 			DDiagramElementContainer elementView) {
-		final DSemanticDecorator diagram = (DSemanticDecorator)elementView.getParentDiagram();
-		return getContainerView(semanticElement, diagram);
+		return getContainerView(semanticElement, (DSemanticDecorator)elementView);
 	}
 
 	/**
-	 * Retrieve the container view for the given semantic element.
+	 * Retrieve the container view for the given semantic element when a branch was not selected.
 	 *
 	 * @param semanticElement
 	 *            Semantic element
@@ -493,15 +512,8 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	 *            Element view
 	 * @return Container view
 	 */
-	private DSemanticDecorator getContainerView(Element semanticElement, final DSemanticDecorator diagram) {
-		final List<DDiagramElementContainer> containerViews = ((DDiagram)diagram).getContainers();
-		for (final DDiagramElementContainer containerView : containerViews) {
-			if (containerView.getTarget().equals(semanticElement.getOwner()) && !ContainerLayout.LIST
-					.equals(containerView.getActualMapping().getChildrenPresentation())) {
-				return containerView;
-			}
-		}
-		return diagram;
+	private DSemanticDecorator getContainerView(Element semanticElement, DSemanticDecorator elementView) {
+		return elementView;
 	}
 
 	/**
@@ -514,8 +526,78 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	 * @return Container view
 	 */
 	public DSemanticDecorator getContainerView(Element semanticElement, DSemanticDiagram elementView) {
-		final DSemanticDecorator diagram = elementView;
-		return getContainerView(semanticElement, diagram);
+		return getContainerView(semanticElement, (DSemanticDecorator)elementView);
+	}
+
+	/**
+	 * Retrieve the container view for the given semantic element.
+	 *
+	 * @param semanticElement
+	 *            Semantic element
+	 * @param elementView
+	 *            Element view
+	 * @return Container view
+	 */
+	public DSemanticDecorator getHierarchicalContainerView(Element semanticElement,
+			DDiagramElement elementView) {
+		return getHierarchicalContainerView(semanticElement, (DSemanticDecorator)elementView);
+	}
+
+	/**
+	 * Retrieve the container view for the given semantic element.
+	 *
+	 * @param semanticElement
+	 *            Semantic element
+	 * @param elementView
+	 *            Element view
+	 * @return Container view
+	 */
+	public DSemanticDecorator getHierarchicalContainerView(Element semanticElement,
+			DDiagramElementContainer elementView) {
+		return getHierarchicalContainerView(semanticElement, (DSemanticDecorator)elementView);
+	}
+
+	/**
+	 * Retrieve the container view for the given semantic element when a branch was selected
+	 *
+	 * @param semanticElement
+	 *            Semantic element
+	 * @param elementView
+	 *            Element view
+	 * @return Container view
+	 */
+	private DSemanticDecorator getHierarchicalContainerView(Element semanticElement,
+			DSemanticDecorator elementView) {
+		final Set<DDiagramElementContainer> containerViews = new HashSet<DDiagramElementContainer>();
+
+		if (elementView instanceof DDiagramElement) {
+			containerViews.addAll(((DDiagramElement)elementView).getParentDiagram().getContainers());
+		} else if (elementView instanceof DDiagramElementContainer) {
+			containerViews.addAll(((DDiagramElementContainer)elementView).getParentDiagram().getContainers());
+		} else if (elementView instanceof DSemanticDiagram) {
+			containerViews.addAll(((DSemanticDiagram)elementView).getContainers());
+		}
+		for (final DDiagramElementContainer containerView : containerViews) {
+			if (containerView.getTarget().equals(semanticElement.getOwner()) && !ContainerLayout.LIST
+					.equals(containerView.getActualMapping().getChildrenPresentation())) {
+				return containerView;
+			}
+		}
+		return elementView;
+	}
+
+	/**
+	 * Retrieve the container view for the given semantic element.
+	 *
+	 * @param semanticElement
+	 *            Semantic element
+	 * @param elementView
+	 *            Element view
+	 * @return Container view
+	 */
+	public DSemanticDecorator getHierarchicalContainerView(Element semanticElement,
+			DSemanticDiagram elementView) {
+		return getHierarchicalContainerView(semanticElement, (DSemanticDecorator)elementView);
 	}
 
 	/**
@@ -706,6 +788,25 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 		final StateMachine statemachine = getStatemachine(pkg);
 		pkg.getPackagedElements().add(statemachine);
 		return statemachine;
+	}
+
+	/**
+	 * Check if element is a descendant of an other element.
+	 *
+	 * @param child
+	 *            Element supposed to be a child
+	 * @param parent
+	 *            Element supposed to be a parent
+	 * @return Return true if first parameter is a descendant of second parameter
+	 */
+	private boolean isChild(EObject child, Element parent) {
+		if (child.eContainer() == null) {
+			return false;
+		}
+		if (child.eContainer() == parent) {
+			return true;
+		}
+		return isChild(child.eContainer(), parent);
 	}
 
 	/**
@@ -934,21 +1035,66 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 		final List elementsToAdd = dlg.open(PlatformUI.getWorkbench().getDisplay().getActiveShell(),
 				selectedContainer, diagram, true);
 		if (elementsToAdd.size() > 0) {
-			addExistingElements(selectedContainerView, elementsToAdd,
-					"[self.getContainerView(elementView)/]"); //$NON-NLS-1$
+			addExistingElements(selectedContainerView, elementsToAdd);
 		}
 	}
 
-	private List<Element> orderParentFirst(List<Element> semanticElements) {
-		final LinkedList<Element> orderedElements = Lists.newLinkedList();
-		for (final Element element : semanticElements) {
-			if (orderedElements.contains(element.getOwner())) {
-				orderedElements.add(orderedElements.indexOf(element.getOwner()), element);
-			} else {
-				orderedElements.addLast(element);
+	/**
+	 * Sort list of elements by parent first.
+	 *
+	 * @param listToSort
+	 *            list of Element
+	 * @return sorted list
+	 */
+	private List<Element> orderParentFirst(List<Element> listToSort) {
+
+		final ArrayList<Element> sortedList = new ArrayList<Element>();
+		if (listToSort.isEmpty()) {
+			return listToSort;
+		}
+
+		if (sortedList.isEmpty()) {
+			sortedList.add(listToSort.get(0));
+		}
+
+		for (final Element elementToSort : listToSort) {
+			int index = 0;
+			Relation relation = Relation.NONE;
+			for (final Element currentElement : sortedList) {
+				if (isChild(elementToSort, currentElement)) {
+					// elementToSort is a descendant of currentElement
+					// Find the last element of the list which is a parent
+					index = sortedList.indexOf(currentElement);
+					relation = Relation.CHILD;
+					if (elementToSort.eContainer() == currentElement) {
+						break;
+					}
+				} else if (isChild(currentElement, elementToSort)) {
+					// currentElement is a parent of currenttElement
+					index = sortedList.indexOf(currentElement);
+					relation = Relation.PARENT;
+					break;
+				}
+			}
+
+			switch (relation) {
+				case CHILD:
+					// Element to insert is a child of an already sorted element
+					sortedList.add(index + 1, elementToSort);
+					break;
+				case PARENT:
+					// Element to insert is a parent of an already sorted element
+					sortedList.add(index, elementToSort);
+					break;
+				default:
+					// Element to insert has no relation with already sorted elements
+					if (!sortedList.contains(elementToSort)) {
+						sortedList.add(elementToSort);
+						break;
+					}
 			}
 		}
-		return Lists.reverse(orderedElements);
+		return sortedList;
 	}
 
 	/**
