@@ -334,7 +334,9 @@ public abstract class AbstractDiagramServices {
 	 */
 	public void dropFromModel(final Element newContainer, final Element semanticElement,
 			final DSemanticDecorator containerView) {
-		drop(newContainer, semanticElement, containerView, !(containerView instanceof DSemanticDiagram));
+		final Session session = SessionManager.INSTANCE.getSession(semanticElement);
+		markForAutosize(semanticElement);
+		showView(semanticElement, containerView, session, "[self.getContainerView(newContainerView)/]"); //$NON-NLS-1$
 	}
 
 	/**
