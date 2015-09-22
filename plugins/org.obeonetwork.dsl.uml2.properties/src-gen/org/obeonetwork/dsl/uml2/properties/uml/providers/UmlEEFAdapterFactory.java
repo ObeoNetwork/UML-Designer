@@ -127,6 +127,16 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
     /**
      * {@inheritDoc}
      * 
+     * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createOpaqueExpressionAdapter()
+     * @generated
+     */
+    public Adapter createOpaqueExpressionAdapter() {
+        return new OpaqueExpressionPropertiesEditionProvider();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createParameterAdapter()
      * @generated
      */
@@ -597,11 +607,81 @@ public class UmlEEFAdapterFactory extends UMLAdapterFactory {
     /**
      * {@inheritDoc}
      * 
+     * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createDurationObservationAdapter()
+     * @generated
+     */
+    public Adapter createDurationObservationAdapter() {
+        return new DurationObservationPropertiesEditionProvider();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createLiteralSpecificationAdapter()
      * @generated
      */
     public Adapter createLiteralSpecificationAdapter() {
         return new LiteralSpecificationPropertiesEditionProvider();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createLiteralBooleanAdapter()
+     * @generated
+     */
+    public Adapter createLiteralBooleanAdapter() {
+        return new LiteralBooleanPropertiesEditionProvider();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createLiteralIntegerAdapter()
+     * @generated
+     */
+    public Adapter createLiteralIntegerAdapter() {
+        return new LiteralIntegerPropertiesEditionProvider();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createLiteralNullAdapter()
+     * @generated
+     */
+    public Adapter createLiteralNullAdapter() {
+        return new LiteralNullPropertiesEditionProvider();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createLiteralRealAdapter()
+     * @generated
+     */
+    public Adapter createLiteralRealAdapter() {
+        return new LiteralRealPropertiesEditionProvider();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createLiteralStringAdapter()
+     * @generated
+     */
+    public Adapter createLiteralStringAdapter() {
+        return new LiteralStringPropertiesEditionProvider();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.uml2.uml.util.UMLAdapterFactory#createLiteralUnlimitedNaturalAdapter()
+     * @generated
+     */
+    public Adapter createLiteralUnlimitedNaturalAdapter() {
+        return new LiteralUnlimitedNaturalPropertiesEditionProvider();
     }
 
 }

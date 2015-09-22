@@ -13,9 +13,13 @@ package org.obeonetwork.dsl.uml2.properties.uml.parts;
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Package;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.Enumerator;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
+
+import org.eclipse.emf.edit.domain.EditingDomain;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 
@@ -24,6 +28,8 @@ import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSett
 import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
 
 import org.eclipse.jface.viewers.ViewerFilter;
+
+import org.eclipse.swt.events.ControlListener;
 
 /**
  * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
@@ -956,21 +962,6 @@ public interface GeneralPropertiesEditionPart {
      * @generated
      */
     public void setIcon(String newValue);
-
-    /**
-     * @return the body
-     * @generated
-     */
-    public String getBody();
-
-    /**
-     * Defines a new body
-     * 
-     * @param newValue
-     *            the new body to set
-     * @generated
-     */
-    public void setBody(String newValue);
 
     /**
      * @return the extendedCase
@@ -1910,6 +1901,240 @@ public interface GeneralPropertiesEditionPart {
      * @generated
      */
     public void addBusinessFilterToSignal(ViewerFilter filter);
+
+    /**
+     * @return the symbol
+     * @generated
+     */
+    public String getSymbol();
+
+    /**
+     * Defines a new symbol
+     * 
+     * @param newValue
+     *            the new symbol to set
+     * @generated
+     */
+    public void setSymbol(String newValue);
+
+    /**
+     * @return the nameExpression
+     * @generated
+     */
+    public EObject getNameExpression();
+
+    /**
+     * Init the nameExpression
+     * 
+     * @param current
+     *            the current value
+     * @param containingFeature
+     *            the feature where to navigate if necessary
+     * @param feature
+     *            the feature to manage
+     * @param editingDomain
+     */
+    public void initNameExpression(EObject current, EReference containingFeature, EReference feature, EditingDomain editingDomain);
+
+    /**
+     * Defines a new nameExpression
+     * 
+     * @param newValue
+     *            the new nameExpression to set
+     * @generated
+     */
+    public void setNameExpression(EObject newValue);
+
+    /**
+     * Add a listener on nameExpression widget control.
+     * 
+     * @param listener
+     *            the Control Listener
+     */
+    public void addNameExpressionControlListener(ControlListener listener);
+
+    /**
+     * Init the operand
+     * 
+     * @param current
+     *            the current value
+     * @param containgFeature
+     *            the feature where to navigate if necessary
+     * @param feature
+     *            the feature to manage
+     */
+    public void initOperand(ReferencesTableSettings settings);
+
+    /**
+     * Update the operand
+     * 
+     * @param newValue
+     *            the operand to update
+     * @generated
+     */
+    public void updateOperand();
+
+    /**
+     * Adds the given filter to the operand edition editor.
+     * 
+     * @param filter
+     *            a viewer filter
+     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+     * @generated
+     */
+    public void addFilterToOperand(ViewerFilter filter);
+
+    /**
+     * Adds the given filter to the operand edition editor.
+     * 
+     * @param filter
+     *            a viewer filter
+     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+     * @generated
+     */
+    public void addBusinessFilterToOperand(ViewerFilter filter);
+
+    /**
+     * @return true if the given element is contained inside the operand table
+     * @generated
+     */
+    public boolean isContainedInOperandTable(EObject element);
+
+    /**
+     * @return the booleanValue
+     * @generated
+     */
+    public Boolean getBooleanValue();
+
+    /**
+     * Defines a new booleanValue
+     * 
+     * @param newValue
+     *            the new booleanValue to set
+     * @generated
+     */
+    public void setBooleanValue(Boolean newValue);
+
+    /**
+     * @return the integerValue
+     * @generated
+     */
+    public String getIntegerValue();
+
+    /**
+     * Defines a new integerValue
+     * 
+     * @param newValue
+     *            the new integerValue to set
+     * @generated
+     */
+    public void setIntegerValue(String newValue);
+
+    /**
+     * @return the language
+     * @generated
+     */
+    public EList getLanguage();
+
+    /**
+     * Defines a new language
+     * 
+     * @param newValue
+     *            the new language to set
+     * @generated
+     */
+    public void setLanguage(EList newValue);
+
+    /**
+     * Add a value to the language multivalued attribute.
+     * 
+     * @param newValue
+     *            the value to add
+     */
+    public void addToLanguage(Object newValue);
+
+    /**
+     * Remove a value to the language multivalued attribute.
+     * 
+     * @param newValue
+     *            the value to remove
+     */
+    public void removeToLanguage(Object newValue);
+
+    /**
+     * @return the body
+     * @generated
+     */
+    public EList getBody();
+
+    /**
+     * Defines a new body
+     * 
+     * @param newValue
+     *            the new body to set
+     * @generated
+     */
+    public void setBody(EList newValue);
+
+    /**
+     * Add a value to the body multivalued attribute.
+     * 
+     * @param newValue
+     *            the value to add
+     */
+    public void addToBody(Object newValue);
+
+    /**
+     * Remove a value to the body multivalued attribute.
+     * 
+     * @param newValue
+     *            the value to remove
+     */
+    public void removeToBody(Object newValue);
+
+    /**
+     * Init the observation
+     * 
+     * @param settings
+     *            settings for the observation ReferencesTable
+     */
+    public void initObservation(ReferencesTableSettings settings);
+
+    /**
+     * Update the observation
+     * 
+     * @param newValue
+     *            the observation to update
+     * @generated
+     */
+    public void updateObservation();
+
+    /**
+     * Adds the given filter to the observation edition editor.
+     * 
+     * @param filter
+     *            a viewer filter
+     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+     * @generated
+     */
+    public void addFilterToObservation(ViewerFilter filter);
+
+    /**
+     * Adds the given filter to the observation edition editor.
+     * 
+     * @param filter
+     *            a viewer filter
+     * @see org.eclipse.jface.viewers.StructuredViewer#addFilter(ViewerFilter)
+     * @generated
+     */
+    public void addBusinessFilterToObservation(ViewerFilter filter);
+
+    /**
+     * @return true if the given element is contained inside the observation
+     *         table
+     * @generated
+     */
+    public boolean isContainedInObservationTable(EObject element);
 
     /**
      * Returns the internationalized title text.

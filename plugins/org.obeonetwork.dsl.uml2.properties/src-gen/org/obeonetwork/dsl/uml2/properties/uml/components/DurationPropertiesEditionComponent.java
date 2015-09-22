@@ -36,12 +36,22 @@ import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
 
+import org.eclipse.emf.eef.runtime.impl.filters.EObjectStrictFilter;
+
+import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
+
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
+
+import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
+
+import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 
 import org.eclipse.uml2.types.TypesPackage;
 
 import org.eclipse.uml2.uml.Duration;
+import org.eclipse.uml2.uml.Observation;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -59,6 +69,11 @@ public class DurationPropertiesEditionComponent extends SinglePartPropertiesEdit
      */
 
     public static String GENERAL_PART = "General"; //$NON-NLS-1$
+
+    /**
+     * Settings for observation ReferencesTable
+     */
+    private ReferencesTableSettings observationSettings;
 
     /**
      * Default constructor
@@ -94,8 +109,30 @@ public class DurationPropertiesEditionComponent extends SinglePartPropertiesEdit
             if (isAccessible(UmlViewsRepository.General.visibility)) {
                 generalPart.initVisibility(EEFUtils.choiceOfValues(duration, UMLPackage.eINSTANCE.getNamedElement_Visibility()), duration.getVisibility());
             }
+            if (isAccessible(UmlViewsRepository.General.observation)) {
+                observationSettings = new ReferencesTableSettings(duration, UMLPackage.eINSTANCE.getDuration_Observation());
+                generalPart.initObservation(observationSettings);
+            }
             // init filters
 
+            if (isAccessible(UmlViewsRepository.General.observation)) {
+                generalPart.addFilterToObservation(new ViewerFilter() {
+
+                    /**
+                     * {@inheritDoc}
+                     * 
+                     * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer,
+                     *      java.lang.Object, java.lang.Object)
+                     */
+                    public boolean select(Viewer viewer, Object parentElement, Object element) {
+                        if (element instanceof EObject)
+                            return (!generalPart.isContainedInObservationTable((EObject) element));
+                        return element instanceof String && element.equals("");
+                    }
+
+                });
+                generalPart.addFilterToObservation(new EObjectStrictFilter(UMLPackage.Literals.OBSERVATION));
+            }
             // init values for referenced views
 
             // init filters for referenced views
@@ -116,6 +153,9 @@ public class DurationPropertiesEditionComponent extends SinglePartPropertiesEdit
         if (editorKey == UmlViewsRepository.General.visibility) {
             return UMLPackage.eINSTANCE.getNamedElement_Visibility();
         }
+        if (editorKey == UmlViewsRepository.General.observation) {
+            return UMLPackage.eINSTANCE.getDuration_Observation();
+        }
         return super.associatedFeature(editorKey);
     }
 
@@ -132,6 +172,17 @@ public class DurationPropertiesEditionComponent extends SinglePartPropertiesEdit
         }
         if (UmlViewsRepository.General.visibility == event.getAffectedEditor()) {
             duration.setVisibility((VisibilityKind) event.getNewValue());
+        }
+        if (UmlViewsRepository.General.observation == event.getAffectedEditor()) {
+            if (event.getKind() == PropertiesEditionEvent.ADD) {
+                if (event.getNewValue() instanceof Observation) {
+                    observationSettings.addToReference((EObject) event.getNewValue());
+                }
+            } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+                observationSettings.removeFromReference((EObject) event.getNewValue());
+            } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+                observationSettings.move(event.getNewIndex(), (Observation) event.getNewValue());
+            }
         }
     }
 
@@ -155,6 +206,9 @@ public class DurationPropertiesEditionComponent extends SinglePartPropertiesEdit
             if (UMLPackage.eINSTANCE.getNamedElement_Visibility().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(UmlViewsRepository.General.visibility))
                 generalPart.setVisibility((VisibilityKind) msg.getNewValue());
 
+            if (UMLPackage.eINSTANCE.getDuration_Observation().equals(msg.getFeature()) && isAccessible(UmlViewsRepository.General.observation))
+                generalPart.updateObservation();
+
         }
     }
 
@@ -165,7 +219,8 @@ public class DurationPropertiesEditionComponent extends SinglePartPropertiesEdit
      */
     @Override
     protected NotificationFilter[] getNotificationFilters() {
-        NotificationFilter filter = new EStructuralFeatureNotificationFilter(UMLPackage.eINSTANCE.getNamedElement_Name(), UMLPackage.eINSTANCE.getNamedElement_Visibility());
+        NotificationFilter filter = new EStructuralFeatureNotificationFilter(UMLPackage.eINSTANCE.getNamedElement_Name(), UMLPackage.eINSTANCE.getNamedElement_Visibility(),
+                UMLPackage.eINSTANCE.getDuration_Observation());
         return new NotificationFilter[] { filter, };
     }
 
@@ -176,7 +231,7 @@ public class DurationPropertiesEditionComponent extends SinglePartPropertiesEdit
      *      int)
      */
     public boolean mustBeComposed(Object key, int kind) {
-        return key == UmlViewsRepository.General.name || key == UmlViewsRepository.General.visibility;
+        return key == UmlViewsRepository.General.name || key == UmlViewsRepository.General.visibility || key == UmlViewsRepository.General.observation;
     }
 
     /**

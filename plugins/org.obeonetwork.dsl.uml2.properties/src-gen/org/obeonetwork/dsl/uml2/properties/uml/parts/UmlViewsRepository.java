@@ -247,12 +247,6 @@ public class UmlViewsRepository {
          * @generated
          */
 
-        public static String body = "uml::General::body";
-
-        /**
-         * @generated
-         */
-
         public static String extendedCase = "uml::General::extendedCase";
 
         /**
@@ -380,6 +374,54 @@ public class UmlViewsRepository {
          */
 
         public static String signal = "uml::General::signal";
+
+        /**
+         * @generated
+         */
+
+        public static String symbol = "uml::General::symbol";
+
+        /**
+         * @generated
+         */
+
+        public static String nameExpression = "uml::General::nameExpression";
+
+        /**
+         * @generated
+         */
+
+        public static String operand = "uml::General::operand";
+
+        /**
+         * @generated
+         */
+
+        public static String booleanValue = "uml::General::booleanValue";
+
+        /**
+         * @generated
+         */
+
+        public static String integerValue = "uml::General::integerValue";
+
+        /**
+         * @generated
+         */
+
+        public static String language = "uml::General::language";
+
+        /**
+         * @generated
+         */
+
+        public static String body = "uml::General::body";
+
+        /**
+         * @generated
+         */
+
+        public static String observation = "uml::General::observation";
 
     }
 

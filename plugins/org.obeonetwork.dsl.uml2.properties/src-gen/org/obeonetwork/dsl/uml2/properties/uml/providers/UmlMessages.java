@@ -313,12 +313,6 @@ public class UmlMessages extends NLS {
      * @generated
      */
 
-    public static String GeneralPropertiesEditionPart_BodyLabel;
-
-    /**
-     * @generated
-     */
-
     public static String GeneralPropertiesEditionPart_ExtendedCaseLabel;
 
     /**
@@ -446,6 +440,54 @@ public class UmlMessages extends NLS {
      */
 
     public static String GeneralPropertiesEditionPart_SignalLabel;
+
+    /**
+     * @generated
+     */
+
+    public static String GeneralPropertiesEditionPart_SymbolLabel;
+
+    /**
+     * @generated
+     */
+
+    public static String GeneralPropertiesEditionPart_NameExpressionLabel;
+
+    /**
+     * @generated
+     */
+
+    public static String GeneralPropertiesEditionPart_OperandLabel;
+
+    /**
+     * @generated
+     */
+
+    public static String GeneralPropertiesEditionPart_BooleanValueLabel;
+
+    /**
+     * @generated
+     */
+
+    public static String GeneralPropertiesEditionPart_IntegerValueLabel;
+
+    /**
+     * @generated
+     */
+
+    public static String GeneralPropertiesEditionPart_LanguageLabel;
+
+    /**
+     * @generated
+     */
+
+    public static String GeneralPropertiesEditionPart_BodyLabel;
+
+    /**
+     * @generated
+     */
+
+    public static String GeneralPropertiesEditionPart_ObservationLabel;
 
     /**
      * @generated

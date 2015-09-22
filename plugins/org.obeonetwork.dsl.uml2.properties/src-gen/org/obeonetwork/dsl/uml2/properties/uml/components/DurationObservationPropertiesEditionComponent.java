@@ -10,27 +10,12 @@
  *******************************************************************************/
 package org.obeonetwork.dsl.uml2.properties.uml.components;
 
-import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
-import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
-import org.eclipse.emf.eef.runtime.ui.widgets.referencestable.ReferencesTableSettings;
-import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.uml2.uml.InstanceValue;
-import org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart;
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
-import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
-import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.common.util.BasicDiagnostic;
-import org.eclipse.emf.common.util.WrappedException;
-
 import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.VisibilityKind;
+
+import java.util.Iterator;
+import java.util.List;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -52,28 +37,14 @@ import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
 
 import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 
-import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
-
 import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
-
-import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
-import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
-
-import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
-
-import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
-
-import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
-
 import org.eclipse.uml2.types.TypesPackage;
 
-import org.eclipse.uml2.uml.InstanceSpecification;
-import org.eclipse.uml2.uml.InstanceValue;
-import org.eclipse.uml2.uml.UMLFactory;
+import org.eclipse.uml2.uml.DurationObservation;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.VisibilityKind;
 
@@ -84,7 +55,7 @@ import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
  * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
  * @generated
  */
-public class InstanceValuePropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
+public class DurationObservationPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
     /**
      * @generated
@@ -93,17 +64,12 @@ public class InstanceValuePropertiesEditionComponent extends SinglePartPropertie
     public static String GENERAL_PART = "General"; //$NON-NLS-1$
 
     /**
-     * Settings for instance LinkEObjectFlatComboViewer
-     */
-    private EObjectFlatComboSettings instanceSettings;
-
-    /**
      * Default constructor
      * 
      * @generated
      */
-    public InstanceValuePropertiesEditionComponent(PropertiesEditingContext editingContext, EObject instanceValue, String editing_mode) {
-        super(editingContext, instanceValue, editing_mode);
+    public DurationObservationPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject durationObservation, String editing_mode) {
+        super(editingContext, durationObservation, editing_mode);
         parts = new String[] { GENERAL_PART };
         repositoryKey = UmlViewsRepository.class;
         partKey = UmlViewsRepository.General.class;
@@ -122,24 +88,26 @@ public class InstanceValuePropertiesEditionComponent extends SinglePartPropertie
         if (editingPart != null && key == partKey) {
             editingPart.setContext(elt, allResource);
 
-            final InstanceValue instanceValue = (InstanceValue) elt;
+            final DurationObservation durationObservation = (DurationObservation) elt;
             final GeneralPropertiesEditionPart generalPart = (GeneralPropertiesEditionPart) editingPart;
             // init values
             if (isAccessible(UmlViewsRepository.General.name))
-                generalPart.setName(EEFConverterUtil.convertToString(TypesPackage.Literals.STRING, instanceValue.getName()));
+                generalPart.setName(EEFConverterUtil.convertToString(TypesPackage.Literals.STRING, durationObservation.getName()));
 
             if (isAccessible(UmlViewsRepository.General.visibility)) {
-                generalPart.initVisibility(EEFUtils.choiceOfValues(instanceValue, UMLPackage.eINSTANCE.getNamedElement_Visibility()), instanceValue.getVisibility());
+                generalPart.initVisibility(EEFUtils.choiceOfValues(durationObservation, UMLPackage.eINSTANCE.getNamedElement_Visibility()), durationObservation.getVisibility());
             }
-            if (isAccessible(UmlViewsRepository.General.instance)) {
-                // init part
-                instanceSettings = new EObjectFlatComboSettings(instanceValue, UMLPackage.eINSTANCE.getInstanceValue_Instance());
-                generalPart.initInstance(instanceSettings);
-                // set the button mode
-                generalPart.setInstanceButtonMode(ButtonsModeEnum.BROWSE);
-            }
+            // FIXME NO VALID CASE INTO template public updater(editionElement :
+            // PropertiesEditionElement, view : View, pec :
+            // PropertiesEditionComponent) in widgetControl.mtl module, with the
+            // values : firstEvent, General, DurationObservation.
             // init filters
 
+            // FIXME NO VALID CASE INTO template public
+            // filterUpdater(editionElement : PropertiesEditionElement, view :
+            // View, pec : PropertiesEditionComponent) in widgetControl.mtl
+            // module, with the values : firstEvent, General,
+            // DurationObservation.
             // init values for referenced views
 
             // init filters for referenced views
@@ -160,8 +128,8 @@ public class InstanceValuePropertiesEditionComponent extends SinglePartPropertie
         if (editorKey == UmlViewsRepository.General.visibility) {
             return UMLPackage.eINSTANCE.getNamedElement_Visibility();
         }
-        if (editorKey == UmlViewsRepository.General.instance) {
-            return UMLPackage.eINSTANCE.getInstanceValue_Instance();
+        if (editorKey == UmlViewsRepository.General.booleanValue) {
+            return UMLPackage.eINSTANCE.getDurationObservation_FirstEvent();
         }
         return super.associatedFeature(editorKey);
     }
@@ -173,37 +141,17 @@ public class InstanceValuePropertiesEditionComponent extends SinglePartPropertie
      * @generated
      */
     public void updateSemanticModel(final IPropertiesEditionEvent event) {
-        InstanceValue instanceValue = (InstanceValue) semanticObject;
+        DurationObservation durationObservation = (DurationObservation) semanticObject;
         if (UmlViewsRepository.General.name == event.getAffectedEditor()) {
-            instanceValue.setName((java.lang.String) EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String) event.getNewValue()));
+            durationObservation.setName((java.lang.String) EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String) event.getNewValue()));
         }
         if (UmlViewsRepository.General.visibility == event.getAffectedEditor()) {
-            instanceValue.setVisibility((VisibilityKind) event.getNewValue());
+            durationObservation.setVisibility((VisibilityKind) event.getNewValue());
         }
-        if (UmlViewsRepository.General.instance == event.getAffectedEditor()) {
-            if (event.getKind() == PropertiesEditionEvent.SET) {
-                instanceSettings.setToReference((InstanceSpecification) event.getNewValue());
-            } else if (event.getKind() == PropertiesEditionEvent.EDIT) {
-                EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
-                PropertiesEditingProvider provider = (PropertiesEditingProvider) editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
-                if (provider != null) {
-                    PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
-                    if (editionPolicy != null) {
-                        editionPolicy.execute();
-                    }
-                }
-            } else if (event.getKind() == PropertiesEditionEvent.ADD) {
-                InstanceSpecification eObject = UMLFactory.eINSTANCE.createInstanceSpecification();
-                EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, eObject, editingContext.getAdapterFactory());
-                PropertiesEditingProvider provider = (PropertiesEditingProvider) editingContext.getAdapterFactory().adapt(eObject, PropertiesEditingProvider.class);
-                if (provider != null) {
-                    PropertiesEditingPolicy policy = provider.getPolicy(context);
-                    if (policy != null) {
-                        policy.execute();
-                    }
-                }
-                instanceSettings.setToReference(eObject);
-            }
+        if (UmlViewsRepository.General.booleanValue == event.getAffectedEditor()) {
+            // FIXME INVALID CASE you must override the template
+            // 'declareEObjectUpdater' for the case : firstEvent, General,
+            // DurationObservation.
         }
     }
 
@@ -227,8 +175,11 @@ public class InstanceValuePropertiesEditionComponent extends SinglePartPropertie
             if (UMLPackage.eINSTANCE.getNamedElement_Visibility().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && isAccessible(UmlViewsRepository.General.visibility))
                 generalPart.setVisibility((VisibilityKind) msg.getNewValue());
 
-            if (UMLPackage.eINSTANCE.getInstanceValue_Instance().equals(msg.getFeature()) && generalPart != null && isAccessible(UmlViewsRepository.General.instance))
-                generalPart.setInstance((EObject) msg.getNewValue());
+            // FIXME INVALID CASE INTO template public
+            // liveUpdater(editionElement : PropertiesEditionElement, view :
+            // View, pec : PropertiesEditionComponent) in widgetControl.mtl
+            // module, with the values : firstEvent, General,
+            // DurationObservation.
 
         }
     }
@@ -241,7 +192,7 @@ public class InstanceValuePropertiesEditionComponent extends SinglePartPropertie
     @Override
     protected NotificationFilter[] getNotificationFilters() {
         NotificationFilter filter = new EStructuralFeatureNotificationFilter(UMLPackage.eINSTANCE.getNamedElement_Name(), UMLPackage.eINSTANCE.getNamedElement_Visibility(),
-                UMLPackage.eINSTANCE.getInstanceValue_Instance());
+                UMLPackage.eINSTANCE.getDurationObservation_FirstEvent());
         return new NotificationFilter[] { filter, };
     }
 
@@ -252,18 +203,7 @@ public class InstanceValuePropertiesEditionComponent extends SinglePartPropertie
      *      int)
      */
     public boolean mustBeComposed(Object key, int kind) {
-        return key == UmlViewsRepository.General.name || key == UmlViewsRepository.General.visibility || key == UmlViewsRepository.General.instance;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object,
-     *      int)
-     * @generated
-     */
-    public boolean isRequired(Object key, int kind) {
-        return key == UmlViewsRepository.General.instance;
+        return key == UmlViewsRepository.General.name || key == UmlViewsRepository.General.visibility || key == UmlViewsRepository.General.booleanValue;
     }
 
     /**
@@ -289,6 +229,13 @@ public class InstanceValuePropertiesEditionComponent extends SinglePartPropertie
                         newValue = EEFConverterUtil.createFromString(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), (String) newValue);
                     }
                     ret = Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getNamedElement_Visibility().getEAttributeType(), newValue);
+                }
+                if (UmlViewsRepository.General.booleanValue == event.getAffectedEditor()) {
+                    BasicDiagnostic chain = new BasicDiagnostic();
+                    for (Iterator iterator = ((List) event.getNewValue()).iterator(); iterator.hasNext();) {
+                        chain.add(Diagnostician.INSTANCE.validate(UMLPackage.eINSTANCE.getDurationObservation_FirstEvent().getEAttributeType(), iterator.next()));
+                    }
+                    ret = chain;
                 }
             } catch (IllegalArgumentException iae) {
                 ret = BasicDiagnostic.toDiagnostic(iae);

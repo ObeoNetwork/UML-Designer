@@ -38,8 +38,6 @@ import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingCo
 
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
 
-import org.eclipse.uml2.types.TypesPackage;
-
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.UMLPackage;
 
@@ -86,10 +84,15 @@ public class CommentPropertiesEditionComponent extends SinglePartPropertiesEditi
             final Comment comment = (Comment) elt;
             final GeneralPropertiesEditionPart generalPart = (GeneralPropertiesEditionPart) editingPart;
             // init values
-            if (isAccessible(UmlViewsRepository.General.body))
-                generalPart.setBody(EcoreUtil.convertToString(TypesPackage.Literals.STRING, comment.getBody()));
+            // FIXME NO VALID CASE INTO template public updater(editionElement :
+            // PropertiesEditionElement, view : View, pec :
+            // PropertiesEditionComponent) in widgetControl.mtl module, with the
+            // values : body, General, Comment.
             // init filters
-
+            // FIXME NO VALID CASE INTO template public
+            // filterUpdater(editionElement : PropertiesEditionElement, view :
+            // View, pec : PropertiesEditionComponent) in widgetControl.mtl
+            // module, with the values : body, General, Comment.
             // init values for referenced views
 
             // init filters for referenced views
@@ -119,7 +122,8 @@ public class CommentPropertiesEditionComponent extends SinglePartPropertiesEditi
     public void updateSemanticModel(final IPropertiesEditionEvent event) {
         Comment comment = (Comment) semanticObject;
         if (UmlViewsRepository.General.body == event.getAffectedEditor()) {
-            comment.setBody((java.lang.String) EEFConverterUtil.createFromString(TypesPackage.Literals.STRING, (String) event.getNewValue()));
+            // FIXME INVALID CASE you must override the template
+            // 'declareEObjectUpdater' for the case : body, General, Comment.
         }
     }
 
@@ -132,13 +136,10 @@ public class CommentPropertiesEditionComponent extends SinglePartPropertiesEditi
         super.updatePart(msg);
         if (editingPart.isVisible()) {
             GeneralPropertiesEditionPart generalPart = (GeneralPropertiesEditionPart) editingPart;
-            if (UMLPackage.eINSTANCE.getComment_Body().equals(msg.getFeature()) && msg.getNotifier().equals(semanticObject) && generalPart != null && isAccessible(UmlViewsRepository.General.body)) {
-                if (msg.getNewValue() != null) {
-                    generalPart.setBody(EcoreUtil.convertToString(TypesPackage.Literals.STRING, msg.getNewValue()));
-                } else {
-                    generalPart.setBody("");
-                }
-            }
+            // FIXME INVALID CASE INTO template public
+            // liveUpdater(editionElement : PropertiesEditionElement, view :
+            // View, pec : PropertiesEditionComponent) in widgetControl.mtl
+            // module, with the values : body, General, Comment.
 
         }
     }

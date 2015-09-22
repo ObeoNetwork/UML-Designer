@@ -32,16 +32,35 @@ import org.eclipse.uml2.uml.Class;
 import org.eclipse.uml2.uml.Package;
 import org.eclipse.uml2.uml.VisibilityKind;
 
+import org.eclipse.emf.common.notify.Notification;
+
+import org.eclipse.emf.common.util.BasicDiagnostic;
+import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.common.util.WrappedException;
+
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
+
+import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import org.eclipse.emf.ecore.util.Diagnostician;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+
+import org.eclipse.emf.eef.runtime.api.notify.EStructuralFeatureNotificationFilter;
+import org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent;
+import org.eclipse.emf.eef.runtime.api.notify.NotificationFilter;
+
+import org.eclipse.emf.eef.runtime.context.PropertiesEditingContext;
 
 import org.eclipse.emf.eef.runtime.context.impl.EObjectPropertiesEditionContext;
 import org.eclipse.emf.eef.runtime.context.impl.EReferencePropertiesEditionContext;
 
+import org.eclipse.emf.eef.runtime.impl.components.SinglePartPropertiesEditingComponent;
+
 import org.eclipse.emf.eef.runtime.impl.notify.PropertiesEditionEvent;
 
 import org.eclipse.emf.eef.runtime.impl.utils.EEFConverterUtil;
+import org.eclipse.emf.eef.runtime.impl.utils.EEFUtils;
 
 import org.eclipse.emf.eef.runtime.policies.PropertiesEditingPolicy;
 
@@ -51,12 +70,16 @@ import org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider;
 
 import org.eclipse.emf.eef.runtime.ui.widgets.ButtonsModeEnum;
 
+import org.eclipse.emf.eef.runtime.ui.widgets.eobjflatcombo.EObjectFlatComboSettings;
+
 import org.eclipse.uml2.types.TypesPackage;
 
+import org.eclipse.uml2.uml.Interval;
 import org.eclipse.uml2.uml.UMLPackage;
 import org.eclipse.uml2.uml.ValueSpecification;
 import org.eclipse.uml2.uml.VisibilityKind;
 
+import org.obeonetwork.dsl.uml2.properties.uml.parts.GeneralPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 
 /**
@@ -72,24 +95,14 @@ public class IntervalPropertiesEditionComponent extends SinglePartPropertiesEdit
     public static String GENERAL_PART = "General"; //$NON-NLS-1$
 
     /**
-     * Settings for min LinkEReferenceViewer
+     * Settings for min LinkEObjectFlatComboViewer
      */
     private EObjectFlatComboSettings minSettings;
 
     /**
-     * Creation Settings for min LinkEReferenceViewer
-     */
-    private ReferencesTableSettings minCreateSettings;
-
-    /**
-     * Settings for max LinkEReferenceViewer
+     * Settings for max LinkEObjectFlatComboViewer
      */
     private EObjectFlatComboSettings maxSettings;
-
-    /**
-     * Creation Settings for max LinkEReferenceViewer
-     */
-    private ReferencesTableSettings maxCreateSettings;
 
     /**
      * Default constructor
@@ -128,7 +141,6 @@ public class IntervalPropertiesEditionComponent extends SinglePartPropertiesEdit
             if (isAccessible(UmlViewsRepository.General.min)) {
                 // init part
                 minSettings = new EObjectFlatComboSettings(interval, UMLPackage.eINSTANCE.getInterval_Min());
-                minCreateSettings = new ReferencesTableSettings(getminCreateSettingsSource(), UMLPackage.eINSTANCE.getPackage_PackagedElement());
                 generalPart.initMin(minSettings);
                 // set the button mode
                 generalPart.setMinButtonMode(ButtonsModeEnum.BROWSE);
@@ -136,7 +148,6 @@ public class IntervalPropertiesEditionComponent extends SinglePartPropertiesEdit
             if (isAccessible(UmlViewsRepository.General.max)) {
                 // init part
                 maxSettings = new EObjectFlatComboSettings(interval, UMLPackage.eINSTANCE.getInterval_Max());
-                maxCreateSettings = new ReferencesTableSettings(getmaxCreateSettingsSource(), UMLPackage.eINSTANCE.getPackage_PackagedElement());
                 generalPart.initMax(maxSettings);
                 // set the button mode
                 generalPart.setMaxButtonMode(ButtonsModeEnum.BROWSE);
@@ -326,20 +337,6 @@ public class IntervalPropertiesEditionComponent extends SinglePartPropertiesEdit
             }
         }
         return ret;
-    }
-
-    /**
-     * @ return source setting for minCreateSettings
-     */
-    public EObject getminCreateSettingsSource() {
-        return org.obeonetwork.dsl.uml2.properties.service.EEFService.getParent(semanticObject);
-    }
-
-    /**
-     * @ return source setting for maxCreateSettings
-     */
-    public EObject getmaxCreateSettingsSource() {
-        return org.obeonetwork.dsl.uml2.properties.service.EEFService.getParent(semanticObject);
     }
 
 }
