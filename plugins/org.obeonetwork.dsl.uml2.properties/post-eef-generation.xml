@@ -150,6 +150,11 @@ import org.eclipse.emf.common.util.WrappedException;]]></replacevalue>
 						<replacevalue><![CDATA[this.trigger.setLowerBound(0);]]></replacevalue>
 		</replace>
 		<replace dir="src-gen/org/obeonetwork/dsl/uml2/properties/uml/parts/forms">
+						<include name="**/GeneralPropertiesEditionPartForm.java"/>
+					  	<replacetoken><![CDATA[this.operand.setLowerBound(invalid);]]></replacetoken>
+						<replacevalue><![CDATA[this.operand.setLowerBound(0);]]></replacevalue>
+		</replace>
+		<replace dir="src-gen/org/obeonetwork/dsl/uml2/properties/uml/parts/forms">
 								<include name="**/GeneralPropertiesEditionPartForm.java"/>
 							  	<replacetoken><![CDATA[this.ownedRule.setLowerBound(invalid);]]></replacetoken>
 								<replacevalue><![CDATA[this.ownedRule.setLowerBound(0);]]></replacevalue>
@@ -158,6 +163,11 @@ import org.eclipse.emf.common.util.WrappedException;]]></replacevalue>
 								<include name="**/GeneralPropertiesEditionPartForm.java"/>
 							  	<replacetoken><![CDATA[this.trigger.setUpperBound(invalid);]]></replacetoken>
 								<replacevalue><![CDATA[this.trigger.setUpperBound(-1);]]></replacevalue>
+		</replace>
+		<replace dir="src-gen/org/obeonetwork/dsl/uml2/properties/uml/parts/forms">
+								<include name="**/GeneralPropertiesEditionPartForm.java"/>
+							  	<replacetoken><![CDATA[this.operand.setUpperBound(invalid);]]></replacetoken>
+								<replacevalue><![CDATA[this.operand.setUpperBound(-1);]]></replacevalue>
 		</replace>
 		<replace dir="src-gen/org/obeonetwork/dsl/uml2/properties/uml/parts/forms">
 										<include name="**/GeneralPropertiesEditionPartForm.java"/>
@@ -183,6 +193,16 @@ import org.eclipse.emf.common.util.WrappedException;]]></replacevalue>
 								<include name="**/GeneralPropertiesEditionPartImpl.java"/>
 								<replacetoken><![CDATA[this.ownedRule.setUpperBound(invalid);]]></replacetoken>
 								<replacevalue><![CDATA[this.ownedRule.setUpperBound(-1);]]></replacevalue>
+		</replace>
+		<replace dir="src-gen/org/obeonetwork/dsl/uml2/properties/uml/parts/impl">
+								<include name="**/GeneralPropertiesEditionPartImpl.java"/>
+								<replacetoken><![CDATA[this.operand.setLowerBound(invalid);]]></replacetoken>
+								<replacevalue><![CDATA[this.operand.setLowerBound(0);]]></replacevalue>
+		</replace>
+		<replace dir="src-gen/org/obeonetwork/dsl/uml2/properties/uml/parts/impl">
+								<include name="**/GeneralPropertiesEditionPartImpl.java"/>
+								<replacetoken><![CDATA[this.operand.setUpperBound(invalid);]]></replacetoken>
+								<replacevalue><![CDATA[this.operand.setUpperBound(-1);]]></replacevalue>
 		</replace>
 		<replace dir="src-gen/org/obeonetwork/dsl/uml2/properties/uml/components">
 								<include name="**/TriggerPropertiesEditionComponent.java"/>

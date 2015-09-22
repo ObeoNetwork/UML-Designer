@@ -13,6 +13,7 @@ package org.obeonetwork.dsl.uml2.properties.service;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.OpaqueExpression;
 import org.eclipse.uml2.uml.Transition;
 import org.eclipse.uml2.uml.UMLFactory;
 import org.eclipse.uml2.uml.ValueSpecification;
@@ -43,23 +44,26 @@ public class EEFService {
 		return comment;
 	}
 
-	/**
-	 * Return the parent package of a state.
-	 * 
-	 * @param semanticObject
-	 *            State
-	 * @return Parent package
-	 */
-	public static Element getParent(EObject semanticObject) {
-		if (semanticObject instanceof Transition) {
-			return ((Transition) semanticObject);
-		}
-		if (semanticObject instanceof ValueSpecification) {
-			return ((ValueSpecification) semanticObject).getOwner();
-		}
-		if (semanticObject instanceof Element) {
-			return ((Element) semanticObject).getNearestPackage();
-		}
-		return null;
-	}
+    /**
+     * Return the parent package of a state.
+     * 
+     * @param semanticObject
+     *            State
+     * @return Parent package
+     */
+    public static Element getParent(EObject semanticObject) {
+        if (semanticObject instanceof Transition) {
+            return ((Transition) semanticObject);
+        }
+        if (semanticObject instanceof OpaqueExpression) {
+            return ((Element) semanticObject).getNearestPackage();
+        }
+        if (semanticObject instanceof ValueSpecification) {
+            return ((Element) semanticObject).getOwner();
+        }
+        if (semanticObject instanceof Element) {
+            return ((Element) semanticObject).getNearestPackage();
+        }
+        return null;
+    }
 }

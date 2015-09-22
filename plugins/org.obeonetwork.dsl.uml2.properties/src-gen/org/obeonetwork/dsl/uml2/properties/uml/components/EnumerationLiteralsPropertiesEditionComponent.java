@@ -60,185 +60,179 @@ import org.eclipse.uml2.uml.UMLPackage;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.LiteralsPropertiesEditionPart;
 import org.obeonetwork.dsl.uml2.properties.uml.parts.UmlViewsRepository;
 
-
 /**
  * @author <a href="mailto:cedric.brun@obeo.fr">Cédric Brun</a>
  * @generated
  */
 public class EnumerationLiteralsPropertiesEditionComponent extends SinglePartPropertiesEditingComponent {
 
-	/**
-	 * @generated
-	 */
-	
-	public static String LITERALS_PART = "Literals"; //$NON-NLS-1$
+    /**
+     * @generated
+     */
 
-	
-	/**
-	 * Settings for literals ReferencesTable
-	 */
-	protected ReferencesTableSettings literalsSettings;
-	
-	
-	/**
-	 * Default constructor
-	 * @generated
-	 */
-	public EnumerationLiteralsPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject enumeration, String editing_mode) {
-		super(editingContext, enumeration, editing_mode);
-		parts = new String[] { LITERALS_PART };
-		repositoryKey = UmlViewsRepository.class;
-		partKey = UmlViewsRepository.Literals.class;
-	}
+    public static String LITERALS_PART = "Literals"; //$NON-NLS-1$
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object, int, org.eclipse.emf.ecore.EObject, 
-	 *      org.eclipse.emf.ecore.resource.ResourceSet)
-	 * @generated
-	 */
-	public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
-		setInitializing(true);
-		if (editingPart != null && key == partKey) {
-			editingPart.setContext(elt, allResource);
-			
-			final Enumeration enumeration = (Enumeration)elt;
-			final LiteralsPropertiesEditionPart literalsPart = (LiteralsPropertiesEditionPart)editingPart;
-			// init values
-			if (isAccessible(UmlViewsRepository.Literals.literals_)) {
-				literalsSettings = new ReferencesTableSettings(enumeration, UMLPackage.eINSTANCE.getEnumeration_OwnedLiteral());
-				literalsPart.initLiterals(literalsSettings);
-			}
-			// init filters
-			if (isAccessible(UmlViewsRepository.Literals.literals_)) {
-				literalsPart.addFilterToLiterals(new ViewerFilter() {
-					/**
-					 * {@inheritDoc}
-					 * 
-					 * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
-					 */
-					public boolean select(Viewer viewer, Object parentElement, Object element) {
-						return (element instanceof String && element.equals("")) || (element instanceof EnumerationLiteral); //$NON-NLS-1$ 
-					}
-			
-				});
-			}
-			// init values for referenced views
-			
-			// init filters for referenced views
-			
-		}
-		setInitializing(false);
-	}
+    /**
+     * Settings for literals ReferencesTable
+     */
+    protected ReferencesTableSettings literalsSettings;
 
+    /**
+     * Default constructor
+     * 
+     * @generated
+     */
+    public EnumerationLiteralsPropertiesEditionComponent(PropertiesEditingContext editingContext, EObject enumeration, String editing_mode) {
+        super(editingContext, enumeration, editing_mode);
+        parts = new String[] { LITERALS_PART };
+        repositoryKey = UmlViewsRepository.class;
+        partKey = UmlViewsRepository.Literals.class;
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#initPart(java.lang.Object,
+     *      int, org.eclipse.emf.ecore.EObject,
+     *      org.eclipse.emf.ecore.resource.ResourceSet)
+     * @generated
+     */
+    public void initPart(Object key, int kind, EObject elt, ResourceSet allResource) {
+        setInitializing(true);
+        if (editingPart != null && key == partKey) {
+            editingPart.setContext(elt, allResource);
 
+            final Enumeration enumeration = (Enumeration) elt;
+            final LiteralsPropertiesEditionPart literalsPart = (LiteralsPropertiesEditionPart) editingPart;
+            // init values
+            if (isAccessible(UmlViewsRepository.Literals.literals_)) {
+                literalsSettings = new ReferencesTableSettings(enumeration, UMLPackage.eINSTANCE.getEnumeration_OwnedLiteral());
+                literalsPart.initLiterals(literalsSettings);
+            }
+            // init filters
+            if (isAccessible(UmlViewsRepository.Literals.literals_)) {
+                literalsPart.addFilterToLiterals(new ViewerFilter() {
+                    /**
+                     * {@inheritDoc}
+                     * 
+                     * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer,
+                     *      java.lang.Object, java.lang.Object)
+                     */
+                    public boolean select(Viewer viewer, Object parentElement, Object element) {
+                        return (element instanceof String && element.equals("")) || (element instanceof EnumerationLiteral); //$NON-NLS-1$ 
+                    }
 
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
-	 */
-	public EStructuralFeature associatedFeature(Object editorKey) {
-		if (editorKey == UmlViewsRepository.Literals.literals_) {
-			return UMLPackage.eINSTANCE.getEnumeration_OwnedLiteral();
-		}
-		return super.associatedFeature(editorKey);
-	}
+                });
+            }
+            // init values for referenced views
 
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * @generated
-	 */
-	public void updateSemanticModel(final IPropertiesEditionEvent event) {
-		Enumeration enumeration = (Enumeration)semanticObject;
-		if (UmlViewsRepository.Literals.literals_ == event.getAffectedEditor()) {
-			if (event.getKind() == PropertiesEditionEvent.ADD) {
-				EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, literalsSettings, editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy policy = provider.getPolicy(context);
-					if (policy instanceof CreateEditingPolicy) {
-						policy.execute();
-					}
-				}
-			} else if (event.getKind() == PropertiesEditionEvent.EDIT) {
-				EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
-				PropertiesEditingProvider provider = (PropertiesEditingProvider)editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
-				if (provider != null) {
-					PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
-					if (editionPolicy != null) {
-						editionPolicy.execute();
-					}
-				}
-			} else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
-				literalsSettings.removeFromReference((EObject) event.getNewValue());
-			} else if (event.getKind() == PropertiesEditionEvent.MOVE) {
-				literalsSettings.move(event.getNewIndex(), (EnumerationLiteral) event.getNewValue());
-			}
-		}
-	}
+            // init filters for referenced views
 
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
-	 */
-	public void updatePart(Notification msg) {
-		super.updatePart(msg);
-		if (editingPart.isVisible()) {
-			LiteralsPropertiesEditionPart literalsPart = (LiteralsPropertiesEditionPart)editingPart;
-			if (UMLPackage.eINSTANCE.getEnumeration_OwnedLiteral().equals(msg.getFeature()) && isAccessible(UmlViewsRepository.Literals.literals_))
-				literalsPart.updateLiterals();
-			
-		}
-	}
+        }
+        setInitializing(false);
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
-	 */
-	@Override
-	protected NotificationFilter[] getNotificationFilters() {
-		NotificationFilter filter = new EStructuralFeatureNotificationFilter(
-			UMLPackage.eINSTANCE.getEnumeration_OwnedLiteral()		);
-		return new NotificationFilter[] {filter,};
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#associatedFeature(java.lang.Object)
+     */
+    public EStructuralFeature associatedFeature(Object editorKey) {
+        if (editorKey == UmlViewsRepository.Literals.literals_) {
+            return UMLPackage.eINSTANCE.getEnumeration_OwnedLiteral();
+        }
+        return super.associatedFeature(editorKey);
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updateSemanticModel(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+     * @generated
+     */
+    public void updateSemanticModel(final IPropertiesEditionEvent event) {
+        Enumeration enumeration = (Enumeration) semanticObject;
+        if (UmlViewsRepository.Literals.literals_ == event.getAffectedEditor()) {
+            if (event.getKind() == PropertiesEditionEvent.ADD) {
+                EReferencePropertiesEditionContext context = new EReferencePropertiesEditionContext(editingContext, this, literalsSettings, editingContext.getAdapterFactory());
+                PropertiesEditingProvider provider = (PropertiesEditingProvider) editingContext.getAdapterFactory().adapt(semanticObject, PropertiesEditingProvider.class);
+                if (provider != null) {
+                    PropertiesEditingPolicy policy = provider.getPolicy(context);
+                    if (policy instanceof CreateEditingPolicy) {
+                        policy.execute();
+                    }
+                }
+            } else if (event.getKind() == PropertiesEditionEvent.EDIT) {
+                EObjectPropertiesEditionContext context = new EObjectPropertiesEditionContext(editingContext, this, (EObject) event.getNewValue(), editingContext.getAdapterFactory());
+                PropertiesEditingProvider provider = (PropertiesEditingProvider) editingContext.getAdapterFactory().adapt((EObject) event.getNewValue(), PropertiesEditingProvider.class);
+                if (provider != null) {
+                    PropertiesEditingPolicy editionPolicy = provider.getPolicy(context);
+                    if (editionPolicy != null) {
+                        editionPolicy.execute();
+                    }
+                }
+            } else if (event.getKind() == PropertiesEditionEvent.REMOVE) {
+                literalsSettings.removeFromReference((EObject) event.getNewValue());
+            } else if (event.getKind() == PropertiesEditionEvent.MOVE) {
+                literalsSettings.move(event.getNewIndex(), (EnumerationLiteral) event.getNewValue());
+            }
+        }
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object, int)
-	 * @generated
-	 */
-	public boolean isRequired(Object key, int kind) {
-		return key == UmlViewsRepository.General.Qualifiers.abstract_ || key == UmlViewsRepository.General.Qualifiers.leaf;
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#updatePart(org.eclipse.emf.common.notify.Notification)
+     */
+    public void updatePart(Notification msg) {
+        super.updatePart(msg);
+        if (editingPart.isVisible()) {
+            LiteralsPropertiesEditionPart literalsPart = (LiteralsPropertiesEditionPart) editingPart;
+            if (UMLPackage.eINSTANCE.getEnumeration_OwnedLiteral().equals(msg.getFeature()) && isAccessible(UmlViewsRepository.Literals.literals_))
+                literalsPart.updateLiterals();
 
-	/**
-	 * {@inheritDoc}
-	 * 
-	 * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
-	 * @generated
-	 */
-	public Diagnostic validateValue(IPropertiesEditionEvent event) {
-		Diagnostic ret = Diagnostic.OK_INSTANCE;
-		if (event.getNewValue() != null) {
-			try {
-			} catch (IllegalArgumentException iae) {
-				ret = BasicDiagnostic.toDiagnostic(iae);
-			} catch (WrappedException we) {
-				ret = BasicDiagnostic.toDiagnostic(we);
-			}
-		}
-		return ret;
-	}
+        }
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#getNotificationFilters()
+     */
+    @Override
+    protected NotificationFilter[] getNotificationFilters() {
+        NotificationFilter filter = new EStructuralFeatureNotificationFilter(UMLPackage.eINSTANCE.getEnumeration_OwnedLiteral());
+        return new NotificationFilter[] { filter, };
+    }
 
-	
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.impl.components.StandardPropertiesEditionComponent#isRequired(java.lang.Object,
+     *      int)
+     * @generated
+     */
+    public boolean isRequired(Object key, int kind) {
+        return key == UmlViewsRepository.General.Qualifiers.abstract_ || key == UmlViewsRepository.General.Qualifiers.leaf;
+    }
 
-	
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.api.component.IPropertiesEditionComponent#validateValue(org.eclipse.emf.eef.runtime.api.notify.IPropertiesEditionEvent)
+     * @generated
+     */
+    public Diagnostic validateValue(IPropertiesEditionEvent event) {
+        Diagnostic ret = Diagnostic.OK_INSTANCE;
+        if (event.getNewValue() != null) {
+            try {
+            } catch (IllegalArgumentException iae) {
+                ret = BasicDiagnostic.toDiagnostic(iae);
+            } catch (WrappedException we) {
+                ret = BasicDiagnostic.toDiagnostic(we);
+            }
+        }
+        return ret;
+    }
 
 }

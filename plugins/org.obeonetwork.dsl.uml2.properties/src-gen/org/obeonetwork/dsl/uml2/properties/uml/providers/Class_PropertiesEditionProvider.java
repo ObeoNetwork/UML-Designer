@@ -43,124 +43,141 @@ import org.obeonetwork.dsl.uml2.properties.uml.components.ClassPropertiesEdition
  */
 public class Class_PropertiesEditionProvider extends UmlPropertiesEditionProvider {
 
-	/**
-	 * Constructor without provider for super types.
-	 */
-	public Class_PropertiesEditionProvider() {
-		super();
-	}
+    /**
+     * Constructor without provider for super types.
+     */
+    public Class_PropertiesEditionProvider() {
+        super();
+    }
 
-	/**
-	 * Constructor with providers for super types.
-	 * @param superProviders providers to use for super types.
-	 */
-	public Class_PropertiesEditionProvider(List<PropertiesEditingProvider> superProviders) {
-		super(superProviders);
-	}
+    /**
+     * Constructor with providers for super types.
+     * 
+     * @param superProviders
+     *            providers to use for super types.
+     */
+    public Class_PropertiesEditionProvider(List<PropertiesEditingProvider> superProviders) {
+        super(superProviders);
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext)
-	 * @generated
-	 */
-	public boolean provides(PropertiesEditingContext editingContext) {
-		return (editingContext.getEObject() instanceof Class) 
-					&& (UMLPackage.Literals.CLASS == editingContext.getEObject().eClass());
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext)
+     * @generated
+     */
+    public boolean provides(PropertiesEditingContext editingContext) {
+        return (editingContext.getEObject() instanceof Class) && (UMLPackage.Literals.CLASS == editingContext.getEObject().eClass());
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String)
-	 * @generated
-	 */
-	public boolean provides(PropertiesEditingContext editingContext, String part) {
-		return (editingContext.getEObject() instanceof Class) && (ClassGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) || ClassAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part) || ClassOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(part));
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext,
+     *      java.lang.String)
+     * @generated
+     */
+    public boolean provides(PropertiesEditingContext editingContext, String part) {
+        return (editingContext.getEObject() instanceof Class)
+                && (ClassGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) || ClassAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part) || ClassOperationsPropertiesEditionComponent.OPERATIONS_PART
+                        .equals(part));
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.Class)
-	 * @generated
-	 */
-	@SuppressWarnings("rawtypes")
-	public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Class) && (refinement == ClassGeneralPropertiesEditionComponent.class || refinement == ClassAttributesPropertiesEditionComponent.class || refinement == ClassOperationsPropertiesEditionComponent.class);
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext,
+     *      java.lang.Class)
+     * @generated
+     */
+    @SuppressWarnings("rawtypes")
+    public boolean provides(PropertiesEditingContext editingContext, java.lang.Class refinement) {
+        return (editingContext.getEObject() instanceof Class)
+                && (refinement == ClassGeneralPropertiesEditionComponent.class || refinement == ClassAttributesPropertiesEditionComponent.class || refinement == ClassOperationsPropertiesEditionComponent.class);
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.Class)
-	 * @generated
-	 */
-	@SuppressWarnings("rawtypes")
-	public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
-		return (editingContext.getEObject() instanceof Class) && ((ClassGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == ClassGeneralPropertiesEditionComponent.class) || (ClassAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part) && refinement == ClassAttributesPropertiesEditionComponent.class) || (ClassOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(part) && refinement == ClassOperationsPropertiesEditionComponent.class));
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#provides(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext,
+     *      java.lang.String, java.lang.Class)
+     * @generated
+     */
+    @SuppressWarnings("rawtypes")
+    public boolean provides(PropertiesEditingContext editingContext, String part, java.lang.Class refinement) {
+        return (editingContext.getEObject() instanceof Class)
+                && ((ClassGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == ClassGeneralPropertiesEditionComponent.class)
+                        || (ClassAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part) && refinement == ClassAttributesPropertiesEditionComponent.class) || (ClassOperationsPropertiesEditionComponent.OPERATIONS_PART
+                        .equals(part) && refinement == ClassOperationsPropertiesEditionComponent.class));
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String)
-	 * @generated
-	 */
-	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
-		if (editingContext.getEObject() instanceof Class) {
-			return new ClassPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode);
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext,
+     *      java.lang.String)
+     * @generated
+     */
+    public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode) {
+        if (editingContext.getEObject() instanceof Class) {
+            return new ClassPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+        }
+        return super.getPropertiesEditingComponent(editingContext, mode);
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String)
-	 * @generated
-	 */
-	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
-		if (editingContext.getEObject() instanceof Class) {
-			if (ClassGeneralPropertiesEditionComponent.GENERAL_PART.equals(part))
-				return new ClassGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-			if (ClassAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part))
-				return new ClassAttributesPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-			if (ClassOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(part))
-				return new ClassOperationsPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part);
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext,
+     *      java.lang.String, java.lang.String)
+     * @generated
+     */
+    public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part) {
+        if (editingContext.getEObject() instanceof Class) {
+            if (ClassGeneralPropertiesEditionComponent.GENERAL_PART.equals(part))
+                return new ClassGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+            if (ClassAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part))
+                return new ClassAttributesPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+            if (ClassOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(part))
+                return new ClassOperationsPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+        }
+        return super.getPropertiesEditingComponent(editingContext, mode, part);
+    }
 
-	/**
-	 * {@inheritDoc}
-	 * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext, java.lang.String, java.lang.String, java.lang.Class)
-	 */
-	@SuppressWarnings("rawtypes")
-	public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
-		if (editingContext.getEObject() instanceof Class) {
-			if (ClassGeneralPropertiesEditionComponent.GENERAL_PART.equals(part)
-				&& refinement == ClassGeneralPropertiesEditionComponent.class)
-				return new ClassGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-			if (ClassAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part)
-				&& refinement == ClassAttributesPropertiesEditionComponent.class)
-				return new ClassAttributesPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-			if (ClassOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(part)
-				&& refinement == ClassOperationsPropertiesEditionComponent.class)
-				return new ClassOperationsPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
-		}
-		return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
-	}
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.emf.eef.runtime.providers.PropertiesEditingProvider#getPropertiesEditingComponent(org.eclipse.emf.eef.runtime.context.PropertiesEditingContext,
+     *      java.lang.String, java.lang.String, java.lang.Class)
+     */
+    @SuppressWarnings("rawtypes")
+    public IPropertiesEditionComponent getPropertiesEditingComponent(PropertiesEditingContext editingContext, String mode, String part, java.lang.Class refinement) {
+        if (editingContext.getEObject() instanceof Class) {
+            if (ClassGeneralPropertiesEditionComponent.GENERAL_PART.equals(part) && refinement == ClassGeneralPropertiesEditionComponent.class)
+                return new ClassGeneralPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+            if (ClassAttributesPropertiesEditionComponent.ATTRIBUTES_PART.equals(part) && refinement == ClassAttributesPropertiesEditionComponent.class)
+                return new ClassAttributesPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+            if (ClassOperationsPropertiesEditionComponent.OPERATIONS_PART.equals(part) && refinement == ClassOperationsPropertiesEditionComponent.class)
+                return new ClassOperationsPropertiesEditionComponent(editingContext, editingContext.getEObject(), mode);
+        }
+        return super.getPropertiesEditingComponent(editingContext, mode, part, refinement);
+    }
 
-	/**
-	 * Provides the filter used by the plugin.xml to assign part forms.
-	 */
-	public static class EditionFilter implements IFilter {
-	
-		/**
-		 * {@inheritDoc}
-		 * 
-		 * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
-		 */
-		public boolean select(Object toTest) {
-			EObject eObj = EEFUtils.resolveSemanticObject(toTest);
-			return eObj != null && UMLPackage.Literals.CLASS == eObj.eClass();
-		}
-		
-	}
+    /**
+     * Provides the filter used by the plugin.xml to assign part forms.
+     */
+    public static class EditionFilter implements IFilter {
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.eclipse.jface.viewers.IFilter#select(java.lang.Object)
+         */
+        public boolean select(Object toTest) {
+            EObject eObj = EEFUtils.resolveSemanticObject(toTest);
+            return eObj != null && UMLPackage.Literals.CLASS == eObj.eClass();
+        }
+
+    }
 
 }
