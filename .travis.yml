@@ -9,6 +9,7 @@ before_script:
 - gem install RedCloth
 
 script:
+- jdk_switcher use openjdk6
 # Build documentation web site
 - cd documentation
 - jekyll build
@@ -71,7 +72,7 @@ deploy:
     region: eu-west-1
     upload-dir: "nightly/${TRAVIS_BRANCH}"
     on:
-      branch: juno_3.8 
+      branch: 5.0.x_juno3.8 
 # Deploy release on s3
   - provider: s3
     access_key_id: AKIAJBMGYTQSRYMJHQKQ
