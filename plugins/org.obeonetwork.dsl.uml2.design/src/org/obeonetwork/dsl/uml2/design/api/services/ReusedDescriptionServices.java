@@ -52,6 +52,8 @@ import org.eclipse.uml2.uml.Comment;
 import org.eclipse.uml2.uml.Component;
 import org.eclipse.uml2.uml.ConnectableElement;
 import org.eclipse.uml2.uml.Element;
+import org.eclipse.uml2.uml.Enumeration;
+import org.eclipse.uml2.uml.EnumerationLiteral;
 import org.eclipse.uml2.uml.Interaction;
 import org.eclipse.uml2.uml.Interface;
 import org.eclipse.uml2.uml.Lifeline;
@@ -749,6 +751,26 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	}
 
 	/**
+	 * Change literals order in Enumeration.
+	 *
+	 * @param currentEnumerationLiteral
+	 *            EnumerationLiteral
+	 * @param enumerationLiteralsToMove
+	 *            EnumerationLiterals to move
+	 */
+	public void moveDownEnumerationLiterals(EnumerationLiteral currentEnumerationLiteral,
+			List<EnumerationLiteral> enumerationLiteralsToMove) {
+		final List<EnumerationLiteral> enumerationLiteralsInRightOrder = retrieveTheRightOrderForEnumerationLiteral(enumerationLiteralsToMove);
+		final Object[] operationsArray = enumerationLiteralsInRightOrder.toArray();
+		final MoveDownElementSwitch moveDownElementSwitch = new MoveDownElementSwitch();
+		for (int i = operationsArray.length - 1; i >= 0; i--) {
+			if (operationsArray[i] instanceof EnumerationLiteral) {
+				moveDownElementSwitch.moveDownElement((EnumerationLiteral)operationsArray[i]);
+			}
+		}
+	}
+
+	/**
 	 * Change properties order in Class and Interface.
 	 *
 	 * @param currentOperation
@@ -770,11 +792,13 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	/**
 	 * Change properties order in Class and Interface.
 	 *
+	 * @param packageableElement
+	 *            Element
 	 * @param packageableElementsToMove
 	 *            packageableElements to move
 	 */
 	public void moveDownPackageableElements(PackageableElement packageableElement,
-		List<PackageableElement> packageableElementsToMove) {
+			List<PackageableElement> packageableElementsToMove) {
 
 		final MoveDownElementSwitch moveDownElementSwitch = new MoveDownElementSwitch();
 		final List<PackageableElement> packageableElementsInRightOrder = retrieveTheRightOrderForPackageableElement(packageableElementsToMove);
@@ -803,6 +827,26 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 			if (propertiesArray[i] instanceof Property) {
 				moveDownElementSwitch.moveDownElement((Property)propertiesArray[i]);
 			}
+		}
+	}
+
+	/**
+	 * Change enumeration literals order in Enumeration.
+	 *
+	 * @param currentEnumerationLiteral
+	 *            EnumerationLiteral
+	 * @param enumerationLiteralsToMove
+	 *            Enumeration literals to move
+	 */
+	public void moveUpEnumerationLiterals(EnumerationLiteral currentEnumerationLiteral,
+			List<EnumerationLiteral> enumerationLiteralsToMove) {
+
+		final List<EnumerationLiteral> enumerationLiteralsInRightOrder = retrieveTheRightOrderForEnumerationLiteral(enumerationLiteralsToMove);
+		final MoveUpElementSwitch moveUpElementsSwitch = new MoveUpElementSwitch();
+		final Iterator<EnumerationLiteral> iterator = enumerationLiteralsInRightOrder.iterator();
+		while (iterator.hasNext()) {
+			final EnumerationLiteral enumerationLiteral = iterator.next();
+			moveUpElementsSwitch.moveUpElement(enumerationLiteral);
 		}
 	}
 
@@ -950,6 +994,42 @@ public class ReusedDescriptionServices extends AbstractDiagramServices {
 	public DRepresentation refreshDiagram(DRepresentation representation) {
 		DialectManager.INSTANCE.refresh(representation, new NullProgressMonitor());
 		return representation;
+	}
+
+	private List<EnumerationLiteral> retrieveTheRightOrderForEnumerationLiteral(
+			List<EnumerationLiteral> enumerationLiteralsInWrongOrder) {
+
+		final List<EnumerationLiteral> enumerationLiteralsInRightOrder = new ArrayList<EnumerationLiteral>();
+
+		// retrieve all eContainers (property could be in different eContainers)
+		final List<EObject> eContainers = new ArrayList<EObject>();
+		for (final EnumerationLiteral enumerationLiteral : enumerationLiteralsInWrongOrder) {
+			final EObject eContainer = enumerationLiteral.eContainer();
+			if (eContainer != null && !eContainers.contains(eContainer)) {
+				eContainers.add(eContainer);
+			}
+		}
+
+		// on all eContainers found
+		for (final EObject eContainer : eContainers) {
+			if (eContainer instanceof Enumeration) {
+				// get all enumeration literals for a specific eContainer
+				final EList<EnumerationLiteral> enumerationLiterals = ((Enumeration)eContainer)
+						.getOwnedLiterals();
+
+				// add all enumeration literals contain in enumerationLiteralsInWrongOrder (to retrieve the
+				// right order)
+				final Iterator<EnumerationLiteral> iterator = enumerationLiterals.iterator();
+				while (iterator.hasNext()) {
+					final EnumerationLiteral enumerationLiteral = iterator.next();
+					if (enumerationLiteralsInWrongOrder.contains(enumerationLiteral)) {
+						enumerationLiteralsInRightOrder.add(enumerationLiteral);
+					}
+				}
+			}
+		}
+
+		return enumerationLiteralsInRightOrder;
 	}
 
 	private List<Operation> retrieveTheRightOrderForOperation(List<Operation> operationsInWrongOrder) {
